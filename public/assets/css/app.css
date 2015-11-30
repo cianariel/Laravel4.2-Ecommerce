@@ -1670,4 +1670,51 @@ textarea.input-lg, select[multiple].input-lg {
 body {
   font-family: 'Montserrat', sans-serif; }
 
+a:hover {
+  text-decoration: none; }
+
+header nav ul {
+  overflow: hidden;
+  margin-top: 0;
+  margin-bottom: 0; }
+header nav li {
+  list-style: none; }
+header nav a {
+  display: inline-block;
+  float: left;
+  padding: 20px;
+  text-transform: uppercase; }
+header .signin {
+  padding-left: 30px;
+  background-image: url("/assets/images/signin-icon.png");
+  background-position: left;
+  background-repeat: no-repeat; }
+header .search-bar {
+  padding-top: 13px;
+  margin-left: 4%; }
+  header .search-bar input {
+    text-align: center; }
+
+#ideaing-logo {
+  width: 175px;
+  height: 45px; }
+  #ideaing-logo.top-logo {
+    margin-top: 10px; }
+
+#top-nav a {
+  color: #000;
+  margin-right: 9%; }
+
+#mid-nav {
+  background: rgba(0, 0, 0, 0.6); }
+  #mid-nav a {
+    padding-left: 30px;
+    padding-right: 30px;
+    color: #fff; }
+  #mid-nav li.selected a {
+    border-bottom: 3px solid #FBB03B; }
+
+#site-name {
+  display: none; }
+
 /*# sourceMappingURL=app.css.map */
