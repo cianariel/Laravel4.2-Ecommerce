@@ -1667,33 +1667,43 @@ textarea.input-lg, select[multiple].input-lg {
 .affix {
   position: fixed; }
 
+.pink {
+  color: #FF0042 !important; }
+
+.orange {
+  color: #FF7F00 !important; }
+
+.green {
+  color: #C7C747 !important; }
+
+.blue {
+  color: #00B1FF !important; }
+
 body {
   font-family: 'Montserrat', sans-serif; }
 
 a:hover {
   text-decoration: none; }
 
-header nav ul {
+nav ul {
   overflow: hidden;
   margin-top: 0;
   margin-bottom: 0; }
-header nav li {
+nav li {
   list-style: none; }
-header nav a {
+nav a {
   display: inline-block;
   float: left;
   padding: 20px;
   text-transform: uppercase; }
-header .signin {
-  padding-left: 30px;
-  background-image: url("/assets/images/signin-icon.png");
-  background-position: left;
+
+#hero {
+  width: 100%;
+  min-height: 700px;
+  float: left;
+  background-image: url(/assets/images/landing-hero.jpg);
+  background-size: cover;
   background-repeat: no-repeat; }
-header .search-bar {
-  padding-top: 13px;
-  margin-left: 4%; }
-  header .search-bar input {
-    text-align: center; }
 
 #ideaing-logo {
   width: 175px;
@@ -1701,20 +1711,53 @@ header .search-bar {
   #ideaing-logo.top-logo {
     margin-top: 10px; }
 
+#site-name {
+  display: none; }
+
+header.colophon .signin {
+  padding-left: 30px;
+  background-image: url("/assets/images/signin-icon.png");
+  background-position: left;
+  background-repeat: no-repeat; }
+header.colophon .search-bar {
+  padding-top: 13px;
+  margin-left: 4%; }
+  header.colophon .search-bar input {
+    text-align: center; }
+
 #top-nav a {
   color: #000;
   margin-right: 9%; }
 
 #mid-nav {
-  background: rgba(0, 0, 0, 0.6); }
+  background: rgba(0, 0, 0, 0.45); }
   #mid-nav a {
     padding-left: 30px;
     padding-right: 30px;
     color: #fff; }
   #mid-nav li.selected a {
+    color: #FBB03B;
     border-bottom: 3px solid #FBB03B; }
 
-#site-name {
-  display: none; }
+#hero-nav {
+  background: #F2F2F2; }
+  #hero-nav a {
+    color: #FF0042;
+    text-transform: none;
+    text-align: right;
+    padding-left: 55px;
+    background-position: left;
+    background-repeat: no-repeat; }
+    #hero-nav a.home-link {
+      background-image: url("/assets/images/house-pink.png"); }
+    #hero-nav a.all-link {
+      background-image: url("/assets/images/grid-pink.png"); }
+    #hero-nav a.ideas-link {
+      background-image: url("/assets/images/lamp-orange.png"); }
+    #hero-nav a.products-link {
+      background-image: url("/assets/images/tag-green.png"); }
+    #hero-nav a.photos-link {
+      background-image: url("/assets/images/photos-blue.png");
+      padding-left: 65px; }
 
 /*# sourceMappingURL=app.css.map */

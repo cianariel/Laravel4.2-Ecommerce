@@ -33,27 +33,8 @@
                     </nav>
                 </div>
 
-                <nav id="mid-nav"  class="col-xs-12">
-                    <div class="container">
-                        <ul>
-                            <li class="selected"><a href="">All ideas</a></li>
-                            <li><a href="">Kitchen</a></li>
-                            <li><a href="">Bedroom</a></li>
-                            <li><a href="">Office</a></li>
-                            <li><a href="">Living</a></li>
-                            <li><a href="">Outdoor</a></li>
-                            <li><a href="">Lighting</a></li>
-                            <li><a href="">Decor</a></li>
-                            <li><a href="">...</a></li>
-                        </ul>
-                    </div>
-                </nav>
+
         </header>
-
-
-
-        <div class="container">
             @yield('content')
-        </div>
     </body>
 </html>

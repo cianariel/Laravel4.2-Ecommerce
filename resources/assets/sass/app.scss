@@ -2,6 +2,36 @@
 @import url(https://fonts.googleapis.com/css?family=Montserrat:400,700);
 
 
+// COLORS
+
+$iridium: #FF0042;
+$dark-orange: #FF7F00;
+$pine-green: #C7C747;
+$sky-blue: #00B1FF;
+
+.pink{
+  color: $iridium !important;
+}
+.orange{
+  color: $dark-orange !important;;
+}
+.green{
+  color: $pine-green !important;;
+}
+.blue{
+  color: $sky-blue !important;;
+}
+
+// ELEMENTS
+
+
+
+
+// TYPOGRAPHY
+
+
+
+
 // GENERAL
 
 body{
@@ -12,30 +42,57 @@ a:hover{
   text-decoration: none;
 }
 
-header{
-  nav{
-    ul{
-      overflow: hidden;
-      margin-top: 0;
-      margin-bottom: 0;
-    }
-    li{
-      list-style: none;
-    }
-    a{
-      display: inline-block;
-      float: left;
-      padding: 20px;
-      text-transform: uppercase;
-
-
-    }
+nav{
+  ul{
+    overflow: hidden;
+    margin-top: 0;
+    margin-bottom: 0;
   }
+  li{
+    list-style: none;
+  }
+  a{
+    display: inline-block;
+    float: left;
+    padding: 20px;
+    text-transform: uppercase;
+  }
+}
+
+#hero{
+  width: 100%;
+  min-height: 700px;
+  float: left;
+  background-image: url(/assets/images/landing-hero.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+#ideaing-logo{
+  width: 175px;
+  height: 45px;
+
+  &.top-logo{
+    margin-top: 10px;
+  }
+}
+
+
+
+
+// LAYOUT
+
+#site-name{
+  display: none;
+}
+
+
+header.colophon{
+
 
   .signin{
     padding-left: 30px;
     background-image: url("/assets/images/signin-icon.png");
-    //background-size: contain;
     background-position: left;
     background-repeat: no-repeat;
   }
@@ -49,17 +106,8 @@ header{
     }
   }
 
-
 }
 
-#ideaing-logo{
-  width: 175px;
-  height: 45px;
-
-  &.top-logo{
-    margin-top: 10px;
-  }
-}
 
 #top-nav{
   a{
@@ -69,7 +117,7 @@ header{
 }
 
 #mid-nav{
-  background: rgba(0,0,0,.6);
+  background: rgba(0,0,0,.45);
   a{
     padding-left: 30px;
     padding-right: 30px;
@@ -77,25 +125,40 @@ header{
   }
 
   li.selected a{
+    color: #FBB03B;
     border-bottom: 3px solid #FBB03B;
   }
 }
 
+#hero-nav{
+  background: #F2F2F2;
 
-// TYPOGRAPHY
+  a{
+    color: $iridium;
+    text-transform: none;
+    text-align: right;
+    padding-left: 55px;
+    background-position: left;
+    background-repeat: no-repeat;
+
+    &.home-link{
+      background-image: url('/assets/images/house-pink.png');
+    }
+    &.all-link{
+      background-image: url('/assets/images/grid-pink.png');
+    }
+    &.ideas-link{
+      background-image: url('/assets/images/lamp-orange.png');
+    }
+    &.products-link{
+      background-image: url('/assets/images/tag-green.png');
+    }
+    &.photos-link{
+      background-image: url('/assets/images/photos-blue.png');
+      padding-left: 65px;
+    }
+
+  }
 
 
-
-
-// ELEMENTS
-
-
-
-
-
-// LAYOUT
-
-#site-name{
-  display: none;
 }
-

@@ -1,32 +1,51 @@
 @extends('layouts.main')
 
 @section('content')
-    <section id="hero">
-
-        <h2>Ideas for Smarter Living</h2>
-
-        <div>
-            <ul class="why-us">
-                <li></li>
-                <li></li>
-                <li></li>
-            </ul>
-
-            <a class="btn btn-success" href="#">Find out more</a>
-        </div>
-
-
-        <nav id="hero-nav">
-            <ul>
-                <li><a class="home-link" href="">Home</a></li>
-
-                <li><a href="">All</a></li>
-                <li><a href="">Ideas</a></li>
-                <li><a href="">Products</a></li>
-                <li><a href="">Photos</a></li>
-            </ul>
+    <section id="hero" class="landing-hero">
+        <nav id="mid-nav"  class="col-xs-12">
+            <div class="container">
+                <ul>
+                    <li class="selected"><a href="">All ideas</a></li>
+                    <li><a href="">Kitchen</a></li>
+                    <li><a href="">Bedroom</a></li>
+                    <li><a href="">Office</a></li>
+                    <li><a href="">Living</a></li>
+                    <li><a href="">Outdoor</a></li>
+                    <li><a href="">Lighting</a></li>
+                    <li><a href="">Decor</a></li>
+                    <li><a href="">...</a></li>
+                </ul>
+            </div>
         </nav>
+
+        <div class="container">
+            <h2>Ideas for Smarter Living</h2>
+
+            <div>
+                <ul class="why-us">
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ul>
+
+                <a class="btn btn-success" href="#">Find out more</a>
+            </div>
+
+
+        </div>
     </section>
+    <nav id="hero-nav" class="col-sm-12">
+        <div class="container">
+            <ul>
+                <li class="col-sm-4"><a class="home-link" href="">Home</a></li>
+
+                <li class="col-sm-2"><a href="" class="all-link">All</a></li>
+                <li class="col-sm-2"><a href="" class="ideas-link orange">Ideas</a></li>
+                <li class="col-sm-2"><a href="" class="products-link green">Products</a></li>
+                <li class="col-sm-2"><a href="" class="photos-link blue">Photos</a></li>
+            </ul>
+        </div>
+    </nav>
 
     <div class="container">
         <section class="main-content landing">
