@@ -4393,6 +4393,7 @@ a.label:focus {
   width: 100%; }
 
 body {
+  position: relative;
   font-family: 'Montserrat', sans-serif; }
 
 a:hover {
@@ -4549,6 +4550,35 @@ form .btn {
   color: #c1c1c1;
   padding-left: 25px;
   background: url("/assets/images/heart-grey.png") left no-repeat; }
+
+#back-to-top {
+  -webkit-appearance: none;
+  border: 0;
+  position: absolute;
+  right: 4%;
+  bottom: 3%;
+  width: 55px;
+  height: 49px;
+  background: url("/assets/images/back-to-top.png") no-repeat;
+  text-indent: -9999px; }
+
+.layout-controls {
+  margin-top: 40px; }
+  .layout-controls li {
+    width: 120px;
+    float: left;
+    margin-right: 30px;
+    padding-top: 7px;
+    padding-bottom: 7px;
+    text-align: center;
+    border-radius: 3px;
+    cursor: pointer; }
+    .layout-controls li.selected {
+      border: 1px solid #eee; }
+    .layout-controls li.list {
+      background: url("/assets/images/list-grey.png") 7px center no-repeat; }
+    .layout-controls li.grid {
+      background: url("/assets/images/grid-grey.png") 7px center no-repeat; }
 
 #site-name {
   display: none; }

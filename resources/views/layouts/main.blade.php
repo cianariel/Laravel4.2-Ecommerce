@@ -36,5 +36,6 @@
 
         </header>
             @yield('content')
+        <a href="#" id="back-to-top">Back to top</a>
     </body>
 </html>

@@ -64,11 +64,10 @@
     <div class="container">
         <section class="main-content landing col-md-9">
 
-            {{--<ul class="layout-control">--}}
-               {{--<li>List</li>--}}
-               {{--<li>Grid</li>--}}
-            {{--</ul>--}}
-
+            <ul class="layout-controls col-xs-12">
+               <li class="list">List</li>
+               <li class="grid selected">Grid</li>
+            </ul>
 
             <div class="col-md-6 grid-box">
                 <div class="img-wrap">
@@ -214,6 +213,5 @@
         </aside>
     </div>
 
-    <button id="back-to-top">Back to top</button>
 
 @stop
