@@ -62,230 +62,155 @@
     </nav>
 
     <div class="container">
-        <section class="main-content landing">
+        <section class="main-content landing col-md-9">
 
-            <ul class="layout-control">
-               <li>List</li>
-               <li>Grid</li>
-            </ul>
+            {{--<ul class="layout-control">--}}
+               {{--<li>List</li>--}}
+               {{--<li>Grid</li>--}}
+            {{--</ul>--}}
 
-            <a class="home-link">Home</a>
 
-            <div class="col-md-6">
-                <div>
-                    <img src="">
-                    <a href="#" class="overlay-tag top product"></a>
-                    <a href="#" class="overlay-tag bottom">Get it</a>
-                    <a href="#" class="social-pic likes">123</a>
+            <div class="col-md-6 grid-box">
+                <div class="img-wrap">
+                    <img class="img-responsive" src="/assets/images/dummies/box-image-dummy.png">
+                    <a href="#" class="overlay-tag category-tag top product">Category: Products</a>
+                    <a href="#" class="overlay-tag bottom get-it">Get it</a>
+                    <a href="#" class="social-pic likes">Like it</a>
                     <a href="#" class="social-pic comment">Comment</a>
                 </div>
-                <h5><a href="#">Venetian Louge Suite</a></h5>
+                <h3><a href="#">Venetian Louge Suite</a></h3>
                 <ul class="box-tags">
-                    <li><a>Products</a></li>
-                    <li><a>Imptovrments</a></li>
-                    <li><a>Imptovrments</a></li>
-                    <li><a>Imptovrments</a></li>
-                    <li><a>Imptovrments</a></li>
-                    <li><a>Imptovrments</a></li>
+                    <li class="box-tag"><a>Products</a></li>
+                    <li class="box-tag"><a>Improvements</a></li>
+                    <li class="box-tag"><a>Improvements</a></li>
+                    <li class="box-tag"><a>Improvements</a></li>
+                    <li class="box-tag"><a>Improvements</a></li>
+                    <li class="box-tag"><a>Improvements</a></li>
                 </ul>
             </div>
-
-            <div class="col-md-6">
-                <div>
-                    <img src="">
-                    <a href="#" class="overlay-tag top product"></a>
-                    <a href="#" class="overlay-tag bottom">Get it</a>
+            <div class="col-md-6 grid-box">
+                <div class="img-wrap">
+                    <img class="img-responsive" src="/assets/images/dummies/box-image-dummy.png">
+                    <a href="#" class="overlay-tag category-tag top photo">Category: Photo</a>
+                    <a href="#" class="overlay-tag bottom get-it">Get it</a>
+                    <a href="#" class="social-pic likes">Like it</a>
+                    <a href="#" class="social-pic comment">Comment</a>
                 </div>
-                <h5><a href="#">Venetian Louge Suite</a></h5>
+                <h3><a href="#">Venetian Louge Suite</a></h3>
                 <ul class="box-tags">
-                    <li><a>Products</a></li>
-                    <li><a>Imptovrments</a></li>
-                    <li><a>Imptovrments</a></li>
-                    <li><a>Imptovrments</a></li>
-                    <li><a>Imptovrments</a></li>
-                    <li><a>Imptovrments</a></li>
+                    <li class="box-tag"><a>Products</a></li>
+                    <li class="box-tag"><a>Improvements</a></li>
+                    <li class="box-tag"><a>Improvements</a></li>
+                    <li class="box-tag"><a>Improvements</a></li>
+                    <li class="box-tag"><a>Improvements</a></li>
+                    <li class="box-tag"><a>Improvements</a></li>
                 </ul>
             </div>
-
-            <div class="col-md-12">
-                <div>
-                    <img src="">
-                    <a href="#" class="overlay-tag top idea"></a>
-                    <a href="#" class="overlay-tag bottom"><img class="author-pic"></a>
+            <div class="col-md-12 grid-box">
+                <div class="img-wrap">
+                    <img class="img-responsive" src="/assets/images/dummies/box-image-dummy.png">
+                    <a href="#" class="overlay-tag category-tag top idea">Category: Idea</a>
+                    <a href="#" class="overlay-tag bottom get-it">Get it</a>
+                    <a href="#" class="social-pic likes">Like it</a>
+                    <a href="#" class="social-pic comment">Comment</a>
                 </div>
-                <h5><a href="#">Venetian Louge Suite</a></h5>
+                <h3><a href="#">The Top Kitchen Gadgets</a></h3>
+                <p>Truly good design and taste are always current, always relevant. Quiet, muted colors determine the image</p>
                 <ul class="box-tags">
-                    <li><a>Products</a></li>
-                    <li><a>Imptovrments</a></li>
+                    <li class="box-tag"><a>Products</a></li>
+                    <li class="box-tag"><a>Improvements</a></li>
+                    <li class="box-tag"><a>Improvements</a></li>
+                    <li class="box-tag"><a>Improvements</a></li>
+                    <li class="box-tag"><a>Improvements</a></li>
+                    <li class="box-tag"><a>Improvements</a></li>
                 </ul>
             </div>
 
-            <div class="col-md-12">
-                <h6><a href="#">550.230 Kitchen Design Photos</a></h6>
+
+            <div class="col-md-12 grid-insert pale-grey-bg">
+                <h4><a href="#">550.230 Kitchen Design Photos</a></h4>
                 <p>
-
+                    Charming, fully furnished Upper Castro apartment features high-end open kitchen, luxurious bath. Charming, fully furnished Upper Castro apartment features high-end open kitchen, luxurious bath. Charming, fully furnished Upper Castro apartment features high-end open kitchen, luxurious bath.
                 </p>
                 <a class="btn btn-success" href="#">Upload a photo</a>
             </div>
 
-            <div class="col-md-6">
-                <div>
-                    <img src="">
-                    <a href="#" class="overlay-tag top product"></a>
-                    <a href="#" class="overlay-tag bottom">Get it</a>
-                </div>
-                <h5><a href="#">Venetian Louge Suite</a></h5>
-                <ul class="box-tags">
-                    <li><a>Products</a></li>
-                    <li><a>Imptovrments</a></li>
-                    <li><a>Imptovrments</a></li>
-                    <li><a>Imptovrments</a></li>
-                    <li><a>Imptovrments</a></li>
-                    <li><a>Imptovrments</a></li>
-                </ul>
-            </div>
-
-            <div class="col-md-6">
-                <div>
-                    <img src="">
-                    <a href="#" class="overlay-tag top product"></a>
-                    <a href="#" class="overlay-tag bottom">Get it</a>
-                </div>
-                <h5><a href="#">Venetian Louge Suite</a></h5>
-                <ul class="box-tags">
-                    <li><a>Products</a></li>
-                    <li><a>Imptovrments</a></li>
-                    <li><a>Imptovrments</a></li>
-                    <li><a>Imptovrments</a></li>
-                    <li><a>Imptovrments</a></li>
-                    <li><a>Imptovrments</a></li>
-                </ul>
-            </div>
-
-            <div class="col-md-12">
-                <div>
-                    <img src="">
-                    <a href="#" class="overlay-tag top idea"></a>
-                    <a href="#" class="overlay-tag bottom"><img class="author-pic"></a>
-                </div>
-                <h5><a href="#">Venetian Louge Suite</a></h5>
-                <ul class="box-tags">
-                    <li><a>Products</a></li>
-                    <li><a>Imptovrments</a></li>
-                </ul>
-            </div>
-
-
-            <div class="col-md-6">
-                <div>
-                    <img src="">
-                    <a href="#" class="overlay-tag top product"></a>
-                    <a href="#" class="overlay-tag bottom">Get it</a>
-                </div>
-                <h5><a href="#">Venetian Louge Suite</a></h5>
-                <ul class="box-tags">
-                    <li><a>Products</a></li>
-                    <li><a>Imptovrments</a></li>
-                    <li><a>Imptovrments</a></li>
-                    <li><a>Imptovrments</a></li>
-                    <li><a>Imptovrments</a></li>
-                    <li><a>Imptovrments</a></li>
-                </ul>
-            </div>
-
-
-            <div class="col-md-6">
-                <div>
-                    <img src="">
-                    <a href="#" class="overlay-tag top product"></a>
-                    <a href="#" class="overlay-tag bottom">Get it</a>
-                </div>
-                <h5><a href="#">Venetian Louge Suite</a></h5>
-                <ul class="box-tags">
-                    <li><a>Products</a></li>
-                    <li><a>Imptovrments</a></li>
-                    <li><a>Imptovrments</a></li>
-                    <li><a>Imptovrments</a></li>
-                    <li><a>Imptovrments</a></li>
-                    <li><a>Imptovrments</a></li>
-                </ul>
-            </div>
-
-
-            <div class="col-md-6">
-                <div>
-                    <img src="">
-                    <a href="#" class="overlay-tag top product"></a>
-                    <a href="#" class="overlay-tag bottom">Get it</a>
-                </div>
-                <h5><a href="#">Venetian Louge Suite</a></h5>
-                <ul class="box-tags">
-                    <li><a>Products</a></li>
-                    <li><a>Imptovrments</a></li>
-                    <li><a>Imptovrments</a></li>
-                    <li><a>Imptovrments</a></li>
-                    <li><a>Imptovrments</a></li>
-                    <li><a>Imptovrments</a></li>
-                </ul>
-            </div>
-
-            <div class="col-md-6">
-                <div>
-                    <img src="">
-                    <a href="#" class="overlay-tag top product"></a>
-                    <a href="#" class="overlay-tag bottom">Get it</a>
-                </div>
-                <h5><a href="#">Venetian Louge Suite</a></h5>
-                <ul class="box-tags">
-                    <li><a>Products</a></li>
-                    <li><a>Imptovrments</a></li>
-                    <li><a>Imptovrments</a></li>
-                    <li><a>Imptovrments</a></li>
-                    <li><a>Imptovrments</a></li>
-                    <li><a>Imptovrments</a></li>
-                </ul>
-            </div>
-
-            <a class="btn btn-success">Load More</a>
+                <a class="btn btn-success bottom-load-more col-xs-12">Load More</a>
 
         </section>
 
-        <aside class="col-md-2">
-            <section id="side-filters">
+        <aside class="col-md-3">
+            <section id="side-filters" class="pale-grey-bg">
                 <div>
-                    <b>Ideas</b>
+                    <h5>Ideas</h5>
                     <label><input type="checkbox">DIY</label>
                     <label><input type="checkbox">Best Buys</label>
                     <label><input type="checkbox">Declutter</label>
                 </div>
                 <div>
-                    <b>Products</b>
+                    <h5>Products</h5>
                     <label><input type="checkbox">DIY</label>
                     <label><input type="checkbox">Best Buys</label>
                     <label><input type="checkbox">Declutter</label>
                 </div>
                 <div>
-                    <b>Photos</b>
+                    <h5>Photos</h5>
                     <label><input type="checkbox">DIY</label>
                     <label><input type="checkbox">Best Buys</label>
                     <label><input type="checkbox">Declutter</label>
                 </div>
 
-                <a class="btn btn-success">Apply Filters</a>
-                <a class="btn btn-default">Cancel</a>
+                <a class="btn btn-success col-xs-12">Apply Filters</a>
+                <a class="btn-none col-xs-12">Cancel</a>
+            </section>
 
-                <div>
-                    <div class="image-wrapper">
-                        <img src="">
-                        <a href="#" class="overlay-tag top-left-corner number">1</a>
-                    </div>
-                    <h5><a href="#">Venetian Louge Suite</a></h5>
+            <section class="sidebar-category products">
+                <h4>Most Popular Products</h4>
+
+                <div class="grid-box sidebar-box">
+                        <div class="img-wrap">
+                            <img class="img-responsive" src="/assets/images/dummies/box-image-dummy.png">
+                            <a href="#" class="overlay-tag top-left-corner number">1</a>
+                        </div>
+                    <h5><a href="#">4 Tier wood utility</a></h5>
                     <ul class="box-tags">
-                        <li><a>Products</a></li>
+                        <li class="box-tag"><a>Products</a></li>
                     </ul>
-                    <a href="sidebard-social-counter like">+31</a>
+                    <a class="sidebar-social-counter like">31</a>
                 </div>
             </section>
+            <section class="sidebar-category ideas">
+                <h4>Most Popular Ideas</h4>
+
+                <div class="grid-box sidebar-box">
+                        <div class="img-wrap">
+                            <img class="img-responsive" src="/assets/images/dummies/box-image-dummy.png">
+                            <a href="#" class="overlay-tag top-left-corner number">1</a>
+                        </div>
+                    <h5><a href="#">4 Tier wood utility</a></h5>
+                    <ul class="box-tags">
+                        <li class="box-tag"><a>Products</a></li>
+                    </ul>
+                    <a class="sidebar-social-counter like">31</a>
+                </div>
+            </section>
+            <section class="sidebar-category photos">
+                <h4>Most Popular Photos</h4>
+
+                <div class="grid-box sidebar-box">
+                        <div class="img-wrap">
+                            <img class="img-responsive" src="/assets/images/dummies/box-image-dummy.png">
+                            <a href="#" class="overlay-tag top-left-corner number">1</a>
+                        </div>
+                    <h5><a href="#">4 Tier wood utility</a></h5>
+                    <ul class="box-tags">
+                        <li class="box-tag"><a>Products</a></li>
+                    </ul>
+                    <a class="sidebar-social-counter like">31</a>
+                </div>
+            </section>
+
+
         </aside>
     </div>
 
