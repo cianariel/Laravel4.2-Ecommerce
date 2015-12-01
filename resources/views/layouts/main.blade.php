@@ -12,7 +12,7 @@
                     <h2 id="site-name">Ideaing | Ideas for Smarter Living</h2>
                     <nav id="top-nav" class="row">
                         <div class="container">
-                            <div  class="col-sm-5">
+                            <div  class="col-sm-4">
                                 <ul>
                                     <li class="nested"><a href="">Shop</a></li>
                                     <li><a href="">Pros</a></li>

@@ -13,22 +13,36 @@
                     <li><a href="">Outdoor</a></li>
                     <li><a href="">Lighting</a></li>
                     <li><a href="">Decor</a></li>
-                    <li><a href="">...</a></li>
+                    <li><a class="more-link" href="">...</a></li>
                 </ul>
             </div>
         </nav>
 
         <div class="container">
-            <h2>Ideas for Smarter Living</h2>
+            <div class="col-sm-5 col-sm-offset-1 why-us">
+                <h2>Ideas for Smarter Living</h2>
 
-            <div>
-                <ul class="why-us">
-                    <li></li>
-                    <li></li>
-                    <li></li>
+                <ul>
+                    <li class="get-ideas">Get ideas for a smarter and sexier home</li>
+                    <li class="share-vote">Share and Vote on the best theme decor</li>
+                    <li class="shop-cool">Shop for cool gadgets and unique decor for the home</li>
                 </ul>
 
-                <a class="btn btn-success" href="#">Find out more</a>
+                <a class="btn btn-success col-xs-8" href="#">Find out more</a>
+            </div>
+            <div class="col-sm-4 col-sm-offset-1 hero-box qiuck-signup">
+                <form>
+                    <h4>Our famous <br/>
+                        <b>30-second sign-up</b>
+                    </h4>
+
+                    <input class="form-control" type="text" placeholder="First name" name="name">
+                    <input class="form-control"  type="text" placeholder="Email" name="email">
+
+                    <a class="btn btn-success col-xs-12" href="#">Sign up</a>
+                        <div class="line-wrap">or</div>
+                    <a class="btn btn-info col-xs-12" href="#"><i class="icon fb-icon"></i>Sign up with Facebook</a>
+                </form>
             </div>
 
 

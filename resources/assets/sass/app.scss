@@ -1,4 +1,4 @@
-@import "bootstrap-grid";
+@import "bootstrap";
 @import url(https://fonts.googleapis.com/css?family=Montserrat:400,700);
 
 
@@ -8,6 +8,8 @@ $iridium: #FF0042;
 $dark-orange: #FF7F00;
 $pine-green: #C7C747;
 $sky-blue: #00B1FF;
+$facebook-blue: #079DD1;
+$pale-blue: #F5FBFC;
 
 .pink{
   color: $iridium !important;
@@ -24,7 +26,14 @@ $sky-blue: #00B1FF;
 
 // ELEMENTS
 
-
+.btn-success{
+  background-color: $iridium;
+  border-color: $iridium;
+}
+.btn-info{
+  background-color: $sky-blue;
+  border-color: $sky-blue;
+}
 
 
 // TYPOGRAPHY
@@ -42,15 +51,23 @@ a:hover{
   text-decoration: none;
 }
 
+ul{
+  padding-left: 0;
+}
+
+li{
+  list-style: none;
+}
+
 nav{
   ul{
     overflow: hidden;
     margin-top: 0;
     margin-bottom: 0;
   }
-  li{
-    list-style: none;
-  }
+  //li{
+  //  //list-style: none;
+  //}
   a{
     display: inline-block;
     float: left;
@@ -58,6 +75,7 @@ nav{
     text-transform: uppercase;
   }
 }
+
 
 #hero{
   width: 100%;
@@ -77,6 +95,12 @@ nav{
   }
 }
 
+form{
+  input,
+  .btn{
+    margin-bottom: 20px;
+  }
+}
 
 
 
@@ -89,7 +113,6 @@ nav{
 
 header.colophon{
 
-
   .signin{
     padding-left: 30px;
     background-image: url("/assets/images/signin-icon.png");
@@ -99,7 +122,7 @@ header.colophon{
 
   .search-bar{
     padding-top: 13px;
-    margin-left: 4%;
+    margin-left: 8%;
 
     input{
       text-align: center;
@@ -112,16 +135,24 @@ header.colophon{
 #top-nav{
   a{
     color: #000;
-    margin-right: 9%;
+    margin-right: 8%;
   }
 }
 
 #mid-nav{
+  margin-bottom: 140px;
   background: rgba(0,0,0,.45);
   a{
     padding-left: 30px;
     padding-right: 30px;
+    overflow: hidden;
     color: #fff;
+
+    &.more-link{
+      text-indent: -9999px;
+      background:url("/assets/images/dots-white.png") center no-repeat;
+
+    }
   }
 
   li.selected a{
@@ -130,9 +161,116 @@ header.colophon{
   }
 }
 
+.why-us{
+  h2{
+    font-size: 3.5rem;
+    font-weight: normal;
+  }
+  h2, li{
+    color: #fff;
+  }
+
+  li{
+    padding: 20px;
+    padding-left: 30px;
+    font-weight: bold;
+
+    &.get-ideas{
+      background:url("/assets/images/lamp-white.png") left no-repeat;
+    }
+    &.share-vote{
+      background:url("/assets/images/like-white.png") left no-repeat;
+    }
+    &.shop-cool{
+      background:url("/assets/images/tag-white.png") left no-repeat;
+    }
+
+
+  }
+}
+
+
+.hero-box{
+  padding: 3.5% 5.5%;
+  background: #fff;
+
+  h4{
+    font-size: 1.4rem;
+
+    b{
+      font-size: 1.9rem;
+    }
+  }
+
+
+
+  input[type="text"]{
+    background: $pale-blue;
+    border: 0;
+    color: #000;
+    box-shadow: none;
+
+    &[name="name"]{
+      background:$pale-blue url("/assets/images/signin-icon.png") left no-repeat;
+    }
+    &[name="email"]{
+      background: $pale-blue url("/assets/images/letter-icon-black.png") left no-repeat;
+    }
+    &[name="name"],
+    &[name="email"]{
+      padding-left: 25px;
+      background-size:20px;
+    }
+
+  }
+
+
+  ::-webkit-input-placeholder {
+    color: #000;
+  }
+
+  :-moz-placeholder { /* Firefox 18- */
+    color: #000;
+  }
+
+  ::-moz-placeholder {  /* Firefox 19+ */
+    color: #000;
+  }
+
+  :-ms-input-placeholder {
+    color: #000;
+  }
+
+  .btn-success{
+    margin-bottom: 0;
+  }
+  .line-wrap{
+    overflow: hidden;
+    text-align: center;
+    padding: 10px;
+  }
+  .btn-info{
+    background: $facebook-blue url("/assets/images/facebook-white.png") left no-repeat;
+    background-size:contain ;
+  }
+  //
+  //.fb-icon{
+  //  display: inline-block;
+  //  width: 25px;
+  //  height: 30px;
+  //  margin-right: 10px;
+  //  background: url("/assets/images/facebook-white.png") left no-repeat;
+  //  background-size: contain;
+  //  border-right: 1px solid #fff;
+  //}
+}
+
+
+
+
+
 #hero-nav{
   background: #F2F2F2;
-
   a{
     color: $iridium;
     text-transform: none;
@@ -162,3 +300,19 @@ header.colophon{
 
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
