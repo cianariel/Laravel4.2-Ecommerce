@@ -14,9 +14,9 @@
                         <div class="container">
                             <div  class="col-sm-4 col-xs-6">
                                 <ul>
-                                    <li class="nested"><a href="">Shop</a></li>
-                                    <li><a href="">Pros</a></li>
-                                    <li><a href="">Discuss</a></li>
+                                    <li class="nested"><a class="shop" href="">Shop</a></li>
+                                    <li><a class="pros" href="">Pros</a></li>
+                                    <li><a class="disc" href="">Discuss</a></li>
                                 </ul>
                             </div>
 

@@ -108,7 +108,7 @@
                 <div class="img-wrap">
                     <img class="img-responsive" src="/assets/images/dummies/box-image-dummy.png">
                     <a href="#" class="overlay-tag category-tag top idea">Category: Idea</a>
-                    <a href="#" class="overlay-tag bottom get-it">Get it</a>
+                    <a href="#" class="overlay-tag bottom get-it author">Get it</a>
                     <a href="#" class="social-pic likes">Like it</a>
                     <a href="#" class="social-pic comment">Comment</a>
                 </div>
