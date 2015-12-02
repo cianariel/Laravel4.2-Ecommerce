@@ -2,7 +2,7 @@
 
 @section('content')
     <section id="hero" class="landing-hero">
-        <nav id="mid-nav"  class="col-xs-12">
+        <nav id="mid-nav"  class="col-xs-12 hidden-sm hidden-xs">
             <div class="container">
                 <ul>
                     <li class="selected"><a href="">All ideas</a></li>
@@ -19,7 +19,7 @@
         </nav>
 
         <div class="container">
-            <div class="col-sm-5 col-sm-offset-1 why-us">
+            <div class="col-sm-5 col-sm-offset-1 why-us hidden-md hidden-sm hidden-xs">
                 <h2>Ideas for Smarter Living</h2>
 
                 <ul>
@@ -30,7 +30,7 @@
 
                 <a class="btn btn-success col-xs-8" href="#">Find out more</a>
             </div>
-            <div class="col-sm-4 col-sm-offset-1 hero-box qiuck-signup">
+            <div class="col-sm-4 col-sm-offset-1 hero-box qiuck-signup hidden-md hidden-sm hidden-xs">
                 <form>
                     <h4>Our famous <br/>
                         <b>30-second sign-up</b>
@@ -45,18 +45,17 @@
                 </form>
             </div>
 
-
         </div>
     </section>
     <nav id="hero-nav" class="col-sm-12">
         <div class="container">
             <ul>
-                <li class="col-sm-4"><a class="home-link" href="">Home</a></li>
+                <li class="col-sm-4 "><a class="home-link" href="">Home</a></li>
 
-                <li class="col-sm-2"><a href="" class="all-link">All</a></li>
-                <li class="col-sm-2"><a href="" class="ideas-link orange">Ideas</a></li>
-                <li class="col-sm-2"><a href="" class="products-link green">Products</a></li>
-                <li class="col-sm-2"><a href="" class="photos-link blue">Photos</a></li>
+                <li class="col-sm-2 "><a href="" class="all-link">All</a></li>
+                <li class="col-sm-2 "><a href="" class="ideas-link orange">Ideas</a></li>
+                <li class="col-sm-2 "><a href="" class="products-link green">Products</a></li>
+                <li class="col-sm-2 "><a href="" class="photos-link blue">Photos</a></li>
             </ul>
         </div>
     </nav>
@@ -64,7 +63,7 @@
     <div class="container">
         <section class="main-content landing col-md-9">
 
-            <ul class="layout-controls col-xs-12">
+            <ul class="layout-controls col-xs-12 hidden-xs">
                <li class="list">List</li>
                <li class="grid selected">Grid</li>
             </ul>
@@ -138,7 +137,7 @@
 
         </section>
 
-        <aside class="col-md-3">
+        <aside class="col-md-3 hidden-sm hidden-xs">
             <section id="side-filters" class="pale-grey-bg">
                 <div>
                     <h5>Ideas</h5>

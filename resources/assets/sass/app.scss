@@ -55,7 +55,9 @@ $tarmac: #3D4B4E;
   width: 100%;
 }
 
-
+.main-content{
+  overflow: hidden;
+}
 // TYPOGRAPHY
 
 
@@ -128,6 +130,7 @@ form{
 }
 
 .grid-box{
+  overflow: hidden;
   margin-top: 30px;
 
   .img-wrap{
@@ -374,11 +377,14 @@ header.colophon{
     background-image: url("/assets/images/signin-icon.png");
     background-position: left;
     background-repeat: no-repeat;
+    a{
+      white-space: nowrap;
+    }
   }
 
   .search-bar{
     padding-top: 13px;
-    margin-left: 8%;
+    margin-left: 11%;
 
     input{
       text-align: center;
@@ -526,6 +532,7 @@ header.colophon{
 
 
 #hero-nav{
+  overflow: hidden;
   background: #F2F2F2;
   a{
     color: $iridium;
@@ -557,8 +564,109 @@ header.colophon{
 
 }
 
+// RESPONSIVE BEHAVIOUR
+
+@media (max-width: 1200px){
+  #top-nav a {
+    margin-right: 0%;
+  }
+
+  #mid-nav a {
+    padding-left: 2%;
+    padding-right: 2%;
+  }
+}
+
+@media (max-width: 992px){
+  #top-nav a {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+}
 
 
+@media (max-width: 768px){
+  #mid-nav a {
+    padding-left: 2%;
+    padding-right: 2%;
+    font-size: 2rem;
+  }
+
+  header.colophon{
+    .logo-wrap{
+      height: 60px;
+    }
+    #ideaing-logo{
+      float: right;
+    }
+    .search-bar {
+      margin-left: 0;
+    }
+  }
+
+
+  #hero-nav a{
+    padding-left: 34px;
+    background-position: left;
+    background-repeat: no-repeat;
+    background-size: 30px;
+
+    &.photos-link{
+      padding-left: 34px;
+    }
+  }
+
+}
+
+
+@media (max-width: 620px){
+  #hero-nav a {
+    padding-left: 35px;
+    background-size: 30px;
+  }
+
+  .signin{
+    margin-right: 30px;
+  }
+
+
+  #hero-nav a.home-link{
+    width: 100%;
+    //background-color: darken($pale-grey, 20%);
+    text-align: left;
+    padding-left: 40px;
+  }
+
+  #hero-nav a:not(.home-link) {
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 30px;
+    background-position: top center;
+    margin-top: 7px;
+  }
+
+}
+
+@media (max-width: 480px){
+  #top-nav a {
+    font-size: 1.3rem;
+  }
+
+  #ideaing-logo {
+    width: 125px;
+    height: auto;
+  }
+
+  header.colophon .search-bar input {
+   min-width: 125px;
+  }
+
+  .signin{
+    margin-right: 50px;
+  }
+
+}
 
 
 
