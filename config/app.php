@@ -95,7 +95,7 @@ return [
     |
     */
 
-    'log' => 'single',
+    'log' => 'daily',
 
     /*
     |--------------------------------------------------------------------------
@@ -146,6 +146,14 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+
+        /*
+         * Custom providers...
+         */
+        'Tymon\JWTAuth\Providers\JWTAuthServiceProvider',
+        Laravel\Socialite\SocialiteServiceProvider::class,
+        'Zizaco\Entrust\EntrustServiceProvider'
+
     ],
 
     /*
@@ -194,6 +202,17 @@ return [
         'URL'       => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View'      => Illuminate\Support\Facades\View::class,
+
+        /*
+         * Custom aliases ...
+         */
+        'JWTAuth' => 'Tymon\JWTAuth\Facades\JWTAuth',
+        'JWTFactory' => 'Tymon\JWTAuth\Facades\JWTFactory',
+        'Socialite' => Laravel\Socialite\Facades\Socialite::class,
+        'Entrust' => 'Zizaco\Entrust\EntrustFacade',
+        'role' => 'Zizaco\Entrust\Middleware\EntrustRole',
+        'permission' => 'Zizaco\Entrust\Middleware\EntrustPermission',
+        'ability' => 'Zizaco\Entrust\Middleware\EntrustAbility',
 
     ],
 
