@@ -73,9 +73,17 @@
                 <div class="img-wrap">
                     <img class="img-responsive" src="/assets/images/dummies/box-image-dummy.png">
                     <a href="#" class="overlay-tag category-tag top product">Category: Products</a>
-                    <a href="#" class="overlay-tag bottom get-it">Get it</a>
                     <a href="#" class="social-pic likes">Like it</a>
                     <a href="#" class="social-pic comment">Comment</a>
+
+                    <a href="#" class="overlay-tag bottom get-it">
+                        <div class="circle-3">
+                            <div class="circle-2">
+                                <div class="circle-1">Get it</div>
+                            </div>
+                        </div>
+                    </a>
+
                 </div>
                 <h3><a href="#">Venetian Louge Suite</a></h3>
                 <ul class="box-tags">
@@ -91,9 +99,16 @@
                 <div class="img-wrap">
                     <img class="img-responsive" src="/assets/images/dummies/img-small.jpg">
                     <a href="#" class="overlay-tag category-tag top photo">Category: Photo</a>
-                    <a href="#" class="overlay-tag bottom get-it">Get it</a>
                     <a href="#" class="social-pic likes">Like it</a>
                     <a href="#" class="social-pic comment">Comment</a>
+
+                    <a href="#" class="overlay-tag bottom get-it">
+                        <div class="circle-3">
+                            <div class="circle-2">
+                                <div class="circle-1">Get it</div>
+                            </div>
+                        </div>
+                    </a>
                 </div>
                 <h3><a href="#">Venetian Louge Suite</a></h3>
                 <ul class="box-tags">
@@ -109,7 +124,7 @@
                 <div class="img-wrap">
                     <img class="img-responsive" src="/assets/images/dummies/img-big.jpg">
                     <a href="#" class="overlay-tag category-tag top idea">Category: Idea</a>
-                    <a href="#" class="overlay-tag bottom get-it author">Get it</a>
+                    <a href="#" class="overlay-tag bottom author">Get it</a>
                     <a href="#" class="social-pic likes">Like it</a>
                     <a href="#" class="social-pic comment">Comment</a>
                 </div>

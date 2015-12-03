@@ -4459,15 +4459,33 @@ form .btn {
       position: absolute;
       text-indent: -9999px; }
     .grid-box .img-wrap .get-it {
-      width: 69px;
+      right: 8px;
+      bottom: 10px;
+      text-indent: 0;
+      color: #fff;
+      white-space: nowrap;
+      text-align: center; }
+      .grid-box .img-wrap .get-it div {
+        border-radius: 30px;
+        border: 2px solid #FF0042; }
+        .grid-box .img-wrap .get-it div.circle-1 {
+          width: 44px;
+          height: 42px;
+          padding: 28% 5% 5% 3%;
+          background: #FF0042;
+          text-transform: uppercase;
+          font-size: 1.1rem; }
+        .grid-box .img-wrap .get-it div.circle-2, .grid-box .img-wrap .get-it div.circle-3 {
+          padding: 3%;
+          border-radius: 50px; }
+        .grid-box .img-wrap .get-it div.circle-2 {
+          padding: 5%; }
+    .grid-box .img-wrap a.author {
+      width: 64px;
       height: 64px;
-      right: 0;
-      bottom: 2px;
-      background: url("/assets/images/get-it-green.png") center no-repeat; }
-      .grid-box .img-wrap .get-it.author {
-        background: url("/assets/images/dummies/author.png") center no-repeat;
-        right: 10px;
-        bottom: -15px; }
+      background: url("/assets/images/dummies/author.png") center no-repeat;
+      right: 25px;
+      bottom: -15px; }
     .grid-box .img-wrap .social-pic {
       width: 40px;
       height: 40px;
