@@ -4477,9 +4477,23 @@ form .btn {
           font-size: 1.1rem; }
         .grid-box .img-wrap .get-it div.circle-2, .grid-box .img-wrap .get-it div.circle-3 {
           padding: 3%;
-          border-radius: 50px; }
+          border-radius: 50%; }
         .grid-box .img-wrap .get-it div.circle-2 {
           padding: 5%; }
+      .grid-box .img-wrap .get-it.big {
+        top: 20px; }
+        .grid-box .img-wrap .get-it.big div {
+          border-color: #C7C747; }
+          .grid-box .img-wrap .get-it.big div.circle-1 {
+            width: 80px;
+            height: 77px;
+            padding: 38% 5% 5% 3%;
+            background: #C7C747;
+            font-size: 1.1rem;
+            border-radius: 50%;
+            color: #fff; }
+          .grid-box .img-wrap .get-it.big div.circle-2, .grid-box .img-wrap .get-it.big div.circle-3 {
+            padding: 5%; }
     .grid-box .img-wrap a.author {
       width: 64px;
       height: 64px;

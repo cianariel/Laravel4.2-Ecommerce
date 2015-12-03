@@ -177,12 +177,34 @@ form{
         &.circle-2,
         &.circle-3{
           padding: 3%;
-          border-radius: 50px;
+          border-radius: 50%;
 
         }
 
         &.circle-2{
           padding: 5%;
+        }
+      }
+
+      &.big{
+        top: 20px;
+        div {
+          border-color:$pine-green;
+
+          &.circle-1 {
+            width: 80px;
+            height: 77px;
+            padding: 38% 5% 5% 3%;
+            background: $pine-green;
+            font-size: 1.1rem;
+            border-radius: 50%;
+            color: #fff;
+          }
+
+          &.circle-2,
+          &.circle-3{
+            padding: 5%;
+          }
         }
       }
     }

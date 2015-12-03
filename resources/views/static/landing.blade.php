@@ -127,6 +127,14 @@
                     <a href="#" class="overlay-tag bottom author">Get it</a>
                     <a href="#" class="social-pic likes">Like it</a>
                     <a href="#" class="social-pic comment">Comment</a>
+
+                    <a href="#" class="overlay-tag bottom get-it big green">
+                        <div class="circle-3">
+                            <div class="circle-2">
+                                <div class="circle-1">Featured</div>
+                            </div>
+                        </div>
+                    </a>
                 </div>
                 <h3><a href="#">The Top Kitchen Gadgets</a></h3>
                 <p>Truly good design and taste are always current, always relevant. Quiet, muted colors determine the image</p>
