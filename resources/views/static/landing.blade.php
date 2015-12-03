@@ -2,6 +2,7 @@
 
 @section('content')
     <section id="hero" class="landing-hero">
+        <div class="hero-background"></div>
         <nav id="mid-nav"  class="col-xs-12 hidden-sm hidden-xs">
             <div class="container">
                 <ul>
@@ -88,7 +89,7 @@
             </div>
             <div class="col-md-6 grid-box">
                 <div class="img-wrap">
-                    <img class="img-responsive" src="/assets/images/dummies/box-image-dummy.png">
+                    <img class="img-responsive" src="/assets/images/dummies/img-small.jpg">
                     <a href="#" class="overlay-tag category-tag top photo">Category: Photo</a>
                     <a href="#" class="overlay-tag bottom get-it">Get it</a>
                     <a href="#" class="social-pic likes">Like it</a>
@@ -106,7 +107,7 @@
             </div>
             <div class="col-md-12 grid-box">
                 <div class="img-wrap">
-                    <img class="img-responsive" src="/assets/images/dummies/box-image-dummy.png">
+                    <img class="img-responsive" src="/assets/images/dummies/img-big.jpg">
                     <a href="#" class="overlay-tag category-tag top idea">Category: Idea</a>
                     <a href="#" class="overlay-tag bottom get-it author">Get it</a>
                     <a href="#" class="social-pic likes">Like it</a>
@@ -147,15 +148,15 @@
                 </div>
                 <div>
                     <h5>Products</h5>
-                    <label><input type="checkbox">DIY</label>
-                    <label><input type="checkbox">Best Buys</label>
-                    <label><input type="checkbox">Declutter</label>
+                    <label><input type="checkbox">Under $50</label>
+                    <label><input type="checkbox">Top</label>
+                    <label><input type="checkbox">Stuff</label>
                 </div>
                 <div>
                     <h5>Photos</h5>
-                    <label><input type="checkbox">DIY</label>
-                    <label><input type="checkbox">Best Buys</label>
-                    <label><input type="checkbox">Declutter</label>
+                    <label><input type="checkbox">HD (1920px and above)</label>
+                    <label><input type="checkbox">MD (1920px and above)</label>
+                    <label><input type="checkbox">Any sizes</label>
                 </div>
 
                 <a class="btn btn-success col-xs-12">Apply Filters</a>
@@ -167,7 +168,7 @@
 
                 <div class="grid-box sidebar-box">
                         <div class="img-wrap">
-                            <img class="img-responsive" src="/assets/images/dummies/box-image-dummy.png">
+                            <img class="img-responsive" src="/assets/images/dummies/img-small.jpg">
                             <a href="#" class="overlay-tag top-left-corner number">1</a>
                         </div>
                     <h5><a href="#">4 Tier wood utility</a></h5>
@@ -197,7 +198,7 @@
 
                 <div class="grid-box sidebar-box">
                         <div class="img-wrap">
-                            <img class="img-responsive" src="/assets/images/dummies/box-image-dummy.png">
+                            <img class="img-responsive" src="/assets/images/dummies/img-small.jpg">
                             <a href="#" class="overlay-tag top-left-corner number">1</a>
                         </div>
                     <h5><a href="#">4 Tier wood utility</a></h5>

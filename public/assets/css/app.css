@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /*!
  * Bootstrap v3.3.5 (http://getbootstrap.com)
  * Copyright 2011-2015 Twitter, Inc.
@@ -4389,7 +4390,7 @@ a.label:focus {
   background: transparent;
   text-align: center;
   padding: 20px;
-  color: #3D4B4E;
+  color: #8e8e8e;
   width: 100%; }
 
 .main-content {
@@ -4422,12 +4423,22 @@ nav a {
   margin-top: 10px; }
 
 #hero {
+  position: relative;
   width: 100%;
   min-height: 700px;
-  float: left;
-  background-image: url(/assets/images/landing-hero.jpg);
-  background-size: cover;
-  background-repeat: no-repeat; }
+  float: left; }
+  #hero .hero-background {
+    background-image: url("/assets/images/landing-hero.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    -webkit-filter: blur(2px);
+    -moz-filter: blur(2px);
+    -o-filter: blur(2px);
+    -ms-filter: blur(2px);
+    filter: blur(2px);
+    position: absolute;
+    width: 100%;
+    height: 100%; }
 
 #ideaing-logo {
   width: 175px;
@@ -4481,19 +4492,18 @@ form .btn {
         background: url("/assets/images/photos-blue.png") center no-repeat; }
     .grid-box .img-wrap img {
       width: 100%;
-      -webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.15);
-      -moz-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.15);
-      box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.15); }
+      border: 1px solid #eee;
+      border-radius: 5px; }
   .grid-box h3 a {
     color: #3D4B4E; }
   .grid-box li.box-tag {
     display: inline-block; }
     .grid-box li.box-tag a {
       float: left;
-      color: #c1c1c1;
+      color: #8e8e8e;
       padding: 3px;
       margin-bottom: 2px;
-      border: 1px solid #c1c1c1;
+      border: 1px solid #8e8e8e;
       border-radius: 2px;
       font-size: 1rem; }
 
@@ -4501,7 +4511,7 @@ form .btn {
   padding: 45px;
   margin-top: 45px;
   background: #F2F5F5; }
-  .grid-insert h4 {
+  .grid-insert h4 a {
     color: #3D4B4E; }
 
 .bottom-load-more {
@@ -4525,6 +4535,8 @@ form .btn {
 
 .sidebar-category {
   margin-top: 40px; }
+  .sidebar-category h4 {
+    font-size: 1.3rem; }
 
 .sidebar-box {
   overflow: visible; }
@@ -4573,6 +4585,7 @@ form .btn {
   text-indent: -9999px; }
 
 .layout-controls {
+  display: none;
   margin-top: 40px; }
   .layout-controls li {
     width: 120px;
@@ -4604,27 +4617,32 @@ header.colophon .search-bar {
   padding-top: 13px;
   margin-left: 11%; }
   header.colophon .search-bar input {
-    text-align: center; }
+    text-align: center;
+    background: url("/assets/images/magnif-grey.png") 10% no-repeat; }
 
 #top-nav a {
-  color: #000;
   margin-right: 8%;
   padding-left: 25px;
-  padding-right: 15px; }
+  padding-right: 5px;
+  color: #000; }
   #top-nav a.shop {
     background: url("/assets/images/bag-grey.png") left center no-repeat; }
   #top-nav a.pros {
     background: url("/assets/images/pro-grey.png") left center no-repeat; }
   #top-nav a.disc {
     background: url("/assets/images/speach-black.png") left center no-repeat; }
+#top-nav li.nested a::after {
+  content: '▼';
+  padding-left: 7px; }
 
 #mid-nav {
   margin-bottom: 140px;
-  background: rgba(0, 0, 0, 0.45); }
+  background: #FF0042; }
   #mid-nav a {
     padding-left: 30px;
     padding-right: 30px;
     overflow: hidden;
+    font-size: 1.2rem;
     color: #fff; }
     #mid-nav a.more-link {
       text-indent: -9999px;
@@ -4633,21 +4651,23 @@ header.colophon .search-bar {
     color: #FBB03B;
     border-bottom: 3px solid #FBB03B; }
 
-.why-us h2 {
-  font-size: 3.5rem;
-  font-weight: normal; }
-.why-us h2, .why-us li {
-  color: #fff; }
-.why-us li {
-  padding: 20px;
-  padding-left: 30px;
-  font-weight: bold; }
-  .why-us li.get-ideas {
-    background: url("/assets/images/lamp-white.png") left no-repeat; }
-  .why-us li.share-vote {
-    background: url("/assets/images/like-white.png") left no-repeat; }
-  .why-us li.shop-cool {
-    background: url("/assets/images/tag-white.png") left no-repeat; }
+.why-us {
+  margin-top: 45px; }
+  .why-us h2 {
+    font-size: 3.5rem;
+    font-weight: normal; }
+  .why-us h2, .why-us li {
+    color: #fff; }
+  .why-us li {
+    padding: 20px;
+    padding-left: 30px;
+    font-weight: bold; }
+    .why-us li.get-ideas {
+      background: url("/assets/images/lamp-white.png") left no-repeat; }
+    .why-us li.share-vote {
+      background: url("/assets/images/like-white.png") left no-repeat; }
+    .why-us li.shop-cool {
+      background: url("/assets/images/tag-white.png") left no-repeat; }
 
 .hero-box {
   padding: 3.5% 5.5%;

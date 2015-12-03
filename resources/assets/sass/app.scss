@@ -51,15 +51,13 @@ $tarmac: #3D4B4E;
   background: transparent;
   text-align: center;
   padding: 20px;
-  color: $tarmac;
+  color: darken($light-grey, 20%);
   width: 100%;
 }
 
 .main-content{
   overflow: hidden;
 }
-// TYPOGRAPHY
-
 
 
 
@@ -105,12 +103,26 @@ nav{
 
 
 #hero{
+  position: relative;
   width: 100%;
   min-height: 700px;
   float: left;
-  background-image: url(/assets/images/landing-hero.jpg);
-  background-size: cover;
-  background-repeat: no-repeat;
+
+
+  .hero-background{
+    background-image: url('/assets/images/landing-hero.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    -webkit-filter: blur(2px);
+    -moz-filter: blur(2px);
+    -o-filter: blur(2px);
+    -ms-filter: blur(2px);
+    filter: blur(2px);
+    position: absolute;
+    width: 100%;
+    height: 100%;
+  }
+
 }
 
 #ideaing-logo{
@@ -189,9 +201,11 @@ form{
 
     img{
       width: 100%;
-      -webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.15);
-      -moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.15);
-      box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.15);
+      //-webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.15);
+      //-moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.15);
+      //box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.15);
+      border: 1px solid #eee;
+      border-radius: 5px;
     }
 
 
@@ -209,10 +223,10 @@ form{
     display: inline-block;
     a{
       float: left;
-      color: $light-grey;
+      color: darken($light-grey, 20%);
       padding: 3px;
       margin-bottom: 2px;
-      border: 1px solid $light-grey;
+      border: 1px solid darken($light-grey, 20%);
       border-radius: 2px;
       font-size: 1rem;
     }
@@ -225,7 +239,9 @@ form{
   background: $pale-grey;
 
   h4{
-    color: $tarmac;
+    a{
+      color: $tarmac;
+    }
   }
 }
 
@@ -261,6 +277,10 @@ form{
 
 .sidebar-category{
   margin-top: 40px;
+
+  h4{
+    font-size: 1.3rem;
+  }
 }
 
 .sidebar-box{
@@ -345,6 +365,8 @@ form{
 // LAYOUT
 
 .layout-controls{
+  display: none; // TEMP
+
   margin-top: 40px;
   li{
     width: 120px;
@@ -395,6 +417,7 @@ header.colophon{
 
     input{
       text-align: center;
+      background: url('/assets/images/magnif-grey.png') 10% no-repeat;
     }
   }
 
@@ -403,10 +426,10 @@ header.colophon{
 
 #top-nav{
   a{
-    color: #000;
     margin-right: 8%;
     padding-left: 25px;
-    padding-right: 15px;
+    padding-right: 5px;
+    color: #000;
 
     &.shop{
       background: url('/assets/images/bag-grey.png') left center no-repeat;
@@ -417,16 +440,27 @@ header.colophon{
     &.disc{
       background: url('/assets/images/speach-black.png') left center no-repeat;
     }
+
+
+
   }
+
+  li.nested a::after{
+    content: '▼';
+    padding-left: 7px;
+  }
+
 }
 
 #mid-nav{
   margin-bottom: 140px;
-  background: rgba(0,0,0,.45);
+  //background: rgba(0,0,0,.45);
+  background: $iridium;
   a{
     padding-left: 30px;
     padding-right: 30px;
     overflow: hidden;
+    font-size: 1.2rem;
     color: #fff;
 
     &.more-link{
@@ -443,6 +477,7 @@ header.colophon{
 }
 
 .why-us{
+  margin-top: 45px;
   h2{
     font-size: 3.5rem;
     font-weight: normal;

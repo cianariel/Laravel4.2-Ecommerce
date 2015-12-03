@@ -21,7 +21,7 @@
                             </div>
 
                             <div class="col-sm-2 col-xs-6 logo-wrap">
-                                <img src="/assets/images/ideaing-logo.png" id="ideaing-logo" class="logo top-logo"/>
+                                <img src="/assets/images/ideaing-logo-small.png" id="ideaing-logo" class="logo top-logo"/>
                             </div>
                             <section class="search-bar col-xs-4 col-sm-2">
                                 <input class="form-control" type="text" name="search" value="Search..."/>
