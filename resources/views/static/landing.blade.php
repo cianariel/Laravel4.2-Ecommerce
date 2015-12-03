@@ -20,7 +20,7 @@
         </nav>
 
         <div class="container">
-            <div class="col-sm-5 col-sm-offset-1 why-us hidden-md hidden-sm hidden-xs">
+            <div class="col-sm-5 col-sm-offset-1 why-us hidden-sm hidden-xs">
                 <h2>Ideas for Smarter Living</h2>
 
                 <ul>
@@ -31,7 +31,7 @@
 
                 <a class="btn btn-success col-xs-8" href="#">Find out more</a>
             </div>
-            <div class="col-sm-4 col-sm-offset-1 hero-box qiuck-signup hidden-md hidden-sm hidden-xs">
+            <div class="col-sm-4 col-sm-offset-1 hero-box qiuck-signup hidden-sm hidden-xs">
                 <form>
                     <h4>Our famous <br/>
                         <b>30-second sign-up</b>

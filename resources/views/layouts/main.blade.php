@@ -12,7 +12,7 @@
                     <h2 id="site-name">Ideaing | Ideas for Smarter Living</h2>
                     <nav id="top-nav" class="row">
                         <div class="container">
-                            <div  class="col-sm-4 col-xs-6">
+                            <div  class="col-md-4 col-xs-8">
                                 <ul>
                                     <li class="nested"><a class="shop" href="">Shop</a></li>
                                     <li><a class="pros" href="">Pros</a></li>
@@ -20,13 +20,13 @@
                                 </ul>
                             </div>
 
-                            <div class="col-sm-2 col-xs-6 logo-wrap">
+                            <div class="col-md-2 col-xs-4 logo-wrap">
                                 <img src="/assets/images/ideaing-logo-small.png" id="ideaing-logo" class="logo top-logo"/>
                             </div>
-                            <section class="search-bar col-xs-4 col-sm-2">
+                            <section class="search-bar col-xs-4 col-md-2">
                                 <input class="form-control" type="text" name="search" value="Search..."/>
                             </section>
-                            <div class="col-sm-2 col-xs-2 pull-right signin">
+                            <div class="col-md-2 col-xs-2 pull-right signin">
                                 <a href="#">Sign in</a>
                             </div>
                         </div>

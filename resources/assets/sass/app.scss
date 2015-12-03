@@ -673,7 +673,7 @@ header.colophon{
 
 @media (max-width: 1200px){
   #top-nav a {
-    margin-right: 0%;
+    margin-right: 3%;
   }
 
   #mid-nav a {
@@ -684,18 +684,8 @@ header.colophon{
 
 @media (max-width: 992px){
   #top-nav a {
-    padding-left: 10px;
+    padding-left: 20px;
     padding-right: 10px;
-  }
-
-}
-
-
-@media (max-width: 768px){
-  #mid-nav a {
-    padding-left: 2%;
-    padding-right: 2%;
-    font-size: 2rem;
   }
 
   header.colophon{
@@ -709,6 +699,18 @@ header.colophon{
       margin-left: 0;
     }
   }
+
+}
+
+
+@media (max-width: 768px){
+  #mid-nav a {
+    padding-left: 2%;
+    padding-right: 2%;
+    font-size: 2rem;
+  }
+
+
 
 
   #hero-nav a{
@@ -760,7 +762,12 @@ header.colophon{
 @media (max-width: 480px){
   #top-nav a {
     font-size: 1.3rem;
+    padding-left: 5px;
+    padding-right: 0px;
+    background-image: none !important;
+    margin-left: 0;
   }
+
 
   #ideaing-logo {
     width: 125px;
