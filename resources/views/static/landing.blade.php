@@ -3,8 +3,8 @@
 @section('content')
     <section id="hero" class="landing-hero">
         <div class="hero-background"></div>
-        <nav id="mid-nav"  class="col-xs-12 hidden-sm hidden-xs">
-            <div class="container">
+        <nav id="mid-nav"  class="col-xs-12">
+            <div class="container hidden-xs">
                 <ul>
                     <li class="selected"><a href="">All ideas</a></li>
                     <li><a href="">Kitchen</a></li>
@@ -17,10 +17,22 @@
                     <li><a class="more-link" href="">...</a></li>
                 </ul>
             </div>
+            <div class="container mobile-menu hidden-lg hidden-md hidden-sm">
+                <ul>
+                    <li class="selected"><a href="">All ideas</a></li>
+                    <li><a href="">Kitchen</a></li>
+                    <li><a href="">Bath</a></li>
+                    <li><a class="nested" href="">More</a></li>
+                    {{--<li><a href="">Outdoor</a></li>--}}
+                    {{--<li><a href="">Lighting</a></li>--}}
+                    {{--<li><a href="">Decor</a></li>--}}
+                    <li><a class="more-link" href="">...</a></li>
+                </ul>
+            </div>
         </nav>
 
         <div class="container">
-            <div class="col-sm-5 col-sm-offset-1 why-us hidden-sm hidden-xs">
+            <div class="col-md-5 col-sm-6 col-md-offset-1 why-us hidden-xs">
                 <h2>Ideas for Smarter Living</h2>
 
                 <ul>
@@ -31,7 +43,7 @@
 
                 <a class="btn btn-success col-xs-8" href="#">Find out more</a>
             </div>
-            <div class="col-sm-4 col-sm-offset-1 hero-box qiuck-signup hidden-sm hidden-xs">
+            <div class="col-md-4 col-sm-6 col-md-offset-1 hero-box qiuck-signup hidden-xs">
                 <form>
                     <h4>Our famous <br/>
                         <b>30-second sign-up</b>
@@ -44,6 +56,23 @@
                         <div class="line-wrap">or</div>
                     <a class="btn btn-info col-xs-12" href="#"><i class="icon fb-icon"></i>Sign up with Facebook</a>
                 </form>
+            </div>
+
+            <div class="mobile-hero col-xs-12 hidden-lg hidden-md hidden-sm">
+                <h2>11 Kitchen Gadgets You Need Now</h2>
+                <a href="#" class="social-pic likes red">193</a>
+
+
+            </div>
+
+            <div class="mobile-register hidden-lg hidden-md hidden-sm">
+                <div>
+                    <a href="#" class="register-button">
+                        Register
+                    </a>
+                    <a class="signup-with-facebook pull-right">Signup with Facebook</a>
+                </div>
+
             </div>
 
         </div>
@@ -62,6 +91,37 @@
     </nav>
 
     <div class="container">
+        <section id="mobile-side-filters" class="side-filters pale-grey-bg col-xs-12 hidden-lg hidden-md">
+            <ul class="mobile-filter-switch">
+                <li class="col-xs-4 active">
+                    <b>Ideas</b>
+                </li>
+                <li class="col-xs-4 ">
+                    <b>Products</b>
+                </li>
+                <li class="col-xs-4 ">
+                    <b>Photos</b>
+                </li>
+            </ul>
+            <div class="col-md-12 col-sm-4 col-xs-7 col-sm-offset-0 col-xs-offset-1">
+                <label><input type="checkbox">DIY</label>
+                <label><input type="checkbox">Best Buys</label>
+                <label><input type="checkbox">Declutter</label>
+            </div>
+            <div class="col-md-12 col-sm-4 col-xs-7 hidden-xs">
+                <h5>Products</h5>
+                <label><input type="checkbox">Under $50</label>
+                <label><input type="checkbox">Top</label>
+                <label><input type="checkbox">Stuff</label>
+            </div>
+            <div class="col-md-12 col-sm-4 col-xs-7  hidden-xs">
+                <h5>Photos</h5>
+                <label><input type="checkbox">HD (1920px and above)</label>
+                <label><input type="checkbox">MD (1920px and above)</label>
+                <label><input type="checkbox">Any sizes</label>
+            </div>
+        </section>
+
         <section class="main-content landing col-md-9">
 
             <ul class="layout-controls col-xs-12 hidden-xs">
@@ -162,7 +222,7 @@
         </section>
 
         <aside class="col-md-3 hidden-sm hidden-xs">
-            <section id="side-filters" class="pale-grey-bg">
+            <section id="side-filters" class="side-filters pale-grey-bg">
                 <div>
                     <h5>Ideas</h5>
                     <label><input type="checkbox">DIY</label>

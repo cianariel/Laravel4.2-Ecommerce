@@ -4550,20 +4550,36 @@ form .btn {
   margin-top: 45px;
   margin-bottom: 45px; }
 
-#side-filters {
+.side-filters {
   padding: 10px 30px 20px;
   margin-top: 30px;
   overflow: hidden; }
-  #side-filters h5 {
+  .side-filters h5 {
     margin-top: 30px;
     color: #000; }
-  #side-filters input[type="checkbox"] {
+  .side-filters input[type="checkbox"] {
     margin-right: 5px; }
-  #side-filters label {
+  .side-filters label {
     display: block;
     width: 100%; }
-  #side-filters .btn-success {
+  .side-filters .btn-success {
     margin-top: 40px; }
+
+#mobile-side-filters {
+  padding-top: 0;
+  padding-right: 0; }
+
+.mobile-filter-switch {
+  padding-top: 0; }
+  .mobile-filter-switch + div {
+    margin-top: 20px; }
+  .mobile-filter-switch li {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    float: left;
+    padding-left: 20px; }
+    .mobile-filter-switch li:not(.active) {
+      background-color: #f9fcfc; }
 
 .sidebar-category {
   margin-top: 40px; }
@@ -4701,6 +4717,45 @@ header.colophon .search-bar {
     .why-us li.shop-cool {
       background: url("/assets/images/tag-white.png") left no-repeat; }
 
+.mobile-hero h2 {
+  text-align: center;
+  color: #fff; }
+.mobile-hero a.likes {
+  display: block;
+  width: 69px;
+  height: 25px;
+  margin: 0 auto;
+  color: #fff;
+  background: url("/assets/images/heart-red.png") left 3px no-repeat;
+  text-align: right;
+  font-size: 2rem;
+  padding-bottom: 0px; }
+
+.mobile-register {
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  height: 40px;
+  background: #079DD1;
+  padding-top: 9px;
+  padding-bottom: 3px; }
+  .mobile-register div {
+    width: 60%;
+    min-width: 350px;
+    margin: 0 auto; }
+  .mobile-register a {
+    color: #fff;
+    font-size: 1.7rem; }
+    .mobile-register a.register-button {
+      border: 1px solid #fff;
+      border-radius: 3px;
+      padding: 3px; }
+    .mobile-register a.signup-with-facebook {
+      background: #079DD1 url("/assets/images/facebook-white.png") left no-repeat;
+      background-size: 35px;
+      padding-left: 40px; }
+
 .hero-box {
   padding: 3.5% 5.5%;
   background: #fff; }
@@ -4768,10 +4823,13 @@ header.colophon .search-bar {
 
   #mid-nav a {
     padding-left: 2%;
-    padding-right: 2%; } }
+    padding-right: 2%; }
+
+  .why-us {
+    margin-top: 0; } }
 @media (max-width: 992px) {
   #top-nav a {
-    padding-left: 20px;
+    padding-left: 24px;
     padding-right: 10px; }
 
   header.colophon .logo-wrap {
@@ -4779,12 +4837,26 @@ header.colophon .search-bar {
   header.colophon #ideaing-logo {
     float: right; }
   header.colophon .search-bar {
-    margin-left: 0; } }
+    margin-left: 0; }
+
+  #mid-nav a.more-link {
+    background: url("/assets/images/dots-vertical.png") center no-repeat; }
+
+  .bottom-load-more {
+    margin-top: 65px; }
+
+  #back-to-top {
+    bottom: 3.2%; } }
 @media (max-width: 768px) {
   #mid-nav a {
     padding-left: 2%;
     padding-right: 2%;
     font-size: 2rem; }
+    #mid-nav a.more-link {
+      padding-left: 8%; }
+
+  #hero {
+    min-height: 570px; }
 
   #hero-nav a {
     padding-left: 34px;
@@ -4810,18 +4882,33 @@ header.colophon .search-bar {
     padding-left: 40px; }
 
   #hero-nav a:not(.home-link) {
-    padding-left: 10px;
-    padding-right: 10px;
     padding-top: 30px;
     background-position: top center;
-    margin-top: 7px; } }
+    margin-top: 7px; }
+
+  #mid-nav a {
+    font-size: 1.8rem; }
+
+  .grid-box .img-wrap .get-it:not(.big),
+  .grid-box .img-wrap a.author {
+    right: 45%;
+    bottom: -8px; } }
 @media (max-width: 480px) {
+  #hero-nav a:not(.home-link) {
+    padding-left: 10px;
+    padding-right: 10px; }
+
   #top-nav a {
     font-size: 1.3rem;
     padding-left: 5px;
     padding-right: 0px;
     background-image: none !important;
     margin-left: 0; }
+
+  #mid-nav a {
+    font-size: 1.6rem; }
+    #mid-nav a.more-link {
+      padding-left: 5%; }
 
   #ideaing-logo {
     width: 125px;
