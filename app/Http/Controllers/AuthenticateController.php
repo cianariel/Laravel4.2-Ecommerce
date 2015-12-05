@@ -3,6 +3,7 @@
     namespace App\Http\Controllers;
 
     use App\Events\SendActivationMail;
+    use App\Events\SendPasswordResetEmail;
     use Crypt;
     use Illuminate\Http\Request;
     //use Laravel\Socialite\Contracts\Factory as Socialite;
@@ -12,6 +13,8 @@
     use Tymon\JWTAuth\Exceptions\JWTException;
     use App\Models\User;
 
+    // use Carbon\Carbon;
+
     class AuthenticateController extends ApiController {
 
         public function __construct()
@@ -19,7 +22,7 @@
             $this->user = new User();
 
             // Apply the jwt.auth middleware to all methods in this controller
-            $this->middleware('jwt.auth', ['except' => ['verifyEmail', 'index', 'authenticate', 'fbLogin', 'registerUser']]);
+            $this->middleware('jwt.auth', ['except' => ['sendPasswordResetEmail','verifyEmail', 'index', 'authenticate', 'fbLogin', 'registerUser']]);
         }
 
 
@@ -30,13 +33,27 @@
          */
         public function index()
         {
-            \Log::error('inside index');
+            // $currentTime = \Carbon::now();
+
+            $userData['Email'] = 'tanvir@carbon51.com';
+
+            // $validTill = \Carbon::now()->addHours(env('PASSWORD_RESET_TTL_HOUR'));
+
+            $data = [
+                'Email' => $userData['Email'],
+                'TTL'   => \Carbon::now()->addHours(env('PASSWORD_RESET_TTL_HOUR'))
+            ];
+
+            $code = Crypt::encrypt($data);
+            $dcode = Crypt::decrypt($code);
+            dd($code, $dcode);
+
+            // \Log::error('inside index');
             return "inside non secure area";
         }
 
         public function securePage()
         {
-            //dd();
 
             return "inside secure area";
         }
@@ -53,11 +70,12 @@
             {
 
                 $authUser = $this->isValidUser($credentials);
-                if($authUser == false)
+                if ($authUser == false)
                 {
                     return $this->setStatusCode(IlluminateResponse::HTTP_UNAUTHORIZED)
                         ->makeResponseWithError('Invalid credentials.');
-                }else{
+                } else
+                {
                     $token = JWTAuth::fromUser($authUser);
                 }
 
@@ -215,32 +233,52 @@
 
         }
 
-        public function sendPasswordResetEmail(Request $request)
+        public function sendPasswordResetEmail($email)
         {
-            $userData['Email'] = $request->get('Email');
+       //     dd("in");
+      //      $init = 0;
+          //  dd($request);
+            //$userData['Email'] = $email;
 
-            $validationRules = [
+            $isValidation = $this->isEmailValidate($email);
 
-                'rules'  => [
-                    'Email'    => 'required | email'
-                ],
-                'values' => [
-                    'Email'    => isset($userData['Email']) ? $userData['Email'] : null
-                ]
-            ];
-
-            $validator = \Validator::make($validationRules['values'], $validationRules['rules']);
-
-
-            if ($validator->fails())
+            if (!$isValidation)
             {
                 // return with the failed reason and field's information
-                return $this->setStatusCode(IlluminateResponse::HTTP_NOT_ACCEPTABLE)
+                /*return $this->setStatusCode(IlluminateResponse::HTTP_NOT_ACCEPTABLE)
                     ->makeResponseWithError("Invalid Email :" . $validator->messages());
-            } elseif ($validator->passes())
+            } elseif ($validator == false)
+            {*/
+                return $this->setStatusCode(IlluminateResponse::HTTP_NOT_ACCEPTABLE)
+                    ->makeResponseWithError("User not available with ".$email);
+
+                    //TODO
+
+                    // $currentTime = \Carbon::now();
+                    //$validTill = \Carbon::now()->addHours(env('PASSWORD_RESET_TTL_HOUR'));
+
+                    /*$data = [
+                        'Email' => $userData['Email'],
+                        'TTL'   => \Carbon::now()->addHours(env('PASSWORD_RESET_TTL_HOUR'))
+                    ];
+
+                $code = Crypt::encrypt($data);
+*/
+
+                // $diff = $validTill->diffInHours($currentTime);
+                //dd($currentTime,$validTill,$diff);
+
+
+            }else
             {
+                $data = [
+                    'Email' => $email,
+                    'TTL'   => \Carbon::now()->addHours(env('PASSWORD_RESET_TTL_HOUR'))
+                ];
 
+                $link = Crypt::encrypt($data);
 
+                \Event::fire(new SendPasswordResetEmail( $isValidation->name,$email,$link));
             }
 
         }
@@ -290,6 +328,38 @@
             }
 
 
+        }
+
+        /**
+         * @param $email
+         * @return \Illuminate\Validation\Validator
+         */
+        private function isEmailValidate($email)
+        {
+            $validationRules = [
+
+                'rules'  => [
+                    'Email' => 'required | email'
+                ],
+                'values' => [
+                    'Email' => isset($email) ? $email : null
+                ]
+            ];
+
+            $validator = \Validator::make($validationRules['values'], $validationRules['rules']);
+
+            if ($validator->passes())
+            {
+                $user = $this->user->IsEmailAvailable($email);
+                if ($user!= false)
+                {
+                    return $user;
+                }
+                else
+                    return false;
+            }
+
+            return false;
         }
 
 

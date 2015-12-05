@@ -13,11 +13,15 @@ class SendPasswordResetEmail extends Event
     /**
      * Create a new event instance.
      *
-     * @return void
+     * @param $name
+     * @param $email
+     * @param $link
      */
-    public function __construct()
+    public function __construct($name, $email, $link)
     {
-        //
+        $this->name  = $name;
+        $this->email = $email;
+        $this->link  = $link;
     }
 
     /**

@@ -8,10 +8,10 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 
 class SendPasswordResetEmailHandler
 {
+
     /**
      * Create the event handler.
      *
-     * @return void
      */
     public function __construct()
     {
@@ -26,6 +26,19 @@ class SendPasswordResetEmailHandler
      */
     public function handle(SendPasswordResetEmail $event)
     {
+        dd("in");
+        dd($event);
+        \Mail::send('email.password-reset',
+            [
+                'code' => $event->code
+            ],
+            function ($message) use ($event)
+            {
+                $message->to($event->email, $event->name)
+                    ->from(env('MAIL_FROM'))
+                    ->subject("Ideaing - Password reset request.");
+            });
+
         //
     }
 }

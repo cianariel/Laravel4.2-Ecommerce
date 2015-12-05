@@ -27,3 +27,6 @@
     });
 
     Route::get('verify-email/{code}','AuthenticateController@verifyEmail');
+    Route::get('password-reset/{Email}','AuthenticateController@sendPasswordResetEmail');
+
+

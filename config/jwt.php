@@ -125,7 +125,6 @@
             */
 
             'user'    => 'Tymon\JWTAuth\Providers\User\EloquentUserAdapter',
-            //           'user'    => App\Models\User::class,
 
             /*
             |--------------------------------------------------------------------------

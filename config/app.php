@@ -213,6 +213,7 @@ return [
         'role' => 'Zizaco\Entrust\Middleware\EntrustRole',
         'permission' => 'Zizaco\Entrust\Middleware\EntrustPermission',
         'ability' => 'Zizaco\Entrust\Middleware\EntrustAbility',
+        'Carbon' => 'Carbon\Carbon'
 
     ],
 

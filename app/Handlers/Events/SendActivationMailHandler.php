@@ -3,6 +3,7 @@
     namespace App\Handlers\Events;
 
     use App\Events\SendActivationMail;
+    use App\Events\SendPasswordResetEmail;
     use Illuminate\Queue\InteractsWithQueue;
     use Illuminate\Contracts\Queue\ShouldQueue;
 
@@ -20,15 +21,14 @@
         /**
          * Handle the event.
          *
-         * @param  SendActivationMail $event
-         * @return void
+         * @param SendActivationMail|SendPasswordResetEmail $event
          */
         public function handle(SendActivationMail $event)
         {
             \Mail::send('email.verification',
                 [
-                    'name' => $event->name,
-                    'link' => $event->link
+                    'name' => $event->email,
+                    'link' => $event->code
                 ],
                 function ($message) use ($event)
                 {
