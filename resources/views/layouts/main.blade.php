@@ -5,6 +5,7 @@
 
 {{--        {{ HTML::style('css/app.css') }}--}}
         <link rel="stylesheet" href="/assets/css/app.css">
+        <script src="/assets/js/vendor/jquery-1.11.3.min.js"></script>
     </head>
     <body>
         <header class="colophon">
@@ -24,7 +25,7 @@
                                 <img src="/assets/images/ideaing-logo-small.png" id="ideaing-logo" class="logo top-logo"/>
                             </div>
                             <section class="search-bar col-xs-4 col-md-2">
-                                <a href="#" class="search-toggle">Search</a>
+                                <a href="#" class="search-toggle" data-toggle=".mobile-search-bar">Search</a>
                                 <input class="form-control" type="text" name="search" value="Search..."/>
                             </section>
                             <div class="col-md-2 col-xs-2 pull-right signin">
@@ -33,10 +34,15 @@
                         </div>
                     </nav>
                 </div>
+                <div class="mobile-search-bar col-xs-12">
+                    <input class="form-control col-xs-10" type="text" value="Search..."/>
+                </div>
 
 
         </header>
             @yield('content')
         <a href="#" id="back-to-top">Back to top</a>
+        <script src="/assets/js/app.js"></script>
+
     </body>
 </html>

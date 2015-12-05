@@ -38,13 +38,18 @@ $tarmac: #3D4B4E;
   border-color: $iridium;
 
   &:hover{
-    background-color: $iridium;
-    border-color: $iridium;
+    background-color: darken($iridium, 10%);
+    border-color: darken($iridium, 10%);
   }
 }
 .btn-info{
   background-color: $sky-blue;
   border-color: $sky-blue;
+
+  &:hover{
+    background-color: darken($sky-blue, 10%);
+    border-color: darken($sky-blue, 10%);
+  }
 }
 
 .btn-none{
@@ -280,8 +285,18 @@ form{
       border: 1px solid darken($light-grey, 20%);
       border-radius: 2px;
       font-size: 1rem;
+      cursor: pointer;
+
+      &:hover{
+        color: #fff;
+        background-color:  darken($light-grey, 20%);
+      }
     }
   }
+}
+
+.main-container{
+  overflow: hidden;
 }
 
 .grid-insert{
@@ -326,16 +341,20 @@ form{
 
 }
 
+#show-mobile-filters{
+  float: none;
+  margin: 20px auto 0;
+  display: block;
+}
+
 #mobile-side-filters{
+  display: none;
   padding-top: 0;
   padding-right: 0;
 }
 
 .mobile-filter-switch{
   padding-top: 0;
-  & + div{
-    margin-top: 20px;
-  }
   li{
     padding-top: 15px;
     padding-bottom: 15px;
@@ -346,6 +365,18 @@ form{
     &:not(.active){
       background-color: #f9fcfc;
     }
+  }
+}
+
+.mobile-search-bar{
+  padding: 10px;
+  display: none;
+  background: $light-grey;
+}
+
+#mobile-side-filters{
+  div{
+    margin-top: 20px;
   }
 }
 
@@ -482,6 +513,7 @@ header.colophon{
      background-repeat: no-repeat;
      white-space: nowrap;
 
+
      //a{
      //}
    }
@@ -524,7 +556,16 @@ header.colophon{
       background: url('/assets/images/speach-black.png') left center no-repeat;
     }
 
-
+    &:hover{
+      -webkit-stroke-width: 5.3px;
+      -webkit-stroke-color: #1ABCF5;
+      -webkit-fill-color: #1ABCF5;
+      text-shadow: 1px 0px 8px #1ABCF5;
+      -webkit-transition: width 0.3s; /*Safari & Chrome*/
+      transition: width 0.3s;
+      -moz-transition: width 0.3s; /* Firefox 4 */
+      -o-transition: width 0.3s; /* Opera */
+    }
 
   }
 
@@ -708,6 +749,11 @@ header.colophon{
   .btn-info{
     background: $facebook-blue url("/assets/images/facebook-white.png") left no-repeat;
     background-size:contain ;
+
+    &:hover{
+      background-color: darken($facebook-blue, 10%);
+      border-color: darken($facebook-blue, 10%);
+    }
   }
   //
   //.fb-icon{
@@ -868,6 +914,14 @@ header.colophon{
     display: none;
   }
 
+  #mobile-side-filters{
+    padding-left: 0;
+    div:not(#idea-filter),
+    h5{
+      display: none;
+    }
+  }
+
   //
   //#mid-nav{
   //  a{
@@ -941,7 +995,8 @@ header.colophon{
 
   #top-nav{
     .category-menu{
-      width: 165px;
+      width: 140px;
+      padding: 0;
     }
     a {
       //font-size: 1.3rem;
@@ -964,6 +1019,10 @@ header.colophon{
     }
   }
 
+  .logo-wrap{
+    padding: 0;
+  }
+
   #mid-nav a {
     //padding-left: 2%;
     //padding-right: 2%;
@@ -976,7 +1035,7 @@ header.colophon{
   }
 
   .search-bar{
-    width: 40px;
+    width: 0;
     padding-top: 0;
 
     input{

@@ -4379,12 +4379,15 @@ a.label:focus {
   background-color: #FF0042;
   border-color: #FF0042; }
   .btn-success:hover {
-    background-color: #FF0042;
-    border-color: #FF0042; }
+    background-color: #cc0035;
+    border-color: #cc0035; }
 
 .btn-info {
   background-color: #00B1FF;
   border-color: #00B1FF; }
+  .btn-info:hover {
+    background-color: #008ecc;
+    border-color: #008ecc; }
 
 .btn-none {
   background: transparent;
@@ -4537,7 +4540,14 @@ form .btn {
       margin-bottom: 2px;
       border: 1px solid #8e8e8e;
       border-radius: 2px;
-      font-size: 1rem; }
+      font-size: 1rem;
+      cursor: pointer; }
+      .grid-box li.box-tag a:hover {
+        color: #fff;
+        background-color: #8e8e8e; }
+
+.main-container {
+  overflow: hidden; }
 
 .grid-insert {
   padding: 45px;
@@ -4565,14 +4575,18 @@ form .btn {
   .side-filters .btn-success {
     margin-top: 40px; }
 
+#show-mobile-filters {
+  float: none;
+  margin: 20px auto 0;
+  display: block; }
+
 #mobile-side-filters {
+  display: none;
   padding-top: 0;
   padding-right: 0; }
 
 .mobile-filter-switch {
   padding-top: 0; }
-  .mobile-filter-switch + div {
-    margin-top: 20px; }
   .mobile-filter-switch li {
     padding-top: 15px;
     padding-bottom: 15px;
@@ -4580,6 +4594,14 @@ form .btn {
     padding-left: 20px; }
     .mobile-filter-switch li:not(.active) {
       background-color: #f9fcfc; }
+
+.mobile-search-bar {
+  padding: 10px;
+  display: none;
+  background: #c1c1c1; }
+
+#mobile-side-filters div {
+  margin-top: 20px; }
 
 .sidebar-category {
   margin-top: 40px; }
@@ -4682,6 +4704,18 @@ header.colophon .search-bar {
     background: url("/assets/images/pro-grey.png") left center no-repeat; }
   #top-nav a.disc {
     background: url("/assets/images/speach-black.png") left center no-repeat; }
+  #top-nav a:hover {
+    -webkit-stroke-width: 5.3px;
+    -webkit-stroke-color: #1ABCF5;
+    -webkit-fill-color: #1ABCF5;
+    text-shadow: 1px 0px 8px #1ABCF5;
+    -webkit-transition: width 0.3s;
+    /*Safari & Chrome*/
+    transition: width 0.3s;
+    -moz-transition: width 0.3s;
+    /* Firefox 4 */
+    -o-transition: width 0.3s;
+    /* Opera */ }
 #top-nav li.nested a::after {
   content: '▼';
   padding-left: 7px; }
@@ -4798,6 +4832,9 @@ header.colophon .search-bar {
   .hero-box .btn-info {
     background: #079DD1 url("/assets/images/facebook-white.png") left no-repeat;
     background-size: contain; }
+    .hero-box .btn-info:hover {
+      background-color: #0578a0;
+      border-color: #0578a0; }
 
 #hero-nav {
   overflow: hidden;
@@ -4879,7 +4916,13 @@ header.colophon .search-bar {
       padding-left: 34px; }
 
   .get-it.author {
-    display: none; } }
+    display: none; }
+
+  #mobile-side-filters {
+    padding-left: 0; }
+    #mobile-side-filters div:not(#idea-filter),
+    #mobile-side-filters h5 {
+      display: none; } }
 @media (max-width: 620px) {
   #hero-nav a {
     padding-left: 35px;
@@ -4917,7 +4960,8 @@ header.colophon .search-bar {
     padding-right: 10px; }
 
   #top-nav .category-menu {
-    width: 165px; }
+    width: 140px;
+    padding: 0; }
   #top-nav a {
     text-indent: -9999px;
     width: 40px;
@@ -4925,13 +4969,16 @@ header.colophon .search-bar {
     padding-right: 0px;
     margin-left: 0; }
 
+  .logo-wrap {
+    padding: 0; }
+
   #mid-nav a {
     font-size: 1.6rem; }
     #mid-nav a.more-link {
       padding-left: 5%; }
 
   .search-bar {
-    width: 40px;
+    width: 0;
     padding-top: 0; }
     .search-bar input {
       display: none; }

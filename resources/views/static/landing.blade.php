@@ -90,31 +90,35 @@
         </div>
     </nav>
 
-    <div class="container full-620">
+    <div class="container full-620 main-container">
+        <button id="show-mobile-filters" class="toggler btn btn-info col-sm-4 col-xs-8 hidden-lg hidden-md" data-toggle="#mobile-side-filters">Filter</button>
+
         <section id="mobile-side-filters" class="side-filters pale-grey-bg col-xs-12 hidden-lg hidden-md">
-            <ul class="mobile-filter-switch">
-                <li class="col-xs-4 active">
+            <ul class="mobile-filter-switch hidden-sm">
+                <li class="col-xs-4 active" data-toggle="#idea-filter" data-hide="#mobile-side-filters div">
                     <b>Ideas</b>
                 </li>
-                <li class="col-xs-4 ">
-                    <b>Products</b>
+                <li class="col-xs-4" data-toggle="#product-filter" data-hide="#mobile-side-filters div">
+                    <b >Products</b>
                 </li>
-                <li class="col-xs-4 ">
+                <li class="col-xs-4"  data-toggle="#photo-filter" data-hide="#mobile-side-filters div">
                     <b>Photos</b>
                 </li>
             </ul>
-            <div class="col-md-12 col-sm-4 col-xs-7 col-sm-offset-0 col-xs-offset-1">
+            <div id="idea-filter" class="col-md-12 col-sm-4 col-xs-7 col-sm-offset-0 col-xs-offset-1">
+                <h5 class="hidden-xs">Ideas</h5>
+
                 <label><input type="checkbox">DIY</label>
                 <label><input type="checkbox">Best Buys</label>
                 <label><input type="checkbox">Declutter</label>
             </div>
-            <div class="col-md-12 col-sm-4 col-xs-7 hidden-xs">
+            <div id="product-filter" class="col-md-12 col-sm-4 col-xs-7">
                 <h5>Products</h5>
                 <label><input type="checkbox">Under $50</label>
                 <label><input type="checkbox">Top</label>
                 <label><input type="checkbox">Stuff</label>
             </div>
-            <div class="col-md-12 col-sm-4 col-xs-7  hidden-xs">
+            <div id="photo-filter" class="col-md-12 col-sm-4 col-xs-7">
                 <h5>Photos</h5>
                 <label><input type="checkbox">HD (1920px and above)</label>
                 <label><input type="checkbox">MD (1920px and above)</label>
