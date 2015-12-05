@@ -1,31 +1,42 @@
 <?php
 
-namespace App\Handlers\Events;
+    namespace App\Handlers\Events;
 
-use App\Events\SendActivationMail;
-use Illuminate\Queue\InteractsWithQueue;
-use Illuminate\Contracts\Queue\ShouldQueue;
+    use App\Events\SendActivationMail;
+    use Illuminate\Queue\InteractsWithQueue;
+    use Illuminate\Contracts\Queue\ShouldQueue;
 
-class SendActivationMailHandler
-{
+    class SendActivationMailHandler {
 
-    /**
-     * Create the event handler.
-     *
-     */
-    public function __construct()
-    {
-        //
+        /**
+         * Create the event handler.
+         *
+         */
+        public function __construct()
+        {
+            //
+        }
+
+        /**
+         * Handle the event.
+         *
+         * @param  SendActivationMail $event
+         * @return void
+         */
+        public function handle(SendActivationMail $event)
+        {
+            \Mail::send('email.verification',
+                [
+                    'name' => $event->name,
+                    'link' => $event->link
+                ],
+                function ($message) use ($event)
+                {
+                    $message->to($event->email, $event->name)
+                        ->from(env('MAIL_FROM'))
+                        ->subject("Ideaing - Email Verification.");
+                });
+            //
+            // dd($event);
+        }
     }
-
-    /**
-     * Handle the event.
-     *
-     * @param  SendActivationMail  $event
-     * @return void
-     */
-    public function handle(SendActivationMail $event)
-    {
-        //
-    }
-}

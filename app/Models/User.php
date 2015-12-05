@@ -3,7 +3,8 @@
     namespace App\Models;
 
     use Illuminate\Database\Eloquent\Model;
-    use App\Models\UserProfile;
+    //use App\Models\UserProfile;
+
 
     use Illuminate\Auth\Authenticatable;
     use Illuminate\Auth\Passwords\CanResetPassword;
@@ -11,6 +12,8 @@
     use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
     use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
     use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
+
+
 
     class User extends Model implements AuthenticatableContract,
         AuthorizableContract,
@@ -37,7 +40,7 @@
          *
          * @var array
          */
-        protected $hidden = ['id','password', 'remember_token','created_at','updated_at'];
+        protected $hidden = ['id', 'password', 'remember_token', 'created_at', 'updated_at'];
 
 
         /**
@@ -96,8 +99,8 @@
             try
             {
                 return User::with('UserProfile')
-                            ->where('email', $email)
-                            ->firstOrFail();
+                    ->where('email', $email)
+                    ->firstOrFail();
 
             } catch (\Exception $ex)
             {
@@ -108,35 +111,49 @@
 
         public function FindOrCreateUser($userData)
         {
-            try{
-            $user = $this->IsEmailAvailable($userData->email);
-
-            if ($user == false)
+            try
             {
-                $user['FullName'] = $userData->name;
-                $user['Email']    = $userData->email;
-                $user['Password'] = env('FB_DEFULT_PASSWORD');
-
-                $this->SaveUserInformation($user);
-
                 $user = $this->IsEmailAvailable($userData->email);
 
-                $user->status = 'Active';
-                $user->save();
+                if ($user == false)
+                {
+                    $user['FullName'] = $userData->name;
+                    $user['Email'] = $userData->email;
+                    $user['Password'] = env('FB_DEFULT_PASSWORD');
 
-                return $user;
+                    $this->SaveUserInformation($user);
 
-            } else
-            {
-                return $user;
-            }
-            }catch (\Exception $ex)
+                    $user = $this->IsEmailAvailable($userData->email);
+
+                    $user->status = 'Active';
+                    $user->save();
+
+                    return $user;
+
+                } else
+                {
+                    return $user;
+                }
+            } catch (\Exception $ex)
             {
                 \Log::error($ex);
                 throw new \Exception($ex);
             }
 
+        }
 
+        public function IsAuthorizedUser($userData)
+        {
+            try
+            {
+                $user = User::where('email',$userData['Email'])->first();
+
+                return \Hash::check($userData['Password'],$user->password)?$user:false;
+
+            } catch (\Exception $ex)
+            {
+                throw new \Exception($ex);
+            }
         }
 
 

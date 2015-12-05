@@ -2,9 +2,10 @@
 
     namespace App\Http\Controllers;
 
+    use App\Events\SendActivationMail;
     use Crypt;
     use Illuminate\Http\Request;
-    use Laravel\Socialite\Contracts\Factory as Socialite;
+    //use Laravel\Socialite\Contracts\Factory as Socialite;
     use App\Http\Requests;
     use Illuminate\Http\Response as IlluminateResponse;
     use JWTAuth;
@@ -18,7 +19,7 @@
             $this->user = new User();
 
             // Apply the jwt.auth middleware to all methods in this controller
-            $this->middleware('jwt.auth', ['except' => ['secure','authenticate','fbLogin','registerUser']]);
+            $this->middleware('jwt.auth', ['except' => ['verifyEmail', 'index', 'authenticate', 'fbLogin', 'registerUser']]);
         }
 
 
@@ -29,12 +30,13 @@
          */
         public function index()
         {
-            return "inside secure area";
+            \Log::error('inside index');
+            return "inside non secure area";
         }
 
         public function securePage()
         {
-            dd();
+            //dd();
 
             return "inside secure area";
         }
@@ -45,38 +47,55 @@
          */
         public function authenticate(Request $request)
         {
-            $credentials = $request->only('email', 'password');
+            $credentials = $request->only('Email', 'Password');
 
             try
             {
-                // verify the credentials and create a token for the user
-                if (!$token = JWTAuth::attempt($credentials))
+
+                $authUser = $this->isValidUser($credentials);
+                if($authUser == false)
                 {
-                    return response()->json(['error' => 'invalid_credentials'], 401);
+                    return $this->setStatusCode(IlluminateResponse::HTTP_UNAUTHORIZED)
+                        ->makeResponseWithError('Invalid credentials.');
+                }else{
+                    $token = JWTAuth::fromUser($authUser);
                 }
-            } catch (JWTException $e)
+
+
+            } catch (JWTException $ex)
             {
                 // something went wrong
-                return response()->json(['error' => 'could_not_create_token'], 500);
+                \Log::error($ex);
+
+                return $this->setStatusCode(IlluminateResponse::HTTP_INTERNAL_SERVER_ERROR)
+                    ->makeResponseWithError('Token creation failed !');
+
+                // return response()->json(['error' => 'could_not_create_token'], 500);
             }
 
             // Check if the user is email verified or not
             try
             {
-                $user = $this->user->IsEmailAvailable($credentials['email'])->first();//User::where('email', $credentials['email'])->first();
+                $user = $this->user->IsEmailAvailable($credentials['Email'])->first();
                 if ($user->status != 'Active')
                 {
-                    return $this->setStatusCode(IlluminateResponse::HTTP_UNAUTHORIZED)->makeResponseWithError('User status not active.');
+                    return $this->setStatusCode(IlluminateResponse::HTTP_UNAUTHORIZED)
+                        ->makeResponseWithError('User status not active.');
 
                 }
             } catch (\Exception $ex)
             {
-                return $this->setStatusCode(IlluminateResponse::HTTP_INTERNAL_SERVER_ERROR)->makeResponseWithError('Internal Server Error!' . $ex);
+                return $this->setStatusCode(IlluminateResponse::HTTP_INTERNAL_SERVER_ERROR)
+                    ->makeResponseWithError('Internal Server Error!' . $ex);
 
             }
 
+
             // if no errors are encountered we can return a JWT
-            return response()->json(compact('token'));
+            return $this->setStatusCode(IlluminateResponse::HTTP_OK)
+                ->setAuthToken($token)
+                ->makeResponse("Successfully authenticated.");
+
         }
 
         public function fbLogin(Request $request)
@@ -102,11 +121,13 @@
             */
             $token = JWTAuth::fromUser($userInfo);
 
-            $userInfo['token'] = $token;
+            /* $userInfo['token'] = $token;
 
-            $userInfo['message'] = 'Successfully registered with Facebook';
+             $userInfo['message'] = 'Successfully registered with Facebook';*/
 
-            return $this->setStatusCode(IlluminateResponse::HTTP_OK)->makeResponse($userInfo);
+            return $this->setStatusCode(IlluminateResponse::HTTP_OK)
+                ->setAuthToken($token)
+                ->makeResponse("Successfully registered with Facebook");
 
         }
 
@@ -122,10 +143,11 @@
 
                 if ($validator->fails())
                 {
-                    return $this->setStatusCode(IlluminateResponse::HTTP_NOT_ACCEPTABLE)->makeResponseWithError("Invalid Input Data :" . $validator->messages());
+                    // return with the failed reason and field's information
+                    return $this->setStatusCode(IlluminateResponse::HTTP_NOT_ACCEPTABLE)
+                        ->makeResponseWithError("Invalid Input Data :" . $validator->messages());
                 } elseif ($validator->passes())
                 {
-                    //$user = new User();
 
                     if ($this->user->IsEmailAvailable($userData['Email']) == false)
                     {
@@ -133,23 +155,93 @@
                          * After successfully register the user data send JSON response if email is available.
                          * */
                         if ($this->user->SaveUserInformation($userData))
-                            return $this->setStatusCode(IlluminateResponse::HTTP_OK)->makeResponse('Registration completed successfully,please verify email');
+
+                            // On successful user registration an email will be send through Event to verify email id.
+                            \Event::fire(new SendActivationMail(
+                                $userData['FullName'],
+                                $userData['Email'],
+                                Crypt::encrypt($userData['Email'])
+                            ));
+
+                        return $this->setStatusCode(IlluminateResponse::HTTP_OK)
+                            ->makeResponse('Registration completed successfully,please verify email');
                     } else
                     {
-                        return $this->setStatusCode(IlluminateResponse::HTTP_NOT_ACCEPTABLE)->makeResponseWithError('User email exists');
+                        return $this->setStatusCode(IlluminateResponse::HTTP_NOT_ACCEPTABLE)
+                            ->makeResponseWithError('User email exists');
                     }
                 }
             } catch (\Exception $ex)
             {
                 \Log::error($ex);
 
-                return $this->setStatusCode(IlluminateResponse::HTTP_INTERNAL_SERVER_ERROR)->makeResponseWithError('Internal Server Error!', $ex);
+                return $this->setStatusCode(IlluminateResponse::HTTP_INTERNAL_SERVER_ERROR)
+                    ->makeResponseWithError('Internal Server Error!', $ex);
             }
 
         }
 
-        public function activeUser()
+
+        /**
+         * Verify a user from the email
+         * @param $code
+         * @return string
+         */
+        public function verifyEmail($code)
         {
+            try
+            {
+                $email = \Crypt::decrypt(trim($code));
+
+                $user = $this->user->IsEmailAvailable($email);
+
+                if ($user != null)
+                {
+                    $user->status = "Active";
+                    $user->save();
+                    $message = "Thanks " . $user->name . " for verify your email";
+
+                } else
+                {
+                    $message = "verification Failed";
+                }
+            } catch (\Exception $ex)
+            {
+                \Log::error($ex);
+                $message = "Verification Failed !!";
+            }
+
+            return $message;
+
+        }
+
+        public function sendPasswordResetEmail(Request $request)
+        {
+            $userData['Email'] = $request->get('Email');
+
+            $validationRules = [
+
+                'rules'  => [
+                    'Email'    => 'required | email'
+                ],
+                'values' => [
+                    'Email'    => isset($userData['Email']) ? $userData['Email'] : null
+                ]
+            ];
+
+            $validator = \Validator::make($validationRules['values'], $validationRules['rules']);
+
+
+            if ($validator->fails())
+            {
+                // return with the failed reason and field's information
+                return $this->setStatusCode(IlluminateResponse::HTTP_NOT_ACCEPTABLE)
+                    ->makeResponseWithError("Invalid Email :" . $validator->messages());
+            } elseif ($validator->passes())
+            {
+
+
+            }
 
         }
 
@@ -182,6 +274,22 @@
             $validator = \Validator::make($validationRules['values'], $validationRules['rules']);
 
             return array($userData, $validator);
+        }
+
+        private function isValidUser($userData)
+        {
+            $email = isset($userData['Email']) ? $userData['Email'] : null;
+            $password = isset($userData['Password']) ? $userData['Password'] : null;
+
+            if (is_null($email) or is_null($password))
+            {
+                return false;
+            } else
+            {
+                return $this->user->IsAuthorizedUser($userData);
+            }
+
+
         }
 
 

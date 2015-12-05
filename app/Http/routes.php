@@ -23,5 +23,7 @@
         Route::post('register-user', 'AuthenticateController@registerUser');
         Route::get('fb-login','AuthenticateController@fbLogin');
         Route::get('secure-page','AuthenticateController@securePage');
-
+        Route::get('index','AuthenticateController@index');
     });
+
+    Route::get('verify-email/{code}','AuthenticateController@verifyEmail');
