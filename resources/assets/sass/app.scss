@@ -531,8 +531,9 @@ header.colophon{
   //background: rgba(0,0,0,.45);
   background: $iridium;
   a{
-    padding-left: 30px;
-    padding-right: 30px;
+    padding: 15px 30px;
+    //padding-left: 30px;
+    //padding-right: 30px;
     overflow: hidden;
     font-size: 1.2rem;
     color: #fff;
@@ -545,8 +546,12 @@ header.colophon{
   }
 
   li.selected a{
-    color: #FBB03B;
-    border-bottom: 3px solid #FBB03B;
+    //color: #FBB03B;
+    //border-bottom: 3px solid #FBB03B;
+    border: 2px solid #fff;
+    border-radius: 15px;
+    padding: 5px 2%;
+    margin-top: 8px;
   }
 }
 
@@ -853,6 +858,11 @@ header.colophon{
 
   .signin{
     margin-right: 30px;
+  }
+
+  .full-620{
+    width: 100%;
+    padding: 0;
   }
 
 

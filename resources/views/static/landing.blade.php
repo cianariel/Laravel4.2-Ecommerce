@@ -80,7 +80,7 @@
     <nav id="hero-nav" class="col-sm-12">
         <div class="container">
             <ul>
-                <li class="col-sm-4 "><a class="home-link" href="">Home</a></li>
+                <li class="col-sm-4 "><a class="home-link" href="">Home > All</a></li>
 
                 <li class="col-sm-2 "><a href="" class="all-link">All</a></li>
                 <li class="col-sm-2 "><a href="" class="ideas-link orange">Ideas</a></li>
@@ -90,7 +90,7 @@
         </div>
     </nav>
 
-    <div class="container">
+    <div class="container full-620">
         <section id="mobile-side-filters" class="side-filters pale-grey-bg col-xs-12 hidden-lg hidden-md">
             <ul class="mobile-filter-switch">
                 <li class="col-xs-4 active">
@@ -129,7 +129,7 @@
                <li class="grid selected">Grid</li>
             </ul>
 
-            <div class="col-md-6 grid-box">
+            <div class="col-md-6 grid-box full-620">
                 <div class="img-wrap">
                     <img class="img-responsive" src="/assets/images/dummies/box-image-dummy.png">
                     <a href="#" class="overlay-tag category-tag top product">Category: Products</a>
@@ -155,7 +155,7 @@
                     <li class="box-tag"><a>Improvements</a></li>
                 </ul>
             </div>
-            <div class="col-md-6 grid-box">
+            <div class="col-md-6 grid-box full-620">
                 <div class="img-wrap">
                     <img class="img-responsive" src="/assets/images/dummies/img-small.jpg">
                     <a href="#" class="overlay-tag category-tag top photo">Category: Photo</a>
@@ -180,7 +180,7 @@
                     <li class="box-tag"><a>Improvements</a></li>
                 </ul>
             </div>
-            <div class="col-md-12 grid-box">
+            <div class="col-md-12 grid-box  full-620">
                 <div class="img-wrap">
                     <img class="img-responsive" src="/assets/images/dummies/img-big.jpg">
                     <a href="#" class="overlay-tag category-tag top idea">Category: Idea</a>
