@@ -4510,9 +4510,13 @@ form .btn {
       bottom: 2px; }
       .grid-box .img-wrap .social-pic.comment {
         left: 35px;
-        background: url("/assets/images/speach-white.png") center no-repeat; }
+        background: url("/assets/images/chat-blue-outline.png") center no-repeat; }
+        .grid-box .img-wrap .social-pic.comment:hover {
+          background: url("/assets/images/chat-blue-solid.png") center no-repeat; }
       .grid-box .img-wrap .social-pic.likes {
-        background: url("/assets/images/heart-white.png") center no-repeat; }
+        background: url("/assets/images/heart-pink-outline.png") center no-repeat; }
+        .grid-box .img-wrap .social-pic.likes:hover {
+          background: url("/assets/images/heart-pink-solid.png") center no-repeat; }
     .grid-box .img-wrap .category-tag {
       width: 55px;
       height: 64px;
@@ -4731,6 +4735,18 @@ header.colophon .search-bar {
     #mid-nav a.more-link {
       text-indent: -9999px;
       background: url("/assets/images/dots-white.png") center no-repeat; }
+    #mid-nav a:hover {
+      -webkit-stroke-width: 5.3px;
+      -webkit-stroke-color: #1ABCF5;
+      -webkit-fill-color: #1ABCF5;
+      text-shadow: 1px 0px 8px #1ABCF5;
+      -webkit-transition: width 0.3s;
+      /*Safari & Chrome*/
+      transition: width 0.3s;
+      -moz-transition: width 0.3s;
+      /* Firefox 4 */
+      -o-transition: width 0.3s;
+      /* Opera */ }
   #mid-nav li.selected a {
     border: 2px solid #fff;
     border-radius: 15px;
