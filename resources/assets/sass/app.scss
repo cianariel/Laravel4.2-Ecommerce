@@ -474,20 +474,29 @@ form{
 
 
 header.colophon{
+ #top-nav{
+   .signin a{
+     padding-left: 40px;
+     background-image: url("/assets/images/signin-icon.png");
+     background-position: left;
+     background-repeat: no-repeat;
+     white-space: nowrap;
 
-  .signin{
-    padding-left: 30px;
-    background-image: url("/assets/images/signin-icon.png");
-    background-position: left;
-    background-repeat: no-repeat;
-    a{
-      white-space: nowrap;
-    }
-  }
+     //a{
+     //}
+   }
+ }
+
 
   .search-bar{
     padding-top: 13px;
     margin-left: 11%;
+
+    .search-toggle{
+      display: none;
+      text-indent: -9999px;
+      background: url('/assets/images/magnif-grey.png') center no-repeat;
+    }
 
     input{
       text-align: center;
@@ -930,12 +939,29 @@ header.colophon{
   }
 
 
-  #top-nav a {
-    font-size: 1.3rem;
-    padding-left: 5px;
-    padding-right: 0px;
-    background-image: none !important;
-    margin-left: 0;
+  #top-nav{
+    .category-menu{
+      width: 165px;
+    }
+    a {
+      //font-size: 1.3rem;
+      //background-image: none !important;
+      text-indent: -9999px;
+      width: 40px;
+      padding-left: 5px;
+      padding-right: 0px;
+      margin-left: 0;
+      //
+
+      //  background-image: none !important;
+      //  a{
+      //    padding-left: 30px;
+      //    background-image: url("/assets/images/signin-icon.png");
+      //    background-position: left;
+      //    background-repeat: no-repeat;
+      //  }
+      //}
+    }
   }
 
   #mid-nav a {
@@ -949,6 +975,23 @@ header.colophon{
     }
   }
 
+  .search-bar{
+    width: 40px;
+    padding-top: 0;
+
+    input{
+      display: none;
+    }
+    .search-toggle{
+      display: block !important;
+      padding-top: 0;
+      margin-top: -3px;
+
+    }
+  }
+
+
+
 
   #ideaing-logo {
     width: 125px;
@@ -960,7 +1003,7 @@ header.colophon{
   }
 
   .signin{
-    margin-right: 50px;
+    margin-right: 0;
   }
 
 }
