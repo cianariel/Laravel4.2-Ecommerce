@@ -744,6 +744,16 @@ header.colophon{
       padding-left: 65px;
     }
 
+
+
+  }
+
+  li.active a::after{
+    content: '▲';
+    position: relative;
+    bottom: -28px;
+    right: 55px;
+   color: #fff;
   }
 
 
@@ -825,16 +835,24 @@ header.colophon{
   min-height: 570px;
 }
 
-  #hero-nav a{
-    padding-left: 34px;
-    background-position: left;
-    background-repeat: no-repeat;
-    background-size: 30px;
+  #hero-nav{
 
-
-    &.photos-link{
-      padding-left: 34px;
+    li.active a::after {
+      right: 43px;
     }
+
+    a{
+      padding-left: 34px;
+      background-position: left;
+      background-repeat: no-repeat;
+      background-size: 30px;
+
+
+      &.photos-link{
+        padding-left: 34px;
+      }
+    }
+
   }
 
   .get-it.author{
@@ -851,9 +869,14 @@ header.colophon{
 
 
 @media (max-width: 620px){
-  #hero-nav a {
-    padding-left: 35px;
-    background-size: 30px;
+  #hero-nav{
+    a {
+      padding-left: 35px;
+      background-size: 30px;
+    }
+    li.active a::after {
+      right: 8px;
+    }
   }
 
   .signin{

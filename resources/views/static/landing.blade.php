@@ -80,9 +80,9 @@
     <nav id="hero-nav" class="col-sm-12">
         <div class="container">
             <ul>
-                <li class="col-sm-4 "><a class="home-link" href="">Home > All</a></li>
+                <li class="col-sm-4 "><a class="home-link" href="">Home</a></li>
 
-                <li class="col-sm-2 "><a href="" class="all-link">All</a></li>
+                <li class="col-sm-2 active"><a href="" class="all-link">All</a></li>
                 <li class="col-sm-2 "><a href="" class="ideas-link orange">Ideas</a></li>
                 <li class="col-sm-2 "><a href="" class="products-link green">Products</a></li>
                 <li class="col-sm-2 "><a href="" class="photos-link blue">Photos</a></li>
@@ -242,8 +242,8 @@
                     <label><input type="checkbox">Any sizes</label>
                 </div>
 
-                <a class="btn btn-success col-xs-12">Apply Filters</a>
-                <a class="btn-none col-xs-12">Cancel</a>
+                {{--<a class="btn btn-success col-xs-12">Apply Filters</a>--}}
+                {{--<a class="btn-none col-xs-12">Cancel</a>--}}
             </section>
 
             <section class="sidebar-category products">

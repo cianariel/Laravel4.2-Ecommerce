@@ -4817,6 +4817,12 @@ header.colophon .search-bar {
     #hero-nav a.photos-link {
       background-image: url("/assets/images/photos-blue.png");
       padding-left: 65px; }
+  #hero-nav li.active a::after {
+    content: '▲';
+    position: relative;
+    bottom: -28px;
+    right: 55px;
+    color: #fff; }
 
 @media (max-width: 1200px) {
   #top-nav a {
@@ -4859,6 +4865,8 @@ header.colophon .search-bar {
   #hero {
     min-height: 570px; }
 
+  #hero-nav li.active a::after {
+    right: 43px; }
   #hero-nav a {
     padding-left: 34px;
     background-position: left;
@@ -4873,6 +4881,8 @@ header.colophon .search-bar {
   #hero-nav a {
     padding-left: 35px;
     background-size: 30px; }
+  #hero-nav li.active a::after {
+    right: 8px; }
 
   .signin {
     margin-right: 30px; }
