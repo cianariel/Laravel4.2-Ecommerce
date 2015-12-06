@@ -24,9 +24,20 @@
         Route::get('fb-login','AuthenticateController@fbLogin');
         Route::get('secure-page','AuthenticateController@securePage');
         Route::get('index','AuthenticateController@index');
+        Route::get('password-rest/{code?}','AuthenticateController@index');
+        Route::post('password-reset/','AuthenticateController@passwordReset');
+        Route::post('change-profile','AuthenticateController@changeProfile');
+
+        Route::post('secure-page','AuthenticateController@securePage');
+
     });
 
+    Route::get('password-reset-form/{code?}','AuthenticateController@passwordResetForm');
+
     Route::get('verify-email/{code}','AuthenticateController@verifyEmail');
-    Route::get('password-reset/{Email}','AuthenticateController@sendPasswordResetEmail');
+    Route::get('password-reset-request/{Email}','AuthenticateController@sendPasswordResetEmail');
+
+    // GET for token parsing and POST for password reset through ..api/password-rest/ [POST] method
+    Route::get('password-reset/{code?}','AuthenticateController@passwordReset');
 
 

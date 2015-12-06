@@ -6,7 +6,7 @@
 
 <div class="content">
     <div class="title">Dear {{ $name }}</div>
-    Please click on the "Verify" link to verify your email [ <a href="{{ url('/verify-email').'/'.$link}}">Verify</a> ]
+    Please click on the "Reset" link to Reset your email [ <a href="{{ url('/password-reset-form').'/'.$code}}">Verify</a> ]
 </div>
 
 </body>

@@ -6,7 +6,7 @@
     use Illuminate\Queue\SerializesModels;
     use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 
-    class SendActivationMail extends Event {
+    class SendResetEmail extends Event {
 
         use SerializesModels;
 
@@ -14,14 +14,13 @@
          * Create a new event instance.
          * @param $name
          * @param $email
-         * @param $code
-         * @internal param $link
+         * @param $link
          */
-        public function __construct($name, $email, $code)
+        public function __construct($name, $email, $link)
         {
             $this->name  = $name;
             $this->email = $email;
-            $this->code  = $code;
+            $this->link  = $link;
         }
 
         /**

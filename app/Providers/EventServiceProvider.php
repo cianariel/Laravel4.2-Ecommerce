@@ -6,7 +6,9 @@
     use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
     use App\Events\SendActivationMail;
     use App\Handlers\Events\SendActivationMailHandler;
-    use App\Handlers\Events\SendPasswordResetEmailHandler;
+    use App\Events\SendResetEmail;
+    use App\Handlers\Events\SendResetEmailHandler;
+
 
     class EventServiceProvider extends ServiceProvider {
 
@@ -20,8 +22,10 @@
                 'App\Listeners\EventListener',
             ],
             SendActivationMail::class => [
-                SendActivationMailHandler::class,
-                SendPasswordResetEmailHandler::class
+                SendActivationMailHandler::class
+            ],
+            SendResetEmail::class => [
+                SendResetEmailHandler::class
             ]
 
         ];

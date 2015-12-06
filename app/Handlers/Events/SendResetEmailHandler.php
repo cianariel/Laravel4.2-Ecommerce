@@ -2,11 +2,11 @@
 
     namespace App\Handlers\Events;
 
-    use App\Events\SendActivationMail;
+    use App\Events\SendResetEmail;
     use Illuminate\Queue\InteractsWithQueue;
     use Illuminate\Contracts\Queue\ShouldQueue;
 
-    class SendActivationMailHandler {
+    class SendResetEmailHandler {
 
         /**
          * Create the event handler.
@@ -20,22 +20,21 @@
         /**
          * Handle the event.
          *
-         * @param SendActivationMail|SendPasswordResetEmail $event
+         * @param  SendResetEmail $event
+         * @return void
          */
-        public function handle(SendActivationMail $event)
+        public function handle(SendResetEmail $event)
         {
-            \Mail::send('email.verification',
+            \Mail::send('email.password-reset',
                 [
                     'name' => $event->name,
-                    'link' => $event->code
+                    'code' => $event->link
                 ],
                 function ($message) use ($event)
                 {
                     $message->to($event->email, $event->name)
                         ->from(env('MAIL_FROM'))
-                        ->subject("Ideaing - Email Verification.");
+                        ->subject("Ideaing - Password reset request.");
                 });
-
-            // dd($event);
         }
     }

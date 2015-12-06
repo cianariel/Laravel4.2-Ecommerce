@@ -26,8 +26,9 @@ class EloquentUserProvider implements UserProvider
     /**
      * Create a new database user provider.
      *
-     * @param  \Illuminate\Contracts\Hashing\Hasher $hasher
-     * @param  string $model
+     * @param  \Illuminate\Contracts\Hashing\Hasher  $hasher
+     * @param  string  $model
+     * @return void
      */
     public function __construct(HasherContract $hasher, $model)
     {

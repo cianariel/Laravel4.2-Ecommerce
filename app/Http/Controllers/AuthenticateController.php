@@ -3,7 +3,7 @@
     namespace App\Http\Controllers;
 
     use App\Events\SendActivationMail;
-    use App\Events\SendPasswordResetEmail;
+    use App\Events\SendResetEmail;
     use Crypt;
     use Illuminate\Http\Request;
     //use Laravel\Socialite\Contracts\Factory as Socialite;
@@ -12,6 +12,7 @@
     use JWTAuth;
     use Tymon\JWTAuth\Exceptions\JWTException;
     use App\Models\User;
+    use Carbon\Carbon;
 
     // use Carbon\Carbon;
 
@@ -22,7 +23,7 @@
             $this->user = new User();
 
             // Apply the jwt.auth middleware to all methods in this controller
-            $this->middleware('jwt.auth', ['except' => ['sendPasswordResetEmail','verifyEmail', 'index', 'authenticate', 'fbLogin', 'registerUser']]);
+            $this->middleware('jwt.auth', ['except' => ['passwordResetForm','passwordReset', 'sendPasswordResetEmail', 'verifyEmail', 'index', 'authenticate', 'fbLogin', 'registerUser']]);
         }
 
 
@@ -33,6 +34,7 @@
          */
         public function index()
         {
+
             // $currentTime = \Carbon::now();
 
             $userData['Email'] = 'tanvir@carbon51.com';
@@ -41,7 +43,7 @@
 
             $data = [
                 'Email' => $userData['Email'],
-                'TTL'   => \Carbon::now()->addHours(env('PASSWORD_RESET_TTL_HOUR'))
+                'TTL'   => Carbon::now()->addHours(env('PASSWORD_RESET_TTL_HOUR'))
             ];
 
             $code = Crypt::encrypt($data);
@@ -52,11 +54,21 @@
             return "inside non secure area";
         }
 
+        public function passwordResetForm($code)
+        {
+            return $code;
+        }
+
         public function securePage()
         {
+            echo "inside secure page !";
+            $user = JWTAuth::parseToken()->authenticate();
 
-            return "inside secure area";
+            dd($user);
+
+            // return "inside secure area";
         }
+
 
         /**
          * @param Request $request
@@ -116,6 +128,11 @@
 
         }
 
+        /**
+         * @param Request $request
+         * @return mixed
+         * @throws \Exception
+         */
         public function fbLogin(Request $request)
         {
 
@@ -150,6 +167,9 @@
         }
 
 
+        /** register a user through name,email and password
+         * @return mixed
+         */
         public function registerUser()
         {
             try
@@ -157,7 +177,24 @@
                 /*
                 Validate user input first before processing data.
                 */
-                list($userData, $validator) = $this->inputValidation();
+
+                $inputData = \Input::all();
+
+                $validationRules = [
+
+                    'rules'  => [
+                        'FullName' => 'required | max: 25',
+                        'Email'    => 'required | email',
+                        'Password' => 'required | min: 6 '
+                    ],
+                    'values' => [
+                        'FullName' => isset($inputData['FullName']) ? $inputData['FullName'] : null,
+                        'Email'    => isset($inputData['Email']) ? $inputData['Email'] : null,
+                        'Password' => isset($inputData['Password']) ? $inputData['Password'] : null
+                    ]
+                ];
+
+                list($userData, $validator) = $this->inputValidation($inputData,$validationRules);
 
                 if ($validator->fails())
                 {
@@ -199,6 +236,61 @@
 
         }
 
+        public function changeProfile()
+        {
+            try
+            {
+                $user = $this->isEmailValidate(JWTAuth::parseToken()->authenticate()->email);
+
+                $userData = \Input::all();
+                $validationRules = [
+
+                    'rules'  => [
+                        'FullName' => isset($userData['Password']) ?'required | max: 25':'',
+
+                        'Password' => isset($userData['Password']) ? 'required | min: 6 ' : '',
+                    ],
+                    'values' => [
+                        'FullName' => isset($userData['FullName']) ? $userData['FullName'] : null,
+
+                        'Password' => isset($userData['Password']) ? $userData['Password'] : null
+                    ]
+                ];
+
+                list($userData, $validator) = $this->inputValidation($userData,$validationRules);
+
+                if ($validator->fails())
+                {
+                    // return with the failed reason and field's information
+                    return $this->setStatusCode(IlluminateResponse::HTTP_NOT_ACCEPTABLE)
+                        ->makeResponseWithError("Invalid Input Data :" . $validator->messages());
+                } elseif ($validator->passes())
+                {
+                    if (isset($userData['FullName']))
+                        $user->name = $userData['FullName'];
+
+                    if (isset($userData['Password']))
+                        $user->password = \Hash::make($userData['Password']);
+
+                    $user->save();
+
+                    return $this->setStatusCode(IlluminateResponse::HTTP_OK)
+                        ->makeResponse('Successfully profile information changed');
+
+                }
+            } catch (\Exception $ex)
+            {
+                \Log::error($ex);
+
+                return $this->setStatusCode(IlluminateResponse::HTTP_INTERNAL_SERVER_ERROR)
+                    ->makeResponseWithError('Internal Server Error!', $ex);
+            }
+
+            //  dd($user);
+
+            // return "inside secure area";
+        }
+
 
         /**
          * Verify a user from the email
@@ -233,44 +325,24 @@
 
         }
 
+        /** Send password rest request mail for a valid registered user.
+         * @param $email
+         * @return mixed
+         */
         public function sendPasswordResetEmail($email)
         {
-       //     dd("in");
-      //      $init = 0;
-          //  dd($request);
-            //$userData['Email'] = $email;
 
+            // Check for valid email, if email found the "user" object returned
             $isValidation = $this->isEmailValidate($email);
 
             if (!$isValidation)
             {
-                // return with the failed reason and field's information
-                /*return $this->setStatusCode(IlluminateResponse::HTTP_NOT_ACCEPTABLE)
-                    ->makeResponseWithError("Invalid Email :" . $validator->messages());
-            } elseif ($validator == false)
-            {*/
                 return $this->setStatusCode(IlluminateResponse::HTTP_NOT_ACCEPTABLE)
-                    ->makeResponseWithError("User not available with ".$email);
+                    ->makeResponseWithError("User not available with " . $email);
 
-                    //TODO
-
-                    // $currentTime = \Carbon::now();
-                    //$validTill = \Carbon::now()->addHours(env('PASSWORD_RESET_TTL_HOUR'));
-
-                    /*$data = [
-                        'Email' => $userData['Email'],
-                        'TTL'   => \Carbon::now()->addHours(env('PASSWORD_RESET_TTL_HOUR'))
-                    ];
-
-                $code = Crypt::encrypt($data);
-*/
-
-                // $diff = $validTill->diffInHours($currentTime);
-                //dd($currentTime,$validTill,$diff);
-
-
-            }else
+            } else
             {
+                // make encrypted code with email and TTL time set in .env file,which will expire after the TTL
                 $data = [
                     'Email' => $email,
                     'TTL'   => \Carbon::now()->addHours(env('PASSWORD_RESET_TTL_HOUR'))
@@ -278,8 +350,68 @@
 
                 $link = Crypt::encrypt($data);
 
-                \Event::fire(new SendPasswordResetEmail( $isValidation->name,$email,$link));
+                \Event::fire(new SendResetEmail($isValidation->name, $email, $link));
+
+                return $this->setStatusCode(IlluminateResponse::HTTP_OK)
+                    ->makeResponse('Password reset link sent.');
             }
+
+        }
+
+        /**
+         * Reset password from user provided data and valid token
+         */
+        public function passwordReset()
+        {
+            try
+            {
+                $info = \Input::all();
+
+                $userData = Crypt::decrypt($info['Code']);
+
+                // making datetime object from provided token
+                $validTill = Carbon::create(
+                    $userData['TTL']->year,
+                    $userData['TTL']->month,
+                    $userData['TTL']->day,
+                    $userData['TTL']->hour,
+                    $userData['TTL']->minute,
+                    $userData['TTL']->second
+                );
+
+                $currentTime = Carbon::now();
+
+                // check if the toke valid time is expired or not
+                $isExpiredToken = $validTill->diffInHours($currentTime) > 0 ? false : true;
+                if ($isExpiredToken)
+                {
+                    return $this->setStatusCode(IlluminateResponse::HTTP_UNAUTHORIZED)
+                        ->makeResponseWithError('Token time expired,please reset password again!');
+                }
+
+                // getting the user object to change password and make the user active from valid email
+                $user = $this->isEmailValidate($userData['Email']);
+
+                if (!$user)
+                {
+                    return $this->setStatusCode(IlluminateResponse::HTTP_UNAUTHORIZED)
+                        ->makeResponseWithError('No such user with provided email');
+                } else
+                {
+                    $user->password = \Hash::make($info['Password']);
+                    $user->status = "Active";
+                    $user->save();
+
+                    return $this->setStatusCode(IlluminateResponse::HTTP_OK)
+                        ->makeResponse("Successfully password reset");
+                }
+
+            } catch (\Exception $ex)
+            {
+                return $this->setStatusCode(IlluminateResponse::HTTP_UNAUTHORIZED)
+                    ->makeResponseWithError('Invalid Token!');
+            }
+
 
         }
 
@@ -287,33 +419,25 @@
          * User input validation
          * @return array
          */
-        private function inputValidation()
+        private function inputValidation($inputData,$validationRules)
         {
             // Trim blank spaces from
 
-            \Input::merge(array_map('trim', \Input::all()));
+            \Input::merge(array_map('trim',$inputData));
 
             $userData = \Input::all();
-
-            $validationRules = [
-
-                'rules'  => [
-                    'FullName' => 'required | max: 25',
-                    'Email'    => 'required | email',
-                    'Password' => 'required | min: 6 '
-                ],
-                'values' => [
-                    'FullName' => isset($userData['FullName']) ? $userData['FullName'] : null,
-                    'Email'    => isset($userData['Email']) ? $userData['Email'] : null,
-                    'Password' => isset($userData['Password']) ? $userData['Password'] : null
-                ]
-            ];
 
             $validator = \Validator::make($validationRules['values'], $validationRules['rules']);
 
             return array($userData, $validator);
         }
 
+        /**
+         * return valid user object as per provided credentials or else return false
+         * @param $userData
+         * @return bool
+         * @throws \Exception
+         */
         private function isValidUser($userData)
         {
             $email = isset($userData['Email']) ? $userData['Email'] : null;
@@ -326,11 +450,9 @@
             {
                 return $this->user->IsAuthorizedUser($userData);
             }
-
-
         }
 
-        /**
+        /**  Check valid email id, if found return the user object or return false
          * @param $email
          * @return \Illuminate\Validation\Validator
          */
@@ -351,16 +473,14 @@
             if ($validator->passes())
             {
                 $user = $this->user->IsEmailAvailable($email);
-                if ($user!= false)
+                if ($user != false)
                 {
                     return $user;
-                }
-                else
+                } else
                     return false;
             }
 
             return false;
         }
-
 
     }
