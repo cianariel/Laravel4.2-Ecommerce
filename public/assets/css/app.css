@@ -4726,9 +4726,11 @@ header.colophon .search-bar {
 
 #mid-nav {
   margin-bottom: 140px;
-  background: #FF0042; }
+  background: #ED1E47; }
   #mid-nav a {
-    padding: 15px 30px;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    padding: 5px 3%;
     overflow: hidden;
     font-size: 1.2rem;
     color: #fff; }
@@ -4736,17 +4738,8 @@ header.colophon .search-bar {
       text-indent: -9999px;
       background: url("/assets/images/dots-white.png") center no-repeat; }
     #mid-nav a:hover {
-      -webkit-stroke-width: 5.3px;
-      -webkit-stroke-color: #1ABCF5;
-      -webkit-fill-color: #1ABCF5;
-      text-shadow: 1px 0px 8px #1ABCF5;
-      -webkit-transition: width 0.3s;
-      /*Safari & Chrome*/
-      transition: width 0.3s;
-      -moz-transition: width 0.3s;
-      /* Firefox 4 */
-      -o-transition: width 0.3s;
-      /* Opera */ }
+      background: #CE1F46;
+      border-radius: 15px; }
   #mid-nav li.selected a {
     border: 2px solid #fff;
     border-radius: 15px;
