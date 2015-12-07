@@ -4798,7 +4798,7 @@ header.colophon .search-bar {
       text-indent: -9999px;
       background: url("/assets/images/dots-white.png") center no-repeat; }
     #mid-nav a:hover {
-      background: #CE1F46;
+      background-color: #CE1F46;
       border-radius: 15px; }
   #mid-nav li.selected a {
     border: 2px solid #fff;
