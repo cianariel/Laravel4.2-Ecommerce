@@ -108,21 +108,21 @@
             <div id="idea-filter" class="col-md-12 col-sm-4 col-xs-7 col-sm-offset-0 col-xs-offset-1">
                 <h5 class="hidden-xs">Ideas</h5>
 
-                <input type="checkbox" name="dyi" id="dyi"> <label for="dyi"><span></span>DIY</label>
-                <input type="checkbox" name="best-buys" id="best-buys"> <label for="best-buys"><span></span>Best Buys</label>
-                <input type="checkbox" name="declutter" id="declutter"> <label for="declutter"><span></span>Declutter</label>
+                <input type="checkbox" name="dyi" id="dyi-nobile"> <label for="dyi-nobile"><span></span>DIY</label>
+                <input type="checkbox" name="best-buys" id="best-buys-mobile"> <label for="best-buys-mobile"><span></span>Best Buys</label>
+                <input type="checkbox" name="declutter" id="declutter-mobile"> <label for="declutter-mobile"><span></span>Declutter</label>
             </div>
             <div id="product-filter" class="col-md-12 col-sm-4 col-xs-7">
                 <h5>Products</h5>
-                <input type="checkbox" name="cheap" id="cheap"> <label for="cheap"><span></span>Under $50</label>
-                <input type="checkbox" name="top" id="top"> <label for="top"><span></span>Top</label>
-                <input type="checkbox" name="stuff" id="stuff"> <label for="stuff"><span></span>Stuff</label>
+                <input type="checkbox" name="cheap" id="cheap-mobile"> <label for="cheap-mobile"><span></span>Under $50</label>
+                <input type="checkbox" name="top" id="top-mobile"> <label for="top-mobile"><span></span>Top</label>
+                <input type="checkbox" name="stuff" id="stuff-mobile"> <label for="stuff-mobile"><span></span>Stuff</label>
             </div>
             <div id="photo-filter" class="col-md-12 col-sm-4 col-xs-7">
                 <h5>Photos</h5>
-                <input type="checkbox" name="hd" id="hd"> <label for="hd"><span></span>HD (1920px and above)</label>
-                <input type="checkbox" name="md" id="md"> <label for="md"><span></span>MD (1920px and above)</label>
-                <input type="checkbox" name="anysize" id="anysize"> <label for="anysize"><span></span>Any sizes</label>
+                <input type="checkbox" name="hd" id="hd-mobile"> <label for="hd-mobile"><span></span>HD (1920px and above)</label>
+                <input type="checkbox" name="md" id="md-mobile"> <label for="md-mobile"><span></span>MD (1920px and above)</label>
+                <input type="checkbox" name="anysize" id="anysize-mobile"> <label for="anysize-mobile"><span></span>Any sizes</label>
             </div>
 
         </section>
