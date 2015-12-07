@@ -4786,11 +4786,12 @@ header.colophon .search-bar {
 
 #mid-nav {
   margin-bottom: 140px;
+  min-height: 47px;
   background: #ED1E47; }
   #mid-nav a {
     margin-top: 8px;
     margin-bottom: 8px;
-    padding: 5px 3%;
+    padding: 5px 35px;
     overflow: hidden;
     font-size: 1.2rem;
     color: #fff; }
@@ -4798,13 +4799,13 @@ header.colophon .search-bar {
       text-indent: -9999px;
       background: url("/assets/images/dots-white.png") center no-repeat; }
     #mid-nav a:hover {
-      background-color: #CE1F46;
-      border-radius: 15px; }
+      border: 2px solid #fff;
+      border-radius: 15px;
+      margin-top: 6px;
+      padding: 5px 33px; }
   #mid-nav li.selected a {
-    border: 2px solid #fff;
-    border-radius: 15px;
-    padding: 5px 2%;
-    margin-top: 8px; }
+    background-color: #CE1F46;
+    border-radius: 15px; }
 
 .why-us {
   margin-top: 45px; }
@@ -4958,8 +4959,11 @@ header.colophon .search-bar {
     margin-right: 3%; }
 
   #mid-nav a {
-    padding-left: 2%;
-    padding-right: 2%; }
+    padding-left: 18px;
+    padding-right: 18px; }
+    #mid-nav a:hover {
+      padding-left: 16px;
+      padding-right: 16px; }
 
   .why-us {
     margin-top: 0; } }
@@ -4974,6 +4978,13 @@ header.colophon .search-bar {
     float: right; }
   header.colophon .search-bar {
     margin-left: 0; }
+
+  #mid-nav a {
+    padding-left: 15px;
+    padding-right: 15px; }
+    #mid-nav a:hover {
+      padding-left: 13px;
+      padding-right: 13px; }
 
   #mid-nav a.more-link {
     background: url("/assets/images/dots-vertical.png") center no-repeat;
