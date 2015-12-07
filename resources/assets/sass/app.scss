@@ -881,6 +881,8 @@ header.colophon{
 
 #hero-nav{
   overflow: visible;
+  float: left;
+  width: 100%;
   background: #F2F2F2;
   border-bottom: 1px solid darken($pale-grey, 10%);
   ul{
@@ -996,7 +998,7 @@ header.colophon{
       float: right;
     }
     .search-bar {
-      margin-left: 0;
+      margin-left: 3%;
     }
   }
 
@@ -1037,19 +1039,65 @@ header.colophon{
     padding: 0;
   }
 
+
+
+  #top-nav{
+    .category-menu{
+      width: 140px;
+      padding: 0;
+    }
+    a {
+      //font-size: 1.3rem;
+      //background-image: none !important;
+      text-indent: -9999px;
+      width: 40px;
+      padding-left: 5px;
+      padding-right: 0px;
+      margin-left: 0;
+      //
+
+      //  background-image: none !important;
+      //  a{
+      //    padding-left: 30px;
+      //    background-image: url("/assets/images/signin-icon.png");
+      //    background-position: left;
+      //    background-repeat: no-repeat;
+      //  }
+      //}
+    }
+  }
+
+  .logo-wrap{
+    padding: 0;
+  }
+
+  #mid-nav a {
+    //padding-left: 2%;
+    //padding-right: 2%;
+    font-size: 1.6rem;
+
+    //
+    &.more-link{
+      padding-left: 5%;
+    }
+  }
+
+
 }
 
 
 @media (max-width: 768px){
   #mid-nav a {
-    padding-left: 2%;
-    padding-right: 2%;
+    //padding-left: 2%;
+    //padding-right: 2%;
     font-size: 2rem;
 
 
     &.more-link{
       padding-left: 8%;
     }
+
+
   }
 
 
@@ -1127,6 +1175,29 @@ header.colophon{
   }
 
 
+  .search-bar{
+    width: 0;
+    padding-top: 0;
+
+    input{
+      display: none;
+    }
+    .search-toggle{
+      display: block !important;
+      padding-top: 0;
+      margin-top: -3px;
+
+    }
+
+    #hero-nav{
+      &.all-link{
+        background-position: 4px top;
+      }
+    }
+  }
+
+
+
   #hero-nav a.home-link{
     width: 100%;
     //background-color: darken($pale-grey, 20%);
@@ -1165,69 +1236,6 @@ header.colophon{
     padding-left: 10px;
     padding-right: 10px;
 
-  }
-
-
-  #top-nav{
-    .category-menu{
-      width: 140px;
-      padding: 0;
-    }
-    a {
-      //font-size: 1.3rem;
-      //background-image: none !important;
-      text-indent: -9999px;
-      width: 40px;
-      padding-left: 5px;
-      padding-right: 0px;
-      margin-left: 0;
-      //
-
-      //  background-image: none !important;
-      //  a{
-      //    padding-left: 30px;
-      //    background-image: url("/assets/images/signin-icon.png");
-      //    background-position: left;
-      //    background-repeat: no-repeat;
-      //  }
-      //}
-    }
-  }
-
-  .logo-wrap{
-    padding: 0;
-  }
-
-  #mid-nav a {
-    //padding-left: 2%;
-    //padding-right: 2%;
-    font-size: 1.6rem;
-
-    //
-    &.more-link{
-      padding-left: 5%;
-    }
-  }
-
-  .search-bar{
-    width: 0;
-    padding-top: 0;
-
-    input{
-      display: none;
-    }
-    .search-toggle{
-      display: block !important;
-      padding-top: 0;
-      margin-top: -3px;
-
-    }
-
-    #hero-nav{
-      &.all-link{
-        background-position: 4px top;
-      }
-    }
   }
 
 

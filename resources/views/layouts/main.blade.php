@@ -24,7 +24,7 @@
                             <div class="col-md-2 col-xs-4 logo-wrap">
                                 <img src="/assets/images/ideaing-logo-small.png" id="ideaing-logo" class="logo top-logo"/>
                             </div>
-                            <section class="search-bar col-xs-4 col-md-2">
+                            <section class="search-bar col-xs-3 col-sm-3 col-md-2">
                                 <a href="#" class="search-toggle" data-toggle=".mobile-search-bar">Search</a>
                                 <input class="form-control" type="text" name="search" value="Search..."/>
                             </section>

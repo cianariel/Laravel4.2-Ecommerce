@@ -32,7 +32,7 @@
         </nav>
 
         <div class="container">
-            <div class="col-md-5 col-sm-6 col-md-offset-1 why-us hidden-xs">
+            <div class="col-md-5 col-sm-6 col-md-offset-1 why-us hidden-md hidden-sm hidden-xs">
                 <h2>Ideas for Smarter Living</h2>
 
                 <ul>
@@ -43,7 +43,7 @@
 
                 <a class="btn btn-success col-xs-8" href="#">Find out more</a>
             </div>
-            <div class="col-md-4 col-sm-6 col-md-offset-1 hero-box qiuck-signup hidden-xs">
+            <div class="col-md-4 col-sm-6 col-md-offset-1 hero-box qiuck-signup hidden-md hidden-sm hidden-xs">
                 <form>
                     <h4>Our famous <br/>
                         <b>30-second sign-up</b>
@@ -58,7 +58,7 @@
                 </form>
             </div>
 
-            <div class="mobile-hero col-xs-12 hidden-lg hidden-md hidden-sm">
+            <div class="mobile-hero col-xs-12 hidden-lg">
                 <h2>11 Kitchen Gadgets You Need Now</h2>
                 <a href="#" class="social-pic likes red">193</a>
 
@@ -78,7 +78,7 @@
         </div>
     </section>
     <nav id="hero-nav" class="col-sm-12">
-        <div class="container full-620">
+        <div class="container full-sm">
             <ul>
                 <li class="col-sm-4 "><a class="home-link" href="">Home</a></li>
 
@@ -90,7 +90,7 @@
         </div>
     </nav>
 
-    <div class="container full-620 main-container">
+    <div class="container full-sm main-container">
         <button id="show-mobile-filters" class="toggler btn btn-info col-sm-4 col-xs-8 hidden-lg hidden-md" data-toggle="#mobile-side-filters">Filter</button>
 
         <section id="mobile-side-filters" class="side-filters pale-grey-bg col-xs-12 hidden-lg hidden-md">
@@ -134,7 +134,7 @@
                <li class="grid selected">Grid</li>
             </ul>
 
-            <div class="col-md-6 grid-box full-620">
+            <div class="col-md-6 grid-box full-sm">
                 <div class="img-wrap">
                     <img class="img-responsive" src="/assets/images/dummies/box-image-dummy.png">
                     <a href="#" class="overlay-tag category-tag top product">Category: Products</a>
@@ -161,7 +161,7 @@
                     <li class="box-tag"><a>Improvements</a></li>
                 </ul>
             </div>
-            <div class="col-md-6 grid-box full-620">
+            <div class="col-md-6 grid-box full-sm">
                 <div class="img-wrap">
                     <img class="img-responsive" src="/assets/images/dummies/img-small.jpg">
                     <a href="#" class="overlay-tag category-tag top photo">Category: Photo</a>
@@ -189,7 +189,7 @@
                     <li class="box-tag"><a>Improvements</a></li>
                 </ul>
             </div>
-            <div class="col-md-12 grid-box big-box full-620">
+            <div class="col-md-12 grid-box big-box full-sm">
                 <div class="img-wrap">
                     <img class="img-responsive" src="/assets/images/dummies/img-small.jpg">
                     <a href="#" class="overlay-tag category-tag top idea">Category: Idea</a>

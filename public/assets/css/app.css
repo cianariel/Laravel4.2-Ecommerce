@@ -4912,6 +4912,8 @@ header.colophon .search-bar {
 
 #hero-nav {
   overflow: visible;
+  float: left;
+  width: 100%;
   background: #F2F2F2;
   border-bottom: 1px solid #d5dfdf; }
   #hero-nav ul {
@@ -4983,7 +4985,7 @@ header.colophon .search-bar {
   header.colophon #ideaing-logo {
     float: right; }
   header.colophon .search-bar {
-    margin-left: 0; }
+    margin-left: 3%; }
 
   #mid-nav a {
     padding-left: 15px;
@@ -5004,11 +5006,27 @@ header.colophon .search-bar {
 
   .full-sm {
     width: 100%;
-    padding: 0; } }
+    padding: 0; }
+
+  #top-nav .category-menu {
+    width: 140px;
+    padding: 0; }
+  #top-nav a {
+    text-indent: -9999px;
+    width: 40px;
+    padding-left: 5px;
+    padding-right: 0px;
+    margin-left: 0; }
+
+  .logo-wrap {
+    padding: 0; }
+
+  #mid-nav a {
+    font-size: 1.6rem; }
+    #mid-nav a.more-link {
+      padding-left: 5%; } }
 @media (max-width: 768px) {
   #mid-nav a {
-    padding-left: 2%;
-    padding-right: 2%;
     font-size: 2rem; }
     #mid-nav a.more-link {
       padding-left: 8%; }
@@ -5052,6 +5070,18 @@ header.colophon .search-bar {
     width: 100%;
     padding: 0; }
 
+  .search-bar {
+    width: 0;
+    padding-top: 0; }
+    .search-bar input {
+      display: none; }
+    .search-bar .search-toggle {
+      display: block !important;
+      padding-top: 0;
+      margin-top: -3px; }
+    .search-bar #hero-nav.all-link {
+      background-position: 4px top; }
+
   #hero-nav a.home-link {
     width: 100%;
     text-align: left;
@@ -5073,36 +5103,6 @@ header.colophon .search-bar {
   #hero-nav a:not(.home-link) {
     padding-left: 10px;
     padding-right: 10px; }
-
-  #top-nav .category-menu {
-    width: 140px;
-    padding: 0; }
-  #top-nav a {
-    text-indent: -9999px;
-    width: 40px;
-    padding-left: 5px;
-    padding-right: 0px;
-    margin-left: 0; }
-
-  .logo-wrap {
-    padding: 0; }
-
-  #mid-nav a {
-    font-size: 1.6rem; }
-    #mid-nav a.more-link {
-      padding-left: 5%; }
-
-  .search-bar {
-    width: 0;
-    padding-top: 0; }
-    .search-bar input {
-      display: none; }
-    .search-bar .search-toggle {
-      display: block !important;
-      padding-top: 0;
-      margin-top: -3px; }
-    .search-bar #hero-nav.all-link {
-      background-position: 4px top; }
 
   #ideaing-logo {
     width: 125px;
