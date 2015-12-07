@@ -31,6 +31,17 @@ $tarmac: #3D4B4E;
   background: $pale-grey;
 }
 
+.blue-glow{
+  -webkit-stroke-width: 5.3px;
+  -webkit-stroke-color: #1ABCF5;
+  -webkit-fill-color: #1ABCF5;
+  text-shadow: 1px 0px 8px #1ABCF5;
+  -webkit-transition: width 0.3s; /*Safari & Chrome*/
+  transition: width 0.3s;
+  -moz-transition: width 0.3s; /* Firefox 4 */
+  -o-transition: width 0.3s; /* Opera */
+}
+
 // ELEMENTS
 
 .btn-success{
@@ -603,14 +614,7 @@ header.colophon{
     }
 
     &:hover{
-      -webkit-stroke-width: 5.3px;
-      -webkit-stroke-color: #1ABCF5;
-      -webkit-fill-color: #1ABCF5;
-      text-shadow: 1px 0px 8px #1ABCF5;
-      -webkit-transition: width 0.3s; /*Safari & Chrome*/
-      transition: width 0.3s;
-      -moz-transition: width 0.3s; /* Firefox 4 */
-      -o-transition: width 0.3s; /* Opera */
+      color: $sky-blue;
     }
 
   }
@@ -829,6 +833,8 @@ header.colophon{
 #hero-nav{
   overflow: hidden;
   background: #F2F2F2;
+  border-bottom: 1px solid darken($pale-grey, 10%);
+
   a{
     color: $iridium;
     text-transform: none;
@@ -891,7 +897,13 @@ header.colophon{
     bottom: -28px;
     right: 55px;
    color: #fff;
-  }
+
+    text-shadow:
+    -1px -1px 0 darken($pale-grey, 10%),
+    1px -1px 0 darken($pale-grey, 10%),
+    -1px 1px 0 #fff,
+    1px 1px 0 #fff;
+  } 
 
 
 }

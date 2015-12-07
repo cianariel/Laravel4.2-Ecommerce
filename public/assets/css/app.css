@@ -4375,6 +4375,19 @@ a.label:focus {
 .pale-grey-bg {
   background: #F2F5F5; }
 
+.blue-glow {
+  -webkit-stroke-width: 5.3px;
+  -webkit-stroke-color: #1ABCF5;
+  -webkit-fill-color: #1ABCF5;
+  text-shadow: 1px 0px 8px #1ABCF5;
+  -webkit-transition: width 0.3s;
+  /*Safari & Chrome*/
+  transition: width 0.3s;
+  -moz-transition: width 0.3s;
+  /* Firefox 4 */
+  -o-transition: width 0.3s;
+  /* Opera */ }
+
 .btn-success {
   background-color: #FF0042;
   border-color: #FF0042; }
@@ -4736,17 +4749,7 @@ header.colophon .search-bar {
   #top-nav a.disc {
     background: url("/assets/images/speach-black.png") left center no-repeat; }
   #top-nav a:hover {
-    -webkit-stroke-width: 5.3px;
-    -webkit-stroke-color: #1ABCF5;
-    -webkit-fill-color: #1ABCF5;
-    text-shadow: 1px 0px 8px #1ABCF5;
-    -webkit-transition: width 0.3s;
-    /*Safari & Chrome*/
-    transition: width 0.3s;
-    -moz-transition: width 0.3s;
-    /* Firefox 4 */
-    -o-transition: width 0.3s;
-    /* Opera */ }
+    color: #00B1FF; }
 #top-nav li.nested a::after {
   content: '▼';
   padding-left: 7px; }
@@ -4874,7 +4877,8 @@ header.colophon .search-bar {
 
 #hero-nav {
   overflow: hidden;
-  background: #F2F2F2; }
+  background: #F2F2F2;
+  border-bottom: 1px solid #d5dfdf; }
   #hero-nav a {
     color: #FF0042;
     text-transform: none;
@@ -4915,7 +4919,8 @@ header.colophon .search-bar {
     position: relative;
     bottom: -28px;
     right: 55px;
-    color: #fff; }
+    color: #fff;
+    text-shadow: -1px -1px 0 #d5dfdf, 1px -1px 0 #d5dfdf, -1px 1px 0 #fff, 1px 1px 0 #fff; }
 
 @media (max-width: 1200px) {
   #top-nav a {
