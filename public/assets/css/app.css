@@ -4455,7 +4455,9 @@ form .btn {
 
 .grid-box {
   overflow: hidden;
-  margin-top: 30px; }
+  margin-top: 10px;
+  padding-top: 20px;
+  border-radius: 3px; }
   .grid-box .img-wrap {
     position: relative;
     overflow: hidden; }
@@ -4570,6 +4572,8 @@ form .btn {
     width: 139px;
     height: 67px;
     bottom: -15px; }
+  .grid-box:hover {
+    outline: 2px solid #00B1FF; }
 
 .main-container {
   overflow: hidden; }
@@ -4672,12 +4676,14 @@ form .btn {
   -webkit-appearance: none;
   border: 0;
   position: absolute;
-  right: 4%;
+  right: 1%;
   bottom: 3%;
   width: 55px;
-  height: 49px;
+  height: 55px;
   background: url("/assets/images/back-to-top.png") no-repeat;
   text-indent: -9999px; }
+  #back-to-top:hover {
+    background: url("/assets/images/back-to-top-green.png") no-repeat; }
 
 .layout-controls {
   display: none;
