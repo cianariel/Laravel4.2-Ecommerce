@@ -4530,6 +4530,10 @@ form .btn {
           border-radius: 50%; }
         .grid-box .img-wrap .get-it div.circle-2 {
           padding: 5%; }
+        .grid-box .img-wrap .get-it div.circle-3 {
+          width: 65px;
+          height: 62px;
+          padding: 5%; }
       .grid-box .img-wrap .get-it.big {
         top: 20px; }
         .grid-box .img-wrap .get-it.big div {
@@ -4537,12 +4541,16 @@ form .btn {
           .grid-box .img-wrap .get-it.big div.circle-1 {
             width: 80px;
             height: 77px;
-            padding: 30px 5% 5% 3%;
+            padding: 30px 5px 5px 3px;
             background: #C7C747;
             font-size: 1.1rem;
             border-radius: 50%;
             color: #fff; }
           .grid-box .img-wrap .get-it.big div.circle-2, .grid-box .img-wrap .get-it.big div.circle-3 {
+            padding: 5%; }
+          .grid-box .img-wrap .get-it.big div.circle-3 {
+            width: 108px;
+            height: 106px;
             padding: 5%; }
     .grid-box .img-wrap a.author {
       width: 64px;
@@ -4971,7 +4979,11 @@ header.colophon .search-bar {
     margin-top: 65px; }
 
   #back-to-top {
-    bottom: 3.2%; } }
+    bottom: 3.2%; }
+
+  .full-sm {
+    width: 100%;
+    padding: 0; } }
 @media (max-width: 768px) {
   #mid-nav a {
     padding-left: 2%;

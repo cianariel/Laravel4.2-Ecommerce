@@ -242,6 +242,11 @@ form{
         &.circle-2{
           padding: 5%;
         }
+        &.circle-3{
+          width: 65px;
+          height: 62px;
+          padding: 5%;
+        }
       }
 
       &.big{
@@ -252,7 +257,7 @@ form{
           &.circle-1 {
             width: 80px;
             height: 77px;
-            padding: 30px 5% 5% 3%;
+            padding: 30px 5px 5px 3px;
             background: $pine-green;
             font-size: 1.1rem;
             border-radius: 50%;
@@ -261,6 +266,11 @@ form{
 
           &.circle-2,
           &.circle-3{
+            padding: 5%;
+          }
+          &.circle-3{
+            width: 108px;
+            height: 106px;
             padding: 5%;
           }
         }
@@ -988,6 +998,11 @@ header.colophon{
 
   #back-to-top{
     bottom: 3.2%;
+  }
+
+  .full-sm{
+    width: 100%;
+    padding: 0;
   }
 
 }
