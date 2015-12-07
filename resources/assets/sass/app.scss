@@ -75,6 +75,28 @@ $tarmac: #3D4B4E;
   overflow: hidden;
 }
 
+// custom checkboxes
+
+input[type="checkbox"] {
+  display:none;
+}
+input[type="checkbox"] + label span {
+  display:inline-block;
+  width:19px;
+  height:19px;
+  margin:-1px 4px 0 0;
+  vertical-align:middle;
+  border: 2px solid $light-grey;
+  border-radius: 5px;
+  cursor:pointer;
+  transition: border-color .5s, backgroun-image .5s;
+
+}
+input[type="checkbox"]:checked + label span {
+  background:url('/assets/images/checkmark-black.png') center no-repeat !important;
+  border-color: darken($light-grey, 25%);
+}
+
 
 
 // GENERAL
@@ -143,7 +165,7 @@ nav{
 
 #ideaing-logo{
   width: 175px;
-  height: 45px;
+  //height: 45px;
 
   &.top-logo{
     margin-top: 10px;
@@ -455,6 +477,9 @@ form{
   ul{
     height: 25px;
     margin-bottom: 0;
+  }
+  .img-wrap{
+    overflow: visible;
   }
   li.box-tag{
     a{
@@ -893,9 +918,10 @@ header.colophon{
 
   li.active a::after{
     content: '▲';
+    font-size: 1.7rem;
     position: relative;
     bottom: -28px;
-    right: 55px;
+    right: 58px;
    color: #fff;
 
     text-shadow:
@@ -903,7 +929,7 @@ header.colophon{
     1px -1px 0 darken($pale-grey, 10%),
     -1px 1px 0 #fff,
     1px 1px 0 #fff;
-  } 
+  }
 
 
 }

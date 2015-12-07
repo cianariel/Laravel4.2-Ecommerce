@@ -4412,6 +4412,24 @@ a.label:focus {
 .main-content {
   overflow: hidden; }
 
+input[type="checkbox"] {
+  display: none; }
+
+input[type="checkbox"] + label span {
+  display: inline-block;
+  width: 19px;
+  height: 19px;
+  margin: -1px 4px 0 0;
+  vertical-align: middle;
+  border: 2px solid #c1c1c1;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: border-color .5s, backgroun-image .5s; }
+
+input[type="checkbox"]:checked + label span {
+  background: url("/assets/images/checkmark-black.png") center no-repeat !important;
+  border-color: #818181; }
+
 body {
   position: relative;
   font-family: 'Montserrat', sans-serif; }

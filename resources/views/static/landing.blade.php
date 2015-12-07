@@ -108,22 +108,23 @@
             <div id="idea-filter" class="col-md-12 col-sm-4 col-xs-7 col-sm-offset-0 col-xs-offset-1">
                 <h5 class="hidden-xs">Ideas</h5>
 
-                <label><input type="checkbox">DIY</label>
-                <label><input type="checkbox">Best Buys</label>
-                <label><input type="checkbox">Declutter</label>
+                <input type="checkbox" name="dyi" id="dyi"> <label for="dyi"><span></span>DIY</label>
+                <input type="checkbox" name="best-buys" id="best-buys"> <label for="best-buys"><span></span>Best Buys</label>
+                <input type="checkbox" name="declutter" id="declutter"> <label for="declutter"><span></span>Declutter</label>
             </div>
             <div id="product-filter" class="col-md-12 col-sm-4 col-xs-7">
                 <h5>Products</h5>
-                <label><input type="checkbox">Under $50</label>
-                <label><input type="checkbox">Top</label>
-                <label><input type="checkbox">Stuff</label>
+                <input type="checkbox" name="cheap" id="cheap"> <label for="cheap"><span></span>Under $50</label>
+                <input type="checkbox" name="top" id="top"> <label for="top"><span></span>Top</label>
+                <input type="checkbox" name="stuff" id="stuff"> <label for="stuff"><span></span>Stuff</label>
             </div>
             <div id="photo-filter" class="col-md-12 col-sm-4 col-xs-7">
                 <h5>Photos</h5>
-                <label><input type="checkbox">HD (1920px and above)</label>
-                <label><input type="checkbox">MD (1920px and above)</label>
-                <label><input type="checkbox">Any sizes</label>
+                <input type="checkbox" name="hd" id="hd"> <label for="hd"><span></span>HD (1920px and above)</label>
+                <input type="checkbox" name="md" id="md"> <label for="md"><span></span>MD (1920px and above)</label>
+                <input type="checkbox" name="anysize" id="anysize"> <label for="anysize"><span></span>Any sizes</label>
             </div>
+
         </section>
 
         <section class="main-content landing col-md-9">
@@ -236,21 +237,21 @@
             <section id="side-filters" class="side-filters pale-grey-bg">
                 <div>
                     <h5>Ideas</h5>
-                    <label><input type="checkbox">DIY</label>
-                    <label><input type="checkbox">Best Buys</label>
-                    <label><input type="checkbox">Declutter</label>
+                   <input type="checkbox" name="dyi" id="dyi"> <label for="dyi"><span></span>DIY</label>
+                   <input type="checkbox" name="best-buys" id="best-buys"> <label for="best-buys"><span></span>Best Buys</label>
+                   <input type="checkbox" name="declutter" id="declutter"> <label for="declutter"><span></span>Declutter</label>
                 </div>
                 <div>
                     <h5>Products</h5>
-                    <label><input type="checkbox">Under $50</label>
-                    <label><input type="checkbox">Top</label>
-                    <label><input type="checkbox">Stuff</label>
+                    <input type="checkbox" name="cheap" id="cheap"> <label for="cheap"><span></span>Under $50</label>
+                    <input type="checkbox" name="top" id="top"> <label for="top"><span></span>Top</label>
+                    <input type="checkbox" name="stuff" id="stuff"> <label for="stuff"><span></span>Stuff</label>
                 </div>
                 <div>
                     <h5>Photos</h5>
-                    <label><input type="checkbox">HD (1920px and above)</label>
-                    <label><input type="checkbox">MD (1920px and above)</label>
-                    <label><input type="checkbox">Any sizes</label>
+                    <input type="checkbox" name="hd" id="hd"> <label for="hd"><span></span>HD (1920px and above)</label>
+                    <input type="checkbox" name="md" id="md"> <label for="md"><span></span>MD (1920px and above)</label>
+                    <input type="checkbox" name="anysize" id="anysize"> <label for="anysize"><span></span>Any sizes</label>
                 </div>
 
                 {{--<a class="btn btn-success col-xs-12">Apply Filters</a>--}}
