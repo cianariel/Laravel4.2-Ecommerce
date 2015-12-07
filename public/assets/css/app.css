@@ -4493,7 +4493,8 @@ form .btn {
   border-radius: 3px; }
   .grid-box .img-wrap {
     position: relative;
-    overflow: hidden; }
+    overflow: hidden;
+    border: 1px solid #eee; }
     .grid-box .img-wrap .like-wrap {
       width: 115px;
       height: 55px;
@@ -4589,7 +4590,6 @@ form .btn {
         background: url("/assets/images/photos-blue.png") center no-repeat; }
     .grid-box .img-wrap img {
       width: 100%;
-      border: 1px solid #eee;
       border-radius: 5px; }
   .grid-box h3 a {
     color: #3D4B4E; }
@@ -4614,7 +4614,11 @@ form .btn {
     height: 67px;
     bottom: -15px; }
   .grid-box:hover {
-    outline: 2px solid #00B1FF; }
+    padding-top: 18px;
+    padding-left: 13px;
+    padding-right: 13px;
+    border: 2px solid #00B1FF;
+    border-radius: 7px; }
 
 .main-container {
   overflow: hidden; }

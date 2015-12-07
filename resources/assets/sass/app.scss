@@ -192,6 +192,8 @@ form{
   .img-wrap{
     position: relative;
     overflow: hidden;
+    border: 1px solid #eee;
+
 
     .like-wrap{
       width: 115px;
@@ -335,7 +337,6 @@ form{
       //-webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.15);
       //-moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.15);
       //box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.15);
-      border: 1px solid #eee;
       border-radius: 5px;
     }
 
@@ -380,7 +381,11 @@ form{
   }
 
   &:hover{
-    outline:2px solid $sky-blue;
+    padding-top: 18px;
+    padding-left: 13px;
+    padding-right: 13px;
+    border:2px solid $sky-blue;
+    border-radius: 7px;
   }
 
 }
