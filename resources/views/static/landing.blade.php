@@ -137,9 +137,10 @@
                 <div class="img-wrap">
                     <img class="img-responsive" src="/assets/images/dummies/box-image-dummy.png">
                     <a href="#" class="overlay-tag category-tag top product">Category: Products</a>
-                    <a href="#" class="social-pic likes">Like it</a>
-                    <a href="#" class="social-pic comment">Comment</a>
-
+                    <div class="like-wrap">
+                        <a href="#" class="social-pic likes">Like it</a>
+                        <a href="#" class="social-pic comment">Comment</a>
+                    </div>
                     <a href="#" class="overlay-tag bottom get-it">
                         <div class="circle-3">
                             <div class="circle-2">
@@ -163,8 +164,11 @@
                 <div class="img-wrap">
                     <img class="img-responsive" src="/assets/images/dummies/img-small.jpg">
                     <a href="#" class="overlay-tag category-tag top photo">Category: Photo</a>
-                    <a href="#" class="social-pic likes">Like it</a>
-                    <a href="#" class="social-pic comment">Comment</a>
+
+                    <div class="like-wrap">
+                         <a href="#" class="social-pic likes">Like it</a>
+                         <a href="#" class="social-pic comment">Comment</a>
+                    </div>
 
                     <a href="#" class="overlay-tag bottom get-it">
                         <div class="circle-3">
@@ -184,13 +188,16 @@
                     <li class="box-tag"><a>Improvements</a></li>
                 </ul>
             </div>
-            <div class="col-md-12 grid-box  full-620">
+            <div class="col-md-12 grid-box big-box full-620">
                 <div class="img-wrap">
-                    <img class="img-responsive" src="/assets/images/dummies/img-big.jpg">
+                    <img class="img-responsive" src="/assets/images/dummies/img-small.jpg">
                     <a href="#" class="overlay-tag category-tag top idea">Category: Idea</a>
                     <a href="#" class="overlay-tag bottom author">Get it</a>
-                    <a href="#" class="social-pic likes">Like it</a>
-                    <a href="#" class="social-pic comment">Comment</a>
+
+                    <div class="like-wrap">
+                        <a href="#" class="social-pic likes">Like it</a>
+                        <a href="#" class="social-pic comment">Comment</a>
+                    </div>
 
                     <a href="#" class="overlay-tag bottom get-it big green">
                         <div class="circle-3">

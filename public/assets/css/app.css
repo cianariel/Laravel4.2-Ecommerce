@@ -4457,7 +4457,22 @@ form .btn {
   overflow: hidden;
   margin-top: 30px; }
   .grid-box .img-wrap {
-    position: relative; }
+    position: relative;
+    overflow: hidden; }
+    .grid-box .img-wrap .like-wrap {
+      width: 115px;
+      height: 55px;
+      background: rgba(255, 255, 255, 0.9);
+      position: absolute;
+      bottom: -10px;
+      left: -30px;
+      padding-left: 30px;
+      padding-top: 6px;
+      padding-bottom: 18px;
+      border-radius: 20px; }
+      .grid-box .img-wrap .like-wrap a {
+        position: static;
+        float: left; }
     .grid-box .img-wrap a {
       position: absolute;
       text-indent: -9999px; }
@@ -4549,6 +4564,12 @@ form .btn {
       .grid-box li.box-tag a:hover {
         color: #fff;
         background-color: #8e8e8e; }
+  .grid-box.big-box .like-wrap {
+    padding-left: 45px;
+    padding-top: 9px;
+    width: 139px;
+    height: 67px;
+    bottom: -15px; }
 
 .main-container {
   overflow: hidden; }

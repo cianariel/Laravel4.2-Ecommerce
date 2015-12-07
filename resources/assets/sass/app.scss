@@ -152,7 +152,25 @@ form{
 
   .img-wrap{
     position: relative;
+    overflow: hidden;
 
+    .like-wrap{
+      width: 115px;
+      height: 55px;
+      background: rgba(255,255,255,.9);
+      position: absolute;
+      bottom: -10px;
+      left: -30px;
+      padding-left: 30px;
+      padding-top: 6px;
+      padding-bottom: 18px;
+      border-radius: 20px;
+
+      a{
+        position: static;
+        float: left;
+      }
+    }
     a{
       position: absolute;
       text-indent: -9999px;
@@ -301,6 +319,17 @@ form{
       }
     }
   }
+
+  &.big-box{
+    .like-wrap{
+      padding-left:45px;
+      padding-top: 9px;
+      width: 139px;
+      height: 67px;
+      bottom: -15px;
+    }
+  }
+
 }
 
 .main-container{
