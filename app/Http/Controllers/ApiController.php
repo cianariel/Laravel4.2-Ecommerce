@@ -10,11 +10,17 @@
     use Illuminate\Http\Response as IlluminateResponse;
     use Illuminate\Support\Facades\Log;
     use Illuminate\Support\Collection;
+    use JWTAuth;
 
     class ApiController extends Controller {
 
         protected $httpStatus = array('code' => IlluminateResponse::HTTP_OK, 'message' => 'success');
         protected $authToken = "";
+
+        public function __construct()
+        {
+
+        }
 
         /**
          * Return the custom status code and message
@@ -57,6 +63,7 @@
          */
         public function setAuthToken($toke)
         {
+            session(['auth.token' => isset($toke) ? $toke : null]);
             $this->authToken = $toke;
 
             return $this;
@@ -71,9 +78,15 @@
          */
         public function makeResponse($data, $headers = [])
         {
-            $data = array_merge(['data'=>$data], [
-                'token' => $this->getAuthToken()
-            ]);
+            $authToken = $this->getAuthToken();
+            if ($authToken != "")
+            {
+                $data = array_merge(['data' => $data], [
+                    'token' => $this->getAuthToken()
+                ]);
+            }else{
+                $data =['data' => $data];
+            }
 
             return response()->json($data, $this->getStatusCode(), $headers);
         }
@@ -93,8 +106,7 @@
                 'error' => [
                     'message'     => $message,
                     'status_code' => $this->getStatusCode()
-                ],
-                'token' => $this->getStatusCode()
+                ]
             ]);
 
         }
@@ -115,8 +127,7 @@
                     'total_pages'  => ceil($modelData->getTotal() / $modelData->getPerPage()),
                     'current_page' => $modelData->getCurrentPage(),
                     'limit'        => $modelData->getPerPage()
-                ],
-                'token'     => $this->getStatusCode()
+                ]
             ]);
 
             return $this->makeResponse($data);

@@ -23,7 +23,8 @@
             $this->user = new User();
 
             // Apply the jwt.auth middleware to all methods in this controller
-            $this->middleware('jwt.auth', ['except' => ['passwordResetForm','passwordReset', 'sendPasswordResetEmail', 'verifyEmail', 'index', 'authenticate', 'fbLogin', 'registerUser']]);
+            $this->middleware('jwt.auth', ['except' => ['logOut','passwordResetForm', 'passwordReset', 'sendPasswordResetEmail', 'verifyEmail', 'index', 'authenticate', 'fbLogin', 'registerUser']]);
+            //parent::__construct();
         }
 
 
@@ -61,12 +62,35 @@
 
         public function securePage()
         {
-            echo "inside secure page !";
-            $user = JWTAuth::parseToken()->authenticate();
+            // echo "inside secure page !";
+            // $user = JWTAuth::parseToken()->authenticate();
 
-            dd($user);
+            //  dd($user);
 
             // return "inside secure area";
+            $newToken = JWTAuth::parseToken()->refresh();
+
+            return $this->setStatusCode("200")
+                ->setAuthToken($newToken)
+                ->makeResponse(session('auth.token'));
+        }
+
+        public function logOut()
+        {
+            $tokenValue = \Input::all();
+            $message  = "";
+
+            // if a authenticated user request for logout then Token will be rest and session will set to null
+            try{
+            if( isset($tokenValue['token']) )
+                JWTAuth::parseToken()->refresh();
+            }catch (\Exception $ex)
+            {
+                $message = "Invalid token provided";
+            }
+            session(['auth.token' => null]);
+            return $this->setStatusCode(IlluminateResponse::HTTP_OK)
+                ->makeResponse('successfully LogOut.'.$message);
         }
 
 
@@ -194,7 +218,7 @@
                     ]
                 ];
 
-                list($userData, $validator) = $this->inputValidation($inputData,$validationRules);
+                list($userData, $validator) = $this->inputValidation($inputData, $validationRules);
 
                 if ($validator->fails())
                 {
@@ -246,7 +270,7 @@
                 $validationRules = [
 
                     'rules'  => [
-                        'FullName' => isset($userData['Password']) ?'required | max: 25':'',
+                        'FullName' => isset($userData['Password']) ? 'required | max: 25' : '',
 
                         'Password' => isset($userData['Password']) ? 'required | min: 6 ' : '',
                     ],
@@ -257,7 +281,7 @@
                     ]
                 ];
 
-                list($userData, $validator) = $this->inputValidation($userData,$validationRules);
+                list($userData, $validator) = $this->inputValidation($userData, $validationRules);
 
                 if ($validator->fails())
                 {
@@ -419,11 +443,11 @@
          * User input validation
          * @return array
          */
-        private function inputValidation($inputData,$validationRules)
+        private function inputValidation($inputData, $validationRules)
         {
             // Trim blank spaces from
 
-            \Input::merge(array_map('trim',$inputData));
+            \Input::merge(array_map('trim', $inputData));
 
             $userData = \Input::all();
 

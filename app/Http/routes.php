@@ -24,6 +24,10 @@
 
     Route::group(['prefix' => 'api'], function ()
     {
+        /*
+         * User Authentication route collection
+         *
+         * */
         Route::resource('authenticate', 'AuthenticateController', ['only' => ['index']]);
         Route::post('authenticate', 'AuthenticateController@authenticate');
         Route::post('register-user', 'AuthenticateController@registerUser');
@@ -35,6 +39,7 @@
         Route::post('change-profile', 'AuthenticateController@changeProfile');
 
         Route::post('secure-page', 'AuthenticateController@securePage');
+        Route::any('logout', 'AuthenticateController@logOut');
 
     });
 
