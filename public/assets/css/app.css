@@ -4537,7 +4537,7 @@ form .btn {
           .grid-box .img-wrap .get-it.big div.circle-1 {
             width: 80px;
             height: 77px;
-            padding: 38% 5% 5% 3%;
+            padding: 30px 5% 5% 3%;
             background: #C7C747;
             font-size: 1.1rem;
             border-radius: 50%;
@@ -5031,7 +5031,7 @@ header.colophon .search-bar {
   .grid-box .img-wrap .get-it:not(.big),
   .grid-box .img-wrap a.author {
     right: 45%;
-    bottom: -8px; } }
+    bottom: 3px; } }
 @media (max-width: 480px) {
   #hero-nav a:not(.home-link) {
     padding-left: 10px;
