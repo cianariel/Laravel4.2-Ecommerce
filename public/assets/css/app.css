@@ -4911,9 +4911,11 @@ header.colophon .search-bar {
       border-color: #0578a0; }
 
 #hero-nav {
-  overflow: hidden;
+  overflow: visible;
   background: #F2F2F2;
   border-bottom: 1px solid #d5dfdf; }
+  #hero-nav ul {
+    overflow: hidden; }
   #hero-nav a {
     color: #FF0042;
     text-transform: none;

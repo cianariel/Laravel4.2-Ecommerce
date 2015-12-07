@@ -18,13 +18,13 @@ $tarmac: #3D4B4E;
   color: $iridium !important;
 }
 .orange{
-  color: $dark-orange !important;;
+  color: $dark-orange !important;
 }
 .green{
-  color: $pine-green !important;;
+  color: $pine-green !important;
 }
 .blue{
-  color: $sky-blue !important;;
+  color: $sky-blue !important;
 }
 
 .pale-grey-bg{
@@ -880,10 +880,12 @@ header.colophon{
 
 
 #hero-nav{
-  overflow: hidden;
+  overflow: visible;
   background: #F2F2F2;
   border-bottom: 1px solid darken($pale-grey, 10%);
-
+  ul{
+    overflow: hidden;
+  }
   a{
     color: $iridium;
     text-transform: none;
