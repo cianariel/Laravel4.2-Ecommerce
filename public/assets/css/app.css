@@ -4962,7 +4962,7 @@ header.colophon .search-bar {
     color: #fff;
     text-shadow: -1px -1px 0 #d5dfdf, 1px -1px 0 #d5dfdf, -1px 1px 0 #fff, 1px 1px 0 #fff; }
 
-@media (max-width: 1200px) {
+@media only screen and (max-device-width: 1200px) {
   #top-nav a {
     margin-right: 3%; }
 
@@ -4975,7 +4975,7 @@ header.colophon .search-bar {
 
   .why-us {
     margin-top: 0; } }
-@media (max-width: 992px) {
+@media only screen and (max-device-width: 992px) {
   #top-nav a {
     padding-left: 24px;
     padding-right: 10px; }
@@ -4985,7 +4985,7 @@ header.colophon .search-bar {
   header.colophon #ideaing-logo {
     float: right; }
   header.colophon .search-bar {
-    margin-left: 3%; }
+    margin-left: 0; }
 
   #mid-nav a {
     padding-left: 15px;
@@ -5002,37 +5002,22 @@ header.colophon .search-bar {
     margin-top: 65px; }
 
   #back-to-top {
-    bottom: 3.2%; }
+    bottom: 3.5%; }
 
   .full-sm {
     width: 100%;
-    padding: 0; }
-
-  #top-nav .category-menu {
-    width: 140px;
-    padding: 0; }
-  #top-nav a {
-    text-indent: -9999px;
-    width: 40px;
-    padding-left: 5px;
-    padding-right: 0px;
-    margin-left: 0; }
-
-  .logo-wrap {
-    padding: 0; }
-
+    padding: 0; } }
+@media only screen and (max-device-width: 768px) {
   #mid-nav a {
-    font-size: 1.6rem; }
-    #mid-nav a.more-link {
-      padding-left: 5%; } }
-@media (max-width: 768px) {
-  #mid-nav a {
+    padding-left: 2%;
+    padding-right: 2%;
     font-size: 2rem; }
     #mid-nav a.more-link {
       padding-left: 8%; }
 
   #hero {
-    min-height: 570px; }
+    min-height: 570px;
+    padding-bottom: 20px; }
 
   #hero-nav li.active a::after {
     right: 43px; }
@@ -5055,7 +5040,7 @@ header.colophon .search-bar {
     #mobile-side-filters div:not(#idea-filter),
     #mobile-side-filters h5 {
       display: none; } }
-@media (max-width: 620px) {
+@media only screen and (max-device-width: 620px) {
   #hero-nav a {
     padding-left: 35px;
     background-size: 30px;
@@ -5069,18 +5054,6 @@ header.colophon .search-bar {
   .full-620 {
     width: 100%;
     padding: 0; }
-
-  .search-bar {
-    width: 0;
-    padding-top: 0; }
-    .search-bar input {
-      display: none; }
-    .search-bar .search-toggle {
-      display: block !important;
-      padding-top: 0;
-      margin-top: -3px; }
-    .search-bar #hero-nav.all-link {
-      background-position: 4px top; }
 
   #hero-nav a.home-link {
     width: 100%;
@@ -5099,10 +5072,40 @@ header.colophon .search-bar {
   .grid-box .img-wrap a.author {
     right: 45%;
     bottom: 3px; } }
-@media (max-width: 480px) {
+@media screen and (max-device-width: 480px) {
   #hero-nav a:not(.home-link) {
     padding-left: 10px;
     padding-right: 10px; }
+
+  #top-nav .category-menu {
+    width: 140px;
+    padding: 0; }
+  #top-nav a {
+    text-indent: -9999px;
+    width: 40px;
+    padding-left: 5px;
+    padding-right: 0px;
+    margin-left: 0; }
+
+  .logo-wrap {
+    padding: 0; }
+
+  #mid-nav a {
+    font-size: 1.6rem; }
+    #mid-nav a.more-link {
+      padding-left: 5%; }
+
+  .search-bar {
+    width: 0;
+    padding-top: 0; }
+    .search-bar input {
+      display: none; }
+    .search-bar .search-toggle {
+      display: block !important;
+      padding-top: 0;
+      margin-top: -3px; }
+    .search-bar #hero-nav.all-link {
+      background-position: 4px top; }
 
   #ideaing-logo {
     width: 125px;

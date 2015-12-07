@@ -2,7 +2,7 @@
 <html>
     <head>
         <title>Ideaing</title>
-
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 {{--        {{ HTML::style('css/app.css') }}--}}
         <link rel="stylesheet" href="/assets/css/app.css">
         <script src="/assets/js/vendor/jquery-1.11.3.min.js"></script>
@@ -24,7 +24,7 @@
                             <div class="col-md-2 col-xs-4 logo-wrap">
                                 <img src="/assets/images/ideaing-logo-small.png" id="ideaing-logo" class="logo top-logo"/>
                             </div>
-                            <section class="search-bar col-xs-3 col-sm-3 col-md-2">
+                            <section class="search-bar col-xs-4 col-md-2">
                                 <a href="#" class="search-toggle" data-toggle=".mobile-search-bar">Search</a>
                                 <input class="form-control" type="text" name="search" value="Search..."/>
                             </section>

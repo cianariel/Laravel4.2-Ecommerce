@@ -964,7 +964,7 @@ header.colophon{
 
 // RESPONSIVE BEHAVIOUR
 
-@media (max-width: 1200px){
+@media only screen and (max-device-width: 1200px){
   #top-nav a {
     margin-right: 3%;
   }
@@ -984,7 +984,7 @@ header.colophon{
   }
 }
 
-@media (max-width: 992px){
+@media only screen and (max-device-width: 992px){
   #top-nav a {
     padding-left: 24px;
     padding-right: 10px;
@@ -998,7 +998,7 @@ header.colophon{
       float: right;
     }
     .search-bar {
-      margin-left: 3%;
+      margin-left: 0;
     }
   }
 
@@ -1031,7 +1031,7 @@ header.colophon{
   }
 
   #back-to-top{
-    bottom: 3.2%;
+    bottom: 3.5%;
   }
 
   .full-sm{
@@ -1039,70 +1039,25 @@ header.colophon{
     padding: 0;
   }
 
-
-
-  #top-nav{
-    .category-menu{
-      width: 140px;
-      padding: 0;
-    }
-    a {
-      //font-size: 1.3rem;
-      //background-image: none !important;
-      text-indent: -9999px;
-      width: 40px;
-      padding-left: 5px;
-      padding-right: 0px;
-      margin-left: 0;
-      //
-
-      //  background-image: none !important;
-      //  a{
-      //    padding-left: 30px;
-      //    background-image: url("/assets/images/signin-icon.png");
-      //    background-position: left;
-      //    background-repeat: no-repeat;
-      //  }
-      //}
-    }
-  }
-
-  .logo-wrap{
-    padding: 0;
-  }
-
-  #mid-nav a {
-    //padding-left: 2%;
-    //padding-right: 2%;
-    font-size: 1.6rem;
-
-    //
-    &.more-link{
-      padding-left: 5%;
-    }
-  }
-
-
 }
 
 
-@media (max-width: 768px){
+@media only screen and (max-device-width: 768px){
   #mid-nav a {
-    //padding-left: 2%;
-    //padding-right: 2%;
+    padding-left: 2%;
+    padding-right: 2%;
     font-size: 2rem;
 
 
     &.more-link{
       padding-left: 8%;
     }
-
-
   }
 
 
 #hero{
   min-height: 570px;
+  padding-bottom: 20px;
 }
 
   #hero-nav{
@@ -1153,7 +1108,7 @@ header.colophon{
 }
 
 
-@media (max-width: 620px){
+@media only screen and (max-device-width: 620px){
   #hero-nav{
     a {
       padding-left: 35px;
@@ -1173,29 +1128,6 @@ header.colophon{
     width: 100%;
     padding: 0;
   }
-
-
-  .search-bar{
-    width: 0;
-    padding-top: 0;
-
-    input{
-      display: none;
-    }
-    .search-toggle{
-      display: block !important;
-      padding-top: 0;
-      margin-top: -3px;
-
-    }
-
-    #hero-nav{
-      &.all-link{
-        background-position: 4px top;
-      }
-    }
-  }
-
 
 
   #hero-nav a.home-link{
@@ -1230,12 +1162,75 @@ header.colophon{
 
 }
 
-@media (max-width: 480px){
+@media screen and (max-device-width: 480px){
 
   #hero-nav a:not(.home-link) {
     padding-left: 10px;
     padding-right: 10px;
 
+  }
+
+
+  #top-nav{
+    .category-menu{
+      width: 140px;
+      padding: 0;
+    }
+    a {
+      //font-size: 1.3rem;
+      //background-image: none !important;
+      text-indent: -9999px;
+      width: 40px;
+      padding-left: 5px;
+      padding-right: 0px;
+      margin-left: 0;
+      //
+
+      //  background-image: none !important;
+      //  a{
+      //    padding-left: 30px;
+      //    background-image: url("/assets/images/signin-icon.png");
+      //    background-position: left;
+      //    background-repeat: no-repeat;
+      //  }
+      //}
+    }
+  }
+
+  .logo-wrap{
+    padding: 0;
+  }
+
+  #mid-nav a {
+    //padding-left: 2%;
+    //padding-right: 2%;
+    font-size: 1.6rem;
+
+    //
+    &.more-link{
+      padding-left: 5%;
+    }
+  }
+
+  .search-bar{
+    width: 0;
+    padding-top: 0;
+
+    input{
+      display: none;
+    }
+    .search-toggle{
+      display: block !important;
+      padding-top: 0;
+      margin-top: -3px;
+
+    }
+
+    #hero-nav{
+      &.all-link{
+        background-position: 4px top;
+      }
+    }
   }
 
 
