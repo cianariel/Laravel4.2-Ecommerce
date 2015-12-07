@@ -83,9 +83,9 @@
                 <li class="col-sm-4 "><a class="home-link" href="">Home</a></li>
 
                 <li class="col-sm-2 active"><a href="" class="all-link">All</a></li>
-                <li class="col-sm-2 "><a href="" class="ideas-link orange">Ideas</a></li>
-                <li class="col-sm-2 "><a href="" class="products-link green">Products</a></li>
-                <li class="col-sm-2 "><a href="" class="photos-link blue">Photos</a></li>
+                <li class="col-sm-2 "><a href="" class="ideas-link">Ideas</a></li>
+                <li class="col-sm-2 "><a href="" class="products-link">Products</a></li>
+                <li class="col-sm-2 "><a href="" class="photos-link">Photos</a></li>
             </ul>
         </div>
     </nav>

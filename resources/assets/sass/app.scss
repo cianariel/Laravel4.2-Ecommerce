@@ -836,21 +836,48 @@ header.colophon{
     padding-left: 55px;
     background-position: left;
     background-repeat: no-repeat;
+    color: $tarmac;
 
     &.home-link{
-      background-image: url('/assets/images/house-pink.png');
+      background-image: url('/assets/images/house-grey.png');
+      background-position: left 10px;
+
+      &:hover{
+        color: $dark-orange;
+        background-image: url('/assets/images/house-pink.png');
+      }
     }
     &.all-link{
-      background-image: url('/assets/images/grid-pink.png');
+      background-image: url('/assets/images/grid-dense-grey.png');
+
+      &:hover{
+        color: $iridium;
+        background-image: url('/assets/images/grid-pink.png');
+      }
     }
     &.ideas-link{
-      background-image: url('/assets/images/lamp-orange.png');
+      background-image: url('/assets/images/lamp-grey.png');
+
+      &:hover{
+        color: $dark-orange;
+        background-image: url('/assets/images/lamp-orange.png');
+      }
     }
     &.products-link{
-      background-image: url('/assets/images/tag-green.png');
+      background-image: url('/assets/images/tag-grey.png');
+
+      &:hover{
+        color: $pine-green;
+        background-image: url('/assets/images/tag-green.png');
+      }
     }
     &.photos-link{
-      background-image: url('/assets/images/photos-blue.png');
+      background-image: url('/assets/images/photos-grey.png');
+
+      &:hover{
+        color: $sky-blue;
+        background-image: url('/assets/images/photos-blue.png');
+      }
       padding-left: 65px;
     }
 

@@ -4881,18 +4881,35 @@ header.colophon .search-bar {
     text-align: right;
     padding-left: 55px;
     background-position: left;
-    background-repeat: no-repeat; }
+    background-repeat: no-repeat;
+    color: #3D4B4E; }
     #hero-nav a.home-link {
-      background-image: url("/assets/images/house-pink.png"); }
+      background-image: url("/assets/images/house-grey.png");
+      background-position: left 10px; }
+      #hero-nav a.home-link:hover {
+        color: #FF7F00;
+        background-image: url("/assets/images/house-pink.png"); }
     #hero-nav a.all-link {
-      background-image: url("/assets/images/grid-pink.png"); }
+      background-image: url("/assets/images/grid-dense-grey.png"); }
+      #hero-nav a.all-link:hover {
+        color: #FF0042;
+        background-image: url("/assets/images/grid-pink.png"); }
     #hero-nav a.ideas-link {
-      background-image: url("/assets/images/lamp-orange.png"); }
+      background-image: url("/assets/images/lamp-grey.png"); }
+      #hero-nav a.ideas-link:hover {
+        color: #FF7F00;
+        background-image: url("/assets/images/lamp-orange.png"); }
     #hero-nav a.products-link {
-      background-image: url("/assets/images/tag-green.png"); }
+      background-image: url("/assets/images/tag-grey.png"); }
+      #hero-nav a.products-link:hover {
+        color: #C7C747;
+        background-image: url("/assets/images/tag-green.png"); }
     #hero-nav a.photos-link {
-      background-image: url("/assets/images/photos-blue.png");
+      background-image: url("/assets/images/photos-grey.png");
       padding-left: 65px; }
+      #hero-nav a.photos-link:hover {
+        color: #00B1FF;
+        background-image: url("/assets/images/photos-blue.png"); }
   #hero-nav li.active a::after {
     content: '▲';
     position: relative;
