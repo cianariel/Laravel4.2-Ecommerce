@@ -4388,6 +4388,9 @@ a.label:focus {
   -o-transition: width 0.3s;
   /* Opera */ }
 
+[data-toggle] {
+  cursor: pointer; }
+
 .btn-success {
   background-color: #FF0042;
   border-color: #FF0042; }
@@ -4973,7 +4976,8 @@ header.colophon .search-bar {
     margin-left: 0; }
 
   #mid-nav a.more-link {
-    background: url("/assets/images/dots-vertical.png") center no-repeat; }
+    background: url("/assets/images/dots-vertical.png") center no-repeat;
+    background-size: contain; }
 
   .bottom-load-more {
     margin-top: 65px; }
@@ -5001,9 +5005,12 @@ header.colophon .search-bar {
     padding-left: 34px;
     background-position: left;
     background-repeat: no-repeat;
-    background-size: 30px; }
+    background-size: 30px;
+    margin-right: 6%; }
     #hero-nav a.photos-link {
       padding-left: 34px; }
+    #hero-nav a.home-link {
+      display: none; }
 
   .get-it.author {
     display: none; }
@@ -5016,7 +5023,8 @@ header.colophon .search-bar {
 @media (max-width: 620px) {
   #hero-nav a {
     padding-left: 35px;
-    background-size: 30px; }
+    background-size: 30px;
+    margin-right: 1%; }
   #hero-nav li.active a::after {
     right: 8px; }
 
@@ -5076,6 +5084,8 @@ header.colophon .search-bar {
       display: block !important;
       padding-top: 0;
       margin-top: -3px; }
+    .search-bar #hero-nav.all-link {
+      background-position: 4px top; }
 
   #ideaing-logo {
     width: 125px;

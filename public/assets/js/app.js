@@ -13,3 +13,8 @@ $('body').on('click', '[data-toggle]', function(e){
     $($show).toggle();
     $that.addClass('active');
 });
+
+$("#back-to-top").click(function() {
+    $('html, body').animate({ scrollTop: 0 }, 'slow');
+    return false;
+});

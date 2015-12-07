@@ -42,6 +42,10 @@ $tarmac: #3D4B4E;
   -o-transition: width 0.3s; /* Opera */
 }
 
+[data-toggle]{
+  cursor: pointer;
+}
+
 // ELEMENTS
 
 .btn-success{
@@ -981,6 +985,7 @@ header.colophon{
 
   #mid-nav a.more-link {
     background: url("/assets/images/dots-vertical.png") center no-repeat;
+    background-size: contain;
   }
 
   //.why-us{
@@ -1036,11 +1041,18 @@ header.colophon{
       background-position: left;
       background-repeat: no-repeat;
       background-size: 30px;
-
+      margin-right: 6%;
 
       &.photos-link{
         padding-left: 34px;
       }
+
+      &.home-link{
+        display: none;
+        //background-position: left center;
+      }
+
+
     }
 
   }
@@ -1071,6 +1083,7 @@ header.colophon{
     a {
       padding-left: 35px;
       background-size: 30px;
+      margin-right: 1%;
     }
     li.active a::after {
       right: 8px;
@@ -1181,6 +1194,12 @@ header.colophon{
       padding-top: 0;
       margin-top: -3px;
 
+    }
+
+    #hero-nav{
+      &.all-link{
+        background-position: 4px top;
+      }
     }
   }
 

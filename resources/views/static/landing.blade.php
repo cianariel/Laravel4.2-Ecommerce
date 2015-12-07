@@ -78,7 +78,7 @@
         </div>
     </section>
     <nav id="hero-nav" class="col-sm-12">
-        <div class="container">
+        <div class="container full-620">
             <ul>
                 <li class="col-sm-4 "><a class="home-link" href="">Home</a></li>
 
