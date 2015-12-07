@@ -4457,8 +4457,7 @@ nav a {
     height: 100%; }
 
 #ideaing-logo {
-  width: 175px;
-  height: 45px; }
+  width: 175px; }
   #ideaing-logo.top-logo {
     margin-top: 10px; }
 
@@ -4660,6 +4659,8 @@ form .btn {
   .sidebar-box ul {
     height: 25px;
     margin-bottom: 0; }
+  .sidebar-box .img-wrap {
+    overflow: visible; }
   .sidebar-box li.box-tag a {
     display: inline;
     font-size: 1.5rem;
@@ -4916,9 +4917,10 @@ header.colophon .search-bar {
         background-image: url("/assets/images/photos-blue.png"); }
   #hero-nav li.active a::after {
     content: '▲';
+    font-size: 1.7rem;
     position: relative;
     bottom: -28px;
-    right: 55px;
+    right: 58px;
     color: #fff;
     text-shadow: -1px -1px 0 #d5dfdf, 1px -1px 0 #d5dfdf, -1px 1px 0 #fff, 1px 1px 0 #fff; }
 
