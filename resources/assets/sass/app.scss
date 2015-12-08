@@ -897,7 +897,7 @@ header.colophon{
   background: #F2F2F2;
   border-bottom: 1px solid darken($pale-grey, 10%);
   ul{
-    overflow: hidden;
+    overflow: visible;
   }
   a{
     color: $iridium;
@@ -913,7 +913,7 @@ header.colophon{
       background-position: left 10px;
 
       &:hover{
-        color: $dark-orange;
+        color: $iridium;
         background-image: url('/assets/images/house-pink.png');
       }
     }

@@ -4917,7 +4917,7 @@ header.colophon .search-bar {
   background: #F2F2F2;
   border-bottom: 1px solid #d5dfdf; }
   #hero-nav ul {
-    overflow: hidden; }
+    overflow: visible; }
   #hero-nav a {
     color: #FF0042;
     text-transform: none;
@@ -4930,7 +4930,7 @@ header.colophon .search-bar {
       background-image: url("/assets/images/house-grey.png");
       background-position: left 10px; }
       #hero-nav a.home-link:hover {
-        color: #FF7F00;
+        color: #FF0042;
         background-image: url("/assets/images/house-pink.png"); }
     #hero-nav a.all-link {
       background-image: url("/assets/images/grid-dense-grey.png"); }
