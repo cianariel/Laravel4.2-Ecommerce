@@ -1127,7 +1127,7 @@ header.colophon{
       margin-right: 1%;
     }
     li.active a::after {
-      right: 8px;
+      right: 19px;
     }
   }
 
@@ -1175,12 +1175,6 @@ header.colophon{
 
 @media screen and (max-device-width: 480px){
 
-  #hero-nav a:not(.home-link) {
-    padding-left: 10px;
-    padding-right: 10px;
-
-  }
-
 
   #top-nav{
     .category-menu{
@@ -1197,6 +1191,7 @@ header.colophon{
       margin-left: 0;
       //
 
+
       //  background-image: none !important;
       //  a{
       //    padding-left: 30px;
@@ -1207,6 +1202,26 @@ header.colophon{
       //}
     }
   }
+
+
+  #hero-nav a {
+    padding-left: 14px;
+    padding-right: 12px;
+
+    &.all-link{
+      background-position: 6px top !important;
+    }
+    &.photos-link {
+      padding-left: 21px;
+    }
+
+  }
+
+
+  #mid-nav a {
+    padding-left: 2.2%;
+    padding-right: 2.2%;
+ }
 
   .logo-wrap{
     padding: 0;
@@ -1250,6 +1265,10 @@ header.colophon{
   #ideaing-logo {
     width: 125px;
     height: auto;
+
+      &.top-logo{
+        margin-top: 10px;
+      }
   }
 
   header.colophon .search-bar input {

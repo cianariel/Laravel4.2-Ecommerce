@@ -5044,7 +5044,7 @@ header.colophon .search-bar {
     background-size: 30px;
     margin-right: 1%; }
   #hero-nav li.active a::after {
-    right: 8px; }
+    right: 19px; }
 
   .signin {
     margin-right: 30px; }
@@ -5071,10 +5071,6 @@ header.colophon .search-bar {
     right: 45%;
     bottom: 3px; } }
 @media screen and (max-device-width: 480px) {
-  #hero-nav a:not(.home-link) {
-    padding-left: 10px;
-    padding-right: 10px; }
-
   #top-nav .category-menu {
     width: 140px;
     padding: 0; }
@@ -5084,6 +5080,18 @@ header.colophon .search-bar {
     padding-left: 5px;
     padding-right: 0px;
     margin-left: 0; }
+
+  #hero-nav a {
+    padding-left: 14px;
+    padding-right: 12px; }
+    #hero-nav a.all-link {
+      background-position: 6px top !important; }
+    #hero-nav a.photos-link {
+      padding-left: 21px; }
+
+  #mid-nav a {
+    padding-left: 2.2%;
+    padding-right: 2.2%; }
 
   .logo-wrap {
     padding: 0; }
@@ -5108,6 +5116,8 @@ header.colophon .search-bar {
   #ideaing-logo {
     width: 125px;
     height: auto; }
+    #ideaing-logo.top-logo {
+      margin-top: 10px; }
 
   header.colophon .search-bar input {
     min-width: 125px; }
