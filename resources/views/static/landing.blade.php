@@ -14,7 +14,15 @@
                     <li><a href="">Outdoor</a></li>
                     <li><a href="">Lighting</a></li>
                     <li><a href="">Decor</a></li>
-                    <li><a class="more-link" href="">...</a></li>
+                    <li><a data-toggle=".extra-nav" class="more-link" href="">...</a></li>
+                    <li>
+                        <ul class="extra-nav hidden-xs">
+                            <li><a href="">Wallpaper</a></li>
+                            <li><a href="">Pillows</a></li>
+                            <li><a href="">Travel</a></li>
+                            <li><a href="">Wearables</a></li>
+                        </ul>
+                    </li>
                 </ul>
             </div>
             <div class="container mobile-menu hidden-lg hidden-md hidden-sm full-620">
@@ -22,11 +30,22 @@
                     <li class="selected"><a href="">All ideas</a></li>
                     <li><a href="">Kitchen</a></li>
                     <li><a href="">Bath</a></li>
-                    <li><a class="nested" href="">More</a></li>
-                    {{--<li><a href="">Outdoor</a></li>--}}
-                    {{--<li><a href="">Lighting</a></li>--}}
-                    {{--<li><a href="">Decor</a></li>--}}
-                    <li><a class="more-link" href="">...</a></li>
+                    <li><a class="nested" data-toggle=".mobile-more-nav" data-hide=".mobile-extra-nav" href="">More</a></li>
+
+                    <li><a class="more-link" data-toggle=".mobile-extra-nav"  data-hide=".mobile-more-nav" href="">...</a></li>
+
+                    <ul class="extra-nav mobile-extra-nav">
+                        <li><a href="">Wallpaper</a></li>
+                        <li><a href="">Pillows</a></li>
+                        <li><a href="">Travel</a></li>
+                        <li><a href="">Wearables</a></li>
+                    </ul>
+                    <ul class="extra-nav mobile-more-nav">
+                        <li><a href="">Bedroom</a></li>
+                        <li><a href="">Office</a></li>
+                        <li><a href="">Living</a></li>
+                        <li><a href="">Outdoor</a></li>
+                    </ul>
                 </ul>
             </div>
         </nav>

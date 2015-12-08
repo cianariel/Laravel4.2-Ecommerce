@@ -4585,7 +4585,7 @@ form .btn {
       height: 64px;
       background: url("/assets/images/dummies/author.png") center no-repeat;
       right: 25px;
-      bottom: -15px; }
+      bottom: 6px; }
     .grid-box .img-wrap .social-pic {
       width: 40px;
       height: 40px;
@@ -4811,31 +4811,54 @@ header.colophon .search-bar {
   content: '▼';
   padding-left: 7px; }
 
-#mid-nav {
+#mid-nav, .extra-nav {
   margin-bottom: 140px;
   min-height: 47px;
   background: #ED1E47; }
-  #mid-nav a {
+  #mid-nav > ul, .extra-nav > ul {
+    position: relative;
+    overflow: visible; }
+  #mid-nav a, .extra-nav a {
     margin-top: 8px;
     margin-bottom: 8px;
     padding: 5px 35px;
     overflow: hidden;
     font-size: 1.2rem;
     color: #fff; }
-    #mid-nav a.more-link {
+    #mid-nav a.more-link, .extra-nav a.more-link {
       text-indent: -9999px;
       background: url("/assets/images/dots-white.png") center no-repeat; }
-    #mid-nav a:hover {
+    #mid-nav a.nested::after, .extra-nav a.nested::after {
+      content: '	▼'; }
+    #mid-nav a:hover, .extra-nav a:hover {
       border: 2px solid #fff;
       border-radius: 15px;
       margin-top: 6px;
       padding: 5px 33px; }
-  #mid-nav li.selected a {
+  #mid-nav li.nested, .extra-nav li.nested {
+    position: relative; }
+  #mid-nav li.selected a, .extra-nav li.selected a {
     border: 2px solid #fff;
     border-radius: 15px;
     margin-top: 6px;
     padding: 5px 33px;
     background-color: #CE1F46; }
+
+.extra-nav {
+  display: none;
+  position: absolute;
+  right: 4%;
+  top: 40px;
+  z-index: 10; }
+  .extra-nav li {
+    width: 100%;
+    float: none; }
+    .extra-nav li a {
+      width: 100%; }
+
+.mobile-extra-nav,
+.mobile-more-nav {
+  padding: 20px; }
 
 .why-us {
   margin-top: 45px; }
@@ -4992,10 +5015,10 @@ header.colophon .search-bar {
   #top-nav a {
     margin-right: 3%; }
 
-  #mid-nav a {
+  #mid-nav a, .extra-nav a {
     padding-left: 18px;
     padding-right: 18px; }
-    #mid-nav a:hover {
+    #mid-nav a:hover, .extra-nav a:hover {
       padding-left: 16px;
       padding-right: 16px; }
 
@@ -5013,14 +5036,14 @@ header.colophon .search-bar {
   header.colophon .search-bar {
     margin-left: 0; }
 
-  #mid-nav a {
-    padding-left: 15px;
-    padding-right: 15px; }
-    #mid-nav a:hover {
+  #mid-nav a, .extra-nav a {
+    padding-left: 12px;
+    padding-right: 12px; }
+    #mid-nav a:hover, .extra-nav a:hover {
       padding-left: 13px;
       padding-right: 13px; }
 
-  #mid-nav a.more-link {
+  #mid-nav a.more-link, .extra-nav a.more-link {
     background: url("/assets/images/dots-vertical.png") center no-repeat;
     background-size: contain; }
 
@@ -5034,11 +5057,11 @@ header.colophon .search-bar {
     width: 100%;
     padding: 0; } }
 @media only screen and (max-width: 768px) {
-  #mid-nav a {
+  #mid-nav a, .extra-nav a {
     padding-left: 2%;
     padding-right: 2%;
     font-size: 2rem; }
-    #mid-nav a.more-link {
+    #mid-nav a.more-link, .extra-nav a.more-link {
       padding-left: 8%; }
 
   #hero {
@@ -5065,7 +5088,11 @@ header.colophon .search-bar {
     padding-left: 0; }
     #mobile-side-filters div:not(#idea-filter),
     #mobile-side-filters h5 {
-      display: none; } }
+      display: none; }
+
+  .extra-nav {
+    top: 49px;
+    right: 23%; } }
 @media only screen and (max-width: 620px) {
   #hero-nav a {
     padding-left: 35px;
@@ -5091,13 +5118,17 @@ header.colophon .search-bar {
     background-position: top center;
     margin-top: 7px; }
 
-  #mid-nav a {
+  #mid-nav a, .extra-nav a {
     font-size: 1.8rem; }
 
   .grid-box .img-wrap .get-it:not(.big),
   .grid-box .img-wrap a.author {
     right: 45%;
-    bottom: 3px; } }
+    bottom: 3px; }
+
+  .extra-nav {
+    top: 49px;
+    right: 8%; } }
 @media screen and (max-width: 480px) {
   #top-nav .category-menu {
     width: 140px;
@@ -5109,16 +5140,17 @@ header.colophon .search-bar {
     padding-right: 0px;
     margin-left: 0; }
 
-  #mid-nav a {
+  #mid-nav a, .extra-nav a {
     padding-left: 2.2%;
     padding-right: 2.2%;
     padding-left: 3%;
-    padding-right: 3.5%;
+    padding-right: 2.5%;
     font-size: 1.6rem; }
-    #mid-nav a.more-link {
+    #mid-nav a.more-link, .extra-nav a.more-link {
       padding-left: 5%; }
-  #mid-nav li.selected a,
-  #mid-nav a:hover {
+  #mid-nav li.selected a, .extra-nav li.selected a,
+  #mid-nav a:hover,
+  .extra-nav a:hover {
     margin-top: 6px;
     padding-left: 1.5%;
     padding-right: 1.5%;
@@ -5160,9 +5192,10 @@ header.colophon .search-bar {
   .signin {
     margin-right: 0; } }
 @media screen and (max-width: 380px) {
-  #mid-nav a {
-    padding-left: 2.2%;
-    padding-right: 2.2%; }
+  #mid-nav a, .extra-nav a {
+    padding-left: 1.5%;
+    padding-right: 1.5%;
+    font-size: 1.5rem; }
 
   #hero-nav a {
     padding-left: 4%;
@@ -5178,10 +5211,10 @@ header.colophon .search-bar {
   .category-menu {
     width: 122px !important; }
 
-  #mid-nav a {
-    padding-left: 1%;
-    padding-right: 1%;
-    font-size: 1.5rem; }
+  #mid-nav a, .extra-nav a {
+    padding-left: 2%;
+    padding-right: 2%;
+    font-size: 1.2rem; }
 
   #hero-nav a {
     padding-left: 2%;
