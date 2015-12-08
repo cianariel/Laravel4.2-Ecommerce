@@ -161,16 +161,17 @@
                         <a href="#" class="social-pic likes">Like it</a>
                         <a href="#" class="social-pic comment">Comment</a>
                     </div>
-                    <a href="#" class="overlay-tag bottom get-it">
-                        <div class="circle-3">
-                            <div class="circle-2">
-                                <div class="circle-1">Get it</div>
-                            </div>
-                        </div>
-                    </a>
+                    {{--<a href="#" class="overlay-tag bottom get-it">--}}
+                        {{--<div class="circle-3">--}}
+                            {{--<div class="circle-2">--}}
+                                {{--<div class="circle-1">Get it</div>--}}
+                            {{--</div>--}}
+                        {{--</div>--}}
+                    {{--</a>--}}
 
                 </div>
                 <h3><a href="#">Venetian Louge Suite</a></h3>
+                <div class="get">Get it</div>
                 <ul class="box-tags">
                     <li class="box-tag"><a>Products</a></li>
                     <li class="box-tag"><a>Improvements</a></li>
@@ -190,15 +191,16 @@
                          <a href="#" class="social-pic comment">Comment</a>
                     </div>
 
-                    <a href="#" class="overlay-tag bottom get-it">
-                        <div class="circle-3">
-                            <div class="circle-2">
-                                <div class="circle-1">Get it</div>
-                            </div>
-                        </div>
-                    </a>
+                    {{--<a href="#" class="overlay-tag bottom get-it">--}}
+                        {{--<div class="circle-3">--}}
+                            {{--<div class="circle-2">--}}
+                                {{--<div class="circle-1">Get it</div>--}}
+                            {{--</div>--}}
+                        {{--</div>--}}
+                    {{--</a>--}}
                 </div>
                 <h3><a href="#">Venetian Louge Suite</a></h3>
+                <div class="get">Get it</div>
                 <ul class="box-tags">
                     <li class="box-tag"><a>Products</a></li>
                     <li class="box-tag"><a>Improvements</a></li>

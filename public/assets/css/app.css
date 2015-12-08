@@ -4514,6 +4514,26 @@ form .btn {
   margin-top: 10px;
   padding-top: 20px;
   border-radius: 3px; }
+  .grid-box .get {
+    border: 2px solid #FF0042;
+    color: #FF0042;
+    background: transparent;
+    width: 75px;
+    border-radius: 15px;
+    margin-top: 6px;
+    padding: 1px 12px;
+    margin-bottom: 7px;
+    text-transform: uppercase; }
+    .grid-box .get:hover {
+      background: #FF0042;
+      color: #fff; }
+    .grid-box .get.solid {
+      background: #FF0042;
+      color: #fff; }
+      .grid-box .get.solid:hover {
+        border: 2px solid #FF0042;
+        color: #FF0042;
+        background: transparent; }
   .grid-box .img-wrap {
     position: relative;
     overflow: hidden;

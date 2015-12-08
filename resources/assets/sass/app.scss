@@ -222,6 +222,36 @@ form{
   padding-top: 20px;
   border-radius: 3px;
 
+
+  .get{
+      border: 2px solid $iridium;
+      color: $iridium;
+      background: transparent;
+
+      width: 75px;
+      border-radius: 15px;
+      margin-top: 6px;
+      padding: 1px 12px;
+      margin-bottom: 7px;
+      text-transform: uppercase;
+
+    &:hover {
+      background: $iridium;
+      color: #fff;
+    }
+
+      &.solid{
+        background: $iridium;
+        color: #fff;
+
+        &:hover{
+          border: 2px solid $iridium;
+          color: $iridium;
+          background: transparent;
+        }
+    }
+  }
+
   .img-wrap{
     position: relative;
     overflow: hidden;
@@ -314,7 +344,11 @@ form{
           }
         }
       }
+
+
     }
+
+
 
     a.author{
       width: 64px;
