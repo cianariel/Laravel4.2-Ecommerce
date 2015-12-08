@@ -4494,7 +4494,8 @@ form .btn {
   .grid-box .img-wrap {
     position: relative;
     overflow: hidden;
-    border: 1px solid #eee; }
+    border: 1px solid #eee;
+    border-radius: 5px; }
     .grid-box .img-wrap .like-wrap {
       width: 115px;
       height: 55px;
@@ -4613,12 +4614,11 @@ form .btn {
     width: 139px;
     height: 67px;
     bottom: -15px; }
-  .grid-box:hover {
-    padding-top: 18px;
-    padding-left: 13px;
-    padding-right: 13px;
-    border: 2px solid #00B1FF;
-    border-radius: 7px; }
+  .grid-box:hover .img-wrap {
+    box-shadow: 0 0 0 2pt #00B1FF; }
+  .grid-box:hover h3 a,
+  .grid-box:hover h5 a {
+    color: #008ecc !important; }
 
 .main-container {
   overflow: hidden; }
