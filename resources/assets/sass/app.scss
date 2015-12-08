@@ -751,9 +751,12 @@ header.colophon{
   li.selected a{
     //color: #FBB03B;
     //border-bottom: 3px solid #FBB03B;
+    border: 2px solid #fff;
+    border-radius: 15px;
+    margin-top: 6px;
+    padding: 5px 33px;
 
     background-color: #CE1F46;
-    border-radius: 15px;
   }
 }
 
@@ -1215,31 +1218,40 @@ header.colophon{
       padding: 0;
     }
     a {
-      //font-size: 1.3rem;
-      //background-image: none !important;
       text-indent: -9999px;
       width: 40px;
       padding-left: 5px;
       padding-right: 0px;
       margin-left: 0;
-      //
-
-
-      //  background-image: none !important;
-      //  a{
-      //    padding-left: 30px;
-      //    background-image: url("/assets/images/signin-icon.png");
-      //    background-position: left;
-      //    background-repeat: no-repeat;
-      //  }
-      //}
     }
   }
 
 
+  #mid-nav{
+    a {
+      padding-left: 2.2%;
+      padding-right: 2.2%;
+      padding-left: 3%;
+      padding-right: 3.5%;
+      font-size: 1.6rem;
+
+      &.more-link{
+        padding-left: 5%;
+      }
+    }
+
+    li.selected a,
+    a:hover{
+      margin-top: 6px;
+      padding-left: 1.5%;
+      padding-right: 1.5%;
+      background-color: #CE1F46;
+    }
+  }
+
   #hero-nav a {
-    padding-left: 14px;
-    padding-right: 12px;
+    padding-left: 5%;
+    padding-right: 5%;
 
     &.all-link{
       background-position: 6px top !important;
@@ -1250,26 +1262,10 @@ header.colophon{
 
   }
 
-
-  #mid-nav a {
-    padding-left: 2.2%;
-    padding-right: 2.2%;
- }
-
   .logo-wrap{
     padding: 0;
   }
 
-  #mid-nav a {
-    //padding-left: 2%;
-    //padding-right: 2%;
-    font-size: 1.6rem;
-
-    //
-    &.more-link{
-      padding-left: 5%;
-    }
-  }
 
   .search-bar{
     width: 0;
@@ -1316,8 +1312,62 @@ header.colophon{
 }
 
 
+@media screen and (max-width: 380px) {
 
+  #mid-nav {
+    a {
+      padding-left: 2.2%;
+      padding-right: 2.2%;
+    }
+  }
 
+  #hero-nav a {
+    padding-left: 4%;
+    padding-right: 4%;
+
+    &.all-link {
+      background-position: 6px top !important;
+    }
+    &.photos-link {
+      padding-left: 21px;
+    }
+
+  }
+
+}
+
+@media screen and (max-width: 370px) {
+
+  #top-nav a {
+    width: 28px;
+  }
+
+  .category-menu{
+    width: 122px !important;
+  }
+
+  #mid-nav {
+    a {
+      padding-left: 1%;
+      padding-right: 1%;
+      font-size: 1.5rem;
+    }
+  }
+
+  #hero-nav a {
+    padding-left: 2%;
+    padding-right: 2%;
+
+    &.all-link {
+      background-position: 0px top !important;
+    }
+    &.photos-link {
+      padding-left: 21px;
+    }
+
+  }
+
+}
 
 
 

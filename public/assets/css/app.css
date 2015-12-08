@@ -4831,8 +4831,11 @@ header.colophon .search-bar {
       margin-top: 6px;
       padding: 5px 33px; }
   #mid-nav li.selected a {
-    background-color: #CE1F46;
-    border-radius: 15px; }
+    border: 2px solid #fff;
+    border-radius: 15px;
+    margin-top: 6px;
+    padding: 5px 33px;
+    background-color: #CE1F46; }
 
 .why-us {
   margin-top: 45px; }
@@ -5106,25 +5109,31 @@ header.colophon .search-bar {
     padding-right: 0px;
     margin-left: 0; }
 
+  #mid-nav a {
+    padding-left: 2.2%;
+    padding-right: 2.2%;
+    padding-left: 3%;
+    padding-right: 3.5%;
+    font-size: 1.6rem; }
+    #mid-nav a.more-link {
+      padding-left: 5%; }
+  #mid-nav li.selected a,
+  #mid-nav a:hover {
+    margin-top: 6px;
+    padding-left: 1.5%;
+    padding-right: 1.5%;
+    background-color: #CE1F46; }
+
   #hero-nav a {
-    padding-left: 14px;
-    padding-right: 12px; }
+    padding-left: 5%;
+    padding-right: 5%; }
     #hero-nav a.all-link {
       background-position: 6px top !important; }
     #hero-nav a.photos-link {
       padding-left: 21px; }
 
-  #mid-nav a {
-    padding-left: 2.2%;
-    padding-right: 2.2%; }
-
   .logo-wrap {
     padding: 0; }
-
-  #mid-nav a {
-    font-size: 1.6rem; }
-    #mid-nav a.more-link {
-      padding-left: 5%; }
 
   .search-bar {
     width: 0;
@@ -5150,5 +5159,36 @@ header.colophon .search-bar {
 
   .signin {
     margin-right: 0; } }
+@media screen and (max-width: 380px) {
+  #mid-nav a {
+    padding-left: 2.2%;
+    padding-right: 2.2%; }
+
+  #hero-nav a {
+    padding-left: 4%;
+    padding-right: 4%; }
+    #hero-nav a.all-link {
+      background-position: 6px top !important; }
+    #hero-nav a.photos-link {
+      padding-left: 21px; } }
+@media screen and (max-width: 370px) {
+  #top-nav a {
+    width: 28px; }
+
+  .category-menu {
+    width: 122px !important; }
+
+  #mid-nav a {
+    padding-left: 1%;
+    padding-right: 1%;
+    font-size: 1.5rem; }
+
+  #hero-nav a {
+    padding-left: 2%;
+    padding-right: 2%; }
+    #hero-nav a.all-link {
+      background-position: 0px top !important; }
+    #hero-nav a.photos-link {
+      padding-left: 21px; } }
 
 /*# sourceMappingURL=app.css.map */
