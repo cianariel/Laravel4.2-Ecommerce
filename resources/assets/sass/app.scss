@@ -1299,6 +1299,10 @@ header.colophon{
 
 @media screen and (max-width: 480px){
 
+  .grid-box:hover .img-wrap {
+    border: 2px solid $sky-blue;
+    box-shadow: 0 0 0 0 #fff;
+  }
 
   #top-nav{
     .category-menu{

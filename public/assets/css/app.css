@@ -5150,6 +5150,10 @@ header.colophon .search-bar {
     top: 49px;
     right: 8%; } }
 @media screen and (max-width: 480px) {
+  .grid-box:hover .img-wrap {
+    border: 2px solid #00B1FF;
+    box-shadow: 0 0 0 0 #fff; }
+
   #top-nav .category-menu {
     width: 140px;
     padding: 0; }
