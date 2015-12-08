@@ -10,11 +10,26 @@ $('body').on('click', '[data-toggle]', function(e){
         $that.siblings().removeClass('active');
     }
 
-    $($show).toggle();
+    $($show).fadeToggle();
     $that.addClass('active');
 });
 
 $("#back-to-top").click(function() {
     $('html, body').animate({ scrollTop: 0 }, 'slow');
     return false;
+});
+
+
+$('[data-toggle="modal"]').click(function() {
+    $modal = $(this).data('target');
+    $($modal).fadeToggle()
+    $('#overlay').fadeToggle();
+
+});
+
+$('[data-dismiss="modal"]').click(function() {
+    $modal = $(this).parents('.modal');
+    $modal.fadeOut();
+    $('#overlay').fadeOut();
+    return true;
 });

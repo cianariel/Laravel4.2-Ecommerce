@@ -65,15 +65,15 @@
 
             </div>
 
-            <div class="mobile-register hidden-lg hidden-md hidden-sm">
-                <div>
-                    <a href="#" class="register-button">
-                        Register
-                    </a>
-                    <a class="signup-with-facebook pull-right">Signup with Facebook</a>
-                </div>
+            {{--<div class="mobile-register hidden-lg hidden-md hidden-sm">--}}
+                {{--<div>--}}
+                    {{--<a href="#" class="register-button">--}}
+                        {{--Register--}}
+                    {{--</a>--}}
+                    {{--<a class="signup-with-facebook pull-right">Signup with Facebook</a>--}}
+                {{--</div>--}}
 
-            </div>
+            {{--</div>--}}
 
         </div>
     </section>
@@ -307,6 +307,25 @@
 
         </aside>
     </div>
+
+    <div id="myModal" class="modal col-lg-4 col-md-6 col-sm-6 col-xs-12 col-offset-md-2">
+        <div class="modal-content hero-box qiuck-signup">
+            <span data-dismiss="modal" class="close-button">✖</span>
+            <form>
+                <h4>Our famous <br/>
+                    <b>30-second sign-up</b>
+                </h4>
+
+                <input class="form-control" type="text" placeholder="First name" name="name">
+                <input class="form-control"  type="text" placeholder="Email" name="email">
+
+                <a class="btn btn-success col-xs-12" href="#">Sign up</a>
+                <div class="line-wrap">or</div>
+                <a class="btn btn-info col-xs-12" href="#"><i class="icon fb-icon"></i>Sign up with Facebook</a>
+            </form>
+        </div>
+    </div>
+    <div id="overlay"></div>
 
 
 @stop

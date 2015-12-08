@@ -29,7 +29,7 @@
                                 <input class="form-control" type="text" name="search" value="Search..."/>
                             </section>
                             <div class="col-md-2 col-xs-2 pull-right signin">
-                                <a href="#">Sign in</a>
+                                <a data-toggle="modal" data-target="#myModal" href="#">Sign in</a>
                             </div>
                         </div>
                     </nav>
