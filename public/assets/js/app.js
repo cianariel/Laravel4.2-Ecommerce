@@ -15,6 +15,10 @@ $('body').on('click', '[data-toggle]', function(e){
     $that.addClass('active');
 });
 
+$('#overlay').click(function(){
+    $('.modal, #overlay').fadeOut();
+});
+
 $("#back-to-top").click(function() {
     $('html, body').animate({ scrollTop: 0 }, 'slow');
     return false;
