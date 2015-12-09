@@ -1248,6 +1248,15 @@ header.colophon{
     }
   }
 
+  #hero-nav{
+    a{
+      &.photos-link,
+      &.products-link{
+        background-position: left 3px;
+      }
+    }
+  }
+
   //.why-us{
   //  margin-left: 0;
   //}
@@ -1305,7 +1314,9 @@ header.colophon{
       margin-right: 6%;
 
       &.photos-link{
-        padding-left: 34px;
+        padding-left: 45px;
+        background-position: 0 12px;
+        background-size: 39px !important;
       }
 
       &.home-link{
@@ -1313,7 +1324,9 @@ header.colophon{
         //background-position: left center;
       }
 
-
+      &.products-link{
+        background-position: left 12px;
+      }
     }
 
   }
@@ -1371,6 +1384,18 @@ header.colophon{
     padding-top: 30px;
     background-position: top center;
     margin-top: 7px;
+  }
+
+  #hero-nav{
+    a{
+      &.all-link{
+        background-position: center 4px !important;
+      }
+      &.ideas-link{
+        background-position: center  4px !important;
+
+      }
+    }
   }
 
   #mid-nav a {
@@ -1446,7 +1471,7 @@ header.colophon{
     padding-right: 5%;
 
     &.all-link{
-      background-position: 6px top !important;
+      background-position: 15px  4px !important;
     }
     &.photos-link {
       padding-left: 21px;
