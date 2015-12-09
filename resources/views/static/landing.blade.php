@@ -3,6 +3,7 @@
 @section('content')
     <section id="hero" class="landing-hero">
         <div class="hero-background"></div>
+        <div class="color-overlay"></div>
         <nav id="mid-nav"  class="col-xs-12">
             <div class="container hidden-xs">
                 <ul class="wrap">
@@ -171,7 +172,9 @@
 
                 </div>
                 <h3><a href="#">Venetian Louge Suite</a></h3>
+                <b class="price">$199</b>
                 <div class="get">Get it</div>
+                <img class="vendor-logo" src="/assets/images/dummies/amazon.png">
                 <ul class="box-tags">
                     <li class="box-tag"><a>Products</a></li>
                 </ul>
@@ -195,7 +198,9 @@
                     {{--</a>--}}
                 </div>
                 <h3><a href="#">Venetian Louge Suite</a></h3>
+                <b class="price">$199</b>
                 <div class="get">Get it</div>
+                <img class="vendor-logo" src="/assets/images/dummies/amazon.png">
                 <ul class="box-tags">
                     <li class="box-tag"><a>Products</a></li>
                     {{--displays only one main tag--}}

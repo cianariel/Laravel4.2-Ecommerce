@@ -40,6 +40,7 @@ $tarmac: #3D4B4E;
   transition: width 0.3s;
   -moz-transition: width 0.3s; /* Firefox 4 */
   -o-transition: width 0.3s; /* Opera */
+
 }
 
 [data-toggle]{
@@ -49,7 +50,7 @@ $tarmac: #3D4B4E;
 // ELEMENTS
 
 .modal{
-  display: block !important; // keep for debuggins
+  //display: block !important; // keep for debuggins
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -64,7 +65,7 @@ $tarmac: #3D4B4E;
 }
 
 #overlay{
-  //display: none;
+  display: none;
   position:fixed; /* keeps the lightbox window in the current viewport */
   top:0;
   left:0;
@@ -180,12 +181,12 @@ nav{
 #hero{
   position: relative;
   width: 100%;
-  min-height: 700px;
+  min-height: 650px;
   float: left;
 
 
   .hero-background{
-    background-image: url('/assets/images/landing-hero.jpg');
+    background-image: url('/assets/images/landing-hero-2.jpg');
     background-size: cover;
     background-repeat: no-repeat;
     -webkit-filter: blur(2px);
@@ -193,6 +194,13 @@ nav{
     -o-filter: blur(2px);
     -ms-filter: blur(2px);
     filter: blur(2px);
+    position: absolute;
+    width: 100%;
+    height: 100%;
+  }
+
+  .color-overlay{
+    background-color: rgba(0,0,0,.2);
     position: absolute;
     width: 100%;
     height: 100%;
@@ -228,17 +236,25 @@ form{
     }
   }
 
+  .price{
+    font-size: 2rem;
+    color: $iridium;
+  }
+
   .get{
+      display: inline-block;
+    width: 65px;
+    overflow: hidden;
+    padding: 2px 12px;
+    margin: 0 7px -5px;
       border: 2px solid $iridium;
       color: $iridium;
       background: transparent;
-
-      width: 75px;
       border-radius: 15px;
-      margin-top: 6px;
-      padding: 1px 12px;
-      margin-bottom: 7px;
+
       text-transform: uppercase;
+      font-size: 1.1rem;
+      font-weight: bold;
 
     &:hover {
       background: $iridium;
@@ -429,6 +445,7 @@ form{
       float: left;
       color: darken($light-grey, 20%);
       padding: 3px;
+      margin-top: 8px;
       margin-bottom: 2px;
       border: 1px solid darken($light-grey, 20%);
       border-radius: 2px;
@@ -759,7 +776,7 @@ header.colophon{
 //
 
 #mid-nav{
-  margin-bottom: 140px;
+  margin-bottom: 100px;
   min-height: 47px;
   //background: rgba(0,0,0,.45);
   background: #ED1E47;
@@ -855,7 +872,7 @@ header.colophon{
 }
 
 .why-us{
-  margin-top: 45px;
+  margin-top: 25px;
   h2{
     font-size: 3.5rem;
     font-weight: normal;
@@ -868,6 +885,9 @@ header.colophon{
     padding: 20px;
     padding-left: 30px;
     font-weight: bold;
+    letter-spacing: 1px;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
+    font-size: 1.6rem;
 
     &.get-ideas{
       background:url("/assets/images/lamp-white.png") left no-repeat;
@@ -1034,6 +1054,9 @@ header.colophon{
   }
   input[type="checkbox"] + label span {
     margin: -1px 10px 0 0;
+  }
+  label{
+    width: 100%;
   }
   .btn-success {
     margin-top: 13px;
@@ -1263,7 +1286,7 @@ header.colophon{
       padding-left: 34px;
       background-position: left;
       background-repeat: no-repeat;
-      background-size: 30px;
+      background-size: 30px !important;
       margin-right: 6%;
 
       &.photos-link{

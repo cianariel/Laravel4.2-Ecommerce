@@ -4392,7 +4392,6 @@ a.label:focus {
   cursor: pointer; }
 
 .modal {
-  display: block !important;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -4403,6 +4402,7 @@ a.label:focus {
     border-radius: 3px; }
 
 #overlay {
+  display: none;
   position: fixed;
   /* keeps the lightbox window in the current viewport */
   top: 0;
@@ -4489,10 +4489,10 @@ nav a {
 #hero {
   position: relative;
   width: 100%;
-  min-height: 700px;
+  min-height: 650px;
   float: left; }
   #hero .hero-background {
-    background-image: url("/assets/images/landing-hero.jpg");
+    background-image: url("/assets/images/landing-hero-2.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     -webkit-filter: blur(2px);
@@ -4500,6 +4500,11 @@ nav a {
     -o-filter: blur(2px);
     -ms-filter: blur(2px);
     filter: blur(2px);
+    position: absolute;
+    width: 100%;
+    height: 100%; }
+  #hero .color-overlay {
+    background-color: rgba(0, 0, 0, 0.2);
     position: absolute;
     width: 100%;
     height: 100%; }
@@ -4518,16 +4523,22 @@ form .btn {
   border-radius: 3px; }
   .grid-box:not(.big-box) h3 a {
     font-size: 1.7rem; }
+  .grid-box .price {
+    font-size: 2rem;
+    color: #FF0042; }
   .grid-box .get {
+    display: inline-block;
+    width: 65px;
+    overflow: hidden;
+    padding: 2px 12px;
+    margin: 0 7px -5px;
     border: 2px solid #FF0042;
     color: #FF0042;
     background: transparent;
-    width: 75px;
     border-radius: 15px;
-    margin-top: 6px;
-    padding: 1px 12px;
-    margin-bottom: 7px;
-    text-transform: uppercase; }
+    text-transform: uppercase;
+    font-size: 1.1rem;
+    font-weight: bold; }
     .grid-box .get:hover {
       background: #FF0042;
       color: #fff; }
@@ -4649,6 +4660,7 @@ form .btn {
       float: left;
       color: #8e8e8e;
       padding: 3px;
+      margin-top: 8px;
       margin-bottom: 2px;
       border: 1px solid #8e8e8e;
       border-radius: 2px;
@@ -4838,7 +4850,7 @@ header.colophon .search-bar {
   padding-left: 7px; }
 
 #mid-nav, .extra-nav {
-  margin-bottom: 140px;
+  margin-bottom: 100px;
   min-height: 47px;
   background: #ED1E47; }
   #mid-nav ul.wrap, .extra-nav ul.wrap {
@@ -4890,7 +4902,7 @@ header.colophon .search-bar {
   padding: 20px; }
 
 .why-us {
-  margin-top: 45px; }
+  margin-top: 25px; }
   .why-us h2 {
     font-size: 3.5rem;
     font-weight: normal; }
@@ -4899,7 +4911,10 @@ header.colophon .search-bar {
   .why-us li {
     padding: 20px;
     padding-left: 30px;
-    font-weight: bold; }
+    font-weight: bold;
+    letter-spacing: 1px;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
+    font-size: 1.6rem; }
     .why-us li.get-ideas {
       background: url("/assets/images/lamp-white.png") left no-repeat; }
     .why-us li.share-vote {
@@ -5001,6 +5016,8 @@ header.colophon .search-bar {
       background-image: url("/assets/images/lock-color.png"); }
   .modal-login input[type="checkbox"] + label span {
     margin: -1px 10px 0 0; }
+  .modal-login label {
+    width: 100%; }
   .modal-login .btn-success {
     margin-top: 13px;
     margin-bottom: 13px; }
@@ -5138,7 +5155,7 @@ header.colophon .search-bar {
     padding-left: 34px;
     background-position: left;
     background-repeat: no-repeat;
-    background-size: 30px;
+    background-size: 30px !important;
     margin-right: 6%; }
     #hero-nav a.photos-link {
       padding-left: 34px; }
