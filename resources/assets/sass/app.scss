@@ -222,6 +222,11 @@ form{
   padding-top: 20px;
   border-radius: 3px;
 
+  &:not(.big-box){
+    h3 a{
+      font-size: 1.7rem;
+    }
+  }
 
   .get{
       border: 2px solid $iridium;
@@ -356,6 +361,8 @@ form{
       background: url("/assets/images/dummies/author.png") center no-repeat;
       right: 25px;
       bottom: 6px;
+      border: 2px solid #fff;
+      border-radius: 40px;
     }
 
     .social-pic{

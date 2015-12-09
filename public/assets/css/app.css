@@ -4514,6 +4514,8 @@ form .btn {
   margin-top: 10px;
   padding-top: 20px;
   border-radius: 3px; }
+  .grid-box:not(.big-box) h3 a {
+    font-size: 1.7rem; }
   .grid-box .get {
     border: 2px solid #FF0042;
     color: #FF0042;
@@ -4605,7 +4607,9 @@ form .btn {
       height: 64px;
       background: url("/assets/images/dummies/author.png") center no-repeat;
       right: 25px;
-      bottom: 6px; }
+      bottom: 6px;
+      border: 2px solid #fff;
+      border-radius: 40px; }
     .grid-box .img-wrap .social-pic {
       width: 40px;
       height: 40px;
