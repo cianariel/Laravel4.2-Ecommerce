@@ -5005,7 +5005,8 @@ header.colophon .search-bar {
         color: #FF0042;
         background-image: url("/assets/images/house-pink.png"); }
     #hero-nav a.all-link {
-      background-image: url("/assets/images/grid-dense-grey.png"); }
+      background-image: url("/assets/images/grid-dense-grey.png");
+      margin-top: -3px; }
       #hero-nav a.all-link:hover {
         color: #FF0042;
         background-image: url("/assets/images/grid-pink.png"); }
