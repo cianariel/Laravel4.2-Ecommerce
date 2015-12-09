@@ -4392,15 +4392,17 @@ a.label:focus {
   cursor: pointer; }
 
 .modal {
+  display: block !important;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  overflow: hidden; }
+  overflow: visible; }
   .modal .modal-content {
-    overflow: hidden; }
+    overflow: hidden;
+    padding: 9.5%;
+    border-radius: 3px; }
 
 #overlay {
-  display: none;
   position: fixed;
   /* keeps the lightbox window in the current viewport */
   top: 0;
@@ -4408,7 +4410,7 @@ a.label:focus {
   width: 100%;
   height: 100%;
   background: #000;
-  opacity: .6; }
+  opacity: .9; }
 
 .close-button {
   color: #333;
@@ -4953,16 +4955,18 @@ header.colophon .search-bar {
       font-size: 1.9rem; }
   .hero-box input[type="text"] {
     background: #F5FBFC;
-    border: 0;
+    border: 1px solid #eee;
     color: #000;
     box-shadow: none; }
     .hero-box input[type="text"][name="name"] {
-      background: #F5FBFC url("/assets/images/signin-icon.png") left no-repeat; }
+      background: #F5FBFC url("/assets/images/signin-icon.png") no-repeat; }
     .hero-box input[type="text"][name="email"] {
-      background: #F5FBFC url("/assets/images/letter-icon-black.png") left no-repeat; }
-    .hero-box input[type="text"][name="name"], .hero-box input[type="text"][name="email"] {
-      padding-left: 25px;
-      background-size: 20px; }
+      background: #F5FBFC url("/assets/images/letter-icon-black.png") no-repeat; }
+    .hero-box input[type="text"][name="name"], .hero-box input[type="text"][name="password"], .hero-box input[type="text"][name="email"] {
+      padding-left: 45px;
+      background-size: 20px;
+      background-position: 10px;
+      background-repeat: no-repeat; }
   .hero-box ::-webkit-input-placeholder {
     color: #000; }
   .hero-box :-moz-placeholder {
@@ -4985,6 +4989,31 @@ header.colophon .search-bar {
     .hero-box .btn-info:hover {
       background-color: #0578a0;
       border-color: #0578a0; }
+
+.modal-login {
+  background: #e6ecec; }
+  .modal-login .btn-info {
+    margin-bottom: 0; }
+  .modal-login input[type="text"] {
+    margin-bottom: 8px;
+    border: 1px solid #d5dfdf; }
+    .modal-login input[type="text"][name="password"] {
+      background-image: url("/assets/images/lock-color.png"); }
+  .modal-login input[type="checkbox"] + label span {
+    margin: -1px 10px 0 0; }
+  .modal-login .btn-success {
+    margin-top: 13px;
+    margin-bottom: 13px; }
+  .modal-login .modal-minor-text {
+    padding-top: 10px;
+    font-size: 1.2rem;
+    color: #6a8287;
+    font-weight: bold; }
+    .modal-login .modal-minor-text b {
+      float: right; }
+      .modal-login .modal-minor-text b a {
+        text-align: right;
+        color: #FF0042; }
 
 #hero-nav {
   overflow: visible;

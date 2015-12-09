@@ -49,29 +49,29 @@ $tarmac: #3D4B4E;
 // ELEMENTS
 
 .modal{
-  //display: block !important; // keep for debuggins
+  display: block !important; // keep for debuggins
   top: 50%;
-  //left: 34%;
   left: 50%;
   transform: translate(-50%, -50%);
-  overflow: hidden;
+  overflow: visible;
 
 
   .modal-content{
     overflow: hidden;
-
+    padding: 9.5%;
+    border-radius: 3px;
   }
 }
 
 #overlay{
-  display: none;
+  //display: none;
   position:fixed; /* keeps the lightbox window in the current viewport */
   top:0;
   left:0;
   width:100%;
   height:100%;
   background:#000;
-  opacity: .6;
+  opacity: .9;
 }
 
 .close-button{
@@ -952,20 +952,23 @@ header.colophon{
 
   input[type="text"]{
     background: $pale-blue;
-    border: 0;
+    border: 1px solid #eee;
     color: #000;
     box-shadow: none;
 
     &[name="name"]{
-      background:$pale-blue url("/assets/images/signin-icon.png") left no-repeat;
+      background:$pale-blue url("/assets/images/signin-icon.png") no-repeat;
     }
     &[name="email"]{
-      background: $pale-blue url("/assets/images/letter-icon-black.png") left no-repeat;
+      background: $pale-blue url("/assets/images/letter-icon-black.png") no-repeat;
     }
     &[name="name"],
+    &[name="password"],
     &[name="email"]{
-      padding-left: 25px;
+      padding-left: 45px;
       background-size:20px;
+      background-position: 10px;
+      background-repeat: no-repeat;
     }
 
   }
@@ -1016,7 +1019,41 @@ header.colophon{
   //}
 }
 
+.modal-login{
+  background: darken($pale-grey, 4%);
+  .btn-info{
+    margin-bottom: 0;
+  }
+  input[type="text"]{
+    margin-bottom: 8px;
+    border: 1px solid darken($pale-grey, 10%);
 
+    &[name="password"]{
+      background-image: url('/assets/images/lock-color.png');
+    }
+  }
+  input[type="checkbox"] + label span {
+    margin: -1px 10px 0 0;
+  }
+  .btn-success {
+    margin-top: 13px;
+    margin-bottom: 13px;
+  }
+  .modal-minor-text{
+    padding-top: 10px;
+    font-size: 1.2rem;
+    color: lighten($tarmac, 20%);
+    font-weight: bold;
+
+    b{
+      float: right;
+      a{
+        text-align: right;
+        color: $iridium;
+      }
+    }
+  }
+}
 
 
 

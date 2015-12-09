@@ -64,8 +64,8 @@
             </div>
             <div class="col-md-4 col-sm-6 col-md-offset-1 hero-box qiuck-signup hidden-xs">
                 <form>
-                    <h4>Our famous <br/>
-                        <b>30-second sign-up</b>
+                    <h4>
+                        <b>Sign-up in Seconds</b>
                     </h4>
 
                     <input class="form-control" type="text" placeholder="First name" name="name">
@@ -315,20 +315,25 @@
         </aside>
     </div>
 
-    <div id="myModal" class="modal col-lg-4 col-md-6 col-sm-6 col-xs-12 col-offset-md-2">
-        <div class="modal-content hero-box qiuck-signup">
-            <span data-dismiss="modal" class="close-button">✖</span>
+    <div id="myModal" class="modal col-lg-3 col-md-4 col-sm-5 col-xs-12 col-offset-md-2">
+        <div class="modal-content hero-box qiuck-signup modal-login">
+            {{--<span data-dismiss="modal" class="close-button">✖</span>--}}
             <form>
-                <h4>Our famous <br/>
-                    <b>30-second sign-up</b>
-                </h4>
-
-                <input class="form-control" type="text" placeholder="First name" name="name">
-                <input class="form-control"  type="text" placeholder="Email" name="email">
-
-                <a class="btn btn-success col-xs-12" href="#">Sign up</a>
-                <div class="line-wrap">or</div>
                 <a class="btn btn-info col-xs-12" href="#"><i class="icon fb-icon"></i>Sign up with Facebook</a>
+                <div class="line-wrap modal-minor-text">or</div>
+
+                <input class="form-control"  type="text" placeholder="Email" name="email">
+                <input class="form-control" type="text" placeholder="Password" name="password">
+                <div class="modal-minor-text">
+                    <input type="checkbox" id="remember" name="remember"><label for="remember"><span></span>Remember me <b><a href="#">Forgot password?</a></b></label>
+                </div>
+
+                <a class="btn btn-success col-xs-12" href="#">Log in</a>
+
+                <div class="modal-minor-text">
+                    Don't have an account? <a href="#">Sign up</a>
+                </div>
+
             </form>
         </div>
     </div>
