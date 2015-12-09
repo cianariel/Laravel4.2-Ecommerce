@@ -14,7 +14,7 @@
     use App\Models\User;
     use Carbon\Carbon;
 
-    // use Carbon\Carbon;
+    use CustomAppException;
 
     class AuthenticateController extends ApiController {
 
@@ -23,7 +23,7 @@
             $this->user = new User();
 
             // Apply the jwt.auth middleware to all methods in this controller
-            $this->middleware('jwt.auth', ['except' => ['logOut','passwordResetForm', 'passwordReset', 'sendPasswordResetEmail', 'verifyEmail', 'index', 'authenticate', 'fbLogin', 'registerUser']]);
+            $this->middleware('jwt.auth', ['except' => ['logOut', 'passwordResetForm', 'passwordReset', 'sendPasswordResetEmail', 'verifyEmail', 'index', 'authenticate', 'fbLogin', 'registerUser']]);
             //parent::__construct();
         }
 
@@ -35,6 +35,14 @@
          */
         public function index()
         {
+            // dd(new \Exception());
+            try
+            {
+                $this->user->throwExc();
+            } catch (CustomAppException $ex)
+            {
+                return $ex;
+            }
 
             // $currentTime = \Carbon::now();
 
@@ -78,19 +86,21 @@
         public function logOut()
         {
             $tokenValue = \Input::all();
-            $message  = "";
+            $message = "";
 
             // if a authenticated user request for logout then Token will be rest and session will set to null
-            try{
-            if( isset($tokenValue['token']) )
-                JWTAuth::parseToken()->refresh();
-            }catch (\Exception $ex)
+            try
+            {
+                if (isset($tokenValue['token']))
+                    JWTAuth::parseToken()->refresh();
+            } catch (\Exception $ex)
             {
                 $message = "Invalid token provided";
             }
             session(['auth.token' => null]);
+
             return $this->setStatusCode(IlluminateResponse::HTTP_OK)
-                ->makeResponse('successfully LogOut.'.$message);
+                ->makeResponse('successfully LogOut.' . $message);
         }
 
 
@@ -439,22 +449,6 @@
 
         }
 
-        /**
-         * User input validation
-         * @return array
-         */
-        private function inputValidation($inputData, $validationRules)
-        {
-            // Trim blank spaces from
-
-            \Input::merge(array_map('trim', $inputData));
-
-            $userData = \Input::all();
-
-            $validator = \Validator::make($validationRules['values'], $validationRules['rules']);
-
-            return array($userData, $validator);
-        }
 
         /**
          * return valid user object as per provided credentials or else return false

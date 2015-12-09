@@ -1,48 +1,81 @@
 <?php
 
-namespace App\Models;
+    namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
-use Mockery\CountValidator\Exception;
+    use Illuminate\Database\Eloquent\Model;
+    use Mockery\CountValidator\Exception;
+    use Log;
+    use CustomAppException;
 
-class ProductCategory extends Model
-{
-    /**
-     * The database table used by the model.
-     *
-     * @var string
-     */
-    protected $table = 'product_categories';
+    class ProductCategory extends Model {
 
-    protected $fillable = ['category_name'];
+        /**
+         * The database table used by the model.
+         *
+         * @var string
+         */
+        protected $table = 'product_categories';
 
-    protected $hidden = ['id','created_at','updated_at'];
+        protected $fillable = ['category_name','extra_info','parent_id'];
 
-    /**
-     * Define Relationship
-     * /
-     *
-     * /*
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
-     */
-    public function products()
-    {
-        return $this->hasMany('App\Models\Product');
-    }
+        protected $hidden = ['created_at', 'updated_at'];
 
-
-    public function addCategory($product)
-    {
-        try{
-        ProductCategory::create([
-           'category_name' => $product['CategoryName'],
-           'extra_info_elements' => $product['extra_info_elements'],
-           'parent_id' => isset($product['parent_id'])? $product['parent_id']:null,
-        ]);
-        }catch(\Exception $ex)
+        /**
+         * Define Relationship
+         * /
+         *
+         * /*
+         * @return \Illuminate\Database\Eloquent\Relations\HasOne
+         */
+        public function products()
         {
-            throw new \Exception($ex);
+            return $this->hasMany('App\Models\Product');
+        }
+
+
+        /**  Add new item in the category and return it category object.
+         * @param $product
+         * @return mixed|static
+         */
+        public function addCategory($product)
+        {
+
+                $parentId = isset($product['ParentId'])?$product['ParentId']:null;
+
+                // Check whether valid Parent Id provided or not for new category
+                if($parentId != null)
+                {
+                    $parentId = $this->getParent($parentId);
+
+                    if ($parentId == false)
+                    {
+                        return \Config::get("const.product-id-not-exist");
+                    }
+                }
+
+                $category = ProductCategory::create([
+                    'category_name' => $product['CategoryName'],
+                    'extra_info'    => isset($product['ExtraInfo']) ? $product['ExtraInfo'] : null,
+                    'parent_id'     => isset($product['ParentId']) ? $product['ParentId'] : null,
+                ]);
+
+                return $category;
+
+        }
+
+        /** Check and return a parent category , if not found return false
+         * @param $parentId
+         * @return bool
+         */
+        private function getParent($parentId)
+        {
+            try
+            {
+                return ProductCategory::where('id',$parentId)->firstOrFail();
+            } catch (\Exception $ex)
+            {
+                return false;
+            }
         }
 
     }
-}

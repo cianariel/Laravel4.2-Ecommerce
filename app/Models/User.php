@@ -12,7 +12,9 @@
     use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
     use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
     use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
+    use Mockery\CountValidator\Exception;
 
+    use CustomAppException;
 
 
     class User extends Model implements AuthenticatableContract,
@@ -77,7 +79,7 @@
                     $user->save();
 
                     $userProfile = new UserProfile();
-                    $userProfile->full_name = $data['FullName'];
+                    // $userProfile->full_name = $data['FullName'];
                     $userProfile->save();
 
                     $user->userProfile()->save($userProfile);
@@ -146,14 +148,19 @@
         {
             try
             {
-                $user = User::where('email',$userData['Email'])->first();
+                $user = User::where('email', $userData['Email'])->first();
 
-                return \Hash::check($userData['Password'],$user->password)?$user:false;
+                return \Hash::check($userData['Password'], $user->password) ? $user : false;
 
             } catch (\Exception $ex)
             {
                 throw new \Exception($ex);
             }
+        }
+
+        public function throwExc()
+        {
+            throw new CustomAppException("hi");
         }
 
 

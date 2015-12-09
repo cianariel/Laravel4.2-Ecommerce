@@ -31,6 +31,10 @@ class UserProfile extends Model
     }
 
 
+
+
+
+
 /*
 users - hasOne('user')
 ideas - hasMany('idea')

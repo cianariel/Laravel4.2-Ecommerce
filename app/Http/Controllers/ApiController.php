@@ -11,6 +11,7 @@
     use Illuminate\Support\Facades\Log;
     use Illuminate\Support\Collection;
     use JWTAuth;
+    use FeedParser;
 
     class ApiController extends Controller {
 
@@ -84,8 +85,9 @@
                 $data = array_merge(['data' => $data], [
                     'token' => $this->getAuthToken()
                 ]);
-            }else{
-                $data =['data' => $data];
+            } else
+            {
+                $data = ['data' => $data];
             }
 
             return response()->json($data, $this->getStatusCode(), $headers);
@@ -100,7 +102,7 @@
          */
         public function makeResponseWithError($message, $log = null)
         {
-            Log::error($log);
+            // Log::error($log);
 
             return $this->makeResponse([
                 'error' => [
@@ -118,7 +120,7 @@
          * @param $data
          * @return mixed
          */
-        protected function responseWithPagination(Paginator $modelData, $data)
+        public function responseWithPagination(Paginator $modelData, $data)
         {
 
             $data = array_merge($data, [
@@ -131,6 +133,26 @@
             ]);
 
             return $this->makeResponse($data);
+        }
+
+
+
+
+        /**
+         * User input validation
+         * @return array
+         */
+        protected function inputValidation($inputData, $validationRules)
+        {
+            // Trim blank spaces from
+
+            \Input::merge(array_map('trim', $inputData));
+
+            $cleanData = \Input::all();
+
+            $validator = \Validator::make($validationRules['values'], $validationRules['rules']);
+
+            return array($cleanData, $validator);
         }
 
 

@@ -34,13 +34,22 @@
         Route::get('fb-login', 'AuthenticateController@fbLogin');
         Route::get('secure-page', 'AuthenticateController@securePage');
         Route::get('index', 'AuthenticateController@index');
-        Route::get('password-rest/{code?}', 'AuthenticateController@index');
+        //Route::get('password-rest/{code?}', 'AuthenticateController@index');
         Route::post('password-reset/', 'AuthenticateController@passwordReset');
         Route::post('change-profile', 'AuthenticateController@changeProfile');
 
         Route::post('secure-page', 'AuthenticateController@securePage');
         Route::any('logout', 'AuthenticateController@logOut');
 
+        /*
+         * Product Category route collection
+         *
+         * */
+        Route::resource('product-category', 'ProductCategoryController', ['only' => ['index','store','show','update','destroy']]);
+
+
+
+        Route::get('feed','ApiController@feedDispatcher');
     });
 
     Route::get('password-reset-form/{code?}', 'AuthenticateController@passwordResetForm');
@@ -51,6 +60,7 @@
     // GET for token parsing and POST for password reset through ..api/password-rest/ [POST] method
     Route::get('password-reset/{code?}', 'AuthenticateController@passwordReset');
 
+    Route::resource('feed', 'FeedController', ['only' => ['index']]);
 
 
 
