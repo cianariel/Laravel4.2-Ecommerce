@@ -389,7 +389,7 @@ form{
       position: absolute;
 
       &.product{
-        background: url("/assets/images/tag-green-big.png") center no-repeat;
+        background: url("/assets/images/bag-green-big.png") center no-repeat;
       }
       &.idea{
         background: url("/assets/images/lamp-orange.png") center no-repeat;
@@ -1043,7 +1043,7 @@ header.colophon{
     &.all-link{
       background-image: url('/assets/images/grid-dense-grey.png');
       margin-top: -3px;
-      
+
       &:hover{
         color: $iridium;
         background-image: url('/assets/images/grid-pink.png');
@@ -1058,11 +1058,11 @@ header.colophon{
       }
     }
     &.products-link{
-      background-image: url('/assets/images/tag-grey.png');
-
+      background-image: url('/assets/images/bag-grey-big.png');
+      background-size: 43px;
       &:hover{
         color: $pine-green;
-        background-image: url('/assets/images/tag-green.png');
+        background-image: url('/assets/images/bag-green-big.png');
       }
     }
     &.photos-link{

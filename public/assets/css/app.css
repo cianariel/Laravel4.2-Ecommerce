@@ -4627,7 +4627,7 @@ form .btn {
       top: 2px;
       position: absolute; }
       .grid-box .img-wrap .category-tag.product {
-        background: url("/assets/images/tag-green-big.png") center no-repeat; }
+        background: url("/assets/images/bag-green-big.png") center no-repeat; }
       .grid-box .img-wrap .category-tag.idea {
         background: url("/assets/images/lamp-orange.png") center no-repeat; }
       .grid-box .img-wrap .category-tag.photo {
@@ -5016,10 +5016,11 @@ header.colophon .search-bar {
         color: #FF7F00;
         background-image: url("/assets/images/lamp-orange.png"); }
     #hero-nav a.products-link {
-      background-image: url("/assets/images/tag-grey.png"); }
+      background-image: url("/assets/images/bag-grey-big.png");
+      background-size: 43px; }
       #hero-nav a.products-link:hover {
         color: #C7C747;
-        background-image: url("/assets/images/tag-green.png"); }
+        background-image: url("/assets/images/bag-green-big.png"); }
     #hero-nav a.photos-link {
       background-image: url("/assets/images/photos-grey.png");
       padding-left: 65px; }
