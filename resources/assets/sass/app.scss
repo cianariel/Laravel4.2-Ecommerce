@@ -876,6 +876,7 @@ header.colophon{
   h2{
     font-size: 3.5rem;
     font-weight: normal;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
   }
   h2, li{
     color: #fff;
@@ -1037,6 +1038,20 @@ header.colophon{
   //  background-size: contain;
   //  border-right: 1px solid #fff;
   //}
+}
+
+.latest-heading{
+  padding-top: 30px;
+  padding-bottom: 10px;
+  h6{
+    width: 135px;
+    margin: -30px auto 0;
+    padding: 0 15px;
+    background: #fff;
+    text-align: center;
+    font-size: 1.7rem;
+    color: lighten($tarmac, 10%);
+  }
 }
 
 .modal-login{

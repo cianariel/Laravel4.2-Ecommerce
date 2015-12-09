@@ -4905,7 +4905,8 @@ header.colophon .search-bar {
   margin-top: 25px; }
   .why-us h2 {
     font-size: 3.5rem;
-    font-weight: normal; }
+    font-weight: normal;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3); }
   .why-us h2, .why-us li {
     color: #fff; }
   .why-us li {
@@ -5004,6 +5005,18 @@ header.colophon .search-bar {
     .hero-box .btn-info:hover {
       background-color: #0578a0;
       border-color: #0578a0; }
+
+.latest-heading {
+  padding-top: 30px;
+  padding-bottom: 10px; }
+  .latest-heading h6 {
+    width: 135px;
+    margin: -30px auto 0;
+    padding: 0 15px;
+    background: #fff;
+    text-align: center;
+    font-size: 1.7rem;
+    color: #53676b; }
 
 .modal-login {
   background: #e6ecec; }

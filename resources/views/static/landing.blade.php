@@ -154,6 +154,11 @@
                <li class="grid selected">Grid</li>
             </ul>
 
+            <div class="latest-heading">
+                <hr/>
+                <h6>The Latest</h6>
+            </div>
+
             <div class="col-md-6 grid-box full-620">
                 <div class="img-wrap">
                     <img class="img-responsive" src="/assets/images/dummies/box-image-dummy.png">
