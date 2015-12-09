@@ -765,7 +765,7 @@ header.colophon{
   //  }
   //}
 
-  & > ul{
+  ul.wrap{
     position: relative;
     overflow: visible
   }
@@ -777,29 +777,32 @@ header.colophon{
     overflow: hidden;
     font-size: 1.2rem;
     color: #fff;
+    border-radius: 8px;
 
     &.more-link{
       text-indent: -9999px;
       background:url("/assets/images/dots-white.png") center no-repeat;
+      //background-size: contain;
 
+      &:hover{
+        background:url("/assets/images/dots-pink.png") center no-repeat;
+        //background-size: contain;
+
+      }
     }
 
     &.nested{
-      //position: relative;
       &::after{
         content: '	▼';
-        //position: absolute;
-        //right: 0;
       }
     }
 
     &:hover{
       border: 2px solid #fff;
-      border-radius: 15px;
+      background-color: #fff !important;
+      color: $iridium;
       margin-top: 6px;
       padding: 5px 33px;
-      //padding: 4px 2%;
-      //margin-top: 8px;
 
     }
   }
@@ -812,7 +815,7 @@ header.colophon{
     //color: #FBB03B;
     //border-bottom: 3px solid #FBB03B;
     border: 2px solid #fff;
-    border-radius: 15px;
+    //border-radius: 15px;
     margin-top: 6px;
     padding: 5px 33px;
 
@@ -1104,9 +1107,18 @@ header.colophon{
     padding-left: 18px;
     padding-right: 18px;
 
+    &.more-link {
+      background-size: contain !important;
+    }
+
     &:hover{
       padding-left: 16px;
       padding-right: 16px;
+      background-size: contain !important;
+
+      //.more-link {
+      //  background-size: contain;
+      //}
     }
   }
 
@@ -1146,6 +1158,11 @@ header.colophon{
   #mid-nav a.more-link {
     background: url("/assets/images/dots-vertical.png") center no-repeat;
     background-size: contain;
+
+    &:hover{
+      background:url("/assets/images/dots-vertical-pink.png") center no-repeat;
+      background-size: contain;
+    }
   }
 
   //.why-us{

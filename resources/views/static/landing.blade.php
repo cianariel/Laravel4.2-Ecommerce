@@ -5,7 +5,7 @@
         <div class="hero-background"></div>
         <nav id="mid-nav"  class="col-xs-12">
             <div class="container hidden-xs">
-                <ul>
+                <ul class="wrap">
                     <li class="selected"><a href="">All ideas</a></li>
                     <li><a href="">Kitchen</a></li>
                     <li><a href="">Bedroom</a></li>
@@ -174,11 +174,6 @@
                 <div class="get">Get it</div>
                 <ul class="box-tags">
                     <li class="box-tag"><a>Products</a></li>
-                    <li class="box-tag"><a>Improvements</a></li>
-                    <li class="box-tag"><a>Improvements</a></li>
-                    <li class="box-tag"><a>Improvements</a></li>
-                    <li class="box-tag"><a>Improvements</a></li>
-                    <li class="box-tag"><a>Improvements</a></li>
                 </ul>
             </div>
             <div class="col-md-6 grid-box full-620">
@@ -203,11 +198,7 @@
                 <div class="get">Get it</div>
                 <ul class="box-tags">
                     <li class="box-tag"><a>Products</a></li>
-                    <li class="box-tag"><a>Improvements</a></li>
-                    <li class="box-tag"><a>Improvements</a></li>
-                    <li class="box-tag"><a>Improvements</a></li>
-                    <li class="box-tag"><a>Improvements</a></li>
-                    <li class="box-tag"><a>Improvements</a></li>
+                    {{--displays only one main tag--}}
                 </ul>
             </div>
             <div class="col-md-12 grid-box big-box full-620">
@@ -233,11 +224,6 @@
                 <p>Truly good design and taste are always current, always relevant. Quiet, muted colors determine the image</p>
                 <ul class="box-tags">
                     <li class="box-tag"><a>Products</a></li>
-                    <li class="box-tag"><a>Improvements</a></li>
-                    <li class="box-tag"><a>Improvements</a></li>
-                    <li class="box-tag"><a>Improvements</a></li>
-                    <li class="box-tag"><a>Improvements</a></li>
-                    <li class="box-tag"><a>Improvements</a></li>
                 </ul>
             </div>
 

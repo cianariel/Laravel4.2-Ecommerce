@@ -4835,7 +4835,7 @@ header.colophon .search-bar {
   margin-bottom: 140px;
   min-height: 47px;
   background: #ED1E47; }
-  #mid-nav > ul, .extra-nav > ul {
+  #mid-nav ul.wrap, .extra-nav ul.wrap {
     position: relative;
     overflow: visible; }
   #mid-nav a, .extra-nav a {
@@ -4844,22 +4844,25 @@ header.colophon .search-bar {
     padding: 5px 35px;
     overflow: hidden;
     font-size: 1.2rem;
-    color: #fff; }
+    color: #fff;
+    border-radius: 8px; }
     #mid-nav a.more-link, .extra-nav a.more-link {
       text-indent: -9999px;
       background: url("/assets/images/dots-white.png") center no-repeat; }
+      #mid-nav a.more-link:hover, .extra-nav a.more-link:hover {
+        background: url("/assets/images/dots-pink.png") center no-repeat; }
     #mid-nav a.nested::after, .extra-nav a.nested::after {
       content: '	▼'; }
     #mid-nav a:hover, .extra-nav a:hover {
       border: 2px solid #fff;
-      border-radius: 15px;
+      background-color: #fff !important;
+      color: #FF0042;
       margin-top: 6px;
       padding: 5px 33px; }
   #mid-nav li.nested, .extra-nav li.nested {
     position: relative; }
   #mid-nav li.selected a, .extra-nav li.selected a {
     border: 2px solid #fff;
-    border-radius: 15px;
     margin-top: 6px;
     padding: 5px 33px;
     background-color: #CE1F46; }
@@ -5038,9 +5041,12 @@ header.colophon .search-bar {
   #mid-nav a, .extra-nav a {
     padding-left: 18px;
     padding-right: 18px; }
+    #mid-nav a.more-link, .extra-nav a.more-link {
+      background-size: contain !important; }
     #mid-nav a:hover, .extra-nav a:hover {
       padding-left: 16px;
-      padding-right: 16px; }
+      padding-right: 16px;
+      background-size: contain !important; }
 
   .why-us {
     margin-top: 0; } }
@@ -5066,6 +5072,9 @@ header.colophon .search-bar {
   #mid-nav a.more-link, .extra-nav a.more-link {
     background: url("/assets/images/dots-vertical.png") center no-repeat;
     background-size: contain; }
+    #mid-nav a.more-link:hover, .extra-nav a.more-link:hover {
+      background: url("/assets/images/dots-vertical-pink.png") center no-repeat;
+      background-size: contain; }
 
   .bottom-load-more {
     margin-top: 65px; }
