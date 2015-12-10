@@ -5182,6 +5182,55 @@ header.colophon .search-bar {
   .hidden-620 {
     display: none !important; }
 
+  .shown-620 {
+    display: block !important; }
+
+  .full-620 {
+    width: 100%;
+    padding: 0; }
+
+  .logo-wrap {
+    width: 200px; }
+
+  .search-bar {
+    width: 40px;
+    height: 40px;
+    margin: 0;
+    padding: 0 !important; }
+    .search-bar a {
+      height: 40px;
+      margin: 0;
+      padding: 0; }
+
+  #top-nav {
+    padding-top: 20px;
+    padding-bottom: 20px; }
+    #top-nav .mobile-category-menu {
+      text-indent: -9999px;
+      width: 190px; }
+      #top-nav .mobile-category-menu li a {
+        width: 40px;
+        height: 50px;
+        float: left;
+        padding: 0;
+        background-size: 35px !important;
+        margin-left: 10px; }
+
+  .signin {
+    margin-right: 0;
+    margin-top: 10px; }
+    .signin a {
+      background: #FF0042;
+      padding: 4px;
+      border-radius: 3px;
+      color: #fff  !important;
+      text-transform: none;
+      background-size: 25px;
+      background-position-x: 7px !important; }
+
+  .search-toggle {
+    display: block !important; }
+
   .main-content.landing {
     padding: 20px; }
 
@@ -5191,6 +5240,12 @@ header.colophon .search-bar {
   #hero {
     min-height: 570px;
     padding-bottom: 20px; }
+    #hero .hero-background {
+      -webkit-filter: none;
+      -moz-filter: blur(2px);
+      -o-filter: blur(2px);
+      -ms-filter: blur(2px);
+      filter: blur(2px); }
 
   #hero-nav li {
     margin-left: 16px; }
@@ -5217,13 +5272,6 @@ header.colophon .search-bar {
     margin-right: 1%; }
   #hero-nav li.active a::after {
     right: 19px; }
-
-  .signin {
-    margin-right: 30px; }
-
-  .full-620 {
-    width: 100%;
-    padding: 0; }
 
   #hero-nav a.home-link {
     width: 100%;
@@ -5255,7 +5303,8 @@ header.colophon .search-bar {
     right: 8%; }
 
   .why-us {
-    text-align: center; }
+    text-align: center;
+    padding-top: 25%; }
     .why-us li {
       background-position: 10px 21px !important; }
     .why-us .btn {

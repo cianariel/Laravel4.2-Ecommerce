@@ -1444,6 +1444,76 @@ header.colophon{
     display: none !important;
   }
 
+  .shown-620{
+    display: block !important;
+  }
+
+
+  .full-620{
+    width: 100%;
+    padding: 0;
+  }
+
+  .logo-wrap{
+    width: 200px;
+  }
+
+  .search-bar{
+    width: 40px;
+    height: 40px;
+    margin: 0;
+    padding: 0 !important;
+
+    a{
+      height: 40px;
+      margin: 0;
+      padding: 0;
+    }
+  }
+
+  #top-nav{
+    padding-top: 20px ;
+    padding-bottom: 20px ;
+    .mobile-category-menu{
+      text-indent: -9999px;
+      width: 190px;
+      //margin-top: 10px;
+      li{
+        a{
+          width: 40px;
+          height: 50px;
+          float: left;
+          padding: 0;
+          background-size: 35px !important;
+          margin-left: 10px;
+        }
+      }
+
+
+      //::after
+    }
+  }
+
+
+
+  .signin{
+    margin-right: 0;
+    margin-top: 10px;
+    a{
+      background: $iridium;
+      padding: 4px;
+      border-radius: 3px;
+      color: #fff  !important;;
+      text-transform: none;
+      background-size: 25px;
+      background-position-x: 7px !important;
+    }
+  }
+
+  .search-toggle{
+    display: block !important;
+  }
+
   .main-content.landing{
     padding: 20px;
   }
@@ -1455,6 +1525,14 @@ header.colophon{
   #hero{
     min-height: 570px;
     padding-bottom: 20px;
+
+    .hero-background{
+      -webkit-filter: none;
+      -moz-filter: blur(2px);
+      -o-filter: blur(2px);
+      -ms-filter: blur(2px);
+      filter: blur(2px);
+    }
   }
 
     #hero-nav{
@@ -1503,14 +1581,6 @@ header.colophon{
     }
   }
 
-  .signin{
-    margin-right: 30px;
-  }
-
-  .full-620{
-    width: 100%;
-    padding: 0;
-  }
 
 
   #hero-nav a.home-link{
@@ -1565,6 +1635,7 @@ header.colophon{
 
   .why-us{
     text-align: center;
+    padding-top: 25%;
     li{
       background-position: 10px 21px !important;
     }

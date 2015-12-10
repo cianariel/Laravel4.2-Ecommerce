@@ -4,8 +4,8 @@
     <section id="hero" class="landing-hero">
         <div class="hero-background"></div>
         <div class="color-overlay"></div>
-        <nav id="mid-nav"  class="col-xs-12">
-            <div class="container full-sm fixed-sm">
+        <nav id="mid-nav"  class="col-xs-12  hidden-620">
+            <div class="container full-sm fixed-sm ">
                 <ul class="wrap">
                     <li class="selected"><a href="">All ideas</a></li>
                     <li><a href="">Kitchen</a></li>

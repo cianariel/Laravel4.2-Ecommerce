@@ -24,7 +24,7 @@
                     <h2 id="site-name">Ideaing | Ideas for Smarter Living</h2>
                     <nav id="top-nav" class="row">
                         <div class="container full-sm fixed-sm">
-                            <div  class="col-md-4 col-sm col-xs-4 category-menu">
+                            <div  class="col-md-4 col-sm col-xs-4 category-menu hidden-620">
                                 <ul>
                                     <li class="nested"><a class="shop" href="">Shop</a></li>
                                     <li><a class="pros" href="">Pros</a></li>
@@ -35,12 +35,21 @@
                             <div class="col-md-3 col-sm-4 col-xs-3 logo-wrap">
                                 <img src="/assets/images/ideaing-logo-small.png" id="ideaing-logo" class="logo top-logo img-responsive"/>
                             </div>
+
+                            <div  class="col-md-4 col-sm col-xs-4 category-menu mobile-category-menu hidden-620 shown-620">
+                                <ul>
+                                    <li class="nested"><a class="shop" href="">Shop</a></li>
+                                    <li><a class="pros" href="">Pros</a></li>
+                                    <li><a class="disc" href="">Discuss</a></li>
+                                </ul>
+                            </div>
+
                             <section class="search-bar col-xs-2 col-md-2">
                                 <a href="#" class="search-toggle" data-toggle=".mobile-search-bar">Search</a>
-                                <input class="form-control" type="text" name="search" value="Search..."/>
+                                <input class="form-control  hidden-620" type="text" name="search" value="Search..."/>
                             </section>
                             <div class="col-md-2 col-xs-2 pull-right signin">
-                                <a data-toggle="modal" data-target="#myModal" href="#">Sign in</a>
+                                <a data-toggle="modal" data-target="#myModal" href="#">Log in</a>
                             </div>
                         </div>
                     </nav>
