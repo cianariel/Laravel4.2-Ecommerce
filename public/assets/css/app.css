@@ -5150,9 +5150,6 @@ header.colophon .search-bar {
   header.colophon .signin {
     width: 120px; }
 
-  .container.fixed-sm {
-    min-width: 920px; }
-
   #mid-nav .container, .extra-nav .container {
     padding-left: 60px; }
 
@@ -5165,6 +5162,9 @@ header.colophon .search-bar {
   .full-sm {
     width: 100%;
     padding: 0; } }
+@media only screen and (max-width: 992px) and (min-width: 620px) {
+  .container.fixed-sm {
+    min-width: 920px; } }
 @media only screen and (max-width: 768px) {
   .get-it.author {
     display: none; }
@@ -5179,6 +5179,38 @@ header.colophon .search-bar {
     top: 49px;
     right: 23%; } }
 @media only screen and (max-width: 620px) {
+  .hidden-620 {
+    display: none !important; }
+
+  .main-content.landing {
+    padding: 20px; }
+
+  #mid-nav, .extra-nav, .extra-nav {
+    margin-bottom: 15px; }
+
+  #hero {
+    min-height: 570px;
+    padding-bottom: 20px; }
+
+  #hero-nav li {
+    margin-left: 16px; }
+  #hero-nav li.active a::after {
+    right: 43px; }
+  #hero-nav a {
+    padding-left: 34px;
+    background-position: left;
+    background-repeat: no-repeat;
+    background-size: 30px !important;
+    margin-right: 6%; }
+    #hero-nav a.photos-link {
+      padding-left: 45px;
+      background-position: 0 12px;
+      background-size: 39px !important; }
+    #hero-nav a.home-link {
+      display: none; }
+    #hero-nav a.products-link {
+      background-position: left 12px; }
+
   #hero-nav a {
     padding-left: 35px;
     background-size: 30px;
@@ -5220,7 +5252,16 @@ header.colophon .search-bar {
 
   .extra-nav {
     top: 49px;
-    right: 8%; } }
+    right: 8%; }
+
+  .why-us {
+    text-align: center; }
+    .why-us li {
+      background-position: 10px 21px !important; }
+    .why-us .btn {
+      margin: 0 auto;
+      display: block;
+      float: none; } }
 @media screen and (max-width: 480px) {
   .grid-box:hover .img-wrap {
     border: 2px solid #00B1FF;
@@ -5256,7 +5297,7 @@ header.colophon .search-bar {
     padding-left: 5%;
     padding-right: 5%; }
     #hero-nav a.all-link {
-      background-position: 15px  4px !important; }
+      background-position: -4px  4px !important; }
     #hero-nav a.photos-link {
       padding-left: 21px; }
 
@@ -5296,8 +5337,6 @@ header.colophon .search-bar {
   #hero-nav a {
     padding-left: 4%;
     padding-right: 4%; }
-    #hero-nav a.all-link {
-      background-position: 6px top !important; }
     #hero-nav a.photos-link {
       padding-left: 21px; } }
 @media screen and (max-width: 370px) {

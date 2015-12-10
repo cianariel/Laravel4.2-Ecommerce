@@ -51,8 +51,8 @@
             </div>
         </nav>
 
-        <div class="container  fixed-sm">
-            <div class="col-md-5 col-xs-6 col-md-offset-1 why-us hidden-620">
+        <div class="container fixed-sm">
+            <div class="col-md-5 col-xs-6 full-620 col-md-offset-1 why-us">
                 <h2>Ideas for Smarter Living</h2>
 
                 <ul>
@@ -100,7 +100,7 @@
     <nav id="hero-nav" class="col-sm-12">
         <div class="container full-620  fixed-sm">
             <ul>
-                <li class="col-xs-4 active"><a class="home-link" href="">Home</a></li>
+                <li class="col-xs-4 active  hidden-620"><a class="home-link" href="">Home</a></li>
 
                 <li class="col-xs-2 active"><a href="" class="all-link">All</a></li>
                 <li class="col-xs-2 "><a href="" class="ideas-link">Ideas</a></li>
@@ -147,7 +147,7 @@
 
         </section>
 
-        <section class="main-content landing col-xs-9">
+        <section class="main-content landing col-xs-9 full-620">
 
             <ul class="layout-controls col-xs-12 hidden-xs">
                <li class="list">List</li>
