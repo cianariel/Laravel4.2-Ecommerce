@@ -180,9 +180,9 @@
                 <b class="price">$199</b>
                 <div class="get">Get it</div>
                 <img class="vendor-logo" src="/assets/images/dummies/amazon.png">
-                <ul class="box-tags">
-                    <li class="box-tag"><a>Products</a></li>
-                </ul>
+                {{--<ul class="box-tags">--}}
+                    {{--<li class="box-tag"><a>Products</a></li>--}}
+                {{--</ul>--}}
             </div>
             <div class="col-md-6 grid-box full-620">
                 <div class="img-wrap">
@@ -206,10 +206,10 @@
                 <b class="price">$199</b>
                 <div class="get">Get it</div>
                 <img class="vendor-logo" src="/assets/images/dummies/amazon.png">
-                <ul class="box-tags">
-                    <li class="box-tag"><a>Products</a></li>
+                {{--<ul class="box-tags">--}}
+                    {{--<li class="box-tag"><a>Products</a></li>--}}
                     {{--displays only one main tag--}}
-                </ul>
+                {{--</ul>--}}
             </div>
             <div class="col-md-12 grid-box big-box full-620">
                 <div class="img-wrap">
@@ -232,9 +232,9 @@
                 </div>
                 <h3><a href="#">The Top Kitchen Gadgets</a></h3>
                 <p>Truly good design and taste are always current, always relevant. Quiet, muted colors determine the image</p>
-                <ul class="box-tags">
-                    <li class="box-tag"><a>Products</a></li>
-                </ul>
+                {{--<ul class="box-tags">--}}
+                    {{--<li class="box-tag"><a>Products</a></li>--}}
+                {{--</ul>--}}
             </div>
 
 
@@ -251,12 +251,59 @@
         </section>
 
         <aside class="col-md-3 hidden-sm hidden-xs">
-            <section id="side-filters" class="side-filters pale-grey-bg">
+            <section class="sidebar-category products">
+                <h4>Top Products</h4>
+
+                <div class="grid-box sidebar-box">
+                        <div class="img-wrap">
+                            <img class="img-responsive" src="/assets/images/dummies/img-small.jpg">
+                            <a href="#" class="overlay-tag top-left-corner number">1</a>
+                            <a class="sidebar-social-counter like">31</a>
+                        </div>
+                    <h5><a href="#">4 Tier wood utility</a></h5>
+                    {{--<ul class="box-tags">--}}
+                        {{--<li class="box-tag"><a>Products</a></li>--}}
+                    {{--</ul>--}}
+                    {{--<a class="sidebar-social-counter like">31</a>--}}
+                </div>
+            </section>
+            <section class="sidebar-category ideas">
+                <h4>Top Ideas</h4>
+
+                <div class="grid-box sidebar-box">
+                        <div class="img-wrap">
+                            <img class="img-responsive" src="/assets/images/dummies/box-image-dummy.png">
+                            <a href="#" class="overlay-tag top-left-corner number">1</a>
+                            <a class="sidebar-social-counter like">31</a>
+                        </div>
+                    <h5><a href="#">4 Tier wood utility</a></h5>
+                    {{--<ul class="box-tags">--}}
+                        {{--<li class="box-tag"><a>Products</a></li>--}}
+                    {{--</ul>--}}
+                </div>
+            </section>
+            <section class="sidebar-category photos">
+                <h4>Top Photos</h4>
+
+                <div class="grid-box sidebar-box">
+                        <div class="img-wrap">
+                            <img class="img-responsive" src="/assets/images/dummies/img-small.jpg">
+                            <a href="#" class="overlay-tag top-left-corner number">1</a>
+                            <a class="sidebar-social-counter like">31</a>
+                        </div>
+                    <h5><a href="#">4 Tier wood utility</a></h5>
+                    {{--<ul class="box-tags">--}}
+                        {{--<li class="box-tag"><a>Products</a></li>--}}
+                    {{--</ul>--}}
+                </div>
+            </section>
+
+            <section id="side-filters" class="side-filters pale-grey-bg pale-grey-border">
                 <div>
                     <h5>Ideas</h5>
-                   <input type="checkbox" name="dyi" id="dyi"> <label for="dyi"><span></span>DIY</label>
-                   <input type="checkbox" name="best-buys" id="best-buys"> <label for="best-buys"><span></span>Best Buys</label>
-                   <input type="checkbox" name="declutter" id="declutter"> <label for="declutter"><span></span>Declutter</label>
+                    <input type="checkbox" name="dyi" id="dyi"> <label for="dyi"><span></span>DIY</label>
+                    <input type="checkbox" name="best-buys" id="best-buys"> <label for="best-buys"><span></span>Best Buys</label>
+                    <input type="checkbox" name="declutter" id="declutter"> <label for="declutter"><span></span>Declutter</label>
                 </div>
                 <div>
                     <h5>Products</h5>
@@ -274,54 +321,6 @@
                 {{--<a class="btn btn-success col-xs-12">Apply Filters</a>--}}
                 {{--<a class="btn-none col-xs-12">Cancel</a>--}}
             </section>
-
-            <section class="sidebar-category products">
-                <h4>Most Popular Products</h4>
-
-                <div class="grid-box sidebar-box">
-                        <div class="img-wrap">
-                            <img class="img-responsive" src="/assets/images/dummies/img-small.jpg">
-                            <a href="#" class="overlay-tag top-left-corner number">1</a>
-                        </div>
-                    <h5><a href="#">4 Tier wood utility</a></h5>
-                    <ul class="box-tags">
-                        <li class="box-tag"><a>Products</a></li>
-                    </ul>
-                    <a class="sidebar-social-counter like">31</a>
-                </div>
-            </section>
-            <section class="sidebar-category ideas">
-                <h4>Most Popular Ideas</h4>
-
-                <div class="grid-box sidebar-box">
-                        <div class="img-wrap">
-                            <img class="img-responsive" src="/assets/images/dummies/box-image-dummy.png">
-                            <a href="#" class="overlay-tag top-left-corner number">1</a>
-                        </div>
-                    <h5><a href="#">4 Tier wood utility</a></h5>
-                    <ul class="box-tags">
-                        <li class="box-tag"><a>Products</a></li>
-                    </ul>
-                    <a class="sidebar-social-counter like">31</a>
-                </div>
-            </section>
-            <section class="sidebar-category photos">
-                <h4>Most Popular Photos</h4>
-
-                <div class="grid-box sidebar-box">
-                        <div class="img-wrap">
-                            <img class="img-responsive" src="/assets/images/dummies/img-small.jpg">
-                            <a href="#" class="overlay-tag top-left-corner number">1</a>
-                        </div>
-                    <h5><a href="#">4 Tier wood utility</a></h5>
-                    <ul class="box-tags">
-                        <li class="box-tag"><a>Products</a></li>
-                    </ul>
-                    <a class="sidebar-social-counter like">31</a>
-                </div>
-            </section>
-
-
         </aside>
     </div>
 

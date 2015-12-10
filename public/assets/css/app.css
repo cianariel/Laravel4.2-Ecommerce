@@ -4375,6 +4375,9 @@ a.label:focus {
 .pale-grey-bg {
   background: #F2F5F5; }
 
+.pale-grey-border {
+  border: 1px solid #d5dfdf; }
+
 .blue-glow {
   -webkit-stroke-width: 5.3px;
   -webkit-stroke-color: #1ABCF5;
@@ -4699,14 +4702,18 @@ form .btn {
   padding: 10px 30px 20px;
   margin-top: 30px;
   overflow: hidden; }
+  .side-filters div:not(:first-child) {
+    margin-top: 25px;
+    border-top: 1px solid #c1c1c1;
+    padding-top: 9px; }
   .side-filters h5 {
-    margin-top: 30px;
-    color: #000; }
+    color: #53676b; }
   .side-filters input[type="checkbox"] {
     margin-right: 5px; }
   .side-filters label {
     display: block;
-    width: 100%; }
+    width: 100%;
+    color: #53676b; }
   .side-filters .btn-success {
     margin-top: 40px; }
 
@@ -4741,15 +4748,23 @@ form .btn {
 .sidebar-category {
   margin-top: 40px; }
   .sidebar-category h4 {
-    font-size: 1.3rem; }
+    font-size: 1.8rem;
+    margin-bottom: 0; }
+  .sidebar-category.products h4 {
+    color: #C7C747; }
+  .sidebar-category.ideas h4 {
+    color: #FF7F00; }
+  .sidebar-category.photos h4 {
+    color: #00B1FF; }
 
 .sidebar-box {
-  overflow: visible; }
+  overflow: visible;
+  margin-top: 0; }
   .sidebar-box h5 {
-    font-size: 1.7rem;
+    font-size: 1.6rem;
     margin-bottom: 0; }
     .sidebar-box h5 a {
-      color: #C7C747; }
+      color: #3D4B4E; }
   .sidebar-box ul {
     height: 25px;
     margin-bottom: 0; }
@@ -4769,16 +4784,20 @@ form .btn {
     color: #fff; }
   .photos .sidebar-box .img-wrap a.number {
     background: #00B1FF; }
-  .photos .sidebar-box h5 a {
-    color: #00B1FF; }
   .ideas .sidebar-box .img-wrap a.number {
     background: #FF7F00; }
-  .ideas .sidebar-box h5 a {
-    color: #FF7F00; }
   .sidebar-box .sidebar-social-counter {
-    color: #c1c1c1;
     padding-left: 25px;
-    background: url("/assets/images/heart-grey.png") left no-repeat; }
+    background: rgba(255, 255, 255, 0.9) url("/assets/images/heart-grey.png") 5px 10px no-repeat;
+    right: 0;
+    bottom: 0;
+    width: 60px;
+    /* background: #fff; */
+    text-indent: 0;
+    color: #3D4B4E;
+    padding: 7px 0 4px 30px;
+    border-radius: 15px 0 0 0;
+    text-indent: 0 !important; }
 
 #back-to-top {
   -webkit-appearance: none;
@@ -4791,7 +4810,7 @@ form .btn {
   background: url("/assets/images/back-to-top.png") no-repeat;
   text-indent: -9999px; }
   #back-to-top:hover {
-    background: url("/assets/images/back-to-top-green.png") no-repeat; }
+    background: url("/assets/images/back-to-top-red.png") no-repeat; }
 
 .layout-controls {
   display: none;
