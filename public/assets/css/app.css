@@ -5117,6 +5117,8 @@ header.colophon .search-bar {
     right: 58px;
     color: #fff;
     text-shadow: -1px -1px 0 #d5dfdf, 1px -1px 0 #d5dfdf, -1px 1px 0 #fff, 1px 1px 0 #fff; }
+  #hero-nav li.active a.all-link::after {
+    bottom: -31px; }
 
 @media only screen and (max-width: 1200px) {
   #top-nav a {
@@ -5242,6 +5244,8 @@ header.colophon .search-bar {
     background-position: center 4px !important; }
   #hero-nav a.ideas-link {
     background-position: center  4px !important; }
+  #hero-nav li.active a.all-link::after {
+    bottom: -27px; }
 
   #mid-nav a, .extra-nav a {
     font-size: 1.8rem; }

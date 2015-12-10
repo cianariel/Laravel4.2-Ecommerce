@@ -100,7 +100,7 @@
     <nav id="hero-nav" class="col-sm-12">
         <div class="container full-620">
             <ul>
-                <li class="col-sm-4 "><a class="home-link" href="">Home</a></li>
+                <li class="col-sm-4 active"><a class="home-link" href="">Home</a></li>
 
                 <li class="col-sm-2 active"><a href="" class="all-link">All</a></li>
                 <li class="col-sm-2 "><a href="" class="ideas-link">Ideas</a></li>

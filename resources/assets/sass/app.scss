@@ -1199,19 +1199,23 @@ header.colophon{
 
   }
 
-  li.active a::after{
-    content: '▲';
-    font-size: 1.7rem;
-    position: relative;
-    bottom: -28px;
-    right: 58px;
-   color: #fff;
-
-    text-shadow:
-    -1px -1px 0 darken($pale-grey, 10%),
-    1px -1px 0 darken($pale-grey, 10%),
-    -1px 1px 0 #fff,
-    1px 1px 0 #fff;
+  li.active{
+    a::after{
+      content: '▲';
+      font-size: 1.7rem;
+      position: relative;
+      bottom: -28px;
+      right: 58px;
+      color: #fff;
+      text-shadow:
+      -1px -1px 0 darken($pale-grey, 10%),
+      1px -1px 0 darken($pale-grey, 10%),
+      -1px 1px 0 #fff,
+      1px 1px 0 #fff;
+    }
+    a.all-link::after{
+      bottom: -31px;
+    }
   }
 
 
@@ -1431,8 +1435,11 @@ header.colophon{
       }
       &.ideas-link{
         background-position: center  4px !important;
-
       }
+
+    }
+    li.active a.all-link::after{
+      bottom: -27px;
     }
   }
 
