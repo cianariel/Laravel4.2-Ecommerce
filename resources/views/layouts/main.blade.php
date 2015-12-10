@@ -2,7 +2,18 @@
 <html>
     <head>
         <title>Ideaing</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <meta name="viewport" id="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <script>
+            if (screen.width < 992 && screen.width > 620) {
+                document.getElementById("viewport").setAttribute("content", "width=980");
+            }
+//
+//            window.onresize = function() {
+//                if (screen.width < 992 && screen.width > 620) {
+//                    document.getElementById("viewport").setAttribute("content", "width=992, initial-scale=1, maximum-scale=2");
+//                }
+//            }
+        </script>
 {{--        {{ HTML::style('css/app.css') }}--}}
         <link rel="stylesheet" href="/assets/css/app.css">
         <script src="/assets/js/vendor/jquery-1.11.3.min.js"></script>
@@ -12,8 +23,8 @@
                 <div class="col-xs-12">
                     <h2 id="site-name">Ideaing | Ideas for Smarter Living</h2>
                     <nav id="top-nav" class="row">
-                        <div class="container">
-                            <div  class="col-md-4 col-xs-8 category-menu">
+                        <div class="container full-sm fixed-sm">
+                            <div  class="col-md-4 col-sm col-xs-4 category-menu">
                                 <ul>
                                     <li class="nested"><a class="shop" href="">Shop</a></li>
                                     <li><a class="pros" href="">Pros</a></li>
@@ -21,10 +32,10 @@
                                 </ul>
                             </div>
 
-                            <div class="col-md-2 col-xs-4 logo-wrap">
-                                <img src="/assets/images/ideaing-logo-small.png" id="ideaing-logo" class="logo top-logo"/>
+                            <div class="col-md-3 col-sm-4 col-xs-3 logo-wrap">
+                                <img src="/assets/images/ideaing-logo-small.png" id="ideaing-logo" class="logo top-logo img-responsive"/>
                             </div>
-                            <section class="search-bar col-xs-4 col-md-2">
+                            <section class="search-bar col-xs-2 col-md-2">
                                 <a href="#" class="search-toggle" data-toggle=".mobile-search-bar">Search</a>
                                 <input class="form-control" type="text" name="search" value="Search..."/>
                             </section>

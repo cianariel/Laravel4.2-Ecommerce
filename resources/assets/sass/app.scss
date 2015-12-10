@@ -216,9 +216,12 @@ nav{
   width: 175px;
   //height: 45px;
 
-  //&.top-logo{
-  //  margin-top: 10px;
-  //}
+  &.top-logo{
+    margin-top: 5px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
 
 form{
@@ -763,7 +766,7 @@ header.colophon{
 
   .search-bar{
     padding-top: 13px;
-    margin-left: 11%;
+    margin-left: 3%;
 
     .search-toggle{
       display: none;
@@ -772,6 +775,7 @@ header.colophon{
     }
 
     input{
+      min-width: 128px;
       text-align: center;
       background: url('/assets/images/magnif-grey.png') 10% no-repeat;
     }
@@ -1253,51 +1257,86 @@ header.colophon{
 }
 
 @media only screen and (max-width: 992px){
-  #top-nav a {
-    padding-left: 24px;
-    padding-right: 10px;
-  }
-
   header.colophon{
-    .logo-wrap{
-      height: 60px;
-    }
-    #ideaing-logo{
-      float: right;
-    }
-    .search-bar {
-      margin-left: 0;
-    }
-  }
-
-  #mid-nav a {
-    padding-left: 12px;
-    padding-right: 12px;
-
-    &:hover{
-      padding-left: 13px;
-      padding-right: 13px;
-    }
-  }
-
-  #mid-nav a.more-link {
-    background: url("/assets/images/dots-vertical.png") center no-repeat;
-    background-size: contain;
-
-    &:hover{
-      background:url("/assets/images/dots-vertical-pink.png") center no-repeat;
-      background-size: contain;
-    }
-  }
-
-  #hero-nav{
-    a{
-      &.photos-link,
-      &.products-link{
-        background-position: left 3px;
+      .search-bar{
+        margin-left: 0;
       }
+
+    #top-nav{
+      .category-menu{
+        padding: 0 10px 0 5px;
+      }
+        a{
+          //padding-left: 18px;
+          ////padding-right: 5px;
+          //margin: 0;
+          //font-size: 1.3rem;
+          //background-size: 15px;
+        }
     }
+
+    .signin{
+      width: 120px;
+    }
+
+
   }
+
+  .container.fixed-sm{
+    min-width: 920px;
+  }
+
+ #mid-nav .container{
+   padding-left: 60px;
+ }
+
+
+
+  //#top-nav a {
+  //  padding-left: 24px;
+  //  padding-right: 10px;
+  //}
+  //
+  //header.colophon{
+  //  .logo-wrap{
+  //    height: 60px;
+  //  }
+  //  #ideaing-logo{
+  //    float: right;
+  //  }
+  //  .search-bar {
+  //    margin-left: 0;
+  //  }
+  //}
+  //
+  //#mid-nav a {
+  //  padding-left: 12px;
+  //  padding-right: 12px;
+  //
+  //  &:hover{
+  //    padding-left: 13px;
+  //    padding-right: 13px;
+  //  }
+  //}
+  //
+  //#mid-nav a.more-link {
+  //  background: url("/assets/images/dots-vertical.png") center no-repeat;
+  //  background-size: contain;
+  //
+  //  &:hover{
+  //    background:url("/assets/images/dots-vertical-pink.png") center no-repeat;
+  //    background-size: contain;
+  //  }
+  //}
+  //
+  //#hero-nav{
+  //  a{
+  //    &.photos-link,
+  //    &.products-link{
+  //      background-position: left 3px;
+  //    }
+  //  }
+  //}
 
   //.why-us{
   //  margin-left: 0;
@@ -1325,53 +1364,55 @@ header.colophon{
 
 
 @media only screen and (max-width: 768px){
-  #mid-nav a {
-    padding-left: 2%;
-    padding-right: 2%;
-    font-size: 2rem;
+  //#mid-nav a {
+  //  padding-left: 2%;
+  //  padding-right: 2%;
+  //  font-size: 2rem;
+  //
+  //
+  //  &.more-link{
+  //    padding-left: 8%;
+  //  }
+  //}
 
 
-    &.more-link{
-      padding-left: 8%;
-    }
-  }
 
+//
+//#hero{
+//  min-height: 570px;
+//  padding-bottom: 20px;
+//}
+//
+//  #hero-nav{
+//
+//    li.active a::after {
+//      right: 43px;
+//    }
+//
+//    a{
+//      padding-left: 34px;
+//      background-position: left;
+//      background-repeat: no-repeat;
+//      background-size: 30px !important;
+//      margin-right: 6%;
+//
+//      &.photos-link{
+//        padding-left: 45px;
+//        background-position: 0 12px;
+//        background-size: 39px !important;
+//      }
+//
+//      &.home-link{
+//        display: none;
+//        //background-position: left center;
+//      }
+//
+//      &.products-link{
+//        background-position: left 12px;
+//      }
+//    }
 
-#hero{
-  min-height: 570px;
-  padding-bottom: 20px;
-}
-
-  #hero-nav{
-
-    li.active a::after {
-      right: 43px;
-    }
-
-    a{
-      padding-left: 34px;
-      background-position: left;
-      background-repeat: no-repeat;
-      background-size: 30px !important;
-      margin-right: 6%;
-
-      &.photos-link{
-        padding-left: 45px;
-        background-position: 0 12px;
-        background-size: 39px !important;
-      }
-
-      &.home-link{
-        display: none;
-        //background-position: left center;
-      }
-
-      &.products-link{
-        background-position: left 12px;
-      }
-    }
-
-  }
+  //}
 
   .get-it.author{
     display: none;

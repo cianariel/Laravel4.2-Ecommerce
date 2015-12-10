@@ -4514,6 +4514,11 @@ nav a {
 
 #ideaing-logo {
   width: 175px; }
+  #ideaing-logo.top-logo {
+    margin-top: 5px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto; }
 
 form input,
 form .btn {
@@ -4842,12 +4847,13 @@ header.colophon #top-nav .signin a {
   white-space: nowrap; }
 header.colophon .search-bar {
   padding-top: 13px;
-  margin-left: 11%; }
+  margin-left: 3%; }
   header.colophon .search-bar .search-toggle {
     display: none;
     text-indent: -9999px;
     background: url("/assets/images/magnif-grey.png") center no-repeat; }
   header.colophon .search-bar input {
+    min-width: 128px;
     text-align: center;
     background: url("/assets/images/magnif-grey.png") 10% no-repeat; }
 
@@ -5137,33 +5143,18 @@ header.colophon .search-bar {
   .why-us {
     margin-top: 0; } }
 @media only screen and (max-width: 992px) {
-  #top-nav a {
-    padding-left: 24px;
-    padding-right: 10px; }
-
-  header.colophon .logo-wrap {
-    height: 60px; }
-  header.colophon #ideaing-logo {
-    float: right; }
   header.colophon .search-bar {
     margin-left: 0; }
+  header.colophon #top-nav .category-menu {
+    padding: 0 10px 0 5px; }
+  header.colophon .signin {
+    width: 120px; }
 
-  #mid-nav a, .extra-nav a {
-    padding-left: 12px;
-    padding-right: 12px; }
-    #mid-nav a:hover, .extra-nav a:hover {
-      padding-left: 13px;
-      padding-right: 13px; }
+  .container.fixed-sm {
+    min-width: 920px; }
 
-  #mid-nav a.more-link, .extra-nav a.more-link {
-    background: url("/assets/images/dots-vertical.png") center no-repeat;
-    background-size: contain; }
-    #mid-nav a.more-link:hover, .extra-nav a.more-link:hover {
-      background: url("/assets/images/dots-vertical-pink.png") center no-repeat;
-      background-size: contain; }
-
-  #hero-nav a.photos-link, #hero-nav a.products-link {
-    background-position: left 3px; }
+  #mid-nav .container, .extra-nav .container {
+    padding-left: 60px; }
 
   .bottom-load-more {
     margin-top: 65px; }
@@ -5175,34 +5166,6 @@ header.colophon .search-bar {
     width: 100%;
     padding: 0; } }
 @media only screen and (max-width: 768px) {
-  #mid-nav a, .extra-nav a {
-    padding-left: 2%;
-    padding-right: 2%;
-    font-size: 2rem; }
-    #mid-nav a.more-link, .extra-nav a.more-link {
-      padding-left: 8%; }
-
-  #hero {
-    min-height: 570px;
-    padding-bottom: 20px; }
-
-  #hero-nav li.active a::after {
-    right: 43px; }
-  #hero-nav a {
-    padding-left: 34px;
-    background-position: left;
-    background-repeat: no-repeat;
-    background-size: 30px !important;
-    margin-right: 6%; }
-    #hero-nav a.photos-link {
-      padding-left: 45px;
-      background-position: 0 12px;
-      background-size: 39px !important; }
-    #hero-nav a.home-link {
-      display: none; }
-    #hero-nav a.products-link {
-      background-position: left 12px; }
-
   .get-it.author {
     display: none; }
 

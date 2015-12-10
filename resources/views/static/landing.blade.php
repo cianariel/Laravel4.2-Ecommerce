@@ -5,7 +5,7 @@
         <div class="hero-background"></div>
         <div class="color-overlay"></div>
         <nav id="mid-nav"  class="col-xs-12">
-            <div class="container hidden-xs">
+            <div class="container full-sm fixed-sm">
                 <ul class="wrap">
                     <li class="selected"><a href="">All ideas</a></li>
                     <li><a href="">Kitchen</a></li>
@@ -26,7 +26,7 @@
                     </li>
                 </ul>
             </div>
-            <div class="container mobile-menu hidden-lg hidden-md hidden-sm full-620">
+            <div class="container mobile-menu hidden-lg hidden-md hidden-sm hidden-xs full-620  fixed-sm">
                 <ul>
                     <li class="selected"><a href="">All ideas</a></li>
                     <li><a href="">Kitchen</a></li>
@@ -51,8 +51,8 @@
             </div>
         </nav>
 
-        <div class="container">
-            <div class="col-md-5 col-sm-6 col-md-offset-1 why-us hidden-xs">
+        <div class="container  fixed-sm">
+            <div class="col-md-5 col-xs-6 col-md-offset-1 why-us hidden-620">
                 <h2>Ideas for Smarter Living</h2>
 
                 <ul>
@@ -63,7 +63,7 @@
 
                 <a class="btn btn-success col-xs-8" href="#">Find out more</a>
             </div>
-            <div class="col-md-4 col-sm-6 col-md-offset-1 hero-box qiuck-signup hidden-xs">
+            <div class="col-md-4 col-xs-6 col-md-offset-1 hero-box qiuck-signup hidden-620">
                 <form>
                     <h4>
                         <b>Sign-up in Seconds</b>
@@ -78,12 +78,12 @@
                 </form>
             </div>
 
-            <div class="mobile-hero col-xs-12 hidden-lg hidden-md hidden-sm">
-                <h2>11 Kitchen Gadgets You Need Now</h2>
-                <a href="#" class="social-pic likes red">193</a>
+            {{--<div class="mobile-hero col-xs-12 hidden-lg hidden-md hidden-sm">--}}
+                {{--<h2>11 Kitchen Gadgets You Need Now</h2>--}}
+                {{--<a href="#" class="social-pic likes red">193</a>--}}
 
 
-            </div>
+            {{--</div>--}}
 
             {{--<div class="mobile-register hidden-lg hidden-md hidden-sm">--}}
                 {{--<div>--}}
@@ -98,20 +98,20 @@
         </div>
     </section>
     <nav id="hero-nav" class="col-sm-12">
-        <div class="container full-620">
+        <div class="container full-620  fixed-sm">
             <ul>
-                <li class="col-sm-4 active"><a class="home-link" href="">Home</a></li>
+                <li class="col-xs-4 active"><a class="home-link" href="">Home</a></li>
 
-                <li class="col-sm-2 active"><a href="" class="all-link">All</a></li>
-                <li class="col-sm-2 "><a href="" class="ideas-link">Ideas</a></li>
-                <li class="col-sm-2 "><a href="" class="products-link">Products</a></li>
-                <li class="col-sm-2 "><a href="" class="photos-link">Photos</a></li>
+                <li class="col-xs-2 active"><a href="" class="all-link">All</a></li>
+                <li class="col-xs-2 "><a href="" class="ideas-link">Ideas</a></li>
+                <li class="col-xs-2 "><a href="" class="products-link">Products</a></li>
+                <li class="col-xs-2 "><a href="" class="photos-link">Photos</a></li>
             </ul>
         </div>
     </nav>
 
-    <div class="container full-620 main-container">
-        <button id="show-mobile-filters" class="toggler btn btn-info col-sm-4 col-xs-8 hidden-lg hidden-md" data-toggle="#mobile-side-filters">Filter</button>
+    <div class="container full-620 main-container fixed-sm">
+        <button id="show-mobile-filters" class="toggler btn btn-info col-sm-4 col-xs-8 hidden-lg hidden-md hidden-sm hidden-xs" data-toggle="#mobile-side-filters">Filter</button>
 
         <section id="mobile-side-filters" class="side-filters pale-grey-bg col-xs-12 hidden-lg hidden-md">
             <ul class="mobile-filter-switch hidden-sm">
@@ -147,7 +147,7 @@
 
         </section>
 
-        <section class="main-content landing col-md-9">
+        <section class="main-content landing col-xs-9">
 
             <ul class="layout-controls col-xs-12 hidden-xs">
                <li class="list">List</li>
@@ -159,7 +159,7 @@
                 <h6>The Latest</h6>
             </div>
 
-            <div class="col-md-6 grid-box full-620">
+            <div class="col-xs-6 grid-box full-620">
                 <div class="img-wrap">
                     <img class="img-responsive" src="/assets/images/dummies/box-image-dummy.png">
                     <a href="#" class="overlay-tag category-tag top product">Category: Products</a>
@@ -184,7 +184,7 @@
                     {{--<li class="box-tag"><a>Products</a></li>--}}
                 {{--</ul>--}}
             </div>
-            <div class="col-md-6 grid-box full-620">
+            <div class="col-xs-6 grid-box full-620">
                 <div class="img-wrap">
                     <img class="img-responsive" src="/assets/images/dummies/img-small.jpg">
                     <a href="#" class="overlay-tag category-tag top photo">Category: Photo</a>
@@ -211,7 +211,7 @@
                     {{--displays only one main tag--}}
                 {{--</ul>--}}
             </div>
-            <div class="col-md-12 grid-box big-box full-620">
+            <div class="col-xs-12 grid-box big-box full-620">
                 <div class="img-wrap">
                     <img class="img-responsive" src="/assets/images/dummies/img-small.jpg">
                     <a href="#" class="overlay-tag category-tag top idea">Category: Idea</a>
@@ -238,7 +238,7 @@
             </div>
 
 
-            <div class="col-md-12 grid-insert pale-grey-bg">
+            <div class="col-xs-12 grid-insert pale-grey-bg">
                 <h4><a href="#">550.230 Kitchen Design Photos</a></h4>
                 <p>
                     Charming, fully furnished Upper Castro apartment features high-end open kitchen, luxurious bath. Charming, fully furnished Upper Castro apartment features high-end open kitchen, luxurious bath. Charming, fully furnished Upper Castro apartment features high-end open kitchen, luxurious bath.
@@ -250,7 +250,7 @@
 
         </section>
 
-        <aside class="col-md-3 hidden-sm hidden-xs">
+        <aside class="col-xs-3 hidden-620">
             <section class="sidebar-category products">
                 <h4>Top Products</h4>
 

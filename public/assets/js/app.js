@@ -1,5 +1,9 @@
 // For the simple custom JS functions
 
+//if (screen.width < 992 && screen.width > 620) {
+//    document.getElementById("viewport").setAttribute("content", "width=992");
+//}
+
 $('body').on('click', '[data-toggle]', function(e){
     e.preventDefault();
     var $that = $(this);
