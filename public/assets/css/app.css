@@ -4920,7 +4920,7 @@ header.colophon .search-bar {
 .extra-nav {
   display: none;
   position: absolute;
-  right: 4%;
+  right: 2%;
   top: 40px;
   z-index: 10; }
   .extra-nav li {
@@ -5137,6 +5137,8 @@ header.colophon .search-bar {
   #top-nav a {
     margin-right: 3%; }
 
+  #mid-nav .container, .extra-nav .container {
+    padding-left: 60px; }
   #mid-nav a, .extra-nav a {
     padding-left: 18px;
     padding-right: 18px; }
@@ -5147,7 +5149,7 @@ header.colophon .search-bar {
       padding-right: 16px;
       background-size: contain !important; }
   #mid-nav .extra-nav, .extra-nav .extra-nav {
-    right: 9%; }
+    right: 6%; }
 
   .why-us {
     margin-top: 0; } }
@@ -5159,10 +5161,8 @@ header.colophon .search-bar {
   header.colophon .signin {
     width: 120px; }
 
-  #mid-nav .container, .extra-nav .container {
-    padding-left: 60px; }
   #mid-nav .extra-nav, .extra-nav .extra-nav {
-    right: 4%; }
+    right: 5%; }
 
   .bottom-load-more {
     margin-top: 65px; }

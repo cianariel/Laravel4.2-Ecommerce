@@ -906,7 +906,7 @@ header.colophon{
   @extend #mid-nav;
     display: none;
     position: absolute;
-    right: 4%;
+    right: 2%;
     top: 40px;
     z-index: 10;
 
@@ -1246,6 +1246,9 @@ header.colophon{
   }
 
   #mid-nav{
+    .container{
+      padding-left: 60px;
+    }
     a {
       padding-left: 18px;
       padding-right: 18px;
@@ -1262,7 +1265,7 @@ header.colophon{
       }
     }
     .extra-nav {
-      right: 9%;
+      right: 6%;
     }
   }
 
@@ -1291,11 +1294,9 @@ header.colophon{
   }
 
  #mid-nav{
-   .container{
-     padding-left: 60px;
-   }
+
    .extra-nav {
-     right: 4%;
+     right: 5%;
    }
  }
 
