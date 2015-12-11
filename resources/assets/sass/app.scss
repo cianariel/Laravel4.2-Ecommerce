@@ -68,6 +68,10 @@ $tarmac: #3D4B4E;
   }
 }
 
+.hidden{
+  display: none;
+}
+
 #overlay{
   display: none;
   position:fixed; /* keeps the lightbox window in the current viewport */
@@ -787,18 +791,18 @@ header.colophon{
 #top-nav{
   a{
     margin-right: 8%;
-    padding-left: 25px;
+    padding-left: 30px;
     padding-right: 5px;
     color: #000;
 
     &.shop{
-      background: url('/assets/images/bag-grey.png') left center no-repeat;
+      background: url('/assets/images/bag-black.png') left center no-repeat;
     }
     &.pros{
       background: url('/assets/images/pro-grey.png') left center no-repeat;
     }
     &.disc{
-      background: url('/assets/images/speach-black.png') left center no-repeat;
+      background: url('/assets/images/chat-black.png') left center no-repeat;
     }
 
     &:hover{
@@ -1454,77 +1458,94 @@ header.colophon{
     padding: 0;
   }
 
-  .logo-wrap{
-    width: 200px;
-    margin-left: 0;
-  }
-
-  .search-bar{
-    width: 40px;
-    height: 40px;
-    margin: 0;
-    margin-top: 3px;
-    padding: 0 !important;
-
-    a{
-      height: 40px;
-      margin: 0;
-      margin-right: 30px;
-      padding: 0;
-    }
-  }
-
+//.header.colophon{
   #top-nav{
-    //padding-top: 20px ;
-    //padding-bottom: 20px ;
+    padding-top: 15px ;
+    padding-bottom: 15px ;
+
+    .mobile-menu{
+      width: 20px;
+      height: 20px;
+      float: left;
+      margin-left: 9px;
+      margin-top: 18px;
+      background: url("/assets/images/menu-black.png") no-repeat;
+      cursor: pointer;
+    }
 
     .mobile-wrap{
-      width: 280px;
+      width: 259px;
       float: right;
+
     }
 
     .mobile-category-menu{
-      //float: right;
       text-indent: -9999px;
-      width: 80px;
-      margin-top: 15px;
-      margin-left: 13%;
+      width: 95px;
+      margin-top: 9px;
+      padding-right: 0 !important;
+       margin-left: 22px;
       li{
         a{
-          width: 20px;
-          //height: 50px;
+          width: 35px;
+          height: 30px;
           float: left;
           padding: 0;
-          //background-size: 35px !important;
           margin-left: 10px;
+          margin-right: 0;
+          background-size: 27px;
         }
       }
-      //::after
     }
-  }
 
-  .signin{
-    width: 92px !important;
-    padding: 0 4px;
-    margin-right: 0;
-    margin-top: 10px;
-    a{
-      width: 100% !important;
-      padding-left: 30px !important;
-      text-indent: 0 !important;
-      background: $iridium;
-      padding: 4px;
-      border-radius: 3px;
-      color: #fff  !important;;
-      text-transform: none;
-      background-size: 20px;
-      background-position-x: 5px !important;
+    .logo-wrap{
+      width: 195px;
+      margin-left: 0;
     }
-  }
 
-  .search-toggle{
-    display: block !important;
+    .search-bar{
+      width: 40px;
+      height: 40px;
+      margin: 0;
+      margin-top: 3px;
+      padding: 0 !important;
+
+      a{
+        display: block !important;
+        height: 40px;
+        width: 40px;
+        margin: 0;
+        margin-right: 30px;
+        padding: 0;
+      }
+
+
+    }
+
+    .signin{
+      width: 80px !important;
+      padding: 0 4px;
+      margin-right: 0;
+      margin-top: 10px;
+      a{
+        cursor: pointer;
+        width: 100% !important;
+        padding-left: 25px !important;
+        text-indent: 0 !important;
+        background: $iridium;
+        padding: 4px;
+        border-radius: 3px;
+        color: #fff  !important;;
+        text-transform: none;
+        background-image: url("/assets/images/signin-white.png") !important;
+        //background-size: 20px;
+        background-position-x: 5px !important;
+      }
+    }
+
   }
+//}
+
 
   .main-content.landing{
     padding: 20px;
@@ -1554,15 +1575,36 @@ header.colophon{
       }
 
       li.active a::after {
-        right: 43px;
+        right: 19px;
+      }
+
+      li.active a.all-link::after{
+        bottom: -27px;
       }
 
       a{
-        padding-left: 34px;
         background-position: left;
         background-repeat: no-repeat;
-        background-size: 30px !important;
-        margin-right: 6%;
+        padding-left: 35px;
+        background-size: 30px;
+        margin-right: 1%;
+
+        &.home-link{
+          display: none;
+        }
+
+        &:not(.home-link) {
+          padding-top: 30px;
+          background-position: top center !important;
+          margin-top: 7px;
+        }
+
+        &.all-link{
+          background-position: center 4px !important;
+        }
+        &.ideas-link{
+          background-position: center  4px !important;
+        }
 
         &.photos-link{
           padding-left: 45px;
@@ -1570,68 +1612,17 @@ header.colophon{
           background-size: 39px !important;
         }
 
-        &.home-link{
-          display: none;
-          //background-position: left center;
-        }
-
         &.products-link{
           background-position: left 12px;
+          background-size: 29px !important;
         }
+
       }
-
   }
 
-  #hero-nav{
-    a {
-      padding-left: 35px;
-      background-size: 30px;
-      margin-right: 1%;
-    }
-    li.active a::after {
-      right: 19px;
-    }
-  }
-
-
-
-  #hero-nav a.home-link{
-    width: 100%;
-    //background-color: darken($pale-grey, 20%);
-    text-align: left;
-    padding-left: 40px;
-  }
-
-  #hero-nav a:not(.home-link) {
-    padding-top: 30px;
-    background-position: top center;
-    margin-top: 7px;
-  }
-
-  #hero-nav{
-    a{
-      &.all-link{
-        background-position: center 4px !important;
-      }
-      &.ideas-link{
-        background-position: center  4px !important;
-      }
-
-    }
-    li.active a.all-link::after{
-      bottom: -27px;
-    }
-  }
 
   #mid-nav a {
-    //padding-left: 2%;
-    //padding-right: 2%;
     font-size: 1.8rem;
-
-    //
-    //&.more-link{
-    //  padding-left: 8%;
-    //}
   }
 
   .grid-box .img-wrap .get-it:not(.big),
@@ -1662,6 +1653,10 @@ header.colophon{
     bottom: 4.3%;
   }
 
+  .latest-heading {
+    padding-top: 10px;
+  }
+
 }
 
 @media screen and (max-width: 480px){
@@ -1672,12 +1667,6 @@ header.colophon{
   }
 
   #top-nav{
-    //.category-menu{
-    //  width: 140px;
-    //  padding: 0;
-    //}
-    padding-bottom: 8px;
-    padding-bottom: 8px;
     .logo-wrap{
       width: 120px;
       padding-left: 12px;
@@ -1786,6 +1775,17 @@ header.colophon{
 
 
 @media screen and (max-width: 380px) {
+  #top-nav{
+    .mobile-category-menu {
+      margin-left: 8px;
+    }
+
+   .mobile-wrap {
+      width: 225px;
+      float: right;
+    }
+  }
+
 
   #mid-nav {
     a {
@@ -1812,21 +1812,28 @@ header.colophon{
 
 @media screen and (max-width: 370px) {
 
-  #top-nav a {
-    width: 28px;
-  }
-
-  .category-menu{
-    width: 122px !important;
-  }
-
-  #mid-nav {
+  #top-nav{
     a {
-      padding-left: 2%;
-      padding-right: 2%;
-      font-size: 1.2rem;
+    width: 28px;
+    margin-left: 0;
+   }
+    .mobile-wrap{
+      width: 170px;
     }
-  }
+ }
+
+  //
+  //.category-menu{
+  //  width: 122px !important;
+  //}
+
+  //#mid-nav {
+  //  a {
+  //    padding-left: 2%;
+  //    padding-right: 2%;
+  //    font-size: 1.2rem;
+  //  }
+  //}
 
   #hero-nav a {
     padding-left: 2%;

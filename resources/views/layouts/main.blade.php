@@ -24,10 +24,11 @@
                     <h2 id="site-name">Ideaing | Ideas for Smarter Living</h2>
                     <nav id="top-nav" class="row">
                         <div class="container full-sm fixed-sm">
+                            <div class="mobile-menu hidden shown-620"></div>
                             <div  class="col-md-4 col-sm col-xs-4 category-menu hidden-620">
                                 <ul>
                                     <li class="nested"><a class="shop" href="">Shop</a></li>
-                                    <li><a class="pros" href="">Pros</a></li>
+                                    {{--<li><a class="pros" href="">Pros</a></li>--}}
                                     <li><a class="disc" href="">Discuss</a></li>
                                 </ul>
                             </div>
@@ -37,7 +38,7 @@
                             </div>
 
                             <div class="mobile-wrap">
-                                <div  class="col-md-4 col-sm col-xs-4 category-menu mobile-category-menu hidden-620 shown-620">
+                                <div  class="col-md-4 col-sm col-xs-4 category-menu mobile-category-menu hidden shown-620">
                                     <ul>
                                         <li class="nested"><a class="shop" href="">Shop</a></li>
                                         {{--<li><a class="pros" href="">Pros</a></li>--}}
