@@ -51,17 +51,17 @@
             </div>
         </nav>
 
-        <div class="container fixed-sm">
+        <div class="container fixed-sm full-480">
             <div class="col-md-5 col-xs-6 full-620 col-md-offset-1 why-us">
                 <h2>Ideas for Smarter Living</h2>
 
                 <ul>
                     <li class="get-ideas">Get ideas for a smarter and sexier home</li>
                     <li class="share-vote">Share and Vote on the best theme decor</li>
-                    <li class="shop-cool">Shop for cool gadgets and unique decor for the home</li>
+                    <li class="shop-cool">Shop for cool gadgets and unique decor</li>
                 </ul>
 
-                <a class="btn btn-success col-xs-8" href="#">Find out more</a>
+                {{--<a class="btn btn-success col-xs-8" href="#">Find out more</a>--}}
             </div>
             <div class="col-md-4 col-xs-6 col-md-offset-1 hero-box qiuck-signup hidden-620">
                 <form>
@@ -100,7 +100,7 @@
     <nav id="hero-nav" class="col-sm-12">
         <div class="container full-620  fixed-sm">
             <ul>
-                <li class="col-xs-4 active  hidden-620"><a class="home-link" href="">Home</a></li>
+                <li class="col-xs-4 active hidden-620"><a class="home-link" href="">Home</a></li>
 
                 <li class="col-xs-2 active"><a href="" class="all-link">All</a></li>
                 <li class="col-xs-2 "><a href="" class="ideas-link">Ideas</a></li>
@@ -214,7 +214,7 @@
             <div class="col-xs-12 grid-box big-box full-620">
                 <div class="img-wrap">
                     <img class="img-responsive" src="/assets/images/dummies/img-small.jpg">
-                    <a href="#" class="overlay-tag category-tag top idea">Category: Idea</a>
+                    <a href="#" class="overlay-tag category-tag top idea">Style</a>
                     <a href="#" class="overlay-tag bottom author">Get it</a>
 
                     <div class="like-wrap">

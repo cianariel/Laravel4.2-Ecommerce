@@ -4501,11 +4501,6 @@ nav a {
     background-image: url("/assets/images/landing-hero-3.jpg");
     background-size: cover;
     background-repeat: no-repeat;
-    -webkit-filter: blur(2px);
-    -moz-filter: blur(2px);
-    -o-filter: blur(2px);
-    -ms-filter: blur(2px);
-    filter: blur(2px);
     position: absolute;
     width: 100%;
     height: 100%; }
@@ -4542,7 +4537,7 @@ form .btn {
     width: 65px;
     overflow: hidden;
     padding: 2px 12px;
-    margin: 0 7px -5px;
+    margin: 0 7px;
     border: 2px solid #FF0042;
     color: #FF0042;
     background: transparent;
@@ -4655,7 +4650,8 @@ form .btn {
       top: 2px;
       position: absolute; }
       .grid-box .img-wrap .category-tag.product {
-        background: url("/assets/images/bag-green-big.png") center no-repeat; }
+        background: url("/assets/images/bag-green-big.png") center no-repeat;
+        background-size: 38px; }
       .grid-box .img-wrap .category-tag.idea {
         background: url("/assets/images/lamp-orange.png") center no-repeat; }
       .grid-box .img-wrap .category-tag.photo {
@@ -4680,6 +4676,12 @@ form .btn {
       .grid-box li.box-tag a:hover {
         color: #fff;
         background-color: #8e8e8e; }
+  .grid-box.big-box .category-tag {
+    text-indent: 0;
+    text-align: center;
+    color: #FF7F00;
+    padding-top: 60px;
+    padding-left: 12px; }
   .grid-box.big-box .like-wrap {
     padding-left: 45px;
     padding-top: 9px;
@@ -5103,7 +5105,7 @@ header.colophon .search-bar {
     #hero-nav a.all-link {
       background-image: url("/assets/images/grid-dense-grey.png");
       margin-top: -3px; }
-      #hero-nav a.all-link:hover {
+      #hero-nav a.all-link:hover, .active #hero-nav a.all-link {
         color: #FF0042;
         background-image: url("/assets/images/grid-pink.png"); }
     #hero-nav a.ideas-link {
@@ -5123,7 +5125,7 @@ header.colophon .search-bar {
       #hero-nav a.photos-link:hover {
         color: #00B1FF;
         background-image: url("/assets/images/photos-blue.png"); }
-  #hero-nav li.active a::after {
+  #hero-nav li.active a:not(.home-link)::after {
     content: '▲';
     font-size: 1.7rem;
     position: relative;
@@ -5131,8 +5133,24 @@ header.colophon .search-bar {
     right: 58px;
     color: #fff;
     text-shadow: -1px -1px 0 #d5dfdf, 1px -1px 0 #d5dfdf, -1px 1px 0 #fff, 1px 1px 0 #fff; }
-  #hero-nav li.active a.all-link::after {
-    bottom: -31px; }
+  #hero-nav li.active a.home-link {
+    color: #FF0042;
+    background-image: url("/assets/images/house-pink.png"); }
+  #hero-nav li.active a.all-link {
+    color: #FF0042;
+    background-image: url("/assets/images/grid-pink.png"); }
+    #hero-nav li.active a.all-link::after {
+      bottom: -31px; }
+  #hero-nav li.active a.ideas-link {
+    background-image: url("/assets/images/lamp-grey.png");
+    color: #FF7F00;
+    background-image: url("/assets/images/lamp-orange.png"); }
+  #hero-nav li.active a.products-link {
+    color: #C7C747;
+    background-image: url("/assets/images/bag-green-big.png"); }
+  #hero-nav li.active a.photos-link {
+    color: #00B1FF;
+    background-image: url("/assets/images/photos-blue.png"); }
 
 @media only screen and (max-width: 1200px) {
   #top-nav a {
@@ -5161,6 +5179,9 @@ header.colophon .search-bar {
     padding: 0 10px 0 5px; }
   header.colophon .signin {
     width: 120px; }
+
+  .why-us h2 {
+    font-size: 3.3rem; }
 
   #mid-nav .extra-nav, .extra-nav .extra-nav {
     right: 5%; }
@@ -5314,7 +5335,7 @@ header.colophon .search-bar {
         background-position-x: 5px !important; }
 
   .main-content.landing {
-    padding: 20px; }
+    padding: 0 0 20px; }
 
   #mid-nav, .extra-nav, .extra-nav {
     margin-bottom: 15px; }
@@ -5362,6 +5383,18 @@ header.colophon .search-bar {
   #mid-nav a, .extra-nav a {
     font-size: 1.8rem; }
 
+  .grid-box {
+    margin-top: 30px; }
+    .grid-box h3 {
+      padding-left: 20px; }
+    .grid-box b.price {
+      padding-left: 20px; }
+    .grid-box .img-wrap {
+      border: 0 !important;
+      border-radius: 0; }
+      .grid-box .img-wrap img {
+        border-radius: 0 !important; }
+
   .grid-box .img-wrap .get-it:not(.big),
   .grid-box .img-wrap a.author {
     right: 45%;
@@ -5387,9 +5420,28 @@ header.colophon .search-bar {
   .latest-heading {
     padding-top: 10px; } }
 @media screen and (max-width: 480px) {
+  .full-480 {
+    width: 100%;
+    padding: 0; }
+
   .grid-box:hover .img-wrap {
     border: 2px solid #00B1FF;
     box-shadow: 0 0 0 0 #fff; }
+  .grid-box .img-wrap .category-tag {
+    background-size: 38px !important; }
+    .grid-box .img-wrap .category-tag.product {
+      background-size: 29px !important; }
+
+  #hero {
+    min-height: 450px; }
+    #hero .why-us {
+      padding-top: 70px; }
+      #hero .why-us h2 {
+        font-size: 2.8rem; }
+      #hero .why-us li {
+        padding-left: 25px;
+        padding-right: 10px;
+        font-size: 1.5rem; }
 
   #top-nav .logo-wrap {
     width: 120px;
