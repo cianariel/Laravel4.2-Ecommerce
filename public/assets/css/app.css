@@ -5217,7 +5217,8 @@ header.colophon .search-bar {
       cursor: pointer; }
       #top-nav .mobile-menu-switch.active {
         background-image: url("/assets/images/cross-black.png");
-        margin-top: 13px; }
+        margin-top: 13px;
+        background-position: 0; }
     #top-nav .mobile-menu {
       width: 80%;
       position: absolute;
