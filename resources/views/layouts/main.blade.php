@@ -24,7 +24,29 @@
                     <h2 id="site-name">Ideaing | Ideas for Smarter Living</h2>
                     <nav id="top-nav" class="row">
                         <div class="container full-sm fixed-sm">
-                            <div class="mobile-menu hidden shown-620"></div>
+                            <div class="mobile-menu-switch hidden shown-620" data-toggle=".mobile-menu" data-overlay="true"></div>
+                            <div class="mobile-menu col-xs-8 hidden-soft">
+                                <ul>
+                                    <li><a class="ideas-link" href="#">Ideas</a></li>
+                                    <li><a class="products-link" href="#">Products</a></li>
+                                    <li><a class="photos-link" href="#">Photos</a></li>
+                                    <li class="rooms nested">
+                                        <a class="rooms-link" href="#">Rooms</a>
+
+                                        <ul>
+                                            <li><a href="#">All ideas</a></li>
+                                            <li><a href="#">Kitchen</a></li>
+                                            <li><a href="#">Bath</a></li>
+                                            <li><a href="#">Bedroom</a></li>
+                                            <li><a href="#">Office</a></li>
+                                            <li><a href="#">Outdoor</a></li>
+                                            <li><a href="#">Lighting</a></li>
+                                            <li><a href="#">Decor</a></li>
+                                        </ul>
+                                    </li>
+
+                                </ul>
+                            </div>
                             <div  class="col-md-4 col-sm col-xs-4 category-menu hidden-620">
                                 <ul>
                                     <li class="nested"><a class="shop" href="">Shop</a></li>

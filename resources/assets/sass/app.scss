@@ -68,7 +68,7 @@ $tarmac: #3D4B4E;
   }
 }
 
-.hidden{
+.hidden-soft{ // unlike the BS hidden - no !important
   display: none;
 }
 
@@ -811,10 +811,19 @@ header.colophon{
 
   }
 
-  li.nested a::after{
-    content: '▼';
-    padding-left: 7px;
+  li.nested{
+    cursor: pointer;
+    a::after{
+      content: '▼';
+      padding-left: 7px;
+    }
+
+    ul{
+      display: none;
+    }
+
   }
+
 
 }
 //
@@ -1462,8 +1471,11 @@ header.colophon{
   #top-nav{
     padding-top: 15px ;
     padding-bottom: 15px ;
+    position: relative;
+    z-index: 999;
+    background: #fff;
 
-    .mobile-menu{
+    .mobile-menu-switch{
       width: 20px;
       height: 20px;
       float: left;
@@ -1471,6 +1483,78 @@ header.colophon{
       margin-top: 18px;
       background: url("/assets/images/menu-black.png") no-repeat;
       cursor: pointer;
+    }
+
+    .mobile-menu{
+      width: 80%;
+      //display: block !important;
+      position: absolute;
+      z-index: 99;
+      top: 73px;
+      background: #fff;
+      padding: 0 40px 40px 0;
+
+      border-top: 6px solid #f3f3f3;
+
+      //-webkit-box-shadow: 0px -5px 3px 0px rgba(50, 50, 50, 0.19);
+      //-moz-box-shadow:    0px -5px 3px 0px rgba(50, 50, 50, 0.19);
+      //box-shadow:         0px -5px 3px 0px rgba(50, 50, 50, 0.19);
+
+      a{
+        text-indent: 0;
+        width: 100%;
+        padding: 15px 0 15px 40px;
+
+        &:not(.rooms-link){
+          font-size: 1.7rem;
+          border-bottom: 1px solid #eee;
+          padding-left: 80px;
+          background-position: 40px center;
+          background-size: 25px;
+          background-repeat: no-repeat;
+        }
+        &.ideas-link{
+          color: $dark-orange;
+          background-image: url("/assets/images/lamp-orange.png");
+        }
+
+        &.products-link{
+          color: $pine-green;
+          background-image: url("/assets/images/bag-green-big.png");
+          background-size: 20px;
+          background-position: 45px center;
+        }
+
+        &.photos-link{
+          color: $sky-blue;
+          background-image: url("/assets/images/photos-blue.png");
+        }
+
+        &.rooms-link{
+          color: $tarmac;
+        }
+
+      }
+
+      .nested{
+        ul{
+          float: left;
+          //li{
+
+            a{
+              font-size: inherit;
+              border: 0;
+              color: $light-grey;
+              padding: 15px 0 15px 40px;
+
+
+              &::after{
+                display: none;
+              }
+            }
+          //}
+        }
+      }
     }
 
     .mobile-wrap{

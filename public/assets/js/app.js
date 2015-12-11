@@ -9,10 +9,15 @@ $('body').on('click', '[data-toggle]', function(e){
     var $that = $(this);
     var $show = $that.data('toggle');
     var $hide = $that.data('hide');
+    var $overlay = $that.data('overlay');
 
     if($hide){
         $($hide).hide();
         $that.siblings().removeClass('active');
+    }
+
+    if($overlay){
+        $('#overlay').fadeToggle();
     }
 
     $($show).fadeToggle();
@@ -21,12 +26,24 @@ $('body').on('click', '[data-toggle]', function(e){
 
 $('#overlay').click(function(){
     $('.modal, #overlay').fadeOut();
+
+    var $hide = $('[data-overlay="true"]').data('toggle');
+
+    if($hide){
+        $($hide).hide();
+    }
 });
 
 $("#back-to-top").click(function() {
     $('html, body').animate({ scrollTop: 0 }, 'slow');
     return false;
 });
+
+$("li.nested").click(function() {
+    $(this).find('ul').fadeToggle();
+});
+
+
 
 
 $('[data-toggle="modal"]').click(function() {
