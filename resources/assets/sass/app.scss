@@ -257,7 +257,7 @@ form{
     width: 65px;
     overflow: hidden;
     padding: 2px 12px;
-    margin: 0 7px;
+    margin: 0 7px  -5px;
       border: 2px solid $iridium;
       color: $iridium;
       background: transparent;
@@ -472,6 +472,11 @@ form{
     }
   }
 
+  &:not(.sidebar-box){
+      min-height: 190px;
+      border-radius: 5px;
+  }
+
   &.big-box{
     .category-tag{
       width: 100px;
@@ -480,7 +485,8 @@ form{
       color: #FF7F00;
       padding-top: 19px;
       padding-left: 52px;
-      background-position: 15px center !important;
+      background-position: 4px center !important;
+
     }
 
     .like-wrap{
@@ -1252,9 +1258,9 @@ header.colophon{
     a.all-link{
       color: $iridium;
       background-image: url('/assets/images/grid-pink.png');
-      &::after{
-        bottom: -31px;
-      }
+      //&::after{
+      //  bottom: -31px;
+      //}
     }
     a.ideas-link{
       background-image: url('/assets/images/lamp-grey.png');
@@ -1351,6 +1357,10 @@ header.colophon{
   .full-sm{
     width: 100%;
     padding: 0;
+  }
+
+  .get{
+    margin-bottom: 0;
   }
 
 }
@@ -1721,8 +1731,6 @@ header.colophon{
   }
 
 
-
-
   .grid-box{
       &:hover .img-wrap {
         border: 2px solid $sky-blue;
@@ -1737,6 +1745,15 @@ header.colophon{
           background-size: 29px !important;
         }
       }
+    }
+  }
+
+
+
+  .grid-box.big-box {
+    .category-tag {
+      padding-left: 38px;
+      background-position: 11px center !important;
     }
   }
 

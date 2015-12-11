@@ -4537,7 +4537,7 @@ form .btn {
     width: 65px;
     overflow: hidden;
     padding: 2px 12px;
-    margin: 0 7px;
+    margin: 0 7px  -5px;
     border: 2px solid #FF0042;
     color: #FF0042;
     background: transparent;
@@ -4676,6 +4676,9 @@ form .btn {
       .grid-box li.box-tag a:hover {
         color: #fff;
         background-color: #8e8e8e; }
+  .grid-box:not(.sidebar-box) {
+    min-height: 190px;
+    border-radius: 5px; }
   .grid-box.big-box .category-tag {
     width: 100px;
     text-indent: 0;
@@ -4683,7 +4686,7 @@ form .btn {
     color: #FF7F00;
     padding-top: 19px;
     padding-left: 52px;
-    background-position: 15px center !important; }
+    background-position: 4px center !important; }
   .grid-box.big-box .like-wrap {
     padding-left: 45px;
     padding-top: 9px;
@@ -5141,8 +5144,6 @@ header.colophon .search-bar {
   #hero-nav li.active a.all-link {
     color: #FF0042;
     background-image: url("/assets/images/grid-pink.png"); }
-    #hero-nav li.active a.all-link::after {
-      bottom: -31px; }
   #hero-nav li.active a.ideas-link {
     background-image: url("/assets/images/lamp-grey.png");
     color: #FF7F00;
@@ -5196,7 +5197,10 @@ header.colophon .search-bar {
 
   .full-sm {
     width: 100%;
-    padding: 0; } }
+    padding: 0; }
+
+  .get {
+    margin-bottom: 0; } }
 @media only screen and (max-width: 992px) and (min-width: 620px) {
   .container.fixed-sm {
     min-width: 920px; } }
@@ -5435,6 +5439,10 @@ header.colophon .search-bar {
     background-size: 38px !important; }
     .grid-box .img-wrap .category-tag.product {
       background-size: 29px !important; }
+
+  .grid-box.big-box .category-tag {
+    padding-left: 38px;
+    background-position: 11px center !important; }
 
   #hero {
     min-height: 450px; }
