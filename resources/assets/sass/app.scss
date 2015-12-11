@@ -1245,22 +1245,24 @@ header.colophon{
     margin-right: 3%;
   }
 
-  #mid-nav a {
-    padding-left: 18px;
-    padding-right: 18px;
+  #mid-nav{
+    a {
+      padding-left: 18px;
+      padding-right: 18px;
 
-    &.more-link {
-      background-size: contain !important;
+      &.more-link {
+        background-size: contain !important;
+      }
+
+      &:hover{
+        padding-left: 16px;
+        padding-right: 16px;
+        background-size: contain !important;
+
+      }
     }
-
-    &:hover{
-      padding-left: 16px;
-      padding-right: 16px;
-      background-size: contain !important;
-
-      //.more-link {
-      //  background-size: contain;
-      //}
+    .extra-nav {
+      right: 9%;
     }
   }
 
@@ -1279,13 +1281,6 @@ header.colophon{
       .category-menu{
         padding: 0 10px 0 5px;
       }
-        a{
-          //padding-left: 18px;
-          ////padding-right: 5px;
-          //margin: 0;
-          //font-size: 1.3rem;
-          //background-size: 15px;
-        }
     }
 
     .signin{
@@ -1295,66 +1290,14 @@ header.colophon{
 
   }
 
- #mid-nav .container{
-   padding-left: 60px;
+ #mid-nav{
+   .container{
+     padding-left: 60px;
+   }
+   .extra-nav {
+     right: 4%;
+   }
  }
-
-
-
-  //#top-nav a {
-  //  padding-left: 24px;
-  //  padding-right: 10px;
-  //}
-  //
-  //header.colophon{
-  //  .logo-wrap{
-  //    height: 60px;
-  //  }
-  //  #ideaing-logo{
-  //    float: right;
-  //  }
-  //  .search-bar {
-  //    margin-left: 0;
-  //  }
-  //}
-  //
-  //#mid-nav a {
-  //  padding-left: 12px;
-  //  padding-right: 12px;
-  //
-  //  &:hover{
-  //    padding-left: 13px;
-  //    padding-right: 13px;
-  //  }
-  //}
-  //
-  //#mid-nav a.more-link {
-  //  background: url("/assets/images/dots-vertical.png") center no-repeat;
-  //  background-size: contain;
-  //
-  //  &:hover{
-  //    background:url("/assets/images/dots-vertical-pink.png") center no-repeat;
-  //    background-size: contain;
-  //  }
-  //}
-  //
-  //#hero-nav{
-  //  a{
-  //    &.photos-link,
-  //    &.products-link{
-  //      background-position: left 3px;
-  //    }
-  //  }
-  //}
-
-  //.why-us{
-  //  margin-left: 0;
-  //}
-  //
-  //.quick-signup{
-  //  margin-left: 0;
-  //  float: right;
-  //}
 
   .bottom-load-more{
     margin-top: 65px;
@@ -1382,55 +1325,6 @@ header.colophon{
 
 
 @media only screen and (max-width: 768px){
-  //#mid-nav a {
-  //  padding-left: 2%;
-  //  padding-right: 2%;
-  //  font-size: 2rem;
-  //
-  //
-  //  &.more-link{
-  //    padding-left: 8%;
-  //  }
-  //}
-
-
-
-//
-//#hero{
-//  min-height: 570px;
-//  padding-bottom: 20px;
-//}
-//
-//  #hero-nav{
-//
-//    li.active a::after {
-//      right: 43px;
-//    }
-//
-//    a{
-//      padding-left: 34px;
-//      background-position: left;
-//      background-repeat: no-repeat;
-//      background-size: 30px !important;
-//      margin-right: 6%;
-//
-//      &.photos-link{
-//        padding-left: 45px;
-//        background-position: 0 12px;
-//        background-size: 39px !important;
-//      }
-//
-//      &.home-link{
-//        display: none;
-//        //background-position: left center;
-//      }
-//
-//      &.products-link{
-//        background-position: left 12px;
-//      }
-//    }
-
-  //}
 
   .get-it.author{
     display: none;
@@ -1578,6 +1472,10 @@ header.colophon{
           margin-left: 10px;
           margin-right: 0;
           background-size: 27px;
+
+          &.shop{
+            background-size: 23px;
+          }
         }
       }
     }

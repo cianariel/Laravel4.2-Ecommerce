@@ -5146,6 +5146,8 @@ header.colophon .search-bar {
       padding-left: 16px;
       padding-right: 16px;
       background-size: contain !important; }
+  #mid-nav .extra-nav, .extra-nav .extra-nav {
+    right: 9%; }
 
   .why-us {
     margin-top: 0; } }
@@ -5159,6 +5161,8 @@ header.colophon .search-bar {
 
   #mid-nav .container, .extra-nav .container {
     padding-left: 60px; }
+  #mid-nav .extra-nav, .extra-nav .extra-nav {
+    right: 4%; }
 
   .bottom-load-more {
     margin-top: 65px; }
@@ -5268,6 +5272,8 @@ header.colophon .search-bar {
         margin-left: 10px;
         margin-right: 0;
         background-size: 27px; }
+        #top-nav .mobile-category-menu li a.shop {
+          background-size: 23px; }
     #top-nav .logo-wrap {
       width: 195px;
       margin-left: 0; }
