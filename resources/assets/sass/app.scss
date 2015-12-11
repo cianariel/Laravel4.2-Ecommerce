@@ -560,14 +560,19 @@ form{
 #show-mobile-filters{
   float: none;
   margin: 20px auto 0;
-  display: block;
+  //display: block;
 }
 
 #mobile-side-filters{
   display: none;
   padding-top: 0;
   padding-right: 0;
+
+  div{
+    border: 0;
+  }
 }
+
 
 .mobile-filter-switch{
   padding-top: 0;
@@ -1378,6 +1383,11 @@ header.colophon{
       margin-top: 18px;
       background: url("/assets/images/menu-black.png") no-repeat;
       cursor: pointer;
+
+      &.active{
+        background-image: url("/assets/images/cross-black.png");
+        margin-top: 13px;
+      }
     }
 
     .mobile-menu{

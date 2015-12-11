@@ -4727,13 +4727,14 @@ form .btn {
 
 #show-mobile-filters {
   float: none;
-  margin: 20px auto 0;
-  display: block; }
+  margin: 20px auto 0; }
 
 #mobile-side-filters {
   display: none;
   padding-top: 0;
   padding-right: 0; }
+  #mobile-side-filters div {
+    border: 0; }
 
 .mobile-filter-switch {
   padding-top: 0; }
@@ -5214,6 +5215,9 @@ header.colophon .search-bar {
       margin-top: 18px;
       background: url("/assets/images/menu-black.png") no-repeat;
       cursor: pointer; }
+      #top-nav .mobile-menu-switch.active {
+        background-image: url("/assets/images/cross-black.png");
+        margin-top: 13px; }
     #top-nav .mobile-menu {
       width: 80%;
       position: absolute;

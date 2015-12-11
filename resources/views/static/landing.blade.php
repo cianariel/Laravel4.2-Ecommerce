@@ -111,7 +111,7 @@
     </nav>
 
     <div class="container full-620 main-container fixed-sm">
-        <button id="show-mobile-filters" class="toggler btn btn-info col-sm-4 col-xs-8 hidden-lg hidden-md hidden-sm hidden-xs" data-toggle="#mobile-side-filters">Filter</button>
+        <button id="show-mobile-filters" class="toggler btn btn-info col-sm-4 col-xs-8 hidden-soft shown-620" data-toggle="#mobile-side-filters">Filter</button>
 
         <section id="mobile-side-filters" class="side-filters pale-grey-bg col-xs-12 hidden-lg hidden-md">
             <ul class="mobile-filter-switch hidden-sm">

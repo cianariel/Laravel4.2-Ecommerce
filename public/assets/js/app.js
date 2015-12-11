@@ -21,7 +21,7 @@ $('body').on('click', '[data-toggle]', function(e){
     }
 
     $($show).fadeToggle();
-    $that.addClass('active');
+    $that.toggleClass('active');
 });
 
 $('#overlay').click(function(){
