@@ -7,12 +7,6 @@
             if (screen.width < 992 && screen.width > 620) {
                 document.getElementById("viewport").setAttribute("content", "width=980");
             }
-//
-//            window.onresize = function() {
-//                if (screen.width < 992 && screen.width > 620) {
-//                    document.getElementById("viewport").setAttribute("content", "width=992, initial-scale=1, maximum-scale=2");
-//                }
-//            }
         </script>
 {{--        {{ HTML::style('css/app.css') }}--}}
         <link rel="stylesheet" href="/assets/css/app.css">
