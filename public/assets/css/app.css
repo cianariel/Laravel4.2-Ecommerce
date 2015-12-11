@@ -4677,11 +4677,13 @@ form .btn {
         color: #fff;
         background-color: #8e8e8e; }
   .grid-box.big-box .category-tag {
+    width: 100px;
     text-indent: 0;
     text-align: center;
     color: #FF7F00;
-    padding-top: 60px;
-    padding-left: 12px; }
+    padding-top: 19px;
+    padding-left: 52px;
+    background-position: 15px center !important; }
   .grid-box.big-box .like-wrap {
     padding-left: 45px;
     padding-top: 9px;
@@ -5353,7 +5355,7 @@ header.colophon .search-bar {
   #hero-nav li {
     margin-left: 16px; }
   #hero-nav li.active a::after {
-    right: 19px; }
+    right: 19px !important; }
   #hero-nav li.active a.all-link::after {
     bottom: -27px; }
   #hero-nav a {
@@ -5390,10 +5392,12 @@ header.colophon .search-bar {
     .grid-box b.price {
       padding-left: 20px; }
     .grid-box .img-wrap {
-      border: 0 !important;
-      border-radius: 0; }
+      border-radius: 0;
+      border: 1px solid #eee !important;
+      border-bottom: 1px solid #eee !important; }
       .grid-box .img-wrap img {
-        border-radius: 0 !important; }
+        border-radius: 0 !important;
+        border-bottom: 1px solid #eee; }
 
   .grid-box .img-wrap .get-it:not(.big),
   .grid-box .img-wrap a.author {

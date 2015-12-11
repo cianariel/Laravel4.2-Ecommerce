@@ -474,11 +474,13 @@ form{
 
   &.big-box{
     .category-tag{
+      width: 100px;
       text-indent: 0;
       text-align: center;
-      color: $dark-orange;
-      padding-top: 60px;
-      padding-left: 12px;
+      color: #FF7F00;
+      padding-top: 19px;
+      padding-left: 52px;
+      background-position: 15px center !important;
     }
 
     .like-wrap{
@@ -1601,7 +1603,7 @@ header.colophon{
       }
 
       li.active a::after {
-        right: 19px;
+        right: 19px !important;
       }
 
       li.active a.all-link::after{
@@ -1662,10 +1664,16 @@ header.colophon{
     }
 
     .img-wrap{
-      border: 0 !important;
-      border-radius: 0 ;
+      border-radius: 0;
+      border: 1px solid #eee !important;
+      border-bottom: 1px solid #eee !important;
+
+      &:hover{
+
+      }
       img{
         border-radius: 0 !important;
+        border-bottom: 1px solid #eee;
       }
     }
 
