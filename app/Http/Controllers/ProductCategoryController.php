@@ -113,8 +113,9 @@
 
                     if ($newCategory == \Config::get("const.product-id-not-exist"))
                     {
+                       // dd(\Config::get("const.product-id-exist"));
                         return $this->setStatusCode(IlluminateResponse::HTTP_NOT_ACCEPTABLE)
-                            ->makeResponseWithError(\Config::get("const.product-id-exist"));
+                            ->makeResponseWithError(\Config::get("const.product-id-not-exist"));
 
                     } else
                     {
@@ -123,12 +124,12 @@
                     }
                 }
 
-            } catch (CustomAppException $ex)
+            } catch (\Exception $ex)
             {
                 \Log::error($ex);
 
                 return $this->setStatusCode(IlluminateResponse::HTTP_INTERNAL_SERVER_ERROR)
-                    ->makeResponseWithError($ex);
+                    ->makeResponseWithError("Internal server error !");
 
             }
         }

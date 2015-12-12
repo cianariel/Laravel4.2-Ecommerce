@@ -150,10 +150,11 @@
             /*
              * Custom providers...
              */
-            'Tymon\JWTAuth\Providers\JWTAuthServiceProvider',
             Laravel\Socialite\SocialiteServiceProvider::class,
+
+            'Tymon\JWTAuth\Providers\JWTAuthServiceProvider',
             'Zizaco\Entrust\EntrustServiceProvider',
-            willvincent\Feeds\FeedsServiceProvider::class,
+            'Baum\Providers\BaumServiceProvider',
 
         ],
 
