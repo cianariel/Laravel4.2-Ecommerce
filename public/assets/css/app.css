@@ -4537,7 +4537,7 @@ form .btn {
     width: 65px;
     overflow: hidden;
     padding: 2px 12px;
-    margin: 0 7px  -5px;
+    margin: 0 7px  -4px;
     border: 2px solid #FF0042;
     color: #FF0042;
     background: transparent;
@@ -4897,7 +4897,7 @@ header.colophon .search-bar {
     position: relative;
     overflow: visible; }
   #mid-nav a, .extra-nav a {
-    margin-top: 8px;
+    margin-top: 11px;
     margin-bottom: 8px;
     padding: 5px 35px;
     overflow: hidden;
@@ -4921,7 +4921,7 @@ header.colophon .search-bar {
     position: relative; }
   #mid-nav li.selected a, .extra-nav li.selected a {
     border: 2px solid #fff;
-    margin-top: 6px;
+    margin-top: 8px;
     padding: 5px 33px;
     background-color: #CE1F46; }
 
