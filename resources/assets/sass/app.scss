@@ -254,10 +254,11 @@ form{
 
   .get{
       display: inline-block;
+    vertical-align: middle;
     width: 65px;
     overflow: hidden;
     padding: 2px 12px;
-    margin: 0 7px  -4px;
+    margin: 0 7px  0;
       border: 2px solid $iridium;
       color: $iridium;
       background: transparent;
