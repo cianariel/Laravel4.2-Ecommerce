@@ -4538,7 +4538,7 @@ form .btn {
     width: 65px;
     overflow: hidden;
     padding: 2px 12px;
-    margin: 0 7px  0;
+    margin: 0 7px  5px;
     border: 2px solid #FF0042;
     color: #FF0042;
     background: transparent;
