@@ -10,6 +10,8 @@
 
     use DOMDocument;
 
+    // use Illuminate\Cache;
+
     class FeedParser {
 
         public function __construct()
@@ -17,8 +19,16 @@
             $this->domObj = new DOMDocument();
         }
 
-        public function parseFeed($onlyData = false, $feedCount = 0)
+        public function parseFeed($onlyData = false, $feedCount = 0, $cacheable = false)
         {
+            if ($cacheable == true && \Cache::has('feed.cache'))
+            {
+                $data = \Cache::get('feed.cache');
+
+                return $onlyData ? $data['item'] : $data;
+
+            }
+
             $feed = $this->domObj;
             $feed->load(env('FEED_URL'));
             $json = array();
@@ -59,6 +69,11 @@
             if ($feedCount != 0)
             {
                 $json['item'] = array_slice($json['item'], 0, $feedCount);
+            }
+
+            if ($cacheable == true)
+            {
+                \Cache::put('feed.cache', $json, env("FEED_CACHE_TIME"));
             }
 
             return $onlyData ? $json['item'] : $json;

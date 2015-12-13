@@ -7,6 +7,7 @@
     use Log;
     use CustomAppException;
     use Baum\Node;
+    use Illuminate\Support\Collection;
 
 //    class ProductCategory extends Model {
     class ProductCategory extends Node {
@@ -21,7 +22,7 @@
 
         // protected $fillable = ['category_name','extra_info','parent_id'];
 
-        protected $hidden = ['created_at', 'updated_at'];
+        protected $hidden = ['lft', 'rgt', 'depth', 'created_at', 'updated_at'];
 
         /**
          * Define Relationship
@@ -43,8 +44,6 @@
 
         public function addCategory($product)
         {
-
-            return $this->checkProductWithinCategory(29);
 
             if (isset($product['ParentId']))
                 return $this->addSubCategory($product);
@@ -77,18 +76,79 @@
             }
         }
 
-        public function deleteCategory($categoryId)
+        public function getAllRootCategory()
         {
+            try
+            {
+                $data = ProductCategory::where('parent_id', '=', null)->get();
 
+                $rootCategories = collect();
+                foreach ($data as $key => $value)
+                {
+                    $rootCategories->push(['id' => $value->id, 'category' => $value->category_name, 'info' => $value->extra_info]);
+                }
+
+                return $rootCategories;
+
+            } catch (\Exception $ex)
+            {
+                return null;
+            }
 
         }
 
-        public function checkProductWithinCategory($categoryId)
+        public function updateCategoryInfo($categoryOld)
         {
-            $category = $this->getCategory($categoryId)->getDescendantsAndSelf(array('id'));
+            $category = $this->getCategory($categoryOld['CategoryId']);
+
+            if ($category != null)
+            {
+                $category->category_name = $categoryOld['CategoryName'];
+                $category->extra_info = $categoryOld['ExtraInfo'];
+                $category->save();
+
+                return \Config::get("const.category-updated");
+
+            } else
+            {
+                return \Config::get("const.category-not-exist");
+            }
+
+        }
+
+
+        public function deleteCategory($categoryId)
+        {
+            $products = $this->productWithinCategory($categoryId);
+            if ($products->count() > 0)
+            {
+                return \Config::get("const.category-delete-exists");
+
+            } else
+            {
+                $category = $this->getCategory($categoryId);
+                $category->delete();
+
+                return \Config::get("const.category-delete");
+            }
+        }
+
+        public function productWithinCategory($categoryId)
+        {
+            $categories = $this->getCategory($categoryId)->getDescendantsAndSelf(array('id'));
 
             //$products = ProductCategory::find($categoryId)->products;
-            dd($category);
+
+            $categoryList = collect([]);
+            foreach ($categories as $key => $value)
+            {
+                $categoryList->push($value->id);
+            }
+
+            return Product::whereIn('product_category_id', $categoryList)->get();
+            //  $products = Product::whereIn('product_category_id', $categoryList)->get();
+
+            // dd($products->count());
 
 
         }

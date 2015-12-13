@@ -45,9 +45,19 @@
          * Product Category route collection
          *
          * */
-        Route::resource('product-category', 'ProductCategoryController', ['only' => ['index','store','show','update','destroy']]);
+        Route::get('index-category', 'ProductCategoryController@index');
+        Route::post('add-category', 'ProductCategoryController@addCategory');
+        Route::post('delete-category', 'ProductCategoryController@destroy');
+        Route::get('root-category', 'ProductCategoryController@showAllRootCategory');
+        Route::post('update-category', 'ProductCategoryController@updateCategory');
 
 
+
+
+        /*
+         * RSS feed parser from WP to App home page
+         *
+         * */
 
         Route::get('feed','ApiController@feedDispatcher');
     });
