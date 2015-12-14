@@ -24,7 +24,7 @@
 
                 <header class="story-details">
                     <div class="author-image-big">
-                       <?php echo  get_avatar( get_the_author_meta( 'user_email' ), 150 ) ; ?>
+                       <?php echo  get_avatar(get_the_author_meta('ID'), '210') ; ?>
                     </div>
                     <div class="author-name">
                         <?php echo  the_author_meta('first_name') ; ?> <?php echo  the_author_meta('last_name') ; ?>
@@ -48,11 +48,8 @@
         </div>
 
         <section class="about-author">
-           <?php echo  get_avatar( get_the_author_meta( 'user_email' ), 150 ) ; ?>
-
-            <h3>About the host, Anna</h3>
-            <b>San Francisco, California, United States</b>
-            <b>Member since June 2011</b>
+           <?php echo  get_avatar(get_the_author_meta('ID'), '80') ; ?>
+            <h3>About the host, <?php echo  the_author_meta('first_name') ; ?> <?php echo  the_author_meta('last_name') ; ?></h3>
 
             <p><?php the_author_meta( 'description' ); ?></p>
             </section>

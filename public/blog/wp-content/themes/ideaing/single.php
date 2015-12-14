@@ -23,7 +23,7 @@
 
                 <header class="story-details">
                     <div class="author-image-big">
-                       {{ get_avatar( get_the_author_meta( 'user_email' ), 150 ) }}
+                       {{ get_avatar(get_the_author_meta('ID'), '210') }}
                     </div>
                     <div class="author-name">
                         {{ the_author_meta('first_name') }} {{ the_author_meta('last_name') }}
@@ -47,11 +47,8 @@
         </div>
 
         <section class="about-author">
-           {{ get_avatar( get_the_author_meta( 'user_email' ), 150 ) }}
-
-            <h3>About the host, Anna</h3>
-            <b>San Francisco, California, United States</b>
-            <b>Member since June 2011</b>
+           {{ get_avatar(get_the_author_meta('ID'), '80') }}
+            <h3>About the host, {{ the_author_meta('first_name') }} {{ the_author_meta('last_name') }}</h3>
 
             <p><?php the_author_meta( 'description' ); ?></p>
             </section>
