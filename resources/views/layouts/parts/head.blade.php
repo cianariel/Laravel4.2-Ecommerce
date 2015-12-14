@@ -1,13 +1,13 @@
 <title>Ideaing</title>
 <meta name="viewport" id="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-<meta charset="<?php bloginfo('charset'); ?>">
 
+<?php // TODO ?>
+<meta charset="<?php // bloginfo('charset'); ?>">
 
 <!--		<link href="//www.google-analytics.com" rel="dns-prefetch">-->
 <!--        <link href="--><?php //echo get_template_directory_uri(); ?><!--/img/icons/favicon.ico" rel="shortcut icon">-->
 <!--        <link href="--><?php //echo get_template_directory_uri(); ?><!--/img/icons/touch.png" rel="apple-touch-icon-precomposed">-->
-
 
 <script>
     // conditionizr.com
