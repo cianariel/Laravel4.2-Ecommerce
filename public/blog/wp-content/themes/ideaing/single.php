@@ -1,5 +1,6 @@
-<?php get_header(); ?>
-	<?php if (have_posts()): while (have_posts()) : the_post(); ?>
+@include('header')
+
+<?php if (have_posts()): while (have_posts()) : the_post(); ?>
         <section id="hero" class="landing-hero">
             <div class="hero-background"></div>
             <!-- TODO - use as the hero-bg					--><?php //the_post_thumbnail(); // Fullsize image for the single post ?>
@@ -205,3 +206,5 @@
             </div>
         </div>
     </section>
+
+<?php get_footer(); ?>
