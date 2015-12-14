@@ -4853,23 +4853,25 @@ form .btn {
 #site-name {
   display: none; }
 
-header.colophon #top-nav .signin a {
-  padding-left: 40px;
-  background-image: url("/assets/images/signin-icon.png");
-  background-position: left;
-  background-repeat: no-repeat;
-  white-space: nowrap; }
-header.colophon .search-bar {
-  padding-top: 13px;
-  margin-left: 3%; }
-  header.colophon .search-bar .search-toggle {
-    display: none;
-    text-indent: -9999px;
-    background: url("/assets/images/magnif-grey.png") center no-repeat; }
-  header.colophon .search-bar input {
-    min-width: 128px;
-    text-align: center;
-    background: url("/assets/images/magnif-grey.png") 10% no-repeat; }
+header.colophon {
+  overflow: hidden; }
+  header.colophon #top-nav .signin a {
+    padding-left: 40px;
+    background-image: url("/assets/images/signin-icon.png");
+    background-position: left;
+    background-repeat: no-repeat;
+    white-space: nowrap; }
+  header.colophon .search-bar {
+    padding-top: 13px;
+    margin-left: 3%; }
+    header.colophon .search-bar .search-toggle {
+      display: none;
+      text-indent: -9999px;
+      background: url("/assets/images/magnif-grey.png") center no-repeat; }
+    header.colophon .search-bar input {
+      min-width: 128px;
+      text-align: center;
+      background: url("/assets/images/magnif-grey.png") 10% no-repeat; }
 
 #top-nav a {
   margin-right: 8%;
