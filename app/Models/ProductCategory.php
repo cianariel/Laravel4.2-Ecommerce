@@ -6,8 +6,11 @@
     use Mockery\CountValidator\Exception;
     use Log;
     use CustomAppException;
+    use Baum\Node;
+    use Illuminate\Support\Collection;
 
-    class ProductCategory extends Model {
+//    class ProductCategory extends Model {
+    class ProductCategory extends Node {
 
         /**
          * The database table used by the model.
@@ -16,9 +19,10 @@
          */
         protected $table = 'product_categories';
 
-        protected $fillable = ['category_name','extra_info','parent_id'];
 
-        protected $hidden = ['created_at', 'updated_at'];
+        // protected $fillable = ['category_name','extra_info','parent_id'];
+
+        protected $hidden = ['lft', 'rgt', 'depth', 'created_at', 'updated_at'];
 
         /**
          * Define Relationship
@@ -37,45 +41,142 @@
          * @param $product
          * @return mixed|static
          */
+
         public function addCategory($product)
         {
 
-                $parentId = isset($product['ParentId'])?$product['ParentId']:null;
+            if (isset($product['ParentId']))
+                return $this->addSubCategory($product);
 
-                // Check whether valid Parent Id provided or not for new category
-                if($parentId != null)
-                {
-                    $parentId = $this->getParent($parentId);
-
-                    if ($parentId == false)
-                    {
-                        return \Config::get("const.product-id-not-exist");
-                    }
-                }
-
-                $category = ProductCategory::create([
-                    'category_name' => $product['CategoryName'],
-                    'extra_info'    => isset($product['ExtraInfo']) ? $product['ExtraInfo'] : null,
-                    'parent_id'     => isset($product['ParentId']) ? $product['ParentId'] : null,
-                ]);
-
-                return $category;
-
+            return ProductCategory::create(['category_name' => $product['CategoryName'],
+                                            'extra_info'    => isset($product['ExtraInfo']) ? $product['ExtraInfo'] : null
+            ]);
         }
 
-        /** Check and return a parent category , if not found return false
-         * @param $parentId
-         * @return bool
+        /** Add a sub category item in the category and return it the object.
+         * @param $product
+         * @return mixed
          */
-        private function getParent($parentId)
+        public function addSubCategory($product)
+        {
+            $parentNode = $this->getCategory($product['ParentId']);
+
+            if ($parentNode == null)
+                return \Config::get("const.product-id-not-exist");
+
+            return $parentNode->children()->create(['category_name' => $product['CategoryName'],
+                                                    'extra_info'    => isset($product['ExtraInfo']) ? $product['ExtraInfo'] : null
+            ]);
+        }
+
+        /** Makes an category object through category id.
+         * @param $categoryId
+         * @return null
+         */
+        public function getCategory($categoryId)
         {
             try
             {
-                return ProductCategory::where('id',$parentId)->firstOrFail();
+                return ProductCategory::where('id', '=', $categoryId)->firstOrFail();
             } catch (\Exception $ex)
             {
-                return false;
+                return null;
             }
         }
+
+        /** Return all root categories which are not subcategories (parent id is NULL).
+         * @return Collection|null
+         */
+        public function getAllRootCategory()
+        {
+            try
+            {
+                $data = ProductCategory::where('parent_id', '=', null)->get();
+
+                $rootCategories = collect();
+                foreach ($data as $key => $value)
+                {
+                    $rootCategories->push(['id' => $value->id, 'category' => $value->category_name, 'info' => $value->extra_info]);
+                }
+
+                return $rootCategories;
+
+            } catch (\Exception $ex)
+            {
+                return null;
+            }
+
+        }
+
+        /** Update category information.
+         * @param $categoryOld
+         * @return mixed
+         */
+        public function updateCategoryInfo($categoryOld)
+        {
+            $category = $this->getCategory($categoryOld['CategoryId']);
+
+            if ($category != null)
+            {
+                $category->category_name = $categoryOld['CategoryName'];
+                $category->extra_info = $categoryOld['ExtraInfo'];
+                $category->save();
+
+                return \Config::get("const.category-updated");
+
+            } else
+            {
+                return \Config::get("const.category-not-exist");
+            }
+
+        }
+
+
+        /** First checks whether a category is  associated with any product or not ,
+         *if not associated then delte the category item and regenerate the configuration
+         *fields in database as per algorithm.
+         *
+         * @param $categoryId
+         * @return mixed
+         */
+        public function deleteCategory($categoryId)
+        {
+            $products = $this->productWithinCategory($categoryId);
+            if ($products->count() > 0)
+            {
+                return \Config::get("const.category-delete-exists");
+
+            } else
+            {
+                $category = $this->getCategory($categoryId);
+                $category->delete();
+
+                return \Config::get("const.category-delete");
+            }
+        }
+
+        /** Return all products which are in side category/subcategory
+         *
+         * @param $categoryId
+         * @return mixed
+         */
+        public function productWithinCategory($categoryId)
+        {
+            $categories = $this->getCategory($categoryId)->getDescendantsAndSelf(array('id'));
+
+            //$products = ProductCategory::find($categoryId)->products;
+
+            $categoryList = collect([]);
+            foreach ($categories as $key => $value)
+            {
+                $categoryList->push($value->id);
+            }
+
+            return Product::whereIn('product_category_id', $categoryList)->get();
+
+        }
+
+
+
 
     }

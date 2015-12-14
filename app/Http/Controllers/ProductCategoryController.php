@@ -2,6 +2,7 @@
 
     namespace App\Http\Controllers;
 
+    use Exception;
     use Illuminate\Http\Request;
 
     use App\Http\Requests;
@@ -34,7 +35,10 @@
         public function __construct()
         {
 
+            // Apply the jwt.auth middleware to all methods in this controller
+            $this->middleware('jwt.auth', ['except' => ['showProductInCategoryName', 'updateCategory', 'index', 'addCategory', 'showAllRootCategory', 'destroy']]);
             $this->productCategory = new ProductCategory();
+
 
         }
 
@@ -45,6 +49,7 @@
          */
         public function index()
         {
+            return "hi";
             // dd(Config::get('Constant.val'));
             /*try
             {
@@ -55,24 +60,14 @@
             }*/
         }
 
-        /**
-         * Show the form for creating a new resource.
-         *
-         * @return \Illuminate\Http\Response
-         */
-        public function create()
-        {
-
-
-        }
 
         /**
-         * Store a newly created resource in storage.
+         * Add a category in parent id is not provided or else add a subcategory.
          *
          * @param  \Illuminate\Http\Request $request
          * @return \Illuminate\Http\Response
          */
-        public function store(Request $request)
+        public function addCategory(Request $request)
         {
             try
             {
@@ -84,10 +79,12 @@
 
                     'rules'  => [
                         'CategoryName' => 'required | max: 15',
+                        'ExtraInfo'    => 'required | max: 25',
                         'ParentId'     => 'integer'
                     ],
                     'values' => [
                         'CategoryName' => isset($inputData['CategoryName']) ? $inputData['CategoryName'] : null,
+                        'CategoryName' => isset($inputData['ExtraInfo']) ? $inputData['ExtraInfo'] : null,
                         'ParentId'     => isset($inputData['ParentId']) ? $inputData['ParentId'] : null
                     ]
                 ];
@@ -113,8 +110,9 @@
 
                     if ($newCategory == \Config::get("const.product-id-not-exist"))
                     {
+                        // dd(\Config::get("const.product-id-exist"));
                         return $this->setStatusCode(IlluminateResponse::HTTP_NOT_ACCEPTABLE)
-                            ->makeResponseWithError(\Config::get("const.product-id-exist"));
+                            ->makeResponseWithError(\Config::get("const.product-id-not-exist"));
 
                     } else
                     {
@@ -123,58 +121,128 @@
                     }
                 }
 
-            } catch (CustomAppException $ex)
+            } catch (Exception $ex)
             {
                 \Log::error($ex);
 
                 return $this->setStatusCode(IlluminateResponse::HTTP_INTERNAL_SERVER_ERROR)
-                    ->makeResponseWithError($ex);
+                    ->makeResponseWithError("Internal server error !");
 
             }
         }
 
         /**
-         * Display the specified resource.
+         * Returns all root category items
          *
-         * @param  int $id
-         * @return \Illuminate\Http\Response
+         * @return mixed
          */
-        public function show($id)
+        public function showAllRootCategory()
         {
-            //
+            $data = $this->productCategory->getAllRootCategory();
+
+            return $this->setStatusCode(IlluminateResponse::HTTP_OK)
+                ->makeResponse($data);
+            //  dd($data);
         }
 
-        /**
-         * Show the form for editing the specified resource.
-         *
-         * @param  int $id
-         * @return \Illuminate\Http\Response
-         */
-        public function edit($id)
+
+        public function showProductInCategoryName($identity = null)
         {
-            //
+            if (!isset($identity))
+                return $this->setStatusCode(IlluminateResponse::HTTP_NOT_ACCEPTABLE)
+                    ->makeResponseWithError(array('Invalid request,please provide category parameter !'));
+            try
+            {
+                $category = ProductCategory::where('extra_info', '=', $identity)->first();
+                if ($category->count() != 0)
+                    $products = $this->productCategory->productWithinCategory($category['id']);
+
+                return $this->setStatusCode(IlluminateResponse::HTTP_OK)
+                    ->makeResponse($products);
+
+            } catch (Exception $ex)
+            {
+                 return $this->setStatusCode(IlluminateResponse::HTTP_NOT_ACCEPTABLE)
+                ->makeResponseWithError(array('Invalid request !',$ex));
+            }
+
         }
 
-        /**
-         * Update the specified resource in storage.
-         *
-         * @param  \Illuminate\Http\Request $request
-         * @param  int $id
-         * @return \Illuminate\Http\Response
-         */
-        public function update(Request $request, $id)
-        {
-            //
-        }
 
         /**
-         * Remove the specified resource from storage.
-         *
-         * @param  int $id
-         * @return \Illuminate\Http\Response
+         * Update a category / Subcategory value based on provided category id in POST method
+         * @return mixed
          */
-        public function destroy($id)
+        public function updateCategory()
         {
-            //
+            $inputData = \Input::all();
+
+            // set validation rule to filter input
+
+            $validationRules = [
+                'rules'  => [
+                    'CategoryName' => 'required | max: 15',
+                    'CategoryId'   => 'required | integer'
+                ],
+                'values' => [
+                    'CategoryName' => isset($inputData['CategoryName']) ? $inputData['CategoryName'] : null,
+                    'CategoryId'   => isset($inputData['CategoryId']) ? $inputData['CategoryId'] : null
+                ]
+            ];
+
+            list($inputData, $validator) = $this->inputValidation($inputData, $validationRules);
+
+            if ($validator->fails())
+            {
+                return $this->setStatusCode(IlluminateResponse::HTTP_NOT_ACCEPTABLE)
+                    ->makeResponseWithError(array('Validation failed', $validator->messages()));
+            } elseif ($validator->passes())
+            {
+                $message = $this->productCategory->updateCategoryInfo($inputData);
+
+                if ($message == \Config::get("const.category-updated"))
+                {
+                    return $this->setStatusCode(IlluminateResponse::HTTP_OK)
+                        ->makeResponse($message);
+                } else
+                {
+                    return $this->setStatusCode(IlluminateResponse::HTTP_NOT_ACCEPTABLE)
+                        ->makeResponseWithError(\Config::get("const.category-not-exist"));
+                }
+            }
+
+        }
+
+        /** First checks whether a category is  associated with any product or not ,
+         *if not associated then delte the category item and regenerate the configuration
+         *fields in database as per algorithm.
+         *
+         */
+        public function destroy()
+        {
+            try
+            {
+                $category = \Input::get('categoryId');
+
+                $message = $this->productCategory->deleteCategory($category);
+                if ($message == \Config::get("const.category-delete-exists"))
+                {
+                    return $this->setStatusCode(IlluminateResponse::HTTP_NOT_ACCEPTABLE)
+                        ->makeResponse($message);
+                } elseif ($message == \Config::get("const.category-delete"))
+                {
+                    return $this->setStatusCode(IlluminateResponse::HTTP_OK)
+                        ->makeResponse($message);
+                }
+
+
+            } catch (Exception $ex)
+            {
+                \Log::error($ex);
+
+                return $this->setStatusCode(IlluminateResponse::HTTP_NOT_ACCEPTABLE)
+                    ->makeResponseWithError("Invalid category provided!!");
+            }
+
         }
     }
