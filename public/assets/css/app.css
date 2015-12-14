@@ -4466,6 +4466,31 @@ input[type="checkbox"]:checked + label span {
   background: url("/assets/images/checkmark-black.png") center no-repeat !important;
   border-color: #818181; }
 
+.get {
+  display: inline-block;
+  vertical-align: middle;
+  width: 65px;
+  overflow: hidden;
+  padding: 2px 12px;
+  margin: 0 7px  5px;
+  border: 2px solid #FF0042;
+  color: #FF0042;
+  background: transparent;
+  border-radius: 15px;
+  text-transform: uppercase;
+  font-size: 1.1rem;
+  font-weight: bold; }
+  .get:hover {
+    background: #FF0042;
+    color: #fff; }
+  .get.solid {
+    background: #FF0042;
+    color: #fff; }
+    .get.solid:hover {
+      border: 2px solid #FF0042;
+      color: #FF0042;
+      background: transparent; }
+
 body {
   position: relative;
   font-family: 'Montserrat', sans-serif; }
@@ -4495,8 +4520,18 @@ nav a {
 #hero {
   position: relative;
   width: 100%;
-  min-height: 650px;
+  min-height: 540px;
   float: left; }
+  #hero h1 {
+    position: absolute;
+    width: 100%;
+    padding-top: 20%;
+    z-index: 1;
+    text-align: center;
+    color: #fff;
+    font-size: 5.5rem;
+    font-weight: bold;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3); }
   #hero .hero-background {
     background-image: url("/assets/images/landing-hero-3.jpg");
     background-size: cover;
@@ -4534,30 +4569,6 @@ form .btn {
   .grid-box .price {
     font-size: 2rem;
     color: #FF0042; }
-  .grid-box .get {
-    display: inline-block;
-    vertical-align: middle;
-    width: 65px;
-    overflow: hidden;
-    padding: 2px 12px;
-    margin: 0 7px  5px;
-    border: 2px solid #FF0042;
-    color: #FF0042;
-    background: transparent;
-    border-radius: 15px;
-    text-transform: uppercase;
-    font-size: 1.1rem;
-    font-weight: bold; }
-    .grid-box .get:hover {
-      background: #FF0042;
-      color: #fff; }
-    .grid-box .get.solid {
-      background: #FF0042;
-      color: #fff; }
-      .grid-box .get.solid:hover {
-        border: 2px solid #FF0042;
-        color: #FF0042;
-        background: transparent; }
   .grid-box .img-wrap {
     position: relative;
     overflow: hidden;
@@ -5158,6 +5169,12 @@ header.colophon {
   #hero-nav li.active a.photos-link {
     color: #00B1FF;
     background-image: url("/assets/images/photos-blue.png"); }
+
+.idea-stories .article-content p {
+  color: #757575; }
+.idea-stories .article-content img {
+  width: 100%;
+  border: 1px solid #eee; }
 
 @media only screen and (max-width: 1200px) {
   #top-nav a {

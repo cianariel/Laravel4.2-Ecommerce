@@ -2,14 +2,10 @@
 
 <?php if (have_posts()): while (have_posts()) : the_post(); ?>
         <section id="hero" class="landing-hero">
-            <div class="hero-background"></div>
+                <h1>{{the_title()}}</h1>
+            <div class="hero-background" style="background-image:url( {{getThumbnailLink($post->ID)}} ) "></div>
             <!-- TODO - use as the hero-bg					--><?php //the_post_thumbnail(); // Fullsize image for the single post ?>
-
             <div class="color-overlay"></div>
-
-            <div class="container fixed-sm full-480">
-               <h1>11 Kitchen Gadgets You Need Now</h1>
-            </div>
         </section>
         <nav id="hero-nav" class="col-sm-12">
             <div class="container full-620  fixed-sm">
@@ -26,8 +22,12 @@
             <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 
                 <header class="story-details">
-                    <img class="img-responsive author-pic .img-circle">
-                    <div class="author"><?php _e( 'Published by', 'html5blank' ); ?> <?php the_author_posts_link(); ?></div> <?php // TODO - use Author WP data ?>
+                    <div class="author-image-big">
+                       {{ get_avatar( get_the_author_meta( 'user_email' ), 150 ) }}
+                    </div>
+                    <div class="author-name">
+                        {{ the_author_meta('first_name') }} {{ the_author_meta('last_name') }}
+                    </div>
                     <div> Reporter: @nytimes & @NYTmag</div>
                     <div class="content-tags">
                         <ul>
@@ -39,42 +39,24 @@
                     <!--			<span class="date">--><?php //the_time('F j, Y'); ?><!-- --><?php //the_time('g:i a'); ?><!--</span>-->
                 </header>
 
-                <section class="col-sm-11">
-                    <?php //the_content(); // Dynamic Content ?>
-                    <p>
-                        Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?
-                    </p>
-                    <p>
-                        Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?
-                    </p>
-                </section>
-                <section class="social--side-bar">
-                    <button class="facebook-share">55</button>
-                    <button class="twitter-share">120</button>
-                    <button class="google-share">521</button>
-                    <button class="email-share">Email</button>
-                    <button class="ideaing-like">12.5K</button>
-                    <button class="ideaing-comment">322</button>
+                <section class="article-content">
+                    <?php the_content(); ?>
                 </section>
 
-                <h2>1. Crockpot</h2>
-                <img class="img-responsve" src="">
-                <p>
-                    Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
-                </p>
-                <h2>2. Crockpot</h2>
-                <img class="img-responsve" src="">
-                <p>
-                    Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
-                </p>
             </article>
         </div>
 
         <section class="about-author">
+           {{ get_avatar( get_the_author_meta( 'user_email' ), 150 ) }}
+
             <h3>About the host, Anna</h3>
             <b>San Francisco, California, United States</b>
             <b>Member since June 2011</b>
+
+            <p><?php the_author_meta( 'description' ); ?></p>
+            </section>
         </section>
+
 
 <!--			<span class="comments">--><?php //if (comments_open( get_the_ID() ) ) comments_popup_link( __( 'Leave your thoughts', 'html5blank' ), __( '1 Comment', 'html5blank' ), __( '% Comments', 'html5blank' )); ?><!--</span>-->
 			<!-- /post details -->
@@ -114,9 +96,74 @@
             <div class="related-products">
                 <h3>Related Products</h3>
 
-                <div class="col-xs-3 grid-box full-620">
+                <section class="col-sm-12 related-stories">
+
+                    <?php
+                    //Get 3 posts with similar tags. If there are no tags, get any 3 posts
+
+                    $args= [
+                        'post__not_in' => array($post->ID),
+                        'posts_per_page'=> 3,
+                        'caller_get_posts'=> 1
+                    ];
+
+                    $tags = wp_get_post_tags($post->ID);
+                    if($tags) {
+                        $first_tag = $tags[0]->term_id;
+                        $args['tag__in'] = [$first_tag];
+                    }
+                    $my_query = new WP_Query($args);
+
+                    //                    if($tags && !$my_query->have_posts() ){ // if there are not posts with similar tags, get just any posts
+                    unset($args['tag__in']);
+                    $my_query = new WP_Query($args);
+                    //                    }
+
+                    if( $my_query->have_posts() ) {
+                        while ($my_query->have_posts()) : $my_query->the_post(); ?>
+                            <div class="<div class="col-xs-3 grid-box">
+                                <?php
+                                echo '<a href="';
+                                the_permalink() ;
+                                echo '" title="';
+                                the_title_attribute();
+                                echo '">';
+
+                                if ( has_post_thumbnail() ){
+                                    echo  '<div class="img-wrap">';
+                                     the_post_thumbnail('medium',['class' => 'thumbnail img-responsive']);
+                                    echo '<div class="thumbnail img-responsive">
+                                            <div class="circle-3">
+                                                <div class="circle-2">
+                                                     <div class="circle-1">Get it</div>
+                                                </div>
+                                             </div>
+                                        </div>';
+                                }else{
+                                    echo  '<div class="img-wrap">
+                                                <div class="thumbnail img-responsive">
+                                                    <div class="circle-3">
+                                                        <div class="circle-2">
+                                                             <div class="circle-1">Get it</div>
+                                                        </div>
+                                                     </div>
+                                            </div>';
+                                }
+                                echo '</a>';
+                                ?>
+                                <a href="<?php the_permalink() ?>">
+                                    <?php the_title(); ?>
+                                </a>
+                            </div>
+                            <?php
+                        endwhile;
+                    }
+                    wp_reset_query();
+                    ?>
+                </section>
+
+                <div class="col-xs-3 grid-box">
                     <a href="#">
-                        <div class="img-wrap">
                             <img class="img-responsive" src="/assets/images/dummies/box-image-dummy.png">
                                 <h4>Mr Coffee smart</h4>
                                 <b>Wifi-Enabled</b>

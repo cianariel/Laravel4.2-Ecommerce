@@ -459,4 +459,8 @@ function loadLaravelView($templateName){ // and even faster
     return include('/var/www/ideaing/resources/views/layouts/parts/' . $templateName . '.blade.php');
 }
 
+function getThumbnailLink($postID){
+    return wp_get_attachment_url( get_post_thumbnail_id($postID) );
+}
+
 ?>
