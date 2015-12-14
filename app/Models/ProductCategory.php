@@ -53,6 +53,10 @@
             ]);
         }
 
+        /** Add a sub category item in the category and return it the object.
+         * @param $product
+         * @return mixed
+         */
         public function addSubCategory($product)
         {
             $parentNode = $this->getCategory($product['ParentId']);
@@ -65,6 +69,10 @@
             ]);
         }
 
+        /** Makes an category object through category id.
+         * @param $categoryId
+         * @return null
+         */
         public function getCategory($categoryId)
         {
             try
@@ -76,6 +84,9 @@
             }
         }
 
+        /** Return all root categories which are not subcategories (parent id is NULL).
+         * @return Collection|null
+         */
         public function getAllRootCategory()
         {
             try
@@ -97,6 +108,10 @@
 
         }
 
+        /** Update category information.
+         * @param $categoryOld
+         * @return mixed
+         */
         public function updateCategoryInfo($categoryOld)
         {
             $category = $this->getCategory($categoryOld['CategoryId']);
@@ -117,6 +132,13 @@
         }
 
 
+        /** First checks whether a category is  associated with any product or not ,
+         *if not associated then delte the category item and regenerate the configuration
+         *fields in database as per algorithm.
+         *
+         * @param $categoryId
+         * @return mixed
+         */
         public function deleteCategory($categoryId)
         {
             $products = $this->productWithinCategory($categoryId);
@@ -133,6 +155,11 @@
             }
         }
 
+        /** Return all products which are in side category/subcategory
+         *
+         * @param $categoryId
+         * @return mixed
+         */
         public function productWithinCategory($categoryId)
         {
             $categories = $this->getCategory($categoryId)->getDescendantsAndSelf(array('id'));
@@ -146,91 +173,10 @@
             }
 
             return Product::whereIn('product_category_id', $categoryList)->get();
-            //  $products = Product::whereIn('product_category_id', $categoryList)->get();
-
-            // dd($products->count());
-
 
         }
 
 
-        public function addCategoryOld($product)
-        {
-
-            $root = ProductCategory::create(['category_name' => $product['CategoryName'],
-                                             'extra_info'    => isset($product['ExtraInfo']) ? $product['ExtraInfo'] : null
-            ]);
-
-            //$root =ProductCategory::where('category_name','root 1');
-
-            // $root = ProductCategory::getLeaves($root);
-            // $root->getLevel(1);
-            //  $node = ProductCategory::where('category_name', '=', 'root 1')->firstOrFail();
-
-            //  $category = ProductCategory::roots()->first();
-            /*
-                        $node = $node->children()->create([
-                            'category_name' => $product['CategoryName'],
-                            'extra_info'    => isset($product['ExtraInfo']) ? $product['ExtraInfo'] : null
-                        ]);*/
-
-            //$node->
-
-            // $node->makeRoot();
-
-            //   return $node->getDescendantsAndSelf();
-            //   $node = ProductCategory::all();
-
-
-            return $root;
-
-
-        }
-
-        /*
-          public function addCategory($product)
-          {
-
-                  $parentId = isset($product['ParentId'])?$product['ParentId']:null;
-
-                  // Check whether valid Parent Id provided or not for new category
-                  if($parentId != null)
-                  {
-                      $parentId = $this->getParent($parentId);
-
-                      if ($parentId == false)
-                      {
-                          return \Config::get("const.product-id-not-exist");
-                      }
-                  }
-
-                  $category = ProductCategory::create([
-                      'category_name' => $product['CategoryName'],
-                      'extra_info'    => isset($product['ExtraInfo']) ? $product['ExtraInfo'] : null,
-                      'parent_id'     => isset($product['ParentId']) ? $product['ParentId'] : null,
-                  ]);
-
-                  return $category;
-
-          }
-
-      */
-        /** Check and return a parent category , if not found return false
-         * @param $parentId
-         * @return bool
-         */
-        /*
-           private function getParent($parentId)
-           {
-               try
-               {
-                   return ProductCategory::where('id',$parentId)->firstOrFail();
-               } catch (\Exception $ex)
-               {
-                   return false;
-               }
-           }
-          */
 
 
     }

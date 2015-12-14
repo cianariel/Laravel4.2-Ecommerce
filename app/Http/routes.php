@@ -52,14 +52,12 @@
         Route::post('update-category', 'ProductCategoryController@updateCategory');
 
 
-
-
         /*
          * RSS feed parser from WP to App home page
          *
          * */
 
-        Route::get('feed','ApiController@feedDispatcher');
+        Route::get('feed', 'ApiController@feedDispatcher');
     });
 
     Route::get('password-reset-form/{code?}', 'AuthenticateController@passwordResetForm');
@@ -71,6 +69,9 @@
     Route::get('password-reset/{code?}', 'AuthenticateController@passwordReset');
 
     Route::resource('feed', 'FeedController', ['only' => ['index']]);
+
+    // Category dynamic routing
+    Route::get('category/{identity?}','ProductCategoryController@showProductInCategoryName');
 
 
 

@@ -87,7 +87,10 @@
                 ]);
             } else
             {
-                $data = ['data' => $data];
+                $data = [
+                    'data'        => $data,
+                    'status_code' => $this->getStatusCode()
+                ];
             }
 
             return response()->json($data, $this->getStatusCode(), $headers);
@@ -102,7 +105,7 @@
          */
         public function makeResponseWithError($message, $log = null)
         {
-            // Log::error($log);
+            Log::error($log);
 
             return $this->makeResponse([
                 'error' => [
@@ -134,8 +137,6 @@
 
             return $this->makeResponse($data);
         }
-
-
 
 
         /**

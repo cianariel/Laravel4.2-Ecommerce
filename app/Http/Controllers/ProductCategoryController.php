@@ -2,6 +2,7 @@
 
     namespace App\Http\Controllers;
 
+    use Exception;
     use Illuminate\Http\Request;
 
     use App\Http\Requests;
@@ -35,7 +36,7 @@
         {
 
             // Apply the jwt.auth middleware to all methods in this controller
-            $this->middleware('jwt.auth', ['except' => ['updateCategory', 'index', 'addCategory', 'showAllRootCategory', 'destroy']]);
+            $this->middleware('jwt.auth', ['except' => ['showProductInCategoryName', 'updateCategory', 'index', 'addCategory', 'showAllRootCategory', 'destroy']]);
             $this->productCategory = new ProductCategory();
 
 
@@ -61,7 +62,7 @@
 
 
         /**
-         * Store a newly created resource in storage.
+         * Add a category in parent id is not provided or else add a subcategory.
          *
          * @param  \Illuminate\Http\Request $request
          * @return \Illuminate\Http\Response
@@ -78,10 +79,12 @@
 
                     'rules'  => [
                         'CategoryName' => 'required | max: 15',
+                        'ExtraInfo'    => 'required | max: 25',
                         'ParentId'     => 'integer'
                     ],
                     'values' => [
                         'CategoryName' => isset($inputData['CategoryName']) ? $inputData['CategoryName'] : null,
+                        'CategoryName' => isset($inputData['ExtraInfo']) ? $inputData['ExtraInfo'] : null,
                         'ParentId'     => isset($inputData['ParentId']) ? $inputData['ParentId'] : null
                     ]
                 ];
@@ -118,7 +121,7 @@
                     }
                 }
 
-            } catch (\Exception $ex)
+            } catch (Exception $ex)
             {
                 \Log::error($ex);
 
@@ -128,19 +131,48 @@
             }
         }
 
-
+        /**
+         * Returns all root category items
+         *
+         * @return mixed
+         */
         public function showAllRootCategory()
         {
             $data = $this->productCategory->getAllRootCategory();
 
             return $this->setStatusCode(IlluminateResponse::HTTP_OK)
                 ->makeResponse($data);
-          //  dd($data);
+            //  dd($data);
         }
 
 
+        public function showProductInCategoryName($identity = null)
+        {
+            if (!isset($identity))
+                return $this->setStatusCode(IlluminateResponse::HTTP_NOT_ACCEPTABLE)
+                    ->makeResponseWithError(array('Invalid request,please provide category parameter !'));
+            try
+            {
+                $category = ProductCategory::where('extra_info', '=', $identity)->first();
+                if ($category->count() != 0)
+                    $products = $this->productCategory->productWithinCategory($category['id']);
+
+                return $this->setStatusCode(IlluminateResponse::HTTP_OK)
+                    ->makeResponse($products);
+
+            } catch (Exception $ex)
+            {
+                 return $this->setStatusCode(IlluminateResponse::HTTP_NOT_ACCEPTABLE)
+                ->makeResponseWithError(array('Invalid request !',$ex));
+            }
+
+        }
 
 
+        /**
+         * Update a category / Subcategory value based on provided category id in POST method
+         * @return mixed
+         */
         public function updateCategory()
         {
             $inputData = \Input::all();
@@ -181,12 +213,10 @@
 
         }
 
-        /**
-         * Remove the specified resource from storage.
+        /** First checks whether a category is  associated with any product or not ,
+         *if not associated then delte the category item and regenerate the configuration
+         *fields in database as per algorithm.
          *
-         * @param $category
-         * @return IlluminateResponse
-         * @internal param int $id
          */
         public function destroy()
         {
@@ -206,7 +236,7 @@
                 }
 
 
-            } catch (\Exception $ex)
+            } catch (Exception $ex)
             {
                 \Log::error($ex);
 
