@@ -449,4 +449,14 @@ function html5_shortcode_demo_2($atts, $content = null) // Demo Heading H2 short
     return '<h2>' . $content . '</h2>';
 }
 
+
+// CUSTOM FUNCTIONS for CONNECTION TO LARAVEL
+
+global $laravelViewsDir; // So that we can easily fetch the view files
+$laravelViewsDir = '/var/www/ideaing/resources/views/';
+
+function loadLaravelView($templateName){ // and even faster
+    return include('/var/www/ideaing/resources/views/layouts/parts/' . $templateName . '.blade.php');
+}
+
 ?>

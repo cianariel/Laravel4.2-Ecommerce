@@ -1,4 +1,9 @@
-@include('header')
+<?php // /var/www/ideaing/public/blog/wp-content/themes/ideaing/index.php ?>
+<!--<?php echo view('header')->with(get_defined_vars())->render(); ?>-->
+
+<?php include( '/var/www/ideaing/public/blog/wp-content/themes/ideaing/header.php'); ?>
+
+<?php echo bloginfo( 'template_url'); ?>
 	<main role="main">
 		<!-- section -->
 		<section>
