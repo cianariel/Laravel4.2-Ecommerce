@@ -55,6 +55,8 @@ define('SECURE_AUTH_SALT', '1lCA-LgSEJ_er)L 0XYJ^m+wtMtI}Xb;JE>2_px}24+WsC&pLxD[
 define('LOGGED_IN_SALT',   'haOIP8lf/^0@B]$Ag$`:)D<9v6R.N}t_k+`r( (3]D}t{B6*<M/&%?/b2d~IeNWn');
 define('NONCE_SALT',       '}.AS&uj51IMelL-1[UW3z}>PAqe(<+s1)J;jf^q]}tG4_,?x}>h*)1-*bHjfCEN?');
 
+define('AWS_ACCESS_KEY_ID','AKIAICR2IHX2GAEVUPTA');
+define('AWS_SECRET_ACCESS_KEY','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');
 /**#@-*/
 
 /**
