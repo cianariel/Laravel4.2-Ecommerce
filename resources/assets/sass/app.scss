@@ -282,6 +282,53 @@ a{ // Custom Link Styles
   }
 }
 
+@media (max-width: 1670px){
+  .share-bar{
+    left: 1%;
+  }
+}
+
+@media (max-width: 1380px){
+  .share-bar{
+    position: absolute !important;
+    left: 40px;
+    top: 24%;
+
+    &.stick{
+      position: absolute !important;
+      top: 24%;
+    }
+  }
+
+}
+
+@media (max-width: 992px){
+  .share-bar{
+    left: 15px;
+  }
+
+}
+@media (max-width: 768px){
+  .share-bar{
+    position: static !important;
+    width: 100%;
+    float: none;
+    overflow: hidden;
+
+    ul{
+      width: 100%;
+
+      li{
+        width: 100px;
+        float: left;
+        margin-left: 1.4%;
+      }
+    }
+
+  }
+
+}
+
 
 
 // custom checkboxes
@@ -1662,6 +1709,14 @@ header.colophon{
       overflow: visible;
       margin-bottom: 35px;
       cursor: pointer;
+
+      .wrap{
+        width: 100%;
+      }
+
+      img{
+        width: 100%;
+      }
 
       .author{
         position: absolute;

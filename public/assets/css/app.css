@@ -4543,6 +4543,32 @@ a.photos-link {
     .share-bar li a {
       color: #fff; }
 
+@media (max-width: 1670px) {
+  .share-bar {
+    left: 1%; } }
+@media (max-width: 1380px) {
+  .share-bar {
+    position: absolute !important;
+    left: 40px;
+    top: 24%; }
+    .share-bar.stick {
+      position: absolute !important;
+      top: 24%; } }
+@media (max-width: 992px) {
+  .share-bar {
+    left: 15px; } }
+@media (max-width: 768px) {
+  .share-bar {
+    position: static !important;
+    width: 100%;
+    float: none;
+    overflow: hidden; }
+    .share-bar ul {
+      width: 100%; }
+      .share-bar ul li {
+        width: 100px;
+        float: left;
+        margin-left: 1.4%; } }
 input[type="checkbox"] {
   display: none; }
 
@@ -5380,6 +5406,10 @@ header.colophon {
     overflow: visible;
     margin-bottom: 35px;
     cursor: pointer; }
+    .idea-stories .related-items .grid-box .wrap {
+      width: 100%; }
+    .idea-stories .related-items .grid-box img {
+      width: 100%; }
     .idea-stories .related-items .grid-box .author {
       position: absolute;
       bottom: -32px;

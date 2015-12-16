@@ -27,16 +27,7 @@
 
         <div class="container full-620 main-container fixed-sm">
             <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-                <aside class="share-bar sticks-on-scroll">
-                    <ul>
-                        <li class="fb"><a href="#">55</a></li>
-                        <li class="twi"><a href="#">120</a></li>
-                        <li class="gp"><a href="#">521</a></li>
-                        <li class="email"><a href="#">Email</a></li>
-                        <li class="heart"><a href="#">12.5</a></li>
-                        <li class="comment"><a href="#">322</a></li>
-                    </ul>
-                </aside>
+
                 <header class="story-details col-xs-3">
                     <div class="author-image-big">
                        {{ get_avatar(get_the_author_meta('ID'), '210') }}
@@ -56,8 +47,21 @@
                         </ul>
                     </div>
 
+
+
                     <!--			<span class="date">--><?php //the_time('F j, Y'); ?><!-- --><?php //the_time('g:i a'); ?><!--</span>-->
                 </header>
+
+                <aside class="share-bar sticks-on-scroll">
+                    <ul>
+                        <li class="fb"><a href="#">55</a></li>
+                        <li class="twi"><a href="#">120</a></li>
+                        <li class="gp"><a href="#">521</a></li>
+                        <li class="email"><a href="#">Email</a></li>
+                        <li class="heart"><a href="#">12.5</a></li>
+                        <li class="comment"><a href="#">322</a></li>
+                    </ul>
+                </aside>
 
                 <section class="article-content">
                     <?php the_content(); ?>
@@ -214,7 +218,7 @@
                     ?>
 <!--                </section>-->
 
-                <div class="col-xs-3 grid-box">
+                <div class="col-md-3 col-sm-4 col-xs-12 grid-box">
                     <div class="wrap">
                         <img class="img-responsive" src="/assets/images/dummies/box-image-dummy.png">
                         <div class="color-overlay">
@@ -222,7 +226,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-xs-3 grid-box">
+                <div class="col-md-3  col-sm-4 col-xs-12 grid-box">
                     <div class="wrap">
                         <img class="img-responsive" src="/assets/images/dummies/box-image-dummy.png">
                         <div class="color-overlay">
@@ -230,7 +234,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-xs-3 grid-box">
+                <div class="col-md-3  col-sm-4 col-xs-12 grid-box">
                     <div class="wrap">
                         <img class="img-responsive" src="/assets/images/dummies/box-image-dummy.png">
                         <div class="color-overlay">
@@ -238,7 +242,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-xs-3 grid-box">
+                <div class="col-md-3  hidden-sm hidden-xs grid-box">
                     <div class="wrap">
                         <img class="img-responsive" src="/assets/images/dummies/box-image-dummy.png">
                         <div class="color-overlay">
@@ -253,7 +257,7 @@
             <div class="related-ideas col-xs-12">
                 <h3 class="orange">Related Ideas</h3>
 
-                <div class="col-xs-3 grid-box">
+                <div class="col-md-3  col-sm-4 col-xs-12 grid-box">
                     <div class="wrap">
                         <img class="img-responsive" src="/assets/images/dummies/box-image-dummy.png">
                         <div class="color-overlay">
@@ -262,7 +266,7 @@
                         <a class="author" href="#"></a>
                     </div>
                 </div>
-                <div class="col-xs-3 grid-box">
+                <div class="col-md-3  col-sm-4 col-xs-12 grid-box">
                     <div class="wrap">
                         <img class="img-responsive" src="/assets/images/dummies/box-image-dummy.png">
                         <div class="color-overlay">
@@ -271,7 +275,7 @@
                         <a class="author" href="#"></a>
                     </div>
                 </div>
-                <div class="col-xs-3 grid-box">
+                <div class="col-md-3  col-sm-4 col-xs-12 grid-box">
                     <div class="wrap">
                         <img class="img-responsive" src="/assets/images/dummies/box-image-dummy.png">
                         <div class="color-overlay">
@@ -280,7 +284,7 @@
                         <a class="author" href="#"></a>
                     </div>
                 </div>
-                <div class="col-xs-3 grid-box">
+                <div class="col-md-3  hidden-sm hidden-xs grid-box">
                     <div class="wrap">
                         <img class="img-responsive" src="/assets/images/dummies/box-image-dummy.png">
                         <div class="color-overlay">
