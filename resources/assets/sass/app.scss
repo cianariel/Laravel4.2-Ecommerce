@@ -55,6 +55,24 @@ $tarmac: #3D4B4E;
 
 // ELEMENTS
 
+//::-webkit-input-placeholder {
+//  color: red;
+//}
+//
+//:-moz-placeholder { /* Firefox 18- */
+//  color: red;
+//}
+//
+//::-moz-placeholder {  /* Firefox 19+ */
+//  color: red;
+//}
+//
+//:-ms-input-placeholder {
+//  color: red;
+//}
+
+
+
 button{
   -webkit-appearance: none;
   -moz-appearance:    none;
@@ -1455,12 +1473,98 @@ header.colophon{
 
   .comments{
 
+    h4{
+      margin-bottom: 80px;
+    }
+
     .single-comment{
       min-height: 100%;
       overflow: hidden;
+      color: $light-grey;
+
+
 
       .comment-author{
         text-align: center;
+      }
+    }
+
+    .add-comment{
+      margin-top: 35px;
+    }
+
+    .comment-controls{
+      .add-photo{
+        color: darken($light-grey, 10%);
+      }
+
+      .btn-info{
+        width: 100px;
+      }
+    }
+
+    datetime{
+      font-size: 1rem;
+    }
+
+  }
+
+  .related-items{
+    background: $pale-grey;
+
+    h3{
+      margin-top: 35px;
+      margin-bottom: 0;
+      font-size: 2rem;
+      font-weight: bold;
+      text-align: center;
+    }
+
+    .wrap{
+      position: relative;
+    }
+
+    .color-overlay{
+      display: none;
+      background: rgba(0,0,0,.5);
+      //opacity: .6;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+
+      h4{
+        position: absolute;
+        bottom: 18%;
+        left: 5%;
+        color: #fff;
+
+        a{
+          color: #fff;
+        }
+      }
+
+      &:hover{
+          display: block;
+      }
+
+
+    }
+
+    .grid-box{
+      overflow: visible;
+      margin-bottom: 35px;
+      cursor: pointer;
+
+      .author{
+        position: absolute;
+        bottom: -32px;
+        right: 26px;
+      }
+
+      &:hover .color-overlay{
+        display: block;
       }
     }
   }

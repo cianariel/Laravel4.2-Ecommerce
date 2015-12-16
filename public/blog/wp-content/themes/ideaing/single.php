@@ -85,27 +85,39 @@
 
         <section class="comments">
             <div class="container">
-                <h4>211 Responses <a class="like-counter orange" href="#">2.349</a></h4>
-
+                <h4>211 Responses <a class="like-counter orange pull-right" href="#">2.349</a></h4>
 
                 <div class="single-comment">
-                    <div class="col-xs-1 comment-author">
+                    <div class="col-xs-2 comment-author">
                         <a class="author" href="#"></a>
                         <div><b>Carrie</b></div>
                     </div>
-                    <div  class="col-xs-10">
+                    <div  class="col-xs-8">
                         <p>
                             Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur?
                         </p>
-                        <p>August 2015</p>
+                        <datetime>August 2015</datetime>
                     </div>
                     <button  class="btn btn-white like helpful col-xs-1">
                         Helpful
                     </button>
                 </div>
 
-                <a href="#" class="add-photo">Add a photo</a>
-                <button class="btn btn-info">Post</button>
+                <section class="add-comment">
+                    <div class="single-comment">
+                        <div class="col-xs-2 comment-author">
+                            <a class="author" href="#"></a>
+                        </div>
+                        <div  class="col-xs-10">
+                            <textarea class="form-control" name="comment" id="you-comment" placeholder="What are you working on..."></textarea>
+                        </div>
+                    </div>
+
+                    <div class="col-xs-3 pull-right comment-controls">
+                        <a href="#" class="add-photo">Add a photo</a>
+                        <button class="btn btn-info">Post</button>
+                    </div>
+                </section>
             </div>
         </section>
 
@@ -131,11 +143,11 @@
 
 	<?php endif; ?>
 
-    <section class="related-products">
+    <section class="related-items">
         <div class="container full-620 fixed-sm">
 
             <div class="related-products  col-xs-12">
-                <h3>Related Products</h3>
+                <h3 class="green">Related Products</h3>
 
 <!--                <section class="col-sm-12 related-stories">-->
 
@@ -204,84 +216,79 @@
 <!--                </section>-->
 
                 <div class="col-xs-3 grid-box">
-                    <a href="#">
-                            <img class="img-responsive" src="/assets/images/dummies/box-image-dummy.png">
-                                <h4>Mr Coffee smart</h4>
-                                <b>Wifi-Enabled</b>
-                                    <div class="circle-3">
-                                        <div class="circle-2">
-                                            <div class="circle-1">Get it</div>
-                                        </div>
-                                    </div>
-                    </a>
+                    <div class="wrap">
+                        <img class="img-responsive" src="/assets/images/dummies/box-image-dummy.png">
+                        <div class="color-overlay">
+                            <h4>Mr Coffee smart <div class="get">Get it</div></h4>
+                        </div>
+                    </div>
                 </div>
                 <div class="col-xs-3 grid-box">
-                    <a href="#">
-                            <img class="img-responsive" src="/assets/images/dummies/box-image-dummy.png">
-                                <h4>Mr Coffee smart</h4>
-                                <b>Wifi-Enabled</b>
-                                    <div class="circle-3">
-                                        <div class="circle-2">
-                                            <div class="circle-1">Get it</div>
-                                        </div>
-                                    </div>
-                    </a>
+                    <div class="wrap">
+                        <img class="img-responsive" src="/assets/images/dummies/box-image-dummy.png">
+                        <div class="color-overlay">
+                            <h4>Mr Coffee smart <div class="get">Get it</div></h4>
+                        </div>
+                    </div>
                 </div>
                 <div class="col-xs-3 grid-box">
-                    <a href="#">
-                            <img class="img-responsive" src="/assets/images/dummies/box-image-dummy.png">
-                                <h4>Mr Coffee smart</h4>
-                                <b>Wifi-Enabled</b>
-                                    <div class="circle-3">
-                                        <div class="circle-2">
-                                            <div class="circle-1">Get it</div>
-                                        </div>
-                                    </div>
-                    </a>
+                    <div class="wrap">
+                        <img class="img-responsive" src="/assets/images/dummies/box-image-dummy.png">
+                        <div class="color-overlay">
+                            <h4>Mr Coffee smart <div class="get">Get it</div></h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-3 grid-box">
+                    <div class="wrap">
+                        <img class="img-responsive" src="/assets/images/dummies/box-image-dummy.png">
+                        <div class="color-overlay">
+                            <h4>Mr Coffee smart <div class="get">Get it</div></h4>
+                        </div>
+                    </div>
                 </div>
 
 
             </div>
 
             <div class="related-ideas col-xs-12">
-                <h3>Related Ideas</h3>
-
+                <h3 class="orange">Related Ideas</h3>
 
                 <div class="col-xs-3 grid-box">
-                    <a href="#">
+                    <div class="wrap">
                         <img class="img-responsive" src="/assets/images/dummies/box-image-dummy.png">
-                        <h4>Mr Coffee smart</h4>
-                        <b>Wifi-Enabled</b>
-                        <div class="circle-3">
-                            <div class="circle-2">
-                                <div class="circle-1">Get it</div>
-                            </div>
+                        <div class="color-overlay">
+                            <h4>Mr Coffee smart</h4>
                         </div>
-                    </a>
+                        <a class="author" href="#"></a>
+                    </div>
                 </div>
                 <div class="col-xs-3 grid-box">
-                    <a href="#">
+                    <div class="wrap">
                         <img class="img-responsive" src="/assets/images/dummies/box-image-dummy.png">
-                        <h4>Mr Coffee smart</h4>
-                        <b>Wifi-Enabled</b>
-                        <div class="circle-3">
-                            <div class="circle-2">
-                                <div class="circle-1">Get it</div>
-                            </div>
+                        <div class="color-overlay">
+                            <h4>Mr Coffee smart</h4>
                         </div>
-                    </a>
+                        <a class="author" href="#"></a>
+                    </div>
                 </div>
                 <div class="col-xs-3 grid-box">
-                    <a href="#">
+                    <div class="wrap">
                         <img class="img-responsive" src="/assets/images/dummies/box-image-dummy.png">
-                        <h4>Mr Coffee smart</h4>
-                        <b>Wifi-Enabled</b>
-                        <div class="circle-3">
-                            <div class="circle-2">
-                                <div class="circle-1">Get it</div>
-                            </div>
+                        <div class="color-overlay">
+                            <h4>Mr Coffee smart</h4>
                         </div>
-                    </a>
+                        <a class="author" href="#"></a>
+                    </div>
+                </div>
+                <div class="col-xs-3 grid-box">
+                    <div class="wrap">
+                        <img class="img-responsive" src="/assets/images/dummies/box-image-dummy.png">
+                        <div class="color-overlay">
+                            <h4>Mr Coffee smart</h4>
+                        </div>
+                        <a class="author" href="#"></a>
+                    </div>
                 </div>
 
             </div>
