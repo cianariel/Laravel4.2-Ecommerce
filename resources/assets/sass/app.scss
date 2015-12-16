@@ -192,7 +192,6 @@ nav{
   min-height: 650px;
   float: left;
 
-
   .hero-background{
     background-image: url('/assets/images/landing-hero-3.jpg');
     background-size: cover;
@@ -212,6 +211,10 @@ nav{
     position: absolute;
     width: 100%;
     height: 100%;
+  }
+
+  & > .container{
+    padding-top: 100px;
   }
 
 }
@@ -254,10 +257,11 @@ form{
 
   .get{
       display: inline-block;
+    vertical-align: middle;
     width: 65px;
     overflow: hidden;
     padding: 2px 12px;
-    margin: 0 7px  -5px;
+    margin: 0 7px  5px;
       border: 2px solid $iridium;
       color: $iridium;
       background: transparent;
@@ -776,6 +780,7 @@ form{
 
 
 header.colophon{
+  overflow: hidden;
  #top-nav{
    .signin a{
      padding-left: 40px;
@@ -854,18 +859,10 @@ header.colophon{
 //
 
 #mid-nav{
-  margin-bottom: 100px;
+  //margin-bottom: 100px;
   min-height: 47px;
-  //background: rgba(0,0,0,.45);
   background: #ED1E47;
-  //ul{
-  //  overflow: visible;
-  //
-  //  li{
-  //    overflow: hidden;
-  //    display: inline-block;
-  //  }
-  //}
+
 
   ul.wrap{
     position: relative;
@@ -873,7 +870,7 @@ header.colophon{
   }
   a{
     //margin: 15px 30px;
-    margin-top: 8px;
+    margin-top: 11px;
     margin-bottom: 8px;
     padding: 5px 35px;
     overflow: hidden;
@@ -918,7 +915,7 @@ header.colophon{
     //border-bottom: 3px solid #FBB03B;
     border: 2px solid #fff;
     //border-radius: 15px;
-    margin-top: 6px;
+    margin-top: 8px;
     padding: 5px 33px;
 
     background-color: #CE1F46;
@@ -1443,12 +1440,7 @@ header.colophon{
       top: 73px;
       background: #fff;
       padding: 0 40px 40px 0;
-
       border-top: 6px solid #f3f3f3;
-
-      //-webkit-box-shadow: 0px -5px 3px 0px rgba(50, 50, 50, 0.19);
-      //-moz-box-shadow:    0px -5px 3px 0px rgba(50, 50, 50, 0.19);
-      //box-shadow:         0px -5px 3px 0px rgba(50, 50, 50, 0.19);
 
       a{
         text-indent: 0;
@@ -1603,6 +1595,11 @@ header.colophon{
       -o-filter: blur(2px);
       -ms-filter: blur(2px);
       filter: blur(2px);
+    }
+
+
+    & > .container{
+      padding-top: 0;
     }
   }
 

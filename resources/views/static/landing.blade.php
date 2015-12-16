@@ -4,52 +4,6 @@
     <section id="hero" class="landing-hero">
         <div class="hero-background"></div>
         <div class="color-overlay"></div>
-        <nav id="mid-nav"  class="col-xs-12  hidden-620">
-            <div class="container full-sm fixed-sm ">
-                <ul class="wrap">
-                    <li class="selected"><a href="">All ideas</a></li>
-                    <li><a href="">Kitchen</a></li>
-                    <li><a href="">Bedroom</a></li>
-                    <li><a href="">Office</a></li>
-                    <li><a href="">Living</a></li>
-                    <li><a href="">Outdoor</a></li>
-                    <li><a href="">Lighting</a></li>
-                    <li><a href="">Decor</a></li>
-                    <li><a data-toggle=".extra-nav" class="more-link" href="">...</a></li>
-                    <li>
-                        <ul class="extra-nav hidden-xs">
-                            <li><a href="">Wallpaper</a></li>
-                            <li><a href="">Pillows</a></li>
-                            <li><a href="">Travel</a></li>
-                            <li><a href="">Wearables</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-            <div class="container mobile-menu hidden-lg hidden-md hidden-sm hidden-xs full-620  fixed-sm">
-                <ul>
-                    <li class="selected"><a href="">All ideas</a></li>
-                    <li><a href="">Kitchen</a></li>
-                    <li><a href="">Bath</a></li>
-                    <li><a class="nested" data-toggle=".mobile-more-nav" data-hide=".mobile-extra-nav" href="">More</a></li>
-
-                    <li><a class="more-link" data-toggle=".mobile-extra-nav"  data-hide=".mobile-more-nav" href="">...</a></li>
-
-                    <ul class="extra-nav mobile-extra-nav">
-                        <li><a href="">Wallpaper</a></li>
-                        <li><a href="">Pillows</a></li>
-                        <li><a href="">Travel</a></li>
-                        <li><a href="">Wearables</a></li>
-                    </ul>
-                    <ul class="extra-nav mobile-more-nav">
-                        <li><a href="">Bedroom</a></li>
-                        <li><a href="">Office</a></li>
-                        <li><a href="">Living</a></li>
-                        <li><a href="">Outdoor</a></li>
-                    </ul>
-                </ul>
-            </div>
-        </nav>
 
         <div class="container fixed-sm full-480">
             <div class="col-md-5 col-xs-6 full-620 col-md-offset-1 why-us">
@@ -323,30 +277,5 @@
             </section>
         </aside>
     </div>
-
-    <div id="myModal" class="modal col-lg-3 col-md-4 col-sm-5 col-xs-12 col-offset-md-2">
-        <div class="modal-content hero-box qiuck-signup modal-login">
-            {{--<span data-dismiss="modal" class="close-button">✖</span>--}}
-            <form>
-                <a class="btn btn-info col-xs-12" href="#"><i class="icon fb-icon"></i>Sign up with Facebook</a>
-                <div class="line-wrap modal-minor-text">or</div>
-
-                <input class="form-control"  type="text" placeholder="Email" name="email">
-                <input class="form-control" type="text" placeholder="Password" name="password">
-                <div class="modal-minor-text">
-                    <input type="checkbox" id="remember" name="remember"><label for="remember"><span></span>Remember me <b><a href="#">Forgot password?</a></b></label>
-                </div>
-
-                <a class="btn btn-success col-xs-12" href="#">Log in</a>
-
-                <div class="modal-minor-text">
-                    Don't have an account? <a href="#">Sign up</a>
-                </div>
-
-            </form>
-        </div>
-    </div>
-    <div id="overlay"></div>
-
 
 @stop
