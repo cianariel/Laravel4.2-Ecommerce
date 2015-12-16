@@ -51,6 +51,8 @@ $tarmac: #3D4B4E;
   cursor: pointer;
 }
 
+
+
 // ELEMENTS
 
 .modal{
@@ -119,6 +121,17 @@ $tarmac: #3D4B4E;
 
 .main-content{
   overflow: hidden;
+}
+
+a.author{
+  width: 64px;
+  height: 64px;
+  background: url("/assets/images/dummies/author.png") center no-repeat;
+  right: 25px;
+  bottom: 6px;
+  border: 2px solid #fff;
+  border-radius: 40px;
+  text-indent: -9999px;
 }
 
 // custom checkboxes
@@ -267,6 +280,12 @@ nav{
 
 }
 
+.logo-wrap{
+  a{
+    padding: 0;
+  }
+}
+
 #ideaing-logo{
   width: 175px;
   //height: 45px;
@@ -397,18 +416,6 @@ form{
       }
 
 
-    }
-
-
-
-    a.author{
-      width: 64px;
-      height: 64px;
-      background: url("/assets/images/dummies/author.png") center no-repeat;
-      right: 25px;
-      bottom: 6px;
-      border: 2px solid #fff;
-      border-radius: 40px;
     }
 
     .social-pic{
@@ -1118,16 +1125,6 @@ header.colophon{
       border-color: darken($facebook-blue, 10%);
     }
   }
-  //
-  //.fb-icon{
-  //  display: inline-block;
-  //  width: 25px;
-  //  height: 30px;
-  //  margin-right: 10px;
-  //  background: url("/assets/images/facebook-white.png") left no-repeat;
-  //  background-size: contain;
-  //  border-right: 1px solid #fff;
-  //}
 }
 
 .latest-heading{
@@ -1247,6 +1244,7 @@ header.colophon{
       }
       padding-left: 65px;
     }
+
   }
 
   li.active{
@@ -1287,6 +1285,45 @@ header.colophon{
       color: $sky-blue;
       background-image: url('/assets/images/photos-blue.png');
     }
+  }
+
+  .like-nav{
+    li{
+      width: 67px;
+      padding-top: 15px;
+      float: left;
+
+      &:first-child{
+        width: 85px;
+      }
+      &:last-child{
+        width: auto;
+      }
+
+
+
+      a{
+        padding-top: 15px;
+        padding-left: 0;
+
+        &.like-counter{
+          font-size: 1.7rem;
+          padding-left: 30px;
+          padding-top: 13px;
+          color: $iridium;
+          background: url("/assets/images/heart-red.png") left 14px no-repeat;
+        }
+
+        &.author{
+          width: 50px;
+          height: 48px;
+          padding: 0;
+          background-size: cover;
+        }
+
+      }
+    }
+
   }
 }
 
@@ -1861,18 +1898,10 @@ header.colophon{
 
 
   .search-bar{
-    //width: 0;
-    //padding-left: 5px;
     padding-top: 0;
 
     input{
       display: none;
-    }
-    .search-toggle{
-      //display: block !important;
-      //padding-top: 0;
-      //margin-top: -3px;
-
     }
 
     #hero-nav{
@@ -1931,9 +1960,6 @@ header.colophon{
     padding-left: 4%;
     padding-right: 4%;
 
-    //&.all-link {
-    //  background-position: 6px top !important;
-    //}
     &.photos-link {
       padding-left: 21px;
     }
@@ -1953,19 +1979,6 @@ header.colophon{
       width: 170px;
     }
  }
-
-  //
-  //.category-menu{
-  //  width: 122px !important;
-  //}
-
-  //#mid-nav {
-  //  a {
-  //    padding-left: 2%;
-  //    padding-right: 2%;
-  //    font-size: 1.2rem;
-  //  }
-  //}
 
   #hero-nav a {
     padding-left: 2%;

@@ -4448,6 +4448,16 @@ a.label:focus {
 .main-content {
   overflow: hidden; }
 
+a.author {
+  width: 64px;
+  height: 64px;
+  background: url("/assets/images/dummies/author.png") center no-repeat;
+  right: 25px;
+  bottom: 6px;
+  border: 2px solid #fff;
+  border-radius: 40px;
+  text-indent: -9999px; }
+
 input[type="checkbox"] {
   display: none; }
 
@@ -4547,6 +4557,9 @@ nav a {
   #hero > .container {
     padding-top: 100px; }
 
+.logo-wrap a {
+  padding: 0; }
+
 #ideaing-logo {
   width: 175px; }
   #ideaing-logo.top-logo {
@@ -4635,14 +4648,6 @@ form .btn {
             width: 108px;
             height: 106px;
             padding: 5%; }
-    .grid-box .img-wrap a.author {
-      width: 64px;
-      height: 64px;
-      background: url("/assets/images/dummies/author.png") center no-repeat;
-      right: 25px;
-      bottom: 6px;
-      border: 2px solid #fff;
-      border-radius: 40px; }
     .grid-box .img-wrap .social-pic {
       width: 40px;
       height: 40px;
@@ -5169,6 +5174,28 @@ header.colophon {
   #hero-nav li.active a.photos-link {
     color: #00B1FF;
     background-image: url("/assets/images/photos-blue.png"); }
+  #hero-nav .like-nav li {
+    width: 67px;
+    padding-top: 15px;
+    float: left; }
+    #hero-nav .like-nav li:first-child {
+      width: 85px; }
+    #hero-nav .like-nav li:last-child {
+      width: auto; }
+    #hero-nav .like-nav li a {
+      padding-top: 15px;
+      padding-left: 0; }
+      #hero-nav .like-nav li a.like-counter {
+        font-size: 1.7rem;
+        padding-left: 30px;
+        padding-top: 13px;
+        color: #FF0042;
+        background: url("/assets/images/heart-red.png") left 14px no-repeat; }
+      #hero-nav .like-nav li a.author {
+        width: 50px;
+        height: 48px;
+        padding: 0;
+        background-size: cover; }
 
 .idea-stories .article-content p {
   color: #757575; }

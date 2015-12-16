@@ -10,10 +10,17 @@
         </section>
         <nav id="hero-nav" class="col-sm-12">
             <div class="container full-620  fixed-sm">
-                <ul class="left-nav  hidden-620">
+                <ul class="left-nav hidden-620">
                     <li class="col-xs-2"><a class="home-link" href="">Home</a></li>
-                    <li class="col-xs-2 active"><a href="" class="kitchen-link">Kitchen</a></li>
-                    <li class="col-xs-2 "><a href="" class="ideas-link">Ideas</a></li>
+                    <li class="col-xs-2"><a href="" class="kitchen-link">Kitchen</a></li>
+                    <li class="col-xs-2 active"><a href="" class="ideas-link">Ideas</a></li>
+                </ul>
+                <ul class="like-nav hidden-620 pull-right">
+                    <li><a class="like-counter" href="#">189</a></li>
+                    <li><a class="author" href="#"></a></li>
+                    <li><a class="author" href="#"></a></li>
+                    <li><a class="author" href="#"></a></li>
+                    <li><a class="likes" href="#">and 186 others</a></li>
                 </ul>
             </div>
         </nav>
