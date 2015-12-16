@@ -28,19 +28,20 @@
         <div class="container full-620 main-container fixed-sm">
             <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 
-                <header class="story-details">
+                <header class="story-details col-xs-3">
                     <div class="author-image-big">
                        {{ get_avatar(get_the_author_meta('ID'), '210') }}
                     </div>
-                    <div class="author-name">
-                        {{ the_author_meta('first_name') }} {{ the_author_meta('last_name') }}
-                    </div>
-                    <div> Reporter: @nytimes & @NYTmag</div>
+                    <h4 class="author-name">
+                        <span>{{ the_author_meta('first_name') }} {{ the_author_meta('last_name') }}</span>
+                        <a class="like-counter" href="#">189</a>
+                    </h4>
+                    <div class="about-author"> Reporter: @nytimes & @NYTmag</div>
                     <div class="content-tags">
                         <ul>
-                            <li>12 Ideas</li>
-                            <li>95 Products</li>
-                            <li>255 photos</li>
+                            <li><a href="#" class="ideas-link">12 Ideas</a></li>
+                            <li><a href="#" class="products-link">95 Products</a></li>
+                            <li><a href="#" class="photos-link">255 photos</a></li>
                         </ul>
                     </div>
                     <!--			<span class="date">--><?php //the_time('F j, Y'); ?><!-- --><?php //the_time('g:i a'); ?><!--</span>-->

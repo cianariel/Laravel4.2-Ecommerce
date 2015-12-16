@@ -123,16 +123,55 @@ $tarmac: #3D4B4E;
   overflow: hidden;
 }
 
-a.author{
-  width: 64px;
-  height: 64px;
-  background: url("/assets/images/dummies/author.png") center no-repeat;
-  right: 25px;
-  bottom: 6px;
-  border: 2px solid #fff;
-  border-radius: 40px;
-  text-indent: -9999px;
+a{ // Custom Link Styles
+
+  &.author{
+    width: 64px;
+    height: 64px;
+    background: url("/assets/images/dummies/author.png") center no-repeat;
+    border: 2px solid #fff;
+    border-radius: 40px;
+    text-indent: -9999px;
+  }
+
+  &.like-counter{
+    height: 25px;
+    display: inline-block;
+    font-size: 1.7rem;
+    padding-left: 30px;
+    color: $iridium;
+    background: url("/assets/images/heart-red.png") left top no-repeat;
+  }
+
+  &.ideas-link{
+    color: $dark-orange;
+    background-image: url("/assets/images/lamp-orange.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+
+  &.products-link{
+    color: $pine-green;
+    background-image: url("/assets/images/bag-green-big.png");
+
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+
+  &.photos-link{
+    color: $sky-blue;
+    background-image: url("/assets/images/photos-blue.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+
+
+
 }
+
+
+
+
 
 // custom checkboxes
 
@@ -1307,11 +1346,11 @@ header.colophon{
         padding-left: 0;
 
         &.like-counter{
-          font-size: 1.7rem;
+          height: 40px;
           padding-left: 30px;
           padding-top: 13px;
           color: $iridium;
-          background: url("/assets/images/heart-red.png") left 14px no-repeat;
+          background-position: left 14px;
         }
 
         &.author{
@@ -1339,6 +1378,39 @@ header.colophon{
     img{
       width: 100%;
       border: 1px solid #eee;
+    }
+  }
+
+  .story-details{
+    float: none;
+    margin: 0 auto;
+    padding: 0;
+    text-align: center;
+
+    h4{
+      width: 100%;
+      text-align: center;
+    }
+
+    .about-author{
+      color: darken($light-grey, 10%);
+    }
+
+    .content-tags{
+      width: 100%;
+      margin-top: 15px;
+      margin-bottom: 40px;
+      overflow: hidden;
+      a{
+        float: left;
+        padding-left: 25px;
+        padding-right: 10px;
+        font-size: 1.1rem;
+
+        &.products-link{
+          padding-left: 18px;
+        }
+      }
     }
   }
 }
@@ -1520,22 +1592,20 @@ header.colophon{
           background-size: 25px;
           background-repeat: no-repeat;
         }
-        &.ideas-link{
-          color: $dark-orange;
-          background-image: url("/assets/images/lamp-orange.png");
-        }
-
+        //&.ideas-link{
+        //  color: $dark-orange;
+        //  background-image: url("/assets/images/lamp-orange.png");
+        //}
+        //
         &.products-link{
-          color: $pine-green;
-          background-image: url("/assets/images/bag-green-big.png");
           background-size: 20px;
           background-position: 45px center;
         }
-
-        &.photos-link{
-          color: $sky-blue;
-          background-image: url("/assets/images/photos-blue.png");
-        }
+        //
+        //&.photos-link{
+        //  color: $sky-blue;
+        //  background-image: url("/assets/images/photos-blue.png");
+        //}
 
         &.rooms-link{
           color: $tarmac;
