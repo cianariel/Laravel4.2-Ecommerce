@@ -61,7 +61,26 @@
             return true;
         });
 
-	});
+        // scroll and stick the share bar
+        function sticky_relocate() {
+            var window_top = $(window).scrollTop();
+            var div_top = $('#sticky-anchor').offset().top;
+            if (window_top > div_top) {
+                $('.sticks-on-scroll').addClass('stick');
+            } else {
+                $('.sticks-on-scroll').removeClass('stick');
+            }
+        }
+
+        $(function () {
+            $(window).scroll(sticky_relocate);
+            sticky_relocate();
+        });
+
+
+
+
+	}); // global function()
 
 })(jQuery, this);
 

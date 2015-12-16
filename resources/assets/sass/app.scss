@@ -182,6 +182,11 @@ a{ // Custom Link Styles
     padding-left: 30px;
     color: $iridium;
     background: url("/assets/images/heart-red.png") left top no-repeat;
+
+    &.orange{
+      padding-left: 35px;
+      background: url("/assets/images/heart-orange.png") 0 top no-repeat;
+    }
   }
 
   &.ideas-link{
@@ -210,7 +215,72 @@ a{ // Custom Link Styles
 
 }
 
+.share-bar{
+  width: 100px;
+  position: absolute;
+  left: 9%;
+  top: 31.8%;
+  text-align: center;
 
+  &.stick{
+    position: fixed;
+    top: 31.8%;
+  }
+  //
+
+  li{
+    width: 100%;
+    height: 35px;
+    margin-bottom: 3px;
+    padding-top: 8px;
+    padding-bottom: 15px;
+    border-radius: 4px;
+    background-position: 5px center;
+    background-repeat: no-repeat;
+
+    &.fb{
+      background-color: $sky-blue;
+      background-image: url("/assets/images/fb-white-small.png");
+    }
+    &.twi{
+      background-color: $facebook-blue;
+      background-image: url("/assets/images/twi-white-small.png");
+    }
+    &.gp{
+      background-color: $iridium;
+      background-image: url("/assets/images/gp-white-small.png");
+    }
+    &.email{
+      background-color: $light-grey;
+      background-image: url("/assets/images/email-white-small.png");
+      background-position: 5px 8px;
+    }
+    &.heart{
+      background-image: url("/assets/images/heart-red.png");
+      background-size: 19px;
+    }
+    &.comment{
+      background-image: url("/assets/images/chat-blue-outline.png");
+      background-size: 19px;
+    }
+
+    &.heart,
+    &.comment{
+      background-color: #fff;
+      background-position: 8px 10px;
+      border: 1px solid $light-grey;
+
+      a{
+        color: $light-grey;
+      }
+    }
+
+
+    a{
+      color: #fff;
+    }
+  }
+}
 
 
 
@@ -1412,6 +1482,11 @@ header.colophon{
 
 .idea-stories{
 
+  //article.post{
+  //  position: relative;
+  //  overflow: visible;
+  //}
+
   .article-content{
     p{
       color: darken($light-grey, 30%);
@@ -1482,20 +1557,37 @@ header.colophon{
       overflow: hidden;
       color: $light-grey;
 
-
-
       .comment-author{
         text-align: center;
+      }
+      b{
+        color: $tarmac;
+      }
+      .btn-white{
+        background: url("/assets/images/heart-grey-outline.png") 5px center no-repeat;
+        padding-left: 25px;
+
       }
     }
 
     .add-comment{
       margin-top: 35px;
+
+      textarea{
+        min-height: 100px;
+      }
     }
 
     .comment-controls{
+      width: 250px;
+      margin-top: 10px;
+      //padding-left: 57px;
       .add-photo{
         color: darken($light-grey, 10%);
+        background: url("/assets/images/camera-grey.png") 5px center no-repeat;
+        padding-left: 40px;
+        margin-right: 17px;
+
       }
 
       .btn-info{
@@ -1507,9 +1599,23 @@ header.colophon{
       font-size: 1rem;
     }
 
+    //.field-wrap{
+    //  padding: 10px 10px 20px;
+    //  border: 1px solid #ccc;
+    //  border-radius: 3px;
+    //  //margin-bottom: ;
+    //
+    //  &::before{
+    //    //content: '◀';
+    //    padding-left: 7px;
+    //    border: 1px solid red;
+    //  }
+    //}
+
   }
 
   .related-items{
+    margin-top: 100px;
     background: $pale-grey;
 
     h3{

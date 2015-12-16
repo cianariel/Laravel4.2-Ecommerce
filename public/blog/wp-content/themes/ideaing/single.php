@@ -27,12 +27,23 @@
 
         <div class="container full-620 main-container fixed-sm">
             <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-
+                <aside class="share-bar sticks-on-scroll">
+                    <ul>
+                        <li class="fb"><a href="#">55</a></li>
+                        <li class="twi"><a href="#">120</a></li>
+                        <li class="gp"><a href="#">521</a></li>
+                        <li class="email"><a href="#">Email</a></li>
+                        <li class="heart"><a href="#">12.5</a></li>
+                        <li class="comment"><a href="#">322</a></li>
+                    </ul>
+                </aside>
                 <header class="story-details col-xs-3">
                     <div class="author-image-big">
                        {{ get_avatar(get_the_author_meta('ID'), '210') }}
                     </div>
                     <h4 class="author-name">
+                        <div id="sticky-anchor"></div>
+
                         <span>{{ the_author_meta('first_name') }} {{ the_author_meta('last_name') }}</span>
                         <a class="like-counter" href="#">189</a>
                     </h4>
@@ -44,6 +55,7 @@
                             <li><a href="#" class="photos-link">255 photos</a></li>
                         </ul>
                     </div>
+
                     <!--			<span class="date">--><?php //the_time('F j, Y'); ?><!-- --><?php //the_time('g:i a'); ?><!--</span>-->
                 </header>
 
@@ -92,7 +104,7 @@
                         <a class="author" href="#"></a>
                         <div><b>Carrie</b></div>
                     </div>
-                    <div  class="col-xs-8">
+                    <div  class="col-xs-9">
                         <p>
                             Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur?
                         </p>
@@ -108,23 +120,17 @@
                         <div class="col-xs-2 comment-author">
                             <a class="author" href="#"></a>
                         </div>
-                        <div  class="col-xs-10">
+                        <div  class="col-xs-10 field-wrap">
                             <textarea class="form-control" name="comment" id="you-comment" placeholder="What are you working on..."></textarea>
+                            <div class="pull-right comment-controls">
+                                <a href="#" class="add-photo">Add a photo</a>
+                                <button class="btn btn-info">Post</button>
+                            </div>
                         </div>
-                    </div>
-
-                    <div class="col-xs-3 pull-right comment-controls">
-                        <a href="#" class="add-photo">Add a photo</a>
-                        <button class="btn btn-info">Post</button>
                     </div>
                 </section>
             </div>
         </section>
-
-
-
-
-
 
 
 		<!-- /article -->
@@ -133,19 +139,12 @@
 
 	<?php else: ?>
 
-		<!-- article -->
-		<article>
 
-			<h1><?php _e( 'Sorry, nothing to display.', 'html5blank' ); ?></h1>
-
-		</article>
-		<!-- /article -->
 
 	<?php endif; ?>
 
     <section class="related-items">
         <div class="container full-620 fixed-sm">
-
             <div class="related-products  col-xs-12">
                 <h3 class="green">Related Products</h3>
 
@@ -295,5 +294,7 @@
 
         </div>
     </section>
+
+
 
 <?php get_footer(); ?>

@@ -4478,6 +4478,9 @@ a.like-counter {
   padding-left: 30px;
   color: #FF0042;
   background: url("/assets/images/heart-red.png") left top no-repeat; }
+  a.like-counter.orange {
+    padding-left: 35px;
+    background: url("/assets/images/heart-orange.png") 0 top no-repeat; }
 a.ideas-link {
   color: #FF7F00;
   background-image: url("/assets/images/lamp-orange.png");
@@ -4493,6 +4496,52 @@ a.photos-link {
   background-image: url("/assets/images/photos-blue.png");
   background-repeat: no-repeat;
   background-size: contain; }
+
+.share-bar {
+  width: 100px;
+  position: absolute;
+  left: 9%;
+  top: 31.8%;
+  text-align: center; }
+  .share-bar.stick {
+    position: fixed;
+    top: 31.8%; }
+  .share-bar li {
+    width: 100%;
+    height: 35px;
+    margin-bottom: 3px;
+    padding-top: 8px;
+    padding-bottom: 15px;
+    border-radius: 4px;
+    background-position: 5px center;
+    background-repeat: no-repeat; }
+    .share-bar li.fb {
+      background-color: #00B1FF;
+      background-image: url("/assets/images/fb-white-small.png"); }
+    .share-bar li.twi {
+      background-color: #079DD1;
+      background-image: url("/assets/images/twi-white-small.png"); }
+    .share-bar li.gp {
+      background-color: #FF0042;
+      background-image: url("/assets/images/gp-white-small.png"); }
+    .share-bar li.email {
+      background-color: #c1c1c1;
+      background-image: url("/assets/images/email-white-small.png");
+      background-position: 5px 8px; }
+    .share-bar li.heart {
+      background-image: url("/assets/images/heart-red.png");
+      background-size: 19px; }
+    .share-bar li.comment {
+      background-image: url("/assets/images/chat-blue-outline.png");
+      background-size: 19px; }
+    .share-bar li.heart, .share-bar li.comment {
+      background-color: #fff;
+      background-position: 8px 10px;
+      border: 1px solid #c1c1c1; }
+      .share-bar li.heart a, .share-bar li.comment a {
+        color: #c1c1c1; }
+    .share-bar li a {
+      color: #fff; }
 
 input[type="checkbox"] {
   display: none; }
@@ -5278,15 +5327,29 @@ header.colophon {
   color: #c1c1c1; }
   .idea-stories .comments .single-comment .comment-author {
     text-align: center; }
+  .idea-stories .comments .single-comment b {
+    color: #3D4B4E; }
+  .idea-stories .comments .single-comment .btn-white {
+    background: url("/assets/images/heart-grey-outline.png") 5px center no-repeat;
+    padding-left: 25px; }
 .idea-stories .comments .add-comment {
   margin-top: 35px; }
-.idea-stories .comments .comment-controls .add-photo {
-  color: #a8a8a8; }
-.idea-stories .comments .comment-controls .btn-info {
-  width: 100px; }
+  .idea-stories .comments .add-comment textarea {
+    min-height: 100px; }
+.idea-stories .comments .comment-controls {
+  width: 250px;
+  margin-top: 10px; }
+  .idea-stories .comments .comment-controls .add-photo {
+    color: #a8a8a8;
+    background: url("/assets/images/camera-grey.png") 5px center no-repeat;
+    padding-left: 40px;
+    margin-right: 17px; }
+  .idea-stories .comments .comment-controls .btn-info {
+    width: 100px; }
 .idea-stories .comments datetime {
   font-size: 1rem; }
 .idea-stories .related-items {
+  margin-top: 100px;
   background: #F2F5F5; }
   .idea-stories .related-items h3 {
     margin-top: 35px;
