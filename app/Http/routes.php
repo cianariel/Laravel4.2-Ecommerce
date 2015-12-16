@@ -74,4 +74,6 @@
     Route::get('category/{identity?}','ProductCategoryController@showProductInCategoryName');
 
 
+// Admin Route
 
+ Route::get('admin','AdminController@index');
