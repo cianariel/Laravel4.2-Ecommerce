@@ -1388,22 +1388,27 @@ header.colophon{
   ul{
     overflow: visible;
   }
+
+  li{
+    width: 110px;
+  }
   a{
     color: $iridium;
     text-transform: none;
     text-align: right;
-    padding-left: 55px;
+    padding-left: 35px;
     background-position: left;
     background-repeat: no-repeat;
     color: $tarmac;
 
     &.home-link{
-      background-image: url('/assets/images/house-grey.png');
-      background-position: left 10px;
+      background-image: url('/assets/images/house-outline.png');
 
       &:hover{
         color: $iridium;
         background-image: url('/assets/images/house-pink.png');
+        background-position: -15px 10px;
+
       }
     }
     &.all-link{
@@ -1418,11 +1423,14 @@ header.colophon{
     }
     &.ideas-link{
       background-image: url('/assets/images/lamp-grey.png');
-
+      background-size: 25px;
+      background-position: 0 22px;
+      //padding-top: 6px;
       &:hover{
         color: $dark-orange;
         background-image: url('/assets/images/lamp-orange.png');
       }
+
     }
     &.products-link{
       background-image: url('/assets/images/bag-grey-big.png');
@@ -1441,6 +1449,15 @@ header.colophon{
       }
       padding-left: 65px;
     }
+    &.kitchen-link{
+      background-image: url('/assets/images/pot-outline.png');
+
+      //&:hover{
+      //  color: $sky-blue;
+      //  background-image: url('/assets/images/photos-blue.png');
+      //}
+      //padding-left: 65px;
+    }
 
   }
 
@@ -1448,8 +1465,8 @@ header.colophon{
     a:not(.home-link)::after{
       content: '▲';
       font-size: 1.7rem;
-      position: relative;
-      bottom: -28px;
+      position: absolute;
+      bottom: -10px;
       right: 58px;
       color: #fff;
       text-shadow:
@@ -1487,7 +1504,7 @@ header.colophon{
   .like-nav{
     li{
       width: 67px;
-      padding-top: 15px;
+      padding-top: 9px;
       float: left;
 
       &:first-child{

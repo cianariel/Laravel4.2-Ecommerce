@@ -5224,20 +5224,22 @@ header.colophon {
   border-bottom: 1px solid #d5dfdf; }
   #hero-nav ul {
     overflow: visible; }
+  #hero-nav li {
+    width: 110px; }
   #hero-nav a {
     color: #FF0042;
     text-transform: none;
     text-align: right;
-    padding-left: 55px;
+    padding-left: 35px;
     background-position: left;
     background-repeat: no-repeat;
     color: #3D4B4E; }
     #hero-nav a.home-link {
-      background-image: url("/assets/images/house-grey.png");
-      background-position: left 10px; }
+      background-image: url("/assets/images/house-outline.png"); }
       #hero-nav a.home-link:hover {
         color: #FF0042;
-        background-image: url("/assets/images/house-pink.png"); }
+        background-image: url("/assets/images/house-pink.png");
+        background-position: -15px 10px; }
     #hero-nav a.all-link {
       background-image: url("/assets/images/grid-dense-grey.png");
       margin-top: -3px; }
@@ -5245,7 +5247,9 @@ header.colophon {
         color: #FF0042;
         background-image: url("/assets/images/grid-pink.png"); }
     #hero-nav a.ideas-link {
-      background-image: url("/assets/images/lamp-grey.png"); }
+      background-image: url("/assets/images/lamp-grey.png");
+      background-size: 25px;
+      background-position: 0 22px; }
       #hero-nav a.ideas-link:hover {
         color: #FF7F00;
         background-image: url("/assets/images/lamp-orange.png"); }
@@ -5261,11 +5265,13 @@ header.colophon {
       #hero-nav a.photos-link:hover {
         color: #00B1FF;
         background-image: url("/assets/images/photos-blue.png"); }
+    #hero-nav a.kitchen-link {
+      background-image: url("/assets/images/pot-outline.png"); }
   #hero-nav li.active a:not(.home-link)::after {
     content: '▲';
     font-size: 1.7rem;
-    position: relative;
-    bottom: -28px;
+    position: absolute;
+    bottom: -10px;
     right: 58px;
     color: #fff;
     text-shadow: -1px -1px 0 #d5dfdf, 1px -1px 0 #d5dfdf, -1px 1px 0 #fff, 1px 1px 0 #fff; }
@@ -5287,7 +5293,7 @@ header.colophon {
     background-image: url("/assets/images/photos-blue.png"); }
   #hero-nav .like-nav li {
     width: 67px;
-    padding-top: 15px;
+    padding-top: 9px;
     float: left; }
     #hero-nav .like-nav li:first-child {
       width: 85px; }

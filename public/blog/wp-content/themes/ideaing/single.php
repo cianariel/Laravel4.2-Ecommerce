@@ -10,9 +10,9 @@
         <nav id="hero-nav" class="col-sm-12">
             <div class="container full-620  fixed-sm">
                 <ul class="left-nav hidden-620">
-                    <li class="col-xs-2"><a class="home-link" href="">Home</a></li>
-                    <li class="col-xs-2"><a href="" class="kitchen-link">Kitchen</a></li>
-                    <li class="col-xs-2 active"><a href="" class="ideas-link">Ideas</a></li>
+                    <li class="col-xs-1"><a class="home-link" href="">Home</a></li>
+                    <li class="col-xs-1"><a href="" class="kitchen-link">Kitchen</a></li>
+                    <li class="col-xs-1 active"><a href="" class="ideas-link">Ideas</a></li>
                 </ul>
                 <ul class="like-nav hidden-620 pull-right">
                     <li><a class="like-counter" href="#">189</a></li>
