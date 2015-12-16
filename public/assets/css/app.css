@@ -4394,6 +4394,11 @@ a.label:focus {
 [data-toggle] {
   cursor: pointer; }
 
+button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none; }
+
 .modal {
   top: 50%;
   left: 50%;
@@ -4438,6 +4443,16 @@ a.label:focus {
     background-color: #008ecc;
     border-color: #008ecc; }
 
+.btn-white {
+  background: #fff;
+  border: 1px solid #c1c1c1;
+  color: #c1c1c1;
+  font-size: 1.2rem; }
+  .btn-white.like {
+    background: url("/assets/images/like-white.png") center no-repeat; }
+  .btn-white:hover {
+    border-color: #9b9b9b; }
+
 .btn-none {
   background: transparent;
   text-align: center;
@@ -4451,6 +4466,7 @@ a.label:focus {
 a.author {
   width: 64px;
   height: 64px;
+  display: inline-block;
   background: url("/assets/images/dummies/author.png") center no-repeat;
   border: 2px solid #fff;
   border-radius: 40px;
@@ -5244,6 +5260,21 @@ header.colophon {
       font-size: 1.1rem; }
       .idea-stories .story-details .content-tags a.products-link {
         padding-left: 18px; }
+.idea-stories .author-description {
+  background: #F2F5F5;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  margin: 40px 0;
+  border: 1px solid #d5dfdf; }
+  .idea-stories .author-description h4 {
+    color: #a8a8a8; }
+  .idea-stories .author-description p {
+    color: #c1c1c1; }
+.idea-stories .comments .single-comment {
+  min-height: 100%;
+  overflow: hidden; }
+  .idea-stories .comments .single-comment .comment-author {
+    text-align: center; }
 
 @media only screen and (max-width: 1200px) {
   #top-nav a {

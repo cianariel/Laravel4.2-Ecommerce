@@ -54,13 +54,19 @@
             </article>
         </div>
 
-        <section class="about-author">
-           {{ get_avatar(get_the_author_meta('ID'), '80') }}
-            <h3>About the host, {{ the_author_meta('first_name') }} {{ the_author_meta('last_name') }}</h3>
-
-            <p><?php the_author_meta( 'description' ); ?></p>
+            <section class="author-description">
+                <div class="container">
+                     <h4>About the host, {{ the_author_meta('first_name') }} {{ the_author_meta('last_name') }}</h4>
+                    <div class="col-xs-1">
+                        {{ get_avatar(get_the_author_meta('ID'), '80') }}
+                    </div>
+                    <div  class="col-xs-10">
+                        <p>
+                            <?php the_author_meta( 'description' ); ?>
+                        </p>
+                    </div>
+                </div>
             </section>
-        </section>
 
 
 <!--			<span class="comments">--><?php //if (comments_open( get_the_ID() ) ) comments_popup_link( __( 'Leave your thoughts', 'html5blank' ), __( '1 Comment', 'html5blank' ), __( '% Comments', 'html5blank' )); ?><!--</span>-->
@@ -75,9 +81,39 @@
 
 			<?php // edit_post_link(); // Always handy to have Edit Post Links available ?>
 
-			<?php comments_template(); ?>
-        <button>Add a photo</button>
-        <button>Post</button>
+<!--			--><?php //comments_template(); ?>
+
+        <section class="comments">
+            <div class="container">
+                <h4>211 Responses <a class="like-counter orange" href="#">2.349</a></h4>
+
+
+                <div class="single-comment">
+                    <div class="col-xs-1 comment-author">
+                        <a class="author" href="#"></a>
+                        <div><b>Carrie</b></div>
+                    </div>
+                    <div  class="col-xs-10">
+                        <p>
+                            Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur?
+                        </p>
+                        <p>August 2015</p>
+                    </div>
+                    <button  class="btn btn-white like helpful col-xs-1">
+                        Helpful
+                    </button>
+                </div>
+
+                <a href="#" class="add-photo">Add a photo</a>
+                <button class="btn btn-info">Post</button>
+            </div>
+        </section>
+
+
+
+
+
+
 
 		<!-- /article -->
 
@@ -98,74 +134,74 @@
     <section class="related-products">
         <div class="container full-620 fixed-sm">
 
-            <div class="related-products">
+            <div class="related-products  col-xs-12">
                 <h3>Related Products</h3>
 
-                <section class="col-sm-12 related-stories">
+<!--                <section class="col-sm-12 related-stories">-->
 
                     <?php
                     //Get 3 posts with similar tags. If there are no tags, get any 3 posts
-
-                    $args= [
-                        'post__not_in' => array($post->ID),
-                        'posts_per_page'=> 3,
-                        'caller_get_posts'=> 1
-                    ];
-
-                    $tags = wp_get_post_tags($post->ID);
-                    if($tags) {
-                        $first_tag = $tags[0]->term_id;
-                        $args['tag__in'] = [$first_tag];
-                    }
-                    $my_query = new WP_Query($args);
-
-                    //                    if($tags && !$my_query->have_posts() ){ // if there are not posts with similar tags, get just any posts
-                    unset($args['tag__in']);
-                    $my_query = new WP_Query($args);
-                    //                    }
-
-                    if( $my_query->have_posts() ) {
-                        while ($my_query->have_posts()) : $my_query->the_post(); ?>
-                            <div class="<div class="col-xs-3 grid-box">
-                                <?php
-                                echo '<a href="';
-                                the_permalink() ;
-                                echo '" title="';
-                                the_title_attribute();
-                                echo '">';
-
-                                if ( has_post_thumbnail() ){
-                                    echo  '<div class="img-wrap">';
-                                     the_post_thumbnail('medium',['class' => 'thumbnail img-responsive']);
-                                    echo '<div class="thumbnail img-responsive">
-                                            <div class="circle-3">
-                                                <div class="circle-2">
-                                                     <div class="circle-1">Get it</div>
-                                                </div>
-                                             </div>
-                                        </div>';
-                                }else{
-                                    echo  '<div class="img-wrap">
-                                                <div class="thumbnail img-responsive">
-                                                    <div class="circle-3">
-                                                        <div class="circle-2">
-                                                             <div class="circle-1">Get it</div>
-                                                        </div>
-                                                     </div>
-                                            </div>';
-                                }
-                                echo '</a>';
-                                ?>
-                                <a href="<?php the_permalink() ?>">
-                                    <?php the_title(); ?>
-                                </a>
-                            </div>
-                            <?php
-                        endwhile;
-                    }
-                    wp_reset_query();
+//
+//                    $args= [
+//                        'post__not_in' => array($post->ID),
+//                        'posts_per_page'=> 3,
+//                        'caller_get_posts'=> 1
+//                    ];
+//
+//                    $tags = wp_get_post_tags($post->ID);
+//                    if($tags) {
+//                        $first_tag = $tags[0]->term_id;
+//                        $args['tag__in'] = [$first_tag];
+//                    }
+//                    $my_query = new WP_Query($args);
+//
+//                    //                    if($tags && !$my_query->have_posts() ){ // if there are not posts with similar tags, get just any posts
+//                    unset($args['tag__in']);
+//                    $my_query = new WP_Query($args);
+//                    //                    }
+//
+//                    if( $my_query->have_posts() ) {
+//                        while ($my_query->have_posts()) : $my_query->the_post(); ?>
+<!--                            <div class="<div class="col-xs-3 grid-box">-->
+<!--                                --><?php
+//                                echo '<a href="';
+//                                the_permalink() ;
+//                                echo '" title="';
+//                                the_title_attribute();
+//                                echo '">';
+//
+//                                if ( has_post_thumbnail() ){
+//                                    echo  '<div class="img-wrap">';
+//                                     the_post_thumbnail('medium',['class' => 'thumbnail img-responsive']);
+//                                    echo '<div class="thumbnail img-responsive">
+//                                            <div class="circle-3">
+//                                                <div class="circle-2">
+//                                                     <div class="circle-1">Get it</div>
+//                                                </div>
+//                                             </div>
+//                                        </div>';
+//                                }else{
+//                                    echo  '<div class="img-wrap">
+//                                                <div class="thumbnail img-responsive">
+//                                                    <div class="circle-3">
+//                                                        <div class="circle-2">
+//                                                             <div class="circle-1">Get it</div>
+//                                                        </div>
+//                                                     </div>
+//                                            </div>';
+//                                }
+//                                echo '</a>';
+//                                ?>
+<!--                                <a href="--><?php //the_permalink() ?><!--">-->
+<!--                                    --><?php //the_title(); ?>
+<!--                                </a>-->
+<!--                            </div>-->
+<!--                            --><?php
+//                        endwhile;
+//                    }
+//                    wp_reset_query();
                     ?>
-                </section>
+<!--                </section>-->
 
                 <div class="col-xs-3 grid-box">
                     <a href="#">
@@ -177,12 +213,10 @@
                                             <div class="circle-1">Get it</div>
                                         </div>
                                     </div>
-                        </div>
                     </a>
                 </div>
-                <div class="col-xs-3 grid-box full-620">
+                <div class="col-xs-3 grid-box">
                     <a href="#">
-                        <div class="img-wrap">
                             <img class="img-responsive" src="/assets/images/dummies/box-image-dummy.png">
                                 <h4>Mr Coffee smart</h4>
                                 <b>Wifi-Enabled</b>
@@ -191,12 +225,10 @@
                                             <div class="circle-1">Get it</div>
                                         </div>
                                     </div>
-                        </div>
                     </a>
                 </div>
-                <div class="col-xs-3 grid-box full-620">
+                <div class="col-xs-3 grid-box">
                     <a href="#">
-                        <div class="img-wrap">
                             <img class="img-responsive" src="/assets/images/dummies/box-image-dummy.png">
                                 <h4>Mr Coffee smart</h4>
                                 <b>Wifi-Enabled</b>
@@ -205,57 +237,55 @@
                                             <div class="circle-1">Get it</div>
                                         </div>
                                     </div>
-                        </div>
                     </a>
                 </div>
+
+
             </div>
 
-            <div class="related-ideas">
+            <div class="related-ideas col-xs-12">
                 <h3>Related Ideas</h3>
 
-                <div class="col-xs-3 grid-box full-620">
+
+                <div class="col-xs-3 grid-box">
                     <a href="#">
-                        <div class="img-wrap">
-                            <img class="img-responsive" src="/assets/images/dummies/box-image-dummy.png">
-                                <h4>Mr Coffee smart</h4>
-                                <b>Wifi-Enabled</b>
-                                    <div class="circle-3">
-                                        <div class="circle-2">
-                                            <div class="circle-1">Get it</div>
-                                        </div>
-                                    </div>
+                        <img class="img-responsive" src="/assets/images/dummies/box-image-dummy.png">
+                        <h4>Mr Coffee smart</h4>
+                        <b>Wifi-Enabled</b>
+                        <div class="circle-3">
+                            <div class="circle-2">
+                                <div class="circle-1">Get it</div>
+                            </div>
                         </div>
                     </a>
                 </div>
-                <div class="col-xs-3 grid-box full-620">
+                <div class="col-xs-3 grid-box">
                     <a href="#">
-                        <div class="img-wrap">
-                            <img class="img-responsive" src="/assets/images/dummies/box-image-dummy.png">
-                                <h4>Mr Coffee smart</h4>
-                                <b>Wifi-Enabled</b>
-                                    <div class="circle-3">
-                                        <div class="circle-2">
-                                            <div class="circle-1">Get it</div>
-                                        </div>
-                                    </div>
+                        <img class="img-responsive" src="/assets/images/dummies/box-image-dummy.png">
+                        <h4>Mr Coffee smart</h4>
+                        <b>Wifi-Enabled</b>
+                        <div class="circle-3">
+                            <div class="circle-2">
+                                <div class="circle-1">Get it</div>
+                            </div>
                         </div>
                     </a>
                 </div>
-                <div class="col-xs-3 grid-box full-620">
+                <div class="col-xs-3 grid-box">
                     <a href="#">
-                        <div class="img-wrap">
-                            <img class="img-responsive" src="/assets/images/dummies/box-image-dummy.png">
-                                <h4>Mr Coffee smart</h4>
-                                <b>Wifi-Enabled</b>
-                                    <div class="circle-3">
-                                        <div class="circle-2">
-                                            <div class="circle-1">Get it</div>
-                                        </div>
-                                    </div>
+                        <img class="img-responsive" src="/assets/images/dummies/box-image-dummy.png">
+                        <h4>Mr Coffee smart</h4>
+                        <b>Wifi-Enabled</b>
+                        <div class="circle-3">
+                            <div class="circle-2">
+                                <div class="circle-1">Get it</div>
+                            </div>
                         </div>
                     </a>
                 </div>
+
             </div>
+
         </div>
     </section>
 
