@@ -72,6 +72,8 @@
                     <li><a href="">Outdoor</a></li>
                     <li><a href="">Lighting</a></li>
                     <li><a href="">Decor</a></li>
+                    <li class="nested"><a class="extra pull">More</a></li>
+                    <li><a class="about" href="">About</a></li>
                     <li><a data-toggle=".extra-nav" class="more-link" href="">...</a></li>
                     <li>
                         <ul class="extra-nav hidden-xs">

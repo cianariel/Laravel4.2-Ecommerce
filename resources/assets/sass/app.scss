@@ -215,6 +215,13 @@ a{ // Custom Link Styles
 
 }
 
+li.nested{
+  a::after{
+    content: '	▼';
+    color: $iridium;
+  }
+}
+
 .share-bar{
   width: 100px;
   position: absolute;
@@ -1062,6 +1069,7 @@ header.colophon{
     cursor: pointer;
     a::after{
       content: '▼';
+      color: $iridium;
       padding-left: 7px;
     }
 
@@ -1080,8 +1088,11 @@ header.colophon{
 #mid-nav{
   //margin-bottom: 100px;
   min-height: 47px;
-  background: #ED1E47;
+  //background: #ED1E47;
 
+  .container{
+    border-top: 1px solid $light-grey;
+  }
 
   ul.wrap{
     position: relative;
@@ -1091,36 +1102,43 @@ header.colophon{
     //margin: 15px 30px;
     margin-top: 11px;
     margin-bottom: 8px;
-    padding: 5px 35px;
+    margin-right: 3px;
+    padding: 5px 17px;
     overflow: hidden;
     font-size: 1.2rem;
-    color: #fff;
-    border-radius: 8px;
+    color: $tarmac;
+    border-radius: 3px;
+
+
+
+    &.extra{
+      margin-left: 5%;
+    }
+
+    &.about{
+      margin-left: 7%;
+      color: lighten($tarmac, 35%);
+    }
 
     &.more-link{
       text-indent: -9999px;
-      background:url("/assets/images/dots-white.png") center no-repeat;
+      background:url("/assets/images/dots-pink.png") center no-repeat;
+      background-size: contain;
       //background-size: contain;
 
-      &:hover{
-        background:url("/assets/images/dots-pink.png") center no-repeat;
-        //background-size: contain;
-
-      }
+      //&:hover{
+      //  background:url("/assets/images/dots-pink.png") center no-repeat;
+      //  //background-size: contain;
+      //
+      //}
     }
 
-    &.nested{
-      &::after{
-        content: '	▼';
-      }
-    }
 
     &:hover{
-      border: 2px solid #fff;
-      background-color: #fff !important;
       color: $iridium;
-      margin-top: 6px;
-      padding: 5px 33px;
+      -webkit-box-shadow: 0px 0px 0px 2px $iridium;
+      -moz-box-shadow: 0px 0px 0px 2px $iridium;
+      box-shadow: 0px 0px 0px 2px $iridium;
 
     }
   }
@@ -1130,14 +1148,15 @@ header.colophon{
   }
 
   li.selected a{
-    //color: #FBB03B;
+    color: $iridium;
     //border-bottom: 3px solid #FBB03B;
-    border: 2px solid #fff;
+    -webkit-box-shadow: 0px 0px 0px 2px $iridium;
+    -moz-box-shadow: 0px 0px 0px 2px $iridium;
+    box-shadow: 0px 0px 0px 2px $iridium;
     //border-radius: 15px;
-    margin-top: 8px;
     padding: 5px 33px;
 
-    background-color: #CE1F46;
+    //background-color: #CE1F46;
   }
 }
 
@@ -1147,7 +1166,9 @@ header.colophon{
     position: absolute;
     right: 2%;
     top: 40px;
+    padding: 0;
     z-index: 10;
+    background: #fff;
 
   li{
      width: 100%;
@@ -1155,6 +1176,13 @@ header.colophon{
 
     a{
       width: 100%;
+      margin-bottom: 0 !important;
+
+      &:hover{
+        background: $iridium;
+        color: #fff !important;
+        border-radius: 0;
+      }
     }
   }
 
@@ -1389,8 +1417,31 @@ header.colophon{
     overflow: visible;
   }
 
+  .left-nav{
+    li{
+      padding-right: 15px;
+
+      &:not(:last-child)::after{
+        content: ' ';
+        display: block;
+        position: absolute;
+        left: 78%;
+        top: 32%;
+        width: 19px;
+        height: 19px;
+        background: url('/assets/images/arrow-right-black.png') center no-repeat;
+      }
+    }
+
+    a{
+      position: static;
+    }
+  }
+
   li{
-    width: 110px;
+    display: inline-block;
+    position: relative;
+    height: 65px;
   }
   a{
     color: $iridium;
@@ -1466,7 +1517,7 @@ header.colophon{
       content: '▲';
       font-size: 1.7rem;
       position: absolute;
-      bottom: -10px;
+      bottom: -12px;
       right: 58px;
       color: #fff;
       text-shadow:
