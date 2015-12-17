@@ -5088,14 +5088,14 @@ header.colophon .search-bar {
   #top-nav li.nested ul {
     display: none; }
 
-#mid-nav, .extra-nav {
+#mid-nav, #mid-nav .extra-nav {
   min-height: 47px; }
-  #mid-nav .container, .extra-nav .container {
+  #mid-nav .container {
     border-top: 1px solid #c1c1c1; }
-  #mid-nav ul.wrap, .extra-nav ul.wrap {
+  #mid-nav ul.wrap {
     position: relative;
     overflow: visible; }
-  #mid-nav a, .extra-nav a {
+  #mid-nav a, #mid-nav .extra-nav a {
     margin-top: 11px;
     margin-bottom: 8px;
     margin-right: 3px;
@@ -5104,46 +5104,58 @@ header.colophon .search-bar {
     font-size: 1.2rem;
     color: #3D4B4E;
     border-radius: 3px; }
-    #mid-nav a.extra, .extra-nav a.extra {
+    #mid-nav a.extra {
       margin-left: 5%; }
-    #mid-nav a.about, .extra-nav a.about {
+    #mid-nav a.about {
       margin-left: 7%;
       color: #93a6ab; }
-    #mid-nav a.more-link, .extra-nav a.more-link {
+    #mid-nav a.more-link {
       text-indent: -9999px;
       background: url("/assets/images/dots-pink.png") center no-repeat;
       background-size: contain; }
-    #mid-nav a:hover, .extra-nav a:hover {
+    #mid-nav a:hover {
       color: #FF0042;
       -webkit-box-shadow: 0px 0px 0px 2px #FF0042;
       -moz-box-shadow: 0px 0px 0px 2px #FF0042;
       box-shadow: 0px 0px 0px 2px #FF0042; }
-  #mid-nav li.nested, .extra-nav li.nested {
+  #mid-nav li.nested {
     position: relative; }
-  #mid-nav li.selected a, .extra-nav li.selected a {
+  #mid-nav li.selected a {
     color: #FF0042;
     -webkit-box-shadow: 0px 0px 0px 2px #FF0042;
     -moz-box-shadow: 0px 0px 0px 2px #FF0042;
     box-shadow: 0px 0px 0px 2px #FF0042; }
-
-.extra-nav {
-  display: none;
-  position: absolute;
-  right: 2%;
-  top: 40px;
-  padding: 0;
-  z-index: 10;
-  background: #fff; }
-  .extra-nav li {
-    width: 100%;
-    float: none; }
-    .extra-nav li a {
+  #mid-nav .extra-nav {
+    display: none;
+    position: absolute;
+    width: 200px;
+    right: 20%;
+    top: 40px;
+    padding: 0;
+    z-index: 10;
+    background: #fff;
+    -webkit-box-shadow: 9px -8px 27px -10px rgba(0, 0, 0, 0.43);
+    -moz-box-shadow: 9px -8px 27px -10px rgba(0, 0, 0, 0.43);
+    box-shadow: 9px -8px 27px -10px rgba(0, 0, 0, 0.43); }
+    #mid-nav .extra-nav li {
       width: 100%;
-      margin-bottom: 0 !important; }
-      .extra-nav li a:hover {
-        background: #FF0042;
-        color: #fff !important;
-        border-radius: 0; }
+      float: none; }
+      #mid-nav .extra-nav li a {
+        width: 100%;
+        margin: 0;
+        text-transform: uppercase;
+        padding: 30px 30px 25px 80px;
+        background-position: 8px center;
+        background-repeat: no-repeat;
+        border-bottom: 1px solid #c1c1c1; }
+        #mid-nav .extra-nav li a.smart-home-link {
+          background-image: url("/assets/images/smart-home.png"); }
+        #mid-nav .extra-nav li a.travel-link {
+          background-image: url("/assets/images/travel.png"); }
+        #mid-nav .extra-nav li a.wearables-link {
+          background-image: url("/assets/images/wearables.png"); }
+        #mid-nav .extra-nav li a:hover {
+          box-shadow: none; }
 
 .mobile-extra-nav,
 .mobile-more-nav {
@@ -5507,15 +5519,15 @@ header.colophon .search-bar {
   #top-nav a {
     margin-right: 3%; }
 
-  #mid-nav a, .extra-nav a {
+  #mid-nav a, #mid-nav .extra-nav a {
     padding-left: 10px;
     padding-right: 10px; }
-    #mid-nav a.more-link, .extra-nav a.more-link {
+    #mid-nav a.more-link {
       background-size: contain !important; }
-    #mid-nav a:hover, .extra-nav a:hover {
+    #mid-nav a:hover {
       background-size: contain !important; }
-  #mid-nav .extra-nav, .extra-nav .extra-nav {
-    right: 6%; }
+  #mid-nav .extra-nav {
+    right: 16%; }
 
   .why-us {
     margin-top: 0; } }
@@ -5529,9 +5541,6 @@ header.colophon .search-bar {
 
   .why-us h2 {
     font-size: 3.3rem; }
-
-  #mid-nav .extra-nav, .extra-nav .extra-nav {
-    right: 5%; }
 
   #hero-nav a {
     padding-left: 28px; }
@@ -5568,9 +5577,8 @@ header.colophon .search-bar {
     #mobile-side-filters h5 {
       display: none; }
 
-  .extra-nav {
-    top: 49px;
-    right: 23%; } }
+  #mid-nav .extra-nav {
+    right: 20%; } }
 @media only screen and (max-width: 620px) {
   .hidden-620 {
     display: none !important; }
@@ -5694,7 +5702,7 @@ header.colophon .search-bar {
   .main-content.landing {
     padding: 0 0 20px; }
 
-  #mid-nav, .extra-nav, .extra-nav {
+  #mid-nav, #mid-nav .extra-nav, .extra-nav {
     margin-bottom: 15px; }
 
   #hero {
@@ -5745,7 +5753,7 @@ header.colophon .search-bar {
       background-position: left 12px;
       background-size: 29px !important; }
 
-  #mid-nav a, .extra-nav a {
+  #mid-nav a, #mid-nav .extra-nav a {
     font-size: 1.8rem; }
 
   .grid-box {
@@ -5825,17 +5833,16 @@ header.colophon .search-bar {
     padding-right: 0px;
     margin-left: 0; }
 
-  #mid-nav a, .extra-nav a {
+  #mid-nav a, #mid-nav .extra-nav a {
     padding-left: 2.2%;
     padding-right: 2.2%;
     padding-left: 3%;
     padding-right: 2.5%;
     font-size: 1.6rem; }
-    #mid-nav a.more-link, .extra-nav a.more-link {
+    #mid-nav a.more-link {
       padding-left: 5%; }
-  #mid-nav li.selected a, .extra-nav li.selected a,
-  #mid-nav a:hover,
-  .extra-nav a:hover {
+  #mid-nav li.selected a,
+  #mid-nav a:hover {
     margin-top: 6px;
     padding-left: 1.5%;
     padding-right: 1.5%;
@@ -5876,7 +5883,7 @@ header.colophon .search-bar {
     width: 225px;
     float: right; }
 
-  #mid-nav a, .extra-nav a {
+  #mid-nav a, #mid-nav .extra-nav a {
     padding-left: 1.5%;
     padding-right: 1.5%;
     font-size: 1.5rem; }

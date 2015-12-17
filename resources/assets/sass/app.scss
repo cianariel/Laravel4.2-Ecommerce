@@ -1270,35 +1270,54 @@ header.colophon{
 
     //background-color: #CE1F46;
   }
-}
 
-.extra-nav{
-  @extend #mid-nav;
+  .extra-nav{
+    @extend #mid-nav;
     display: none;
     position: absolute;
-    right: 2%;
+    width: 200px;
+    right: 20%;
     top: 40px;
     padding: 0;
     z-index: 10;
     background: #fff;
 
-  li{
-     width: 100%;
-    float: none;
+    -webkit-box-shadow: 9px -8px 27px -10px rgba(0,0,0,0.43);
+    -moz-box-shadow: 9px -8px 27px -10px rgba(0,0,0,0.43);
+    box-shadow: 9px -8px 27px -10px rgba(0,0,0,0.43);
 
-    a{
+    li{
       width: 100%;
-      margin-bottom: 0 !important;
+      float: none;
 
-      &:hover{
-        background: $iridium;
-        color: #fff !important;
-        border-radius: 0;
+      a{
+        width: 100%;
+        margin: 0;
+        text-transform: uppercase;
+        padding:30px 30px 25px 80px;
+        background-position: 8px center;
+        background-repeat: no-repeat;
+        border-bottom: 1px solid $light-grey;
+
+        &.smart-home-link{
+          background-image: url("/assets/images/smart-home.png");
+        }
+        &.travel-link{
+          background-image: url("/assets/images/travel.png");
+        }
+        &.wearables-link{
+          background-image: url("/assets/images/wearables.png");
+        }
+        &:hover{
+          box-shadow: none;
+        }
       }
     }
-  }
 
+  }
 }
+
+
 
 .mobile-extra-nav,
 .mobile-more-nav{
@@ -1926,7 +1945,7 @@ header.colophon{
       }
     }
     .extra-nav {
-      right: 6%;
+      right: 16%;
     }
   }
 
@@ -1956,12 +1975,6 @@ header.colophon{
     font-size: 3.3rem;
   }
 
- #mid-nav{
-
-   .extra-nav {
-     right: 5%;
-   }
- }
 
   #hero-nav {
      a {
@@ -2021,10 +2034,13 @@ header.colophon{
     }
   }
 
-  .extra-nav {
-    top: 49px;
-    right: 23%;
+  #mid-nav{
+
+    .extra-nav {
+      right: 20%;
+    }
   }
+
 
 }
 

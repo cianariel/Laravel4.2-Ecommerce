@@ -71,17 +71,15 @@
                     <li><a href="">Outdoor</a></li>
                     <li><a href="">Lighting</a></li>
                     <li><a href="">Decor</a></li>
-                    <li class="nested"><a class="extra pull">More</a></li>
-                    <li><a class="about" href="">About</a></li>
-                    <li><a data-toggle=".extra-nav" class="more-link" href="">...</a></li>
-                    <li>
-                        <ul class="extra-nav hidden-xs">
-                            <li><a href="">Wallpaper</a></li>
-                            <li><a href="">Pillows</a></li>
-                            <li><a href="">Travel</a></li>
-                            <li><a href="">Wearables</a></li>
+                    <li><a data-toggle=".extra-nav" class="more-link extra" href="">...</a>
+                        <ul class="extra-nav hidden-620">
+                            <li><a class="smart-home-link pink" href="#">Smart Home</a></li>
+                            <li><a class="travel-link blue" href="#">Travel</a></li>
+                            <li><a class="wearables-link green" href="#">Wearables</a></li>
                         </ul>
                     </li>
+                    <li><a class="about" href="">About</a></li>
+
                 </ul>
             </div>
             <div class="container mobile-menu hidden-lg hidden-md hidden-sm hidden-xs full-620  fixed-sm">
