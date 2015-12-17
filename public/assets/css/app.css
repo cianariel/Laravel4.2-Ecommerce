@@ -4605,7 +4605,7 @@ input[type="checkbox"]:checked + label span {
   border: 2px solid #FF0042;
   color: #FF0042;
   background: transparent;
-  border-radius: 15px;
+  border-radius: 4px;
   text-transform: uppercase;
   font-size: 1.1rem;
   font-weight: bold; }
@@ -4697,6 +4697,68 @@ form .btn {
   margin-top: 10px;
   padding-top: 20px;
   border-radius: 3px; }
+  .grid-box:hover .color-overlay {
+    display: block; }
+  .grid-box .color-overlay {
+    display: none;
+    background: rgba(0, 0, 0, 0.5);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%; }
+    .grid-box .color-overlay h4 {
+      position: absolute;
+      bottom: 39%;
+      left: 0%;
+      color: #fff;
+      width: 100%;
+      text-align: center; }
+      .grid-box .color-overlay h4 a {
+        color: #fff; }
+    .grid-box .color-overlay b.price {
+      position: absolute;
+      right: 5px;
+      top: 5px;
+      color: #fff;
+      font-size: 4rem;
+      font-weight: normal; }
+    .grid-box .color-overlay .vendor-logo {
+      width: 100px;
+      position: absolute;
+      right: 77px;
+      top: 63px; }
+    .grid-box .color-overlay .get {
+      position: absolute;
+      right: 0px;
+      top: 63px; }
+  .grid-box .like-wrap {
+    width: 150px;
+    height: 55px;
+    margin: 0 auto; }
+    .grid-box .like-wrap a {
+      position: static;
+      float: left; }
+    .grid-box .like-wrap .social-pic {
+      width: 55px;
+      height: 29px;
+      position: static;
+      text-align: center;
+      padding-left: 40px;
+      padding-top: 3px;
+      margin-top: 20px;
+      margin-right: 17px; }
+      .grid-box .like-wrap .social-pic.comment {
+        left: 35px;
+        color: #00B1FF;
+        background: url("/assets/images/chat-blue-outline.png") 3px center no-repeat; }
+        .grid-box .like-wrap .social-pic.comment:hover {
+          background: url("/assets/images/chat-blue-solid.png") left center no-repeat; }
+      .grid-box .like-wrap .social-pic.likes {
+        color: #FF0042;
+        background: url("/assets/images/heart-pink-outline.png") left center no-repeat; }
+        .grid-box .like-wrap .social-pic.likes:hover {
+          background: url("/assets/images/heart-pink-solid.png") left center no-repeat; }
   .grid-box:not(.big-box) h3 a {
     font-size: 1.7rem; }
   .grid-box .price {
@@ -4707,20 +4769,6 @@ form .btn {
     overflow: hidden;
     border: 1px solid #eee;
     border-radius: 5px; }
-    .grid-box .img-wrap .like-wrap {
-      width: 115px;
-      height: 55px;
-      background: rgba(255, 255, 255, 0.9);
-      position: absolute;
-      bottom: -10px;
-      left: -30px;
-      padding-left: 30px;
-      padding-top: 6px;
-      padding-bottom: 18px;
-      border-radius: 20px; }
-      .grid-box .img-wrap .like-wrap a {
-        position: static;
-        float: left; }
     .grid-box .img-wrap a {
       position: absolute;
       text-indent: -9999px; }
@@ -4768,20 +4816,6 @@ form .btn {
             width: 108px;
             height: 106px;
             padding: 5%; }
-    .grid-box .img-wrap .social-pic {
-      width: 40px;
-      height: 40px;
-      left: 0;
-      bottom: 2px; }
-      .grid-box .img-wrap .social-pic.comment {
-        left: 35px;
-        background: url("/assets/images/chat-blue-outline.png") center no-repeat; }
-        .grid-box .img-wrap .social-pic.comment:hover {
-          background: url("/assets/images/chat-blue-solid.png") center no-repeat; }
-      .grid-box .img-wrap .social-pic.likes {
-        background: url("/assets/images/heart-pink-outline.png") center no-repeat; }
-        .grid-box .img-wrap .social-pic.likes:hover {
-          background: url("/assets/images/heart-pink-solid.png") center no-repeat; }
     .grid-box .img-wrap .category-tag {
       width: 55px;
       height: 64px;
@@ -5426,23 +5460,6 @@ header.colophon .search-bar {
     text-align: center; }
   .idea-stories .related-items .wrap {
     position: relative; }
-  .idea-stories .related-items .color-overlay {
-    display: none;
-    background: rgba(0, 0, 0, 0.5);
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%; }
-    .idea-stories .related-items .color-overlay h4 {
-      position: absolute;
-      bottom: 18%;
-      left: 5%;
-      color: #fff; }
-      .idea-stories .related-items .color-overlay h4 a {
-        color: #fff; }
-    .idea-stories .related-items .color-overlay:hover {
-      display: block; }
   .idea-stories .related-items .grid-box {
     overflow: visible;
     margin-bottom: 35px;

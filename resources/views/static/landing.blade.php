@@ -100,17 +100,20 @@
             <div class="col-xs-6 grid-box full-620">
                 <div class="img-wrap">
                     <img class="img-responsive" src="/assets/images/dummies/box-image-dummy.png">
-                    <a href="#" class="overlay-tag category-tag top product">Category: Products</a>
-                    <div class="like-wrap">
-                        <a href="#" class="social-pic likes">Like it</a>
-                        <a href="#" class="social-pic comment">Comment</a>
-                    </div>
+                    <div class="color-overlay">
+                        <a href="#" class="overlay-tag category-tag top product">Category: Products</a>
 
+                        <b class="price">$199</b>
+                        <img class="vendor-logo" src="/assets/images/dummies/amazon.png">
+                        <div class="get solid">Get it</div>
+                        <h4>Venetian Louge Suite</h4>
+                    </div>
                 </div>
-                <h3><a href="#">Venetian Louge Suite</a></h3>
-                <b class="price">$199</b>
-                <div class="get">Get it</div>
-                <img class="vendor-logo" src="/assets/images/dummies/amazon.png">
+                <div class="like-wrap">
+                    <a href="#" class="social-pic likes">157</a>
+                    <a href="#" class="social-pic comment">89</a>
+                </div>
+
                 {{--<ul class="box-tags">--}}
                     {{--<li class="box-tag"><a>Products</a></li>--}}
                 {{--</ul>--}}

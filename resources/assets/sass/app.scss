@@ -383,7 +383,7 @@ input[type="checkbox"]:checked + label span {
   border: 2px solid $iridium;
   color: $iridium;
   background: transparent;
-  border-radius: 15px;
+  border-radius: 4px;
 
   text-transform: uppercase;
   font-size: 1.1rem;
@@ -522,11 +522,116 @@ form{
   }
 }
 
+
+
 .grid-box{
   overflow: hidden;
   margin-top: 10px;
   padding-top: 20px;
   border-radius: 3px;
+
+  &:hover{
+    .color-overlay{
+      display: block;
+    }
+  }
+
+  .color-overlay{
+    display: none;
+    background: rgba(0,0,0,.5);
+    //opacity: .6;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    h4{
+      position: absolute;
+      bottom: 39%;
+      left: 0%;
+      color: #fff;
+      width: 100%;
+      text-align: center;
+
+      a{
+        color: #fff;
+      }
+    }
+
+    b.price{
+      position: absolute;
+      right: 5px;
+      top: 5px;
+      color: #fff;
+      font-size: 4rem;
+      font-weight: normal;
+    }
+
+    .vendor-logo{
+      width: 100px;
+      position: absolute;
+      right: 77px;
+      top: 63px;
+    }
+
+    .get{
+      position: absolute;
+      right: 0px;
+      top: 63px;
+    }
+
+
+  }
+
+  .like-wrap{
+    width: 150px;
+    height: 55px;
+    margin: 0 auto;
+    //background: rgba(255,255,255,.9);
+    //position: absolute;
+    //bottom: -10px;
+    //left: -30px;
+    //padding-left: 30px;
+    //padding-top: 6px;
+    //padding-bottom: 18px;
+    //border-radius: 20px;
+
+    a{
+      position: static;
+      float: left;
+    }
+
+    .social-pic{
+      width: 55px;
+      height: 29px;
+      position: static;
+      text-align: center;
+      padding-left: 40px;
+      padding-top: 3px;
+      margin-top: 20px;
+      margin-right: 17px;
+      //text-indent: -9999px;
+
+      &.comment{
+        left: 35px;
+        color: $sky-blue;
+        background: url("/assets/images/chat-blue-outline.png") 3px center no-repeat;
+
+        &:hover{
+          background: url("/assets/images/chat-blue-solid.png") left center no-repeat;
+        }
+      }
+      &.likes{
+        color: $iridium;
+        background: url("/assets/images/heart-pink-outline.png")left center no-repeat;
+
+        &:hover{
+          background: url("/assets/images/heart-pink-solid.png")left center no-repeat;
+        }
+      }
+    }
+  }
 
   &:not(.big-box){
     h3 a{
@@ -545,23 +650,7 @@ form{
     border: 1px solid #eee;
     border-radius: 5px;
 
-    .like-wrap{
-      width: 115px;
-      height: 55px;
-      background: rgba(255,255,255,.9);
-      position: absolute;
-      bottom: -10px;
-      left: -30px;
-      padding-left: 30px;
-      padding-top: 6px;
-      padding-bottom: 18px;
-      border-radius: 20px;
 
-      a{
-        position: static;
-        float: left;
-      }
-    }
     a{
       position: absolute;
       text-indent: -9999px;
@@ -635,28 +724,7 @@ form{
 
     }
 
-    .social-pic{
-      width: 40px;
-      height: 40px;
-      left: 0;
-      bottom: 2px;
 
-      &.comment{
-        left: 35px;
-        background: url("/assets/images/chat-blue-outline.png") center no-repeat;
-
-        &:hover{
-          background: url("/assets/images/chat-blue-solid.png") center no-repeat;
-        }
-      }
-      &.likes{
-        background: url("/assets/images/heart-pink-outline.png") center no-repeat;
-
-        &:hover{
-          background: url("/assets/images/heart-pink-solid.png") center no-repeat;
-        }
-      }
-    }
 
     .category-tag{
       width: 55px;
@@ -1766,33 +1834,6 @@ header.colophon{
       position: relative;
     }
 
-    .color-overlay{
-      display: none;
-      background: rgba(0,0,0,.5);
-      //opacity: .6;
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-
-      h4{
-        position: absolute;
-        bottom: 18%;
-        left: 5%;
-        color: #fff;
-
-        a{
-          color: #fff;
-        }
-      }
-
-      &:hover{
-          display: block;
-      }
-
-
-    }
 
     .grid-box{
       overflow: visible;
