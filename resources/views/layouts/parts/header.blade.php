@@ -28,7 +28,7 @@
                             </div>
                             <div  class="col-md-4 col-sm col-xs-4 category-menu hidden-620">
                                 <ul>
-                                    <li class="nested"><a class="shop" href="">Shop</a></li>
+                                    <li class="nested"><a class="shop" data-toggle=".shop-menu" href="">Shop</a></li>
                                     <li><a class="disc" href="">Discuss</a></li>
                                 </ul>
                             </div>
@@ -78,7 +78,7 @@
                             <li><a class="wearables-link green" href="#">Wearables</a></li>
                         </ul>
                     </li>
-                    <li><a class="about" href="">About</a></li>
+                    <li><a class="about pull-right" href="">About</a></li>
 
                 </ul>
             </div>
@@ -88,7 +88,6 @@
                     <li><a href="">Kitchen</a></li>
                     <li><a href="">Bath</a></li>
                     <li><a class="nested" data-toggle=".mobile-more-nav" data-hide=".mobile-extra-nav" href="">More</a></li>
-
                     <li><a class="more-link" data-toggle=".mobile-extra-nav"  data-hide=".mobile-more-nav" href="">...</a></li>
 
                     <ul class="extra-nav mobile-extra-nav">
@@ -104,5 +103,146 @@
                         <li><a href="">Outdoor</a></li>
                     </ul>
                 </ul>
+            </div>
+        </nav>
+        <nav class="shop-menu">
+            <div class="container">
+                <section class="most-popular col-sm-4">
+                    <h5>Most Popular</h5>
+
+                    <div class="img-wrap">
+                        <img class="img-responsive" src="/assets/images/dummies/drone.png">
+                        <span class="in">In gifts</span>
+                        <b><a href="#">Phantom 2 + H4 3D</a></b>
+                    </div>
+                </section>
+
+                <section class="smart-home col-sm-2">
+                    <h5>Smart Home</h5>
+                    <div class="img-wrap col-xs-6">
+                        <a href="#">
+                            <img class="img-responsive" src="/assets/images/dummies/interior.png">
+                            <span>In Shop</span>
+                        </a>
+                    </div>
+                    <div class="img-wrap col-xs-6">
+                        <a href="#">
+                            <img class="img-responsive" src="/assets/images/dummies/something.png">
+                            <span>In Shop</span>
+                        </a>
+                    </div>
+                    <div class="img-wrap col-xs-6">
+                        <a href="#">
+                            <img class="img-responsive" src="/assets/images/dummies/interior.png">
+                            <span>In Shop</span>
+                        </a>
+                    </div>
+                    <div class="img-wrap col-xs-6">
+                        <a href="#">
+                            <img class="img-responsive" src="/assets/images/dummies/something.png">
+                            <span>In Shop</span>
+                        </a>
+                    </div>
+                    <div class="img-wrap col-xs-6">
+                        <a href="#">
+                            <img class="img-responsive" src="/assets/images/dummies/interior.png">
+                            <span>In Shop</span>
+                        </a>
+                    </div>
+                    <div class="img-wrap col-xs-6">
+                        <a href="#">
+                            <img class="img-responsive" src="/assets/images/dummies/something.png">
+                            <span>In Shop</span>
+                        </a>
+                    </div>
+
+                </section>
+
+
+                <section class="travel col-sm-2">
+                    <h5>Travel</h5>
+                    <div class="img-wrap">
+                        <a href="#">
+                            <img class="img-responsive" src="/assets/images/dummies/something.png">
+                        </a>
+                        <b><a href="#">Neck Rest</a></b>
+                    </div>
+                    <div class="img-wrap">
+                        <a href="#">
+                            <img class="img-responsive" src="/assets/images/dummies/interior.png">
+                        </a>
+                        <b><a href="#">Hand Bag</a></b>
+                    </div>
+                    <div class="img-wrap">
+                        <a href="#">
+                            <img class="img-responsive" src="/assets/images/dummies/something.png">
+                        </a>
+                        <b><a href="#">Neck Rest</a></b>
+                    </div>
+                    <div class="img-wrap">
+                        <a href="#">
+                            <img class="img-responsive" src="/assets/images/dummies/interior.png">
+                        </a>
+                        <b><a href="#">Hand Bag</a></b>
+                    </div>
+                </section>
+
+                <section class="wearables col-sm-2">
+                    <h5>Wearables</h5>
+                    <div class="img-wrap">
+                        <a href="#">
+                            <img class="img-responsive" src="/assets/images/dummies/something.png">
+                        </a>
+                        <b><a href="#">Neck Rest</a></b>
+                    </div>
+                    <div class="img-wrap">
+                        <a href="#">
+                            <img class="img-responsive" src="/assets/images/dummies/interior.png">
+                        </a>
+                        <b><a href="#">Hand Bag</a></b>
+                    </div>
+                    <div class="img-wrap">
+                        <a href="#">
+                            <img class="img-responsive" src="/assets/images/dummies/something.png">
+                        </a>
+                        <b><a href="#">Neck Rest</a></b>
+                    </div>
+                    <div class="img-wrap">
+                        <a href="#">
+                            <img class="img-responsive" src="/assets/images/dummies/interior.png">
+                        </a>
+                        <b><a href="#">Hand Bag</a></b>
+                    </div>
+                </section>
+
+
+                <section class="home-decor col-sm-2">
+                    <h5>Home and Decor</h5>
+                    <div class="img-wrap">
+                        <a href="#">
+                            <img class="img-responsive" src="/assets/images/dummies/something.png">
+                        </a>
+                        <b><a href="#">Neck Rest</a></b>
+                    </div>
+                    <div class="img-wrap">
+                        <a href="#">
+                            <img class="img-responsive" src="/assets/images/dummies/interior.png">
+                        </a>
+                        <b><a href="#">Hand Bag</a></b>
+                    </div>
+                    <div class="img-wrap">
+                        <a href="#">
+                            <img class="img-responsive" src="/assets/images/dummies/something.png">
+                        </a>
+                        <b><a href="#">Neck Rest</a></b>
+                    </div>
+                    <div class="img-wrap">
+                        <a href="#">
+                            <img class="img-responsive" src="/assets/images/dummies/interior.png">
+                        </a>
+                        <b><a href="#">Hand Bag</a></b>
+                    </div>
+                </section>
+
             </div>
         </nav>

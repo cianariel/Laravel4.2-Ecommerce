@@ -5161,6 +5161,69 @@ header.colophon .search-bar {
 .mobile-more-nav {
   padding: 20px; }
 
+.shop-menu {
+  min-height: 400px;
+  overflow: hidden;
+  width: 100%;
+  background: #F2F5F5; }
+  .shop-menu section {
+    padding: 0; }
+  .shop-menu h5 {
+    padding-top: 35px;
+    padding-bottom: 30px;
+    border-bottom: 1px solid #c1c1c1; }
+  .shop-menu .img-wrap {
+    padding-left: 5px;
+    padding-right: 5px;
+    margin-bottom: 9px; }
+  .shop-menu .travel .img-wrap,
+  .shop-menu .wearables .img-wrap,
+  .shop-menu .home-decor .img-wrap {
+    overflow: hidden;
+    min-height: 0; }
+    .shop-menu .travel .img-wrap img,
+    .shop-menu .wearables .img-wrap img,
+    .shop-menu .home-decor .img-wrap img {
+      width: 50px;
+      height: 46px; }
+  .shop-menu .travel b a,
+  .shop-menu .wearables b a,
+  .shop-menu .home-decor b a {
+    padding-left: 8px;
+    padding-top: 15px;
+    text-transform: none;
+    color: #3D4B4E;
+    font-weight: normal; }
+  .shop-menu a {
+    padding: 0; }
+    .shop-menu a img {
+      width: 100%; }
+  .shop-menu .col-sm-4 span,
+  .shop-menu .col-sm-4 a {
+    position: absolute;
+    left: 25px;
+    bottom: 50px;
+    color: #3D4B4E; }
+  .shop-menu .col-sm-4 span {
+    font-size: 2.5rem;
+    text-transform: uppercase; }
+  .shop-menu .col-sm-4 a {
+    bottom: 30px;
+    text-transform: capitalize;
+    font-size: 1.7rem; }
+  .shop-menu .col-sm-4 img {
+    width: 100%;
+    height: 217px;
+    display: block; }
+  .shop-menu .col-sm-2 img {
+    height: 65px; }
+  .shop-menu .col-sm-2 span {
+    position: absolute;
+    left: 10px;
+    bottom: 10px;
+    color: #fff;
+    text-transform: capitalize; }
+
 .why-us {
   margin-top: 25px; }
   .why-us h2 {
