@@ -63,6 +63,11 @@
 
         // scroll and stick the share bar
         function sticky_relocate() {
+            if(window.innerWidth < 1300){
+                console.log(window.innerWidth)
+                return false;
+            }
+
             var window_top = $(window).scrollTop();
             var div_top = $('#sticky-anchor').offset().top;
             if (window_top > div_top) {

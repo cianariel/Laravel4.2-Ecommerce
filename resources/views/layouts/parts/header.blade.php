@@ -41,7 +41,6 @@
                                 <div  class="col-md-4 col-sm col-xs-4 category-menu mobile-category-menu hidden shown-620">
                                     <ul>
                                         <li class="nested"><a class="shop" href="">Shop</a></li>
-                                        {{--<li><a class="pros" href="">Pros</a></li>--}}
                                         <li><a class="disc" href="">Discuss</a></li>
                                     </ul>
                                 </div>

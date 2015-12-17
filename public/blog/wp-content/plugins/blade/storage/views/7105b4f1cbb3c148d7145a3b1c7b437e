@@ -10,7 +10,7 @@
         </section>
         <nav id="hero-nav" class="col-sm-12">
             <div class="container full-620  fixed-sm">
-                <ul class="left-nav col-sm-5 hidden-620">
+                <ul class="left-nav col-sm-5 col-xs-6 hidden-620">
                     <li><a class="home-link" href="#">Home</a></li>
                     <li><a href="#" class="kitchen-link">Kitchen</a></li>
                     <li class="active"><a href="#" class="ideas-link">Ideas</a></li>
@@ -29,7 +29,7 @@
         <div class="container full-620 main-container fixed-sm">
             <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 
-                <header class="story-details col-xs-3">
+                <header class="story-details col-md-3 col-sm-4 col-xs-8">
                     <div class="author-image-big">
                        <?php echo  get_avatar(get_the_author_meta('ID'), '210') ; ?>
                     </div>

@@ -4421,7 +4421,8 @@ button {
   width: 100%;
   height: 100%;
   background: #000;
-  opacity: .9; }
+  opacity: .9;
+  z-index: 2; }
 
 .close-button {
   color: #333;
@@ -4563,6 +4564,9 @@ li.nested a::after {
     left: 15px; } }
 @media (max-width: 768px) {
   .share-bar {
+    top: 12%; } }
+@media (max-width: 620px) {
+  .share-bar {
     position: static !important;
     width: 100%;
     float: none;
@@ -4676,7 +4680,8 @@ nav a {
   padding: 0; }
 
 #ideaing-logo {
-  width: 175px; }
+  width: 175px;
+  min-width: 110px; }
   #ideaing-logo.top-logo {
     margin-top: 5px;
     display: block;
@@ -4984,25 +4989,23 @@ form .btn {
 #site-name {
   display: none; }
 
-header.colophon {
-  overflow: hidden; }
-  header.colophon #top-nav .signin a {
-    padding-left: 40px;
-    background-image: url("/assets/images/signin-icon.png");
-    background-position: left;
-    background-repeat: no-repeat;
-    white-space: nowrap; }
-  header.colophon .search-bar {
-    padding-top: 13px;
-    margin-left: 3%; }
-    header.colophon .search-bar .search-toggle {
-      display: none;
-      text-indent: -9999px;
-      background: url("/assets/images/magnif-grey.png") center no-repeat; }
-    header.colophon .search-bar input {
-      min-width: 128px;
-      text-align: center;
-      background: url("/assets/images/magnif-grey.png") 10% no-repeat; }
+header.colophon #top-nav .signin a {
+  padding-left: 40px;
+  background-image: url("/assets/images/signin-icon.png");
+  background-position: left;
+  background-repeat: no-repeat;
+  white-space: nowrap; }
+header.colophon .search-bar {
+  padding-top: 13px;
+  margin-left: 3%; }
+  header.colophon .search-bar .search-toggle {
+    display: none;
+    text-indent: -9999px;
+    background: url("/assets/images/magnif-grey.png") center no-repeat; }
+  header.colophon .search-bar input {
+    min-width: 128px;
+    text-align: center;
+    background: url("/assets/images/magnif-grey.png") 10% no-repeat; }
 
 #top-nav a {
   margin-right: 8%;
@@ -5062,8 +5065,7 @@ header.colophon {
     color: #FF0042;
     -webkit-box-shadow: 0px 0px 0px 2px #FF0042;
     -moz-box-shadow: 0px 0px 0px 2px #FF0042;
-    box-shadow: 0px 0px 0px 2px #FF0042;
-    padding: 5px 33px; }
+    box-shadow: 0px 0px 0px 2px #FF0042; }
 
 .extra-nav {
   display: none;
@@ -5236,7 +5238,6 @@ header.colophon {
   overflow: visible;
   float: left;
   width: 100%;
-  background: #F2F2F2;
   border-bottom: 1px solid #d5dfdf; }
   #hero-nav ul {
     overflow: visible; }
@@ -5458,11 +5459,9 @@ header.colophon {
   #top-nav a {
     margin-right: 3%; }
 
-  #mid-nav .container, .extra-nav .container {
-    padding-left: 60px; }
   #mid-nav a, .extra-nav a {
-    padding-left: 18px;
-    padding-right: 18px; }
+    padding-left: 10px;
+    padding-right: 10px; }
     #mid-nav a.more-link, .extra-nav a.more-link {
       background-size: contain !important; }
     #mid-nav a:hover, .extra-nav a:hover {
@@ -5488,6 +5487,9 @@ header.colophon {
   #mid-nav .extra-nav, .extra-nav .extra-nav {
     right: 5%; }
 
+  #hero-nav a {
+    padding-left: 28px; }
+
   .bottom-load-more {
     margin-top: 65px; }
 
@@ -5499,7 +5501,14 @@ header.colophon {
     padding: 0; }
 
   .get {
-    margin-bottom: 0; } }
+    margin-bottom: 0; }
+
+  .story-details {
+    width: 300px; }
+
+  article.post {
+    padding-left: 20px;
+    padding-right: 20px; } }
 @media only screen and (max-width: 992px) and (min-width: 620px) {
   .container.fixed-sm {
     min-width: 920px; } }
