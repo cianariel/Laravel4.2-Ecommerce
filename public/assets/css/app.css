@@ -4759,6 +4759,21 @@ form .btn {
         background: url("/assets/images/heart-pink-outline.png") left center no-repeat; }
         .grid-box .like-wrap .social-pic.likes:hover {
           background: url("/assets/images/heart-pink-solid.png") left center no-repeat; }
+  .grid-box .img-wrap .like-wrap {
+    width: 115px;
+    height: 55px;
+    background: rgba(255, 255, 255, 0.9);
+    position: absolute;
+    bottom: -10px;
+    left: -30px;
+    padding-left: 30px;
+    padding-top: 6px;
+    padding-bottom: 18px;
+    border-radius: 20px; }
+    .grid-box .img-wrap .like-wrap .social-pic {
+      width: 35px;
+      margin: 5px 0 0;
+      padding-left: 0; }
   .grid-box:not(.big-box) h3 a {
     font-size: 1.7rem; }
   .grid-box .price {
@@ -4769,6 +4784,8 @@ form .btn {
     overflow: hidden;
     border: 1px solid #eee;
     border-radius: 5px; }
+    .grid-box .img-wrap > img {
+      min-height: 237px; }
     .grid-box .img-wrap a {
       position: absolute;
       text-indent: -9999px; }
@@ -4860,12 +4877,18 @@ form .btn {
     padding-top: 19px;
     padding-left: 52px;
     background-position: 4px center !important; }
+  .grid-box.big-box .img-wrap {
+    overflow: visible; }
   .grid-box.big-box .like-wrap {
     padding-left: 45px;
     padding-top: 9px;
     width: 139px;
     height: 67px;
     bottom: -15px; }
+  .grid-box.big-box .author {
+    position: absolute;
+    right: 40px;
+    bottom: -26px; }
   .grid-box:hover .img-wrap {
     box-shadow: 0 0 0 2pt #00B1FF; }
   .grid-box:hover h3 a,
@@ -4959,6 +4982,8 @@ form .btn {
     margin-bottom: 0; }
   .sidebar-box .img-wrap {
     overflow: visible; }
+    .sidebar-box .img-wrap > img {
+      min-height: 0; }
   .sidebar-box li.box-tag a {
     display: inline;
     font-size: 1.5rem;

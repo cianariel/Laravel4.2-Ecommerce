@@ -588,14 +588,6 @@ form{
     width: 150px;
     height: 55px;
     margin: 0 auto;
-    //background: rgba(255,255,255,.9);
-    //position: absolute;
-    //bottom: -10px;
-    //left: -30px;
-    //padding-left: 30px;
-    //padding-top: 6px;
-    //padding-bottom: 18px;
-    //border-radius: 20px;
 
     a{
       position: static;
@@ -633,6 +625,32 @@ form{
     }
   }
 
+  .img-wrap .like-wrap{
+    width: 115px;
+    height: 55px;
+    background: rgba(255, 255, 255, .9);
+    position: absolute;
+    bottom: -10px;
+    left: -30px;
+    padding-left: 30px;
+    padding-top: 6px;
+    padding-bottom: 18px;
+    border-radius: 20px;
+
+    .social-pic {
+      width: 35px;
+      margin: 5px 0 0;
+      padding-left: 0;
+
+      //position: absolute;
+      //width: 40px;
+      //height: 40px;
+      //left: 0;
+      //bottom: 2px;
+
+    }
+  }
+
   &:not(.big-box){
     h3 a{
       font-size: 1.7rem;
@@ -650,7 +668,9 @@ form{
     border: 1px solid #eee;
     border-radius: 5px;
 
-
+    & > img{
+      min-height: 237px;
+    }
     a{
       position: absolute;
       text-indent: -9999px;
@@ -800,12 +820,22 @@ form{
 
     }
 
+    .img-wrap{
+      overflow: visible;
+    }
+
     .like-wrap{
       padding-left:45px;
       padding-top: 9px;
       width: 139px;
       height: 67px;
       bottom: -15px;
+    }
+
+    .author{
+      position: absolute;
+      right: 40px;
+      bottom: -26px;
     }
   }
 
@@ -975,7 +1005,9 @@ form{
   }
   .img-wrap{
     overflow: visible;
-
+    & > img{
+      min-height: 0;
+    }
   }
   li.box-tag{
     a{
