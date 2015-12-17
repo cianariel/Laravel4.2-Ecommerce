@@ -1429,6 +1429,10 @@ header.colophon{
     overflow: visible;
   }
 
+  .category-nav{
+    width: 475px;
+  }
+
   .left-nav{
     li{
       padding-right: 15px;
@@ -1460,7 +1464,8 @@ header.colophon{
     text-transform: none;
     text-align: right;
     padding-left: 35px;
-    background-position: left;
+    background-size: 25px;
+    background-position: 0 22px;
     background-repeat: no-repeat;
     color: $tarmac;
 
@@ -1476,7 +1481,8 @@ header.colophon{
     }
     &.all-link{
       background-image: url('/assets/images/grid-dense-grey.png');
-      margin-top: -3px;
+      background-position: 0 20px;
+      //margin-top: -3px;
 
       &:hover,
       .active &{
@@ -1486,8 +1492,7 @@ header.colophon{
     }
     &.ideas-link{
       background-image: url('/assets/images/lamp-grey.png');
-      background-size: 25px;
-      background-position: 0 22px;
+
       //padding-top: 6px;
       &:hover{
         color: $dark-orange;
@@ -1497,7 +1502,9 @@ header.colophon{
     }
     &.products-link{
       background-image: url('/assets/images/bag-grey-big.png');
-      background-size: 43px;
+      background-position: 5px 20px;
+      background-size: 20px;
+
       &:hover{
         color: $pine-green;
         background-image: url('/assets/images/bag-green-big.png');
@@ -1510,7 +1517,7 @@ header.colophon{
         color: $sky-blue;
         background-image: url('/assets/images/photos-blue.png');
       }
-      padding-left: 65px;
+      //padding-left: 65px;
     }
     &.kitchen-link{
       background-image: url('/assets/images/pot-outline.png');
@@ -1530,7 +1537,7 @@ header.colophon{
       font-size: 1.7rem;
       position: absolute;
       bottom: -12px;
-      right: 58px;
+      right: 51px;
       color: #fff;
       text-shadow:
       -1px -1px 0 darken($pale-grey, 10%),
@@ -1541,6 +1548,8 @@ header.colophon{
     a.home-link{
       color: $iridium;
       background-image: url('/assets/images/house-pink.png');
+      background-size: initial;
+      background-position: -12px 12px;
     }
     a.all-link{
       color: $iridium;
@@ -1835,8 +1844,8 @@ header.colophon{
       }
 
       &:hover{
-        padding-left: 16px;
-        padding-right: 16px;
+        //padding-left: 16px;
+        //padding-right: 16px;
         background-size: contain !important;
 
       }
@@ -1946,6 +1955,7 @@ header.colophon{
 
 
 @media only screen and (max-width: 620px){
+
   .hidden-620{
     display: none !important;
   }
@@ -1957,6 +1967,14 @@ header.colophon{
   .full-620{
     width: 100%;
     padding: 0;
+  }
+
+  body{
+    padding-bottom: 60px;
+
+    #back-to-top {
+      bottom: 0%;
+    }
   }
 
 //.header.colophon{
@@ -2154,6 +2172,15 @@ header.colophon{
 
     #hero-nav{
 
+      .category-nav {
+        width: 100%;
+        padding-left: 6%;
+        .home-link{
+          min-width: 24px;
+          text-align: center;
+        }
+      }
+
       li{
         margin-left: 16px;
       }
@@ -2259,9 +2286,7 @@ header.colophon{
     }
   }
 
-  #back-to-top {
-    bottom: 4.3%;
-  }
+
 
   .latest-heading {
     padding-top: 10px;

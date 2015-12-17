@@ -78,8 +78,10 @@
         }
 
         $(function () {
-            $(window).scroll(sticky_relocate);
-            sticky_relocate();
+            if($('#sticky-anchor').lenght){
+                $(window).scroll(sticky_relocate);
+                sticky_relocate();
+            }
         });
 
 

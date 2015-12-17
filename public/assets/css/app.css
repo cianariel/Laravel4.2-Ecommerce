@@ -5241,6 +5241,8 @@ header.colophon .search-bar {
   border-bottom: 1px solid #d5dfdf; }
   #hero-nav ul {
     overflow: visible; }
+  #hero-nav .category-nav {
+    width: 475px; }
   #hero-nav .left-nav li {
     padding-right: 15px; }
     #hero-nav .left-nav li:not(:last-child)::after {
@@ -5263,7 +5265,8 @@ header.colophon .search-bar {
     text-transform: none;
     text-align: right;
     padding-left: 35px;
-    background-position: left;
+    background-size: 25px;
+    background-position: 0 22px;
     background-repeat: no-repeat;
     color: #3D4B4E; }
     #hero-nav a.home-link {
@@ -5274,26 +5277,24 @@ header.colophon .search-bar {
         background-position: -15px 10px; }
     #hero-nav a.all-link {
       background-image: url("/assets/images/grid-dense-grey.png");
-      margin-top: -3px; }
+      background-position: 0 20px; }
       #hero-nav a.all-link:hover, .active #hero-nav a.all-link {
         color: #FF0042;
         background-image: url("/assets/images/grid-pink.png"); }
     #hero-nav a.ideas-link {
-      background-image: url("/assets/images/lamp-grey.png");
-      background-size: 25px;
-      background-position: 0 22px; }
+      background-image: url("/assets/images/lamp-grey.png"); }
       #hero-nav a.ideas-link:hover {
         color: #FF7F00;
         background-image: url("/assets/images/lamp-orange.png"); }
     #hero-nav a.products-link {
       background-image: url("/assets/images/bag-grey-big.png");
-      background-size: 43px; }
+      background-position: 5px 20px;
+      background-size: 20px; }
       #hero-nav a.products-link:hover {
         color: #C7C747;
         background-image: url("/assets/images/bag-green-big.png"); }
     #hero-nav a.photos-link {
-      background-image: url("/assets/images/photos-grey.png");
-      padding-left: 65px; }
+      background-image: url("/assets/images/photos-grey.png"); }
       #hero-nav a.photos-link:hover {
         color: #00B1FF;
         background-image: url("/assets/images/photos-blue.png"); }
@@ -5304,12 +5305,14 @@ header.colophon .search-bar {
     font-size: 1.7rem;
     position: absolute;
     bottom: -12px;
-    right: 58px;
+    right: 51px;
     color: #fff;
     text-shadow: -1px -1px 0 #d5dfdf, 1px -1px 0 #d5dfdf, -1px 1px 0 #fff, 1px 1px 0 #fff; }
   #hero-nav li.active a.home-link {
     color: #FF0042;
-    background-image: url("/assets/images/house-pink.png"); }
+    background-image: url("/assets/images/house-pink.png");
+    background-size: initial;
+    background-position: -12px 12px; }
   #hero-nav li.active a.all-link {
     color: #FF0042;
     background-image: url("/assets/images/grid-pink.png"); }
@@ -5465,8 +5468,6 @@ header.colophon .search-bar {
     #mid-nav a.more-link, .extra-nav a.more-link {
       background-size: contain !important; }
     #mid-nav a:hover, .extra-nav a:hover {
-      padding-left: 16px;
-      padding-right: 16px;
       background-size: contain !important; }
   #mid-nav .extra-nav, .extra-nav .extra-nav {
     right: 6%; }
@@ -5535,6 +5536,11 @@ header.colophon .search-bar {
   .full-620 {
     width: 100%;
     padding: 0; }
+
+  body {
+    padding-bottom: 60px; }
+    body #back-to-top {
+      bottom: 0%; }
 
   #top-nav {
     padding-top: 15px;
@@ -5658,6 +5664,12 @@ header.colophon .search-bar {
     #hero > .container {
       padding-top: 0; }
 
+  #hero-nav .category-nav {
+    width: 100%;
+    padding-left: 6%; }
+    #hero-nav .category-nav .home-link {
+      min-width: 24px;
+      text-align: center; }
   #hero-nav li {
     margin-left: 16px; }
   #hero-nav li.active a::after {
@@ -5723,9 +5735,6 @@ header.colophon .search-bar {
       margin: 0 auto;
       display: block;
       float: none; }
-
-  #back-to-top {
-    bottom: 4.3%; }
 
   .latest-heading {
     padding-top: 10px; } }
