@@ -1565,7 +1565,7 @@ header.colophon{
     text-align: right;
     padding-left: 35px;
     background-size: 25px;
-    background-position: 0 22px;
+    background-position: 0 19px;
     background-repeat: no-repeat;
     color: $tarmac;
 
@@ -1576,7 +1576,7 @@ header.colophon{
         color: $iridium;
         background-image: url('/assets/images/house-pink.png');
         background-position: -15px 10px;
-
+        background-size: 44px;
       }
     }
     &.all-link{
@@ -1592,6 +1592,7 @@ header.colophon{
     }
     &.ideas-link{
       background-image: url('/assets/images/lamp-grey.png');
+      background-position: 0 21px;
 
       //padding-top: 6px;
       &:hover{
@@ -1691,6 +1692,7 @@ header.colophon{
       a{
         padding-top: 15px;
         padding-left: 0;
+        background-position: initial;
 
         &.like-counter{
           height: 40px;

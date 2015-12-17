@@ -78,7 +78,7 @@
         }
 
         $(function () {
-            if($('#sticky-anchor').lenght){
+            if($('#sticky-anchor').length){
                 $(window).scroll(sticky_relocate);
                 sticky_relocate();
             }

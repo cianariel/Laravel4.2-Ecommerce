@@ -5325,7 +5325,7 @@ header.colophon .search-bar {
     text-align: right;
     padding-left: 35px;
     background-size: 25px;
-    background-position: 0 22px;
+    background-position: 0 19px;
     background-repeat: no-repeat;
     color: #3D4B4E; }
     #hero-nav a.home-link {
@@ -5333,7 +5333,8 @@ header.colophon .search-bar {
       #hero-nav a.home-link:hover {
         color: #FF0042;
         background-image: url("/assets/images/house-pink.png");
-        background-position: -15px 10px; }
+        background-position: -15px 10px;
+        background-size: 44px; }
     #hero-nav a.all-link {
       background-image: url("/assets/images/grid-dense-grey.png");
       background-position: 0 20px; }
@@ -5341,7 +5342,8 @@ header.colophon .search-bar {
         color: #FF0042;
         background-image: url("/assets/images/grid-pink.png"); }
     #hero-nav a.ideas-link {
-      background-image: url("/assets/images/lamp-grey.png"); }
+      background-image: url("/assets/images/lamp-grey.png");
+      background-position: 0 21px; }
       #hero-nav a.ideas-link:hover {
         color: #FF7F00;
         background-image: url("/assets/images/lamp-orange.png"); }
@@ -5395,7 +5397,8 @@ header.colophon .search-bar {
       width: auto; }
     #hero-nav .like-nav li a {
       padding-top: 15px;
-      padding-left: 0; }
+      padding-left: 0;
+      background-position: initial; }
       #hero-nav .like-nav li a.like-counter {
         height: 40px;
         padding-left: 30px;
