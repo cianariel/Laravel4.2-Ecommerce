@@ -105,9 +105,10 @@
                 </ul>
             </div>
         </nav>
-        <nav class="shop-menu">
-            <div class="container">
-                <section class="most-popular col-sm-4">
+        <header class="sub-head">
+        <nav class="shop-menu hidden-soft hidden-620">
+            <div class="container full-sm">
+                <section class="most-popular col-xs-4">
                     <h5>Most Popular</h5>
 
                     <div class="img-wrap">
@@ -117,7 +118,7 @@
                     </div>
                 </section>
 
-                <section class="smart-home col-sm-2">
+                <section class="smart-home col-xs-2">
                     <h5>Smart Home</h5>
                     <div class="img-wrap col-xs-6">
                         <a href="#">
@@ -159,7 +160,7 @@
                 </section>
 
 
-                <section class="travel col-sm-2">
+                <section class="travel col-xs-2">
                     <h5>Travel</h5>
                     <div class="img-wrap">
                         <a href="#">
@@ -187,7 +188,7 @@
                     </div>
                 </section>
 
-                <section class="wearables col-sm-2">
+                <section class="wearables col-xs-2">
                     <h5>Wearables</h5>
                     <div class="img-wrap">
                         <a href="#">
@@ -216,7 +217,7 @@
                 </section>
 
 
-                <section class="home-decor col-sm-2">
+                <section class="home-decor col-xs-2">
                     <h5>Home and Decor</h5>
                     <div class="img-wrap">
                         <a href="#">
@@ -246,3 +247,4 @@
 
             </div>
         </nav>
+        </header>
