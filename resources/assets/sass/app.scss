@@ -71,7 +71,9 @@ $tarmac: #3D4B4E;
 //  color: red;
 //}
 
-
+a:visited{
+  text-decoration: none;
+}
 
 button{
   -webkit-appearance: none;
@@ -300,7 +302,7 @@ li.nested{
   .share-bar{
     position: absolute !important;
     left: 40px;
-    top: 24%;
+    top: 22%;
 
     &.stick{
       position: absolute !important;
@@ -881,6 +883,7 @@ form{
 .bottom-load-more{
   margin-top: 45px;
   margin-bottom: 45px;
+
 }
 
 .side-filters{
@@ -1710,6 +1713,7 @@ header.sub-head{
     &.all-link{
       background-image: url('/assets/images/grid-dense-grey.png');
       background-position: 0 20px;
+      min-width: 40px;
       //margin-top: -3px;
 
       &:hover,
@@ -2391,12 +2395,12 @@ header.sub-head{
       }
 
       li.active a::after {
-        right: 19px !important;
+        right: 5px !important;
       }
 
-      li.active a.all-link::after{
-        bottom: -27px;
-      }
+      //li.active a.all-link::after{
+      //  bottom: -27px;
+      //}
 
       a{
         background-position: left;
@@ -2497,6 +2501,11 @@ header.sub-head{
     padding-top: 10px;
   }
 
+  .bottom-load-more{
+    width: 95%;
+    margin-left: 3%;
+  }
+
 }
 
 @media screen and (max-width: 480px){
@@ -2521,6 +2530,10 @@ header.sub-head{
           background-size: 29px !important;
         }
       }
+    }
+
+    p{
+      padding-left: 10px;
     }
   }
 
@@ -2598,10 +2611,12 @@ header.sub-head{
     padding-right: 5%;
 
     &.all-link{
-      background-position: -4px  4px !important;
+      background-position: 11px  5px !important;
+      padding-right: 5px;
     }
     &.photos-link {
-      padding-left: 21px;
+      padding-left: 0px;
+      padding-right: 0px;
     }
 
   }
@@ -2674,9 +2689,9 @@ header.sub-head{
     padding-left: 4%;
     padding-right: 4%;
 
-    &.photos-link {
-      padding-left: 21px;
-    }
+    //&.photos-link {
+    //  padding-left: 21px;
+    //}
 
   }
 
@@ -2694,15 +2709,18 @@ header.sub-head{
     }
  }
 
-  #hero-nav a {
-    padding-left: 2%;
-    padding-right: 2%;
+  #hero-nav{
+    padding-left: 0;
+      a {
+        padding-left: 2%;
+        padding-right: 2%;
 
-    &.all-link {
-      background-position: 0px top !important;
-    }
-    &.photos-link {
-      padding-left: 21px;
+        //&.all-link {
+        //  background-position: 0px top !important;
+        //}
+        //&.photos-link {
+        //  //padding-left: 21px;
+        //}
     }
 
   }
