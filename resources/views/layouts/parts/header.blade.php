@@ -221,7 +221,6 @@
                             <li><a class="wearables-link green" href="#">Wearables</a></li>
                         </ul>
                     </li>
-                    <li><a class="about pull-right" href="">About</a></li>
 
                 </ul>
             </div>

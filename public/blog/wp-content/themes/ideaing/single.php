@@ -2,7 +2,11 @@
 
 <?php if (have_posts()): while (have_posts()) : the_post(); ?>
         <section id="hero" class="landing-hero">
+            <div class="head-wrap">
                 <h1>{{the_title()}}</h1>
+                <a class="like-counter hidden-soft shown-620" href="#">189</a>
+            </div>
+
             <div class="hero-background" style="background-image:url( {{getThumbnailLink($post->ID)}} ) "></div>
             <!-- TODO - use as the hero-bg					--><?php //the_post_thumbnail(); // Fullsize image for the single post ?>
             <div class="color-overlay"></div>
@@ -73,10 +77,10 @@
             <section class="author-description">
                 <div class="container">
                      <h4>About the Author, {{ the_author_meta('first_name') }} {{ the_author_meta('last_name') }}</h4>
-                    <div class="col-xs-1">
+                    <div class="col-md-1 col-sm-2 col-xs-3">
                         {{ get_avatar(get_the_author_meta('ID'), '80') }}
                     </div>
-                    <div  class="col-xs-10">
+                    <div  class="col-sm-10 col-xs-9">
                         <p>
                             <?php the_author_meta( 'description' ); ?>
                         </p>
@@ -104,7 +108,7 @@
                 <h4>211 Responses <a class="like-counter orange pull-right" href="#">2.349</a></h4>
 
                 <div class="single-comment">
-                    <div class="col-xs-2 comment-author">
+                    <div class="col-sm-2 col-xs-3 comment-author">
                         <a class="author" href="#"></a>
                         <div><b>Carrie</b></div>
                     </div>
@@ -121,7 +125,7 @@
 
                 <section class="add-comment">
                     <div class="single-comment">
-                        <div class="col-xs-2 comment-author">
+                        <div class="col-xs-2 col-xs-3 comment-author">
                             <a class="author" href="#"></a>
                         </div>
                         <div  class="col-xs-10 field-wrap">
@@ -222,7 +226,7 @@
                     <div class="wrap">
                         <img class="img-responsive" src="/assets/images/dummies/box-image-dummy.png">
                         <div class="color-overlay">
-                            <h4>Mr Coffee smart <div class="get">Get it</div></h4>
+                            <h4>Mr Coffee smart <div class="get solid">Get it</div></h4>
                         </div>
                     </div>
                 </div>
@@ -230,7 +234,7 @@
                     <div class="wrap">
                         <img class="img-responsive" src="/assets/images/dummies/box-image-dummy.png">
                         <div class="color-overlay">
-                            <h4>Mr Coffee smart <div class="get">Get it</div></h4>
+                            <h4>Mr Coffee smart <div class="get solid">Get it</div></h4>
                         </div>
                     </div>
                 </div>
@@ -238,7 +242,7 @@
                     <div class="wrap">
                         <img class="img-responsive" src="/assets/images/dummies/box-image-dummy.png">
                         <div class="color-overlay">
-                            <h4>Mr Coffee smart <div class="get">Get it</div></h4>
+                            <h4>Mr Coffee smart <div class="get solid">Get it</div></h4>
                         </div>
                     </div>
                 </div>
@@ -246,7 +250,7 @@
                     <div class="wrap">
                         <img class="img-responsive" src="/assets/images/dummies/box-image-dummy.png">
                         <div class="color-overlay">
-                            <h4>Mr Coffee smart <div class="get">Get it</div></h4>
+                            <h4>Mr Coffee smart <div class="get solid">Get it</div></h4>
                         </div>
                     </div>
                 </div>

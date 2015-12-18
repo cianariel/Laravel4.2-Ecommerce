@@ -139,10 +139,11 @@ button{
 }
 
 .btn-white{
- background: #fff;
+  background: #fff;
   border: 1px solid $light-grey;
   color: $light-grey;
   font-size: 1.2rem;
+  width: 100px;
 
   &.like{
     background: url("/assets/images/like-white.png") center no-repeat;
@@ -180,9 +181,10 @@ a{ // Custom Link Styles
 
   &.like-counter{
     height: 25px;
-    display: inline-block;
+    //display: inline-block;
     font-size: 1.7rem;
     padding-left: 30px;
+    padding-bottom: 3px;
     color: $iridium;
     background: url("/assets/images/heart-red.png") left top no-repeat;
 
@@ -219,10 +221,14 @@ a{ // Custom Link Styles
 }
 
 li.nested{
+  a.active::after{
+    content: '	▲' !important;
+  }
   a::after{
     content: '	▼';
     color: $iridium;
   }
+
 }
 
 .share-bar{
@@ -458,17 +464,32 @@ nav{
   min-height: 540px;
   float: left;
 
-  h1{
+  .head-wrap{
     position: absolute;
     width: 100%;
     padding-top: 20%;
     z-index: 1;
+
+  }
+
+  h1{
+
     text-align: center;
     color: #fff;
     font-size: 5.5rem;
     font-weight: bold;
     text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
 
+  }
+
+  .like-counter{
+    overflow: hidden;
+    font-size: 2.3rem;
+    color: #fff;
+    height: 45px;
+    width: 80px;
+    margin: 0 auto;
+    background-position: left 4px;
   }
 
   .hero-background{
@@ -1238,15 +1259,15 @@ header.colophon{
 
     &.more-link{
       text-indent: -9999px;
-      background:url("/assets/images/dots-pink.png") center no-repeat;
+      background:url("/assets/images/dots-grey.png") center no-repeat;
       background-size: contain;
       //background-size: contain;
 
-      //&:hover{
-      //  background:url("/assets/images/dots-pink.png") center no-repeat;
-      //  //background-size: contain;
-      //
-      //}
+      &:hover{
+        background-image:url("/assets/images/dots-pink.png");
+        box-shadow: none;
+
+      }
     }
 
 
@@ -1347,7 +1368,8 @@ header.sub-head{
   h5{
     padding-top: 35px;
     padding-bottom: 22px;
-    border-bottom: 1px solid $light-grey;
+    border-bottom: 1px solid lighten($light-grey, 15%);
+    margin-bottom: 25px;
   }
 
   .img-wrap{
@@ -1770,7 +1792,7 @@ header.sub-head{
       font-size: 1.7rem;
       position: absolute;
       bottom: -12px;
-      right: 51px;
+      right: 43px;
       color: #fff;
       text-shadow:
       -1px -1px 0 darken($pale-grey, 10%),
@@ -1808,7 +1830,7 @@ header.sub-head{
 
   .like-nav{
     li{
-      width: 67px;
+      width: 55px;
       padding-top: 9px;
       float: left;
 
@@ -2012,6 +2034,12 @@ header.sub-head{
 
       img{
         width: 100%;
+        border-radius: 3px;
+        border: 1px solid lighten($light-grey, 15%);
+      }
+
+      .color-overlay{
+        border-radius: 3px;
       }
 
       .author{
@@ -2507,6 +2535,15 @@ header.sub-head{
   .bottom-load-more{
     width: 95%;
     margin-left: 3%;
+  }
+
+  .author-image-big{
+    max-width: 100px;
+    margin: 0 auto;
+    img{
+      max-width: 100%;
+      height: auto;
+    }
   }
 
 }
