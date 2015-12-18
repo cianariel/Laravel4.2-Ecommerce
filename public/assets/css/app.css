@@ -4749,7 +4749,7 @@ form .btn {
       text-align: center;
       padding-left: 40px;
       padding-top: 3px;
-      margin-top: 20px;
+      margin-top: 5px;
       margin-right: 17px; }
       .grid-box .like-wrap .social-pic.comment {
         left: 35px;
@@ -5100,7 +5100,7 @@ header.colophon .search-bar {
     overflow: visible; }
   #mid-nav a, #mid-nav .extra-nav a {
     margin-top: 11px;
-    margin-bottom: 8px;
+    margin-bottom: 11px;
     margin-right: 3px;
     padding: 5px 17px;
     overflow: hidden;
@@ -5404,7 +5404,7 @@ header.sub-head {
   #hero-nav li {
     display: inline-block;
     position: relative;
-    height: 65px; }
+    height: 55px; }
   #hero-nav a {
     color: #FF0042;
     text-transform: none;
@@ -5798,37 +5798,30 @@ header.sub-head {
 
   #hero-nav .category-nav {
     width: 100%;
-    padding-left: 6%; }
+    padding-left: 8%; }
     #hero-nav .category-nav .home-link {
       min-width: 24px;
       text-align: center; }
   #hero-nav li {
-    margin-left: 16px; }
+    height: 70px; }
   #hero-nav li.active a::after {
     right: 5px !important; }
   #hero-nav a {
-    background-position: left;
-    background-repeat: no-repeat;
     padding-left: 35px;
+    padding-top: 40px;
     background-size: 30px;
-    margin-right: 1%; }
+    margin-right: 1%;
+    font-size: 1.3rem; }
     #hero-nav a.home-link {
       display: none; }
     #hero-nav a:not(.home-link) {
-      padding-top: 30px;
-      background-position: top center !important;
-      margin-top: 7px; }
+      background-position: 36px 13px !important; }
     #hero-nav a.all-link {
-      background-position: center 4px !important; }
-    #hero-nav a.ideas-link {
-      background-position: center  4px !important; }
+      background-position: 28px 13px !important; }
     #hero-nav a.photos-link {
-      padding-left: 45px;
-      background-position: 0 12px;
-      background-size: 39px !important; }
+      background-position: 43px 13px !important; }
     #hero-nav a.products-link {
-      background-position: left 12px;
-      background-size: 29px !important; }
+      background-position: 56px 13px !important; }
 
   #mid-nav a, #mid-nav .extra-nav a {
     font-size: 1.8rem; }
@@ -5931,15 +5924,10 @@ header.sub-head {
     padding-right: 1.5%;
     background-color: #CE1F46; }
 
+  #hero-nav .category-nav {
+    padding-left: 3%; }
   #hero-nav a {
-    padding-left: 5%;
     padding-right: 5%; }
-    #hero-nav a.all-link {
-      background-position: 11px  5px !important;
-      padding-right: 5px; }
-    #hero-nav a.photos-link {
-      padding-left: 0px;
-      padding-right: 0px; }
 
   .logo-wrap {
     padding: 0; }
@@ -5974,7 +5962,6 @@ header.sub-head {
     font-size: 1.5rem; }
 
   #hero-nav a {
-    padding-left: 4%;
     padding-right: 4%; } }
 @media screen and (max-width: 370px) {
   #top-nav a {
@@ -5986,7 +5973,6 @@ header.sub-head {
   #hero-nav {
     padding-left: 0; }
     #hero-nav a {
-      padding-left: 2%;
       padding-right: 2%; } }
 
 /*# sourceMappingURL=app.css.map */

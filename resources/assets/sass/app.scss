@@ -603,7 +603,7 @@ form{
       text-align: center;
       padding-left: 40px;
       padding-top: 3px;
-      margin-top: 20px;
+      margin-top: 5px;
       margin-right: 17px;
       //text-indent: -9999px;
 
@@ -1217,7 +1217,7 @@ header.colophon{
   a{
     //margin: 15px 30px;
     margin-top: 11px;
-    margin-bottom: 8px;
+    margin-bottom: 11px;
     margin-right: 3px;
     padding: 5px 17px;
     overflow: hidden;
@@ -1688,7 +1688,7 @@ header.sub-head{
   li{
     display: inline-block;
     position: relative;
-    height: 65px;
+    height: 55px;
   }
   a{
     color: $iridium;
@@ -2383,7 +2383,7 @@ header.sub-head{
 
       .category-nav {
         width: 100%;
-        padding-left: 6%;
+        padding-left: 8%;
         .home-link{
           min-width: 24px;
           text-align: center;
@@ -2391,7 +2391,8 @@ header.sub-head{
       }
 
       li{
-        margin-left: 16px;
+        //margin-left: 16px;
+        height: 70px;
       }
 
       li.active a::after {
@@ -2403,38 +2404,40 @@ header.sub-head{
       //}
 
       a{
-        background-position: left;
-        background-repeat: no-repeat;
+        //background-position: left;
+        //background-repeat: no-repeat;
         padding-left: 35px;
+        padding-top: 40px;
         background-size: 30px;
         margin-right: 1%;
+        font-size: 1.3rem;
 
         &.home-link{
           display: none;
         }
 
         &:not(.home-link) {
-          padding-top: 30px;
-          background-position: top center !important;
-          margin-top: 7px;
+          //padding-top: 30px;
+          background-position: 36px 13px !important;
+          //margin-top: 7px;
         }
-
+        //
         &.all-link{
-          background-position: center 4px !important;
+          background-position: 28px 13px !important;
         }
         &.ideas-link{
-          background-position: center  4px !important;
+          //background-position: ;
         }
 
         &.photos-link{
-          padding-left: 45px;
-          background-position: 0 12px;
-          background-size: 39px !important;
+          //padding-left: 45px;
+            background-position: 43px 13px !important;
+          //background-size: 39px !important;
         }
-
+        //
         &.products-link{
-          background-position: left 12px;
-          background-size: 29px !important;
+          background-position: 56px 13px !important;
+          //background-size: 29px !important;
         }
 
       }
@@ -2606,19 +2609,26 @@ header.sub-head{
     }
   }
 
-  #hero-nav a {
-    padding-left: 5%;
+
+
+  #hero-nav{
+    .category-nav{
+      padding-left: 3%;
+    }
+    a {
+    //padding-left: 5%;
     padding-right: 5%;
 
-    &.all-link{
-      background-position: 11px  5px !important;
-      padding-right: 5px;
-    }
-    &.photos-link {
-      padding-left: 0px;
-      padding-right: 0px;
-    }
+    //&.all-link{
+    //  background-position: 11px  5px !important;
+    //  padding-right: 5px;
+    //}
+    //&.photos-link {
+    //  padding-left: 0px;
+    //  padding-right: 0px;
+    //}
 
+  }
   }
 
   .logo-wrap{
@@ -2686,7 +2696,7 @@ header.sub-head{
   }
 
   #hero-nav a {
-    padding-left: 4%;
+    //padding-left: 4%;
     padding-right: 4%;
 
     //&.photos-link {
@@ -2712,7 +2722,7 @@ header.sub-head{
   #hero-nav{
     padding-left: 0;
       a {
-        padding-left: 2%;
+        //padding-left: 2%;
         padding-right: 2%;
 
         //&.all-link {

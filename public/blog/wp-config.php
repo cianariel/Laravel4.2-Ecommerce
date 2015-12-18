@@ -23,13 +23,13 @@
 define('DB_NAME', 'ideaingblog');
 
 /** MySQL database username */
-define('DB_USER', 'megaStuff_');
+define('DB_USER', 'root');
 
 /** MySQL database password */
-define('DB_PASSWORD', 'timeToDance');
+define('DB_PASSWORD', 'root');
 
 /** MySQL hostname */
-define('DB_HOST', 'staging-mysql.c9zzhwcfjtcc.us-west-2.rds.amazonaws.com');
+define('DB_HOST', 'localhost');
 
 /** Database Charset to use in creating database tables. */
 define('DB_CHARSET', 'utf8mb4');

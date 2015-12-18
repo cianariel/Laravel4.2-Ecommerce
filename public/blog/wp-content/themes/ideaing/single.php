@@ -72,7 +72,7 @@
 
             <section class="author-description">
                 <div class="container">
-                     <h4>About the host, {{ the_author_meta('first_name') }} {{ the_author_meta('last_name') }}</h4>
+                     <h4>About the Author, {{ the_author_meta('first_name') }} {{ the_author_meta('last_name') }}</h4>
                     <div class="col-xs-1">
                         {{ get_avatar(get_the_author_meta('ID'), '80') }}
                     </div>

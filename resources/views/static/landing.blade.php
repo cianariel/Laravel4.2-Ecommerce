@@ -100,9 +100,9 @@
             <div class="col-xs-6 grid-box full-620">
                 <div class="img-wrap">
                     <img class="img-responsive" src="/assets/images/dummies/box-image-dummy.png">
-                    <div class="color-overlay">
-                        <a href="#" class="overlay-tag category-tag top product">Category: Products</a>
+                    <a href="#" class="overlay-tag category-tag top product">Category: Products</a>
 
+                    <div class="color-overlay">
                         <b class="price">$199</b>
                         <img class="vendor-logo" src="/assets/images/dummies/amazon.png">
                         <div class="get solid">Get it</div>
@@ -117,9 +117,8 @@
             <div class="col-xs-6 grid-box full-620">
                 <div class="img-wrap">
                     <img class="img-responsive" src="/assets/images/dummies/img-small.jpg">
+                    <a href="#" class="overlay-tag category-tag top product">Category: Products</a>
                     <div class="color-overlay">
-                        <a href="#" class="overlay-tag category-tag top product">Category: Products</a>
-
                         <b class="price">$199</b>
                         <img class="vendor-logo" src="/assets/images/dummies/amazon.png">
                         <div class="get solid">Get it</div>
@@ -151,7 +150,7 @@
                     </a>
                 </div>
                 <h3><a href="#">The Top Kitchen Gadgets</a></h3>
-                <p>Truly good design and taste are always current, always relevant. Quiet, muted colors determine the image</p>
+                {{--<p>Truly good design and taste are always current, always relevant. Quiet, muted colors determine the image</p>--}}
                 {{--<ul class="box-tags">--}}
                     {{--<li class="box-tag"><a>Products</a></li>--}}
                 {{--</ul>--}}
