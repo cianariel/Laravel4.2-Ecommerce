@@ -4750,7 +4750,8 @@ form .btn {
   .grid-box .like-wrap {
     width: 150px;
     height: 55px;
-    margin: 0 auto; }
+    float: left;
+    margin-left: 8%; }
     .grid-box .like-wrap a {
       position: static;
       float: left; }
@@ -4774,9 +4775,14 @@ form .btn {
         background: url("/assets/images/heart-pink-outline.png") left center no-repeat; }
         .grid-box .like-wrap .social-pic.likes:hover {
           background: url("/assets/images/heart-pink-solid.png") left center no-repeat; }
+  .grid-box datetime {
+    float: right;
+    padding: 10px 15px;
+    color: #c1c1c1; }
   .grid-box .img-wrap .like-wrap {
     width: 115px;
     height: 55px;
+    margin-left: auto;
     background: rgba(255, 255, 255, 0.9);
     position: absolute;
     bottom: -10px;
@@ -5891,7 +5897,10 @@ header.sub-head {
     margin: 0 auto; }
     .author-image-big img {
       max-width: 100%;
-      height: auto; } }
+      height: auto; }
+
+  .like-wrap {
+    margin-left: 30%; } }
 @media screen and (max-width: 480px) {
   .full-480 {
     width: 100%;

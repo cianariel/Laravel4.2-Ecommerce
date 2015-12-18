@@ -113,6 +113,8 @@
                     <a href="#" class="social-pic likes">157</a>
                     <a href="#" class="social-pic comment">89</a>
                 </div>
+                <datetime>21 Dec 2015</datetime>
+
             </div>
             <div class="col-xs-6 grid-box full-620">
                 <div class="img-wrap">
@@ -129,6 +131,9 @@
                     <a href="#" class="social-pic likes">157</a>
                     <a href="#" class="social-pic comment">89</a>
                 </div>
+                <datetime>21 Dec 2015</datetime>
+
+
             </div>
             <div class="col-xs-12 grid-box big-box full-620">
                 <div class="img-wrap">

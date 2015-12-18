@@ -51,9 +51,6 @@
                         </ul>
                     </div>
 
-
-
-                    <!--			<span class="date">--><?php //the_time('F j, Y'); ?><!-- --><?php //the_time('g:i a'); ?><!--</span>-->
                 </header>
 
                 <aside class="share-bar sticks-on-scroll">
