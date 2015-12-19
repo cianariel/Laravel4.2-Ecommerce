@@ -4783,6 +4783,9 @@ form .btn {
     float: right;
     padding: 10px 15px;
     color: #c1c1c1; }
+  .grid-box h3 datetime {
+    font-size: 1.7rem;
+    padding-top: 5px; }
   .grid-box .img-wrap .like-wrap {
     width: 115px;
     height: 55px;

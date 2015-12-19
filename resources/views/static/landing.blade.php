@@ -157,7 +157,9 @@
                                 Featured
                     </a>
                 </div>
-                <h3><a href="#">The Top Kitchen Gadgets</a></h3>
+                <h3><a href="#">The Top Kitchen Gadgets</a> <datetime>21 Dec 2015</datetime></h3>
+
+
                 {{--<p>Truly good design and taste are always current, always relevant. Quiet, muted colors determine the image</p>--}}
                 {{--<ul class="box-tags">--}}
                     {{--<li class="box-tag"><a>Products</a></li>--}}

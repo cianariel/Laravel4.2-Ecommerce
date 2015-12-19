@@ -662,6 +662,13 @@ form{
     color: $light-grey;
   }
 
+  h3{
+    datetime{
+      font-size: 1.7rem;
+      padding-top: 5px;
+    }
+  }
+
   .img-wrap .like-wrap{
     width: 115px;
     height: 55px;
@@ -2013,7 +2020,11 @@ header.sub-head{
 
     datetime{
       font-size: 1rem;
+
+
     }
+
+
 
     //.field-wrap{
     //  padding: 10px 10px 20px;
