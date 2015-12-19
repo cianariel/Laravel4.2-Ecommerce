@@ -1,7 +1,7 @@
 @include('header')
 
 <?php if (have_posts()): while (have_posts()) : the_post(); ?>
-        <section id="hero" class="landing-hero">
+        <section id="hero" class="details-hero">
             <div class="head-wrap">
                 <h1>{{the_title()}}</h1>
                 <a class="like-counter hidden-soft shown-620" href="#">189</a>
@@ -32,24 +32,26 @@
         <div class="container full-620 main-container fixed-sm">
             <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 
-                <header class="story-details col-md-3 col-sm-4 col-xs-8">
-                    <div class="author-image-big">
+                <header class="story-details col-sm-8 col-xs-10 full-480">
+                    <div class="author-image-big col-sm-6 col-xs-5 full-480">
                        {{ get_avatar(get_the_author_meta('ID'), '210') }}
                     </div>
-                    <h4 class="author-name">
-                        <div id="sticky-anchor"></div>
+                    <div class="author-overview col-sm-6 col-xs-7 full-480">
+                        <h4 class="author-name">
+                            <div id="sticky-anchor"></div>
 
-                        <span>{{ the_author_meta('first_name') }} {{ the_author_meta('last_name') }}</span>
-                        <a class="like-counter" href="#">189</a>
-                    </h4>
-                    <div class="about-author"> Reporter: @nytimes & @NYTmag</div>
-                    <div class="content-tags">
-                        <ul>
-                            <li><a href="#" class="ideas-link">12 Ideas</a></li>
-                            <li><a href="#" class="products-link">95 Products</a></li>
-                            <li><a href="#" class="photos-link">255 photos</a></li>
-                        </ul>
+                            <span>{{ the_author_meta('first_name') }} {{ the_author_meta('last_name') }}</span>
+                            <a class="like-counter" href="#">189</a>
+                        </h4>
+                        <div class="content-tags">
+                            <ul>
+                                <li><a href="#" class="ideas-link">12 Ideas</a></li>
+                                <li><a href="#" class="products-link">95 Products</a></li>
+                                <li><a href="#" class="photos-link">255 photos</a></li>
+                            </ul>
+                        </div>
                     </div>
+
 
                 </header>
 
@@ -102,20 +104,20 @@
 
         <section class="comments">
             <div class="container">
-                <h4>211 Responses <a class="like-counter orange pull-right" href="#">2.349</a></h4>
+                <h4>211 Responses <a class="orange pull-right" href="#">Helpful: 34</a></h4>
 
                 <div class="single-comment">
                     <div class="col-sm-2 col-xs-3 comment-author">
                         <a class="author" href="#"></a>
                         <div><b>Carrie</b></div>
                     </div>
-                    <div  class="col-xs-9">
+                    <div  class="col-sm-8 col-xs-7">
                         <p>
                             Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur?
                         </p>
                         <datetime>August 2015</datetime>
                     </div>
-                    <button  class="btn btn-white like helpful col-xs-1">
+                    <button  class="btn btn-white like helpful col-sm-1 col-xs-2">
                         Helpful
                     </button>
                 </div>

@@ -143,7 +143,7 @@ button{
   border: 1px solid $light-grey;
   color: $light-grey;
   font-size: 1.2rem;
-  width: 100px;
+  width: 90px;
 
   &.like{
     background: url("/assets/images/like-white.png") center no-repeat;
@@ -308,7 +308,7 @@ li.nested{
   .share-bar{
     position: absolute !important;
     left: 40px;
-    top: 22%;
+    top: 22.5%;
 
     &.stick{
       position: absolute !important;
@@ -329,7 +329,7 @@ li.nested{
 
 @media (max-width: 768px){
   .share-bar{
-    top: 12%;
+    top: 11.5%;
 
   }
 
@@ -1899,8 +1899,9 @@ header.sub-head{
 
   .story-details{
     float: none;
+    overflow: hidden;
     margin: 0 auto;
-    padding: 0;
+    padding: 25px 0;
     text-align: center;
 
     h4{
@@ -1912,10 +1913,15 @@ header.sub-head{
       color: darken($light-grey, 10%);
     }
 
+    .author-overview{
+      padding-top: 10%;
+    }
+
     .content-tags{
-      width: 100%;
-      margin-top: 15px;
-      margin-bottom: 40px;
+      width: 275px;
+      margin: 15px auto 40px;
+      //margin-top: 15px;
+      //margin-bottom: 40px;
       overflow: hidden;
       a{
         float: left;
@@ -2153,9 +2159,9 @@ header.sub-head{
     margin-bottom: 0;
   }
 
-  .story-details{
-    width: 300px;
-  }
+  //.story-details{
+  //  width: 300px;
+  //}
 
   article.post{
     padding-left: 20px;
@@ -2415,6 +2421,10 @@ header.sub-head{
     & > .container{
       padding-top: 0;
     }
+
+    &.details-hero{
+      min-height: 400px;
+    }
   }
 
     #hero-nav{
@@ -2550,6 +2560,8 @@ header.sub-head{
   .author-image-big{
     max-width: 100px;
     margin: 0 auto;
+    float: none;
+
     img{
       max-width: 100%;
       height: auto;
@@ -2558,6 +2570,16 @@ header.sub-head{
 
   .like-wrap {
     margin-left: 30%;
+  }
+
+  .idea-stories .story-details{
+    .author-overview {
+      padding-top: 0;
+    }
+
+    .content-tags{
+      margin-bottom: 0;
+    }
   }
 
   }
@@ -2569,6 +2591,23 @@ header.sub-head{
     padding: 0;
   }
 
+  #hero{
+    min-height: 450px;
+    .why-us{
+      padding-top: 70px;
+
+      h2{
+        font-size: 2.8rem;
+      }
+      li{
+        padding-left: 25px;
+        padding-right: 10px;
+        font-size: 1.5rem;
+      }
+    }
+
+
+  }
 
   .grid-box{
       &:hover .img-wrap {
@@ -2591,8 +2630,6 @@ header.sub-head{
     }
   }
 
-
-
   .grid-box.big-box {
     .category-tag {
       padding-left: 38px;
@@ -2600,21 +2637,7 @@ header.sub-head{
     }
   }
 
-  #hero{
-    min-height: 450px;
-    .why-us{
-      padding-top: 70px;
 
-      h2{
-        font-size: 2.8rem;
-      }
-      li{
-        padding-left: 25px;
-        padding-right: 10px;
-        font-size: 1.5rem;
-      }
-    }
-  }
 
   #top-nav{
     .logo-wrap{
@@ -2667,19 +2690,9 @@ header.sub-head{
       padding-left: 3%;
     }
     a {
-    //padding-left: 5%;
     padding-right: 5%;
 
-    //&.all-link{
-    //  background-position: 11px  5px !important;
-    //  padding-right: 5px;
-    //}
-    //&.photos-link {
-    //  padding-left: 0px;
-    //  padding-right: 0px;
-    //}
-
-  }
+    }
   }
 
   .logo-wrap{
@@ -2702,10 +2715,7 @@ header.sub-head{
   }
 
 
-
-
   #ideaing-logo {
-    //width: 125px;
     height: auto;
 
       &.top-logo{
@@ -2714,13 +2724,18 @@ header.sub-head{
   }
 
   header.colophon .search-bar input {
-   min-width: 125px;
+    min-width: 125px;
   }
 
   .signin{
     margin-right: 0;
   }
 
+  .author-image{
+    margin: 0 auto;
+    display: block;
+    float: none;
+  }
 
 }
 
