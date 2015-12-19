@@ -25,18 +25,18 @@
                     <li><a class="author" href="#"></a></li>
                     <li><a class="likes" href="#">and 186 others</a></li>
                 </ul>
-            </div>
+            </div> 
         </nav>
 		<!-- article -->
 
         <div class="container full-620 main-container fixed-sm">
             <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 
-                <header class="story-details col-sm-8 col-xs-10 full-480">
-                    <div class="author-image-big col-sm-6 col-xs-5 full-480">
+                <header class="story-details col-lg-7  col-sm-8 col-xs-10 full-480">
+                    <div class="author-image-big col-lg-4 col-sm-6 col-xs-5 full-480">
                        {{ get_avatar(get_the_author_meta('ID'), '210') }}
                     </div>
-                    <div class="author-overview col-sm-6 col-xs-7 full-480">
+                    <div class="author-overview col-lg-5 col-sm-6 col-xs-7 full-480">
                         <h4 class="author-name">
                             <div id="sticky-anchor"></div>
 
