@@ -123,10 +123,10 @@
 
             } catch (Exception $ex)
             {
-                \Log::error($ex);
+               // \Log::error($ex);
 
                 return $this->setStatusCode(IlluminateResponse::HTTP_INTERNAL_SERVER_ERROR)
-                    ->makeResponseWithError("Internal server error !");
+                    ->makeResponseWithError("Internal server error !",$ex);
 
             }
         }
