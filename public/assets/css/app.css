@@ -4501,6 +4501,10 @@ a.photos-link {
   background-image: url("/assets/images/photos-blue.png");
   background-repeat: no-repeat;
   background-size: contain; }
+a.featured-badge {
+  width: 121px;
+  height: 59px;
+  background: url("/assets/images/featured-badge-pink.png") left center no-repeat; }
 
 li.nested a.active::after {
   content: '	▲' !important; }
@@ -4854,6 +4858,9 @@ form .btn {
             width: 108px;
             height: 106px;
             padding: 5%; }
+    .grid-box .img-wrap .featured-badge {
+      right: 25px;
+      top: -34px; }
     .grid-box .img-wrap .category-tag {
       width: 55px;
       height: 64px;
@@ -4890,26 +4897,29 @@ form .btn {
   .grid-box:not(.sidebar-box) {
     min-height: 190px;
     border-radius: 5px; }
-  .grid-box.big-box .category-tag {
-    width: 100px;
-    text-indent: 0;
-    text-align: center;
-    color: #FF7F00;
-    padding-top: 19px;
-    padding-left: 52px;
-    background-position: 4px center !important; }
-  .grid-box.big-box .img-wrap {
-    overflow: visible; }
-  .grid-box.big-box .like-wrap {
-    padding-left: 45px;
-    padding-top: 9px;
-    width: 139px;
-    height: 67px;
-    bottom: -15px; }
-  .grid-box.big-box .author {
-    position: absolute;
-    right: 40px;
-    bottom: -26px; }
+  .grid-box.big-box {
+    margin-top: 0;
+    padding-top: 33px; }
+    .grid-box.big-box .category-tag {
+      width: 100px;
+      text-indent: 0;
+      text-align: center;
+      color: #FF7F00;
+      padding-top: 19px;
+      padding-left: 52px;
+      background-position: 4px center !important; }
+    .grid-box.big-box .img-wrap {
+      overflow: visible; }
+    .grid-box.big-box .like-wrap {
+      padding-left: 45px;
+      padding-top: 9px;
+      width: 139px;
+      height: 67px;
+      bottom: -15px; }
+    .grid-box.big-box .author {
+      position: absolute;
+      right: 40px;
+      bottom: 10px; }
   .grid-box:hover .img-wrap {
     box-shadow: 0 0 0 2pt #00B1FF; }
   .grid-box:hover h3 a,
@@ -5417,7 +5427,7 @@ header.sub-head {
       display: block;
       position: absolute;
       left: 78%;
-      top: 32%;
+      top: 39%;
       width: 19px;
       height: 19px;
       background: url("/assets/images/arrow-right-black.png") center no-repeat; }

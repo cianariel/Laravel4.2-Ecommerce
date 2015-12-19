@@ -216,6 +216,11 @@ a{ // Custom Link Styles
     background-size: contain;
   }
 
+  &.featured-badge{
+    width: 121px;
+    height: 59px;
+    background: url("/assets/images/featured-badge-pink.png")left center no-repeat;
+  }
 
 
 }
@@ -649,6 +654,8 @@ form{
     }
   }
 
+
+
   datetime{
     float: right;
     padding: 10px 15px;
@@ -771,11 +778,12 @@ form{
           }
         }
       }
-
-
     }
 
-
+    .featured-badge{
+      right: 25px;
+      top: -34px;
+    }
 
     .category-tag{
       width: 55px;
@@ -840,6 +848,8 @@ form{
   }
 
   &.big-box{
+    margin-top: 0;
+    padding-top: 33px;
     .category-tag{
       width: 100px;
       text-indent: 0;
@@ -866,7 +876,7 @@ form{
     .author{
       position: absolute;
       right: 40px;
-      bottom: -26px;
+      bottom: 10px;
     }
   }
 
@@ -1703,7 +1713,7 @@ header.sub-head{
         display: block;
         position: absolute;
         left: 78%;
-        top: 32%;
+        top: 39%;
         width: 19px;
         height: 19px;
         background: url('/assets/images/arrow-right-black.png') center no-repeat;

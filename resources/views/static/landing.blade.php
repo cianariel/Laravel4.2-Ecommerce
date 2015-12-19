@@ -146,12 +146,15 @@
                         <a href="#" class="social-pic comment">Comment</a>
                     </div>
 
-                    <a href="#" class="overlay-tag bottom get-it big green">
-                        <div class="circle-3">
-                            <div class="circle-2">
-                                <div class="circle-1">Featured</div>
-                            </div>
-                        </div>
+                    {{--<a href="#" class="overlay-tag bottom get-it big green">--}}
+                        {{--<div class="circle-3">--}}
+                            {{--<div class="circle-2">--}}
+                                {{--<div class="circle-1">Featured</div>--}}
+                            {{--</div>--}}
+                        {{--</div>--}}
+                    {{--</a>--}}
+                    <a href="#" class="overlay-tag bottom featured-badge big">
+                                Featured
                     </a>
                 </div>
                 <h3><a href="#">The Top Kitchen Gadgets</a></h3>
