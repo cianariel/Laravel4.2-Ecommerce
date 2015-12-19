@@ -36,7 +36,7 @@
         {
 
             // Apply the jwt.auth middleware to all methods in this controller
-            $this->middleware('jwt.auth', ['except' => ['showProductInCategoryName', 'updateCategory', 'index', 'addCategory', 'showAllRootCategory', 'destroy']]);
+            $this->middleware('jwt.auth', ['except' => ['showCategoryItems', 'showProductInCategoryName', 'updateCategory', 'index', 'addCategory', 'showAllRootCategory', 'destroy']]);
             $this->productCategory = new ProductCategory();
 
 
@@ -84,8 +84,8 @@
                     ],
                     'values' => [
                         'CategoryName' => isset($inputData['CategoryName']) ? $inputData['CategoryName'] : null,
-                        'CategoryName' => isset($inputData['ExtraInfo']) ? $inputData['ExtraInfo'] : null,
-                        'ParentId'     => isset($inputData['ParentId']) ? $inputData['ParentId'] : null
+                        'ExtraInfo'    => isset($inputData['ExtraInfo']) ? $inputData['ExtraInfo'] : null,
+                        'ParentId'     => (isset($inputData['ParentId']) or ($inputData['ParentId']!="") ) ? $inputData['ParentId'] : null
                     ]
                 ];
 
@@ -93,8 +93,12 @@
 
                 if ($validator->fails())
                 {
-                    return $this->setStatusCode(IlluminateResponse::HTTP_NOT_ACCEPTABLE)
-                        ->makeResponseWithError(array('Validation failed', $validator->messages()));
+
+                    $validatorMessage = $validator->messages()->toArray();
+
+                    return $this->setStatusCode(\Config::get("const.api-status.validation-fail"))
+                        ->makeResponseWithError(array('Validation failed',$validatorMessage ));
+
                 } elseif ($validator->passes())
                 {
                     $newCategory = $this->productCategory->addCategory($inputData);
@@ -108,25 +112,24 @@
 
                     // return error if a not existing product id given.
 
-                    if ($newCategory == \Config::get("const.product-id-not-exist"))
+                    if ($newCategory == \Config::get("const.parent-id-not-exist"))
                     {
                         // dd(\Config::get("const.product-id-exist"));
-                        return $this->setStatusCode(IlluminateResponse::HTTP_NOT_ACCEPTABLE)
-                            ->makeResponseWithError(\Config::get("const.product-id-not-exist"));
+                        return $this->setStatusCode(\Config::get("const.api-status.app-failure"))
+                            ->makeResponseWithError(\Config::get("const.parent-id-not-exist"));
 
                     } else
                     {
-                        return $this->setStatusCode(IlluminateResponse::HTTP_OK)
+                        return $this->setStatusCode(\Config::get("const.api-status.success"))
                             ->makeResponse($newCategory);
                     }
                 }
 
             } catch (Exception $ex)
             {
-               // \Log::error($ex);
 
-                return $this->setStatusCode(IlluminateResponse::HTTP_INTERNAL_SERVER_ERROR)
-                    ->makeResponseWithError("Internal server error !",$ex);
+                return $this->setStatusCode(\Config::get("const.api-status.system-fail"))
+                    ->makeResponseWithError("Internal server error !", $ex);
 
             }
         }
@@ -140,16 +143,25 @@
         {
             $data = $this->productCategory->getAllRootCategory();
 
-            return $this->setStatusCode(IlluminateResponse::HTTP_OK)
+            return $this->setStatusCode(\Config::get("const.api-status.success"))
                 ->makeResponse($data);
             //  dd($data);
+        }
+
+        public function showCategoryItems($id = null)
+        {
+            $data = $this->productCategory->getCategoryItems($id);
+
+            return $this->setStatusCode(\Config::get("const.api-status.success"))
+                ->makeResponse($data);
+
         }
 
 
         public function showProductInCategoryName($identity = null)
         {
             if (!isset($identity))
-                return $this->setStatusCode(IlluminateResponse::HTTP_NOT_ACCEPTABLE)
+                return $this->setStatusCode(\Config::get("const.api-status.app-failure"))
                     ->makeResponseWithError(array('Invalid request,please provide category parameter !'));
             try
             {
@@ -157,13 +169,13 @@
                 if ($category->count() != 0)
                     $products = $this->productCategory->productWithinCategory($category['id']);
 
-                return $this->setStatusCode(IlluminateResponse::HTTP_OK)
+                return $this->setStatusCode(\Config::get("const.api-status.success"))
                     ->makeResponse($products);
 
             } catch (Exception $ex)
             {
-                 return $this->setStatusCode(IlluminateResponse::HTTP_NOT_ACCEPTABLE)
-                ->makeResponseWithError(array('Invalid request !',$ex));
+                return $this->setStatusCode(\Config::get("const.api-status.system-fail"))
+                    ->makeResponseWithError(array('Invalid request !', $ex));
             }
 
         }
@@ -182,10 +194,12 @@
             $validationRules = [
                 'rules'  => [
                     'CategoryName' => 'required | max: 15',
+                    'ExtraInfo'    => 'required | max: 25',
                     'CategoryId'   => 'required | integer'
                 ],
                 'values' => [
                     'CategoryName' => isset($inputData['CategoryName']) ? $inputData['CategoryName'] : null,
+                    'ExtraInfo'    => isset($inputData['ExtraInfo']) ? $inputData['ExtraInfo'] : null,
                     'CategoryId'   => isset($inputData['CategoryId']) ? $inputData['CategoryId'] : null
                 ]
             ];
@@ -194,19 +208,21 @@
 
             if ($validator->fails())
             {
-                return $this->setStatusCode(IlluminateResponse::HTTP_NOT_ACCEPTABLE)
-                    ->makeResponseWithError(array('Validation failed', $validator->messages()));
+                $validatorMessage = $validator->messages()->toArray();
+
+                return $this->setStatusCode(\Config::get("const.api-status.validation-fail"))
+                    ->makeResponseWithError(array('Validation failed',$validatorMessage ));
             } elseif ($validator->passes())
             {
                 $message = $this->productCategory->updateCategoryInfo($inputData);
 
                 if ($message == \Config::get("const.category-updated"))
                 {
-                    return $this->setStatusCode(IlluminateResponse::HTTP_OK)
+                    return $this->setStatusCode(\Config::get("const.api-status.success"))
                         ->makeResponse($message);
                 } else
                 {
-                    return $this->setStatusCode(IlluminateResponse::HTTP_NOT_ACCEPTABLE)
+                    return $this->setStatusCode(\Config::get("const.api-status.app-failure"))
                         ->makeResponseWithError(\Config::get("const.category-not-exist"));
                 }
             }
@@ -222,25 +238,25 @@
         {
             try
             {
-                $category = \Input::get('categoryId');
+                $category = \Input::get('CategoryId');
 
                 $message = $this->productCategory->deleteCategory($category);
                 if ($message == \Config::get("const.category-delete-exists"))
                 {
-                    return $this->setStatusCode(IlluminateResponse::HTTP_NOT_ACCEPTABLE)
-                        ->makeResponse($message);
+                    return $this->setStatusCode(\Config::get("const.api-status.app-failure"))
+                        ->makeResponseWithError($message);
                 } elseif ($message == \Config::get("const.category-delete"))
                 {
-                    return $this->setStatusCode(IlluminateResponse::HTTP_OK)
+                    return $this->setStatusCode(\Config::get("const.api-status.success"))
                         ->makeResponse($message);
                 }
 
 
             } catch (Exception $ex)
             {
-                \Log::error($ex);
+               // \Log::error($ex);
 
-                return $this->setStatusCode(IlluminateResponse::HTTP_NOT_ACCEPTABLE)
+                return $this->setStatusCode(\Config::get("const.api-status.system-fail"))
                     ->makeResponseWithError("Invalid category provided!!");
             }
 

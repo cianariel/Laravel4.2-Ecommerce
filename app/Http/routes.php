@@ -42,11 +42,13 @@
          * Product Category route collection
          *
          * */
-        Route::get('index-category', 'ProductCategoryController@index');
-        Route::post('add-category', 'ProductCategoryController@addCategory');
-        Route::post('delete-category', 'ProductCategoryController@destroy');
-        Route::get('root-category', 'ProductCategoryController@showAllRootCategory');
-        Route::post('update-category', 'ProductCategoryController@updateCategory');
+        Route::get('category/index-category', 'ProductCategoryController@index');
+        Route::post('category/add-category', 'ProductCategoryController@addCategory');
+        Route::post('category/delete-category', 'ProductCategoryController@destroy');
+        Route::get('category/root-category', 'ProductCategoryController@showAllRootCategory');
+        Route::post('category/update-category', 'ProductCategoryController@updateCategory');
+        Route::get('category/show-category-items/{id?}', 'ProductCategoryController@showCategoryItems');
+
 
 
         /*
@@ -57,6 +59,7 @@
         Route::get('feed', 'ApiController@feedDispatcher');
     });
 
+    // Route for password reset , email verification ,feed example
     Route::get('password-reset-form/{code?}', 'AuthenticateController@passwordResetForm');
 
     Route::get('verify-email/{code}', 'AuthenticateController@verifyEmail');
@@ -68,9 +71,16 @@
     Route::resource('feed', 'FeedController', ['only' => ['index']]);
 
     // Category dynamic routing
-    Route::get('category/{identity?}','ProductCategoryController@showProductInCategoryName');
+    Route::get('category/{identity?}', 'ProductCategoryController@showProductInCategoryName');
 
 
-// Admin Route
+    // Admin Route
+    // Admin Route
+    Route::group(['prefix' => 'admin'], function ()
+    {
+        Route::get('dashboard', 'AdminController@index');
+        Route::get('category-list', 'AdminController@categoryList');
+        Route::get('category-add', 'AdminController@addCategory');
+        Route::get('category-edit', 'AdminController@editCategory');
 
- Route::get('admin','AdminController@index');
+    });
