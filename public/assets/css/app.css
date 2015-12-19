@@ -5893,19 +5893,15 @@ header.sub-head {
     width: 95%;
     margin-left: 3%; }
 
-  .author-image-big {
-    max-width: 100px;
-    margin: 0 auto;
-    float: none; }
-    .author-image-big img {
-      max-width: 100%;
-      height: auto; }
+  .author-image-big img {
+    max-width: 100%;
+    height: auto; }
 
   .like-wrap {
     margin-left: 30%; }
 
   .idea-stories .story-details .author-overview {
-    padding-top: 0; }
+    padding-top: 5%; }
   .idea-stories .story-details .content-tags {
     margin-bottom: 0; } }
 @media screen and (max-width: 480px) {
@@ -5923,6 +5919,11 @@ header.sub-head {
         padding-left: 25px;
         padding-right: 10px;
         font-size: 1.5rem; }
+
+  .author-image-big {
+    max-width: 100px;
+    margin: 0 auto;
+    float: none; }
 
   .grid-box:hover .img-wrap {
     border: 2px solid #00B1FF;

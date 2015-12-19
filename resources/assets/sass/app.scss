@@ -2558,9 +2558,6 @@ header.sub-head{
   }
 
   .author-image-big{
-    max-width: 100px;
-    margin: 0 auto;
-    float: none;
 
     img{
       max-width: 100%;
@@ -2574,7 +2571,7 @@ header.sub-head{
 
   .idea-stories .story-details{
     .author-overview {
-      padding-top: 0;
+      padding-top: 5%;
     }
 
     .content-tags{
@@ -2606,6 +2603,13 @@ header.sub-head{
       }
     }
 
+
+  }
+
+  .author-image-big{
+    max-width: 100px;
+    margin: 0 auto;
+    float: none;
 
   }
 
