@@ -45,7 +45,7 @@
         public function addCategory($product)
         {
 
-            if (isset($product['ParentId']))
+            if ($product['ParentId'] != null)
                 return $this->addSubCategory($product);
 
             return ProductCategory::create(['category_name' => $product['CategoryName'],
@@ -62,7 +62,7 @@
             $parentNode = $this->getCategory($product['ParentId']);
 
             if ($parentNode == null)
-                return \Config::get("const.product-id-not-exist");
+                return \Config::get("const.parent-id-not-exist");
 
             return $parentNode->children()->create(['category_name' => $product['CategoryName'],
                                                     'extra_info'    => isset($product['ExtraInfo']) ? $product['ExtraInfo'] : null
@@ -176,7 +176,28 @@
 
         }
 
+        public function getCategoryItems($categoryId = null)
+        {
+            if ($categoryId == null)
+                return $this->getAllRootCategory();
+            else
+            {
+                $categories = $this->getCategory($categoryId)->getImmediateDescendants(array('id','category_name','extra_info'));
 
+                $categoryList = collect([]);
+                foreach ($categories as $key => $value)
+                {
+                    $categoryList->push([
+                        'id'       => $value->id,
+                        'category' => $value->category_name,
+                        'info'     => $value->extra_info
+                    ]);
+                }
+
+                return $categoryList;
+            }
+
+        }
 
 
     }
