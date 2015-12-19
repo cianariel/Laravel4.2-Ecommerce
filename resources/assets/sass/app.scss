@@ -227,10 +227,14 @@ a{ // Custom Link Styles
 
 li.nested{
   a.active::after{
-    content: '	▲' !important;
+    background-image: url("/assets/images/arrow-up-black.png");
   }
   a::after{
-    content: '	▼';
+    content: '	';
+    width: 15px;
+    height: 15px;
+    background: url("/assets/images/arrow-down-pink.png") no-repeat;
+    background-size: contain;
     color: $iridium;
   }
 
@@ -662,10 +666,11 @@ form{
     color: $light-grey;
   }
 
-  h3{
+  &.big-box{
     datetime{
-      font-size: 1.7rem;
-      padding-top: 5px;
+      //font-size: 1.3rem;
+      padding: 0px;
+      float: left;
     }
   }
 
@@ -1170,7 +1175,13 @@ form{
 header.colophon{
   //overflow: hidden;
  #top-nav{
-   .signin a{
+   .signin{
+     padding-right: 0;
+
+     a{
+     float: right;
+     margin-right: 0;
+     padding-right: 0;
      padding-left: 40px;
      background-image: url("/assets/images/signin-icon.png");
      background-position: left;
@@ -1180,6 +1191,7 @@ header.colophon{
 
      //a{
      //}
+   }
    }
  }
 
@@ -1230,9 +1242,7 @@ header.colophon{
   li.nested{
     cursor: pointer;
     a::after{
-      content: '▼';
-      color: $iridium;
-      padding-left: 7px;
+      padding-left: 19px;
     }
 
     ul{
@@ -1886,6 +1896,11 @@ header.sub-head{
           height: 48px;
           padding: 0;
           background-size: cover;
+          border-radius: 90px;
+
+          &:hover{
+            border: 2px solid $iridium;
+          }
         }
 
       }
@@ -1987,7 +2002,7 @@ header.sub-head{
         color: $tarmac;
       }
       .btn-white{
-        background: url("/assets/images/heart-grey-outline.png") 5px center no-repeat;
+        background: url("/assets/images/heart-grey-outline.png") 2px center no-repeat;
         padding-left: 25px;
 
       }
@@ -2019,9 +2034,7 @@ header.sub-head{
     }
 
     datetime{
-      font-size: 1rem;
-
-
+      font-size: .9rem;
     }
 
 
@@ -2157,11 +2170,17 @@ header.sub-head{
   }
 
 
-  #hero-nav {
-     a {
-      padding-left: 28px;
-    }
-  }
+  //#hero-nav {
+  //  li.active{
+  //    a {
+  //      padding-left: 28px;
+  //
+  //      &.home-link{
+  //        background-position: -19px 11px;
+  //      }
+  //    }
+  //  }
+  //}
 
   .bottom-load-more{
     margin-top: 65px;
@@ -2198,6 +2217,19 @@ header.sub-head{
 
   .container.fixed-sm{
     min-width: 920px;
+  }
+
+
+  #hero-nav {
+    li.active{
+      a {
+        padding-left: 28px;
+
+        &.home-link{
+          background-position: -19px 11px;
+        }
+      }
+    }
   }
 
 }
@@ -2627,12 +2659,73 @@ header.sub-head{
 
   }
 
-  .author-image-big{
-    max-width: 100px;
-    margin: 0 auto;
-    float: none;
+  .story-details{
+    .author-image-big{
+      max-width: 100px;
+      float: left;
+    }
+    .author-overview{
+      padding-top: 0 !important;
+      float: right;
+      width: 65%;
+    }
+
+    .content-tags{
+      padding-right: 30px;
+      a{
+        display: block;
+        width: 105px;
+        margin: 5px auto;
+        float: none !important;
+      }
+    }
 
   }
+
+  .comments h4{
+    margin-bottom: 30px;
+  }
+
+  .single-comment{
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eee;
+    .comment-author{
+      width: 65px;
+      padding: 0;
+    }
+
+    a.author {
+      width: 49px;
+      height: 50px;
+    }
+
+    .col-sm-8.col-xs-7{
+      width: 80%;
+      p, .comment-name{
+
+        font-size: 1rem;
+      }
+    }
+
+    .btn-white{
+      float: right;
+    }
+
+    .field-wrap{
+      width: 80%;
+
+      textarea{
+        min-height: 67px !important;
+      }
+
+      .btn{
+        float: right;
+      }
+    }
+  }
+
+
+
 
   .grid-box{
       &:hover .img-wrap {

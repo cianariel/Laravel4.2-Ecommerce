@@ -113,7 +113,7 @@
                     <a href="#" class="social-pic likes">157</a>
                     <a href="#" class="social-pic comment">89</a>
                 </div>
-                <datetime>21 Dec 2015</datetime>
+                <datetime>1 hour ago</datetime>
 
             </div>
             <div class="col-xs-6 grid-box full-620">
@@ -131,7 +131,7 @@
                     <a href="#" class="social-pic likes">157</a>
                     <a href="#" class="social-pic comment">89</a>
                 </div>
-                <datetime>21 Dec 2015</datetime>
+                <datetime>5 hours ago</datetime>
 
 
             </div>
@@ -157,8 +157,8 @@
                                 Featured
                     </a>
                 </div>
-                <h3><a href="#">The Top Kitchen Gadgets</a> <datetime>21 Dec 2015</datetime></h3>
-
+                <h3><a href="#">The Top Kitchen Gadgets</a></h3>
+                <datetime>Yesterday</datetime>
 
                 {{--<p>Truly good design and taste are always current, always relevant. Quiet, muted colors determine the image</p>--}}
                 {{--<ul class="box-tags">--}}

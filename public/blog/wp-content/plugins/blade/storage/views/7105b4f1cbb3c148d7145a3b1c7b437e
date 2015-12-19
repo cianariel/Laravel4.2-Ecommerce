@@ -105,12 +105,12 @@
 
         <section class="comments">
             <div class="container">
-                <h4>211 Responses <a class="orange pull-right" href="#">Helpful: 34</a></h4>
+                <h4>211 Comments <span class="orange "">(34 helpful)</span></h4>
 
                 <div class="single-comment">
                     <div class="col-sm-2 col-xs-3 comment-author">
                         <a class="author" href="#"></a>
-                        <div><b>Carrie</b></div>
+                        <div><b class="comment-name">Carrie</b></div>
                     </div>
                     <div  class="col-sm-8 col-xs-7">
                         <p>
