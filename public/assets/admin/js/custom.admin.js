@@ -1,8 +1,30 @@
-var adminApp = angular.module('adminApp', ['ui.bootstrap', 'ngSanitize']);
+var adminApp = angular.module('adminApp', ['ui.bootstrap', 'ngSanitize','angular-confirm']);
 
+adminApp.directive('loading', ['$http' ,function ($http)
+{
+    return {
+        restrict: 'A',
+        link: function (scope, elm, attrs)
+        {
+            scope.isLoading = function () {
+                return $http.pendingRequests.length > 0;
+            };
 
-adminApp.controller('AdminController', ['$scope', '$http', '$location', '$anchorScroll'
-    , function ($scope, $http, $location, $anchorScroll) {
+            scope.$watch(scope.isLoading, function (v)
+            {
+                if(v){
+                    elm.show();
+                }else{
+                    elm.hide();
+                }
+            });
+        }
+    };
+
+}]);
+
+adminApp.controller('AdminController', ['$scope', '$http', '$confirm', '$location', '$anchorScroll'
+    , function ($scope, $http,$confirm, $location, $anchorScroll) {
 
 
         // Initializing application
@@ -83,6 +105,9 @@ adminApp.controller('AdminController', ['$scope', '$http', '$location', '$anchor
                 },
             }).success(function (data) {
                 $scope.outputStatus(data, 'Category item added successfully');
+                $scope.categoryName = '';
+                $scope.extraInfo='';
+                $scope.resetCategory();
             });
 
             return false;
@@ -192,33 +217,39 @@ adminApp.controller('AdminController', ['$scope', '$http', '$location', '$anchor
 
         };
 
-        $scope.deleteCategory=function(idx){
-          //  console.log("Saving contact");
+        $scope.deleteCategory = function (idx) {
+            //  console.log("Saving contact");
             console.log($scope.categoryItems[idx]);
             $scope.closeAlert();
 
-            $http({
-                url: '/api/category/delete-category',
-                method: "POST",
-                data: {
-                    CategoryId: $scope.categoryItems[idx].id
-                },
-            }).success(function (data) {
-                $scope.outputStatus(data, data.data.message);
+          //  var isConfirmed = $window.confirm("Do you want to delete this category itme ?");
 
-                if (data.status_code == 200) {
+            /*$confirm({text: 'Are you sure you want to delete?', title: 'Delete it', ok: 'Yes', cancel: 'No'})
+                .then(function()  {*/
+                $http({
+                    url: '/api/category/delete-category',
+                    method: "POST",
+                    data: {
+                        CategoryId: $scope.categoryItems[idx].id,
+                    },
+                }).success(function (data) {
+                    $scope.outputStatus(data, "Category deleted successfully");
 
-                    $scope.categoryItems.splice(idx,1);
-                    //ds = angular.copy($scope.tableTemporaryValue);
-                   // $scope.cancelCategory();
-                }
+                    if (data.status_code == 200) {
+
+                        $scope.categoryItems.splice(idx, 1);
+
+                        //ds = angular.copy($scope.tableTemporaryValue);
+                        // $scope.cancelCategory();
+                    }
+             /*   });*/
             });
         };
 
 
         $scope.cancelCategory = function () {
             $scope.tableTemporaryValue = {};
-           // $scope.closeAlert();
+            // $scope.closeAlert();
 
         };
 

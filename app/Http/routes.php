@@ -82,7 +82,8 @@
     Route::group(['prefix' => 'admin'], function ()
     {
         Route::get('dashboard', 'AdminController@index');
-        Route::get('category-list', 'AdminController@categoryList');
+        Route::get('category-view', 'AdminController@categoryView');
+
         Route::get('category-add', 'AdminController@addCategory');
         Route::get('category-edit', 'AdminController@editCategory');
 

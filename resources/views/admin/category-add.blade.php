@@ -24,7 +24,7 @@
         <!-- /.row -->
 
         <div ng-app="adminApp" data-ng-controller="AdminController" class="row">
-            <div class="col-lg-12">
+            <div class="col-lg-12" ng-cloak>
                 <div class="panel panel-default">
                     <div class="panel-heading"> Basic Form Elements</div>
                     <div class="panel-body">

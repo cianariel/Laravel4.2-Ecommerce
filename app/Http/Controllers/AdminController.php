@@ -16,14 +16,15 @@ class AdminController extends ApiController
      */
     public function index()
     {
-        $data = ['menu'=>'dynamic menu'];
-        return view('admin.index',$data);
+       /* $data = ['menu'=>'dynamic menu'];*/
+        return view('admin.index');
     }
 
-    public function categoryList()
+
+    public function categoryView()
     {
-        $data = ['menu'=>'dynamic menu'];
-        return view('admin.category-list',$data);
+        //return "hi";
+        return view('admin.category-view');
     }
 
     public function addCategory()

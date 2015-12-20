@@ -9,7 +9,7 @@
                 <a href="#"><i class="fa fa-list fa-fw"></i>Category<span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level collapse" aria-expanded="false" style="height: 0px;">
                     <li>
-                        <a href="/admin/category-list">Category List</a>
+                        <a href="/admin/category-view">Category List</a>
                     <li>
                     <li>
                         <a href="/admin/category-add">Add Category</a>

@@ -1,7 +1,6 @@
 @extends('layouts.admin')
 
 @section('content')
-
         <!-- Navigation -->
 <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
 
@@ -13,11 +12,12 @@
             <!-- /.navbar-static-side -->
 </nav>
 
+
 <div id="page-wrapper">
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header">Update Category Item</h1>
+                <h1 class="page-header">Category List</h1>
             </div>
             <!-- /.col-lg-12 -->
         </div>
@@ -34,12 +34,13 @@
 
                                     <div class="row">
                                         <div class="col-lg-12">
-                                            {{-- <div  ng-cloak>
-                                                 <uib-alert  ng-repeat="alert in alerts" type="@{{alert.type}}"
-                                                             close="closeAlert($index)">@{{alert.msg}}</uib-alert>
-                                                 <p>hi</p>
-                                                 --}}{{--<p ng-bind-html="alertHTML"></p>--}}{{--
-                                             </div>--}}
+                                            <div  ng-cloak>
+                                                <uib-alert  ng-repeat="alert in alerts" type="@{{alert.type}}"
+                                                            close="closeAlert($index)">@{{alert.msg}}</uib-alert>
+
+                                                <p ng-bind-html="alertHTML"></p>
+                                            </div>
+
 
                                             <div>
                                                 <uib-alert ng-repeat="alert in alerts" type="@{{alert.type}}"
@@ -47,7 +48,8 @@
                                                     <p ng-bind-html="alertHTML"></p>
                                                 </uib-alert>
 
-                                                {{--<p ng-bind-html="alertHTML"></p>--}}
+                                                <p ng-bind-html="alertHTML"></p>
+
                                             </div>
 
                                             <div class="panel panel-info">
@@ -68,7 +70,7 @@
                                                 <select data-ng-model="selectedItem" ng-change="getSubCategory()"
                                                         class="form-control">
                                                     <option value="@{{ selectedItem }}">
-                                                        -- Update This Category --
+                                                        -- View This Category --
                                                     </option>
                                                     <option ng-repeat="category in categoryItems"
                                                             value="@{{ category.id }}">
@@ -108,7 +110,7 @@
                                                                     <th>Category Id</th>
                                                                     <th>Category Name</th>
                                                                     <th>URL Info</th>
-                                                                    <th>Action</th>
+                                                                    <th>URL Structure</th>
                                                                 </tr>
                                                                 </thead>
                                                                 <tbody>
@@ -121,14 +123,12 @@
                                                                 <td>@{{ category.category }}</td>
                                                                 <td>@{{ category.info }}</td>
                                                                 <td>
-                                                                    <button ng-click="editCategory(category)" class="btn btn-info btn-circle" uib-tooltip="Edit"
-                                                                            tooltip-placement="bottom">
-                                                                        <i class="fa fa-edit"></i>
+                                                                    <lable> {{Request::root()}}/category/@{{ category.info }} </lable>
+                                                                    {{--<button ng-click="editCategory(category)">Edit
                                                                     </button>
-                                                                    <button ng-click="deleteCategory($index)" confirm="Are you sure to delete this item ?" confirm-settings="{size: 'sm'}"
-                                                                            class="btn btn-danger btn-circle" uib-tooltip="Delete" tooltip-placement="bottom">
-                                                                        <i class="fa fa-times"></i>
-                                                                    </button>
+                                                                    <button ng-click="deleteCategory($index)" confirm="Are you sure?">Delete
+                                                                    </button>--}}
+
                                                                 </td>
                                                             </script>
                                                             <script type="text/ng-template" id="edit">
@@ -139,17 +139,13 @@
                                                                 <td><input type="text"
                                                                            ng-model="tableTemporaryValue.info"/></td>
                                                                 <td>
-                                                                    <button ng-click="updateCategory($index)" class="btn btn-success btn-circle" uib-tooltip="Save"
-                                                                            tooltip-placement="bottom">
-                                                                        <i class="fa fa-check"></i>
+                                                                    <button ng-click="updateCategory($index)">Save
                                                                     </button>
 
-                                                                    <button ng-click="cancelCategory()" class="btn btn-warning btn-circle" uib-tooltip="Cancel"
-                                                                            tooltip-placement="bottom">
-                                                                        <i class="fa fa-times"></i>
-                                                                    </button>
+                                                                    <button ng-click="cancelCategory()">Cancel</button>
                                                                 </td>
                                                             </script>
+
                                                         </div>
                                                         <!-- /.table-responsive -->
                                                     </div>
@@ -172,5 +168,3 @@
     </div>
 </div>
 @stop
-
-
