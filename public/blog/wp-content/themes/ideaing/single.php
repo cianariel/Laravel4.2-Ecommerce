@@ -18,7 +18,7 @@
                     <li><a href="#" class="kitchen-link">Kitchen</a></li>
                     <li class="active"><a href="#" class="ideas-link">Ideas</a></li>
                 </ul>
-                <ul class="like-nav hidden-620 pull-right">
+                <ul class="like-nav hidden-xs pull-right">
                     <li><a class="like-counter" href="#">189</a></li>
                     <li><a class="author" href="#"></a></li>
                     <li><a class="author" href="#"></a></li>
@@ -218,37 +218,52 @@
                     ?>
 <!--                </section>-->
 
-                <div class="col-md-3 col-sm-4 col-xs-12 grid-box">
+<!--                <div class="col-md-3 col-sm-4 col-xs-12 grid-box">-->
+<!--                    <div class="wrap">-->
+<!--                        <img class="img-responsive" src="/assets/images/dummies/box-image-dummy.png">-->
+<!--                        <div class="color-overlay">-->
+<!--                            <h4>Mr Coffee smart <div class="get solid">Get it</div></h4>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+                <div class="col-sm-4 col-xs-12 grid-box">
                     <div class="wrap">
                         <img class="img-responsive" src="/assets/images/dummies/box-image-dummy.png">
                         <div class="color-overlay">
                             <h4>Mr Coffee smart <div class="get solid">Get it</div></h4>
                         </div>
                     </div>
+                    <div class="like-wrap">
+                        <a href="#" class="social-pic likes">157</a>
+                        <a href="#" class="social-pic comment">89</a>
+                    </div>
+                    <datetime>5 hours ago</datetime>
                 </div>
-                <div class="col-md-3  col-sm-4 col-xs-12 grid-box">
+                <div class="col-sm-4 col-xs-12 grid-box">
                     <div class="wrap">
                         <img class="img-responsive" src="/assets/images/dummies/box-image-dummy.png">
                         <div class="color-overlay">
                             <h4>Mr Coffee smart <div class="get solid">Get it</div></h4>
                         </div>
                     </div>
+                    <div class="like-wrap">
+                        <a href="#" class="social-pic likes">157</a>
+                        <a href="#" class="social-pic comment">89</a>
+                    </div>
+                    <datetime>5 hours ago</datetime>
                 </div>
-                <div class="col-md-3  col-sm-4 col-xs-12 grid-box">
+                <div class="col-sm-4 col-xs-12 grid-box">
                     <div class="wrap">
                         <img class="img-responsive" src="/assets/images/dummies/box-image-dummy.png">
                         <div class="color-overlay">
                             <h4>Mr Coffee smart <div class="get solid">Get it</div></h4>
                         </div>
                     </div>
-                </div>
-                <div class="col-md-3  hidden-sm hidden-xs grid-box">
-                    <div class="wrap">
-                        <img class="img-responsive" src="/assets/images/dummies/box-image-dummy.png">
-                        <div class="color-overlay">
-                            <h4>Mr Coffee smart <div class="get solid">Get it</div></h4>
-                        </div>
+                    <div class="like-wrap">
+                        <a href="#" class="social-pic likes">157</a>
+                        <a href="#" class="social-pic comment">89</a>
                     </div>
+                    <datetime>5 hours ago</datetime>
                 </div>
 
 
@@ -257,7 +272,7 @@
             <div class="related-ideas col-xs-12">
                 <h3 class="orange">Related Ideas</h3>
 
-                <div class="col-md-3  col-sm-4 col-xs-12 grid-box">
+                <div class="col-sm-4 col-xs-12 grid-box">
                     <div class="wrap">
                         <img class="img-responsive" src="/assets/images/dummies/box-image-dummy.png">
                         <div class="color-overlay">
@@ -265,8 +280,12 @@
                         </div>
                         <a class="author" href="#"></a>
                     </div>
+                    <div class="like-wrap">
+                        <a href="#" class="social-pic likes">157</a>
+                        <a href="#" class="social-pic comment">89</a>
+                    </div>
                 </div>
-                <div class="col-md-3  col-sm-4 col-xs-12 grid-box">
+                <div class="col-sm-4 col-xs-12 grid-box">
                     <div class="wrap">
                         <img class="img-responsive" src="/assets/images/dummies/box-image-dummy.png">
                         <div class="color-overlay">
@@ -274,8 +293,12 @@
                         </div>
                         <a class="author" href="#"></a>
                     </div>
+                    <div class="like-wrap">
+                        <a href="#" class="social-pic likes">157</a>
+                        <a href="#" class="social-pic comment">89</a>
+                    </div>
                 </div>
-                <div class="col-md-3  col-sm-4 col-xs-12 grid-box">
+                <div class="col-sm-4 col-xs-12 grid-box">
                     <div class="wrap">
                         <img class="img-responsive" src="/assets/images/dummies/box-image-dummy.png">
                         <div class="color-overlay">
@@ -283,16 +306,20 @@
                         </div>
                         <a class="author" href="#"></a>
                     </div>
-                </div>
-                <div class="col-md-3  hidden-sm hidden-xs grid-box">
-                    <div class="wrap">
-                        <img class="img-responsive" src="/assets/images/dummies/box-image-dummy.png">
-                        <div class="color-overlay">
-                            <h4>Mr Coffee smart</h4>
-                        </div>
-                        <a class="author" href="#"></a>
+                    <div class="like-wrap">
+                        <a href="#" class="social-pic likes">157</a>
+                        <a href="#" class="social-pic comment">89</a>
                     </div>
                 </div>
+<!--                <div class="col-md-3  hidden-sm hidden-xs grid-box">-->
+<!--                    <div class="wrap">-->
+<!--                        <img class="img-responsive" src="/assets/images/dummies/box-image-dummy.png">-->
+<!--                        <div class="color-overlay">-->
+<!--                            <h4>Mr Coffee smart</h4>-->
+<!--                        </div>-->
+<!--                        <a class="author" href="#"></a>-->
+<!--                    </div>-->
+<!--                </div>-->
 
             </div>
 
