@@ -1865,22 +1865,20 @@ header.sub-head{
 
   .like-nav{
     li{
-      width: 55px;
+      width: 50px;
       padding-top: 9px;
       float: left;
 
       &:first-child{
-        width: 85px;
+        width: 64px;
       }
       &:last-child{
         width: auto;
       }
 
-
-
       a{
         padding-top: 15px;
-        padding-left: 0;
+        padding-left: 10px;
         background-position: initial;
 
         &.like-counter{

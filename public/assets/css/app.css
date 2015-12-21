@@ -5517,16 +5517,16 @@ header.sub-head {
     color: #00B1FF;
     background-image: url("/assets/images/photos-blue.png"); }
   #hero-nav .like-nav li {
-    width: 55px;
+    width: 50px;
     padding-top: 9px;
     float: left; }
     #hero-nav .like-nav li:first-child {
-      width: 85px; }
+      width: 64px; }
     #hero-nav .like-nav li:last-child {
       width: auto; }
     #hero-nav .like-nav li a {
       padding-top: 15px;
-      padding-left: 0;
+      padding-left: 10px;
       background-position: initial; }
       #hero-nav .like-nav li a.like-counter {
         height: 40px;
