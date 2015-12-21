@@ -5461,8 +5461,8 @@ header.sub-head {
       #hero-nav a.home-link:hover {
         color: #FF0042;
         background-image: url("/assets/images/house-pink.png");
-        background-position: -15px 10px;
-        background-size: 44px; }
+        background-position: -18px 10px;
+        background-size: 48px; }
     #hero-nav a.all-link {
       background-image: url("/assets/images/grid-dense-grey.png");
       background-position: 0 20px;
@@ -5495,7 +5495,7 @@ header.sub-head {
     font-size: 1.7rem;
     position: absolute;
     bottom: -12px;
-    right: 22px;
+    right: 46%;
     color: #fff;
     text-shadow: -1px -1px 0 #d5dfdf, 1px -1px 0 #d5dfdf, -1px 1px 0 #fff, 1px 1px 0 #fff; }
   #hero-nav li.active a.home-link {

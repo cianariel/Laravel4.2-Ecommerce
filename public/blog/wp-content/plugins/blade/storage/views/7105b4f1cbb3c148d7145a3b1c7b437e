@@ -129,7 +129,7 @@
                             <a class="author" href="#"></a>
                         </div>
                         <div  class="col-xs-10 field-wrap">
-                            <textarea class="form-control" name="comment" id="you-comment" placeholder="What are you working on..."></textarea>
+                            <textarea class="form-control" name="comment" id="you-comment" placeholder="Share your thoughts"></textarea>
                             <div class="pull-right comment-controls">
                                 <a href="#" class="add-photo">Add a photo</a>
                                 <button class="btn btn-info">Post</button>

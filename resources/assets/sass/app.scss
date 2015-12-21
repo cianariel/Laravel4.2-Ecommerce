@@ -1763,8 +1763,8 @@ header.sub-head{
       &:hover{
         color: $iridium;
         background-image: url('/assets/images/house-pink.png');
-        background-position: -15px 10px;
-        background-size: 44px;
+        background-position: -18px 10px;
+        background-size: 48px; 
       }
     }
     &.all-link{
@@ -1827,7 +1827,7 @@ header.sub-head{
       font-size: 1.7rem;
       position: absolute;
       bottom: -12px;
-      right: 22px;
+      right: 46%;
       color: #fff;
       text-shadow:
       -1px -1px 0 darken($pale-grey, 10%),
