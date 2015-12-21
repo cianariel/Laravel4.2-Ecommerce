@@ -459,4 +459,46 @@ function loadLaravelView($templateName){ // and even faster
     return include('/var/www/ideaing/resources/views/layouts/parts/' . $templateName . '.blade.php');
 }
 
+function getThumbnailLink($postID){
+    return wp_get_attachment_url( get_post_thumbnail_id($postID) );
+}
+
+// ADD EXTRA AUTHOR FIELDS
+
+add_action( 'show_user_profile', 'my_show_extra_profile_fields' );
+add_action( 'edit_user_profile', 'my_show_extra_profile_fields' );
+
+function my_show_extra_profile_fields( $user ) {
+
+   echo '<table class="form-table">
+
+        <tr>
+            <th><label for="role">About</label></th>
+
+            <td>
+                <input type="text" name="about" id="about" value="'. esc_attr( get_the_author_meta( "about", $user->ID ) ) . '" class="regular-text" /><br />
+                <span class="description">E.g. a chief editor at NY Times</span>
+            </td>
+        </tr>
+
+    </table>';
+}
+
+
+add_action( 'personal_options_update', 'my_save_extra_profile_fields' );
+add_action( 'edit_user_profile_update', 'my_save_extra_profile_fields' );
+
+function my_save_extra_profile_fields( $user_id ) {
+
+    if ( !current_user_can( 'edit_user', $user_id ) )
+        return false;
+
+    /* Copy and paste this line for additional fields. */
+    update_usermeta( $user_id, 'about', $_POST['about'] );
+}
+
+
+
+
+
 ?>

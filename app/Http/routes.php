@@ -12,12 +12,9 @@
     |
     */
 
-    Route::get('/', function ()
-    {
-        return view('welcome');
-    });
+    Route::get('/', 'PageController@home');
 
-    Route::get('/landing', function ()
+    Route::get('/landing', function () // temp, used for tweaking frontend
     {
         return view('static.landing');
     });

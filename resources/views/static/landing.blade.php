@@ -15,7 +15,6 @@
                     <li class="shop-cool">Shop for cool gadgets and unique decor</li>
                 </ul>
 
-                {{--<a class="btn btn-success col-xs-8" href="#">Find out more</a>--}}
             </div>
             <div class="col-md-4 col-xs-6 col-md-offset-1 hero-box qiuck-signup hidden-620">
                 <form>
@@ -32,34 +31,19 @@
                 </form>
             </div>
 
-            {{--<div class="mobile-hero col-xs-12 hidden-lg hidden-md hidden-sm">--}}
-                {{--<h2>11 Kitchen Gadgets You Need Now</h2>--}}
-                {{--<a href="#" class="social-pic likes red">193</a>--}}
-
-
-            {{--</div>--}}
-
-            {{--<div class="mobile-register hidden-lg hidden-md hidden-sm">--}}
-                {{--<div>--}}
-                    {{--<a href="#" class="register-button">--}}
-                        {{--Register--}}
-                    {{--</a>--}}
-                    {{--<a class="signup-with-facebook pull-right">Signup with Facebook</a>--}}
-                {{--</div>--}}
-
-            {{--</div>--}}
 
         </div>
     </section>
     <nav id="hero-nav" class="col-sm-12">
         <div class="container full-620  fixed-sm">
-            <ul>
-                <li class="col-xs-4 active hidden-620"><a class="home-link" href="">Home</a></li>
-
-                <li class="col-xs-2 active"><a href="" class="all-link">All</a></li>
-                <li class="col-xs-2 "><a href="" class="ideas-link">Ideas</a></li>
-                <li class="col-xs-2 "><a href="" class="products-link">Products</a></li>
-                <li class="col-xs-2 "><a href="" class="photos-link">Photos</a></li>
+            <ul class="left-nav col-xs-1 hidden-620">
+                <li class="active"><a class="home-link" href="#">Home</a></li>
+            </ul>
+            <ul class="category-nav pull-right">
+                <li class="active"><a href="" class="all-link">All</a></li>
+                <li><a href="" class="ideas-link">Ideas</a></li>
+                <li><a href="" class="products-link">Products</a></li>
+                <li><a href="" class="photos-link">Photos</a></li>
             </ul>
         </div>
     </nav>
@@ -117,53 +101,39 @@
                 <div class="img-wrap">
                     <img class="img-responsive" src="/assets/images/dummies/box-image-dummy.png">
                     <a href="#" class="overlay-tag category-tag top product">Category: Products</a>
-                    <div class="like-wrap">
-                        <a href="#" class="social-pic likes">Like it</a>
-                        <a href="#" class="social-pic comment">Comment</a>
-                    </div>
-                    {{--<a href="#" class="overlay-tag bottom get-it">--}}
-                        {{--<div class="circle-3">--}}
-                            {{--<div class="circle-2">--}}
-                                {{--<div class="circle-1">Get it</div>--}}
-                            {{--</div>--}}
-                        {{--</div>--}}
-                    {{--</a>--}}
 
+                    <div class="color-overlay">
+                        <b class="price">$199</b>
+                        <img class="vendor-logo" src="/assets/images/dummies/amazon.png">
+                        <div class="get solid">Get it</div>
+                        <h4>Venetian Louge Suite</h4>
+                    </div>
                 </div>
-                <h3><a href="#">Venetian Louge Suite</a></h3>
-                <b class="price">$199</b>
-                <div class="get">Get it</div>
-                <img class="vendor-logo" src="/assets/images/dummies/amazon.png">
-                {{--<ul class="box-tags">--}}
-                    {{--<li class="box-tag"><a>Products</a></li>--}}
-                {{--</ul>--}}
+                <div class="like-wrap">
+                    <a href="#" class="social-pic likes">157</a>
+                    <a href="#" class="social-pic comment">89</a>
+                </div>
+                <datetime>1 hour ago</datetime>
+
             </div>
             <div class="col-xs-6 grid-box full-620">
                 <div class="img-wrap">
                     <img class="img-responsive" src="/assets/images/dummies/img-small.jpg">
-                    <a href="#" class="overlay-tag category-tag top photo">Category: Photo</a>
-
-                    <div class="like-wrap">
-                         <a href="#" class="social-pic likes">Like it</a>
-                         <a href="#" class="social-pic comment">Comment</a>
+                    <a href="#" class="overlay-tag category-tag top product">Category: Products</a>
+                    <div class="color-overlay">
+                        <b class="price">$199</b>
+                        <img class="vendor-logo" src="/assets/images/dummies/amazon.png">
+                        <div class="get solid">Get it</div>
+                        <h4>Venetian Louge Suite</h4>
                     </div>
-
-                    {{--<a href="#" class="overlay-tag bottom get-it">--}}
-                        {{--<div class="circle-3">--}}
-                            {{--<div class="circle-2">--}}
-                                {{--<div class="circle-1">Get it</div>--}}
-                            {{--</div>--}}
-                        {{--</div>--}}
-                    {{--</a>--}}
                 </div>
-                <h3><a href="#">Venetian Louge Suite</a></h3>
-                <b class="price">$199</b>
-                <div class="get">Get it</div>
-                <img class="vendor-logo" src="/assets/images/dummies/amazon.png">
-                {{--<ul class="box-tags">--}}
-                    {{--<li class="box-tag"><a>Products</a></li>--}}
-                    {{--displays only one main tag--}}
-                {{--</ul>--}}
+                <div class="like-wrap">
+                    <a href="#" class="social-pic likes">157</a>
+                    <a href="#" class="social-pic comment">89</a>
+                </div>
+                <datetime>5 hours ago</datetime>
+
+
             </div>
             <div class="col-xs-12 grid-box big-box full-620">
                 <div class="img-wrap">
@@ -176,16 +146,21 @@
                         <a href="#" class="social-pic comment">Comment</a>
                     </div>
 
-                    <a href="#" class="overlay-tag bottom get-it big green">
-                        <div class="circle-3">
-                            <div class="circle-2">
-                                <div class="circle-1">Featured</div>
-                            </div>
-                        </div>
+                    {{--<a href="#" class="overlay-tag bottom get-it big green">--}}
+                        {{--<div class="circle-3">--}}
+                            {{--<div class="circle-2">--}}
+                                {{--<div class="circle-1">Featured</div>--}}
+                            {{--</div>--}}
+                        {{--</div>--}}
+                    {{--</a>--}}
+                    <a href="#" class="overlay-tag bottom featured-badge big">
+                                Featured
                     </a>
                 </div>
                 <h3><a href="#">The Top Kitchen Gadgets</a></h3>
-                <p>Truly good design and taste are always current, always relevant. Quiet, muted colors determine the image</p>
+                <datetime>Yesterday</datetime>
+
+                {{--<p>Truly good design and taste are always current, always relevant. Quiet, muted colors determine the image</p>--}}
                 {{--<ul class="box-tags">--}}
                     {{--<li class="box-tag"><a>Products</a></li>--}}
                 {{--</ul>--}}
