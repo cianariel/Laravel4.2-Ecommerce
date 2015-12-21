@@ -5589,7 +5589,8 @@ header.sub-head {
   overflow: hidden;
   color: #c1c1c1; }
   .idea-stories .comments .single-comment .comment-author {
-    text-align: center; }
+    text-align: center;
+    padding-right: 0; }
   .idea-stories .comments .single-comment b {
     color: #3D4B4E; }
   .idea-stories .comments .single-comment .btn-white {

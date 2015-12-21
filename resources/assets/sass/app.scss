@@ -1764,7 +1764,7 @@ header.sub-head{
         color: $iridium;
         background-image: url('/assets/images/house-pink.png');
         background-position: -18px 10px;
-        background-size: 48px; 
+        background-size: 48px;
       }
     }
     &.all-link{
@@ -1995,6 +1995,7 @@ header.sub-head{
 
       .comment-author{
         text-align: center;
+        padding-right: 0;
       }
       b{
         color: $tarmac;

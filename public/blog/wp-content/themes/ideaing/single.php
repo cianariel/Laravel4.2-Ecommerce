@@ -104,30 +104,27 @@
 
         <section class="comments">
             <div class="container">
-                <h4>211 Comments <span class="orange "">(34 helpful)</span></h4>
+                <h4>211 Comments</h4>
 
                 <div class="single-comment">
-                    <div class="col-sm-2 col-xs-3 comment-author">
+                    <div class="col-md-1 col-sm-2 col-xs-3 comment-author">
                         <a class="author" href="#"></a>
                         <div><b class="comment-name">Carrie</b></div>
                     </div>
-                    <div  class="col-sm-8 col-xs-7">
+                    <div  class="col-md-8 col-sm-8 col-xs-7">
                         <p>
                             Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur?
                         </p>
                         <datetime>August 2015</datetime>
                     </div>
-                    <button  class="btn btn-white like helpful col-sm-1 col-xs-2">
-                        Helpful
-                    </button>
                 </div>
 
                 <section class="add-comment">
                     <div class="single-comment">
-                        <div class="col-xs-2 col-xs-3 comment-author">
+                        <div class="col-md-1 col-sm-2 col-xs-3 comment-author">
                             <a class="author" href="#"></a>
                         </div>
-                        <div  class="col-xs-10 field-wrap">
+                        <div  class="col-xs-8 field-wrap">
                             <textarea class="form-control" name="comment" id="you-comment" placeholder="Share your thoughts"></textarea>
                             <div class="pull-right comment-controls">
                                 <a href="#" class="add-photo">Add a photo</a>
