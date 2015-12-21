@@ -75,6 +75,7 @@
 
 
     // Admin Route
+
     // Admin Route
     Route::group(['prefix' => 'admin'], function ()
     {
