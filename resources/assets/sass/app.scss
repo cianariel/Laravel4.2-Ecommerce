@@ -1283,7 +1283,7 @@ header.colophon{
 
 
     &.extra{
-      margin-left: 5%;
+      margin-left: 1%;
     }
 
     &.about{
@@ -2079,6 +2079,7 @@ header.sub-head{
 
       .wrap{
         width: 100%;
+        border-radius: 3px;
       }
 
       img{
@@ -2106,10 +2107,19 @@ header.sub-head{
         margin-left: 0%;
       }
 
-      &:hover .color-overlay{
-        display: block;
+      &:hover{
+        .wrap{
+          border: 1px solid $sky-blue;
+          box-shadow: 0 0 0 2pt $sky-blue;
+        }
+          .color-overlay{
+          display: block;
+        }
       }
     }
+
+
+
   }
 
 

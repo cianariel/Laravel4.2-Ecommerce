@@ -5145,7 +5145,7 @@ header.colophon .search-bar {
     color: #3D4B4E;
     border-radius: 3px; }
     #mid-nav a.extra {
-      margin-left: 5%; }
+      margin-left: 1%; }
     #mid-nav a.about {
       margin-left: 7%;
       color: #93a6ab; }
@@ -5627,7 +5627,8 @@ header.sub-head {
     margin-bottom: 35px;
     cursor: pointer; }
     .idea-stories .related-items .grid-box .wrap {
-      width: 100%; }
+      width: 100%;
+      border-radius: 3px; }
     .idea-stories .related-items .grid-box img {
       width: 100%;
       border-radius: 3px;
@@ -5643,6 +5644,9 @@ header.sub-head {
       padding-right: 0; }
     .idea-stories .related-items .grid-box .like-wrap {
       margin-left: 0%; }
+    .idea-stories .related-items .grid-box:hover .wrap {
+      border: 1px solid #00B1FF;
+      box-shadow: 0 0 0 2pt #00B1FF; }
     .idea-stories .related-items .grid-box:hover .color-overlay {
       display: block; }
 
