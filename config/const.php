@@ -29,5 +29,8 @@
             'validation-fail' => 400,
             'app-failure'     => 410,
             'system-fail'  => 500
-        ]
+        ],
+
+        // Category Static Blog Name for Category
+        'blog-name'=>'blog'
     ];

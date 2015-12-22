@@ -23,7 +23,7 @@
         </div>
         <!-- /.row -->
 
-        <div ng-app="adminApp" data-ng-controller="AdminController" class="row" >
+        <div ng-app="adminApp" data-ng-controller="AdminController" class="row">
             <div class="col-lg-12" ng-cloak>
                 <div class="panel panel-default">
                     <div class="panel-heading"> Basic Form Elements</div>
@@ -34,21 +34,12 @@
 
                                     <div class="row">
                                         <div class="col-lg-12">
-                                            <div  ng-cloak>
-                                                <uib-alert  ng-repeat="alert in alerts" type="@{{alert.type}}"
-                                                            close="closeAlert($index)">@{{alert.msg}}</uib-alert>
-
-                                                <p ng-bind-html="alertHTML"></p>
-                                            </div>
-
 
                                             <div>
                                                 <uib-alert ng-repeat="alert in alerts" type="@{{alert.type}}"
                                                            close="closeAlert($index)">
                                                     <p ng-bind-html="alertHTML"></p>
                                                 </uib-alert>
-
-                                                <p ng-bind-html="alertHTML"></p>
 
                                             </div>
 
@@ -123,12 +114,7 @@
                                                                 <td>@{{ category.category }}</td>
                                                                 <td>@{{ category.info }}</td>
                                                                 <td>
-                                                                    <lable> {{Request::root()}}/category/@{{ category.info }} </lable>
-                                                                    {{--<button ng-click="editCategory(category)">Edit
-                                                                    </button>
-                                                                    <button ng-click="deleteCategory($index)" confirm="Are you sure?">Delete
-                                                                    </button>--}}
-
+                                                                    <lable> {{Request::root()}}/@{{ buildURL(category.info )}} </lable>
                                                                 </td>
                                                             </script>
                                                             <script type="text/ng-template" id="edit">

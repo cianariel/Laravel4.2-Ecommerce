@@ -217,8 +217,9 @@
             'ability'            => 'Zizaco\Entrust\Middleware\EntrustAbility',
             'Carbon'             => 'Carbon\Carbon',
             'CustomAppException' => 'App\Core\CustomAppException',
-            'Feeds'              => willvincent\Feeds\Facades\FeedsFacade::class,
+            'Feeds'              => willvincent\Feeds\Facades\FeedsFacade::class, // todo :need to chk the existence
             'FeedParser'         => 'App\Core\FeedParser',
+            'ViewHelper'         => 'App\Core\ViewHelper',
 
 
         ],

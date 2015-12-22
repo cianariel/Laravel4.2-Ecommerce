@@ -166,13 +166,17 @@
             try
             {
                 $category = ProductCategory::where('extra_info', '=', $identity)->first();
+
+                if ($category == null)
+                    return $this->setStatusCode(\Config::get("const.api-status.system-fail"))
+                        ->makeResponseWithError(array('Invalid request !'));
                 if ($category->count() != 0)
                     $products = $this->productCategory->productWithinCategory($category['id']);
 
                 return $this->setStatusCode(\Config::get("const.api-status.success"))
                     ->makeResponse($products);
 
-            } catch (Exception $ex)
+            } catch (\Exception $ex)
             {
                 return $this->setStatusCode(\Config::get("const.api-status.system-fail"))
                     ->makeResponseWithError(array('Invalid request !', $ex));

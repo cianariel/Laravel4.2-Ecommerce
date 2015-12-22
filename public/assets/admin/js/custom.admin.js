@@ -1,20 +1,17 @@
-var adminApp = angular.module('adminApp', ['ui.bootstrap', 'ngSanitize','angular-confirm']);
+var adminApp = angular.module('adminApp', ['ui.bootstrap', 'ngSanitize', 'angular-confirm']);
 
-adminApp.directive('loading', ['$http' ,function ($http)
-{
+adminApp.directive('loading', ['$http', function ($http) {
     return {
         restrict: 'A',
-        link: function (scope, elm, attrs)
-        {
+        link: function (scope, elm, attrs) {
             scope.isLoading = function () {
                 return $http.pendingRequests.length > 0;
             };
 
-            scope.$watch(scope.isLoading, function (v)
-            {
-                if(v){
+            scope.$watch(scope.isLoading, function (v) {
+                if (v) {
                     elm.show();
-                }else{
+                } else {
                     elm.hide();
                 }
             });
@@ -24,7 +21,7 @@ adminApp.directive('loading', ['$http' ,function ($http)
 }]);
 
 adminApp.controller('AdminController', ['$scope', '$http', '$confirm', '$location', '$anchorScroll'
-    , function ($scope, $http,$confirm, $location, $anchorScroll) {
+    , function ($scope, $http, $confirm, $location, $anchorScroll) {
 
 
         // Initializing application
@@ -39,6 +36,8 @@ adminApp.controller('AdminController', ['$scope', '$http', '$confirm', '$locatio
 
             $scope.tableTemporaryValue = {};
             $scope.alertHTML = '';
+
+            $scope.tmpUrl = '';
 
 
         };
@@ -106,7 +105,7 @@ adminApp.controller('AdminController', ['$scope', '$http', '$confirm', '$locatio
             }).success(function (data) {
                 $scope.outputStatus(data, 'Category item added successfully');
                 $scope.categoryName = '';
-                $scope.extraInfo='';
+                $scope.extraInfo = '';
                 $scope.resetCategory();
             });
 
@@ -222,27 +221,27 @@ adminApp.controller('AdminController', ['$scope', '$http', '$confirm', '$locatio
             console.log($scope.categoryItems[idx]);
             $scope.closeAlert();
 
-          //  var isConfirmed = $window.confirm("Do you want to delete this category itme ?");
+            //  var isConfirmed = $window.confirm("Do you want to delete this category itme ?");
 
             /*$confirm({text: 'Are you sure you want to delete?', title: 'Delete it', ok: 'Yes', cancel: 'No'})
-                .then(function()  {*/
-                $http({
-                    url: '/api/category/delete-category',
-                    method: "POST",
-                    data: {
-                        CategoryId: $scope.categoryItems[idx].id,
-                    },
-                }).success(function (data) {
-                    $scope.outputStatus(data, "Category deleted successfully");
+             .then(function()  {*/
+            $http({
+                url: '/api/category/delete-category',
+                method: "POST",
+                data: {
+                    CategoryId: $scope.categoryItems[idx].id,
+                },
+            }).success(function (data) {
+                $scope.outputStatus(data, "Category deleted successfully");
 
-                    if (data.status_code == 200) {
+                if (data.status_code == 200) {
 
-                        $scope.categoryItems.splice(idx, 1);
+                    $scope.categoryItems.splice(idx, 1);
 
-                        //ds = angular.copy($scope.tableTemporaryValue);
-                        // $scope.cancelCategory();
-                    }
-             /*   });*/
+                    //ds = angular.copy($scope.tableTemporaryValue);
+                    // $scope.cancelCategory();
+                }
+                /*   });*/
             });
         };
 
@@ -250,6 +249,17 @@ adminApp.controller('AdminController', ['$scope', '$http', '$confirm', '$locatio
         $scope.cancelCategory = function () {
             $scope.tableTemporaryValue = {};
             // $scope.closeAlert();
+
+        };
+
+        $scope.buildURL = function (keyWord) {
+
+            if (keyWord.indexOf("blog") > -1) {
+                return keyWord;
+            } else {
+                return "category/" + keyWord;
+            }
+
 
         };
 
