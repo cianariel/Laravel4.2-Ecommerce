@@ -121,7 +121,7 @@
                 {
                     $user['FullName'] = $userData->name;
                     $user['Email'] = $userData->email;
-                    $user['Password'] = env('FB_DEFULT_PASSWORD');
+                    $user['Password'] = env('FB_DEFAULT_PASSWORD');
 
                     $this->SaveUserInformation($user);
 

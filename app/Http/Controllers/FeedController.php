@@ -19,10 +19,11 @@ class FeedController extends Controller
     {
         $feed = new \FeedParser();
 
-        //   function parseFeed($onlyData = false,$feedCount = 0) chk default value
+        //   function parseFeed($onlyData = false,$feedCount = 0, $cacheable = false) chk default value
         //   onlyData "true" returns raw post data and "false" returns blog name , title, link
         //   feedCount set the number of total required feed, 0 will pull all posts
-        $data = $feed->parseFeed(true,4,true);
+        //   Third parameter will set the caching enable by setting true or cache will remain disable,
+        $data = $feed->parseFeed(true,1,true);
 
        // return $data;
 

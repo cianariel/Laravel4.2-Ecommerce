@@ -26,7 +26,6 @@
                 $data = \Cache::get('feed.cache');
 
                 return $onlyData ? $data['item'] : $data;
-
             }
 
             $feed = $this->domObj;
@@ -104,7 +103,6 @@
         public function cleanDescription($html)
         {
             return strip_tags($html);
-
         }
     }
 

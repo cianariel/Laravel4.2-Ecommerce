@@ -34,12 +34,7 @@
 
                                     <div class="row">
                                         <div class="col-lg-12">
-                                            {{-- <div  ng-cloak>
-                                                 <uib-alert  ng-repeat="alert in alerts" type="@{{alert.type}}"
-                                                             close="closeAlert($index)">@{{alert.msg}}</uib-alert>
-                                                 <p>hi</p>
-                                                 --}}{{--<p ng-bind-html="alertHTML"></p>--}}{{--
-                                             </div>--}}
+
 
                                             <div>
                                                 <uib-alert ng-repeat="alert in alerts" type="@{{alert.type}}"
@@ -47,7 +42,6 @@
                                                     <p ng-bind-html="alertHTML"></p>
                                                 </uib-alert>
 
-                                                {{--<p ng-bind-html="alertHTML"></p>--}}
                                             </div>
 
                                             <div class="panel panel-info">
