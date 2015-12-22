@@ -8,11 +8,17 @@ $iridium: #FF0042;
 $dark-orange: #FF7F00;
 $pine-green: #C7C747;
 $sky-blue: #00B1FF;
-$facebook-blue: #079DD1;
 $pale-blue: #F5FBFC;
 $pale-grey: #F2F5F5;
 $light-grey: #c1c1c1;
 $tarmac: #3D4B4E;
+
+$facebook-blue: #079DD1;
+$facebook-blue-2: #5C7CBD;
+$twitter-blue: #7BD1F0;
+$google-red: #EF434D;
+$pinterest-red: #E61D25;
+$instagram-blue:#54A3DA;
 
 .pink{
   color: $iridium !important;
@@ -220,6 +226,54 @@ a{ // Custom Link Styles
     width: 121px;
     height: 59px;
     background: url("/assets/images/featured-badge-pink.png")left center no-repeat;
+  }
+
+  // social buttons
+
+  &.fb{
+    background-color: $facebook-blue-2;
+    background-image: url("/assets/images/fb-white-small.png");
+    background-repeat: no-repeat;
+  }
+  &.twi{
+    background-color: $twitter-blue;
+    background-image: url("/assets/images/twi-white-small.png");
+    background-repeat: no-repeat;
+  }
+  &.gp{
+    background-color: $google-red;
+    background-image: url("/assets/images/gp-white-small.png");
+    background-repeat: no-repeat;
+  }
+  &.pint{
+    background-color: $pinterest-red;
+    background-image: url("/assets/images/pint-white-small.png");
+    background-repeat: no-repeat;
+  }
+  &.inst{
+    background-color: $instagram-blue;
+    background-image: url("/assets/images/inst-blue-small.png");
+    background-repeat: no-repeat;
+  }
+
+
+
+
+  &.email{
+    background-color: $light-grey;
+    background-image: url("/assets/images/email-white-small.png");
+    background-repeat: no-repeat;
+  }
+  &.heart{
+    background-image: url("/assets/images/heart-red.png");
+    background-size: 19px;
+    background-repeat: no-repeat;
+
+  }
+  &.comment{
+    background-image: url("/assets/images/chat-blue-outline.png");
+    background-size: 19px;
+    background-repeat: no-repeat;
   }
 
 
@@ -2124,6 +2178,115 @@ header.sub-head{
 
 
 
+}
+
+
+footer.about-footer{
+  display: none;
+  padding: 55px 0;
+  background: #171617;
+
+  h4{
+    margin-bottom: 35px;
+  }
+
+  li{
+    margin-bottom: 20px;
+  }
+
+  a{
+    color: #fff;
+    font-size: 1.3rem;
+
+  }
+
+  .social-connect{
+    li{
+      margin-bottom: 3px;
+    }
+    a{
+      display: block;
+      width: 100%;
+      padding: 0 0 0 45px;
+      border-radius: 4px;
+      border: 1px solid lighten(#171617, 20%);
+      background-position: 9px center;
+
+
+      span{
+        display: inline-block;
+        width: 100%;
+        background: #171617;
+        padding: 4px 10px;
+
+        b{
+          display: inline-block;
+          float: right;
+          text-align: right;
+        }
+      }
+
+      &.fb{
+        &:hover{
+          span{
+            background: $facebook-blue-2;
+          }
+        }
+      }
+      &.twi{
+        &:hover{
+          span{
+            background: $twitter-blue;
+          }
+        }
+      }
+      &.gp{
+        &:hover{
+          span{
+            background: $google-red;
+          }
+        }
+      }
+      &.pint{
+        &:hover{
+          span{
+            background: $pinterest-red;
+          }
+        }
+      }
+      &.inst{
+        &:hover{
+          span{
+            background: $instagram-blue;
+          }
+        }
+      }
+
+      &.pint,
+      &.inst{
+        background-position: 12px center;
+      }
+    }
+  }
+
+  input[type="text"]{
+    width: 70%;
+    min-width: 175px;
+    background: lighten(#171617, 20%);
+    padding: 3px 12px;
+    border-radius: 4px;
+    border: 0;
+    float: left;
+    //outline: ;
+  }
+
+  input[type="submit"]{
+    width: 30%;
+    min-width: 75px;
+    float: left;
+    margin-left: -10px;
+    border-radius: 0 4px 4px 0;
+  }
 }
 
 
