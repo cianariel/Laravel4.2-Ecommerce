@@ -140,6 +140,8 @@
 
                 </div>
 
+         <?php    print_r($stories); ?>
+
             @foreach($stories as $story)
 
             <div class="col-xs-12 grid-box big-box full-620">
