@@ -30,7 +30,18 @@
 		<!-- article -->
 
         <div class="container full-620 main-container fixed-sm">
-            <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+            <aside class="share-bar sticks-on-scroll">
+                <ul>
+                    <li class="fb"><a href="#">55</a></li>
+                    <li class="twi"><a href="#">120</a></li>
+                    <li class="gp"><a href="#">521</a></li>
+                    <li class="email"><a href="#">Email</a></li>
+                    <li class="heart"><a href="#">12.5</a></li>
+                    <li class="comment"><a href="#">322</a></li>
+                </ul>
+            </aside>
+
+            <article id="post-<?php the_ID(); ?>" {{post_class('col-sm-11 col-md-offset-1')}}>
 
                 <header class="story-details col-lg-7  col-sm-8 col-xs-10 full-480">
                     <div class="author-image-big col-lg-4 col-sm-6 col-xs-5 full-480">
@@ -55,16 +66,7 @@
 
                 </header>
 
-                <aside class="share-bar sticks-on-scroll">
-                    <ul>
-                        <li class="fb"><a href="#">55</a></li>
-                        <li class="twi"><a href="#">120</a></li>
-                        <li class="gp"><a href="#">521</a></li>
-                        <li class="email"><a href="#">Email</a></li>
-                        <li class="heart"><a href="#">12.5</a></li>
-                        <li class="comment"><a href="#">322</a></li>
-                    </ul>
-                </aside>
+
 
                 <section class="article-content">
                     <?php the_content(); ?>

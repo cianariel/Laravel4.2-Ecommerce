@@ -14,7 +14,7 @@
                     <li class="share-vote">Share and Vote on the best theme decor</li>
                     <li class="shop-cool">Shop for cool gadgets and unique decor</li>
                 </ul>
- 
+
             </div>
             <div class="col-md-4 col-xs-6 col-md-offset-1 hero-box qiuck-signup hidden-620">
                 <form>

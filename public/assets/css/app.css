@@ -6072,7 +6072,15 @@ header.sub-head {
   .author-image {
     margin: 0 auto;
     display: block;
-    float: none; } }
+    float: none; }
+
+  .share-bar {
+    position: static !important;
+    width: 100%;
+    float: none;
+    overflow: hidden;
+    padding-left: 7%;
+    padding-top: 3%; } }
 @media screen and (max-width: 380px) {
   #top-nav .mobile-category-menu {
     margin-left: 8px; }

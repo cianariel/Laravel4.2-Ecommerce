@@ -2685,8 +2685,6 @@ header.sub-head{
       }
     }
 
-
-
   }
 
   .story-details{
@@ -2888,6 +2886,15 @@ header.sub-head{
     margin: 0 auto;
     display: block;
     float: none;
+  }
+
+  .share-bar {
+    position: static !important;
+    width: 100%;
+    float: none;
+    overflow: hidden;
+    padding-left: 7%;
+    padding-top: 3%;
   }
 
 }
