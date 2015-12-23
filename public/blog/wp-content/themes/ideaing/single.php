@@ -78,7 +78,7 @@
 
                 </header>
 
-            <aside class="share-bar sticks-on-scroll desktop">
+            <aside class="share-bar sticks-on-scroll">
                 <ul>
                     <li class="fb"><a href="#">55</a></li>
                     <li class="twi"><a href="#">120</a></li>

@@ -342,7 +342,7 @@ li.nested{
   //}
   &.stick{
     position: fixed;
-    top: 4.8%;
+    top: 120px;
   }
   //
 
@@ -415,11 +415,12 @@ li.nested{
     //display: block;
     position: absolute !important;
     //left: 40px;
-    //top: 21.5%;
+    top: 16px;
 
     &.stick{
-      position: absolute !important;
-      //top: 24%;
+      //position: absolute !important;
+      top: 16px;
+      //left: -10%;
     }
   }
 
