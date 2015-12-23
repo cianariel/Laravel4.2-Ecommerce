@@ -2017,6 +2017,13 @@ header.sub-head{
         }
       }
     }
+
+    .author-image-big{
+      img{
+        max-width: 100%;
+        height: auto;
+      }
+    }
   }
 
   .author-description{
@@ -2802,13 +2809,13 @@ footer.about-footer{
     margin-left: 3%;
   }
 
-  .author-image-big{
-
-    img{
-      max-width: 100%;
-      height: auto;
-    }
-  }
+  //.author-image-big{
+  //
+  //  img{
+  //    max-width: 100%;
+  //    height: auto;
+  //  }
+  //}
 
   .like-wrap {
     margin-left: 30%;

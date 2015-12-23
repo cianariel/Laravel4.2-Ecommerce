@@ -5607,6 +5607,9 @@ header.sub-head {
       font-size: 1.1rem; }
       .idea-stories .story-details .content-tags a.products-link {
         padding-left: 18px; }
+  .idea-stories .story-details .author-image-big img {
+    max-width: 100%;
+    height: auto; }
 .idea-stories .author-description {
   background: #F2F5F5;
   padding-top: 20px;
@@ -6021,10 +6024,6 @@ footer.about-footer {
   .bottom-load-more {
     width: 95%;
     margin-left: 3%; }
-
-  .author-image-big img {
-    max-width: 100%;
-    height: auto; }
 
   .like-wrap {
     margin-left: 30%; }
