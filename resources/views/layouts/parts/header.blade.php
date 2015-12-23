@@ -1,4 +1,4 @@
-        <header class="colophon">
+        <header class="colophon scroll-header">
                 <div class="col-xs-12">
                     <h2 id="site-name">Ideaing | Ideas for Smarter Living</h2>
                     <nav id="top-nav" class="row">
@@ -34,7 +34,8 @@
                             </div>
 
                             <div class="col-md-3 col-sm-4 col-xs-3 logo-wrap">
-                                <a href="/"><img src="/assets/images/ideaing-logo-small-no-text.png" id="ideaing-logo" class="logo top-logo img-responsive"/></a>
+                                <a id="ideaing-logo" class="logo top-logo" href="/">
+                                </a>
                             </div>
 
                             <div class="mobile-wrap">

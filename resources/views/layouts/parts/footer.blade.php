@@ -36,7 +36,6 @@
     </div>
 </footer>
 
-
 <div id="myModal" class="modal col-lg-3 col-md-4 col-sm-5 col-xs-12 col-offset-md-2">
     <div class="modal-content hero-box qiuck-signup modal-login">
         <form>
@@ -60,7 +59,9 @@
 </div>
 <div id="overlay"></div>
 
+<button class="btn btn-success" id="about-button">About</button>
 <a href="#" id="back-to-top">Back to top</a>
+
 <script src="/assets/js/app.js"></script>
 
 <script>

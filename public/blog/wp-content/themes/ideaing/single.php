@@ -1,6 +1,28 @@
 @include('header')
 
 <?php if (have_posts()): while (have_posts()) : the_post(); ?>
+        <header class="story-header hidden-620" >
+            <a href="#" class="side-logo lamp-logo">
+            </a>
+            <h1>{{the_title()}}</h1>
+
+            <ul class="social-rounds">
+                <li><a class="fb" href="#"></a></li>
+                <li><a class="twi" href="#"></a></li>
+                <li><a class="gp" href="#"></a></li>
+                <li><a class="pint" href="#"></a></li>
+            </ul>
+
+            <ul class="like-nav hidden-xs pull-right">
+                <li><a class="like-counter" href="#">189</a></li>
+                <li><a class="author" href="#"></a></li>
+                <li><a class="author" href="#"></a></li>
+                <li><a class="author" href="#"></a></li>
+                <li><a class="likes" href="#">and 186 others</a></li>
+            </ul>
+        </header>
+
+
         <section id="hero" class="details-hero">
             <div class="head-wrap">
                 <h1>{{the_title()}}</h1>
