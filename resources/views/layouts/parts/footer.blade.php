@@ -1,4 +1,4 @@
-<footer class="about-footer">
+<footer class="about-footer hide-soft">
     <div class="container">
         <div class="col-sm-3">
             <h4 class="blue">About Ideaing</h4>
@@ -34,6 +34,7 @@
             <input class="form-control" type="submit" value="Submit">
         </div>
     </div>
+    <button class="btn-none close-down" data-toggle=".about-footer"></button>
 </footer>
 
 <div id="myModal" class="modal col-lg-3 col-md-4 col-sm-5 col-xs-12 col-offset-md-2">
@@ -59,7 +60,7 @@
 </div>
 <div id="overlay"></div>
 
-<button class="btn btn-success" id="about-button">About</button>
+<button class="btn btn-success" id="about-button" data-toggle=".about-footer">About</button>
 <a href="#" id="back-to-top">Back to top</a>
 
 <script src="/assets/js/app.js"></script>

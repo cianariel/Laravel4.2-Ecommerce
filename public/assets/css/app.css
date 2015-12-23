@@ -4427,12 +4427,6 @@ button {
   opacity: .9;
   z-index: 2; }
 
-.close-button {
-  color: #333;
-  font-size: 2rem;
-  float: right;
-  cursor: pointer; }
-
 .btn-success {
   background-color: #FF0042;
   border-color: #FF0042; }
@@ -4464,6 +4458,21 @@ button {
   padding: 20px;
   color: #8e8e8e;
   width: 100%; }
+
+.close-button {
+  color: #333;
+  font-size: 2rem;
+  float: right;
+  cursor: pointer; }
+
+.close-down {
+  width: 30px;
+  height: 30px;
+  background: #4b484b url("/assets/images/arrow-down-white.png") center no-repeat;
+  background-size: 23px;
+  border-radius: 90px;
+  border: 0;
+  padding: 5px; }
 
 .main-content {
   overflow: hidden; }
@@ -5095,20 +5104,23 @@ form .btn {
   position: absolute;
   width: 80px;
   right: 5%;
-  bottom: 110px;
+  bottom: 85px;
   padding: 13px;
-  font-size: 1rem; }
+  font-size: 1rem;
+  z-index: 9;
+  background: #FF0042 !important; }
 
 #back-to-top {
   -webkit-appearance: none;
   border: 0;
   position: absolute;
-  right: 1%;
+  right: 16px;
   bottom: 80px;
   width: 50px;
   height: 50px;
   background: url("/assets/images/back-to-top.png") no-repeat;
-  text-indent: -9999px; }
+  text-indent: -9999px;
+  z-index: 10; }
   #back-to-top:hover {
     background: url("/assets/images/back-to-top-red.png") no-repeat; }
 
@@ -5231,6 +5243,8 @@ header.colophon {
       border-radius: 90px;
       text-indent: -9999px;
       background-position: center; }
+  .story-header .likes {
+    color: #FF0042; }
 
 #mid-nav, #mid-nav .extra-nav {
   min-height: 47px; }
@@ -5760,9 +5774,12 @@ header.sub-head {
       display: block; }
 
 footer.about-footer {
-  display: none;
   padding: 55px 0;
-  background: #171617; }
+  background: #171617;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  z-index: 10; }
   footer.about-footer h4 {
     margin-bottom: 35px; }
   footer.about-footer li {
@@ -5814,6 +5831,10 @@ footer.about-footer {
     float: left;
     margin-left: -10px;
     border-radius: 0 4px 4px 0; }
+  footer.about-footer .close-down {
+    position: absolute;
+    top: 30px;
+    right: 20px; }
 
 @media only screen and (max-width: 1200px) {
   #top-nav a {
