@@ -4949,6 +4949,8 @@ form .btn {
       background-position: 4px center !important; }
     .grid-box.big-box .img-wrap {
       overflow: visible; }
+      .grid-box.big-box .img-wrap img {
+        box-shadow: 0 0 0 1px #F2F5F5; }
     .grid-box.big-box .like-wrap {
       padding-left: 45px;
       padding-top: 9px;
@@ -4959,8 +4961,8 @@ form .btn {
       position: absolute;
       right: 40px;
       bottom: 10px; }
-  .grid-box:hover .img-wrap {
-    box-shadow: 0 0 0 2pt #00B1FF; }
+  .grid-box:hover .img-wrap img {
+    box-shadow: 0 0 0 1px #00B1FF; }
   .grid-box:hover h3 a,
   .grid-box:hover h5 a {
     color: #008ecc !important; }
@@ -5677,8 +5679,7 @@ header.sub-head {
     .idea-stories .related-items .grid-box .like-wrap {
       margin-left: 0%; }
     .idea-stories .related-items .grid-box:hover .wrap {
-      border: 1px solid #00B1FF;
-      box-shadow: 0 0 0 2pt #00B1FF; }
+      border: 1px solid #00B1FF; }
     .idea-stories .related-items .grid-box:hover .color-overlay {
       display: block; }
 

@@ -928,6 +928,10 @@ form{
 
     .img-wrap{
       overflow: visible;
+
+      img{
+        box-shadow: 0 0 0 1px $pale-grey;
+      }
     }
 
     .like-wrap{
@@ -947,17 +951,11 @@ form{
 
   &:hover{
     .img-wrap{
-      //padding-top: 18px;
-      //padding-left: 13px;
-      //padding-right: 13px;
-      //border:2px solid $sky-blue;
-      //-webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.15);
-      //-moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.15);
-      //box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.15);
-
-      box-shadow: 0 0 0 2pt $sky-blue;
-      //border-radius: 7px;
+      img{
+        box-shadow: 0 0 0 1px $sky-blue;
+      }
     }
+
     h3 a,
     h5 a
     {
@@ -2164,7 +2162,7 @@ header.sub-head{
       &:hover{
         .wrap{
           border: 1px solid $sky-blue;
-          box-shadow: 0 0 0 2pt $sky-blue;
+          //box-shadow: 0 0 0 2pt $sky-blue;
         }
           .color-overlay{
           display: block;
