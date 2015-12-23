@@ -16,10 +16,10 @@ $tarmac: #3D4B4E;
 
 $facebook-blue: #079DD1;
 $facebook-blue-2: #5C7CBD;
-$twitter-blue: #7BD1F0;
-$google-red: #EF434D;
-$pinterest-red: #E61D25;
-$instagram-blue:#54A3DA;
+$twitter-blue:    #7BD1F0;
+$google-red:      #EF434D;
+$pinterest-red:   #E61D25;
+$instagram-blue:  #54A3DA;
 
 .pink{
   color: $iridium !important;
@@ -577,14 +577,14 @@ nav{
   }
 
   h1{
-
     text-align: center;
     color: #fff;
-    font-size: 5.2rem;
+    font-size: 5rem;
     font-weight: bold;
     text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
 
   }
+
 
   .like-counter{
     overflow: hidden;
@@ -611,6 +611,8 @@ nav{
   }
 
   .color-overlay{
+
+
     background-color: rgba(0,0,0,.2);
     position: absolute;
     width: 100%;
@@ -626,6 +628,25 @@ nav{
 .logo-wrap{
   a{
     padding: 0;
+  }
+}
+
+.details-hero{
+  h1{
+    max-width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+
+
+    span{
+      background-color: $picton;
+      padding: 5px 15px;
+      //padding-left: 30px;
+      background-position-x: 3px;
+    }
+  }
+  .color-overlay{
+    display: none;
   }
 }
 
@@ -1695,7 +1716,7 @@ header.sub-head{
 .why-us{
   margin-top: 25px;
   h2{
-    font-size: 3.5rem;
+    font-size: 3.2rem;
     font-weight: normal;
     text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
   }
@@ -1704,12 +1725,13 @@ header.sub-head{
   }
 
   li{
-    padding: 20px;
+    //padding: 20px;
+    margin-bottom: 8px;
     padding-left: 30px;
     font-weight: bold;
     letter-spacing: 1px;
     text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
-    font-size: 1.6rem;
+    font-size: 1.3rem;
 
     &.get-ideas{
       background:url("/assets/images/lamp-white.png") left no-repeat;
@@ -2246,21 +2268,6 @@ header.sub-head{
       font-size: .9rem;
     }
 
-
-
-    //.field-wrap{
-    //  padding: 10px 10px 20px;
-    //  border: 1px solid #ccc;
-    //  border-radius: 3px;
-    //  //margin-bottom: ;
-    //
-    //  &::before{
-    //    //content: '◀';
-    //    padding-left: 7px;
-    //    border: 1px solid red;
-    //  }
-    //}
-
   }
 
   .related-items{
@@ -2321,7 +2328,6 @@ header.sub-head{
       &:hover{
         .wrap{
           border: 1px solid $sky-blue;
-          //box-shadow: 0 0 0 2pt $sky-blue;
         }
           .color-overlay{
           display: block;

@@ -25,7 +25,7 @@
 
         <section id="hero" class="details-hero">
             <div class="head-wrap">
-                <h1>{{the_title()}}</h1>
+                <h1><span>{{the_title()}}</span></h1>
                 <a class="like-counter hidden-soft shown-620" href="#">189</a>
             </div>
 
