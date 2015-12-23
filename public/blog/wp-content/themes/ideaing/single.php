@@ -30,16 +30,6 @@
 		<!-- article -->
 
         <div class="container full-620 main-container fixed-sm">
-            <aside class="share-bar sticks-on-scroll">
-                <ul>
-                    <li class="fb"><a href="#">55</a></li>
-                    <li class="twi"><a href="#">120</a></li>
-                    <li class="gp"><a href="#">521</a></li>
-                    <li class="email"><a href="#">Email</a></li>
-                    <li class="heart"><a href="#">12.5</a></li>
-                    <li class="comment"><a href="#">322</a></li>
-                </ul>
-            </aside>
 
             <article id="post-<?php the_ID(); ?>" {{post_class('col-sm-11 col-md-offset-1')}}>
 
@@ -66,11 +56,22 @@
 
                 </header>
 
-
+            <aside class="share-bar sticks-on-scroll desktop">
+                <ul>
+                    <li class="fb"><a href="#">55</a></li>
+                    <li class="twi"><a href="#">120</a></li>
+                    <li class="gp"><a href="#">521</a></li>
+                    <li class="email"><a href="#">Email</a></li>
+                    <li class="heart"><a href="#">12.5</a></li>
+                    <li class="comment"><a href="#">322</a></li>
+                </ul>
+            </aside>
 
                 <section class="article-content">
                     <?php the_content(); ?>
                 </section>
+
+
 
             </article>
         </div>
@@ -328,6 +329,16 @@
         </div>
     </section>
 
+<!--<aside class="share-bar sticks-on-scroll mobile">-->
+<!--    <ul>-->
+<!--        <li class="fb"><a href="#">55</a></li>-->
+<!--        <li class="twi"><a href="#">120</a></li>-->
+<!--        <li class="gp"><a href="#">521</a></li>-->
+<!--        <li class="email"><a href="#">Email</a></li>-->
+<!--        <li class="heart"><a href="#">12.5</a></li>-->
+<!--        <li class="comment"><a href="#">322</a></li>-->
+<!--    </ul>-->
+<!--</aside>-->
 
 
 <?php get_footer(); ?>

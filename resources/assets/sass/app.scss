@@ -297,13 +297,16 @@ li.nested{
 .share-bar{
   width: 100px;
   position: absolute;
-  left: 9%;
-  top: 31.8%;
+  left: 1%;
+  top: 10px;
   text-align: center;
 
+  //&.mobile{
+  //  display: none;
+  //}
   &.stick{
     position: fixed;
-    top: 31.8%;
+    top: 4.8%;
   }
   //
 
@@ -368,14 +371,19 @@ li.nested{
 }
 
 @media (max-width: 1380px){
+  //.share-bar.desktop{
+  //  display: none;
+  //}
+
   .share-bar{
+    //display: block;
     position: absolute !important;
-    left: 40px;
-    top: 21.5%;
+    //left: 40px;
+    //top: 21.5%;
 
     &.stick{
       position: absolute !important;
-      top: 24%;
+      //top: 24%;
     }
   }
 
@@ -389,14 +397,14 @@ li.nested{
 }
 
 
-
-@media (max-width: 768px){
-  .share-bar{
-    top: 11%;
-
-  }
-
-}
+//
+//@media (max-width: 768px){
+//  .share-bar{
+//    top: 11%;
+//
+//  }
+//
+//}
 
 @media (max-width: 620px){
   .share-bar{
@@ -1984,7 +1992,7 @@ header.sub-head{
     float: none;
     overflow: hidden;
     margin: 0 auto;
-    padding: 25px 0;
+    padding: 36px 0;
     text-align: center;
 
     h4{
@@ -3059,6 +3067,7 @@ footer.about-footer{
   }
 
   .share-bar {
+    //display: block;
     position: static !important;
     width: 100%;
     float: none;
