@@ -4397,6 +4397,9 @@ a.label:focus {
 a:visited {
   text-decoration: none; }
 
+.hide-soft {
+  display: none; }
+
 button {
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -4717,7 +4720,7 @@ nav a {
   #hero h1 {
     text-align: center;
     color: #fff;
-    font-size: 5.5rem;
+    font-size: 5.2rem;
     font-weight: bold;
     text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3); }
   #hero .like-counter {
@@ -5103,7 +5106,7 @@ form .btn {
 #about-button {
   position: absolute;
   width: 80px;
-  right: 5%;
+  right: 85px;
   bottom: 85px;
   padding: 13px;
   font-size: 1rem;
@@ -5784,8 +5787,8 @@ header.sub-head {
 footer.about-footer {
   padding: 55px 0;
   background: #171617;
-  position: fixed;
-  bottom: 0;
+  position: relative;
+  overflow: hidden;
   width: 100%;
   z-index: 10; }
   footer.about-footer h4 {
@@ -5800,6 +5803,7 @@ footer.about-footer {
   footer.about-footer .social-connect a {
     display: block;
     width: 100%;
+    max-width: 350px;
     padding: 0 0 0 45px;
     border-radius: 4px;
     border: 1px solid #4b484b;
@@ -5827,6 +5831,7 @@ footer.about-footer {
       background-position: 12px center; }
   footer.about-footer input[type="text"] {
     width: 70%;
+    max-width: 275px;
     min-width: 175px;
     background: #4b484b;
     padding: 3px 12px;
@@ -5834,8 +5839,7 @@ footer.about-footer {
     border: 0;
     float: left; }
   footer.about-footer input[type="submit"] {
-    width: 30%;
-    min-width: 75px;
+    width: 75px;
     float: left;
     margin-left: -10px;
     border-radius: 0 4px 4px 0; }
@@ -5915,8 +5919,14 @@ footer.about-footer {
       display: none; }
 
   #mid-nav .extra-nav {
-    right: 20%; } }
+    right: 20%; }
+
+  footer.about-footer h4 {
+    margin-top: 35px; } }
 @media only screen and (max-width: 620px) {
+  body:not(.single-post) #about-button {
+    display: none; }
+
   .hidden-620 {
     display: none !important; }
 

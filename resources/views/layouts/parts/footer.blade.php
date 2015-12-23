@@ -1,6 +1,7 @@
+
 <footer class="about-footer hide-soft">
     <div class="container">
-        <div class="col-sm-3">
+        <div class="col-sm-3 col-xs-12">
             <h4 class="blue">About Ideaing</h4>
             <ul>
                 <li><a href="#">About Us</a></li>
@@ -10,7 +11,7 @@
                 <li><a href="#">Copyright</a></li>
             </ul>
         </div>
-        <div class="col-sm-3">
+        <div class="col-sm-3 col-xs-12">
             <h4 class="green">Explore</h4>
             <ul>
                 <li><a href="#">Share your ideas</a></li>
@@ -18,7 +19,7 @@
                 <li><a href="#">Professional Installers</a></li>
             </ul>
         </div>
-        <div class="col-sm-3 social-connect">
+        <div class="col-sm-3 col-xs-12 social-connect">
             <h4 class="orange">Let's connect</h4>
             <ul>
                 <li><a class="fb" href="#"><span>Like <b class="count">12k</b></span></a></li>
@@ -28,7 +29,7 @@
                 <li><a class="inst" href="#"><span>Follow <b class="count">12k</b></span></a></li>
             </ul>
         </div>
-        <div class="col-sm-3">
+        <div class="col-sm-3 col-xs-12">
             <h4 class="pink">Ideas to You</h4>
             <input class="form-control" type="text" placeholder="Email address">
             <input class="form-control" type="submit" value="Submit">
