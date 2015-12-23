@@ -83,7 +83,38 @@
             }
         });
 
+        // Sticking headers
+        $(function () {
+            $(window).scroll(function(){
+                if($('.scroll-header').length){
+                    if($(window).scrollTop() < 60){
+                        $('header.colophon').removeClass('scroll-header');
+                    }
+                }else if(($(window).scrollTop() > 60)){
+                    $('header.colophon').addClass('scroll-header');
+                }
 
+            });
+        });
+
+        $(function () {
+            if(window.innerWidth < 620){
+                return false;
+            }
+            var $showMe = $('.story-header');
+            if($showMe.length){
+                $(window).scroll(function(){
+                    var window_top = $(window).scrollTop();
+                    var div_top = $('#hero-nav').offset().top;
+
+                    if (window_top > div_top) {
+                        $showMe.fadeIn();
+                    } else {
+                        $showMe.fadeOut();
+                    }
+                });
+            }
+        });
 
 
 	}); // global function()

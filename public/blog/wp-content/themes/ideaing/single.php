@@ -1,7 +1,7 @@
 @include('header')
 
 <?php if (have_posts()): while (have_posts()) : the_post(); ?>
-        <header class="story-header hidden-620" >
+        <header class="story-header hidden-620 hidden-soft" >
             <a href="#" class="side-logo lamp-logo">
             </a>
             <h1>{{the_title()}}</h1>
