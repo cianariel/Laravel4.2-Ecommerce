@@ -5197,12 +5197,16 @@ header.colophon {
   color: #000; }
   #top-nav a.shop {
     background: url("/assets/images/bag-black.png") left center no-repeat; }
+    #top-nav a.shop:hover {
+      background-image: url("/assets/images/bag-blue.png"); }
   #top-nav a.pros {
     background: url("/assets/images/pro-grey.png") left center no-repeat; }
   #top-nav a.disc {
     background: url("/assets/images/chat-black.png") left center no-repeat; }
+    #top-nav a.disc:hover {
+      background-image: url("/assets/images/chat-picton.png"); }
   #top-nav a:hover {
-    color: #00B1FF; }
+    color: #4691d3; }
 #top-nav li.nested {
   cursor: pointer; }
   #top-nav li.nested a::after {
@@ -5211,6 +5215,10 @@ header.colophon {
     display: none; }
 
 .story-header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 11;
   padding: 20px 10px;
   overflow: hidden;
   background: #fff; }

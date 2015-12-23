@@ -9,6 +9,7 @@ $dark-orange: #FF7F00;
 $pine-green: #C7C747;
 $sky-blue: #00B1FF;
 $pale-blue: #F5FBFC;
+$picton: #4691d3;
 $pale-grey: #F2F5F5;
 $light-grey: #c1c1c1;
 $tarmac: #3D4B4E;
@@ -1354,16 +1355,22 @@ header.colophon{
 
     &.shop{
       background: url('/assets/images/bag-black.png') left center no-repeat;
+      &:hover{
+        background-image: url('/assets/images/bag-blue.png');
+      }
     }
     &.pros{
       background: url('/assets/images/pro-grey.png') left center no-repeat;
     }
     &.disc{
       background: url('/assets/images/chat-black.png') left center no-repeat;
+      &:hover{
+        background-image: url('/assets/images/chat-picton.png');
+      }
     }
 
     &:hover{
-      color: $sky-blue;
+      color: $picton;
     }
 
   }
@@ -1384,6 +1391,10 @@ header.colophon{
 }
 
 .story-header{
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 11;
   padding: 20px 10px;
   overflow: hidden;
   background: #fff;
