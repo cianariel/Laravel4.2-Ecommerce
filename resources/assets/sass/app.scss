@@ -1971,6 +1971,8 @@ header.sub-head{
   .article-content{
     p{
       color: darken($light-grey, 30%);
+      line-height: 1.6;
+      font-size: 1.5rem;
     }
     img{
       width: 100%;

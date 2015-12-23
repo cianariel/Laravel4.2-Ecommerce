@@ -5577,7 +5577,9 @@ header.sub-head {
           border: 2px solid #FF0042; }
 
 .idea-stories .article-content p {
-  color: #757575; }
+  color: #757575;
+  line-height: 1.6;
+  font-size: 1.5rem; }
 .idea-stories .article-content img {
   width: 100%;
   border: 1px solid #eee; }
