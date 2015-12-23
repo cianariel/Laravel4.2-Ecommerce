@@ -58,6 +58,10 @@ $instagram-blue:  #54A3DA;
   cursor: pointer;
 }
 
+.clearfix.pocket{
+  height: 50px;
+  width: 100%;
+}
 
 
 // ELEMENTS
@@ -186,11 +190,10 @@ button{
 }
 
 
-
-
-
-
-
+body,
+html{
+  overflow-x: hidden;
+}
 
 .main-content{
   overflow: hidden;
@@ -661,7 +664,7 @@ nav{
   padding-left: 0;
   margin-left: 30px;
   background: url('/assets/images/ideaing-logo-small-no-text.png') no-repeat;
-
+  background-size: contain;
 }
 
 form{
@@ -1235,7 +1238,7 @@ form{
   position: absolute;
   width: 80px;
   right: 85px;
-  bottom: 85px;
+  bottom: 45px;
   padding: 13px;
   font-size: 1rem;
   z-index: 9;
@@ -1247,7 +1250,7 @@ form{
   border: 0;
   position: absolute;
   right: 16px;
-  bottom: 80px;
+  bottom: 40px;
   width: 50px;
   height: 50px;
   background: url("/assets/images/back-to-top.png") no-repeat;
@@ -1315,6 +1318,9 @@ header.colophon{
  }
 
   &.scroll-header{
+    .fixed-sm{
+      min-width: 0 !important;
+    }
     #top-nav {
       position: fixed;
       top: 0;
@@ -1322,29 +1328,41 @@ header.colophon{
       z-index: 10;
       background: #fff;
 
-      li {
-        a {
-          width: 35px;
-          height: 30px;
-          float: left;
-          padding: 0;
-          margin-left: 10px;
-          margin-right: 0;
-          margin-top: 15px;
-          background-size: 27px;
-          text-indent: -9999px;
+      @media (min-width: 620px){
+        li {
+          a {
+            width: 35px;
+            height: 30px;
+            float: left;
+            padding: 0;
+            margin-left: 10px;
+            margin-right: 0;
+            margin-top: 15px;
+            background-size: 27px;
+            text-indent: -9999px;
 
+          }
+        }
+
+        a#ideaing-logo {
+          display: block;
+          width: 45px;
+          min-height: 60px;
+          padding: 0;
+          background-image: url("/assets/images/ideaing-logo-lamp-only.png");
+          background-repeat: no-repeat;
+          background-position: right;
+
+            margin-right: 0;
+          margin-top: 0;
+        }
+
+        .search-bar{
+          margin-left: 7%;
         }
       }
 
-      a#ideaing-logo {
-        @extend .lamp-logo;
-        margin-right: 0;
-      }
 
-      .search-bar{
-        margin-left: 7%;
-      }
     }
   }
 
@@ -1716,7 +1734,7 @@ header.sub-head{
 .why-us{
   margin-top: 25px;
   h2{
-    font-size: 3.2rem;
+    font-size: 3.5rem;
     font-weight: normal;
     text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
   }
@@ -1726,12 +1744,13 @@ header.sub-head{
 
   li{
     //padding: 20px;
-    margin-bottom: 8px;
-    padding-left: 30px;
+    //margin-bottom: 25px;
+    padding: 15px 30px;
     font-weight: bold;
     letter-spacing: 1px;
     text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
-    font-size: 1.3rem;
+
+    font-size: 1.6rem;
 
     &.get-ideas{
       background:url("/assets/images/lamp-white.png") left no-repeat;
@@ -1968,7 +1987,7 @@ header.sub-head{
     position: relative;
     height: 55px;
   }
-  a{
+  a:not(.author){
     color: $iridium;
     text-transform: none;
     text-align: right;
@@ -2501,6 +2520,21 @@ footer.about-footer{
   .why-us {
     margin-top: 0;
   }
+
+  @media (min-width:768px){
+
+    footer.about-footer{
+      input[type="submit"]{
+        border-radius: 4px;
+        margin: 5px auto;
+      }
+    }
+
+  }
+
+
+
+
 }
 
 @media only screen and (max-width: 992px){
@@ -2550,9 +2584,9 @@ footer.about-footer{
     margin-top: 65px;
   }
 
-  #back-to-top{
-    bottom: 3.5%;
-  }
+  //#back-to-top{
+  //  bottom: 3.5%;
+  //}
 
   .full-sm{
     width: 100%;
@@ -2654,9 +2688,9 @@ footer.about-footer{
   body{
     padding-bottom: 60px;
 
-    #back-to-top {
-      bottom: 0%;
-    }
+    //#back-to-top {
+    //  bottom: 0%;
+    //}
   }
 
 //.header.colophon{
@@ -2762,17 +2796,18 @@ footer.about-footer{
        margin-left: 22px;
       li{
         a{
-          width: 35px;
-          height: 30px;
+          width: 27px;
+          height: 24px;
           float: left;
           padding: 0;
           margin-left: 10px;
           margin-right: 0;
-          background-size: 27px;
+          margin-top: 4px;
+          background-size: initial !important;
 
-          &.shop{
-            background-size: 23px;
-          }
+          //&.shop{
+          //  background-size: 23px;
+          //}
         }
       }
     }
@@ -2973,7 +3008,7 @@ footer.about-footer{
     text-align: center;
     padding-top: 25%;
     li{
-      background-position: 10px 21px !important;
+      background-position: 10px 15px !important;
     }
     .btn{
       margin: 0 auto;
@@ -3014,6 +3049,8 @@ footer.about-footer{
       margin-bottom: 0;
     }
   }
+
+
 
   }
 
@@ -3221,7 +3258,7 @@ footer.about-footer{
 
 
   #ideaing-logo {
-    height: auto;
+    //height: auto;
 
       &.top-logo{
         margin-top: 10px;

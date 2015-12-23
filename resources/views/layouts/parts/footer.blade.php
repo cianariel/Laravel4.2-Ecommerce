@@ -61,6 +61,8 @@
 </div>
 <div id="overlay"></div>
 
+<div class="clearfix pocket"></div>
+
 <button class="btn btn-success" id="about-button" data-toggle=".about-footer">About</button>
 <a href="#" id="back-to-top">Back to top</a>
 

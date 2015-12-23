@@ -4394,6 +4394,10 @@ a.label:focus {
 [data-toggle] {
   cursor: pointer; }
 
+.clearfix.pocket {
+  height: 50px;
+  width: 100%; }
+
 a:visited {
   text-decoration: none; }
 
@@ -4477,10 +4481,14 @@ button {
   border: 0;
   padding: 5px; }
 
+body,
+html {
+  overflow-x: hidden; }
+
 .main-content {
   overflow: hidden; }
 
-.lamp-logo, header.colophon.scroll-header #top-nav a#ideaing-logo {
+.lamp-logo {
   display: block;
   width: 45px;
   min-height: 60px;
@@ -4770,7 +4778,8 @@ nav a {
   margin-right: auto;
   padding-left: 0;
   margin-left: 30px;
-  background: url("/assets/images/ideaing-logo-small-no-text.png") no-repeat; }
+  background: url("/assets/images/ideaing-logo-small-no-text.png") no-repeat;
+  background-size: contain; }
 
 form input,
 form .btn {
@@ -5118,7 +5127,7 @@ form .btn {
   position: absolute;
   width: 80px;
   right: 85px;
-  bottom: 85px;
+  bottom: 45px;
   padding: 13px;
   font-size: 1rem;
   z-index: 9;
@@ -5129,7 +5138,7 @@ form .btn {
   border: 0;
   position: absolute;
   right: 16px;
-  bottom: 80px;
+  bottom: 40px;
   width: 50px;
   height: 50px;
   background: url("/assets/images/back-to-top.png") no-repeat;
@@ -5172,26 +5181,37 @@ header.colophon {
       background-position: left;
       background-repeat: no-repeat;
       white-space: nowrap; }
+  header.colophon.scroll-header .fixed-sm {
+    min-width: 0 !important; }
   header.colophon.scroll-header #top-nav {
     position: fixed;
     top: 0;
     width: 100%;
     z-index: 10;
     background: #fff; }
-    header.colophon.scroll-header #top-nav li a {
-      width: 35px;
-      height: 30px;
-      float: left;
-      padding: 0;
-      margin-left: 10px;
-      margin-right: 0;
-      margin-top: 15px;
-      background-size: 27px;
-      text-indent: -9999px; }
-    header.colophon.scroll-header #top-nav a#ideaing-logo {
-      margin-right: 0; }
-    header.colophon.scroll-header #top-nav .search-bar {
-      margin-left: 7%; }
+    @media (min-width: 620px) {
+      header.colophon.scroll-header #top-nav li a {
+        width: 35px;
+        height: 30px;
+        float: left;
+        padding: 0;
+        margin-left: 10px;
+        margin-right: 0;
+        margin-top: 15px;
+        background-size: 27px;
+        text-indent: -9999px; }
+      header.colophon.scroll-header #top-nav a#ideaing-logo {
+        display: block;
+        width: 45px;
+        min-height: 60px;
+        padding: 0;
+        background-image: url("/assets/images/ideaing-logo-lamp-only.png");
+        background-repeat: no-repeat;
+        background-position: right;
+        margin-right: 0;
+        margin-top: 0; }
+      header.colophon.scroll-header #top-nav .search-bar {
+        margin-left: 7%; } }
   header.colophon .search-bar {
     padding-top: 13px;
     margin-left: 3%; }
@@ -5236,7 +5256,7 @@ header.colophon {
   padding: 20px 10px;
   overflow: hidden;
   background: #fff; }
-  .story-header .lamp-logo, .story-header header.colophon.scroll-header #top-nav a#ideaing-logo, header.colophon.scroll-header #top-nav .story-header a#ideaing-logo {
+  .story-header .lamp-logo {
     float: left;
     width: 33px;
     min-height: 33px;
@@ -5419,18 +5439,17 @@ header.sub-head {
 .why-us {
   margin-top: 25px; }
   .why-us h2 {
-    font-size: 3.2rem;
+    font-size: 3.5rem;
     font-weight: normal;
     text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3); }
   .why-us h2, .why-us li {
     color: #fff; }
   .why-us li {
-    margin-bottom: 8px;
-    padding-left: 30px;
+    padding: 15px 30px;
     font-weight: bold;
     letter-spacing: 1px;
     text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
-    font-size: 1.3rem; }
+    font-size: 1.6rem; }
     .why-us li.get-ideas {
       background: url("/assets/images/lamp-white.png") left no-repeat; }
     .why-us li.share-vote {
@@ -5586,7 +5605,7 @@ header.sub-head {
     display: inline-block;
     position: relative;
     height: 55px; }
-  #hero-nav a {
+  #hero-nav a:not(.author) {
     color: #FF0042;
     text-transform: none;
     text-align: right;
@@ -5595,39 +5614,39 @@ header.sub-head {
     background-position: 0 19px;
     background-repeat: no-repeat;
     color: #3D4B4E; }
-    #hero-nav a.home-link {
+    #hero-nav a:not(.author).home-link {
       background-image: url("/assets/images/house-outline.png"); }
-      #hero-nav a.home-link:hover {
+      #hero-nav a:not(.author).home-link:hover {
         color: #FF0042;
         background-image: url("/assets/images/house-pink.png");
         background-position: -18px 10px;
         background-size: 48px; }
-    #hero-nav a.all-link {
+    #hero-nav a:not(.author).all-link {
       background-image: url("/assets/images/grid-dense-grey.png");
       background-position: 0 20px;
       min-width: 40px; }
-      #hero-nav a.all-link:hover, .active #hero-nav a.all-link {
+      #hero-nav a:not(.author).all-link:hover, .active #hero-nav a:not(.author).all-link {
         color: #FF0042;
         background-image: url("/assets/images/grid-pink.png"); }
-    #hero-nav a.ideas-link {
+    #hero-nav a:not(.author).ideas-link {
       background-image: url("/assets/images/lamp-grey.png");
       background-position: 0 21px; }
-      #hero-nav a.ideas-link:hover {
+      #hero-nav a:not(.author).ideas-link:hover {
         color: #FF7F00;
         background-image: url("/assets/images/lamp-orange.png"); }
-    #hero-nav a.products-link {
+    #hero-nav a:not(.author).products-link {
       background-image: url("/assets/images/bag-grey-big.png");
       background-position: 5px 20px;
       background-size: 20px; }
-      #hero-nav a.products-link:hover {
+      #hero-nav a:not(.author).products-link:hover {
         color: #C7C747;
         background-image: url("/assets/images/bag-green-big.png"); }
-    #hero-nav a.photos-link {
+    #hero-nav a:not(.author).photos-link {
       background-image: url("/assets/images/photos-grey.png"); }
-      #hero-nav a.photos-link:hover {
+      #hero-nav a:not(.author).photos-link:hover {
         color: #00B1FF;
         background-image: url("/assets/images/photos-blue.png"); }
-    #hero-nav a.kitchen-link {
+    #hero-nav a:not(.author).kitchen-link {
       background-image: url("/assets/images/pot-outline.png"); }
   #hero-nav li.active a:not(.home-link)::after {
     content: '▲';
@@ -5875,6 +5894,10 @@ footer.about-footer {
 
   .why-us {
     margin-top: 0; } }
+@media only screen and (max-width: 1200px) and (min-width: 768px) {
+  footer.about-footer input[type="submit"] {
+    border-radius: 4px;
+    margin: 5px auto; } }
 @media only screen and (max-width: 992px) {
   header.colophon.scroll-header #top-nav .search-bar {
     margin-left: 0%; }
@@ -5895,9 +5918,6 @@ footer.about-footer {
 
   .bottom-load-more {
     margin-top: 65px; }
-
-  #back-to-top {
-    bottom: 3.5%; }
 
   .full-sm {
     width: 100%;
@@ -5950,8 +5970,6 @@ footer.about-footer {
 
   body {
     padding-bottom: 60px; }
-    body #back-to-top {
-      bottom: 0%; }
 
   #top-nav {
     padding-top: 15px;
@@ -6014,15 +6032,14 @@ footer.about-footer {
       padding-right: 0 !important;
       margin-left: 22px; }
       #top-nav .mobile-category-menu li a {
-        width: 35px;
-        height: 30px;
+        width: 27px;
+        height: 24px;
         float: left;
         padding: 0;
         margin-left: 10px;
         margin-right: 0;
-        background-size: 27px; }
-        #top-nav .mobile-category-menu li a.shop {
-          background-size: 23px; }
+        margin-top: 4px;
+        background-size: initial !important; }
     #top-nav .logo-wrap {
       width: 195px;
       margin-left: 0; }
@@ -6136,7 +6153,7 @@ footer.about-footer {
     text-align: center;
     padding-top: 25%; }
     .why-us li {
-      background-position: 10px 21px !important; }
+      background-position: 10px 15px !important; }
     .why-us .btn {
       margin: 0 auto;
       display: block;
@@ -6272,10 +6289,8 @@ footer.about-footer {
     .search-bar #hero-nav.all-link {
       background-position: 4px top; }
 
-  #ideaing-logo {
-    height: auto; }
-    #ideaing-logo.top-logo {
-      margin-top: 10px; }
+  #ideaing-logo.top-logo {
+    margin-top: 10px; }
 
   header.colophon .search-bar input {
     min-width: 125px; }
