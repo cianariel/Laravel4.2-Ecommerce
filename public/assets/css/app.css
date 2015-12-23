@@ -5208,6 +5208,7 @@ header.colophon {
         background-image: url("/assets/images/ideaing-logo-lamp-only.png");
         background-repeat: no-repeat;
         background-position: right;
+        background-size: initial;
         margin-right: 0;
         margin-top: 0; }
       header.colophon.scroll-header #top-nav .search-bar {
