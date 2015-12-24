@@ -12,6 +12,11 @@
     |
     */
 
+   /* Event::listen('illuminate.query', function($query)
+    {
+        var_dump($query);
+    });*/
+
     Route::get('/', 'PageController@home');
 
     Route::get('/landing', function () // temp, used for tweaking frontend
@@ -49,6 +54,17 @@
         Route::post('category/update-category', 'ProductCategoryController@updateCategory');
         Route::get('category/show-category-items/{id?}', 'ProductCategoryController@showCategoryItems');
 
+
+        /*
+         * Product route collection
+         *
+         * */
+        Route::get('product/check-permalink/{permalink?}', 'ProductController@isPermalinkExist');
+        Route::get('product/get-product/{id?}', 'ProductController@getProductById');
+        Route::post('product/get-product-list', 'ProductController@getAllProductList');
+
+        Route::post('product/add-product', 'ProductController@addProduct');
+        Route::post('product/update-product', 'ProductController@updateProductInfo');
 
 
         /*

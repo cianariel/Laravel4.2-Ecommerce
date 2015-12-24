@@ -261,7 +261,7 @@ adminApp.controller('AdminController', ['$scope', '$http', '$confirm', '$locatio
             }
 
 
-        };
+        };+
 
 
         // Initialize variables and functions.

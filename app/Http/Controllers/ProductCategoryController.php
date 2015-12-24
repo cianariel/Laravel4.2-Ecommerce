@@ -34,11 +34,9 @@
 
         public function __construct()
         {
-
             // Apply the jwt.auth middleware to all methods in this controller
             $this->middleware('jwt.auth', ['except' => ['showCategoryItems', 'showProductInCategoryName', 'updateCategory', 'index', 'addCategory', 'showAllRootCategory', 'destroy']]);
             $this->productCategory = new ProductCategory();
-
 
         }
 
