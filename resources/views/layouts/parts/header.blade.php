@@ -34,7 +34,8 @@
                             </div>
 
                             <div class="col-md-3 col-sm-4 col-xs-3 logo-wrap">
-                                <a href="/"><img src="/assets/images/ideaing-logo-small.png" id="ideaing-logo" class="logo top-logo img-responsive"/></a>
+                                <a id="ideaing-logo" class="logo top-logo" href="/">
+                                </a>
                             </div>
 
                             <div class="mobile-wrap">

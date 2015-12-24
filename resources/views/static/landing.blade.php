@@ -145,25 +145,12 @@
                         <a href="#" class="social-pic likes">Like it</a>
                         <a href="#" class="social-pic comment">Comment</a>
                     </div>
-
-                    {{--<a href="#" class="overlay-tag bottom get-it big green">--}}
-                        {{--<div class="circle-3">--}}
-                            {{--<div class="circle-2">--}}
-                                {{--<div class="circle-1">Featured</div>--}}
-                            {{--</div>--}}
-                        {{--</div>--}}
-                    {{--</a>--}}
                     <a href="#" class="overlay-tag bottom featured-badge big">
                                 Featured
                     </a>
                 </div>
                 <h3><a href="#">The Top Kitchen Gadgets</a></h3>
                 <datetime>Yesterday</datetime>
-
-                {{--<p>Truly good design and taste are always current, always relevant. Quiet, muted colors determine the image</p>--}}
-                {{--<ul class="box-tags">--}}
-                    {{--<li class="box-tag"><a>Products</a></li>--}}
-                {{--</ul>--}}
             </div>
 
 
@@ -190,10 +177,6 @@
                             <a class="sidebar-social-counter like">31</a>
                         </div>
                     <h5><a href="#">4 Tier wood utility</a></h5>
-                    {{--<ul class="box-tags">--}}
-                        {{--<li class="box-tag"><a>Products</a></li>--}}
-                    {{--</ul>--}}
-                    {{--<a class="sidebar-social-counter like">31</a>--}}
                 </div>
             </section>
             <section class="sidebar-category ideas">
@@ -206,9 +189,6 @@
                             <a class="sidebar-social-counter like">31</a>
                         </div>
                     <h5><a href="#">4 Tier wood utility</a></h5>
-                    {{--<ul class="box-tags">--}}
-                        {{--<li class="box-tag"><a>Products</a></li>--}}
-                    {{--</ul>--}}
                 </div>
             </section>
             <section class="sidebar-category photos">
@@ -221,35 +201,30 @@
                             <a class="sidebar-social-counter like">31</a>
                         </div>
                     <h5><a href="#">4 Tier wood utility</a></h5>
-                    {{--<ul class="box-tags">--}}
-                        {{--<li class="box-tag"><a>Products</a></li>--}}
-                    {{--</ul>--}}
                 </div>
             </section>
 
-            <section id="side-filters" class="side-filters pale-grey-bg pale-grey-border">
-                <div>
-                    <h5>Ideas</h5>
-                    <input type="checkbox" name="dyi" id="dyi"> <label for="dyi"><span></span>DIY</label>
-                    <input type="checkbox" name="best-buys" id="best-buys"> <label for="best-buys"><span></span>Best Buys</label>
-                    <input type="checkbox" name="declutter" id="declutter"> <label for="declutter"><span></span>Declutter</label>
-                </div>
-                <div>
-                    <h5>Products</h5>
-                    <input type="checkbox" name="cheap" id="cheap"> <label for="cheap"><span></span>Under $50</label>
-                    <input type="checkbox" name="top" id="top"> <label for="top"><span></span>Top</label>
-                    <input type="checkbox" name="stuff" id="stuff"> <label for="stuff"><span></span>Stuff</label>
-                </div>
-                <div>
-                    <h5>Photos</h5>
-                    <input type="checkbox" name="hd" id="hd"> <label for="hd"><span></span>HD (1920px and above)</label>
-                    <input type="checkbox" name="md" id="md"> <label for="md"><span></span>MD (1920px and above)</label>
-                    <input type="checkbox" name="anysize" id="anysize"> <label for="anysize"><span></span>Any sizes</label>
-                </div>
+            {{--<section id="side-filters" class="side-filters pale-grey-bg pale-grey-border">--}}
+                {{--<div>--}}
+                    {{--<h5>Ideas</h5>--}}
+                    {{--<input type="checkbox" name="dyi" id="dyi"> <label for="dyi"><span></span>DIY</label>--}}
+                    {{--<input type="checkbox" name="best-buys" id="best-buys"> <label for="best-buys"><span></span>Best Buys</label>--}}
+                    {{--<input type="checkbox" name="declutter" id="declutter"> <label for="declutter"><span></span>Declutter</label>--}}
+                {{--</div>--}}
+                {{--<div>--}}
+                    {{--<h5>Products</h5>--}}
+                    {{--<input type="checkbox" name="cheap" id="cheap"> <label for="cheap"><span></span>Under $50</label>--}}
+                    {{--<input type="checkbox" name="top" id="top"> <label for="top"><span></span>Top</label>--}}
+                    {{--<input type="checkbox" name="stuff" id="stuff"> <label for="stuff"><span></span>Stuff</label>--}}
+                {{--</div>--}}
+                {{--<div>--}}
+                    {{--<h5>Photos</h5>--}}
+                    {{--<input type="checkbox" name="hd" id="hd"> <label for="hd"><span></span>HD (1920px and above)</label>--}}
+                    {{--<input type="checkbox" name="md" id="md"> <label for="md"><span></span>MD (1920px and above)</label>--}}
+                    {{--<input type="checkbox" name="anysize" id="anysize"> <label for="anysize"><span></span>Any sizes</label>--}}
+                {{--</div>--}}
 
-                {{--<a class="btn btn-success col-xs-12">Apply Filters</a>--}}
-                {{--<a class="btn-none col-xs-12">Cancel</a>--}}
-            </section>
+            {{--</section>--}}
         </aside>
     </div>
 

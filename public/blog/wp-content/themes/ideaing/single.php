@@ -1,9 +1,31 @@
 @include('header')
 
 <?php if (have_posts()): while (have_posts()) : the_post(); ?>
+        <header class="story-header hidden-620 hidden-soft" >
+            <a href="#" class="side-logo lamp-logo">
+            </a>
+            <h1>{{the_title()}}</h1>
+
+            <ul class="social-rounds hidden-sm hidden-xs">
+                <li><a class="fb" href="#"></a></li>
+                <li><a class="twi" href="#"></a></li>
+                <li><a class="gp" href="#"></a></li>
+                <li><a class="pint" href="#"></a></li>
+            </ul>
+
+            <ul class="like-nav hidden-xs pull-right">
+                <li><a class="like-counter" href="#">189</a></li>
+                <li><a class="author" href="#"></a></li>
+                <li><a class="author" href="#"></a></li>
+                <li><a class="author" href="#"></a></li>
+                <li><a class="likes" href="#">and 186 others</a></li>
+            </ul>
+        </header>
+
+
         <section id="hero" class="details-hero">
             <div class="head-wrap">
-                <h1>{{the_title()}}</h1>
+                <h1><span>{{the_title()}}</span></h1>
                 <a class="like-counter hidden-soft shown-620" href="#">189</a>
             </div>
 
@@ -30,7 +52,8 @@
 		<!-- article -->
 
         <div class="container full-620 main-container fixed-sm">
-            <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+
+            <article id="post-<?php the_ID(); ?>" {{post_class('col-sm-11 col-md-offset-1')}}>
 
                 <header class="story-details col-lg-7  col-sm-8 col-xs-10 full-480">
                     <div class="author-image-big col-lg-4 col-sm-6 col-xs-5 full-480">
@@ -55,20 +78,22 @@
 
                 </header>
 
-                <aside class="share-bar sticks-on-scroll">
-                    <ul>
-                        <li class="fb"><a href="#">55</a></li>
-                        <li class="twi"><a href="#">120</a></li>
-                        <li class="gp"><a href="#">521</a></li>
-                        <li class="email"><a href="#">Email</a></li>
-                        <li class="heart"><a href="#">12.5</a></li>
-                        <li class="comment"><a href="#">322</a></li>
-                    </ul>
-                </aside>
+            <aside class="share-bar sticks-on-scroll">
+                <ul>
+                    <li class="fb"><a href="#">55</a></li>
+                    <li class="twi"><a href="#">120</a></li>
+                    <li class="gp"><a href="#">521</a></li>
+                    <li class="email"><a href="#">Email</a></li>
+                    <li class="heart"><a href="#">12.5</a></li>
+                    <li class="comment"><a href="#">322</a></li>
+                </ul>
+            </aside>
 
                 <section class="article-content">
                     <?php the_content(); ?>
                 </section>
+
+
 
             </article>
         </div>
@@ -326,6 +351,16 @@
         </div>
     </section>
 
+<!--<aside class="share-bar sticks-on-scroll mobile">-->
+<!--    <ul>-->
+<!--        <li class="fb"><a href="#">55</a></li>-->
+<!--        <li class="twi"><a href="#">120</a></li>-->
+<!--        <li class="gp"><a href="#">521</a></li>-->
+<!--        <li class="email"><a href="#">Email</a></li>-->
+<!--        <li class="heart"><a href="#">12.5</a></li>-->
+<!--        <li class="comment"><a href="#">322</a></li>-->
+<!--    </ul>-->
+<!--</aside>-->
 
 
 <?php get_footer(); ?>
