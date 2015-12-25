@@ -171,9 +171,9 @@
                 <h4>Top Products</h4>
 
                 <div class="grid-box sidebar-box">
-                        <div class="img-wrap">
+                    <a href="#" class="overlay-tag top-left-corner number">1</a>
+                    <div class="img-wrap">
                             <img class="img-responsive" src="/assets/images/dummies/img-small.jpg">
-                            <a href="#" class="overlay-tag top-left-corner number">1</a>
                             <a class="sidebar-social-counter like">31</a>
                         </div>
                     <h5><a href="#">4 Tier wood utility</a></h5>
@@ -183,9 +183,9 @@
                 <h4>Top Ideas</h4>
 
                 <div class="grid-box sidebar-box">
-                        <div class="img-wrap">
+                    <a href="#" class="overlay-tag top-left-corner number">1</a>
+                    <div class="img-wrap">
                             <img class="img-responsive" src="/assets/images/dummies/box-image-dummy.png">
-                            <a href="#" class="overlay-tag top-left-corner number">1</a>
                             <a class="sidebar-social-counter like">31</a>
                         </div>
                     <h5><a href="#">4 Tier wood utility</a></h5>
@@ -195,9 +195,9 @@
                 <h4>Top Photos</h4>
 
                 <div class="grid-box sidebar-box">
-                        <div class="img-wrap">
+                    <a href="#" class="overlay-tag top-left-corner number">1</a>
+                    <div class="img-wrap">
                             <img class="img-responsive" src="/assets/images/dummies/img-small.jpg">
-                            <a href="#" class="overlay-tag top-left-corner number">1</a>
                             <a class="sidebar-social-counter like">31</a>
                         </div>
                     <h5><a href="#">4 Tier wood utility</a></h5>
