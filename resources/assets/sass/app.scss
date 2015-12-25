@@ -2340,136 +2340,138 @@ header.sub-head{
     }
   }
 
-  .comments{
 
-    h4{
-      margin-bottom: 80px;
+
+}
+
+.comments{
+
+  h4{
+    margin-bottom: 80px;
+  }
+
+  .single-comment{
+    min-height: 100%;
+    overflow: hidden;
+    color: $light-grey;
+
+    .comment-author{
+      text-align: center;
+      padding-right: 0;
+    }
+    b{
+      color: $tarmac;
+    }
+    .btn-white{
+      background: url("/assets/images/heart-grey-outline.png") 2px center no-repeat;
+      padding-left: 25px;
+
+    }
+  }
+
+  .add-comment{
+    margin-top: 35px;
+
+    textarea{
+      min-height: 100px;
+    }
+  }
+
+  .comment-controls{
+    width: 250px;
+    margin-top: 10px;
+    //padding-left: 57px;
+    .add-photo{
+      color: darken($light-grey, 10%);
+      background: url("/assets/images/camera-grey.png") 5px center no-repeat;
+      padding-left: 40px;
+      margin-right: 17px;
+
     }
 
-    .single-comment{
-      min-height: 100%;
-      overflow: hidden;
-      color: $light-grey;
+    .btn-info{
+      width: 100px;
+    }
+  }
 
-      .comment-author{
-        text-align: center;
-        padding-right: 0;
-      }
-      b{
-        color: $tarmac;
-      }
-      .btn-white{
-        background: url("/assets/images/heart-grey-outline.png") 2px center no-repeat;
-        padding-left: 25px;
+  datetime{
+    font-size: .9rem;
+  }
 
-      }
+}
+
+.related-items{
+  margin-top: 100px;
+  background: $pale-grey;
+
+
+
+
+  h3{
+    margin-top: 35px;
+    margin-bottom: 0;
+    font-size: 2rem;
+    font-weight: bold;
+    text-align: center;
+  }
+
+  .wrap{
+    position: relative;
+  }
+
+
+  .grid-box{
+    overflow: visible;
+    margin-bottom: 35px;
+    cursor: pointer;
+
+    .wrap{
+      width: 100%;
+      border-radius: 3px;
     }
 
-    .add-comment{
-      margin-top: 35px;
-
-      textarea{
-        min-height: 100px;
-      }
+    img{
+      width: 100%;
+      border-radius: 3px;
+      border: 1px solid lighten($light-grey, 15%);
     }
 
-    .comment-controls{
-      width: 250px;
-      margin-top: 10px;
-      //padding-left: 57px;
-      .add-photo{
-        color: darken($light-grey, 10%);
-        background: url("/assets/images/camera-grey.png") 5px center no-repeat;
-        padding-left: 40px;
-        margin-right: 17px;
+    .color-overlay{
+      border-radius: 5px;
+    }
 
-      }
-
-      .btn-info{
-        width: 100px;
-      }
+    .author{
+      position: absolute;
+      bottom: -32px;
+      right: 26px;
     }
 
     datetime{
-      font-size: .9rem;
+      color: $tarmac;
+      padding-right: 0;
     }
 
-  }
-
-  .related-items{
-    margin-top: 100px;
-    background: $pale-grey;
-
-
-
-
-    h3{
-      margin-top: 35px;
-      margin-bottom: 0;
-      font-size: 2rem;
-      font-weight: bold;
-      text-align: center;
+    .like-wrap{
+      margin-left: 0%;
     }
 
-    .wrap{
-      position: relative;
-    }
-
-
-    .grid-box{
-      overflow: visible;
-      margin-bottom: 35px;
-      cursor: pointer;
-
-      .wrap{
-        width: 100%;
-        border-radius: 3px;
-      }
-
-      img{
-        width: 100%;
-        border-radius: 3px;
-        border: 1px solid lighten($light-grey, 15%);
-      }
-
+    &:hover{
+      //.wrap{
+      //}
       .color-overlay{
-        border-radius: 5px;
-      }
-
-      .author{
-        position: absolute;
-        bottom: -32px;
-        right: 26px;
-      }
-
-      datetime{
-        color: $tarmac;
-        padding-right: 0;
-      }
-
-      .like-wrap{
-        margin-left: 0%;
-      }
-
-      &:hover{
-        //.wrap{
-        //}
-          .color-overlay{
-          display: block;
-          border: 1px solid $sky-blue;
+        display: block;
+        border: 1px solid $sky-blue;
 
 
-          }
       }
     }
-
-
-
   }
 
 
 
 }
+
+
 
 
 footer.about-footer{
