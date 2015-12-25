@@ -1396,7 +1396,8 @@ header.colophon{
       @media (min-width: 620px){
         li {
           a {
-            width: 35px;
+            position: relative;
+            width: 50px;
             height: 30px;
             float: left;
             padding: 0;
@@ -1406,6 +1407,12 @@ header.colophon{
             background-size: 27px;
             text-indent: -9999px;
 
+            &:after{
+              position: absolute;
+              right: 5px;
+              top: 4px;
+              background-size: 22px;
+            }
           }
         }
 
@@ -1428,6 +1435,13 @@ header.colophon{
       }
 
 
+    }
+
+    & + header.sub-head{
+      position: fixed;
+      top: 61px;
+      min-height: 800px;
+      z-index: 2;
     }
   }
 
