@@ -5152,13 +5152,14 @@ form .btn {
   font-size: 1rem;
   z-index: 9;
   background: #fff;
-  color: #FF0042; }
+  color: #FF0042;
+  border-color: #FF0042 !important;
+  box-shadow: none !important; }
   #about-button:hover {
     background: #FF0042;
     color: #fff; }
   #about-button:active {
-    border-color: #FF0042;
-    box-shadow: none; }
+    border-color: #FF0042; }
 
 #back-to-top {
   -webkit-appearance: none;
