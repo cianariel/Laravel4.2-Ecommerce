@@ -4783,6 +4783,8 @@ nav a {
   margin-left: 30px;
   background: url("/assets/images/ideaing-logo-small-no-text.png") no-repeat;
   background-size: contain; }
+  #ideaing-logo:hover {
+    background-image: url("/assets/images/ideaing-logo-small-no-text-pink.png"); }
 
 form input,
 form .btn {

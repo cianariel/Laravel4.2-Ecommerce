@@ -649,7 +649,7 @@ nav{
 
   &:not(.details-hero) > .container{
     padding-top: 100px;
-  }  
+  }
 
 }
 
@@ -671,6 +671,11 @@ nav{
   margin-left: 30px;
   background: url('/assets/images/ideaing-logo-small-no-text.png') no-repeat;
   background-size: contain;
+
+  &:hover{
+    background-image: url('/assets/images/ideaing-logo-small-no-text-pink.png');
+
+  }
 }
 
 form{
