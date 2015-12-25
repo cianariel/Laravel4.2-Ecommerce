@@ -46,13 +46,13 @@
                                     </ul>
                                 </div>
 
-                                <section class="search-bar col-xs-2 col-md-2">
+                                <div class="col-md-1 col-xs-2 pull-right signin">
+                                    <a data-toggle="modal" data-target="#myModal" href="#">Log in</a>
+                                </div>
+                                <section class="search-bar col-xs-2 col-md-2 pull-right">
                                     <a href="#" class="search-toggle" data-toggle=".mobile-search-bar">Search</a>
                                     <input class="form-control  hidden-620" type="text" name="search" value="Search..."/>
                                 </section>
-                                <div class="col-md-2 col-xs-2 pull-right signin">
-                                    <a data-toggle="modal" data-target="#myModal" href="#">Log in</a>
-                                </div>
                             </div>
                         </div>
                     </nav>
