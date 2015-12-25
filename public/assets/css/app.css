@@ -5156,6 +5156,9 @@ form .btn {
   #about-button:hover {
     background: #FF0042;
     color: #fff; }
+  #about-button:active {
+    border-color: #FF0042;
+    box-shadow: none; }
 
 #back-to-top {
   -webkit-appearance: none;
@@ -5247,6 +5250,8 @@ header.colophon {
         margin-top: 0; }
       header.colophon.scroll-header #top-nav .search-bar {
         margin-left: 7%; } }
+    header.colophon.scroll-header #top-nav .signin a {
+      background-size: 23px !important; }
   header.colophon.scroll-header + header.sub-head .shop-menu {
     position: fixed;
     top: 61px;

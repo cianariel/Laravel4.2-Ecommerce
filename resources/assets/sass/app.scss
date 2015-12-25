@@ -1303,6 +1303,10 @@ form{
     background:$iridium;
     color: #fff;
   }
+  &:active{
+    border-color: $iridium;
+    box-shadow: none;
+  }
 }
 
 #back-to-top{
@@ -1433,6 +1437,10 @@ header.colophon{
         .search-bar{
           margin-left: 7%;
         }
+      }
+
+      .signin a{
+        background-size: 23px !important;
       }
 
 
