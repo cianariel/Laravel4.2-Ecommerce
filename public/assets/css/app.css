@@ -5339,7 +5339,10 @@ header.colophon {
     border-top: 1px solid #c1c1c1; }
   #mid-nav ul.wrap {
     position: relative;
-    overflow: visible; }
+    overflow: visible;
+    float: none;
+    margin: 0 auto;
+    overflow: hidden; }
   #mid-nav a, #mid-nav .extra-nav a {
     margin-top: 11px;
     margin-bottom: 11px;

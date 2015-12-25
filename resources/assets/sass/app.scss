@@ -1586,6 +1586,7 @@ header.colophon{
 #mid-nav{
   //margin-bottom: 100px;
   min-height: 47px;
+
   //background: #ED1E47;
 
   .container{
@@ -1594,7 +1595,10 @@ header.colophon{
 
   ul.wrap{
     position: relative;
-    overflow: visible
+    overflow: visible;
+    float: none;
+    margin: 0 auto;
+    overflow: hidden;
   }
   a{
     //margin: 15px 30px;

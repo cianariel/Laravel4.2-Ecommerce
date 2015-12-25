@@ -204,9 +204,9 @@
                 </div>
             </nav>
         </header>
-        <nav id="mid-nav"  class="col-xs-12  hidden-620">
-            <div class="container full-sm fixed-sm ">
-                <ul class="wrap">
+        <nav id="mid-nav" class="hidden-620">
+            <div class="container full-sm fixed-sm">
+                <ul class="wrap col-xs-9">
                     <li class="selected"><a href="">All ideas</a></li>
                     <li><a href="">Kitchen</a></li>
                     <li><a href="">Bedroom</a></li>
