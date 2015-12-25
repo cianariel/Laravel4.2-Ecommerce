@@ -15,18 +15,20 @@
 
             <ul class="like-nav hidden-xs pull-right">
                 <li><a class="like-counter" href="#">189</a></li>
-                <li><a class="author" href="#"></a></li>
-                <li><a class="author" href="#"></a></li>
-                <li><a class="author" href="#"></a></li>
-                <li><a class="likes" href="#">and 186 others</a></li>
+<!--                <li><a class="author" href="#"></a></li>-->
+<!--                <li><a class="author" href="#"></a></li>-->
+<!--                <li><a class="author" href="#"></a></li>-->
+<!--                <li><a class="likes" href="#">and 186 others</a></li>-->
             </ul>
         </header>
 
 
         <section id="hero" class="details-hero">
-            <div class="head-wrap">
-                <h1><span>{{the_title()}}</span></h1>
-                <a class="like-counter hidden-soft shown-620" href="#">189</a>
+            <div class="container">
+                <div class="head-wrap">
+                    <h1><span>{{the_title()}}</span></h1>
+                    <a class="like-counter hidden-soft shown-620" href="#">189</a>
+                </div>
             </div>
 
             <div class="hero-background" style="background-image:url( {{getThumbnailLink($post->ID)}} ) "></div>

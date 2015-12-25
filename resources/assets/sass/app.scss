@@ -589,7 +589,6 @@ nav{
 
   }
 
-
   .like-counter{
     overflow: hidden;
     font-size: 2.3rem;
@@ -623,34 +622,40 @@ nav{
     height: 100%;
   }
 
-  & > .container{
-    padding-top: 100px;
+
+  &.details-hero{
+    h1{
+      float: left;
+      text-align: left;
+      width: 50%;
+      margin: 0;
+      font-size: 4rem;
+      //max-width: 80%;
+      //margin-left: auto;
+      //margin-right: auto;
+      line-height: 1.6;
+
+      span{
+        background-color: rgba($iridium, .7);
+        padding: 5px 15px;
+        background-position-x: 3px;
+      }
+    }
+    .color-overlay{
+      display: none;
+    }
   }
+
+
+  &:not(.details-hero) > .container{
+    padding-top: 100px;
+  }  
 
 }
 
 .logo-wrap{
   a{
     padding: 0;
-  }
-}
-
-.details-hero{
-  h1{
-    max-width: 80%;
-    margin-left: auto;
-    margin-right: auto;
-
-
-    span{
-      background-color: $picton;
-      padding: 5px 15px;
-      //padding-left: 30px;
-      background-position-x: 3px;
-    }
-  }
-  .color-overlay{
-    display: none;
   }
 }
 
@@ -1153,6 +1158,7 @@ form{
   h4{
     font-size: 1.8rem;
     margin-bottom: 0;
+    text-align: center;
   }
 
   &.products{
@@ -1258,7 +1264,13 @@ form{
   padding: 13px;
   font-size: 1rem;
   z-index: 9;
-  background: $iridium !important;
+  background: #fff;
+  color: $iridium;
+
+  &:hover{
+    background:$iridium;
+    color: #fff;
+  }
 }
 
 #back-to-top{
@@ -1329,6 +1341,10 @@ header.colophon{
        background-position: left;
        background-repeat: no-repeat;
        white-space: nowrap;
+
+       &:hover{
+         background-image: url("/assets/images/signin-blue.png");
+       }
       }
    }
  }
@@ -1455,7 +1471,7 @@ header.colophon{
   top: 0;
   width: 100%;
   z-index: 11;
-  padding: 20px 0;
+  padding:20px 0 8px;
   overflow: hidden;
   background: #fff;
   border-bottom: 1px solid lighten($light-grey, 10%);
@@ -1465,27 +1481,35 @@ header.colophon{
     width: 33px;
     min-height: 33px;
     background-size: contain;
-    margin-top: 12px;
+    margin-top: -7px;
   }
 
   h1{
-    width: 45%;
+    width: 65%;
     padding-left: 10px;
     float: left;
     margin-left: 3%;
-    margin-top: 15px;
+    margin-top: 0;
     font-size: 2.1rem;
     text-align: center;
   }
 
-  .like-nav li a.author {
-    margin-top: -13px;
+  .like-nav li{
+    padding-top: 0;
+    a.like-counter {
+      padding-top: 0;
+      padding-right: 8px;
+      background-position: left top;
+    }
   }
+  //.like-nav li a.author {
+  //  margin-top: -13px;
+  //}
 
   .social-rounds{
     float: right;
     width: 190px;
-    margin-top: 4px;
+    //margin-top: 4px;
     overflow: hidden;
 
     a{
