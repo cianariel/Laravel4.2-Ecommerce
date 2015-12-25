@@ -996,7 +996,7 @@ form{
     .img-wrap{
       overflow: visible;
 
-      img{
+      & > img{
         box-shadow: 0 0 0 1px $pale-grey;
       }
     }
@@ -1018,7 +1018,14 @@ form{
 
   &:hover{
     .img-wrap{
-      img{
+
+      .color-overlay{
+        width: 100%;
+          border: 2px solid lighten($sky-blue, 20%);
+
+      }
+
+      & > img{
         box-shadow: 0 0 0 1px $sky-blue;
       }
     }
@@ -1030,6 +1037,14 @@ form{
     }
 
   }
+
+  //&.big-box:hover{
+  //  .img-wrap{
+  //
+  //
+  //  }
+  //
+  //}
 
 }
 
@@ -1328,6 +1343,7 @@ header.colophon{
       width: 100%;
       z-index: 10;
       background: #fff;
+      border-bottom: 1px solid lighten($light-grey, 10%);
 
       @media (min-width: 620px){
         li {
@@ -1439,9 +1455,10 @@ header.colophon{
   top: 0;
   width: 100%;
   z-index: 11;
-  padding: 20px 10px;
+  padding: 20px 0;
   overflow: hidden;
   background: #fff;
+  border-bottom: 1px solid lighten($light-grey, 10%);
 
   .lamp-logo{
     float: left;
@@ -1452,13 +1469,13 @@ header.colophon{
   }
 
   h1{
+    width: 45%;
     padding-left: 10px;
-    margin-top: 0;
-    font-size: 2.1rem;
     float: left;
     margin-left: 3%;
     margin-top: 15px;
-
+    font-size: 2.1rem;
+    text-align: center;
   }
 
   .like-nav li a.author {
@@ -1953,6 +1970,7 @@ header.sub-head{
   float: left;
   width: 100%;
   //background: #F2F2F2;
+  border-top: 1px solid darken($pale-grey, 10%);
   border-bottom: 1px solid darken($pale-grey, 10%);
   ul{
     overflow: visible;

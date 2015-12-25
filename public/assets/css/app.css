@@ -4988,7 +4988,7 @@ form .btn {
       background-position: 4px center !important; }
     .grid-box.big-box .img-wrap {
       overflow: visible; }
-      .grid-box.big-box .img-wrap img {
+      .grid-box.big-box .img-wrap > img {
         box-shadow: 0 0 0 1px #F2F5F5; }
     .grid-box.big-box .like-wrap {
       padding-left: 45px;
@@ -5000,7 +5000,10 @@ form .btn {
       position: absolute;
       right: 40px;
       bottom: 10px; }
-  .grid-box:hover .img-wrap img {
+  .grid-box:hover .img-wrap .color-overlay {
+    width: 100%;
+    border: 2px solid #66d0ff; }
+  .grid-box:hover .img-wrap > img {
     box-shadow: 0 0 0 1px #00B1FF; }
   .grid-box:hover h3 a,
   .grid-box:hover h5 a {
@@ -5189,7 +5192,8 @@ header.colophon {
     top: 0;
     width: 100%;
     z-index: 10;
-    background: #fff; }
+    background: #fff;
+    border-bottom: 1px solid #dbdbdb; }
     @media (min-width: 620px) {
       header.colophon.scroll-header #top-nav li a {
         width: 35px;
@@ -5255,9 +5259,10 @@ header.colophon {
   top: 0;
   width: 100%;
   z-index: 11;
-  padding: 20px 10px;
+  padding: 20px 0;
   overflow: hidden;
-  background: #fff; }
+  background: #fff;
+  border-bottom: 1px solid #dbdbdb; }
   .story-header .lamp-logo {
     float: left;
     width: 33px;
@@ -5265,12 +5270,13 @@ header.colophon {
     background-size: contain;
     margin-top: 12px; }
   .story-header h1 {
+    width: 45%;
     padding-left: 10px;
-    margin-top: 0;
-    font-size: 2.1rem;
     float: left;
     margin-left: 3%;
-    margin-top: 15px; }
+    margin-top: 15px;
+    font-size: 2.1rem;
+    text-align: center; }
   .story-header .like-nav li a.author {
     margin-top: -13px; }
   .story-header .social-rounds {
@@ -5585,6 +5591,7 @@ header.sub-head {
   overflow: visible;
   float: left;
   width: 100%;
+  border-top: 1px solid #d5dfdf;
   border-bottom: 1px solid #d5dfdf; }
   #hero-nav ul {
     overflow: visible; }

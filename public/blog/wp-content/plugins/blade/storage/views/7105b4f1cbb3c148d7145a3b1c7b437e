@@ -16,10 +16,10 @@
 
             <ul class="like-nav hidden-xs pull-right">
                 <li><a class="like-counter" href="#">189</a></li>
-                <li><a class="author" href="#"></a></li>
-                <li><a class="author" href="#"></a></li>
-                <li><a class="author" href="#"></a></li>
-                <li><a class="likes" href="#">and 186 others</a></li>
+<!--                <li><a class="author" href="#"></a></li>-->
+<!--                <li><a class="author" href="#"></a></li>-->
+<!--                <li><a class="author" href="#"></a></li>-->
+<!--                <li><a class="likes" href="#">and 186 others</a></li>-->
             </ul>
         </header>
 
