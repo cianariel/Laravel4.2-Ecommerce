@@ -22,7 +22,6 @@
     </nav>
 
     <div class="container full-620 main-container fixed-sm">
-
         <article class="col-sm-11 col-md-offset-1">
 
             <aside class="share-bar sticks-on-scroll">
@@ -41,6 +40,18 @@
 
         </article>
     </div>
+
+
+    <aside class="share-bar sticks-on-scroll">
+        <ul>
+            <li class="fb"><a href="#">55</a></li>
+            <li class="twi"><a href="#">120</a></li>
+            <li class="gp"><a href="#">521</a></li>
+            <li class="email"><a href="#">Email</a></li>
+            <li class="heart"><a href="#">12.5</a></li>
+            <li class="comment"><a href="#">322</a></li>
+        </ul>
+    </aside>
 
 
     <section class="comments">
