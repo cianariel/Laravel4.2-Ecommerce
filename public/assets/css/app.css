@@ -5247,7 +5247,7 @@ header.colophon {
         margin-top: 0; }
       header.colophon.scroll-header #top-nav .search-bar {
         margin-left: 7%; } }
-  header.colophon.scroll-header + header.sub-head {
+  header.colophon.scroll-header + header.sub-head .shop-menu {
     position: fixed;
     top: 61px;
     min-height: 800px;
