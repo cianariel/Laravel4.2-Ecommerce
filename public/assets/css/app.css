@@ -4756,7 +4756,6 @@ nav a {
   #hero.details-hero h1 {
     float: left;
     text-align: left;
-    width: 50%;
     margin: 0;
     font-size: 4rem;
     line-height: 1.6; }
@@ -6020,9 +6019,6 @@ footer.about-footer {
   .full-620 {
     width: 100%;
     padding: 0; }
-
-  body {
-    padding-bottom: 60px; }
 
   #top-nav {
     padding-top: 15px;
