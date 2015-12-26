@@ -21,9 +21,10 @@ class AdminController extends ApiController
     }
 
 
+    // Category view
+
     public function categoryView()
     {
-        //return "hi";
         return view('admin.category-view');
     }
 
@@ -36,5 +37,21 @@ class AdminController extends ApiController
     {
         return view('admin.category-edit');
 
+    }
+
+    // Product view
+    public function productView()
+    {
+        return view('admin.product-view');
+    }
+
+    public function addProduct()
+    {
+        return view('admin.product-add');
+    }
+
+    public function editProduct()
+    {
+        return view('admin.product-edit');
     }
 }

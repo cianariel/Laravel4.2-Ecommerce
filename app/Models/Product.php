@@ -95,13 +95,16 @@
 
                 return true;
 
-                // $updatedProduct ;
-                //  $product = Product::where('product_permalink', $product[])->first();
-
             } catch (Exception $ex)
             {
                 return $ex;
             }
+
+        }
+
+        public function publishProduct($product,$active = true)
+        {
+
 
         }
 
@@ -127,4 +130,6 @@
             return $product;
 
         }
+
+
     }

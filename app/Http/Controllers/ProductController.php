@@ -17,10 +17,12 @@
             $this->product = new Product();
         }
 
+        /**
+         * @param $permalink
+         * @return mixed
+         */
         public function isPermalinkExist($permalink)
         {
-            // $inputData = \Input::all();
-
             $product = $this->product->checkPermalink($permalink);//($inputData['Permalink']);
             if ($product == false)
                 return $this->setStatusCode(\Config::get("const.api-status.success"))
@@ -30,6 +32,9 @@
                     ->makeResponse($product);
         }
 
+        /**
+         * @return mixed
+         */
         public function addProduct()
         {
             $inputData = \Input::all();
@@ -57,6 +62,11 @@
 
         }
 
+
+        /**
+         * @param null $id
+         * @return mixed
+         */
         public function getProductById($id = null)
         {
             try
@@ -81,6 +91,9 @@
 
         }
 
+        /**
+         * @return mixed
+         */
         public function getAllProductList()
         {
             try
@@ -106,12 +119,33 @@
         }
 
 
+        /**
+         * @return mixed
+         */
         public function updateProductInfo()
         {
             try
             {
-                $data = \Input::all();
-                $this->product->updateProductInfo($data);
+                $inputData = \Input::all();
+                $validationRules = [
+//todo .implement function
+                    'rules'  => [
+                        /*'FullName' => 'required | max: 25',
+                        'Email'    => 'required | email',
+                        'Password' => 'required | min: 6 '*/
+                    ],
+                    'values' => [
+                        /*'FullName' => isset($inputData['FullName']) ? $inputData['FullName'] : null,
+                        'Email'    => isset($inputData['Email']) ? $inputData['Email'] : null,
+                        'Password' => isset($inputData['Password']) ? $inputData['Password'] : null*/
+                    ]
+                ];
+
+                list($productData, $validator) = $this->inputValidation($inputData, $validationRules);
+
+                $this->inputValidation($inputData,$validationRules);
+
+                //$this->product->updateProductInfo($data);
 
                 return $this->setStatusCode(\Config::get("const.api-status.success"))
                     ->makeResponse("Update Successful.");
@@ -124,6 +158,32 @@
 
         }
 
+
+        /**
+         * @return mixed
+         */
+        public function publishProduct()
+        {
+            try
+            {
+                $data = \Input::all();
+
+            //    $this->product->updateProductInfo($data);
+
+                return $this->setStatusCode(\Config::get("const.api-status.success"))
+                    ->makeResponse("Update Successful.");
+
+            } catch (Exception $ex)
+            {
+                return $this->setStatusCode(\Config::get("const.api-status.system-fail"))
+                    ->makeResponseWithError("System Failure !", $ex);
+            }
+
+        }
+
+        /**
+         *
+         */
         public function addMediaContent()
         {
 

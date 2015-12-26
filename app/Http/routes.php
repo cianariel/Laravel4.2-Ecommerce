@@ -96,9 +96,15 @@
     Route::group(['prefix' => 'admin'], function ()
     {
         Route::get('dashboard', 'AdminController@index');
-        Route::get('category-view', 'AdminController@categoryView');
 
+        // Category view
+        Route::get('category-view', 'AdminController@categoryView');
         Route::get('category-add', 'AdminController@addCategory');
         Route::get('category-edit', 'AdminController@editCategory');
+
+        // Product view
+        Route::get('product-view', 'AdminController@productView');
+        Route::get('product-add', 'AdminController@addProduct');
+        Route::get('product-edit', 'AdminController@editProduct');
 
     });

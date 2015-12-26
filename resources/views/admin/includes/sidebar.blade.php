@@ -7,7 +7,7 @@
             </li>
             <li>
                 <a href="#"><i class="fa fa-list fa-fw"></i>Category<span class="fa arrow"></span></a>
-                <ul class="nav nav-second-level collapse" aria-expanded="false" style="height: 0px;">
+                <ul class="nav nav-second-level collapse" aria-expanded="false">
                     <li>
                         <a href="/admin/category-view">Category List</a>
                     <li>
@@ -16,6 +16,20 @@
                     <li>
                     <li>
                         <a href="/admin/category-edit">Edit Category</a>
+                    <li>
+                </ul>
+            </li>
+            <li>
+                <a href="#"><i class="fa fa-briefcase fa-fw"></i>Product<span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level collapse" aria-expanded="false">
+                    <li>
+                        <a href="/admin/product-view">Product List</a>
+                    <li>
+                    <li>
+                        <a href="/admin/product-add">Add Product</a>
+                    <li>
+                    <li>
+                        <a href="/admin/product-edit">Edit Product</a>
                     <li>
                 </ul>
             </li>
