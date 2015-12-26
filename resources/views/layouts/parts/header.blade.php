@@ -46,13 +46,13 @@
                                     </ul>
                                 </div>
 
-                                <section class="search-bar col-xs-2 col-md-2">
+                                <div class="col-md-1 col-xs-2 pull-right signin">
+                                    <a data-toggle="modal" data-target="#myModal" href="#">Log in</a>
+                                </div>
+                                <section class="search-bar col-xs-2 col-md-2 pull-right">
                                     <a href="#" class="search-toggle" data-toggle=".mobile-search-bar">Search</a>
                                     <input class="form-control  hidden-620" type="text" name="search" value="Search..."/>
                                 </section>
-                                <div class="col-md-2 col-xs-2 pull-right signin">
-                                    <a data-toggle="modal" data-target="#myModal" href="#">Log in</a>
-                                </div>
                             </div>
                         </div>
                     </nav>
@@ -204,9 +204,9 @@
                 </div>
             </nav>
         </header>
-        <nav id="mid-nav"  class="col-xs-12  hidden-620">
-            <div class="container full-sm fixed-sm ">
-                <ul class="wrap">
+        <nav id="mid-nav" class="hidden-620">
+            <div class="container full-sm fixed-sm">
+                <ul class="wrap col-xs-9">
                     <li class="selected"><a href="">All ideas</a></li>
                     <li><a href="">Kitchen</a></li>
                     <li><a href="">Bedroom</a></li>

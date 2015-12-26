@@ -589,7 +589,6 @@ nav{
 
   }
 
-
   .like-counter{
     overflow: hidden;
     font-size: 2.3rem;
@@ -615,15 +614,39 @@ nav{
   }
 
   .color-overlay{
-
-
     background-color: rgba(0,0,0,.2);
     position: absolute;
     width: 100%;
     height: 100%;
+    border-radius: 5px;
   }
 
-  & > .container{
+
+  &.details-hero{
+    h1{
+      float: left;
+      text-align: left;
+      //width: 50%;
+      margin: 0;
+      font-size: 4rem;
+      //max-width: 80%;
+      //margin-left: auto;
+      //margin-right: auto;
+      line-height: 1.6;
+
+      span{
+        background-color: rgba($iridium, .7);
+        padding: 5px 15px;
+        background-position-x: 3px;
+      }
+    }
+    .color-overlay{
+      display: none;
+    }
+  }
+
+
+  &:not(.details-hero) > .container{
     padding-top: 100px;
   }
 
@@ -632,25 +655,6 @@ nav{
 .logo-wrap{
   a{
     padding: 0;
-  }
-}
-
-.details-hero{
-  h1{
-    max-width: 80%;
-    margin-left: auto;
-    margin-right: auto;
-
-
-    span{
-      background-color: $picton;
-      padding: 5px 15px;
-      //padding-left: 30px;
-      background-position-x: 3px;
-    }
-  }
-  .color-overlay{
-    display: none;
   }
 }
 
@@ -666,6 +670,11 @@ nav{
   margin-left: 30px;
   background: url('/assets/images/ideaing-logo-small-no-text.png') no-repeat;
   background-size: contain;
+
+  &:hover{
+    background-image: url('/assets/images/ideaing-logo-small-no-text-pink.png');
+
+  }
 }
 
 form{
@@ -685,19 +694,27 @@ form{
 
   &:hover{
     .color-overlay{
-      display: block;
+      //display: block;
+      opacity: 1;
+
     }
   }
 
   .color-overlay{
-    display: none;
-    background: rgba(0,0,0,.5);
-    //opacity: .6;
+    //display: none;
+    //visibility: hidden;
     position: absolute;
-    top: 0;
-    left: 0;
     width: 100%;
     height: 100%;
+    max-width: 100%;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    transition: opacity, .6s;
+    background: rgba(0,0,0,.4);
+
+
+    border-radius: 5px;
 
     h4{
       position: absolute;
@@ -742,6 +759,7 @@ form{
     height: 55px;
     float: left;
     margin-left: 8%;
+
     //margin: 0 auto;
 
     a{
@@ -834,12 +852,15 @@ form{
 
   .img-wrap{
     position: relative;
-    overflow: hidden;
+    //overflow: hidden;
     border: 1px solid #eee;
     border-radius: 5px;
+    transition: border-color .6s;
 
     & > img{
       min-height: 237px;
+      transition: border .6s;
+
     }
     a{
       position: absolute;
@@ -996,8 +1017,8 @@ form{
     .img-wrap{
       overflow: visible;
 
-      img{
-        box-shadow: 0 0 0 1px $pale-grey;
+      & > img{
+       border: 1px solid $pale-grey;
       }
     }
 
@@ -1018,9 +1039,18 @@ form{
 
   &:hover{
     .img-wrap{
-      img{
+
+      .color-overlay{
+        //width: 100%;
+          //outline: 2px solid lighten($sky-blue, 20%);
         box-shadow: 0 0 0 1px $sky-blue;
+
+
       }
+
+      //& > img{
+      //  box-shadow: 0 0 0 1px $sky-blue;
+      //}
     }
 
     h3 a,
@@ -1029,6 +1059,25 @@ form{
       color: darken($sky-blue, 10%) !important;
     }
 
+  }
+
+  &.big-box{
+    &:hover{
+      .img-wrap{
+        border: 1px solid $sky-blue;
+
+        &> img{
+          border: 1px solid $sky-blue;
+        }
+      }
+    }
+  }
+
+  &.sidebar-box:hover{
+    .img-wrap {
+      overflow: hidden;
+      border: 1px solid $sky-blue;
+    }
   }
 
 }
@@ -1138,6 +1187,7 @@ form{
   h4{
     font-size: 1.8rem;
     margin-bottom: 0;
+    text-align: center;
   }
 
   &.products{
@@ -1162,6 +1212,7 @@ form{
 
 .sidebar-box{
   overflow: visible;
+  position: relative;
   margin-top: 0;
   h5{
     font-size: 1.6rem;
@@ -1188,35 +1239,37 @@ form{
       border: 0;
     }
   }
-  .img-wrap{
+  //.img-wrap{
     .number{
+      position: absolute;
+      top: 12px;
+      left: -7px;
+      z-index: 1;
       text-indent: 0;
       padding: 2px 10px;
       border-radius: 20px;
-      top: -7px;
-      left: -7px;
       background: $pine-green;
       color: #fff;
     }
-  }
+  //}
 
   .photos &{
-    .img-wrap {
+    //.img-wrap {
       a.number {
         background: $sky-blue;
       }
-    }
+    //}
 
     //h5 a{
     //    color: $sky-blue;
     //  }
   }
   .ideas &{
-    .img-wrap {
+    //.img-wrap {
       a.number {
         background: $dark-orange;
       }
-    }
+    //}
   }
 
 
@@ -1243,7 +1296,18 @@ form{
   padding: 13px;
   font-size: 1rem;
   z-index: 9;
-  background: $iridium !important;
+  background: #fff;
+  color: $iridium;
+  border-color: $iridium !important;
+  box-shadow: none !important;
+
+  &:hover{
+    background:$iridium;
+    color: #fff;
+  }
+  //&:active{
+  //  border-color: $iridium;
+  //}
 }
 
 #back-to-top{
@@ -1309,11 +1373,16 @@ header.colophon{
      a{
        float: right;
        margin-right: 1%;
-       padding-left: 40px;
+       padding-left: 25px;
        background-image: url("/assets/images/signin-icon.png");
        background-position: left;
        background-repeat: no-repeat;
+       background-size: 14px;
        white-space: nowrap;
+
+       &:hover{
+         background-image: url("/assets/images/signin-blue.png");
+       }
       }
    }
  }
@@ -1328,20 +1397,28 @@ header.colophon{
       width: 100%;
       z-index: 10;
       background: #fff;
+      border-bottom: 1px solid lighten($light-grey, 10%);
 
       @media (min-width: 620px){
         li {
           a {
-            width: 35px;
+            position: relative;
+            width: 50px;
             height: 30px;
             float: left;
             padding: 0;
             margin-left: 10px;
             margin-right: 0;
             margin-top: 15px;
-            background-size: 27px;
+            //background-size: 27px;
             text-indent: -9999px;
 
+            &:after{
+              position: absolute;
+              right: 85px;
+              top: 4px;
+              background-size: 22px;
+            }
           }
         }
 
@@ -1363,7 +1440,18 @@ header.colophon{
         }
       }
 
+      //.signin a{
+      //  //background-size: 23px !important;
+      //}
 
+
+    }
+
+    & + header.sub-head .shop-menu{
+      position: fixed;
+      top: 61px;
+      //min-height: 800px;
+      z-index: 2;
     }
   }
 
@@ -1382,6 +1470,7 @@ header.colophon{
 
     input{
       min-width: 128px;
+      color: #999;
       text-align: center;
       background: url('/assets/images/magnif-grey.png') 10% no-repeat;
     }
@@ -1395,19 +1484,23 @@ header.colophon{
     margin-right: 8%;
     padding-left: 30px;
     padding-right: 5px;
-    color: #000;
+    font-size: 1.4rem;
+    color: #999;
 
     &.shop{
-      background: url('/assets/images/bag-black.png') left center no-repeat;
+      background: url('/assets/images/bag-grey.png') left center no-repeat;
+      background-size: 14px;
       &:hover{
         background-image: url('/assets/images/bag-blue.png');
       }
     }
     &.pros{
       background: url('/assets/images/pro-grey.png') left center no-repeat;
+      background-size: 14px;
     }
     &.disc{
-      background: url('/assets/images/chat-black.png') left center no-repeat;
+      background: url('/assets/images/chat-grey.png') left center no-repeat;
+      background-size: 14px;
       &:hover{
         background-image: url('/assets/images/chat-picton.png');
       }
@@ -1439,36 +1532,46 @@ header.colophon{
   top: 0;
   width: 100%;
   z-index: 11;
-  padding: 20px 10px;
+  padding:20px 0 8px;
   overflow: hidden;
   background: #fff;
+  border-bottom: 1px solid lighten($light-grey, 10%);
 
   .lamp-logo{
     float: left;
-    width: 33px;
-    min-height: 33px;
-    background-size: contain;
-    margin-top: 12px;
+    //width: 33px;
+    min-height: 50px;
+    //min-height: 33px;
+    background-size: initial;
+    margin-top: -14px;
   }
 
   h1{
+    width: 65%;
     padding-left: 10px;
-    margin-top: 0;
-    font-size: 2.1rem;
     float: left;
     margin-left: 3%;
-    margin-top: 15px;
-
+    margin-top: 0;
+    font-size: 2.1rem;
+    text-align: center;
   }
 
-  .like-nav li a.author {
-    margin-top: -13px;
+  .like-nav li{
+    padding-top: 0;
+    a.like-counter {
+      padding-top: 0;
+      padding-right: 8px;
+      background-position: left top;
+    }
   }
+  //.like-nav li a.author {
+  //  margin-top: -13px;
+  //}
 
   .social-rounds{
     float: right;
     width: 190px;
-    margin-top: 4px;
+    //margin-top: 4px;
     overflow: hidden;
 
     a{
@@ -1499,6 +1602,7 @@ header.colophon{
 #mid-nav{
   //margin-bottom: 100px;
   min-height: 47px;
+
   //background: #ED1E47;
 
   .container{
@@ -1507,7 +1611,10 @@ header.colophon{
 
   ul.wrap{
     position: relative;
-    overflow: visible
+    overflow: visible;
+    float: none;
+    margin: 0 auto;
+    //overflow: hidden;
   }
   a{
     //margin: 15px 30px;
@@ -1953,6 +2060,7 @@ header.sub-head{
   float: left;
   width: 100%;
   //background: #F2F2F2;
+  border-top: 1px solid darken($pale-grey, 10%);
   border-bottom: 1px solid darken($pale-grey, 10%);
   ul{
     overflow: visible;
@@ -2079,8 +2187,8 @@ header.sub-head{
     a.home-link{
       color: $iridium;
       background-image: url('/assets/images/house-pink.png');
-      background-size: initial;
-      background-position: -12px 12px;
+      background-position: -18px 10px;
+      background-size: 48px;
     }
     a.all-link{
       color: $iridium;
@@ -2328,7 +2436,7 @@ header.sub-head{
       }
 
       .color-overlay{
-        border-radius: 3px;
+        border-radius: 5px;
       }
 
       .author{
@@ -2347,12 +2455,14 @@ header.sub-head{
       }
 
       &:hover{
-        .wrap{
-          border: 1px solid $sky-blue;
-        }
+        //.wrap{
+        //}
           .color-overlay{
           display: block;
-        }
+          border: 1px solid $sky-blue;
+
+
+          }
       }
     }
 
@@ -2687,13 +2797,13 @@ footer.about-footer{
     padding: 0;
   }
 
-  body{
-    padding-bottom: 60px;
-
-    //#back-to-top {
-    //  bottom: 0%;
-    //}
-  }
+  //body{
+  //  padding-bottom: 60px;
+  //
+  //  //#back-to-top {
+  //  //  bottom: 0%;
+  //  //}
+  //}
 
 //.header.colophon{
   #top-nav{
