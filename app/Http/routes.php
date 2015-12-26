@@ -12,10 +12,10 @@
     |
     */
 
-   /* Event::listen('illuminate.query', function($query)
-    {
-        var_dump($query);
-    });*/
+    /* Event::listen('illuminate.query', function($query)
+     {
+         var_dump($query);
+     });*/
 
     Route::get('/', 'PageController@home');
 
@@ -61,6 +61,8 @@
          * */
         Route::get('product/check-permalink/{permalink?}', 'ProductController@isPermalinkExist');
         Route::get('product/get-product/{id?}', 'ProductController@getProductById');
+        Route::get('product/product-find/{name?}', 'ProductController@searchProductByName');
+
         Route::post('product/get-product-list', 'ProductController@getAllProductList');
 
         Route::post('product/add-product', 'ProductController@addProduct');
@@ -106,5 +108,6 @@
         Route::get('product-view', 'AdminController@productView');
         Route::get('product-add', 'AdminController@addProduct');
         Route::get('product-edit', 'AdminController@editProduct');
+
 
     });

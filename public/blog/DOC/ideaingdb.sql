@@ -11,13 +11,11 @@
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 
 -- Dumping database structure for ideaingdb
-DROP DATABASE IF EXISTS `ideaingdb`;
 CREATE DATABASE IF NOT EXISTS `ideaingdb` /*!40100 DEFAULT CHARACTER SET latin1 */;
 USE `ideaingdb`;
 
 
 -- Dumping structure for table ideaingdb.migrations
-DROP TABLE IF EXISTS `migrations`;
 CREATE TABLE IF NOT EXISTS `migrations` (
   `migration` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `batch` int(11) NOT NULL
@@ -34,7 +32,6 @@ INSERT INTO `migrations` (`migration`, `batch`) VALUES
 
 
 -- Dumping structure for table ideaingdb.password_resets
-DROP TABLE IF EXISTS `password_resets`;
 CREATE TABLE IF NOT EXISTS `password_resets` (
   `email` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `token` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
@@ -50,7 +47,6 @@ DELETE FROM `password_resets`;
 
 
 -- Dumping structure for table ideaingdb.permissions
-DROP TABLE IF EXISTS `permissions`;
 CREATE TABLE IF NOT EXISTS `permissions` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
@@ -69,7 +65,6 @@ DELETE FROM `permissions`;
 
 
 -- Dumping structure for table ideaingdb.permission_role
-DROP TABLE IF EXISTS `permission_role`;
 CREATE TABLE IF NOT EXISTS `permission_role` (
   `permission_id` int(10) unsigned NOT NULL,
   `role_id` int(10) unsigned NOT NULL,
@@ -86,7 +81,6 @@ DELETE FROM `permission_role`;
 
 
 -- Dumping structure for table ideaingdb.products
-DROP TABLE IF EXISTS `products`;
 CREATE TABLE IF NOT EXISTS `products` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
   `product_category_id` int(10) DEFAULT NULL,
@@ -117,17 +111,16 @@ DELETE FROM `products`;
 /*!40000 ALTER TABLE `products` DISABLE KEYS */;
 INSERT INTO `products` (`id`, `product_category_id`, `product_name`, `product_permalink`, `product_description`, `specifications`, `price`, `sale_price`, `store_id`, `affiliate_link`, `price_grabber_master_id`, `review`, `free_shipping`, `coupon_code`, `post_status`, `page_title`, `meta_description`, `similar_product_ids`, `product_availability`, `created_at`, `updated_at`) VALUES
 	(1, 29, 'new product', 'new-product', 'this is a new product', '', 15, 14, 1, 'http://amazon.com/product/12/se23', '1', '', 'yes', '1235', NULL, 'this is seo page title', 'tag,product', '1,3,4', 'Yes', '2015-12-24 19:48:27', '2015-12-24 13:48:27'),
-	(2, NULL, '2', '', 'Root 2', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '30', NULL, NULL, NULL, NULL, NULL, NULL, '2015-12-24 13:01:10', '2015-12-24 13:01:10'),
-	(3, NULL, '3', '', 'Root 1.1.1', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '32', NULL, NULL, NULL, NULL, NULL, NULL, '2015-12-24 13:01:10', '2015-12-24 13:01:10'),
-	(4, 29, '4', 'sdf-sdf-dsdd', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Active', NULL, NULL, NULL, NULL, '2015-12-24 18:23:57', '2015-12-24 18:23:57'),
-	(5, NULL, '5', 'lkj', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Active', NULL, NULL, NULL, NULL, '2015-12-24 12:53:23', '2015-12-24 12:53:23'),
+	(2, NULL, 'aaa', '', 'Root 2', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '30', NULL, NULL, NULL, NULL, NULL, NULL, '2015-12-26 21:31:14', '2015-12-26 21:31:14'),
+	(3, NULL, 'aaaaaa', '', 'Root 1.1.1', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '32', NULL, NULL, NULL, NULL, NULL, NULL, '2015-12-26 21:31:27', '2015-12-26 21:31:27'),
+	(4, 29, 'aaa bb', 'sdf-sdf-dsdd', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Active', NULL, NULL, NULL, NULL, '2015-12-26 21:31:34', '2015-12-26 21:31:34'),
+	(5, NULL, 'bb', 'lkj', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Active', NULL, NULL, NULL, NULL, '2015-12-26 21:32:13', '2015-12-26 21:32:13'),
 	(6, NULL, '6', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Active', NULL, NULL, NULL, NULL, '2015-12-24 12:53:24', '2015-12-24 12:53:24'),
 	(7, NULL, '7', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Active', NULL, NULL, NULL, NULL, '2015-12-24 12:53:25', '2015-12-24 12:53:25');
 /*!40000 ALTER TABLE `products` ENABLE KEYS */;
 
 
 -- Dumping structure for table ideaingdb.product_categories
-DROP TABLE IF EXISTS `product_categories`;
 CREATE TABLE IF NOT EXISTS `product_categories` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
   `category_name` varchar(15) NOT NULL,
@@ -162,7 +155,6 @@ INSERT INTO `product_categories` (`id`, `category_name`, `extra_info`, `lock`, `
 
 
 -- Dumping structure for table ideaingdb.roles
-DROP TABLE IF EXISTS `roles`;
 CREATE TABLE IF NOT EXISTS `roles` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
@@ -181,7 +173,6 @@ DELETE FROM `roles`;
 
 
 -- Dumping structure for table ideaingdb.role_user
-DROP TABLE IF EXISTS `role_user`;
 CREATE TABLE IF NOT EXISTS `role_user` (
   `user_id` int(10) unsigned NOT NULL,
   `role_id` int(10) unsigned NOT NULL,
@@ -198,7 +189,6 @@ DELETE FROM `role_user`;
 
 
 -- Dumping structure for table ideaingdb.stores
-DROP TABLE IF EXISTS `stores`;
 CREATE TABLE IF NOT EXISTS `stores` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `store_name` varchar(255) DEFAULT NULL,
@@ -212,7 +202,6 @@ DELETE FROM `stores`;
 
 
 -- Dumping structure for table ideaingdb.users
-DROP TABLE IF EXISTS `users`;
 CREATE TABLE IF NOT EXISTS `users` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
@@ -238,7 +227,6 @@ INSERT INTO `users` (`id`, `name`, `email`, `password`, `remember_token`, `statu
 
 
 -- Dumping structure for table ideaingdb.user_profiles
-DROP TABLE IF EXISTS `user_profiles`;
 CREATE TABLE IF NOT EXISTS `user_profiles` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `user_id` int(10) DEFAULT NULL,

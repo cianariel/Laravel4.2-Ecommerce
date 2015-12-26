@@ -13,7 +13,7 @@
         public function __construct()
         {
             // Apply the jwt.auth middleware to all methods in this controller
-            $this->middleware('jwt.auth', ['except' => ['updateProductInfo', 'getAllProductList', 'getProductById', 'isPermalinkExist', 'addProduct']]);
+            $this->middleware('jwt.auth', ['except' => ['searchProductByName','updateProductInfo', 'getAllProductList', 'getProductById', 'isPermalinkExist', 'addProduct']]);
             $this->product = new Product();
         }
 
@@ -128,7 +128,7 @@
             {
                 $inputData = \Input::all();
                 $validationRules = [
-//todo .implement function
+
                     'rules'  => [
                         /*'FullName' => 'required | max: 25',
                         'Email'    => 'required | email',
@@ -143,12 +143,21 @@
 
                 list($productData, $validator) = $this->inputValidation($inputData, $validationRules);
 
-                $this->inputValidation($inputData,$validationRules);
+                //$this->inputValidation($inputData,$validationRules);
 
-                //$this->product->updateProductInfo($data);
+                if ($validator->passes())
+                {
+                    $this->product->updateProductInfo($productData);
 
-                return $this->setStatusCode(\Config::get("const.api-status.success"))
-                    ->makeResponse("Update Successful.");
+                    return $this->setStatusCode(\Config::get("const.api-status.success"))
+                        ->makeResponse("Update Successful.");
+                }elseif($validator->fails()){
+                    $validatorMessage = $validator->messages()->toArray();
+
+                    return $this->setStatusCode(\Config::get("const.api-status.validation-fail"))
+                        ->makeResponseWithError(array('Validation failed',$validatorMessage ));
+                }
+
 
             } catch (Exception $ex)
             {
@@ -156,6 +165,11 @@
                     ->makeResponseWithError("System Failure !", $ex);
             }
 
+        }
+
+        public function searchProductByName($name)
+        {
+            return Product::where('product_name','LIKE',"%$name%")->get(['id','product_name AS name']);
         }
 
 

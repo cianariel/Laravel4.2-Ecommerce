@@ -25,7 +25,7 @@
 
         <div ng-app="adminApp" data-ng-controller="AdminController" class="row">
             <div class="col-lg-12" ng-cloak>
-                <div class="panel panel-default">
+                <div class="panel panel-default" ng-init="loadAddProduct()">
                     <div class="panel-heading"> Basic Form Elements</div>
                     <div class="panel-body">
                         <form role="form">
@@ -49,190 +49,222 @@
                             </div>
 
                             <div class="row">
-                                <div class="col-lg-10">
+                                <div uib-collapse="isCollapsed">
+                                    <div class="col-lg-8">
+                                        <p class="row">
 
-                                    <div class="panel panel-default">
-                                        <div class="panel-heading">
-                                            Add Product Panel
+                                        <div class="from-group">
+                                            <label>Enter Permalink</label>
+                                            <input ng-model="desiredPermalink" class="form-control"
+                                                   placeholder="Enter desired permalink">
+
+                                            <p>
+                                                <button class="btn btn-primary" type="button" ng-click="addProduct()">
+                                                    Check and Proceed
+                                                </button>
+                                            </p>
                                         </div>
-                                        <!-- /.panel-heading -->
-                                        <div class="panel-body">
-                                            <!-- Nav tabs -->
-                                            <ul class="nav nav-tabs">
-                                                <li class="active"><a aria-expanded="true" href="#home"
-                                                                      data-toggle="tab">Home</a>
-                                                </li>
-                                                <li class=""><a aria-expanded="false" href="#profile" data-toggle="tab">Profile</a>
-                                                </li>
-                                                <li class=""><a aria-expanded="false" href="#messages"
-                                                                data-toggle="tab">Messages</a>
-                                                </li>
-                                                <li class=""><a aria-expanded="false" href="#settings"
-                                                                data-toggle="tab">Settings</a>
-                                                </li>
-                                            </ul>
 
-                                            <!-- Tab panes -->
-                                            <div class="tab-content">
-                                                <div class="tab-pane fade active in" id="home">
-                                                    <div class="row row-grid">&nbsp;</div>
-                                                    <div class="col-lg-8">
-                                                        <div class="row">
-                                                            <div class="from-group">
-                                                                <div class="">
-                                                                    <div class="panel panel-info">
-                                                                        <div class="panel-heading"> Category Status
-                                                                            Panel
-                                                                        </div>
-                                                                        <div class="panel-body">
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div uib-collapse="isCollapsedToggle" class="col-lg-10">
+
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        Add Product Panel
+                                    </div>
+                                    <!-- /.panel-heading -->
+                                    <div class="panel-body">
+                                        <!-- Nav tabs -->
+                                        <ul class="nav nav-tabs">
+                                            <li class="active"><a aria-expanded="true" href="#home"
+                                                                  data-toggle="tab">Home</a>
+                                            </li>
+                                            <li class=""><a aria-expanded="false" href="#specification" data-toggle="tab">Specification</a>
+                                            </li>
+                                            <li class=""><a aria-expanded="false" href="#review"
+                                                            data-toggle="tab">Review</a>
+                                            </li>
+                                            <li class=""><a aria-expanded="false" href="#media"
+                                                            data-toggle="tab">Media Content</a>
+                                            </li>
+                                        </ul>
+
+                                        <!-- Tab panes -->
+                                        <div class="tab-content">
+                                            <div class="tab-pane fade active in" id="home">
+                                                <div class="row row-grid">&nbsp;</div>
+                                                <div class="col-lg-8">
+                                                    <div class="row">
+                                                        <div class="from-group">
+                                                            <div class="">
+                                                                <div class="panel panel-info">
+                                                                    <div class="panel-heading"> Category Status
+                                                                        Panel
+                                                                    </div>
+                                                                    <div class="panel-body">
                                                                             <span ng-repeat="list in tempCategoryList">@{{ list }}
                                                                                 >> </span>
-                                                                        </div>
                                                                     </div>
                                                                 </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="row">
-                                                            <div class="form-group">
-                                                                <label>Selects Category</label>
-
-                                                                <div class="col-lg-12 clearfix">
-                                                                    <div class="col-lg-10 pull-left">
-                                                                        <select data-ng-model="selectedItem"
-                                                                                ng-change="getSubCategory()"
-                                                                                class="form-control">
-                                                                            <option value="@{{ selectedItem }}">
-                                                                                -- View This Category --
-                                                                            </option>
-                                                                            <option ng-repeat="category in categoryItems"
-                                                                                    value="@{{ category.id }}">
-                                                                                @{{ category.category }}
-                                                                            </option>
-                                                                        </select>
-                                                                    </div>
-
-                                                                    <div class="col-lg-2">
-                                                                        <button class="btn btn-info btn-circle"
-                                                                                type="button"
-                                                                                ng-click="resetCategory()"
-                                                                                uib-tooltip="Refresh Category"
-                                                                                tooltip-placement="right">
-                                                                            <i class="fa fa-refresh"></i>
-                                                                        </button>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="row">&nbsp;</div>
-                                                            <div class="form-group">
-                                                                <label>Text Input with Placeholder</label>
-                                                                <input class="form-control" placeholder="Enter text">
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <label>Text Input with Placeholder</label>
-                                                                <input class="form-control" placeholder="Enter text">
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <label>Text Input with Placeholder</label>
-                                                                <input class="form-control" placeholder="Enter text">
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <label>Text Input with Placeholder</label>
-                                                                <input class="form-control" placeholder="Enter text">
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <label>Text Input with Placeholder</label>
-                                                                <input class="form-control" placeholder="Enter text">
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <label>Text Input with Placeholder</label>
-                                                                <input class="form-control" placeholder="Enter text">
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <label>Text Input with Placeholder</label>
-                                                                <input class="form-control" placeholder="Enter text">
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <label>Text Input with Placeholder</label>
-                                                                <input class="form-control" placeholder="Enter text">
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <label>Text Input with Placeholder</label>
-                                                                <input class="form-control" placeholder="Enter text">
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <label>Text Input with Placeholder</label>
-                                                                <input class="form-control" placeholder="Enter text">
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <label>Text Input with Placeholder</label>
-                                                                <input class="form-control" placeholder="Enter text">
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <label>Text Input with Placeholder</label>
-                                                                <input class="form-control" placeholder="Enter text">
-                                                            </div>
-
-                                                            <div class="form-group">
-                                                                <button class="btn btn-primary" type="submit">
-                                                                    Save As Druft
-                                                                </button>
                                                             </div>
                                                         </div>
                                                     </div>
+                                                    <div class="row">
+                                                        <div class="form-group">
+                                                            <label>Selects Category</label>
 
-                                                </div>
-                                                <div class="tab-pane fade" id="profile">
-                                                    <h4>Profile Tab</h4>
+                                                            <div class="col-lg-12 clearfix">
+                                                                <div class="col-lg-10 pull-left">
+                                                                    <select data-ng-model="selectedItem"
+                                                                            ng-change="getSubCategory()"
+                                                                            class="form-control">
+                                                                        <option value="@{{ selectedItem }}">
+                                                                            -- View This Category --
+                                                                        </option>
+                                                                        <option ng-repeat="category in categoryItems"
+                                                                                value="@{{ category.id }}">
+                                                                            @{{ category.category }}
+                                                                        </option>
+                                                                    </select>
+                                                                </div>
 
-                                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-                                                        eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                                                        enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                                                        nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-                                                        in reprehenderit in voluptate velit esse cillum dolore eu fugiat
-                                                        nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-                                                        sunt in culpa qui officia deserunt mollit anim id est
-                                                        laborum.</p>
-                                                </div>
-                                                <div class="tab-pane fade" id="messages">
-                                                    <h4>Messages Tab</h4>
+                                                                <div class="col-lg-2">
+                                                                    <button class="btn btn-info btn-circle"
+                                                                            type="button"
+                                                                            ng-click="resetCategory()"
+                                                                            uib-tooltip="Refresh Category"
+                                                                            tooltip-placement="right">
+                                                                        <i class="fa fa-refresh"></i>
+                                                                    </button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">&nbsp;</div>
+                                                        <div class="form-group">
+                                                            <label>Prodcut Name</label>
+                                                            <input data-ng-model="Name" class="form-control" placeholder="Enter product name">
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label>Permalink</label>
+                                                            <input data-ng-model="Permalink" class="form-control" placeholder="Modify permalink">
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label>Description</label>
+                                                            <div class="col-sm-12 outline: 1px solid orange;">
+                                                                <div text-angular data-ng-model="htmlContent" name="description-editor" ta-text-editor-class="border-around" ta-html-editor-class="border-around"></div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label>Price</label>
+                                                            <input data-ng-model="Price" class="form-control" placeholder="Enter text">
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label>Sale Price</label>
+                                                            <input data-ng-model="SalePrice" class="form-control" placeholder="Enter text">
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label>Store Id</label>
+                                                            <input data-ng-model="StoreId"  class="form-control" placeholder="Enter text">
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label>Affiliate Link</label>
+                                                            <input data-ng-model="AffiliateLink"  class="form-control" placeholder="Enter text">
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label>Price Grabber Id</label>
+                                                            <input data-ng-model="PriceGrabberId" class="form-control" placeholder="Enter text">
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label>Coupon Code</label>
+                                                            <input data-ng-model="CouponCode"  class="form-control" placeholder="Enter text">
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label>Page Title</label>
+                                                            <input data-ng-model="PageTitle" class="form-control" placeholder="Enter text">
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label>Meta Description</label>
+                                                            <input data-ng-model="MetaDescription" class="form-control" placeholder="Enter text">
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label>Similar Product Ids</label>
 
-                                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-                                                        eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                                                        enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                                                        nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-                                                        in reprehenderit in voluptate velit esse cillum dolore eu fugiat
-                                                        nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-                                                        sunt in culpa qui officia deserunt mollit anim id est
-                                                        laborum.</p>
-                                                </div>
-                                                <div class="tab-pane fade" id="settings">
-                                                    <h4>Settings Tab</h4>
+                                                            <tags-input ng-model="productTags" display-property="name">
 
-                                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-                                                        eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                                                        enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                                                        nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-                                                        in reprehenderit in voluptate velit esse cillum dolore eu fugiat
-                                                        nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-                                                        sunt in culpa qui officia deserunt mollit anim id est
-                                                        laborum.</p>
+                                                                <auto-complete source="searchProductByName($query)" ng-model-options="{debounce: 1000}"></auto-complete>
+
+                                                            </tags-input>
+
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label>Product Availability</label>
+                                                            <input data-ng-model="ProductAvailability"  class="form-control" placeholder="Enter text">
+                                                        </div>
+
+                                                        <div class="form-group">
+                                                            <button class="btn btn-primary" type="button">
+                                                                Save As Draft
+                                                            </button>
+                                                        </div>
+                                                    </div>
                                                 </div>
+
+                                            </div>
+                                            <div class="tab-pane fade" id="specification">
+                                                <h4>Specification</h4>
+
+                                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+                                                    eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+                                                    enim ad minim veniam, quis nostrud exercitation ullamco laboris
+                                                    nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
+                                                    in reprehenderit in voluptate velit esse cillum dolore eu fugiat
+                                                    nulla pariatur. Excepteur sint occaecat cupidatat non proident,
+                                                    sunt in culpa qui officia deserunt mollit anim id est
+                                                    laborum.</p>
+                                            </div>
+                                            <div class="tab-pane fade" id="review">
+                                                <h4>Review</h4>
+
+                                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+                                                    eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+                                                    enim ad minim veniam, quis nostrud exercitation ullamco laboris
+                                                    nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
+                                                    in reprehenderit in voluptate velit esse cillum dolore eu fugiat
+                                                    nulla pariatur. Excepteur sint occaecat cupidatat non proident,
+                                                    sunt in culpa qui officia deserunt mollit anim id est
+                                                    laborum.</p>
+                                            </div>
+                                            <div class="tab-pane fade" id="media">
+                                                <h4>Media Content</h4>
+
+                                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+                                                    eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+                                                    enim ad minim veniam, quis nostrud exercitation ullamco laboris
+                                                    nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
+                                                    in reprehenderit in voluptate velit esse cillum dolore eu fugiat
+                                                    nulla pariatur. Excepteur sint occaecat cupidatat non proident,
+                                                    sunt in culpa qui officia deserunt mollit anim id est
+                                                    laborum.</p>
                                             </div>
                                         </div>
-                                        <!-- /.panel-body -->
                                     </div>
-                                    <!-- /.panel -->
-
+                                    <!-- /.panel-body -->
                                 </div>
+                                <!-- /.panel -->
+
                             </div>
-                        </form>
                     </div>
-                    <!-- /.col-lg-12 --                </div>
-    >
+                    </form>
                 </div>
-                <!-- /.row -->
-                </div>
-                <!-- /.container-fluid -->
+                <!-- /.col-lg-12 --                </div>
+>
             </div>
+            <!-- /.row -->
+            </div>
+            <!-- /.container-fluid -->
         </div>
+    </div>
 @stop

@@ -1,4 +1,5 @@
-var adminApp = angular.module('adminApp', ['ui.bootstrap', 'ngSanitize', 'angular-confirm']);
+var adminApp = angular.module('adminApp', ['ui.bootstrap', 'ngSanitize', 'angular-confirm', 'textAngular', 'ngTagsInput']);
+
 
 adminApp.directive('loading', ['$http', function ($http) {
     return {
@@ -160,6 +161,11 @@ adminApp.controller('AdminController', ['$scope', '$http', '$confirm', '$locatio
                     $scope.addAlert('success', message);
                 }
                     break;
+                case 210:
+                {
+                    $scope.addAlert('', message);
+                }
+                    break;
                 case 410:
                 {
                     $scope.addAlert('danger', data.data.error.message);
@@ -261,11 +267,61 @@ adminApp.controller('AdminController', ['$scope', '$http', '$confirm', '$locatio
             }
 
 
-        };+
+        };
 
 
         // Initialize variables and functions.
         $scope.initPage();
         $scope.getCategory();
+
+
+        // Product Module
+
+
+        $scope.loadAddProduct = function () {
+            $scope.isCollapsed = true;
+            $scope.isCollapsedToggle = !$scope.isCollapsed;
+        };
+        $scope.addProduct = function () {
+            $scope.closeAlert();
+            console.log($scope.desiredPermalink);
+            if (($scope.desiredPermalink == '') || ( typeof  $scope.desiredPermalink == 'undefined')) {
+                $scope.addAlert('danger', 'Permalink can not be blank !');
+                return false;
+            }
+
+            $http({
+                url: '/api/product/check-permalink/' + $scope.desiredPermalink,
+                method: "GET",
+
+            }).success(function (data) {
+                if (data.status_code == 200) {
+                    $scope.outputStatus(data, "Product created successfully");
+                    $scope.isCollapsed = true;
+                    $scope.isCollapsedToggle = !$scope.isCollapsed;
+                } else if (data.status_code == 210) {
+                    $scope.outputStatus(data, "Permalink is not available please enter new.");
+                }
+
+            });
+
+        };
+
+        // Search product id for related product from Admin
+        $scope.productTags = [];
+        $scope.searchProductByName = function (query) {
+
+            return $http.get('/api/product/product-find/' + query);
+        };
+
+        /*
+
+         //wis
+         $scope.orightml = '<h2>Try me!</h2>';
+
+         $scope.htmlcontent = $scope.orightml;
+         $scope.disabled = false;
+         */
+
 
     }]);
