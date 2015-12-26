@@ -1410,12 +1410,12 @@ header.colophon{
             margin-left: 10px;
             margin-right: 0;
             margin-top: 15px;
-            background-size: 27px;
+            //background-size: 27px;
             text-indent: -9999px;
 
             &:after{
               position: absolute;
-              right: 5px;
+              right: 85px;
               top: 4px;
               background-size: 22px;
             }
@@ -1440,9 +1440,9 @@ header.colophon{
         }
       }
 
-      .signin a{
-        background-size: 23px !important;
-      }
+      //.signin a{
+      //  //background-size: 23px !important;
+      //}
 
 
     }
@@ -1470,6 +1470,7 @@ header.colophon{
 
     input{
       min-width: 128px;
+      color: #999;
       text-align: center;
       background: url('/assets/images/magnif-grey.png') 10% no-repeat;
     }
@@ -1483,7 +1484,8 @@ header.colophon{
     margin-right: 8%;
     padding-left: 30px;
     padding-right: 5px;
-    color: $tarmac;
+    font-size: 1.4rem;
+    color: #999;
 
     &.shop{
       background: url('/assets/images/bag-grey.png') left center no-repeat;
@@ -1537,10 +1539,11 @@ header.colophon{
 
   .lamp-logo{
     float: left;
-    width: 33px;
-    min-height: 33px;
-    background-size: contain;
-    margin-top: -7px;
+    //width: 33px;
+    min-height: 50px;
+    //min-height: 33px;
+    background-size: initial;
+    margin-top: -14px;
   }
 
   h1{
@@ -1611,7 +1614,7 @@ header.colophon{
     overflow: visible;
     float: none;
     margin: 0 auto;
-    overflow: hidden;
+    //overflow: hidden;
   }
   a{
     //margin: 15px 30px;

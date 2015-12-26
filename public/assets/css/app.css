@@ -5229,11 +5229,10 @@ header.colophon {
         margin-left: 10px;
         margin-right: 0;
         margin-top: 15px;
-        background-size: 27px;
         text-indent: -9999px; }
         header.colophon.scroll-header #top-nav li a:after {
           position: absolute;
-          right: 5px;
+          right: 85px;
           top: 4px;
           background-size: 22px; }
       header.colophon.scroll-header #top-nav a#ideaing-logo {
@@ -5249,8 +5248,6 @@ header.colophon {
         margin-top: 0; }
       header.colophon.scroll-header #top-nav .search-bar {
         margin-left: 7%; } }
-    header.colophon.scroll-header #top-nav .signin a {
-      background-size: 23px !important; }
   header.colophon.scroll-header + header.sub-head .shop-menu {
     position: fixed;
     top: 61px;
@@ -5264,6 +5261,7 @@ header.colophon {
       background: url("/assets/images/magnif-grey.png") center no-repeat; }
     header.colophon .search-bar input {
       min-width: 128px;
+      color: #999;
       text-align: center;
       background: url("/assets/images/magnif-grey.png") 10% no-repeat; }
 
@@ -5271,7 +5269,8 @@ header.colophon {
   margin-right: 8%;
   padding-left: 30px;
   padding-right: 5px;
-  color: #3D4B4E; }
+  font-size: 1.4rem;
+  color: #999; }
   #top-nav a.shop {
     background: url("/assets/images/bag-grey.png") left center no-repeat;
     background-size: 14px; }
@@ -5305,10 +5304,9 @@ header.colophon {
   border-bottom: 1px solid #dbdbdb; }
   .story-header .lamp-logo {
     float: left;
-    width: 33px;
-    min-height: 33px;
-    background-size: contain;
-    margin-top: -7px; }
+    min-height: 50px;
+    background-size: initial;
+    margin-top: -14px; }
   .story-header h1 {
     width: 65%;
     padding-left: 10px;
@@ -5347,8 +5345,7 @@ header.colophon {
     position: relative;
     overflow: visible;
     float: none;
-    margin: 0 auto;
-    overflow: hidden; }
+    margin: 0 auto; }
   #mid-nav a, #mid-nav .extra-nav a {
     margin-top: 11px;
     margin-bottom: 11px;
