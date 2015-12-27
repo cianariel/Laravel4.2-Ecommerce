@@ -5941,8 +5941,8 @@ footer.about-footer {
     padding-right: 10px; }
     #mid-nav a.more-link {
       background-size: contain !important; }
-    #mid-nav a:hover {
-      background-size: contain !important; }
+  #mid-nav > a:hover, #mid-nav .extra-nav > a:hover {
+    background-size: contain !important; }
 
   .why-us {
     margin-top: 0; } }

@@ -2622,12 +2622,13 @@ footer.about-footer{
         background-size: contain !important;
       }
 
-      &:hover{
-        //padding-left: 16px;
-        //padding-right: 16px;
-        background-size: contain !important;
 
-      }
+    }
+    > a:hover{
+      //padding-left: 16px;
+      //padding-right: 16px;
+      background-size: contain !important;
+
     }
     //.extra-nav {
     //  right: 16%;
