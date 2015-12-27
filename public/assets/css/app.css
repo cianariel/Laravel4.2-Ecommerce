@@ -5231,7 +5231,7 @@ header.colophon {
         text-indent: -9999px; }
         header.colophon.scroll-header #top-nav li a:after {
           position: absolute;
-          right: 85px;
+          right: 11px;
           top: 4px;
           background-size: 22px; }
       header.colophon.scroll-header #top-nav a#ideaing-logo {
