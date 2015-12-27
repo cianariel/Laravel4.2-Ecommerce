@@ -1,4 +1,3 @@
-@charset "UTF-8";
 /*!
  * Bootstrap v3.3.5 (http://getbootstrap.com)
  * Copyright 2011-2015 Twitter, Inc.
@@ -5634,8 +5633,8 @@ header.sub-head {
   overflow: visible;
   float: left;
   width: 100%;
-  border-top: 1px solid #d5dfdf;
-  border-bottom: 1px solid #d5dfdf; }
+  border-top: 1px solid #EFEFEF;
+  border-bottom: 1px solid #EFEFEF; }
   #hero-nav ul {
     overflow: visible; }
   #hero-nav .category-nav {
@@ -5701,13 +5700,16 @@ header.sub-head {
     #hero-nav a:not(.author).kitchen-link {
       background-image: url("/assets/images/pot-outline.png"); }
   #hero-nav li.active a:not(.home-link)::after {
-    content: '▲';
+    content: ' ';
+    width: 17px;
+    height: 19px;
+    display: block;
     font-size: 1.7rem;
     position: absolute;
-    bottom: -12px;
+    bottom: -13px;
     right: 38%;
     color: #fff;
-    text-shadow: -1px -1px 0 #d5dfdf, 1px -1px 0 #d5dfdf, -1px 1px 0 #fff, 1px 1px 0 #fff; }
+    background: white url("/assets/images/pointer-arrow-grey.png") no-repeat; }
   #hero-nav li.active a.home-link {
     color: #FF0042;
     background-image: url("/assets/images/house-pink.png");

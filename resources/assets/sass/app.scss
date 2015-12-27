@@ -659,7 +659,7 @@ nav{
 }
 
 #ideaing-logo{
-  width: 155px; 
+  width: 155px;
   height: 43px;
   min-width: 110px;
   margin-top: 9px;
@@ -2060,8 +2060,8 @@ header.sub-head{
   float: left;
   width: 100%;
   //background: #F2F2F2;
-  border-top: 1px solid darken($pale-grey, 10%);
-  border-bottom: 1px solid darken($pale-grey, 10%);
+  border-top: 1px solid #EFEFEF;
+  border-bottom: 1px solid #EFEFEF;
   ul{
     overflow: visible;
   }
@@ -2172,17 +2172,22 @@ header.sub-head{
 
   li.active{
     a:not(.home-link)::after{
-      content: '▲';
+      content: ' ';
+      width: 17px;
+      height: 19px;
+      display: block;
       font-size: 1.7rem;
       position: absolute;
-      bottom: -12px;
+      bottom: -13px;
       right: 38%;
       color: #fff;
-      text-shadow:
-      -1px -1px 0 darken($pale-grey, 10%),
-      1px -1px 0 darken($pale-grey, 10%),
-      -1px 1px 0 #fff,
-      1px 1px 0 #fff;
+      background: white url('/assets/images/pointer-arrow-grey.png') no-repeat;
+
+      //text-shadow:
+      //-1px -1px 0 darken($pale-grey, 10%),
+      //1px -1px 0 darken($pale-grey, 10%),
+      //-1px 1px 0 #fff,
+      //1px 1px 0 #fff;
     }
     a.home-link{
       color: $iridium;
