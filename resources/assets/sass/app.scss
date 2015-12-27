@@ -659,8 +659,8 @@ nav{
 }
 
 #ideaing-logo{
-  width: 175px;
-  height: 48px;
+  width: 155px; 
+  height: 43px;
   min-width: 110px;
   margin-top: 9px;
   display: block;
@@ -1488,10 +1488,10 @@ header.colophon{
     color: #999;
 
     &.shop{
-      background: url('/assets/images/bag-grey.png') left center no-repeat;
+      background: url('/assets/images/bag-square-grey.png') left center no-repeat;
       background-size: 14px;
       &:hover{
-        background-image: url('/assets/images/bag-blue.png');
+        background-image: url('/assets/images/bag-square-blue.png');
       }
     }
     &.pros{
