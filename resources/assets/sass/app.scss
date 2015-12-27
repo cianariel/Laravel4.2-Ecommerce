@@ -1373,11 +1373,11 @@ header.colophon{
      a{
        float: right;
        margin-right: 1%;
-       padding-left: 25px;
+       padding-left: 33px;
        background-image: url("/assets/images/signin-icon.png");
        background-position: left;
        background-repeat: no-repeat;
-       background-size: 14px;
+       background-size: 27px;
        white-space: nowrap;
 
        &:hover{
@@ -1489,18 +1489,18 @@ header.colophon{
 
     &.shop{
       background: url('/assets/images/bag-square-grey.png') left center no-repeat;
-      background-size: 14px;
+      //background-size: 14px;
       &:hover{
         background-image: url('/assets/images/bag-square-blue.png');
       }
     }
     &.pros{
       background: url('/assets/images/pro-grey.png') left center no-repeat;
-      background-size: 14px;
+      //background-size: 14px;
     }
     &.disc{
       background: url('/assets/images/chat-grey.png') left center no-repeat;
-      background-size: 14px;
+      //background-size: 14px;
       &:hover{
         background-image: url('/assets/images/chat-picton.png');
       }
