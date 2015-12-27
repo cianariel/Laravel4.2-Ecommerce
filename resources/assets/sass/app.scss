@@ -1681,7 +1681,7 @@ header.colophon{
     display: none;
     position: absolute;
     width: 200px;
-    right: 20%;
+    right: -4%;
     top: 40px;
     padding: 0;
     z-index: 10;
@@ -2629,9 +2629,9 @@ footer.about-footer{
 
       }
     }
-    .extra-nav {
-      right: 16%;
-    }
+    //.extra-nav {
+    //  right: 16%;
+    //}
   }
 
   .why-us {
