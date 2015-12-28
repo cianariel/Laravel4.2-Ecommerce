@@ -659,8 +659,8 @@ nav{
 }
 
 #ideaing-logo{
-  width: 175px;
-  height: 48px;
+  width: 155px;
+  height: 43px;
   min-width: 110px;
   margin-top: 9px;
   display: block;
@@ -1373,11 +1373,11 @@ header.colophon{
      a{
        float: right;
        margin-right: 1%;
-       padding-left: 25px;
+       padding-left: 33px;
        background-image: url("/assets/images/signin-icon.png");
        background-position: left;
        background-repeat: no-repeat;
-       background-size: 14px;
+       background-size: 27px;
        white-space: nowrap;
 
        &:hover{
@@ -1410,12 +1410,12 @@ header.colophon{
             margin-left: 10px;
             margin-right: 0;
             margin-top: 15px;
-            background-size: 27px;
+            //background-size: 27px;
             text-indent: -9999px;
 
             &:after{
               position: absolute;
-              right: 5px;
+              right: 11px;
               top: 4px;
               background-size: 22px;
             }
@@ -1440,9 +1440,9 @@ header.colophon{
         }
       }
 
-      .signin a{
-        background-size: 23px !important;
-      }
+      //.signin a{
+      //  //background-size: 23px !important;
+      //}
 
 
     }
@@ -1470,6 +1470,7 @@ header.colophon{
 
     input{
       min-width: 128px;
+      color: #999;
       text-align: center;
       background: url('/assets/images/magnif-grey.png') 10% no-repeat;
     }
@@ -1483,22 +1484,23 @@ header.colophon{
     margin-right: 8%;
     padding-left: 30px;
     padding-right: 5px;
-    color: $tarmac;
+    font-size: 1.4rem;
+    color: #999;
 
     &.shop{
-      background: url('/assets/images/bag-grey.png') left center no-repeat;
-      background-size: 14px;
+      background: url('/assets/images/bag-square-grey.png') left center no-repeat;
+      //background-size: 14px;
       &:hover{
-        background-image: url('/assets/images/bag-blue.png');
+        background-image: url('/assets/images/bag-square-blue.png');
       }
     }
     &.pros{
       background: url('/assets/images/pro-grey.png') left center no-repeat;
-      background-size: 14px;
+      //background-size: 14px;
     }
     &.disc{
       background: url('/assets/images/chat-grey.png') left center no-repeat;
-      background-size: 14px;
+      //background-size: 14px;
       &:hover{
         background-image: url('/assets/images/chat-picton.png');
       }
@@ -1537,10 +1539,11 @@ header.colophon{
 
   .lamp-logo{
     float: left;
-    width: 33px;
-    min-height: 33px;
-    background-size: contain;
-    margin-top: -7px;
+    //width: 33px;
+    min-height: 50px;
+    //min-height: 33px;
+    background-size: initial;
+    margin-top: -14px;
   }
 
   h1{
@@ -1611,7 +1614,7 @@ header.colophon{
     overflow: visible;
     float: none;
     margin: 0 auto;
-    overflow: hidden;
+    //overflow: hidden;
   }
   a{
     //margin: 15px 30px;
@@ -1678,7 +1681,7 @@ header.colophon{
     display: none;
     position: absolute;
     width: 200px;
-    right: 20%;
+    right: -4%;
     top: 40px;
     padding: 0;
     z-index: 10;
@@ -2057,8 +2060,8 @@ header.sub-head{
   float: left;
   width: 100%;
   //background: #F2F2F2;
-  border-top: 1px solid darken($pale-grey, 10%);
-  border-bottom: 1px solid darken($pale-grey, 10%);
+  border-top: 1px solid #EFEFEF;
+  border-bottom: 1px solid #EFEFEF;
   ul{
     overflow: visible;
   }
@@ -2169,17 +2172,22 @@ header.sub-head{
 
   li.active{
     a:not(.home-link)::after{
-      content: '▲';
+      content: ' ';
+      width: 17px;
+      height: 19px;
+      display: block;
       font-size: 1.7rem;
       position: absolute;
-      bottom: -12px;
+      bottom: -13px;
       right: 38%;
       color: #fff;
-      text-shadow:
-      -1px -1px 0 darken($pale-grey, 10%),
-      1px -1px 0 darken($pale-grey, 10%),
-      -1px 1px 0 #fff,
-      1px 1px 0 #fff;
+      background: white url('/assets/images/pointer-arrow-grey.png') no-repeat;
+
+      //text-shadow:
+      //-1px -1px 0 darken($pale-grey, 10%),
+      //1px -1px 0 darken($pale-grey, 10%),
+      //-1px 1px 0 #fff,
+      //1px 1px 0 #fff;
     }
     a.home-link{
       color: $iridium;
@@ -2616,16 +2624,17 @@ footer.about-footer{
         background-size: contain !important;
       }
 
-      &:hover{
-        //padding-left: 16px;
-        //padding-right: 16px;
-        background-size: contain !important;
 
-      }
     }
-    .extra-nav {
-      right: 16%;
+    > a:hover{
+      //padding-left: 16px;
+      //padding-right: 16px;
+      background-size: contain !important;
+
     }
+    //.extra-nav {
+    //  right: 16%;
+    //}
   }
 
   .why-us {
