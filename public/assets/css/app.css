@@ -4371,6 +4371,9 @@ a.label:focus {
 .blue {
   color: #00B1FF !important; }
 
+.purple {
+  color: #9E009E; }
+
 .pale-grey-bg {
   background: #F2F5F5; }
 
@@ -4789,6 +4792,57 @@ form input,
 form .btn {
   margin-bottom: 20px; }
 
+main.page-content section {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding-top: 15px;
+  padding-bottom: 15px; }
+main.page-content h3 {
+  text-align: center;
+  font-weight: bold;
+  margin-bottom: 20px; }
+main.page-content .card {
+  padding: 5px; }
+  main.page-content .card > div {
+    min-height: 210px;
+    overflow: hidden;
+    border: 1px solid #e7e7e7;
+    border-radius: 5px;
+    background: #fff; }
+  main.page-content .card h4 {
+    width: 100%;
+    margin-top: 0;
+    padding: 15px;
+    font-size: 1.4rem;
+    background: #F4F4DA; }
+  main.page-content .card span {
+    display: inline-block;
+    width: 100%;
+    padding: 25px;
+    font-size: 1.8rem;
+    font-weight: normal;
+    color: #5C5C5C; }
+    main.page-content .card span a {
+      color: #5C5C5C; }
+  main.page-content .card ul {
+    padding: 10px 25px; }
+  main.page-content .card li {
+    overflow: hidden;
+    padding: 10px 0;
+    background: url("/assets/images/elements/grey-line.png") center repeat-x; }
+    main.page-content .card li b {
+      color: #C7C747;
+      font-weight: normal; }
+    main.page-content .card li i {
+      float: right;
+      width: 170px;
+      font-style: normal; }
+    main.page-content .card li i, main.page-content .card li b {
+      padding-left: 10px;
+      padding-right: 10px;
+      background: #fff;
+      display: inline-block; }
+
 .grid-box {
   overflow: hidden;
   margin-top: 10px;
@@ -5022,6 +5076,12 @@ form .btn {
 
 .main-container {
   overflow: hidden; }
+
+article.product {
+  padding-top: 10px; }
+  article.product .article-content p:first-child:first-letter {
+    color: #FF7F00;
+    font-size: 5rem; }
 
 .grid-insert {
   padding: 45px;
@@ -5634,8 +5694,6 @@ header.sub-head {
   border-bottom: 1px solid #EFEFEF; }
   #hero-nav ul {
     overflow: visible; }
-  #hero-nav .category-nav {
-    width: 475px; }
   #hero-nav .left-nav li {
     padding-right: 15px; }
     #hero-nav .left-nav li:not(:last-child)::after {
@@ -5696,6 +5754,26 @@ header.sub-head {
         background-image: url("/assets/images/photos-blue.png"); }
     #hero-nav a:not(.author).kitchen-link {
       background-image: url("/assets/images/pot-outline.png"); }
+    #hero-nav a:not(.author).features-link {
+      background-image: url("/assets/images/icons/checkmark-orange.png"); }
+      #hero-nav a:not(.author).features-link:hover {
+        color: #FF7F00;
+        background-image: url("/assets/images/icons/checkmark-orange.png"); }
+    #hero-nav a:not(.author).specs-link {
+      background-image: url("/assets/images/icons/doc-green.png"); }
+      #hero-nav a:not(.author).specs-link:hover {
+        color: #C7C747;
+        background-image: url("/assets/images/icons/doc-green.png"); }
+    #hero-nav a:not(.author).compare-link {
+      background-image: url("/assets/images/icons/arrows-purple.png"); }
+      #hero-nav a:not(.author).compare-link:hover {
+        color: #9E009E;
+        background-image: url("/assets/images/icons/arrows-purple.png"); }
+    #hero-nav a:not(.author).reviews-link {
+      background-image: url("/assets/images/icons/stars-pink.png"); }
+      #hero-nav a:not(.author).reviews-link:hover {
+        color: #FF0042;
+        background-image: url("/assets/images/icons/stars-pink.png"); }
   #hero-nav li.active a:not(.home-link)::after {
     content: ' ';
     width: 17px;
@@ -6148,6 +6226,8 @@ footer.about-footer {
     #hero-nav .category-nav .home-link {
       min-width: 24px;
       text-align: center; }
+  #hero-nav.product-nav .category-nav {
+    width: 475px; }
   #hero-nav li {
     height: 70px; }
   #hero-nav li.active a::after {
