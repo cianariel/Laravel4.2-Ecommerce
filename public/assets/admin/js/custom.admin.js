@@ -40,6 +40,33 @@ adminApp.controller('AdminController', ['$scope', '$http', '$confirm', '$locatio
 
             $scope.tmpUrl = '';
 
+            /// product fields initialize
+            $scope.ProductId = '',
+                $scope.selectedItem = '',
+                $scope.Name = '',
+                $scope.Permalink = '',
+                $scope.htmlContent = '',
+                $scope.Price = '',
+                $scope.SalePrice = '',
+                $scope.StoreId = '',
+                $scope.AffiliateLink = '',
+                $scope.PriceGrabberId = '',
+                $scope.FreeShipping = '',
+                $scope.CouponCode = '',
+                $scope.PageTitle = '',
+                $scope.MetaDescription = '',
+                $scope.productTags = '',
+                $scope.ProductAvailability = '',
+                //specification
+                $scope.Specifications = [],
+                $scope.isUpdateSpecShow = false,
+                //review
+                $scope.reviews = [{
+                    key: 'Average',
+                    value: 0
+                }],
+                $scope.isUpdateReviewShow = false
+
 
         };
 
@@ -244,10 +271,8 @@ adminApp.controller('AdminController', ['$scope', '$http', '$confirm', '$locatio
 
                     $scope.categoryItems.splice(idx, 1);
 
-                    //ds = angular.copy($scope.tableTemporaryValue);
-                    // $scope.cancelCategory();
                 }
-                /*   });*/
+
             });
         };
 
@@ -275,11 +300,12 @@ adminApp.controller('AdminController', ['$scope', '$http', '$confirm', '$locatio
         $scope.getCategory();
 
 
-        // Product Module
+        // Product Module //
 
 
+        // initialize product add view
         $scope.loadAddProduct = function () {
-            $scope.isCollapsed = true;
+            $scope.isCollapsed = true; // default false it false to show forced parmalink saviing mood.
             $scope.isCollapsedToggle = !$scope.isCollapsed;
         };
         $scope.addProduct = function () {
@@ -291,20 +317,67 @@ adminApp.controller('AdminController', ['$scope', '$http', '$confirm', '$locatio
             }
 
             $http({
-                url: '/api/product/check-permalink/' + $scope.desiredPermalink,
-                method: "GET",
+                //       url: '/api/product/check-permalink/' + $scope.desiredPermalink,
+                url: '/api/product/add-product',
+                method: "POST",
+                data: {
+                    Permalink: $scope.desiredPermalink,
+                }
 
             }).success(function (data) {
                 if (data.status_code == 200) {
+                    console.log('set product id :', data.data.id);
+
+                    $scope.ProductId = data.data.id;
                     $scope.outputStatus(data, "Product created successfully");
                     $scope.isCollapsed = true;
                     $scope.isCollapsedToggle = !$scope.isCollapsed;
-                } else if (data.status_code == 210) {
+                } else if (data.status_code == 410) {
                     $scope.outputStatus(data, "Permalink is not available please enter new.");
                 }
 
             });
 
+        };
+
+        // update product
+        $scope.updateProduct = function () {
+            console.log('product id :', $scope.ProductId);
+            $scope.closeAlert();
+
+            $http({
+                url: '/api/product/update-product',
+                method: 'POST',
+                data: {
+                    ProductId: $scope.ProductId,
+                    CategoryId: $scope.selectedItem,
+                    Name: $scope.Name,
+                    Permalink: $scope.Permalink,
+                    Description: $scope.htmlContent,
+                    Price: $scope.Price,
+                    SalePrice: $scope.SalePrice,
+                    StoreId: $scope.StoreId,
+                    AffiliateLink: $scope.AffiliateLink,
+                    PriceGrabberId: $scope.PriceGrabberId,
+                    FreeShipping: $scope.FreeShipping,
+                    CouponCode: $scope.CouponCode,
+                    PageTitle: $scope.PageTitle,
+                    MetaDescription: $scope.MetaDescription,
+                    SimilarProductIds: $scope.productTags,
+                    ProductAvailability: $scope.ProductAvailability,
+                }
+
+            }).success(function (data) {
+                //console.log(data);
+                if (data.status_code == 200) {
+                    $scope.outputStatus(data, "Product updated successfully");
+                } else {
+                    $scope.outputStatus(data, "Product information not updated");
+                }
+
+
+            });
+            return false;
         };
 
         // Search product id for related product from Admin
@@ -314,14 +387,81 @@ adminApp.controller('AdminController', ['$scope', '$http', '$confirm', '$locatio
             return $http.get('/api/product/product-find/' + query);
         };
 
-        /*
 
-         //wis
-         $scope.orightml = '<h2>Try me!</h2>';
+        // add dynamic files in specifications
+        $scope.addSpecFormField = function () {
+            $scope.Specifications.push(
+                {'key': $scope.spKey, 'value': $scope.spVal}
+            );
+            $scope.spKey = '';
+            $scope.spVal = '';
+        }
 
-         $scope.htmlcontent = $scope.orightml;
-         $scope.disabled = false;
-         */
+        $scope.deleteSpecFormField = function (index) {
+            $scope.Specifications.splice(index, 1);
+        }
+
+        $scope.editSpecFormField = function (index) {
+            $scope.$index = index;
+            $scope.spKey = $scope.Specifications[index].key;
+            $scope.spVal = $scope.Specifications[index].value;
+            $scope.isUpdateSpecShow = true;
+
+        }
+        $scope.updateSpecFormField = function () {
+            $scope.Specifications[$scope.$index].key = $scope.spKey;
+            $scope.Specifications[$scope.$index].value = $scope.spVal;
+            $scope.isUpdateSpecShow = false;
+
+            $scope.spKey = '';
+            $scope.spVal = '';
+        }
 
 
+        // add dynamic fields in review
+        $scope.addReviewFormField = function () {
+            $scope.reviews.push(
+                {'key': $scope.reviewKey, 'value': $scope.reviewValue}
+            );
+            $scope.reviewKey = '';
+            $scope.reviewValue = '';
+            $scope.calculateAvg();
+
+        }
+
+        $scope.deleteReviewFormField = function (index) {
+            $scope.reviews.splice(index, 1);
+            $scope.calculateAvg();
+        }
+
+        $scope.editReviewFormField = function (index) {
+            $scope.$index = index;
+            $scope.reviewKey = $scope.reviews[index].key;
+            $scope.reviewValue = $scope.reviews[index].value;
+            $scope.isUpdateReviewShow = true;
+            $scope.calculateAvg();
+
+        }
+        $scope.updateReviewFormField = function () {
+            $scope.reviews[$scope.$index].key = $scope.reviewKey;
+            $scope.reviews[$scope.$index].value = $scope.reviewValue;
+            $scope.isUpdateReviewShow = false;
+
+            $scope.reviewKey = '';
+            $scope.reviewValue = '';
+            $scope.calculateAvg();
+        }
+
+        $scope.calculateAvg = function()
+        {
+            $scope.totalCount = 0 ;
+
+            for(var i=1;i<$scope.reviews.length;i++)
+            {
+                $scope.totalCount += $scope.reviews[i].value;
+            }
+
+            $scope.reviews[0].value = Math.round($scope.totalCount/($scope.reviews.length -1));
+
+        }
     }]);

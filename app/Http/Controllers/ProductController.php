@@ -13,7 +13,7 @@
         public function __construct()
         {
             // Apply the jwt.auth middleware to all methods in this controller
-            $this->middleware('jwt.auth', ['except' => ['searchProductByName','updateProductInfo', 'getAllProductList', 'getProductById', 'isPermalinkExist', 'addProduct']]);
+            $this->middleware('jwt.auth', ['except' => ['searchProductByName', 'updateProductInfo', 'getAllProductList', 'getProductById', 'isPermalinkExist', 'addProduct']]);
             $this->product = new Product();
         }
 
@@ -127,6 +127,35 @@
             try
             {
                 $inputData = \Input::all();
+                //$inputData['SimilarProductIds'] = $inputData['SimilarProductIds'];
+
+                $newProduct = $this->product->updateProductInfo($inputData);
+
+               // dd($newProduct);
+                return $this->setStatusCode(\Config::get("const.api-status.success"))
+                    ->makeResponse($newProduct);
+            } catch (Exception $ex)
+            {
+                return $this->setStatusCode(\Config::get("const.api-status.system-fail"))
+                    ->makeResponseWithError("System Failure !", $ex);
+            }
+        }
+
+        public function searchProductByName($name)
+        {
+            return Product::where('product_name', 'LIKE', "%$name%")->get(['id', 'product_name AS name']);
+        }
+
+
+        /**
+         * @return mixed
+         */
+        public function publishProduct()
+        {
+            try
+            {
+                $inputData = \Input::all();
+
                 $validationRules = [
 
                     'rules'  => [
@@ -147,45 +176,20 @@
 
                 if ($validator->passes())
                 {
-                    $this->product->updateProductInfo($productData);
+                    $updatedProduct = $this->product->updateProductInfo($productData);
+                    $updatedProduct->post_status = 'Active';
+                    $updatedProduct->save();
 
                     return $this->setStatusCode(\Config::get("const.api-status.success"))
                         ->makeResponse("Update Successful.");
-                }elseif($validator->fails()){
+                } elseif ($validator->fails())
+                {
                     $validatorMessage = $validator->messages()->toArray();
 
                     return $this->setStatusCode(\Config::get("const.api-status.validation-fail"))
-                        ->makeResponseWithError(array('Validation failed',$validatorMessage ));
+                        ->makeResponseWithError(array('Validation failed', $validatorMessage));
                 }
 
-
-            } catch (Exception $ex)
-            {
-                return $this->setStatusCode(\Config::get("const.api-status.system-fail"))
-                    ->makeResponseWithError("System Failure !", $ex);
-            }
-
-        }
-
-        public function searchProductByName($name)
-        {
-            return Product::where('product_name','LIKE',"%$name%")->get(['id','product_name AS name']);
-        }
-
-
-        /**
-         * @return mixed
-         */
-        public function publishProduct()
-        {
-            try
-            {
-                $data = \Input::all();
-
-            //    $this->product->updateProductInfo($data);
-
-                return $this->setStatusCode(\Config::get("const.api-status.success"))
-                    ->makeResponse("Update Successful.");
 
             } catch (Exception $ex)
             {

@@ -48,6 +48,12 @@
             return $this->belongsTo('App\Models\ProductCategory');
         }
 
+        // accessor for JSON decode
+        public function getSimilarProductIdsAttribute($value)
+        {
+            return json_decode($value);
+        }
+
 
         public function checkPermalink($permalink)
         {
@@ -68,33 +74,43 @@
 
         public function updateProductInfo($product)
         {
+
             try
             {
                 $data = array(
 
-                    "product_category_id"     => $product['CategoryId'],
+                    "product_category_id"     => ($product['CategoryId'] != null) ? $product['CategoryId'] : null,
                     "product_name"            => $product['Name'],
                     "product_permalink"       => $product['Permalink'],
-                    "product_description"     => $product['Description'],
-                    "specifications"          => $product['Specifications'],
+                    "product_description"     => ($product['Description'] != null) ? $product['Description'] : "",//,
+                    /* "specifications"          => $product['Specifications'],*/
                     "price"                   => $product['Price'],
                     "sale_price"              => $product['SalePrice'],
                     "store_id"                => $product['StoreId'],
                     "affiliate_link"          => $product['AffiliateLink'],
                     "price_grabber_master_id" => $product['PriceGrabberId'],
-                    "review"                  => $product['Review'],
+                    /*"review"                  => $product['Review'],*/
                     "free_shipping"           => $product['FreeShipping'],
                     "coupon_code"             => $product['CouponCode'],
                     "page_title"              => $product['PageTitle'],
                     "meta_description"        => $product['MetaDescription'],
-                    "similar_product_ids"     => $product['SimilarProductIds'],
+                    "similar_product_ids"     => json_encode($product['SimilarProductIds']),
+                  //  "similar_product_ids"     => $product['SimilarProductIds'],
+
                     "product_availability"    => $product['ProductAvailability'],
                 );
 
-               Product::where('id',$product['Id'])->update($data);
+                $productId = $product['ProductId'];
 
-                return true;
+                Product::where('id', '=', $productId)->update($data);
 
+                $data = Product::where('id', $productId)->first();
+
+               // $data['similar_product_ids'] = json_decode($data['similar_product_ids']);
+
+                return $data;
+
+                //   dd("in",$productId,$data);
             } catch (Exception $ex)
             {
                 return $ex;
@@ -102,7 +118,7 @@
 
         }
 
-        public function publishProduct($product,$active = true)
+        public function publishProduct($product, $active = true)
         {
 
 
@@ -124,7 +140,17 @@
             $skip = $settings['limit'] * ($settings['page'] - 1);
 
             $product['total'] = Product::where($whereClause)->count();//->get();
-            $product['result'] = Product::where($whereClause)->take($settings['limit'])->offset($skip)->get();
+            $product['result'] = Product::where($whereClause)
+                ->take($settings['limit'])
+                ->offset($skip)->get();
+
+               /* get([
+                    'id', 'product_category_id', 'product_name', 'product_permalink', 'product_description',
+                    'specifications', 'price', 'sale_price', 'store_id', 'affiliate_link', 'affiliate_link',
+                    'review', 'free_shipping', 'coupon_code', 'post_status', 'page_title', 'meta_description',
+                    similar_product_ids,'product_availability'
+                ]);*/
+            //$product['result']['similar_product_ids'] = json_decode($product['result']['similar_product_ids']);
 
             // dd($product);
             return $product;
