@@ -4374,6 +4374,9 @@ a.label:focus {
 .purple {
   color: #9E009E; }
 
+.purple-bg {
+  background-color: #9E009E; }
+
 .pale-grey-bg {
   background: #F2F5F5; }
 
@@ -5944,6 +5947,80 @@ header.sub-head {
     .related-items .grid-box:hover .color-overlay {
       display: block;
       border: 1px solid #00B1FF; }
+
+.comparison {
+  position: relative; }
+  .comparison .arrow {
+    position: absolute;
+    top: 45%;
+    background-image: url("/assets/iamges/icons/arrow-right-purple.png");
+    background-repeat: no-repeat; }
+    .comparison .arrow.arrow-left {
+      left: 25%; }
+    .comparison .arrow.arrow-right {
+      background-image: url("/assets/iamges/icons/arrow-right-purple.png"); }
+
+.comparison-tab {
+  padding: 5px; }
+  .comparison-tab > div {
+    min-height: 565px;
+    position: relative;
+    border: 1px solid #e7e7e7;
+    border-radius: 5px; }
+    .comparison-tab > div .tab-wrap {
+      padding: 15px; }
+  .comparison-tab img {
+    width: 100%; }
+  .comparison-tab h4 {
+    font-size: 1.6rem;
+    font-weight: bold; }
+  .comparison-tab .star-raiting {
+    margin-bottom: 19px; }
+  .comparison-tab i, .comparison-tab .stars {
+    color: #c1c1c1;
+    font-size: 1.2rem;
+    font-style: normal; }
+  .comparison-tab b.score {
+    display: block;
+    width: 100%;
+    text-align: center;
+    font-size: 4.4rem;
+    padding-top: 20px; }
+  .comparison-tab .btn-none {
+    width: 100%;
+    display: block;
+    text-align: center;
+    font-size: 1.2rem;
+    padding-top: 7px;
+    padding-bottom: 7px;
+    padding: 0; }
+  .comparison-tab .close-button {
+    position: absolute;
+    top: -15px;
+    right: -7px;
+    height: 19px;
+    width: 21px;
+    padding: 0 2px;
+    background: #fff;
+    font-size: 1.5rem;
+    border-radius: 5px;
+    text-align: center; }
+
+.price-badge {
+  width: 100%;
+  padding: 11px;
+  color: #fff;
+  margin: 20px 0;
+  border-radius: 10px; }
+  .price-badge:hover {
+    color: #fff; }
+  .price-badge span {
+    display: inline-block;
+    float: left; }
+  .price-badge b {
+    display: inline-block;
+    float: right;
+    font-size: 1.7rem; }
 
 footer.about-footer {
   padding: 55px 0;

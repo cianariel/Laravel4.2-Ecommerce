@@ -123,24 +123,50 @@
 
                         <div class="col-lg-3 comparison-tab">
                             <section class="search-bar">
-                                <a href="#" class="search-toggle" data-toggle=".mobile-search-bar">Search</a>
                                 <input class="form-control  hidden-620" type="text" name="search" value="Search..."/>
                             </section>
                         </div>
+
                         <div class="col-lg-3 comparison-tab">
-                            <img class="img-responsive"/>
-                            <h4>Next Project <br>(second generation)</h4>
-                            <i>Announced 29 October 2015</i>
-                            <b class="score">9.0</b>
-                            <div class="star-raiting">
-                                <span class="starts">(543)</span>
+                            <div>
+                                <img class="img-responsive" src="/assets/images/dummies/nest-2.png"/>
+                                <div class="tab-wrap">
+                                    <h4>Next Project <br>(second generation)</h4>
+                                    <i>Announced 29 October 2015</i>
+                                    <b class="score">9.0</b>
+                                    <div class="star-raiting">
+                                        <span class="stars">(543)</span>
+                                    </div>
+                                    <div class="btn purple-bg price-badge">
+                                        <span>Amazon</span> <b>$375</b>
+                                    </div>
+                                    <a class="btn-none">More Info</a>
+                                </div>
+                                <span class="close-button">✕</span>
                             </div>
-                            <div class="purple-bg price-badge">
-                                Amazon - <b>$375</b>
-                            </div>
-                            <a class="btn-none">More-info</a>
                         </div>
                         <div class="col-lg-3 comparison-tab">
+                            <div>
+                                <img class="img-responsive" src="/assets/images/dummies/nest-2.png"/>
+                                <div class="tab-wrap">
+                                    <h4>Next Project <br>(second generation)</h4>
+                                    <i>Announced 29 October 2015</i>
+                                    <b class="score">9.0</b>
+                                    <div class="star-raiting">
+                                        <span class="stars">(543)</span>
+                                    </div>
+                                    <div class="btn purple-bg price-badge">
+                                        <span>Amazon</span> <b>$375</b>
+                                    </div>
+                                    <a class="btn-none">More Info</a>
+                                </div>
+                                <span class="close-button">✕</span>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 comparison-tab">
+                            <div>
+
+                            </div>
                         </div>
 
                         <button class="arrow arrow-right"></button>
