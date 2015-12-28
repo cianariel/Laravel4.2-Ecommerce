@@ -123,7 +123,7 @@
 
                         <div class="col-lg-3 comparison-tab">
                             <section class="search-bar">
-                                <input class="form-control  hidden-620" type="text" name="search" value="Search..."/>
+                                <input class="form-control  hidden-620" type="text" name="search" value="Search to add products"/>
                             </section>
                         </div>
 
@@ -147,7 +147,7 @@
                         </div>
                         <div class="col-lg-3 comparison-tab">
                             <div>
-                                <img class="img-responsive" src="/assets/images/dummies/nest-2.png"/>
+                                <img class="img-responsive" src="/assets/images/dummies/nest-3.png"/>
                                 <div class="tab-wrap">
                                     <h4>Next Project <br>(second generation)</h4>
                                     <i>Announced 29 October 2015</i>

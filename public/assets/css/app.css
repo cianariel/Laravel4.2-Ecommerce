@@ -5314,18 +5314,19 @@ header.colophon {
     position: fixed;
     top: 61px;
     z-index: 2; }
-  header.colophon .search-bar {
-    padding-top: 13px;
-    margin-left: 3%; }
-    header.colophon .search-bar .search-toggle {
-      display: none;
-      text-indent: -9999px;
-      background: url("/assets/images/magnif-grey.png") center no-repeat; }
-    header.colophon .search-bar input {
-      min-width: 128px;
-      color: #999;
-      text-align: center;
-      background: url("/assets/images/magnif-grey.png") 10% no-repeat; }
+
+.search-bar {
+  padding-top: 13px;
+  margin-left: 3%; }
+  .search-bar .search-toggle {
+    display: none;
+    text-indent: -9999px;
+    background: url("/assets/images/magnif-grey.png") center no-repeat; }
+  .search-bar input {
+    min-width: 128px;
+    color: #999;
+    text-align: center;
+    background: url("/assets/images/magnif-grey.png") 10% no-repeat; }
 
 #top-nav a {
   margin-right: 8%;
@@ -5950,27 +5951,43 @@ header.sub-head {
 
 .comparison {
   position: relative; }
+  .comparison .search-bar {
+    margin-top: 0;
+    padding-top: 0; }
+    .comparison .search-bar input {
+      padding-top: 20px;
+      padding-bottom: 20px;
+      border-radius: 10px;
+      background-position: 93% center;
+      color: #000; }
   .comparison .arrow {
+    width: 35px;
+    height: 35px;
     position: absolute;
-    top: 45%;
-    background-image: url("/assets/iamges/icons/arrow-right-purple.png");
-    background-repeat: no-repeat; }
+    top: 32%;
+    background-repeat: no-repeat;
+    border: 0; }
     .comparison .arrow.arrow-left {
-      left: 25%; }
+      left: 24%;
+      background: url("/assets/images/icons/arrow-left-purple.png") no-repeat;
+      background-size: contain; }
     .comparison .arrow.arrow-right {
-      background-image: url("/assets/iamges/icons/arrow-right-purple.png"); }
+      right: 3%;
+      background: url("/assets/images/icons/arrow-right-purple.png") no-repeat;
+      background-size: contain; }
 
 .comparison-tab {
   padding: 5px; }
   .comparison-tab > div {
-    min-height: 565px;
+    min-height: 575px;
     position: relative;
     border: 1px solid #e7e7e7;
     border-radius: 5px; }
     .comparison-tab > div .tab-wrap {
       padding: 15px; }
   .comparison-tab img {
-    width: 100%; }
+    width: 100%;
+    height: 237px; }
   .comparison-tab h4 {
     font-size: 1.6rem;
     font-weight: bold; }
