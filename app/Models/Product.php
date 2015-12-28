@@ -83,13 +83,13 @@
                     "product_name"            => $product['Name'],
                     "product_permalink"       => $product['Permalink'],
                     "product_description"     => ($product['Description'] != null) ? $product['Description'] : "",//,
-                    /* "specifications"          => $product['Specifications'],*/
+                    "specifications"          => json_encode($product['Specifications']),
                     "price"                   => $product['Price'],
                     "sale_price"              => $product['SalePrice'],
                     "store_id"                => $product['StoreId'],
                     "affiliate_link"          => $product['AffiliateLink'],
                     "price_grabber_master_id" => $product['PriceGrabberId'],
-                    /*"review"                  => $product['Review'],*/
+                    "review"                  => json_encode($product['Review']),
                     "free_shipping"           => $product['FreeShipping'],
                     "coupon_code"             => $product['CouponCode'],
                     "page_title"              => $product['PageTitle'],

@@ -305,7 +305,7 @@ adminApp.controller('AdminController', ['$scope', '$http', '$confirm', '$locatio
 
         // initialize product add view
         $scope.loadAddProduct = function () {
-            $scope.isCollapsed = true; // default false it false to show forced parmalink saviing mood.
+            $scope.isCollapsed = false; // default false it false to show forced parmalink saviing mood.
             $scope.isCollapsedToggle = !$scope.isCollapsed;
         };
         $scope.addProduct = function () {
@@ -332,6 +332,7 @@ adminApp.controller('AdminController', ['$scope', '$http', '$confirm', '$locatio
                     $scope.outputStatus(data, "Product created successfully");
                     $scope.isCollapsed = true;
                     $scope.isCollapsedToggle = !$scope.isCollapsed;
+                    $scope.Permalink = $scope.desiredPermalink;
                 } else if (data.status_code == 410) {
                     $scope.outputStatus(data, "Permalink is not available please enter new.");
                 }
@@ -365,6 +366,8 @@ adminApp.controller('AdminController', ['$scope', '$http', '$confirm', '$locatio
                     MetaDescription: $scope.MetaDescription,
                     SimilarProductIds: $scope.productTags,
                     ProductAvailability: $scope.ProductAvailability,
+                    Specifications: $scope.Specifications,
+                    Review: $scope.reviews
                 }
 
             }).success(function (data) {

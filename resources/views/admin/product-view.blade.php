@@ -86,7 +86,7 @@
                                 <div class="col-lg-10">
                                     <div class="form-group" style="margin-top:50px;">
                                         <div class="row">
-                                            <div class="col-lg-10">
+                                            <div class="col-lg-12">
                                                 <div class="panel panel-default">
                                                     <div class="panel-heading">
                                                         Category Items
@@ -97,7 +97,6 @@
                                                             <table class="table table-hover">
                                                                 <thead>
                                                                 <tr>
-
                                                                     <th>Category Id</th>
                                                                     <th>Category Name</th>
                                                                     <th>URL Info</th>
