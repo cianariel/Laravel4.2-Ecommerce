@@ -5975,15 +5975,50 @@ header.sub-head {
       right: 3%;
       background: url("/assets/images/icons/arrow-right-purple.png") no-repeat;
       background-size: contain; }
+  .comparison h5 {
+    display: block;
+    width: 100%;
+    color: #c1c1c1;
+    padding: 25px 0 7px;
+    overflow: hidden;
+    border-bottom: 1px solid #dbdbdb; }
+    .comparison h5 a {
+      display: inline-block;
+      float: right;
+      font-size: 2.5rem;
+      color: #c1c1c1;
+      margin-top: -5px; }
+  .comparison .table-heads,
+  .comparison .table-cells {
+    padding: 0; }
+    .comparison .table-heads h4,
+    .comparison .table-cells h4 {
+      min-height: 35px; }
+    .comparison .table-heads b,
+    .comparison .table-cells b {
+      min-height: 61px; }
+    .comparison .table-heads b,
+    .comparison .table-cells b {
+      display: block;
+      padding: 20px 20px;
+      border-bottom: 1px solid #dbdbdb; }
+  .comparison .table-cells .bordered {
+    border: 2px solid #dbdbdb;
+    border-bottom-width: 1px;
+    border-radius: 5px;
+    margin-left: 5px; }
+  .comparison .table-cells b {
+    color: #c1c1c1;
+    font-weight: normal; }
 
 .comparison-tab {
   padding: 5px; }
-  .comparison-tab > div {
+  .comparison-tab > div:not(.bordered) {
     min-height: 575px;
     position: relative;
     border: 1px solid #e7e7e7;
     border-radius: 5px; }
-    .comparison-tab > div .tab-wrap {
+    .comparison-tab > div:not(.bordered) .tab-wrap {
       padding: 15px; }
   .comparison-tab img {
     width: 100%;

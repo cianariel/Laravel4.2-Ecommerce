@@ -116,92 +116,117 @@
 
                     <section class="comparison">
                         <div class="container full-620 fixed-sm">
+                            <h3 class="purple">Comparisons</h3>
 
-                        <h3 class="purple">Comparisons</h3>
+                            <button class="arrow arrow-left"></button>
 
-                        <button class="arrow arrow-left"></button>
+                            <div class="col-lg-3 comparison-tab">
+                                <section class="search-bar">
+                                    <input class="form-control  hidden-620" type="text" name="search" value="Search to add products"/>
+                                </section>
+                            </div>
 
-                        <div class="col-lg-3 comparison-tab">
-                            <section class="search-bar">
-                                <input class="form-control  hidden-620" type="text" name="search" value="Search to add products"/>
-                            </section>
-                        </div>
-
-                        <div class="col-lg-3 comparison-tab">
-                            <div>
-                                <img class="img-responsive" src="/assets/images/dummies/nest-2.png"/>
-                                <div class="tab-wrap">
-                                    <h4>Next Project <br>(second generation)</h4>
-                                    <i>Announced 29 October 2015</i>
-                                    <b class="score">9.0</b>
-                                    <div class="star-raiting">
-                                        <span class="stars">(543)</span>
+                            <div class="col-lg-3 comparison-tab">
+                                <div>
+                                    <img class="img-responsive" src="/assets/images/dummies/nest-2.png"/>
+                                    <div class="tab-wrap">
+                                        <h4>Next Project <br>(second generation)</h4>
+                                        <i>Announced 29 October 2015</i>
+                                        <b class="score">9.0</b>
+                                        <div class="star-raiting">
+                                            <span class="stars">(543)</span>
+                                        </div>
+                                        <div class="btn purple-bg price-badge">
+                                            <span>Amazon</span> <b>$375</b>
+                                        </div>
+                                        <a class="btn-none">More Info</a>
                                     </div>
-                                    <div class="btn purple-bg price-badge">
-                                        <span>Amazon</span> <b>$375</b>
-                                    </div>
-                                    <a class="btn-none">More Info</a>
+                                    <span class="close-button">✕</span>
                                 </div>
-                                <span class="close-button">✕</span>
                             </div>
-                        </div>
-                        <div class="col-lg-3 comparison-tab">
-                            <div>
-                                <img class="img-responsive" src="/assets/images/dummies/nest-3.png"/>
-                                <div class="tab-wrap">
-                                    <h4>Next Project <br>(second generation)</h4>
-                                    <i>Announced 29 October 2015</i>
-                                    <b class="score">9.0</b>
-                                    <div class="star-raiting">
-                                        <span class="stars">(543)</span>
+                            <div class="col-lg-3 comparison-tab">
+                                <div>
+                                    <img class="img-responsive" src="/assets/images/dummies/nest-3.png"/>
+                                    <div class="tab-wrap">
+                                        <h4>Next Project <br>(second generation)</h4>
+                                        <i>Announced 29 October 2015</i>
+                                        <b class="score">9.0</b>
+                                        <div class="star-raiting">
+                                            <span class="stars">(543)</span>
+                                        </div>
+                                        <div class="btn purple-bg price-badge">
+                                            <span>Amazon</span> <b>$375</b>
+                                        </div>
+                                        <a class="btn-none">More Info</a>
                                     </div>
-                                    <div class="btn purple-bg price-badge">
-                                        <span>Amazon</span> <b>$375</b>
-                                    </div>
-                                    <a class="btn-none">More Info</a>
+                                    <span class="close-button">✕</span>
                                 </div>
-                                <span class="close-button">✕</span>
+                            </div>
+                            <div class="col-lg-3 comparison-tab">
+                                <div>
+
+                                </div>
+                            </div>
+
+                            <button class="arrow arrow-right"></button>
+
+                            <div class="crearfix"></div>
+
+                            <h5>Compared (2 products) <a>&#43;</a></h5>
+
+                            <div class="col-lg-3 comparison-tab table-heads">
+                                <h4></h4>
+                                <hr>
+
+                                <b>Connections</b>
+                                <b>Original Pricing</b>
+                                <b>Pricing Range</b>
+                                <b>Dimensions</b>
+                                <b>Weight</b>
+                            </div>
+                            <div class="col-lg-3 comparison-tab table-cells">
+                                <h4>Next Project <br>(second generation)</h4>
+                                <hr>
+                                <div class="bordered">
+                                    <b>3.5mm stereo</b>
+                                    <b>$375.00</b>
+                                    <b>$375.00 - $500</b>
+                                    <b>8.03 x 14.33</b>
+                                    <b>14 lbs</b>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 comparison-tab table-cells">
+                                <h4>Next Project <br>(second generation)</h4>
+                                <hr>
+                                <div class="bordered">
+                                    <b>3.5mm stereo</b>
+                                    <b>$375.00</b>
+                                    <b>$375.00 - $500</b>
+                                    <b>8.03 x 14.33</b>
+                                    <b>14 lbs</b>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 comparison-tab table-cells">
+                                <h4></h4>
+                                <hr>
+                                <div class="bordered">
+                                    <b></b>
+                                    <b></b>
+                                    <b></b>
+                                    <b></b>
+                                    <b></b>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 comparison-tab table-cells">
+                                <hr>
                             </div>
                         </div>
-                        <div class="col-lg-3 comparison-tab">
-                            <div>
-
-                            </div>
-                        </div>
-
-                        <button class="arrow arrow-right"></button>
-
-                        <div class="crearfix"></div>
-                        <h5>Compared</h5>
-
-                        <div class="col-lg-3 comparison-tab table-heads">
-                            <img class="img-responsive"/>
-                            <h4>Next Project <br>(second generation)</h4>
-                            <hr>
-
-                            <b>Connections</b>
-                            <b>Original Pricing</b>
-                            <b>Pricing Range</b>
-                            <b>Dimensions</b>
-                            <b>Weight</b>
-                        </div>
-                        <div class="col-lg-3 comparison-tab table-cells">
-                            <img class="img-responsive"/>
-                            <h4>Next Project <br>(second generation)</h4>
-                            <hr>
-
-                            <b>3.5mm stereo</b>
-                            <b>$375.00</b>
-                            <b>$375.00 - $500</b>
-                            <b>8.03 x 14.33</b>
-                            <b>14 lbx</b>
-                        </div>
-                            </div>
                     </section>
                     <!-- TODO - use two (three?) columns -->
 
-            <section>                    <div class="container full-620 fixed-sm">
-                    <h3>Reviews (4)</h3>
+            <section class="pale-grey-bg">
+                <div class="container full-620 fixed-sm">
+                    <h3 class="pink">Reviews (4)</h3>
 
                     <div class="col-sm-3">
                         <h6>Critic Reviews</h6>
@@ -229,7 +254,6 @@
                     </div>
                     </div>
             </section>
-
         </article>
 
 

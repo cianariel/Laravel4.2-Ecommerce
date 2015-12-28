@@ -2652,13 +2652,64 @@ header.sub-head{
       background-size: contain;
     }
   }
+
+  h5{
+    display: block;
+    width: 100%;
+    color: $light-grey;
+    padding: 25px 0 7px;
+    overflow: hidden;
+    border-bottom: 1px solid lighten($light-grey, 10%);
+
+    a{
+      display: inline-block;
+      float: right;
+      font-size: 2.5rem;
+      color: $light-grey;
+      margin-top: -5px;
+    }
+  }
+
+  .table-heads,
+  .table-cells{
+    padding: 0;
+    h4{
+      min-height: 35px;
+
+    }
+    b{
+      min-height: 61px;
+    }
+    b{
+      display: block;
+      padding: 20px 20px;
+      border-bottom: 1px solid lighten($light-grey, 10%);
+
+    }
+  }
+
+  .table-cells{
+    .bordered{
+      border: 2px solid lighten($light-grey, 10%);
+      border-bottom-width: 1px;
+      border-radius: 5px;
+      margin-left: 5px;
+    }
+    b{
+      color: $light-grey;
+      font-weight: normal;
+    }
+  }
+
+
+
 }
 
 .comparison-tab{
   padding: 5px;
 
 
-  & > div{
+  & > div:not(.bordered){
     min-height: 575px;
     position: relative;
     border: 1px solid lighten($light-grey, 15%);
