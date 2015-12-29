@@ -23,6 +23,7 @@
 
     <main class="page-content">
         <article class="product">
+            <div id="sticky-anchor"></div>
             <div class="container main-container fixed-sm">
 
                     <aside class="share-bar sticks-on-scroll">

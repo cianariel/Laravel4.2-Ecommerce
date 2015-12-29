@@ -118,8 +118,6 @@
 
         $('#about-button').click(function(){
             $("html, body").animate({ scrollTop: $(document).height() }, "slow");
-            console.log('!!')
-            //return false;
         })
 
 

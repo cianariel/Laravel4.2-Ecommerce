@@ -349,8 +349,8 @@ li.nested{
   width: 100px;
   position: absolute;
   left: 1%;
-  top: 10px;
-  text-align: center;
+  top: 120px;
+  text-align: center; 
 
   //&.mobile{
   //  display: none;
@@ -1174,7 +1174,10 @@ main.page-content{
 }
 
 article.product{
+  position: relative;
+  overflow: hidden;
   padding-top: 10px;
+  width: 100%;
 
   .article-content{
     p:first-child{

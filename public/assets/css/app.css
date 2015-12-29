@@ -4592,7 +4592,7 @@ li.nested a::after {
   width: 100px;
   position: absolute;
   left: 1%;
-  top: 10px;
+  top: 120px;
   text-align: center; }
   .share-bar.stick {
     position: fixed;
@@ -5087,7 +5087,10 @@ main.page-content .card {
   overflow: hidden; }
 
 article.product {
-  padding-top: 10px; }
+  position: relative;
+  overflow: hidden;
+  padding-top: 10px;
+  width: 100%; }
   article.product .article-content p:first-child:first-letter {
     color: #FF7F00;
     font-size: 5rem; }
