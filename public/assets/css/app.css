@@ -4776,8 +4776,51 @@ nav a {
       background-position-x: 3px; }
   #hero.details-hero .color-overlay {
     display: none; }
-  #hero:not(.details-hero) > .container {
+  #hero.landing-hero > .container {
     padding-top: 100px; }
+  #hero .container {
+    position: relative; }
+
+.breadcrumbs li {
+  float: left;
+  position: relative; }
+  .breadcrumbs li:not(:last-child)::after {
+    content: ' ';
+    display: block;
+    position: absolute;
+    left: 90%;
+    top: 35%;
+    width: 19px;
+    height: 19px;
+    background: url("/assets/images/arrow-right-black.png") center no-repeat; }
+  .breadcrumbs li:first-child a {
+    padding-left: 0; }
+  .breadcrumbs li a {
+    text-transform: none;
+    color: #c1c1c1; }
+    .breadcrumbs li a.current {
+      color: #fff; }
+
+.top-product-controls {
+  float: right;
+  margin-top: 50px; }
+  .top-product-controls li {
+    float: left;
+    position: relative; }
+    .top-product-controls li a {
+      text-transform: none;
+      color: #c1c1c1;
+      font-size: 1.2rem;
+      padding-left: 30px;
+      background-position: left center;
+      background-repeat: no-repeat; }
+      .top-product-controls li a.get-alerts {
+        background-image: url("/assets/images/icons/bell-pink.png"); }
+      .top-product-controls li a.likes {
+        background-image: url("/assets/images/icons/heart-white.png"); }
+      .top-product-controls li a.comments {
+        background-image: url("/assets/images/icons/chat-white.png");
+        padding-left: 40px; }
 
 .logo-wrap a {
   padding: 0; }
@@ -6010,6 +6053,32 @@ header.sub-head {
     .related-items .grid-box:hover .color-overlay {
       display: block;
       border: 1px solid #00B1FF; }
+
+#hero.product-hero h1 {
+  float: left;
+  font-size: 3rem;
+  padding-left: 40px; }
+#hero.product-hero .color-overlay {
+  background-color: rgba(0, 0, 0, 0.6); }
+
+.average-score {
+  position: relative;
+  float: left;
+  width: 190px;
+  height: 100px;
+  padding-top: 10px;
+  background: #00B1FF;
+  border-radius: 10px;
+  text-align: center;
+  color: #fff; }
+  .average-score .score {
+    font-size: 4rem; }
+  .average-score .caption {
+    display: inline-block;
+    margin-top: 9px;
+    font-size: 1.3rem;
+    width: 100%;
+    border-top: 1px solid #fff; }
 
 .comparison {
   position: relative; }

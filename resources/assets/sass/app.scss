@@ -350,7 +350,7 @@ li.nested{
   position: absolute;
   left: 1%;
   top: 120px;
-  text-align: center; 
+  text-align: center;
 
   //&.mobile{
   //  display: none;
@@ -642,15 +642,86 @@ nav{
     }
   }
 
-  &.product-hero{
-
-  }
 
 
-  &:not(.details-hero) > .container{
+
+  &.landing-hero > .container{
     padding-top: 100px;
   }
 
+  .container{
+    position: relative;
+  }
+
+
+}
+
+.breadcrumbs{
+  li{
+    float: left;
+    //padding-right: 30px;
+    position: relative;
+
+      &:not(:last-child)::after{
+        content: ' ';
+        display: block;
+        position: absolute;
+
+        left: 90%;
+        top: 35%;
+        width: 19px;
+        height: 19px;
+        background: url("/assets/images/arrow-right-black.png") center no-repeat;
+    }
+
+    &:first-child{
+      a{
+        padding-left: 0;
+      }
+    }
+
+    a{
+      text-transform: none;
+      color: $light-grey;
+
+      &.current{
+        color: #fff;
+      }
+    }
+  }
+}
+
+.top-product-controls{
+  float: right;
+  margin-top: 50px;
+  li {
+    float: left;
+    position: relative;
+
+    a{
+      text-transform: none;
+      color: $light-grey;
+      font-size: 1.2rem;
+      padding-left: 30px;
+      background-position: left center;
+      background-repeat: no-repeat;
+
+      &.get-alerts{
+        background-image: url("/assets/images/icons/bell-pink.png");
+      }
+      //&.compare{
+      //  background-image: url("/assets/images/icons/return-white.png");
+      //}
+      &.likes{
+        background-image: url("/assets/images/icons/heart-white.png");
+      }
+      &.comments{
+        background-image: url("/assets/images/icons/chat-white.png");
+        //background-position: -4px;
+        padding-left: 40px;
+      }
+    }
+  }
 }
 
 .logo-wrap{
@@ -2702,6 +2773,43 @@ header.sub-head{
 
 
 // PRODUCT DETAILS
+
+#hero.product-hero{
+  h1{
+    float: left;
+    font-size: 3rem;
+    padding-left: 40px;
+  }
+  .color-overlay {
+    background-color: rgba(0, 0, 0, 0.6);
+  }
+}
+
+.average-score{
+  position: relative;
+  float: left;
+  width: 190px;
+  height: 100px;
+  padding-top: 10px;
+  background: $sky-blue;
+  border-radius: 10px;
+  text-align: center;
+  color:#fff;
+
+  .score{
+    font-size: 4rem;
+  }
+
+  .caption{
+    display: inline-block;
+    //padding: 10px;
+    margin-top: 9px;
+    font-size: 1.3rem;
+    width: 100%;
+    border-top: 1px solid #fff;
+  }
+
+}
 
 .comparison{
   position: relative;

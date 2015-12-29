@@ -6,12 +6,60 @@
         <div class="color-overlay"></div>
 
         <div class="container fixed-sm full-480">
+            <nav class="breadcrumbs">
+                <ul>
+                    <li><a href="#">Products</a></li>
+                    <li><a href="#">Smart Home</a></li>
+                    <li><a href="#" class="current">Energy</a></li>
+                </ul>
+            </nav>
 
+            <div class="average-score">
+                <div class="score">98%</div>
+                <span class="caption">Average Ideaing Score</span>
+            </div>
+
+            <h1>Nest Protect (second generation)</h1>
+
+            <nav class="top-product-controls">
+                <ul>
+                    <li><a class="get-alerts">Get alerts</a></li>
+                    {{--<li><a class="compare">99</a></li>--}}
+                    <li><a class="likes">768</a></li>
+                    <li><a class="comments">1.2K</a></li>
+                </ul>
+            </nav>
+            <div class="slider product-slider">
+                <img src="/assets/images/dummies/nest-big.png" class="main-image">
+                <div class="slider-side-block">
+                    <div class="top">
+                        <div class="get solid">Get it</div>
+                        <img class="vendor-logo" src="/assets/images/dummies/amazon.png">
+                        <b class="price">$199</b>
+                    </div>
+                    <div>
+                        <ul>
+                            <li>
+                                <span class="name">Amazon</span>
+                                <span class="price">$500.99</span>
+                            </li>
+                            <li>
+                                <span class="name">Bose</span>
+                                <span class="price">$375.99</span>
+                            </li>
+                            <li>
+                                <span class="name">Ebay</span>
+                                <span class="price">$400.99</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
     <nav id="hero-nav" class="product-nav col-sm-12">
         <div class="container full-620 fixed-sm">
-            <ul class="category-nav full-620 ">
+            <ul class="category-nav full-620">
                 <li><a href="#" class="photos-link">Photos</a></li>
                 <li><a href="#" class="features-link">Features</a></li>
                 <li><a href="#" class="specs-link">Specs</a></li>
