@@ -5134,7 +5134,7 @@ article.product {
 .critic-quote {
   padding-left: 80px;
   margin-top: 50px;
-  background: url("/assets/images/icons/quotes.png") left top no-repeat; }
+  background: url("/assets/images/icons/quotes-black.png") left top no-repeat; }
   .critic-quote b {
     font-size: 3rem;
     font-weight: normal; }
@@ -5821,17 +5821,17 @@ header.sub-head {
         color: #FF7F00;
         background-image: url("/assets/images/icons/checkmark-orange.png"); }
     #hero-nav a:not(.author).specs-link {
-      background-image: url("/assets/images/icons/doc-green.png"); }
+      background-image: url("/assets/images/icons/doc-grey.png"); }
       #hero-nav a:not(.author).specs-link:hover {
         color: #C7C747;
         background-image: url("/assets/images/icons/doc-green.png"); }
     #hero-nav a:not(.author).compare-link {
-      background-image: url("/assets/images/icons/arrows-purple.png"); }
+      background-image: url("/assets/images/icons/arrows-grey.png"); }
       #hero-nav a:not(.author).compare-link:hover {
         color: #9E009E;
         background-image: url("/assets/images/icons/arrows-purple.png"); }
     #hero-nav a:not(.author).reviews-link {
-      background-image: url("/assets/images/icons/stars-pink.png"); }
+      background-image: url("/assets/images/icons/stars-grey.png"); }
       #hero-nav a:not(.author).reviews-link:hover {
         color: #FF0042;
         background-image: url("/assets/images/icons/stars-pink.png"); }
@@ -5864,6 +5864,9 @@ header.sub-head {
   #hero-nav li.active a.photos-link {
     color: #00B1FF;
     background-image: url("/assets/images/photos-blue.png"); }
+
+.product-nav a.photos-link {
+  background-image: url("/assets/images/photos-blue.png") !important; }
 
 .like-nav li {
   width: 50px;
@@ -6066,6 +6069,23 @@ header.sub-head {
   .comparison .table-cells b {
     color: #c1c1c1;
     font-weight: normal; }
+  .comparison .view-all {
+    margin-top: 25px;
+    padding-right: 30px;
+    float: right;
+    background: url("/assets/images/icons/arrow-right-purple.png") right no-repeat;
+    background-size: 25px; }
+  .comparison .add-more {
+    display: block;
+    margin-top: 70%;
+    font-size: 2rem; }
+    .comparison .add-more span {
+      display: block;
+      width: 100%;
+      text-align: center; }
+      .comparison .add-more span.plus {
+        font-size: 5rem;
+        margin-bottom: -7px; }
 
 .comparison-tab {
   padding: 5px; }

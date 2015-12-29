@@ -12,7 +12,7 @@
     <nav id="hero-nav" class="product-nav col-sm-12">
         <div class="container full-620  fixed-sm">
             <ul class="category-nav">
-                <li><a href="#" class="photos-link">Photo</a></li>
+                <li><a href="#" class="photos-link">Photos</a></li>
                 <li><a href="#" class="features-link">Features</a></li>
                 <li><a href="#" class="specs-link">Specs</a></li>
                 <li><a href="#" class="compare-link">Comparisons</a></li>
@@ -164,7 +164,10 @@
                             </div>
                             <div class="col-lg-3 comparison-tab">
                                 <div>
-
+                                    <a class="purple add-more">
+                                        <span class="plus">+</span>
+                                        <span>Add Product</span>
+                                    </a>
                                 </div>
                             </div>
 
@@ -217,9 +220,7 @@
                                     <b></b>
                                 </div>
                             </div>
-                            <div class="col-lg-3 comparison-tab table-cells">
-                                <hr>
-                            </div>
+                            <a href="#" class="view-all grey">View all</a>
                         </div>
                     </section>
                     <!-- TODO - use two (three?) columns -->

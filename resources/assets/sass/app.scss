@@ -1249,7 +1249,7 @@ article.product{
 .critic-quote{
   padding-left: 80px;
   margin-top: 50px;
-  background: url('/assets/images/icons/quotes.png') left top no-repeat;
+  background: url('/assets/images/icons/quotes-black.png') left top no-repeat;
   b{
     font-size: 3rem;
     font-weight: normal;
@@ -2300,7 +2300,6 @@ header.sub-head{
       background-image: url('/assets/images/grid-dense-grey.png');
       background-position: 0 20px;
       min-width: 40px;
-      //margin-top: -3px;
 
       &:hover,
       .active &{
@@ -2338,6 +2337,7 @@ header.sub-head{
       }
       //padding-left: 65px;
     }
+
     &.kitchen-link{
       background-image: url('/assets/images/pot-outline.png');
 
@@ -2357,7 +2357,7 @@ header.sub-head{
       }
     }
     &.specs-link{
-      background-image: url('/assets/images/icons/doc-green.png');
+      background-image: url('/assets/images/icons/doc-grey.png');
 
       &:hover{
         color: $pine-green;
@@ -2365,7 +2365,7 @@ header.sub-head{
       }
     }
     &.compare-link{
-      background-image: url('/assets/images/icons/arrows-purple.png');
+      background-image: url('/assets/images/icons/arrows-grey.png');
 
       &:hover{
         color: $magenta;
@@ -2373,7 +2373,7 @@ header.sub-head{
       }
     }
     &.reviews-link{
-      background-image: url('/assets/images/icons/stars-pink.png');
+      background-image: url('/assets/images/icons/stars-grey.png');
 
       &:hover{
         color: $iridium;
@@ -2381,15 +2381,8 @@ header.sub-head{
       }
     }
 
-
-
-  //<li><a href="" class="photos-link">Photo</a></li>
-  //<li><a href="" class="features-link">Features</a></li>
-  //<li><a href="" class="specs-link">Specs</a></li>
-  //<li><a href="" class="compare-link">Comparisons</a></li>
-  //<li><a href="" class="reviews-link">Reviews</a></li>
-
   }
+
 
   li.active{
     a:not(.home-link)::after{
@@ -2437,13 +2430,15 @@ header.sub-head{
       background-image: url('/assets/images/photos-blue.png');
     }
   }
-
-  //.product-nav{
-  //
-  //}
-
-
 }
+
+.product-nav{
+  a.photos-link {
+    background-image: url('/assets/images/photos-blue.png') !important;
+  }
+}
+
+
 
 .like-nav{
   li{
@@ -2785,6 +2780,30 @@ header.sub-head{
     b{
       color: $light-grey;
       font-weight: normal;
+    }
+  }
+
+  .view-all{
+    margin-top: 25px;
+    padding-right: 30px;
+    float: right;
+    background: url('/assets/images/icons/arrow-right-purple.png') right no-repeat;
+    background-size: 25px;
+  }
+
+  .add-more{
+    display: block;
+    margin-top: 70%;
+    font-size: 2rem;
+
+    span{
+      &.plus{
+        font-size: 5rem;
+        margin-bottom: -7px;
+      }
+      display: block;
+      width: 100%;
+      text-align: center;
     }
   }
 
