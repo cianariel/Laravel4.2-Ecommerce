@@ -10,8 +10,8 @@
         </div>
     </section>
     <nav id="hero-nav" class="product-nav col-sm-12">
-        <div class="container full-620  fixed-sm">
-            <ul class="category-nav">
+        <div class="container full-620 fixed-sm">
+            <ul class="category-nav full-620 ">
                 <li><a href="#" class="photos-link">Photos</a></li>
                 <li><a href="#" class="features-link">Features</a></li>
                 <li><a href="#" class="specs-link">Specs</a></li>
@@ -23,7 +23,7 @@
 
     <main class="page-content">
         <article class="product">
-            <div class="container full-620 main-container fixed-sm">
+            <div class="container main-container fixed-sm">
 
                     <aside class="share-bar sticks-on-scroll">
                         <ul>
@@ -53,7 +53,7 @@
                 </div>
 
                     <section class="pale-grey-bg product-specs">
-                        <div class="container full-620 fixed-sm">
+                        <div class="container">
 
                         <h3 class="green">Specifications</h3>
                         <p>
@@ -61,37 +61,32 @@
                         </p>
 
 
-                        <div class="card small col-lg-3">
+                        <div class="card small col-sm-3 col-xs-6">
                             <div>
                                 <h4>Type</h4>
                                 <span>Wireless Speakers</span>
                             </div>
                         </div>
-                        <div class="card small col-lg-3">
+                        <div class="card small col-sm-3 col-xs-6">
                             <div>
                                 <h4>Connections</h4>
                                 <span> 3.5mm stereo</span>
                             </div>
                         </div>
-                        <div class="card small col-lg-3">
+                        <div class="card small col-sm-3 col-xs-6">
                             <div>
                                 <h4>Dimensions</h4>
                                 <span> 8.03 x 14.33</span>
                             </div>
                         </div>
-                        <div class="card small col-lg-3">
+                        <div class="card small col-sm-3 col-xs-6">
                             <div>
                                 <h4>Weight</h4>
                                 <span> 14lbs</span>
                             </div>
                         </div>
-                        <div class="card small col-lg-3">
-                            <div>
-                                <h4>Announced</h4>
-                                <span> Sept 29 2015</span>
-                            </div>
-                        </div>
-                        <div class="card big col-lg-6">
+
+                        <div class="card big col-sm-6 col-xs-12">
                             <div>
                                 <h4>Pricing and Availiability</h4>
                                 <ul>
@@ -101,7 +96,13 @@
                                 </ul>
                             </div>
                         </div>
-                        <div class="card small col-lg-3">
+                        <div class="card small col-sm-3 col-xs-6">
+                            <div>
+                                <h4>Announced</h4>
+                                <span> Sept 29 2015</span>
+                            </div>
+                        </div>
+                        <div class="card small col-sm-3 col-xs-6">
                             <div>
                                 <h4>Original Site Details</h4>
                                 <span>
@@ -115,18 +116,18 @@
                     </section>
 
                     <section class="comparison">
-                        <div class="container full-620 fixed-sm">
+                        <div class="container">
                             <h3 class="purple">Comparisons</h3>
 
                             <button class="arrow arrow-left"></button>
 
-                            <div class="col-lg-3 comparison-tab">
+                            <div class="col-sm-3 col-xs-6 comparison-tab">
                                 <section class="search-bar">
-                                    <input class="form-control  hidden-620" type="text" name="search" value="Search to add products"/>
+                                    <input class="form-control" type="text" name="search" value="Search to add products"/>
                                 </section>
                             </div>
 
-                            <div class="col-lg-3 comparison-tab">
+                            <div class="col-sm-3 col-xs-6 comparison-tab">
                                 <div>
                                     <img class="img-responsive" src="/assets/images/dummies/nest-2.png"/>
                                     <div class="tab-wrap">
@@ -144,7 +145,7 @@
                                     <span class="close-button">✕</span>
                                 </div>
                             </div>
-                            <div class="col-lg-3 comparison-tab">
+                            <div class="col-sm-3 col-xs-6 comparison-tab">
                                 <div>
                                     <img class="img-responsive" src="/assets/images/dummies/nest-3.png"/>
                                     <div class="tab-wrap">
@@ -162,7 +163,7 @@
                                     <span class="close-button">✕</span>
                                 </div>
                             </div>
-                            <div class="col-lg-3 comparison-tab">
+                            <div class="col-sm-3 col-xs-6 comparison-tab">
                                 <div>
                                     <a class="purple add-more">
                                         <span class="plus">+</span>
@@ -177,7 +178,7 @@
 
                             <h5>Compared (2 products) <a>&#43;</a></h5>
 
-                            <div class="col-lg-3 comparison-tab table-heads">
+                            <div class="col-sm-3 col-xs-6 comparison-tab table-heads">
                                 <h4></h4>
                                 <hr>
 
@@ -187,7 +188,7 @@
                                 <b>Dimensions</b>
                                 <b>Weight</b>
                             </div>
-                            <div class="col-lg-3 comparison-tab table-cells">
+                            <div class="col-sm-3 col-xs-6 comparison-tab table-cells">
                                 <h4>Next Project <br>(second generation)</h4>
                                 <hr>
                                 <div class="bordered">
@@ -198,7 +199,7 @@
                                     <b>14 lbs</b>
                                 </div>
                             </div>
-                            <div class="col-lg-3 comparison-tab table-cells">
+                            <div class="col-sm-3 col-xs-6 comparison-tab table-cells">
                                 <h4>Next Project <br>(second generation)</h4>
                                 <hr>
                                 <div class="bordered">
@@ -209,7 +210,7 @@
                                     <b>14 lbs</b>
                                 </div>
                             </div>
-                            <div class="col-lg-3 comparison-tab table-cells">
+                            <div class="col-sm-3 col-xs-6 comparison-tab table-cells">
                                 <h4></h4>
                                 <hr>
                                 <div class="bordered">

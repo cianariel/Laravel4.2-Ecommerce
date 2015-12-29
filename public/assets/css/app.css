@@ -6015,6 +6015,7 @@ header.sub-head {
     padding-top: 0; }
     .comparison .search-bar input {
       padding-top: 20px;
+      padding-right: 40px;
       padding-bottom: 20px;
       border-radius: 10px;
       background-position: 93% center;
@@ -6453,6 +6454,13 @@ footer.about-footer {
       background-position: 43px 13px !important; }
     #hero-nav a.products-link {
       background-position: 56px 13px !important; }
+  #hero-nav.product-nav ul {
+    padding-left: 0;
+    width: 100% !important; }
+    #hero-nav.product-nav ul a {
+      padding-left: 10%;
+      padding-right: 5%;
+      background-position: center 15px !important; }
 
   #mid-nav a, #mid-nav .extra-nav a {
     font-size: 1.8rem; }
@@ -6615,11 +6623,11 @@ footer.about-footer {
   .logo-wrap {
     padding: 0; }
 
-  .search-bar {
+  .colphon .search-bar {
     padding-top: 0; }
-    .search-bar input {
+    .colphon .search-bar input {
       display: none; }
-    .search-bar #hero-nav.all-link {
+    .colphon .search-bar #hero-nav.all-link {
       background-position: 4px top; }
 
   #ideaing-logo.top-logo {
