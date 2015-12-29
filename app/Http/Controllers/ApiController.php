@@ -93,7 +93,6 @@
                 ];
             }
 
-//            return response()->json($data, $this->getStatusCode(), $headers);
             return response()->json($data);
 
         }
@@ -112,7 +111,6 @@
             return $this->makeResponse([
                 'error' => [
                     'message'     => $message,
-                   /* 'status_code' => $this->getStatusCode()*/
                 ]
             ]);
 

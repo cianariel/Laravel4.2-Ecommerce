@@ -12,6 +12,11 @@
     |
     */
 
+    /* Event::listen('illuminate.query', function($query)
+     {
+         var_dump($query);
+     });*/
+
     Route::get('/', 'PageController@home');
 
     Route::get('/landing', function () // temp, used for tweaking frontend
@@ -47,8 +52,23 @@
         Route::post('category/delete-category', 'ProductCategoryController@destroy');
         Route::get('category/root-category', 'ProductCategoryController@showAllRootCategory');
         Route::post('category/update-category', 'ProductCategoryController@updateCategory');
+
         Route::get('category/show-category-items/{id?}', 'ProductCategoryController@showCategoryItems');
 
+
+        /*
+         * Product route collection
+         *
+         * */
+        Route::get('product/check-permalink/{permalink?}', 'ProductController@isPermalinkExist');
+        Route::get('product/get-product/{id?}', 'ProductController@getProductById');
+        Route::get('product/product-find/{name?}', 'ProductController@searchProductByName');
+
+        Route::post('product/get-product-list', 'ProductController@getAllProductList');
+
+        Route::post('product/add-product', 'ProductController@addProduct');
+        Route::post('product/update-product', 'ProductController@updateProductInfo');
+        Route::post('product/publish-product', 'ProductController@publishProduct');
 
 
         /*
@@ -80,9 +100,14 @@
     Route::group(['prefix' => 'admin'], function ()
     {
         Route::get('dashboard', 'AdminController@index');
-        Route::get('category-view', 'AdminController@categoryView');
 
+        // Category view
+        Route::get('category-view', 'AdminController@categoryView');
         Route::get('category-add', 'AdminController@addCategory');
         Route::get('category-edit', 'AdminController@editCategory');
 
+        // Product view
+        Route::get('product-view', 'AdminController@productView');
+        Route::get('product-add', 'AdminController@addProduct');
+        Route::get('product-edit/{id?}', 'AdminController@editProduct');
     });

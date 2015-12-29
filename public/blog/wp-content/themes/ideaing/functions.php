@@ -498,7 +498,4 @@ function my_save_extra_profile_fields( $user_id ) {
 }
 
 
-
-
-
 ?>

@@ -25,12 +25,21 @@
 
         // API response status.
         'api-status'             => [
-            'success'         => 200,
-            'validation-fail' => 400,
-            'app-failure'     => 410,
-            'system-fail'  => 500
+            'success'                => 200,
+            'success-with-variation' => 210,
+            'validation-fail'        => 400,
+            'app-failure'            => 410,
+            'system-fail'            => 500
         ],
 
         // Category Static Blog Name for Category
-        'blog-name'=>'blog'
+        'blog-name'              => 'blog',
+
+        // Product message
+        'product'                => [
+            'permalink-exist'        => 'No product exists with this permalink',
+            'can-not-create-product' => 'Can not create product with this permalink!',
+            'product-added' => 'Successfully product added',
+            'product-not-found' => 'No product found with the provided ID',
+        ],
     ];
