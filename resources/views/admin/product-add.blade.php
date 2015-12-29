@@ -400,8 +400,6 @@
                                                                                             tooltip-placement="bottom">
                                                                                         <i class="fa fa-times"></i>
                                                                                     </button>
-
-
                                                                                 </td>
                                                                                 <br/>
                                                                             </tr>

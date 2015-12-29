@@ -140,6 +140,8 @@
             $skip = $settings['limit'] * ($settings['page'] - 1);
 
             $product['total'] = Product::where($whereClause)->count();//->get();
+
+           // dd($product['total']);
             $product['result'] = Product::where($whereClause)
                 ->take($settings['limit'])
                 ->offset($skip)->get();

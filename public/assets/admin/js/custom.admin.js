@@ -41,7 +41,9 @@ adminApp.controller('AdminController', ['$scope', '$http', '$confirm', '$locatio
             $scope.tmpUrl = '';
 
             /// product fields initialize
-            $scope.ProductId = '',
+
+            $scope.ProductList = [],
+                $scope.ProductId = '',
                 $scope.selectedItem = '',
                 $scope.Name = '',
                 $scope.Permalink = '',
@@ -57,15 +59,22 @@ adminApp.controller('AdminController', ['$scope', '$http', '$confirm', '$locatio
                 $scope.MetaDescription = '',
                 $scope.productTags = '',
                 $scope.ProductAvailability = '',
+
                 //specification
                 $scope.Specifications = [],
                 $scope.isUpdateSpecShow = false,
+
                 //review
                 $scope.reviews = [{
                     key: 'Average',
                     value: 0
                 }],
-                $scope.isUpdateReviewShow = false
+                $scope.isUpdateReviewShow = false,
+
+                // Pagination info
+                $scope.limit = 12,
+                $scope.page = 1,
+                $scope.total = 0
 
 
         };
@@ -254,10 +263,6 @@ adminApp.controller('AdminController', ['$scope', '$http', '$confirm', '$locatio
             console.log($scope.categoryItems[idx]);
             $scope.closeAlert();
 
-            //  var isConfirmed = $window.confirm("Do you want to delete this category itme ?");
-
-            /*$confirm({text: 'Are you sure you want to delete?', title: 'Delete it', ok: 'Yes', cancel: 'No'})
-             .then(function()  {*/
             $http({
                 url: '/api/category/delete-category',
                 method: "POST",
@@ -293,12 +298,6 @@ adminApp.controller('AdminController', ['$scope', '$http', '$confirm', '$locatio
 
 
         };
-
-
-        // Initialize variables and functions.
-        $scope.initPage();
-        $scope.getCategory();
-
 
         // Product Module //
 
@@ -343,7 +342,7 @@ adminApp.controller('AdminController', ['$scope', '$http', '$confirm', '$locatio
 
         // update product
         $scope.updateProduct = function () {
-            console.log('product id :', $scope.ProductId);
+            // console.log('product id :', $scope.ProductId);
             $scope.closeAlert();
 
             $http({
@@ -455,16 +454,56 @@ adminApp.controller('AdminController', ['$scope', '$http', '$confirm', '$locatio
             $scope.calculateAvg();
         }
 
-        $scope.calculateAvg = function()
-        {
-            $scope.totalCount = 0 ;
+        $scope.calculateAvg = function () {
+            $scope.totalCount = 0;
 
-            for(var i=1;i<$scope.reviews.length;i++)
-            {
+            for (var i = 1; i < $scope.reviews.length; i++) {
                 $scope.totalCount += $scope.reviews[i].value;
             }
 
-            $scope.reviews[0].value = Math.round($scope.totalCount/($scope.reviews.length -1));
+            $scope.reviews[0].value = Math.round($scope.totalCount / ($scope.reviews.length - 1));
 
         }
+
+        // view product list
+        $scope.showAllProduct = function () {
+            $http({
+                url: '/api/product/get-product-list',
+                method: 'POST',
+                data: {
+                    CategoryId: $scope.selectedItem,
+                    ActiveItem: $scope.ActiveItem,
+                    // Pagination info
+                    limit: $scope.limit,
+                    page: $scope.page,
+                    total: $scope.total,
+                }
+
+            }).success(function (data) {
+                //console.log(data);
+                if (data.status_code == 200) {
+                    $scope.ProductList = data.data.result;
+
+                    $scope.limit = data.data.limit;
+                    $scope.page = data.data.page;
+                    $scope.total = data.data.total;
+
+                    console.log($scope.limit,$scope.page,$scope.total);
+
+
+                    //  $scope.outputStatus(data, "SuccessfuProduct updated successfully");
+
+                } else {
+                    $scope.outputStatus(data, "Product information not viewable");
+                }
+
+
+            });
+
+        }
+
+
+        // Initialize variables and functions Globally.
+        $scope.initPage();
+        $scope.getCategory();
     }]);
