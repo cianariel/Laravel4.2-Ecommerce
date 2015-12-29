@@ -52,6 +52,7 @@
         Route::post('category/delete-category', 'ProductCategoryController@destroy');
         Route::get('category/root-category', 'ProductCategoryController@showAllRootCategory');
         Route::post('category/update-category', 'ProductCategoryController@updateCategory');
+
         Route::get('category/show-category-items/{id?}', 'ProductCategoryController@showCategoryItems');
 
 
@@ -67,6 +68,7 @@
 
         Route::post('product/add-product', 'ProductController@addProduct');
         Route::post('product/update-product', 'ProductController@updateProductInfo');
+        Route::post('product/publish-product', 'ProductController@publishProduct');
 
 
         /*
@@ -107,7 +109,5 @@
         // Product view
         Route::get('product-view', 'AdminController@productView');
         Route::get('product-add', 'AdminController@addProduct');
-        Route::get('product-edit', 'AdminController@editProduct');
-
-
+        Route::get('product-edit/{id?}', 'AdminController@editProduct');
     });

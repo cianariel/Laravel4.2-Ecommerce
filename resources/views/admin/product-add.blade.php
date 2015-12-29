@@ -17,14 +17,18 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header">Add Product</h1>
+                <h1 class="page-header">Add / Update Product</h1>
             </div>
             <!-- /.col-lg-12 -->
         </div>
         <!-- /.row -->
 
         <div ng-app="adminApp" data-ng-controller="AdminController" class="row">
+
             <div class="col-lg-12" ng-cloak>
+                @if( !empty($id))
+                    <div ng-init="loadProductData({{$id}})"></div>
+                @endif
                 <div class="panel panel-default" ng-init="loadAddProduct()">
                     <div class="panel-heading"> Basic Form Elements</div>
                     <div class="panel-body">
@@ -44,7 +48,6 @@
                                         </div>
                                     </div>
 
-
                                 </div>
                             </div>
 
@@ -53,17 +56,21 @@
                                     <div class="col-lg-8">
                                         <p class="row">
 
-                                        <div class="from-group">
-                                            <label>Enter Permalink</label>
-                                            <input ng-model="desiredPermalink" class="form-control"
-                                                   placeholder="Enter desired permalink">
+                                        @if( empty($id))
+                                            <div class="from-group">
+                                                <label>Enter Permalink</label>
+                                                <input ng-model="desiredPermalink" class="form-control"
+                                                       placeholder="Enter desired permalink">
 
-                                            <p>
-                                                <button class="btn btn-primary" type="button" ng-click="addProduct()">
-                                                    Check and Proceed
-                                                </button>
-                                            </p>
-                                        </div>
+                                                <div style="margin-top: 5px">&nbsp;</div>
+                                                <p>
+                                                    <button class="btn btn-primary" type="button"
+                                                            ng-click="addProduct()">
+                                                        Check and Proceed
+                                                    </button>
+                                                </p>
+                                            </div>
+                                        @endif
 
                                     </div>
                                 </div>
@@ -99,9 +106,9 @@
                                                 <div class="tab-pane fade active in" id="home">
                                                     <div class="row row-grid">&nbsp;</div>
                                                     <div class="col-lg-8">
-                                                        <div class="row">
-                                                            <div class="from-group">
-                                                                <div class="">
+                                                        <div ng-hide="hideCategoryPanel">
+                                                            <div class="row">
+                                                                <div class="from-group">
                                                                     <div class="panel panel-info">
                                                                         <div class="panel-heading"> Category Status
                                                                             Panel
@@ -115,7 +122,16 @@
                                                             </div>
                                                         </div>
                                                         <div class="row">
-                                                            <div class="form-group">
+                                                            <div ng-hide="!hideCategoryPanel">
+                                                                <label>Selected Category: @{{ selectedItem }}</label>
+
+                                                                <button ng-click="hideCategoryPanel = !hideCategoryPanel"
+                                                                        tooltip-placement="right" uib-tooltip="Reset Category"
+                                                                        class="btn btn-warning btn-circle">
+                                                                    <i class="fa fa-refresh"></i>
+                                                                </button>
+                                                            </div>
+                                                            <div ng-hide="hideCategoryPanel" class="form-group">
                                                                 <label>Selects Category</label>
 
                                                                 <div class="col-lg-12 clearfix">
@@ -176,7 +192,7 @@
                                                                        placeholder="Enter text">
                                                             </div>
                                                             <div class="form-group">
-                                                                <label>Store Id</label>
+                                                                <label>Store Name</label>
                                                                 <input data-ng-model="StoreId" class="form-control"
                                                                        placeholder="Enter text">
                                                             </div>
@@ -235,6 +251,16 @@
                                                                 <button data-ng-click="updateProduct()"
                                                                         class="btn btn-primary" type="button">
                                                                     Save As Draft
+                                                                </button>
+                                                                <button ng-hide="PostStatus == 'Active'"
+                                                                        data-ng-click="changeProductActivation()"
+                                                                        class="btn btn-warning" type="button">
+                                                                    Active
+                                                                </button>
+                                                                <button ng-hide="PostStatus == 'Inactive'"
+                                                                        data-ng-click="changeProductActivation()"
+                                                                        class="btn btn-danger" type="button">
+                                                                    Inactive
                                                                 </button>
                                                             </div>
 
@@ -321,6 +347,16 @@
                                                                 class="btn btn-primary" type="button">
                                                             Save As Draft
                                                         </button>
+                                                        <button ng-hide="PostStatus == 'Active'"
+                                                                data-ng-click="changeProductActivation()"
+                                                                class="btn btn-warning" type="button">
+                                                            Active
+                                                        </button>
+                                                        <button ng-hide="PostStatus == 'Inactive'"
+                                                                data-ng-click="changeProductActivation()"
+                                                                class="btn btn-danger" type="button">
+                                                            Inactive
+                                                        </button>
                                                     </div>
                                                 </div>
                                                 <div class="tab-pane fade" id="review">
@@ -340,7 +376,6 @@
                                                                 tooltip-placement="bottom">
                                                             <i class="fa fa-plus"></i>
                                                         </button>
-
 
 
                                                         <button ng-click="updateReviewFormField()"
@@ -415,20 +450,23 @@
                                                                 class="btn btn-primary" type="button">
                                                             Save As Draft
                                                         </button>
+                                                        <button ng-hide="PostStatus == 'Active'"
+                                                                data-ng-click="changeProductActivation()"
+                                                                class="btn btn-warning" type="button">
+                                                            Active
+                                                        </button>
+                                                        <button ng-hide="PostStatus == 'Inactive'"
+                                                                data-ng-click="changeProductActivation()"
+                                                                class="btn btn-danger" type="button">
+                                                            Inactive
+                                                        </button>
                                                     </div>
 
                                                 </div>
                                                 <div class="tab-pane fade" id="media">
-                                                    <h4>Media Content</h4>
+                                                    <h4>Image Video upload</h4>
 
-                                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-                                                        eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                                                        enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                                                        nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-                                                        in reprehenderit in voluptate velit esse cillum dolore eu fugiat
-                                                        nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-                                                        sunt in culpa qui officia deserunt mollit anim id est
-                                                        laborum.</p>
+                                                    <p> Work in progress !</p>
                                                 </div>
                                             </div>
 
@@ -448,6 +486,7 @@
             <!-- /.row -->
             </div>
             <!-- /.container-fluid -->
+
         </div>
     </div>
 @stop

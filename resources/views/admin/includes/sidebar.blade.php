@@ -28,9 +28,7 @@
                     <li>
                         <a href="/admin/product-add">Add Product</a>
                     <li>
-                    <li>
-                        <a href="/admin/product-edit">Edit Product</a>
-                    <li>
+
                 </ul>
             </li>
             {{--<li>

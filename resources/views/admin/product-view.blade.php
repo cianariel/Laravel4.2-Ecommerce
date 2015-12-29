@@ -24,6 +24,7 @@
         <!-- /.row -->
 
         <div ng-app="adminApp" data-ng-controller="AdminController" class="row">
+
             <div class="col-lg-12" ng-cloak>
                 <div class="panel panel-default">
                     <div class="panel-heading"> Basic Form Elements</div>
@@ -122,12 +123,11 @@
                                                                     <td>@{{ product.product_name }}</td>
                                                                     <td>@{{ product.product_permalink }}</td>
                                                                     <td>
-                                                                        <button ng-click="editCategory(category)"
-                                                                                class="btn btn-info btn-circle"
-                                                                                uib-tooltip="Edit"
-                                                                                tooltip-placement="bottom">
-                                                                            <i class="fa fa-edit"></i>
-                                                                        </button>
+                                                                        <a href="/admin/product-edit/@{{ product.id }}"
+                                                                           class="btn btn-info btn-circle"
+                                                                           uib-tooltip="Edit"
+                                                                           tooltip-placement="bottom">  <i class="fa fa-edit"></i></a>
+
                                                                     </td>
                                                                 </tr>
                                                                 </tbody>

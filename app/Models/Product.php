@@ -54,6 +54,16 @@
             return json_decode($value);
         }
 
+        public function getSpecificationsAttribute($value)
+        {
+            return json_decode($value);
+        }
+
+        public function getReviewAttribute($value)
+        {
+            return json_decode($value);
+        }
+
 
         public function checkPermalink($permalink)
         {
@@ -78,7 +88,6 @@
             try
             {
                 $data = array(
-
                     "product_category_id"     => ($product['CategoryId'] != null) ? $product['CategoryId'] : null,
                     "product_name"            => $product['Name'],
                     "product_permalink"       => $product['Permalink'],
@@ -95,9 +104,9 @@
                     "page_title"              => $product['PageTitle'],
                     "meta_description"        => $product['MetaDescription'],
                     "similar_product_ids"     => json_encode($product['SimilarProductIds']),
-                  //  "similar_product_ids"     => $product['SimilarProductIds'],
-
+                    //  "similar_product_ids"     => $product['SimilarProductIds'],
                     "product_availability"    => $product['ProductAvailability'],
+                    "post_status"             => $product['PostStatus']
                 );
 
                 $productId = $product['ProductId'];
@@ -106,11 +115,8 @@
 
                 $data = Product::where('id', $productId)->first();
 
-               // $data['similar_product_ids'] = json_decode($data['similar_product_ids']);
-
                 return $data;
 
-                //   dd("in",$productId,$data);
             } catch (Exception $ex)
             {
                 return $ex;
@@ -141,17 +147,17 @@
 
             $product['total'] = Product::where($whereClause)->count();//->get();
 
-           // dd($product['total']);
+            // dd($product['total']);
             $product['result'] = Product::where($whereClause)
                 ->take($settings['limit'])
                 ->offset($skip)->get();
 
-               /* get([
-                    'id', 'product_category_id', 'product_name', 'product_permalink', 'product_description',
-                    'specifications', 'price', 'sale_price', 'store_id', 'affiliate_link', 'affiliate_link',
-                    'review', 'free_shipping', 'coupon_code', 'post_status', 'page_title', 'meta_description',
-                    similar_product_ids,'product_availability'
-                ]);*/
+            /* get([
+                 'id', 'product_category_id', 'product_name', 'product_permalink', 'product_description',
+                 'specifications', 'price', 'sale_price', 'store_id', 'affiliate_link', 'affiliate_link',
+                 'review', 'free_shipping', 'coupon_code', 'post_status', 'page_title', 'meta_description',
+                 similar_product_ids,'product_availability'
+             ]);*/
             //$product['result']['similar_product_ids'] = json_decode($product['result']['similar_product_ids']);
 
             // dd($product);

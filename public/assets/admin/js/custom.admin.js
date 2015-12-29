@@ -55,6 +55,7 @@ adminApp.controller('AdminController', ['$scope', '$http', '$confirm', '$locatio
                 $scope.PriceGrabberId = '',
                 $scope.FreeShipping = '',
                 $scope.CouponCode = '',
+                $scope.PostStatus = 'Inactive',
                 $scope.PageTitle = '',
                 $scope.MetaDescription = '',
                 $scope.productTags = '',
@@ -75,6 +76,9 @@ adminApp.controller('AdminController', ['$scope', '$http', '$confirm', '$locatio
                 $scope.limit = 12,
                 $scope.page = 1,
                 $scope.total = 0
+
+            // show category panel for add product
+            $scope.hideCategoryPanel = false;
 
 
         };
@@ -325,7 +329,6 @@ adminApp.controller('AdminController', ['$scope', '$http', '$confirm', '$locatio
 
             }).success(function (data) {
                 if (data.status_code == 200) {
-                    console.log('set product id :', data.data.id);
 
                     $scope.ProductId = data.data.id;
                     $scope.outputStatus(data, "Product created successfully");
@@ -361,6 +364,7 @@ adminApp.controller('AdminController', ['$scope', '$http', '$confirm', '$locatio
                     PriceGrabberId: $scope.PriceGrabberId,
                     FreeShipping: $scope.FreeShipping,
                     CouponCode: $scope.CouponCode,
+                    PostStatus: $scope.PostStatus,
                     PageTitle: $scope.PageTitle,
                     MetaDescription: $scope.MetaDescription,
                     SimilarProductIds: $scope.productTags,
@@ -381,6 +385,51 @@ adminApp.controller('AdminController', ['$scope', '$http', '$confirm', '$locatio
             });
             return false;
         };
+
+        $scope.changeProductActivation = function () {
+            $scope.closeAlert();
+
+            $scope.PostStatus = ($scope.PostStatus == "Active") ? "Inactive" : "Active";
+
+            $http({
+                url: '/api/product/publish-product',
+                method: 'POST',
+                data: {
+                    ProductId: $scope.ProductId,
+                    CategoryId: $scope.selectedItem,
+                    Name: $scope.Name,
+                    Permalink: $scope.Permalink,
+                    Description: $scope.htmlContent,
+                    Price: $scope.Price,
+                    SalePrice: $scope.SalePrice,
+                    StoreId: $scope.StoreId,
+                    AffiliateLink: $scope.AffiliateLink,
+                    PriceGrabberId: $scope.PriceGrabberId,
+                    FreeShipping: $scope.FreeShipping,
+                    CouponCode: $scope.CouponCode,
+                    PostStatus: $scope.PostStatus,
+                    PageTitle: $scope.PageTitle,
+                    MetaDescription: $scope.MetaDescription,
+                    SimilarProductIds: $scope.productTags,
+                    ProductAvailability: $scope.ProductAvailability,
+                    Specifications: $scope.Specifications,
+                    Review: $scope.reviews
+                }
+
+            }).success(function (data) {
+                //console.log(data);
+                if (data.status_code == 200) {
+                    $scope.outputStatus(data, "Product updated successfully");
+                    $scope.loadProductData($scope.ProductId);
+                } else {
+                    $scope.outputStatus(data, "Product information not updated");
+                    $scope.PostStatus = ($scope.PostStatus == "Active") ? "Inactive" : "Active";
+
+
+                }
+            });
+            return false;
+        }
 
         // Search product id for related product from Admin
         $scope.productTags = [];
@@ -488,7 +537,7 @@ adminApp.controller('AdminController', ['$scope', '$http', '$confirm', '$locatio
                     $scope.page = data.data.page;
                     $scope.total = data.data.total;
 
-                    console.log($scope.limit,$scope.page,$scope.total);
+                    console.log($scope.limit, $scope.page, $scope.total);
 
 
                     //  $scope.outputStatus(data, "SuccessfuProduct updated successfully");
@@ -497,6 +546,48 @@ adminApp.controller('AdminController', ['$scope', '$http', '$confirm', '$locatio
                     $scope.outputStatus(data, "Product information not viewable");
                 }
 
+            });
+
+        }
+
+        $scope.loadProductData = function (id) {
+            //console.log("ID IS:"+id);
+            $http({
+                url: '/api/product/get-product/' + id,
+                method: 'GET'
+            }).success(function (data) {
+                if (data.status_code == 200) {
+                    //  console.log(data['product_name']);
+
+                    // set data in input fields
+                    $scope.ProductId = data.data.id;
+                    $scope.selectedItem = data.data.product_category_id;
+                    $scope.Name = data.data.product_name;
+                    $scope.Permalink = data.data.product_permalink;
+                    $scope.htmlContent = data.data.product_description;
+                    $scope.Price = data.data.price;
+                    $scope.SalePrice = data.data.sale_price;
+                    $scope.StoreId = data.data.store_id;
+                    $scope.AffiliateLink = data.data.affiliate_link;
+                    $scope.PriceGrabberId = data.data.price_grabber_master_id;
+                    $scope.FreeShipping = data.data.free_shipping;
+                    $scope.CouponCode = data.data.coupon_code;
+                    $scope.PostStatus = data.data.post_status;
+                    $scope.PageTitle = data.data.page_title;
+                    $scope.MetaDescription = data.data.meta_description;
+                    $scope.productTags = data.data.similar_product_ids;
+                    $scope.ProductAvailability = data.data.product_availability;
+                    $scope.Specifications = data.data.specifications;
+                    $scope.reviews = data.data.review;
+
+                    //show hide product add element
+                    $scope.isCollapsed = true; // default true.
+                    $scope.isCollapsedToggle = !$scope.isCollapsed;
+
+                    // hide category in edit mood
+                    $scope.hideCategoryPanel = true;
+
+                }
 
             });
 

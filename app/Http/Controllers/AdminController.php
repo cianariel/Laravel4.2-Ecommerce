@@ -6,7 +6,7 @@
 
     use App\Http\Requests;
     use App\Http\Controllers\Controller;
-    use App\Models\Product;
+  //  use App\Models\Product;
 
     class AdminController extends ApiController {
 
@@ -15,7 +15,7 @@
          *
          */
 
-        public function __construct()
+       /* public function __construct()
         {
             // Apply the jwt.auth middleware to all methods in this controller
             $this->middleware('jwt.auth',
@@ -25,7 +25,7 @@
                     ]
                 ]);
             $this->product = new Product();
-        }
+        }*/
 
         public function index()
         {
@@ -65,9 +65,8 @@
 
         public function editProduct($id)
         {
+          //  $product = $this->product->where('id', $id)->first();
 
-            $product = $this->product->where('id', $id)->first();
-
-            return view('admin.product-edit', $product);
+            return view('admin.product-add')->with('id',$id);
         }
     }

@@ -13,7 +13,7 @@
         public function __construct()
         {
             // Apply the jwt.auth middleware to all methods in this controller
-            $this->middleware('jwt.auth', ['except' => ['searchProductByName', 'updateProductInfo', 'getAllProductList', 'getProductById', 'isPermalinkExist', 'addProduct']]);
+            $this->middleware('jwt.auth', ['except' => ['publishProduct','searchProductByName', 'updateProductInfo', 'getAllProductList', 'getProductById', 'isPermalinkExist', 'addProduct']]);
             $this->product = new Product();
         }
 
@@ -141,11 +141,6 @@
             }
         }
 
-        public function searchProductByName($name)
-        {
-            return Product::where('product_name', 'LIKE', "%$name%")->get(['id', 'product_name AS name']);
-        }
-
 
         /**
          * @return mixed
@@ -156,29 +151,33 @@
             {
                 $inputData = \Input::all();
 
-                $validationRules = [
+                $tempInputData = $inputData ;
+                $tempInputData['Specifications'] = null;
+                $tempInputData['SimilarProductIds'] = null;
+                $tempInputData['Review'] = null;
 
+                $validationRules = [
                     'rules'  => [
-                        /*'FullName' => 'required | max: 25',
-                        'Email'    => 'required | email',
-                        'Password' => 'required | min: 6 '*/
+                        'Name' => 'required',
+                        'Permalink'    => 'required',
+                        'selectedItem' => 'required'
                     ],
                     'values' => [
-                        /*'FullName' => isset($inputData['FullName']) ? $inputData['FullName'] : null,
-                        'Email'    => isset($inputData['Email']) ? $inputData['Email'] : null,
-                        'Password' => isset($inputData['Password']) ? $inputData['Password'] : null*/
+                        'Name' => isset($tempInputData['Name']) ? $tempInputData['Name'] : null,
+                        'Permalink'    => isset($tempInputData['Permalink']) ? $tempInputData['Permalink'] : null,
+                        'selectedItem' => isset($tempInputData['selectedItem']) ? $tempInputData['selectedItem'] : null
                     ]
                 ];
 
-                list($productData, $validator) = $this->inputValidation($inputData, $validationRules);
+                list($productData, $validator) = $this->inputValidation($tempInputData, $validationRules);
 
                 //$this->inputValidation($inputData,$validationRules);
 
                 if ($validator->passes())
                 {
                     $updatedProduct = $this->product->updateProductInfo($productData);
-                    $updatedProduct->post_status = 'Active';
-                    $updatedProduct->save();
+                  //  $updatedProduct->post_status = 'Active';
+                 //   $updatedProduct->save();
 
                     return $this->setStatusCode(\Config::get("const.api-status.success"))
                         ->makeResponse("Update Successful.");
@@ -198,6 +197,13 @@
             }
 
         }
+
+
+        public function searchProductByName($name)
+        {
+            return Product::where('product_name', 'LIKE', "%$name%")->get(['id', 'product_name AS name']);
+        }
+
 
         /**
          *
