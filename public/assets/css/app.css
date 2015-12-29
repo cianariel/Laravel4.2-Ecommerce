@@ -4776,6 +4776,9 @@ nav a {
       background-position-x: 3px; }
   #hero.details-hero .color-overlay {
     display: none; }
+  #hero > .container {
+    padding-left: 0;
+    padding-right: 0; }
   #hero.landing-hero > .container {
     padding-top: 100px; }
   #hero .container {
@@ -4821,6 +4824,47 @@ nav a {
       .top-product-controls li a.comments {
         background-image: url("/assets/images/icons/chat-white.png");
         padding-left: 40px; }
+
+.slider-side-block {
+  position: absolute;
+  width: 350px;
+  right: 0;
+  bottom: -170px;
+  overflow: hidden;
+  z-index: 2; }
+  .slider-side-block .top {
+    width: 100%;
+    height: 85px;
+    padding: 35px;
+    background-color: rgba(0, 0, 0, 0.65);
+    border-radius: 5px 0 0 0; }
+  .slider-side-block .price {
+    color: #fff;
+    font-size: 1.8rem;
+    float: right;
+    font-weight: normal; }
+  .slider-side-block .vendor-logo {
+    margin-left: 5%; }
+  .slider-side-block .table {
+    padding: 10px;
+    background: #F2F5F5;
+    border: 1px solid #c1c1c1;
+    border-radius: 0 0 5px 5px; }
+    .slider-side-block .table li {
+      color: #3D4B4E;
+      padding: 10px 0;
+      background: url("/assets/images/elements/grey-line.png") center repeat-x; }
+    .slider-side-block .table .name {
+      padding: 0 10px;
+      background: #F2F5F5; }
+    .slider-side-block .table .price {
+      width: 70px;
+      padding: 5px;
+      margin-top: -7px;
+      color: #3D4B4E;
+      background: #fff;
+      border: 1px solid #c1c1c1;
+      font-size: inherit; }
 
 .logo-wrap a {
   padding: 0; }
@@ -5134,9 +5178,11 @@ article.product {
   overflow: hidden;
   padding-top: 10px;
   width: 100%; }
-  article.product .article-content p:first-child:first-letter {
-    color: #FF7F00;
-    font-size: 5rem; }
+  article.product .article-content {
+    margin-top: 50px; }
+    article.product .article-content p:first-child:first-letter {
+      color: #FF7F00;
+      font-size: 5rem; }
   article.product .reviews {
     margin-bottom: 0; }
   article.product + .comments {
@@ -6060,6 +6106,8 @@ header.sub-head {
   padding-left: 40px; }
 #hero.product-hero .color-overlay {
   background-color: rgba(0, 0, 0, 0.6); }
+#hero.product-hero .product-slider .main-image {
+  width: 100%; }
 
 .average-score {
   position: relative;

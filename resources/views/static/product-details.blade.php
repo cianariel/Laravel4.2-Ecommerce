@@ -37,7 +37,7 @@
                         <img class="vendor-logo" src="/assets/images/dummies/amazon.png">
                         <b class="price">$199</b>
                     </div>
-                    <div>
+                    <div class="table">
                         <ul>
                             <li>
                                 <span class="name">Amazon</span>

@@ -642,8 +642,10 @@ nav{
     }
   }
 
-
-
+  & > .container{
+    padding-left: 0;
+    padding-right: 0;
+  }
 
   &.landing-hero > .container{
     padding-top: 100px;
@@ -722,6 +724,62 @@ nav{
       }
     }
   }
+}
+
+.slider-side-block{
+  position: absolute;
+  width: 350px;
+  right: 0;
+  bottom:-170px;
+  overflow: hidden;
+  z-index: 2;
+
+  .top{
+    width: 100%;
+    height: 85px;
+    padding: 35px;
+    background-color: rgba(0,0,0,.65);
+    border-radius:5px 0 0 0;
+
+  }
+  .price{
+    color: #fff;
+    font-size: 1.8rem;
+    float: right;
+    font-weight: normal;
+  }
+  .vendor-logo{
+    margin-left: 5%;
+  }
+
+  .table{
+    padding: 10px;
+    background: $pale-grey;
+    border: 1px solid $light-grey;
+    border-radius: 0 0 5px 5px;
+    li{
+      color: $tarmac;
+      //overflow: h;
+      padding: 10px 0;
+      background: url('/assets/images/elements/grey-line.png') center repeat-x;
+    }
+    .name{
+      //display: inline-block;
+      padding: 0 10px;
+      background: $pale-grey;
+    }
+    .price{
+      width: 70px;
+      padding: 5px;
+      margin-top: -7px;
+      color: $tarmac;
+      background: #fff;
+      border: 1px solid $light-grey;
+      font-size: inherit;
+    }
+  }
+
+
 }
 
 .logo-wrap{
@@ -1251,6 +1309,7 @@ article.product{
   width: 100%;
 
   .article-content{
+    margin-top: 50px;
     p:first-child{
       &:first-letter{
         color: $dark-orange;
@@ -2782,6 +2841,12 @@ header.sub-head{
   }
   .color-overlay {
     background-color: rgba(0, 0, 0, 0.6);
+  }
+
+  .product-slider{
+    .main-image{
+      width: 100%;
+    }
   }
 }
 
