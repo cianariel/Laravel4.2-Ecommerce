@@ -30,11 +30,13 @@
                 </ul>
             </nav>
             <div class="slider product-slider">
-                <img src="/assets/images/dummies/nest-big.png" class="main-image">
+                <div class="slider-wrap" style="min-height: 500px">
+                    <img src="/assets/images/dummies/nest-big.png" class="main-image">
+                </div>
                 <div class="slider-side-block">
                     <div class="top">
                         <div class="get solid">Get it</div>
-                        <img class="vendor-logo" src="/assets/images/dummies/amazon.png">
+                        <img class="vendor-logo" src="/assets/images/dummies/amazon-2.png">
                         <b class="price">$199</b>
                     </div>
                     <div class="table">
@@ -460,5 +462,19 @@
             </div>
         </section>
     </main>
+
+    <script>
+        jQuery(document).ready(function($) {
+            $(".slider-wrap").royalSlider({
+                // options go here
+                // as an example, enable keyboard arrows nav
+                keyboardNavEnabled: true,
+                thumbs: {
+                    // thumbnails options go gere
+                    arrowsAutoHide: true
+                }
+            });
+        });
+    </script>
 
 @stop
