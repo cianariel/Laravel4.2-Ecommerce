@@ -661,7 +661,6 @@ nav{
 .breadcrumbs{
   li{
     float: left;
-    //padding-right: 30px;
     position: relative;
 
       &:not(:last-child)::after{
@@ -670,10 +669,10 @@ nav{
         position: absolute;
 
         left: 90%;
-        top: 35%;
+        top: 31%;
         width: 19px;
         height: 19px;
-        background: url("/assets/images/arrow-right-black.png") center no-repeat;
+        background: url("/assets/images/icons/arrow-pale-grey.png") center no-repeat;
     }
 
     &:first-child{
@@ -711,15 +710,11 @@ nav{
       &.get-alerts{
         background-image: url("/assets/images/icons/bell-pink.png");
       }
-      //&.compare{
-      //  background-image: url("/assets/images/icons/return-white.png");
-      //}
       &.likes{
         background-image: url("/assets/images/icons/heart-white.png");
       }
       &.comments{
         background-image: url("/assets/images/icons/chat-white.png");
-        //background-position: -4px;
         padding-left: 40px;
       }
     }
@@ -730,7 +725,7 @@ nav{
   position: absolute;
   width: 350px;
   right: 0;
-  bottom:-170px;
+  bottom:-172px;
   overflow: hidden;
   z-index: 2;
 
@@ -754,19 +749,17 @@ nav{
 
   .table{
     padding: 10px;
-    background: $pale-grey;
+    background: #F7F7F7;
     border: 1px solid $light-grey;
     border-radius: 0 0 5px 5px;
     li{
       color: $tarmac;
-      //overflow: h;
       padding: 10px 0;
       background: url('/assets/images/elements/grey-line.png') center repeat-x;
     }
     .name{
-      //display: inline-block;
       padding: 0 10px;
-      background: $pale-grey;
+      background: #F7F7F7;
     }
     .price{
       width: 70px;
@@ -2856,7 +2849,7 @@ header.sub-head{
   width: 190px;
   height: 100px;
   padding-top: 10px;
-  background: $sky-blue;
+  background: $sky-blue url('/assets/images/icons/logo-lamp-white.png') 10px 15px no-repeat;
   border-radius: 10px;
   text-align: center;
   color:#fff;
