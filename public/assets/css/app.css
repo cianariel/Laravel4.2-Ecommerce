@@ -4795,13 +4795,16 @@ nav a {
 .slider.product-slider .rsThumbsArrow {
   position: absolute;
   top: 0px;
-  background: blue url("/assets/images/icons/arrow-down-pink.png") center no-repeat;
+  left: 40%;
   width: 40px;
-  height: 40px;
-  background-size: contain; }
-  .slider.product-slider .rsThumbsArrow .rsThumbsArrowRight {
-    background-image: blue url("/assets/images/icons/arrow-down-pink.png");
-    bottom: 0; }
+  height: 40px; }
+  .slider.product-slider .rsThumbsArrow.rsThumbsArrowLeft {
+    background: #fff url("/assets/images/arrow-up-pink.png") center no-repeat;
+    background-size: contain; }
+  .slider.product-slider .rsThumbsArrow.rsThumbsArrowRight {
+    background: #fff url("/assets/images/icons/arrow-down-pink.png") center no-repeat;
+    background-size: contain;
+    top: 50.5%; }
 
 .breadcrumbs li {
   float: left;

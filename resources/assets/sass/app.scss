@@ -683,14 +683,22 @@ nav{
     .rsThumbsArrow{
       position: absolute;
       top: 0px;
-      background:blue url('/assets/images/icons/arrow-down-pink.png') center no-repeat;
+      left: 40%;
       width: 40px;
       height: 40px;
-      background-size: contain;
 
-      .rsThumbsArrowRight{
-        background-image:blue url('/assets/images/icons/arrow-down-pink.png');
-        bottom: 0;
+      &.rsThumbsArrowLeft{
+        background:#fff url('/assets/images/arrow-up-pink.png') center no-repeat;
+        background-size: contain;
+
+      }
+
+      &.rsThumbsArrowRight{
+        background:#fff url('/assets/images/icons/arrow-down-pink.png') center no-repeat;
+        background-size: contain;
+
+        //bottom: 0 !important;
+        top: 50.5%;
       }
     }
 
