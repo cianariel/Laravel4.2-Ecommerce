@@ -224,40 +224,59 @@
                     </section>
                     <!-- TODO - use two (three?) columns -->
 
-            <section class="pale-grey-bg">
+            <section class="pale-grey-bg reviews">
                 <div class="container full-620 fixed-sm">
                     <h3 class="pink">Reviews (4)</h3>
 
                     <div class="col-sm-3">
-                        <h6>Critic Reviews</h6>
-                        <b class="score pink">
+                        <h6 class="grey">Critic Reviews</h6>
+                        <b class="score critic-score pink">
                             9.8
                         </b>
                     </div>
                     <div class="col-sm-9">
                         <table class="rating-lines">
                             <tbody>
-                                <tr class="name">
+                                <tr>
                                     <td class="name">CNET</td>
-                                    <td class="line"></td>
+                                    <td class="line"><div class="outer-line"><div style="width: 90%"  class="inner-line"></div></div></td>  <!-- TODO - the style has to come from Laravel-->
+
                                     <td class="score">9.0</td>
                                 </tr>
-                                <!-- TODO - use 4 rows -->
+                                <tr>
+                                    <td class="name">Endgadget</td>
+                                    <td class="line"><div class="outer-line"><div style="width: 88%"  class="inner-line"></div></div></td>  <!-- TODO - the style has to come from Laravel-->
+
+                                    <td class="score">8.8</td>
+                                </tr>
+                                <tr>
+                                    <td class="name">PcMag</td>
+                                    <td class="line"><div class="outer-line"><div style="width: 96%"  class="inner-line"></div></div></td>  <!-- TODO - the style has to come from Laravel-->
+
+                                    <td class="score">9.6</td>
+                                </tr>
+                                <tr>
+                                    <td class="name">Amazon</td>
+                                    <td class="line"><div class="outer-line"><div style="width: 92%"  class="inner-line"></div></div></td>  <!-- TODO - the style has to come from Laravel-->
+
+                                    <td class="score">9.2</td>
+                                </tr>
 
                             </tbody>
                         </table>
                     </div>
-                    <div class="col-sm-3 col-md-offset-3">
-                        <b class="qu">Every home needs this</b>
-                        <author>Pete McBride</author>
-                        <i>CNET Editor</i>
+
+                    <div class="col-sm-3 col-md-offset-3 critic-quote">
+                        <b>Every home needs this</b>
+                        <span class="quote-author grey">Pete McBride</span>
+                        <span class="light-grey">CNET Editor</span>
                     </div>
-                    </div>
+                </div>
             </section>
         </article>
 
 
-        <section class="comments">
+        <section class="comments pale-grey-bg">
             <div class="container">
                 <h4>211 Comments</h4>
 

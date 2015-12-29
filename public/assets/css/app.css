@@ -4371,6 +4371,12 @@ a.label:focus {
 .blue {
   color: #00B1FF !important; }
 
+.grey {
+  color: #a8a8a8; }
+
+.light-grey {
+  color: #c1c1c1; }
+
 .purple {
   color: #9E009E; }
 
@@ -5085,6 +5091,57 @@ article.product {
   article.product .article-content p:first-child:first-letter {
     color: #FF7F00;
     font-size: 5rem; }
+  article.product .reviews {
+    margin-bottom: 0; }
+  article.product + .comments {
+    margin-top: 0;
+    padding-top: 70px; }
+
+.reviews h6 {
+  font-size: 1.2rem; }
+.reviews .score {
+  display: inline-block; }
+  .reviews .score.critic-score {
+    font-size: 7rem;
+    margin-top: 45px; }
+.reviews .rating-lines {
+  width: 100%; }
+.reviews tr {
+  margin-top: 40px; }
+  .reviews tr td {
+    padding-top: 40px; }
+.reviews td.name {
+  color: #6a8287;
+  text-transform: uppercase;
+  font-size: 2rem; }
+.reviews td.line {
+  width: 70%;
+  padding-left: 20px;
+  padding-right: 20px; }
+.reviews .outer-line {
+  width: 100%;
+  height: 7px;
+  background: #c1c1c1; }
+.reviews .inner-line {
+  height: 7px;
+  background: #FF0042;
+  width: 50%; }
+.reviews td.score {
+  color: #000;
+  font-weight: bold;
+  font-size: 2rem; }
+
+.critic-quote {
+  padding-left: 80px;
+  margin-top: 50px;
+  background: url("/assets/images/icons/quotes.png") left top no-repeat; }
+  .critic-quote b {
+    font-size: 3rem;
+    font-weight: normal; }
+  .critic-quote .quote-author {
+    display: block; }
+  .critic-quote span:last-child {
+    font-size: 1.1rem; }
 
 .grid-insert {
   padding: 45px;
@@ -5913,8 +5970,7 @@ header.sub-head {
   font-size: .9rem; }
 
 .related-items {
-  margin-top: 100px;
-  background: #F2F5F5; }
+  margin-top: 100px; }
   .related-items h3 {
     margin-top: 35px;
     margin-bottom: 0;
