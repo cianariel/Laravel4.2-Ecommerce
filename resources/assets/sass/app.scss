@@ -658,6 +658,97 @@ nav{
 
 }
 
+.slider{
+  //position: relative;
+  &.product-slider{
+    #gallery{
+      width: 100%;
+      height: 500px;
+      overflow: hidden;
+    }
+
+    //.slider-wrap{
+    //  min-height: 500px;
+    //}
+
+    .rsNav.rsThumbs.rsThumbsVer{
+      width: 150px !important;
+      //height: 390px;
+    }
+
+    .rsThumbsContainer{
+      max-height: 500px;
+    }
+
+    .rsThumbsArrow{
+      position: absolute;
+      top: 0px;
+      background:blue url('/assets/images/icons/arrow-down-pink.png') center no-repeat;
+      width: 40px;
+      height: 40px;
+      background-size: contain;
+
+      .rsThumbsArrowRight{
+        background-image:blue url('/assets/images/icons/arrow-down-pink.png');
+        bottom: 0;
+      }
+    }
+
+    //.gallery-wrap{
+    //  height: 500px;
+    //  width: 100%;
+    //  overflow: hidden;
+    //}
+
+    //.rsMainSlideImage{
+    //  margin-top: 0 !important;
+    //}
+    //
+    //.rsOverflow{
+    //  height: 470px !important;
+    //
+    //  img{
+    //    //width: 100% !important;
+    //    height: 100% !important;
+    //    margin-top: 0 !important;
+    //  }
+    //}
+    //
+    //  .rsThumb{
+    //    display: block;
+    //    width: 150px;
+    //    height: 130px;
+    //    //margin-top: 9px;
+    //    margin-bottom: 4px;
+    //    img{
+    //      width: 100%;
+    //      height: 100%;
+    //    }
+    //  }
+    ////}
+    //
+    //.rsThumbs{
+    //    position: absolute;
+    //    left: 76.5%;
+    //    top: 168px;
+    //    width: 100%;
+    //  height: 390px;
+    //  overflow: hidden;
+    //}
+    //
+    //.rsThumbsArrow{
+    //  background: blue;
+    //  width: 50px;
+    //  height: 50px;
+    //}
+
+  }
+  //.rsTmb{
+  //  position: absolute;
+  //  z-index: 99;
+  //}
+}
+
 .breadcrumbs{
   li{
     float: left;
@@ -721,10 +812,16 @@ nav{
   }
 }
 
+.rsThumbsArrow{
+  background: #0000C2;
+  width: 40px;
+  height: 80px;
+}
+
 .slider-side-block{
   position: absolute;
   width: 350px;
-  right: 0;
+  right: 150px;
   bottom:-172px;
   overflow: hidden;
   z-index: 2;

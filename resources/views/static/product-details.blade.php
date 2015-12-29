@@ -29,10 +29,128 @@
                     <li><a class="comments">1.2K</a></li>
                 </ul>
             </nav>
+
+
+            <script>
+                jQuery(document).ready(function($) {
+                    $(".slider-wrap").royalSlider({
+                        arrowsNav: true,
+                        loop: false,
+                        keyboardNavEnabled: true,
+                        controlsInside: false,
+                        imageScaleMode: 'fill',
+                        arrowsNavAutoHide: false,
+                        autoScaleSlider: true,
+                        thumbsFitInViewport: false,
+                        autoScaleSliderWidth
+
+
+
+                        navigateByClick: true,
+                        startSlideId: 0,
+                        autoPlay: false,
+                        transitionType:'fade',
+                        globalCaption: false,
+                        deeplinking: {
+                            enabled: true,
+                            change: false
+                        },
+                        thumbs: {
+                            appendSpan: true,
+                            arrows: true,
+                            firstMargin: false,
+                            orientation: 'vertical',
+                        },
+                        imgWidth: 1400,
+                        imgHeight: 680,
+                        controlNavigation: 'thumbnails'
+                    });
+                });
+            </script>
+
+
+
             <div class="slider product-slider">
-                <div class="slider-wrap" style="min-height: 500px">
-                    <img src="/assets/images/dummies/nest-big.png" class="main-image">
+
+
+                <script>
+                    jQuery(document).ready(function($) {
+                        $('#gallery').royalSlider({
+//                            arrowsNav: true,
+                            loop: false,
+                            keyboardNavEnabled: true,
+                            controlsInside: false,
+                            imageScaleMode: 'fill',
+                            arrowsNavAutoHide: false,
+//                        autoScaleSlider: true,
+                            controlNavigation: 'thumbnails',
+                            thumbsFitInViewport: false,
+                            navigateByClick: true,
+                            startSlideId: 0,
+                            autoPlay: false,
+                            transitionType:'move',
+                            globalCaption: false,
+                            deeplinking: {
+                                enabled: true,
+                                change: false
+                            },
+                            thumbs: {
+                                arrows:true,
+                                appendSpan: true,
+                                firstMargin: false,
+                                orientation:'vertical'
+                            },
+//                        imgWidth: 1400,
+//                        imgHeight: 680
+                        });
+                    });
+                </script>
+                <div class="gallery-wrap">
+                <div id="gallery" class="royalSlider rsDefault">
+
+                    <a class="rsImg" data-rsbigimg="/assets/images/dummies/nest-big.png" href="/assets/images/dummies/nest-big.png">
+                        <img  itemprop="image" class="rsTmb" src="/assets/images/dummies/nest-1.png">
+                    </a>
+
+                    <a class="rsImg" data-rsbigimg="/assets/images/dummies/nest-big.png" href="/assets/images/dummies/nest-big.png">
+                        <img  itemprop="image" class="rsTmb" src="/assets/images/dummies/nest-2.png">
+                    </a>
+
+                    <a class="rsImg" data-rsbigimg="/assets/images/dummies/nest-big.png" href="/assets/images/dummies/nest-big.png">
+                        <img  itemprop="image" class="rsTmb" src="/assets/images/dummies/nest-3.png">
+                    </a>
+
+                    <a class="rsImg" data-rsbigimg="/assets/images/dummies/nest-big.png" href="/assets/images/dummies/nest-big.png">
+                        <img  itemprop="image" class="rsTmb" src="/assets/images/dummies/nest-4.png">
+                    </a>
+                    <a class="rsImg" data-rsbigimg="/assets/images/dummies/nest-big.png" href="/assets/images/dummies/nest-big.png">
+                        <img  itemprop="image" class="rsTmb" src="/assets/images/dummies/nest-5.png">
+                    </a>
+
+                    <a class="rsImg" data-rsbigimg="/assets/images/dummies/nest-big.png" href="/assets/images/dummies/nest-big.png">
+                        <img  itemprop="image" class="rsTmb" src="/assets/images/dummies/nest-5.png">
+                    </a>
+
+
+                    <img width="640" height="480" src="http://freshbangkok.com/wp-content/uploads/2015/12/IMG_0885-1024x768.jpg" class="attachment-large wp-post-image" alt="IMG_0885" />                </div>
+                <div class="proeprty-description"  itemprop="description">
                 </div>
+                </div>
+                {{--<div class="thumbs">--}}
+                    {{--<ul>--}}
+                        {{--<li>--}}
+                            {{--<a data-rsbigimg="/assets/images/dummies/nest-big.png" href="#" class="rsTmb"><img  class="rsTmb"  src="/assets/images/dummies/nest-1.png" alt="" title=""></a>--}}
+                        {{--</li>--}}
+                        {{--<li>--}}
+                            {{--<a data-rsbigimg="/assets/images/dummies/nest-big.png" href="#" class="rsTmb"><img  class="rsTmb"  src="/assets/images/dummies/nest-2.png" alt="" title=""></a>--}}
+
+                        {{--</li>--}}
+                        {{--<li>--}}
+                            {{--<a data-rsbigimg="/assets/images/dummies/nest-big.png" href="#" class="rsTmb"><img  class="rsTmb"  src="/assets/images/dummies/nest-3.png" alt="" title=""></a>--}}
+
+                        {{--</li>--}}
+                    {{--</ul>--}}
+                {{--</div>--}}
                 <div class="slider-side-block">
                     <div class="top">
                         <div class="get solid">Get it</div>
@@ -462,19 +580,5 @@
             </div>
         </section>
     </main>
-
-    <script>
-        jQuery(document).ready(function($) {
-            $(".slider-wrap").royalSlider({
-                // options go here
-                // as an example, enable keyboard arrows nav
-                keyboardNavEnabled: true,
-                thumbs: {
-                    // thumbnails options go gere
-                    arrowsAutoHide: true
-                }
-            });
-        });
-    </script>
 
 @stop
