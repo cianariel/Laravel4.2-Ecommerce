@@ -5535,7 +5535,7 @@ header.colophon {
   position: fixed;
   top: 0;
   width: 100%;
-  z-index: 11;
+  z-index: 35;
   padding: 20px 0 8px;
   overflow: hidden;
   background: #fff;
