@@ -698,7 +698,7 @@ nav{
         background-size: contain;
 
         //bottom: 0 !important;
-        top: 50.5%;
+        top: 33.5%;
       }
     }
 
@@ -3361,14 +3361,14 @@ footer.about-footer{
     }
   }
 
-
+@media (min-width: 480px){
   .slider-side-block{
     width: 190px;
     padding: 0px;
 
     .top{
       height: auto;
-
+      padding-top: 10px;
     }
     .vendor-logo, .get{
       margin: 10px auto;
@@ -3379,6 +3379,8 @@ footer.about-footer{
       text-align: center;
     }
   }
+}
+
 
 
 }
@@ -3974,6 +3976,10 @@ footer.about-footer{
     width: 100%;
   }
 
+  .comparison .arrow{
+    display: none;
+  }
+
 
   }
 
@@ -4025,10 +4031,18 @@ footer.about-footer{
   }
 
   .product-hero{
+    .average-score{
+      .score{
+        width: 55%;
+      }
+      .caption{
+        width: 44%;
+      }
+    }
     #gallery{
       //width: 90%;
       //margin: 0 auto;
-      height: 450px !important;
+      height: 380px !important;
       overflow: hidden !important;
 
       .rsImg.rsMainSlideImage,
@@ -4041,25 +4055,30 @@ footer.about-footer{
         margin-left: 0 !important;
       }
       .rsOverflow {
-        margin-left: 20px;
-        width: 90% !important;
+        //margin-left: 20px;
+        //width: 90% !important;
         height: auto !important;
         min-height: 300px;
         //margin: 0 auto;
       }
 
       .rsImg.rsMainSlideImage{
-        margin-left: 9% !important;
+        width: 90% !important;
+        margin-left: 5% !important;
 
       }
 
-      .slider.product-slider .rsThumbsArrow {
-        left: 0;
-        top: 35%;
+      .rsThumbsArrow {
+        top: 15%;
 
-        .rsThumbsArrowRight{
-          right: 0;
-          left: auto;
+        &.rsThumbsArrowLeft{
+          left: 0;
+          background-image: url("/assets/images/arrow-left-pink.png");
+
+        }
+        &.rsThumbsArrowRight{
+          left: 45%;
+          background-image: url("/assets/images/arrow-right-pink.png");
         }
       }
 
@@ -4093,6 +4112,10 @@ footer.about-footer{
       //  width: 100%;
       //}
     }
+  }
+
+  article.product .article-content{
+    margin-top: 0;
   }
 
   .comments h4{

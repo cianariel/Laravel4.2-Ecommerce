@@ -34,33 +34,68 @@
             <div class="slider product-slider">
                 <script>
                     jQuery(document).ready(function($) {
-                        $('#gallery').royalSlider({
-                            arrowsNav: true,
-                            loop: false,
-                            keyboardNavEnabled: true,
-                            controlsInside: false,
-                            imageScaleMode: 'fill',
-                            arrowsNavAutoHide: false,
-                            autoScaleSlider: true,
-                            controlNavigation: 'thumbnails',
-                            thumbsFitInViewport: false,
-                            navigateByClick: true,
-                            startSlideId: 0,
-                            autoPlay: false,
-                            transitionType:'move',
-                            globalCaption: false,
-                            deeplinking: {
-                                enabled: true,
-                                change: false
-                            },
-                            thumbs: {
-                                appendSpan: true,
-                                firstMargin: false,
+                        if(window.innerWidth < 480) {
+
+                            $('#gallery').royalSlider({
+                                arrowsNav: true,
+                                loop: false,
+                                keyboardNavEnabled: true,
+                                controlsInside: false,
+                                imageScaleMode: 'fill',
+                                arrowsNavAutoHide: false,
+                                autoScaleSlider: true,
+                                controlNavigation: 'thumbnails',
+                                thumbsFitInViewport: false,
+                                navigateByClick: true,
+                                startSlideId: 0,
+                                autoPlay: false,
+                                transitionType: 'move',
+                                globalCaption: false,
+                                deeplinking: {
+                                    enabled: true,
+                                    change: false
+                                },
+                                thumbs: {
+                                    appendSpan: true,
+                                    firstMargin: false,
 //                                orientation: 'horizntal',
-                            },
+                                },
 //                            imgWidth: 1400,
 //                            imgHeight: 680
-                        });
+                            });
+                        }else{
+                            jQuery(document).ready(function($) {
+                                $('#gallery').royalSlider({
+//                            arrowsNav: true,
+                                    loop: false,
+                                    keyboardNavEnabled: true,
+                                    controlsInside: false,
+                                    imageScaleMode: 'fill',
+                                    arrowsNavAutoHide: false,
+//                        autoScaleSlider: true,
+                                    controlNavigation: 'thumbnails',
+                                    thumbsFitInViewport: false,
+                                    navigateByClick: true,
+                                    startSlideId: 0,
+                                    autoPlay: false,
+                                    transitionType:'move',
+                                    globalCaption: false,
+                                    deeplinking: {
+                                        enabled: true,
+                                        change: false
+                                    },
+                                    thumbs: {
+                                        arrows:true,
+                                        appendSpan: true,
+                                        firstMargin: false,
+                                        orientation:'vertical'
+                                    },
+//                        imgWidth: 1400,
+//                        imgHeight: 680
+                                });
+                            });
+
+                        }
                     });
                 </script>
 
