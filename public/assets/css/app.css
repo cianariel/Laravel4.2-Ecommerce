@@ -6571,6 +6571,7 @@ footer.about-footer {
         color: #fff !important;
         text-transform: none;
         background-image: url("/assets/images/signin-white.png") !important;
+        background-size: 20px !important;
         background-position-x: 5px !important; }
 
   .main-content.landing {
@@ -6742,6 +6743,12 @@ footer.about-footer {
         padding-left: 25px;
         padding-right: 10px;
         font-size: 1.5rem; }
+
+  #top-nav .search-bar a {
+    width: 30px; }
+
+  header.colophon #top-nav .category-menu {
+    margin-left: 35px; }
 
   .story-details .author-image-big {
     max-width: 100px;
@@ -6918,6 +6925,9 @@ footer.about-footer {
   #top-nav .mobile-wrap {
     width: 225px;
     float: right; }
+
+  header.colophon #top-nav .category-menu {
+    margin-left: 9px; }
 
   #mid-nav a, #mid-nav .extra-nav a {
     padding-left: 1.5%;

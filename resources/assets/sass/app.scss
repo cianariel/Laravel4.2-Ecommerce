@@ -3701,7 +3701,7 @@ footer.about-footer{
         color: #fff  !important;;
         text-transform: none;
         background-image: url("/assets/images/signin-white.png") !important;
-        //background-size: 20px;
+        background-size: 20px !important;
         background-position-x: 5px !important;
       }
     }
@@ -4005,6 +4005,14 @@ footer.about-footer{
       }
     }
 
+  }
+
+  #top-nav .search-bar a{
+    width: 30px;
+  }
+
+  header.colophon #top-nav .category-menu {
+    margin-left: 35px;
   }
 
   .story-details{
@@ -4321,6 +4329,10 @@ footer.about-footer{
       width: 225px;
       float: right;
     }
+  }
+
+  header.colophon #top-nav .category-menu {
+    margin-left: 9px;
   }
 
 

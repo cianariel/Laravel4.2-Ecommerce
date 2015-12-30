@@ -175,7 +175,7 @@
 
 	<?php endif; ?>
 
-    <section class="related-items">
+    <section class="related-items pale-grey-bg">
         <div class="container full-620 fixed-sm">
             <div class="related-products  col-xs-12">
                 <h3 class="green">Related Products</h3>
