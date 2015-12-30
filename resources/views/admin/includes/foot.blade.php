@@ -13,8 +13,5 @@
 
 <!-- Angular JS and components-->
 <script src="/assets/js/vendor/ui-bootstrap.min.js"></script>
-<script src="/assets/js/vendor/angular-sanitize.min.js"></script>
-<script src="/assets/js/vendor/angular-confirm.js"></script>
-
 
 <script src="/assets/admin/js/custom.admin.js"></script>
