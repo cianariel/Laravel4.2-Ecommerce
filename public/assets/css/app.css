@@ -6679,7 +6679,50 @@ footer.about-footer {
   .idea-stories .story-details .author-overview {
     padding-top: 5%; }
   .idea-stories .story-details .content-tags {
-    margin-bottom: 0; } }
+    margin-bottom: 0; }
+
+  .breadcrumbs {
+    margin-left: 6%; }
+
+  .average-score {
+    width: 90%;
+    height: 70px;
+    float: none;
+    margin: 10px auto;
+    padding-top: 0;
+    overflow: hidden;
+    background-position: 10px 11px; }
+    .average-score .score {
+      width: 60%;
+      float: left;
+      padding-top: 6px; }
+    .average-score .caption {
+      width: 37%;
+      height: 100%;
+      padding-top: 27px;
+      margin-top: 0;
+      float: right;
+      border-top: 0;
+      border-left: 1px solid #fff; }
+
+  #hero.product-hero {
+    padding-bottom: 0; }
+    #hero.product-hero .table {
+      margin-bottom: 0; }
+    #hero.product-hero #gallery {
+      max-width: 100%; }
+      #hero.product-hero #gallery .rsImg.rsMainSlideImage {
+        max-width: 100%; }
+
+  .top-product-controls {
+    float: none;
+    overflow: hidden;
+    width: 265px;
+    margin: 15px auto; }
+
+  .slider-side-block {
+    position: static;
+    width: 100%; } }
 @media screen and (max-width: 480px) {
   .full-480 {
     width: 100%;

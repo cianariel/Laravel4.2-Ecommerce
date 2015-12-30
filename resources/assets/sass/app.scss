@@ -3916,6 +3916,63 @@ footer.about-footer{
     }
   }
 
+  .breadcrumbs{
+    margin-left: 6%;
+  }
+
+  .average-score{
+    width: 90%;
+    height: 70px;
+    float: none;
+    margin: 10px auto;
+    padding-top: 0;
+    overflow: hidden;
+    background-position: 10px 11px;
+
+    .score{
+      width: 60%;
+      float: left;
+      padding-top: 6px;
+
+    }
+    .caption{
+      width: 37%;
+      height: 100%;
+      padding-top: 27px;
+      margin-top: 0;
+      float: right;
+      border-top: 0;
+      border-left: 1px solid #fff;
+    }
+  }
+
+  #hero.product-hero{
+    padding-bottom: 0;
+
+    .table{
+      margin-bottom: 0;
+    }
+
+    #gallery{
+      max-width: 100%;
+
+      .rsImg.rsMainSlideImage{
+        max-width: 100%;
+      }
+    }
+  }
+
+  .top-product-controls {
+    float: none;
+    overflow: hidden;
+    width: 265px;
+    margin: 15px auto;
+  }
+
+  .slider-side-block{
+    position: static;
+    width: 100%;
+  }
 
 
   }

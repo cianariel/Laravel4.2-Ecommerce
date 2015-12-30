@@ -42,10 +42,6 @@
                         arrowsNavAutoHide: false,
                         autoScaleSlider: true,
                         thumbsFitInViewport: false,
-                        autoScaleSliderWidth
-
-
-
                         navigateByClick: true,
                         startSlideId: 0,
                         autoPlay: false,
