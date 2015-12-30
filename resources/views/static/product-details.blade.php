@@ -31,54 +31,17 @@
             </nav>
 
 
-            <script>
-                jQuery(document).ready(function($) {
-                    $(".slider-wrap").royalSlider({
-                        arrowsNav: true,
-                        loop: false,
-                        keyboardNavEnabled: true,
-                        controlsInside: false,
-                        imageScaleMode: 'fill',
-                        arrowsNavAutoHide: false,
-                        autoScaleSlider: true,
-                        thumbsFitInViewport: false,
-                        navigateByClick: true,
-                        startSlideId: 0,
-                        autoPlay: false,
-                        transitionType:'fade',
-                        globalCaption: false,
-                        deeplinking: {
-                            enabled: true,
-                            change: false
-                        },
-                        thumbs: {
-                            appendSpan: true,
-                            arrows: true,
-                            firstMargin: false,
-                            orientation: 'vertical',
-                        },
-                        imgWidth: 1400,
-                        imgHeight: 680,
-                        controlNavigation: 'thumbnails'
-                    });
-                });
-            </script>
-
-
-
             <div class="slider product-slider">
-
-
                 <script>
                     jQuery(document).ready(function($) {
                         $('#gallery').royalSlider({
-//                            arrowsNav: true,
+                            arrowsNav: true,
                             loop: false,
                             keyboardNavEnabled: true,
                             controlsInside: false,
                             imageScaleMode: 'fill',
                             arrowsNavAutoHide: false,
-//                        autoScaleSlider: true,
+                            autoScaleSlider: true,
                             controlNavigation: 'thumbnails',
                             thumbsFitInViewport: false,
                             navigateByClick: true,
@@ -91,62 +54,56 @@
                                 change: false
                             },
                             thumbs: {
-                                arrows:true,
                                 appendSpan: true,
                                 firstMargin: false,
-                                orientation:'vertical'
+//                                orientation: 'horizntal',
                             },
-//                        imgWidth: 1400,
-//                        imgHeight: 680
+                            imgWidth: 1400,
+                            imgHeight: 680
                         });
                     });
                 </script>
-                <div class="gallery-wrap">
+
                 <div id="gallery" class="royalSlider rsDefault">
 
-                    <a class="rsImg" data-rsbigimg="/assets/images/dummies/nest-big.png" href="/assets/images/dummies/nest-big.png">
-                        <img  itemprop="image" class="rsTmb" src="/assets/images/dummies/nest-1.png">
+                    <a class="rsImg" data-rsbigimg="http://freshbangkok.com/wp-content/uploads/2015/12/PC220020-1024x683.jpg" href="http://freshbangkok.com/wp-content/uploads/2015/12/PC220020-1024x683.jpg">
+                        <img  itemprop="image" class="rsTmb" src="http://freshbangkok.com/wp-content/uploads/2015/12/PC220020-150x150.jpg">
                     </a>
 
-                    <a class="rsImg" data-rsbigimg="/assets/images/dummies/nest-big.png" href="/assets/images/dummies/nest-big.png">
-                        <img  itemprop="image" class="rsTmb" src="/assets/images/dummies/nest-2.png">
+                    <a class="rsImg" data-rsbigimg="http://freshbangkok.com/wp-content/uploads/2015/12/PC220024-1024x683.jpg" href="http://freshbangkok.com/wp-content/uploads/2015/12/PC220024-1024x683.jpg">
+                        <img  itemprop="image" class="rsTmb" src="http://freshbangkok.com/wp-content/uploads/2015/12/PC220024-150x150.jpg">
                     </a>
 
-                    <a class="rsImg" data-rsbigimg="/assets/images/dummies/nest-big.png" href="/assets/images/dummies/nest-big.png">
-                        <img  itemprop="image" class="rsTmb" src="/assets/images/dummies/nest-3.png">
+                    <a class="rsImg" data-rsbigimg="http://freshbangkok.com/wp-content/uploads/2015/12/PC220022-1024x683.jpg" href="http://freshbangkok.com/wp-content/uploads/2015/12/PC220022-1024x683.jpg">
+                        <img  itemprop="image" class="rsTmb" src="http://freshbangkok.com/wp-content/uploads/2015/12/PC220022-150x150.jpg">
                     </a>
 
-                    <a class="rsImg" data-rsbigimg="/assets/images/dummies/nest-big.png" href="/assets/images/dummies/nest-big.png">
-                        <img  itemprop="image" class="rsTmb" src="/assets/images/dummies/nest-4.png">
-                    </a>
-                    <a class="rsImg" data-rsbigimg="/assets/images/dummies/nest-big.png" href="/assets/images/dummies/nest-big.png">
-                        <img  itemprop="image" class="rsTmb" src="/assets/images/dummies/nest-5.png">
+                    <a class="rsImg" data-rsbigimg="http://freshbangkok.com/wp-content/uploads/2015/12/The-Next-Garden-Suite-112-6.jpg" href="http://freshbangkok.com/wp-content/uploads/2015/12/The-Next-Garden-Suite-112-6.jpg">
+                        <img  itemprop="image" class="rsTmb" src="http://freshbangkok.com/wp-content/uploads/2015/12/The-Next-Garden-Suite-112-6-150x150.jpg">
                     </a>
 
-                    <a class="rsImg" data-rsbigimg="/assets/images/dummies/nest-big.png" href="/assets/images/dummies/nest-big.png">
-                        <img  itemprop="image" class="rsTmb" src="/assets/images/dummies/nest-5.png">
+                    <a class="rsImg" data-rsbigimg="http://freshbangkok.com/wp-content/uploads/2015/12/PC220019-1024x683.jpg" href="http://freshbangkok.com/wp-content/uploads/2015/12/PC220019-1024x683.jpg">
+                        <img  itemprop="image" class="rsTmb" src="http://freshbangkok.com/wp-content/uploads/2015/12/PC220019-150x150.jpg">
                     </a>
 
+                    <a class="rsImg" data-rsbigimg="http://freshbangkok.com/wp-content/uploads/2015/12/PC220021-1024x683.jpg" href="http://freshbangkok.com/wp-content/uploads/2015/12/PC220021-1024x683.jpg">
+                        <img  itemprop="image" class="rsTmb" src="http://freshbangkok.com/wp-content/uploads/2015/12/PC220021-150x150.jpg">
+                    </a>
 
-                    <img width="640" height="480" src="http://freshbangkok.com/wp-content/uploads/2015/12/IMG_0885-1024x768.jpg" class="attachment-large wp-post-image" alt="IMG_0885" />                </div>
-                <div class="proeprty-description"  itemprop="description">
+                    <a class="rsImg" data-rsbigimg="http://freshbangkok.com/wp-content/uploads/2015/12/PC220026-1024x683.jpg" href="http://freshbangkok.com/wp-content/uploads/2015/12/PC220026-1024x683.jpg">
+                        <img  itemprop="image" class="rsTmb" src="http://freshbangkok.com/wp-content/uploads/2015/12/PC220026-150x150.jpg">
+                    </a>
+
+                    <a class="rsImg" data-rsbigimg="http://freshbangkok.com/wp-content/uploads/2015/12/PC220027-1024x683.jpg" href="http://freshbangkok.com/wp-content/uploads/2015/12/PC220027-1024x683.jpg">
+                        <img  itemprop="image" class="rsTmb" src="http://freshbangkok.com/wp-content/uploads/2015/12/PC220027-150x150.jpg">
+                    </a>
+
+                    <a class="rsImg" data-rsbigimg="http://freshbangkok.com/wp-content/uploads/2015/12/PC220025-1024x683.jpg" href="http://freshbangkok.com/wp-content/uploads/2015/12/PC220025-1024x683.jpg">
+                        <img  itemprop="image" class="rsTmb" src="http://freshbangkok.com/wp-content/uploads/2015/12/PC220025-150x150.jpg">
+                    </a>
+                    <img width="640" height="427" src="http://freshbangkok.com/wp-content/uploads/2015/12/PC2200201-1024x683.jpg" class="attachment-large wp-post-image" alt="OLYMPUS DIGITAL CAMERA" />
                 </div>
-                </div>
-                {{--<div class="thumbs">--}}
-                    {{--<ul>--}}
-                        {{--<li>--}}
-                            {{--<a data-rsbigimg="/assets/images/dummies/nest-big.png" href="#" class="rsTmb"><img  class="rsTmb"  src="/assets/images/dummies/nest-1.png" alt="" title=""></a>--}}
-                        {{--</li>--}}
-                        {{--<li>--}}
-                            {{--<a data-rsbigimg="/assets/images/dummies/nest-big.png" href="#" class="rsTmb"><img  class="rsTmb"  src="/assets/images/dummies/nest-2.png" alt="" title=""></a>--}}
 
-                        {{--</li>--}}
-                        {{--<li>--}}
-                            {{--<a data-rsbigimg="/assets/images/dummies/nest-big.png" href="#" class="rsTmb"><img  class="rsTmb"  src="/assets/images/dummies/nest-3.png" alt="" title=""></a>--}}
-
-                        {{--</li>--}}
-                    {{--</ul>--}}
-                {{--</div>--}}
                 <div class="slider-side-block">
                     <div class="top">
                         <div class="get solid">Get it</div>

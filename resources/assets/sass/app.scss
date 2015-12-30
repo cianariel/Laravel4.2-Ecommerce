@@ -4024,6 +4024,52 @@ footer.about-footer{
 
   }
 
+  .product-hero{
+    #gallery{
+      //width: 90%;
+      //margin: 0 auto;
+      height: 450px !important;
+      overflow: hidden !important;
+
+      .rsImg.rsMainSlideImage,
+      .rsContainer,
+      .rsOverflow,
+      .rsSlide {
+        width: 100% !important;
+        height: auto !important;
+        min-height: 300px;
+        margin-left: 0 !important;
+      }
+      .rsOverflow {
+        margin-left: 20px;
+        width: 90% !important;
+        height: auto !important;
+        min-height: 300px;
+        //margin: 0 auto;
+      }
+
+      .rsImg.rsMainSlideImage{
+        margin-left: 20px !important;
+
+      }
+
+      .rsThumbs{
+        width: 100%;
+
+        //.rsT
+      }
+      //.rsThumbsContainer{
+      //  width: 100% !important;
+      //  height: 150px;
+      //  overflow: hidden;
+      //}
+      //
+      //.rsThumbs{
+      //  width: 100%;
+      //}
+    }
+  }
+
   .comments h4{
     margin-bottom: 30px;
   }

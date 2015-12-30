@@ -6754,6 +6754,27 @@ footer.about-footer {
       margin: 5px auto;
       float: none !important; }
 
+  .product-hero #gallery {
+    height: 450px !important;
+    overflow: hidden !important; }
+    .product-hero #gallery .rsImg.rsMainSlideImage,
+    .product-hero #gallery .rsContainer,
+    .product-hero #gallery .rsOverflow,
+    .product-hero #gallery .rsSlide {
+      width: 100% !important;
+      height: auto !important;
+      min-height: 300px;
+      margin-left: 0 !important; }
+    .product-hero #gallery .rsOverflow {
+      margin-left: 20px;
+      width: 90% !important;
+      height: auto !important;
+      min-height: 300px; }
+    .product-hero #gallery .rsImg.rsMainSlideImage {
+      margin-left: 20px !important; }
+    .product-hero #gallery .rsThumbs {
+      width: 100%; }
+
   .comments h4 {
     margin-bottom: 30px; }
 
