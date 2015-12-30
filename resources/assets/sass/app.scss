@@ -4049,12 +4049,37 @@ footer.about-footer{
       }
 
       .rsImg.rsMainSlideImage{
-        margin-left: 20px !important;
+        margin-left: 9% !important;
 
       }
 
-      .rsThumbs{
-        width: 100%;
+      .slider.product-slider .rsThumbsArrow {
+        left: 0;
+        top: 35%;
+
+        .rsThumbsArrowRight{
+          right: 0;
+          left: auto;
+        }
+      }
+
+      .rsThumbs,
+      .rsThumbsContainer{
+        width: 200% !important;
+        overflow: hidden;
+        height: 150px;
+
+        .rsNavItem{
+          float: left;
+          width: 80px !important;
+          height: auto !important;
+          margin: 0;
+          display: block;
+
+          img{
+            height: 80px !important;
+          }
+        }
 
         //.rsT
       }

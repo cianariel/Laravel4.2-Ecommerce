@@ -58,8 +58,8 @@
                                 firstMargin: false,
 //                                orientation: 'horizntal',
                             },
-                            imgWidth: 1400,
-                            imgHeight: 680
+//                            imgWidth: 1400,
+//                            imgHeight: 680
                         });
                     });
                 </script>

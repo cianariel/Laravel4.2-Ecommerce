@@ -6771,9 +6771,28 @@ footer.about-footer {
       height: auto !important;
       min-height: 300px; }
     .product-hero #gallery .rsImg.rsMainSlideImage {
-      margin-left: 20px !important; }
-    .product-hero #gallery .rsThumbs {
-      width: 100%; }
+      margin-left: 9% !important; }
+    .product-hero #gallery .slider.product-slider .rsThumbsArrow {
+      left: 0;
+      top: 35%; }
+      .product-hero #gallery .slider.product-slider .rsThumbsArrow .rsThumbsArrowRight {
+        right: 0;
+        left: auto; }
+    .product-hero #gallery .rsThumbs,
+    .product-hero #gallery .rsThumbsContainer {
+      width: 200% !important;
+      overflow: hidden;
+      height: 150px; }
+      .product-hero #gallery .rsThumbs .rsNavItem,
+      .product-hero #gallery .rsThumbsContainer .rsNavItem {
+        float: left;
+        width: 80px !important;
+        height: auto !important;
+        margin: 0;
+        display: block; }
+        .product-hero #gallery .rsThumbs .rsNavItem img,
+        .product-hero #gallery .rsThumbsContainer .rsNavItem img {
+          height: 80px !important; }
 
   .comments h4 {
     margin-bottom: 30px; }
