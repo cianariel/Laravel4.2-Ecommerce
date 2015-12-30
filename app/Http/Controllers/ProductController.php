@@ -165,11 +165,15 @@
                     'values' => [
                         'Name' => isset($tempInputData['Name']) ? $tempInputData['Name'] : null,
                         'Permalink'    => isset($tempInputData['Permalink']) ? $tempInputData['Permalink'] : null,
-                        'selectedItem' => isset($tempInputData['selectedItem']) ? $tempInputData['selectedItem'] : null
+                        'selectedItem' => isset($tempInputData['CategoryId']) ? $tempInputData['CategoryId'] : null
                     ]
                 ];
 
                 list($productData, $validator) = $this->inputValidation($tempInputData, $validationRules);
+
+                $productData['Specifications'] = $inputData['Specifications'] ;
+                $productData['SimilarProductIds'] = $inputData['SimilarProductIds'];
+                $productData['Review'] = $inputData['Review'];
 
                 //$this->inputValidation($inputData,$validationRules);
 
