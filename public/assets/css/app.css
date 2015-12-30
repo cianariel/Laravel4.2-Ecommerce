@@ -1,4 +1,3 @@
-@charset "UTF-8";
 /*!
  * Bootstrap v3.3.5 (http://getbootstrap.com)
  * Copyright 2011-2015 Twitter, Inc.
@@ -4772,8 +4771,8 @@ nav a {
   padding: 0; }
 
 #ideaing-logo {
-  width: 175px;
-  height: 48px;
+  width: 155px;
+  height: 43px;
   min-width: 110px;
   margin-top: 9px;
   display: block;
@@ -5202,11 +5201,11 @@ header.colophon {
     header.colophon #top-nav .signin a {
       float: right;
       margin-right: 1%;
-      padding-left: 25px;
+      padding-left: 33px;
       background-image: url("/assets/images/signin-icon.png");
       background-position: left;
       background-repeat: no-repeat;
-      background-size: 14px;
+      background-size: 27px;
       white-space: nowrap; }
       header.colophon #top-nav .signin a:hover {
         background-image: url("/assets/images/signin-blue.png"); }
@@ -5232,7 +5231,7 @@ header.colophon {
         text-indent: -9999px; }
         header.colophon.scroll-header #top-nav li a:after {
           position: absolute;
-          right: 85px;
+          right: 11px;
           top: 4px;
           background-size: 22px; }
       header.colophon.scroll-header #top-nav a#ideaing-logo {
@@ -5272,16 +5271,13 @@ header.colophon {
   font-size: 1.4rem;
   color: #999; }
   #top-nav a.shop {
-    background: url("/assets/images/bag-grey.png") left center no-repeat;
-    background-size: 14px; }
+    background: url("/assets/images/bag-square-grey.png") left center no-repeat; }
     #top-nav a.shop:hover {
-      background-image: url("/assets/images/bag-blue.png"); }
+      background-image: url("/assets/images/bag-square-blue.png"); }
   #top-nav a.pros {
-    background: url("/assets/images/pro-grey.png") left center no-repeat;
-    background-size: 14px; }
+    background: url("/assets/images/pro-grey.png") left center no-repeat; }
   #top-nav a.disc {
-    background: url("/assets/images/chat-grey.png") left center no-repeat;
-    background-size: 14px; }
+    background: url("/assets/images/chat-grey.png") left center no-repeat; }
     #top-nav a.disc:hover {
       background-image: url("/assets/images/chat-picton.png"); }
   #top-nav a:hover {
@@ -5383,7 +5379,7 @@ header.colophon {
     display: none;
     position: absolute;
     width: 200px;
-    right: 20%;
+    right: -4%;
     top: 40px;
     padding: 0;
     z-index: 10;
@@ -5634,8 +5630,8 @@ header.sub-head {
   overflow: visible;
   float: left;
   width: 100%;
-  border-top: 1px solid #d5dfdf;
-  border-bottom: 1px solid #d5dfdf; }
+  border-top: 1px solid #EFEFEF;
+  border-bottom: 1px solid #EFEFEF; }
   #hero-nav ul {
     overflow: visible; }
   #hero-nav .category-nav {
@@ -5701,13 +5697,16 @@ header.sub-head {
     #hero-nav a:not(.author).kitchen-link {
       background-image: url("/assets/images/pot-outline.png"); }
   #hero-nav li.active a:not(.home-link)::after {
-    content: '▲';
+    content: ' ';
+    width: 17px;
+    height: 19px;
+    display: block;
     font-size: 1.7rem;
     position: absolute;
-    bottom: -12px;
+    bottom: -13px;
     right: 38%;
     color: #fff;
-    text-shadow: -1px -1px 0 #d5dfdf, 1px -1px 0 #d5dfdf, -1px 1px 0 #fff, 1px 1px 0 #fff; }
+    background: white url("/assets/images/pointer-arrow-grey.png") no-repeat; }
   #hero-nav li.active a.home-link {
     color: #FF0042;
     background-image: url("/assets/images/house-pink.png");
@@ -5939,10 +5938,8 @@ footer.about-footer {
     padding-right: 10px; }
     #mid-nav a.more-link {
       background-size: contain !important; }
-    #mid-nav a:hover {
-      background-size: contain !important; }
-  #mid-nav .extra-nav {
-    right: 16%; }
+  #mid-nav > a:hover, #mid-nav .extra-nav > a:hover {
+    background-size: contain !important; }
 
   .why-us {
     margin-top: 0; } }
