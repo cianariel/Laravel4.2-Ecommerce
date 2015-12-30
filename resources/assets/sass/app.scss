@@ -1811,7 +1811,7 @@ header.colophon{
       position: fixed;
       top: 0;
       width: 100%;
-      z-index: 10;
+      z-index: 30;
       background: #fff;
       border-bottom: 1px solid lighten($light-grey, 10%);
 
@@ -3354,7 +3354,31 @@ footer.about-footer{
 
   }
 
+  #hero-nav{
+    padding-left: 0;
+    & > .container{
+      padding-left: 0;
+    }
+  }
 
+
+  .slider-side-block{
+    width: 190px;
+    padding: 0px;
+
+    .top{
+      height: auto;
+
+    }
+    .vendor-logo, .get{
+      margin: 10px auto;
+      display: block;
+    }
+    .price{
+      width: 100%;
+      text-align: center;
+    }
+  }
 
 
 }
@@ -3453,6 +3477,7 @@ footer.about-footer{
       }
     }
   }
+
 
 }
 
