@@ -435,7 +435,7 @@
         </article>
 
 
-        <section class="comments pale-grey-bg">
+        <section class="comments">
             <div class="container">
                 <h4>211 Comments</h4>
 

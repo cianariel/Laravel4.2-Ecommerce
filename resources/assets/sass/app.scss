@@ -1419,10 +1419,10 @@ article.product{
   .reviews{
     margin-bottom: 0;
   }
-  & + .comments{
-    margin-top: 0;
-    padding-top: 70px;
-  }
+  //& + .comments{
+  //  margin-top: 0;
+  //  padding-top: 70px;
+  //}
 
 }
 
@@ -2807,6 +2807,7 @@ header.sub-head{
 
   h4{
     margin-bottom: 80px;
+    text-align: center;
   }
 
   .single-comment{
@@ -2883,6 +2884,7 @@ header.sub-head{
     .wrap{
       width: 100%;
       border-radius: 3px;
+      background: #eee;
     }
 
     img{

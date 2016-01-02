@@ -5214,9 +5214,6 @@ article.product {
       font-size: 5rem; }
   article.product .reviews {
     margin-bottom: 0; }
-  article.product + .comments {
-    margin-top: 0;
-    padding-top: 70px; }
 
 .reviews h6 {
   font-size: 1.2rem; }
@@ -6063,7 +6060,8 @@ header.sub-head {
     color: #c1c1c1; }
 
 .comments h4 {
-  margin-bottom: 80px; }
+  margin-bottom: 80px;
+  text-align: center; }
 .comments .single-comment {
   min-height: 100%;
   overflow: hidden;
@@ -6109,7 +6107,8 @@ header.sub-head {
     cursor: pointer; }
     .related-items .grid-box .wrap {
       width: 100%;
-      border-radius: 3px; }
+      border-radius: 3px;
+      background: #eee; }
     .related-items .grid-box img {
       width: 100%;
       border-radius: 3px;
