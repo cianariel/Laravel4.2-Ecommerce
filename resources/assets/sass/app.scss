@@ -1365,6 +1365,7 @@ main.page-content{
       overflow: visible;
 
       & > img{
+       min-height: 450px;
        border: 1px solid $pale-grey;
       }
     }
@@ -3913,6 +3914,7 @@ footer.about-footer{
       img{
         border-radius: 0 !important;
         border-bottom: 1px solid #eee;
+        min-height: 0;
       }
     }
 
@@ -3921,6 +3923,8 @@ footer.about-footer{
         padding-left: 20px;
       }
     }
+
+
 
   }
 

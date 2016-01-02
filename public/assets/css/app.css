@@ -5193,6 +5193,7 @@ main.page-content .card {
     .grid-box.big-box .img-wrap {
       overflow: visible; }
       .grid-box.big-box .img-wrap > img {
+        min-height: 450px;
         border: 1px solid #f2f5f5; }
     .grid-box.big-box .like-wrap {
       padding-left: 45px;
@@ -6682,7 +6683,8 @@ footer.about-footer {
       border-bottom: 1px solid #eee !important; }
       .grid-box .img-wrap img {
         border-radius: 0 !important;
-        border-bottom: 1px solid #eee; }
+        border-bottom: 1px solid #eee;
+        min-height: 0; }
     .grid-box.big-box datetime {
       padding-left: 20px; }
 

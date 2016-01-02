@@ -98,74 +98,64 @@
             </div>
 
 
-                <div class="col-xs-6 grid-box full-620">
-                    <div class="img-wrap">
-                        <img class="img-responsive" src="/assets/images/dummies/box-image-dummy.png">
-                        <a href="#" class="overlay-tag category-tag top product">Category: Products</a>
-
-                        <div class="color-overlay">
-                            <b class="price">$199</b>
-                            <img class="vendor-logo" src="/assets/images/dummies/amazon.png">
-                            <div class="get solid">Get it</div>
-                            <h4>Venetian Louge Suite</h4>
-                        </div>
-                    </div>
-                    <div class="like-wrap">
-                        <a href="#" class="social-pic likes">157</a>
-                        <a href="#" class="social-pic comment">89</a>
-                    </div>
-                    <datetime>21 Dec 2015</datetime>
-
-                </div>
-
-
-
-                <div class="col-xs-6 grid-box full-620">
-                    <div class="img-wrap">
-                        <img class="img-responsive" src="/assets/images/dummies/img-small.jpg">
-                        <a href="#" class="overlay-tag category-tag top product">Category: Products</a>
-                        <div class="color-overlay">
-                            <b class="price">$199</b>
-                            <img class="vendor-logo" src="/assets/images/dummies/amazon.png">
-                            <div class="get solid">Get it</div>
-                            <h4>Venetian Louge Suite</h4>
-                        </div>
-                    </div>
-                    <div class="like-wrap">
-                        <a href="#" class="social-pic likes">157</a>
-                        <a href="#" class="social-pic comment">89</a>
-                    </div>
-                    <datetime>21 Dec 2015</datetime>
-
-
-                </div>
-
-         <?php    print_r($stories); ?>
-
-            @foreach($stories as $story)
-
-            <div class="col-xs-12 grid-box big-box full-620">
+            <div class="col-xs-6 grid-box full-620">
                 <div class="img-wrap">
-                    <img class="img-responsive" src="{{$story['image']}}">
-                    <a href="{{$story['url']}}" class="overlay-tag category-tag top idea">Style</a>
-                    <a href="#" class="overlay-tag bottom author">Get it</a>
+                    <img class="img-responsive" src="/assets/images/dummies/box-image-dummy.png">
+                    <a href="#" class="overlay-tag category-tag top product">Category: Products</a>
 
-                    <div class="like-wrap">
-                        <a href="#" class="social-pic likes">Like it</a>
-                        <a href="#" class="social-pic comment">Comment</a>
+                    <div class="color-overlay">
+                        <b class="price">$199</b>
+                        <img class="vendor-logo" src="/assets/images/dummies/amazon.png">
+                        <div class="get solid">Get it</div>
+                        <h4>Venetian Louge Suite</h4>
                     </div>
-
-                    <a href="#" class="overlay-tag bottom featured-badge big">
-                        Featured
-                    </a>
                 </div>
-                <h3><a href="{{$story['url']}}">{{$story['title']}}</a> </h3>
-                <datetime>{{date('h m - d M y', strtotime($story['pubdate']))}}
-                </datetime>
+                <div class="like-wrap">
+                    <a href="#" class="social-pic likes">157</a>
+                    <a href="#" class="social-pic comment">89</a>
+                </div>
+                <datetime>1 hour ago</datetime>
+
             </div>
 
-            @endforeach
+            <div class="col-xs-6 grid-box full-620">
+                <div class="img-wrap">
+                    <img class="img-responsive" src="/assets/images/dummies/img-small.jpg">
+                    <a href="#" class="overlay-tag category-tag top product">Category: Products</a>
+                    <div class="color-overlay">
+                        <b class="price">$199</b>
+                        <img class="vendor-logo" src="/assets/images/dummies/amazon.png">
+                        <div class="get solid">Get it</div>
+                        <h4>Venetian Louge Suite</h4>
+                    </div>
+                </div>
+                <div class="like-wrap">
+                    <a href="#" class="social-pic likes">157</a>
+                    <a href="#" class="social-pic comment">89</a>
+                </div>
+                <datetime>5 hours ago</datetime>
 
+
+            </div>
+
+                @foreach($stories as $story)
+                    <div class="col-xs-12 grid-box big-box full-620">
+                        <div class="img-wrap">
+                            <img class="img-responsive" src="{{$story->image}}">
+                            <a href="#" class="overlay-tag category-tag top idea">Style</a>
+                            <a href="#" class="overlay-tag bottom author" style="background-image: url({{$story->avator}})">{{$story->author}}</a>
+                            <div class="like-wrap">
+                                <a href="#" class="social-pic likes">Like it</a>
+                                <a href="#" class="social-pic comment">Comment</a>
+                            </div>
+                            <a href="#" class="overlay-tag bottom featured-badge big">
+                                Featured
+                            </a>
+                        </div>
+                        <h3><a href="{{$story->url}}">{{$story->title}}</a></h3>
+                        <datetime>{{$story->date}}</datetime>
+                    </div>
+                @endforeach
 
             <div class="col-xs-12 grid-insert pale-grey-bg">
                 <h4><a href="#">550.230 Kitchen Design Photos</a></h4>
@@ -184,72 +174,60 @@
                 <h4>Top Products</h4>
 
                 <div class="grid-box sidebar-box">
+                    <a href="#" class="overlay-tag top-left-corner number">1</a>
                     <div class="img-wrap">
                         <img class="img-responsive" src="/assets/images/dummies/img-small.jpg">
-                        <a href="#" class="overlay-tag top-left-corner number">1</a>
                         <a class="sidebar-social-counter like">31</a>
                     </div>
                     <h5><a href="#">4 Tier wood utility</a></h5>
-                    {{--<ul class="box-tags">--}}
-                    {{--<li class="box-tag"><a>Products</a></li>--}}
-                    {{--</ul>--}}
-                    {{--<a class="sidebar-social-counter like">31</a>--}}
                 </div>
             </section>
             <section class="sidebar-category ideas">
                 <h4>Top Ideas</h4>
 
                 <div class="grid-box sidebar-box">
+                    <a href="#" class="overlay-tag top-left-corner number">1</a>
                     <div class="img-wrap">
                         <img class="img-responsive" src="/assets/images/dummies/box-image-dummy.png">
-                        <a href="#" class="overlay-tag top-left-corner number">1</a>
                         <a class="sidebar-social-counter like">31</a>
                     </div>
                     <h5><a href="#">4 Tier wood utility</a></h5>
-                    {{--<ul class="box-tags">--}}
-                    {{--<li class="box-tag"><a>Products</a></li>--}}
-                    {{--</ul>--}}
                 </div>
             </section>
             <section class="sidebar-category photos">
                 <h4>Top Photos</h4>
 
                 <div class="grid-box sidebar-box">
+                    <a href="#" class="overlay-tag top-left-corner number">1</a>
                     <div class="img-wrap">
                         <img class="img-responsive" src="/assets/images/dummies/img-small.jpg">
-                        <a href="#" class="overlay-tag top-left-corner number">1</a>
                         <a class="sidebar-social-counter like">31</a>
                     </div>
                     <h5><a href="#">4 Tier wood utility</a></h5>
-                    {{--<ul class="box-tags">--}}
-                    {{--<li class="box-tag"><a>Products</a></li>--}}
-                    {{--</ul>--}}
                 </div>
             </section>
 
-            <section id="side-filters" class="side-filters pale-grey-bg pale-grey-border">
-                <div>
-                    <h5>Ideas</h5>
-                    <input type="checkbox" name="dyi" id="dyi"> <label for="dyi"><span></span>DIY</label>
-                    <input type="checkbox" name="best-buys" id="best-buys"> <label for="best-buys"><span></span>Best Buys</label>
-                    <input type="checkbox" name="declutter" id="declutter"> <label for="declutter"><span></span>Declutter</label>
-                </div>
-                <div>
-                    <h5>Products</h5>
-                    <input type="checkbox" name="cheap" id="cheap"> <label for="cheap"><span></span>Under $50</label>
-                    <input type="checkbox" name="top" id="top"> <label for="top"><span></span>Top</label>
-                    <input type="checkbox" name="stuff" id="stuff"> <label for="stuff"><span></span>Stuff</label>
-                </div>
-                <div>
-                    <h5>Photos</h5>
-                    <input type="checkbox" name="hd" id="hd"> <label for="hd"><span></span>HD (1920px and above)</label>
-                    <input type="checkbox" name="md" id="md"> <label for="md"><span></span>MD (1920px and above)</label>
-                    <input type="checkbox" name="anysize" id="anysize"> <label for="anysize"><span></span>Any sizes</label>
-                </div>
+            {{--<section id="side-filters" class="side-filters pale-grey-bg pale-grey-border">--}}
+            {{--<div>--}}
+            {{--<h5>Ideas</h5>--}}
+            {{--<input type="checkbox" name="dyi" id="dyi"> <label for="dyi"><span></span>DIY</label>--}}
+            {{--<input type="checkbox" name="best-buys" id="best-buys"> <label for="best-buys"><span></span>Best Buys</label>--}}
+            {{--<input type="checkbox" name="declutter" id="declutter"> <label for="declutter"><span></span>Declutter</label>--}}
+            {{--</div>--}}
+            {{--<div>--}}
+            {{--<h5>Products</h5>--}}
+            {{--<input type="checkbox" name="cheap" id="cheap"> <label for="cheap"><span></span>Under $50</label>--}}
+            {{--<input type="checkbox" name="top" id="top"> <label for="top"><span></span>Top</label>--}}
+            {{--<input type="checkbox" name="stuff" id="stuff"> <label for="stuff"><span></span>Stuff</label>--}}
+            {{--</div>--}}
+            {{--<div>--}}
+            {{--<h5>Photos</h5>--}}
+            {{--<input type="checkbox" name="hd" id="hd"> <label for="hd"><span></span>HD (1920px and above)</label>--}}
+            {{--<input type="checkbox" name="md" id="md"> <label for="md"><span></span>MD (1920px and above)</label>--}}
+            {{--<input type="checkbox" name="anysize" id="anysize"> <label for="anysize"><span></span>Any sizes</label>--}}
+            {{--</div>--}}
 
-                {{--<a class="btn btn-success col-xs-12">Apply Filters</a>--}}
-                {{--<a class="btn-none col-xs-12">Cancel</a>--}}
-            </section>
+            {{--</section>--}}
         </aside>
     </div>
 

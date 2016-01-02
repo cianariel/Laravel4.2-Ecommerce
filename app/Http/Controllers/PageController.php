@@ -17,20 +17,22 @@ class PageController extends Controller
      */
     public function home()
     {
-        $feed = new \FeedParser();
+        //URL of targeted site
+        $url = "http://ideaing.dev/blog/feeds/index.php?count=8&category-id=1";
+        $ch = curl_init();
 
-        //   function parseFeed($onlyData = false,$feedCount = 0) chk default value
-        //   onlyData "true" returns raw post data and "false" returns blog name , title, link
-        //   feedCount set the number of total required feed, 0 will pull all posts
-        $stories = $feed->parseFeed(true,4,true);
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_HEADER, 0);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
-        // TODO - time posted should be '1 hours ago' etc
-        // TODO - we need to control the number of posts fetched
 
-        // TODO - in the future we need to intermix stories and products in one array, so they are output randomly on the page
+        $json = curl_exec($ch);
+        $stories = json_decode($json);
 
-       // return $data;
+        curl_close($ch);
 
+//        print_r($stories); die();
+        // return $data;
         return view('home')->with('stories', $stories);// $data->parseFeed(true,2);
     }
 
