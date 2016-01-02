@@ -2,18 +2,26 @@
 
     namespace App\Http\Controllers;
 
+
     use Illuminate\Http\Request;
 
     use App\Http\Requests;
     use App\Http\Controllers\Controller;
     use App\Models\Product;
+    use App\Models\Media;
+    use Illuminate\Contracts\Filesystem\Factory;
 
     class ProductController extends ApiController {
 
         public function __construct()
         {
             // Apply the jwt.auth middleware to all methods in this controller
-            $this->middleware('jwt.auth', ['except' => ['publishProduct','searchProductByName', 'updateProductInfo', 'getAllProductList', 'getProductById', 'isPermalinkExist', 'addProduct']]);
+            $this->middleware('jwt.auth',
+                ['except' => [
+                'publishProduct', 'searchProductByName', 'updateProductInfo',
+                    'getAllProductList', 'getProductById', 'isPermalinkExist',
+                    'addProduct','addMediaForProduct'
+                ]]);
             $this->product = new Product();
         }
 
@@ -131,7 +139,7 @@
 
                 $newProduct = $this->product->updateProductInfo($inputData);
 
-               // dd($newProduct);
+                // dd($newProduct);
                 return $this->setStatusCode(\Config::get("const.api-status.success"))
                     ->makeResponse($newProduct);
             } catch (Exception $ex)
@@ -151,19 +159,19 @@
             {
                 $inputData = \Input::all();
 
-                $tempInputData = $inputData ;
+                $tempInputData = $inputData;
                 $tempInputData['Specifications'] = null;
                 $tempInputData['SimilarProductIds'] = null;
                 $tempInputData['Review'] = null;
 
                 $validationRules = [
                     'rules'  => [
-                        'Name' => 'required',
+                        'Name'         => 'required',
                         'Permalink'    => 'required',
                         'selectedItem' => 'required'
                     ],
                     'values' => [
-                        'Name' => isset($tempInputData['Name']) ? $tempInputData['Name'] : null,
+                        'Name'         => isset($tempInputData['Name']) ? $tempInputData['Name'] : null,
                         'Permalink'    => isset($tempInputData['Permalink']) ? $tempInputData['Permalink'] : null,
                         'selectedItem' => isset($tempInputData['CategoryId']) ? $tempInputData['CategoryId'] : null
                     ]
@@ -171,7 +179,7 @@
 
                 list($productData, $validator) = $this->inputValidation($tempInputData, $validationRules);
 
-                $productData['Specifications'] = $inputData['Specifications'] ;
+                $productData['Specifications'] = $inputData['Specifications'];
                 $productData['SimilarProductIds'] = $inputData['SimilarProductIds'];
                 $productData['Review'] = $inputData['Review'];
 
@@ -180,8 +188,8 @@
                 if ($validator->passes())
                 {
                     $updatedProduct = $this->product->updateProductInfo($productData);
-                  //  $updatedProduct->post_status = 'Active';
-                 //   $updatedProduct->save();
+                    //  $updatedProduct->post_status = 'Active';
+                    //   $updatedProduct->save();
 
                     return $this->setStatusCode(\Config::get("const.api-status.success"))
                         ->makeResponse("Update Successful.");
@@ -210,10 +218,40 @@
 
 
         /**
-         *
+         * @param \Request $request
+         * @return array
          */
-        public function addMediaContent()
+        public function addMediaForProduct(Request $request)
         {
+
+            $in = \Input::all();
+
+           $result = $this->mediaUpload($request);
+            return $result;
+
+            $inputData = \Input::all();
+
+            $media = new Media();
+
+            $productId = isset($inputData['ProductId'])?$inputData['ProductId']:null;
+
+            $product = $this->product->where('id', $productId)->first();
+
+            $media['MediaType'] = isset($inputData['MediaType'])?$inputData['MediaType']:null;
+            $media['ProductId'] = isset($inputData['ProductId'])?$inputData['ProductId']:null;
+
+            try
+            {
+                $newMedia = $this->media->firstOrCreate([
+                    'media_name' => $media['MediaName'],
+                    'media_type' => $media['MediaType'],
+                    'media_link' => $media['MediaLink']
+                ]);
+            } catch (Exception $ex)
+            {
+
+            }
+
 
         }
 

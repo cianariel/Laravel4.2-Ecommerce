@@ -10,6 +10,9 @@
     use Illuminate\Http\Response as IlluminateResponse;
     use Illuminate\Support\Facades\Log;
     use Illuminate\Support\Collection;
+    use Illuminate\Support\Facades\Storage;
+    use Illuminate\Contracts\Filesystem\Factory;
+
     use JWTAuth;
     use FeedParser;
 
@@ -20,6 +23,7 @@
 
         public function __construct()
         {
+          //  $this->middleware('jwt.auth', ['except' => ['mediaUpload']]);
 
         }
 
@@ -110,7 +114,7 @@
 
             return $this->makeResponse([
                 'error' => [
-                    'message'     => $message,
+                    'message' => $message,
                 ]
             ]);
 
@@ -136,6 +140,50 @@
             ]);
 
             return $this->makeResponse($data);
+        }
+
+        // upload media content to S3
+        public function mediaUpload(\Request $request)
+        {
+            $fileResponse = [];
+            if (!$request->hasFile('file'))
+            {
+                $fileResponse['result'] = \Config::get("const.file.file-not-exist");
+                $fileResponse['status_code'] = \Config::get("const.api-status.validation-fail");
+                return $fileResponse;
+
+            } else if (!$request->file('file')->isValid())
+            {
+                $fileResponse['result'] = \Config::get("const.file.file-not-exist");
+                $fileResponse['status_code'] = \Config::get("const.api-status.validation-fail");
+                return $fileResponse;
+            } else if (in_array($request->file('file')->guessClientExtension(), array("jpeg", "jpg", "bmp", "png", "mp4", "avi", "mkv")))
+            {
+                $fileResponse['result'] =  \Config::get("const.file.file-not-exist");
+                $fileResponse['status_code'] = \Config::get("const.api-status.validation-fail");
+                return $fileResponse;
+            } else if ($request->file('file')->getClientSize() > \Config::get("const.file.file-max-size"))
+            {
+                $fileResponse['result'] = \Config::get("const.file.file-max-limit-exit");
+                $fileResponse['status_code'] = \Config::get("const.api-status.validation-fail");
+                return $fileResponse;
+            }else{
+                $fileName = 'product-'.$request->file('file')->getClientOriginalName().uniqid().$request->file('file')->getClientOriginalExtension();
+
+                // pointing filesystem to AWS S3
+                $s3 = Storage::disk('s3');
+
+                if($s3->put($fileName,file_get_contents($request->file('file')),'public'))
+                {
+                    $fileResponse['result'] = \Config::get("const.file.s3-path").$fileName;
+                    $fileResponse['status_code'] = \Config::get("const.api-status.success");
+                    return $fileResponse;
+                }
+
+            }
+
+
+
         }
 
 

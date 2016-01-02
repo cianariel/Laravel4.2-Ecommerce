@@ -32,7 +32,8 @@
                 <div class="panel panel-default" ng-init="loadAddProduct()">
                     <div class="panel-heading"> Basic Form Elements</div>
                     <div class="panel-body">
-                        <form role="form">
+                  {{--    <form role="form" enctype="multipart/form-data" >--}}
+                        {!! Form::open(array('url'=>'/api/product/media-upload/','method'=>'POST', 'files'=>true)) !!}
 
                             <div class="row">
                                 <div class="col-lg-6">
@@ -126,7 +127,8 @@
                                                                 <label>Selected Category: @{{ selectedItem }}</label>
 
                                                                 <button ng-click="hideCategoryPanel = !hideCategoryPanel"
-                                                                        tooltip-placement="right" uib-tooltip="Reset Category"
+                                                                        tooltip-placement="right"
+                                                                        uib-tooltip="Reset Category"
                                                                         class="btn btn-warning btn-circle">
                                                                     <i class="fa fa-refresh"></i>
                                                                 </button>
@@ -461,12 +463,21 @@
                                                             Inactive
                                                         </button>
                                                     </div>
-
                                                 </div>
+
+
                                                 <div class="tab-pane fade" id="media">
                                                     <h4>Image Video upload</h4>
 
-                                                    <p> Work in progress !</p>
+                                                    <div class="row">
+                                                        <div class="form-group">
+                                                            <input type="file" name="media" id="exampleInputFile" file-model="productMedia">
+                                                            <button type="button" class="btn btn-default" ng-click="addMedia()">Add Media</button>
+                                                            <div class="col-sm-4 dropzone" id="my-awesome-dropzone"  dropzone="dropzoneConfig" >
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
 
@@ -477,8 +488,9 @@
                                 <!-- /.panel -->
 
                             </div>
+                        </form>
                     </div>
-                    </form>
+
                 </div>
                 <!-- /.col-lg-12 --                </div>
     >

@@ -19,7 +19,8 @@
     <link href="/assets/admin/css/sb-admin-2.css" rel="stylesheet">
     <link href="/assets/css/wysiwyg.style.css" rel="stylesheet">
     <link href="/assets/css/ng-tags-input.min.css" rel="stylesheet">
-
+    <link href="/assets/admin/css/dropzone-basic.min.css" rel="stylesheet">
+    <link href="/assets/admin/css/dropzone.min.css" rel="stylesheet">
     <!-- Custom Fonts -->
     <link href="/assets/admin/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
@@ -43,5 +44,6 @@
 
     <script src="/assets/js/vendor/ng-tags-input.min.js"></script>
 
+    <script src="/assets/admin/js/dropzone.min.js"></script>
 
 </head>

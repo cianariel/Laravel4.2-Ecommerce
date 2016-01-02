@@ -21,8 +21,56 @@ adminApp.directive('loading', ['$http', function ($http) {
 
 }]);
 
-adminApp.controller('AdminController', ['$scope', '$http', '$confirm', '$location', '$anchorScroll'
-    , function ($scope, $http, $confirm, $location, $anchorScroll) {
+adminApp.directive('dropzone',function(){
+    return function (scope, element, attrs) {
+        var config, dropzone;
+
+        // it should be false or will throw a uncaught js error "Dropzone already attached"
+        Dropzone.autoDiscover = false;
+
+        config = scope[attrs.dropzone];
+
+        // create a Dropzone for the element with the given options
+        dropzone = new Dropzone(element[0], config.options);
+
+
+        // bind the given event handlers
+        angular.forEach(config.eventHandlers, function (handler, event) {
+            dropzone.on(event, handler);
+        });
+    };
+});
+
+adminApp.directive('fileModel', ['$parse', function($parse){
+    return {
+        restrict: 'A',
+        link: function(scope, element, attrs){
+            var model = $parse(attrs.fileModel);
+            var modelSetter = model.assign;
+
+            element.bind('change', function(){
+                scope.$apply(function(){
+                    modelSetter(scope, element[0].files[0]);
+                })
+            })
+        }
+    }
+}]);
+
+adminApp.service('multipartForm', ['$http', function($http){
+    this.post = function(uploadUrl, data){
+        var fd = new FormData();
+        for(var key in data)
+            fd.append(key, data[key]);
+        $http.post(uploadUrl, fd, {
+            transformRequest: angular.indentity,
+            headers: { 'Content-Type': undefined }
+        });
+    }
+}]);
+
+adminApp.controller('AdminController', ['$scope', '$http', '$confirm', '$location', '$anchorScroll','multipartForm'
+    , function ($scope, $http, $confirm, $location, $anchorScroll,multipartForm) {
 
 
         // Initializing application
@@ -82,6 +130,12 @@ adminApp.controller('AdminController', ['$scope', '$http', '$confirm', '$locatio
 
 
         };
+
+        $scope.productMedia = {};
+        $scope.addMedia = function(){
+            var uploadUrl = '/api/product/media-upload';
+            multipartForm.post(uploadUrl, $scope.productMedia);
+        }
 
         // Add an Alert in a web application
         $scope.addAlert = function (alertType, message) {
@@ -308,7 +362,7 @@ adminApp.controller('AdminController', ['$scope', '$http', '$confirm', '$locatio
 
         // initialize product add view
         $scope.loadAddProduct = function () {
-            $scope.isCollapsed = false; // default false it false to show forced parmalink saviing mood.
+            $scope.isCollapsed = true; // default false it false to show forced parmalink saviing mood.
             $scope.isCollapsedToggle = !$scope.isCollapsed;
         };
         $scope.addProduct = function () {
@@ -514,6 +568,69 @@ adminApp.controller('AdminController', ['$scope', '$http', '$confirm', '$locatio
 
         }
 
+
+        // add dynamic fields for media content
+        $scope.dropzoneConfig = {
+
+            'options': { // passed into the Dropzone constructor
+                'url': '/api/product/media-upload/',
+                'maxFiles':1,
+            },
+            init: function() {
+          dz = $scope.this;
+                dz.on("maxfilesexceeded", function(file) {
+                    dz.removeAllFiles();
+                    dz.addFile(file);
+                });
+            },
+            'eventHandlers': {
+                'sending': function (file, xhr, formData) {
+                    console.log('sending file data');
+                },
+                'success': function (file, response) {
+                    console.log('file sending success');
+                }
+            }
+        };
+
+       /*
+
+
+        $scope.addReviewFormField = function () {
+            $scope.reviews.push(
+                {'key': $scope.reviewKey, 'value': $scope.reviewValue}
+            );
+            $scope.reviewKey = '';
+            $scope.reviewValue = '';
+            $scope.calculateAvg();
+
+        }
+
+        $scope.deleteReviewFormField = function (index) {
+            $scope.reviews.splice(index, 1);
+            $scope.calculateAvg();
+        }
+
+        $scope.editReviewFormField = function (index) {
+            $scope.$index = index;
+            $scope.reviewKey = $scope.reviews[index].key;
+            $scope.reviewValue = $scope.reviews[index].value;
+            $scope.isUpdateReviewShow = true;
+            $scope.calculateAvg();
+
+        }
+        $scope.updateReviewFormField = function () {
+            $scope.reviews[$scope.$index].key = $scope.reviewKey;
+            $scope.reviews[$scope.$index].value = $scope.reviewValue;
+            $scope.isUpdateReviewShow = false;
+
+            $scope.reviewKey = '';
+            $scope.reviewValue = '';
+            $scope.calculateAvg();
+        }
+*/
+
+
         // view product list
         $scope.showAllProduct = function () {
             $http({
@@ -549,6 +666,9 @@ adminApp.controller('AdminController', ['$scope', '$http', '$confirm', '$locatio
             });
 
         }
+
+
+        //todo update the loadProductData after implementing media uploading
 
         $scope.loadProductData = function (id) {
             //console.log("ID IS:"+id);

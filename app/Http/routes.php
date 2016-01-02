@@ -19,7 +19,23 @@
      {
          var_dump($query);
      });*/
-    
+
+    use Illuminate\Http\Request;
+    Route::any('api/product/media-upload', function (Request $request ) // temp, used for tweaking frontend
+    {
+
+       /*dd( $_FILES['name']);
+         $request->all();
+        \Input::hasFile('file');*/
+$i = \Input::all();
+      dd(\Input::file($i['name']) )  ;
+        //dd()re;
+        //return $request->hasFile('name')?"file exists":"no file";
+       // return $request->file('name')->getClientMimeType();
+
+       // return response($request->files(),200);
+    });
+
 
 //    Route::get('/', 'PageController@home');
 
@@ -57,6 +73,16 @@
 
         Route::post('secure-page', 'AuthenticateController@securePage');
         Route::any('logout', 'AuthenticateController@logOut');
+
+        /*
+         * Media upload route
+         *
+         * */
+       // Route::post('media-upload', 'ApiController@mediaUpload');
+
+        //Route::any('product/media-upload', 'ProductController@addMediaForProduct');
+
+
 
         /*
          * Product Category route collection
