@@ -688,13 +688,13 @@ nav{
       height: 40px;
 
       &.rsThumbsArrowLeft{
-        background:#fff url('/assets/images/arrow-up-pink.png') center no-repeat;
+        background:url('/assets/images/arrow-up-pink.png') center no-repeat;
         background-size: contain;
 
       }
 
       &.rsThumbsArrowRight{
-        background:#fff url('/assets/images/icons/arrow-down-pink.png') center no-repeat;
+        background:url('/assets/images/icons/arrow-down-pink.png') center no-repeat;
         background-size: contain;
 
         //bottom: 0 !important;
@@ -861,7 +861,14 @@ nav{
       color: $tarmac;
       padding: 10px 0;
       background: url('/assets/images/elements/grey-line.png') center repeat-x;
+      a{
+        color: $tarmac;
+        &:hover{
+          color: $facebook-blue;
+        }
+      }
     }
+
     .name{
       padding: 0 10px;
       background: #F7F7F7;
@@ -874,6 +881,10 @@ nav{
       background: #fff;
       border: 1px solid $light-grey;
       font-size: inherit;
+
+      &:hover{
+        color: $facebook-blue;
+      }
     }
   }
 
@@ -1960,7 +1971,7 @@ header.colophon{
   }
 
   h1{
-    width: 65%;
+    width: 50%;
     padding-left: 10px;
     float: left;
     margin-left: 3%;
@@ -2004,7 +2015,9 @@ header.colophon{
     color: $iridium;
   }
 
-
+  .price{
+    font-size: 1.6rem;
+  }
 }
 
 

@@ -1,6 +1,34 @@
 @extends('layouts.main')
 
 @section('content')
+    <header class="story-header hidden-620 hidden-soft" >
+        <a href="#" class="side-logo lamp-logo">
+        </a>
+        <h1>Nest Protect (Second Generation)</h1>
+
+        <div class="col-xs-3">
+            <div class="get solid">Get it</div>
+            <img class="vendor-logo" src="/assets/images/dummies/amazon-2.png">
+            <b class="price">$199</b>
+        </div>
+
+
+        <ul class="social-rounds hidden-sm hidden-xs">
+            <li><a class="fb" href="#"></a></li>
+            <li><a class="twi" href="#"></a></li>
+            <li><a class="gp" href="#"></a></li>
+            <li><a class="pint" href="#"></a></li>
+        </ul>
+
+        <ul class="like-nav hidden-xs pull-right">
+            <li><a class="like-counter" href="#">189</a></li>
+            <!--                <li><a class="author" href="#"></a></li>-->
+            <!--                <li><a class="author" href="#"></a></li>-->
+            <!--                <li><a class="author" href="#"></a></li>-->
+            <!--                <li><a class="likes" href="#">and 186 others</a></li>-->
+        </ul>
+    </header>
+
     <section id="hero" class="product-hero">
         <div class="hero-background" style="background-image: url('/assets/images/dummies/product-hero.jpg')"></div>
         <div class="color-overlay"></div>
@@ -23,10 +51,10 @@
 
             <nav class="top-product-controls">
                 <ul>
-                    <li><a class="get-alerts">Get alerts</a></li>
+                    <li><a href="#" class="get-alerts">Get alerts</a></li>
                     {{--<li><a class="compare">99</a></li>--}}
-                    <li><a class="likes">768</a></li>
-                    <li><a class="comments">1.2K</a></li>
+                    <li><a href="#" class="likes">768</a></li>
+                    <li><a href="#" class="comments">1.2K</a></li>
                 </ul>
             </nav>
 
@@ -148,16 +176,22 @@
                     <div class="table">
                         <ul>
                             <li>
-                                <span class="name">Amazon</span>
-                                <span class="price">$500.99</span>
+                                <a href="#">
+                                    <span class="name">Amazon</span>
+                                    <span class="price">$500.99</span>
+                                </a>
                             </li>
                             <li>
-                                <span class="name">Bose</span>
-                                <span class="price">$375.99</span>
+                                <a href="#">
+                                    <span class="name">Bose</span>
+                                    <span class="price">$375.99</span>
+                                </a>
                             </li>
                             <li>
-                                <span class="name">Ebay</span>
-                                <span class="price">$400.99</span>
+                                <a href="#">
+                                    <span class="name">Ebay</span>
+                                    <span class="price">$400.99</span>
+                                </a>
                             </li>
                         </ul>
                     </div>

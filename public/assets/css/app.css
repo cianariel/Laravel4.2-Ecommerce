@@ -4801,10 +4801,10 @@ nav a {
   width: 40px;
   height: 40px; }
   .slider.product-slider .rsThumbsArrow.rsThumbsArrowLeft {
-    background: white url("/assets/images/arrow-up-pink.png") center no-repeat;
+    background: url("/assets/images/arrow-up-pink.png") center no-repeat;
     background-size: contain; }
   .slider.product-slider .rsThumbsArrow.rsThumbsArrowRight {
-    background: white url("/assets/images/icons/arrow-down-pink.png") center no-repeat;
+    background: url("/assets/images/icons/arrow-down-pink.png") center no-repeat;
     background-size: contain;
     top: 33.5%; }
 
@@ -4883,6 +4883,10 @@ nav a {
       color: #3d4b4e;
       padding: 10px 0;
       background: url("/assets/images/elements/grey-line.png") center repeat-x; }
+      .slider-side-block .table li a {
+        color: #3d4b4e; }
+        .slider-side-block .table li a:hover {
+          color: #079dd1; }
     .slider-side-block .table .name {
       padding: 0 10px;
       background: #F7F7F7; }
@@ -4894,6 +4898,8 @@ nav a {
       background: #fff;
       border: 1px solid #c1c1c1;
       font-size: inherit; }
+      .slider-side-block .table .price:hover {
+        color: #079dd1; }
 
 .logo-wrap a {
   padding: 0; }
@@ -5543,7 +5549,7 @@ header.colophon {
     background-size: initial;
     margin-top: -14px; }
   .story-header h1 {
-    width: 65%;
+    width: 50%;
     padding-left: 10px;
     float: left;
     margin-left: 3%;
@@ -5571,6 +5577,8 @@ header.colophon {
       background-position: center; }
   .story-header .likes {
     color: #ff0042; }
+  .story-header .price {
+    font-size: 1.6rem; }
 
 #mid-nav, #mid-nav .extra-nav {
   min-height: 47px; }
