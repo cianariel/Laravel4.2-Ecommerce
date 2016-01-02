@@ -126,47 +126,47 @@
                             });
 
                         }
-                    });
+                    }); 
                 </script>
 
                 <div id="gallery" class="royalSlider rsDefault">
 
-                    <a class="rsImg" data-rsbigimg="http://freshbangkok.com/wp-content/uploads/2015/12/PC220020-1024x683.jpg" href="http://freshbangkok.com/wp-content/uploads/2015/12/PC220020-1024x683.jpg">
-                        <img  itemprop="image" class="rsTmb" src="http://freshbangkok.com/wp-content/uploads/2015/12/PC220020-150x150.jpg">
+                    <a class="rsImg" data-rsbigimg="/assets/images/dummies/slider/PC220020-1024x683.jpg" href="/assets/images/dummies/slider/PC220020-1024x683.jpg">
+                        <img  itemprop="image" class="rsTmb" src="/assets/images/dummies/slider/PC220020-1024x683.jpg"> 
                     </a>
 
-                    <a class="rsImg" data-rsbigimg="http://freshbangkok.com/wp-content/uploads/2015/12/PC220024-1024x683.jpg" href="http://freshbangkok.com/wp-content/uploads/2015/12/PC220024-1024x683.jpg">
-                        <img  itemprop="image" class="rsTmb" src="http://freshbangkok.com/wp-content/uploads/2015/12/PC220024-150x150.jpg">
+                    <a class="rsImg" data-rsbigimg="/assets/images/dummies/slider/PC220024-1024x683.jpg" href="/assets/images/dummies/slider/PC220024-1024x683.jpg">
+                        <img  itemprop="image" class="rsTmb" src="/assets/images/dummies/slider/PC220024-1024x683.jpg">
                     </a>
 
-                    <a class="rsImg" data-rsbigimg="http://freshbangkok.com/wp-content/uploads/2015/12/PC220022-1024x683.jpg" href="http://freshbangkok.com/wp-content/uploads/2015/12/PC220022-1024x683.jpg">
-                        <img  itemprop="image" class="rsTmb" src="http://freshbangkok.com/wp-content/uploads/2015/12/PC220022-150x150.jpg">
+                    <a class="rsImg" data-rsbigimg="/assets/images/dummies/slider/PC220022-1024x683.jpg" href="/assets/images/dummies/slider/PC220022-1024x683.jpg">
+                        <img  itemprop="image" class="rsTmb" src="/assets/images/dummies/slider/PC220022-1024x683.jpg">
                     </a>
 
-                    <a class="rsImg" data-rsbigimg="http://freshbangkok.com/wp-content/uploads/2015/12/The-Next-Garden-Suite-112-6.jpg" href="http://freshbangkok.com/wp-content/uploads/2015/12/The-Next-Garden-Suite-112-6.jpg">
-                        <img  itemprop="image" class="rsTmb" src="http://freshbangkok.com/wp-content/uploads/2015/12/The-Next-Garden-Suite-112-6-150x150.jpg">
+                    <a class="rsImg" data-rsbigimg="/assets/images/dummies/slider/The-Next-Garden-Suite-112-6.jpg" href="/assets/images/dummies/slider/The-Next-Garden-Suite-112-6.jpg">
+                        <img  itemprop="image" class="rsTmb" src="/assets/images/dummies/slider/The-Next-Garden-Suite-112-6.jpg">
                     </a>
 
-                    <a class="rsImg" data-rsbigimg="http://freshbangkok.com/wp-content/uploads/2015/12/PC220019-1024x683.jpg" href="http://freshbangkok.com/wp-content/uploads/2015/12/PC220019-1024x683.jpg">
-                        <img  itemprop="image" class="rsTmb" src="http://freshbangkok.com/wp-content/uploads/2015/12/PC220019-150x150.jpg">
+                    <a class="rsImg" data-rsbigimg="/assets/images/dummies/slider/PC220019-1024x683.jpg" href="/assets/images/dummies/slider/PC220019-1024x683.jpg">
+                        <img  itemprop="image" class="rsTmb" src="/assets/images/dummies/slider/PC220019-1024x683.jpg">
                     </a>
 
-                    <a class="rsImg" data-rsbigimg="http://freshbangkok.com/wp-content/uploads/2015/12/PC220021-1024x683.jpg" href="http://freshbangkok.com/wp-content/uploads/2015/12/PC220021-1024x683.jpg">
-                        <img  itemprop="image" class="rsTmb" src="http://freshbangkok.com/wp-content/uploads/2015/12/PC220021-150x150.jpg">
+                    <a class="rsImg" data-rsbigimg="/assets/images/dummies/slider/PC220021-1024x683.jpg" href="/assets/images/dummies/slider/PC220021-1024x683.jpg">
+                        <img  itemprop="image" class="rsTmb" src="/assets/images/dummies/slider/PC220021-1024x683.jpg">
                     </a>
 
-                    <a class="rsImg" data-rsbigimg="http://freshbangkok.com/wp-content/uploads/2015/12/PC220026-1024x683.jpg" href="http://freshbangkok.com/wp-content/uploads/2015/12/PC220026-1024x683.jpg">
-                        <img  itemprop="image" class="rsTmb" src="http://freshbangkok.com/wp-content/uploads/2015/12/PC220026-150x150.jpg">
+                    <a class="rsImg" data-rsbigimg="/assets/images/dummies/slider/PC220026-1024x683.jpg" href="/assets/images/dummies/slider/PC220026-1024x683.jpg">
+                        <img  itemprop="image" class="rsTmb" src="/assets/images/dummies/slider/PC220026-1024x683.jpg">
                     </a>
 
-                    <a class="rsImg" data-rsbigimg="http://freshbangkok.com/wp-content/uploads/2015/12/PC220027-1024x683.jpg" href="http://freshbangkok.com/wp-content/uploads/2015/12/PC220027-1024x683.jpg">
-                        <img  itemprop="image" class="rsTmb" src="http://freshbangkok.com/wp-content/uploads/2015/12/PC220027-150x150.jpg">
+                    <a class="rsImg" data-rsbigimg="/assets/images/dummies/slider/PC220027-1024x683.jpg" href="/assets/images/dummies/slider/PC220027-1024x683.jpg">
+                        <img  itemprop="image" class="rsTmb" src="/assets/images/dummies/slider/PC220027-1024x683.jpg">
                     </a>
 
-                    <a class="rsImg" data-rsbigimg="http://freshbangkok.com/wp-content/uploads/2015/12/PC220025-1024x683.jpg" href="http://freshbangkok.com/wp-content/uploads/2015/12/PC220025-1024x683.jpg">
-                        <img  itemprop="image" class="rsTmb" src="http://freshbangkok.com/wp-content/uploads/2015/12/PC220025-150x150.jpg">
+                    <a class="rsImg" data-rsbigimg="/assets/images/dummies/slider/PC220025-1024x683.jpg" href="/assets/images/dummies/slider/PC220025-1024x683.jpg">
+                        <img  itemprop="image" class="rsTmb" src="/assets/images/dummies/slider/PC220025-1024x683.jpg">
                     </a>
-                    <img width="640" height="427" src="http://freshbangkok.com/wp-content/uploads/2015/12/PC2200201-1024x683.jpg" class="attachment-large wp-post-image" alt="OLYMPUS DIGITAL CAMERA" />
+                    <img width="640" height="427" src="/assets/images/dummies/slider/PC2200201-1024x683.jpg" class="attachment-large wp-post-image" alt="OLYMPUS DIGITAL CAMERA" />
                 </div>
 
                 <div class="slider-side-block">
@@ -229,8 +229,8 @@
                         </ul>
                     </aside>
 
-                    <section class="article-content">
-                        <p>
+                <section class="article-content col-lg-12 col-sm-11 pull-right">
+                <p>
                             Nest Cam and IFTTT, this $99/£89 detector is the best connected one we've seen yet. Nest Cam and IFTTT, this $99/£89 Nest Cam and IFTTT, this $99/£89.  Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur?  Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur?
                         </p>
                         <p>
