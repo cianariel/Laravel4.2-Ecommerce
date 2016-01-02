@@ -4842,13 +4842,21 @@ nav a {
       padding-left: 30px;
       background-position: left center;
       background-repeat: no-repeat; }
+      .top-product-controls li a:hover {
+        color: #ED295C; }
       .top-product-controls li a.get-alerts {
-        background-image: url("/assets/images/icons/bell-pink.png"); }
+        background-image: url("/assets/images/icons/bell-white.png"); }
+        .top-product-controls li a.get-alerts:hover {
+          background-image: url("/assets/images/icons/bell-pink.png"); }
       .top-product-controls li a.likes {
         background-image: url("/assets/images/icons/heart-white.png"); }
+        .top-product-controls li a.likes:hover {
+          background-image: url("/assets/images/icons/heart-pink.png"); }
       .top-product-controls li a.comments {
         background-image: url("/assets/images/icons/chat-white.png");
         padding-left: 40px; }
+        .top-product-controls li a.comments:hover {
+          background-image: url("/assets/images/icons/chat-pink.png"); }
 
 .rsThumbsArrow {
   background: #0000C2;
@@ -5557,12 +5565,14 @@ header.colophon {
     margin-top: 0;
     font-size: 2.1rem;
     text-align: center; }
-  .story-header .like-nav li {
-    padding-top: 0; }
-    .story-header .like-nav li a.like-counter {
-      padding-top: 0;
-      padding-right: 8px;
-      background-position: left top; }
+  .story-header .like-nav {
+    margin-top: 3px; }
+    .story-header .like-nav li {
+      padding-top: 0; }
+      .story-header .like-nav li a.like-counter {
+        padding-top: 0;
+        padding-right: 8px;
+        background-position: left top; }
   .story-header .social-rounds {
     float: right;
     width: 190px;
@@ -5579,7 +5589,11 @@ header.colophon {
   .story-header .likes {
     color: #ff0042; }
   .story-header .price {
-    font-size: 1.6rem; }
+    font-size: 1.75rem; }
+  .story-header .vendor-logo {
+    margin: 3px 15px 0; }
+  .story-header .icon-wrap {
+    padding-right: 35px; }
 
 #mid-nav, #mid-nav .extra-nav {
   min-height: 47px; }

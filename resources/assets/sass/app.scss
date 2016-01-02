@@ -807,15 +807,31 @@ nav{
       background-position: left center;
       background-repeat: no-repeat;
 
+      &:hover{
+        color: #ED295C;
+      }
+
       &.get-alerts{
-        background-image: url("/assets/images/icons/bell-pink.png");
+        background-image: url("/assets/images/icons/bell-white.png");
+
+        &:hover{
+          background-image: url("/assets/images/icons/bell-pink.png");
+        }
       }
       &.likes{
         background-image: url("/assets/images/icons/heart-white.png");
+
+        &:hover{
+          background-image: url("/assets/images/icons/heart-pink.png");
+        }
       }
       &.comments{
         background-image: url("/assets/images/icons/chat-white.png");
         padding-left: 40px;
+
+        &:hover{
+          background-image: url("/assets/images/icons/chat-pink.png");
+        }
       }
     }
   }
@@ -1981,12 +1997,15 @@ header.colophon{
     text-align: center;
   }
 
-  .like-nav li{
-    padding-top: 0;
-    a.like-counter {
+  .like-nav{
+    margin-top: 3px;
+    li{
       padding-top: 0;
-      padding-right: 8px;
-      background-position: left top;
+      a.like-counter {
+        padding-top: 0;
+        padding-right:8px;
+        background-position: left top;
+      }
     }
   }
   //.like-nav li a.author {
@@ -2017,7 +2036,15 @@ header.colophon{
   }
 
   .price{
-    font-size: 1.6rem;
+    font-size: 1.75rem;
+  }
+
+  .vendor-logo{
+    margin: 3px 15px 0;
+  }
+
+  .icon-wrap{
+    padding-right: 35px;
   }
 }
 
