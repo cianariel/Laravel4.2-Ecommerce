@@ -5221,7 +5221,7 @@ article.product {
   display: inline-block; }
   .reviews .score.critic-score {
     font-size: 7rem;
-    margin-top: 45px; }
+    margin-top: 10px; }
 .reviews .rating-lines {
   width: 100%; }
 .reviews tr {
@@ -6290,7 +6290,8 @@ header.sub-head {
   margin: 20px 0;
   border-radius: 10px; }
   .price-badge:hover {
-    color: #fff; }
+    color: #f2f2f2;
+    background: #7a007a; }
   .price-badge span {
     display: inline-block;
     float: left; }

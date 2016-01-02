@@ -1435,7 +1435,7 @@ article.product{
 
     &.critic-score{
       font-size: 7rem;
-      margin-top: 45px;
+      margin-top: 10px;
     }
   }
 
@@ -3162,7 +3162,8 @@ header.sub-head{
   border-radius: 10px;
 
   &:hover{
-    color: #fff;
+    color: darken(#fff, 5%);
+    background: darken($magenta, 7%);
   }
 
   span{
