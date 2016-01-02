@@ -206,9 +206,9 @@
             <ul class="category-nav full-620">
                 <li><a href="#" class="photos-link">Photos</a></li>
                 <li><a href="#" class="features-link">Features</a></li>
-                <li><a href="#" class="specs-link">Specs</a></li>
-                <li><a href="#" class="compare-link">Comparisons</a></li>
-                <li><a href="#" class="reviews-link">Reviews</a></li>
+                <li><a href="#" data-scrollto="#specs" class="specs-link">Specs</a></li>
+                <li><a href="#" data-scrollto="#compare" class="compare-link">Comparisons</a></li>
+                <li><a href="#" data-scrollto="#reviews" class="reviews-link">Reviews</a></li>
             </ul>
         </div>
     </nav>
@@ -245,7 +245,7 @@
                     </section>
                 </div>
 
-                    <section class="pale-grey-bg product-specs">
+                    <section class="pale-grey-bg product-specs" id="specs">
                         <div class="container">
 
                         <h3 class="green">Specifications</h3>
@@ -308,7 +308,7 @@
                     </div>
                     </section>
 
-                    <section class="comparison">
+                    <section class="comparison" id="compare">
                         <div class="container">
                             <h3 class="purple">Comparisons</h3>
 
@@ -419,7 +419,7 @@
                     </section>
                     <!-- TODO - use two (three?) columns -->
 
-            <section class="pale-grey-bg reviews">
+            <section class="pale-grey-bg reviews" id="reviews">
                 <div class="container full-620 fixed-sm">
                     <h3 class="pink">Reviews (4)</h3>
 

@@ -40,6 +40,15 @@
             return false;
         });
 
+        $('[data-scrollto]').click(function() {
+            var $scrollNode = $(this).data('scrollto');
+            var $scrollTo   = $($scrollNode);
+            var $offset     = $scrollTo.offset().top - 70;
+
+            $('html, body').animate({ scrollTop: $offset }, 'slow');
+            return false;
+        });
+
         $("li.nested").click(function() {
             $(this).find('ul').fadeToggle();
         });
