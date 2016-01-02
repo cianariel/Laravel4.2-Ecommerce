@@ -673,6 +673,7 @@ nav{
 
     .rsNav.rsThumbs.rsThumbsVer{
       width: 150px !important;
+      padding-left: 3px;
       //height: 390px;
     }
 
@@ -3051,18 +3052,17 @@ header.sub-head{
     }
     b{
       min-height: 61px;
-    }
-    b{
       display: block;
       padding: 20px 20px;
+    }
+    b:not(:last-child){
       border-bottom: 1px solid lighten($light-grey, 10%);
-
     }
   }
 
   .table-cells{
     .bordered{
-      border: 2px solid lighten($light-grey, 10%);
+      border: 1px solid lighten($light-grey, 10%);
       border-bottom-width: 1px;
       border-radius: 5px;
       margin-left: 5px;
@@ -3104,7 +3104,7 @@ header.sub-head{
 
 
   & > div:not(.bordered){
-    min-height: 575px;
+    min-height: 607px;
     position: relative;
     border: 1px solid lighten($light-grey, 15%);
     border-radius: 5px;
@@ -4008,6 +4008,7 @@ footer.about-footer{
 
   #hero{
     min-height: 450px;
+
     .why-us{
       padding-top: 70px;
 
@@ -4021,6 +4022,12 @@ footer.about-footer{
       }
     }
 
+  }
+
+  #hero-nav{
+    .container{
+      padding-left: 7%;
+    }
   }
 
   #top-nav .search-bar a{
@@ -4057,10 +4064,10 @@ footer.about-footer{
   .product-hero{
     .average-score{
       .score{
-        width: 55%;
+        width: 53%;
       }
       .caption{
-        width: 44%;
+        width: 47%;
       }
     }
     #gallery{
@@ -4360,14 +4367,13 @@ footer.about-footer{
     }
   }
 
-  #hero-nav a {
-    //padding-left: 4%;
-    padding-right: 4%;
-
-    //&.photos-link {
-    //  padding-left: 21px;
-    //}
-
+  #hero-nav{
+    a {
+      padding-right: 4%;
+    }
+    .container{
+      padding-left: 0;
+    }
   }
 
 }

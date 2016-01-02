@@ -4791,7 +4791,8 @@ nav a {
   height: 500px;
   overflow: hidden; }
 .slider.product-slider .rsNav.rsThumbs.rsThumbsVer {
-  width: 150px !important; }
+  width: 150px !important;
+  padding-left: 3px; }
 .slider.product-slider .rsThumbsContainer {
   max-height: 500px; }
 .slider.product-slider .rsThumbsArrow {
@@ -6212,14 +6213,14 @@ header.sub-head {
       min-height: 35px; }
     .comparison .table-heads b,
     .comparison .table-cells b {
-      min-height: 61px; }
-    .comparison .table-heads b,
-    .comparison .table-cells b {
+      min-height: 61px;
       display: block;
-      padding: 20px 20px;
+      padding: 20px 20px; }
+    .comparison .table-heads b:not(:last-child),
+    .comparison .table-cells b:not(:last-child) {
       border-bottom: 1px solid #dbdbdb; }
   .comparison .table-cells .bordered {
-    border: 2px solid #dbdbdb;
+    border: 1px solid #dbdbdb;
     border-bottom-width: 1px;
     border-radius: 5px;
     margin-left: 5px; }
@@ -6247,7 +6248,7 @@ header.sub-head {
 .comparison-tab {
   padding: 5px; }
   .comparison-tab > div:not(.bordered) {
-    min-height: 575px;
+    min-height: 607px;
     position: relative;
     border: 1px solid #e7e7e7;
     border-radius: 5px; }
@@ -6752,6 +6753,9 @@ footer.about-footer {
         padding-right: 10px;
         font-size: 1.5rem; }
 
+  #hero-nav .container {
+    padding-left: 7%; }
+
   #top-nav .search-bar a {
     width: 30px; }
 
@@ -6774,9 +6778,9 @@ footer.about-footer {
       float: none !important; }
 
   .product-hero .average-score .score {
-    width: 55%; }
+    width: 53%; }
   .product-hero .average-score .caption {
-    width: 44%; }
+    width: 47%; }
   .product-hero #gallery {
     height: 380px !important;
     overflow: hidden !important; }
@@ -6943,7 +6947,9 @@ footer.about-footer {
     font-size: 1.5rem; }
 
   #hero-nav a {
-    padding-right: 4%; } }
+    padding-right: 4%; }
+  #hero-nav .container {
+    padding-left: 0; } }
 @media screen and (max-width: 370px) {
   #top-nav a {
     width: 28px;
