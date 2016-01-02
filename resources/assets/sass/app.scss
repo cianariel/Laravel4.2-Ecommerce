@@ -1127,7 +1127,7 @@ main.page-content{
       margin-right: 17px;
 
       &.comment{
-        left: 35px;
+        left: 80px;
         color: $sky-blue;
         background: url("/assets/images/chat-blue-outline.png") 3px center no-repeat;
 
@@ -1211,7 +1211,7 @@ main.page-content{
       transition: border .6s;
 
     }
-    a{
+    a:not(.big-image-link){
       position: absolute;
       text-indent: -9999px;
     }
@@ -1364,7 +1364,7 @@ main.page-content{
     .img-wrap{
       overflow: visible;
 
-      & > img{
+      .big-image-link img{
        min-height: 450px;
        border: 1px solid $pale-grey;
       }
@@ -1414,7 +1414,7 @@ main.page-content{
       .img-wrap{
         border: 1px solid $sky-blue;
 
-        &> img{
+        .big-image-link img{
           border: 1px solid $sky-blue;
         }
       }

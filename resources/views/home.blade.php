@@ -141,7 +141,9 @@
                 @foreach($stories as $story)
                     <div class="col-xs-12 grid-box big-box full-620">
                         <div class="img-wrap">
-                            <img class="img-responsive" src="{{$story->image}}">
+                            <a href="{{$story->url}}" class="big-image-link">
+                                <img class="img-responsive" src="{{$story->image}}">
+                            </a>
                             <a href="#" class="overlay-tag category-tag top idea">Style</a>
                             <a href="#" class="overlay-tag bottom author" style="background-image: url({{$story->avator}})">{{$story->author}}</a>
                             <div class="like-wrap">

@@ -5047,7 +5047,7 @@ main.page-content .card {
       margin-top: 5px;
       margin-right: 17px; }
       .grid-box .like-wrap .social-pic.comment {
-        left: 35px;
+        left: 80px;
         color: #00b1ff;
         background: url("/assets/images/chat-blue-outline.png") 3px center no-repeat; }
         .grid-box .like-wrap .social-pic.comment:hover {
@@ -5093,7 +5093,7 @@ main.page-content .card {
     .grid-box .img-wrap > img {
       min-height: 237px;
       transition: border .6s; }
-    .grid-box .img-wrap a {
+    .grid-box .img-wrap a:not(.big-image-link) {
       position: absolute;
       text-indent: -9999px; }
     .grid-box .img-wrap .get-it {
@@ -5192,7 +5192,7 @@ main.page-content .card {
       background-position: 4px center !important; }
     .grid-box.big-box .img-wrap {
       overflow: visible; }
-      .grid-box.big-box .img-wrap > img {
+      .grid-box.big-box .img-wrap .big-image-link img {
         min-height: 450px;
         border: 1px solid #f2f5f5; }
     .grid-box.big-box .like-wrap {
@@ -5212,7 +5212,7 @@ main.page-content .card {
     color: #008ecc !important; }
   .grid-box.big-box:hover .img-wrap {
     border: 1px solid #00b1ff; }
-    .grid-box.big-box:hover .img-wrap > img {
+    .grid-box.big-box:hover .img-wrap .big-image-link img {
       border: 1px solid #00b1ff; }
   .grid-box.sidebar-box:hover .img-wrap {
     overflow: hidden;
