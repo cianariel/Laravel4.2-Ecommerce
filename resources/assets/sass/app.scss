@@ -699,7 +699,7 @@ nav{
         background-size: contain;
 
         //bottom: 0 !important;
-        top: 33.5%;
+        top: 470px;
       }
     }
 
@@ -1436,6 +1436,9 @@ article.product{
 
   .article-content{
     margin-top: 50px;
+    padding-right: 0;
+    padding-left: 40px;
+
     p:first-child{
       &:first-letter{
         color: $dark-orange;
@@ -1451,6 +1454,9 @@ article.product{
   //  margin-top: 0;
   //  padding-top: 70px;
   //}
+  .main-container{
+    padding-right: 0;
+  }
 
 }
 
@@ -3384,6 +3390,11 @@ footer.about-footer{
 
   .why-us {
     margin-top: 0;
+  }
+
+  .story-header h1 {
+    width: 39%;
+    font-size: 1.8rem;
   }
 
   @media (min-width:768px){

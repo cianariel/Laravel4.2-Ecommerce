@@ -4795,6 +4795,9 @@ nav a {
   padding-left: 3px; }
 .slider.product-slider .rsThumbsContainer {
   max-height: 500px; }
+  .slider.product-slider .rsThumbsContainer img {
+    width: 145px;
+    height: 115px; }
 .slider.product-slider .rsThumbsArrow {
   position: absolute;
   top: 0px;
@@ -4807,7 +4810,7 @@ nav a {
   .slider.product-slider .rsThumbsArrow.rsThumbsArrowRight {
     background: url("/assets/images/icons/arrow-down-pink.png") center no-repeat;
     background-size: contain;
-    top: 33.5%; }
+    top: 470px; }
 
 .breadcrumbs li {
   float: left;
@@ -5223,12 +5226,16 @@ article.product {
   padding-top: 10px;
   width: 100%; }
   article.product .article-content {
-    margin-top: 50px; }
+    margin-top: 50px;
+    padding-right: 0;
+    padding-left: 40px; }
     article.product .article-content p:first-child:first-letter {
       color: #ff7f00;
       font-size: 5rem; }
   article.product .reviews {
     margin-bottom: 0; }
+  article.product .main-container {
+    padding-right: 0; }
 
 .reviews h6 {
   font-size: 1.2rem; }
@@ -6401,6 +6408,10 @@ footer.about-footer {
 
   .why-us {
     margin-top: 0; }
+
+  .story-header h1 {
+    width: 39%;
+    font-size: 1.8rem; }
 
   #hero-nav {
     padding-left: 0; }
