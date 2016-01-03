@@ -4771,10 +4771,11 @@ nav a {
     text-align: left;
     margin: 0;
     font-size: 4rem;
-    line-height: 1.6; }
+    line-height: 1.6;
+    z-index: 1;
+    padding-left: 10%;
+    background-color: rgba(255, 0, 66, 0.7); }
     #hero.details-hero h1 span {
-      background-color: rgba(255, 0, 66, 0.7);
-      padding: 5px 15px;
       background-position-x: 3px; }
   #hero.details-hero .color-overlay {
     display: none; }

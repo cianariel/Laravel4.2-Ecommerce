@@ -25,12 +25,12 @@
 
 
         <section id="hero" class="details-hero">
-            <div class="container">
+<!--            <div class="container">-->
                 <div class="head-wrap">
-                    <h1 class="col-sm-6 col-xs-12"><span><?php echo the_title(); ?></span></h1>
+                    <h1 class="col-sm-8 col-xs-12"><span><?php echo the_title(); ?></span></h1>
                     <a class="like-counter hidden-soft shown-620" href="#">189</a>
                 </div>
-            </div>
+<!--            </div>-->
 
             <div class="hero-background" style="background-image:url( <?php echo getThumbnailLink($post->ID); ?> ) "></div>
             <!-- TODO - use as the hero-bg					--><?php //the_post_thumbnail(); // Fullsize image for the single post ?>

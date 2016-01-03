@@ -629,11 +629,14 @@ nav{
       //max-width: 80%;
       //margin-left: auto;
       //margin-right: auto;
+      //margin-top: 200px;
       line-height: 1.6;
+      z-index: 1;
+      padding-left: 10%;
+      background-color: rgba($iridium, .7);
 
       span{
-        background-color: rgba($iridium, .7);
-        padding: 5px 15px;
+        //padding: 5px 15px;
         background-position-x: 3px;
       }
     }
