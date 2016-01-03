@@ -1370,7 +1370,7 @@ main.page-content{
       overflow: visible;
 
       .big-image-link img{
-       min-height: 450px;
+       //min-height: 450px;
        border: 1px solid $pale-grey;
       }
     }
@@ -1860,7 +1860,7 @@ header.colophon{
       width: 100%;
       z-index: 30;
       background: #fff;
-      background: rgba(255,255,255,.85);
+      background: rgba(255,255,255,.90);
       border-bottom: 1px solid lighten($light-grey, 10%);
 
       @media (min-width: 620px){
