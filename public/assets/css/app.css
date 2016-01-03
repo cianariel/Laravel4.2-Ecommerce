@@ -4810,7 +4810,7 @@ nav a {
   .slider.product-slider .rsThumbsArrow.rsThumbsArrowRight {
     background: url("/assets/images/icons/arrow-down-pink.png") center no-repeat;
     background-size: contain;
-    top: 470px; }
+    top: 461px; }
 
 .breadcrumbs li {
   float: left;
@@ -5567,7 +5567,7 @@ header.colophon {
     background-size: initial;
     margin-top: -14px; }
   .story-header h1 {
-    width: 50%;
+    width: 48%;
     padding-left: 10px;
     float: left;
     margin-left: 3%;
