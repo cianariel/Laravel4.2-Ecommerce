@@ -76,14 +76,6 @@
         Route::post('secure-page', 'AuthenticateController@securePage');
         Route::any('logout', 'AuthenticateController@logOut');
 
-        /*
-         * Media upload route
-         *
-         * */
-       // Route::post('media-upload', 'ApiController@mediaUpload');
-
-        Route::any('product/media-upload', 'ProductController@addMediaForProduct');
-
 
 
         /*
@@ -110,6 +102,17 @@
         Route::post('product/add-product', 'ProductController@addProduct');
         Route::post('product/update-product', 'ProductController@updateProductInfo');
         Route::post('product/publish-product', 'ProductController@publishProduct');
+
+        /*
+         * Media upload route
+         *
+         * */
+
+        Route::any('product/media-upload', 'ProductController@addMediaForProduct');
+        Route::post('product/add-media-info', 'ProductController@addMediaInfo');
+        Route::get('product/get-media/{id?}', 'ProductController@getMediaForProduct');
+        Route::post('product/delete-media/', 'ProductController@deleteSingleMediaItem');
+
 
 
 

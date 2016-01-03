@@ -23,7 +23,8 @@
         </div>
         <!-- /.row -->
 
-        <div ng-app="adminApp" data-ng-controller="AdminController" class="row"  nv-file-drop="" uploader="uploader" filters="queueLimit, customFilter">
+        <div ng-app="adminApp" data-ng-controller="AdminController" class="row" nv-file-drop="" uploader="uploader"
+             filters="queueLimit, customFilter">
 
             <div class="col-lg-12" ng-cloak>
                 @if( !empty($id))
@@ -464,7 +465,6 @@
                                                     </div>
                                                 </div>
 
-
                                                 <div class="tab-pane fade" id="media">
                                                     <h4>Image Video upload</h4>
 
@@ -477,6 +477,7 @@
                                                         <div class="form-group">
                                                             <label>Media Title</label>
                                                             <select data-ng-model="selectedMediaType"
+                                                                    data-ng-change="mediaTypeChange()"
                                                                     class="form-control">
                                                                 <option ng-repeat="media in mediaTypes"
                                                                         value="@{{ media.key }}">
@@ -488,17 +489,64 @@
                                                         <div class="form-group">
                                                             <label>Media Link</label>
                                                             <input data-ng-model="mediaLink"
+                                                                   data-ng-readonly="isMediaUploadable"
                                                                    class="form-control" placeholder="Enter media link">
                                                         </div>
 
                                                         <div class="form-group">
-                                                            <label>Upload Media Content</label>
-                                                            <input type="file" name="file" nv-file-select="" uploader="uploader" />
+                                                            <div ng-show="isMediaUploadable">
+                                                                <label>Upload Media Content</label>
+                                                                <input type="file" name="file" nv-file-select=""
+                                                                       uploader="uploader"/>
+                                                            </div>
                                                             <br>
                                                             <button type="button"
                                                                     class="btn btn-success btn-s"
-                                                                    ng-click="uploader.uploadAll()">upload</button>
+                                                                    ng-click="uploader.uploadAll()">upload Content</button>
                                                         </div>
+                                                        <p>
+                                                            <button type="button"
+                                                                    class="btn btn-primary"
+                                                                    ng-click="addMediaInfo()">Save Info</button>
+                                                        </p>
+                                                        </div>
+                                                    <div class="col-lg-12">
+                                                        <!-- media list  -->
+                                                        <div class="table-responsive">
+                                                            <table class="table table-striped table-bordered table-hover">
+                                                                <thead>
+                                                                <tr>
+                                                                    <th  class="col-md-1">#</th>
+                                                                    <th class="col-md-3">Title</th>
+                                                                    <th class="col-md-2">Type</th>
+                                                                    <th class="col-md-5">Link</th>
+                                                                    <th class="col-md-1">Action</th>
+                                                                </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                <tr ng-repeat="media in mediaList">
+                                                                    <td>@{{media.id}}</td>
+                                                                    <td>@{{ media.media_name}}</td>
+                                                                    <td>@{{ media.media_type}} </td>
+                                                                    <td>@{{ media.media_link}} </td>
+                                                                    <td>
+                                                                        <button data-ng-click="deleteMedia(media.id)"
+                                                                                data-ng-disabled="true"
+                                                                                confirm="Are you sure to delete this item ?"
+                                                                                confirm-settings="{size: 'sm'}"
+                                                                                class="btn btn-danger btn-circle"
+                                                                                uib-tooltip="Delete"
+                                                                                tooltip-placement="bottom">
+                                                                            <i class="fa fa-times"></i>
+                                                                        </button>
+                                                                    </td>
+                                                                    <br/>
+                                                                </tr>
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                        <!-- end media list  -->
+
                                                     </div>
                                                 </div>
                                             </div>

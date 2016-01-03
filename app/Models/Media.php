@@ -17,10 +17,12 @@
             'media_name',
             'media_type',
             'media_link',
+            'is_hero_item',
             'mediable_id',
             'mediable_type'
         );
-        protected $hidden = ['created_at', 'updated_at'];
+
+        protected $hidden = ['mediable_id','mediable_type','created_at', 'updated_at'];
 
 
         /**

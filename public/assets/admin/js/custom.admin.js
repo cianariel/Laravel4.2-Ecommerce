@@ -27,7 +27,7 @@ adminApp.controller('AdminController', ['$scope', '$http', '$confirm', '$locatio
         // uploader section //
 
         var uploader = $scope.uploader = new FileUploader({
-            url: '/api/product/media-upload'
+            url: '/api/product/media-upload',
         });
 
         // FILTERS
@@ -60,7 +60,7 @@ adminApp.controller('AdminController', ['$scope', '$http', '$confirm', '$locatio
             //   console.info('onProgressAll', progress);
         };
         uploader.onSuccessItem = function (fileItem, response, status, headers) {
-            //    console.info('onSuccessItem', fileItem, response, status, headers);
+            //     console.info('onSuccessItem', fileItem, response, status, headers);
         };
         uploader.onErrorItem = function (fileItem, response, status, headers) {
             //   console.info('onErrorItem', fileItem, response, status, headers);
@@ -69,7 +69,8 @@ adminApp.controller('AdminController', ['$scope', '$http', '$confirm', '$locatio
             //   console.info('onCancelItem', fileItem, response, status, headers);
         };
         uploader.onCompleteItem = function (fileItem, response, status, headers) {
-            //  console.info('onCompleteItem', fileItem, response, status, headers);
+            //     console.info('onCompleteItem', response);
+            $scope.mediaLink = response.result;
         };
         uploader.onCompleteAll = function () {
             //    console.info('onCompleteAll');
@@ -127,13 +128,16 @@ adminApp.controller('AdminController', ['$scope', '$http', '$confirm', '$locatio
 
             //Media Content
             $scope.mediaTitle = '';
-            $scope.mediaTypes=[
-                {"key":"img-link","value":"Image Link"},
-                {"key":"img-upload","value":"Image Upload"},
-                {"key":"video-link","value":"Video Link"},
-                {"key":"video-upload","value":"Video Upload"}
+            $scope.mediaTypes = [
+                {"key": "img-link", "value": "Image Link"},
+                {"key": "img-upload", "value": "Image Upload"},
+                {"key": "video-link", "value": "Video Link"},
+                {"key": "video-upload", "value": "Video Upload"}
             ];
             $scope.mediaLink = "";
+            $scope.isMediaUploadable = true;
+            $scope.mediaList = [];
+
 
             // Pagination info
             $scope.limit = 12;
@@ -145,14 +149,6 @@ adminApp.controller('AdminController', ['$scope', '$http', '$confirm', '$locatio
 
 
         };
-
-
-        /*$scope.productMedia = {};
-
-         $scope.addMedia = function(){
-         var uploadUrl = '/api/product/media-upload';
-         multipartForm.post(uploadUrl, $scope.productMedia);
-         }*/
 
         // Add an Alert in a web application
         $scope.addAlert = function (alertType, message) {
@@ -365,7 +361,7 @@ adminApp.controller('AdminController', ['$scope', '$http', '$confirm', '$locatio
 
         $scope.buildURL = function (keyWord) {
 
-            if (keyWord.indexOf("blog") > -1) {
+            if (keyWord.indexOf("ideas") > -1) {
                 return keyWord;
             } else {
                 return "category/" + keyWord;
@@ -379,7 +375,7 @@ adminApp.controller('AdminController', ['$scope', '$http', '$confirm', '$locatio
 
         // initialize product add view
         $scope.loadAddProduct = function () {
-            $scope.isCollapsed = true; // default false it false to show forced parmalink saviing mood.
+            $scope.isCollapsed = false; // default false it false to show forced parmalink saviing mood.
             $scope.isCollapsedToggle = !$scope.isCollapsed;
         };
         $scope.addProduct = function () {
@@ -586,30 +582,30 @@ adminApp.controller('AdminController', ['$scope', '$http', '$confirm', '$locatio
         }
 
 
-        // add dynamic fields for media content
-        $scope.dropzoneConfig = {
+        /* // add dynamic fields for media content
+         $scope.dropzoneConfig = {
 
-            'options': { // passed into the Dropzone constructor
-                'url': '/api/product/media-upload/',
-                'maxFiles': 1,
-            },
-            init: function () {
-                dz = $scope.this;
-                dz.on("maxfilesexceeded", function (file) {
-                    dz.removeAllFiles();
-                    dz.addFile(file);
-                });
-            },
-            'eventHandlers': {
-                'sending': function (file, xhr, formData) {
-                    console.log('sending file data');
-                },
-                'success': function (file, response) {
-                    console.log('file sending success');
-                }
-            }
-        };
-
+         'options': { // passed into the Dropzone constructor
+         'url': '/api/product/media-upload/',
+         'maxFiles': 1,
+         },
+         init: function () {
+         dz = $scope.this;
+         dz.on("maxfilesexceeded", function (file) {
+         dz.removeAllFiles();
+         dz.addFile(file);
+         });
+         },
+         'eventHandlers': {
+         'sending': function (file, xhr, formData) {
+         console.log('sending file data');
+         },
+         'success': function (file, response) {
+         console.log('file sending success');
+         }
+         }
+         };
+         */
         /*
 
 
@@ -671,7 +667,7 @@ adminApp.controller('AdminController', ['$scope', '$http', '$confirm', '$locatio
                     $scope.page = data.data.page;
                     $scope.total = data.data.total;
 
-                    console.log($scope.limit, $scope.page, $scope.total);
+                  //  console.log($scope.limit, $scope.page, $scope.total);
 
 
                     //  $scope.outputStatus(data, "SuccessfuProduct updated successfully");
@@ -682,7 +678,7 @@ adminApp.controller('AdminController', ['$scope', '$http', '$confirm', '$locatio
 
             });
 
-        }
+        };
 
 
         //todo update the loadProductData after implementing media uploading
@@ -724,12 +720,89 @@ adminApp.controller('AdminController', ['$scope', '$http', '$confirm', '$locatio
                     // hide category in edit mood
                     $scope.hideCategoryPanel = true;
 
+                    // load media in panel
+                    $scope.getMedia();
+                }
+            });
+        };
+
+        // Change the media type during add and edit of media content.
+        $scope.mediaTypeChange = function () {
+            console.log($scope.selectedMediaType);
+
+            if (($scope.selectedMediaType == 'img-link')) {
+                $scope.isMediaUploadable = false;
+                $scope.mediaLinkTmp = $scope.mediaLink;
+                //   console.log($scope.isMediaUploadable);
+            } else if (($scope.selectedMediaType == 'video-link')) {
+
+                $scope.isMediaUploadable = false;
+                $scope.mediaLinkTmp = $scope.mediaLink;
+                //   console.log( $scope.isMediaUploadable);
+            } else if (($scope.selectedMediaType == 'img-upload')) {
+
+                $scope.isMediaUploadable = true;
+                $scope.mediaLink = $scope.mediaLinkTmp;
+                //  console.log( $scope.isMediaUploadable);
+            } else if (($scope.selectedMediaType == 'video-upload')) {
+
+                $scope.isMediaUploadable = true;
+                $scope.mediaLink = $scope.mediaLinkTmp;
+                // console.log( $scope.isMediaUploadable);
+            }
+
+        };
+
+        // add medial content for a product
+        $scope.addMediaInfo = function () {
+            $http({
+                url: '/api/product/add-media-info',
+                method: 'POST',
+                data: {
+                    ProductId: $scope.ProductId,
+                    MediaTitle: $scope.mediaTitle,
+                    MediaType: $scope.selectedMediaType,
+                    MediaLink: $scope.mediaLink
+                }
+            }).success(function (data) {
+                console.log(data);
+
+                if (data.status_code == 200) {
+                    $scope.getMedia();
+                }
+
+            })
+        };
+
+        // get medial content list for a single product
+        $scope.getMedia = function(){
+            $http({
+                url: '/api/product/get-media/'+$scope.ProductId,
+                method: 'GET',
+            }).success(function (data) {
+                console.log(data);
+
+                if (data.status_code == 200) {
+                    $scope.mediaList = data.data;
                 }
 
             });
+        };
 
-        }
+        $scope.deleteMedia = function($id){
+            $http({
+                url: '/api/product/delete-media',
+                method: 'POST',
+                data:{'MediaId':$id}
+            }).success(function (data) {
+              //  console.log(data);
 
+                if (data.status_code == 200) {
+                    $scope.getMedia();
+                }
+
+            });
+        };
 
         // Initialize variables and functions Globally.
         $scope.initPage();

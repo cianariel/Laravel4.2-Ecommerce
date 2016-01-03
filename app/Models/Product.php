@@ -50,7 +50,7 @@
 
         public function medias()
         {
-            $this->morphMany('App\Models\Media','mediable');
+            return $this->morphMany('App\Models\Media','mediable');
         }
 
 
