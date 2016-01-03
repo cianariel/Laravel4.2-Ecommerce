@@ -1860,6 +1860,7 @@ header.colophon{
       width: 100%;
       z-index: 30;
       background: #fff;
+      background: rgba(255,255,255,.85);
       border-bottom: 1px solid lighten($light-grey, 10%);
 
       @media (min-width: 620px){
@@ -1995,6 +1996,7 @@ header.colophon{
   padding:20px 0 8px;
   overflow: hidden;
   background: #fff;
+  background: rgba(255,255,255,.85);
   border-bottom: 1px solid lighten($light-grey, 10%);
 
   .lamp-logo{
