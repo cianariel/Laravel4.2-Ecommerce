@@ -114,7 +114,7 @@
                     <a href="#" class="social-pic likes">157</a>
                     <a href="#" class="social-pic comment">89</a>
                 </div>
-                <datetime>1 hour ago</datetime>
+                <time>1 hour ago</time>
 
             </div>
 
@@ -133,7 +133,7 @@
                     <a href="#" class="social-pic likes">157</a>
                     <a href="#" class="social-pic comment">89</a>
                 </div>
-                <datetime>5 hours ago</datetime>
+                <time>5 hours ago</time>
 
 
             </div>
@@ -155,7 +155,7 @@
                             </a>
                         </div>
                         <h3><a href="{{$story->url}}">{{$story->title}}</a></h3>
-                        <datetime>{{$story->date}}</datetime>
+                        <time>{{$story->date}}</time>
                     </div>
                 @endforeach
 
