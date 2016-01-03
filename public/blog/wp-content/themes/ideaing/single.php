@@ -65,9 +65,11 @@
                         <h4 class="author-name">
                             <div id="sticky-anchor"></div>
 
-                            <span>{{ the_author_meta('first_name') }} {{ the_author_meta('last_name') }}</span>
-                            <a class="like-counter" href="#">189</a>
+                            by <span>{{ the_author_meta('first_name') }} {{ the_author_meta('last_name') }}</span>
+<!--                            <a class="like-counter" href="#">189</a>-->
+
                         </h4>
+                        <time datetime="{{the_date('Y-m-d')}}">{{the_time( get_option( 'date_format' ) )}}</time>
                         <div class="content-tags">
                             <ul>
                                 <li><a href="#" class="ideas-link">12 Ideas</a></li>
@@ -142,7 +144,7 @@
                         <p>
                             Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur?
                         </p>
-                        <datetime>August 2015</datetime>
+                        <time>August 2015</time>
                     </div>
                 </div>
 
@@ -264,7 +266,7 @@
                         <a href="#" class="social-pic likes">157</a>
                         <a href="#" class="social-pic comment">89</a>
                     </div>
-                    <datetime>5 hours ago</datetime>
+                    <time>5 hours ago</time>
                 </div>
                 <div class="col-sm-4 col-xs-12 grid-box">
                     <div class="wrap">
@@ -277,7 +279,7 @@
                         <a href="#" class="social-pic likes">157</a>
                         <a href="#" class="social-pic comment">89</a>
                     </div>
-                    <datetime>5 hours ago</datetime>
+                    <time>5 hours ago</time>
                 </div>
                 <div class="col-sm-4 col-xs-12 grid-box">
                     <div class="wrap">
@@ -290,7 +292,7 @@
                         <a href="#" class="social-pic likes">157</a>
                         <a href="#" class="social-pic comment">89</a>
                     </div>
-                    <datetime>5 hours ago</datetime>
+                    <time>5 hours ago</time>
                 </div>
 
 

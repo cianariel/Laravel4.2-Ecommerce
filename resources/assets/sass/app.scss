@@ -1148,14 +1148,14 @@ main.page-content{
 
 
 
-  datetime{
+  time{
     float: right;
     padding: 10px 15px;
     color: $light-grey;
   }
 
   &.big-box{
-    datetime{
+    time{
       padding: 0px;
       float: left;
     }
@@ -1256,6 +1256,8 @@ main.page-content{
 
       &.big{
         top: 20px;
+
+
         div {
           border-color:$pine-green;
 
@@ -1351,8 +1353,8 @@ main.page-content{
     margin-top: 0;
     padding-top: 33px;
     .category-tag{
-      width: 100px;
-      text-indent: 0;
+      width: 150px;
+      text-indent: 0 !important;
       text-align: center;
       color: #FF7F00;
       padding-top: 19px;
@@ -2788,6 +2790,8 @@ header.sub-head{
     img{
       max-width: 100%;
       height: auto;
+      margin: 0 auto;
+      display: block;
       border: 1px solid #eee;
     }
   }
@@ -2810,6 +2814,11 @@ header.sub-head{
 
     .author-overview{
       padding-top: 10%;
+
+      time{
+        font-size: 1.3rem;
+        color: $light-grey;
+      }
     }
 
     .content-tags{
@@ -2912,7 +2921,7 @@ header.sub-head{
     }
   }
 
-  datetime{
+  time{
     font-size: .9rem;
   }
 
@@ -2961,7 +2970,7 @@ header.sub-head{
       right: 26px;
     }
 
-    datetime{
+    time{
       color: $tarmac;
       padding-right: 0;
     }
@@ -3924,7 +3933,7 @@ footer.about-footer{
     }
 
     &.big-box{
-      datetime{
+      time{
         padding-left: 20px;
       }
     }

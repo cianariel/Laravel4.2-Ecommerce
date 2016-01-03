@@ -144,7 +144,7 @@
                             <a href="{{$story->url}}" class="big-image-link">
                                 <img class="img-responsive" src="{{$story->image}}">
                             </a>
-                            <a href="#" class="overlay-tag category-tag top idea">Style</a>
+                            <a href="#" class="overlay-tag category-tag top idea">{{$story->category}}</a>
                             <a href="#" class="overlay-tag bottom author" style="background-image: url({{$story->avator}})">{{$story->author}}</a>
                             <div class="like-wrap">
                                 <a href="#" class="social-pic likes">Like it</a>

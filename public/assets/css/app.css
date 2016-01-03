@@ -5057,11 +5057,11 @@ main.page-content .card {
         background: url("/assets/images/heart-pink-outline.png") left center no-repeat; }
         .grid-box .like-wrap .social-pic.likes:hover {
           background: url("/assets/images/heart-pink-solid.png") left center no-repeat; }
-  .grid-box datetime {
+  .grid-box time {
     float: right;
     padding: 10px 15px;
     color: #c1c1c1; }
-  .grid-box.big-box datetime {
+  .grid-box.big-box time {
     padding: 0px;
     float: left; }
   .grid-box .img-wrap .like-wrap {
@@ -5183,8 +5183,8 @@ main.page-content .card {
     margin-top: 0;
     padding-top: 33px; }
     .grid-box.big-box .category-tag {
-      width: 100px;
-      text-indent: 0;
+      width: 150px;
+      text-indent: 0 !important;
       text-align: center;
       color: #FF7F00;
       padding-top: 19px;
@@ -6052,6 +6052,8 @@ header.sub-head {
 .idea-stories .article-content img {
   max-width: 100%;
   height: auto;
+  margin: 0 auto;
+  display: block;
   border: 1px solid #eee; }
 .idea-stories .story-details {
   float: none;
@@ -6066,6 +6068,9 @@ header.sub-head {
     color: #a8a8a8; }
   .idea-stories .story-details .author-overview {
     padding-top: 10%; }
+    .idea-stories .story-details .author-overview time {
+      font-size: 1.3rem;
+      color: #c1c1c1; }
   .idea-stories .story-details .content-tags {
     width: 275px;
     margin: 15px auto 40px;
@@ -6123,7 +6128,7 @@ header.sub-head {
     margin-right: 17px; }
   .comments .comment-controls .btn-info {
     width: 100px; }
-.comments datetime {
+.comments time {
   font-size: .9rem; }
 
 .related-items {
@@ -6153,7 +6158,7 @@ header.sub-head {
       position: absolute;
       bottom: -32px;
       right: 26px; }
-    .related-items .grid-box datetime {
+    .related-items .grid-box time {
       color: #3d4b4e;
       padding-right: 0; }
     .related-items .grid-box .like-wrap {
@@ -6688,7 +6693,7 @@ footer.about-footer {
         border-radius: 0 !important;
         border-bottom: 1px solid #eee;
         min-height: 0; }
-    .grid-box.big-box datetime {
+    .grid-box.big-box time {
       padding-left: 20px; }
 
   .grid-box .img-wrap .get-it:not(.big),
