@@ -23,7 +23,7 @@
         </div>
         <!-- /.row -->
 
-        <div ng-app="adminApp" data-ng-controller="AdminController" class="row">
+        <div ng-app="adminApp" data-ng-controller="AdminController" class="row"  nv-file-drop="" uploader="uploader" filters="queueLimit, customFilter">
 
             <div class="col-lg-12" ng-cloak>
                 @if( !empty($id))
@@ -32,8 +32,7 @@
                 <div class="panel panel-default" ng-init="loadAddProduct()">
                     <div class="panel-heading"> Basic Form Elements</div>
                     <div class="panel-body">
-                  {{--    <form role="form" enctype="multipart/form-data" >--}}
-                        {!! Form::open(array('url'=>'/api/product/media-upload/','method'=>'POST', 'files'=>true)) !!}
+                        <form role="form" name="myForm" enctype="multipart/form-data">
 
                             <div class="row">
                                 <div class="col-lg-6">
@@ -469,36 +468,60 @@
                                                 <div class="tab-pane fade" id="media">
                                                     <h4>Image Video upload</h4>
 
-                                                    <div class="row">
+                                                    <div class="col-lg-6">
                                                         <div class="form-group">
-                                                            <input type="file" name="media" id="exampleInputFile" file-model="productMedia">
-                                                            <button type="button" class="btn btn-default" ng-click="addMedia()">Add Media</button>
-                                                            <div class="col-sm-4 dropzone" id="my-awesome-dropzone"  dropzone="dropzoneConfig" >
+                                                            <label>Media Title</label>
+                                                            <input data-ng-model="mediaTitle"
+                                                                   class="form-control" placeholder="Enter media title">
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label>Media Title</label>
+                                                            <select data-ng-model="selectedMediaType"
+                                                                    class="form-control">
+                                                                <option ng-repeat="media in mediaTypes"
+                                                                        value="@{{ media.key }}">
+                                                                    @{{ media.value }}
+                                                                </option>
+                                                            </select>
+                                                        </div>
 
-                                                            </div>
+                                                        <div class="form-group">
+                                                            <label>Media Link</label>
+                                                            <input data-ng-model="mediaLink"
+                                                                   class="form-control" placeholder="Enter media link">
+                                                        </div>
+
+                                                        <div class="form-group">
+                                                            <label>Upload Media Content</label>
+                                                            <input type="file" name="file" nv-file-select="" uploader="uploader" />
+                                                            <br>
+                                                            <button type="button"
+                                                                    class="btn btn-success btn-s"
+                                                                    ng-click="uploader.uploadAll()">upload</button>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-
                                         </div>
+
                                     </div>
-                                    <!-- /.panel-body -->
                                 </div>
-                                <!-- /.panel -->
-
+                                <!-- /.panel-body -->
                             </div>
-                        </form>
+                            <!-- /.panel -->
+
                     </div>
-
+                    </form>
                 </div>
-                <!-- /.col-lg-12 --                </div>
-    >
-            </div>
-            <!-- /.row -->
-            </div>
-            <!-- /.container-fluid -->
 
+            </div>
+            <!-- /.col-lg-12 --                </div>
+>
         </div>
+        <!-- /.row -->
+        </div>
+        <!-- /.container-fluid -->
+
     </div>
+</div>
 @stop

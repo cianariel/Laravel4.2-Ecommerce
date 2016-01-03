@@ -1,4 +1,4 @@
-var adminApp = angular.module('adminApp', ['ui.bootstrap', 'ngSanitize', 'angular-confirm', 'textAngular', 'ngTagsInput']);
+var adminApp = angular.module('adminApp', ['ui.bootstrap', 'ngSanitize', 'angular-confirm', 'textAngular', 'ngTagsInput', 'angularFileUpload']);
 
 
 adminApp.directive('loading', ['$http', function ($http) {
@@ -21,56 +21,63 @@ adminApp.directive('loading', ['$http', function ($http) {
 
 }]);
 
-adminApp.directive('dropzone',function(){
-    return function (scope, element, attrs) {
-        var config, dropzone;
+adminApp.controller('AdminController', ['$scope', '$http', '$confirm', '$location', '$anchorScroll', 'FileUploader'
+    , function ($scope, $http, $confirm, $location, $anchorScroll, FileUploader) {
 
-        // it should be false or will throw a uncaught js error "Dropzone already attached"
-        Dropzone.autoDiscover = false;
+        // uploader section //
 
-        config = scope[attrs.dropzone];
-
-        // create a Dropzone for the element with the given options
-        dropzone = new Dropzone(element[0], config.options);
-
-
-        // bind the given event handlers
-        angular.forEach(config.eventHandlers, function (handler, event) {
-            dropzone.on(event, handler);
+        var uploader = $scope.uploader = new FileUploader({
+            url: '/api/product/media-upload'
         });
-    };
-});
 
-adminApp.directive('fileModel', ['$parse', function($parse){
-    return {
-        restrict: 'A',
-        link: function(scope, element, attrs){
-            var model = $parse(attrs.fileModel);
-            var modelSetter = model.assign;
+        // FILTERS
 
-            element.bind('change', function(){
-                scope.$apply(function(){
-                    modelSetter(scope, element[0].files[0]);
-                })
-            })
-        }
-    }
-}]);
-
-adminApp.service('multipartForm', ['$http', function($http){
-    this.post = function(uploadUrl, data){
-        var fd = new FormData();
-        for(var key in data)
-            fd.append(key, data[key]);
-        $http.post(uploadUrl, fd, {
-            transformRequest: angular.indentity,
-            headers: { 'Content-Type': undefined }
+        uploader.filters.push({
+            name: 'customFilter',
+            fn: function (item /*{File|FileLikeObject}*/, options) {
+                return this.queue.length < 10;
+            }
         });
-    }
-}]);
 
-adminApp.controller('AdminController', ['$scope', '$http', '$confirm', '$location', '$anchorScroll','multipartForm'
-    , function ($scope, $http, $confirm, $location, $anchorScroll,multipartForm) {
+        // CALLBACKS
+
+        uploader.onWhenAddingFileFailed = function (item /*{File|FileLikeObject}*/, filter, options) {
+            //  console.info('onWhenAddingFileFailed', item, filter, options);
+        };
+        uploader.onAfterAddingFile = function (fileItem) {
+            //   console.info('onAfterAddingFile', fileItem);
+        };
+        uploader.onAfterAddingAll = function (addedFileItems) {
+            //   console.info('onAfterAddingAll', addedFileItems);
+        };
+        uploader.onBeforeUploadItem = function (item) {
+            //   console.info('onBeforeUploadItem', item);
+        };
+        uploader.onProgressItem = function (fileItem, progress) {
+            //   console.info('onProgressItem', fileItem, progress);
+        };
+        uploader.onProgressAll = function (progress) {
+            //   console.info('onProgressAll', progress);
+        };
+        uploader.onSuccessItem = function (fileItem, response, status, headers) {
+            //    console.info('onSuccessItem', fileItem, response, status, headers);
+        };
+        uploader.onErrorItem = function (fileItem, response, status, headers) {
+            //   console.info('onErrorItem', fileItem, response, status, headers);
+        };
+        uploader.onCancelItem = function (fileItem, response, status, headers) {
+            //   console.info('onCancelItem', fileItem, response, status, headers);
+        };
+        uploader.onCompleteItem = function (fileItem, response, status, headers) {
+            //  console.info('onCompleteItem', fileItem, response, status, headers);
+        };
+        uploader.onCompleteAll = function () {
+            //    console.info('onCompleteAll');
+        };
+
+        // console.info('uploader', uploader);
+
+        // End uploader section //
 
 
         // Initializing application
@@ -85,45 +92,53 @@ adminApp.controller('AdminController', ['$scope', '$http', '$confirm', '$locatio
 
             $scope.tableTemporaryValue = {};
             $scope.alertHTML = '';
-
             $scope.tmpUrl = '';
 
             /// product fields initialize
+            $scope.ProductList = [];
+            $scope.ProductId = '';
+            $scope.selectedItem = '';
+            $scope.Name = '';
+            $scope.Permalink = '';
+            $scope.htmlContent = '';
+            $scope.Price = '';
+            $scope.SalePrice = '';
+            $scope.StoreId = '';
+            $scope.AffiliateLink = '';
+            $scope.PriceGrabberId = '';
+            $scope.FreeShipping = '';
+            $scope.CouponCode = '';
+            $scope.PostStatus = 'Inactive';
+            $scope.PageTitle = '';
+            $scope.MetaDescription = '';
+            $scope.productTags = '';
+            $scope.ProductAvailability = '';
 
-            $scope.ProductList = [],
-                $scope.ProductId = '',
-                $scope.selectedItem = '',
-                $scope.Name = '',
-                $scope.Permalink = '',
-                $scope.htmlContent = '',
-                $scope.Price = '',
-                $scope.SalePrice = '',
-                $scope.StoreId = '',
-                $scope.AffiliateLink = '',
-                $scope.PriceGrabberId = '',
-                $scope.FreeShipping = '',
-                $scope.CouponCode = '',
-                $scope.PostStatus = 'Inactive',
-                $scope.PageTitle = '',
-                $scope.MetaDescription = '',
-                $scope.productTags = '',
-                $scope.ProductAvailability = '',
+            //specification
+            $scope.Specifications = [];
+            $scope.isUpdateSpecShow = false;
 
-                //specification
-                $scope.Specifications = [],
-                $scope.isUpdateSpecShow = false,
+            //review
+            $scope.reviews = [{
+                key: 'Average',
+                value: 0
+            }];
+            $scope.isUpdateReviewShow = false;
 
-                //review
-                $scope.reviews = [{
-                    key: 'Average',
-                    value: 0
-                }],
-                $scope.isUpdateReviewShow = false,
+            //Media Content
+            $scope.mediaTitle = '';
+            $scope.mediaTypes=[
+                {"key":"img-link","value":"Image Link"},
+                {"key":"img-upload","value":"Image Upload"},
+                {"key":"video-link","value":"Video Link"},
+                {"key":"video-upload","value":"Video Upload"}
+            ];
+            $scope.mediaLink = "";
 
-                // Pagination info
-                $scope.limit = 12,
-                $scope.page = 1,
-                $scope.total = 0
+            // Pagination info
+            $scope.limit = 12;
+            $scope.page = 1;
+            $scope.total = 0;
 
             // show category panel for add product
             $scope.hideCategoryPanel = false;
@@ -131,11 +146,13 @@ adminApp.controller('AdminController', ['$scope', '$http', '$confirm', '$locatio
 
         };
 
-        $scope.productMedia = {};
-        $scope.addMedia = function(){
-            var uploadUrl = '/api/product/media-upload';
-            multipartForm.post(uploadUrl, $scope.productMedia);
-        }
+
+        /*$scope.productMedia = {};
+
+         $scope.addMedia = function(){
+         var uploadUrl = '/api/product/media-upload';
+         multipartForm.post(uploadUrl, $scope.productMedia);
+         }*/
 
         // Add an Alert in a web application
         $scope.addAlert = function (alertType, message) {
@@ -574,11 +591,11 @@ adminApp.controller('AdminController', ['$scope', '$http', '$confirm', '$locatio
 
             'options': { // passed into the Dropzone constructor
                 'url': '/api/product/media-upload/',
-                'maxFiles':1,
+                'maxFiles': 1,
             },
-            init: function() {
-          dz = $scope.this;
-                dz.on("maxfilesexceeded", function(file) {
+            init: function () {
+                dz = $scope.this;
+                dz.on("maxfilesexceeded", function (file) {
                     dz.removeAllFiles();
                     dz.addFile(file);
                 });
@@ -593,42 +610,42 @@ adminApp.controller('AdminController', ['$scope', '$http', '$confirm', '$locatio
             }
         };
 
-       /*
+        /*
 
 
-        $scope.addReviewFormField = function () {
-            $scope.reviews.push(
-                {'key': $scope.reviewKey, 'value': $scope.reviewValue}
-            );
-            $scope.reviewKey = '';
-            $scope.reviewValue = '';
-            $scope.calculateAvg();
+         $scope.addReviewFormField = function () {
+         $scope.reviews.push(
+         {'key': $scope.reviewKey, 'value': $scope.reviewValue}
+         );
+         $scope.reviewKey = '';
+         $scope.reviewValue = '';
+         $scope.calculateAvg();
 
-        }
+         }
 
-        $scope.deleteReviewFormField = function (index) {
-            $scope.reviews.splice(index, 1);
-            $scope.calculateAvg();
-        }
+         $scope.deleteReviewFormField = function (index) {
+         $scope.reviews.splice(index, 1);
+         $scope.calculateAvg();
+         }
 
-        $scope.editReviewFormField = function (index) {
-            $scope.$index = index;
-            $scope.reviewKey = $scope.reviews[index].key;
-            $scope.reviewValue = $scope.reviews[index].value;
-            $scope.isUpdateReviewShow = true;
-            $scope.calculateAvg();
+         $scope.editReviewFormField = function (index) {
+         $scope.$index = index;
+         $scope.reviewKey = $scope.reviews[index].key;
+         $scope.reviewValue = $scope.reviews[index].value;
+         $scope.isUpdateReviewShow = true;
+         $scope.calculateAvg();
 
-        }
-        $scope.updateReviewFormField = function () {
-            $scope.reviews[$scope.$index].key = $scope.reviewKey;
-            $scope.reviews[$scope.$index].value = $scope.reviewValue;
-            $scope.isUpdateReviewShow = false;
+         }
+         $scope.updateReviewFormField = function () {
+         $scope.reviews[$scope.$index].key = $scope.reviewKey;
+         $scope.reviews[$scope.$index].value = $scope.reviewValue;
+         $scope.isUpdateReviewShow = false;
 
-            $scope.reviewKey = '';
-            $scope.reviewValue = '';
-            $scope.calculateAvg();
-        }
-*/
+         $scope.reviewKey = '';
+         $scope.reviewValue = '';
+         $scope.calculateAvg();
+         }
+         */
 
 
         // view product list

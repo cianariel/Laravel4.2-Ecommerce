@@ -50,7 +50,7 @@
             'file-max-size'          => 6000,
             'file-max-limit-exit'    => 'file-max-limit-exit',
             'file-extension-invalid' => 'file-extension-invalid',
-            's3-path'                => 'https://amazonaws.com/ideaing-01/'
+            's3-path'                => 'http://s3-us-west-1.amazonaws.com/ideaing-01/'
         ],
 
     ];

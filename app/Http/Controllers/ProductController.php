@@ -10,6 +10,7 @@
     use App\Models\Product;
     use App\Models\Media;
     use Illuminate\Contracts\Filesystem\Factory;
+    use Storage;
 
     class ProductController extends ApiController {
 
@@ -18,9 +19,9 @@
             // Apply the jwt.auth middleware to all methods in this controller
             $this->middleware('jwt.auth',
                 ['except' => [
-                'publishProduct', 'searchProductByName', 'updateProductInfo',
+                    'publishProduct', 'searchProductByName', 'updateProductInfo',
                     'getAllProductList', 'getProductById', 'isPermalinkExist',
-                    'addProduct','addMediaForProduct'
+                    'addProduct', 'addMediaForProduct'
                 ]]);
             $this->product = new Product();
         }
@@ -218,42 +219,81 @@
 
 
         /**
-         * @param \Request $request
+         * @param Request|\Request $request
          * @return array
          */
         public function addMediaForProduct(Request $request)
         {
 
-            $in = \Input::all();
-
-           $result = $this->mediaUpload($request);
-            return $result;
-
-            $inputData = \Input::all();
-
-            $media = new Media();
-
-            $productId = isset($inputData['ProductId'])?$inputData['ProductId']:null;
-
-            $product = $this->product->where('id', $productId)->first();
-
-            $media['MediaType'] = isset($inputData['MediaType'])?$inputData['MediaType']:null;
-            $media['ProductId'] = isset($inputData['ProductId'])?$inputData['ProductId']:null;
-
-            try
+            $fileResponse = [];
+            if (!$request->hasFile('file'))
             {
-                $newMedia = $this->media->firstOrCreate([
-                    'media_name' => $media['MediaName'],
-                    'media_type' => $media['MediaType'],
-                    'media_link' => $media['MediaLink']
-                ]);
-            } catch (Exception $ex)
+                $fileResponse['result'] = \Config::get("const.file.file-not-exist");
+                $fileResponse['status_code'] = \Config::get("const.api-status.validation-fail");
+
+                return $fileResponse;
+
+            } else if (!$request->file('file')->isValid())
             {
+                $fileResponse['result'] = \Config::get("const.file.file-not-exist");
+                $fileResponse['status_code'] = \Config::get("const.api-status.validation-fail");
+
+                return $fileResponse;
+            } else if ( ! in_array($request->file('file')->guessClientExtension(), array("jpeg", "jpg", "bmp", "png", "mp4", "avi", "mkv")))
+            {
+                $fileResponse['result'] = \Config::get("const.file.file-invalid");
+                $fileResponse['status_code'] = \Config::get("const.api-status.validation-fail");
+
+                return $fileResponse;
+            } else if ($request->file('file')->getClientSize() > \Config::get("const.file.file-max-size"))
+            {
+                $fileResponse['result'] = \Config::get("const.file.file-max-limit-exit");
+                $fileResponse['status_code'] = \Config::get("const.api-status.validation-fail");
+
+                return $fileResponse;
+            } else
+            {
+                $fileName = 'product-' .  uniqid().'-'.$request->file('file')->getClientOriginalName();
+
+                // pointing filesystem to AWS S3
+                $s3 = Storage::disk('s3');
+
+                if ($s3->put($fileName, file_get_contents($request->file('file')), 'public'))
+                {
+                    $fileResponse['result'] = \Config::get("const.file.s3-path") . $fileName;
+                    $fileResponse['status_code'] = \Config::get("const.api-status.success");
+
+                    return $fileResponse;
+                }
+            }
+
+                // function //
+
+                $inputData = \Input::all();
+
+                $media = new Media();
+
+                $productId = isset($inputData['ProductId']) ? $inputData['ProductId'] : null;
+
+                $product = $this->product->where('id', $productId)->first();
+
+                $media['MediaType'] = isset($inputData['MediaType']) ? $inputData['MediaType'] : null;
+                $media['ProductId'] = isset($inputData['ProductId']) ? $inputData['ProductId'] : null;
+
+                try
+                {
+                    $newMedia = $this->media->firstOrCreate([
+                        'media_name' => $media['MediaName'],
+                        'media_type' => $media['MediaType'],
+                        'media_link' => $media['MediaLink']
+                    ]);
+                } catch (Exception $ex)
+                {
+
+                }
+
 
             }
 
 
         }
-
-
-    }

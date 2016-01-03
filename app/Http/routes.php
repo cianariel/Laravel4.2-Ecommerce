@@ -21,14 +21,16 @@
      });*/
 
     use Illuminate\Http\Request;
-    Route::any('api/product/media-upload', function (Request $request ) // temp, used for tweaking frontend
+    Route::any('api/product/media-uploadX', function (Request $request ) // temp, used for tweaking frontend
     {
 
        /*dd( $_FILES['name']);
          $request->all();
         \Input::hasFile('file');*/
-$i = \Input::all();
-      dd(\Input::file($i['name']) )  ;
+//$i = \Input::all();
+
+        $image = Input::hasFile('file');
+      dd($image);
         //dd()re;
         //return $request->hasFile('name')?"file exists":"no file";
        // return $request->file('name')->getClientMimeType();
@@ -80,7 +82,7 @@ $i = \Input::all();
          * */
        // Route::post('media-upload', 'ApiController@mediaUpload');
 
-        //Route::any('product/media-upload', 'ProductController@addMediaForProduct');
+        Route::any('product/media-upload', 'ProductController@addMediaForProduct');
 
 
 

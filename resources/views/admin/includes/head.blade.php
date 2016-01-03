@@ -46,4 +46,9 @@
 
     <script src="/assets/admin/js/dropzone.min.js"></script>
 
+    <script src="/assets/admin/js/angular-file-upload.min.js"></script>
+
+
+
+
 </head>
