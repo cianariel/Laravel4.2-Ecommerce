@@ -5239,12 +5239,13 @@ article.product {
     padding-right: 0; }
 
 .reviews h6 {
-  font-size: 1.2rem; }
+  font-size: 1.2rem;
+  margin-bottom: 0; }
 .reviews .score {
   display: inline-block; }
   .reviews .score.critic-score {
     font-size: 7rem;
-    margin-top: 10px; }
+    line-height: 1.1; }
 .reviews .rating-lines {
   width: 100%; }
 .reviews tr {
@@ -6092,7 +6093,9 @@ header.sub-head {
 
 .comments h4 {
   margin-bottom: 80px;
-  text-align: center; }
+  text-align: center;
+  font-size: 2.5rem;
+  font-weight: bold; }
 .comments .single-comment {
   min-height: 100%;
   overflow: hidden;
@@ -6138,8 +6141,7 @@ header.sub-head {
     cursor: pointer; }
     .related-items .grid-box .wrap {
       width: 100%;
-      border-radius: 3px;
-      background: #eee; }
+      border-radius: 3px; }
     .related-items .grid-box img {
       width: 100%;
       border-radius: 3px;

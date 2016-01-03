@@ -1469,13 +1469,15 @@ article.product{
 .reviews{
   h6{
     font-size: 1.2rem;
+    margin-bottom: 0;
   }
   .score{
     display: inline-block;
 
     &.critic-score{
       font-size: 7rem;
-      margin-top: 10px;
+      line-height: 1.1;
+      //margin-top: 10px;
     }
   }
 
@@ -2861,6 +2863,8 @@ header.sub-head{
   h4{
     margin-bottom: 80px;
     text-align: center;
+    font-size: 2.5rem;
+    font-weight: bold;
   }
 
   .single-comment{
@@ -2937,7 +2941,7 @@ header.sub-head{
     .wrap{
       width: 100%;
       border-radius: 3px;
-      background: #eee;
+      //background: #eee;
     }
 
     img{

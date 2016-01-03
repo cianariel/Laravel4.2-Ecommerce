@@ -56,7 +56,7 @@
                     <li><a href="#" class="get-alerts">Get alerts</a></li>
                     {{--<li><a class="compare">99</a></li>--}}
                     <li><a href="#" class="likes">768</a></li>
-                    <li><a href="#" class="comments">1.2K</a></li>
+                    <li><a href="#" data-scrollto="#comments" class="comments">1.2K</a></li>
                 </ul>
             </nav>
 
@@ -471,7 +471,7 @@
         </article>
 
 
-        <section class="comments">
+        <section class="comments" id="comments">
             <div class="container">
                 <h4>211 Comments</h4>
 
@@ -509,9 +509,9 @@
         <!-- /article -->
 
 
-        <section class="related-items">
+        <section class="related-items pale-grey-bg">
             <div class="container full-620 fixed-sm">
-                <div class="related-products  col-xs-12">
+                <div class="related-products col-xs-12">
                     <h3 class="green">Related Products</h3>
                     <div class="col-sm-4 col-xs-12 grid-box">
                         <div class="wrap">
