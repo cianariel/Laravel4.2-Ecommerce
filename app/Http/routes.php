@@ -19,7 +19,25 @@
      {
          var_dump($query);
      });*/
-    
+
+    use Illuminate\Http\Request;
+    Route::any('api/product/media-uploadX', function (Request $request ) // temp, used for tweaking frontend
+    {
+
+       /*dd( $_FILES['name']);
+         $request->all();
+        \Input::hasFile('file');*/
+//$i = \Input::all();
+
+        $image = Input::hasFile('file');
+      dd($image);
+        //dd()re;
+        //return $request->hasFile('name')?"file exists":"no file";
+       // return $request->file('name')->getClientMimeType();
+
+       // return response($request->files(),200);
+    });
+
 
     Route::get('/', 'PageController@home');
 
@@ -58,6 +76,8 @@
         Route::post('secure-page', 'AuthenticateController@securePage');
         Route::any('logout', 'AuthenticateController@logOut');
 
+
+
         /*
          * Product Category route collection
          *
@@ -82,6 +102,17 @@
         Route::post('product/add-product', 'ProductController@addProduct');
         Route::post('product/update-product', 'ProductController@updateProductInfo');
         Route::post('product/publish-product', 'ProductController@publishProduct');
+
+        /*
+         * Media upload route
+         *
+         * */
+
+        Route::any('product/media-upload', 'ProductController@addMediaForProduct');
+        Route::post('product/add-media-info', 'ProductController@addMediaInfo');
+        Route::get('product/get-media/{id?}', 'ProductController@getMediaForProduct');
+        Route::post('product/delete-media/', 'ProductController@deleteSingleMediaItem');
+
 
 
 

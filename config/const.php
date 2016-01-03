@@ -39,7 +39,18 @@
         'product'                => [
             'permalink-exist'        => 'No product exists with this permalink',
             'can-not-create-product' => 'Can not create product with this permalink!',
-            'product-added' => 'Successfully product added',
-            'product-not-found' => 'No product found with the provided ID',
+            'product-added'          => 'Successfully product added',
+            'product-not-found'      => 'No product found with the provided ID',
         ],
+
+        // File message
+        'file'                   => [
+            'file-not-exist'         => 'file-not-exist',
+            'file-invalid'           => 'file-invalid',
+            'file-max-size'          => 6000,
+            'file-max-limit-exit'    => 'file-max-limit-exit',
+            'file-extension-invalid' => 'file-extension-invalid',
+            's3-path'                => 'http://s3-us-west-1.amazonaws.com/ideaing-01/'
+        ],
+
     ];

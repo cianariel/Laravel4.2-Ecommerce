@@ -1,4 +1,4 @@
-var adminApp = angular.module('adminApp', ['ui.bootstrap', 'ngSanitize', 'angular-confirm', 'textAngular', 'ngTagsInput']);
+var adminApp = angular.module('adminApp', ['ui.bootstrap', 'ngSanitize', 'angular-confirm', 'textAngular', 'ngTagsInput', 'angularFileUpload']);
 
 
 adminApp.directive('loading', ['$http', function ($http) {
@@ -21,8 +21,64 @@ adminApp.directive('loading', ['$http', function ($http) {
 
 }]);
 
-adminApp.controller('AdminController', ['$scope', '$http', '$confirm', '$location', '$anchorScroll'
-    , function ($scope, $http, $confirm, $location, $anchorScroll) {
+adminApp.controller('AdminController', ['$scope', '$http', '$confirm', '$location', '$anchorScroll', 'FileUploader'
+    , function ($scope, $http, $confirm, $location, $anchorScroll, FileUploader) {
+
+        // uploader section //
+
+        var uploader = $scope.uploader = new FileUploader({
+            url: '/api/product/media-upload',
+        });
+
+        // FILTERS
+
+        uploader.filters.push({
+            name: 'customFilter',
+            fn: function (item /*{File|FileLikeObject}*/, options) {
+                return this.queue.length < 10;
+            }
+        });
+
+        // CALLBACKS
+
+        uploader.onWhenAddingFileFailed = function (item /*{File|FileLikeObject}*/, filter, options) {
+            //  console.info('onWhenAddingFileFailed', item, filter, options);
+        };
+        uploader.onAfterAddingFile = function (fileItem) {
+            //   console.info('onAfterAddingFile', fileItem);
+        };
+        uploader.onAfterAddingAll = function (addedFileItems) {
+            //   console.info('onAfterAddingAll', addedFileItems);
+        };
+        uploader.onBeforeUploadItem = function (item) {
+            //   console.info('onBeforeUploadItem', item);
+        };
+        uploader.onProgressItem = function (fileItem, progress) {
+            //   console.info('onProgressItem', fileItem, progress);
+        };
+        uploader.onProgressAll = function (progress) {
+            //   console.info('onProgressAll', progress);
+        };
+        uploader.onSuccessItem = function (fileItem, response, status, headers) {
+            //     console.info('onSuccessItem', fileItem, response, status, headers);
+        };
+        uploader.onErrorItem = function (fileItem, response, status, headers) {
+            //   console.info('onErrorItem', fileItem, response, status, headers);
+        };
+        uploader.onCancelItem = function (fileItem, response, status, headers) {
+            //   console.info('onCancelItem', fileItem, response, status, headers);
+        };
+        uploader.onCompleteItem = function (fileItem, response, status, headers) {
+            //     console.info('onCompleteItem', response);
+            $scope.mediaLink = response.result;
+        };
+        uploader.onCompleteAll = function () {
+            //    console.info('onCompleteAll');
+        };
+
+        // console.info('uploader', uploader);
+
+        // End uploader section //
 
 
         // Initializing application
@@ -37,45 +93,56 @@ adminApp.controller('AdminController', ['$scope', '$http', '$confirm', '$locatio
 
             $scope.tableTemporaryValue = {};
             $scope.alertHTML = '';
-
             $scope.tmpUrl = '';
 
             /// product fields initialize
+            $scope.ProductList = [];
+            $scope.ProductId = '';
+            $scope.selectedItem = '';
+            $scope.Name = '';
+            $scope.Permalink = '';
+            $scope.htmlContent = '';
+            $scope.Price = '';
+            $scope.SalePrice = '';
+            $scope.StoreId = '';
+            $scope.AffiliateLink = '';
+            $scope.PriceGrabberId = '';
+            $scope.FreeShipping = '';
+            $scope.CouponCode = '';
+            $scope.PostStatus = 'Inactive';
+            $scope.PageTitle = '';
+            $scope.MetaDescription = '';
+            $scope.productTags = '';
+            $scope.ProductAvailability = '';
 
-            $scope.ProductList = [],
-                $scope.ProductId = '',
-                $scope.selectedItem = '',
-                $scope.Name = '',
-                $scope.Permalink = '',
-                $scope.htmlContent = '',
-                $scope.Price = '',
-                $scope.SalePrice = '',
-                $scope.StoreId = '',
-                $scope.AffiliateLink = '',
-                $scope.PriceGrabberId = '',
-                $scope.FreeShipping = '',
-                $scope.CouponCode = '',
-                $scope.PostStatus = 'Inactive',
-                $scope.PageTitle = '',
-                $scope.MetaDescription = '',
-                $scope.productTags = '',
-                $scope.ProductAvailability = '',
+            //specification
+            $scope.Specifications = [];
+            $scope.isUpdateSpecShow = false;
 
-                //specification
-                $scope.Specifications = [],
-                $scope.isUpdateSpecShow = false,
+            //review
+            $scope.reviews = [{
+                key: 'Average',
+                value: 0
+            }];
+            $scope.isUpdateReviewShow = false;
 
-                //review
-                $scope.reviews = [{
-                    key: 'Average',
-                    value: 0
-                }],
-                $scope.isUpdateReviewShow = false,
+            //Media Content
+            $scope.mediaTitle = '';
+            $scope.mediaTypes = [
+                {"key": "img-link", "value": "Image Link"},
+                {"key": "img-upload", "value": "Image Upload"},
+                {"key": "video-link", "value": "Video Link"},
+                {"key": "video-upload", "value": "Video Upload"}
+            ];
+            $scope.mediaLink = "";
+            $scope.isMediaUploadable = true;
+            $scope.mediaList = [];
 
-                // Pagination info
-                $scope.limit = 12,
-                $scope.page = 1,
-                $scope.total = 0
+
+            // Pagination info
+            $scope.limit = 12;
+            $scope.page = 1;
+            $scope.total = 0;
 
             // show category panel for add product
             $scope.hideCategoryPanel = false;
@@ -294,7 +361,7 @@ adminApp.controller('AdminController', ['$scope', '$http', '$confirm', '$locatio
 
         $scope.buildURL = function (keyWord) {
 
-            if (keyWord.indexOf("blog") > -1) {
+            if (keyWord.indexOf("ideas") > -1) {
                 return keyWord;
             } else {
                 return "category/" + keyWord;
@@ -514,6 +581,69 @@ adminApp.controller('AdminController', ['$scope', '$http', '$confirm', '$locatio
 
         }
 
+
+        /* // add dynamic fields for media content
+         $scope.dropzoneConfig = {
+
+         'options': { // passed into the Dropzone constructor
+         'url': '/api/product/media-upload/',
+         'maxFiles': 1,
+         },
+         init: function () {
+         dz = $scope.this;
+         dz.on("maxfilesexceeded", function (file) {
+         dz.removeAllFiles();
+         dz.addFile(file);
+         });
+         },
+         'eventHandlers': {
+         'sending': function (file, xhr, formData) {
+         console.log('sending file data');
+         },
+         'success': function (file, response) {
+         console.log('file sending success');
+         }
+         }
+         };
+         */
+        /*
+
+
+         $scope.addReviewFormField = function () {
+         $scope.reviews.push(
+         {'key': $scope.reviewKey, 'value': $scope.reviewValue}
+         );
+         $scope.reviewKey = '';
+         $scope.reviewValue = '';
+         $scope.calculateAvg();
+
+         }
+
+         $scope.deleteReviewFormField = function (index) {
+         $scope.reviews.splice(index, 1);
+         $scope.calculateAvg();
+         }
+
+         $scope.editReviewFormField = function (index) {
+         $scope.$index = index;
+         $scope.reviewKey = $scope.reviews[index].key;
+         $scope.reviewValue = $scope.reviews[index].value;
+         $scope.isUpdateReviewShow = true;
+         $scope.calculateAvg();
+
+         }
+         $scope.updateReviewFormField = function () {
+         $scope.reviews[$scope.$index].key = $scope.reviewKey;
+         $scope.reviews[$scope.$index].value = $scope.reviewValue;
+         $scope.isUpdateReviewShow = false;
+
+         $scope.reviewKey = '';
+         $scope.reviewValue = '';
+         $scope.calculateAvg();
+         }
+         */
+
+
         // view product list
         $scope.showAllProduct = function () {
             $http({
@@ -537,7 +667,7 @@ adminApp.controller('AdminController', ['$scope', '$http', '$confirm', '$locatio
                     $scope.page = data.data.page;
                     $scope.total = data.data.total;
 
-                    console.log($scope.limit, $scope.page, $scope.total);
+                  //  console.log($scope.limit, $scope.page, $scope.total);
 
 
                     //  $scope.outputStatus(data, "SuccessfuProduct updated successfully");
@@ -548,7 +678,10 @@ adminApp.controller('AdminController', ['$scope', '$http', '$confirm', '$locatio
 
             });
 
-        }
+        };
+
+
+        //todo update the loadProductData after implementing media uploading
 
         $scope.loadProductData = function (id) {
             //console.log("ID IS:"+id);
@@ -587,12 +720,89 @@ adminApp.controller('AdminController', ['$scope', '$http', '$confirm', '$locatio
                     // hide category in edit mood
                     $scope.hideCategoryPanel = true;
 
+                    // load media in panel
+                    $scope.getMedia();
+                }
+            });
+        };
+
+        // Change the media type during add and edit of media content.
+        $scope.mediaTypeChange = function () {
+            console.log($scope.selectedMediaType);
+
+            if (($scope.selectedMediaType == 'img-link')) {
+                $scope.isMediaUploadable = false;
+                $scope.mediaLinkTmp = $scope.mediaLink;
+                //   console.log($scope.isMediaUploadable);
+            } else if (($scope.selectedMediaType == 'video-link')) {
+
+                $scope.isMediaUploadable = false;
+                $scope.mediaLinkTmp = $scope.mediaLink;
+                //   console.log( $scope.isMediaUploadable);
+            } else if (($scope.selectedMediaType == 'img-upload')) {
+
+                $scope.isMediaUploadable = true;
+                $scope.mediaLink = $scope.mediaLinkTmp;
+                //  console.log( $scope.isMediaUploadable);
+            } else if (($scope.selectedMediaType == 'video-upload')) {
+
+                $scope.isMediaUploadable = true;
+                $scope.mediaLink = $scope.mediaLinkTmp;
+                // console.log( $scope.isMediaUploadable);
+            }
+
+        };
+
+        // add medial content for a product
+        $scope.addMediaInfo = function () {
+            $http({
+                url: '/api/product/add-media-info',
+                method: 'POST',
+                data: {
+                    ProductId: $scope.ProductId,
+                    MediaTitle: $scope.mediaTitle,
+                    MediaType: $scope.selectedMediaType,
+                    MediaLink: $scope.mediaLink
+                }
+            }).success(function (data) {
+                console.log(data);
+
+                if (data.status_code == 200) {
+                    $scope.getMedia();
+                }
+
+            })
+        };
+
+        // get medial content list for a single product
+        $scope.getMedia = function(){
+            $http({
+                url: '/api/product/get-media/'+$scope.ProductId,
+                method: 'GET',
+            }).success(function (data) {
+                console.log(data);
+
+                if (data.status_code == 200) {
+                    $scope.mediaList = data.data;
                 }
 
             });
+        };
 
-        }
+        $scope.deleteMedia = function($id){
+            $http({
+                url: '/api/product/delete-media',
+                method: 'POST',
+                data:{'MediaId':$id}
+            }).success(function (data) {
+              //  console.log(data);
 
+                if (data.status_code == 200) {
+                    $scope.getMedia();
+                }
+
+            });
+        };
 
         // Initialize variables and functions Globally.
         $scope.initPage();

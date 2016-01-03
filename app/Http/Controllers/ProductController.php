@@ -2,19 +2,31 @@
 
     namespace App\Http\Controllers;
 
+
+    use Aws\CloudFront\Exception\Exception;
     use Illuminate\Http\Request;
 
     use App\Http\Requests;
     use App\Http\Controllers\Controller;
     use App\Models\Product;
+    use App\Models\Media;
+    use Illuminate\Contracts\Filesystem\Factory;
+    use Storage;
 
     class ProductController extends ApiController {
 
         public function __construct()
         {
             // Apply the jwt.auth middleware to all methods in this controller
-            $this->middleware('jwt.auth', ['except' => ['publishProduct','searchProductByName', 'updateProductInfo', 'getAllProductList', 'getProductById', 'isPermalinkExist', 'addProduct']]);
+            $this->middleware('jwt.auth',
+                ['except' => [
+                    'publishProduct', 'searchProductByName', 'updateProductInfo',
+                    'getAllProductList', 'getProductById', 'isPermalinkExist','addProduct',
+                    'addMediaForProduct', 'addMediaInfo', 'getMediaForProduct','deleteSingleMediaItem'
+                ]]);
             $this->product = new Product();
+
+            $this->media = new Media();
         }
 
         /**
@@ -131,7 +143,7 @@
 
                 $newProduct = $this->product->updateProductInfo($inputData);
 
-               // dd($newProduct);
+                // dd($newProduct);
                 return $this->setStatusCode(\Config::get("const.api-status.success"))
                     ->makeResponse($newProduct);
             } catch (Exception $ex)
@@ -151,19 +163,19 @@
             {
                 $inputData = \Input::all();
 
-                $tempInputData = $inputData ;
+                $tempInputData = $inputData;
                 $tempInputData['Specifications'] = null;
                 $tempInputData['SimilarProductIds'] = null;
                 $tempInputData['Review'] = null;
 
                 $validationRules = [
                     'rules'  => [
-                        'Name' => 'required',
+                        'Name'         => 'required',
                         'Permalink'    => 'required',
                         'selectedItem' => 'required'
                     ],
                     'values' => [
-                        'Name' => isset($tempInputData['Name']) ? $tempInputData['Name'] : null,
+                        'Name'         => isset($tempInputData['Name']) ? $tempInputData['Name'] : null,
                         'Permalink'    => isset($tempInputData['Permalink']) ? $tempInputData['Permalink'] : null,
                         'selectedItem' => isset($tempInputData['CategoryId']) ? $tempInputData['CategoryId'] : null
                     ]
@@ -171,7 +183,7 @@
 
                 list($productData, $validator) = $this->inputValidation($tempInputData, $validationRules);
 
-                $productData['Specifications'] = $inputData['Specifications'] ;
+                $productData['Specifications'] = $inputData['Specifications'];
                 $productData['SimilarProductIds'] = $inputData['SimilarProductIds'];
                 $productData['Review'] = $inputData['Review'];
 
@@ -180,8 +192,8 @@
                 if ($validator->passes())
                 {
                     $updatedProduct = $this->product->updateProductInfo($productData);
-                  //  $updatedProduct->post_status = 'Active';
-                 //   $updatedProduct->save();
+                    //  $updatedProduct->post_status = 'Active';
+                    //   $updatedProduct->save();
 
                     return $this->setStatusCode(\Config::get("const.api-status.success"))
                         ->makeResponse("Update Successful.");
@@ -210,10 +222,121 @@
 
 
         /**
-         *
+         * @return array
+         * @internal param Request|\Request $request
          */
-        public function addMediaContent()
+
+
+        public function addMediaInfo()
         {
+            $inputData = \Input::all();
+
+            $productId = isset($inputData['ProductId']) ? $inputData['ProductId'] : null;
+
+            $product = $this->product->where('id', $productId)->first();
+
+            $media = new Media();
+
+            $media->media_name = $inputData['MediaTitle'];
+            $media->media_type = $inputData['MediaType'];
+            $media->media_link = $inputData['MediaLink'];
+
+            try
+            {
+                $result = $product->medias()->save($media);
+
+                return $this->setStatusCode(\Config::get("const.api-status.success"))
+                    ->makeResponse($result);
+
+            } catch (Exception $ex)
+            {
+                return $this->setStatusCode(\Config::get("const.api-status.system-fail"))
+                    ->makeResponseWithError("System Failure !", $ex);
+            }
+        }
+
+        public function getMediaForProduct($id)
+        {
+            $result = Product::find($id)->medias;
+
+            return $this->setStatusCode(\Config::get("const.api-status.success"))
+                ->makeResponse($result);
+
+        }
+
+        public function deleteSingleMediaItem()
+        {
+
+            $id = \Input::get('MediaId');
+            try{
+                $mediaItem = $this->media->where('id',$id)->first();
+
+                //delete entry from database
+                $this->media->where('id',$id)->delete();
+
+                // delete file from S3
+                $strReplace = \Config::get("const.file.s3-path") ;// "http://s3-us-west-1.amazonaws.com/ideaing-01/";
+                $file = str_replace($strReplace,'',$mediaItem['media_link']);
+                $s3 = Storage::disk('s3');
+                $s3->delete($file);
+
+                return $this->setStatusCode(\Config::get("const.api-status.success"))
+                    ->makeResponse("File deleted successfully");
+            }catch (Exception $ex){
+                return $this->setStatusCode(\Config::get("const.api-status.system-fail"))
+                    ->makeResponseWithError("System Failure !", $ex);
+            }
+
+        }
+
+
+        public function addMediaForProduct(Request $request)
+        {
+
+            $fileResponse = [];
+
+            if (!$request->hasFile('file'))
+            {
+                $fileResponse['result'] = \Config::get("const.file.file-not-exist");
+                $fileResponse['status_code'] = \Config::get("const.api-status.validation-fail");
+
+                return $fileResponse;
+
+            } else if (!$request->file('file')->isValid())
+            {
+                $fileResponse['result'] = \Config::get("const.file.file-not-exist");
+                $fileResponse['status_code'] = \Config::get("const.api-status.validation-fail");
+
+                return $fileResponse;
+            } else if (!in_array($request->file('file')->guessClientExtension(), array("jpeg", "jpg", "bmp", "png", "mp4", "avi", "mkv")))
+            {
+                $fileResponse['result'] = \Config::get("const.file.file-invalid");
+                $fileResponse['status_code'] = \Config::get("const.api-status.validation-fail");
+
+                return $fileResponse;
+            } else if ($request->file('file')->getClientSize() > \Config::get("const.file.file-max-size"))
+            {
+                $fileResponse['result'] = \Config::get("const.file.file-max-limit-exit");
+                $fileResponse['status_code'] = \Config::get("const.api-status.validation-fail");
+
+                return $fileResponse;
+            } else
+            {
+                $fileName = 'product-' . uniqid() . '-' . $request->file('file')->getClientOriginalName();
+
+                // pointing filesystem to AWS S3
+                $s3 = Storage::disk('s3');
+
+                if ($s3->put($fileName, file_get_contents($request->file('file')), 'public'))
+                {
+                    $fileResponse['result'] = \Config::get("const.file.s3-path") . $fileName;
+                    $fileResponse['status_code'] = \Config::get("const.api-status.success");
+
+                    return $fileResponse;
+                }
+            }
+
+            // function //
 
         }
 

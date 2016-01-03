@@ -48,6 +48,12 @@
             return $this->belongsTo('App\Models\ProductCategory');
         }
 
+        public function medias()
+        {
+            return $this->morphMany('App\Models\Media','mediable');
+        }
+
+
         // accessor for JSON decode
         public function getSimilarProductIdsAttribute($value)
         {
@@ -91,7 +97,7 @@
                     "product_category_id"     => ($product['CategoryId'] != null) ? $product['CategoryId'] : null,
                     "product_name"            => $product['Name'],
                     "product_permalink"       => $product['Permalink'],
-                    "product_description"     => ($product['Description'] != null) ? $product['Description'] : "",//,
+                    "product_description"     => ($product['Description'] != null) ? $product['Description'] : "",
                     "specifications"          => json_encode($product['Specifications']),
                     "price"                   => $product['Price'],
                     "sale_price"              => $product['SalePrice'],
@@ -104,7 +110,6 @@
                     "page_title"              => $product['PageTitle'],
                     "meta_description"        => $product['MetaDescription'],
                     "similar_product_ids"     => json_encode($product['SimilarProductIds']),
-                    //  "similar_product_ids"     => $product['SimilarProductIds'],
                     "product_availability"    => $product['ProductAvailability'],
                     "post_status"             => $product['PostStatus']
                 );
@@ -124,11 +129,6 @@
 
         }
 
-        public function publishProduct($product, $active = true)
-        {
-
-
-        }
 
         public function getProductList($settings)
         {
