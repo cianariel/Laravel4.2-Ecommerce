@@ -6079,7 +6079,8 @@ header.sub-head {
         padding-left: 18px; }
   .idea-stories .story-details .author-image-big img {
     max-width: 100%;
-    height: auto; }
+    height: auto;
+    border-radius: 100px; }
 .idea-stories .author-description {
   background: #f2f5f5;
   padding-top: 20px;
