@@ -6,9 +6,6 @@
         </a>
         <h1>Nest Protect (Second Generation)</h1>
 
-
-
-
         <ul class="social-rounds hidden-sm hidden-xs pull-right">
             <li><a class="fb" href="#"></a></li>
             <li><a class="twi" href="#"></a></li>
@@ -18,10 +15,6 @@
 
         <ul class="like-nav hidden-xs pull-right pull-right">
             <li><a class="like-counter" href="#">189</a></li>
-            <!--                <li><a class="author" href="#"></a></li>-->
-            <!--                <li><a class="author" href="#"></a></li>-->
-            <!--                <li><a class="author" href="#"></a></li>-->
-            <!--                <li><a class="likes" href="#">and 186 others</a></li>-->
         </ul>
 
         <div class="icon-wrap pull-right">

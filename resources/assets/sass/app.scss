@@ -689,25 +689,35 @@ nav{
       }
     }
 
+    .rsArrow,
     .rsThumbsArrow{
       position: absolute;
-      top: 0px;
-      left: 40%;
       width: 40px;
       height: 40px;
+      background-size: contain;
+      background-position: center;
+      background-repeat: no-repeat;
 
-      &.rsThumbsArrowLeft{
-        background:url('/assets/images/arrow-up-pink.png') center no-repeat;
-        background-size: contain;
-
+      &.rsArrowLeft{
+        top:40%;
+        background-image: url('/assets/images/arrow-left-pink.png');
+      }
+      &.rsArrowRight{
+        top:43%;
+        right: 165px;
+        background-image:url('/assets/images/arrow-right-pink.png');
       }
 
+      &.rsThumbsArrowLeft{
+        left: 40%;
+        top: 0px;
+        background-image: url('/assets/images/arrow-up-pink.png');
+      }
       &.rsThumbsArrowRight{
-        background:url('/assets/images/icons/arrow-down-pink.png') center no-repeat;
-        background-size: contain;
-
         //bottom: 0 !important;
+        left: 40%;
         top: 461px;
+        background-image: url('/assets/images/icons/arrow-down-pink.png');
       }
     }
 
@@ -843,12 +853,6 @@ nav{
       }
     }
   }
-}
-
-.rsThumbsArrow{
-  background: #0000C2;
-  width: 40px;
-  height: 80px;
 }
 
 .slider-side-block{
@@ -4167,6 +4171,16 @@ footer.about-footer{
         width: 90% !important;
         margin-left: 5% !important;
 
+      }
+
+      .rsArrow{
+        &.rsArrowLeft{
+          left: 5%;
+        }
+        &.rsArrowRight{
+          right: 5%;
+          top:40%;
+        }
       }
 
       .rsThumbsArrow {
