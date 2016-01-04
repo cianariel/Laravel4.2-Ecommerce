@@ -14,7 +14,7 @@
             </ul>
 
             <ul class="like-nav hidden-xs pull-right">
-                <li><a class="like-counter" href="#">189</a></li>
+                <li><a class="like-counter" href="#"><span>Liked by</span>189</a></li>
 <!--                <li><a class="author" href="#"></a></li>-->
 <!--                <li><a class="author" href="#"></a></li>-->
 <!--                <li><a class="author" href="#"></a></li>-->
@@ -27,7 +27,7 @@
 <!--            <div class="container">-->
                 <div class="head-wrap">
                     <h1 class="col-sm-8 col-xs-12"><span>{{the_title()}}</span></h1>
-                    <a class="like-counter hidden-soft shown-620" href="#">189</a>
+                    <a class="like-counter hidden-soft shown-620" href="#"><span>Liked by</span>189</a>
                 </div>
 <!--            </div>-->
 
@@ -43,7 +43,7 @@
                     <li class="active"><a href="#" class="ideas-link">Ideas</a></li>
                 </ul>
                 <ul class="like-nav hidden-xs pull-right">
-                    <li><a class="like-counter" href="#">189</a></li>
+                    <li><a class="like-counter" href="#"><span></span><b>189</b></a></li>
                     <li><a class="author" href="#"></a></li>
                     <li><a class="author" href="#"></a></li>
                     <li><a class="author" href="#"></a></li>
@@ -70,28 +70,19 @@
 
                         </h4>
                         <time datetime="{{the_date('Y-m-d')}}">{{the_time( get_option( 'date_format' ) )}}</time>
-                        <div class="content-tags">
-                            <ul>
-                                <li><a href="#" class="ideas-link">12 Ideas</a></li>
-                                <li><a href="#" class="products-link">95 Products</a></li>
-                                <li><a href="#" class="photos-link">255 photos</a></li>
-                            </ul>
-                        </div>
+<!--                        <div class="content-tags">-->
+<!--                            <ul>-->
+<!--                                <li><a href="#" class="ideas-link">12 Ideas</a></li>-->
+<!--                                <li><a href="#" class="products-link">95 Products</a></li>-->
+<!--                                <li><a href="#" class="photos-link">255 photos</a></li>-->
+<!--                            </ul>-->
+<!--                        </div>-->
                     </div>
 
 
                 </header>
 
-            <aside class="share-bar sticks-on-scroll">
-                <ul>
-                    <li class="fb"><a href="#">55</a></li>
-                    <li class="twi"><a href="#">120</a></li>
-                    <li class="gp"><a href="#">521</a></li>
-                    <li class="email"><a href="#">Email</a></li>
-                    <li class="heart"><a href="#">12.5</a></li>
-                    <li class="comment"><a href="#">322</a></li>
-                </ul>
-            </aside>
+                <?php loadLaravelView('share-bar'); ?>
 
                 <section class="article-content">
                     <?php the_content(); ?>
