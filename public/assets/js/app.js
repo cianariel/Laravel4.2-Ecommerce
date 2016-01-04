@@ -115,11 +115,15 @@
                 $(window).scroll(function(){
                     var window_top = $(window).scrollTop();
                     var div_top = $('#hero-nav').offset().top;
+                    var $main_header = $('#top-nav');
 
                     if (window_top > div_top) {
                         $showMe.fadeIn();
+                        $main_header.fadeOut();
                     } else {
                         $showMe.fadeOut();
+                        $main_header.fadeIn();
+
                     }
                 });
             }
