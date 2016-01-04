@@ -5194,7 +5194,6 @@ main.page-content .card {
     .grid-box.big-box .img-wrap {
       overflow: visible; }
       .grid-box.big-box .img-wrap .big-image-link img {
-        min-height: 450px;
         border: 1px solid #f2f5f5; }
     .grid-box.big-box .like-wrap {
       padding-left: 45px;
@@ -5480,7 +5479,7 @@ header.colophon {
     width: 100%;
     z-index: 30;
     background: #fff;
-    background: rgba(255, 255, 255, 0.85);
+    background: rgba(255, 255, 255, 0.9);
     border-bottom: 1px solid #dbdbdb; }
     @media (min-width: 620px) {
       header.colophon.scroll-header #top-nav li a {
