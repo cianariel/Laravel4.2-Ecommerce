@@ -35,6 +35,14 @@ $instagram-blue:  #54A3DA;
   color: $sky-blue !important;
 }
 
+.dark-blue{
+  color: $facebook-blue;
+}
+
+.red{
+  color: $pinterest-red;
+}
+
 .grey{
   color: darken($light-grey, 10%);
 }
@@ -231,18 +239,20 @@ a{ // Custom Link Styles
     height: 64px;
     display: inline-block;
     background: url("/assets/images/dummies/author.png") center no-repeat;
-    border: 2px solid #fff;
+    //border: 2px solid #fff;
+    box-shadow: inset 0 0 0 3px #fff;
     border-radius: 40px;
     text-indent: -9999px;
   }
 
   &.like-counter{
-    width: 100%;
+    display:  inline-block;
+    width: 85px;
     height: 35px;
     //display: inline-block;
     font-size: 1.7rem;
     border-radius: 30px;
-    padding: 0 25px 0 0 !important;
+    padding: 7px 10px 0 0 !important;
     color: $iridium;
     border: 1px solid $pale-grey;
 
@@ -253,10 +263,10 @@ a{ // Custom Link Styles
     }
 
     span{
-      display: block;
+      display: inline-block;
       height: 40px;
       width: 40px;
-      margin-top: -3px;
+      margin-top: -9px;
       margin-left: -3px;
       float: left;
       //margin-top: -6px;
@@ -267,7 +277,7 @@ a{ // Custom Link Styles
       background-position: center !important;
     }
     b{
-      padding-top: 5px;
+      //padding-top: 5px;
       display: inline-block;
       color: #FF0042;
     }
@@ -615,12 +625,18 @@ nav{
 
   .like-counter{
     overflow: hidden;
-    font-size: 2.3rem;
+    //font-size: 2.3rem;
     color: #fff;
-    height: 45px;
-    width: 80px;
-    margin: 0 auto;
+    height: 65px;
+    //width: 80px;
+    margin: 30px auto 0;
+    padding: 20px 0 20px 3px !important;
+    border: 0;
     //background-position: left 4px;
+
+    span{
+      margin-right: 5px;
+    }
   }
 
   .hero-background{
@@ -662,6 +678,7 @@ nav{
       padding-left: 10%;
       background-color: rgba($iridium, .7);
 
+
       span{
         //padding: 5px 15px;
         background-position-x: 3px;
@@ -670,6 +687,10 @@ nav{
     .color-overlay{
       display: none;
     }
+    .like-counter{
+      display: none;
+    }
+
   }
 
   & > .container{
@@ -2049,26 +2070,53 @@ header.colophon{
     text-align: center;
   }
 
-  .like-nav{
-    margin-top: 3px;
-    li{
-      padding-top: 0;
+  //.like-nav{
+  //  margin-top: 3px;
+  //  li{
+  //    padding-top: 0;
       a.like-counter {
-        padding-top: 0;
-        padding-right:8px;
-        background-position: left top;
+        margin-left: 30px;
+        //padding-top: 0;
+        //padding-right:8px;
+        //background-position: left top;
       }
-    }
-  }
+  //  }
+  //}
   //.like-nav li a.author {
   //  margin-top: -13px;
   //}
 
   .social-rounds{
     float: right;
-    width: 190px;
-    //margin-top: 4px;
-    overflow: hidden;
+    width: 300px;
+    //overflow: hidden;
+
+    li{
+      float: left;
+
+      span{
+        display: inline-block;
+        padding-top: 4px;
+        padding-left: 5px;
+      }
+    }
+
+    li.all-shares{
+      float: left;
+      width: 90px;
+      text-align: center;
+      //padding-top: 8px;
+      color: $light-grey;
+      text-transform: uppercase;
+      line-height: 1;
+      font-size: 1.1rem;
+      margin-top: -5px;
+
+      b{
+        display: inline-block;
+        font-size: 3rem;
+      }
+    }
 
     a{
       display: block;
@@ -2610,6 +2658,7 @@ header.sub-head{
     background-repeat: no-repeat;
     color: $tarmac;
 
+
     &.home-link{
       background-image: url('/assets/images/house-outline.png');
 
@@ -2766,7 +2815,7 @@ header.sub-head{
 
 .like-nav{
   li{
-    width: 50px;
+    width: 35px;
     padding-top: 9px;
     float: left;
 
@@ -2787,6 +2836,8 @@ header.sub-head{
       &.like-counter{
         padding-left: 30px;
         padding-top: 13px;
+        margin-right: 15px;
+        margin-left: -15px;
         color: $iridium;
         //background-position: left 14px;
 
@@ -2799,13 +2850,24 @@ header.sub-head{
         padding: 0;
         background-size: cover;
         border-radius: 90px;
+        margin-left: -15px;
 
         &:hover{
           border: 2px solid $iridium;
         }
       }
 
+      &.likes{
+        color: $light-grey !important;
+        font-size: 1.6rem;
+        padding-top: 15px;
+        padding-left: 10px !important;
+      }
+
     }
+    //&:not(:last-child) a.author{
+    //  margin-left: -15px;
+    //}
   }
 
 }
