@@ -1,5 +1,6 @@
 <aside class="share-bar sticks-on-scroll">
     <ul>
+        <li class="all-shares"><b>120K </b>all shares</li>
         <li class="fb"><a href="#">55</a></li>
         <li class="twi"><a href="#">120</a></li>
         <li class="gp"><a href="#">521</a></li>
