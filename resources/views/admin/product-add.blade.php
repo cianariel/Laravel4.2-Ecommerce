@@ -1,6 +1,7 @@
 @extends('layouts.admin')
 
 @section('content')
+
         <!-- Navigation -->
 <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
 
@@ -53,32 +54,11 @@
                             </div>
 
                             <div class="row">
-                                <div uib-collapse="isCollapsed">
-                                    <div class="col-lg-8">
-                                        <p class="row">
 
-                                        @if( empty($id))
-                                            <div class="from-group">
-                                                <label>Enter Permalink</label>
-                                                <input ng-model="desiredPermalink" class="form-control"
-                                                       placeholder="Enter desired permalink">
-
-                                                <div style="margin-top: 5px">&nbsp;</div>
-                                                <p>
-                                                    <button class="btn btn-primary" type="button"
-                                                            ng-click="addProduct()">
-                                                        Check and Proceed
-                                                    </button>
-                                                </p>
-                                            </div>
-                                        @endif
-
-                                    </div>
-                                </div>
 
                             </div>
-                            <div uib-collapse="isCollapsedToggle" class="col-lg-10">
 
+                            <div class="row" class="col-lg-10">
                                 <div class="panel panel-default">
                                     <div class="panel-heading">
                                         Add Product Panel
@@ -179,19 +159,26 @@
                                                                 <div class="col-sm-12 outline: 1px solid orange;">
                                                                     <div text-angular data-ng-model="htmlContent"
                                                                          name="description-editor"
-                                                                         ta-text-editor-class="border-around"
-                                                                         ta-html-editor-class="border-around"></div>
+                                                                         ta-text-editor-class="border-around ta-editor"
+                                                                         ta-html-editor-class="border-around ta-editor">
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                             <div class="form-group">
                                                                 <label>Price</label>
-                                                                <input data-ng-model="Price" class="form-control"
-                                                                       placeholder="Enter text">
+                                                                <input type="text"
+                                                                       valid-number
+                                                                       data-ng-model="Price"
+                                                                       class="form-control"
+                                                                       placeholder="Enter Price (Decimal number only)">
                                                             </div>
                                                             <div class="form-group">
                                                                 <label>Sale Price</label>
-                                                                <input data-ng-model="SalePrice" class="form-control"
-                                                                       placeholder="Enter text">
+                                                                <input type="text"
+                                                                       valid-number
+                                                                       data-ng-model="SalePrice"
+                                                                       class="form-control"
+                                                                       placeholder="Enter Sale Price (Decimal number only)">
                                                             </div>
                                                             <div class="form-group">
                                                                 <label>Store Name</label>
@@ -211,9 +198,9 @@
                                                                        placeholder="Enter text">
                                                             </div>
                                                             <div class="form-group">
-                                                                <label>Free Shipping</label>
-                                                                <input data-ng-model="FreeShipping" class="form-control"
-                                                                       placeholder="Enter text">
+                                                                <label>Free Shipping Available : </label>
+                                                                <input type="checkbox" data-ng-model="FreeShipping"
+                                                                       class="">
                                                             </div>
                                                             <div class="form-group">
                                                                 <label>Coupon Code</label>
@@ -233,27 +220,23 @@
                                                             </div>
                                                             <div class="form-group">
                                                                 <label>Similar Products (Auto Complete)</label>
-
                                                                 <tags-input ng-model="productTags"
                                                                             display-property="name">
-
                                                                     <auto-complete source="searchProductByName($query)"
                                                                                    ng-model-options="{debounce: 1000}"></auto-complete>
-
                                                                 </tags-input>
-
                                                             </div>
                                                             <div class="form-group">
                                                                 <label>Product Availability</label>
                                                                 <input data-ng-model="ProductAvailability"
                                                                        class="form-control" placeholder="Enter text">
                                                             </div>
-
                                                             <div class="form-group">
                                                                 <button data-ng-click="updateProduct()"
                                                                         class="btn btn-primary" type="button">
                                                                     Save As Draft
                                                                 </button>
+
                                                                 <button ng-hide="PostStatus == 'Active'"
                                                                         data-ng-click="changeProductActivation()"
                                                                         class="btn btn-warning" type="button">
@@ -265,10 +248,8 @@
                                                                     Inactive
                                                                 </button>
                                                             </div>
-
                                                         </div>
                                                     </div>
-
                                                 </div>
                                                 <div class="tab-pane fade" id="specification">
                                                     <h4>Specification</h4>
@@ -290,11 +271,7 @@
                                                                 tooltip-placement="bottom">
                                                             <i class="fa fa-check"></i>
                                                         </button>
-
-
                                                     </p>
-
-
                                                     <div class="row">
                                                         <div class="col-lg-8">
                                                             <div class="panel panel-default">
@@ -447,6 +424,16 @@
                                                             </div>
                                                         </div>
                                                     </div>
+                                                    <div class="row">
+                                                        <div class="col-lg-6">
+                                                            <div class="form-group">
+                                                                <label>External Review Link</label>
+                                                                <input data-ng-model="externalReviewLink"
+                                                                       class="form-control"
+                                                                       placeholder="Enter External Review Link">
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                     <div class="form-group">
                                                         <button data-ng-click="updateProduct()"
                                                                 class="btn btn-primary" type="button">
@@ -478,11 +465,8 @@
                                                             <label>Media Title</label>
                                                             <select data-ng-model="selectedMediaType"
                                                                     data-ng-change="mediaTypeChange()"
-                                                                    class="form-control">
-                                                                <option ng-repeat="media in mediaTypes"
-                                                                        value="@{{ media.key }}">
-                                                                    @{{ media.value }}
-                                                                </option>
+                                                                    class="form-control"
+                                                                    ng-options="media.value for media in mediaTypes">
                                                             </select>
                                                         </div>
 
@@ -493,6 +477,12 @@
                                                                    class="form-control" placeholder="Enter media link">
                                                         </div>
 
+                                                            <div class="form-group">
+                                                                <label>Mark As Hero Item :</label>
+                                                                <input data-ng-model="isHeroItem"
+                                                                        type="checkbox">
+                                                            </div>
+
                                                         <div class="form-group">
                                                             <div ng-show="isMediaUploadable">
                                                                 <label>Upload Media Content</label>
@@ -501,25 +491,29 @@
                                                             </div>
                                                             <br>
                                                             <button type="button"
+                                                                    ng-show="isMediaUploadable"
                                                                     class="btn btn-success btn-s"
-                                                                    ng-click="uploader.uploadAll()">upload Content</button>
+                                                                    ng-click="uploader.uploadAll()">upload Content
+                                                            </button>
                                                         </div>
                                                         <p>
                                                             <button type="button"
                                                                     class="btn btn-primary"
-                                                                    ng-click="addMediaInfo()">Save Info</button>
+                                                                    ng-click="addMediaInfo()">Save Info
+                                                            </button>
                                                         </p>
-                                                        </div>
+                                                    </div>
                                                     <div class="col-lg-12">
                                                         <!-- media list  -->
                                                         <div class="table-responsive">
                                                             <table class="table table-striped table-bordered table-hover">
                                                                 <thead>
                                                                 <tr>
-                                                                    <th  class="col-md-1">#</th>
+                                                                    <th class="col-md-1">#</th>
                                                                     <th class="col-md-3">Title</th>
                                                                     <th class="col-md-2">Type</th>
-                                                                    <th class="col-md-5">Link</th>
+                                                                    <th class="col-md-1">Hero</th>
+                                                                    <th class="col-md-4">Link</th>
                                                                     <th class="col-md-1">Action</th>
                                                                 </tr>
                                                                 </thead>
@@ -528,10 +522,13 @@
                                                                     <td>@{{media.id}}</td>
                                                                     <td>@{{ media.media_name}}</td>
                                                                     <td>@{{ media.media_type}} </td>
-                                                                    <td>@{{ media.media_link}} </td>
+                                                                    <td>@{{ media.is_hero_item == 1? 'true':''}} </td>
+                                                                    <td>
+                                                                        <a href="@{{ media.media_link}}" target="_blank">
+                                                                         @{{ media.media_link}}
+                                                                    </td>
                                                                     <td>
                                                                         <button data-ng-click="deleteMedia(media.id)"
-                                                                                data-ng-disabled="true"
                                                                                 confirm="Are you sure to delete this item ?"
                                                                                 confirm-settings="{size: 'sm'}"
                                                                                 class="btn btn-danger btn-circle"

@@ -21,6 +21,53 @@ adminApp.directive('loading', ['$http', function ($http) {
 
 }]);
 
+// only decimal number input validation
+adminApp.directive('validNumber', function () {
+    return {
+        require: '?ngModel',
+        link: function (scope, element, attrs, ngModelCtrl) {
+            if (!ngModelCtrl) {
+                return;
+            }
+
+            ngModelCtrl.$parsers.push(function (val) {
+                if (angular.isUndefined(val)) {
+                    var val = '';
+                }
+
+                var clean = val.replace(/[^-0-9\.]/g, '');
+                var negativeCheck = clean.split('-');
+                var decimalCheck = clean.split('.');
+                if (!angular.isUndefined(negativeCheck[1])) {
+                    negativeCheck[1] = negativeCheck[1].slice(0, negativeCheck[1].length);
+                    clean = negativeCheck[0] + '-' + negativeCheck[1];
+                    if (negativeCheck[0].length > 0) {
+                        clean = negativeCheck[0];
+                    }
+
+                }
+
+                if (!angular.isUndefined(decimalCheck[1])) {
+                    decimalCheck[1] = decimalCheck[1].slice(0, 2);
+                    clean = decimalCheck[0] + '.' + decimalCheck[1];
+                }
+
+                if (val !== clean) {
+                    ngModelCtrl.$setViewValue(clean);
+                    ngModelCtrl.$render();
+                }
+                return clean;
+            });
+
+            element.bind('keypress', function (event) {
+                if (event.keyCode === 32) {
+                    event.preventDefault();
+                }
+            });
+        }
+    };
+});
+
 adminApp.controller('AdminController', ['$scope', '$http', '$confirm', '$location', '$anchorScroll', 'FileUploader'
     , function ($scope, $http, $confirm, $location, $anchorScroll, FileUploader) {
 
@@ -125,6 +172,7 @@ adminApp.controller('AdminController', ['$scope', '$http', '$confirm', '$locatio
                 value: 0
             }];
             $scope.isUpdateReviewShow = false;
+            $scope.externalReviewLink = '';
 
             //Media Content
             $scope.mediaTitle = '';
@@ -136,6 +184,7 @@ adminApp.controller('AdminController', ['$scope', '$http', '$confirm', '$locatio
             ];
             $scope.mediaLink = "";
             $scope.isMediaUploadable = true;
+            $scope.isHeroItem = false;
             $scope.mediaList = [];
 
 
@@ -379,31 +428,29 @@ adminApp.controller('AdminController', ['$scope', '$http', '$confirm', '$locatio
             $scope.isCollapsedToggle = !$scope.isCollapsed;
         };
         $scope.addProduct = function () {
-            $scope.closeAlert();
-            console.log($scope.desiredPermalink);
-            if (($scope.desiredPermalink == '') || ( typeof  $scope.desiredPermalink == 'undefined')) {
-                $scope.addAlert('danger', 'Permalink can not be blank !');
-                return false;
-            }
+            // $scope.closeAlert();
+            /* console.log($scope.desiredPermalink);
+             if (($scope.desiredPermalink == '') || ( typeof  $scope.desiredPermalink == 'undefined')) {
+             $scope.addAlert('danger', 'Permalink can not be blank !');
+             return false;
+             }*/
 
             $http({
                 //       url: '/api/product/check-permalink/' + $scope.desiredPermalink,
                 url: '/api/product/add-product',
                 method: "POST",
-                data: {
-                    Permalink: $scope.desiredPermalink,
-                }
+                data: {}
 
             }).success(function (data) {
                 if (data.status_code == 200) {
 
                     $scope.ProductId = data.data.id;
-                    $scope.outputStatus(data, "Product created successfully");
-                    $scope.isCollapsed = true;
-                    $scope.isCollapsedToggle = !$scope.isCollapsed;
+                    //   $scope.outputStatus(data, "Product created successfully");
+                    //   $scope.isCollapsed = true;
+                    //    $scope.isCollapsedToggle = !$scope.isCollapsed;
                     $scope.Permalink = $scope.desiredPermalink;
-                } else if (data.status_code == 410) {
-                    $scope.outputStatus(data, "Permalink is not available please enter new.");
+                } else {
+                    // $scope.outputStatus(data, "Permalink is not available please enter new.");
                 }
 
             });
@@ -413,6 +460,15 @@ adminApp.controller('AdminController', ['$scope', '$http', '$confirm', '$locatio
         // update product
         $scope.updateProduct = function () {
             // console.log('product id :', $scope.ProductId);
+
+            // if it's a new request then product should be insert first
+            //   console.log($scope.ProductId);
+            if ($scope.ProductId == '') {
+                //   console.log('creating product');
+
+                $scope.addProduct();
+            }
+
             $scope.closeAlert();
 
             $http({
@@ -437,7 +493,9 @@ adminApp.controller('AdminController', ['$scope', '$http', '$confirm', '$locatio
                     SimilarProductIds: $scope.productTags,
                     ProductAvailability: $scope.ProductAvailability,
                     Specifications: $scope.Specifications,
-                    Review: $scope.reviews
+                    Review: $scope.reviews,
+                    ExternalReviewLink: $scope.externalReviewLink
+
                 }
 
             }).success(function (data) {
@@ -480,7 +538,8 @@ adminApp.controller('AdminController', ['$scope', '$http', '$confirm', '$locatio
                     SimilarProductIds: $scope.productTags,
                     ProductAvailability: $scope.ProductAvailability,
                     Specifications: $scope.Specifications,
-                    Review: $scope.reviews
+                    Review: $scope.reviews,
+                    ExternalReviewLink: $scope.externalReviewLink
                 }
 
             }).success(function (data) {
@@ -543,6 +602,7 @@ adminApp.controller('AdminController', ['$scope', '$http', '$confirm', '$locatio
             );
             $scope.reviewKey = '';
             $scope.reviewValue = '';
+            $scope.externalReviewLink = '';
             $scope.calculateAvg();
 
         }
@@ -582,68 +642,6 @@ adminApp.controller('AdminController', ['$scope', '$http', '$confirm', '$locatio
         }
 
 
-        /* // add dynamic fields for media content
-         $scope.dropzoneConfig = {
-
-         'options': { // passed into the Dropzone constructor
-         'url': '/api/product/media-upload/',
-         'maxFiles': 1,
-         },
-         init: function () {
-         dz = $scope.this;
-         dz.on("maxfilesexceeded", function (file) {
-         dz.removeAllFiles();
-         dz.addFile(file);
-         });
-         },
-         'eventHandlers': {
-         'sending': function (file, xhr, formData) {
-         console.log('sending file data');
-         },
-         'success': function (file, response) {
-         console.log('file sending success');
-         }
-         }
-         };
-         */
-        /*
-
-
-         $scope.addReviewFormField = function () {
-         $scope.reviews.push(
-         {'key': $scope.reviewKey, 'value': $scope.reviewValue}
-         );
-         $scope.reviewKey = '';
-         $scope.reviewValue = '';
-         $scope.calculateAvg();
-
-         }
-
-         $scope.deleteReviewFormField = function (index) {
-         $scope.reviews.splice(index, 1);
-         $scope.calculateAvg();
-         }
-
-         $scope.editReviewFormField = function (index) {
-         $scope.$index = index;
-         $scope.reviewKey = $scope.reviews[index].key;
-         $scope.reviewValue = $scope.reviews[index].value;
-         $scope.isUpdateReviewShow = true;
-         $scope.calculateAvg();
-
-         }
-         $scope.updateReviewFormField = function () {
-         $scope.reviews[$scope.$index].key = $scope.reviewKey;
-         $scope.reviews[$scope.$index].value = $scope.reviewValue;
-         $scope.isUpdateReviewShow = false;
-
-         $scope.reviewKey = '';
-         $scope.reviewValue = '';
-         $scope.calculateAvg();
-         }
-         */
-
-
         // view product list
         $scope.showAllProduct = function () {
             $http({
@@ -667,7 +665,7 @@ adminApp.controller('AdminController', ['$scope', '$http', '$confirm', '$locatio
                     $scope.page = data.data.page;
                     $scope.total = data.data.total;
 
-                  //  console.log($scope.limit, $scope.page, $scope.total);
+                    //  console.log($scope.limit, $scope.page, $scope.total);
 
 
                     //  $scope.outputStatus(data, "SuccessfuProduct updated successfully");
@@ -703,7 +701,7 @@ adminApp.controller('AdminController', ['$scope', '$http', '$confirm', '$locatio
                     $scope.StoreId = data.data.store_id;
                     $scope.AffiliateLink = data.data.affiliate_link;
                     $scope.PriceGrabberId = data.data.price_grabber_master_id;
-                    $scope.FreeShipping = data.data.free_shipping;
+                    $scope.FreeShipping = data.data.free_shipping == 1 ? true : false;
                     $scope.CouponCode = data.data.coupon_code;
                     $scope.PostStatus = data.data.post_status;
                     $scope.PageTitle = data.data.page_title;
@@ -712,10 +710,15 @@ adminApp.controller('AdminController', ['$scope', '$http', '$confirm', '$locatio
                     $scope.ProductAvailability = data.data.product_availability;
                     $scope.Specifications = data.data.specifications;
                     $scope.reviews = data.data.review;
+                    // $scope.externalReviewLink =
+                    $scope.externalReviewLink = data.data.review_ext_link;
+
+                    //test
+                  //  $scope.selectedMediaType = 'Image Upload';
 
                     //show hide product add element
-                    $scope.isCollapsed = true; // default true.
-                    $scope.isCollapsedToggle = !$scope.isCollapsed;
+                    //    $scope.isCollapsed = true; // default true.
+                    //    $scope.isCollapsedToggle = !$scope.isCollapsed;
 
                     // hide category in edit mood
                     $scope.hideCategoryPanel = true;
@@ -728,7 +731,7 @@ adminApp.controller('AdminController', ['$scope', '$http', '$confirm', '$locatio
 
         // Change the media type during add and edit of media content.
         $scope.mediaTypeChange = function () {
-            console.log($scope.selectedMediaType);
+            // console.log($scope.selectedMediaType);
 
             if (($scope.selectedMediaType == 'img-link')) {
                 $scope.isMediaUploadable = false;
@@ -762,22 +765,24 @@ adminApp.controller('AdminController', ['$scope', '$http', '$confirm', '$locatio
                     ProductId: $scope.ProductId,
                     MediaTitle: $scope.mediaTitle,
                     MediaType: $scope.selectedMediaType,
-                    MediaLink: $scope.mediaLink
+                    MediaLink: $scope.mediaLink,
+                    IsHeroItem: $scope.isHeroItem
                 }
             }).success(function (data) {
                 console.log(data);
 
                 if (data.status_code == 200) {
                     $scope.getMedia();
+                    $scope.mediaTitle = $scope.selectedMediaType = $scope.mediaLink = $scope.isHeroItem = '';
                 }
 
             })
         };
 
         // get medial content list for a single product
-        $scope.getMedia = function(){
+        $scope.getMedia = function () {
             $http({
-                url: '/api/product/get-media/'+$scope.ProductId,
+                url: '/api/product/get-media/' + $scope.ProductId,
                 method: 'GET',
             }).success(function (data) {
                 console.log(data);
@@ -789,13 +794,13 @@ adminApp.controller('AdminController', ['$scope', '$http', '$confirm', '$locatio
             });
         };
 
-        $scope.deleteMedia = function($id){
+        $scope.deleteMedia = function ($id) {
             $http({
                 url: '/api/product/delete-media',
                 method: 'POST',
-                data:{'MediaId':$id}
+                data: {'MediaId': $id}
             }).success(function (data) {
-              //  console.log(data);
+                //  console.log(data);
 
                 if (data.status_code == 200) {
                     $scope.getMedia();

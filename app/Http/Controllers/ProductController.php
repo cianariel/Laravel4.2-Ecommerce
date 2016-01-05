@@ -21,8 +21,8 @@
             $this->middleware('jwt.auth',
                 ['except' => [
                     'publishProduct', 'searchProductByName', 'updateProductInfo',
-                    'getAllProductList', 'getProductById', 'isPermalinkExist','addProduct',
-                    'addMediaForProduct', 'addMediaInfo', 'getMediaForProduct','deleteSingleMediaItem'
+                    'getAllProductList', 'getProductById', 'isPermalinkExist', 'addProduct',
+                    'addMediaForProduct', 'addMediaInfo', 'getMediaForProduct', 'deleteSingleMediaItem'
                 ]]);
             $this->product = new Product();
 
@@ -44,28 +44,19 @@
                     ->makeResponse($product);
         }
 
-        /**
+
+        /** Set a default product entry with post status as Inactive.
          * @return mixed
          */
         public function addProduct()
         {
-            $inputData = \Input::all();
-
             try
             {
-                $product = $this->isPermalinkExist($inputData['Permalink']);
+                $newProduct = $this->product->create(['post_status' => 'Inactive']);
 
-                if (json_decode($product->getContent())->status_code == \Config::get("const.api-status.success"))
-                {
-                    $newProduct = $this->product->firstOrCreate(['product_permalink' => $inputData['Permalink'], 'post_status' => 'Inactive']);
+                return $this->setStatusCode(\Config::get("const.api-status.success"))
+                    ->makeResponse($newProduct);
 
-                    return $this->setStatusCode(\Config::get("const.api-status.success"))
-                        ->makeResponse($newProduct);
-                } else
-                {
-                    return $this->setStatusCode(\Config::get("const.api-status.app-failure"))
-                        ->makeResponseWithError(\Config::get("const.product.can-not-create-product"));
-                }
             } catch (Exception $ex)
             {
                 return $this->setStatusCode(\Config::get("const.api-status.system-fail"))
@@ -240,6 +231,7 @@
             $media->media_name = $inputData['MediaTitle'];
             $media->media_type = $inputData['MediaType'];
             $media->media_link = $inputData['MediaLink'];
+            $media->is_hero_item = $inputData['IsHeroItem'];
 
             try
             {
@@ -268,21 +260,26 @@
         {
 
             $id = \Input::get('MediaId');
-            try{
-                $mediaItem = $this->media->where('id',$id)->first();
+            try
+            {
+                $mediaItem = $this->media->where('id', $id)->first();
 
                 //delete entry from database
-                $this->media->where('id',$id)->delete();
+                $this->media->where('id', $id)->delete();
 
-                // delete file from S3
-                $strReplace = \Config::get("const.file.s3-path") ;// "http://s3-us-west-1.amazonaws.com/ideaing-01/";
-                $file = str_replace($strReplace,'',$mediaItem['media_link']);
-                $s3 = Storage::disk('s3');
-                $s3->delete($file);
+                if (($mediaItem['media_type'] == 'img-upload') || ($mediaItem['media_type'] == 'video-upload'))
+                {
+                    // delete file from S3
+                    $strReplace = \Config::get("const.file.s3-path");// "http://s3-us-west-1.amazonaws.com/ideaing-01/";
+                    $file = str_replace($strReplace, '', $mediaItem['media_link']);
+                    $s3 = Storage::disk('s3');
+                    $s3->delete($file);
+                }
 
                 return $this->setStatusCode(\Config::get("const.api-status.success"))
                     ->makeResponse("File deleted successfully");
-            }catch (Exception $ex){
+            } catch (Exception $ex)
+            {
                 return $this->setStatusCode(\Config::get("const.api-status.system-fail"))
                     ->makeResponseWithError("System Failure !", $ex);
             }

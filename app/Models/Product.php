@@ -50,7 +50,7 @@
 
         public function medias()
         {
-            return $this->morphMany('App\Models\Media','mediable');
+            return $this->morphMany('App\Models\Media', 'mediable');
         }
 
 
@@ -90,13 +90,12 @@
 
         public function updateProductInfo($product)
         {
-
             try
             {
                 $data = array(
                     "product_category_id"     => ($product['CategoryId'] != null) ? $product['CategoryId'] : null,
                     "product_name"            => $product['Name'],
-                    "product_permalink"       => $product['Permalink'],
+                    "product_permalink"       => (isset($product['Permalink'])) ? $product['Permalink'] : null,
                     "product_description"     => ($product['Description'] != null) ? $product['Description'] : "",
                     "specifications"          => json_encode($product['Specifications']),
                     "price"                   => $product['Price'],
@@ -105,6 +104,7 @@
                     "affiliate_link"          => $product['AffiliateLink'],
                     "price_grabber_master_id" => $product['PriceGrabberId'],
                     "review"                  => json_encode($product['Review']),
+                    "review_ext_link"         => $product['ExternalReviewLink'],
                     "free_shipping"           => $product['FreeShipping'],
                     "coupon_code"             => $product['CouponCode'],
                     "page_title"              => $product['PageTitle'],
@@ -145,22 +145,12 @@
 
             $skip = $settings['limit'] * ($settings['page'] - 1);
 
-            $product['total'] = Product::where($whereClause)->count();//->get();
+            $product['total'] = Product::where($whereClause)->count();
 
-            // dd($product['total']);
             $product['result'] = Product::where($whereClause)
                 ->take($settings['limit'])
                 ->offset($skip)->get();
 
-            /* get([
-                 'id', 'product_category_id', 'product_name', 'product_permalink', 'product_description',
-                 'specifications', 'price', 'sale_price', 'store_id', 'affiliate_link', 'affiliate_link',
-                 'review', 'free_shipping', 'coupon_code', 'post_status', 'page_title', 'meta_description',
-                 similar_product_ids,'product_availability'
-             ]);*/
-            //$product['result']['similar_product_ids'] = json_decode($product['result']['similar_product_ids']);
-
-            // dd($product);
             return $product;
 
         }
