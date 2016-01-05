@@ -47,7 +47,7 @@
         'file'                   => [
             'file-not-exist'         => 'file-not-exist',
             'file-invalid'           => 'file-invalid',
-            'file-max-size'          => 6000,
+            'file-max-size'          => 3758094,
             'file-max-limit-exit'    => 'file-max-limit-exit',
             'file-extension-invalid' => 'file-extension-invalid',
             's3-path'                => 'http://s3-us-west-1.amazonaws.com/ideaing-01/'

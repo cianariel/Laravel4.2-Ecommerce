@@ -12,6 +12,7 @@
     use App\Models\Media;
     use Illuminate\Contracts\Filesystem\Factory;
     use Storage;
+    use Folklore\Image\Facades;
 
     class ProductController extends ApiController {
 
@@ -274,6 +275,11 @@
                     $file = str_replace($strReplace, '', $mediaItem['media_link']);
                     $s3 = Storage::disk('s3');
                     $s3->delete($file);
+
+                    if ($mediaItem['media_type'] == 'img-upload'){
+                        $file = 'thumb-'.$file;
+                        $s3->delete($file);
+                    }
                 }
 
                 return $this->setStatusCode(\Config::get("const.api-status.success"))
@@ -287,6 +293,10 @@
         }
 
 
+        /**
+         * @param Request $request
+         * @return array
+         */
         public function addMediaForProduct(Request $request)
         {
 
@@ -324,6 +334,15 @@
                 // pointing filesystem to AWS S3
                 $s3 = Storage::disk('s3');
 
+                // Thumbnail creation and uploading to AWS S3
+                if (in_array($request->file('file')->guessClientExtension(), array("jpeg", "jpg", "bmp", "png"))){
+                    $thumb = \Image::make($request->file('file'))->crop(100,100);
+                    $thumb = $thumb->stream();
+                    $thumbFileName = 'thumb-'.$fileName;
+                    $s3->put($thumbFileName, $thumb->__toString(),'public');
+                }
+
+
                 if ($s3->put($fileName, file_get_contents($request->file('file')), 'public'))
                 {
                     $fileResponse['result'] = \Config::get("const.file.s3-path") . $fileName;
@@ -332,8 +351,6 @@
                     return $fileResponse;
                 }
             }
-
-            // function //
 
         }
 
