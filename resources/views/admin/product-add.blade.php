@@ -465,8 +465,11 @@
                                                             <label>Media Title</label>
                                                             <select data-ng-model="selectedMediaType"
                                                                     data-ng-change="mediaTypeChange()"
-                                                                    class="form-control"
-                                                                    ng-options="media.value for media in mediaTypes">
+                                                                    class="form-control">
+                                                                <option ng-repeat="media in mediaTypes"
+                                                                        value="@{{ media.key }}">
+                                                                    @{{ media.value }}
+                                                                </option>
                                                             </select>
                                                         </div>
 
