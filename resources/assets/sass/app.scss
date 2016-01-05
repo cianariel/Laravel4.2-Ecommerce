@@ -22,6 +22,8 @@ $google-red:      #EF434D;
 $pinterest-red:   #E61D25;
 $instagram-blue:  #54A3DA;
 
+$ideaing-blue:  #4791D4;
+
 .pink{
   color: $iridium !important;
 }
@@ -84,6 +86,10 @@ $instagram-blue:  #54A3DA;
 .clearfix.pocket{
   height: 50px;
   width: 100%;
+}
+
+.allcaps{
+  text-transform: uppercase !important;
 }
 
 
@@ -429,7 +435,7 @@ li.nested{
       background-size: 19px;
     }
     &.comment{
-      background-color: $facebook-blue-2;
+      background-color: $ideaing-blue;
       background-image: url("/assets/images/icons/chat-white-outline.png");
       background-size: 19px;
     }
@@ -2644,17 +2650,17 @@ header.sub-head{
   .left-nav{
     li{
       padding-right: 15px;
-
-      &:not(:last-child)::after{
-        content: ' ';
-        display: block;
-        position: absolute;
-        left: 78%;
-        top: 39%;
-        width: 19px;
-        height: 19px;
-        background: url('/assets/images/arrow-right-black.png') center no-repeat;
-      }
+      //
+      //&:not(:last-child)::after{
+      //  content: ' ';
+      //  display: block;
+      //  position: absolute;
+      //  left: 78%;
+      //  top: 39%;
+      //  width: 19px;
+      //  height: 19px;
+      //  background: url('/assets/images/arrow-right-black.png') center no-repeat;
+      //}
     }
 
     a{
@@ -2771,6 +2777,13 @@ header.sub-head{
         color: $iridium;
         background-image: url('/assets/images/icons/stars-pink.png');
       }
+    }
+
+    &.box-link{
+      padding: 5px 10px;
+      margin: 14px 12px;
+      border: 2px solid $dark-orange;
+      border-radius: 4px;
     }
 
   }

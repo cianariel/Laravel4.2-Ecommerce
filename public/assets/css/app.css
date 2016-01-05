@@ -4415,6 +4415,9 @@ a.label:focus {
   height: 50px;
   width: 100%; }
 
+.allcaps {
+  text-transform: uppercase !important; }
+
 a:visited {
   text-decoration: none; }
 
@@ -4652,7 +4655,7 @@ li.nested a::after {
       background-image: url("/assets/images/heart-white.png");
       background-size: 19px; }
     .share-bar li.comment {
-      background-color: #5C7CBD;
+      background-color: #4791D4;
       background-image: url("/assets/images/icons/chat-white-outline.png");
       background-size: 19px; }
     .share-bar li a {
@@ -5967,15 +5970,6 @@ header.sub-head {
     overflow: visible; }
   #hero-nav .left-nav li {
     padding-right: 15px; }
-    #hero-nav .left-nav li:not(:last-child)::after {
-      content: ' ';
-      display: block;
-      position: absolute;
-      left: 78%;
-      top: 39%;
-      width: 19px;
-      height: 19px;
-      background: url("/assets/images/arrow-right-black.png") center no-repeat; }
   #hero-nav .left-nav a {
     position: static; }
   #hero-nav li {
@@ -6045,6 +6039,11 @@ header.sub-head {
       #hero-nav a:not(.author).reviews-link:hover {
         color: #FF0042;
         background-image: url("/assets/images/icons/stars-pink.png"); }
+    #hero-nav a:not(.author).box-link {
+      padding: 5px 10px;
+      margin: 14px 12px;
+      border: 2px solid #FF7F00;
+      border-radius: 4px; }
   #hero-nav li.active a:not(.home-link)::after {
     content: ' ';
     width: 17px;

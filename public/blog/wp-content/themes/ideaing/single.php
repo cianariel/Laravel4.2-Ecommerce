@@ -34,9 +34,11 @@
         <nav id="hero-nav" class="col-sm-12">
             <div class="container full-620  fixed-sm">
                 <ul class="left-nav col-sm-5 col-xs-6 hidden-620">
-                    <li><a class="home-link" href="#">Home</a></li>
-                    <li><a href="#" class="kitchen-link">Kitchen</a></li>
-                    <li class="active"><a href="#" class="ideas-link">Ideas</a></li>
+<!--                    <li><a class="home-link" href="#">Home</a></li>-->
+                    <li class="active"><a href="#" class="allcaps orange">Ideas</a></li>
+                    <li><a href="#" class="orange box-link">Kitchen</a></li>
+                    <li><a href="#" class="orange box-link">Style</a></li>
+
                 </ul>
                 <ul class="like-nav hidden-xs pull-right">
                     <li><a class="like-counter" href="#"><span></span><b>189</b></a></li>
