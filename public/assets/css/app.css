@@ -5053,17 +5053,28 @@ main.page-content .card {
     left: 0;
     opacity: 0;
     transition: opacity, .6s;
-    background: rgba(0, 0, 0, 0.4);
+    background-color: rgba(255, 255, 255, 0.7);
     border-radius: 5px; }
     .grid-box .color-overlay h4 {
       position: absolute;
-      bottom: 39%;
+      bottom: 62%;
       left: 0%;
-      color: #fff;
+      color: #3D4B4E;
       width: 100%;
       text-align: center; }
       .grid-box .color-overlay h4 a {
         color: #fff; }
+    .grid-box .color-overlay ul.prices {
+      width: 100%;
+      padding-top: 25%;
+      text-align: center; }
+      .grid-box .color-overlay ul.prices li {
+        display: inline-block;
+        width: 100%;
+        overflow: hidden;
+        padding: 8px 0; }
+      .grid-box .color-overlay ul.prices a {
+        color: #3D4B4E; }
     .grid-box .color-overlay b.price {
       position: absolute;
       right: 5px;
@@ -5072,10 +5083,8 @@ main.page-content .card {
       font-size: 4rem;
       font-weight: normal; }
     .grid-box .color-overlay .vendor-logo {
-      width: 100px;
-      position: absolute;
-      right: 77px;
-      top: 63px; }
+      width: auto;
+      height: 21px; }
     .grid-box .color-overlay .get {
       position: absolute;
       right: 0px;
@@ -5119,16 +5128,16 @@ main.page-content .card {
     width: 115px;
     height: 55px;
     margin-left: auto;
-    background: rgba(255, 255, 255, 0.9);
     position: absolute;
-    bottom: -10px;
-    left: -30px;
+    top: 0;
+    right: -20px;
     padding-left: 30px;
     padding-top: 6px;
     padding-bottom: 18px;
-    border-radius: 20px; }
+    border-radius: 20px;
+    color: #3D4B4E; }
     .grid-box .img-wrap .like-wrap .social-pic {
-      width: 35px;
+      width: 95px;
       margin: 5px 0 0;
       padding-left: 0; }
   .grid-box:not(.big-box) h3 a {
@@ -5144,9 +5153,6 @@ main.page-content .card {
     .grid-box .img-wrap > img {
       min-height: 237px;
       transition: border .6s; }
-    .grid-box .img-wrap a:not(.big-image-link) {
-      position: absolute;
-      text-indent: -9999px; }
     .grid-box .img-wrap .get-it {
       right: 8px;
       bottom: 10px;
@@ -5233,6 +5239,9 @@ main.page-content .card {
   .grid-box.big-box {
     margin-top: 0;
     padding-top: 33px; }
+    .grid-box.big-box a:not(.big-image-link) {
+      position: absolute;
+      text-indent: -9999px; }
     .grid-box.big-box .category-tag {
       width: 150px;
       text-indent: 0 !important;
@@ -5619,7 +5628,7 @@ header.colophon {
     background-size: initial;
     margin-top: -14px; }
   .story-header h1 {
-    width: 48%;
+    width: 37%;
     padding-left: 10px;
     float: left;
     margin-left: 3%;
@@ -6079,11 +6088,9 @@ header.sub-head {
 
 .like-nav li {
   width: 35px;
-  padding-top: 9px;
   float: left; }
   .like-nav li:first-child {
     width: 100px;
-    padding-top: 15px;
     display: inline-block; }
   .like-nav li:last-child {
     width: auto; }

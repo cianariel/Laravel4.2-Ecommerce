@@ -14,7 +14,7 @@
         </ul>
 
         <ul class="like-nav hidden-xs pull-right pull-right">
-            <li><a class="like-counter" href="#">189</a></li>
+            <li><a class="like-counter" href="#"><span></span><b>189</b></a></li>
         </ul>
 
         <div class="icon-wrap pull-right">

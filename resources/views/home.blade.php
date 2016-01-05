@@ -101,19 +101,29 @@
             <div class="col-xs-6 grid-box full-620">
                 <div class="img-wrap">
                     <img class="img-responsive" src="/assets/images/dummies/box-image-dummy.png">
-                    <a href="#" class="overlay-tag category-tag top product">Category: Products</a>
 
                     <div class="color-overlay">
-                        <b class="price">$199</b>
-                        <img class="vendor-logo" src="/assets/images/dummies/amazon.png">
-                        <div class="get solid">Get it</div>
+                        <div class="like-wrap">
+                            <a href="#" class="social-pic likes">157</a>
+                        </div>
+
                         <h4>Venetian Louge Suite</h4>
+
+                        <ul class="prices">
+                            <li>
+                                <a href="#"><b>$35.00</b> from  <img class="vendor-logo" src="/assets/images/dummies/amazon-black.png"></a>
+                            </li>
+                            <li>
+                                <a href="#"><b>$39.50.00</b> from  <img class="vendor-logo" src="/assets/images/dummies/amazon-black.png"></a>
+                            </li>
+                            <li>
+                                <a href="#"> <a href="#"><b>$41.00</b> from  <img class="vendor-logo" src="/assets/images/dummies/amazon-black.png"></a>
+                            </li>
+                        </ul>
+
                     </div>
                 </div>
-                <div class="like-wrap">
-                    <a href="#" class="social-pic likes">157</a>
-                    <a href="#" class="social-pic comment">89</a>
-                </div>
+
                 <time>1 hour ago</time>
 
             </div>
@@ -121,20 +131,30 @@
             <div class="col-xs-6 grid-box full-620">
                 <div class="img-wrap">
                     <img class="img-responsive" src="/assets/images/dummies/img-small.jpg">
-                    <a href="#" class="overlay-tag category-tag top product">Category: Products</a>
+
                     <div class="color-overlay">
-                        <b class="price">$199</b>
-                        <img class="vendor-logo" src="/assets/images/dummies/amazon.png">
-                        <div class="get solid">Get it</div>
+                        <div class="like-wrap">
+                            <a href="#" class="social-pic likes">157</a>
+                        </div>
+
                         <h4>Venetian Louge Suite</h4>
+
+                        <ul class="prices">
+                            <li>
+                                <a href="#"><b>$35.00</b> from  <img class="vendor-logo" src="/assets/images/dummies/amazon-black.png"></a>
+                            </li>
+                            <li>
+                                <a href="#"><b>$39.50.00</b> from  <img class="vendor-logo" src="/assets/images/dummies/amazon-black.png"></a>
+                            </li>
+                            <li>
+                                <a href="#"> <a href="#"><b>$41.00</b> from  <img class="vendor-logo" src="/assets/images/dummies/amazon-black.png"></a>
+                            </li>
+                        </ul>
+
                     </div>
                 </div>
-                <div class="like-wrap">
-                    <a href="#" class="social-pic likes">157</a>
-                    <a href="#" class="social-pic comment">89</a>
-                </div>
-                <time>5 hours ago</time>
 
+                <time>5 hours ago</time>
 
             </div>
 

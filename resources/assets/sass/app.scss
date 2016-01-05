@@ -1137,21 +1137,37 @@ main.page-content{
     left: 0;
     opacity: 0;
     transition: opacity, .6s;
-    background: rgba(0,0,0,.4);
-
+    background-color: rgba(255,255,255,.7);
 
     border-radius: 5px;
 
     h4{
       position: absolute;
-      bottom: 39%;
+      bottom: 62%;
       left: 0%;
-      color: #fff;
+      color: $tarmac;
       width: 100%;
       text-align: center;
 
       a{
         color: #fff;
+      }
+    }
+
+    ul.prices{
+      width: 100%;
+      padding-top: 25%;
+      text-align: center;
+
+      li{
+        display: inline-block;
+        width: 100%;
+        overflow: hidden;
+        padding: 8px 0;
+      }
+
+      a{
+        color: $tarmac;
       }
     }
 
@@ -1165,10 +1181,11 @@ main.page-content{
     }
 
     .vendor-logo{
-      width: 100px;
-      position: absolute;
-      right: 77px;
-      top: 63px;
+      width: auto;
+      height: 21px;
+      //position: absolute;
+      //right: 77px;
+      //top: 63px;
     }
 
     .get{
@@ -1242,17 +1259,18 @@ main.page-content{
     width: 115px;
     height: 55px;
     margin-left: auto;
-    background: rgba(255, 255, 255, .9);
+    //background: rgba(255, 255, 255, .9);
     position: absolute;
-    bottom: -10px;
-    left: -30px;
+    top: 0;
+    right: -20px;
     padding-left: 30px;
     padding-top: 6px;
     padding-bottom: 18px;
     border-radius: 20px;
+    color: $tarmac;
 
     .social-pic {
-      width: 35px;
+      width: 95px;
       margin: 5px 0 0;
       padding-left: 0;
 
@@ -1288,10 +1306,7 @@ main.page-content{
       transition: border .6s;
 
     }
-    a:not(.big-image-link){
-      position: absolute;
-      text-indent: -9999px;
-    }
+
     .get-it{
       right: 8px;
       bottom: 10px;
@@ -1429,6 +1444,12 @@ main.page-content{
   &.big-box{
     margin-top: 0;
     padding-top: 33px;
+
+    a:not(.big-image-link){
+      position: absolute;
+      text-indent: -9999px;
+    }
+
     .category-tag{
       width: 150px;
       text-indent: 0 !important;
@@ -2083,7 +2104,7 @@ header.colophon{
   }
 
   h1{
-    width: 48%;
+    width: 37%;
     padding-left: 10px;
     float: left;
     margin-left: 3%;
@@ -2848,12 +2869,12 @@ header.sub-head{
 .like-nav{
   li{
     width: 35px;
-    padding-top: 9px;
+    //padding-top: 9px;
     float: left;
 
     &:first-child{
       width: 100px;
-      padding-top: 15px;
+      //padding-top: 15px;
       display: inline-block;
     }
     &:last-child{
