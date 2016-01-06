@@ -104,6 +104,8 @@
             {
                 $settings['ActiveItem'] = (\Input::get('ActiveItem') == 'Active') ? true : false;
                 $settings['CategoryId'] = (\Input::get('CategoryId') == null) ? null : \Input::get('CategoryId');
+                $settings['FilterType'] = (\Input::get('FilterType') == null) ? null : \Input::get('FilterType');
+                $settings['FilterText'] = (\Input::get('FilterText') == null) ? null : \Input::get('FilterText');
 
                 $settings['limit'] = \Input::get('limit');
                 $settings['page'] = \Input::get('page');

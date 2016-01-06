@@ -144,7 +144,7 @@
                 ->first(array(
                     'products.id', 'products.updated_at', 'products.user_name',
                     'products.product_name', 'product_categories.category_name', 'products.affiliate_link',
-                    'products.price','products.sale_price','medias.media_link'
+                    'products.price', 'products.sale_price', 'medias.media_link'
                 ));
 
             return $result;//$responseData;
@@ -153,6 +153,7 @@
 
         public function getProductList($settings)
         {
+            /*
             $whereClause = array();
             if ($settings['CategoryId'] != null)
             {
@@ -162,22 +163,54 @@
             {
                 $whereClause = array_add($whereClause, "post_status", "Active");
             }
+            if($settings['FilterType'] != null)
+            {
+
+            }
+
+*/
+            $productModel = $this;
+
+            $filterText = $settings['FilterText'];
+
+            if ($settings['CategoryId'] != null)
+            {
+                $productModel = $productModel->where("product_category_id", $settings['CategoryId']);
+            }
+
+            if ($settings['ActiveItem'] == true)
+            {
+                $productModel = $productModel->where("post_status", $settings['Active']);
+            }
+
+            if ($settings['FilterType'] == 'user-filter')
+            {
+                $productModel = $productModel->where("user_name","like" ,"%$filterText%");
+            }
+            if ($settings['FilterType'] == 'product-filter')
+            {
+                $productModel = $productModel->where("product_name","like" ,"%$filterText%");
+            }
+
+
+
 
             $skip = $settings['limit'] * ($settings['page'] - 1);
 
-            $product['total'] = Product::where($whereClause)->count();
+          //  $product['total'] = Product::where($whereClause)->count();
+              $product['total'] = $productModel->count();
 
-            $product['result'] = Product::where($whereClause)
+
+          //  $product['result'] = Product::where($whereClause)
+            $product['result'] = $productModel
                 ->take($settings['limit'])
                 ->offset($skip)
-                ->orderBy('updated_at','desc')
+                ->orderBy('updated_at', 'desc')
                 ->get(array("id"));
 
             $data = array();
 
             $count = $product['result']->count();
-
-
 
 
             for ($i = 0; $i < $count; $i++)
@@ -187,17 +220,17 @@
 
                 $strReplace = \Config::get("const.file.s3-path");// "http://s3-us-west-1.amazonaws.com/ideaing-01/";
                 $path = str_replace($strReplace, '', $tmp->media_link);
-                $path = $strReplace.'thumb-'.$path;
+                $path = $strReplace . 'thumb-' . $path;
                 $tmp->media_link = $path;
                 $tmp->updated_at = Carbon::createFromTimestamp(strtotime($tmp->updated_at))->diffForHumans();
 
-                $data[$i] = $tmp;
+                $data[ $i ] = $tmp;
 
             }
 
             $product['result'] = $data;
 
-          //  dd($data);
+            //  dd($data);
 
             return $product;
 

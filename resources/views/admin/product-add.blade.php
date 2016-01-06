@@ -529,6 +529,7 @@
                                                                     <td>
                                                                         <a href="@{{ media.media_link}}" target="_blank">
                                                                          @{{ media.media_link}}
+                                                                        </a>
                                                                     </td>
                                                                     <td>
                                                                         <button data-ng-click="deleteMedia(media.id)"

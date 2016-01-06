@@ -1,25 +1,26 @@
 var adminApp = angular.module('adminApp', ['ui.bootstrap', 'ngSanitize', 'angular-confirm', 'textAngular', 'ngTagsInput', 'angularFileUpload']);
 
+/*
+ adminApp.directive('loading', ['$http', function ($http) {
+ return {
+ restrict: 'A',
+ link: function (scope, elm, attrs) {
+ scope.isLoading = function () {
+ return $http.pendingRequests.length > 0;
+ };
 
-adminApp.directive('loading', ['$http', function ($http) {
-    return {
-        restrict: 'A',
-        link: function (scope, elm, attrs) {
-            scope.isLoading = function () {
-                return $http.pendingRequests.length > 0;
-            };
+ scope.$watch(scope.isLoading, function (v) {
+ if (v) {
+ elm.show();
+ } else {
+ elm.hide();
+ }
+ });
+ }
+ };
 
-            scope.$watch(scope.isLoading, function (v) {
-                if (v) {
-                    elm.show();
-                } else {
-                    elm.hide();
-                }
-            });
-        }
-    };
-
-}]);
+ }]);
+ */
 
 // only decimal number input validation
 adminApp.directive('validNumber', function () {
@@ -133,6 +134,7 @@ adminApp.controller('AdminController', ['$scope', '$http', '$confirm', '$locatio
         $scope.initPage = function () {
             //   console.log($location.host());
             $scope.catId = '';
+            $scope.currentCategoryName = '';
             $scope.tempCategoryList = [];
             $scope.alerts = [];
             $scope.selectedItem = '';
@@ -187,16 +189,21 @@ adminApp.controller('AdminController', ['$scope', '$http', '$confirm', '$locatio
             $scope.isHeroItem = false;
             $scope.mediaList = [];
 
-
             // Pagination info
-            $scope.limit = 12;
+            $scope.limit = 50;
             $scope.page = 1;
             $scope.total = 0;
 
             // show category panel for add product
             $scope.hideCategoryPanel = false;
 
-
+            //filter type setting
+            $scope.filterTypes = [
+                {"key": "user-filter", "value": "Filter By User"},
+                {"key": "product-filter", "value": "Filter By Product"},
+            ];
+            $scope.selectedFilter = '';
+            $scope.filterName = '';
         };
 
         // Add an Alert in a web application
@@ -276,11 +283,20 @@ adminApp.controller('AdminController', ['$scope', '$http', '$confirm', '$locatio
                 if ($scope.categoryItems[i].id == $scope.catId) {
 
                     $scope.tempCategoryList.push($scope.categoryItems[i].category);
+                    $scope.currentCategoryName = $scope.categoryItems[i].category;
+
                 }
             }
 
+
             $scope.getCategory();
 
+        };
+
+
+        // reset filter for product list view
+        $scope.resetFilter = function(){
+          $scope.initPage();
         };
 
         // Build HTML listed response for popup notification.
@@ -649,6 +665,8 @@ adminApp.controller('AdminController', ['$scope', '$http', '$confirm', '$locatio
                 data: {
                     CategoryId: $scope.selectedItem,
                     ActiveItem: $scope.ActiveItem,
+                    FilterType: $scope.selectedFilter,
+                    FilterText: $scope.filterName,
                     // Pagination info
                     limit: $scope.limit,
                     page: $scope.page,
@@ -713,7 +731,7 @@ adminApp.controller('AdminController', ['$scope', '$http', '$confirm', '$locatio
                     $scope.externalReviewLink = data.data.review_ext_link;
 
                     //test
-                  //  $scope.selectedMediaType = 'Image Upload';
+                    //  $scope.selectedMediaType = 'Image Upload';
 
                     //show hide product add element
                     //    $scope.isCollapsed = true; // default true.
