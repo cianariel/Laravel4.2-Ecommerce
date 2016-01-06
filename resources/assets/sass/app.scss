@@ -2209,7 +2209,7 @@ header.colophon{
 
 //
 
-#mid-nav{
+.mid-nav{
   //margin-bottom: 100px;
   min-height: 47px;
 
@@ -2261,6 +2261,13 @@ header.colophon{
       }
     }
 
+    &.box-link{
+      padding: 5px 10px;
+      margin: 14px 12px;
+      border: 2px solid $dark-orange;
+      border-radius: 4px;
+
+    }
 
     &:hover{
       color: $iridium;
@@ -2287,7 +2294,7 @@ header.colophon{
   }
 
   .extra-nav{
-    @extend #mid-nav;
+    @extend .mid-nav;
     display: none;
     position: absolute;
     width: 200px;
@@ -2331,6 +2338,10 @@ header.colophon{
 
   }
 }
+
+//.mid-nav + .mid-nav{
+//  border: 0;
+//}
 
 .mobile-extra-nav,
 .mobile-more-nav{
@@ -2663,7 +2674,30 @@ header.sub-head{
   }
 }
 
+.left-nav{
+  li{
+    padding-right: 15px;
+    //
+    //&:not(:last-child)::after{
+    //  content: ' ';
+    //  display: block;
+    //  position: absolute;
+    //  left: 78%;
+    //  top: 39%;
+    //  width: 19px;
+    //  height: 19px;
+    //  background: url('/assets/images/arrow-right-black.png') center no-repeat;
+    //}
 
+    &:first-child a{
+      padding-top: 9px;
+    }
+  }
+
+  a{
+    position: static;
+  }
+}
 
 #hero-nav{
   overflow: visible;
@@ -2674,29 +2708,16 @@ header.sub-head{
   border-bottom: 1px solid #EFEFEF;
   ul{
     overflow: visible;
+
+    &.category-nav{
+      width: 315px;
+      margin: 0 auto;
+      max-width: 100%;
+    }
   }
 
-
-
-  .left-nav{
-    li{
-      padding-right: 15px;
-      //
-      //&:not(:last-child)::after{
-      //  content: ' ';
-      //  display: block;
-      //  position: absolute;
-      //  left: 78%;
-      //  top: 39%;
-      //  width: 19px;
-      //  height: 19px;
-      //  background: url('/assets/images/arrow-right-black.png') center no-repeat;
-      //}
-    }
-
-    a{
-      position: static;
-    }
+  .like-counter{
+    margin-top: 7px;
   }
 
   li{
@@ -2808,13 +2829,6 @@ header.sub-head{
         color: $iridium;
         background-image: url('/assets/images/icons/stars-pink.png');
       }
-    }
-
-    &.box-link{
-      padding: 5px 10px;
-      margin: 14px 12px;
-      border: 2px solid $dark-orange;
-      border-radius: 4px;
     }
 
   }
@@ -2937,6 +2951,12 @@ header.sub-head{
 
 
 // IDEAS (CMS / STORIES)
+
+body.single{
+  .mid-nav.rooms{
+    display: none;
+  }
+}
 
 .idea-stories{
 
@@ -3547,7 +3567,7 @@ footer.about-footer{
     margin-right: 3%;
   }
 
-  #mid-nav{
+  .mid-nav{
     .container{
       //padding-left: 60px;
     }
@@ -3736,7 +3756,7 @@ footer.about-footer{
     }
   }
 
-  #mid-nav{
+  .mid-nav{
 
     .extra-nav {
       right: 20%;
@@ -3956,7 +3976,7 @@ footer.about-footer{
     padding-left: 0;
   }
 
-  #mid-nav, .extra-nav {
+  .mid-nav, .extra-nav {
     margin-bottom: 15px;
   }
 
@@ -4066,7 +4086,7 @@ footer.about-footer{
   }
 
 
-  #mid-nav a {
+  .mid-nav a {
     font-size: 1.8rem;
   }
 
@@ -4485,7 +4505,7 @@ footer.about-footer{
   }
 
 
-  #mid-nav{
+  .mid-nav{
     a {
       padding-left: 2.2%;
       padding-right: 2.2%;
@@ -4604,7 +4624,7 @@ footer.about-footer{
   }
 
 
-  #mid-nav {
+  .mid-nav {
     a {
       padding-left: 1.5%;
       padding-right: 1.5%;

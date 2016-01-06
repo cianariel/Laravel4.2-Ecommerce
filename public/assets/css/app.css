@@ -5677,16 +5677,16 @@ header.colophon {
   .story-header .icon-wrap {
     padding-right: 35px; }
 
-#mid-nav, #mid-nav .extra-nav {
+.mid-nav, .mid-nav .extra-nav {
   min-height: 47px; }
-  #mid-nav .container {
+  .mid-nav .container {
     border-top: 1px solid #c1c1c1; }
-  #mid-nav ul.wrap {
+  .mid-nav ul.wrap {
     position: relative;
     overflow: visible;
     float: none;
     margin: 0 auto; }
-  #mid-nav a, #mid-nav .extra-nav a {
+  .mid-nav a, .mid-nav .extra-nav a {
     margin-top: 11px;
     margin-bottom: 11px;
     margin-right: 3px;
@@ -5695,31 +5695,36 @@ header.colophon {
     font-size: 1.2rem;
     color: #3D4B4E;
     border-radius: 3px; }
-    #mid-nav a.extra {
+    .mid-nav a.extra {
       margin-left: 1%; }
-    #mid-nav a.about {
+    .mid-nav a.about {
       margin-left: 7%;
       color: #93a6ab; }
-    #mid-nav a.more-link {
+    .mid-nav a.more-link {
       text-indent: -9999px;
       background: url("/assets/images/dots-grey.png") center no-repeat;
       background-size: contain; }
-      #mid-nav a.more-link:hover {
+      .mid-nav a.more-link:hover {
         background-image: url("/assets/images/dots-pink.png");
         box-shadow: none; }
-    #mid-nav a:hover {
+    .mid-nav a.box-link {
+      padding: 5px 10px;
+      margin: 14px 12px;
+      border: 2px solid #FF7F00;
+      border-radius: 4px; }
+    .mid-nav a:hover {
       color: #FF0042;
       -webkit-box-shadow: 0px 0px 0px 2px #FF0042;
       -moz-box-shadow: 0px 0px 0px 2px #FF0042;
       box-shadow: 0px 0px 0px 2px #FF0042; }
-  #mid-nav li.nested {
+  .mid-nav li.nested {
     position: relative; }
-  #mid-nav li.selected a {
+  .mid-nav li.selected a {
     color: #FF0042;
     -webkit-box-shadow: 0px 0px 0px 2px #FF0042;
     -moz-box-shadow: 0px 0px 0px 2px #FF0042;
     box-shadow: 0px 0px 0px 2px #FF0042; }
-  #mid-nav .extra-nav {
+  .mid-nav .extra-nav {
     display: none;
     position: absolute;
     width: 200px;
@@ -5731,10 +5736,10 @@ header.colophon {
     -webkit-box-shadow: 9px -8px 27px -10px rgba(0, 0, 0, 0.43);
     -moz-box-shadow: 9px -8px 27px -10px rgba(0, 0, 0, 0.43);
     box-shadow: 9px -8px 27px -10px rgba(0, 0, 0, 0.43); }
-    #mid-nav .extra-nav li {
+    .mid-nav .extra-nav li {
       width: 100%;
       float: none; }
-      #mid-nav .extra-nav li a {
+      .mid-nav .extra-nav li a {
         width: 100%;
         margin: 0;
         text-transform: uppercase;
@@ -5742,13 +5747,13 @@ header.colophon {
         background-position: 8px center;
         background-repeat: no-repeat;
         border-bottom: 1px solid #c1c1c1; }
-        #mid-nav .extra-nav li a.smart-home-link {
+        .mid-nav .extra-nav li a.smart-home-link {
           background-image: url("/assets/images/smart-home.png"); }
-        #mid-nav .extra-nav li a.travel-link {
+        .mid-nav .extra-nav li a.travel-link {
           background-image: url("/assets/images/travel.png"); }
-        #mid-nav .extra-nav li a.wearables-link {
+        .mid-nav .extra-nav li a.wearables-link {
           background-image: url("/assets/images/wearables.png"); }
-        #mid-nav .extra-nav li a:hover {
+        .mid-nav .extra-nav li a:hover {
           box-shadow: none; }
 
 .mobile-extra-nav,
@@ -5970,6 +5975,13 @@ header.sub-head {
         text-align: right;
         color: #FF0042; }
 
+.left-nav li {
+  padding-right: 15px; }
+  .left-nav li:first-child a {
+    padding-top: 9px; }
+.left-nav a {
+  position: static; }
+
 #hero-nav {
   overflow: visible;
   float: left;
@@ -5978,10 +5990,12 @@ header.sub-head {
   border-bottom: 1px solid #EFEFEF; }
   #hero-nav ul {
     overflow: visible; }
-  #hero-nav .left-nav li {
-    padding-right: 15px; }
-  #hero-nav .left-nav a {
-    position: static; }
+    #hero-nav ul.category-nav {
+      width: 315px;
+      margin: 0 auto;
+      max-width: 100%; }
+  #hero-nav .like-counter {
+    margin-top: 7px; }
   #hero-nav li {
     display: inline-block;
     position: relative;
@@ -6049,11 +6063,6 @@ header.sub-head {
       #hero-nav a:not(.author).reviews-link:hover {
         color: #FF0042;
         background-image: url("/assets/images/icons/stars-pink.png"); }
-    #hero-nav a:not(.author).box-link {
-      padding: 5px 10px;
-      margin: 14px 12px;
-      border: 2px solid #FF7F00;
-      border-radius: 4px; }
   #hero-nav li.active a:not(.home-link)::after {
     content: ' ';
     width: 17px;
@@ -6119,6 +6128,9 @@ header.sub-head {
       font-size: 1.6rem;
       padding-top: 15px;
       padding-left: 10px !important; }
+
+body.single .mid-nav.rooms, body.single .mid-nav .rooms.extra-nav, .mid-nav body.single .rooms.extra-nav {
+  display: none; }
 
 .idea-stories .article-content p {
   color: #757575;
@@ -6482,12 +6494,12 @@ footer.about-footer {
   #top-nav a {
     margin-right: 3%; }
 
-  #mid-nav a, #mid-nav .extra-nav a {
+  .mid-nav a, .mid-nav .extra-nav a {
     padding-left: 10px;
     padding-right: 10px; }
-    #mid-nav a.more-link {
+    .mid-nav a.more-link {
       background-size: contain !important; }
-  #mid-nav > a:hover, #mid-nav .extra-nav > a:hover {
+  .mid-nav > a:hover, .mid-nav .extra-nav > a:hover {
     background-size: contain !important; }
 
   .why-us {
@@ -6569,7 +6581,7 @@ footer.about-footer {
     #mobile-side-filters h5 {
       display: none; }
 
-  #mid-nav .extra-nav {
+  .mid-nav .extra-nav {
     right: 20%; }
 
   footer.about-footer h4 {
@@ -6698,7 +6710,7 @@ footer.about-footer {
   article.product .article-content {
     padding-left: 0; }
 
-  #mid-nav, #mid-nav .extra-nav, .extra-nav {
+  .mid-nav, .mid-nav .extra-nav, .extra-nav {
     margin-bottom: 15px; }
 
   #hero {
@@ -6751,7 +6763,7 @@ footer.about-footer {
       padding-right: 5%;
       background-position: center 15px !important; }
 
-  #mid-nav a, #mid-nav .extra-nav a {
+  .mid-nav a, .mid-nav .extra-nav a {
     font-size: 1.8rem; }
 
   .grid-box {
@@ -6996,16 +7008,16 @@ footer.about-footer {
     padding-right: 0px;
     margin-left: 0; }
 
-  #mid-nav a, #mid-nav .extra-nav a {
+  .mid-nav a, .mid-nav .extra-nav a {
     padding-left: 2.2%;
     padding-right: 2.2%;
     padding-left: 3%;
     padding-right: 2.5%;
     font-size: 1.6rem; }
-    #mid-nav a.more-link {
+    .mid-nav a.more-link {
       padding-left: 5%; }
-  #mid-nav li.selected a,
-  #mid-nav a:hover {
+  .mid-nav li.selected a,
+  .mid-nav a:hover {
     margin-top: 6px;
     padding-left: 1.5%;
     padding-right: 1.5%;
@@ -7063,7 +7075,7 @@ footer.about-footer {
   header.colophon #top-nav .category-menu {
     margin-left: 0; }
 
-  #mid-nav a, #mid-nav .extra-nav a {
+  .mid-nav a, .mid-nav .extra-nav a {
     padding-left: 1.5%;
     padding-right: 1.5%;
     font-size: 1.5rem; }

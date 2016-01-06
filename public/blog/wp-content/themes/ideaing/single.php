@@ -17,7 +17,16 @@
                 <li><a class="pint" href="#"></a> <span class="red">10</span></li>
             </ul>
         </header>
-
+        <nav class="mid-nav hidden-620">
+                <div class="container">
+                    <ul class="left-nav col-sm-5 col-xs-6 hidden-620">
+                        <!--                    <li><a class="home-link" href="#">Home</a></li>-->
+                        <li class="active"><a href="#" class="allcaps orange">Ideas</a></li>
+                        <li><a href="#" class="orange box-link">Kitchen</a></li>
+                        <li><a href="#" class="orange box-link">Style</a></li>
+                    </ul>
+                </div>
+        </nav>
 
         <section id="hero" class="details-hero">
 <!--            <div class="container">-->
@@ -33,13 +42,13 @@
         </section>
         <nav id="hero-nav" class="col-sm-12">
             <div class="container full-620  fixed-sm">
-                <ul class="left-nav col-sm-5 col-xs-6 hidden-620">
-<!--                    <li><a class="home-link" href="#">Home</a></li>-->
-                    <li class="active"><a href="#" class="allcaps orange">Ideas</a></li>
-                    <li><a href="#" class="orange box-link">Kitchen</a></li>
-                    <li><a href="#" class="orange box-link">Style</a></li>
-
-                </ul>
+<!--                <ul class="left-nav col-sm-5 col-xs-6 hidden-620">-->
+<!--<!--                    <li><a class="home-link" href="#">Home</a></li>-->
+<!--                    <li class="active"><a href="#" class="allcaps orange">Ideas</a></li>-->
+<!--                    <li><a href="#" class="orange box-link">Kitchen</a></li>-->
+<!--                    <li><a href="#" class="orange box-link">Style</a></li>-->
+<!---->
+<!--                </ul>-->
                 <ul class="like-nav hidden-xs pull-right">
                     <li><a class="like-counter" href="#"><span></span><b>189</b></a></li>
                     <li><a class="author" href="#"></a></li>

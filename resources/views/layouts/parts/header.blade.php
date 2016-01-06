@@ -206,7 +206,7 @@
                 </div>
             </nav>
         </header>
-        <nav id="mid-nav" class="hidden-620">
+        <nav class="mid-nav rooms hidden-620">
             <div class="container full-sm fixed-sm">
                 <ul class="wrap col-xs-9">
                     <li class="selected"><a href="">All ideas</a></li>
