@@ -156,6 +156,7 @@
             'Tymon\JWTAuth\Providers\JWTAuthServiceProvider',
             'Zizaco\Entrust\EntrustServiceProvider',
             'Baum\Providers\BaumServiceProvider',
+            'Intervention\Image\ImageServiceProvider'
 
         ],
 
@@ -223,6 +224,7 @@
             'Feeds'              => willvincent\Feeds\Facades\FeedsFacade::class, // todo :need to chk the existence
             'FeedParser'         => 'App\Core\FeedParser',
             'ViewHelper'         => 'App\Core\ViewHelper',
+            'Image'              => 'Intervention\Image\Facades\Image'
 
 
         ],

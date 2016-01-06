@@ -19,6 +19,8 @@ class PageController extends Controller
     {
         //URL of targeted site
         $url = "http://staging.ideaing.com/blog/feeds/index.php?count=8";
+     //   $url = "http://staging.ideaing.com/ideas/feeds/index.php?count=8";
+
         $ch = curl_init();
 
         curl_setopt($ch, CURLOPT_URL, $url);
