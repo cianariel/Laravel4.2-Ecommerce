@@ -1002,8 +1002,8 @@ nav{
   min-width: 110px;
   margin-top: 9px;
   display: block;
-  margin-left: auto;
-  margin-right: auto;
+  margin-left: 0;
+  //margin-right: auto;
   padding-left: 0;
   margin-left: 30px;
   background: url('/assets/images/ideaing-logo-small-no-text.png') no-repeat;
@@ -1994,9 +1994,9 @@ header.colophon{
           margin-top: 0;
         }
 
-        .search-bar{
-          margin-left: 7%;
-        }
+        //.search-bar{
+        //  margin-left: 7%;
+        //}
       }
 
       //.signin a{
@@ -2018,7 +2018,10 @@ header.colophon{
 
 .search-bar{
   padding-top: 13px;
-  margin-left: 3%;
+  width: 20%;
+
+
+  //margin-left: 3%;
 
   .search-toggle{
     display: none;
@@ -2059,6 +2062,13 @@ header.colophon{
       //background-size: 14px;
       &:hover{
         background-image: url('/assets/images/chat-picton.png');
+      }
+    }
+    &.ideas{
+      background: url('/assets/images/icons/lamp-grey.png') left center no-repeat;
+      //background-size: 14px;
+      &:hover{
+        background-image: url('/assets/images/icons/lamp-small-blue.png');
       }
     }
 
@@ -3867,7 +3877,7 @@ footer.about-footer{
 
     .mobile-category-menu{
       text-indent: -9999px;
-      width: 95px;
+      width: 117px;
       margin-top: 9px;
       padding-right: 0 !important;
        margin-left: 22px;
@@ -4254,7 +4264,7 @@ footer.about-footer{
   }
 
   header.colophon #top-nav .category-menu {
-    margin-left: 35px;
+    margin-left: 10px;
   }
 
   .story-details{
@@ -4580,10 +4590,17 @@ footer.about-footer{
       width: 225px;
       float: right;
     }
+
+    .search-bar{
+      width: 27px;
+      a {
+        margin-right: 0;
+      }
+    }
   }
 
   header.colophon #top-nav .category-menu {
-    margin-left: 9px;
+    margin-left: 0;
   }
 
 
@@ -4603,6 +4620,7 @@ footer.about-footer{
       padding-left: 0;
     }
   }
+
 
 }
 

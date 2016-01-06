@@ -26,14 +26,15 @@
 
                                 </ul>
                             </div>
-                            <div  class="col-md-4 col-sm col-xs-4 category-menu hidden-620">
+                            <div  class="col-xs-5 category-menu hidden-620">
                                 <ul>
-                                    <li class="nested"><a class="shop" data-toggle=".shop-menu" href="">Shop</a></li>
-                                    <li><a class="disc" href="">Discuss</a></li>
+                                    <li class="nested"><a class="shop" data-toggle=".shop-menu" href="#">Shop</a></li>
+                                    <li><a class="disc" href="#">Discuss</a></li>
+                                    <li><a class="ideas" href="#">Ideas</a></li>
                                 </ul>
                             </div>
 
-                            <div class="col-md-3 col-sm-4 col-xs-3 logo-wrap">
+                            <div class="col-xs-3 logo-wrap">
                                 <a id="ideaing-logo" class="logo top-logo" href="/">
                                 </a>
                             </div>
@@ -43,6 +44,7 @@
                                     <ul>
                                         <li class="nested"><a class="shop" href="">Shop</a></li>
                                         <li><a class="disc" href="">Discuss</a></li>
+                                        <li><a class="ideas" href="">Ideas</a></li>
                                     </ul>
                                 </div>
 

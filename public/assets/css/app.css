@@ -4973,8 +4973,7 @@ nav a {
   min-width: 110px;
   margin-top: 9px;
   display: block;
-  margin-left: auto;
-  margin-right: auto;
+  margin-left: 0;
   padding-left: 0;
   margin-left: 30px;
   background: url("/assets/images/ideaing-logo-small-no-text.png") no-repeat;
@@ -5566,9 +5565,7 @@ header.colophon {
         background-position: right;
         background-size: initial;
         margin-right: 0;
-        margin-top: 0; }
-      header.colophon.scroll-header #top-nav .search-bar {
-        margin-left: 7%; } }
+        margin-top: 0; } }
   header.colophon.scroll-header + header.sub-head .shop-menu {
     position: fixed;
     top: 61px;
@@ -5576,7 +5573,7 @@ header.colophon {
 
 .search-bar {
   padding-top: 13px;
-  margin-left: 3%; }
+  width: 20%; }
   .search-bar .search-toggle {
     display: none;
     text-indent: -9999px;
@@ -5603,6 +5600,10 @@ header.colophon {
     background: url("/assets/images/chat-grey.png") left center no-repeat; }
     #top-nav a.disc:hover {
       background-image: url("/assets/images/chat-picton.png"); }
+  #top-nav a.ideas {
+    background: url("/assets/images/icons/lamp-grey.png") left center no-repeat; }
+    #top-nav a.ideas:hover {
+      background-image: url("/assets/images/icons/lamp-small-blue.png"); }
   #top-nav a:hover {
     color: #4691d3; }
 #top-nav li.nested {
@@ -6643,7 +6644,7 @@ footer.about-footer {
       float: right; }
     #top-nav .mobile-category-menu {
       text-indent: -9999px;
-      width: 95px;
+      width: 117px;
       margin-top: 9px;
       padding-right: 0 !important;
       margin-left: 22px; }
@@ -6872,7 +6873,7 @@ footer.about-footer {
     width: 30px; }
 
   header.colophon #top-nav .category-menu {
-    margin-left: 35px; }
+    margin-left: 10px; }
 
   .story-details .author-image-big {
     max-width: 100px;
@@ -7054,9 +7055,13 @@ footer.about-footer {
   #top-nav .mobile-wrap {
     width: 225px;
     float: right; }
+  #top-nav .search-bar {
+    width: 27px; }
+    #top-nav .search-bar a {
+      margin-right: 0; }
 
   header.colophon #top-nav .category-menu {
-    margin-left: 9px; }
+    margin-left: 0; }
 
   #mid-nav a, #mid-nav .extra-nav a {
     padding-left: 1.5%;
