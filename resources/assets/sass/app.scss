@@ -1143,7 +1143,7 @@ main.page-content{
 
     h4{
       position: absolute;
-      bottom: 62%;
+      bottom: 70%;
       left: 0%;
       color: $tarmac;
       width: 100%;
@@ -1489,16 +1489,8 @@ main.page-content{
     .img-wrap{
 
       .color-overlay{
-        //width: 100%;
-          //outline: 2px solid lighten($sky-blue, 20%);
         box-shadow: 0 0 0 1px $sky-blue;
-
-
       }
-
-      //& > img{
-      //  box-shadow: 0 0 0 1px $sky-blue;
-      //}
     }
 
     h3 a,
@@ -1518,6 +1510,13 @@ main.page-content{
           border: 1px solid $sky-blue;
         }
       }
+    }
+    .like-wrap{
+      bottom: -20px;
+      left: -33px;
+      right: auto;
+      top: auto;
+      background: rgba(255,255,255, .9);
     }
   }
 

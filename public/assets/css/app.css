@@ -5056,7 +5056,7 @@ main.page-content .card {
     border-radius: 5px; }
     .grid-box .color-overlay h4 {
       position: absolute;
-      bottom: 62%;
+      bottom: 70%;
       left: 0%;
       color: #3D4B4E;
       width: 100%;
@@ -5272,6 +5272,12 @@ main.page-content .card {
     border: 1px solid #00B1FF; }
     .grid-box.big-box:hover .img-wrap .big-image-link img {
       border: 1px solid #00B1FF; }
+  .grid-box.big-box .like-wrap {
+    bottom: -20px;
+    left: -33px;
+    right: auto;
+    top: auto;
+    background: rgba(255, 255, 255, 0.9); }
   .grid-box.sidebar-box:hover .img-wrap {
     overflow: hidden;
     border: 1px solid #00B1FF; }
