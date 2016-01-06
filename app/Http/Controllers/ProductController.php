@@ -110,6 +110,7 @@
 
                 $productList = $this->product->getProductList($settings);
 
+               // dd($productList);
                 $settings['total'] = $productList['total'];
                 array_forget($productList, 'total');
 
@@ -299,7 +300,6 @@
          */
         public function addMediaForProduct(Request $request)
         {
-
             $fileResponse = [];
 
             if (!$request->hasFile('file'))
@@ -336,7 +336,12 @@
 
                 // Thumbnail creation and uploading to AWS S3
                 if (in_array($request->file('file')->guessClientExtension(), array("jpeg", "jpg", "bmp", "png"))){
-                    $thumb = \Image::make($request->file('file'))->crop(100,100);
+                   // $thumb = \Image::make($request->file('file'))->crop(100,100);
+                    $thumb = \Image::make($request->file('file'))
+                        ->resize(90, null, function ($constraint) {
+                        $constraint->aspectRatio();
+                        });
+
                     $thumb = $thumb->stream();
                     $thumbFileName = 'thumb-'.$fileName;
                     $s3->put($thumbFileName, $thumb->__toString(),'public');

@@ -3,6 +3,7 @@
     namespace App\Models;
 
     use Illuminate\Database\Eloquent\Model;
+    use Carbon\Carbon;
 
     class Product extends Model {
 
@@ -129,10 +130,29 @@
 
         }
 
+        public function getSingleProductInfoForView($productId)
+        {
+            $result = \DB::table('products')
+                ->where('products.id', $productId)
+                ->leftJoin('product_categories', 'product_categories.id', '=', 'products.product_category_id')
+                ->leftJoin('medias', function ($join)
+                {
+                    $join->on('medias.mediable_id', '=', 'products.id')
+                        ->where('mediable_type', '=', 'App\Models\Product')
+                        ->Where('media_type', '=', 'img-upload');
+                })
+                ->first(array(
+                    'products.id', 'products.updated_at', 'products.user_name',
+                    'products.product_name', 'product_categories.category_name', 'products.affiliate_link',
+                    'products.price','products.sale_price','medias.media_link'
+                ));
+
+            return $result;//$responseData;
+
+        }
 
         public function getProductList($settings)
         {
-
             $whereClause = array();
             if ($settings['CategoryId'] != null)
             {
@@ -149,7 +169,35 @@
 
             $product['result'] = Product::where($whereClause)
                 ->take($settings['limit'])
-                ->offset($skip)->get();
+                ->offset($skip)
+                ->orderBy('updated_at','desc')
+                ->get(array("id"));
+
+            $data = array();
+
+            $count = $product['result']->count();
+
+
+
+
+            for ($i = 0; $i < $count; $i++)
+            {
+                $id = $product['result'][ $i ]['id'];
+                $tmp = $this->getSingleProductInfoForView($id);
+
+                $strReplace = \Config::get("const.file.s3-path");// "http://s3-us-west-1.amazonaws.com/ideaing-01/";
+                $path = str_replace($strReplace, '', $tmp->media_link);
+                $path = $strReplace.'thumb-'.$path;
+                $tmp->media_link = $path;
+                $tmp->updated_at = Carbon::createFromTimestamp(strtotime($tmp->updated_at))->diffForHumans();
+
+                $data[$i] = $tmp;
+
+            }
+
+            $product['result'] = $data;
+
+          //  dd($data);
 
             return $product;
 

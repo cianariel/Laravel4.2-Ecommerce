@@ -236,7 +236,6 @@ adminApp.controller('AdminController', ['$scope', '$http', '$confirm', '$locatio
                     $scope.categoryItems = data['data'];
                 } else {
                     $scope.tempCategoryList.pop();
-
                     $scope.outputStatus(data, 'No more subcategory available');
                 }
 

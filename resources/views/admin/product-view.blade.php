@@ -97,7 +97,7 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-lg-10">
+                                <div class="col-lg-12">
                                     <div class="form-group" style="margin-top:50px;">
                                         <div class="row">
                                             <div class="col-lg-12">
@@ -111,23 +111,41 @@
                                                             <table class="table table-hover">
                                                                 <thead>
                                                                 <tr>
-                                                                    <th>Product Id</th>
-                                                                    <th>Product Name</th>
-                                                                    <th>Permalink</th>
-                                                                    <th>Action</th>
+                                                                    <th class="col-md-1">Image</th>
+                                                                    <th class="col-md-2">Update</th>
+                                                                    <th class="col-md-1">User</th>
+                                                                    <th class="col-md-3">Product Name</th>
+                                                                    <th class="col-md-1">Category</th>
+                                                                    <th class="col-md-1">Affiliate</th>
+                                                                    <th class="col-md-1">Price</th>
+                                                                    <th class="col-md-1">Sell Price</th>
+                                                                    <th class="col-md-1">Action</th>
                                                                 </tr>
                                                                 </thead>
                                                                 <tbody>
                                                                 <tr ng-repeat="product in ProductList">
-                                                                    <td>@{{ product.id }}</td>
-                                                                    <td>@{{ product.product_name }}</td>
-                                                                    <td>@{{ product.product_permalink }}</td>
+                                                                    <td>
+                                                                        <a href="/product-details/@{{ product.id }}" target="_blank">
+                                                                        <img id="currentPhoto"
+                                                                             ng-src='@{{ product.media_link }}'
+                                                                             onerror="this.src='http://s3-us-west-1.amazonaws.com/ideaing-01/thumb-product-568d28a6701c7-no-item.jpg'"
+                                                                             width="90">
+                                                                        </a>
+                                                                    </td>
+                                                                    <td>@{{ product.updated_at }}</td>
+                                                                    <td>@{{ product.user_name }}</td>
+                                                                    <td>
+                                                                        <a href="/admin/product-edit/@{{ product.id }}">@{{ product.product_name }}</a>
+                                                                    </td>
+                                                                    <td>@{{ product.category_name }}</td>
+                                                                    <td> <a ng-hide="product.affiliate_link == ''" href="@{{ product.affiliate_link }}" target="_blank">Link</a> </td>
+                                                                    <td>@{{ product.price }}</td>
+                                                                    <td>@{{ product.sale_price }}</td>
                                                                     <td>
                                                                         <a href="/admin/product-edit/@{{ product.id }}"
                                                                            class="btn btn-info btn-circle"
                                                                            uib-tooltip="Edit"
                                                                            tooltip-placement="bottom">  <i class="fa fa-edit"></i></a>
-
                                                                     </td>
                                                                 </tr>
                                                                 </tbody>
@@ -135,7 +153,6 @@
                                                         </div>
                                                         <div>
                                                             <pagination ng-show="total != 0" total-items="total" ng-model="page" ng-change="showAllProduct()" items-per-page="limit"></pagination>
-
                                                         </div>
                                                         <!-- /.table-responsive -->
                                                     </div>
