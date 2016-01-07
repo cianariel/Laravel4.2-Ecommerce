@@ -346,6 +346,7 @@
 
                                                     <p>
                                                         <input type='text' ng-model="reviewKey" placeholder="key">
+                                                        <input type='text' ng-model="reviewLink" placeholder="Link">
                                                         <uib-rating ng-model="reviewValue"
                                                                     max="5"
                                                                     aria-labelledby="default-rating">
@@ -389,7 +390,10 @@
                                                                             <tbody>
                                                                             <tr ng-repeat="review in reviews">
                                                                                 <td>@{{$index}}</td>
-                                                                                <td>@{{ review.key }}</td>
+                                                                                <td><a href="@{{ review.link }}" target="_blank">
+                                                                                    @{{ review.key }}
+                                                                                    </a>
+                                                                                </td>
                                                                                 <td>
                                                                                     <uib-rating ng-model="review.value"
                                                                                                 max="5"

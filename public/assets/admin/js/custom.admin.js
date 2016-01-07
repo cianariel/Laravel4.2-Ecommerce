@@ -615,10 +615,11 @@ adminApp.controller('AdminController', ['$scope', '$http', '$confirm', '$locatio
         // add dynamic fields in review
         $scope.addReviewFormField = function () {
             $scope.reviews.push(
-                {'key': $scope.reviewKey, 'value': $scope.reviewValue}
+                {'key': $scope.reviewKey, 'value': $scope.reviewValue, 'link': $scope.reviewLink}
             );
             $scope.reviewKey = '';
             $scope.reviewValue = '';
+            $scope.reviewLink = '';
             $scope.externalReviewLink = '';
             $scope.calculateAvg();
 
@@ -633,6 +634,7 @@ adminApp.controller('AdminController', ['$scope', '$http', '$confirm', '$locatio
             $scope.$index = index;
             $scope.reviewKey = $scope.reviews[index].key;
             $scope.reviewValue = $scope.reviews[index].value;
+            $scope.reviewLink = $scope.reviews[index].link;
             $scope.isUpdateReviewShow = true;
             $scope.calculateAvg();
 
@@ -640,10 +642,12 @@ adminApp.controller('AdminController', ['$scope', '$http', '$confirm', '$locatio
         $scope.updateReviewFormField = function () {
             $scope.reviews[$scope.$index].key = $scope.reviewKey;
             $scope.reviews[$scope.$index].value = $scope.reviewValue;
+            $scope.reviews[$scope.$index].link = $scope.reviewLink;
             $scope.isUpdateReviewShow = false;
 
             $scope.reviewKey = '';
             $scope.reviewValue = '';
+            $scope.reviewLink = '';
             $scope.calculateAvg();
         }
 
