@@ -4546,7 +4546,7 @@ a.like-counter {
   background: transparent; }
   a.like-counter span {
     display: inline-block;
-    height: 100%;
+    height: 35px;
     width: 35px;
     margin-left: -3px;
     float: left;
@@ -4648,7 +4648,7 @@ li.nested a::after {
       background: transparent; }
       .share-bar li a.fb span {
         display: inline-block;
-        height: 100%;
+        height: 35px;
         width: 35px;
         margin-left: -3px;
         float: left;
@@ -4677,7 +4677,7 @@ li.nested a::after {
       background: transparent; }
       .share-bar li a.twi span {
         display: inline-block;
-        height: 100%;
+        height: 35px;
         width: 35px;
         margin-left: -3px;
         float: left;
@@ -4706,7 +4706,7 @@ li.nested a::after {
       background: transparent; }
       .share-bar li a.gp span {
         display: inline-block;
-        height: 100%;
+        height: 35px;
         width: 35px;
         margin-left: -3px;
         float: left;
@@ -4736,7 +4736,7 @@ li.nested a::after {
       background-position: 5px 8px; }
       .share-bar li a.email span {
         display: inline-block;
-        height: 100%;
+        height: 35px;
         width: 35px;
         margin-left: -3px;
         float: left;
@@ -4765,7 +4765,7 @@ li.nested a::after {
       background: transparent; }
       .share-bar li a.pint span {
         display: inline-block;
-        height: 100%;
+        height: 35px;
         width: 35px;
         margin-left: -3px;
         float: left;
@@ -4795,7 +4795,7 @@ li.nested a::after {
       background-size: 19px; }
       .share-bar li a.heart span {
         display: inline-block;
-        height: 100%;
+        height: 35px;
         width: 35px;
         margin-left: -3px;
         float: left;
@@ -4825,7 +4825,7 @@ li.nested a::after {
       background-size: 19px; }
       .share-bar li a.comment span {
         display: inline-block;
-        height: 100%;
+        height: 35px;
         width: 35px;
         margin-left: -3px;
         float: left;
@@ -6938,6 +6938,8 @@ footer.about-footer {
       min-height: 400px; }
       #hero.details-hero h1 {
         font-size: 3rem; }
+        #hero.details-hero h1 a.like-counter span {
+          margin-top: -5px; }
 
   #hero-nav .category-nav {
     width: 100%;
@@ -7070,7 +7072,11 @@ footer.about-footer {
     width: 100%; }
 
   .comparison .arrow {
-    display: none; } }
+    display: none; }
+
+  .idea-stories .story-details {
+    padding-top: 40px;
+    padding-bottom: 40px; } }
 @media screen and (max-width: 480px) {
   .full-480 {
     width: 100%;
