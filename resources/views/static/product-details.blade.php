@@ -1,5 +1,7 @@
 @extends('layouts.main')
 
+@section('body-class'){{ 'product-details' }}@stop
+
 @section('content')
     <header class="story-header hidden-620 hidden-soft" >
         <a href="#" class="side-logo lamp-logo">

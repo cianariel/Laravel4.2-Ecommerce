@@ -4,7 +4,7 @@
         @include('layouts.parts.head')
     </head>
 
-    <body>
+    <body class="@yield('body-class', '')">
     @include('layouts.parts.header')
 
         @yield('content')

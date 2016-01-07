@@ -35,7 +35,7 @@
             }
         </style>
     </head>
-    <body>
+    <body class="{{Layout::getRouteClass()}}">
         <div class="container">
             <div class="content">
                 <?php

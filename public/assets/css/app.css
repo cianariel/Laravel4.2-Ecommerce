@@ -4663,7 +4663,7 @@ li.nested a::after {
     .share-bar li a {
       color: #fff; }
 
-li.all-shares {
+.all-shares {
   width: 90px;
   height: 50px !important;
   text-align: center;
@@ -4671,9 +4671,8 @@ li.all-shares {
   text-transform: uppercase;
   line-height: 1;
   font-size: 1.1rem;
-  margin-top: -5px;
-  text-align: center; }
-  li.all-shares b {
+  margin-top: -5px; }
+  .all-shares b {
     display: inline-block;
     font-size: 3rem; }
 
@@ -4871,11 +4870,25 @@ nav a {
     top: 461px;
     background-image: url("/assets/images/icons/arrow-down-pink.png"); }
 
-.breadcrumbs li.active a {
-  font-size: 3rem;
-  padding-top: 7px !important;
-  margin-top: 0;
-  box-shadow: none !important; }
+.breadcrumbs li {
+  float: left;
+  position: relative; }
+  .breadcrumbs li:not(:last-child)::after {
+    content: ' ';
+    display: block;
+    position: absolute;
+    left: 90%;
+    top: 31%;
+    width: 19px;
+    height: 19px;
+    background: url("/assets/images/icons/arrow-pale-grey.png") center no-repeat; }
+  .breadcrumbs li:first-child a {
+    padding-left: 0; }
+  .breadcrumbs li a {
+    text-transform: none;
+    color: #c1c1c1; }
+    .breadcrumbs li a.current {
+      color: #fff; }
 
 .top-product-controls {
   float: right;
@@ -5703,14 +5716,10 @@ header.colophon {
         background-image: url("/assets/images/dots-pink.png");
         box-shadow: none; }
     .mid-nav a.box-link {
-      padding: 3px 4px;
+      padding: 5px 10px;
       margin: 14px 12px;
       border: 2px solid #ff7f00;
       border-radius: 4px; }
-      .mid-nav a.box-link:hover {
-        background: #ff7f00;
-        color: #fff !important;
-        box-shadow: none; }
     .mid-nav a:hover {
       color: #ff0042;
       -webkit-box-shadow: 0px 0px 0px 2px #ff0042;
@@ -5990,7 +5999,7 @@ header.sub-head {
   #hero-nav ul {
     overflow: visible; }
     #hero-nav ul.category-nav {
-      width: 390px;
+      width: 315px;
       margin: 0 auto;
       max-width: 100%; }
   #hero-nav .like-counter {
