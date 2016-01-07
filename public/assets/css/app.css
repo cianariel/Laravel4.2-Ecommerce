@@ -4837,6 +4837,19 @@ nav a {
   #hero .container {
     position: relative; }
 
+body.single .mid-nav, body.single .mid-nav .extra-nav, .mid-nav body.single .extra-nav,
+body.product-details .mid-nav,
+body.product-details .mid-nav .extra-nav,
+.mid-nav body.product-details .extra-nav {
+  height: 50px;
+  background: rgba(255, 255, 255, 0.95);
+  position: relative;
+  z-index: 1;
+  overflow: hidden; }
+body.single #hero,
+body.product-details #hero {
+  margin-top: -50px; }
+
 .slider.product-slider #gallery {
   width: 100%;
   height: 500px;
@@ -4877,25 +4890,10 @@ nav a {
     top: 461px;
     background-image: url("/assets/images/icons/arrow-down-pink.png"); }
 
-.breadcrumbs li {
-  float: left;
-  position: relative; }
-  .breadcrumbs li:not(:last-child)::after {
-    content: ' ';
-    display: block;
-    position: absolute;
-    left: 90%;
-    top: 31%;
-    width: 19px;
-    height: 19px;
-    background: url("/assets/images/icons/arrow-pale-grey.png") center no-repeat; }
-  .breadcrumbs li:first-child a {
-    padding-left: 0; }
-  .breadcrumbs li a {
-    text-transform: none;
-    color: #c1c1c1; }
-    .breadcrumbs li a.current {
-      color: #fff; }
+.breadcrumbs li.active a {
+  margin-top: 4px;
+  padding-top: 0 !important;
+  font-size: 3rem; }
 
 .top-product-controls {
   float: right;
@@ -5725,7 +5723,7 @@ header.colophon {
         box-shadow: none; }
     .mid-nav a.box-link {
       padding: 5px 10px;
-      margin: 14px 12px;
+      margin: 9px 12px;
       border: 2px solid #ff7f00;
       border-radius: 4px; }
     .mid-nav a:hover {
@@ -6844,9 +6842,6 @@ footer.about-footer {
     padding-top: 5%; }
   .idea-stories .story-details .content-tags {
     margin-bottom: 0; }
-
-  .breadcrumbs {
-    margin-left: 6%; }
 
   .average-score {
     width: 90%;

@@ -19,7 +19,7 @@
         </header>
         <nav class="mid-nav hidden-620">
                 <div class="container">
-                    <ul class="left-nav breadcrumbs col-sm-5 col-xs-6 hidden-620">
+                    <ul class="left-nav breadcrumbs hidden-620">
                         <!--                    <li><a class="home-link" href="#">Home</a></li>-->
                         <li class="active"><a href="#" class="larger-text allcaps orange">Ideas</a></li>
                         <li><a href="#" class="orange box-link">Kitchen</a></li>

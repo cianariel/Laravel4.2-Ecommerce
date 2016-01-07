@@ -771,6 +771,27 @@ nav{
 
 }
 
+body.single,
+body.product-details{
+  .mid-nav{
+    height: 50px;
+    background: rgba(255,255,255,.95);
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+  }
+  #hero{
+    margin-top: -50px;
+  }
+}
+
+//body.single{
+//  #hero{
+//    margin-top: -62px;
+//  }
+//}
+
+
 .slider{
   //position: relative;
   &.product-slider{
@@ -887,38 +908,50 @@ nav{
 }
 
 .breadcrumbs{
-  li{
-    float: left;
-    position: relative;
+  //margin-left: 6%;
 
-      &:not(:last-child)::after{
-        content: ' ';
-        display: block;
-        position: absolute;
-
-        left: 90%;
-        top: 31%;
-        width: 19px;
-        height: 19px;
-        background: url("/assets/images/icons/arrow-pale-grey.png") center no-repeat;
-    }
-
-    &:first-child{
-      a{
-        padding-left: 0;
-      }
-    }
-
-    a{
-      text-transform: none;
-      color: $light-grey;
-
-      &.current{
-        color: #fff;
-      }
-    }
+  li.active a{
+    margin-top: 4px;
+    padding-top: 0 !important;
+    font-size: 3rem;
   }
 }
+
+
+//
+//.breadcrumbs{
+//  li{
+//    float: left;
+//    position: relative;
+//
+//      &:not(:last-child)::after{
+//        content: ' ';
+//        display: block;
+//        position: absolute;
+//
+//        left: 90%;
+//        top: 31%;
+//        width: 19px;
+//        height: 19px;
+//        background: url("/assets/images/icons/arrow-pale-grey.png") center no-repeat;
+//    }
+//
+//    &:first-child{
+//      a{
+//        padding-left: 0;
+//      }
+//    }
+//
+//    a{
+//      text-transform: none;
+//      color: $light-grey;
+//
+//      &.current{
+//        color: #fff;
+//      }
+//    }
+//  }
+//}
 
 .top-product-controls{
   float: right;
@@ -2303,7 +2336,7 @@ header.colophon{
 
     &.box-link{
       padding: 5px 10px;
-      margin: 14px 12px;
+      margin: 9px 12px;
       border: 2px solid $dark-orange;
       border-radius: 4px;
 
@@ -3014,8 +3047,6 @@ body.single{
   .like-nav{
     width: 280px;
   }
-
-
 }
 
 .idea-stories{
@@ -4255,9 +4286,7 @@ footer.about-footer{
     }
   }
 
-  .breadcrumbs{
-    margin-left: 6%;
-  }
+
 
   .average-score{
     width: 90%;
