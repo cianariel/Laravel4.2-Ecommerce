@@ -13,13 +13,13 @@
     */
 
 
-    /*
+/*
     //Debug query
     Event::listen('illuminate.query', function($query)
      {
          var_dump($query);
-     });*/
-
+     });
+*/
     use Illuminate\Http\Request;
     Route::any('api/product/media-uploadX', function (Request $request ) // temp, used for tweaking frontend
     {

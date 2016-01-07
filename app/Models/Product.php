@@ -3,6 +3,7 @@
     namespace App\Models;
 
     use Illuminate\Database\Eloquent\Model;
+    use Carbon\Carbon;
 
     class Product extends Model {
 
@@ -129,31 +130,87 @@
 
         }
 
+        public function getSingleProductInfoForView($productId)
+        {
+            $result = \DB::table('products')
+                ->where('products.id', $productId)
+                ->leftJoin('product_categories', 'product_categories.id', '=', 'products.product_category_id')
+                ->leftJoin('medias', function ($join)
+                {
+                    $join->on('medias.mediable_id', '=', 'products.id')
+                        ->where('mediable_type', '=', 'App\Models\Product')
+                        ->Where('media_type', '=', 'img-upload');
+                })
+                ->first(array(
+                    'products.id', 'products.updated_at', 'products.user_name',
+                    'products.product_name', 'product_categories.category_name', 'products.affiliate_link',
+                    'products.price', 'products.sale_price', 'medias.media_link'
+                ));
 
+            return $result;
+
+        }
+
+        // return all the product list as per $settings provided from the controller
         public function getProductList($settings)
         {
 
-            $whereClause = array();
+            $productModel = $this;
+
+            $filterText = $settings['FilterText'];
+
             if ($settings['CategoryId'] != null)
             {
-                $whereClause = array_add($whereClause, "product_category_id", $settings['CategoryId']);
+                $productModel = $productModel->where("product_category_id", $settings['CategoryId']);
             }
+
             if ($settings['ActiveItem'] == true)
             {
-                $whereClause = array_add($whereClause, "post_status", "Active");
+                $productModel = $productModel->where("post_status", 'Active');
+            }
+
+            if ($settings['FilterType'] == 'user-filter')
+            {
+                $productModel = $productModel->where("user_name", "like", "%$filterText%");
+            }
+            if ($settings['FilterType'] == 'product-filter')
+            {
+                $productModel = $productModel->where("product_name", "like", "%$filterText%");
             }
 
             $skip = $settings['limit'] * ($settings['page'] - 1);
 
-            $product['total'] = Product::where($whereClause)->count();
+            $product['total'] = $productModel->count();
 
-            $product['result'] = Product::where($whereClause)
+            $product['result'] = $productModel
                 ->take($settings['limit'])
-                ->offset($skip)->get();
+                ->offset($skip)
+                ->orderBy('updated_at', 'desc')
+                ->get(array("id"));
+
+            $data = array();
+
+            $count = $product['result']->count();
+
+            for ($i = 0; $i < $count; $i++)
+            {
+                $id = $product['result'][ $i ]['id'];
+                $tmp = $this->getSingleProductInfoForView($id);
+
+                // making the thumbnail url by injecting "thumb-" in the url which has been uploaded during media submission.
+                $strReplace = \Config::get("const.file.s3-path");
+                $path = str_replace($strReplace, '', $tmp->media_link);
+                $path = $strReplace . 'thumb-' . $path;
+                $tmp->media_link = $path;
+                $tmp->updated_at = Carbon::createFromTimestamp(strtotime($tmp->updated_at))->diffForHumans();
+
+                $data[ $i ] = $tmp;
+
+            }
+
+            $product['result'] = $data;
 
             return $product;
-
         }
-
 
     }

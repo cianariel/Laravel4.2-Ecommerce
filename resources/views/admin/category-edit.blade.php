@@ -45,7 +45,7 @@
                                             </div>
 
                                             <div class="panel panel-info">
-                                                <div class="panel-heading"> Category Status Panel</div>
+                                                <div class="panel-heading"> Subcategory Status Panel</div>
                                                 <div class="panel-body">
                                                     <span ng-repeat="list in tempCategoryList">@{{ list }} >> </span>
                                                 </div>
@@ -55,7 +55,7 @@
                                     </div>
 
                                     <div class="form-group ">
-                                        <label>Selects Category</label>
+                                        <label>Subcategory Category</label>
 
                                         <div class="col-lg-12 clearfix">
                                             <div class="col-lg-10 pull-left">
@@ -78,6 +78,10 @@
                                                     <i class="fa fa-refresh"></i>
                                                 </button>
                                             </div>
+                                            <div style="margin-top: 30px"> &nbsp;</div>
+                                            <div>
+                                                <label>Selected Category Name :</label><span class="text-danger"><strong> @{{ currentCategoryName }} </strong> </span>
+                                            </div>
                                         </div>
                                     </div>
 
@@ -85,7 +89,7 @@
                             </div>
                             <div class="row">
                                 <div class="col-lg-10">
-                                    <div class="form-group" style="margin-top:50px;">
+                                    <div class="form-group">
                                         <div class="row">
                                             <div class="col-lg-10">
                                                 <div class="panel panel-default">

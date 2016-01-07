@@ -91,7 +91,7 @@
                                                             <div class="row">
                                                                 <div class="from-group">
                                                                     <div class="panel panel-info">
-                                                                        <div class="panel-heading"> Category Status
+                                                                        <div class="panel-heading"> Subcategory Status
                                                                             Panel
                                                                         </div>
                                                                         <div class="panel-body">
@@ -129,6 +129,9 @@
                                                                                 @{{ category.category }}
                                                                             </option>
                                                                         </select>
+                                                                    </div>
+                                                                    <div style="margin-top: 10px">
+                                                                        <label>Selected Category Name :</label><span class="text-danger"><strong> @{{ currentCategoryName }} </strong> </span>
                                                                     </div>
 
                                                                     <div class="col-lg-2">
@@ -343,6 +346,7 @@
 
                                                     <p>
                                                         <input type='text' ng-model="reviewKey" placeholder="key">
+                                                        <input type='text' ng-model="reviewLink" placeholder="Link">
                                                         <uib-rating ng-model="reviewValue"
                                                                     max="5"
                                                                     aria-labelledby="default-rating">
@@ -386,7 +390,10 @@
                                                                             <tbody>
                                                                             <tr ng-repeat="review in reviews">
                                                                                 <td>@{{$index}}</td>
-                                                                                <td>@{{ review.key }}</td>
+                                                                                <td><a href="@{{ review.link }}" target="_blank">
+                                                                                    @{{ review.key }}
+                                                                                    </a>
+                                                                                </td>
                                                                                 <td>
                                                                                     <uib-rating ng-model="review.value"
                                                                                                 max="5"
@@ -529,6 +536,7 @@
                                                                     <td>
                                                                         <a href="@{{ media.media_link}}" target="_blank">
                                                                          @{{ media.media_link}}
+                                                                        </a>
                                                                     </td>
                                                                     <td>
                                                                         <button data-ng-click="deleteMedia(media.id)"
