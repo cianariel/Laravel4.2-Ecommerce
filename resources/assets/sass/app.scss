@@ -1,5 +1,45 @@
+// VENDOR STYLE
 @import "bootstrap";
 @import url(https://fonts.googleapis.com/css?family=Montserrat:400,700);
+
+// FONTS
+
+//@font-face {
+//  font-family: 'montserratbold';
+//  src: url('/assets/fonts/montserrat-bold-webfont.eot');
+//  src: url('/assets/fonts/montserrat-bold-webfont.eot?#iefix') format('embedded-opentype'),
+//  url('/assets/fonts/montserrat-bold-webfont.woff2') format('woff2'),
+//  url('/assets/fonts/montserrat-bold-webfont.woff') format('woff'),
+//  url('/assets/fonts/montserrat-bold-webfont.ttf') format('truetype'),
+//  url('/assets/fonts/montserrat-bold-webfont.svg#montserratbold') format('svg');
+//  font-weight: normal;
+//  font-style: normal;
+//}
+
+@font-face {
+  font-family: 'montserratlight';
+  src: url('/assets/fonts/montserrat-light-webfont.eot');
+  src: url('/assets/fonts/montserrat-light-webfont.eot?#iefix') format('embedded-opentype'),
+  url('/assets/fonts/montserrat-light-webfont.woff2') format('woff2'),
+  url('/assets/fonts/montserrat-light-webfont.woff') format('woff'),
+  url('/assets/fonts/montserrat-light-webfont.ttf') format('truetype'),
+  url('/assets/fonts/montserrat-light-webfont.svg#montserratlight') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+//@font-face {
+//  font-family: 'montserratregular';
+//  src: url('/assets/fonts/montserrat-regular-webfont.eot');
+//  src: url('/assets/fonts/montserrat-regular-webfont.eot?#iefix') format('embedded-opentype'),
+//  url('/assets/fonts/montserrat-regular-webfont.woff2') format('woff2'),
+//  url('/assets/fonts/montserrat-regular-webfont.woff') format('woff'),
+//  url('/assets/fonts/montserrat-regular-webfont.ttf') format('truetype'),
+//  url('/assets/fonts/montserrat-regular-webfont.svg#montserratregular') format('svg');
+//  font-weight: normal;
+//  font-style: normal;
+//
+//}
 
 
 // COLORS
@@ -2974,6 +3014,8 @@ body.single{
   .like-nav{
     width: 280px;
   }
+
+
 }
 
 .idea-stories{
@@ -2985,9 +3027,10 @@ body.single{
 
   .article-content{
     p{
+      font-family: montserratlight;
       color: darken($light-grey, 30%);
       line-height: 1.6;
-      font-size: 1.5rem;
+      font-size: 1.6rem;
     }
     img{
       max-width: 100%;

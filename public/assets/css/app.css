@@ -4361,6 +4361,13 @@ a.label:focus {
 @media print {
   .hidden-print {
     display: none !important; } }
+@font-face {
+  font-family: 'montserratlight';
+  src: url("/assets/fonts/montserrat-light-webfont.eot");
+  src: url("/assets/fonts/montserrat-light-webfont.eot?#iefix") format("embedded-opentype"), url("/assets/fonts/montserrat-light-webfont.woff2") format("woff2"), url("/assets/fonts/montserrat-light-webfont.woff") format("woff"), url("/assets/fonts/montserrat-light-webfont.ttf") format("truetype"), url("/assets/fonts/montserrat-light-webfont.svg#montserratlight") format("svg");
+  font-weight: normal;
+  font-style: normal; }
+
 .pink {
   color: #ff0042 !important; }
 
@@ -6148,9 +6155,10 @@ body.single .like-nav {
   width: 280px; }
 
 .idea-stories .article-content p {
+  font-family: montserratlight;
   color: #757575;
   line-height: 1.6;
-  font-size: 1.5rem; }
+  font-size: 1.6rem; }
 .idea-stories .article-content img {
   max-width: 100%;
   height: auto;
