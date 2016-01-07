@@ -42,7 +42,7 @@
                                         </div>
 
                                         <div class="panel panel-info">
-                                            <div class="panel-heading"> Category Status Panel</div>
+                                            <div class="panel-heading"> Subcategory Status Panel</div>
                                             <div class="panel-body">
                                                 <span ng-repeat="list in tempCategoryList">@{{ list }} >> </span>
                                             </div>
@@ -73,6 +73,10 @@
                                                         tooltip-placement="right">
                                                     <i class="fa fa-refresh"></i>
                                                 </button>
+                                            </div>
+                                            <div style="margin-top: 30px"> &nbsp;</div>
+                                            <div>
+                                                <label>Selected Category Name :</label><span class="text-danger"><strong> @{{ currentCategoryName }} </strong> </span>
                                             </div>
                                         </div>
                                     </div>

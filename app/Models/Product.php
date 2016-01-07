@@ -147,28 +147,14 @@
                     'products.price', 'products.sale_price', 'medias.media_link'
                 ));
 
-            return $result;//$responseData;
+            return $result;
 
         }
 
+        // return all the product list as per $settings provided from the controller
         public function getProductList($settings)
         {
-            /*
-            $whereClause = array();
-            if ($settings['CategoryId'] != null)
-            {
-                $whereClause = array_add($whereClause, "product_category_id", $settings['CategoryId']);
-            }
-            if ($settings['ActiveItem'] == true)
-            {
-                $whereClause = array_add($whereClause, "post_status", "Active");
-            }
-            if($settings['FilterType'] != null)
-            {
 
-            }
-
-*/
             $productModel = $this;
 
             $filterText = $settings['FilterText'];
@@ -185,23 +171,17 @@
 
             if ($settings['FilterType'] == 'user-filter')
             {
-                $productModel = $productModel->where("user_name","like" ,"%$filterText%");
+                $productModel = $productModel->where("user_name", "like", "%$filterText%");
             }
             if ($settings['FilterType'] == 'product-filter')
             {
-                $productModel = $productModel->where("product_name","like" ,"%$filterText%");
+                $productModel = $productModel->where("product_name", "like", "%$filterText%");
             }
-
-
-
 
             $skip = $settings['limit'] * ($settings['page'] - 1);
 
-          //  $product['total'] = Product::where($whereClause)->count();
-              $product['total'] = $productModel->count();
+            $product['total'] = $productModel->count();
 
-
-          //  $product['result'] = Product::where($whereClause)
             $product['result'] = $productModel
                 ->take($settings['limit'])
                 ->offset($skip)
@@ -212,13 +192,13 @@
 
             $count = $product['result']->count();
 
-
             for ($i = 0; $i < $count; $i++)
             {
                 $id = $product['result'][ $i ]['id'];
                 $tmp = $this->getSingleProductInfoForView($id);
 
-                $strReplace = \Config::get("const.file.s3-path");// "http://s3-us-west-1.amazonaws.com/ideaing-01/";
+                // making the thumbnail url by injecting "thumb-" in the url which has been uploaded during media submission.
+                $strReplace = \Config::get("const.file.s3-path");
                 $path = str_replace($strReplace, '', $tmp->media_link);
                 $path = $strReplace . 'thumb-' . $path;
                 $tmp->media_link = $path;
@@ -230,11 +210,7 @@
 
             $product['result'] = $data;
 
-            //  dd($data);
-
             return $product;
-
         }
-
 
     }

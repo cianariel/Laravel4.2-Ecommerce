@@ -91,7 +91,7 @@
                                                             <div class="row">
                                                                 <div class="from-group">
                                                                     <div class="panel panel-info">
-                                                                        <div class="panel-heading"> Category Status
+                                                                        <div class="panel-heading"> Subcategory Status
                                                                             Panel
                                                                         </div>
                                                                         <div class="panel-body">
@@ -129,6 +129,9 @@
                                                                                 @{{ category.category }}
                                                                             </option>
                                                                         </select>
+                                                                    </div>
+                                                                    <div style="margin-top: 10px">
+                                                                        <label>Selected Category Name :</label><span class="text-danger"><strong> @{{ currentCategoryName }} </strong> </span>
                                                                     </div>
 
                                                                     <div class="col-lg-2">

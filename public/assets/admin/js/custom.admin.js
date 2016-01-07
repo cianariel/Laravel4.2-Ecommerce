@@ -266,10 +266,11 @@ adminApp.controller('AdminController', ['$scope', '$http', '$confirm', '$locatio
                     ExtraInfo: $scope.extraInfo
                 },
             }).success(function (data) {
-                $scope.outputStatus(data, 'Category item added successfully');
                 $scope.categoryName = '';
                 $scope.extraInfo = '';
                 $scope.resetCategory();
+             //   console.log('in function: '+data.status_code);
+                $scope.outputStatus(data, 'Category item added successfully');
             });
 
             return false;
@@ -318,6 +319,7 @@ adminApp.controller('AdminController', ['$scope', '$http', '$confirm', '$locatio
         $scope.outputStatus = function (data, message) {
 
             var statusCode = data.status_code;
+          //  console.log('status code:'+statusCode);
             switch (statusCode) {
                 case 400:
                 {
