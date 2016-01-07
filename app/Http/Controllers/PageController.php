@@ -26,7 +26,7 @@ class PageController extends Controller
         curl_setopt($ch, CURLOPT_URL, $url);
         curl_setopt($ch, CURLOPT_HEADER, 0);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-
+        curl_setopt($ch, CURLOPT_ENCODING ,"");
 
         $json = curl_exec($ch);
         $stories = json_decode($json);
