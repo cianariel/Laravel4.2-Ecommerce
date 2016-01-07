@@ -145,6 +145,7 @@ adminApp.controller('AdminController', ['$scope', '$http', '$confirm', '$locatio
             $scope.tmpUrl = '';
 
             /// product fields initialize
+            $scope.ProductAuthorName = 'Anonymous User';
             $scope.ProductList = [];
             $scope.ProductId = '';
             $scope.selectedItem = '';
@@ -445,15 +446,8 @@ adminApp.controller('AdminController', ['$scope', '$http', '$confirm', '$locatio
             $scope.isCollapsedToggle = !$scope.isCollapsed;
         };
         $scope.addProduct = function () {
-            // $scope.closeAlert();
-            /* console.log($scope.desiredPermalink);
-             if (($scope.desiredPermalink == '') || ( typeof  $scope.desiredPermalink == 'undefined')) {
-             $scope.addAlert('danger', 'Permalink can not be blank !');
-             return false;
-             }*/
 
             $http({
-                //       url: '/api/product/check-permalink/' + $scope.desiredPermalink,
                 url: '/api/product/add-product',
                 method: "POST",
                 data: {}
@@ -462,10 +456,8 @@ adminApp.controller('AdminController', ['$scope', '$http', '$confirm', '$locatio
                 if (data.status_code == 200) {
 
                     $scope.ProductId = data.data.id;
-                    //   $scope.outputStatus(data, "Product created successfully");
-                    //   $scope.isCollapsed = true;
-                    //    $scope.isCollapsedToggle = !$scope.isCollapsed;
-                    $scope.Permalink = $scope.desiredPermalink;
+
+                 //   $scope.Permalink = $scope.desiredPermalink;
                 } else {
                     // $scope.outputStatus(data, "Permalink is not available please enter new.");
                 }
@@ -493,6 +485,7 @@ adminApp.controller('AdminController', ['$scope', '$http', '$confirm', '$locatio
                 method: 'POST',
                 data: {
                     ProductId: $scope.ProductId,
+                    ProductAuthorName: $scope.ProductAuthorName,
                     CategoryId: $scope.selectedItem,
                     Name: $scope.Name,
                     Permalink: $scope.Permalink,
@@ -538,6 +531,7 @@ adminApp.controller('AdminController', ['$scope', '$http', '$confirm', '$locatio
                 method: 'POST',
                 data: {
                     ProductId: $scope.ProductId,
+                    ProductAuthorName: $scope.ProductAuthorName,
                     CategoryId: $scope.selectedItem,
                     Name: $scope.Name,
                     Permalink: $scope.Permalink,
@@ -567,8 +561,6 @@ adminApp.controller('AdminController', ['$scope', '$http', '$confirm', '$locatio
                 } else {
                     $scope.outputStatus(data, "Product information not updated");
                     $scope.PostStatus = ($scope.PostStatus == "Active") ? "Inactive" : "Active";
-
-
                 }
             });
             return false;
@@ -792,7 +784,7 @@ adminApp.controller('AdminController', ['$scope', '$http', '$confirm', '$locatio
                     IsHeroItem: $scope.isHeroItem
                 }
             }).success(function (data) {
-                console.log(data);
+             //   console.log(data);
 
                 if (data.status_code == 200) {
                     $scope.getMedia();
@@ -808,7 +800,7 @@ adminApp.controller('AdminController', ['$scope', '$http', '$confirm', '$locatio
                 url: '/api/product/get-media/' + $scope.ProductId,
                 method: 'GET',
             }).success(function (data) {
-                console.log(data);
+             //   console.log(data);
 
                 if (data.status_code == 200) {
                     $scope.mediaList = data.data;

@@ -17,6 +17,7 @@
         //protected $fillable = ['product_name'];
         protected $fillable = array(
             'product_name',
+            'user_name',
             'product_permalink',
             'product_description',
             'specifications',
@@ -93,8 +94,10 @@
         {
             try
             {
+                //ProductAuthorName: $scope.ProductAuthorName,
                 $data = array(
                     "product_category_id"     => ($product['CategoryId'] != null) ? $product['CategoryId'] : null,
+                    "user_name"               => ($product['ProductAuthorName'] != null) ? $product['ProductAuthorName'] : 'Anonymous User',
                     "product_name"            => $product['Name'],
                     "product_permalink"       => (isset($product['Permalink'])) ? $product['Permalink'] : null,
                     "product_description"     => ($product['Description'] != null) ? $product['Description'] : "",
