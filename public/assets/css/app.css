@@ -6139,6 +6139,9 @@ header.sub-head {
 
 body.single .mid-nav.rooms, body.single .mid-nav .rooms.extra-nav, .mid-nav body.single .rooms.extra-nav {
   display: none; }
+body.single #top-nav a.ideas {
+  color: #4791d4;
+  background-image: url("/assets/images/icons/lamp-small-blue.png"); }
 
 .idea-stories .article-content p {
   color: #757575;

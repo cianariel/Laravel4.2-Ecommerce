@@ -2955,6 +2955,10 @@ body.single{
   .mid-nav.rooms{
     display: none;
   }
+  #top-nav a.ideas{
+    color: $ideaing-blue;
+      background-image: url('/assets/images/icons/lamp-small-blue.png');
+  }
 }
 
 .idea-stories{
