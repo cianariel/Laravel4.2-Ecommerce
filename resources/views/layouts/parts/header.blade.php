@@ -13,7 +13,7 @@
                                         <a class="rooms-link" href="#">Rooms</a>
 
                                         <ul>
-                                            <li><a href="#">All ideas</a></li>
+                                            {{--<li><a href="#">All ideas</a></li>--}}
                                             <li><a href="#">Kitchen</a></li>
                                             <li><a href="#">Bath</a></li>
                                             <li><a href="#">Bedroom</a></li>
@@ -209,7 +209,7 @@
         <nav class="mid-nav rooms hidden-620">
             <div class="container full-sm fixed-sm">
                 <ul class="wrap col-xs-9">
-                    <li class="selected"><a href="">All ideas</a></li>
+                    {{--<li class="selected"><a href="">All ideas</a></li>--}}
                     <li><a href="">Kitchen</a></li>
                     <li><a href="">Bedroom</a></li>
                     <li><a href="">Office</a></li>
@@ -229,7 +229,7 @@
             </div>
             <div class="container mobile-menu hidden-lg hidden-md hidden-sm hidden-xs full-620  fixed-sm">
                 <ul>
-                    <li class="selected"><a href="">All ideas</a></li>
+                    {{--<li class="selected"><a href="">All ideas</a></li>--}}
                     <li><a href="">Kitchen</a></li>
                     <li><a href="">Bath</a></li>
                     <li><a class="nested" data-toggle=".mobile-more-nav" data-hide=".mobile-extra-nav" href="">More</a></li>

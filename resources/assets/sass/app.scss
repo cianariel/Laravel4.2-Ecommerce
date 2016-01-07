@@ -498,7 +498,7 @@ li.nested{
   }
 }
 
-.all-shares{
+li.all-shares{
   width: 90px;
   height: 50px !important;
   text-align: center;
@@ -507,6 +507,7 @@ li.nested{
   line-height: 1;
   font-size: 1.1rem;
   margin-top: -5px;
+  text-align: center;
 
   b{
     display: inline-block;
@@ -777,7 +778,7 @@ body.product-details{
     height: 50px;
     background: rgba(255,255,255,.95);
     position: relative;
-    z-index: 1;
+    z-index: 2;
     overflow: hidden;
   }
   #hero{
@@ -908,15 +909,15 @@ body.product-details{
 }
 
 .breadcrumbs{
-  //margin-left: 6%;
-
-  li.active a{
-    margin-top: 4px;
-    padding-top: 0 !important;
-    font-size: 3rem;
+  li.active{
+    a{
+      font-size: 3rem;
+      padding-top: 2px  !important;
+      margin-top: 0;
+      box-shadow: none !important;
+    }
   }
 }
-
 
 //
 //.breadcrumbs{
@@ -2165,6 +2166,17 @@ header.colophon{
 
 }
 
+body.product-details{
+  .story-header{
+    h1{
+      width: 46%;
+    }
+    .like-counter{
+      margin-top: -4px;
+    }
+  }
+}
+
 .story-header{
   position: fixed;
   top: 0;
@@ -2335,12 +2347,22 @@ header.colophon{
     }
 
     &.box-link{
-      padding: 5px 10px;
+      padding: 3px 4px;
       margin: 9px 12px;
       border: 2px solid $dark-orange;
       border-radius: 4px;
 
+
+
+      &:hover{
+        background: $dark-orange;
+        color: #fff !important;
+        box-shadow:none;
+      }
+
     }
+
+
 
     &:hover{
       color: $iridium;
@@ -2782,7 +2804,11 @@ header.sub-head{
   ul{
     overflow: visible;
 
-
+    &.category-nav{
+      width: 390px;
+      margin: 0 auto;
+      max-width: 100%;
+    }
   }
 
   .like-counter{
@@ -3061,7 +3087,7 @@ body.single{
       font-family: montserratlight;
       color: darken($light-grey, 30%);
       line-height: 1.6;
-      font-size: 1.6rem;
+      font-size: 1.5rem;
     }
     img{
       max-width: 100%;

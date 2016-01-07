@@ -4670,7 +4670,7 @@ li.nested a::after {
     .share-bar li a {
       color: #fff; }
 
-.all-shares {
+li.all-shares {
   width: 90px;
   height: 50px !important;
   text-align: center;
@@ -4678,8 +4678,9 @@ li.nested a::after {
   text-transform: uppercase;
   line-height: 1;
   font-size: 1.1rem;
-  margin-top: -5px; }
-  .all-shares b {
+  margin-top: -5px;
+  text-align: center; }
+  li.all-shares b {
     display: inline-block;
     font-size: 3rem; }
 
@@ -4844,7 +4845,7 @@ body.product-details .mid-nav .extra-nav,
   height: 50px;
   background: rgba(255, 255, 255, 0.95);
   position: relative;
-  z-index: 1;
+  z-index: 2;
   overflow: hidden; }
 body.single #hero,
 body.product-details #hero {
@@ -4891,9 +4892,10 @@ body.product-details #hero {
     background-image: url("/assets/images/icons/arrow-down-pink.png"); }
 
 .breadcrumbs li.active a {
-  margin-top: 4px;
-  padding-top: 0 !important;
-  font-size: 3rem; }
+  font-size: 3rem;
+  padding-top: 2px !important;
+  margin-top: 0;
+  box-shadow: none !important; }
 
 .top-product-controls {
   float: right;
@@ -5626,6 +5628,11 @@ header.colophon {
   #top-nav li.nested ul {
     display: none; }
 
+body.product-details .story-header h1 {
+  width: 46%; }
+body.product-details .story-header .like-counter {
+  margin-top: -4px; }
+
 .story-header {
   position: fixed;
   top: 0;
@@ -5722,10 +5729,14 @@ header.colophon {
         background-image: url("/assets/images/dots-pink.png");
         box-shadow: none; }
     .mid-nav a.box-link {
-      padding: 5px 10px;
+      padding: 3px 4px;
       margin: 9px 12px;
       border: 2px solid #ff7f00;
       border-radius: 4px; }
+      .mid-nav a.box-link:hover {
+        background: #ff7f00;
+        color: #fff !important;
+        box-shadow: none; }
     .mid-nav a:hover {
       color: #ff0042;
       -webkit-box-shadow: 0px 0px 0px 2px #ff0042;
@@ -6004,6 +6015,10 @@ header.sub-head {
   border-bottom: 1px solid #EFEFEF; }
   #hero-nav ul {
     overflow: visible; }
+    #hero-nav ul.category-nav {
+      width: 390px;
+      margin: 0 auto;
+      max-width: 100%; }
   #hero-nav .like-counter {
     margin-top: 7px; }
   #hero-nav li {
@@ -6156,7 +6171,7 @@ body.single .like-nav {
   font-family: montserratlight;
   color: #757575;
   line-height: 1.6;
-  font-size: 1.6rem; }
+  font-size: 1.5rem; }
 .idea-stories .article-content img {
   max-width: 100%;
   height: auto;
