@@ -291,7 +291,7 @@ a{ // Custom Link Styles
     text-indent: -9999px;
   }
 
-  &.like-counter{
+  @mixin round-box($color, $image-link) {
     display:  inline-block;
     width: 85px;
     height: 35px;
@@ -299,26 +299,27 @@ a{ // Custom Link Styles
     font-size: 1.7rem;
     border-radius: 30px;
     padding: 7px 10px 0 0 !important;
-    color: $iridium;
+    color: $color;
     border: 1px solid $pale-grey;
 
 
-    &.orange{
-      padding-left: 35px;
-      background: url("/assets/images/heart-orange.png") 0 top no-repeat;
-    }
+    //&.orange{
+    //  padding-left: 35px;
+    //  background: url("/assets/images/heart-orange.png") 0 top no-repeat;
+    //}
 
     span{
       display: inline-block;
       height: 40px;
       width: 40px;
-      margin-top: -9px;
+      margin-top: -10px;
       margin-left: -3px;
       float: left;
       //margin-top: -6px;
       border-radius: 30px;
       text-indent: -9999px;
-      background:$iridium url("/assets/images/heart-white.png") center no-repeat;
+      background:$color url($image-link) center no-repeat;
+      //background:$color url("/assets/images/heart-white.png") center no-repeat;
       background-size: 18px !important;
       background-position: center !important;
     }
@@ -327,6 +328,19 @@ a{ // Custom Link Styles
       display: inline-block;
       color: #FF0042;
     }
+
+    &:hover{
+      //span{
+      background: $color;
+      b{
+        color: #fff !important;
+      }
+      //}
+    }
+  }
+
+  &.like-counter{
+    @include round-box($iridium, "/assets/images/heart-white.png");
   }
 
   &.ideas-link{

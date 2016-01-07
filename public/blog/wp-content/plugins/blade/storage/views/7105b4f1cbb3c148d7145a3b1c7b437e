@@ -7,7 +7,7 @@
             </a>
             <h1>
                 <?php echo the_title(); ?>
-                <a class="like-counter" href="#"><span>Liked by</span>189</a>
+                <a class="like-counter" href="#"><span>Liked by</span><b>189</b></a>
             </h1>
 
             <ul class="social-rounds hidden-sm hidden-xs ">

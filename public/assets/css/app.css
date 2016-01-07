@@ -4543,14 +4543,11 @@ a.like-counter {
   padding: 7px 10px 0 0 !important;
   color: #ff0042;
   border: 1px solid #f2f5f5; }
-  a.like-counter.orange {
-    padding-left: 35px;
-    background: url("/assets/images/heart-orange.png") 0 top no-repeat; }
   a.like-counter span {
     display: inline-block;
     height: 40px;
     width: 40px;
-    margin-top: -9px;
+    margin-top: -10px;
     margin-left: -3px;
     float: left;
     border-radius: 30px;
@@ -4561,6 +4558,10 @@ a.like-counter {
   a.like-counter b {
     display: inline-block;
     color: #FF0042; }
+  a.like-counter:hover {
+    background: #ff0042; }
+    a.like-counter:hover b {
+      color: #fff !important; }
 a.ideas-link {
   color: #ff7f00;
   background-image: url("/assets/images/lamp-orange.png");
