@@ -1,5 +1,7 @@
 @extends('layouts.main')
 
+@section('body-class'){{ 'homepage' }}@stop
+
 @section('content')
     <section id="hero" class="landing-hero">
         <div class="hero-background"></div>

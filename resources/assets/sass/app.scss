@@ -2113,7 +2113,7 @@ header.colophon{
   }
 
   h1{
-    width: 37%;
+    width: 63%;
     padding-left: 10px;
     float: left;
     margin-left: 3%;
@@ -2128,6 +2128,7 @@ header.colophon{
   //    padding-top: 0;
       a.like-counter {
         margin-left: 30px;
+        margin-top: 5px;
         //padding-top: 0;
         //padding-right:8px;
         //background-position: left top;
@@ -2708,11 +2709,7 @@ header.sub-head{
   ul{
     overflow: visible;
 
-    &.category-nav{
-      width: 315px;
-      margin: 0 auto;
-      max-width: 100%;
-    }
+
   }
 
   .like-counter{
@@ -2879,7 +2876,20 @@ header.sub-head{
       background-image: url('/assets/images/photos-blue.png');
     }
   }
+
+
+
 }
+
+.homepage #hero-nav{
+  .category-nav{
+    width: 390px;
+    margin: 0 auto;
+    max-width: 100%;
+  }
+}
+
+
 
 .product-nav{
   a.photos-link {
@@ -2946,6 +2956,8 @@ header.sub-head{
     //}
   }
 
+
+
 }
 
 
@@ -2958,6 +2970,9 @@ body.single{
   #top-nav a.ideas{
     color: $ideaing-blue;
       background-image: url('/assets/images/icons/lamp-small-blue.png');
+  }
+  .like-nav{
+    width: 280px;
   }
 }
 
@@ -3600,8 +3615,9 @@ footer.about-footer{
   }
 
   .story-header h1 {
-    width: 39%;
-    font-size: 1.8rem;
+    //width: 63%;
+    font-size: 1.6rem;
+    margin-bottom: 5px;
   }
 
   @media (min-width:768px){
@@ -3717,6 +3733,12 @@ footer.about-footer{
 
 
 
+  .story-header h1 {
+    width: 75% !important;
+  }
+
+
+
 }
 
 
@@ -3758,6 +3780,7 @@ footer.about-footer{
       display: none;
     }
   }
+
 
   .mid-nav{
 
@@ -4001,6 +4024,9 @@ footer.about-footer{
 
     &.details-hero{
       min-height: 400px;
+      h1{
+        font-size: 3rem;
+      }
     }
   }
 

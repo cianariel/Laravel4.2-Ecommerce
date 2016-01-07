@@ -31,11 +31,11 @@
 <script src="/assets/js/vendor/jquery-1.11.3.min.js"></script>
 
 <!-- basic stylesheet -->
-<link rel="stylesheet" href="assets/js/vendor/royalslider/royalslider.css">
+<link rel="stylesheet" href="/assets/js/vendor/royalslider/royalslider.css">
 
 <!-- skin stylesheet (change it if you use another) -->
-<link rel="stylesheet" href="assets/js/vendor/royalslider/skins/default/rs-default.css">
+<link rel="stylesheet" href="/assets/js/vendor/royalslider/skins/default/rs-default.css">
 
 <!-- Main slider JS script file -->
 <!-- Create it with slider online build tool for better performance. -->
-<script src="assets/js/vendor/royalslider/jquery.royalslider.min.js"></script>
+<script src="/assets/js/vendor/royalslider/jquery.royalslider.min.js"></script>

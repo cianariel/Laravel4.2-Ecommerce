@@ -50,7 +50,7 @@
 <!--                    <li><a href="#" class="orange box-link">Style</a></li>-->
 <!---->
 <!--                </ul>-->
-                <ul class="like-nav hidden-xs pull-right">
+                <ul class="like-nav hidden-xs center-block ">
                     <li><a class="like-counter" href="#"><span></span><b>189</b></a></li>
                     <li><a class="author" href="#"></a></li>
                     <li><a class="author" href="#"></a></li>

@@ -5637,7 +5637,7 @@ header.colophon {
     background-size: initial;
     margin-top: -14px; }
   .story-header h1 {
-    width: 37%;
+    width: 63%;
     padding-left: 10px;
     float: left;
     margin-left: 3%;
@@ -5645,7 +5645,8 @@ header.colophon {
     font-size: 2.1rem;
     text-align: center; }
   .story-header a.like-counter {
-    margin-left: 30px; }
+    margin-left: 30px;
+    margin-top: 5px; }
   .story-header .social-rounds {
     float: right;
     width: 300px; }
@@ -5998,10 +5999,6 @@ header.sub-head {
   border-bottom: 1px solid #EFEFEF; }
   #hero-nav ul {
     overflow: visible; }
-    #hero-nav ul.category-nav {
-      width: 315px;
-      margin: 0 auto;
-      max-width: 100%; }
   #hero-nav .like-counter {
     margin-top: 7px; }
   #hero-nav li {
@@ -6101,6 +6098,11 @@ header.sub-head {
     color: #00b1ff;
     background-image: url("/assets/images/photos-blue.png"); }
 
+.homepage #hero-nav .category-nav {
+  width: 390px;
+  margin: 0 auto;
+  max-width: 100%; }
+
 .product-nav a.photos-link {
   background-image: url("/assets/images/photos-blue.png") !important; }
 
@@ -6142,6 +6144,8 @@ body.single .mid-nav.rooms, body.single .mid-nav .rooms.extra-nav, .mid-nav body
 body.single #top-nav a.ideas {
   color: #4791d4;
   background-image: url("/assets/images/icons/lamp-small-blue.png"); }
+body.single .like-nav {
+  width: 280px; }
 
 .idea-stories .article-content p {
   color: #757575;
@@ -6517,8 +6521,8 @@ footer.about-footer {
     margin-top: 0; }
 
   .story-header h1 {
-    width: 39%;
-    font-size: 1.8rem; }
+    font-size: 1.6rem;
+    margin-bottom: 5px; }
 
   #hero-nav {
     padding-left: 0; }
@@ -6571,7 +6575,10 @@ footer.about-footer {
 
   article.post {
     padding-left: 20px;
-    padding-right: 20px; } }
+    padding-right: 20px; }
+
+  .story-header h1 {
+    width: 75% !important; } }
 @media only screen and (max-width: 992px) and (min-width: 620px) {
   html,
   body,
@@ -6737,6 +6744,8 @@ footer.about-footer {
       padding-top: 0; }
     #hero.details-hero {
       min-height: 400px; }
+      #hero.details-hero h1 {
+        font-size: 3rem; }
 
   #hero-nav .category-nav {
     width: 100%;
