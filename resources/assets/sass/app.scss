@@ -278,6 +278,51 @@ html{
   background-position: right;
 }
 
+
+@mixin round-box($color, $image-link) {
+  display:  inline-block;
+  width: 85px;
+  height: 35px;
+  //display: inline-block;
+  font-size: 1.7rem;
+  border-radius: 30px;
+  padding: 0 10px 0 0 !important;
+  color: $color;
+  border: 1px solid $pale-grey;
+  background: transparent;
+
+  //&.orange{
+  //  padding-left: 35px;
+  //  background: url("/assets/images/heart-orange.png") 0 top no-repeat;
+  //}
+
+  span{
+    display: inline-block;
+    height: 100%;
+    width: 35px;
+    //margin-top: -10px;
+    margin-left: -3px;
+    float: left;
+    border-radius: 30px;
+    text-indent: -9999px;
+    background:$color url($image-link) center no-repeat;
+    background-size: 18px !important;
+    background-position: center !important;
+  }
+  b{
+    display: inline-block;
+    padding-top: 5px;
+    color: $color;
+  }
+
+  &:hover{
+    background: $color;
+    b{
+      color: #fff !important;
+    }
+  }
+}
+
 a{ // Custom Link Styles
 
   &.author{
@@ -291,53 +336,6 @@ a{ // Custom Link Styles
     text-indent: -9999px;
   }
 
-  @mixin round-box($color, $image-link) {
-    display:  inline-block;
-    width: 85px;
-    height: 35px;
-    //display: inline-block;
-    font-size: 1.7rem;
-    border-radius: 30px;
-    padding: 7px 10px 0 0 !important;
-    color: $color;
-    border: 1px solid $pale-grey;
-
-
-    //&.orange{
-    //  padding-left: 35px;
-    //  background: url("/assets/images/heart-orange.png") 0 top no-repeat;
-    //}
-
-    span{
-      display: inline-block;
-      height: 40px;
-      width: 40px;
-      margin-top: -10px;
-      margin-left: -3px;
-      float: left;
-      //margin-top: -6px;
-      border-radius: 30px;
-      text-indent: -9999px;
-      background:$color url($image-link) center no-repeat;
-      //background:$color url("/assets/images/heart-white.png") center no-repeat;
-      background-size: 18px !important;
-      background-position: center !important;
-    }
-    b{
-      //padding-top: 5px;
-      display: inline-block;
-      color: #FF0042;
-    }
-
-    &:hover{
-      //span{
-      background: $color;
-      b{
-        color: #fff !important;
-      }
-      //}
-    }
-  }
 
   &.like-counter{
     @include round-box($iridium, "/assets/images/heart-white.png");
@@ -441,7 +439,7 @@ li.nested{
   width: 80px;
   position: absolute;
   left: 1%;
-  top: 15px;
+  top: 9px;
   text-align: center;
 
   &.stick{
@@ -449,50 +447,54 @@ li.nested{
     top: 120px;
   }
 
-  li{
-    width: 100%;
-    height: 35px;
-    margin-bottom: 3px;
-    padding-top: 8px;
-    padding-bottom: 15px;
-    padding-right: 10px;
-    border-radius: 20px;
-    background-position: 8px center;
-    background-repeat: no-repeat;
-    text-align: right;
+  li {
+    margin-bottom: 8px;
+    a{
 
+      &.fb {
+        @include round-box($facebook-blue-2, "/assets/images/fb-white-small.png");
+      }
+      &.twi {
+        @include round-box($facebook-blue, "/assets/images/twi-white-small.png");
 
-    &.fb{
-      background-color: $facebook-blue-2;
-      background-image: url("/assets/images/fb-white-small.png");
+        //background-color: $facebook-blue;
+        //background-image: url("/assets/images/twi-white-small.png");
+      }
+      &.gp {
+        @include round-box($iridium, "/assets/images/gp-white-small.png");
+
+        //background-color: $iridium;
+        //background-image: url("/assets/images/gp-white-small.png");
+      }
+      &.email {
+        @include round-box($light-grey, "/assets/images/email-white-small.png");
+
+        //background-color: $light-grey;
+        //background-image: url("/assets/images/email-white-small.png");
+        background-position: 5px 8px;
+      }
+      &.pint {
+        @include round-box($pinterest-red, "/assets/images/pint-white-small.png");
+
+        //background-color: $pinterest-red;
+        //background-image: url("/assets/images/pint-white-small.png");
+      }
+      &.heart {
+        @include round-box($iridium, "/assets/images/heart-white.png");
+
+        //background-color: $iridium;
+        //background-image: url("/assets/images/heart-white.png");
+        background-size: 19px;
+      }
+      &.comment {
+        @include round-box($ideaing-blue, "/assets/images/icons/chat-white-outline.png");
+
+        //background-color: $ideaing-blue;
+        //background-image: url("/assets/images/icons/chat-white-outline.png");
+        background-size: 19px;
+      }
     }
-    &.twi{
-      background-color: $facebook-blue;
-      background-image: url("/assets/images/twi-white-small.png");
-    }
-    &.gp{
-      background-color: $iridium;
-      background-image: url("/assets/images/gp-white-small.png");
-    }
-    &.email{
-      background-color: $light-grey;
-      background-image: url("/assets/images/email-white-small.png");
-      background-position: 5px 8px;
-    }
-    &.pint{
-      background-color: $pinterest-red;
-      background-image: url("/assets/images/pint-white-small.png");
-    }
-    &.heart{
-      background-color:  $iridium;
-      background-image: url("/assets/images/heart-white.png");
-      background-size: 19px;
-    }
-    &.comment{
-      background-color: $ideaing-blue;
-      background-image: url("/assets/images/icons/chat-white-outline.png");
-      background-size: 19px;
-    }
+
 
     //&.heart,
     //&.comment{
@@ -505,11 +507,72 @@ li.nested{
     //  //}
     //}
 
-
-    a{
-      color: #fff;
-    }
+    //a {
+    //  color: #fff;
+    //}
   }
+  //}
+  //li{
+  //  width: 100%;
+  //  height: 35px;
+  //  margin-bottom: 3px;
+  //  padding-top: 8px;
+  //  padding-bottom: 15px;
+  //  padding-right: 10px;
+  //  border-radius: 20px;
+  //  background-position: 8px center;
+  //  background-repeat: no-repeat;
+  //  text-align: right;
+  //
+  //
+  //  &.fb{
+  //    background-color: $facebook-blue-2;
+  //    background-image: url("/assets/images/fb-white-small.png");
+  //  }
+  //  &.twi{
+  //    background-color: $facebook-blue;
+  //    background-image: url("/assets/images/twi-white-small.png");
+  //  }
+  //  &.gp{
+  //    background-color: $iridium;
+  //    background-image: url("/assets/images/gp-white-small.png");
+  //  }
+  //  &.email{
+  //    background-color: $light-grey;
+  //    background-image: url("/assets/images/email-white-small.png");
+  //    background-position: 5px 8px;
+  //  }
+  //  &.pint{
+  //    background-color: $pinterest-red;
+  //    background-image: url("/assets/images/pint-white-small.png");
+  //  }
+  //  &.heart{
+  //    background-color:  $iridium;
+  //    background-image: url("/assets/images/heart-white.png");
+  //    background-size: 19px;
+  //  }
+  //  &.comment{
+  //    background-color: $ideaing-blue;
+  //    background-image: url("/assets/images/icons/chat-white-outline.png");
+  //    background-size: 19px;
+  //  }
+  //
+  //  //&.heart,
+  //  //&.comment{
+  //  //  //background-color: #fff;
+  //  //  background-position: 8px 10px;
+  //  //  border: 1px solid $light-grey;
+  //  //
+  //  //  //a{
+  //  //  //  color: $light-grey;
+  //  //  //}
+  //  //}
+  //
+  //
+  //  a{
+  //    color: #fff;
+  //  }
+  //}
 }
 
 li.all-shares{
@@ -522,6 +585,7 @@ li.all-shares{
   font-size: 1.1rem;
   margin-top: -5px;
   text-align: center;
+  padding-right: 9px;
 
   b{
     display: inline-block;
@@ -2183,7 +2247,7 @@ header.colophon{
 body.product-details{
   .story-header{
     h1{
-      width: 46%;
+      width: 39%;
     }
     .like-counter{
       margin-top: -4px;
@@ -3116,7 +3180,7 @@ body.single{
     float: none;
     overflow: hidden;
     margin: 0 auto;
-    padding: 65px 0;
+    padding: 85px 0;
     text-align: center;
 
     h4{
@@ -3847,9 +3911,9 @@ footer.about-footer{
 
 
 
-  .story-header h1 {
-    width: 75% !important;
-  }
+  //.story-header h1 {
+  //  width: 75% !important;
+  //}
 
 
 
