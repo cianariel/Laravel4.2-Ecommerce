@@ -180,7 +180,7 @@
 
             if ($settings['ActiveItem'] == true)
             {
-                $productModel = $productModel->where("post_status", $settings['Active']);
+                $productModel = $productModel->where("post_status", 'Active');
             }
 
             if ($settings['FilterType'] == 'user-filter')
