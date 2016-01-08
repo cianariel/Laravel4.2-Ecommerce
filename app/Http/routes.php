@@ -20,23 +20,23 @@
          var_dump($query);
      });
 */
-    use Illuminate\Http\Request;
-    Route::any('api/product/media-uploadX', function (Request $request ) // temp, used for tweaking frontend
-    {
+   // use Illuminate\Http\Request;
+ //   Route::any('api/product/media-uploadX', function (Request $request ) // temp, used for tweaking frontend
+  //  {
 
        /*dd( $_FILES['name']);
          $request->all();
         \Input::hasFile('file');*/
 //$i = \Input::all();
 
-        $image = Input::hasFile('file');
-      dd($image);
+  //      $image = Input::hasFile('file');
+  //    dd($image);
         //dd()re;
         //return $request->hasFile('name')?"file exists":"no file";
        // return $request->file('name')->getClientMimeType();
 
        // return response($request->files(),200);
-    });
+  //  });
 
 
     Route::get('/', 'PageController@home');
@@ -56,7 +56,6 @@
         return view('static.product-details');
     });
 
-
     Route::group(['prefix' => 'api'], function ()
     {
         /*
@@ -75,8 +74,6 @@
 
         Route::post('secure-page', 'AuthenticateController@securePage');
         Route::any('logout', 'AuthenticateController@logOut');
-
-
 
         /*
          * Product Category route collection
@@ -103,6 +100,8 @@
         Route::post('product/update-product', 'ProductController@updateProductInfo');
         Route::post('product/publish-product', 'ProductController@publishProduct');
 
+        Route::get('pro-details/{permalink?}', 'ProductController@productDetailsView');
+
         /*
          * Media upload route
          *
@@ -124,23 +123,6 @@
         Route::get('feed', 'ApiController@feedDispatcher');
     });
 
-    // Route for password reset , email verification ,feed example
-    Route::get('password-reset-form/{code?}', 'AuthenticateController@passwordResetForm');
-
-    Route::get('verify-email/{code}', 'AuthenticateController@verifyEmail');
-    Route::get('password-reset-request/{Email}', 'AuthenticateController@sendPasswordResetEmail');
-
-    // GET for token parsing and POST for password reset through ..api/password-rest/ [POST] method
-    Route::get('password-reset/{code?}', 'AuthenticateController@passwordReset');
-
-    Route::resource('feed', 'FeedController', ['only' => ['index']]);
-
-    // Category dynamic routing
-    Route::get('category/{identity?}', 'ProductCategoryController@showProductInCategoryName');
-
-
-    // Admin Route
-
     // Admin Route
     Route::group(['prefix' => 'admin'], function ()
     {
@@ -155,4 +137,27 @@
         Route::get('product-view', 'AdminController@productView');
         Route::get('product-add', 'AdminController@addProduct');
         Route::get('product-edit/{id?}', 'AdminController@editProduct');
+
     });
+
+    // Route for password reset , email verification ,feed example
+    Route::get('password-reset-form/{code?}', 'AuthenticateController@passwordResetForm');
+
+    Route::get('verify-email/{code}', 'AuthenticateController@verifyEmail');
+    Route::get('password-reset-request/{Email}', 'AuthenticateController@sendPasswordResetEmail');
+
+    // GET for token parsing and POST for password reset through ..api/password-rest/ [POST] method
+    Route::get('password-reset/{code?}', 'AuthenticateController@passwordReset');
+
+    Route::resource('feed', 'FeedController', ['only' => ['index']]);
+
+    // Category dynamic routing
+    Route::get('category/{identity?}', 'ProductCategoryController@showProductInCategoryName');
+
+    // Route for product detail view
+  //
+    Route::get('pro-details/{permalink?}', 'PageController@productDetailsPage');
+
+
+
+

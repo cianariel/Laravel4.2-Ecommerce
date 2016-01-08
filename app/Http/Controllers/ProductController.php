@@ -13,6 +13,8 @@
     use Illuminate\Contracts\Filesystem\Factory;
     use Storage;
     use Folklore\Image\Facades;
+    use Carbon\Carbon;
+    use App\Models\ProductCategory;
 
     class ProductController extends ApiController {
 
@@ -21,7 +23,7 @@
             // Apply the jwt.auth middleware to all methods in this controller
             $this->middleware('jwt.auth',
                 ['except' => [
-                    'publishProduct', 'searchProductByName', 'updateProductInfo',
+                    'publishProduct', 'searchProductByName', 'updateProductInfo', 'productDetailsView',
                     'getAllProductList', 'getProductById', 'isPermalinkExist', 'addProduct',
                     'addMediaForProduct', 'addMediaInfo', 'getMediaForProduct', 'deleteSingleMediaItem'
                 ]]);
@@ -95,6 +97,106 @@
 
         }
 
+
+        // Generating Category tree Hierarchy
+        public function generateCategoryHierarchy($catId)
+        {
+            $catTree = ProductCategory::where('id', $catId)->first()->getAncestorsAndSelf();
+
+            $val = [];
+            foreach ($catTree as $key => $value)
+            {
+                $val[ $key ]['CategoryId'] = $value->id;
+                $val[ $key ]['CategoryPermalink'] = $value->extra_info;
+                $val[ $key ]['CategoryName'] = $value->category_name;
+            }
+
+            return $val;
+        }
+
+        /*
+         * generate data for public view
+         * */
+        public function productDetailsView($permalink)
+        {
+            try
+            {
+                $productData['product'] = $this->product->getViewForPublic($permalink);
+
+                // Get category tree
+                $catTree = $this->generateCategoryHierarchy($productData['product']->product_category_id);
+
+                $productInfo['Id'] = $productData['product']->id;
+                $productInfo['CategoryId'] = $productData['product']->product_category_id;
+                $productInfo['CatTree'] = $catTree;
+                $productInfo['ProductName'] = $productData['product']->product_name;
+                $productInfo['Permalink'] = $productData['product']->product_permalink;
+                $productInfo['Description'] = $productData['product']->product_description;
+                $productInfo['Specifications'] = $productData['product']->specifications;
+                $productInfo['Price'] = $productData['product']->price;
+                $productInfo['SellPrice'] = $productData['product']->sale_price;
+                $productInfo['StoreName'] = $productData['product']->store_id;
+                $productInfo['AffiliateLink'] = $productData['product']->affiliate_link;
+                $productInfo['Review'] = $productData['product']->review;
+                $productInfo['FreeShipping'] = $productData['product']->free_shipping;
+                $productInfo['PageTitle'] = $productData['product']->page_title;
+                $productInfo['MetaDescription'] = $productData['product']->meta_description;
+                $productInfo['Status'] = $productData['product']->post_status;
+
+
+                // setting images and hero image link
+                $selfImage = [];
+                foreach ($productData['product']->medias as $key => $value)
+                {
+                    if (($value->media_type == 'img-upload' || $value->media_type == 'img-link') && $value->is_hero_item == null)
+                    {
+                        $selfImage['picture'][ $key ]['link'] = $value->media_link;
+                        $selfImage['picture'][ $key ]['picture-name'] = $value->media_name;
+                    } elseif (($value->media_type == 'img-upload' || $value->media_type == 'img-link') && $value->is_hero_item == true)
+                    {
+                        $selfImage['heroImage'] = $value->media_link;
+                        $selfImage['heroImageName'] = $value->media_name;
+                    }
+                }
+
+                // setting information for related products
+                $relatedProducts = [];
+                $relatedProductsData = [];
+                foreach ($productData['product']->similar_product_ids as $key => $value)
+                {
+                    $relatedProducts[ $key ] = $this->product->getViewForPublic('', $value->id);
+                    $tmp = $relatedProducts[ $key ];
+                    $image = '';
+
+                    foreach ($tmp->medias as $single)
+                    {
+                        if (($single->media_type == 'img-upload' || $single->media_type == 'img-link') && $single->is_hero_item == null)
+                        {
+                            $image = $single->media_link;
+                            break;
+                        }
+                    }
+                    $relatedProductsData[ $key ]['Name'] = $relatedProducts[ $key ]->product_name;
+                    $relatedProductsData[ $key ]['Permalink'] = $relatedProducts[ $key ]->product_permalink;
+                    $relatedProductsData[ $key ]['AffiliateLink'] = $relatedProducts[ $key ]->affiliate_link;
+                    $relatedProductsData[ $key ]['Image'] = $image;
+                    $relatedProductsData[ $key ]['UpdateTime'] = Carbon::createFromTimestamp(strtotime($relatedProducts[ $key ]->updated_at))->diffForHumans();
+                }
+
+                $result['productInformation'] = $productInfo;
+                $result['relatedProducts'] = $relatedProductsData;
+                $result['selfImages'] = $selfImage;
+
+                return $this->setStatusCode(\Config::get("const.api-status.success"))
+                    ->makeResponse($result);
+
+            } catch (Exception $ex)
+            {
+                return $this->setStatusCode(\Config::get("const.api-status.system-fail"))
+                    ->makeResponseWithError("System Failure !", $ex);
+            }
+        }
+
         /**
          * @return mixed
          */
@@ -112,7 +214,7 @@
 
                 $productList = $this->product->getProductList($settings);
 
-               // dd($productList);
+                // dd($productList);
                 $settings['total'] = $productList['total'];
                 array_forget($productList, 'total');
 
@@ -279,8 +381,9 @@
                     $s3 = Storage::disk('s3');
                     $s3->delete($file);
 
-                    if ($mediaItem['media_type'] == 'img-upload'){
-                        $file = 'thumb-'.$file;
+                    if ($mediaItem['media_type'] == 'img-upload')
+                    {
+                        $file = 'thumb-' . $file;
                         $s3->delete($file);
                     }
                 }
@@ -337,16 +440,18 @@
                 $s3 = Storage::disk('s3');
 
                 // Thumbnail creation and uploading to AWS S3
-                if (in_array($request->file('file')->guessClientExtension(), array("jpeg", "jpg", "bmp", "png"))){
-                   // $thumb = \Image::make($request->file('file'))->crop(100,100);
+                if (in_array($request->file('file')->guessClientExtension(), array("jpeg", "jpg", "bmp", "png")))
+                {
+                    // $thumb = \Image::make($request->file('file'))->crop(100,100);
                     $thumb = \Image::make($request->file('file'))
-                        ->resize(90, null, function ($constraint) {
-                        $constraint->aspectRatio();
+                        ->resize(90, null, function ($constraint)
+                        {
+                            $constraint->aspectRatio();
                         });
 
                     $thumb = $thumb->stream();
-                    $thumbFileName = 'thumb-'.$fileName;
-                    $s3->put($thumbFileName, $thumb->__toString(),'public');
+                    $thumbFileName = 'thumb-' . $fileName;
+                    $s3->put($thumbFileName, $thumb->__toString(), 'public');
                 }
 
 

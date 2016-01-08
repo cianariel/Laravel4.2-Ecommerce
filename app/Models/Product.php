@@ -35,7 +35,7 @@
             'similar_product_ids',
             'product_availability'
         );
-        protected $hidden = ['created_at', 'updated_at'];
+        protected $hidden = ['created_at'];
 
 
         /**
@@ -147,10 +147,24 @@
                 ->first(array(
                     'products.id', 'products.updated_at', 'products.user_name',
                     'products.product_name', 'product_categories.category_name', 'products.affiliate_link',
-                    'products.price', 'products.sale_price', 'medias.media_link'
+                    'products.price', 'products.sale_price', 'medias.media_link','products.product_permalink'
                 ));
 
             return $result;
+
+        }
+
+        // return data for public view
+        public function getViewForPublic($permalink,$id=null)
+        {
+            $column = $id == null?'product_permalink':'id';
+            $value = $id == null?$permalink:$id;
+            $productInfo = Product::with('medias')
+            ->where($column,$value)
+            ->first();
+
+//dd($productInfo);
+           return $productInfo;
 
         }
 
@@ -208,7 +222,6 @@
                 $tmp->updated_at = Carbon::createFromTimestamp(strtotime($tmp->updated_at))->diffForHumans();
 
                 $data[ $i ] = $tmp;
-
             }
 
             $product['result'] = $data;

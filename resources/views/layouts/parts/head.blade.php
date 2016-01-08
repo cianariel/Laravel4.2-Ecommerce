@@ -28,14 +28,28 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
 <link rel="stylesheet" href="/assets/css/app.css">
+
 <script src="/assets/js/vendor/jquery-1.11.3.min.js"></script>
 
 <!-- basic stylesheet -->
-<link rel="stylesheet" href="assets/js/vendor/royalslider/royalslider.css">
+<link rel="stylesheet" href="/assets/js/vendor/royalslider/royalslider.css">
 
 <!-- skin stylesheet (change it if you use another) -->
-<link rel="stylesheet" href="assets/js/vendor/royalslider/skins/default/rs-default.css">
+<link rel="stylesheet" href="/assets/js/vendor/royalslider/skins/default/rs-default.css">
 
 <!-- Main slider JS script file -->
 <!-- Create it with slider online build tool for better performance. -->
-<script src="assets/js/vendor/royalslider/jquery.royalslider.min.js"></script>
+<script src="/assets/js/vendor/royalslider/jquery.royalslider.min.js"></script>
+
+<!-- Custom script and css link for Application -->
+<script src="/assets/js/vendor/angular.min.js"></script>
+<script src="/assets/js/vendor/textAngular-sanitize.min.js"></script>
+
+<script src="/assets/js/vendor/angular-confirm.js"></script>
+
+<script src="/assets/js/vendor/textAngular-rangy.min.js"></script>
+
+<script src="/assets/js/vendor/textAngular.min.js"></script>
+
+<script src="/assets/js/vendor/ng-tags-input.min.js"></script>
+
