@@ -1,6 +1,0 @@
-1. first open the ideaingblog.sql with a text editor
-2. find all text match with "ideaing.local" and replace it with your own (ex. "localhost")
-4. find and fix the DB credentials from wp-config.php
-5. import the sql.
-6. default blog url is "http://{HOST}/blog"
-3. default wp-admin credentials userid: admin & password: 1234@ideaing

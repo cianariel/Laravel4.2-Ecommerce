@@ -18,7 +18,7 @@ class PageController extends Controller
     public function home()
     {
         //URL of targeted site
-        $url = "http://staging.ideaing.com/blog/feeds/index.php?count=8";
+        $url = "http://staging.ideaing.com/ideas/feeds/index.php?count=8";
      //   $url = "http://staging.ideaing.com/ideas/feeds/index.php?count=8";
 
         $ch = curl_init();
