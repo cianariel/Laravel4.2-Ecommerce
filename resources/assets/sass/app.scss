@@ -2876,7 +2876,10 @@ header.sub-head{
 
 
     &.active{
-      border-bottom: 4px solid $iridium;
+      border: 2px solid $iridium;
+      border-radius: 5px;
+      margin-bottom: 4px;
+      color: $iridium;
       //-webkit-box-shadow: 0px 4px 5px 0px rgba(255,0,68,1);
       //-moz-box-shadow: 0px 4px 5px 0px rgba(255,0,68,1);
       //box-shadow: 0px 4px 5px 0px rgba(255,0,68,1);
