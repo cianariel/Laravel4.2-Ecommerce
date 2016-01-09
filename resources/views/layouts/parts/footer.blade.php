@@ -68,6 +68,11 @@
 
 <script src="/assets/js/app.js"></script>
 
+<!-- Angular JS and components-->
+<script src="/assets/js/vendor/ui-bootstrap.min.js"></script>
+<script src="/assets/product/js/custom.product.js"></script>
+
+
 <script>
     (function(f,i,r,e,s,h,l){i['GoogleAnalyticsObject']=s;f[s]=f[s]||function(){
                 (f[s].q=f[s].q||[]).push(arguments)},f[s].l=1*new Date();h=i.createElement(r),

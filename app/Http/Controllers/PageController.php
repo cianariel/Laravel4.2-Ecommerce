@@ -38,4 +38,10 @@ class PageController extends Controller
         return view('home')->with('stories', $stories);// $data->parseFeed(true,2);
     }
 
+    public function productDetailsPage($permalink)
+    {
+        return view('product.product-details')->with('permalink',$permalink);
+
+    }
+
 }

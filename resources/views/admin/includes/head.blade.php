@@ -33,7 +33,6 @@
     <![endif]-->
 
     <script src="/assets/js/vendor/angular.min.js"></script>
-   {{-- <script src="/assets/js/vendor/angular-sanitize.min.js"></script>--}}
     <script src="/assets/js/vendor/textAngular-sanitize.min.js"></script>
 
     <script src="/assets/js/vendor/angular-confirm.js"></script>
