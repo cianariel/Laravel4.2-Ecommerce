@@ -7131,7 +7131,15 @@ footer.about-footer {
 
   .idea-stories .story-details {
     padding-top: 40px;
-    padding-bottom: 40px; } }
+    padding-bottom: 40px; }
+
+  #myModal.modal {
+    top: 34%; }
+
+  .modal-intro {
+    margin-bottom: 20px !important; }
+    .modal-intro a.logo, .modal-intro p {
+      margin-bottom: 0 !important; } }
 @media screen and (max-width: 480px) {
   .full-480 {
     width: 100%;

@@ -4580,8 +4580,23 @@ footer.about-footer{
     padding-bottom: 40px;
   }
 
+  #myModal.modal {
+    top: 34%;
+  }
+
+  .modal-intro{
+    margin-bottom: 20px !important;
+
+    a.logo, p{
+      margin-bottom: 0 !important;
+    }
+  }
+
+
+
 
 }
+
 
 @media screen and (max-width: 480px){
 
