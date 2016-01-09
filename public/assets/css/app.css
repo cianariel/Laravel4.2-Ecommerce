@@ -4629,7 +4629,7 @@ li.nested a::after {
   width: 80px;
   position: absolute;
   left: 1%;
-  top: 9px;
+  top: 700px;
   text-align: center; }
   .share-bar.stick {
     position: fixed;
@@ -4861,15 +4861,9 @@ li.all-shares {
 @media (max-width: 1670px) {
   .share-bar {
     left: 1%; } }
-@media (max-width: 1380px) {
+@media (max-width: 768px) {
   .share-bar {
-    position: absolute !important;
-    top: 16px; }
-    .share-bar.stick {
-      top: 16px; } }
-@media (max-width: 992px) {
-  .share-bar {
-    left: 15px; } }
+    top: 618px; } }
 @media (max-width: 620px) {
   .share-bar {
     position: static !important;
@@ -5066,8 +5060,8 @@ body.product-details #hero {
     background-image: url("/assets/images/icons/arrow-down-pink.png"); }
 
 .breadcrumbs li.active a {
-  font-size: 3rem;
-  padding-top: 2px !important;
+  font-size: 2.5rem;
+  padding-top: 6px !important;
   margin-top: 0;
   box-shadow: none !important; }
 
@@ -6356,7 +6350,7 @@ body.single .like-nav {
   float: none;
   overflow: hidden;
   margin: 0 auto;
-  padding: 85px 0;
+  padding: 10px 0;
   text-align: center; }
   .idea-stories .story-details h4 {
     width: 100%;
@@ -6364,7 +6358,7 @@ body.single .like-nav {
   .idea-stories .story-details .about-author {
     color: #a8a8a8; }
   .idea-stories .story-details .author-overview {
-    padding-top: 10%; }
+    padding-top: 2%; }
     .idea-stories .story-details .author-overview time {
       font-size: 1.3rem;
       color: #c1c1c1; }
@@ -6380,7 +6374,7 @@ body.single .like-nav {
       .idea-stories .story-details .content-tags a.products-link {
         padding-left: 18px; }
   .idea-stories .story-details .author-image-big img {
-    max-width: 100%;
+    max-width: 50%;
     height: auto;
     border-radius: 100px; }
 .idea-stories .author-description {
@@ -6722,7 +6716,10 @@ footer.about-footer {
   #hero-nav {
     padding-left: 0; }
     #hero-nav > .container {
-      padding-left: 0; } }
+      padding-left: 0; }
+
+  .idea-stories .story-details .author-overview {
+    padding-top: 6%; } }
 @media only screen and (max-width: 1200px) and (min-width: 768px) {
   footer.about-footer input[type="submit"] {
     border-radius: 4px;
@@ -7026,8 +7023,6 @@ footer.about-footer {
   .like-wrap {
     margin-left: 30%; }
 
-  .idea-stories .story-details .author-overview {
-    padding-top: 5%; }
   .idea-stories .story-details .content-tags {
     margin-bottom: 0; }
 

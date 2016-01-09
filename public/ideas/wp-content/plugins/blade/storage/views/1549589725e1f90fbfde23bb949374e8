@@ -63,7 +63,7 @@
 
         <div class="container full-620 main-container fixed-sm">
 
-            <article id="post-<?php the_ID(); ?>" <?php echo post_class('col-sm-11 col-md-offset-1'); ?>>
+            <article id="post-<?php the_ID(); ?>" <?php echo post_class('col-sm-11 col-md-offset-1 pull-right'); ?>>
 
                 <header class="story-details col-lg-7  col-sm-8 col-xs-10 full-480">
                     <div class="author-image-big col-lg-4 col-sm-6 col-xs-5 full-480">
@@ -90,18 +90,23 @@
 
                 </header>
 
+            <div class="shown-620 hidden-soft">
                 <?php loadLaravelView('share-bar'); ?>
+            </div>
 
-                <section class="article-content">
-                    <?php the_content(); ?>
-                </section>
+            <section class="article-content">
+                <?php the_content(); ?>
+            </section>
 
 
 
             </article>
         </div>
+                <div class="hidden-620">
+                    <?php loadLaravelView('share-bar'); ?>
+                </div>
 
-            <section class="author-description">
+    <section class="author-description">
                 <div class="container">
                      <h4>About the Author, <?php echo  the_author_meta('first_name') ; ?> <?php echo  the_author_meta('last_name') ; ?></h4>
                     <div class="col-md-1 col-sm-2 col-xs-3">
