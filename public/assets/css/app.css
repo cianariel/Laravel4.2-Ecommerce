@@ -4629,6 +4629,213 @@ li.nested a::after {
   color: #ff7f00;
   font-size: 5rem; }
 
+ul.share-buttons a.fb {
+  display: inline-block;
+  width: 85px;
+  height: 35px;
+  font-size: 1.7rem;
+  border-radius: 30px;
+  padding: 0 10px 0 0 !important;
+  color: #5c7cbd;
+  border: 1px solid #f2f5f5;
+  background: transparent; }
+  ul.share-buttons a.fb span {
+    display: inline-block;
+    height: 33px;
+    width: 35px;
+    margin-left: -3px;
+    float: left;
+    border-radius: 30px;
+    text-indent: -9999px;
+    background: #5c7cbd url("/assets/images/fb-white-small.png") center no-repeat;
+    background-size: 18px !important;
+    background-position: center !important; }
+  ul.share-buttons a.fb b {
+    display: inline-block;
+    padding-top: 5px;
+    color: #5c7cbd; }
+  ul.share-buttons a.fb:hover {
+    background: #5c7cbd; }
+    ul.share-buttons a.fb:hover b {
+      color: #fff !important; }
+ul.share-buttons a.twi {
+  display: inline-block;
+  width: 85px;
+  height: 35px;
+  font-size: 1.7rem;
+  border-radius: 30px;
+  padding: 0 10px 0 0 !important;
+  color: #079dd1;
+  border: 1px solid #f2f5f5;
+  background: transparent; }
+  ul.share-buttons a.twi span {
+    display: inline-block;
+    height: 33px;
+    width: 35px;
+    margin-left: -3px;
+    float: left;
+    border-radius: 30px;
+    text-indent: -9999px;
+    background: #079dd1 url("/assets/images/twi-white-small.png") center no-repeat;
+    background-size: 18px !important;
+    background-position: center !important; }
+  ul.share-buttons a.twi b {
+    display: inline-block;
+    padding-top: 5px;
+    color: #079dd1; }
+  ul.share-buttons a.twi:hover {
+    background: #079dd1; }
+    ul.share-buttons a.twi:hover b {
+      color: #fff !important; }
+ul.share-buttons a.gp {
+  display: inline-block;
+  width: 85px;
+  height: 35px;
+  font-size: 1.7rem;
+  border-radius: 30px;
+  padding: 0 10px 0 0 !important;
+  color: #ff0042;
+  border: 1px solid #f2f5f5;
+  background: transparent; }
+  ul.share-buttons a.gp span {
+    display: inline-block;
+    height: 33px;
+    width: 35px;
+    margin-left: -3px;
+    float: left;
+    border-radius: 30px;
+    text-indent: -9999px;
+    background: #ff0042 url("/assets/images/gp-white-small.png") center no-repeat;
+    background-size: 18px !important;
+    background-position: center !important; }
+  ul.share-buttons a.gp b {
+    display: inline-block;
+    padding-top: 5px;
+    color: #ff0042; }
+  ul.share-buttons a.gp:hover {
+    background: #ff0042; }
+    ul.share-buttons a.gp:hover b {
+      color: #fff !important; }
+ul.share-buttons a.email {
+  display: inline-block;
+  width: 85px;
+  height: 35px;
+  font-size: 1.7rem;
+  border-radius: 30px;
+  padding: 0 10px 0 0 !important;
+  color: #c1c1c1;
+  border: 1px solid #f2f5f5;
+  background: transparent;
+  background-position: 5px 8px; }
+  ul.share-buttons a.email span {
+    display: inline-block;
+    height: 33px;
+    width: 35px;
+    margin-left: -3px;
+    float: left;
+    border-radius: 30px;
+    text-indent: -9999px;
+    background: #c1c1c1 url("/assets/images/email-white-small.png") center no-repeat;
+    background-size: 18px !important;
+    background-position: center !important; }
+  ul.share-buttons a.email b {
+    display: inline-block;
+    padding-top: 5px;
+    color: #c1c1c1; }
+  ul.share-buttons a.email:hover {
+    background: #c1c1c1; }
+    ul.share-buttons a.email:hover b {
+      color: #fff !important; }
+ul.share-buttons a.pint {
+  display: inline-block;
+  width: 85px;
+  height: 35px;
+  font-size: 1.7rem;
+  border-radius: 30px;
+  padding: 0 10px 0 0 !important;
+  color: #e61d25;
+  border: 1px solid #f2f5f5;
+  background: transparent; }
+  ul.share-buttons a.pint span {
+    display: inline-block;
+    height: 33px;
+    width: 35px;
+    margin-left: -3px;
+    float: left;
+    border-radius: 30px;
+    text-indent: -9999px;
+    background: #e61d25 url("/assets/images/pint-white-small.png") center no-repeat;
+    background-size: 18px !important;
+    background-position: center !important; }
+  ul.share-buttons a.pint b {
+    display: inline-block;
+    padding-top: 5px;
+    color: #e61d25; }
+  ul.share-buttons a.pint:hover {
+    background: #e61d25; }
+    ul.share-buttons a.pint:hover b {
+      color: #fff !important; }
+ul.share-buttons a.heart {
+  display: inline-block;
+  width: 85px;
+  height: 35px;
+  font-size: 1.7rem;
+  border-radius: 30px;
+  padding: 0 10px 0 0 !important;
+  color: #ff0042;
+  border: 1px solid #f2f5f5;
+  background: transparent;
+  background-size: 19px; }
+  ul.share-buttons a.heart span {
+    display: inline-block;
+    height: 33px;
+    width: 35px;
+    margin-left: -3px;
+    float: left;
+    border-radius: 30px;
+    text-indent: -9999px;
+    background: #ff0042 url("/assets/images/heart-white.png") center no-repeat;
+    background-size: 18px !important;
+    background-position: center !important; }
+  ul.share-buttons a.heart b {
+    display: inline-block;
+    padding-top: 5px;
+    color: #ff0042; }
+  ul.share-buttons a.heart:hover {
+    background: #ff0042; }
+    ul.share-buttons a.heart:hover b {
+      color: #fff !important; }
+ul.share-buttons a.comment {
+  display: inline-block;
+  width: 85px;
+  height: 35px;
+  font-size: 1.7rem;
+  border-radius: 30px;
+  padding: 0 10px 0 0 !important;
+  color: #4791d4;
+  border: 1px solid #f2f5f5;
+  background: transparent;
+  background-size: 19px; }
+  ul.share-buttons a.comment span {
+    display: inline-block;
+    height: 33px;
+    width: 35px;
+    margin-left: -3px;
+    float: left;
+    border-radius: 30px;
+    text-indent: -9999px;
+    background: #4791d4 url("/assets/images/icons/chat-white-outline.png") center no-repeat;
+    background-size: 18px !important;
+    background-position: center !important; }
+  ul.share-buttons a.comment b {
+    display: inline-block;
+    padding-top: 5px;
+    color: #4791d4; }
+  ul.share-buttons a.comment:hover {
+    background: #4791d4; }
+    ul.share-buttons a.comment:hover b {
+      color: #fff !important; }
+
 .share-bar {
   width: 80px;
   position: absolute;
@@ -4640,212 +4847,6 @@ li.nested a::after {
     top: 120px; }
   .share-bar li {
     margin-bottom: 8px; }
-    .share-bar li a.fb {
-      display: inline-block;
-      width: 85px;
-      height: 35px;
-      font-size: 1.7rem;
-      border-radius: 30px;
-      padding: 0 10px 0 0 !important;
-      color: #5c7cbd;
-      border: 1px solid #f2f5f5;
-      background: transparent; }
-      .share-bar li a.fb span {
-        display: inline-block;
-        height: 33px;
-        width: 35px;
-        margin-left: -3px;
-        float: left;
-        border-radius: 30px;
-        text-indent: -9999px;
-        background: #5c7cbd url("/assets/images/fb-white-small.png") center no-repeat;
-        background-size: 18px !important;
-        background-position: center !important; }
-      .share-bar li a.fb b {
-        display: inline-block;
-        padding-top: 5px;
-        color: #5c7cbd; }
-      .share-bar li a.fb:hover {
-        background: #5c7cbd; }
-        .share-bar li a.fb:hover b {
-          color: #fff !important; }
-    .share-bar li a.twi {
-      display: inline-block;
-      width: 85px;
-      height: 35px;
-      font-size: 1.7rem;
-      border-radius: 30px;
-      padding: 0 10px 0 0 !important;
-      color: #079dd1;
-      border: 1px solid #f2f5f5;
-      background: transparent; }
-      .share-bar li a.twi span {
-        display: inline-block;
-        height: 33px;
-        width: 35px;
-        margin-left: -3px;
-        float: left;
-        border-radius: 30px;
-        text-indent: -9999px;
-        background: #079dd1 url("/assets/images/twi-white-small.png") center no-repeat;
-        background-size: 18px !important;
-        background-position: center !important; }
-      .share-bar li a.twi b {
-        display: inline-block;
-        padding-top: 5px;
-        color: #079dd1; }
-      .share-bar li a.twi:hover {
-        background: #079dd1; }
-        .share-bar li a.twi:hover b {
-          color: #fff !important; }
-    .share-bar li a.gp {
-      display: inline-block;
-      width: 85px;
-      height: 35px;
-      font-size: 1.7rem;
-      border-radius: 30px;
-      padding: 0 10px 0 0 !important;
-      color: #ff0042;
-      border: 1px solid #f2f5f5;
-      background: transparent; }
-      .share-bar li a.gp span {
-        display: inline-block;
-        height: 33px;
-        width: 35px;
-        margin-left: -3px;
-        float: left;
-        border-radius: 30px;
-        text-indent: -9999px;
-        background: #ff0042 url("/assets/images/gp-white-small.png") center no-repeat;
-        background-size: 18px !important;
-        background-position: center !important; }
-      .share-bar li a.gp b {
-        display: inline-block;
-        padding-top: 5px;
-        color: #ff0042; }
-      .share-bar li a.gp:hover {
-        background: #ff0042; }
-        .share-bar li a.gp:hover b {
-          color: #fff !important; }
-    .share-bar li a.email {
-      display: inline-block;
-      width: 85px;
-      height: 35px;
-      font-size: 1.7rem;
-      border-radius: 30px;
-      padding: 0 10px 0 0 !important;
-      color: #c1c1c1;
-      border: 1px solid #f2f5f5;
-      background: transparent;
-      background-position: 5px 8px; }
-      .share-bar li a.email span {
-        display: inline-block;
-        height: 33px;
-        width: 35px;
-        margin-left: -3px;
-        float: left;
-        border-radius: 30px;
-        text-indent: -9999px;
-        background: #c1c1c1 url("/assets/images/email-white-small.png") center no-repeat;
-        background-size: 18px !important;
-        background-position: center !important; }
-      .share-bar li a.email b {
-        display: inline-block;
-        padding-top: 5px;
-        color: #c1c1c1; }
-      .share-bar li a.email:hover {
-        background: #c1c1c1; }
-        .share-bar li a.email:hover b {
-          color: #fff !important; }
-    .share-bar li a.pint {
-      display: inline-block;
-      width: 85px;
-      height: 35px;
-      font-size: 1.7rem;
-      border-radius: 30px;
-      padding: 0 10px 0 0 !important;
-      color: #e61d25;
-      border: 1px solid #f2f5f5;
-      background: transparent; }
-      .share-bar li a.pint span {
-        display: inline-block;
-        height: 33px;
-        width: 35px;
-        margin-left: -3px;
-        float: left;
-        border-radius: 30px;
-        text-indent: -9999px;
-        background: #e61d25 url("/assets/images/pint-white-small.png") center no-repeat;
-        background-size: 18px !important;
-        background-position: center !important; }
-      .share-bar li a.pint b {
-        display: inline-block;
-        padding-top: 5px;
-        color: #e61d25; }
-      .share-bar li a.pint:hover {
-        background: #e61d25; }
-        .share-bar li a.pint:hover b {
-          color: #fff !important; }
-    .share-bar li a.heart {
-      display: inline-block;
-      width: 85px;
-      height: 35px;
-      font-size: 1.7rem;
-      border-radius: 30px;
-      padding: 0 10px 0 0 !important;
-      color: #ff0042;
-      border: 1px solid #f2f5f5;
-      background: transparent;
-      background-size: 19px; }
-      .share-bar li a.heart span {
-        display: inline-block;
-        height: 33px;
-        width: 35px;
-        margin-left: -3px;
-        float: left;
-        border-radius: 30px;
-        text-indent: -9999px;
-        background: #ff0042 url("/assets/images/heart-white.png") center no-repeat;
-        background-size: 18px !important;
-        background-position: center !important; }
-      .share-bar li a.heart b {
-        display: inline-block;
-        padding-top: 5px;
-        color: #ff0042; }
-      .share-bar li a.heart:hover {
-        background: #ff0042; }
-        .share-bar li a.heart:hover b {
-          color: #fff !important; }
-    .share-bar li a.comment {
-      display: inline-block;
-      width: 85px;
-      height: 35px;
-      font-size: 1.7rem;
-      border-radius: 30px;
-      padding: 0 10px 0 0 !important;
-      color: #4791d4;
-      border: 1px solid #f2f5f5;
-      background: transparent;
-      background-size: 19px; }
-      .share-bar li a.comment span {
-        display: inline-block;
-        height: 33px;
-        width: 35px;
-        margin-left: -3px;
-        float: left;
-        border-radius: 30px;
-        text-indent: -9999px;
-        background: #4791d4 url("/assets/images/icons/chat-white-outline.png") center no-repeat;
-        background-size: 18px !important;
-        background-position: center !important; }
-      .share-bar li a.comment b {
-        display: inline-block;
-        padding-top: 5px;
-        color: #4791d4; }
-      .share-bar li a.comment:hover {
-        background: #4791d4; }
-        .share-bar li a.comment:hover b {
-          color: #fff !important; }
 
 li.all-shares {
   width: 90px;
@@ -4855,7 +4856,6 @@ li.all-shares {
   text-transform: uppercase;
   line-height: 1;
   font-size: 1.1rem;
-  margin-top: -5px;
   text-align: center;
   padding-right: 9px; }
   li.all-shares b {
@@ -5801,7 +5801,7 @@ header.colophon {
     display: none; }
 
 body.product-details .story-header h1 {
-  width: 39%; }
+  width: 35%; }
 body.product-details .story-header .like-counter {
   margin-top: -4px; }
 
@@ -5833,7 +5833,7 @@ body.product-details .story-header .like-counter {
     margin-top: 5px; }
   .story-header .social-rounds {
     float: right;
-    width: 300px; }
+    width: 190px; }
     .story-header .social-rounds li {
       float: left; }
       .story-header .social-rounds li span {
@@ -6187,10 +6187,6 @@ header.sub-head {
   border-bottom: 1px solid #EFEFEF; }
   #hero-nav ul {
     overflow: visible; }
-    #hero-nav ul.category-nav {
-      width: 390px;
-      margin: 0 auto;
-      max-width: 100%; }
   #hero-nav .like-counter {
     margin-top: 7px; }
   #hero-nav li {
@@ -6294,6 +6290,13 @@ header.sub-head {
   width: 390px;
   margin: 0 auto;
   max-width: 100%; }
+
+.single #hero-nav {
+  padding-top: 15px; }
+  .single #hero-nav .share-buttons {
+    padding-top: 9px; }
+  .single #hero-nav li.all-shares {
+    top: -18px; }
 
 .product-nav a.photos-link {
   background-image: url("/assets/images/photos-blue.png") !important; }

@@ -444,6 +444,54 @@ li.nested{
   }
 }
 
+ul.share-buttons{
+  a{
+
+    &.fb {
+      @include round-box($facebook-blue-2, "/assets/images/fb-white-small.png");
+    }
+    &.twi {
+      @include round-box($facebook-blue, "/assets/images/twi-white-small.png");
+
+      //background-color: $facebook-blue;
+      //background-image: url("/assets/images/twi-white-small.png");
+    }
+    &.gp {
+      @include round-box($iridium, "/assets/images/gp-white-small.png");
+
+      //background-color: $iridium;
+      //background-image: url("/assets/images/gp-white-small.png");
+    }
+    &.email {
+      @include round-box($light-grey, "/assets/images/email-white-small.png");
+
+      //background-color: $light-grey;
+      //background-image: url("/assets/images/email-white-small.png");
+      background-position: 5px 8px;
+    }
+    &.pint {
+      @include round-box($pinterest-red, "/assets/images/pint-white-small.png");
+
+      //background-color: $pinterest-red;
+      //background-image: url("/assets/images/pint-white-small.png");
+    }
+    &.heart {
+      @include round-box($iridium, "/assets/images/heart-white.png");
+
+      //background-color: $iridium;
+      //background-image: url("/assets/images/heart-white.png");
+      background-size: 19px;
+    }
+    &.comment {
+      @include round-box($ideaing-blue, "/assets/images/icons/chat-white-outline.png");
+
+      //background-color: $ideaing-blue;
+      //background-image: url("/assets/images/icons/chat-white-outline.png");
+      background-size: 19px;
+    }
+  }
+}
+
 .share-bar{
   width: 80px;
   position: absolute;
@@ -458,51 +506,7 @@ li.nested{
 
   li {
     margin-bottom: 8px;
-    a{
 
-      &.fb {
-        @include round-box($facebook-blue-2, "/assets/images/fb-white-small.png");
-      }
-      &.twi {
-        @include round-box($facebook-blue, "/assets/images/twi-white-small.png");
-
-        //background-color: $facebook-blue;
-        //background-image: url("/assets/images/twi-white-small.png");
-      }
-      &.gp {
-        @include round-box($iridium, "/assets/images/gp-white-small.png");
-
-        //background-color: $iridium;
-        //background-image: url("/assets/images/gp-white-small.png");
-      }
-      &.email {
-        @include round-box($light-grey, "/assets/images/email-white-small.png");
-
-        //background-color: $light-grey;
-        //background-image: url("/assets/images/email-white-small.png");
-        background-position: 5px 8px;
-      }
-      &.pint {
-        @include round-box($pinterest-red, "/assets/images/pint-white-small.png");
-
-        //background-color: $pinterest-red;
-        //background-image: url("/assets/images/pint-white-small.png");
-      }
-      &.heart {
-        @include round-box($iridium, "/assets/images/heart-white.png");
-
-        //background-color: $iridium;
-        //background-image: url("/assets/images/heart-white.png");
-        background-size: 19px;
-      }
-      &.comment {
-        @include round-box($ideaing-blue, "/assets/images/icons/chat-white-outline.png");
-
-        //background-color: $ideaing-blue;
-        //background-image: url("/assets/images/icons/chat-white-outline.png");
-        background-size: 19px;
-      }
-    }
 
 
     //&.heart,
@@ -592,7 +596,7 @@ li.all-shares{
   text-transform: uppercase;
   line-height: 1;
   font-size: 1.1rem;
-  margin-top: -5px;
+  //margin-top: -5px;
   text-align: center;
   padding-right: 9px;
 
@@ -2259,7 +2263,7 @@ header.colophon{
 body.product-details{
   .story-header{
     h1{
-      width: 39%;
+      width: 35%;
     }
     .like-counter{
       margin-top: -4px;
@@ -2319,7 +2323,7 @@ body.product-details{
 
   .social-rounds{
     float: right;
-    width: 300px;
+    width: 190px;
     //overflow: hidden;
 
     li{
@@ -2893,12 +2897,12 @@ header.sub-head{
   border-bottom: 1px solid #EFEFEF;
   ul{
     overflow: visible;
-
-    &.category-nav{
-      width: 390px;
-      margin: 0 auto;
-      max-width: 100%;
-    }
+    //
+    //&.category-nav{
+    //  width: 390px;
+    //  margin: 0 auto;
+    //  max-width: 100%;
+    //}
   }
 
   .like-counter{
@@ -3075,6 +3079,17 @@ header.sub-head{
     width: 390px;
     margin: 0 auto;
     max-width: 100%;
+  }
+}
+
+.single #hero-nav{
+  padding-top: 15px;
+
+  .share-buttons{
+    padding-top: 9px;
+  }
+  li.all-shares{
+    top: -18px;
   }
 }
 

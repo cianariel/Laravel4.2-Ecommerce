@@ -29,12 +29,10 @@
         </nav>
 
         <section id="hero" class="details-hero">
-<!--            <div class="container">-->
                 <div class="head-wrap">
                     <h1 class="col-sm-8 col-xs-12"><span>{{the_title()}}</span></h1>
                     <a class="like-counter hidden-soft shown-620" href="#"><span>Liked by</span><b>189</b></a>
                 </div>
-<!--            </div>-->
 
             <div class="hero-background" style="background-image:url( {{getThumbnailLink($post->ID)}} ) "></div>
             <!-- TODO - use as the hero-bg					--><?php //the_post_thumbnail(); // Fullsize image for the single post ?>
@@ -42,27 +40,32 @@
         </section>
         <nav id="hero-nav" class="col-sm-12">
             <div class="container full-620  fixed-sm">
-<!--                <ul class="left-nav col-sm-5 col-xs-6 hidden-620">-->
-<!--<!--                    <li><a class="home-link" href="#">Home</a></li>-->
-<!--                    <li class="active"><a href="#" class="allcaps orange">Ideas</a></li>-->
-<!--                    <li><a href="#" class="orange box-link">Kitchen</a></li>-->
-<!--                    <li><a href="#" class="orange box-link">Style</a></li>-->
-<!---->
-<!--                </ul>-->
-                <ul class="like-nav hidden-xs center-block ">
+
+                <ul class="share-buttons hidden-xs col-lg-6 col-sm-8 pull-right">
+                    <li class="all-shares"><b>120K </b>all shares</li>
+                    <li><a class="fb" href="#"><span></span><b>189</b></a></li>
+                    <li><a class="twi" href="#"><span></span><b>189</b></a></li>
+                    <li><a class="gp" href="#"><span></span><b>189</b></a></li>
+                    <li><a class="pint" href="#"><span></span><b>189</b></a></li>
+                    <li><a class="comment" href="#"><span></span><b>189</b></a></li>
+                </ul>
+
+                <ul class="like-nav hidden-xs pull-right">
                     <li><a class="like-counter" href="#"><span></span><b>189</b></a></li>
                     <li><a class="author" href="#"></a></li>
                     <li><a class="author" href="#"></a></li>
                     <li><a class="author" href="#"></a></li>
                     <li><a class="likes" href="#">+ 186</a></li>
                 </ul>
+
+
             </div> 
         </nav>
 		<!-- article -->
 
         <div class="container full-620 main-container fixed-sm">
 
-            <article id="post-<?php the_ID(); ?>" {{post_class('col-sm-11 col-md-offset-1 pull-right')}}>
+            <article id="post-<?php the_ID(); ?>" {{post_class('col-xs-11 col-md-offset-1 pull-right')}}>
 
                 <header class="story-details col-lg-7  col-sm-8 col-xs-10 full-480">
                     <div class="author-image-big col-lg-4 col-sm-6 col-xs-5 full-480">
