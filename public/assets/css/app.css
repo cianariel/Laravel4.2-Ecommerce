@@ -4625,6 +4625,10 @@ li.nested a::after {
   background-size: contain;
   color: #ff0042; }
 
+.dropcapped p:first-child:first-letter {
+  color: #ff7f00;
+  font-size: 5rem; }
+
 .share-bar {
   width: 80px;
   position: absolute;

@@ -435,6 +435,15 @@ li.nested{
 
 }
 
+.dropcapped{
+  p:first-child{
+    &:first-letter{
+      color: $dark-orange;
+      font-size: 5rem;
+    }
+  }
+}
+
 .share-bar{
   width: 80px;
   position: absolute;
@@ -1704,6 +1713,8 @@ article.product{
       }
     }
   }
+
+
 
   .reviews{
     margin-bottom: 0;

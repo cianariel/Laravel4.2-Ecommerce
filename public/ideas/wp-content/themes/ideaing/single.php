@@ -93,7 +93,7 @@
                 <?php loadLaravelView('share-bar'); ?>
             </div>
 
-            <section class="article-content">
+            <section class="article-content dropcapped">
                 <?php the_content(); ?>
             </section>
 
