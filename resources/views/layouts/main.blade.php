@@ -10,5 +10,7 @@
         @yield('content')
 
     @include('layouts.parts.footer')
+    @include('layouts.parts.login-signup') // needs to be here for Wordpress' sake
+
     </body>
 </html>

@@ -167,15 +167,16 @@ button{
 
 .modal{
   //display: block !important; // keep for debuggins
-  top: 50%;
+  top: 40%;
   left: 50%;
   transform: translate(-50%, -50%);
   overflow: visible;
+  z-index: 50;
 
 
   .modal-content{
     overflow: hidden;
-    padding: 9.5%;
+    padding: 5.5%;
     border-radius: 3px;
   }
 }
@@ -193,7 +194,7 @@ button{
   height:100%;
   background:#000;
   opacity: .9;
-  z-index: 2;
+  z-index: 40;
 }
 
 // BUTTONS
@@ -1162,18 +1163,22 @@ body.product-details{
   }
 }
 
-#ideaing-logo{
+.logo{
+  display: block;
   width: 155px;
   height: 43px;
   min-width: 110px;
-  margin-top: 9px;
-  display: block;
-  margin-left: 0;
-  //margin-right: auto;
-  padding-left: 0;
-  margin-left: 30px;
   background: url('/assets/images/ideaing-logo-small-no-text.png') no-repeat;
   background-size: contain;
+}
+
+#ideaing-logo{
+
+  margin-top: 9px;
+  margin-left: 0;
+  padding-left: 0;
+  margin-left: 30px;
+
 
   &:hover{
     background-image: url('/assets/images/ideaing-logo-small-no-text-pink.png');
@@ -2268,6 +2273,10 @@ body.product-details{
     .like-counter{
       margin-top: -4px;
     }
+
+    .social-rounds{
+      width: 190px;
+    }
   }
 }
 
@@ -2292,7 +2301,7 @@ body.product-details{
   }
 
   h1{
-    width: 63%;
+    width: 57%;
     padding-left: 10px;
     float: left;
     margin-left: 3%;
@@ -2321,9 +2330,10 @@ body.product-details{
 
 
 
+
   .social-rounds{
     float: right;
-    width: 190px;
+    width: 390px;
     //overflow: hidden;
 
     li{
@@ -2823,19 +2833,92 @@ header.sub-head{
     color: lighten($tarmac, 10%);
   }
 }
+//
+//#myModal.login-signup-modal{
+//  height: 0;
+//  overflow: visible;
+//  top: 0;
+//}
+
+.modal-intro{
+  width: 100%;
+  max-width: 650px;
+  margin: 0 auto;
+    a.logo{
+      display: block;
+      width: 230px;
+      height: 88px;
+      margin: 0 auto 50px auto;
+      background-image: url('/assets/images/ideaing-logo-white-letters.png');
+    }
+  p{
+    color: #fff;
+    text-align: center;
+    font-size: 1.9rem;
+  }
+  margin-bottom: 80px;
+}
+
+
+.login-controls{
+  max-width: 400px;
+  margin: 0 auto;
+  float: none;
+  overflow: hidden;
+  color: #fff;
+  padding-left: 45px;
+  padding-right: 45px;
+
+  span{
+    text-align: center;
+    padding-bottom: 4px;
+    height: 30px;
+
+
+    &.active{
+      border-bottom: 4px solid $iridium;
+      //-webkit-box-shadow: 0px 4px 5px 0px rgba(255,0,68,1);
+      //-moz-box-shadow: 0px 4px 5px 0px rgba(255,0,68,1);
+      //box-shadow: 0px 4px 5px 0px rgba(255,0,68,1);
+    }
+  }
+
+}
+
 
 .modal-login{
-  background: darken($pale-grey, 4%);
+  max-width: 400px;
+  margin: 0 auto;
+  float: none;
+  background: transparent;
+  border: 1px solid rgba($pale-grey, .2);
+  box-shadow: none;
+
+
+
+  .btn{
+    font-size: 1.2rem;
+    padding-top: 15px;
+    padding-bottom: 15px;
+  }
+
   .btn-info{
     margin-bottom: 0;
   }
-  input[type="text"]{
+  input[type="text"].form-control{
+    height: 40px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+
     margin-bottom: 8px;
     border: 1px solid darken($pale-grey, 10%);
+    background: #fff;
+    background-image: none;
+    padding-left: 15px;
+    font-size: 1.2rem;
+    color: $pale-grey;
 
-    &[name="password"]{
-      background-image: url('/assets/images/lock-color.png');
-    }
+
   }
   input[type="checkbox"] + label span {
     margin: -1px 10px 0 0;
@@ -2850,16 +2933,22 @@ header.sub-head{
   .modal-minor-text{
     padding-top: 10px;
     font-size: 1.2rem;
-    color: lighten($tarmac, 20%);
+    color: #fff;
     font-weight: bold;
+    text-align: center;
 
-    b{
-      float: right;
+    //b{
+    //  float: right;
       a{
         text-align: right;
-        color: $iridium;
+        color: #fff;
+
+        &.forgot{
+          color: #fff;
+          text-align: center;
+        }
       }
-    }
+    //}
   }
 }
 
@@ -4041,7 +4130,7 @@ footer.about-footer{
     padding-top: 15px ;
     padding-bottom: 15px ;
     position: relative;
-    z-index: 999;
+    z-index: 35;
     background: #fff;
 
     .mobile-menu-switch{

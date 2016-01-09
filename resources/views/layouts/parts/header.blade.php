@@ -13,7 +13,6 @@
                                         <a class="rooms-link" href="#">Rooms</a>
 
                                         <ul>
-                                            {{--<li><a href="#">All ideas</a></li>--}}
                                             <li><a href="#">Kitchen</a></li>
                                             <li><a href="#">Bath</a></li>
                                             <li><a href="#">Bedroom</a></li>
@@ -35,7 +34,7 @@
                             </div>
 
                             <div class="col-xs-3 logo-wrap">
-                                <a id="ideaing-logo" class="logo top-logo" href="/">
+                                <a id="ideaing-logo" class="logo top-logo center-block" href="/">
                                 </a>
                             </div>
 
