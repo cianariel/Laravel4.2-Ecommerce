@@ -2447,14 +2447,16 @@ body.product-details{
         background-image:url("/assets/images/dots-pink.png");
         box-shadow: none;
 
-      }
+      } 
     }
 
     &.box-link{
       padding: 3px 4px;
-      margin: 9px 12px;
+      margin: 12px 6px;
       border: 2px solid $dark-orange;
       border-radius: 4px;
+      font-size: .8rem;
+
 
 
 
