@@ -101,6 +101,9 @@
         // Generating Category tree Hierarchy
         public function generateCategoryHierarchy($catId)
         {
+            if($catId == null)
+              return null;
+
             $catTree = ProductCategory::where('id', $catId)->first()->getAncestorsAndSelf();
 
             $val = [];
@@ -117,6 +120,10 @@
         /*
          * generate data for public view
          * */
+        /**
+         * @param $permalink
+         * @return mixed
+         */
         public function productDetailsView($permalink)
         {
             try
@@ -126,66 +133,7 @@
                 // Get category tree
                 $catTree = $this->generateCategoryHierarchy($productData['product']->product_category_id);
 
-                $productInfo['Id'] = $productData['product']->id;
-                $productInfo['CategoryId'] = $productData['product']->product_category_id;
-                $productInfo['CatTree'] = $catTree;
-                $productInfo['ProductName'] = $productData['product']->product_name;
-                $productInfo['Permalink'] = $productData['product']->product_permalink;
-                $productInfo['Description'] = $productData['product']->product_description;
-                $productInfo['Specifications'] = $productData['product']->specifications;
-                $productInfo['Price'] = $productData['product']->price;
-                $productInfo['SellPrice'] = $productData['product']->sale_price;
-                $productInfo['StoreName'] = $productData['product']->store_id;
-                $productInfo['AffiliateLink'] = $productData['product']->affiliate_link;
-                $productInfo['Review'] = $productData['product']->review;
-                $productInfo['FreeShipping'] = $productData['product']->free_shipping;
-                $productInfo['PageTitle'] = $productData['product']->page_title;
-                $productInfo['MetaDescription'] = $productData['product']->meta_description;
-                $productInfo['Status'] = $productData['product']->post_status;
-
-
-                // setting images and hero image link
-                $selfImage = [];
-                foreach ($productData['product']->medias as $key => $value)
-                {
-                    if (($value->media_type == 'img-upload' || $value->media_type == 'img-link') && $value->is_hero_item == null)
-                    {
-                        $selfImage['picture'][ $key ]['link'] = $value->media_link;
-                        $selfImage['picture'][ $key ]['picture-name'] = $value->media_name;
-                    } elseif (($value->media_type == 'img-upload' || $value->media_type == 'img-link') && $value->is_hero_item == true)
-                    {
-                        $selfImage['heroImage'] = $value->media_link;
-                        $selfImage['heroImageName'] = $value->media_name;
-                    }
-                }
-
-                // setting information for related products
-                $relatedProducts = [];
-                $relatedProductsData = [];
-                foreach ($productData['product']->similar_product_ids as $key => $value)
-                {
-                    $relatedProducts[ $key ] = $this->product->getViewForPublic('', $value->id);
-                    $tmp = $relatedProducts[ $key ];
-                    $image = '';
-
-                    foreach ($tmp->medias as $single)
-                    {
-                        if (($single->media_type == 'img-upload' || $single->media_type == 'img-link') && $single->is_hero_item == null)
-                        {
-                            $image = $single->media_link;
-                            break;
-                        }
-                    }
-                    $relatedProductsData[ $key ]['Name'] = $relatedProducts[ $key ]->product_name;
-                    $relatedProductsData[ $key ]['Permalink'] = $relatedProducts[ $key ]->product_permalink;
-                    $relatedProductsData[ $key ]['AffiliateLink'] = $relatedProducts[ $key ]->affiliate_link;
-                    $relatedProductsData[ $key ]['Image'] = $image;
-                    $relatedProductsData[ $key ]['UpdateTime'] = Carbon::createFromTimestamp(strtotime($relatedProducts[ $key ]->updated_at))->diffForHumans();
-                }
-
-                $result['productInformation'] = $productInfo;
-                $result['relatedProducts'] = $relatedProductsData;
-                $result['selfImages'] = $selfImage;
+                $result = $this->product->productDetailsViewGenerate($productData, $catTree);
 
                 return $this->setStatusCode(\Config::get("const.api-status.success"))
                     ->makeResponse($result);
@@ -465,6 +413,8 @@
             }
 
         }
+
+
 
 
     }

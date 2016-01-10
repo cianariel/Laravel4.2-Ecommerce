@@ -133,12 +133,6 @@
                     <div id="gallery" class="royalSlider rsDefault" royal-slider>
 
                         <!-- NEED TO CHECK  ROYALSLIDER WITH ANGULAR -->
-                            <img class="rsImg" ng-repeat="item in selfImages.picture" ng-src="@{{ item.link }}" />
-
-                        <a  ng-repeat="item in selfImages.picture" class="rsImg" data-rsbigimg="@{{ item.link }}" href="@{{ item.link }}">
-                            <img itemprop="image" class="rsTmb"
-                                 ng-src="@{{ item.link }}">
-                        </a>
 
                         <a class="rsImg" data-rsbigimg="/assets/images/dummies/slider/PC220020-1024x683.jpg"
                            href="/assets/images/dummies/slider/PC220020-1024x683.jpg">
@@ -191,7 +185,10 @@
                     @include('layouts.parts.share-bar')
 
                     <section class="article-content col-lg-12 col-sm-11 pull-right">
-                        $@{{productInformation.Description}}
+                        <div  ta-bind ng-model="productInformation.Description">
+
+
+                        </div>
                     </section>
                 </div>
 
@@ -375,7 +372,7 @@
 
                 <section class="pale-grey-bg reviews" id="reviews">
                     <div class="container full-620 fixed-sm">
-                        <h3 class="pink">Reviews (4)</h3>
+                        <h3 class="pink">Reviews ( @{{ productInformation.Review.length -1 }} )</h3>
 
                         <div class="col-sm-3">
                             <h6 class="grey">Critic Reviews</h6>
