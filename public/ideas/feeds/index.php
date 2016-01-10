@@ -104,13 +104,31 @@ $data['title'] = get_the_title();
 $data['content'] = carbon_the_content_limit(200);
 $cats = get_the_category();
 $data['category'] = $cat_name = $cats[0]->name;
+//$tags = get_the_tags();
+$the_list = '';
+$cat_names = array();
+
+$filter = 'rss';
+if ( 'atom' == $type )
+    $filter = 'raw';
+
+if ( !empty($cats) ) foreach ( (array) $cats as $category ) {
+    $cat_names[] = sanitize_term_field('name', $category->name, $category->term_id, 'category', $filter);
+}
+
+/*if ( !empty($tags) ) foreach ( (array) $tags as $tag ) {
+    $cat_names[] = sanitize_term_field('name', $tag->name, $tag->term_id, 'post_tag', $filter);
+}*/
+
+$cat_names = array_unique($cat_names);
+$data['category_all'] = $cat_names;
 $data['url'] = get_the_permalink();
 $datepublishstring = get_the_time('Y-m-d H:i:s');
 $timestamp = strtotime($datepublishstring);
 $datepublish = CarbobFormatTime($timestamp);
 $data['date'] = $datepublish;
 if( has_post_thumbnail( $ID ) ) {
-        $image = get_the_post_thumbnail_url( $ID, 'full', false );
+        $image = get_the_post_thumbnail_url( $ID, 'large', false );
     }
 	else
 	{
@@ -119,12 +137,17 @@ if( has_post_thumbnail( $ID ) ) {
 		$keys = array_reverse(array_keys($files));
 		$j=0;
 		$num = $keys[$j];
-		$image=wp_get_attachment_image_url($num, 'full', false);
+		$image=wp_get_attachment_image_url($num, 'large', false);
 	  endif;
 	}
 $data['image'] = $image;
 $data['author'] = get_the_author();
+$data['authorlink'] = get_author_posts_url( get_the_author_meta( 'ID' ) );
+$data['author_id'] = get_the_author_meta( 'ID' );
 $data['avator'] = get_avatar_url( get_the_author_email(), '80' );
+$data['is_featured'] = get_post_custom_values('is_featured',$ID);
+//$data['feed_image'] = get_post_custom_values('feed_image',$ID);
+$data['feed_image'] = get_field('feed_image');
 $datam[]= $data;
 endwhile;
 echo json_encode($datam);
