@@ -224,7 +224,8 @@
                                                             <div class="form-group">
                                                                 <label>Similar Products (Auto Complete)</label>
                                                                 <tags-input ng-model="productTags"
-                                                                            display-property="name">
+                                                                            display-property="name"
+                                                                            add-from-autocomplete-only="true">
                                                                     <auto-complete source="searchProductByName($query)"
                                                                                    ng-model-options="{debounce: 1000}"></auto-complete>
                                                                 </tags-input>

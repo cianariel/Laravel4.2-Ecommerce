@@ -56,7 +56,7 @@ productApp.controller('productController', ['$scope','$window', '$http', '$locat
 
                   //  alert("hi");
 
-                    console.log("DataIn :"+$scope.selfImages.picture[0].link);
+                 //   console.log("DataIn :"+$scope.selfImages.picture[0].link);
                 }
             });
 
