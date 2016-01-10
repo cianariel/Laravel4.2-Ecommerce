@@ -119,7 +119,7 @@
                             });
 
                         }
-                    }); 
+                    });
                 </script>
 
                 <div id="gallery" class="royalSlider rsDefault">

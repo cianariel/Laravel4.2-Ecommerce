@@ -27,6 +27,7 @@
             'affiliate_link',
             'price_grabber_master_id',
             'review',
+            'review_ext_link',
             'free_shipping',
             'coupon_code',
             'post_status',
@@ -229,6 +230,25 @@
             return $product;
         }
 
+        // Generating Category tree Hierarchy
+        public function getCategoryHierarchy($catId)
+        {
+            if($catId == null)
+                return null;
+
+            $catTree = ProductCategory::where('id', $catId)->first()->getAncestorsAndSelf();
+
+            $val = [];
+            foreach ($catTree as $key => $value)
+            {
+                $val[ $key ]['CategoryId'] = $value->id;
+                $val[ $key ]['CategoryPermalink'] = $value->extra_info;
+                $val[ $key ]['CategoryName'] = $value->category_name;
+            }
+
+            return $val;
+        }
+
         /** Generate Core view data for product details page
          * @param $productData
          * @param $catTree
@@ -238,6 +258,7 @@
          */
         public function productDetailsViewGenerate($productData,$catTree)
         {
+           // dd($productData);
             $productInfo['Id'] = $productData['product']->id;
             $productInfo['CategoryId'] = $productData['product']->product_category_id;
             $productInfo['CatTree'] = $catTree;
@@ -250,6 +271,7 @@
             $productInfo['StoreName'] = $productData['product']->store_id;
             $productInfo['AffiliateLink'] = $productData['product']->affiliate_link;
             $productInfo['Review'] = $productData['product']->review;
+            $productInfo['ReviewExtLink'] = $productData['product']->review_ext_link;
             $productInfo['FreeShipping'] = $productData['product']->free_shipping;
             $productInfo['PageTitle'] = $productData['product']->page_title;
             $productInfo['MetaDescription'] = $productData['product']->meta_description;
@@ -260,7 +282,7 @@
             $selfImage = [];
             foreach ($productData['product']->medias as $key => $value)
             {
-                if (($value->media_type == 'img-upload' || $value->media_type == 'img-link') && $value->is_hero_item == null)
+                if (($value->media_type == 'img-upload' || $value->media_type == 'img-link') && ($value->is_hero_item == null || $value->is_hero_item == false))
                 {
                     $selfImage['picture'][ $key ]['link'] = $value->media_link;
                     $selfImage['picture'][ $key ]['picture-name'] = $value->media_name;

@@ -6,7 +6,9 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use FeedParser;
+//use FeedParser;
+use MetaTag;
+use App\Models\Product;
 
 class PageController extends Controller
 {
@@ -40,7 +42,23 @@ class PageController extends Controller
 
     public function productDetailsPage($permalink)
     {
-        return view('product.product-details')->with('permalink',$permalink);
+        $product = new Product();
+        $productData['product'] = $product->getViewForPublic($permalink);
+
+        // Get category tree
+        $catTree = $product->getCategoryHierarchy($productData['product']->product_category_id);
+
+        $result = $product->productDetailsViewGenerate($productData, $catTree);
+
+        MetaTag::set('title',$result['productInformation']['PageTitle']);
+        MetaTag::set('description',$result['productInformation']['MetaDescription']);
+
+     //   dd($result['selfImages']['picture'][0]['link']);
+        return view('product.product-details')
+            ->with('permalink',$permalink)
+            ->with('productInformation',$result['productInformation'])
+            ->with('relatedProducts',$result['relatedProducts'])
+            ->with('selfImages',$result['selfImages']);
 
     }
 
