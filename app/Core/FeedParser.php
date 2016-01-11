@@ -1,16 +1,16 @@
 <?php
-    /**
-     * Created by PhpStorm.
-     * User: sanzeeb
-     * Date: 12/9/2015
-     * Time: 5:05 PM
-     */
+        /**
+         * Created by PhpStorm.
+         * User: sanzeeb
+         * Date: 12/9/2015
+         * Time: 5:05 PM
+         */
 
     namespace App\Core;
 
-    use DOMDocument;
+        use DOMDocument;
 
-    // use Illuminate\Cache;
+        // use Illuminate\Cache;
 
     class FeedParser {
 

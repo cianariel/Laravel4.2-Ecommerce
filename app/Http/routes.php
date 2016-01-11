@@ -20,23 +20,8 @@
          var_dump($query);
      });
 */
-   // use Illuminate\Http\Request;
- //   Route::any('api/product/media-uploadX', function (Request $request ) // temp, used for tweaking frontend
-  //  {
 
-       /*dd( $_FILES['name']);
-         $request->all();
-        \Input::hasFile('file');*/
-//$i = \Input::all();
-
-  //      $image = Input::hasFile('file');
-  //    dd($image);
-        //dd()re;
-        //return $request->hasFile('name')?"file exists":"no file";
-       // return $request->file('name')->getClientMimeType();
-
-       // return response($request->files(),200);
-  //  });
+    //Route::get('/api-data/{id}','');
 
 
     Route::get('/', 'PageController@home');

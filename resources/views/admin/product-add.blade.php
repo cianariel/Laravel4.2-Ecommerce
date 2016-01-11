@@ -230,6 +230,11 @@
                                                                                    ng-model-options="{debounce: 1000}"></auto-complete>
                                                                 </tags-input>
                                                             </div>
+                                                         {{--   <div class="form-group">
+                                                                <label>Product Availability</label>
+                                                                <input data-ng-model="ProductAvailability"
+                                                                       class="form-control" placeholder="Enter text">
+                                                            </div>--}}
 
                                                             <div class="form-group">
                                                                 <button data-ng-click="updateProduct()"

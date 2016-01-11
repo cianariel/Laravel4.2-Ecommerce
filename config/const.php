@@ -9,6 +9,14 @@
         |
         */
 
+        'product-api-key'        => [
+            'amazon-product-api' => [
+                'access-key'    => 'AKIAIQYICLTUI4NBTPGA',
+                'secret-key'    => '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',
+                'associate-tag' => 'ideaing07-20',
+            ],
+        ],
+
         'user-registration-info' => [
             'next-project-focus'    => ['Bathroom', 'Garage', 'Laundry-Room'],
             'project-starting-time' => ['3-months', '6-months'],

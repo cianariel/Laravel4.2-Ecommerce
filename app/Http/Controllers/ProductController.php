@@ -15,6 +15,7 @@
     use Folklore\Image\Facades;
     use Carbon\Carbon;
     use App\Models\ProductCategory;
+    use App\Core\ProductApi\ProductStrategy;
 
     class ProductController extends ApiController {
 
@@ -312,7 +313,6 @@
 
         public function deleteSingleMediaItem()
         {
-
             $id = \Input::get('MediaId');
             try
             {
@@ -343,7 +343,6 @@
                 return $this->setStatusCode(\Config::get("const.api-status.system-fail"))
                     ->makeResponseWithError("System Failure !", $ex);
             }
-
         }
 
 

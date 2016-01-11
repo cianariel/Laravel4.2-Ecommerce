@@ -2,6 +2,7 @@
 
     namespace App\Models;
 
+    use App\Core\ProductApi\ProductStrategy;
     use Illuminate\Database\Eloquent\Model;
     use Carbon\Carbon;
 
@@ -328,6 +329,15 @@
             $result['selfImages'] = $selfImage;
 
             return $result;
+        }
+
+        public function getApiProductInformation($itemId)
+        {
+            $data = new ProductStrategy();
+            $reslut = $data->loadData($itemId);
+
+            dd($reslut);
+
         }
 
     }
