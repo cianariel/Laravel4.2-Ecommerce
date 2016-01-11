@@ -9,7 +9,11 @@
             <a href="#" class="side-logo lamp-logo">
             </a>
 
-            <h1>@{{productInformation.ProductName}}</h1>
+            <h1>
+                @if(isset($productInformation['ProductName']))
+                    {{$productInformation['ProductName']}}
+                @endif
+            </h1>
 
             <ul class="social-rounds hidden-sm hidden-xs pull-right">
                 <li><a class="fb" href="#"></a></li>
@@ -23,25 +27,41 @@
             </ul>
 
             <div class="icon-wrap pull-right">
-                <a class="get solid" ng-href="@{{productInformation.AffiliateLink}}" target="_blank">
+                <a class="get solid" ng-href=" @if(isset($productInformation['AffiliateLink']))
+                {{$productInformation['AffiliateLink']}}
+                @endif" target="_blank">
                     Get it
                 </a>
                 <img class="vendor-logo" src="/assets/images/dummies/amazon-black.png">
-                <b class="price">$@{{productInformation.Price}}</b>
+                <b class="price">$ @if(isset($productInformation['Price']))
+                        {{$productInformation['Price']}}
+                    @endif</b>
             </div>
         </header>
 
         <section id="hero" class="product-hero">
-            <div class="hero-background" style="background-image: url('@{{selfImages.heroImage}}')"></div>
+            <div class="hero-background" style="background-image: url('@if(isset($selfImages['heroImage']))
+            {{$selfImages['heroImage']}}
+            @endif')"></div>
             <div class="color-overlay"></div>
 
             <div class="container fixed-sm full-480">
                 <nav class="breadcrumbs">
                     <ul>
-                        <li ng-repeat="category in productInformation.CatTree">
-                            <a href="/category/@{{ category.CategoryPermalink }}"
-                               ng-class="{'current':$last}">@{{ category.CategoryName }}</a>
-                        </li>
+                        @if(isset($productInformation['CatTree']))
+                            @foreach( $productInformation['CatTree'] as $category )
+                                <li>
+                                    <a href="/category/@if(isset($category['CategoryPermalink'])){{$category['CategoryPermalink']}}@endif"
+                                       class="@if($category == end($productInformation['CatTree']))
+                                               current
+                                               @endif">@if(isset($category['CategoryName']))
+                                            {{$category['CategoryName']}}
+                                        @endif</a>
+                                </li>
+                            @endforeach
+                        @endif
+
+
                     </ul>
                 </nav>
 
@@ -50,7 +70,11 @@
                     <span class="caption">Average Ideaing Score</span>
                 </div>
 
-                <h1>@{{productInformation.ProductName}}</h1>
+                <h1>
+                    @if(isset($productInformation['ProductName']))
+                        {{$productInformation['ProductName']}}
+                    @endif
+                </h1>
 
                 <nav class="top-product-controls">
                     <ul>
@@ -130,32 +154,38 @@
                         });
                     </script>
 
-                    <div id="gallery" class="royalSlider rsDefault" royal-slider>
-
-                        <!-- NEED TO CHECK  ROYALSLIDER WITH ANGULAR -->
-
-                        <a class="rsImg" data-rsbigimg="/assets/images/dummies/slider/PC220020-1024x683.jpg"
-                           href="/assets/images/dummies/slider/PC220020-1024x683.jpg">
-                            <img itemprop="image" class="rsTmb"
-                                 src="/assets/images/dummies/slider/PC220020-1024x683.jpg">
-                        </a>
+                    <div id="gallery" class="royalSlider rsDefault">
+                        @if(isset($selfImages['picture']))
+                            @foreach( $selfImages['picture'] as $image )
+                                <a class="rsImg" data-rsbigimg="{{$image['link']}}"
+                                   href="{{$image['link']}}">
+                                    <img itemprop="image" class="rsTmb" src="{{$image['link']}}" alt="{{$image['picture-name']}}">
+                                </a>
+                            @endforeach
+                        @endif
 
                     </div>
 
                     <div class="slider-side-block">
                         <div class="top">
-                            <a class="get solid" ng-href="@{{productInformation.AffiliateLink}}" target="_blank">
+                            <a class="get solid" href="@if(isset($productInformation['AffiliateLink']))
+                            {{$productInformation['AffiliateLink']}}
+                            @endif" target="_blank">
                                 Get it
                             </a>
                             <img class="vendor-logo" src="/assets/images/dummies/amazon-2.png">
-                            <b class="price">$@{{productInformation.Price}}</b>
+                            <b class="price">$ @if(isset($productInformation['Price']))
+                                    {{$productInformation['Price']}}
+                                @endif</b>
                         </div>
                         <div class="table">
                             <ul>
                                 <li>
                                     <a href="#">
                                         <span class="name">Amazon</span>
-                                        <span class="price">$@{{productInformation.SellPrice}}</span>
+                                        <span class="price">$ @if(isset($productInformation['SellPrice']))
+                                                {{$productInformation['SellPrice']}}
+                                            @endif</span>
                                     </a>
                                 </li>
 
@@ -185,9 +215,10 @@
                     @include('layouts.parts.share-bar')
 
                     <section class="article-content col-lg-12 col-sm-11 pull-right">
-                        <div  ta-bind ng-model="productInformation.Description">
-
-
+                        <div>
+                            @if(isset($productInformation['Description']))
+                                {!! $productInformation['Description'] !!}
+                            @endif
                         </div>
                     </section>
                 </div>
@@ -197,62 +228,19 @@
 
                         <h3 class="green">Specifications</h3>
 
-                        <p>
-                            Nest Cam and IFTTT, this $99/£89 detector is the best connected one we've seen yet. Nest Cam
-                            and IFTTT, this $99/£89 Nest Cam and IFTTT, this $99/£89. Ut enim ad minima veniam, quis
-                            nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi
-                            consequatur?
-                        </p>
+                        @if(isset($productInformation['Specifications']))
+                            @foreach( $productInformation['Specifications'] as $specification )
+                                <div class="card small col-sm-3 col-xs-6">
+                                    <div>
+                                        <h4>{{ $specification->key}}</h4>
+                                        <span>{{ $specification->value}}</span>
+                                    </div>
+                                </div>
+                            @endforeach
+                        @endif
 
-
-                        <div class="card small col-sm-3 col-xs-6">
-                            <div>
-                                <h4>@{{ productInformation.Specifications[0].key }}</h4>
-                                <span>@{{ productInformation.Specifications[0].value }}</span>
-                            </div>
-                        </div>
-                        <div class="card small col-sm-3 col-xs-6">
-                            <div>
-                                <h4>@{{ productInformation.Specifications[1].key }}</h4>
-                                <span>@{{ productInformation.Specifications[1].value }}</span>
-                            </div>
-                        </div>
-                        <div class="card small col-sm-3 col-xs-6">
-                            <div>
-                                <h4>@{{ productInformation.Specifications[2].key }}</h4>
-                                <span>@{{ productInformation.Specifications[2].value }}</span>
-                            </div>
-                        </div>
-                        <div class="card small col-sm-3 col-xs-6">
-                            <div>
-                                <h4>@{{ productInformation.Specifications[3].key }}</h4>
-                                <span>@{{ productInformation.Specifications[3].value }}</span>
-                            </div>
-                        </div>
-
-                        <div class="card big col-sm-6 col-xs-12">
-                            <div>
-                                <h4>Pricing and Availiability</h4>
-                                <ul>
-                                    <li><b>Avaliability</b> <i>Pre-release</i></li>
-                                    <li><b>Announced (US)</b><i>September 29, 2015</i></li>
-                                    <li><b>Original Price</b> <i>@{{ productInformation.SellPrice }}</i></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="card small col-sm-3 col-xs-6">
-                            <div>
-                                <h4>@{{ productInformation.Specifications[4].key }}</h4>
-                                <span>@{{ productInformation.Specifications[4].value }}</span>
-                            </div>
-                        </div>
-                        <div class="card small col-sm-3 col-xs-6">
-                            <div>
-                                <h4>@{{ productInformation.Specifications[5].key }}</h4>
-                                <span>@{{ productInformation.Specifications[5].value }}</span>
-                            </div>
-                        </div>
                     </div>
+
                 </section>
 
                 <section class="comparison" id="compare">
@@ -372,40 +360,53 @@
 
                 <section class="pale-grey-bg reviews" id="reviews">
                     <div class="container full-620 fixed-sm">
-                        <h3 class="pink">Reviews ( @{{ productInformation.Review.length -1 }} )</h3>
+                        <h3 class="pink">Reviews(
+                            @if(isset($productInformation['Review']))
+                                {{count($productInformation['Review']) -1}}
+                            @endif
+                        )</h3>
 
                         <div class="col-sm-3">
                             <h6 class="grey">Critic Reviews</h6>
                             <b class="score critic-score pink">
-                                @{{ productInformation.Review[0].value }} / 5
+                                @if(isset($productInformation['Review']))
+                                    {{($productInformation['Review'][0]->value /5)*100}} %
+                                @endif
                             </b>
                         </div>
                         <div class="col-sm-9">
                             <table class="rating-lines">
                                 <tbody>
-                                <tr ng-repeat="review in productInformation.Review" ng-if="$index >= 1">
-                                    <td class="name">
-                                        <a href="@{{ review.link }}" target="_blank">@{{ review.key }}</a>
+                                @if(isset($productInformation['Review']))
+                                    @foreach( array_slice($productInformation['Review'],1) as $review )
+                                        <tr>
+                                            <td class="name">
+                                                <a href="@if(isset($review->link)){{$review->link}}@endif"
+                                                   target="_blank">@if(isset($review->key)){{$review->key}}@endif</a>
+                                            </td>
+                                            <td class="line">
+                                                <div class="outer-line">
+                                                    <div style="width: @if(isset($review->value)){{$review->value * 20}}@endif%" class="inner-line"></div>
+                                                </div>
+                                            </td>
+                                            <!-- TODO - the style has to come from Laravel-->
 
-                                    </td>
-                                    <td class="line">
-                                        <div class="outer-line">
-                                            <div style="width: @{{ review.value * 20}}%" class="inner-line"></div>
-                                        </div>
-                                    </td>
-                                    <!-- TODO - the style has to come from Laravel-->
+                                            <td class="score">@if(isset($review->value)){{$review->value * 20}}@endif%</td>
+                                        </tr>
 
-                                    <td class="score">@{{ review.value }}</td>
-                                </tr>
+                                    @endforeach
+                                @endif
 
                                 </tbody>
                             </table>
                         </div>
 
                         <div class="col-sm-3 col-md-offset-3 critic-quote">
-                            <b>Every home needs this</b>
-                            <span class="quote-author grey">Pete McBride</span>
-                            <span class="light-grey">CNET Editor</span>
+                            <div>
+                                @if(isset($productInformation['ReviewExtLink']))
+                                    {!! $productInformation['ReviewExtLink'] !!}
+                                @endif
+                            </div>
                         </div>
                     </div>
                 </section>
@@ -459,21 +460,26 @@
                     <div class="related-products col-xs-12">
                         <h3 class="green">Related Products</h3>
 
-                        <div class="col-sm-4 col-xs-12 grid-box" ng-repeat="product in relatedProducts">
-                            <div class="wrap">
-                                <img class="img-responsive" src="@{{ product.Image }}">
+                        <div class="col-sm-4 col-xs-12 grid-box">
+                            @if(isset($relatedProducts))
+                                @foreach( $relatedProducts as $product )
+                                    <div class="wrap">
+                                        <img class="img-responsive" src="{{ $product['Image'] }}">
 
-                                <div class="color-overlay">
-                                    <h4>@{{ product.Name }}
-                                        <a href="@{{ product.Permalink }}" class="get solid">Get it</a>
-                                    </h4>
-                                </div>
-                            </div>
-                            <div class="like-wrap">
-                                <a href="#" class="social-pic likes">157</a>
-                                <a href="#" class="social-pic comment">89</a>
-                            </div>
-                            <time>@{{ product.UpdateTime }}</time>
+                                        <div class="color-overlay">
+                                            <h4>{{ $product['Name'] }}
+                                                <a href="{{ $product['Permalink'] }}" class="get solid">Get it</a>
+                                            </h4>
+                                        </div>
+                                    </div>
+                                    <div class="like-wrap">
+                                        <a href="#" class="social-pic likes">157</a>
+                                        <a href="#" class="social-pic comment">89</a>
+                                    </div>
+                                    <time>{{ $product['UpdateTime'] }}</time>
+                                @endforeach
+                            @endif
+
                         </div>
 
 
@@ -526,10 +532,6 @@
                         </div>
 
                     </div>
-
-
-                    <div ng-init="loadProductDetails(urlParam)">&nbsp;</div>
-
                 </div>
             </section>
         </main>

@@ -152,7 +152,7 @@
              * Custom providers...
              */
             Laravel\Socialite\SocialiteServiceProvider::class,
-
+            Torann\LaravelMetaTags\MetaTagsServiceProvider::class,
             'Tymon\JWTAuth\Providers\JWTAuthServiceProvider',
             'Zizaco\Entrust\EntrustServiceProvider',
             'Baum\Providers\BaumServiceProvider',
@@ -224,7 +224,8 @@
             'Feeds'              => willvincent\Feeds\Facades\FeedsFacade::class, // todo :need to chk the existence
             'FeedParser'         => 'App\Core\FeedParser',
             'ViewHelper'         => 'App\Core\ViewHelper',
-            'Image'              => 'Intervention\Image\Facades\Image'
+            'Image'              => 'Intervention\Image\Facades\Image',
+            'MetaTag'            => Torann\LaravelMetaTags\Facades\MetaTag::class,
 
 
         ],

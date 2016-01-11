@@ -7,8 +7,8 @@ $baseDir = dirname($vendorDir);
 
 return array(
     '025bea19df83471e989e01acafc2c4ae' => $vendorDir . '/guzzlehttp/psr7/src/functions_include.php',
-    'b12accd861ed682ce314297046b7e8de' => $vendorDir . '/guzzlehttp/promises/src/functions_include.php',
     'ee65fd8033b69a16866fce8167c9aa34' => $vendorDir . '/hamcrest/hamcrest-php/hamcrest/Hamcrest.php',
+    'b12accd861ed682ce314297046b7e8de' => $vendorDir . '/guzzlehttp/promises/src/functions_include.php',
     'fa32ece6c8db8a379982ca0b929df511' => $vendorDir . '/guzzlehttp/guzzle/src/functions_include.php',
     '6fac04860a2cf4b03e356f4caca377d6' => $vendorDir . '/symfony/var-dumper/Resources/functions/dump.php',
     '490132635c2242f734334b7c79438624' => $vendorDir . '/mtdowling/jmespath.php/src/JmesPath.php',

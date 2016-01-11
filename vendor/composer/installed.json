@@ -4586,5 +4586,59 @@
             "thumbnail",
             "watermark"
         ]
+    },
+    {
+        "name": "torann/laravel-meta-tags",
+        "version": "v3.0.1",
+        "version_normalized": "3.0.1.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/Torann/laravel-meta-tags.git",
+            "reference": "957764968957b16ea586bcbc13c8c30aaf4194e0"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/Torann/laravel-meta-tags/zipball/957764968957b16ea586bcbc13c8c30aaf4194e0",
+            "reference": "957764968957b16ea586bcbc13c8c30aaf4194e0",
+            "shasum": ""
+        },
+        "require": {
+            "illuminate/support": "5.1.*|5.2.*",
+            "php": ">=5.5.9"
+        },
+        "require-dev": {
+            "mockery/mockery": "^0.9.4",
+            "phpunit/phpunit": "^4.8"
+        },
+        "time": "2015-12-23 20:51:32",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Torann\\LaravelMetaTags\\": "src/Torann/LaravelMetaTags/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Daniel Stainback",
+                "email": "daniel@lyften.com"
+            },
+            {
+                "name": "Lito",
+                "email": "lito@eordes.com"
+            }
+        ],
+        "description": "A package to manage Header Meta Tags",
+        "keywords": [
+            "head",
+            "laravel",
+            "meta",
+            "meta tags",
+            "tags"
+        ]
     }
 ]

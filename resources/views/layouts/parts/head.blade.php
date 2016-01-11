@@ -1,4 +1,5 @@
-<title>Ideaing</title>
+<title>{{ MetaTag::get('title') }}</title>
+{!! MetaTag::tag('description') !!}
 <meta name="viewport" id="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 

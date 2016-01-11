@@ -230,11 +230,7 @@
                                                                                    ng-model-options="{debounce: 1000}"></auto-complete>
                                                                 </tags-input>
                                                             </div>
-                                                            <div class="form-group">
-                                                                <label>Product Availability</label>
-                                                                <input data-ng-model="ProductAvailability"
-                                                                       class="form-control" placeholder="Enter text">
-                                                            </div>
+
                                                             <div class="form-group">
                                                                 <button data-ng-click="updateProduct()"
                                                                         class="btn btn-primary" type="button">
@@ -436,9 +432,17 @@
                                                         <div class="col-lg-6">
                                                             <div class="form-group">
                                                                 <label>External Review Link</label>
-                                                                <input data-ng-model="externalReviewLink"
-                                                                       class="form-control"
-                                                                       placeholder="Enter External Review Link">
+
+                                                                <div class="col-sm-12 outline: 1px solid orange;">
+                                                                    <div text-angular data-ng-model="externalReviewLink"
+                                                                         name="review-editor"
+                                                                         ta-text-editor-class="border-around ta-editor"
+                                                                         ta-html-editor-class="border-around ta-editor">
+                                                                    </div>
+                                                                </div>
+
+
+
                                                             </div>
                                                         </div>
                                                     </div>

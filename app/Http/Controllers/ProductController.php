@@ -100,7 +100,7 @@
 
         // Generating Category tree Hierarchy
         public function generateCategoryHierarchy($catId)
-        {
+        {/*
             if($catId == null)
               return null;
 
@@ -112,9 +112,9 @@
                 $val[ $key ]['CategoryId'] = $value->id;
                 $val[ $key ]['CategoryPermalink'] = $value->extra_info;
                 $val[ $key ]['CategoryName'] = $value->category_name;
-            }
+            }*/
 
-            return $val;
+            return $this->product->getCategoryHierarchy($catId);
         }
 
         /*
