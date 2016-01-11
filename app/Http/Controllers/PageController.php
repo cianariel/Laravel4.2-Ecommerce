@@ -20,7 +20,7 @@ class PageController extends Controller
     public function home()
     {
         //URL of targeted site
-        $url = "http://staging.ideaing.com/blog/feeds/index.php?count=8";
+        $url = "http://staging.ideaing.com/ideas/feeds/index.php?count=8";
      //   $url = "http://staging.ideaing.com/ideas/feeds/index.php?count=8";
 
         $ch = curl_init();
@@ -28,7 +28,7 @@ class PageController extends Controller
         curl_setopt($ch, CURLOPT_URL, $url);
         curl_setopt($ch, CURLOPT_HEADER, 0);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-
+        curl_setopt($ch, CURLOPT_ENCODING ,"");
 
         $json = curl_exec($ch);
         $stories = json_decode($json);

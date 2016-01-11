@@ -1,5 +1,7 @@
 @extends('layouts.main')
 
+@section('body-class'){{ 'homepage' }}@stop
+
 @section('content')
     <section id="hero" class="landing-hero">
         <div class="hero-background"></div>
@@ -39,9 +41,9 @@
             {{--<ul class="left-nav col-xs-1 hidden-620">--}}
                 {{--<li class="active"><a class="home-link" href="#">Home</a></li>--}}
             {{--</ul>--}}
-            <ul class="category-nav pull-right">
-                {{--<li class="active"><a href="" class="all-link">All</a></li>--}}
-                <li class="active"><a href="" class="ideas-link">Ideas</a></li>
+            <ul class="category-nav">
+                <li class="active"><a href="" class="all-link">All</a></li>
+                <li><a href="" class="ideas-link">Ideas</a></li>
                 <li><a href="" class="products-link">Products</a></li>
                 <li><a href="" class="photos-link">Photos</a></li>
             </ul>

@@ -25,7 +25,11 @@
             $that.toggleClass('active');
         });
 
-        $('#overlay').click(function(){
+        $('#overlay, .login-signup-modal').click(function(event){
+            if(event.target !== this){ // only fire if the block itself is clicked, not it's children (sometimes we need to hide the modal when anything outside it's main block is clickced
+                return;
+            }
+
             $('.modal, #overlay').fadeOut();
 
             var $hide = $('[data-overlay="true"]').data('toggle');
@@ -34,6 +38,10 @@
                 $($hide).hide();
             }
         });
+
+
+
+
 
         $("#back-to-top").click(function() {
             $('html, body').animate({ scrollTop: 0 }, 'slow');
