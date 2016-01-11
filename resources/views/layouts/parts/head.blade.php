@@ -1,5 +1,7 @@
+@if(! Request::is('ideas/*'))
 <title>{{ MetaTag::get('title') }}</title>
 {!! MetaTag::tag('description') !!}
+@endif
 <meta name="viewport" id="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
