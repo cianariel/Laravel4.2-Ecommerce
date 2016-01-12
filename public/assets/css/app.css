@@ -6719,6 +6719,36 @@ body.room-landing #hero img.round {
   border: 2px solid;
   border-radius: 50%;
   background-color: #fff; }
+body.room-landing .red span {
+  background-image: url("/assets/images/icons/bag-glow-red.png"); }
+body.room-landing .red h6 {
+  background: #e61d25; }
+body.room-landing .red img.round {
+  border-color: #e61d25 !important; }
+body.room-landing .red .hover-box::before {
+  border-color: transparent transparent #e61d25 transparent; }
+body.room-landing .blue span {
+  background-image: url("/assets/images/icons/bag-glow-blue.png"); }
+body.room-landing .blue h6 {
+  background: #00b1ff; }
+body.room-landing .blue img.round {
+  border-color: #00b1ff !important; }
+body.room-landing .blue .hover-box::before {
+  border-color: transparent transparent #00b1ff transparent; }
+body.room-landing .green span {
+  background-image: url("/assets/images/icons/bag-glow-green.png"); }
+body.room-landing .green h6 {
+  background: #c7c747; }
+body.room-landing .green img.round {
+  border-color: #c7c747 !important; }
+body.room-landing .green .hover-box::before {
+  border-color: transparent transparent #c7c747 transparent; }
+body.room-landing .pink img.round {
+  border-color: #ff0042; }
+body.room-landing .orange img.round {
+  border-color: #ff7f00; }
+body.room-landing .yellow img.round {
+  border-color: yellow; }
 
 .hero-tags {
   position: absolute;
@@ -6736,32 +6766,18 @@ body.room-landing #hero img.round {
     .hero-tags .tag.three {
       top: 60%;
       left: 50%; }
+    .hero-tags .tag a, .hero-tags .tag .hover-box {
+      display: none; }
     .hero-tags .tag:hover a, .hero-tags .tag:hover .hover-box {
       display: block; }
+    .hero-tags .tag:hover a {
+      margin-top: -114px; }
   .hero-tags span {
     width: 110px;
     height: 110px;
     display: block;
     cursor: pointer;
     background: url("/assets/images/icons/bag-glow-pink.png") no-repeat; }
-  .hero-tags .red span {
-    background-image: url("/assets/images/icons/bag-glow-red.png"); }
-  .hero-tags .red h6 {
-    background: #e61d25; }
-  .hero-tags .red .hover-box::before {
-    border-color: transparent transparent #e61d25 transparent; }
-  .hero-tags .blue span {
-    background-image: url("/assets/images/icons/bag-glow-blue.png"); }
-  .hero-tags .blue h6 {
-    background: #00b1ff; }
-  .hero-tags .blue .hover-box::before {
-    border-color: transparent transparent #00b1ff transparent; }
-  .hero-tags .green span {
-    background-image: url("/assets/images/icons/bag-glow-green.png"); }
-  .hero-tags .green h6 {
-    background: #c7c747; }
-  .hero-tags .green .hover-box::before {
-    border-color: transparent transparent #c7c747 transparent; }
   .hero-tags .hover-box {
     width: 200px;
     background: #fff;
@@ -6772,18 +6788,18 @@ body.room-landing #hero img.round {
       padding: 15px;
       font-size: inherit;
       color: #000;
-      margin-top: 0; }
+      margin: 0; }
     .hero-tags .hover-box div {
       padding: 15px;
       color: #757575;
-      border: 1px solid #f2f5f5; }
+      border: 1px solid #c1c1c1; }
     .hero-tags .hover-box::before {
       content: ' ';
       position: absolute;
       width: 0;
       height: 0;
       border-style: solid;
-      border-width: 0 5px 10px 5px;
+      border-width: 0 7.5px 10px 7.5px;
       border-color: transparent transparent #007bff transparent;
       left: 33%;
       top: -7px; }

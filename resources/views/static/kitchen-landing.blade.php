@@ -99,12 +99,12 @@
             <section class="hero-related-products col-md-4 pull-right ">
                     <h5>Related Products</h5>
                 <ul>
-                    <li><a class="pink-border" href="#"><img src="/assets/images/dummies/box-image-dummy.png" class="img-rounded" alt="" /> Steam pot</a> <a href="#" class="get solid pull-right">Get it</a></li>
-                    <li><a class="red-border" href="#"><img src="/assets/images/dummies/box-image-dummy.png" class="img-rounded" alt="" /> Steam pot</a> <a href="#" class="get solid pull-right">Get it</a></li>
-                    <li><a class="blue-border" href="#"><img src="/assets/images/dummies/box-image-dummy.png" class="img-rounded" alt="" /> Steam pot</a> <a href="#" class="get solid pull-right">Get it</a></li>
-                    <li><a class="orange-border" href="#"><img src="/assets/images/dummies/box-image-dummy.png" class="img-rounded" alt="" /> Steam pot</a> <a href="#" class="get solid pull-right">Get it</a></li>
-                    <li><a class="green-border" href="#"><img src="/assets/images/dummies/box-image-dummy.png" class="img-rounded" alt="" /> Steam pot</a> <a href="#" class="get solid pull-right">Get it</a></li>
-                    <li><a class="yellow-border" href="#"><img src="/assets/images/dummies/box-image-dummy.png" class="img-rounded" alt="" /> Steam pot</a> <a href="#" class="get solid pull-right">Get it</a></li>
+                    <li class="pink"><a class="pink-border" href="#"><img src="/assets/images/dummies/box-image-dummy.png" class="round" alt="" /> Steam pot</a> <a href="#" class="get solid pull-right">Get it</a></li>
+                    <li class="red"><a class="red-border" href="#"><img src="/assets/images/dummies/box-image-dummy.png" class="round" alt="" /> Steam pot</a> <a href="#" class="get solid pull-right">Get it</a></li>
+                    <li class="blue"><a class="blue-border" href="#"><img src="/assets/images/dummies/box-image-dummy.png" class="round" alt="" /> Steam pot</a> <a href="#" class="get solid pull-right">Get it</a></li>
+                    <li class="orange"><a class="orange-border" href="#"><img src="/assets/images/dummies/box-image-dummy.png" class="round" alt="" /> Steam pot</a> <a href="#" class="get solid pull-right">Get it</a></li>
+                    <li class="green"><a class="green-border" href="#"><img src="/assets/images/dummies/box-image-dummy.png" class="round" alt="" /> Steam pot</a> <a href="#" class="get solid pull-right">Get it</a></li>
+                    <li class="yellow"><a class="yellow-border" href="#"><img src="/assets/images/dummies/box-image-dummy.png" class="round" alt="" /> Steam pot</a> <a href="#" class="get solid pull-right">Get it</a></li>
 
                 </ul>
             </section>
