@@ -40,8 +40,8 @@
     </nav>
 
     <section id="hero" class="product-hero">
-        <div class="hero-background" style="background-image: url('/assets/images/dummies/product-hero.jpg')"></div>
-        <div class="color-overlay"></div>
+        <div class="hero-background" style="background-image: url('/assets/images/room-landing-hero.jpg')"></div>
+        {{--<div class="color-overlay"></div>--}}
 
         <div class="container fixed-sm full-480">
             <div class="hero-tags">
@@ -105,7 +105,6 @@
                     <li class="orange"><a class="orange-border" href="#"><img src="/assets/images/dummies/box-image-dummy.png" class="round" alt="" /> Steam pot</a> <a href="#" class="get solid pull-right">Get it</a></li>
                     <li class="green"><a class="green-border" href="#"><img src="/assets/images/dummies/box-image-dummy.png" class="round" alt="" /> Steam pot</a> <a href="#" class="get solid pull-right">Get it</a></li>
                     <li class="yellow"><a class="yellow-border" href="#"><img src="/assets/images/dummies/box-image-dummy.png" class="round" alt="" /> Steam pot</a> <a href="#" class="get solid pull-right">Get it</a></li>
-
                 </ul>
             </section>
         </div>
@@ -121,6 +120,14 @@
                 <li><a href="" class="ideas-link">Ideas</a></li>
                 <li><a href="" class="products-link">Products</a></li>
                 <li><a href="" class="photos-link">Photos</a></li>
+            </ul>
+            <ul>
+                <li>
+                    <a href="#" class="box-link">Popular</a>
+                </li>
+                <li>
+                    <a href="#" class="box-link">Newest</a>
+                </li>
             </ul>
         </div>
     </nav>

@@ -3783,75 +3783,73 @@ body.room-landing{
       border-radius: 50%;
       background-color: #fff;
     }
-  }
 
-
-
-  .red{
-    span{
-      background-image: url('/assets/images/icons/bag-glow-red.png');
-    }
-    h6{
-      background: $pinterest-red;
-    }
-    img.round{
-      border-color: $pinterest-red !important;
-    }
-    .hover-box{
-      &::before{
-        border-color: transparent transparent $pinterest-red transparent;
+    .red{
+      span{
+        background-image: url('/assets/images/icons/bag-glow-red.png');
+      }
+      h6{
+        background: $pinterest-red;
+      }
+      img.round{
+        border-color: $pinterest-red !important;
+      }
+      .hover-box{
+        &::before{
+          border-color: transparent transparent $pinterest-red transparent;
+        }
       }
     }
-  }
 
-  .blue{
-    span{
-      background-image: url('/assets/images/icons/bag-glow-blue.png');
-    }
-    h6{
-      background: $sky-blue;
-    }
-    img.round{
-      border-color: $sky-blue !important;
-    }
-    .hover-box{
-      &::before{
-        border-color: transparent transparent $sky-blue transparent;
+    .blue{
+      span{
+        background-image: url('/assets/images/icons/bag-glow-blue.png');
+      }
+      h6{
+        background: $sky-blue;
+      }
+      img.round{
+        border-color: $sky-blue !important;
+      }
+      .hover-box{
+        &::before{
+          border-color: transparent transparent $sky-blue transparent;
+        }
       }
     }
-  }
-  .green{
-    span{
-      background-image: url('/assets/images/icons/bag-glow-green.png');
-    }
-    h6{
-      background: $pine-green;
-    }
-    img.round{
-      border-color: $pine-green !important;
-    }
-    .hover-box{
-      &::before{
-        border-color: transparent transparent $pine-green transparent;
+    .green{
+      span{
+        background-image: url('/assets/images/icons/bag-glow-green.png');
+      }
+      h6{
+        background: $pine-green;
+      }
+      img.round{
+        border-color: $pine-green !important;
+      }
+      .hover-box{
+        &::before{
+          border-color: transparent transparent $pine-green transparent;
+        }
       }
     }
-  }
 
-  .pink{
-    img.round{
-      border-color: $iridium;
+    .pink{
+      img.round{
+        border-color: $iridium;
+      }
     }
-  }
 
-  .orange{
-    img.round{
-      border-color: $dark-orange;
+    .orange{
+      img.round{
+        border-color: $dark-orange;
+      }
     }
-  }
 
-  .yellow{
-    img.round{
-      border-color: yellow;
+    .yellow{
+      img.round{
+        border-color: yellow;
+      }
     }
   }
 

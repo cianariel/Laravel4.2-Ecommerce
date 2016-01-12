@@ -6719,35 +6719,35 @@ body.room-landing #hero img.round {
   border: 2px solid;
   border-radius: 50%;
   background-color: #fff; }
-body.room-landing .red span {
+body.room-landing #hero .red span {
   background-image: url("/assets/images/icons/bag-glow-red.png"); }
-body.room-landing .red h6 {
+body.room-landing #hero .red h6 {
   background: #e61d25; }
-body.room-landing .red img.round {
+body.room-landing #hero .red img.round {
   border-color: #e61d25 !important; }
-body.room-landing .red .hover-box::before {
+body.room-landing #hero .red .hover-box::before {
   border-color: transparent transparent #e61d25 transparent; }
-body.room-landing .blue span {
+body.room-landing #hero .blue span {
   background-image: url("/assets/images/icons/bag-glow-blue.png"); }
-body.room-landing .blue h6 {
+body.room-landing #hero .blue h6 {
   background: #00b1ff; }
-body.room-landing .blue img.round {
+body.room-landing #hero .blue img.round {
   border-color: #00b1ff !important; }
-body.room-landing .blue .hover-box::before {
+body.room-landing #hero .blue .hover-box::before {
   border-color: transparent transparent #00b1ff transparent; }
-body.room-landing .green span {
+body.room-landing #hero .green span {
   background-image: url("/assets/images/icons/bag-glow-green.png"); }
-body.room-landing .green h6 {
+body.room-landing #hero .green h6 {
   background: #c7c747; }
-body.room-landing .green img.round {
+body.room-landing #hero .green img.round {
   border-color: #c7c747 !important; }
-body.room-landing .green .hover-box::before {
+body.room-landing #hero .green .hover-box::before {
   border-color: transparent transparent #c7c747 transparent; }
-body.room-landing .pink img.round {
+body.room-landing #hero .pink img.round {
   border-color: #ff0042; }
-body.room-landing .orange img.round {
+body.room-landing #hero .orange img.round {
   border-color: #ff7f00; }
-body.room-landing .yellow img.round {
+body.room-landing #hero .yellow img.round {
   border-color: yellow; }
 
 .hero-tags {
