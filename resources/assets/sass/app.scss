@@ -62,7 +62,7 @@ $google-red:      #EF434D;
 $pinterest-red:   #E61D25;
 $instagram-blue:  #54A3DA;
 
-$ideaing-blue:  #4791D4;
+$ideaing-blue:    #4791D4;
 
 .pink{
   color: $iridium !important;
@@ -1392,7 +1392,7 @@ main.page-content{
       margin-right: 17px;
 
       &.comment{
-        left: 80px;
+        left: 56px;
         color: $sky-blue;
         background: url("/assets/images/chat-blue-outline.png") 3px center no-repeat;
 
@@ -1430,13 +1430,12 @@ main.page-content{
     width: 115px;
     height: 55px;
     margin-left: auto;
-    //background: rgba(255, 255, 255, .9);
     position: absolute;
     top: 0;
     right: -20px;
     padding-left: 30px;
     padding-top: 6px;
-    padding-bottom: 18px;
+    padding-bottom:0;
     border-radius: 20px;
     color: $tarmac;
 
@@ -1444,13 +1443,6 @@ main.page-content{
       width: 95px;
       margin: 5px 0 0;
       padding-left: 0;
-
-      //position: absolute;
-      //width: 40px;
-      //height: 40px;
-      //left: 0;
-      //bottom: 2px;
-
     }
   }
 
@@ -1639,13 +1631,22 @@ main.page-content{
        //min-height: 450px;
        border: 1px solid $pale-grey;
       }
+
+      .like-wrap{
+        bottom: 0;
+        left: 0;
+        right: auto;
+        top: auto;
+        background: rgba(255,255,255, .9);
+        border-radius: 0 20px 0 0;
+      }
     }
 
     .like-wrap{
-      padding-left:45px;
+      padding-left:8px;
       padding-top: 9px;
-      width: 139px;
-      height: 67px;
+      width: 105px;
+      height: 50px;
       bottom: -15px;
     }
 
@@ -1654,6 +1655,17 @@ main.page-content{
       right: 40px;
       bottom: 10px;
     }
+
+    &:hover{
+      .img-wrap{
+        border: 1px solid $sky-blue;
+
+        .big-image-link img{
+          border: 1px solid $sky-blue;
+        }
+      }
+    }
+
   }
 
   &:hover{
@@ -1672,24 +1684,6 @@ main.page-content{
 
   }
 
-  &.big-box{
-    &:hover{
-      .img-wrap{
-        border: 1px solid $sky-blue;
-
-        .big-image-link img{
-          border: 1px solid $sky-blue;
-        }
-      }
-    }
-    .like-wrap{
-      bottom: -20px;
-      left: -33px;
-      right: auto;
-      top: auto;
-      background: rgba(255,255,255, .9);
-    }
-  }
 
   &.sidebar-box:hover{
     .img-wrap {
@@ -2005,10 +1999,14 @@ article.product{
 
   .sidebar-social-counter{
     padding-left: 25px;
-    background:rgba(255,255,255,.9) url("/assets/images/heart-grey.png") 5px 10px no-repeat;
-    right:  0;
+    background: rgba(255, 255, 255, 0.9) url("/assets/images/heart-grey.png") 5px 10px no-repeat;
+    right: 0;
+    left: auto;
     bottom: 0;
+    top: auto;
+    position: absolute;
     width: 60px;
+    height: 30px;
     /* background: #fff; */
     text-indent: 0;
     color: $tarmac;
