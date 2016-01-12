@@ -173,7 +173,7 @@
 
                             </a>
                             <a href="#" class="overlay-tag category-tag top idea">{{$story->category}}</a>
-                            <a href="#" class="overlay-tag bottom author" style="background-image: url({{$story->avator}})">{{$story->author}}</a>
+                            <a href="{{$story->authorlink}}" class="overlay-tag bottom author" style="background-image: url({{$story->avator}})">{{$story->author}}</a>
                             <div class="like-wrap">
                                 <a href="#" class="social-pic likes">Like it</a>
                                 <a href="#" class="social-pic comment">Comment</a>
