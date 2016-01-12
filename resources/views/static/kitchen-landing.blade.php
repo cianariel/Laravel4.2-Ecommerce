@@ -44,10 +44,68 @@
         <div class="color-overlay"></div>
 
         <div class="container fixed-sm full-480">
-            <section class="hero-related-products">
-                    <h3>Related Products</h3>
+            <div class="hero-tags">
+                <div class="tag one red" >
+                    <span></span>
+                    <a class="pink-border" href="#">
+                        <img src="/assets/images/dummies/box-image-dummy.png" class="round" alt="" />
+                    </a>
+                   <div class="hover-box">
+                       <h6>Glow Lamps (Multi-colored)</h6>
+                       <div>
+                           Get it from $560
+                           <img class="vendor-logo" src="/assets/images/dummies/amazon-black.png">
+                       </div>
+                   </div>
+                </div>
+                <div class="tag two blue">
+                    <span ></span>
+                    <a class="pink-border" href="#">
+                        <img src="/assets/images/dummies/box-image-dummy.png" class="round" alt="" />
+                    </a>
+                   <div class="hover-box">
+                       <h6>Glow Lamps (Multi-colored)</h6>
+                       <div>
+                           Get it from $560
+                           <img class="vendor-logo" src="/assets/images/dummies/amazon-black.png">
+                       </div>
+                   </div>
+                </div>
+                <div class="tag three green">
+                    <span></span>
+                    <a class="pink-border" href="#">
+                        <img src="/assets/images/dummies/box-image-dummy.png" class="round" alt="" />
+                    </a>
+                   <div class="hover-box">
+                       <h6>Glow Lamps (Multi-colored)</h6>
+                       <div>
+                           Get it from $560
+                           <img class="vendor-logo" src="/assets/images/dummies/amazon-black.png">
+                       </div>
+                   </div>
+                </div>
+                {{--<div class="tag four">--}}
+                    {{--<span class="blue"></span>--}}
+                    {{--<a class="pink-border" href="#">--}}
+                        {{--<img src="/assets/images/dummies/box-image-dummy.png" class="round" alt="" />--}}
+                    {{--</a>--}}
+                   {{--<div class="hover-box">--}}
+                       {{--<h6>Glow Lamps (Multi-colored)</h6>--}}
+                       {{--Get it from $560--}}
+                       {{--<img class="vendor-logo" src="/assets/images/dummies/amazon-2.png">--}}
+                   {{--</div>--}}
+                {{--</div>--}}
+            </div>
+            <section class="hero-related-products col-md-4 pull-right ">
+                    <h5>Related Products</h5>
                 <ul>
-                    <li><a href="#">Steam pot</a> <a href="#" class="get">Get it</a></li>
+                    <li><a class="pink-border" href="#"><img src="/assets/images/dummies/box-image-dummy.png" class="img-rounded" alt="" /> Steam pot</a> <a href="#" class="get solid pull-right">Get it</a></li>
+                    <li><a class="red-border" href="#"><img src="/assets/images/dummies/box-image-dummy.png" class="img-rounded" alt="" /> Steam pot</a> <a href="#" class="get solid pull-right">Get it</a></li>
+                    <li><a class="blue-border" href="#"><img src="/assets/images/dummies/box-image-dummy.png" class="img-rounded" alt="" /> Steam pot</a> <a href="#" class="get solid pull-right">Get it</a></li>
+                    <li><a class="orange-border" href="#"><img src="/assets/images/dummies/box-image-dummy.png" class="img-rounded" alt="" /> Steam pot</a> <a href="#" class="get solid pull-right">Get it</a></li>
+                    <li><a class="green-border" href="#"><img src="/assets/images/dummies/box-image-dummy.png" class="img-rounded" alt="" /> Steam pot</a> <a href="#" class="get solid pull-right">Get it</a></li>
+                    <li><a class="yellow-border" href="#"><img src="/assets/images/dummies/box-image-dummy.png" class="img-rounded" alt="" /> Steam pot</a> <a href="#" class="get solid pull-right">Get it</a></li>
+
                 </ul>
             </section>
         </div>

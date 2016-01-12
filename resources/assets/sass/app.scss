@@ -3776,9 +3776,218 @@ body.room-landing{
   .mid-nav.rooms{
     display: none;
   }
+
+  #hero{
+    img.round{
+      border: 2px solid;
+      border-radius: 50%;
+      background-color: #fff;
+    }
+  }
+}
+
+.hero-tags{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+
+    .tag{
+      position: absolute;
+
+      &.one{
+        top:30%;
+        left:10%;
+      }
+      &.two{
+        top:10%;
+        left:25%;
+      }
+      &.three{
+        top:60%;
+        left:50%;
+      }
+
+      &:hover{
+        a, .hover-box{
+          display: block;
+        }
+      }
+    }
+
+    span{
+      width: 110px;
+      height: 110px;
+      display: block;
+      cursor: pointer;
+      background: url('/assets/images/icons/bag-glow-pink.png') no-repeat;
+    }
+
+  .red{
+    span{
+      background-image: url('/assets/images/icons/bag-glow-red.png') ;
+    }
+    h6{
+      background: $pinterest-red;
+    }
+    .hover-box{
+      &::before{
+        border-color: transparent transparent $pinterest-red transparent;
+      }
+    }
+  }
+  .blue{
+    span{
+      background-image: url('/assets/images/icons/bag-glow-blue.png') ;
+    }
+    h6{
+      background: $sky-blue;
+    }
+    .hover-box{
+      &::before{
+        border-color: transparent transparent $sky-blue transparent;
+      }
+    }
+  }
+  .green{
+    span{
+      background-image: url('/assets/images/icons/bag-glow-green.png') ;
+    }
+    h6{
+      background: $pine-green;
+    }
+    .hover-box{
+      &::before{
+        border-color: transparent transparent $pine-green transparent;
+      }
+    }
+  }
+
+  //a, .hover-box{
+    //  display: none;
+    //}
+
+  .hover-box{
+    width: 200px;
+    background: #fff;
+    z-index: 10;
+    position: relative;
+    margin-top: 7px;
+
+    h6{
+      padding: 15px;
+      //background: $iridium;
+      font-size: inherit;
+      color: #000;
+      margin-top: 0;
+    }
+    div{
+      padding: 15px;
+      color: darken($light-grey, 30%);
+      border: 1px solid $pale-grey;
+    }
+    &::before{
+      content: ' ';
+      position: absolute;
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 0 5px 10px 5px;
+      border-color: transparent transparent #007bff transparent;
+
+      left:33%;
+      top: -7px;
+    }
+  }
+
+  img:not(.vendor-logo){
+    width: 135px;
+    height: 135px;
+    background: #fff;
+  }
+
+  .vendor-logo{
+    margin-top: 25px;
+  }
+
+
 }
 
 
+
+
+
+
+.hero-related-products{
+  background: rgba(0,0,0,.4);
+  padding: 0;
+
+  h5{
+    padding: 20px;
+    padding-left: 25px;
+    margin-top: 0;
+    color: #fff;
+    background: rgba(0, 0, 0, 0.4) url("/assets/images/arrow-right-white.png") no-repeat right center;
+    background-size: 20px;
+    font-size: 1.7rem;
+  }
+  ul{
+    margin-bottom: 0;
+  }
+  li{
+    padding-left: 25px;
+    border-bottom: 1px solid rgba($pale-grey, .4);
+    overflow: hidden;
+    padding-bottom: 10px;
+  }
+
+  a:not(.get){
+    color: #fff;
+
+    img{
+      width: 64px;
+      height: 64px;
+      margin-right:20px;
+    }
+
+  }
+
+  .get{
+    margin-top: 15px;
+  }
+
+}
+
+.pink-border{
+  img{
+    border-color: $iridium;
+  }
+}
+.red-border{
+  img{
+    border-color: $pinterest-red;
+  }
+}
+.orange-border{
+  img{
+    border-color: $dark-orange;
+  }
+}
+.blue-border{
+  img{
+    border-color: $sky-blue;
+  }
+}
+.green-border{
+  img{
+    border-color: $pine-green;
+  }
+}
+.yellow-border{
+  img{
+    border-color: yellow;
+  }
+}
 
 
 
