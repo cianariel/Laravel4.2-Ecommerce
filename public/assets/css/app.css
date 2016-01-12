@@ -6718,6 +6718,8 @@ body.single .like-nav {
 
 body.room-landing .mid-nav.rooms, body.room-landing .mid-nav .rooms.extra-nav, .mid-nav body.room-landing .rooms.extra-nav {
   display: none; }
+body.room-landing .mid-nav a, .mid-nav body.room-landing .extra-nav a {
+  border: 0; }
 body.room-landing #hero img.round {
   border: 2px solid;
   border-radius: 50%;
