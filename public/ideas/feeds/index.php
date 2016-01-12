@@ -145,7 +145,14 @@ $data['author'] = get_the_author();
 $data['authorlink'] = get_author_posts_url( get_the_author_meta( 'ID' ) );
 $data['author_id'] = get_the_author_meta( 'ID' );
 $data['avator'] = get_avatar_url( get_the_author_email(), '80' );
-$data['is_featured'] = get_post_custom_values('is_featured',$ID);
+$get_is_featured = get_post_custom_values('is_featured',$ID);
+$is_featured = false;
+if($get_is_featured[0] == "Yes")
+{
+		$is_featured = true;
+}
+$data['is_featured'] = $is_featured;
+
 //$data['feed_image'] = get_post_custom_values('feed_image',$ID);
 $data['feed_image'] = get_field('feed_image');
 $datam[]= $data;
