@@ -356,7 +356,6 @@ a{ // Custom Link Styles
   &.products-link{
     color: $pine-green;
     background-image: url("/assets/images/bag-green-big.png");
-
     background-repeat: no-repeat;
     background-size: contain;
   }
@@ -373,6 +372,33 @@ a{ // Custom Link Styles
     height: 59px;
     background: url("/assets/images/featured-badge-pink.png")left center no-repeat;
   }
+
+  &.icon-link{
+    background-repeat: no-repeat;
+    background-size: contain;
+    padding-left: 40px !important;
+  }
+
+
+  &.kitchen-link{
+    background-image: url('/assets/images/pot-outline-pink.png');
+
+    //&:hover{
+    //  color: $sky-blue;
+    //  background-image: url('/assets/images/photos-blue.png');
+    //}
+    //padding-left: 65px;
+  }
+
+  &.all-link {
+    background-image: url('/assets/images/grid-pink.png');
+    background-size: 30px;
+    background-position: left 4px;
+    min-width: 200px;
+  }
+
+
+
 
   // social buttons
 
@@ -430,9 +456,12 @@ li.nested{
     background-image: url("/assets/images/arrow-up-black.png");
   }
   a::after{
+    display: inline-block;
     content: '	';
-    width: 15px;
+    width: 25px;
     height: 15px;
+    position: relative;
+    top: 2px;
     background: url("/assets/images/arrow-down-pink.png") no-repeat;
     background-size: contain;
     color: $iridium;
@@ -3032,7 +3061,6 @@ header.sub-head{
       }
     }
     &.all-link{
-      background-image: url('/assets/images/grid-dense-grey.png');
       background-position: 0 20px;
       min-width: 40px;
 
@@ -3073,15 +3101,6 @@ header.sub-head{
       //padding-left: 65px;
     }
 
-    &.kitchen-link{
-      background-image: url('/assets/images/pot-outline.png');
-
-      //&:hover{
-      //  color: $sky-blue;
-      //  background-image: url('/assets/images/photos-blue.png');
-      //}
-      //padding-left: 65px;
-    }
 
     &.features-link{
       background-image: url('/assets/images/icons/checkmark-orange.png');
@@ -3751,7 +3770,13 @@ body.single{
 
 
 
+// ROOM LADNING PAGE
 
+body.room-landing{
+  .mid-nav.rooms{
+    display: none;
+  }
+}
 
 
 

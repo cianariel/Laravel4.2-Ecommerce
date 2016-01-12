@@ -28,11 +28,13 @@
 
     <nav class="mid-nav hidden-620">
         <div class="container">
-            <ul class="left-nav breadcrumbs hidden-620">
+            <ul class="left-nav col-xs-2 hidden-620">
                 <!--                    <li><a class="home-link" href="#">Home</a></li>-->
-                <li class="active"><a href="#" class="larger-text allcaps orange">Ideas</a></li>
-                <li><a href="#" class="orange box-link">Kitchen</a></li>
-                <li><a href="#" class="orange box-link">Style</a></li>
+                <li><a href="#" class="pink kitchen-link icon-link">Kitchen</a></li>
+            </ul>
+            <ul class="hidden-620 left-nav pull-right col-xs-2">
+                <!--                    <li><a class="home-link" href="#">Home</a></li>-->
+                <li class="nested"><a href="#" class="all-link icon-link ">Browse all</a></li>
             </ul>
         </div>
     </nav>

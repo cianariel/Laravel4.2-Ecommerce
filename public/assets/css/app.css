@@ -4586,6 +4586,17 @@ a.featured-badge {
   width: 121px;
   height: 59px;
   background: url("/assets/images/featured-badge-pink.png") left center no-repeat; }
+a.icon-link {
+  background-repeat: no-repeat;
+  background-size: contain;
+  padding-left: 40px !important; }
+a.kitchen-link {
+  background-image: url("/assets/images/pot-outline-pink.png"); }
+a.all-link {
+  background-image: url("/assets/images/grid-pink.png");
+  background-size: 30px;
+  background-position: left 4px;
+  min-width: 200px; }
 a.fb {
   background-color: #5c7cbd;
   background-image: url("/assets/images/fb-white-small.png");
@@ -4622,9 +4633,12 @@ a.comment {
 li.nested a.active::after {
   background-image: url("/assets/images/arrow-up-black.png"); }
 li.nested a::after {
+  display: inline-block;
   content: ' ';
-  width: 15px;
+  width: 25px;
   height: 15px;
+  position: relative;
+  top: 2px;
   background: url("/assets/images/arrow-down-pink.png") no-repeat;
   background-size: contain;
   color: #ff0042; }
@@ -6275,7 +6289,6 @@ header.sub-head {
         background-position: -18px 10px;
         background-size: 48px; }
     #hero-nav a:not(.author).all-link {
-      background-image: url("/assets/images/grid-dense-grey.png");
       background-position: 0 20px;
       min-width: 40px; }
       #hero-nav a:not(.author).all-link:hover, .active #hero-nav a:not(.author).all-link {
@@ -6299,8 +6312,6 @@ header.sub-head {
       #hero-nav a:not(.author).photos-link:hover {
         color: #00b1ff;
         background-image: url("/assets/images/photos-blue.png"); }
-    #hero-nav a:not(.author).kitchen-link {
-      background-image: url("/assets/images/pot-outline.png"); }
     #hero-nav a:not(.author).features-link {
       background-image: url("/assets/images/icons/checkmark-orange.png"); }
       #hero-nav a:not(.author).features-link:hover {
@@ -6701,6 +6712,9 @@ body.single .like-nav {
     display: inline-block;
     float: right;
     font-size: 1.7rem; }
+
+body.room-landing .mid-nav.rooms, body.room-landing .mid-nav .rooms.extra-nav, .mid-nav body.room-landing .rooms.extra-nav {
+  display: none; }
 
 footer.about-footer {
   padding: 55px 0;
