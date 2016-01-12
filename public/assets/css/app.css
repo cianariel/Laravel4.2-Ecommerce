@@ -4527,6 +4527,9 @@ html {
   background-repeat: no-repeat;
   background-position: right; }
 
+.not-rounded {
+  border-radius: 0 !important; }
+
 a.author {
   width: 64px;
   height: 64px;

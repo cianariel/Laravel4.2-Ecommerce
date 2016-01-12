@@ -41,6 +41,11 @@
         return view('static.product-details');
     });
 
+    Route::get('/kitchen-landing', function () // temp, used for tweaking frontend
+    {
+        return view('static.kitchen-landing');
+    });
+
     Route::group(['prefix' => 'api'], function ()
     {
         /*

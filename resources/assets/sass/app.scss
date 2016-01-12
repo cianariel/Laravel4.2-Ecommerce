@@ -279,6 +279,10 @@ html{
   background-position: right;
 }
 
+.not-rounded{
+  border-radius: 0 !important;
+}
+
 
 @mixin round-box($color, $image-link) {
   display:  inline-block;
