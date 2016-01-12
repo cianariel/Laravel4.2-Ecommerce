@@ -102,20 +102,8 @@
 
         // Generating Category tree Hierarchy
         public function generateCategoryHierarchy($catId)
-        {/*
-            if($catId == null)
-              return null;
-
-            $catTree = ProductCategory::where('id', $catId)->first()->getAncestorsAndSelf();
-
-            $val = [];
-            foreach ($catTree as $key => $value)
-            {
-                $val[ $key ]['CategoryId'] = $value->id;
-                $val[ $key ]['CategoryPermalink'] = $value->extra_info;
-                $val[ $key ]['CategoryName'] = $value->category_name;
-            }*/
-
+        {
+            //todo : implement proper response mechanism
             return $this->product->getCategoryHierarchy($catId);
         }
 

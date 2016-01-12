@@ -147,6 +147,8 @@ adminApp.controller('AdminController', ['$scope', '$http', '$confirm', '$locatio
             /// product fields initialize
             $scope.ProductAuthorName = 'Anonymous User';
             $scope.ProductList = [];
+            $scope.ProductVendorId = '';
+            $scope.ProductVendorType = 'Amazon';
             $scope.ProductId = '';
             $scope.selectedItem = '';
             $scope.Name = '';
@@ -244,7 +246,7 @@ adminApp.controller('AdminController', ['$scope', '$http', '$confirm', '$locatio
                     $scope.categoryItems = data['data'];
                 } else {
                     $scope.tempCategoryList.pop();
-                    $scope.outputStatus(data, 'No more subcategory available');
+                    $scope.outputStatus(data, 'No more subcategory available for the selected item');
                 }
 
             });
@@ -270,7 +272,7 @@ adminApp.controller('AdminController', ['$scope', '$http', '$confirm', '$locatio
                 $scope.categoryName = '';
                 $scope.extraInfo = '';
                 $scope.resetCategory();
-             //   console.log('in function: '+data.status_code);
+                //   console.log('in function: '+data.status_code);
                 $scope.outputStatus(data, 'Category item added successfully');
             });
 
@@ -297,8 +299,8 @@ adminApp.controller('AdminController', ['$scope', '$http', '$confirm', '$locatio
 
 
         // reset filter for product list view
-        $scope.resetFilter = function(){
-          $scope.initPage();
+        $scope.resetFilter = function () {
+            $scope.initPage();
         };
 
         // Build HTML listed response for popup notification.
@@ -320,7 +322,7 @@ adminApp.controller('AdminController', ['$scope', '$http', '$confirm', '$locatio
         $scope.outputStatus = function (data, message) {
 
             var statusCode = data.status_code;
-          //  console.log('status code:'+statusCode);
+            //  console.log('status code:'+statusCode);
             switch (statusCode) {
                 case 400:
                 {
@@ -457,7 +459,7 @@ adminApp.controller('AdminController', ['$scope', '$http', '$confirm', '$locatio
 
                     $scope.ProductId = data.data.id;
 
-                 //   $scope.Permalink = $scope.desiredPermalink;
+                    //   $scope.Permalink = $scope.desiredPermalink;
                 } else {
                     // $scope.outputStatus(data, "Permalink is not available please enter new.");
                 }
@@ -485,6 +487,8 @@ adminApp.controller('AdminController', ['$scope', '$http', '$confirm', '$locatio
                 method: 'POST',
                 data: {
                     ProductId: $scope.ProductId,
+                    ProductVendorId: $scope.ProductVendorId,
+                    ProductVendorType: $scope.ProductVendorType,
                     ProductAuthorName: $scope.ProductAuthorName,
                     CategoryId: $scope.selectedItem,
                     Name: $scope.Name,
@@ -533,6 +537,8 @@ adminApp.controller('AdminController', ['$scope', '$http', '$confirm', '$locatio
                     ProductId: $scope.ProductId,
                     ProductAuthorName: $scope.ProductAuthorName,
                     CategoryId: $scope.selectedItem,
+                    ProductVendorId: $scope.ProductVendorId,
+                    ProductVendorType: $scope.ProductVendorType,
                     Name: $scope.Name,
                     Permalink: $scope.Permalink,
                     Description: $scope.htmlContent,
@@ -672,7 +678,7 @@ adminApp.controller('AdminController', ['$scope', '$http', '$confirm', '$locatio
                 }
 
             }).success(function (data) {
-                //console.log(data);
+
                 if (data.status_code == 200) {
                     $scope.ProductList = data.data.result;
 
@@ -680,15 +686,55 @@ adminApp.controller('AdminController', ['$scope', '$http', '$confirm', '$locatio
                     $scope.page = data.data.page;
                     $scope.total = data.data.total;
 
-                    //  console.log($scope.limit, $scope.page, $scope.total);
-
-
-                    //  $scope.outputStatus(data, "SuccessfuProduct updated successfully");
-
                 } else {
                     $scope.outputStatus(data, "Product information not viewable");
                 }
 
+            });
+
+        };
+
+        // Load API data to html controls
+        $scope.loadProductInfoFromApi = function (itemId) {
+            $http({
+                url: '/api/api-data/' + itemId,
+                method: 'GET'
+            }).success(function (data) {
+                if (data.status_code == 200) {
+                    $scope.Name = data.data.ApiTitle;
+                    $scope.Price = data.data.ApiPrice;
+                    $scope.mediaLink = $scope.mediaLinkTmp = data.data.ApiImageLink;
+                    $scope.ProductAvailability = data.data.ApiAvailable;
+
+                    $scope.spKey = 'Height';
+                    $scope.spVal = data.data.ApiSpecification['Height'];
+                    $scope.Specifications.push(
+                        {'key': $scope.spKey, 'value': $scope.spVal}
+                    );
+                    $scope.spKey = 'Length';
+                    $scope.spVal = data.data.ApiSpecification['Length'];
+                    $scope.Specifications.push(
+                        {'key': $scope.spKey, 'value': $scope.spVal}
+                    );
+                    $scope.spKey = 'Width';
+                    $scope.spVal = data.data.ApiSpecification['Width'];
+                    $scope.Specifications.push(
+                        {'key': $scope.spKey, 'value': $scope.spVal}
+                    );
+                    $scope.spKey = 'Weight';
+                    $scope.spVal = data.data.ApiSpecification['Weight'];
+                    $scope.Specifications.push(
+                        {'key': $scope.spKey, 'value': $scope.spVal}
+                    );
+
+                    $scope.spKey = '';
+                    $scope.spVal = '';
+
+                    $scope.outputStatus(data, "Product data successfully loaded from API");
+
+                } else {
+                    $scope.outputStatus(data, "Product information not viewable");
+                }
             });
 
         };
@@ -708,6 +754,8 @@ adminApp.controller('AdminController', ['$scope', '$http', '$confirm', '$locatio
                     // set data in input fields
                     $scope.ProductId = data.data.id;
                     $scope.selectedItem = data.data.product_category_id;
+                    $scope.ProductVendorId = data.data.product_vendor_id;
+                    $scope.ProductVendorType = data.data.product_vendor_type;
                     $scope.Name = data.data.product_name;
                     $scope.Permalink = data.data.product_permalink;
                     $scope.htmlContent = data.data.product_description;
@@ -727,13 +775,6 @@ adminApp.controller('AdminController', ['$scope', '$http', '$confirm', '$locatio
                     $scope.reviews = data.data.review;
                     // $scope.externalReviewLink =
                     $scope.externalReviewLink = data.data.review_ext_link;
-
-                    //test
-                    //  $scope.selectedMediaType = 'Image Upload';
-
-                    //show hide product add element
-                    //    $scope.isCollapsed = true; // default true.
-                    //    $scope.isCollapsedToggle = !$scope.isCollapsed;
 
                     // hide category in edit mood
                     $scope.hideCategoryPanel = true;
@@ -784,7 +825,7 @@ adminApp.controller('AdminController', ['$scope', '$http', '$confirm', '$locatio
                     IsHeroItem: $scope.isHeroItem
                 }
             }).success(function (data) {
-             //   console.log(data);
+                //   console.log(data);
 
                 if (data.status_code == 200) {
                     $scope.getMedia();
@@ -800,7 +841,7 @@ adminApp.controller('AdminController', ['$scope', '$http', '$confirm', '$locatio
                 url: '/api/product/get-media/' + $scope.ProductId,
                 method: 'GET',
             }).success(function (data) {
-             //   console.log(data);
+                //   console.log(data);
 
                 if (data.status_code == 200) {
                     $scope.mediaList = data.data;

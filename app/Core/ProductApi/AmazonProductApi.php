@@ -112,26 +112,23 @@
 
             $data = json_decode($json, true);
 
-           // return $data;//['Items']['Item']['LargeImage']['LargeImage']['URL'];//['Availability'];
+            // return $data;//['Items']['Item']['LargeImage']['LargeImage']['URL'];//['Availability'];
 
-            $information = array([
-                'ApiTitle' => $data['Items']['Item']['ItemAttributes']['Title'],
-                'ApiImageLink' => $data['Items']['Item']['LargeImage']['URL'],
-                'ApiPrice' => $data['Items']['Item']['ItemAttributes']['ListPrice']['Amount'] / 100,
-                'ApiAvailable' => $data['Items']['Item']['Offers']['Offer']['OfferListing']['Availability'],
-                'ApiSpecification' => array([
-                    'Height' =>$data['Items']['Item']['ItemAttributes']['ItemDimensions']['Height'],
-                    'Length' =>$data['Items']['Item']['ItemAttributes']['ItemDimensions']['Length'],
-                    'Width' =>$data['Items']['Item']['ItemAttributes']['ItemDimensions']['Width'],
-                    'Weight' =>$data['Items']['Item']['ItemAttributes']['ItemDimensions']['Weight']
-                ])
-            ]);
+            $information = [
+                'ApiTitle'         => $data['Items']['Item']['ItemAttributes']['Title'],
+                'ApiImageLink'     => $data['Items']['Item']['LargeImage']['URL'],
+                'ApiPrice'         => $data['Items']['Item']['ItemAttributes']['ListPrice']['Amount'] / 100,
+                'ApiAvailable'     => isset($data['Items']['Item']['Offers']['Offer']['OfferListing']['Availability']) ? $data['Items']['Item']['Offers']['Offer']['OfferListing']['Availability'] : "No information available",
+                'ApiSpecification' => [
+                    'Height' => isset($data['Items']['Item']['ItemAttributes']['ItemDimensions']['Height']) ? $data['Items']['Item']['ItemAttributes']['ItemDimensions']['Height'] : "",
+                    'Length' => isset($data['Items']['Item']['ItemAttributes']['ItemDimensions']['Length']) ? $data['Items']['Item']['ItemAttributes']['ItemDimensions']['Length'] : "",
+                    'Width'  => isset($data['Items']['Item']['ItemAttributes']['ItemDimensions']['Width']) ? $data['Items']['Item']['ItemAttributes']['ItemDimensions']['Width'] : "",
+                    'Weight' => isset($data['Items']['Item']['ItemAttributes']['ItemDimensions']['Weight']) ? $data['Items']['Item']['ItemAttributes']['ItemDimensions']['Weight'] : ""
+                ]
+            ];
 
 
-return $information;//$data['Items']['Item']['ItemAttributes']['ListPrice']['Amount'];
-       //     $json = json_encode($output);
-
-          //  return $json;
+            return $information;
 
 
         }

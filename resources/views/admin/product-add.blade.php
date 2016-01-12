@@ -114,7 +114,7 @@
                                                                 </button>
                                                             </div>
                                                             <div ng-hide="hideCategoryPanel" class="form-group">
-                                                                <label>Selects Category</label>
+                                                                <label>Select Category</label>
 
                                                                 <div class="col-lg-12 clearfix">
                                                                     <div class="col-lg-10 pull-left">
@@ -130,10 +130,6 @@
                                                                             </option>
                                                                         </select>
                                                                     </div>
-                                                                    <div style="margin-top: 10px">
-                                                                        <label>Selected Category Name :</label><span class="text-danger"><strong> @{{ currentCategoryName }} </strong> </span>
-                                                                    </div>
-
                                                                     <div class="col-lg-2">
                                                                         <button class="btn btn-info btn-circle"
                                                                                 type="button"
@@ -143,9 +139,33 @@
                                                                             <i class="fa fa-refresh"></i>
                                                                         </button>
                                                                     </div>
+                                                                    <div style="margin-top: 10px">
+                                                                        <label>Selected Category Name :</label><span
+                                                                                class="text-danger"><strong> @{{ currentCategoryName }} </strong> </span>
+                                                                    </div>
+
+
                                                                 </div>
                                                             </div>
-                                                            <div class="row">&nbsp;</div>
+                                                            <div class="row">&nbsp;
+                                                                <div class="form-group col-lg-6">
+                                                                    <label>Prodcut ID</label>
+                                                                    <input data-ng-model="ProductVendorId"
+                                                                           class="form-control"
+                                                                           placeholder="Enter product name">
+                                                                </div>
+
+                                                                <div class="col-lg-6">
+                                                                    <button class="btn btn-info btn-circle"
+                                                                            type="button"
+                                                                            ng-click="loadProductInfoFromApi(ProductVendorId)"
+                                                                            uib-tooltip="Load Information"
+                                                                            tooltip-placement="right">
+                                                                        <i class="fa fa-refresh"></i>
+                                                                    </button>
+                                                                </div>
+
+                                                            </div>
                                                             <div class="form-group">
                                                                 <label>Prodcut Name</label>
                                                                 <input data-ng-model="Name" class="form-control"
@@ -168,7 +188,7 @@
                                                                 </div>
                                                             </div>
                                                             <div class="form-group">
-                                                                <label>Price</label>
+                                                                <label>MSRP</label>
                                                                 <input type="text"
                                                                        valid-number
                                                                        data-ng-model="Price"
@@ -230,11 +250,11 @@
                                                                                    ng-model-options="{debounce: 1000}"></auto-complete>
                                                                 </tags-input>
                                                             </div>
-                                                         {{--   <div class="form-group">
-                                                                <label>Product Availability</label>
-                                                                <input data-ng-model="ProductAvailability"
-                                                                       class="form-control" placeholder="Enter text">
-                                                            </div>--}}
+                                                               <div class="form-group">
+                                                                   <label>Product Availability</label>
+                                                                   <input data-ng-model="ProductAvailability"
+                                                                          class="form-control" placeholder="Enter text">
+                                                               </div>
 
                                                             <div class="form-group">
                                                                 <button data-ng-click="updateProduct()"
@@ -392,8 +412,9 @@
                                                                             <tbody>
                                                                             <tr ng-repeat="review in reviews">
                                                                                 <td>@{{$index}}</td>
-                                                                                <td><a href="@{{ review.link }}" target="_blank">
-                                                                                    @{{ review.key }}
+                                                                                <td><a href="@{{ review.link }}"
+                                                                                       target="_blank">
+                                                                                        @{{ review.key }}
                                                                                     </a>
                                                                                 </td>
                                                                                 <td>
@@ -447,7 +468,6 @@
                                                                 </div>
 
 
-
                                                             </div>
                                                         </div>
                                                     </div>
@@ -497,11 +517,11 @@
                                                                    class="form-control" placeholder="Enter media link">
                                                         </div>
 
-                                                            <div class="form-group">
-                                                                <label>Mark As Hero Item :</label>
-                                                                <input data-ng-model="isHeroItem"
-                                                                        type="checkbox">
-                                                            </div>
+                                                        <div class="form-group">
+                                                            <label>Mark As Hero Item :</label>
+                                                            <input data-ng-model="isHeroItem"
+                                                                   type="checkbox">
+                                                        </div>
 
                                                         <div class="form-group">
                                                             <div ng-show="isMediaUploadable">
@@ -544,8 +564,9 @@
                                                                     <td>@{{ media.media_type}} </td>
                                                                     <td>@{{ media.is_hero_item == 1? 'true':''}} </td>
                                                                     <td>
-                                                                        <a href="@{{ media.media_link}}" target="_blank">
-                                                                         @{{ media.media_link}}
+                                                                        <a href="@{{ media.media_link}}"
+                                                                           target="_blank">
+                                                                            @{{ media.media_link}}
                                                                         </a>
                                                                     </td>
                                                                     <td>
