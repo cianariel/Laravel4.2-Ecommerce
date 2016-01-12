@@ -9,6 +9,11 @@
     namespace App\Core\ProductApi;
     class ProductStrategy {
 
+        public function __construct()
+        {
+            $this->apiType = null;
+        }
+
         public function setApiType(ProductApiInterface $outputApi)
         {
             $this->apiType = $outputApi;

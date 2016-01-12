@@ -10,9 +10,14 @@
 
     class AmazonProductApi implements ProductApiInterface {
 
+        public function __construct()
+        {
+            $this->itmeId = null;
+        }
 
         public function makeUrl()
         {
+
             // Your AWS Access Key ID, as taken from the AWS Your Account page
             $aws_access_key_id = \Config::get("const.product-api-key.amazon-product-api.access-key");//"AKIAIQYICLTUI4NBTPGA";
 
@@ -23,13 +28,14 @@
             $endpoint = "webservices.amazon.com";
 
             $uri = "/onca/xml";
+            $itemId = $this->itmeId;
 
             $params = array(
                 "Service"        => "AWSECommerceService",
                 "Operation"      => "ItemLookup",
                 "AWSAccessKeyId" => $aws_access_key_id,//"AKIAIQYICLTUI4NBTPGA",
                 "AssociateTag"   => \Config::get("const.product-api-key.amazon-product-api.associate-tag"),
-                "ItemId"         => $this->itemId,
+                "ItemId"         => $itemId,
                 "IdType"         => "ASIN",
                 "ResponseGroup"  => "Images,ItemAttributes,Offers"
             );
@@ -65,11 +71,18 @@
             return $request_url;
         }
 
-        public function getData()
+        public function getData($path)
         {
+            $ch = curl_init();
+            curl_setopt($ch, CURLOPT_URL, $path);
+            curl_setopt($ch, CURLOPT_FAILONERROR, 1);
+            curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+            curl_setopt($ch, CURLOPT_TIMEOUT, 15);
+            $retValue = curl_exec($ch);
+            curl_close($ch);
 
-
-
+            return $retValue;
         }
 
         // Implement getProductInformation() method.
@@ -80,11 +93,48 @@
         {
             $this->itmeId = $itemId;
 
-            $client = new \Guzzle\Service\Client();
-            $response = $client->get($this->makeUrl());
+            // 1. initialize
+            $ch = curl_init();
 
-            $information = $response->getResponseBody();
-            return $information;
+            // 2. set the options, including the url
+            curl_setopt($ch, CURLOPT_URL, $this->makeUrl());
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+            curl_setopt($ch, CURLOPT_HEADER, 0);
+
+            // 3. execute and fetch the resulting HTML output
+            $output = curl_exec($ch);
+
+            // 4. free up the curl handle
+            curl_close($ch);
+
+            $xml = simplexml_load_string($output, "SimpleXMLElement", LIBXML_NOCDATA);
+            $json = json_encode($xml);
+
+            $data = json_decode($json, true);
+
+           // return $data;//['Items']['Item']['LargeImage']['LargeImage']['URL'];//['Availability'];
+
+            $information = array([
+                'ApiTitle' => $data['Items']['Item']['ItemAttributes']['Title'],
+                'ApiImageLink' => $data['Items']['Item']['LargeImage']['URL'],
+                'ApiPrice' => $data['Items']['Item']['ItemAttributes']['ListPrice']['Amount'] / 100,
+                'ApiAvailable' => $data['Items']['Item']['Offers']['Offer']['OfferListing']['Availability'],
+                'ApiSpecification' => array([
+                    'Height' =>$data['Items']['Item']['ItemAttributes']['ItemDimensions']['Height'],
+                    'Length' =>$data['Items']['Item']['ItemAttributes']['ItemDimensions']['Length'],
+                    'Width' =>$data['Items']['Item']['ItemAttributes']['ItemDimensions']['Width'],
+                    'Weight' =>$data['Items']['Item']['ItemAttributes']['ItemDimensions']['Weight']
+                ])
+            ]);
+
+
+return $information;//$data['Items']['Item']['ItemAttributes']['ListPrice']['Amount'];
+       //     $json = json_encode($output);
+
+          //  return $json;
+
 
         }
+
+
     }

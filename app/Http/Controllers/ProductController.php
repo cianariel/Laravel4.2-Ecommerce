@@ -26,7 +26,8 @@
                 ['except' => [
                     'publishProduct', 'searchProductByName', 'updateProductInfo', 'productDetailsView',
                     'getAllProductList', 'getProductById', 'isPermalinkExist', 'addProduct',
-                    'addMediaForProduct', 'addMediaInfo', 'getMediaForProduct', 'deleteSingleMediaItem'
+                    'addMediaForProduct', 'addMediaInfo', 'getMediaForProduct', 'deleteSingleMediaItem',
+                    'getProductInfoFromApi'
                 ]]);
             $this->product = new Product();
 
@@ -413,7 +414,23 @@
 
         }
 
-
+        /** Fetch product information form vendor API
+         * @param $itemId
+         * @return mixed
+         */
+        public function getProductInfoFromApi($itemId)
+        {
+            try{
+            $value = $this->product->getApiProductInformation($itemId); // test id "B0147EVKCQ"
+           // return $value;
+                return $this->setStatusCode(\Config::get("const.api-status.success"))
+                    ->makeResponse($value);
+            } catch (Exception $ex)
+            {
+                return $this->setStatusCode(\Config::get("const.api-status.system-fail"))
+                    ->makeResponseWithError("System Failure !", $ex);
+            }
+        }
 
 
     }
