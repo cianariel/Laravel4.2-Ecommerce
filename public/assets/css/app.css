@@ -4597,6 +4597,12 @@ a.all-link {
   background-size: 30px;
   background-position: left 4px;
   min-width: 200px; }
+a.box-link {
+  padding: 3px 4px;
+  margin: 12px 6px;
+  border: 2px solid #ff7f00;
+  border-radius: 4px;
+  text-align: center; }
 a.fb {
   background-color: #5c7cbd;
   background-image: url("/assets/images/fb-white-small.png");
@@ -5928,10 +5934,7 @@ body.product-details .story-header .social-rounds {
         background-image: url("/assets/images/dots-pink.png");
         box-shadow: none; }
     .mid-nav a.box-link {
-      padding: 3px 4px;
       margin: 12px 6px;
-      border: 2px solid #ff7f00;
-      border-radius: 4px;
       font-size: .8rem; }
       .mid-nav a.box-link:hover {
         background: #ff7f00;
@@ -6724,7 +6727,10 @@ body.room-landing #hero .red span {
 body.room-landing #hero .red h6 {
   background: #e61d25; }
 body.room-landing #hero .red img.round {
-  border-color: #e61d25 !important; }
+  border-color: #e61d25 !important;
+  -webkit-box-shadow: 0px 0px 62px 5px #e61d25;
+  -moz-box-shadow: 0px 0px 62px 5px #e61d25;
+  box-shadow: 0px 0px 62px 5px #e61d25; }
 body.room-landing #hero .red .hover-box::before {
   border-color: transparent transparent #e61d25 transparent; }
 body.room-landing #hero .blue span {
@@ -6732,7 +6738,10 @@ body.room-landing #hero .blue span {
 body.room-landing #hero .blue h6 {
   background: #00b1ff; }
 body.room-landing #hero .blue img.round {
-  border-color: #00b1ff !important; }
+  border-color: #00b1ff !important;
+  -webkit-box-shadow: 0px 0px 62px 5px #00b1ff;
+  -moz-box-shadow: 0px 0px 62px 5px #00b1ff;
+  box-shadow: 0px 0px 62px 5px #00b1ff; }
 body.room-landing #hero .blue .hover-box::before {
   border-color: transparent transparent #00b1ff transparent; }
 body.room-landing #hero .green span {
@@ -6740,7 +6749,10 @@ body.room-landing #hero .green span {
 body.room-landing #hero .green h6 {
   background: #c7c747; }
 body.room-landing #hero .green img.round {
-  border-color: #c7c747 !important; }
+  border-color: #c7c747 !important;
+  -webkit-box-shadow: 0px 0px 62px 5px #c7c747;
+  -moz-box-shadow: 0px 0px 62px 5px #c7c747;
+  box-shadow: 0px 0px 62px 5px #c7c747; }
 body.room-landing #hero .green .hover-box::before {
   border-color: transparent transparent #c7c747 transparent; }
 body.room-landing #hero .pink img.round {
@@ -6749,6 +6761,9 @@ body.room-landing #hero .orange img.round {
   border-color: #ff7f00; }
 body.room-landing #hero .yellow img.round {
   border-color: yellow; }
+body.room-landing .box-link {
+  border-color: #f2f5f5;
+  padding-right: 35px; }
 
 .hero-tags {
   position: absolute;
@@ -6834,6 +6849,8 @@ body.room-landing #hero .yellow img.round {
       width: 64px;
       height: 64px;
       margin-right: 20px; }
+      .hero-related-products a:not(.get) img.round {
+        box-shadow: none !important; }
   .hero-related-products .get {
     margin-top: 15px; }
 

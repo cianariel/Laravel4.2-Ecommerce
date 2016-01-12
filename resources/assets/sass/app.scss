@@ -397,7 +397,13 @@ a{ // Custom Link Styles
     min-width: 200px;
   }
 
-
+  &.box-link{
+    padding: 3px 4px;
+    margin: 12px 6px;
+    border: 2px solid $dark-orange;
+    border-radius: 4px;
+    text-align: center;
+  }
 
 
   // social buttons
@@ -2482,13 +2488,11 @@ body.product-details{
     }
 
     &.box-link{
-      padding: 3px 4px;
+      //padding: 3px 4px;
       margin: 12px 6px;
-      border: 2px solid $dark-orange;
-      border-radius: 4px;
+      //border: 2px solid $dark-orange;
+      //border-radius: 4px;
       font-size: .8rem;
-
-
 
 
       &:hover{
@@ -3793,6 +3797,9 @@ body.room-landing{
       }
       img.round{
         border-color: $pinterest-red !important;
+        -webkit-box-shadow: 0px 0px 62px 5px $pinterest-red;
+        -moz-box-shadow: 0px 0px 62px 5px $pinterest-red;
+        box-shadow: 0px 0px 62px 5px $pinterest-red;
       }
       .hover-box{
         &::before{
@@ -3810,6 +3817,9 @@ body.room-landing{
       }
       img.round{
         border-color: $sky-blue !important;
+        -webkit-box-shadow: 0px 0px 62px 5px $sky-blue;
+        -moz-box-shadow: 0px 0px 62px 5px$sky-blue;
+        box-shadow: 0px 0px 62px 5px $sky-blue;
       }
       .hover-box{
         &::before{
@@ -3826,6 +3836,9 @@ body.room-landing{
       }
       img.round{
         border-color: $pine-green !important;
+        -webkit-box-shadow: 0px 0px 62px 5px $pine-green;
+        -moz-box-shadow: 0px 0px 62px 5px $pine-green;
+        box-shadow: 0px 0px 62px 5px $pine-green;
       }
       .hover-box{
         &::before{
@@ -3851,6 +3864,11 @@ body.room-landing{
         border-color: yellow;
       }
     }
+  }
+
+  .box-link{
+    border-color: $pale-grey;
+    padding-right: 35px;
   }
 
 }
@@ -3985,6 +4003,10 @@ body.room-landing{
       width: 64px;
       height: 64px;
       margin-right:20px;
+
+      &.round{
+        box-shadow: none !important;
+      }
     }
 
   }

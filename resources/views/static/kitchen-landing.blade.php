@@ -39,7 +39,7 @@
         </div>
     </nav>
 
-    <section id="hero" class="product-hero">
+    <section id="hero" class="room-hero">
         <div class="hero-background" style="background-image: url('/assets/images/room-landing-hero.jpg')"></div>
         {{--<div class="color-overlay"></div>--}}
 
@@ -115,19 +115,20 @@
             {{--<ul class="left-nav col-xs-1 hidden-620">--}}
             {{--<li class="active"><a class="home-link" href="#">Home</a></li>--}}
             {{--</ul>--}}
-            <ul class="category-nav center-block">
+
+            <ul class="col-sm-4 pull-right">
+                <li class="pull-right">
+                    <a href="#" class="box-link">Newest</a>
+                </li>
+                <li class="pull-right">
+                    <a href="#" class="box-link">Popular</a>
+                </li>
+            </ul>
+            <ul class="category-nav col-sm-5 pull-right">
                 <li class="active"><a href="" class="all-link">All</a></li>
                 <li><a href="" class="ideas-link">Ideas</a></li>
                 <li><a href="" class="products-link">Products</a></li>
                 <li><a href="" class="photos-link">Photos</a></li>
-            </ul>
-            <ul>
-                <li>
-                    <a href="#" class="box-link">Popular</a>
-                </li>
-                <li>
-                    <a href="#" class="box-link">Newest</a>
-                </li>
             </ul>
         </div>
     </nav>
