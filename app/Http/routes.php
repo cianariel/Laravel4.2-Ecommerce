@@ -21,7 +21,7 @@
      });
 */
 
-    //Route::get('/api-data/{id}','');
+
 
 
     Route::get('/', 'PageController@home');
@@ -86,6 +86,9 @@
         Route::post('product/publish-product', 'ProductController@publishProduct');
 
         Route::get('pro-details/{permalink?}', 'ProductController@productDetailsView');
+
+        // Get product Info from API
+        Route::get('api-data/{itemId?}','ProductController@getProductInfoFromApi');
 
         /*
          * Media upload route

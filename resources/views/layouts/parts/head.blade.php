@@ -1,7 +1,14 @@
-@if(! Request::is('ideas/*'))
+<?php
+$actual_link = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+
+if (! preg_match("/\/ideas\//", $actual_link))
+{
+?>
 <title>{{ MetaTag::get('title') }}</title>
 {!! MetaTag::tag('description') !!}
-@endif
+<?php
+}
+?>
 <meta name="viewport" id="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
@@ -17,15 +24,15 @@
     // configure environment tests
     //        conditionizr.config({
     //            assets: '<?php //echo get_template_directory_uri(); ?>//',
-    //            tests: {}
-    //        });
+//            tests: {}
+//        });
 </script>
 
 
 <script>
-    if (screen.width < 992 && screen.width > 620) {
-        document.getElementById("viewport").setAttribute("content", "width=980");
-    }
+if (screen.width < 992 && screen.width > 620) {
+    document.getElementById("viewport").setAttribute("content", "width=980");
+}
 </script>
 
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">

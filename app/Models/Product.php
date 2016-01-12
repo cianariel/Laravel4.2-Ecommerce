@@ -2,6 +2,7 @@
 
     namespace App\Models;
 
+    use App\Core\ProductApi\AmazonProductApi;
     use App\Core\ProductApi\ProductStrategy;
     use Illuminate\Database\Eloquent\Model;
     use Carbon\Carbon;
@@ -333,10 +334,13 @@
 
         public function getApiProductInformation($itemId)
         {
-            $data = new ProductStrategy();
-            $reslut = $data->loadData($itemId);
+            $productStrategy = new ProductStrategy();
+            $productStrategy->setApiType(new AmazonProductApi());
+            $result = $productStrategy->loadData($itemId);
 
-            dd($reslut);
+            return $result;
+
+         //   dd($reslut);
 
         }
 
