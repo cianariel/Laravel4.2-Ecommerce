@@ -18,6 +18,8 @@
 
         //protected $fillable = ['product_name'];
         protected $fillable = array(
+            'product_vendor_id',
+            'product_vendor_type',
             'product_name',
             'user_name',
             'product_permalink',
@@ -101,6 +103,8 @@
                 $data = array(
                     "product_category_id"     => ($product['CategoryId'] != null) ? $product['CategoryId'] : null,
                     "user_name"               => ($product['ProductAuthorName'] != null) ? $product['ProductAuthorName'] : 'Anonymous User',
+                    "product_vendor_id"       => $product['ProductVendorId'],
+                    "product_vendor_type"     => $product['ProductVendorType'],
                     "product_name"            => $product['Name'],
                     "product_permalink"       => (isset($product['Permalink'])) ? $product['Permalink'] : null,
                     "product_description"     => ($product['Description'] != null) ? $product['Description'] : "",
@@ -133,7 +137,6 @@
             {
                 return $ex;
             }
-
         }
 
         public function getSingleProductInfoForView($productId)
@@ -148,9 +151,9 @@
                         ->Where('media_type', '=', 'img-upload');
                 })
                 ->first(array(
-                    'products.id', 'products.updated_at', 'products.user_name',
-                    'products.product_name', 'product_categories.category_name', 'products.affiliate_link',
-                    'products.price', 'products.sale_price', 'medias.media_link','products.product_permalink'
+                    'products.id', 'products.updated_at', 'products.product_vendor_id', 'products.product_vendor_type',
+                    'products.user_name','products.product_name', 'product_categories.category_name', 'products.affiliate_link',
+                    'products.price', 'products.sale_price', 'medias.media_link', 'products.product_permalink'
                 ));
 
             return $result;
@@ -158,16 +161,16 @@
         }
 
         // return data for public view
-        public function getViewForPublic($permalink,$id=null)
+        public function getViewForPublic($permalink, $id = null)
         {
-            $column = $id == null?'product_permalink':'id';
-            $value = $id == null?$permalink:$id;
+            $column = $id == null ? 'product_permalink' : 'id';
+            $value = $id == null ? $permalink : $id;
             $productInfo = Product::with('medias')
-            ->where($column,$value)
-            ->first();
+                ->where($column, $value)
+                ->first();
 
 //dd($productInfo);
-           return $productInfo;
+            return $productInfo;
 
         }
 
@@ -235,7 +238,7 @@
         // Generating Category tree Hierarchy
         public function getCategoryHierarchy($catId)
         {
-            if($catId == null)
+            if ($catId == null)
                 return null;
 
             $catTree = ProductCategory::where('id', $catId)->first()->getAncestorsAndSelf();
@@ -258,12 +261,16 @@
          * @internal param $productInfo
          * @internal param $result
          */
-        public function productDetailsViewGenerate($productData,$catTree)
+        public function productDetailsViewGenerate($productData, $catTree)
         {
-           // dd($productData);
+            // dd($productData);
             $productInfo['Id'] = $productData['product']->id;
             $productInfo['CategoryId'] = $productData['product']->product_category_id;
             $productInfo['CatTree'] = $catTree;
+
+            $productInfo['ProductVendorId'] = $productData['product']->product_vendor_id;
+            $productInfo['ProductVendorType'] = $productData['product']->product_vendor_type;
+
             $productInfo['ProductName'] = $productData['product']->product_name;
             $productInfo['Permalink'] = $productData['product']->product_permalink;
             $productInfo['Description'] = $productData['product']->product_description;
@@ -332,6 +339,7 @@
             return $result;
         }
 
+        // Get product information form Product's vendor API
         public function getApiProductInformation($itemId)
         {
             $productStrategy = new ProductStrategy();
@@ -339,9 +347,6 @@
             $result = $productStrategy->loadData($itemId);
 
             return $result;
-
-         //   dd($reslut);
-
         }
 
     }

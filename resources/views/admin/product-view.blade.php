@@ -170,7 +170,7 @@
                                                                         <th class="col-md-3">Product Name</th>
                                                                         <th class="col-md-1">Category</th>
                                                                         <th class="col-md-1">Affiliate</th>
-                                                                        <th class="col-md-1">Price</th>
+                                                                        <th class="col-md-1">MSRP</th>
                                                                         <th class="col-md-1">Sell Price</th>
                                                                         <th class="col-md-1">Action</th>
                                                                     </tr>

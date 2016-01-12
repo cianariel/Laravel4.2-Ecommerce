@@ -40,9 +40,7 @@
         </header>
 
         <section id="hero" class="product-hero">
-            <div class="hero-background" style="background-image: url('@if(isset($selfImages['heroImage']))
-            {{$selfImages['heroImage']}}
-            @endif')"></div>
+            <div class="hero-background" style="background-image: url('@if(isset($selfImages['heroImage'])){{$selfImages['heroImage']}}@endif')"></div>
             <div class="color-overlay"></div>
 
             <div class="container fixed-sm full-480">
@@ -52,9 +50,9 @@
                             @foreach( $productInformation['CatTree'] as $category )
                                 <li>
                                     <a href="/category/@if(isset($category['CategoryPermalink'])){{$category['CategoryPermalink']}}@endif"
-                                       class="@if($category == end($productInformation['CatTree']))
-                                               current
-                                               @endif">@if(isset($category['CategoryName']))
+                                       @if($category == end($productInformation['CatTree']))class="current"
+                                               @endif>
+                                        @if(isset($category['CategoryName']))
                                             {{$category['CategoryName']}}
                                         @endif</a>
                                 </li>
