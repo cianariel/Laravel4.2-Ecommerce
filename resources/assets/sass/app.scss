@@ -259,6 +259,59 @@ button{
   padding: 5px;
 }
 
+.sortby{
+  position: relative;
+  padding: 15px 20px 15px 80px;
+  background: $iridium;
+  color: rgba(255,255,255, .8);
+  margin: 50px 0 30px;
+
+  ::before{
+    content: 'SORT BY:';
+    color: #fff;
+    position: absolute;
+    left: 10px;
+    top: 15px;
+  }
+
+  ::after{
+    content: ' ';
+    width: 20px;
+    height: 20px;
+    background: url("/assets/images/arrow-up-black.png") center no-repeat;
+    background-size: contain;
+    position: absolute;
+    right: 10px;
+    top: 15px;
+  }
+}
+
+h6.gift{
+  position: relative;
+  background: $pale-grey;
+  padding: 15px 20px 15px 40px;
+  text-transform: uppercase;
+  color:#000;
+
+  &::after{
+    content: 'x';
+    //display: block;
+    width: 20px;
+    height: 20px;
+    //background: url("/assets/images/arrow-up-black.png") center no-repeat;
+    //background-size: contain;
+    position: absolute;
+    right: 10px;
+    top: 15px;
+  }
+}
+
+ul.for{
+  li{
+    padding: 15px 10px;
+  }
+}
+
 
 body,
 html{
@@ -1466,12 +1519,12 @@ main.page-content{
   }
 
   .img-wrap .like-wrap{
-    width: 115px;
+    width: 92px;
     height: 55px;
     margin-left: auto;
     position: absolute;
     top: 0;
-    right: -20px;
+    right: 0;
     padding-left: 30px;
     padding-top: 6px;
     padding-bottom:0;
@@ -1734,6 +1787,7 @@ main.page-content{
   &.square{
     display: table-cell;
     border-collapse: collapse;
+    overflow: visible;
     padding: 0;
     min-height: 380px;
     margin-top: 0;
@@ -1896,6 +1950,72 @@ main.page-content{
     }
 
   }
+
+
+}
+
+.room-filter{
+  position: absolute;
+  left: 10px;
+  width: 190px;
+
+  .extra-nav{
+    li{
+      border-bottom: 1px solid $light-grey;
+      text-transform: uppercase;
+      position: relative;
+
+      &::after{
+        content: '+';
+        position: absolute;
+        right: 10px;
+        top: 20px;
+        color: #000;
+      }
+
+      a{
+        display: block;
+        width: 100%;
+        padding: 20px 0 20px 30px;
+        background-repeat: no-repeat;
+        background-position: left center;
+
+        &.diy-link{
+          background-image: url("/assets/images/icons/tools-3d.png");
+        }
+        &.shopping-link{
+          background-image: url("/assets/images/icons/bag-3d-green.png");
+        }
+        &.travel-link{
+          background-image: url("/assets/images/icons/bag-3d-blue.png");
+        }
+        &.wearables-link{
+          background-image: url("/assets/images/icons/watch-3d.png");
+        }
+        &.decor-link{
+          background-image: url("/assets/images/icons/fire-3d.png");
+        }
+      }
+
+
+
+
+
+
+    }
+  }
+  .room-list{
+    margin-top: 35px;
+    li{
+      a{
+        font-size: 1.55rem;
+        color: darken($light-grey, 10%);
+        line-height: 2;
+      }
+    }
+  }
+
+
 
 
 }

@@ -4511,6 +4511,45 @@ button {
   border: 0;
   padding: 5px; }
 
+.sortby {
+  position: relative;
+  padding: 15px 20px 15px 80px;
+  background: #ff0042;
+  color: rgba(255, 255, 255, 0.8);
+  margin: 50px 0 30px; }
+  .sortby ::before {
+    content: 'SORT BY:';
+    color: #fff;
+    position: absolute;
+    left: 10px;
+    top: 15px; }
+  .sortby ::after {
+    content: ' ';
+    width: 20px;
+    height: 20px;
+    background: url("/assets/images/arrow-up-black.png") center no-repeat;
+    background-size: contain;
+    position: absolute;
+    right: 10px;
+    top: 15px; }
+
+h6.gift {
+  position: relative;
+  background: #f2f5f5;
+  padding: 15px 20px 15px 40px;
+  text-transform: uppercase;
+  color: #000; }
+  h6.gift::after {
+    content: 'x';
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    right: 10px;
+    top: 15px; }
+
+ul.for li {
+  padding: 15px 10px; }
+
 body,
 html {
   overflow-x: hidden; }
@@ -5331,12 +5370,12 @@ main.page-content .card {
     padding: 0px;
     float: left; }
   .grid-box .img-wrap .like-wrap {
-    width: 115px;
+    width: 92px;
     height: 55px;
     margin-left: auto;
     position: absolute;
     top: 0;
-    right: -20px;
+    right: 0;
     padding-left: 30px;
     padding-top: 6px;
     padding-bottom: 0;
@@ -5492,6 +5531,7 @@ main.page-content .card {
   .grid-box.square {
     display: table-cell;
     border-collapse: collapse;
+    overflow: visible;
     padding: 0;
     min-height: 380px;
     margin-top: 0;
@@ -5602,6 +5642,43 @@ main.page-content .card {
       top: 64px;
       background: url("/assets/images/elements/featured-badge-vertical-left.png") no-repeat left top;
       text-indent: -9999px; }
+
+.room-filter {
+  position: absolute;
+  left: 10px;
+  width: 190px; }
+  .room-filter .extra-nav li {
+    border-bottom: 1px solid #c1c1c1;
+    text-transform: uppercase;
+    position: relative; }
+    .room-filter .extra-nav li::after {
+      content: '+';
+      position: absolute;
+      right: 10px;
+      top: 20px;
+      color: #000; }
+    .room-filter .extra-nav li a {
+      display: block;
+      width: 100%;
+      padding: 20px 0 20px 30px;
+      background-repeat: no-repeat;
+      background-position: left center; }
+      .room-filter .extra-nav li a.diy-link {
+        background-image: url("/assets/images/icons/tools-3d.png"); }
+      .room-filter .extra-nav li a.shopping-link {
+        background-image: url("/assets/images/icons/bag-3d-green.png"); }
+      .room-filter .extra-nav li a.travel-link {
+        background-image: url("/assets/images/icons/bag-3d-blue.png"); }
+      .room-filter .extra-nav li a.wearables-link {
+        background-image: url("/assets/images/icons/watch-3d.png"); }
+      .room-filter .extra-nav li a.decor-link {
+        background-image: url("/assets/images/icons/fire-3d.png"); }
+  .room-filter .room-list {
+    margin-top: 35px; }
+    .room-filter .room-list li a {
+      font-size: 1.55rem;
+      color: #a8a8a8;
+      line-height: 2; }
 
 .box-container {
   width: 100%;

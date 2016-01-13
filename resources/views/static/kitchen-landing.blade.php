@@ -226,6 +226,8 @@
                         {{--</div>--}}
                 </div>
             </div>
+
+
             <div class="col-xs-12 grid-insert">
                 <h4><a href="#">620.325 Awesome Products to Buy</a></h4>
                 <p>
@@ -235,6 +237,64 @@
             </div>
 
             <a class="btn btn-success bottom-load-more col-xs-12">Load More</a>
+
+            <aside class="room-filter">
+                <ul class="extra-nav hidden-620">
+                    <li><a class="diy-link pink" href="#">DYI</a></li>
+                    <li><a class="shopping-link green" href="#">Shopping</a></li>
+                    <li><a class="travel-link blue" href="#">Travel</a></li>
+                    <li><a class="wearables-link brown" href="#">Wearables</a></li>
+                    <li><a class="decor-link green" href="#">Home and Decor</a></li>
+                </ul>
+
+                <ul class="room-list">
+                    <li>
+                        <a href="#">Kitchen and Dining</a>
+                    </li>
+                    <li>
+                        <a href="#">Furniture</a>
+                    </li>
+                    <li>
+                        <a href="#">Bedding</a>
+                    </li>
+                    <li>
+                        <a href="#">Bath</a>
+                    </li>
+                    <li>
+                        <a href="#">Decor</a>
+                    </li>
+                    <li>
+                        <a href="#">Office</a>
+                    </li>
+                    <li>
+                        <a href="#">Storage</a>
+                    </li>
+                    <li>
+                        <a href="#">Outdoor</a>
+                    </li>
+                </ul>
+
+                <ul class="sortby">
+                    <li>Popularity</li>
+                </ul>
+
+                <h6 class="gift">Gift ideas</h6>
+                <ul class="for">
+                    <li>For Her</li>
+                    <li>For Him</li>
+                    <li>For Kids</li>
+                    <li>For Pets</li>
+                    <li>For the Techie</li>
+                    <li>For the Traveler</li>
+                    <li>For the Decorator</li>
+                    <li>Stocking Suffers</li>
+                </ul>
+
+
+
+
+
+            </aside>
         </div>
 
     </main>
