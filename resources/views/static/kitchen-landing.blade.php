@@ -140,19 +140,30 @@
 
                 <div class="like-wrap">
                     <a href="#" class="social-pic likes">157</a>
+                    <a href="#" class="social-pic comment">157</a>
                 </div>
                 <a href="#" class="overlay-tag category-tag top idea">Idea</a>
-                <a href="#" class="overlay-tag bottom author" style="background-image: url('')">Author Name Here</a>
-                <h4>10 Ideas for Gorgeous Kitchens</h4>
+                <h4><a href="#">10 Ideas for Gorgeous Kitchens</a></h4>
                 {{--<b>In wooden Kitchen styles</b>--}}
             </div>
+            <a href="#" class="overlay-tag bottom author" style="background-image: url('/assets/images/dummies/author.png')">Author Name Here</a>
 
-                <div class="color-overlay">
-                    {{--<div class="like-wrap">--}}
-                        {{--<a href="#" class="social-pic likes">157</a>--}}
-                    {{--</div>--}}
+            <time>Posted 5 hours ago</time>
+        </div>
+        <div class="grid-box square not-rounded product-box product col-xs-4 full-620">
+            <div class="img-wrap">
+                <img class="img-responsive" src="/assets/images/dummies/webcam-square.jpg">
 
-                    <ul class="prices">
+                <div class="like-wrap">
+                    <a href="#" class="social-pic likes">157</a>
+                </div>
+                <a href="#" class="overlay-tag category-tag top product">Product</a>
+            </div>
+            <time>Posted 5 hours ago</time>
+
+            <div class="color-overlay">
+                <h4><a href="#">The Awesome Webcam</a></h4>
+                <ul class="prices">
                         <li>
                             <a href="#"><b>$35.00</b> from  <img class="vendor-logo" src="/assets/images/dummies/amazon-black.png"></a>
                         </li>
@@ -160,15 +171,55 @@
                             <a href="#"><b>$39.50.00</b> from  <img class="vendor-logo" src="/assets/images/dummies/amazon-black.png"></a>
                         </li>
                         <li>
-                            <a href="#"> <a href="#"><b>$41.00</b> from  <img class="vendor-logo" src="/assets/images/dummies/amazon-black.png"></a>
+                            <a href="#"><b>$41.00</b> from  <img class="vendor-logo" src="/assets/images/dummies/amazon-black.png"></a>
                         </li>
                     </ul>
 
                 </div>
+        </div>
+        <div class="grid-box square not-rounded product-box col-xs-4 full-620">
+            <div class="img-wrap">
+                <img class="img-responsive" src="/assets/images/dummies/webcam-square.jpg">
+
+                <div class="like-wrap">
+                    <a href="#" class="social-pic likes">157</a>
+                    <a href="#" class="social-pic comment">157</a>
+                </div>
+                <a href="#" class="overlay-tag category-tag top idea">Idea</a>
+                <h4><a href="#">10 Ideas for Gorgeous Kitchens</a></h4>
+                {{--<b>In wooden Kitchen styles</b>--}}
             </div>
+            <a href="#" class="overlay-tag bottom author" style="background-image: url('/assets/images/dummies/author.png')">Author Name Here</a>
 
-            <time>5 hours ago</time>
+            <time>Posted 5 hours ago</time>
+        </div>
+        <div class="grid-box square not-rounded product-box huge col-xs-12 full-620">
+            <div class="img-wrap">
+                <img class="img-responsive" src="/assets/images/dummies/clock.png">
 
+                <div class="like-wrap">
+                    <a href="#" class="social-pic likes">157</a>
+                </div>
+                <a href="#" class="overlay-tag category-tag top idea">Idea</a>
+                <h4><a href="#">10 Ideas for Gorgeous Kitchens</a></h4>
+            </div>
+            <time>Posted 5 hours ago</time>
+
+            {{--<div class="color-overlay">--}}
+                {{--<h4><a href="#">The Awesome Webcam</a></h4>--}}
+                {{--<ul class="prices">--}}
+                        {{--<li>--}}
+                            {{--<a href="#"><b>$35.00</b> from  <img class="vendor-logo" src="/assets/images/dummies/amazon-black.png"></a>--}}
+                        {{--</li>--}}
+                        {{--<li>--}}
+                            {{--<a href="#"><b>$39.50.00</b> from  <img class="vendor-logo" src="/assets/images/dummies/amazon-black.png"></a>--}}
+                        {{--</li>--}}
+                        {{--<li>--}}
+                            {{--<a href="#"><b>$41.00</b> from  <img class="vendor-logo" src="/assets/images/dummies/amazon-black.png"></a>--}}
+                        {{--</li>--}}
+                    {{--</ul>--}}
+
+                {{--</div>--}}
         </div>
 
 
