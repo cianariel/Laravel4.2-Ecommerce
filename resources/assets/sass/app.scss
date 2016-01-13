@@ -1736,7 +1736,7 @@ main.page-content{
 
   &.square{
     padding: 0;
-    min-height: 450px;
+    min-height: 380px;
     margin-top: 0;
     border-radius: 0 !important;
     border: 1px solid $light-grey;
@@ -1801,6 +1801,17 @@ main.page-content{
       border-radius: 0;
       width: 107px;
       padding-left: 15px;
+
+      .comment{
+        background-image: url("/assets/images/icons/chat-red.png");
+        background-position: 8px center;
+        color: $iridium;
+        &:hover{
+          background-image: url("/assets/images/icons/chat-red.png");
+          background-position: 8px center;
+        }
+
+      }
     }
     time{
       position: absolute;
@@ -4010,6 +4021,12 @@ body.room-landing{
         border-color: yellow;
       }
     }
+  }
+
+  .page-content{
+    padding-top: 40px;
+    overflow: hidden;
+    width: 100%;
   }
 
   .box-link{
