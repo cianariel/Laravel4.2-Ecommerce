@@ -91,46 +91,49 @@
          */
         public function getProductInformation($itemId)
         {
-            $this->itmeId = $itemId;
+            try
+            {
+                $this->itmeId = $itemId;
 
-            // 1. initialize
-            $ch = curl_init();
+                // 1. initialize
+                $ch = curl_init();
 
-            // 2. set the options, including the url
-            curl_setopt($ch, CURLOPT_URL, $this->makeUrl());
-            curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-            curl_setopt($ch, CURLOPT_HEADER, 0);
+                // 2. set the options, including the url
+                curl_setopt($ch, CURLOPT_URL, $this->makeUrl());
+                curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+                curl_setopt($ch, CURLOPT_HEADER, 0);
 
-            // 3. execute and fetch the resulting HTML output
-            $output = curl_exec($ch);
+                // 3. execute and fetch the resulting HTML output
+                $output = curl_exec($ch);
 
-            // 4. free up the curl handle
-            curl_close($ch);
+                // 4. free up the curl handle
+                curl_close($ch);
 
-            $xml = simplexml_load_string($output, "SimpleXMLElement", LIBXML_NOCDATA);
-            $json = json_encode($xml);
+                $xml = simplexml_load_string($output, "SimpleXMLElement", LIBXML_NOCDATA);
+                $json = json_encode($xml);
 
-            $data = json_decode($json, true);
+                $data = json_decode($json, true);
 
-            // return $data;//['Items']['Item']['LargeImage']['LargeImage']['URL'];//['Availability'];
+                // return $data;//['Items']['Item']['LargeImage']['LargeImage']['URL'];//['Availability'];
 
-            $information = [
-                'ApiTitle'         => $data['Items']['Item']['ItemAttributes']['Title'],
-                'ApiImageLink'     => $data['Items']['Item']['LargeImage']['URL'],
-                'ApiPrice'         => $data['Items']['Item']['ItemAttributes']['ListPrice']['Amount'] / 100,
-                'ApiAvailable'     => isset($data['Items']['Item']['Offers']['Offer']['OfferListing']['Availability']) ? $data['Items']['Item']['Offers']['Offer']['OfferListing']['Availability'] : "No information available",
-                'ApiSpecification' => [
-                    'Height' => isset($data['Items']['Item']['ItemAttributes']['ItemDimensions']['Height']) ? $data['Items']['Item']['ItemAttributes']['ItemDimensions']['Height'] : "",
-                    'Length' => isset($data['Items']['Item']['ItemAttributes']['ItemDimensions']['Length']) ? $data['Items']['Item']['ItemAttributes']['ItemDimensions']['Length'] : "",
-                    'Width'  => isset($data['Items']['Item']['ItemAttributes']['ItemDimensions']['Width']) ? $data['Items']['Item']['ItemAttributes']['ItemDimensions']['Width'] : "",
-                    'Weight' => isset($data['Items']['Item']['ItemAttributes']['ItemDimensions']['Weight']) ? $data['Items']['Item']['ItemAttributes']['ItemDimensions']['Weight'] : ""
-                ]
-            ];
+                $information = [
+                    'ApiTitle'         => isset($data['Items']['Item']['ItemAttributes']['Title'])?$data['Items']['Item']['ItemAttributes']['Title']:"",
+                    'ApiImageLink'     => isset($data['Items']['Item']['LargeImage']['URL'])?$data['Items']['Item']['LargeImage']['URL']:"",
+                    'ApiPrice'         => isset($data['Items']['Item']['ItemAttributes']['ListPrice']['Amount'])?$data['Items']['Item']['ItemAttributes']['ListPrice']['Amount'] / 100:"",
+                    'ApiAvailable'     => isset($data['Items']['Item']['Offers']['Offer']['OfferListing']['Availability']) ? $data['Items']['Item']['Offers']['Offer']['OfferListing']['Availability'] : "No information available",
+                    'ApiSpecification' => [
+                        'Height' => isset($data['Items']['Item']['ItemAttributes']['ItemDimensions']['Height']) ? $data['Items']['Item']['ItemAttributes']['ItemDimensions']['Height'] : "",
+                        'Length' => isset($data['Items']['Item']['ItemAttributes']['ItemDimensions']['Length']) ? $data['Items']['Item']['ItemAttributes']['ItemDimensions']['Length'] : "",
+                        'Width'  => isset($data['Items']['Item']['ItemAttributes']['ItemDimensions']['Width']) ? $data['Items']['Item']['ItemAttributes']['ItemDimensions']['Width'] : "",
+                        'Weight' => isset($data['Items']['Item']['ItemAttributes']['ItemDimensions']['Weight']) ? $data['Items']['Item']['ItemAttributes']['ItemDimensions']['Weight'] : ""
+                    ]
+                ];
 
-
-            return $information;
-
-
+                return $information;
+            }catch(Exception $ex)
+            {
+                return $ex;
+            }
         }
 
 

@@ -147,8 +147,8 @@
 
                                                                 </div>
                                                             </div>
-                                                            <div class="row">&nbsp;
-                                                                <div class="form-group col-lg-6">
+                                                            <div class="form-group row">&nbsp;
+                                                                <div class="col-lg-6">
                                                                     <label>Prodcut ID</label>
                                                                     <input data-ng-model="ProductVendorId"
                                                                            class="form-control"
@@ -156,6 +156,7 @@
                                                                 </div>
 
                                                                 <div class="col-lg-6">
+                                                                    <div style="height: 15px">&nbsp;</div>
                                                                     <button class="btn btn-info btn-circle"
                                                                             type="button"
                                                                             ng-click="loadProductInfoFromApi(ProductVendorId)"
@@ -188,7 +189,7 @@
                                                                 </div>
                                                             </div>
                                                             <div class="form-group">
-                                                                <label>MSRP</label>
+                                                                <label>List Price</label>
                                                                 <input type="text"
                                                                        valid-number
                                                                        data-ng-model="Price"
@@ -257,20 +258,31 @@
                                                                </div>
 
                                                             <div class="form-group">
+                                                                <div style="height: 3px">&nbsp;</div>
                                                                 <button data-ng-click="updateProduct()"
                                                                         class="btn btn-primary" type="button">
-                                                                    Save As Draft
+                                                                    Save
+                                                                </button>
+                                                                <button ng-hide="Permalink == ''" data-ng-click="previewProduct(Permalink)"
+                                                                        class="btn btn-success" type="button">
+                                                                    Preview
                                                                 </button>
 
                                                                 <button ng-hide="PostStatus == 'Active'"
                                                                         data-ng-click="changeProductActivation()"
-                                                                        class="btn btn-warning" type="button">
+                                                                        class="btn btn-info" type="button">
                                                                     Active
                                                                 </button>
                                                                 <button ng-hide="PostStatus == 'Inactive'"
                                                                         data-ng-click="changeProductActivation()"
-                                                                        class="btn btn-danger" type="button">
+                                                                        class="btn btn-warning" type="button">
                                                                     Inactive
+                                                                </button>
+                                                                <button ng-hide="ProductId == ''" data-ng-click="deleteProduct(ProductId,true)"
+                                                                        confirm="Are you sure to delete this product ?"
+                                                                        confirm-settings="{size: 'sm'}"
+                                                                        class="btn btn-danger" type="button">
+                                                                    Delete
                                                                 </button>
                                                             </div>
                                                         </div>
@@ -347,19 +359,31 @@
 
                                                     </div>
                                                     <div class="form-group">
+                                                        <div style="height: 3px">&nbsp;</div>
                                                         <button data-ng-click="updateProduct()"
                                                                 class="btn btn-primary" type="button">
-                                                            Save As Draft
+                                                            Save
                                                         </button>
+                                                        <button ng-hide="Permalink == ''" data-ng-click="previewProduct(Permalink)"
+                                                                class="btn btn-success" type="button">
+                                                            Preview
+                                                        </button>
+
                                                         <button ng-hide="PostStatus == 'Active'"
                                                                 data-ng-click="changeProductActivation()"
-                                                                class="btn btn-warning" type="button">
+                                                                class="btn btn-info" type="button">
                                                             Active
                                                         </button>
                                                         <button ng-hide="PostStatus == 'Inactive'"
                                                                 data-ng-click="changeProductActivation()"
-                                                                class="btn btn-danger" type="button">
+                                                                class="btn btn-warning" type="button">
                                                             Inactive
+                                                        </button>
+                                                        <button ng-hide="ProductId == ''" data-ng-click="deleteProduct(ProductId,true)"
+                                                                confirm="Are you sure to delete this product ?"
+                                                                confirm-settings="{size: 'sm'}"
+                                                                class="btn btn-danger" type="button">
+                                                            Delete
                                                         </button>
                                                     </div>
                                                 </div>
@@ -466,25 +490,35 @@
                                                                          ta-html-editor-class="border-around ta-editor">
                                                                     </div>
                                                                 </div>
-
-
                                                             </div>
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
+                                                        <div style="height: 3px">&nbsp;</div>
                                                         <button data-ng-click="updateProduct()"
                                                                 class="btn btn-primary" type="button">
-                                                            Save As Draft
+                                                            Save
                                                         </button>
+                                                        <button ng-hide="Permalink == ''" data-ng-click="previewProduct(Permalink)"
+                                                                class="btn btn-success" type="button">
+                                                            Preview
+                                                        </button>
+
                                                         <button ng-hide="PostStatus == 'Active'"
                                                                 data-ng-click="changeProductActivation()"
-                                                                class="btn btn-warning" type="button">
+                                                                class="btn btn-info" type="button">
                                                             Active
                                                         </button>
                                                         <button ng-hide="PostStatus == 'Inactive'"
                                                                 data-ng-click="changeProductActivation()"
-                                                                class="btn btn-danger" type="button">
+                                                                class="btn btn-warning" type="button">
                                                             Inactive
+                                                        </button>
+                                                        <button ng-hide="ProductId == ''" data-ng-click="deleteProduct(ProductId,true)"
+                                                                confirm="Are you sure to delete this product ?"
+                                                                confirm-settings="{size: 'sm'}"
+                                                                class="btn btn-danger" type="button">
+                                                            Delete
                                                         </button>
                                                     </div>
                                                 </div>

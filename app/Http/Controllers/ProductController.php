@@ -27,7 +27,7 @@
                     'publishProduct', 'searchProductByName', 'updateProductInfo', 'productDetailsView',
                     'getAllProductList', 'getProductById', 'isPermalinkExist', 'addProduct',
                     'addMediaForProduct', 'addMediaInfo', 'getMediaForProduct', 'deleteSingleMediaItem',
-                    'getProductInfoFromApi'
+                    'getProductInfoFromApi', 'priceUpdate', 'deleteProduct'
                 ]]);
             $this->product = new Product();
 
@@ -189,6 +189,32 @@
         }
 
 
+        /** Delete product.
+         * @return mixed
+         * @internal param $productId
+         */
+        public function deleteProduct()
+        {
+            $id = \Input::get('ProductId');
+
+            $records = $this->product->find($id);
+            if ($records == null)
+                return $this->setStatusCode(\Config::get("const.api-status.system-fail"))
+                    ->makeResponseWithError("No data available !");
+
+            foreach ($records->medias as $record)
+            {
+                $this->deleteMediaById($record->id);
+            }
+
+            $this->product->find($id)->delete();
+
+            return $this->setStatusCode(\Config::get("const.api-status.success"))
+                ->makeResponse("Data deleted Successfully");
+
+        }
+
+
         /**
          * @return mixed
          */
@@ -305,25 +331,7 @@
             $id = \Input::get('MediaId');
             try
             {
-                $mediaItem = $this->media->where('id', $id)->first();
-
-                //delete entry from database
-                $this->media->where('id', $id)->delete();
-
-                if (($mediaItem['media_type'] == 'img-upload') || ($mediaItem['media_type'] == 'video-upload'))
-                {
-                    // delete file from S3
-                    $strReplace = \Config::get("const.file.s3-path");// "http://s3-us-west-1.amazonaws.com/ideaing-01/";
-                    $file = str_replace($strReplace, '', $mediaItem['media_link']);
-                    $s3 = Storage::disk('s3');
-                    $s3->delete($file);
-
-                    if ($mediaItem['media_type'] == 'img-upload')
-                    {
-                        $file = 'thumb-' . $file;
-                        $s3->delete($file);
-                    }
-                }
+                $this->deleteMediaById($id);
 
                 return $this->setStatusCode(\Config::get("const.api-status.success"))
                     ->makeResponse("File deleted successfully");
@@ -408,15 +416,47 @@
          */
         public function getProductInfoFromApi($itemId)
         {
-            try{
-            $value = $this->product->getApiProductInformation($itemId); // test id "B0147EVKCQ"
-           // return $value;
+            try
+            {
+                $value = $this->product->getApiProductInformation($itemId); // test id "B0147EVKCQ"
+                // return $value;
                 return $this->setStatusCode(\Config::get("const.api-status.success"))
                     ->makeResponse($value);
             } catch (Exception $ex)
             {
                 return $this->setStatusCode(\Config::get("const.api-status.system-fail"))
                     ->makeResponseWithError("System Failure !", $ex);
+            }
+        }
+
+        public function priceUpdate()
+        {
+            $this->product->updateProductPrice();
+        }
+
+        /** Delete medias for product
+         * @param $id
+         */
+        private function deleteMediaById($id)
+        {
+            $mediaItem = $this->media->where('id', $id)->first();
+
+            //delete entry from database
+            $this->media->where('id', $id)->delete();
+
+            if (($mediaItem['media_type'] == 'img-upload') || ($mediaItem['media_type'] == 'video-upload'))
+            {
+                // delete file from S3
+                $strReplace = \Config::get("const.file.s3-path");// "http://s3-us-west-1.amazonaws.com/ideaing-01/";
+                $file = str_replace($strReplace, '', $mediaItem['media_link']);
+                $s3 = Storage::disk('s3');
+                $s3->delete($file);
+
+                if ($mediaItem['media_type'] == 'img-upload')
+                {
+                    $file = 'thumb-' . $file;
+                    $s3->delete($file);
+                }
             }
         }
 

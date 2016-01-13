@@ -69,8 +69,8 @@ adminApp.directive('validNumber', function () {
     };
 });
 
-adminApp.controller('AdminController', ['$scope', '$http', '$confirm', '$location', '$anchorScroll', 'FileUploader'
-    , function ($scope, $http, $confirm, $location, $anchorScroll, FileUploader) {
+adminApp.controller('AdminController', ['$scope', '$http', '$window', '$confirm', '$location', '$anchorScroll', 'FileUploader'
+    , function ($scope, $http, $window, $confirm, $location, $anchorScroll, FileUploader) {
 
         // uploader section //
 
@@ -291,8 +291,6 @@ adminApp.controller('AdminController', ['$scope', '$http', '$confirm', '$locatio
 
                 }
             }
-
-
             $scope.getCategory();
 
         };
@@ -783,6 +781,30 @@ adminApp.controller('AdminController', ['$scope', '$http', '$confirm', '$locatio
                     $scope.getMedia();
                 }
             });
+        };
+
+        //delete a product
+        $scope.deleteProduct = function (id,redirect) {
+            console.log(redirect);
+
+            $http({
+                url: '/api/product/delete-product',
+                method: 'POST',
+                data: {'ProductId': id}
+            }).success(function (data) {
+                $scope.outputStatus(data, "Product deleted !");
+
+                if(redirect == true)
+                    $window.location ='/admin/product-view';
+                else
+                    $scope.showAllProduct();
+            });
+
+        };
+
+        //preview the product in detials page
+        $scope.previewProduct = function (permalink) {
+            $window.open('/pro-details/' + permalink, '_blank');
         };
 
         // Change the media type during add and edit of media content.

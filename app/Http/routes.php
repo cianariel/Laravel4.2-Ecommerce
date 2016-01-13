@@ -26,6 +26,8 @@
 
     Route::get('/', 'PageController@home');
 
+    Route::get('update-price', 'ProductController@priceUpdate');
+
 //    Route::get('/', function () // temp, used for tweaking frontend
 //    {
 //        return view('welcome');
@@ -84,6 +86,9 @@
         Route::post('product/add-product', 'ProductController@addProduct');
         Route::post('product/update-product', 'ProductController@updateProductInfo');
         Route::post('product/publish-product', 'ProductController@publishProduct');
+
+        // Delete product
+        Route::post('product/delete-product', 'ProductController@deleteProduct');
 
         Route::get('pro-details/{permalink?}', 'ProductController@productDetailsView');
 

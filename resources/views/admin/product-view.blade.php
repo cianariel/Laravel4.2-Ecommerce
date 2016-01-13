@@ -170,7 +170,7 @@
                                                                         <th class="col-md-3">Product Name</th>
                                                                         <th class="col-md-1">Category</th>
                                                                         <th class="col-md-1">Affiliate</th>
-                                                                        <th class="col-md-1">MSRP</th>
+                                                                        <th class="col-md-1">List Price</th>
                                                                         <th class="col-md-1">Sell Price</th>
                                                                         <th class="col-md-1">Action</th>
                                                                     </tr>
@@ -201,8 +201,14 @@
                                                                             <a href="/admin/product-edit/@{{ product.id }}"
                                                                                class="btn btn-info btn-circle"
                                                                                uib-tooltip="Edit"
-                                                                               tooltip-placement="bottom"> <i
-                                                                                        class="fa fa-edit"></i></a>
+                                                                               tooltip-placement="bottom"> <i class="fa fa-edit"></i></a>
+                                                                            <button data-ng-click="deleteProduct( product.id,false)"
+                                                                                    confirm="Are you sure to delete this product ?"
+                                                                                    confirm-settings="{size: 'sm'}"
+                                                                                    uib-tooltip="Delete"
+                                                                                    class="btn btn-danger btn-circle" type="button">
+                                                                                <i class="fa fa-times"></i>
+                                                                            </button>
                                                                         </td>
                                                                     </tr>
                                                                     </tbody>

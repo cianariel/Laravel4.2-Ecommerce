@@ -152,7 +152,7 @@
                 })
                 ->first(array(
                     'products.id', 'products.updated_at', 'products.product_vendor_id', 'products.product_vendor_type',
-                    'products.user_name','products.product_name', 'product_categories.category_name', 'products.affiliate_link',
+                    'products.user_name', 'products.product_name', 'product_categories.category_name', 'products.affiliate_link',
                     'products.price', 'products.sale_price', 'medias.media_link', 'products.product_permalink'
                 ));
 
@@ -339,14 +339,45 @@
             return $result;
         }
 
+        public function deleteProductById($productId)
+        {
+            try
+            {
+
+            } catch (Exception $ex)
+            {
+            }
+        }
+
         // Get product information form Product's vendor API
         public function getApiProductInformation($itemId)
         {
-            $productStrategy = new ProductStrategy();
-            $productStrategy->setApiType(new AmazonProductApi());
-            $result = $productStrategy->loadData($itemId);
+            try
+            {
+                $productStrategy = new ProductStrategy();
+                $productStrategy->setApiType(new AmazonProductApi());
+                $result = $productStrategy->loadData($itemId);
 
-            return $result;
+                return $result;
+            } catch (Exception $ex)
+            {
+                return $ex;
+            }
+        }
+
+        public function updateProductPrice($time = 5, $itemCount = 10)
+        {
+            $timeCompare = date("Y-m-d H:i:s", time() - ($time * 60));
+            $itemIds = Product::where('updated_at', '<', $timeCompare)
+                ->limit($itemCount)
+                ->get(array("id", "product_permalink", "updated_at", "product_vendor_id"));
+
+            dd($timeCompare, $itemIds);
+
+            foreach ($itemIds as $item)
+            {
+
+            }
         }
 
     }
