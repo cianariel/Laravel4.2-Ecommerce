@@ -1731,15 +1731,18 @@ main.page-content{
     }
   }
 
-
-
-
   &.square{
+    display: table-cell;
+    border-collapse: collapse;
     padding: 0;
     min-height: 380px;
     margin-top: 0;
-    border-radius: 0 !important;
-    border: 1px solid $light-grey;
+    //border-radius: 0 !important;
+    border: 0 solid $light-grey;
+    border-width: 1px 1px 0 0;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
 
     .color-overlay,
     .img-wrap{
@@ -1883,8 +1886,14 @@ main.page-content{
   }
 
 
-
 }
+
+.box-container{
+  overflow: hidden;
+  border: 0px solid $light-grey;
+  border-width: 0 0 1px 1px;
+}
+
 
 .main-container{
   overflow: hidden;
@@ -2005,7 +2014,7 @@ article.product{
 .grid-insert{
   padding: 45px;
   margin-top: 45px;
-  background: $pale-grey;
+  //background: $pale-grey;
 
   h4{
     a{
@@ -4032,6 +4041,13 @@ body.room-landing{
   .box-link{
     border-color: $light-grey;
     padding-right: 35px;
+  }
+
+  .grid-insert{
+    text-align: center;
+    p{
+      line-height: 2.3;
+    }
   }
 
 }

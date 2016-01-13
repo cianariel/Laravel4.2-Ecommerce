@@ -135,98 +135,99 @@
 
     <main class="page-content">
         <div class="container">
-            <div class="grid-box square not-rounded product-box col-xs-4 full-620">
-                <div class="img-wrap">
-                    <img class="img-responsive" src="/assets/images/dummies/webcam-square.jpg">
+            <div class="box-container">
+                <div class="grid-box square not-rounded product-box col-xs-4 full-620">
+                    <div class="img-wrap">
+                        <img class="img-responsive" src="/assets/images/dummies/webcam-square.jpg">
 
-                    <div class="like-wrap">
-                        <a href="#" class="social-pic likes">157</a>
-                        <a href="#" class="social-pic comment">157</a>
+                        <div class="like-wrap">
+                            <a href="#" class="social-pic likes">157</a>
+                            <a href="#" class="social-pic comment">157</a>
+                        </div>
+                        <a href="#" class="overlay-tag category-tag top idea">Idea</a>
+                        <h4><a href="#">10 Ideas for Gorgeous Kitchens</a></h4>
+                        {{--<b>In wooden Kitchen styles</b>--}}
                     </div>
-                    <a href="#" class="overlay-tag category-tag top idea">Idea</a>
-                    <h4><a href="#">10 Ideas for Gorgeous Kitchens</a></h4>
-                    {{--<b>In wooden Kitchen styles</b>--}}
+                    <a href="#" class="overlay-tag bottom author" style="background-image: url('/assets/images/dummies/author.png')">Author Name Here</a>
+
+                    <time>Posted 5 hours ago</time>
                 </div>
-                <a href="#" class="overlay-tag bottom author" style="background-image: url('/assets/images/dummies/author.png')">Author Name Here</a>
+                <div class="grid-box square not-rounded product-box product col-xs-4 full-620">
+                    <div class="img-wrap">
+                        <img class="img-responsive" src="/assets/images/dummies/webcam-square.jpg">
 
-                <time>Posted 5 hours ago</time>
-            </div>
-            <div class="grid-box square not-rounded product-box product col-xs-4 full-620">
-                <div class="img-wrap">
-                    <img class="img-responsive" src="/assets/images/dummies/webcam-square.jpg">
-
-                    <div class="like-wrap">
-                        <a href="#" class="social-pic likes">157</a>
+                        <div class="like-wrap">
+                            <a href="#" class="social-pic likes">157</a>
+                        </div>
+                        <a href="#" class="overlay-tag category-tag top product">Product</a>
                     </div>
-                    <a href="#" class="overlay-tag category-tag top product">Product</a>
+                    <time>Posted 5 hours ago</time>
+
+                    <div class="color-overlay">
+                        <h4><a href="#">The Awesome Webcam</a></h4>
+                        <ul class="prices">
+                                <li>
+                                    <a href="#"><b>$35.00</b> from  <img class="vendor-logo" src="/assets/images/dummies/amazon-black.png"></a>
+                                </li>
+                                <li>
+                                    <a href="#"><b>$39.50.00</b> from  <img class="vendor-logo" src="/assets/images/dummies/amazon-black.png"></a>
+                                </li>
+                                <li>
+                                    <a href="#"><b>$41.00</b> from  <img class="vendor-logo" src="/assets/images/dummies/amazon-black.png"></a>
+                                </li>
+                            </ul>
+
+                        </div>
                 </div>
-                <time>Posted 5 hours ago</time>
+                <div class="grid-box square not-rounded product-box col-xs-4 full-620">
+                    <div class="img-wrap">
+                        <img class="img-responsive" src="/assets/images/dummies/webcam-square.jpg">
 
-                <div class="color-overlay">
-                    <h4><a href="#">The Awesome Webcam</a></h4>
-                    <ul class="prices">
-                            <li>
-                                <a href="#"><b>$35.00</b> from  <img class="vendor-logo" src="/assets/images/dummies/amazon-black.png"></a>
-                            </li>
-                            <li>
-                                <a href="#"><b>$39.50.00</b> from  <img class="vendor-logo" src="/assets/images/dummies/amazon-black.png"></a>
-                            </li>
-                            <li>
-                                <a href="#"><b>$41.00</b> from  <img class="vendor-logo" src="/assets/images/dummies/amazon-black.png"></a>
-                            </li>
-                        </ul>
-
+                        <div class="like-wrap">
+                            <a href="#" class="social-pic likes">157</a>
+                            <a href="#" class="social-pic comment">157</a>
+                        </div>
+                        <a href="#" class="overlay-tag category-tag top idea">Idea</a>
+                        <h4><a href="#">10 Ideas for Gorgeous Kitchens</a></h4>
+                        {{--<b>In wooden Kitchen styles</b>--}}
                     </div>
-            </div>
-            <div class="grid-box square not-rounded product-box col-xs-4 full-620">
-                <div class="img-wrap">
-                    <img class="img-responsive" src="/assets/images/dummies/webcam-square.jpg">
+                    <a href="#" class="overlay-tag bottom author" style="background-image: url('/assets/images/dummies/author.png')">Author Name Here</a>
 
-                    <div class="like-wrap">
-                        <a href="#" class="social-pic likes">157</a>
-                        <a href="#" class="social-pic comment">157</a>
-                    </div>
-                    <a href="#" class="overlay-tag category-tag top idea">Idea</a>
-                    <h4><a href="#">10 Ideas for Gorgeous Kitchens</a></h4>
-                    {{--<b>In wooden Kitchen styles</b>--}}
+                    <time>Posted 5 hours ago</time>
                 </div>
-                <a href="#" class="overlay-tag bottom author" style="background-image: url('/assets/images/dummies/author.png')">Author Name Here</a>
+                <div class="grid-box square not-rounded product-box huge col-xs-12 full-620">
+                    <div class="img-wrap">
+                        <img class="img-responsive" src="/assets/images/dummies/clock.png">
 
-                <time>Posted 5 hours ago</time>
-            </div>
-            <div class="grid-box square not-rounded product-box huge col-xs-12 full-620">
-                <div class="img-wrap">
-                    <img class="img-responsive" src="/assets/images/dummies/clock.png">
-
-                    <div class="like-wrap">
-                        <a href="#" class="social-pic likes">157</a>
+                        <div class="like-wrap">
+                            <a href="#" class="social-pic likes">157</a>
+                        </div>
+                        <a href="#" class="overlay-tag category-tag top idea">Idea</a>
+                        <h4><a href="#">10 Ideas for Gorgeous Kitchens</a></h4>
                     </div>
-                    <a href="#" class="overlay-tag category-tag top idea">Idea</a>
-                    <h4><a href="#">10 Ideas for Gorgeous Kitchens</a></h4>
+                    <time>Posted 5 hours ago</time>
+
+                    {{--<div class="color-overlay">--}}
+                        {{--<h4><a href="#">The Awesome Webcam</a></h4>--}}
+                        {{--<ul class="prices">--}}
+                                {{--<li>--}}
+                                    {{--<a href="#"><b>$35.00</b> from  <img class="vendor-logo" src="/assets/images/dummies/amazon-black.png"></a>--}}
+                                {{--</li>--}}
+                                {{--<li>--}}
+                                    {{--<a href="#"><b>$39.50.00</b> from  <img class="vendor-logo" src="/assets/images/dummies/amazon-black.png"></a>--}}
+                                {{--</li>--}}
+                                {{--<li>--}}
+                                    {{--<a href="#"><b>$41.00</b> from  <img class="vendor-logo" src="/assets/images/dummies/amazon-black.png"></a>--}}
+                                {{--</li>--}}
+                            {{--</ul>--}}
+
+                        {{--</div>--}}
                 </div>
-                <time>Posted 5 hours ago</time>
-
-                {{--<div class="color-overlay">--}}
-                    {{--<h4><a href="#">The Awesome Webcam</a></h4>--}}
-                    {{--<ul class="prices">--}}
-                            {{--<li>--}}
-                                {{--<a href="#"><b>$35.00</b> from  <img class="vendor-logo" src="/assets/images/dummies/amazon-black.png"></a>--}}
-                            {{--</li>--}}
-                            {{--<li>--}}
-                                {{--<a href="#"><b>$39.50.00</b> from  <img class="vendor-logo" src="/assets/images/dummies/amazon-black.png"></a>--}}
-                            {{--</li>--}}
-                            {{--<li>--}}
-                                {{--<a href="#"><b>$41.00</b> from  <img class="vendor-logo" src="/assets/images/dummies/amazon-black.png"></a>--}}
-                            {{--</li>--}}
-                        {{--</ul>--}}
-
-                    {{--</div>--}}
             </div>
-
-            <div class="col-xs-12 grid-insert pale-grey-bg">
-                <h4><a href="#">550.230 Kitchen Design Photos</a></h4>
+            <div class="col-xs-12 grid-insert">
+                <h4><a href="#">620.325 Awesome Products to Buy</a></h4>
                 <p>
-                    Charming, fully furnished Upper Castro apartment features high-end open kitchen, luxurious bath. Charming, fully furnished Upper Castro apartment features high-end open kitchen, luxurious bath. Charming, fully furnished Upper Castro apartment features high-end open kitchen, luxurious bath.
+                    Charming, fully furnished Upper Castro apartment features high-end open kitchen, luxurious bath. Charming, fully furnished Upper Castro apartment features high-end open kitchen.
                 </p>
                 <a class="btn btn-success" href="#">Upload a photo</a>
             </div>

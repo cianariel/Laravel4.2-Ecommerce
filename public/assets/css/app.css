@@ -5490,11 +5490,16 @@ main.page-content .card {
     overflow: hidden;
     border: 1px solid #00b1ff; }
   .grid-box.square {
+    display: table-cell;
+    border-collapse: collapse;
     padding: 0;
     min-height: 380px;
     margin-top: 0;
-    border-radius: 0 !important;
-    border: 1px solid #c1c1c1; }
+    border: 0 solid #c1c1c1;
+    border-width: 1px 1px 0 0;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box; }
     .grid-box.square .color-overlay,
     .grid-box.square .img-wrap {
       border: 0;
@@ -5586,6 +5591,11 @@ main.page-content .card {
     .grid-box.square.huge .color-overlay h4 {
       margin-top: 14%; }
 
+.box-container {
+  overflow: hidden;
+  border: 0px solid #c1c1c1;
+  border-width: 0 0 1px 1px; }
+
 .main-container {
   overflow: hidden; }
 
@@ -5655,8 +5665,7 @@ article.product {
 
 .grid-insert {
   padding: 45px;
-  margin-top: 45px;
-  background: #f2f5f5; }
+  margin-top: 45px; }
   .grid-insert h4 a {
     color: #3d4b4e; }
 
@@ -6866,6 +6875,10 @@ body.room-landing .page-content {
 body.room-landing .box-link {
   border-color: #c1c1c1;
   padding-right: 35px; }
+body.room-landing .grid-insert {
+  text-align: center; }
+  body.room-landing .grid-insert p {
+    line-height: 2.3; }
 
 .hero-tags {
   position: absolute;
