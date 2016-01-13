@@ -5290,7 +5290,7 @@ main.page-content .card {
       margin-top: 5px;
       margin-right: 17px; }
       .grid-box .like-wrap .social-pic.comment {
-        left: 80px;
+        left: 56px;
         color: #00b1ff;
         background: url("/assets/images/chat-blue-outline.png") 3px center no-repeat; }
         .grid-box .like-wrap .social-pic.comment:hover {
@@ -5316,7 +5316,7 @@ main.page-content .card {
     right: -20px;
     padding-left: 30px;
     padding-top: 6px;
-    padding-bottom: 18px;
+    padding-bottom: 0;
     border-radius: 20px;
     color: #3d4b4e; }
     .grid-box .img-wrap .like-wrap .social-pic {
@@ -5437,31 +5437,32 @@ main.page-content .card {
       overflow: visible; }
       .grid-box.big-box .img-wrap .big-image-link img {
         border: 1px solid #f2f5f5; }
+      .grid-box.big-box .img-wrap .like-wrap {
+        bottom: 0;
+        left: 0;
+        right: auto;
+        top: auto;
+        background: rgba(255, 255, 255, 0.9);
+        border-radius: 0 20px 0 0; }
     .grid-box.big-box .like-wrap {
-      padding-left: 45px;
+      padding-left: 8px;
       padding-top: 9px;
-      width: 139px;
-      height: 67px;
+      width: 105px;
+      height: 50px;
       bottom: -15px; }
     .grid-box.big-box .author {
       position: absolute;
       right: 40px;
       bottom: 10px; }
+    .grid-box.big-box:hover .img-wrap {
+      border: 1px solid #00b1ff; }
+      .grid-box.big-box:hover .img-wrap .big-image-link img {
+        border: 1px solid #00b1ff; }
   .grid-box:hover .img-wrap .color-overlay {
     box-shadow: 0 0 0 1px #00b1ff; }
   .grid-box:hover h3 a,
   .grid-box:hover h5 a {
     color: #008ecc !important; }
-  .grid-box.big-box:hover .img-wrap {
-    border: 1px solid #00b1ff; }
-    .grid-box.big-box:hover .img-wrap .big-image-link img {
-      border: 1px solid #00b1ff; }
-  .grid-box.big-box .like-wrap {
-    bottom: -20px;
-    left: -33px;
-    right: auto;
-    top: auto;
-    background: rgba(255, 255, 255, 0.9); }
   .grid-box.sidebar-box:hover .img-wrap {
     overflow: hidden;
     border: 1px solid #00b1ff; }
@@ -5643,8 +5644,12 @@ article.product {
     padding-left: 25px;
     background: rgba(255, 255, 255, 0.9) url("/assets/images/heart-grey.png") 5px 10px no-repeat;
     right: 0;
+    left: auto;
     bottom: 0;
+    top: auto;
+    position: absolute;
     width: 60px;
+    height: 30px;
     /* background: #fff; */
     text-indent: 0;
     color: #3d4b4e;
