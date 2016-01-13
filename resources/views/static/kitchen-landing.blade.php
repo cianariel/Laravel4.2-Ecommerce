@@ -136,7 +136,7 @@
     <main class="page-content">
         <div class="grid-box square not-rounded product-box col-xs-4 full-620">
             <div class="img-wrap">
-                <img class="img-responsive" src="/assets/images/dummies/img-small.jpg">
+                <img class="img-responsive" src="/assets/images/dummies/webcam-square.jpg">
 
                 <div class="like-wrap">
                     <a href="#" class="social-pic likes">157</a>
@@ -148,9 +148,9 @@
             </div>
 
                 <div class="color-overlay">
-                    <div class="like-wrap">
-                        <a href="#" class="social-pic likes">157</a>
-                    </div>
+                    {{--<div class="like-wrap">--}}
+                        {{--<a href="#" class="social-pic likes">157</a>--}}
+                    {{--</div>--}}
 
                     <ul class="prices">
                         <li>

@@ -5489,6 +5489,27 @@ main.page-content .card {
   .grid-box.sidebar-box:hover .img-wrap {
     overflow: hidden;
     border: 1px solid #00b1ff; }
+  .grid-box.square {
+    padding: 0;
+    min-height: 450px;
+    border-radius: 0 !important;
+    border: 1px solid #c1c1c1; }
+    .grid-box.square .color-overlay,
+    .grid-box.square .img-wrap {
+      border: 0;
+      border-radius: 0; }
+    .grid-box.square img {
+      position: absolute;
+      width: 100%; }
+    .grid-box.square .category-tag {
+      width: 70px;
+      height: 70px;
+      text-align: center;
+      padding-top: 40px;
+      color: #fff;
+      border-radius: 50%; }
+      .grid-box.square .category-tag.idea {
+        background: #ff7f00 url("/assets/images/icons/lamp-white-3.png") center 12px no-repeat; }
 
 .main-container {
   overflow: hidden; }
@@ -6764,7 +6785,7 @@ body.room-landing #hero .orange img.round {
 body.room-landing #hero .yellow img.round {
   border-color: yellow; }
 body.room-landing .box-link {
-  border-color: #f2f5f5;
+  border-color: #c1c1c1;
   padding-right: 35px; }
 
 .hero-tags {
