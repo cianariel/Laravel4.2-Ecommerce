@@ -206,7 +206,9 @@
                         <h4><a href="#">10 Ideas for Gorgeous Kitchens</a></h4>
                     </div>
                     <time>Posted 5 hours ago</time>
-
+                    <a href="#" class="overlay-tag bottom featured-badge big">
+                        Featured
+                    </a>
                     {{--<div class="color-overlay">--}}
                         {{--<h4><a href="#">The Awesome Webcam</a></h4>--}}
                         {{--<ul class="prices">--}}

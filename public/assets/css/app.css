@@ -5590,9 +5590,22 @@ main.page-content .card {
       margin-top: 20%; }
     .grid-box.square.huge .color-overlay h4 {
       margin-top: 14%; }
+    .grid-box.square.huge .img-wrap {
+      overflow: hidden;
+      min-height: 380px; }
+    .grid-box.square a.featured-badge {
+      display: block;
+      width: 71px;
+      height: 165px;
+      position: absolute;
+      left: -35px;
+      top: 64px;
+      background: url("/assets/images/elements/featured-badge-vertical-left.png") no-repeat left top;
+      text-indent: -9999px; }
 
 .box-container {
-  overflow: hidden;
+  width: 100%;
+  float: left;
   border: 0px solid #c1c1c1;
   border-width: 0 0 1px 1px; }
 

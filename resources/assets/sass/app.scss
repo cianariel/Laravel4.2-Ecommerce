@@ -1737,7 +1737,6 @@ main.page-content{
     padding: 0;
     min-height: 380px;
     margin-top: 0;
-    //border-radius: 0 !important;
     border: 0 solid $light-grey;
     border-width: 1px 1px 0 0;
     -webkit-box-sizing: border-box;
@@ -1870,8 +1869,6 @@ main.page-content{
       }
     }
 
-
-
     &.huge{
       h4{
         margin-top: 20%;
@@ -1881,6 +1878,21 @@ main.page-content{
           margin-top: 14%;
         }
       }
+      .img-wrap{
+        overflow: hidden;
+        min-height: 380px;
+      }
+    }
+
+    a.featured-badge{
+      display: block;
+      width: 71px;
+      height: 165px;
+      position: absolute;
+      left: -35px;
+      top: 64px;
+      background: url("/assets/images/elements/featured-badge-vertical-left.png") no-repeat left top;
+      text-indent: -9999px;
     }
 
   }
@@ -1889,7 +1901,9 @@ main.page-content{
 }
 
 .box-container{
-  overflow: hidden;
+  //overflow: hidden;
+  width: 100%;
+  float: left;
   border: 0px solid $light-grey;
   border-width: 0 0 1px 1px;
 }
