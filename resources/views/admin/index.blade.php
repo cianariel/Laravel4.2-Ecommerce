@@ -2,29 +2,26 @@
 
 @section('content')
 
-        <!-- Navigation -->
-<nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+<div class="page-content-wrapper">
 
-    @include('admin.includes.topbar')
 
-            <!-- /.navbar-top-links -->
-    @include('admin.includes.sidebar')
-
-            <!-- /.navbar-static-side -->
-</nav>
-
-    <div id="page-wrapper">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-lg-12">
-                    <h1 class="page-header">Dashboard</h1>
-                </div>
-                <!-- /.col-lg-12 -->
-            </div>
-            <!-- /.row -->
+    <div class="page-content">
+        <!-- BEGIN PAGE BAR -->
+        <div class="page-bar">
+            <ul class="page-breadcrumb">
+                <li>
+                    <a href="index.html">Home</a>
+                    <i class="fa fa-circle"></i>
+                </li>
+                <li>
+                    <span>Dashboard</span>
+                </li>
+            </ul>
         </div>
-        <!-- /.container-fluid -->
+        <!-- END PAGE BAR -->
     </div>
+</div>
+
 @stop
 
 

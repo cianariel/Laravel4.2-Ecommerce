@@ -2,28 +2,30 @@
 
 @section('content')
 
-        <!-- Navigation -->
-<nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
 
-    @include('admin.includes.topbar')
-
-            <!-- /.navbar-top-links -->
-    @include('admin.includes.sidebar')
-
-            <!-- /.navbar-static-side -->
-</nav>
+<div class="page-content-wrapper">
 
 
-<div id="page-wrapper">
-    <div class="container-fluid">
+    <div class="page-content">
+        <!-- BEGIN PAGE BAR -->
+        <div class="page-bar">
+            <ul class="page-breadcrumb">
+                <li>
+                    <a href="index.html">Admin</a>
+                    <i class="fa fa-circle"></i>
+                </li>
+                <li>
+                    <span>Add / Update Product</span>
+                </li>
+            </ul>
+        </div>
+        <!-- END PAGE BAR -->
         <div class="row">
             <div class="col-lg-12">
                 <h1 class="page-header">Add / Update Product</h1>
             </div>
             <!-- /.col-lg-12 -->
         </div>
-        <!-- /.row -->
-
         <div ng-app="adminApp" data-ng-controller="AdminController" class="row" nv-file-drop="" uploader="uploader"
              filters="queueLimit, customFilter">
 
@@ -641,8 +643,6 @@
         </div>
         <!-- /.row -->
         </div>
-        <!-- /.container-fluid -->
-
     </div>
 </div>
 @stop

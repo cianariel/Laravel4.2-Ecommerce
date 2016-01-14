@@ -1,28 +1,31 @@
 @extends('layouts.admin')
 
 @section('content')
-        <!-- Navigation -->
-<nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
-
-    @include('admin.includes.topbar')
-
-            <!-- /.navbar-top-links -->
-    @include('admin.includes.sidebar')
-
-            <!-- /.navbar-static-side -->
-</nav>
 
 
-<div id="page-wrapper">
-    <div class="container-fluid">
+<div class="page-content-wrapper">
+
+
+    <div class="page-content">
+        <!-- BEGIN PAGE BAR -->
+        <div class="page-bar">
+            <ul class="page-breadcrumb">
+                <li>
+                    <a href="index.html">Home</a>
+                    <i class="fa fa-circle"></i>
+                </li>
+                <li>
+                    <span>Category List</span>
+                </li>
+            </ul>
+        </div>
+        <!-- END PAGE BAR -->
         <div class="row">
             <div class="col-lg-12">
                 <h1 class="page-header">Category List</h1>
             </div>
             <!-- /.col-lg-12 -->
         </div>
-        <!-- /.row -->
-
         <div ng-app="adminApp" data-ng-controller="AdminController" class="row">
             <div class="col-lg-12" ng-cloak>
                 <div class="panel panel-default">
@@ -154,7 +157,6 @@
             </div>
             <!-- /.row -->
         </div>
-        <!-- /.container-fluid -->
     </div>
 </div>
 @stop
