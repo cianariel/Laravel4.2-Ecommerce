@@ -4538,10 +4538,10 @@ button {
 
 h6.gift {
   position: relative;
-  background: #f2f5f5;
   padding: 15px 20px 15px 40px;
   text-transform: uppercase;
-  color: #000; }
+  color: #000;
+  background: #f2f5f5 url("/assets/images/icons/gift.png") 8px center no-repeat; }
   h6.gift::after {
     content: 'x';
     width: 20px;
@@ -7044,14 +7044,14 @@ body.room-landing .grid-insert {
     margin-top: 25px; }
 
 .hero-related-products {
-  background: rgba(0, 0, 0, 0.4);
+  background: rgba(0, 0, 0, 0.8);
   padding: 0; }
   .hero-related-products h5 {
     padding: 20px;
     padding-left: 25px;
     margin-top: 0;
     color: #fff;
-    background: rgba(0, 0, 0, 0.4) url("/assets/images/arrow-right-white.png") no-repeat right center;
+    background: black url("/assets/images/arrow-right-white.png") no-repeat right center;
     background-size: 20px;
     font-size: 1.7rem; }
   .hero-related-products ul {
@@ -7070,7 +7070,8 @@ body.room-landing .grid-insert {
       .hero-related-products a:not(.get) img.round {
         box-shadow: none !important; }
   .hero-related-products .get {
-    margin-top: 21px; }
+    margin-top: 21px;
+    border-radius: 0; }
 
 .pink-border img {
   border-color: #ff0042; }

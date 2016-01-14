@@ -291,10 +291,11 @@ button{
 
 h6.gift{
   position: relative;
-  background: $pale-grey;
+  //background: $pale-grey;
   padding: 15px 20px 15px 40px;
   text-transform: uppercase;
   color:#000;
+  background: $pale-grey url("/assets/images/icons/gift.png") 8px center no-repeat;
 
   &::after{
     content: 'x';
@@ -4302,7 +4303,7 @@ body.room-landing{
 
 
 .hero-related-products{
-  background: rgba(0,0,0,.4);
+  background: rgba(0,0,0,.8);
   padding: 0;
 
   h5{
@@ -4341,6 +4342,7 @@ body.room-landing{
 
   .get{
     margin-top: 21px;
+    border-radius: 0;
   }
 
 }
