@@ -1,54 +1,36 @@
 <head>
-
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
     <title>Ideaing - Admin Panel</title>
-
-    <!-- Bootstrap Core CSS -->
-
-    <link href="/assets/admin/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- MetisMenu CSS -->
-    <link href="/assets/admin/css/metisMenu.min.css" rel="stylesheet">
-
-    <!-- Custom CSS -->
-    <link href="/assets/admin/css/sb-admin-2.css" rel="stylesheet">
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <meta content="" name="description" />
+    <meta content="" name="author" />
+    <!-- BEGIN GLOBAL MANDATORY STYLES -->
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all" rel="stylesheet" type="text/css" />
+    <link href="/assets/global/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+    <link href="/assets/global/plugins/simple-line-icons/simple-line-icons.min.css" rel="stylesheet" type="text/css" />
+    <link href="/assets/global/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="/assets/global/plugins/uniform/css/uniform.default.css" rel="stylesheet" type="text/css" />
+    <link href="/assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css" rel="stylesheet" type="text/css" />
+    <!-- END GLOBAL MANDATORY STYLES -->
+    <!-- BEGIN DYMANICLY LOADED CSS FILES(all plugin and page related styles must be loaded between GLOBAL and THEME css files ) -->
+    <link id="ng_load_plugins_before" />
+    <!-- END DYMANICLY LOADED CSS FILES -->
+    <!-- BEGIN THEME STYLES -->
+    <!-- DOC: To use 'rounded corners' style just load 'components-rounded.css' stylesheet instead of 'components.css' in the below style tag -->
+    <link href="/assets/global/css/components.min.css" id="style_components" rel="stylesheet" type="text/css" />
+    <link href="/assets/global/css/plugins.min.css" rel="stylesheet" type="text/css" />
+    <link href="/assets/layouts/layout/css/layout.min.css" rel="stylesheet" type="text/css" />
+    <link href="/assets/layouts/layout/css/themes/darkblue.min.css" rel="stylesheet" type="text/css" id="style_color" />
+    <link href="/assets/layouts/layout/css/custom.min.css" rel="stylesheet" type="text/css" />
+    
     <link href="/assets/css/wysiwyg.style.css" rel="stylesheet">
     <link href="/assets/css/ng-tags-input.min.css" rel="stylesheet">
     <link href="/assets/admin/css/ng-rateit.css" rel="stylesheet">
     <link href="/assets/admin/css/admin.custom.css" rel="stylesheet">
 
-    <!-- Custom Fonts -->
-    <link href="/assets/admin/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-
-
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-
-    <script src="/assets/js/vendor/angular.min.js"></script>
-    <script src="/assets/js/vendor/textAngular-sanitize.min.js"></script>
-
-    <script src="/assets/js/vendor/angular-confirm.js"></script>
-
-    <script src="/assets/js/vendor/textAngular-rangy.min.js"></script>
-
-    <script src="/assets/js/vendor/textAngular.min.js"></script>
-
-    <script src="/assets/js/vendor/ng-tags-input.min.js"></script>
-
-    <script src="/assets/admin/js/angular-file-upload.min.js"></script>
-
-    <script src="/assets/admin/js/ng-rateit.min.js"></script>
-
-
-
-
+    
+    <!-- END THEME STYLES -->
+    <link rel="shortcut icon" href="favicon.ico" /> 
 </head>
+
