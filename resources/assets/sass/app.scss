@@ -41,6 +41,9 @@
 //
 //}
 
+.ta-hidden-input{
+  display: none;
+}
 
 // COLORS
 
@@ -2490,7 +2493,7 @@ header.colophon{
 
             &:after{
               position: absolute;
-              right: 11px;
+              right: 5px;
               top: 4px;
               background-size: 22px;
             }
@@ -4201,6 +4204,7 @@ body.room-landing{
     position: absolute;
     width: 100%;
     height: 100%;
+    min-height: 450px;
     z-index: 1;
 
     .tag{
@@ -4306,7 +4310,7 @@ body.room-landing{
     padding-left: 25px;
     margin-top: 0;
     color: #fff;
-    background: rgba(0, 0, 0, 0.4) url("/assets/images/arrow-right-white.png") no-repeat right center;
+    background: rgba(0, 0, 0, 1) url("/assets/images/arrow-right-white.png") no-repeat right center;
     background-size: 20px;
     font-size: 1.7rem;
   }
@@ -4336,7 +4340,7 @@ body.room-landing{
   }
 
   .get{
-    margin-top: 15px;
+    margin-top: 21px;
   }
 
 }
@@ -4508,6 +4512,12 @@ footer.about-footer{
 
 // RESPONSIVE BEHAVIOUR
 
+@media only screen and (max-width: 1570px){
+  aside.room-filter{
+    display: none;
+  }
+}
+
 @media only screen and (max-width: 1200px){
   #top-nav a {
     margin-right: 3%;
@@ -4592,6 +4602,29 @@ footer.about-footer{
     }
   }
 
+  .grid-box.square{
+    min-height: 300px;
+  }
+
+  .grid-box.square{
+    a.featured-badge {
+      top: 219px;
+    }
+    ul.prices{
+      position: relative;
+      top: -20px;
+      padding-top: 7% !important;
+      a{
+        font-size: 1.3rem;
+      }
+    }
+    h4{
+      margin-top: 39%;
+    }
+    .img-wrap .category-tag.idea {
+      background-size: 24px !important;
+    }
+  }
 }
 
 @media only screen and (max-width: 992px){
@@ -4997,7 +5030,7 @@ footer.about-footer{
       //  bottom: -27px;
       //}
 
-      a{
+      a:not(.box-link){
         //background-position: left;
         //background-repeat: no-repeat;
         padding-left: 35px;
@@ -5046,6 +5079,16 @@ footer.about-footer{
             padding-right: 5%;
             background-position: center 15px !important;
           }
+        }
+      }
+
+      .popular-new{
+        float: none !important;
+        margin: 0 auto;
+        overflow: hidden;
+        width: 310px;
+        a{
+          padding-right: 30px !important;
         }
       }
   }

@@ -96,7 +96,7 @@
                    {{--</div>--}}
                 {{--</div>--}}
             </div>
-            <section class="hero-related-products col-md-4 pull-right ">
+            <section class="hero-related-products col-md-4 pull-right hidden-620">
                     <h5>Related Products</h5>
                 <ul>
                     <li class="pink"><a class="pink-border" href="#"><img src="/assets/images/dummies/box-image-dummy.png" class="round" alt="" /> Steam pot</a> <a href="#" class="get solid pull-right">Get it</a></li>
@@ -116,7 +116,7 @@
                  <li><a class="filter-link" href="#">Filter</a></li>
             </ul>
 
-            <ul class="col-sm-4 pull-right">
+            <ul class="col-sm-4 pull-right popular-new">
                 <li class="pull-right">
                     <a href="#" class="box-link">Newest</a>
                 </li>
@@ -124,7 +124,7 @@
                     <a href="#" class="box-link">Popular</a>
                 </li>
             </ul>
-            <ul class="category-nav col-sm-5 pull-right">
+            <ul class="category-nav col-sm-6 pull-right">
                 <li><a href="" class="all-link">All</a></li>
                 <li><a href="" class="ideas-link">Ideas</a></li>
                 <li><a href="" class="products-link">Products</a></li>

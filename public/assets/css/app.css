@@ -4368,6 +4368,9 @@ a.label:focus {
   font-weight: normal;
   font-style: normal; }
 
+.ta-hidden-input {
+  display: none; }
+
 .pink {
   color: #ff0042 !important; }
 
@@ -5974,7 +5977,7 @@ header.colophon {
         text-indent: -9999px; }
         header.colophon.scroll-header #top-nav li a:after {
           position: absolute;
-          right: 11px;
+          right: 5px;
           top: 4px;
           background-size: 22px; }
       header.colophon.scroll-header #top-nav a#ideaing-logo {
@@ -6983,6 +6986,7 @@ body.room-landing .grid-insert {
   position: absolute;
   width: 100%;
   height: 100%;
+  min-height: 450px;
   z-index: 1; }
   .hero-tags .tag {
     position: absolute; }
@@ -7066,7 +7070,7 @@ body.room-landing .grid-insert {
       .hero-related-products a:not(.get) img.round {
         box-shadow: none !important; }
   .hero-related-products .get {
-    margin-top: 15px; }
+    margin-top: 21px; }
 
 .pink-border img {
   border-color: #ff0042; }
@@ -7153,6 +7157,9 @@ footer.about-footer {
     top: 30px;
     right: 20px; }
 
+@media only screen and (max-width: 1570px) {
+  aside.room-filter {
+    display: none; } }
 @media only screen and (max-width: 1200px) {
   #top-nav a {
     margin-right: 3%; }
@@ -7178,7 +7185,23 @@ footer.about-footer {
       padding-left: 0; }
 
   .idea-stories .story-details .author-overview {
-    padding-top: 6%; } }
+    padding-top: 6%; }
+
+  .grid-box.square {
+    min-height: 300px; }
+
+  .grid-box.square a.featured-badge {
+    top: 219px; }
+  .grid-box.square ul.prices {
+    position: relative;
+    top: -20px;
+    padding-top: 7% !important; }
+    .grid-box.square ul.prices a {
+      font-size: 1.3rem; }
+  .grid-box.square h4 {
+    margin-top: 39%; }
+  .grid-box.square .img-wrap .category-tag.idea {
+    background-size: 24px !important; } }
 @media only screen and (max-width: 1200px) and (min-width: 768px) {
   footer.about-footer input[type="submit"] {
     border-radius: 4px;
@@ -7409,21 +7432,21 @@ footer.about-footer {
     height: 70px; }
   #hero-nav li.active a::after {
     right: 27% !important; }
-  #hero-nav a {
+  #hero-nav a:not(.box-link) {
     padding-left: 35px;
     padding-top: 40px;
     background-size: 30px;
     margin-right: 1%;
     font-size: 1.3rem; }
-    #hero-nav a.home-link {
+    #hero-nav a:not(.box-link).home-link {
       display: none; }
-    #hero-nav a:not(.home-link) {
+    #hero-nav a:not(.box-link):not(.home-link) {
       background-position: 36px 13px !important; }
-    #hero-nav a.all-link {
+    #hero-nav a:not(.box-link).all-link {
       background-position: 28px 13px !important; }
-    #hero-nav a.photos-link {
+    #hero-nav a:not(.box-link).photos-link {
       background-position: 43px 13px !important; }
-    #hero-nav a.products-link {
+    #hero-nav a:not(.box-link).products-link {
       background-position: 56px 13px !important; }
   #hero-nav.product-nav ul {
     padding-left: 0;
@@ -7432,6 +7455,13 @@ footer.about-footer {
       padding-left: 10%;
       padding-right: 5%;
       background-position: center 15px !important; }
+  #hero-nav .popular-new {
+    float: none !important;
+    margin: 0 auto;
+    overflow: hidden;
+    width: 310px; }
+    #hero-nav .popular-new a {
+      padding-right: 30px !important; }
 
   .mid-nav a, .mid-nav .extra-nav a {
     font-size: 1.8rem; }
