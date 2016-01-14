@@ -45,6 +45,8 @@
         <script src="/assets/js/vendor/textAngular.min.js"></script>
         <script src="/assets/js/vendor/ng-tags-input.min.js"></script>
         <script src="/assets/admin/js/angular-file-upload.min.js"></script>
+        <script src="/assets/admin/js/ng-rateit.min.js"></script>
+
         <!-- Angular JS and components-->
         <script src="/assets/js/vendor/ui-bootstrap.min.js"></script>
         <script src="/assets/admin/js/custom.admin.js"></script>

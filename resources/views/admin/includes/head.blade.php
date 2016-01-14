@@ -23,6 +23,11 @@
     <link href="/assets/layouts/layout/css/layout.min.css" rel="stylesheet" type="text/css" />
     <link href="/assets/layouts/layout/css/themes/darkblue.min.css" rel="stylesheet" type="text/css" id="style_color" />
     <link href="/assets/layouts/layout/css/custom.min.css" rel="stylesheet" type="text/css" />
+    
+    <link href="/assets/css/wysiwyg.style.css" rel="stylesheet">
+    <link href="/assets/css/ng-tags-input.min.css" rel="stylesheet">
+    <link href="/assets/admin/css/ng-rateit.css" rel="stylesheet">
+    <link href="/assets/admin/css/admin.custom.css" rel="stylesheet">
 
     
     <!-- END THEME STYLES -->

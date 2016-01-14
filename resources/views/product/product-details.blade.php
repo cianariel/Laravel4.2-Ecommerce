@@ -64,7 +64,8 @@
                 </nav>
 
                 <div class="average-score">
-                    <div class="score">98%</div>
+                    <div class="score">@if(isset($productInformation['Review']) && isset($productInformation['IdeaingReviewScore']))
+                            {{(($productInformation['Review'][0]->value + $productInformation['IdeaingReviewScore'])/2)*20}}@endif%</div>
                     <span class="caption">Average Ideaing Score</span>
                 </div>
 
@@ -380,7 +381,9 @@
                                         <tr>
                                             <td class="name">
                                                 <a href="@if(isset($review->link)){{$review->link}}@endif"
-                                                   target="_blank">@if(isset($review->key)){{$review->key}}@endif</a>
+                                                   target="_blank">@if(isset($review->key)){{$review->key}}@endif
+                                                @if(isset($review->counter))( {{$review->counter}} )@endif
+                                                </a>
                                             </td>
                                             <td class="line">
                                                 <div class="outer-line">
