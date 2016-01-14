@@ -217,7 +217,7 @@
                     <li><a href="">Lighting</a></li>
                     <li><a href="">Decor</a></li>
                     <li><a data-toggle=".extra-nav" class="more-link extra" href="">...</a>
-                        <ul class="extra-nav hidden-620">
+                        <ul class="extra-nav hidden-620 hidden-soft">
                             <li><a class="smart-home-link pink" href="#">Smart Home</a></li>
                             <li><a class="travel-link blue" href="#">Travel</a></li>
                             <li><a class="wearables-link green" href="#">Wearables</a></li>
