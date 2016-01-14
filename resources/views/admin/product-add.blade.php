@@ -149,10 +149,10 @@
                                                             </div>
                                                             <div class="form-group row">&nbsp;
                                                                 <div class="col-lg-6">
-                                                                    <label>Prodcut ID</label>
+                                                                    <label>Product ID</label>
                                                                     <input data-ng-model="ProductVendorId"
                                                                            class="form-control"
-                                                                           placeholder="Enter product name">
+                                                                           placeholder="Amazon - ASIN">
                                                                 </div>
 
                                                                 <div class="col-lg-6">
