@@ -478,8 +478,8 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
 
         // update product
         $scope.updateProduct = function () {
-            // console.log('product id :', $scope.ProductId);
 
+            $scope.closeAlert();
             // if it's a new request then product should be insert first
             //   console.log($scope.ProductId);
             if ($scope.ProductId == '') {
@@ -635,7 +635,7 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
             $scope.reviewLink = '';
             $scope.reviewCounter = 0;
             /*$scope.externalReviewLink = '';
-            $scope.ideaingReviewScore = 0;*/
+             $scope.ideaingReviewScore = 0;*/
             $scope.calculateAvg();
 
         }
@@ -724,29 +724,39 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
                 if (data.status_code == 200) {
                     $scope.Name = data.data.ApiTitle;
                     $scope.Price = data.data.ApiPrice;
+                    $scope.SalePrice = data.data.ApiSalePrice;
                     $scope.mediaLink = $scope.mediaLinkTmp = data.data.ApiImageLink;
+                    $scope.AffiliateLink = data.data.AffiliateLink;
                     $scope.ProductAvailability = data.data.ApiAvailable;
 
-                    $scope.spKey = 'Height';
-                    $scope.spVal = data.data.ApiSpecification['Height'];
+                    if ($scope.Specifications == null)
+                        $scope.Specifications = [];
+
                     $scope.Specifications.push(
-                        {'key': $scope.spKey, 'value': $scope.spVal}
+                        {'key': 'Manufacturer', 'value': data.data.ApiSpecification.Manufacturer}
                     );
-                    $scope.spKey = 'Length';
-                    $scope.spVal = data.data.ApiSpecification['Length'];
                     $scope.Specifications.push(
-                        {'key': $scope.spKey, 'value': $scope.spVal}
+                        {'key': 'Model', 'value': data.data.ApiSpecification.Model}
                     );
-                    $scope.spKey = 'Width';
-                    $scope.spVal = data.data.ApiSpecification['Width'];
                     $scope.Specifications.push(
-                        {'key': $scope.spKey, 'value': $scope.spVal}
+                        {'key': 'Part Number', 'value': data.data.ApiSpecification.PartNumber}
                     );
-                    $scope.spKey = 'Weight';
-                    $scope.spVal = data.data.ApiSpecification['Weight'];
                     $scope.Specifications.push(
-                        {'key': $scope.spKey, 'value': $scope.spVal}
+                        {'key': 'Color', 'value': data.data.ApiSpecification.Color}
                     );
+                    $scope.Specifications.push(
+                        {'key': 'Product Size', 'value': data.data.ApiSpecification.ProductSize}
+                    );
+                    $scope.Specifications.push(
+                        {'key': 'Package Size', 'value': data.data.ApiSpecification.PackageSize}
+                    );
+                    $scope.Specifications.push(
+                        {'key': 'Weight', 'value': data.data.ApiSpecification.Weight}
+                    );
+                    $scope.Specifications.push(
+                        {'key': 'Features', 'value': data.data.ApiSpecification.Features.toString()}
+                    );
+
 
                     $scope.spKey = '';
                     $scope.spVal = '';
