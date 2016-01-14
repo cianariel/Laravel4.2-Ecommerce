@@ -32,6 +32,7 @@
             'price_grabber_master_id',
             'review',
             'review_ext_link',
+            'ideaing_review_score',
             'free_shipping',
             'coupon_code',
             'post_status',
@@ -116,6 +117,7 @@
                     "price_grabber_master_id" => $product['PriceGrabberId'],
                     "review"                  => json_encode($product['Review']),
                     "review_ext_link"         => $product['ExternalReviewLink'],
+                    "ideaing_review_score"    => $product['IdeaingReviewScore'],
                     "free_shipping"           => $product['FreeShipping'],
                     "coupon_code"             => $product['CouponCode'],
                     "page_title"              => $product['PageTitle'],
@@ -281,6 +283,7 @@
             $productInfo['AffiliateLink'] = $productData['product']->affiliate_link;
             $productInfo['Review'] = $productData['product']->review;
             $productInfo['ReviewExtLink'] = $productData['product']->review_ext_link;
+            $productInfo['IdeaingReviewScore'] = $productData['product']->ideaing_review_score;
             $productInfo['FreeShipping'] = $productData['product']->free_shipping;
             $productInfo['PageTitle'] = $productData['product']->page_title;
             $productInfo['MetaDescription'] = $productData['product']->meta_description;

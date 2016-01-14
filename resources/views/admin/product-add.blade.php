@@ -251,11 +251,11 @@
                                                                                    ng-model-options="{debounce: 1000}"></auto-complete>
                                                                 </tags-input>
                                                             </div>
-                                                               <div class="form-group">
-                                                                   <label>Product Availability</label>
-                                                                   <input data-ng-model="ProductAvailability"
-                                                                          class="form-control" placeholder="Enter text">
-                                                               </div>
+                                                            <div class="form-group">
+                                                                <label>Product Availability</label>
+                                                                <input data-ng-model="ProductAvailability"
+                                                                       class="form-control" placeholder="Enter text">
+                                                            </div>
 
                                                             <div class="form-group">
                                                                 <div style="height: 3px">&nbsp;</div>
@@ -263,7 +263,8 @@
                                                                         class="btn btn-primary" type="button">
                                                                     Save
                                                                 </button>
-                                                                <button ng-hide="Permalink == ''" data-ng-click="previewProduct(Permalink)"
+                                                                <button ng-hide="Permalink == ''"
+                                                                        data-ng-click="previewProduct(Permalink)"
                                                                         class="btn btn-success" type="button">
                                                                     Preview
                                                                 </button>
@@ -278,7 +279,8 @@
                                                                         class="btn btn-warning" type="button">
                                                                     Inactive
                                                                 </button>
-                                                                <button ng-hide="ProductId == ''" data-ng-click="deleteProduct(ProductId,true)"
+                                                                <button ng-hide="ProductId == ''"
+                                                                        data-ng-click="deleteProduct(ProductId,true)"
                                                                         confirm="Are you sure to delete this product ?"
                                                                         confirm-settings="{size: 'sm'}"
                                                                         class="btn btn-danger" type="button">
@@ -364,7 +366,8 @@
                                                                 class="btn btn-primary" type="button">
                                                             Save
                                                         </button>
-                                                        <button ng-hide="Permalink == ''" data-ng-click="previewProduct(Permalink)"
+                                                        <button ng-hide="Permalink == ''"
+                                                                data-ng-click="previewProduct(Permalink)"
                                                                 class="btn btn-success" type="button">
                                                             Preview
                                                         </button>
@@ -379,7 +382,8 @@
                                                                 class="btn btn-warning" type="button">
                                                             Inactive
                                                         </button>
-                                                        <button ng-hide="ProductId == ''" data-ng-click="deleteProduct(ProductId,true)"
+                                                        <button ng-hide="ProductId == ''"
+                                                                data-ng-click="deleteProduct(ProductId,true)"
                                                                 confirm="Are you sure to delete this product ?"
                                                                 confirm-settings="{size: 'sm'}"
                                                                 class="btn btn-danger" type="button">
@@ -393,11 +397,17 @@
                                                     <p>
                                                         <input type='text' ng-model="reviewKey" placeholder="key">
                                                         <input type='text' ng-model="reviewLink" placeholder="Link">
-                                                        <uib-rating ng-model="reviewValue"
+                                                        <input type='text' ng-model="reviewCounter"
+                                                               placeholder="Counter">
+                                                        {{--<uib-rating ng-model="reviewValue"
                                                                     max="5"
                                                                     aria-labelledby="default-rating">
-                                                        </uib-rating>
+                                                        </uib-rating>--}}
 
+                                                        <ng-rate-it ng-model="reviewValue"
+                                                                    read-only="false"
+                                                                    resetable="false">
+                                                        </ng-rate-it>
 
                                                         <button ng-click="addReviewFormField()"
                                                                 ng-show="!isUpdateReviewShow"
@@ -429,6 +439,7 @@
                                                                             <tr>
                                                                                 <th>#</th>
                                                                                 <th>Key</th>
+                                                                                <th>Counter</th>
                                                                                 <th>Value</th>
                                                                                 <th>Action</th>
                                                                             </tr>
@@ -436,17 +447,29 @@
                                                                             <tbody>
                                                                             <tr ng-repeat="review in reviews">
                                                                                 <td>@{{$index}}</td>
-                                                                                <td><a href="@{{ review.link }}"
+                                                                                <td><a ng-hide="$index==0"
+                                                                                       href="@{{ review.link }}"
                                                                                        target="_blank">
                                                                                         @{{ review.key }}
                                                                                     </a>
+
+                                                                                    <div ng-show="$index==0">
+                                                                                        @{{ review.key }}
+                                                                                    </div>
                                                                                 </td>
+                                                                                <td>@{{ review.counter }}</td>
+
                                                                                 <td>
-                                                                                    <uib-rating ng-model="review.value"
-                                                                                                max="5"
-                                                                                                aria-labelledby="default-rating"
-                                                                                                readonly="true">
-                                                                                    </uib-rating>
+                                                                                    {{-- <uib-rating ng-model="review.value"
+                                                                                                 max="5"
+                                                                                                 aria-labelledby="default-rating"
+                                                                                                 readonly="true">
+                                                                                     </uib-rating>--}}
+                                                                                    <ng-rate-it ng-model="review.value"
+                                                                                                read-only="true"
+                                                                                                resetable="false">
+                                                                                    </ng-rate-it>
+
                                                                                 </td>
                                                                                 <td>
 
@@ -478,6 +501,16 @@
                                                             </div>
                                                         </div>
                                                     </div>
+                                                    <div style="margin-left: 5px;" class=row>
+
+                                                            <label>Ideaing Review</label>
+                                                        <div class="form-group">
+                                                            <ng-rate-it ng-model="ideaingReviewScore"
+                                                                        read-only="false"
+                                                                        resetable="true">
+                                                            </ng-rate-it>
+                                                        </div>
+                                                    </div>
                                                     <div class="row">
                                                         <div class="col-lg-6">
                                                             <div class="form-group">
@@ -499,7 +532,8 @@
                                                                 class="btn btn-primary" type="button">
                                                             Save
                                                         </button>
-                                                        <button ng-hide="Permalink == ''" data-ng-click="previewProduct(Permalink)"
+                                                        <button ng-hide="Permalink == ''"
+                                                                data-ng-click="previewProduct(Permalink)"
                                                                 class="btn btn-success" type="button">
                                                             Preview
                                                         </button>
@@ -514,7 +548,8 @@
                                                                 class="btn btn-warning" type="button">
                                                             Inactive
                                                         </button>
-                                                        <button ng-hide="ProductId == ''" data-ng-click="deleteProduct(ProductId,true)"
+                                                        <button ng-hide="ProductId == ''"
+                                                                data-ng-click="deleteProduct(ProductId,true)"
                                                                 confirm="Are you sure to delete this product ?"
                                                                 confirm-settings="{size: 'sm'}"
                                                                 class="btn btn-danger" type="button">

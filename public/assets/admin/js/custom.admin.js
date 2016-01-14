@@ -1,4 +1,4 @@
-var adminApp = angular.module('adminApp', ['ui.bootstrap', 'ngSanitize', 'angular-confirm', 'textAngular', 'ngTagsInput', 'angularFileUpload']);
+var adminApp = angular.module('adminApp', ['ui.bootstrap', 'ngRateIt', 'ngSanitize', 'angular-confirm', 'textAngular', 'ngTagsInput', 'angularFileUpload']);
 
 /*
  adminApp.directive('loading', ['$http', function ($http) {
@@ -69,8 +69,8 @@ adminApp.directive('validNumber', function () {
     };
 });
 
-adminApp.controller('AdminController', ['$scope', '$http', '$window', '$confirm', '$location', '$anchorScroll', 'FileUploader'
-    , function ($scope, $http, $window, $confirm, $location, $anchorScroll, FileUploader) {
+adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout', '$confirm', '$location', '$anchorScroll', 'FileUploader'
+    , function ($scope, $http, $window, $timeout, $confirm, $location, $anchorScroll, FileUploader) {
 
         // uploader section //
 
@@ -174,10 +174,20 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$confirm'
             //review
             $scope.reviews = [{
                 key: 'Average',
-                value: 0
-            }];
+                value: 0,
+                counter: ''
+            }, {
+                key: 'Amazon',
+                value: 0,
+                counter: 0
+            }
+            ];
+            /*
+
+             * */
             $scope.isUpdateReviewShow = false;
             $scope.externalReviewLink = '';
+            $scope.ideaingReviewScore = 0;
 
             //Media Content
             $scope.mediaTitle = '';
@@ -506,7 +516,8 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$confirm'
                     ProductAvailability: $scope.ProductAvailability,
                     Specifications: $scope.Specifications,
                     Review: $scope.reviews,
-                    ExternalReviewLink: $scope.externalReviewLink
+                    ExternalReviewLink: $scope.externalReviewLink,
+                    IdeaingReviewScore: $scope.ideaingReviewScore
 
                 }
 
@@ -554,7 +565,8 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$confirm'
                     ProductAvailability: $scope.ProductAvailability,
                     Specifications: $scope.Specifications,
                     Review: $scope.reviews,
-                    ExternalReviewLink: $scope.externalReviewLink
+                    ExternalReviewLink: $scope.externalReviewLink,
+                    IdeaingReviewScore: $scope.ideaingReviewScore
                 }
 
             }).success(function (data) {
@@ -611,12 +623,19 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$confirm'
         // add dynamic fields in review
         $scope.addReviewFormField = function () {
             $scope.reviews.push(
-                {'key': $scope.reviewKey, 'value': $scope.reviewValue, 'link': $scope.reviewLink}
+                {
+                    'key': $scope.reviewKey,
+                    'value': $scope.reviewValue,
+                    'link': $scope.reviewLink,
+                    'counter': $scope.reviewCounter
+                }
             );
             $scope.reviewKey = '';
             $scope.reviewValue = '';
             $scope.reviewLink = '';
-            $scope.externalReviewLink = '';
+            $scope.reviewCounter = 0;
+            /*$scope.externalReviewLink = '';
+            $scope.ideaingReviewScore = 0;*/
             $scope.calculateAvg();
 
         }
@@ -631,6 +650,7 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$confirm'
             $scope.reviewKey = $scope.reviews[index].key;
             $scope.reviewValue = $scope.reviews[index].value;
             $scope.reviewLink = $scope.reviews[index].link;
+            $scope.reviewCounter = $scope.reviews[index].counter;
             $scope.isUpdateReviewShow = true;
             $scope.calculateAvg();
 
@@ -639,11 +659,14 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$confirm'
             $scope.reviews[$scope.$index].key = $scope.reviewKey;
             $scope.reviews[$scope.$index].value = $scope.reviewValue;
             $scope.reviews[$scope.$index].link = $scope.reviewLink;
+            $scope.reviews[$scope.$index].counter = $scope.reviewCounter;
+
             $scope.isUpdateReviewShow = false;
 
             $scope.reviewKey = '';
             $scope.reviewValue = '';
             $scope.reviewLink = '';
+            $scope.reviewCounter = '';
             $scope.calculateAvg();
         }
 
@@ -654,7 +677,7 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$confirm'
                 $scope.totalCount += $scope.reviews[i].value;
             }
 
-            $scope.reviews[0].value = Math.round($scope.totalCount / ($scope.reviews.length - 1));
+            $scope.reviews[0].value = $scope.totalCount / ($scope.reviews.length - 1);
 
         }
 
@@ -771,8 +794,8 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$confirm'
                     $scope.ProductAvailability = data.data.product_availability;
                     $scope.Specifications = data.data.specifications;
                     $scope.reviews = data.data.review;
-                    // $scope.externalReviewLink =
                     $scope.externalReviewLink = data.data.review_ext_link;
+                    $scope.ideaingReviewScore = data.data.ideaing_review_score;
 
                     // hide category in edit mood
                     $scope.hideCategoryPanel = true;
@@ -784,7 +807,7 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$confirm'
         };
 
         //delete a product
-        $scope.deleteProduct = function (id,redirect) {
+        $scope.deleteProduct = function (id, redirect) {
             console.log(redirect);
 
             $http({
@@ -794,8 +817,8 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$confirm'
             }).success(function (data) {
                 $scope.outputStatus(data, "Product deleted !");
 
-                if(redirect == true)
-                    $window.location ='/admin/product-view';
+                if (redirect == true)
+                    $window.location = '/admin/product-view';
                 else
                     $scope.showAllProduct();
             });

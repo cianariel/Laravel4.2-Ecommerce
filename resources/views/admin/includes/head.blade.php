@@ -19,6 +19,7 @@
     <link href="/assets/admin/css/sb-admin-2.css" rel="stylesheet">
     <link href="/assets/css/wysiwyg.style.css" rel="stylesheet">
     <link href="/assets/css/ng-tags-input.min.css" rel="stylesheet">
+    <link href="/assets/admin/css/ng-rateit.css" rel="stylesheet">
     <link href="/assets/admin/css/admin.custom.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
@@ -44,6 +45,8 @@
     <script src="/assets/js/vendor/ng-tags-input.min.js"></script>
 
     <script src="/assets/admin/js/angular-file-upload.min.js"></script>
+
+    <script src="/assets/admin/js/ng-rateit.min.js"></script>
 
 
 
