@@ -32,7 +32,7 @@
                 <!--                    <li><a class="home-link" href="#">Home</a></li>-->
                 <li><a href="#" class="pink kitchen-link icon-link">Kitchen</a></li>
             </ul>
-            <ul class="hidden-620 left-nav pull-right col-sm-2 col-xs-3">
+            <ul class="hidden-620 left-nav pull-right col-md-2 col-sm-3">
                 <!--                    <li><a class="home-link" href="#">Home</a></li>-->
                 <li class="nested"><a href="#" class="all-link icon-link ">Browse all</a></li>
             </ul>
