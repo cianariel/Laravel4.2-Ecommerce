@@ -41,6 +41,9 @@
 //
 //}
 
+.ta-hidden-input{
+  display: none;
+}
 
 // COLORS
 
@@ -259,6 +262,60 @@ button{
   padding: 5px;
 }
 
+.sortby{
+  position: relative;
+  padding: 15px 20px 15px 80px;
+  background: $iridium;
+  color: rgba(255,255,255, .8);
+  margin: 50px 0 30px;
+
+  ::before{
+    content: 'SORT BY:';
+    color: #fff;
+    position: absolute;
+    left: 10px;
+    top: 15px;
+  }
+
+  ::after{
+    content: ' ';
+    width: 20px;
+    height: 20px;
+    background: url("/assets/images/arrow-up-black.png") center no-repeat;
+    background-size: contain;
+    position: absolute;
+    right: 10px;
+    top: 15px;
+  }
+}
+
+h6.gift{
+  position: relative;
+  //background: $pale-grey;
+  padding: 15px 20px 15px 40px;
+  text-transform: uppercase;
+  color:#000;
+  background: $pale-grey url("/assets/images/icons/gift.png") 8px center no-repeat;
+
+  &::after{
+    content: 'x';
+    //display: block;
+    width: 20px;
+    height: 20px;
+    //background: url("/assets/images/arrow-up-black.png") center no-repeat;
+    //background-size: contain;
+    position: absolute;
+    right: 10px;
+    top: 15px;
+  }
+}
+
+ul.for{
+  li{
+    padding: 15px 10px;
+  }
+}
+
 
 body,
 html{
@@ -277,6 +334,10 @@ html{
   background-image: url("/assets/images/ideaing-logo-lamp-only.png");
   background-repeat: no-repeat;
   background-position: right;
+}
+
+.not-rounded{
+  border-radius: 0 !important;
 }
 
 
@@ -352,7 +413,6 @@ a{ // Custom Link Styles
   &.products-link{
     color: $pine-green;
     background-image: url("/assets/images/bag-green-big.png");
-
     background-repeat: no-repeat;
     background-size: contain;
   }
@@ -369,6 +429,50 @@ a{ // Custom Link Styles
     height: 59px;
     background: url("/assets/images/featured-badge-pink.png")left center no-repeat;
   }
+
+  &.icon-link{
+    background-repeat: no-repeat;
+    background-size: contain;
+    padding-left: 40px !important;
+  }
+
+
+  &.kitchen-link{
+    background-image: url('/assets/images/pot-outline-pink.png');
+
+    //&:hover{
+    //  color: $sky-blue;
+    //  background-image: url('/assets/images/photos-blue.png');
+    //}
+    //padding-left: 65px;
+  }
+
+  &.all-link {
+    background-image: url('/assets/images/grid-pink.png');
+    background-size: 30px;
+    background-position: left 4px;
+    min-width: 200px;
+  }
+
+  &.box-link{
+    padding: 3px 4px;
+    margin: 12px 6px;
+    border: 2px solid $dark-orange;
+    border-radius: 4px;
+    text-align: center;
+  }
+
+  &.filter-link{
+    font-size: 2rem;
+    color: #000;
+    background-image: url("/assets/images/menu-black.png");
+    margin-top: 8px;
+    padding-top: 20px;
+    background-size: 25px;
+    padding-top: 11px !important;
+    background-size: 18px !important;
+  }
+
 
   // social buttons
 
@@ -426,9 +530,12 @@ li.nested{
     background-image: url("/assets/images/arrow-up-black.png");
   }
   a::after{
+    display: inline-block;
     content: '	';
-    width: 15px;
+    width: 25px;
     height: 15px;
+    position: relative;
+    top: 2px;
     background: url("/assets/images/arrow-down-pink.png") no-repeat;
     background-size: contain;
     color: $iridium;
@@ -1427,12 +1534,12 @@ main.page-content{
   }
 
   .img-wrap .like-wrap{
-    width: 115px;
+    width: 92px;
     height: 55px;
     margin-left: auto;
     position: absolute;
     top: 0;
-    right: -20px;
+    right: 0;
     padding-left: 30px;
     padding-top: 6px;
     padding-bottom:0;
@@ -1692,7 +1799,250 @@ main.page-content{
     }
   }
 
+  &.square{
+    display: table-cell;
+    border-collapse: collapse;
+    overflow: visible;
+    padding: 0;
+    min-height: 380px;
+    margin-top: 0;
+    border: 0 solid $light-grey;
+    border-width: 1px 1px 0 0;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+
+    .color-overlay,
+    .img-wrap{
+      border: 0;
+      border-radius: 0;
+    }
+
+    img{
+      position: absolute;
+      width: 100%;
+      //height: 100%;
+    }
+
+    h4{
+      position: relative;
+      margin-top: 55%;
+      color: #fff;
+      background: $dark-orange;
+      padding: 15px 7px;
+      display: block;
+      float: left;
+      font-size: 2rem;
+      a{
+        color: #fff;
+      }
+    }
+
+    .author{
+      position: absolute;
+      left: 0;
+      bottom: 0;
+    }
+
+    .category-tag{
+      width: 70px;
+      height: 70px;
+      left: 14px;
+      top: 13px;
+      text-align: center;
+      padding-top: 40px;
+      //padding-left: 11px;
+      color: #fff;
+      border-radius: 50%;
+      font-size: 1.3rem;
+      z-index: 1;
+
+
+      &.idea{
+        background:$dark-orange url("/assets/images/icons/lamp-white-3.png") center 12px no-repeat;
+      }
+      &.product{
+        background:$pine-green url("/assets/images/icons/bag-white-3.png") center 12px no-repeat;
+      }
+
+    }
+    .like-wrap{
+      background: rgba(255,255,255,.9);
+      z-index: 1;
+      border-radius: 0;
+      width: 107px;
+      padding-left: 15px;
+
+      .comment{
+        background-image: url("/assets/images/icons/chat-red.png");
+        background-position: 8px center;
+        color: $iridium;
+        &:hover{
+          background-image: url("/assets/images/icons/chat-red.png");
+          background-position: 8px center;
+        }
+
+      }
+    }
+    time{
+      position: absolute;
+      bottom: 0;
+      right: 0;
+    }
+    &.product:hover{
+      time{
+        color: #fff;
+        z-index: 1;
+      }
+    }
+    .color-overlay{
+      background: rgba(0,0,0,.6);
+
+      h4{
+        width: auto;
+        position: static;
+        margin-top: 44%;
+        margin-bottom: 26px;
+        text-align: left;
+        background: #fff;
+        color: #000;
+        //font-size: 2rem;
+        a{
+          color: #000;
+
+        }
+      }
+
+      ul.prices{
+        text-align: left;
+        padding-left: 5px;
+        padding-top: 15%;
+
+        li{
+          padding: 0;
+          font-size: 1.7rem;
+        }
+        a{
+          color: #fff;
+          b{
+            display: inline-block;
+            background: darken($pine-green, 15%);
+            color: #fff;
+            padding-left: 3px;
+          }
+          img{
+            margin-left: 5px;
+            margin-top: 3px;
+          }
+        }
+      }
+    }
+
+    &.huge{
+      h4{
+        margin-top: 20%;
+      }
+      .color-overlay{
+        h4{
+          margin-top: 14%;
+        }
+      }
+      .img-wrap{
+        overflow: hidden;
+        min-height: 380px;
+      }
+    }
+
+    a.featured-badge{
+      display: block;
+      width: 71px;
+      height: 165px;
+      position: absolute;
+      left: -35px;
+      top: 64px;
+      background: url("/assets/images/elements/featured-badge-vertical-left.png") no-repeat left top;
+      text-indent: -9999px;
+    }
+
+  }
+
+
 }
+
+.room-filter{
+  position: absolute;
+  left: 10px;
+  width: 190px;
+
+  .extra-nav{
+    li{
+      border-bottom: 1px solid $light-grey;
+      text-transform: uppercase;
+      position: relative;
+
+      &::after{
+        content: '+';
+        position: absolute;
+        right: 10px;
+        top: 20px;
+        color: #000;
+      }
+
+      a{
+        display: block;
+        width: 100%;
+        padding: 20px 0 20px 30px;
+        background-repeat: no-repeat;
+        background-position: left center;
+
+        &.diy-link{
+          background-image: url("/assets/images/icons/tools-3d.png");
+        }
+        &.shopping-link{
+          background-image: url("/assets/images/icons/bag-3d-green.png");
+        }
+        &.travel-link{
+          background-image: url("/assets/images/icons/bag-3d-blue.png");
+        }
+        &.wearables-link{
+          background-image: url("/assets/images/icons/watch-3d.png");
+        }
+        &.decor-link{
+          background-image: url("/assets/images/icons/fire-3d.png");
+        }
+      }
+
+
+
+
+
+
+    }
+  }
+  .room-list{
+    margin-top: 35px;
+    li{
+      a{
+        font-size: 1.55rem;
+        color: darken($light-grey, 10%);
+        line-height: 2;
+      }
+    }
+  }
+
+
+
+
+}
+
+.box-container{
+  //overflow: hidden;
+  width: 100%;
+  float: left;
+  border: 0px solid $light-grey;
+  border-width: 0 0 1px 1px;
+}
+
 
 .main-container{
   overflow: hidden;
@@ -1813,7 +2163,7 @@ article.product{
 .grid-insert{
   padding: 45px;
   margin-top: 45px;
-  background: $pale-grey;
+  //background: $pale-grey;
 
   h4{
     a{
@@ -2144,7 +2494,7 @@ header.colophon{
 
             &:after{
               position: absolute;
-              right: 11px;
+              right: 5px;
               top: 4px;
               background-size: 22px;
             }
@@ -2449,13 +2799,11 @@ body.product-details{
     }
 
     &.box-link{
-      padding: 3px 4px;
+      //padding: 3px 4px;
       margin: 12px 6px;
-      border: 2px solid $dark-orange;
-      border-radius: 4px;
+      //border: 2px solid $dark-orange;
+      //border-radius: 4px;
       font-size: .8rem;
-
-
 
 
       &:hover{
@@ -3028,7 +3376,6 @@ header.sub-head{
       }
     }
     &.all-link{
-      background-image: url('/assets/images/grid-dense-grey.png');
       background-position: 0 20px;
       min-width: 40px;
 
@@ -3069,15 +3416,6 @@ header.sub-head{
       //padding-left: 65px;
     }
 
-    &.kitchen-link{
-      background-image: url('/assets/images/pot-outline.png');
-
-      //&:hover{
-      //  color: $sky-blue;
-      //  background-image: url('/assets/images/photos-blue.png');
-      //}
-      //padding-left: 65px;
-    }
 
     &.features-link{
       background-image: url('/assets/images/icons/checkmark-orange.png');
@@ -3747,11 +4085,309 @@ body.single{
 
 
 
+// ROOM LADNING PAGE
+
+body.room-landing{
+  .mid-nav.rooms{
+    display: none;
+  }
+
+  .mid-nav a{
+    border: 0;
+  }
+
+  #hero{
+    img.round{
+      border: 2px solid;
+      border-radius: 50%;
+      background-color: #fff;
+    }
+
+    .red{
+      span{
+        background-image: url('/assets/images/icons/bag-glow-red.png');
+      }
+      h6{
+        background: $pinterest-red;
+      }
+      img.round{
+        border-color: $pinterest-red !important;
+        -webkit-box-shadow: 0px 0px 62px 5px $pinterest-red;
+        -moz-box-shadow: 0px 0px 62px 5px $pinterest-red;
+        box-shadow: 0px 0px 62px 5px $pinterest-red;
+      }
+      .hover-box{
+        &::before{
+          border-color: transparent transparent $pinterest-red transparent;
+        }
+      }
+    }
+
+    .blue{
+      span{
+        background-image: url('/assets/images/icons/bag-glow-blue.png');
+      }
+      h6{
+        background: $sky-blue;
+      }
+      img.round{
+        border-color: $sky-blue !important;
+        -webkit-box-shadow: 0px 0px 62px 5px $sky-blue;
+        -moz-box-shadow: 0px 0px 62px 5px$sky-blue;
+        box-shadow: 0px 0px 62px 5px $sky-blue;
+      }
+      .hover-box{
+        &::before{
+          border-color: transparent transparent $sky-blue transparent;
+        }
+      }
+    }
+    .green{
+      span{
+        background-image: url('/assets/images/icons/bag-glow-green.png');
+      }
+      h6{
+        background: $pine-green;
+      }
+      img.round{
+        border-color: $pine-green !important;
+        -webkit-box-shadow: 0px 0px 62px 5px $pine-green;
+        -moz-box-shadow: 0px 0px 62px 5px $pine-green;
+        box-shadow: 0px 0px 62px 5px $pine-green;
+      }
+      .hover-box{
+        &::before{
+          border-color: transparent transparent $pine-green transparent;
+        }
+      }
+    }
+
+    .pink{
+      img.round{
+        border-color: $iridium;
+      }
+    }
+
+    .orange{
+      img.round{
+        border-color: $dark-orange;
+      }
+    }
+
+    .yellow{
+      img.round{
+        border-color: yellow;
+      }
+    }
+  }
+
+  .page-content{
+    padding-top: 40px;
+    overflow: hidden;
+    width: 100%;
+  }
+
+  .box-link{
+    border-color: $light-grey;
+    padding-right: 35px;
+  }
+
+  .grid-insert{
+    text-align: center;
+    p{
+      line-height: 2.3;
+    }
+  }
+
+}
+
+.hero-tags{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    min-height: 450px;
+    z-index: 1;
+
+    .tag{
+      position: absolute;
+
+      &.one{
+        top:30%;
+        left:10%;
+      }
+      &.two{
+        top:10%;
+        left:25%;
+      }
+      &.three{
+        top:60%;
+        left:50%;
+      }
+
+      a, .hover-box{
+        display: none;
+      }
+
+      &:hover{
+        a, .hover-box{
+          display: block;
+        }
+        a{
+          margin-top: -114px;
+        }
+      }
+    }
+
+    span{
+      width: 110px;
+      height: 110px;
+      display: block;
+      cursor: pointer;
+      background: url('/assets/images/icons/bag-glow-pink.png') no-repeat;
+    }
+
+
+  //a, .hover-box{
+    //  display: none;
+    //}
+
+  .hover-box{
+    width: 200px;
+    background: #fff;
+    z-index: 10;
+    position: relative;
+    margin-top: 7px;
+
+    h6{
+      padding: 15px;
+      //background: $iridium;
+      font-size: inherit;
+      color: #000;
+      margin: 0;
+    }
+    div{
+      padding: 15px;
+      color: darken($light-grey, 30%);
+      border: 1px solid $light-grey;
+    }
+    &::before{
+      content: ' ';
+      position: absolute;
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 0 7.5px 10px 7.5px;
+      border-color: transparent transparent #007bff transparent;
+
+      left:33%;
+      top: -7px;
+    }
+  }
+
+  img:not(.vendor-logo){
+    width: 135px;
+    height: 135px;
+    background: #fff;
+  }
+
+  .vendor-logo{
+    margin-top: 25px;
+  }
+
+
+}
 
 
 
 
 
+
+.hero-related-products{
+  background: rgba(0,0,0,.8);
+  padding: 0;
+
+  h5{
+    padding: 20px;
+    padding-left: 25px;
+    margin-top: 0;
+    color: #fff;
+    background: rgba(0, 0, 0, 1) url("/assets/images/arrow-right-white.png") no-repeat right center;
+    background-size: 20px;
+    font-size: 1.7rem;
+  }
+  ul{
+    margin-bottom: 0;
+  }
+  li{
+    padding-left: 25px;
+    border-bottom: 1px solid rgba($pale-grey, .4);
+    overflow: hidden;
+    padding-bottom: 10px;
+  }
+
+  a:not(.get){
+    color: #fff;
+
+    img{
+      width: 64px;
+      height: 64px;
+      margin-right:20px;
+
+      &.round{
+        box-shadow: none !important;
+      }
+    }
+
+  }
+
+  .get{
+    margin-top: 21px;
+    border-radius: 0;
+  }
+
+}
+
+.pink-border{
+  img{
+    border-color: $iridium;
+  }
+}
+.red-border{
+  img{
+    border-color: $pinterest-red;
+  }
+}
+.orange-border{
+  img{
+    border-color: $dark-orange;
+  }
+}
+.blue-border{
+  img{
+    border-color: $sky-blue;
+  }
+}
+.green-border{
+  img{
+    border-color: $pine-green;
+  }
+}
+.yellow-border{
+  img{
+    border-color: yellow;
+  }
+}
+
+.filter-link{
+  margin-top: 30px;
+}
+
+
+
+
+
+
+// FOOTER
 
 footer.about-footer{
 
@@ -3878,6 +4514,12 @@ footer.about-footer{
 
 // RESPONSIVE BEHAVIOUR
 
+@media only screen and (max-width: 1570px){
+  aside.room-filter{
+    display: none;
+  }
+}
+
 @media only screen and (max-width: 1200px){
   #top-nav a {
     margin-right: 3%;
@@ -3962,6 +4604,29 @@ footer.about-footer{
     }
   }
 
+  .grid-box.square{
+    min-height: 300px;
+  }
+
+  .grid-box.square{
+    a.featured-badge {
+      top: 219px;
+    }
+    ul.prices{
+      position: relative;
+      top: -20px;
+      padding-top: 7% !important;
+      a{
+        font-size: 1.3rem;
+      }
+    }
+    h4{
+      margin-top: 39%;
+    }
+    .img-wrap .category-tag.idea {
+      background-size: 24px !important;
+    }
+  }
 }
 
 @media only screen and (max-width: 992px){
@@ -4367,7 +5032,7 @@ footer.about-footer{
       //  bottom: -27px;
       //}
 
-      a{
+      a:not(.box-link){
         //background-position: left;
         //background-repeat: no-repeat;
         padding-left: 35px;
@@ -4416,6 +5081,16 @@ footer.about-footer{
             padding-right: 5%;
             background-position: center 15px !important;
           }
+        }
+      }
+
+      .popular-new{
+        float: none !important;
+        margin: 0 auto;
+        overflow: hidden;
+        width: 310px;
+        a{
+          padding-right: 30px !important;
         }
       }
   }
