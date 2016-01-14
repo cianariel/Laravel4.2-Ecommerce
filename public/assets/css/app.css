@@ -4642,6 +4642,15 @@ a.box-link {
   border: 2px solid #ff7f00;
   border-radius: 4px;
   text-align: center; }
+a.filter-link {
+  font-size: 2rem;
+  color: #000;
+  background-image: url("/assets/images/menu-black.png");
+  margin-top: 8px;
+  padding-top: 20px;
+  background-size: 25px;
+  padding-top: 11px !important;
+  background-size: 18px !important; }
 a.fb {
   background-color: #5c7cbd;
   background-image: url("/assets/images/fb-white-small.png");
@@ -7076,6 +7085,9 @@ body.room-landing .grid-insert {
 
 .yellow-border img {
   border-color: yellow; }
+
+.filter-link {
+  margin-top: 30px; }
 
 footer.about-footer {
   padding: 55px 0;

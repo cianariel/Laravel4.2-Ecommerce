@@ -112,9 +112,9 @@
 
     <nav id="hero-nav" class="col-sm-12">
         <div class="container full-620  fixed-sm">
-            {{--<ul class="left-nav col-xs-1 hidden-620">--}}
-            {{--<li class="active"><a class="home-link" href="#">Home</a></li>--}}
-            {{--</ul>--}}
+            <ul class="left-nav col-xs-1 hidden-620">
+                 <li><a class="filter-link" href="#">Filter</a></li>
+            </ul>
 
             <ul class="col-sm-4 pull-right">
                 <li class="pull-right">
