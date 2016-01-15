@@ -64,8 +64,7 @@
 
                 <div class="average-score">
                     <div class="score">@if(isset($productInformation['Review']) && isset($productInformation['IdeaingReviewScore']))
-                            {{(($productInformation['Review'][0]->value + $productInformation['IdeaingReviewScore'])/2)*20}}@endif
-                        %
+                            {{(($productInformation['Review'][0]->value + $productInformation['IdeaingReviewScore'])/2)*20}}@endif%
                     </div>
                     <span class="caption">Average Ideaing Score</span>
                 </div>
@@ -188,9 +187,7 @@
                                 <li>
                                     <a href="#">
                                         <span class="name">Amazon</span>
-                                        <span class="price">$ @if(isset($productInformation['SellPrice']))
-                                                {{$productInformation['SellPrice']}}
-                                            @endif</span>
+                                        <span class="price">&nbsp;</span>
                                     </a>
                                 </li>
 
@@ -234,14 +231,24 @@
                         <h3 class="green">Specifications</h3>
 
                         @if(isset($productInformation['Specifications']))
-                            @foreach( $productInformation['Specifications'] as $specification )
-                                <div class="card small col-sm-3 col-xs-6">
-                                    <div>
-                                        <h4>{{ $specification->key}}</h4>
-                                        <span>{{ $specification->value}}</span>
-                                    </div>
-                                </div>
-                            @endforeach
+                        <div>
+                            <table class="table table-striped col-sm-6">
+                                <thead>
+                                <tr>
+                                    <th>Entity</th>
+                                    <th>Value</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                @foreach( $productInformation['Specifications'] as $specification )
+                                <tr>
+                                    <td>{{ $specification->key}}</td>
+                                    <td>{{ $specification->value}}</td>
+                                </tr>
+                                @endforeach
+                                </tbody>
+                            </table>
+                        </div>
                         @endif
 
                     </div>
@@ -388,7 +395,7 @@
                                             <td class="name">
                                                 <a href="@if(isset($review->link)){{$review->link}}@endif"
                                                    target="_blank">@if(isset($review->key)){{$review->key}}@endif
-                                                    @if(isset($review->counter))( {{$review->counter}} )@endif
+                                                    @if($review->counter > 0)( {{$review->counter}} )@endif
                                                 </a>
                                             </td>
                                             <td class="line">

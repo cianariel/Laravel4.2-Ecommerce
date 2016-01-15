@@ -2,10 +2,7 @@
 
 @section('content')
 
-
 <div class="page-content-wrapper">
-
-
     <div class="page-content">
         <!-- BEGIN PAGE BAR -->
         <div class="page-bar">
@@ -170,7 +167,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label class="col-md-2 control-label">Prodcut Name:
+                                                    <label class="col-md-2 control-label">Product Name:
                                                     </label>
                                                     <div class="col-md-10">
                                                         <input data-ng-model="Name" class="form-control"
@@ -380,7 +377,7 @@
                                                            class="form-control">
                                                     </div>
                                                     <div class="col-md-2">
-                                                    <input type='text' ng-model="reviewCounter" placeholder="Counter"
+                                                    <input type='text' ng-model="reviewCounter" placeholder="Customer Reviews"
                                                            class="form-control">
                                                     </div>
                                                     <div class="col-md-2">                                                    
