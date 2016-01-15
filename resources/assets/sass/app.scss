@@ -973,6 +973,7 @@ nav{
 }
 
 body.single,
+body.room-landing,
 body.product-details{
   .mid-nav{
     height: 50px;
@@ -1806,7 +1807,7 @@ main.page-content{
     padding: 0;
     min-height: 380px;
     margin-top: 0;
-    border: 0 solid $light-grey;
+    border: 0 solid #EFEFEF;
     border-width: 1px 1px 0 0;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
@@ -1829,62 +1830,77 @@ main.page-content{
       margin-top: 55%;
       color: #fff;
       background: $dark-orange;
-      padding: 15px 7px;
+      padding: 10px 7px;
       display: block;
       float: left;
-      font-size: 2rem;
+      font-size: 1.7rem;
       a{
         color: #fff;
       }
     }
 
     .author{
+      width: 169px;
+      background-position: left;
       position: absolute;
-      left: 0;
+      left: 15px;
       bottom: 0;
+      box-shadow: 0;
     }
 
     .category-tag{
-      width: 70px;
-      height: 70px;
+      width: 60px;
+      height: 60px;
       left: 14px;
       top: 13px;
       text-align: center;
-      padding-top: 40px;
-      //padding-left: 11px;
+      padding-top: 35px;
       color: #fff;
       border-radius: 50%;
-      font-size: 1.3rem;
+      font-size: 1.1rem;
       z-index: 1;
 
-
       &.idea{
-        background:$dark-orange url("/assets/images/icons/lamp-white-3.png") center 12px no-repeat;
+        background:$dark-orange url("/assets/images/icons/lamp-white-3.png") center 5px no-repeat;
       }
       &.product{
-        background:$pine-green url("/assets/images/icons/bag-white-3.png") center 12px no-repeat;
+        background:$pine-green url("/assets/images/icons/bag-white-3.png") center 5px no-repeat;
+      }
+      &.get-round{
+        background: $iridium;
+        top: 270px;
+        left: 40%;
+        padding-top: 23px;
+        font-weight: bold;
+
       }
 
     }
     .like-wrap{
+      width: 86px;
       background: rgba(255,255,255,.9);
       z-index: 1;
       border-radius: 0;
-      width: 107px;
       padding-left: 15px;
 
-      .comment{
-        background-image: url("/assets/images/icons/chat-red.png");
-        background-position: 8px center;
-        color: $iridium;
-        &:hover{
+      a{
+        color: $tarmac !important;
+
+        &.comment{
           background-image: url("/assets/images/icons/chat-red.png");
           background-position: 8px center;
-        }
+          &:hover{
+            background-image: url("/assets/images/icons/chat-red.png");
+            background-position: 8px center;
+          }
 
+        }
       }
+
     }
     time{
+      font-size: 1rem;
+      font-family: montserratlight;
       position: absolute;
       bottom: 0;
       right: 0;
@@ -1901,7 +1917,7 @@ main.page-content{
       h4{
         width: auto;
         position: static;
-        margin-top: 44%;
+        margin-top: 35%;
         margin-bottom: 26px;
         text-align: left;
         background: #fff;
@@ -1909,8 +1925,18 @@ main.page-content{
         //font-size: 2rem;
         a{
           color: #000;
-
         }
+      }
+      a.box-link{
+        color: #fff;
+        display: block;
+        border-color: $dark-orange;
+        text-align: center;
+        padding-left: 35px;
+        position: absolute;
+        left: 30%;
+        top: 270px;
+        border-radius: 0;
       }
 
       ul.prices{
@@ -1962,6 +1988,41 @@ main.page-content{
       top: 64px;
       background: url("/assets/images/elements/featured-badge-vertical-left.png") no-repeat left top;
       text-indent: -9999px;
+    }
+
+    &:hover{
+      .get-round{
+        display: block;
+      }
+
+      &.idea-box{
+        h4, .author{
+          z-index: 1;
+        }
+        .author{
+          text-indent: 0;
+          box-shadow: none;
+          padding-left: 60px;
+          padding-top: 22px;
+          text-align: right;
+          background-position: left;
+          color: #fff;
+          font-size: 1.2rem;
+          span{
+            display: inline-block;
+            padding: 5px 5px 2px;
+            background: #88C880;
+          }
+        }
+        .like-wrap{
+          min-height: 87px;;
+        }
+        &.huge{
+          .box-link{
+            left: 42%;
+          }
+        }
+      }
     }
 
   }
@@ -2039,7 +2100,7 @@ main.page-content{
   //overflow: hidden;
   width: 100%;
   float: left;
-  border: 0px solid $light-grey;
+  border: 0px solid #EFEFEF;
   border-width: 0 0 1px 1px;
 }
 
@@ -4181,6 +4242,27 @@ body.room-landing{
     }
   }
 
+  //.category-nav{
+  //  width: 4;
+  //}
+
+  .left-nav{
+    padding-left: 0;
+  }
+
+  .popular-new{
+     padding-right: 0;
+    .box-link{
+      border-width: 1px;
+
+      &.active,
+      &:hover{
+        border-color: $iridium;
+        color: $iridium !important;
+      }
+    }
+  }
+
   .page-content{
     padding-top: 40px;
     overflow: hidden;
@@ -4198,6 +4280,8 @@ body.room-landing{
       line-height: 2.3;
     }
   }
+
+
 
 }
 
@@ -4299,12 +4383,20 @@ body.room-landing{
 
 
 
-
+.hero-container{
+  height: 540px;
+}
 
 
 .hero-related-products{
   background: rgba(0,0,0,.8);
   padding: 0;
+  z-index: 1;
+  //margin-top: 50px;
+  min-width: 267px;
+  position: absolute;
+  right: 0;
+  top: 50px;
 
   h5{
     padding: 20px;
@@ -4346,6 +4438,8 @@ body.room-landing{
   }
 
 }
+
+
 
 .pink-border{
   img{

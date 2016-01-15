@@ -5086,6 +5086,9 @@ nav a {
     position: relative; }
 
 body.single .mid-nav, body.single .mid-nav .extra-nav, .mid-nav body.single .extra-nav,
+body.room-landing .mid-nav,
+body.room-landing .mid-nav .extra-nav,
+.mid-nav body.room-landing .extra-nav,
 body.product-details .mid-nav,
 body.product-details .mid-nav .extra-nav,
 .mid-nav body.product-details .extra-nav {
@@ -5095,6 +5098,7 @@ body.product-details .mid-nav .extra-nav,
   z-index: 2;
   overflow: hidden; }
 body.single #hero,
+body.room-landing #hero,
 body.product-details #hero {
   margin-top: -50px; }
 
@@ -5547,7 +5551,7 @@ main.page-content .card {
     padding: 0;
     min-height: 380px;
     margin-top: 0;
-    border: 0 solid #c1c1c1;
+    border: 0 solid #EFEFEF;
     border-width: 1px 1px 0 0;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
@@ -5564,45 +5568,57 @@ main.page-content .card {
       margin-top: 55%;
       color: #fff;
       background: #ff7f00;
-      padding: 15px 7px;
+      padding: 10px 7px;
       display: block;
       float: left;
-      font-size: 2rem; }
+      font-size: 1.7rem; }
       .grid-box.square h4 a {
         color: #fff; }
     .grid-box.square .author {
+      width: 169px;
+      background-position: left;
       position: absolute;
-      left: 0;
-      bottom: 0; }
+      left: 15px;
+      bottom: 0;
+      box-shadow: 0; }
     .grid-box.square .category-tag {
-      width: 70px;
-      height: 70px;
+      width: 60px;
+      height: 60px;
       left: 14px;
       top: 13px;
       text-align: center;
-      padding-top: 40px;
+      padding-top: 35px;
       color: #fff;
       border-radius: 50%;
-      font-size: 1.3rem;
+      font-size: 1.1rem;
       z-index: 1; }
       .grid-box.square .category-tag.idea {
-        background: #ff7f00 url("/assets/images/icons/lamp-white-3.png") center 12px no-repeat; }
+        background: #ff7f00 url("/assets/images/icons/lamp-white-3.png") center 5px no-repeat; }
       .grid-box.square .category-tag.product {
-        background: #c7c747 url("/assets/images/icons/bag-white-3.png") center 12px no-repeat; }
+        background: #c7c747 url("/assets/images/icons/bag-white-3.png") center 5px no-repeat; }
+      .grid-box.square .category-tag.get-round {
+        background: #ff0042;
+        top: 270px;
+        left: 40%;
+        padding-top: 23px;
+        font-weight: bold; }
     .grid-box.square .like-wrap {
+      width: 86px;
       background: rgba(255, 255, 255, 0.9);
       z-index: 1;
       border-radius: 0;
-      width: 107px;
       padding-left: 15px; }
-      .grid-box.square .like-wrap .comment {
-        background-image: url("/assets/images/icons/chat-red.png");
-        background-position: 8px center;
-        color: #ff0042; }
-        .grid-box.square .like-wrap .comment:hover {
+      .grid-box.square .like-wrap a {
+        color: #3d4b4e !important; }
+        .grid-box.square .like-wrap a.comment {
           background-image: url("/assets/images/icons/chat-red.png");
           background-position: 8px center; }
+          .grid-box.square .like-wrap a.comment:hover {
+            background-image: url("/assets/images/icons/chat-red.png");
+            background-position: 8px center; }
     .grid-box.square time {
+      font-size: 1rem;
+      font-family: montserratlight;
       position: absolute;
       bottom: 0;
       right: 0; }
@@ -5614,13 +5630,23 @@ main.page-content .card {
       .grid-box.square .color-overlay h4 {
         width: auto;
         position: static;
-        margin-top: 44%;
+        margin-top: 35%;
         margin-bottom: 26px;
         text-align: left;
         background: #fff;
         color: #000; }
         .grid-box.square .color-overlay h4 a {
           color: #000; }
+      .grid-box.square .color-overlay a.box-link {
+        color: #fff;
+        display: block;
+        border-color: #ff7f00;
+        text-align: center;
+        padding-left: 35px;
+        position: absolute;
+        left: 30%;
+        top: 270px;
+        border-radius: 0; }
       .grid-box.square .color-overlay ul.prices {
         text-align: left;
         padding-left: 5px;
@@ -5654,6 +5680,27 @@ main.page-content .card {
       top: 64px;
       background: url("/assets/images/elements/featured-badge-vertical-left.png") no-repeat left top;
       text-indent: -9999px; }
+    .grid-box.square:hover .get-round {
+      display: block; }
+    .grid-box.square:hover.idea-box h4, .grid-box.square:hover.idea-box .author {
+      z-index: 1; }
+    .grid-box.square:hover.idea-box .author {
+      text-indent: 0;
+      box-shadow: none;
+      padding-left: 60px;
+      padding-top: 22px;
+      text-align: right;
+      background-position: left;
+      color: #fff;
+      font-size: 1.2rem; }
+      .grid-box.square:hover.idea-box .author span {
+        display: inline-block;
+        padding: 5px 5px 2px;
+        background: #88C880; }
+    .grid-box.square:hover.idea-box .like-wrap {
+      min-height: 87px; }
+    .grid-box.square:hover.idea-box.huge .box-link {
+      left: 42%; }
 
 .room-filter {
   position: absolute;
@@ -5695,7 +5742,7 @@ main.page-content .card {
 .box-container {
   width: 100%;
   float: left;
-  border: 0px solid #c1c1c1;
+  border: 0px solid #EFEFEF;
   border-width: 0 0 1px 1px; }
 
 .main-container {
@@ -6970,6 +7017,15 @@ body.room-landing #hero .orange img.round {
   border-color: #ff7f00; }
 body.room-landing #hero .yellow img.round {
   border-color: yellow; }
+body.room-landing .left-nav {
+  padding-left: 0; }
+body.room-landing .popular-new {
+  padding-right: 0; }
+  body.room-landing .popular-new .box-link {
+    border-width: 1px; }
+    body.room-landing .popular-new .box-link.active, body.room-landing .popular-new .box-link:hover {
+      border-color: #ff0042;
+      color: #ff0042 !important; }
 body.room-landing .page-content {
   padding-top: 40px;
   overflow: hidden;
@@ -7043,9 +7099,17 @@ body.room-landing .grid-insert {
   .hero-tags .vendor-logo {
     margin-top: 25px; }
 
+.hero-container {
+  height: 540px; }
+
 .hero-related-products {
   background: rgba(0, 0, 0, 0.8);
-  padding: 0; }
+  padding: 0;
+  z-index: 1;
+  min-width: 267px;
+  position: absolute;
+  right: 0;
+  top: 50px; }
   .hero-related-products h5 {
     padding: 20px;
     padding-left: 25px;
