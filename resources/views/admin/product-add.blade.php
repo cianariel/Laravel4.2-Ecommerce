@@ -151,10 +151,10 @@
                                                             </div>
                                                             <div class="form-group row">&nbsp;
                                                                 <div class="col-lg-6">
-                                                                    <label>Prodcut ID</label>
+                                                                    <label>Product ID</label>
                                                                     <input data-ng-model="ProductVendorId"
                                                                            class="form-control"
-                                                                           placeholder="Enter product name">
+                                                                           placeholder="Amazon - ASIN">
                                                                 </div>
 
                                                                 <div class="col-lg-6">
@@ -296,8 +296,8 @@
                                                     <h4>Specification</h4>
 
                                                     <p>
-                                                        <input type='text' ng-model="spKey" placeholder="key">
-                                                        <input type='text' ng-model="spVal" placeholder="value">
+                                                        <input type='text'  ng-model="spKey" placeholder="key">
+                                                        <input type='text'  ng-model="spVal" placeholder="value">
 
                                                         <button ng-click="addSpecFormField()"
                                                                 ng-show="!isUpdateSpecShow"
@@ -323,10 +323,10 @@
                                                                         <table class="table table-striped table-bordered table-hover">
                                                                             <thead>
                                                                             <tr>
-                                                                                <th>#</th>
-                                                                                <th>Key</th>
-                                                                                <th>Value</th>
-                                                                                <th>Action</th>
+                                                                                <th class="col-lg-1">#</th>
+                                                                                <th class="col-lg-3">Key</th>
+                                                                                <th class="col-lg-6">Value</th>
+                                                                                <th class="col-lg-2">Action</th>
                                                                             </tr>
                                                                             </thead>
                                                                             <tbody>
@@ -335,8 +335,6 @@
                                                                                 <td>@{{ spec.key }}</td>
                                                                                 <td>@{{ spec.value }}</td>
                                                                                 <td>
-
-
                                                                                     <button ng-click="editSpecFormField($index)"
                                                                                             class="btn btn-info btn-circle"
                                                                                             uib-tooltip="Edit"
@@ -422,8 +420,6 @@
                                                         </button>
 
                                                     </p>
-
-
                                                     <div class="row">
                                                         <div class="col-lg-8">
                                                             <div class="panel panel-default">

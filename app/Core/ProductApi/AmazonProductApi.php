@@ -114,23 +114,66 @@
 
                 $data = json_decode($json, true);
 
-                // return $data;//['Items']['Item']['LargeImage']['LargeImage']['URL'];//['Availability'];
+                //   dd($data);
+               // dd($data['Items']['Item']['DetailPageURL']);
+                //    return $data;//['Items']['Item']['LargeImage']['URL'];//['Availability'];
+
+                $title = isset($data['Items']['Item']['ItemAttributes']['Title']) ? $data['Items']['Item']['ItemAttributes']['Title'] : "";
+                $imageLink = isset($data['Items']['Item']['LargeImage']['URL']) ? $data['Items']['Item']['LargeImage']['URL'] : "";
+                $listPrice = isset($data['Items']['Item']['ItemAttributes']['ListPrice']['Amount']) ? $data['Items']['Item']['ItemAttributes']['ListPrice']['Amount']/100 : "";
+                $salePrice = isset($data['Items']['Item']['OfferSummary']['LowestNewPrice']['Amount']) ? $data['Items']['Item']['OfferSummary']['LowestNewPrice']['Amount']/100 : "";
+                $available = isset($data['Items']['Item']['Offers']['Offer']['OfferListing']['Availability']) ? $data['Items']['Item']['Offers']['Offer']['OfferListing']['Availability'] : "No information available";
+                $affiliateLink = isset($data['Items']['Item']['DetailPageURL']) ? $data['Items']['Item']['DetailPageURL'] : "";
+
+                $productHeight = isset($data['Items']['Item']['ItemAttributes']['ItemDimensions']['Height']) ? $data['Items']['Item']['ItemAttributes']['ItemDimensions']['Height'] / 100 : "";
+                $productWidth = isset($data['Items']['Item']['ItemAttributes']['ItemDimensions']['Width']) ? $data['Items']['Item']['ItemAttributes']['ItemDimensions']['Width'] / 100 : "";
+                $productLength = isset($data['Items']['Item']['ItemAttributes']['ItemDimensions']['Length']) ? $data['Items']['Item']['ItemAttributes']['ItemDimensions']['Length'] / 100 : "";
+                $productWeight = isset($data['Items']['Item']['ItemAttributes']['ItemDimensions']['Weight']) ? $data['Items']['Item']['ItemAttributes']['ItemDimensions']['Weight'] / 100 : "";
+
+                $packageHeight = isset($data['Items']['Item']['ItemAttributes']['PackageDimensions']['Height']) ? $data['Items']['Item']['ItemAttributes']['PackageDimensions']['Height'] / 100 : "";
+                $packageWidth = isset($data['Items']['Item']['ItemAttributes']['PackageDimensions']['Width']) ? $data['Items']['Item']['ItemAttributes']['PackageDimensions']['Width'] / 100 : "";
+                $packageLength = isset($data['Items']['Item']['ItemAttributes']['PackageDimensions']['Length']) ? $data['Items']['Item']['ItemAttributes']['PackageDimensions']['Length'] / 100 : "";
+                $packageWeight = isset($data['Items']['Item']['ItemAttributes']['PackageDimensions']['Weight']) ? $data['Items']['Item']['ItemAttributes']['PackageDimensions']['Weight'] / 100 : "";
+
+                $partNumber = isset($data['Items']['Item']['ItemAttributes']['PartNumber']) ? $data['Items']['Item']['ItemAttributes']['PartNumber'] : "";
+
+                $model = isset($data['Items']['Item']['ItemAttributes']['Model']) ? $data['Items']['Item']['ItemAttributes']['Model'] : "";
+                $manufacturer = isset($data['Items']['Item']['ItemAttributes']['Manufacturer']) ? $data['Items']['Item']['ItemAttributes']['Manufacturer'] : "";
+                $itemQuantity = isset($data['Items']['Item']['ItemAttributes']['PackageQuantity']) ? $data['Items']['Item']['ItemAttributes']['PackageQuantity'] : "";
+                $color = isset($data['Items']['Item']['ItemAttributes']['Color']) ? $data['Items']['Item']['ItemAttributes']['Color'] : "";
+
+                $features = isset($data['Items']['Item']['ItemAttributes']['Feature']) ? $data['Items']['Item']['ItemAttributes']['Feature'] : "";
+
+
+                $productSize = $productHeight . " X " . $productWidth . " X " . $productLength . " Inches";
+                $packageSize = $packageHeight . " X " . $packageWidth . " X " . $packageLength . " Inches";
+                $weight = $productWeight . " Pound";
+
 
                 $information = [
-                    'ApiTitle'         => isset($data['Items']['Item']['ItemAttributes']['Title'])?$data['Items']['Item']['ItemAttributes']['Title']:"",
-                    'ApiImageLink'     => isset($data['Items']['Item']['LargeImage']['URL'])?$data['Items']['Item']['LargeImage']['URL']:"",
-                    'ApiPrice'         => isset($data['Items']['Item']['ItemAttributes']['ListPrice']['Amount'])?$data['Items']['Item']['ItemAttributes']['ListPrice']['Amount'] / 100:"",
-                    'ApiAvailable'     => isset($data['Items']['Item']['Offers']['Offer']['OfferListing']['Availability']) ? $data['Items']['Item']['Offers']['Offer']['OfferListing']['Availability'] : "No information available",
+                    'ApiTitle'         => $title,
+                    'ApiImageLink'     => $imageLink,
+                    'ApiPrice'         => $listPrice,
+                    'ApiSalePrice'     => $salePrice,
+                    'AffiliateLink'    => $affiliateLink,
+
+                    'ApiAvailable'     => $available,
                     'ApiSpecification' => [
-                        'Height' => isset($data['Items']['Item']['ItemAttributes']['ItemDimensions']['Height']) ? $data['Items']['Item']['ItemAttributes']['ItemDimensions']['Height'] : "",
-                        'Length' => isset($data['Items']['Item']['ItemAttributes']['ItemDimensions']['Length']) ? $data['Items']['Item']['ItemAttributes']['ItemDimensions']['Length'] : "",
-                        'Width'  => isset($data['Items']['Item']['ItemAttributes']['ItemDimensions']['Width']) ? $data['Items']['Item']['ItemAttributes']['ItemDimensions']['Width'] : "",
-                        'Weight' => isset($data['Items']['Item']['ItemAttributes']['ItemDimensions']['Weight']) ? $data['Items']['Item']['ItemAttributes']['ItemDimensions']['Weight'] : ""
+                        'PartNumber'   => $partNumber,
+                        'Model'        => $model,
+                        'Manufacturer' => $manufacturer,
+                        'ItemQuantity' => $itemQuantity,
+                        'Color'        => $color,
+                        'ProductSize'  => $productSize,
+                        'PackageSize'  => $packageSize,
+                        'Weight'       => $weight,
+                        'Features'     => $features,
                     ]
                 ];
 
                 return $information;
-            }catch(Exception $ex)
+
+            } catch (Exception $ex)
             {
                 return $ex;
             }
