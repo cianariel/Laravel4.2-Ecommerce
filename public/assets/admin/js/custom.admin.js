@@ -456,7 +456,7 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
             $scope.isCollapsedToggle = !$scope.isCollapsed;
         };
         $scope.addProduct = function () {
-
+            $scope.closeAlert();
             $http({
                 url: '/api/product/add-product',
                 method: "POST",
@@ -466,6 +466,7 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
                 if (data.status_code == 200) {
 
                     $scope.ProductId = data.data.id;
+                    $scope.productUpdateInfo();
 
                     //   $scope.Permalink = $scope.desiredPermalink;
                 } else {
@@ -477,19 +478,7 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
         };
 
         // update product
-        $scope.updateProduct = function () {
-
-            $scope.closeAlert();
-            // if it's a new request then product should be insert first
-            //   console.log($scope.ProductId);
-            if ($scope.ProductId == '') {
-                //   console.log('creating product');
-
-                $scope.addProduct();
-            }
-
-            $scope.closeAlert();
-
+        $scope.productUpdateInfo = function () {
             $http({
                 url: '/api/product/update-product',
                 method: 'POST',
@@ -518,9 +507,7 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
                     Review: $scope.reviews,
                     ExternalReviewLink: $scope.externalReviewLink,
                     IdeaingReviewScore: $scope.ideaingReviewScore
-
                 }
-
             }).success(function (data) {
                 //console.log(data);
                 if (data.status_code == 200) {
@@ -528,9 +515,23 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
                 } else {
                     $scope.outputStatus(data, "Product information not updated");
                 }
-
-
             });
+        }
+
+        $scope.updateProduct = function () {
+
+            $scope.closeAlert();
+            // if it's a new request then product should be insert first
+            //   console.log($scope.ProductId);
+            if ($scope.ProductId == '') {
+                $scope.addProduct();
+            } else {
+                $scope.productUpdateInfo();
+            }
+
+            $scope.closeAlert();
+
+
             return false;
         };
 

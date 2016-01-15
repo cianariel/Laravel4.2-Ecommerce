@@ -33,14 +33,15 @@
                     Get it
                 </a>
                 <img class="vendor-logo" src="/assets/images/dummies/amazon-black.png">
-                <b class="price">$ @if(isset($productInformation['Price']))
-                        {{$productInformation['Price']}}
+                <b class="price">$ @if(isset($productInformation['SellPrice']))
+                        {{$productInformation['SellPrice']}}
                     @endif</b>
             </div>
         </header>
 
         <section id="hero" class="product-hero">
-            <div class="hero-background" style="background-image: url('@if(isset($selfImages['heroImage'])){{$selfImages['heroImage']}}@endif')"></div>
+            <div class="hero-background"
+                 style="background-image: url('@if(isset($selfImages['heroImage'])){{$selfImages['heroImage']}}@endif')"></div>
             <div class="color-overlay"></div>
 
             <div class="container fixed-sm full-480">
@@ -51,21 +52,21 @@
                                 <li>
                                     <a href="/category/@if(isset($category['CategoryPermalink'])){{$category['CategoryPermalink']}}@endif"
                                        @if($category == end($productInformation['CatTree']))class="current"
-                                               @endif>
+                                            @endif>
                                         @if(isset($category['CategoryName']))
                                             {{$category['CategoryName']}}
                                         @endif</a>
                                 </li>
                             @endforeach
                         @endif
-
-
                     </ul>
                 </nav>
 
                 <div class="average-score">
                     <div class="score">@if(isset($productInformation['Review']) && isset($productInformation['IdeaingReviewScore']))
-                            {{(($productInformation['Review'][0]->value + $productInformation['IdeaingReviewScore'])/2)*20}}@endif%</div>
+                            {{(($productInformation['Review'][0]->value + $productInformation['IdeaingReviewScore'])/2)*20}}@endif
+                        %
+                    </div>
                     <span class="caption">Average Ideaing Score</span>
                 </div>
 
@@ -158,7 +159,8 @@
                             @foreach( $selfImages['picture'] as $image )
                                 <a class="rsImg" data-rsbigimg="{{$image['link']}}"
                                    href="{{$image['link']}}">
-                                    <img itemprop="image" class="rsTmb" src="{{$image['link']}}" alt="{{$image['picture-name']}}">
+                                    <img itemprop="image" class="rsTmb" src="{{$image['link']}}"
+                                         alt="{{$image['picture-name']}}">
                                 </a>
                             @endforeach
                         @endif
@@ -166,15 +168,19 @@
                     </div>
 
                     <div class="slider-side-block">
+
                         <div class="top">
+                            <div style="color: white; text-align: center;">@if(isset($productInformation['Available']))
+                                    {{$productInformation['Available']}}
+                                    @endif</div>
                             <a class="get solid" href="@if(isset($productInformation['AffiliateLink']))
                             {{$productInformation['AffiliateLink']}}
                             @endif" target="_blank">
                                 Get it
                             </a>
                             <img class="vendor-logo" src="/assets/images/dummies/amazon-2.png">
-                            <b class="price">$ @if(isset($productInformation['Price']))
-                                    {{$productInformation['Price']}}
+                            <b class="price">$ @if(isset($productInformation['SellPrice']))
+                                    {{$productInformation['SellPrice']}}
                                 @endif</b>
                         </div>
                         <div class="table">
@@ -382,17 +388,19 @@
                                             <td class="name">
                                                 <a href="@if(isset($review->link)){{$review->link}}@endif"
                                                    target="_blank">@if(isset($review->key)){{$review->key}}@endif
-                                                @if(isset($review->counter))( {{$review->counter}} )@endif
+                                                    @if(isset($review->counter))( {{$review->counter}} )@endif
                                                 </a>
                                             </td>
                                             <td class="line">
                                                 <div class="outer-line">
-                                                    <div style="width: @if(isset($review->value)){{$review->value * 20}}@endif%" class="inner-line"></div>
+                                                    <div style="width: @if(isset($review->value)){{$review->value * 20}}@endif%"
+                                                         class="inner-line"></div>
                                                 </div>
                                             </td>
                                             <!-- TODO - the style has to come from Laravel-->
 
-                                            <td class="score">@if(isset($review->value)){{$review->value * 20}}@endif%</td>
+                                            <td class="score">@if(isset($review->value)){{$review->value * 20}}@endif%
+                                            </td>
                                         </tr>
 
                                     @endforeach

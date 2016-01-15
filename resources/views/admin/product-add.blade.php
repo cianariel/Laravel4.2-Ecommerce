@@ -249,8 +249,9 @@
                                                                 <tags-input ng-model="productTags"
                                                                             display-property="name"
                                                                             add-from-autocomplete-only="true">
-                                                                    <auto-complete source="searchProductByName($query)"
-                                                                                   ng-model-options="{debounce: 1000}"></auto-complete>
+                                                                    <auto-complete min-length="4"
+                                                                                   source="searchProductByName($query)">
+                                                                    </auto-complete>
                                                                 </tags-input>
                                                             </div>
                                                             <div class="form-group">
@@ -591,13 +592,13 @@
                                                             <button type="button"
                                                                     ng-show="isMediaUploadable"
                                                                     class="btn btn-success btn-s"
-                                                                    ng-click="uploader.uploadAll()">upload Content
+                                                                    ng-click="uploader.uploadAll()">Upload
                                                             </button>
                                                         </div>
                                                         <p>
                                                             <button type="button"
                                                                     class="btn btn-primary"
-                                                                    ng-click="addMediaInfo()">Save Info
+                                                                    ng-click="addMediaInfo()">Add In List
                                                             </button>
                                                         </p>
                                                     </div>
