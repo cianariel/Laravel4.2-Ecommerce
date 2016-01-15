@@ -7015,6 +7015,8 @@ body.room-landing #hero .orange img.round {
   border-color: #FF7F00; }
 body.room-landing #hero .yellow img.round {
   border-color: yellow; }
+body.room-landing .category-nav {
+  width: 412px; }
 body.room-landing .left-nav {
   padding-left: 0; }
 body.room-landing .popular-new {
