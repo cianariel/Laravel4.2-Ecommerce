@@ -148,7 +148,7 @@
                         <h4><a href="#">10 Ideas for Gorgeous Kitchens</a></h4>
                         {{--<b>In wooden Kitchen styles</b>--}}
                     </div>
-                    <a href="#" class="overlay-tag bottom author" style="background-image: url('/assets/images/dummies/author.png')">Author Name Here</a>
+                    <a href="#" class="overlay-tag bottom author" style="background-image: url('/assets/images/dummies/author.png')"><span>Bob Barbarian</span></a>
 
                     <time>Posted 5 hours ago</time>
 
@@ -219,6 +219,8 @@
                         <a href="#" class="overlay-tag category-tag top idea">Idea</a>
                         <h4><a href="#">10 Ideas for Gorgeous Kitchens</a></h4>
                     </div>
+                    <a href="#" class="overlay-tag bottom author" style="background-image: url('/assets/images/dummies/author.png')"><span>Bob Barbarian</span></a>
+
                     <time>Posted 5 hours ago</time>
                     <a href="#" class="overlay-tag bottom featured-badge big">
                         Featured
