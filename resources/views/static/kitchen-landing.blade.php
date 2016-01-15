@@ -43,7 +43,7 @@
         <div class="hero-background" style="background-image: url('/assets/images/room-landing-hero.jpg')"></div>
         {{--<div class="color-overlay"></div>--}}
 
-        <div class="container fixed-sm full-480">
+        <div class="container hero-container fixed-sm full-480">
             <div class="hero-tags">
                 <div class="tag one red" >
                     <span></span>
@@ -97,8 +97,8 @@
                 {{--</div>--}}
             </div>
             <section class="hero-related-products col-md-4 pull-right hidden-620">
-                    <h5>Related Products</h5>
-                <ul>
+                    <h5 data-toggle="#related-list">Related Products</h5>
+                <ul id="related-list" class="hidden-soft">
                     <li class="pink"><a class="pink-border" href="#"><img src="/assets/images/dummies/box-image-dummy.png" class="round" alt="" /> Steam pot</a> <a href="#" class="get solid pull-right">Get it</a></li>
                     <li class="red"><a class="red-border" href="#"><img src="/assets/images/dummies/box-image-dummy.png" class="round" alt="" /> Steam pot</a> <a href="#" class="get solid pull-right">Get it</a></li>
                     <li class="blue"><a class="blue-border" href="#"><img src="/assets/images/dummies/box-image-dummy.png" class="round" alt="" /> Steam pot</a> <a href="#" class="get solid pull-right">Get it</a></li>
@@ -118,10 +118,10 @@
 
             <ul class="col-sm-4 pull-right popular-new">
                 <li class="pull-right">
-                    <a href="#" class="box-link">Newest</a>
+                    <a href="#" class="box-link">Popular</a>
                 </li>
                 <li class="pull-right">
-                    <a href="#" class="box-link">Popular</a>
+                    <a href="#" class="box-link active">Newest</a>
                 </li>
             </ul>
             <ul class="category-nav col-sm-6 pull-right">
@@ -136,7 +136,7 @@
     <main class="page-content">
         <div class="container">
             <div class="box-container">
-                <div class="grid-box square not-rounded product-box col-xs-4 full-620">
+                <div class="grid-box square not-rounded idea-box col-xs-4 full-620">
                     <div class="img-wrap">
                         <img class="img-responsive" src="/assets/images/dummies/webcam-square.jpg">
 
@@ -148,9 +148,17 @@
                         <h4><a href="#">10 Ideas for Gorgeous Kitchens</a></h4>
                         {{--<b>In wooden Kitchen styles</b>--}}
                     </div>
-                    <a href="#" class="overlay-tag bottom author" style="background-image: url('/assets/images/dummies/author.png')">Author Name Here</a>
+                    <a href="#" class="overlay-tag bottom author" style="background-image: url('/assets/images/dummies/author.png')"><span>Bob Barbarian</span></a>
 
                     <time>Posted 5 hours ago</time>
+
+                    <div class="color-overlay">
+
+                        <a href="#" class="box-link">
+                            Read More
+                        </a>
+
+                    </div>
                 </div>
                 <div class="grid-box square not-rounded product-box product col-xs-4 full-620">
                     <div class="img-wrap">
@@ -160,6 +168,9 @@
                             <a href="#" class="social-pic likes">157</a>
                         </div>
                         <a href="#" class="overlay-tag category-tag top product">Product</a>
+                        <a class="category-tag get-round hidden-soft">
+                            Get it
+                        </a>
                     </div>
                     <time>Posted 5 hours ago</time>
 
@@ -169,17 +180,12 @@
                                 <li>
                                     <a href="#"><b>$35.00</b> from  <img class="vendor-logo" src="/assets/images/dummies/amazon-black.png"></a>
                                 </li>
-                                <li>
-                                    <a href="#"><b>$39.50.00</b> from  <img class="vendor-logo" src="/assets/images/dummies/amazon-black.png"></a>
-                                </li>
-                                <li>
-                                    <a href="#"><b>$41.00</b> from  <img class="vendor-logo" src="/assets/images/dummies/amazon-black.png"></a>
-                                </li>
+
                             </ul>
 
-                        </div>
+                    </div>
                 </div>
-                <div class="grid-box square not-rounded product-box col-xs-4 full-620">
+                <div class="grid-box square not-rounded idea-box col-xs-4 full-620">
                     <div class="img-wrap">
                         <img class="img-responsive" src="/assets/images/dummies/webcam-square.jpg">
 
@@ -191,39 +197,41 @@
                         <h4><a href="#">10 Ideas for Gorgeous Kitchens</a></h4>
                         {{--<b>In wooden Kitchen styles</b>--}}
                     </div>
-                    <a href="#" class="overlay-tag bottom author" style="background-image: url('/assets/images/dummies/author.png')">Author Name Here</a>
+                    <a href="#" class="overlay-tag bottom author" style="background-image: url('/assets/images/dummies/author.png')"><span>Bob Barbarian</span></a>
 
                     <time>Posted 5 hours ago</time>
+                    <div class="color-overlay">
+
+                        <a href="#" class="box-link">
+                            Read More
+                        </a>
+
+                    </div>
                 </div>
-                <div class="grid-box square not-rounded product-box huge col-xs-12 full-620">
+                <div class="grid-box square not-rounded idea-box huge col-xs-12 full-620">
                     <div class="img-wrap">
                         <img class="img-responsive" src="/assets/images/dummies/clock.png">
 
                         <div class="like-wrap">
                             <a href="#" class="social-pic likes">157</a>
+                            <a href="#" class="social-pic comment">200</a>
                         </div>
                         <a href="#" class="overlay-tag category-tag top idea">Idea</a>
                         <h4><a href="#">10 Ideas for Gorgeous Kitchens</a></h4>
                     </div>
+                    <a href="#" class="overlay-tag bottom author" style="background-image: url('/assets/images/dummies/author.png')"><span>Bob Barbarian</span></a>
+
                     <time>Posted 5 hours ago</time>
                     <a href="#" class="overlay-tag bottom featured-badge big">
                         Featured
                     </a>
-                    {{--<div class="color-overlay">--}}
-                        {{--<h4><a href="#">The Awesome Webcam</a></h4>--}}
-                        {{--<ul class="prices">--}}
-                                {{--<li>--}}
-                                    {{--<a href="#"><b>$35.00</b> from  <img class="vendor-logo" src="/assets/images/dummies/amazon-black.png"></a>--}}
-                                {{--</li>--}}
-                                {{--<li>--}}
-                                    {{--<a href="#"><b>$39.50.00</b> from  <img class="vendor-logo" src="/assets/images/dummies/amazon-black.png"></a>--}}
-                                {{--</li>--}}
-                                {{--<li>--}}
-                                    {{--<a href="#"><b>$41.00</b> from  <img class="vendor-logo" src="/assets/images/dummies/amazon-black.png"></a>--}}
-                                {{--</li>--}}
-                            {{--</ul>--}}
+                    <div class="color-overlay">
 
-                        {{--</div>--}}
+                        <a href="#" class="box-link">
+                            Read More
+                        </a>
+
+                    </div>
                 </div>
             </div>
 
