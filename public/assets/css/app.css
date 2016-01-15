@@ -5661,6 +5661,8 @@ main.page-content .card {
           .grid-box.square .color-overlay ul.prices a img {
             margin-left: 5px;
             margin-top: 3px; }
+    .grid-box.square.idea-box .like-wrap {
+      min-height: 87px; }
     .grid-box.square.huge h4 {
       margin-top: 20%; }
     .grid-box.square.huge .color-overlay h4 {
@@ -5695,8 +5697,6 @@ main.page-content .card {
         display: inline-block;
         padding: 5px 5px 2px;
         background: #88C880; }
-    .grid-box.square:hover.idea-box .like-wrap {
-      min-height: 87px; }
     .grid-box.square:hover.idea-box.huge .box-link {
       left: 42%; }
 

@@ -1964,6 +1964,12 @@ main.page-content{
       }
     }
 
+    &.idea-box{
+      .like-wrap{
+        min-height: 87px;;
+      }
+    }
+
     &.huge{
       h4{
         margin-top: 20%;
@@ -2015,9 +2021,7 @@ main.page-content{
             background: #88C880;
           }
         }
-        .like-wrap{
-          min-height: 87px;;
-        }
+
         &.huge{
           .box-link{
             left: 42%;
