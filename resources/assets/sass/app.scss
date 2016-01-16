@@ -522,6 +522,28 @@ a{ // Custom Link Styles
     background-repeat: no-repeat;
   }
 
+  &.get-round{
+    display: block;
+    width: 60px;
+    height: 60px;
+    float: left;
+    padding-top: 23px;
+    margin-top: -15px;
+
+    border-radius: 50%;
+    font-size: 1.1rem;
+    font-weight: bold;
+    border-radius: 50%;
+    text-align: center;
+    z-index: 1;
+    color: #fff;
+    background: $iridium;
+
+    &:hover{
+      background: darken($iridium, 10%);
+    }
+  }
+
 
 }
 
@@ -898,7 +920,7 @@ nav{
     //background-position: left 4px;
 
     span{
-      margin-right: 5px;
+      margin-right: 8px;
     }
   }
 
@@ -1866,17 +1888,19 @@ main.page-content{
       &.product{
         background:$pine-green url("/assets/images/icons/bag-white-3.png") center 5px no-repeat;
       }
-      &.get-round{
-        background: $iridium;
-        top: 270px;
-        left: 40%;
-        padding-top: 23px;
-        font-weight: bold;
-
-        &:hover{
-          background: darken($iridium, 10%);
-        }
-      }
+      //&.get-round{
+      //  background: $iridium;
+      //  top: 270px;
+      //  left: 40%;
+      //  padding-top: 23px;
+      //  font-weight: bold;
+      //  border-radius: 30%;
+      //  color: #fff;
+      //
+      //  &:hover{
+      //    background: darken($iridium, 10%);
+      //  }
+      //}
 
     }
     .like-wrap{
@@ -2710,7 +2734,7 @@ body.product-details{
   top: 0;
   width: 100%;
   z-index: 35;
-  padding:20px 0 8px;
+  padding:18px 0 0;
   overflow: hidden;
   background: #fff;
   background: rgba(255,255,255,.85);
@@ -2726,13 +2750,27 @@ body.product-details{
   }
 
   h1{
-    width: 57%;
+    width: 35%;
     padding-left: 10px;
     float: left;
     margin-left: 3%;
     margin-top: 0;
     font-size: 2.1rem;
     text-align: center;
+  }
+
+  .like-counter{
+    margin-top: 0 !important;
+  }
+
+  .share-buttons{
+    width: 300px;
+    margin-bottom: 0;
+
+    li{
+      display: block;
+      float: left;
+    }
   }
 
   //.like-nav{
@@ -2806,11 +2844,14 @@ body.product-details{
   }
 
   .price{
-    font-size: 1.75rem;
+    font-size: 1.5rem;
+    position: relative;
+    top: 5px;
   }
 
   .vendor-logo{
-    margin: 3px 15px 0;
+    width: 60px;
+    margin: 12px 15px 0;
   }
 
   .icon-wrap{

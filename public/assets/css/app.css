@@ -4683,6 +4683,23 @@ a.comment {
   background-image: url("/assets/images/chat-blue-outline.png");
   background-size: 19px;
   background-repeat: no-repeat; }
+a.get-round {
+  display: block;
+  width: 60px;
+  height: 60px;
+  float: left;
+  padding-top: 23px;
+  margin-top: -15px;
+  border-radius: 50%;
+  font-size: 1.1rem;
+  font-weight: bold;
+  border-radius: 50%;
+  text-align: center;
+  z-index: 1;
+  color: #fff;
+  background: #FF0042; }
+  a.get-round:hover {
+    background: #cc0035; }
 
 li.nested a.active::after {
   background-image: url("/assets/images/arrow-up-black.png"); }
@@ -5045,7 +5062,7 @@ nav a {
     padding: 20px 0 20px 3px !important;
     border: 0; }
     #hero .like-counter span {
-      margin-right: 5px; }
+      margin-right: 8px; }
   #hero .hero-background {
     background-image: url("/assets/images/landing-hero-3.jpg");
     background-size: cover;
@@ -5593,14 +5610,6 @@ main.page-content .card {
         background: #FF7F00 url("/assets/images/icons/lamp-white-3.png") center 5px no-repeat; }
       .grid-box.square .category-tag.product {
         background: #C7C747 url("/assets/images/icons/bag-white-3.png") center 5px no-repeat; }
-      .grid-box.square .category-tag.get-round {
-        background: #FF0042;
-        top: 270px;
-        left: 40%;
-        padding-top: 23px;
-        font-weight: bold; }
-        .grid-box.square .category-tag.get-round:hover {
-          background: #cc0035; }
     .grid-box.square .like-wrap {
       width: 86px;
       background: rgba(255, 255, 255, 0.9);
@@ -6099,7 +6108,7 @@ body.product-details .story-header .social-rounds {
   top: 0;
   width: 100%;
   z-index: 35;
-  padding: 20px 0 8px;
+  padding: 18px 0 0;
   overflow: hidden;
   background: #fff;
   background: rgba(255, 255, 255, 0.85);
@@ -6110,13 +6119,21 @@ body.product-details .story-header .social-rounds {
     background-size: initial;
     margin-top: -14px; }
   .story-header h1 {
-    width: 57%;
+    width: 35%;
     padding-left: 10px;
     float: left;
     margin-left: 3%;
     margin-top: 0;
     font-size: 2.1rem;
     text-align: center; }
+  .story-header .like-counter {
+    margin-top: 0 !important; }
+  .story-header .share-buttons {
+    width: 300px;
+    margin-bottom: 0; }
+    .story-header .share-buttons li {
+      display: block;
+      float: left; }
   .story-header a.like-counter {
     margin-left: 30px;
     margin-top: 5px; }
@@ -6153,9 +6170,12 @@ body.product-details .story-header .social-rounds {
   .story-header .likes {
     color: #FF0042; }
   .story-header .price {
-    font-size: 1.75rem; }
+    font-size: 1.5rem;
+    position: relative;
+    top: 5px; }
   .story-header .vendor-logo {
-    margin: 3px 15px 0; }
+    width: 60px;
+    margin: 12px 15px 0; }
   .story-header .icon-wrap {
     padding-right: 35px; }
 

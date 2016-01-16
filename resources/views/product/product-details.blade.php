@@ -13,21 +13,21 @@
                 @if(isset($productInformation['ProductName']))
                     {{$productInformation['ProductName']}}
                 @endif
+                    <a class="like-counter" href="#"><span></span><b>1819</b></a>
             </h1>
 
-            <ul class="social-rounds hidden-sm hidden-xs pull-right">
-                <li><a class="fb" href="#"></a></li>
-                <li><a class="twi" href="#"></a></li>
-                <li><a class="gp" href="#"></a></li>
-                <li><a class="pint" href="#"></a></li>
+            <ul class="share-buttons hidden-xs col-lg-6 col-sm-8 pull-right">
+                <li class="all-shares"><b>120K </b>all shares</li>
+                <li><a class="fb" href="#"><span></span><b>189</b></a></li>
+                <li><a class="twi" href="#"><span></span><b>189</b></a></li>
             </ul>
 
-            <ul class="like-nav hidden-xs pull-right pull-right">
-                <li><a class="like-counter" href="#"><span></span><b>189</b></a></li>
-            </ul>
+            {{--<ul class="like-nav hidden-xs pull-right pull-right">--}}
+                {{--<li><a class="like-counter" href="#"><span></span><b>1819</b></a></li>--}}
+            {{--</ul>--}}
 
             <div class="icon-wrap pull-right">
-                <a class="get solid" ng-href=" @if(isset($productInformation['AffiliateLink']))
+                <a class="category-tag get-round" ng-href=" @if(isset($productInformation['AffiliateLink']))
                 {{$productInformation['AffiliateLink']}}
                 @endif" target="_blank">
                     Get it
