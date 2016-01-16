@@ -107,45 +107,21 @@
                                                     <label class="col-md-2 control-label">Select Category:
                                                     </label>
                                                     <div class="col-md-5">
-                                                        <select data-ng-model="selectedItem"
-                                                                ng-change="getSubCategory()"
-                                                                class="form-control">
-                                                            <option value="@{{ selectedItem }}">
-                                                                -- View This Category --
-                                                            </option>
-                                                            <option ng-repeat="category in categoryItems"
-                                                                    value="@{{ category.id }}">
-                                                                @{{ category.category }}
-                                                            </option>
-                                                        </select>
+                                                        <ui-tree ng-model="assets"
+                                                                 load-fn="loadChildren"
+                                                                 expand-to="hierarchy"
+                                                                 selected-id="111"
+                                                                 attr-node-id="id"></ui-tree>
+                                                        <label>Selected Category Id :</label><span
+                                                                class="text-danger"><strong> @{{ selectedItem }} </strong> </span>
                                                     </div>
                                                     <div class="col-md-1">
-                                                        <button class="btn btn-info btn-circle"
-                                                                type="button"
-                                                                ng-click="resetCategory()"
-                                                                uib-tooltip="Refresh Category"
-                                                                tooltip-placement="right">
-                                                            <i class="fa fa-refresh"></i>
-                                                        </button>
+
                                                     </div>
                                                     <div class="col-md-4">
-                                                            <label>Selected Category Name :</label><span
-                                                                    class="text-danger"><strong> @{{ currentCategoryName }} </strong> </span>
+
                                                     </div>
-                                                    <div class="row form-group" ng-hide="hideCategoryPanel" style="display:none">
-                                                        <div class="col-md-4">
-                                                            <div class="panel panel-info">
-                                                                <div class="panel-heading"> Subcategory Status
-                                                                    Panel
-                                                                </div>
-                                                                <div class="panel-body">
-                                                                    <span ng-repeat="list in tempCategoryList">@{{ list }}
-                                                                        >> </span>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        
-                                                    </div>
+
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="col-md-2 control-label">Product ID:

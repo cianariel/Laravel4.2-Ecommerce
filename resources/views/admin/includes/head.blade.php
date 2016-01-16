@@ -27,6 +27,7 @@
     <link href="/assets/css/wysiwyg.style.css" rel="stylesheet">
     <link href="/assets/css/ng-tags-input.min.css" rel="stylesheet">
     <link href="/assets/admin/css/ng-rateit.css" rel="stylesheet">
+
     <link href="/assets/admin/css/admin.custom.css" rel="stylesheet">
 
     
