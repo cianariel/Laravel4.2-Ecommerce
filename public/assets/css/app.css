@@ -5247,7 +5247,8 @@ body.product-details #hero {
       background: #fff url("/assets/images/dummies/amazon-stars.png") left no-repeat;
       background-size: contain;
       border: 1px solid #c1c1c1;
-      font-size: inherit; }
+      font-size: inherit;
+      text-align: right; }
       .slider-side-block .table .price:hover {
         color: #079DD1; }
 
