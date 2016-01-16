@@ -997,6 +997,9 @@ nav{
 body.single,
 body.room-landing,
 body.product-details{
+  .mid-nav.rooms{
+    display: none;
+  }
   .mid-nav{
     height: 50px;
     background: rgba(255,255,255,.95);
@@ -1132,6 +1135,10 @@ body.product-details{
 }
 
 .breadcrumbs{
+  //display: none;
+  li a{
+    padding-top: 5px !important;
+  }
   li.active{
     a{
       font-size: 2.5rem;
@@ -1233,7 +1240,7 @@ body.product-details{
   .top{
     width: 100%;
     height: 85px;
-    padding: 35px;
+    padding: 12px 35px 35px;
     background-color: rgba(0,0,0,.65);
     border-radius:5px 0 0 0;
 
@@ -1246,6 +1253,7 @@ body.product-details{
   }
   .vendor-logo{
     margin-left: 5%;
+    margin-top: 9px;
   }
 
   .table{
@@ -1270,11 +1278,13 @@ body.product-details{
       background: #F7F7F7;
     }
     .price{
-      width: 70px;
+      width: 240px;
+      max-width: 70%;
       padding: 5px;
       margin-top: -7px;
       color: $tarmac;
-      background: #fff;
+      background: #fff url('/assets/images/dummies/amazon-stars.png') left no-repeat;
+      background-size: contain;
       border: 1px solid $light-grey;
       font-size: inherit;
 
@@ -3450,7 +3460,7 @@ header.sub-head{
   overflow: visible;
   float: left;
   width: 100%;
-  //background: #F2F2F2;
+  background-color: #fff;
   border-top: 1px solid #EFEFEF;
   border-bottom: 1px solid #EFEFEF;
   ul{
@@ -3957,6 +3967,7 @@ body.single{
 // PRODUCT DETAILS
 
 #hero.product-hero{
+  padding-top: 50px;
   h1{
     float: left;
     font-size: 3rem;
@@ -3979,6 +3990,7 @@ body.single{
   width: 190px;
   height: 100px;
   padding-top: 10px;
+  margin-top: 5px;
   background: $sky-blue url('/assets/images/icons/logo-lamp-white.png') 10px 15px no-repeat;
   border-radius: 10px;
   text-align: center;

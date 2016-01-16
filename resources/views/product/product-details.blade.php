@@ -1,10 +1,35 @@
 @extends('layouts.main')
 
+@section('body-class'){{ 'product-details' }}@stop
+
 @section('content')
     <script type="text/javascript">
         var urlParam = "{{$permalink}}";
     </script>
     <div ng-app="productApp" data-ng-controller="productController" ng-cloak>
+        <nav class="mid-nav hidden-620">
+            <div class="container">
+                <ul class="left-nav breadcrumbs hidden-620">
+                    <!--                    <li><a class="home-link" href="#">Home</a></li>-->
+                    {{--<li class="active"><a href="#" class="larger-text allcaps orange">Ideas</a></li>--}}
+                    {{--<li><a href="#" class="orange box-link">Kitchen</a></li>--}}
+                    {{--<li><a href="#" class="orange box-link">Style</a></li>--}}
+
+                    @if(isset($productInformation['CatTree']))
+                        @foreach( $productInformation['CatTree'] as $category )
+                            <li>
+                                <a class="orange box-link" href="/category/@if(isset($category['CategoryPermalink'])){{$category['CategoryPermalink']}}@endif"
+                                   @if($category == end($productInformation['CatTree']))class="current"
+                                        @endif>
+                                    @if(isset($category['CategoryName']))
+                                        {{$category['CategoryName']}}
+                                    @endif</a>
+                            </li>
+                        @endforeach
+                    @endif
+                </ul>
+            </div>
+        </nav>
         <header class="story-header hidden-620 hidden-soft">
             <a href="#" class="side-logo lamp-logo">
             </a>
@@ -45,22 +70,11 @@
             <div class="color-overlay"></div>
 
             <div class="container fixed-sm full-480">
-                <nav class="breadcrumbs">
-                    <ul>
-                        @if(isset($productInformation['CatTree']))
-                            @foreach( $productInformation['CatTree'] as $category )
-                                <li>
-                                    <a href="/category/@if(isset($category['CategoryPermalink'])){{$category['CategoryPermalink']}}@endif"
-                                       @if($category == end($productInformation['CatTree']))class="current"
-                                            @endif>
-                                        @if(isset($category['CategoryName']))
-                                            {{$category['CategoryName']}}
-                                        @endif</a>
-                                </li>
-                            @endforeach
-                        @endif
-                    </ul>
-                </nav>
+                {{--<nav class="breadcrumbs">--}}
+                    {{--<ul>--}}
+                      {{----}}
+                    {{--</ul>--}}
+                {{--</nav>--}}
 
                 <div class="average-score">
                     <div class="score">@if(isset($productInformation['Review']) && isset($productInformation['IdeaingReviewScore']))
@@ -172,7 +186,7 @@
                             <div style="color: white; text-align: center;">@if(isset($productInformation['Available']))
                                     {{$productInformation['Available']}}
                                     @endif</div>
-                            <a class="get solid" href="@if(isset($productInformation['AffiliateLink']))
+                            <a class="get-round" href="@if(isset($productInformation['AffiliateLink']))
                             {{$productInformation['AffiliateLink']}}
                             @endif" target="_blank">
                                 Get it

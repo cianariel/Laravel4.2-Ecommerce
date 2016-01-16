@@ -5099,6 +5099,14 @@ nav a {
   #hero .container {
     position: relative; }
 
+body.single .mid-nav.rooms, body.single .mid-nav .rooms.extra-nav, .mid-nav body.single .rooms.extra-nav,
+body.room-landing .mid-nav.rooms,
+body.room-landing .mid-nav .rooms.extra-nav,
+.mid-nav body.room-landing .rooms.extra-nav,
+body.product-details .mid-nav.rooms,
+body.product-details .mid-nav .rooms.extra-nav,
+.mid-nav body.product-details .rooms.extra-nav {
+  display: none; }
 body.single .mid-nav, body.single .mid-nav .extra-nav, .mid-nav body.single .extra-nav,
 body.room-landing .mid-nav,
 body.room-landing .mid-nav .extra-nav,
@@ -5156,6 +5164,8 @@ body.product-details #hero {
     top: 461px;
     background-image: url("/assets/images/icons/arrow-down-pink.png"); }
 
+.breadcrumbs li a {
+  padding-top: 5px !important; }
 .breadcrumbs li.active a {
   font-size: 2.5rem;
   padding-top: 6px !important;
@@ -5201,7 +5211,7 @@ body.product-details #hero {
   .slider-side-block .top {
     width: 100%;
     height: 85px;
-    padding: 35px;
+    padding: 12px 35px 35px;
     background-color: rgba(0, 0, 0, 0.65);
     border-radius: 5px 0 0 0; }
   .slider-side-block .price {
@@ -5210,7 +5220,8 @@ body.product-details #hero {
     float: right;
     font-weight: normal; }
   .slider-side-block .vendor-logo {
-    margin-left: 5%; }
+    margin-left: 5%;
+    margin-top: 9px; }
   .slider-side-block .table {
     padding: 10px;
     background: #F7F7F7;
@@ -5228,11 +5239,13 @@ body.product-details #hero {
       padding: 0 10px;
       background: #F7F7F7; }
     .slider-side-block .table .price {
-      width: 70px;
+      width: 240px;
+      max-width: 70%;
       padding: 5px;
       margin-top: -7px;
       color: #3D4B4E;
-      background: #fff;
+      background: #fff url("/assets/images/dummies/amazon-stars.png") left no-repeat;
+      background-size: contain;
       border: 1px solid #c1c1c1;
       font-size: inherit; }
       .slider-side-block .table .price:hover {
@@ -6541,6 +6554,7 @@ header.sub-head {
   overflow: visible;
   float: left;
   width: 100%;
+  background-color: #fff;
   border-top: 1px solid #EFEFEF;
   border-bottom: 1px solid #EFEFEF; }
   #hero-nav ul {
@@ -6820,14 +6834,16 @@ body.single .like-nav {
       display: block;
       border: 1px solid #00B1FF; }
 
-#hero.product-hero h1 {
-  float: left;
-  font-size: 3rem;
-  padding-left: 40px; }
-#hero.product-hero .color-overlay {
-  background-color: rgba(0, 0, 0, 0.6); }
-#hero.product-hero .product-slider .main-image {
-  width: 100%; }
+#hero.product-hero {
+  padding-top: 50px; }
+  #hero.product-hero h1 {
+    float: left;
+    font-size: 3rem;
+    padding-left: 40px; }
+  #hero.product-hero .color-overlay {
+    background-color: rgba(0, 0, 0, 0.6); }
+  #hero.product-hero .product-slider .main-image {
+    width: 100%; }
 
 .average-score {
   position: relative;
@@ -6835,6 +6851,7 @@ body.single .like-nav {
   width: 190px;
   height: 100px;
   padding-top: 10px;
+  margin-top: 5px;
   background: #00B1FF url("/assets/images/icons/logo-lamp-white.png") 10px 15px no-repeat;
   border-radius: 10px;
   text-align: center;
