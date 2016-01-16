@@ -4683,6 +4683,23 @@ a.comment {
   background-image: url("/assets/images/chat-blue-outline.png");
   background-size: 19px;
   background-repeat: no-repeat; }
+a.get-round {
+  display: block;
+  width: 60px;
+  height: 60px;
+  float: left;
+  padding-top: 23px;
+  margin-top: -15px;
+  border-radius: 50%;
+  font-size: 1.1rem;
+  font-weight: bold;
+  border-radius: 50%;
+  text-align: center;
+  z-index: 1;
+  color: #fff;
+  background: #FF0042; }
+  a.get-round:hover {
+    background: #cc0035; }
 
 li.nested a.active::after {
   background-image: url("/assets/images/arrow-up-black.png"); }
@@ -5045,7 +5062,7 @@ nav a {
     padding: 20px 0 20px 3px !important;
     border: 0; }
     #hero .like-counter span {
-      margin-right: 5px; }
+      margin-right: 8px; }
   #hero .hero-background {
     background-image: url("/assets/images/landing-hero-3.jpg");
     background-size: cover;
@@ -5082,6 +5099,14 @@ nav a {
   #hero .container {
     position: relative; }
 
+body.single .mid-nav.rooms, body.single .mid-nav .rooms.extra-nav, .mid-nav body.single .rooms.extra-nav,
+body.room-landing .mid-nav.rooms,
+body.room-landing .mid-nav .rooms.extra-nav,
+.mid-nav body.room-landing .rooms.extra-nav,
+body.product-details .mid-nav.rooms,
+body.product-details .mid-nav .rooms.extra-nav,
+.mid-nav body.product-details .rooms.extra-nav {
+  display: none; }
 body.single .mid-nav, body.single .mid-nav .extra-nav, .mid-nav body.single .extra-nav,
 body.room-landing .mid-nav,
 body.room-landing .mid-nav .extra-nav,
@@ -5139,6 +5164,8 @@ body.product-details #hero {
     top: 461px;
     background-image: url("/assets/images/icons/arrow-down-pink.png"); }
 
+.breadcrumbs li a {
+  padding-top: 5px !important; }
 .breadcrumbs li.active a {
   font-size: 2.5rem;
   padding-top: 6px !important;
@@ -5184,7 +5211,7 @@ body.product-details #hero {
   .slider-side-block .top {
     width: 100%;
     height: 85px;
-    padding: 35px;
+    padding: 12px 35px 35px;
     background-color: rgba(0, 0, 0, 0.65);
     border-radius: 5px 0 0 0; }
   .slider-side-block .price {
@@ -5193,7 +5220,8 @@ body.product-details #hero {
     float: right;
     font-weight: normal; }
   .slider-side-block .vendor-logo {
-    margin-left: 5%; }
+    margin-left: 5%;
+    margin-top: 9px; }
   .slider-side-block .table {
     padding: 10px;
     background: #F7F7F7;
@@ -5211,13 +5239,16 @@ body.product-details #hero {
       padding: 0 10px;
       background: #F7F7F7; }
     .slider-side-block .table .price {
-      width: 70px;
+      width: 240px;
+      max-width: 70%;
       padding: 5px;
       margin-top: -7px;
       color: #3D4B4E;
-      background: #fff;
+      background: #fff url("/assets/images/dummies/amazon-stars.png") left no-repeat;
+      background-size: contain;
       border: 1px solid #c1c1c1;
-      font-size: inherit; }
+      font-size: inherit;
+      text-align: right; }
       .slider-side-block .table .price:hover {
         color: #079DD1; }
 
@@ -5577,7 +5608,7 @@ main.page-content .card {
       position: absolute;
       left: 15px;
       bottom: 0;
-      box-shadow: 0; }
+      box-shadow: none; }
     .grid-box.square .category-tag {
       width: 60px;
       height: 60px;
@@ -5593,12 +5624,6 @@ main.page-content .card {
         background: #FF7F00 url("/assets/images/icons/lamp-white-3.png") center 5px no-repeat; }
       .grid-box.square .category-tag.product {
         background: #C7C747 url("/assets/images/icons/bag-white-3.png") center 5px no-repeat; }
-      .grid-box.square .category-tag.get-round {
-        background: #FF0042;
-        top: 270px;
-        left: 40%;
-        padding-top: 23px;
-        font-weight: bold; }
     .grid-box.square .like-wrap {
       width: 86px;
       background: rgba(255, 255, 255, 0.9);
@@ -5644,6 +5669,8 @@ main.page-content .card {
         left: 30%;
         top: 270px;
         border-radius: 0; }
+        .grid-box.square .color-overlay a.box-link:hover {
+          background: #FF7F00; }
       .grid-box.square .color-overlay ul.prices {
         text-align: left;
         padding-left: 5px;
@@ -5670,6 +5697,8 @@ main.page-content .card {
     .grid-box.square.huge .img-wrap {
       overflow: hidden;
       min-height: 380px; }
+    .grid-box.square.huge a.box-link {
+      left: 42%; }
     .grid-box.square a.featured-badge {
       display: block;
       width: 71px;
@@ -5697,8 +5726,6 @@ main.page-content .card {
         display: inline-block;
         padding: 5px 5px 2px;
         background: #88C880; }
-    .grid-box.square:hover.idea-box.huge .box-link {
-      left: 42%; }
 
 .room-filter {
   position: absolute;
@@ -6095,7 +6122,7 @@ body.product-details .story-header .social-rounds {
   top: 0;
   width: 100%;
   z-index: 35;
-  padding: 20px 0 8px;
+  padding: 18px 0 0;
   overflow: hidden;
   background: #fff;
   background: rgba(255, 255, 255, 0.85);
@@ -6106,13 +6133,21 @@ body.product-details .story-header .social-rounds {
     background-size: initial;
     margin-top: -14px; }
   .story-header h1 {
-    width: 57%;
+    width: 35%;
     padding-left: 10px;
     float: left;
     margin-left: 3%;
     margin-top: 0;
     font-size: 2.1rem;
     text-align: center; }
+  .story-header .like-counter {
+    margin-top: 0 !important; }
+  .story-header .share-buttons {
+    width: 300px;
+    margin-bottom: 0; }
+    .story-header .share-buttons li {
+      display: block;
+      float: left; }
   .story-header a.like-counter {
     margin-left: 30px;
     margin-top: 5px; }
@@ -6149,9 +6184,12 @@ body.product-details .story-header .social-rounds {
   .story-header .likes {
     color: #FF0042; }
   .story-header .price {
-    font-size: 1.75rem; }
+    font-size: 1.5rem;
+    position: relative;
+    top: 5px; }
   .story-header .vendor-logo {
-    margin: 3px 15px 0; }
+    width: 60px;
+    margin: 12px 15px 0; }
   .story-header .icon-wrap {
     padding-right: 35px; }
 
@@ -6517,6 +6555,7 @@ header.sub-head {
   overflow: visible;
   float: left;
   width: 100%;
+  background-color: #fff;
   border-top: 1px solid #EFEFEF;
   border-bottom: 1px solid #EFEFEF; }
   #hero-nav ul {
@@ -6796,14 +6835,16 @@ body.single .like-nav {
       display: block;
       border: 1px solid #00B1FF; }
 
-#hero.product-hero h1 {
-  float: left;
-  font-size: 3rem;
-  padding-left: 40px; }
-#hero.product-hero .color-overlay {
-  background-color: rgba(0, 0, 0, 0.6); }
-#hero.product-hero .product-slider .main-image {
-  width: 100%; }
+#hero.product-hero {
+  padding-top: 50px; }
+  #hero.product-hero h1 {
+    float: left;
+    font-size: 3rem;
+    padding-left: 40px; }
+  #hero.product-hero .color-overlay {
+    background-color: rgba(0, 0, 0, 0.6); }
+  #hero.product-hero .product-slider .main-image {
+    width: 100%; }
 
 .average-score {
   position: relative;
@@ -6811,6 +6852,7 @@ body.single .like-nav {
   width: 190px;
   height: 100px;
   padding-top: 10px;
+  margin-top: 5px;
   background: #00B1FF url("/assets/images/icons/logo-lamp-white.png") 10px 15px no-repeat;
   border-radius: 10px;
   text-align: center;
@@ -6970,8 +7012,18 @@ body.single .like-nav {
 
 body.room-landing .mid-nav.rooms, body.room-landing .mid-nav .rooms.extra-nav, .mid-nav body.room-landing .rooms.extra-nav {
   display: none; }
+body.room-landing .mid-nav .container, .mid-nav body.room-landing .extra-nav .container {
+  padding-left: 0;
+  padding-right: 0; }
+body.room-landing .mid-nav .left-nav, .mid-nav body.room-landing .extra-nav .left-nav {
+  width: 135px; }
+  body.room-landing .mid-nav .left-nav a.all-link, .mid-nav body.room-landing .extra-nav .left-nav a.all-link {
+    width: 180px;
+    min-width: 0; }
 body.room-landing .mid-nav a, .mid-nav body.room-landing .extra-nav a {
   border: 0; }
+  body.room-landing .mid-nav a:hover, .mid-nav body.room-landing .extra-nav a:hover {
+    box-shadow: none; }
 body.room-landing #hero img.round {
   border: 2px solid;
   border-radius: 50%;
@@ -7028,7 +7080,6 @@ body.room-landing .popular-new {
       border-color: #FF0042;
       color: #FF0042 !important; }
 body.room-landing .page-content {
-  padding-top: 40px;
   overflow: hidden;
   width: 100%; }
 body.room-landing .box-link {

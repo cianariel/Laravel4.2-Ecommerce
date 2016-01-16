@@ -1,19 +1,39 @@
 @extends('layouts.main')
 
+@section('body-class'){{ 'product-details' }}@stop
+
 @section('content')
     <script type="text/javascript">
         var urlParam = "{{$permalink}}";
     </script>
-    <div ng-app="productApp" data-ng-controller="productController" ng-cloak>
-        <header class="story-header hidden-620 hidden-soft">
+    {{--<div ng-app="productApp" data-ng-controller="productController" ng-cloak>--}}
+        <nav class="mid-nav hidden-620">
+            <div class="container">
+                <ul class="left-nav breadcrumbs hidden-620">
+                    <!--                    <li><a class="home-link" href="#">Home</a></li>-->
+                    {{--<li class="active"><a href="#" class="larger-text allcaps orange">Ideas</a></li>--}}
+                    {{--<li><a href="#" class="orange box-link">Kitchen</a></li>--}}
+                    {{--<li><a href="#" class="orange box-link">Style</a></li>--}}
+
+                    @if(isset($productInformation['CatTree']))
+                        @foreach( $productInformation['CatTree'] as $category )
+                            <li>
+                                <a class="orange box-link" href="/category/@if(isset($category['CategoryPermalink'])){{$category['CategoryPermalink']}}@endif"
+                                   @if($category == end($productInformation['CatTree']))class="current"
+                                        @endif>
+                                    @if(isset($category['CategoryName']))
+                                        {{$category['CategoryName']}}
+                                    @endif</a>
+                            </li>
+                        @endforeach
+                    @endif
+                </ul>
+            </div>
+        </nav>
+        <header class="story-header hidden-620 hidden-soft" >
             <a href="#" class="side-logo lamp-logo">
             </a>
-
-            <h1>
-                @if(isset($productInformation['ProductName']))
-                    {{$productInformation['ProductName']}}
-                @endif
-            </h1>
+            <h1>Nest Protect (Second Generation)</h1>
 
             <ul class="social-rounds hidden-sm hidden-xs pull-right">
                 <li><a class="fb" href="#"></a></li>
@@ -27,15 +47,9 @@
             </ul>
 
             <div class="icon-wrap pull-right">
-                <a class="get solid" ng-href=" @if(isset($productInformation['AffiliateLink']))
-                {{$productInformation['AffiliateLink']}}
-                @endif" target="_blank">
-                    Get it
-                </a>
+                <div class="get solid">Get it</div>
                 <img class="vendor-logo" src="/assets/images/dummies/amazon-black.png">
-                <b class="price">$ @if(isset($productInformation['SellPrice']))
-                        {{$productInformation['SellPrice']}}
-                    @endif</b>
+                <b class="price">$199</b>
             </div>
         </header>
 
@@ -45,22 +59,11 @@
             <div class="color-overlay"></div>
 
             <div class="container fixed-sm full-480">
-                <nav class="breadcrumbs">
-                    <ul>
-                        @if(isset($productInformation['CatTree']))
-                            @foreach( $productInformation['CatTree'] as $category )
-                                <li>
-                                    <a href="/category/@if(isset($category['CategoryPermalink'])){{$category['CategoryPermalink']}}@endif"
-                                       @if($category == end($productInformation['CatTree']))class="current"
-                                            @endif>
-                                        @if(isset($category['CategoryName']))
-                                            {{$category['CategoryName']}}
-                                        @endif</a>
-                                </li>
-                            @endforeach
-                        @endif
-                    </ul>
-                </nav>
+                {{--<nav class="breadcrumbs">--}}
+                {{--<ul>--}}
+                {{----}}
+                {{--</ul>--}}
+                {{--</nav>--}}
 
                 <div class="average-score">
                     <div class="score">@if(isset($productInformation['Review']) && isset($productInformation['IdeaingReviewScore']))
@@ -87,8 +90,8 @@
 
                 <div class="slider product-slider">
                     <script>
-                        jQuery(document).ready(function ($) {
-                            if (window.innerWidth < 480) {
+                        jQuery(document).ready(function($) {
+                            if(window.innerWidth < 480) {
 
                                 $('#gallery').royalSlider({
                                     arrowsNav: true,
@@ -114,11 +117,12 @@
                                         firstMargin: false,
 //                                orientation: 'horizntal',
                                     },
+                                    loop: true
 //                            imgWidth: 1400,
 //                            imgHeight: 680
                                 });
-                            } else {
-                                jQuery(document).ready(function ($) {
+                            }else{
+                                jQuery(document).ready(function($) {
                                     $('#gallery').royalSlider({
 //                            arrowsNav: true,
                                         loop: false,
@@ -132,18 +136,20 @@
                                         navigateByClick: true,
                                         startSlideId: 0,
                                         autoPlay: false,
-                                        transitionType: 'move',
+                                        transitionType:'move',
                                         globalCaption: false,
                                         deeplinking: {
                                             enabled: true,
                                             change: false
                                         },
                                         thumbs: {
-                                            arrows: true,
+                                            arrows:true,
                                             appendSpan: true,
                                             firstMargin: false,
-                                            orientation: 'vertical'
+                                            orientation:'vertical'
                                         },
+                                        loop: true
+
 //                        imgWidth: 1400,
 //                        imgHeight: 680
                                     });
@@ -154,6 +160,7 @@
                     </script>
 
                     <div id="gallery" class="royalSlider rsDefault">
+
                         @if(isset($selfImages['picture']))
                             @foreach( $selfImages['picture'] as $image )
                                 <a class="rsImg" data-rsbigimg="{{$image['link']}}"
@@ -164,6 +171,7 @@
                             @endforeach
                         @endif
 
+                        <img width="640" height="427" src="{{$selfImages['picture'][1]['link']}}" class="attachment-large wp-post-image" alt="{{$selfImages['picture'][1]['picture-name']}}" />
                     </div>
 
                     <div class="slider-side-block">
@@ -171,8 +179,8 @@
                         <div class="top">
                             <div style="color: white; text-align: center;">@if(isset($productInformation['Available']))
                                     {{$productInformation['Available']}}
-                                    @endif</div>
-                            <a class="get solid" href="@if(isset($productInformation['AffiliateLink']))
+                                @endif</div>
+                            <a class="get-round" href="@if(isset($productInformation['AffiliateLink']))
                             {{$productInformation['AffiliateLink']}}
                             @endif" target="_blank">
                                 Get it
@@ -231,24 +239,24 @@
                         <h3 class="green">Specifications</h3>
 
                         @if(isset($productInformation['Specifications']))
-                        <div>
-                            <table class="table table-striped col-sm-6">
-                                <thead>
-                                <tr>
-                                    <th>Entity</th>
-                                    <th>Value</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                @foreach( $productInformation['Specifications'] as $specification )
-                                <tr>
-                                    <td>{{ $specification->key}}</td>
-                                    <td>{{ $specification->value}}</td>
-                                </tr>
-                                @endforeach
-                                </tbody>
-                            </table>
-                        </div>
+                            <div>
+                                <table class="table table-striped col-sm-6">
+                                    <thead>
+                                    <tr>
+                                        <th>Entity</th>
+                                        <th>Value</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    @foreach( $productInformation['Specifications'] as $specification )
+                                        <tr>
+                                            <td>{{ $specification->key}}</td>
+                                            <td>{{ $specification->value}}</td>
+                                        </tr>
+                                    @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
                         @endif
 
                     </div>
@@ -551,5 +559,5 @@
                 </div>
             </section>
         </main>
-    </div>
+    {{--</div>--}}
 @stop

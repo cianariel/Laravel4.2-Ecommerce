@@ -522,6 +522,28 @@ a{ // Custom Link Styles
     background-repeat: no-repeat;
   }
 
+  &.get-round{
+    display: block;
+    width: 60px;
+    height: 60px;
+    float: left;
+    padding-top: 23px;
+    margin-top: -15px;
+
+    border-radius: 50%;
+    font-size: 1.1rem;
+    font-weight: bold;
+    border-radius: 50%;
+    text-align: center;
+    z-index: 1;
+    color: #fff;
+    background: $iridium;
+
+    &:hover{
+      background: darken($iridium, 10%);
+    }
+  }
+
 
 }
 
@@ -898,7 +920,7 @@ nav{
     //background-position: left 4px;
 
     span{
-      margin-right: 5px;
+      margin-right: 8px;
     }
   }
 
@@ -975,6 +997,9 @@ nav{
 body.single,
 body.room-landing,
 body.product-details{
+  .mid-nav.rooms{
+    display: none;
+  }
   .mid-nav{
     height: 50px;
     background: rgba(255,255,255,.95);
@@ -1110,6 +1135,10 @@ body.product-details{
 }
 
 .breadcrumbs{
+  //display: none;
+  li a{
+    padding-top: 5px !important;
+  }
   li.active{
     a{
       font-size: 2.5rem;
@@ -1211,7 +1240,7 @@ body.product-details{
   .top{
     width: 100%;
     height: 85px;
-    padding: 35px;
+    padding: 12px 35px 35px;
     background-color: rgba(0,0,0,.65);
     border-radius:5px 0 0 0;
 
@@ -1224,6 +1253,7 @@ body.product-details{
   }
   .vendor-logo{
     margin-left: 5%;
+    margin-top: 9px;
   }
 
   .table{
@@ -1248,13 +1278,16 @@ body.product-details{
       background: #F7F7F7;
     }
     .price{
-      width: 70px;
+      width: 240px;
+      max-width: 70%;
       padding: 5px;
       margin-top: -7px;
       color: $tarmac;
-      background: #fff;
+      background: #fff url('/assets/images/dummies/amazon-stars.png') left no-repeat;
+      background-size: contain;
       border: 1px solid $light-grey;
       font-size: inherit;
+      text-align: right;
 
       &:hover{
         color: $facebook-blue;
@@ -1845,7 +1878,7 @@ main.page-content{
       position: absolute;
       left: 15px;
       bottom: 0;
-      box-shadow: 0;
+      box-shadow: none;
     }
 
     .category-tag{
@@ -1866,14 +1899,19 @@ main.page-content{
       &.product{
         background:$pine-green url("/assets/images/icons/bag-white-3.png") center 5px no-repeat;
       }
-      &.get-round{
-        background: $iridium;
-        top: 270px;
-        left: 40%;
-        padding-top: 23px;
-        font-weight: bold;
-
-      }
+      //&.get-round{
+      //  background: $iridium;
+      //  top: 270px;
+      //  left: 40%;
+      //  padding-top: 23px;
+      //  font-weight: bold;
+      //  border-radius: 30%;
+      //  color: #fff;
+      //
+      //  &:hover{
+      //    background: darken($iridium, 10%);
+      //  }
+      //}
 
     }
     .like-wrap{
@@ -1935,8 +1973,13 @@ main.page-content{
         padding-left: 35px;
         position: absolute;
         left: 30%;
+        //left: 42%;
         top: 270px;
         border-radius: 0;
+
+        &:hover{
+          background: $dark-orange;
+        }
       }
 
       ul.prices{
@@ -1983,6 +2026,10 @@ main.page-content{
         overflow: hidden;
         min-height: 380px;
       }
+
+      a.box-link{
+        left: 42%;
+      }
     }
 
     a.featured-badge{
@@ -1996,6 +2043,8 @@ main.page-content{
       text-indent: -9999px;
       z-index: 1;
     }
+
+
 
     &:hover{
       .get-round{
@@ -2022,12 +2071,9 @@ main.page-content{
           }
         }
 
-        &.huge{
-          .box-link{
-            left: 42%;
-          }
-        }
+
       }
+
     }
 
   }
@@ -2699,7 +2745,7 @@ body.product-details{
   top: 0;
   width: 100%;
   z-index: 35;
-  padding:20px 0 8px;
+  padding:18px 0 0;
   overflow: hidden;
   background: #fff;
   background: rgba(255,255,255,.85);
@@ -2715,13 +2761,27 @@ body.product-details{
   }
 
   h1{
-    width: 57%;
+    width: 35%;
     padding-left: 10px;
     float: left;
     margin-left: 3%;
     margin-top: 0;
     font-size: 2.1rem;
     text-align: center;
+  }
+
+  .like-counter{
+    margin-top: 0 !important;
+  }
+
+  .share-buttons{
+    width: 300px;
+    margin-bottom: 0;
+
+    li{
+      display: block;
+      float: left;
+    }
   }
 
   //.like-nav{
@@ -2795,11 +2855,14 @@ body.product-details{
   }
 
   .price{
-    font-size: 1.75rem;
+    font-size: 1.5rem;
+    position: relative;
+    top: 5px;
   }
 
   .vendor-logo{
-    margin: 3px 15px 0;
+    width: 60px;
+    margin: 12px 15px 0;
   }
 
   .icon-wrap{
@@ -3398,7 +3461,7 @@ header.sub-head{
   overflow: visible;
   float: left;
   width: 100%;
-  //background: #F2F2F2;
+  background-color: #fff;
   border-top: 1px solid #EFEFEF;
   border-bottom: 1px solid #EFEFEF;
   ul{
@@ -3905,6 +3968,7 @@ body.single{
 // PRODUCT DETAILS
 
 #hero.product-hero{
+  padding-top: 50px;
   h1{
     float: left;
     font-size: 3rem;
@@ -3927,6 +3991,7 @@ body.single{
   width: 190px;
   height: 100px;
   padding-top: 10px;
+  margin-top: 5px;
   background: $sky-blue url('/assets/images/icons/logo-lamp-white.png') 10px 15px no-repeat;
   border-radius: 10px;
   text-align: center;
@@ -4158,8 +4223,27 @@ body.room-landing{
     display: none;
   }
 
-  .mid-nav a{
-    border: 0;
+  .mid-nav{
+    .container{
+      padding-left: 0;
+      padding-right: 0;
+    }
+    .left-nav{
+      width: 135px;
+      a.all-link{
+        width: 180px;
+        min-width: 0;
+      }
+    }
+    a{
+      border: 0;
+
+
+
+      &:hover{
+        box-shadow: none;
+      }
+    }
   }
 
   #hero{
@@ -4270,7 +4354,7 @@ body.room-landing{
   }
 
   .page-content{
-    padding-top: 40px;
+    //padding-top: 40px;
     overflow: hidden;
     width: 100%;
   }
