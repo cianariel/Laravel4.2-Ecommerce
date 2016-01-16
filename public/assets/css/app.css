@@ -5577,7 +5577,7 @@ main.page-content .card {
       position: absolute;
       left: 15px;
       bottom: 0;
-      box-shadow: 0; }
+      box-shadow: none; }
     .grid-box.square .category-tag {
       width: 60px;
       height: 60px;
@@ -5599,6 +5599,8 @@ main.page-content .card {
         left: 40%;
         padding-top: 23px;
         font-weight: bold; }
+        .grid-box.square .category-tag.get-round:hover {
+          background: #cc0035; }
     .grid-box.square .like-wrap {
       width: 86px;
       background: rgba(255, 255, 255, 0.9);
@@ -5644,6 +5646,8 @@ main.page-content .card {
         left: 30%;
         top: 270px;
         border-radius: 0; }
+        .grid-box.square .color-overlay a.box-link:hover {
+          background: #FF7F00; }
       .grid-box.square .color-overlay ul.prices {
         text-align: left;
         padding-left: 5px;
@@ -5670,6 +5674,8 @@ main.page-content .card {
     .grid-box.square.huge .img-wrap {
       overflow: hidden;
       min-height: 380px; }
+    .grid-box.square.huge a.box-link {
+      left: 42%; }
     .grid-box.square a.featured-badge {
       display: block;
       width: 71px;
@@ -5697,8 +5703,6 @@ main.page-content .card {
         display: inline-block;
         padding: 5px 5px 2px;
         background: #88C880; }
-    .grid-box.square:hover.idea-box.huge .box-link {
-      left: 42%; }
 
 .room-filter {
   position: absolute;
@@ -6970,8 +6974,18 @@ body.single .like-nav {
 
 body.room-landing .mid-nav.rooms, body.room-landing .mid-nav .rooms.extra-nav, .mid-nav body.room-landing .rooms.extra-nav {
   display: none; }
+body.room-landing .mid-nav .container, .mid-nav body.room-landing .extra-nav .container {
+  padding-left: 0;
+  padding-right: 0; }
+body.room-landing .mid-nav .left-nav, .mid-nav body.room-landing .extra-nav .left-nav {
+  width: 135px; }
+  body.room-landing .mid-nav .left-nav a.all-link, .mid-nav body.room-landing .extra-nav .left-nav a.all-link {
+    width: 180px;
+    min-width: 0; }
 body.room-landing .mid-nav a, .mid-nav body.room-landing .extra-nav a {
   border: 0; }
+  body.room-landing .mid-nav a:hover, .mid-nav body.room-landing .extra-nav a:hover {
+    box-shadow: none; }
 body.room-landing #hero img.round {
   border: 2px solid;
   border-radius: 50%;
@@ -7028,7 +7042,6 @@ body.room-landing .popular-new {
       border-color: #FF0042;
       color: #FF0042 !important; }
 body.room-landing .page-content {
-  padding-top: 40px;
   overflow: hidden;
   width: 100%; }
 body.room-landing .box-link {

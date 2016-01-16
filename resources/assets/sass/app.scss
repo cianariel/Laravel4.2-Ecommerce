@@ -1845,7 +1845,7 @@ main.page-content{
       position: absolute;
       left: 15px;
       bottom: 0;
-      box-shadow: 0;
+      box-shadow: none;
     }
 
     .category-tag{
@@ -1873,6 +1873,9 @@ main.page-content{
         padding-top: 23px;
         font-weight: bold;
 
+        &:hover{
+          background: darken($iridium, 10%);
+        }
       }
 
     }
@@ -1935,8 +1938,13 @@ main.page-content{
         padding-left: 35px;
         position: absolute;
         left: 30%;
+        //left: 42%;
         top: 270px;
         border-radius: 0;
+
+        &:hover{
+          background: $dark-orange;
+        }
       }
 
       ul.prices{
@@ -1983,6 +1991,10 @@ main.page-content{
         overflow: hidden;
         min-height: 380px;
       }
+
+      a.box-link{
+        left: 42%;
+      }
     }
 
     a.featured-badge{
@@ -1996,6 +2008,8 @@ main.page-content{
       text-indent: -9999px;
       z-index: 1;
     }
+
+
 
     &:hover{
       .get-round{
@@ -2022,12 +2036,9 @@ main.page-content{
           }
         }
 
-        &.huge{
-          .box-link{
-            left: 42%;
-          }
-        }
+
       }
+
     }
 
   }
@@ -4158,8 +4169,27 @@ body.room-landing{
     display: none;
   }
 
-  .mid-nav a{
-    border: 0;
+  .mid-nav{
+    .container{
+      padding-left: 0;
+      padding-right: 0;
+    }
+    .left-nav{
+      width: 135px;
+      a.all-link{
+        width: 180px;
+        min-width: 0;
+      }
+    }
+    a{
+      border: 0;
+
+
+
+      &:hover{
+        box-shadow: none;
+      }
+    }
   }
 
   #hero{
@@ -4270,7 +4300,7 @@ body.room-landing{
   }
 
   .page-content{
-    padding-top: 40px;
+    //padding-top: 40px;
     overflow: hidden;
     width: 100%;
   }
