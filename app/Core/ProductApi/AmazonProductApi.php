@@ -115,13 +115,13 @@
                 $data = json_decode($json, true);
 
                 //   dd($data);
-               // dd($data['Items']['Item']['DetailPageURL']);
+                // dd($data['Items']['Item']['DetailPageURL']);
                 //    return $data;//['Items']['Item']['LargeImage']['URL'];//['Availability'];
 
                 $title = isset($data['Items']['Item']['ItemAttributes']['Title']) ? $data['Items']['Item']['ItemAttributes']['Title'] : "";
                 $imageLink = isset($data['Items']['Item']['LargeImage']['URL']) ? $data['Items']['Item']['LargeImage']['URL'] : "";
-                $listPrice = isset($data['Items']['Item']['ItemAttributes']['ListPrice']['Amount']) ? $data['Items']['Item']['ItemAttributes']['ListPrice']['Amount']/100 : "";
-                $salePrice = isset($data['Items']['Item']['OfferSummary']['LowestNewPrice']['Amount']) ? $data['Items']['Item']['OfferSummary']['LowestNewPrice']['Amount']/100 : "";
+                $listPrice = isset($data['Items']['Item']['ItemAttributes']['ListPrice']['Amount']) ? $data['Items']['Item']['ItemAttributes']['ListPrice']['Amount'] / 100 : "";
+                $salePrice = isset($data['Items']['Item']['OfferSummary']['LowestNewPrice']['Amount']) ? $data['Items']['Item']['OfferSummary']['LowestNewPrice']['Amount'] / 100 : "";
                 $available = isset($data['Items']['Item']['Offers']['Offer']['OfferListing']['Availability']) ? $data['Items']['Item']['Offers']['Offer']['OfferListing']['Availability'] : "No information available";
                 $affiliateLink = isset($data['Items']['Item']['DetailPageURL']) ? $data['Items']['Item']['DetailPageURL'] : "";
 
@@ -156,8 +156,8 @@
                     'ApiPrice'         => $listPrice,
                     'ApiSalePrice'     => $salePrice,
                     'AffiliateLink'    => $affiliateLink,
-
                     'ApiAvailable'     => $available,
+
                     'ApiSpecification' => [
                         'PartNumber'   => $partNumber,
                         'Model'        => $model,

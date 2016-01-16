@@ -281,6 +281,7 @@
             $productInfo['SellPrice'] = $productData['product']->sale_price;
             $productInfo['StoreName'] = $productData['product']->store_id;
             $productInfo['AffiliateLink'] = $productData['product']->affiliate_link;
+            $productInfo['Available'] = $productData['product']->product_availability;
             $productInfo['Review'] = $productData['product']->review;
             $productInfo['ReviewExtLink'] = $productData['product']->review_ext_link;
             $productInfo['IdeaingReviewScore'] = $productData['product']->ideaing_review_score;

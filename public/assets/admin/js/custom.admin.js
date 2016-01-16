@@ -165,9 +165,10 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
             $scope.PageTitle = '';
             $scope.MetaDescription = '';
             $scope.productTags = '';
-            $scope.ProductAvailability = '';
+            //$scope.ProductAvailability = '';
 
             //specification
+            $scope.Specifications = [];
             $scope.Specifications = [];
             $scope.isUpdateSpecShow = false;
 
@@ -235,6 +236,7 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
         // Reset the category when reset button clicked.
         $scope.resetCategory = function () {
             $scope.catId = '';
+            $scope.currentCategoryName = '';
             $scope.tempCategoryList = [];
             $scope.closeAlert();
             $scope.getCategory();
@@ -456,7 +458,7 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
             $scope.isCollapsedToggle = !$scope.isCollapsed;
         };
         $scope.addProduct = function () {
-
+            $scope.closeAlert();
             $http({
                 url: '/api/product/add-product',
                 method: "POST",
@@ -466,6 +468,7 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
                 if (data.status_code == 200) {
 
                     $scope.ProductId = data.data.id;
+                    $scope.productUpdateInfo();
 
                     //   $scope.Permalink = $scope.desiredPermalink;
                 } else {
@@ -477,19 +480,7 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
         };
 
         // update product
-        $scope.updateProduct = function () {
-
-            $scope.closeAlert();
-            // if it's a new request then product should be insert first
-            //   console.log($scope.ProductId);
-            if ($scope.ProductId == '') {
-                //   console.log('creating product');
-
-                $scope.addProduct();
-            }
-
-            $scope.closeAlert();
-
+        $scope.productUpdateInfo = function () {
             $http({
                 url: '/api/product/update-product',
                 method: 'POST',
@@ -518,9 +509,7 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
                     Review: $scope.reviews,
                     ExternalReviewLink: $scope.externalReviewLink,
                     IdeaingReviewScore: $scope.ideaingReviewScore
-
                 }
-
             }).success(function (data) {
                 //console.log(data);
                 if (data.status_code == 200) {
@@ -528,9 +517,23 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
                 } else {
                     $scope.outputStatus(data, "Product information not updated");
                 }
-
-
             });
+        }
+
+        $scope.updateProduct = function () {
+
+            $scope.closeAlert();
+            // if it's a new request then product should be insert first
+            //   console.log($scope.ProductId);
+            if ($scope.ProductId == '') {
+                $scope.addProduct();
+            } else {
+                $scope.productUpdateInfo();
+            }
+
+            $scope.closeAlert();
+
+
             return false;
         };
 
@@ -633,7 +636,7 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
             $scope.reviewKey = '';
             $scope.reviewValue = '';
             $scope.reviewLink = '';
-            $scope.reviewCounter = 0;
+            $scope.reviewCounter = $scope.reviewCounter==""?0:parseInt($scope.reviewCounter);
             /*$scope.externalReviewLink = '';
              $scope.ideaingReviewScore = 0;*/
             $scope.calculateAvg();
@@ -659,7 +662,7 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
             $scope.reviews[$scope.$index].key = $scope.reviewKey;
             $scope.reviews[$scope.$index].value = $scope.reviewValue;
             $scope.reviews[$scope.$index].link = $scope.reviewLink;
-            $scope.reviews[$scope.$index].counter = $scope.reviewCounter;
+            $scope.reviews[$scope.$index].counter = $scope.reviewCounter==""?0:parseInt($scope.reviewCounter);
 
             $scope.isUpdateReviewShow = false;
 
@@ -717,6 +720,7 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
 
         // Load API data to html controls
         $scope.loadProductInfoFromApi = function (itemId) {
+            $scope.closeAlert();
             $http({
                 url: '/api/api-data/' + itemId,
                 method: 'GET'
@@ -729,8 +733,8 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
                     $scope.AffiliateLink = data.data.AffiliateLink;
                     $scope.ProductAvailability = data.data.ApiAvailable;
 
-                    if ($scope.Specifications == null)
-                        $scope.Specifications = [];
+                    //if ($scope.Specifications == null)
+                    $scope.Specifications = [];
 
                     $scope.Specifications.push(
                         {'key': 'Manufacturer', 'value': data.data.ApiSpecification.Manufacturer}
@@ -752,9 +756,6 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
                     );
                     $scope.Specifications.push(
                         {'key': 'Weight', 'value': data.data.ApiSpecification.Weight}
-                    );
-                    $scope.Specifications.push(
-                        {'key': 'Features', 'value': data.data.ApiSpecification.Features.toString()}
                     );
 
 
