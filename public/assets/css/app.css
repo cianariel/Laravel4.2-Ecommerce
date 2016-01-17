@@ -1,3 +1,27 @@
+/* main */
+/* Configs */
+/* Border-Box (http:/paulirish.com/2012/box-sizing-border-box-ftw) */
+@import url(https://fonts.googleapis.com/css?family=Montserrat:400,700);
+* {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box; }
+
+html {
+  -webkit-font-smoothing: antialiased;
+  height: auto; }
+
+body {
+  position: relative;
+  background: #fff;
+  font-family: "Montserrat";
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-text-size-adjust: 100%;
+  color: #111; }
+
+/* Functions */
+/* mixins generic */
 /*!
  * Bootstrap v3.3.5 (http://getbootstrap.com)
  * Copyright 2011-2015 Twitter, Inc.
@@ -13,7 +37,6 @@
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
-@import url(https://fonts.googleapis.com/css?family=Montserrat:400,700);
 html {
   font-family: sans-serif;
   -ms-text-size-adjust: 100%;
@@ -4359,12 +4382,6 @@ a.label:focus {
 @media print {
   .hidden-print {
     display: none !important; } }
-@font-face {
-  font-family: 'montserratlight';
-  src: url("/assets/fonts/montserrat-light-webfont.eot");
-  src: url("/assets/fonts/montserrat-light-webfont.eot?#iefix") format("embedded-opentype"), url("/assets/fonts/montserrat-light-webfont.woff2") format("woff2"), url("/assets/fonts/montserrat-light-webfont.woff") format("woff"), url("/assets/fonts/montserrat-light-webfont.ttf") format("truetype"), url("/assets/fonts/montserrat-light-webfont.svg#montserratlight") format("svg");
-  font-weight: normal;
-  font-style: normal; }
 .ta-hidden-input {
   display: none; }
 
@@ -4952,24 +4969,6 @@ li.all-shares {
         width: 100px;
         float: left;
         margin-left: 1.4%; } }
-input[type="checkbox"] {
-  display: none; }
-
-input[type="checkbox"] + label span {
-  display: inline-block;
-  width: 19px;
-  height: 19px;
-  margin: -1px 4px 0 0;
-  vertical-align: middle;
-  border: 2px solid #c1c1c1;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: border-color .5s, backgroun-image .5s; }
-
-input[type="checkbox"]:checked + label span {
-  background: url("/assets/images/checkmark-black.png") center no-repeat !important;
-  border-color: #818181; }
-
 .get {
   display: inline-block;
   vertical-align: middle;
@@ -4995,19 +4994,6 @@ input[type="checkbox"]:checked + label span {
       color: #FF0042;
       background: transparent; }
 
-body {
-  position: relative;
-  font-family: 'Montserrat', sans-serif; }
-
-a:hover {
-  text-decoration: none; }
-
-ul {
-  padding-left: 0; }
-
-li {
-  list-style: none; }
-
 nav ul {
   overflow: hidden;
   margin-top: 0;
@@ -5017,9 +5003,6 @@ nav a {
   float: left;
   padding: 20px;
   text-transform: uppercase; }
-
-.h1, h2, .h2, h3, .h3 {
-  margin-top: 10px; }
 
 #hero {
   position: relative;
@@ -7883,3 +7866,81 @@ footer.about-footer {
     padding-left: 0; }
     #hero-nav a {
       padding-right: 2%; } }
+@font-face {
+  font-family: 'montserratlight';
+  src: url("/assets/fonts/montserrat-light-webfont.eot");
+  src: url("/assets/fonts/montserrat-light-webfont.eot?#iefix") format("embedded-opentype"), url("/assets/fonts/montserrat-light-webfont.woff2") format("woff2"), url("/assets/fonts/montserrat-light-webfont.woff") format("woff"), url("/assets/fonts/montserrat-light-webfont.ttf") format("truetype"), url("/assets/fonts/montserrat-light-webfont.svg#montserratlight") format("svg");
+  font-weight: normal;
+  font-style: normal; }
+/* forms base */
+input[type="checkbox"] {
+  display: none; }
+
+input[type="checkbox"] + label span {
+  display: inline-block;
+  width: 19px;
+  height: 19px;
+  margin: -1px 4px 0 0;
+  vertical-align: middle;
+  border: 2px solid #c1c1c1;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: border-color .5s, backgroun-image .5s; }
+
+input[type="checkbox"]:checked + label span {
+  background: url("/assets/images/checkmark-black.png") center no-repeat !important;
+  border-color: #818181; }
+
+/* links base */
+a {
+  text-decoration: none;
+  color: #333;
+  -webkit-transition: color 0.25s;
+  -moz-transition: color 0.25s;
+  -ms-transition: color 0.25s;
+  -o-transition: color 0.25s;
+  transition: color 0.25s; }
+  a:hover {
+    color: #0074D9; }
+
+/* list base */
+ol, ul {
+  margin: 0;
+  padding: 0;
+  list-style: none; }
+
+/* Definition Lists */
+dl {
+  overflow: hidden;
+  margin: 0; }
+
+dt {
+  font-weight: bold; }
+
+dd {
+  margin-left: 0; }
+
+li {
+  list-style: none; }
+
+/* media base */
+/* Flexible Media */
+img, video, object {
+  max-width: 100%;
+  height: auto; }
+
+/* table base */
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Montserrat", sans-serif;
+  margin-top: 10px; }
+
+/* text base */
+p {
+  line-height: 1.6; }
+
+/* forms base */
+/* header layout */
+/* footer layout */
+/* main layout */
+
+/*# sourceMappingURL=app.css.map */

@@ -1,6 +1,7 @@
 /* links base */
 
 a {
+	text-decoration: none;
 	color: $link-color;
 	@include transition(color .25s);
 	&:hover {
