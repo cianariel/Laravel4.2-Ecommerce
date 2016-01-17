@@ -1,77 +1,4 @@
-<<<<<<< HEAD
-// VENDOR STYLE
-@import "bootstrap";
-@import url(https://fonts.googleapis.com/css?family=Montserrat:400,700);
-
-// FONTS
-
-//@font-face {
-//  font-family: 'montserratbold';
-//  src: url('/assets/fonts/montserrat-bold-webfont.eot');
-//  src: url('/assets/fonts/montserrat-bold-webfont.eot?#iefix') format('embedded-opentype'),
-//  url('/assets/fonts/montserrat-bold-webfont.woff2') format('woff2'),
-//  url('/assets/fonts/montserrat-bold-webfont.woff') format('woff'),
-//  url('/assets/fonts/montserrat-bold-webfont.ttf') format('truetype'),
-//  url('/assets/fonts/montserrat-bold-webfont.svg#montserratbold') format('svg');
-//  font-weight: normal;
-//  font-style: normal;
-//}
-
-@font-face {
-  font-family: 'montserratlight';
-  src: url('/assets/fonts/montserrat-light-webfont.eot');
-  src: url('/assets/fonts/montserrat-light-webfont.eot?#iefix') format('embedded-opentype'),
-  url('/assets/fonts/montserrat-light-webfont.woff2') format('woff2'),
-  url('/assets/fonts/montserrat-light-webfont.woff') format('woff'),
-  url('/assets/fonts/montserrat-light-webfont.ttf') format('truetype'),
-  url('/assets/fonts/montserrat-light-webfont.svg#montserratlight') format('svg');
-  font-weight: normal;
-  font-style: normal;
-}
-
-//@font-face {
-//  font-family: 'montserratregular';
-//  src: url('/assets/fonts/montserrat-regular-webfont.eot');
-//  src: url('/assets/fonts/montserrat-regular-webfont.eot?#iefix') format('embedded-opentype'),
-//  url('/assets/fonts/montserrat-regular-webfont.woff2') format('woff2'),
-//  url('/assets/fonts/montserrat-regular-webfont.woff') format('woff'),
-//  url('/assets/fonts/montserrat-regular-webfont.ttf') format('truetype'),
-//  url('/assets/fonts/montserrat-regular-webfont.svg#montserratregular') format('svg');
-//  font-weight: normal;
-//  font-style: normal;
-//
-//}
-
-.ta-hidden-input{
-  display: none;
-}
-
-// COLORS
-
-$iridium:         #FF0042;
-$dark-orange:     #FF7F00;
-$pine-green:      #C7C747;
-$sky-blue:        #00B1FF;
-$pale-blue:       #F5FBFC;
-$picton:          #4691d3;
-$pale-grey:       #F2F5F5;
-$light-grey:      #c1c1c1;
-$tarmac:          #3D4B4E;
-$magenta:         #9E009E;
-
-$facebook-blue:   #079DD1;
-$facebook-blue-2: #5C7CBD;
-$twitter-blue:    #7BD1F0;
-$google-red:      #EF434D;
-$pinterest-red:   #E61D25;
-$instagram-blue:  #54A3DA;
-
-$ideaing-blue:    #4791D4;
-
-
-=======
 /* main */
->>>>>>> feature/css-structure
 
 @charset "UTF-8";
 
@@ -82,7 +9,7 @@ $ideaing-blue:    #4791D4;
 // Load Website defaults
 // ---------------------------
 @import "_app/default";
-
+ 
 // SCSS Functions
 // ---------------------------
 @import "_app/functions";
