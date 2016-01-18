@@ -1,5 +1,7 @@
 /.env
 .idea/
+Vagrantfile
+.vagrant/
 .sass-cache/
 /public/ideas/wp-config.php
 /public/ideas/wp-content/uploads/
