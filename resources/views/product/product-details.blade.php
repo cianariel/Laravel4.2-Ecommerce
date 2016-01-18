@@ -30,28 +30,39 @@
                 </ul>
             </div>
         </nav>
-        <header class="story-header hidden-620 hidden-soft" >
-            <a href="#" class="side-logo lamp-logo">
+    <header class="story-header hidden-620 hidden-soft">
+        <a href="#" class="side-logo lamp-logo">
+        </a>
+
+        <h1>
+            @if(isset($productInformation['ProductName']))
+                {{$productInformation['ProductName']}}
+            @endif
+            <a class="like-counter" href="#"><span></span><b>1819</b></a>
+        </h1>
+
+        <ul class="share-buttons hidden-xs col-lg-6 col-sm-8 pull-right">
+            <li class="all-shares"><b>120K </b>all shares</li>
+            <li><a class="fb" href="#"><span></span><b>189</b></a></li>
+            <li><a class="twi" href="#"><span></span><b>189</b></a></li>
+        </ul>
+
+        {{--<ul class="like-nav hidden-xs pull-right pull-right">--}}
+        {{--<li><a class="like-counter" href="#"><span></span><b>1819</b></a></li>--}}
+        {{--</ul>--}}
+
+        <div class="icon-wrap pull-right">
+            <a class="category-tag get-round" ng-href=" @if(isset($productInformation['AffiliateLink']))
+            {{$productInformation['AffiliateLink']}}
+            @endif" target="_blank">
+                Get it
             </a>
-            <h1>Nest Protect (Second Generation)</h1>
-
-            <ul class="social-rounds hidden-sm hidden-xs pull-right">
-                <li><a class="fb" href="#"></a></li>
-                <li><a class="twi" href="#"></a></li>
-                <li><a class="gp" href="#"></a></li>
-                <li><a class="pint" href="#"></a></li>
-            </ul>
-
-            <ul class="like-nav hidden-xs pull-right pull-right">
-                <li><a class="like-counter" href="#"><span></span><b>189</b></a></li>
-            </ul>
-
-            <div class="icon-wrap pull-right">
-                <div class="get solid">Get it</div>
-                <img class="vendor-logo" src="/assets/images/dummies/amazon-black.png">
-                <b class="price">$199</b>
-            </div>
-        </header>
+            <img class="vendor-logo" src="/assets/images/dummies/amazon-black.png">
+            <b class="price">$ @if(isset($productInformation['SellPrice']))
+                    {{$productInformation['SellPrice']}}
+                @endif</b>
+        </div>
+    </header>
 
         <section id="hero" class="product-hero">
             <div class="hero-background"
@@ -242,10 +253,10 @@
                             <div>
                                 <table class="table table-striped col-sm-6">
                                     <thead>
-                                    <tr>
-                                        <th>Entity</th>
-                                        <th>Value</th>
-                                    </tr>
+                                    {{--<tr>--}}
+                                        {{--<th>Entity</th>--}}
+                                        {{--<th>Value</th>--}}
+                                    {{--</tr>--}}
                                     </thead>
                                     <tbody>
                                     @foreach( $productInformation['Specifications'] as $specification )

@@ -1125,12 +1125,13 @@ body.product-details{
       background: #F7F7F7;
     }
     .price{
-      width: 240px;
+      width: 60px;
       max-width: 70%;
       padding: 5px;
       margin-top: -7px;
       color: $tarmac;
-      background: #fff url('/assets/images/dummies/amazon-stars.png') left no-repeat;
+      //background: #fff url('/assets/images/dummies/amazon-stars.png') left no-repeat;
+      background: #fff;
       background-size: contain;
       border: 1px solid $light-grey;
       font-size: inherit;

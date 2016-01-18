@@ -5098,12 +5098,12 @@ body.product-details #hero {
       padding: 0 10px;
       background: #F7F7F7; }
     .slider-side-block .table .price {
-      width: 240px;
+      width: 60px;
       max-width: 70%;
       padding: 5px;
       margin-top: -7px;
       color: #3D4B4E;
-      background: #fff url("/assets/images/dummies/amazon-stars.png") left no-repeat;
+      background: #fff;
       background-size: contain;
       border: 1px solid #c1c1c1;
       font-size: inherit;
