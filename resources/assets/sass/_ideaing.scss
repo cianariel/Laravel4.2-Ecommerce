@@ -461,6 +461,9 @@ li.nested{
       color: $dark-orange;
       font-size: 5rem;
       line-height: 1;
+      float: left;
+      display: inline-block;
+      //margin-top: -36px;
     }
   }
 }
@@ -2024,8 +2027,6 @@ article.product{
         color: $dark-orange;
         font-size: 5rem;
         line-height: 1;
-        //display: inlin
-        //e-block;
         float: left;
         margin-top: -36px;
       }
@@ -2581,7 +2582,7 @@ header.colophon{
 body.product-details{
   .story-header{
     h1{
-      width: 35%;
+      width: 34%;
     }
     .like-counter{
       margin-top: -4px;
@@ -2597,6 +2598,8 @@ body.product-details{
       line-height: 1;
     }
   }
+
+
 }
 
 .story-header{
@@ -2620,10 +2623,10 @@ body.product-details{
   }
 
   h1{
-    width: 35%;
+    width: 33%;
     padding-left: 10px;
     float: left;
-    margin-left: 3%;
+    //margin-left: 3%;
     margin-top: 0;
     font-size: 2.1rem;
     text-align: center;
@@ -2634,7 +2637,9 @@ body.product-details{
   }
 
   .share-buttons{
-    width: 300px;
+    &.short{
+      width: 300px;
+    }
     margin-bottom: 0;
 
     li{

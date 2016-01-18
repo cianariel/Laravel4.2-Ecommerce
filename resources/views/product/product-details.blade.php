@@ -41,7 +41,7 @@
             <a class="like-counter" href="#"><span></span><b>1819</b></a>
         </h1>
 
-        <ul class="share-buttons hidden-xs col-lg-6 col-sm-8 pull-right">
+        <ul class="share-buttons short hidden-xs col-lg-6 col-sm-8 pull-right">
             <li class="all-shares"><b>120K </b>all shares</li>
             <li><a class="fb" href="#"><span></span><b>189</b></a></li>
             <li><a class="twi" href="#"><span></span><b>189</b></a></li>

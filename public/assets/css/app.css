@@ -4457,7 +4457,7 @@ a.like-counter {
     background-position: center !important; }
   a.like-counter b {
     display: inline-block;
-    padding-top: 5px;
+    padding-top: 6px;
     color: #FF0042; }
   a.like-counter:hover {
     background: #FF0042; }
@@ -4593,7 +4593,9 @@ li.nested a::after {
 .dropcapped p:first-child:first-letter {
   color: #FF7F00;
   font-size: 5rem;
-  line-height: 1; }
+  line-height: 1;
+  float: left;
+  display: inline-block; }
 
 ul.share-buttons a.fb {
   display: inline-block;
@@ -4618,7 +4620,7 @@ ul.share-buttons a.fb {
     background-position: center !important; }
   ul.share-buttons a.fb b {
     display: inline-block;
-    padding-top: 5px;
+    padding-top: 6px;
     color: #5C7CBD; }
   ul.share-buttons a.fb:hover {
     background: #5C7CBD; }
@@ -4648,7 +4650,7 @@ ul.share-buttons a.twi {
     background-position: center !important; }
   ul.share-buttons a.twi b {
     display: inline-block;
-    padding-top: 5px;
+    padding-top: 6px;
     color: #079DD1; }
   ul.share-buttons a.twi:hover {
     background: #079DD1; }
@@ -4678,7 +4680,7 @@ ul.share-buttons a.gp {
     background-position: center !important; }
   ul.share-buttons a.gp b {
     display: inline-block;
-    padding-top: 5px;
+    padding-top: 6px;
     color: #FF0042; }
   ul.share-buttons a.gp:hover {
     background: #FF0042; }
@@ -4709,7 +4711,7 @@ ul.share-buttons a.email {
     background-position: center !important; }
   ul.share-buttons a.email b {
     display: inline-block;
-    padding-top: 5px;
+    padding-top: 6px;
     color: #c1c1c1; }
   ul.share-buttons a.email:hover {
     background: #c1c1c1; }
@@ -4739,7 +4741,7 @@ ul.share-buttons a.pint {
     background-position: center !important; }
   ul.share-buttons a.pint b {
     display: inline-block;
-    padding-top: 5px;
+    padding-top: 6px;
     color: #E61D25; }
   ul.share-buttons a.pint:hover {
     background: #E61D25; }
@@ -4770,7 +4772,7 @@ ul.share-buttons a.heart {
     background-position: center !important; }
   ul.share-buttons a.heart b {
     display: inline-block;
-    padding-top: 5px;
+    padding-top: 6px;
     color: #FF0042; }
   ul.share-buttons a.heart:hover {
     background: #FF0042; }
@@ -4801,7 +4803,7 @@ ul.share-buttons a.comment {
     background-position: center !important; }
   ul.share-buttons a.comment b {
     display: inline-block;
-    padding-top: 5px;
+    padding-top: 6px;
     color: #4791D4; }
   ul.share-buttons a.comment:hover {
     background: #4791D4; }
@@ -5984,7 +5986,7 @@ header.colophon {
     display: none; }
 
 body.product-details .story-header h1 {
-  width: 35%; }
+  width: 34%; }
 
 body.product-details .story-header .like-counter {
   margin-top: -4px; }
@@ -6011,18 +6013,18 @@ body.product-details .article-content p {
     background-size: initial;
     margin-top: -14px; }
   .story-header h1 {
-    width: 35%;
+    width: 33%;
     padding-left: 10px;
     float: left;
-    margin-left: 3%;
     margin-top: 0;
     font-size: 2.1rem;
     text-align: center; }
   .story-header .like-counter {
     margin-top: 0 !important; }
   .story-header .share-buttons {
-    width: 300px;
     margin-bottom: 0; }
+    .story-header .share-buttons.short {
+      width: 300px; }
     .story-header .share-buttons li {
       display: block;
       float: left; }
