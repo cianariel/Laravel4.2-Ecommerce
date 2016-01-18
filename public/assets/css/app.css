@@ -5025,7 +5025,8 @@ body.product-details #hero {
     background-image: url("/assets/images/icons/arrow-down-pink.png"); }
 
 .breadcrumbs li a {
-  padding-top: 5px !important; }
+  padding-top: 2px !important;
+  padding-bottom: 2px; }
 
 .breadcrumbs li.active a {
   font-size: 2.5rem;
@@ -6107,7 +6108,7 @@ body.product-details .article-content p {
         background-image: url("/assets/images/dots-pink.png");
         box-shadow: none; }
     .mid-nav a.box-link {
-      margin: 13px 6px;
+      margin: 15px 6px 13px;
       font-size: .8rem; }
       .mid-nav a.box-link:hover {
         background: #FF7F00;

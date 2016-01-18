@@ -994,7 +994,8 @@ body.product-details{
 .breadcrumbs{
   //display: none;
   li a{
-    padding-top: 5px !important;
+    padding-top: 2px !important;
+    padding-bottom: 2px;
   }
   li.active{
     a{
@@ -2805,7 +2806,7 @@ body.product-details{
 
     &.box-link{
       //padding: 3px 4px;
-      margin: 13px 6px;
+      margin: 15px 6px 13px;
       //border: 2px solid $dark-orange;
       //border-radius: 4px;
       font-size: .8rem;
