@@ -4,16 +4,13 @@
 
 @section('content')
     <script type="text/javascript">
-        var urlParam = "{{$permalink}}";
+        var permalink = "{{$permalink}}";
     </script>
     <div ng-app="productApp" data-ng-controller="productController" ng-cloak>
         <nav class="mid-nav hidden-620">
             <div class="container">
                 <ul class="left-nav breadcrumbs hidden-620">
                     <!--                    <li><a class="home-link" href="#">Home</a></li>-->
-                    {{--<li class="active"><a href="#" class="larger-text allcaps orange">Ideas</a></li>--}}
-                    {{--<li><a href="#" class="orange box-link">Kitchen</a></li>--}}
-                    {{--<li><a href="#" class="orange box-link">Style</a></li>--}}
 
                     @if(isset($productInformation['CatTree']))
                         @foreach( $productInformation['CatTree'] as $category )
@@ -60,11 +57,6 @@
             <div class="color-overlay"></div>
 
             <div class="container fixed-sm full-480">
-                {{--<nav class="breadcrumbs">--}}
-                {{--<ul>--}}
-                {{----}}
-                {{--</ul>--}}
-                {{--</nav>--}}
 
                 <div class="average-score">
                     <div class="score">@if(isset($productInformation['Review']) && isset($productInformation['IdeaingReviewScore']))
@@ -173,9 +165,9 @@
                             @endforeach
                         @endif
 
-                        <img width="640" height="427" src="{{$selfImages['picture'][1]['link']}}"
+                        <img width="640" height="427" src="@if(isset($selfImages['picture'][1]['link'])){{$selfImages['picture'][1]['link']}}@endif"
                              class="attachment-large wp-post-image"
-                             alt="{{$selfImages['picture'][1]['picture-name']}}"/>
+                             alt="@if(isset($selfImages['picture'][1]['picture-name'])){{$selfImages['picture'][1]['picture-name']}}@endif"/>
                     </div>
 
                     <div class="slider-side-block">
@@ -246,12 +238,7 @@
                             <div class="col-lg-6"
                                  style="float: none;margin-left: auto; margin-right: auto; text-align: center">
                                 <table class="table col-sm-3">
-                                    {{--<thead>
-                                    <tr>
-                                        <th>Entity</th>
-                                        <th>Value</th>
-                                    </tr>
-                                    </thead>--}}
+
                                     <tbody>
                                     @foreach( $productInformation['Specifications'] as $specification )
                                         <tr>
@@ -272,11 +259,11 @@
                     <div class="container">
                         <h3 class="purple">Comparisons</h3>
 
-                        <button class="arrow arrow-left"></button>
+                        <button class="arrow arrow-left" ng-hide="compareIndex == 0" ng-click="traverseBackward()"></button>
 
-                        <div class="col-sm-3 col-xs-6 comparison-tab">
+                        <div class="col-sm-3 col-xs-6 comparison-tab" ng-init="loadProductDetails()">
                             <section{{--class="search-bar"--}}>
-                                {{--<input class="form-control" type="text" name="search" value="Search to add products"/>--}}
+
                                 <autocomplete ng-model="selectedProduct"
                                               attr-placeholder="type to search product..."
                                               {{--attr-input-class="form-control"--}}
@@ -291,7 +278,7 @@
 
                         <!-- compare dynamic start -->
 
-                        <div ng-repeat="item in comparableProductList">
+                        <div ng-repeat="item in comparableProductList  | limitTo: 3" ng-if="$index >= compareIndex">
 
                             <div class="col-sm-3 col-xs-6 comparison-tab">
                                 <div>
@@ -316,59 +303,8 @@
                         </div>
 
                         <!-- compare dynamic end -->
-{{--
 
-                        <div class="col-sm-3 col-xs-6 comparison-tab">
-                            <div>
-                                <img class="img-responsive" src="/assets/images/dummies/nest-2.png"/>
-
-                                <div class="tab-wrap">
-                                    <h4>Next Project <br>(second generation)</h4>
-                                    <i>Announced 29 October 2015</i>
-                                    <b class="score">9.0</b>
-
-                                    <div class="star-raiting">
-                                        <span class="stars">(543)</span>
-                                    </div>
-                                    <div class="btn purple-bg price-badge">
-                                        <span>Amazon</span> <b>$375</b>
-                                    </div>
-                                    <a class="btn-none">More Info</a>
-                                </div>
-                                <span class="close-button">✕</span>
-                            </div>
-                        </div>
-                        <div class="col-sm-3 col-xs-6 comparison-tab">
-                            <div>
-                                <img class="img-responsive" src="/assets/images/dummies/nest-3.png"/>
-
-                                <div class="tab-wrap">
-                                    <h4>Next Project <br>(second generation)</h4>
-                                    <i>Announced 29 October 2015</i>
-                                    <b class="score">9.0</b>
-
-                                    <div class="star-raiting">
-                                        <span class="stars">(543)</span>
-                                    </div>
-                                    <div class="btn purple-bg price-badge">
-                                        <span>Amazon</span> <b>$375</b>
-                                    </div>
-                                    <a class="btn-none">More Info</a>
-                                </div>
-                                <span class="close-button">✕</span>
-                            </div>
-                        </div>
-                        <div class="col-sm-3 col-xs-6 comparison-tab">
-                            <div>
-                                <a class="purple add-more">
-                                    <span class="plus">+</span>
-                                    <span>Add Product</span>
-                                </a>
-                            </div>
-                        </div>
---}}
-
-                        <button class="arrow arrow-right"></button>
+                        <button class="arrow arrow-right"  ng-hide="compareIndex == dataLength-1" ng-click="traverseForward()"></button>
 
                         <div class="crearfix"></div>
 
@@ -403,39 +339,7 @@
 
                         <!-- compare dynamic 2nd part end -->
 
-                        {{--<div class="col-sm-3 col-xs-6 comparison-tab table-cells">
-                            <h4>Next Project <br>(second generation)</h4>
-                            <hr>
-                            <div class="bordered">
-                                <b>3.5mm stereo</b>
-                                <b>$375.00</b>
-                                <b>$375.00 - $500</b>
-                                <b>8.03 x 14.33</b>
-                                <b>14 lbs</b>
-                            </div>
-                        </div>
-                        <div class="col-sm-3 col-xs-6 comparison-tab table-cells">
-                            <h4>Next Project <br>(second generation)</h4>
-                            <hr>
-                            <div class="bordered">
-                                <b>3.5mm stereo</b>
-                                <b>$375.00</b>
-                                <b>$375.00 - $500</b>
-                                <b>8.03 x 14.33</b>
-                                <b>14 lbs</b>
-                            </div>
-                        </div>
-                        <div class="col-sm-3 col-xs-6 comparison-tab table-cells">
-                            <h4></h4>
-                            <hr>
-                            <div class="bordered">
-                                <b></b>
-                                <b></b>
-                                <b></b>
-                                <b></b>
-                                <b></b>
-                            </div>
-                        </div>--}}
+
                         <a href="#" class="view-all grey">View all</a>
                     </div>
                 </section>
@@ -466,7 +370,7 @@
                                             <td class="name">
                                                 <a href="@if(isset($review->link)){{$review->link}}@endif"
                                                    target="_blank">@if(isset($review->key)){{$review->key}}@endif
-                                                    @if($review->counter > 0)( {{$review->counter}} )@endif
+                                                    @if(isset($review->counter)&&($review->counter > 0))( {{$review->counter}} )@endif
                                                 </a>
                                             </td>
                                             <td class="line">
@@ -622,5 +526,5 @@
             </section>
         </main>
     </div>
-    {{--</div>--}}
+
 @stop
