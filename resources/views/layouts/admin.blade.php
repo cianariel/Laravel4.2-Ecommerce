@@ -16,7 +16,7 @@
 </div>
 <!-- /#wrapper -->
 @include('admin.includes.foot')
-
+@yield('pagelevelscript')
 </body>
 
 </html>
