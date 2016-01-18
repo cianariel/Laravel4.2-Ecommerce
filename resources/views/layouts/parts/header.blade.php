@@ -27,9 +27,9 @@
                             </div>
                             <div  class="col-xs-5 category-menu hidden-620">
                                 <ul>
+                                    <li><a class="ideas" href="#">Ideas</a></li>
                                     <li class="nested"><a class="shop" data-toggle=".shop-menu" href="#">Shop</a></li>
                                     <li><a class="disc" href="#">Discuss</a></li>
-                                    <li><a class="ideas" href="#">Ideas</a></li>
                                 </ul>
                             </div>
 
@@ -218,7 +218,7 @@
                     <li><a href="">Decor</a></li>
                     <li><a data-toggle=".extra-nav" class="more-link extra" href="">...</a>
                         <ul class="extra-nav hidden-620 hidden-soft">
-                            <li><a class="smart-home-link pink" href="#">Smart Home</a></li>
+                            {{--<li><a class="smart-home-link pink" href="#">Smart Home</a></li>--}}
                             <li><a class="travel-link blue" href="#">Travel</a></li>
                             <li><a class="wearables-link green" href="#">Wearables</a></li>
                         </ul>

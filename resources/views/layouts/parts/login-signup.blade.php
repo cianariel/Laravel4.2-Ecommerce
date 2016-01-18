@@ -6,7 +6,8 @@
             <a class="logo" href="/">
             </a>
 
-        <p>Join <b>Ideaing</b> a human collection of the best of the best products and community of awesome people with great ideas!</p>
+        <p>Join <b>Ideaing</b> to get tips on transforming your home to a Smart Home. Plus share photos of your home, engage with others, and earn rewards for being part of of the best platform on smart home & interior design.
+        </p>
     </div>
 
 
@@ -46,4 +47,5 @@
 
         </form>
     </div>
+    <span class="close-button" data-toggle="#overlay, #myModal">✕</span>
 </div>

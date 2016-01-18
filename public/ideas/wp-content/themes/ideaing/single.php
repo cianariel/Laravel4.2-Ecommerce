@@ -15,7 +15,7 @@
                 <li><a class="twi" href="#"><span></span><b>189</b></a></li>
                 <li><a class="gp" href="#"><span></span><b>189</b></a></li>
                 <li><a class="pint" href="#"><span></span><b>189</b></a></li>
-                <li><a class="comment" href="#"><span></span><b>189</b></a></li>
+                <li><a class="comment" href="#" data-scrollto=".comments"><span></span><b>189</b></a></li>
             </ul>
         </header>
         <nav class="mid-nav hidden-620">
@@ -48,7 +48,7 @@
                     <li><a class="twi" href="#"><span></span><b>189</b></a></li>
                     <li><a class="gp" href="#"><span></span><b>189</b></a></li>
                     <li><a class="pint" href="#"><span></span><b>189</b></a></li>
-                    <li><a class="comment" href="#"><span></span><b>189</b></a></li>
+                    <li><a class="comment" data-scrollto=".comments" href="#"><span></span><b>189</b></a></li>
                 </ul>
 
                 <ul class="like-nav hidden-xs pull-right">
@@ -69,14 +69,14 @@
             <article id="post-<?php the_ID(); ?>" {{post_class('col-xs-11 col-md-offset-1 pull-right')}}>
 
                 <header class="story-details col-lg-7  col-sm-8 col-xs-10 full-480">
-                    <div class="author-image-big col-lg-4 col-sm-6 col-xs-5 full-480">
+                    <div class="author-image-big col-lg-3 col-sm-4 col-xs-5 full-480">
                        {{ get_avatar(get_the_author_meta('ID'), '170') }}
                     </div>
-                    <div class="author-overview col-lg-5 col-sm-6 col-xs-7 full-480">
+                    <div class="author-overview col-lg-5 col-sm-5 col-xs-6 full-480">
                         <h4 class="author-name">
                             <div id="sticky-anchor"></div>
 
-                            by <span>{{ the_author_meta('first_name') }} {{ the_author_meta('last_name') }}</span>
+                            by <b>{{ the_author_meta('first_name') }} {{ the_author_meta('last_name') }}</b>
 <!--                            <a class="like-counter" href="#">189</a>-->
 
                         </h4>
