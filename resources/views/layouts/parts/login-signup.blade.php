@@ -47,5 +47,5 @@
 
         </form>
     </div>
-    <span class="close-button" data-toggle="#overlay, #myModal">✕</span>
+    <span class="close-button" data-dismiss="modal">✕</span>
 </div>

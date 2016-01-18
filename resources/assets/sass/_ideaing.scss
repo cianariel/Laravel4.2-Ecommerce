@@ -123,7 +123,7 @@ button{
   display: none;
 }
 
-#overlay{
+.page-overlay{
   display: none;
   position:fixed; /* keeps the lightbox window in the current viewport */
   top:0;
@@ -133,6 +133,12 @@ button{
   background:#000;
   opacity: .9;
   z-index: 40;
+
+  &.picture-overlay{
+    background:url('/assets/images/picture-overlay.jpg');
+    opacity: 1;
+    z-index: 39;
+  }
 }
 
 // BUTTONS

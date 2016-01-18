@@ -4308,7 +4308,7 @@ button {
 .hidden-soft {
   display: none; }
 
-#overlay {
+.page-overlay {
   display: none;
   position: fixed;
   /* keeps the lightbox window in the current viewport */
@@ -4319,6 +4319,10 @@ button {
   background: #000;
   opacity: .9;
   z-index: 40; }
+  .page-overlay.picture-overlay {
+    background: url("/assets/images/picture-overlay.jpg");
+    opacity: 1;
+    z-index: 39; }
 
 .btn-success {
   background-color: #FF0042;
