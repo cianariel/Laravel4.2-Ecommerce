@@ -5010,7 +5010,7 @@ body.product-details #hero {
     background-image: url("/assets/images/arrow-left-pink.png"); }
   .slider.product-slider .rsArrow.rsArrowRight,
   .slider.product-slider .rsThumbsArrow.rsArrowRight {
-    top: 43%;
+    top: 40%;
     right: 165px;
     background-image: url("/assets/images/arrow-right-pink.png"); }
   .slider.product-slider .rsArrow.rsThumbsArrowLeft,
