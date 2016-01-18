@@ -460,6 +460,7 @@ li.nested{
     &:first-letter{
       color: $dark-orange;
       font-size: 5rem;
+      line-height: 1;
     }
   }
 }
@@ -853,6 +854,8 @@ body.product-details{
   }
   #hero{
     margin-top: -50px;
+
+
   }
 }
 
@@ -1077,7 +1080,7 @@ body.product-details{
   position: absolute;
   width: 350px;
   right: 150px;
-  bottom:-172px;
+  bottom:-82px;
   overflow: hidden;
   z-index: 2;
 
@@ -2019,6 +2022,11 @@ article.product{
       &:first-letter{
         color: $dark-orange;
         font-size: 5rem;
+        line-height: 1;
+        //display: inlin
+        //e-block;
+        float: left;
+        margin-top: -36px;
       }
     }
   }
@@ -2580,6 +2588,12 @@ body.product-details{
 
     .social-rounds{
       width: 190px;
+    }
+  }
+
+  .article-content{
+    p{
+      line-height: 1;
     }
   }
 }
@@ -3812,7 +3826,9 @@ body.single{
 // PRODUCT DETAILS
 
 #hero.product-hero{
-  padding-top: 50px;
+  & > .container{
+    padding-top: 50px;
+  }
   h1{
     float: left;
     font-size: 3rem;
@@ -3842,7 +3858,7 @@ body.single{
   color:#fff;
 
   .score{
-    padding-left:12px;
+    padding-left:25px;
     font-size: 4rem;
   }
 
@@ -4612,7 +4628,7 @@ footer.about-footer{
 
   @media (min-width: 480px){
     .slider-side-block{
-      width: 190px;
+      //width: 190px;
       padding: 0px;
 
       .top{
@@ -5096,12 +5112,14 @@ footer.about-footer{
 
       &:not(.home-link) {
         //padding-top: 30px;
-        background-position: 36px 13px !important;
+        background-position: center 13px !important;
         //margin-top: 7px;
+        min-width: 72px;
+        text-align: center;
       }
       //
       &.all-link{
-        background-position: 28px 13px !important;
+        //background-position: 28px 13px !important;
       }
       &.ideas-link{
         //background-position: ;
@@ -5109,7 +5127,7 @@ footer.about-footer{
 
       &.photos-link{
         //padding-left: 45px;
-        background-position: 43px 13px !important;
+        //background-position: 43px 13px !important;
         //background-size: 39px !important;
       }
       //
@@ -5350,7 +5368,7 @@ footer.about-footer{
 
   }
 
-  #hero-nav{
+  #hero-nav:not(.product-nav){
     .container{
       padding-left: 7%;
     }
