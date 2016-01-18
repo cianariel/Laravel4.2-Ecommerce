@@ -79,9 +79,9 @@
         Route::get('category/show-category-items/{id?}', 'ProductCategoryController@showCategoryItems');
 
         /*
-                 * Product route collection
-                 *
-                 * */
+         * Product route collection
+         *
+         * */
         Route::get('product/check-permalink/{permalink?}', 'ProductController@isPermalinkExist');
         Route::get('product/get-product/{id?}', 'ProductController@getProductById');
         Route::get('product/product-find/{name?}', 'ProductController@searchProductByName');
@@ -91,10 +91,15 @@
         Route::post('product/add-product', 'ProductController@addProduct');
         Route::post('product/update-product', 'ProductController@updateProductInfo');
         Route::post('product/publish-product', 'ProductController@publishProduct');
+        Route::get('product/get-by-name/{name?}', 'ProductController@productDetailsViewByName');
+
 
         // Delete product
         Route::post('product/delete-product', 'ProductController@deleteProduct');
 
+        Route::get('pro-details/{permalink?}', 'ProductController@productDetailsView');
+
+        //add to compare queue
         Route::get('pro-details/{permalink?}', 'ProductController@productDetailsView');
 
         // Get product Info from API

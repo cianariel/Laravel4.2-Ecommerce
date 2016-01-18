@@ -171,7 +171,19 @@
                 ->where($column, $value)
                 ->first();
 
-//dd($productInfo);
+            //dd($productInfo);
+            return $productInfo;
+
+        }
+
+        // return data for public view by Name
+        public function getViewForPublicByName($name)
+        {
+
+            $productInfo = Product::with('medias')
+                ->where('product_name', $name)
+                ->first();
+
             return $productInfo;
 
         }
@@ -343,15 +355,6 @@
             return $result;
         }
 
-        public function deleteProductById($productId)
-        {
-            try
-            {
-
-            } catch (Exception $ex)
-            {
-            }
-        }
 
         // Get product information form Product's vendor API
         public function getApiProductInformation($itemId)
@@ -369,6 +372,7 @@
             }
         }
 
+        //todo cron task for API based product update.
         public function updateProductPrice($time = 5, $itemCount = 10)
         {
             $timeCompare = date("Y-m-d H:i:s", time() - ($time * 60));

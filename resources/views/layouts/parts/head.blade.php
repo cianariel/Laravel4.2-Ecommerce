@@ -52,7 +52,12 @@ if (screen.width < 992 && screen.width > 620) {
 <script src="/assets/js/vendor/royalslider/jquery.royalslider.min.js"></script>
 
 <!-- Custom script and css link for Application -->
+<link rel="stylesheet" href="/assets/css/autocomplete.css">
+
 <script src="/assets/js/vendor/angular.min.js"></script>
+
+{{--
+
 <script src="/assets/js/vendor/textAngular-sanitize.min.js"></script>
 
 <script src="/assets/js/vendor/angular-confirm.js"></script>
@@ -62,4 +67,6 @@ if (screen.width < 992 && screen.width > 620) {
 <script src="/assets/js/vendor/textAngular.min.js"></script>
 
 <script src="/assets/js/vendor/ng-tags-input.min.js"></script>
+--}}
+
 

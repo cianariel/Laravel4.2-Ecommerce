@@ -6,7 +6,7 @@
     <script type="text/javascript">
         var urlParam = "{{$permalink}}";
     </script>
-    {{--<div ng-app="productApp" data-ng-controller="productController" ng-cloak>--}}
+    <div ng-app="productApp" data-ng-controller="productController" ng-cloak>
         <nav class="mid-nav hidden-620">
             <div class="container">
                 <ul class="left-nav breadcrumbs hidden-620">
@@ -18,7 +18,8 @@
                     @if(isset($productInformation['CatTree']))
                         @foreach( $productInformation['CatTree'] as $category )
                             <li>
-                                <a class="orange box-link" href="/category/@if(isset($category['CategoryPermalink'])){{$category['CategoryPermalink']}}@endif"
+                                <a class="orange box-link"
+                                   href="/category/@if(isset($category['CategoryPermalink'])){{$category['CategoryPermalink']}}@endif"
                                    @if($category == end($productInformation['CatTree']))class="current"
                                         @endif>
                                     @if(isset($category['CategoryName']))
@@ -30,7 +31,7 @@
                 </ul>
             </div>
         </nav>
-        <header class="story-header hidden-620 hidden-soft" >
+        <header class="story-header hidden-620 hidden-soft">
             <a href="#" class="side-logo lamp-logo">
             </a>
             <h1>Nest Protect (Second Generation)</h1>
@@ -67,7 +68,8 @@
 
                 <div class="average-score">
                     <div class="score">@if(isset($productInformation['Review']) && isset($productInformation['IdeaingReviewScore']))
-                            {{(($productInformation['Review'][0]->value + $productInformation['IdeaingReviewScore'])/2)*20}}@endif%
+                            {{(($productInformation['Review'][0]->value + $productInformation['IdeaingReviewScore'])/2)*20}}@endif
+                        %
                     </div>
                     <span class="caption">Average Ideaing Score</span>
                 </div>
@@ -90,8 +92,8 @@
 
                 <div class="slider product-slider">
                     <script>
-                        jQuery(document).ready(function($) {
-                            if(window.innerWidth < 480) {
+                        jQuery(document).ready(function ($) {
+                            if (window.innerWidth < 480) {
 
                                 $('#gallery').royalSlider({
                                     arrowsNav: true,
@@ -121,8 +123,8 @@
 //                            imgWidth: 1400,
 //                            imgHeight: 680
                                 });
-                            }else{
-                                jQuery(document).ready(function($) {
+                            } else {
+                                jQuery(document).ready(function ($) {
                                     $('#gallery').royalSlider({
 //                            arrowsNav: true,
                                         loop: false,
@@ -136,17 +138,17 @@
                                         navigateByClick: true,
                                         startSlideId: 0,
                                         autoPlay: false,
-                                        transitionType:'move',
+                                        transitionType: 'move',
                                         globalCaption: false,
                                         deeplinking: {
                                             enabled: true,
                                             change: false
                                         },
                                         thumbs: {
-                                            arrows:true,
+                                            arrows: true,
                                             appendSpan: true,
                                             firstMargin: false,
-                                            orientation:'vertical'
+                                            orientation: 'vertical'
                                         },
                                         loop: true
 
@@ -171,7 +173,9 @@
                             @endforeach
                         @endif
 
-                        <img width="640" height="427" src="{{$selfImages['picture'][1]['link']}}" class="attachment-large wp-post-image" alt="{{$selfImages['picture'][1]['picture-name']}}" />
+                        <img width="640" height="427" src="{{$selfImages['picture'][1]['link']}}"
+                             class="attachment-large wp-post-image"
+                             alt="{{$selfImages['picture'][1]['picture-name']}}"/>
                     </div>
 
                     <div class="slider-side-block">
@@ -239,18 +243,19 @@
                         <h3 class="green">Specifications</h3>
 
                         @if(isset($productInformation['Specifications']))
-                            <div>
-                                <table class="table table-striped col-sm-6">
-                                    <thead>
+                            <div class="col-lg-6"
+                                 style="float: none;margin-left: auto; margin-right: auto; text-align: center">
+                                <table class="table col-sm-3">
+                                    {{--<thead>
                                     <tr>
                                         <th>Entity</th>
                                         <th>Value</th>
                                     </tr>
-                                    </thead>
+                                    </thead>--}}
                                     <tbody>
                                     @foreach( $productInformation['Specifications'] as $specification )
                                         <tr>
-                                            <td>{{ $specification->key}}</td>
+                                            <td><strong>{{ $specification->key}}</strong></td>
                                             <td>{{ $specification->value}}</td>
                                         </tr>
                                     @endforeach
@@ -270,10 +275,48 @@
                         <button class="arrow arrow-left"></button>
 
                         <div class="col-sm-3 col-xs-6 comparison-tab">
-                            <section class="search-bar">
-                                <input class="form-control" type="text" name="search" value="Search to add products"/>
+                            <section{{--class="search-bar"--}}>
+                                {{--<input class="form-control" type="text" name="search" value="Search to add products"/>--}}
+                                <autocomplete ng-model="selectedProduct"
+                                              attr-placeholder="type to search product..."
+                                              {{--attr-input-class="form-control"--}}
+                                              ng-model-options="{debounce: 1000}"
+                                              data="suggestedItems"
+                                              on-select="selectedIdem"
+                                              on-type="searchProductByName">
+
+                                </autocomplete>
                             </section>
                         </div>
+
+                        <!-- compare dynamic start -->
+
+                        <div ng-repeat="item in comparableProductList">
+
+                            <div class="col-sm-3 col-xs-6 comparison-tab">
+                                <div>
+                                    <img class="img-responsive" ng-src="@{{ item.data.selfImages.picture[0].link }}"/>
+
+                                    <div class="tab-wrap">
+                                        <h4>@{{ item.data.productInformation.ProductName }}</h4>
+                                        <i>@{{ item.data.productInformation.Available }}</i>
+                                        <b class="score">@{{ item.data.productInformation.Review[0].value }}</b>
+
+                                        <div class="star-raiting">
+                                            <span class="stars">(@{{ item.data.productInformation.Review[1].counter }})</span>
+                                        </div>
+                                        <div class="btn purple-bg price-badge">
+                                            <span>Amazon</span> <b>$@{{ item.data.productInformation.SellPrice }}</b>
+                                        </div>
+                                        <a class="btn-none" href="@{{ item.data.productInformation.AffiliateLink }}" target="_blank" >More Info</a>
+                                    </div>
+                                    <span class="close-button" ng-click="deleteSelectedItem($index)">✕</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- compare dynamic end -->
+{{--
 
                         <div class="col-sm-3 col-xs-6 comparison-tab">
                             <div>
@@ -323,6 +366,7 @@
                                 </a>
                             </div>
                         </div>
+--}}
 
                         <button class="arrow arrow-right"></button>
 
@@ -334,13 +378,32 @@
                             <h4></h4>
                             <hr>
 
-                            <b>Connections</b>
-                            <b>Original Pricing</b>
-                            <b>Pricing Range</b>
-                            <b>Dimensions</b>
-                            <b>Weight</b>
+                            <b>Manufacturer</b>
+                            <b>Model</b>
+                            <b>Part Number</b>
+                            <b>Color</b>
+                            <b>Product Size</b>
+                            <b>Package Size</b>
+                            <b>Product Weight</b>
+                            <b>Package Weight</b>
+                            <b></b>
                         </div>
-                        <div class="col-sm-3 col-xs-6 comparison-tab table-cells">
+
+                        <!-- compare dynamic 2nd part start-->
+                        <div ng-repeat="item in comparableProductList">
+                            <div class="col-sm-3 col-xs-6 comparison-tab table-cells">
+                                <h4>@{{ item.data.productInformation.ProductName }}</h4>
+                                <hr>
+                                <div class="bordered" ng-repeat="spec in item.data.productInformation.Specifications">
+                                    <b>@{{ spec.value }}</b>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <!-- compare dynamic 2nd part end -->
+
+                        {{--<div class="col-sm-3 col-xs-6 comparison-tab table-cells">
                             <h4>Next Project <br>(second generation)</h4>
                             <hr>
                             <div class="bordered">
@@ -372,7 +435,7 @@
                                 <b></b>
                                 <b></b>
                             </div>
-                        </div>
+                        </div>--}}
                         <a href="#" class="view-all grey">View all</a>
                     </div>
                 </section>
@@ -554,10 +617,10 @@
                                 <a href="#" class="social-pic comment">89</a>
                             </div>
                         </div>
-
                     </div>
                 </div>
             </section>
         </main>
+    </div>
     {{--</div>--}}
 @stop

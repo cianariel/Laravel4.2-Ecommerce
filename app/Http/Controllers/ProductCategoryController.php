@@ -18,17 +18,6 @@
     use Config;
 
 
-    /*use App\Events\SendActivationMail;
-    use App\Events\SendResetEmail;
-    use Crypt;
-    use Illuminate\Http\Request;
-    use App\Http\Requests;
-    use Illuminate\Http\Response as IlluminateResponse;
-    use JWTAuth;
-    use Tymon\JWTAuth\Exceptions\JWTException;
-    use App\Models\User;
-    use Carbon\Carbon;*/
-
     class ProductCategoryController extends ApiController {
 
 
@@ -76,8 +65,8 @@
                 $validationRules = [
 
                     'rules'  => [
-                        'CategoryName' => 'required | max: 15',
-                        'ExtraInfo'    => 'required | max: 25',
+                        'CategoryName' => 'required | max: 50',
+                        'ExtraInfo'    => 'required | max: 50',
                         'ParentId'     => 'integer'
                     ],
                     'values' => [
@@ -195,8 +184,8 @@
 
             $validationRules = [
                 'rules'  => [
-                    'CategoryName' => 'required | max: 15',
-                    'ExtraInfo'    => 'required | max: 25',
+                    'CategoryName' => 'required | max: 50',
+                    'ExtraInfo'    => 'required | max: 50',
                     'CategoryId'   => 'required | integer'
                 ],
                 'values' => [

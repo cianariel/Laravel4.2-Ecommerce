@@ -27,7 +27,7 @@
                     'publishProduct', 'searchProductByName', 'updateProductInfo', 'productDetailsView',
                     'getAllProductList', 'getProductById', 'isPermalinkExist', 'addProduct',
                     'addMediaForProduct', 'addMediaInfo', 'getMediaForProduct', 'deleteSingleMediaItem',
-                    'getProductInfoFromApi', 'priceUpdate', 'deleteProduct'
+                    'getProductInfoFromApi', 'priceUpdate', 'deleteProduct','productDetailsViewByName'
                 ]]);
             $this->product = new Product();
 
@@ -119,11 +119,8 @@
             try
             {
                 $productData['product'] = $this->product->getViewForPublic($permalink);
+                $result = $this->productDetailsBuilder($productData);
 
-                // Get category tree
-                $catTree = $this->generateCategoryHierarchy($productData['product']->product_category_id);
-
-                $result = $this->product->productDetailsViewGenerate($productData, $catTree);
 
                 return $this->setStatusCode(\Config::get("const.api-status.success"))
                     ->makeResponse($result);
@@ -133,6 +130,39 @@
                 return $this->setStatusCode(\Config::get("const.api-status.system-fail"))
                     ->makeResponseWithError("System Failure !", $ex);
             }
+        }
+
+
+        public function productDetailsViewByName($name)
+        {
+            try
+            {
+                $productData['product'] = $this->product->getViewForPublicByName($name);
+                $result = $this->productDetailsBuilder($productData);
+
+
+                return $this->setStatusCode(\Config::get("const.api-status.success"))
+                    ->makeResponse($result);
+
+            } catch (Exception $ex)
+            {
+                return $this->setStatusCode(\Config::get("const.api-status.system-fail"))
+                    ->makeResponseWithError("System Failure !", $ex);
+            }
+        }
+
+        /** Build the view for product details by product data
+         * @param $productData
+         * @return mixed
+         */
+        private function productDetailsBuilder($productData)
+        {
+            // Get category tree
+            $catTree = $this->generateCategoryHierarchy($productData['product']->product_category_id);
+
+            $result = $this->product->productDetailsViewGenerate($productData, $catTree);
+
+            return $result;
         }
 
         /**
@@ -459,6 +489,8 @@
                 }
             }
         }
+
+
 
 
     }

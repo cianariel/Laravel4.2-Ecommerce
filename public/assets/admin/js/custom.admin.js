@@ -1,26 +1,5 @@
 var adminApp = angular.module('adminApp', ['ui.bootstrap', 'ngRateIt', 'ngSanitize', 'angular-confirm', 'textAngular', 'ngTagsInput', 'angularFileUpload']);
 
-/*
- adminApp.directive('loading', ['$http', function ($http) {
- return {
- restrict: 'A',
- link: function (scope, elm, attrs) {
- scope.isLoading = function () {
- return $http.pendingRequests.length > 0;
- };
-
- scope.$watch(scope.isLoading, function (v) {
- if (v) {
- elm.show();
- } else {
- elm.hide();
- }
- });
- }
- };
-
- }]);
- */
 
 // only decimal number input validation
 adminApp.directive('validNumber', function () {
@@ -178,7 +157,6 @@ adminApp.directive('uiTree', function () {
             };
             // emit an event up the scope.  Then, from the scope above this tree, a "selectNode"
             // event is expected to be broadcasted downwards to each node in the tree.
-            // TODO this needs to be re-thought such that the controller doesn't need to manually
             // broadcast "selectNode" from outside of the directive scope.
             scope.setSelected = function (node) {
                 scope.$emit("nodeSelected", node);
@@ -216,7 +194,7 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
             }
         });
 
-        // CALLBACKS
+        // Content upload CALLBACKS
 
         uploader.onWhenAddingFileFailed = function (item /*{File|FileLikeObject}*/, filter, options) {
             //  console.info('onWhenAddingFileFailed', item, filter, options);
@@ -357,6 +335,9 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
             ];
             $scope.selectedFilter = '';
             $scope.filterName = '';
+
+            //product compare
+            $scope.comparableProductList =[];
         };
 
         //////// category tree view ////
