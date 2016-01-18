@@ -2599,6 +2599,9 @@ body.product-details{
     }
     .like-counter{
       margin-top: -4px;
+      b{
+        padding-top: 8px;
+      }
     }
 
     .social-rounds{
@@ -5205,6 +5208,7 @@ footer.about-footer{
     padding-bottom: 0;
   }
 
+  body.product-details,
   .post.type-post {
     .share-bar .all-shares{
       float: none;

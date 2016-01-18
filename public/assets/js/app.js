@@ -82,7 +82,7 @@
 
         // scroll and stick the share bar
         function sticky_relocate() {
-            if(window.innerWidth < 1300){
+            if(window.innerWidth < 620){
                 return false;
             }
 
