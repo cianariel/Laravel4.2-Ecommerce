@@ -889,6 +889,11 @@ body.product-details{
     //  min-height: 500px;
     //}
 
+    //.rsMainSlideImage{
+    //  max-height: 100%;
+    //  margin-top: 0 !important;
+    //}
+
     .rsNav.rsThumbs.rsThumbsVer{
       width: 150px !important;
       padding-left: 3px;
@@ -931,7 +936,7 @@ body.product-details{
       &.rsThumbsArrowRight{
         //bottom: 0 !important;
         left: 40%;
-        top: 461px;
+        top: 443px; 
         background-image: url('/assets/images/icons/arrow-down-pink.png');
       }
     }
