@@ -38,6 +38,7 @@ if (screen.width < 992 && screen.width > 620) {
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
 <link rel="stylesheet" href="/assets/css/app.css">
+<link rel="stylesheet" href="/assets/fonts/ideaing/style.css">
 
 <script src="/assets/js/vendor/jquery-1.11.3.min.js"></script>
 
