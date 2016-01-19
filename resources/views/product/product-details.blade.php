@@ -11,12 +11,14 @@
             <div class="container">
                 <ul class="left-nav breadcrumbs hidden-620">
                     <!--                    <li><a class="home-link" href="#">Home</a></li>-->
+                    {{--<li class="active"><a href="#" class="larger-text allcaps orange">Ideas</a></li>--}}
+                    {{--<li><a href="#" class="orange box-link">Kitchen</a></li>--}}
+                    {{--<li><a href="#" class="orange box-link">Style</a></li>--}}
 
                     @if(isset($productInformation['CatTree']))
                         @foreach( $productInformation['CatTree'] as $category )
                             <li>
-                                <a class="orange box-link"
-                                   href="/category/@if(isset($category['CategoryPermalink'])){{$category['CategoryPermalink']}}@endif"
+                                <a class="orange box-link" href="/category/@if(isset($category['CategoryPermalink'])){{$category['CategoryPermalink']}}@endif"
                                    @if($category == end($productInformation['CatTree']))class="current"
                                         @endif>
                                     @if(isset($category['CategoryName']))
@@ -31,23 +33,34 @@
         <header class="story-header hidden-620 hidden-soft">
             <a href="#" class="side-logo lamp-logo">
             </a>
-            <h1>Nest Protect (Second Generation)</h1>
 
-            <ul class="social-rounds hidden-sm hidden-xs pull-right">
-                <li><a class="fb" href="#"></a></li>
-                <li><a class="twi" href="#"></a></li>
-                <li><a class="gp" href="#"></a></li>
-                <li><a class="pint" href="#"></a></li>
+            <h1>
+                @if(isset($productInformation['ProductName']))
+                    {{$productInformation['ProductName']}}
+                @endif
+                <a class="like-counter" href="#"><span></span><b>1819</b></a>
+            </h1>
+
+            <ul class="share-buttons short hidden-xs col-lg-6 col-sm-8 pull-right">
+                <li class="all-shares"><b>120K </b>all shares</li>
+                <li><a class="fb" href="#"><span></span><b>189</b></a></li>
+                <li><a class="twi" href="#"><span></span><b>189</b></a></li>
             </ul>
 
-            <ul class="like-nav hidden-xs pull-right pull-right">
-                <li><a class="like-counter" href="#"><span></span><b>189</b></a></li>
-            </ul>
+            {{--<ul class="like-nav hidden-xs pull-right pull-right">--}}
+            {{--<li><a class="like-counter" href="#"><span></span><b>1819</b></a></li>--}}
+            {{--</ul>--}}
 
             <div class="icon-wrap pull-right">
-                <div class="get solid">Get it</div>
+                <a class="category-tag get-round" ng-href=" @if(isset($productInformation['AffiliateLink']))
+                {{$productInformation['AffiliateLink']}}
+                @endif" target="_blank">
+                    Get it
+                </a>
                 <img class="vendor-logo" src="/assets/images/dummies/amazon-black.png">
-                <b class="price">$199</b>
+                <b class="price">$ @if(isset($productInformation['SellPrice']))
+                        {{$productInformation['SellPrice']}}
+                    @endif</b>
             </div>
         </header>
 
@@ -57,11 +70,15 @@
             <div class="color-overlay"></div>
 
             <div class="container fixed-sm full-480">
+                {{--<nav class="breadcrumbs">--}}
+                {{--<ul>--}}
+                {{----}}
+                {{--</ul>--}}
+                {{--</nav>--}}
 
                 <div class="average-score">
                     <div class="score">@if(isset($productInformation['Review']) && isset($productInformation['IdeaingReviewScore']))
-                            {{(($productInformation['Review'][0]->value + $productInformation['IdeaingReviewScore'])/2)*20}}@endif
-                        %
+                            {{(($productInformation['Review'][0]->value + $productInformation['IdeaingReviewScore'])/2)*20}}@endif%
                     </div>
                     <span class="caption">Average Ideaing Score</span>
                 </div>
@@ -84,15 +101,15 @@
 
                 <div class="slider product-slider">
                     <script>
-                        jQuery(document).ready(function ($) {
-                            if (window.innerWidth < 480) {
+                        jQuery(document).ready(function($) {
+                            if(window.innerWidth < 480) {
 
                                 $('#gallery').royalSlider({
                                     arrowsNav: true,
                                     loop: false,
                                     keyboardNavEnabled: true,
                                     controlsInside: false,
-                                    imageScaleMode: 'fill',
+                                    imageScaleMode: 'fit',
                                     arrowsNavAutoHide: false,
                                     autoScaleSlider: true,
                                     controlNavigation: 'thumbnails',
@@ -115,14 +132,14 @@
 //                            imgWidth: 1400,
 //                            imgHeight: 680
                                 });
-                            } else {
-                                jQuery(document).ready(function ($) {
+                            }else{
+                                jQuery(document).ready(function($) {
                                     $('#gallery').royalSlider({
 //                            arrowsNav: true,
                                         loop: false,
                                         keyboardNavEnabled: true,
                                         controlsInside: false,
-                                        imageScaleMode: 'fill',
+                                        imageScaleMode: 'fit',
                                         arrowsNavAutoHide: false,
 //                        autoScaleSlider: true,
                                         controlNavigation: 'thumbnails',
@@ -130,17 +147,17 @@
                                         navigateByClick: true,
                                         startSlideId: 0,
                                         autoPlay: false,
-                                        transitionType: 'move',
+                                        transitionType:'move',
                                         globalCaption: false,
                                         deeplinking: {
                                             enabled: true,
                                             change: false
                                         },
                                         thumbs: {
-                                            arrows: true,
+                                            arrows:true,
                                             appendSpan: true,
                                             firstMargin: false,
-                                            orientation: 'vertical'
+                                            orientation:'vertical'
                                         },
                                         loop: true
 
@@ -164,7 +181,6 @@
                                 </a>
                             @endforeach
                         @endif
-
                         <img width="640" height="427" src="@if(isset($selfImages['picture'][1]['link'])){{$selfImages['picture'][1]['link']}}@endif"
                              class="attachment-large wp-post-image"
                              alt="@if(isset($selfImages['picture'][1]['picture-name'])){{$selfImages['picture'][1]['picture-name']}}@endif"/>
@@ -274,9 +290,9 @@
 
                                 </autocomplete>
                             </section>
-                        </div>
+                        </div
 
-                        <!-- compare dynamic start -->
+                                <!-- compare dynamic start -->
 
                         <div ng-repeat="item in comparableProductList  | limitTo: 3" ng-if="$index >= compareIndex">
 
@@ -324,7 +340,6 @@
                             <b>Package Weight</b>
                             <b></b>
                         </div>
-
                         <!-- compare dynamic 2nd part start-->
                         <div ng-repeat="item in comparableProductList">
                             <div class="col-sm-3 col-xs-6 comparison-tab table-cells">
@@ -338,8 +353,6 @@
                         </div>
 
                         <!-- compare dynamic 2nd part end -->
-
-
                         <a href="#" class="view-all grey">View all</a>
                     </div>
                 </section>
@@ -370,7 +383,7 @@
                                             <td class="name">
                                                 <a href="@if(isset($review->link)){{$review->link}}@endif"
                                                    target="_blank">@if(isset($review->key)){{$review->key}}@endif
-                                                    @if(isset($review->counter)&&($review->counter > 0))( {{$review->counter}} )@endif
+                                                    @if($review->counter > 0)( {{$review->counter}} )@endif
                                                 </a>
                                             </td>
                                             <td class="line">
@@ -521,10 +534,10 @@
                                 <a href="#" class="social-pic comment">89</a>
                             </div>
                         </div>
+
                     </div>
                 </div>
             </section>
         </main>
     </div>
-
 @stop

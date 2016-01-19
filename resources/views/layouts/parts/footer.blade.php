@@ -39,7 +39,8 @@
     <button class="btn-none close-down" data-toggle=".about-footer"></button>
 </footer>
 
-<div id="overlay"></div>
+<div class="page-overlay"></div>
+<div class="page-overlay picture-overlay"></div>
 
 
 <button class="btn btn-success" id="about-button" data-toggle=".about-footer">About</button>
