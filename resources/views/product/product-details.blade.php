@@ -294,7 +294,10 @@
 
                                 <!-- compare dynamic start -->
 
-                        <div ng-repeat="item in comparableProductList  | limitTo: 3" ng-if="$index >= compareIndex">
+
+                      {{--  <div ng-repeat="item in comparableProductList  | limitTo: 3" ng-if="$index >= compareIndex">
+--}}
+                        <div ng-repeat="item in temporaryViewList">
 
                             <div class="col-sm-3 col-xs-6 comparison-tab">
                                 <div>
@@ -329,7 +332,6 @@
                         <div class="col-sm-3 col-xs-6 comparison-tab table-heads">
                             <h4></h4>
                             <hr>
-
                             <b>Manufacturer</b>
                             <b>Model</b>
                             <b>Part Number</b>
@@ -341,7 +343,7 @@
                             <b></b>
                         </div>
                         <!-- compare dynamic 2nd part start-->
-                        <div ng-repeat="item in comparableProductList">
+                        <div ng-repeat="item in temporaryViewList">
                             <div class="col-sm-3 col-xs-6 comparison-tab table-cells">
                                 <h4>@{{ item.data.productInformation.ProductName }}</h4>
                                 <hr>
