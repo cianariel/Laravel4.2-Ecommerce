@@ -50,54 +50,32 @@
         </div>
     </nav>
 
+    <div class="clearfix"></div>
+
+    <div class="container">
+        <div class="box-item">
+
+            <ul class="social-stats">
+                <li class="social-stats__item">
+                    <i class="m-icon m-icon--heart"></i>
+                    <span class="social-stats__text">52</span>
+                </li>
+                <li class="social-stats__item">
+                    <i class="m-icon m-icon--buble"></i>
+                    <span class="social-stats__text">157</span>
+                </li>
+            </ul>
+
+            <div class="round-tag">
+                
+            </div>
+
+        </div>
+    </div>
+
+
+    {{-- old home --}}
     <div class="container full-620 main-container fixed-sm">
-        <button id="show-mobile-filters" class="toggler btn btn-info col-sm-4 col-xs-8 hidden-soft shown-620" data-toggle="#mobile-side-filters">Filter</button>
-
-        <section id="mobile-side-filters" class="side-filters pale-grey-bg col-xs-12 hidden-lg hidden-md">
-            <ul class="mobile-filter-switch hidden-sm">
-                <li class="col-xs-4 active" data-toggle="#idea-filter" data-hide="#mobile-side-filters div">
-                    <b>Ideas</b>
-                </li>
-                <li class="col-xs-4" data-toggle="#product-filter" data-hide="#mobile-side-filters div">
-                    <b >Products</b>
-                </li>
-                <li class="col-xs-4"  data-toggle="#photo-filter" data-hide="#mobile-side-filters div">
-                    <b>Photos</b>
-                </li>
-            </ul>
-            <div id="idea-filter" class="col-md-12 col-sm-4 col-xs-7 col-sm-offset-0 col-xs-offset-1">
-                <h5 class="hidden-xs">Ideas</h5>
-
-                <input type="checkbox" name="dyi" id="dyi-nobile"> <label for="dyi-nobile"><span></span>DIY</label>
-                <input type="checkbox" name="best-buys" id="best-buys-mobile"> <label for="best-buys-mobile"><span></span>Best Buys</label>
-                <input type="checkbox" name="declutter" id="declutter-mobile"> <label for="declutter-mobile"><span></span>Declutter</label>
-            </div>
-            <div id="product-filter" class="col-md-12 col-sm-4 col-xs-7">
-                <h5>Products</h5>
-                <input type="checkbox" name="cheap" id="cheap-mobile"> <label for="cheap-mobile"><span></span>Under $50</label>
-                <input type="checkbox" name="top" id="top-mobile"> <label for="top-mobile"><span></span>Top</label>
-                <input type="checkbox" name="stuff" id="stuff-mobile"> <label for="stuff-mobile"><span></span>Stuff</label>
-            </div>
-            <div id="photo-filter" class="col-md-12 col-sm-4 col-xs-7">
-                <h5>Photos</h5>
-                <input type="checkbox" name="hd" id="hd-mobile"> <label for="hd-mobile"><span></span>HD (1920px and above)</label>
-                <input type="checkbox" name="md" id="md-mobile"> <label for="md-mobile"><span></span>MD (1920px and above)</label>
-                <input type="checkbox" name="anysize" id="anysize-mobile"> <label for="anysize-mobile"><span></span>Any sizes</label>
-            </div>
-
-        </section>
-
-        <section class="main-content landing col-xs-9 full-620">
-
-            <ul class="layout-controls col-xs-12 hidden-xs">
-                <li class="list">List</li>
-                <li class="grid selected">Grid</li>
-            </ul>
-
-            <div class="latest-heading">
-                <hr/>
-                <h6>The Latest</h6>
-            </div>
 
 
             <div class="col-xs-6 grid-box full-620">
@@ -198,8 +176,6 @@
             </div>
 
             <a class="btn btn-success bottom-load-more col-xs-12">Load More</a>
-
-        </section>
 
         <aside class="col-xs-3 hidden-620">
             <section class="sidebar-category products">
