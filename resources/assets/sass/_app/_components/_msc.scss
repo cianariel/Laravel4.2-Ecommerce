@@ -1,11 +1,8 @@
 // Social Stats
-.box-stats {
+.social-stats {
 	background: #fff;
-
-	@media (min-width: 640px) {
-		max-width: 86px;
-	}
-
+	padding: 8px 5px 8px 10px;
+	width: 86px;
 
 	&__item {
 		display: inline-block;
@@ -14,10 +11,6 @@
 		line-height: 26px;
 		padding-left: 30px;
 		margin: 3px 0;
-
-		@media (max-width: 640px) {
-			margin-right: 10px;
-		}
 	}
 
 	&__item .m-icon {
@@ -25,5 +18,57 @@
 		position: absolute;
 		left: 0;
 		color: $iridium;
+	}
+}
+
+// Round tag
+.round-tag {
+	width: 62px;
+	height: 62px;
+	background: #ccc;
+	text-align: center;
+	line-height: 12px;
+	color: #fff;
+	@include border-radius(62px);
+
+	&--idea {
+		background: $dark-orange;
+	}
+	&--product {
+		background: $pine-green;
+	}
+
+	&__label {
+		font-size: 11px;
+		display: inline-block;
+		width: 100%;
+	}
+
+	.m-icon {
+		font-size: 24px;
+		margin-top: 10px;
+		display: inline-block;
+	}
+
+}
+
+// User widget
+.user-widget {
+	height: 66px;
+
+	&__img {
+		@include border-radius(100px);
+		float: left;
+	}
+	&__name {
+		display: inline-block;
+		padding: 5px 5px 4px;
+		background: $pine-green;
+		color: #fff;
+		font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+		margin-top: 22px;
+		margin-left: 10px;
+		line-height: 1;
+		font-size: 12px;
 	}
 }

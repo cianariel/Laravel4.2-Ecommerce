@@ -52,25 +52,211 @@
 
     <div class="clearfix"></div>
 
-    <div class="container">
-        <div class="box-item">
+    <div class="homepage-grid container">
 
-            <ul class="social-stats">
-                <li class="social-stats__item">
-                    <i class="m-icon m-icon--heart"></i>
-                    <span class="social-stats__text">52</span>
-                </li>
-                <li class="social-stats__item">
-                    <i class="m-icon m-icon--buble"></i>
-                    <span class="social-stats__text">157</span>
-                </li>
-            </ul>
+        <div class="grid-box-3">
+            <div class="box-item">
 
-            <div class="round-tag">
-                
+                <img src="/assets/images/dummies/webcam-square.jpg" alt=""/>
+
+                <span class="box-item__time">posted 5 hours ago</span>
+                <div class="box-item__overlay"></div>
+
+                <ul class="social-stats">
+                    <li class="social-stats__item">
+                        <i class="m-icon m-icon--heart"></i>
+                        <span class="social-stats__text">52</span>
+                    </li>
+                    <li class="social-stats__item">
+                        <i class="m-icon m-icon--buble"></i>
+                        <span class="social-stats__text">157</span>
+                    </li>
+                </ul>
+
+                <div class="round-tag round-tag--product">
+                    <i class="m-icon m-icon--item"></i>
+                    <span class="round-tag__label">Product</span>
+                </div>
+
+                <div class="box-item__label-idea">
+                    <a href="#" class="box-item__label">10 Ideas for Gorgeous Kitchens</a>
+                    <div class="clearfix"></div>
+                    <a href="#" class="box-item__read-more">Read More</a>
+                </div>
+
+                <div class="box-item__author">
+                    <div class="user-widget">
+                        <img class="user-widget__img" src="/assets/images/dummies/author.png">
+                        <span class="user-widget__name">Bob Barbarian</span>
+                    </div>
+                </div>
+
+                <div class="box-item__merchant"></div>
+
             </div>
+            <div class="box-item">
 
+                <img src="/assets/images/dummies/webcam-square.jpg" alt=""/>
+
+                <span class="box-item__time">posted 5 hours ago</span>
+                <div class="box-item__overlay"></div>
+
+                <ul class="social-stats">
+                    <li class="social-stats__item">
+                        <i class="m-icon m-icon--heart"></i>
+                        <span class="social-stats__text">52</span>
+                    </li>
+                    <li class="social-stats__item">
+                        <i class="m-icon m-icon--buble"></i>
+                        <span class="social-stats__text">157</span>
+                    </li>
+                </ul>
+
+                <div class="round-tag round-tag--product">
+                    <i class="m-icon m-icon--item"></i>
+                    <span class="round-tag__label">Product</span>
+                </div>
+
+                <div class="box-item__label-idea">
+                    <a href="#" class="box-item__label">10 Ideas for Gorgeous Kitchens</a>
+                    <div class="clearfix"></div>
+                    <a href="#" class="box-item__read-more">Read More</a>
+                </div>
+
+                <div class="box-item__author">
+                    <div class="user-widget">
+                        <img class="user-widget__img" src="/assets/images/dummies/author.png">
+                        <span class="user-widget__name">Bob Barbarian</span>
+                    </div>
+                </div>
+
+                <div class="box-item__merchant"></div>
+
+            </div>
+            <div class="box-item">
+
+                <img src="/assets/images/dummies/webcam-square.jpg" alt=""/>
+
+                <span class="box-item__time">posted 5 hours ago</span>
+                <div class="box-item__overlay"></div>
+
+                <ul class="social-stats">
+                    <li class="social-stats__item">
+                        <i class="m-icon m-icon--heart"></i>
+                        <span class="social-stats__text">52</span>
+                    </li>
+                    <li class="social-stats__item">
+                        <i class="m-icon m-icon--buble"></i>
+                        <span class="social-stats__text">157</span>
+                    </li>
+                </ul>
+
+                <div class="round-tag round-tag--product">
+                    <i class="m-icon m-icon--item"></i>
+                    <span class="round-tag__label">Product</span>
+                </div>
+
+                <div class="box-item__label-idea">
+                    <a href="#" class="box-item__label">10 Ideas for Gorgeous Kitchens</a>
+                    <div class="clearfix"></div>
+                    <a href="#" class="box-item__read-more">Read More</a>
+                </div>
+
+                <div class="box-item__author">
+                    <div class="user-widget">
+                        <img class="user-widget__img" src="/assets/images/dummies/author.png">
+                        <span class="user-widget__name">Bob Barbarian</span>
+                    </div>
+                </div>
+
+                <div class="box-item__merchant"></div>
+
+            </div>
         </div>
+
+        <div class="grid-box-full">
+            <div class="box-item">
+
+                <div class="box-item__img" style="background-image: url('/assets/images/dummies/clock.png')"></div>
+
+                <span class="box-item__time">posted 5 hours ago</span>
+                <div class="box-item__overlay"></div>
+
+                <ul class="social-stats">
+                    <li class="social-stats__item">
+                        <i class="m-icon m-icon--heart"></i>
+                        <span class="social-stats__text">52</span>
+                    </li>
+                    <li class="social-stats__item">
+                        <i class="m-icon m-icon--buble"></i>
+                        <span class="social-stats__text">157</span>
+                    </li>
+                </ul>
+
+                <div class="round-tag round-tag--product">
+                    <i class="m-icon m-icon--item"></i>
+                    <span class="round-tag__label">Product</span>
+                </div>
+
+                <div class="box-item__label-idea">
+                    <a href="#" class="box-item__label">10 Ideas for Gorgeous Kitchens</a>
+                    <div class="clearfix"></div>
+                    <a href="#" class="box-item__read-more">Read More</a>
+                </div>
+
+                <div class="box-item__author">
+                    <div class="user-widget">
+                        <img class="user-widget__img" src="/assets/images/dummies/author.png">
+                        <span class="user-widget__name">Bob Barbarian</span>
+                    </div>
+                </div>
+
+                <div class="box-item__merchant"></div>
+
+            </div>
+        </div>
+
+
+        {{--<div class="box-item">--}}
+
+            {{--<img src="/assets/images/dummies/webcam-square.jpg" alt=""/>--}}
+
+            {{--<span class="box-item__time">posted 5 hours ago</span>--}}
+            {{--<div class="box-item__overlay"></div>--}}
+
+            {{--<ul class="social-stats">--}}
+                {{--<li class="social-stats__item">--}}
+                    {{--<i class="m-icon m-icon--heart"></i>--}}
+                    {{--<span class="social-stats__text">52</span>--}}
+                {{--</li>--}}
+                {{--<li class="social-stats__item">--}}
+                    {{--<i class="m-icon m-icon--buble"></i>--}}
+                    {{--<span class="social-stats__text">157</span>--}}
+                {{--</li>--}}
+            {{--</ul>--}}
+
+            {{--<div class="round-tag round-tag--product">--}}
+                {{--<i class="m-icon m-icon--item"></i>--}}
+                {{--<span class="round-tag__label">Product</span>--}}
+            {{--</div>--}}
+
+            {{--<div class="box-item__label-idea">--}}
+                {{--<a href="#" class="box-item__label">10 Ideas for Gorgeous Kitchens</a>--}}
+                {{--<div class="clearfix"></div>--}}
+                {{--<a href="#" class="box-item__read-more">Read More</a>--}}
+            {{--</div>--}}
+
+            {{--<div class="box-item__author">--}}
+                {{--<div class="user-widget">--}}
+                    {{--<img class="user-widget__img" src="/assets/images/dummies/author.png">--}}
+                    {{--<span class="user-widget__name">Bob Barbarian</span>--}}
+                {{--</div>--}}
+            {{--</div>--}}
+
+            {{--<div class="box-item__merchant"></div>--}}
+
+        {{--</div>--}}
+
     </div>
 
 
