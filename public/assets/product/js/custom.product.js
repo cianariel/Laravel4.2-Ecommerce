@@ -40,8 +40,6 @@ productApp.controller('productController', ['$scope', '$http', '$window'
         // search comparable it by name
         $scope.searchProductByName = function (query) {
 
-            // console.log(permalink);
-
             //min string length to call ajax
             if (query.length < 3)
                 return;
@@ -58,9 +56,6 @@ productApp.controller('productController', ['$scope', '$http', '$window'
                     $scope.suggestedItems.push(data[i]['name']);
                     $scope.suggestedItemsWithId.push(data);
 
-                    //   $scope.suggestedItems.push(data);
-
-                    // console.log("inside : " + data[i]);
                 }
             });
 
@@ -75,14 +70,9 @@ productApp.controller('productController', ['$scope', '$http', '$window'
             }).success(function (data) {
                 $scope.comparableProductList.push(data);
 
-                //$scope.temporaryViewList=[];
-
                 $scope.temporaryViewList = $scope.comparableProductList.slice($scope.compareIndex,$scope.compareIndex + 3);
                 $scope.dataLength = $scope.comparableProductList.length;
                 $scope.selectedProduct = '';
-              //  console.log($scope.temporaryViewList);
-               // console.log($scope.comparableProductList.length);
-                // console.log($scope.compareIndex +" : "+$scope.dataLength);
 
             });
 
@@ -97,31 +87,21 @@ productApp.controller('productController', ['$scope', '$http', '$window'
         };
 
         $scope.traverseForward = function () {
-           // console.log($scope.compareIndex +" : "+$scope.dataLength);
+
             if ($scope.compareIndex <= $scope.dataLength - 1)
                 $scope.compareIndex++;
 
-            //$scope.temporaryViewList=[];
-
             $scope.temporaryViewList = $scope.comparableProductList.slice($scope.compareIndex,$scope.compareIndex + 3);
-           // console.log($scope.temporaryViewList);
-          //  console.log($scope.comparableProductList.length);
-
-
 
         };
 
         $scope.traverseBackward = function () {
-          //  console.log($scope.compareIndex +" : "+$scope.dataLength);
 
             if ($scope.compareIndex >= 1)
                 $scope.compareIndex--;
 
-           // $scope.temporaryViewList=[];
 
             $scope.temporaryViewList = $scope.comparableProductList.slice($scope.compareIndex,$scope.compareIndex + 3);
-           // console.log($scope.temporaryViewList);
-          //  console.log($scope.comparableProductList.length);
 
         };
 
@@ -132,27 +112,32 @@ productApp.controller('productController', ['$scope', '$http', '$window'
                 url: '/api/pro-details/' + $scope.permalink,
                 method: "GET",
             }).success(function (data) {
-                // $scope.outputStatus(data, 'Category item updated successfully');
-               // console.log(data.data);
 
                 if (data.status_code == 200) {
                     $scope.comparableProductList.push(data);
 
-                    //$scope.temporaryViewList=[];
 
                     $scope.temporaryViewList = $scope.comparableProductList.slice($scope.compareIndex,$scope.compareIndex + 3);
                     $scope.dataLength = $scope.comparableProductList.length;
 
                     // set spec list for product compare
-                    $scope.specList = data.productInformation.Specifications;
+                    var item = data.data.productInformation.Specifications;
 
+                    for(var i=0;i<item.length;i++)
+                    {
+                        var specName = item[i].key;
 
-                    //   console.log("DataIn :"+$scope.selfImages.picture[0].link);
+                        // set the key as view-able order ("ProductSize" = "Product Size")
+                        specName = specName.split(/(?=[A-Z])/).join(" ");
+                        $scope.specList.push(specName);
+                    }
+
                 }
             });
 
         };
 
         $scope.initPage();
+
 
     }]);

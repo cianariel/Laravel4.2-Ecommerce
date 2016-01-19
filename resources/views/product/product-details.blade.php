@@ -332,15 +332,9 @@
                         <div class="col-sm-3 col-xs-6 comparison-tab table-heads">
                             <h4></h4>
                             <hr>
-                            <b>Manufacturer</b>
-                            <b>Model</b>
-                            <b>Part Number</b>
-                            <b>Color</b>
-                            <b>Product Size</b>
-                            <b>Package Size</b>
-                            <b>Product Weight</b>
-                            <b>Package Weight</b>
-                            <b></b>
+
+                            <b ng-repeat="spec in specList track by $index">@{{ spec }}</b>
+
                         </div>
                         <!-- compare dynamic 2nd part start-->
                         <div ng-repeat="item in temporaryViewList">
