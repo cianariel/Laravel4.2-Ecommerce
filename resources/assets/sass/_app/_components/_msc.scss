@@ -1,0 +1,29 @@
+// Social Stats
+.box-stats {
+	background: #fff;
+
+	@media (min-width: 640px) {
+		max-width: 86px;
+	}
+
+
+	&__item {
+		display: inline-block;
+		position: relative;
+		font-size: 14px;
+		line-height: 26px;
+		padding-left: 30px;
+		margin: 3px 0;
+
+		@media (max-width: 640px) {
+			margin-right: 10px;
+		}
+	}
+
+	&__item .m-icon {
+		font-size: 26px;
+		position: absolute;
+		left: 0;
+		color: $iridium;
+	}
+}
