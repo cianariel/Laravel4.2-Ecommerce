@@ -72,3 +72,22 @@
 		font-size: 12px;
 	}
 }
+
+// Merchant widget
+.merchant-widget {
+
+	line-height: 20px;
+
+	&__price {
+		font-weight: bold;
+		display: inline-block;
+		background: #94942d;
+		color: #fff;
+		padding: 0 5px;
+	}
+
+	&__store {
+		height: 20px;
+		display: inline-block;
+	}
+}

@@ -10,13 +10,18 @@
 
 	&:hover {
 		.box-item__overlay,
+		.merchant-widget,
+		.box-item__label--clear,
 		.user-widget__name,
+		.box-item__label--clear,
 		.box-item__read-more {
 			@include opacity(1);
 		}
 	}
 
 	.user-widget__name,
+	.merchant-widget,
+	&__label--clear,
 	&__read-more,
 	&__overlay {
 		@include opacity(0);
@@ -39,7 +44,7 @@
 
 		@media (min-width: 992px) {
 			min-height: 374px;
-			
+
 		}
 	}
 	&__time {
@@ -69,6 +74,15 @@
 		&:hover, &:active, &:focus {
 			color: #fff;
 		}
+
+		&--clear {
+			background: #fff;
+			color: #000;
+
+			&:hover, &:active, &:focus {
+				color: #000;
+			}
+		}
 	}
 	&__read-more {
 		color: #ccc;
@@ -86,6 +100,26 @@
 		}
 	}
 
+	&__get-it {
+		display: block;
+		width: 60px;
+		height: 60px;
+		line-height: 60px;
+		background: $iridium;
+		font-size: 11px;
+		text-align: center;
+		color: #fff;
+		margin: 20px auto 0;
+
+		@include border-radius(60px);
+		@include transition(all .5s ease);
+
+		&:hover, &:active, &:focus {
+			color: #fff;
+			background: $pinterest-red;
+		}
+	}
+
 	&__label-idea {
 		position: absolute;
 		top: 39%;
@@ -95,8 +129,27 @@
 
 		@media (min-width: 992px) {
 			top: 50%;
+		}
+	}
+
+	&__label-prod {
+		position: absolute;
+		top: 39%;
+		left: 0;
+		right: 0;
+		text-align: center;
+
+		.merchant-widget {
+			float: left;
+			margin-left: 10px;
+			color: #fff;
+		}
+
+		@media (min-width: 992px) {
+			top: 40%;
 
 		}
+
 	}
 
 

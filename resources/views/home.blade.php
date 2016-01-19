@@ -64,18 +64,22 @@
 
                 <ul class="social-stats">
                     <li class="social-stats__item">
-                        <i class="m-icon m-icon--heart"></i>
-                        <span class="social-stats__text">52</span>
+                        <a href="#">
+                            <i class="m-icon m-icon--heart"></i>
+                            <span class="social-stats__text">52</span>
+                        </a>
                     </li>
                     <li class="social-stats__item">
-                        <i class="m-icon m-icon--buble"></i>
-                        <span class="social-stats__text">157</span>
+                        <a href="#">
+                            <i class="m-icon m-icon--buble"></i>
+                            <span class="social-stats__text">157</span>
+                        </a>
                     </li>
                 </ul>
 
-                <div class="round-tag round-tag--product">
+                <div class="round-tag round-tag--idea">
                     <i class="m-icon m-icon--item"></i>
-                    <span class="round-tag__label">Product</span>
+                    <span class="round-tag__label">Idea</span>
                 </div>
 
                 <div class="box-item__label-idea">
@@ -85,14 +89,11 @@
                 </div>
 
                 <div class="box-item__author">
-                    <div class="user-widget">
+                    <a href="#" class="user-widget">
                         <img class="user-widget__img" src="/assets/images/dummies/author.png">
                         <span class="user-widget__name">Bob Barbarian</span>
-                    </div>
+                    </a>
                 </div>
-
-                <div class="box-item__merchant"></div>
-
             </div>
             <div class="box-item">
 
@@ -102,36 +103,36 @@
                 <div class="box-item__overlay"></div>
 
                 <ul class="social-stats">
-                    <li class="social-stats__item">
-                        <i class="m-icon m-icon--heart"></i>
-                        <span class="social-stats__text">52</span>
-                    </li>
-                    <li class="social-stats__item">
-                        <i class="m-icon m-icon--buble"></i>
-                        <span class="social-stats__text">157</span>
-                    </li>
-                </ul>
+                                    <li class="social-stats__item">
+                                        <a href="#">
+                                            <i class="m-icon m-icon--heart"></i>
+                                            <span class="social-stats__text">52</span>
+                                        </a>
+                                    </li>
+                                    <li class="social-stats__item">
+                                        <a href="#">
+                                            <i class="m-icon m-icon--buble"></i>
+                                            <span class="social-stats__text">157</span>
+                                        </a>
+                                    </li>
+                                </ul>
 
                 <div class="round-tag round-tag--product">
                     <i class="m-icon m-icon--item"></i>
                     <span class="round-tag__label">Product</span>
                 </div>
 
-                <div class="box-item__label-idea">
-                    <a href="#" class="box-item__label">10 Ideas for Gorgeous Kitchens</a>
+                <div class="box-item__label-prod">
+                    <a href="#" class="box-item__label box-item__label--clear">The Awesome Webcam</a>
                     <div class="clearfix"></div>
-                    <a href="#" class="box-item__read-more">Read More</a>
-                </div>
-
-                <div class="box-item__author">
-                    <div class="user-widget">
-                        <img class="user-widget__img" src="/assets/images/dummies/author.png">
-                        <span class="user-widget__name">Bob Barbarian</span>
+                    <div class="merchant-widget">
+                        <span class="merchant-widget__price">$32.00</span>
+                        <span>from</span>
+                        <img class="merchant-widget__store" src="/assets/images/dummies/amazon-black.png" />
                     </div>
+                    <div class="clearfix"></div>
+                    <a href="#" class="box-item__get-it">Get it</a>
                 </div>
-
-                <div class="box-item__merchant"></div>
-
             </div>
             <div class="box-item">
 
@@ -141,19 +142,23 @@
                 <div class="box-item__overlay"></div>
 
                 <ul class="social-stats">
-                    <li class="social-stats__item">
-                        <i class="m-icon m-icon--heart"></i>
-                        <span class="social-stats__text">52</span>
-                    </li>
-                    <li class="social-stats__item">
-                        <i class="m-icon m-icon--buble"></i>
-                        <span class="social-stats__text">157</span>
-                    </li>
-                </ul>
+                                    <li class="social-stats__item">
+                                        <a href="#">
+                                            <i class="m-icon m-icon--heart"></i>
+                                            <span class="social-stats__text">52</span>
+                                        </a>
+                                    </li>
+                                    <li class="social-stats__item">
+                                        <a href="#">
+                                            <i class="m-icon m-icon--buble"></i>
+                                            <span class="social-stats__text">157</span>
+                                        </a>
+                                    </li>
+                                </ul>
 
-                <div class="round-tag round-tag--product">
+                <div class="round-tag round-tag--idea">
                     <i class="m-icon m-icon--item"></i>
-                    <span class="round-tag__label">Product</span>
+                    <span class="round-tag__label">Idea</span>
                 </div>
 
                 <div class="box-item__label-idea">
@@ -163,14 +168,11 @@
                 </div>
 
                 <div class="box-item__author">
-                    <div class="user-widget">
+                    <a href="#" class="user-widget">
                         <img class="user-widget__img" src="/assets/images/dummies/author.png">
                         <span class="user-widget__name">Bob Barbarian</span>
-                    </div>
+                    </a>
                 </div>
-
-                <div class="box-item__merchant"></div>
-
             </div>
         </div>
 
@@ -183,19 +185,23 @@
                 <div class="box-item__overlay"></div>
 
                 <ul class="social-stats">
-                    <li class="social-stats__item">
-                        <i class="m-icon m-icon--heart"></i>
-                        <span class="social-stats__text">52</span>
-                    </li>
-                    <li class="social-stats__item">
-                        <i class="m-icon m-icon--buble"></i>
-                        <span class="social-stats__text">157</span>
-                    </li>
-                </ul>
+                                    <li class="social-stats__item">
+                                        <a href="#">
+                                            <i class="m-icon m-icon--heart"></i>
+                                            <span class="social-stats__text">52</span>
+                                        </a>
+                                    </li>
+                                    <li class="social-stats__item">
+                                        <a href="#">
+                                            <i class="m-icon m-icon--buble"></i>
+                                            <span class="social-stats__text">157</span>
+                                        </a>
+                                    </li>
+                                </ul>
 
-                <div class="round-tag round-tag--product">
+                <div class="round-tag round-tag--idea">
                     <i class="m-icon m-icon--item"></i>
-                    <span class="round-tag__label">Product</span>
+                    <span class="round-tag__label">Idea</span>
                 </div>
 
                 <div class="box-item__label-idea">
@@ -205,201 +211,157 @@
                 </div>
 
                 <div class="box-item__author">
-                    <div class="user-widget">
+                    <a href="#" class="user-widget">
                         <img class="user-widget__img" src="/assets/images/dummies/author.png">
                         <span class="user-widget__name">Bob Barbarian</span>
-                    </div>
+                    </a>
                 </div>
-
-                <div class="box-item__merchant"></div>
-
             </div>
         </div>
-
-
-        {{--<div class="box-item">--}}
-
-            {{--<img src="/assets/images/dummies/webcam-square.jpg" alt=""/>--}}
-
-            {{--<span class="box-item__time">posted 5 hours ago</span>--}}
-            {{--<div class="box-item__overlay"></div>--}}
-
-            {{--<ul class="social-stats">--}}
-                {{--<li class="social-stats__item">--}}
-                    {{--<i class="m-icon m-icon--heart"></i>--}}
-                    {{--<span class="social-stats__text">52</span>--}}
-                {{--</li>--}}
-                {{--<li class="social-stats__item">--}}
-                    {{--<i class="m-icon m-icon--buble"></i>--}}
-                    {{--<span class="social-stats__text">157</span>--}}
-                {{--</li>--}}
-            {{--</ul>--}}
-
-            {{--<div class="round-tag round-tag--product">--}}
-                {{--<i class="m-icon m-icon--item"></i>--}}
-                {{--<span class="round-tag__label">Product</span>--}}
-            {{--</div>--}}
-
-            {{--<div class="box-item__label-idea">--}}
-                {{--<a href="#" class="box-item__label">10 Ideas for Gorgeous Kitchens</a>--}}
-                {{--<div class="clearfix"></div>--}}
-                {{--<a href="#" class="box-item__read-more">Read More</a>--}}
-            {{--</div>--}}
-
-            {{--<div class="box-item__author">--}}
-                {{--<div class="user-widget">--}}
-                    {{--<img class="user-widget__img" src="/assets/images/dummies/author.png">--}}
-                    {{--<span class="user-widget__name">Bob Barbarian</span>--}}
-                {{--</div>--}}
-            {{--</div>--}}
-
-            {{--<div class="box-item__merchant"></div>--}}
-
-        {{--</div>--}}
 
     </div>
 
 
     {{-- old home --}}
-    <div class="container full-620 main-container fixed-sm">
+    {{--<div class="container full-620 main-container fixed-sm">--}}
 
 
-            <div class="col-xs-6 grid-box full-620">
-                <div class="img-wrap">
-                    <img class="img-responsive" src="/assets/images/dummies/box-image-dummy.png">
+            {{--<div class="col-xs-6 grid-box full-620">--}}
+                {{--<div class="img-wrap">--}}
+                    {{--<img class="img-responsive" src="/assets/images/dummies/box-image-dummy.png">--}}
 
-                    <div class="color-overlay">
-                        <div class="like-wrap">
-                            <a href="#" class="social-pic likes">157</a>
-                        </div>
+                    {{--<div class="color-overlay">--}}
+                        {{--<div class="like-wrap">--}}
+                            {{--<a href="#" class="social-pic likes">157</a>--}}
+                        {{--</div>--}}
 
-                        <h4>Venetian Louge Suite</h4>
+                        {{--<h4>Venetian Louge Suite</h4>--}}
 
-                        <ul class="prices">
-                            <li>
-                                <a href="#"><b>$35.00</b> from  <img class="vendor-logo" src="/assets/images/dummies/amazon-black.png"></a>
-                            </li>
-                            <li>
-                                <a href="#"><b>$39.50.00</b> from  <img class="vendor-logo" src="/assets/images/dummies/amazon-black.png"></a>
-                            </li>
-                            <li>
-                                <a href="#"> <a href="#"><b>$41.00</b> from  <img class="vendor-logo" src="/assets/images/dummies/amazon-black.png"></a>
-                            </li>
-                        </ul>
+                        {{--<ul class="prices">--}}
+                            {{--<li>--}}
+                                {{--<a href="#"><b>$35.00</b> from  <img class="vendor-logo" src="/assets/images/dummies/amazon-black.png"></a>--}}
+                            {{--</li>--}}
+                            {{--<li>--}}
+                                {{--<a href="#"><b>$39.50.00</b> from  <img class="vendor-logo" src="/assets/images/dummies/amazon-black.png"></a>--}}
+                            {{--</li>--}}
+                            {{--<li>--}}
+                                {{--<a href="#"> <a href="#"><b>$41.00</b> from  <img class="vendor-logo" src="/assets/images/dummies/amazon-black.png"></a>--}}
+                            {{--</li>--}}
+                        {{--</ul>--}}
 
-                    </div>
-                </div>
+                    {{--</div>--}}
+                {{--</div>--}}
 
-                <time>1 hour ago</time>
+                {{--<time>1 hour ago</time>--}}
 
-            </div>
+            {{--</div>--}}
 
-            <div class="col-xs-6 grid-box full-620">
-                <div class="img-wrap">
-                    <img class="img-responsive" src="/assets/images/dummies/img-small.jpg">
+            {{--<div class="col-xs-6 grid-box full-620">--}}
+                {{--<div class="img-wrap">--}}
+                    {{--<img class="img-responsive" src="/assets/images/dummies/img-small.jpg">--}}
 
-                    <div class="color-overlay">
-                        <div class="like-wrap">
-                            <a href="#" class="social-pic likes">157</a>
-                        </div>
+                    {{--<div class="color-overlay">--}}
+                        {{--<div class="like-wrap">--}}
+                            {{--<a href="#" class="social-pic likes">157</a>--}}
+                        {{--</div>--}}
 
-                        <h4>Venetian Louge Suite</h4>
+                        {{--<h4>Venetian Louge Suite</h4>--}}
 
-                        <ul class="prices">
-                            <li>
-                                <a href="#"><b>$35.00</b> from  <img class="vendor-logo" src="/assets/images/dummies/amazon-black.png"></a>
-                            </li>
-                            <li>
-                                <a href="#"><b>$39.50.00</b> from  <img class="vendor-logo" src="/assets/images/dummies/amazon-black.png"></a>
-                            </li>
-                            <li>
-                                <a href="#"> <a href="#"><b>$41.00</b> from  <img class="vendor-logo" src="/assets/images/dummies/amazon-black.png"></a>
-                            </li>
-                        </ul>
+                        {{--<ul class="prices">--}}
+                            {{--<li>--}}
+                                {{--<a href="#"><b>$35.00</b> from  <img class="vendor-logo" src="/assets/images/dummies/amazon-black.png"></a>--}}
+                            {{--</li>--}}
+                            {{--<li>--}}
+                                {{--<a href="#"><b>$39.50.00</b> from  <img class="vendor-logo" src="/assets/images/dummies/amazon-black.png"></a>--}}
+                            {{--</li>--}}
+                            {{--<li>--}}
+                                {{--<a href="#"> <a href="#"><b>$41.00</b> from  <img class="vendor-logo" src="/assets/images/dummies/amazon-black.png"></a>--}}
+                            {{--</li>--}}
+                        {{--</ul>--}}
 
-                    </div>
-                </div>
+                    {{--</div>--}}
+                {{--</div>--}}
 
-                <time>5 hours ago</time>
+                {{--<time>5 hours ago</time>--}}
 
-            </div>
+            {{--</div>--}}
 
-                @foreach($stories as $story)
-                    <div class="col-xs-12 grid-box big-box full-620">
-                        <div class="img-wrap">
-                            <a href="{{$story->url}}" class="big-image-link">
+                {{--@foreach($stories as $story)--}}
+                    {{--<div class="col-xs-12 grid-box big-box full-620">--}}
+                        {{--<div class="img-wrap">--}}
+                            {{--<a href="{{$story->url}}" class="big-image-link">--}}
 
-                                @if($story->feed_image)
-                                    <img class="img-responsive" alt="{{$story->feed_image->alt}}" title="{{$story->feed_image->alt}}" src="{{$story->feed_image->url}}">
-                                @else
-                                    <img class="img-responsive" src="{{$story->image}}">
-                                @endif
+                                {{--@if($story->feed_image)--}}
+                                    {{--<img class="img-responsive" alt="{{$story->feed_image->alt}}" title="{{$story->feed_image->alt}}" src="{{$story->feed_image->url}}">--}}
+                                {{--@else--}}
+                                    {{--<img class="img-responsive" src="{{$story->image}}">--}}
+                                {{--@endif--}}
 
-                            </a>
-                            <a href="#" class="overlay-tag category-tag top idea">{{$story->category}}</a>
-                            <a href="{{$story->authorlink}}" class="overlay-tag bottom author" style="background-image: url({{$story->avator}})">{{$story->author}}</a>
-                            <div class="like-wrap">
-                                <a href="#" class="social-pic likes">Like it</a>
-                                <a href="#" class="social-pic comment">Comment</a>
-                            </div>
-                            @if($story->is_featured)
-                                <a href="#" class="overlay-tag bottom featured-badge big">
-                                    Featured
-                                </a>
-                            @endif
-                        </div>
-                        <h3><a href="{{$story->url}}">{{$story->title}}</a></h3>
-                        <time>{{$story->date}}</time>
-                    </div>
-                @endforeach
+                            {{--</a>--}}
+                            {{--<a href="#" class="overlay-tag category-tag top idea">{{$story->category}}</a>--}}
+                            {{--<a href="{{$story->authorlink}}" class="overlay-tag bottom author" style="background-image: url({{$story->avator}})">{{$story->author}}</a>--}}
+                            {{--<div class="like-wrap">--}}
+                                {{--<a href="#" class="social-pic likes">Like it</a>--}}
+                                {{--<a href="#" class="social-pic comment">Comment</a>--}}
+                            {{--</div>--}}
+                            {{--@if($story->is_featured)--}}
+                                {{--<a href="#" class="overlay-tag bottom featured-badge big">--}}
+                                    {{--Featured--}}
+                                {{--</a>--}}
+                            {{--@endif--}}
+                        {{--</div>--}}
+                        {{--<h3><a href="{{$story->url}}">{{$story->title}}</a></h3>--}}
+                        {{--<time>{{$story->date}}</time>--}}
+                    {{--</div>--}}
+                {{--@endforeach--}}
 
-            <div class="col-xs-12 grid-insert pale-grey-bg">
-                <h4><a href="#">550.230 Kitchen Design Photos</a></h4>
-                <p>
-                    Charming, fully furnished Upper Castro apartment features high-end open kitchen, luxurious bath. Charming, fully furnished Upper Castro apartment features high-end open kitchen, luxurious bath. Charming, fully furnished Upper Castro apartment features high-end open kitchen, luxurious bath.
-                </p>
-                <a class="btn btn-success" href="#">Upload a photo</a>
-            </div>
+            {{--<div class="col-xs-12 grid-insert pale-grey-bg">--}}
+                {{--<h4><a href="#">550.230 Kitchen Design Photos</a></h4>--}}
+                {{--<p>--}}
+                    {{--Charming, fully furnished Upper Castro apartment features high-end open kitchen, luxurious bath. Charming, fully furnished Upper Castro apartment features high-end open kitchen, luxurious bath. Charming, fully furnished Upper Castro apartment features high-end open kitchen, luxurious bath.--}}
+                {{--</p>--}}
+                {{--<a class="btn btn-success" href="#">Upload a photo</a>--}}
+            {{--</div>--}}
 
-            <a class="btn btn-success bottom-load-more col-xs-12">Load More</a>
+            {{--<a class="btn btn-success bottom-load-more col-xs-12">Load More</a>--}}
 
-        <aside class="col-xs-3 hidden-620">
-            <section class="sidebar-category products">
-                <h4>Top Products</h4>
+        {{--<aside class="col-xs-3 hidden-620">--}}
+            {{--<section class="sidebar-category products">--}}
+                {{--<h4>Top Products</h4>--}}
 
-                <div class="grid-box sidebar-box">
-                    <a href="#" class="overlay-tag top-left-corner number">1</a>
-                    <div class="img-wrap">
-                        <img class="img-responsive" src="/assets/images/dummies/img-small.jpg">
-                        <a class="sidebar-social-counter like">31</a>
-                    </div>
-                    <h5><a href="#">4 Tier wood utility</a></h5>
-                </div>
-            </section>
-            <section class="sidebar-category ideas">
-                <h4>Top Ideas</h4>
+                {{--<div class="grid-box sidebar-box">--}}
+                    {{--<a href="#" class="overlay-tag top-left-corner number">1</a>--}}
+                    {{--<div class="img-wrap">--}}
+                        {{--<img class="img-responsive" src="/assets/images/dummies/img-small.jpg">--}}
+                        {{--<a class="sidebar-social-counter like">31</a>--}}
+                    {{--</div>--}}
+                    {{--<h5><a href="#">4 Tier wood utility</a></h5>--}}
+                {{--</div>--}}
+            {{--</section>--}}
+            {{--<section class="sidebar-category ideas">--}}
+                {{--<h4>Top Ideas</h4>--}}
 
-                <div class="grid-box sidebar-box">
-                    <a href="#" class="overlay-tag top-left-corner number">1</a>
-                    <div class="img-wrap">
-                        <img class="img-responsive" src="/assets/images/dummies/box-image-dummy.png">
-                        <a class="sidebar-social-counter like">31</a>
-                    </div>
-                    <h5><a href="#">4 Tier wood utility</a></h5>
-                </div>
-            </section>
-            <section class="sidebar-category photos">
-                <h4>Top Photos</h4>
+                {{--<div class="grid-box sidebar-box">--}}
+                    {{--<a href="#" class="overlay-tag top-left-corner number">1</a>--}}
+                    {{--<div class="img-wrap">--}}
+                        {{--<img class="img-responsive" src="/assets/images/dummies/box-image-dummy.png">--}}
+                        {{--<a class="sidebar-social-counter like">31</a>--}}
+                    {{--</div>--}}
+                    {{--<h5><a href="#">4 Tier wood utility</a></h5>--}}
+                {{--</div>--}}
+            {{--</section>--}}
+            {{--<section class="sidebar-category photos">--}}
+                {{--<h4>Top Photos</h4>--}}
 
-                <div class="grid-box sidebar-box">
-                    <a href="#" class="overlay-tag top-left-corner number">1</a>
-                    <div class="img-wrap">
-                        <img class="img-responsive" src="/assets/images/dummies/img-small.jpg">
-                        <a class="sidebar-social-counter like">31</a>
-                    </div>
-                    <h5><a href="#">4 Tier wood utility</a></h5>
-                </div>
-            </section>
+                {{--<div class="grid-box sidebar-box">--}}
+                    {{--<a href="#" class="overlay-tag top-left-corner number">1</a>--}}
+                    {{--<div class="img-wrap">--}}
+                        {{--<img class="img-responsive" src="/assets/images/dummies/img-small.jpg">--}}
+                        {{--<a class="sidebar-social-counter like">31</a>--}}
+                    {{--</div>--}}
+                    {{--<h5><a href="#">4 Tier wood utility</a></h5>--}}
+                {{--</div>--}}
+            {{--</section>--}}
 
             {{--<section id="side-filters" class="side-filters pale-grey-bg pale-grey-border">--}}
             {{--<div>--}}
@@ -422,7 +384,7 @@
             {{--</div>--}}
 
             {{--</section>--}}
-        </aside>
-    </div>
+        {{--</aside>--}}
+    {{--</div>--}}
 
 @stop
