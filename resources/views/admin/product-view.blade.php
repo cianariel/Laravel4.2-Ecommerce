@@ -96,6 +96,20 @@
                                                         <i class="fa fa-refresh"></i>
                                                     </button>
                                                 </div>
+
+                                                <div class="col-lg-5">
+                                                    <label class="col-md-5 control-label">Show Product For:
+                                                    </label>
+                                                    <div class="col-md-6">
+                                                        <select data-ng-model="ShowFor"
+                                                                class="form-control">
+                                                            <option ng-repeat="item in showForList"
+                                                                    value="@{{ item }}">
+                                                                @{{ item }}
+                                                            </option>
+                                                        </select>
+                                                    </div>
+                                                </div>
                                             </div>
                                             <div class="row">
                                                 <div style="margin-top: 5px">&nbsp;</div>

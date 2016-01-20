@@ -20,6 +20,7 @@
         protected $fillable = array(
             'product_vendor_id',
             'product_vendor_type',
+            'show_for',
             'product_name',
             'user_name',
             'product_permalink',
@@ -106,6 +107,7 @@
                     "user_name"               => ($product['ProductAuthorName'] != null) ? $product['ProductAuthorName'] : 'Anonymous User',
                     "product_vendor_id"       => $product['ProductVendorId'],
                     "product_vendor_type"     => $product['ProductVendorType'],
+                    "show_for"                 => ($product['ShowFor'] != null) ? $product['ShowFor'] : '',
                     "product_name"            => $product['Name'],
                     "product_permalink"       => (isset($product['Permalink'])) ? $product['Permalink'] : null,
                     "product_description"     => ($product['Description'] != null) ? $product['Description'] : "",
@@ -153,7 +155,7 @@
                         ->Where('media_type', '=', 'img-upload');
                 })
                 ->first(array(
-                    'products.id', 'products.updated_at', 'products.product_vendor_id', 'products.product_vendor_type',
+                    'products.id','products.show_for', 'products.updated_at', 'products.product_vendor_id', 'products.product_vendor_type',
                     'products.user_name', 'products.product_name', 'product_categories.category_name', 'products.affiliate_link',
                     'products.price', 'products.sale_price', 'medias.media_link', 'products.product_permalink'
                 ));
@@ -199,6 +201,11 @@
             if ($settings['CategoryId'] != null)
             {
                 $productModel = $productModel->where("product_category_id", $settings['CategoryId']);
+            }
+
+            if ($settings['ShowFor'] != null)
+            {
+                $productModel = $productModel->where("show_for", $settings['ShowFor']);
             }
 
             if ($settings['ActiveItem'] == true)
@@ -330,23 +337,21 @@
 
                     $relatedProducts[ $key ] = $this->getViewForPublic('', $value->id);
 
-                    if($relatedProducts[ $key ] == null)
+                    if ($relatedProducts[ $key ] == null)
                         continue;
 
                     $tmp = $relatedProducts[ $key ];
                     $image = '';
 
-                    /*if (isset($tmp->medias))
-                    {*/
-                        foreach ($tmp->medias as $single)
+                    foreach ($tmp->medias as $single)
+                    {
+                        if (($single->media_type == 'img-upload' || $single->media_type == 'img-link') && $single->is_hero_item == null)
                         {
-                            if (($single->media_type == 'img-upload' || $single->media_type == 'img-link') && $single->is_hero_item == null)
-                            {
-                                $image = $single->media_link;
-                                break;
-                            }
+                            $image = $single->media_link;
+                            break;
                         }
-                   /* }*/
+                    }
+
                     $relatedProductsData[ $key ]['Name'] = $relatedProducts[ $key ]->product_name;
                     $relatedProductsData[ $key ]['Permalink'] = $relatedProducts[ $key ]->product_permalink;
                     $relatedProductsData[ $key ]['AffiliateLink'] = $relatedProducts[ $key ]->affiliate_link;

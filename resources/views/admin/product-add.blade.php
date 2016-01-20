@@ -142,6 +142,21 @@
                                                         </button>
                                                     </div>
                                                 </div>
+
+                                                <div class="form-group">
+                                                    <label class="col-md-2 control-label">Show Product For:
+                                                    </label>
+                                                    <div class="col-md-5">
+                                                        <select data-ng-model="ShowFor"
+                                                                class="form-control">
+                                                            <option ng-repeat="item in showForList"
+                                                                    value="@{{ item }}">
+                                                                @{{ item }}
+                                                            </option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+
                                                 <div class="form-group">
                                                     <label class="col-md-2 control-label">Product Name:
                                                     </label>
