@@ -219,6 +219,35 @@
             </div>
         </div>
 
+        {{--@foreach($stories as $story)--}}
+        {{--<div class="col-xs-12 grid-box big-box full-620">--}}
+        {{--<div class="img-wrap">--}}
+        {{--<a href="{{$story->url}}" class="big-image-link">--}}
+
+        {{--@if($story->feed_image)--}}
+        {{--<img class="img-responsive" alt="{{$story->feed_image->alt}}" title="{{$story->feed_image->alt}}" src="{{$story->feed_image->url}}">--}}
+        {{--@else--}}
+        {{--<img class="img-responsive" src="{{$story->image}}">--}}
+        {{--@endif--}}
+
+        {{--</a>--}}
+        {{--<a href="#" class="overlay-tag category-tag top idea">{{$story->category}}</a>--}}
+        {{--<a href="{{$story->authorlink}}" class="overlay-tag bottom author" style="background-image: url({{$story->avator}})">{{$story->author}}</a>--}}
+        {{--<div class="like-wrap">--}}
+        {{--<a href="#" class="social-pic likes">Like it</a>--}}
+        {{--<a href="#" class="social-pic comment">Comment</a>--}}
+        {{--</div>--}}
+        {{--@if($story->is_featured)--}}
+        {{--<a href="#" class="overlay-tag bottom featured-badge big">--}}
+        {{--Featured--}}
+        {{--</a>--}}
+        {{--@endif--}}
+        {{--</div>--}}
+        {{--<h3><a href="{{$story->url}}">{{$story->title}}</a></h3>--}}
+        {{--<time>{{$story->date}}</time>--}}
+        {{--</div>--}}
+        {{--@endforeach--}}
+
     </div>
 
 

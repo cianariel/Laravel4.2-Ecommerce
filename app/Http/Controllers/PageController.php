@@ -37,7 +37,21 @@ class PageController extends Controller
 
 //        print_r($stories); die();
         // return $data;
-        return view('home')->with('stories', $stories);// $data->parseFeed(true,2);
+
+//        $products = Product::where('post_sta')
+
+        $productSettings = [
+            'ActiveItem' => true,
+            'limit' => 4
+        ];
+
+        $products = Product::getProductList($productSettings);
+
+        $data = array_merge($stories, $products);
+        $data = shuffle($data);
+
+
+        return view('home')->with('stories', $data);// $data->parseFeed(true,2);
     }
 
     public function productDetailsPage($permalink)
