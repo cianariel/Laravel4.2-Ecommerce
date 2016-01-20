@@ -245,13 +245,16 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
             $scope.tempCategoryList = [];
 
             //category tree view
-            $scope.assets = [
-                /*{ id: 1, category: "parent 1", hasChildren: true,sdfsdf: "sdfsdfds"},
-                 { id: 2, category: "parent 2", hasChildren: false,sdfsdf: "sdfsdfds"}*/
-            ];
+            $scope.assets = [];
             $scope.selected = {};
             $scope.hierarchy = "";
             $scope.tmp = [];
+
+            // show for page
+            $scope.showForList = [
+                "Homepage", "Shop Landing", "Shop Category", "Room Landing"
+            ];
+            $scope.ShowFor = '';
 
             $scope.alerts = [];
             $scope.selectedItem = '';
@@ -337,7 +340,7 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
             $scope.filterName = '';
 
             //product compare
-            $scope.comparableProductList =[];
+            $scope.comparableProductList = [];
         };
 
         //////// category tree view ////
@@ -346,7 +349,7 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
 
             $scope.catId = nodeId;
 
-            return $http.get('/api/category/show-category-items/' + $scope.catId).then(function(data) {
+            return $http.get('/api/category/show-category-items/' + $scope.catId).then(function (data) {
 
                 return data['data'].data;
             });
@@ -354,7 +357,7 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
         $scope.$on("nodeSelected", function (event, node) {
             $scope.selected = node;
             $scope.selectedItem = $scope.selected.id;
-            console.log($scope.selectedItem );
+            console.log($scope.selectedItem);
             $scope.$broadcast("selectNode", node);
         });
 
@@ -637,6 +640,7 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
                     ProductId: $scope.ProductId,
                     ProductVendorId: $scope.ProductVendorId,
                     ProductVendorType: $scope.ProductVendorType,
+                    ShowFor: $scope.ShowFor,
                     ProductAuthorName: $scope.ProductAuthorName,
                     CategoryId: $scope.selectedItem,
                     Name: $scope.Name,
@@ -700,6 +704,7 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
                     CategoryId: $scope.selectedItem,
                     ProductVendorId: $scope.ProductVendorId,
                     ProductVendorType: $scope.ProductVendorType,
+                    ShowFor: $scope.ShowFor,
                     Name: $scope.Name,
                     Permalink: $scope.Permalink,
                     Description: $scope.htmlContent,
@@ -844,6 +849,8 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
                     ActiveItem: $scope.ActiveItem,
                     FilterType: $scope.selectedFilter,
                     FilterText: $scope.filterName,
+                    ShowFor: $scope.ShowFor,
+
                     // Pagination info
                     limit: $scope.limit,
                     page: $scope.page,
@@ -937,6 +944,7 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
                     $scope.selectedItem = data.data.product_category_id;
                     $scope.ProductVendorId = data.data.product_vendor_id;
                     $scope.ProductVendorType = data.data.product_vendor_type;
+                    $scope.ShowFor = data.data.show_for ;
                     $scope.Name = data.data.product_name;
                     $scope.Permalink = data.data.product_permalink;
                     $scope.htmlContent = data.data.product_description;

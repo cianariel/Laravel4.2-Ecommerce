@@ -27,7 +27,7 @@
                     'publishProduct', 'searchProductByName', 'updateProductInfo', 'productDetailsView',
                     'getAllProductList', 'getProductById', 'isPermalinkExist', 'addProduct',
                     'addMediaForProduct', 'addMediaInfo', 'getMediaForProduct', 'deleteSingleMediaItem',
-                    'getProductInfoFromApi', 'priceUpdate', 'deleteProduct','productDetailsViewByName'
+                    'getProductInfoFromApi', 'priceUpdate', 'deleteProduct', 'productDetailsViewByName'
                 ]]);
             $this->product = new Product();
 
@@ -176,6 +176,9 @@
                 $settings['CategoryId'] = (\Input::get('CategoryId') == null) ? null : \Input::get('CategoryId');
                 $settings['FilterType'] = (\Input::get('FilterType') == null) ? null : \Input::get('FilterType');
                 $settings['FilterText'] = (\Input::get('FilterText') == null) ? null : \Input::get('FilterText');
+
+                $settings['ShowFor'] = (\Input::get('ShowFor') == null) ? null : \Input::get('ShowFor');
+
 
                 $settings['limit'] = \Input::get('limit');
                 $settings['page'] = \Input::get('page');
@@ -489,8 +492,6 @@
                 }
             }
         }
-
-
 
 
     }

@@ -460,8 +460,9 @@
                     <div class="related-products col-xs-12">
                         <h3 class="green">Related Products</h3>
 
-                        <div class="col-sm-4 col-xs-12 grid-box">
-                            @if(isset($relatedProducts))
+                            @if(isset($relatedProducts) && ($relatedProducts != null) )
+                            <div class="col-sm-4 col-xs-12 grid-box">
+
                                 @foreach( $relatedProducts as $product )
                                     <div class="wrap">
                                         <img class="img-responsive" src="{{ $product['Image'] }}">
@@ -478,9 +479,9 @@
                                     </div>
                                     <time>{{ $product['UpdateTime'] }}</time>
                                 @endforeach
-                            @endif
+                            </div>
+                        @endif
 
-                        </div>
 
 
                     </div>
