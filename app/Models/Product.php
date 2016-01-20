@@ -245,6 +245,9 @@
                 $strReplace = \Config::get("const.file.s3-path");
                 $path = str_replace($strReplace, '', $tmp->media_link);
                 $path = $strReplace . 'thumb-' . $path;
+
+                $tmp->media_link_full_path = $tmp->media_link;
+
                 $tmp->media_link = $path;
                 $tmp->updated_at = Carbon::createFromTimestamp(strtotime($tmp->updated_at))->diffForHumans();
 

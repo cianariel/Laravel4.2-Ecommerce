@@ -103,6 +103,7 @@
                                                     <div class="col-md-6">
                                                         <select data-ng-model="ShowFor"
                                                                 class="form-control">
+                                                            <option value="">-- Select Type --</option>
                                                             <option ng-repeat="item in showForList"
                                                                     value="@{{ item }}">
                                                                 @{{ item }}
