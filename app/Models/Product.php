@@ -329,17 +329,24 @@
                         continue;
 
                     $relatedProducts[ $key ] = $this->getViewForPublic('', $value->id);
+
+                    if($relatedProducts[ $key ] == null)
+                        continue;
+
                     $tmp = $relatedProducts[ $key ];
                     $image = '';
 
-                    foreach ($tmp->medias as $single)
-                    {
-                        if (($single->media_type == 'img-upload' || $single->media_type == 'img-link') && $single->is_hero_item == null)
+                    /*if (isset($tmp->medias))
+                    {*/
+                        foreach ($tmp->medias as $single)
                         {
-                            $image = $single->media_link;
-                            break;
+                            if (($single->media_type == 'img-upload' || $single->media_type == 'img-link') && $single->is_hero_item == null)
+                            {
+                                $image = $single->media_link;
+                                break;
+                            }
                         }
-                    }
+                   /* }*/
                     $relatedProductsData[ $key ]['Name'] = $relatedProducts[ $key ]->product_name;
                     $relatedProductsData[ $key ]['Permalink'] = $relatedProducts[ $key ]->product_permalink;
                     $relatedProductsData[ $key ]['AffiliateLink'] = $relatedProducts[ $key ]->affiliate_link;
