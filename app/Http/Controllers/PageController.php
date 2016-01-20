@@ -46,6 +46,7 @@ class PageController extends Controller
             'CategoryId' => false,
             'FilterType' => false,
             'FilterText' => false,
+            'ShowFor' => false,
         ];
 
         $prod = new Product();

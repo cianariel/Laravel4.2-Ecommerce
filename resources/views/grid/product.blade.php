@@ -1,6 +1,6 @@
 <div class="box-item">
 
-    <img src="{{$item->media_link}}" alt="{{$item->product_name}}"/>
+    <img src="{{$item->media_link_full_path}}" alt="{{$item->product_name}}"/>
 
     <span class="box-item__time">{{$item->updated_at}}</span>
     <div class="box-item__overlay"></div>
