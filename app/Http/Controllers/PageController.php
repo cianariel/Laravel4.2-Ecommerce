@@ -42,16 +42,20 @@ class PageController extends Controller
 
         $productSettings = [
             'ActiveItem' => true,
-            'limit' => 4
+            'limit'      => 4,
+            'page'       => 1,
+            'CategoryId' => false,
+            'FilterType' => false,
+            'FilterText' => false,
         ];
 
-        $products = Product::getProductList($productSettings);
+        $prod = new Product();
+        $products = $prod->getProductList($productSettings);
 
-        $data = array_merge($stories, $products);
-        $data = shuffle($data);
+        $content = array_merge($stories, $products['result']);
+        shuffle($content);
 
-
-        return view('home')->with('stories', $data);// $data->parseFeed(true,2);
+        return view('home')->with('content', $content);// $data->parseFeed(true,2);
     }
 
     public function productDetailsPage($permalink)
