@@ -20,8 +20,7 @@ class PageController extends Controller
     public function home()
     {
         //URL of targeted site
-        $url = "http://staging.ideaing.com/ideas/feeds/index.php?count=8";
-     //   $url = "http://staging.ideaing.com/ideas/feeds/index.php?count=8";
+        $url = "http://staging.ideaing.com/ideas/feeds/index.php?count=7";
 
         $ch = curl_init();
 
@@ -42,7 +41,7 @@ class PageController extends Controller
 
         $productSettings = [
             'ActiveItem' => true,
-            'limit'      => 4,
+            'limit'      => 5,
             'page'       => 1,
             'CategoryId' => false,
             'FilterType' => false,
@@ -50,12 +49,18 @@ class PageController extends Controller
         ];
 
         $prod = new Product();
-        $products = $prod->getProductList($productSettings);
 
+
+
+        $products = $prod->getProductList($productSettings);
         $content = array_merge($stories, $products['result']);
         shuffle($content);
 
-        return view('home')->with('content', $content);// $data->parseFeed(true,2);
+        $return['row-1'] = array_slice($content, 0, 3);
+        $return['row-3'] = array_slice($content, 3, 3);
+        $return['row-5'] = array_slice($content, 6, 3);
+
+        return view('home')->with('content', $return);
     }
 
     public function productDetailsPage($permalink)

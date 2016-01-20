@@ -53,150 +53,35 @@
     <div class="clearfix"></div>
 
     <div class="homepage-grid container">
-
-        @foreach($content as $i => $item)
-            @if(@$item->is_featured)
-                <div class="grid-box-full">
-            @elseif($i == 0 || ($i % 3) == 0)
-                <div class="grid-box-3">
-            @endif
-
+        <div class="grid-box-3">
+            @foreach($content['row-1'] as $item)
                 @if(!isset($item->type) || $item->type != 'product')
-
-                        <div class="box-item">
-
-                        @if($item->feed_image)
-                             <img alt="{{$item->feed_image->alt}}" title="{{$item->feed_image->alt}}" src="{{$item->feed_image->url}}">
-                        @else
-                             <img src="{{$item->image}}">
-                        @endif
-
-                        <span class="box-item__time">{{$item->date}}</span>
-                        <div class="box-item__overlay"></div>
-
-                        <ul class="social-stats">
-                            <li class="social-stats__item">
-                                <a href="#">
-                                    <i class="m-icon m-icon--heart"></i>
-                                    <span class="social-stats__text">52</span>
-                                </a>
-                            </li>
-                            <li class="social-stats__item">
-                                <a href="#">
-                                    <i class="m-icon m-icon--buble"></i>
-                                    <span class="social-stats__text">157</span>
-                                </a>
-                            </li>
-                        </ul>
-
-                        <div class="round-tag round-tag--idea">
-                            <i class="m-icon m-icon--item"></i>
-                            <span class="round-tag__label">Idea</span>
-                        </div>
-
-                        <div class="box-item__label-idea">
-                            <a href="{{$item->url}}" class="box-item__label">{{$item->title}}</a>
-                            <div class="clearfix"></div>
-                            <a href="{{$item->url}}" class="box-item__read-more">Read More</a>
-                        </div>
-
-                        <div class="box-item__author">
-                            <a href="{{$item->authorlink}}" class="user-widget">
-                                <img class="user-widget__img" src="{{$item->avator}}">
-                                <span class="user-widget__name">{{$item->author}}</span>
-                            </a>
-                        </div>
-                    </div>
+                    @include('grid.idea')
                 @else
-                    <div class="box-item">
-
-                        <img src="{{$item->media_link}}" alt="{{$item->product_name}}"/>
-
-                        <span class="box-item__time">{{$item->updated_at}}</span>
-                        <div class="box-item__overlay"></div>
-
-                        <ul class="social-stats">
-                            <li class="social-stats__item">
-                                <a href="#">
-                                    <i class="m-icon m-icon--heart"></i>
-                                    <span class="social-stats__text">52</span>
-                                </a>
-                            </li>
-                            <li class="social-stats__item">
-                                <a href="#">
-                                    <i class="m-icon m-icon--buble"></i>
-                                    <span class="social-stats__text">157</span>
-                                </a>
-                            </li>
-                        </ul>
-
-                        <div class="round-tag round-tag--product">
-                            <i class="m-icon m-icon--item"></i>
-                            <span class="round-tag__label">Product</span>
-                        </div>
-
-                        <div class="box-item__label-prod">
-                            <a href="#" class="box-item__label box-item__label--clear">{{$item->product_name}}</a>
-                            <div class="clearfix"></div>
-                            <div class="merchant-widget">
-                                <span class="merchant-widget__price">${{$item->price}}</span>
-                                <span>from</span>
-                                <img class="merchant-widget__store" src="/assets/images/dummies/amazon-black.png" />
-                            </div>
-                            <div class="clearfix"></div>
-                            <a href="#" class="box-item__get-it">Get it</a>
-                        </div>
-                    </div>
+                    @include('grid.product')
                 @endif
-
-              @if(@$item->is_featured || ($i % 2) == 0)
-                </div> {{--grid-box-full--}}
-              @endif
-        @endforeach
-
-                <div class="box-item">
-
-                    <img src="/assets/images/dummies/webcam-square.jpg" alt=""/>
-
-                    <span class="box-item__time">posted 5 hours ago</span>
-                    <div class="box-item__overlay"></div>
-
-                    <ul class="social-stats">
-                                        <li class="social-stats__item">
-                                            <a href="#">
-                                                <i class="m-icon m-icon--heart"></i>
-                                                <span class="social-stats__text">52</span>
-                                            </a>
-                                        </li>
-                                        <li class="social-stats__item">
-                                            <a href="#">
-                                                <i class="m-icon m-icon--buble"></i>
-                                                <span class="social-stats__text">157</span>
-                                            </a>
-                                        </li>
-                                    </ul>
-
-                    <div class="round-tag round-tag--idea">
-                        <i class="m-icon m-icon--item"></i>
-                        <span class="round-tag__label">Idea</span>
-                    </div>
-
-                    <div class="box-item__label-idea">
-                        <a href="#" class="box-item__label">10 Ideas for Gorgeous Kitchens</a>
-                        <div class="clearfix"></div>
-                        <a href="#" class="box-item__read-more">Read More</a>
-                    </div>
-
-                    <div class="box-item__author">
-                        <a href="#" class="user-widget">
-                            <img class="user-widget__img" src="/assets/images/dummies/author.png">
-                            <span class="user-widget__name">Bob Barbarian</span>
-                        </a>
-                    </div>
-                </div>
+            @endforeach
         </div>
 
+        <div class="grid-box-3">
+            @foreach($content['row-3'] as $item)
+                @if(!isset($item->type) || $item->type != 'product')
+                    @include('grid.idea')
+                @else
+                    @include('grid.product')
+                @endif
+            @endforeach
+        </div>
 
+        <div class="grid-box-3">
+            @foreach($content['row-5'] as $item)
+                @if(!isset($item->type) || $item->type != 'product')
+                    @include('grid.idea')
+                @else
+                    @include('grid.product')
+                @endif
+            @endforeach
+        </div>
     </div>
 
 
