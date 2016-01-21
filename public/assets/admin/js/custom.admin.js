@@ -834,7 +834,9 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
                 $scope.totalCount += $scope.reviews[i].value;
             }
 
-            $scope.reviews[0].value = $scope.totalCount / ($scope.reviews.length - 1);
+//            $scope.reviews[0].value = $scope.totalCount / ($scope.reviews.length - 1);
+            $scope.reviews[0].value = ($scope.totalCount / ($scope.reviews.length - 1)).toFixed(2);
+            console.log($scope.reviews[0].value);
 
         }
 
