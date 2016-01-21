@@ -234,16 +234,16 @@ var TableDatatablesManaged = function () {
             }
 
             initTable1();
-            initTable2();
-            initTable3();
+            //initTable2();
+            //initTable3();
         }
 
     };
 
 }();
 
-if (App.isAngularJsApp() === false) { 
+//if (App.isAngularJsApp() === false) { 
     jQuery(document).ready(function() {
         TableDatatablesManaged.init();
     });
-}
+//}

@@ -96,7 +96,7 @@
                 </a>
                 <ul class="sub-menu">
                     <li class="nav-item  ">
-                        <a href="/admin/product-view" class="nav-link ">
+                        <a href="/admin/room-view" class="nav-link ">
                             <span class="title">Rooms List</span>
                         </a>
                     </li>

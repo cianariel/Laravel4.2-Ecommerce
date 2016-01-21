@@ -91,7 +91,7 @@
         Route::post('product/add-product', 'ProductController@addProduct');
         Route::post('product/update-product', 'ProductController@updateProductInfo');
         Route::post('product/publish-product', 'ProductController@publishProduct');
-
+        Route::post('product/get-products', 'ProductController@getProducts');
         // Delete product
         Route::post('product/delete-product', 'ProductController@deleteProduct');
 
@@ -135,6 +135,10 @@
         Route::get('product-view', 'AdminController@productView');
         Route::get('product-add', 'AdminController@addProduct');
         Route::get('product-edit/{id?}', 'AdminController@editProduct');
+
+        Route::get('room-view', 'AdminController@roomsView');
+        Route::get('room-add', 'AdminController@addRoom');
+        Route::get('room-edit/{id?}', 'AdminController@editRoom');
 
     });
 

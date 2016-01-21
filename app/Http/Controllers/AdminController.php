@@ -69,4 +69,22 @@
 
             return view('admin.product-add')->with('id',$id);
         }
+
+        // Product view
+        public function roomsView()
+        {
+            return view('admin.rooms.room-view');
+        }
+
+        public function addRoom()
+        {
+            return view('admin.rooms.room-add');
+        }
+
+        public function editRoom($id)
+        {
+          //  $product = $this->product->where('id', $id)->first();
+
+            return view('admin.rooms.room-add')->with('id',$id);
+        }
     }
