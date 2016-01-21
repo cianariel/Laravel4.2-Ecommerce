@@ -1,8 +1,8 @@
 // Social Stats
 .social-stats {
 	background: #fff;
-	padding: 8px 5px 8px 10px;
-	width: 86px;
+	padding: 5px 5px 5px 10px;
+	width: 72px;
 
 	&__item {
 		display: inline-block;
@@ -11,6 +11,10 @@
 		line-height: 26px;
 		padding-left: 30px;
 		margin: 3px 0;
+
+		&:hover .m-icon--heart:before {
+			content: "\e906";
+		}
 	}
 
 	&__item .m-icon {
@@ -19,6 +23,8 @@
 		left: 0;
 		color: $iridium;
 	}
+
+
 }
 
 // Round tag

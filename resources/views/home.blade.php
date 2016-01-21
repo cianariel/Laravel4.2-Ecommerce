@@ -73,6 +73,49 @@
             @endforeach
         </div>
 
+        <div class="grid-box-full">
+            <div class="box-item box-item--featured">
+
+                <div class="box-item__img" style="background-image: url('/assets/images/dummies/clock.png')"></div>
+
+                <span class="box-item__time">posted 5 hours ago</span>
+                <div class="box-item__overlay"></div>
+
+                <ul class="social-stats">
+                    <li class="social-stats__item">
+                        <a href="#">
+                            <i class="m-icon m-icon--heart"></i>
+                            <span class="social-stats__text">52</span>
+                        </a>
+                    </li>
+                    <li class="social-stats__item">
+                        <a href="#">
+                            <i class="m-icon m-icon--buble"></i>
+                            <span class="social-stats__text">157</span>
+                        </a>
+                    </li>
+                </ul>
+
+                <div class="round-tag round-tag--idea">
+                    <i class="m-icon m-icon--item"></i>
+                    <span class="round-tag__label">Idea</span>
+                </div>
+
+                <div class="box-item__label-idea">
+                    <a href="#" class="box-item__label">10 Ideas for Gorgeous Kitchens</a>
+                    <div class="clearfix"></div>
+                    <a href="#" class="box-item__read-more">Read More</a>
+                </div>
+
+                <div class="box-item__author">
+                    <a href="#" class="user-widget">
+                        <img class="user-widget__img" src="/assets/images/dummies/author.png">
+                        <span class="user-widget__name">Bob Barbarian</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
         <div class="grid-box-3">
             @foreach($content['row-5'] as $item)
                 @if(!isset($item->type) || $item->type != 'product')
