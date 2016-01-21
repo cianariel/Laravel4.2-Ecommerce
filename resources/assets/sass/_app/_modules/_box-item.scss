@@ -7,6 +7,12 @@
 	width: 300px;
 	height: 300px;
 
+  > img{
+    width: 100%;
+    max-width: none;
+    min-height: 380px;
+  }
+
 
 	&:hover {
 		.box-item__overlay,

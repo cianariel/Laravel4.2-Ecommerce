@@ -57,7 +57,7 @@ if (screen.width < 992 && screen.width > 620) {
 
 <script src="/assets/js/vendor/angular.min.js"></script>
 
-{{--
+<!--
 
 <script src="/assets/js/vendor/textAngular-sanitize.min.js"></script>
 
@@ -68,6 +68,6 @@ if (screen.width < 992 && screen.width > 620) {
 <script src="/assets/js/vendor/textAngular.min.js"></script>
 
 <script src="/assets/js/vendor/ng-tags-input.min.js"></script>
---}}
+-->
 
 

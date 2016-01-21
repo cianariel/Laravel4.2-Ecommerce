@@ -12,12 +12,12 @@
                 <span class="social-stats__text">52</span>
             </a>
         </li>
-        <li class="social-stats__item">
-            <a href="#">
-                <i class="m-icon m-icon--buble"></i>
-                <span class="social-stats__text">157</span>
-            </a>
-        </li>
+        {{--<li class="social-stats__item">--}}
+            {{--<a href="#">--}}
+                {{--<i class="m-icon m-icon--buble"></i>--}}
+                {{--<span class="social-stats__text">157</span>--}}
+            {{--</a>--}}
+        {{--</li>--}}
     </ul>
 
     <div class="round-tag round-tag--product">
@@ -26,7 +26,7 @@
     </div>
 
     <div class="box-item__label-prod">
-        <a href="#" class="box-item__label box-item__label--clear">{{$item->product_name}}</a>
+        <a href="/pro-details/{{$item->product_permalink}}" class="box-item__label box-item__label--clear">{{$item->product_name}}</a>
         <div class="clearfix"></div>
         <div class="merchant-widget">
             <span class="merchant-widget__price">${{$item->price}}</span>
@@ -34,7 +34,7 @@
             <img class="merchant-widget__store" src="/assets/images/dummies/amazon-black.png" />
         </div>
         <div class="clearfix"></div>
-        <a href="#" class="box-item__get-it">Get it</a>
+        <a href="{{$item->affiliate_link}}" class="box-item__get-it">Get it</a>
     </div>
 </div>
 

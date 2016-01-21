@@ -58,10 +58,10 @@ function CarbobFormatTime($timestamp)
 		{
 			$text = "Yesterday at ". date("g:i a", $timestamp);
 		}
-		else if($j == 3) // Less than a week display -- Monday at 5:28pm
-		{
-			$text = date("l \a\\t g:i a", $timestamp);
-		}
+//		else if($j == 3) // Less than a week display -- Monday at 5:28pm
+//		{
+//			$text = date("l \a\\t g:i a", $timestamp);
+//		}
 		else if($j < 6 && !($j == 5 && $difference == 12)) // Less than a year display -- June 25 at 5:23am
 		{
 			$text = date("F j \a\\t g:i a", $timestamp);
@@ -128,6 +128,7 @@ $datepublishstring = get_the_time('Y-m-d H:i:s');
 $timestamp = strtotime($datepublishstring);
 $datepublish = CarbobFormatTime($timestamp);
 $data['date'] = $datepublish;
+$data['updated_at'] = $datepublish;
 if( has_post_thumbnail( $ID ) ) {
         $image = get_the_post_thumbnail_url( $ID, 'large', false );
     }
