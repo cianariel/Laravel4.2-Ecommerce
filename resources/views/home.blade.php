@@ -103,19 +103,13 @@
                 <div class="box-item__overlay"></div>
 
                 <ul class="social-stats">
-                                    <li class="social-stats__item">
-                                        <a href="#">
-                                            <i class="m-icon m-icon--heart"></i>
-                                            <span class="social-stats__text">52</span>
-                                        </a>
-                                    </li>
-                                    <li class="social-stats__item">
-                                        <a href="#">
-                                            <i class="m-icon m-icon--buble"></i>
-                                            <span class="social-stats__text">157</span>
-                                        </a>
-                                    </li>
-                                </ul>
+                    <li class="social-stats__item">
+                        <a href="#">
+                            <i class="m-icon m-icon--heart"></i>
+                            <span class="social-stats__text">52</span>
+                        </a>
+                    </li>
+                </ul>
 
                 <div class="round-tag round-tag--product">
                     <i class="m-icon m-icon--item"></i>
@@ -142,19 +136,19 @@
                 <div class="box-item__overlay"></div>
 
                 <ul class="social-stats">
-                                    <li class="social-stats__item">
-                                        <a href="#">
-                                            <i class="m-icon m-icon--heart"></i>
-                                            <span class="social-stats__text">52</span>
-                                        </a>
-                                    </li>
-                                    <li class="social-stats__item">
-                                        <a href="#">
-                                            <i class="m-icon m-icon--buble"></i>
-                                            <span class="social-stats__text">157</span>
-                                        </a>
-                                    </li>
-                                </ul>
+                    <li class="social-stats__item">
+                        <a href="#">
+                            <i class="m-icon m-icon--heart"></i>
+                            <span class="social-stats__text">52</span>
+                        </a>
+                    </li>
+                    <li class="social-stats__item">
+                        <a href="#">
+                            <i class="m-icon m-icon--buble"></i>
+                            <span class="social-stats__text">157</span>
+                        </a>
+                    </li>
+                </ul>
 
                 <div class="round-tag round-tag--idea">
                     <i class="m-icon m-icon--item"></i>
@@ -177,7 +171,7 @@
         </div>
 
         <div class="grid-box-full">
-            <div class="box-item">
+            <div class="box-item box-item--featured">
 
                 <div class="box-item__img" style="background-image: url('/assets/images/dummies/clock.png')"></div>
 
@@ -185,19 +179,19 @@
                 <div class="box-item__overlay"></div>
 
                 <ul class="social-stats">
-                                    <li class="social-stats__item">
-                                        <a href="#">
-                                            <i class="m-icon m-icon--heart"></i>
-                                            <span class="social-stats__text">52</span>
-                                        </a>
-                                    </li>
-                                    <li class="social-stats__item">
-                                        <a href="#">
-                                            <i class="m-icon m-icon--buble"></i>
-                                            <span class="social-stats__text">157</span>
-                                        </a>
-                                    </li>
-                                </ul>
+                    <li class="social-stats__item">
+                        <a href="#">
+                            <i class="m-icon m-icon--heart"></i>
+                            <span class="social-stats__text">52</span>
+                        </a>
+                    </li>
+                    <li class="social-stats__item">
+                        <a href="#">
+                            <i class="m-icon m-icon--buble"></i>
+                            <span class="social-stats__text">157</span>
+                        </a>
+                    </li>
+                </ul>
 
                 <div class="round-tag round-tag--idea">
                     <i class="m-icon m-icon--item"></i>
