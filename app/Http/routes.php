@@ -115,6 +115,8 @@
         Route::post('tag/delete-tag-info', 'TagsController@deleteTagInfo');
         Route::get('tag/show-tags', 'TagsController@showAllTags');
         Route::get('tag/show-tag/{productId}', 'TagsController@showTagByProductId');
+        Route::get('tag/show-products/{tagId}', 'TagsController@getProductsByTag');
+
 
 
         Route::post('tag/add-tags', 'TagsController@addTags');

@@ -51,9 +51,26 @@
         public function showTagsForProduct($productId)
         {
             $product = new Product();
-            $value = $product->find($productId)->tags;
-            return $value;
+            $tagCollection = $product->find($productId)->tags;
 
+            $data = [];
+            foreach($tagCollection as $tag)
+            {
+                $tmp = array(
+                    'id' => $tag->id,
+                    'name' => $tag->tag_name
+                );
+
+                array_push($data,$tmp);
+
+            }
+            return $data;
+
+        }
+
+        public function getProductsByTag($tagId)
+        {
+           return Tag::find($tagId)->products;
         }
 
         public function updateTagInfo($tag)
@@ -92,7 +109,4 @@
 
             return true;
         }
-
-
-
     }

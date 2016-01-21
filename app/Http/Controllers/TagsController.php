@@ -19,7 +19,9 @@ class TagsController extends ApiController
         // Apply the jwt.auth middleware to all methods in this controller
         $this->middleware('jwt.auth',
             ['except' => [
-                'addTagInfo','updateTagInfo','deleteTagInfo','addTags','showAllTags','showTagByProductId'
+                'addTagInfo','updateTagInfo','deleteTagInfo','addTags','showAllTags','showTagByProductId',
+                'getProductsByTag'
+
             ]]);
 
         $this->tag = new Tag();
@@ -89,6 +91,23 @@ class TagsController extends ApiController
         try
         {
             $tagInfo = $this->tag->all();
+
+            return $this->setStatusCode(\Config::get("const.api-status.success"))
+                ->makeResponse($tagInfo);
+
+        } catch (Exception $ex)
+        {
+            return $this->setStatusCode(\Config::get("const.api-status.system-fail"))
+                ->makeResponseWithError("System Failure !", $ex);
+        }
+
+    }
+
+    public function getProductsByTag($tagId)
+    {
+        try
+        {
+            $tagInfo = $this->tag->getProductsByTag($tagId);
 
             return $this->setStatusCode(\Config::get("const.api-status.success"))
                 ->makeResponse($tagInfo);
