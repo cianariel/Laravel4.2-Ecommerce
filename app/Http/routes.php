@@ -106,6 +106,22 @@
         Route::get('api-data/{itemId?}','ProductController@getProductInfoFromApi');
 
         /*
+         *  TAG module for product
+         *
+         * */
+
+        Route::post('tag/add-tag-info', 'TagsController@addTagInfo');
+        Route::post('tag/update-tag-info', 'TagsController@updateTagInfo');
+        Route::post('tag/delete-tag-info', 'TagsController@deleteTagInfo');
+        Route::get('tag/show-tags', 'TagsController@showAllTags');
+        Route::get('tag/show-tag/{productId}', 'TagsController@showTagByProductId');
+
+
+        Route::post('tag/add-tags', 'TagsController@addTags');
+
+
+
+        /*
          * Media upload route
          *
          * */

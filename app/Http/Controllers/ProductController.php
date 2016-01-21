@@ -185,7 +185,6 @@
 
                 $productList = $this->product->getProductList($settings);
 
-                // dd($productList);
                 $settings['total'] = $productList['total'];
                 array_forget($productList, 'total');
 

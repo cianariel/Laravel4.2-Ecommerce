@@ -62,6 +62,11 @@
             return $this->morphMany('App\Models\Media', 'mediable');
         }
 
+        public function tags()
+        {
+            return $this->morphToMany('App\Models\Tag', 'taggable');
+        }
+
 
         // accessor for JSON decode
         public function getSimilarProductIdsAttribute($value)
