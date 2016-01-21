@@ -94,6 +94,7 @@ function carbon_the_content_limit($max_char, $more_link_text = '(more...)', $str
 }
 require_once('../wp-load.php');
 $postCount = $_REQUEST['count']; // The number of posts to show in the feed
+$onlyfeaured = $_REQUEST['only-feaured']; // The number of posts to show in the feed
 $postCat = $_REQUEST['category-id'];
 $posts = query_posts('cat='.$postCat.'&showposts=' . $postCount);
 $datam = array();
@@ -151,6 +152,14 @@ $is_featured = false;
 if($get_is_featured[0] == "Yes")
 {
 		$is_featured = true;
+}
+else
+{
+	if(isset($onlyfeaured))
+	{
+		continue;
+	}
+	
 }
 $data['is_featured'] = $is_featured;
 
