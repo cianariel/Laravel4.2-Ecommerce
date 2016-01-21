@@ -114,7 +114,6 @@
                     </a>
                 </div>
             </div>
-<<<<<<< HEAD
         </div>
 
         <div class="grid-box-3">
