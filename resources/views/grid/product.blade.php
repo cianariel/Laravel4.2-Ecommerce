@@ -1,4 +1,4 @@
-<div class="box-item">
+<div class="box-item product-box">
 
     <img src="{{$item->media_link_full_path}}" alt="{{$item->product_name}}"/>
 

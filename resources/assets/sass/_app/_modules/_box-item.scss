@@ -225,3 +225,21 @@
 		border-top: 0 none;
 	}
 }
+
+.main-content{
+  &.only-ideas{
+    .box-item:not(.idea){
+      display: none;
+    }
+  }
+  &.only-products{
+    .box-item:not(.product){
+      display: none;
+    }
+  }
+  &.only-photos{
+    .box-item:not(.photo){
+      display: none;
+    }
+  }
+}

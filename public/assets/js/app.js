@@ -143,6 +143,15 @@
             $("html, body").animate({ scrollTop: $(document).height() }, "slow");
         });
 
+        $('#main-content-filter a').click(function(event){
+            event.preventDefault();
+            var $contentBox = $('.main-content');
+            var $type = $(this).data('filter');
+
+            $contentBox.removeClass('only-*');
+            $contentBox.addClass('only-' + $type);
+        });
+
 
 	}); // global function()
 

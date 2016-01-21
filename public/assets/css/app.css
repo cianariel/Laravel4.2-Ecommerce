@@ -8145,6 +8145,15 @@ p {
   height: auto;
   border-top: 0 none; }
 
+.main-content.only-ideas .box-item:not(.idea) {
+  display: none; }
+
+.main-content.only-products .box-item:not(.product) {
+  display: none; }
+
+.main-content.only-photos .box-item:not(.photo) {
+  display: none; }
+
 /* header layout */
 /* footer layout */
 /* main layout */
