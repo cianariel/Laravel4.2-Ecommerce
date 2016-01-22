@@ -379,7 +379,7 @@
                                             <td class="name">
                                                 <a href="@if(isset($review->link)){{$review->link}}@endif"
                                                    target="_blank">@if(isset($review->key)){{$review->key}}@endif
-                                                    @if($review->counter > 0)( {{$review->counter}} )@endif
+                                                    @if(isset($review->counter) && ($review->counter > 0))( {{$review->counter}} )@endif
                                                 </a>
                                             </td>
                                             <td class="line">
