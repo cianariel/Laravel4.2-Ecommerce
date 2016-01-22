@@ -127,7 +127,7 @@ $datepublish = timeAgo($datepublishstring);
 $data['date'] = $datepublish;
 $data['updated_at'] = $datepublish;
 if( has_post_thumbnail( $ID ) ) {
-        $image = get_the_post_thumbnail_url( $ID, 'large', false );
+        $image = get_the_post_thumbnail_url( $ID, 'full', false );
     }
 	else
 	{
@@ -136,7 +136,7 @@ if( has_post_thumbnail( $ID ) ) {
 		$keys = array_reverse(array_keys($files));
 		$j=0;
 		$num = $keys[$j];
-		$image=wp_get_attachment_image_url($num, 'large', false);
+		$image=wp_get_attachment_image_url($num, 'full', false);
 	  endif;
 	}
 $data['image'] = $image;

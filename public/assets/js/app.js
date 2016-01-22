@@ -159,3 +159,35 @@
 
 })(jQuery, this);
 
+//(function() {
+//
+//    'use strict';
+//
+//    var loadMore = angular.module('loadMore', [])
+//
+//    angular
+//        .module('loadMore')
+//        .factory('content', content);
+//
+//    content();
+//
+//    function content($resource) {
+//
+//        // ngResource call to the API for the users
+//        var Content = $resource('paging/get-content');
+//
+//        // Query the users and return the results
+//        function getContent() {
+//            return Content.query().$promise.then(function(results) {
+//                return results;
+//                console.log(results)
+//            }, function(error) {
+//                console.log(error);
+//            });
+//        }
+//
+//        return {
+//            getUsers: getContent
+//        }
+//    }
+//})();

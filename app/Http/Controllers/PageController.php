@@ -19,6 +19,12 @@ class PageController extends Controller
      */
     public function home()
     {
+        $content = self::getContent();
+
+        return view('home')->with('content', $content);
+    }
+
+    public function getContent(){
         //URL of targeted site
         $url = "http://staging.ideaing.com/ideas/feeds/index.php?count=5&no-featured";
 
@@ -43,11 +49,6 @@ class PageController extends Controller
 
         curl_close($ch);
 
-//        print_r($stories); die();
-        // return $data;
-
-//        $products = Product::where('post_sta')
-
         $productSettings = [
             'ActiveItem' => true,
             'limit'      => 6,
@@ -63,16 +64,7 @@ class PageController extends Controller
         $products = $prod->getProductList($productSettings);
         $content = array_merge($stories, $products['result']);
 
-//        $content = array_values(array_sort($content, function ($value) {
-//            if(isset($value['updated_at'])){
-//                return strtotime($value['name']);
-//            }else{
-//                return strtotime($value['date']);
-//            }
-//        }));
-
         usort($content, function($a, $b) { return strtotime($b->updated_at) - strtotime($a->updated_at);});
-
 
         $return['row-1'] = array_slice($content, 0, 3);
         $return['row-2'] = @$featured[0] ? [$featured[0]] : false;
@@ -81,8 +73,10 @@ class PageController extends Controller
         $return['row-5'] = array_slice($content, 6, 3);
         $return['row-6'] = @$featured[2] ? [$featured[2]] : false;
 
-        return view('home')->with('content', $return);
+//        return json_encode($return);
+        return $return;
     }
+
 
     public function productDetailsPage($permalink)
     {

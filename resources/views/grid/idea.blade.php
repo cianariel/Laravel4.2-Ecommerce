@@ -1,42 +1,21 @@
-<div class="box-item idea-box {{$item->is_featured ? 'box-item--featured' : ''}}">
-    @if(!$item->is_featured && $item->feed_image)
-        <img alt="{{$item->feed_image->alt}}" title="{{$item->feed_image->alt}}" src="{{$item->feed_image->url}}">
-    @else
-        <img src="{{$item->image}}">
-    @endif
-    <span class="box-item__time">{{$item->date}}</span>
-    <div class="box-item__overlay"></div>
+{{--<div class="box-item idea-box box-item--featured"  ng-if="item.is_featured == 'true'">--}}
+        {{--<img alt="@{{item.feed_image.alt}}" title="@{{item.feed_image.alt}}" src="@{{$item.feed_image.url}}">--}}
 
-    <ul class="social-stats">
-        <li class="social-stats__item">
-            <a href="#">
-                <i class="m-icon m-icon--heart"></i>
-                <span class="social-stats__text">52</span>
-            </a>
-        </li>
-        <li class="social-stats__item">
-            <a href="#">
-                <i class="m-icon m-icon--buble"></i>
-                <span class="social-stats__text">157</span>
-            </a>
-        </li>
-    </ul>
+        {{--@include('grid.idea-inner')--}}
+{{--</div>--}}
 
-    <div class="round-tag round-tag--idea">
-        <i class="m-icon m-icon--item"></i>
-        <span class="round-tag__label">Idea</span>
-    </div>
+{{--<div class="box-item idea-box"  ng-if="item.is_featured != 'true'">--}}
+        <img alt="@{{item.feed_image.alt}}" title="@{{item.feed_image.alt}}" src="@{{$item.feed_image.url}}">
 
-    <div class="box-item__label-idea">
-        <a href="{{$item->url}}" class="box-item__label">{{$item->title}}</a>
-        <div class="clearfix"></div>
-        <a href="{{$item->url}}" class="box-item__read-more">Read More</a>
-    </div>
+        @include('grid.idea-inner')
+{{--</div>--}}
 
-    <div class="box-item__author">
-        <a href="{{$item->authorlink}}" class="user-widget">
-            <img class="user-widget__img" src="{{$item->avator}}">
-            <span class="user-widget__name">{{$item->author}}</span>
-        </a>
-    </div>
-</div>
+{{--<div class="box-item idea-box {{$item->is_featured ? 'box-item--featured' : ''}}">--}}
+    {{--@if(!$item->is_featured && $item->feed_image)--}}
+        {{--<img alt="{{$item->feed_image->alt}}" title="{{$item->feed_image->alt}}" src="{{$item->feed_image->url}}">--}}
+    {{--@else--}}
+        {{--<img src="{{$item->image}}">22--}}
+    {{--@endif--}}
+
+    {{--@include('grid.idea-inner')--}}
+{{--</div>--}}

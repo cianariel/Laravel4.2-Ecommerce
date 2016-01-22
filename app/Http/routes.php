@@ -161,6 +161,8 @@
   //
     Route::get('pro-details/{permalink?}', 'PageController@productDetailsPage');
 
+    Route::get('/api/paging/get-content', 'PageController@getContent');
+
 
 
 
