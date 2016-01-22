@@ -20,12 +20,47 @@ class TagsController extends ApiController
         $this->middleware('jwt.auth',
             ['except' => [
                 'addTagInfo','updateTagInfo','deleteTagInfo','addTags','showAllTags','showTagByProductId',
-                'getProductsByTag'
+                'getProductsByTag','searchTagByName','temporaryCategoryTagGenerator'
 
             ]]);
 
         $this->tag = new Tag();
 
+    }
+
+    public function temporaryCategoryTagGenerator()
+    {
+       // use App\Models\ProductCategory;
+
+        $cats = \App\Models\ProductCategory::all();
+       // dd($cats);
+
+        foreach($cats as $cat)
+        {
+           $tagData['TagName'] = $cat['category_name'];
+           $tagData['TagDescription'] = 'Category Tag';
+
+           // echo $cat['category_name'];
+
+            // Create default Category tags followed by category name
+            $this->tag->createTagInfo($tagData);
+
+        }
+        dd();
+
+       // $tagData['TagName'] = $inputData['CategoryName'];
+      //  $tagData['TagDescription'] = 'Category Tag';
+
+
+    }
+
+    public function searchTagByName($name)
+    {
+
+        //return = ;
+        $value = $this->tag->where("tag_name", "like", "%$name%")->get(array("id","tag_name as name"));
+
+        return $value;
     }
 
     public function addTagInfo()
@@ -62,7 +97,6 @@ class TagsController extends ApiController
             return $this->setStatusCode(\Config::get("const.api-status.system-fail"))
                 ->makeResponseWithError("System Failure !", $ex);
         }
-
 
     }
 
@@ -120,17 +154,23 @@ class TagsController extends ApiController
 
     }
 
+    /** Delete tag after removing associated relation
+     * @return mixed
+     */
     public function deleteTagInfo()
     {
         $input = \Input::get('TagId');
-        //  dd($input['TagName']);
 
         try
         {
-            $newProduct = $this->tag->find($input)->delete();
+
+            // Detach all the tag from the relation first
+            $this->tag->find($input)->products()->detach();
+
+            $tag = $this->tag->find($input)->delete();
 
             return $this->setStatusCode(\Config::get("const.api-status.success"))
-                ->makeResponse($newProduct);
+                ->makeResponse($tag);
 
         } catch (Exception $ex)
         {

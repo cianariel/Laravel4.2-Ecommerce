@@ -241,6 +241,7 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
         $scope.initPage = function () {
             //   console.log($location.host());
             $scope.catId = '';
+            $scope.CategoryId = '';
             $scope.currentCategoryName = '';
             $scope.tempCategoryList = [];
 
@@ -341,6 +342,139 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
 
             //product compare
             $scope.comparableProductList = [];
+
+            // Tag module
+            $scope.TagName = '';
+            $scope.TagDescription = '';
+            $scope.AllTags = [];
+
+            $scope.selectedTagId = '';
+
+            $scope.Tags=[];
+
+            // product filter with Tag
+            $scope.WithTags = false;
+
+        };
+
+        ///// tag //////
+
+        $scope.showTagsByProductId = function(){
+
+                $http({
+                    url: '/api/tag/show-tag/'+$scope.ProductId,
+                    method: "GET",
+                }).success(function (data) {
+                    $scope.Tags = data.data;
+                });
+        };
+
+        $scope.associateTags = function(){
+            $http({
+                url: '/api/tag/add-tags',
+                method: "POST",
+                data: {
+                    Tags: $scope.Tags,
+                    ProductId: $scope.ProductId
+                },
+            }).success(function (data) {
+
+            });
+        };
+
+        $scope.searchTagByName = function (query) {
+
+           // return [{"id":10,"name":"book"}];
+            return $http.get('/api/tag/search-tag/' + query);
+        };
+
+        // open information in edit mood
+        $scope.editTagInfo = function(index){
+
+            $scope.closeAlert();
+
+            $scope.selectedTagId = $scope.AllTags[index].id;
+            $scope.TagName = $scope.AllTags[index].tag_name;
+            $scope.TagDescription = $scope.AllTags[index].tag_description;
+        };
+
+        $scope.updateTagInfo = function () {
+
+            $scope.closeAlert();
+
+            $http({
+                url: '/api/tag/update-tag-info',
+                method: "POST",
+                data: {
+                    TagId: $scope.selectedTagId,
+                    TagName: $scope.TagName,
+                    TagDescription: $scope.TagDescription
+                },
+            }).success(function (data) {
+                $scope.TagName = '';
+                $scope.TagDescription = '';
+                $scope.selectedTagId = '';
+                $scope.showTags();
+                //   console.log('in function: '+data.status_code);
+                $scope.outputStatus(data, 'Tag updated successfully');
+            });
+        };
+
+        $scope.deleteTagInfo = function(tagId){
+            //delete-tag-info
+            $scope.closeAlert();
+
+            $http({
+                url: '/api/tag/delete-tag-info',
+                method: "POST",
+                data: {
+                    TagId: tagId,
+                },
+            }).success(function (data) {
+                $scope.TagName = '';
+                $scope.TagDescription = '';
+                $scope.showTags();
+                //   console.log('in function: '+data.status_code);
+                $scope.outputStatus(data, 'Tag deleted successfully');
+            });
+
+        };
+
+        $scope.showTags = function () {
+
+            $http({
+                url: '/api/tag/show-tags',
+                method: "GET",
+
+            }).success(function (data) {
+                $scope.AllTags = data.data;
+                //   console.log('in function: '+data.status_code);
+                //   $scope.outputStatus(data, 'Tag added successfully');
+            });
+
+        };
+
+        $scope.addTagInfo = function () {
+
+            $scope.closeAlert();
+
+            $http({
+                url: '/api/tag/add-tag-info',
+                method: "POST",
+                data: {
+                    TagName: $scope.TagName,
+                    TagDescription: $scope.TagDescription
+                },
+            }).success(function (data) {
+                $scope.TagName = '';
+                $scope.TagDescription = '';
+                $scope.showTags();
+
+                //   console.log('in function: '+data.status_code);
+                $scope.outputStatus(data, 'Tag added successfully');
+            });
+
+            return false;
         };
 
         //////// category tree view ////
@@ -357,7 +491,7 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
         $scope.$on("nodeSelected", function (event, node) {
             $scope.selected = node;
             $scope.selectedItem = $scope.selected.id;
-            console.log($scope.selectedItem);
+           // console.log($scope.selectedItem);
             $scope.$broadcast("selectNode", node);
         });
 
@@ -661,11 +795,15 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
                     Specifications: $scope.Specifications,
                     Review: $scope.reviews,
                     ExternalReviewLink: $scope.externalReviewLink,
-                    IdeaingReviewScore: $scope.ideaingReviewScore
+                    IdeaingReviewScore: $scope.ideaingReviewScore,
+                    Tags: $scope.Tags
                 }
             }).success(function (data) {
                 //console.log(data);
                 if (data.status_code == 200) {
+
+                    // accociate tags for product on success.
+                    $scope.associateTags();
                     $scope.outputStatus(data, "Product updated successfully");
                 } else {
                     $scope.outputStatus(data, "Product information not updated");
@@ -852,6 +990,7 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
                     FilterType: $scope.selectedFilter,
                     FilterText: $scope.filterName,
                     ShowFor: $scope.ShowFor,
+                    WithTags: $scope.WithTags,
 
                     // Pagination info
                     limit: $scope.limit,
@@ -946,7 +1085,7 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
                     $scope.selectedItem = data.data.product_category_id;
                     $scope.ProductVendorId = data.data.product_vendor_id;
                     $scope.ProductVendorType = data.data.product_vendor_type;
-                    $scope.ShowFor = data.data.show_for ;
+                    $scope.ShowFor = data.data.show_for;
                     $scope.Name = data.data.product_name;
                     $scope.Permalink = data.data.product_permalink;
                     $scope.htmlContent = data.data.product_description;
@@ -969,6 +1108,9 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
 
                     // hide category in edit mood
                     $scope.hideCategoryPanel = true;
+
+                    // load Tags
+                    $scope.showTagsByProductId();
 
                     // load media in panel
                     $scope.getMedia();

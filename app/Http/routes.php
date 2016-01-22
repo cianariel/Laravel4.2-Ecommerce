@@ -21,9 +21,6 @@
      });
 */
 
-
-
-
     Route::get('/', 'PageController@home');
 
     Route::get('update-price', 'ProductController@priceUpdate');
@@ -116,6 +113,7 @@
         Route::get('tag/show-tags', 'TagsController@showAllTags');
         Route::get('tag/show-tag/{productId}', 'TagsController@showTagByProductId');
         Route::get('tag/show-products/{tagId}', 'TagsController@getProductsByTag');
+        Route::get('tag/search-tag/{tagId}', 'TagsController@searchTagByName');
 
 
 
@@ -159,6 +157,10 @@
         Route::get('product-add', 'AdminController@addProduct');
         Route::get('product-edit/{id?}', 'AdminController@editProduct');
 
+        //Tag view
+        Route::get('tag-view', 'AdminController@tagView');
+
+
     });
 
     // Route for password reset , email verification ,feed example
@@ -178,6 +180,10 @@
     // Route for product detail view
   //
     Route::get('pro-details/{permalink?}', 'PageController@productDetailsPage');
+
+
+    // temporary category tag generator
+    //Route::get('gen', 'TagsController@temporaryCategoryTagGenerator');
 
 
 

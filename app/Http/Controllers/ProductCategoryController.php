@@ -9,6 +9,7 @@
     // use App\Http\Controllers\Controller;
     use Illuminate\Http\Response as IlluminateResponse;
     use App\Models\ProductCategory;
+    use App\Models\Tag;
     use Crypt;
     use JWTAuth;
     use Tymon\JWTAuth\Exceptions\JWTException;
@@ -26,6 +27,8 @@
             // Apply the jwt.auth middleware to all methods in this controller
             $this->middleware('jwt.auth', ['except' => ['showCategoryItems', 'showProductInCategoryName', 'updateCategory', 'index', 'addCategory', 'showAllRootCategory', 'destroy']]);
             $this->productCategory = new ProductCategory();
+
+            $this->tag = new Tag();
 
         }
 
@@ -89,6 +92,12 @@
                 } elseif ($validator->passes())
                 {
                     $newCategory = $this->productCategory->addCategory($inputData);
+
+                    $tagData['TagName'] = $inputData['CategoryName'];
+                    $tagData['TagDescription'] = 'Category Tag';
+
+                    // Create default Category tags followed by category name
+                    $this->tag->createTagInfo($tagData);
 
                     /*if ($newCategory == false)
                     {

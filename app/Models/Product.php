@@ -6,6 +6,10 @@
     use App\Core\ProductApi\ProductStrategy;
     use Illuminate\Database\Eloquent\Model;
     use Carbon\Carbon;
+    use App\Models\ProductCategory;
+    use App\Models\Tag;
+
+
 
     class Product extends Model {
 
@@ -226,6 +230,27 @@
             {
                 $productModel = $productModel->where("product_name", "like", "%$filterText%");
             }
+
+            if ($settings['WithTags'] == true)
+            {
+                $category = ProductCategory::where('id','=',$settings['CategoryId'])->first();
+
+                $tag = Tag::where('tag_name','=',$category['category_name'])->first();
+
+                $tagModel = new Tag();
+
+                $products = $tagModel->getProductsByTag($tag->id);
+
+                $productIds = array();
+                foreach($products as $item )
+                {
+                    array_push($productIds,$item['id']);
+
+                }
+
+                $productModel = $productModel->orWhereIn("id",$productIds);
+            }
+
 
             $skip = $settings['limit'] * ($settings['page'] - 1);
 

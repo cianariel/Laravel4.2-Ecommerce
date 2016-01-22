@@ -178,6 +178,8 @@
                 $settings['FilterText'] = (\Input::get('FilterText') == null) ? null : \Input::get('FilterText');
 
                 $settings['ShowFor'] = (\Input::get('ShowFor') == null) ? null : \Input::get('ShowFor');
+                $settings['WithTags'] = (\Input::get('WithTags') != true) ? false : true;
+
 
 
                 $settings['limit'] = \Input::get('limit');

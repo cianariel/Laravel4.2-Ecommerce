@@ -88,6 +88,21 @@
                     </li>
                 </ul>
             </li>
+            <li class="nav-item  ">
+                <a href="javascript:;" class="nav-link nav-toggle">
+                    <i class="icon-tag"></i>
+                    <span class="title">Tags</span>
+                    <span class="arrow"></span>
+                </a>
+                <ul class="sub-menu">
+                    <li class="nav-item  ">
+                        <a href="/admin/tag-view" class="nav-link ">
+                            <span class="title">Manage Tags</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
         </ul>
         <!-- END SIDEBAR MENU -->
     </div>

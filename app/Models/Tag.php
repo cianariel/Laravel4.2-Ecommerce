@@ -92,6 +92,9 @@
 
             $productTags = $inputData['Tags'];
 
+            if($productTags == '' || $productId == null)
+                return;
+
             $product = Product::where('id','=',$productId)->first();
 
             // Detaching all associated old tags before entering new set of tags.
@@ -107,6 +110,5 @@
                 }
             }
 
-            return true;
         }
     }
