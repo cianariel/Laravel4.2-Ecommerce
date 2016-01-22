@@ -50,217 +50,63 @@
         </div>
     </nav>
 
-    <div class="container full-620 main-container fixed-sm">
-        <button id="show-mobile-filters" class="toggler btn btn-info col-sm-4 col-xs-8 hidden-soft shown-620" data-toggle="#mobile-side-filters">Filter</button>
+    <div class="clearfix"></div>
 
-        <section id="mobile-side-filters" class="side-filters pale-grey-bg col-xs-12 hidden-lg hidden-md">
-            <ul class="mobile-filter-switch hidden-sm">
-                <li class="col-xs-4 active" data-toggle="#idea-filter" data-hide="#mobile-side-filters div">
-                    <b>Ideas</b>
-                </li>
-                <li class="col-xs-4" data-toggle="#product-filter" data-hide="#mobile-side-filters div">
-                    <b >Products</b>
-                </li>
-                <li class="col-xs-4"  data-toggle="#photo-filter" data-hide="#mobile-side-filters div">
-                    <b>Photos</b>
-                </li>
-            </ul>
-            <div id="idea-filter" class="col-md-12 col-sm-4 col-xs-7 col-sm-offset-0 col-xs-offset-1">
-                <h5 class="hidden-xs">Ideas</h5>
+    <div class="homepage-grid container">
+        <div class="grid-box-3">
+            @foreach($content['row-1'] as $item)
+                @if(!isset($item->type) || $item->type != 'product')
+                    @include('grid.idea')
+                @else
+                    @include('grid.product')
+                @endif
+            @endforeach
+        </div>
 
-                <input type="checkbox" name="dyi" id="dyi-nobile"> <label for="dyi-nobile"><span></span>DIY</label>
-                <input type="checkbox" name="best-buys" id="best-buys-mobile"> <label for="best-buys-mobile"><span></span>Best Buys</label>
-                <input type="checkbox" name="declutter" id="declutter-mobile"> <label for="declutter-mobile"><span></span>Declutter</label>
-            </div>
-            <div id="product-filter" class="col-md-12 col-sm-4 col-xs-7">
-                <h5>Products</h5>
-                <input type="checkbox" name="cheap" id="cheap-mobile"> <label for="cheap-mobile"><span></span>Under $50</label>
-                <input type="checkbox" name="top" id="top-mobile"> <label for="top-mobile"><span></span>Top</label>
-                <input type="checkbox" name="stuff" id="stuff-mobile"> <label for="stuff-mobile"><span></span>Stuff</label>
-            </div>
-            <div id="photo-filter" class="col-md-12 col-sm-4 col-xs-7">
-                <h5>Photos</h5>
-                <input type="checkbox" name="hd" id="hd-mobile"> <label for="hd-mobile"><span></span>HD (1920px and above)</label>
-                <input type="checkbox" name="md" id="md-mobile"> <label for="md-mobile"><span></span>MD (1920px and above)</label>
-                <input type="checkbox" name="anysize" id="anysize-mobile"> <label for="anysize-mobile"><span></span>Any sizes</label>
-            </div>
-
-        </section>
-
-        <section class="main-content landing col-xs-9 full-620">
-
-            <ul class="layout-controls col-xs-12 hidden-xs">
-                <li class="list">List</li>
-                <li class="grid selected">Grid</li>
-            </ul>
-
-            <div class="latest-heading">
-                <hr/>
-                <h6>The Latest</h6>
-            </div>
-
-
-            <div class="col-xs-6 grid-box full-620">
-                <div class="img-wrap">
-                    <img class="img-responsive" src="/assets/images/dummies/box-image-dummy.png">
-
-                    <div class="color-overlay">
-                        <div class="like-wrap">
-                            <a href="#" class="social-pic likes">157</a>
-                        </div>
-
-                        <h4>Venetian Louge Suite</h4>
-
-                        <ul class="prices">
-                            <li>
-                                <a href="#"><b>$35.00</b> from  <img class="vendor-logo" src="/assets/images/dummies/amazon-black.png"></a>
-                            </li>
-                            <li>
-                                <a href="#"><b>$39.50.00</b> from  <img class="vendor-logo" src="/assets/images/dummies/amazon-black.png"></a>
-                            </li>
-                            <li>
-                                <a href="#"> <a href="#"><b>$41.00</b> from  <img class="vendor-logo" src="/assets/images/dummies/amazon-black.png"></a>
-                            </li>
-                        </ul>
-
-                    </div>
-                </div>
-
-                <time>1 hour ago</time>
-
-            </div>
-
-            <div class="col-xs-6 grid-box full-620">
-                <div class="img-wrap">
-                    <img class="img-responsive" src="/assets/images/dummies/img-small.jpg">
-
-                    <div class="color-overlay">
-                        <div class="like-wrap">
-                            <a href="#" class="social-pic likes">157</a>
-                        </div>
-
-                        <h4>Venetian Louge Suite</h4>
-
-                        <ul class="prices">
-                            <li>
-                                <a href="#"><b>$35.00</b> from  <img class="vendor-logo" src="/assets/images/dummies/amazon-black.png"></a>
-                            </li>
-                            <li>
-                                <a href="#"><b>$39.50.00</b> from  <img class="vendor-logo" src="/assets/images/dummies/amazon-black.png"></a>
-                            </li>
-                            <li>
-                                <a href="#"> <a href="#"><b>$41.00</b> from  <img class="vendor-logo" src="/assets/images/dummies/amazon-black.png"></a>
-                            </li>
-                        </ul>
-
-                    </div>
-                </div>
-
-                <time>5 hours ago</time>
-
-            </div>
-
-                @foreach($stories as $story)
-                    <div class="col-xs-12 grid-box big-box full-620">
-                        <div class="img-wrap">
-                            <a href="{{$story->url}}" class="big-image-link">
-
-                                @if($story->feed_image)
-                                    <img class="img-responsive" alt="{{$story->feed_image->alt}}" title="{{$story->feed_image->alt}}" src="{{$story->feed_image->url}}">
-                                @else
-                                    <img class="img-responsive" src="{{$story->image}}">
-                                @endif
-
-                            </a>
-                            <a href="#" class="overlay-tag category-tag top idea">{{$story->category}}</a>
-                            <a href="{{$story->authorlink}}" class="overlay-tag bottom author" style="background-image: url({{$story->avator}})">{{$story->author}}</a>
-                            <div class="like-wrap">
-                                <a href="#" class="social-pic likes">Like it</a>
-                                <a href="#" class="social-pic comment">Comment</a>
-                            </div>
-                            @if($story->is_featured)
-                                <a href="#" class="overlay-tag bottom featured-badge big">
-                                    Featured
-                                </a>
-                            @endif
-                        </div>
-                        <h3><a href="{{$story->url}}">{{$story->title}}</a></h3>
-                        <time>{{$story->date}}</time>
-                    </div>
+        @if($content['row-2'])
+            <div class="grid-box-full">
+                @foreach($content['row-2'] as $item)
+                        @include('grid.idea')
                 @endforeach
-
-            <div class="col-xs-12 grid-insert pale-grey-bg">
-                <h4><a href="#">550.230 Kitchen Design Photos</a></h4>
-                <p>
-                    Charming, fully furnished Upper Castro apartment features high-end open kitchen, luxurious bath. Charming, fully furnished Upper Castro apartment features high-end open kitchen, luxurious bath. Charming, fully furnished Upper Castro apartment features high-end open kitchen, luxurious bath.
-                </p>
-                <a class="btn btn-success" href="#">Upload a photo</a>
             </div>
+        @endif
 
-            <a class="btn btn-success bottom-load-more col-xs-12">Load More</a>
+        <div class="grid-box-3">
+            @foreach($content['row-3'] as $item)
+                @if(!isset($item->type) || $item->type != 'product')
+                    @include('grid.idea')
+                @else
+                    @include('grid.product')
+                @endif
+            @endforeach
+        </div>
 
-        </section>
+        @if($content['row-4'])
+            <div class="grid-box-full">
+                @foreach($content['row-4'] as $item)
+                    @include('grid.idea')
+                @endforeach
+            </div>
+        @endif
 
-        <aside class="col-xs-3 hidden-620">
-            <section class="sidebar-category products">
-                <h4>Top Products</h4>
+        <div class="grid-box-3">
+            @foreach($content['row-5'] as $item)
+                @if(!isset($item->type) || $item->type != 'product')
+                    @include('grid.idea')
+                @else
+                    @include('grid.product')
+                @endif
+            @endforeach
+        </div>
 
-                <div class="grid-box sidebar-box">
-                    <a href="#" class="overlay-tag top-left-corner number">1</a>
-                    <div class="img-wrap">
-                        <img class="img-responsive" src="/assets/images/dummies/img-small.jpg">
-                        <a class="sidebar-social-counter like">31</a>
-                    </div>
-                    <h5><a href="#">4 Tier wood utility</a></h5>
-                </div>
-            </section>
-            <section class="sidebar-category ideas">
-                <h4>Top Ideas</h4>
+        @if($content['row-6'])
+            <div class="grid-box-full">
+                @foreach($content['row-6'] as $item)
+                    @include('grid.idea')
+                @endforeach
+            </div>
+        @endif
 
-                <div class="grid-box sidebar-box">
-                    <a href="#" class="overlay-tag top-left-corner number">1</a>
-                    <div class="img-wrap">
-                        <img class="img-responsive" src="/assets/images/dummies/box-image-dummy.png">
-                        <a class="sidebar-social-counter like">31</a>
-                    </div>
-                    <h5><a href="#">4 Tier wood utility</a></h5>
-                </div>
-            </section>
-            <section class="sidebar-category photos">
-                <h4>Top Photos</h4>
 
-                <div class="grid-box sidebar-box">
-                    <a href="#" class="overlay-tag top-left-corner number">1</a>
-                    <div class="img-wrap">
-                        <img class="img-responsive" src="/assets/images/dummies/img-small.jpg">
-                        <a class="sidebar-social-counter like">31</a>
-                    </div>
-                    <h5><a href="#">4 Tier wood utility</a></h5>
-                </div>
-            </section>
-
-            {{--<section id="side-filters" class="side-filters pale-grey-bg pale-grey-border">--}}
-            {{--<div>--}}
-            {{--<h5>Ideas</h5>--}}
-            {{--<input type="checkbox" name="dyi" id="dyi"> <label for="dyi"><span></span>DIY</label>--}}
-            {{--<input type="checkbox" name="best-buys" id="best-buys"> <label for="best-buys"><span></span>Best Buys</label>--}}
-            {{--<input type="checkbox" name="declutter" id="declutter"> <label for="declutter"><span></span>Declutter</label>--}}
-            {{--</div>--}}
-            {{--<div>--}}
-            {{--<h5>Products</h5>--}}
-            {{--<input type="checkbox" name="cheap" id="cheap"> <label for="cheap"><span></span>Under $50</label>--}}
-            {{--<input type="checkbox" name="top" id="top"> <label for="top"><span></span>Top</label>--}}
-            {{--<input type="checkbox" name="stuff" id="stuff"> <label for="stuff"><span></span>Stuff</label>--}}
-            {{--</div>--}}
-            {{--<div>--}}
-            {{--<h5>Photos</h5>--}}
-            {{--<input type="checkbox" name="hd" id="hd"> <label for="hd"><span></span>HD (1920px and above)</label>--}}
-            {{--<input type="checkbox" name="md" id="md"> <label for="md"><span></span>MD (1920px and above)</label>--}}
-            {{--<input type="checkbox" name="anysize" id="anysize"> <label for="anysize"><span></span>Any sizes</label>--}}
-            {{--</div>--}}
-
-            {{--</section>--}}
-        </aside>
-    </div>
-
+        </div>
 @stop

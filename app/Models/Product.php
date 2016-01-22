@@ -250,6 +250,7 @@
 
                 $tmp->media_link = $path;
                 $tmp->updated_at = Carbon::createFromTimestamp(strtotime($tmp->updated_at))->diffForHumans();
+                $tmp->type = 'product';
 
                 $data[ $i ] = $tmp;
             }

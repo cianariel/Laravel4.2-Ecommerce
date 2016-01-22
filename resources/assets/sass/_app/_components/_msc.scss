@@ -1,0 +1,99 @@
+// Social Stats
+.social-stats {
+	background: #fff;
+	padding: 5px 5px 5px 10px;
+	width: 72px;
+
+	&__item {
+		display: inline-block;
+		position: relative;
+		font-size: 14px;
+		line-height: 26px;
+		padding-left: 30px;
+		margin: 3px 0;
+
+		&:hover .m-icon--heart:before {
+			content: "\e906";
+		}
+	}
+
+	&__item .m-icon {
+		font-size: 26px;
+		position: absolute;
+		left: 0;
+		color: $iridium;
+	}
+
+
+}
+
+// Round tag
+.round-tag {
+	width: 62px;
+	height: 62px;
+	background: #ccc;
+	text-align: center;
+	line-height: 12px;
+	color: #fff;
+	@include border-radius(62px);
+
+	&--idea {
+		background: $dark-orange;
+	}
+	&--product {
+		background: $pine-green;
+	}
+
+	&__label {
+		font-size: 11px;
+		display: inline-block;
+		width: 100%;
+	}
+
+	.m-icon {
+		font-size: 24px;
+		margin-top: 10px;
+		display: inline-block;
+	}
+
+}
+
+// User widget
+.user-widget {
+	height: 66px;
+
+	&__img {
+		@include border-radius(100px);
+		float: left;
+	}
+	&__name {
+		display: inline-block;
+		padding: 5px 5px 4px;
+		background: $pine-green;
+		color: #fff;
+		font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+		margin-top: 22px;
+		margin-left: 10px;
+		line-height: 1;
+		font-size: 12px;
+	}
+}
+
+// Merchant widget
+.merchant-widget {
+
+	line-height: 20px;
+
+	&__price {
+		font-weight: bold;
+		display: inline-block;
+		background: #94942d;
+		color: #fff;
+		padding: 0 5px;
+	}
+
+	&__store {
+		height: 20px;
+		display: inline-block;
+	}
+}

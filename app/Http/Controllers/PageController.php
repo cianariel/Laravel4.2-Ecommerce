@@ -20,8 +20,7 @@ class PageController extends Controller
     public function home()
     {
         //URL of targeted site
-        $url = "http://staging.ideaing.com/ideas/feeds/index.php?count=8";
-     //   $url = "http://staging.ideaing.com/ideas/feeds/index.php?count=8";
+        $url = "http://staging.ideaing.com/ideas/feeds/index.php?count=7";
 
         $ch = curl_init();
 
@@ -31,13 +30,58 @@ class PageController extends Controller
         curl_setopt($ch, CURLOPT_ENCODING ,"");
 
         $json = curl_exec($ch);
+
         $stories = json_decode($json);
+
+        $featuredUrl = "http://staging.ideaing.com/ideas/feeds/index.php?count=3&only-feaured";
+
+        curl_setopt($ch, CURLOPT_URL, $featuredUrl);
+
+        $json = curl_exec($ch);
+
+        $featured = json_decode($json);
 
         curl_close($ch);
 
 //        print_r($stories); die();
         // return $data;
-        return view('home')->with('stories', $stories);// $data->parseFeed(true,2);
+
+//        $products = Product::where('post_sta')
+
+        $productSettings = [
+            'ActiveItem' => true,
+            'limit'      => 5,
+            'page'       => 1,
+            'CategoryId' => false,
+            'FilterType' => false,
+            'FilterText' => false,
+            'ShowFor' => false,
+        ];
+
+        $prod = new Product();
+
+        $products = $prod->getProductList($productSettings);
+        $content = array_merge($stories, $products['result']);
+
+//        $content = array_values(array_sort($content, function ($value) {
+//            if(isset($value['updated_at'])){
+//                return strtotime($value['name']);
+//            }else{
+//                return strtotime($value['date']);
+//            }
+//        }));
+
+        usort($content, function($a, $b) { return strtotime($b->updated_at) - strtotime($a->updated_at);});
+
+
+        $return['row-1'] = array_slice($content, 0, 3);
+        $return['row-2'] = @$featured[0] ? [$featured[0]] : false;
+        $return['row-3'] = array_slice($content, 3, 3);
+        $return['row-4'] = @$featured[1] ? [$featured[1]] : false;
+        $return['row-5'] = array_slice($content, 6, 3);
+        $return['row-6'] = @$featured[2] ? [$featured[2]] : false;
+
+        return view('home')->with('content', $return);
     }
 
     public function productDetailsPage($permalink)
