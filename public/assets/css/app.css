@@ -7946,6 +7946,7 @@ p {
     -webkit-border-radius: 100px;
     -moz-border-radius: 100px;
     border-radius: 100px;
+    max-width: 80px;
     float: left; }
   .user-widget__name {
     display: inline-block;
@@ -8033,7 +8034,8 @@ p {
     color: #c1c1c1;
     position: absolute;
     bottom: 10px;
-    right: 10px; }
+    right: 10px;
+    z-index: 1; }
   .box-item__author {
     position: absolute;
     bottom: 10px;

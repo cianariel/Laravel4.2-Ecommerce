@@ -107,9 +107,9 @@
             </div>
         @endif
 
-
-        </div>
-
         <a class="btn btn-success bottom-load-more col-xs-12">Load More</a>
+
+    </div>
+
 
 @stop

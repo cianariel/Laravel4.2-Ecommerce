@@ -64,6 +64,7 @@
 
 	&__img {
 		@include border-radius(100px);
+        max-width: 80px;
 		float: left;
 	}
 	&__name {
