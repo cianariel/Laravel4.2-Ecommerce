@@ -63,6 +63,14 @@
             @endforeach
         </div>
 
+        @if($content['row-2'])
+            <div class="grid-box-full">
+                @foreach($content['row-2'] as $item)
+                        @include('grid.idea')
+                @endforeach
+            </div>
+        @endif
+
         <div class="grid-box-3">
             @foreach($content['row-3'] as $item)
                 @if(!isset($item->type) || $item->type != 'product')
@@ -73,6 +81,14 @@
             @endforeach
         </div>
 
+        @if($content['row-4'])
+            <div class="grid-box-full">
+                @foreach($content['row-4'] as $item)
+                    @include('grid.idea')
+                @endforeach
+            </div>
+        @endif
+
         <div class="grid-box-3">
             @foreach($content['row-5'] as $item)
                 @if(!isset($item->type) || $item->type != 'product')
@@ -82,7 +98,15 @@
                 @endif
             @endforeach
         </div>
-    </div>
+
+        @if($content['row-6'])
+            <div class="grid-box-full">
+                @foreach($content['row-6'] as $item)
+                    @include('grid.idea')
+                @endforeach
+            </div>
+        @endif
 
 
+        </div>
 @stop
