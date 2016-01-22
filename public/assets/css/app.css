@@ -8145,13 +8145,13 @@ p {
   height: auto;
   border-top: 0 none; }
 
-.main-content.only-ideas .box-item:not(.idea) {
+.main-content[data-only="ideas"] .box-item:not(.idea-box) {
   display: none; }
 
-.main-content.only-products .box-item:not(.product) {
+.main-content[data-only="products"] .box-item:not(.product-box) {
   display: none; }
 
-.main-content.only-photos .box-item:not(.photo) {
+.main-content[data-only="photos"] .box-item:not(.photo-box) {
   display: none; }
 
 /* header layout */

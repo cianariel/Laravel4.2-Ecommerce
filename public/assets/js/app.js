@@ -143,13 +143,15 @@
             $("html, body").animate({ scrollTop: $(document).height() }, "slow");
         });
 
-        $('#main-content-filter a').click(function(event){
+        $('.main-content-filter a').click(function(event){
             event.preventDefault();
             var $contentBox = $('.main-content');
-            var $type = $(this).data('filter');
+            var $type = $(this).data('filterby');
 
-            $contentBox.removeClass('only-*');
-            $contentBox.addClass('only-' + $type);
+            $contentBox.attr('data-only', $type);
+            //
+            //$contentBox.removeClass('only-*');
+            //$contentBox.addClass('only-' + $type);
         });
 
 

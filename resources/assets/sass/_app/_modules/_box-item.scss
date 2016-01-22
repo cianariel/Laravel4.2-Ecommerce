@@ -227,18 +227,18 @@
 }
 
 .main-content{
-  &.only-ideas{
-    .box-item:not(.idea){
+  &[data-only="ideas"]{
+    .box-item:not(.idea-box){
       display: none;
     }
   }
-  &.only-products{
-    .box-item:not(.product){
+  &[data-only="products"]{
+    .box-item:not(.product-box){
       display: none;
     }
   }
-  &.only-photos{
-    .box-item:not(.photo){
+  &[data-only="photos"]{
+    .box-item:not(.photo-box){
       display: none;
     }
   }
