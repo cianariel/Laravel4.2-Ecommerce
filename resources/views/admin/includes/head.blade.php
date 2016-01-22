@@ -17,6 +17,7 @@
     <link id="ng_load_plugins_before" />
     <!-- END DYMANICLY LOADED CSS FILES -->
     <!-- BEGIN THEME STYLES -->
+    @yield('pagelevelstyle')
     <!-- DOC: To use 'rounded corners' style just load 'components-rounded.css' stylesheet instead of 'components.css' in the below style tag -->
     <link href="/assets/admin/vendor/global/css/components.min.css" id="style_components" rel="stylesheet" type="text/css" />
     <link href="/assets/admin/vendor/global/css/plugins.min.css" rel="stylesheet" type="text/css" />

@@ -204,8 +204,8 @@
             {
                 $settings['ActiveItem'] = false;
                 $settings['CategoryId'] = null;
-                $settings['FilterType'] = null;
-                $settings['FilterText'] = null;
+                $settings['FilterType'] = (\Input::get('FilterType') == null) ? null : \Input::get('FilterType');
+                $settings['FilterText'] = (\Input::get('FilterText') == null) ? null : \Input::get('FilterText');
 
                 $settings['limit'] = 10000;
                 $settings['page'] = 0;
