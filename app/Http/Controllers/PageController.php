@@ -20,7 +20,7 @@ class PageController extends Controller
     public function home()
     {
         //URL of targeted site
-        $url = "http://staging.ideaing.com/ideas/feeds/index.php?count=7";
+        $url = "http://staging.ideaing.com/ideas/feeds/index.php?count=5&no-featured";
 
         $ch = curl_init();
 
@@ -33,7 +33,7 @@ class PageController extends Controller
 
         $stories = json_decode($json);
 
-        $featuredUrl = "http://staging.ideaing.com/ideas/feeds/index.php?count=3&only-feaured";
+        $featuredUrl = "http://staging.ideaing.com/ideas/feeds/index.php?count=3&only-featured";
 
         curl_setopt($ch, CURLOPT_URL, $featuredUrl);
 
@@ -50,7 +50,7 @@ class PageController extends Controller
 
         $productSettings = [
             'ActiveItem' => true,
-            'limit'      => 5,
+            'limit'      => 6,
             'page'       => 1,
             'CategoryId' => false,
             'FilterType' => false,
