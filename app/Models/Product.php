@@ -10,7 +10,6 @@
     use App\Models\Tag;
 
 
-
     class Product extends Model {
 
         /**
@@ -116,7 +115,7 @@
                     "user_name"               => ($product['ProductAuthorName'] != null) ? $product['ProductAuthorName'] : 'Anonymous User',
                     "product_vendor_id"       => $product['ProductVendorId'],
                     "product_vendor_type"     => $product['ProductVendorType'],
-                    "show_for"                 => ($product['ShowFor'] != null) ? $product['ShowFor'] : '',
+                    "show_for"                => ($product['ShowFor'] != null) ? $product['ShowFor'] : '',
                     "product_name"            => $product['Name'],
                     "product_permalink"       => (isset($product['Permalink'])) ? $product['Permalink'] : null,
                     "product_description"     => ($product['Description'] != null) ? $product['Description'] : "",
@@ -164,7 +163,7 @@
                         ->Where('media_type', '=', 'img-upload');
                 })
                 ->first(array(
-                    'products.id','products.show_for', 'products.updated_at', 'products.product_vendor_id', 'products.product_vendor_type',
+                    'products.id', 'products.show_for', 'products.updated_at', 'products.product_vendor_id', 'products.product_vendor_type',
                     'products.user_name', 'products.product_name', 'product_categories.category_name', 'products.affiliate_link',
                     'products.price', 'products.sale_price', 'medias.media_link', 'products.product_permalink'
                 ));
@@ -173,7 +172,7 @@
 
         }
 
-        // return data for public view
+        // return product information data for public view
         public function getViewForPublic($permalink, $id = null)
         {
             $column = $id == null ? 'product_permalink' : 'id';
@@ -231,24 +230,24 @@
                 $productModel = $productModel->where("product_name", "like", "%$filterText%");
             }
 
-            if ($settings['WithTags'] == true)
+            if ($settings['WithTags'] == true && $settings['CategoryId'] != null)
             {
-                $category = ProductCategory::where('id','=',$settings['CategoryId'])->first();
+                $category = ProductCategory::where('id', '=', $settings['CategoryId'])->first();
 
-                $tag = Tag::where('tag_name','=',$category['category_name'])->first();
+                $tag = Tag::where('tag_name', '=', $category['category_name'])->first();
 
                 $tagModel = new Tag();
 
                 $products = $tagModel->getProductsByTag($tag->id);
 
                 $productIds = array();
-                foreach($products as $item )
+                foreach ($products as $item)
                 {
-                    array_push($productIds,$item['id']);
+                    array_push($productIds, $item['id']);
 
                 }
 
-                $productModel = $productModel->orWhereIn("id",$productIds);
+                $productModel = $productModel->orWhereIn("id", $productIds);
             }
 
 
@@ -362,14 +361,18 @@
             // setting information for related products
             $relatedProducts = [];
             $relatedProductsData = [];
-            if ($productData['product']->similar_product_ids != "")
+
+            // generate related products from category
+            $products = $this->populateProductsFromSameCategory($productInfo['CategoryId'],$productData['product']->similar_product_ids,$productInfo['Id']);
+
+            if ($products != "" || $products != null)
             {
-                foreach ($productData['product']->similar_product_ids as $key => $value)
+                foreach ($products as $key => $value)
                 {
-                    if (!isset($value->id))
+                    if (!isset($value['id']))
                         continue;
 
-                    $relatedProducts[ $key ] = $this->getViewForPublic('', $value->id);
+                    $relatedProducts[ $key ] = $this->getViewForPublic('', $value['id']);
 
                     if ($relatedProducts[ $key ] == null)
                         continue;
@@ -399,6 +402,47 @@
             $result['selfImages'] = $selfImage;
 
             return $result;
+        }
+
+        // populate related product data from same category
+
+        public function populateProductsFromSameCategory($categoryId, $similarProducts,$productId,$totalItem = 3)
+        {
+            $settings['ActiveItem'] = false;
+            $settings['CategoryId'] = $categoryId;
+            $settings['FilterText'] = '';
+            $settings['FilterType'] = '';
+
+            $settings['ShowFor'] = '';
+
+            $settings['WithTags'] = true;
+
+            $settings['limit'] = $totalItem + 1;
+            $settings['page'] = 1;
+
+            $products = $this->getProductList($settings);
+
+            $tmpItems =[];
+
+            foreach($similarProducts as $tmp){
+                $data['id'] = $tmp->id;
+                $data['name'] = $tmp->name;
+                array_push($tmpItems,$data);
+            }
+
+            foreach($products['result'] as $item)
+            {
+                if($productId == $item->id)
+                    continue;
+
+                $data['id'] = $item->id;
+                $data['name'] = $item->product_name;
+                array_push($tmpItems,$data);
+            }
+
+            array_splice($tmpItems,$totalItem);
+
+            return $tmpItems;
         }
 
 
