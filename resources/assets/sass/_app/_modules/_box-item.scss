@@ -79,6 +79,7 @@
 		position: absolute;
 		bottom: 10px;
 		right: 10px;
+        z-index: 1;
 	}
 	&__author {
 		position: absolute;
@@ -224,4 +225,22 @@
 		height: auto;
 		border-top: 0 none;
 	}
+}
+
+.main-content{
+  &[data-only="ideas"]{
+    .box-item:not(.idea-box){
+      display: none;
+    }
+  }
+  &[data-only="products"]{
+    .box-item:not(.product-box){
+      display: none;
+    }
+  }
+  &[data-only="photos"]{
+    .box-item:not(.photo-box){
+      display: none;
+    }
+  }
 }

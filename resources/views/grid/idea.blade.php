@@ -1,4 +1,4 @@
-<div class="box-item {{$item->is_featured ? 'box-item--featured' : ''}}">
+<div class="box-item idea-box {{$item->is_featured ? 'box-item--featured' : ''}}">
     @if(!$item->is_featured && $item->feed_image)
         <img alt="{{$item->feed_image->alt}}" title="{{$item->feed_image->alt}}" src="{{$item->feed_image->url}}">
     @else

@@ -41,18 +41,18 @@
             {{--<ul class="left-nav col-xs-1 hidden-620">--}}
                 {{--<li class="active"><a class="home-link" href="#">Home</a></li>--}}
             {{--</ul>--}}
-            <ul class="category-nav">
-                <li class="active"><a href="" class="all-link">All</a></li>
-                <li><a href="" class="ideas-link">Ideas</a></li>
-                <li><a href="" class="products-link">Products</a></li>
-                <li><a href="" class="photos-link">Photos</a></li>
+            <ul class="category-nav main-content-filter">
+                <li class="active"><a href="" data-filterby="all" class="all-link">All</a></li>
+                <li><a data-filterby="ideas" href="#" class="ideas-link">Ideas</a></li>
+                <li><a data-filterby="products" href="#" class="products-link">Products</a></li>
+                <li><a data-filterby="photos" href="#" class="photos-link">Photos</a></li>
             </ul>
         </div>
     </nav>
 
     <div class="clearfix"></div>
 
-    <div class="homepage-grid container">
+    <div class="homepage-grid container main-content">
         <div class="grid-box-3">
             @foreach($content['row-1'] as $item)
                 @if(!isset($item->type) || $item->type != 'product')
@@ -107,6 +107,9 @@
             </div>
         @endif
 
+        <a class="btn btn-success bottom-load-more col-xs-12">Load More</a>
 
-        </div>
+    </div>
+
+
 @stop
