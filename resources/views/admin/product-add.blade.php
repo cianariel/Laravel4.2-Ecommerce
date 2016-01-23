@@ -515,7 +515,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label class="col-md-2 control-label">Media Title :
+                                                    <label class="col-md-2 control-label">Media Type :
                                                     </label>
                                                     <div class="col-md-4">
                                                         <select data-ng-model="selectedMediaType"
