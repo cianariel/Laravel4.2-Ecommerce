@@ -24,9 +24,11 @@ class PageController extends Controller
         return view('home')->with('content', $content);
     }
 
-    public function getContent($offset = 1){
-        //URL of targeted site
-        $url = "http://staging.ideaing.com/ideas/feeds/index.php?count=5&no-featured";
+    public function getContent($page = 0){
+
+        $offset = 3 *  ($page - 1);
+
+        $url = "http://staging.ideaing.com/ideas/feeds/index.php?count=5&no-featured&offset=". $offset;
 
         $ch = curl_init();
 
@@ -39,7 +41,7 @@ class PageController extends Controller
 
         $stories = json_decode($json);
 
-        $featuredUrl = "http://staging.ideaing.com/ideas/feeds/index.php?count=3&only-featured";
+        $featuredUrl = "http://staging.ideaing.com/ideas/feeds/index.php?count=3&only-featured&offset=". $offset;
 
         curl_setopt($ch, CURLOPT_URL, $featuredUrl);
 
@@ -51,8 +53,8 @@ class PageController extends Controller
 
         $productSettings = [
             'ActiveItem' => true,
-            'limit'      => 12,
-            'page'       => $offset,
+            'limit'      => 6,
+            'page'       => $page,
             'CategoryId' => false,
             'FilterType' => false,
             'FilterText' => false,
@@ -62,8 +64,8 @@ class PageController extends Controller
         $prod = new Product();
 
         $products = $prod->getProductList($productSettings);
-//        $content = array_merge($stories, $products['result']);
-        $content = $products['result'];
+        $content = array_merge($stories, $products['result']);
+//        $content = $products['result'];
 
         usort($content, function($a, $b) { return strtotime($b->updated_at) - strtotime($a->updated_at);});
 

@@ -31,10 +31,10 @@ angular.module('pagingApp.services', []).
 
         var pagaingApi = {};
 
-        pagaingApi.getContent = function(offset) {
+        pagaingApi.getContent = function(page) {
             return $http({
                 method: 'GET',
-                url: '/api/paging/get-content/' + offset,
+                url: '/api/paging/get-content/' + page,
             });
         }
 
