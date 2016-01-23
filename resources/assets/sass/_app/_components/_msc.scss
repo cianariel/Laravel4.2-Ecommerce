@@ -64,8 +64,9 @@
 
 	&__img {
 		@include border-radius(100px);
-        max-width: 80px;
+        max-width: 55px;
 		float: left;
+        margin-left: 10px;
 	}
 	&__name {
 		display: inline-block;

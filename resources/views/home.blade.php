@@ -53,7 +53,7 @@
     <div class="clearfix"></div>
 
     <div class="homepage-grid center-block" ng-app="pagingApp" ng-controller="pagingController">
-        <div class="wrap">
+        {{--<div class="wrap">--}}
 
             <div class="loader loader-abs" cg-busy="firstLoad"></div>
             <div class="loader loader-fixed" cg-busy="nextLoad"></div>
@@ -111,7 +111,7 @@
 
                 </div>
             </div>
-        </div>
+        {{--</div>--}}
 
         <a ng-click="loadMore()" class="btn btn-success bottom-load-more col-xs-12">Load More</a>
 

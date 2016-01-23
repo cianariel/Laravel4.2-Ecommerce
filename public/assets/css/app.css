@@ -4414,9 +4414,6 @@ body,
 html {
   overflow-x: hidden; }
 
-.main-content {
-  overflow: hidden; }
-
 .lamp-logo {
   display: block;
   width: 45px;
@@ -7946,8 +7943,9 @@ p {
     -webkit-border-radius: 100px;
     -moz-border-radius: 100px;
     border-radius: 100px;
-    max-width: 80px;
-    float: left; }
+    max-width: 55px;
+    float: left;
+    margin-left: 10px; }
   .user-widget__name {
     display: inline-block;
     padding: 5px 5px 4px;
@@ -8023,7 +8021,7 @@ p {
         width: 63px;
         height: 162px;
         left: -36px;
-        bottom: 0;
+        top: 131px;
         margin-top: -81px;
         z-index: 9; } }
   .box-item .user-widget__name,
@@ -8120,7 +8118,7 @@ p {
     text-align: center; }
     @media (min-width: 992px) {
       .box-item__label-idea {
-        top: 50%; } }
+        top: 58%; } }
   .box-item__label-prod {
     position: absolute;
     top: 39%;
@@ -8184,7 +8182,8 @@ p {
 .homepage-grid {
   position: relative;
   width: auto;
-  max-width: 1170px; }
+  max-width: 1170px;
+  overflow: visible; }
   .homepage-grid .wrap {
     min-height: 300px; }
   @media (max-width: 767px) {
