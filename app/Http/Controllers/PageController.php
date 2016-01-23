@@ -51,7 +51,7 @@ class PageController extends Controller
 
         $productSettings = [
             'ActiveItem' => true,
-            'limit'      => 6,
+            'limit'      => 12,
             'page'       => $offset,
             'CategoryId' => false,
             'FilterType' => false,
@@ -62,7 +62,8 @@ class PageController extends Controller
         $prod = new Product();
 
         $products = $prod->getProductList($productSettings);
-        $content = array_merge($stories, $products['result']);
+//        $content = array_merge($stories, $products['result']);
+        $content = $products['result'];
 
         usort($content, function($a, $b) { return strtotime($b->updated_at) - strtotime($a->updated_at);});
 
