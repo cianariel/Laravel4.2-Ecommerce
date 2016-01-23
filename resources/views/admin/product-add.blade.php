@@ -83,7 +83,7 @@
                                             <a href="#review" data-toggle="tab"> Review </a>
                                         </li>
                                         <li>
-                                            <a href="#media" data-toggle="tab"> Media Content
+                                            <a ng-hide="ProductId == ''" href="#media" data-toggle="tab"> Media Content
                                             </a>
                                         </li>
                                     </ul>
@@ -123,6 +123,21 @@
                                                     </div>
 
                                                 </div>
+
+                                                <div class="form-group">
+                                                    <label class="col-md-2 control-label">Associate Tag (Auto Complete)</label>
+                                                    <div class="col-md-10">
+                                                        <tags-input ng-model="Tags"
+                                                                    display-property="name"
+                                                                    add-from-autocomplete-only="true">
+                                                            <auto-complete min-length="3"
+                                                                           source="searchTagByName($query)">
+                                                            </auto-complete>
+                                                        </tags-input>
+                                                    </div>
+                                                </div>
+
+
                                                 <div class="form-group">
                                                     <label class="col-md-2 control-label">Product ID:
                                                     </label>

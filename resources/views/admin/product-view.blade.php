@@ -73,7 +73,7 @@
 
                                         <div class="clearfix">
                                             <div class="row">
-                                                <div class="col-lg-5 pull-left">
+                                                <div class="col-lg-3 pull-left">
                                                     <select data-ng-model="selectedItem" ng-change="getSubCategory()"
                                                             class="form-control">
                                                         <option value="@{{ selectedItem }}">
@@ -89,18 +89,26 @@
                                                     </div>
                                                 </div>
 
-                                                <div class="col-lg-2">
+                                                <div class="col-md-1">
                                                     <button class="btn btn-info btn-circle" type="button"
                                                             ng-click="resetCategory()" uib-tooltip="Refresh Category"
                                                             tooltip-placement="right">
                                                         <i class="fa fa-refresh"></i>
                                                     </button>
                                                 </div>
-
-                                                <div class="col-lg-5">
-                                                    <label class="col-md-5 control-label">Show Product For:
+                                                <div class="col-md-4">
+                                                    <label class="col-md-4 control-label">With Tag(s):
                                                     </label>
-                                                    <div class="col-md-6">
+                                                    <div class="col-md-7">
+                                                        <input type="checkbox" data-ng-model="WithTags"
+                                                               class="">
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-4">
+                                                    <label class="col-md-4 control-label">Show Product For:
+                                                    </label>
+                                                    <div class="col-md-7">
                                                         <select data-ng-model="ShowFor"
                                                                 class="form-control">
                                                             <option value="">-- Select Type --</option>

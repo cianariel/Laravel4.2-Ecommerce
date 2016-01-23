@@ -69,4 +69,9 @@
 
             return view('admin.product-add')->with('id',$id);
         }
+
+        public function tagView()
+        {
+            return view('admin.tag-view');
+        }
     }
