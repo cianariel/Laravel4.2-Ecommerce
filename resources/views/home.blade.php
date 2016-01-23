@@ -106,7 +106,7 @@
 
         </div>
 
-        <a class="btn btn-success bottom-load-more col-xs-12">Load More</a>
+        <a ng-click="loadMore()" class="btn btn-success bottom-load-more col-xs-12">Load More</a>
 
     </div>
 

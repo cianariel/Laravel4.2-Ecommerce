@@ -24,7 +24,7 @@ class PageController extends Controller
         return view('home')->with('content', $content);
     }
 
-    public function getContent(){
+    public function getContent($offset = 1){
         //URL of targeted site
         $url = "http://staging.ideaing.com/ideas/feeds/index.php?count=5&no-featured";
 
@@ -52,7 +52,7 @@ class PageController extends Controller
         $productSettings = [
             'ActiveItem' => true,
             'limit'      => 6,
-            'page'       => 1,
+            'page'       => $offset,
             'CategoryId' => false,
             'FilterType' => false,
             'FilterText' => false,
