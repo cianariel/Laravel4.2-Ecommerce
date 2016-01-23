@@ -24,7 +24,7 @@ class PageController extends Controller
         return view('home')->with('content', $content);
     }
 
-    public function getContent($page = 0){
+    public function getContent($page = 1){
         $limit = 7;
         $offset = $limit *  ($page - 1);
 
@@ -40,9 +40,9 @@ class PageController extends Controller
         $json = curl_exec($ch);
         $stories = json_decode($json);
 
-        $featuredOffset = 3 * ($page - 1);
+        $featuredOffset = 5 * ($page - 1);
 
-        $featuredUrl = "http://staging.ideaing.com/ideas/feeds/index.php?count=3&only-featured&offset=". $featuredOffset;
+        $featuredUrl = "http://staging.ideaing.com/ideas/feeds/index.php?count=5&only-featured&offset=". $featuredOffset;
 
         curl_setopt($ch, CURLOPT_URL, $featuredUrl);
         $json = curl_exec($ch);
