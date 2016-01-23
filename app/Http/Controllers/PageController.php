@@ -58,6 +58,7 @@ class PageController extends Controller
             'FilterType' => false,
             'FilterText' => false,
             'ShowFor' => false,
+            'WithTags' => false,
         ];
 
         $prod = new Product();
