@@ -7971,6 +7971,28 @@ p {
     height: 20px;
     display: inline-block; }
 
+.loader .cg-busy-animation {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  z-index: 5;
+  text-indent: -9999px;
+  background: rgba(255, 255, 255, 0.6) url("/assets/images/elements/loader-pink.gif") center no-repeat; }
+
+.loader.loader-fixed .cg-busy-animation {
+  position: fixed;
+  left: 48%;
+  top: 48%; }
+
+.loader.loader-abs .cg-busy-backdrop {
+  position: relative;
+  min-height: 300px; }
+
+.loader.loader-abs .cg-busy-animation {
+  position: absolute;
+  left: 48%;
+  top: 48%; }
+
 .box-item {
   position: relative;
   border: 1px solid #eee;
@@ -8160,8 +8182,11 @@ p {
 /* footer layout */
 /* main layout */
 .homepage-grid {
+  position: relative;
   width: auto;
   max-width: 1170px; }
+  .homepage-grid .wrap {
+    min-height: 300px; }
   @media (max-width: 767px) {
     .homepage-grid {
       padding: 0 0; } }

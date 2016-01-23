@@ -5,13 +5,13 @@ angular.module('pagingApp.controllers', []).
         $scope.currentPage = 1;
         $scope.contentBlock = angular.element( document.querySelector('.main-content') );
 
-        pagaingApi.getContent(1).success(function (response) {
+        $scope.firstLoad = pagaingApi.getContent(1).success(function (response) {
             $scope.content[0] = response;
         });
 
         $scope.loadMore = function() {
             $scope.currentPage++;
-            pagaingApi.getContent(currentPage).success(function (response) {
+            $scope.nextLoad =  pagaingApi.getContent($scope.currentPage).success(function (response) {
                 $scope.newStuff[0] = response;
                 $scope.content = $scope.content.concat($scope.newStuff);
                 console.log($scope.content)
@@ -22,7 +22,8 @@ angular.module('pagingApp.controllers', []).
 
 angular.module('pagingApp', [
     'pagingApp.controllers',
-    'pagingApp.services'
+    'pagingApp.services',
+    'cgBusy'
 ]);
 
 angular.module('pagingApp.services', []).
