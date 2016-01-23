@@ -25,10 +25,10 @@ class PageController extends Controller
     }
 
     public function getContent($page = 0){
+        $limit = 7;
+        $offset = $limit *  ($page - 1);
 
-        $offset = 3 *  ($page - 1);
-
-        $url = "http://staging.ideaing.com/ideas/feeds/index.php?count=5&no-featured&offset=". $offset;
+        $url = 'http://staging.ideaing.com/ideas/feeds/index.php?count='.$limit.'&no-featured&offset='. $offset;
 
         $ch = curl_init();
 
@@ -38,22 +38,21 @@ class PageController extends Controller
         curl_setopt($ch, CURLOPT_ENCODING ,"");
 
         $json = curl_exec($ch);
-
         $stories = json_decode($json);
 
-        $featuredUrl = "http://staging.ideaing.com/ideas/feeds/index.php?count=3&only-featured&offset=". $offset;
+        $featuredOffset = 3 * ($page - 1);
+
+        $featuredUrl = "http://staging.ideaing.com/ideas/feeds/index.php?count=3&only-featured&offset=". $featuredOffset;
 
         curl_setopt($ch, CURLOPT_URL, $featuredUrl);
-
         $json = curl_exec($ch);
-
         $featured = json_decode($json);
 
         curl_close($ch);
 
         $productSettings = [
             'ActiveItem' => true,
-            'limit'      => 6,
+            'limit'      => $limit,
             'page'       => $page,
             'CategoryId' => false,
             'FilterType' => false,
