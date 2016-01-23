@@ -180,6 +180,8 @@
     // Route for product detail view
     Route::get('pro-details/{permalink?}', 'PageController@productDetailsPage');
 
+    Route::get('/api/paging/get-content/{page?}', 'PageController@getContent');
+
 
     // temporary category tag generator
    // Route::get('gen', 'TagsController@temporaryCategoryTagGenerator');

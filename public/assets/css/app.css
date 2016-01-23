@@ -4414,9 +4414,6 @@ body,
 html {
   overflow-x: hidden; }
 
-.main-content {
-  overflow: hidden; }
-
 .lamp-logo {
   display: block;
   width: 45px;
@@ -7946,8 +7943,9 @@ p {
     -webkit-border-radius: 100px;
     -moz-border-radius: 100px;
     border-radius: 100px;
-    max-width: 80px;
-    float: left; }
+    max-width: 55px;
+    float: left;
+    margin-left: 10px; }
   .user-widget__name {
     display: inline-block;
     padding: 5px 5px 4px;
@@ -7970,6 +7968,28 @@ p {
   .merchant-widget__store {
     height: 20px;
     display: inline-block; }
+
+.loader .cg-busy-animation {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  z-index: 5;
+  text-indent: -9999px;
+  background: rgba(255, 255, 255, 0.6) url("/assets/images/elements/loader-pink.gif") center no-repeat; }
+
+.loader.loader-fixed .cg-busy-animation {
+  position: fixed;
+  left: 48%;
+  top: 48%; }
+
+.loader.loader-abs .cg-busy-backdrop {
+  position: relative;
+  min-height: 300px; }
+
+.loader.loader-abs .cg-busy-animation {
+  position: absolute;
+  left: 48%;
+  top: 48%; }
 
 .box-item {
   position: relative;
@@ -8001,7 +8021,7 @@ p {
         width: 63px;
         height: 162px;
         left: -36px;
-        bottom: 0;
+        top: 131px;
         margin-top: -81px;
         z-index: 9; } }
   .box-item .user-widget__name,
@@ -8098,7 +8118,7 @@ p {
     text-align: center; }
     @media (min-width: 992px) {
       .box-item__label-idea {
-        top: 50%; } }
+        top: 58%; } }
   .box-item__label-prod {
     position: absolute;
     top: 39%;
@@ -8160,8 +8180,12 @@ p {
 /* footer layout */
 /* main layout */
 .homepage-grid {
+  position: relative;
   width: auto;
-  max-width: 1170px; }
+  max-width: 1170px;
+  overflow: visible; }
+  .homepage-grid .wrap {
+    min-height: 300px; }
   @media (max-width: 767px) {
     .homepage-grid {
       padding: 0 0; } }

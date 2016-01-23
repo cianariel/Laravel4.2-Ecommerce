@@ -92,9 +92,9 @@ require_once('../wp-load.php');
 $postCount = $_REQUEST['count']; // The number of posts to show in the feed
 $onlyfeatured = $_REQUEST['only-featured'];
 $no_featured = $_REQUEST['no-featured'];
-
+$offset = $_REQUEST['offset'];
 $postCat = $_REQUEST['category-id'];
-$posts = query_posts('cat='.$postCat.'&showposts=' . $postCount);
+$posts = query_posts('cat='.$postCat.'&showposts=' . $postCount.'&offset='.$offset);
 $datam = array();
 $data = array();
 while(have_posts()) : the_post();
@@ -136,7 +136,7 @@ if( has_post_thumbnail( $ID ) ) {
 		$keys = array_reverse(array_keys($files));
 		$j=0;
 		$num = $keys[$j];
-		$image=wp_get_attachment_image_url($num, 'large', false);
+		$image=wp_get_attachment_image_url($num, 'full', false);
 	  endif;
 	}
 $data['image'] = $image;

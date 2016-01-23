@@ -1,1 +1,191 @@
-!function($,o,t){$(function(){function o(){if(window.innerWidth<620)return!1;var o=$(window).scrollTop(),t=$("#sticky-anchor").offset().top;o>t?$(".sticks-on-scroll").addClass("stick"):$(".sticks-on-scroll").removeClass("stick")}$("body").on("click","[data-toggle]",function(o){o.preventDefault();var t=$(this),a=t.data("toggle"),e=t.data("hide"),l=t.data("overlay");e&&($(e).hide(),t.siblings().removeClass("active")),l&&$(".page-overlay").fadeToggle(),$(a).fadeToggle(),t.toggleClass("active")}),$(".page-overlay, .login-signup-modal").click(function(o){if(o.target===this){$(".modal, .page-overlay").fadeOut();var t=$('[data-overlay="true"]').data("toggle");t&&$(t).hide()}}),$("#back-to-top").click(function(){return $("html, body").animate({scrollTop:0},"slow"),!1}),$("[data-scrollto]").click(function(){var o=$(this).data("scrollto"),t=$(o),a=t.offset().top-70;return $("html, body").animate({scrollTop:a},"slow"),!1}),$("li.nested").click(function(){$(this).find("ul").fadeToggle()}),$('[data-toggle="modal"]').click(function(){var o=$(this).data("target");$(o).fadeToggle(),$(".page-overlay").fadeToggle()}),$('[data-dismiss="modal"]').click(function(){var o=$(this).parents(".modal");return o.fadeOut(),$(".page-overlay").fadeOut(),!0}),$(function(){$("#sticky-anchor").length&&($(window).scroll(o),o())}),$(function(){$(window).scroll(function(){$(".scroll-header").length?$(window).scrollTop()<60&&$("header.colophon").removeClass("scroll-header"):$(window).scrollTop()>60&&$("header.colophon").addClass("scroll-header")})}),$(function(){if(window.innerWidth<620)return!1;var o=$(".story-header");o.length&&$(window).scroll(function(){var t=$(window).scrollTop(),a=$("#hero-nav").offset().top,e=$("#top-nav");t>a?(o.fadeIn(),e.fadeOut()):(o.fadeOut(),e.fadeIn())})}),$("#about-button").click(function(){$("html, body").animate({scrollTop:$(document).height()},"slow")}),$("#main-content-filter a").click(function(o){o.preventDefault();var t=$(".main-content"),a=$(this).data("filter");t.removeClass("only-*"),t.addClass("only-"+a)})})}(jQuery,this);
+(function ($, root, undefined) {
+
+	$(function () {
+
+
+// For the simple custom JS functions
+
+        $('body').on('click', '[data-toggle]', function(e){
+            e.preventDefault();
+            var $that = $(this);
+            var $show = $that.data('toggle');
+            var $hide = $that.data('hide');
+            var $overlay = $that.data('overlay');
+
+            if($hide){
+                $($hide).hide();
+                $that.siblings().removeClass('active');
+            }
+
+            if($overlay){
+                $('.page-overlay').fadeToggle();
+            }
+
+            $($show).fadeToggle();
+            $that.toggleClass('active');
+        });
+
+        $('.page-overlay, .login-signup-modal').click(function(event){
+            if(event.target !== this){ // only fire if the block itself is clicked, not it's children (sometimes we need to hide the modal when anything outside it's main block is clickced
+                return;
+            }
+
+            $('.modal, .page-overlay').fadeOut();
+
+            var $hide = $('[data-overlay="true"]').data('toggle');
+
+            if($hide){
+                $($hide).hide();
+            }
+        });
+
+
+
+
+
+        $("#back-to-top").click(function() {
+            $('html, body').animate({ scrollTop: 0 }, 'slow');
+            return false;
+        });
+
+        $('[data-scrollto]').click(function() {
+            var $scrollNode = $(this).data('scrollto');
+            var $scrollTo   = $($scrollNode);
+            var $offset     = $scrollTo.offset().top - 70;
+
+            $('html, body').animate({ scrollTop: $offset }, 'slow');
+            return false;
+        });
+
+        $("li.nested").click(function() {
+            $(this).find('ul').fadeToggle();
+        });
+
+
+
+
+        $('[data-toggle="modal"]').click(function() {
+            var $modal = $(this).data('target');
+            $($modal).fadeToggle();
+            $('.page-overlay').fadeToggle();
+            //if($modal.hasClass('login-signup-modal')){
+            //    $('.picture-overlay').fadeToggle();
+            //}
+        });
+
+        $('[data-dismiss="modal"]').click(function() {
+           var $modal = $(this).parents('.modal');
+            $modal.fadeOut();
+            $('.page-overlay').fadeOut();
+            return true;
+        });
+
+        // scroll and stick the share bar
+        function sticky_relocate() {
+            if(window.innerWidth < 620){
+                return false;
+            }
+
+            var window_top = $(window).scrollTop();
+            var div_top = $('#sticky-anchor').offset().top;
+            if (window_top > div_top) {
+                $('.sticks-on-scroll').addClass('stick');
+            } else {
+                $('.sticks-on-scroll').removeClass('stick');
+            }
+        }
+
+        $(function () {
+            if($('#sticky-anchor').length){
+                $(window).scroll(sticky_relocate);
+                sticky_relocate();
+            }
+        });
+
+        // Sticking headers
+        $(function () {
+            $(window).scroll(function(){
+                if($('.scroll-header').length){
+                    if($(window).scrollTop() < 60){
+                        $('header.colophon').removeClass('scroll-header');
+                    }
+                }else if(($(window).scrollTop() > 60)){
+                    $('header.colophon').addClass('scroll-header');
+                }
+
+            });
+        });
+
+        $(function () {
+            if(window.innerWidth < 620){
+                return false;
+            }
+            var $showMe = $('.story-header');
+            if($showMe.length){
+                $(window).scroll(function(){
+                    var window_top = $(window).scrollTop();
+                    var div_top = $('#hero-nav').offset().top;
+                    var $main_header = $('#top-nav');
+
+                    if (window_top > div_top) {
+                        $showMe.fadeIn();
+                        $main_header.fadeOut();
+                    } else {
+                        $showMe.fadeOut();
+                        $main_header.fadeIn();
+
+                    }
+                });
+            }
+        });
+
+        $('#about-button').click(function(){
+            $("html, body").animate({ scrollTop: $(document).height() }, "slow");
+        });
+
+        $('.main-content-filter a').click(function(event){
+            event.preventDefault();
+            var $contentBox = $('.main-content');
+            var $type = $(this).data('filterby');
+
+            $contentBox.attr('data-only', $type);
+            //
+            //$contentBox.removeClass('only-*');
+            //$contentBox.addClass('only-' + $type);
+        });
+
+
+	}); // global function()
+
+})(jQuery, this);
+
+(function() {
+
+    'use strict';
+
+    angular
+        .module('timeTracker')
+        .factory('user', user);
+
+    function user($resource) {
+
+        // ngResource call to the API for the users
+        var User = $resource('api/users');
+
+        // Query the users and return the results
+        function getUsers() {
+            return User.query().$promise.then(function(results) {
+                return results;
+            }, function(error) {
+                console.log(error);
+            });
+        }
+
+        return {
+            getUsers: getUsers
+        }
+    }
+})();
+
+
+

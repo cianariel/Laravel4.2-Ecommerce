@@ -1,7 +1,12 @@
 .homepage-grid {
-
+    position: relative;
 	width: auto;
 	max-width: 1170px;
+  overflow: visible;
+
+   .wrap{
+     min-height: 300px;
+   }
 
 	@media (max-width: 767px) {
 		padding: 0 0;

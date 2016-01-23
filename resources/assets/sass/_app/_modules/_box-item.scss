@@ -37,7 +37,7 @@
 				width: 63px;
 				height: 162px;
 				left: -36px;
-				bottom: 0;
+                top: 131px;
 				margin-top: -81px;
 				z-index: 9;
 			}
@@ -152,7 +152,7 @@
 		text-align: center;
 
 		@media (min-width: 992px) {
-			top: 50%;
+			top: 58%;
 		}
 	}
 	&__label-prod {

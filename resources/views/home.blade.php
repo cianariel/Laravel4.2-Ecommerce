@@ -52,64 +52,71 @@
 
     <div class="clearfix"></div>
 
-    <div class="homepage-grid container main-content">
-        <div class="grid-box-3">
-            @foreach($content['row-1'] as $item)
-                @if(!isset($item->type) || $item->type != 'product')
-                    @include('grid.idea')
-                @else
-                    @include('grid.product')
-                @endif
-            @endforeach
-        </div>
+    <div class="homepage-grid center-block" ng-app="pagingApp" ng-controller="pagingController">
+        {{--<div class="wrap">--}}
 
-        @if($content['row-2'])
-            <div class="grid-box-full">
-                @foreach($content['row-2'] as $item)
+            <div class="loader loader-abs" cg-busy="firstLoad"></div>
+            <div class="loader loader-fixed" cg-busy="nextLoad"></div>
+
+            <div ng-repeat="batch in content" class="container main-content">
+                <div class="grid-box-3">
+                        <div class="box-item idea-box" ng-if="item.type == 'idea'" ng-repeat="item in batch['row-1']">
+                            @include('grid.idea')
+                        </div>
+
+                        <div ng-if="item.type == 'product'" ng-repeat="item in batch['row-1']" class="box-item product-box">
+                            @include('grid.product')
+                        </div>
+                </div>
+
+                <div class="grid-box-full">
+                    <div class="box-item idea-box box-item--featured" ng-if="item.type == 'idea'" ng-repeat="item in batch['row-2']">
                         @include('grid.idea')
-                @endforeach
+                    </div>
+
+                </div>
+
+                <div class="grid-box-3">
+                    <div class="box-item idea-box" ng-if="item.type == 'idea'" ng-repeat="item in batch['row-3']">
+                        @include('grid.idea')
+                    </div>
+
+                    <div ng-if="item.type == 'product'" ng-repeat="item in batch['row-3']" class="box-item product-box">
+                        @include('grid.product')
+                    </div>
+                </div>
+
+                <div class="grid-box-full">
+                    <div class="box-item idea-box box-item--featured" ng-if="item.type == 'idea'" ng-repeat="item in batch['row-4']">
+                        @include('grid.idea')
+                    </div>
+
+                </div>
+
+                <div class="grid-box-3">
+                        <div class="box-item idea-box" ng-if="item.type == 'idea'" ng-repeat="item in batch['row-5']">
+                            @include('grid.idea')
+                        </div>
+
+                        <div ng-if="item.type == 'product'" ng-repeat="item in batch['row-5']" class="box-item product-box">
+                            @include('grid.product')
+                        </div>
+                </div>
+
+
+                <div class="grid-box-full">
+                    <div class="box-item idea-box box-item--featured" ng-if="item.type == 'idea'" ng-repeat="item in batch['row-6']">
+                        @include('grid.idea')
+                    </div>
+
+                </div>
             </div>
-        @endif
+        {{--</div>--}}
 
-        <div class="grid-box-3">
-            @foreach($content['row-3'] as $item)
-                @if(!isset($item->type) || $item->type != 'product')
-                    @include('grid.idea')
-                @else
-                    @include('grid.product')
-                @endif
-            @endforeach
-        </div>
-
-        @if($content['row-4'])
-            <div class="grid-box-full">
-                @foreach($content['row-4'] as $item)
-                    @include('grid.idea')
-                @endforeach
-            </div>
-        @endif
-
-        <div class="grid-box-3">
-            @foreach($content['row-5'] as $item)
-                @if(!isset($item->type) || $item->type != 'product')
-                    @include('grid.idea')
-                @else
-                    @include('grid.product')
-                @endif
-            @endforeach
-        </div>
-
-        @if($content['row-6'])
-            <div class="grid-box-full">
-                @foreach($content['row-6'] as $item)
-                    @include('grid.idea')
-                @endforeach
-            </div>
-        @endif
-
-        <a class="btn btn-success bottom-load-more col-xs-12">Load More</a>
+        <a ng-click="loadMore()" class="btn btn-success bottom-load-more col-xs-12">Load More</a>
 
     </div>
 
-
+    <script src="/assets/js/vendor/angular-busy.min.js"></script>
+    <script src="/assets/js/angular-custom/custom.paging.js"></script>
 @stop
