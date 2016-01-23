@@ -321,7 +321,10 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
             ];
             $scope.mediaLink = "";
             $scope.isMediaUploadable = true;
+
             $scope.isHeroItem = false;
+            $scope.isMainItem = false;
+
             $scope.mediaList = [];
 
             // Pagination info
@@ -1179,14 +1182,16 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
                     MediaTitle: $scope.mediaTitle,
                     MediaType: $scope.selectedMediaType,
                     MediaLink: $scope.mediaLink,
-                    IsHeroItem: $scope.isHeroItem
+                    IsHeroItem: $scope.isHeroItem,
+                    IsMainItem: $scope.isMainItem
                 }
             }).success(function (data) {
                 //   console.log(data);
 
                 if (data.status_code == 200) {
                     $scope.getMedia();
-                    $scope.mediaTitle = $scope.selectedMediaType = $scope.mediaLink = $scope.isHeroItem = '';
+                    $scope.mediaTitle = $scope.selectedMediaType = $scope.mediaLink = $scope.isHeroItem = $scope.isMainItem ='';
+
                 }
 
             })

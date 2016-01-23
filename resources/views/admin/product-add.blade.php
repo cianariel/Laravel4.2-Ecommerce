@@ -546,6 +546,14 @@
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
+                                                    <label class="col-md-2 control-label">Main Item :
+                                                    </label>
+                                                    <div class="col-md-4">
+                                                        <input data-ng-model="isMainItem"
+                                                               type="checkbox">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
                                                     <div ng-show="isMediaUploadable">
                                                         <label class="col-md-2 control-label">Upload Media Content</label>
                                                         <div class="col-md-4">                                                        
@@ -579,9 +587,10 @@
                                                                 <thead>
                                                                 <tr>
                                                                     <th class="col-md-1">#</th>
-                                                                    <th class="col-md-3">Title</th>
+                                                                    <th class="col-md-2">Title</th>
                                                                     <th class="col-md-2">Type</th>
                                                                     <th class="col-md-1">Hero</th>
+                                                                    <th class="col-md-1">main</th>
                                                                     <th class="col-md-4">Link</th>
                                                                     <th class="col-md-1">Action</th>
                                                                 </tr>
@@ -592,6 +601,7 @@
                                                                     <td>@{{ media.media_name}}</td>
                                                                     <td>@{{ media.media_type}} </td>
                                                                     <td>@{{ media.is_hero_item == 1? 'true':''}} </td>
+                                                                    <td>@{{ media.is_main_item == 1? 'true':''}} </td>
                                                                     <td>
                                                                         <a href="@{{ media.media_link}}"
                                                                            target="_blank">

@@ -336,6 +336,8 @@
             $media->media_type = $inputData['MediaType'];
             $media->media_link = $inputData['MediaLink'];
             $media->is_hero_item = $inputData['IsHeroItem'];
+            $media->is_main_item = $inputData['IsMainItem'];
+
 
             try
             {
