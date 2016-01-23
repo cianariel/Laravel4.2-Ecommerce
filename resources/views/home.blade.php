@@ -63,15 +63,31 @@
                     @include('grid.product')
                 </div>
         </div>
-        <div class="grid-box-3">
-                <div ng-if="item.type == 'idea'" ng-repeat="item in content['row-3']">
-                    @include('grid.idea')
-                </div>
 
-                <div ng-if="item.type == 'product'" ng-repeat="item in content['row-3']" class="box-item product-box">
-                    @include('grid.product')
-                </div>
+        <div class="grid-box-full">
+            <div class="box-item idea-box box-item--featured" ng-if="item.type == 'idea'" ng-repeat="item in content['row-2']">
+                @include('grid.idea')
+            </div>
+
         </div>
+
+        <div class="grid-box-3">
+            <div ng-if="item.type == 'idea'" ng-repeat="item in content['row-1']">
+                @include('grid.idea')
+            </div>
+
+            <div ng-if="item.type == 'product'" ng-repeat="item in content['row-1']" class="box-item product-box">
+                @include('grid.product')
+            </div>
+        </div>
+
+        <div class="grid-box-full">
+            <div class="box-item idea-box box-item--featured" ng-if="item.type == 'idea'" ng-repeat="item in content['row-4']">
+                @include('grid.idea')
+            </div>
+
+        </div>
+
         <div class="grid-box-3">
                 <div class="box-item idea-box" ng-if="item.type == 'idea'" ng-repeat="item in content['row-5']">
                     @include('grid.idea')
@@ -82,116 +98,17 @@
                 </div>
         </div>
 
-        <script>
-            angular.module('pagingApp.controllers', []).
-                    controller('pagingController', function($scope, pagaingApi) {
-                        $scope.content = [];
 
-                        pagaingApi.getContent().success(function (response) {
-                            //Dig into the responde to get the relevant data
-                            $scope.content = response;
-                            console.log($scope.content['row-1'])
-                        });
-                    });
+        <div class="grid-box-full">
+            <div class="box-item idea-box box-item--featured" ng-if="item.type == 'idea'" ng-repeat="item in content['row-6']">
+                @include('grid.idea')
+            </div>
 
-            angular.module('pagingApp', [
-                'pagingApp.controllers',
-                'pagingApp.services'
-            ]);
-
-            angular.module('pagingApp.services', []).
-                    factory('pagaingApi', function($http) {
-
-                        var pagaingApi = {};
-
-                        pagaingApi.getContent = function() {
-                            return $http({
-                                method: 'GET',
-                                url: '/api/paging/get-content'
-                            });
-                        }
-
-                        return pagaingApi;
-                    });
-        </script>
-
-
-        {{--<div class="grid-box-3">--}}
-            {{--@foreach($content['row-1'] as $item)--}}
-                {{--@if(!isset($item->type) || $item->type != 'product')--}}
-                    {{--@include('grid.idea')--}}
-                {{--@else--}}
-                    {{--@include('grid.product')--}}
-                {{--@endif--}}
-            {{--@endforeach--}}
-        {{--</div>--}}
-
-        {{--@if($content['row-2'])--}}
-            {{--<div class="grid-box-full">--}}
-                {{--@foreach($content['row-2'] as $item)--}}
-                        {{--@include('grid.idea')--}}
-                {{--@endforeach--}}
-            {{--</div>--}}
-        {{--@endif--}}
-
-        {{--<div class="grid-box-3">--}}
-            {{--@foreach($content['row-3'] as $item)--}}
-                {{--@if(!isset($item->type) || $item->type != 'product')--}}
-                    {{--@include('grid.idea')--}}
-                {{--@else--}}
-                    {{--@include('grid.product')--}}
-                {{--@endif--}}
-            {{--@endforeach--}}
-        {{--</div>--}}
-
-        {{--@if($content['row-4'])--}}
-            {{--<div class="grid-box-full">--}}
-                {{--@foreach($content['row-4'] as $item)--}}
-                    {{--@include('grid.idea')--}}
-                {{--@endforeach--}}
-            {{--</div>--}}
-        {{--@endif--}}
-
-        {{--<div class="grid-box-3">--}}
-            {{--@foreach($content['row-5'] as $item)--}}
-                {{--@if(!isset($item->type) || $item->type != 'product')--}}
-                    {{--@include('grid.idea')--}}
-                {{--@else--}}
-                    {{--@include('grid.product')--}}
-                {{--@endif--}}
-            {{--@endforeach--}}
-        {{--</div>--}}
-
-        {{--@if($content['row-6'])--}}
-            {{--<div class="grid-box-full">--}}
-                {{--@foreach($content['row-6'] as $item)--}}
-                    {{--@include('grid.idea')--}}
-                {{--@endforeach--}}
-            {{--</div>--}}
-        {{--@endif--}}
+        </div>
 
         <a class="btn btn-success bottom-load-more col-xs-12">Load More</a>
 
     </div>
 
-
-    {{--<div ng-app="pagingApp" ng-controller="pagingController">--}}
-        {{--<table>--}}
-            {{--<thead>--}}
-            {{--<tr><th colspan="4">Drivers Championship Standings</th></tr>--}}
-            {{--</thead>--}}
-            {{--<tbody>--}}
-            {{--<tr ng-repeat="item in content">--}}
-                {{--        <td>{{$index + 1}}</td>--}}
-                {{--<td>--}}
-                {{--@{{item.Driver.givenName}}&nbsp;@{{item.Driver.familyName}}--}}
-                {{--</td>--}}
-                {{--<td>@{{item.Constructors[0].name}}</td>--}}
-            {{--</tr>--}}
-            {{--</tbody>--}}
-        {{--</table>--}}
-
-    {{--</div>--}}
-
-
+    <script src="/assets/js/angular-custom/custom.paging.js"></script>
 @stop
