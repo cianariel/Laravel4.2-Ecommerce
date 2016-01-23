@@ -92,9 +92,9 @@ require_once('../wp-load.php');
 $postCount = $_REQUEST['count']; // The number of posts to show in the feed
 $onlyfeatured = $_REQUEST['only-featured'];
 $no_featured = $_REQUEST['no-featured'];
-
+$offset = $_REQUEST['offset'];
 $postCat = $_REQUEST['category-id'];
-$posts = query_posts('cat='.$postCat.'&showposts=' . $postCount);
+$posts = query_posts('cat='.$postCat.'&showposts=' . $postCount.'&offset='.$offset);
 $datam = array();
 $data = array();
 while(have_posts()) : the_post();
