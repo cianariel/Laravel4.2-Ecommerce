@@ -18,6 +18,7 @@
             'media_type',
             'media_link',
             'is_hero_item',
+            'is_main_item',
             'mediable_id',
             'mediable_type'
         );

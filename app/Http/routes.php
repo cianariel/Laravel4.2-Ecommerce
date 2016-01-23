@@ -178,12 +178,11 @@
     Route::get('category/{identity?}', 'ProductCategoryController@showProductInCategoryName');
 
     // Route for product detail view
-  //
     Route::get('pro-details/{permalink?}', 'PageController@productDetailsPage');
 
 
     // temporary category tag generator
-    //Route::get('gen', 'TagsController@temporaryCategoryTagGenerator');
+   // Route::get('gen', 'TagsController@temporaryCategoryTagGenerator');
 
 
 

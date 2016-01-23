@@ -34,6 +34,14 @@ productApp.controller('productController', ['$scope', '$http', '$window'
             $scope.dataLength = 0;//$scope.comparableProductList.length;
             $scope.temporaryViewList=[];
 
+            $scope.showCompareButton = true;
+
+
+        };
+
+        // toggle comapare button
+        $scope.toggleCompareButton = function(){
+            $scope.showCompareButton = ! $scope.showCompareButton;
 
         };
 

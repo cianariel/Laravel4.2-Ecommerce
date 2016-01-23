@@ -160,7 +160,8 @@
                 {
                     $join->on('medias.mediable_id', '=', 'products.id')
                         ->where('mediable_type', '=', 'App\Models\Product')
-                        ->Where('media_type', '=', 'img-upload');
+                        ->Where('media_type', '=', 'img-upload')
+                        ->Where('is_main_item', '=', '1');
                 })
                 ->first(array(
                     'products.id', 'products.show_for', 'products.updated_at', 'products.product_vendor_id', 'products.product_vendor_type',
@@ -258,7 +259,7 @@
             $product['result'] = $productModel
                 ->take($settings['limit'])
                 ->offset($skip)
-                ->orderBy('updated_at', 'desc')
+                ->orderBy('created_at', 'desc')
                 ->get(array("id"));
 
             $data = array();
@@ -363,7 +364,7 @@
             $relatedProductsData = [];
 
             // generate related products from category
-            $products = $this->populateProductsFromSameCategory($productInfo['CategoryId'],$productData['product']->similar_product_ids,$productInfo['Id']);
+            $products = $this->populateProductsFromSameCategory($productInfo['CategoryId'], $productData['product']->similar_product_ids, $productInfo['Id']);
 
             if ($products != "" || $products != null)
             {
@@ -406,7 +407,7 @@
 
         // populate related product data from same category
 
-        public function populateProductsFromSameCategory($categoryId, $similarProducts,$productId,$totalItem = 3)
+        public function populateProductsFromSameCategory($categoryId, $similarProducts, $productId, $totalItem = 3)
         {
             $settings['ActiveItem'] = false;
             $settings['CategoryId'] = $categoryId;
@@ -422,25 +423,29 @@
 
             $products = $this->getProductList($settings);
 
-            $tmpItems =[];
+            $tmpItems = [];
 
-            foreach($similarProducts as $tmp){
-                $data['id'] = $tmp->id;
-                $data['name'] = $tmp->name;
-                array_push($tmpItems,$data);
+            if ($similarProducts != null)
+            {
+                foreach ($similarProducts as $tmp)
+                {
+                    $data['id'] = $tmp->id;
+                    $data['name'] = $tmp->name;
+                    array_push($tmpItems, $data);
+                }
             }
 
-            foreach($products['result'] as $item)
+            foreach ($products['result'] as $item)
             {
-                if($productId == $item->id)
+                if ($productId == $item->id)
                     continue;
 
                 $data['id'] = $item->id;
                 $data['name'] = $item->product_name;
-                array_push($tmpItems,$data);
+                array_push($tmpItems, $data);
             }
 
-            array_splice($tmpItems,$totalItem);
+            array_splice($tmpItems, $totalItem);
 
             return $tmpItems;
         }

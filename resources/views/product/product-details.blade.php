@@ -278,7 +278,7 @@
                         <button class="arrow arrow-left" ng-hide="compareIndex == 0" ng-click="traverseBackward()"></button>
 
                         <div class="col-sm-3 col-xs-6 comparison-tab" ng-init="loadProductDetails()">
-                            <section{{--class="search-bar"--}}>
+                            <section ng-hide="showCompareButton">
 
                                 <autocomplete ng-model="selectedProduct"
                                               attr-placeholder="type to search product..."
@@ -290,13 +290,15 @@
 
                                 </autocomplete>
                             </section>
-                        </div
+                            <button type="button" ng-click="toggleCompareButton()" ng-show ="showCompareButton" class="btn btn-warning btn-block">
+                                Add to Compare ( + )
+                            </button>
+                        </div>
+
 
                                 <!-- compare dynamic start -->
 
 
-                      {{--  <div ng-repeat="item in comparableProductList  | limitTo: 3" ng-if="$index >= compareIndex">
---}}
                         <div ng-repeat="item in temporaryViewList">
 
                             <div class="col-sm-3 col-xs-6 comparison-tab">
@@ -306,10 +308,10 @@
                                     <div class="tab-wrap">
                                         <h4>@{{ item.data.productInformation.ProductName }}</h4>
                                         <i>@{{ item.data.productInformation.Available }}</i>
-                                        <b class="score">@{{ item.data.productInformation.Review[0].value }}</b>
+                                        <b class="score">@{{ item.data.productInformation.Review[1].value }}</b>
 
                                         <div class="star-raiting">
-                                            <span class="stars">(@{{ item.data.productInformation.Review[1].counter }})</span>
+                                            <span class="stars">(@{{ item.data.productInformation.Review[1].counter | number:0 }}) Customer Reviews</span>
                                         </div>
                                         <div class="btn purple-bg price-badge">
                                             <span>Amazon</span> <b>$@{{ item.data.productInformation.SellPrice }}</b>
