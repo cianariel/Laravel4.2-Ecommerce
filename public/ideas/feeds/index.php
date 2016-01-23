@@ -127,7 +127,7 @@ $datepublish = timeAgo($datepublishstring);
 $data['date'] = $datepublish;
 $data['updated_at'] = $datepublish;
 if( has_post_thumbnail( $ID ) ) {
-        $image = get_the_post_thumbnail_url( $ID, 'large', false );
+        $image = get_the_post_thumbnail_url( $ID, 'full', false );
     }
 	else
 	{
