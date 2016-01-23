@@ -71,7 +71,7 @@
             </li>
             <li class="nav-item  ">
                 <a href="javascript:;#product" class="nav-link nav-toggle">
-                    <i class="icon-tag"></i>
+                    <i class="icon-graph"></i>
                     <span class="title">Products</span>
                     <span class="arrow"></span>
                 </a>
@@ -90,7 +90,7 @@
             </li>
             <li class="nav-item  ">
                 <a href="javascript:;" class="nav-link nav-toggle">
-                    <i class="icon-tag"></i>
+                    <i class="icon-wallet"></i>
                     <span class="title">Rooms</span>
                     <span class="arrow"></span>
                 </a>

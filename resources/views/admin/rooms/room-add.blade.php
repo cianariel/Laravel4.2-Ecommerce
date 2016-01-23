@@ -13,22 +13,26 @@
         <div class="page-bar">
             <ul class="page-breadcrumb">
                 <li>
-                    <a href="index.html">Admin</a>
+                    <a href="/admin/dashboard">Admin</a>
                     <i class="fa fa-circle"></i>
                 </li>
                 <li>
-                    <span>Nice</span>
+                    <span>Rooms</span>
+                    <i class="fa fa-circle"></i>
+                </li>
+                <li>
+                    <span>Add Room</span>
                 </li>
             </ul>
         </div>
         <!-- END PAGE BAR -->
-        <div ng-app="adminApp" data-ng-controller="AdminController" class="row" nv-file-drop="" uploader="uploader"
-             filters="queueLimit, customFilter">
-
-            <div class="col-md-12" ng-cloak>
+        <h5 > &nbsp;
+        </h5>
+        <div class="row">
+            <div class="col-md-12">
                 <div>
-                    <form role="form" name="myForm" enctype="multipart/form-data" class="form-horizontal form-row-seperated">
-                        <div class="portlet">
+                    <form role="form" name="add-room" enctype="multipart/form-data" method="post" action="/api/room/add-room"  class="form-horizontal form-row-seperated">
+                        <div class="portlet light bordered">
                             <div class="portlet-title">
 
                                 <div class="caption">
@@ -37,37 +41,232 @@
                                     
                                     <button  class="btn btn-success">
                                         <i class="fa fa-check"></i> Save</button>
-                                    <button class="btn btn-success">
-                                        <i class="fa fa-eye"></i> Preview</button>
-                                    <button class="btn btn-info" type="button">
-                                        <i class="fa fa-check-circle"></i> Active</button>
-                                    <button class="btn btn-warning" type="button">
-                                        <i class="fa fa-angle-left"></i> Inactive</button>
-                                    <button class="btn btn-danger" type="button">
-                                        <i class="fa fa-times"></i> Delete</button>
                                 </div>
                             </div>
-                            <div class="portlet-body"  id="tag-hero">
-                                <div class="form-group last">
-                                    <div class="col-md-12">
-                                        <div class="fileinput fileinput-new" data-provides="fileinput">
-                                            <div class="fileinput-new thumbnail" style="width: 100%;">
-                                                <img src="http://www.placehold.it/200x150/EFEFEF/AAAAAA&amp;text=no+image" alt="" /> </div>
-                                            <div class="fileinput-preview fileinput-exists thumbnail" style="width: 100%;"> </div>
-                                            <div>
-                                                <span class="btn default btn-file">
-                                                    <span class="fileinput-new"> Select image </span>
-                                                    <span class="fileinput-exists"> Change </span>
-                                                    <input type="file" id="hero-image1" name="hero-image1"> </span>
-                                                <a href="javascript:;" class="btn red fileinput-exists" data-dismiss="fileinput"> Remove </a>
+                            <div class="portlet-body form"  id="tag-hero">
+                                <h3 class="form-section">Room Info</h3>
+                                <div class="row">
+                                    <div class="col-lg-9">
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">Room Title:</label>
+                                            <div class="col-md-6">
+                                                <input name="room_name" class="form-control"
+                                                               placeholder="Enter Room Title">
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
+                                    <div class="col-lg-9">
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">Room Permalink:</label>
+                                            <div class="col-md-6">
+                                                <input name="room_permalink" class="form-control"
+                                                               placeholder="Enter Room Permalink">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <h3 class="form-section">Hero Images</h3>
+                                <div class="row">
                                     <div class="col-lg-12">
-                                        <div>
-                                            <img src="/assets/images/room-landing-hero.jpg" width="100%" />
+                                        <div class="tabbable-bordered">
+                                            <ul class="nav nav-tabs">
+                                                <li class="active">
+                                                    <a href="#Hero1" data-toggle="tab"> Hero Image 1 </a>
+                                                </li>
+                                                <li>
+                                                    <a href="#Hero2" data-toggle="tab"> Hero Image 2 </a>
+                                                </li>
+                                                <li>
+                                                    <a href="#Hero3" data-toggle="tab"> Hero Image 3 </a>
+                                                </li>
+                                            </ul>
+                                            <div class="tab-content">
+                                                <div class="tab-pane fade active in" id="Hero1">
+                                                    <div class="form-group">
+                                                        <div class="col-md-12">
+                                                            <div class="fileinput fileinput-new" data-provides="fileinput">
+                                                                <div class="fileinput-new thumbnail" style="width: 100%;">
+                                                                    <img src="http://www.placehold.it/200x150/EFEFEF/AAAAAA&amp;text=no+image" alt="" /> </div>
+                                                                <div class="fileinput-preview fileinput-exists thumbnail" style="width: 100%;"> </div>
+                                                                <div>
+                                                                    <span class="btn default btn-file">
+                                                                        <span class="fileinput-new"> Select image </span>
+                                                                        <span class="fileinput-exists"> Change </span>
+                                                                        <input type="file" id="heroimage1" name="heroimage1" class="hero-image"> </span>
+                                                                    <a href="javascript:;" class="btn red fileinput-exists" data-dismiss="fileinput"> Remove </a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            <div class="form-group">
+                                                                <label class="control-label col-md-3">Image Title:</label>
+                                                                <div class="col-md-9">
+                                                                    <input class="form-control"
+                                                                                   placeholder="Enter Image Title">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <div class="form-group">
+                                                                <label class="col-md-3 control-label">Alt Text:
+                                                                </label>
+                                                                <div class="col-md-9">
+                                                                    <input class="form-control"
+                                                                                   placeholder="Enter Alt Text">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            <div class="form-group">
+                                                                <label class="col-md-3 control-label">Caption:
+                                                                </label>
+                                                                <div class="col-md-9">
+                                                                    <input class="form-control"
+                                                                                   placeholder="Enter Image Title">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <div class="form-group">
+                                                                <label class="col-md-3 control-label">Desciption:
+                                                                </label>
+                                                                <div class="col-md-9">
+                                                                    <input class="form-control"
+                                                                                   placeholder="Desciption">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="tab-pane fade" id="Hero2">
+                                                    <div class="form-group">
+                                                        <div class="col-md-12">
+                                                            <div class="fileinput fileinput-new" data-provides="fileinput">
+                                                                <div class="fileinput-new thumbnail" style="width: 100%;">
+                                                                    <img src="http://www.placehold.it/200x150/EFEFEF/AAAAAA&amp;text=no+image" alt="" /> </div>
+                                                                <div class="fileinput-preview fileinput-exists thumbnail" style="width: 100%;"> </div>
+                                                                <div>
+                                                                    <span class="btn default btn-file">
+                                                                        <span class="fileinput-new"> Select image </span>
+                                                                        <span class="fileinput-exists"> Change </span>
+                                                                        <input type="file" id="heroimage2" name="heroimage2"  class="hero-image"> </span>
+                                                                    <a href="javascript:;" class="btn red fileinput-exists" data-dismiss="fileinput"> Remove </a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            <div class="form-group">
+                                                                <label class="control-label col-md-3">Image Title:</label>
+                                                                <div class="col-md-9">
+                                                                    <input class="form-control"
+                                                                                   placeholder="Enter Image Title">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <div class="form-group">
+                                                                <label class="col-md-3 control-label">Alt Text:
+                                                                </label>
+                                                                <div class="col-md-9">
+                                                                    <input class="form-control"
+                                                                                   placeholder="Enter Alt Text">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            <div class="form-group">
+                                                                <label class="col-md-3 control-label">Caption:
+                                                                </label>
+                                                                <div class="col-md-9">
+                                                                    <input class="form-control"
+                                                                                   placeholder="Enter Image Title">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <div class="form-group">
+                                                                <label class="col-md-3 control-label">Desciption:
+                                                                </label>
+                                                                <div class="col-md-9">
+                                                                    <input class="form-control"
+                                                                                   placeholder="Desciption">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="tab-pane fade" id="Hero3">
+                                                    <div class="form-group">
+                                                        <div class="col-md-12">
+                                                            <div class="fileinput fileinput-new" data-provides="fileinput">
+                                                                <div class="fileinput-new thumbnail" style="width: 100%;">
+                                                                    <img src="http://www.placehold.it/200x150/EFEFEF/AAAAAA&amp;text=no+image" alt="" /> </div>
+                                                                <div class="fileinput-preview fileinput-exists thumbnail" style="width: 100%;"> </div>
+                                                                <div>
+                                                                    <span class="btn default btn-file">
+                                                                        <span class="fileinput-new"> Select image </span>
+                                                                        <span class="fileinput-exists"> Change </span>
+                                                                        <input type="file" id="heroimage3" name="heroimage3"  class="hero-image"> </span>
+                                                                    <a href="javascript:;" class="btn red fileinput-exists" data-dismiss="fileinput"> Remove </a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            <div class="form-group">
+                                                                <label class="control-label col-md-3">Image Title:</label>
+                                                                <div class="col-md-9">
+                                                                    <input class="form-control"
+                                                                                   placeholder="Enter Image Title">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <div class="form-group">
+                                                                <label class="col-md-3 control-label">Alt Text:
+                                                                </label>
+                                                                <div class="col-md-9">
+                                                                    <input class="form-control"
+                                                                                   placeholder="Enter Alt Text">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            <div class="form-group">
+                                                                <label class="col-md-3 control-label">Caption:
+                                                                </label>
+                                                                <div class="col-md-9">
+                                                                    <input class="form-control"
+                                                                                   placeholder="Enter Image Title">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <div class="form-group">
+                                                                <label class="col-md-3 control-label">Desciption:
+                                                                </label>
+                                                                <div class="col-md-9">
+                                                                    <input class="form-control"
+                                                                                   placeholder="Desciption">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -76,10 +275,6 @@
                     </form>
                 </div>
             </div>
-            <!-- /.col-lg-12 --                </div>
->
-        </div>
-        <!-- /.row -->
         </div>
     </div>
 </div>
@@ -132,11 +327,14 @@
 
 <script>
 $(function() {
-    $(".fileinput-preview").change(function(e) {
-        $('#tag-hero img').click(onheroclick);
-        return false;
+    $(".hero-image").change(function(e) {
+        setTimeout(setimage,100)
     });
-    $('#tag-hero img').click(onheroclick);
+    function setimage()
+    {
+        $('.fileinput-preview img').click(onheroclick);
+    }
+    
     function onheroclick(e){
         var parentOffset = $(this).parent().offset(); 
         var relX = e.pageX - parentOffset.left;
