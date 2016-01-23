@@ -322,8 +322,9 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
             $scope.mediaLink = "";
             $scope.isMediaUploadable = true;
 
-            $scope.isHeroItem = false;
+            $scope.isHeroItem = true;
             $scope.isMainItem = false;
+            $scope.isMediaEdit = false;
 
             $scope.mediaList = [];
 
@@ -353,7 +354,7 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
 
             $scope.selectedTagId = '';
 
-            $scope.Tags=[];
+            $scope.Tags = [];
 
             // product filter with Tag
             $scope.WithTags = false;
@@ -362,17 +363,17 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
 
         ///// tag //////
 
-        $scope.showTagsByProductId = function(){
+        $scope.showTagsByProductId = function () {
 
-                $http({
-                    url: '/api/tag/show-tag/'+$scope.ProductId,
-                    method: "GET",
-                }).success(function (data) {
-                    $scope.Tags = data.data;
-                });
+            $http({
+                url: '/api/tag/show-tag/' + $scope.ProductId,
+                method: "GET",
+            }).success(function (data) {
+                $scope.Tags = data.data;
+            });
         };
 
-        $scope.associateTags = function(){
+        $scope.associateTags = function () {
             $http({
                 url: '/api/tag/add-tags',
                 method: "POST",
@@ -387,12 +388,12 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
 
         $scope.searchTagByName = function (query) {
 
-           // return [{"id":10,"name":"book"}];
+            // return [{"id":10,"name":"book"}];
             return $http.get('/api/tag/search-tag/' + query);
         };
 
         // open information in edit mood
-        $scope.editTagInfo = function(index){
+        $scope.editTagInfo = function (index) {
 
             $scope.closeAlert();
 
@@ -423,7 +424,7 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
             });
         };
 
-        $scope.deleteTagInfo = function(tagId){
+        $scope.deleteTagInfo = function (tagId) {
             //delete-tag-info
             $scope.closeAlert();
 
@@ -494,7 +495,7 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
         $scope.$on("nodeSelected", function (event, node) {
             $scope.selected = node;
             $scope.selectedItem = $scope.selected.id;
-           // console.log($scope.selectedItem);
+            // console.log($scope.selectedItem);
             $scope.$broadcast("selectNode", node);
         });
 
@@ -1190,14 +1191,14 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
 
                 if (data.status_code == 200) {
                     $scope.getMedia();
-                    $scope.mediaTitle = $scope.selectedMediaType = $scope.mediaLink = $scope.isHeroItem = $scope.isMainItem ='';
+                    $scope.mediaTitle = $scope.selectedMediaType = $scope.mediaLink = $scope.isHeroItem = $scope.isMainItem = '';
 
                 }
 
             })
         };
 
-        // get medial content list for a single product
+        // get media content list for a single product
         $scope.getMedia = function () {
             $http({
                 url: '/api/product/get-media/' + $scope.ProductId,
@@ -1227,7 +1228,61 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
             });
         };
 
+        $scope.editMedia = function (index) {
+
+            $scope.mediaId = $scope.mediaList[index].id;
+
+            $scope.mediaTitle = $scope.mediaList[index].media_name;
+            $scope.selectedMediaType = $scope.mediaList[index].media_type;
+            $scope.mediaLink = $scope.mediaList[index].media_link;
+
+            var stat = $scope.mediaList[index].is_hero_item == 1 ? true : false;
+            $scope.isHeroItem = stat;
+            $scope.isMainItem = $scope.mediaList[index].is_main_item == 1 ? 1 : 0;
+            $scope.isMediaEdit = true;
+            console.log($scope.mediaId);
+
+
+            /*
+             ProductId: $scope.ProductId,
+             MediaTitle: $scope.mediaTitle,
+             MediaType: $scope.selectedMediaType,
+             MediaLink: $scope.mediaLink,
+             IsHeroItem: $scope.isHeroItem,
+             IsMainItem: $scope.isMainItem
+             */
+        };
+
+        $scope.updateMediaInfo = function () {
+            $http({
+                url: '/api/media/update-media',
+                method: 'POST',
+                data: {
+                    MediaId: $scope.mediaId,
+                    MediaTitle: $scope.mediaTitle,
+                    MediaType: $scope.selectedMediaType,
+                    MediaLink: $scope.mediaLink,
+                    IsHeroItem: $scope.isHeroItem,
+                    IsMainItem: $scope.isMainItem
+
+                }
+            }).success(function (data) {
+               // console.log(data);
+                $scope.mediaId = '';
+                $scope.mediaTitle = '';
+                $scope.selectedMediaType = '';
+                $scope.mediaLink = '';
+                $scope.isHeroItem = false;
+                $scope.isMainItem = false;
+                $scope.isMediaEdit = false;
+                $scope.getMedia();
+
+            });
+        };
+
         // Initialize variables and functions Globally.
         $scope.initPage();
         $scope.getCategory();
+
+
     }]);

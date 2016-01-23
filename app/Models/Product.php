@@ -383,7 +383,7 @@
 
                     foreach ($tmp->medias as $single)
                     {
-                        if (($single->media_type == 'img-upload' || $single->media_type == 'img-link') && $single->is_hero_item == null)
+                        if (($single->media_type == 'img-upload' || $single->media_type == 'img-link') && $single->is_main_item == 1)
                         {
                             $image = $single->media_link;
                             break;

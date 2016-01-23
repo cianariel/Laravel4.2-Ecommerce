@@ -515,7 +515,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label class="col-md-2 control-label">Media Title :
+                                                    <label class="col-md-2 control-label">Media Type :
                                                     </label>
                                                     <div class="col-md-4">
                                                         <select data-ng-model="selectedMediaType"
@@ -541,16 +541,14 @@
                                                     <label class="col-md-2 control-label">Mark As Hero Item :
                                                     </label>
                                                     <div class="col-md-4">
-                                                        <input data-ng-model="isHeroItem"
-                                                           type="checkbox">
+                                                        <input  type="checkbox" data-ng-model="isHeroItem" />
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label class="col-md-2 control-label">Main Item :
+                                                    <label class="col-md-2 control-label">Thumb Item :
                                                     </label>
                                                     <div class="col-md-4">
-                                                        <input data-ng-model="isMainItem"
-                                                               type="checkbox">
+                                                        <input data-ng-model="isMainItem" type="checkbox" />
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
@@ -572,8 +570,12 @@
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
-                                                    <div class="col-md-4">                                                    
-                                                        <button type="button"
+                                                    <div class="col-md-4">
+                                                        <button ng-show="isMediaEdit" type="button"
+                                                                class="btn btn-warning"
+                                                                ng-click="updateMediaInfo()">Update
+                                                        </button>
+                                                        <button ng-hide="isMediaEdit" type="button"
                                                                 class="btn btn-primary"
                                                                 ng-click="addMediaInfo()">Add In List
                                                         </button>
@@ -609,6 +611,13 @@
                                                                         </a>
                                                                     </td>
                                                                     <td>
+                                                                        <button ng-click="editMedia($index)"
+                                                                                class="btn btn-info btn-circle"
+                                                                                uib-tooltip="Edit"
+                                                                                tooltip-placement="bottom">
+                                                                            <i class="fa fa-edit"></i>
+                                                                        </button>
+
                                                                         <button data-ng-click="deleteMedia(media.id)"
                                                                                 confirm="Are you sure to delete this item ?"
                                                                                 confirm-settings="{size: 'sm'}"

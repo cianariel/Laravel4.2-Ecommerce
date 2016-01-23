@@ -13,13 +13,13 @@
     */
 
 
-/*
-    //Debug query
-    Event::listen('illuminate.query', function($query)
-     {
-         var_dump($query);
-     });
-*/
+    /*
+        //Debug query
+        Event::listen('illuminate.query', function($query)
+         {
+             var_dump($query);
+         });
+    */
 
     Route::get('/', 'PageController@home');
 
@@ -100,7 +100,7 @@
         Route::get('pro-details/{permalink?}', 'ProductController@productDetailsView');
 
         // Get product Info from API
-        Route::get('api-data/{itemId?}','ProductController@getProductInfoFromApi');
+        Route::get('api-data/{itemId?}', 'ProductController@getProductInfoFromApi');
 
         /*
          *  TAG module for product
@@ -116,9 +116,7 @@
         Route::get('tag/search-tag/{tagId}', 'TagsController@searchTagByName');
 
 
-
         Route::post('tag/add-tags', 'TagsController@addTags');
-
 
 
         /*
@@ -129,9 +127,8 @@
         Route::any('product/media-upload', 'ProductController@addMediaForProduct');
         Route::post('product/add-media-info', 'ProductController@addMediaInfo');
         Route::get('product/get-media/{id?}', 'ProductController@getMediaForProduct');
-        Route::post('product/delete-media/', 'ProductController@deleteSingleMediaItem');
-
-
+        Route::post('product/delete-media', 'ProductController@deleteSingleMediaItem');
+        Route::post('media/update-media', 'MediaController@updateMediaContent');
 
 
         /*
@@ -184,7 +181,7 @@
 
 
     // temporary category tag generator
-   // Route::get('gen', 'TagsController@temporaryCategoryTagGenerator');
+    // Route::get('gen', 'TagsController@temporaryCategoryTagGenerator');
 
 
 
