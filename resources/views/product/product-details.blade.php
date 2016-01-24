@@ -78,7 +78,7 @@
 
                 <div class="average-score">
                     <div class="score">@if(isset($productInformation['Review']) && isset($productInformation['IdeaingReviewScore']))
-                            {{(($productInformation['Review'][0]->value + $productInformation['IdeaingReviewScore'])/2)*20}}@endif%
+                            {{intval((($productInformation['Review'][0]->value + $productInformation['IdeaingReviewScore'])/2)*20)}}@endif%
                     </div>
                     <span class="caption">Average Ideaing Score</span>
                 </div>
@@ -367,8 +367,8 @@
                         <div class="col-sm-3">
                             <h6 class="grey">Critic Reviews</h6>
                             <b class="score critic-score pink">
-                                @if(isset($productInformation['Review']))
-                                    {{($productInformation['Review'][0]->value /5)*100}} %
+                                @if(isset($productInformation['IdeaingReviewScore']))
+                                    {{($productInformation['IdeaingReviewScore'])*20}} %
                                 @endif
                             </b>
                         </div>
