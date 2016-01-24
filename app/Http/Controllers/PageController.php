@@ -94,7 +94,7 @@ class PageController extends Controller
         MetaTag::set('title',$result['productInformation']['PageTitle']);
         MetaTag::set('description',$result['productInformation']['MetaDescription']);
 
-     //   dd($result['selfImages']['picture'][0]['link']);
+       // dd($result['relatedProducts']);
         return view('product.product-details')
             ->with('permalink',$permalink)
             ->with('productInformation',$result['productInformation'])
