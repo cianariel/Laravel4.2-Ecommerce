@@ -101,21 +101,24 @@
 }
 
 .loader{
-  .cg-busy-animation{
+  //.cg-busy-animation{
     width: 40px;
     height: 40px;
     border-radius: 10px;
     z-index: 5;
-    text-indent: -9999px;
-    background:rgba(255,255,255, .6) url('/assets/images/elements/loader-pink.gif') center no-repeat;
+    //text-indent: -9999px;
+    //background:rgba(255,255,255, .6) url('/assets/images/elements/loader-pink.gif') center no-repeat;
+  //}
+
+  svg path,
+  svg rect{
+    fill: $iridium;
   }
 
   &.loader-fixed{
-    .cg-busy-animation{
       position: fixed;
       left: 48%;
       top: 48%;
-    }
   }
 
   &.loader-abs{
@@ -123,10 +126,10 @@
       position: relative;
       min-height: 300px;
     }
-    .cg-busy-animation{
+    //.cg-busy-animation{
       position: absolute;
       left: 48%;
       top: 48%;
-    }
+    //}
   }
 }

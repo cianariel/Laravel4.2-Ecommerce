@@ -40,3 +40,12 @@ angular.module('pagingApp.services', []).
 
         return pagaingApi;
     });
+
+angular.module('pagingApp').value('cgBusyDefaults',{
+    message:'',
+    backdrop: false,
+    templateUrl: '/assets/svg/spinner.html',
+    delay: 300,
+    minDuration: 700,
+    wrapperClass: 'my-class my-class2'
+});
