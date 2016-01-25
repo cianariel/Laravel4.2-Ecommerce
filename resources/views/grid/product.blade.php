@@ -26,7 +26,7 @@
         <img class="merchant-widget__store" src="/assets/images/dummies/amazon-black.png" />
     </div>
     <div class="clearfix"></div>
-    <a href="@{{item.affiliate_link}}" class="box-item__get-it">Get it</a>
+    <a target="_blank" href="@{{item.affiliate_link}}" class="box-item__get-it">Get it</a>
 </div>
 
 
