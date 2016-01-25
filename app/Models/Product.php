@@ -133,7 +133,7 @@
                     "page_title"              => $product['PageTitle'],
                     "meta_description"        => $product['MetaDescription'],
                     "similar_product_ids"     => json_encode($product['SimilarProductIds']),
-                    "product_availability"    => $product['ProductAvailability'],
+                    "product_availability"    => isset($product['ProductAvailability']) ? $product['ProductAvailability'] : "",
                     "post_status"             => $product['PostStatus']
                 );
 
@@ -166,7 +166,7 @@
                 ->first(array(
                     'products.id', 'products.show_for', 'products.updated_at', 'products.product_vendor_id', 'products.product_vendor_type',
                     'products.user_name', 'products.product_name', 'product_categories.category_name', 'products.affiliate_link',
-                    'products.price', 'products.sale_price', 'medias.media_link', 'products.product_permalink'
+                    'products.price', 'products.sale_price', 'medias.media_link', 'products.product_permalink', 'products.post_status'
                 ));
 
             return $result;
@@ -366,10 +366,10 @@
             }
 
             // if main image is not selected
-            if(!isset($selfImage['mainImage']))
+            if (!isset($selfImage['mainImage']))
             {
-                $selfImage['mainImage'] = $selfImage['picture'][ 1 ]['link'];
-                $selfImage['mainImageName'] = $selfImage['picture'][ 1 ]['picture-name'];
+                $selfImage['mainImage'] = isset($selfImage['picture'][1]['link'])?$selfImage['picture'][1]['link']:'';
+                $selfImage['mainImageName'] = isset($selfImage['picture'][1]['picture-name'])?$selfImage['picture'][1]['picture-name']:'';
 
             }
 
@@ -416,7 +416,12 @@
             $result['relatedProducts'] = $relatedProductsData;
             $result['selfImages'] = $selfImage;
 
+
+            //removing duplicate data entry for related product (set distinct value for related products)
+            $result['relatedProducts'] = array_map("unserialize", array_unique(array_map("serialize", $result['relatedProducts'])));
+
             return $result;
+
         }
 
         // populate related product data from same category

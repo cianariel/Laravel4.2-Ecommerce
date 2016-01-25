@@ -193,7 +193,8 @@
                                                                         <th class="col-md-1">Image</th>
                                                                         <th class="col-md-2">Update</th>
                                                                         <th class="col-md-1">User</th>
-                                                                        <th class="col-md-3">Product Name</th>
+                                                                        <th class="col-md-2">Product Name</th>
+                                                                        <th class="col-md-1">Status</th>
                                                                         <th class="col-md-1">Category</th>
                                                                         <th class="col-md-1">Affiliate</th>
                                                                         <th class="col-md-1">List Price</th>
@@ -204,7 +205,7 @@
                                                                     <tbody>
                                                                     <tr ng-repeat="product in ProductList">
                                                                         <td>
-                                                                            <a href="/pro-details/@{{ product.product_permalink }}"
+                                                                            <a href="/product/@{{ product.product_permalink }}"
                                                                                target="_blank">
                                                                                 <img id="currentPhoto"
                                                                                      ng-src='@{{ product.media_link }}'
@@ -217,6 +218,7 @@
                                                                         <td>
                                                                             <a href="/admin/product-edit/@{{ product.id }}">@{{ product.product_name }}</a>
                                                                         </td>
+                                                                        <td><b ng-style="product.post_status == 'Inactive' && {'color': 'red'} || {'color': 'green'}">@{{ product.post_status }}</b></td>
                                                                         <td>@{{ product.category_name }}</td>
                                                                         <td><a ng-show="product.affiliate_link != null"
                                                                                href="@{{ product.affiliate_link }}"

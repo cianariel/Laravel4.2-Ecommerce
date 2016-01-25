@@ -18,7 +18,7 @@
 </div>
 
 <div class="box-item__label-prod">
-    <a href="/pro-details/@{{item.product_permalink}}" class="box-item__label box-item__label--clear">@{{item.product_name}}</a>
+    <a href="/product/@{{item.product_permalink}}" class="box-item__label box-item__label--clear">@{{item.product_name}}</a>
     <div class="clearfix"></div>
     <div class="merchant-widget">
         <span class="merchant-widget__price">$@{{item.price}}</span>

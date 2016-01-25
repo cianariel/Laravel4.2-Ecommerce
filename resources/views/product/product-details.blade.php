@@ -358,11 +358,7 @@
 
                 <section class="pale-grey-bg reviews" id="reviews">
                     <div class="container full-620 fixed-sm">
-                        <h3 class="pink">Reviews(
-                            @if(isset($productInformation['Review']))
-                                {{count($productInformation['Review']) -1}}
-                            @endif
-                        )</h3>
+                        <h3 class="pink">Reviews (@if(isset($productInformation['Review'])){{count($productInformation['Review']) -1}}@endif)</h3>
 
                         <div class="col-sm-3">
                             <h6 class="grey">Critic Reviews</h6>
