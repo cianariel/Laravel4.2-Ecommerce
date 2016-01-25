@@ -94,7 +94,6 @@
         // Delete product
         Route::post('product/delete-product', 'ProductController@deleteProduct');
 
-        Route::get('pro-details/{permalink?}', 'ProductController@productDetailsView');
 
         //add to compare queue
         Route::get('pro-details/{permalink?}', 'ProductController@productDetailsView');
@@ -175,7 +174,9 @@
     Route::get('category/{identity?}', 'ProductCategoryController@showProductInCategoryName');
 
     // Route for product detail view
-    Route::get('pro-details/{permalink?}', 'PageController@productDetailsPage');
+    //    Route::get('pro-details/{permalink?}', 'PageController@productDetailsPage');
+    Route::get('product/{permalink?}', 'PageController@productDetailsPage');
+
 
     Route::get('/api/paging/get-content/{page?}', 'PageController@getContent');
 

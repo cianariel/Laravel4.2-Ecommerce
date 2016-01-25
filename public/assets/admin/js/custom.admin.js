@@ -274,7 +274,7 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
             $scope.selectedItem = '';
             $scope.Name = '';
             $scope.Permalink = '';
-            $scope.htmlContent = '';
+            $scope.htmlContent = '<div><br/><br/><br/>1. Describe what the product is<br/><br/></div><div>2. How does it solve one\'s problem<br/><br/></div><div>3. Why is it unique<br/><br/></div><div>4. Mention how the reviewers (Amazon users or CNET or another source) said about it.<br/><br/></div><div>5. List 3 bullet points on its key features in your own words</div>';
             $scope.Price = '';
             $scope.SalePrice = '';
             $scope.StoreId = '';
@@ -1141,9 +1141,9 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
 
         };
 
-        //preview the product in detials page
+        //preview the product in details page
         $scope.previewProduct = function (permalink) {
-            $window.open('/pro-details/' + permalink, '_blank');
+            $window.open('/product/' + permalink, '_blank');
         };
 
         // Change the media type during add and edit of media content.
