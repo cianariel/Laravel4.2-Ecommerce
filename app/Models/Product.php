@@ -357,6 +357,20 @@
                     $selfImage['heroImage'] = $value->media_link;
                     $selfImage['heroImageName'] = $value->media_name;
                 }
+                if (($value->media_type == 'img-upload' || $value->media_type == 'img-link') && $value->is_main_item == true)
+                {
+                    $selfImage['mainImage'] = $value->media_link;
+                    $selfImage['mainImageName'] = $value->media_name;
+                }
+
+            }
+
+            // if main image is not selected
+            if(!isset($selfImage['mainImage']))
+            {
+                $selfImage['mainImage'] = $selfImage['picture'][ 1 ]['link'];
+                $selfImage['mainImageName'] = $selfImage['picture'][ 1 ]['picture-name'];
+
             }
 
             // setting information for related products
@@ -383,7 +397,7 @@
 
                     foreach ($tmp->medias as $single)
                     {
-                        if (($single->media_type == 'img-upload' || $single->media_type == 'img-link') && $single->is_hero_item == null)
+                        if (($single->media_type == 'img-upload' || $single->media_type == 'img-link') && $single->is_main_item == 1)
                         {
                             $image = $single->media_link;
                             break;

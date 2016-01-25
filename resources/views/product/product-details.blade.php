@@ -78,7 +78,7 @@
 
                 <div class="average-score">
                     <div class="score">@if(isset($productInformation['Review']) && isset($productInformation['IdeaingReviewScore']))
-                            {{(($productInformation['Review'][0]->value + $productInformation['IdeaingReviewScore'])/2)*20}}@endif%
+                            {{intval((($productInformation['Review'][0]->value + $productInformation['IdeaingReviewScore'])/2)*20)}}@endif%
                     </div>
                     <span class="caption">Average Ideaing Score</span>
                 </div>
@@ -303,15 +303,15 @@
 
                             <div class="col-sm-3 col-xs-6 comparison-tab">
                                 <div>
-                                    <img class="img-responsive" ng-src="@{{ item.data.selfImages.picture[0].link }}"/>
+                                    <img class="img-responsive" ng-src="@{{ item.data.selfImages.mainImage}}" alt="@{{ item.data.selfImages.mainImageName}}"/>
 
                                     <div class="tab-wrap">
                                         <h4>@{{ item.data.productInformation.ProductName }}</h4>
-                                        <i>@{{ item.data.productInformation.Available }}</i>
+                                        {{--<i>@{{ item.data.productInformation.Available }}</i>--}}
                                         <b class="score">@{{ item.data.productInformation.Review[1].value }}</b>
 
-                                        <div class="star-raiting">
-                                            <span class="stars">(@{{ item.data.productInformation.Review[1].counter | number:0 }}) Customer Reviews</span>
+                                        <div class="star-raiting" style="text-align: center">
+                                            <span class="stars" >(@{{ item.data.productInformation.Review[1].counter | number:0 }}) Customer Reviews</span>
                                         </div>
                                         <div class="btn purple-bg price-badge">
                                             <span>Amazon</span> <b>$@{{ item.data.productInformation.SellPrice }}</b>
@@ -367,8 +367,8 @@
                         <div class="col-sm-3">
                             <h6 class="grey">Critic Reviews</h6>
                             <b class="score critic-score pink">
-                                @if(isset($productInformation['Review']))
-                                    {{($productInformation['Review'][0]->value /5)*100}} %
+                                @if(isset($productInformation['IdeaingReviewScore']))
+                                    {{($productInformation['IdeaingReviewScore'])*20}} %
                                 @endif
                             </b>
                         </div>
