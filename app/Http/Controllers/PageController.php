@@ -63,6 +63,10 @@ class PageController extends Controller
 
         $prod = new Product();
 
+        if(!$stories){
+            $stories = [];
+        }
+
         $products = $prod->getProductList($productSettings);
         $content = array_merge($stories, $products['result']);
 //        $content = $products['result'];

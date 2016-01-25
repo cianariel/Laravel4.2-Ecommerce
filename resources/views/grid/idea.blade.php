@@ -2,7 +2,7 @@
 
 <img ng-if="item.feed_image !== undefined && item.is_featured != true" alt="@{{item.feed_image.alt}}" title="@{{item.feed_image.alt}}" src="@{{item.feed_image.url}}">
 
-<span class="box-item__time">@{{item.date}}</span>
+<span class="box-item__time">@{{item.updated_at}}</span>
 <div class="box-item__overlay"></div>
 
 <ul class="social-stats">
