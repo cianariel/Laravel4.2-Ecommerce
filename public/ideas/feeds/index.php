@@ -1,7 +1,7 @@
 <?php
 function timeAgo($time_ago)
 {
-	$d1 = new DateTime($datepublishstring);
+	$d1 = new DateTime($time_ago);
 	$d1 = $d1->format('M, d Y');
     $time_ago = strtotime($time_ago);
     $cur_time   = time();
@@ -124,7 +124,7 @@ $data['category_all'] = $cat_names;
 $data['url'] = get_the_permalink();
 $datepublishstring = get_the_time('Y-m-d H:i:s');
 $datepublish = timeAgo($datepublishstring);
-$data['date'] = $datepublish;
+$data['creation_date'] = $datepublish;
 $data['updated_at'] = $datepublish;
 if( has_post_thumbnail( $ID ) ) {
         $image = get_the_post_thumbnail_url( $ID, 'full', false );
