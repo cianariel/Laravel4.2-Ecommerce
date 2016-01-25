@@ -39,7 +39,7 @@ productApp.controller('productController', ['$scope', '$http', '$window'
 
         };
 
-        // toggle comapare button
+        // toggle compare button
         $scope.toggleCompareButton = function(){
             $scope.showCompareButton = ! $scope.showCompareButton;
 
@@ -78,9 +78,13 @@ productApp.controller('productController', ['$scope', '$http', '$window'
             }).success(function (data) {
                 $scope.comparableProductList.push(data);
 
-                $scope.temporaryViewList = $scope.comparableProductList.slice($scope.compareIndex,$scope.compareIndex + 3);
+                $scope.temporaryViewList = $scope.comparableProductList.slice($scope.compareIndex,$scope.compareIndex + 2);
                 $scope.dataLength = $scope.comparableProductList.length;
                 $scope.selectedProduct = '';
+
+                if($scope.dataLength >2)
+                $scope.traverseForward();
+                $scope.toggleCompareButton();
 
             });
 
@@ -90,7 +94,7 @@ productApp.controller('productController', ['$scope', '$http', '$window'
             $scope.comparableProductList.splice(index, 1);
 
             $scope.dataLength = $scope.comparableProductList.length;
-            $scope.temporaryViewList = $scope.comparableProductList.slice($scope.compareIndex,$scope.compareIndex + 3);
+            $scope.temporaryViewList = $scope.comparableProductList.slice($scope.compareIndex,$scope.compareIndex + 2);
 
         };
 
@@ -99,7 +103,7 @@ productApp.controller('productController', ['$scope', '$http', '$window'
             if ($scope.compareIndex <= $scope.dataLength - 1)
                 $scope.compareIndex++;
 
-            $scope.temporaryViewList = $scope.comparableProductList.slice($scope.compareIndex,$scope.compareIndex + 3);
+            $scope.temporaryViewList = $scope.comparableProductList.slice($scope.compareIndex,$scope.compareIndex + 2);
 
         };
 
@@ -109,7 +113,7 @@ productApp.controller('productController', ['$scope', '$http', '$window'
                 $scope.compareIndex--;
 
 
-            $scope.temporaryViewList = $scope.comparableProductList.slice($scope.compareIndex,$scope.compareIndex + 3);
+            $scope.temporaryViewList = $scope.comparableProductList.slice($scope.compareIndex,$scope.compareIndex + 2);
 
         };
 
@@ -125,7 +129,7 @@ productApp.controller('productController', ['$scope', '$http', '$window'
                     $scope.comparableProductList.push(data);
 
 
-                    $scope.temporaryViewList = $scope.comparableProductList.slice($scope.compareIndex,$scope.compareIndex + 3);
+                    $scope.temporaryViewList = $scope.comparableProductList.slice($scope.compareIndex,$scope.compareIndex + 2);
                     $scope.dataLength = $scope.comparableProductList.length;
 
                     // set spec list for product compare
