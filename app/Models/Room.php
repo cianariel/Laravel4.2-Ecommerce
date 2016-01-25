@@ -2,10 +2,7 @@
 
     namespace App\Models;
 
-    use App\Core\ProductApi\AmazonProductApi;
-    use App\Core\ProductApi\ProductStrategy;
     use Illuminate\Database\Eloquent\Model;
-    use Carbon\Carbon;
 
     class Room extends Model {
     	/**
@@ -18,7 +15,22 @@
             'room_name',
             'room_permalink',
             'room_description',
-            'room_status'
+            'room_status',
+            'hero_image_1',
+            'hero_image_1_title',
+            'hero_image_1_alt',
+            'hero_image_1_desc',
+            'hero_image_1_caption',
+            'hero_image_2',
+            'hero_image_2_title',
+            'hero_image_2_alt',
+            'hero_image_2_desc',
+            'hero_image_2_caption',
+            'hero_image_3',
+            'hero_image_3_title',
+            'hero_image_3_alt',
+            'hero_image_3_desc',
+            'hero_image_3_caption',
         );
         protected $hidden = ['created_at'];
     }
