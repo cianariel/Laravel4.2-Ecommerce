@@ -277,24 +277,11 @@
 
                         <button class="arrow arrow-left" ng-hide="compareIndex == 0" ng-click="traverseBackward()"></button>
 
-                        <div class="col-sm-3 col-xs-6 comparison-tab" ng-init="loadProductDetails()">
-                            <section ng-hide="showCompareButton">
-
-                                <autocomplete ng-model="selectedProduct"
-                                              attr-placeholder="type to search product..."
-                                              {{--attr-input-class="form-control"--}}
-                                              ng-model-options="{debounce: 1000}"
-                                              data="suggestedItems"
-                                              on-select="selectedIdem"
-                                              on-type="searchProductByName">
-
-                                </autocomplete>
+                        <div class="col-sm-3 col-xs-6 comparison-tab">
+                            <section class="purple">
+                                Add Product To Compare
                             </section>
-                            <button type="button" ng-click="toggleCompareButton()" ng-show ="showCompareButton" class="btn btn-warning btn-block">
-                                Add to Compare ( + )
-                            </button>
                         </div>
-
 
                                 <!-- compare dynamic start -->
 
@@ -320,6 +307,29 @@
                                     </div>
                                     <span class="close-button" ng-click="deleteSelectedItem($index)">✕</span>
                                 </div>
+                            </div>
+                        </div>
+                        <!-- add item to compare -->
+                        <div class="col-sm-3 col-xs-6 comparison-tab" ng-init="loadProductDetails()">
+
+                            <div ng-hide="showCompareButton">
+
+                                <autocomplete ng-model="selectedProduct"
+                                              attr-placeholder="type to search product..."
+                                              {{--attr-input-class="form-control"--}}
+                                              ng-model-options="{debounce: 1000}"
+                                              data="suggestedItems"
+                                              on-select="selectedIdem"
+                                              on-type="searchProductByName">
+
+                                </autocomplete>
+                            </div>
+
+                            <div ng-show ="showCompareButton">
+                                <a class="purple add-more" ng-click="toggleCompareButton()">
+                                    <span class="plus">+</span>
+                                    <span>Add Product</span>
+                                </a>
                             </div>
                         </div>
 
