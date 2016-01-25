@@ -21,7 +21,11 @@
                     <i class="fa fa-circle"></i>
                 </li>
                 <li>
+                @if($room->id)
+                    <span>Edit Room</span>
+                    @else
                     <span>Add Room</span>
+                    @endif
                 </li>
             </ul>
         </div>
@@ -31,12 +35,22 @@
         <div class="row">
             <div class="col-md-12">
                 <div>
+                @if($room->id)
+                    <form role="form" name="add-room" enctype="multipart/form-data" method="post" action="/api/room/update-room"  class="form-horizontal form-row-seperated">
+                    <input type="hidden" name="room_id" id="room_id" value="{{$room->id}}">
+                    @else
                     <form role="form" name="add-room" enctype="multipart/form-data" method="post" action="/api/room/add-room"  class="form-horizontal form-row-seperated">
+                    @endif
                         <div class="portlet light bordered">
                             <div class="portlet-title">
 
                                 <div class="caption">
-                                    <i class="fa fa-shopping-cart"></i>Add Room </div>
+                                    <i class="fa fa-shopping-cart"></i>
+                                    @if($room->id)
+                                    Edit Room
+                                    @else
+                                    Add Room
+                                    @endif</div>
                                 <div class="actions btn-set">
                                     
                                     <button  class="btn btn-success">
@@ -51,7 +65,7 @@
                                             <label class="control-label col-md-3">Room Title:</label>
                                             <div class="col-md-6">
                                                 <input name="room_name" class="form-control"
-                                                               placeholder="Enter Room Title">
+                                                               placeholder="Enter Room Title" value="{{$room->room_name}}">
                                             </div>
                                         </div>
                                     </div>
@@ -62,7 +76,7 @@
                                             <label class="control-label col-md-3">Room Permalink:</label>
                                             <div class="col-md-6">
                                                 <input name="room_permalink" class="form-control"
-                                                               placeholder="Enter Room Permalink">
+                                                               placeholder="Enter Room Permalink" value="{{$room->room_permalink}}">
                                             </div>
                                         </div>
                                     </div>
@@ -88,7 +102,12 @@
                                                         <div class="col-md-12">
                                                             <div class="fileinput fileinput-new" data-provides="fileinput">
                                                                 <div class="fileinput-new thumbnail" style="width: 100%;">
+                                                                    @if($room->hero_image_1)
+                                                                    <img src="{{$room->hero_image_1}}" alt="" id="hero_image_1_img" /> </div>
+                                                                    @else
                                                                     <img src="http://www.placehold.it/200x150/EFEFEF/AAAAAA&amp;text=no+image" alt="" /> </div>
+                                                                    @endif
+                                                                    
                                                                 <div class="fileinput-preview fileinput-exists thumbnail" style="width: 100%;"> </div>
                                                                 <div>
                                                                     <span class="btn default btn-file">
@@ -106,7 +125,7 @@
                                                                 <label class="control-label col-md-3">Image Title:</label>
                                                                 <div class="col-md-9">
                                                                     <input class="form-control"
-                                                                                   placeholder="Image Title" name="hero_image_1_title" id="hero_image_1_title">
+                                                                                   placeholder="Image Title" name="hero_image_1_title" id="hero_image_1_title" value="{{$room->hero_image_1_title}}">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -116,7 +135,7 @@
                                                                 </label>
                                                                 <div class="col-md-9">
                                                                     <input class="form-control"
-                                                                                   placeholder="Alt Text" name="hero_image_1_alt" id="hero_image_1_alt">
+                                                                                   placeholder="Alt Text" name="hero_image_1_alt" id="hero_image_1_alt" value="{{$room->hero_image_1_alt}}">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -128,7 +147,7 @@
                                                                 </label>
                                                                 <div class="col-md-9">
                                                                     <input class="form-control"
-                                                                                   placeholder="Image Title" name="hero_image_1_caption" id="hero_image_1_caption">
+                                                                                   placeholder="Image Title" name="hero_image_1_caption" id="hero_image_1_caption" value="{{$room->hero_image_1_caption}}">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -138,7 +157,7 @@
                                                                 </label>
                                                                 <div class="col-md-9">
                                                                     <input class="form-control"
-                                                                                   placeholder="Desciption" name="hero_image_1_desc" id="hero_image_1_desc">
+                                                                                   placeholder="Desciption" name="hero_image_1_desc" id="hero_image_1_desc" value="{{$room->hero_image_1_desc}}">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -149,7 +168,11 @@
                                                         <div class="col-md-12">
                                                             <div class="fileinput fileinput-new" data-provides="fileinput">
                                                                 <div class="fileinput-new thumbnail" style="width: 100%;">
+                                                                    @if($room->hero_image_2)
+                                                                    <img src="{{$room->hero_image_2}}" alt="" id="hero_image_2_img"/> </div>
+                                                                    @else
                                                                     <img src="http://www.placehold.it/200x150/EFEFEF/AAAAAA&amp;text=no+image" alt="" /> </div>
+                                                                    @endif
                                                                 <div class="fileinput-preview fileinput-exists thumbnail" style="width: 100%;"> </div>
                                                                 <div>
                                                                     <span class="btn default btn-file">
@@ -167,7 +190,7 @@
                                                                 <label class="control-label col-md-3">Image Title:</label>
                                                                 <div class="col-md-9">
                                                                     <input class="form-control"
-                                                                                   placeholder="Image Title" name="hero_image_2_title" id="hero_image_2_title">
+                                                                                   placeholder="Image Title" name="hero_image_2_title" id="hero_image_2_title" value="{{$room->hero_image_2_title}}">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -177,7 +200,7 @@
                                                                 </label>
                                                                 <div class="col-md-9">
                                                                     <input class="form-control"
-                                                                                   placeholder="Alt Text" name="hero_image_2_alt" id="hero_image_2_alt">
+                                                                                   placeholder="Alt Text" name="hero_image_2_alt" id="hero_image_2_alt" value="{{$room->hero_image_2_alt}}">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -189,7 +212,7 @@
                                                                 </label>
                                                                 <div class="col-md-9">
                                                                     <input class="form-control"
-                                                                                   placeholder="Image Title" name="hero_image_2_caption" id="hero_image_2_caption">
+                                                                                   placeholder="Image Title" name="hero_image_2_caption" id="hero_image_2_caption" value="{{$room->hero_image_2_caption}}">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -199,7 +222,7 @@
                                                                 </label>
                                                                 <div class="col-md-9">
                                                                     <input class="form-control"
-                                                                                   placeholder="Desciption"  name="hero_image_2_desc" id="hero_image_2_desc">
+                                                                                   placeholder="Desciption"  name="hero_image_2_desc" id="hero_image_2_desc" value="{{$room->hero_image_2_desc}}">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -210,7 +233,11 @@
                                                         <div class="col-md-12">
                                                             <div class="fileinput fileinput-new" data-provides="fileinput">
                                                                 <div class="fileinput-new thumbnail" style="width: 100%;">
+                                                                    @if($room->hero_image_3)
+                                                                    <img src="{{$room->hero_image_3}}" alt="" id="hero_image_3_img" /> </div>
+                                                                    @else
                                                                     <img src="http://www.placehold.it/200x150/EFEFEF/AAAAAA&amp;text=no+image" alt="" /> </div>
+                                                                    @endif
                                                                 <div class="fileinput-preview fileinput-exists thumbnail" style="width: 100%;"> </div>
                                                                 <div>
                                                                     <span class="btn default btn-file">
@@ -228,7 +255,7 @@
                                                                 <label class="control-label col-md-3">Image Title:</label>
                                                                 <div class="col-md-9">
                                                                     <input class="form-control"
-                                                                                   placeholder="Image Title"  name="hero_image_3_title" id="hero_image_3_title">
+                                                                                   placeholder="Image Title"  name="hero_image_3_title" id="hero_image_3_title" value="{{$room->hero_image_3_title}}">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -238,7 +265,7 @@
                                                                 </label>
                                                                 <div class="col-md-9">
                                                                     <input class="form-control"
-                                                                                   placeholder="Alt Text"  name="hero_image_3_alt" id="hero_image_3_alt">
+                                                                                   placeholder="Alt Text"  name="hero_image_3_alt" id="hero_image_3_alt" value="{{$room->hero_image_3_alt}}">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -250,7 +277,7 @@
                                                                 </label>
                                                                 <div class="col-md-9">
                                                                     <input class="form-control"
-                                                                                   placeholder="Image Caption"  name="hero_image_3_caption" id="hero_image_3_caption">
+                                                                                   placeholder="Image Caption"  name="hero_image_3_caption" id="hero_image_3_caption" value="{{$room->hero_image_3_caption}}">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -260,7 +287,7 @@
                                                                 </label>
                                                                 <div class="col-md-9">
                                                                     <input class="form-control"
-                                                                                   placeholder="Desciption"  name="hero_image_3_desc" id="hero_image_3_desc">
+                                                                                   placeholder="Desciption"  name="hero_image_3_desc" id="hero_image_3_desc" value="{{$room->hero_image_3_desc}}">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -334,7 +361,15 @@ $(function() {
     {
         $('.fileinput-preview img').click(onheroclick);
     }
-    
+    @if($room->hero_image_1)
+    $('#hero_image_1_img').click(onheroclick);
+    @endif
+    @if($room->hero_image_2)
+    $('#hero_image_2_img').click(onheroclick);
+    @endif
+    @if($room->hero_image_3)
+    $('#hero_image_3_img').click(onheroclick);
+    @endif
     function onheroclick(e){
         var parentOffset = $(this).parent().offset(); 
         var relX = e.pageX - parentOffset.left;

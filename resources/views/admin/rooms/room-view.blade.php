@@ -53,10 +53,21 @@
                             <thead>
                                 <tr>
                                     <th><input type="checkbox" class="group-checkable" data-set="#sample_1 .checkboxes" /> </th>
+                                    <th> Room Title </th>
+                                    <th> Room Permalink </th>
+                                    <th> Actions </th>
                                 </tr>
                             </thead>
                             <tbody>
-
+                                @foreach ($Rooms as $room)
+                                <tr>
+                                    <td><input type="checkbox" class="checkboxes" value="1" /> </td>
+                                    <td>{{$room->room_name }}</td>
+                                    <td>{{$room->room_permalink}} </td>
+                                    <td><a href="/admin/room-edit/{{$room->id}}" class="btn btn-sm btn-default blue btn-circle btn-editable"><i class="fa fa-pencil"></i> Edit</a>
+                                    <a href="/admin/room-edit/{{$room->id}}" class="btn btn-sm btn-danger btn-circle btn-editable"><i class="fa fa-close"></i> Delete</a></td>
+                                </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>

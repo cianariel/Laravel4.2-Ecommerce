@@ -33,4 +33,26 @@
             'hero_image_3_caption',
         );
         protected $hidden = ['created_at'];
+        public function updateRoom($room)
+        {
+            try
+            {
+
+                $data = array(
+                    
+                );
+
+                $roomId = $room['id'];
+
+                Product::where('id', '=', $roomId)->update($data);
+
+                $data = Product::where('id', $roomId)->first();
+
+                return $data;
+
+            } catch (Exception $ex)
+            {
+                return $ex;
+            }
+        }
     }
