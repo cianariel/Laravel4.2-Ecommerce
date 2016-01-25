@@ -94,7 +94,7 @@
                                                                     <span class="btn default btn-file">
                                                                         <span class="fileinput-new"> Select image </span>
                                                                         <span class="fileinput-exists"> Change </span>
-                                                                        <input type="file" id="heroimage1" name="heroimage1" class="hero-image"> </span>
+                                                                        <input type="file" id="hero_image_1" name="hero_image_1" class="hero-image"> </span>
                                                                     <a href="javascript:;" class="btn red fileinput-exists" data-dismiss="fileinput"> Remove </a>
                                                                 </div>
                                                             </div>
@@ -106,7 +106,7 @@
                                                                 <label class="control-label col-md-3">Image Title:</label>
                                                                 <div class="col-md-9">
                                                                     <input class="form-control"
-                                                                                   placeholder="Enter Image Title">
+                                                                                   placeholder="Image Title" name="hero_image_1_title" id="hero_image_1_title">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -116,7 +116,7 @@
                                                                 </label>
                                                                 <div class="col-md-9">
                                                                     <input class="form-control"
-                                                                                   placeholder="Enter Alt Text">
+                                                                                   placeholder="Alt Text" name="hero_image_1_alt" id="hero_image_1_alt">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -128,7 +128,7 @@
                                                                 </label>
                                                                 <div class="col-md-9">
                                                                     <input class="form-control"
-                                                                                   placeholder="Enter Image Title">
+                                                                                   placeholder="Image Title" name="hero_image_1_caption" id="hero_image_1_caption">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -138,7 +138,7 @@
                                                                 </label>
                                                                 <div class="col-md-9">
                                                                     <input class="form-control"
-                                                                                   placeholder="Desciption">
+                                                                                   placeholder="Desciption" name="hero_image_1_desc" id="hero_image_1_desc">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -155,7 +155,7 @@
                                                                     <span class="btn default btn-file">
                                                                         <span class="fileinput-new"> Select image </span>
                                                                         <span class="fileinput-exists"> Change </span>
-                                                                        <input type="file" id="heroimage2" name="heroimage2"  class="hero-image"> </span>
+                                                                        <input type="file" id="hero_image_2" name="hero_image_2"  class="hero-image"> </span>
                                                                     <a href="javascript:;" class="btn red fileinput-exists" data-dismiss="fileinput"> Remove </a>
                                                                 </div>
                                                             </div>
@@ -167,7 +167,7 @@
                                                                 <label class="control-label col-md-3">Image Title:</label>
                                                                 <div class="col-md-9">
                                                                     <input class="form-control"
-                                                                                   placeholder="Enter Image Title">
+                                                                                   placeholder="Image Title" name="hero_image_2_title" id="hero_image_2_title">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -177,7 +177,7 @@
                                                                 </label>
                                                                 <div class="col-md-9">
                                                                     <input class="form-control"
-                                                                                   placeholder="Enter Alt Text">
+                                                                                   placeholder="Alt Text" name="hero_image_2_alt" id="hero_image_2_alt">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -189,7 +189,7 @@
                                                                 </label>
                                                                 <div class="col-md-9">
                                                                     <input class="form-control"
-                                                                                   placeholder="Enter Image Title">
+                                                                                   placeholder="Image Title" name="hero_image_2_caption" id="hero_image_2_caption">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -199,7 +199,7 @@
                                                                 </label>
                                                                 <div class="col-md-9">
                                                                     <input class="form-control"
-                                                                                   placeholder="Desciption">
+                                                                                   placeholder="Desciption"  name="hero_image_2_desc" id="hero_image_2_desc">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -216,7 +216,7 @@
                                                                     <span class="btn default btn-file">
                                                                         <span class="fileinput-new"> Select image </span>
                                                                         <span class="fileinput-exists"> Change </span>
-                                                                        <input type="file" id="heroimage3" name="heroimage3"  class="hero-image"> </span>
+                                                                        <input type="file" id="hero_image_3" name="hero_image_3"  class="hero-image"> </span>
                                                                     <a href="javascript:;" class="btn red fileinput-exists" data-dismiss="fileinput"> Remove </a>
                                                                 </div>
                                                             </div>
@@ -228,7 +228,7 @@
                                                                 <label class="control-label col-md-3">Image Title:</label>
                                                                 <div class="col-md-9">
                                                                     <input class="form-control"
-                                                                                   placeholder="Enter Image Title">
+                                                                                   placeholder="Image Title"  name="hero_image_3_title" id="hero_image_3_title">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -238,7 +238,7 @@
                                                                 </label>
                                                                 <div class="col-md-9">
                                                                     <input class="form-control"
-                                                                                   placeholder="Enter Alt Text">
+                                                                                   placeholder="Alt Text"  name="hero_image_3_alt" id="hero_image_3_alt">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -250,7 +250,7 @@
                                                                 </label>
                                                                 <div class="col-md-9">
                                                                     <input class="form-control"
-                                                                                   placeholder="Enter Image Title">
+                                                                                   placeholder="Image Caption"  name="hero_image_3_caption" id="hero_image_3_caption">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -260,7 +260,7 @@
                                                                 </label>
                                                                 <div class="col-md-9">
                                                                     <input class="form-control"
-                                                                                   placeholder="Desciption">
+                                                                                   placeholder="Desciption"  name="hero_image_3_desc" id="hero_image_3_desc">
                                                                 </div>
                                                             </div>
                                                         </div>
