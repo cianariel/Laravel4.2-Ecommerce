@@ -24,32 +24,54 @@ class PageController extends Controller
         return view('home')->with('content', $content);
     }
 
-    public function getContent($page = 1){
+    public function getContent($page = 1, $returnOnly = false){
         $limit = 7;
         $offset = $limit *  ($page - 1);
+        $featuredOffset = 3 * ($page - 1);
 
+        if($returnOnly == 'products' || !$stories = self::getStories($limit, $offset, $featuredOffset)){
+            $stories = [
+                'regular' => [],
+                'featured' => [],
+            ];
+        }
+
+        if($returnOnly == 'ideas' || !$products = self::getProducts($limit, $page)){
+            $products['result'] = [];
+        }
+
+        $return['regular'] = array_merge($stories['regular'], $products['result']);
+        $return['featured'] = $stories['featured'];
+
+        usort($return['regular'], function($a, $b) { return strtotime(@$b->updated_at) - strtotime(@$a->updated_at);});
+
+        return $return;
+    }
+
+    public function getStories($limit, $offset, $featuredOffset){
         $url = 'http://staging.ideaing.com/ideas/feeds/index.php?count='.$limit.'&no-featured&offset='. $offset;
 
         $ch = curl_init();
-
         curl_setopt($ch, CURLOPT_URL, $url);
         curl_setopt($ch, CURLOPT_HEADER, 0);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_ENCODING ,"");
-
         $json = curl_exec($ch);
-        $stories = json_decode($json);
 
-        $featuredOffset = 3 * ($page - 1);
+        $return['regular'] = json_decode($json);
 
         $featuredUrl = "http://staging.ideaing.com/ideas/feeds/index.php?count=3&only-featured&offset=". $featuredOffset;
 
         curl_setopt($ch, CURLOPT_URL, $featuredUrl);
         $json = curl_exec($ch);
-        $return['featured'] = json_decode($json);
-
         curl_close($ch);
 
+        $return['featured'] = json_decode($json);
+
+        return $return;
+    }
+
+    public function getProducts($limit, $page){
         $productSettings = [
             'ActiveItem' => true,
             'limit'      => $limit,
@@ -63,24 +85,9 @@ class PageController extends Controller
 
         $prod = new Product();
 
-        if(!$stories){
-            $stories = [];
-        }
-
         $products = $prod->getProductList($productSettings);
 
-        $return['regular'] = array_merge($stories, $products['result']);
-        usort($return['regular'], function($a, $b) { return strtotime($b->updated_at) - strtotime($a->updated_at);});
-
-//        $return['row-1'] = array_slice($content, 0, 3);
-//        $return['row-2'] = @$featured[0] ? [$featured[0]] : false;
-//        $return['row-3'] = array_slice($content, 3, 3);
-//        $return['row-4'] = @$featured[1] ? [$featured[1]] : false;
-//        $return['row-5'] = array_slice($content, 6, 3);
-//        $return['row-6'] = @$featured[2] ? [$featured[2]] : false;
-
-//        return json_encode($return);
-        return $return;
+        return $products;
     }
 
 

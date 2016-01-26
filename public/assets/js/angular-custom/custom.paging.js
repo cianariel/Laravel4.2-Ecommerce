@@ -22,10 +22,19 @@ angular.module('pagingApp.controllers', []).
             var $return = [];
             $return['row-1'] = $regular.slice(0, 3);
             $return['row-2'] = $featured[0] ? [$featured[0]] : false;
-            $return['row-3'] = $regular.slice(3, 5);
+            $return['row-3'] = $regular.slice(3, 6);
             $return['row-4'] = $featured[1] ? [$featured[1]] : false;
             $return['row-5'] = $regular.slice(6, 9);
             $return['row-6'] = $featured[2] ? [$featured[2]] : false;
+
+            console.log($return['row-5'])
+
+            return $return;
+        };
+
+        $scope.filterContent = function($regular, $featured){
+            var $return = [];
+
 
             return $return;
         };
