@@ -97,9 +97,36 @@ if($postCount==0)
 }
 $onlyfeatured = $_REQUEST['only-featured'];
 $no_featured = $_REQUEST['no-featured'];
+$is_featured = "";
+if(isset($no_featured))
+{
+    $is_featured = "No";
+}
+if(isset($onlyfeatured))
+{
+    $is_featured = "Yes";
+}
 $offset = $_REQUEST['offset'];
 $postCat = $_REQUEST['category-id'];
-$posts = query_posts('cat='.$postCat.'&showposts=' . $postCount.'&offset='.$offset);
+$args = array(
+'cat' => $postCat,
+'showposts' => $postCount,
+'offset' => $offset,);
+
+if($is_featured != "")
+{
+$args['meta_query'] = array(
+       'relation'  => 'AND',
+       array(
+        'key'  => 'is_featured',
+        'value' => $is_featured,
+        'compare' => '='
+       )
+      );
+}
+
+$posts = query_posts($args);
+//$posts = query_posts('cat='.$postCat.'&showposts=' . $postCount.'&offset='.$offset);
 $datam = array();
 $data = array();
 while(have_posts()) : the_post();
@@ -154,21 +181,9 @@ $get_is_featured = get_post_custom_values('is_featured',$ID);
 $is_featured = false;
 if($get_is_featured[0] == "Yes")
 {
-	if(isset($no_featured))
-	{
-		continue;
-	}
 	$is_featured = true;
 }
-else
-{
-	if(isset($onlyfeatured))
-	{
-		continue;
-	}
-	
-}
-$data['is_featured'] = $is_featured;
+$data['is_featured'] = $get_is_featured;
 
 //$data['feed_image'] = get_post_custom_values('feed_image',$ID);
 $data['feed_image'] = get_field('feed_image');
