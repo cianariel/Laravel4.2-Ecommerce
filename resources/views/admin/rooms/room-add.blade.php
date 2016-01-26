@@ -101,14 +101,14 @@
                                                     <div class="form-group">
                                                         <div class="col-md-12">
                                                             <div class="fileinput fileinput-new" data-provides="fileinput">
-                                                                <div class="fileinput-new thumbnail" style="width: 100%;">
+                                                                <div class="fileinput-new thumbnail" style="width: 100%;" data-image="hero_image_1">
                                                                     @if($room->hero_image_1)
-                                                                    <img src="{{$room->hero_image_1}}" alt="" id="hero_image_1_img" /> </div>
+                                                                    <img src="{{$room->hero_image_1}}" alt="" id="hero_image_1_img" />
                                                                     @else
-                                                                    <img src="http://www.placehold.it/200x150/EFEFEF/AAAAAA&amp;text=no+image" alt="" /> </div>
+                                                                    <img src="http://www.placehold.it/200x150/EFEFEF/AAAAAA&amp;text=no+image" alt="" />
                                                                     @endif
-                                                                    
-                                                                <div class="fileinput-preview fileinput-exists thumbnail" style="width: 100%;"> </div>
+                                                                </div>    
+                                                                <div class="fileinput-preview fileinput-exists thumbnail" style="width: 100%;" data-image="hero1"> </div>
                                                                 <div>
                                                                     <span class="btn default btn-file">
                                                                         <span class="fileinput-new"> Select image </span>
@@ -117,6 +117,7 @@
                                                                     <a href="javascript:;" class="btn red fileinput-exists" data-dismiss="fileinput"> Remove </a>
                                                                 </div>
                                                             </div>
+                                                            <input type="hidden" id="hero_image_products1" name="hero_image_products1" />
                                                         </div>
                                                     </div>
                                                     <div class="row">
@@ -167,13 +168,13 @@
                                                     <div class="form-group">
                                                         <div class="col-md-12">
                                                             <div class="fileinput fileinput-new" data-provides="fileinput">
-                                                                <div class="fileinput-new thumbnail" style="width: 100%;">
+                                                                <div class="fileinput-new thumbnail" style="width: 100%;" data-image="hero_image_2">
                                                                     @if($room->hero_image_2)
                                                                     <img src="{{$room->hero_image_2}}" alt="" id="hero_image_2_img"/> </div>
                                                                     @else
                                                                     <img src="http://www.placehold.it/200x150/EFEFEF/AAAAAA&amp;text=no+image" alt="" /> </div>
                                                                     @endif
-                                                                <div class="fileinput-preview fileinput-exists thumbnail" style="width: 100%;"> </div>
+                                                                <div class="fileinput-preview fileinput-exists thumbnail" style="width: 100%;" data-image="hero2"> </div>
                                                                 <div>
                                                                     <span class="btn default btn-file">
                                                                         <span class="fileinput-new"> Select image </span>
@@ -232,13 +233,13 @@
                                                     <div class="form-group">
                                                         <div class="col-md-12">
                                                             <div class="fileinput fileinput-new" data-provides="fileinput">
-                                                                <div class="fileinput-new thumbnail" style="width: 100%;">
+                                                                <div class="fileinput-new thumbnail" style="width: 100%;" data-image="hero_image_3">
                                                                     @if($room->hero_image_3)
                                                                     <img src="{{$room->hero_image_3}}" alt="" id="hero_image_3_img" /> </div>
                                                                     @else
                                                                     <img src="http://www.placehold.it/200x150/EFEFEF/AAAAAA&amp;text=no+image" alt="" /> </div>
                                                                     @endif
-                                                                <div class="fileinput-preview fileinput-exists thumbnail" style="width: 100%;"> </div>
+                                                                <div class="fileinput-preview fileinput-exists thumbnail" style="width: 100%;" data-image="hero_image_3"> </div>
                                                                 <div>
                                                                     <span class="btn default btn-file">
                                                                         <span class="fileinput-new"> Select image </span>
@@ -314,7 +315,8 @@
                 <h4 class="modal-title">Select Product</h4>
             </div>
             <div class="modal-body">
-                <form action="#" class="form-horizontal">
+                <form action="#" class="form-horizontal" id="add_product_image">
+                    <input type="hidden" id="hero_image_id" name="hero_image_id" />
                     <div class="form-group">
                         <label class="control-label col-md-4">Product</label>
                         <div class="col-md-8">
@@ -340,7 +342,7 @@
             </div>
             <div class="modal-footer">
                 <button class="btn dark btn-outline" data-dismiss="modal" aria-hidden="true">Close</button>
-                <button class="btn green" data-dismiss="modal">Save changes</button>
+                <button class="btn green" id="btn_add_product_image" data-dismiss="modal">Save changes </button>
             </div>
         </div>
     </div>
@@ -354,6 +356,9 @@
 
 <script>
 $(function() {
+    var heroimageproducts1 = [];
+    var heroimageproducts2 = [];
+    var heroimageproducts3 = [];
     $(".hero-image").change(function(e) {
         setTimeout(setimage,100)
     });
@@ -372,12 +377,20 @@ $(function() {
     @endif
     function onheroclick(e){
         var parentOffset = $(this).parent().offset(); 
+        $('#hero_image_id').val($(this).parent().data('image'));
         var relX = e.pageX - parentOffset.left;
         var relY = e.pageY - parentOffset.top;
         $('#Xpos').val(relX);
         $('#Ypos').val(relY);
         $('#select_product_modal').modal();
+         $("#select_product").select2("val", "");
+
     }
+    $('#btn_add_product_image').click(function(){
+        var obj = {'hero_image_id':$('#hero_image_id').val(),'x' : $('#Xpos').val(),'y':$('#Ypos').val(),'product_id' : $('#select_product').val()};
+        heroimageproducts1.push(obj);
+        $('#hero_image_products1').val(JSON.stringify(heroimageproducts1));
+    });
 });
 
 </script>

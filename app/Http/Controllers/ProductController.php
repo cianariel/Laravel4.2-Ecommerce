@@ -198,32 +198,6 @@
                     ->makeResponseWithError("System Failure !", $ex);
             }
         }
-        public function getProducts()
-        {
-            try
-            {
-                $settings['ActiveItem'] = false;
-                $settings['CategoryId'] = null;
-                $settings['FilterType'] = (\Input::get('FilterType') == null) ? null : \Input::get('FilterType');
-                $settings['FilterText'] = (\Input::get('FilterText') == null) ? null : \Input::get('FilterText');
-
-                $settings['limit'] = 10000;
-                $settings['page'] = 0;
-
-                $productList = $this->product->getProductList($settings);
-
-                // dd($productList);
-                $settings['total'] = $productList['total'];
-                array_forget($productList, 'total');
-
-                return $this->setStatusCode(\Config::get("const.api-status.success"))
-                    ->makeResponse(array_merge($productList, $settings));
-            } catch (Excpetion $ex)
-            {
-                return $this->setStatusCode(\Config::get("const.api-status.system-fail"))
-                    ->makeResponseWithError("System Failure !", $ex);
-            }
-        }
 
         /**
          * @return mixed

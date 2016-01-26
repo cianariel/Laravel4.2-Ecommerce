@@ -51,13 +51,18 @@ var ComponentsSelect2 = function() {
         $(".js-data-example-ajax").select2({
             width: "off",
             ajax: {
-                url: "/api/product/get-products",
+                url: "/api/product/get-product-list",
                 dataType: 'json',
                 method:'POST',
                 data: function(params) {
                     return {
-                        FilterText: params.term, // search term
-                        FilterType: 'product-filter',
+                        FilterText  : params.term, // search term
+                        FilterType  : 'product-filter',
+                        CategoryId  : '',
+                        ShowFor     : '',
+                        WithTags    : false,
+                        limit       : 50,
+                        page        : 1,
                     };
                 },
                 processResults: function(data, page) {
