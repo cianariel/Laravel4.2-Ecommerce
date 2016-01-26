@@ -275,7 +275,7 @@
                     <div class="container">
                         <h3 class="purple">Comparisons</h3>
 
-                        <button class="arrow arrow-left" ng-hide="compareIndex == 0" ng-click="traverseBackward()"></button>
+                        {{--<button class="arrow arrow-left" ng-hide="compareIndex == 0" ng-click="traverseBackward()"></button>--}}
 
                         <div class="col-sm-3 col-xs-6 comparison-tab">
                             <section class="purple">
@@ -286,7 +286,7 @@
                                 <!-- compare dynamic start -->
 
 
-                        <div ng-repeat="item in temporaryViewList">
+                        <div ng-repeat="item in temporaryViewList | limitTo:3">
 
                             <div class="col-sm-3 col-xs-6 comparison-tab">
                                 <div>
@@ -310,7 +310,7 @@
                             </div>
                         </div>
                         <!-- add item to compare -->
-                        <div class="col-sm-3 col-xs-6 comparison-tab" ng-init="loadProductDetails()">
+                        <div class="col-sm-3 col-xs-6 comparison-tab" ng-hide="dataLength > 2" ng-init="loadProductDetails()">
 
                             <div ng-hide="showCompareButton">
 
@@ -335,11 +335,11 @@
 
                         <!-- compare dynamic end -->
 
-                        <button class="arrow arrow-right"  ng-hide="compareIndex == dataLength-1" ng-click="traverseForward()"></button>
+                       {{-- <button class="arrow arrow-right"  ng-hide="compareIndex == dataLength-1" ng-click="traverseForward()"></button>--}}
 
                         <div class="crearfix"></div>
 
-                        <h5>Compared (2 products) <a>&#43;</a></h5>
+                        <h5>Compare maximum 3 products <a>&#43;</a></h5>
 
                         <div class="col-sm-3 col-xs-6 comparison-tab table-heads">
                             <h4></h4>
@@ -349,7 +349,7 @@
 
                         </div>
                         <!-- compare dynamic 2nd part start-->
-                        <div ng-repeat="item in temporaryViewList">
+                        <div ng-repeat="item in temporaryViewList | limitTo:3">
                             <div class="col-sm-3 col-xs-6 comparison-tab table-cells">
                                 <h4>@{{ item.data.productInformation.ProductName }}</h4>
                                 <hr>
