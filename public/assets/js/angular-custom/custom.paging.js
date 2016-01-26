@@ -12,9 +12,8 @@ angular.module('pagingApp.controllers', []).
         $scope.loadMore = function() {
             $scope.currentPage++;
             $scope.nextLoad =  pagaingApi.getContent($scope.currentPage).success(function (response) {
-                $scope.newStuff[0] = response;
+                $scope.newStuff[0] = $scope.sliceToRows(response['regular'], response['featured']);
                 $scope.content = $scope.content.concat($scope.newStuff);
-                console.log($scope.currentPage)
             });
 
         };
@@ -23,11 +22,7 @@ angular.module('pagingApp.controllers', []).
             var $return = [];
             $return['row-1'] = $regular.slice(0, 3);
             $return['row-2'] = $featured[0] ? [$featured[0]] : false;
-            console.log($regular)
-
             $return['row-3'] = $regular.slice(3, 5);
-            console.log($return['row-3'])
-
             $return['row-4'] = $featured[1] ? [$featured[1]] : false;
             $return['row-5'] = $regular.slice(6, 9);
             $return['row-6'] = $featured[2] ? [$featured[2]] : false;

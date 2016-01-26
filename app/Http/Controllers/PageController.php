@@ -40,9 +40,9 @@ class PageController extends Controller
         $json = curl_exec($ch);
         $stories = json_decode($json);
 
-        $featuredOffset = 5 * ($page - 1);
+        $featuredOffset = 3 * ($page - 1);
 
-        $featuredUrl = "http://staging.ideaing.com/ideas/feeds/index.php?count=5&only-featured&offset=". $featuredOffset;
+        $featuredUrl = "http://staging.ideaing.com/ideas/feeds/index.php?count=3&only-featured&offset=". $featuredOffset;
 
         curl_setopt($ch, CURLOPT_URL, $featuredUrl);
         $json = curl_exec($ch);
