@@ -183,7 +183,7 @@ if($get_is_featured[0] == "Yes")
 {
 	$is_featured = true;
 }
-$data['is_featured'] = $get_is_featured;
+$data['is_featured'] = $is_featured;
 
 //$data['feed_image'] = get_post_custom_values('feed_image',$ID);
 $data['feed_image'] = get_field('feed_image');
