@@ -24,16 +24,26 @@ class PageController extends Controller
         return view('home')->with('content', $content);
     }
 
-    public function getContent($page = 1, $limit = 3, $returnOnly = false){
-        $storyLimit = 3;
+    public function getContent($page = 1, $limit = 4, $returnOnly = false){
+
+        if($limit == 'undefined'){
+            $limit = 4;
+        }
+
+        $storyLimit = $limit;
         $storyOffset = $storyLimit *  ($page - 1);
 
         $featuredLimit = 3;
         $featuredOffset = $featuredLimit * ($page - 1);
 
-        $productLimit = $limit + $featuredLimit;
+        if($returnOnly == 'product'){
+            $productLimit = $limit;
+        }else{
+            $productLimit = $limit + $featuredLimit;
+        }
 
-        if($returnOnly == 'products' || !$stories = self::getStories($storyLimit, $storyOffset, $featuredLimit, $featuredOffset)){
+
+        if($returnOnly == 'product' || !$stories = self::getStories($storyLimit, $storyOffset, $featuredLimit, $featuredOffset)){
             $stories = [
                 'regular' => [],
                 'featured' => [],
@@ -41,7 +51,7 @@ class PageController extends Controller
         }
 
 
-        if($returnOnly == 'ideas' || !$products = self::getProducts($productLimit, $page)){
+        if($returnOnly == 'idea' || !$products = self::getProducts($productLimit, $page)){
             $products['result'] = [];
         }
 

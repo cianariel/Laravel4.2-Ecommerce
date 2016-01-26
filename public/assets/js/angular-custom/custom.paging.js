@@ -1,11 +1,13 @@
 angular.module('pagingApp.controllers', []).
     controller('pagingController', function($scope, pagaingApi) {
+        //$scope.allContent = [];
         $scope.content = [];
         $scope.newStuff = [];
         $scope.currentPage = 1;
         $scope.contentBlock = angular.element( document.querySelector('.main-content') );
 
         $scope.firstLoad = pagaingApi.getContent(1).success(function (response) {
+            //$scope.allContent = response;
             $scope.content[0] = $scope.sliceToRows(response['regular'], response['featured']);
         });
 
