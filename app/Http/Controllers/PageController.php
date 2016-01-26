@@ -24,14 +24,14 @@ class PageController extends Controller
         return view('home')->with('content', $content);
     }
 
-    public function getContent($page = 1, $returnOnly = false){
+    public function getContent($page = 1, $limit = 3, $returnOnly = false){
         $storyLimit = 3;
         $storyOffset = $storyLimit *  ($page - 1);
 
         $featuredLimit = 3;
         $featuredOffset = $featuredLimit * ($page - 1);
 
-        $productLimit = 6;
+        $productLimit = $limit + $featuredLimit;
 
         if($returnOnly == 'products' || !$stories = self::getStories($storyLimit, $storyOffset, $featuredLimit, $featuredOffset)){
             $stories = [

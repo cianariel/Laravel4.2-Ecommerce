@@ -32,12 +32,31 @@ angular.module('pagingApp.controllers', []).
             return $return;
         };
 
-        $scope.filterContent = function($regular, $featured){
-            var $return = [];
+        $scope.filterContent = function($allContent, $creterion){
 
+            $scope.content.forEach(function(batch) {
+                batch['regular'] =  batch['regular'].filter(function($creterion){
+                    return value.type == $creterion;
+                });
 
-            return $return;
+                if(batch['regular'].length < 9){
+                    var $diff = 9 - batch['regular'].length;
+
+                    pagaingApi.getContent($scope.currentPage, $diff, $creterion).success(function (response) {
+                        batch['regular'] = batch['regular'].concat(response['regular']);
+                    });
+
+                }
+
+                if($creterion != null && $creterion != 'idea'){
+                    batch['featured'] = [];
+                }
+
+                return batch;
+            }, this);
         };
+
+
     });
 
 angular.module('pagingApp', [
@@ -51,10 +70,10 @@ angular.module('pagingApp.services', []).
 
         var pagaingApi = {};
 
-        pagaingApi.getContent = function(page) {
+        pagaingApi.getContent = function(page, limit, only) {
             return $http({
                 method: 'GET',
-                url: '/api/paging/get-content/' + page,
+                url: '/api/paging/get-content/' + page + '/' + limit + '/' + only,
             });
         }
 
