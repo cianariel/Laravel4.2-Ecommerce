@@ -25,18 +25,23 @@ class PageController extends Controller
     }
 
     public function getContent($page = 1, $returnOnly = false){
-        $limit = 7;
-        $offset = $limit *  ($page - 1);
-        $featuredOffset = 3 * ($page - 1);
+        $storyLimit = 3;
+        $storyOffset = $storyLimit *  ($page - 1);
 
-        if($returnOnly == 'products' || !$stories = self::getStories($limit, $offset, $featuredOffset)){
+        $featuredLimit = 3;
+        $featuredOffset = $featuredLimit * ($page - 1);
+
+        $productLimit = 6;
+
+        if($returnOnly == 'products' || !$stories = self::getStories($storyLimit, $storyOffset, $featuredLimit, $featuredOffset)){
             $stories = [
                 'regular' => [],
                 'featured' => [],
             ];
         }
 
-        if($returnOnly == 'ideas' || !$products = self::getProducts($limit, $page)){
+
+        if($returnOnly == 'ideas' || !$products = self::getProducts($productLimit, $page)){
             $products['result'] = [];
         }
 
@@ -48,7 +53,7 @@ class PageController extends Controller
         return $return;
     }
 
-    public function getStories($limit, $offset, $featuredOffset){
+    public function getStories($limit, $offset, $featuredLimit, $featuredOffset){
         $url = 'http://staging.ideaing.com/ideas/feeds/index.php?count='.$limit.'&no-featured&offset='. $offset;
 
         $ch = curl_init();
@@ -60,7 +65,7 @@ class PageController extends Controller
 
         $return['regular'] = json_decode($json);
 
-        $featuredUrl = "http://staging.ideaing.com/ideas/feeds/index.php?count=3&only-featured&offset=". $featuredOffset;
+        $featuredUrl = 'http://staging.ideaing.com/ideas/feeds/index.php?count='.$featuredLimit.'&only-featured&offset='. $featuredOffset;
 
         curl_setopt($ch, CURLOPT_URL, $featuredUrl);
         $json = curl_exec($ch);
