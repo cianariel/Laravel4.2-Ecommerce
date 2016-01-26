@@ -81,6 +81,12 @@
             {
                 $product = $this->product->where('id', $id)->first();
 
+                // automatic update price for any changes and fetch new data with updated price
+                if($this->product->updateProductPrice($product['product_vendor_id'],$product['store_id']))
+                {
+                    $product = $this->product->where('id', $id)->first();
+                }
+
                 if ($product == null)
                 {
                     return $this->setStatusCode(\Config::get("const.api-status.app-failure"))
@@ -465,6 +471,9 @@
             }
         }
 
+        /**
+         *  Update product price after certain time through API for each execution
+         */
         public function priceUpdate()
         {
             $this->product->updateProductPrice();

@@ -25,6 +25,7 @@
 
     Route::get('update-price', 'ProductController@priceUpdate');
 
+
 //    Route::get('/', function () // temp, used for tweaking frontend
 //    {
 //        return view('welcome');

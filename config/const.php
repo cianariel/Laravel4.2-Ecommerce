@@ -61,4 +61,7 @@
             's3-path'                => 'http://s3-us-west-1.amazonaws.com/ideaing-01/'
         ],
 
+        // API product update time (in Hour)
+        'product-update-time-limit' => 24,
+
     ];

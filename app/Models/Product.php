@@ -178,9 +178,18 @@
         {
             $column = $id == null ? 'product_permalink' : 'id';
             $value = $id == null ? $permalink : $id;
+
             $productInfo = Product::with('medias')
                 ->where($column, $value)
                 ->first();
+
+            // automatic update price for any changes and fetch new data with updated price
+            if($this->updateProductPrice($productInfo['product_vendor_id'],$productInfo['store_id']))
+            {
+                $productInfo = Product::with('medias')
+                    ->where($column, $value)
+                    ->first();
+            }
 
             //dd($productInfo);
             return $productInfo;
@@ -368,8 +377,8 @@
             // if main image is not selected
             if (!isset($selfImage['mainImage']))
             {
-                $selfImage['mainImage'] = isset($selfImage['picture'][1]['link'])?$selfImage['picture'][1]['link']:'';
-                $selfImage['mainImageName'] = isset($selfImage['picture'][1]['picture-name'])?$selfImage['picture'][1]['picture-name']:'';
+                $selfImage['mainImage'] = isset($selfImage['picture'][1]['link']) ? $selfImage['picture'][1]['link'] : '';
+                $selfImage['mainImageName'] = isset($selfImage['picture'][1]['picture-name']) ? $selfImage['picture'][1]['picture-name'] : '';
 
             }
 
@@ -471,7 +480,7 @@
 
 
         // Get product information form Product's vendor API
-        public function getApiProductInformation($itemId)
+        public function getApiProductInformation($itemId, $store = null)
         {
             try
             {
@@ -486,18 +495,47 @@
             }
         }
 
-        //todo cron task for API based product update.
-        public function updateProductPrice($time = 5, $itemCount = 10)
+
+        /** Update latest price and return true, for no update return false, also return false for any system error.
+         * @param string $productVendorId
+         * @param string $store
+         * @return bool
+         */
+        public function updateProductPrice($productVendorId = 'B00OHY14CS', $store = 'Amazon')
         {
-            $timeCompare = date("Y-m-d H:i:s", time() - ($time * 60));
-            $itemIds = Product::where('updated_at', '<', $timeCompare)
-                ->limit($itemCount)
-                ->get(array("id", "product_permalink", "updated_at", "product_vendor_id"));
-
-            dd($timeCompare, $itemIds);
-
-            foreach ($itemIds as $item)
+            try
             {
+                // $timeCompare['now'] = date("Y-m-d H:i:s", time());
+                // $timeCompare['required'] = date("Y-m-d H:i:s", (time() - (60 * 60 * $hours)));
+
+                $hours = \Config::get("const.product-update-time-limit");
+
+                $timeCompare = date("Y-m-d H:i:s", (time() - (60 * 60 * $hours)));
+
+                $product = Product::where('updated_at', '<', $timeCompare)
+                    ->where('store_id', '=', $store)
+                    ->where('product_vendor_id', '=', $productVendorId)
+                    ->first(array("id", "product_permalink", "price", "sale_price", "updated_at", "product_vendor_id"));
+
+                if (isset($product))
+                {
+                    $apiData = $this->getApiProductInformation($productVendorId, $store);
+                    if (($product['price'] != $apiData['ApiPrice']) || ($product['sale_price'] != $apiData['ApiSalePrice']))
+                        // echo $product['sale_price'];
+                        $product->price = $apiData['ApiPrice'];
+                    $product->sale_price = $apiData['ApiSalePrice'];
+                    $product->save();
+
+                    return true;
+                    //     dd($timeCompare,$product,$apiData);
+
+                } else
+                {
+                    return false;
+                }
+            } catch (Exception $ex)
+            {
+                return false;
 
             }
         }
