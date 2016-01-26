@@ -296,7 +296,8 @@
                                          alt="@{{ item.data.selfImages.mainImageName}}"/>
 
                                     <div class="tab-wrap">
-                                        <h4>@{{ item.data.productInformation.ProductName }}</h4>
+                                        <h4>@{{ item.data.productInformation.ProductName | limitTo: 50 }} @{{item.data.productInformation.ProductName.length > 50 ? '...' : ''}}</h4>
+
                                         {{--<i>@{{ item.data.productInformation.Available }}</i>--}}
                                         <b class="score">@{{ item.data.productInformation.Review[1].value }}</b>
 
@@ -321,7 +322,7 @@
                             <div ng-hide="showCompareButton">
                                 <div style="margin-top: 265px">
                                     <autocomplete ng-model="selectedProduct"
-                                                  attr-placeholder="type to search product..."
+                                                  attr-placeholder="Search product to add..."
                                                   {{--attr-input-class="form-control"--}}
                                                   ng-model-options="{debounce: 1000}"
                                                   data="suggestedItems"
@@ -347,7 +348,7 @@
 
                         <div class="crearfix"></div>
 
-                        <h5>Compare maximum 3 products <a>&#43;</a></h5>
+                        <h5>Compare maximum 3 products </h5>
 
                         <div class="col-sm-3 col-xs-6 comparison-tab table-heads">
                             <h4></h4>
@@ -359,7 +360,8 @@
                         <!-- compare dynamic 2nd part start-->
                         <div ng-repeat="item in temporaryViewList | limitTo:3">
                             <div class="col-sm-3 col-xs-6 comparison-tab table-cells">
-                                <h4>@{{ item.data.productInformation.ProductName }}</h4>
+                                <h4>@{{ item.data.productInformation.ProductName | limitTo: 65 }} @{{item.data.productInformation.ProductName.length > 65 ? '...' : ''}}</h4>
+
                                 <hr>
                                 <div class="bordered" ng-repeat="spec in item.data.productInformation.Specifications">
                                     <b>@{{ spec.value }}</b>
