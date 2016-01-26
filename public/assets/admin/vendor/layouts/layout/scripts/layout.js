@@ -618,8 +618,8 @@ var Layout = function () {
 
 }();
 
-if (App.isAngularJsApp() === false) {
+//if (App.isAngularJsApp() === false) {
     jQuery(document).ready(function() {    
        Layout.init(); // init metronic core componets
     });
-}
+//}
