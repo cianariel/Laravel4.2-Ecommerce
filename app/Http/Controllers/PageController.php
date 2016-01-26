@@ -46,7 +46,7 @@ class PageController extends Controller
 
         curl_setopt($ch, CURLOPT_URL, $featuredUrl);
         $json = curl_exec($ch);
-        $featured = json_decode($json);
+        $return['featured'] = json_decode($json);
 
         curl_close($ch);
 
@@ -68,17 +68,16 @@ class PageController extends Controller
         }
 
         $products = $prod->getProductList($productSettings);
-        $content = array_merge($stories, $products['result']);
-//        $content = $products['result'];
 
-        usort($content, function($a, $b) { return strtotime($b->updated_at) - strtotime($a->updated_at);});
+        $return['regular'] = array_merge($stories, $products['result']);
+        usort($return['regular'], function($a, $b) { return strtotime($b->updated_at) - strtotime($a->updated_at);});
 
-        $return['row-1'] = array_slice($content, 0, 3);
-        $return['row-2'] = @$featured[0] ? [$featured[0]] : false;
-        $return['row-3'] = array_slice($content, 3, 3);
-        $return['row-4'] = @$featured[1] ? [$featured[1]] : false;
-        $return['row-5'] = array_slice($content, 6, 3);
-        $return['row-6'] = @$featured[2] ? [$featured[2]] : false;
+//        $return['row-1'] = array_slice($content, 0, 3);
+//        $return['row-2'] = @$featured[0] ? [$featured[0]] : false;
+//        $return['row-3'] = array_slice($content, 3, 3);
+//        $return['row-4'] = @$featured[1] ? [$featured[1]] : false;
+//        $return['row-5'] = array_slice($content, 6, 3);
+//        $return['row-6'] = @$featured[2] ? [$featured[2]] : false;
 
 //        return json_encode($return);
         return $return;
@@ -98,7 +97,7 @@ class PageController extends Controller
         MetaTag::set('title',$result['productInformation']['PageTitle']);
         MetaTag::set('description',$result['productInformation']['MetaDescription']);
 
-       // dd($result['relatedProducts']);
+     //   dd($result['selfImages']['picture'][0]['link']);
         return view('product.product-details')
             ->with('permalink',$permalink)
             ->with('productInformation',$result['productInformation'])
