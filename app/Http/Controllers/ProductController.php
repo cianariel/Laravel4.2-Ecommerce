@@ -26,7 +26,7 @@
                 ['except' => [
                     'publishProduct', 'searchProductByName', 'updateProductInfo', 'productDetailsView',
                     'getAllProductList', 'getProductById', 'isPermalinkExist', 'addProduct',
-                    'addMediaForProduct', 'addMediaInfo', 'getMediaForProduct', 'deleteSingleMediaItem',
+                    'fileUploader', 'addMediaInfo', 'getMediaForProduct', 'deleteSingleMediaItem',
                     'getProductInfoFromApi', 'priceUpdate', 'deleteProduct', 'productDetailsViewByName'
                 ]]);
             $this->product = new Product();
@@ -385,17 +385,16 @@
         }
 
 
-        /**
-         * @param Request $request
-         * @return array
-         */
+        /*
+
         public function addMediaForProduct(Request $request)
         {
-
             return $this->media->fileUploader($request);
-
-
         }
+         */
+
+
+
 
         /** Fetch product information form vendor API
          * @param $itemId

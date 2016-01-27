@@ -182,7 +182,7 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
         // uploader section //
 
         var uploader = $scope.uploader = new FileUploader({
-            url: '/api/product/media-upload',
+            url: '/api/media/media-upload',
         });
 
         // FILTERS

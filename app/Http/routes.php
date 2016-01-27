@@ -124,11 +124,14 @@
          *
          * */
 
-        Route::any('product/media-upload', 'ProductController@addMediaForProduct');
+        Route::any('product/media-upload', 'ProductController@fileUploader');
         Route::post('product/add-media-info', 'ProductController@addMediaInfo');
         Route::get('product/get-media/{id?}', 'ProductController@getMediaForProduct');
         Route::post('product/delete-media', 'ProductController@deleteSingleMediaItem');
+
         Route::post('media/update-media', 'MediaController@updateMediaContent');
+        Route::any('media/media-upload', 'MediaController@fileUploader');
+
 
 
         /*
