@@ -592,7 +592,7 @@
                                                                     <th class="col-md-2">Title</th>
                                                                     <th class="col-md-2">Type</th>
                                                                     <th class="col-md-1">Hero</th>
-                                                                    <th class="col-md-1">main</th>
+                                                                    <th class="col-md-1">Thumb</th>
                                                                     <th class="col-md-4">Link</th>
                                                                     <th class="col-md-1">Action</th>
                                                                 </tr>

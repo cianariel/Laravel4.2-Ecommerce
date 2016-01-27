@@ -131,6 +131,8 @@
 
         Route::post('media/update-media', 'MediaController@updateMediaContent');
         Route::any('media/media-upload', 'MediaController@fileUploader');
+        Route::post('media/media-delete', 'MediaController@fileUploader');
+
 
 
 

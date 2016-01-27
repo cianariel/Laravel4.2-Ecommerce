@@ -19,7 +19,10 @@
         public function __construct()
         {
             // Apply the jwt.auth middleware to all methods in this controller
-            $this->middleware('jwt.auth', ['except' => ['addMediaContent','updateMediaContent','fileUploader']]);
+            $this->middleware('jwt.auth',
+                ['except' => [
+                    'addMediaContent','updateMediaContent','fileUploader','deleteMediaContent'
+            ]]);
             $this->media = new Media();
         }
 
@@ -105,8 +108,9 @@
 
 
 
-        public function deleteMediaContent($id)
+        public function deleteMediaContent()
         {
+            $id = \Input::get('id');
             $mediaItem = $this->media->where('id', $id)->first();
 
             //delete entry from database

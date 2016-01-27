@@ -31,6 +31,11 @@
          * @return media object
          */
 
+        public function medias()
+        {
+            return $this->morphMany('App\Models\Media', 'mediable');
+        }
+
         public function products()
         {
             return $this->hasMany('App\Models\Product');
