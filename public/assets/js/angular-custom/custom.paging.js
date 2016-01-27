@@ -13,49 +13,83 @@ angular.module('pagingApp.controllers', []).
 
         $scope.loadMore = function() {
             $scope.currentPage++;
+            $scope.allContent[$scope.currentPage] = [];
+
             $scope.nextLoad =  pagaingApi.getContent($scope.currentPage).success(function (response) {
                 $scope.newStuff[0] = $scope.sliceToRows(response['regular'], response['featured']);
                 $scope.content = $scope.content.concat($scope.newStuff);
 
-                $scope.allContent[$scope.currentPage]['regular'] = $scope.allContent['regular'].concat(response['regular']);
-                $scope.allContent[$scope.currentPage]['featured'] = $scope.allContent['regular'].concat(response['featured']);
+                $scope.allContent[$scope.currentPage]['regular']  = response['regular'];
+                $scope.allContent[$scope.currentPage]['featured'] = response['featured'];
             });
 
         };
 
 
         $scope.filterContent = function($criterion){
-            $scope.content = [];
-            var $filtered = [];
+            //$scope.filtered = [];
+            $scope.filterBy = $criterion;
+            console.log(0)
+            console.log( $scope.allContent)
+
+            var $replacer = [];
             var $i = 0;
             $scope.allContent.forEach(function(batch) {
+                $scope.filtered = [];
+                //$scope.filtered['regular'] = [];
+                //console.log(1)
+                //console.log(batch)
 
-                console.log(batch)
+                $scope.filtered['regular'] =  batch['regular'].filter(checkByCriterion);
 
-                $filtered[$i]['regular'] =  batch['regular'].filter(function($creterion){
-                    return value.type == $creterion;
-                });
+                if($criterion != null && $criterion != 'idea'){
+                    //console.log($criterion)
+                    $scope.filtered['featured'] = [];
+                }else{
+                    //console.log(3)
+                    $scope.filtered['featured'] = batch['featured']; // we don't filter
+                }
 
-                if(batch['regular'].length < 9){
-                    var $diff = 9 - batch['regular'].length;
+                if($scope.filtered['regular'].length < 9){
+                    var $diff = 9 - $scope.filtered['regular'].length;
 
-                    pagaingApi.getContent($scope.currentPage, $diff, $criterion).success(function (response) {
-                        $filtered[$i]['regular'] =  $filtered[$i]['regular'].concat(response['regular']);
+                    pagaingApi.getContent($scope.currentPage, $diff, $criterion, $scope.filtered ).success(function (response) {
+                        //console.log('response')
+                        //console.log(response['regular'])
+                        $scope.filtered['regular'] =  $scope.filtered['regular'].concat(response['regular']);
+                        //console.log(8)
+                        //console.log($scope.filtered['regular'])
+
+                        $replacer[$i] = $scope.sliceToRows($scope.filtered['regular'], $scope.filtered['featured']);
+
+                        $i++;
+
                     });
-
                 }
-
-                if($criterion != null || $criterion != 'idea'){
-                    $filtered[$i]['featured'] = [];
-                }
-                $i++;
             }, this);
 
-            $scope.content = $scope.content.concat($filtered);
+            function checkByCriterion(value){
+                console.log($criterion)
+                return value.type == $criterion;
+            }
 
+            //console.log(4)
+            //console.log($replacer)
+
+            $scope.content = $replacer;
+            $scope.allContent = $scope.allContent.concat($replacer);
+
+
+            //
+            //console.log(5)
+            //console.log($scope.content)
         };
 
         $scope.sliceToRows = function($regular, $featured){
+            //console.log(7)
+            //console.log($regular)
+            //console.log($featured)
+
             var $return = [];
             $return['row-1'] = $regular.slice(0, 3);
             $return['row-2'] = $featured[0] ? [$featured[0]] : false;
@@ -64,7 +98,6 @@ angular.module('pagingApp.controllers', []).
             $return['row-5'] = $regular.slice(6, 9);
             $return['row-6'] = $featured[2] ? [$featured[2]] : false;
 
-            console.log($return['row-5'])
 
             return $return;
         };

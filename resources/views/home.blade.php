@@ -44,7 +44,7 @@
                 {{--</ul>--}}
                 <ul class="category-nav main-content-filter">
                     <li class="active"><a href="" data-filterby="all" class="all-link">All</a></li>
-                    <li><a ng-click="filterContent()" data-filterby="ideas" href="#" class="ideas-link">Ideas</a></li>
+                    <li><a ng-click="filterContent('idea')" data-filterby="ideas" href="#" class="ideas-link">Ideas</a></li>
                     <li><a data-filterby="products" href="#" class="products-link">Products</a></li>
                     <li><a data-filterby="photos" href="#" class="photos-link">Photos</a></li>
                 </ul>
