@@ -108,7 +108,7 @@
                                                                     <img src="http://www.placehold.it/200x150/EFEFEF/AAAAAA&amp;text=no+image" alt="" />
                                                                     @endif
                                                                 </div>    
-                                                                <div class="fileinput-preview fileinput-exists thumbnail" style="width: 100%;" data-image="hero1"> </div>
+                                                                <div class="fileinput-preview fileinput-exists thumbnail" style="width: 100%;" data-image="hero_image_1"> </div>
                                                                 <div>
                                                                     <span class="btn default btn-file">
                                                                         <span class="fileinput-new"> Select image </span>
@@ -117,7 +117,7 @@
                                                                     <a href="javascript:;" class="btn red fileinput-exists" data-dismiss="fileinput"> Remove </a>
                                                                 </div>
                                                             </div>
-                                                            <input type="hidden" id="hero_image_products1" name="hero_image_products1" />
+                                                            <input type="hidden" id="hero_image_1_products" name="hero_image_1_products" />
                                                         </div>
                                                     </div>
                                                     <div class="row">
@@ -163,6 +163,32 @@
                                                             </div>
                                                         </div>
                                                     </div>
+                                                    <div>
+                                                        <table class="table table-striped table-bordered table-hover table-checkable order-column" id="image_1_table">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th> Product ID </th>
+                                                                    <th> X </th>
+                                                                    <th> Y </th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                            <?php
+                                                                $products = json_decode($room->hero_image_1_products);
+                                                                if ($products) {
+                                                                    foreach($products as $rm)
+                                                                    {
+                                                                        echo '<tr><td>'.$rm->product_id.'</td>';
+                                                                        echo '<td>'.$rm->x.'</td>';
+                                                                        echo '<td>'.$rm->y.'</td></tr>';
+                                                                    }
+                                                                }
+                                                                
+                                                            ?>
+
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
                                                 </div>
                                                 <div class="tab-pane fade" id="Hero2">
                                                     <div class="form-group">
@@ -174,7 +200,7 @@
                                                                     @else
                                                                     <img src="http://www.placehold.it/200x150/EFEFEF/AAAAAA&amp;text=no+image" alt="" /> </div>
                                                                     @endif
-                                                                <div class="fileinput-preview fileinput-exists thumbnail" style="width: 100%;" data-image="hero2"> </div>
+                                                                <div class="fileinput-preview fileinput-exists thumbnail" style="width: 100%;" data-image="hero_image_2"> </div>
                                                                 <div>
                                                                     <span class="btn default btn-file">
                                                                         <span class="fileinput-new"> Select image </span>
@@ -182,6 +208,7 @@
                                                                         <input type="file" id="hero_image_2" name="hero_image_2"  class="hero-image"> </span>
                                                                     <a href="javascript:;" class="btn red fileinput-exists" data-dismiss="fileinput"> Remove </a>
                                                                 </div>
+                                                                <input type="hidden" id="hero_image_2_products" name="hero_image_2_products" />
                                                             </div>
                                                         </div>
                                                     </div>
@@ -228,6 +255,33 @@
                                                             </div>
                                                         </div>
                                                     </div>
+                                                    <div>
+                                                        <table class="table table-striped table-bordered table-hover table-checkable order-column" id="image_2_table">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th> Product ID </th>
+                                                                    <th> X </th>
+                                                                    <th> Y </th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                            <?php
+                                                                $products = json_decode($room->hero_image_2_products);
+                                                                if($products)
+                                                                {
+                                                                    foreach($products as $rm)
+                                                                    {
+                                                                        echo '<tr><td>'.$rm->product_id.'</td>';
+                                                                        echo '<td>'.$rm->x.'</td>';
+                                                                        echo '<td>'.$rm->y.'</td></tr>';
+                                                                    }
+                                                                }
+                                                                
+                                                            ?>
+
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
                                                 </div>
                                                 <div class="tab-pane fade" id="Hero3">
                                                     <div class="form-group">
@@ -247,6 +301,7 @@
                                                                         <input type="file" id="hero_image_3" name="hero_image_3"  class="hero-image"> </span>
                                                                     <a href="javascript:;" class="btn red fileinput-exists" data-dismiss="fileinput"> Remove </a>
                                                                 </div>
+                                                                <input type="hidden" id="hero_image_3_products" name="hero_image_3_products" />
                                                             </div>
                                                         </div>
                                                     </div>
@@ -292,6 +347,32 @@
                                                                 </div>
                                                             </div>
                                                         </div>
+                                                    </div>
+                                                    <div>
+                                                        <table class="table table-striped table-bordered table-hover table-checkable order-column" id="image_3_table">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th> Product ID </th>
+                                                                    <th> X </th>
+                                                                    <th> Y </th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                            <?php
+                                                                $products = json_decode($room->hero_image_3_products);
+                                                                if($products)
+                                                                {
+                                                                    foreach($products as $rm)
+                                                                    {
+                                                                        echo '<tr><td>'.$rm->product_id.'</td>';
+                                                                        echo '<td>'.$rm->x.'</td>';
+                                                                        echo '<td>'.$rm->y.'</td></tr>';
+                                                                    }
+                                                                }
+                                                            ?>
+
+                                                            </tbody>
+                                                        </table>
                                                     </div>
                                                 </div>
                                             </div>
@@ -342,7 +423,7 @@
             </div>
             <div class="modal-footer">
                 <button class="btn dark btn-outline" data-dismiss="modal" aria-hidden="true">Close</button>
-                <button class="btn green" id="btn_add_product_image" data-dismiss="modal">Save changes </button>
+                <button class="btn green" id="btn_add_product_image" data-dismiss="modal">Add Product Tag </button>
             </div>
         </div>
     </div>
@@ -356,9 +437,13 @@
 
 <script>
 $(function() {
-    var heroimageproducts1 = [];
-    var heroimageproducts2 = [];
-    var heroimageproducts3 = [];
+
+    var heroimageproducts1 = <?php if($room->hero_image_1_products) {echo $room->hero_image_1_products;}else {echo '[]';}?>;
+    var heroimageproducts2 = <?php if($room->hero_image_2_products) {echo $room->hero_image_2_products;}else {echo '[]';}?>;
+    var heroimageproducts3 = <?php if($room->hero_image_3_products) {echo $room->hero_image_3_products;}else {echo '[]';}?>;
+    $('#hero_image_1_products').val(JSON.stringify(heroimageproducts1));
+    $('#hero_image_2_products').val(JSON.stringify(heroimageproducts2));
+    $('#hero_image_3_products').val(JSON.stringify(heroimageproducts3));
     $(".hero-image").change(function(e) {
         setTimeout(setimage,100)
     });
@@ -384,12 +469,30 @@ $(function() {
         $('#Ypos').val(relY);
         $('#select_product_modal').modal();
          $("#select_product").select2("val", "");
-
     }
     $('#btn_add_product_image').click(function(){
         var obj = {'hero_image_id':$('#hero_image_id').val(),'x' : $('#Xpos').val(),'y':$('#Ypos').val(),'product_id' : $('#select_product').val()};
-        heroimageproducts1.push(obj);
-        $('#hero_image_products1').val(JSON.stringify(heroimageproducts1));
+        var row = "<tr><td>"+ $('#select_product').val() + "</td><td>"+$('#Xpos').val()+"</td><td>"+$('#Ypos').val()+"</td>";
+        if($('#hero_image_id').val() == "hero_image_1")
+        {
+            heroimageproducts1.push(obj);
+            $('#hero_image_1_products').val(JSON.stringify(heroimageproducts1));
+            $('#image_1_table > tbody:last-child').append(row);
+
+        }
+        if($('#hero_image_id').val() == "hero_image_2")
+        {
+            heroimageproducts2.push(obj);
+            $('#hero_image_2_products').val(JSON.stringify(heroimageproducts2));
+            $('#image_2_table > tbody:last-child').append(row);
+        }
+        if($('#hero_image_id').val() == "hero_image_3")
+        {
+            heroimageproducts3.push(obj);
+            $('#hero_image_3_products').val(JSON.stringify(heroimageproducts3));
+            $('#image_3_table > tbody:last-child').append(row);
+        }
+        
     });
 });
 

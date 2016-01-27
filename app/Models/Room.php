@@ -21,16 +21,19 @@
             'hero_image_1_alt',
             'hero_image_1_desc',
             'hero_image_1_caption',
+            'hero_image_1_products',
             'hero_image_2',
             'hero_image_2_title',
             'hero_image_2_alt',
             'hero_image_2_desc',
             'hero_image_2_caption',
+            'hero_image_2_products',
             'hero_image_3',
             'hero_image_3_title',
             'hero_image_3_alt',
             'hero_image_3_desc',
             'hero_image_3_caption',
+            'hero_image_3_products',
         );
         protected $hidden = ['created_at'];
         public function updateRoom($room)

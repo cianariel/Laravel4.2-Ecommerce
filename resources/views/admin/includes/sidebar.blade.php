@@ -103,7 +103,7 @@
                 </ul>
             </li>
             <li class="nav-item  ">
-                <a href="javascript:;" class="nav-link nav-toggle">
+                <a href="javascript:;#room" class="nav-link nav-toggle">
                     <i class="icon-wallet"></i>
                     <span class="title">Rooms</span>
                     <span class="arrow"></span>
