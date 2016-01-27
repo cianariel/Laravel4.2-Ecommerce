@@ -133,6 +133,12 @@
         Route::any('media/media-upload', 'MediaController@fileUploader');
         Route::post('media/media-delete', 'MediaController@fileUploader');
 
+        /*
+         * Store
+         * */
+        Route::post('store/update-store', 'StoreController@updateStore');
+
+
 
 
 

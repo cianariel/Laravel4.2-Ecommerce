@@ -11,7 +11,7 @@
          *
          * @var string
          */
-        protected $table = 'store';
+        protected $table = 'stores';
 
         protected $fillable = array(
             'store_id',
