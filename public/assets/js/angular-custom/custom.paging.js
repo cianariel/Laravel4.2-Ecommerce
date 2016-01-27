@@ -15,7 +15,14 @@ angular.module('pagingApp.controllers', []).
             $scope.currentPage++;
             $scope.allContent[$scope.currentPage] = [];
 
-            $scope.nextLoad =  pagaingApi.getContent($scope.currentPage).success(function (response) {
+            if(typeof $scope.filterBy === 'undefined'){
+                var $limit = 0;
+                $scope.filterBy = null;
+            }else{
+                var $limit = 9;
+            }
+
+            $scope.nextLoad =  pagaingApi.getContent($scope.currentPage, $limit, $scope.filterBy).success(function (response) {
                 $scope.newStuff[0] = $scope.sliceToRows(response['regular'], response['featured']);
                 $scope.content = $scope.content.concat($scope.newStuff);
 
@@ -34,7 +41,8 @@ angular.module('pagingApp.controllers', []).
 
             var $replacer = [];
             var $i = 0;
-            $scope.allContent.forEach(function(batch) {
+            //var page =
+            $scope.nextLoad = $scope.allContent.forEach(function(batch) {
                 $scope.filtered = [];
                 //$scope.filtered['regular'] = [];
                 //console.log(1)
@@ -52,6 +60,8 @@ angular.module('pagingApp.controllers', []).
 
                 if($scope.filtered['regular'].length < 9){
                     var $diff = 9 - $scope.filtered['regular'].length;
+
+
 
                     pagaingApi.getContent($scope.currentPage, $diff, $criterion, $scope.filtered ).success(function (response) {
                         //console.log('response')

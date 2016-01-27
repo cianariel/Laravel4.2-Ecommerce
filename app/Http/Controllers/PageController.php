@@ -31,7 +31,11 @@ class PageController extends Controller
         }
 
         $storyLimit = $limit;
-        $storyOffset = $storyLimit *  ($page - 1);
+        $storyOffset = 4 *  ($page - 1);
+
+//        if($returnOnly == 'idea'){
+//            $productLimit = $limit;
+//        }
 
         $featuredLimit = 3;
         $featuredOffset = $featuredLimit * ($page - 1);
@@ -94,8 +98,8 @@ class PageController extends Controller
             'CategoryId' => false,
             'FilterType' => false,
             'FilterText' => false,
-            'ShowFor' => false,
-            'WithTags' => false,
+            'ShowFor'    => false,
+            'WithTags'   => false,
         ];
 
         $prod = new Product();
