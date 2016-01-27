@@ -8,9 +8,9 @@ var ComponentsSelect2 = function() {
         // @see https://github.com/select2/select2/issues/2927
         $.fn.select2.defaults.set("theme", "bootstrap");
 
-        var placeholder = "Select a State";
+        var placeholder = "Select a Product";
 
-        $(".select2, .select2-multiple").select2({
+        $(".select2").select2({
             placeholder: placeholder,
             width: null
         });
@@ -25,8 +25,8 @@ var ComponentsSelect2 = function() {
         function formatRepo(repo) {
             if (repo.loading) return repo.text;
 
-            var markup = "<div class='select2-result-repository clearfix'>" +
-                "<div class='select2-result-repository__avatar'><img src='" + repo.owner.avatar_url + "' /></div>" +
+            /*var markup = "<div class='select2-result-repository clearfix'>" +
+                "<div class='select2-result-repositorysitory__avatar'><img src='" + repo.owner.avatar_url + "' /></div>" +
                 "<div class='select2-result-repository__meta'>" +
                 "<div class='select2-result-repository__title'>" + repo.full_name + "</div>";
 
@@ -39,25 +39,30 @@ var ComponentsSelect2 = function() {
                 "<div class='select2-result-repository__stargazers'><span class='glyphicon glyphicon-star'></span> " + repo.stargazers_count + " Stars</div>" +
                 "<div class='select2-result-repository__watchers'><span class='glyphicon glyphicon-eye-open'></span> " + repo.watchers_count + " Watchers</div>" +
                 "</div>" +
-                "</div></div>";
+                "</div></div>";*/
 
-            return markup;
+            return repo.product_name;
         }
 
         function formatRepoSelection(repo) {
-            return repo.full_name || repo.text;
+            return repo.product_name || repo.id;
         }
 
         $(".js-data-example-ajax").select2({
             width: "off",
             ajax: {
-                url: "https://api.github.com/search/repositories",
+                url: "/api/product/get-product-list",
                 dataType: 'json',
-                delay: 250,
+                method:'POST',
                 data: function(params) {
                     return {
-                        q: params.term, // search term
-                        page: params.page
+                        FilterText  : params.term, // search term
+                        FilterType  : 'product-filter',
+                        CategoryId  : '',
+                        ShowFor     : '',
+                        WithTags    : false,
+                        limit       : 50,
+                        page        : 1,
                     };
                 },
                 processResults: function(data, page) {
@@ -65,7 +70,7 @@ var ComponentsSelect2 = function() {
                     // since we are using custom formatting functions we do not need to
                     // alter the remote JSON data
                     return {
-                        results: data.items
+                        results: data.data.result
                     };
                 },
                 cache: true
@@ -76,38 +81,6 @@ var ComponentsSelect2 = function() {
             minimumInputLength: 1,
             templateResult: formatRepo,
             templateSelection: formatRepoSelection
-        });
-
-        $("button[data-select2-open]").click(function() {
-            $("#" + $(this).data("select2-open")).select2("open");
-        });
-
-        $(":checkbox").on("click", function() {
-            $(this).parent().nextAll("select").prop("disabled", !this.checked);
-        });
-
-        // copy Bootstrap validation states to Select2 dropdown
-        //
-        // add .has-waring, .has-error, .has-succes to the Select2 dropdown
-        // (was #select2-drop in Select2 v3.x, in Select2 v4 can be selected via
-        // body > .select2-container) if _any_ of the opened Select2's parents
-        // has one of these forementioned classes (YUCK! ;-))
-        $(".select2, .select2-multiple, .select2-allow-clear, .js-data-example-ajax").on("select2:open", function() {
-            if ($(this).parents("[class*='has-']").length) {
-                var classNames = $(this).parents("[class*='has-']")[0].className.split(/\s+/);
-
-                for (var i = 0; i < classNames.length; ++i) {
-                    if (classNames[i].match("has-")) {
-                        $("body > .select2-container").addClass(classNames[i]);
-                    }
-                }
-            }
-        });
-
-        $(".js-btn-set-scaling-classes").on("click", function() {
-            $("#select2-multiple-input-sm, #select2-single-input-sm").next(".select2-container--bootstrap").addClass("input-sm");
-            $("#select2-multiple-input-lg, #select2-single-input-lg").next(".select2-container--bootstrap").addClass("input-lg");
-            $(this).removeClass("btn-primary btn-outline").prop("disabled", true);
         });
     }
 
@@ -120,8 +93,6 @@ var ComponentsSelect2 = function() {
 
 }();
 
-if (App.isAngularJsApp() === false) {
     jQuery(document).ready(function() {
         ComponentsSelect2.init();
     });
-}

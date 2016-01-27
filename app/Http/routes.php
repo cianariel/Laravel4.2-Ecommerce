@@ -129,7 +129,9 @@
         Route::post('product/delete-media', 'ProductController@deleteSingleMediaItem');
         Route::post('media/update-media', 'MediaController@updateMediaContent');
 
-
+        Route::post('room/add-room', 'RoomController@addRoom');
+        Route::post('room/update-room', 'RoomController@updateRoom');
+        Route::post('room/get-room-list', 'ProductController@getAllRoomList');
         /*
          * RSS feed parser from WP to App home page
          *
@@ -155,7 +157,11 @@
 
         //Tag view
         Route::get('tag-view', 'AdminController@tagView');
-
+        
+        //Room view
+        Route::get('room-view', 'AdminController@roomsView');
+        Route::get('room-add', 'AdminController@addRoom');
+        Route::get('room-edit/{id?}', 'AdminController@editRoom');
 
     });
 

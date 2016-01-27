@@ -25,7 +25,7 @@
             $this->middleware('jwt.auth',
                 ['except' => [
                     'publishProduct', 'searchProductByName', 'updateProductInfo', 'productDetailsView',
-                    'getAllProductList', 'getProductById', 'isPermalinkExist', 'addProduct',
+                    'getAllProductList','getProducts' ,'getProductById', 'isPermalinkExist', 'addProduct',
                     'addMediaForProduct', 'addMediaInfo', 'getMediaForProduct', 'deleteSingleMediaItem',
                     'getProductInfoFromApi', 'priceUpdate', 'deleteProduct', 'productDetailsViewByName'
                 ]]);
@@ -198,7 +198,6 @@
                     ->makeResponseWithError("System Failure !", $ex);
             }
         }
-
 
         /**
          * @return mixed
