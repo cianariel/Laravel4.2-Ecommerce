@@ -60,6 +60,11 @@
             return $this->belongsTo('App\Models\ProductCategory');
         }
 
+        public function store()
+        {
+            return $this->belongsTo('App\Models\Store');
+        }
+
         public function medias()
         {
             return $this->morphMany('App\Models\Media', 'mediable');

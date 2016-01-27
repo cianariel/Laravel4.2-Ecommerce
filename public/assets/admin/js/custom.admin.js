@@ -231,7 +231,6 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
             //    console.info('onCompleteAll');
         };
 
-        // console.info('uploader', uploader);
 
         // End uploader section //
 
