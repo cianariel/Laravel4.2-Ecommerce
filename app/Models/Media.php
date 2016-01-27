@@ -75,9 +75,9 @@
                         $s3->delete($file);
                     }
                 }
-            } catch (Exception $ex)
+            } catch (\Exception $ex)
             {
-
+                return;
             }
         }
 

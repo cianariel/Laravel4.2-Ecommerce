@@ -44,12 +44,7 @@
             {
                 $store = $this->store->where('id', $inputData['StoreId'])->first();
 
-               // dd($store->medias,$store->medias[0]['id']);
-              //  if( isset($store->medias) && isset($store->medias[0]['id']) )
-              //  {
-                    $this->media->deleteMediaItem($store->medias[0]['id']);
-             //   }
-
+               // $this->media->deleteMediaItem($store->medias[0]['id']);
 
                 $store->store_identifier = $inputData['StoreIdentifier'];
                 $store->store_name = $inputData['StoreName'];
