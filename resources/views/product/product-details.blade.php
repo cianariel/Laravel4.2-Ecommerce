@@ -18,7 +18,8 @@
                     @if(isset($productInformation['CatTree']))
                         @foreach( $productInformation['CatTree'] as $category )
                             <li>
-                                <a class="orange box-link" href="/category/@if(isset($category['CategoryPermalink'])){{$category['CategoryPermalink']}}@endif"
+                                <a class="orange box-link"
+                                   href="/category/@if(isset($category['CategoryPermalink'])){{$category['CategoryPermalink']}}@endif"
                                    @if($category == end($productInformation['CatTree']))class="current"
                                         @endif>
                                     @if(isset($category['CategoryName']))
@@ -101,8 +102,8 @@
 
                 <div class="slider product-slider">
                     <script>
-                        jQuery(document).ready(function($) {
-                            if(window.innerWidth < 480) {
+                        jQuery(document).ready(function ($) {
+                            if (window.innerWidth < 480) {
 
                                 $('#gallery').royalSlider({
                                     arrowsNav: true,
@@ -132,8 +133,8 @@
 //                            imgWidth: 1400,
 //                            imgHeight: 680
                                 });
-                            }else{
-                                jQuery(document).ready(function($) {
+                            } else {
+                                jQuery(document).ready(function ($) {
                                     $('#gallery').royalSlider({
 //                            arrowsNav: true,
                                         loop: false,
@@ -147,17 +148,17 @@
                                         navigateByClick: true,
                                         startSlideId: 0,
                                         autoPlay: false,
-                                        transitionType:'move',
+                                        transitionType: 'move',
                                         globalCaption: false,
                                         deeplinking: {
                                             enabled: true,
                                             change: false
                                         },
                                         thumbs: {
-                                            arrows:true,
+                                            arrows: true,
                                             appendSpan: true,
                                             firstMargin: false,
-                                            orientation:'vertical'
+                                            orientation: 'vertical'
                                         },
                                         loop: true
 
@@ -181,7 +182,8 @@
                                 </a>
                             @endforeach
                         @endif
-                        <img width="640" height="427" src="@if(isset($selfImages['picture'][1]['link'])){{$selfImages['picture'][1]['link']}}@endif"
+                        <img width="640" height="427"
+                             src="@if(isset($selfImages['picture'][1]['link'])){{$selfImages['picture'][1]['link']}}@endif"
                              class="attachment-large wp-post-image"
                              alt="@if(isset($selfImages['picture'][1]['picture-name'])){{$selfImages['picture'][1]['picture-name']}}@endif"/>
                     </div>
@@ -283,49 +285,56 @@
                             </section>
                         </div>
 
-                                <!-- compare dynamic start -->
+                        <!-- compare dynamic start -->
 
 
                         <div ng-repeat="item in temporaryViewList | limitTo:3">
 
                             <div class="col-sm-3 col-xs-6 comparison-tab">
                                 <div>
-                                    <img class="img-responsive" ng-src="@{{ item.data.selfImages.mainImage}}" alt="@{{ item.data.selfImages.mainImageName}}"/>
+                                    <img class="img-responsive" ng-src="@{{ item.data.selfImages.mainImage}}"
+                                         alt="@{{ item.data.selfImages.mainImageName}}"/>
 
                                     <div class="tab-wrap">
-                                        <h4>@{{ item.data.productInformation.ProductName }}</h4>
+                                        <h4>@{{ item.data.productInformation.ProductName | limitTo: 50 }} @{{item.data.productInformation.ProductName.length > 50 ? '...' : ''}}</h4>
+
                                         {{--<i>@{{ item.data.productInformation.Available }}</i>--}}
                                         <b class="score">@{{ item.data.productInformation.Review[1].value }}</b>
 
                                         <div class="star-raiting" style="text-align: center">
-                                            <span class="stars" >(@{{ item.data.productInformation.Review[1].counter | number:0 }}) Customer Reviews</span>
+                                            <span class="stars">(@{{ item.data.productInformation.Review[1].counter | number:0 }}
+                                                ) Customer Reviews</span>
                                         </div>
                                         <div class="btn purple-bg price-badge">
                                             <span>Amazon</span> <b>$@{{ item.data.productInformation.SellPrice }}</b>
                                         </div>
-                                        <a class="btn-none" href="@{{ item.data.productInformation.AffiliateLink }}" target="_blank" >More Info</a>
+                                        <a class="btn-none" href="@{{ item.data.productInformation.AffiliateLink }}"
+                                           target="_blank">More Info</a>
                                     </div>
                                     <span class="close-button" ng-click="deleteSelectedItem($index)">✕</span>
                                 </div>
                             </div>
                         </div>
                         <!-- add item to compare -->
-                        <div class="col-sm-3 col-xs-6 comparison-tab" ng-hide="dataLength > 2" ng-init="loadProductDetails()">
+                        <div class="col-sm-3 col-xs-6 comparison-tab" ng-hide="dataLength > 2"
+                             ng-init="loadProductDetails()">
 
                             <div ng-hide="showCompareButton">
+                                <div style="margin-top: 265px">
+                                    <autocomplete ng-model="selectedProduct"
+                                                  attr-placeholder="Search product to add..."
+                                                  {{--attr-input-class="form-control"--}}
+                                                  ng-model-options="{debounce: 1000}"
+                                                  data="suggestedItems"
+                                                  on-select="selectedIdem"
+                                                  on-type="searchProductByName">
 
-                                <autocomplete ng-model="selectedProduct"
-                                              attr-placeholder="type to search product..."
-                                              {{--attr-input-class="form-control"--}}
-                                              ng-model-options="{debounce: 1000}"
-                                              data="suggestedItems"
-                                              on-select="selectedIdem"
-                                              on-type="searchProductByName">
+                                    </autocomplete>
+                                </div>
 
-                                </autocomplete>
                             </div>
 
-                            <div ng-show ="showCompareButton">
+                            <div ng-show="showCompareButton">
                                 <a class="purple add-more" ng-click="toggleCompareButton()">
                                     <span class="plus">+</span>
                                     <span>Add Product</span>
@@ -335,11 +344,11 @@
 
                         <!-- compare dynamic end -->
 
-                       {{-- <button class="arrow arrow-right"  ng-hide="compareIndex == dataLength-1" ng-click="traverseForward()"></button>--}}
+                        {{-- <button class="arrow arrow-right"  ng-hide="compareIndex == dataLength-1" ng-click="traverseForward()"></button>--}}
 
                         <div class="crearfix"></div>
 
-                        <h5>Compare maximum 3 products <a>&#43;</a></h5>
+                        <h5>Compare maximum 3 products </h5>
 
                         <div class="col-sm-3 col-xs-6 comparison-tab table-heads">
                             <h4></h4>
@@ -351,7 +360,8 @@
                         <!-- compare dynamic 2nd part start-->
                         <div ng-repeat="item in temporaryViewList | limitTo:3">
                             <div class="col-sm-3 col-xs-6 comparison-tab table-cells">
-                                <h4>@{{ item.data.productInformation.ProductName }}</h4>
+                                <h4>@{{ item.data.productInformation.ProductName | limitTo: 65 }} @{{item.data.productInformation.ProductName.length > 65 ? '...' : ''}}</h4>
+
                                 <hr>
                                 <div class="bordered" ng-repeat="spec in item.data.productInformation.Specifications">
                                     <b>@{{ spec.value }}</b>
@@ -361,14 +371,15 @@
                         </div>
 
                         <!-- compare dynamic 2nd part end -->
-                        <a href="#" class="view-all grey">View all</a>
+
                     </div>
                 </section>
                 <!-- TODO - use two (three?) columns -->
 
                 <section class="pale-grey-bg reviews" id="reviews">
                     <div class="container full-620 fixed-sm">
-                        <h3 class="pink">Reviews (@if(isset($productInformation['Review'])){{count($productInformation['Review']) -1}}@endif)</h3>
+                        <h3 class="pink">Reviews
+                            (@if(isset($productInformation['Review'])){{count($productInformation['Review']) -1}}@endif)</h3>
 
                         <div class="col-sm-3">
                             <h6 class="grey">Critic Reviews</h6>
@@ -387,7 +398,8 @@
                                             <td class="name">
                                                 <a href="@if(isset($review->link)){{$review->link}}@endif"
                                                    target="_blank">@if(isset($review->key)){{$review->key}}@endif
-                                                    @if(isset($review->counter) && ($review->counter > 0))( {{$review->counter}} )@endif
+                                                    @if(isset($review->counter) && ($review->counter > 0))
+                                                        ( {{$review->counter}} )@endif
                                                 </a>
                                             </td>
                                             <td class="line">
@@ -488,7 +500,6 @@
                                 </div>
                             @endforeach
                         @endif
-
 
 
                     </div>
