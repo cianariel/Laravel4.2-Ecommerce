@@ -139,7 +139,7 @@
                 $fileName = 'room-image-' . uniqid() . '-' . $request->file($filename)->getClientOriginalName();
 
                 // pointing filesystem to AWS S3
-                $s3 = Storage::disk('local');
+                $s3 = Storage::disk('s3');
 
                 // Thumbnail creation and uploading to AWS S3
                 if (in_array($request->file($filename)->guessClientExtension(), array("jpeg", "jpg", "bmp", "png")))
