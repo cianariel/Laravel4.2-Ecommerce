@@ -39,17 +39,14 @@
                                                 class="btn btn-success">
                                             <i class="fa fa-check"></i> Update
                                         </button>
-                                        <button ng-hide="Permalink == ''"
-                                                data-ng-click="previewProduct(Permalink)" class="btn btn-success">
-                                            <i class="fa fa-eye"></i> Preview
-                                        </button>
-                                        <button ng-hide="PostStatus == 'Active'"
-                                                data-ng-click="changeProductActivation()"
+
+                                        <button ng-show="StoreStatus == 'Inactive' && StoreId != ''"
+                                                data-ng-click="changeStoreActivation()"
                                                 class="btn btn-info" type="button">
                                             <i class="fa fa-check-circle"></i> Active
                                         </button>
-                                        <button ng-hide="PostStatus == 'Inactive'"
-                                                data-ng-click="changeProductActivation()"
+                                        <button ng-show="StoreStatus == 'Active' && StoreId != ''"
+                                                data-ng-click="changeStoreActivation()"
                                                 class="btn btn-warning" type="button">
                                             <i class="fa fa-angle-left"></i> Inactive
                                         </button>
@@ -99,7 +96,7 @@
                                                         </label>
                                                         <div class="col-md-4">
                                                             <input data-ng-model="StoreName" class="form-control"
-                                                                   placeholder="Enter media title"> @{{ StoreId }}
+                                                                   placeholder="Enter media title">
                                                         </div>
                                                     </div>
                                                     <div class="form-group">

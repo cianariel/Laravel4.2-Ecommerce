@@ -362,7 +362,7 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
             $scope.StoreId = '';
             $scope.StoreIdentifier = '';
             $scope.StoreName = '';
-            $scope.StoreStatus = '';
+            $scope.StoreStatus = 'Active';
             $scope.StoreDescription = '';
             //$scope.mediaLink  has initialized above for uploading product
 
@@ -388,13 +388,13 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
                 }
             }).success(function (data) {
                 $scope.outputStatus(data, 'Data updated successfully');
-                $scope.loadAllStores();
 
                 $scope.StoreId = '';
                 $scope.StoreIdentifier = '';
                 $scope.StoreName = '';
                 $scope.StoreDescription = '';
                 $scope.mediaLink = '';
+                $scope.loadAllStores();
 
             });
         };
@@ -407,24 +407,34 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
                 method: "GET"
             }).success(function (data) {
                 $scope.storeList = data.data;
-               // $scope.StoreId = 'sdfsdlkfjsdlkfj';
+            });
+        };
 
-                console.log($scope.StoreId);
+        $scope.changeStoreActivation = function(){
+            $scope.closeAlert();
+
+            $scope.StoreStatus = ($scope.StoreStatus == "Active") ? "Inactive" : "Active";
+
+            $http({
+                url: '/api/store/change-status',
+                method: "POST",
+                data:{
+                    StoreId : $scope.StoreId,
+                    StoreStatus : $scope.StoreStatus
+                }
+            }).success(function (data) {
+                $scope.loadAllStores();
             });
         };
 
         $scope.editStore = function(index){
 
-            console.log($scope.storeList[index].Id);
-           // $scope.closeAlert();
-       //     $scope.StoreId = "fsfklsdfjlskdfj";
-
-         //   $scope.StoreId = $scope.storeList[index].Id;
-            $scope.StoreIdentifier = $scope.storeList[index].StoreIdentifier;
-            $scope.StoreName = $scope.storeList[index].StoreName;
-            $scope.StoreStatus = $scope.storeList[index].StoreStatus;
-            $scope.StoreDescription = $scope.storeList[index].StoreDescription;
-            $scope.mediaLink = $scope.storeList[index].mediaLink;
+            $scope.StoreId = $scope.storeList[index].Id;
+            $scope.StoreIdentifier = $scope.storeList[index].Identifier;
+            $scope.StoreName = $scope.storeList[index].Name;
+            $scope.StoreStatus = $scope.storeList[index].Status == 'Active'?'Active':'Inactive';
+            $scope.StoreDescription = $scope.storeList[index].Description;
+            $scope.mediaLink = $scope.storeList[index].ImageLink;
 
         };
 

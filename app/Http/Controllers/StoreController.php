@@ -18,7 +18,7 @@
 
             $this->middleware('jwt.auth',
                 ['except' => [
-                    'updateStore', 'getAllStores','deleteStore'
+                    'updateStore', 'getAllStores', 'deleteStore','changeStatus'
                 ]]);
 
             $this->store = new Store();
@@ -26,10 +26,32 @@
 
         }
 
+        public function changeStatus()
+        {
+            $inputData = \Input::all();
+            try
+            {
+                $storeItem = $this->store->find($inputData['StoreId']);
+                $storeItem->status = $inputData['StoreStatus'];
+                $storeItem->save();
+
+                return $this->setStatusCode(\Config::get("const.api-status.success"))
+                    ->makeResponse('status Changed');
+
+            } catch (\Exception $ex)
+            {
+                return $this->setStatusCode(\Config::get("const.api-status.system-fail"))
+                    ->makeResponseWithError("System Failure !", $ex);
+            }
+
+
+        }
+
         public function updateStore()
         {
             $inputData = \Input::all();
             $store = null;
+            $result = null;
             try
             {
                 if (!isset($inputData['StoreId']) || ($inputData['StoreId'] == ''))
@@ -41,11 +63,21 @@
                         'store_description' => $inputData['StoreDescription']
                     ]);
 
+                    $this->media->media_name = $inputData['StoreIdentifier'];
+                    $this->media->media_type = 'img-upload';
+                    $this->media->media_link = $inputData['MediaLink'];
+
+                    $result = $store->medias()->save($this->media);
+
                 } else
                 {
                     $store = $this->store->where('id', $inputData['StoreId'])->first();
 
                     // $this->media->deleteMediaItem($store->medias[0]['id']);
+
+                    $mediaItem = $this->media->find($store->medias[0]['id']);
+                    $mediaItem->media_link = $inputData['MediaLink'];
+                    $mediaItem->save();
 
                     $store->store_identifier = $inputData['StoreIdentifier'];
                     $store->store_name = $inputData['StoreName'];
@@ -54,12 +86,6 @@
                     $store->save();
                 }
 
-
-                $this->media->media_name = $inputData['StoreIdentifier'];
-                $this->media->media_type = 'img-upload';
-                $this->media->media_link = $inputData['MediaLink'];
-
-                $result = $store->medias()->save($this->media);
 
                 return $this->setStatusCode(\Config::get("const.api-status.success"))
                     ->makeResponse($result);

@@ -138,11 +138,9 @@
          * */
         Route::post('store/update-store', 'StoreController@updateStore');
         Route::post('store/delete-store', 'StoreController@deleteStore');
+        Route::post('store/change-status', 'StoreController@changeStatus');
 
         Route::get('store/show-stores', 'StoreController@getAllStores');
-
-
-
 
 
         /*
@@ -177,6 +175,7 @@
 
 
     });
+
 
     // Route for password reset , email verification ,feed example
     Route::get('password-reset-form/{code?}', 'AuthenticateController@passwordResetForm');
