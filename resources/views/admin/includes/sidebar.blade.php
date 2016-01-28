@@ -88,6 +88,22 @@
                     </li>
                 </ul>
             </li>
+
+            <li class="nav-item  ">
+                <a href="javascript:;" class="nav-link nav-toggle">
+                    <i class="icon-tag"></i>
+                    <span class="title">Stores</span>
+                    <span class="arrow"></span>
+                </a>
+                <ul class="sub-menu">
+                    <li class="nav-item  ">
+                        <a href="/admin/stores" class="nav-link ">
+                            <span class="title">Manage Stores</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
             <li class="nav-item  ">
                 <a href="javascript:;" class="nav-link nav-toggle">
                     <i class="icon-tag"></i>

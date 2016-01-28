@@ -165,6 +165,9 @@
         Route::get('product-add', 'AdminController@addProduct');
         Route::get('product-edit/{id?}', 'AdminController@editProduct');
 
+        // Stores
+        Route::get('stores', 'AdminController@storeView');
+
         //Tag view
         Route::get('tag-view', 'AdminController@tagView');
 
