@@ -205,7 +205,7 @@
                                                                     <tbody>
                                                                     <tr ng-repeat="product in ProductList">
                                                                         <td>
-                                                                            <a href="/product\/@{{ product.product_permalink }}"
+                                                                            <a href="/product/@{{ product.product_permalink }}"
                                                                                target="_blank">
                                                                                 <img id="currentPhoto"
                                                                                      ng-src='@{{ product.media_link }}'

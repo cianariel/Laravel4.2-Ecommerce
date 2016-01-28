@@ -137,6 +137,18 @@
                                                     </div>
                                                 </div>
 
+                                                <div class="form-group">
+                                                    <label class="col-md-2 control-label">Store Name</label>
+                                                    <div class="col-md-5" ng-init="loadAllStores()">
+                                                        <select data-ng-model="StoreId"
+                                                                class="form-control">
+                                                            <option ng-repeat="store in storeList"
+                                                                    value="@{{ store.Id }}">
+                                                                @{{ store.Name }}
+                                                            </option>
+                                                        </select>
+                                                    </div>
+                                                </div>
 
                                                 <div class="form-group">
                                                     <label class="col-md-2 control-label">Product ID:
@@ -219,13 +231,6 @@
                                                            data-ng-model="SalePrice"
                                                            class="form-control"
                                                            placeholder="Enter Sale Price (Decimal number only)">
-                                                    </div>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label class="col-md-2 control-label">Store Name</label>
-                                                    <div class="col-md-10">
-                                                    <input data-ng-model="StoreId" class="form-control"
-                                                           placeholder="Enter text">
                                                     </div>
                                                 </div>
                                                 <div class="form-group">

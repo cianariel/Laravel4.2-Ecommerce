@@ -91,6 +91,9 @@
         Route::post('product/publish-product', 'ProductController@publishProduct');
         Route::get('product/get-by-name/{name?}', 'ProductController@productDetailsViewByName');
 
+        // Test method for logo
+        Route::get('product/logo','ProductController@getStoreInformation');
+
 
         // Delete product
         Route::post('product/delete-product', 'ProductController@deleteProduct');

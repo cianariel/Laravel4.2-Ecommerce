@@ -53,12 +53,13 @@
             {{--</ul>--}}
 
             <div class="icon-wrap pull-right">
-                <a class="category-tag get-round" ng-href=" @if(isset($productInformation['AffiliateLink']))
+                <a class="category-tag get-round" ng-href="@if(isset($productInformation['AffiliateLink']))
                 {{$productInformation['AffiliateLink']}}
                 @endif" target="_blank">
                     Get it
                 </a>
-                <img class="vendor-logo" src="/assets/images/dummies/amazon-black.png">
+                <img class="vendor-logo" width="90" src="@if(isset($storeInformation['ThumbnailPath'])){{$storeInformation['ThumbnailPath']}}@endif"
+                     alt="@if(isset($storeInformation['StoreName'])){{$storeInformation['StoreName']}}@endif">
                 <b class="price">$ @if(isset($productInformation['SellPrice']))
                         {{$productInformation['SellPrice']}}
                     @endif</b>
@@ -199,7 +200,8 @@
                             @endif" target="_blank">
                                 Get it
                             </a>
-                            <img class="vendor-logo" src="/assets/images/dummies/amazon-2.png">
+                            <img class="vendor-logo" width="107" src="@if(isset($storeInformation['ImagePath'])){{$storeInformation['ImagePath']}}@endif"
+                            alt="@if(isset($storeInformation['StoreName'])){{$storeInformation['StoreName']}}@endif">
                             <b class="price">$ @if(isset($productInformation['SellPrice']))
                                     {{$productInformation['SellPrice']}}
                                 @endif</b>
@@ -207,8 +209,8 @@
                         <div class="table">
                             <ul>
                                 <li>
-                                    <a href="#">
-                                        <span class="name">Amazon</span>
+                                    <a href="/pro/@if(isset($storeInformation['Identifier'])){{$storeInformation['Identifier']}}@endif">
+                                        <span class="name">@if(isset($storeInformation['StoreName'])){{$storeInformation['StoreName']}}@endif</span>
                                         <span class="price">&nbsp;</span>
                                     </a>
                                 </li>

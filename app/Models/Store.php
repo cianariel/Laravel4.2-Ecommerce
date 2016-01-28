@@ -41,4 +41,5 @@
             return $this->hasMany('App\Models\Product');
         }
 
+
     }

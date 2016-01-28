@@ -27,11 +27,20 @@
                     'publishProduct', 'searchProductByName', 'updateProductInfo', 'productDetailsView',
                     'getAllProductList', 'getProductById', 'isPermalinkExist', 'addProduct',
                     'fileUploader', 'addMediaInfo', 'getMediaForProduct', 'deleteSingleMediaItem',
-                    'getProductInfoFromApi', 'priceUpdate', 'deleteProduct', 'productDetailsViewByName'
+                    'getProductInfoFromApi', 'priceUpdate', 'deleteProduct', 'productDetailsViewByName',
+                    'getStoreInformation'
+
                 ]]);
             $this->product = new Product();
 
             $this->media = new Media();
+        }
+
+        public function getStoreInformation()
+        {
+            $productId = 64;
+          $val = $this->product->getStoreInfoByProductId($productId);
+
         }
 
         /**
@@ -448,6 +457,5 @@
                 }
             }
         }
-
 
     }
