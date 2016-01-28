@@ -298,7 +298,10 @@
             }
 
 
-            $skip = $settings['limit'] * ($settings['page'] - 1);
+            $skip = isset($settings['CustomSkip'])? intval($settings['CustomSkip']):$settings['limit'] * ($settings['page'] - 1);
+
+
+//            $skip = $settings['limit'] * ($settings['page'] - 1);
 
             $product['total'] = $productModel->count();
 

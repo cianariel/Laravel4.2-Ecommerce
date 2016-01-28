@@ -837,6 +837,7 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
             $scope.isCollapsed = false; // default false it false to show forced parmalink saviing mood.
             $scope.isCollapsedToggle = !$scope.isCollapsed;
         };
+
         $scope.addProduct = function () {
 
             $scope.closeAlert();
@@ -1077,6 +1078,7 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
 
         // view product list
         $scope.showAllProduct = function () {
+
             $http({
                 url: '/api/product/get-product-list',
                 method: 'POST',
