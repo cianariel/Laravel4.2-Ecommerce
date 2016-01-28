@@ -24,7 +24,7 @@
             // Apply the jwt.auth middleware to all methods in this controller
             $this->middleware('jwt.auth',
                 ['except' => [
-                    'updateRoom', 'addRoom'
+                    'updateRoom', 'addRoom','deleteRoom'
                 ]]);
             $this->product = new Product();
             $this->room = new Room();
@@ -166,5 +166,16 @@
                 }
             }
 
+        }
+        public function deleteRoom()
+        {
+            $id = \Input::get('RoomId');
+            $room = $this->room->find($id);
+            if ($room == null)
+                return $this->setStatusCode(\Config::get("const.api-status.system-fail"))
+                    ->makeResponseWithError("No data available !");
+            $this->room->find($id)->delete();
+            return $this->setStatusCode(\Config::get("const.api-status.success"))
+                ->makeResponse("Data deleted Successfully");
         }
     }
