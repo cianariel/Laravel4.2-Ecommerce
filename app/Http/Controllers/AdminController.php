@@ -6,6 +6,7 @@
 
     use App\Http\Requests;
     use App\Http\Controllers\Controller;
+    use App\Models\Room;
   //  use App\Models\Product;
 
     class AdminController extends ApiController {
@@ -78,5 +79,23 @@
         public function tagView()
         {
             return view('admin.tag-view');
+        }
+        // Room view
+        public function roomsView()
+        {
+            $Rooms = Room::all();
+            return \View::make('admin.rooms.room-view', ['Rooms' => $Rooms]);
+        }
+
+        public function addRoom()
+        {
+            $room = new Room();
+            return view('admin.rooms.room-add')->with('room',$room);
+        }
+
+        public function editRoom($id)
+        {
+            $room = Room::find($id);
+            return view('admin.rooms.room-add')->with('room',$room);
         }
     }

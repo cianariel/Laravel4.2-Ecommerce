@@ -15,12 +15,12 @@ function timeAgo($time_ago)
     $years      = round($time_elapsed / 31207680 );
     // Seconds
     if($seconds <= 60){
-        return "just now";
+        return "now";
     }
     //Minutes
     else if($minutes <=60){
         if($minutes==1){
-            return "one minute ago";
+            return "1 minute ago";
         }
         else{
             return "$minutes minutes ago";
@@ -29,9 +29,9 @@ function timeAgo($time_ago)
     //Hours
     else if($hours <=24){
         if($hours==1){
-            return "an hour ago";
+            return "1 hour ago";
         }else{
-            return "$hours hrs ago";
+            return "$hours hours ago";
         }
     }
     //Days
@@ -45,7 +45,7 @@ function timeAgo($time_ago)
     //Weeks
     else if($weeks <= 4.3){
         if($weeks==1){
-            return "a week ago";
+            return "1 week ago";
         }else{
             return "$weeks weeks ago";
         }
@@ -90,11 +90,43 @@ function carbon_the_content_limit($max_char, $more_link_text = '(more...)', $str
 }
 require_once('../wp-load.php');
 $postCount = $_REQUEST['count']; // The number of posts to show in the feed
+$postCount  = isset($postCount)? $postCount : -1;
+if($postCount==0)
+{
+    $postCount = -1;
+}
 $onlyfeatured = $_REQUEST['only-featured'];
 $no_featured = $_REQUEST['no-featured'];
+$is_featured = "";
+if(isset($no_featured))
+{
+    $is_featured = "No";
+}
+if(isset($onlyfeatured))
+{
+    $is_featured = "Yes";
+}
 $offset = $_REQUEST['offset'];
 $postCat = $_REQUEST['category-id'];
-$posts = query_posts('cat='.$postCat.'&showposts=' . $postCount.'&offset='.$offset);
+$args = array(
+'cat' => $postCat,
+'showposts' => $postCount,
+'offset' => $offset,);
+
+if($is_featured != "")
+{
+$args['meta_query'] = array(
+       'relation'  => 'AND',
+       array(
+        'key'  => 'is_featured',
+        'value' => $is_featured,
+        'compare' => '='
+       )
+      );
+}
+
+$posts = query_posts($args);
+//$posts = query_posts('cat='.$postCat.'&showposts=' . $postCount.'&offset='.$offset);
 $datam = array();
 $data = array();
 while(have_posts()) : the_post();
@@ -149,19 +181,7 @@ $get_is_featured = get_post_custom_values('is_featured',$ID);
 $is_featured = false;
 if($get_is_featured[0] == "Yes")
 {
-	if(isset($no_featured))
-	{
-		continue;
-	}
 	$is_featured = true;
-}
-else
-{
-	if(isset($onlyfeatured))
-	{
-		continue;
-	}
-	
 }
 $data['is_featured'] = $is_featured;
 
