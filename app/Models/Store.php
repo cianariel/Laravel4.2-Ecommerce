@@ -14,8 +14,8 @@
         protected $table = 'stores';
 
         protected $fillable = array(
-            'store_id',
             'store_name',
+            'store_identifier',
             'status',
             'store_description'
         );

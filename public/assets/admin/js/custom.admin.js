@@ -276,7 +276,7 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
             $scope.htmlContent = '<div><br/><br/><br/>1. Describe what the product is<br/><br/></div><div>2. How does it solve one\'s problem<br/><br/></div><div>3. Why is it unique<br/><br/></div><div>4. Mention how the reviewers (Amazon users or CNET or another source) said about it.<br/><br/></div><div>5. List 3 bullet points on its key features in your own words</div>';
             $scope.Price = '';
             $scope.SalePrice = '';
-            $scope.StoreId = '';
+            //    $scope.StoreId = '';
             $scope.AffiliateLink = '';
             $scope.PriceGrabberId = '';
             $scope.FreeShipping = '';
@@ -358,7 +358,90 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
             // product filter with Tag
             $scope.WithTags = false;
 
+            // Store Module
+            $scope.StoreId = '';
+            $scope.StoreIdentifier = '';
+            $scope.StoreName = '';
+            $scope.StoreStatus = '';
+            $scope.StoreDescription = '';
+            //$scope.mediaLink  has initialized above for uploading product
+
+            $scope.storeList = [];
+
         };
+
+        //// Store ///
+
+        $scope.updateStore = function () {
+            $scope.closeAlert();
+            // console.log($scope.mediaLink, $scope.StoreDescription, $scope.StoreIdentifier);
+            $http({
+                url: '/api/store/update-store',
+                method: "POST",
+                data: {
+                    StoreId: $scope.StoreId,
+                    StoreIdentifier: $scope.StoreIdentifier,
+                    StoreName: $scope.StoreName,
+                    StoreStatus: $scope.StoreStatus,
+                    StoreDescription: $scope.StoreDescription,
+                    MediaLink: $scope.mediaLink
+                }
+            }).success(function (data) {
+                $scope.outputStatus(data, 'Data updated successfully');
+                $scope.loadAllStores();
+
+                $scope.StoreId = '';
+                $scope.StoreIdentifier = '';
+                $scope.StoreName = '';
+                $scope.StoreDescription = '';
+                $scope.mediaLink = '';
+
+            });
+        };
+
+        $scope.loadAllStores = function () {
+
+            // console.log($scope.mediaLink, $scope.StoreDescription, $scope.StoreIdentifier);
+            $http({
+                url: '/api/store/show-stores',
+                method: "GET"
+            }).success(function (data) {
+                $scope.storeList = data.data;
+               // $scope.StoreId = 'sdfsdlkfjsdlkfj';
+
+                console.log($scope.StoreId);
+            });
+        };
+
+        $scope.editStore = function(index){
+
+            console.log($scope.storeList[index].Id);
+           // $scope.closeAlert();
+       //     $scope.StoreId = "fsfklsdfjlskdfj";
+
+         //   $scope.StoreId = $scope.storeList[index].Id;
+            $scope.StoreIdentifier = $scope.storeList[index].StoreIdentifier;
+            $scope.StoreName = $scope.storeList[index].StoreName;
+            $scope.StoreStatus = $scope.storeList[index].StoreStatus;
+            $scope.StoreDescription = $scope.storeList[index].StoreDescription;
+            $scope.mediaLink = $scope.storeList[index].mediaLink;
+
+        };
+
+        $scope.deleteStore = function (id) {
+            $scope.closeAlert();
+            $http({
+                url: '/api/store/delete-store',
+                method: "POST",
+                data: {
+                    StoreId : id
+                }
+            }).success(function (data) {
+                $scope.loadAllStores();
+                $scope.outputStatus(data, 'Store deleted successfully');
+            });
+        };
+
 
         ///// tag //////
 
@@ -672,8 +755,8 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
         };
 
         $scope.updateCategory = function (idx) {
-            console.log("Saving contact");
-            console.log($scope.categoryItems[idx]);
+            // console.log("Saving contact");
+            // console.log($scope.categoryItems[idx]);
             $scope.closeAlert();
 
             $http({
@@ -1239,17 +1322,8 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
             $scope.isHeroItem = stat;
             $scope.isMainItem = $scope.mediaList[index].is_main_item == 1 ? 1 : 0;
             $scope.isMediaEdit = true;
-            console.log($scope.mediaId);
+           // console.log($scope.mediaId);
 
-
-            /*
-             ProductId: $scope.ProductId,
-             MediaTitle: $scope.mediaTitle,
-             MediaType: $scope.selectedMediaType,
-             MediaLink: $scope.mediaLink,
-             IsHeroItem: $scope.isHeroItem,
-             IsMainItem: $scope.isMainItem
-             */
         };
 
         $scope.updateMediaInfo = function () {
@@ -1266,7 +1340,7 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
 
                 }
             }).success(function (data) {
-               // console.log(data);
+                // console.log(data);
                 $scope.mediaId = '';
                 $scope.mediaTitle = '';
                 $scope.selectedMediaType = '';

@@ -111,7 +111,7 @@
         public function deleteMediaContent()
         {
             $id = \Input::get('id');
-            $this->deleteMediaItem($id);
+            $this->media->deleteMediaItem($id);
 
         }
 

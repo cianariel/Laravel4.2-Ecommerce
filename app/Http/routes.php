@@ -137,6 +137,9 @@
          * Store
          * */
         Route::post('store/update-store', 'StoreController@updateStore');
+        Route::post('store/delete-store', 'StoreController@deleteStore');
+
+        Route::get('store/show-stores', 'StoreController@getAllStores');
 
 
 
@@ -167,6 +170,7 @@
 
         // Stores
         Route::get('stores', 'AdminController@storeView');
+
 
         //Tag view
         Route::get('tag-view', 'AdminController@tagView');
