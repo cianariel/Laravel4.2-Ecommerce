@@ -64,8 +64,8 @@
                                     <td><input type="checkbox" class="checkboxes" value="1" /> </td>
                                     <td>{{$room->room_name }}</td>
                                     <td>{{$room->room_permalink}} </td>
-                                    <td><a href="/admin/room-edit/{{$room->id}}" class="btn btn-sm btn-default blue btn-circle btn-editable"><i class="fa fa-pencil"></i> Edit</a>
-                                    <a href="/admin/room-delete/{{$room->id}}" class="btn btn-sm btn-danger btn-circle btn-editable"><i class="fa fa-close"></i> Delete</a></td>
+                                    <td><a href="/admin/room-edit/{{$room->id}}" class="btn btn-sm btn-default blue btn-editable"><i class="fa fa-pencil"></i> Edit</a>
+                                    <button class="btn btn-sm btn-danger btn-editable" data-roomid="{{$room->id}}" id="btn_delete_room" data-dismiss="modal"><i class="fa fa-close"></i> Delete</button></td>
                                 </tr>
                                 @endforeach
                             </tbody>
@@ -85,7 +85,17 @@
 <script src="/assets/admin/vendor/pages/scripts/table-datatables-managed.js" type="text/javascript"></script>
 <script>
 $(function() {
-   
+    $('#btn_delete_room').click(function(){
+        var post={};
+         post.RoomId = $(this).data("roomid");
+        $.ajax({
+            type : 'POST',
+            url : '/api/room/delete-room',
+            data : post,
+            success : function(x) { alert('Room Deleted'); },
+            error : function(r) { alert('errror'); }
+        });
+    });
 });
 
 </script>
