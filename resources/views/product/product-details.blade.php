@@ -372,7 +372,7 @@
 
                 <section class="pale-grey-bg reviews" id="reviews">
                     <div class="container full-620 fixed-sm">
-                        <h3 class="pink">Reviews(
+                        <h3 class="pink">Reviews ()
                             @if(isset($productInformation['Review']))
                                 {{count($productInformation['Review']) -1}}
                             @endif
