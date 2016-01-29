@@ -24,64 +24,96 @@ class PageController extends Controller
         return view('home')->with('content', $content);
     }
 
-    public function getContent($page = 1){
-        $limit = 7;
-        $offset = $limit *  ($page - 1);
+    public function getContent($page = 1, $limit = 4, $returnOnly = false){
 
+        if($limit == 'undefined'){
+            $limit = 4;
+        }
+
+        $storyLimit = $limit;
+        $storyOffset = 4 *  ($page - 1);
+
+//        if($returnOnly == 'idea'){
+//            $productLimit = $limit;
+//        }
+
+        $featuredLimit = 3;
+        $featuredOffset = $featuredLimit * ($page - 1);
+
+        if($returnOnly == 'product'){
+            $productLimit  = $limit;
+            $productOffset = $limit *  ($page);
+        }else{
+            $productLimit = $limit + $featuredLimit;
+            $productOffset = $limit *  ($page - 1);
+        }
+//        $productOffset = $limit;
+
+
+
+        if($returnOnly == 'product' || !$stories = self::getStories($storyLimit, $storyOffset, $featuredLimit, $featuredOffset)){
+            $stories = [
+                'regular' => [],
+                'featured' => [],
+            ];
+        }
+
+
+        if($returnOnly == 'idea' || !$products = self::getProducts($productLimit, $page, $productOffset)){
+            $products['result'] = [];
+        }
+
+
+        $return['regular'] = array_merge($stories['regular'], $products['result']);
+        $return['featured'] = $stories['featured'];
+
+        usort($return['regular'], function($a, $b) { return strtotime(@$b->updated_at) - strtotime(@$a->updated_at);});
+
+        return $return;
+    }
+
+    public function getStories($limit, $offset, $featuredLimit, $featuredOffset){
         $url = 'http://staging.ideaing.com/ideas/feeds/index.php?count='.$limit.'&no-featured&offset='. $offset;
 
         $ch = curl_init();
-
         curl_setopt($ch, CURLOPT_URL, $url);
         curl_setopt($ch, CURLOPT_HEADER, 0);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_ENCODING ,"");
-
         $json = curl_exec($ch);
-        $stories = json_decode($json);
 
-        $featuredOffset = 5 * ($page - 1);
+        $return['regular'] = json_decode($json);
 
-        $featuredUrl = "http://staging.ideaing.com/ideas/feeds/index.php?count=5&only-featured&offset=". $featuredOffset;
+        $featuredUrl = 'http://staging.ideaing.com/ideas/feeds/index.php?count='.$featuredLimit.'&only-featured&offset='. $featuredOffset;
 
         curl_setopt($ch, CURLOPT_URL, $featuredUrl);
         $json = curl_exec($ch);
-        $featured = json_decode($json);
-
         curl_close($ch);
 
+        $return['featured'] = json_decode($json);
+
+        return $return;
+    }
+
+    public function getProducts($limit, $page, $offset){
         $productSettings = [
             'ActiveItem' => true,
             'limit'      => $limit,
             'page'       => $page,
+            'CustomSkip' => $offset,
+
             'CategoryId' => false,
             'FilterType' => false,
             'FilterText' => false,
-            'ShowFor' => false,
-            'WithTags' => false,
+            'ShowFor'    => false,
+            'WithTags'   => false,
         ];
 
         $prod = new Product();
 
-        if(!$stories){
-            $stories = [];
-        }
-
         $products = $prod->getProductList($productSettings);
-        $content = array_merge($stories, $products['result']);
-//        $content = $products['result'];
 
-        usort($content, function($a, $b) { return strtotime($b->updated_at) - strtotime($a->updated_at);});
-
-        $return['row-1'] = array_slice($content, 0, 3);
-        $return['row-2'] = @$featured[0] ? [$featured[0]] : false;
-        $return['row-3'] = array_slice($content, 3, 3);
-        $return['row-4'] = @$featured[1] ? [$featured[1]] : false;
-        $return['row-5'] = array_slice($content, 6, 3);
-        $return['row-6'] = @$featured[2] ? [$featured[2]] : false;
-
-//        return json_encode($return);
-        return $return;
+        return $products;
     }
 
 
@@ -98,7 +130,7 @@ class PageController extends Controller
         MetaTag::set('title',$result['productInformation']['PageTitle']);
         MetaTag::set('description',$result['productInformation']['MetaDescription']);
 
-       // dd($result['relatedProducts']);
+     //   dd($result['selfImages']['picture'][0]['link']);
         return view('product.product-details')
             ->with('permalink',$permalink)
             ->with('productInformation',$result['productInformation'])
