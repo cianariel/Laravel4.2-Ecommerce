@@ -58,7 +58,7 @@
                 @endif" target="_blank">
                     Get it
                 </a>
-                <img class="vendor-logo" width="90" src="@if(isset($storeInformation['ThumbnailPath'])){{$storeInformation['ThumbnailPath']}}@endif"
+                <img class="vendor-logo"  style="-webkit-filter: invert(100%); filter: invert(100%);" width="90" src="@if(isset($storeInformation['ThumbnailPath'])){{$storeInformation['ThumbnailPath']}}@endif"
                      alt="@if(isset($storeInformation['StoreName'])){{$storeInformation['StoreName']}}@endif">
                 <b class="price">$ @if(isset($productInformation['SellPrice']))
                         {{$productInformation['SellPrice']}}
