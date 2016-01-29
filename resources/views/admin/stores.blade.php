@@ -144,7 +144,7 @@
                                                             <div class="col-md-4">
                                                                 <input type="file" name="file" nv-file-select=""
                                                                        uploader="uploader"/>
-                                                            </div>
+                                                            </div> <label> <strong>Recommended Image Size: (120 x 25) px </strong></label>
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
