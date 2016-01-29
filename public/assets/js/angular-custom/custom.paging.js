@@ -5,6 +5,7 @@ angular.module('pagingApp.controllers', []).
         $scope.newStuff = [];
         $scope.currentPage = 1;
         $scope.contentBlock = angular.element( document.querySelector('.main-content') );
+        $scope.filterLoad = [];
 
         $scope.firstLoad = pagaingApi.getContent(1).success(function (response) {
             $scope.allContent[0] = response;
@@ -34,6 +35,24 @@ angular.module('pagingApp.controllers', []).
 
 
         $scope.filterContent = function($criterion){
+            $scope.content = [];
+
+            if($scope.filterBy === $criterion){
+                return true;
+            }else if(typeof $criterion === 'undefined' || $criterion === null || $criterion === 'all'){
+                $scope.firstLoad = pagaingApi.getContent(1).success(function (response) {
+                    $scope.allContent[0] = response;
+                    $scope.content[0] = $scope.sliceToRows(response['regular'], response['featured']);
+                });
+                return true;
+            }else if(typeof $scope.filterBy !== 'undefined'){
+                $scope.firstLoad =  pagaingApi.getContent(1, 9, $criterion).success(function (response) {
+                    $scope.allContent[0] = response;
+                    $scope.content[0] = $scope.sliceToRows(response['regular'], response['featured']);
+                });
+            }
+
+
             //$scope.filtered = [];
             $scope.filterBy = $criterion;
             console.log(0)
@@ -42,7 +61,7 @@ angular.module('pagingApp.controllers', []).
             var $replacer = [];
             var $i = 0;
             //var page =
-            $scope.nextLoad = $scope.allContent.forEach(function(batch) {
+            $scope.allContent.forEach(function(batch) {
                 $scope.filtered = [];
                 //$scope.filtered['regular'] = [];
                 //console.log(1)
@@ -63,10 +82,14 @@ angular.module('pagingApp.controllers', []).
 
 
 
-                    pagaingApi.getContent($scope.currentPage, $diff, $criterion, $scope.filtered ).success(function (response) {
+                    $scope.firstLoad = pagaingApi.getContent($scope.currentPage, $diff, $criterion, $scope.filtered ).success(function (response) {
                         //console.log('response')
                         //console.log(response['regular'])
                         $scope.filtered['regular'] =  $scope.filtered['regular'].concat(response['regular']);
+                        if($criterion == null && $criterion == 'idea' && $scope.filtered['featured'] == []){
+                            //console.log($criterion)
+                            $scope.filtered['featured'] = response['featured'];
+                        }
                         //console.log(8)
                         //console.log($scope.filtered['regular'])
 

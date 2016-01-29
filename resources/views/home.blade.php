@@ -55,6 +55,7 @@
 
         <div class="homepage-grid center-block">
                 <div class="loader loader-abs" cg-busy="firstLoad"></div>
+                <div class="loader loader-abs" cg-busy="filterLoad"></div>
                 <div class="loader loader-fixed" cg-busy="nextLoad"></div>
 
                 <div ng-repeat="batch in content" class="container main-content">
