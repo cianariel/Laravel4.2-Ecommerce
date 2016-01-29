@@ -128,7 +128,9 @@ class PageController extends Controller
             ->with('permalink',$permalink)
             ->with('productInformation',$result['productInformation'])
             ->with('relatedProducts',$result['relatedProducts'])
-            ->with('selfImages',$result['selfImages']);
+            ->with('selfImages',$result['selfImages'])
+            ->with('storeInformation',$result['storeInformation']);
+
 
     }
 

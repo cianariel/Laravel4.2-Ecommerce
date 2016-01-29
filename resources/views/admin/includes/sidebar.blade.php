@@ -70,8 +70,8 @@
                 </ul>
             </li>
             <li class="nav-item  ">
-                <a href="javascript:;" class="nav-link nav-toggle">
-                    <i class="icon-tag"></i>
+                <a href="javascript:;#product" class="nav-link nav-toggle">
+                    <i class="icon-graph"></i>
                     <span class="title">Products</span>
                     <span class="arrow"></span>
                 </a>
@@ -88,6 +88,22 @@
                     </li>
                 </ul>
             </li>
+
+            <li class="nav-item  ">
+                <a href="javascript:;" class="nav-link nav-toggle">
+                    <i class="icon-tag"></i>
+                    <span class="title">Stores</span>
+                    <span class="arrow"></span>
+                </a>
+                <ul class="sub-menu">
+                    <li class="nav-item  ">
+                        <a href="/admin/stores" class="nav-link ">
+                            <span class="title">Manage Stores</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
             <li class="nav-item  ">
                 <a href="javascript:;" class="nav-link nav-toggle">
                     <i class="icon-tag"></i>
@@ -102,7 +118,25 @@
                     </li>
                 </ul>
             </li>
-
+            <li class="nav-item  ">
+                <a href="javascript:;#room" class="nav-link nav-toggle">
+                    <i class="icon-wallet"></i>
+                    <span class="title">Rooms</span>
+                    <span class="arrow"></span>
+                </a>
+                <ul class="sub-menu">
+                    <li class="nav-item  ">
+                        <a href="/admin/room-view" class="nav-link ">
+                            <span class="title">Rooms List</span>
+                        </a>
+                    </li>
+                    <li class="nav-item  ">
+                        <a href="/admin/room-add" class="nav-link ">
+                            <span class="title">Add Room</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
         </ul>
         <!-- END SIDEBAR MENU -->
     </div>

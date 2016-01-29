@@ -60,6 +60,11 @@
             return $this->belongsTo('App\Models\ProductCategory');
         }
 
+        public function store()
+        {
+            return $this->belongsTo('App\Models\Store');
+        }
+
         public function medias()
         {
             return $this->morphMany('App\Models\Media', 'mediable');
@@ -68,6 +73,11 @@
         public function tags()
         {
             return $this->morphToMany('App\Models\Tag', 'taggable');
+        }
+
+        public function logoInformation()
+        {
+            return $this->hasManyThrough('App\Models\Store', 'App\Models\Media');
         }
 
 
@@ -85,6 +95,33 @@
         public function getReviewAttribute($value)
         {
             return json_decode($value);
+        }
+
+        // Functions //
+
+
+        /** Populate store information for a single product
+         * @param $productId
+         * @return mixed
+         */
+        public function getStoreInfoByProductId($productId)
+        {
+            $item = Product::find($productId)->store;
+            $itemLogoInfo = Store::find($item['id'])->medias->first();
+
+            $data['StoreId'] = $item->id;
+            $data['StoreName'] = $item->store_name;
+            $data['Identifier'] = $item->store_identifier;
+            $data['Description'] = $item->store_description;
+            $data['Status'] = $item->status;
+            $data['ImagePath'] = $itemLogoInfo->media_link;
+
+            $strReplace = \Config::get("const.file.s3-path");// "http://s3-us-west-1.amazonaws.com/ideaing-01/";
+            $file = str_replace($strReplace, '', $itemLogoInfo->media_link);
+
+            $data['ThumbnailPath'] = $strReplace . 'thumb-' . $file;
+
+            return $data;
         }
 
 
@@ -178,9 +215,18 @@
         {
             $column = $id == null ? 'product_permalink' : 'id';
             $value = $id == null ? $permalink : $id;
+
             $productInfo = Product::with('medias')
                 ->where($column, $value)
                 ->first();
+
+            // automatic update price for any changes and fetch new data with updated price
+            if ($this->updateProductPrice($productInfo['product_vendor_id'], $productInfo['store_id']))
+            {
+                $productInfo = Product::with('medias')
+                    ->where($column, $value)
+                    ->first();
+            }
 
             //dd($productInfo);
             return $productInfo;
@@ -252,7 +298,10 @@
             }
 
 
-            $skip = $settings['limit'] * ($settings['page'] - 1);
+            $skip = isset($settings['CustomSkip'])? intval($settings['CustomSkip']):$settings['limit'] * ($settings['page'] - 1);
+
+
+//            $skip = $settings['limit'] * ($settings['page'] - 1);
 
             $product['total'] = $productModel->count();
 
@@ -368,8 +417,8 @@
             // if main image is not selected
             if (!isset($selfImage['mainImage']))
             {
-                $selfImage['mainImage'] = isset($selfImage['picture'][1]['link'])?$selfImage['picture'][1]['link']:'';
-                $selfImage['mainImageName'] = isset($selfImage['picture'][1]['picture-name'])?$selfImage['picture'][1]['picture-name']:'';
+                $selfImage['mainImage'] = isset($selfImage['picture'][1]['link']) ? $selfImage['picture'][1]['link'] : '';
+                $selfImage['mainImageName'] = isset($selfImage['picture'][1]['picture-name']) ? $selfImage['picture'][1]['picture-name'] : '';
 
             }
 
@@ -415,11 +464,12 @@
             $result['productInformation'] = $productInfo;
             $result['relatedProducts'] = $relatedProductsData;
             $result['selfImages'] = $selfImage;
-
+            $result['storeInformation'] = $this->getStoreInfoByProductId($productData['product']->id);
 
             //removing duplicate data entry for related product (set distinct value for related products)
             $result['relatedProducts'] = array_map("unserialize", array_unique(array_map("serialize", $result['relatedProducts'])));
 
+            //    dd($result);
             return $result;
 
         }
@@ -471,7 +521,7 @@
 
 
         // Get product information form Product's vendor API
-        public function getApiProductInformation($itemId)
+        public function getApiProductInformation($itemId, $store = null)
         {
             try
             {
@@ -486,18 +536,47 @@
             }
         }
 
-        //todo cron task for API based product update.
-        public function updateProductPrice($time = 5, $itemCount = 10)
+
+        /** Update latest price and return true, for no update return false, also return false for any system error.
+         * @param string $productVendorId
+         * @param string $store
+         * @return bool
+         */
+        public function updateProductPrice($productVendorId = 'B00OHY14CS', $store = 'Amazon')
         {
-            $timeCompare = date("Y-m-d H:i:s", time() - ($time * 60));
-            $itemIds = Product::where('updated_at', '<', $timeCompare)
-                ->limit($itemCount)
-                ->get(array("id", "product_permalink", "updated_at", "product_vendor_id"));
-
-            dd($timeCompare, $itemIds);
-
-            foreach ($itemIds as $item)
+            try
             {
+                // $timeCompare['now'] = date("Y-m-d H:i:s", time());
+                // $timeCompare['required'] = date("Y-m-d H:i:s", (time() - (60 * 60 * $hours)));
+
+                $hours = \Config::get("const.product-update-time-limit");
+
+                $timeCompare = date("Y-m-d H:i:s", (time() - (60 * 60 * $hours)));
+
+                $product = Product::where('updated_at', '<', $timeCompare)
+                    ->where('store_id', '=', $store)
+                    ->where('product_vendor_id', '=', $productVendorId)
+                    ->first(array("id", "product_permalink", "price", "sale_price", "updated_at", "product_vendor_id"));
+
+                if (isset($product))
+                {
+                    $apiData = $this->getApiProductInformation($productVendorId, $store);
+                    if (($product['price'] != $apiData['ApiPrice']) || ($product['sale_price'] != $apiData['ApiSalePrice']))
+                        // echo $product['sale_price'];
+                        $product->price = $apiData['ApiPrice'];
+                    $product->sale_price = $apiData['ApiSalePrice'];
+                    $product->save();
+
+                    return true;
+                    //     dd($timeCompare,$product,$apiData);
+
+                } else
+                {
+                    return false;
+                }
+            } catch (Exception $ex)
+            {
+                return false;
 
             }
         }
