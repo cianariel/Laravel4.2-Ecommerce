@@ -49,7 +49,7 @@ angular.module('pagingApp.controllers', []).
 
                     $('.homepage-grid').fadeOut(1000, function(){
                         $scope.content = $replacer;
-                        $('.homepage-grid').fadeIn(2000);
+                        $('.homepage-grid').fadeIn(1000);
                     });
 
                     return true;
@@ -65,7 +65,7 @@ angular.module('pagingApp.controllers', []).
 
                     $('.homepage-grid').fadeOut(1000, function(){
                         $scope.content = $replacer;
-                        $('.homepage-grid').fadeIn(2000);
+                        $('.homepage-grid').fadeIn(1000);
                     });
 
                     $scope.filterBy = $criterion;
@@ -108,9 +108,9 @@ angular.module('pagingApp.controllers', []).
 
             $('.homepage-grid').fadeOut(1000, function(){
                 $scope.content = $replacer;
-                $('.homepage-grid').fadeIn(2000);
+                $('.homepage-grid').fadeIn(1000);
             });
-
+ 
             $scope.allContent = $scope.allContent.concat($replacer)
 
         };

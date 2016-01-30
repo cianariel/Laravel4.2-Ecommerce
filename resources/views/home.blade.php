@@ -53,7 +53,7 @@
 
         <div class="clearfix"></div>
 
-        <div class="homepage-grid center-block" style="min-height: 2000px">
+        <div class="homepage-grid center-block" style="min-height:1000px">
                 <div class="loader loader-abs" cg-busy="firstLoad"></div>
                 {{--<div class="loader loader-abs" cg-busy="filterLoad"></div>--}}
                 <div class="loader loader-fixed" cg-busy="nextLoad"></div>
@@ -114,7 +114,9 @@
                 </div>
             {{--</div>--}}
         </div>
-        <a ng-click="loadMore()" class="btn btn-success bottom-load-more col-xs-12">Load More</a>
+        <div class="container">
+            <a ng-click="loadMore()" class="btn btn-success bottom-load-more col-xs-12">Load More</a>
+        </div>
 
     </div>
     <script src="/assets/js/vendor/angular-busy.min.js"></script>
