@@ -308,7 +308,7 @@
                                                 ) Customer Reviews</span>
                                         </div>
                                         <div class="btn purple-bg price-badge">
-                                            <span>Amazon</span> <b>$@{{ item.data.productInformation.SellPrice }}</b>
+                                            <span>@{{ item.data.storeInformation.StoreName }}</span> <b>$@{{ item.data.productInformation.SellPrice }}</b>
                                         </div>
                                         <a class="btn-none" href="@{{ item.data.productInformation.AffiliateLink }}"
                                            target="_blank">More Info</a>
