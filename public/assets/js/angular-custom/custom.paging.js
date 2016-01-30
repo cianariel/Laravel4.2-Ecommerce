@@ -120,7 +120,7 @@ angular.module('pagingApp.controllers', []).
                     $('.main-content').fadeIn(1000);
                 }, 1000);
 
-            }, 1000);
+            }, 500);
 
         };
 
