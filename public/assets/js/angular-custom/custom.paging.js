@@ -38,7 +38,7 @@ angular.module('pagingApp.controllers', []).
             //$('.homepage-grid').fadeOut(function(){
             $replacer = [];
 
-            if($scope.filterBy === $criterion){
+            if($scope.filterBy === $criterion){ 
                     return true;
 
             }else if(typeof $criterion === 'undefined' || $criterion === null || $criterion === 'all'){
@@ -47,9 +47,9 @@ angular.module('pagingApp.controllers', []).
                         $replacer[0] = $scope.sliceToRows(response['regular'], response['featured']);
                     });
 
-                    $('.homepage-grid').fadeOut(1000, function(){
+                    $('.homepage-grid').fadeOut(function(){
                         $scope.content = $replacer;
-                        $('.homepage-grid').fadeIn(1000);
+                        $('.homepage-grid').fadeIn();
                     });
 
                     return true;
@@ -63,9 +63,9 @@ angular.module('pagingApp.controllers', []).
                     //$scope.content = $replacer;
                     //$('.main-content').fadeIn();
 
-                    $('.homepage-grid').fadeOut(1000, function(){
+                    $('.homepage-grid').fadeOut(function(){
                         $scope.content = $replacer;
-                        $('.homepage-grid').fadeIn(1000);
+                        $('.homepage-grid').fadeIn();
                     });
 
                     $scope.filterBy = $criterion;
@@ -106,11 +106,11 @@ angular.module('pagingApp.controllers', []).
                     return value.type == $criterion;
                 }
 
-            $('.homepage-grid').fadeOut(1000, function(){
+            $('.homepage-grid').fadeOut(function(){
                 $scope.content = $replacer;
-                $('.homepage-grid').fadeIn(1000);
+                $('.homepage-grid').fadeIn();
             });
- 
+
             $scope.allContent = $scope.allContent.concat($replacer)
 
         };
