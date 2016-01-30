@@ -53,12 +53,12 @@
 
         <div class="clearfix"></div>
 
-        <div class="homepage-grid center-block" style="min-height:2290px">
+        <div class="homepage-grid center-block" style="min-height: 2000px">
                 <div class="loader loader-abs" cg-busy="firstLoad"></div>
                 {{--<div class="loader loader-abs" cg-busy="filterLoad"></div>--}}
                 <div class="loader loader-fixed" cg-busy="nextLoad"></div>
 
-                <div ng-repeat="batch in content" class="container main-content"  style="min-height:2290px">
+                <div ng-repeat="batch in content" class="container main-content"  >
                     <div class="grid-box-3">
                             <div class="box-item idea-box" ng-if="item.type == 'idea'" ng-repeat="item in batch['row-1']">
                                 @include('grid.idea')
@@ -111,12 +111,11 @@
 
                     </div>
 
-                    <a ng-click="loadMore()" class="btn btn-success bottom-load-more col-xs-12">Load More</a>
                 </div>
             {{--</div>--}}
-
-
         </div>
+        <a ng-click="loadMore()" class="btn btn-success bottom-load-more col-xs-12">Load More</a>
+
     </div>
     <script src="/assets/js/vendor/angular-busy.min.js"></script>
     <script src="/assets/js/angular-custom/custom.paging.js"></script>

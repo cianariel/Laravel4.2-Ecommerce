@@ -40,34 +40,35 @@ angular.module('pagingApp.controllers', []).
 
             if($scope.filterBy === $criterion){
                     return true;
-                }else if(typeof $criterion === 'undefined' || $criterion === null || $criterion === 'all'){
+
+            }else if(typeof $criterion === 'undefined' || $criterion === null || $criterion === 'all'){
                     $scope.nextLoad = pagaingApi.getContent(1).success(function (response) {
                         $scope.allContent[0] = response;
                         $replacer[0] = $scope.sliceToRows(response['regular'], response['featured']);
-                        $('.main-content').fadeOut(function(){
+                    });
 
-                        });
+                    $('.homepage-grid').fadeOut(1000, function(){
                         $scope.content = $replacer;
-                        $('.main-content').fadeIn();
+                        $('.homepage-grid').fadeIn(2000);
                     });
 
                     return true;
-                }else if(typeof $scope.filterBy !== 'undefined'){
+                }else if(typeof $scope.filterBy !== 'undefined'){ // change from one filter to another
                     $scope.nextLoad =  pagaingApi.getContent(1, 9, $criterion).success(function (response) {
                         $replacer[0] = $scope.sliceToRows(response['regular'], response['featured']);
                         $scope.allContent[0] = response;
-
-                        $('.main-content').fadeOut(500, function(){
-                            $scope.content = [];
-                            $scope.content = $replacer;
-                            $('.main-content').fadeIn();
-                        });
                     });
 
+                    //$scope.content = [];
+                    //$scope.content = $replacer;
+                    //$('.main-content').fadeIn();
+
+                    $('.homepage-grid').fadeOut(1000, function(){
+                        $scope.content = $replacer;
+                        $('.homepage-grid').fadeIn(2000);
+                    });
 
                     $scope.filterBy = $criterion;
-
-
                     return true;
                 }
 
@@ -105,13 +106,11 @@ angular.module('pagingApp.controllers', []).
                     return value.type == $criterion;
                 }
 
-            console.log( $scope.content )
-
-            $('.main-content').fadeOut(1000, function(){
-                $scope.content = [];
+            $('.homepage-grid').fadeOut(1000, function(){
                 $scope.content = $replacer;
-                $('.main-content').fadeIn();
+                $('.homepage-grid').fadeIn(2000);
             });
+
             $scope.allContent = $scope.allContent.concat($replacer)
 
         };
