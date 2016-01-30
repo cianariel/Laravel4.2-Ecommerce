@@ -35,8 +35,10 @@ angular.module('pagingApp.controllers', []).
 
 
         $scope.filterContent = function($criterion){
-            $('.homepage-grid').fadeOut(function(){
+            $('.main-content').fadeOut(500);
             //$('.homepage-grid').fadeOut();
+
+            setTimeout(function(){
 
             $replacer = [];
 
@@ -49,14 +51,14 @@ angular.module('pagingApp.controllers', []).
                         $replacer[0] = $scope.sliceToRows(response['regular'], response['featured']);
                     });
 
-                    $('.homepage-grid').fadeOut(function(){
+                    //$('.main-content').fadeOut(function(){
                         $scope.content = $replacer;
-                        $('.homepage-grid').fadeIn();
-                    });
+                        $('.main-content').fadeIn();
+                    //});
 
                     return true;
                 }else if(typeof $scope.filterBy !== 'undefined'){ // change from one filter to another
-                    $scope.nextLoad =  pagaingApi.getContent(1, 9, $criterion).success(function (response) {
+                    $scope.nextLoad = pagaingApi.getContent(1, 9, $criterion).success(function (response) {
                         $replacer[0] = $scope.sliceToRows(response['regular'], response['featured']);
                         $scope.allContent[0] = response;
                     });
@@ -65,10 +67,10 @@ angular.module('pagingApp.controllers', []).
                     //$scope.content = $replacer;
                     //$('.main-content').fadeIn();
 
-                    $('.homepage-grid').fadeOut(function(){
+                    //$('.main-content').fadeOut(function(){
                         $scope.content = $replacer;
-                        $('.homepage-grid').fadeIn();
-                    });
+                        $('.main-content').fadeIn();
+                    //});
 
                     $scope.filterBy = $criterion;
                     return true;
@@ -113,8 +115,12 @@ angular.module('pagingApp.controllers', []).
             //});
 
             $scope.allContent = $scope.allContent.concat($replacer)
-            $('.homepage-grid').fadeIn();
-        });
+
+                setTimeout(function(){
+                    $('.main-content').fadeIn(1000);
+                }, 1000);
+
+            }, 1000);
 
         };
 
