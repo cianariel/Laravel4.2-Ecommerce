@@ -691,6 +691,7 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
         // reset filter for product list view
         $scope.resetFilter = function () {
             $scope.initPage();
+            $scope.getCategory();
         };
 
         // Build HTML listed response for popup notification.

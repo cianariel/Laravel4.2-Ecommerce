@@ -38,71 +38,38 @@
 
                                         <div class="row">
                                             <div class="col-lg-12">
-
                                                 <div>
                                                     <uib-alert ng-repeat="alert in alerts" type="@{{alert.type}}"
                                                                close="closeAlert($index)">
                                                         <p ng-bind-html="alertHTML"></p>
                                                     </uib-alert>
-
-                                                </div>
-
-                                                <div class="col-lg-6">
-                                                    <div class="panel panel-info">
-                                                        <div class="panel-heading"> Subcategory Status Panel</div>
-                                                        <div class="panel-body">
-                                                        <span ng-repeat="list in tempCategoryList">@{{ list }}
-                                                            >> </span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-3">&nbsp;</div>
-                                                <div class="col-lg-3">
-                                                    <a class="btn btn-primary btn-circle btn-lg"
-                                                       tooltip-placement="bottom"
-                                                       uib-tooltip="Add New Product" href="/admin/product-add">
-                                                        <i class="fa fa-plus"></i>
-                                                    </a>
                                                 </div>
                                             </div>
                                         </div>
 
                                         <div class="form-group ">
 
-                                            <label>Selects Category</label>
+                                            {{--<label>Selects Category</label>--}}
 
                                             <div class="clearfix">
                                                 <div class="row">
-                                                    <div class="col-lg-3 pull-left">
-                                                        <select data-ng-model="selectedItem"
-                                                                ng-change="getSubCategory()"
-                                                                class="form-control">
-                                                            <option value="@{{ selectedItem }}">
-                                                                -- View This Category --
-                                                            </option>
-                                                            <option ng-repeat="category in categoryItems"
-                                                                    value="@{{ category.id }}">
-                                                                @{{ category.category }}
-                                                            </option>
-                                                        </select>
-                                                        <div style="margin-top: 10px">
-                                                            <label>Selected Category Name :</label><span
-                                                                    class="text-danger"><strong> @{{ currentCategoryName }} </strong> </span>
-                                                        </div>
+                                                    <div class="col-md-1">&nbsp;</div>
+                                                    <div class="col-md-4">
+                                                        <label>Select Category :</label>
+                                                        <ui-tree ng-model="assets"
+                                                                 load-fn="loadChildren"
+                                                                 expand-to="hierarchy"
+                                                                 selected-id="111"
+                                                                 attr-node-id="id"></ui-tree>
+                                                        <label>Selected Category Id :</label><span
+                                                                class="text-danger"><strong> @{{ selectedItem }} </strong> </span>
                                                     </div>
 
-                                                    <div class="col-md-1">
-                                                        <button class="btn btn-info btn-circle" type="button"
-                                                                ng-click="resetCategory()"
-                                                                uib-tooltip="Refresh Category"
-                                                                tooltip-placement="right">
-                                                            <i class="fa fa-refresh"></i>
-                                                        </button>
-                                                    </div>
-                                                    <div class="col-md-4">
-                                                        <label class="col-md-4 control-label">With Tag(s):
+                                                    <div class="col-md-7">
+                                                        <label class="col-md-4 control-label">Show Item List With
+                                                            Tag(s):
                                                         </label>
-                                                        <div class="col-md-7">
+                                                        <div class="col-md-2">
                                                             <input type="checkbox" data-ng-model="WithTags"
                                                                    class="">
                                                         </div>
@@ -111,40 +78,40 @@
                                                 <div class="row">
                                                     <div style="margin-top: 5px">&nbsp;</div>
                                                     <div class="col-lg-12">
-                                                        <div>
-                                                            <div class="col-lg-4 pull-left">
-                                                                <label>Search Type</label>
-                                                                <select data-ng-model="selectedFilter"
-                                                                        class="form-control">
-                                                                    <option value="">
-                                                                        -- Select Filter --
-                                                                    </option>
-                                                                    <option ng-repeat="filter in filterTypes"
-                                                                            value="@{{ filter.key }}">
-                                                                        @{{ filter.value }}
-                                                                    </option>
-                                                                </select>
-                                                            </div>
-                                                            <div class="col-lg-4">
-                                                                <label> Search </label>
-                                                                <input data-ng-model="filterName"
-                                                                       class="form-control"
-                                                                       placeholder="Enter Item To Filter">
-                                                            </div>
-
-                                                            <div class="col-lg-4">
-                                                                <label>Show Product For</label>
-                                                                <select data-ng-model="ShowFor"
-                                                                        class="form-control">
-                                                                    <option value="">-- Select Type --</option>
-                                                                    <option ng-repeat="item in showForList"
-                                                                            value="@{{ item }}">
-                                                                        @{{ item }}
-                                                                    </option>
-                                                                </select>
-
-                                                            </div>
+                                                        {{-- <div>--}}
+                                                        <div class="col-lg-4 pull-left">
+                                                            <label>Search Type</label>
+                                                            <select data-ng-model="selectedFilter"
+                                                                    class="form-control">
+                                                                <option value="">
+                                                                    -- Select Filter --
+                                                                </option>
+                                                                <option ng-repeat="filter in filterTypes"
+                                                                        value="@{{ filter.key }}">
+                                                                    @{{ filter.value }}
+                                                                </option>
+                                                            </select>
                                                         </div>
+                                                        <div class="col-lg-4">
+                                                            <label> Search </label>
+                                                            <input data-ng-model="filterName"
+                                                                   class="form-control"
+                                                                   placeholder="Enter Item To Filter">
+                                                        </div>
+
+                                                        <div class="col-lg-4">
+                                                            <label>Show Product For</label>
+                                                            <select data-ng-model="ShowFor"
+                                                                    class="form-control">
+                                                                <option value="">-- Select Type --</option>
+                                                                <option ng-repeat="item in showForList"
+                                                                        value="@{{ item }}">
+                                                                    @{{ item }}
+                                                                </option>
+                                                            </select>
+
+                                                        </div>
+                                                        {{--  </div>--}}
                                                     </div>
                                                     {{--  <div class="btn-group col-md-6">
                                                           <label class="btn btn-primary" ng-model="ActiveItem"
@@ -158,12 +125,17 @@
                                                 <div style="margin-top: 5px">&nbsp;</div>
                                                 <div class="row">
                                                     <div class="text-center">
-                                                        <button class="btn btn-success" ng-click="showAllProduct()"
-                                                                type="button"> <i class="fa fa-search"></i> Search
-                                                        </button>&nbsp;&nbsp;
+                                                        <button class="btn btn-info" ng-click="showAllProduct()"
+                                                                type="button"><i class="fa fa-search"></i> Search
+                                                        </button>
+                                                        &nbsp;&nbsp;
                                                         <button class="btn btn-warning" ng-click="resetFilter()"
                                                                 type="button"><i class="fa fa-refresh"></i> Refresh
                                                         </button>
+                                                        &nbsp;&nbsp;
+                                                        <a class="btn btn-success" href="/admin/product-add"
+                                                           type="button"><i class="fa fa-plus"></i> Add Item
+                                                        </a>
                                                     </div>
                                                 </div>
                                                 <div style="margin-top: 5px">&nbsp;</div>
@@ -266,6 +238,7 @@
                                             </div>
                                         </div>
                                     </div>
+                                </div>
                             </form>
                         </div>
                     </div>
