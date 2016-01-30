@@ -36,23 +36,41 @@ angular.module('pagingApp.controllers', []).
 
         $scope.filterContent = function($criterion){
             //$('.homepage-grid').fadeOut(function(){
+            $replacer = [];
 
-                if($scope.filterBy === $criterion){
+            if($scope.filterBy === $criterion){
                     return true;
                 }else if(typeof $criterion === 'undefined' || $criterion === null || $criterion === 'all'){
-                    $scope.firstLoad = pagaingApi.getContent(1).success(function (response) {
+                    $scope.nextLoad = pagaingApi.getContent(1).success(function (response) {
                         $scope.allContent[0] = response;
-                        $scope.content = [];
-                        $scope.content[0] = $scope.sliceToRows(response['regular'], response['featured']);
+                        $replacer[0] = $scope.sliceToRows(response['regular'], response['featured']);
+                        $('.main-content').fadeOut(function(){
+
+                        });
+                        $scope.content = $replacer;
+                        $('.main-content').fadeIn();
                     });
+
                     return true;
                 }else if(typeof $scope.filterBy !== 'undefined'){
-                    $scope.firstLoad =  pagaingApi.getContent(1, 9, $criterion).success(function (response) {
+                    $scope.nextLoad =  pagaingApi.getContent(1, 9, $criterion).success(function (response) {
+                        $replacer[0] = $scope.sliceToRows(response['regular'], response['featured']);
                         $scope.allContent[0] = response;
-                        $scope.content = [];
-                        $scope.content[0] = $scope.sliceToRows(response['regular'], response['featured']);
+
+                        $('.main-content').fadeOut(500, function(){
+                            $scope.content = [];
+                            $scope.content = $replacer;
+                            $('.main-content').fadeIn();
+                        });
                     });
+
+
+                    $scope.filterBy = $criterion;
+
+
+                    return true;
                 }
+
 
                 $scope.filterBy = $criterion;
                 var $replacer = [];
@@ -87,11 +105,15 @@ angular.module('pagingApp.controllers', []).
                     return value.type == $criterion;
                 }
 
+            console.log( $scope.content )
+
             $('.main-content').fadeOut(1000, function(){
+                $scope.content = [];
                 $scope.content = $replacer;
-                $scope.allContent = $scope.allContent.concat($replacer)
                 $('.main-content').fadeIn();
             });
+            $scope.allContent = $scope.allContent.concat($replacer)
+
         };
 
         $scope.sliceToRows = function($regular, $featured){
@@ -124,25 +146,25 @@ angular.module('pagingApp.controllers', []).
     });
 
 
-angular.module('pagingApp.directives', [])
-    .directive('a', function() {
-        return {
-            restrict: 'E',
-            link: function(scope, elem, attrs) {
-                if(attrs.ngClick || attrs.href === '' || attrs.href === '#'){
-                    elem.on('click', function(e){
-                        e.preventDefault();
-                    });
-                }
-            }
-        };
-    });
+//angular.module('pagingApp.directives', [])
+//    .directive('a', function() {
+//        return {
+//            restrict: 'E',
+//            link: function(scope, elem, attrs) {
+//                if(attrs.ngClick || attrs.href === '' || attrs.href === '#'){
+//                    elem.on('click', function(e){
+//                        e.preventDefault();
+//                    });
+//                }
+//            }
+//        };
+//    });
 
 
 angular.module('pagingApp', [
     'pagingApp.controllers',
     'pagingApp.services',
-    'pagingApp.directives',
+    //'pagingApp.directives',
     'cgBusy'
 ]);
 
