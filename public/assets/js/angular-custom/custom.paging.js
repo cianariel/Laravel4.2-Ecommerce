@@ -35,8 +35,8 @@ angular.module('pagingApp.controllers', []).
 
 
         $scope.filterContent = function($criterion){
-            //$('.homepage-grid').fadeOut(function(){
-            $('.homepage-grid').fadeOut();
+            $('.homepage-grid').fadeOut(function(){
+            //$('.homepage-grid').fadeOut();
 
             $replacer = [];
 
@@ -110,11 +110,11 @@ angular.module('pagingApp.controllers', []).
 
             //$('.homepage-grid').fadeOut(function(){
                 $scope.content = $replacer;
-                $('.homepage-grid').fadeIn();
             //});
 
             $scope.allContent = $scope.allContent.concat($replacer)
             $('.homepage-grid').fadeIn();
+        });
 
         };
 
