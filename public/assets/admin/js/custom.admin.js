@@ -337,8 +337,8 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
 
             //filter type setting
             $scope.filterTypes = [
-                {"key": "user-filter", "value": "Filter By User"},
-                {"key": "product-filter", "value": "Filter By Product"},
+                {"key": "user-filter", "value": "Search by User ..."},
+                {"key": "product-filter", "value": "Search by Product ..."},
             ];
             $scope.selectedFilter = '';
             $scope.filterName = '';
@@ -691,6 +691,7 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
         // reset filter for product list view
         $scope.resetFilter = function () {
             $scope.initPage();
+            $scope.getCategory();
         };
 
         // Build HTML listed response for popup notification.

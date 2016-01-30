@@ -58,7 +58,7 @@
                 @endif" target="_blank">
                     Get it
                 </a>
-                <img class="vendor-logo" width="90" src="@if(isset($storeInformation['ThumbnailPath'])){{$storeInformation['ThumbnailPath']}}@endif"
+                <img class="vendor-logo"  style="-webkit-filter: invert(100%); filter: invert(100%);" width="90" src="@if(isset($storeInformation['ThumbnailPath'])){{$storeInformation['ThumbnailPath']}}@endif"
                      alt="@if(isset($storeInformation['StoreName'])){{$storeInformation['StoreName']}}@endif">
                 <b class="price">$ @if(isset($productInformation['SellPrice']))
                         {{$productInformation['SellPrice']}}
@@ -308,7 +308,7 @@
                                                 ) Customer Reviews</span>
                                         </div>
                                         <div class="btn purple-bg price-badge">
-                                            <span>Amazon</span> <b>$@{{ item.data.productInformation.SellPrice }}</b>
+                                            <span>@{{ item.data.storeInformation.StoreName }}</span> <b>$@{{ item.data.productInformation.SellPrice }}</b>
                                         </div>
                                         <a class="btn-none" href="@{{ item.data.productInformation.AffiliateLink }}"
                                            target="_blank">More Info</a>
