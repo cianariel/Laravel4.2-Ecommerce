@@ -4811,7 +4811,7 @@ footer.about-footer{
   html,
   body,
   .container.fixed-sm{
-    min-width: 920px;
+/*    min-width: 920px;*/
   }
 
 
@@ -5829,11 +5829,143 @@ footer.about-footer{
 
 }
 
+.average-ideaing-score{
+    width: 195px;
+    height: 87px;
+    background: #ff0042;
+    border-radius: 3px;
+    padding-top: 12px;
+    text-align: left;
+    padding-left: 10px;
 
+    img{
+        width: 50px;
+        line-height: 189px;
+        margin-top: -24px; 
+        margin-right: 5px;   
+    }
+    .title{
+        color: white;
+        font-size: 46px;
+    }
+}
+.reviews-medium-container{
+    width: 630px;
+    margin: auto;
+    padding-bottom: 20px;
 
+    .average-ideaing-line{
+        padding: 50px 0px 0px;
+    }
+    .average-score{
+        background-color: #ff0042;
+    }
+    .average-ideaing-line > img{
+        width: 50%;
+        height: 76px;
+    }
+    .reviews-service-holder.critic{
+        color: #ff0042;
+    }
+    .reviews-service-holder.amazon{
+        color: #00b1ff;
+    }
+    .reviews-service-holder .title{
+        font-size: 25px;
+        font-weight: bold;
+    }
+    .reviews-service-holder .value{
+        font-size: 65px;
+        font-weight: bold;
+    }
+}
+.reviews-service-holder{
+    .outer-line{
+        position: relative;
+        margin-top: 55px;
 
+        .line-label{
+            position: absolute;
+            left:-170px;
+            font-size: 25px;
+            color: #272727;
+            top:-14px;
+        }
+        .line-value{
+            position: absolute;
+            right:-110px;
+            font-size: 35px;
+            font-weight: bold;
+            top: -21px;
+            color: black;
+        }
+    }
 
+    &.amazon{
+        .amazon-value{
+            font-size: 35px;
+            color: black;
+            font-weight: bold;
+        }
+        .inner-line{
+            background: #00b1ff;
+        }
+    } 
+}
+.star-raiting .star{
+    background: url('/assets/images/star-white.png') no-repeat;
+    width:20px;
+    height:19px;
+    display: inline-block;
+}
+.star-raiting .star.active{
+    background: url('/assets/images/star-blue.png');
+}
+.light-black{
+    color: #393e3f;
+}
+.vertical-line{
+    height: 50px;
+    border: 1px solid $iridium;
+    width: 0px;
+    margin: auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+@media (max-width: 620px){
+    .reviews-medium-container .average-score .caption{
+        padding-top: 17px;
+    }
+}
+@media (max-width: 767px){
+  .reviews-medium-container{
+      width: 300px;
+  }
+  .reviews-medium-container .reviews-service-holder .title{
+      font-size: 12px;
+  }
+  .reviews-medium-container .reviews-service-holder .value{
+      font-size: 30px;
+  }
+  .reviews-service-holder.amazon .amazon-value{
+      font-size: 15px;
+  }
+  .reviews-medium-container .average-score{
+      float: none;
+      margin: auto;
+  }
+}
+@media (max-width: 992px){
+  .reviews-service-holder .outer-line .line-label{
+      font-size: 11px;
+      color: #272727;
+      top: -21px;
+      left: 0px;
+  }
+  .reviews-service-holder .outer-line .line-value{
+      top: -27px;
+      right: 0px;
+      font-size: 16px;
+  }
 
-
-
-
+}

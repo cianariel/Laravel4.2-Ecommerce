@@ -379,12 +379,94 @@
                 <!-- TODO - use two (three?) columns -->
 
                 <section class="pale-grey-bg reviews" id="reviews">
-                    <div class="container full-620 fixed-sm">
-                        <h3 class="pink">Reviews (
-                            @if(isset($productInformation['Review']))
-                                {{count($productInformation['Review']) -1}}
-                            @endif
-                        )</h3>
+                    <div class="container fixed-sm">
+                        <div class="reviews-medium-container">
+                            <div class="row hidden-xs">
+                                <div class="average-ideaing-line col-xs-4 text-right">
+                                    <img src="/assets/images/average-ideaing-left-line.png" alt="">
+                                </div>
+                                <div class="text-center col-xs-4">
+                                    <div class="average-score">
+                                        <div class="score">
+                                            80%
+                                        </div>
+                                        <span class="caption">Average Ideaing Score</span>
+                                    </div>
+                                    <!--<div class="average-ideaing-score">
+                                        <img src="/assets/images/lamp-other.png" alt="">
+                                        <span class="title">98%</span>
+                                    </div>-->
+                                </div>
+                                <div class="average-ideaing-line col-xs-4 text-left">
+                                    <img src="/assets/images/average-ideaing-right-line.png" alt="">
+                                </div>
+                            </div>
+                            <div class="visible-xs">
+                                <div class=" col-xs-12">
+                                    <div class="average-score block-center">
+                                        <div class="score">
+                                            80%
+                                        </div>
+                                        <span class="caption">Average Ideaing Score</span>
+                                    </div>
+                                    <!--<div class="average-ideaing-score">
+                                        <img src="/assets/images/lamp-other.png" alt="">
+                                        <span class="title">98%</span>
+                                    </div>-->
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-6 col-sm-4 text-center reviews-service-holder critic">
+                                    <div class="vertical-line visible-xs"></div>
+                                    <div class="title">Critic</div>
+                                    <div class="reviews">Reviews</div>
+                                    <div class="value">9,4</div>
+                                    <div class="outer-line">
+                                        <div class="line-label ">CNET</div>
+                                        <div style="width: 90%" class="inner-line"></div>
+                                        <div class="line-value ">9,640</div>
+                                    </div>
+                                    <div class="outer-line">
+                                        <div class="line-label ">ENGADGET</div>
+                                        <div style="width: 80%" class="inner-line"></div>
+                                        <div class="line-value ">9,000</div>
+                                    </div>
+                                    <div class="outer-line">
+                                        <div class="line-label ">PCMAC</div>
+                                        <div style="width: 86%" class="inner-line"></div>
+                                        <div class="line-value ">9,150</div>
+                                    </div>
+                                </div>
+                                <div class="col-xs-6 col-sm-4 col-sm-offset-4 text-center reviews-service-holder amazon">
+                                    <div class="vertical-line visible-xs"></div>
+                                    <div class="title">Amazon</div>
+                                    <div class="reviews">Reviews</div>
+                                    <div class="value">8,5</div>
+                                    <div class="outer-line">
+                                        <div class="inner-line" style="width:95%"></div>
+                                    </div><br>
+                                    <div class="amazon-value">8,550</div>
+                                    <div class="star-raiting" style="text-align: center">
+                                        <span class="star active"></span>
+                                        <span class="star active"></span>
+                                        <span class="star active"></span>
+                                        <span class="star active"></span>
+                                        <span class="star"></span>
+                                    </div><br>
+                                    <p class="text-center">
+                                        2,567 <span class="light-black">Reviews</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="visible-xs visible-sm">
+                            
+                        </div>
+
+                        @if(0)
+                        <h3 class="pink">Reviews
+                            (@if(isset($productInformation['Review'])){{count($productInformation['Review']) -1}}@endif)
+                        </h3>
 
                         <div class="col-sm-3">
                             <h6 class="grey">Critic Reviews</h6>
@@ -433,6 +515,7 @@
                                 @endif
                             </div>
                         </div>
+                        @endif
                     </div>
                 </section>
             </article>
