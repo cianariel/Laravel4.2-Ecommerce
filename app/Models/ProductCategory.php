@@ -96,7 +96,12 @@
                 $rootCategories = collect();
                 foreach ($data as $key => $value)
                 {
-                    $rootCategories->push(['id' => $value->id, 'category' => $value->category_name, 'info' => $value->extra_info]);
+                    $rootCategories->push([
+                        'id' => $value->id,
+                        'category' => $value->category_name,
+                        'info' => $value->extra_info,
+                        'hasChildren' => ($this->hasChildOfCategory($value->id)->count() > 0) ? true : false
+                    ]);
                 }
 
                 return $rootCategories;
@@ -182,20 +187,28 @@
                 return $this->getAllRootCategory();
             else
             {
-                $categories = $this->getCategory($categoryId)->getImmediateDescendants(array('id','category_name','extra_info'));
+                $categories = $this->getCategory($categoryId)->getImmediateDescendants(array('id', 'category_name', 'extra_info'));
 
                 $categoryList = collect([]);
                 foreach ($categories as $key => $value)
                 {
                     $categoryList->push([
-                        'id'       => $value->id,
-                        'category' => $value->category_name,
-                        'info'     => $value->extra_info
+                        'id'          => $value->id,
+                        'category'    => $value->category_name,
+                        'info'        => $value->extra_info,
+                        'hasChildren' => ($this->hasChildOfCategory($value->id)->count() > 0) ? true : false
                     ]);
                 }
 
                 return $categoryList;
             }
+        }
+
+        public function hasChildOfCategory($categoryId)
+        {
+            $items = $this->getCategory($categoryId)->getDescendants();
+
+            return $items;
 
         }
 

@@ -1,5 +1,9 @@
 /.env
 .idea/
+Vagrantfile
+.vagrant/
+.sass-cache/
+/config.codekit
 /public/ideas/wp-config.php
 /public/ideas/wp-content/uploads/
 

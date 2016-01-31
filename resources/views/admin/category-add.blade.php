@@ -54,7 +54,7 @@
                                     </div>
                                 </div>
                                 <form role="form">
-                                    <div class="form-group ">
+                                    <div class="form-group">
                                         <label>Selects Category</label>
 
                                         <div class="col-lg-12 clearfix">

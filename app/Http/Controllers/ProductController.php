@@ -26,12 +26,21 @@
                 ['except' => [
                     'publishProduct', 'searchProductByName', 'updateProductInfo', 'productDetailsView',
                     'getAllProductList', 'getProductById', 'isPermalinkExist', 'addProduct',
-                    'addMediaForProduct', 'addMediaInfo', 'getMediaForProduct', 'deleteSingleMediaItem',
-                    'getProductInfoFromApi', 'priceUpdate', 'deleteProduct'
+                    'fileUploader', 'addMediaInfo', 'getMediaForProduct', 'deleteSingleMediaItem',
+                    'getProductInfoFromApi', 'priceUpdate', 'deleteProduct', 'productDetailsViewByName',
+                    'getStoreInformation'
+
                 ]]);
             $this->product = new Product();
 
             $this->media = new Media();
+        }
+
+        public function getStoreInformation()
+        {
+            $productId = 64;
+          $val = $this->product->getStoreInfoByProductId($productId);
+
         }
 
         /**
@@ -81,6 +90,12 @@
             {
                 $product = $this->product->where('id', $id)->first();
 
+                // automatic update price for any changes and fetch new data with updated price
+                if($this->product->updateProductPrice($product['product_vendor_id'],$product['store_id']))
+                {
+                    $product = $this->product->where('id', $id)->first();
+                }
+
                 if ($product == null)
                 {
                     return $this->setStatusCode(\Config::get("const.api-status.app-failure"))
@@ -119,11 +134,8 @@
             try
             {
                 $productData['product'] = $this->product->getViewForPublic($permalink);
+                $result = $this->productDetailsBuilder($productData);
 
-                // Get category tree
-                $catTree = $this->generateCategoryHierarchy($productData['product']->product_category_id);
-
-                $result = $this->product->productDetailsViewGenerate($productData, $catTree);
 
                 return $this->setStatusCode(\Config::get("const.api-status.success"))
                     ->makeResponse($result);
@@ -133,6 +145,39 @@
                 return $this->setStatusCode(\Config::get("const.api-status.system-fail"))
                     ->makeResponseWithError("System Failure !", $ex);
             }
+        }
+
+
+        public function productDetailsViewByName($name)
+        {
+            try
+            {
+                $productData['product'] = $this->product->getViewForPublicByName($name);
+                $result = $this->productDetailsBuilder($productData);
+
+
+                return $this->setStatusCode(\Config::get("const.api-status.success"))
+                    ->makeResponse($result);
+
+            } catch (Exception $ex)
+            {
+                return $this->setStatusCode(\Config::get("const.api-status.system-fail"))
+                    ->makeResponseWithError("System Failure !", $ex);
+            }
+        }
+
+        /** Build the view for product details by product data
+         * @param $productData
+         * @return mixed
+         */
+        private function productDetailsBuilder($productData)
+        {
+            // Get category tree
+            $catTree = $this->generateCategoryHierarchy($productData['product']->product_category_id);
+
+            $result = $this->product->productDetailsViewGenerate($productData, $catTree);
+
+            return $result;
         }
 
         /**
@@ -147,12 +192,16 @@
                 $settings['FilterType'] = (\Input::get('FilterType') == null) ? null : \Input::get('FilterType');
                 $settings['FilterText'] = (\Input::get('FilterText') == null) ? null : \Input::get('FilterText');
 
+                $settings['ShowFor'] = (\Input::get('ShowFor') == null) ? null : \Input::get('ShowFor');
+                $settings['WithTags'] = (\Input::get('WithTags') != true) ? false : true;
+
+
+
                 $settings['limit'] = \Input::get('limit');
                 $settings['page'] = \Input::get('page');
 
                 $productList = $this->product->getProductList($settings);
 
-                // dd($productList);
                 $settings['total'] = $productList['total'];
                 array_forget($productList, 'total');
 
@@ -302,6 +351,8 @@
             $media->media_type = $inputData['MediaType'];
             $media->media_link = $inputData['MediaLink'];
             $media->is_hero_item = $inputData['IsHeroItem'];
+            $media->is_main_item = $inputData['IsMainItem'];
+
 
             try
             {
@@ -343,72 +394,16 @@
         }
 
 
-        /**
-         * @param Request $request
-         * @return array
-         */
+        /*
+
         public function addMediaForProduct(Request $request)
         {
-            $fileResponse = [];
-
-            if (!$request->hasFile('file'))
-            {
-                $fileResponse['result'] = \Config::get("const.file.file-not-exist");
-                $fileResponse['status_code'] = \Config::get("const.api-status.validation-fail");
-
-                return $fileResponse;
-
-            } else if (!$request->file('file')->isValid())
-            {
-                $fileResponse['result'] = \Config::get("const.file.file-not-exist");
-                $fileResponse['status_code'] = \Config::get("const.api-status.validation-fail");
-
-                return $fileResponse;
-            } else if (!in_array($request->file('file')->guessClientExtension(), array("jpeg", "jpg", "bmp", "png", "mp4", "avi", "mkv")))
-            {
-                $fileResponse['result'] = \Config::get("const.file.file-invalid");
-                $fileResponse['status_code'] = \Config::get("const.api-status.validation-fail");
-
-                return $fileResponse;
-            } else if ($request->file('file')->getClientSize() > \Config::get("const.file.file-max-size"))
-            {
-                $fileResponse['result'] = \Config::get("const.file.file-max-limit-exit");
-                $fileResponse['status_code'] = \Config::get("const.api-status.validation-fail");
-
-                return $fileResponse;
-            } else
-            {
-                $fileName = 'product-' . uniqid() . '-' . $request->file('file')->getClientOriginalName();
-
-                // pointing filesystem to AWS S3
-                $s3 = Storage::disk('s3');
-
-                // Thumbnail creation and uploading to AWS S3
-                if (in_array($request->file('file')->guessClientExtension(), array("jpeg", "jpg", "bmp", "png")))
-                {
-                    // $thumb = \Image::make($request->file('file'))->crop(100,100);
-                    $thumb = \Image::make($request->file('file'))
-                        ->resize(90, null, function ($constraint)
-                        {
-                            $constraint->aspectRatio();
-                        });
-
-                    $thumb = $thumb->stream();
-                    $thumbFileName = 'thumb-' . $fileName;
-                    $s3->put($thumbFileName, $thumb->__toString(), 'public');
-                }
-
-
-                if ($s3->put($fileName, file_get_contents($request->file('file')), 'public'))
-                {
-                    $fileResponse['result'] = \Config::get("const.file.s3-path") . $fileName;
-                    $fileResponse['status_code'] = \Config::get("const.api-status.success");
-
-                    return $fileResponse;
-                }
-            }
-
+            return $this->media->fileUploader($request);
         }
+         */
+
+
+
 
         /** Fetch product information form vendor API
          * @param $itemId
@@ -429,6 +424,9 @@
             }
         }
 
+        /**
+         *  Update product price after certain time through API for each execution
+         */
         public function priceUpdate()
         {
             $this->product->updateProductPrice();
@@ -459,6 +457,5 @@
                 }
             }
         }
-
 
     }

@@ -9,6 +9,7 @@
     // use App\Http\Controllers\Controller;
     use Illuminate\Http\Response as IlluminateResponse;
     use App\Models\ProductCategory;
+    use App\Models\Tag;
     use Crypt;
     use JWTAuth;
     use Tymon\JWTAuth\Exceptions\JWTException;
@@ -18,17 +19,6 @@
     use Config;
 
 
-    /*use App\Events\SendActivationMail;
-    use App\Events\SendResetEmail;
-    use Crypt;
-    use Illuminate\Http\Request;
-    use App\Http\Requests;
-    use Illuminate\Http\Response as IlluminateResponse;
-    use JWTAuth;
-    use Tymon\JWTAuth\Exceptions\JWTException;
-    use App\Models\User;
-    use Carbon\Carbon;*/
-
     class ProductCategoryController extends ApiController {
 
 
@@ -37,6 +27,8 @@
             // Apply the jwt.auth middleware to all methods in this controller
             $this->middleware('jwt.auth', ['except' => ['showCategoryItems', 'showProductInCategoryName', 'updateCategory', 'index', 'addCategory', 'showAllRootCategory', 'destroy']]);
             $this->productCategory = new ProductCategory();
+
+            $this->tag = new Tag();
 
         }
 
@@ -76,8 +68,8 @@
                 $validationRules = [
 
                     'rules'  => [
-                        'CategoryName' => 'required | max: 15',
-                        'ExtraInfo'    => 'required | max: 25',
+                        'CategoryName' => 'required | max: 50',
+                        'ExtraInfo'    => 'required | max: 50',
                         'ParentId'     => 'integer'
                     ],
                     'values' => [
@@ -100,6 +92,12 @@
                 } elseif ($validator->passes())
                 {
                     $newCategory = $this->productCategory->addCategory($inputData);
+
+                    $tagData['TagName'] = $inputData['CategoryName'];
+                    $tagData['TagDescription'] = 'Category Tag';
+
+                    // Create default Category tags followed by category name
+                    $this->tag->createTagInfo($tagData);
 
                     /*if ($newCategory == false)
                     {
@@ -195,8 +193,8 @@
 
             $validationRules = [
                 'rules'  => [
-                    'CategoryName' => 'required | max: 15',
-                    'ExtraInfo'    => 'required | max: 25',
+                    'CategoryName' => 'required | max: 50',
+                    'ExtraInfo'    => 'required | max: 50',
                     'CategoryId'   => 'required | integer'
                 ],
                 'values' => [

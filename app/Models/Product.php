@@ -6,6 +6,9 @@
     use App\Core\ProductApi\ProductStrategy;
     use Illuminate\Database\Eloquent\Model;
     use Carbon\Carbon;
+    use App\Models\ProductCategory;
+    use App\Models\Tag;
+
 
     class Product extends Model {
 
@@ -20,6 +23,7 @@
         protected $fillable = array(
             'product_vendor_id',
             'product_vendor_type',
+            'show_for',
             'product_name',
             'user_name',
             'product_permalink',
@@ -56,9 +60,24 @@
             return $this->belongsTo('App\Models\ProductCategory');
         }
 
+        public function store()
+        {
+            return $this->belongsTo('App\Models\Store');
+        }
+
         public function medias()
         {
             return $this->morphMany('App\Models\Media', 'mediable');
+        }
+
+        public function tags()
+        {
+            return $this->morphToMany('App\Models\Tag', 'taggable');
+        }
+
+        public function logoInformation()
+        {
+            return $this->hasManyThrough('App\Models\Store', 'App\Models\Media');
         }
 
 
@@ -76,6 +95,33 @@
         public function getReviewAttribute($value)
         {
             return json_decode($value);
+        }
+
+        // Functions //
+
+
+        /** Populate store information for a single product
+         * @param $productId
+         * @return mixed
+         */
+        public function getStoreInfoByProductId($productId)
+        {
+            $item = Product::find($productId)->store;
+            $itemLogoInfo = Store::find($item['id'])->medias->first();
+
+            $data['StoreId'] = $item->id;
+            $data['StoreName'] = $item->store_name;
+            $data['Identifier'] = $item->store_identifier;
+            $data['Description'] = $item->store_description;
+            $data['Status'] = $item->status;
+            $data['ImagePath'] = $itemLogoInfo->media_link;
+
+            $strReplace = \Config::get("const.file.s3-path");// "http://s3-us-west-1.amazonaws.com/ideaing-01/";
+            $file = str_replace($strReplace, '', $itemLogoInfo->media_link);
+
+            $data['ThumbnailPath'] = $strReplace . 'thumb-' . $file;
+
+            return $data;
         }
 
 
@@ -106,6 +152,7 @@
                     "user_name"               => ($product['ProductAuthorName'] != null) ? $product['ProductAuthorName'] : 'Anonymous User',
                     "product_vendor_id"       => $product['ProductVendorId'],
                     "product_vendor_type"     => $product['ProductVendorType'],
+                    "show_for"                => ($product['ShowFor'] != null) ? $product['ShowFor'] : '',
                     "product_name"            => $product['Name'],
                     "product_permalink"       => (isset($product['Permalink'])) ? $product['Permalink'] : null,
                     "product_description"     => ($product['Description'] != null) ? $product['Description'] : "",
@@ -123,7 +170,7 @@
                     "page_title"              => $product['PageTitle'],
                     "meta_description"        => $product['MetaDescription'],
                     "similar_product_ids"     => json_encode($product['SimilarProductIds']),
-                    "product_availability"    => $product['ProductAvailability'],
+                    "product_availability"    => isset($product['ProductAvailability']) ? $product['ProductAvailability'] : "",
                     "post_status"             => $product['PostStatus']
                 );
 
@@ -150,28 +197,50 @@
                 {
                     $join->on('medias.mediable_id', '=', 'products.id')
                         ->where('mediable_type', '=', 'App\Models\Product')
-                        ->Where('media_type', '=', 'img-upload');
+                        ->Where('media_type', '=', 'img-upload')
+                        ->Where('is_main_item', '=', '1');
                 })
                 ->first(array(
-                    'products.id', 'products.updated_at', 'products.product_vendor_id', 'products.product_vendor_type',
+                    'products.id', 'products.show_for', 'products.updated_at', 'products.product_vendor_id', 'products.product_vendor_type',
                     'products.user_name', 'products.product_name', 'product_categories.category_name', 'products.affiliate_link',
-                    'products.price', 'products.sale_price', 'medias.media_link', 'products.product_permalink'
+                    'products.price', 'products.sale_price', 'medias.media_link', 'products.product_permalink', 'products.post_status'
                 ));
 
             return $result;
 
         }
 
-        // return data for public view
+        // return product information data for public view
         public function getViewForPublic($permalink, $id = null)
         {
             $column = $id == null ? 'product_permalink' : 'id';
             $value = $id == null ? $permalink : $id;
+
             $productInfo = Product::with('medias')
                 ->where($column, $value)
                 ->first();
 
-//dd($productInfo);
+            // automatic update price for any changes and fetch new data with updated price
+            if ($this->updateProductPrice($productInfo['product_vendor_id'], $productInfo['store_id']))
+            {
+                $productInfo = Product::with('medias')
+                    ->where($column, $value)
+                    ->first();
+            }
+
+            //dd($productInfo);
+            return $productInfo;
+
+        }
+
+        // return data for public view by Name
+        public function getViewForPublicByName($name)
+        {
+
+            $productInfo = Product::with('medias')
+                ->where('product_name', $name)
+                ->first();
+
             return $productInfo;
 
         }
@@ -189,6 +258,11 @@
                 $productModel = $productModel->where("product_category_id", $settings['CategoryId']);
             }
 
+            if ($settings['ShowFor'] != null)
+            {
+                $productModel = $productModel->where("show_for", $settings['ShowFor']);
+            }
+
             if ($settings['ActiveItem'] == true)
             {
                 $productModel = $productModel->where("post_status", 'Active');
@@ -203,14 +277,38 @@
                 $productModel = $productModel->where("product_name", "like", "%$filterText%");
             }
 
-            $skip = $settings['limit'] * ($settings['page'] - 1);
+            if ($settings['WithTags'] == true && $settings['CategoryId'] != null)
+            {
+                $category = ProductCategory::where('id', '=', $settings['CategoryId'])->first();
+
+                $tag = Tag::where('tag_name', '=', $category['category_name'])->first();
+
+                $tagModel = new Tag();
+
+                $products = $tagModel->getProductsByTag($tag->id);
+
+                $productIds = array();
+                foreach ($products as $item)
+                {
+                    array_push($productIds, $item['id']);
+
+                }
+
+                $productModel = $productModel->orWhereIn("id", $productIds);
+            }
+
+
+            $skip = isset($settings['CustomSkip'])? intval($settings['CustomSkip']):$settings['limit'] * ($settings['page'] - 1);
+
+
+//            $skip = $settings['limit'] * ($settings['page'] - 1);
 
             $product['total'] = $productModel->count();
 
             $product['result'] = $productModel
                 ->take($settings['limit'])
                 ->offset($skip)
-                ->orderBy('updated_at', 'desc')
+                ->orderBy('created_at', 'desc')
                 ->get(array("id"));
 
             $data = array();
@@ -226,8 +324,12 @@
                 $strReplace = \Config::get("const.file.s3-path");
                 $path = str_replace($strReplace, '', $tmp->media_link);
                 $path = $strReplace . 'thumb-' . $path;
+
+                $tmp->media_link_full_path = $tmp->media_link;
+
                 $tmp->media_link = $path;
                 $tmp->updated_at = Carbon::createFromTimestamp(strtotime($tmp->updated_at))->diffForHumans();
+                $tmp->type = 'product';
 
                 $data[ $i ] = $tmp;
             }
@@ -304,30 +406,53 @@
                     $selfImage['heroImage'] = $value->media_link;
                     $selfImage['heroImageName'] = $value->media_name;
                 }
+                if (($value->media_type == 'img-upload' || $value->media_type == 'img-link') && $value->is_main_item == true)
+                {
+                    $selfImage['mainImage'] = $value->media_link;
+                    $selfImage['mainImageName'] = $value->media_name;
+                }
+
+            }
+
+            // if main image is not selected
+            if (!isset($selfImage['mainImage']))
+            {
+                $selfImage['mainImage'] = isset($selfImage['picture'][1]['link']) ? $selfImage['picture'][1]['link'] : '';
+                $selfImage['mainImageName'] = isset($selfImage['picture'][1]['picture-name']) ? $selfImage['picture'][1]['picture-name'] : '';
+
             }
 
             // setting information for related products
             $relatedProducts = [];
             $relatedProductsData = [];
-            if ($productData['product']->similar_product_ids != "")
+
+            // generate related products from category
+            $products = $this->populateProductsFromSameCategory($productInfo['CategoryId'], $productData['product']->similar_product_ids, $productInfo['Id']);
+
+            if ($products != "" || $products != null)
             {
-                foreach ($productData['product']->similar_product_ids as $key => $value)
+                foreach ($products as $key => $value)
                 {
-                    if (!isset($value->id))
+                    if (!isset($value['id']))
                         continue;
 
-                    $relatedProducts[ $key ] = $this->getViewForPublic('', $value->id);
+                    $relatedProducts[ $key ] = $this->getViewForPublic('', $value['id']);
+
+                    if ($relatedProducts[ $key ] == null)
+                        continue;
+
                     $tmp = $relatedProducts[ $key ];
                     $image = '';
 
                     foreach ($tmp->medias as $single)
                     {
-                        if (($single->media_type == 'img-upload' || $single->media_type == 'img-link') && $single->is_hero_item == null)
+                        if (($single->media_type == 'img-upload' || $single->media_type == 'img-link') && $single->is_main_item == 1)
                         {
                             $image = $single->media_link;
                             break;
                         }
                     }
+
                     $relatedProductsData[ $key ]['Name'] = $relatedProducts[ $key ]->product_name;
                     $relatedProductsData[ $key ]['Permalink'] = $relatedProducts[ $key ]->product_permalink;
                     $relatedProductsData[ $key ]['AffiliateLink'] = $relatedProducts[ $key ]->affiliate_link;
@@ -339,22 +464,64 @@
             $result['productInformation'] = $productInfo;
             $result['relatedProducts'] = $relatedProductsData;
             $result['selfImages'] = $selfImage;
+            $result['storeInformation'] = $this->getStoreInfoByProductId($productData['product']->id);
 
+            //removing duplicate data entry for related product (set distinct value for related products)
+            $result['relatedProducts'] = array_map("unserialize", array_unique(array_map("serialize", $result['relatedProducts'])));
+
+            //    dd($result);
             return $result;
+
         }
 
-        public function deleteProductById($productId)
+        // populate related product data from same category
+
+        public function populateProductsFromSameCategory($categoryId, $similarProducts, $productId, $totalItem = 3)
         {
-            try
-            {
+            $settings['ActiveItem'] = false;
+            $settings['CategoryId'] = $categoryId;
+            $settings['FilterText'] = '';
+            $settings['FilterType'] = '';
 
-            } catch (Exception $ex)
+            $settings['ShowFor'] = '';
+
+            $settings['WithTags'] = true;
+
+            $settings['limit'] = $totalItem + 1;
+            $settings['page'] = 1;
+
+            $products = $this->getProductList($settings);
+
+            $tmpItems = [];
+
+            if ($similarProducts != null)
             {
+                foreach ($similarProducts as $tmp)
+                {
+                    $data['id'] = $tmp->id;
+                    $data['name'] = $tmp->name;
+                    array_push($tmpItems, $data);
+                }
             }
+
+            foreach ($products['result'] as $item)
+            {
+                if ($productId == $item->id)
+                    continue;
+
+                $data['id'] = $item->id;
+                $data['name'] = $item->product_name;
+                array_push($tmpItems, $data);
+            }
+
+            array_splice($tmpItems, $totalItem);
+
+            return $tmpItems;
         }
+
 
         // Get product information form Product's vendor API
-        public function getApiProductInformation($itemId)
+        public function getApiProductInformation($itemId, $store = null)
         {
             try
             {
@@ -369,17 +536,47 @@
             }
         }
 
-        public function updateProductPrice($time = 5, $itemCount = 10)
+
+        /** Update latest price and return true, for no update return false, also return false for any system error.
+         * @param string $productVendorId
+         * @param string $store
+         * @return bool
+         */
+        public function updateProductPrice($productVendorId = 'B00OHY14CS', $store = 'Amazon')
         {
-            $timeCompare = date("Y-m-d H:i:s", time() - ($time * 60));
-            $itemIds = Product::where('updated_at', '<', $timeCompare)
-                ->limit($itemCount)
-                ->get(array("id", "product_permalink", "updated_at", "product_vendor_id"));
-
-            dd($timeCompare, $itemIds);
-
-            foreach ($itemIds as $item)
+            try
             {
+                // $timeCompare['now'] = date("Y-m-d H:i:s", time());
+                // $timeCompare['required'] = date("Y-m-d H:i:s", (time() - (60 * 60 * $hours)));
+
+                $hours = \Config::get("const.product-update-time-limit");
+
+                $timeCompare = date("Y-m-d H:i:s", (time() - (60 * 60 * $hours)));
+
+                $product = Product::where('updated_at', '<', $timeCompare)
+                    ->where('store_id', '=', $store)
+                    ->where('product_vendor_id', '=', $productVendorId)
+                    ->first(array("id", "product_permalink", "price", "sale_price", "updated_at", "product_vendor_id"));
+
+                if (isset($product))
+                {
+                    $apiData = $this->getApiProductInformation($productVendorId, $store);
+                    if (($product['price'] != $apiData['ApiPrice']) || ($product['sale_price'] != $apiData['ApiSalePrice']))
+                        // echo $product['sale_price'];
+                        $product->price = $apiData['ApiPrice'];
+                    $product->sale_price = $apiData['ApiSalePrice'];
+                    $product->save();
+
+                    return true;
+                    //     dd($timeCompare,$product,$apiData);
+
+                } else
+                {
+                    return false;
+                }
+            } catch (Exception $ex)
+            {
+                return false;
 
             }
         }

@@ -1,26 +1,5 @@
 var adminApp = angular.module('adminApp', ['ui.bootstrap', 'ngRateIt', 'ngSanitize', 'angular-confirm', 'textAngular', 'ngTagsInput', 'angularFileUpload']);
 
-/*
- adminApp.directive('loading', ['$http', function ($http) {
- return {
- restrict: 'A',
- link: function (scope, elm, attrs) {
- scope.isLoading = function () {
- return $http.pendingRequests.length > 0;
- };
-
- scope.$watch(scope.isLoading, function (v) {
- if (v) {
- elm.show();
- } else {
- elm.hide();
- }
- });
- }
- };
-
- }]);
- */
 
 // only decimal number input validation
 adminApp.directive('validNumber', function () {
@@ -69,13 +48,141 @@ adminApp.directive('validNumber', function () {
     };
 });
 
+// category tree view
+adminApp.directive('uiTree', function () {
+    return {
+        template: '<ul class="uiTree"><ui-tree-node ng-repeat="node in tree"></ui-tree-node></ul>',
+        replace: true,
+        transclude: true,
+        restrict: 'E',
+        scope: {
+            tree: '=ngModel',
+            attrNodeId: "@",
+            loadFn: '=',
+            expandTo: '=',
+            selectedId: '='
+        },
+        controller: function ($scope, $element, $attrs) {
+            $scope.loadFnName = $attrs.loadFn;
+            // this seems like an egregious hack, but it is necessary for recursively-generated
+            // trees to have access to the loader function
+            if ($scope.$parent.loadFn)
+                $scope.loadFn = $scope.$parent.loadFn;
+
+            // TODO expandTo shouldn't be two-way, currently we're copying it
+            if ($scope.expandTo && $scope.expandTo.length) {
+                $scope.expansionNodes = angular.copy($scope.expandTo);
+                var arrExpandTo = $scope.expansionNodes.split(",");
+                $scope.nextExpandTo = arrExpandTo.shift();
+                $scope.expansionNodes = arrExpandTo.join(",");
+            }
+        }
+    };
+}).directive('uiTreeNode', ['$compile', '$timeout', function ($compile, $timeout) {
+    return {
+        restrict: 'E',
+        replace: true,
+        template: '<li>' +
+        '<div class="node" data-node-id="{{ nodeId() }}">' +
+        '<a class="icon" ng-click="toggleNode(nodeId())""></a>' +
+        '<a ng-hide="selectedId" ng-href="#/assets/{{ nodeId() }}">{{ node.category }}</a>' +
+        '<span ng-show="selectedId" ng-class="css()" ng-click="setSelected(node)">' +
+        '{{ node.category }}</span>' +
+        '</div>' +
+        '</li>',
+        link: function (scope, elm, attrs) {
+            scope.nodeId = function (node) {
+                var localNode = node || scope.node;
+                return localNode[scope.attrNodeId];
+            };
+            scope.toggleNode = function (nodeId) {
+                var isVisible = elm.children(".uiTree:visible").length > 0;
+                var childrenTree = elm.children(".uiTree");
+                if (isVisible) {
+                    scope.$emit('nodeCollapsed', nodeId);
+                } else if (nodeId) {
+                    scope.$emit('nodeExpanded', nodeId);
+                }
+                if (!isVisible && scope.loadFn && childrenTree.length === 0) {
+                    // load the children asynchronously
+                    var callback = function (arrChildren) {
+                        scope.node.children = arrChildren;
+                        scope.appendChildren();
+                        elm.find("a.icon i").show();
+                        elm.find("a.icon img").remove();
+                        scope.toggleNode(); // show it
+                    };
+                    var promiseOrNodes = scope.loadFn(nodeId, callback);
+                    if (promiseOrNodes && promiseOrNodes.then) {
+                        promiseOrNodes.then(callback);
+                    } else {
+                        $timeout(function () {
+                            callback(promiseOrNodes);
+                        }, 0);
+                    }
+                    elm.find("a.icon i").hide();
+                    var imgUrl = "http://www.efsa.europa.eu/efsa_rep/repository/images/ajax-loader.gif";
+                    elm.find("a.icon").append('<img src="' + imgUrl + '" width="18" height="18">');
+                } else {
+                    childrenTree.toggle(!isVisible);
+                    elm.find("a.icon i").toggleClass("glyphicon glyphicon-chevron-right");
+                    elm.find("a.icon i").toggleClass("glyphicon glyphicon-chevron-down");
+                }
+            };
+
+            scope.appendChildren = function () {
+                // Add children by $compiling and doing a new ui-tree directive
+                // We need the load-fn attribute in there if it has been provided
+                var childrenHtml = '<ui-tree ng-model="node.children" attr-node-id="' +
+                    scope.attrNodeId + '"';
+                if (scope.loadFn) {
+                    childrenHtml += ' load-fn="' + scope.loadFnName + '"';
+                }
+                // pass along all the variables
+                if (scope.expansionNodes) {
+                    childrenHtml += ' expand-to="expansionNodes"';
+                }
+                if (scope.selectedId) {
+                    childrenHtml += ' selected-id="selectedId"';
+                }
+                childrenHtml += ' style="display: none"></ui-tree>';
+                return elm.append($compile(childrenHtml)(scope));
+            };
+
+            scope.css = function () {
+                return {
+                    nodeLabel: true,
+                    selected: scope.selectedId && scope.nodeId() === scope.selectedId
+                };
+            };
+            // emit an event up the scope.  Then, from the scope above this tree, a "selectNode"
+            // event is expected to be broadcasted downwards to each node in the tree.
+            // broadcast "selectNode" from outside of the directive scope.
+            scope.setSelected = function (node) {
+                scope.$emit("nodeSelected", node);
+            };
+            scope.$on("selectNode", function (event, node) {
+                scope.selectedId = scope.nodeId(node);
+            });
+
+            if (scope.node.hasChildren) {
+                elm.find("a.icon").append('<i class="glyphicon glyphicon-chevron-right"></i>');
+            }
+
+            if (scope.nextExpandTo && scope.nodeId() == parseInt(scope.nextExpandTo, 10)) {
+                scope.toggleNode(scope.nodeId());
+            }
+        }
+    };
+}]);
+
 adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout', '$confirm', '$location', '$anchorScroll', 'FileUploader'
     , function ($scope, $http, $window, $timeout, $confirm, $location, $anchorScroll, FileUploader) {
 
         // uploader section //
 
         var uploader = $scope.uploader = new FileUploader({
-            url: '/api/product/media-upload',
+            url: '/api/media/media-upload',
         });
 
         // FILTERS
@@ -87,7 +194,7 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
             }
         });
 
-        // CALLBACKS
+        // Content upload CALLBACKS
 
         uploader.onWhenAddingFileFailed = function (item /*{File|FileLikeObject}*/, filter, options) {
             //  console.info('onWhenAddingFileFailed', item, filter, options);
@@ -124,7 +231,6 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
             //    console.info('onCompleteAll');
         };
 
-        // console.info('uploader', uploader);
 
         // End uploader section //
 
@@ -134,8 +240,22 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
         $scope.initPage = function () {
             //   console.log($location.host());
             $scope.catId = '';
+            $scope.CategoryId = '';
             $scope.currentCategoryName = '';
             $scope.tempCategoryList = [];
+
+            //category tree view
+            $scope.assets = [];
+            $scope.selected = {};
+            $scope.hierarchy = "";
+            $scope.tmp = [];
+
+            // show for page
+            $scope.showForList = [
+                "Homepage", "Shop Landing", "Shop Category", "Room Landing"
+            ];
+            $scope.ShowFor = '';
+
             $scope.alerts = [];
             $scope.selectedItem = '';
             $scope.ajaxData = '';
@@ -153,10 +273,10 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
             $scope.selectedItem = '';
             $scope.Name = '';
             $scope.Permalink = '';
-            $scope.htmlContent = '';
+            $scope.htmlContent = '<div><br/><br/><br/>1. Describe what the product is<br/><br/></div><div>2. How does it solve one\'s problem<br/><br/></div><div>3. Why is it unique<br/><br/></div><div>4. Mention how the reviewers (Amazon users or CNET or another source) said about it.<br/><br/></div><div>5. List 3 bullet points on its key features in your own words</div>';
             $scope.Price = '';
             $scope.SalePrice = '';
-            $scope.StoreId = '';
+            //    $scope.StoreId = '';
             $scope.AffiliateLink = '';
             $scope.PriceGrabberId = '';
             $scope.FreeShipping = '';
@@ -200,7 +320,11 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
             ];
             $scope.mediaLink = "";
             $scope.isMediaUploadable = true;
-            $scope.isHeroItem = false;
+
+            $scope.isHeroItem = true;
+            $scope.isMainItem = false;
+            $scope.isMediaEdit = false;
+
             $scope.mediaList = [];
 
             // Pagination info
@@ -213,12 +337,261 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
 
             //filter type setting
             $scope.filterTypes = [
-                {"key": "user-filter", "value": "Filter By User"},
-                {"key": "product-filter", "value": "Filter By Product"},
+                {"key": "user-filter", "value": "Search by User ..."},
+                {"key": "product-filter", "value": "Search by Product ..."},
             ];
             $scope.selectedFilter = '';
             $scope.filterName = '';
+
+            //product compare
+            $scope.comparableProductList = [];
+
+            // Tag module
+            $scope.TagName = '';
+            $scope.TagDescription = '';
+            $scope.AllTags = [];
+
+            $scope.selectedTagId = '';
+
+            $scope.Tags = [];
+
+            // product filter with Tag
+            $scope.WithTags = false;
+
+            // Store Module
+            $scope.StoreId = '';
+            $scope.StoreIdentifier = '';
+            $scope.StoreName = '';
+            $scope.StoreStatus = 'Active';
+            $scope.StoreDescription = '';
+            //$scope.mediaLink  has initialized above for uploading product
+
+            $scope.storeList = [];
+
         };
+
+        //// Store ///
+
+        $scope.updateStore = function () {
+            $scope.closeAlert();
+            // console.log($scope.mediaLink, $scope.StoreDescription, $scope.StoreIdentifier);
+            $http({
+                url: '/api/store/update-store',
+                method: "POST",
+                data: {
+                    StoreId: $scope.StoreId,
+                    StoreIdentifier: $scope.StoreIdentifier,
+                    StoreName: $scope.StoreName,
+                    StoreStatus: $scope.StoreStatus,
+                    StoreDescription: $scope.StoreDescription,
+                    MediaLink: $scope.mediaLink
+                }
+            }).success(function (data) {
+                $scope.outputStatus(data, 'Data updated successfully');
+
+                $scope.StoreId = '';
+                $scope.StoreIdentifier = '';
+                $scope.StoreName = '';
+                $scope.StoreDescription = '';
+                $scope.mediaLink = '';
+                $scope.loadAllStores();
+
+            });
+        };
+
+        $scope.loadAllStores = function () {
+
+            // console.log($scope.mediaLink, $scope.StoreDescription, $scope.StoreIdentifier);
+            $http({
+                url: '/api/store/show-stores',
+                method: "GET"
+            }).success(function (data) {
+                $scope.storeList = data.data;
+            });
+        };
+
+        $scope.changeStoreActivation = function(){
+            $scope.closeAlert();
+
+            $scope.StoreStatus = ($scope.StoreStatus == "Active") ? "Inactive" : "Active";
+
+            $http({
+                url: '/api/store/change-status',
+                method: "POST",
+                data:{
+                    StoreId : $scope.StoreId,
+                    StoreStatus : $scope.StoreStatus
+                }
+            }).success(function (data) {
+                $scope.loadAllStores();
+            });
+        };
+
+        $scope.editStore = function(index){
+
+            $scope.StoreId = $scope.storeList[index].Id;
+            $scope.StoreIdentifier = $scope.storeList[index].Identifier;
+            $scope.StoreName = $scope.storeList[index].Name;
+            $scope.StoreStatus = $scope.storeList[index].Status == 'Active'?'Active':'Inactive';
+            $scope.StoreDescription = $scope.storeList[index].Description;
+            $scope.mediaLink = $scope.storeList[index].ImageLink;
+
+        };
+
+        $scope.deleteStore = function (id) {
+            $scope.closeAlert();
+            $http({
+                url: '/api/store/delete-store',
+                method: "POST",
+                data: {
+                    StoreId : id
+                }
+            }).success(function (data) {
+                $scope.loadAllStores();
+                $scope.outputStatus(data, 'Store deleted successfully');
+            });
+        };
+
+
+        ///// tag //////
+
+        $scope.showTagsByProductId = function () {
+
+            $http({
+                url: '/api/tag/show-tag/' + $scope.ProductId,
+                method: "GET",
+            }).success(function (data) {
+                $scope.Tags = data.data;
+            });
+        };
+
+        $scope.associateTags = function () {
+            $http({
+                url: '/api/tag/add-tags',
+                method: "POST",
+                data: {
+                    Tags: $scope.Tags,
+                    ProductId: $scope.ProductId
+                },
+            }).success(function (data) {
+
+            });
+        };
+
+        $scope.searchTagByName = function (query) {
+
+            // return [{"id":10,"name":"book"}];
+            return $http.get('/api/tag/search-tag/' + query);
+        };
+
+        // open information in edit mood
+        $scope.editTagInfo = function (index) {
+
+            $scope.closeAlert();
+
+            $scope.selectedTagId = $scope.AllTags[index].id;
+            $scope.TagName = $scope.AllTags[index].tag_name;
+            $scope.TagDescription = $scope.AllTags[index].tag_description;
+        };
+
+        $scope.updateTagInfo = function () {
+
+            $scope.closeAlert();
+
+            $http({
+                url: '/api/tag/update-tag-info',
+                method: "POST",
+                data: {
+                    TagId: $scope.selectedTagId,
+                    TagName: $scope.TagName,
+                    TagDescription: $scope.TagDescription
+                },
+            }).success(function (data) {
+                $scope.TagName = '';
+                $scope.TagDescription = '';
+                $scope.selectedTagId = '';
+                $scope.showTags();
+                //   console.log('in function: '+data.status_code);
+                $scope.outputStatus(data, 'Tag updated successfully');
+            });
+        };
+
+        $scope.deleteTagInfo = function (tagId) {
+            //delete-tag-info
+            $scope.closeAlert();
+
+            $http({
+                url: '/api/tag/delete-tag-info',
+                method: "POST",
+                data: {
+                    TagId: tagId,
+                },
+            }).success(function (data) {
+                $scope.TagName = '';
+                $scope.TagDescription = '';
+                $scope.showTags();
+                //   console.log('in function: '+data.status_code);
+                $scope.outputStatus(data, 'Tag deleted successfully');
+            });
+
+        };
+
+        $scope.showTags = function () {
+
+            $http({
+                url: '/api/tag/show-tags',
+                method: "GET",
+
+            }).success(function (data) {
+                $scope.AllTags = data.data;
+                //   console.log('in function: '+data.status_code);
+                //   $scope.outputStatus(data, 'Tag added successfully');
+            });
+
+        };
+
+        $scope.addTagInfo = function () {
+
+            $scope.closeAlert();
+
+            $http({
+                url: '/api/tag/add-tag-info',
+                method: "POST",
+                data: {
+                    TagName: $scope.TagName,
+                    TagDescription: $scope.TagDescription
+                },
+            }).success(function (data) {
+                $scope.TagName = '';
+                $scope.TagDescription = '';
+                $scope.showTags();
+
+                //   console.log('in function: '+data.status_code);
+                $scope.outputStatus(data, 'Tag added successfully');
+            });
+
+            return false;
+        };
+
+        //////// category tree view ////
+
+        $scope.loadChildren = function (nodeId) {
+
+            $scope.catId = nodeId;
+
+            return $http.get('/api/category/show-category-items/' + $scope.catId).then(function (data) {
+
+                return data['data'].data;
+            });
+        };
+        $scope.$on("nodeSelected", function (event, node) {
+            $scope.selected = node;
+            $scope.selectedItem = $scope.selected.id;
+            // console.log($scope.selectedItem);
+            $scope.$broadcast("selectNode", node);
+        });
+
+        // category tree view ///
 
         // Add an Alert in a web application
         $scope.addAlert = function (alertType, message) {
@@ -256,6 +629,13 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
 
                 if (data['data'].length > 0) {
                     $scope.categoryItems = data['data'];
+
+                    // data load for tree view
+                    if ($scope.catId == '') {
+                        $scope.assets = $scope.categoryItems;
+
+                    }
+
                 } else {
                     $scope.tempCategoryList.pop();
                     $scope.outputStatus(data, 'No more subcategory available for the selected item');
@@ -311,6 +691,7 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
         // reset filter for product list view
         $scope.resetFilter = function () {
             $scope.initPage();
+            $scope.getCategory();
         };
 
         // Build HTML listed response for popup notification.
@@ -385,8 +766,8 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
         };
 
         $scope.updateCategory = function (idx) {
-            console.log("Saving contact");
-            console.log($scope.categoryItems[idx]);
+            // console.log("Saving contact");
+            // console.log($scope.categoryItems[idx]);
             $scope.closeAlert();
 
             $http({
@@ -457,7 +838,9 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
             $scope.isCollapsed = false; // default false it false to show forced parmalink saviing mood.
             $scope.isCollapsedToggle = !$scope.isCollapsed;
         };
+
         $scope.addProduct = function () {
+
             $scope.closeAlert();
             $http({
                 url: '/api/product/add-product',
@@ -481,6 +864,7 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
 
         // update product
         $scope.productUpdateInfo = function () {
+
             $http({
                 url: '/api/product/update-product',
                 method: 'POST',
@@ -488,6 +872,7 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
                     ProductId: $scope.ProductId,
                     ProductVendorId: $scope.ProductVendorId,
                     ProductVendorType: $scope.ProductVendorType,
+                    ShowFor: $scope.ShowFor,
                     ProductAuthorName: $scope.ProductAuthorName,
                     CategoryId: $scope.selectedItem,
                     Name: $scope.Name,
@@ -508,11 +893,15 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
                     Specifications: $scope.Specifications,
                     Review: $scope.reviews,
                     ExternalReviewLink: $scope.externalReviewLink,
-                    IdeaingReviewScore: $scope.ideaingReviewScore
+                    IdeaingReviewScore: $scope.ideaingReviewScore,
+                    Tags: $scope.Tags
                 }
             }).success(function (data) {
                 //console.log(data);
                 if (data.status_code == 200) {
+
+                    // accociate tags for product on success.
+                    $scope.associateTags();
                     $scope.outputStatus(data, "Product updated successfully");
                 } else {
                     $scope.outputStatus(data, "Product information not updated");
@@ -551,6 +940,7 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
                     CategoryId: $scope.selectedItem,
                     ProductVendorId: $scope.ProductVendorId,
                     ProductVendorType: $scope.ProductVendorType,
+                    ShowFor: $scope.ShowFor,
                     Name: $scope.Name,
                     Permalink: $scope.Permalink,
                     Description: $scope.htmlContent,
@@ -636,7 +1026,7 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
             $scope.reviewKey = '';
             $scope.reviewValue = '';
             $scope.reviewLink = '';
-            $scope.reviewCounter = $scope.reviewCounter==""?0:parseInt($scope.reviewCounter);
+            $scope.reviewCounter = $scope.reviewCounter == "" ? 0 : parseInt($scope.reviewCounter);
             /*$scope.externalReviewLink = '';
              $scope.ideaingReviewScore = 0;*/
             $scope.calculateAvg();
@@ -662,7 +1052,7 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
             $scope.reviews[$scope.$index].key = $scope.reviewKey;
             $scope.reviews[$scope.$index].value = $scope.reviewValue;
             $scope.reviews[$scope.$index].link = $scope.reviewLink;
-            $scope.reviews[$scope.$index].counter = $scope.reviewCounter==""?0:parseInt($scope.reviewCounter);
+            $scope.reviews[$scope.$index].counter = $scope.reviewCounter == "" ? 0 : parseInt($scope.reviewCounter);
 
             $scope.isUpdateReviewShow = false;
 
@@ -680,13 +1070,16 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
                 $scope.totalCount += $scope.reviews[i].value;
             }
 
-            $scope.reviews[0].value = $scope.totalCount / ($scope.reviews.length - 1);
+//            $scope.reviews[0].value = $scope.totalCount / ($scope.reviews.length - 1);
+            $scope.reviews[0].value = ($scope.totalCount / ($scope.reviews.length - 1)).toFixed(2);
+            console.log($scope.reviews[0].value);
 
         }
 
 
         // view product list
         $scope.showAllProduct = function () {
+
             $http({
                 url: '/api/product/get-product-list',
                 method: 'POST',
@@ -695,6 +1088,9 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
                     ActiveItem: $scope.ActiveItem,
                     FilterType: $scope.selectedFilter,
                     FilterText: $scope.filterName,
+                    ShowFor: $scope.ShowFor,
+                    WithTags: $scope.WithTags,
+
                     // Pagination info
                     limit: $scope.limit,
                     page: $scope.page,
@@ -788,6 +1184,7 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
                     $scope.selectedItem = data.data.product_category_id;
                     $scope.ProductVendorId = data.data.product_vendor_id;
                     $scope.ProductVendorType = data.data.product_vendor_type;
+                    $scope.ShowFor = data.data.show_for;
                     $scope.Name = data.data.product_name;
                     $scope.Permalink = data.data.product_permalink;
                     $scope.htmlContent = data.data.product_description;
@@ -810,6 +1207,9 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
 
                     // hide category in edit mood
                     $scope.hideCategoryPanel = true;
+
+                    // load Tags
+                    $scope.showTagsByProductId();
 
                     // load media in panel
                     $scope.getMedia();
@@ -836,9 +1236,9 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
 
         };
 
-        //preview the product in detials page
+        //preview the product in details page
         $scope.previewProduct = function (permalink) {
-            $window.open('/pro-details/' + permalink, '_blank');
+            $window.open('/product/' + permalink, '_blank');
         };
 
         // Change the media type during add and edit of media content.
@@ -878,20 +1278,22 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
                     MediaTitle: $scope.mediaTitle,
                     MediaType: $scope.selectedMediaType,
                     MediaLink: $scope.mediaLink,
-                    IsHeroItem: $scope.isHeroItem
+                    IsHeroItem: $scope.isHeroItem,
+                    IsMainItem: $scope.isMainItem
                 }
             }).success(function (data) {
                 //   console.log(data);
 
                 if (data.status_code == 200) {
                     $scope.getMedia();
-                    $scope.mediaTitle = $scope.selectedMediaType = $scope.mediaLink = $scope.isHeroItem = '';
+                    $scope.mediaTitle = $scope.selectedMediaType = $scope.mediaLink = $scope.isHeroItem = $scope.isMainItem = '';
+
                 }
 
             })
         };
 
-        // get medial content list for a single product
+        // get media content list for a single product
         $scope.getMedia = function () {
             $http({
                 url: '/api/product/get-media/' + $scope.ProductId,
@@ -921,7 +1323,52 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
             });
         };
 
+        $scope.editMedia = function (index) {
+
+            $scope.mediaId = $scope.mediaList[index].id;
+
+            $scope.mediaTitle = $scope.mediaList[index].media_name;
+            $scope.selectedMediaType = $scope.mediaList[index].media_type;
+            $scope.mediaLink = $scope.mediaList[index].media_link;
+
+            var stat = $scope.mediaList[index].is_hero_item == 1 ? true : false;
+            $scope.isHeroItem = stat;
+            $scope.isMainItem = $scope.mediaList[index].is_main_item == 1 ? 1 : 0;
+            $scope.isMediaEdit = true;
+           // console.log($scope.mediaId);
+
+        };
+
+        $scope.updateMediaInfo = function () {
+            $http({
+                url: '/api/media/update-media',
+                method: 'POST',
+                data: {
+                    MediaId: $scope.mediaId,
+                    MediaTitle: $scope.mediaTitle,
+                    MediaType: $scope.selectedMediaType,
+                    MediaLink: $scope.mediaLink,
+                    IsHeroItem: $scope.isHeroItem,
+                    IsMainItem: $scope.isMainItem
+
+                }
+            }).success(function (data) {
+                // console.log(data);
+                $scope.mediaId = '';
+                $scope.mediaTitle = '';
+                $scope.selectedMediaType = '';
+                $scope.mediaLink = '';
+                $scope.isHeroItem = false;
+                $scope.isMainItem = false;
+                $scope.isMediaEdit = false;
+                $scope.getMedia();
+
+            });
+        };
+
         // Initialize variables and functions Globally.
         $scope.initPage();
         $scope.getCategory();
+
+
     }]);

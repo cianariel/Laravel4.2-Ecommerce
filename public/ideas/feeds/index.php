@@ -1,78 +1,74 @@
 <?php
-function CarbobFormatTime($timestamp)
+function timeAgo($time_ago)
 {
-	// Get time difference and setup arrays
-	$difference = time() - $timestamp;
-	$periods = array("second", "minute", "hour", "day", "week", "month", "years");
-	$lengths = array("60","60","24","7","4.35","12");
- 
-	// Past or present
-	if ($difference >= 0) 
-	{
-		$ending = "ago";
-	}
-	else
-	{
-		$difference = -$difference;
-		$ending = "to go";
-	}
- 
-	// Figure out difference by looping while less than array length
-	// and difference is larger than lengths.
-	$arr_len = count($lengths);
-	for($j = 0; $j < $arr_len && $difference >= $lengths[$j]; $j++)
-	{
-		$difference /= $lengths[$j];
-	}
- 
-	// Round up		
-	$difference = round($difference);
- 
-	// Make plural if needed
-	if($difference != 1) 
-	{
-		$periods[$j].= "s";
-	}
- 
-	// Default format
-	$text = "$difference $periods[$j] $ending";
- 
-	// over 24 hours
-	if($j > 2)
-	{
-		// future date over a day formate with year
-		if($ending == "to go")
-		{
-			if($j == 3 && $difference == 1)
-			{
-				$text = "Tomorrow at ". date("g:i a", $timestamp);
-			}
-			else
-			{
-				$text = date("F j, Y \a\\t g:i a", $timestamp);
-			}
-			return $text;
-		}
- 
-		if($j == 3 && $difference == 1) // Yesterday
-		{
-			$text = "Yesterday at ". date("g:i a", $timestamp);
-		}
-		else if($j == 3) // Less than a week display -- Monday at 5:28pm
-		{
-			$text = date("l \a\\t g:i a", $timestamp);
-		}
-		else if($j < 6 && !($j == 5 && $difference == 12)) // Less than a year display -- June 25 at 5:23am
-		{
-			$text = date("F j \a\\t g:i a", $timestamp);
-		}
-		else // if over a year or the same month one year ago -- June 30, 2010 at 5:34pm
-		{
-			$text = date("F j, Y \a\\t g:i a", $timestamp);
-		}
-	}
- 
-	return $text;
+	$d1 = new DateTime($time_ago);
+	$d1 = $d1->format('M, d Y');
+    $time_ago = strtotime($time_ago);
+    $cur_time   = time();
+    $time_elapsed   = $cur_time - $time_ago;
+    $seconds    = $time_elapsed ;
+    $minutes    = round($time_elapsed / 60 );
+    $hours      = round($time_elapsed / 3600);
+    $days       = round($time_elapsed / 86400 );
+    $weeks      = round($time_elapsed / 604800);
+    $months     = round($time_elapsed / 2600640 );
+    $years      = round($time_elapsed / 31207680 );
+    // Seconds
+    if($seconds <= 60){
+        return "now";
+    }
+    //Minutes
+    else if($minutes <=60){
+        if($minutes==1){
+            return "1 minute ago";
+        }
+        else{
+            return "$minutes minutes ago";
+        }
+    }
+    //Hours
+    else if($hours <=24){
+        if($hours==1){
+            return "1 hour ago";
+        }else{
+            return "$hours hours ago";
+        }
+    }
+    //Days
+    else if($days <= 7){
+        if($days==1){
+            return "yesterday";
+        }else{
+            return "$days days ago";
+        }
+    }
+    //Weeks
+    else if($weeks <= 4.3){
+        if($weeks==1){
+            return "1 week ago";
+        }else{
+            return "$weeks weeks ago";
+        }
+    }
+    //Months
+    else if($months <=12){
+    	return $d1;
+        /*if($months==1){
+            return "a month ago";
+        }else{
+            return "$months months ago";
+        }*/
+    }
+    //Years
+    else{
+    	return $d1;
+    	/*
+        if($years==1){
+            return "one year ago";
+        }else{
+            return "$years years ago";
+        }*/
+    }
 }
 
 function carbon_the_content_limit($max_char, $more_link_text = '(more...)', $stripteaser = 0, $more_file = '') {
@@ -94,8 +90,43 @@ function carbon_the_content_limit($max_char, $more_link_text = '(more...)', $str
 }
 require_once('../wp-load.php');
 $postCount = $_REQUEST['count']; // The number of posts to show in the feed
+$postCount  = isset($postCount)? $postCount : -1;
+if($postCount==0)
+{
+    $postCount = -1;
+}
+$onlyfeatured = $_REQUEST['only-featured'];
+$no_featured = $_REQUEST['no-featured'];
+$is_featured = "";
+if(isset($no_featured))
+{
+    $is_featured = "No";
+}
+if(isset($onlyfeatured))
+{
+    $is_featured = "Yes";
+}
+$offset = $_REQUEST['offset'];
 $postCat = $_REQUEST['category-id'];
-$posts = query_posts('cat='.$postCat.'&showposts=' . $postCount);
+$args = array(
+'cat' => $postCat,
+'showposts' => $postCount,
+'offset' => $offset,);
+
+if($is_featured != "")
+{
+$args['meta_query'] = array(
+       'relation'  => 'AND',
+       array(
+        'key'  => 'is_featured',
+        'value' => $is_featured,
+        'compare' => '='
+       )
+      );
+}
+
+$posts = query_posts($args);
+//$posts = query_posts('cat='.$postCat.'&showposts=' . $postCount.'&offset='.$offset);
 $datam = array();
 $data = array();
 while(have_posts()) : the_post();
@@ -124,11 +155,11 @@ $cat_names = array_unique($cat_names);
 $data['category_all'] = $cat_names;
 $data['url'] = get_the_permalink();
 $datepublishstring = get_the_time('Y-m-d H:i:s');
-$timestamp = strtotime($datepublishstring);
-$datepublish = CarbobFormatTime($timestamp);
-$data['date'] = $datepublish;
+$datepublish = timeAgo($datepublishstring);
+$data['creation_date'] = $datepublish;
+$data['updated_at'] = $datepublish;
 if( has_post_thumbnail( $ID ) ) {
-        $image = get_the_post_thumbnail_url( $ID, 'large', false );
+        $image = get_the_post_thumbnail_url( $ID, 'full', false );
     }
 	else
 	{
@@ -137,7 +168,7 @@ if( has_post_thumbnail( $ID ) ) {
 		$keys = array_reverse(array_keys($files));
 		$j=0;
 		$num = $keys[$j];
-		$image=wp_get_attachment_image_url($num, 'large', false);
+		$image=wp_get_attachment_image_url($num, 'full', false);
 	  endif;
 	}
 $data['image'] = $image;
@@ -145,11 +176,12 @@ $data['author'] = get_the_author();
 $data['authorlink'] = get_author_posts_url( get_the_author_meta( 'ID' ) );
 $data['author_id'] = get_the_author_meta( 'ID' );
 $data['avator'] = get_avatar_url( get_the_author_email(), '80' );
+$data['type'] = 'idea';
 $get_is_featured = get_post_custom_values('is_featured',$ID);
 $is_featured = false;
 if($get_is_featured[0] == "Yes")
 {
-		$is_featured = true;
+	$is_featured = true;
 }
 $data['is_featured'] = $is_featured;
 
