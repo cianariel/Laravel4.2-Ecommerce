@@ -83,7 +83,7 @@
                                             <a href="#review" data-toggle="tab"> Review </a>
                                         </li>
                                         <li>
-                                            <a href="#media" data-toggle="tab"> Media Content
+                                            <a ng-hide="ProductId == ''" href="#media" data-toggle="tab"> Media Content
                                             </a>
                                         </li>
                                     </ul>
@@ -107,46 +107,49 @@
                                                     <label class="col-md-2 control-label">Select Category:
                                                     </label>
                                                     <div class="col-md-5">
-                                                        <select data-ng-model="selectedItem"
-                                                                ng-change="getSubCategory()"
+                                                        <ui-tree ng-model="assets"
+                                                                 load-fn="loadChildren"
+                                                                 expand-to="hierarchy"
+                                                                 selected-id="111"
+                                                                 attr-node-id="id"></ui-tree>
+                                                        <label>Selected Category Id :</label><span
+                                                                class="text-danger"><strong> @{{ selectedItem }} </strong> </span>
+                                                    </div>
+                                                    <div class="col-md-1">
+
+                                                    </div>
+                                                    <div class="col-md-4">
+
+                                                    </div>
+
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label class="col-md-2 control-label">Associate Tag (Auto Complete)</label>
+                                                    <div class="col-md-10">
+                                                        <tags-input ng-model="Tags"
+                                                                    display-property="name"
+                                                                    add-from-autocomplete-only="true">
+                                                            <auto-complete min-length="3"
+                                                                           source="searchTagByName($query)">
+                                                            </auto-complete>
+                                                        </tags-input>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label class="col-md-2 control-label">Store Name</label>
+                                                    <div class="col-md-5" ng-init="loadAllStores()">
+                                                        <select data-ng-model="StoreId"
                                                                 class="form-control">
-                                                            <option value="@{{ selectedItem }}">
-                                                                -- View This Category --
-                                                            </option>
-                                                            <option ng-repeat="category in categoryItems"
-                                                                    value="@{{ category.id }}">
-                                                                @{{ category.category }}
+                                                            <option ng-repeat="store in storeList"
+                                                                    value="@{{ store.Id }}">
+                                                                @{{ store.Name }}
                                                             </option>
                                                         </select>
                                                     </div>
-                                                    <div class="col-md-1">
-                                                        <button class="btn btn-info btn-circle"
-                                                                type="button"
-                                                                ng-click="resetCategory()"
-                                                                uib-tooltip="Refresh Category"
-                                                                tooltip-placement="right">
-                                                            <i class="fa fa-refresh"></i>
-                                                        </button>
-                                                    </div>
-                                                    <div class="col-md-4">
-                                                            <label>Selected Category Name :</label><span
-                                                                    class="text-danger"><strong> @{{ currentCategoryName }} </strong> </span>
-                                                    </div>
-                                                    <div class="row form-group" ng-hide="hideCategoryPanel" style="display:none">
-                                                        <div class="col-md-4">
-                                                            <div class="panel panel-info">
-                                                                <div class="panel-heading"> Subcategory Status
-                                                                    Panel
-                                                                </div>
-                                                                <div class="panel-body">
-                                                                    <span ng-repeat="list in tempCategoryList">@{{ list }}
-                                                                        >> </span>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        
-                                                    </div>
                                                 </div>
+
                                                 <div class="form-group">
                                                     <label class="col-md-2 control-label">Product ID:
                                                     </label>
@@ -166,6 +169,21 @@
                                                         </button>
                                                     </div>
                                                 </div>
+
+                                                <div class="form-group">
+                                                    <label class="col-md-2 control-label">Show Product For:
+                                                    </label>
+                                                    <div class="col-md-5">
+                                                        <select data-ng-model="ShowFor"
+                                                                class="form-control">
+                                                            <option ng-repeat="item in showForList"
+                                                                    value="@{{ item }}">
+                                                                @{{ item }}
+                                                            </option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+
                                                 <div class="form-group">
                                                     <label class="col-md-2 control-label">Product Name:
                                                     </label>
@@ -213,13 +231,6 @@
                                                            data-ng-model="SalePrice"
                                                            class="form-control"
                                                            placeholder="Enter Sale Price (Decimal number only)">
-                                                    </div>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label class="col-md-2 control-label">Store Name</label>
-                                                    <div class="col-md-10">
-                                                    <input data-ng-model="StoreId" class="form-control"
-                                                           placeholder="Enter text">
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
@@ -509,7 +520,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label class="col-md-2 control-label">Media Title :
+                                                    <label class="col-md-2 control-label">Media Type :
                                                     </label>
                                                     <div class="col-md-4">
                                                         <select data-ng-model="selectedMediaType"
@@ -535,8 +546,14 @@
                                                     <label class="col-md-2 control-label">Mark As Hero Item :
                                                     </label>
                                                     <div class="col-md-4">
-                                                        <input data-ng-model="isHeroItem"
-                                                           type="checkbox">
+                                                        <input  type="checkbox" data-ng-model="isHeroItem" />
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-md-2 control-label">Thumb Item :
+                                                    </label>
+                                                    <div class="col-md-4">
+                                                        <input data-ng-model="isMainItem" type="checkbox" />
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
@@ -558,8 +575,12 @@
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
-                                                    <div class="col-md-4">                                                    
-                                                        <button type="button"
+                                                    <div class="col-md-4">
+                                                        <button ng-show="isMediaEdit" type="button"
+                                                                class="btn btn-warning"
+                                                                ng-click="updateMediaInfo()">Update
+                                                        </button>
+                                                        <button ng-hide="isMediaEdit" type="button"
                                                                 class="btn btn-primary"
                                                                 ng-click="addMediaInfo()">Add In List
                                                         </button>
@@ -573,9 +594,10 @@
                                                                 <thead>
                                                                 <tr>
                                                                     <th class="col-md-1">#</th>
-                                                                    <th class="col-md-3">Title</th>
+                                                                    <th class="col-md-2">Title</th>
                                                                     <th class="col-md-2">Type</th>
                                                                     <th class="col-md-1">Hero</th>
+                                                                    <th class="col-md-1">Thumb</th>
                                                                     <th class="col-md-4">Link</th>
                                                                     <th class="col-md-1">Action</th>
                                                                 </tr>
@@ -586,6 +608,7 @@
                                                                     <td>@{{ media.media_name}}</td>
                                                                     <td>@{{ media.media_type}} </td>
                                                                     <td>@{{ media.is_hero_item == 1? 'true':''}} </td>
+                                                                    <td>@{{ media.is_main_item == 1? 'true':''}} </td>
                                                                     <td>
                                                                         <a href="@{{ media.media_link}}"
                                                                            target="_blank">
@@ -593,6 +616,13 @@
                                                                         </a>
                                                                     </td>
                                                                     <td>
+                                                                        <button ng-click="editMedia($index)"
+                                                                                class="btn btn-info btn-circle"
+                                                                                uib-tooltip="Edit"
+                                                                                tooltip-placement="bottom">
+                                                                            <i class="fa fa-edit"></i>
+                                                                        </button>
+
                                                                         <button data-ng-click="deleteMedia(media.id)"
                                                                                 confirm="Are you sure to delete this item ?"
                                                                                 confirm-settings="{size: 'sm'}"

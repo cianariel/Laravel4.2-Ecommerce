@@ -13,20 +13,18 @@
     */
 
 
-/*
-    //Debug query
-    Event::listen('illuminate.query', function($query)
-     {
-         var_dump($query);
-     });
-*/
-
-
-
+    /*
+        //Debug query
+        Event::listen('illuminate.query', function($query)
+         {
+             var_dump($query);
+         });
+    */
 
     Route::get('/', 'PageController@home');
 
     Route::get('update-price', 'ProductController@priceUpdate');
+
 
 //    Route::get('/', function () // temp, used for tweaking frontend
 //    {
@@ -79,9 +77,9 @@
         Route::get('category/show-category-items/{id?}', 'ProductCategoryController@showCategoryItems');
 
         /*
-                 * Product route collection
-                 *
-                 * */
+         * Product route collection
+         *
+         * */
         Route::get('product/check-permalink/{permalink?}', 'ProductController@isPermalinkExist');
         Route::get('product/get-product/{id?}', 'ProductController@getProductById');
         Route::get('product/product-find/{name?}', 'ProductController@searchProductByName');
@@ -91,28 +89,65 @@
         Route::post('product/add-product', 'ProductController@addProduct');
         Route::post('product/update-product', 'ProductController@updateProductInfo');
         Route::post('product/publish-product', 'ProductController@publishProduct');
+        Route::get('product/get-by-name/{name?}', 'ProductController@productDetailsViewByName');
+
+        // Test method for logo
+        Route::get('product/logo','ProductController@getStoreInformation');
+
 
         // Delete product
         Route::post('product/delete-product', 'ProductController@deleteProduct');
 
+
+        //add to compare queue
         Route::get('pro-details/{permalink?}', 'ProductController@productDetailsView');
 
         // Get product Info from API
-        Route::get('api-data/{itemId?}','ProductController@getProductInfoFromApi');
+        Route::get('api-data/{itemId?}', 'ProductController@getProductInfoFromApi');
+
+        /*
+         *  TAG module for product
+         *
+         * */
+
+        Route::post('tag/add-tag-info', 'TagsController@addTagInfo');
+        Route::post('tag/update-tag-info', 'TagsController@updateTagInfo');
+        Route::post('tag/delete-tag-info', 'TagsController@deleteTagInfo');
+        Route::get('tag/show-tags', 'TagsController@showAllTags');
+        Route::get('tag/show-tag/{productId}', 'TagsController@showTagByProductId');
+        Route::get('tag/show-products/{tagId}', 'TagsController@getProductsByTag');
+        Route::get('tag/search-tag/{tagId}', 'TagsController@searchTagByName');
+
+
+        Route::post('tag/add-tags', 'TagsController@addTags');
+
 
         /*
          * Media upload route
          *
          * */
 
-        Route::any('product/media-upload', 'ProductController@addMediaForProduct');
+        Route::any('product/media-upload', 'ProductController@fileUploader');
         Route::post('product/add-media-info', 'ProductController@addMediaInfo');
         Route::get('product/get-media/{id?}', 'ProductController@getMediaForProduct');
-        Route::post('product/delete-media/', 'ProductController@deleteSingleMediaItem');
+        Route::post('product/delete-media', 'ProductController@deleteSingleMediaItem');
 
+        Route::post('media/update-media', 'MediaController@updateMediaContent');
+        Route::any('media/media-upload', 'MediaController@fileUploader');
+        Route::post('media/media-delete', 'MediaController@fileUploader');
 
+        /*
+         * Store
+         * */
+        Route::post('store/update-store', 'StoreController@updateStore');
+        Route::post('store/delete-store', 'StoreController@deleteStore');
+        Route::post('store/change-status', 'StoreController@changeStatus');
 
+        Route::get('store/show-stores', 'StoreController@getAllStores');
 
+        Route::post('room/add-room', 'RoomController@addRoom');
+        Route::post('room/update-room', 'RoomController@updateRoom');
+        Route::post('room/get-room-list', 'ProductController@getAllRoomList');
         /*
          * RSS feed parser from WP to App home page
          *
@@ -136,7 +171,20 @@
         Route::get('product-add', 'AdminController@addProduct');
         Route::get('product-edit/{id?}', 'AdminController@editProduct');
 
+        // Stores
+        Route::get('stores', 'AdminController@storeView');
+
+
+        //Tag view
+        Route::get('tag-view', 'AdminController@tagView');
+        
+        //Room view
+        Route::get('room-view', 'AdminController@roomsView');
+        Route::get('room-add', 'AdminController@addRoom');
+        Route::get('room-edit/{id?}', 'AdminController@editRoom');
+
     });
+
 
     // Route for password reset , email verification ,feed example
     Route::get('password-reset-form/{code?}', 'AuthenticateController@passwordResetForm');
@@ -153,8 +201,15 @@
     Route::get('category/{identity?}', 'ProductCategoryController@showProductInCategoryName');
 
     // Route for product detail view
-  //
-    Route::get('pro-details/{permalink?}', 'PageController@productDetailsPage');
+    //    Route::get('pro-details/{permalink?}', 'PageController@productDetailsPage');
+    Route::get('product/{permalink?}', 'PageController@productDetailsPage');
+
+
+    Route::get('/api/paging/get-content/{page?}/{limit?}/{returnOnly?}', 'PageController@getContent');
+
+
+    // temporary category tag generator
+    // Route::get('gen', 'TagsController@temporaryCategoryTagGenerator');
 
 
 

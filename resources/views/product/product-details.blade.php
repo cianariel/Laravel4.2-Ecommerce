@@ -1,10 +1,36 @@
 @extends('layouts.main')
 
+@section('body-class'){{ 'product-details' }}@stop
+
 @section('content')
     <script type="text/javascript">
-        var urlParam = "{{$permalink}}";
+        var permalink = "{{$permalink}}";
     </script>
     <div ng-app="productApp" data-ng-controller="productController" ng-cloak>
+        <nav class="mid-nav hidden-620">
+            <div class="container">
+                <ul class="left-nav breadcrumbs hidden-620">
+                    <!--                    <li><a class="home-link" href="#">Home</a></li>-->
+                    {{--<li class="active"><a href="#" class="larger-text allcaps orange">Ideas</a></li>--}}
+                    {{--<li><a href="#" class="orange box-link">Kitchen</a></li>--}}
+                    {{--<li><a href="#" class="orange box-link">Style</a></li>--}}
+
+                    @if(isset($productInformation['CatTree']))
+                        @foreach( $productInformation['CatTree'] as $category )
+                            <li>
+                                <a class="orange box-link"
+                                   href="/category/@if(isset($category['CategoryPermalink'])){{$category['CategoryPermalink']}}@endif"
+                                   @if($category == end($productInformation['CatTree']))class="current"
+                                        @endif>
+                                    @if(isset($category['CategoryName']))
+                                        {{$category['CategoryName']}}
+                                    @endif</a>
+                            </li>
+                        @endforeach
+                    @endif
+                </ul>
+            </div>
+        </nav>
         <header class="story-header hidden-620 hidden-soft">
             <a href="#" class="side-logo lamp-logo">
             </a>
@@ -13,26 +39,27 @@
                 @if(isset($productInformation['ProductName']))
                     {{$productInformation['ProductName']}}
                 @endif
+                <a class="like-counter" href="#"><span></span><b>1819</b></a>
             </h1>
 
-            <ul class="social-rounds hidden-sm hidden-xs pull-right">
-                <li><a class="fb" href="#"></a></li>
-                <li><a class="twi" href="#"></a></li>
-                <li><a class="gp" href="#"></a></li>
-                <li><a class="pint" href="#"></a></li>
+            <ul class="share-buttons short hidden-xs col-lg-6 col-sm-8 pull-right">
+                <li class="all-shares"><b>120K </b>all shares</li>
+                <li><a class="fb" href="#"><span></span><b>189</b></a></li>
+                <li><a class="twi" href="#"><span></span><b>189</b></a></li>
             </ul>
 
-            <ul class="like-nav hidden-xs pull-right pull-right">
-                <li><a class="like-counter" href="#"><span></span><b>189</b></a></li>
-            </ul>
+            {{--<ul class="like-nav hidden-xs pull-right pull-right">--}}
+            {{--<li><a class="like-counter" href="#"><span></span><b>1819</b></a></li>--}}
+            {{--</ul>--}}
 
             <div class="icon-wrap pull-right">
-                <a class="get solid" ng-href=" @if(isset($productInformation['AffiliateLink']))
+                <a class="category-tag get-round" ng-href="@if(isset($productInformation['AffiliateLink']))
                 {{$productInformation['AffiliateLink']}}
                 @endif" target="_blank">
                     Get it
                 </a>
-                <img class="vendor-logo" src="/assets/images/dummies/amazon-black.png">
+                <img class="vendor-logo"  style="-webkit-filter: invert(100%); filter: invert(100%);" width="90" src="@if(isset($storeInformation['ThumbnailPath'])){{$storeInformation['ThumbnailPath']}}@endif"
+                     alt="@if(isset($storeInformation['StoreName'])){{$storeInformation['StoreName']}}@endif">
                 <b class="price">$ @if(isset($productInformation['SellPrice']))
                         {{$productInformation['SellPrice']}}
                     @endif</b>
@@ -45,26 +72,15 @@
             <div class="color-overlay"></div>
 
             <div class="container fixed-sm full-480">
-                <nav class="breadcrumbs">
-                    <ul>
-                        @if(isset($productInformation['CatTree']))
-                            @foreach( $productInformation['CatTree'] as $category )
-                                <li>
-                                    <a href="/category/@if(isset($category['CategoryPermalink'])){{$category['CategoryPermalink']}}@endif"
-                                       @if($category == end($productInformation['CatTree']))class="current"
-                                            @endif>
-                                        @if(isset($category['CategoryName']))
-                                            {{$category['CategoryName']}}
-                                        @endif</a>
-                                </li>
-                            @endforeach
-                        @endif
-                    </ul>
-                </nav>
+                {{--<nav class="breadcrumbs">--}}
+                {{--<ul>--}}
+                {{----}}
+                {{--</ul>--}}
+                {{--</nav>--}}
 
                 <div class="average-score">
                     <div class="score">@if(isset($productInformation['Review']) && isset($productInformation['IdeaingReviewScore']))
-                            {{(($productInformation['Review'][0]->value + $productInformation['IdeaingReviewScore'])/2)*20}}@endif%
+                            {{intval((($productInformation['Review'][0]->value + $productInformation['IdeaingReviewScore'])/2)*20)}}@endif%
                     </div>
                     <span class="caption">Average Ideaing Score</span>
                 </div>
@@ -95,7 +111,7 @@
                                     loop: false,
                                     keyboardNavEnabled: true,
                                     controlsInside: false,
-                                    imageScaleMode: 'fill',
+                                    imageScaleMode: 'fit',
                                     arrowsNavAutoHide: false,
                                     autoScaleSlider: true,
                                     controlNavigation: 'thumbnails',
@@ -114,6 +130,7 @@
                                         firstMargin: false,
 //                                orientation: 'horizntal',
                                     },
+                                    loop: true
 //                            imgWidth: 1400,
 //                            imgHeight: 680
                                 });
@@ -124,7 +141,7 @@
                                         loop: false,
                                         keyboardNavEnabled: true,
                                         controlsInside: false,
-                                        imageScaleMode: 'fill',
+                                        imageScaleMode: 'fit',
                                         arrowsNavAutoHide: false,
 //                        autoScaleSlider: true,
                                         controlNavigation: 'thumbnails',
@@ -144,6 +161,8 @@
                                             firstMargin: false,
                                             orientation: 'vertical'
                                         },
+                                        loop: true
+
 //                        imgWidth: 1400,
 //                        imgHeight: 680
                                     });
@@ -154,6 +173,7 @@
                     </script>
 
                     <div id="gallery" class="royalSlider rsDefault">
+
                         @if(isset($selfImages['picture']))
                             @foreach( $selfImages['picture'] as $image )
                                 <a class="rsImg" data-rsbigimg="{{$image['link']}}"
@@ -163,7 +183,10 @@
                                 </a>
                             @endforeach
                         @endif
-
+                        <img width="640" height="427"
+                             src="@if(isset($selfImages['picture'][1]['link'])){{$selfImages['picture'][1]['link']}}@endif"
+                             class="attachment-large wp-post-image"
+                             alt="@if(isset($selfImages['picture'][1]['picture-name'])){{$selfImages['picture'][1]['picture-name']}}@endif"/>
                     </div>
 
                     <div class="slider-side-block">
@@ -171,13 +194,14 @@
                         <div class="top">
                             <div style="color: white; text-align: center;">@if(isset($productInformation['Available']))
                                     {{$productInformation['Available']}}
-                                    @endif</div>
-                            <a class="get solid" href="@if(isset($productInformation['AffiliateLink']))
+                                @endif</div>
+                            <a class="get-round" href="@if(isset($productInformation['AffiliateLink']))
                             {{$productInformation['AffiliateLink']}}
                             @endif" target="_blank">
                                 Get it
                             </a>
-                            <img class="vendor-logo" src="/assets/images/dummies/amazon-2.png">
+                            <img class="vendor-logo" width="107" src="@if(isset($storeInformation['ImagePath'])){{$storeInformation['ImagePath']}}@endif"
+                            alt="@if(isset($storeInformation['StoreName'])){{$storeInformation['StoreName']}}@endif">
                             <b class="price">$ @if(isset($productInformation['SellPrice']))
                                     {{$productInformation['SellPrice']}}
                                 @endif</b>
@@ -185,8 +209,8 @@
                         <div class="table">
                             <ul>
                                 <li>
-                                    <a href="#">
-                                        <span class="name">Amazon</span>
+                                    <a href="/pro/@if(isset($storeInformation['Identifier'])){{$storeInformation['Identifier']}}@endif">
+                                        <span class="name">@if(isset($storeInformation['StoreName'])){{$storeInformation['StoreName']}}@endif</span>
                                         <span class="price">&nbsp;</span>
                                     </a>
                                 </li>
@@ -231,24 +255,20 @@
                         <h3 class="green">Specifications</h3>
 
                         @if(isset($productInformation['Specifications']))
-                        <div>
-                            <table class="table table-striped col-sm-6">
-                                <thead>
-                                <tr>
-                                    <th>Entity</th>
-                                    <th>Value</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                @foreach( $productInformation['Specifications'] as $specification )
-                                <tr>
-                                    <td>{{ $specification->key}}</td>
-                                    <td>{{ $specification->value}}</td>
-                                </tr>
-                                @endforeach
-                                </tbody>
-                            </table>
-                        </div>
+                            <div class="col-lg-6"
+                                 style="float: none;margin-left: auto; margin-right: auto; text-align: center">
+                                <table class="table col-sm-3">
+
+                                    <tbody>
+                                    @foreach( $productInformation['Specifications'] as $specification )
+                                        <tr>
+                                            <td><strong>{{ $specification->key}}</strong></td>
+                                            <td>{{ $specification->value}}</td>
+                                        </tr>
+                                    @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
                         @endif
 
                     </div>
@@ -259,120 +279,108 @@
                     <div class="container">
                         <h3 class="purple">Comparisons</h3>
 
-                        <button class="arrow arrow-left"></button>
+                        {{--<button class="arrow arrow-left" ng-hide="compareIndex == 0" ng-click="traverseBackward()"></button>--}}
 
                         <div class="col-sm-3 col-xs-6 comparison-tab">
-                            <section class="search-bar">
-                                <input class="form-control" type="text" name="search" value="Search to add products"/>
+                            <section class="purple">
+                                Add Product To Compare
                             </section>
                         </div>
 
-                        <div class="col-sm-3 col-xs-6 comparison-tab">
-                            <div>
-                                <img class="img-responsive" src="/assets/images/dummies/nest-2.png"/>
+                        <!-- compare dynamic start -->
 
-                                <div class="tab-wrap">
-                                    <h4>Next Project <br>(second generation)</h4>
-                                    <i>Announced 29 October 2015</i>
-                                    <b class="score">9.0</b>
 
-                                    <div class="star-raiting">
-                                        <span class="stars">(543)</span>
+                        <div ng-repeat="item in temporaryViewList | limitTo:3">
+
+                            <div class="col-sm-3 col-xs-6 comparison-tab">
+                                <div>
+                                    <img class="img-responsive" ng-src="@{{ item.data.selfImages.mainImage}}"
+                                         alt="@{{ item.data.selfImages.mainImageName}}"/>
+
+                                    <div class="tab-wrap">
+                                        <h4>@{{ item.data.productInformation.ProductName | limitTo: 50 }} @{{item.data.productInformation.ProductName.length > 50 ? '...' : ''}}</h4>
+
+                                        {{--<i>@{{ item.data.productInformation.Available }}</i>--}}
+                                        <b class="score">@{{ item.data.productInformation.Review[1].value }}</b>
+
+                                        <div class="star-raiting" style="text-align: center">
+                                            <span class="stars">(@{{ item.data.productInformation.Review[1].counter | number:0 }}
+                                                ) Customer Reviews</span>
+                                        </div>
+                                        <div class="btn purple-bg price-badge">
+                                            <span>@{{ item.data.storeInformation.StoreName }}</span> <b>$@{{ item.data.productInformation.SellPrice }}</b>
+                                        </div>
+                                        <a class="btn-none" href="@{{ item.data.productInformation.AffiliateLink }}"
+                                           target="_blank">More Info</a>
                                     </div>
-                                    <div class="btn purple-bg price-badge">
-                                        <span>Amazon</span> <b>$375</b>
-                                    </div>
-                                    <a class="btn-none">More Info</a>
+                                    <span class="close-button" ng-click="deleteSelectedItem($index)">✕</span>
                                 </div>
-                                <span class="close-button">✕</span>
                             </div>
                         </div>
-                        <div class="col-sm-3 col-xs-6 comparison-tab">
-                            <div>
-                                <img class="img-responsive" src="/assets/images/dummies/nest-3.png"/>
+                        <!-- add item to compare -->
+                        <div class="col-sm-3 col-xs-6 comparison-tab" ng-hide="dataLength > 2"
+                             ng-init="loadProductDetails()">
 
-                                <div class="tab-wrap">
-                                    <h4>Next Project <br>(second generation)</h4>
-                                    <i>Announced 29 October 2015</i>
-                                    <b class="score">9.0</b>
+                            <div ng-hide="showCompareButton">
+                                <div style="margin-top: 265px">
+                                    <autocomplete ng-model="selectedProduct"
+                                                  attr-placeholder="Search product to add..."
+                                                  {{--attr-input-class="form-control"--}}
+                                                  ng-model-options="{debounce: 1000}"
+                                                  data="suggestedItems"
+                                                  on-select="selectedIdem"
+                                                  on-type="searchProductByName">
 
-                                    <div class="star-raiting">
-                                        <span class="stars">(543)</span>
-                                    </div>
-                                    <div class="btn purple-bg price-badge">
-                                        <span>Amazon</span> <b>$375</b>
-                                    </div>
-                                    <a class="btn-none">More Info</a>
+                                    </autocomplete>
                                 </div>
-                                <span class="close-button">✕</span>
+
                             </div>
-                        </div>
-                        <div class="col-sm-3 col-xs-6 comparison-tab">
-                            <div>
-                                <a class="purple add-more">
+
+                            <div ng-show="showCompareButton">
+                                <a class="purple add-more" ng-click="toggleCompareButton()">
                                     <span class="plus">+</span>
                                     <span>Add Product</span>
                                 </a>
                             </div>
                         </div>
 
-                        <button class="arrow arrow-right"></button>
+                        <!-- compare dynamic end -->
+
+                        {{-- <button class="arrow arrow-right"  ng-hide="compareIndex == dataLength-1" ng-click="traverseForward()"></button>--}}
 
                         <div class="crearfix"></div>
 
-                        <h5>Compared (2 products) <a>&#43;</a></h5>
+                        <h5>Compare maximum 3 products </h5>
 
                         <div class="col-sm-3 col-xs-6 comparison-tab table-heads">
                             <h4></h4>
                             <hr>
 
-                            <b>Connections</b>
-                            <b>Original Pricing</b>
-                            <b>Pricing Range</b>
-                            <b>Dimensions</b>
-                            <b>Weight</b>
+                            <b ng-repeat="spec in specList track by $index">@{{ spec }}</b>
+
                         </div>
-                        <div class="col-sm-3 col-xs-6 comparison-tab table-cells">
-                            <h4>Next Project <br>(second generation)</h4>
-                            <hr>
-                            <div class="bordered">
-                                <b>3.5mm stereo</b>
-                                <b>$375.00</b>
-                                <b>$375.00 - $500</b>
-                                <b>8.03 x 14.33</b>
-                                <b>14 lbs</b>
+                        <!-- compare dynamic 2nd part start-->
+                        <div ng-repeat="item in temporaryViewList | limitTo:3">
+                            <div class="col-sm-3 col-xs-6 comparison-tab table-cells">
+                                <h4>@{{ item.data.productInformation.ProductName | limitTo: 65 }} @{{item.data.productInformation.ProductName.length > 65 ? '...' : ''}}</h4>
+
+                                <hr>
+                                <div class="bordered" ng-repeat="spec in item.data.productInformation.Specifications">
+                                    <b>@{{ spec.value }}</b>
+                                </div>
                             </div>
+
                         </div>
-                        <div class="col-sm-3 col-xs-6 comparison-tab table-cells">
-                            <h4>Next Project <br>(second generation)</h4>
-                            <hr>
-                            <div class="bordered">
-                                <b>3.5mm stereo</b>
-                                <b>$375.00</b>
-                                <b>$375.00 - $500</b>
-                                <b>8.03 x 14.33</b>
-                                <b>14 lbs</b>
-                            </div>
-                        </div>
-                        <div class="col-sm-3 col-xs-6 comparison-tab table-cells">
-                            <h4></h4>
-                            <hr>
-                            <div class="bordered">
-                                <b></b>
-                                <b></b>
-                                <b></b>
-                                <b></b>
-                                <b></b>
-                            </div>
-                        </div>
-                        <a href="#" class="view-all grey">View all</a>
+
+                        <!-- compare dynamic 2nd part end -->
+
                     </div>
                 </section>
                 <!-- TODO - use two (three?) columns -->
 
                 <section class="pale-grey-bg reviews" id="reviews">
                     <div class="container full-620 fixed-sm">
-                        <h3 class="pink">Reviews ()
+                        <h3 class="pink">Reviews (
                             @if(isset($productInformation['Review']))
                                 {{count($productInformation['Review']) -1}}
                             @endif
@@ -381,8 +389,8 @@
                         <div class="col-sm-3">
                             <h6 class="grey">Critic Reviews</h6>
                             <b class="score critic-score pink">
-                                @if(isset($productInformation['Review']))
-                                    {{($productInformation['Review'][0]->value /5)*100}} %
+                                @if(isset($productInformation['IdeaingReviewScore']))
+                                    {{($productInformation['IdeaingReviewScore'])*20}} %
                                 @endif
                             </b>
                         </div>
@@ -395,7 +403,8 @@
                                             <td class="name">
                                                 <a href="@if(isset($review->link)){{$review->link}}@endif"
                                                    target="_blank">@if(isset($review->key)){{$review->key}}@endif
-                                                    @if($review->counter > 0)( {{$review->counter}} )@endif
+                                                    @if(isset($review->counter) && ($review->counter > 0))
+                                                        ( {{$review->counter}} )@endif
                                                 </a>
                                             </td>
                                             <td class="line">
@@ -476,9 +485,9 @@
                     <div class="related-products col-xs-12">
                         <h3 class="green">Related Products</h3>
 
-                        <div class="col-sm-4 col-xs-12 grid-box">
-                            @if(isset($relatedProducts))
-                                @foreach( $relatedProducts as $product )
+                        @if(isset($relatedProducts) && ($relatedProducts != null) )
+                            @foreach( $relatedProducts as $product )
+                                <div class="col-sm-4 col-xs-12 grid-box">
                                     <div class="wrap">
                                         <img class="img-responsive" src="{{ $product['Image'] }}">
 
@@ -493,10 +502,9 @@
                                         <a href="#" class="social-pic comment">89</a>
                                     </div>
                                     <time>{{ $product['UpdateTime'] }}</time>
-                                @endforeach
-                            @endif
-
-                        </div>
+                                </div>
+                            @endforeach
+                        @endif
 
 
                     </div>

@@ -18,19 +18,19 @@
             }
 
             if($overlay){
-                $('#overlay').fadeToggle();
+                $('.page-overlay').fadeToggle();
             }
 
             $($show).fadeToggle();
             $that.toggleClass('active');
         });
 
-        $('#overlay, .login-signup-modal').click(function(event){
+        $('.page-overlay, .login-signup-modal').click(function(event){
             if(event.target !== this){ // only fire if the block itself is clicked, not it's children (sometimes we need to hide the modal when anything outside it's main block is clickced
                 return;
             }
 
-            $('.modal, #overlay').fadeOut();
+            $('.modal, .page-overlay').fadeOut();
 
             var $hide = $('[data-overlay="true"]').data('toggle');
 
@@ -65,22 +65,24 @@
 
 
         $('[data-toggle="modal"]').click(function() {
-            $modal = $(this).data('target');
-            $($modal).fadeToggle()
-            $('#overlay').fadeToggle();
-
+            var $modal = $(this).data('target');
+            $($modal).fadeToggle();
+            $('.page-overlay').fadeToggle();
+            //if($modal.hasClass('login-signup-modal')){
+            //    $('.picture-overlay').fadeToggle();
+            //}
         });
 
         $('[data-dismiss="modal"]').click(function() {
-            $modal = $(this).parents('.modal');
+           var $modal = $(this).parents('.modal');
             $modal.fadeOut();
-            $('#overlay').fadeOut();
+            $('.page-overlay').fadeOut();
             return true;
         });
 
         // scroll and stick the share bar
         function sticky_relocate() {
-            if(window.innerWidth < 1300){
+            if(window.innerWidth < 620){
                 return false;
             }
 
@@ -139,10 +141,53 @@
 
         $('#about-button').click(function(){
             $("html, body").animate({ scrollTop: $(document).height() }, "slow");
-        })
+        });
+
+        //$('.main-content-filter a').click(function(event){
+        //    event.preventDefault();
+        //    var $contentBox = $('.main-content');
+        //    var $type = $(this).data('filterby');
+        //
+        //    $contentBox.attr('data-only', $type);
+        //    //
+        //    //$contentBox.removeClass('only-*');
+        //    //$contentBox.addClass('only-' + $type);
+        //});
 
 
 	}); // global function()
 
 })(jQuery, this);
 
+//(function() {
+//
+//    'use strict';
+//
+//    var loadMore = angular.module('loadMore', [])
+//
+//    angular
+//        .module('loadMore')
+//        .factory('content', content);
+//
+//    content();
+//
+//    function content($resource) {
+//
+//        // ngResource call to the API for the users
+//        var Content = $resource('paging/get-content');
+//
+//        // Query the users and return the results
+//        function getContent() {
+//            return Content.query().$promise.then(function(results) {
+//                return results;
+//                console.log(results)
+//            }, function(error) {
+//                console.log(error);
+//            });
+//        }
+//
+//        return {
+//            getUsers: getContent
+//        }
+//    }
+//})();

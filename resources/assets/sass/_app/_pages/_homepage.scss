@@ -1,0 +1,19 @@
+.homepage-grid {
+    position: relative;
+	width: auto;
+	max-width: 1170px;
+  overflow: visible;
+
+   .wrap{
+     min-height: 300px;
+   }
+
+	@media (max-width: 767px) {
+		padding: 0 0;
+	}
+
+	.grid-box-3:first-child {
+		margin-top: -1px;
+	}
+
+}

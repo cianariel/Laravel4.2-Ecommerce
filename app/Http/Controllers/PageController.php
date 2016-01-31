@@ -19,26 +19,103 @@ class PageController extends Controller
      */
     public function home()
     {
-        //URL of targeted site
-        $url = "http://staging.ideaing.com/ideas/feeds/index.php?count=8";
-     //   $url = "http://staging.ideaing.com/ideas/feeds/index.php?count=8";
+        $content = self::getContent();
+
+        return view('home')->with('content', $content);
+    }
+
+    public function getContent($page = 1, $limit = 4, $returnOnly = false){
+
+        if($limit == 'undefined'){
+            $limit = 4;
+        }
+
+        $storyLimit = $limit;
+        $storyOffset = 4 *  ($page - 1);
+
+//        if($returnOnly == 'idea'){
+//            $productLimit = $limit;
+//        }
+
+        $featuredLimit = 3;
+        $featuredOffset = $featuredLimit * ($page - 1);
+
+        if($returnOnly == 'product'){
+            $productLimit  = $limit;
+            $productOffset = $limit *  ($page);
+        }else{
+            $productLimit = $limit + $featuredLimit;
+            $productOffset = $limit *  ($page - 1);
+        }
+//        $productOffset = $limit;
+
+
+
+        if($returnOnly == 'product' || !$stories = self::getStories($storyLimit, $storyOffset, $featuredLimit, $featuredOffset)){
+            $stories = [
+                'regular' => [],
+                'featured' => [],
+            ];
+        }
+
+
+        if($returnOnly == 'idea' || !$products = self::getProducts($productLimit, $page, $productOffset)){
+            $products['result'] = [];
+        }
+
+
+        $return['regular'] = array_merge($stories['regular'], $products['result']);
+        $return['featured'] = $stories['featured'];
+
+        usort($return['regular'], function($a, $b) { return strtotime(@$b->updated_at) - strtotime(@$a->updated_at);});
+
+        return $return;
+    }
+
+    public function getStories($limit, $offset, $featuredLimit, $featuredOffset){
+        $url = 'http://staging.ideaing.com/ideas/feeds/index.php?count='.$limit.'&no-featured&offset='. $offset;
 
         $ch = curl_init();
-
         curl_setopt($ch, CURLOPT_URL, $url);
         curl_setopt($ch, CURLOPT_HEADER, 0);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_ENCODING ,"");
-
         $json = curl_exec($ch);
-        $stories = json_decode($json);
 
+        $return['regular'] = json_decode($json);
+
+        $featuredUrl = 'http://staging.ideaing.com/ideas/feeds/index.php?count='.$featuredLimit.'&only-featured&offset='. $featuredOffset;
+
+        curl_setopt($ch, CURLOPT_URL, $featuredUrl);
+        $json = curl_exec($ch);
         curl_close($ch);
 
-//        print_r($stories); die();
-        // return $data;
-        return view('home')->with('stories', $stories);// $data->parseFeed(true,2);
+        $return['featured'] = json_decode($json);
+
+        return $return;
     }
+
+    public function getProducts($limit, $page, $offset){
+        $productSettings = [
+            'ActiveItem' => true,
+            'limit'      => $limit,
+            'page'       => $page,
+            'CustomSkip' => $offset,
+
+            'CategoryId' => false,
+            'FilterType' => false,
+            'FilterText' => false,
+            'ShowFor'    => false,
+            'WithTags'   => false,
+        ];
+
+        $prod = new Product();
+
+        $products = $prod->getProductList($productSettings);
+
+        return $products;
+    }
+
 
     public function productDetailsPage($permalink)
     {
@@ -58,7 +135,9 @@ class PageController extends Controller
             ->with('permalink',$permalink)
             ->with('productInformation',$result['productInformation'])
             ->with('relatedProducts',$result['relatedProducts'])
-            ->with('selfImages',$result['selfImages']);
+            ->with('selfImages',$result['selfImages'])
+            ->with('storeInformation',$result['storeInformation']);
+
 
     }
 

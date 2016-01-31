@@ -89,6 +89,14 @@
 
                                 </div>
                             </div>
+                            <div>
+                                <ui-tree ng-model="assets"
+                                         load-fn="loadChildren"
+                                         expand-to="hierarchy"
+                                         selected-id="111"
+                                         attr-node-id="id"></ui-tree>
+                                <div>selected: @{{ selected.category }} id: @{{ selected.id }}</div>
+                            </div>
                             <div class="row">
                                 <div class="col-lg-10">
                                     <div class="form-group" style="margin-top:50px;">

@@ -3,6 +3,11 @@
     namespace App\Models;
 
     use Illuminate\Database\Eloquent\Model;
+    use Illuminate\Contracts\Filesystem\Factory;
+    use Storage;
+
+    // use Illuminate\Http\Request;
+
 
     class Media extends Model {
 
@@ -18,11 +23,12 @@
             'media_type',
             'media_link',
             'is_hero_item',
+            'is_main_item',
             'mediable_id',
             'mediable_type'
         );
 
-        protected $hidden = ['mediable_id','mediable_type','created_at', 'updated_at'];
+        protected $hidden = ['mediable_id', 'mediable_type', 'created_at', 'updated_at'];
 
 
         /**
@@ -36,5 +42,44 @@
         {
             return $this->morphTo();
         }
+
+        /**
+         * @param Request $request
+         * @return array
+         */
+
+        /**
+         * @param $id
+         */
+        public function deleteMediaItem($id)
+        {
+            //$id = 213;
+            $mediaItem = Media::where('id', '=', $id)->first();
+
+            //delete entry from database
+            Media::where('id', $id)->delete();
+
+            try
+            {
+                if (($mediaItem['media_type'] == 'img-upload') || ($mediaItem['media_type'] == 'video-upload'))
+                {
+                    // delete file from S3
+                    $strReplace = \Config::get("const.file.s3-path");// "http://s3-us-west-1.amazonaws.com/ideaing-01/";
+                    $file = str_replace($strReplace, '', $mediaItem['media_link']);
+                    $s3 = Storage::disk('s3');
+                    $s3->delete($file);
+
+                    if ($mediaItem['media_type'] == 'img-upload')
+                    {
+                        $file = 'thumb-' . $file;
+                        $s3->delete($file);
+                    }
+                }
+            } catch (\Exception $ex)
+            {
+                return;
+            }
+        }
+
 
     }
