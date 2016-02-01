@@ -4505,7 +4505,9 @@ a.all-link {
 a.box-link {
   padding: 3px 4px;
   margin: 12px 6px;
-  border: 2px solid #FF7F00;
+  color: #999999 !important;
+  font-size: 13px;
+  /*    border: 2px solid $dark-orange;*/
   border-radius: 4px;
   text-align: center; }
 
@@ -4565,7 +4567,7 @@ a.get-round {
   height: 60px;
   float: left;
   padding-top: 23px;
-  margin-top: -15px;
+  margin-top: -10px;
   border-radius: 50%;
   font-size: 1.1rem;
   font-weight: bold;
@@ -5069,8 +5071,9 @@ body.product-details #hero {
   z-index: 2; }
   .slider-side-block .top {
     width: 100%;
-    height: 85px;
+    /*    height: 85px;*/
     padding: 12px 35px 35px;
+    padding-top: 25px;
     background-color: rgba(0, 0, 0, 0.65);
     border-radius: 5px 0 0 0; }
   .slider-side-block .price {
@@ -5998,7 +6001,9 @@ body.product-details .story-header .social-rounds {
   width: 190px; }
 
 body.product-details .article-content p {
-  line-height: 1; }
+  /*      line-height: 1;*/
+  font-size: 15px;
+  font-family: montserratlight; }
 
 .story-header {
   position: fixed;
@@ -6085,6 +6090,15 @@ body.product-details .article-content p {
     overflow: visible;
     float: none;
     margin: 0 auto; }
+  .mid-nav .horizontal-line-holder:last-child {
+    display: none; }
+  .mid-nav .horizontal-line {
+    width: 40px;
+    height: 0px;
+    border: 1px solid #dddedf;
+    display: inline-block;
+    float: left;
+    margin-top: 24px; }
   .mid-nav a, .mid-nav .extra-nav a {
     margin-top: 11px;
     margin-bottom: 11px;
@@ -6108,9 +6122,11 @@ body.product-details .article-content p {
         box-shadow: none; }
     .mid-nav a.box-link {
       margin: 15px 6px 13px;
-      font-size: .8rem; }
+      font-size: 13px;
+      font-weight: bold;
+      position: relative; }
       .mid-nav a.box-link:hover {
-        background: #FF7F00;
+        background: #ed2049;
         color: #fff !important;
         box-shadow: none; }
     .mid-nav a:hover {
@@ -6759,7 +6775,8 @@ body.single .like-nav {
   height: 100px;
   padding-top: 10px;
   margin-top: 5px;
-  background: #00B1FF url("/assets/images/icons/logo-lamp-white.png") 10px 15px no-repeat;
+  background: url("/assets/images/icons/logo-lamp-white.png") 10px 15px no-repeat;
+  background-color: #FF0042;
   border-radius: 10px;
   text-align: center;
   color: #fff; }
@@ -7843,8 +7860,6 @@ footer.about-footer {
   padding-bottom: 20px; }
   .reviews-medium-container .average-ideaing-line {
     padding: 50px 0px 0px; }
-  .reviews-medium-container .average-score {
-    background-color: #ff0042; }
   .reviews-medium-container .average-ideaing-line > img {
     width: 50%;
     height: 76px; }

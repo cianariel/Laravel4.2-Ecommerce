@@ -353,7 +353,9 @@ a{ // Custom Link Styles
   &.box-link{
     padding: 3px 4px;
     margin: 12px 6px;
-    border: 2px solid $dark-orange;
+    color: $grey !important;
+    font-size: 13px;
+/*    border: 2px solid $dark-orange;*/
     border-radius: 4px;
     text-align: center;
   }
@@ -424,7 +426,7 @@ a{ // Custom Link Styles
     height: 60px;
     float: left;
     padding-top: 23px;
-    margin-top: -15px;
+    margin-top: -10px;
 
     border-radius: 50%;
     font-size: 1.1rem;
@@ -1102,8 +1104,9 @@ body.product-details{
 
   .top{
     width: 100%;
-    height: 85px;
+/*    height: 85px;*/
     padding: 12px 35px 35px;
+    padding-top:25px;
     background-color: rgba(0,0,0,.65);
     border-radius:5px 0 0 0;
 
@@ -2616,7 +2619,9 @@ body.product-details{
 
   .article-content{
     p{
-      line-height: 1;
+/*      line-height: 1;*/
+      font-size: 15px;
+      font-family: montserratlight;
     }
   }
 
@@ -2777,6 +2782,21 @@ body.product-details{
     margin: 0 auto;
     //overflow: hidden;
   }
+  
+  .horizontal-line-holder:last-child{
+      display: none;
+  }
+  
+  .horizontal-line{
+      width:40px;
+      height:0px;
+      border: 1px solid #dddedf;
+      display: inline-block;
+      float:left;
+      margin-top: 24px;
+      
+  }
+  
   a{
     //margin: 15px 30px;
     margin-top: 11px;
@@ -2817,11 +2837,12 @@ body.product-details{
       margin: 15px 6px 13px;
       //border: 2px solid $dark-orange;
       //border-radius: 4px;
-      font-size: .8rem;
-
+      font-size: 13px;
+      font-weight: bold ;
+      position: relative;
 
       &:hover{
-        background: $dark-orange;
+        background: #ed2049;
         color: #fff !important;
         box-shadow:none;
       }
@@ -3884,7 +3905,8 @@ body.single{
   height: 100px;
   padding-top: 10px;
   margin-top: 5px;
-  background: $sky-blue url('/assets/images/icons/logo-lamp-white.png') 10px 15px no-repeat;
+  background: url('/assets/images/icons/logo-lamp-white.png') 10px 15px no-repeat;
+  background-color: $iridium;
   border-radius: 10px;
   text-align: center;
   color:#fff;
@@ -3902,7 +3924,6 @@ body.single{
     width: 100%;
     border-top: 1px solid #fff;
   }
-
 }
 
 .comparison{
@@ -5837,7 +5858,7 @@ footer.about-footer{
     padding-top: 12px;
     text-align: left;
     padding-left: 10px;
-
+    
     img{
         width: 50px;
         line-height: 189px;
@@ -5853,12 +5874,9 @@ footer.about-footer{
     width: 630px;
     margin: auto;
     padding-bottom: 20px;
-
+    
     .average-ideaing-line{
         padding: 50px 0px 0px;
-    }
-    .average-score{
-        background-color: #ff0042;
     }
     .average-ideaing-line > img{
         width: 50%;
@@ -5883,7 +5901,7 @@ footer.about-footer{
     .outer-line{
         position: relative;
         margin-top: 55px;
-
+        
         .line-label{
             position: absolute;
             left:-170px;
@@ -5900,7 +5918,7 @@ footer.about-footer{
             color: black;
         }
     }
-
+    
     &.amazon{
         .amazon-value{
             font-size: 35px;
@@ -5967,5 +5985,5 @@ footer.about-footer{
       right: 0px;
       font-size: 16px;
   }
-
+    
 }
