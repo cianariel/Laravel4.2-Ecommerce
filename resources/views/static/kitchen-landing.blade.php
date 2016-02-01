@@ -38,77 +38,152 @@
             </ul>
         </div>
     </nav>
-
-    <section id="hero" class="room-hero">
-        <div class="hero-background" style="background-image: url('/assets/images/room-landing-hero.jpg')"></div>
-        {{--<div class="color-overlay"></div>--}}
-
-        <div class="container hero-container fixed-sm full-480">
-            <div class="hero-tags">
-                <div class="tag one red" >
-                    <span></span>
-                    <a class="pink-border" href="#">
-                        <img src="/assets/images/dummies/box-image-dummy.png" class="round" alt="" />
-                    </a>
-                   <div class="hover-box">
-                       <h6>Glow Lamps (Multi-colored)</h6>
-                       <div>
-                           Get it from $560
-                           <img class="vendor-logo" src="/assets/images/dummies/amazon-black.png">
-                       </div>
-                   </div>
+<script>
+jQuery(document).ready(function($) {
+  $('#hero').royalSlider({
+    arrowsNav: true,
+    loop: false,
+    keyboardNavEnabled: true,
+    controlsInside: false,
+    imageScaleMode: 'fit',
+    arrowsNavAutoHide: false,
+    controlNavigation: 'bullets',
+    thumbsFitInViewport: false,
+    navigateByClick: true,
+    startSlideId: 0,
+    autoPlay: false,
+    transitionType:'move',
+    globalCaption: false,
+    deeplinking: {
+      enabled: true,
+      change: false
+    },
+    /* size of all images http://help.dimsemenov.com/kb/royalslider-jquery-plugin-faq/adding-width-and-height-properties-to-images */
+    imgWidth: "100%",
+  });
+});
+</script>
+        <div id="hero" class="royalSlider heroSlider rsMinW room-hero">
+        @if(isset($roomInformation['images']))
+            @foreach( $roomInformation['images'] as $image )
+            <div class="rsContent">
+                @if(isset($roomInformation['images']))
+                <div class="container-fluid fixed-sm full-480">
+                    <div class="hero-tags">
+                        @foreach($image['Image_Products'] as $i_products)
+                        <div class="tag {{$i_products->product_color}}" style="left:{{$i_products->x}}%;top:{{$i_products->y}}%" >
+                            <span></span>
+                            <a class="{{$i_products->product_color}}-border" href="#">
+                                <img src="{{$i_products->media_link}}" class="round" alt="" />
+                            </a>
+                           <div class="hover-box">
+                               <h6>{{$i_products->product_name}}</h6>
+                               <div>
+                                   Get it from {{$i_products->price}}
+                                   <img class="vendor-logo" src="/assets/images/dummies/amazon-black.png">
+                               </div>
+                           </div>
+                        </div>
+                        @endforeach
+                    </div>
+                    <section class="hero-related-products col-md-4 pull-right hidden-620">
+                        <h5 data-toggle="#related-list">Related Products</h5>
+                        <ul id="related-list" class="hidden-soft">
+                            @foreach($image['Image_Products'] as $i_products)
+                            <li class="{{$i_products->product_color}}"><a class="{{$i_products->product_color}}-border" href="#"><img src="{{$i_products->media_link}}" class="round" alt="" /> {{$i_products->product_name}}</a> <a href="#" class="get solid pull-right">Get it</a></li>
+                            @endforeach
+                        </ul>
+                    </section>
                 </div>
-                <div class="tag two blue">
-                    <span ></span>
-                    <a class="pink-border" href="#">
-                        <img src="/assets/images/dummies/box-image-dummy.png" class="round" alt="" />
-                    </a>
-                   <div class="hover-box">
-                       <h6>Glow Lamps (Multi-colored)</h6>
-                       <div>
-                           Get it from $560
-                           <img class="vendor-logo" src="/assets/images/dummies/amazon-black.png">
-                       </div>
-                   </div>
-                </div>
-                <div class="tag three green">
-                    <span></span>
-                    <a class="pink-border" href="#">
-                        <img src="/assets/images/dummies/box-image-dummy.png" class="round" alt="" />
-                    </a>
-                   <div class="hover-box">
-                       <h6>Glow Lamps (Multi-colored)</h6>
-                       <div>
-                           Get it from $560
-                           <img class="vendor-logo" src="/assets/images/dummies/amazon-black.png">
-                       </div>
-                   </div>
-                </div>
-                {{--<div class="tag four">--}}
-                    {{--<span class="blue"></span>--}}
-                    {{--<a class="pink-border" href="#">--}}
-                        {{--<img src="/assets/images/dummies/box-image-dummy.png" class="round" alt="" />--}}
-                    {{--</a>--}}
-                   {{--<div class="hover-box">--}}
-                       {{--<h6>Glow Lamps (Multi-colored)</h6>--}}
-                       {{--Get it from $560--}}
-                       {{--<img class="vendor-logo" src="/assets/images/dummies/amazon-2.png">--}}
-                   {{--</div>--}}
-                {{--</div>--}}
+                @endif
+            <img class="rsImg" src="/assets/images/room-landing-hero.jpg" alt="{{$image['Image_alt']}}">
             </div>
-            <section class="hero-related-products col-md-4 pull-right hidden-620">
-                    <h5 data-toggle="#related-list">Related Products</h5>
-                <ul id="related-list" class="hidden-soft">
-                    <li class="pink"><a class="pink-border" href="#"><img src="/assets/images/dummies/box-image-dummy.png" class="round" alt="" /> Steam pot</a> <a href="#" class="get solid pull-right">Get it</a></li>
-                    <li class="red"><a class="red-border" href="#"><img src="/assets/images/dummies/box-image-dummy.png" class="round" alt="" /> Steam pot</a> <a href="#" class="get solid pull-right">Get it</a></li>
-                    <li class="blue"><a class="blue-border" href="#"><img src="/assets/images/dummies/box-image-dummy.png" class="round" alt="" /> Steam pot</a> <a href="#" class="get solid pull-right">Get it</a></li>
-                    <li class="orange"><a class="orange-border" href="#"><img src="/assets/images/dummies/box-image-dummy.png" class="round" alt="" /> Steam pot</a> <a href="#" class="get solid pull-right">Get it</a></li>
-                    <li class="green"><a class="green-border" href="#"><img src="/assets/images/dummies/box-image-dummy.png" class="round" alt="" /> Steam pot</a> <a href="#" class="get solid pull-right">Get it</a></li>
-                    <li class="yellow"><a class="yellow-border" href="#"><img src="/assets/images/dummies/box-image-dummy.png" class="round" alt="" /> Steam pot</a> <a href="#" class="get solid pull-right">Get it</a></li>
-                </ul>
-            </section>
+            @endforeach
+        @endif
+          <div class="rsContent">
+            <div class="container fixed-sm full-480">
+                <div class="hero-tags">
+                    <div class="tag one red" >
+                        <span></span>
+                        <a class="pink-border" href="#">
+                            <img src="/assets/images/dummies/box-image-dummy.png" class="round" alt="" />
+                        </a>
+                       <div class="hover-box">
+                           <h6>Glow Lamps (Multi-colored)</h6>
+                           <div>
+                               Get it from $560
+                               <img class="vendor-logo" src="/assets/images/dummies/amazon-black.png">
+                           </div>
+                       </div>
+                    </div>
+                    <div class="tag two blue">
+                        <span ></span>
+                        <a class="pink-border" href="#">
+                            <img src="/assets/images/dummies/box-image-dummy.png" class="round" alt="" />
+                        </a>
+                       <div class="hover-box">
+                           <h6>Glow Lamps (Multi-colored)</h6>
+                           <div>
+                               Get it from $560
+                               <img class="vendor-logo" src="/assets/images/dummies/amazon-black.png">
+                           </div>
+                       </div>
+                    </div>
+                    <div class="tag three green">
+                        <span></span>
+                        <a class="pink-border" href="#">
+                            <img src="/assets/images/dummies/box-image-dummy.png" class="round" alt="" />
+                        </a>
+                       <div class="hover-box">
+                           <h6>Glow Lamps (Multi-colored)</h6>
+                           <div>
+                               Get it from $560
+                               <img class="vendor-logo" src="/assets/images/dummies/amazon-black.png">
+                           </div>
+                       </div>
+                    </div>
+                    {{--<div class="tag four">--}}
+                        {{--<span class="blue"></span>--}}
+                        {{--<a class="pink-border" href="#">--}}
+                            {{--<img src="/assets/images/dummies/box-image-dummy.png" class="round" alt="" />--}}
+                        {{--</a>--}}
+                       {{--<div class="hover-box">--}}
+                           {{--<h6>Glow Lamps (Multi-colored)</h6>--}}
+                           {{--Get it from $560--}}
+                           {{--<img class="vendor-logo" src="/assets/images/dummies/amazon-2.png">--}}
+                       {{--</div>--}}
+                    {{--</div>--}}
+                </div>
+                <section class="hero-related-products col-md-4 pull-right hidden-620">
+                        <h5 data-toggle="#related-list">Related Products</h5>
+                    <ul id="related-list" class="hidden-soft">
+                        <li class="pink"><a class="pink-border" href="#"><img src="/assets/images/dummies/box-image-dummy.png" class="round" alt="" /> Steam pot</a> <a href="#" class="get solid pull-right">Get it</a></li>
+                        <li class="red"><a class="red-border" href="#"><img src="/assets/images/dummies/box-image-dummy.png" class="round" alt="" /> Steam pot</a> <a href="#" class="get solid pull-right">Get it</a></li>
+                        <li class="blue"><a class="blue-border" href="#"><img src="/assets/images/dummies/box-image-dummy.png" class="round" alt="" /> Steam pot</a> <a href="#" class="get solid pull-right">Get it</a></li>
+                        <li class="orange"><a class="orange-border" href="#"><img src="/assets/images/dummies/box-image-dummy.png" class="round" alt="" /> Steam pot</a> <a href="#" class="get solid pull-right">Get it</a></li>
+                        <li class="green"><a class="green-border" href="#"><img src="/assets/images/dummies/box-image-dummy.png" class="round" alt="" /> Steam pot</a> <a href="#" class="get solid pull-right">Get it</a></li>
+                        <li class="yellow"><a class="yellow-border" href="#"><img src="/assets/images/dummies/box-image-dummy.png" class="round" alt="" /> Steam pot</a> <a href="#" class="get solid pull-right">Get it</a></li>
+                    </ul>
+                </section>
+            </div>
+            <img class="rsImg" src="/assets/images/room-landing-hero.jpg" alt="">
+          </div>
+          <div class="rsContent">
+            <img class="rsImg" src="/assets/images/room-landing-hero.jpg" alt="">
+            <div class="infoBlock infoBlockLeftBlack rsABlock" data-fade-effect="" data-move-offset="10" data-move-effect="bottom" data-speed="200">
+              <h4>This is an animated block, add any number of them to any type of slide</h4>
+              <p>Put completely anything inside - text, images, inputs, links, buttons.</p>
+            </div>
+          </div>
+          <div class="rsContent">
+            <img class="rsImg" src="/assets/images/room-landing-hero.jpg" alt="">
+            <div class="infoBlock infoBlockLeftBlack rsABlock" data-fade-effect="" data-move-offset="10" data-move-effect="bottom" data-speed="200">
+              <h4>This is an animated block, add any number of them to any type of slide</h4>
+              <p>Put completely anything inside - text, images, inputs, links, buttons.</p>
+            </div>
+          </div>
         </div>
-    </section>
+
 
     <nav id="hero-nav" class="col-sm-12">
         <div class="container full-620  fixed-sm">
@@ -297,14 +372,14 @@
                     <li>For the Decorator</li>
                     <li>Stocking Suffers</li>
                 </ul>
-
-
-
-
-
             </aside>
         </div>
 
     </main>
-
+<style>
+#full-width-slider {
+  width: 100%;
+  color: #000;
+}
+</style>
 @stop
