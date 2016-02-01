@@ -25,9 +25,10 @@ class PageController extends Controller
         return view('home')->with('content', $content);
     }
 
-    public function getContent($page = 1, $limit = 5, $returnOnly = false){
+    public function getContent($page = 1, $limit = 5, $returnOnly = false, $offset = false){
 
-        if($limit == 'undefined' || $limit == 0){
+
+        if((!$offset || $offset == 'undefined') && ($limit == 'undefined' || $limit == 0)){
 //            $limit = 5;
             $productLimit = 6;
             $productOffset = 6 * ($page - 1);
@@ -37,10 +38,16 @@ class PageController extends Controller
 
         }else{
             $productLimit = $limit + 2;
-            $productOffset = $limit *  ($page - 1);
-
             $storyLimit = $limit;
-            $storyOffset = 4 *  ($page - 1);
+
+            if($offset){
+                $productOffset = $offset *  ($page - 1);
+                $storyOffset = $offset *  ($page - 1);
+            }else{
+                $productOffset = $limit *  ($page - 1);
+                $storyOffset = 4 *  ($page - 1);
+            }
+
         }
 
 

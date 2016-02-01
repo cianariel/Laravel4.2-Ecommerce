@@ -21,11 +21,9 @@ angular.module('pagingApp.controllers', []).
                 $scope.filterBy = null;
             }else{
                 var $limit = 9;
-                console.log($scope.filterBy)
             }
 
             //console.log($scope.currentPage)
-            console.log($limit)
 
             $scope.nextLoad =  pagaingApi.getContent($scope.currentPage, $limit, $scope.filterBy).success(function (response) {
                 $scope.newStuff[0] = $scope.sliceToRows(response['regular'], response['featured']);
@@ -83,8 +81,12 @@ angular.module('pagingApp.controllers', []).
 
                 $scope.filterBy = $criterion;
                 var $replacer = [];
-                var $i = 0;
+                var $i = 1;
+                console.log( '$scope.allContent')
                 console.log( $scope.allContent)
+                console.log( '$scope.content')
+                console.log( $scope.content)
+
                 $scope.allContent.forEach(function(batch) {
 
                     $scope.filtered = [];
@@ -100,21 +102,25 @@ angular.module('pagingApp.controllers', []).
                     if($scope.filtered['regular'].length < 9){
                         var $diff = 9 - $scope.filtered['regular'].length;
 
-                        $scope.nextLoad = pagaingApi.getContent($scope.currentPage, $diff, $criterion, $scope.filtered['regular'].length).success(function (response) {
+                        $scope.nextLoad = pagaingApi.getContent($i, $diff, $criterion, $scope.filtered['regular'].length).success(function (response) {
                             $scope.filtered['regular'] =  $scope.filtered['regular'].concat(response['regular']);
                             if($criterion == null && $criterion == 'idea' && $scope.filtered['featured'] == []){
                                 $scope.filtered['featured'] = response['featured'];
                             }
                             $replacer[$i] = $scope.sliceToRows($scope.filtered['regular'], $scope.filtered['featured']);
-                            $scope.content = $replacer;
 
+                            console.log('$scope.content')
                             console.log($scope.content)
+                            console.log('$replacer')
                             console.log($replacer)
 
                             $i++;
                         });
                     }
                 }, this);
+
+                $scope.content = $replacer;
+
 
                 function checkByCriterion(value){
                     return value.type == $criterion;
