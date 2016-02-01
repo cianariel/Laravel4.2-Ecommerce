@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 //use FeedParser;
 use MetaTag;
 use App\Models\Product;
+use App\Models\Room;
 
 class PageController extends Controller
 {
@@ -137,6 +138,33 @@ class PageController extends Controller
             ->with('relatedProducts',$result['relatedProducts'])
             ->with('selfImages',$result['selfImages'])
             ->with('storeInformation',$result['storeInformation']);
+
+
+    }
+    public function getRoomPage($permalink)
+    {
+        $room = new Room();
+        $roomData['room'] = $room->getViewForPublic($permalink);
+        $result = $room->roomDetailsViewGenerate($roomData);
+        MetaTag::set('title',$result['roomInformation']['MetaTitle']);
+        MetaTag::set('description',$result['roomInformation']['MetaDescription']);
+        //return $result;
+        return view('static.kitchen-landing')->with('roomInformation',$result['roomInformation']);
+        // Get category tree
+        /*$catTree = $product->getCategoryHierarchy($productData['product']->product_category_id);
+
+        $result = $product->productDetailsViewGenerate($productData, $catTree);
+
+        MetaTag::set('title',$result['productInformation']['PageTitle']);
+        MetaTag::set('description',$result['productInformation']['MetaDescription']);
+
+     //   dd($result['selfImages']['picture'][0]['link']);
+        return view('product.product-details')
+            ->with('permalink',$permalink)
+            ->with('productInformation',$result['productInformation'])
+            ->with('relatedProducts',$result['relatedProducts'])
+            ->with('selfImages',$result['selfImages'])
+            ->with('storeInformation',$result['storeInformation']);*/
 
 
     }

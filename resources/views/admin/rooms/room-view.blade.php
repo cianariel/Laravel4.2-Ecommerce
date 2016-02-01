@@ -65,6 +65,7 @@
                                     <td>{{$room->room_name }}</td>
                                     <td>{{$room->room_permalink}} </td>
                                     <td><a href="/admin/room-edit/{{$room->id}}" class="btn btn-sm btn-default blue btn-editable"><i class="fa fa-pencil"></i> Edit</a>
+                                    <a href="/room/{{$room->room_permalink}}" class="btn btn-sm btn-default blue btn-editable"> View</a>
                                     <button class="btn btn-sm btn-danger btn-editable" data-roomid="{{$room->id}}" id="btn_delete_room" data-dismiss="modal"><i class="fa fa-close"></i> Delete</button></td>
                                 </tr>
                                 @endforeach
