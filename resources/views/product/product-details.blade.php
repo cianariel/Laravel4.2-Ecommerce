@@ -9,26 +9,33 @@
     <div ng-app="productApp" data-ng-controller="productController" ng-cloak>
         <nav class="mid-nav hidden-620">
             <div class="container">
-                <ul class="left-nav breadcrumbs hidden-620">
-                    <!--                    <li><a class="home-link" href="#">Home</a></li>-->
-                    {{--<li class="active"><a href="#" class="larger-text allcaps orange">Ideas</a></li>--}}
-                    {{--<li><a href="#" class="orange box-link">Kitchen</a></li>--}}
-                    {{--<li><a href="#" class="orange box-link">Style</a></li>--}}
+                <div class="col-sm-8 col-sm-offset-2">
+                    <ul class="left-nav breadcrumbs hidden-620">
+                        <!--                    <li><a class="home-link" href="#">Home</a></li>-->
+                        {{--<li class="active"><a href="#" class="larger-text allcaps orange">Ideas</a></li>--}}
+                        {{--<li><a href="#" class="orange box-link">Kitchen</a></li>--}}
+                        {{--<li><a href="#" class="orange box-link">Style</a></li>--}}
 
-                    @if(isset($productInformation['CatTree']))
-                        @foreach( $productInformation['CatTree'] as $category )
-                            <li>
-                                <a class="orange box-link"
-                                   href="/category/@if(isset($category['CategoryPermalink'])){{$category['CategoryPermalink']}}@endif"
-                                   @if($category == end($productInformation['CatTree']))class="current"
-                                        @endif>
-                                    @if(isset($category['CategoryName']))
-                                        {{$category['CategoryName']}}
-                                    @endif</a>
-                            </li>
-                        @endforeach
-                    @endif
-                </ul>
+                        @if(isset($productInformation['CatTree']))
+                            @foreach( $productInformation['CatTree'] as $category )
+                                <li>
+                                    <a class="box-link"
+                                       href="/category/@if(isset($category['CategoryPermalink'])){{$category['CategoryPermalink']}}@endif"
+                                       @if($category == end($productInformation['CatTree']))class="current"
+                                            @endif>
+                                        @if(isset($category['CategoryName']))
+                                            {{$category['CategoryName']}}
+                                        @endif
+
+                                    </a>
+                                </li>
+                                <li class="horizontal-line-holder hidden-xs hidden-sm">
+                                    <span class="horizontal-line"></span>
+                                </li>
+                            @endforeach
+                        @endif
+                    </ul>
+                </div>
             </div>
         </nav>
         <header class="story-header hidden-620 hidden-soft">
@@ -39,7 +46,7 @@
                 @if(isset($productInformation['ProductName']))
                     {{$productInformation['ProductName']}}
                 @endif
-                <a class="like-counter" href="#"><span></span><b>1819</b></a>
+                <a class="like-counter" href="#"><i class="m-icon m-icon--heart"></i>&nbsp;<b>1819</b></a>
             </h1>
 
             <ul class="share-buttons short hidden-xs col-lg-6 col-sm-8 pull-right">
@@ -77,19 +84,22 @@
                 {{----}}
                 {{--</ul>--}}
                 {{--</nav>--}}
-
-                <div class="average-score">
-                    <div class="score">@if(isset($productInformation['Review']) && isset($productInformation['IdeaingReviewScore']))
-                            {{intval((($productInformation['Review'][0]->value + $productInformation['IdeaingReviewScore'])/2)*20)}}@endif%
+                <div class="col-sm-3">
+                    <div class="average-score">
+                        <div class="score">@if(isset($productInformation['Review']) && isset($productInformation['IdeaingReviewScore']))
+                                {{intval((($productInformation['Review'][0]->value + $productInformation['IdeaingReviewScore'])/2)*20)}}@endif%
+                        </div>
+                        <span class="caption">Average Ideaing Score</span>
                     </div>
-                    <span class="caption">Average Ideaing Score</span>
+                </div>
+                <div class="col-sm-9">
+                    <h1>
+                        @if(isset($productInformation['ProductName']))
+                            {{$productInformation['ProductName']}}
+                        @endif
+                    </h1>
                 </div>
 
-                <h1>
-                    @if(isset($productInformation['ProductName']))
-                        {{$productInformation['ProductName']}}
-                    @endif
-                </h1>
 
                 <nav class="top-product-controls">
                     <ul>
@@ -192,9 +202,6 @@
                     <div class="slider-side-block">
 
                         <div class="top">
-                            <div style="color: white; text-align: center;">@if(isset($productInformation['Available']))
-                                    {{$productInformation['Available']}}
-                                @endif</div>
                             <a class="get-round" href="@if(isset($productInformation['AffiliateLink']))
                             {{$productInformation['AffiliateLink']}}
                             @endif" target="_blank">
@@ -205,6 +212,10 @@
                             <b class="price">$ @if(isset($productInformation['SellPrice']))
                                     {{$productInformation['SellPrice']}}
                                 @endif</b>
+                            <div style="color: white; text-align: center;">@if(isset($productInformation['Available']))
+                                    {{$productInformation['Available']}}
+                                @endif
+                            </div>
                         </div>
                         <div class="table">
                             <ul>
@@ -298,7 +309,7 @@
                                          alt="@{{ item.data.selfImages.mainImageName}}"/>
 
                                     <div class="tab-wrap">
-                                        <h4>@{{ item.data.productInformation.ProductName | limitTo: 50 }} @{{item.data.productInformation.ProductName.length > 50 ? '...' : ''}}</h4>
+                                        <h4 style="height: 35px;overflow: hidden;">@{{ item.data.productInformation.ProductName | limitTo: 50 }} @{{item.data.productInformation.ProductName.length > 50 ? '...' : ''}}</h4>
 
                                         {{--<i>@{{ item.data.productInformation.Available }}</i>--}}
                                         <b class="score">@{{ item.data.productInformation.Review[1].value }}</b>
@@ -362,7 +373,7 @@
                         <!-- compare dynamic 2nd part start-->
                         <div ng-repeat="item in temporaryViewList | limitTo:3">
                             <div class="col-sm-3 col-xs-6 comparison-tab table-cells">
-                                <h4>@{{ item.data.productInformation.ProductName | limitTo: 65 }} @{{item.data.productInformation.ProductName.length > 65 ? '...' : ''}}</h4>
+                                <h4 style="height: 35px;overflow: hidden;">@{{ item.data.productInformation.ProductName | limitTo: 65 }} @{{item.data.productInformation.ProductName.length > 65 ? '...' : ''}}</h4>
 
                                 <hr>
                                 <div class="bordered" ng-repeat="spec in item.data.productInformation.Specifications">
@@ -565,26 +576,41 @@
 
             <section class="related-items pale-grey-bg">
                 <div class="container full-620 fixed-sm">
-                    <div class="related-products col-xs-12">
-                        <h3 class="green">Related Products</h3>
+                    <h3 class="green">Related Products</h3>
+                    <div class="related-products grid-box-3">
+                        
 
                         @if(isset($relatedProducts) && ($relatedProducts != null) )
                             @foreach( $relatedProducts as $product )
-                                <div class="col-sm-4 col-xs-12 grid-box">
-                                    <div class="wrap">
-                                        <img class="img-responsive" src="{{ $product['Image'] }}">
-
-                                        <div class="color-overlay">
-                                            <h4>{{ $product['Name'] }}
-                                                <a href="{{ $product['Permalink'] }}" class="get solid">Get it</a>
-                                            </h4>
-                                        </div>
+                                <div class="box-item product-box ">
+                                    <img class="img-responsive" src="{{ $product['Image'] }}">
+                                    <span class="box-item__time ng-binding">{{ $product['UpdateTime'] }}</span>
+                                    <div class="box-item__overlay"></div>
+                                    <ul class="social-stats">
+                                        <li class="social-stats__item">
+                                            <a href="#">
+                                                <i class="m-icon m-icon--heart"></i>
+                                                <span class="social-stats__text">157</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                    <div class="round-tag round-tag--product">
+                                        <i class="m-icon m-icon--item"></i>
+                                        <span class="round-tag__label">Product</span>
                                     </div>
-                                    <div class="like-wrap">
-                                        <a href="#" class="social-pic likes">157</a>
-                                        <a href="#" class="social-pic comment">89</a>
+                                    <div class="box-item__label-prod">
+                                        <a href="{{$product['Permalink']}}" class="box-item__label box-item__label--clear ">{{ $product['Name'] }}</a>
+                                        <div class="clearfix"></div>
+<!--                                        <div class="merchant-widget">-->
+<!--                                            <span class="merchant-widget__price ">$1200</span>-->
+<!--                                            <span>from</span>-->
+<!--                                            <img class="merchant-widget__store" src="/assets/images/dummies/amazon-black.png">-->
+<!--                                        </div>-->
+                                        <div class="clearfix"></div>
+                                        <a target="_blank" href="{{ $product['Permalink'] }}" class="box-item__get-it">Get it</a>
                                     </div>
-                                    <time>{{ $product['UpdateTime'] }}</time>
+                                    
+                                    
                                 </div>
                             @endforeach
                         @endif
@@ -594,49 +620,45 @@
 
                     <div class="related-ideas col-xs-12">
                         <h3 class="orange">Related Ideas</h3>
-
-                        <div class="col-sm-4 col-xs-12 grid-box">
-                            <div class="wrap">
-                                <img class="img-responsive" src="/assets/images/dummies/box-image-dummy.png">
-
-                                <div class="color-overlay">
-                                    <h4>Mr Coffee smart</h4>
+                        <div class="grid-box-3">
+                            @for($i=0; $i<3; $i++)
+                                <div class="box-item idea-box ">
+                                    <img class="img-responsive" src="/assets/images/dummies/box-image-dummy.png">
+                                    <span class="box-item__time ng-binding">22 hours ago</span>
+                                    <div class="box-item__overlay"></div>
+                                    <ul class="social-stats">
+                                        <li class="social-stats__item">
+                                            <a href="#">
+                                                <i class="m-icon m-icon--heart"></i>
+                                                <span class="social-stats__text">52</span>
+                                            </a>
+                                        </li>
+                                        <li class="social-stats__item">
+                                            <a href="#">
+                                                <i class="m-icon m-icon--buble"></i>
+                                                <span class="social-stats__text">157</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                    <div class="round-tag round-tag--idea">
+                                        <i class="m-icon m-icon--item"></i>
+                                        <span class="round-tag__label">Idea</span>
+                                    </div>
+                                    <div class="box-item__label-idea">
+                                        <a href="#" class="box-item__label ng-binding">Mr Coffee smart</a>
+                                        <div class="clearfix"></div>
+                                        
+                                        <a href="#" class="box-item__read-more">Read More</a>
+                                    </div>
+                                    <div class="box-item__author">
+                                        <a href="#" class="user-widget">
+                                            <img class="user-widget__img" src="{{url('assets/images/dummies/author.png')}}">
+                                            <span class="user-widget__name ng-binding">Aiza Coronado</span>
+                                        </a>
+                                    </div>
                                 </div>
-                                <a class="author" href="#"></a>
-                            </div>
-                            <div class="like-wrap">
-                                <a href="#" class="social-pic likes">157</a>
-                                <a href="#" class="social-pic comment">89</a>
-                            </div>
-                        </div>
-                        <div class="col-sm-4 col-xs-12 grid-box">
-                            <div class="wrap">
-                                <img class="img-responsive" src="/assets/images/dummies/box-image-dummy.png">
-
-                                <div class="color-overlay">
-                                    <h4>Mr Coffee smart</h4>
-                                </div>
-                                <a class="author" href="#"></a>
-                            </div>
-                            <div class="like-wrap">
-                                <a href="#" class="social-pic likes">157</a>
-                                <a href="#" class="social-pic comment">89</a>
-                            </div>
-                        </div>
-                        <div class="col-sm-4 col-xs-12 grid-box">
-                            <div class="wrap">
-                                <img class="img-responsive" src="/assets/images/dummies/box-image-dummy.png">
-
-                                <div class="color-overlay">
-                                    <h4>Mr Coffee smart</h4>
-                                </div>
-                                <a class="author" href="#"></a>
-                            </div>
-                            <div class="like-wrap">
-                                <a href="#" class="social-pic likes">157</a>
-                                <a href="#" class="social-pic comment">89</a>
-                            </div>
-                        </div>
+                            @endfor
+                        </div>                        
 
                     </div>
                 </div>
