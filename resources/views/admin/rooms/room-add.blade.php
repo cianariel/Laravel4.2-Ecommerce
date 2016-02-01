@@ -65,7 +65,7 @@
                                             <label class="control-label col-md-3">Room Title:</label>
                                             <div class="col-md-6">
                                                 <input name="room_name" class="form-control"
-                                                               placeholder="Enter Room Title" value="{{$room->room_name}}">
+                                                               placeholder="Room Title" value="{{$room->room_name}}">
                                             </div>
                                         </div>
                                     </div>
@@ -76,11 +76,45 @@
                                             <label class="control-label col-md-3">Room Permalink:</label>
                                             <div class="col-md-6">
                                                 <input name="room_permalink" class="form-control"
-                                                               placeholder="Enter Room Permalink" value="{{$room->room_permalink}}">
+                                                               placeholder="Room Permalink" value="{{$room->room_permalink}}">
                                             </div>
                                         </div>
                                     </div>
                                 </div>
+                                <div class="row">
+                                    <div class="col-lg-9">
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">Description:</label>
+                                            <div class="col-md-6">
+                                                <input name="room_description" class="form-control"
+                                                               placeholder="Description" value="{{$room->room_description}}">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-9">
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">Meta Title:</label>
+                                            <div class="col-md-6">
+                                                <input name="meta_description" class="form-control"
+                                                               placeholder="Meta Title" value="{{$room->meta_title}}">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-9">
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">Meta Description:</label>
+                                            <div class="col-md-6">
+                                                <input name="meta_description" class="form-control"
+                                                               placeholder="Meta Description" value="{{$room->meta_description}}">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
                                 <h3 class="form-section">Hero Images</h3>
                                 <div class="row">
                                     <div class="col-lg-12">
@@ -405,6 +439,17 @@
                             </select>
                         </div>
                     </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-4">Tag Color</label>
+                        <div class="col-md-8">
+                            <select id="product_color" class="form-control">
+                                <option value="pink">Pink</option>
+                                <option value="red">Red</option>
+                                <option value="blue">Blue</option>
+                                <option value="green">Green</option>
+                            </select>
+                        </div>
+                    </div>
                     <div class="form-group form">
                         <label class="col-sm-4 control-label">X Position</label>
                         <div class="col-sm-8">
@@ -441,6 +486,8 @@ $(function() {
     var heroimageproducts1 = <?php if($room->hero_image_1_products) {echo $room->hero_image_1_products;}else {echo '[]';}?>;
     var heroimageproducts2 = <?php if($room->hero_image_2_products) {echo $room->hero_image_2_products;}else {echo '[]';}?>;
     var heroimageproducts3 = <?php if($room->hero_image_3_products) {echo $room->hero_image_3_products;}else {echo '[]';}?>;
+    var originalWidth = 1350;
+    var originalHeight = 540;
     $('#hero_image_1_products').val(JSON.stringify(heroimageproducts1));
     $('#hero_image_2_products').val(JSON.stringify(heroimageproducts2));
     $('#hero_image_3_products').val(JSON.stringify(heroimageproducts3));
@@ -450,6 +497,10 @@ $(function() {
     function setimage()
     {
         $('.fileinput-preview img').click(onheroclick);
+        /*var img = new Image();
+        img.src = $('.fileinput-preview img').attr('src');*/
+        originalWidth = $('.fileinput-preview img').width();
+        originalHeight = $('.fileinput-preview img').height();
     }
     @if($room->hero_image_1)
     $('#hero_image_1_img').click(onheroclick);
@@ -465,13 +516,13 @@ $(function() {
         $('#hero_image_id').val($(this).parent().data('image'));
         var relX = e.pageX - parentOffset.left;
         var relY = e.pageY - parentOffset.top;
-        $('#Xpos').val(relX);
-        $('#Ypos').val(relY);
+        $('#Xpos').val((relX/originalWidth*100).toFixed(2));
+        $('#Ypos').val((relY/originalHeight*100).toFixed(2));
         $('#select_product_modal').modal();
-         $("#select_product").select2("val", "");
+        $("#select_product").select2("val", "");
     }
     $('#btn_add_product_image').click(function(){
-        var obj = {'hero_image_id':$('#hero_image_id').val(),'x' : $('#Xpos').val(),'y':$('#Ypos').val(),'product_id' : $('#select_product').val()};
+        var obj = {'hero_image_id':$('#hero_image_id').val(),'x' : $('#Xpos').val(),'y':$('#Ypos').val(),'product_id' : $('#select_product').val(),'product_color':$('#product_color').val()};
         var row = "<tr><td>"+ $('#select_product').val() + "</td><td>"+$('#Xpos').val()+"</td><td>"+$('#Ypos').val()+"</td>";
         if($('#hero_image_id').val() == "hero_image_1")
         {
