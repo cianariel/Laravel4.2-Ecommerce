@@ -96,10 +96,13 @@ jQuery(document).ready(function($) {
                     </section>
                 </div>
                 @endif
-            <img class="rsImg" src="/assets/images/room-landing-hero.jpg" alt="{{$image['Image_alt']}}">
+            <img class="rsImg" src="{{$image['Image']}}" alt="{{$image['Image_alt']}}">
             </div>
             @endforeach
         @endif
+        </div>
+
+
     <nav id="hero-nav" class="col-sm-12">
         <div class="container full-620  fixed-sm">
             <ul class="left-nav col-xs-1 hidden-620">
