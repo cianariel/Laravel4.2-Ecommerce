@@ -7,7 +7,7 @@ angular.module('pagingApp.controllers', []).
         $scope.contentBlock = angular.element( document.querySelector('.main-content') );
         $scope.filterLoad = [];
 
-        $scope.firstLoad = pagaingApi.getContent(1).success(function (response) {
+        $scope.firstLoad = pagaingApi.getContent(1, 0).success(function (response) {
             $scope.allContent[0] = response;
             $scope.content[0] = $scope.sliceToRows(response['regular'], response['featured']);
         });
@@ -16,12 +16,16 @@ angular.module('pagingApp.controllers', []).
             $scope.currentPage++;
             $scope.allContent[$scope.currentPage] = [];
 
-            if(typeof $scope.filterBy === 'undefined'){
+            if(!$scope.filterBy || typeof $scope.filterBy === 'undefined'){
                 var $limit = 0;
                 $scope.filterBy = null;
             }else{
                 var $limit = 9;
+                console.log($scope.filterBy)
             }
+
+            //console.log($scope.currentPage)
+            console.log($limit)
 
             $scope.nextLoad =  pagaingApi.getContent($scope.currentPage, $limit, $scope.filterBy).success(function (response) {
                 $scope.newStuff[0] = $scope.sliceToRows(response['regular'], response['featured']);
