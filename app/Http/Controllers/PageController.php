@@ -25,14 +25,25 @@ class PageController extends Controller
         return view('home')->with('content', $content);
     }
 
-    public function getContent($page = 1, $limit = 4, $returnOnly = false){
+    public function getContent($page = 1, $limit = 5, $returnOnly = false){
 
-        if($limit == 'undefined'){
-            $limit = 4;
+        if($limit == 'undefined' || $limit == 0){
+//            $limit = 5;
+            $productLimit = 6;
+            $productOffset = 6 * ($page - 1);
+
+            $storyLimit = 3;
+            $storyOffset = 4 *  ($page - 1);
+
+        }else{
+            $productLimit = $limit + 2;
+            $productOffset = $limit *  ($page - 1);
+
+            $storyLimit = $limit;
+            $storyOffset = 4 *  ($page - 1);
         }
 
-        $storyLimit = $limit;
-        $storyOffset = 4 *  ($page - 1);
+
 
 //        if($returnOnly == 'idea'){
 //            $productLimit = $limit;
@@ -41,16 +52,14 @@ class PageController extends Controller
         $featuredLimit = 3;
         $featuredOffset = $featuredLimit * ($page - 1);
 
-        if($returnOnly == 'product'){
-            $productLimit  = $limit;
-            $productOffset = $limit *  ($page);
-        }else{
-            $productLimit = $limit + $featuredLimit;
-            $productOffset = $limit *  ($page - 1);
-        }
+//        if($returnOnly == 'product'){
+//            $productLimit  = $limit;
+//            $productOffset = $limit *  ($page);
+//        }else{
+//            $productLimit = $limit + 2;
+//            $productOffset = $limit *  ($page - 1);
+//        }
 //        $productOffset = $limit;
-
-
 
         if($returnOnly == 'product' || !$stories = self::getStories($storyLimit, $storyOffset, $featuredLimit, $featuredOffset)){
             $stories = [
@@ -59,11 +68,9 @@ class PageController extends Controller
             ];
         }
 
-
         if($returnOnly == 'idea' || !$products = self::getProducts($productLimit, $page, $productOffset)){
             $products['result'] = [];
         }
-
 
         $return['regular'] = array_merge($stories['regular'], $products['result']);
         $return['featured'] = $stories['featured'];
