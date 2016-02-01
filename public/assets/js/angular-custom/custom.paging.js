@@ -61,7 +61,7 @@ angular.module('pagingApp.controllers', []).
                     //});
 
                     return true;
-                }else if(typeof $scope.filterBy !== 'undefined'){ // change from one filter to another
+                }else if(typeof $scope.filterBy !== 'undefined' && $scope.filterBy && $scope.filterBy !== null){ // change from one filter to another
                     $scope.nextLoad = pagaingApi.getContent(1, 9, $criterion).success(function (response) {
                         $replacer[0] = $scope.sliceToRows(response['regular'], response['featured']);
                         $scope.allContent[0] = response;
@@ -84,6 +84,7 @@ angular.module('pagingApp.controllers', []).
                 $scope.filterBy = $criterion;
                 var $replacer = [];
                 var $i = 0;
+                console.log( $scope.allContent)
                 $scope.allContent.forEach(function(batch) {
 
                     $scope.filtered = [];
@@ -99,12 +100,17 @@ angular.module('pagingApp.controllers', []).
                     if($scope.filtered['regular'].length < 9){
                         var $diff = 9 - $scope.filtered['regular'].length;
 
-                        $scope.nextLoad = pagaingApi.getContent($scope.currentPage, $diff, $criterion, $scope.filtered ).success(function (response) {
+                        $scope.nextLoad = pagaingApi.getContent($scope.currentPage, $diff, $criterion, $scope.filtered['regular'].length).success(function (response) {
                             $scope.filtered['regular'] =  $scope.filtered['regular'].concat(response['regular']);
                             if($criterion == null && $criterion == 'idea' && $scope.filtered['featured'] == []){
                                 $scope.filtered['featured'] = response['featured'];
                             }
                             $replacer[$i] = $scope.sliceToRows($scope.filtered['regular'], $scope.filtered['featured']);
+                            $scope.content = $replacer;
+
+                            console.log($scope.content)
+                            console.log($replacer)
+
                             $i++;
                         });
                     }
@@ -114,8 +120,12 @@ angular.module('pagingApp.controllers', []).
                     return value.type == $criterion;
                 }
 
+
+
+
             //$('.homepage-grid').fadeOut(function(){
-                $scope.content = $replacer;
+
+
             //});
 
             $scope.allContent = $scope.allContent.concat($replacer)
@@ -185,10 +195,10 @@ angular.module('pagingApp.services', []).
 
         var pagaingApi = {};
 
-        pagaingApi.getContent = function(page, limit, only) {
+        pagaingApi.getContent = function(page, limit, only, offset) {
             return $http({
                 method: 'GET',
-                url: '/api/paging/get-content/' + page + '/' + limit + '/' + only,
+                url: '/api/paging/get-content/' + page + '/' + limit + '/' + only + '/' + offset,
             });
         }
 

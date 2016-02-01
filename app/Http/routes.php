@@ -206,7 +206,7 @@
     Route::get('product/{permalink?}', 'PageController@productDetailsPage');
     Route::get('room/{permalink?}', 'PageController@getRoomPage');
 
-    Route::get('/api/paging/get-content/{page?}/{limit?}/{returnOnly?}', 'PageController@getContent');
+    Route::get('/api/paging/get-content/{page?}/{limit?}/{returnOnly?}/{offset?}', 'PageController@getContent');
 
 
     // temporary category tag generator
