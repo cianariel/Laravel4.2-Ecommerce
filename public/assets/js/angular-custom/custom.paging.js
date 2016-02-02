@@ -107,19 +107,27 @@ angular.module('pagingApp.controllers', []).
                             if($criterion == null && $criterion == 'idea' && $scope.filtered['featured'] == []){
                                 $scope.filtered['featured'] = response['featured'];
                             }
-                            $replacer[$i] = $scope.sliceToRows($scope.filtered['regular'], $scope.filtered['featured']);
-
-                            console.log('$scope.content')
-                            console.log($scope.content)
-                            console.log('$replacer')
-                            console.log($replacer)
+                            var $cut = [];
+                            $cut[0] = $replacer.concat($scope.sliceToRows($scope.filtered['regular'], $scope.filtered['featured']));
+                            $replacer = $replacer.concat($cut)
 
                             $i++;
+
+                            if($replacer.length === $scope.allContent.length){
+                                console.log('$scope.content')
+                                console.log($scope.content)
+                                console.log('$replacer')
+                                console.log($replacer)
+
+                                $scope.content = $replacer;
+
+                                //$scope.allContent = $scope.allContent.concat($replacer)
+
+                            }
                         });
                     }
                 }, this);
 
-                $scope.content = $replacer;
 
 
                 function checkByCriterion(value){
@@ -134,7 +142,6 @@ angular.module('pagingApp.controllers', []).
 
             //});
 
-            $scope.allContent = $scope.allContent.concat($replacer)
 
                 setTimeout(function(){
                     $('.main-content').fadeIn(1000);
