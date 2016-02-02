@@ -31,19 +31,4 @@ class UserProfile extends Model
     }
 
 
-
-
-
-
-/*
-users - hasOne('user')
-ideas - hasMany('idea')
-projects - hasMany('project')
-reviews - hasMany('review')
-images - morphMany('imageable','image')
-activities - hasMany('activity')
-*/
-
-
-
 }

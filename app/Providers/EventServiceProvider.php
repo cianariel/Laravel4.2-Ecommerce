@@ -8,6 +8,9 @@
     use App\Handlers\Events\SendActivationMailHandler;
     use App\Events\SendResetEmail;
     use App\Handlers\Events\SendResetEmailHandler;
+    use App\Events\SendSubscriptionMail;
+    use App\Handlers\Events\SendSubscriptionMailHandler;
+
 
 
     class EventServiceProvider extends ServiceProvider {
@@ -24,8 +27,12 @@
             SendActivationMail::class => [
                 SendActivationMailHandler::class
             ],
-            SendResetEmail::class => [
+            SendResetEmail::class     => [
                 SendResetEmailHandler::class
+            ],
+
+            SendSubscriptionMail::class => [
+                SendSubscriptionMailHandler::class
             ]
 
         ];

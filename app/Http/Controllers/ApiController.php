@@ -179,16 +179,14 @@
                     $fileResponse['status_code'] = \Config::get("const.api-status.success");
                     return $fileResponse;
                 }
-
             }
-
-
-
         }
 
 
         /**
          * User input validation
+         * @param $inputData
+         * @param $validationRules
          * @return array
          */
         protected function inputValidation($inputData, $validationRules)
