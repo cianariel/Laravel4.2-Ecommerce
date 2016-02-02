@@ -57,6 +57,11 @@
             return $this->hasOne('App\Models\UserProfile');
         }
 
+        public function subscriber()
+        {
+            return $this->hasOne('App\Models\Subscriber');
+
+        }
 
         /**
          * Defile custom model method
@@ -80,7 +85,7 @@
 
                     $userProfile = new UserProfile();
                     // $userProfile->full_name = $data['FullName'];
-                    $userProfile->save();
+                   // $userProfile->save();
 
                     $user->userProfile()->save($userProfile);
 

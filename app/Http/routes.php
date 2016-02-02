@@ -94,10 +94,8 @@
         // Test method for logo
         Route::get('product/logo','ProductController@getStoreInformation');
 
-
         // Delete product
         Route::post('product/delete-product', 'ProductController@deleteProduct');
-
 
         //add to compare queue
         Route::get('pro-details/{permalink?}', 'ProductController@productDetailsView');
@@ -117,7 +115,6 @@
         Route::get('tag/show-tag/{productId}', 'TagsController@showTagByProductId');
         Route::get('tag/show-products/{tagId}', 'TagsController@getProductsByTag');
         Route::get('tag/search-tag/{tagId}', 'TagsController@searchTagByName');
-
 
         Route::post('tag/add-tags', 'TagsController@addTags');
 
@@ -149,6 +146,14 @@
         Route::post('room/update-room', 'RoomController@updateRoom');
         Route::post('room/get-room-list', 'ProductController@getAllRoomList');
         Route::post('room/delete-room', 'RoomController@deleteRoom');
+
+        /*
+         * User route collection
+         * */
+
+        Route::post('subscribe','UserController@emailSubscription');
+
+
         /*
          * RSS feed parser from WP to App home page
          *
