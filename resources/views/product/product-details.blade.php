@@ -18,15 +18,15 @@
 
                         @if(isset($productInformation['CatTree']))
                             @foreach( $productInformation['CatTree'] as $category )
-                                <li>
-                                    <a class="box-link"
+                                <li class="box-link-ul @if($category['CategoryName']=='Smart Home') active-ul @endif">
+                                    <span class="box-link-active-line"></span>
+                                    <a class="box-link @if($category['CategoryName']=='Smart Home') active @endif"
                                        href="/category/@if(isset($category['CategoryPermalink'])){{$category['CategoryPermalink']}}@endif"
                                        @if($category == end($productInformation['CatTree']))class="current"
                                             @endif>
                                         @if(isset($category['CategoryName']))
                                             {{$category['CategoryName']}}
                                         @endif
-
                                     </a>
                                 </li>
                                 <li class="horizontal-line-holder hidden-xs hidden-sm">
@@ -84,7 +84,15 @@
                 {{----}}
                 {{--</ul>--}}
                 {{--</nav>--}}
-                <div class="col-sm-3">
+                <div class="row">
+                    <div class="col-sm-8">
+                        <h1>
+                            @if(isset($productInformation['ProductName']))
+                                {{$productInformation['ProductName']}}
+                            @endif
+                        </h1>
+                    </div>
+                    <div class="col-sm-4">
                     <div class="average-score">
                         <div class="score">@if(isset($productInformation['Review']) && isset($productInformation['IdeaingReviewScore']))
                                 {{intval((($productInformation['Review'][0]->value + $productInformation['IdeaingReviewScore'])/2)*20)}}@endif%
@@ -92,12 +100,6 @@
                         <span class="caption">Average Ideaing Score</span>
                     </div>
                 </div>
-                <div class="col-sm-9">
-                    <h1>
-                        @if(isset($productInformation['ProductName']))
-                            {{$productInformation['ProductName']}}
-                        @endif
-                    </h1>
                 </div>
 
 
@@ -118,7 +120,6 @@
 
                                 $('#gallery').royalSlider({
                                     arrowsNav: true,
-                                    loop: false,
                                     keyboardNavEnabled: true,
                                     controlsInside: false,
                                     imageScaleMode: 'fit',
@@ -286,7 +287,7 @@
 
                 </section>
 
-                <section class="comparison" id="compare">
+                <section class="comparison hidden-xs hidden-sm" id="compare">
                     <div class="container">
                         <h3 class="purple">Comparisons</h3>
 
@@ -452,18 +453,13 @@
                                     <div class="vertical-line visible-xs"></div>
                                     <div class="title">Amazon</div>
                                     <div class="reviews">Reviews</div>
-                                    <div class="value">8,5</div>
-                                    <div class="outer-line">
-                                        <div class="inner-line" style="width:95%"></div>
-                                    </div><br>
-                                    <div class="amazon-value">8,550</div>
                                     <div class="star-raiting" style="text-align: center">
                                         <span class="star active"></span>
                                         <span class="star active"></span>
                                         <span class="star active"></span>
                                         <span class="star active"></span>
                                         <span class="star"></span>
-                                    </div><br>
+                                    </div>
                                     <p class="text-center">
                                         2,567 <span class="light-black">Reviews</span>
                                     </p>

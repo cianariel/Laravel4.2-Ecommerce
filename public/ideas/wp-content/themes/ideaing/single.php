@@ -20,11 +20,18 @@
         </header>
         <nav class="mid-nav hidden-620">
                 <div class="container">
-                    <ul class="left-nav breadcrumbs hidden-620">
+                    <ul class="wrap col-xs-9">
                         <!--                    <li><a class="home-link" href="#">Home</a></li>-->
-                        <li class="active"><a href="#" class="larger-text allcaps orange">Ideas</a></li>
-                        <li><a href="#" class="orange box-link">Kitchen</a></li>
-                        <li><a href="#" class="orange box-link">Style</a></li>
+                        <li class="kitchen">
+                            <span class="box-link-active-line"></span>
+                            <a href="#" class="">
+                                Kitchen
+                            </a>
+                        </li>
+                        <li class="horizontal-line-holder hidden-xs hidden-sm">
+                            <span class="horizontal-line"></span>
+                        </li>
+                        <li><a href="#" class="">Style</a></li>
                     </ul>
                 </div>
         </nav>
