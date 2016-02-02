@@ -5,7 +5,7 @@
             <a href="#" class="side-logo lamp-logo">
             </a>
             <h1>
-                {{the_title()}}
+                {{the_title()}}<br>
                 <a class="like-counter" href="#"><span>Liked by</span><b>189</b></a>
             </h1>
 
@@ -192,8 +192,8 @@
 
     <section class="related-items pale-grey-bg">
         <div class="container full-620 fixed-sm">
-            <div class="related-products  col-xs-12">
-                <h3 class="green">Related Products</h3>
+            <h3 class="green">Related Products</h3><br>
+            <div class="related-products  grid-box-3">
 
 <!--                <section class="col-sm-12 related-stories">-->
 
@@ -269,91 +269,79 @@
 <!--                        </div>-->
 <!--                    </div>-->
 <!--                </div>-->
-                <div class="col-sm-4 col-xs-12 grid-box">
-                    <div class="wrap">
+                @for($i=0; $i<3; $i++)
+                <div class="box-item product-box">
                         <img class="img-responsive" src="/assets/images/dummies/box-image-dummy.png">
-                        <div class="color-overlay">
-                            <h4>Mr Coffee smart <div class="get solid">Get it</div></h4>
+                    <span class="box-item__time ng-binding">5 hours ago</span>
+                    <div class="box-item__overlay"></div>
+                    <ul class="social-stats">
+                        <li class="social-stats__item">
+                            <a href="#">
+                                <i class="m-icon m-icon--heart"></i>
+                                <span class="social-stats__text">52</span>
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="round-tag round-tag--product">
+                        <i class="m-icon m-icon--item"></i>
+                        <span class="round-tag__label">Product</span>
                         </div>
+                    <div class="box-item__label-prod">
+                        <a href="#" class="box-item__label box-item__label--clear ng-binding">Mr Coffee smart</a>
+                        <div class="clearfix"></div>
+                        <div class="merchant-widget">
+                            <span class="merchant-widget__price ng-binding">$259.95</span>
+                            <span>from</span>
+                            <img class="merchant-widget__store" src="/assets/images/dummies/amazon-black.png">
                     </div>
-                    <div class="like-wrap">
-                        <a href="#" class="social-pic likes">157</a>
-                        <a href="#" class="social-pic comment">89</a>
+                        <div class="clearfix"></div>
+                        <a target="_blank" href="#" class="box-item__get-it">Get it</a>
                     </div>
-                    <time>5 hours ago</time>
                 </div>
-                <div class="col-sm-4 col-xs-12 grid-box">
-                    <div class="wrap">
-                        <img class="img-responsive" src="/assets/images/dummies/box-image-dummy.png">
-                        <div class="color-overlay">
-                            <h4>Mr Coffee smart <div class="get solid">Get it</div></h4>
-                        </div>
-                    </div>
-                    <div class="like-wrap">
-                        <a href="#" class="social-pic likes">157</a>
-                        <a href="#" class="social-pic comment">89</a>
-                    </div>
-                    <time>5 hours ago</time>
-                </div>
-                <div class="col-sm-4 col-xs-12 grid-box">
-                    <div class="wrap">
-                        <img class="img-responsive" src="/assets/images/dummies/box-image-dummy.png">
-                        <div class="color-overlay">
-                            <h4>Mr Coffee smart <div class="get solid">Get it</div></h4>
-                        </div>
-                    </div>
-                    <div class="like-wrap">
-                        <a href="#" class="social-pic likes">157</a>
-                        <a href="#" class="social-pic comment">89</a>
-                    </div>
-                    <time>5 hours ago</time>
-                </div>
-
+                @endfor
 
             </div>
 
-            <div class="related-ideas col-xs-12">
-                <h3 class="orange">Related Ideas</h3>
+            <h3 class="orange">Related Ideas</h3><br>
+            <div class="related-ideas grid-box-3">
+                @for($i=0; $i<3; $i++)
+                    <div class="box-item idea-box ">
+                        <img class="img-responsive" src="/assets/images/dummies/box-image-dummy.png">
+                        <span class="box-item__time ng-binding">1 week ago</span>
+                        <div class="box-item__overlay"></div>
+                        <ul class="social-stats">
+                            <li class="social-stats__item">
+                                <a href="#">
+                                    <i class="m-icon m-icon--heart"></i>
+                                    <span class="social-stats__text">52</span>
+                                </a>
+                            </li>
+                            <li class="social-stats__item">
+                                <a href="#">
+                                    <i class="m-icon m-icon--buble"></i>
+                                    <span class="social-stats__text">157</span>
+                                </a>
+                            </li>
+                        </ul>
+                        <div class="round-tag round-tag--idea">
+                            <i class="m-icon m-icon--item"></i>
+                            <span class="round-tag__label">Idea</span>
+                        </div>
+                        <div class="box-item__label-idea">
+                            <a href="#" class="box-item__label ">Mr Coffee smart</a>
+                            <div class="clearfix"></div>
+                            <a href="#" class="box-item__read-more">Read More</a>
+                    </div>
+                        <div class="box-item__author">
+                            <a href="#" class="user-widget">
+                                <img class="user-widget__img" src="/assets/images/dummies/author.png">
+                                <span class="user-widget__name ng-binding">Nicole van Zanten</span>
+                            </a>
+                    </div>
 
-                <div class="col-sm-4 col-xs-12 grid-box">
-                    <div class="wrap">
-                        <img class="img-responsive" src="/assets/images/dummies/box-image-dummy.png">
-                        <div class="color-overlay">
-                            <h4>Mr Coffee smart</h4>
-                        </div>
-                        <a class="author" href="#"></a>
-                    </div>
-                    <div class="like-wrap">
-                        <a href="#" class="social-pic likes">157</a>
-                        <a href="#" class="social-pic comment">89</a>
-                    </div>
                 </div>
-                <div class="col-sm-4 col-xs-12 grid-box">
-                    <div class="wrap">
-                        <img class="img-responsive" src="/assets/images/dummies/box-image-dummy.png">
-                        <div class="color-overlay">
-                            <h4>Mr Coffee smart</h4>
-                        </div>
-                        <a class="author" href="#"></a>
-                    </div>
-                    <div class="like-wrap">
-                        <a href="#" class="social-pic likes">157</a>
-                        <a href="#" class="social-pic comment">89</a>
-                    </div>
-                </div>
-                <div class="col-sm-4 col-xs-12 grid-box">
-                    <div class="wrap">
-                        <img class="img-responsive" src="/assets/images/dummies/box-image-dummy.png">
-                        <div class="color-overlay">
-                            <h4>Mr Coffee smart</h4>
-                        </div>
-                        <a class="author" href="#"></a>
-                    </div>
-                    <div class="like-wrap">
-                        <a href="#" class="social-pic likes">157</a>
-                        <a href="#" class="social-pic comment">89</a>
-                    </div>
-                </div>
+                @endfor
+                
 <!--                <div class="col-md-3  hidden-sm hidden-xs grid-box">-->
 <!--                    <div class="wrap">-->
 <!--                        <img class="img-responsive" src="/assets/images/dummies/box-image-dummy.png">-->
@@ -365,7 +353,6 @@
 <!--                </div>-->
 
             </div>
-
         </div>
     </section>
 
