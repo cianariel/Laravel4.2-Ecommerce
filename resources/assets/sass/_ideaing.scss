@@ -308,16 +308,10 @@ a{ // Custom Link Styles
 
   &.products-link{
     color: $pine-green;
-    background-image: url("/assets/images/bag-green-big.png");
-    background-repeat: no-repeat;
-    background-size: contain;
   }
 
   &.photos-link{
     color: $sky-blue;
-    background-image: url("/assets/images/photos-blue.png");
-    background-repeat: no-repeat;
-    background-size: contain;
   }
 
   &.featured-badge{
@@ -338,13 +332,11 @@ a{ // Custom Link Styles
 
     //&:hover{
     //  color: $sky-blue;
-    //  background-image: url('/assets/images/photos-blue.png');
     //}
     //padding-left: 65px;
   }
 
   &.all-link {
-    background-image: url('/assets/images/grid-pink.png');
     background-size: 30px;
     background-position: left 4px;
     min-width: 200px;
@@ -446,6 +438,7 @@ a{ // Custom Link Styles
 }
 
 li.nested{
+  
   a.active::after{
     background-image: url("/assets/images/arrow-up-black.png");
   }
@@ -460,7 +453,7 @@ li.nested{
     background-size: contain;
     color: $iridium;
   }
-
+  
 }
 
 .dropcapped{
@@ -1185,13 +1178,23 @@ body.product-details{
   margin-top: 9px;
   margin-left: 0;
   padding-left: 0;
-  margin-left: 30px;
+  max-width: 100%;
+/*  margin-left: 30px;*/
+    
+    img:first-child{
+        display: block;
+    }
+    img:last-child{
+        display: none;
+    }
+    
+    &:hover > img:first-child{
+        display: none;
+    }
+    &:hover > img:last-child{
+        display: block;
+    }
 
-
-  &:hover{
-    background-image: url('/assets/images/ideaing-logo-small-no-text-pink.png');
-
-  }
 }
 
 form{
@@ -1560,15 +1563,12 @@ main.page-content{
       position: absolute;
 
       &.product{
-        background: url("/assets/images/bag-green-big.png") center no-repeat;
-        background-size: 38px;
 
       }
       &.idea{
         background: url("/assets/images/lamp-orange.png") center no-repeat;
       }
       &.photo{
-        background: url("/assets/images/photos-blue.png") center no-repeat;
       }
     }
 
@@ -2490,15 +2490,15 @@ header.colophon{
 
         a#ideaing-logo {
           display: block;
-          width: 45px;
+/*          width: 45px;*/
           min-height: 60px;
           padding: 0;
-          background-image: url("/assets/images/ideaing-logo-lamp-only.png");
+/*          background-image: url("/assets/images/ideaing-logo-lamp-only.png");*/
           background-repeat: no-repeat;
           background-position: right;
           background-size: initial;
           margin-right: 0;
-          margin-top: 0;
+          margin-top: 11px;
         }
 
         //.search-bar{
@@ -2552,24 +2552,11 @@ header.colophon{
     padding-right: 5px;
     font-size: 1.4rem;
     color: #999;
+    font-weight: bold;
 
-    &.shop{
-      background: url('/assets/images/bag-square-grey.png') left center no-repeat;
-      //background-size: 14px;
-      &:hover{
-        background-image: url('/assets/images/bag-square-blue.png');
-      }
-    }
     &.pros{
       background: url('/assets/images/pro-grey.png') left center no-repeat;
       //background-size: 14px;
-    }
-    &.disc{
-      background: url('/assets/images/chat-grey.png') left center no-repeat;
-      //background-size: 14px;
-      &:hover{
-        background-image: url('/assets/images/chat-picton.png');
-      }
     }
     &.ideas{
       background: url('/assets/images/icons/lamp-grey.png') left center no-repeat;
@@ -2600,10 +2587,61 @@ header.colophon{
 
 }
 
+body.homepage #top-nav .ideas, body.single-post #top-nav .ideas, body.product-details #top-nav a.shop{
+    position: relative;
+    .box-link-active-line{
+        height: 50px;
+        width: 0px;
+        border-left: 1px solid #dddedf;
+        position: absolute;
+        top: 43px;
+        left: 50%;
+    }
+}
+
+body.single-post{
+    .mid-nav .kitchen{
+        position: relative;
+        
+        > a{
+            background: #ed2049;
+            color: #fff !important;
+            box-shadow: none;
+            margin-right: 17px;
+        }
+        
+        .box-link-active-line{
+            position: absolute;
+            display: inline-block;
+            width: 0px;
+            height: 11px;
+            border-left: 1px solid #dddedf;
+            left: 45px;
+        }
+
+    }
+    #top-nav .kitchen{
+        position: relative;
+        .box-link-active-line{
+            height: 50px;
+            width: 0px;
+            border-left: 1px solid #dddedf;
+            position: absolute;
+            top: 43px;
+            left: 50%;
+        }
+
+    }
+}
+
 body.product-details{
   .story-header{
     h1{
       width: 34%;
+      height: 15px;
+      overflow: hidden;
+      font-size: 13px;
+      margin-top: 5px;
     }
     .like-counter{
       margin-top: -4px;
@@ -2615,6 +2653,13 @@ body.product-details{
     .social-rounds{
       width: 190px;
     }
+  }
+  
+  #top-nav a.shop{
+      color: #ed1d47;
+      font-weight: bold;
+      position: relative;
+
   }
 
   .article-content{
@@ -2654,7 +2699,7 @@ body.product-details{
     float: left;
     //margin-left: 3%;
     margin-top: 0;
-    font-size: 2.1rem;
+    font-size: 13px;
     text-align: center;
   }
 
@@ -2764,6 +2809,23 @@ body.product-details{
 //
 
 //
+.homepage .mid-nav li.home{
+    position: relative;
+}
+.homepage .mid-nav li.home a{
+    background: #ed2049;
+    color: #fff !important;
+    box-shadow: none;
+}
+
+.homepage .mid-nav li.home .box-link-active-line{
+    position: absolute;
+    display: inline-block;
+    width: 0px;
+    height: 11px;
+    border-left: 1px solid #dddedf;
+    left: 52px
+}
 
 .mid-nav{
   //margin-bottom: 100px;
@@ -2790,13 +2852,29 @@ body.product-details{
   .horizontal-line{
       width:40px;
       height:0px;
-      border: 1px solid #dddedf;
+      border-bottom: 1px solid #dddedf;
       display: inline-block;
       float:left;
       margin-top: 24px;
       
   }
-  
+  .box-link-ul{
+      position: relative;
+      .box-link-active-line{
+          display: none;
+      }
+      
+      &.active-ul{
+        .box-link-active-line{
+            position: absolute;
+            display: inline-block;
+            width: 0px;
+            height: 20px;
+            border-left: 1px solid #dddedf;
+            left: 59px
+        }
+      }
+  }
   a{
     //margin: 15px 30px;
     margin-top: 11px;
@@ -2841,10 +2919,12 @@ body.product-details{
       font-weight: bold ;
       position: relative;
 
-      &:hover{
+      &:hover, &.active{
         background: #ed2049;
         color: #fff !important;
         box-shadow:none;
+        margin-right: 17px;
+        
       }
 
     }
@@ -3397,7 +3477,6 @@ header.sub-head{
     color: $iridium;
     text-transform: none;
     text-align: right;
-    padding-left: 30px;
     background-size: 25px;
     background-position: 0 19px;
     background-repeat: no-repeat;
@@ -3421,7 +3500,6 @@ header.sub-head{
       &:hover,
       .active &{
         color: $iridium;
-        background-image: url('/assets/images/grid-pink.png');
       }
     }
     &.ideas-link{
@@ -3436,21 +3514,15 @@ header.sub-head{
 
     }
     &.products-link{
-      background-image: url('/assets/images/bag-grey-big.png');
-      background-position: 5px 20px;
-      background-size: 20px;
 
       &:hover{
         color: $pine-green;
-        background-image: url('/assets/images/bag-green-big.png');
       }
     }
     &.photos-link{
-      background-image: url('/assets/images/photos-grey.png');
 
       &:hover{
         color: $sky-blue;
-        background-image: url('/assets/images/photos-blue.png');
       }
       //padding-left: 65px;
     }
@@ -3519,7 +3591,6 @@ header.sub-head{
     }
     a.all-link{
       color: $iridium;
-      background-image: url('/assets/images/grid-pink.png');
       //&::after{
       //  bottom: -31px;
       //}
@@ -3531,11 +3602,9 @@ header.sub-head{
     }
     a.products-link{
       color: $pine-green;
-      background-image: url('/assets/images/bag-green-big.png');
     }
     a.photos-link{
       color: $sky-blue;
-      background-image: url('/assets/images/photos-blue.png');
     }
   }
 
@@ -3566,7 +3635,6 @@ header.sub-head{
 
 .product-nav{
   a.photos-link {
-    background-image: url('/assets/images/photos-blue.png') !important;
   }
 }
 
@@ -3643,6 +3711,7 @@ body.single{
   #top-nav a.ideas{
     color: $ideaing-blue;
     background-image: url('/assets/images/icons/lamp-small-blue.png');
+    
   }
   .like-nav{
     width: 280px;
@@ -3883,9 +3952,9 @@ body.single{
     padding-top: 50px;
   }
   h1{
-    float: left;
+/*    float: left;*/
     font-size: 3rem;
-    padding-left: 40px;
+/*    padding-left: 40px;*/
   }
   .color-overlay {
     background-color: rgba(0, 0, 0, 0.6);
@@ -3900,7 +3969,8 @@ body.single{
 
 .average-score{
   position: relative;
-  float: left;
+  margin: auto;
+/*  float: left;*/
   width: 190px;
   height: 100px;
   padding-top: 10px;
@@ -4655,7 +4725,7 @@ footer.about-footer{
 
   .story-header h1 {
     //width: 63%;
-    font-size: 1.6rem;
+    font-size: 13px;
     margin-bottom: 5px;
   }
 
@@ -4686,7 +4756,7 @@ footer.about-footer{
 
       .top{
         height: auto;
-        padding-top: 10px;
+/*        padding-top: 10px;*/
       }
       .vendor-logo, .get{
         margin: 10px auto;
@@ -4979,7 +5049,6 @@ footer.about-footer{
         //
         //&.photos-link{
         //  color: $sky-blue;
-        //  background-image: url("/assets/images/photos-blue.png");
         //}
 
         &.rooms-link{
@@ -5543,14 +5612,14 @@ footer.about-footer{
 
         }
         &.rsThumbsArrowRight{
-          left: 45%;
+          left: 80%;
           background-image: url("/assets/images/arrow-right-pink.png");
         }
       }
 
       .rsThumbs,
       .rsThumbsContainer{
-        width: 200% !important;
+/*        width: 200% !important;*/
         overflow: hidden;
         height: 150px;
 
@@ -5677,6 +5746,10 @@ footer.about-footer{
       padding-left: 5px;
       padding-right: 0px;
       margin-left: 0;
+      
+      &#ideaing-logo{
+          width: auto;
+      }
     }
   }
 
@@ -5930,6 +6003,9 @@ footer.about-footer{
         }
     } 
 }
+.star-raiting{
+    margin-top: 28px;
+}
 .star-raiting .star{
     background: url('/assets/images/star-white.png') no-repeat;
     width:20px;
@@ -5972,6 +6048,10 @@ footer.about-footer{
       float: none;
       margin: auto;
   }
+  .star-raiting{
+        margin-top: 0px;
+    }
+
 }
 @media (max-width: 992px){
   .reviews-service-holder .outer-line .line-label{
