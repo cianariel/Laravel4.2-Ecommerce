@@ -43,10 +43,25 @@
                     {{--<li class="active"><a class="home-link" href="#">Home</a></li>--}}
                 {{--</ul>--}}
                 <ul class="category-nav main-content-filter">
-                    <li class="active"><a ng-click="filterContent(null)"  href="" data-filterby="all" class="all-link">All</a></li>
+                    <li class="active">
+                        <a ng-click="filterContent(null)"  href="" data-filterby="all" class="all-link">
+                            <i class="m-icon--menu"></i>&nbsp;
+                            All
+                        </a>
+                    </li>
                     <li><a ng-click="filterContent('idea')" data-filterby="ideas" href="" class="ideas-link">Ideas</a></li>
-                    <li><a  ng-click="filterContent('product')" data-filterby="products" href="" class="products-link">Products</a></li>
-                    <li><a data-filterby="photos" href="" class="photos-link">Photos</a></li>
+                    <li>
+                        <a  ng-click="filterContent('product')" data-filterby="products" href="" class="products-link">
+                            <i class="m-icon--item"></i>&nbsp;
+                            Products
+                        </a>
+                    </li>
+                    <li>
+                        <a data-filterby="photos" href="" class="photos-link">
+                            <i class=" m-icon--image"></i>&nbsp;
+                            Photos
+                        </a>
+                    </li>
                 </ul>
             </div>
         </nav>

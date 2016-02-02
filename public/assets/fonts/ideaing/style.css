@@ -1,15 +1,15 @@
 @font-face {
     font-family: 'ideaing';
-    src:    url('fonts/ideaing.eot?ihntq8');
-    src:    url('fonts/ideaing.eot?ihntq8#iefix') format('embedded-opentype'),
-        url('fonts/ideaing.ttf?ihntq8') format('truetype'),
-        url('fonts/ideaing.woff?ihntq8') format('woff'),
-        url('fonts/ideaing.svg?ihntq8#ideaing') format('svg');
+    src:    url('fonts/ideaing.eot?kpkl8w');
+    src:    url('fonts/ideaing.eot?kpkl8w#iefix') format('embedded-opentype'),
+        url('fonts/ideaing.ttf?kpkl8w') format('truetype'),
+        url('fonts/ideaing.woff?kpkl8w') format('woff'),
+        url('fonts/ideaing.svg?kpkl8w#ideaing') format('svg');
     font-weight: normal;
     font-style: normal;
 }
 
-.m-icon {
+[class^="m-icon--"], [class*=" m-icon--"] {
     /* use !important to prevent issues with browser extensions that change fonts */
     font-family: 'ideaing' !important;
     speak: none;
@@ -24,14 +24,11 @@
     -moz-osx-font-smoothing: grayscale;
 }
 
-.m-icon--heart-solid:before {
-    content: "\e906";
+.m-icon--buble:before {
+    content: "\e900";
 }
 .m-icon--heart:before {
     content: "\e901";
-}
-.m-icon--buble:before {
-    content: "\e900";
 }
 .m-icon--image:before {
     content: "\e902";
@@ -44,5 +41,23 @@
 }
 .m-icon--menu:before {
     content: "\e905";
+}
+.m-icon--heart-solid:before {
+    content: "\e906";
+}
+.m-icon--comments-idx:before {
+    content: "\e907";
+}
+.m-icon--facebook-idx:before {
+    content: "\e908";
+}
+.m-icon--heart-idx:before {
+    content: "\e909";
+}
+.m-icon--pinterest-idx:before {
+    content: "\e910";
+}
+.m-icon--twitter-idx:before {
+    content: "\e911";
 }
 
