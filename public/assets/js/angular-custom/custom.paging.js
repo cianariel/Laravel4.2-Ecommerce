@@ -6,7 +6,7 @@ angular.module('pagingApp.controllers', []).
         $scope.currentPage = 1;
         $scope.contentBlock = angular.element( document.querySelector('.main-content') );
         $scope.filterLoad = [];
-        $scope.globalOffset = 0;
+        //$scope.globalOffset = 0;
 
         $scope.firstLoad = pagaingApi.getContent(1, 0).success(function (response) {
             $scope.allContent[0] = response;
@@ -21,27 +21,18 @@ angular.module('pagingApp.controllers', []).
             if(!$scope.filterBy || typeof $scope.filterBy === 'undefined'){
                 var $limit = 0;
                 $scope.filterBy = null;
-                $scope.globalOffset = false;
             }else{
                 var $limit = 9;
             }
 
-            //console.log($scope.currentPage)
-
-            console.log($scope.globalOffset)
-
-            $scope.nextLoad =  pagaingApi.getContent($scope.currentPage, $limit, $scope.filterBy, $scope.globalOffset).success(function (response) {
+            $scope.nextLoad =  pagaingApi.getContent($scope.currentPage, $limit, $scope.filterBy).success(function (response) {
                 $scope.newStuff[0] = $scope.sliceToRows(response['regular'], response['featured']);
                 $scope.content = $scope.content.concat($scope.newStuff);
 
                 $scope.allContent[$scope.currentPage]['regular']  = response['regular'];
                 $scope.allContent[$scope.currentPage]['featured'] = response['featured'];
-
             });
-
         };
-
-        $scope.loadMore();
 
 
         $scope.filterContent = function($criterion){
@@ -58,32 +49,21 @@ angular.module('pagingApp.controllers', []).
                         });
 
                             $scope.content = $replacer;
-                            $scope.globalOffset = false;
-
                             $('.main-content').fadeIn();
 
                         return true;
 
-                    }else if(typeof $scope.filterBy !== 'undefined' && $scope.filterBy && $scope.filterBy !== null){ // change from one filter to another
-                        $scope.nextLoad = pagaingApi.getContent(1, 9, $criterion).success(function (response) {
-                            $replacer[0] = $scope.sliceToRows(response['regular'], response['featured']);
-                            $scope.allContent[0] = response;
-                        });
-
-                            $scope.content = $replacer;
-                            $scope.globalOffset = false;
-
-                            $('.main-content').fadeIn();
-
-                        $scope.filterBy = $criterion;
-                        return true;
                     }
+                //else if(typeof $scope.filterBy !== 'undefined' && $scope.filterBy && $scope.filterBy !== null){ // change from one filter to another - reset to the first pagination
+                //    $scope.currentPage = 1;
+                //
+                //    console.log('3')
+                //}
 
                $scope.filterBy = $criterion;
 
-               $scope.nextLoad = pagaingApi.getData($scope.allContent, $criterion, $scope.sliceToRows).then(function(response){
-                    var $newStuff       = response['content'];
-                    $scope.globalOffset = response['offset']
+               $scope.nextLoad = pagaingApi.getData($scope.currentPage, $criterion, $scope.sliceToRows).then(function(response){
+                    var $newStuff       = response;
 
                    $scope.content = $newStuff;
                     $scope.allContent = $scope.allContent.concat($newStuff);
@@ -135,68 +115,44 @@ angular.module('pagingApp.services', []).
             });
         }
 
-        pagaingApi.getData = function(allContent, $criterion, $sliceFunction) {
+        pagaingApi.getData = function(currentPage, $criterion, $sliceFunction) {
             var promiseArray = [];
-            var $totalOffset = 0;
 
-            var $allContent = allContent;
-            var $page = 1;
-            allContent.forEach(function(batch) {
-                var filtered = []
-                filtered['regular'] = batch['regular'].filter(checkByCriterion);
-                var $offset = filtered['regular'].length;
-                var $diff = (9 - $offset)  + 3;
-                $totalOffset += $offset;
+            for(var $page = 1; $page < currentPage + 1; $page++) {
 
                 promiseArray.push(
-                    $http.get('/api/paging/get-content/' + 1 + '/' + $diff + '/' + $criterion + '/' + $totalOffset)
+                    $http.get('/api/paging/get-content/' + $page + '/' + 9 + '/' + $criterion)
                 );
-
-                $totalOffset += $diff + 5;
-
                 $page++;
-
-            });
-
-
-            function checkByCriterion(value){
-                return value.type == $criterion;
             }
 
             var $return = $q.all(promiseArray).then(function successCallback(response) {
                 var $i = 0;
                 var $filtered = [];
 
-                $allContent.forEach(function(batch) {
+                response.forEach(function(batch) {
                     console.log('page');
                     console.log($i);
 
                         var endContent = [];
 
-                        endContent['regular'] =  batch['regular'].filter(checkByCriterion);
+                        endContent['regular'] = batch.data['regular'];
 
                         if($criterion != null && $criterion != 'idea'){
                             endContent['featured'] = [];
                         }else{
-                            endContent['featured'] =  batch['featured']; // we don't filter
+                            endContent['featured'] =  batch.data['featured']; // we don't filter
                         }
-
-                        endContent['regular'] =  endContent['regular'].concat(response[$i].data['regular']);
-                    console.log("response[$i].data['regular']");
-                    console.log(response);
 
                         $filtered[$i] = $sliceFunction(endContent['regular'], endContent['featured'] );
                         $i++;
                     });
 
-                var $return = [];
-                $return['content'] = $filtered;
-                $return['offset']  = $totalOffset;
+                var $return = $filtered;
 
                 return $return;
             });
             return $return;
-
         }
 
         return pagaingApi;
