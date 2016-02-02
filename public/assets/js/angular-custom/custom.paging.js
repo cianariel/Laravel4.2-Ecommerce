@@ -6,6 +6,7 @@ angular.module('pagingApp.controllers', []).
         $scope.currentPage = 1;
         $scope.contentBlock = angular.element( document.querySelector('.main-content') );
         $scope.filterLoad = [];
+        $scope.globalOffset = 0;
 
         $scope.firstLoad = pagaingApi.getContent(1, 0).success(function (response) {
             $scope.allContent[0] = response;
@@ -20,13 +21,16 @@ angular.module('pagingApp.controllers', []).
             if(!$scope.filterBy || typeof $scope.filterBy === 'undefined'){
                 var $limit = 0;
                 $scope.filterBy = null;
+                $scope.globalOffset = false;
             }else{
                 var $limit = 9;
             }
 
             //console.log($scope.currentPage)
 
-            $scope.nextLoad =  pagaingApi.getContent($scope.currentPage, $limit, $scope.filterBy).success(function (response) {
+            console.log($scope.globalOffset)
+
+            $scope.nextLoad =  pagaingApi.getContent($scope.currentPage, $limit, $scope.filterBy, $scope.globalOffset).success(function (response) {
                 $scope.newStuff[0] = $scope.sliceToRows(response['regular'], response['featured']);
                 $scope.content = $scope.content.concat($scope.newStuff);
 
@@ -42,12 +46,46 @@ angular.module('pagingApp.controllers', []).
 
         $scope.filterContent = function($criterion){
             $('.main-content').fadeOut(500, function(){
-                $scope.filterBy = $criterion;
+                var $replacer = [];
+
+                if($scope.filterBy === $criterion){
+                        return true;
+
+                }else if(typeof $criterion === 'undefined' || $criterion === null || $criterion === 'all'){
+                        $scope.nextLoad = pagaingApi.getContent(1).success(function (response) {
+                            $scope.allContent[0] = response;
+                            $replacer[0] = $scope.sliceToRows(response['regular'], response['featured']);
+                        });
+
+                            $scope.content = $replacer;
+                            $scope.globalOffset = false;
+
+                            $('.main-content').fadeIn();
+
+                        return true;
+
+                    }else if(typeof $scope.filterBy !== 'undefined' && $scope.filterBy && $scope.filterBy !== null){ // change from one filter to another
+                        $scope.nextLoad = pagaingApi.getContent(1, 9, $criterion).success(function (response) {
+                            $replacer[0] = $scope.sliceToRows(response['regular'], response['featured']);
+                            $scope.allContent[0] = response;
+                        });
+
+                            $scope.content = $replacer;
+                            $scope.globalOffset = false;
+
+                            $('.main-content').fadeIn();
+
+                        $scope.filterBy = $criterion;
+                        return true;
+                    }
+
+               $scope.filterBy = $criterion;
 
                $scope.nextLoad = pagaingApi.getData($scope.allContent, $criterion, $scope.sliceToRows).then(function(response){
-                    var $newStuff = response;
+                    var $newStuff       = response['content'];
+                    $scope.globalOffset = response['offset']
 
-                    $scope.content = $newStuff;
+                   $scope.content = $newStuff;
                     $scope.allContent = $scope.allContent.concat($newStuff);
                     $('.main-content').fadeIn(500);
                 });
@@ -125,7 +163,7 @@ angular.module('pagingApp.services', []).
                 return value.type == $criterion;
             }
 
-            var $filtered = $q.all(promiseArray).then(function successCallback(response) {
+            var $return = $q.all(promiseArray).then(function successCallback(response) {
                 var $i = 0;
                 var $filtered = [];
 
@@ -145,15 +183,19 @@ angular.module('pagingApp.services', []).
 
                         endContent['regular'] =  endContent['regular'].concat(response[$i].data['regular']);
                     console.log("response[$i].data['regular']");
-                    console.log(response[$i].data['regular']);
+                    console.log(response);
 
                         $filtered[$i] = $sliceFunction(endContent['regular'], endContent['featured'] );
                         $i++;
                     });
 
-                return $filtered;
+                var $return = [];
+                $return['content'] = $filtered;
+                $return['offset']  = $totalOffset;
+
+                return $return;
             });
-            return $filtered;
+            return $return;
 
         }
 
