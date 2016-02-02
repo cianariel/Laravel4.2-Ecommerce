@@ -29,9 +29,9 @@ class PageController extends Controller
 
     public function getContent($page = 1, $limit = 5, $returnOnly = false, $offset = false){
 
+        $offset = false;
 
         if((!$offset || $offset == 'undefined') && ($limit == 'undefined' || $limit == 0)){
-//            $limit = 5;
             $productLimit = 6;
             $productOffset = 6 * ($page - 1);
 
@@ -42,14 +42,8 @@ class PageController extends Controller
             $productLimit = $limit;
             $storyLimit = $limit;
 
-            if($offset){
-                $productOffset = $offset;
-                $storyOffset = $offset;
-            }else{
-                $productOffset = $limit *  ($page - 1);
-                $storyOffset = 4 *  ($page - 1);
-            }
-
+            $productOffset = $limit *  ($page - 1);
+            $storyOffset =   $limit *  ($page - 1);
         }
 
 
