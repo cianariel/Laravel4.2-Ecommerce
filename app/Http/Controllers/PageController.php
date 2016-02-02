@@ -20,9 +20,11 @@ class PageController extends Controller
      */
     public function home()
     {
-        $content = self::getContent();
+//        for($i = 0; $i < $pages; $i++){
+//            $content[] = self::getContent($i + 1);
+//        }
 
-        return view('home')->with('content', $content);
+        return view('home');
     }
 
     public function getContent($page = 1, $limit = 5, $returnOnly = false, $offset = false){
@@ -37,12 +39,12 @@ class PageController extends Controller
             $storyOffset = 4 *  ($page - 1);
 
         }else{
-            $productLimit = $limit + 2;
+            $productLimit = $limit;
             $storyLimit = $limit;
 
             if($offset){
-                $productOffset = $offset *  ($page - 1);
-                $storyOffset = $offset *  ($page - 1);
+                $productOffset = $offset;
+                $storyOffset = $offset;
             }else{
                 $productOffset = $limit *  ($page - 1);
                 $storyOffset = 4 *  ($page - 1);
@@ -82,7 +84,9 @@ class PageController extends Controller
         $return['regular'] = array_merge($stories['regular'], $products['result']);
         $return['featured'] = $stories['featured'];
 
-        usort($return['regular'], function($a, $b) { return strtotime(@$b->updated_at) - strtotime(@$a->updated_at);});
+        usort($return['regular'], function($a, $b) {
+            return strtotime(@$b->updated_at) - strtotime(@$a->updated_at);
+        });
 
         return $return;
     }
