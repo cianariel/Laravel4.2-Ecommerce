@@ -298,7 +298,7 @@
             }
 
 
-            $skip = isset($settings['CustomSkip'])? intval($settings['CustomSkip']):$settings['limit'] * ($settings['page'] - 1);
+            $skip = isset($settings['CustomSkip']) ? intval($settings['CustomSkip']) : $settings['limit'] * ($settings['page'] - 1);
 
 
 //            $skip = $settings['limit'] * ($settings['page'] - 1);
@@ -397,7 +397,11 @@
             $selfImage = [];
             foreach ($productData['product']->medias as $key => $value)
             {
-                if (($value->media_type == 'img-upload' || $value->media_type == 'img-link') && ($value->is_hero_item == null || $value->is_hero_item == false))
+                // if (($value->media_type == 'img-upload' || $value->media_type == 'img-link') && ($value->is_hero_item == null || $value->is_hero_item == false))
+                if (($value->media_type == 'img-upload' || $value->media_type == 'img-link')
+                    && ($value->is_hero_item == null || $value->is_hero_item == false)
+                    && ($value->is_main_item == null || $value->is_main_item == false)
+                )
                 {
                     $selfImage['picture'][ $key ]['link'] = $value->media_link;
                     $selfImage['picture'][ $key ]['picture-name'] = $value->media_name;
