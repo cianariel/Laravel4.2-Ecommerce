@@ -173,10 +173,11 @@ controller('pagingController', function ($scope, $http, pagaingApi) {
             }
 
             else if (data.status_code == 200) {
-                $scope.responseMessage = "Successfully Registered";
+                $scope.responseMessage = "Successfully Subscribed";
+                $scope.SubscriberEmail = '';
+
             } else {
                 $scope.responseMessage = "Email already subscribed";
-
             }
 
         });

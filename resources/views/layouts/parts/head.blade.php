@@ -56,6 +56,8 @@ if (screen.width < 992 && screen.width > 620) {
 <link rel="stylesheet" href="/assets/css/autocomplete.css">
 
 <script src="/assets/js/vendor/angular.min.js"></script>
+<script src="/assets/js/vendor/ui-bootstrap.min.js"></script>
+<script src="/assets/js/vendor/textAngular-sanitize.min.js"></script>
 
 <style>
     .homepage-grid{

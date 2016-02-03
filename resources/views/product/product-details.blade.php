@@ -665,4 +665,6 @@
             </section>
         </main>
     </div>
+    <script type="text/javascript" src="/assets/js/vendor/autocomplete.js"></script>
+    <script src="/assets/product/js/custom.product.js"></script>
 @stop
