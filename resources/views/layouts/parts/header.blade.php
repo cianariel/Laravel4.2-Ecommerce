@@ -7,21 +7,8 @@
                             <div class="mobile-menu col-xs-8 hidden-soft">
                                 <ul>
                                     <li><a class="ideas-link" href="#">Ideas</a></li>
-                                    <li><a class="products-link" href="#">Products</a></li>
-                                    <li><a class="photos-link" href="#">Photos</a></li>
-                                    <li class="rooms nested">
-                                        <a class="rooms-link" href="#">Rooms</a>
-
-                                        <ul>
-                                            <li><a href="#">Kitchen</a></li>
-                                            <li><a href="#">Bath</a></li>
-                                            <li><a href="#">Bedroom</a></li>
-                                            <li><a href="#">Office</a></li>
-                                            <li><a href="#">Outdoor</a></li>
-                                            <li><a href="#">Lighting</a></li>
-                                            <li><a href="#">Decor</a></li>
-                                        </ul>
-                                    </li>
+                                    <li><a class="products-link" href="#">Shop</a></li>
+                                    <li><a class="photos-link" href="#">Discuss</a></li>
 
                                 </ul>
                             </div>
@@ -36,13 +23,13 @@
                                     </li>
                                     <li class="nested">
                                         
-                                        <a class="shop" data-toggle=".shop-menu" href="#"><i class=" m-icon--item"></i>&nbsp;
+                                        <a class="shop" data-toggle=".shop-menu" href="#"><i class="m-icon m-icon--item"></i>&nbsp;
                                             <span class="m-icon-text">Shop</span> 
                                             <span class="box-link-active-line"></span>
                                         </a>
                                     </li>
                                     <li>
-                                        <a class="disc" href="#"><i class="m-icon--buble"></i>&nbsp;
+                                        <a class="disc" href="#"><i class="m-icon m-icon--discuss-active"></i>&nbsp;
                                             <span class="m-icon-text">Discuss</span>
                                         </a>
                                     </li>
@@ -57,17 +44,17 @@
                                 </a>
                             </div>
 
-                            <div class="mobile-wrap">
-                                <div  class="col-md-4 col-sm col-xs-4 category-menu mobile-category-menu hidden shown-620">
+                            <div class="">
+                                <!--<div  class="col-md-4 col-sm col-xs-4 category-menu mobile-category-menu hidden-xs hidden shown-620">
                                     <ul>
                                         <li class="nested"><a class="shop" href="">Shop</a></li>
                                         <li><a class="disc" href="">Discuss</a></li>
                                         <li><a class="ideas" href="">Ideas</a></li>
                                     </ul>
-                                </div>
+                                </div>-->
 
                                 <div class="col-md-1 col-xs-2 pull-right signin">
-                                    <a data-toggle="modal" data-target="#myModal" href="#">Log in</a>
+                                    <a data-toggle="modal" data-target="#myModal" href="#"><i class="m-icon m-icon--user"></i> Log in</a>
                                 </div>
                                 <section class="search-bar col-xs-2 col-md-2 pull-right">
                                     <a href="#" class="search-toggle" data-toggle=".mobile-search-bar">Search</a>

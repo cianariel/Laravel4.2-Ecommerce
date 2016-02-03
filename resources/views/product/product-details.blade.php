@@ -48,13 +48,21 @@
                         {{$productInformation['ProductName']}}
                     @endif
                 </span>
-                <a class="like-counter" href="#"><b><i class="m-icon m-icon--heart-solid"></i>&nbsp;1819</b></a>
+                <ul class="social-stats center-block ">
+                    <li class="social-stats__item">
+                        <a href="#">
+                            <i class="m-icon m-icon--heart"></i>
+                            <span class="social-stats__text">1819</span>
+                        </a>
+                    </li>
+                </ul>
+<!--                <a class="like-counter" href="#"><i class="m-icon m-icon--heart-solid"></i>&nbsp;<b>1819</b></a>-->
             </h1>
 
             <ul class="share-buttons short hidden-xs col-lg-6 col-sm-8 pull-right">
                 <li class="all-shares"><b>120K </b>all shares</li>
-                <li><a class="fb" href="#"><span></span><b>189</b></a></li>
-                <li><a class="twi" href="#"><span></span><b>189</b></a></li>
+                <li><a class="fb" href="#"><i class="m-icon m-icon--facebook-id"></i> <b>189</b></a></li>
+                <li><a class="twi" href="#"><i class="m-icon  m-icon--twitter-id"></i> <b>189</b></a></li>
             </ul>
 
             {{--<ul class="like-nav hidden-xs pull-right pull-right">--}}
@@ -96,8 +104,12 @@
                     </div>
                     <div class="col-sm-4">
                         <div class="average-score">
-                            <div class="score">@if(isset($productInformation['Review']) && isset($productInformation['IdeaingReviewScore']))
-                                    {{intval((($productInformation['Review'][0]->value + $productInformation['IdeaingReviewScore'])/2)*20)}}@endif%
+                            
+                            <div class="score">
+                                <i class="m-icon  m-icon--bulb-detailed-on-rating"></i>
+                                @if(isset($productInformation['Review']) && isset($productInformation['IdeaingReviewScore']))
+                                    {{intval((($productInformation['Review'][0]->value + $productInformation['IdeaingReviewScore'])/2)*20)}}
+                                @endif%
                             </div>
                             <span class="caption">Average Ideaing Score</span>
                         </div>
@@ -220,7 +232,7 @@
                                 @endif
                             </div>
                         </div>
-                        <div class="table">
+                        <div class="table hide">
                             <ul>
                                 <li>
                                     <a href="/pro/@if(isset($storeInformation['Identifier'])){{$storeInformation['Identifier']}}@endif">
@@ -238,10 +250,10 @@
         <nav id="hero-nav" class="product-nav col-sm-12">
             <div class="container full-620 fixed-sm">
                 <ul class="category-nav full-620">
-                    <li><a href="#" class="photos-link">Photos</a></li>
-                    <li><a href="#" class="features-link"><i class=""></i>&nbsp;Features</a></li>
+                    <li><a href="#" class="photos-link"><i class="m-icon m-icon--photos"></i>&nbsp;Photos</a></li>
+                    <li><a href="#" class="features-link"><i class="m-icon m-icon--features-c1"></i>&nbsp;Features</a></li>
                     <li><a href="#" data-scrollto="#specs" class="specs-link"><i class="m-icon m-icon--specs"></i>&nbsp;Specs</a></li>
-                    <li><a href="#" data-scrollto="#compare" class="compare-link"><i class="m-icon m-icon--specs"></i>&nbsp;Comparisons</a></li>
+                    <li><a href="#" data-scrollto="#compare" class="compare-link"><i class="m-icon  m-icon--comparisons-active"></i>&nbsp;Comparisons</a></li>
                     <li><a href="#" data-scrollto="#reviews" class="reviews-link"><i class="m-icon m-icon--reviews"></i>&nbsp;Reviews</a></li>
                 </ul>
             </div>
@@ -402,6 +414,7 @@
                                 <div class="text-center col-xs-4">
                                     <div class="average-score">
                                         <div class="score">
+                                            <i class="m-icon  m-icon--bulb-detailed-on-rating"></i>
                                             80%
                                         </div>
                                         <span class="caption">Average Ideaing Score</span>
@@ -419,6 +432,7 @@
                                 <div class=" col-xs-12">
                                     <div class="average-score block-center">
                                         <div class="score">
+                                            <i class="m-icon  m-icon--bulb-detailed-on-rating"></i>
                                             80%
                                         </div>
                                         <span class="caption">Average Ideaing Score</span>
@@ -572,7 +586,7 @@
                                           placeholder="Share your thoughts"></textarea>
 
                                 <div class="pull-right comment-controls">
-                                    <a href="#" class="add-photo">Add a photo</a>
+                                    <a href="#" class="add-photo"><i class="m-icon m-icon--camera"></i> Add a photo</a>
                                     <button class="btn btn-info">Post</button>
                                 </div>
                             </div>
