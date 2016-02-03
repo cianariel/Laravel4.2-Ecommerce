@@ -1,15 +1,15 @@
 @font-face {
     font-family: 'ideaing';
-    src:    url('fonts/ideaing.eot?ihntq8');
-    src:    url('fonts/ideaing.eot?ihntq8#iefix') format('embedded-opentype'),
-        url('fonts/ideaing.ttf?ihntq8') format('truetype'),
-        url('fonts/ideaing.woff?ihntq8') format('woff'),
-        url('fonts/ideaing.svg?ihntq8#ideaing') format('svg');
+    src:    url('fonts/ideaing.eot?nty1yg');
+    src:    url('fonts/ideaing.eot?nty1yg#iefix') format('embedded-opentype'),
+        url('fonts/ideaing.ttf?nty1yg') format('truetype'),
+        url('fonts/ideaing.woff?nty1yg') format('woff'),
+        url('fonts/ideaing.svg?nty1yg#ideaing') format('svg');
     font-weight: normal;
     font-style: normal;
 }
 
-.m-icon {
+[class^="m-icon--"], [class*=" m-icon--"] {
     /* use !important to prevent issues with browser extensions that change fonts */
     font-family: 'ideaing' !important;
     speak: none;
@@ -24,14 +24,159 @@
     -moz-osx-font-smoothing: grayscale;
 }
 
-.m-icon--heart-solid:before {
-    content: "\e906";
+.m-icon--specs:before {
+    content: "\e907";
 }
-.m-icon--heart:before {
-    content: "\e901";
+.m-icon--reviews:before {
+    content: "\e935";
+}
+.m-icon--comments-products:before {
+    content: "\e908";
+}
+.m-icon--facebook-id:before {
+    content: "\e909";
+}
+.m-icon--heart-id:before {
+    content: "\e90a";
+}
+.m-icon--pinterest-id:before {
+    content: "\e90b";
+}
+.m-icon--twitter-id:before {
+    content: "\e90c";
+}
+.m-icon--browse-all:before {
+    content: "\e90d";
+}
+.m-icon--browse-all-active:before {
+    content: "\e90e";
+}
+.m-icon--homeicon:before {
+    content: "\e90f";
+}
+.m-icon--smart-home:before {
+    content: "\e910";
+}
+.m-icon--smart-home-active:before {
+    content: "\e911";
+}
+.m-icon--travel:before {
+    content: "\e912";
+}
+.m-icon--travel-active:before {
+    content: "\e913";
+}
+.m-icon--wearables:before {
+    content: "\e914";
+}
+.m-icon--wearables-active:before {
+    content: "\e915";
+}
+.m-icon--alert:before {
+    content: "\e916";
+}
+.m-icon--alert-active:before {
+    content: "\e917";
+}
+.m-icon--bulb-detailed-on-rating:before {
+    content: "\e918";
+}
+.m-icon--calender .path1:before {
+    content: "\e919";
+    color: rgb(199, 199, 70);
+}
+.m-icon--calender .path2:before {
+    content: "\e91a";
+    margin-left: -1em;
+    color: rgb(255, 255, 255);
+}
+.m-icon--calender .path3:before {
+    content: "\e91b";
+    margin-left: -1em;
+    color: rgb(243, 243, 243);
+}
+.m-icon--calender .path4:before {
+    content: "\e91c";
+    margin-left: -1em;
+    color: rgb(75, 74, 68);
+}
+.m-icon--camera:before {
+    content: "\e91d";
+}
+.m-icon--camera-active:before {
+    content: "\e91e";
+}
+.m-icon--discuss-active-products:before {
+    content: "\e91f";
+}
+.m-icon--discuss-products:before {
+    content: "\e920";
+}
+.m-icon--discuss-products-active:before {
+    content: "\e921";
+}
+.m-icon--heart2:before {
+    content: "\e922";
+}
+.m-icon--house:before {
+    content: "\e923";
+}
+.m-icon--house-active:before {
+    content: "\e924";
+}
+.m-icon--shares:before {
+    content: "\e925";
+}
+.m-icon--shares-active:before {
+    content: "\e926";
+}
+.m-icon--star:before {
+    content: "\e927";
+}
+.m-icon--star-blue:before {
+    content: "\e928";
+}
+.m-icon--star-blue-half:before {
+    content: "\e929";
+}
+.m-icon--star-half-active:before {
+    content: "\e92a";
+}
+.m-icon--star-half-inactive:before {
+    content: "\e92b";
+}
+.m-icon--star-inactive:before {
+    content: "\e92c";
+}
+.m-icon--star-outline:before {
+    content: "\e92d";
+}
+.m-icon--star-outline-inactive:before {
+    content: "\e92e";
+}
+.m-icon--bulb:before {
+    content: "\e92f";
+}
+.m-icon--bulb-active:before {
+    content: "\e930";
+}
+.m-icon--discuss:before {
+    content: "\e931";
+}
+.m-icon--discuss-active:before {
+    content: "\e932";
+}
+.m-icon--user:before {
+    content: "\e933";
+}
+.m-icon--user-active:before {
+    content: "\e934";
 }
 .m-icon--buble:before {
     content: "\e900";
+}
+.m-icon--heart:before {
+    content: "\e901";
 }
 .m-icon--image:before {
     content: "\e902";
@@ -44,5 +189,8 @@
 }
 .m-icon--menu:before {
     content: "\e905";
+}
+.m-icon--heart-solid:before {
+    content: "\e906";
 }
 

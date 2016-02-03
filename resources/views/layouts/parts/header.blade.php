@@ -27,14 +27,33 @@
                             </div>
                             <div  class="col-xs-5 category-menu hidden-620">
                                 <ul>
-                                    <li><a class="ideas" href="#">Ideas</a></li>
-                                    <li class="nested"><a class="shop" data-toggle=".shop-menu" href="#">Shop</a></li>
-                                    <li><a class="disc" href="#">Discuss</a></li>
+                                    <li>
+                                        <a class="ideas" href="#">
+                                            <i class="m-icon m-icon--bulb"></i>&nbsp;
+                                            <span class="m-icon-text">Ideas</span>
+                                            <span class="box-link-active-line"></span>
+                                        </a>
+                                    </li>
+                                    <li class="nested">
+                                        
+                                        <a class="shop" data-toggle=".shop-menu" href="#"><i class=" m-icon--item"></i>&nbsp;
+                                            <span class="m-icon-text">Shop</span> 
+                                            <span class="box-link-active-line"></span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="disc" href="#"><i class="m-icon--buble"></i>&nbsp;
+                                            <span class="m-icon-text">Discuss</span>
+                                        </a>
+                                    </li>
                                 </ul>
                             </div>
 
                             <div class="col-xs-3 logo-wrap">
-                                <a id="ideaing-logo" class="logo top-logo center-block" href="/">
+                                <a id="ideaing-logo" class="center-block" href="/">
+                                    <img src="/assets/images/logo.png" class="img-responsive " alt="">
+                                    <span class="scroll-logo"></span>
+                                    <img src="/assets/images/logo-hover.png" class="img-responsive " alt="">
                                 </a>
                             </div>
 
@@ -208,6 +227,10 @@
         <nav class="mid-nav rooms hidden-620">
             <div class="container full-sm fixed-sm">
                 <ul class="wrap col-xs-9">
+                    <li class="home ">
+                        <span class="box-link-active-line"></span>
+                        <a href=""><i class="m-icon m-icon--smart-home"></i> Smart Home</a>
+                    </li>
                     <li><a href="">Kitchen</a></li>
                     <li><a href="">Bedroom</a></li>
                     <li><a href="">Office</a></li>

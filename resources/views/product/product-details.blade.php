@@ -17,16 +17,16 @@
                         {{--<li><a href="#" class="orange box-link">Style</a></li>--}}
 
                         @if(isset($productInformation['CatTree']))
-                            @foreach( $productInformation['CatTree'] as $category )
-                                <li>
-                                    <a class="box-link"
+                            @foreach( $productInformation['CatTree'] as $key => $category )
+                                <li class="box-link-ul @if($key==0) active-ul @endif">
+                                    <span class="box-link-active-line"></span>
+                                    <a class="box-link @if($key==0) active @endif"
                                        href="/category/@if(isset($category['CategoryPermalink'])){{$category['CategoryPermalink']}}@endif"
                                        @if($category == end($productInformation['CatTree']))class="current"
                                             @endif>
                                         @if(isset($category['CategoryName']))
                                             {{$category['CategoryName']}}
                                         @endif
-
                                     </a>
                                 </li>
                                 <li class="horizontal-line-holder hidden-xs hidden-sm">
@@ -43,10 +43,12 @@
             </a>
 
             <h1>
-                @if(isset($productInformation['ProductName']))
-                    {{$productInformation['ProductName']}}
-                @endif
-                <a class="like-counter" href="#"><i class="m-icon m-icon--heart"></i>&nbsp;<b>1819</b></a>
+                <span class="title">
+                    @if(isset($productInformation['ProductName']))
+                        {{$productInformation['ProductName']}}
+                    @endif
+                </span>
+                <a class="like-counter" href="#"><b><i class="m-icon m-icon--heart-solid"></i>&nbsp;1819</b></a>
             </h1>
 
             <ul class="share-buttons short hidden-xs col-lg-6 col-sm-8 pull-right">
@@ -84,20 +86,22 @@
                 {{----}}
                 {{--</ul>--}}
                 {{--</nav>--}}
-                <div class="col-sm-3">
-                    <div class="average-score">
-                        <div class="score">@if(isset($productInformation['Review']) && isset($productInformation['IdeaingReviewScore']))
-                                {{intval((($productInformation['Review'][0]->value + $productInformation['IdeaingReviewScore'])/2)*20)}}@endif%
-                        </div>
-                        <span class="caption">Average Ideaing Score</span>
+                <div class="row">
+                    <div class="col-sm-8">
+                        <h1>
+                            @if(isset($productInformation['ProductName']))
+                                {{$productInformation['ProductName']}}
+                            @endif
+                        </h1>
                     </div>
-                </div>
-                <div class="col-sm-9">
-                    <h1>
-                        @if(isset($productInformation['ProductName']))
-                            {{$productInformation['ProductName']}}
-                        @endif
-                    </h1>
+                    <div class="col-sm-4">
+                        <div class="average-score">
+                            <div class="score">@if(isset($productInformation['Review']) && isset($productInformation['IdeaingReviewScore']))
+                                    {{intval((($productInformation['Review'][0]->value + $productInformation['IdeaingReviewScore'])/2)*20)}}@endif%
+                            </div>
+                            <span class="caption">Average Ideaing Score</span>
+                        </div>
+                    </div>
                 </div>
 
 
@@ -113,12 +117,11 @@
 
                 <div class="slider product-slider">
                     <script>
-                        jQuery(document).ready(function ($) {
+      jQuery(document).ready(function($) {
                             if (window.innerWidth < 480) {
 
                                 $('#gallery').royalSlider({
                                     arrowsNav: true,
-                                    loop: false,
                                     keyboardNavEnabled: true,
                                     controlsInside: false,
                                     imageScaleMode: 'fit',
@@ -236,10 +239,10 @@
             <div class="container full-620 fixed-sm">
                 <ul class="category-nav full-620">
                     <li><a href="#" class="photos-link">Photos</a></li>
-                    <li><a href="#" class="features-link">Features</a></li>
-                    <li><a href="#" data-scrollto="#specs" class="specs-link">Specs</a></li>
-                    <li><a href="#" data-scrollto="#compare" class="compare-link">Comparisons</a></li>
-                    <li><a href="#" data-scrollto="#reviews" class="reviews-link">Reviews</a></li>
+                    <li><a href="#" class="features-link"><i class=""></i>&nbsp;Features</a></li>
+                    <li><a href="#" data-scrollto="#specs" class="specs-link"><i class="m-icon m-icon--specs"></i>&nbsp;Specs</a></li>
+                    <li><a href="#" data-scrollto="#compare" class="compare-link"><i class="m-icon m-icon--specs"></i>&nbsp;Comparisons</a></li>
+                    <li><a href="#" data-scrollto="#reviews" class="reviews-link"><i class="m-icon m-icon--reviews"></i>&nbsp;Reviews</a></li>
                 </ul>
             </div>
         </nav>
@@ -286,7 +289,7 @@
 
                 </section>
 
-                <section class="comparison" id="compare">
+                <section class="comparison hidden-xs hidden-sm" id="compare">
                     <div class="container">
                         <h3 class="purple">Comparisons</h3>
 
@@ -452,18 +455,26 @@
                                     <div class="vertical-line visible-xs"></div>
                                     <div class="title">Amazon</div>
                                     <div class="reviews">Reviews</div>
-                                    <div class="value">8,5</div>
-                                    <div class="outer-line">
-                                        <div class="inner-line" style="width:95%"></div>
-                                    </div><br>
-                                    <div class="amazon-value">8,550</div>
                                     <div class="star-raiting" style="text-align: center">
-                                        <span class="star active"></span>
-                                        <span class="star active"></span>
-                                        <span class="star active"></span>
-                                        <span class="star active"></span>
-                                        <span class="star"></span>
-                                    </div><br>
+                                        <?php 
+                                            $stars = 3.5; 
+                                            $fStar = floor($stars);
+                                            $cStar = ceil($stars);
+                                            $halfStar = -1;
+                                            if($fStar == $cStar)
+                                                $halfStar = $cStar;
+                                            
+                                        ?>
+                                        @for($i=1; $i<=5; $i++)
+                                            @if($i <= $fStar)
+                                                <span class="star active"></span>
+                                            @elseif($cStar == $i)
+                                                <span class="star half"></span>
+                                            @else
+                                                <span class="star"></span>
+                                            @endif
+                                        @endfor
+                                    </div>
                                     <p class="text-center">
                                         2,567 <span class="light-black">Reviews</span>
                                     </p>

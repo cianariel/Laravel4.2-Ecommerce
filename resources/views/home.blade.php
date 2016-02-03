@@ -10,7 +10,6 @@
         </div>
 
     @endif
-    <div  ng-app="pagingApp" ng-controller="pagingController">
     <section id="hero" class="landing-hero">
         <div class="hero-background"></div>
         <div class="color-overlay"></div>
@@ -42,7 +41,7 @@
             </div>--}}
             <div class="col-md-4 col-xs-6 col-md-offset-1 hero-box qiuck-signup hidden-620">
                 <div style="background-color: lightgrey; text-align: center;">
-                   <strong style="color: red">@{{ responseMessage }}</strong>
+                    <strong style="color: red">@{{ responseMessage }}</strong>
                 </div>
                 <form>
                     <h4>
@@ -57,19 +56,41 @@
             </div>
 
 
+
+
         </div>
     </section>
-    <div class="app-wrap">
+    <div class="app-wrap" ng-app="pagingApp" ng-controller="pagingController">
         <nav id="hero-nav" class="col-sm-12">
             <div class="container full-620  fixed-sm">
                 {{--<ul class="left-nav col-xs-1 hidden-620">--}}
                     {{--<li class="active"><a class="home-link" href="#">Home</a></li>--}}
                 {{--</ul>--}}
                 <ul class="category-nav main-content-filter">
-                    <li class="active"><a ng-click="filterContent(null)"  href="" data-filterby="all" class="all-link">All</a></li>
-                    <li><a ng-click="filterContent('idea')" data-filterby="ideas" href="" class="ideas-link">Ideas</a></li>
-                    <li><a  ng-click="filterContent('product')" data-filterby="products" href="" class="products-link">Products</a></li>
-                    <li><a data-filterby="photos" href="" class="photos-link">Photos</a></li>
+                    <li class="active">
+                        <a ng-click="filterContent(null)"  href="" data-filterby="all" class="all-link">
+                            <i class="m-icon--menu"></i>&nbsp;
+                            All
+                        </a>
+                    </li>
+                    <li>
+                        <a ng-click="filterContent('idea')" data-filterby="ideas" href="" class="ideas-link">
+                            <i class="m-icon m-icon--bulb"></i>
+                            Ideas
+                        </a>
+                    </li>
+                    <li>
+                        <a  ng-click="filterContent('product')" data-filterby="products" href="" class="products-link">
+                            <i class="m-icon--item"></i>&nbsp;
+                            Products
+                        </a>
+                    </li>
+                    <li>
+                        <a data-filterby="photos" href="" class="photos-link">
+                            <i class=" m-icon--image"></i>&nbsp;
+                            Photos
+                        </a>
+                    </li>
                 </ul>
             </div>
         </nav>
@@ -81,7 +102,7 @@
                 {{--<div class="loader loader-abs" cg-busy="filterLoad"></div>--}}
                 <div class="loader loader-fixed" cg-busy="nextLoad"></div>
 
-                <div ng-repeat="batch in content" class="container main-content"  >
+                <div ng-repeat="batch in content" class="container main-content">
                     <div class="grid-box-3">
                             <div class="box-item idea-box" ng-if="item.type == 'idea'" ng-repeat="item in batch['row-1']">
                                 @include('grid.idea')
@@ -141,8 +162,7 @@
             <a ng-click="loadMore()" class="btn btn-success bottom-load-more col-xs-12">Load More</a>
         </div>
 
-    </div>
-    </div>
+        </div>
     <script src="/assets/js/vendor/angular-busy.min.js"></script>
     <script src="/assets/js/angular-custom/custom.paging.js"></script>
 @stop
