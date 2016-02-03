@@ -49,7 +49,12 @@
                             All
                         </a>
                     </li>
-                    <li><a ng-click="filterContent('idea')" data-filterby="ideas" href="" class="ideas-link">Ideas</a></li>
+                    <li>
+                        <a ng-click="filterContent('idea')" data-filterby="ideas" href="" class="ideas-link">
+                            <i class="m-icon m-icon--bulb"></i>
+                            Ideas
+                        </a>
+                    </li>
                     <li>
                         <a  ng-click="filterContent('product')" data-filterby="products" href="" class="products-link">
                             <i class="m-icon--item"></i>&nbsp;
@@ -73,7 +78,7 @@
                 {{--<div class="loader loader-abs" cg-busy="filterLoad"></div>--}}
                 <div class="loader loader-fixed" cg-busy="nextLoad"></div>
 
-                <div ng-repeat="batch in content" class="container main-content"  >
+                <div ng-repeat="batch in content" class="container main-content">
                     <div class="grid-box-3">
                             <div class="box-item idea-box" ng-if="item.type == 'idea'" ng-repeat="item in batch['row-1']">
                                 @include('grid.idea')
@@ -133,7 +138,7 @@
             <a ng-click="loadMore()" class="btn btn-success bottom-load-more col-xs-12">Load More</a>
         </div>
 
-    </div>
+        </div>
     <script src="/assets/js/vendor/angular-busy.min.js"></script>
     <script src="/assets/js/angular-custom/custom.paging.js"></script>
 @stop

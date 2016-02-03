@@ -29,22 +29,31 @@
                                 <ul>
                                     <li>
                                         <a class="ideas" href="#">
-                                            Ideas
+                                            <i class="m-icon m-icon--bulb"></i>&nbsp;
+                                            <span class="m-icon-text">Ideas</span>
                                             <span class="box-link-active-line"></span>
                                         </a>
                                     </li>
                                     <li class="nested">
                                         
-                                        <a class="shop" data-toggle=".shop-menu" href="#"><i class=" m-icon--item"></i>&nbsp;Shop<span class="box-link-active-line"></span></a>
+                                        <a class="shop" data-toggle=".shop-menu" href="#"><i class=" m-icon--item"></i>&nbsp;
+                                            <span class="m-icon-text">Shop</span> 
+                                            <span class="box-link-active-line"></span>
+                                        </a>
                                     </li>
-                                    <li><a class="disc" href="#"><i class="m-icon--buble"></i>&nbsp;Discuss</a></li>
+                                    <li>
+                                        <a class="disc" href="#"><i class="m-icon--buble"></i>&nbsp;
+                                            <span class="m-icon-text">Discuss</span>
+                                        </a>
+                                    </li>
                                 </ul>
                             </div>
 
                             <div class="col-xs-3 logo-wrap">
                                 <a id="ideaing-logo" class="center-block" href="/">
-                                    <img src="{{url('assets/images/logo.png')}}" class="img-responsive" alt="">
-                                    <img src="{{url('assets/images/logo-hover.png')}}" class="img-responsive" alt="">
+                                    <img src="/assets/images/logo.png" class="img-responsive " alt="">
+                                    <span class="scroll-logo"></span>
+                                    <img src="/assets/images/logo-hover.png" class="img-responsive " alt="">
                                 </a>
                             </div>
 
@@ -220,7 +229,7 @@
                 <ul class="wrap col-xs-9">
                     <li class="home ">
                         <span class="box-link-active-line"></span>
-                        <a href="">Smart Home</a>
+                        <a href=""><i class="m-icon m-icon--smart-home"></i> Smart Home</a>
                     </li>
                     <li><a href="">Kitchen</a></li>
                     <li><a href="">Bedroom</a></li>
