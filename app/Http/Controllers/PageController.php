@@ -20,19 +20,33 @@ class PageController extends Controller
      */
     public function home()
     {
-        $content = self::getContent();
+//        for($i = 0; $i < $pages; $i++){
+//            $content[] = self::getContent($i + 1);
+//        }
 
-        return view('home')->with('content', $content);
+        return view('home');
     }
 
-    public function getContent($page = 1, $limit = 4, $returnOnly = false){
+    public function getContent($page = 1, $limit = 5, $returnOnly = false, $offset = false){
 
-        if($limit == 'undefined'){
-            $limit = 4;
+        $offset = false;
+
+        if((!$offset || $offset == 'undefined') && ($limit == 'undefined' || $limit == 0)){
+            $productLimit = 6;
+            $productOffset = 6 * ($page - 1);
+
+            $storyLimit = 3;
+            $storyOffset = 4 *  ($page - 1);
+
+        }else{
+            $productLimit = $limit;
+            $storyLimit = $limit;
+
+            $productOffset = $limit *  ($page - 1);
+            $storyOffset =   $limit *  ($page - 1);
         }
 
-        $storyLimit = $limit;
-        $storyOffset = 4 *  ($page - 1);
+
 
 //        if($returnOnly == 'idea'){
 //            $productLimit = $limit;
@@ -41,16 +55,14 @@ class PageController extends Controller
         $featuredLimit = 3;
         $featuredOffset = $featuredLimit * ($page - 1);
 
-        if($returnOnly == 'product'){
-            $productLimit  = $limit;
-            $productOffset = $limit *  ($page);
-        }else{
-            $productLimit = $limit + $featuredLimit;
-            $productOffset = $limit *  ($page - 1);
-        }
+//        if($returnOnly == 'product'){
+//            $productLimit  = $limit;
+//            $productOffset = $limit *  ($page);
+//        }else{
+//            $productLimit = $limit + 2;
+//            $productOffset = $limit *  ($page - 1);
+//        }
 //        $productOffset = $limit;
-
-
 
         if($returnOnly == 'product' || !$stories = self::getStories($storyLimit, $storyOffset, $featuredLimit, $featuredOffset)){
             $stories = [
@@ -59,16 +71,16 @@ class PageController extends Controller
             ];
         }
 
-
         if($returnOnly == 'idea' || !$products = self::getProducts($productLimit, $page, $productOffset)){
             $products['result'] = [];
         }
 
-
         $return['regular'] = array_merge($stories['regular'], $products['result']);
         $return['featured'] = $stories['featured'];
 
-        usort($return['regular'], function($a, $b) { return strtotime(@$b->updated_at) - strtotime(@$a->updated_at);});
+        usort($return['regular'], function($a, $b) {
+            return strtotime(@$b->updated_at) - strtotime(@$a->updated_at);
+        });
 
         return $return;
     }

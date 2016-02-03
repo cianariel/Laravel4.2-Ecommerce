@@ -213,7 +213,7 @@
     // default signup
     Route::get('signup/{email?}', 'PageController@signupPage');
 
-    Route::get('/api/paging/get-content/{page?}/{limit?}/{returnOnly?}', 'PageController@getContent');
+    Route::get('/api/paging/get-content/{page?}/{limit?}/{returnOnly?}/{offset?}', 'PageController@getContent');
 
 
     // temporary category tag generator
