@@ -3,6 +3,7 @@
 @section('body-class'){{ 'homepage' }}@stop
 
 @section('content')
+    <div  ng-app="pagingApp" ng-controller="pagingController">
     <section id="hero" class="landing-hero">
         <div class="hero-background"></div>
         <div class="color-overlay"></div>
@@ -18,7 +19,7 @@
                 </ul>
 
             </div>
-            <div class="col-md-4 col-xs-6 col-md-offset-1 hero-box qiuck-signup hidden-620">
+            {{--<div class="col-md-4 col-xs-6 col-md-offset-1 hero-box qiuck-signup hidden-620">
                 <form>
                     <h4>
                         <b>Sign-up in Seconds</b>
@@ -31,12 +32,27 @@
                     <div class="line-wrap">or</div>
                     <a class="btn btn-info col-xs-12" href="#"><i class="icon fb-icon"></i>Sign up with Facebook</a>
                 </form>
+            </div>--}}
+            <div class="col-md-4 col-xs-6 col-md-offset-1 hero-box qiuck-signup hidden-620">
+                <div style="background-color: lightgrey; text-align: center;">
+                   <strong style="color: red">@{{ responseMessage }}</strong>
+                </div>
+                <form>
+                    <h4>
+                        <b>Subscribe in Seconds</b>
+                    </h4>
+
+                    <input class="form-control"  ng-model="SubscriberEmail" type="text" placeholder="Email" name="email">
+
+                    <button class="btn btn-success col-xs-12" ng-click="subscribe()">Subscribe</button>
+
+                </form>
             </div>
 
 
         </div>
     </section>
-    <div class="app-wrap" ng-app="pagingApp" ng-controller="pagingController">
+    <div class="app-wrap">
         <nav id="hero-nav" class="col-sm-12">
             <div class="container full-620  fixed-sm">
                 {{--<ul class="left-nav col-xs-1 hidden-620">--}}
@@ -119,6 +135,6 @@
         </div>
 
     </div>
-    <script src="/assets/js/vendor/angular-busy.min.js"></script>
-    <script src="/assets/js/angular-custom/custom.paging.js"></script>
+    </div>
+
 @stop

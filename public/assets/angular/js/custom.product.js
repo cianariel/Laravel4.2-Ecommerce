@@ -37,6 +37,63 @@ productApp.controller('productController', ['$scope', '$http', '$window'
 
         };
 
+        // Build HTML listed response for popup notification.
+        $scope.buildErrorMessage = function (errorObj) {
+
+            var alertHTML = '';
+            alertHTML = '<ul>';
+            angular.forEach(errorObj, function (value, key) {
+
+                alertHTML += '<li>' + value + '</li>';
+            });
+            alertHTML += '</ul>';
+
+            return alertHTML;
+        }
+
+
+        // Build popup notification box based on status.
+        $scope.outputStatus = function (data, message) {
+
+            var statusCode = data.status_code;
+            //  console.log('status code:'+statusCode);
+            switch (statusCode) {
+                case 400:
+                {
+                    if (data.data.error.message[0] == "Validation failed") {
+                        // $scope.requiredFields = buildErrorMessage(data.data.error.message[1]);
+                        $scope.addAlert('danger', $scope.buildErrorMessage(data.data.error.message[1]));
+                    }
+                }
+                    break;
+                case 200:
+                {
+                    $scope.addAlert('success', message);
+                }
+                    break;
+                case 210:
+                {
+                    $scope.addAlert('', message);
+                }
+                    break;
+                case 410:
+                {
+                    $scope.addAlert('danger', data.data.error.message);
+                }
+                    break;
+                case 500:
+                {
+                    $scope.addAlert('danger', data.data.error.message);
+                }
+                    break;
+                default:
+                {
+                    $scope.addAlert('danger', 'Request failed !');
+                }
+            }
+        }
+
+
         // search comparable it by name
         $scope.searchProductByName = function (query) {
 
@@ -137,6 +194,15 @@ productApp.controller('productController', ['$scope', '$http', '$window'
 
         };
 
+        // Email subscription //
+
+
+
+        // Custom function call
+
+
+
+      //  angular.bootstrap(document.getElementById("App-1"),['productApp']);
         $scope.initPage();
 
 

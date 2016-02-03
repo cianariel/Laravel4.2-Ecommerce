@@ -16,11 +16,9 @@
          * @param $email
          * @param $link
          */
-        public function __construct($name, $email, $link)
+        public function __construct($email)
         {
-            $this->name  = $name;
             $this->email = $email;
-            $this->link  = $link;
         }
 
         /**

@@ -52,6 +52,8 @@
 <script src="/assets/js/vendor/ui-bootstrap.min.js"></script>
 <script type="text/javascript" src="/assets/js/vendor/autocomplete.js"></script>
 <script src="/assets/product/js/custom.product.js"></script>
+<script src="/assets/js/vendor/angular-busy.min.js"></script>
+<script src="/assets/js/angular-custom/custom.paging.js"></script>
 
 
 <script>
