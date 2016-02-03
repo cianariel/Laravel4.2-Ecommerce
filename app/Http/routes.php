@@ -210,7 +210,7 @@
     //    Route::get('pro-details/{permalink?}', 'PageController@productDetailsPage');
     Route::get('product/{permalink?}', 'PageController@productDetailsPage');
     Route::get('room/{permalink?}', 'PageController@getRoomPage');
-    // defualt signup
+    // default signup
     Route::get('signup/{email?}', 'PageController@signupPage');
 
     Route::get('/api/paging/get-content/{page?}/{limit?}/{returnOnly?}', 'PageController@getContent');

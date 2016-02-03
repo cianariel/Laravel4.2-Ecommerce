@@ -2,25 +2,67 @@
 
 @section('content')
 
-    <div style="background-image: url('/assets/images/ideaing-logo-white-letters.png');
+    <img style="margin-left:40%" class="img-responsive " alt="" src="/assets/images/ideaing-logo-small.png">
+
+    <div ng-app="publicApp" ng-controller="publicController"
+         class="col-lg-4" style="float: none;
     display: block;
-    height: 88px;
-    margin: 0 auto 20px;
-    width: 230px;">&nbsp;</div>
+    margin-left: auto;
+    margin-right: auto;">
 
-    <p class="texto">Registration</p>
-    <div class="Registro">
-        <form>
-            <span class="fontawesome-user"></span>
-            <input type="text" required placeholder="Name" autocomplete="off">
+        <div style="margin-top: 45px">
 
-            <span class="fontawesome-envelope-alt"></span>
-            <input type="text" id="email" required placeholder="Email" value="{{ isset($email)?$email:''}}" autocomplete="off">
+            <label for="email"><h2>Ideaing - Registration Form:</h2></label>
+            <div class="row">
+                <div>
 
-            <span class="fontawesome-lock"></span>
-            <input type="password" name="password" id="password" placeholder="Password" required autocomplete="off">
-            <input type="submit" value="Signup" title="Signup">
-        </form>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div>
+                                <uib-alert ng-repeat="alert in alerts" type="@{{alert.type}}"
+                                           close="closeAlert($index)">
+                                    <p ng-bind-html="alertHTML"></p>
+                                </uib-alert>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <form role="form">
+                <div class="form-group">
+                    <label for="email">Name:</label>
+                    <input type="text" class="form-control" ng-model="FullName" placeholder="Enter Name" id="name">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email address:</label>
+                    <input type="email" ng-model="Email" ng-init="Email='{{$email}}'" placeholder="Enter Email"
+                           class="form-control"
+                           id="email">
+                </div>
+                <div class="form-group">
+                    <label for="pwd">Password:</label>
+                    <input type="password" ng-model="Password" placeholder="Enter Password" class="form-control" id="pwd">
+                </div>
+                <div class="form-group">
+                    <label for="pwd">Password Confirmation:</label>
+                    <input type="password"  ng-model="PasswordConf" placeholder="Retype Password" class="form-control" id="pwd">
+                </div>
+                <div class="form-group">
+                    <button type="submit" ng-click="registerUser()" class="btn btn-default">
+                        <i class="fa fa-paper-plane"></i>
+                        Register
+                    </button>
+                    <button type="submit" ng-click="registerWithFB()" class="btn btn-success">
+                        <i class="fa fa-facebook"></i>
+                        Register with Facebook
+                    </button>
+                </div>
+
+            </form>
+        </div>
     </div>
+    <script src="/assets/js/angular-custom/public.common.js"></script>
 @stop
 

@@ -6,6 +6,7 @@
     use App\Events\SendResetEmail;
     use Crypt;
     use Illuminate\Http\Request;
+    use Illuminate\Support\Facades\Redirect;
     //use Laravel\Socialite\Contracts\Factory as Socialite;
     use App\Http\Requests;
     use Illuminate\Http\Response as IlluminateResponse;
@@ -233,8 +234,10 @@
                 if ($validator->fails())
                 {
                     // return with the failed reason and field's information
-                    return $this->setStatusCode(IlluminateResponse::HTTP_NOT_ACCEPTABLE)
-                        ->makeResponseWithError("Invalid Input Data :" . $validator->messages());
+                    return $this->setStatusCode(\Config::get("const.api-status.validation-fail"))
+                        ->makeResponseWithError(array('Validation failed',$validator->messages()));
+
+
                 } elseif ($validator->passes())
                 {
 
@@ -256,7 +259,7 @@
                             ->makeResponse('Registration completed successfully,please verify email');
                     } else
                     {
-                        return $this->setStatusCode(IlluminateResponse::HTTP_NOT_ACCEPTABLE)
+                        return $this->setStatusCode(\Config::get("const.api-status.app-failure"))
                             ->makeResponseWithError('User email exists');
                     }
                 }
@@ -264,7 +267,7 @@
             {
                 \Log::error($ex);
 
-                return $this->setStatusCode(IlluminateResponse::HTTP_INTERNAL_SERVER_ERROR)
+                return $this->setStatusCode(\Config::get("const.api-status.system-fail"))
                     ->makeResponseWithError('Internal Server Error!', $ex);
             }
 
@@ -296,7 +299,7 @@
                 if ($validator->fails())
                 {
                     // return with the failed reason and field's information
-                    return $this->setStatusCode(IlluminateResponse::HTTP_NOT_ACCEPTABLE)
+                    return $this->setStatusCode(\Config::get("const.api-status.validation-fail"))
                         ->makeResponseWithError("Invalid Input Data :" . $validator->messages());
                 } elseif ($validator->passes())
                 {
@@ -316,7 +319,7 @@
             {
                 \Log::error($ex);
 
-                return $this->setStatusCode(IlluminateResponse::HTTP_INTERNAL_SERVER_ERROR)
+                return $this->setStatusCode(\Config::get("const.api-status.system-fail"))
                     ->makeResponseWithError('Internal Server Error!', $ex);
             }
 
@@ -344,6 +347,8 @@
                     $user->status = "Active";
                     $user->save();
                     $message = "Thanks " . $user->name . " for verify your email";
+
+                    return Redirect::to('/')->withFlashMessage('Email verification complete.');
 
                 } else
                 {

@@ -5,11 +5,11 @@
 <body>
 
 <div class="content">
-    <div class="title">Dear {{$userId}}</div>
+    <div class="title">Dear User</div>
     <br />
     Thanks for subscribing . Please follow the link bellow to register :
     <br />
-    [ <a href="{{ url('/').'/'.$email}}">Register</a> ]
+    [ <a href="{{ url('/').'/signup/'.$email}}">Register</a> ]
 </div>
 
 </body>

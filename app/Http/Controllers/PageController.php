@@ -96,8 +96,10 @@ class PageController extends Controller
         return $return;
     }
 
-    public function signupPage($email)
+    public function signupPage($email = '')
     {
+       // dd($email);
+       // isset($email)?$email= $email:$email = '';
         return view('signup')->with('email',$email);
     }
 
