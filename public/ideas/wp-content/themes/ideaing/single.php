@@ -6,16 +6,25 @@
             </a>
             <h1>
                 {{the_title()}}<br>
-                <a class="like-counter" href="#"><i class="m-icon m-icon--heart-solid"></i>&nbsp;<b>1819</b></a>
+                <ul class="social-stats center-block ">
+                    <li class="social-stats__item">
+                        <a href="#">
+                            <i class="m-icon m-icon--heart"></i>
+                            <span class="social-stats__text">1819</span>
+                        </a>
+                    </li>
+                </ul>
+                
+<!--                <a class="like-counter" href="#"><i class="m-icon m-icon--heart-solid"></i>&nbsp;<b>1819</b></a>-->
             </h1>
 
-            <ul class="share-buttons hidden-xs col-lg-6 col-sm-7 pull-right">
+            <ul class="share-buttons hidden-xs col-lg-7 col-md-8 pull-right">
                 <li class="all-shares"><b>120K </b>all shares</li>
                 <li><a class="fb" href="#"><i class="m-icon m-icon--facebook-id"></i><b>189</b></a></li>
                 <li><a class="twi" href="#"><i class="m-icon  m-icon--twitter-id"></i><b>189</b></a></li>
                 <li><a class="gp" href="#"><i class="m-icon m-icon--twitter-id"></i><b>189</b></a></li>
                 <li><a class="pint" href="#"><i class="m-icon  m-icon--pinterest-id"></i> <b>189</b></a></li>
-                <li><a class="comment" href="#" data-scrollto=".comments"><i class="m-icon m-icon--facebook-id"></i> <b>189</b></a></li>
+                <li><a class="comment" href="#" data-scrollto=".comments"><i class="m-icon m-icon--comments-id"></i> <b>189</b></a></li>
             </ul>
         </header>
         <nav class="mid-nav hidden-620">
@@ -37,10 +46,18 @@
         </nav>
 
         <section id="hero" class="details-hero">
-                <div class="head-wrap">
-                    <h1 class="col-sm-8 col-xs-12"><span>{{the_title()}}</span></h1>
-                    <a class="like-counter hidden-soft shown-620" href="#"><i class="m-icon m-icon--heart-solid"></i>&nbsp;<b>1819</b></a>
-                </div>
+            <div class="head-wrap">
+            
+                <h1 class="col-sm-8 col-xs-12"><span>{{the_title()}}</span></h1>
+                <ul class="social-stats center-block hidden-soft shown-620">
+                    <li class="social-stats__item">
+                        <a href="#">
+                            <i class="m-icon m-icon--heart"></i>
+                            <span class="social-stats__text">1819</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
 
             <div class="hero-background" style="background-image:url( {{getThumbnailLink($post->ID)}} ) "></div>
             <!-- TODO - use as the hero-bg					--><?php //the_post_thumbnail(); // Fullsize image for the single post ?>
@@ -49,18 +66,26 @@
         <nav id="hero-nav" class="col-sm-12">
             <div class="container full-620  fixed-sm">
 
-                <ul class="share-buttons hidden-xs col-lg-6 col-md-8 pull-right">
+                <ul class="share-buttons hidden-xs col-lg-7 col-md-8 pull-right">
                     <li class="all-shares"><b>120K </b>all shares</li>
                     <li><a class="fb" href="#"><i class="m-icon m-icon--facebook-id"></i><b>189</b></a></li>
                     <li><a class="twi" href="#"><i class="m-icon  m-icon--twitter-id"></i><b>189</b></a></li>
                     <li><a class="gp" href="#"><i class="m-icon m-icon--twitter-id"></i><b>189</b></a></li>
                     <li><a class="pint" href="#"><i class="m-icon  m-icon--pinterest-id"></i><b>189</b></a></li>
-                    <li><a class="comment" data-scrollto=".comments" href="#"><i class="m-icon m-icon--facebook-id"></i><b>189</b></a></li>
+                    <li><a class="comment" data-scrollto=".comments" href="#"><i class="m-icon m-icon--comments-id"></i><b>189</b></a></li>
                 </ul>
 
                 <ul class="like-nav hidden-xs pull-right">
                     <li>
-                        <a class="like-counter" href="#"><i class="m-icon m-icon--heart-solid"></i>&nbsp;<b>1819</b></a>
+                        <div class="social-stats  ">
+                            <div class="social-stats__item">
+                                <a href="#">
+                                    <i class="m-icon m-icon--heart"></i>
+                                    <span class="social-stats__text">1819</span>
+                                </a>
+                            </div>
+                        </div>
+
                     </li>
                     <li><a class="author" href="#"></a></li>
                     <li><a class="author" href="#"></a></li>
@@ -172,7 +197,7 @@
                         <div  class="col-xs-8 field-wrap">
                             <textarea class="form-control" name="comment" id="you-comment" placeholder="Share your thoughts"></textarea>
                             <div class="pull-right comment-controls">
-                                <a href="#" class="add-photo">Add a photo</a>
+                                <a href="#" class="add-photo"><i class="m-icon m-icon--camera"></i>&nbsp;<span>Add a photo</span> </a>
                                 <button class="btn btn-info">Post</button>
                             </div>
                         </div>

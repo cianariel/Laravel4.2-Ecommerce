@@ -124,7 +124,7 @@ button{
 }
 
 .page-overlay{
-  display: none;
+  display: none !important;
   position:fixed; /* keeps the lightbox window in the current viewport */
   top:0;
   left:0;
@@ -135,6 +135,7 @@ button{
   z-index: 40;
 
   &.picture-overlay{
+      display: none !important;
     background:url('/assets/images/picture-overlay.jpg');
     opacity: 1;
     z-index: 39;
@@ -563,6 +564,12 @@ ul.share-buttons{
       background-size: 19px;
     }
   }
+}
+
+.m-icon{
+    font-size: 20px;
+    float: left;
+    margin-top: 0px;
 }
 
 .share-bar{
@@ -1139,7 +1146,8 @@ body.product-details{
   position: absolute;
   width: 350px;
   right: 150px;
-  bottom:-82px;
+  bottom:4px;
+/*  bottom:-82px;*/
   overflow: hidden;
   z-index: 2;
 
@@ -2483,16 +2491,23 @@ header.colophon{
 
       a{
         float: right;
-        margin-right: 1%;
+/*        margin-right: 10px;*/
         padding-left: 33px;
-        background-image: url("/assets/images/signin-icon.png");
-        background-position: left;
-        background-repeat: no-repeat;
-        background-size: 27px;
+/*        background-image: url("/assets/images/signin-icon.png");*/
+/*        background-position: left;*/
+/*        background-repeat: no-repeat;*/
+/*        background-size: 27px;*/
         white-space: nowrap;
+        .m-icon{
+            margin-right: 5px;
+            border: 1px solid;
+            border-radius: 16px;
+            font-size: 23px;
+            margin-top: -5px;
+        }
 
         &:hover{
-          background-image: url("/assets/images/signin-blue.png");
+/*          background-image: url("/assets/images/signin-blue.png");*/
         }
       }
     }
@@ -2706,16 +2721,17 @@ body.product-details{
   .story-header{
     h1{
       width: 34%;
-      overflow: hidden;
       font-size: 13px;
-      margin-top: 5px;
+      margin-top: -9px;
       
       .title{
           height:15px;
+          display: inline-block;
+          overflow: hidden;
       }
     }
+    
     .like-counter{
-      margin-top: -4px;
       b{
         padding-top: 8px;
       }
@@ -2726,8 +2742,15 @@ body.product-details{
     }
   }
   
+  .scroll-header  #top-nav a.shop{
+      color: $grey;
+  }
+  .scroll-header  #top-nav a.shop:hover{
+      color: $pink;
+  }
+  
   #top-nav a.shop{
-      color: #ed1d47;
+      color: $grey;
       font-weight: bold;
       position: relative;
 
@@ -2888,10 +2911,12 @@ body.product-details{
     color: #fff !important;
     box-shadow: none;
     position: relative;
-    padding-left: 25px;
-    > i{
+    padding-left: 35px;
+    
+    > .m-icon{
        position: absolute; 
        left: 5px;
+       top: 3px;
     }
 }
 
@@ -2993,7 +3018,7 @@ body.product-details{
       //border: 2px solid $dark-orange;
       //border-radius: 4px;
       font-size: 13px;
-      font-weight: bold ;
+/*      font-weight: bold ;*/
       position: relative;
 
       &:hover, &.active{
@@ -3010,9 +3035,9 @@ body.product-details{
 
     &:hover{
       color: white;
-      -webkit-box-shadow: 0px 0px 0px 2px $iridium;
+      /*-webkit-box-shadow: 0px 0px 0px 2px $iridium;
       -moz-box-shadow: 0px 0px 0px 2px $iridium;
-      box-shadow: 0px 0px 0px 2px $iridium;
+      box-shadow: 0px 0px 0px 2px $iridium;*/
       background: #ed2049;
 
     }
@@ -3721,7 +3746,14 @@ header.sub-head{
     &:last-child{
       width: auto;
     }
-
+    .social-stats {
+        margin-top: 5px;
+        a{
+            float: none;
+            padding: 0px;
+        }
+    }
+    
     a{
       padding-top: 15px;
       padding-left: 10px;
@@ -3923,9 +3955,13 @@ body.single{
     //padding-left: 57px;
     .add-photo{
       color: darken($light-grey, 10%);
-      background: url("/assets/images/camera-grey.png") 5px center no-repeat;
-      padding-left: 40px;
       margin-right: 17px;
+      float: left;
+      margin-top: 10px;
+      
+      .m-icon{
+          color: $tarmac;
+      }
 
     }
 
@@ -4041,14 +4077,12 @@ body.single{
   height: 100px;
   padding-top: 10px;
   margin-top: 5px;
-  background: url('/assets/images/icons/logo-lamp-white.png') 10px 15px no-repeat;
   background-color: $iridium;
   border-radius: 10px;
   text-align: center;
   color:#fff;
 
   .score{
-    padding-left:25px;
     font-size: 4rem;
   }
 
@@ -4767,9 +4801,6 @@ footer.about-footer{
     }
 }
 @media only screen and (max-width: 1200px){
-    #hero-nav{
-        margin-top: 60px;
-    }
   #top-nav a {
     margin-right: 3%;
   }
@@ -4914,7 +4945,7 @@ footer.about-footer{
     }
 
     .signin{
-      width: 120px;
+      width: 144px;
     }
   }
 
@@ -5026,6 +5057,14 @@ footer.about-footer{
 
   footer.about-footer h4 {
     margin-top: 35px;
+  }
+  
+  .mid-nav{
+      border-top: 1px solid $light-grey;
+  }
+  
+  .mid-nav .container{
+      border-top: 0px;
   }
 
 
@@ -5219,17 +5258,17 @@ footer.about-footer{
       margin-top: 10px;
       a{
         cursor: pointer;
-        width: 100% !important;
-        padding-left: 25px !important;
+/*        width: 100% !important;*/
         text-indent: 0 !important;
         background: $iridium;
-        padding: 4px;
         border-radius: 3px;
         color: #fff  !important;;
         text-transform: none;
-        background-image: url("/assets/images/signin-white.png") !important;
-        background-size: 20px !important;
-        background-position-x: 5px !important;
+        padding: 12px 23px 7px  5px !important;
+        width: 83px;
+/*        background-image: url("/assets/images/signin-white.png") !important;*/
+/*        background-size: 20px !important;*/
+/*        background-position-x: 5px !important;*/
       }
     }
 
