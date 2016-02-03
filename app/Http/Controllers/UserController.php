@@ -2,6 +2,7 @@
 
     namespace App\Http\Controllers;
 
+    use App\Events\SendSubscriptionMail;
     use App\Models\Subscriber;
 
 
@@ -32,6 +33,9 @@
         }
 
         // Email subscription
+        /**
+         * @return mixed
+         */
         public function emailSubscription()
         {
 
@@ -67,6 +71,9 @@
                 $this->subscriber->status = 'Subscribed';
 
                 $subs = $this->subscriber->save();
+                \Event::fire(new SendSubscriptionMail(
+                    $userData['Email']
+                ));
 
                 return $this->setStatusCode(\Config::get("const.api-status.success"))
                     ->makeResponse($subs);

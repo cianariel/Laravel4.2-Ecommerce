@@ -96,6 +96,11 @@ class PageController extends Controller
         return $return;
     }
 
+    public function signupPage($email)
+    {
+        return view('signup')->with('email',$email);
+    }
+
     public function getProducts($limit, $page, $offset){
         $productSettings = [
             'ActiveItem' => true,
@@ -120,6 +125,8 @@ class PageController extends Controller
 
     public function productDetailsPage($permalink)
     {
+      //  dd($this->getProducts(3,1,6));
+
         $product = new Product();
         $productData['product'] = $product->getViewForPublic($permalink);
 

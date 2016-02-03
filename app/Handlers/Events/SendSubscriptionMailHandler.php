@@ -20,21 +20,20 @@
         /**
          * Handle the event.
          *
-         * @param  SendResetEmail $event
-         * @return void
+         * @param SendSubscriptionMail|SendResetEmail $event
          */
         public function handle(SendSubscriptionMail $event)
         {
-            \Mail::send('email.password-reset',
+            $userId = explode("@",$event->email)[0];
+            \Mail::send('email.subscription',
                 [
-                    'name' => $event->name,
-                    'code' => $event->link
+                    'email' => $event->email
                 ],
-                function ($message) use ($event)
+                function ($message) use ($event,$userId)
                 {
-                    $message->to($event->email, $event->name)
+                    $message->to($event->email, $userId)
                         ->from(env('MAIL_FROM'))
-                        ->subject("Ideaing - Password reset request.");
+                        ->subject("Ideaing - Subscription notification.");
                 });
         }
     }
