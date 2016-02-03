@@ -47,6 +47,8 @@ angular.module('pagingApp.controllers', []).
                             $scope.allContent[0] = response;
                             $replacer[0] = $scope.sliceToRows(response['regular'], response['featured']);
                         });
+                            $scope.currentPage = 1;
+                            $scope.filterBy = null;
 
                             $scope.content = $replacer;
                             $('.main-content').fadeIn();
