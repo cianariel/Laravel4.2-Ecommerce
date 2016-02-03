@@ -272,7 +272,7 @@ html{
   width: 45px;
   min-height: 60px;
   padding: 0;
-  background-image: url("/assets/images/ideaing-logo-lamp-only.png");
+  background-image: url("/assets/images/lamp.png");
   background-repeat: no-repeat;
   background-position: right;
 }
@@ -296,14 +296,63 @@ a{ // Custom Link Styles
 
 
   &.like-counter{
-    @include round-box($iridium, "/assets/images/heart-white.png");
+            @include round-box($iridium, "");
+
+/*        display:  inline-block;
+        width: 85px;
+        height: 35px;
+        //display: inline-block;
+        font-size: 1.7rem;
+        border-radius: 30px;
+        padding: 0 10px 0 0 !important;
+        color: $iridium;
+        border: 1px solid $pale-grey;
+        background: transparent;
+
+        //&.orange{
+        //  padding-left: 35px;
+        //  background: url("/assets/images/heart-orange.png") 0 top no-repeat;
+        //}
+        
+        i{
+            color: white;
+            background: $iridium;
+            padding: 5px;
+            border-radius: 20px;
+            padding-top: 8px;
+            padding-left: 8px;
+            padding-right: 8px;
+            padding-bottom: 7px;       
+        }
+
+        span{
+            display: inline-block;
+            height: 33px;
+            width: 35px;
+            //margin-top: -10px;
+            margin-left: -3px;
+            float: left;
+            border-radius: 30px;
+            text-indent: -9999px;
+        }
+        b{
+            display: inline-block;
+            padding-top: 8px;
+            color: $iridium;
+        }
+
+        &:hover{
+            background: $iridium;
+            border: 0px;
+            b{
+                color: #fff !important;
+            }
+        }*/
+
   }
 
   &.ideas-link{
     color: $dark-orange;
-    background-image: url("/assets/images/lamp-orange.png");
-    background-repeat: no-repeat;
-    background-size: contain;
   }
 
   &.products-link{
@@ -368,28 +417,18 @@ a{ // Custom Link Styles
 
   &.fb{
     background-color: $facebook-blue-2;
-    background-image: url("/assets/images/fb-white-small.png");
-    background-repeat: no-repeat;
   }
   &.twi{
     background-color: $twitter-blue;
-    background-image: url("/assets/images/twi-white-small.png");
-    background-repeat: no-repeat;
   }
   &.gp{
     background-color: $google-red;
-    background-image: url("/assets/images/gp-white-small.png");
-    background-repeat: no-repeat;
   }
   &.pint{
     background-color: $pinterest-red;
-    background-image: url("/assets/images/pint-white-small.png");
-    background-repeat: no-repeat;
   }
   &.inst{
     background-color: $instagram-blue;
-    background-image: url("/assets/images/inst-blue-small.png");
-    background-repeat: no-repeat;
   }
 
 
@@ -452,6 +491,8 @@ li.nested{
     background: url("/assets/images/arrow-down-pink.png") no-repeat;
     background-size: contain;
     color: $iridium;
+/*    margin-left: -5px;*/
+    margin-right: -19px;
   }
   
 }
@@ -472,7 +513,6 @@ li.nested{
 ul.share-buttons{
   height: 45px;
   a{
-
     &.fb {
       @include round-box($facebook-blue-2, "/assets/images/fb-white-small.png");
     }
@@ -501,13 +541,20 @@ ul.share-buttons{
       //background-color: $pinterest-red;
       //background-image: url("/assets/images/pint-white-small.png");
     }
+    
     &.heart {
-      @include round-box($iridium, "/assets/images/heart-white.png");
+      @include round-box($iridium, "");
 
       //background-color: $iridium;
       //background-image: url("/assets/images/heart-white.png");
       background-size: 19px;
     }
+    
+    .m-icon--heart-solid{
+        margin-left: 0px;
+        margin-right: 7px;
+    }
+    
     &.comment {
       @include round-box($ideaing-blue, "/assets/images/icons/chat-white-outline.png");
 
@@ -731,6 +778,7 @@ nav {
     display: inline-block;
     float: left;
     padding: 20px;
+    padding-left: 10px;
     text-transform: uppercase;
   }
 }
@@ -762,10 +810,10 @@ nav {
     overflow: hidden;
     //font-size: 2.3rem;
     color: #fff;
-    height: 65px;
+/*    height: 65px;*/
     //width: 80px;
     margin: 30px auto 0;
-    padding: 20px 0 20px 3px !important;
+/*    padding: 20px 0 20px 3px !important;*/
     border: 0;
     //background-position: left 4px;
 
@@ -1180,6 +1228,9 @@ body.product-details{
   padding-left: 0;
   max-width: 100%;
 /*  margin-left: 30px;*/
+    .m-icon{
+        display: none;
+    }
     
     img:first-child{
         display: block;
@@ -2456,6 +2507,7 @@ header.colophon{
     .fixed-sm{
       min-width: 0 !important;
     }
+    
     #top-nav {
       position: fixed;
       top: 0;
@@ -2477,13 +2529,16 @@ header.colophon{
             margin-right: 0;
             margin-top: 15px;
             //background-size: 27px;
-            text-indent: -9999px;
+            
+            .m-icon-text{
+                display: none;
+            }
 
             &:after{
-              position: absolute;
-              right: 5px;
-              top: 4px;
-              background-size: 22px;
+              /*position: absolute;
+              right: 9px;*/
+              top: 2px;
+/*              background-size: 22px;*/
             }
           }
         }
@@ -2499,6 +2554,18 @@ header.colophon{
           background-size: initial;
           margin-right: 0;
           margin-top: 11px;
+          
+          img{
+              display: none;
+          }
+          .scroll-logo{
+              display: block;
+              background: url('/assets/images/lamp.png') center no-repeat;
+              width: 30px;
+              height: 40px;
+
+          }
+          
         }
 
         //.search-bar{
@@ -2547,9 +2614,9 @@ header.colophon{
 
 #top-nav{
   a{
-    margin-right: 8%;
-    padding-left: 30px;
-    padding-right: 5px;
+    /*margin-right: 8%;
+    padding-left: 30px;*/
+    padding-right: 16px;
     font-size: 1.4rem;
     color: #999;
     font-weight: bold;
@@ -2559,15 +2626,13 @@ header.colophon{
       //background-size: 14px;
     }
     &.ideas{
-      background: url('/assets/images/icons/lamp-grey.png') left center no-repeat;
-      //background-size: 14px;
       &:hover{
-        background-image: url('/assets/images/icons/lamp-small-blue.png');
+          color: $pink;
       }
     }
 
     &:hover{
-      color: $picton;
+      color: $pink;
     }
 
   }
@@ -2592,7 +2657,7 @@ body.homepage #top-nav .ideas, body.single-post #top-nav .ideas, body.product-de
     .box-link-active-line{
         height: 50px;
         width: 0px;
-        border-left: 1px solid #dddedf;
+        border-left: 1px solid $light-grey;
         position: absolute;
         top: 43px;
         left: 50%;
@@ -2615,7 +2680,7 @@ body.single-post{
             display: inline-block;
             width: 0px;
             height: 11px;
-            border-left: 1px solid #dddedf;
+            border-left: 1px solid $light-grey;
             left: 45px;
         }
 
@@ -2625,12 +2690,15 @@ body.single-post{
         .box-link-active-line{
             height: 50px;
             width: 0px;
-            border-left: 1px solid #dddedf;
+            border-left: 1px solid $light-grey;
             position: absolute;
             top: 43px;
             left: 50%;
         }
 
+    }
+    .article-content ul li{
+        list-style: disc;
     }
 }
 
@@ -2638,10 +2706,13 @@ body.product-details{
   .story-header{
     h1{
       width: 34%;
-      height: 15px;
       overflow: hidden;
       font-size: 13px;
       margin-top: 5px;
+      
+      .title{
+          height:15px;
+      }
     }
     .like-counter{
       margin-top: -4px;
@@ -2704,7 +2775,7 @@ body.product-details{
   }
 
   .like-counter{
-    margin-top: 0 !important;
+/*    margin-top: 0 !important;*/
   }
 
   .share-buttons{
@@ -2816,6 +2887,12 @@ body.product-details{
     background: #ed2049;
     color: #fff !important;
     box-shadow: none;
+    position: relative;
+    padding-left: 25px;
+    > i{
+       position: absolute; 
+       left: 5px;
+    }
 }
 
 .homepage .mid-nav li.home .box-link-active-line{
@@ -2823,7 +2900,7 @@ body.product-details{
     display: inline-block;
     width: 0px;
     height: 11px;
-    border-left: 1px solid #dddedf;
+    border-left: 1px solid $light-grey;
     left: 52px
 }
 
@@ -2852,10 +2929,10 @@ body.product-details{
   .horizontal-line{
       width:40px;
       height:0px;
-      border-bottom: 1px solid #dddedf;
+      border-bottom: 1px solid $light-grey;
       display: inline-block;
       float:left;
-      margin-top: 24px;
+      margin-top: 26px;
       
   }
   .box-link-ul{
@@ -2870,7 +2947,7 @@ body.product-details{
             display: inline-block;
             width: 0px;
             height: 20px;
-            border-left: 1px solid #dddedf;
+            border-left: 1px solid $light-grey;
             left: 59px
         }
       }
@@ -2932,10 +3009,11 @@ body.product-details{
 
 
     &:hover{
-      color: $iridium;
+      color: white;
       -webkit-box-shadow: 0px 0px 0px 2px $iridium;
       -moz-box-shadow: 0px 0px 0px 2px $iridium;
       box-shadow: 0px 0px 0px 2px $iridium;
+      background: #ed2049;
 
     }
   }
@@ -3503,13 +3581,10 @@ header.sub-head{
       }
     }
     &.ideas-link{
-      background-image: url('/assets/images/lamp-grey.png');
-      background-position: 0 21px;
 
       //padding-top: 6px;
       &:hover{
         color: $dark-orange;
-        background-image: url('/assets/images/lamp-orange.png');
       }
 
     }
@@ -3529,35 +3604,27 @@ header.sub-head{
 
 
     &.features-link{
-      background-image: url('/assets/images/icons/checkmark-orange.png');
 
       &:hover{
         color: $dark-orange;
-        background-image: url('/assets/images/icons/checkmark-orange.png');
       }
     }
     &.specs-link{
-      background-image: url('/assets/images/icons/doc-grey.png');
 
       &:hover{
         color: $pine-green;
-        background-image: url('/assets/images/icons/doc-green.png');
       }
     }
     &.compare-link{
-      background-image: url('/assets/images/icons/arrows-grey.png');
 
       &:hover{
         color: $magenta;
-        background-image: url('/assets/images/icons/arrows-purple.png');
       }
     }
     &.reviews-link{
-      background-image: url('/assets/images/icons/stars-grey.png');
 
       &:hover{
         color: $iridium;
-        background-image: url('/assets/images/icons/stars-pink.png');
       }
     }
 
@@ -3709,8 +3776,7 @@ body.single{
     display: none;
   }
   #top-nav a.ideas{
-    color: $ideaing-blue;
-    background-image: url('/assets/images/icons/lamp-small-blue.png');
+    color: $pink;
     
   }
   .like-nav{
@@ -4603,6 +4669,12 @@ footer.about-footer{
         width: 100%;
         background: #171617;
         padding: 4px 10px;
+        
+        i{
+            position: relative;
+            left: -42px;
+            margin-right: -17px;
+        }
 
         b{
           display: inline-block;
@@ -4689,7 +4761,15 @@ footer.about-footer{
   }
 }
 
+@media only screen and (max-width: 860px){
+    #top-nav a .m-icon-text{
+        display: none;
+    }
+}
 @media only screen and (max-width: 1200px){
+    #hero-nav{
+        margin-top: 60px;
+    }
   #top-nav a {
     margin-right: 3%;
   }
@@ -6014,6 +6094,9 @@ footer.about-footer{
 }
 .star-raiting .star.active{
     background: url('/assets/images/star-blue.png');
+}
+.star-raiting .star.half{
+    background: url('/assets/images/star-half.png');
 }
 .light-black{
     color: #393e3f;

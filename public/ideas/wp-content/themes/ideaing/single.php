@@ -6,16 +6,16 @@
             </a>
             <h1>
                 {{the_title()}}<br>
-                <a class="like-counter" href="#"><span>Liked by</span><b>189</b></a>
+                <a class="like-counter" href="#"><i class="m-icon m-icon--heart-solid"></i>&nbsp;<b>1819</b></a>
             </h1>
 
             <ul class="share-buttons hidden-xs col-lg-6 col-sm-7 pull-right">
                 <li class="all-shares"><b>120K </b>all shares</li>
-                <li><a class="fb" href="#"><span></span><b>189</b></a></li>
-                <li><a class="twi" href="#"><span></span><b>189</b></a></li>
-                <li><a class="gp" href="#"><span></span><b>189</b></a></li>
-                <li><a class="pint" href="#"><span></span><b>189</b></a></li>
-                <li><a class="comment" href="#" data-scrollto=".comments"><span></span><b>189</b></a></li>
+                <li><a class="fb" href="#"><i class="m-icon m-icon--facebook-id"></i><b>189</b></a></li>
+                <li><a class="twi" href="#"><i class="m-icon  m-icon--twitter-id"></i><b>189</b></a></li>
+                <li><a class="gp" href="#"><i class="m-icon m-icon--twitter-id"></i><b>189</b></a></li>
+                <li><a class="pint" href="#"><i class="m-icon  m-icon--pinterest-id"></i> <b>189</b></a></li>
+                <li><a class="comment" href="#" data-scrollto=".comments"><i class="m-icon m-icon--facebook-id"></i> <b>189</b></a></li>
             </ul>
         </header>
         <nav class="mid-nav hidden-620">
@@ -39,7 +39,7 @@
         <section id="hero" class="details-hero">
                 <div class="head-wrap">
                     <h1 class="col-sm-8 col-xs-12"><span>{{the_title()}}</span></h1>
-                    <a class="like-counter hidden-soft shown-620" href="#"><span>Liked by</span><b>189</b></a>
+                    <a class="like-counter hidden-soft shown-620" href="#"><i class="m-icon m-icon--heart-solid"></i>&nbsp;<b>1819</b></a>
                 </div>
 
             <div class="hero-background" style="background-image:url( {{getThumbnailLink($post->ID)}} ) "></div>
@@ -49,17 +49,19 @@
         <nav id="hero-nav" class="col-sm-12">
             <div class="container full-620  fixed-sm">
 
-                <ul class="share-buttons hidden-xs col-lg-6 col-sm-8 pull-right">
+                <ul class="share-buttons hidden-xs col-lg-6 col-md-8 pull-right">
                     <li class="all-shares"><b>120K </b>all shares</li>
-                    <li><a class="fb" href="#"><span></span><b>189</b></a></li>
-                    <li><a class="twi" href="#"><span></span><b>189</b></a></li>
-                    <li><a class="gp" href="#"><span></span><b>189</b></a></li>
-                    <li><a class="pint" href="#"><span></span><b>189</b></a></li>
-                    <li><a class="comment" data-scrollto=".comments" href="#"><span></span><b>189</b></a></li>
+                    <li><a class="fb" href="#"><i class="m-icon m-icon--facebook-id"></i><b>189</b></a></li>
+                    <li><a class="twi" href="#"><i class="m-icon  m-icon--twitter-id"></i><b>189</b></a></li>
+                    <li><a class="gp" href="#"><i class="m-icon m-icon--twitter-id"></i><b>189</b></a></li>
+                    <li><a class="pint" href="#"><i class="m-icon  m-icon--pinterest-id"></i><b>189</b></a></li>
+                    <li><a class="comment" data-scrollto=".comments" href="#"><i class="m-icon m-icon--facebook-id"></i><b>189</b></a></li>
                 </ul>
 
                 <ul class="like-nav hidden-xs pull-right">
-                    <li><a class="like-counter" href="#"><span></span><b>189</b></a></li>
+                    <li>
+                        <a class="like-counter" href="#"><i class="m-icon m-icon--heart-solid"></i>&nbsp;<b>1819</b></a>
+                    </li>
                     <li><a class="author" href="#"></a></li>
                     <li><a class="author" href="#"></a></li>
                     <li><a class="author" href="#"></a></li>
@@ -271,7 +273,7 @@
 <!--                </div>-->
                 @for($i=0; $i<3; $i++)
                 <div class="box-item product-box">
-                        <img class="img-responsive" src="/assets/images/dummies/box-image-dummy.png">
+                    <img class="img-responsive" src="/assets/images/dummies/box-image-dummy.png">
                     <span class="box-item__time ng-binding">5 hours ago</span>
                     <div class="box-item__overlay"></div>
                     <ul class="social-stats">
@@ -285,7 +287,7 @@
                     <div class="round-tag round-tag--product">
                         <i class="m-icon m-icon--item"></i>
                         <span class="round-tag__label">Product</span>
-                        </div>
+                    </div>
                     <div class="box-item__label-prod">
                         <a href="#" class="box-item__label box-item__label--clear ng-binding">Mr Coffee smart</a>
                         <div class="clearfix"></div>
@@ -293,13 +295,13 @@
                             <span class="merchant-widget__price ng-binding">$259.95</span>
                             <span>from</span>
                             <img class="merchant-widget__store" src="/assets/images/dummies/amazon-black.png">
-                    </div>
+                        </div>
                         <div class="clearfix"></div>
                         <a target="_blank" href="#" class="box-item__get-it">Get it</a>
                     </div>
                 </div>
                 @endfor
-
+                
             </div>
 
             <h3 class="orange">Related Ideas</h3><br>
@@ -331,15 +333,15 @@
                             <a href="#" class="box-item__label ">Mr Coffee smart</a>
                             <div class="clearfix"></div>
                             <a href="#" class="box-item__read-more">Read More</a>
-                    </div>
+                        </div>
                         <div class="box-item__author">
                             <a href="#" class="user-widget">
                                 <img class="user-widget__img" src="/assets/images/dummies/author.png">
                                 <span class="user-widget__name ng-binding">Nicole van Zanten</span>
                             </a>
-                    </div>
+                        </div>
 
-                </div>
+                    </div>
                 @endfor
                 
 <!--                <div class="col-md-3  hidden-sm hidden-xs grid-box">-->
