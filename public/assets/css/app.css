@@ -4309,7 +4309,7 @@ button {
   display: none; }
 
 .page-overlay {
-  display: none;
+  display: none !important;
   position: fixed;
   /* keeps the lightbox window in the current viewport */
   top: 0;
@@ -4320,6 +4320,7 @@ button {
   opacity: .9;
   z-index: 40; }
   .page-overlay.picture-overlay {
+    display: none !important;
     background: url("/assets/images/picture-overlay.jpg");
     opacity: 1;
     z-index: 39; }
@@ -4964,6 +4965,11 @@ ul.share-buttons {
       ul.share-buttons a.comment:hover b {
         color: #fff !important; }
 
+.m-icon {
+  font-size: 20px;
+  float: left;
+  margin-top: 0px; }
+
 .share-bar {
   width: 80px;
   position: absolute;
@@ -5222,7 +5228,8 @@ body.product-details #hero {
   position: absolute;
   width: 350px;
   right: 150px;
-  bottom: -82px;
+  bottom: 4px;
+  /*  bottom:-82px;*/
   overflow: hidden;
   z-index: 2; }
   .slider-side-block .top {
@@ -6052,15 +6059,21 @@ header.colophon {
     padding-right: 0; }
     header.colophon #top-nav .signin a {
       float: right;
-      margin-right: 1%;
+      /*        margin-right: 10px;*/
       padding-left: 33px;
-      background-image: url("/assets/images/signin-icon.png");
-      background-position: left;
-      background-repeat: no-repeat;
-      background-size: 27px;
+      /*        background-image: url("/assets/images/signin-icon.png");*/
+      /*        background-position: left;*/
+      /*        background-repeat: no-repeat;*/
+      /*        background-size: 27px;*/
       white-space: nowrap; }
+      header.colophon #top-nav .signin a .m-icon {
+        margin-right: 5px;
+        border: 1px solid;
+        border-radius: 16px;
+        font-size: 23px;
+        margin-top: -5px; }
       header.colophon #top-nav .signin a:hover {
-        background-image: url("/assets/images/signin-blue.png"); }
+        /*          background-image: url("/assets/images/signin-blue.png");*/ }
   header.colophon .logo-wrap {
     position: absolute;
     left: 42%; }
@@ -6188,22 +6201,27 @@ body.single-post .article-content ul li {
 
 body.product-details .story-header h1 {
   width: 34%;
-  overflow: hidden;
   font-size: 13px;
-  margin-top: 5px; }
+  margin-top: -9px; }
   body.product-details .story-header h1 .title {
-    height: 15px; }
+    height: 15px;
+    display: inline-block;
+    overflow: hidden; }
 
-body.product-details .story-header .like-counter {
-  margin-top: -4px; }
-  body.product-details .story-header .like-counter b {
-    padding-top: 8px; }
+body.product-details .story-header .like-counter b {
+  padding-top: 8px; }
 
 body.product-details .story-header .social-rounds {
   width: 190px; }
 
+body.product-details .scroll-header #top-nav a.shop {
+  color: #999999; }
+
+body.product-details .scroll-header #top-nav a.shop:hover {
+  color: #ed2049; }
+
 body.product-details #top-nav a.shop {
-  color: #ed1d47;
+  color: #999999;
   font-weight: bold;
   position: relative; }
 
@@ -6296,10 +6314,11 @@ body.product-details .article-content p {
   color: #fff !important;
   box-shadow: none;
   position: relative;
-  padding-left: 25px; }
-  .homepage .mid-nav li.home a > i, .mid-nav .homepage .extra-nav li.home a > i {
+  padding-left: 35px; }
+  .homepage .mid-nav li.home a > .m-icon, .mid-nav .homepage .extra-nav li.home a > .m-icon {
     position: absolute;
-    left: 5px; }
+    left: 5px;
+    top: 3px; }
 
 .homepage .mid-nav li.home .box-link-active-line, .mid-nav .homepage .extra-nav li.home .box-link-active-line {
   position: absolute;
@@ -6362,7 +6381,7 @@ body.product-details .article-content p {
     .mid-nav a.box-link {
       margin: 15px 6px 13px;
       font-size: 13px;
-      font-weight: bold;
+      /*      font-weight: bold ;*/
       position: relative; }
       .mid-nav a.box-link:hover, .mid-nav a.box-link.active {
         background: #ed2049;
@@ -6371,9 +6390,9 @@ body.product-details .article-content p {
         margin-right: 17px; }
     .mid-nav a:hover {
       color: white;
-      -webkit-box-shadow: 0px 0px 0px 2px #FF0042;
-      -moz-box-shadow: 0px 0px 0px 2px #FF0042;
-      box-shadow: 0px 0px 0px 2px #FF0042;
+      /*-webkit-box-shadow: 0px 0px 0px 2px $iridium;
+      -moz-box-shadow: 0px 0px 0px 2px $iridium;
+      box-shadow: 0px 0px 0px 2px $iridium;*/
       background: #ed2049; }
   .mid-nav li.nested {
     position: relative; }
@@ -6797,6 +6816,11 @@ header.sub-head {
     display: inline-block; }
   .like-nav li:last-child {
     width: auto; }
+  .like-nav li .social-stats {
+    margin-top: 5px; }
+    .like-nav li .social-stats a {
+      float: none;
+      padding: 0px; }
   .like-nav li a {
     padding-top: 15px;
     padding-left: 10px;
@@ -6917,9 +6941,11 @@ body.single .like-nav {
   margin-top: 10px; }
   .comments .comment-controls .add-photo {
     color: #a8a8a8;
-    background: url("/assets/images/camera-grey.png") 5px center no-repeat;
-    padding-left: 40px;
-    margin-right: 17px; }
+    margin-right: 17px;
+    float: left;
+    margin-top: 10px; }
+    .comments .comment-controls .add-photo .m-icon {
+      color: #3D4B4E; }
   .comments .comment-controls .btn-info {
     width: 100px; }
 
@@ -6984,13 +7010,11 @@ body.single .like-nav {
   height: 100px;
   padding-top: 10px;
   margin-top: 5px;
-  background: url("/assets/images/icons/logo-lamp-white.png") 10px 15px no-repeat;
   background-color: #FF0042;
   border-radius: 10px;
   text-align: center;
   color: #fff; }
   .average-score .score {
-    padding-left: 25px;
     font-size: 4rem; }
   .average-score .caption {
     display: inline-block;
@@ -7446,8 +7470,6 @@ footer.about-footer {
     display: none; } }
 
 @media only screen and (max-width: 1200px) {
-  #hero-nav {
-    margin-top: 60px; }
   #top-nav a {
     margin-right: 3%; }
   .mid-nav a, .mid-nav .extra-nav a {
@@ -7523,7 +7545,7 @@ footer.about-footer {
   header.colophon #top-nav .category-menu {
     padding: 0 10px 0 5px; }
   header.colophon .signin {
-    width: 120px; }
+    width: 144px; }
   .shop-menu {
     padding-left: 10px;
     padding-right: 10px; }
@@ -7546,7 +7568,7 @@ footer.about-footer {
   .container.fixed-sm {
     /*    min-width: 920px;*/ }
   #hero-nav li.active a {
-    padding-left: 28px; }
+    /*        padding-left: 28px;*/ }
     #hero-nav li.active a.home-link {
       background-position: -19px 11px; } }
 
@@ -7561,7 +7583,11 @@ footer.about-footer {
   .mid-nav .extra-nav {
     right: 20%; }
   footer.about-footer h4 {
-    margin-top: 35px; } }
+    margin-top: 35px; }
+  .mid-nav, .mid-nav .extra-nav {
+    border-top: 1px solid #c1c1c1; }
+  .mid-nav .container {
+    border-top: 0px; } }
 
 @media only screen and (max-width: 620px) {
   body:not(.single-post) #about-button {
@@ -7669,17 +7695,17 @@ footer.about-footer {
       margin-top: 10px; }
       #top-nav .signin a {
         cursor: pointer;
-        width: 100% !important;
-        padding-left: 25px !important;
+        /*        width: 100% !important;*/
         text-indent: 0 !important;
         background: #FF0042;
-        padding: 4px;
         border-radius: 3px;
         color: #fff  !important;
         text-transform: none;
-        background-image: url("/assets/images/signin-white.png") !important;
-        background-size: 20px !important;
-        background-position-x: 5px !important; }
+        padding: 12px 23px 7px  5px !important;
+        width: 83px;
+        /*        background-image: url("/assets/images/signin-white.png") !important;*/
+        /*        background-size: 20px !important;*/
+        /*        background-position-x: 5px !important;*/ }
   .main-content.landing {
     padding: 0 0 20px; }
   article.product .article-content {
