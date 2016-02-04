@@ -23,17 +23,6 @@ class PageController extends Controller
         return view('home');
     }
 
-    public function roomLanding($roomName = false)
-    {
-        if(!$roomName){
-            return redirect('/');
-        }
-
-        // TODO - add tag filtering for Feeds. Pass room type param to Ang Paging
-
-        return view('room.landing');
-    }
-
     public function getContent($page = 1, $limit = 5, $returnOnly = false, $offset = false){
 
         $offset = false;
@@ -162,7 +151,7 @@ class PageController extends Controller
         MetaTag::set('title',$result['roomInformation']['MetaTitle']);
         MetaTag::set('description',$result['roomInformation']['MetaDescription']);
         //return $result;
-        return view('static.kitchen-landing')->with('roomInformation',$result['roomInformation']);
+        return view('room.landing')->with('roomInformation',$result['roomInformation']);
         // Get category tree
         /*$catTree = $product->getCategoryHierarchy($productData['product']->product_category_id);
 
