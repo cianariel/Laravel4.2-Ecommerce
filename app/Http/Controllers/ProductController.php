@@ -25,13 +25,22 @@
             $this->middleware('jwt.auth',
                 ['except' => [
                     'publishProduct', 'searchProductByName', 'updateProductInfo', 'productDetailsView',
-                    'getAllProductList','getProducts' ,'getProductById', 'isPermalinkExist', 'addProduct',
-                    'addMediaForProduct', 'addMediaInfo', 'getMediaForProduct', 'deleteSingleMediaItem',
-                    'getProductInfoFromApi', 'priceUpdate', 'deleteProduct', 'productDetailsViewByName'
+                    'getAllProductList', 'getProductById', 'isPermalinkExist', 'addProduct',
+                    'fileUploader', 'addMediaInfo', 'getMediaForProduct', 'deleteSingleMediaItem',
+                    'getProductInfoFromApi', 'priceUpdate', 'deleteProduct', 'productDetailsViewByName',
+                    'getStoreInformation'
+
                 ]]);
             $this->product = new Product();
 
             $this->media = new Media();
+        }
+
+        public function getStoreInformation()
+        {
+            $productId = 64;
+          $val = $this->product->getStoreInfoByProductId($productId);
+
         }
 
         /**
@@ -204,6 +213,7 @@
                     ->makeResponseWithError("System Failure !", $ex);
             }
         }
+
 
         /**
          * @return mixed
@@ -384,72 +394,16 @@
         }
 
 
-        /**
-         * @param Request $request
-         * @return array
-         */
+        /*
+
         public function addMediaForProduct(Request $request)
         {
-            $fileResponse = [];
-
-            if (!$request->hasFile('file'))
-            {
-                $fileResponse['result'] = \Config::get("const.file.file-not-exist");
-                $fileResponse['status_code'] = \Config::get("const.api-status.validation-fail");
-
-                return $fileResponse;
-
-            } else if (!$request->file('file')->isValid())
-            {
-                $fileResponse['result'] = \Config::get("const.file.file-not-exist");
-                $fileResponse['status_code'] = \Config::get("const.api-status.validation-fail");
-
-                return $fileResponse;
-            } else if (!in_array($request->file('file')->guessClientExtension(), array("jpeg", "jpg", "bmp", "png", "mp4", "avi", "mkv")))
-            {
-                $fileResponse['result'] = \Config::get("const.file.file-invalid");
-                $fileResponse['status_code'] = \Config::get("const.api-status.validation-fail");
-
-                return $fileResponse;
-            } else if ($request->file('file')->getClientSize() > \Config::get("const.file.file-max-size"))
-            {
-                $fileResponse['result'] = \Config::get("const.file.file-max-limit-exit");
-                $fileResponse['status_code'] = \Config::get("const.api-status.validation-fail");
-
-                return $fileResponse;
-            } else
-            {
-                $fileName = 'product-' . uniqid() . '-' . $request->file('file')->getClientOriginalName();
-
-                // pointing filesystem to AWS S3
-                $s3 = Storage::disk('s3');
-
-                // Thumbnail creation and uploading to AWS S3
-                if (in_array($request->file('file')->guessClientExtension(), array("jpeg", "jpg", "bmp", "png")))
-                {
-                    // $thumb = \Image::make($request->file('file'))->crop(100,100);
-                    $thumb = \Image::make($request->file('file'))
-                        ->resize(90, null, function ($constraint)
-                        {
-                            $constraint->aspectRatio();
-                        });
-
-                    $thumb = $thumb->stream();
-                    $thumbFileName = 'thumb-' . $fileName;
-                    $s3->put($thumbFileName, $thumb->__toString(), 'public');
-                }
-
-
-                if ($s3->put($fileName, file_get_contents($request->file('file')), 'public'))
-                {
-                    $fileResponse['result'] = \Config::get("const.file.s3-path") . $fileName;
-                    $fileResponse['status_code'] = \Config::get("const.api-status.success");
-
-                    return $fileResponse;
-                }
-            }
-
+            return $this->media->fileUploader($request);
         }
+         */
+
+
+
 
         /** Fetch product information form vendor API
          * @param $itemId
@@ -503,6 +457,5 @@
                 }
             }
         }
-
 
     }

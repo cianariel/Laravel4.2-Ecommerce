@@ -71,6 +71,11 @@
             return view('admin.product-add')->with('id',$id);
         }
 
+        public function storeView()
+        {
+            return view('admin.stores');
+        }
+
         public function tagView()
         {
             return view('admin.tag-view');

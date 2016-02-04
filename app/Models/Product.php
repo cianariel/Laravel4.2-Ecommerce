@@ -60,6 +60,11 @@
             return $this->belongsTo('App\Models\ProductCategory');
         }
 
+        public function store()
+        {
+            return $this->belongsTo('App\Models\Store');
+        }
+
         public function medias()
         {
             return $this->morphMany('App\Models\Media', 'mediable');
@@ -68,6 +73,11 @@
         public function tags()
         {
             return $this->morphToMany('App\Models\Tag', 'taggable');
+        }
+
+        public function logoInformation()
+        {
+            return $this->hasManyThrough('App\Models\Store', 'App\Models\Media');
         }
 
 
@@ -85,6 +95,33 @@
         public function getReviewAttribute($value)
         {
             return json_decode($value);
+        }
+
+        // Functions //
+
+
+        /** Populate store information for a single product
+         * @param $productId
+         * @return mixed
+         */
+        public function getStoreInfoByProductId($productId)
+        {
+            $item = Product::find($productId)->store;
+            $itemLogoInfo = Store::find($item['id'])->medias->first();
+
+            $data['StoreId'] = $item->id;
+            $data['StoreName'] = $item->store_name;
+            $data['Identifier'] = $item->store_identifier;
+            $data['Description'] = $item->store_description;
+            $data['Status'] = $item->status;
+            $data['ImagePath'] = $itemLogoInfo->media_link;
+
+            $strReplace = \Config::get("const.file.s3-path");// "http://s3-us-west-1.amazonaws.com/ideaing-01/";
+            $file = str_replace($strReplace, '', $itemLogoInfo->media_link);
+
+            $data['ThumbnailPath'] = $strReplace . 'thumb-' . $file;
+
+            return $data;
         }
 
 
@@ -184,7 +221,7 @@
                 ->first();
 
             // automatic update price for any changes and fetch new data with updated price
-            if($this->updateProductPrice($productInfo['product_vendor_id'],$productInfo['store_id']))
+            if ($this->updateProductPrice($productInfo['product_vendor_id'], $productInfo['store_id']))
             {
                 $productInfo = Product::with('medias')
                     ->where($column, $value)
@@ -261,7 +298,10 @@
             }
 
 
-            $skip = $settings['limit'] * ($settings['page'] - 1);
+            $skip = isset($settings['CustomSkip'])? intval($settings['CustomSkip']):$settings['limit'] * ($settings['page'] - 1);
+
+
+//            $skip = $settings['limit'] * ($settings['page'] - 1);
 
             $product['total'] = $productModel->count();
 
@@ -357,7 +397,10 @@
             $selfImage = [];
             foreach ($productData['product']->medias as $key => $value)
             {
-                if (($value->media_type == 'img-upload' || $value->media_type == 'img-link') && ($value->is_hero_item == null || $value->is_hero_item == false))
+                if (($value->media_type == 'img-upload' || $value->media_type == 'img-link')
+                    && ($value->is_hero_item == null || $value->is_hero_item == false)
+                    && ($value->is_main_item == null || $value->is_main_item == false)
+                )
                 {
                     $selfImage['picture'][ $key ]['link'] = $value->media_link;
                     $selfImage['picture'][ $key ]['picture-name'] = $value->media_name;
@@ -424,11 +467,12 @@
             $result['productInformation'] = $productInfo;
             $result['relatedProducts'] = $relatedProductsData;
             $result['selfImages'] = $selfImage;
-
+            $result['storeInformation'] = $this->getStoreInfoByProductId($productData['product']->id);
 
             //removing duplicate data entry for related product (set distinct value for related products)
             $result['relatedProducts'] = array_map("unserialize", array_unique(array_map("serialize", $result['relatedProducts'])));
 
+            //    dd($result);
             return $result;
 
         }

@@ -95,6 +95,9 @@
         Route::post('product/publish-product', 'ProductController@publishProduct');
         Route::get('product/get-by-name/{name?}', 'ProductController@productDetailsViewByName');
 
+        // Test method for logo
+        Route::get('product/logo','ProductController@getStoreInformation');
+
 
         // Delete product
         Route::post('product/delete-product', 'ProductController@deleteProduct');
@@ -128,11 +131,23 @@
          *
          * */
 
-        Route::any('product/media-upload', 'ProductController@addMediaForProduct');
+        Route::any('product/media-upload', 'ProductController@fileUploader');
         Route::post('product/add-media-info', 'ProductController@addMediaInfo');
         Route::get('product/get-media/{id?}', 'ProductController@getMediaForProduct');
         Route::post('product/delete-media', 'ProductController@deleteSingleMediaItem');
+
         Route::post('media/update-media', 'MediaController@updateMediaContent');
+        Route::any('media/media-upload', 'MediaController@fileUploader');
+        Route::post('media/media-delete', 'MediaController@fileUploader');
+
+        /*
+         * Store
+         * */
+        Route::post('store/update-store', 'StoreController@updateStore');
+        Route::post('store/delete-store', 'StoreController@deleteStore');
+        Route::post('store/change-status', 'StoreController@changeStatus');
+
+        Route::get('store/show-stores', 'StoreController@getAllStores');
 
         Route::post('room/add-room', 'RoomController@addRoom');
         Route::post('room/update-room', 'RoomController@updateRoom');
@@ -160,6 +175,10 @@
         Route::get('product-add', 'AdminController@addProduct');
         Route::get('product-edit/{id?}', 'AdminController@editProduct');
 
+        // Stores
+        Route::get('stores', 'AdminController@storeView');
+
+
         //Tag view
         Route::get('tag-view', 'AdminController@tagView');
         
@@ -169,6 +188,7 @@
         Route::get('room-edit/{id?}', 'AdminController@editRoom');
 
     });
+
 
     // Route for password reset , email verification ,feed example
     Route::get('password-reset-form/{code?}', 'AuthenticateController@passwordResetForm');
@@ -189,7 +209,7 @@
     Route::get('product/{permalink?}', 'PageController@productDetailsPage');
 
 
-    Route::get('/api/paging/get-content/{page?}', 'PageController@getContent');
+    Route::get('/api/paging/get-content/{page?}/{limit?}/{returnOnly?}', 'PageController@getContent');
 
 
     // temporary category tag generator

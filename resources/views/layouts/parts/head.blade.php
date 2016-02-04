@@ -57,6 +57,14 @@ if (screen.width < 992 && screen.width > 620) {
 
 <script src="/assets/js/vendor/angular.min.js"></script>
 
+<style>
+    .homepage-grid{
+       transition: opacity 1s;
+    }
+    .homepage-grid.hidden{
+        opacity:0;
+    }
+</style>
 <!--
 
 <script src="/assets/js/vendor/textAngular-sanitize.min.js"></script>

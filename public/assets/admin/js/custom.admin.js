@@ -182,7 +182,7 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
         // uploader section //
 
         var uploader = $scope.uploader = new FileUploader({
-            url: '/api/product/media-upload',
+            url: '/api/media/media-upload',
         });
 
         // FILTERS
@@ -231,7 +231,6 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
             //    console.info('onCompleteAll');
         };
 
-        // console.info('uploader', uploader);
 
         // End uploader section //
 
@@ -277,7 +276,7 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
             $scope.htmlContent = '<div><br/><br/><br/>1. Describe what the product is<br/><br/></div><div>2. How does it solve one\'s problem<br/><br/></div><div>3. Why is it unique<br/><br/></div><div>4. Mention how the reviewers (Amazon users or CNET or another source) said about it.<br/><br/></div><div>5. List 3 bullet points on its key features in your own words</div>';
             $scope.Price = '';
             $scope.SalePrice = '';
-            $scope.StoreId = '';
+            //    $scope.StoreId = '';
             $scope.AffiliateLink = '';
             $scope.PriceGrabberId = '';
             $scope.FreeShipping = '';
@@ -338,8 +337,8 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
 
             //filter type setting
             $scope.filterTypes = [
-                {"key": "user-filter", "value": "Filter By User"},
-                {"key": "product-filter", "value": "Filter By Product"},
+                {"key": "user-filter", "value": "Search by User ..."},
+                {"key": "product-filter", "value": "Search by Product ..."},
             ];
             $scope.selectedFilter = '';
             $scope.filterName = '';
@@ -359,7 +358,100 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
             // product filter with Tag
             $scope.WithTags = false;
 
+            // Store Module
+            $scope.StoreId = '';
+            $scope.StoreIdentifier = '';
+            $scope.StoreName = '';
+            $scope.StoreStatus = 'Active';
+            $scope.StoreDescription = '';
+            //$scope.mediaLink  has initialized above for uploading product
+
+            $scope.storeList = [];
+
         };
+
+        //// Store ///
+
+        $scope.updateStore = function () {
+            $scope.closeAlert();
+            // console.log($scope.mediaLink, $scope.StoreDescription, $scope.StoreIdentifier);
+            $http({
+                url: '/api/store/update-store',
+                method: "POST",
+                data: {
+                    StoreId: $scope.StoreId,
+                    StoreIdentifier: $scope.StoreIdentifier,
+                    StoreName: $scope.StoreName,
+                    StoreStatus: $scope.StoreStatus,
+                    StoreDescription: $scope.StoreDescription,
+                    MediaLink: $scope.mediaLink
+                }
+            }).success(function (data) {
+                $scope.outputStatus(data, 'Data updated successfully');
+
+                $scope.StoreId = '';
+                $scope.StoreIdentifier = '';
+                $scope.StoreName = '';
+                $scope.StoreDescription = '';
+                $scope.mediaLink = '';
+                $scope.loadAllStores();
+
+            });
+        };
+
+        $scope.loadAllStores = function () {
+
+            // console.log($scope.mediaLink, $scope.StoreDescription, $scope.StoreIdentifier);
+            $http({
+                url: '/api/store/show-stores',
+                method: "GET"
+            }).success(function (data) {
+                $scope.storeList = data.data;
+            });
+        };
+
+        $scope.changeStoreActivation = function(){
+            $scope.closeAlert();
+
+            $scope.StoreStatus = ($scope.StoreStatus == "Active") ? "Inactive" : "Active";
+
+            $http({
+                url: '/api/store/change-status',
+                method: "POST",
+                data:{
+                    StoreId : $scope.StoreId,
+                    StoreStatus : $scope.StoreStatus
+                }
+            }).success(function (data) {
+                $scope.loadAllStores();
+            });
+        };
+
+        $scope.editStore = function(index){
+
+            $scope.StoreId = $scope.storeList[index].Id;
+            $scope.StoreIdentifier = $scope.storeList[index].Identifier;
+            $scope.StoreName = $scope.storeList[index].Name;
+            $scope.StoreStatus = $scope.storeList[index].Status == 'Active'?'Active':'Inactive';
+            $scope.StoreDescription = $scope.storeList[index].Description;
+            $scope.mediaLink = $scope.storeList[index].ImageLink;
+
+        };
+
+        $scope.deleteStore = function (id) {
+            $scope.closeAlert();
+            $http({
+                url: '/api/store/delete-store',
+                method: "POST",
+                data: {
+                    StoreId : id
+                }
+            }).success(function (data) {
+                $scope.loadAllStores();
+                $scope.outputStatus(data, 'Store deleted successfully');
+            });
+        };
+
 
         ///// tag //////
 
@@ -599,6 +691,7 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
         // reset filter for product list view
         $scope.resetFilter = function () {
             $scope.initPage();
+            $scope.getCategory();
         };
 
         // Build HTML listed response for popup notification.
@@ -673,8 +766,8 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
         };
 
         $scope.updateCategory = function (idx) {
-            console.log("Saving contact");
-            console.log($scope.categoryItems[idx]);
+            // console.log("Saving contact");
+            // console.log($scope.categoryItems[idx]);
             $scope.closeAlert();
 
             $http({
@@ -745,6 +838,7 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
             $scope.isCollapsed = false; // default false it false to show forced parmalink saviing mood.
             $scope.isCollapsedToggle = !$scope.isCollapsed;
         };
+
         $scope.addProduct = function () {
 
             $scope.closeAlert();
@@ -985,6 +1079,7 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
 
         // view product list
         $scope.showAllProduct = function () {
+
             $http({
                 url: '/api/product/get-product-list',
                 method: 'POST',
@@ -1240,17 +1335,8 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
             $scope.isHeroItem = stat;
             $scope.isMainItem = $scope.mediaList[index].is_main_item == 1 ? 1 : 0;
             $scope.isMediaEdit = true;
-            console.log($scope.mediaId);
+           // console.log($scope.mediaId);
 
-
-            /*
-             ProductId: $scope.ProductId,
-             MediaTitle: $scope.mediaTitle,
-             MediaType: $scope.selectedMediaType,
-             MediaLink: $scope.mediaLink,
-             IsHeroItem: $scope.isHeroItem,
-             IsMainItem: $scope.isMainItem
-             */
         };
 
         $scope.updateMediaInfo = function () {
@@ -1267,7 +1353,7 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
 
                 }
             }).success(function (data) {
-               // console.log(data);
+                // console.log(data);
                 $scope.mediaId = '';
                 $scope.mediaTitle = '';
                 $scope.selectedMediaType = '';

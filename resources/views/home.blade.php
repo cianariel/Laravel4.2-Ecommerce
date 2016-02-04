@@ -36,87 +36,89 @@
 
         </div>
     </section>
-    <nav id="hero-nav" class="col-sm-12">
-        <div class="container full-620  fixed-sm">
-            {{--<ul class="left-nav col-xs-1 hidden-620">--}}
-                {{--<li class="active"><a class="home-link" href="#">Home</a></li>--}}
-            {{--</ul>--}}
-            <ul class="category-nav main-content-filter">
-                <li class="active"><a href="" data-filterby="all" class="all-link">All</a></li>
-                <li><a data-filterby="ideas" href="#" class="ideas-link">Ideas</a></li>
-                <li><a data-filterby="products" href="#" class="products-link">Products</a></li>
-                <li><a data-filterby="photos" href="#" class="photos-link">Photos</a></li>
-            </ul>
-        </div>
-    </nav>
-
-    <div class="clearfix"></div>
-
-    <div class="homepage-grid center-block" ng-app="pagingApp" ng-controller="pagingController">
-        {{--<div class="wrap">--}}
-
-            <div class="loader loader-abs" cg-busy="firstLoad"></div>
-            <div class="loader loader-fixed" cg-busy="nextLoad"></div>
-
-            <div ng-repeat="batch in content" class="container main-content">
-                <div class="grid-box-3">
-                        <div class="box-item idea-box" ng-if="item.type == 'idea'" ng-repeat="item in batch['row-1']">
-                            @include('grid.idea')
-                        </div>
-
-                        <div ng-if="item.type == 'product'" ng-repeat="item in batch['row-1']" class="box-item product-box">
-                            @include('grid.product')
-                        </div>
-                </div>
-
-                <div class="grid-box-full">
-                    <div class="box-item idea-box box-item--featured" ng-if="item.type == 'idea'" ng-repeat="item in batch['row-2']">
-                        @include('grid.idea')
-                    </div>
-
-                </div>
-
-                <div class="grid-box-3">
-                    <div class="box-item idea-box" ng-if="item.type == 'idea'" ng-repeat="item in batch['row-3']">
-                        @include('grid.idea')
-                    </div>
-
-                    <div ng-if="item.type == 'product'" ng-repeat="item in batch['row-3']" class="box-item product-box">
-                        @include('grid.product')
-                    </div>
-                </div>
-
-                <div class="grid-box-full">
-                    <div class="box-item idea-box box-item--featured" ng-if="item.type == 'idea'" ng-repeat="item in batch['row-4']">
-                        @include('grid.idea')
-                    </div>
-
-                </div>
-
-                <div class="grid-box-3">
-                        <div class="box-item idea-box" ng-if="item.type == 'idea'" ng-repeat="item in batch['row-5']">
-                            @include('grid.idea')
-                        </div>
-
-                        <div ng-if="item.type == 'product'" ng-repeat="item in batch['row-5']" class="box-item product-box">
-                            @include('grid.product')
-                        </div>
-                </div>
-
-
-                <div class="grid-box-full">
-                    <div class="box-item idea-box box-item--featured" ng-if="item.type == 'idea'" ng-repeat="item in batch['row-6']">
-                        @include('grid.idea')
-                    </div>
-
-                </div>
+    <div class="app-wrap" ng-app="pagingApp" ng-controller="pagingController">
+        <nav id="hero-nav" class="col-sm-12">
+            <div class="container full-620  fixed-sm">
+                {{--<ul class="left-nav col-xs-1 hidden-620">--}}
+                    {{--<li class="active"><a class="home-link" href="#">Home</a></li>--}}
+                {{--</ul>--}}
+                <ul class="category-nav main-content-filter">
+                    <li class="active"><a ng-click="filterContent(null)"  href="" data-filterby="all" class="all-link">All</a></li>
+                    <li><a ng-click="filterContent('idea')" data-filterby="ideas" href="" class="ideas-link">Ideas</a></li>
+                    <li><a  ng-click="filterContent('product')" data-filterby="products" href="" class="products-link">Products</a></li>
+                    <li><a data-filterby="photos" href="" class="photos-link">Photos</a></li>
+                </ul>
             </div>
-        {{--</div>--}}
+        </nav>
 
-        <a ng-click="loadMore()" class="btn btn-success bottom-load-more col-xs-12">Load More</a>
+        <div class="clearfix"></div>
+
+        <div class="homepage-grid center-block" style="min-height:1000px">
+                <div class="loader loader-abs" cg-busy="firstLoad"></div>
+                {{--<div class="loader loader-abs" cg-busy="filterLoad"></div>--}}
+                <div class="loader loader-fixed" cg-busy="nextLoad"></div>
+
+                <div ng-repeat="batch in content" class="container main-content"  >
+                    <div class="grid-box-3">
+                            <div class="box-item idea-box" ng-if="item.type == 'idea'" ng-repeat="item in batch['row-1']">
+                                @include('grid.idea')
+                            </div>
+
+                            <div ng-if="item.type == 'product'" ng-repeat="item in batch['row-1']" class="box-item product-box">
+                                @include('grid.product')
+                            </div>
+                    </div>
+
+                    <div class="grid-box-full">
+                        <div class="box-item idea-box box-item--featured" ng-if="item.type == 'idea'" ng-repeat="item in batch['row-2']">
+                            @include('grid.idea')
+                        </div>
+
+                    </div>
+
+                    <div class="grid-box-3">
+                        <div class="box-item idea-box" ng-if="item.type == 'idea'" ng-repeat="item in batch['row-3']">
+                            @include('grid.idea')
+                        </div>
+
+                        <div ng-if="item.type == 'product'" ng-repeat="item in batch['row-3']" class="box-item product-box">
+                            @include('grid.product')
+                        </div>
+                    </div>
+
+                    <div class="grid-box-full">
+                        <div class="box-item idea-box box-item--featured" ng-if="item.type == 'idea'" ng-repeat="item in batch['row-4']">
+                            @include('grid.idea')
+                        </div>
+
+                    </div>
+
+                    <div class="grid-box-3">
+                            <div class="box-item idea-box" ng-if="item.type == 'idea'" ng-repeat="item in batch['row-5']">
+                                @include('grid.idea')
+                            </div>
+
+                            <div ng-if="item.type == 'product'" ng-repeat="item in batch['row-5']" class="box-item product-box">
+                                @include('grid.product')
+                            </div>
+                    </div>
+
+
+                    <div class="grid-box-full">
+                        <div class="box-item idea-box box-item--featured" ng-if="item.type == 'idea'" ng-repeat="item in batch['row-6']">
+                            @include('grid.idea')
+                        </div>
+
+                    </div>
+
+                </div>
+            {{--</div>--}}
+        </div>
+        <div class="container">
+            <a ng-click="loadMore()" class="btn btn-success bottom-load-more col-xs-12">Load More</a>
+        </div>
 
     </div>
-
     <script src="/assets/js/vendor/angular-busy.min.js"></script>
     <script src="/assets/js/angular-custom/custom.paging.js"></script>
 @stop

@@ -7984,7 +7984,7 @@ p {
   .loader.loader-abs {
     position: absolute;
     left: 48%;
-    top: 48%; }
+    top: 5%; }
     .loader.loader-abs .cg-busy-backdrop {
       position: relative;
       min-height: 300px; }
@@ -8189,14 +8189,3 @@ p {
       padding: 0 0; } }
   .homepage-grid .grid-box-3:first-child {
     margin-top: -1px; }
-
-article.post .article-content ul{
-    list-style: initial;
-    padding-left: 40px;
-    font-family: montserratlight;
-    color: #757575;
-    font-size: 1.5rem;
-}    
-article.post .article-content li{
-    list-style: initial;
-}
