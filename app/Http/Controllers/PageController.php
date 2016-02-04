@@ -20,10 +20,6 @@ class PageController extends Controller
      */
     public function home()
     {
-//        for($i = 0; $i < $pages; $i++){
-//            $content[] = self::getContent($i + 1);
-//        }
-
         return view('home');
     }
 
@@ -46,23 +42,8 @@ class PageController extends Controller
             $storyOffset =   $limit *  ($page - 1);
         }
 
-
-
-//        if($returnOnly == 'idea'){
-//            $productLimit = $limit;
-//        }
-
         $featuredLimit = 3;
         $featuredOffset = $featuredLimit * ($page - 1);
-
-//        if($returnOnly == 'product'){
-//            $productLimit  = $limit;
-//            $productOffset = $limit *  ($page);
-//        }else{
-//            $productLimit = $limit + 2;
-//            $productOffset = $limit *  ($page - 1);
-//        }
-//        $productOffset = $limit;
 
         if($returnOnly == 'product' || !$stories = self::getStories($storyLimit, $storyOffset, $featuredLimit, $featuredOffset)){
             $stories = [
@@ -170,7 +151,7 @@ class PageController extends Controller
         MetaTag::set('title',$result['roomInformation']['MetaTitle']);
         MetaTag::set('description',$result['roomInformation']['MetaDescription']);
         //return $result;
-        return view('static.kitchen-landing')->with('roomInformation',$result['roomInformation']);
+        return view('room.landing')->with('roomInformation',$result['roomInformation']);
         // Get category tree
         /*$catTree = $product->getCategoryHierarchy($productData['product']->product_category_id);
 
