@@ -56,7 +56,7 @@
                         </a>
                     </li>
                 </ul>
-<!--                <a class="like-counter" href="#"><i class="m-icon m-icon--heart-solid"></i>&nbsp;<b>1819</b></a>-->
+                <!--                <a class="like-counter" href="#"><i class="m-icon m-icon--heart-solid"></i>&nbsp;<b>1819</b></a>-->
             </h1>
 
             <ul class="share-buttons short hidden-xs col-lg-6 col-sm-8 pull-right">
@@ -75,7 +75,8 @@
                 @endif" target="_blank">
                     Get it
                 </a>
-                <img class="vendor-logo"  style="-webkit-filter: invert(100%); filter: invert(100%);" width="90" src="@if(isset($storeInformation['ThumbnailPath'])){{$storeInformation['ThumbnailPath']}}@endif"
+                <img class="vendor-logo" style="-webkit-filter: invert(100%); filter: invert(100%);" width="90"
+                     src="@if(isset($storeInformation['ThumbnailPath'])){{$storeInformation['ThumbnailPath']}}@endif"
                      alt="@if(isset($storeInformation['StoreName'])){{$storeInformation['StoreName']}}@endif">
                 <b class="price">$ @if(isset($productInformation['SellPrice']))
                         {{$productInformation['SellPrice']}}
@@ -104,11 +105,11 @@
                     </div>
                     <div class="col-sm-4">
                         <div class="average-score">
-                            
+
                             <div class="score">
                                 <i class="m-icon  m-icon--bulb-detailed-on-rating"></i>
                                 @if(isset($productInformation['Review']) && isset($productInformation['IdeaingReviewScore']))
-                                    {{intval((($productInformation['Review'][0]->value + $productInformation['IdeaingReviewScore'])/2)*20)}}
+                                    {{intval((($productInformation['Review'][1]->value + $productInformation['IdeaingReviewScore'])/2)*20)}}
                                 @endif%
                             </div>
                             <span class="caption">Average Ideaing Score</span>
@@ -129,7 +130,7 @@
 
                 <div class="slider product-slider">
                     <script>
-      jQuery(document).ready(function($) {
+                        jQuery(document).ready(function ($) {
                             if (window.innerWidth < 480) {
 
                                 $('#gallery').royalSlider({
@@ -222,8 +223,9 @@
                             @endif" target="_blank">
                                 Get it
                             </a>
-                            <img class="vendor-logo" width="107" src="@if(isset($storeInformation['ImagePath'])){{$storeInformation['ImagePath']}}@endif"
-                            alt="@if(isset($storeInformation['StoreName'])){{$storeInformation['StoreName']}}@endif">
+                            <img class="vendor-logo" width="107"
+                                 src="@if(isset($storeInformation['ImagePath'])){{$storeInformation['ImagePath']}}@endif"
+                                 alt="@if(isset($storeInformation['StoreName'])){{$storeInformation['StoreName']}}@endif">
                             <b class="price">$ @if(isset($productInformation['SellPrice']))
                                     {{$productInformation['SellPrice']}}
                                 @endif</b>
@@ -251,10 +253,14 @@
             <div class="container full-620 fixed-sm">
                 <ul class="category-nav full-620">
                     <li><a href="#" class="photos-link"><i class="m-icon m-icon--photos"></i>&nbsp;Photos</a></li>
-                    <li><a href="#" class="features-link"><i class="m-icon m-icon--features-c1"></i>&nbsp;Features</a></li>
-                    <li><a href="#" data-scrollto="#specs" class="specs-link"><i class="m-icon m-icon--specs"></i>&nbsp;Specs</a></li>
-                    <li><a href="#" data-scrollto="#compare" class="compare-link"><i class="m-icon  m-icon--comparisons-active"></i>&nbsp;Comparisons</a></li>
-                    <li><a href="#" data-scrollto="#reviews" class="reviews-link"><i class="m-icon m-icon--reviews"></i>&nbsp;Reviews</a></li>
+                    <li><a href="#" class="features-link"><i class="m-icon m-icon--features-c1"></i>&nbsp;Features</a>
+                    </li>
+                    <li><a href="#" data-scrollto="#specs" class="specs-link"><i class="m-icon m-icon--specs"></i>&nbsp;Specs</a>
+                    </li>
+                    <li><a href="#" data-scrollto="#compare" class="compare-link"><i
+                                    class="m-icon  m-icon--comparisons-active"></i>&nbsp;Comparisons</a></li>
+                    <li><a href="#" data-scrollto="#reviews" class="reviews-link"><i class="m-icon m-icon--reviews"></i>&nbsp;Reviews</a>
+                    </li>
                 </ul>
             </div>
         </nav>
@@ -334,7 +340,8 @@
                                                 ) Customer Reviews</span>
                                         </div>
                                         <div class="btn purple-bg price-badge">
-                                            <span>@{{ item.data.storeInformation.StoreName }}</span> <b>$@{{ item.data.productInformation.SellPrice }}</b>
+                                            <span>@{{ item.data.storeInformation.StoreName }}</span>
+                                            <b>$@{{ item.data.productInformation.SellPrice }}</b>
                                         </div>
                                         <a class="btn-none" href="@{{ item.data.productInformation.AffiliateLink }}"
                                            target="_blank">More Info</a>
@@ -415,7 +422,9 @@
                                     <div class="average-score">
                                         <div class="score">
                                             <i class="m-icon  m-icon--bulb-detailed-on-rating"></i>
-                                            80%
+                                            @if(isset($productInformation['Review']) && isset($productInformation['IdeaingReviewScore']))
+                                                {{intval((($productInformation['Review'][1]->value + $productInformation['IdeaingReviewScore'])/2)*20)}}
+                                            @endif%
                                         </div>
                                         <span class="caption">Average Ideaing Score</span>
                                     </div>
@@ -443,41 +452,44 @@
                                     </div>-->
                                 </div>
                             </div>
+
                             <div class="row">
                                 <div class="col-xs-6 col-sm-4 text-center reviews-service-holder critic">
                                     <div class="vertical-line visible-xs"></div>
                                     <div class="title">Critic</div>
                                     <div class="reviews">Reviews</div>
-                                    <div class="value">9,4</div>
-                                    <div class="outer-line">
-                                        <div class="line-label ">CNET</div>
-                                        <div style="width: 90%" class="inner-line"></div>
-                                        <div class="line-value ">9,640</div>
-                                    </div>
-                                    <div class="outer-line">
-                                        <div class="line-label ">ENGADGET</div>
-                                        <div style="width: 80%" class="inner-line"></div>
-                                        <div class="line-value ">9,000</div>
-                                    </div>
-                                    <div class="outer-line">
-                                        <div class="line-label ">PCMAC</div>
-                                        <div style="width: 86%" class="inner-line"></div>
-                                        <div class="line-value ">9,150</div>
-                                    </div>
+                                    <div class="value">{{$productInformation['IdeaingReviewScore']}}</div>
+                                    @if(isset($productInformation['Review']))
+                                        @foreach( array_slice($productInformation['Review'],2) as $review )
+                                            <div class="outer-line">
+                                                <div class="line-label "><a
+                                                            href="@if(isset($review->link)){{$review->link}}@endif"
+                                                            target="_blank">@if(isset($review->key)){{$review->key}}@endif
+                                                    </a></div>
+                                                <div style="width: @if(isset($review->value)){{$review->value * 20}}@endif%"
+                                                     class="inner-line"></div>
+                                                <div class="line-value ">@if(isset($review->counter) && ($review->counter > 0))
+                                                        {{$review->counter}} @endif</div>
+                                            </div>
+                                        @endforeach
+                                    @endif
+
                                 </div>
                                 <div class="col-xs-6 col-sm-4 col-sm-offset-4 text-center reviews-service-holder amazon">
                                     <div class="vertical-line visible-xs"></div>
-                                    <div class="title">Amazon</div>
+                                    <div class="title"><a style="color: #00b1ff;"
+                                                          href="@if(isset($productInformation['Review'][1]->link)){{$productInformation['Review'][1]->link}}@endif"
+                                                          target="_blank">Amazon</a></div>
                                     <div class="reviews">Reviews</div>
                                     <div class="star-raiting" style="text-align: center">
-                                        <?php 
-                                            $stars = 3.5; 
-                                            $fStar = floor($stars);
-                                            $cStar = ceil($stars);
-                                            $halfStar = -1;
-                                            if($fStar == $cStar)
-                                                $halfStar = $cStar;
-                                            
+                                        <?php
+                                        $stars = $productInformation['Review'][1]->value;
+                                        $fStar = floor($stars);
+                                        $cStar = ceil($stars);
+                                        $halfStar = -1;
+                                        if ($fStar == $cStar)
+                                            $halfStar = $cStar;
+
                                         ?>
                                         @for($i=1; $i<=5; $i++)
                                             @if($i <= $fStar)
@@ -490,68 +502,15 @@
                                         @endfor
                                     </div>
                                     <p class="text-center">
-                                        2,567 <span class="light-black">Reviews</span>
+                                        {{$productInformation['Review'][1]->counter}} <span
+                                                class="light-black">Reviews</span>
                                     </p>
                                 </div>
                             </div>
                         </div>
                         <div class="visible-xs visible-sm">
-                            
+
                         </div>
-
-                        @if(0)
-                        <h3 class="pink">Reviews
-                            (@if(isset($productInformation['Review'])){{count($productInformation['Review']) -1}}@endif)
-                        </h3>
-
-                        <div class="col-sm-3">
-                            <h6 class="grey">Critic Reviews</h6>
-                            <b class="score critic-score pink">
-                                @if(isset($productInformation['IdeaingReviewScore']))
-                                    {{($productInformation['IdeaingReviewScore'])*20}} %
-                                @endif
-                            </b>
-                        </div>
-                        <div class="col-sm-9">
-                            <table class="rating-lines">
-                                <tbody>
-                                @if(isset($productInformation['Review']))
-                                    @foreach( array_slice($productInformation['Review'],1) as $review )
-                                        <tr>
-                                            <td class="name">
-                                                <a href="@if(isset($review->link)){{$review->link}}@endif"
-                                                   target="_blank">@if(isset($review->key)){{$review->key}}@endif
-                                                    @if(isset($review->counter) && ($review->counter > 0))
-                                                        ( {{$review->counter}} )@endif
-                                                </a>
-                                            </td>
-                                            <td class="line">
-                                                <div class="outer-line">
-                                                    <div style="width: @if(isset($review->value)){{$review->value * 20}}@endif%"
-                                                         class="inner-line"></div>
-                                                </div>
-                                            </td>
-                                            <!-- TODO - the style has to come from Laravel-->
-
-                                            <td class="score">@if(isset($review->value)){{$review->value * 20}}@endif%
-                                            </td>
-                                        </tr>
-
-                                    @endforeach
-                                @endif
-
-                                </tbody>
-                            </table>
-                        </div>
-
-                        <div class="col-sm-3 col-md-offset-3 critic-quote">
-                            <div>
-                                @if(isset($productInformation['ReviewExtLink']))
-                                    {!! $productInformation['ReviewExtLink'] !!}
-                                @endif
-                            </div>
-                        </div>
-                        @endif
                     </div>
                 </section>
             </article>
@@ -603,7 +562,7 @@
                 <div class="container full-620 fixed-sm">
                     <h3 class="green">Related Products</h3>
                     <div class="related-products grid-box-3">
-                        
+
 
                         @if(isset($relatedProducts) && ($relatedProducts != null) )
                             @foreach( $relatedProducts as $product )
@@ -624,18 +583,20 @@
                                         <span class="round-tag__label">Product</span>
                                     </div>
                                     <div class="box-item__label-prod">
-                                        <a href="{{$product['Permalink']}}" class="box-item__label box-item__label--clear ">{{ $product['Name'] }}</a>
+                                        <a href="{{$product['Permalink']}}"
+                                           class="box-item__label box-item__label--clear ">{{ $product['Name'] }}</a>
                                         <div class="clearfix"></div>
-<!--                                        <div class="merchant-widget">-->
-<!--                                            <span class="merchant-widget__price ">$1200</span>-->
-<!--                                            <span>from</span>-->
-<!--                                            <img class="merchant-widget__store" src="/assets/images/dummies/amazon-black.png">-->
-<!--                                        </div>-->
+                                        <!--                                        <div class="merchant-widget">-->
+                                        <!--                                            <span class="merchant-widget__price ">$1200</span>-->
+                                        <!--                                            <span>from</span>-->
+                                        <!--                                            <img class="merchant-widget__store" src="/assets/images/dummies/amazon-black.png">-->
+                                        <!--                                        </div>-->
                                         <div class="clearfix"></div>
-                                        <a target="_blank" href="{{ $product['Permalink'] }}" class="box-item__get-it">Get it</a>
+                                        <a target="_blank" href="{{ $product['Permalink'] }}" class="box-item__get-it">Get
+                                            it</a>
                                     </div>
-                                    
-                                    
+
+
                                 </div>
                             @endforeach
                         @endif
@@ -672,18 +633,19 @@
                                     <div class="box-item__label-idea">
                                         <a href="#" class="box-item__label ng-binding">Mr Coffee smart</a>
                                         <div class="clearfix"></div>
-                                        
+
                                         <a href="#" class="box-item__read-more">Read More</a>
                                     </div>
                                     <div class="box-item__author">
                                         <a href="#" class="user-widget">
-                                            <img class="user-widget__img" src="{{url('assets/images/dummies/author.png')}}">
+                                            <img class="user-widget__img"
+                                                 src="{{url('assets/images/dummies/author.png')}}">
                                             <span class="user-widget__name ng-binding">Aiza Coronado</span>
                                         </a>
                                     </div>
                                 </div>
                             @endfor
-                        </div>                        
+                        </div>
 
                     </div>
                 </div>
