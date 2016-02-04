@@ -23,6 +23,8 @@
 
     Route::get('/', 'PageController@home');
 
+    Route::get('/room/{roomName?}', 'PageController@roomLanding');
+
     Route::get('update-price', 'ProductController@priceUpdate');
 
 

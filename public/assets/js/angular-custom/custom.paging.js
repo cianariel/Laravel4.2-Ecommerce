@@ -1,5 +1,5 @@
 angular.module('pagingApp.controllers', []).
-    controller('pagingController', function($scope,$http,pagaingApi) {
+    controller('pagingController', function($scope,$http,pagaingApi, $filter) {
         $scope.allContent = [];
         $scope.content = [];
         $scope.newStuff = [];
@@ -7,6 +7,8 @@ angular.module('pagingApp.controllers', []).
         $scope.contentBlock = angular.element( document.querySelector('.main-content') );
         $scope.filterLoad = [];
         //$scope.globalOffset = 0;
+
+        console.log($filter('_uriseg')(2))
 
         $scope.firstLoad = pagaingApi.getContent(1, 0).success(function (response) {
             $scope.allContent[0] = response;
@@ -56,11 +58,6 @@ angular.module('pagingApp.controllers', []).
                         return true;
 
                     }
-                //else if(typeof $scope.filterBy !== 'undefined' && $scope.filterBy && $scope.filterBy !== null){ // change from one filter to another - reset to the first pagination
-                //    $scope.currentPage = 1;
-                //
-                //    console.log('3')
-                //}
 
                $scope.filterBy = $criterion;
 
@@ -128,7 +125,7 @@ angular.module('pagingApp.controllers', []).
 angular.module('pagingApp', [
     'pagingApp.controllers',
     'pagingApp.services',
-    //'pagingApp.directives',
+    'pagingApp.filters',
     'cgBusy'
 ]);
 
@@ -194,4 +191,17 @@ angular.module('pagingApp').value('cgBusyDefaults',{
     delay: 300,
     minDuration: 700,
     wrapperClass: 'my-class my-class2'
+});
+angular.module('pagingApp.filters', [])
+    .filter('_uriseg', function($location) {
+    return function(segment) {
+        var baseUrl = $location.protocol() + '://' + $location.host() + '/';
+
+        var query = $location.absUrl().replace(baseUrl, '');
+        var data = query.split("/");
+        if(data[segment-2]) {
+            return data[segment-2];
+        }
+        return false;
+    }
 });
