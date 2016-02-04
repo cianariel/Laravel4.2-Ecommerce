@@ -31,6 +31,10 @@
         return view('static.product-details');
     });
 
+     Route::get('/aboutus', function()
+    {
+        return view('layouts.aboutus');
+    });
 
     Route::group(['prefix' => 'api'], function ()
     {
