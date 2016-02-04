@@ -7643,7 +7643,7 @@ footer.about-footer {
   .container.fixed-sm {
     /*    min-width: 920px;*/ }
   #hero-nav li.active a {
-    padding-left: 28px; }
+    /*        padding-left: 28px;*/ }
     #hero-nav li.active a.home-link {
       background-position: -19px 11px; } }
 
