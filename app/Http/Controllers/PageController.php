@@ -20,11 +20,18 @@ class PageController extends Controller
      */
     public function home()
     {
-//        for($i = 0; $i < $pages; $i++){
-//            $content[] = self::getContent($i + 1);
-//        }
-
         return view('home');
+    }
+
+    public function roomLanding($roomName = false)
+    {
+        if(!$roomName){
+            return redirect('/');
+        }
+
+        // TODO - add tag filtering for Feeds. Pass room type param to Ang Paging
+
+        return view('room.landing');
     }
 
     public function getContent($page = 1, $limit = 5, $returnOnly = false, $offset = false){
@@ -46,23 +53,8 @@ class PageController extends Controller
             $storyOffset =   $limit *  ($page - 1);
         }
 
-
-
-//        if($returnOnly == 'idea'){
-//            $productLimit = $limit;
-//        }
-
         $featuredLimit = 3;
         $featuredOffset = $featuredLimit * ($page - 1);
-
-//        if($returnOnly == 'product'){
-//            $productLimit  = $limit;
-//            $productOffset = $limit *  ($page);
-//        }else{
-//            $productLimit = $limit + 2;
-//            $productOffset = $limit *  ($page - 1);
-//        }
-//        $productOffset = $limit;
 
         if($returnOnly == 'product' || !$stories = self::getStories($storyLimit, $storyOffset, $featuredLimit, $featuredOffset)){
             $stories = [
