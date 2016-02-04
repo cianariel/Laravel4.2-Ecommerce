@@ -41,6 +41,10 @@
         return view('static.product-details');
     });
 
+    Route::get('/aboutus', function()
+    {
+        return view('layouts.aboutus');
+    });
     Route::get('/kitchen-landing', function () // temp, used for tweaking frontend
     {
         return view('static.kitchen-landing');
