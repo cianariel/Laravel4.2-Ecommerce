@@ -32,7 +32,7 @@
                             <b>Sign-up in Seconds</b>
                         </h4>
 
-                        <input class="form-control" type="text" placeholder="First name" name="name">
+                        <input class="form-control hide" type="text" placeholder="First name" name="name">
                         <input class="form-control"  type="text" placeholder="Email" name="email">
 
                         <a class="btn btn-success col-xs-12" href="#">Sign up</a>
@@ -69,7 +69,7 @@
                     <ul class="category-nav main-content-filter">
                         <li class="active">
                             <a ng-click="filterContent(null)" href="" data-filterby="all" class="all-link">
-                                <i class="m-icon--menu"></i>&nbsp;
+                                <i class="m-icon m-icon--menu"></i>&nbsp;
                                 All
                             </a>
                         </li>
@@ -82,13 +82,14 @@
                         <li>
                             <a ng-click="filterContent('product')" data-filterby="products" href=""
                                class="products-link">
-                                <i class="m-icon--item"></i>&nbsp;
+                               <i class="m-icon m-icon--item"></i>&nbsp;
+
                                 Products
                             </a>
                         </li>
                         <li>
                             <a data-filterby="photos" href="" class="photos-link">
-                                <i class=" m-icon--image"></i>&nbsp;
+                               <i class=" m-icon--image"></i>&nbsp; 
                                 Photos
                             </a>
                         </li>
