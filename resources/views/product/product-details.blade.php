@@ -106,7 +106,7 @@
                         <div class="average-score">
                             
                             <div class="score">
-                                <i class="m-icon  m-icon--bulb-detailed-on-rating"></i>
+                                <i class=" m-icon--bulb-detailed-on-rating"></i>
                                 @if(isset($productInformation['Review']) && isset($productInformation['IdeaingReviewScore']))
                                     {{intval((($productInformation['Review'][0]->value + $productInformation['IdeaingReviewScore'])/2)*20)}}
                                 @endif%
@@ -253,7 +253,7 @@
                     <li><a href="#" class="photos-link"><i class="m-icon m-icon--photos"></i>&nbsp;Photos</a></li>
                     <li><a href="#" class="features-link"><i class="m-icon m-icon--features-c1"></i>&nbsp;Features</a></li>
                     <li><a href="#" data-scrollto="#specs" class="specs-link"><i class="m-icon m-icon--specs"></i>&nbsp;Specs</a></li>
-                    <li><a href="#" data-scrollto="#compare" class="compare-link"><i class="m-icon  m-icon--comparisons-active"></i>&nbsp;Comparisons</a></li>
+                    <li><a href="#" data-scrollto="#compare" class="compare-link"><i class="m-icon  m-icon--comparisons"></i>&nbsp;Comparisons</a></li>
                     <li><a href="#" data-scrollto="#reviews" class="reviews-link"><i class="m-icon m-icon--reviews"></i>&nbsp;Reviews</a></li>
                 </ul>
             </div>
@@ -414,7 +414,7 @@
                                 <div class="text-center col-xs-4">
                                     <div class="average-score">
                                         <div class="score">
-                                            <i class="m-icon  m-icon--bulb-detailed-on-rating"></i>
+                                            <i class="  m-icon--bulb-detailed-on-rating"></i>
                                             80%
                                         </div>
                                         <span class="caption">Average Ideaing Score</span>

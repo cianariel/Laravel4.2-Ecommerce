@@ -57,8 +57,12 @@
                                     <a data-toggle="modal" data-target="#myModal" href="#"><i class="m-icon m-icon--user"></i> Log in</a>
                                 </div>
                                 <section class="search-bar col-xs-2 col-md-2 pull-right">
-                                    <a href="#" class="search-toggle" data-toggle=".mobile-search-bar">Search</a>
-                                    <input class="form-control  hidden-620" type="text" name="search" value="Search..."/>
+                                
+                                    <a href="#" class="search-toggle" data-toggle=".mobile-search-bar"><i class="m-icon m-icon--search-id"></i></a>
+                                    <span class="search-input-holder">
+                                        <i class="m-icon m-icon--search-id"></i>
+                                        <input class="form-control  hidden-620" type="text" name="search" placeholder="Search..."/>
+                                    </span>
                                 </section>
                             </div>
                         </div>

@@ -1625,7 +1625,7 @@ main.page-content{
 
       }
       &.idea{
-        background: url("/assets/images/lamp-orange.png") center no-repeat;
+/*        background: url("/assets/images/lamp-orange.png") center no-repeat;*/
       }
       &.photo{
       }
@@ -2411,7 +2411,7 @@ article.product{
   position: absolute;
   width: 80px;
   right: 85px;
-  bottom: 45px;
+  bottom: 138px;
   padding: 13px;
   font-size: 1rem;
   z-index: 9;
@@ -2434,7 +2434,7 @@ article.product{
   border: 0;
   position: absolute;
   right: 16px;
-  bottom: 40px;
+  bottom: 133px;
   width: 50px;
   height: 50px;
   background: url("/assets/images/back-to-top.png") no-repeat;
@@ -2604,7 +2604,9 @@ header.colophon{
   }
 
 }
-
+#top-nav .search-bar a.search-toggle{
+    padding-top: 16px;
+}
 .search-bar{
   padding-top: 13px;
   width: 20%;
@@ -2612,17 +2614,29 @@ header.colophon{
 
   //margin-left: 3%;
 
-  .search-toggle{
+  a.search-toggle{
     display: none;
-    text-indent: -9999px;
-    background: url('/assets/images/magnif-grey.png') center no-repeat;
+/*    text-indent: -9999px;*/
+/*    background: url('/assets/images/magnif-grey.png') center no-repeat;*/
+  }
+  
+  .search-input-holder{
+      position: relative;
+      
+    .m-icon{
+        position: absolute;
+        left: 10px;
+        top: 19px;
+        z-index: 10;
+    }      
   }
 
   input{
     min-width: 128px;
     color: #999;
-    text-align: center;
-    background: url('/assets/images/magnif-grey.png') 10% no-repeat;
+    text-align: left;
+    padding-left: 36px;
+/*    background: url('/assets/images/magnif-grey.png') 10% no-repeat;*/
   }
 }
 
@@ -3656,8 +3670,7 @@ header.sub-head{
   }
 
 
-  li.active{
-    a:not(.home-link)::after{
+  li.active a:not(.home-link)::after, li a:not(.home-link):hover::after{
       content: ' ';
       width: 17px;
       height: 19px;
@@ -3665,16 +3678,19 @@ header.sub-head{
       font-size: 1.7rem;
       position: absolute;
       bottom: -13px;
-      right: 38%;
+/*      right: 38%;*/
       color: #fff;
       background: white url('/assets/images/pointer-arrow-grey.png') no-repeat;
+      left: 50%;
+      margin-left: -8px;
 
       //text-shadow:
       //-1px -1px 0 darken($pale-grey, 10%),
       //1px -1px 0 darken($pale-grey, 10%),
       //-1px 1px 0 #fff,
       //1px 1px 0 #fff;
-    }
+  }
+  li.active{
     a.home-link{
       color: $iridium;
       background-image: url('/assets/images/house-pink.png');
@@ -3688,9 +3704,9 @@ header.sub-head{
       //}
     }
     a.ideas-link{
-      background-image: url('/assets/images/lamp-grey.png');
+/*      background-image: url('/assets/images/lamp-grey.png');*/
       color: $dark-orange;
-      background-image: url('/assets/images/lamp-orange.png');
+/*      background-image: url('/assets/images/lamp-orange.png');*/
     }
     a.products-link{
       color: $pine-green;
@@ -3698,6 +3714,18 @@ header.sub-head{
     a.photos-link{
       color: $sky-blue;
     }
+  }
+  
+  .main-content-filter{
+      li{
+          .m-icon{
+            font-size: 24px;
+            margin-top: -3px;
+          }
+          > a{
+              padding-right: 10px;
+          }
+      }
   }
 
 
@@ -4854,7 +4882,7 @@ footer.about-footer{
   }
 
   #hero-nav{
-    padding-left: 0;
+/*    padding-left: 0;*/
     & > .container{
       padding-left: 0;
     }
@@ -5321,7 +5349,7 @@ footer.about-footer{
 
     .category-nav {
       width: 100%;
-      padding-left: 8%;
+/*      padding-left: 8%;*/
       .home-link{
         min-width: 24px;
         text-align: center;
@@ -5337,7 +5365,7 @@ footer.about-footer{
 
     li{
       //margin-left: 16px;
-      height: 70px;
+      height: 50px;
     }
 
     li.active a::after {
@@ -5351,8 +5379,8 @@ footer.about-footer{
     a:not(.box-link){
       //background-position: left;
       //background-repeat: no-repeat;
-      padding-left: 35px;
-      padding-top: 40px;
+/*      padding-left: 35px;*/
+      padding-top: 20px;
       background-size: 30px;
       margin-right: 1%;
       font-size: 1.3rem;
@@ -5639,7 +5667,7 @@ footer.about-footer{
 
   #hero-nav:not(.product-nav){
     .container{
-      padding-left: 7%;
+/*      padding-left: 7%;*/
     }
   }
 
@@ -5899,7 +5927,7 @@ footer.about-footer{
 
   #hero-nav{
     .category-nav{
-      padding-left: 3%;
+/*      padding-left: 3%;*/
     }
     a {
       padding-right: 5%;
