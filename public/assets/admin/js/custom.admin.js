@@ -1021,13 +1021,15 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
                     'key': $scope.reviewKey,
                     'value': $scope.reviewValue,
                     'link': $scope.reviewLink,
-                    'counter': $scope.reviewCounter
+                    'counter': (typeof $scope.reviewCounter === 'undefined' || $scope.reviewCounter == '' || isNaN($scope.reviewCounter))? 1 : parseInt($scope.reviewCounter)
                 }
             );
             $scope.reviewKey = '';
             $scope.reviewValue = '';
             $scope.reviewLink = '';
-            $scope.reviewCounter = $scope.reviewCounter == null ? 1 : parseInt($scope.reviewCounter);
+            console.log($scope.reviewCounter);
+
+            $scope.reviewCounter = '';
             /*$scope.externalReviewLink = '';
              $scope.ideaingReviewScore = 0;*/
             console.log($scope.reviewCounter);
@@ -1061,7 +1063,7 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
             $scope.reviews[$scope.$index].key = $scope.reviewKey;
             $scope.reviews[$scope.$index].value = $scope.reviewValue;
             $scope.reviews[$scope.$index].link = $scope.reviewLink;
-            $scope.reviews[$scope.$index].counter = $scope.reviewCounter == "" ? 0 : parseInt($scope.reviewCounter);
+            $scope.reviews[$scope.$index].counter = isNaN($scope.reviewCounter) ? 1 : parseInt($scope.reviewCounter);
 
             $scope.isUpdateReviewShow = false;
 
