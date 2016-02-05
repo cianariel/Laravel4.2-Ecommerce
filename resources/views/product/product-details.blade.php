@@ -96,8 +96,8 @@
 
                             <div class="score">
                                 <i class=" m-icon--bulb-detailed-on-rating"></i>
-                                @if(isset($productInformation['Review']) && isset($productInformation['IdeaingReviewScore']))
-                                    {{intval((($productInformation['Review'][1]->value + $productInformation['IdeaingReviewScore'])/2)*20)}}
+                                @if(isset($productInformation['Review']))
+                                    {{intval(((($productInformation['Review'][0]->value > 0 ? $productInformation['Review'][0]->value : $productInformation['Review'][1]->value) + $productInformation['Review'][1]->value)/2)*20)}}
                                 @endif%
                             </div>
                             <span class="caption">Average Ideaing Score</span>
@@ -404,8 +404,8 @@
                                     <div class="average-score">
                                         <div class="score">
                                             <i class="  m-icon--bulb-detailed-on-rating"></i>
-                                            @if(isset($productInformation['Review']) && isset($productInformation['IdeaingReviewScore']))
-                                                {{intval((($productInformation['Review'][1]->value + $productInformation['IdeaingReviewScore'])/2)*20)}}
+                                            @if(isset($productInformation['Review']))
+                                                {{intval(((($productInformation['Review'][0]->value > 0 ? $productInformation['Review'][0]->value : $productInformation['Review'][1]->value) + $productInformation['Review'][1]->value)/2)*20)}}
                                             @endif%
                                         </div>
                                         <span class="caption">Average Ideaing Score</span>
@@ -421,8 +421,13 @@
                                     <div class="average-score block-center">
                                         <div class="score">
                                             <i class="m-icon  m-icon--bulb-detailed-on-rating"></i>
-                                            @if(isset($productInformation['Review']) && isset($productInformation['IdeaingReviewScore']))
-                                                {{intval((($productInformation['Review'][1]->value + $productInformation['IdeaingReviewScore'])/2)*20)}}
+                                            @if(isset($productInformation['Review']))
+                                                {{
+                                                intval((((
+                                                $productInformation['Review'][0]->value)
+                                                + $productInformation['Review'][1]->value)/2)*20
+                                                )
+                                                }}
                                             @endif%
                                         </div>
                                         <span class="caption">Average Ideaing Score</span>
@@ -438,7 +443,7 @@
 
                                     <div class="star-raiting" style="text-align: center">
                                         <?php
-                                        $stars = $productInformation['IdeaingReviewScore'];
+                                        $stars = $productInformation['Review'][0]->value;
                                         $fStar = floor($stars);
                                         $cStar = ceil($stars);
                                         $halfStar = -1;
@@ -456,6 +461,18 @@
                                             @endif
                                         @endfor
                                     </div>
+                                    <p style="color: black" class="text-center">
+                                        {{number_format($productInformation['Review'][0]->counter == ''?0:$productInformation['Review'][0]->counter)}}
+                                        <span class="light-black">
+                                            @if(isset($productInformation['Review'][0]->counter)&& $productInformation['Review'][0]->counter >1)
+                                                Reviews
+                                            @else
+                                                Review
+                                            @endif
+                                        </span>
+
+                                    </p>
+
                                     @if(isset($productInformation['Review']))
                                         @foreach( array_slice($productInformation['Review'],2) as $review )
                                             <div style="background: #ffffff" class="outer-line">
@@ -487,7 +504,15 @@
                                                 <div style="font-size: 14px; right: -80px;top: 1px"
                                                      class="line-value">@if(isset($review->counter) && ($review->counter > 0))
                                                         <a href="@if(isset($review->link)){{$review->link}}@endif"
-                                                                target="_blank"> {{number_format($review->counter)}} Reviews </a> @endif</div>
+                                                           target="_blank"> {{number_format($review->counter == ''?0:$review->counter)}}
+
+                                                            @if(isset($review->counter)&& $review->counter >1)
+                                                                Reviews
+                                                            @else
+                                                                Review
+                                                            @endif
+
+                                                        </a> @endif</div>
                                             </div>
                                         @endforeach
                                     @endif
@@ -522,8 +547,14 @@
                                     <p style="color: black" class="text-center">
                                         <a href="@if(isset($productInformation['Review'][1]->link)){{$productInformation['Review'][1]->link}}@endif"
                                            target="_blank">
-                                            {{number_format($productInformation['Review'][1]->counter)}}
-                                            <span class="light-black">Reviews</span>
+                                            {{$productInformation['Review'][1]->counter == ''?0:number_format($productInformation['Review'][1]->counter)}}
+                                            <span class="light-black">
+                                               @if(isset($productInformation['Review'][1]->counter)&& $productInformation['Review'][1]->counter >1)
+                                                    Reviews
+                                                @else
+                                                    Review
+                                                @endif
+                                            </span>
                                         </a>
                                     </p>
                                 </div>
@@ -533,13 +564,13 @@
 
                         </div>
 
-                            <div style="left: 12%" class="col-sm-3 col-md-offset-3 critic-quote">
-                                <div>
-                                    @if(isset($productInformation['ReviewExtLink']))
-                                        {!! $productInformation['ReviewExtLink'] !!}
-                                    @endif
-                                </div>
+                        <div style="left: 12%" class="col-sm-3 col-md-offset-3 critic-quote">
+                            <div>
+                                @if(isset($productInformation['ReviewExtLink']))
+                                    {!! $productInformation['ReviewExtLink'] !!}
+                                @endif
                             </div>
+                        </div>
 
                     </div>
                 </section>
