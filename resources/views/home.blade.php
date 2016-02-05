@@ -12,9 +12,9 @@
                 <h2>Ideas for Smarter Living</h2>
 
                 <ul>
-                    <li class="get-ideas">Get ideas for a smarter and sexier home</li>
-                    <li class="share-vote">Share and Vote on the best theme decor</li>
-                    <li class="shop-cool">Shop for cool gadgets and unique decor</li>
+                    <li class="get-ideas"><i class="m-icon m-icon--bulb3"></i>Get ideas for a smarter and sexier home</li>
+                    <li class="share-vote"><i class="m-icon m-icon--products"></i>Share and Vote on the best theme decor</li>
+                    <li class="shop-cool"><i class="m-icon m-icon--heart-id"></i>Shop for cool gadgets and unique decor</li>
                 </ul>
 
             </div>
@@ -25,11 +25,15 @@
                     </h4>
 
                     <input class="form-control hide" type="text" placeholder="First name" name="name">
-                    <input class="form-control"  type="text" placeholder="Email" name="email">
+                    <span class="email-input-holder ">
+                        <i class="m-icon m-icon--email-form-id"></i>
+                        <input class="form-control"  type="text" placeholder="Email" name="email">
+                    </span>
+                    
 
                     <a class="btn btn-success col-xs-12" href="#">Sign up</a>
                     <div class="line-wrap">or</div>
-                    <a class="btn btn-info col-xs-12" href="#"><i class="icon fb-icon"></i>Sign up with Facebook</a>
+                    <a class="btn btn-info col-xs-12" href="#"><i class="m-icon m-icon--facebook-id"></i>Sign up with Facebook</a>
                 </form>
             </div>
 
@@ -51,7 +55,7 @@
                     </li>
                     <li ng-class="{active: activeMenu == '2'}" ng-click="activeMenu='2'">
                         <a ng-click="filterContent('idea')" data-filterby="ideas" href="" class="ideas-link">
-                            <i class="m-icon m-icon--bulb"></i>
+                            <i class="m-icon m-icon--bulb"></i>&nbsp;
                             Ideas
                         </a>
                     </li>
