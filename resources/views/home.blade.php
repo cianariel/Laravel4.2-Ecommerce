@@ -12,9 +12,9 @@
                 <h2>Ideas for Smarter Living</h2>
 
                 <ul>
-                    <li class="get-ideas">Get ideas for a smarter and sexier home</li>
-                    <li class="share-vote">Share and Vote on the best theme decor</li>
-                    <li class="shop-cool">Shop for cool gadgets and unique decor</li>
+                    <li class="get-ideas"><i class="m-icon m-icon--bulb3"></i>Get ideas for a smarter and sexier home</li>
+                    <li class="share-vote"><i class="m-icon m-icon--products"></i>Share and Vote on the best theme decor</li>
+                    <li class="shop-cool"><i class="m-icon m-icon--heart-id"></i>Shop for cool gadgets and unique decor</li>
                 </ul>
 
             </div>
