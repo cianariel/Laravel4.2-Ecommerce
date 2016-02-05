@@ -1146,7 +1146,7 @@ body.product-details{
   position: absolute;
   width: 350px;
   right: 150px;
-  bottom:4px;
+  bottom: 0px;
 /*  bottom:-82px;*/
   overflow: hidden;
   z-index: 2;
@@ -3305,17 +3305,24 @@ header.sub-head{
     font-weight: bold;
     letter-spacing: 1px;
     text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
+    position: relative;
 
     font-size: 1.6rem;
+    .m-icon{
+        position: absolute;
+        left: 0px;
+        top: 50%;
+        margin-top: -10px;
+    }
 
     &.get-ideas{
-      background:url("/assets/images/lamp-white.png") left no-repeat;
+/*      background:url("/assets/images/lamp-white.png") left no-repeat;*/
     }
     &.share-vote{
-      background:url("/assets/images/like-white.png") left no-repeat;
+/*      background:url("/assets/images/like-white.png") left no-repeat;*/
     }
     &.shop-cool{
-      background:url("/assets/images/tag-white.png") left no-repeat;
+/*      background:url("/assets/images/tag-white.png") left no-repeat;*/
     }
 
 
