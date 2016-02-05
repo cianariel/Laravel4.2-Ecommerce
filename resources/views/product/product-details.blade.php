@@ -7,7 +7,7 @@
         var permalink = "{{$permalink}}";
     </script>
     <div ng-app="productApp" data-ng-controller="productController" ng-cloak>
-        <nav class="mid-nav hidden-620">
+        <nav class="mid-nav hidden-xs">
             <div class="container">
                 <div class="col-sm-8 col-sm-offset-2">
                     <ul class="left-nav breadcrumbs hidden-620">
@@ -67,12 +67,12 @@
                 @endif" target="_blank">
                     Get it
                 </a>
-                <img class="vendor-logo" style="-webkit-filter: invert(100%); filter: invert(100%);" width="90"
-                     src="@if(isset($storeInformation['ThumbnailPath'])){{$storeInformation['ThumbnailPath']}}@endif"
-                     alt="@if(isset($storeInformation['StoreName'])){{$storeInformation['StoreName']}}@endif">
-                <b class="price">$ @if(isset($productInformation['SellPrice']))
-                        {{$productInformation['SellPrice']}}
-                    @endif</b>
+                <b class="price">
+                    &nbsp;
+                    @if(isset($productInformation['SellPrice']))
+                        ${{$productInformation['SellPrice']}}
+                    @endif
+                </b>
             </div>
         </header>
 
@@ -84,16 +84,9 @@
             <div class="container fixed-sm full-480">
 
                 <div class="row">
-                    <div class="col-sm-8">
-                        <h1>
-                            @if(isset($productInformation['ProductName']))
-                                {{$productInformation['ProductName']}}
-                            @endif
-                        </h1>
-                    </div>
-                    <div class="col-sm-4">
-                        <div class="average-score">
-
+                    <div class="col-sm-11">
+                        <div class="average-score pull-right">
+                            
                             <div class="score">
                                 <i class=" m-icon--bulb-detailed-on-rating"></i>
                                 @if(isset($productInformation['Review']))
@@ -103,21 +96,32 @@
                             <span class="caption">Average Ideaing Score</span>
                         </div>
                     </div>
+                    <div class="col-sm-1"></div>
+                    <div class="clearfix"></div>
+                    <div class="col-sm-11 ">
+                        <h1 class="text-right average-score-title">
+                            @if(isset($productInformation['ProductName']))
+                                {{$productInformation['ProductName']}}
+                            @endif
+                        </h1>
+                    </div>
+                    <div class="col-sm-1"></div>
                 </div>
 
 
                 <nav class="top-product-controls">
                     <ul>
-                        <li><a href="#" class="get-alerts">Get alerts</a></li>
-                        <li><a href="#" class="likes">768</a></li>
-                        <li><a href="#" data-scrollto="#comments" class="comments">1.2K</a></li>
+                        <li><a href="#" class="get-alerts"><i class="m-icon m-icon--alert"></i>&nbsp; Get alerts</a></li>
+                        {{--<li><a class="compare">99</a></li>--}}
+                        <li><a href="#" class="likes"><i class="m-icon m-icon--heart-solid"></i>&nbsp; 768</a></li>
+                        <li><a href="#" data-scrollto="#comments" class="comments"><i class="m-icon m-icon--discuss-products"></i>&nbsp; 1.2K</a></li>
                     </ul>
                 </nav>
 
 
                 <div class="slider product-slider">
                     <script>
-                        jQuery(document).ready(function ($) {
+      jQuery(document).ready(function($) {
                             if (window.innerWidth < 480) {
 
                                 $('#gallery').royalSlider({
@@ -212,7 +216,7 @@
                             </a>
                             <img class="vendor-logo" width="107"
                                  src="@if(isset($storeInformation['ImagePath'])){{$storeInformation['ImagePath']}}@endif"
-                                 alt="@if(isset($storeInformation['StoreName'])){{$storeInformation['StoreName']}}@endif">
+                            alt="@if(isset($storeInformation['StoreName'])){{$storeInformation['StoreName']}}@endif">
                             <b class="price">$ @if(isset($productInformation['SellPrice']))
                                     {{$productInformation['SellPrice']}}
                                 @endif</b>
@@ -244,8 +248,7 @@
                     </li>
                     <li><a href="#" data-scrollto="#specs" class="specs-link"><i class="m-icon m-icon--specs"></i>&nbsp;Specs</a>
                     </li>
-                    <li><a href="#" data-scrollto="#compare" class="compare-link"><i
-                                    class="m-icon  m-icon--comparisons"></i>&nbsp;Comparisons</a></li>
+                    <li><a href="#" data-scrollto="#compare" class="compare-link"><i class="m-icon  m-icon--comparisons"></i>&nbsp;Comparisons</a></li>
                     <li><a href="#" data-scrollto="#reviews" class="reviews-link"><i class="m-icon m-icon--reviews"></i>&nbsp;Reviews</a>
                     </li>
                 </ul>
@@ -420,7 +423,7 @@
                                 <div class=" col-xs-12">
                                     <div class="average-score block-center">
                                         <div class="score">
-                                            <i class="m-icon  m-icon--bulb-detailed-on-rating"></i>
+                                            <i class=" m-icon--bulb-detailed-on-rating"></i>
                                             @if(isset($productInformation['Review']))
                                                 {{
                                                 intval((((
@@ -502,7 +505,7 @@
                                                     @endfor
                                                 </div>
 
-                                            </div>
+                                    </div>
                                         @endforeach
                                     @endif
 
@@ -514,14 +517,14 @@
                                                           target="_blank">Amazon</a></div>
                                     <div class="reviews">Reviews</div>
                                     <div class="star-raiting" style="text-align: center">
-                                        <?php
-                                        $stars = $productInformation['Review'][1]->value;
-                                        $fStar = floor($stars);
-                                        $cStar = ceil($stars);
-                                        $halfStar = -1;
-                                        if ($fStar == $cStar)
-                                            $halfStar = $cStar;
-
+                                        <?php 
+                                            $stars = $productInformation['Review'][1]->value;
+                                            $fStar = floor($stars);
+                                            $cStar = ceil($stars);
+                                            $halfStar = -1;
+                                            if($fStar == $cStar)
+                                                $halfStar = $cStar;
+                                            
                                         ?>
                                         @for($i=1; $i<=5; $i++)
                                             @if($i <= $fStar)
@@ -550,7 +553,7 @@
                             </div>
                         </div>
                         <div class="visible-xs visible-sm">
-
+                            
                         </div>
 
                         <div style="left: 12%" class="col-sm-3 col-md-offset-3 critic-quote">
@@ -612,7 +615,7 @@
                 <div class="container full-620 fixed-sm">
                     <h3 class="green">Related Products</h3>
                     <div class="related-products grid-box-3">
-
+                        
 
                         @if(isset($relatedProducts) && ($relatedProducts != null) )
                             @foreach( $relatedProducts as $product )
@@ -641,8 +644,8 @@
                                         <a target="_blank" href="{{ $product['Permalink'] }}" class="box-item__get-it">Get
                                             it</a>
                                     </div>
-
-
+                                    
+                                    
                                 </div>
                             @endforeach
                         @endif
@@ -679,7 +682,7 @@
                                     <div class="box-item__label-idea">
                                         <a href="#" class="box-item__label ng-binding">Mr Coffee smart</a>
                                         <div class="clearfix"></div>
-
+                                        
                                         <a href="#" class="box-item__read-more">Read More</a>
                                     </div>
                                     <div class="box-item__author">
@@ -691,7 +694,7 @@
                                     </div>
                                 </div>
                             @endfor
-                        </div>
+                        </div>                        
 
                     </div>
                 </div>

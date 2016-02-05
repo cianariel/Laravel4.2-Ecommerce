@@ -5,7 +5,7 @@
         <li><a class="twi" href="#"><i class="m-icon  m-icon--twitter-id"></i> <b>189</b></a></li>
         <li><a class="gp" href="#"><i class="m-icon m-icon--google-plus-id"></i> <b>189</b></a></li>
         <li><a class="pint" href="#"><i class="m-icon  m-icon--pinterest-id"></i> <b>189</b></a></li>
-        <li><a class="like-counter" href="#"><i class="m-icon m-icon--heart-solid"></i><b>189</b></a></li>
-        <li><a class="comment" data-scrollto=".comments" href="#"><i class="m-icon m-icon--comments-id"></i> <b>189</b></a></li>
+        <li><a class="like-counter hidden-xs" href="#"><i class="m-icon m-icon--heart-solid"></i><b>189</b></a></li>
+        <li><a class="comment hidden-xs" data-scrollto=".comments" href="#"><i class="m-icon m-icon--comments-id"></i> <b>189</b></a></li>
     </ul>
 </aside>
