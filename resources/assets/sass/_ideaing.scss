@@ -2624,14 +2624,16 @@ header.colophon{
   }
   
   .search-input-holder{
-      position: relative;
-      
-    .m-icon{
-        position: absolute;
-        left: 10px;
-        top: 7px;
-        z-index: 10;
-    }      
+        position: relative;
+        >input:focus{
+            border-color: #ff0041;
+        }
+        .m-icon{
+            position: absolute;
+            left: 10px;
+            top: 7px;
+            z-index: 10;
+        }      
   }
 
   input{

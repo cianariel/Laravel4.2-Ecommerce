@@ -6217,6 +6217,8 @@ header.colophon {
     /*    background: url('/assets/images/magnif-grey.png') center no-repeat;*/ }
   .search-bar .search-input-holder {
     position: relative; }
+    .search-bar .search-input-holder > input:focus {
+      border-color: #ff0041; }
     .search-bar .search-input-holder .m-icon {
       position: absolute;
       left: 10px;
