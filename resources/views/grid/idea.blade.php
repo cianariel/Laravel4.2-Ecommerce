@@ -1,6 +1,8 @@
-<img ng-if="item.is_featured == true || item.feed_image == undefined" src="@{{item.image}}">
+<div class="img-holder">
+    <img ng-if="item.is_featured == true || item.feed_image == undefined" src="@{{item.image}}">
 
-<img ng-if="item.feed_image !== undefined && item.is_featured != true" alt="@{{item.feed_image.alt}}" title="@{{item.feed_image.alt}}" src="@{{item.feed_image.url}}">
+    <img ng-if="item.feed_image !== undefined && item.is_featured != true" alt="@{{item.feed_image.alt}}" title="@{{item.feed_image.alt}}" src="@{{item.feed_image.url}}">
+</div>
 
 <span class="box-item__time">@{{item.updated_at}}</span>
 <div class="box-item__overlay"></div>
@@ -26,7 +28,7 @@
 </div>
 
 <div class="box-item__label-idea">
-    <a href="@{{item.url}}" class="box-item__label">@{{item.title}}</a>
+    <a href="@{{item.url}}" class="box-item__label">@{{renderHTML(item.title)}}</a>
     <div class="clearfix"></div>
     <a href="@{{item.url}}" class="box-item__read-more">Read More</a>
 </div>

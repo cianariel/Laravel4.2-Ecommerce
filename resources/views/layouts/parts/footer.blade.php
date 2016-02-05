@@ -25,7 +25,7 @@
             <ul>
                 <li><a class="fb" href="#"><span><i class="m-icon--facebook-id"></i> Like <b class="count">12k</b></span></a></li>
                 <li><a class="twi" href="#"><span><i class="m-icon--twitter-id"></i> Follow  <b class="count">12k</b></span></a></li>
-                <li><a class="gp" href="#"><span><i class="m-icon--twitter-id"></i> Follow <b class="count">12k</b></span></a></li>
+                <li><a class="gp" href="#"><span><i class="m-icon--google-plus-id"></i> Follow <b class="count">12k</b></span></a></li>
                 <li><a class="pint" href="#"><span><i class="m-icon--pinterest-id"></i> Follow <b class="count">12k</b></span></a></li>
                 <li><a class="inst" href="#"><span><i class=" m-icon--footer-instagram"></i> Follow <b class="count">12k</b></span></a></li>
             </ul>
