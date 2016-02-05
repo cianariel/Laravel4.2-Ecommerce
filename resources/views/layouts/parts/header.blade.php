@@ -283,9 +283,8 @@
             document.body.appendChild(element);
         }
 
-    }, 3000);
-
-    function closeSubscriptionPopup()
+    }, 300000);
+   function closeSubscriptionPopup()
     {
         document.getElementById('subscribe_email_popup').style.visibility = 'hidden';
     }
