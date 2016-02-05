@@ -293,6 +293,7 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
             $scope.isUpdateSpecShow = false;
 
             //review
+            $scope.readOnlyReviewCounter = true;
             $scope.reviews = [{
                 key: 'Average',
                 value: 0,
@@ -1026,9 +1027,11 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
             $scope.reviewKey = '';
             $scope.reviewValue = '';
             $scope.reviewLink = '';
-            $scope.reviewCounter = $scope.reviewCounter == "" ? 0 : parseInt($scope.reviewCounter);
+            $scope.reviewCounter = $scope.reviewCounter == null ? 1 : parseInt($scope.reviewCounter);
             /*$scope.externalReviewLink = '';
              $scope.ideaingReviewScore = 0;*/
+            console.log($scope.reviewCounter);
+
             $scope.calculateAvg();
 
         }
@@ -1040,6 +1043,11 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
 
         $scope.editReviewFormField = function (index) {
             $scope.$index = index;
+
+            // for Amazon review keep the counter editable
+            if(index == 1)
+                $scope.readOnlyReviewCounter = false;
+
             $scope.reviewKey = $scope.reviews[index].key;
             $scope.reviewValue = $scope.reviews[index].value;
             $scope.reviewLink = $scope.reviews[index].link;
@@ -1049,6 +1057,7 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
 
         }
         $scope.updateReviewFormField = function () {
+            $scope.readOnlyReviewCounter = true;
             $scope.reviews[$scope.$index].key = $scope.reviewKey;
             $scope.reviews[$scope.$index].value = $scope.reviewValue;
             $scope.reviews[$scope.$index].link = $scope.reviewLink;
