@@ -501,23 +501,7 @@
                                                         @endif
                                                     @endfor
                                                 </div>
-                                                <div style="font-size: 14px; right: -80px;top: 1px"
-                                                     class="line-value">
-                                                    <a href="@if(isset($review->link)){{$review->link}}@endif"
-                                                       target="_blank">
-                                                       @if(isset($review->counter))
-                                                            {{number_format($review->counter)}}
-                                                        @else
-                                                           0
-                                                        @endif
 
-                                                        @if(isset($review->counter)&& $review->counter >1)
-                                                            Reviews
-                                                        @else
-                                                            Review
-                                                        @endif
-                                                    </a>
-                                                </div>
                                             </div>
                                         @endforeach
                                     @endif
