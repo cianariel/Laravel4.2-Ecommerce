@@ -43,25 +43,25 @@
                     {{--<li class="active"><a class="home-link" href="#">Home</a></li>--}}
                 {{--</ul>--}}
                 <ul class="category-nav main-content-filter">
-                    <li class="active">
+                    <li ng-class="{active: (activeMenu == '1' || !activeMenu)}" ng-click="activeMenu='1'">
                         <a ng-click="filterContent(null)"  href="" data-filterby="all" class="all-link">
                             <i class="m-icon m-icon--menu"></i>&nbsp;
                             All
                         </a>
                     </li>
-                    <li>
+                    <li ng-class="{active: activeMenu == '2'}" ng-click="activeMenu='2'">
                         <a ng-click="filterContent('idea')" data-filterby="ideas" href="" class="ideas-link">
                             <i class="m-icon m-icon--bulb"></i>
                             Ideas
                         </a>
                     </li>
-                    <li>
+                    <li ng-class="{active: activeMenu == '3'}" ng-click="activeMenu='3'">
                         <a  ng-click="filterContent('product')" data-filterby="products" href="" class="products-link">
                             <i class="m-icon m-icon--item"></i>&nbsp;
                             Products
                         </a>
                     </li>
-                    <li>
+                    <li ng-class="{active: activeMenu == '4'}" ng-click="activeMenu='4'">
                         <a data-filterby="photos" href="" class="photos-link">
                             <i class="m-icon m-icon--image"></i>&nbsp;
                             Photos
@@ -78,7 +78,7 @@
                 {{--<div class="loader loader-abs" cg-busy="filterLoad"></div>--}}
                 <div class="loader loader-fixed" cg-busy="nextLoad"></div>
 
-                <div ng-repeat="batch in content" class="container main-content">
+                <div ng-repeat="batch in content" class="main-content col-xs-12">
                     <div class="grid-box-3">
                             <div class="box-item idea-box" ng-if="item.type == 'idea'" ng-repeat="item in batch['row-1']">
                                 @include('grid.idea')

@@ -7,6 +7,13 @@ angular.module('pagingApp.controllers', []).
         $scope.contentBlock = angular.element( document.querySelector('.main-content') );
         $scope.filterLoad = [];
 
+        $scope.renderHTML = function(html_code)
+        {
+            var decoded = angular.element('<div />').html(html_code).text();
+            return decoded;
+        };
+        
+//        console.log($scope.renderHTML('&#039;'))
         $scope.firstLoad = pagaingApi.getContent(1).success(function (response) {
             $scope.allContent[0] = response;
             $scope.content[0] = $scope.sliceToRows(response['regular'], response['featured']);
