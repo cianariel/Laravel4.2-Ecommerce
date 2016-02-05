@@ -1053,7 +1053,8 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
             $scope.reviewKey = $scope.reviews[index].key;
             $scope.reviewValue = $scope.reviews[index].value;
             $scope.reviewLink = $scope.reviews[index].link;
-            $scope.reviewCounter = $scope.reviews[index].counter;
+            $scope.reviewCounter = (typeof $scope.reviews[index].counter === 'undefined' || $scope.reviews[index].counter == '' || isNaN($scope.reviews[index].counter))? 1 : parseInt($scope.reviews[index].counter);
+           // $scope.reviewCounter = $scope.reviews[index].counter;
             $scope.isUpdateReviewShow = true;
             $scope.calculateAvg();
 
@@ -1063,7 +1064,7 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
             $scope.reviews[$scope.$index].key = $scope.reviewKey;
             $scope.reviews[$scope.$index].value = $scope.reviewValue;
             $scope.reviews[$scope.$index].link = $scope.reviewLink;
-            $scope.reviews[$scope.$index].counter = isNaN($scope.reviewCounter) ? 1 : parseInt($scope.reviewCounter);
+            $scope.reviews[$scope.$index].counter = (typeof $scope.reviewCounter === 'undefined' || $scope.reviewCounter == '' || isNaN($scope.reviewCounter))? 1 : parseInt($scope.reviewCounter);
 
             $scope.isUpdateReviewShow = false;
 
