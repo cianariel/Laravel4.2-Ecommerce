@@ -1065,14 +1065,17 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
 
         $scope.calculateAvg = function () {
             $scope.totalCount = 0;
+            var reviewers = 0;
 
-            for (var i = 1; i < $scope.reviews.length; i++) {
+            for (var i = 2; i < $scope.reviews.length; i++) {
                 $scope.totalCount += $scope.reviews[i].value;
+
+                reviewers += $scope.reviews[i].counter == null?0:parseInt($scope.reviews[i].counter);
             }
 
-//            $scope.reviews[0].value = $scope.totalCount / ($scope.reviews.length - 1);
-            $scope.reviews[0].value = ($scope.totalCount / ($scope.reviews.length - 1)).toFixed(2);
-            console.log($scope.reviews[0].value);
+            $scope.reviews[0].value = ($scope.totalCount / ($scope.reviews.length - 2)).toFixed(2);
+            $scope.reviews[0].counter = reviewers;
+        //    console.log($scope.reviews[0].value," - ",$scope.reviews[0].counter);
 
         }
 
