@@ -108,7 +108,7 @@
                             <div class="score">
                                 <i class=" m-icon--bulb-detailed-on-rating"></i>
                                 @if(isset($productInformation['Review']) && isset($productInformation['IdeaingReviewScore']))
-                                    {{intval((($productInformation['Review'][0]->value + $productInformation['IdeaingReviewScore'])/2)*20)}}
+                                    {{intval((($productInformation['Review'][1]->value + $productInformation['IdeaingReviewScore'])/2)*20)}}
                                 @endif%
                             </div>
                             <span class="caption">Average Ideaing Score</span>
@@ -415,7 +415,9 @@
                                     <div class="average-score">
                                         <div class="score">
                                             <i class="  m-icon--bulb-detailed-on-rating"></i>
-                                            80%
+                                            @if(isset($productInformation['Review']) && isset($productInformation['IdeaingReviewScore']))
+                                                {{intval((($productInformation['Review'][1]->value + $productInformation['IdeaingReviewScore'])/2)*20)}}
+                                            @endif%
                                         </div>
                                         <span class="caption">Average Ideaing Score</span>
                                     </div>
@@ -433,7 +435,9 @@
                                     <div class="average-score block-center">
                                         <div class="score">
                                             <i class="m-icon  m-icon--bulb-detailed-on-rating"></i>
-                                            80%
+                                            @if(isset($productInformation['Review']) && isset($productInformation['IdeaingReviewScore']))
+                                                {{intval((($productInformation['Review'][1]->value + $productInformation['IdeaingReviewScore'])/2)*20)}}
+                                            @endif%
                                         </div>
                                         <span class="caption">Average Ideaing Score</span>
                                     </div>
@@ -448,22 +452,22 @@
                                     <div class="vertical-line visible-xs"></div>
                                     <div class="title">Critic</div>
                                     <div class="reviews">Reviews</div>
-                                    <div class="value">9,4</div>
-                                    <div class="outer-line">
-                                        <div class="line-label ">CNET</div>
-                                        <div style="width: 90%" class="inner-line"></div>
-                                        <div class="line-value ">9,640</div>
-                                    </div>
-                                    <div class="outer-line">
-                                        <div class="line-label ">ENGADGET</div>
-                                        <div style="width: 80%" class="inner-line"></div>
-                                        <div class="line-value ">9,000</div>
-                                    </div>
-                                    <div class="outer-line">
-                                        <div class="line-label ">PCMAC</div>
-                                        <div style="width: 86%" class="inner-line"></div>
-                                        <div class="line-value ">9,150</div>
-                                    </div>
+                                    <div class="value">{{$productInformation['IdeaingReviewScore']}}</div>
+                                    @if(isset($productInformation['Review']))
+                                        @foreach( array_slice($productInformation['Review'],2) as $review )
+                                            <div class="outer-line">
+                                                <div class="line-label "><a
+                                                            href="@if(isset($review->link)){{$review->link}}@endif"
+                                                            target="_blank">@if(isset($review->key)){{$review->key}}@endif
+                                                    </a></div>
+                                                <div style="width: @if(isset($review->value)){{$review->value * 20}}@endif%"
+                                                     class="inner-line"></div>
+                                                <div class="line-value ">@if(isset($review->counter) && ($review->counter > 0))
+                                                        {{$review->counter}} @endif</div>
+                                            </div>
+                                        @endforeach
+                                    @endif
+
                                 </div>
                                 <div class="col-xs-6 col-sm-4 col-sm-offset-4 text-center reviews-service-holder amazon">
                                     <div class="vertical-line visible-xs"></div>
@@ -471,7 +475,7 @@
                                     <div class="reviews">Reviews</div>
                                     <div class="star-raiting" style="text-align: center">
                                         <?php 
-                                            $stars = 3.5; 
+                                            $stars = $productInformation['Review'][1]->value;
                                             $fStar = floor($stars);
                                             $cStar = ceil($stars);
                                             $halfStar = -1;
@@ -490,7 +494,8 @@
                                         @endfor
                                     </div>
                                     <p class="text-center">
-                                        2,567 <span class="light-black">Reviews</span>
+                                        {{$productInformation['Review'][1]->counter}}
+                                        <span class="light-black">Reviews</span>
                                     </p>
                                 </div>
                             </div>
@@ -690,4 +695,8 @@
             </section>
         </main>
     </div>
+    <!-- Angular JS and components-->
+
+    <script type="text/javascript" src="/assets/js/vendor/autocomplete.js"></script>
+    <script type="text/javascript" src="/assets/product/js/custom.product.js"></script>
 @stop
