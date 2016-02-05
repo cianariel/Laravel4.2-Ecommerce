@@ -4,8 +4,7 @@
             @include('grid.idea')
         </div>
 
-        <div ng-if="item.type == 'product'" ng-repeat="item in batch['row-1']"
-             class="box-item product-box">
+        <div ng-if="item.type == 'product'" ng-repeat="item in batch['row-1']"              class="box-item product-box">
             @include('grid.product')
         </div>
     </div>

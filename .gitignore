@@ -6,4 +6,5 @@ Vagrantfile
 /config.codekit
 /public/ideas/wp-config.php
 /public/ideas/wp-content/uploads/
+/vendor
 
