@@ -465,7 +465,7 @@
 
 
                                                                             <button ng-click="deleteReviewFormField($index)"
-                                                                                    ng-hide="$index==0"
+                                                                                    ng-hide="$index <2"
                                                                                     confirm="Are you sure to delete this item ?"
                                                                                     confirm-settings="{size: 'sm'}"
                                                                                     class="btn btn-danger btn-circle"
