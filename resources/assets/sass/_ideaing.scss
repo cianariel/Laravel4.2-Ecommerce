@@ -471,6 +471,7 @@ a{ // Custom Link Styles
 
     &:hover{
       background: darken($iridium, 10%);
+      color: #fff;
     }
   }
 
@@ -805,7 +806,7 @@ nav {
   }
 
   h1{
-    text-align: center;
+/*    text-align: center;*/
     color: #fff;
     font-size: 5rem;
     font-weight: bold;
@@ -913,7 +914,7 @@ body.product-details{
     overflow: hidden;
   }
   #hero{
-    margin-top: -50px;
+/*    margin-top: -50px;*/
 
 
   }
@@ -1108,34 +1109,39 @@ body.product-details{
       text-transform: none;
       color: $light-grey;
       font-size: 1.2rem;
-      padding-left: 30px;
+      padding-left: 15px;
       background-position: left center;
       background-repeat: no-repeat;
 
       &:hover{
         color: #ED295C;
       }
+      
+      .m-icon{
+          font-size: 28px;
+            margin-top: -7px;
+      }
 
       &.get-alerts{
-        background-image: url("/assets/images/icons/bell-white.png");
+/*        background-image: url("/assets/images/icons/bell-white.png");*/
 
         &:hover{
-          background-image: url("/assets/images/icons/bell-pink.png");
+/*          background-image: url("/assets/images/icons/bell-pink.png");*/
         }
       }
       &.likes{
-        background-image: url("/assets/images/icons/heart-white.png");
+/*        background-image: url("/assets/images/icons/heart-white.png");*/
 
         &:hover{
-          background-image: url("/assets/images/icons/heart-pink.png");
+/*          background-image: url("/assets/images/icons/heart-pink.png");*/
         }
       }
       &.comments{
-        background-image: url("/assets/images/icons/chat-white.png");
+/*        background-image: url("/assets/images/icons/chat-white.png");*/
         padding-left: 40px;
 
         &:hover{
-          background-image: url("/assets/images/icons/chat-pink.png");
+/*          background-image: url("/assets/images/icons/chat-pink.png");*/
         }
       }
     }
@@ -2778,19 +2784,19 @@ body.single-post{
         list-style: disc;
     }
 }
-
+body.product-details, .single-post{
+    .story-header h1 .title, {
+        height:15px;
+        display: inline-block;
+        overflow: hidden;
+    }
+}
 body.product-details{
   .story-header{
     h1{
       width: 34%;
       font-size: 13px;
       margin-top: -9px;
-      
-      .title{
-          height:15px;
-          display: inline-block;
-          overflow: hidden;
-      }
     }
     
     .like-counter{
@@ -2850,7 +2856,7 @@ body.product-details{
   }
 
   h1{
-    width: 33%;
+/*    width: 100%;*/
     padding-left: 10px;
     float: left;
     //margin-left: 3%;
@@ -3079,7 +3085,6 @@ body.product-details{
       margin: 15px 6px 13px;
       //border: 2px solid $dark-orange;
       //border-radius: 4px;
-      font-size: 13px;
 /*      font-weight: bold ;*/
       position: relative;
 
@@ -3087,8 +3092,9 @@ body.product-details{
         background: #ed2049;
         color: #fff !important;
         box-shadow:none;
-        margin-right: 17px;
-        
+      }
+      &.active{
+          margin-right: 17px;
       }
 
     }
@@ -3744,26 +3750,27 @@ header.sub-head{
 
   }
 
+  .category-nav{
+      li.active a:not(.home-link)::after, li a:not(.home-link):hover::after{
+          content: ' ';
+          width: 17px;
+          height: 19px;
+/*          display: block;*/
+          font-size: 1.7rem;
+          position: absolute;
+          bottom: -13px;
+    /*      right: 38%;*/
+          color: #fff;
+          background: white url('/assets/images/pointer-arrow-grey.png') no-repeat;
+          left: 50%;
+          margin-left: -8px;
 
-  li.active a:not(.home-link)::after, li a:not(.home-link):hover::after{
-      content: ' ';
-      width: 17px;
-      height: 19px;
-      display: block;
-      font-size: 1.7rem;
-      position: absolute;
-      bottom: -13px;
-/*      right: 38%;*/
-      color: #fff;
-      background: white url('/assets/images/pointer-arrow-grey.png') no-repeat;
-      left: 50%;
-      margin-left: -8px;
-
-      //text-shadow:
-      //-1px -1px 0 darken($pale-grey, 10%),
-      //1px -1px 0 darken($pale-grey, 10%),
-      //-1px 1px 0 #fff,
-      //1px 1px 0 #fff;
+          //text-shadow:
+          //-1px -1px 0 darken($pale-grey, 10%),
+          //1px -1px 0 darken($pale-grey, 10%),
+          //-1px 1px 0 #fff,
+          //1px 1px 0 #fff;
+      }
   }
   li.active{
     a.home-link{
@@ -3809,6 +3816,14 @@ header.sub-head{
 
 
 
+}
+
+.product-details #hero-nav{
+  .category-nav{
+    width: 565px;
+    margin: 0 auto;
+    max-width: 100%;
+  }
 }
 
 .homepage #hero-nav{
@@ -4158,7 +4173,7 @@ body.single{
 
 #hero.product-hero{
   & > .container{
-    padding-top: 50px;
+/*    padding-top: 50px;*/
   }
   h1{
 /*    float: left;*/
@@ -5544,9 +5559,13 @@ footer.about-footer{
       margin-bottom: 0;
     }
   }
-
-
-
+  
+  #hero .average-score{
+      float: none !important;
+  }
+  #hero .average-score-title{
+      text-align: center;
+  }
 
   .average-score{
     width: 90%;
@@ -5593,7 +5612,7 @@ footer.about-footer{
   .top-product-controls {
     float: none;
     overflow: hidden;
-    width: 265px;
+    width: 340px;
     margin: 15px auto;
   }
 

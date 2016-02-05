@@ -4590,10 +4590,10 @@ a.like-counter {
     background: #FF0042;
     padding: 5px;
     border-radius: 20px;
-    padding-top: 8px;
-    padding-left: 8px;
-    padding-right: 8px;
-    padding-bottom: 7px;
+    padding-top: 7px;
+    padding-left: 7px;
+    padding-right: 7px;
+    padding-bottom: 6px;
     float: left; }
   a.like-counter b {
     display: inline-block;
@@ -4601,7 +4601,7 @@ a.like-counter {
     color: #FF0042; }
   a.like-counter:hover {
     background: #FF0042;
-    border: 0px;
+    /*		border: 0px;*/
     color: white; }
     a.like-counter:hover b {
       color: #fff !important; }
@@ -4698,7 +4698,8 @@ a.get-round {
   color: #fff;
   background: #FF0042; }
   a.get-round:hover {
-    background: #cc0035; }
+    background: #cc0035;
+    color: #fff; }
 
 li.nested a.active::after {
   background-image: url("/assets/images/arrow-up-black.png"); }
@@ -4754,10 +4755,10 @@ ul.share-buttons {
       background: #5C7CBD;
       padding: 5px;
       border-radius: 20px;
-      padding-top: 8px;
-      padding-left: 8px;
-      padding-right: 8px;
-      padding-bottom: 7px;
+      padding-top: 7px;
+      padding-left: 7px;
+      padding-right: 7px;
+      padding-bottom: 6px;
       float: left; }
     ul.share-buttons a.fb b {
       display: inline-block;
@@ -4765,7 +4766,7 @@ ul.share-buttons {
       color: #5C7CBD; }
     ul.share-buttons a.fb:hover {
       background: #5C7CBD;
-      border: 0px;
+      /*		border: 0px;*/
       color: white; }
       ul.share-buttons a.fb:hover b {
         color: #fff !important; }
@@ -4798,10 +4799,10 @@ ul.share-buttons {
       background: #079DD1;
       padding: 5px;
       border-radius: 20px;
-      padding-top: 8px;
-      padding-left: 8px;
-      padding-right: 8px;
-      padding-bottom: 7px;
+      padding-top: 7px;
+      padding-left: 7px;
+      padding-right: 7px;
+      padding-bottom: 6px;
       float: left; }
     ul.share-buttons a.twi b {
       display: inline-block;
@@ -4809,7 +4810,7 @@ ul.share-buttons {
       color: #079DD1; }
     ul.share-buttons a.twi:hover {
       background: #079DD1;
-      border: 0px;
+      /*		border: 0px;*/
       color: white; }
       ul.share-buttons a.twi:hover b {
         color: #fff !important; }
@@ -4842,10 +4843,10 @@ ul.share-buttons {
       background: #FF0042;
       padding: 5px;
       border-radius: 20px;
-      padding-top: 8px;
-      padding-left: 8px;
-      padding-right: 8px;
-      padding-bottom: 7px;
+      padding-top: 7px;
+      padding-left: 7px;
+      padding-right: 7px;
+      padding-bottom: 6px;
       float: left; }
     ul.share-buttons a.gp b {
       display: inline-block;
@@ -4853,7 +4854,7 @@ ul.share-buttons {
       color: #FF0042; }
     ul.share-buttons a.gp:hover {
       background: #FF0042;
-      border: 0px;
+      /*		border: 0px;*/
       color: white; }
       ul.share-buttons a.gp:hover b {
         color: #fff !important; }
@@ -4887,10 +4888,10 @@ ul.share-buttons {
       background: #c1c1c1;
       padding: 5px;
       border-radius: 20px;
-      padding-top: 8px;
-      padding-left: 8px;
-      padding-right: 8px;
-      padding-bottom: 7px;
+      padding-top: 7px;
+      padding-left: 7px;
+      padding-right: 7px;
+      padding-bottom: 6px;
       float: left; }
     ul.share-buttons a.email b {
       display: inline-block;
@@ -4898,7 +4899,7 @@ ul.share-buttons {
       color: #c1c1c1; }
     ul.share-buttons a.email:hover {
       background: #c1c1c1;
-      border: 0px;
+      /*		border: 0px;*/
       color: white; }
       ul.share-buttons a.email:hover b {
         color: #fff !important; }
@@ -4931,10 +4932,10 @@ ul.share-buttons {
       background: #E61D25;
       padding: 5px;
       border-radius: 20px;
-      padding-top: 8px;
-      padding-left: 8px;
-      padding-right: 8px;
-      padding-bottom: 7px;
+      padding-top: 7px;
+      padding-left: 7px;
+      padding-right: 7px;
+      padding-bottom: 6px;
       float: left; }
     ul.share-buttons a.pint b {
       display: inline-block;
@@ -4942,7 +4943,7 @@ ul.share-buttons {
       color: #E61D25; }
     ul.share-buttons a.pint:hover {
       background: #E61D25;
-      border: 0px;
+      /*		border: 0px;*/
       color: white; }
       ul.share-buttons a.pint:hover b {
         color: #fff !important; }
@@ -4976,10 +4977,10 @@ ul.share-buttons {
       background: #FF0042;
       padding: 5px;
       border-radius: 20px;
-      padding-top: 8px;
-      padding-left: 8px;
-      padding-right: 8px;
-      padding-bottom: 7px;
+      padding-top: 7px;
+      padding-left: 7px;
+      padding-right: 7px;
+      padding-bottom: 6px;
       float: left; }
     ul.share-buttons a.heart b {
       display: inline-block;
@@ -4987,7 +4988,7 @@ ul.share-buttons {
       color: #FF0042; }
     ul.share-buttons a.heart:hover {
       background: #FF0042;
-      border: 0px;
+      /*		border: 0px;*/
       color: white; }
       ul.share-buttons a.heart:hover b {
         color: #fff !important; }
@@ -5024,10 +5025,10 @@ ul.share-buttons {
       background: #4791D4;
       padding: 5px;
       border-radius: 20px;
-      padding-top: 8px;
-      padding-left: 8px;
-      padding-right: 8px;
-      padding-bottom: 7px;
+      padding-top: 7px;
+      padding-left: 7px;
+      padding-right: 7px;
+      padding-bottom: 6px;
       float: left; }
     ul.share-buttons a.comment b {
       display: inline-block;
@@ -5035,7 +5036,7 @@ ul.share-buttons {
       color: #4791D4; }
     ul.share-buttons a.comment:hover {
       background: #4791D4;
-      border: 0px;
+      /*		border: 0px;*/
       color: white; }
       ul.share-buttons a.comment:hover b {
         color: #fff !important; }
@@ -5140,7 +5141,7 @@ nav a {
     padding-top: 20%;
     z-index: 1; }
   #hero h1 {
-    text-align: center;
+    /*    text-align: center;*/
     color: #fff;
     font-size: 5rem;
     font-weight: bold;
@@ -5215,7 +5216,7 @@ body.product-details .extra-nav {
 body.single #hero,
 body.room-landing #hero,
 body.product-details #hero {
-  margin-top: -50px; }
+  /*    margin-top: -50px;*/ }
 
 .slider.product-slider #gallery {
   width: 100%;
@@ -5280,24 +5281,27 @@ body.product-details #hero {
       text-transform: none;
       color: #c1c1c1;
       font-size: 1.2rem;
-      padding-left: 30px;
+      padding-left: 15px;
       background-position: left center;
       background-repeat: no-repeat; }
       .top-product-controls li a:hover {
         color: #ED295C; }
+      .top-product-controls li a .m-icon {
+        font-size: 28px;
+        margin-top: -7px; }
       .top-product-controls li a.get-alerts {
-        background-image: url("/assets/images/icons/bell-white.png"); }
+        /*        background-image: url("/assets/images/icons/bell-white.png");*/ }
         .top-product-controls li a.get-alerts:hover {
-          background-image: url("/assets/images/icons/bell-pink.png"); }
+          /*          background-image: url("/assets/images/icons/bell-pink.png");*/ }
       .top-product-controls li a.likes {
-        background-image: url("/assets/images/icons/heart-white.png"); }
+        /*        background-image: url("/assets/images/icons/heart-white.png");*/ }
         .top-product-controls li a.likes:hover {
-          background-image: url("/assets/images/icons/heart-pink.png"); }
+          /*          background-image: url("/assets/images/icons/heart-pink.png");*/ }
       .top-product-controls li a.comments {
-        background-image: url("/assets/images/icons/chat-white.png");
+        /*        background-image: url("/assets/images/icons/chat-white.png");*/
         padding-left: 40px; }
         .top-product-controls li a.comments:hover {
-          background-image: url("/assets/images/icons/chat-pink.png"); }
+          /*          background-image: url("/assets/images/icons/chat-pink.png");*/ }
 
 .slider-side-block {
   position: absolute;
@@ -6318,14 +6322,15 @@ body.single-post #top-nav .kitchen {
 body.single-post .article-content ul li {
   list-style: disc; }
 
+body.product-details .story-header h1 .title, .single-post .story-header h1 .title {
+  height: 15px;
+  display: inline-block;
+  overflow: hidden; }
+
 body.product-details .story-header h1 {
   width: 34%;
   font-size: 13px;
   margin-top: -9px; }
-  body.product-details .story-header h1 .title {
-    height: 15px;
-    display: inline-block;
-    overflow: hidden; }
 
 body.product-details .story-header .like-counter b {
   padding-top: 8px; }
@@ -6365,7 +6370,7 @@ body.product-details .article-content p {
     background-size: initial;
     margin-top: -14px; }
   .story-header h1 {
-    width: 33%;
+    /*    width: 100%;*/
     padding-left: 10px;
     float: left;
     margin-top: 0;
@@ -6499,13 +6504,13 @@ body.product-details .article-content p {
         box-shadow: none; }
     .mid-nav a.box-link {
       margin: 15px 6px 13px;
-      font-size: 13px;
       /*      font-weight: bold ;*/
       position: relative; }
       .mid-nav a.box-link:hover, .mid-nav a.box-link.active {
         background: #ed2049;
         color: #fff !important;
-        box-shadow: none;
+        box-shadow: none; }
+      .mid-nav a.box-link.active {
         margin-right: 17px; }
     .mid-nav a:hover {
       color: white;
@@ -6907,11 +6912,11 @@ header.sub-head {
       color: #9E009E; }
     #hero-nav a:not(.author).reviews-link:hover {
       color: #FF0042; }
-  #hero-nav li.active a:not(.home-link)::after, #hero-nav li a:not(.home-link):hover::after {
+  #hero-nav .category-nav li.active a:not(.home-link)::after, #hero-nav .category-nav li a:not(.home-link):hover::after {
     content: ' ';
     width: 17px;
     height: 19px;
-    display: block;
+    /*          display: block;*/
     font-size: 1.7rem;
     position: absolute;
     bottom: -13px;
@@ -6942,6 +6947,11 @@ header.sub-head {
     padding-right: 10px; }
     #hero-nav .main-content-filter li > a:focus {
       text-decoration: none; }
+
+.product-details #hero-nav .category-nav {
+  width: 565px;
+  margin: 0 auto;
+  max-width: 100%; }
 
 .homepage #hero-nav .category-nav {
   width: 390px;
@@ -7136,7 +7146,7 @@ body.single .like-nav {
       border: 1px solid #00B1FF; }
 
 #hero.product-hero > .container {
-  padding-top: 50px; }
+  /*    padding-top: 50px;*/ }
 
 #hero.product-hero h1 {
   /*    float: left;*/
@@ -7917,6 +7927,10 @@ footer.about-footer {
     margin-left: 30%; }
   .idea-stories .story-details .content-tags {
     margin-bottom: 0; }
+  #hero .average-score {
+    float: none !important; }
+  #hero .average-score-title {
+    text-align: center; }
   .average-score {
     width: 90%;
     height: 70px;
@@ -7948,7 +7962,7 @@ footer.about-footer {
   .top-product-controls {
     float: none;
     overflow: hidden;
-    width: 265px;
+    width: 340px;
     margin: 15px auto; }
   .slider-side-block {
     position: static;
@@ -8414,7 +8428,7 @@ p {
 
 /* forms base */
 .social-stats {
-  background: #fff;
+  /*	background: #fff;*/
   padding: 5px 5px 5px 10px;
   width: 72px; }
   .social-stats__item {
@@ -8512,7 +8526,7 @@ p {
   position: relative;
   border: 1px solid #eee;
   overflow: hidden;
-  width: 300px;
+  /*	width: 300px;*/
   height: 394px; }
   .box-item > img {
     width: 100%;

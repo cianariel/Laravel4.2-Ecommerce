@@ -2,32 +2,38 @@
 
 <?php if (have_posts()): while (have_posts()) : the_post(); ?>
         <header class="story-header hidden-620 hidden-soft" >
-            <a href="#" class="side-logo lamp-logo">
-            </a>
-            <h1>
-                {{the_title()}}<br>
-                <ul class="social-stats center-block ">
-                    <li class="social-stats__item">
-                        <a href="#">
-                            <i class="m-icon m-icon--heart"></i>
-                            <span class="social-stats__text">1819</span>
-                        </a>
-                    </li>
+            <div class="col-xs-1 col-sm-1">
+                <a href="#" class="side-logo lamp-logo">
+                </a>
+            </div>
+            <div class="col-xs-8 col-sm-3">
+                <h1>
+                    <span class="title">{{the_title()}}</span><br>
+                    <ul class="social-stats center-block ">
+                        <li class="social-stats__item">
+                            <a href="#">
+                                <i class="m-icon m-icon--heart"></i>
+                                <span class="social-stats__text">1819</span>
+                            </a>
+                        </li>
+                    </ul>
+                    
+    <!--                <a class="like-counter" href="#"><i class="m-icon m-icon--heart-solid"></i>&nbsp;<b>1819</b></a>-->
+                </h1>
+            </div>
+            <div class="col-sm-8 hidden-xs">
+                <ul class="share-buttons  pull-right">
+                    <li class="all-shares"><b>120K </b>all shares</li>
+                    <li><a class="fb" href="#"><i class="m-icon m-icon--facebook-id"></i><b>189</b></a></li>
+                    <li><a class="twi" href="#"><i class="m-icon  m-icon--twitter-id"></i><b>189</b></a></li>
+                    <li><a class="gp" href="#"><i class="m-icon m-icon--google-plus-id"></i><b>189</b></a></li>
+                    <li><a class="pint" href="#"><i class="m-icon  m-icon--pinterest-id"></i> <b>189</b></a></li>
+<!--                    <li><a class="comment" href="#" data-scrollto=".comments"><i class="m-icon m-icon--comments-id"></i> <b>189</b></a></li>-->
                 </ul>
-                
-<!--                <a class="like-counter" href="#"><i class="m-icon m-icon--heart-solid"></i>&nbsp;<b>1819</b></a>-->
-            </h1>
+            </div>
 
-            <ul class="share-buttons hidden-xs col-lg-7 col-md-8 pull-right">
-                <li class="all-shares"><b>120K </b>all shares</li>
-                <li><a class="fb" href="#"><i class="m-icon m-icon--facebook-id"></i><b>189</b></a></li>
-                <li><a class="twi" href="#"><i class="m-icon  m-icon--twitter-id"></i><b>189</b></a></li>
-                <li><a class="gp" href="#"><i class="m-icon m-icon--google-plus-id"></i><b>189</b></a></li>
-                <li><a class="pint" href="#"><i class="m-icon  m-icon--pinterest-id"></i> <b>189</b></a></li>
-                <li><a class="comment" href="#" data-scrollto=".comments"><i class="m-icon m-icon--comments-id"></i> <b>189</b></a></li>
-            </ul>
         </header>
-        <nav class="mid-nav hidden-620">
+        <nav class="mid-nav hidden-xs">
                 <div class="container">
                     <ul class="wrap col-xs-9">
                         <!--                    <li><a class="home-link" href="#">Home</a></li>-->
@@ -218,7 +224,7 @@
 	<?php endif; ?>
 
     <section class="related-items pale-grey-bg">
-        <div class="container full-620 fixed-sm">
+        <div class="main-content container full-620 fixed-sm">
             <h3 class="green">Related Products</h3><br>
             <div class="related-products  grid-box-3">
 
