@@ -388,7 +388,7 @@
                                                            class="form-control">
                                                     </div>
                                                     <div class="col-md-2">
-                                                    <input type='text' ng-model="reviewCounter" placeholder="Customer Reviews"
+                                                    <input type='text' ng-readonly="readOnlyReviewCounter" ng-model="reviewCounter" placeholder="Customer Reviews"
                                                            class="form-control">
                                                     </div>
                                                     <div class="col-md-2">                                                    
