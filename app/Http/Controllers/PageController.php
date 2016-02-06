@@ -23,11 +23,9 @@ class PageController extends Controller
         return view('home');
     }
 
-    public function getContent($page = 1, $limit = 5, $category = false, $tag = false){
+    public function getContent($page = 1, $limit = 5, $tag = false,  $category = false){
 
-        $offset = false;
-
-        if((!$offset || $offset == 'undefined') && ($limit == 'undefined' || $limit == 0)){
+        if($limit == 'undefined' || $limit == 0){
             $productLimit = 6;
             $productOffset = 6 * ($page - 1);
 

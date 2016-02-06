@@ -68,6 +68,8 @@ angular.module('pagingApp.controllers', []).
 
                 $scope.filterBy = $criterion;
 
+                console.log(2)
+                console.log($scope.currentTag)
                 $scope.nextLoad = pagaingApi.getFilteredContent($scope.currentPage, $scope.currentTag, $criterion, $scope.sliceToRows).then(function(response){
                     var $newStuff       = response;
 
@@ -141,14 +143,14 @@ angular.module('pagingApp.services', []).
 
         var pagaingApi = {};
 
-        pagaingApi.getContent = function(page, limit, category, tag) {
+        pagaingApi.getContent = function(page, limit, tag, category) {
             return $http({
                 method: 'GET',
                 url: '/api/paging/get-content/' + page + '/' + limit + '/' + tag + '/' + category,
             });
         }
 
-        pagaingApi.getFilteredContent = function(currentPage, $category, $tag, $sliceFunction) {
+        pagaingApi.getFilteredContent = function(currentPage, $tag, $category, $sliceFunction) {
             var promiseArray = [];
 
             for(var $page = 1; $page < currentPage + 1; $page++) {
