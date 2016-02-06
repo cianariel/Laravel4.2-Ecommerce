@@ -1314,7 +1314,6 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
                 url: '/api/product/get-media/' + $scope.ProductId,
                 method: 'GET',
             }).success(function (data) {
-                //   console.log(data);
 
                 if (data.status_code == 200) {
                     $scope.mediaList = data.data;
