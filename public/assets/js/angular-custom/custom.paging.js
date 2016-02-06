@@ -208,5 +208,5 @@ angular.module('pagingApp').value('cgBusyDefaults',{
     wrapperClass: 'my-class my-class2'
 });
 
-// bootstrap for modularization
-angular.bootstrap($('#pagingApp'),['pagingApp']);
+// bootstrap for modularization ( add id="pagingApp" with initializing ng-app='pagingApp')
+angular.bootstrap(document.getElementById('pagingApp'),['pagingApp']);

@@ -20,21 +20,23 @@
             </div>
             <div  id="publicApp" ng-app="publicApp" ng-controller="publicController"
                   class="col-md-4 col-xs-6 col-md-offset-1 hero-box qiuck-signup hidden-620">
+                <div style="background-color: lightgrey; text-align: center;">
+                    <strong style="color: red">@{{ responseMessage }}</strong>
+                </div>
                 <form>
-                    <h4 ng-init="max=1">
-                        <b>Sign-up in Seconds @{{ max }}</b>
+                    <h4>
+                        <b>Sign-up in Seconds</b>
                     </h4>
 
-                    <input class="form-control hide" type="text" placeholder="First name" name="name">
+                    {{--<input class="form-control hide" type="text" placeholder="First name" name="name">--}}
                     <span class="email-input-holder ">
                         <i class="m-icon m-icon--email-form-id"></i>
-                        <input class="form-control"  type="text" placeholder="Email" name="email">
+                        <input class="form-control" ng-model="SubscriberEmail" type="text" placeholder="Email" name="email">
                     </span>
-                    
 
-                    <a class="btn btn-success col-xs-12" href="#">Sign up</a>
+                    <button ng-click="subscribe()" class="btn btn-success col-xs-12"  href="#">Sign up</button>
                     <div class="line-wrap">or</div>
-                    <a class="btn btn-info col-xs-12" href="#"><i class="m-icon m-icon--facebook-id"></i>Sign up with Facebook</a>
+                    <button ng-click="registerWithFB()" class="btn btn-info col-xs-12" href="#"><i class="m-icon m-icon--facebook-id"></i>Sign up with Facebook</button>
                 </form>
             </div>
 

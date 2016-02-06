@@ -248,7 +248,17 @@
                          * */
                         if ($this->user->SaveUserInformation($userData))
 
-                            // On successful user registration an email will be send through Event to verify email id.
+                            // for a subscribed user need not to confirm email for the second time.
+                            if(isset($inputData['Valid'])&&$inputData['Valid'] == true){
+                                $this->user = $this->user->IsEmailAvailable($userData['Email']);
+                                $this->user->status = 'Active';
+                                $this->user->save();
+
+                                return $this->setStatusCode(IlluminateResponse::HTTP_OK)
+                                    ->makeResponse('Registration completed successfully');
+                            }
+                        else{
+                        // On successful user registration an email will be send through Event to verify email id.
                             \Event::fire(new SendActivationMail(
                                 $userData['FullName'],
                                 $userData['Email'],
@@ -257,6 +267,7 @@
 
                         return $this->setStatusCode(IlluminateResponse::HTTP_OK)
                             ->makeResponse('Registration completed successfully,please verify email');
+                        }
                     } else
                     {
                         return $this->setStatusCode(\Config::get("const.api-status.app-failure"))

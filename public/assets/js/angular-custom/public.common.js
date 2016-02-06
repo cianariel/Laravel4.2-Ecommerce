@@ -11,6 +11,10 @@ publicApp.controller('publicController', ['$scope', '$http', '$window', '$timeou
         // initialize variables
         $scope.initPage = function () {
 
+            // email subscription
+            $scope.SubscriberEmail = '';
+            $scope.responseMessage = '';
+
             $scope.alerts = [];
             $scope.alertHTML = '';
 
@@ -87,6 +91,38 @@ publicApp.controller('publicController', ['$scope', '$http', '$window', '$timeou
             }
         };
 
+
+        $scope.subscribe = function () {
+
+            $scope.responseMessage = '';
+
+            $http({
+                url: '/api/subscribe',
+                method: "POST",
+                data: {
+                    'Email': $scope.SubscriberEmail
+                }
+            }).success(function (data) {
+
+                if (data.status_code == 406) {
+
+                    $scope.responseMessage = "Invalid Email !";
+                }
+
+                else if (data.status_code == 200) {
+                    $scope.responseMessage = "Successfully Subscribed";
+                    $scope.SubscriberEmail = '';
+
+                } else {
+                    $scope.responseMessage = "Email already subscribed";
+                }
+
+            });
+
+            //   'layouts.parts.login-signup'
+
+        };
+
         $scope.registerUser = function () {
             $scope.closeAlert();
 
@@ -102,11 +138,12 @@ publicApp.controller('publicController', ['$scope', '$http', '$window', '$timeou
                 data: {
                     FullName: $scope.FullName,
                     Email: $scope.Email,
-                    Password: $scope.Password
+                    Password: $scope.Password,
+                    Valid:true
                 }
 
             }).success(function (data) {
-                $scope.outputStatus(data, 'Please confirm your email activation.');
+                $scope.outputStatus(data, data.data);
 
                /* if(data.status_code == 200)
                     window.location = $scope.logingRedirectLocation;
@@ -127,5 +164,6 @@ publicApp.controller('publicController', ['$scope', '$http', '$window', '$timeou
 
     }]);
 
+
 // bootstrap for modularization
-angular.bootstrap($('#publicApp'),['publicApp']);
+angular.bootstrap(document.getElementById('publicApp'),['publicApp']);
