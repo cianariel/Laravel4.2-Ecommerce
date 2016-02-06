@@ -23,7 +23,7 @@ class PageController extends Controller
         return view('home');
     }
 
-    public function getContent($page = 1, $limit = 5, $returnOnly = false, $offset = false){
+    public function getContent($page = 1, $limit = 5, $category = false, $tag = false){
 
         $offset = false;
 
@@ -45,14 +45,14 @@ class PageController extends Controller
         $featuredLimit = 3;
         $featuredOffset = $featuredLimit * ($page - 1);
 
-        if($returnOnly == 'product' || !$stories = self::getStories($storyLimit, $storyOffset, $featuredLimit, $featuredOffset)){
+        if($category == 'product' || !$stories = self::getStories($storyLimit, $storyOffset, $featuredLimit, $featuredOffset)){
             $stories = [
                 'regular' => [],
                 'featured' => [],
             ];
         }
 
-        if($returnOnly == 'idea' || !$products = self::getProducts($productLimit, $page, $productOffset)){
+        if($category == 'idea' || !$products = self::getProducts($productLimit, $page, $productOffset)){
             $products['result'] = [];
         }
 

@@ -14,13 +14,14 @@ angular.module('pagingApp.controllers', []).
             return decoded;
         };
 
-        console.log($filter('_uriseg')(2))
+        $scope.currentTag = $filter('getURISegment')(2);
 
-        $scope.firstLoad = pagaingApi.getContent(1, 0).success(function (response) {
+        console.log($scope.currentTag);
+
+        $scope.firstLoad = pagaingApi.getContent(1, 0, $scope.currentTag).success(function (response) {
             $scope.allContent[0] = response;
             $scope.content[0] = $scope.sliceToRows(response['regular'], response['featured']);
         });
-
 
         $scope.loadMore = function() {
             $scope.currentPage++;
@@ -33,7 +34,7 @@ angular.module('pagingApp.controllers', []).
                 var $limit = 9;
             }
 
-            $scope.nextLoad =  pagaingApi.getContent($scope.currentPage, $limit, $scope.filterBy).success(function (response) {
+            $scope.nextLoad =  pagaingApi.getContent($scope.currentPage, $limit, $scope.currentTag, $scope.filterBy).success(function (response) {
                 $scope.newStuff[0] = $scope.sliceToRows(response['regular'], response['featured']);
                 $scope.content = $scope.content.concat($scope.newStuff);
 
@@ -51,7 +52,7 @@ angular.module('pagingApp.controllers', []).
                     return true;
 
                 }else if(typeof $criterion === 'undefined' || $criterion === null || $criterion === 'all'){
-                    $scope.nextLoad = pagaingApi.getContent(1).success(function (response) {
+                    $scope.nextLoad = pagaingApi.getContent(1, 0, $scope.currentTag).success(function (response) {
                         $scope.allContent[0] = response;
                         $replacer[0] = $scope.sliceToRows(response['regular'], response['featured']);
                     });
@@ -67,7 +68,7 @@ angular.module('pagingApp.controllers', []).
 
                 $scope.filterBy = $criterion;
 
-                $scope.nextLoad = pagaingApi.getData($scope.currentPage, $criterion, $scope.sliceToRows).then(function(response){
+                $scope.nextLoad = pagaingApi.getFilteredContent($scope.currentPage, $scope.currentTag, $criterion, $scope.sliceToRows).then(function(response){
                     var $newStuff       = response;
 
                     $scope.content = $newStuff;
@@ -140,20 +141,20 @@ angular.module('pagingApp.services', []).
 
         var pagaingApi = {};
 
-        pagaingApi.getContent = function(page, limit, only, offset) {
+        pagaingApi.getContent = function(page, limit, category, tag) {
             return $http({
                 method: 'GET',
-                url: '/api/paging/get-content/' + page + '/' + limit + '/' + only + '/' + offset,
+                url: '/api/paging/get-content/' + page + '/' + limit + '/' + tag + '/' + category,
             });
         }
 
-        pagaingApi.getData = function(currentPage, $criterion, $sliceFunction) {
+        pagaingApi.getFilteredContent = function(currentPage, $category, $tag, $sliceFunction) {
             var promiseArray = [];
 
             for(var $page = 1; $page < currentPage + 1; $page++) {
 
                 promiseArray.push(
-                    $http.get('/api/paging/get-content/' + $page + '/' + 9 + '/' + $criterion)
+                    $http.get('/api/paging/get-content/' + $page + '/' + 9 + '/' + $tag+ '/' + $category)
                 );
                 $page++;
             }
@@ -163,14 +164,12 @@ angular.module('pagingApp.services', []).
                 var $filtered = [];
 
                 response.forEach(function(batch) {
-                    console.log('page');
-                    console.log($i);
 
                     var endContent = [];
 
                     endContent['regular'] = batch.data['regular'];
 
-                    if($criterion != null && $criterion != 'idea'){
+                    if($category != null && $category != 'idea'){
                         endContent['featured'] = [];
                     }else{
                         endContent['featured'] =  batch.data['featured']; // we don't filter
@@ -196,10 +195,10 @@ angular.module('pagingApp').value('cgBusyDefaults',{
     templateUrl: '/assets/svg/spinner.html',
     delay: 300,
     minDuration: 700,
-    wrapperClass: 'my-class my-class2'
+    wrapperClass: ''
 });
 angular.module('pagingApp.filters', [])
-    .filter('_uriseg', function($location) {
+    .filter('getURISegment', function($location) {
         return function(segment) {
             var baseUrl = $location.protocol() + '://' + $location.host() + '/';
 
