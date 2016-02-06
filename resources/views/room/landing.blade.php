@@ -26,18 +26,41 @@
         {{--</div>--}}
     {{--</header>--}}
 
-    <nav class="mid-nav hidden-620">
-        <div class="container">
-            <ul class="left-nav col-xs-2 hidden-620">
-                <!--                    <li><a class="home-link" href="#">Home</a></li>-->
-                <li><a href="#" class="pink kitchen-link icon-link">Kitchen</a></li>
+    
+    <nav class="mid-nav hidden-xs">
+        <div class="container full-sm fixed-sm">
+            <ul class=" col-sm-offset-1 col-sm-9">
+                <li class="home">
+                    <span class="box-link-active-line"></span>
+                    <a href=""><i class="m-icon m-icon--smart-home"></i> Smart Home</a>
+                </li>
+                <li ><a class="active" href="">Kitchen</a></li>
+                <li><a href="">Bath</a></li>
+                <li><a href="">Bedroom</a></li>
+                <li><a href="">Office</a></li>
+                <li><a href="">Living</a></li>
+                <li><a href="">Outdoor</a></li>
+                <li><a href="">Lighting</a></li>
+                <li><a href="">Decor</a></li>
+                <!--<li><a data-toggle=".extra-nav" class="more-link extra" href="">...</a>
+                    <ul class="extra-nav hidden-620 hidden-soft">
+                        <li><a class="travel-link blue" href="#">Travel</a></li>
+                        <li><a class="wearables-link green" href="#">Wearables</a></li>
+                    </ul>
+                </li>-->
+
             </ul>
-            <ul class="hidden-620 left-nav pull-right col-md-2 col-sm-3">
-                <!--                    <li><a class="home-link" href="#">Home</a></li>-->
-                <li class="nested"><a href="#" class="all-link icon-link ">Browse all</a></li>
+            <div class="hidden-xs col-sm-2">
+                <ul class="pull-right"> 
+                    <li class="nested">
+                        <a id="browse-all" href="#" class="" data-toggle=".shop-menu"><i class="m-icon m-icon--menu"></i>&nbsp; Browse all</a>
+                    </li>
             </ul>
         </div>
+
+        </div>
     </nav>
+    
 <script>
 jQuery(document).ready(function($) {
   $('#hero').royalSlider({
@@ -49,7 +72,7 @@ jQuery(document).ready(function($) {
     arrowsNavAutoHide: false,
     controlNavigation: 'bullets',
     thumbsFitInViewport: false,
-    navigateByClick: true,
+    navigateByClick: false,
     startSlideId: 0,
     autoPlay: false,
     transitionType:'move',
@@ -60,19 +83,25 @@ jQuery(document).ready(function($) {
     },
     /* size of all images http://help.dimsemenov.com/kb/royalslider-jquery-plugin-faq/adding-width-and-height-properties-to-images */
     imgWidth: "100%",
+    imageScaleMode: "fill",
+    autoScaleSliderWidth: 1500,
+    autoScaleSliderHeight: 500,
+    autoScaleSlider: true
   });
 });
 </script>
+
+<div ng-app="pagingApp" ng-controller="pagingController">
         <div id="hero" class="royalSlider heroSlider rsMinW room-hero">
         @if(isset($roomInformation['images']))
-            @foreach( $roomInformation['images'] as $image )
+            @foreach( $roomInformation['images'] as $key => $image )
             <div class="rsContent">
                 @if(isset($roomInformation['images']))
                 <div class="container-fluid fixed-sm full-480">
                     <div class="hero-tags">
                         @foreach($image['Image_Products'] as $i_products)
                         <div class="tag {{$i_products->product_color}}" style="left:{{$i_products->x}}%;top:{{$i_products->y}}%" >
-                            <span></span>
+                            <span class="tag-icon"><i class="m-icon--shopping-bag-light-green"></i> </span>
                             <a class="{{$i_products->product_color}}-border" href="#">
                                 <img src="{{$i_products->media_link}}" class="round" alt="" />
                             </a>
@@ -86,24 +115,52 @@ jQuery(document).ready(function($) {
                         </div>
                         @endforeach
                     </div>
-                    <section class="hero-related-products col-md-4 pull-right hidden-620">
-                        <h5 data-toggle="#related-list">Related Products</h5>
-                        <ul id="related-list" class="hidden-soft">
+                </div>
+                @endif
+                <img class="rsImg" src="{{$image['Image']}}" alt="{{$image['Image_alt']}}">
+<!--                <img class="rsImg" src="http://127.0.0.1/1.jpg" alt="{{$image['Image_alt']}}">-->
+
+                <span ng-click="open({{$key}})" class="room-related-product-button" ng-click="cancel()">+</span>
+
+                <script type="text/ng-template" id="room-related-product-{{$key}}.html">
+                    <div class="modal-header">
+                        <h3 data-toggle="#related-list">Related Products</h3>
+                        <span class="circle-button" ng-click="cancel()">X</span>
+                    </div>
+                    <div class="modal-body">
+                        <section class="hero-related-products ">
+                            <ul  >
                             @foreach($image['Image_Products'] as $i_products)
-                            <li class="{{$i_products->product_color}}"><a class="{{$i_products->product_color}}-border" href="#"><img src="{{$i_products->media_link}}" class="round" alt="" /> {{$i_products->product_name}}</a> <a href="#" class="get solid pull-right">Get it</a></li>
+                                    <li class="{{$i_products->product_color}}">
+                                        <div class="row">
+                                            <div class="col-xs-10">
+                                                <a class="{{$i_products->product_color}}-border " href="#">
+                                                    <span class="img-holder">
+                                                        <img src="{{$i_products->media_link}}" class="round" alt="" />
+                                                    </span>
+                                                    <span class="name-holder">
+                                                        {{$i_products->product_name}}
+                                                    </span>
+                                                </a> 
+                                            </div>
+                                            <div class="col-xs-2">
+                                                <a href="#" class="get solid pull-right col-xs-2">Get it</a>
+                                            </div>
+                                        </div>
+                                    </li>
                             @endforeach
                         </ul>
                     </section>
                 </div>
-                @endif
-            <img class="rsImg" src="{{$image['Image']}}" alt="{{$image['Image_alt']}}">
+                </script>
+
             </div>
             @endforeach
         @endif
         </div>
 
 
-    <nav id="hero-nav" class="col-sm-12">
+    <!--<nav id="hero-nav" class="col-sm-12">
         <div class="container full-620  fixed-sm">
             <ul class="left-nav col-xs-1 hidden-620">
                  <li><a class="filter-link" href="#">Filter</a></li>
@@ -124,19 +181,28 @@ jQuery(document).ready(function($) {
                 <li><a href="" class="photos-link">Photos</a></li>
             </ul>
         </div>
-    </nav>
+    </nav>-->
 
     <main class="page-content">
-        <div class="app-wrap" ng-app="pagingApp" ng-controller="pagingController">
+        <div class="app-wrap" >
             <nav id="hero-nav" class="col-sm-12">
                 <div class="container full-620  fixed-sm">
                     {{--<ul class="left-nav col-xs-1 hidden-620">--}}
                     {{--<li class="active"><a class="home-link" href="#">Home</a></li>--}}
                     {{--</ul>--}}
-                    <ul class="category-nav main-content-filter">
+                    <ul class=" pull-right popular-new">
+                        <li class="">
+                            <a href="#" class="box-link active">Newest</a>
+                        </li>
+                        <li class="">
+                            <a href="#" class="box-link ">Popular</a>
+                        </li>
+                    </ul>
+
+                    <ul class="category-nav main-content-filter pull-left">
                         <li class="active">
                             <a ng-click="filterContent(null)" href="" data-filterby="all" class="all-link">
-                                <i class="m-icon--menu"></i>&nbsp;
+                                <i class="m-icon m-icon--menu"></i>&nbsp;
                                 All
                             </a>
                         </li>
@@ -149,17 +215,18 @@ jQuery(document).ready(function($) {
                         <li>
                             <a ng-click="filterContent('product')" data-filterby="products" href=""
                                class="products-link">
-                                <i class="m-icon--item"></i>&nbsp;
+                                <i class="m-icon m-icon--item"></i>&nbsp;
                                 Products
                             </a>
                         </li>
                         <li>
                             <a data-filterby="photos" href="" class="photos-link">
-                                <i class=" m-icon--image"></i>&nbsp;
+                                <i class="m-icon m-icon--image"></i>&nbsp;
                                 Photos
                             </a>
                         </li>
                     </ul>
+                    
                 </div>
             </nav>
 
@@ -179,6 +246,7 @@ jQuery(document).ready(function($) {
         </div>
 
     </main>
+</div>
 <style>
 #full-width-slider {
   width: 100%;
