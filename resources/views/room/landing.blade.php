@@ -103,62 +103,51 @@ jQuery(document).ready(function($) {
         </div>
 
 
-    <nav id="hero-nav" class="col-sm-12">
-        <div class="container full-620  fixed-sm">
-            <ul class="left-nav col-xs-1 hidden-620">
-                 <li><a class="filter-link" href="#">Filter</a></li>
-            </ul>
-
-            <ul class="col-sm-4 pull-right popular-new">
-                <li class="pull-right">
-                    <a href="#" class="box-link">Popular</a>
-                </li>
-                <li class="pull-right">
-                    <a href="#" class="box-link active">Newest</a>
-                </li>
-            </ul>
-            <ul class="category-nav col-sm-6 pull-right">
-                <li><a href="" class="all-link">All</a></li>
-                <li><a href="" class="ideas-link">Ideas</a></li>
-                <li><a href="" class="products-link">Products</a></li>
-                <li><a href="" class="photos-link">Photos</a></li>
-            </ul>
-        </div>
-    </nav>
 
     <main class="page-content">
         <div class="app-wrap" ng-app="pagingApp" ng-controller="pagingController">
             <nav id="hero-nav" class="col-sm-12">
                 <div class="container full-620  fixed-sm">
-                    {{--<ul class="left-nav col-xs-1 hidden-620">--}}
-                    {{--<li class="active"><a class="home-link" href="#">Home</a></li>--}}
-                    {{--</ul>--}}
-                    <ul class="category-nav main-content-filter">
-                        <li class="active">
-                            <a ng-click="filterContent(null)" href="" data-filterby="all" class="all-link">
-                                <i class="m-icon--menu"></i>&nbsp;
-                                All
-                            </a>
+                    <ul class="left-nav col-xs-1 hidden-620">
+                        <li><a class="filter-link" href="#">Filter</a></li>
+                    </ul>
+
+                    <ul class="col-sm-4 pull-right popular-new">
+                        <li class="pull-right">
+                            <a href="#" class="box-link">Popular</a>
                         </li>
-                        <li>
-                            <a ng-click="filterContent('idea')" data-filterby="ideas" href="" class="ideas-link">
-                                <i class="m-icon m-icon--bulb"></i>
-                                Ideas
-                            </a>
+                        <li class="pull-right">
+                            <a href="#" class="box-link active">Newest</a>
                         </li>
-                        <li>
-                            <a ng-click="filterContent('product')" data-filterby="products" href=""
-                               class="products-link">
-                                <i class="m-icon--item"></i>&nbsp;
-                                Products
-                            </a>
-                        </li>
-                        <li>
-                            <a data-filterby="photos" href="" class="photos-link">
-                                <i class=" m-icon--image"></i>&nbsp;
-                                Photos
-                            </a>
-                        </li>
+                    </ul>
+                    <ul class="category-nav col-sm-6 pull-right">
+                        <ul class="category-nav main-content-filter">
+                            <li class="active">
+                                <a ng-click="filterContent(null)" href="" data-filterby="all" class="all-link">
+                                    <i class="m-icon--menu"></i>&nbsp;
+                                    All
+                                </a>
+                            </li>
+                            <li>
+                                <a ng-click="filterContent('idea')" data-filterby="ideas" href="" class="ideas-link">
+                                    <i class="m-icon m-icon--bulb"></i>
+                                    Ideas
+                                </a>
+                            </li>
+                            <li>
+                                <a ng-click="filterContent('product')" data-filterby="products" href=""
+                                   class="products-link">
+                                    <i class="m-icon--item"></i>&nbsp;
+                                    Products
+                                </a>
+                            </li>
+                            <li>
+                                <a data-filterby="photos" href="" class="photos-link">
+                                    <i class=" m-icon--image"></i>&nbsp;
+                                    Photos
+                                </a>
+                            </li>
+                        </ul>
                     </ul>
                 </div>
             </nav>
