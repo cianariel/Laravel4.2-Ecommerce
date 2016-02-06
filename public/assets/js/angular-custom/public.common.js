@@ -126,3 +126,6 @@ publicApp.controller('publicController', ['$scope', '$http', '$window', '$timeou
         // $scope.addAlert('danger','testingtestingtestingtestingtestingtestingtesting');
 
     }]);
+
+// bootstrap for modularization
+angular.bootstrap($('#publicApp'),['publicApp']);

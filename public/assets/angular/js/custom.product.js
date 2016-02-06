@@ -197,10 +197,7 @@ productApp.controller('productController', ['$scope', '$http', '$window'
         // Email subscription //
 
 
-
         // Custom function call
-
-
 
       //  angular.bootstrap(document.getElementById("App-1"),['productApp']);
         $scope.initPage();
