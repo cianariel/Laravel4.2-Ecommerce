@@ -26,7 +26,7 @@
             // Apply the jwt.auth middleware to all methods in this controller
             $this->middleware('jwt.auth',
                 ['except' => [
-                    'emailSubscription'
+                    'emailSubscription','userProfile'
                 ]]);
             $this->subscriber = new Subscriber();
 
@@ -79,5 +79,10 @@
                     ->makeResponse($subs);
             }
 
+        }
+
+        public function userProfile()
+        {
+            return view('user.user-profile');
         }
     }
