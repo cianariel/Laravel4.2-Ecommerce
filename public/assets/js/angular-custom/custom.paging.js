@@ -1,30 +1,32 @@
-
 angular.module('pagingApp.controllers', []).
-    controller('pagingController', function($scope, pagaingApi) {
+    controller('pagingController', function($scope,$http,pagaingApi, $filter) {
         $scope.allContent = [];
         $scope.content = [];
         $scope.newStuff = [];
         $scope.currentPage = 1;
         $scope.contentBlock = angular.element( document.querySelector('.main-content') );
         $scope.filterLoad = [];
+        //$scope.globalOffset = 0;
 
         $scope.renderHTML = function(html_code)
         {
             var decoded = angular.element('<div />').html(html_code).text();
             return decoded;
         };
-        
-//        console.log($scope.renderHTML('&#039;'))
-        $scope.firstLoad = pagaingApi.getContent(1).success(function (response) {
+
+        console.log($filter('_uriseg')(2))
+
+        $scope.firstLoad = pagaingApi.getContent(1, 0).success(function (response) {
             $scope.allContent[0] = response;
             $scope.content[0] = $scope.sliceToRows(response['regular'], response['featured']);
         });
+
 
         $scope.loadMore = function() {
             $scope.currentPage++;
             $scope.allContent[$scope.currentPage] = [];
 
-            if(typeof $scope.filterBy === 'undefined'){
+            if(!$scope.filterBy || typeof $scope.filterBy === 'undefined'){
                 var $limit = 0;
                 $scope.filterBy = null;
             }else{
@@ -38,105 +40,44 @@ angular.module('pagingApp.controllers', []).
                 $scope.allContent[$scope.currentPage]['regular']  = response['regular'];
                 $scope.allContent[$scope.currentPage]['featured'] = response['featured'];
             });
-
         };
 
 
         $scope.filterContent = function($criterion){
-            $('.main-content').fadeOut(500);
-            //$('.homepage-grid').fadeOut();
+            $('.main-content').fadeOut(500, function(){
+                var $replacer = [];
 
-            setTimeout(function(){
-
-            $replacer = [];
-
-            if($scope.filterBy === $criterion){
+                if($scope.filterBy === $criterion){
                     return true;
 
-            }else if(typeof $criterion === 'undefined' || $criterion === null || $criterion === 'all'){
+                }else if(typeof $criterion === 'undefined' || $criterion === null || $criterion === 'all'){
                     $scope.nextLoad = pagaingApi.getContent(1).success(function (response) {
                         $scope.allContent[0] = response;
                         $replacer[0] = $scope.sliceToRows(response['regular'], response['featured']);
                     });
+                    $scope.currentPage = 1;
+                    $scope.filterBy = null;
 
-                    //$('.main-content').fadeOut(function(){
-                        $scope.content = $replacer;
-                        $('.main-content').fadeIn();
-                    //});
+                    $scope.content = $replacer;
+                    $('.main-content').fadeIn();
 
                     return true;
-                }else if(typeof $scope.filterBy !== 'undefined'){ // change from one filter to another
-                    $scope.nextLoad = pagaingApi.getContent(1, 9, $criterion).success(function (response) {
-                        $replacer[0] = $scope.sliceToRows(response['regular'], response['featured']);
-                        $scope.allContent[0] = response;
-                    });
 
-                    //$scope.content = [];
-                    //$scope.content = $replacer;
-                    //$('.main-content').fadeIn();
-
-                    //$('.main-content').fadeOut(function(){
-                        $scope.content = $replacer;
-                        $('.main-content').fadeIn();
-                    //});
-
-                    $scope.filterBy = $criterion;
-                    return true;
                 }
-
 
                 $scope.filterBy = $criterion;
-                var $replacer = [];
-                var $i = 0;
-                $scope.allContent.forEach(function(batch) {
 
-                    $scope.filtered = [];
+                $scope.nextLoad = pagaingApi.getData($scope.currentPage, $criterion, $scope.sliceToRows).then(function(response){
+                    var $newStuff       = response;
 
-                    $scope.filtered['regular'] =  batch['regular'].filter(checkByCriterion);
-
-                    if($criterion != null && $criterion != 'idea'){
-                        $scope.filtered['featured'] = [];
-                    }else{
-                        $scope.filtered['featured'] = batch['featured']; // we don't filter
-                    }
-
-                    if($scope.filtered['regular'].length < 9){
-                        var $diff = 9 - $scope.filtered['regular'].length;
-
-                        $scope.nextLoad = pagaingApi.getContent($scope.currentPage, $diff, $criterion, $scope.filtered ).success(function (response) {
-                            $scope.filtered['regular'] =  $scope.filtered['regular'].concat(response['regular']);
-                            if($criterion == null && $criterion == 'idea' && $scope.filtered['featured'] == []){
-                                $scope.filtered['featured'] = response['featured'];
-                            }
-                            $replacer[$i] = $scope.sliceToRows($scope.filtered['regular'], $scope.filtered['featured']);
-                            $i++;
-                        });
-                    }
-                }, this);
-
-                function checkByCriterion(value){
-                    return value.type == $criterion;
-                }
-
-            //$('.homepage-grid').fadeOut(function(){
-                $scope.content = $replacer;
-            //});
-
-            $scope.allContent = $scope.allContent.concat($replacer)
-
-                setTimeout(function(){
-                    $('.main-content').fadeIn(1000);
-                }, 1000);
-
-            }, 500);
-
+                    $scope.content = $newStuff;
+                    $scope.allContent = $scope.allContent.concat($newStuff);
+                    $('.main-content').fadeIn(500);
+                });
+            });
         };
 
         $scope.sliceToRows = function($regular, $featured){
-            //console.log(7)
-            //console.log($regular)
-            //console.log($featured)
-
             var $return = [];
             $return['row-1'] = $regular.slice(0, 3);
             $return['row-2'] = $featured[0] ? [$featured[0]] : false;
@@ -144,7 +85,6 @@ angular.module('pagingApp.controllers', []).
             $return['row-4'] = $featured[1] ? [$featured[1]] : false;
             $return['row-5'] = $regular.slice(6, 9);
             $return['row-6'] = $featured[2] ? [$featured[2]] : false;
-
 
             return $return;
         };
@@ -156,44 +96,95 @@ angular.module('pagingApp.controllers', []).
 
         };
 
+        // email subscription //
 
+        $scope.subscribe = function () {
 
+            $scope.responseMessage = '';
+
+            $http({
+                url: '/api/subscribe',
+                method: "POST",
+                data: {
+                    'Email': $scope.SubscriberEmail
+                }
+            }).success(function (data) {
+
+                if (data.status_code == 406) {
+
+                    $scope.responseMessage = "Invalid Email !";
+                }
+
+                else if (data.status_code == 200) {
+                    $scope.responseMessage = "Successfully Subscribed";
+                    $scope.SubscriberEmail = '';
+
+                } else {
+                    $scope.responseMessage = "Email already subscribed";
+                }
+            });
+
+        };
 
     });
-
-
-//angular.module('pagingApp.directives', [])
-//    .directive('a', function() {
-//        return {
-//            restrict: 'E',
-//            link: function(scope, elem, attrs) {
-//                if(attrs.ngClick || attrs.href === '' || attrs.href === '#'){
-//                    elem.on('click', function(e){
-//                        e.preventDefault();
-//                    });
-//                }
-//            }
-//        };
-//    });
-
 
 angular.module('pagingApp', [
     'pagingApp.controllers',
     'pagingApp.services',
-    //'pagingApp.directives',
+    'pagingApp.filters',
     'cgBusy'
 ]);
 
 angular.module('pagingApp.services', []).
-    factory('pagaingApi', function($http) {
+    factory('pagaingApi', function($http, $q) {
 
         var pagaingApi = {};
 
-        pagaingApi.getContent = function(page, limit, only) {
+        pagaingApi.getContent = function(page, limit, only, offset) {
             return $http({
                 method: 'GET',
-                url: '/api/paging/get-content/' + page + '/' + limit + '/' + only,
+                url: '/api/paging/get-content/' + page + '/' + limit + '/' + only + '/' + offset,
             });
+        }
+
+        pagaingApi.getData = function(currentPage, $criterion, $sliceFunction) {
+            var promiseArray = [];
+
+            for(var $page = 1; $page < currentPage + 1; $page++) {
+
+                promiseArray.push(
+                    $http.get('/api/paging/get-content/' + $page + '/' + 9 + '/' + $criterion)
+                );
+                $page++;
+            }
+
+            var $return = $q.all(promiseArray).then(function successCallback(response) {
+                var $i = 0;
+                var $filtered = [];
+
+                response.forEach(function(batch) {
+                    console.log('page');
+                    console.log($i);
+
+                    var endContent = [];
+
+                    endContent['regular'] = batch.data['regular'];
+
+                    if($criterion != null && $criterion != 'idea'){
+                        endContent['featured'] = [];
+                    }else{
+                        endContent['featured'] =  batch.data['featured']; // we don't filter
+                    }
+
+                    $filtered[$i] = $sliceFunction(endContent['regular'], endContent['featured'] );
+                    $i++;
+                });
+
+                var $return = $filtered;
+
+                return $return;
+            });
+            return $return;
         }
 
         return pagaingApi;
@@ -207,6 +198,20 @@ angular.module('pagingApp').value('cgBusyDefaults',{
     minDuration: 700,
     wrapperClass: 'my-class my-class2'
 });
+angular.module('pagingApp.filters', [])
+    .filter('_uriseg', function($location) {
+        return function(segment) {
+            var baseUrl = $location.protocol() + '://' + $location.host() + '/';
+
+            var query = $location.absUrl().replace(baseUrl, '');
+            var data = query.split("/");
+            if(data[segment-2]) {
+                return data[segment-2];
+            }
+            return false;
+        }
+    });
 
 // bootstrap for modularization ( add id="pagingApp" with initializing ng-app='pagingApp')
 angular.bootstrap(document.getElementById('pagingApp'),['pagingApp']);
+
