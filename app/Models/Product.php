@@ -468,6 +468,8 @@
             $result['productInformation'] = $productInfo;
             $result['relatedProducts'] = $relatedProductsData;
             $result['selfImages'] = $selfImage;
+
+            // generate store information
             $result['storeInformation'] = $this->getStoreInfoByProductId($productData['product']->id);
 
             //removing duplicate data entry for related product (set distinct value for related products)
