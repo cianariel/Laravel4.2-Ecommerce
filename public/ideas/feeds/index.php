@@ -125,6 +125,10 @@ $args['meta_query'] = array(
       );
 }
 
+if($byTags = $_REQUEST['tags']){
+    $args['tag'] = $byTags;
+}
+
 $posts = query_posts($args);
 //$posts = query_posts('cat='.$postCat.'&showposts=' . $postCount.'&offset='.$offset);
 $datam = array();
