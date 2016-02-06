@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 //use FeedParser;
 use MetaTag;
 use App\Models\Product;
+use App\Models\Tag;
 use App\Models\Room;
 
 class PageController extends Controller
@@ -20,10 +21,18 @@ class PageController extends Controller
      */
     public function home()
     {
+
+//        $bob = self::getContent(1,5, 'kitchen', false);
         return view('home');
     }
 
     public function getContent($page = 1, $limit = 5, $tag = false,  $category = false){
+
+        if($tag){
+            $tagID = Tag::where('tag_name', $tag)->lists('id')->toArray();
+        }else{
+            $tagID = false;
+        }
 
         if($limit == 'undefined' || $limit == 0){
             $productLimit = 6;
@@ -50,7 +59,7 @@ class PageController extends Controller
             ];
         }
 
-        if($category == 'idea' || !$products = self::getProducts($productLimit, $page, $productOffset)){
+        if($category == 'idea' || !$products = self::getProducts($productLimit, $page, $productOffset, $tagID)){
             $products['result'] = [];
         }
 
@@ -94,12 +103,13 @@ class PageController extends Controller
         return view('signup')->with('email',$email);
     }
 
-    public function getProducts($limit, $page, $offset){
+    public function getProducts($limit, $page, $offset, $tagID){
         $productSettings = [
             'ActiveItem' => true,
             'limit'      => $limit,
             'page'       => $page,
             'CustomSkip' => $offset,
+            'TagId'      => $tagID,
 
             'CategoryId' => false,
             'FilterType' => false,

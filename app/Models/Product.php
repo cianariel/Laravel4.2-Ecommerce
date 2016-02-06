@@ -253,31 +253,43 @@
 
             $filterText = $settings['FilterText'];
 
-            if ($settings['CategoryId'] != null)
+            if (@$settings['CategoryId'] != null)
             {
                 $productModel = $productModel->where("product_category_id", $settings['CategoryId']);
             }
 
-            if ($settings['ShowFor'] != null)
+            if (@$settings['TagId'] != null)
+            {
+                $tagID = $settings['TagId'];
+
+                if(!is_array($tagID)){
+                    $tagID = [$tagID];
+                }
+                $productModel = $productModel->whereHas('tags', function($query) use ($tagID){
+                    $query->whereIn('tag_id', $tagID);
+                });
+            }
+
+            if (@$settings['ShowFor'] != null)
             {
                 $productModel = $productModel->where("show_for", $settings['ShowFor']);
             }
 
-            if ($settings['ActiveItem'] == true)
+            if (@$settings['ActiveItem'] == true)
             {
                 $productModel = $productModel->where("post_status", 'Active');
             }
 
-            if ($settings['FilterType'] == 'user-filter')
+            if (@$settings['FilterType'] == 'user-filter')
             {
                 $productModel = $productModel->where("user_name", "like", "%$filterText%");
             }
-            if ($settings['FilterType'] == 'product-filter')
+            if (@$settings['FilterType'] == 'product-filter')
             {
                 $productModel = $productModel->where("product_name", "like", "%$filterText%");
             }
 
-            if ($settings['WithTags'] == true && $settings['CategoryId'] != null)
+            if (@$settings['WithTags'] == true && $settings['CategoryId'] != null)
             {
                 $category = ProductCategory::where('id', '=', $settings['CategoryId'])->first();
 
