@@ -1,3 +1,4 @@
+
 angular.module('pagingApp.controllers', []).
     controller('pagingController', function($scope, pagaingApi) {
         $scope.allContent = [];
@@ -206,3 +207,6 @@ angular.module('pagingApp').value('cgBusyDefaults',{
     minDuration: 700,
     wrapperClass: 'my-class my-class2'
 });
+
+// bootstrap for modularization
+angular.bootstrap($('#pagingApp'),['pagingApp']);

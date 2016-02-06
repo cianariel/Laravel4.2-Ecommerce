@@ -18,10 +18,11 @@
                 </ul>
 
             </div>
-            <div class="col-md-4 col-xs-6 col-md-offset-1 hero-box qiuck-signup hidden-620">
+            <div  id="publicApp" ng-app="publicApp" ng-controller="publicController"
+                  class="col-md-4 col-xs-6 col-md-offset-1 hero-box qiuck-signup hidden-620">
                 <form>
-                    <h4>
-                        <b>Sign-up in Seconds</b>
+                    <h4 ng-init="max=1">
+                        <b>Sign-up in Seconds @{{ max }}</b>
                     </h4>
 
                     <input class="form-control hide" type="text" placeholder="First name" name="name">
@@ -40,7 +41,7 @@
 
         </div>
     </section>
-    <div class="app-wrap" ng-app="pagingApp" ng-controller="pagingController">
+    <div class="app-wrap" id="pagingApp" ng-app="pagingApp" ng-controller="pagingController">
         <nav id="hero-nav" class="col-sm-12">
             <div class="container full-620  fixed-sm">
                 {{--<ul class="left-nav col-xs-1 hidden-620">--}}
@@ -145,4 +146,5 @@
         </div>
     <script src="/assets/js/vendor/angular-busy.min.js"></script>
     <script src="/assets/js/angular-custom/custom.paging.js"></script>
+    <script src="/assets/js/angular-custom/public.common.js"></script>
 @stop
