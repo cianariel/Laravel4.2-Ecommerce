@@ -1,5 +1,5 @@
-angular.module('pagingApp.controllers', []).
-    controller('pagingController', function($scope,$http,pagaingApi, $filter) {
+angular.module('pagingApp.controllers', [ 'ui.bootstrap']).
+    controller('pagingController', function($scope, $uibModal,$http,pagaingApi, $filter) {
         $scope.allContent = [];
         $scope.content = [];
         $scope.newStuff = [];
@@ -126,7 +126,39 @@ angular.module('pagingApp.controllers', []).
 
         };
 
+        
+        $scope.open = function (key) {
+            var templateUrl = "room-related-product-" + key + ".html";
+            var modalInstance = $uibModal.open({
+              templateUrl: templateUrl,
+              controller: 'ModalInstanceCtrltest'
+            });
+        };
+    })
+    .controller('ModalInstanceCtrltest', function ($scope, $uibModalInstance) {
+      $scope.ok = function () {
+        $uibModalInstance.close();
+      };
+
+      $scope.cancel = function () {
+        $uibModalInstance.dismiss('cancel');
+      };
     });
+
+//angular.module('pagingApp.directives', [])
+//    .directive('a', function() {
+//        return {
+//            restrict: 'E',
+//            link: function(scope, elem, attrs) {
+//                if(attrs.ngClick || attrs.href === '' || attrs.href === '#'){
+//                    elem.on('click', function(e){
+//                        e.preventDefault();
+//                    });
+//                }
+//            }
+//        };
+//    });
+
 
 angular.module('pagingApp', [
     'pagingApp.controllers',
