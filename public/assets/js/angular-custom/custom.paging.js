@@ -187,12 +187,11 @@ angular.module('pagingApp.services', []).
         pagaingApi.getFilteredContent = function(currentPage, $tag, $category, $sliceFunction) {
             var promiseArray = [];
 
-            for(var $page = 1; $page < currentPage + 1; $page++) {
+            for(var $page = 1; $page < currentPage + 2; $page++) {
 
                 promiseArray.push(
                     $http.get('/api/paging/get-content/' + $page + '/' + 9 + '/' + $tag+ '/' + $category)
                 );
-                $page++;
             }
 
             var $return = $q.all(promiseArray).then(function successCallback(response) {
