@@ -243,3 +243,7 @@ angular.module('pagingApp.filters', [])
             return false;
         }
     });
+
+// bootstrap for modularization ( add id="pagingApp" with initializing ng-app='pagingApp')
+angular.bootstrap(document.getElementById('pagingApp'),['pagingApp']);
+
