@@ -36,6 +36,9 @@
         </nav>
         <header class="story-header hidden-620 hidden-soft">
             <a href="#" class="side-logo lamp-logo">
+                <i class="m-icon m-icon--bulb2">
+                    <span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span><span class="path6"></span><span class="path7"></span><span class="path8"></span><span class="path9"></span><span class="path10"></span>
+                </i>
             </a>
 
             <h1>
