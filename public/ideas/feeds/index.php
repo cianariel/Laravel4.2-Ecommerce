@@ -113,7 +113,7 @@ $args = array(
 'showposts' => $postCount,
 'offset' => $offset,);
 
-if($byTags = $_REQUEST['tag'] && $byTags != 'false'){
+if($byTags = $_REQUEST['tag']){
     $args['tag'] = $byTags;
 }
 
