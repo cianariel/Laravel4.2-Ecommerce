@@ -20,8 +20,6 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap']).
             $scope.currentTag = $filter('getURISegment')(3);
         }
 
-        console.log($scope.currentTag);
-
         $scope.firstLoad = pagaingApi.getContent(1, 0, $scope.currentTag).success(function (response) {
             $scope.allContent[0] = response;
             $scope.content[0] = $scope.sliceToRows(response['regular'], response['featured']);
