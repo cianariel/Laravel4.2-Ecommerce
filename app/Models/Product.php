@@ -258,7 +258,7 @@
                 $productModel = $productModel->where("product_category_id", $settings['CategoryId']);
             }
 
-            if (@$settings['TagId'] != null)
+            if (isset($settings['TagId']))
             {
                 $tagID = $settings['TagId'];
 
