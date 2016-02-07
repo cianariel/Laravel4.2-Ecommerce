@@ -258,13 +258,13 @@
                 $productModel = $productModel->where("product_category_id", $settings['CategoryId']);
             }
 
-            if (isset($settings['TagId']))
+            if (isset($settings['TagId']) && is_array($settings['TagId']))
             {
                 $tagID = $settings['TagId'];
 
-                if(!is_array($tagID)){
-                    $tagID = [$tagID];
-                }
+//                if(!is_array($tagID)){
+//                    $tagID = [$tagID];
+//                }
                 $productModel = $productModel->whereHas('tags', function($query) use ($tagID){
                     $query->whereIn('tag_id', $tagID);
                 });

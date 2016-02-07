@@ -21,17 +21,22 @@ class PageController extends Controller
      */
     public function home()
     {
-//        $bob = self::getContent(1,5, 'kitchen', false);
+        $bob = self::getContent(1,0, false);
         return view('home');
     }
 
     public function getContent($page = 1, $limit = 5, $tag = false,  $category = false){
 
-        if($tag){
+//        $tag = 'bob';
+//        $tag = 'bedroom';
+
+        if($tag && $tag != 'false' && $tag != ''){
             $tagID = Tag::where('tag_name', $tag)->lists('id')->toArray();
         }else{
             $tagID = false;
+            $tag = false;
         }
+//                print_r($tagID); die();
 
         if($limit == 'undefined' || $limit == 0){
             $productLimit = 6;
@@ -77,7 +82,11 @@ class PageController extends Controller
     }
 
     public function getStories($limit, $offset, $featuredLimit, $featuredOffset, $tag){
-        $url = 'http://staging.ideaing.com/ideas/feeds/index.php?count='.$limit.'&no-featured&offset='. $offset. '&tag=' . $tag;
+        $url = 'http://staging.ideaing.com/ideas/feeds/index.php?count='.$limit.'&no-featured&offset='. $offset;
+        if($tag && $tag != 'false'){
+            $url .= '&tag=' . $tag;
+        }
+//        print_r($url); die();
 
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $url);
@@ -89,6 +98,13 @@ class PageController extends Controller
         $return['regular'] = json_decode($json);
 
         $featuredUrl = 'http://staging.ideaing.com/ideas/feeds/index.php?count='.$featuredLimit.'&only-featured&offset='. $featuredOffset. '&tag=' . $tag;
+
+        if($tag && $tag != 'false' && $tag != false){
+            $featuredUrl .= '&tag=' . $tag;
+        }
+
+//                print_r($featuredUrl); die();
+
 
         curl_setopt($ch, CURLOPT_URL, $featuredUrl);
         $json = curl_exec($ch);
@@ -112,7 +128,6 @@ class PageController extends Controller
             'limit'      => $limit,
             'page'       => $page,
             'CustomSkip' => $offset,
-            'TagId'      => $tagID,
 
             'CategoryId' => false,
             'FilterType' => false,
@@ -120,6 +135,10 @@ class PageController extends Controller
             'ShowFor'    => false,
             'WithTags'   => false,
         ];
+
+        if(is_array($tagID)){
+            $productSettings['TagId'] = $tagID;
+        }
 
         $prod = new Product();
 
