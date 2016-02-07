@@ -35,13 +35,13 @@
                     <a href=""><i class="m-icon m-icon--smart-home"></i> Smart Home</a>
                 </li>
                 <li ><a class="active" href="">Kitchen</a></li>
-                <li><a href="">Bath</a></li>
-                <li><a href="">Bedroom</a></li>
-                <li><a href="">Office</a></li>
-                <li><a href="">Living</a></li>
-                <li><a href="">Outdoor</a></li>
-                <li><a href="">Lighting</a></li>
-                <li><a href="">Decor</a></li>
+                <li><a href="/room/bath">Bath</a></li>
+                <li><a href="/room/bedroom">Bedroom</a></li>
+                <li><a href="/room/office">Office</a></li>
+                <li><a href="/room/living">Living</a></li>
+                <li><a href="/room/outdoor">Outdoor</a></li>
+                <li><a href="/room/lighting">Lighting</a></li>
+                <li><a href="/room/decor">Decor</a></li>
                 <!--<li><a data-toggle=".extra-nav" class="more-link extra" href="">...</a>
                     <ul class="extra-nav hidden-620 hidden-soft">
                         <li><a class="travel-link blue" href="#">Travel</a></li>
