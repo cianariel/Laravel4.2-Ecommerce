@@ -21,14 +21,11 @@ class PageController extends Controller
      */
     public function home()
     {
-
 //        $bob = self::getContent(1,5, 'kitchen', false);
         return view('home');
     }
 
     public function getContent($page = 1, $limit = 5, $tag = false,  $category = false){
-
-        $tag = 'bob';
 
         if($tag){
             $tagID = Tag::where('tag_name', $tag)->lists('id')->toArray();
@@ -63,6 +60,10 @@ class PageController extends Controller
 
         if($category == 'idea' || !$products = self::getProducts($productLimit, $page, $productOffset, $tagID)){
             $products['result'] = [];
+        }
+
+        if(!$stories['regular']){
+            $stories['regular'] = [];
         }
 
         $return['regular'] = array_merge($stories['regular'], $products['result']);
