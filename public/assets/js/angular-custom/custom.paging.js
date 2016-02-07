@@ -14,7 +14,11 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap']).
             return decoded;
         };
 
-        $scope.currentTag = $filter('getURISegment')(2);
+        var $route =  $filter('getURISegment')(2);
+
+        if($route == 'room'){
+            $scope.currentTag = $filter('getURISegment')(3);
+        }
 
         console.log($scope.currentTag);
 
