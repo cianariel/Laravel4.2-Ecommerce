@@ -4,7 +4,7 @@
 
     <img style="margin-left:40%" class="img-responsive " alt="" src="/assets/images/ideaing-logo-small.png">
 
-    <div ng-app="publicApp" ng-controller="publicController"
+    <div id="publicApp" ng-app="publicApp" ng-controller="publicController"
          class="col-lg-4" style="float: none;
     display: block;
     margin-left: auto;
@@ -37,7 +37,7 @@
                 </div>
                 <div class="form-group">
                     <label for="email">Email address:</label>
-                    <input type="email" ng-model="Email" ng-init="Email='{{$email}}'" placeholder="Enter Email"
+                    <input type="email" ng-model="Email" ng-readonly="true"  ng-init="Email='{{$email}}'" placeholder="Enter Email"
                            class="form-control"
                            id="email">
                 </div>
