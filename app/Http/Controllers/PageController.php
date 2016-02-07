@@ -30,7 +30,7 @@ class PageController extends Controller
 //        $tag = 'bob';
 //        $tag = 'bedroom';
 
-        if($tag && $tag != 'false' && $tag != ''){
+        if($tag && $tag !== 'undefined' && $tag != 'false' && $tag != ''){
             $tagID = Tag::where('tag_name', $tag)->lists('id')->toArray();
         }else{
             $tagID = false;
