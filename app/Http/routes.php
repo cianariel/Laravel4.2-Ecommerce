@@ -181,6 +181,14 @@
 
     });
 
+    //Shop view
+    Route::get('shop', 'ShopController@index');
+    Route::get('shop/category', 'ShopController@shopCategory');
+
+    //User Profile
+    Route::get('user/profile', 'UserController@userProfile');
+
+
 
     // Route for password reset , email verification ,feed example
     Route::get('password-reset-form/{code?}', 'AuthenticateController@passwordResetForm');

@@ -227,7 +227,7 @@
         <nav class="mid-nav rooms hidden-xs">
             <div class="container full-sm fixed-sm">
                 <ul class="wrap col-xs-9">
-                    <li class="home ">
+                    <li class="home active">
                         <span class="box-link-active-line"></span>
                         <a href=""><i class="m-icon m-icon--smart-home"></i> Smart Home</a>
                     </li>
