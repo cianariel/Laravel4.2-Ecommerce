@@ -23,7 +23,8 @@
     <div class="merchant-widget">
         <span class="merchant-widget__price">$@{{item.price}}</span>
         <span>from</span>
-        <img class="merchant-widget__store" src="/assets/images/dummies/amazon-black.png" />
+       <img class="merchant-widget__store" alt="@{{ item.storeInfo.Description }}" ng-src='@{{ item.storeInfo.ImagePath }}' />
+
     </div>
     <div class="clearfix"></div>
     <a target="_blank" href="@{{item.affiliate_link}}" class="box-item__get-it">Get it</a>

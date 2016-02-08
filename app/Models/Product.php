@@ -201,7 +201,7 @@
                         ->Where('is_main_item', '=', '1');
                 })
                 ->first(array(
-                    'products.id', 'products.show_for', 'products.updated_at', 'products.product_vendor_id', 'products.product_vendor_type',
+                    'products.id', 'products.show_for', 'products.updated_at', 'products.product_vendor_id', 'products.store_id',//'products.product_vendor_type',
                     'products.user_name', 'products.product_name', 'product_categories.category_name', 'products.affiliate_link',
                     'products.price', 'products.sale_price', 'medias.media_link', 'products.product_permalink', 'products.post_status'
                 ));
@@ -342,6 +342,9 @@
                 $tmp->media_link = $path;
                 $tmp->updated_at = Carbon::createFromTimestamp(strtotime($tmp->updated_at))->diffForHumans();
                 $tmp->type = 'product';
+
+                // Add store information
+                $tmp->storeInfo = $this->getStoreInfoByProductId($id);
 
                 $data[ $i ] = $tmp;
             }
