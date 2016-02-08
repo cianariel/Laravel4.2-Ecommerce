@@ -158,6 +158,11 @@ publicApp.controller('publicController', ['$scope', '$http', '$window', '$timeou
             window.location = '/api/fb-login';
         };
 
+        $scope.login = function(){
+
+            $http()
+        };
+
 
         $scope.initPage();
         // $scope.addAlert('danger','testingtestingtestingtestingtestingtestingtesting');
