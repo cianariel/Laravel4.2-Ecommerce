@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 //use FeedParser;
 use MetaTag;
 use App\Models\Product;
+use App\Models\Tag;
 use App\Models\Room;
 
 class PageController extends Controller
@@ -20,14 +21,24 @@ class PageController extends Controller
      */
     public function home()
     {
+        $bob = self::getContent(1,0, false);
         return view('home');
     }
 
-    public function getContent($page = 1, $limit = 5, $returnOnly = false, $offset = false){
+    public function getContent($page = 1, $limit = 5, $tag = false,  $category = false){
 
-        $offset = false;
+//        $tag = 'bob';
+//        $tag = 'bedroom';
 
-        if((!$offset || $offset == 'undefined') && ($limit == 'undefined' || $limit == 0)){
+        if($tag && $tag !== 'undefined' && $tag != 'false' && $tag != ''){
+            $tagID = Tag::where('tag_name', $tag)->lists('id')->toArray();
+        }else{
+            $tagID = false;
+            $tag = false;
+        }
+//                print_r($tagID); die();
+
+        if($limit == 'undefined' || $limit == 0){
             $productLimit = 6;
             $productOffset = 6 * ($page - 1);
 
@@ -45,15 +56,19 @@ class PageController extends Controller
         $featuredLimit = 3;
         $featuredOffset = $featuredLimit * ($page - 1);
 
-        if($returnOnly == 'product' || !$stories = self::getStories($storyLimit, $storyOffset, $featuredLimit, $featuredOffset)){
+        if($category == 'product' || !$stories = self::getStories($storyLimit, $storyOffset, $featuredLimit, $featuredOffset, $tag)){
             $stories = [
                 'regular' => [],
                 'featured' => [],
             ];
         }
 
-        if($returnOnly == 'idea' || !$products = self::getProducts($productLimit, $page, $productOffset)){
+        if($category == 'idea' || !$products = self::getProducts($productLimit, $page, $productOffset, $tagID)){
             $products['result'] = [];
+        }
+
+        if(!$stories['regular']){
+            $stories['regular'] = [];
         }
 
         $return['regular'] = array_merge($stories['regular'], $products['result']);
@@ -66,8 +81,12 @@ class PageController extends Controller
         return $return;
     }
 
-    public function getStories($limit, $offset, $featuredLimit, $featuredOffset){
+    public function getStories($limit, $offset, $featuredLimit, $featuredOffset, $tag){
         $url = 'http://staging.ideaing.com/ideas/feeds/index.php?count='.$limit.'&no-featured&offset='. $offset;
+        if($tag && $tag != 'false'){
+            $url .= '&tag=' . $tag;
+        }
+//        print_r($url); die();
 
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $url);
@@ -78,7 +97,14 @@ class PageController extends Controller
 
         $return['regular'] = json_decode($json);
 
-        $featuredUrl = 'http://staging.ideaing.com/ideas/feeds/index.php?count='.$featuredLimit.'&only-featured&offset='. $featuredOffset;
+        $featuredUrl = 'http://staging.ideaing.com/ideas/feeds/index.php?count='.$featuredLimit.'&only-featured&offset='. $featuredOffset. '&tag=' . $tag;
+
+        if($tag && $tag != 'false' && $tag != false){
+            $featuredUrl .= '&tag=' . $tag;
+        }
+
+//                print_r($featuredUrl); die();
+
 
         curl_setopt($ch, CURLOPT_URL, $featuredUrl);
         $json = curl_exec($ch);
@@ -96,7 +122,7 @@ class PageController extends Controller
         return view('signup')->with('email',$email);
     }
 
-    public function getProducts($limit, $page, $offset){
+    public function getProducts($limit, $page, $offset, $tagID){
         $productSettings = [
             'ActiveItem' => true,
             'limit'      => $limit,
@@ -109,6 +135,10 @@ class PageController extends Controller
             'ShowFor'    => false,
             'WithTags'   => false,
         ];
+
+        if(is_array($tagID)){
+            $productSettings['TagId'] = $tagID;
+        }
 
         $prod = new Product();
 

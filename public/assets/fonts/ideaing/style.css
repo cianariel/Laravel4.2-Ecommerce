@@ -1,10 +1,10 @@
 @font-face {
     font-family: 'ideaing';
-    src:    url('fonts/ideaing.eot?bu3puc');
-    src:    url('fonts/ideaing.eot?bu3puc#iefix') format('embedded-opentype'),
-        url('fonts/ideaing.ttf?bu3puc') format('truetype'),
-        url('fonts/ideaing.woff?bu3puc') format('woff'),
-        url('fonts/ideaing.svg?bu3puc#ideaing') format('svg');
+    src:    url('fonts/ideaing.eot?35eqt1');
+    src:    url('fonts/ideaing.eot?35eqt1#iefix') format('embedded-opentype'),
+        url('fonts/ideaing.ttf?35eqt1') format('truetype'),
+        url('fonts/ideaing.woff?35eqt1') format('woff'),
+        url('fonts/ideaing.svg?35eqt1#ideaing') format('svg');
     font-weight: normal;
     font-style: normal;
 }
@@ -24,6 +24,9 @@
     -moz-osx-font-smoothing: grayscale;
 }
 
+.m-icon--shopping-bag-light-green:before {
+    content: "\e928";
+}
 .m-icon--bulb2 .path1:before {
     content: "\e93c";
     color: rgb(233, 39, 73);
@@ -788,9 +791,6 @@
 .m-icon--star:before {
     content: "\e927";
 }
-.m-icon--star-blue:before {
-    content: "\e928";
-}
 .m-icon--star-blue-half:before {
     content: "\e929";
 }
@@ -802,12 +802,6 @@
 }
 .m-icon--star-inactive:before {
     content: "\e92c";
-}
-.m-icon--star-outline:before {
-    content: "\e92d";
-}
-.m-icon--star-outline-inactive:before {
-    content: "\e92e";
 }
 .m-icon--bulb:before {
     content: "\e92f";
