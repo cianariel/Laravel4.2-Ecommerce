@@ -24,12 +24,40 @@
         public function __construct()
         {
             // Apply the jwt.auth middleware to all methods in this controller
-            $this->middleware('jwt.auth',
+           /* $this->middleware('jwt.auth',
                 ['except' => [
                     'emailSubscription','userProfile'
-                ]]);
+                ]]);*/
             $this->subscriber = new Subscriber();
 
+           // $this->newToken = JWTAuth::parseToken()->refresh();
+
+        }
+
+        public function securePageHeader()
+        {
+           /*$authStatus = $this->RequestAuthentication();
+
+           if($authStatus['status-code'] != 200)
+            {
+               return \Redirect::to('/login');
+            }*/
+
+
+
+            $this->RequestAuthentication();
+
+          //  $this->authCheck();
+
+            return view('user.secure-page-header');
+        }
+
+
+
+        public function authCheck(){
+            if(true){
+                return \Redirect::to('/login');
+            }
         }
 
         // Email subscription

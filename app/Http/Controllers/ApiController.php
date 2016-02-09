@@ -14,6 +14,7 @@
     use Illuminate\Contracts\Filesystem\Factory;
 
     use JWTAuth;
+    use Tymon\JWTAuth\Exceptions\JWTException;
     use FeedParser;
 
     class ApiController extends Controller {
@@ -202,5 +203,90 @@
             return array($cleanData, $validator);
         }
 
+
+
+        /** Authenticate a user
+         * @return mixed
+         */
+        public function RequestAuthentication()
+        {
+            // initializing response variables
+            $response['status-code'] = '';
+            $response['status-message'] = '';
+            $response['user-data'] = '';
+            $response['toke'] = '';
+
+            // get token form input or session
+            $token = \Input::get('token');
+
+            if($token == null)
+            {
+                $token = session('auth.token');
+            }
+
+            // check authentication and catch expection
+            try{
+                $user = JWTAuth::authenticate($token);
+                if(!$user)
+                {
+                    $response['status-code'] = '900';
+                    $response['status-message'] = 'No user Found';
+                }else{
+                    $response['user-data'] = $user;
+
+                    $newToken = JWTAuth::refresh($token);
+                    $this->setAuthToken($newToken);
+                    $response['toke'] = $newToken;
+                    $response['status-code'] = '200';
+                    $response['status-message'] = 'User Validated';
+                }
+
+            }
+            catch(\Tymon\JWTAuth\Exceptions\TokenExpiredException $e){
+                $response['status-code'] = '910';
+                $response['status-message'] = 'Token Expired';
+            }catch(\Tymon\JWTAuth\Exceptions\TokenInvalidException $e){
+                $response['status-code'] = '920';
+                $response['status-message'] = 'Token Invalid';
+            }catch(\Tymon\JWTAuth\Exceptions\JWTException $e){
+                $response['status-code'] = '930';
+                $response['status-message'] = 'Token Not Provided';
+            }
+
+         //   return $response;
+
+            // check for method type and error
+            if(in_array($response['status-code'],array(900,910,920,930)))
+            {
+                if(\Input::ajax()){
+
+                    $response['method-status'] = 'fail-with-ajax';
+
+                  //  return $this->setStatusCode($response['status-code'])
+                  //      ->makeResponse($response['status-message']);
+                   // return $response;
+                }else{
+                   // return \Response::view('login');//$response;//\Redirect::to('/login');
+                    $response['method-status'] = 'fail-with-http';
+                }
+            }else{
+
+                if(\Input::ajax()){
+
+                    $response['method-status'] = 'success-with-ajax';
+
+                }else{
+
+                    $response['method-status'] = 'success-with-http';
+                }
+
+            }
+
+            return $response;
+
+
+            //   return redirect('/login');
+
+        }
 
     }

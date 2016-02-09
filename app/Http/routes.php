@@ -21,6 +21,9 @@
          });
     */
 
+    Route::any('secure-page-header', 'UserController@securePageHeader');
+
+
     Route::get('/', 'PageController@home');
 
     Route::get('update-price', 'ProductController@priceUpdate');

@@ -48,6 +48,12 @@
                         <i class="fa fa-paper-plane"></i>
                         Login
                     </button>
+
+                    <button type="submit" ng-click="chk()" class="btn btn-default">
+                        <i class="fa fa-paper-plane"></i>
+                        chk
+                    </button>
+
                     <button type="submit" ng-click="registerWithFB()" class="btn btn-success">
                         <i class="fa fa-facebook"></i>
                         Login with Facebook
