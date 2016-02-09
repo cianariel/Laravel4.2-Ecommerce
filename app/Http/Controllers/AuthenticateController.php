@@ -163,7 +163,7 @@
 
 
             // if no errors are encountered we can return a JWT
-            return $this->setStatusCode(IlluminateResponse::HTTP_OK)
+            return $this->setStatusCode(\Config::get("const.api-status.success"))
                 ->setAuthToken($token)
                 ->makeResponse("Successfully authenticated.");
 
