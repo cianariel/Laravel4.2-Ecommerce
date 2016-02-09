@@ -39,6 +39,18 @@
             }
         });
 
+        $('body').on('mouseover', '.rsContent .hero-tags .tag', function(){
+            var extraHeroTagsHTML = "<div class='hero-tags extra'></div>";
+            if(!$('#hero .hero-tags.extra').length){
+                $('#hero .rsOverflow').append(extraHeroTagsHTML);
+            }
+            $("#hero .rsOverflow .hero-tags.extra ").html($(this)[0].outerHTML);
+            $("#hero .rsOverflow .hero-tags.extra a, #hero .rsOverflow .hero-tags.extra .hover-box").show();
+        })
+        $('body').on('mouseleave', '.hero-tags.extra .tag', function(){
+            $("#hero .rsOverflow .hero-tags.extra a, #hero .rsOverflow .hero-tags.extra .hover-box").hide();
+        })
+
 
 
 

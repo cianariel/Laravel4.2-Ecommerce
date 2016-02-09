@@ -1,4 +1,4 @@
-<div ng-repeat="batch in content" class="container main-content">
+<div ng-repeat="batch in content" class="container main-content col-xs-12">
     <div class="grid-box-3">
         <div class="box-item idea-box" ng-if="item.type == 'idea'" ng-repeat="item in batch['row-1']">
             @include('grid.idea')
