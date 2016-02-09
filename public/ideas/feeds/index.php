@@ -113,6 +113,10 @@ $args = array(
 'showposts' => $postCount,
 'offset' => $offset,);
 
+if($byTags = $_REQUEST['tag']){
+    $args['tag'] = $byTags;
+}
+
 if($is_featured != "")
 {
 $args['meta_query'] = array(

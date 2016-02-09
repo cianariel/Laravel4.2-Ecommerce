@@ -201,7 +201,7 @@
                         ->Where('is_main_item', '=', '1');
                 })
                 ->first(array(
-                    'products.id', 'products.show_for', 'products.updated_at', 'products.product_vendor_id', 'products.product_vendor_type',
+                    'products.id', 'products.show_for', 'products.updated_at', 'products.product_vendor_id', 'products.store_id',//'products.product_vendor_type',
                     'products.user_name', 'products.product_name', 'product_categories.category_name', 'products.affiliate_link',
                     'products.price', 'products.sale_price', 'medias.media_link', 'products.product_permalink', 'products.post_status'
                 ));
@@ -253,31 +253,43 @@
 
             $filterText = $settings['FilterText'];
 
-            if ($settings['CategoryId'] != null)
+            if (@$settings['CategoryId'] != null)
             {
                 $productModel = $productModel->where("product_category_id", $settings['CategoryId']);
             }
 
-            if ($settings['ShowFor'] != null)
+            if (isset($settings['TagId']) && is_array($settings['TagId']))
+            {
+                $tagID = $settings['TagId'];
+
+//                if(!is_array($tagID)){
+//                    $tagID = [$tagID];
+//                }
+                $productModel = $productModel->whereHas('tags', function($query) use ($tagID){
+                    $query->whereIn('tag_id', $tagID);
+                });
+            }
+
+            if (@$settings['ShowFor'] != null)
             {
                 $productModel = $productModel->where("show_for", $settings['ShowFor']);
             }
 
-            if ($settings['ActiveItem'] == true)
+            if (@$settings['ActiveItem'] == true)
             {
                 $productModel = $productModel->where("post_status", 'Active');
             }
 
-            if ($settings['FilterType'] == 'user-filter')
+            if (@$settings['FilterType'] == 'user-filter')
             {
                 $productModel = $productModel->where("user_name", "like", "%$filterText%");
             }
-            if ($settings['FilterType'] == 'product-filter')
+            if (@$settings['FilterType'] == 'product-filter')
             {
                 $productModel = $productModel->where("product_name", "like", "%$filterText%");
             }
 
-            if ($settings['WithTags'] == true && $settings['CategoryId'] != null)
+            if (@$settings['WithTags'] == true && $settings['CategoryId'] != null)
             {
                 $category = ProductCategory::where('id', '=', $settings['CategoryId'])->first();
 
@@ -330,6 +342,9 @@
                 $tmp->media_link = $path;
                 $tmp->updated_at = Carbon::createFromTimestamp(strtotime($tmp->updated_at))->diffForHumans();
                 $tmp->type = 'product';
+
+                // Add store information
+                $tmp->storeInfo = $this->getStoreInfoByProductId($id);
 
                 $data[ $i ] = $tmp;
             }
@@ -468,6 +483,8 @@
             $result['productInformation'] = $productInfo;
             $result['relatedProducts'] = $relatedProductsData;
             $result['selfImages'] = $selfImage;
+
+            // generate store information
             $result['storeInformation'] = $this->getStoreInfoByProductId($productData['product']->id);
 
             //removing duplicate data entry for related product (set distinct value for related products)
