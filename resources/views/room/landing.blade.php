@@ -35,6 +35,7 @@
                     <span class="box-link-active-line"></span>
                     <a href=""><i class="m-icon m-icon--smart-home"></i> Smart Home</a>
                 </li>
+
                 <li><a @if($roomInformation['Permalink'] == 'kitchen') class="active" @endif href="{{url('room/kitchen')}}">Kitchen</a></li>
                 <li><a @if($roomInformation['Permalink'] == 'bath') class="active" @endif href="{{url('room/bath')}}">Bath</a></li>
                 <li><a @if($roomInformation['Permalink'] == 'bedroom') class="active" @endif href="{{url('room/bedroom')}}">Bedroom</a></li>

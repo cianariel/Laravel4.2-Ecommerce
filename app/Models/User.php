@@ -135,6 +135,17 @@
                     $user->status = 'Active';
                     $user->save();
 
+                    $subscriber = new Subscriber();
+
+                    // subscribes a user if not already subscribed
+                    if($subscriber->isASubscriber($user['Email']) == false)
+                    {
+                        $subscriber->email = $userData['Email'];
+                        $subscriber->status = 'Subscribed';
+
+                        $this->subscriber->save();
+                    }
+
                     return $user;
 
                 } else

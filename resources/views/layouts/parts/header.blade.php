@@ -231,14 +231,14 @@
                         <span class="box-link-active-line"></span>
                         <a href=""><i class="m-icon m-icon--smart-home"></i> Smart Home</a>
                     </li>
-                    <li><a href="">Kitchen</a></li>
-                    <li><a href="">Bath</a></li>
-                    <li><a href="">Bedroom</a></li>
-                    <li><a href="">Office</a></li>
-                    <li><a href="">Living</a></li>
-                    <li><a href="">Outdoor</a></li>
-                    <li><a href="">Lighting</a></li>
-                    <li><a href="">Decor</a></li>
+                    <li><a href="/room/kitchen">Kitchen</a></li>
+                    <li><a href="/room/bath">Bath</a></li>
+                    <li><a href="/room/bedroom">Bedroom</a></li>
+                    <li><a href="/room/office">Office</a></li>
+                    <li><a href="/room/living">Living</a></li>
+                    <li><a href="/room/outdoor">Outdoor</a></li>
+                    <li><a href="/room/lighting">Lighting</a></li>
+                    <li><a href="/room/decor">Decor</a></li>
                     <!--<li><a data-toggle=".extra-nav" class="more-link extra" href="">...</a>
                         <ul class="extra-nav hidden-620 hidden-soft">
                             <li><a class="travel-link blue" href="#">Travel</a></li>
@@ -250,8 +250,8 @@
             </div>
             <div class="container mobile-menu hidden-lg hidden-md hidden-sm hidden-xs full-620  fixed-sm">
                 <ul>
-                    <li><a href="">Kitchen</a></li>
-                    <li><a href="">Bath</a></li>
+                    <li><a href="/room/kitchen">Kitchen</a></li>
+                    <li><a href="/room/kitchen">Bath</a></li>
                     <li><a class="nested" data-toggle=".mobile-more-nav" data-hide=".mobile-extra-nav" href="">More</a></li>
                     <li><a class="more-link" data-toggle=".mobile-extra-nav"  data-hide=".mobile-more-nav" href="">...</a></li>
 
@@ -262,10 +262,10 @@
                         <li><a href="">Wearables</a></li>
                     </ul>
                     <ul class="extra-nav mobile-more-nav">
-                        <li><a href="">Bedroom</a></li>
-                        <li><a href="">Office</a></li>
-                        <li><a href="">Living</a></li>
-                        <li><a href="">Outdoor</a></li>
+                        <li><a href="/room/bedroom">Bedroom</a></li>
+                        <li><a href="/room/office">Office</a></li>
+                        <li><a href="/room/living">Living</a></li>
+                        <li><a href="/room/outdoor">Outdoor</a></li>
                     </ul>
                 </ul>
             </div>

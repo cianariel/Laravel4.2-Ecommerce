@@ -21,9 +21,10 @@
     <a href="/product/@{{item.product_permalink}}" class="box-item__label box-item__label--clear">@{{item.product_name}}</a>
     <div class="clearfix"></div>
     <div class="merchant-widget">
-        <span class="merchant-widget__price">$@{{item.price}}</span>
+        <span class="merchant-widget__price">$@{{item.sale_price}}</span>
         <span>from</span>
-        <img class="merchant-widget__store" src="/assets/images/dummies/amazon-black.png" />
+       <img class="merchant-widget__store" alt="@{{ item.storeInfo.Description }}" ng-src='@{{ item.storeInfo.ImagePath }}' />
+
     </div>
     <div class="clearfix"></div>
     <a target="_blank" href="@{{item.affiliate_link}}" class="box-item__get-it">Get it</a>
