@@ -162,7 +162,7 @@ publicApp.controller('publicController', ['$scope', '$http', '$window', '$timeou
         };
 
         $scope.loginUser = function(){
-
+            $scope.closeAlert();
             $http({
                 url: '/api/authenticate',
                 method: "POST",
@@ -172,6 +172,8 @@ publicApp.controller('publicController', ['$scope', '$http', '$window', '$timeou
 
                 }
             }).success(function (data) {
+                console.log(data.data);
+
                 $scope.outputStatus(data, data.data);
 
                 /* if(data.status_code == 200)
@@ -181,7 +183,7 @@ publicApp.controller('publicController', ['$scope', '$http', '$window', '$timeou
         };
 
         $scope.chk = function(){
-
+            $scope.closeAlert();
             $http({
                 url: '/secure-page-header',
                 method: "GET",

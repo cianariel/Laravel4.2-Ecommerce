@@ -24,7 +24,7 @@
 
         public function __construct()
         {
-          //  $this->middleware('jwt.auth', ['except' => ['mediaUpload']]);
+            //  $this->middleware('jwt.auth', ['except' => ['mediaUpload']]);
 
         }
 
@@ -67,7 +67,7 @@
          * @param $toke
          * @return $this
          */
-        public function setAuthToken($toke)
+        public function setAuthToken($toke = null)
         {
             session(['auth.token' => isset($toke) ? $toke : null]);
             $this->authToken = $toke;
@@ -88,7 +88,9 @@
             if ($authToken != "")
             {
                 $data = array_merge(['data' => $data], [
-                    'token' => $this->getAuthToken()
+                    'token'       => $this->getAuthToken(),
+                    'status_code' => $this->getStatusCode()
+
                 ]);
             } else
             {
@@ -151,33 +153,39 @@
             {
                 $fileResponse['result'] = \Config::get("const.file.file-not-exist");
                 $fileResponse['status_code'] = \Config::get("const.api-status.validation-fail");
+
                 return $fileResponse;
 
             } else if (!$request->file('file')->isValid())
             {
                 $fileResponse['result'] = \Config::get("const.file.file-not-exist");
                 $fileResponse['status_code'] = \Config::get("const.api-status.validation-fail");
+
                 return $fileResponse;
             } else if (in_array($request->file('file')->guessClientExtension(), array("jpeg", "jpg", "bmp", "png", "mp4", "avi", "mkv")))
             {
-                $fileResponse['result'] =  \Config::get("const.file.file-not-exist");
+                $fileResponse['result'] = \Config::get("const.file.file-not-exist");
                 $fileResponse['status_code'] = \Config::get("const.api-status.validation-fail");
+
                 return $fileResponse;
             } else if ($request->file('file')->getClientSize() > \Config::get("const.file.file-max-size"))
             {
                 $fileResponse['result'] = \Config::get("const.file.file-max-limit-exit");
                 $fileResponse['status_code'] = \Config::get("const.api-status.validation-fail");
+
                 return $fileResponse;
-            }else{
-                $fileName = 'product-'.$request->file('file')->getClientOriginalName().uniqid().$request->file('file')->getClientOriginalExtension();
+            } else
+            {
+                $fileName = 'product-' . $request->file('file')->getClientOriginalName() . uniqid() . $request->file('file')->getClientOriginalExtension();
 
                 // pointing filesystem to AWS S3
                 $s3 = Storage::disk('s3');
 
-                if($s3->put($fileName,file_get_contents($request->file('file')),'public'))
+                if ($s3->put($fileName, file_get_contents($request->file('file')), 'public'))
                 {
-                    $fileResponse['result'] = \Config::get("const.file.s3-path").$fileName;
+                    $fileResponse['result'] = \Config::get("const.file.s3-path") . $fileName;
                     $fileResponse['status_code'] = \Config::get("const.api-status.success");
+
                     return $fileResponse;
                 }
             }
@@ -204,7 +212,6 @@
         }
 
 
-
         /** Authenticate a user
          * @return mixed
          */
@@ -219,74 +226,79 @@
             // get token form input or session
             $token = \Input::get('token');
 
-            if($token == null)
+            if ($token == null)
             {
                 $token = session('auth.token');
             }
 
-            // check authentication and catch expection
-            try{
+            // check authentication and catch exception
+            try
+            {
                 $user = JWTAuth::authenticate($token);
-                if(!$user)
+                if (!$user)
                 {
                     $response['status-code'] = '900';
                     $response['status-message'] = 'No user Found';
-                }else{
+                } else
+                {
                     $response['user-data'] = $user;
 
                     $newToken = JWTAuth::refresh($token);
                     $this->setAuthToken($newToken);
-                    $response['toke'] = $newToken;
+                    //    $response['token'] = $newToken;
                     $response['status-code'] = '200';
                     $response['status-message'] = 'User Validated';
                 }
 
-            }
-            catch(\Tymon\JWTAuth\Exceptions\TokenExpiredException $e){
+            } catch (\Tymon\JWTAuth\Exceptions\TokenExpiredException $e)
+            {
                 $response['status-code'] = '910';
                 $response['status-message'] = 'Token Expired';
-            }catch(\Tymon\JWTAuth\Exceptions\TokenInvalidException $e){
+            } catch (\Tymon\JWTAuth\Exceptions\TokenInvalidException $e)
+            {
                 $response['status-code'] = '920';
                 $response['status-message'] = 'Token Invalid';
-            }catch(\Tymon\JWTAuth\Exceptions\JWTException $e){
+            } catch (\Tymon\JWTAuth\Exceptions\JWTException $e)
+            {
                 $response['status-code'] = '930';
                 $response['status-message'] = 'Token Not Provided';
             }
 
-         //   return $response;
+            //   return $response;
 
             // check for method type and error
-            if(in_array($response['status-code'],array(900,910,920,930)))
+            if (in_array($response['status-code'], array(900, 910, 920, 930)))
             {
-                if(\Input::ajax()){
+                if (\Input::ajax())
+                {
 
                     $response['method-status'] = 'fail-with-ajax';
 
-                  //  return $this->setStatusCode($response['status-code'])
-                  //      ->makeResponse($response['status-message']);
-                   // return $response;
-                }else{
-                   // return \Response::view('login');//$response;//\Redirect::to('/login');
+                    //  return $this->setStatusCode($response['status-code'])
+                    //      ->makeResponse($response['status-message']);
+                    // return $response;
+                } else
+                {
+                    // return \Response::view('login');//$response;//\Redirect::to('/login');
                     $response['method-status'] = 'fail-with-http';
                 }
-            }else{
+            } else
+            {
 
-                if(\Input::ajax()){
+                if (\Input::ajax())
+                {
 
                     $response['method-status'] = 'success-with-ajax';
 
-                }else{
+                } else
+                {
 
                     $response['method-status'] = 'success-with-http';
                 }
-
             }
 
             return $response;
-
-
             //   return redirect('/login');
-
         }
 
     }
