@@ -131,6 +131,7 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap']).
             var templateUrl = "room-related-product-" + key + ".html";
             var modalInstance = $uibModal.open({
               templateUrl: templateUrl,
+              size: 'lg',
               controller: 'ModalInstanceCtrltest'
             });
         };

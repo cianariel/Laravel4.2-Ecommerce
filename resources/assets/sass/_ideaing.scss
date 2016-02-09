@@ -1,5 +1,6 @@
 a:hover, a:focus{
     color: inherit;
+    text-decoration: none;
 }
 .ta-hidden-input{
   display: none;
@@ -918,6 +919,7 @@ body.product-details{
   .mid-nav{
 /*    height: 50px;*/
     background: rgba(255,255,255,.95);
+/*    background: rgba(232,232,232,.95);*/
     position: relative;
     z-index: 2;
     overflow: hidden;
@@ -938,7 +940,7 @@ body.product-details{
 
 .slider{
   //position: relative;
-  &.product-slider{
+  &.product-slider, &.heroSlider{
     #gallery{
       width: 100%;
       height: 500px;
@@ -995,7 +997,7 @@ body.product-details{
       }
       &.rsThumbsArrowRight{
         //bottom: 0 !important;
-        left: 40%;
+        right: 40%;
         top: 443px;
         background-image: url('/assets/images/icons/arrow-down-pink.png');
       }
@@ -1048,6 +1050,14 @@ body.product-details{
     //  width: 50px;
     //  height: 50px;
     //}
+
+    &.heroSlider{
+        .rsArrow{
+            &.rsArrowRight{
+                right: 0px;
+            }
+        }
+    }
 
   }
   //.rsTmb{
@@ -4580,6 +4590,7 @@ body.room-landing{
 
   .category-nav{
     width: 412px;;
+    margin: auto;
   }
 
   .left-nav{
@@ -4594,6 +4605,8 @@ body.room-landing{
   .popular-new{
     padding-right: 0;
     padding-left: 0;
+    width: 242px;
+/*    margin: auto;*/
     .box-link{
       border-width: 1px;
       padding: 8px 30px;
@@ -4630,7 +4643,7 @@ body.room-landing{
   width: 100%;
   height: 100%;
   min-height: 450px;
-  z-index: 1;
+/*  z-index: 1;*/
 
   .tag{
     position: absolute;
@@ -4653,11 +4666,12 @@ body.room-landing{
     }
 
     &:hover{
+        z-index:11;
       a, .hover-box{
-        display: block;
+/*        display: block;*/
       }
       a{
-        margin-top: -114px;
+/*        margin-top: -114px;*/
       }
     }
   }
@@ -5122,7 +5136,9 @@ footer.about-footer{
   //  width: 75% !important;
   //}
 
-
+  .modal-open .modal{
+      width: 90%;
+  }
 
 }
 
@@ -5324,7 +5340,7 @@ footer.about-footer{
 
   #hero{
     min-height: 570px;
-    padding-bottom: 20px;
+/*    padding-bottom: 20px;*/
 
     .hero-background{
       -webkit-filter: none;
@@ -6215,7 +6231,7 @@ footer.about-footer{
     width: 30px;
     height: 30px;
     text-align: center;
-    line-height: 30px;
+    line-height: 35px;
     font-size: 32px;  
     cursor: pointer;  
 }
@@ -6232,16 +6248,26 @@ footer.about-footer{
         margin: 0px;
         .modal-content{
             padding: 0px;
+            background: transparent;
             .modal-header{
-                background-color: #000;
+/*                background-color: #000;*/
+                background: rgba(0,0,0,.9);
                 color: #fff;
                 position: relative;
                 border-bottom: 0px;
-                .circle-button{
+                .box-item__get-it{
                     position: absolute;
                     right: 34px;
-                    top: 25px;
+                    top: 0px;
+                    font-size: 19px;
+                    width:50px;
+                    height:50px;
+                    line-height: 50px;
                     cursor: pointer;
+                    opacity: 1;
+                    &:hover{
+                        background: $pinterest-red;
+                    }
                 }
             }
             .modal-body{
@@ -6253,7 +6279,7 @@ footer.about-footer{
     
     .hero-related-products{
     /*    display: none;*/
-      background: rgba(0,0,0,.8);
+      background: rgba(51,51,51,.9);
       padding: 0;
       z-index: 1;
       //margin-top: 50px;
@@ -6314,11 +6340,39 @@ footer.about-footer{
             background: $iridium;
         }
       }
-
     }
-
-    
 }
+#hero .rsOverflow{
+    .hero-tags.extra{
+        position: unset;
+        .tag-icon{
+            display: none;
+        }
+        .tag:hover a{
+            margin-top: 0px;
+            display: block;
+        }
+    }
+    overflow: visible;
+/*    .hero-tags .tag:hover ~ .rsContainer:hover {
+        transform: unset !important;
+    }*/
+
+    .rsContainer{
+        &:hover{
+/*            transform: unset !important;*/
+        }
+        .rsSlide{
+            overflow: visible;
+        }
+    }
+}
+    
+#top-nav, nav.mid-nav{
+/*    background: #e8e8e8;*/
+/*    background: rgba(232, 232, 232, 0.95);*/
+}
+
 
 @media (max-width: 620px){
     .reviews-medium-container .average-score .caption{
