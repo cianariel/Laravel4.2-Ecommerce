@@ -139,7 +139,7 @@ $args['meta_query'] = array(
 
 $posts = query_posts($args);
 
-if(!have_posts() ){ // if there are not posts with similar tags, get just any posts
+if($args['tag_slug__in'] && !have_posts() || found_posts() < 3){ // if there are not posts with similar tags, get just any posts
     unset($args['tag__in']);
     $my_query = query_posts($args);
 }
