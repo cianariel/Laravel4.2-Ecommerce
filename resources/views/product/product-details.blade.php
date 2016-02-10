@@ -652,22 +652,16 @@
                                 </div>
                             @endforeach
                         @endif
-
-
                     </div>
 
                     <div class="related-ideas col-xs-12">
                         <h3 class="orange">Related Ideas</h3>
-                        <div class="grid-box-3">
 
                             @if(isset($relatedIdeas) && ($relatedIdeas != null) )
                                 @foreach( $relatedIdeas as $item )
+                                <div class="box-item" >
                                     <div class="img-holder">
-                                        @if($item->image)
-                                        <img src="{{$item->image}}">
-                                        @else
-                                            <img alt="{{$item->feed_image->alt}}" title="{{$item->feed_image->alt}}" src="{{$item->feed_image->url}}">
-                                        @endif
+                                        <img alt="{{$item->feed_image->alt}}" title="{{$item->feed_image->alt}}" src="{{$item->feed_image->url}}">
                                     </div>
 
                                     <span class="box-item__time">{{$item->updated_at}}</span>
@@ -694,7 +688,7 @@
                                     </div>
 
                                     <div class="box-item__label-idea">
-                                        <a href="{{$item->url}}" class="box-item__label">$item->title}}</a>
+                                        <a href="{{$item->url}}" class="box-item__label">{{$item->title}}</a>
                                         <div class="clearfix"></div>
                                         <a href="{{$item->url}}" class="box-item__read-more">Read More</a>
                                     </div>
@@ -705,10 +699,10 @@
                                             <span class="user-widget__name">{{$item->author}}</span>
                                         </a>
                                     </div>
-                                @endforeach
-                            @endif
-                        </div>                        
+                                </div>
 
+                            @endforeach
+                            @endif
                     </div>
                 </div>
             </section>
