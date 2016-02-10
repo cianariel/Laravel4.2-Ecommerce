@@ -40,14 +40,14 @@
          *
          * @var array
          */
-        protected $fillable = ['name', 'email', 'password'];
+        protected $fillable = ['name', 'email', 'password', 'status'];
 
         /**
          * The attributes excluded from the model's JSON form.
          *
          * @var array
          */
-        protected $hidden = ['id', 'password', 'remember_token', 'created_at', 'updated_at'];
+        protected $hidden = ['password', 'remember_token', 'created_at', 'updated_at'];
 
 
         /**
@@ -70,6 +70,26 @@
 
         /**
          * Defile custom model method
+         */
+
+        public function getUserList($settings)
+        {
+            $userModel = $this;
+
+            $skip = $settings['limit'] * ($settings['page'] - 1);
+            $userList['result'] = $userModel
+                ->take($settings['limit'])
+                ->offset($skip)
+                ->orderBy('created_at', 'desc')
+                ->get();
+
+            $userList['count'] = $userModel->get()->count();
+            return $userList;
+        }
+
+
+        /**
+         * Save user information
          * @param $data
          * @return bool
          * @throws \Exception
@@ -78,18 +98,14 @@
         {
             try
             {
-
                 \DB::transaction(function () use ($data)
                 {
                     $user = new User();
-
 
                     $user->name = $data['FullName'];
                     $user->email = $data['Email'];
                     $user->password = \Hash::make($data['Password']);
                     $user->save();
-
-                    //$user->roles()
 
                     $userProfile = new UserProfile();
                     // $userProfile->full_name = $data['FullName'];
@@ -103,9 +119,7 @@
                 \Log::error($ex);
                 throw new \Exception($ex);
             }
-
             return true;
-
         }
 
 
@@ -121,7 +135,6 @@
             {
                 return false;
             }
-
         }
 
         // assign role(s) to the user

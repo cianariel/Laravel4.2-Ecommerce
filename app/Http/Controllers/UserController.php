@@ -4,7 +4,7 @@
 
     use App\Events\SendSubscriptionMail;
     use App\Models\Subscriber;
-
+    use App\Models\User;
 
     use App\Http\Requests;
     use App\Http\Controllers\Controller;
@@ -16,7 +16,7 @@
     use Illuminate\Http\Response as IlluminateResponse;
     use JWTAuth;
     use Tymon\JWTAuth\Exceptions\JWTException;
-    use App\Models\User;
+
     use Carbon\Carbon;
 
     class UserController extends ApiController {
@@ -28,15 +28,54 @@
                  ['except' => [
                      'emailSubscription','userProfile'
                  ]]);*/
-            $this->subscriber = new Subscriber();
 
-            // $this->newToken = JWTAuth::parseToken()->refresh();
+            $this->subscriber = new Subscriber();
+            $this->user = new User();
+        }
+
+        public function userList()
+        {
+
+            try{
+                $userData = \Input::all();
+
+                $settings['limit'] = $userData['limit'];
+                $settings['page'] = $userData['page'];
+
+                $userList = $this->user->getUserList($settings);
+
+                return $this->setStatusCode(\Config::get("const.api-status.success"))
+                ->makeResponse(array_merge($userList, $settings));
+            } catch (Excpetion $ex)
+            {
+                return $this->setStatusCode(\Config::get("const.api-status.system-fail"))
+                    ->makeResponseWithError("System Failure !", $ex);
+            }
 
         }
 
-        public function securePageHeader()
+        public function getUserById($id)
         {
 
+            try{
+
+                $user = $this->user->where('id','=',$id)->first();
+
+                //$userList = $this->user->getUserList($settings);
+
+                return $this->setStatusCode(\Config::get("const.api-status.success"))
+                    ->makeResponse($user);
+            } catch (Excpetion $ex)
+            {
+                return $this->setStatusCode(\Config::get("const.api-status.system-fail"))
+                    ->makeResponseWithError("System Failure !", $ex);
+            }
+
+        }
+
+
+        public function securePageHeader()
+        {
             $authCheck = $this->RequestAuthentication();
 
             if ($authCheck['method-status'] == 'success-with-http')

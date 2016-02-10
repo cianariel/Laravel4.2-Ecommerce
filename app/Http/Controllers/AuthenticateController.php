@@ -4,6 +4,7 @@
 
     use App\Events\SendActivationMail;
     use App\Events\SendResetEmail;
+    use App\Models\Subscriber;
     use Crypt;
     use Illuminate\Http\Request;
     use Illuminate\Support\Facades\Redirect;
@@ -22,6 +23,7 @@
         public function __construct()
         {
             $this->user = new User();
+            $this->subscriber = new Subscriber();
 
             // Apply the jwt.auth middleware to all methods in this controller
             $this->middleware('jwt.auth', [
@@ -235,6 +237,7 @@
                     ]
                 ];
 
+                // Validate through global validator in api-controller
                 list($userData, $validator) = $this->inputValidation($inputData, $validationRules);
 
                 if ($validator->fails())
@@ -242,11 +245,8 @@
                     // return with the failed reason and field's information
                     return $this->setStatusCode(\Config::get("const.api-status.validation-fail"))
                         ->makeResponseWithError(array('Validation failed', $validator->messages()));
-
-
                 } elseif ($validator->passes())
                 {
-
                     if ($this->user->IsEmailAvailable($userData['Email']) == false)
                     {
                         /*
@@ -256,6 +256,8 @@
                         {
                             // Assign role for the user
                             $this->user->assignRole($userData['Email'],array('user'));
+                           // todo add subscription.
+                            // $this->subscriber->
 
                             // for a subscribed user need not to confirm email for the second time.
                             if (isset($inputData['Valid']) && $inputData['Valid'] == true)
@@ -278,9 +280,7 @@
                                 return $this->setStatusCode(IlluminateResponse::HTTP_OK)
                                     ->makeResponse('Registration completed successfully,please verify email');
                             }
-
                         }
-
                     } else
                     {
                         return $this->setStatusCode(\Config::get("const.api-status.app-failure"))
@@ -302,7 +302,16 @@
         {
             try
             {
-                $user = $this->isEmailValidate(JWTAuth::parseToken()->authenticate()->email);
+                // get token form input or session
+                $token = \Input::get('token');
+
+                if ($token == null)
+                {
+                    $token = session('auth.token');
+                }
+
+               // $user = $this->isEmailValidate(JWTAuth::parseToken()->authenticate()->email);
+                 $user = $this->isEmailValidate(JWTAuth::authenticate($token)->email);
 
                 $userData = \Input::all();
                 $validationRules = [

@@ -5,9 +5,8 @@
     use Illuminate\Http\Request;
 
     use App\Http\Requests;
-    use App\Http\Controllers\Controller;
     use App\Models\Room;
-  //  use App\Models\Product;
+
 
     class AdminController extends ApiController {
 
@@ -32,8 +31,38 @@
 
         public function index()
         {
-            /* $data = ['menu'=>'dynamic menu'];*/
             return view('admin.index');
+        }
+
+        // User view
+
+        public function userList()
+        {
+            if ($this->authCheck['method-status'] == 'success-with-http')
+            {
+                return view('admin.user-list-view');
+
+            } elseif ($this->authCheck['method-status'] == 'fail-with-http')
+            {
+                return \Redirect::to('login');
+            }
+
+        }
+
+        public function userEdit($id=null)
+        {
+            if ($this->authCheck['method-status'] == 'success-with-http')
+            {
+                if($id == null)
+                    return view('admin.user-add');
+                else
+                    return view('admin.user-add')->with('id',$id);
+
+            } elseif ($this->authCheck['method-status'] == 'fail-with-http')
+            {
+                return \Redirect::to('login');
+            }
+
         }
 
 
@@ -41,8 +70,6 @@
 
         public function categoryView()
         {
-
-            //$authCheck = $this->RequestAuthentication();
 
             if ($this->authCheck['method-status'] == 'success-with-http')
             {
@@ -94,9 +121,7 @@
             } elseif ($this->authCheck['method-status'] == 'fail-with-http')
             {
                 return \Redirect::to('login');
-
             }
-//
 
         }
 
@@ -110,9 +135,7 @@
             } elseif ($this->authCheck['method-status'] == 'fail-with-http')
             {
                 return \Redirect::to('login');
-
             }
-//
 
         }
 
@@ -126,10 +149,7 @@
             } elseif ($this->authCheck['method-status'] == 'fail-with-http')
             {
                 return \Redirect::to('login');
-
             }
-//
-
 
         }
 
@@ -143,10 +163,7 @@
             } elseif ($this->authCheck['method-status'] == 'fail-with-http')
             {
                 return \Redirect::to('login');
-
             }
-//
-
         }
 
         public function tagView()
@@ -159,9 +176,7 @@
             } elseif ($this->authCheck['method-status'] == 'fail-with-http')
             {
                 return \Redirect::to('login');
-
             }
-//
 
         }
         // Room view
@@ -175,8 +190,7 @@
             } elseif ($this->authCheck['method-status'] == 'fail-with-http')
             {
                 return \Redirect::to('login');
-
-            }//
+            }
 
         }
 
@@ -209,4 +223,5 @@
             }
 
         }
+
     }
