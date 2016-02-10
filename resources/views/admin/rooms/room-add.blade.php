@@ -143,7 +143,7 @@
                                                                     @endif
                                                                 </div>    
                                                                 <div class="fileinput-preview fileinput-exists thumbnail" style="width: 100%;" data-image="hero_image_1"> </div>
-                                                                <br/>image should be 1500 x 550
+                                                                <br/>image should be 1500 x 500
                                                                 <div>
                                                                     <span class="btn default btn-file">
                                                                         <span class="fileinput-new"> Select image </span>
@@ -236,7 +236,7 @@
                                                                     <img src="http://www.placehold.it/1500x550/EFEFEF/AAAAAA&amp;text=no+image" alt="" /> </div>
                                                                     @endif
                                                                 <div class="fileinput-preview fileinput-exists thumbnail" style="width: 100%;" data-image="hero_image_2"> </div>
-                                                                <br/>image should be 1500 x 550
+                                                                <br/>image should be 1500 x 500
                                                                 <div>
                                                                     <span class="btn default btn-file">
                                                                         <span class="fileinput-new"> Select image </span>
@@ -330,7 +330,7 @@
                                                                     <img src="http://www.placehold.it/1500x550/EFEFEF/AAAAAA&amp;text=no+image" alt="" /> </div>
                                                                     @endif
                                                                 <div class="fileinput-preview fileinput-exists thumbnail" style="width: 100%;" data-image="hero_image_3"> </div>
-                                                                <br/>image should be 1500 x 550
+                                                                <br/>image should be 1500 x 500
                                                                 <div>
                                                                     <span class="btn default btn-file">
                                                                         <span class="fileinput-new"> Select image </span>
