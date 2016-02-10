@@ -29,19 +29,21 @@
     
     <nav class="mid-nav hidden-xs">
         <div class="container full-sm fixed-sm">
-            <ul class=" col-sm-offset-1 col-sm-9">
+<!--            <ul class=" col-sm-offset-1 col-sm-9">-->
+            <ul class=" wrap col-xs-9">
                 <li class="home">
                     <span class="box-link-active-line"></span>
                     <a href=""><i class="m-icon m-icon--smart-home"></i> Smart Home</a>
                 </li>
-                <li ><a class="active" href="">Kitchen</a></li>
-                <li><a href="/room/bath">Bath</a></li>
-                <li><a href="/room/bedroom">Bedroom</a></li>
-                <li><a href="/room/office">Office</a></li>
-                <li><a href="/room/living">Living</a></li>
-                <li><a href="/room/outdoor">Outdoor</a></li>
-                <li><a href="/room/lighting">Lighting</a></li>
-                <li><a href="/room/decor">Decor</a></li>
+
+                <li><a @if($roomInformation['Permalink'] == 'kitchen') class="active" @endif href="{{url('room/kitchen')}}">Kitchen</a></li>
+                <li><a @if($roomInformation['Permalink'] == 'bath') class="active" @endif href="{{url('room/bath')}}">Bath</a></li>
+                <li><a @if($roomInformation['Permalink'] == 'bedroom') class="active" @endif href="{{url('room/bedroom')}}">Bedroom</a></li>
+                <li><a @if($roomInformation['Permalink'] == 'office') class="active" @endif href="{{url('room/office')}}">Office</a></li>
+                <li><a @if($roomInformation['Permalink'] == 'living') class="active" @endif href="{{url('room/living')}}">Living</a></li>
+                <li><a @if($roomInformation['Permalink'] == 'outdoor') class="active" @endif href="{{url('room/outdoor')}}">Outdoor</a></li>
+                <li><a @if($roomInformation['Permalink'] == 'lighting') class="active" @endif href="{{url('room/lighting')}}">Lighting</a></li>
+                <li><a @if($roomInformation['Permalink'] == 'decor') class="active" @endif href="{{url('room/decor')}}">Decor</a></li>
                 <!--<li><a data-toggle=".extra-nav" class="more-link extra" href="">...</a>
                     <ul class="extra-nav hidden-620 hidden-soft">
                         <li><a class="travel-link blue" href="#">Travel</a></li>
@@ -50,7 +52,8 @@
                 </li>-->
 
             </ul>
-            <div class="hidden-xs col-sm-2">
+<!--            <div class="hidden-xs col-sm-2">-->
+            <div class="hide">
                 <ul class="pull-right"> 
                     <li class="nested">
                         <a id="browse-all" href="#" class="" data-toggle=".shop-menu"><i class="m-icon m-icon--menu"></i>&nbsp; Browse all</a>
@@ -92,7 +95,7 @@ jQuery(document).ready(function($) {
 </script>
 
 <div ng-app="pagingApp" ng-controller="pagingController">
-        <div id="hero" class="royalSlider heroSlider rsMinW room-hero">
+    <div id="hero" class="royalSlider heroSlider rsMinW room-hero slider">
         @if(isset($roomInformation['images']))
             @foreach( $roomInformation['images'] as $key => $image )
             <div class="rsContent">
@@ -117,15 +120,15 @@ jQuery(document).ready(function($) {
                     </div>
                 </div>
                 @endif
-                <img class="rsImg" src="{{$image['Image']}}" alt="{{$image['Image_alt']}}">
-<!--                <img class="rsImg" src="http://127.0.0.1/1.jpg" alt="{{$image['Image_alt']}}">-->
+<!--                <img class="rsImg" src="{{$image['Image']}}" alt="{{$image['Image_alt']}}">-->
+                <img class="rsImg" src="http://10.0.1.101/1.jpg" alt="{{$image['Image_alt']}}">
 
                 <span ng-click="open({{$key}})" class="room-related-product-button" ng-click="cancel()">+</span>
 
                 <script type="text/ng-template" id="room-related-product-{{$key}}.html">
                     <div class="modal-header">
                         <h3 data-toggle="#related-list">Related Products</h3>
-                        <span class="circle-button" ng-click="cancel()">X</span>
+                        <a class=" box-item__get-it" href="#" ng-click="cancel()">X</a>
                     </div>
                     <div class="modal-body">
                         <section class="hero-related-products ">
@@ -133,7 +136,7 @@ jQuery(document).ready(function($) {
                             @foreach($image['Image_Products'] as $i_products)
                                     <li class="{{$i_products->product_color}}">
                                         <div class="row">
-                                            <div class="col-xs-10">
+                                            <div class="col-xs-8 col-sm-10">
                                                 <a class="{{$i_products->product_color}}-border " href="#">
                                                     <span class="img-holder">
                                                         <img src="{{$i_products->media_link}}" class="round" alt="" />
@@ -143,8 +146,8 @@ jQuery(document).ready(function($) {
                                                     </span>
                                                 </a> 
                                             </div>
-                                            <div class="col-xs-2">
-                                                <a href="#" class="get solid pull-right col-xs-2">Get it</a>
+                                            <div class="col-xs-4 col-sm-2">
+                                                <a href="#" class="get solid pull-right ">Get it</a>
                                             </div>
                                         </div>
                                     </li>
@@ -186,11 +189,9 @@ jQuery(document).ready(function($) {
     <main class="page-content">
         <div class="app-wrap" >
             <nav id="hero-nav" class="col-sm-12">
-                <div class="container full-620  fixed-sm">
-                    {{--<ul class="left-nav col-xs-1 hidden-620">--}}
-                    {{--<li class="active"><a class="home-link" href="#">Home</a></li>--}}
-                    {{--</ul>--}}
-                    <ul class=" pull-right popular-new">
+                <div class="container   fixed-sm">
+                    <div class="col-md-12 hidden-lg">
+                        <ul class="popular-new center-block">
                         <li class="">
                             <a href="#" class="box-link active">Newest</a>
                         </li>
@@ -198,8 +199,10 @@ jQuery(document).ready(function($) {
                             <a href="#" class="box-link ">Popular</a>
                         </li>
                     </ul>
+                    </div>
 
-                    <ul class="category-nav main-content-filter pull-left">
+                    <div class="col-lg-offset-3 col-lg-6">
+                        <ul class="category-nav main-content-filter ">
                         <li class="active">
                             <a ng-click="filterContent(null)" href="" data-filterby="all" class="all-link">
                                 <i class="m-icon m-icon--menu"></i>&nbsp;
@@ -226,6 +229,17 @@ jQuery(document).ready(function($) {
                             </a>
                         </li>
                     </ul>
+                    </div>
+                    <div class="col-lg-3 visible-lg">
+                        <ul class="popular-new ">
+                            <li class="">
+                                <a href="#" class="box-link active">Newest</a>
+                            </li>
+                            <li class="">
+                                <a href="#" class="box-link ">Popular</a>
+                            </li>
+                        </ul>
+                    </div>
                     
                 </div>
             </nav>
