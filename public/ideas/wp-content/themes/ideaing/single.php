@@ -243,8 +243,12 @@
                     $tags = wp_get_post_tags($post->ID);
                     if($tags) {
                         $first_tag = $tags[0]->term_id;
-                        $args['tag__in'] = [$first_tag];
+                        foreach($tags as $tag){
+                            $allTags = $tag->slug;
+                        }
                     }
+                    $args['tag_slug__in'] = $allTags;
+
                     $my_query = new WP_Query($args);
 
                     if($tags && !$my_query->have_posts() ){ // if there are not posts with similar tags, get just any posts
