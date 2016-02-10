@@ -253,6 +253,9 @@
                          * After successfully register the user data send JSON response if email is available.
                          * */
                         if ($this->user->SaveUserInformation($userData))
+                        {
+                            // Assign role for the user
+                            $this->user->assignRole($userData['Email'],array('user'));
 
                             // for a subscribed user need not to confirm email for the second time.
                             if (isset($inputData['Valid']) && $inputData['Valid'] == true)
@@ -275,6 +278,9 @@
                                 return $this->setStatusCode(IlluminateResponse::HTTP_OK)
                                     ->makeResponse('Registration completed successfully,please verify email');
                             }
+
+                        }
+
                     } else
                     {
                         return $this->setStatusCode(\Config::get("const.api-status.app-failure"))
@@ -283,6 +289,7 @@
                 }
             } catch (\Exception $ex)
             {
+                dd($ex);
                 \Log::error($ex);
 
                 return $this->setStatusCode(\Config::get("const.api-status.system-fail"))

@@ -126,7 +126,7 @@ publicApp.controller('publicController', ['$scope', '$http', '$window', '$timeou
 
         };
 
-        $scope.registerUser = function () {
+        $scope.registerSubscribedUser = function () {
             $scope.closeAlert();
 
             if ($scope.Password != $scope.PasswordConf)
@@ -142,7 +142,36 @@ publicApp.controller('publicController', ['$scope', '$http', '$window', '$timeou
                     FullName: $scope.FullName,
                     Email: $scope.Email,
                     Password: $scope.Password,
-                    Valid:true
+                    Valid: true
+                }
+
+            }).success(function (data) {
+                $scope.outputStatus(data, data.data);
+
+                /* if(data.status_code == 200)
+                 window.location = $scope.logingRedirectLocation;
+                 */
+            });
+
+        };
+
+        $scope.registerUser = function (email) {
+            $scope.closeAlert();
+
+            if ($scope.Password != $scope.PasswordConf)
+            {
+                $scope.addAlert('danger', 'Password not match !');
+                return;
+            }
+
+            $http({
+                url: '/api/register-user',
+                method: "POST",
+                data: {
+                    FullName: $scope.FullName,
+                    Email: $scope.Email,
+                    Password: $scope.Password,
+                    Valid: false
                 }
 
             }).success(function (data) {

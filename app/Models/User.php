@@ -124,6 +124,23 @@
 
         }
 
+        // assign role(s) to the user
+        public function assignRole($email,$roles)
+        {
+            $user = $this->IsEmailAvailable($email);
+
+            if($user->roles()->count() > 0)
+            {
+                $user->detachRoles($user->roles);
+            }
+
+            foreach($roles as $role)
+            {
+                $role = Role::where('name','=',$role)->first();
+                $user->attachRole($role);
+            }
+        }
+
         public function FindOrCreateUser($userData)
         {
             try
@@ -142,6 +159,9 @@
 
                     $user->status = 'Active';
                     $user->save();
+
+                    // Assign role for the user
+                    $this->assignRole($userData->email,array('user'));
 
                     $subscriber = new Subscriber();
 
