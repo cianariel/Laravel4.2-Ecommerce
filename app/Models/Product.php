@@ -270,6 +270,13 @@
                 });
             }
 
+
+//
+//            if (@$settings['excludeID'] != null)
+//            {
+//                $productModel = $productModel->whereNotIn("id", $settings['excludeID']);
+//            }
+
             if (@$settings['ShowFor'] != null)
             {
                 $productModel = $productModel->where("show_for", $settings['ShowFor']);
