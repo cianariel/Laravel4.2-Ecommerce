@@ -120,8 +120,8 @@ jQuery(document).ready(function($) {
                     </div>
                 </div>
                 @endif
-<!--                <img class="rsImg" src="{{$image['Image']}}" alt="{{$image['Image_alt']}}">-->
-                <img class="rsImg" src="http://10.0.1.101/1.jpg" alt="{{$image['Image_alt']}}">
+                <img class="rsImg" src="{{$image['Image']}}" alt="{{$image['Image_alt']}}">
+<!--                <img class="rsImg" src="http://10.0.1.101/1.jpg" alt="{{$image['Image_alt']}}">-->
 
                 <span ng-click="open({{$key}})" class="room-related-product-button" ng-click="cancel()">+</span>
 
