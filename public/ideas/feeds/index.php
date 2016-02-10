@@ -117,6 +117,15 @@ if($byTags = $_REQUEST['tag']){
     $args['tag'] = $byTags;
 }
 
+if($tag_in = $_REQUEST['tag_in']){
+    $args['tag__in'] = explode(',', $tag_in);
+}
+
+
+if($excludeID = $_REQUEST['excludeid']){
+    $args['post__not_in'] = [$excludeID];
+}
+
 if($is_featured != "")
 {
 $args['meta_query'] = array(
