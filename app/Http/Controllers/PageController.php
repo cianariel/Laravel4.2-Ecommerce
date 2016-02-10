@@ -119,7 +119,7 @@ class PageController extends Controller
         $url = 'http://staging.ideaing.com/ideas/feeds/index.php?count='.$limit;
 
         if($tags && $tags != 'false'){
-            $url .= '&tag_in=' . implode(',', $tags->toArray());
+            $url .= '&tag_in=' . implode(',', $tags);
         }
         if($currentStoryID){
             $url .= '&excludeid=' . $currentStoryID;
@@ -211,7 +211,12 @@ class PageController extends Controller
 //        $currentTag = [];
         $currentTags = Product::find($productData['product']['id'])->tags()->lists('tag_id');
 
-        $relatedIdeas = self::getRelatedStories($productData['product']['id'], 3, $currentTags);
+//        $tagNames = [];
+        foreach($currentTags as $tagID){
+            $tagNames[] = Tag::find($tagID)->tag_name;
+        }
+
+        $relatedIdeas = self::getRelatedStories($productData['product']['id'], 3, $tagNames);
 
 //        $related
 
