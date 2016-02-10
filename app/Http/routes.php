@@ -21,6 +21,9 @@
          });
     */
 
+    Route::any('secure-page-header', 'UserController@securePageHeader');
+
+
     Route::get('/', 'PageController@home');
 
     Route::get('update-price', 'ProductController@priceUpdate');
@@ -208,8 +211,12 @@
     //    Route::get('pro-details/{permalink?}', 'PageController@productDetailsPage');
     Route::get('product/{permalink?}', 'PageController@productDetailsPage');
     Route::get('room/{permalink?}', 'PageController@getRoomPage');
+
     // default signup
     Route::get('signup/{email?}', 'PageController@signupPage');
+
+    // default
+    Route::get('login', 'PageController@loginView');
 
     Route::get('/api/paging/get-content/{page?}/{limit?}/{category?}/{tag?}', 'PageController@getContent');
 
