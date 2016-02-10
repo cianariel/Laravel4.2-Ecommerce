@@ -13,6 +13,7 @@
     use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
     use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
     use Mockery\CountValidator\Exception;
+    use Zizaco\Entrust\Traits\EntrustUserTrait;
 
     use CustomAppException;
 
@@ -21,7 +22,11 @@
         AuthorizableContract,
         CanResetPasswordContract {
 
-        use Authenticatable, Authorizable, CanResetPassword;
+        use Authenticatable, Authorizable, CanResetPassword,
+            EntrustUserTrait
+        {
+            EntrustUserTrait::can insteadof Authorizable;
+        }
 
         /**
          * The database table used by the model.
@@ -78,14 +83,17 @@
                 {
                     $user = new User();
 
+
                     $user->name = $data['FullName'];
                     $user->email = $data['Email'];
                     $user->password = \Hash::make($data['Password']);
                     $user->save();
 
+                    //$user->roles()
+
                     $userProfile = new UserProfile();
                     // $userProfile->full_name = $data['FullName'];
-                   // $userProfile->save();
+                    // $userProfile->save();
 
                     $user->userProfile()->save($userProfile);
 
@@ -138,9 +146,9 @@
                     $subscriber = new Subscriber();
 
                     // subscribes a user if not already subscribed
-                    if($subscriber->isASubscriber($user['Email']) == false)
+                    if ($subscriber->isASubscriber($userData->email) == false)
                     {
-                        $subscriber->email = $userData['Email'];
+                        $subscriber->email = $userData->email;
                         $subscriber->status = 'Subscribed';
 
                         $this->subscriber->save();
