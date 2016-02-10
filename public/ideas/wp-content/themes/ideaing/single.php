@@ -252,7 +252,7 @@
                     $my_query = new WP_Query($args);
 
                     if($tags && !$my_query->have_posts() ){ // if there are not posts with similar tags, get just any posts
-                        unset($args['tag__in']);
+                        unset($args['tag_slug__in']);
                         $my_query = new WP_Query($args);
                     }
 
@@ -295,15 +295,19 @@
                                             <a href="{{the_permalink()}}" class="box-item__read-more">Read More</a>
                                         </div>
 
-                        <!--                <div class="box-item__author">-->
-                        <!--                    <a href="{{$item->authorlink}}" class="user-widget">-->
-                        <!--                        <img class="user-widget__img" src="{{$item->avator}}">-->
-                        <!--                        <span class="user-widget__name">{{$item->author}}</span>-->
-                        <!--                    </a>-->
-                        <!--                </div>-->
+                                        <div class="box-item__author">
+                                            <a href="{{get_author_posts_url( get_the_author_meta( 'ID' ) )}}" class="user-widget">
+                                                <img class="user-widget__img" src="{{get_avatar_url( get_the_author_email(), '80' )}}">
+                                                <span class="user-widget__name">{{get_the_author()}}</span>
+                                            </a>
+                                        </div>
                                     </div>
 
                             <?php
+//                            $data['author'] = get_the_author();
+//                            $data['authorlink'] = get_author_posts_url( get_the_author_meta( 'ID' ) );
+//                            $data['author_id'] = get_the_author_meta( 'ID' );
+//                            $data['avator'] = get_avatar_url( get_the_author_email(), '80' );
                         endwhile;
                     }
                     ?>
