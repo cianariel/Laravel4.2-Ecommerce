@@ -139,9 +139,10 @@ $args['meta_query'] = array(
 
 $posts = query_posts($args);
 
-if($args['tag_slug__in'] && !have_posts() || found_posts() < 3){ // if there are not posts with similar tags, get just any posts
-    unset($args['tag__in']);
-    $my_query = query_posts($args);
+
+if(isset($args['tag_slug__in']) && (!have_posts() || count($posts) < 3)){ // if there are not posts with similar tags, get just any posts
+    unset($args['tag_slug__in']);
+    $posts = query_posts($args);
 }
 
 //$posts = query_posts('cat='.$postCat.'&showposts=' . $postCount.'&offset='.$offset);
