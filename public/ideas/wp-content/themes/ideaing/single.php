@@ -254,8 +254,7 @@
 
                     if( $my_query->have_posts() ) {
                         while ($my_query->have_posts()) : $my_query->the_post();
-                            $image = the_field('feed_image');
-//                            print_r($image); die();
+                            $image = get_field('feed_image');
                             ?>
 
                                     <div class="box-item" >
