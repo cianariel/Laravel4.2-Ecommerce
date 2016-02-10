@@ -149,7 +149,224 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap']).
       $scope.cancel = function () {
         $uibModalInstance.dismiss('cancel');
       };
-    });
+    })
+    .controller('shoplandingController', function ($scope) {
+        $scope.renderHTML = function(html_code)
+        {
+            var decoded = angular.element('<div />').html(html_code).text();
+            return decoded;
+        };
+
+        $scope.dailyDeals = [
+            {
+                'is_featured': true,
+                'updated_at': "2 weeks ago",
+                'image': "http://staging.ideaing.com/ideas/wp-content/uploads/2016/02/Smart-Cooking-kitchen-gadgets-hero.jpg",
+                'url': "http://staging.ideaing.com/ideas/02/04/smart-cooking-products-that-will-revolutionize-your-kitchen",
+                'title': "5 Best Smart Thermostats",
+                'authorlink': "http://staging.ideaing.com/ideas/author/laurahunter",
+                'avator': "http://2.gravatar.com/avatar/e85159fbaa0dfbcbe10b6344ca3a4038?s=96&d=mm&r=g",
+                'author': "Nicole van Zanten"
+            },
+            {
+                'is_featured': true,
+                'updated_at': "2 weeks ago",
+                'image': "http://staging.ideaing.com/ideas/wp-content/uploads/2016/02/Smart-Cooking-kitchen-gadgets-hero.jpg",
+                'url': "http://staging.ideaing.com/ideas/02/04/smart-cooking-products-that-will-revolutionize-your-kitchen",
+                'title': "5 Best Smart Toys for your Pet",
+                'authorlink': "http://staging.ideaing.com/ideas/author/laurahunter",
+                'avator': "http://2.gravatar.com/avatar/e85159fbaa0dfbcbe10b6344ca3a4038?s=96&d=mm&r=g",
+                'author': "Nicole van Zanten"
+            },
+            {
+                'is_featured': true,
+                'updated_at': "2 weeks ago",
+                'image': "http://staging.ideaing.com/ideas/wp-content/uploads/2016/02/Smart-Cooking-kitchen-gadgets-hero.jpg",
+                'url': "http://staging.ideaing.com/ideas/02/04/smart-cooking-products-that-will-revolutionize-your-kitchen",
+                'title': "5 Best Smart Toys for your Pet",
+                'authorlink': "http://staging.ideaing.com/ideas/author/laurahunter",
+                'avator': "http://2.gravatar.com/avatar/e85159fbaa0dfbcbe10b6344ca3a4038?s=96&d=mm&r=g",
+                'author': "Nicole van Zanten"
+            }
+        ];
+        $scope.newestArrivals = [
+            [
+                {
+                    'media_link_full_path': "http://s3-us-west-1.amazonaws.com/ideaing-01/product-56b246aab5372-dvx-at100-thumb.jpg",
+                    'product_name': "AT100 Electronic Bidet Smart Toilet Seat",
+                    'updated_at': "2 hours ago",
+                    'product_permalink': "at100-electronic-luxury-bidet-seat",
+                    'sale_price': "0",
+                    'storeInfo': {
+                        "Description" : "dxv",
+                        "ImagePath" : "http://s3-us-west-1.amazonaws.com/ideaing-01/product-56b38cfc58fb0-DXV_logo_png.png"
+                    },
+                    'affiliate_link': "http://www.dxv.com/product/at100-electronic-luxury-bidet-seat-by-dxv"
+                },
+                {
+                    'media_link_full_path': "http://s3-us-west-1.amazonaws.com/ideaing-01/product-56b246aab5372-dvx-at100-thumb.jpg",
+                    'product_name': "AT100 Electronic Bidet Smart Toilet Seat",
+                    'updated_at': "2 hours ago",
+                    'product_permalink': "at100-electronic-luxury-bidet-seat",
+                    'sale_price': "0",
+                    'storeInfo': {
+                        "Description" : "dxv",
+                        "ImagePath" : "http://s3-us-west-1.amazonaws.com/ideaing-01/product-56b38cfc58fb0-DXV_logo_png.png"
+                    },
+                    'affiliate_link': "http://www.dxv.com/product/at100-electronic-luxury-bidet-seat-by-dxv"
+                },
+                {
+                    'media_link_full_path': "http://s3-us-west-1.amazonaws.com/ideaing-01/product-56b246aab5372-dvx-at100-thumb.jpg",
+                    'product_name': "AT100 Electronic Bidet Smart Toilet Seat",
+                    'updated_at': "2 hours ago",
+                    'product_permalink': "at100-electronic-luxury-bidet-seat",
+                    'sale_price': "0",
+                    'storeInfo': {
+                        "Description" : "dxv",
+                        "ImagePath" : "http://s3-us-west-1.amazonaws.com/ideaing-01/product-56b38cfc58fb0-DXV_logo_png.png"
+                    },
+                    'affiliate_link': "http://www.dxv.com/product/at100-electronic-luxury-bidet-seat-by-dxv"
+                }
+            ],
+            [
+                {
+                    'media_link_full_path': "http://s3-us-west-1.amazonaws.com/ideaing-01/product-56b246aab5372-dvx-at100-thumb.jpg",
+                    'product_name': "AT100 Electronic Bidet Smart Toilet Seat",
+                    'updated_at': "2 hours ago",
+                    'product_permalink': "at100-electronic-luxury-bidet-seat",
+                    'sale_price': "0",
+                    'storeInfo': {
+                        "Description" : "dxv",
+                        "ImagePath" : "http://s3-us-west-1.amazonaws.com/ideaing-01/product-56b38cfc58fb0-DXV_logo_png.png"
+                    },
+                    'affiliate_link': "http://www.dxv.com/product/at100-electronic-luxury-bidet-seat-by-dxv"
+                },
+                {
+                    'media_link_full_path': "http://s3-us-west-1.amazonaws.com/ideaing-01/product-56b246aab5372-dvx-at100-thumb.jpg",
+                    'product_name': "AT100 Electronic Bidet Smart Toilet Seat",
+                    'updated_at': "2 hours ago",
+                    'product_permalink': "at100-electronic-luxury-bidet-seat",
+                    'sale_price': "0",
+                    'storeInfo': {
+                        "Description" : "dxv",
+                        "ImagePath" : "http://s3-us-west-1.amazonaws.com/ideaing-01/product-56b38cfc58fb0-DXV_logo_png.png"
+                    },
+                    'affiliate_link': "http://www.dxv.com/product/at100-electronic-luxury-bidet-seat-by-dxv"
+                },
+                {
+                    'media_link_full_path': "http://s3-us-west-1.amazonaws.com/ideaing-01/product-56b246aab5372-dvx-at100-thumb.jpg",
+                    'product_name': "AT100 Electronic Bidet Smart Toilet Seat",
+                    'updated_at': "2 hours ago",
+                    'product_permalink': "at100-electronic-luxury-bidet-seat",
+                    'sale_price': "0",
+                    'storeInfo': {
+                        "Description" : "dxv",
+                        "ImagePath" : "http://s3-us-west-1.amazonaws.com/ideaing-01/product-56b38cfc58fb0-DXV_logo_png.png"
+                    },
+                    'affiliate_link': "http://www.dxv.com/product/at100-electronic-luxury-bidet-seat-by-dxv"
+                }
+            ],
+            [
+                {
+                    'media_link_full_path': "http://s3-us-west-1.amazonaws.com/ideaing-01/product-56b246aab5372-dvx-at100-thumb.jpg",
+                    'product_name': "AT100 Electronic Bidet Smart Toilet Seat",
+                    'updated_at': "2 hours ago",
+                    'product_permalink': "at100-electronic-luxury-bidet-seat",
+                    'sale_price': "0",
+                    'storeInfo': {
+                        "Description" : "dxv",
+                        "ImagePath" : "http://s3-us-west-1.amazonaws.com/ideaing-01/product-56b38cfc58fb0-DXV_logo_png.png"
+                    },
+                    'affiliate_link': "http://www.dxv.com/product/at100-electronic-luxury-bidet-seat-by-dxv"
+                },
+                {
+                    'media_link_full_path': "http://s3-us-west-1.amazonaws.com/ideaing-01/product-56b246aab5372-dvx-at100-thumb.jpg",
+                    'product_name': "AT100 Electronic Bidet Smart Toilet Seat",
+                    'updated_at': "2 hours ago",
+                    'product_permalink': "at100-electronic-luxury-bidet-seat",
+                    'sale_price': "0",
+                    'storeInfo': {
+                        "Description" : "dxv",
+                        "ImagePath" : "http://s3-us-west-1.amazonaws.com/ideaing-01/product-56b38cfc58fb0-DXV_logo_png.png"
+                    },
+                    'affiliate_link': "http://www.dxv.com/product/at100-electronic-luxury-bidet-seat-by-dxv"
+                },
+                {
+                    'media_link_full_path': "http://s3-us-west-1.amazonaws.com/ideaing-01/product-56b246aab5372-dvx-at100-thumb.jpg",
+                    'product_name': "AT100 Electronic Bidet Smart Toilet Seat",
+                    'updated_at': "2 hours ago",
+                    'product_permalink': "at100-electronic-luxury-bidet-seat",
+                    'sale_price': "0",
+                    'storeInfo': {
+                        "Description" : "dxv",
+                        "ImagePath" : "http://s3-us-west-1.amazonaws.com/ideaing-01/product-56b38cfc58fb0-DXV_logo_png.png"
+                    },
+                    'affiliate_link': "http://www.dxv.com/product/at100-electronic-luxury-bidet-seat-by-dxv"
+                }
+            ]
+        ];
+    })
+    .controller('shopcategoryController', function ($scope) {
+        $scope.renderHTML = function(html_code)
+        {
+            var decoded = angular.element('<div />').html(html_code).text();
+            return decoded;
+        };
+
+        $scope.items = 
+            [
+                {
+                    'media_link_full_path': "http://s3-us-west-1.amazonaws.com/ideaing-01/product-56b246aab5372-dvx-at100-thumb.jpg",
+                    'product_name': "AT100 Electronic Bidet Smart Toilet Seat",
+                    'updated_at': "2 hours ago",
+                    'product_permalink': "at100-electronic-luxury-bidet-seat",
+                    'sale_price': "0",
+                    'storeInfo': {
+                        "Description" : "dxv",
+                        "ImagePath" : "http://s3-us-west-1.amazonaws.com/ideaing-01/product-56b38cfc58fb0-DXV_logo_png.png"
+                    },
+                    'affiliate_link': "http://www.dxv.com/product/at100-electronic-luxury-bidet-seat-by-dxv"
+                },
+                {
+                    'media_link_full_path': "http://s3-us-west-1.amazonaws.com/ideaing-01/product-56b246aab5372-dvx-at100-thumb.jpg",
+                    'product_name': "AT100 Electronic Bidet Smart Toilet Seat",
+                    'updated_at': "2 hours ago",
+                    'product_permalink': "at100-electronic-luxury-bidet-seat",
+                    'sale_price': "0",
+                    'storeInfo': {
+                        "Description" : "dxv",
+                        "ImagePath" : "http://s3-us-west-1.amazonaws.com/ideaing-01/product-56b38cfc58fb0-DXV_logo_png.png"
+                    },
+                    'affiliate_link': "http://www.dxv.com/product/at100-electronic-luxury-bidet-seat-by-dxv"
+                },
+                {
+                    'media_link_full_path': "http://s3-us-west-1.amazonaws.com/ideaing-01/product-56b246aab5372-dvx-at100-thumb.jpg",
+                    'product_name': "AT100 Electronic Bidet Smart Toilet Seat",
+                    'updated_at': "2 hours ago",
+                    'product_permalink': "at100-electronic-luxury-bidet-seat",
+                    'sale_price': "0",
+                    'storeInfo': {
+                        "Description" : "dxv",
+                        "ImagePath" : "http://s3-us-west-1.amazonaws.com/ideaing-01/product-56b38cfc58fb0-DXV_logo_png.png"
+                    },
+                    'affiliate_link': "http://www.dxv.com/product/at100-electronic-luxury-bidet-seat-by-dxv"
+                },
+                {
+                    'media_link_full_path': "http://s3-us-west-1.amazonaws.com/ideaing-01/product-56b246aab5372-dvx-at100-thumb.jpg",
+                    'product_name': "AT100 Electronic Bidet Smart Toilet Seat",
+                    'updated_at': "2 hours ago",
+                    'product_permalink': "at100-electronic-luxury-bidet-seat",
+                    'sale_price': "0",
+                    'storeInfo': {
+                        "Description" : "dxv",
+                        "ImagePath" : "http://s3-us-west-1.amazonaws.com/ideaing-01/product-56b38cfc58fb0-DXV_logo_png.png"
+                    },
+                    'affiliate_link': "http://www.dxv.com/product/at100-electronic-luxury-bidet-seat-by-dxv"
+                }
+            ]
+        ;
+    })
+;
 
 //angular.module('pagingApp.directives', [])
 //    .directive('a', function() {

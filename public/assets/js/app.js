@@ -92,6 +92,24 @@
             return true;
         });
 
+        $('.shop-by-category-item a').click(function(e){
+            e.preventDefault();
+            $('.shop-by-category-item').removeClass('active');
+            $('.shop-by-category-submneu').removeClass('active');
+            
+            if($(this).hasClass('show-menus')){
+                $(this).parent().addClass('active');
+                var submenu = $(this).parent().data('submenu');
+                $('.shop-by-category-submneu.' + submenu).addClass('active');
+            }
+        })
+        
+        $('#mobile-shop-by-category-items').change(function(){
+            $('.shop-by-category-submneu').removeClass('active');
+            var submenu = $(this).val();
+            $('.shop-by-category-submneu.' + submenu).addClass('active');
+        })
+
         // scroll and stick the share bar
         function sticky_relocate() {
             if(window.innerWidth < 620){
