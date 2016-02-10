@@ -248,7 +248,6 @@
         // return all the product list as per $settings provided from the controller
         public function getProductList($settings)
         {
-
             $productModel = $this;
 
             $filterText = $settings['FilterText'];
