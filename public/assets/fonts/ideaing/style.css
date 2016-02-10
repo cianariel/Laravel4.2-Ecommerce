@@ -1,10 +1,10 @@
 @font-face {
     font-family: 'ideaing';
-    src:    url('fonts/ideaing.eot?35eqt1');
-    src:    url('fonts/ideaing.eot?35eqt1#iefix') format('embedded-opentype'),
-        url('fonts/ideaing.ttf?35eqt1') format('truetype'),
-        url('fonts/ideaing.woff?35eqt1') format('woff'),
-        url('fonts/ideaing.svg?35eqt1#ideaing') format('svg');
+    src:    url('fonts/ideaing.eot?pj6qd3');
+    src:    url('fonts/ideaing.eot?pj6qd3#iefix') format('embedded-opentype'),
+        url('fonts/ideaing.ttf?pj6qd3') format('truetype'),
+        url('fonts/ideaing.woff?pj6qd3') format('woff'),
+        url('fonts/ideaing.svg?pj6qd3#ideaing') format('svg');
     font-weight: normal;
     font-style: normal;
 }
@@ -24,6 +24,84 @@
     -moz-osx-font-smoothing: grayscale;
 }
 
+.m-icon--bath:before {
+    content: "\e92d";
+}
+.m-icon--bedding:before {
+    content: "\e92e";
+}
+.m-icon--decor:before {
+    content: "\e9bd";
+}
+.m-icon--furniture:before {
+    content: "\e9be";
+}
+.m-icon--kitchen2:before {
+    content: "\e9bf";
+}
+.m-icon--office:before {
+    content: "\e9c0";
+}
+.m-icon--outdoor:before {
+    content: "\e9c1";
+}
+.m-icon--storage:before {
+    content: "\e9c2";
+}
+.m-icon--health:before {
+    content: "\e9c3";
+}
+.m-icon--smart-watches:before {
+    content: "\e9c4";
+}
+.m-icon--wearable-cameras:before {
+    content: "\e9c5";
+}
+.m-icon--wellness:before {
+    content: "\e9c6";
+}
+.m-icon--accesories:before {
+    content: "\e9c7";
+}
+.m-icon--backpacks:before {
+    content: "\e9c8";
+}
+.m-icon--bags:before {
+    content: "\e9c9";
+}
+.m-icon--gadgets:before {
+    content: "\e9ca";
+}
+.m-icon--luggage:before {
+    content: "\e9cb";
+}
+.m-icon--networking:before {
+    content: "\e9cc";
+}
+.m-icon--pets:before {
+    content: "\e9cd";
+}
+.m-icon--entertainment:before {
+    content: "\e9ce";
+}
+.m-icon--lighting:before {
+    content: "\e9cf";
+}
+.m-icon--cleaning:before {
+    content: "\e9d0";
+}
+.m-icon--doors:before {
+    content: "\e9d1";
+}
+.m-icon--energy:before {
+    content: "\e9d2";
+}
+.m-icon--cameras:before {
+    content: "\e9d3";
+}
+.m-icon--appliances:before {
+    content: "\e9d4";
+}
 .m-icon--shopping-bag-light-green:before {
     content: "\e928";
 }

@@ -6302,10 +6302,10 @@ header.colophon {
   #top-nav li.nested ul {
     display: none; }
 
-body.homepage #top-nav .ideas, body.single-post #top-nav .ideas, body.product-details #top-nav a.shop, .room-landing #top-nav a.ideas {
+body.homepage #top-nav .ideas, body.single-post #top-nav .ideas, body.product-details #top-nav a.shop, .room-landing #top-nav a.ideas, body.shop-landing #top-nav a.shop {
   position: relative;
   color: #ed2049; }
-  body.homepage #top-nav .ideas .box-link-active-line, body.single-post #top-nav .ideas .box-link-active-line, body.product-details #top-nav a.shop .box-link-active-line, .room-landing #top-nav a.ideas .box-link-active-line {
+  body.homepage #top-nav .ideas .box-link-active-line, body.single-post #top-nav .ideas .box-link-active-line, body.product-details #top-nav a.shop .box-link-active-line, .room-landing #top-nav a.ideas .box-link-active-line, body.shop-landing #top-nav a.shop .box-link-active-line {
     height: 50px;
     width: 0px;
     border-left: 1px solid #c1c1c1;
@@ -7351,6 +7351,22 @@ body.single .like-nav {
     float: right;
     font-size: 1.7rem; }
 
+.popular-new {
+  padding-right: 0;
+  padding-left: 0;
+  width: 242px; }
+  .popular-new .box-link {
+    border-width: 1px;
+    padding: 8px 30px;
+    border: 1px solid #c1c1c1;
+    color: #3D4B4E;
+    margin-right: 0px; }
+    .popular-new .box-link.active, .popular-new .box-link:hover {
+      border-color: #FF0042;
+      color: #FF0042 !important; }
+  .popular-new li {
+    display: inline-block; }
+
 body.room-landing #hero {
   min-height: auto; }
   body.room-landing #hero .hero-tags {
@@ -7445,21 +7461,7 @@ body.room-landing .left-nav {
 
 body.room-landing .box-link {
   border-color: #c1c1c1;
-  padding-right: 35px; }
-
-body.room-landing .popular-new {
-  padding-right: 0;
-  padding-left: 0;
-  width: 242px;
-  /*    margin: auto;*/ }
-  body.room-landing .popular-new .box-link {
-    border-width: 1px;
-    padding: 8px 30px;
-    border: 1px solid #c1c1c1;
-    color: #3D4B4E; }
-    body.room-landing .popular-new .box-link.active, body.room-landing .popular-new .box-link:hover {
-      border-color: #FF0042;
-      color: #FF0042 !important; }
+  /*    padding-right: 35px;*/ }
 
 body.room-landing .page-content {
   overflow: hidden;
@@ -7760,6 +7762,13 @@ footer.about-footer {
     border-top: 0px; } }
 
 @media only screen and (max-width: 620px) {
+  .popular-new {
+    float: none !important;
+    margin: 0 auto;
+    overflow: hidden;
+    width: 260px; }
+    .popular-new a {
+      padding-right: 30px !important; }
   body:not(.single-post) #about-button {
     display: none; }
   header.colophon .logo-wrap {
@@ -7884,13 +7893,6 @@ footer.about-footer {
         padding-left: 10%;
         padding-right: 5%;
         background-position: center 15px !important; }
-    #hero-nav .popular-new {
-      float: none !important;
-      margin: 0 auto;
-      overflow: hidden;
-      width: 260px; }
-      #hero-nav .popular-new a {
-        padding-right: 30px !important; }
   .mid-nav a, .mid-nav .extra-nav a {
     font-size: 1.8rem; }
   .idea-stories header.story-details {
@@ -8418,10 +8420,175 @@ footer.about-footer {
     /*            transform: unset !important;*/ }
   #hero .rsOverflow .rsContainer .rsSlide {
     overflow: visible; }
+  #hero .rsOverflow .rsContent {
+    overflow: hidden; }
 
 #top-nav, nav.mid-nav, .mid-nav nav.extra-nav {
   /*    background: #e8e8e8;*/
   /*    background: rgba(232, 232, 232, 0.95);*/ }
+
+body.shoppage .clearfix.pocket {
+  height: 100px; }
+
+body.shoppage #about-button {
+  bottom: 25px; }
+
+body.shoppage #back-to-top {
+  bottom: 21px; }
+
+body.shop-landing .shoplanding-title {
+  border: 0px;
+  border-top: 1px solid #F2F5F5;
+  margin-top: 40px;
+  margin-bottom: 20px; }
+  body.shop-landing .shoplanding-title legend {
+    display: block;
+    padding-left: 30px;
+    padding-right: 30px;
+    border: none;
+    margin: 0 auto;
+    width: auto;
+    font-size: 23px; }
+
+body.shop-landing #daily-deals {
+  margin-left: -15px;
+  margin-right: 15px; }
+  body.shop-landing #daily-deals .box-item {
+    margin-left: 30px; }
+
+body.shop-landing .slider {
+  margin-bottom: 20px; }
+  body.shop-landing .slider .box-item {
+    border-top: 1px solid #eee;
+    /*            height: 100%;*/ }
+
+body.shop-landing .shop-by-category-item {
+  text-align: center;
+  position: relative;
+  border: 1px solid #e6e6e6;
+  padding-top: 50px;
+  padding-bottom: 50px; }
+  body.shop-landing .shop-by-category-item img, body.shop-landing .shop-by-category-item span {
+    display: inline-block; }
+  body.shop-landing .shop-by-category-item .show-menus, body.shop-landing .shop-by-category-item .hide-menus {
+    position: absolute;
+    right: 20px;
+    bottom: 20px; }
+    body.shop-landing .shop-by-category-item .show-menus > img, body.shop-landing .shop-by-category-item .hide-menus > img {
+      width: 23px; }
+  body.shop-landing .shop-by-category-item .show-menus {
+    display: block; }
+  body.shop-landing .shop-by-category-item .hide-menus {
+    display: none; }
+  body.shop-landing .shop-by-category-item.smart-home {
+    color: #c47289; }
+  body.shop-landing .shop-by-category-item.travel {
+    color: #406e7f; }
+  body.shop-landing .shop-by-category-item.wearable {
+    color: #78944d; }
+  body.shop-landing .shop-by-category-item.decor {
+    color: #78944d; }
+  body.shop-landing .shop-by-category-item.active .show-menus {
+    display: none; }
+  body.shop-landing .shop-by-category-item.active .hide-menus {
+    display: block; }
+  body.shop-landing .shop-by-category-item.active.smart-home {
+    background: #ffe5ec; }
+  body.shop-landing .shop-by-category-item.active.travel {
+    background: #eef8fb; }
+  body.shop-landing .shop-by-category-item.active.wearable {
+    background: #f9f9ec; }
+  body.shop-landing .shop-by-category-item.active.decor {
+    background: #f9f9ec; }
+
+body.shop-landing .shop-by-category-submneu {
+  display: none; }
+  body.shop-landing .shop-by-category-submneu.active {
+    display: block; }
+  body.shop-landing .shop-by-category-submneu > div {
+    text-align: center;
+    min-height: 250px;
+    padding-top: 35px;
+    border: 1px solid #fff;
+    color: white; }
+    body.shop-landing .shop-by-category-submneu > div a {
+      color: white; }
+    body.shop-landing .shop-by-category-submneu > div i {
+      font-size: 25px;
+      margin-bottom: 25px;
+      display: inline-block; }
+  body.shop-landing .shop-by-category-submneu.smart-home > div {
+    background: #ff0042; }
+  body.shop-landing .shop-by-category-submneu.travel > div {
+    background: #59bdd7; }
+  body.shop-landing .shop-by-category-submneu.wearable > div {
+    background: #c6c646; }
+  body.shop-landing .shop-by-category-submneu.decor > div {
+    background: #ffaa00; }
+  @media (max-width: 991px) {
+    body.shop-landing .shop-by-category-submneu > div {
+      margin-left: 15px;
+      margin-right: 15px;
+      padding-top: 15px;
+      padding-bottom: 10px;
+      min-height: unset;
+      /*                background: none !important;
+                a{
+                    color: black;
+                }*/ }
+      body.shop-landing .shop-by-category-submneu > div i {
+        float: left; }
+      body.shop-landing .shop-by-category-submneu > div .title {
+        text-align: left;
+        padding-left: 38px; } }
+
+.has-bullets .rsNav.rsBullets {
+  position: relative;
+  z-index: 20;
+  padding-top: 10px;
+  width: 100%;
+  height: auto;
+  margin: 0 auto;
+  text-align: center;
+  line-height: 10px;
+  overflow: hidden; }
+  .has-bullets .rsNav.rsBullets .rsBullet {
+    width: 30px;
+    height: 10px;
+    display: inline-block;
+    *display: inline;
+    *zoom: 1;
+    margin-right: 10px; }
+    .has-bullets .rsNav.rsBullets .rsBullet.rsNavSelected span {
+      background-color: #C7C747; }
+    .has-bullets .rsNav.rsBullets .rsBullet span {
+      display: block;
+      width: 30px;
+      height: 10px;
+      border-radius: 7px;
+      background: #fff;
+      border: 1px solid #BCB946; }
+      .has-bullets .rsNav.rsBullets .rsBullet span:hover {
+        cursor: pointer; }
+
+body.shop-category #category-banner {
+  position: relative;
+  width: 100%; }
+
+body.shop-category .popular-new {
+  width: 100%;
+  text-align: right;
+  padding-top: 35px;
+  padding-bottom: 35px; }
+
+body.shop-category .main-content > div .grid-box-3 {
+  border-left: 1px solid #eee;
+  border-top: 1px solid #eee; }
+
+body.shop-category .main-content > div .box-item {
+  border: 0px;
+  border-right: 1px solid #eee;
+  border-bottom: 1px solid #eee; }
 
 @media (max-width: 620px) {
   .reviews-medium-container .average-score .caption {
