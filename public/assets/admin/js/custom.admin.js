@@ -380,13 +380,16 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
             $scope.Password = null;
             $scope.Email = null;
 
+            $scope.roleCollection =[];
+            $scope.userRoles = [];
+
         };
 
         // User management //
 
-        $scope.getUserInfoById = function(id){
+        $scope.getUserInfoById = function (id) {
             $http({
-                url: '/api/user/get-user/'+id,
+                url: '/api/user/get-user/' + id,
                 method: "GET",
 
             }).success(function (data) {
@@ -395,8 +398,12 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
                 $scope.FullName = data.data.name;
                 $scope.Password = null;
                 $scope.Email = data.data.email;
-              //  $scope.outputStatus(data, 'User added successfully');
-              //  $window.location = '/admin/user-list';
+
+               // $scope.roleCollection = data.data.role-collection;
+              //  $scope.userRoles = data.data.roles;
+
+                //  $scope.outputStatus(data, 'User added successfully');
+                //  $window.location = '/admin/user-list';
             });
         };
 
@@ -412,9 +419,10 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
                     Password: $scope.Password == '' ? null : $scope.Password,
                 }
             }).success(function (data) {
-               // console.log(data);
-                $scope.outputStatus(data, 'User updated successfully');
+                // console.log(data);
+                $scope.outputStatus(data, 'User information updated successfully');
                 //   $window.location = '/admin/user-list';
+                $scope.Password = '';
             });
         };
 
@@ -433,7 +441,10 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
             }).success(function (data) {
                 console.log(data);
                 $scope.outputStatus(data, 'User added successfully');
-                $window.location = '/admin/user-list';
+                // $window.location = '/admin/user-list';
+                $scope.FullName = '';
+                $scope.Email = '';
+                $scope.Password = '';
             });
 
 

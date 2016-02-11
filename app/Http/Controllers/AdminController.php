@@ -2,9 +2,11 @@
 
     namespace App\Http\Controllers;
 
+    use App\Models\Role;
     use Illuminate\Http\Request;
 
     use App\Http\Requests;
+
     use App\Models\Room;
 
 
@@ -51,12 +53,16 @@
 
         public function userEdit($id=null)
         {
+
+            $roleModel = new Role();
+            $roles = $roleModel->get();
+
             if ($this->authCheck['method-status'] == 'success-with-http')
             {
                 if($id == null)
-                    return view('admin.user-add');
+                    return view('admin.user-add')->with('roles',$roles);
                 else
-                    return view('admin.user-add')->with('id',$id);
+                    return view('admin.user-add')->with('id',$id)->with('roles',$roles);
 
             } elseif ($this->authCheck['method-status'] == 'fail-with-http')
             {

@@ -154,10 +154,12 @@
             }
         }
 
-        public function getUserRolesByEmail()
+        // get all assigned role of a user
+        public function getUserRolesByEmail($email)
         {
-            
+            $user = $this->IsEmailAvailable($email);
 
+            return $user->roles;
         }
 
         public function FindOrCreateUser($userData)
