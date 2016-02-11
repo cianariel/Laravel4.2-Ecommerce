@@ -266,14 +266,19 @@
 
             } catch (\Tymon\JWTAuth\Exceptions\TokenExpiredException $e)
             {
+                \Log::error($e);
                 $response['status-code'] = '910';
                 $response['status-message'] = 'Token Expired';
             } catch (\Tymon\JWTAuth\Exceptions\TokenInvalidException $e)
             {
+                \Log::error($e);
+
                 $response['status-code'] = '920';
                 $response['status-message'] = 'Token Invalid';
             } catch (\Tymon\JWTAuth\Exceptions\JWTException $e)
             {
+                \Log::error($e);
+
                 $response['status-code'] = '930';
                 $response['status-message'] = 'Token Not Provided';
             }
