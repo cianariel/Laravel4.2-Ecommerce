@@ -94,7 +94,15 @@
 
         public function logOut()
         {
-            $tokenValue = \Input::all();
+            // get token form input or session
+            $tokenValue = \Input::get('token');
+
+            if ($tokenValue == null)
+            {
+                $tokenValue = session('auth.token');
+            }
+
+            //$tokenValue = \Input::all();
             $message = "";
 
             // if a authenticated user request for logout then Token will be rest and session will set to null
@@ -108,8 +116,14 @@
             }
             session(['auth.token' => null]);
 
-            return $this->setStatusCode(IlluminateResponse::HTTP_OK)
-                ->makeResponse('successfully LogOut.' . $message);
+            if (\Input::ajax())
+            {
+                return $this->setStatusCode(IlluminateResponse::HTTP_OK)
+                    ->makeResponse('successfully LogOut.' . $message);
+            }else
+            {
+                return \Redirect::to('/');
+            }
         }
 
 

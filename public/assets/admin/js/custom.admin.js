@@ -449,7 +449,7 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
             }).success(function (data) {
                 // console.log(data);
                 $scope.outputStatus(data, 'User information updated successfully');
-               
+
                 $scope.Password = '';
                 $window.location = '/admin/user-list';
             });
