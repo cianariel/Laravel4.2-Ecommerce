@@ -36,6 +36,9 @@
 
                 $settings['limit'] = $userData['limit'];
                 $settings['page'] = $userData['page'];
+                $settings['FilterItem'] = isset($userData['FilterItem'])?$userData['FilterItem']:'';
+                $settings['FilterValue'] = isset($userData['FilterValue'])?$userData['FilterValue']:'';
+            //    $settings['']
 
                 $userList = $this->user->getUserList($settings);
 

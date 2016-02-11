@@ -53,7 +53,7 @@
 
                                                         <div class="col-lg-4 pull-left">
                                                             <label>Search Type</label>
-                                                            <select data-ng-model="selectedFilter"
+                                                            <select data-ng-model="SelectedUserFilter"
                                                                     class="form-control">
                                                                 <option value="">
                                                                     -- Select Filter --
@@ -66,7 +66,7 @@
                                                         </div>
                                                         <div class="col-lg-4">
                                                             <label> Search </label>
-                                                            <input data-ng-model="filterName"
+                                                            <input data-ng-model="FilterUserItem"
                                                                    class="form-control"
                                                                    placeholder="Enter Item To Filter">
                                                         </div>
@@ -76,7 +76,7 @@
                                                 <div style="margin-top: 5px">&nbsp;</div>
                                                 <div class="row">
                                                     <div class="text-center">
-                                                        <button class="btn btn-info" ng-click="showAllProduct()"
+                                                        <button class="btn btn-info" ng-click="getUserList()"
                                                                 type="button"><i class="fa fa-search"></i> Search
                                                         </button>
                                                         &nbsp;&nbsp;
