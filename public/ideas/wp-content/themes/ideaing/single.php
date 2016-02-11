@@ -33,20 +33,37 @@
             </div>
 
         </header>
-        <nav class="mid-nav hidden-xs">
+    <?php
+         $tags = wp_get_post_tags($post->ID);
+    ?>
+        <nav class="mid-nav hidden-xs" style="float: left">
                 <div class="container">
                     <ul class="wrap col-xs-9">
                         <!--                    <li><a class="home-link" href="#">Home</a></li>-->
+                    @if(empty($tags))
                         <li class="kitchen">
                             <span class="box-link-active-line"></span>
-                            <a href="#" class="">
-                                Kitchen
+                            <a href="{{get_site_url()}}" class="">
+                                Smart Home
                             </a>
                         </li>
-                        <li class="horizontal-line-holder hidden-xs hidden-sm">
-                            <span class="horizontal-line"></span>
-                        </li>
-                        <li><a href="#" class="">Style</a></li>
+                    @else
+                        @foreach($tags as $i => $tag)
+                            @if($i == 0)
+                                <li class="kitchen">
+                                    <span class="box-link-active-line"></span>
+                                    <a href="{{get_site_url()}}/tag/{{$tag->slug}}" class="">
+                                        {{$tag->name}}
+                                    </a>
+                                </li>
+                            @else
+                                <li class="horizontal-line-holder hidden-xs hidden-sm">
+                                    <span class="horizontal-line"></span>
+                                </li>
+                                <li><a href="{{get_site_url()}}/tag/{{$tag->slug}}" class="">{{$tag->name}}</a></li>
+                            @endif
+                        @endforeach
+                    @endif
                     </ul>
                 </div>
         </nav>
