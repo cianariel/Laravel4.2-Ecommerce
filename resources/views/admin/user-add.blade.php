@@ -95,7 +95,7 @@
                                                     <div class="form-group">
                                                         <label for="email">Email address:</label>
                                                         <input type="email" ng-model="Email" ng-readonly="true"
-                                                               ng-init="Email='{{$id}}'"
+                                                              {{-- ng-init="Email='{{$id}}'"--}}
                                                                placeholder="Enter Email"
                                                                class="form-control"
                                                                id="email">
@@ -118,6 +118,7 @@
                                                     <div class="form-group">
                                                         <label>Role:</label>
                                                         <br/>
+
                                                         <div ng-repeat="role in roleCollection">
                                                             <input
                                                                     type="checkbox"
@@ -127,6 +128,19 @@
                                                                     ng-click="toggleSelection(role.name)"
                                                             > @{{role.display_name}}
                                                             <br/>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <label class="col-md-2 control-label">Status</label>
+                                                        <div class="col-md-5">
+                                                            <select data-ng-model="UserStatus"
+                                                                    class="form-control">
+                                                                <option ng-repeat="status in userStatusList"
+                                                                        value="@{{ status.key }}">
+                                                                    @{{ status.value }}
+                                                                </option>
+                                                            </select>
                                                         </div>
                                                     </div>
                                                 @endif
