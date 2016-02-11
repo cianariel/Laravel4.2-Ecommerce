@@ -35,10 +35,12 @@
                                     </div>
                                     <div class="actions btn-set">
 
-                                        <button data-ng-click="addUser()" ng-hide="userId != ''" class="btn btn-success">
+                                        <button data-ng-click="addUser()" ng-hide="userId != ''"
+                                                class="btn btn-success">
                                             <i class="fa fa-check"></i> Save
                                         </button>
-                                        <button data-ng-click="updateUser()" ng-show="userId != ''" class="btn btn-warning">
+                                        <button data-ng-click="updateUser()" ng-show="userId != ''"
+                                                class="btn btn-warning">
                                             <i class="fa fa-check"></i> Update
                                         </button>
                                         {{--<button ng-hide="Permalink == ''"
@@ -81,38 +83,55 @@
 
                                         </div>
                                     </div>
-                                    <div class="tabbable-bordered">
-
-
-                                        <div class="form-body col-md-6">
-                                            <div class="form-group">
-                                                <label for="email">Name:</label>
-                                                <input type="text" class="form-control" ng-model="FullName" placeholder="Enter Name" id="name">
-                                            </div>
-                                            @if(isset($id) && $id != null)
+                                    <div class="row">
+                                        <div class="tabbable-bordered">
+                                            <div class="form-body col-md-6">
                                                 <div class="form-group">
-                                                    <label for="email">Email address:</label>
-                                                    <input type="email" ng-model="Email" ng-readonly="true" ng-init="Email='{{$id}}'"
-                                                           placeholder="Enter Email"
-                                                           class="form-control"
-                                                           id="email">
+                                                    <label for="email">Name:</label>
+                                                    <input type="text" class="form-control" ng-model="FullName"
+                                                           placeholder="Enter Name" id="name">
                                                 </div>
-                                            @else
+                                                @if(isset($id) && $id != null)
+                                                    <div class="form-group">
+                                                        <label for="email">Email address:</label>
+                                                        <input type="email" ng-model="Email" ng-readonly="true"
+                                                               ng-init="Email='{{$id}}'"
+                                                               placeholder="Enter Email"
+                                                               class="form-control"
+                                                               id="email">
+                                                    </div>
+                                                @else
+                                                    <div class="form-group">
+                                                        <label for="email">Email address:</label>
+                                                        <input type="email" ng-model="Email" placeholder="Enter Email"
+                                                               class="form-control"
+                                                               id="email">
+                                                    </div>
+                                                @endif
                                                 <div class="form-group">
-                                                    <label for="email">Email address:</label>
-                                                    <input type="email" ng-model="Email" placeholder="Enter Email"
-                                                           class="form-control"
-                                                           id="email">
+                                                    <label for="pwd">Password:</label>
+                                                    <input type="password" ng-model="Password"
+                                                           placeholder="Enter Password" class="form-control"
+                                                           id="pwd">
                                                 </div>
-                                            @endif
-                                            <div class="form-group">
-                                                <label for="pwd">Password:</label>
-                                                <input type="password" ng-model="Password" placeholder="Enter Password" class="form-control"
-                                                       id="pwd">
-                                            </div>
 
+                                                <div class="form-group">
+                                                    <label>Role:</label>
+                                                    <br />
+
+                                                </div>
+
+                                            </div>
                                         </div>
                                     </div>
+                                    {{--<div class="row">
+                                        <div class="tabbable-bordered">
+                                        <div class="form-group">
+                                            <label for="role">Roles:</label>
+
+                                        </div>
+                                        </div>
+                                    </div>--}}
                                 </div>
                             </div>
                         </form>

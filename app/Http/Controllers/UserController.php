@@ -5,17 +5,11 @@
     use App\Events\SendSubscriptionMail;
     use App\Models\Subscriber;
     use App\Models\User;
-
+    use App\Models\Role;
     use App\Http\Requests;
-    use App\Http\Controllers\Controller;
 
-
-    use App\Events\SendActivationMail;
-    use App\Events\SendResetEmail;
-    use Crypt;
     use Illuminate\Http\Response as IlluminateResponse;
     use JWTAuth;
-    use Tymon\JWTAuth\Exceptions\JWTException;
 
     use Carbon\Carbon;
 
@@ -31,6 +25,7 @@
 
             $this->subscriber = new Subscriber();
             $this->user = new User();
+            $this->roleModel = new Role();
         }
 
         public function userList()
@@ -59,7 +54,21 @@
 
             try{
 
+                $totalRoleCollection = $this->roleModel->get();
+
                 $user = $this->user->where('id','=',$id)->first();
+
+                $userRoles = $this->user->getUserRolesByEmail($user->email);
+
+                $roleCollection = array();
+
+                foreach($userRoles as $role)
+                {
+                    array_push($roleCollection,$role['name']);
+                }
+
+                $user['roles'] = $roleCollection;
+                $user['role-collection'] = $totalRoleCollection;
 
                 //$userList = $this->user->getUserList($settings);
 
