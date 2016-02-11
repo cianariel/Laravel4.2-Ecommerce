@@ -28,4 +28,5 @@ return array(
     'Crypt' => array($vendorDir . '/phpseclib/phpseclib/phpseclib'),
     'Cron' => array($vendorDir . '/mtdowling/cron-expression/src'),
     'Baum' => array($vendorDir . '/baum/baum/src'),
+    'Asm89\\Stack' => array($vendorDir . '/asm89/stack-cors/src'),
 );
