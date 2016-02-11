@@ -350,6 +350,8 @@
                         $user->password = \Hash::make($userData['Password']);
                     }
 
+                    $user->status = $input['UserStatus'];
+
                     $user->save();
 
                     return $this->setStatusCode(\Config::get("const.api-status.success"))

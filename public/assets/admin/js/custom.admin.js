@@ -383,6 +383,13 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
             $scope.roleCollection = [];
             $scope.userRoles = [];
 
+            $scope.userStatusList = [
+                {"key": "Active", "value": "Active"},
+                {"key": "Inactive", "value": "Inactive"},
+            ];
+
+            $scope.UserStatus = 'Active';
+
         };
 
         // User management //
@@ -416,6 +423,8 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
                 $scope.roleCollection = data.data.RoleCollection;
                 $scope.userRoles = data.data.Roles;
 
+                $scope.UserStatus = data.data.status == 'Active' ? 'Active' : 'Inactive';
+
                 //  $scope.outputStatus(data, 'User added successfully');
                 //  $window.location = '/admin/user-list';
             });
@@ -431,7 +440,8 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
                     FullName: $scope.FullName == '' ? null : $scope.FullName,
                     Email: $scope.Email,
                     Password: $scope.Password == '' ? null : $scope.Password,
-                    UserRoles: $scope.userRoles
+                    UserRoles: $scope.userRoles,
+                    UserStatus: $scope.UserStatus
                 }
             }).success(function (data) {
                 // console.log(data);
