@@ -3,6 +3,7 @@
 <link href="/assets/admin/vendor/global/plugins/bootstrap-fileinput/bootstrap-fileinput.css" rel="stylesheet" type="text/css" />
 <link href="/assets/admin/vendor/global/plugins/select2/css/select2.min.css" rel="stylesheet" type="text/css" />
 <link href="/assets/admin/vendor/global/plugins/select2/css/select2-bootstrap.min.css" rel="stylesheet" type="text/css" />
+<link href="/assets/admin/vendor/global/plugins/bootstrap-wysihtml5/bootstrap-wysihtml5.css" rel="stylesheet" type="text/css" />
 @stop
 @section('content')
 
@@ -85,9 +86,9 @@
                                     <div class="col-lg-9">
                                         <div class="form-group">
                                             <label class="control-label col-md-3">Description:</label>
-                                            <div class="col-md-6">
-                                                <input name="room_description" class="form-control"
-                                                               placeholder="Description" value="{{$room->room_description}}">
+                                            <div class="col-md-9">
+                                                <textarea  rows="6" name="room_description" class="wysihtml5 form-control"
+                                                               placeholder="Description" value="{{$room->room_description}}">{{$room->room_description}}</textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -97,7 +98,7 @@
                                         <div class="form-group">
                                             <label class="control-label col-md-3">Meta Title:</label>
                                             <div class="col-md-6">
-                                                <input name="meta_description" class="form-control"
+                                                <input name="meta_title" class="form-control"
                                                                placeholder="Meta Title" value="{{$room->meta_title}}">
                                             </div>
                                         </div>
@@ -107,9 +108,9 @@
                                     <div class="col-lg-9">
                                         <div class="form-group">
                                             <label class="control-label col-md-3">Meta Description:</label>
-                                            <div class="col-md-6">
-                                                <input name="meta_description" class="form-control"
-                                                               placeholder="Meta Description" value="{{$room->meta_description}}">
+                                            <div class="col-md-9">
+                                                <textarea rows="6" name="meta_description" class="wysihtml5 form-control"
+                                                               placeholder="Meta Description" value="{{$room->meta_description}}">{{$room->meta_description}}</textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -136,20 +137,21 @@
                                                         <div class="col-md-12">
                                                             <div class="fileinput fileinput-new" data-provides="fileinput">
                                                                 <div class="fileinput-new thumbnail" style="width: 100%;" data-image="hero_image_1">
+                                                                    <img src="http://www.placehold.it/1500x550/EFEFEF/AAAAAA&amp;text=no+image" alt="" />
+                                                                </div>    
+                                                                <div class="fileinput-preview fileinput-exists thumbnail" style="width: 100%;" data-image="hero_image_1"> 
                                                                     @if($room->hero_image_1)
                                                                     <img src="{{$room->hero_image_1}}" alt="" id="hero_image_1_img" />
-                                                                    @else
-                                                                    <img src="http://www.placehold.it/1500x550/EFEFEF/AAAAAA&amp;text=no+image" alt="" />
                                                                     @endif
-                                                                </div>    
-                                                                <div class="fileinput-preview fileinput-exists thumbnail" style="width: 100%;" data-image="hero_image_1"> </div>
-                                                                <br/>image should be 1500 x 500
+                                                                </div>
+                                                                
                                                                 <div>
-                                                                    <span class="btn default btn-file">
+                                                                    <span class="btn default btn-file ">
                                                                         <span class="fileinput-new"> Select image </span>
                                                                         <span class="fileinput-exists"> Change </span>
-                                                                        <input type="file" id="hero_image_1" name="hero_image_1" class="hero-image"> </span>
+                                                                        <input type="file" id="hero_image_1" name="hero_image_1" class="hero-image" accept='image/*'> </span>
                                                                     <a href="javascript:;" class="btn red fileinput-exists" data-dismiss="fileinput"> Remove </a>
+                                                                    <span style="float:right">image should be 1500 x 500</span>
                                                                 </div>
                                                             </div>
                                                             <input type="hidden" id="hero_image_1_products" name="hero_image_1_products" />
@@ -199,30 +201,37 @@
                                                         </div>
                                                     </div>
                                                     <div>
-                                                        <table class="table table-striped table-bordered table-hover table-checkable order-column" id="image_1_table">
+                                                        <?php
+                                                        $products = json_decode($room->hero_image_1_products);
+                                                        if($products)
+                                                        {
+                                                    ?>
+                                                        <table class="table table-striped table-bordered table-hover table-checkable order-column" id="image_3_table">
                                                             <thead>
                                                                 <tr>
                                                                     <th> Product ID </th>
                                                                     <th> X </th>
                                                                     <th> Y </th>
+                                                                    <th> Actions </th>
                                                                 </tr>
                                                             </thead>
                                                             <tbody>
                                                             <?php
-                                                                $products = json_decode($room->hero_image_1_products);
-                                                                if ($products) {
                                                                     foreach($products as $rm)
                                                                     {
                                                                         echo '<tr><td>'.$rm->product_id.'</td>';
                                                                         echo '<td>'.$rm->x.'</td>';
-                                                                        echo '<td>'.$rm->y.'</td></tr>';
+                                                                        echo '<td>'.$rm->y.'</td>';
+                                                                        echo '<td>Edit - Delete</td></tr>';
                                                                     }
-                                                                }
                                                                 
                                                             ?>
 
                                                             </tbody>
                                                         </table>
+                                                    <?php
+                                                        }
+                                                    ?>       
                                                     </div>
                                                 </div>
                                                 <div class="tab-pane fade" id="Hero2">
@@ -230,19 +239,20 @@
                                                         <div class="col-md-12">
                                                             <div class="fileinput fileinput-new" data-provides="fileinput">
                                                                 <div class="fileinput-new thumbnail" style="width: 100%;" data-image="hero_image_2">
-                                                                    @if($room->hero_image_2)
-                                                                    <img src="{{$room->hero_image_2}}" alt="" id="hero_image_2_img"/> </div>
-                                                                    @else
                                                                     <img src="http://www.placehold.it/1500x550/EFEFEF/AAAAAA&amp;text=no+image" alt="" /> </div>
+                                                                <div class="fileinput-preview fileinput-exists thumbnail" style="width: 100%;" data-image="hero_image_2">
+                                                                    @if($room->hero_image_2)
+                                                                    <img src="{{$room->hero_image_2}}" alt="" id="hero_image_2_img" />
                                                                     @endif
-                                                                <div class="fileinput-preview fileinput-exists thumbnail" style="width: 100%;" data-image="hero_image_2"> </div>
-                                                                <br/>image should be 1500 x 500
+                                                                     </div>
+                                                                
                                                                 <div>
                                                                     <span class="btn default btn-file">
                                                                         <span class="fileinput-new"> Select image </span>
                                                                         <span class="fileinput-exists"> Change </span>
-                                                                        <input type="file" id="hero_image_2" name="hero_image_2"  class="hero-image"> </span>
+                                                                        <input type="file" id="hero_image_2" name="hero_image_2"  class="hero-image" accept='image/*'> </span>
                                                                     <a href="javascript:;" class="btn red fileinput-exists" data-dismiss="fileinput"> Remove </a>
+                                                                    <span style="float:right">image should be 1500 x 500</span>
                                                                 </div>
                                                                 <input type="hidden" id="hero_image_2_products" name="hero_image_2_products" />
                                                             </div>
@@ -292,31 +302,37 @@
                                                         </div>
                                                     </div>
                                                     <div>
-                                                        <table class="table table-striped table-bordered table-hover table-checkable order-column" id="image_2_table">
+                                                    <?php
+                                                        $products = json_decode($room->hero_image_2_products);
+                                                        if($products)
+                                                        {
+                                                    ?>
+                                                        <table class="table table-striped table-bordered table-hover table-checkable order-column" id="image_3_table">
                                                             <thead>
                                                                 <tr>
                                                                     <th> Product ID </th>
                                                                     <th> X </th>
                                                                     <th> Y </th>
+                                                                    <th> Actions </th>
                                                                 </tr>
                                                             </thead>
                                                             <tbody>
                                                             <?php
-                                                                $products = json_decode($room->hero_image_2_products);
-                                                                if($products)
-                                                                {
                                                                     foreach($products as $rm)
                                                                     {
                                                                         echo '<tr><td>'.$rm->product_id.'</td>';
                                                                         echo '<td>'.$rm->x.'</td>';
-                                                                        echo '<td>'.$rm->y.'</td></tr>';
+                                                                        echo '<td>'.$rm->y.'</td>';
+                                                                        echo '<td>Edit - Delete</td></tr>';
                                                                     }
-                                                                }
                                                                 
                                                             ?>
 
                                                             </tbody>
                                                         </table>
+                                                    <?php
+                                                        }
+                                                    ?>       
                                                     </div>
                                                 </div>
                                                 <div class="tab-pane fade" id="Hero3">
@@ -330,13 +346,13 @@
                                                                     <img src="http://www.placehold.it/1500x550/EFEFEF/AAAAAA&amp;text=no+image" alt="" /> </div>
                                                                     @endif
                                                                 <div class="fileinput-preview fileinput-exists thumbnail" style="width: 100%;" data-image="hero_image_3"> </div>
-                                                                <br/>image should be 1500 x 500
                                                                 <div>
                                                                     <span class="btn default btn-file">
                                                                         <span class="fileinput-new"> Select image </span>
                                                                         <span class="fileinput-exists"> Change </span>
-                                                                        <input type="file" id="hero_image_3" name="hero_image_3"  class="hero-image"> </span>
+                                                                        <input type="file" id="hero_image_3" name="hero_image_3"  class="hero-image" accept='image/*'> </span>
                                                                     <a href="javascript:;" class="btn red fileinput-exists" data-dismiss="fileinput"> Remove </a>
+                                                                    <span style="float:right">image should be 1500 x 500</span>
                                                                 </div>
                                                                 <input type="hidden" id="hero_image_3_products" name="hero_image_3_products" />
                                                             </div>
@@ -386,30 +402,37 @@
                                                         </div>
                                                     </div>
                                                     <div>
+                                                    <?php
+                                                        $products = json_decode($room->hero_image_3_products);
+                                                        if($products)
+                                                        {
+                                                    ?>
                                                         <table class="table table-striped table-bordered table-hover table-checkable order-column" id="image_3_table">
                                                             <thead>
                                                                 <tr>
                                                                     <th> Product ID </th>
                                                                     <th> X </th>
                                                                     <th> Y </th>
+                                                                    <th> Actions </th>
                                                                 </tr>
                                                             </thead>
                                                             <tbody>
                                                             <?php
-                                                                $products = json_decode($room->hero_image_3_products);
-                                                                if($products)
-                                                                {
                                                                     foreach($products as $rm)
                                                                     {
                                                                         echo '<tr><td>'.$rm->product_id.'</td>';
                                                                         echo '<td>'.$rm->x.'</td>';
-                                                                        echo '<td>'.$rm->y.'</td></tr>';
+                                                                        echo '<td>'.$rm->y.'</td>';
+                                                                        echo '<td>Edit - Delete</td></tr>';
                                                                     }
-                                                                }
+                                                                
                                                             ?>
 
                                                             </tbody>
                                                         </table>
+                                                    <?php
+                                                        }
+                                                    ?>                                                        
                                                     </div>
                                                 </div>
                                             </div>
@@ -482,7 +505,9 @@
 <script src="/assets/admin/vendor/global/plugins/bootstrap-fileinput/bootstrap-fileinput.js" type="text/javascript"></script>
 <script src="/assets/admin/vendor/global/plugins/select2/js/select2.full.min.js" type="text/javascript"></script>
 <script src="/assets/admin/vendor/pages/scripts/components-select2.js" type="text/javascript"></script>
-
+<script src="/assets/admin/vendor/global/plugins/bootstrap-wysihtml5/wysihtml5-0.3.0.js" type="text/javascript"></script>
+<script src="/assets/admin/vendor/global/plugins/bootstrap-wysihtml5/bootstrap-wysihtml5.js" type="text/javascript"></script>
+<script src="/assets/admin/vendor/pages/scripts/components-editors.js" type="text/javascript"></script>
 <script>
 $(function() {
 
@@ -507,12 +532,18 @@ $(function() {
     }
     @if($room->hero_image_1)
     $('#hero_image_1_img').click(onheroclick);
+    //$('#Hero1 .fileinput-exists').show();
+    //$('#Hero1 .fileinput-new').hide();
     @endif
     @if($room->hero_image_2)
     $('#hero_image_2_img').click(onheroclick);
+    $('#Hero2 .fileinput-exists').show();
+    $('#Hero2 .fileinput-new').hide();
     @endif
     @if($room->hero_image_3)
     $('#hero_image_3_img').click(onheroclick);
+    $('#Hero3 .fileinput-exists').show();
+    $('#Hero3 .fileinput-new').hide();
     @endif
     function onheroclick(e){
         var parentOffset = $(this).parent().offset(); 
