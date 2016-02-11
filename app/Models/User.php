@@ -13,6 +13,7 @@
     use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
     use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
     use Mockery\CountValidator\Exception;
+    use Zizaco\Entrust\Traits\EntrustUserTrait;
 
     use CustomAppException;
 
@@ -21,7 +22,11 @@
         AuthorizableContract,
         CanResetPasswordContract {
 
-        use Authenticatable, Authorizable, CanResetPassword;
+        use Authenticatable, Authorizable, CanResetPassword,
+            EntrustUserTrait
+        {
+            EntrustUserTrait::can insteadof Authorizable;
+        }
 
         /**
          * The database table used by the model.
@@ -35,14 +40,14 @@
          *
          * @var array
          */
-        protected $fillable = ['name', 'email', 'password'];
+        protected $fillable = ['name', 'email', 'password', 'status'];
 
         /**
          * The attributes excluded from the model's JSON form.
          *
          * @var array
          */
-        protected $hidden = ['id', 'password', 'remember_token', 'created_at', 'updated_at'];
+        protected $hidden = ['password', 'remember_token', 'created_at', 'updated_at'];
 
 
         /**
@@ -65,6 +70,38 @@
 
         /**
          * Defile custom model method
+         */
+
+        public function getUserList($settings)
+        {
+            $userModel = $this;
+
+            $filterText = $settings['FilterValue'];
+
+            if ($settings['FilterItem'] == 'user-name-filter')
+            {
+                $userModel = $userModel->where("name", "like", "%$filterText%");
+            }
+            if ($settings['FilterItem'] == 'user-email-filter')
+            {
+                $userModel = $userModel->where("email", "like", "%$filterText%");
+            }
+
+
+            $skip = $settings['limit'] * ($settings['page'] - 1);
+            $userList['result'] = $userModel
+                ->take($settings['limit'])
+                ->offset($skip)
+                ->orderBy('created_at', 'desc')
+                ->get();
+
+            $userList['count'] = $userModel->get()->count();
+            return $userList;
+        }
+
+
+        /**
+         * Save user information
          * @param $data
          * @return bool
          * @throws \Exception
@@ -73,7 +110,6 @@
         {
             try
             {
-
                 \DB::transaction(function () use ($data)
                 {
                     $user = new User();
@@ -85,7 +121,7 @@
 
                     $userProfile = new UserProfile();
                     // $userProfile->full_name = $data['FullName'];
-                   // $userProfile->save();
+                    // $userProfile->save();
 
                     $user->userProfile()->save($userProfile);
 
@@ -95,9 +131,7 @@
                 \Log::error($ex);
                 throw new \Exception($ex);
             }
-
             return true;
-
         }
 
 
@@ -113,7 +147,31 @@
             {
                 return false;
             }
+        }
 
+        // assign role(s) to the user
+        public function assignRole($email,$roles)
+        {
+            $user = $this->IsEmailAvailable($email);
+
+            if($user->roles()->count() > 0)
+            {
+                $user->detachRoles($user->roles);
+            }
+
+            foreach($roles as $role)
+            {
+                $role = Role::where('name','=',$role)->first();
+                $user->attachRole($role);
+            }
+        }
+
+        // get all assigned role of a user
+        public function getUserRolesByEmail($email)
+        {
+            $user = $this->IsEmailAvailable($email);
+
+            return $user->roles;
         }
 
         public function FindOrCreateUser($userData)
@@ -135,12 +193,15 @@
                     $user->status = 'Active';
                     $user->save();
 
+                    // Assign role for the user
+                    $this->assignRole($userData->email,array('user'));
+
                     $subscriber = new Subscriber();
 
                     // subscribes a user if not already subscribed
-                    if($subscriber->isASubscriber($user['Email']) == false)
+                    if ($subscriber->isASubscriber($userData->email) == false)
                     {
-                        $subscriber->email = $userData['Email'];
+                        $subscriber->email = $userData->email;
                         $subscriber->status = 'Subscribed';
 
                         $this->subscriber->save();

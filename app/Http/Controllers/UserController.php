@@ -4,19 +4,13 @@
 
     use App\Events\SendSubscriptionMail;
     use App\Models\Subscriber;
-
-
+    use App\Models\User;
+    use App\Models\Role;
     use App\Http\Requests;
-    use App\Http\Controllers\Controller;
 
-
-    use App\Events\SendActivationMail;
-    use App\Events\SendResetEmail;
-    use Crypt;
     use Illuminate\Http\Response as IlluminateResponse;
     use JWTAuth;
-    use Tymon\JWTAuth\Exceptions\JWTException;
-    use App\Models\User;
+
     use Carbon\Carbon;
 
     class UserController extends ApiController {
@@ -24,12 +18,106 @@
         public function __construct()
         {
             // Apply the jwt.auth middleware to all methods in this controller
-            $this->middleware('jwt.auth',
-                ['except' => [
-                    'emailSubscription','userProfile'
-                ]]);
-            $this->subscriber = new Subscriber();
+            /* $this->middleware('jwt.auth',
+                 ['except' => [
+                     'emailSubscription','userProfile'
+                 ]]);*/
 
+            $this->subscriber = new Subscriber();
+            $this->user = new User();
+            $this->roleModel = new Role();
+        }
+
+        public function userList()
+        {
+
+            try{
+                $userData = \Input::all();
+
+                $settings['limit'] = $userData['limit'];
+                $settings['page'] = $userData['page'];
+                $settings['FilterItem'] = isset($userData['FilterItem'])?$userData['FilterItem']:'';
+                $settings['FilterValue'] = isset($userData['FilterValue'])?$userData['FilterValue']:'';
+            //    $settings['']
+
+                $userList = $this->user->getUserList($settings);
+
+                return $this->setStatusCode(\Config::get("const.api-status.success"))
+                ->makeResponse(array_merge($userList, $settings));
+            } catch (Excpetion $ex)
+            {
+                return $this->setStatusCode(\Config::get("const.api-status.system-fail"))
+                    ->makeResponseWithError("System Failure !", $ex);
+            }
+
+        }
+
+        public function getUserById($id)
+        {
+
+            try{
+
+                $totalRoleCollection = $this->roleModel->get(array('id','name','display_name'));
+
+                $user = $this->user->where('id','=',$id)->first();
+
+                $userRoles = $this->user->getUserRolesByEmail($user->email);
+
+                $roleCollection = array();
+
+                foreach($userRoles as $role)
+                {
+                    array_push($roleCollection,$role['name']);
+                }
+
+                $user['Roles'] = $roleCollection;
+                $user['RoleCollection'] = $totalRoleCollection;
+
+                //$userList = $this->user->getUserList($settings);
+
+                return $this->setStatusCode(\Config::get("const.api-status.success"))
+                    ->makeResponse($user);
+            } catch (Excpetion $ex)
+            {
+                return $this->setStatusCode(\Config::get("const.api-status.system-fail"))
+                    ->makeResponseWithError("System Failure !", $ex);
+            }
+
+        }
+
+
+        public function securePageHeader()
+        {
+            $authCheck = $this->RequestAuthentication();
+
+            if ($authCheck['method-status'] == 'success-with-http')
+            {
+                return view('user.secure-page-header');
+
+            } elseif ($authCheck['method-status'] == 'success-with-ajax')
+            {
+                return $this->setStatusCode(\Config::get("const.api-status.success"))
+                    ->makeResponse($authCheck);
+
+            } elseif ($authCheck['method-status'] == 'fail-with-http')
+            {
+                return \Redirect::to('login');
+
+            } elseif ($authCheck['method-status'] == 'fail-with-ajax')
+            {
+
+                return $this->setStatusCode(IlluminateResponse::HTTP_NOT_ACCEPTABLE)
+                    ->makeResponseWithError($authCheck);
+            }
+        }
+
+
+        public function authCheck()
+        {
+            if (true)
+            {
+                return \Redirect::to('/login');
+            }
         }
 
         // Email subscription
@@ -67,10 +155,7 @@
                     ->makeResponse($subs);
             } else
             {
-                $this->subscriber->email = $userData['Email'];
-                $this->subscriber->status = 'Subscribed';
-
-                $subs = $this->subscriber->save();
+                $subs = $this->subscriber->subscribeUser($userData['Email']);
                 \Event::fire(new SendSubscriptionMail(
                     $userData['Email']
                 ));
@@ -85,4 +170,6 @@
         {
             return view('user.user-profile');
         }
+
+
     }

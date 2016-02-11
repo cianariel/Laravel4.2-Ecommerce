@@ -1,5 +1,8 @@
 var adminApp = angular.module('adminApp', ['ui.bootstrap', 'ngRateIt', 'ngSanitize', 'angular-confirm', 'textAngular', 'ngTagsInput', 'angularFileUpload']);
 
+adminApp.config(['$httpProvider', function ($httpProvider) {
+    $httpProvider.defaults.headers.common["X-Requested-With"] = 'XMLHttpRequest';
+}]);
 
 // only decimal number input validation
 adminApp.directive('validNumber', function () {
@@ -230,8 +233,6 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
         uploader.onCompleteAll = function () {
             //    console.info('onCompleteAll');
         };
-
-
         // End uploader section //
 
 
@@ -304,9 +305,8 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
                 counter: 0
             }
             ];
-            /*
 
-             * */
+
             $scope.isUpdateReviewShow = false;
             $scope.externalReviewLink = '';
             $scope.ideaingReviewScore = 0;
@@ -369,6 +369,138 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
 
             $scope.storeList = [];
 
+            // User
+            $scope.userListPageLimit = 30;
+            $scope.userList = [];
+            $scope.SelectedUserFilter = '';
+            $scope.FilterUserItem = '';
+            $scope.userFilterTypes = [
+                {"key": "user-name-filter", "value": "Search by Name ..."},
+                {"key": "user-email-filter", "value": "Search by Email ..."},
+            ];
+            $scope.userId = '';
+            $scope.FullName = '';
+            $scope.Password = null;
+            $scope.Email = null;
+
+            $scope.roleCollection = [];
+            $scope.userRoles = [];
+
+            $scope.userStatusList = [
+                {"key": "Active", "value": "Active"},
+                {"key": "Inactive", "value": "Inactive"},
+            ];
+
+            $scope.UserStatus = 'Active';
+
+        };
+
+        // User management //
+
+        $scope.toggleSelection = function toggleSelection(role) {
+            var idx = $scope.userRoles.indexOf(role);
+
+            // is currently selected
+            if (idx > -1) {
+                $scope.userRoles.splice(idx, 1);
+            }
+
+            // is newly selected
+            else {
+                $scope.userRoles.push(role);
+            }
+        };
+
+        $scope.getUserInfoById = function (id) {
+            $http({
+                url: '/api/user/get-user/' + id,
+                method: "GET",
+
+            }).success(function (data) {
+                console.log(data);
+                $scope.userId = data.data.id;
+                $scope.FullName = data.data.name;
+                $scope.Password = null;
+                $scope.Email = data.data.email;
+
+                $scope.roleCollection = data.data.RoleCollection;
+                $scope.userRoles = data.data.Roles;
+
+                $scope.UserStatus = data.data.status == 'Active' ? 'Active' : 'Inactive';
+
+                //  $scope.outputStatus(data, 'User added successfully');
+                //  $window.location = '/admin/user-list';
+            });
+        };
+
+        $scope.updateUser = function () {
+            $scope.closeAlert();
+
+            $http({
+                url: '/api/change-profile',
+                method: "POST",
+                data: {
+                    FullName: $scope.FullName == '' ? null : $scope.FullName,
+                    Email: $scope.Email,
+                    Password: $scope.Password == '' ? null : $scope.Password,
+                    UserRoles: $scope.userRoles,
+                    UserStatus: $scope.UserStatus
+                }
+            }).success(function (data) {
+                // console.log(data);
+                $scope.outputStatus(data, 'User information updated successfully');
+
+                $scope.Password = '';
+                $window.location = '/admin/user-list';
+            });
+        };
+
+        $scope.addUser = function () {
+            $scope.closeAlert();
+
+            $http({
+                url: '/api/register-user',
+                method: "POST",
+                data: {
+                    FullName: $scope.FullName,
+                    Email: $scope.Email,
+                    Password: $scope.Password,
+                    Valid: true
+                }
+            }).success(function (data) {
+                console.log(data);
+                $scope.outputStatus(data, 'User added successfully');
+                // $window.location = '/admin/user-list';
+                $scope.FullName = '';
+                $scope.Email = '';
+                $scope.Password = '';
+            });
+        };
+
+        $scope.getUserList = function () {
+
+            // todo - test init .remove after test
+            console.log('sdf');
+            $scope.limit = $scope.userListPageLimit;
+
+            $http({
+                url: '/api/user/user-list',
+                method: "POST",
+                data: {
+                    // Pagination info - Reusing from the product pagination
+                    limit: $scope.limit,
+                    page: $scope.page,
+                    total: $scope.total,
+                    FilterItem: $scope.SelectedUserFilter,
+                    FilterValue: $scope.FilterUserItem
+                }
+            }).success(function (data) {
+                console.log(data);
+                $scope.limit = data.data.limit;
+                $scope.page = data.data.page;
+                $scope.total = data.data.count;
+                $scope.userList = data.data.result;
+            });
         };
 
         //// Store ///
@@ -411,7 +543,7 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
             });
         };
 
-        $scope.changeStoreActivation = function(){
+        $scope.changeStoreActivation = function () {
             $scope.closeAlert();
 
             $scope.StoreStatus = ($scope.StoreStatus == "Active") ? "Inactive" : "Active";
@@ -419,21 +551,21 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
             $http({
                 url: '/api/store/change-status',
                 method: "POST",
-                data:{
-                    StoreId : $scope.StoreId,
-                    StoreStatus : $scope.StoreStatus
+                data: {
+                    StoreId: $scope.StoreId,
+                    StoreStatus: $scope.StoreStatus
                 }
             }).success(function (data) {
                 $scope.loadAllStores();
             });
         };
 
-        $scope.editStore = function(index){
+        $scope.editStore = function (index) {
 
             $scope.StoreId = $scope.storeList[index].Id;
             $scope.StoreIdentifier = $scope.storeList[index].Identifier;
             $scope.StoreName = $scope.storeList[index].Name;
-            $scope.StoreStatus = $scope.storeList[index].Status == 'Active'?'Active':'Inactive';
+            $scope.StoreStatus = $scope.storeList[index].Status == 'Active' ? 'Active' : 'Inactive';
             $scope.StoreDescription = $scope.storeList[index].Description;
             $scope.mediaLink = $scope.storeList[index].ImageLink;
 
@@ -445,7 +577,7 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
                 url: '/api/store/delete-store',
                 method: "POST",
                 data: {
-                    StoreId : id
+                    StoreId: id
                 }
             }).success(function (data) {
                 $scope.loadAllStores();
@@ -923,7 +1055,6 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
 
             $scope.closeAlert();
 
-
             return false;
         };
 
@@ -1021,7 +1152,7 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
                     'key': $scope.reviewKey,
                     'value': $scope.reviewValue,
                     'link': $scope.reviewLink,
-                    'counter': (typeof $scope.reviewCounter === 'undefined' || $scope.reviewCounter == '' || isNaN($scope.reviewCounter))? 1 : parseInt($scope.reviewCounter)
+                    'counter': (typeof $scope.reviewCounter === 'undefined' || $scope.reviewCounter == '' || isNaN($scope.reviewCounter)) ? 1 : parseInt($scope.reviewCounter)
                 }
             );
             $scope.reviewKey = '';
@@ -1047,14 +1178,14 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
             $scope.$index = index;
 
             // for Amazon review keep the counter editable
-            if(index == 1)
+            if (index == 1)
                 $scope.readOnlyReviewCounter = false;
 
             $scope.reviewKey = $scope.reviews[index].key;
             $scope.reviewValue = $scope.reviews[index].value;
             $scope.reviewLink = $scope.reviews[index].link;
-            $scope.reviewCounter = (typeof $scope.reviews[index].counter === 'undefined' || $scope.reviews[index].counter == '' || isNaN($scope.reviews[index].counter))? 1 : parseInt($scope.reviews[index].counter);
-           // $scope.reviewCounter = $scope.reviews[index].counter;
+            $scope.reviewCounter = (typeof $scope.reviews[index].counter === 'undefined' || $scope.reviews[index].counter == '' || isNaN($scope.reviews[index].counter)) ? 1 : parseInt($scope.reviews[index].counter);
+            // $scope.reviewCounter = $scope.reviews[index].counter;
             $scope.isUpdateReviewShow = true;
             $scope.calculateAvg();
 
@@ -1064,7 +1195,7 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
             $scope.reviews[$scope.$index].key = $scope.reviewKey;
             $scope.reviews[$scope.$index].value = $scope.reviewValue;
             $scope.reviews[$scope.$index].link = $scope.reviewLink;
-            $scope.reviews[$scope.$index].counter = (typeof $scope.reviewCounter === 'undefined' || $scope.reviewCounter == '' || isNaN($scope.reviewCounter))? 1 : parseInt($scope.reviewCounter);
+            $scope.reviews[$scope.$index].counter = (typeof $scope.reviewCounter === 'undefined' || $scope.reviewCounter == '' || isNaN($scope.reviewCounter)) ? 1 : parseInt($scope.reviewCounter);
 
             $scope.isUpdateReviewShow = false;
 
@@ -1082,12 +1213,12 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
             for (var i = 2; i < $scope.reviews.length; i++) {
                 $scope.totalCount += $scope.reviews[i].value;
 
-                reviewers += $scope.reviews[i].counter == null?0:parseInt($scope.reviews[i].counter);
+                reviewers += $scope.reviews[i].counter == null ? 0 : parseInt($scope.reviews[i].counter);
             }
 
             $scope.reviews[0].value = ($scope.totalCount / ($scope.reviews.length - 2)).toFixed(2);
             $scope.reviews[0].counter = reviewers;
-        //    console.log($scope.reviews[0].value," - ",$scope.reviews[0].counter);
+            //    console.log($scope.reviews[0].value," - ",$scope.reviews[0].counter);
 
         }
 
@@ -1349,7 +1480,7 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
             $scope.isHeroItem = stat;
             $scope.isMainItem = $scope.mediaList[index].is_main_item == 1 ? 1 : 0;
             $scope.isMediaEdit = true;
-           // console.log($scope.mediaId);
+            // console.log($scope.mediaId);
 
         };
 

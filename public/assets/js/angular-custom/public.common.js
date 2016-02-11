@@ -4,6 +4,9 @@
 
 var publicApp = angular.module('publicApp', ['ui.bootstrap', 'ngSanitize']);
 
+publicApp.config(['$httpProvider', function($httpProvider) {
+    $httpProvider.defaults.headers.common["X-Requested-With"] = 'XMLHttpRequest';
+}]);
 
 publicApp.controller('publicController', ['$scope', '$http', '$window', '$timeout', '$location', '$anchorScroll'
     , function ($scope, $http, $window, $timeout, $location, $anchorScroll) {
@@ -123,7 +126,7 @@ publicApp.controller('publicController', ['$scope', '$http', '$window', '$timeou
 
         };
 
-        $scope.registerUser = function () {
+        $scope.registerSubscribedUser = function () {
             $scope.closeAlert();
 
             if ($scope.Password != $scope.PasswordConf)
@@ -139,7 +142,36 @@ publicApp.controller('publicController', ['$scope', '$http', '$window', '$timeou
                     FullName: $scope.FullName,
                     Email: $scope.Email,
                     Password: $scope.Password,
-                    Valid:true
+                    Valid: true
+                }
+
+            }).success(function (data) {
+                $scope.outputStatus(data, data.data);
+
+                /* if(data.status_code == 200)
+                 window.location = $scope.logingRedirectLocation;
+                 */
+            });
+
+        };
+
+        $scope.registerUser = function (email) {
+            $scope.closeAlert();
+
+            if ($scope.Password != $scope.PasswordConf)
+            {
+                $scope.addAlert('danger', 'Password not match !');
+                return;
+            }
+
+            $http({
+                url: '/api/register-user',
+                method: "POST",
+                data: {
+                    FullName: $scope.FullName,
+                    Email: $scope.Email,
+                    Password: $scope.Password,
+                    Valid: false
                 }
 
             }).success(function (data) {
@@ -156,6 +188,42 @@ publicApp.controller('publicController', ['$scope', '$http', '$window', '$timeou
         $scope.registerWithFB = function(){
 
             window.location = '/api/fb-login';
+        };
+
+        $scope.loginUser = function(){
+            $scope.closeAlert();
+            $http({
+                url: '/api/authenticate',
+                method: "POST",
+                data: {
+                    Email: $scope.Email,
+                    Password: $scope.Password,
+
+                }
+            }).success(function (data) {
+                console.log(data.data);
+
+                $scope.outputStatus(data, data.data);
+
+                /* if(data.status_code == 200)
+                 window.location = $scope.logingRedirectLocation;
+                 */
+            });
+        };
+
+        $scope.chk = function(){
+            $scope.closeAlert();
+            $http({
+                url: '/secure-page-header',
+                method: "GET",
+
+            }).success(function (data) {
+               // $scope.outputStatus(data, data.data);
+
+                /* if(data.status_code == 200)
+                 window.location = $scope.logingRedirectLocation;
+                 */
+            });
         };
 
 

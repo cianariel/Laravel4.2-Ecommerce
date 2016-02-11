@@ -35,25 +35,44 @@
                     <label for="email">Name:</label>
                     <input type="text" class="form-control" ng-model="FullName" placeholder="Enter Name" id="name">
                 </div>
-                <div class="form-group">
-                    <label for="email">Email address:</label>
-                    <input type="email" ng-model="Email" ng-readonly="true"  ng-init="Email='{{$email}}'" placeholder="Enter Email"
-                           class="form-control"
-                           id="email">
-                </div>
+                @if(isset($email) && $email != null)
+                    <div class="form-group">
+                        <label for="email">Email address:</label>
+                        <input type="email" ng-model="Email" ng-readonly="true" ng-init="Email='{{$email}}'"
+                               placeholder="Enter Email"
+                               class="form-control"
+                               id="email">
+                    </div>
+                @else
+                    <div class="form-group">
+                        <label for="email">Email address:</label>
+                        <input type="email" ng-model="Email" placeholder="Enter Email"
+                               class="form-control"
+                               id="email">
+                    </div>
+                @endif
                 <div class="form-group">
                     <label for="pwd">Password:</label>
-                    <input type="password" ng-model="Password" placeholder="Enter Password" class="form-control" id="pwd">
+                    <input type="password" ng-model="Password" placeholder="Enter Password" class="form-control"
+                           id="pwd">
                 </div>
                 <div class="form-group">
                     <label for="pwd">Password Confirmation:</label>
-                    <input type="password"  ng-model="PasswordConf" placeholder="Retype Password" class="form-control" id="pwd">
+                    <input type="password" ng-model="PasswordConf" placeholder="Retype Password" class="form-control"
+                           id="pwd">
                 </div>
                 <div class="form-group">
-                    <button type="submit" ng-click="registerUser()" class="btn btn-default">
-                        <i class="fa fa-paper-plane"></i>
-                        Register
-                    </button>
+                    @if(isset($email) && $email != null)
+                        <button type="submit" ng-click="registerSubscribedUser()" class="btn btn-default">
+                            <i class="fa fa-paper-plane"></i>
+                            Register
+                        </button>
+                    @else
+                        <button type="submit" ng-click="registerUser()" class="btn btn-default">
+                            <i class="fa fa-paper-plane"></i>
+                            Register
+                        </button>
+                    @endif
                     <button type="submit" ng-click="registerWithFB()" class="btn btn-success">
                         <i class="fa fa-facebook"></i>
                         Register with Facebook
