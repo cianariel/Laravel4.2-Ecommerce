@@ -76,6 +76,18 @@
         {
             $userModel = $this;
 
+            $filterText = $settings['FilterValue'];
+
+            if ($settings['FilterItem'] == 'user-name-filter')
+            {
+                $userModel = $userModel->where("name", "like", "%$filterText%");
+            }
+            if ($settings['FilterItem'] == 'user-email-filter')
+            {
+                $userModel = $userModel->where("email", "like", "%$filterText%");
+            }
+
+
             $skip = $settings['limit'] * ($settings['page'] - 1);
             $userList['result'] = $userModel
                 ->take($settings['limit'])

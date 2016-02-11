@@ -370,7 +370,10 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
             $scope.storeList = [];
 
             // User
+            $scope.userListPageLimit = 30;
             $scope.userList = [];
+            $scope.SelectedUserFilter = '';
+            $scope.FilterUserItem = '';
             $scope.userFilterTypes = [
                 {"key": "user-name-filter", "value": "Search by Name ..."},
                 {"key": "user-email-filter", "value": "Search by Email ..."},
@@ -446,8 +449,9 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
             }).success(function (data) {
                 // console.log(data);
                 $scope.outputStatus(data, 'User information updated successfully');
-                //   $window.location = '/admin/user-list';
+               
                 $scope.Password = '';
+                $window.location = '/admin/user-list';
             });
         };
 
@@ -477,7 +481,7 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
 
             // todo - test init .remove after test
             console.log('sdf');
-            $scope.limit = 2;
+            $scope.limit = $scope.userListPageLimit;
 
             $http({
                 url: '/api/user/user-list',
@@ -487,6 +491,8 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
                     limit: $scope.limit,
                     page: $scope.page,
                     total: $scope.total,
+                    FilterItem: $scope.SelectedUserFilter,
+                    FilterValue: $scope.FilterUserItem
                 }
             }).success(function (data) {
                 console.log(data);
