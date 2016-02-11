@@ -652,18 +652,21 @@
                                 </div>
                             @endforeach
                         @endif
-
-
                     </div>
 
                     <div class="related-ideas col-xs-12">
                         <h3 class="orange">Related Ideas</h3>
-                        <div class="grid-box-3">
-                            @for($i=0; $i<3; $i++)
-                                <div class="box-item idea-box ">
-                                    <img class="img-responsive" src="/assets/images/dummies/box-image-dummy.png">
-                                    <span class="box-item__time ng-binding">22 hours ago</span>
+
+                            @if(isset($relatedIdeas) && ($relatedIdeas != null) )
+                                @foreach( $relatedIdeas as $item )
+                                <div class="box-item" >
+                                    <div class="img-holder">
+                                        <img alt="{{$item->feed_image->alt}}" title="{{$item->feed_image->alt}}" src="{{$item->feed_image->url}}">
+                                    </div>
+
+                                    <span class="box-item__time">{{$item->updated_at}}</span>
                                     <div class="box-item__overlay"></div>
+
                                     <ul class="social-stats">
                                         <li class="social-stats__item">
                                             <a href="#">
@@ -678,27 +681,28 @@
                                             </a>
                                         </li>
                                     </ul>
+
                                     <div class="round-tag round-tag--idea">
                                         <i class="m-icon m-icon--item"></i>
                                         <span class="round-tag__label">Idea</span>
                                     </div>
+
                                     <div class="box-item__label-idea">
-                                        <a href="#" class="box-item__label ng-binding">Mr Coffee smart</a>
+                                        <a href="{{$item->url}}" class="box-item__label">{{$item->title}}</a>
                                         <div class="clearfix"></div>
-                                        
-                                        <a href="#" class="box-item__read-more">Read More</a>
+                                        <a href="{{$item->url}}" class="box-item__read-more">Read More</a>
                                     </div>
+
                                     <div class="box-item__author">
-                                        <a href="#" class="user-widget">
-                                            <img class="user-widget__img"
-                                                 src="{{url('assets/images/dummies/author.png')}}">
-                                            <span class="user-widget__name ng-binding">Aiza Coronado</span>
+                                        <a href="{{$item->authorlink}}" class="user-widget">
+                                            <img class="user-widget__img" src="{{$item->avator}}">
+                                            <span class="user-widget__name">{{$item->author}}</span>
                                         </a>
                                     </div>
                                 </div>
-                            @endfor
-                        </div>                        
 
+                            @endforeach
+                            @endif
                     </div>
                 </div>
             </section>
