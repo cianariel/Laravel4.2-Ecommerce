@@ -1,6 +1,5 @@
 <?php
 
-
     /*
     |--------------------------------------------------------------------------
     | Application Routes
@@ -20,6 +19,9 @@
              var_dump($query);
          });
     */
+
+    Route::any('secure-page-header', 'UserController@securePageHeader');
+
 
     Route::get('/', 'PageController@home');
 
@@ -54,6 +56,15 @@
 
         Route::post('secure-page', 'AuthenticateController@securePage');
         Route::any('logout', 'AuthenticateController@logOut');
+
+        /*
+         * User management for Admin Panel
+         * */
+
+        Route::post('user/user-list','UserController@userList');
+        Route::get('user/get-user/{id?}','UserController@getUserById');
+       // Route::any('user/user-add/{id?}','UserController@userList');
+
 
         /*
          * Product Category route collection
@@ -167,9 +178,8 @@
         Route::get('product-add', 'AdminController@addProduct');
         Route::get('product-edit/{id?}', 'AdminController@editProduct');
 
-        // Stores
+        // Stores View
         Route::get('stores', 'AdminController@storeView');
-
 
         //Tag view
         Route::get('tag-view', 'AdminController@tagView');
@@ -178,6 +188,10 @@
         Route::get('room-view', 'AdminController@roomsView');
         Route::get('room-add', 'AdminController@addRoom');
         Route::get('room-edit/{id?}', 'AdminController@editRoom');
+
+        // User View
+        Route::get('user-list', 'AdminController@userList');
+        Route::get('user-add/{id?}', 'AdminController@userEdit');
 
     });
 
@@ -208,8 +222,12 @@
     //    Route::get('pro-details/{permalink?}', 'PageController@productDetailsPage');
     Route::get('product/{permalink?}', 'PageController@productDetailsPage');
     Route::get('room/{permalink?}', 'PageController@getRoomPage');
+
     // default signup
     Route::get('signup/{email?}', 'PageController@signupPage');
+
+    // default
+    Route::get('login', 'PageController@loginView');
 
     Route::get('/api/paging/get-content/{page?}/{limit?}/{category?}/{tag?}', 'PageController@getContent');
 

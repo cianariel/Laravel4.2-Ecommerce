@@ -144,6 +144,11 @@ class PageController extends Controller
         return view('signup')->with('email',$email);
     }
 
+    public function loginView()
+    {
+        return view('login');
+    }
+
     public function getProducts($limit, $page, $offset, $tagID){
         $productSettings = [
             'ActiveItem' => true,
@@ -231,8 +236,6 @@ class PageController extends Controller
             ->with('relatedIdeas',$relatedIdeas)
             ->with('selfImages',$result['selfImages'])
             ->with('storeInformation',$result['storeInformation']);
-
-
     }
     public function getRoomPage($permalink)
     {

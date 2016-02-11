@@ -36,6 +36,7 @@
             $this->media = new Media();
         }
 
+        // todo check and clena this function
         public function getStoreInformation()
         {
             $productId = 64;

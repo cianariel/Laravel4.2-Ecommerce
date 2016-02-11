@@ -4,6 +4,7 @@
 
     use App\Events\SendActivationMail;
     use App\Events\SendResetEmail;
+    use App\Models\Subscriber;
     use Crypt;
     use Illuminate\Http\Request;
     use Illuminate\Support\Facades\Redirect;
@@ -22,9 +23,16 @@
         public function __construct()
         {
             $this->user = new User();
+            $this->subscriber = new Subscriber();
 
             // Apply the jwt.auth middleware to all methods in this controller
-            $this->middleware('jwt.auth', ['except' => ['logOut', 'passwordResetForm', 'passwordReset', 'sendPasswordResetEmail', 'verifyEmail', 'index', 'authenticate', 'fbLogin', 'registerUser']]);
+            /*$this->middleware('jwt.auth', [
+                'except' => [
+                    'logOut', 'passwordResetForm',
+                    'passwordReset', 'sendPasswordResetEmail', 'verifyEmail', 'index',
+                    'authenticate', 'fbLogin', 'registerUser'
+                ]
+            ]);*/
             //parent::__construct();
         }
 
@@ -86,7 +94,15 @@
 
         public function logOut()
         {
-            $tokenValue = \Input::all();
+            // get token form input or session
+            $tokenValue = \Input::get('token');
+
+            if ($tokenValue == null)
+            {
+                $tokenValue = session('auth.token');
+            }
+
+            //$tokenValue = \Input::all();
             $message = "";
 
             // if a authenticated user request for logout then Token will be rest and session will set to null
@@ -100,8 +116,14 @@
             }
             session(['auth.token' => null]);
 
-            return $this->setStatusCode(IlluminateResponse::HTTP_OK)
-                ->makeResponse('successfully LogOut.' . $message);
+            if (\Input::ajax())
+            {
+                return $this->setStatusCode(IlluminateResponse::HTTP_OK)
+                    ->makeResponse('successfully LogOut.' . $message);
+            }else
+            {
+                return \Redirect::to('/');
+            }
         }
 
 
@@ -157,7 +179,7 @@
 
 
             // if no errors are encountered we can return a JWT
-            return $this->setStatusCode(IlluminateResponse::HTTP_OK)
+            return $this->setStatusCode(\Config::get("const.api-status.success"))
                 ->setAuthToken($token)
                 ->makeResponse("Successfully authenticated.");
 
@@ -229,44 +251,50 @@
                     ]
                 ];
 
+                // Validate through global validator in api-controller
                 list($userData, $validator) = $this->inputValidation($inputData, $validationRules);
 
                 if ($validator->fails())
                 {
                     // return with the failed reason and field's information
                     return $this->setStatusCode(\Config::get("const.api-status.validation-fail"))
-                        ->makeResponseWithError(array('Validation failed',$validator->messages()));
-
-
+                        ->makeResponseWithError(array('Validation failed', $validator->messages()));
                 } elseif ($validator->passes())
                 {
-
                     if ($this->user->IsEmailAvailable($userData['Email']) == false)
                     {
                         /*
                          * After successfully register the user data send JSON response if email is available.
                          * */
                         if ($this->user->SaveUserInformation($userData))
+                        {
+                            // Assign role for the user
+                            $this->user->assignRole($userData['Email'],array('user'));
+
+                            // Email subscription.
+                             $this->subscriber->subscribeUser($userData['Email']);
 
                             // for a subscribed user need not to confirm email for the second time.
-                            if(isset($inputData['Valid'])&&$inputData['Valid'] == true){
+                            if (isset($inputData['Valid']) && $inputData['Valid'] == true)
+                            {
                                 $this->user = $this->user->IsEmailAvailable($userData['Email']);
                                 $this->user->status = 'Active';
                                 $this->user->save();
 
                                 return $this->setStatusCode(IlluminateResponse::HTTP_OK)
                                     ->makeResponse('Registration completed successfully');
-                            }
-                        else{
-                        // On successful user registration an email will be send through Event to verify email id.
-                            \Event::fire(new SendActivationMail(
-                                $userData['FullName'],
-                                $userData['Email'],
-                                Crypt::encrypt($userData['Email'])
-                            ));
+                            } else
+                            {
+                                // On successful user registration an email will be send through Event to verify email id.
+                                \Event::fire(new SendActivationMail(
+                                    $userData['FullName'],
+                                    $userData['Email'],
+                                    Crypt::encrypt($userData['Email'])
+                                ));
 
-                        return $this->setStatusCode(IlluminateResponse::HTTP_OK)
-                            ->makeResponse('Registration completed successfully,please verify email');
+                                return $this->setStatusCode(IlluminateResponse::HTTP_OK)
+                                    ->makeResponse('Registration completed successfully,please verify email');
+                            }
                         }
                     } else
                     {
@@ -276,6 +304,7 @@
                 }
             } catch (\Exception $ex)
             {
+              //  dd($ex);
                 \Log::error($ex);
 
                 return $this->setStatusCode(\Config::get("const.api-status.system-fail"))
@@ -288,20 +317,27 @@
         {
             try
             {
-                $user = $this->isEmailValidate(JWTAuth::parseToken()->authenticate()->email);
+                $input = \Input::all();//array('FullName');
+                $userRoles = \Input::get('UserRoles');
 
-                $userData = \Input::all();
+                unset($input['UserRoles']);
+                $userData = $input;//\Input::all();
+
+
+                // $user = $this->isEmailValidate(JWTAuth::parseToken()->authenticate()->email);
+                 $user = $this->isEmailValidate($userData['Email']);
+
                 $validationRules = [
 
                     'rules'  => [
-                        'FullName' => isset($userData['Password']) ? 'required | max: 25' : '',
+                        'FullName' => (isset($userData['FullName']) && ($userData['FullName'] != "")) ? 'required | max: 25' : '',
 
-                        'Password' => isset($userData['Password']) ? 'required | min: 6 ' : '',
+                        'Password' => (isset($userData['Password']) && ($userData['Password'] != ""))  ? 'required | min: 6 ' : '',
                     ],
                     'values' => [
-                        'FullName' => isset($userData['FullName']) ? $userData['FullName'] : null,
+                        'FullName' => (isset($userData['FullName']) && ($userData['FullName'] != "")) ? $userData['FullName'] : null,
 
-                        'Password' => isset($userData['Password']) ? $userData['Password'] : null
+                        'Password' => (isset($userData['Password']) && ($userData['Password'] != "")) ? $userData['Password'] : null
                     ]
                 ];
 
@@ -314,15 +350,25 @@
                         ->makeResponseWithError("Invalid Input Data :" . $validator->messages());
                 } elseif ($validator->passes())
                 {
-                    if (isset($userData['FullName']))
-                        $user->name = $userData['FullName'];
+                    // Assign role for the user
+                    $this->user->assignRole($userData['Email'],$userRoles);
 
-                    if (isset($userData['Password']))
+                    if (isset($userData['FullName']) && ($userData['FullName'] != ""))
+                    {
+                        $user->name = $userData['FullName'];
+                    }
+
+
+                    if (isset($userData['Password']) && ($userData['Password'] != ""))
+                    {
                         $user->password = \Hash::make($userData['Password']);
+                    }
+
+                    $user->status = $input['UserStatus'];
 
                     $user->save();
 
-                    return $this->setStatusCode(IlluminateResponse::HTTP_OK)
+                    return $this->setStatusCode(\Config::get("const.api-status.success"))
                         ->makeResponse('Successfully profile information changed');
 
                 }

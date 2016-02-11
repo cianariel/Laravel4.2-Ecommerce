@@ -2,6 +2,7 @@
 
     namespace App\Http\Controllers;
 
+    use App\Models\Role;
     use Illuminate\Http\Request;
 
     use App\Http\Requests;
@@ -14,6 +15,7 @@
     use Illuminate\Contracts\Filesystem\Factory;
 
     use JWTAuth;
+    use Tymon\JWTAuth\Exceptions\JWTException;
     use FeedParser;
 
     class ApiController extends Controller {
@@ -23,8 +25,9 @@
 
         public function __construct()
         {
-          //  $this->middleware('jwt.auth', ['except' => ['mediaUpload']]);
+            //  $this->middleware('jwt.auth', ['except' => ['mediaUpload']]);
 
+           // $this->role = new Role();
         }
 
         /**
@@ -66,7 +69,7 @@
          * @param $toke
          * @return $this
          */
-        public function setAuthToken($toke)
+        public function setAuthToken($toke = null)
         {
             session(['auth.token' => isset($toke) ? $toke : null]);
             $this->authToken = $toke;
@@ -87,7 +90,9 @@
             if ($authToken != "")
             {
                 $data = array_merge(['data' => $data], [
-                    'token' => $this->getAuthToken()
+                    'token'       => $this->getAuthToken(),
+                    'status_code' => $this->getStatusCode()
+
                 ]);
             } else
             {
@@ -150,33 +155,39 @@
             {
                 $fileResponse['result'] = \Config::get("const.file.file-not-exist");
                 $fileResponse['status_code'] = \Config::get("const.api-status.validation-fail");
+
                 return $fileResponse;
 
             } else if (!$request->file('file')->isValid())
             {
                 $fileResponse['result'] = \Config::get("const.file.file-not-exist");
                 $fileResponse['status_code'] = \Config::get("const.api-status.validation-fail");
+
                 return $fileResponse;
             } else if (in_array($request->file('file')->guessClientExtension(), array("jpeg", "jpg", "bmp", "png", "mp4", "avi", "mkv")))
             {
-                $fileResponse['result'] =  \Config::get("const.file.file-not-exist");
+                $fileResponse['result'] = \Config::get("const.file.file-not-exist");
                 $fileResponse['status_code'] = \Config::get("const.api-status.validation-fail");
+
                 return $fileResponse;
             } else if ($request->file('file')->getClientSize() > \Config::get("const.file.file-max-size"))
             {
                 $fileResponse['result'] = \Config::get("const.file.file-max-limit-exit");
                 $fileResponse['status_code'] = \Config::get("const.api-status.validation-fail");
+
                 return $fileResponse;
-            }else{
-                $fileName = 'product-'.$request->file('file')->getClientOriginalName().uniqid().$request->file('file')->getClientOriginalExtension();
+            } else
+            {
+                $fileName = 'product-' . $request->file('file')->getClientOriginalName() . uniqid() . $request->file('file')->getClientOriginalExtension();
 
                 // pointing filesystem to AWS S3
                 $s3 = Storage::disk('s3');
 
-                if($s3->put($fileName,file_get_contents($request->file('file')),'public'))
+                if ($s3->put($fileName, file_get_contents($request->file('file')), 'public'))
                 {
-                    $fileResponse['result'] = \Config::get("const.file.s3-path").$fileName;
+                    $fileResponse['result'] = \Config::get("const.file.s3-path") . $fileName;
                     $fileResponse['status_code'] = \Config::get("const.api-status.success");
+
                     return $fileResponse;
                 }
             }
@@ -202,5 +213,96 @@
             return array($cleanData, $validator);
         }
 
+
+        /** Authenticate a user
+         * @return mixed
+         */
+        public function RequestAuthentication($roles = null)
+        {
+            // initializing response variables
+            $response['status-code'] = '';
+            $response['status-message'] = '';
+            $response['user-data'] = '';
+            $response['toke'] = '';
+            $response['role-authorized']=false;
+
+            // get token form input or session
+            $token = \Input::get('token');
+
+            if ($token == null)
+            {
+                $token = session('auth.token');
+            }
+
+            // check authentication and catch exception
+            try
+            {
+                $user = JWTAuth::authenticate($token);
+                if (!$user)
+                {
+                    $response['status-code'] = '900';
+                    $response['status-message'] = 'No user Found';
+                } else
+                {
+                    $response['user-data'] = $user;
+
+                    $newToken = JWTAuth::refresh($token);
+                    $this->setAuthToken($newToken);
+                    //    $response['token'] = $newToken;
+                    $response['status-code'] = '200';
+                    $response['status-message'] = 'User Validated';
+
+                    if($roles != null)
+                    {
+                        $roleStatus = $user->hasRole($roles);
+                        if($roleStatus == false)
+                        {
+                            $response['status-code'] = '940';
+                            $response['status-message'] = 'User Not Authorized';
+                        }
+
+                    }
+                }
+
+            } catch (\Tymon\JWTAuth\Exceptions\TokenExpiredException $e)
+            {
+                $response['status-code'] = '910';
+                $response['status-message'] = 'Token Expired';
+            } catch (\Tymon\JWTAuth\Exceptions\TokenInvalidException $e)
+            {
+                $response['status-code'] = '920';
+                $response['status-message'] = 'Token Invalid';
+            } catch (\Tymon\JWTAuth\Exceptions\JWTException $e)
+            {
+                $response['status-code'] = '930';
+                $response['status-message'] = 'Token Not Provided';
+            }
+
+            // check for method type and error
+            if (in_array($response['status-code'], array(900, 910, 920, 930,940)))
+            {
+                if (\Input::ajax())
+                {
+                    $response['method-status'] = 'fail-with-ajax';
+
+                } else
+                {
+                    $response['method-status'] = 'fail-with-http';
+                }
+            } else
+            {
+
+                if (\Input::ajax())
+                {
+                    $response['method-status'] = 'success-with-ajax';
+
+                } else
+                {
+                    $response['method-status'] = 'success-with-http';
+                }
+            }
+
+            return $response;
+        }
 
     }

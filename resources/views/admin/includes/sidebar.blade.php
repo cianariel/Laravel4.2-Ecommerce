@@ -47,6 +47,25 @@
             </li>
             <li class="nav-item  ">
                 <a href="javascript:;" class="nav-link nav-toggle">
+                    <i class="icon-graph"></i>
+                    <span class="title">User Management</span>
+                    <span class="arrow"></span>
+                </a>
+                <ul class="sub-menu">
+                    <li class="nav-item  ">
+                        <a href="/admin/user-list" class="nav-link ">
+                            <span class="title">User List</span>
+                        </a>
+                    </li>
+                    <li class="nav-item  ">
+                        <a href="/admin/user-add" class="nav-link ">
+                            <span class="title">Add User</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="nav-item  ">
+                <a href="javascript:;" class="nav-link nav-toggle">
                     <i class="icon-tag"></i>
                     <span class="title">Categories</span>
                     <span class="arrow"></span>
