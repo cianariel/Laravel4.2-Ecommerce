@@ -19,7 +19,8 @@
     "tymon/jwt-auth": "0.5.*",
     "laravelcollective/html": "5.1.*",
     "intervention/image": "^2.3",
-    "torann/laravel-meta-tags": "^3.0"
+    "torann/laravel-meta-tags": "^3.0",
+    "barryvdh/laravel-cors": "^0.7.3"
 
   },
   "require-dev": {

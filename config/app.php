@@ -156,7 +156,8 @@
             'Tymon\JWTAuth\Providers\JWTAuthServiceProvider',
             'Zizaco\Entrust\EntrustServiceProvider',
             'Baum\Providers\BaumServiceProvider',
-            'Intervention\Image\ImageServiceProvider'
+            'Intervention\Image\ImageServiceProvider',
+            'Barryvdh\Cors\ServiceProvider',
 
         ],
 
