@@ -115,6 +115,28 @@ class PageController extends Controller
         return $return;
     }
 
+    public function getRelatedStories($currentStoryID, $limit, $tags){
+        $url = 'http://staging.ideaing.com/ideas/feeds/index.php?count='.$limit;
+
+        if($tags && $tags != 'false'){
+            $url .= '&tag_in=' . implode(',', $tags);
+        }
+        if($currentStoryID){
+            $url .= '&excludeid=' . $currentStoryID;
+        }
+
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_HEADER, 0);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_ENCODING ,"");
+        $json = curl_exec($ch);
+
+        $return = json_decode($json);
+
+        return $return;
+    }
+
     public function signupPage($email = '')
     {
        // dd($email);
@@ -152,6 +174,32 @@ class PageController extends Controller
         return $products;
     }
 
+    public function getRelatedProducts($productID, $limit, $tagID){
+        $productSettings = [
+            'ActiveItem' => true,
+            'excludeID' => $productID,
+            'limit'      => $limit,
+//            'page'       => $page,
+//            'CustomSkip' => $offset,
+//
+//            'CategoryId' => false,
+//            'FilterType' => false,
+//            'FilterText' => false,
+//            'ShowFor'    => false,
+//            'WithTags'   => false,
+        ];
+
+        if(is_array($tagID)){
+            $productSettings['TagId'] = $tagID;
+        }
+
+        $prod = new Product();
+
+        $products = $prod->getProductList($productSettings);
+
+        return $products;
+    }
+
 
     public function productDetailsPage($permalink)
     {
@@ -165,6 +213,18 @@ class PageController extends Controller
 
         $result = $product->productDetailsViewGenerate($productData, $catTree);
 
+//        $currentTag = [];
+        $currentTags = Product::find($productData['product']['id'])->tags()->lists('tag_id');
+
+//        $tagNames = [];
+        foreach($currentTags as $tagID){
+            $tagNames[] = Tag::find($tagID)->tag_name;
+        }
+
+        $relatedIdeas = self::getRelatedStories($productData['product']['id'], 3, $tagNames);
+
+//        $related
+
         MetaTag::set('title',$result['productInformation']['PageTitle']);
         MetaTag::set('description',$result['productInformation']['MetaDescription']);
 
@@ -173,6 +233,7 @@ class PageController extends Controller
             ->with('permalink',$permalink)
             ->with('productInformation',$result['productInformation'])
             ->with('relatedProducts',$result['relatedProducts'])
+            ->with('relatedIdeas',$relatedIdeas)
             ->with('selfImages',$result['selfImages'])
             ->with('storeInformation',$result['storeInformation']);
     }
