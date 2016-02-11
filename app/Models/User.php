@@ -154,6 +154,12 @@
             }
         }
 
+        public function getUserRolesByEmail()
+        {
+            
+
+        }
+
         public function FindOrCreateUser($userData)
         {
             try

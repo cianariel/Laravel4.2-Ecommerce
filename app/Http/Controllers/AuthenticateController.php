@@ -26,13 +26,13 @@
             $this->subscriber = new Subscriber();
 
             // Apply the jwt.auth middleware to all methods in this controller
-            $this->middleware('jwt.auth', [
+            /*$this->middleware('jwt.auth', [
                 'except' => [
                     'logOut', 'passwordResetForm',
                     'passwordReset', 'sendPasswordResetEmail', 'verifyEmail', 'index',
                     'authenticate', 'fbLogin', 'registerUser'
                 ]
-            ]);
+            ]);*/
             //parent::__construct();
         }
 
@@ -256,8 +256,9 @@
                         {
                             // Assign role for the user
                             $this->user->assignRole($userData['Email'],array('user'));
-                           // todo add subscription.
-                            // $this->subscriber->
+
+                            // Email subscription.
+                             $this->subscriber->subscribeUser($userData['Email']);
 
                             // for a subscribed user need not to confirm email for the second time.
                             if (isset($inputData['Valid']) && $inputData['Valid'] == true)
@@ -289,7 +290,7 @@
                 }
             } catch (\Exception $ex)
             {
-                dd($ex);
+              //  dd($ex);
                 \Log::error($ex);
 
                 return $this->setStatusCode(\Config::get("const.api-status.system-fail"))
@@ -302,29 +303,23 @@
         {
             try
             {
-                // get token form input or session
-                $token = \Input::get('token');
-
-                if ($token == null)
-                {
-                    $token = session('auth.token');
-                }
-
-               // $user = $this->isEmailValidate(JWTAuth::parseToken()->authenticate()->email);
-                 $user = $this->isEmailValidate(JWTAuth::authenticate($token)->email);
-
                 $userData = \Input::all();
+
+
+                // $user = $this->isEmailValidate(JWTAuth::parseToken()->authenticate()->email);
+                 $user = $this->isEmailValidate($userData['Email']);
+
                 $validationRules = [
 
                     'rules'  => [
-                        'FullName' => isset($userData['Password']) ? 'required | max: 25' : '',
+                        'FullName' => (isset($userData['FullName']) && ($userData['FullName'] != "")) ? 'required | max: 25' : '',
 
-                        'Password' => isset($userData['Password']) ? 'required | min: 6 ' : '',
+                        'Password' => (isset($userData['Password']) && ($userData['Password'] != ""))  ? 'required | min: 6 ' : '',
                     ],
                     'values' => [
-                        'FullName' => isset($userData['FullName']) ? $userData['FullName'] : null,
+                        'FullName' => (isset($userData['FullName']) && ($userData['FullName'] != "")) ? $userData['FullName'] : null,
 
-                        'Password' => isset($userData['Password']) ? $userData['Password'] : null
+                        'Password' => (isset($userData['Password']) && ($userData['Password'] != "")) ? $userData['Password'] : null
                     ]
                 ];
 
@@ -337,15 +332,20 @@
                         ->makeResponseWithError("Invalid Input Data :" . $validator->messages());
                 } elseif ($validator->passes())
                 {
-                    if (isset($userData['FullName']))
+                    if (isset($userData['FullName']) && ($userData['FullName'] != ""))
+                    {
                         $user->name = $userData['FullName'];
+                    }
 
-                    if (isset($userData['Password']))
+
+                    if (isset($userData['Password']) && ($userData['Password'] != ""))
+                    {
                         $user->password = \Hash::make($userData['Password']);
+                    }
 
                     $user->save();
 
-                    return $this->setStatusCode(IlluminateResponse::HTTP_OK)
+                    return $this->setStatusCode(\Config::get("const.api-status.success"))
                         ->makeResponse('Successfully profile information changed');
 
                 }

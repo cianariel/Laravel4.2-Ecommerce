@@ -143,10 +143,7 @@
                     ->makeResponse($subs);
             } else
             {
-                $this->subscriber->email = $userData['Email'];
-                $this->subscriber->status = 'Subscribed';
-
-                $subs = $this->subscriber->save();
+                $subs = $this->subscriber->subscribeUser($userData['Email']);
                 \Event::fire(new SendSubscriptionMail(
                     $userData['Email']
                 ));
@@ -161,4 +158,6 @@
         {
             return view('user.user-profile');
         }
+
+
     }

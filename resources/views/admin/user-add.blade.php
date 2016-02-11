@@ -22,9 +22,9 @@
 
                 <div class="col-md-12" ng-cloak>
                     @if( !empty($id))
-                        <div ng-init="loadProductData({{$id}})"></div>
+                        <div ng-init="getUserInfoById({{$id}})">&nbsp;</div>
                     @endif
-                    <div ng-init="loadAddProduct()">
+                    <div ng-init="">
                         <form role="form" name="myForm" enctype="multipart/form-data"
                               class="form-horizontal form-row-seperated">
                             <div class="portlet">
@@ -35,8 +35,11 @@
                                     </div>
                                     <div class="actions btn-set">
 
-                                        <button data-ng-click="addUser()" class="btn btn-success">
+                                        <button data-ng-click="addUser()" ng-hide="userId != ''" class="btn btn-success">
                                             <i class="fa fa-check"></i> Save
+                                        </button>
+                                        <button data-ng-click="updateUser()" ng-show="userId != ''" class="btn btn-warning">
+                                            <i class="fa fa-check"></i> Update
                                         </button>
                                         {{--<button ng-hide="Permalink == ''"
                                             data-ng-click="previewProduct(Permalink)" class="btn btn-success">

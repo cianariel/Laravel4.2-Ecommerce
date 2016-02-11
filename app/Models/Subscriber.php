@@ -46,6 +46,21 @@ class Subscriber extends Model
 
     }
 
+    /**
+     * @param $userData
+     * @return bool
+     */
+    public function subscribeUser($email)
+    {
+        $subscriber = new Subscriber();
+        $subscriber->email = $email;
+        $subscriber->status = 'Subscribed';
+
+        $subs = $subscriber->save();
+
+        return $subs;
+    }
+
 
 
 

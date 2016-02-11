@@ -375,9 +375,48 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
                 {"key": "user-name-filter", "value": "Search by Name ..."},
                 {"key": "user-email-filter", "value": "Search by Email ..."},
             ];
+            $scope.userId = '';
+            $scope.FullName = '';
+            $scope.Password = null;
+            $scope.Email = null;
+
         };
 
         // User management //
+
+        $scope.getUserInfoById = function(id){
+            $http({
+                url: '/api/user/get-user/'+id,
+                method: "GET",
+
+            }).success(function (data) {
+                console.log(data);
+                $scope.userId = data.data.id;
+                $scope.FullName = data.data.name;
+                $scope.Password = null;
+                $scope.Email = data.data.email;
+              //  $scope.outputStatus(data, 'User added successfully');
+              //  $window.location = '/admin/user-list';
+            });
+        };
+
+        $scope.updateUser = function () {
+            $scope.closeAlert();
+
+            $http({
+                url: '/api/change-profile',
+                method: "POST",
+                data: {
+                    FullName: $scope.FullName == '' ? null : $scope.FullName,
+                    Email: $scope.Email,
+                    Password: $scope.Password == '' ? null : $scope.Password,
+                }
+            }).success(function (data) {
+               // console.log(data);
+                $scope.outputStatus(data, 'User updated successfully');
+                //   $window.location = '/admin/user-list';
+            });
+        };
 
         $scope.addUser = function () {
             $scope.closeAlert();
