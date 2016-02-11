@@ -303,7 +303,11 @@
         {
             try
             {
-                $userData = \Input::all();
+                $input = \Input::all();//array('FullName');
+                $userRoles = \Input::get('UserRoles');
+
+                unset($input['UserRoles']);
+                $userData = $input;//\Input::all();
 
 
                 // $user = $this->isEmailValidate(JWTAuth::parseToken()->authenticate()->email);
@@ -332,6 +336,9 @@
                         ->makeResponseWithError("Invalid Input Data :" . $validator->messages());
                 } elseif ($validator->passes())
                 {
+                    // Assign role for the user
+                    $this->user->assignRole($userData['Email'],$userRoles);
+
                     if (isset($userData['FullName']) && ($userData['FullName'] != ""))
                     {
                         $user->name = $userData['FullName'];

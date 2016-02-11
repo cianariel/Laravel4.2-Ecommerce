@@ -380,12 +380,26 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
             $scope.Password = null;
             $scope.Email = null;
 
-            $scope.roleCollection =[];
+            $scope.roleCollection = [];
             $scope.userRoles = [];
 
         };
 
         // User management //
+
+        $scope.toggleSelection = function toggleSelection(role) {
+            var idx = $scope.userRoles.indexOf(role);
+
+            // is currently selected
+            if (idx > -1) {
+                $scope.userRoles.splice(idx, 1);
+            }
+
+            // is newly selected
+            else {
+                $scope.userRoles.push(role);
+            }
+        };
 
         $scope.getUserInfoById = function (id) {
             $http({
@@ -399,8 +413,8 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
                 $scope.Password = null;
                 $scope.Email = data.data.email;
 
-               // $scope.roleCollection = data.data.role-collection;
-              //  $scope.userRoles = data.data.roles;
+                $scope.roleCollection = data.data.RoleCollection;
+                $scope.userRoles = data.data.Roles;
 
                 //  $scope.outputStatus(data, 'User added successfully');
                 //  $window.location = '/admin/user-list';
@@ -417,6 +431,7 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
                     FullName: $scope.FullName == '' ? null : $scope.FullName,
                     Email: $scope.Email,
                     Password: $scope.Password == '' ? null : $scope.Password,
+                    UserRoles: $scope.userRoles
                 }
             }).success(function (data) {
                 // console.log(data);
@@ -446,8 +461,6 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
                 $scope.Email = '';
                 $scope.Password = '';
             });
-
-
         };
 
         $scope.getUserList = function () {

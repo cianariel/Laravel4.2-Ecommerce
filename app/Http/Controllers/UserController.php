@@ -54,7 +54,7 @@
 
             try{
 
-                $totalRoleCollection = $this->roleModel->get();
+                $totalRoleCollection = $this->roleModel->get(array('id','name','display_name'));
 
                 $user = $this->user->where('id','=',$id)->first();
 
@@ -67,8 +67,8 @@
                     array_push($roleCollection,$role['name']);
                 }
 
-                $user['roles'] = $roleCollection;
-                $user['role-collection'] = $totalRoleCollection;
+                $user['Roles'] = $roleCollection;
+                $user['RoleCollection'] = $totalRoleCollection;
 
                 //$userList = $this->user->getUserList($settings);
 
