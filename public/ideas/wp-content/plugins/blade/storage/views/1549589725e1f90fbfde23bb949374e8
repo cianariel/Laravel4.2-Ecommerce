@@ -34,20 +34,46 @@
             </div>
 
         </header>
-        <nav class="mid-nav hidden-xs">
+<?php
+    $tags = [];
+//    if($tags) {
+//        $first_tag = $tags[0]->term_id;
+//        foreach($tags as $tag){
+//            $allTags[] = $tag->slug;
+//        }
+//        print_r($allTags); die();
+//    }
+//            print_r($allTags); die();
+
+    ?>
+        <nav class="mid-nav hidden-xs" style="float: left">
                 <div class="container">
                     <ul class="wrap col-xs-9">
                         <!--                    <li><a class="home-link" href="#">Home</a></li>-->
+                    <?php if(empty($tags)): ?>
                         <li class="kitchen">
                             <span class="box-link-active-line"></span>
-                            <a href="#" class="">
-                                Kitchen
+                            <a href="<?php echo get_site_url(); ?>" class="">
+                                Smart Home
                             </a>
                         </li>
-                        <li class="horizontal-line-holder hidden-xs hidden-sm">
-                            <span class="horizontal-line"></span>
-                        </li>
-                        <li><a href="#" class="">Style</a></li>
+                    <?php else: ?>
+                        <?php foreach($tags as $i => $tag): ?>
+                            <?php if($i == 0): ?>
+                                <li class="kitchen">
+                                    <span class="box-link-active-line"></span>
+                                    <a href="<?php echo get_site_url(); ?>/tag/<?php echo $tag->slug; ?>" class="">
+                                        <?php echo $tag->name; ?>
+                                    </a>
+                                </li>
+                            <?php else: ?>
+                                <li class="horizontal-line-holder hidden-xs hidden-sm">
+                                    <span class="horizontal-line"></span>
+                                </li>
+                                <li><a href="<?php echo get_site_url(); ?>/tag/<?php echo $tag->slug; ?>" class=""><?php echo $tag->name; ?></a></li>
+                            <?php endif; ?>
+                        <?php endforeach; ?>
+                    <?php endif; ?>
                     </ul>
                 </div>
         </nav>
