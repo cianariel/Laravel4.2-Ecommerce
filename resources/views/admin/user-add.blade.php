@@ -114,12 +114,22 @@
                                                            placeholder="Enter Password" class="form-control"
                                                            id="pwd">
                                                 </div>
-
-                                                <div class="form-group">
-                                                    <label>Role:</label>
-                                                    <br />
-
-                                                </div>
+                                                @if( !empty($id))
+                                                    <div class="form-group">
+                                                        <label>Role:</label>
+                                                        <br/>
+                                                        <div ng-repeat="role in roleCollection">
+                                                            <input
+                                                                    type="checkbox"
+                                                                    name="selectedRoles[]"
+                                                                    value="@{{role.name}}"
+                                                                    ng-checked="userRoles.indexOf(role.name) > -1"
+                                                                    ng-click="toggleSelection(role.name)"
+                                                            > @{{role.display_name}}
+                                                            <br/>
+                                                        </div>
+                                                    </div>
+                                                @endif
 
                                             </div>
                                         </div>
