@@ -128,7 +128,7 @@
                                                             <tbody>
                                                             <tr ng-repeat="user in userList">
                                                                 <td>
-                                                                    <a href="/-/"
+                                                                    <a 
                                                                        target="_blank">
                                                                         <img id="currentPhoto"
                                                                              ng-src='@{{ user.user-img }}'

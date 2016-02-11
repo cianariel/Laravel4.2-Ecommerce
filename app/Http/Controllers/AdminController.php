@@ -28,7 +28,8 @@
                 ]);
             $this->product = new Product();*/
 
-            $this->authCheck = $this->RequestAuthentication();
+            // check authentication with role 'admin' (default parameter)
+            $this->authCheck = $this->RequestAuthentication(array('admin'));
         }
 
         public function index()

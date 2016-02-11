@@ -2,6 +2,7 @@
 
     namespace App\Http\Controllers;
 
+    use App\Models\Role;
     use Illuminate\Http\Request;
 
     use App\Http\Requests;
@@ -26,6 +27,7 @@
         {
             //  $this->middleware('jwt.auth', ['except' => ['mediaUpload']]);
 
+           // $this->role = new Role();
         }
 
         /**
@@ -215,13 +217,14 @@
         /** Authenticate a user
          * @return mixed
          */
-        public function RequestAuthentication()
+        public function RequestAuthentication($roles = null)
         {
             // initializing response variables
             $response['status-code'] = '';
             $response['status-message'] = '';
             $response['user-data'] = '';
             $response['toke'] = '';
+            $response['role-authorized']=false;
 
             // get token form input or session
             $token = \Input::get('token');
@@ -248,6 +251,17 @@
                     //    $response['token'] = $newToken;
                     $response['status-code'] = '200';
                     $response['status-message'] = 'User Validated';
+
+                    if($roles != null)
+                    {
+                        $roleStatus = $user->hasRole($roles);
+                        if($roleStatus == false)
+                        {
+                            $response['status-code'] = '940';
+                            $response['status-message'] = 'User Not Authorized';
+                        }
+
+                    }
                 }
 
             } catch (\Tymon\JWTAuth\Exceptions\TokenExpiredException $e)
@@ -264,22 +278,15 @@
                 $response['status-message'] = 'Token Not Provided';
             }
 
-            //   return $response;
-
             // check for method type and error
-            if (in_array($response['status-code'], array(900, 910, 920, 930)))
+            if (in_array($response['status-code'], array(900, 910, 920, 930,940)))
             {
                 if (\Input::ajax())
                 {
-
                     $response['method-status'] = 'fail-with-ajax';
 
-                    //  return $this->setStatusCode($response['status-code'])
-                    //      ->makeResponse($response['status-message']);
-                    // return $response;
                 } else
                 {
-                    // return \Response::view('login');//$response;//\Redirect::to('/login');
                     $response['method-status'] = 'fail-with-http';
                 }
             } else
@@ -287,18 +294,15 @@
 
                 if (\Input::ajax())
                 {
-
                     $response['method-status'] = 'success-with-ajax';
 
                 } else
                 {
-
                     $response['method-status'] = 'success-with-http';
                 }
             }
 
             return $response;
-            //   return redirect('/login');
         }
 
     }
