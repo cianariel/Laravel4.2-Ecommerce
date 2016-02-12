@@ -94,7 +94,7 @@ jQuery(document).ready(function($) {
 });
 </script>
 
-<div ng-app="pagingApp" ng-controller="pagingController">
+<div ng-controller="pagingController">
     <div id="hero" class="royalSlider heroSlider rsMinW room-hero slider">
         @if(isset($roomInformation['images']))
             @foreach( $roomInformation['images'] as $key => $image )
@@ -123,7 +123,7 @@ jQuery(document).ready(function($) {
                 <img class="rsImg" src="{{$image['Image']}}" alt="{{$image['Image_alt']}}">
 <!--                <img class="rsImg" src="http://10.0.1.101/1.jpg" alt="{{$image['Image_alt']}}">-->
 
-                <span ng-click="open({{$key}})" class="room-related-product-button" ng-click="cancel()">+</span>
+                <span ng-click="open({{$key}})" class="room-related-product-button" >+</span>
 
                 <script type="text/ng-template" id="room-related-product-{{$key}}.html">
                     <div class="modal-header">
@@ -189,9 +189,9 @@ jQuery(document).ready(function($) {
     <main class="page-content">
         <div class="app-wrap" >
             <nav id="hero-nav" class="col-sm-12">
-                <div class="container   fixed-sm">
+                <div class="container">
                     <div class="col-md-12 hidden-lg">
-                        <ul class="popular-new center-block">
+                        <ul class="popular-new text-center">
                         <li class="">
                             <a href="#" class="box-link active">Newest</a>
                         </li>
@@ -202,10 +202,11 @@ jQuery(document).ready(function($) {
                     </div>
 
                     <div class="col-lg-offset-3 col-lg-6">
+                        <div class="row">
                         <ul class="category-nav main-content-filter ">
                         <li class="active">
                             <a ng-click="filterContent(null)" href="" data-filterby="all" class="all-link">
-                                <i class="m-icon m-icon--menu"></i>&nbsp;
+                                        <i class="m-icon m-icon--menu"></i>
                                 All
                             </a>
                         </li>
@@ -218,17 +219,18 @@ jQuery(document).ready(function($) {
                         <li>
                             <a ng-click="filterContent('product')" data-filterby="products" href=""
                                class="products-link">
-                                <i class="m-icon m-icon--item"></i>&nbsp;
+                                        <i class="m-icon m-icon--item"></i>
                                 Products
                             </a>
                         </li>
                         <li>
                             <a data-filterby="photos" href="" class="photos-link">
-                                <i class="m-icon m-icon--image"></i>&nbsp;
+                                        <i class="m-icon m-icon--image"></i>
                                 Photos
                             </a>
                         </li>
                     </ul>
+                    </div>
                     </div>
                     <div class="col-lg-3 visible-lg">
                         <ul class="popular-new ">

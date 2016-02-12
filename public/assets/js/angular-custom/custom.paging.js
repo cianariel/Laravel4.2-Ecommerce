@@ -131,12 +131,32 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap']).
 
         };
 
-        
         $scope.open = function (key) {
             var templateUrl = "room-related-product-" + key + ".html";
             var modalInstance = $uibModal.open({
               templateUrl: templateUrl,
               size: 'lg',
+              controller: 'ModalInstanceCtrltest'
+            });
+        };
+        
+        $scope.openProfileSetting = function () {
+            var templateUrl = "profile-setting.html";
+            var modalInstance = $uibModal.open({
+              templateUrl: templateUrl,
+              size: 'lg',
+              windowClass : 'profile-setting-modal',
+              controller: 'ModalInstanceCtrltest'
+            });
+        };
+    })
+    .controller('headerController', function($scope, $uibModal,$http,pagaingApi, $filter) {
+        $scope.openProfileSetting = function () {
+            var templateUrl = "profile-setting.html";
+            var modalInstance = $uibModal.open({
+              templateUrl: templateUrl,
+              size: 'lg',
+              windowClass : 'profile-setting-modal',
               controller: 'ModalInstanceCtrltest'
             });
         };

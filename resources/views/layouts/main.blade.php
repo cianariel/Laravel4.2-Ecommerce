@@ -5,12 +5,14 @@
     </head>
 
     <body class="@yield('body-class', '')">
+    <div ng-app="pagingApp">
     @include('layouts.parts.header')
 
         @yield('content')
 
     @include('layouts.parts.footer')
     @include('layouts.parts.login-signup')
+    </div>
     
 
     </body>
