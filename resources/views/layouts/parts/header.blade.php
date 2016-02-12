@@ -67,11 +67,11 @@
                                     </div>
                                 </section>
 
-                                @if(isset($login) && $login)
+                                <?php if(isset($login) && $login) { ?>
                                     <div class="col-xs-3 col-sm-2">
                                         <div class="row">
                                             <div class="pull-right profile-photo-holder">
-                                                <a href="#"><img width="40px" src="{{isset($profile) ? $profile : ""}}" alt="" class="profile-photo "></a> 
+                                                <a href="#"><img width="40px" src="<?php isset($profile) ? $profile : "" ?>" alt="" class="profile-photo "></a>
                                                 <div class="profilelinks-popup">
                                                     <div class="menu-group">
                                                         <div><a href="#">My Profile</a> </div>
@@ -97,15 +97,15 @@
                                                         <div class="clearfix"></div>
                                                     </div>
                                                     <div class="notification-body">
-                                                        @for($i=0; $i<5; $i++)
+                                                        <?php for($i=0; $i<5; $i++) {?>
                                                             <div class="notification-item">
-                                                                <img width="40px" src="{{$profile}}" class="profile-photo pull-left">
+                                                                <img width="40px" src="<?php echo $profile ?>" class="profile-photo pull-left">
                                                                 <div>
                                                                     <span><strong>Syvia Saint Creat</strong> commented on your photos</span><br>
                                                                     <small>58 minutes ago</small>
                                                                 </div>
                                                             </div>
-                                                        @endfor
+                                                        <?php }?>
                                                     </div>
                                                     <div class="notification-footer">
                                                         <span id="notification-view-all">View all</span>
@@ -114,13 +114,13 @@
                                             </div>
                                         </div>
                                     </div>
-                                @else
+                                <?php }  else { ?>
                                 <div class="col-xs-3 col-sm-2  signin">
                                     <div class="row">
                                         <a data-toggle="modal" data-target="#myModal" href="/login"><i class="m-icon m-icon--user"></i> Log in</a>
                                     </div>
                                 </div>
-                                @endif
+                               <?php } ?>
                                 <div class="clearfix"></div>
                             </div>
                             <div class="clearfix"></div>
@@ -320,12 +320,12 @@
                 </ul>
             </div>
         </nav>
-        @if(isset($login) && $login)
+        <?php if(isset($login) && $login) {?>
             <script type="text/ng-template" class="test" id="profile-setting.html">
                 <a class="close" href="#" ng-click="cancel()"><img src="/assets/images/close.png"></a>
                 
                 <div class="profile-background">
-                    <div class="text-center"><img class="profile-photo" width="150px" src="{{isset($profile) ? $profile : ""}}"></div>
+                    <div class="text-center"><img class="profile-photo" width="150px" src="<?php isset($profile) ? $profile : ""?>"></div>
                     <div class="text-center">
                         <a href="#" class="upload-photo">
                             <i class="m-icon--Upload-Inactive"></i><br>
@@ -495,5 +495,5 @@
                     </div>
                 </div>
             </script>
-        @endif
+        <?php } ?>
     </div>
