@@ -110,6 +110,22 @@
             $('.shop-by-category-submneu.' + submenu).addClass('active');
         })
 
+        $('.notification-holder').click(function(){
+            if($('.notification-popup').is(":visible")){
+                $('.notification-popup').hide();
+            }else{
+                $('.notification-popup').show();
+            }
+        })
+
+        $('.profile-photo').click(function(){
+            if($('.profilelinks-popup').is(":visible")){
+                $('.profilelinks-popup').hide();
+            }else{
+                $('.profilelinks-popup').show();
+            }
+        })
+
         // scroll and stick the share bar
         function sticky_relocate() {
             if(window.innerWidth < 620){

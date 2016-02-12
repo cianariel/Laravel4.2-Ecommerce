@@ -190,6 +190,7 @@
 
     //User Profile
     Route::get('user/profile', 'UserController@userProfile');
+    Route::get('user/profile/{permalink}', 'UserController@userProfile');
 
 
 
@@ -211,7 +212,6 @@
     //    Route::get('pro-details/{permalink?}', 'PageController@productDetailsPage');
     Route::get('product/{permalink?}', 'PageController@productDetailsPage');
     Route::get('room/{permalink?}', 'PageController@getRoomPage');
-
     // default signup
     Route::get('signup/{email?}', 'PageController@signupPage');
 

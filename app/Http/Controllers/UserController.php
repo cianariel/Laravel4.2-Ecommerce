@@ -120,7 +120,13 @@
 
         public function userProfile($permalink="")
         {
-            return view('user.user-profile');
+            $data = array(
+                'profile' => "/assets/images/profile.jpg",
+                'fullname' => "Denzel Wars",
+                'login' => true,
+                'permalink' => $permalink
+            );
+            return view('user.user-profile', $data);
         }
 
     }
