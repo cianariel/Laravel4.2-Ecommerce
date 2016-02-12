@@ -16,17 +16,19 @@
          *
          */
 
-       /* public function __construct()
+        public function __construct()
         {
-            // Apply the jwt.auth middleware to all methods in this controller
+            /*// Apply the jwt.auth middleware to all methods in this controller
             $this->middleware('jwt.auth',
                 [
                     'except' => ['index', 'categoryView', 'addCategory',
                         'editCategory', 'productView', 'addProduct', 'editProduct'
                     ]
                 ]);
-            $this->product = new Product();
-        }*/
+            $this->product = new Product();*/
+
+            $this->authCheck = $this->RequestAuthentication();
+        }
 
         public function index()
         {
@@ -39,63 +41,172 @@
 
         public function categoryView()
         {
-            return view('admin.category-view');
+
+            //$authCheck = $this->RequestAuthentication();
+
+            if ($this->authCheck['method-status'] == 'success-with-http')
+            {
+                return view('admin.category-view');
+
+            } elseif ($this->authCheck['method-status'] == 'fail-with-http')
+            {
+                return \Redirect::to('login');
+            }
+
         }
 
         public function addCategory()
         {
-            return view('admin.category-add');
+            if ($this->authCheck['method-status'] == 'success-with-http')
+            {
+                return view('admin.category-add');
+
+
+            } elseif ($this->authCheck['method-status'] == 'fail-with-http')
+            {
+                return \Redirect::to('login');
+
+            }
+
         }
 
         public function editCategory()
         {
-            return view('admin.category-edit');
+
+            if ($this->authCheck['method-status'] == 'success-with-http')
+            {
+                return view('admin.category-edit');
+
+            } elseif ($this->authCheck['method-status'] == 'fail-with-http')
+            {
+                return \Redirect::to('login');
+            }
 
         }
 
         // Product view
         public function productView()
         {
-            return view('admin.product-view');
+            if ($this->authCheck['method-status'] == 'success-with-http')
+            {
+                return view('admin.product-view');
+
+            } elseif ($this->authCheck['method-status'] == 'fail-with-http')
+            {
+                return \Redirect::to('login');
+
+            }
+//
+
         }
 
         public function addProduct()
         {
-            return view('admin.product-add');
+            if ($this->authCheck['method-status'] == 'success-with-http')
+            {
+                return view('admin.product-add');
+
+
+            } elseif ($this->authCheck['method-status'] == 'fail-with-http')
+            {
+                return \Redirect::to('login');
+
+            }
+//
+
         }
 
         public function editProduct($id)
         {
-          //  $product = $this->product->where('id', $id)->first();
+            if ($this->authCheck['method-status'] == 'success-with-http')
+            {
+                return view('admin.product-add')->with('id',$id);
 
-            return view('admin.product-add')->with('id',$id);
+
+            } elseif ($this->authCheck['method-status'] == 'fail-with-http')
+            {
+                return \Redirect::to('login');
+
+            }
+//
+
+
         }
 
         public function storeView()
         {
-            return view('admin.stores');
+            if ($this->authCheck['method-status'] == 'success-with-http')
+            {
+                return view('admin.stores');
+
+
+            } elseif ($this->authCheck['method-status'] == 'fail-with-http')
+            {
+                return \Redirect::to('login');
+
+            }
+//
+
         }
 
         public function tagView()
         {
-            return view('admin.tag-view');
+            if ($this->authCheck['method-status'] == 'success-with-http')
+            {
+                return view('admin.tag-view');
+
+
+            } elseif ($this->authCheck['method-status'] == 'fail-with-http')
+            {
+                return \Redirect::to('login');
+
+            }
+//
+
         }
         // Room view
         public function roomsView()
         {
-            $Rooms = Room::all();
-            return \View::make('admin.rooms.room-view', ['Rooms' => $Rooms]);
+            if ($this->authCheck['method-status'] == 'success-with-http')
+            {
+                $Rooms = Room::all();
+                return \View::make('admin.rooms.room-view', ['Rooms' => $Rooms]);
+
+            } elseif ($this->authCheck['method-status'] == 'fail-with-http')
+            {
+                return \Redirect::to('login');
+
+            }//
+
         }
 
         public function addRoom()
         {
-            $room = new Room();
-            return view('admin.rooms.room-add')->with('room',$room);
+            if ($this->authCheck['method-status'] == 'success-with-http')
+            {
+                $room = new Room();
+                return view('admin.rooms.room-add')->with('room',$room);
+
+            } elseif ($this->authCheck['method-status'] == 'fail-with-http')
+            {
+                return \Redirect::to('login');
+
+            }
+
         }
 
         public function editRoom($id)
         {
-            $room = Room::find($id);
-            return view('admin.rooms.room-add')->with('room',$room);
+            if ($this->authCheck['method-status'] == 'success-with-http')
+            {
+                $room = Room::find($id);
+                return view('admin.rooms.room-add')->with('room',$room);
+
+            } elseif ($this->authCheck['method-status'] == 'fail-with-http')
+            {
+                return \Redirect::to('login');
+
+            }
+
         }
     }

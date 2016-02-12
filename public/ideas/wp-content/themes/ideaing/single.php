@@ -33,20 +33,37 @@
             </div>
 
         </header>
-        <nav class="mid-nav hidden-xs">
+    <?php
+         $tags = wp_get_post_tags($post->ID);
+    ?>
+        <nav class="mid-nav hidden-xs" style="float: left">
                 <div class="container">
                     <ul class="wrap col-xs-9">
                         <!--                    <li><a class="home-link" href="#">Home</a></li>-->
+                    @if(empty($tags))
                         <li class="kitchen">
                             <span class="box-link-active-line"></span>
-                            <a href="#" class="">
-                                Kitchen
+                            <a href="{{get_site_url()}}" class="">
+                                Smart Home
                             </a>
                         </li>
-                        <li class="horizontal-line-holder hidden-xs hidden-sm">
-                            <span class="horizontal-line"></span>
-                        </li>
-                        <li><a href="#" class="">Style</a></li>
+                    @else
+                        @foreach($tags as $i => $tag)
+                            @if($i == 0)
+                                <li class="kitchen">
+                                    <span class="box-link-active-line"></span>
+                                    <a href="{{get_site_url()}}/tag/{{$tag->slug}}" class="">
+                                        {{$tag->name}}
+                                    </a>
+                                </li>
+                            @else
+                                <li class="horizontal-line-holder hidden-xs hidden-sm">
+                                    <span class="horizontal-line"></span>
+                                </li>
+                                <li><a href="{{get_site_url()}}/tag/{{$tag->slug}}" class="">{{$tag->name}}</a></li>
+                            @endif
+                        @endforeach
+                    @endif
                     </ul>
                 </div>
         </nav>
@@ -225,72 +242,91 @@
 
     <section class="related-items pale-grey-bg">
         <div class="main-content container full-620 fixed-sm">
-            <h3 class="green">Related Products</h3><br>
-            <div class="related-products  grid-box-3">
+            <h3 class="orange">Related Ideas</h3><br>
+            <div class="related-ideas  grid-box-3">
 
 <!--                <section class="col-sm-12 related-stories">-->
 
                     <?php
-                    //Get 3 posts with similar tags. If there are no tags, get any 3 posts
-//
-//                    $args= [
-//                        'post__not_in' => array($post->ID),
-//                        'posts_per_page'=> 3,
-//                        'caller_get_posts'=> 1
-//                    ];
-//
-//                    $tags = wp_get_post_tags($post->ID);
-//                    if($tags) {
-//                        $first_tag = $tags[0]->term_id;
-//                        $args['tag__in'] = [$first_tag];
-//                    }
-//                    $my_query = new WP_Query($args);
-//
-//                    //                    if($tags && !$my_query->have_posts() ){ // if there are not posts with similar tags, get just any posts
-//                    unset($args['tag__in']);
-//                    $my_query = new WP_Query($args);
-//                    //                    }
-//
-//                    if( $my_query->have_posts() ) {
-//                        while ($my_query->have_posts()) : $my_query->the_post(); ?>
-<!--                            <div class="<div class="col-xs-3 grid-box">-->
-<!--                                --><?php
-//                                echo '<a href="';
-//                                the_permalink() ;
-//                                echo '" title="';
-//                                the_title_attribute();
-//                                echo '">';
-//
-//                                if ( has_post_thumbnail() ){
-//                                    echo  '<div class="img-wrap">';
-//                                     the_post_thumbnail('medium',['class' => 'thumbnail img-responsive']);
-//                                    echo '<div class="thumbnail img-responsive">
-//                                            <div class="circle-3">
-//                                                <div class="circle-2">
-//                                                     <div class="circle-1">Get it</div>
-//                                                </div>
-//                                             </div>
-//                                        </div>';
-//                                }else{
-//                                    echo  '<div class="img-wrap">
-//                                                <div class="thumbnail img-responsive">
-//                                                    <div class="circle-3">
-//                                                        <div class="circle-2">
-//                                                             <div class="circle-1">Get it</div>
-//                                                        </div>
-//                                                     </div>
-//                                            </div>';
-//                                }
-//                                echo '</a>';
-//                                ?>
-<!--                                <a href="--><?php //the_permalink() ?><!--">-->
-<!--                                    --><?php //the_title(); ?>
-<!--                                </a>-->
-<!--                            </div>-->
-<!--                            --><?php
-//                        endwhile;
-//                    }
-//                    wp_reset_query();
+//                    Get 3 posts with similar tags. If there are no tags, get any 3 posts
+                    wp_reset_query();
+
+                    $args= [
+                        'post__not_in' => array($post->ID),
+                        'posts_per_page'=> 3,
+                        'caller_get_posts'=> 1
+                    ];
+
+                    $tags = wp_get_post_tags($post->ID);
+                    if($tags) {
+                        $first_tag = $tags[0]->term_id;
+                        foreach($tags as $tag){
+                            $allTags = $tag->slug;
+                        }
+                    }
+                    $args['tag_slug__in'] = $allTags;
+
+                    $my_query = new WP_Query($args);
+
+                    if($tags && (!$my_query->have_posts() || $myquery->found_posts < 3)){ // if there are not posts with similar tags, get just any posts
+                        unset($args['tag_slug__in']);
+                        $my_query = new WP_Query($args);
+                    }
+
+                    if( $my_query->have_posts() ) {
+                        while ($my_query->have_posts()) : $my_query->the_post();
+                            $image = get_field('feed_image');
+                            ?>
+
+                                    <div class="box-item" >
+                                        <div class="img-holder">
+                                            <img src="{{$image['url']}}">
+                                        </div>
+
+                        <!--                <span class="box-item__time">{{$item->updated_at}}</span>-->
+                                        <div class="box-item__overlay"></div>
+
+                                        <ul class="social-stats">
+                                            <li class="social-stats__item">
+                                                <a href="#">
+                                                    <i class="m-icon m-icon--heart"></i>
+                                                    <span class="social-stats__text">52</span>
+                                                </a>
+                                            </li>
+                                            <li class="social-stats__item">
+                                                <a href="#">
+                                                    <i class="m-icon m-icon--buble"></i>
+                                                    <span class="social-stats__text">157</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+
+                                        <div class="round-tag round-tag--idea">
+                                            <i class="m-icon m-icon--item"></i>
+                                            <span class="round-tag__label">Idea</span>
+                                        </div>
+
+                                        <div class="box-item__label-idea">
+                                            <a href="{{the_permalink()}}" class="box-item__label">{{the_title()}}</a>
+                                            <div class="clearfix"></div>
+                                            <a href="{{the_permalink()}}" class="box-item__read-more">Read More</a>
+                                        </div>
+
+                                        <div class="box-item__author">
+                                            <a href="{{get_author_posts_url( get_the_author_meta( 'ID' ) )}}" class="user-widget">
+                                                <img class="user-widget__img" src="{{get_avatar_url( get_the_author_email(), '80' )}}">
+                                                <span class="user-widget__name">{{get_the_author()}}</span>
+                                            </a>
+                                        </div>
+                                    </div>
+
+                            <?php
+//                            $data['author'] = get_the_author();
+//                            $data['authorlink'] = get_author_posts_url( get_the_author_meta( 'ID' ) );
+//                            $data['author_id'] = get_the_author_meta( 'ID' );
+//                            $data['avator'] = get_avatar_url( get_the_author_email(), '80' );
+                        endwhile;
+                    }
                     ?>
 <!--                </section>-->
 
@@ -302,90 +338,40 @@
 <!--                        </div>-->
 <!--                    </div>-->
 <!--                </div>-->
-                @for($i=0; $i<3; $i++)
-                <div class="box-item product-box">
-                    <img class="img-responsive" src="/assets/images/dummies/box-image-dummy.png">
-                    <span class="box-item__time ng-binding">5 hours ago</span>
-                    <div class="box-item__overlay"></div>
-                    <ul class="social-stats">
-                        <li class="social-stats__item">
-                            <a href="#">
-                                <i class="m-icon m-icon--heart"></i>
-                                <span class="social-stats__text">52</span>
-                            </a>
-                        </li>
-                    </ul>
-                    <div class="round-tag round-tag--product">
-                        <i class="m-icon m-icon--item"></i>
-                        <span class="round-tag__label">Product</span>
-                    </div>
-                    <div class="box-item__label-prod">
-                        <a href="#" class="box-item__label box-item__label--clear ng-binding">Mr Coffee smart</a>
-                        <div class="clearfix"></div>
-                        <div class="merchant-widget">
-                            <span class="merchant-widget__price ng-binding">$259.95</span>
-                            <span>from</span>
-                            <img class="merchant-widget__store" src="/assets/images/dummies/amazon-black.png">
-                        </div>
-                        <div class="clearfix"></div>
-                        <a target="_blank" href="#" class="box-item__get-it">Get it</a>
-                    </div>
-                </div>
-                @endfor
-                
-            </div>
-
-            <h3 class="orange">Related Ideas</h3><br>
-            <div class="related-ideas grid-box-3">
-                @for($i=0; $i<3; $i++)
-                    <div class="box-item idea-box ">
-                        <img class="img-responsive" src="/assets/images/dummies/box-image-dummy.png">
-                        <span class="box-item__time ng-binding">1 week ago</span>
-                        <div class="box-item__overlay"></div>
-                        <ul class="social-stats">
-                            <li class="social-stats__item">
-                                <a href="#">
-                                    <i class="m-icon m-icon--heart"></i>
-                                    <span class="social-stats__text">52</span>
-                                </a>
-                            </li>
-                            <li class="social-stats__item">
-                                <a href="#">
-                                    <i class="m-icon m-icon--buble"></i>
-                                    <span class="social-stats__text">157</span>
-                                </a>
-                            </li>
-                        </ul>
-                        <div class="round-tag round-tag--idea">
-                            <i class="m-icon m-icon--item"></i>
-                            <span class="round-tag__label">Idea</span>
-                        </div>
-                        <div class="box-item__label-idea">
-                            <a href="#" class="box-item__label ">Mr Coffee smart</a>
-                            <div class="clearfix"></div>
-                            <a href="#" class="box-item__read-more">Read More</a>
-                        </div>
-                        <div class="box-item__author">
-                            <a href="#" class="user-widget">
-                                <img class="user-widget__img" src="/assets/images/dummies/author.png">
-                                <span class="user-widget__name ng-binding">Nicole van Zanten</span>
-                            </a>
-                        </div>
-
-                    </div>
-                @endfor
-                
-<!--                <div class="col-md-3  hidden-sm hidden-xs grid-box">-->
-<!--                    <div class="wrap">-->
-<!--                        <img class="img-responsive" src="/assets/images/dummies/box-image-dummy.png">-->
-<!--                        <div class="color-overlay">-->
-<!--                            <h4>Mr Coffee smart</h4>-->
+<!--                @for($i=0; $i<3; $i++)-->
+<!--                <div class="box-item product-box">-->
+<!--                    <img class="img-responsive" src="/assets/images/dummies/box-image-dummy.png">-->
+<!--                    <span class="box-item__time ng-binding">5 hours ago</span>-->
+<!--                    <div class="box-item__overlay"></div>-->
+<!--                    <ul class="social-stats">-->
+<!--                        <li class="social-stats__item">-->
+<!--                            <a href="#">-->
+<!--                                <i class="m-icon m-icon--heart"></i>-->
+<!--                                <span class="social-stats__text">52</span>-->
+<!--                            </a>-->
+<!--                        </li>-->
+<!--                    </ul>-->
+<!--                    <div class="round-tag round-tag--product">-->
+<!--                        <i class="m-icon m-icon--item"></i>-->
+<!--                        <span class="round-tag__label">Product</span>-->
+<!--                    </div>-->
+<!--                    <div class="box-item__label-prod">-->
+<!--                        <a href="#" class="box-item__label box-item__label--clear ng-binding">Mr Coffee smart</a>-->
+<!--                        <div class="clearfix"></div>-->
+<!--                        <div class="merchant-widget">-->
+<!--                            <span class="merchant-widget__price ng-binding">$259.95</span>-->
+<!--                            <span>from</span>-->
+<!--                            <img class="merchant-widget__store" src="/assets/images/dummies/amazon-black.png">-->
 <!--                        </div>-->
-<!--                        <a class="author" href="#"></a>-->
+<!--                        <div class="clearfix"></div>-->
+<!--                        <a target="_blank" href="#" class="box-item__get-it">Get it</a>-->
 <!--                    </div>-->
 <!--                </div>-->
-
+<!--                @endfor-->
+                
             </div>
+
+
         </div>
     </section>
 

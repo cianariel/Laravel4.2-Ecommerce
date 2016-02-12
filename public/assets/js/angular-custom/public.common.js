@@ -4,6 +4,9 @@
 
 var publicApp = angular.module('publicApp', ['ui.bootstrap', 'ngSanitize']);
 
+publicApp.config(['$httpProvider', function($httpProvider) {
+    $httpProvider.defaults.headers.common["X-Requested-With"] = 'XMLHttpRequest';
+}]);
 
 publicApp.controller('publicController', ['$scope', '$http', '$window', '$timeout', '$location', '$anchorScroll'
     , function ($scope, $http, $window, $timeout, $location, $anchorScroll) {
@@ -156,6 +159,42 @@ publicApp.controller('publicController', ['$scope', '$http', '$window', '$timeou
         $scope.registerWithFB = function(){
 
             window.location = '/api/fb-login';
+        };
+
+        $scope.loginUser = function(){
+            $scope.closeAlert();
+            $http({
+                url: '/api/authenticate',
+                method: "POST",
+                data: {
+                    Email: $scope.Email,
+                    Password: $scope.Password,
+
+                }
+            }).success(function (data) {
+                console.log(data.data);
+
+                $scope.outputStatus(data, data.data);
+
+                /* if(data.status_code == 200)
+                 window.location = $scope.logingRedirectLocation;
+                 */
+            });
+        };
+
+        $scope.chk = function(){
+            $scope.closeAlert();
+            $http({
+                url: '/secure-page-header',
+                method: "GET",
+
+            }).success(function (data) {
+               // $scope.outputStatus(data, data.data);
+
+                /* if(data.status_code == 200)
+                 window.location = $scope.logingRedirectLocation;
+                 */
+            });
         };
 
 

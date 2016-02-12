@@ -24,12 +24,49 @@
         public function __construct()
         {
             // Apply the jwt.auth middleware to all methods in this controller
-            $this->middleware('jwt.auth',
-                ['except' => [
-                    'emailSubscription','userProfile'
-                ]]);
+            /* $this->middleware('jwt.auth',
+                 ['except' => [
+                     'emailSubscription','userProfile'
+                 ]]);*/
             $this->subscriber = new Subscriber();
 
+            // $this->newToken = JWTAuth::parseToken()->refresh();
+
+        }
+
+        public function securePageHeader()
+        {
+
+            $authCheck = $this->RequestAuthentication();
+
+            if ($authCheck['method-status'] == 'success-with-http')
+            {
+                return view('user.secure-page-header');
+
+            } elseif ($authCheck['method-status'] == 'success-with-ajax')
+            {
+                return $this->setStatusCode(\Config::get("const.api-status.success"))
+                    ->makeResponse($authCheck);
+
+            } elseif ($authCheck['method-status'] == 'fail-with-http')
+            {
+                return \Redirect::to('login');
+
+            } elseif ($authCheck['method-status'] == 'fail-with-ajax')
+            {
+
+                return $this->setStatusCode(IlluminateResponse::HTTP_NOT_ACCEPTABLE)
+                    ->makeResponseWithError($authCheck);
+            }
+        }
+
+
+        public function authCheck()
+        {
+            if (true)
+            {
+                return \Redirect::to('/login');
+            }
         }
 
         // Email subscription

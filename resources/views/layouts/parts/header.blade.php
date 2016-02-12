@@ -68,7 +68,7 @@
 
                                 <div class="col-xs-3 col-sm-2  signin">
                                     <div class="row">
-                                        <a data-toggle="modal" data-target="#myModal" href="#"><i class="m-icon m-icon--user"></i> Log in</a>
+                                        <a data-toggle="modal" data-target="#myModal" href="/login"><i class="m-icon m-icon--user"></i> Log in</a>
                                     </div>
                                 </div>
                                 <div class="clearfix"></div>
