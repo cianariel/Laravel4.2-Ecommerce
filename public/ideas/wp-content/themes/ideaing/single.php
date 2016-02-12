@@ -34,13 +34,26 @@
 
         </header>
     <?php
-         $tags = wp_get_post_tags($post->ID);
+        $tags = wp_get_post_tags($post->ID);
+        $categories = get_the_category($post->ID);
+        $firstTag = $tags[0];
+
+        foreach($categories as $cat){
+            if($cat->name != 'Smart Home'){
+                if($cat->category_parent == 0){
+                    $mainCategory = $cat;
+                }else{
+                    $childCategory = $cat;
+                }
+            }
+
+        }
     ?>
         <nav class="mid-nav hidden-xs" style="float: left">
                 <div class="container">
                     <ul class="wrap col-xs-9">
                         <!--                    <li><a class="home-link" href="#">Home</a></li>-->
-                    @if(empty($tags))
+                    @if(empty($mainCategory))
                         <li class="kitchen">
                             <span class="box-link-active-line"></span>
                             <a href="{{get_site_url()}}" class="">
@@ -48,21 +61,24 @@
                             </a>
                         </li>
                     @else
-                        @foreach($tags as $i => $tag)
-                            @if($i == 0)
+
                                 <li class="kitchen">
                                     <span class="box-link-active-line"></span>
-                                    <a href="{{get_site_url()}}/tag/{{$tag->slug}}" class="">
-                                        {{$tag->name}}
+                                    <a href="{{get_site_url()}}/category/{{$mainCategory->slug}}" class="">
+                                        {{$mainCategory->name}}
                                     </a>
                                 </li>
-                            @else
                                 <li class="horizontal-line-holder hidden-xs hidden-sm">
                                     <span class="horizontal-line"></span>
                                 </li>
-                                <li><a href="{{get_site_url()}}/tag/{{$tag->slug}}" class="">{{$tag->name}}</a></li>
-                            @endif
-                        @endforeach
+                                <li><a href="{{get_site_url()}}/cateogry/{{$childCategory->slug}}" class="">{{$childCategory->name}}</a></li>
+
+
+                                <li class="horizontal-line-holder hidden-xs hidden-sm">
+                                    <span class="horizontal-line"></span>
+                                </li>
+                                <li><a href="{{get_site_url()}}/tag/{{$firstTag->slug}}" class="">{{$firstTag->name}}</a></li>
+
                     @endif
                     </ul>
                 </div>
