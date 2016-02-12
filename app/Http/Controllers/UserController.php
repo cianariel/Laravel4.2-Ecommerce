@@ -81,8 +81,9 @@
 
         }
 
-        public function userProfile()
+        public function userProfile($permalink="")
         {
             return view('user.user-profile');
         }
+
     }
