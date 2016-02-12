@@ -21,14 +21,10 @@ class PageController extends Controller
      */
     public function home()
     {
-        $bob = self::getContent(1,0, false);
         return view('home');
     }
 
     public function getContent($page = 1, $limit = 5, $tag = false,  $category = false){
-
-//        $tag = 'bob';
-//        $tag = 'bedroom';
 
         if($tag && $tag !== 'undefined' && $tag != 'false' && $tag != ''){
             $tagID = Tag::where('tag_name', $tag)->lists('id')->toArray();
@@ -36,7 +32,6 @@ class PageController extends Controller
             $tagID = false;
             $tag = false;
         }
-//                print_r($tagID); die();
 
         if($limit == 'undefined' || $limit == 0){
             $productLimit = 6;
