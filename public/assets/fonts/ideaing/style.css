@@ -1,10 +1,10 @@
 @font-face {
     font-family: 'ideaing';
-    src:    url('fonts/ideaing.eot?pj6qd3');
-    src:    url('fonts/ideaing.eot?pj6qd3#iefix') format('embedded-opentype'),
-        url('fonts/ideaing.ttf?pj6qd3') format('truetype'),
-        url('fonts/ideaing.woff?pj6qd3') format('woff'),
-        url('fonts/ideaing.svg?pj6qd3#ideaing') format('svg');
+    src:    url('fonts/ideaing.eot?5xp4nz');
+    src:    url('fonts/ideaing.eot?5xp4nz#iefix') format('embedded-opentype'),
+        url('fonts/ideaing.ttf?5xp4nz') format('truetype'),
+        url('fonts/ideaing.woff?5xp4nz') format('woff'),
+        url('fonts/ideaing.svg?5xp4nz#ideaing') format('svg');
     font-weight: normal;
     font-style: normal;
 }
@@ -24,6 +24,68 @@
     -moz-osx-font-smoothing: grayscale;
 }
 
+.m-icon--Delete-Profile-Active .path1:before {
+    content: "\e9d5";
+    color: rgb(238, 31, 71);
+}
+.m-icon--Delete-Profile-Active .path2:before {
+    content: "\e9d6";
+    margin-left: -1em;
+    color: rgb(238, 31, 71);
+}
+.m-icon--Delete-Profile-Active .path3:before {
+    content: "\e9d7";
+    margin-left: -1em;
+    color: rgb(241, 249, 254);
+}
+.m-icon--Edit-Background:before {
+    content: "\e9d8";
+}
+.m-icon--Edit-Profile:before {
+    content: "\e9d9";
+}
+.m-icon--Home:before {
+    content: "\e9da";
+}
+.m-icon--Location:before {
+    content: "\e9db";
+}
+.m-icon--Messages:before {
+    content: "\e9dc";
+}
+.m-icon--Notifications:before {
+    content: "\e9dd";
+}
+.m-icon--Saved-Active:before {
+    content: "\e9de";
+}
+.m-icon--Settings-Toggles .path1:before {
+    content: "\e9df";
+    color: rgb(230, 230, 229);
+}
+.m-icon--Settings-Toggles .path2:before {
+    content: "\e9e0";
+    margin-left: -1em;
+    color: rgba(0, 0, 0, 0.5);
+}
+.m-icon--Settings-Toggles-Active .path1:before {
+    content: "\e9e1";
+    color: rgb(230, 230, 229);
+}
+.m-icon--Settings-Toggles-Active .path2:before {
+    content: "\e9e2";
+    margin-left: -1em;
+    color: rgb(62, 180, 74);
+}
+.m-icon--Upload-Inactive:before {
+    content: "\e9e3";
+}
+.m-icon--Actions-Down-Arrow-Active:before {
+    content: "\e9e4";
+}
+.m-icon--Add-Friends:before {
+    content: "\e9e5";
+}
 .m-icon--bath:before {
     content: "\e92d";
 }

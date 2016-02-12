@@ -31,19 +31,20 @@
         public function userList()
         {
 
-            try{
+            try
+            {
                 $userData = \Input::all();
 
                 $settings['limit'] = $userData['limit'];
                 $settings['page'] = $userData['page'];
-                $settings['FilterItem'] = isset($userData['FilterItem'])?$userData['FilterItem']:'';
-                $settings['FilterValue'] = isset($userData['FilterValue'])?$userData['FilterValue']:'';
-            //    $settings['']
+                $settings['FilterItem'] = isset($userData['FilterItem']) ? $userData['FilterItem'] : '';
+                $settings['FilterValue'] = isset($userData['FilterValue']) ? $userData['FilterValue'] : '';
+                //    $settings['']
 
                 $userList = $this->user->getUserList($settings);
 
                 return $this->setStatusCode(\Config::get("const.api-status.success"))
-                ->makeResponse(array_merge($userList, $settings));
+                    ->makeResponse(array_merge($userList, $settings));
             } catch (Excpetion $ex)
             {
                 return $this->setStatusCode(\Config::get("const.api-status.system-fail"))
@@ -55,19 +56,20 @@
         public function getUserById($id)
         {
 
-            try{
+            try
+            {
 
-                $totalRoleCollection = $this->roleModel->get(array('id','name','display_name'));
+                $totalRoleCollection = $this->roleModel->get(array('id', 'name', 'display_name'));
 
-                $user = $this->user->where('id','=',$id)->first();
+                $user = $this->user->where('id', '=', $id)->first();
 
                 $userRoles = $this->user->getUserRolesByEmail($user->email);
 
                 $roleCollection = array();
 
-                foreach($userRoles as $role)
+                foreach ($userRoles as $role)
                 {
-                    array_push($roleCollection,$role['name']);
+                    array_push($roleCollection, $role['name']);
                 }
 
                 $user['Roles'] = $roleCollection;
@@ -166,9 +168,16 @@
 
         }
 
-        public function userProfile()
+        public function userProfile($permalink = "")
         {
-            return view('user.user-profile');
+            $data = array(
+                'profile'   => "/assets/images/profile.jpg",
+                'fullname'  => "Denzel Wars",
+                'login'     => true,
+                'permalink' => $permalink
+            );
+
+            return view('user.user-profile', $data);
         }
 
 
