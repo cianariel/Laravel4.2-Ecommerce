@@ -61,26 +61,25 @@
                             </a>
                         </li>
                     @else
-
-                                <li class="kitchen">
-                                    <span class="box-link-active-line"></span>
-                                    <a href="{{get_site_url()}}/category/{{$mainCategory->slug}}" class="">
-                                        {{$mainCategory->name}}
-                                    </a>
-                                </li>
-                        @if($childCategory)
-                                <li class="horizontal-line-holder hidden-xs hidden-sm">
-                                    <span class="horizontal-line"></span>
-                                </li>
-                                <li><a href="{{get_site_url()}}/cateogry/{{$childCategory->slug}}" class="">{{$childCategory->name}}</a></li>
+                            <li class="kitchen">
+                                <span class="box-link-active-line"></span>
+                                <a href="{{get_site_url()}}/category/{{$mainCategory->slug}}" class="">
+                                    {{$mainCategory->name}}
+                                </a>
+                            </li>
+                        @if(@$childCategory)
+                            <li class="horizontal-line-holder hidden-xs hidden-sm">
+                                <span class="horizontal-line"></span>
+                            </li>
+                            <li><a href="{{get_site_url()}}/cateogry/{{$childCategory->slug}}" class="">{{$childCategory->name}}</a></li>
                         @endif
 
-                        @if($firstTag)
-                                <li class="horizontal-line-holder hidden-xs hidden-sm">
-                                    <span class="horizontal-line"></span>
-                                </li>
-                                <li><a href="{{get_site_url()}}/tag/{{$firstTag->slug}}" class="">{{$firstTag->name}}</a></li>
-                        endif
+                        @if(@$firstTag)
+                            <li class="horizontal-line-holder hidden-xs hidden-sm">
+                                <span class="horizontal-line"></span>
+                            </li>
+                            <li><a href="{{get_site_url()}}/tag/{{$firstTag->slug}}" class="">{{$firstTag->name}}</a></li>
+                        @endif
                     @endif
                     </ul>
                 </div>
