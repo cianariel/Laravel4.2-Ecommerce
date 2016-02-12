@@ -24,7 +24,13 @@
             $this->user = new User();
 
             // Apply the jwt.auth middleware to all methods in this controller
-            $this->middleware('jwt.auth', ['except' => ['logOut', 'passwordResetForm', 'passwordReset', 'sendPasswordResetEmail', 'verifyEmail', 'index', 'authenticate', 'fbLogin', 'registerUser']]);
+            $this->middleware('jwt.auth', [
+                'except' => [
+                    'logOut', 'passwordResetForm',
+                    'passwordReset', 'sendPasswordResetEmail', 'verifyEmail', 'index',
+                    'authenticate', 'fbLogin', 'registerUser'
+                ]
+            ]);
             //parent::__construct();
         }
 
@@ -157,7 +163,7 @@
 
 
             // if no errors are encountered we can return a JWT
-            return $this->setStatusCode(IlluminateResponse::HTTP_OK)
+            return $this->setStatusCode(\Config::get("const.api-status.success"))
                 ->setAuthToken($token)
                 ->makeResponse("Successfully authenticated.");
 
@@ -235,7 +241,7 @@
                 {
                     // return with the failed reason and field's information
                     return $this->setStatusCode(\Config::get("const.api-status.validation-fail"))
-                        ->makeResponseWithError(array('Validation failed',$validator->messages()));
+                        ->makeResponseWithError(array('Validation failed', $validator->messages()));
 
 
                 } elseif ($validator->passes())
@@ -249,25 +255,26 @@
                         if ($this->user->SaveUserInformation($userData))
 
                             // for a subscribed user need not to confirm email for the second time.
-                            if(isset($inputData['Valid'])&&$inputData['Valid'] == true){
+                            if (isset($inputData['Valid']) && $inputData['Valid'] == true)
+                            {
                                 $this->user = $this->user->IsEmailAvailable($userData['Email']);
                                 $this->user->status = 'Active';
                                 $this->user->save();
 
                                 return $this->setStatusCode(IlluminateResponse::HTTP_OK)
                                     ->makeResponse('Registration completed successfully');
-                            }
-                        else{
-                        // On successful user registration an email will be send through Event to verify email id.
-                            \Event::fire(new SendActivationMail(
-                                $userData['FullName'],
-                                $userData['Email'],
-                                Crypt::encrypt($userData['Email'])
-                            ));
+                            } else
+                            {
+                                // On successful user registration an email will be send through Event to verify email id.
+                                \Event::fire(new SendActivationMail(
+                                    $userData['FullName'],
+                                    $userData['Email'],
+                                    Crypt::encrypt($userData['Email'])
+                                ));
 
-                        return $this->setStatusCode(IlluminateResponse::HTTP_OK)
-                            ->makeResponse('Registration completed successfully,please verify email');
-                        }
+                                return $this->setStatusCode(IlluminateResponse::HTTP_OK)
+                                    ->makeResponse('Registration completed successfully,please verify email');
+                            }
                     } else
                     {
                         return $this->setStatusCode(\Config::get("const.api-status.app-failure"))

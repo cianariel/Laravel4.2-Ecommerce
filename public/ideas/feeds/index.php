@@ -117,6 +117,14 @@ if($byTags = $_REQUEST['tag']){
     $args['tag'] = $byTags;
 }
 
+if($tag_in = $_REQUEST['tag_in']){
+    $args['tag_slug__in'] = explode(',', $tag_in);
+}
+
+if($excludeID = $_REQUEST['excludeid']){
+    $args['post__not_in'] = array($excludeID);
+}
+
 if($is_featured != "")
 {
 $args['meta_query'] = array(
@@ -126,10 +134,17 @@ $args['meta_query'] = array(
         'value' => $is_featured,
         'compare' => '='
        )
-      );
+);
 }
 
 $posts = query_posts($args);
+
+
+if(isset($args['tag_slug__in']) && (!have_posts() || count($posts) < 3)){ // if there are not posts with similar tags, get just any posts
+    unset($args['tag_slug__in']);
+    $posts = query_posts($args);
+}
+
 //$posts = query_posts('cat='.$postCat.'&showposts=' . $postCount.'&offset='.$offset);
 $datam = array();
 $data = array();
