@@ -202,6 +202,7 @@
                                                     </div>
                                                     <div>
                                                         <?php
+                                                        use App\Models\Product;
                                                         $products = json_decode($room->hero_image_1_products);
                                                         if($products)
                                                         {
@@ -209,20 +210,28 @@
                                                         <table class="table table-striped table-bordered table-hover table-checkable order-column" id="hero_image_1_table">
                                                             <thead>
                                                                 <tr>
+                                                                    <th> Product Thumb </th>
                                                                     <th> Product ID </th>
-                                                                    <th> X </th>
-                                                                    <th> Y </th>
+                                                                    <th> Product Name </th>
+                                                                    <th> Color </th>
                                                                     <th> Actions </th>
                                                                 </tr>
                                                             </thead>
                                                             <tbody>
                                                             <?php
-                                                                    foreach($products as $rm)
+                                                                    foreach($products as $key=>$rm)
                                                                     {
-                                                                        echo '<tr><td>'.$rm->product_id.'</td>';
-                                                                        echo '<td>'.$rm->x.'</td>';
-                                                                        echo '<td>'.$rm->y.'</td>';
-                                                                        echo '<td>Edit - Delete</td></tr>';
+                                                                        //$prod = Product::where('id', $rm->product_id)->first();
+                                                                        $tempprod = new Product();
+                                                                        $prod = $tempprod->getSingleProductInfoForView($rm->product_id);
+                                                                        $strReplace = \Config::get("const.file.s3-path");
+                                                                        $path = str_replace($strReplace, '', $prod->media_link);
+                                                                        $path = $strReplace . 'thumb-' . $path;
+                                                                        echo '<tr><td width="20%"><img src="'.$path.'"/></td>';
+                                                                        echo '<td>'.$rm->product_id.'</td>';
+                                                                        echo '<td>'.$prod->product_name.'</td>';
+                                                                        echo '<td>'.$rm->product_color.'</td>';
+                                                                        echo '<td width="20%"><a href="javascript:void()" class="btn btn-sm blue btn-edit-product" data-xpos="'.$rm->x.'" data-ypos="'.$rm->y.'" data-heroimageid="hero_image_1" data-productid="'.$rm->product_id.'"><i class="fa fa-pencil"></i></a> <a href="javascript:void()" class="btn btn-sm red btn-delete-product" data-productid="'.($key+1).'"><i class="fa fa-times"></i></a></td></tr>';
                                                                     }
                                                                 
                                                             ?>
@@ -323,7 +332,7 @@
                                                                         echo '<tr><td>'.$rm->product_id.'</td>';
                                                                         echo '<td>'.$rm->x.'</td>';
                                                                         echo '<td>'.$rm->y.'</td>';
-                                                                        echo '<td>Edit - Delete</td></tr>';
+                                                                        echo '<td width="20%"><a href="javascript:void()" class="btn btn-sm blue btn-edit-product" data-xpos="'.$rm->x.'" data-ypos="'.$rm->y.'" data-heroimageid="hero_image_1" data-productid="'.$rm->product_id.'"><i class="fa fa-pencil"></i></a> <a href="test" class="btn btn-sm red"><i class="fa fa-times"></i></a></td></tr>';
                                                                     }
                                                                 
                                                             ?>
@@ -413,6 +422,7 @@
                                                                     <th> Product ID </th>
                                                                     <th> X </th>
                                                                     <th> Y </th>
+                                                                    <th> Color </th>
                                                                     <th> Actions </th>
                                                                 </tr>
                                                             </thead>
@@ -423,7 +433,8 @@
                                                                         echo '<tr><td>'.$rm->product_id.'</td>';
                                                                         echo '<td>'.$rm->x.'</td>';
                                                                         echo '<td>'.$rm->y.'</td>';
-                                                                        echo '<td>Edit - Delete</td></tr>';
+                                                                        echo '<td>'.$rm->color.'</td>';
+                                                                        echo '<td width="20%"><a href="javascript:void()" class="btn btn-sm blue btn-edit-product" data-xpos="'.$rm->x.'" data-ypos="'.$rm->y.'" data-heroimageid="hero_image_1" data-productid="'.$rm->product_id.'"><i class="fa fa-pencil"></i></a> <a href="test" class="btn btn-sm red"><i class="fa fa-times"></i></a></td></tr>';
                                                                     }
                                                                 
                                                             ?>
@@ -458,6 +469,8 @@
             <div class="modal-body">
                 <form action="#" class="form-horizontal" id="add_product_image">
                     <input type="hidden" id="hero_image_id" name="hero_image_id" />
+                    <input type="hidden" id="product_thumb" name="product_thumb" />
+                    <input type="hidden" id="product_name" name="product_name" />
                     <div class="form-group">
                         <label class="control-label col-md-4">Product</label>
                         <div class="col-md-8">
@@ -554,7 +567,7 @@ $(function() {
     }
     $('#btn_add_product_image').click(function(){
         var obj = {'hero_image_id':$('#hero_image_id').val(),'x' : $('#Xpos').val(),'y':$('#Ypos').val(),'product_id' : $('#select_product').val(),'product_color':$('#product_color').val()};
-        var row = "<tr><td>"+ $('#select_product').val() + "</td><td>"+$('#Xpos').val()+"</td><td>"+$('#Ypos').val()+"</td>";
+        var row = "<tr><td><img src='"+ $('#product_thumb').val() + "' /></td><td>"+ $('#select_product').val() + "</td><td>"+ $('#product_name').val() + "</td><td>"+$('#product_color').val()+'</td><td><a href="javascript:void()" class="btn btn-sm blue btn-edit-product" data-xpos="'+$('#Xpos').val()+'" data-ypos="'+$('#Ypos').val()+'" data-heroimageid="hero_image_1" data-productid="'+$('#select_product').val()+'"><i class="fa fa-pencil"></i></a> <a href="javascript:void()" class="btn btn-sm red btn-delete-product" data-productid="1"><i class="fa fa-times"></i></a></td></tr></td>';
         if($('#hero_image_id').val() == "hero_image_1")
         {
             heroimageproducts1.push(obj);
@@ -576,6 +589,19 @@ $(function() {
         }
         
     });
+    $('.btn-edit-product').click(function(){
+        $('#Xpos').val($(this).data('xpos'));
+        $('#Ypos').val($(this).data('ypos'));
+        $('#hero_image_id').val($(this).data('heroimageid'));
+        $("#select_product").select2("val", $(this).data('productid'));
+        $('#select_product_modal').modal();
+    });
+    $('.btn-delete-product').click(function(){
+        var productid = $(this).data('productid');
+        $(this).closest('tr').remove();
+        $('product_thumb').test();
+    });
+    
 });
 
 </script>
