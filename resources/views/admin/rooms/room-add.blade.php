@@ -206,7 +206,7 @@
                                                         if($products)
                                                         {
                                                     ?>
-                                                        <table class="table table-striped table-bordered table-hover table-checkable order-column" id="image_3_table">
+                                                        <table class="table table-striped table-bordered table-hover table-checkable order-column" id="hero_image_1_table">
                                                             <thead>
                                                                 <tr>
                                                                     <th> Product ID </th>
@@ -307,7 +307,7 @@
                                                         if($products)
                                                         {
                                                     ?>
-                                                        <table class="table table-striped table-bordered table-hover table-checkable order-column" id="image_3_table">
+                                                        <table class="table table-striped table-bordered table-hover table-checkable order-column" id="hero_image_2_table">
                                                             <thead>
                                                                 <tr>
                                                                     <th> Product ID </th>
@@ -407,7 +407,7 @@
                                                         if($products)
                                                         {
                                                     ?>
-                                                        <table class="table table-striped table-bordered table-hover table-checkable order-column" id="image_3_table">
+                                                        <table class="table table-striped table-bordered table-hover table-checkable order-column" id="hero_image_3_table">
                                                             <thead>
                                                                 <tr>
                                                                     <th> Product ID </th>
@@ -532,18 +532,15 @@ $(function() {
     }
     @if($room->hero_image_1)
     $('#hero_image_1_img').click(onheroclick);
-    //$('#Hero1 .fileinput-exists').show();
-    //$('#Hero1 .fileinput-new').hide();
+    $('#Hero1 .fileinput.fileinput-new').removeClass('fileinput-new').addClass('fileinput-exists');
     @endif
     @if($room->hero_image_2)
     $('#hero_image_2_img').click(onheroclick);
-    $('#Hero2 .fileinput-exists').show();
-    $('#Hero2 .fileinput-new').hide();
+    $('#Hero2 .fileinput.fileinput-new').removeClass('fileinput-new').addClass('fileinput-exists');
     @endif
     @if($room->hero_image_3)
     $('#hero_image_3_img').click(onheroclick);
-    $('#Hero3 .fileinput-exists').show();
-    $('#Hero3 .fileinput-new').hide();
+    $('#Hero3 .fileinput.fileinput-new').removeClass('fileinput-new').addClass('fileinput-exists');
     @endif
     function onheroclick(e){
         var parentOffset = $(this).parent().offset(); 
@@ -562,20 +559,20 @@ $(function() {
         {
             heroimageproducts1.push(obj);
             $('#hero_image_1_products').val(JSON.stringify(heroimageproducts1));
-            $('#image_1_table > tbody:last-child').append(row);
+            $('#hero_image_1_table > tbody:last-child').append(row);
 
         }
         if($('#hero_image_id').val() == "hero_image_2")
         {
             heroimageproducts2.push(obj);
             $('#hero_image_2_products').val(JSON.stringify(heroimageproducts2));
-            $('#image_2_table > tbody:last-child').append(row);
+            $('#hero_image_2_table > tbody:last-child').append(row);
         }
         if($('#hero_image_id').val() == "hero_image_3")
         {
             heroimageproducts3.push(obj);
             $('#hero_image_3_products').val(JSON.stringify(heroimageproducts3));
-            $('#image_3_table > tbody:last-child').append(row);
+            $('#hero_image_3_table > tbody:last-child').append(row);
         }
         
     });
