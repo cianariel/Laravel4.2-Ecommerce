@@ -80,9 +80,9 @@
             var $modal = $(this).data('target');
             $($modal).fadeToggle();
             $('.page-overlay').fadeToggle();
-            //if($modal.hasClass('login-signup-modal')){
-            //    $('.picture-overlay').fadeToggle();
-            //}
+            if($($modal).hasClass('login-signup-modal')){
+                $('.picture-overlay').fadeToggle();
+            }
         });
 
         $('[data-dismiss="modal"]').click(function() {

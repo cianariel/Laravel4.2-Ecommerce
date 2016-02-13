@@ -36,7 +36,6 @@ jQuery(document).ready(function($) {
     loop: false,
     keyboardNavEnabled: true,
     controlsInside: false,
-    imageScaleMode: 'fit',
     arrowsNavAutoHide: false,
     controlNavigation: 'bullets',
     thumbsFitInViewport: false,

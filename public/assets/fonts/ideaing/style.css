@@ -1,10 +1,10 @@
 @font-face {
     font-family: 'ideaing';
-    src:    url('fonts/ideaing.eot?5xp4nz');
-    src:    url('fonts/ideaing.eot?5xp4nz#iefix') format('embedded-opentype'),
-        url('fonts/ideaing.ttf?5xp4nz') format('truetype'),
-        url('fonts/ideaing.woff?5xp4nz') format('woff'),
-        url('fonts/ideaing.svg?5xp4nz#ideaing') format('svg');
+    src:    url('fonts/ideaing.eot?bm7dx8');
+    src:    url('fonts/ideaing.eot?bm7dx8#iefix') format('embedded-opentype'),
+        url('fonts/ideaing.ttf?bm7dx8') format('truetype'),
+        url('fonts/ideaing.woff?bm7dx8') format('woff'),
+        url('fonts/ideaing.svg?bm7dx8#ideaing') format('svg');
     font-weight: normal;
     font-style: normal;
 }
@@ -24,6 +24,18 @@
     -moz-osx-font-smoothing: grayscale;
 }
 
+.m-icon--Right-Arrow-Active:before {
+    content: "\e9e9";
+}
+.m-icon--Logout-Active:before {
+    content: "\e9e6";
+}
+.m-icon--Add-Active:before {
+    content: "\e9e7";
+}
+.m-icon--Close:before {
+    content: "\e9e8";
+}
 .m-icon--Delete-Profile-Active .path1:before {
     content: "\e9d5";
     color: rgb(238, 31, 71);

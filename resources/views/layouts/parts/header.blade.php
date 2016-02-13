@@ -82,7 +82,7 @@
                                                         <div><small>855 Friends</small> </div>
                                                         <div><small>12 Messages</small> </div>
                                                     </div>
-                                                    <div class="log-out"><a href=""><i class=""></i> Log Out</a></div>
+                                                    <div class="log-out"><a href=""><i class="m-icon--Logout-Active"></i> Log Out</a></div>
                                                 </div>
                                             </div>
                                             <div class="notification pull-right">
@@ -321,8 +321,8 @@
             </div>
         </nav>
         <?php if(isset($login) && $login) {?>
-            <script type="text/ng-template" class="test" id="profile-setting.html">
-                <a class="close" href="#" ng-click="cancel()"><img src="/assets/images/close.png"></a>
+            <script type="text/ng-template"  id="profile-setting.html">
+                <a class="close" href="#" ng-click="cancel()"><i class="m-icon--Close"></i> </a>
                 
                 <div class="profile-background">
                     <div class="text-center"><img class="profile-photo" width="150px" src="<?php isset($profile) ? $profile : ""?>"></div>
