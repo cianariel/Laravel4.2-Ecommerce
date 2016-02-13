@@ -416,4 +416,8 @@
     <script src="/assets/js/vendor/angular-busy.min.js"></script>
     <script src="/assets/js/angular-custom/custom.paging.js"></script>
     <script src="/assets/js/angular-custom/public.common.js"></script>
+    <script>
+        angular.bootstrap(document.getElementById('pagingApp'),['pagingApp']);
+      //  angular.bootstrap(document.getElementById('publicApp'),['publicApp']);
+    </script>
 @stop
