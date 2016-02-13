@@ -260,4 +260,11 @@ class PageController extends Controller
 
     }
 
+    public static function getShopMenu(){
+
+        $return = Product::getForShopMenu();
+
+        return $return;
+    }
+
 }

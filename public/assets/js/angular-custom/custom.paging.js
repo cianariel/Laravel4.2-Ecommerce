@@ -163,7 +163,7 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap']).
         };
 
         layoutApi.getProductsForShopMenu().success(function (response) {
-            $scope.productsForShopMeny = response;
+            $scope.productsForShopMenu = response;
         });
 
     })
@@ -459,10 +459,10 @@ angular.module('pagingApp.services', []).
 
         var layoutApi = {};
 
-        layoutApi.getProductsForShopMenu = function(page, limit, tag, category) {
+        layoutApi.getProductsForShopMenu = function() {
             return $http({
                 method: 'GET',
-                url: '/api/paging/get-prods-menu/',
+                url: '/api/layout/get-shop-menu/',
             });
         }
 
