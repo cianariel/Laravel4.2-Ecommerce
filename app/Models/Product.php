@@ -254,7 +254,19 @@
 
             if (@$settings['CategoryId'] != null)
             {
-                $productModel = $productModel->where("product_category_id", $settings['CategoryId']);
+                if(@$settings['GetChildCategories']){
+                    $catID = $settings['CategoryId'];
+                    $productModel = $productModel->where(function($query) use ($catID)
+                    {
+                        $query->where("product_category_id", $catID)
+                              ->orWhereHas('productCategory', function($query) use ($catID)
+                              {
+                                  $query->where("parent_id", $catID);
+                              });
+                    });
+                }else{
+                    $productModel = $productModel->where("product_category_id", $settings['CategoryId']);
+                }
             }
 
             if (isset($settings['TagId']) && is_array($settings['TagId']))
@@ -269,6 +281,13 @@
             {
                 $productModel = $productModel->whereNotIn("id", $settings['excludeIDs']);
             }
+//
+//            if (@$settings['parentCategoryID'] != null)
+//            {
+//                $productModel = $productModel->whereHas('tags', function($query) use ($tagID){
+//                    $query->whereIn('tag_id', $tagID);
+//                });
+//            }
 
             if (@$settings['ShowFor'] != null)
             {
@@ -609,6 +628,7 @@
                 'limit'      => 4,
                 'page'       => 1,
                 'CustomSkip' => false,
+                'GetChildCategories' => true,
 
                 'CategoryId' => false,
                 'FilterType' => false,
