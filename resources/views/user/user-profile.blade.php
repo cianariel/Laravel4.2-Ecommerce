@@ -48,7 +48,7 @@
             <div class="container ">
                 <nav id="hero-nav" >
                     <ul class="breadcrumb pull-left hidden-xs hidden-sm">
-                        <li><a href="/"><i class="m-icon--Home"></i> Home</a> <span>-></span></li>
+                        <li><a href="/"><i class="m-icon--Home"></i> Home</a> &nbsp; <i class="m-icon--Right-Arrow-Active"></i> &nbsp; </li>
                         <li><a href="/user/profile"><img class="profile-photo" width="40px" src="{{$profile}}" alt=""> My Profile</a></li>
                     </ul>
                     <ul class=" main-content-filter pull-right">

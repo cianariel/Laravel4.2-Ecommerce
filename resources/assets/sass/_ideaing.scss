@@ -1,3 +1,7 @@
+.form-control{
+    box-shadow: none;
+    -webkit-box-shadow: none;
+}
 a:hover, a:focus{
     color: inherit;
     text-decoration: none;
@@ -2924,25 +2928,34 @@ body.homepage #top-nav .ideas, body.single-post #top-nav .ideas, body.product-de
 }
 
 body.single-post{
-    .mid-nav .kitchen{
-        position: relative;
-        
-        > a{
-            background: #ed2049;
-            color: #fff !important;
-            box-shadow: none;
-            margin-right: 17px;
+    .mid-nav {
+        .kitchen{
+            position: relative;
+            
+            > a{
+                background: #ed2049;
+                color: #fff !important;
+                box-shadow: none;
+                margin-right: 17px;
+                position: relative;
+                overflow: visible;
+                
+                .box-link-active-line{
+                    position: absolute;
+                    display: inline-block;
+                    width: 0px;
+                    height: 12px;
+                    border-left: 1px solid $light-grey;
+                    left: 50%;
+                    top: -12px;
+                }
+            }
         }
         
-        .box-link-active-line{
-            position: absolute;
-            display: inline-block;
-            width: 0px;
-            height: 12px;
-            border-left: 1px solid $light-grey;
-            left: 45px;
+        .horizontal-line{
+            margin-right: 10px;
+            margin-top: 24px;
         }
-
     }
     #top-nav .kitchen{
         position: relative;
@@ -2960,6 +2973,17 @@ body.single-post{
         list-style: disc;
     }
 }
+.article-content{
+    ol, ul{
+        list-style: initial;
+        li{
+            list-style: initial;
+        }
+    }    
+    a:hover{
+        color: blue;
+    }
+} 
 body.product-details, .single-post{
     .story-header h1 .title, {
         height:15px;
@@ -3022,6 +3046,14 @@ body.product-details{
   background: rgba(255,255,255,.85);
   border-bottom: 1px solid lighten($light-grey, 10%);
 
+  .social-stats{
+        position: absolute;
+        background: white none repeat scroll 0% 0%;
+        right: 0px;
+        right: -79px;
+        top: -17px;
+  }
+  
   .lamp-logo{
     float: left;
     //width: 33px;
@@ -3039,6 +3071,10 @@ body.product-details{
     margin-top: 0;
     font-size: 13px;
     text-align: center;
+  }
+  
+  .title-holder{
+      position: relative;
   }
 
   .like-counter{
@@ -4131,8 +4167,21 @@ body.single{
     
   }
   .like-nav{
+    float: right;
     width: 280px;
   }
+    @media only screen and (max-width: 960px){
+        .like-nav{
+            width: 100%;
+            text-align: center;
+            > li{
+                float: none;
+                &:first-child{
+                    top: -27px;
+                }
+            }
+        }
+    }
 }
 
 .idea-stories{
@@ -4145,7 +4194,7 @@ body.single{
   .article-content{
     p{
       font-family: montserratlight;
-      color: darken($light-grey, 30%);
+      color: darken($light-grey, 100%);
       line-height: 1.6;
       font-size: 1.5rem;
     }
@@ -6549,7 +6598,7 @@ footer.about-footer{
 }
 
 
-body.shoppage{
+body.shoppage, body.profilepage, body.single-post, body.product-details{
     .clearfix.pocket{
         height: 100px;
     }
@@ -7012,15 +7061,6 @@ body.profilepage{
                 color: #f7931e;
             }
         }
-    }
-    .clearfix.pocket{
-        height: 100px;
-    }
-    #about-button{
-        bottom:25px;
-    }
-    #back-to-top{
-        bottom: 21px;
     }
     #btn-follow, #btn-add-friend{
         width: 127px;

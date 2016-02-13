@@ -4296,6 +4296,10 @@ a.label:focus {
 .alert-danger .alert-link {
   color: #843534; }
 
+.form-control {
+  box-shadow: none;
+  -webkit-box-shadow: none; }
+
 a:hover, a:focus {
   color: inherit;
   text-decoration: none; }
@@ -6443,14 +6447,21 @@ body.single-post .mid-nav .kitchen, .mid-nav body.single-post .extra-nav .kitche
     background: #ed2049;
     color: #fff !important;
     box-shadow: none;
-    margin-right: 17px; }
-  body.single-post .mid-nav .kitchen .box-link-active-line, .mid-nav body.single-post .extra-nav .kitchen .box-link-active-line {
-    position: absolute;
-    display: inline-block;
-    width: 0px;
-    height: 12px;
-    border-left: 1px solid #c1c1c1;
-    left: 45px; }
+    margin-right: 17px;
+    position: relative;
+    overflow: visible; }
+    body.single-post .mid-nav .kitchen > a .box-link-active-line, body.single-post .mid-nav .extra-nav .kitchen > a .box-link-active-line, .mid-nav body.single-post .extra-nav .kitchen > a .box-link-active-line {
+      position: absolute;
+      display: inline-block;
+      width: 0px;
+      height: 12px;
+      border-left: 1px solid #c1c1c1;
+      left: 50%;
+      top: -12px; }
+
+body.single-post .mid-nav .horizontal-line, .mid-nav body.single-post .extra-nav .horizontal-line {
+  margin-right: 10px;
+  margin-top: 24px; }
 
 body.single-post #top-nav .kitchen {
   position: relative; }
@@ -6464,6 +6475,14 @@ body.single-post #top-nav .kitchen {
 
 body.single-post .article-content ul li {
   list-style: disc; }
+
+.article-content ol, .article-content ul {
+  list-style: initial; }
+  .article-content ol li, .article-content ul li {
+    list-style: initial; }
+
+.article-content a:hover {
+  color: blue; }
 
 body.product-details .story-header h1 .title, .single-post .story-header h1 .title {
   height: 15px;
@@ -6507,6 +6526,12 @@ body.product-details .article-content p {
   background: #fff;
   background: rgba(255, 255, 255, 0.85);
   border-bottom: 1px solid #dbdbdb; }
+  .story-header .social-stats {
+    position: absolute;
+    background: white none repeat scroll 0% 0%;
+    right: 0px;
+    right: -79px;
+    top: -17px; }
   .story-header .lamp-logo {
     float: left;
     min-height: 50px;
@@ -6519,6 +6544,8 @@ body.product-details .article-content p {
     margin-top: 0;
     font-size: 13px;
     text-align: center; }
+  .story-header .title-holder {
+    position: relative; }
   .story-header .like-counter {
     /*    margin-top: 0 !important;*/ }
   .story-header .share-buttons {
@@ -7163,11 +7190,21 @@ body.single #top-nav a.ideas {
   color: #ed2049; }
 
 body.single .like-nav {
+  float: right;
   width: 280px; }
+
+@media only screen and (max-width: 960px) {
+  body.single .like-nav {
+    width: 100%;
+    text-align: center; }
+    body.single .like-nav > li {
+      float: none; }
+      body.single .like-nav > li:first-child {
+        top: -27px; } }
 
 .idea-stories .article-content p {
   font-family: montserratlight;
-  color: #757575;
+  color: black;
   line-height: 1.6;
   font-size: 1.5rem; }
 
@@ -8562,13 +8599,13 @@ footer.about-footer {
   /*    background: #e8e8e8;*/
   /*    background: rgba(232, 232, 232, 0.95);*/ }
 
-body.shoppage .clearfix.pocket {
+body.shoppage .clearfix.pocket, body.profilepage .clearfix.pocket, body.single-post .clearfix.pocket, body.product-details .clearfix.pocket {
   height: 100px; }
 
-body.shoppage #about-button {
+body.shoppage #about-button, body.profilepage #about-button, body.single-post #about-button, body.product-details #about-button {
   bottom: 25px; }
 
-body.shoppage #back-to-top {
+body.shoppage #back-to-top, body.profilepage #back-to-top, body.single-post #back-to-top, body.product-details #back-to-top {
   bottom: 21px; }
 
 body.shop-landing .shoplanding-title {
@@ -8884,12 +8921,6 @@ body.profilepage {
         color: #4389c8; }
       body.profilepage .feed-content .feed-footer .photos i {
         color: #f7931e; }
-  body.profilepage .clearfix.pocket {
-    height: 100px; }
-  body.profilepage #about-button {
-    bottom: 25px; }
-  body.profilepage #back-to-top {
-    bottom: 21px; }
   body.profilepage #btn-follow, body.profilepage #btn-add-friend {
     width: 127px; }
   body.profilepage #btn-follow {
