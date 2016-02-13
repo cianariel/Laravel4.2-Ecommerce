@@ -1,5 +1,5 @@
 angular.module('pagingApp.controllers', [ 'ui.bootstrap']).
-    controller('pagingController', function($scope, $uibModal,$http,pagaingApi, $filter) {
+    controller('pagingController', function($scope, $timeout, $uibModal,$http,pagaingApi, $filter) {
         $scope.allContent = [];
         $scope.content = [];
         $scope.newStuff = [];
@@ -148,6 +148,58 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap']).
               windowClass : 'profile-setting-modal',
               controller: 'ModalInstanceCtrltest'
             });
+        };
+
+        $scope.openProductPopup = function () {
+            var body = angular.element(document).find('body');
+            if(body[0].offsetWidth < 880){
+                reuturn;
+            }
+            
+            document.getElementsByTagName('html')[0].className += " hide-overflow ";
+            var templateUrl = "product-popup.html";
+            var modalInstance = $uibModal.open({
+              templateUrl: templateUrl,
+              size: 'lg',
+              windowClass : 'product-popup-modal',
+              controller: 'ModalInstanceCtrltest'
+            });
+            modalInstance.opened.then(function(){
+                $timeout(function() {
+                    jQuery('#product-slider').royalSlider({
+                        loop: false,
+                        keyboardNavEnabled: true,
+                        controlsInside: false,
+                        imageScaleMode: 'fill',
+                        arrowsNavAutoHide: false,
+                        controlNavigation: 'thumbnails',
+                        thumbsFitInViewport: false,
+                        navigateByClick: true,
+                        startSlideId: 0,
+                        autoPlay: false,
+                        transitionType: 'move',
+                        globalCaption: false,
+                        autoScaleSlider: false,
+                        imgWidth: "100%",
+                        autoHeight: true,
+                        deeplinking: {
+                          enabled: true,
+                          change: false
+                        },
+                        
+//                        autoHeight: true,
+                    });
+                }, 1000);
+                
+            })
+            modalInstance.result.finally(function(){
+                var className = document.getElementsByTagName('html')[0].className;
+                className = className.replace('hide-overflow', '');
+                document.getElementsByTagName('html')[0].className = className;
+            });
+            
+            
+            
         };
     })
     .controller('headerController', function($scope, $uibModal,$http,pagaingApi, $filter) {

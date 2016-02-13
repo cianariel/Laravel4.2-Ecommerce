@@ -155,7 +155,6 @@
 //                            imgHeight: 680
                                 });
                             } else {
-                                jQuery(document).ready(function ($) {
                                     $('#gallery').royalSlider({
 //                            arrowsNav: true,
                                         loop: false,
@@ -186,8 +185,6 @@
 //                        imgWidth: 1400,
 //                        imgHeight: 680
                                     });
-                                });
-
                             }
                         });
                     </script>
