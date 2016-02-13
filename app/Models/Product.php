@@ -277,7 +277,7 @@
                 });
             }
 //
-            if (@$settings['excludeIDs'] != null)
+            if (@$settings['ExcludeIDs'] != null)
             {
                 $productModel = $productModel->whereNotIn("id", $settings['excludeIDs']);
             }
@@ -625,7 +625,7 @@
         public static function getForShopMenu(){
             $settings = [
                 'ActiveItem' => true,
-                'limit'      => 4,
+                'limit'      => 3,
                 'page'       => 1,
                 'CustomSkip' => false,
                 'GetChildCategories' => true,
@@ -655,7 +655,6 @@
             $settings['IgnoreIDs'] = array_merge($settings['IgnoreIDs'], $homeDecor['allIDs']);
 
             $settings['CategoryId'] = 44;
-            $settings['limit'] = 8;
             $smartHome = $prod->getProductList($settings);
             $return['smartHome'] = $smartHome['result'];
             $settings['IgnoreIDs'] = array_merge($settings['IgnoreIDs'], $smartHome['allIDs']);
