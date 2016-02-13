@@ -25,7 +25,7 @@
                                         @endif
                                     </a>
                                 </li>
-                                <li class="horizontal-line-holder hidden-xs hidden-sm">
+                                <li class="horizontal-line-holder hidden-xs ">
                                     <span class="horizontal-line"></span>
                                 </li>
                             @endforeach
