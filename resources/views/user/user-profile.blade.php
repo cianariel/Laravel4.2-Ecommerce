@@ -3,7 +3,7 @@
 @section('body-class'){{ 'profilepage' }}@stop
 
 @section('content')
-    <div ng-app="pagingApp" ng-controller="pagingController">
+    <div id="pagingApp" ng-app="pagingApp" ng-controller="pagingController">
         <section id="hero" class="landing-hero">
             <div class="hero-background" style="background-image: url('/assets/images/landing-hero-3.jpg');"></div>
             <div class="color-overlay"></div>

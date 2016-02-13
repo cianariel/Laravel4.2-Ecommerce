@@ -251,6 +251,8 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
             $scope.hierarchy = "";
             $scope.tmp = [];
 
+            $scope.categoryHierarchy = "";
+
             // show for page
             $scope.showForList = [
                 "Homepage", "Shop Landing", "Shop Category", "Room Landing"
@@ -271,7 +273,7 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
             $scope.ProductVendorId = '';
             $scope.ProductVendorType = 'Amazon';
             $scope.ProductId = '';
-            $scope.selectedItem = '';
+
             $scope.Name = '';
             $scope.Permalink = '';
             $scope.htmlContent = '<div><br/><br/><br/>1. Describe what the product is<br/><br/></div><div>2. How does it solve one\'s problem<br/><br/></div><div>3. Why is it unique<br/><br/></div><div>4. Mention how the reviewers (Amazon users or CNET or another source) said about it.<br/><br/></div><div>5. List 3 bullet points on its key features in your own words</div>';
@@ -433,6 +435,7 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
             });
         };
 
+        //update user information
         $scope.updateUser = function () {
             $scope.closeAlert();
 
@@ -706,8 +709,31 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
             return false;
         };
 
-        //////// category tree view ////
+        ///// category  ////
 
+        $scope.categoryHierarchyView = function(catId){
+
+            $http({
+                url: '/api/category/get-category-hierarchy/'+catId,
+                method: 'GET',
+            }).success(function (data){
+                console.log(data);
+
+                arrow = ' >> ';
+                for(var i =0;i<data.data.length;i++)
+                {
+                    if(i = data.data.length -1)
+                    arrow = '';
+
+                    $scope.categoryHierarchy += data.data[i]['CategoryName']+arrow;
+                }
+                console.log('cat :' + $scope.categoryHierarchy );
+
+            });
+
+        };
+
+        //////// category tree view ////
         $scope.loadChildren = function (nodeId) {
 
             $scope.catId = nodeId;
@@ -722,6 +748,9 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
             $scope.selectedItem = $scope.selected.id;
             // console.log($scope.selectedItem);
             $scope.$broadcast("selectNode", node);
+
+            // generate hierarchy view on node select
+            $scope.categoryHierarchyView($scope.selectedItem);
         });
 
         // category tree view ///
@@ -1359,6 +1388,10 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
 
                     // load media in panel
                     $scope.getMedia();
+
+                    // initialization category hierarchy view
+                    $scope.categoryHierarchyView( $scope.selectedItem );
+
                 }
             });
         };
