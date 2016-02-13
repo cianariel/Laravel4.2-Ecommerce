@@ -77,6 +77,8 @@
         Route::post('category/update-category', 'ProductCategoryController@updateCategory');
         Route::get('category/show-category-items/{id?}', 'ProductCategoryController@showCategoryItems');
 
+        Route::get('category/get-category-hierarchy/{catId?}','ProductController@generateCategoryHierarchy');
+
         /*
          * Product route collection
          *
