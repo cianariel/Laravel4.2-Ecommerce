@@ -6,7 +6,7 @@
     <script type="text/javascript">
         var permalink = "{{$permalink}}";
     </script>
-    <div ng-app="productApp" data-ng-controller="productController" ng-cloak>
+    <div id="productApp" ng-app="productApp" data-ng-controller="productController" ng-cloak>
         <nav class="mid-nav hidden-xs">
             <div class="container">
                 <div class="col-sm-8 col-sm-offset-2">

@@ -1,4 +1,4 @@
-    <div  ng-controller="headerController">
+    <div {{--id="pagingApp" ng-app="pagingApp" ng-controller="headerController"--}}>
         <header class="colophon">
                 <div class="col-xs-12">
                     <h2 id="site-name">Ideaing | Ideas for Smarter Living</h2>
