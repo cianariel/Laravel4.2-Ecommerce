@@ -2,6 +2,7 @@
         <header class="colophon">
                 <div class="col-xs-12">
                     <h2 id="site-name">Ideaing | Ideas for Smarter Living</h2>
+
                     <nav id="top-nav" class="row">
                         <div class="container full-sm fixed-sm">
                             <div class="top-nav-holder">

@@ -230,6 +230,7 @@
     Route::get('login', 'PageController@loginView');
 
     Route::get('/api/paging/get-content/{page?}/{limit?}/{category?}/{tag?}', 'PageController@getContent');
+    Route::get('/api/layout/get-shop-menu', 'PageController@getShopMenu');
 
 
     // temporary category tag generator
