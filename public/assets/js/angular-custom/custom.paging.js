@@ -150,7 +150,7 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap']).
             });
         };
     })
-    .controller('headerController', function($scope, $uibModal,$http,pagaingApi, $filter) {
+    .controller('headerController', function($scope, $uibModal,layoutApi) {
         $scope.openProfileSetting = function () {
             var templateUrl = "profile-setting.html";
             var modalInstance = $uibModal.open({
@@ -159,7 +159,13 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap']).
               windowClass : 'profile-setting-modal',
               controller: 'ModalInstanceCtrltest'
             });
+
         };
+
+        layoutApi.getProductsForShopMenu().success(function (response) {
+            $scope.productsForShopMeny = response;
+        });
+
     })
     .controller('ModalInstanceCtrltest', function ($scope, $uibModalInstance) {
       $scope.ok = function () {
@@ -388,20 +394,6 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap']).
     })
 ;
 
-//angular.module('pagingApp.directives', [])
-//    .directive('a', function() {
-//        return {
-//            restrict: 'E',
-//            link: function(scope, elem, attrs) {
-//                if(attrs.ngClick || attrs.href === '' || attrs.href === '#'){
-//                    elem.on('click', function(e){
-//                        e.preventDefault();
-//                    });
-//                }
-//            }
-//        };
-//    });
-
 
 angular.module('pagingApp', [
     'pagingApp.controllers',
@@ -462,6 +454,22 @@ angular.module('pagingApp.services', []).
         return pagaingApi;
     });
 
+angular.module('pagingApp.services', []).
+    factory('layoutApi', function($http) {
+
+        var layoutApi = {};
+
+        layoutApi.getProductsForShopMenu = function(page, limit, tag, category) {
+            return $http({
+                method: 'GET',
+                url: '/api/paging/get-prods-menu/',
+            });
+        }
+
+
+        return layoutApi;
+    });
+
 angular.module('pagingApp').value('cgBusyDefaults',{
     message:'',
     backdrop: false,
@@ -470,6 +478,7 @@ angular.module('pagingApp').value('cgBusyDefaults',{
     minDuration: 700,
     wrapperClass: ''
 });
+
 angular.module('pagingApp.filters', [])
     .filter('getURISegment', function($location) {
         return function(segment) {

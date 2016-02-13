@@ -271,10 +271,10 @@
 
 
 //
-//            if (@$settings['excludeID'] != null)
-//            {
-//                $productModel = $productModel->whereNotIn("id", $settings['excludeID']);
-//            }
+            if (@$settings['excludeIDs'] != null)
+            {
+                $productModel = $productModel->whereNotIn("id", $settings['excludeIDs']);
+            }
 
             if (@$settings['ShowFor'] != null)
             {
@@ -606,6 +606,49 @@
                 return false;
 
             }
+        }
+
+        public static function getForShopMenu(){
+            $settings = [
+                'ActiveItem' => true,
+                'limit'      => 4,
+                'page'       => 1,
+                'CustomSkip' => false,
+
+                'CategoryId' => false,
+                'FilterType' => false,
+                'FilterText' => false,
+                'ShowFor'    => false,
+                'WithTags'   => false,
+            ];
+
+            $prod = new Product();
+
+            $settings['CategoryId'] = 1;
+            $travel = $prod->getProductList($settings);
+            $return['travel'] = $travel['result'];
+            $settings['IgnoreIDs'] = $travel['allIDs'];
+
+            $settings['CategoryId'] = 2;
+            $wearables = $prod->getProductList($settings);
+            $return['wearables'] = $wearables['result'];
+            $settings['IgnoreIDs'] = $settings['IgnoreIDs'] + $wearables['allIDs'];
+
+            $settings['CategoryId'] = 3;
+            $homeDecor = $prod->getProductList($settings);
+            $return['homeDecor'] = $homeDecor['result'];
+            $settings['IgnoreIDs'] = $settings['IgnoreIDs'] + $wearables['allIDs'];
+
+            $settings['CategoryId'] = 5;
+            $settings['limit'] = 8;
+            $smartHome = $prod->getProductList($settings);
+            $return['smartHome'] = $smartHome['result'];
+            $settings['IgnoreIDs'] = $settings['IgnoreIDs'] + $wearables['allIDs'];
+
+            $settings['CategoryId'] = 7;
+            $settings['limit'] = 1;
+            $mostPopular = $prod->getProductList($settings);
+            $return['mostPopular'] = $mostPopular['result'];
         }
 
     }
