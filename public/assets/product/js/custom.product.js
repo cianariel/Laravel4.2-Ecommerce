@@ -153,4 +153,4 @@ productApp.controller('productController', ['$scope', '$http', '$window'
     }]);
 
 // bootstrap for modularization
-angular.bootstrap(document.getElementById('productApp'),['productApp']);
+//angular.bootstrap(document.getElementById('productApp'),['productApp']);

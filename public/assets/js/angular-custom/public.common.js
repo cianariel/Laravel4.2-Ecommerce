@@ -234,4 +234,4 @@ publicApp.controller('publicController', ['$scope', '$http', '$window', '$timeou
 
 
 // bootstrap for modularization
-angular.bootstrap(document.getElementById('publicApp'),['publicApp']);
+//angular.bootstrap(document.getElementById('publicApp'),['publicApp']);

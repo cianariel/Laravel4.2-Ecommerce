@@ -537,5 +537,7 @@ angular.module('pagingApp.filters', [])
     });
 
 // bootstrap for modularization ( add id="pagingApp" with initializing ng-app='pagingApp')
-angular.bootstrap(document.getElementById('pagingApp'),['pagingApp']);
+//angular.bootstrap(document.getElementById('pagingApp'),['pagingApp']);
+
+
 
