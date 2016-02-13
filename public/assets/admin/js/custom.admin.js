@@ -711,6 +711,23 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
 
         ///// category  ////
 
+        function buildCategoryViewString(data) {
+            arrow = ' >> ';
+            catValue = '';
+            for (var i = 0; i < data.data.length; i++) {
+                if (i == data.data.length - 1) {
+                    arrow = '';
+                }
+
+                catValue += (data.data[i]['CategoryName'] + arrow);
+             //   console.log(i);
+            }
+            $scope.categoryHierarchy = catValue;
+           // console.log('cat :' + $scope.categoryHierarchy);
+          //  console.log('cat :' + catValue);
+
+        }
+
         $scope.categoryHierarchyView = function(catId){
 
             $http({
@@ -719,15 +736,7 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
             }).success(function (data){
                 console.log(data);
 
-                arrow = ' >> ';
-                for(var i =0;i<data.data.length;i++)
-                {
-                    if(i = data.data.length -1)
-                    arrow = '';
-
-                    $scope.categoryHierarchy += data.data[i]['CategoryName']+arrow;
-                }
-                console.log('cat :' + $scope.categoryHierarchy );
+                buildCategoryViewString(data);
 
             });
 

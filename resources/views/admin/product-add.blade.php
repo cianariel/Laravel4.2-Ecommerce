@@ -94,7 +94,10 @@
                                                 <div class="form-group" ng-hide="!hideCategoryPanel">
                                                     <label class="col-md-2 control-label">Selected Category: </label>
                                                     <div class="col-md-5">
-                                                    @{{ selectedItem }}
+                                                        <strong>
+                                                            @{{ categoryHierarchy }} (@{{ selectedItem }})
+                                                        </strong>
+
                                                     <button ng-click="hideCategoryPanel = !hideCategoryPanel"
                                                             tooltip-placement="right"
                                                             uib-tooltip="Reset Category"
@@ -106,7 +109,7 @@
                                                 <div ng-hide="hideCategoryPanel" class="form-group">
                                                     <label class="col-md-2 control-label">Select Category:
                                                     </label>
-                                                    <div class="col-md-5">
+                                                    <div class="col-md-10">
                                                         <ui-tree ng-model="assets"
                                                                  load-fn="loadChildren"
                                                                  expand-to="hierarchy"
