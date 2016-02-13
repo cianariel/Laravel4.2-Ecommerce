@@ -8,7 +8,7 @@
         <div class="page-bar">
             <ul class="page-breadcrumb">
                 <li>
-                    <a href="index.html">Admin</a>
+                    <a href="/admin/dashboard">Admin</a>
                     <i class="fa fa-circle"></i>
                 </li>
                 <li>
@@ -94,7 +94,10 @@
                                                 <div class="form-group" ng-hide="!hideCategoryPanel">
                                                     <label class="col-md-2 control-label">Selected Category: </label>
                                                     <div class="col-md-5">
-                                                    @{{ selectedItem }}
+                                                        <strong>
+                                                            @{{ categoryHierarchy }} (@{{ selectedItem }})
+                                                        </strong>
+
                                                     <button ng-click="hideCategoryPanel = !hideCategoryPanel"
                                                             tooltip-placement="right"
                                                             uib-tooltip="Reset Category"
@@ -106,14 +109,13 @@
                                                 <div ng-hide="hideCategoryPanel" class="form-group">
                                                     <label class="col-md-2 control-label">Select Category:
                                                     </label>
-                                                    <div class="col-md-5">
+                                                    <div class="col-md-10">
                                                         <ui-tree ng-model="assets"
                                                                  load-fn="loadChildren"
                                                                  expand-to="hierarchy"
                                                                  selected-id="111"
                                                                  attr-node-id="id"></ui-tree>
-                                                        <label>Selected Category Id :</label><span
-                                                                class="text-danger"><strong> @{{ selectedItem }} </strong> </span>
+                                                        <label>Selected Category Info :</label><strong> @{{ categoryHierarchy }} (@{{ selectedItem }}) </strong>
                                                     </div>
                                                     <div class="col-md-1">
 

@@ -366,7 +366,10 @@
             if ($catId == null)
                 return null;
 
-            $catTree = ProductCategory::where('id', $catId)->first()->getAncestorsAndSelf();
+            try{
+            $catTree = ProductCategory::where('id', $catId)->first();
+             if($catTree != null)
+                 $catTree = $catTree->getAncestorsAndSelf();
 
             $val = [];
             foreach ($catTree as $key => $value)
@@ -374,6 +377,10 @@
                 $val[ $key ]['CategoryId'] = $value->id;
                 $val[ $key ]['CategoryPermalink'] = $value->extra_info;
                 $val[ $key ]['CategoryName'] = $value->category_name;
+            }
+            }catch(\Exception $ex)
+            {
+                return null;
             }
 
             return $val;
