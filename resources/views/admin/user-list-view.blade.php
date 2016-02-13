@@ -84,7 +84,7 @@
                                                                 type="button"><i class="fa fa-refresh"></i> Refresh
                                                         </button>
                                                         &nbsp;&nbsp;
-                                                        <a class="btn btn-success" href="/admin/product-add"
+                                                        <a class="btn btn-success" href="/admin/user-add"
                                                            type="button"><i class="fa fa-plus"></i> Add User
                                                         </a>
                                                     </div>

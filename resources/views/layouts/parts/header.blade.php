@@ -497,4 +497,3 @@
             </script>
         <?php } ?>
     </div>
-    {{--<script src="/assets/js/angular-custom/custom.paging.js"></script>--}}
