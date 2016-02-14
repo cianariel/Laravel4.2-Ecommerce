@@ -57,10 +57,8 @@
                                     </a>
                                 </div>
 
-                                <section class="search-bar col-xs-2 col-sm-2 ">
-                                    
+                                <section class="search-bar col-sm-2 hidden-xs">
                                     <div class="row">
-                                        <a href="#" class="search-toggle visible-xs" data-toggle=".mobile-search-bar"><i class="m-icon m-icon--search-id"></i></a>
                                         <span class="search-input-holder visible-sm visible-md visible-lg">
                                             <i class="m-icon m-icon--search-id"></i>
                                             <input class="form-control  " type="text" name="search" placeholder="Search..."/>
@@ -69,10 +67,10 @@
                                 </section>
 
                                 <?php if(isset($login) && $login) { ?>
-                                    <div class="col-xs-3 col-sm-2">
+                                    <div class="col-xs-5 col-sm-2">
                                         <div class="row">
                                             <div class="pull-right profile-photo-holder">
-                                                <a href="#"><img width="40px" src="<?php isset($profile) ? $profile : "" ?>" alt="" class="profile-photo "></a>
+                                                <a href="#"><img width="40px" src="<?php echo isset($profile) ? $profile : "" ?>" alt="" class="profile-photo "></a>
                                                 <div class="profilelinks-popup">
                                                     <div class="menu-group">
                                                         <div><a href="#">My Profile</a> </div>
@@ -100,7 +98,7 @@
                                                     <div class="notification-body">
                                                         <?php for($i=0; $i<5; $i++) {?>
                                                             <div class="notification-item">
-                                                                <img width="40px" src="<?php echo $profile ?>" class="profile-photo pull-left">
+                                                                <img width="40px" src="<?php echo isset($profile) ? $profile : "" ?>" class="profile-photo pull-left">
                                                                 <div>
                                                                     <span><strong>Syvia Saint Creat</strong> commented on your photos</span><br>
                                                                     <small>58 minutes ago</small>
@@ -113,6 +111,8 @@
                                                     </div>
                                                 </div>
                                             </div>
+                                            <a href="#" class="search-toggle visible-xs pull-right" data-toggle=".mobile-search-bar"><i class="m-icon m-icon--search-id"></i></a>
+
                                         </div>
                                     </div>
                                 <?php }  else { ?>
@@ -280,16 +280,16 @@
                 <ul class="wrap col-xs-9">
                     <li class="home active">
                         <span class="box-link-active-line"></span>
-                        <a href=""><i class="m-icon m-icon--smart-home"></i> Smart Home</a>
+                        <a class="box-link" href=""><i class="m-icon m-icon--smart-home"></i> Smart Home</a>
                     </li>
-                    <li><a href="/room/kitchen">Kitchen</a></li>
-                    <li><a href="/room/bath">Bath</a></li>
-                    <li><a href="/room/bedroom">Bedroom</a></li>
-                    <li><a href="/room/office">Office</a></li>
-                    <li><a href="/room/living">Living</a></li>
-                    <li><a href="/room/outdoor">Outdoor</a></li>
-                    <li><a href="/room/lighting">Lighting</a></li>
-                    <li><a href="/room/decor">Decor</a></li>
+                    <li><a class="box-link" href="/room/kitchen">Kitchen</a></li>
+                    <li><a class="box-link" href="/room/bath">Bath</a></li>
+                    <li><a class="box-link" href="/room/bedroom">Bedroom</a></li>
+                    <li><a class="box-link" href="/room/office">Office</a></li>
+                    <li><a class="box-link" href="/room/living">Living</a></li>
+                    <li><a class="box-link" href="/room/outdoor">Outdoor</a></li>
+                    <li><a class="box-link" href="/room/lighting">Lighting</a></li>
+                    <li><a class="box-link" href="/room/decor">Decor</a></li>
                     <!--<li><a data-toggle=".extra-nav" class="more-link extra" href="">...</a>
                         <ul class="extra-nav hidden-620 hidden-soft">
                             <li><a class="travel-link blue" href="#">Travel</a></li>
@@ -326,7 +326,7 @@
                 <a class="close" href="#" ng-click="cancel()"><i class="m-icon--Close"></i> </a>
                 
                 <div class="profile-background">
-                    <div class="text-center"><img class="profile-photo" width="150px" src="<?php isset($profile) ? $profile : ""?>"></div>
+                    <div class="text-center"><img class="profile-photo" width="150px" src="<?php echo isset($profile) ? $profile : ""?>"></div>
                     <div class="text-center">
                         <a href="#" class="upload-photo">
                             <i class="m-icon--Upload-Inactive"></i><br>

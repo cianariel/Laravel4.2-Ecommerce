@@ -4,6 +4,32 @@
 
 @section('content')
     <div id="pagingApp" ng-app="pagingApp" ng-controller="pagingController">
+        <nav class="mid-nav hidden-xs">
+            <div class="container">
+                <div class="col-sm-8 col-sm-offset-2">
+                    <ul class="left-nav hidden-620">
+                        <li class="box-link-ul  active-ul ">
+                            <a class="box-link  active " href="/">
+                                <span class="box-link-active-line"></span>
+                               <i class="m-icon--Home"></i> Home 
+                            </a>
+                        </li>
+                        <li class="horizontal-line-holder hidden-xs ">
+                            <span class="horizontal-line"></span>
+                        </li>
+                        <li class="box-link-ul ">
+                            <span class="box-link-active-line"></span>
+                            <a class="box-link " href="/user/profile">
+<!--                                <img class="profile-photo" src="/assets/images/profile.jpg" alt="" width="40px"> -->
+                                My Profile
+                            </a>
+                        </li>
+                    </ul>
+                </div>                
+            </div>
+        </nav>
+
+
         <section id="hero" class="landing-hero">
             <div class="hero-background" style="background-image: url('/assets/images/landing-hero-3.jpg');"></div>
             <div class="color-overlay"></div>
@@ -39,9 +65,10 @@
                     Edit background
                 </a>
             </div>
-            <div class="hidden-xs hidden-sm edit-profile">
+            <div class=" edit-profile">
                 <div><a href="#" class="edit-profile-link" ng-click="openProfileSetting()">Edit Profile&nbsp;&nbsp;<i class="m-icon--Edit-Profile"></i></a></div>
-                <p><a href="#">View your profile as other people see it</a></p>
+                <p class="hidden-xs hidden-sm"><a href="#">View your profile as other people see it</a></p>
+                <p class="visible-xs visible-sm">&nbsp;</p>
             </div>
         </section>
         <div class="app-wrap" >

@@ -5211,7 +5211,10 @@ body.room-landing .mid-nav .rooms.extra-nav, .mid-nav
 body.room-landing .rooms.extra-nav,
 body.product-details .mid-nav.rooms,
 body.product-details .mid-nav .rooms.extra-nav, .mid-nav
-body.product-details .rooms.extra-nav {
+body.product-details .rooms.extra-nav,
+body.profilepage .mid-nav.rooms,
+body.profilepage .mid-nav .rooms.extra-nav, .mid-nav
+body.profilepage .rooms.extra-nav {
   display: none; }
 
 body.single .mid-nav, body.single .mid-nav .extra-nav, .mid-nav body.single .extra-nav,
@@ -5220,7 +5223,10 @@ body.room-landing .mid-nav .extra-nav, .mid-nav
 body.room-landing .extra-nav,
 body.product-details .mid-nav,
 body.product-details .mid-nav .extra-nav, .mid-nav
-body.product-details .extra-nav {
+body.product-details .extra-nav,
+body.profilepage .mid-nav,
+body.profilepage .mid-nav .extra-nav, .mid-nav
+body.profilepage .extra-nav {
   /*    height: 50px;*/
   background: rgba(255, 255, 255, 0.95);
   /*    background: rgba(232,232,232,.95);*/
@@ -5230,7 +5236,8 @@ body.product-details .extra-nav {
 
 body.single #hero,
 body.room-landing #hero,
-body.product-details #hero {
+body.product-details #hero,
+body.profilepage #hero {
   /*    margin-top: -50px;*/ }
 
 .slider.product-slider #gallery, .slider.heroSlider #gallery {
@@ -6313,7 +6320,7 @@ header.colophon {
   #top-nav .top-nav-holder .notification-popup {
     position: absolute;
     max-height: 600px;
-    width: 450px;
+    width: 400px;
     min-height: 50px;
     right: 0px;
     top: 70px;
@@ -6455,7 +6462,7 @@ body.single-post .mid-nav .kitchen, .mid-nav body.single-post .extra-nav .kitche
       position: absolute;
       display: inline-block;
       width: 0px;
-      height: 12px;
+      height: 15px;
       border-left: 1px solid #c1c1c1;
       left: 50%;
       top: -12px; }
@@ -6627,7 +6634,7 @@ body.product-details .article-content p {
       position: absolute;
       display: inline-block;
       width: 0px;
-      height: 12px;
+      height: 15px;
       border-left: 1px solid #c1c1c1;
       left: 63px; }
   .mid-nav .container {
@@ -6645,7 +6652,7 @@ body.product-details .article-content p {
     border-bottom: 1px solid #c1c1c1;
     display: inline-block;
     float: left;
-    margin-top: 26px; }
+    margin-top: 27px; }
   .mid-nav .box-link-ul {
     position: relative; }
     .mid-nav .box-link-ul .box-link-active-line {
@@ -6656,7 +6663,8 @@ body.product-details .article-content p {
       width: 0px;
       height: 20px;
       border-left: 1px solid #c1c1c1;
-      left: 59px; }
+      left: 50%;
+      top: -20px; }
   .mid-nav a, .mid-nav .extra-nav a {
     margin-top: 11px;
     margin-bottom: 11px;
@@ -6679,7 +6687,8 @@ body.product-details .article-content p {
         background-image: url("/assets/images/dots-pink.png");
         box-shadow: none; }
     .mid-nav a.box-link {
-      margin: 15px 6px 13px;
+      margin: 15px 3px 13px;
+      overflow: visible;
       /*      font-weight: bold ;*/
       position: relative; }
       .mid-nav a.box-link:hover, .mid-nav a.box-link.active {
@@ -7037,7 +7046,7 @@ header.sub-head {
 .left-nav li {
   padding-right: 15px; }
   .left-nav li:first-child a {
-    padding-top: 9px; }
+    /*      padding-top: 9px;*/ }
 
 .left-nav a {
   position: static; }
@@ -7189,9 +7198,6 @@ header.sub-head {
       font-size: 1.6rem;
       padding-top: 15px;
       padding-left: 10px !important; }
-
-body.single .mid-nav.rooms, body.single .mid-nav .rooms.extra-nav, .mid-nav body.single .rooms.extra-nav {
-  display: none; }
 
 body.single #top-nav a.ideas {
   color: #ed2049; }
@@ -7551,9 +7557,6 @@ body.room-landing #hero {
 
 body.room-landing #hero-nav {
   border-top: 0px; }
-
-body.room-landing .mid-nav.rooms, body.room-landing .mid-nav .rooms.extra-nav, .mid-nav body.room-landing .rooms.extra-nav {
-  display: none; }
 
 body.room-landing .mid-nav .container, .mid-nav body.room-landing .extra-nav .container {
   /*      padding-left: 0;*/
@@ -8317,7 +8320,7 @@ footer.about-footer {
     float: right; }
   #top-nav a {
     /*      text-indent: -9999px;*/
-    width: 40px;
+    /*      width: 40px;*/
     padding-left: 5px;
     padding-right: 0px;
     margin-left: 0; }
@@ -8955,15 +8958,16 @@ body.profilepage {
     width: 127px; }
   body.profilepage #btn-follow {
     float: left;
-    color: #404040;
+    color: #fff;
     margin-right: 10px;
-    position: relative; }
+    position: relative;
+    background: #FF0042; }
     body.profilepage #btn-follow i {
       font-size: 10px;
-      right: 15px;
-      top: 10px;
+      right: 24px;
+      top: 12px;
       position: absolute;
-      color: #000; }
+      /*            color: #000;*/ }
   body.profilepage .post .side-bar .sidenav {
     margin-left: 15px; }
     body.profilepage .post .side-bar .sidenav > li a {
