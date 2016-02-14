@@ -14,11 +14,11 @@
                         @if(isset($productInformation['CatTree']))
                             @foreach( $productInformation['CatTree'] as $key => $category )
                                 <li class="box-link-ul @if($key==0) active-ul @endif">
-                                    <span class="box-link-active-line"></span>
                                     <a class="box-link @if($key==0) active @endif"
                                        href="/category/@if(isset($category['CategoryPermalink'])){{$category['CategoryPermalink']}}@endif"
                                        @if($category == end($productInformation['CatTree']))class="current"
                                             @endif>
+                                        <span class="box-link-active-line"></span>
                                         @if(isset($category['CategoryName']))
                                             {{$category['CategoryName']}}
                                         @endif
@@ -683,7 +683,7 @@
                         @endif
                     </div>
 
-                    <div class="related-ideas ">
+                    <div class="related-ideas grid-box-3">
                         <h3 class="orange">Related Ideas</h3>
 
                             @if(isset($relatedIdeas) && ($relatedIdeas != null) )
