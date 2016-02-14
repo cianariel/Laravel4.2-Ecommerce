@@ -66,14 +66,13 @@ jQuery(document).ready(function($) {
     <div class="app-wrap" ng-app="pagingApp" ng-controller="shoplandingController">
         
         <div class="container">
-            <div class="loader loader-abs" cg-busy="firstLoad"></div>
-            {{--<div class="loader loader-abs" cg-busy="filterLoad"></div>--}}
             <div class="loader loader-fixed" cg-busy="nextLoad"></div>
             
             <div class="main-content ">
                 <fieldset class="shoplanding-title">
                     <legend align="center">Daily Deals</legend>
                 </fieldset>
+                <div class="loader loader-abs" cg-busy="firstLoad"></div>
                 <div class="row">
                     <div id="daily-deals" class="slider has-bullets" >
                         <div class="box-item idea-box box-item--featured rsContent" ng-repeat="item in dailyDeals" >
@@ -86,8 +85,8 @@ jQuery(document).ready(function($) {
                 </fieldset>
                 <div class="row">
                     <div id="newest-arrivals" class="slider col-xs-12 has-bullets" >
-                        <div class="grid-box-3 rsContent" ng-repeat="items in newestArrivals">
-                            <div class="box-item product-box " ng-repeat="item in items" >
+                        <div class="grid-box-3 rsContent">
+                            <div class="box-item product-box "ng-repeat="item in newestArrivals">
                                 @include('grid.product')
                             </div>
                         </div>

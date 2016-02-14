@@ -24,7 +24,36 @@ class PageController extends Controller
         return view('home');
     }
 
-    public function getContent($page = 1, $limit = 5, $tag = false,  $category = false){
+
+    public function getContent($page = 1, $limit = 5, $tag = false,  $type = false){
+
+        if($tag && $tag !== 'undefined' && $tag != 'false' && $tag != ''){
+            $tagID = Tag::where('tag_name', $tag)->lists('id')->toArray();
+        }else{
+            $tagID = false;
+            $tag = false;
+        }
+
+        $offset = 4 *  ($page - 1);
+
+        if($type == 'product' || !$stories = self::getStories($limit, $offset, $tag)){
+            $stories = [];
+        }
+
+        if($type == 'idea' || !$products = self::getProducts($limit, $page, $offset, $tagID)){
+            $products['result'] = [];
+        }
+
+        $return = array_merge($stories, $products['result']);
+
+        usort($return, function($a, $b) {
+            return strtotime(@$b->updated_at) - strtotime(@$a->updated_at);
+        });
+
+        return $return;
+    }
+
+    public function getGridContent($page = 1, $limit = 5, $tag = false,  $type = false, $grid = true){
 
         if($tag && $tag !== 'undefined' && $tag != 'false' && $tag != ''){
             $tagID = Tag::where('tag_name', $tag)->lists('id')->toArray();
@@ -51,14 +80,14 @@ class PageController extends Controller
         $featuredLimit = 3;
         $featuredOffset = $featuredLimit * ($page - 1);
 
-        if($category == 'product' || !$stories = self::getStories($storyLimit, $storyOffset, $featuredLimit, $featuredOffset, $tag)){
+        if($type == 'product' || !$stories = self::getGridStories($storyLimit, $storyOffset, $featuredLimit, $featuredOffset, $tag)){
             $stories = [
                 'regular' => [],
                 'featured' => [],
             ];
         }
 
-        if($category == 'idea' || !$products = self::getProducts($productLimit, $page, $productOffset, $tagID)){
+        if($type == 'idea' || !$products = self::getProducts($productLimit, $page, $productOffset, $tagID)){
             $products['result'] = [];
         }
 
@@ -76,7 +105,26 @@ class PageController extends Controller
         return $return;
     }
 
-    public function getStories($limit, $offset, $featuredLimit, $featuredOffset, $tag){
+
+    public function getStories($limit, $offset, $tag){
+        $url = 'http://staging.ideaing.com/ideas/feeds/index.php?count='.$limit.'&offset='. $offset;
+        if($tag && $tag != 'false'){
+            $url .= '&tag=' . $tag;
+        }
+
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_HEADER, 0);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_ENCODING ,"");
+        $json = curl_exec($ch);
+
+        $return = json_decode($json);
+
+        return $return;
+    }
+
+    public function getGridStories($limit, $offset, $featuredLimit, $featuredOffset, $tag){
         $url = 'http://staging.ideaing.com/ideas/feeds/index.php?count='.$limit.'&no-featured&offset='. $offset;
         if($tag && $tag != 'false'){
             $url .= '&tag=' . $tag;
