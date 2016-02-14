@@ -212,5 +212,22 @@
 
         }
 
+        public static function buildCategoryTree(){
 
+            $topLevelCategories = ProductCategory::where('parent_id', null)->get();
+//            $parentCategories = ProductCategory::whereIn('parent_id', $topLevelCategories);
+//            $parentCategories = $parentCategories->where('category_type', '!=', 'room');
+
+//            $parentCategories = $parentCategories->get();
+
+            foreach($topLevelCategories as $top){
+                $cats = ProductCategory::where('parent_id', $top->id)->get();
+
+                foreach($cats as $cat){
+                    $categoryTree[$top->extra_info][$cat->extra_info] = $cat->hasChildOfCategory($cat->id);
+                }
+            }
+
+            return $categoryTree;
+        }
     }
