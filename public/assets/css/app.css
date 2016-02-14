@@ -6449,27 +6449,28 @@ body.homepage #top-nav .ideas, body.single-post #top-nav .ideas, body.product-de
     left: 50%;
     /*        margin-left: -2px;*/ }
 
-body.single-post .mid-nav .kitchen, .mid-nav body.single-post .extra-nav .kitchen {
-  position: relative; }
-  body.single-post .mid-nav .kitchen > a, body.single-post .mid-nav .extra-nav .kitchen > a, .mid-nav body.single-post .extra-nav .kitchen > a {
-    background: #ed2049;
-    color: #fff !important;
-    box-shadow: none;
-    margin-right: 17px;
-    position: relative;
-    overflow: visible; }
-    body.single-post .mid-nav .kitchen > a .box-link-active-line, body.single-post .mid-nav .extra-nav .kitchen > a .box-link-active-line, .mid-nav body.single-post .extra-nav .kitchen > a .box-link-active-line {
-      position: absolute;
-      display: inline-block;
-      width: 0px;
-      height: 15px;
-      border-left: 1px solid #c1c1c1;
-      left: 50%;
-      top: -12px; }
-
-body.single-post .mid-nav .horizontal-line, .mid-nav body.single-post .extra-nav .horizontal-line {
-  margin-right: 10px;
-  margin-top: 24px; }
+body.single-post .mid-nav, body.single-post .mid-nav .extra-nav, .mid-nav body.single-post .extra-nav {
+  /*.horizontal-line{
+            margin-right: 10px;
+            margin-top: 24px;
+        }*/ }
+  body.single-post .mid-nav .kitchen, .mid-nav body.single-post .extra-nav .kitchen {
+    position: relative; }
+    body.single-post .mid-nav .kitchen > a, body.single-post .mid-nav .extra-nav .kitchen > a, .mid-nav body.single-post .extra-nav .kitchen > a {
+      background: #ed2049;
+      color: #fff !important;
+      box-shadow: none;
+      margin-right: 17px;
+      position: relative;
+      overflow: visible; }
+      body.single-post .mid-nav .kitchen > a .box-link-active-line, body.single-post .mid-nav .extra-nav .kitchen > a .box-link-active-line, .mid-nav body.single-post .extra-nav .kitchen > a .box-link-active-line {
+        position: absolute;
+        display: inline-block;
+        width: 0px;
+        /*                    height: 15px;*/
+        border-left: 1px solid #c1c1c1;
+        /*                    left: 50%;*/
+        /*                    top: -12px;*/ }
 
 body.single-post #top-nav .kitchen {
   position: relative; }
@@ -6499,8 +6500,11 @@ body.single-post .related-ideas {
 .article-content a:hover {
   color: #FF0042; }
 
-.article-content h1 a, .article-content h1 a:hover, .article-content h2 a, .article-content h2 a:hover {
+.article-content h1 a, .article-content h2 a {
   color: inherit; }
+
+.article-content h1 a:hover, .article-content h2 a:hover {
+  color: #FF0042; }
 
 body.product-details .story-header h1 .title, .single-post .story-header h1 .title {
   height: 15px;
@@ -7146,14 +7150,16 @@ header.sub-head {
     color: #C7C747; }
   #hero-nav li.active a.photos-link {
     color: #00B1FF; }
-  #hero-nav .main-content-filter li .m-icon {
-    font-size: 24px;
-    margin-top: -3px;
-    margin-right: 5px; }
-  #hero-nav .main-content-filter li > a {
-    padding-right: 10px; }
-    #hero-nav .main-content-filter li > a:focus {
-      text-decoration: none; }
+  #hero-nav .main-content-filter {
+    text-align: center; }
+    #hero-nav .main-content-filter li .m-icon {
+      font-size: 24px;
+      margin-top: -3px;
+      margin-right: 5px; }
+    #hero-nav .main-content-filter li > a {
+      padding-right: 10px; }
+      #hero-nav .main-content-filter li > a:focus {
+        text-decoration: none; }
 
 .product-details #hero-nav .category-nav {
   width: 568px;

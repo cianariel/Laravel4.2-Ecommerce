@@ -59,14 +59,14 @@
                     <ul class="wrap col-xs-9">
                         <!--                    <li><a class="home-link" href="#">Home</a></li>-->
                     @if(empty($mainCategory))
-                        <li class="kitchen">
+                        <li class="kitchen box-link-ul  active-ul ">
                             <a href="{{get_site_url()}}" class="box-link">
                                 Smart Home
                                 <span class="box-link-active-line"></span>
                             </a>
                         </li>
                     @else
-                            <li class="kitchen">
+                        <li class="kitchen box-link-ul  active-ul ">
                             <a href="{{get_site_url()}}/category/{{$mainCategory->slug}}" class="box-link">
                                     {{$mainCategory->name}}
                                 <span class="box-link-active-line"></span>
