@@ -81,7 +81,7 @@
             $($modal).fadeToggle();
             $('.page-overlay').fadeToggle();
             if($($modal).hasClass('login-signup-modal')){
-                $('.picture-overlay').fadeToggle();
+                $('.picture-overlay').show();
             }
         });
 
