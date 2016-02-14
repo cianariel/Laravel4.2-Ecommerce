@@ -918,14 +918,15 @@ nav {
 
 body.single,
 body.room-landing,
-body.product-details{
+body.product-details,
+body.profilepage{
   .mid-nav.rooms{
     display: none;
   }
   .mid-nav{
-/*    height: 50px;*/
+    /*    height: 50px;*/
     background: rgba(255,255,255,.95);
-/*    background: rgba(232,232,232,.95);*/
+    /*    background: rgba(232,232,232,.95);*/
     position: relative;
     z-index: 2;
     overflow: hidden;
@@ -2752,7 +2753,7 @@ header.colophon{
         .notification-popup{
             position: absolute;
             max-height: 600px;
-            width: 450px;
+            width: 400px;
             min-height: 50px;
             right: 0px;
             top: 70px;
@@ -2945,7 +2946,7 @@ body.single-post{
                     position: absolute;
                     display: inline-block;
                     width: 0px;
-                    height: 12px;
+                    height: 15px;
                     border-left: 1px solid $light-grey;
                     left: 50%;
                     top: -12px;
@@ -3225,7 +3226,7 @@ body.product-details{
             position: absolute;
             display: inline-block;
             width: 0px;
-            height: 12px;
+            height: 15px;
             border-left: 1px solid $light-grey;
             left: 63px;
         }
@@ -3254,7 +3255,7 @@ body.product-details{
         border-bottom: 1px solid $light-grey;
         display: inline-block;
         float:left;
-        margin-top: 26px;
+        margin-top: 27px;
       
     }
     .box-link-ul{
@@ -3270,7 +3271,8 @@ body.product-details{
                 width: 0px;
                 height: 20px;
                 border-left: 1px solid $light-grey;
-                left: 59px
+                left: 50%;
+                top: -20px;
             }
         }
     }
@@ -3311,7 +3313,8 @@ body.product-details{
 
         &.box-link{
           //padding: 3px 4px;
-          margin: 15px 6px 13px;
+          margin: 15px 3px 13px;
+          overflow: visible;
           //border: 2px solid $dark-orange;
           //border-radius: 4px;
     /*      font-weight: bold ;*/
@@ -3867,7 +3870,7 @@ header.sub-head{
     //}
 
     &:first-child a{
-      padding-top: 9px;
+/*      padding-top: 9px;*/
     }
   }
 
@@ -3918,7 +3921,7 @@ header.sub-head{
     background-position: 0 19px;
     background-repeat: no-repeat;
     color: $tarmac;
-
+    
     i{
         margin-right: 5px;
     }
@@ -4170,9 +4173,6 @@ header.sub-head{
 // IDEAS (CMS / STORIES)
 
 body.single{
-  .mid-nav.rooms{
-    display: none;
-  }
   #top-nav a.ideas{
     color: $pink;
     
@@ -4721,9 +4721,6 @@ body.room-landing{
     #hero-nav{
         border-top: 0px;
     }
-  .mid-nav.rooms{
-    display: none;
-  }
 
   .mid-nav{
     .container{
@@ -6159,7 +6156,7 @@ footer.about-footer{
 
     a {
 /*      text-indent: -9999px;*/
-      width: 40px;
+/*      width: 40px;*/
       padding-left: 5px;
       padding-right: 0px;
       margin-left: 0;
@@ -6477,8 +6474,8 @@ footer.about-footer{
     height: 50px;
     text-align: center;
     line-height: 50px;
-    font-size: 32px;  
-    cursor: pointer;  
+    font-size: 32px;
+    cursor: pointer;
 /*    padding: 20px;*/
     text-align: center;
     display: inline-block;
@@ -7104,15 +7101,16 @@ body.profilepage{
     }
     #btn-follow{
         float: left;
-        color: #404040;
+        color: #fff;
         margin-right: 10px;
         position: relative;
+        background: $iridium;
         i{
             font-size: 10px;
-            right: 15px;
-            top: 10px;
+            right: 24px;
+            top: 12px;
             position: absolute;
-            color: #000;
+/*            color: #000;*/
         }
     }
     .post{

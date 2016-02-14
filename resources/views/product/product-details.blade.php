@@ -10,8 +10,7 @@
         <nav class="mid-nav hidden-xs">
             <div class="container">
                 <div class="col-sm-8 col-sm-offset-2">
-                    <ul class="left-nav breadcrumbs hidden-620">
-
+                    <ul class="left-nav hidden-620">
                         @if(isset($productInformation['CatTree']))
                             @foreach( $productInformation['CatTree'] as $key => $category )
                                 <li class="box-link-ul @if($key==0) active-ul @endif">
