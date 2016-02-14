@@ -230,6 +230,7 @@
     Route::get('login', 'PageController@loginView');
 
     Route::get('/api/paging/get-content/{page?}/{limit?}/{category?}/{tag?}', 'PageController@getContent');
+    Route::get('/api/paging/get-grid-content/{page?}/{limit?}/{category?}/{tag?}', 'PageController@getGridContent');
     Route::get('/api/layout/get-shop-menu', 'PageController@getShopMenu');
 
 

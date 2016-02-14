@@ -1,5 +1,14 @@
-angular.module('pagingApp.controllers', [ 'ui.bootstrap']).
-    controller('pagingController', function($scope, $uibModal,$http,pagaingApi, $filter) {
+
+angular.module('pagingApp', [
+    'pagingApp.controllers',
+    'pagingApp.services',
+    'pagingApp.filters',
+    'cgBusy'
+]);
+
+angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
+
+    .controller('pagingController', function($scope, $uibModal,$http,pagingApi, $filter) {
         $scope.allContent = [];
         $scope.content = [];
         $scope.newStuff = [];
@@ -20,7 +29,7 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap']).
             $scope.currentTag = $filter('getURISegment')(3);
         }
 
-        $scope.firstLoad = pagaingApi.getContent(1, 0, $scope.currentTag).success(function (response) {
+        $scope.firstLoad = pagingApi.getGridContent(1, 0, $scope.currentTag).success(function (response) {
             $scope.allContent[0] = response;
             $scope.content[0] = $scope.sliceToRows(response['regular'], response['featured']);
         });
@@ -36,7 +45,7 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap']).
                 var $limit = 9;
             }
 
-            $scope.nextLoad =  pagaingApi.getContent($scope.currentPage, $limit, $scope.currentTag, $scope.filterBy).success(function (response) {
+            $scope.nextLoad =  pagingApi.getGridContent($scope.currentPage, $limit, $scope.currentTag, $scope.filterBy).success(function (response) {
                 $scope.newStuff[0] = $scope.sliceToRows(response['regular'], response['featured']);
                 $scope.content = $scope.content.concat($scope.newStuff);
 
@@ -54,7 +63,7 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap']).
                     return true;
 
                 }else if(typeof $criterion === 'undefined' || $criterion === null || $criterion === 'all'){
-                    $scope.nextLoad = pagaingApi.getContent(1, 0, $scope.currentTag).success(function (response) {
+                    $scope.nextLoad = pagingApi.getGridContent(1, 0, $scope.currentTag).success(function (response) {
                         $scope.allContent[0] = response;
                         $replacer[0] = $scope.sliceToRows(response['regular'], response['featured']);
                     });
@@ -70,9 +79,7 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap']).
 
                 $scope.filterBy = $criterion;
 
-                console.log(2)
-                console.log($scope.currentTag)
-                $scope.nextLoad = pagaingApi.getFilteredContent($scope.currentPage, $scope.currentTag, $criterion, $scope.sliceToRows).then(function(response){
+                $scope.nextLoad = pagingApi.getFilteredContent($scope.currentPage, $scope.currentTag, $criterion, $scope.sliceToRows).then(function(response){
                     var $newStuff       = response;
 
                     $scope.content = $newStuff;
@@ -139,7 +146,7 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap']).
               controller: 'ModalInstanceCtrltest'
             });
         };
-        
+
         $scope.openProfileSetting = function () {
             var templateUrl = "profile-setting.html";
             var modalInstance = $uibModal.open({
@@ -176,162 +183,22 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap']).
         $uibModalInstance.dismiss('cancel');
       };
     })
-    .controller('shoplandingController', function ($scope) {
+    .controller('shoplandingController', ['$scope', '$http', 'pagingApi', function ($scope, $http, pagingApi) {
         $scope.renderHTML = function(html_code)
         {
             var decoded = angular.element('<div />').html(html_code).text();
             return decoded;
         };
 
-        $scope.dailyDeals = [
-            {
-                'is_featured': true,
-                'updated_at': "2 weeks ago",
-                'image': "http://staging.ideaing.com/ideas/wp-content/uploads/2016/02/Smart-Cooking-kitchen-gadgets-hero.jpg",
-                'url': "http://staging.ideaing.com/ideas/02/04/smart-cooking-products-that-will-revolutionize-your-kitchen",
-                'title': "5 Best Smart Thermostats",
-                'authorlink': "http://staging.ideaing.com/ideas/author/laurahunter",
-                'avator': "http://2.gravatar.com/avatar/e85159fbaa0dfbcbe10b6344ca3a4038?s=96&d=mm&r=g",
-                'author': "Nicole van Zanten"
-            },
-            {
-                'is_featured': true,
-                'updated_at': "2 weeks ago",
-                'image': "http://staging.ideaing.com/ideas/wp-content/uploads/2016/02/Smart-Cooking-kitchen-gadgets-hero.jpg",
-                'url': "http://staging.ideaing.com/ideas/02/04/smart-cooking-products-that-will-revolutionize-your-kitchen",
-                'title': "5 Best Smart Toys for your Pet",
-                'authorlink': "http://staging.ideaing.com/ideas/author/laurahunter",
-                'avator': "http://2.gravatar.com/avatar/e85159fbaa0dfbcbe10b6344ca3a4038?s=96&d=mm&r=g",
-                'author': "Nicole van Zanten"
-            },
-            {
-                'is_featured': true,
-                'updated_at': "2 weeks ago",
-                'image': "http://staging.ideaing.com/ideas/wp-content/uploads/2016/02/Smart-Cooking-kitchen-gadgets-hero.jpg",
-                'url': "http://staging.ideaing.com/ideas/02/04/smart-cooking-products-that-will-revolutionize-your-kitchen",
-                'title': "5 Best Smart Toys for your Pet",
-                'authorlink': "http://staging.ideaing.com/ideas/author/laurahunter",
-                'avator': "http://2.gravatar.com/avatar/e85159fbaa0dfbcbe10b6344ca3a4038?s=96&d=mm&r=g",
-                'author': "Nicole van Zanten"
-            }
-        ];
-        $scope.newestArrivals = [
-            [
-                {
-                    'media_link_full_path': "http://s3-us-west-1.amazonaws.com/ideaing-01/product-56b246aab5372-dvx-at100-thumb.jpg",
-                    'product_name': "AT100 Electronic Bidet Smart Toilet Seat",
-                    'updated_at': "2 hours ago",
-                    'product_permalink': "at100-electronic-luxury-bidet-seat",
-                    'sale_price': "0",
-                    'storeInfo': {
-                        "Description" : "dxv",
-                        "ImagePath" : "http://s3-us-west-1.amazonaws.com/ideaing-01/product-56b38cfc58fb0-DXV_logo_png.png"
-                    },
-                    'affiliate_link': "http://www.dxv.com/product/at100-electronic-luxury-bidet-seat-by-dxv"
-                },
-                {
-                    'media_link_full_path': "http://s3-us-west-1.amazonaws.com/ideaing-01/product-56b246aab5372-dvx-at100-thumb.jpg",
-                    'product_name': "AT100 Electronic Bidet Smart Toilet Seat",
-                    'updated_at': "2 hours ago",
-                    'product_permalink': "at100-electronic-luxury-bidet-seat",
-                    'sale_price': "0",
-                    'storeInfo': {
-                        "Description" : "dxv",
-                        "ImagePath" : "http://s3-us-west-1.amazonaws.com/ideaing-01/product-56b38cfc58fb0-DXV_logo_png.png"
-                    },
-                    'affiliate_link': "http://www.dxv.com/product/at100-electronic-luxury-bidet-seat-by-dxv"
-                },
-                {
-                    'media_link_full_path': "http://s3-us-west-1.amazonaws.com/ideaing-01/product-56b246aab5372-dvx-at100-thumb.jpg",
-                    'product_name': "AT100 Electronic Bidet Smart Toilet Seat",
-                    'updated_at': "2 hours ago",
-                    'product_permalink': "at100-electronic-luxury-bidet-seat",
-                    'sale_price': "0",
-                    'storeInfo': {
-                        "Description" : "dxv",
-                        "ImagePath" : "http://s3-us-west-1.amazonaws.com/ideaing-01/product-56b38cfc58fb0-DXV_logo_png.png"
-                    },
-                    'affiliate_link': "http://www.dxv.com/product/at100-electronic-luxury-bidet-seat-by-dxv"
-                }
-            ],
-            [
-                {
-                    'media_link_full_path': "http://s3-us-west-1.amazonaws.com/ideaing-01/product-56b246aab5372-dvx-at100-thumb.jpg",
-                    'product_name': "AT100 Electronic Bidet Smart Toilet Seat",
-                    'updated_at': "2 hours ago",
-                    'product_permalink': "at100-electronic-luxury-bidet-seat",
-                    'sale_price': "0",
-                    'storeInfo': {
-                        "Description" : "dxv",
-                        "ImagePath" : "http://s3-us-west-1.amazonaws.com/ideaing-01/product-56b38cfc58fb0-DXV_logo_png.png"
-                    },
-                    'affiliate_link': "http://www.dxv.com/product/at100-electronic-luxury-bidet-seat-by-dxv"
-                },
-                {
-                    'media_link_full_path': "http://s3-us-west-1.amazonaws.com/ideaing-01/product-56b246aab5372-dvx-at100-thumb.jpg",
-                    'product_name': "AT100 Electronic Bidet Smart Toilet Seat",
-                    'updated_at': "2 hours ago",
-                    'product_permalink': "at100-electronic-luxury-bidet-seat",
-                    'sale_price': "0",
-                    'storeInfo': {
-                        "Description" : "dxv",
-                        "ImagePath" : "http://s3-us-west-1.amazonaws.com/ideaing-01/product-56b38cfc58fb0-DXV_logo_png.png"
-                    },
-                    'affiliate_link': "http://www.dxv.com/product/at100-electronic-luxury-bidet-seat-by-dxv"
-                },
-                {
-                    'media_link_full_path': "http://s3-us-west-1.amazonaws.com/ideaing-01/product-56b246aab5372-dvx-at100-thumb.jpg",
-                    'product_name': "AT100 Electronic Bidet Smart Toilet Seat",
-                    'updated_at': "2 hours ago",
-                    'product_permalink': "at100-electronic-luxury-bidet-seat",
-                    'sale_price': "0",
-                    'storeInfo': {
-                        "Description" : "dxv",
-                        "ImagePath" : "http://s3-us-west-1.amazonaws.com/ideaing-01/product-56b38cfc58fb0-DXV_logo_png.png"
-                    },
-                    'affiliate_link': "http://www.dxv.com/product/at100-electronic-luxury-bidet-seat-by-dxv"
-                }
-            ],
-            [
-                {
-                    'media_link_full_path': "http://s3-us-west-1.amazonaws.com/ideaing-01/product-56b246aab5372-dvx-at100-thumb.jpg",
-                    'product_name': "AT100 Electronic Bidet Smart Toilet Seat",
-                    'updated_at': "2 hours ago",
-                    'product_permalink': "at100-electronic-luxury-bidet-seat",
-                    'sale_price': "0",
-                    'storeInfo': {
-                        "Description" : "dxv",
-                        "ImagePath" : "http://s3-us-west-1.amazonaws.com/ideaing-01/product-56b38cfc58fb0-DXV_logo_png.png"
-                    },
-                    'affiliate_link': "http://www.dxv.com/product/at100-electronic-luxury-bidet-seat-by-dxv"
-                },
-                {
-                    'media_link_full_path': "http://s3-us-west-1.amazonaws.com/ideaing-01/product-56b246aab5372-dvx-at100-thumb.jpg",
-                    'product_name': "AT100 Electronic Bidet Smart Toilet Seat",
-                    'updated_at': "2 hours ago",
-                    'product_permalink': "at100-electronic-luxury-bidet-seat",
-                    'sale_price': "0",
-                    'storeInfo': {
-                        "Description" : "dxv",
-                        "ImagePath" : "http://s3-us-west-1.amazonaws.com/ideaing-01/product-56b38cfc58fb0-DXV_logo_png.png"
-                    },
-                    'affiliate_link': "http://www.dxv.com/product/at100-electronic-luxury-bidet-seat-by-dxv"
-                },
-                {
-                    'media_link_full_path': "http://s3-us-west-1.amazonaws.com/ideaing-01/product-56b246aab5372-dvx-at100-thumb.jpg",
-                    'product_name': "AT100 Electronic Bidet Smart Toilet Seat",
-                    'updated_at': "2 hours ago",
-                    'product_permalink': "at100-electronic-luxury-bidet-seat",
-                    'sale_price': "0",
-                    'storeInfo': {
-                        "Description" : "dxv",
-                        "ImagePath" : "http://s3-us-west-1.amazonaws.com/ideaing-01/product-56b38cfc58fb0-DXV_logo_png.png"
-                    },
-                    'affiliate_link': "http://www.dxv.com/product/at100-electronic-luxury-bidet-seat-by-dxv"
-                }
-            ]
-        ];
-    })
+        $scope.nextLoad = pagingApi.getPlainContent(1, 3, 'deal', 'idea').success(function (response) {
+            $scope.dailyDeals = response;
+        });
+
+        pagingApi.getPlainContent(1, 9, false, 'product').success(function (response) {
+            $scope.newestArrivals = response;
+        });
+    }])
+
     .controller('shopcategoryController', function ($scope) {
         $scope.renderHTML = function(html_code)
         {
@@ -339,7 +206,7 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap']).
             return decoded;
         };
 
-        $scope.items = 
+        $scope.items =
             [
                 {
                     'media_link_full_path': "http://s3-us-west-1.amazonaws.com/ideaing-01/product-56b246aab5372-dvx-at100-thumb.jpg",
@@ -392,29 +259,26 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap']).
             ]
         ;
     })
-;
+    .factory('pagingApi', function($http, $q) {
+
+        var pagingApi = {};
 
 
-angular.module('pagingApp', [
-    'pagingApp.controllers',
-    'pagingApp.services',
-    'pagingApp.filters',
-    'cgBusy'
-]);
-
-angular.module('pagingApp.services', []).
-    factory('pagaingApi', function($http, $q) {
-
-        var pagaingApi = {};
-
-        pagaingApi.getContent = function(page, limit, tag, category) {
+        pagingApi.getPlainContent = function(page, limit, tag, type) {
             return $http({
                 method: 'GET',
-                url: '/api/paging/get-content/' + page + '/' + limit + '/' + tag + '/' + category,
+                url: '/api/paging/get-content/' + page + '/' + limit + '/' + tag + '/' + type,
             });
         }
 
-        pagaingApi.getFilteredContent = function(currentPage, $tag, $category, $sliceFunction) {
+        pagingApi.getGridContent = function(page, limit, tag, type) {
+            return $http({
+                method: 'GET',
+                url: '/api/paging/get-grid-content/' + page + '/' + limit + '/' + tag + '/' + type,
+            });
+        }
+
+        pagingApi.getFilteredContent = function(currentPage, $tag, $category, $sliceFunction) {
             var promiseArray = [];
 
             for(var $page = 1; $page < currentPage + 2; $page++) {
@@ -451,8 +315,62 @@ angular.module('pagingApp.services', []).
             return $return;
         }
 
-        return pagaingApi;
-    });
+        return pagingApi;
+    })
+;
+
+//
+//angular.module('pagingApp.services', []).
+//    factory('pagingApi', function($http, $q) {
+//
+//        var pagingApi = {};
+//
+//        pagingApi.getGridContent = function(page, limit, tag, category) {
+//            return $http({
+//                method: 'GET',
+//                url: '/api/paging/get-content/' + page + '/' + limit + '/' + tag + '/' + category,
+//            });
+//        }
+//
+//        pagingApi.getFilteredContent = function(currentPage, $tag, $category, $sliceFunction) {
+//            var promiseArray = [];
+//
+//            for(var $page = 1; $page < currentPage + 2; $page++) {
+//
+//                promiseArray.push(
+//                    $http.get('/api/paging/get-content/' + $page + '/' + 9 + '/' + $tag+ '/' + $category)
+//                );
+//            }
+//
+//            var $return = $q.all(promiseArray).then(function successCallback(response) {
+//                var $i = 0;
+//                var $filtered = [];
+//
+//                response.forEach(function(batch) {
+//
+//                    var endContent = [];
+//
+//                    endContent['regular'] = batch.data['regular'];
+//
+//                    if($category != null && $category != 'idea'){
+//                        endContent['featured'] = [];
+//                    }else{
+//                        endContent['featured'] =  batch.data['featured']; // we don't filter
+//                    }
+//
+//                    $filtered[$i] = $sliceFunction(endContent['regular'], endContent['featured'] );
+//                    $i++;
+//                });
+//
+//                var $return = $filtered;
+//
+//                return $return;
+//            });
+//            return $return;
+//        }
+//
+//        return pagingApi;
+//    });
 
 angular.module('pagingApp.services', []).
     factory('layoutApi', function($http) {
