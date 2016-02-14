@@ -71,6 +71,7 @@
                                         <div class="row">
                                             <div class="pull-right profile-photo-holder">
                                                 <a href="#"><img width="40px" src="<?php echo isset($profile) ? $profile : "" ?>" alt="" class="profile-photo "></a>
+                                                <span class="box-link-active-line"></span>
                                                 <div class="profilelinks-popup">
                                                     <div class="menu-group">
                                                         <div><a href="#">My Profile</a> </div>
