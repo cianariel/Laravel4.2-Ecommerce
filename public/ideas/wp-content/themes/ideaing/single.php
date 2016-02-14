@@ -4,11 +4,15 @@
         <header class="story-header hidden-620 hidden-soft" >
             <div class="col-xs-1 col-sm-1">
                 <a href="#" class="side-logo lamp-logo">
+                    <i class="m-icon m-icon--bulb2 scroll-logo">
+                        <span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span><span class="path6"></span><span class="path7"></span><span class="path8"></span><span class="path9"></span><span class="path10"></span>
+                    </i>
                 </a>
             </div>
             <div class="col-xs-8 col-sm-3">
                 <h1>
-                    <span class="title">{{the_title()}}</span><br>
+                    <span class="title-holder"> 
+                        <span class="title">{{the_title()}}</span>
                     <ul class="social-stats center-block ">
                         <li class="social-stats__item">
                             <a href="#">
@@ -17,6 +21,7 @@
                             </a>
                         </li>
                     </ul>
+                    </span>
                     
     <!--                <a class="like-counter" href="#"><i class="m-icon m-icon--heart-solid"></i>&nbsp;<b>1819</b></a>-->
                 </h1>
@@ -49,33 +54,33 @@
 
         }
     ?>
-        <nav class="mid-nav hidden-xs" style="float: left">
+        <nav class="mid-nav hidden-xs" >
                 <div class="container">
                     <ul class="wrap col-xs-9">
                         <!--                    <li><a class="home-link" href="#">Home</a></li>-->
                     @if(empty($mainCategory))
                         <li class="kitchen">
-                            <span class="box-link-active-line"></span>
                             <a href="{{get_site_url()}}" class="">
                                 Smart Home
+                                <span class="box-link-active-line"></span>
                             </a>
                         </li>
                     @else
                             <li class="kitchen">
-                                <span class="box-link-active-line"></span>
                                 <a href="{{get_site_url()}}/category/{{$mainCategory->slug}}" class="">
                                     {{$mainCategory->name}}
+                                <span class="box-link-active-line"></span>
                                 </a>
                             </li>
                         @if(@$childCategory)
-                            <li class="horizontal-line-holder hidden-xs hidden-sm">
+                            <li class="horizontal-line-holder hidden-xs ">
                                 <span class="horizontal-line"></span>
                             </li>
                             <li><a href="{{get_site_url()}}/cateogry/{{$childCategory->slug}}" class="">{{$childCategory->name}}</a></li>
                         @endif
 
                         @if(@$firstTag)
-                            <li class="horizontal-line-holder hidden-xs hidden-sm">
+                            <li class="horizontal-line-holder hidden-xs ">
                                 <span class="horizontal-line"></span>
                             </li>
                             <li><a href="{{get_site_url()}}/tag/{{$firstTag->slug}}" class="">{{$firstTag->name}}</a></li>
@@ -115,7 +120,7 @@
                     <li><a class="comment" data-scrollto=".comments" href="#"><i class="m-icon m-icon--comments-id"></i><b>189</b></a></li>
                 </ul>
 
-                <ul class="like-nav hidden-xs pull-right">
+                <ul class="like-nav hidden-xs">
                     <li>
                         <div class="social-stats  ">
                             <div class="social-stats__item">
@@ -258,7 +263,7 @@
 	<?php endif; ?>
 
     <section class="related-items pale-grey-bg">
-        <div class="main-content container full-620 fixed-sm">
+        <div class="main-content full-620 fixed-sm">
             <h3 class="orange">Related Ideas</h3><br>
             <div class="related-ideas  grid-box-3">
 

@@ -126,6 +126,19 @@
             }
         })
 
+        $(".show-hero-category").click(function(e){
+            e.preventDefault();
+            if($(".hideen-hero-category-menu").is(":visible")){
+                $(".hideen-hero-category-menu").hide();
+            }else{
+                $(".hideen-hero-category-menu").show();
+            }
+        })
+        
+        $(".hideen-hero-category-menu a").click(function(){
+            $(".hideen-hero-category-menu").hide();
+        })
+
         // scroll and stick the share bar
         function sticky_relocate() {
             if(window.innerWidth < 620){
