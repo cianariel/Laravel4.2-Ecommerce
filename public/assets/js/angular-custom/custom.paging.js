@@ -194,6 +194,7 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
             $scope.dailyDeals = response;
         });
 
+
         pagingApi.getPlainContent(1, 9, false, 'product').success(function (response) {
             $scope.newestArrivals = response;
         });

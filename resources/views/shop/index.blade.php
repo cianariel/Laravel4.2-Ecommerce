@@ -57,7 +57,7 @@ jQuery(document).ready(function($) {
 //    autoScaleSliderHeight: 500,
 //    autoScaleSlider: true
   });
-  
+
   
 });
 </script>
@@ -74,9 +74,11 @@ jQuery(document).ready(function($) {
                 </fieldset>
                 <div class="loader loader-abs" cg-busy="firstLoad"></div>
                 <div class="row">
-                    <div id="daily-deals" class="slider has-bullets" >
-                        <div class="box-item idea-box box-item--featured rsContent" ng-repeat="item in dailyDeals" >
-                            @include('grid.idea')
+                    <div id="daily-deals" class="slider has-bullets">
+                        <div class="grid-box rsContent">
+                            <div class="box-item idea-box box-item--featured" ng-repeat="item in dailyDeals" >
+                                @include('grid.idea')
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -147,189 +149,25 @@ jQuery(document).ready(function($) {
                     <br>
                 </div>
                 <div class="row">
-                    <div class="shop-by-category-submneu smart-home active">
-                        <div class="col-md-2">
-                            <a href="/shop/category">
-                                <i class="m-icon--energy"></i>
-                                <p class="title"><strong>Energy & Air</strong></p>
-                                <p class="hidden-xs hidden-sm">Purifiers<br> Fans<br> Water thermostats</p>
-                            </a>
+                    <?php $i =1 ?>
+                    @foreach($categoryTree as $topCategory => $parentCategories)
+                        <div class="shop-by-category-submneu {{$topCategory}} {{$i == 1 ? 'active' : ''}}">
+                            @foreach($parentCategories as $parent => $grandChildren)
+                                <div class="col-md-2">
+                                    <a href="/shop/category/{{trim($parent)}}">
+                                        <i class="m-icon--energy"></i>
+                                        <p class="title"><strong>{{$parent}}</strong></p>
+                                        <p class="hidden-xs hidden-sm">
+                                            @foreach($grandChildren as $item)
+                                                {{trim($item->category_name)}}<br>
+                                            @endforeach
+                                        </p>
+                                    </a>
+                                </div>
+                            @endforeach
+                            <?php $i++; ?>
                         </div>
-                        <div class="col-md-2">
-                            <a href="/shop/category">
-                                <i class="m-icon--cameras"></i>
-                                <p class="title"><strong>Cameras & Security</strong></p>
-                                <p class="hidden-xs hidden-sm">Sensors<br> Cameras<br> Home Security Systems</p>
-                            </a>
-                        </div>
-                        <div class="col-md-2">
-                            <a href="/shop/category">
-                                <i class="m-icon--entertainment"></i>
-                                <p class="title"><strong>Entertainment</strong></p>
-                                <p class="hidden-xs hidden-sm">Audio<br> Video</p>
-                            </a>
-                        </div>
-                        <div class="col-md-2">
-                            <a href="/shop/category">
-                                <i class="m-icon--lighting"></i>
-                                <p class="title"><strong>Lighting</strong></p>
-                                <p class="hidden-xs hidden-sm">Light Bulbs<br> Switches<br> Outlets</p>
-                            </a>
-                        </div>
-                        <div class="col-md-2">
-                            <a href="/shop/category">
-                                <i class="m-icon--cleaning"></i>
-                                <p class="title"><strong>Cleaning</strong></p>
-                                <p class="hidden-xs hidden-sm">Vacuums<br> Robots</p>
-                            </a>
-                        </div>
-                        <div class="col-md-2">
-                            <a href="/shop/category">
-                                <i class="m-icon--networking"></i>
-                                <p class="title"><strong>Networking</strong></p>
-                                <p class="hidden-xs hidden-sm">Routers<br> Tablets<br> Modems<br> Powerline<br> NAS</p>
-                            </a>
-                        </div>
-                        <div class="col-md-2">
-                            <a href="/shop/category">
-                                <i class="m-icon--doors"></i>
-                                <p class="title"><strong>Doors</strong></p>
-                                <p class="hidden-xs hidden-sm">Door Locks<br> Garage<br> Remote open/close</p>
-                            </a>
-                        </div>
-                        <div class="col-md-2">
-                            <a href="/shop/category">
-                                <i class="m-icon--appliances"></i>
-                                <p class="title"><strong>Appliances</strong></p>
-                                <p class="hidden-xs hidden-sm">Stoves<br> Ovens<br> Refrigerators<br> Washer/Dryers<br> Toilets</p>
-                            </a>
-                        </div>
-                        <div class="col-md-2">
-                            <a href="/shop/category">
-                                <i class="m-icon--pets"></i>
-                                <p class="title"><strong>Pets</strong></p>
-                            </a>
-                        </div>
-                        @for($i=0; $i< 3; $i++)
-                            <div class="col-md-2 hidden-xs hidden-sm">
-                            </div>
-                        @endfor
-                    </div>
-                    <div class="shop-by-category-submneu travel">
-                        <div class="col-md-2">
-                            <a href="/shop/category">
-                            <i class="m-icon--luggage"></i>
-                            <p class="title"><strong>Luggage</strong></p>
-                            </a>
-                        </div>
-                        <div class="col-md-2">
-                            <a href="/shop/category">
-                            <i class=" m-icon--gadgets"></i>
-                            <p class="title"><strong>Gadgets</strong></p>
-                            </a>
-                        </div>
-                        <div class="col-md-2">
-                            <a href="/shop/category">
-                            <i class="m-icon--bags"></i>
-                            <p class="title"><strong>Bags</strong></p>
-                            </a>
-                        </div>
-                        <div class="col-md-2">
-                            <a href="/shop/category">
-                            <i class=" m-icon--backpacks"></i>
-                            <p class="title"><strong>Backpacks</strong></p>
-                            </a>
-                        </div>
-                        <div class="col-md-2">
-                            <a href="/shop/category">
-                            <i class=" m-icon--accesories"></i>
-                            <p class="title"><strong>Accesories</strong></p>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="shop-by-category-submneu wearable">
-                        <div class="col-md-2">
-                            <a href="/shop/category">
-                            <i class="m-icon--wellness"></i>
-                            <p class="title"><strong>Wellness & Fitness</strong></p>
-                            </a>
-                        </div>
-                        <div class="col-md-2">
-                            <a href="/shop/category">
-                            <i class=" m-icon--health"></i>
-                            <p class="title"><strong>Health Devices</strong></p>
-                            </a>
-                        </div>
-                        <div class="col-md-2">
-                            <a href="/shop/category">
-                            <i class="m-icon--wearable-cameras"></i>
-                            <p class="title"><strong>Wearable Cameras</strong></p>
-                            </a>
-                        </div>
-                        <div class="col-md-2">
-                            <a href="/shop/category">
-                            <i class=" m-icon--smart-watches"></i>
-                            <p class="title"><strong>Smart Watches</strong></p>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="shop-by-category-submneu decor">
-                        <div class="col-md-2">
-                            <a href="/shop/category">
-                            <i class="m-icon--wellness"></i>
-                            <p class="title"><strong>Kitchen & Dining</strong></p>
-                            <p class="hidden-xs hidden-sm">Cookware<br> Coffee &Tea<br> Cutlery<br> Utensils</p>
-                            </a>
-                        </div>
-                        <div class="col-md-2">
-                            <a href="/shop/category">
-                            <i class=" m-icon--health"></i>
-                            <p class="title"><strong>Furniture</strong></p>
-                            </a>
-                        </div>
-                        <div class="col-md-2">
-                            <a href="/shop/category">
-                            <i class="m-icon--wearable-cameras"></i>
-                            <p class="title"><strong>Bddding</strong></p>
-                            <p class="hidden-xs hidden-sm">Beds<br> Nightstands<br> Dressers<br> Pillows</p>
-                            </a>
-                        </div>
-                        <div class="col-md-2">
-                            <a href="/shop/category">
-                            <i class=" m-icon--smart-watches"></i>
-                            <p class="title"><strong>Bath</strong></p>
-                            </a>
-                        </div>
-                        <div class="col-md-2">
-                            <a href="/shop/category">
-                            <i class=" m-icon--smart-watches"></i>
-                            <p class="title"><strong>Decor</strong></p>
-                            <p class="hidden-xs hidden-sm">Vacuums<br> Robots</p>
-                            </a>
-                        </div>
-                        <div class="col-md-2">
-                            <a href="/shop/category">
-                            <i class=" m-icon--smart-watches"></i>
-                            <p class="title"><strong>Office</strong></p>
-                            <p class="hidden-xs hidden-sm">Desks<br> Office Chairs<br> Bookcases<br> Filling Cabinets</p>
-                            </a>
-                        </div>
-                        <div class="col-md-2">
-                            <a href="/shop/category">
-                            <i class=" m-icon--smart-watches"></i>
-                            <p class="title"><strong>Storage</strong></p>
-                            </a>
-                        </div>
-                        <div class="col-md-2">
-                            <a href="/shop/category">
-                            <i class=" m-icon--smart-watches"></i>
-                            <p class="title"><strong>Outdoor</strong></p>
-                            </a>
-                        </div>
-                        @for($i=0; $i< 4; $i++)
-                            <div class="col-md-2 hidden-xs hidden-sm">
-                            </div>
-                        @endfor
+                        @endforeach
                     </div>
                 </div>
             </div>
