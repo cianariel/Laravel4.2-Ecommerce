@@ -2974,6 +2974,10 @@ body.single-post{
     .article-content ul li{
         list-style: disc;
     }
+    .related-ideas{
+        max-width: 1170px;
+        margin: auto;
+    }
 }
 .article-content{
     ol, ul{
@@ -2981,12 +2985,15 @@ body.single-post{
         li{
             list-style: initial;
         }
-    }    
-    a:hover{
+    }   
+    a{
         color: #4489c9;
+    } 
+    a:hover{
+        color: $iridium;
     }
     h1, h2{
-        a:hover{
+        a, a:hover{
             color: inherit;
         }
     }
@@ -2999,6 +3006,10 @@ body.product-details, .single-post{
     }
 }
 body.product-details{
+    .related-products, .related-ideas{
+        max-width: 1170px;
+        margin: auto;
+    }
   .story-header{
     h1{
 /*      width: 34%;*/
@@ -4449,7 +4460,9 @@ body.single{
     }
   }
 }
-
+#hero .average-score{
+    margin-left: 15px;
+}
 .average-score{
   position: relative;
   margin: auto;
@@ -4667,6 +4680,12 @@ body.single{
   &:hover{
     color: darken(#fff, 5%);
     background: darken($magenta, 7%);
+  }
+
+  a{
+      color: #fff;
+      display: inline-block;
+      width: 100%;
   }
 
   span{
@@ -6379,8 +6398,19 @@ footer.about-footer{
         width: 50%;
         height: 76px;
     }
-    .reviews-service-holder.critic{
+    .reviews-service-holder{
+        .critic{
         color: #ff0042;
+    }
+        .critic-outer-rating{
+            margin-top: 15px;
+            .line-label{
+/*                font-size: 25px;*/
+            }
+            .star-raiting{
+                margin-top: 0px;
+            }
+        }
     }
     .reviews-service-holder.amazon{
         color: #00b1ff;

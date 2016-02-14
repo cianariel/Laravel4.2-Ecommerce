@@ -99,7 +99,7 @@ jQuery(document).ready(function($) {
         @if(isset($roomInformation['images']))
             @foreach( $roomInformation['images'] as $key => $image )
             <div class="rsContent">
-                <div class="rsInnerContent">
+<!--                <div class="rsInnerContent">-->
                 @if(isset($roomInformation['images']))
                 <div class="container-fluid fixed-sm full-480">
                     <div class="hero-tags">
@@ -124,7 +124,7 @@ jQuery(document).ready(function($) {
                 <img class="rsImg" src="{{$image['Image']}}" alt="{{$image['Image_alt']}}">
 <!--                <img class="rsImg" src="http://10.0.1.101/1.jpg" alt="{{$image['Image_alt']}}">-->
 
-                </div>
+<!--                </div>-->
                 <span ng-click="open({{$key}})" class="room-related-product-button" ><i class="m-icon--Add-Active"></i></span>
 
                 <script type="text/ng-template" id="room-related-product-{{$key}}.html">

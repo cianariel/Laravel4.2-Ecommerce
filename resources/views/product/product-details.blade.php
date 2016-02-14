@@ -102,7 +102,7 @@
                             </div>
                             <span class="caption">Average Ideaing Score</span>
                         </div>
-                        <h1 class="text-right average-score-title pull-right">
+                        <h1 class="text-right average-score-title">
                             @if(isset($productInformation['ProductName']))
                                 {{$productInformation['ProductName']}}
                             @endif
@@ -338,9 +338,11 @@
                                             <span class="stars">(@{{ item.data.productInformation.Review[1].counter | number:0 }}
                                                 ) Customer Reviews</span>
                                         </div>
-                                        <div class="btn purple-bg price-badge">
+                                        <div class="purple-bg price-badge">
+                                            <a href="@{{ item.data.productInformation.AffiliateLink }}" target="_blank">
                                             <span>@{{ item.data.storeInformation.StoreName }}</span>
                                             <b>$@{{ item.data.productInformation.SellPrice }}</b>
+                                            </a>
                                         </div>
                                         <a class="btn-none" href="@{{ item.data.productInformation.AffiliateLink }}"
                                            target="_blank">More Info</a>
@@ -496,7 +498,7 @@
 
                                     @if(isset($productInformation['Review']))
                                         @foreach( array_slice($productInformation['Review'],2) as $review )
-                                            <div style="background: #ffffff" class="outer-line">
+                                            <div class="critic-outer-rating">
                                                 <div class="line-label "><a
                                                             href="@if(isset($review->link)){{$review->link}}@endif"
                                                             target="_blank">@if(isset($review->key)){{$review->key}}@endif
@@ -681,7 +683,7 @@
                         @endif
                     </div>
 
-                    <div class="related-ideas col-xs-12">
+                    <div class="related-ideas ">
                         <h3 class="orange">Related Ideas</h3>
 
                             @if(isset($relatedIdeas) && ($relatedIdeas != null) )

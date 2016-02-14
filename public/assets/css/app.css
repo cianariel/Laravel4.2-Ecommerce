@@ -6484,21 +6484,32 @@ body.single-post #top-nav .kitchen {
 body.single-post .article-content ul li {
   list-style: disc; }
 
+body.single-post .related-ideas {
+  max-width: 1170px;
+  margin: auto; }
+
 .article-content ol, .article-content ul {
   list-style: initial; }
   .article-content ol li, .article-content ul li {
     list-style: initial; }
 
-.article-content a:hover {
+.article-content a {
   color: #4489c9; }
 
-.article-content h1 a:hover, .article-content h2 a:hover {
+.article-content a:hover {
+  color: #FF0042; }
+
+.article-content h1 a, .article-content h1 a:hover, .article-content h2 a, .article-content h2 a:hover {
   color: inherit; }
 
 body.product-details .story-header h1 .title, .single-post .story-header h1 .title {
   height: 15px;
   display: inline-block;
   overflow: hidden; }
+
+body.product-details .related-products, body.product-details .related-ideas {
+  max-width: 1170px;
+  margin: auto; }
 
 body.product-details .story-header h1 {
   /*      width: 34%;*/
@@ -7364,6 +7375,9 @@ body.single .like-nav {
 #hero.product-hero .product-slider .main-image {
   width: 100%; }
 
+#hero .average-score {
+  margin-left: 15px; }
+
 .average-score {
   position: relative;
   margin: auto;
@@ -7523,6 +7537,10 @@ body.single .like-nav {
   .price-badge:hover {
     color: #f2f2f2;
     background: #7a007a; }
+  .price-badge a {
+    color: #fff;
+    display: inline-block;
+    width: 100%; }
   .price-badge span {
     display: inline-block;
     float: left; }
@@ -8436,8 +8454,14 @@ footer.about-footer {
   .reviews-medium-container .average-ideaing-line > img {
     width: 50%;
     height: 76px; }
-  .reviews-medium-container .reviews-service-holder.critic {
+  .reviews-medium-container .reviews-service-holder .critic {
     color: #ff0042; }
+  .reviews-medium-container .reviews-service-holder .critic-outer-rating {
+    margin-top: 15px; }
+    .reviews-medium-container .reviews-service-holder .critic-outer-rating .line-label {
+      /*                font-size: 25px;*/ }
+    .reviews-medium-container .reviews-service-holder .critic-outer-rating .star-raiting {
+      margin-top: 0px; }
   .reviews-medium-container .reviews-service-holder.amazon {
     color: #00b1ff; }
   .reviews-medium-container .reviews-service-holder .title {
