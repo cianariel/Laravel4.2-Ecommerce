@@ -60,14 +60,14 @@
                         <!--                    <li><a class="home-link" href="#">Home</a></li>-->
                     @if(empty($mainCategory))
                         <li class="kitchen">
-                            <a href="{{get_site_url()}}" class="">
+                            <a href="{{get_site_url()}}" class="box-link">
                                 Smart Home
                                 <span class="box-link-active-line"></span>
                             </a>
                         </li>
                     @else
                             <li class="kitchen">
-                                <a href="{{get_site_url()}}/category/{{$mainCategory->slug}}" class="">
+                            <a href="{{get_site_url()}}/category/{{$mainCategory->slug}}" class="box-link">
                                     {{$mainCategory->name}}
                                 <span class="box-link-active-line"></span>
                                 </a>
@@ -76,14 +76,14 @@
                             <li class="horizontal-line-holder hidden-xs ">
                                 <span class="horizontal-line"></span>
                             </li>
-                            <li><a href="{{get_site_url()}}/cateogry/{{$childCategory->slug}}" class="">{{$childCategory->name}}</a></li>
+                            <li><a href="{{get_site_url()}}/cateogry/{{$childCategory->slug}}" class="box-link">{{$childCategory->name}}</a></li>
                         @endif
 
                         @if(@$firstTag)
                             <li class="horizontal-line-holder hidden-xs ">
                                 <span class="horizontal-line"></span>
                             </li>
-                            <li><a href="{{get_site_url()}}/tag/{{$firstTag->slug}}" class="">{{$firstTag->name}}</a></li>
+                            <li><a href="{{get_site_url()}}/tag/{{$firstTag->slug}}" class="box-link">{{$firstTag->name}}</a></li>
                         @endif
                     @endif
                     </ul>
