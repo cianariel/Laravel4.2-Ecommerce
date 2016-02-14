@@ -4,6 +4,117 @@
 		{
 			"icon": {
 				"paths": [
+					"M512 20.48l118.292 368.64 390.676 1.147-310.313 235.438 115.917 362.865-309.985-229.663-334.193 244.613 129.761-399.647-309.125-213.606 380.355 1.147z"
+				],
+				"attrs": [
+					{
+						"fill": "rgb(69, 171, 224)"
+					}
+				],
+				"isMulticolor": false,
+				"grid": 0,
+				"tags": [
+					"star-blue-full"
+				],
+				"colorPermutations": {
+					"661702211691712241": [
+						1
+					]
+				}
+			},
+			"attrs": [
+				{
+					"fill": "rgb(69, 171, 224)"
+				}
+			],
+			"properties": {
+				"order": 131,
+				"id": 2,
+				"prevSize": 32,
+				"code": 59882,
+				"name": "star-blue-full"
+			},
+			"setIdx": 0,
+			"setId": 4,
+			"iconIdx": 0
+		},
+		{
+			"icon": {
+				"paths": [
+					"M853.484 399.032c-15.524-0.205-31.089-0.082-46.612-0.123-56.73-0.123-113.459 0.082-170.189-0.492-2.335-0.041-3.4-0.573-4.137-2.949-13.353-41.861-26.788-83.681-40.223-125.501-19.866-61.85-39.731-123.699-59.556-185.549-3.031-9.503-5.939-19.046-8.929-28.59l-7.373-25.6c0.287 1.311-8.724 28.058-9.134 29.204-17.613 50.831-35.267 101.704-52.92 152.535-21.053 60.662-42.066 121.364-63.119 182.067-2.171 6.431-2.212 6.431-9.093 6.226-0.41 0-0.819 0-1.27 0-57.631-0.123-115.302-0.205-172.974-0.328-27.116-0.041-54.231-0.205-81.347-0.328-0.614 0-1.27-0.041-1.884-0.041-26.173 0-98.55 0-124.723-0.041 14.787 9.544 6.39 5.571 28.14 18.145 0.573 1.024 19.538 10.486 20.48 11.141 25.313 17.49 50.627 34.98 75.94 52.47 31.048 21.463 62.136 42.926 93.184 64.389 31.826 21.996 63.693 43.95 95.519 65.987 3.441 2.376 3.482 2.417 2.171 6.39-5.202 15.647-10.199 31.334-15.278 47.022-10.691 32.809-21.34 65.659-31.99 98.509-7.7 23.716-15.36 47.432-23.101 71.148-10.895 33.423-21.709 66.847-32.604 100.27-6.103 18.76-12.124 37.519-18.268 56.238-0.205 0.696-0.573 1.352-0.655 2.089 42.353-30.925 101.335-62.833 143.565-93.716 59.884-43.868 119.808-87.654 179.651-131.604 2.253-1.679 3.686-1.597 5.857 0.041 41.083 30.556 82.207 60.989 123.331 91.505 56.975 42.23 113.91 84.46 170.885 126.689 3.4 2.499 6.799 4.956 10.281 7.496 0.655-1.475-0.041-2.417-0.328-3.359-4.792-15.073-9.626-30.147-14.418-45.22-23.675-74.179-47.391-148.357-71.107-222.577-9.175-28.754-18.391-57.508-27.607-86.262-0.86-2.621-0.901-4.301 1.72-6.267 37.888-28.549 75.653-57.262 113.459-85.934 45.343-34.406 90.685-68.854 136.069-103.219 6.717-5.079 13.189-10.486 20.316-15.073 19.046-12.657 25.231-18.801 38.83-26.296-43.95-0.246-126.648 0.082-170.557-0.492zM899.195 438.886c-54.067 41.001-108.175 82.043-162.243 123.044-21.422 16.261-42.844 32.563-64.307 48.742-1.802 1.352-2.13 2.458-1.434 4.628 15.442 48.087 30.761 96.215 46.121 144.302 13.476 42.148 26.911 84.296 40.387 126.444 0.205 0.696 0.41 1.393 0.778 2.703-3.523-2.54-6.554-4.751-9.585-6.963-70.779-52.47-141.558-104.899-212.378-157.368-4.26-3.154-8.643-6.226-12.78-9.544-1.761-1.434-2.867-1.147-4.547 0.082-49.603 36.372-99.246 72.704-148.89 109.036-34.488 25.231-68.977 50.504-103.465 75.776-0.901 0.655-1.843 1.311-3.523 2.54 1.72-5.448 3.195-10.117 4.71-14.787 12.739-39.199 25.518-78.397 38.257-117.637 18.883-58.245 37.724-116.49 56.73-174.694 0.737-2.335-0.123-3.154-1.72-4.219-41.697-28.795-83.395-57.59-125.092-86.385-34.57-23.88-69.14-47.759-103.711-71.639-0.492-0.369-0.983-0.737-1.516-1.147 0.614-1.106 1.516-0.573 2.212-0.573 31.212 0 62.382-0.205 93.594 0.164 44.974 0.492 89.907 0.205 134.881 0.451 17.613 0.082 35.267 0.041 52.879 0.205 2.376 0 3.4-0.737 4.178-3.031 20.726-59.924 41.492-119.849 62.3-179.773 11.469-33.055 22.938-66.109 34.406-99.164 0.328-0.942 0.696-1.884 1.311-3.686 2.048 6.226 3.85 11.715 5.612 17.203 22.897 71.27 45.752 142.541 68.608 213.852 5.284 16.466 10.609 32.891 15.811 49.398 0.737 2.335 1.638 3.236 4.26 3.195 13.967-0.123 27.935 0 41.943 0.041 45.67 0.123 91.382 0.287 137.052 0.41 38.912 0.082 77.824 0.164 116.736 0.205 0.614 0 1.229 0 1.843 0 0.123 0.205 0.246 0.451 0.41 0.655-3.277 2.499-6.554 5.038-9.83 7.537z"
+				],
+				"attrs": [
+					{
+						"fill": "rgb(66, 170, 221)"
+					}
+				],
+				"isMulticolor": false,
+				"grid": 0,
+				"tags": [
+					"star-blue-full-lines"
+				],
+				"colorPermutations": {
+					"661702211691712241": [
+						0
+					]
+				}
+			},
+			"attrs": [
+				{
+					"fill": "rgb(66, 170, 221)"
+				}
+			],
+			"properties": {
+				"order": 134,
+				"id": 1,
+				"prevSize": 32,
+				"code": 59883,
+				"name": "star-blue-full-lines"
+			},
+			"setIdx": 0,
+			"setId": 4,
+			"iconIdx": 1
+		},
+		{
+			"icon": {
+				"paths": [
+					"M492.38 259.4c0-74.916 9.257-147.988 26.214-218.276l-6.595-20.644-128.614 370.934-380.355-1.147 309.125 213.606-129.761 399.647 334.193-244.613 309.985 229.663-3.809-11.878c-201.4-176.128-330.383-433.807-330.383-717.292z"
+				],
+				"attrs": [
+					{
+						"fill": "rgb(69, 171, 224)"
+					}
+				],
+				"isMulticolor": false,
+				"grid": 0,
+				"tags": [
+					"star-blue-half"
+				],
+				"colorPermutations": {
+					"661702211691712241": [
+						1
+					]
+				}
+			},
+			"attrs": [
+				{
+					"fill": "rgb(69, 171, 224)"
+				}
+			],
+			"properties": {
+				"order": 133,
+				"id": 0,
+				"prevSize": 32,
+				"code": 59884,
+				"name": "star-blue-half2"
+			},
+			"setIdx": 0,
+			"setId": 4,
+			"iconIdx": 2
+		},
+		{
+			"icon": {
+				"paths": [
 					"M565.265 826.456l377.081-377.081 64.804 64.804-377.081 377.081-64.804-64.804z",
 					"M630.075 132.734l377.081 377.081-64.804 64.804-377.081-377.081 64.804-64.804z",
 					"M16.835 468.951h897.126v91.648h-897.126v-91.648z"
@@ -50,7 +161,7 @@
 				"code": 59881,
 				"name": "Right-Arrow-Active"
 			},
-			"setIdx": 0,
+			"setIdx": 1,
 			"setId": 3,
 			"iconIdx": 0
 		},
@@ -90,7 +201,7 @@
 				"code": 59878,
 				"name": "Logout-Active"
 			},
-			"setIdx": 0,
+			"setIdx": 1,
 			"setId": 3,
 			"iconIdx": 1
 		},
@@ -140,7 +251,7 @@
 				"code": 59879,
 				"name": "Add-Active"
 			},
-			"setIdx": 0,
+			"setIdx": 1,
 			"setId": 3,
 			"iconIdx": 2
 		},
@@ -197,7 +308,7 @@
 				"code": 59880,
 				"name": "Close"
 			},
-			"setIdx": 0,
+			"setIdx": 1,
 			"setId": 3,
 			"iconIdx": 3
 		},
@@ -259,7 +370,7 @@
 				],
 				"name": "Delete-Profile-Active"
 			},
-			"setIdx": 1,
+			"setIdx": 2,
 			"setId": 1,
 			"iconIdx": 0
 		},
@@ -299,7 +410,7 @@
 				"code": 59864,
 				"name": "Edit-Background"
 			},
-			"setIdx": 1,
+			"setIdx": 2,
 			"setId": 1,
 			"iconIdx": 1
 		},
@@ -339,7 +450,7 @@
 				"code": 59865,
 				"name": "Edit-Profile"
 			},
-			"setIdx": 1,
+			"setIdx": 2,
 			"setId": 1,
 			"iconIdx": 2
 		},
@@ -368,7 +479,7 @@
 				"code": 59866,
 				"name": "Home"
 			},
-			"setIdx": 1,
+			"setIdx": 2,
 			"setId": 1,
 			"iconIdx": 3
 		},
@@ -408,7 +519,7 @@
 				"code": 59867,
 				"name": "Location"
 			},
-			"setIdx": 1,
+			"setIdx": 2,
 			"setId": 1,
 			"iconIdx": 4
 		},
@@ -454,7 +565,7 @@
 				"code": 59868,
 				"name": "Messages"
 			},
-			"setIdx": 1,
+			"setIdx": 2,
 			"setId": 1,
 			"iconIdx": 5
 		},
@@ -500,7 +611,7 @@
 				"code": 59869,
 				"name": "Notifications"
 			},
-			"setIdx": 1,
+			"setIdx": 2,
 			"setId": 1,
 			"iconIdx": 6
 		},
@@ -540,7 +651,7 @@
 				"code": 59870,
 				"name": "Saved-Active"
 			},
-			"setIdx": 1,
+			"setIdx": 2,
 			"setId": 1,
 			"iconIdx": 7
 		},
@@ -590,7 +701,7 @@
 				],
 				"name": "Settings-Toggles"
 			},
-			"setIdx": 1,
+			"setIdx": 2,
 			"setId": 1,
 			"iconIdx": 8
 		},
@@ -640,7 +751,7 @@
 				],
 				"name": "Settings-Toggles-Active"
 			},
-			"setIdx": 1,
+			"setIdx": 2,
 			"setId": 1,
 			"iconIdx": 9
 		},
@@ -669,7 +780,7 @@
 				"code": 59875,
 				"name": "Upload-Inactive"
 			},
-			"setIdx": 1,
+			"setIdx": 2,
 			"setId": 1,
 			"iconIdx": 10
 		},
@@ -709,7 +820,7 @@
 				"code": 59876,
 				"name": "Actions-Down-Arrow-Active"
 			},
-			"setIdx": 1,
+			"setIdx": 2,
 			"setId": 1,
 			"iconIdx": 11
 		},
@@ -758,7 +869,7 @@
 				"code": 59877,
 				"name": "Add-Friends"
 			},
-			"setIdx": 1,
+			"setIdx": 2,
 			"setId": 1,
 			"iconIdx": 12
 		},
@@ -853,7 +964,7 @@
 				"code": 59693,
 				"name": "bath"
 			},
-			"setIdx": 1,
+			"setIdx": 2,
 			"setId": 1,
 			"iconIdx": 13
 		},
@@ -920,7 +1031,7 @@
 				"code": 59694,
 				"name": "bedding"
 			},
-			"setIdx": 1,
+			"setIdx": 2,
 			"setId": 1,
 			"iconIdx": 14
 		},
@@ -973,7 +1084,7 @@
 				"code": 59837,
 				"name": "decor"
 			},
-			"setIdx": 1,
+			"setIdx": 2,
 			"setId": 1,
 			"iconIdx": 15
 		},
@@ -1026,7 +1137,7 @@
 				"code": 59838,
 				"name": "furniture"
 			},
-			"setIdx": 1,
+			"setIdx": 2,
 			"setId": 1,
 			"iconIdx": 16
 		},
@@ -1149,7 +1260,7 @@
 				"code": 59839,
 				"name": "kitchen2"
 			},
-			"setIdx": 1,
+			"setIdx": 2,
 			"setId": 1,
 			"iconIdx": 17
 		},
@@ -1251,7 +1362,7 @@
 				"code": 59840,
 				"name": "office"
 			},
-			"setIdx": 1,
+			"setIdx": 2,
 			"setId": 1,
 			"iconIdx": 18
 		},
@@ -1311,7 +1422,7 @@
 				"code": 59841,
 				"name": "outdoor"
 			},
-			"setIdx": 1,
+			"setIdx": 2,
 			"setId": 1,
 			"iconIdx": 19
 		},
@@ -1371,7 +1482,7 @@
 				"code": 59842,
 				"name": "storage"
 			},
-			"setIdx": 1,
+			"setIdx": 2,
 			"setId": 1,
 			"iconIdx": 20
 		},
@@ -1424,7 +1535,7 @@
 				"code": 59843,
 				"name": "health"
 			},
-			"setIdx": 1,
+			"setIdx": 2,
 			"setId": 1,
 			"iconIdx": 21
 		},
@@ -1463,7 +1574,7 @@
 				"code": 59844,
 				"name": "smart-watches"
 			},
-			"setIdx": 1,
+			"setIdx": 2,
 			"setId": 1,
 			"iconIdx": 22
 		},
@@ -1509,7 +1620,7 @@
 				"code": 59845,
 				"name": "wearable-cameras"
 			},
-			"setIdx": 1,
+			"setIdx": 2,
 			"setId": 1,
 			"iconIdx": 23
 		},
@@ -1548,7 +1659,7 @@
 				"code": 59846,
 				"name": "wellness"
 			},
-			"setIdx": 1,
+			"setIdx": 2,
 			"setId": 1,
 			"iconIdx": 24
 		},
@@ -1587,7 +1698,7 @@
 				"code": 59847,
 				"name": "accesories"
 			},
-			"setIdx": 1,
+			"setIdx": 2,
 			"setId": 1,
 			"iconIdx": 25
 		},
@@ -1619,7 +1730,7 @@
 				"code": 59848,
 				"name": "backpacks"
 			},
-			"setIdx": 1,
+			"setIdx": 2,
 			"setId": 1,
 			"iconIdx": 26
 		},
@@ -1686,7 +1797,7 @@
 				"code": 59849,
 				"name": "bags"
 			},
-			"setIdx": 1,
+			"setIdx": 2,
 			"setId": 1,
 			"iconIdx": 27
 		},
@@ -1739,7 +1850,7 @@
 				"code": 59850,
 				"name": "gadgets"
 			},
-			"setIdx": 1,
+			"setIdx": 2,
 			"setId": 1,
 			"iconIdx": 28
 		},
@@ -1785,7 +1896,7 @@
 				"code": 59851,
 				"name": "luggage"
 			},
-			"setIdx": 1,
+			"setIdx": 2,
 			"setId": 1,
 			"iconIdx": 29
 		},
@@ -1922,7 +2033,7 @@
 				"code": 59852,
 				"name": "networking"
 			},
-			"setIdx": 1,
+			"setIdx": 2,
 			"setId": 1,
 			"iconIdx": 30
 		},
@@ -1975,7 +2086,7 @@
 				"code": 59853,
 				"name": "pets"
 			},
-			"setIdx": 1,
+			"setIdx": 2,
 			"setId": 1,
 			"iconIdx": 31
 		},
@@ -2077,7 +2188,7 @@
 				"code": 59854,
 				"name": "entertainment"
 			},
-			"setIdx": 1,
+			"setIdx": 2,
 			"setId": 1,
 			"iconIdx": 32
 		},
@@ -2137,7 +2248,7 @@
 				"code": 59855,
 				"name": "lighting"
 			},
-			"setIdx": 1,
+			"setIdx": 2,
 			"setId": 1,
 			"iconIdx": 33
 		},
@@ -2190,7 +2301,7 @@
 				"code": 59856,
 				"name": "cleaning"
 			},
-			"setIdx": 1,
+			"setIdx": 2,
 			"setId": 1,
 			"iconIdx": 34
 		},
@@ -2222,7 +2333,7 @@
 				"code": 59857,
 				"name": "doors"
 			},
-			"setIdx": 1,
+			"setIdx": 2,
 			"setId": 1,
 			"iconIdx": 35
 		},
@@ -2268,7 +2379,7 @@
 				"code": 59858,
 				"name": "energy"
 			},
-			"setIdx": 1,
+			"setIdx": 2,
 			"setId": 1,
 			"iconIdx": 36
 		},
@@ -2314,7 +2425,7 @@
 				"code": 59859,
 				"name": "cameras"
 			},
-			"setIdx": 1,
+			"setIdx": 2,
 			"setId": 1,
 			"iconIdx": 37
 		},
@@ -2353,7 +2464,7 @@
 				"code": 59860,
 				"name": "appliances"
 			},
-			"setIdx": 1,
+			"setIdx": 2,
 			"setId": 1,
 			"iconIdx": 38
 		},
@@ -2380,7 +2491,7 @@
 				"code": 59688,
 				"name": "shopping-bag-light-green"
 			},
-			"setIdx": 1,
+			"setIdx": 2,
 			"setId": 1,
 			"iconIdx": 39
 		},
@@ -2501,7 +2612,7 @@
 				],
 				"name": "bulb2"
 			},
-			"setIdx": 1,
+			"setIdx": 2,
 			"setId": 1,
 			"iconIdx": 40
 		},
@@ -2695,7 +2806,7 @@
 				],
 				"name": "logo-without-text-blue"
 			},
-			"setIdx": 1,
+			"setIdx": 2,
 			"setId": 1,
 			"iconIdx": 41
 		},
@@ -2889,7 +3000,7 @@
 				],
 				"name": "logo-without-text-red"
 			},
-			"setIdx": 1,
+			"setIdx": 2,
 			"setId": 1,
 			"iconIdx": 42
 		},
@@ -3281,7 +3392,7 @@
 				],
 				"name": "logo-with-text-blue"
 			},
-			"setIdx": 1,
+			"setIdx": 2,
 			"setId": 1,
 			"iconIdx": 43
 		},
@@ -3673,7 +3784,7 @@
 				],
 				"name": "logo-with-text-red"
 			},
-			"setIdx": 1,
+			"setIdx": 2,
 			"setId": 1,
 			"iconIdx": 44
 		},
@@ -3705,7 +3816,7 @@
 				"code": 59706,
 				"name": "search-id"
 			},
-			"setIdx": 1,
+			"setIdx": 2,
 			"setId": 1,
 			"iconIdx": 45
 		},
@@ -3750,7 +3861,7 @@
 				"code": 59835,
 				"name": "products"
 			},
-			"setIdx": 1,
+			"setIdx": 2,
 			"setId": 1,
 			"iconIdx": 46
 		},
@@ -3819,7 +3930,7 @@
 				"code": 59836,
 				"name": "bulb3"
 			},
-			"setIdx": 1,
+			"setIdx": 2,
 			"setId": 1,
 			"iconIdx": 47
 		},
@@ -3869,7 +3980,7 @@
 				"code": 59834,
 				"name": "email-form-id"
 			},
-			"setIdx": 1,
+			"setIdx": 2,
 			"setId": 1,
 			"iconIdx": 48
 		},
@@ -3937,7 +4048,7 @@
 				"code": 59707,
 				"name": "comparisons"
 			},
-			"setIdx": 1,
+			"setIdx": 2,
 			"setId": 1,
 			"iconIdx": 49
 		},
@@ -3983,7 +4094,7 @@
 				"code": 59705,
 				"name": "google-plus-id"
 			},
-			"setIdx": 1,
+			"setIdx": 2,
 			"setId": 1,
 			"iconIdx": 50
 		},
@@ -4009,7 +4120,7 @@
 				"code": 59704,
 				"name": "comparisons-active"
 			},
-			"setIdx": 1,
+			"setIdx": 2,
 			"setId": 1,
 			"iconIdx": 51
 		},
@@ -4041,7 +4152,7 @@
 				"code": 59703,
 				"name": "footer-instagram"
 			},
-			"setIdx": 1,
+			"setIdx": 2,
 			"setId": 1,
 			"iconIdx": 52
 		},
@@ -4073,7 +4184,7 @@
 				"code": 59702,
 				"name": "comments-id"
 			},
-			"setIdx": 1,
+			"setIdx": 2,
 			"setId": 1,
 			"iconIdx": 53
 		},
@@ -4151,7 +4262,7 @@
 				"code": 59661,
 				"name": "features-c1"
 			},
-			"setIdx": 1,
+			"setIdx": 2,
 			"setId": 1,
 			"iconIdx": 54
 		},
@@ -4200,7 +4311,7 @@
 				"code": 59682,
 				"name": "photos"
 			},
-			"setIdx": 1,
+			"setIdx": 2,
 			"setId": 1,
 			"iconIdx": 55
 		},
@@ -4273,7 +4384,7 @@
 				"code": 59655,
 				"name": "specs"
 			},
-			"setIdx": 1,
+			"setIdx": 2,
 			"setId": 1,
 			"iconIdx": 56
 		},
@@ -4326,7 +4437,7 @@
 				"code": 59701,
 				"name": "reviews"
 			},
-			"setIdx": 1,
+			"setIdx": 2,
 			"setId": 1,
 			"iconIdx": 57
 		},
@@ -4371,7 +4482,7 @@
 				"code": 59656,
 				"name": "comments-products"
 			},
-			"setIdx": 1,
+			"setIdx": 2,
 			"setId": 1,
 			"iconIdx": 58
 		},
@@ -4408,7 +4519,7 @@
 				"code": 59657,
 				"name": "facebook-id"
 			},
-			"setIdx": 1,
+			"setIdx": 2,
 			"setId": 1,
 			"iconIdx": 59
 		},
@@ -4445,7 +4556,7 @@
 				"code": 59658,
 				"name": "heart-id"
 			},
-			"setIdx": 1,
+			"setIdx": 2,
 			"setId": 1,
 			"iconIdx": 60
 		},
@@ -4482,7 +4593,7 @@
 				"code": 59659,
 				"name": "pinterest-id"
 			},
-			"setIdx": 1,
+			"setIdx": 2,
 			"setId": 1,
 			"iconIdx": 61
 		},
@@ -4519,7 +4630,7 @@
 				"code": 59660,
 				"name": "twitter-id"
 			},
-			"setIdx": 1,
+			"setIdx": 2,
 			"setId": 1,
 			"iconIdx": 62
 		},
@@ -4620,7 +4731,7 @@
 				"code": 59662,
 				"name": "browse-all-active"
 			},
-			"setIdx": 1,
+			"setIdx": 2,
 			"setId": 1,
 			"iconIdx": 63
 		},
@@ -4665,7 +4776,7 @@
 				"code": 59663,
 				"name": "homeicon"
 			},
-			"setIdx": 1,
+			"setIdx": 2,
 			"setId": 1,
 			"iconIdx": 64
 		},
@@ -4710,7 +4821,7 @@
 				"code": 59664,
 				"name": "smart-home"
 			},
-			"setIdx": 1,
+			"setIdx": 2,
 			"setId": 1,
 			"iconIdx": 65
 		},
@@ -4755,7 +4866,7 @@
 				"code": 59665,
 				"name": "smart-home-active"
 			},
-			"setIdx": 1,
+			"setIdx": 2,
 			"setId": 1,
 			"iconIdx": 66
 		},
@@ -4816,7 +4927,7 @@
 				"code": 59666,
 				"name": "travel"
 			},
-			"setIdx": 1,
+			"setIdx": 2,
 			"setId": 1,
 			"iconIdx": 67
 		},
@@ -4877,7 +4988,7 @@
 				"code": 59667,
 				"name": "travel-active"
 			},
-			"setIdx": 1,
+			"setIdx": 2,
 			"setId": 1,
 			"iconIdx": 68
 		},
@@ -4978,7 +5089,7 @@
 				"code": 59668,
 				"name": "wearables"
 			},
-			"setIdx": 1,
+			"setIdx": 2,
 			"setId": 1,
 			"iconIdx": 69
 		},
@@ -5079,7 +5190,7 @@
 				"code": 59669,
 				"name": "wearables-active"
 			},
-			"setIdx": 1,
+			"setIdx": 2,
 			"setId": 1,
 			"iconIdx": 70
 		},
@@ -5116,7 +5227,7 @@
 				"code": 59670,
 				"name": "alert"
 			},
-			"setIdx": 1,
+			"setIdx": 2,
 			"setId": 1,
 			"iconIdx": 71
 		},
@@ -5153,7 +5264,7 @@
 				"code": 59671,
 				"name": "alert-active"
 			},
-			"setIdx": 1,
+			"setIdx": 2,
 			"setId": 1,
 			"iconIdx": 72
 		},
@@ -9222,7 +9333,7 @@
 				"code": 59672,
 				"name": "bulb-detailed-on-rating"
 			},
-			"setIdx": 1,
+			"setIdx": 2,
 			"setId": 1,
 			"iconIdx": 73
 		},
@@ -9289,7 +9400,7 @@
 				],
 				"name": "calender"
 			},
-			"setIdx": 1,
+			"setIdx": 2,
 			"setId": 1,
 			"iconIdx": 74
 		},
@@ -9342,7 +9453,7 @@
 				"code": 59677,
 				"name": "camera"
 			},
-			"setIdx": 1,
+			"setIdx": 2,
 			"setId": 1,
 			"iconIdx": 75
 		},
@@ -9395,7 +9506,7 @@
 				"code": 59678,
 				"name": "camera-active"
 			},
-			"setIdx": 1,
+			"setIdx": 2,
 			"setId": 1,
 			"iconIdx": 76
 		},
@@ -9440,7 +9551,7 @@
 				"code": 59679,
 				"name": "discuss-active-products"
 			},
-			"setIdx": 1,
+			"setIdx": 2,
 			"setId": 1,
 			"iconIdx": 77
 		},
@@ -9485,7 +9596,7 @@
 				"code": 59680,
 				"name": "discuss-products"
 			},
-			"setIdx": 1,
+			"setIdx": 2,
 			"setId": 1,
 			"iconIdx": 78
 		},
@@ -9530,7 +9641,7 @@
 				"code": 59681,
 				"name": "discuss-products-active"
 			},
-			"setIdx": 1,
+			"setIdx": 2,
 			"setId": 1,
 			"iconIdx": 79
 		},
@@ -9567,7 +9678,7 @@
 				"code": 59700,
 				"name": "heart2"
 			},
-			"setIdx": 1,
+			"setIdx": 2,
 			"setId": 1,
 			"iconIdx": 80
 		},
@@ -9595,7 +9706,7 @@
 				"code": 59683,
 				"name": "house"
 			},
-			"setIdx": 1,
+			"setIdx": 2,
 			"setId": 1,
 			"iconIdx": 81
 		},
@@ -9640,7 +9751,7 @@
 				"code": 59684,
 				"name": "house-active"
 			},
-			"setIdx": 1,
+			"setIdx": 2,
 			"setId": 1,
 			"iconIdx": 82
 		},
@@ -9677,7 +9788,7 @@
 				"code": 59685,
 				"name": "shares"
 			},
-			"setIdx": 1,
+			"setIdx": 2,
 			"setId": 1,
 			"iconIdx": 83
 		},
@@ -9714,7 +9825,7 @@
 				"code": 59686,
 				"name": "shares-active"
 			},
-			"setIdx": 1,
+			"setIdx": 2,
 			"setId": 1,
 			"iconIdx": 84
 		},
@@ -9751,7 +9862,7 @@
 				"code": 59687,
 				"name": "star"
 			},
-			"setIdx": 1,
+			"setIdx": 2,
 			"setId": 1,
 			"iconIdx": 85
 		},
@@ -9788,7 +9899,7 @@
 				"code": 59689,
 				"name": "star-blue-half"
 			},
-			"setIdx": 1,
+			"setIdx": 2,
 			"setId": 1,
 			"iconIdx": 86
 		},
@@ -9825,7 +9936,7 @@
 				"code": 59690,
 				"name": "star-half-active"
 			},
-			"setIdx": 1,
+			"setIdx": 2,
 			"setId": 1,
 			"iconIdx": 87
 		},
@@ -9862,7 +9973,7 @@
 				"code": 59691,
 				"name": "star-half-inactive"
 			},
-			"setIdx": 1,
+			"setIdx": 2,
 			"setId": 1,
 			"iconIdx": 88
 		},
@@ -9899,7 +10010,7 @@
 				"code": 59692,
 				"name": "star-inactive"
 			},
-			"setIdx": 1,
+			"setIdx": 2,
 			"setId": 1,
 			"iconIdx": 89
 		},
@@ -10000,7 +10111,7 @@
 				"code": 59695,
 				"name": "bulb"
 			},
-			"setIdx": 1,
+			"setIdx": 2,
 			"setId": 1,
 			"iconIdx": 90
 		},
@@ -10101,7 +10212,7 @@
 				"code": 59696,
 				"name": "bulb-active"
 			},
-			"setIdx": 1,
+			"setIdx": 2,
 			"setId": 1,
 			"iconIdx": 91
 		},
@@ -10146,7 +10257,7 @@
 				"code": 59697,
 				"name": "discuss"
 			},
-			"setIdx": 1,
+			"setIdx": 2,
 			"setId": 1,
 			"iconIdx": 92
 		},
@@ -10191,7 +10302,7 @@
 				"code": 59698,
 				"name": "discuss-active"
 			},
-			"setIdx": 1,
+			"setIdx": 2,
 			"setId": 1,
 			"iconIdx": 93
 		},
@@ -10236,7 +10347,7 @@
 				"code": 59699,
 				"name": "user"
 			},
-			"setIdx": 1,
+			"setIdx": 2,
 			"setId": 1,
 			"iconIdx": 94
 		},
@@ -10262,7 +10373,7 @@
 				"code": 59648,
 				"name": "buble"
 			},
-			"setIdx": 1,
+			"setIdx": 2,
 			"setId": 1,
 			"iconIdx": 95
 		},
@@ -10286,7 +10397,7 @@
 				"code": 59649,
 				"name": "heart"
 			},
-			"setIdx": 1,
+			"setIdx": 2,
 			"setId": 1,
 			"iconIdx": 96
 		},
@@ -10312,7 +10423,7 @@
 				"code": 59650,
 				"name": "image"
 			},
-			"setIdx": 1,
+			"setIdx": 2,
 			"setId": 1,
 			"iconIdx": 97
 		},
@@ -10337,7 +10448,7 @@
 				"code": 59651,
 				"name": "item"
 			},
-			"setIdx": 1,
+			"setIdx": 2,
 			"setId": 1,
 			"iconIdx": 98
 		},
@@ -10363,7 +10474,7 @@
 				"code": 59652,
 				"name": "kitchen"
 			},
-			"setIdx": 1,
+			"setIdx": 2,
 			"setId": 1,
 			"iconIdx": 99
 		},
@@ -10396,7 +10507,7 @@
 				"code": 59653,
 				"name": "menu"
 			},
-			"setIdx": 1,
+			"setIdx": 2,
 			"setId": 1,
 			"iconIdx": 100
 		},
@@ -10420,7 +10531,7 @@
 				"code": 59654,
 				"name": "heart-solid"
 			},
-			"setIdx": 1,
+			"setIdx": 2,
 			"setId": 1,
 			"iconIdx": 101
 		}

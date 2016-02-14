@@ -72,6 +72,7 @@ a:hover, a:focus{
 .clearfix.pocket{
   height: 50px;
   width: 100%;
+  clear: both;
 }
 
 .allcaps{
@@ -1124,7 +1125,7 @@ body.product-details{
 
 .top-product-controls{
   float: right;
-  margin-top: 50px;
+  margin-top: 10px;
   li {
     float: left;
     position: relative;
@@ -2981,7 +2982,12 @@ body.single-post{
         }
     }    
     a:hover{
-        color: blue;
+        color: #4489c9;
+    }
+    h1, h2{
+        a:hover{
+            color: inherit;
+        }
     }
 } 
 body.product-details, .single-post{
@@ -2994,9 +3000,9 @@ body.product-details, .single-post{
 body.product-details{
   .story-header{
     h1{
-      width: 34%;
+/*      width: 34%;*/
       font-size: 13px;
-      margin-top: -9px;
+      margin-top: 6px;
     }
     
     .like-counter{
@@ -3052,6 +3058,7 @@ body.product-details{
         right: 0px;
         right: -79px;
         top: -17px;
+        z-index: 58;
   }
   
   .lamp-logo{
@@ -3175,7 +3182,7 @@ body.product-details{
   }
 
   .icon-wrap{
-    padding-right: 35px;
+/*    padding-right: 35px;*/
   }
 }
 
@@ -3912,6 +3919,10 @@ header.sub-head{
     background-repeat: no-repeat;
     color: $tarmac;
 
+    i{
+        margin-right: 5px;
+    }
+
 
     &.home-link{
       background-image: url('/assets/images/house-outline.png');
@@ -4053,7 +4064,7 @@ header.sub-head{
 
 .product-details #hero-nav{
   .category-nav{
-    width: 565px;
+    width: 568px;
     margin: 0 auto;
     max-width: 100%;
   }
@@ -4424,6 +4435,8 @@ body.single{
   h1{
 /*    float: left;*/
     font-size: 3rem;
+    margin-right: 17px;
+    margin-top: 27px;
 /*    padding-left: 40px;*/
   }
   .color-overlay {
@@ -4606,13 +4619,16 @@ body.single{
     font-style: normal;
   }
 
-  b.score{
+  .score{
     display: block;
     width: 100%;
     text-align: center;
     //font-weight: bold;
     font-size: 4.4rem;
     padding-top: 20px;
+    i{
+        font-size: 28px;
+    }
   }
 
   .btn-none{
@@ -4702,7 +4718,9 @@ body.room-landing{
             }
         }
     }
-    
+    #hero-nav{
+        border-top: 0px;
+    }
   .mid-nav.rooms{
     display: none;
   }
@@ -5674,9 +5692,14 @@ footer.about-footer{
         width: 100% !important;
 
         a{
-          padding-left: 10%;
-          padding-right: 5%;
+/*          padding-left: 10%;*/
+/*          padding-right: 5%;*/
           background-position: center 15px !important;
+          padding-right: 0px;
+          i{
+              margin-right: 5px;
+              margin-top: -3px;
+          }
         }
       }
     }
@@ -6012,6 +6035,7 @@ footer.about-footer{
 
       .rsThumbs,
       .rsThumbsContainer{
+        width: 100%;
 /*        width: 200% !important;*/
         overflow: hidden;
         height: 150px;
@@ -6245,7 +6269,7 @@ footer.about-footer{
     width: 100%;
     float: none;
     overflow: hidden;
-    padding-left: 7%;
+/*    padding-left: 7%;*/
     padding-top: 3%;
   }
 
@@ -6410,16 +6434,17 @@ footer.about-footer{
     margin-top: 28px;
 }
 .star-raiting .star{
-    background: url('/assets/images/star-white.png') no-repeat;
-    width:20px;
-    height:19px;
+/*    background: url('/assets/images/star-white.png') no-repeat;*/
+/*    width:20px;*/
+/*    height:19px;*/
     display: inline-block;
+    font-size: 18px;
 }
 .star-raiting .star.active{
-    background: url('/assets/images/star-blue.png');
+/*    background: url('/assets/images/star-blue.png');*/
 }
 .star-raiting .star.half{
-    background: url('/assets/images/star-half.png');
+/*    background: url('/assets/images/star-half.png');*/
 }
 .light-black{
     color: #393e3f;
@@ -6445,15 +6470,21 @@ footer.about-footer{
     bottom: 2px;
     right: 10%;
     z-index: 999;
-    background: $iridium;
+    background: #FF0042;
     color: #fff;
-    border-radius: 20px;
-    width: 30px;
-    height: 30px;
+    border-radius: 50px;
+    width: 50px;
+    height: 50px;
     text-align: center;
-    line-height: 35px;
+    line-height: 50px;
     font-size: 32px;  
     cursor: pointer;  
+/*    padding: 20px;*/
+    text-align: center;
+    display: inline-block;
+/*    font-weight: bold;*/
+/*    top: 10px;*/
+    padding-top: 3px;  
 }
 .circle-button{
     background: $iridium;
@@ -6482,11 +6513,13 @@ footer.about-footer{
                     font-size: 19px;
                     width:50px;
                     height:50px;
-                    line-height: 50px;
                     cursor: pointer;
                     opacity: 1;
                     &:hover{
                         background: $pinterest-red;
+                    }
+                    i{
+                        font-size: 30px;
                     }
                 }
             }
@@ -6589,6 +6622,10 @@ footer.about-footer{
     
     .rsContent{
         overflow: hidden;
+        .rsInnerContent{
+            overflow: hidden;
+            height: calc(100% - 26px);
+        }
     }
 }
 
@@ -7230,6 +7267,49 @@ body.profilepage{
 html.hide-overflow{
     overflow: hidden;
 }
+
+.show-hero-category{
+    position: absolute;
+    right: -18px;
+    top: 0px;
+    display: none;
+}
+.hideen-hero-category-menu{
+    display: none;
+    width: 100%;
+    position: absolute;
+/*    right: 10px;*/
+/*    background: #efefef;*/
+    top: 57px;
+    z-index: 99;
+    > div{
+        &:nth-child(odd) {
+            background: #f6e9e9;
+        }
+        &:nth-child(even) {
+            background: #efefef;
+        }
+    }
+    
+    a{
+        float: none;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        i{
+            margin-right: 5px;
+        }
+    }
+}
+
+@media (max-width: 490px){
+    .show-hero-category{
+        display: block;
+    }
+    #hero-nav li.hidden-category-menu{
+        display: none;
+    }
+}
+
 @media (min-width: 880px){
     .product-box .box-item__overlay:hover{
         cursor: zoom-in;

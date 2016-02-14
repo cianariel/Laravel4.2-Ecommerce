@@ -311,11 +311,35 @@
                                             <div class="reviews">Reviews</div>
 
                                             <div class="star-raiting" style="text-align: center">
-                                                <span class="star"></span>
-                                                <span class="star"></span>
-                                                <span class="star"></span>
-                                                <span class="star"></span>
-                                                <span class="star"></span>
+                                                <?php
+                                                    $stars = 4.5;
+                                                    $fStar = floor($stars);
+                                                    $cStar = ceil($stars);
+                                                    $halfStar = -1;
+                                                    if ($fStar == $cStar)
+                                                        $halfStar = $cStar;
+
+                                                    for($i=1; $i<=5; $i++){
+                                                        if($i <= $fStar){
+                                                            echo '
+                                                            <span class="star active">
+                                                                <i class="m-icon--star-blue-full"></i>
+                                                            </span>
+                                                            ';
+                                                        }elseif($cStar == $i){
+                                                            echo 
+                                                            '<span class="star half">
+                                                                <i class=" m-icon--star-blue-half2"></i>
+                                                            </span>
+                                                            ';
+                                                        }else{
+                                                            echo 
+                                                            '<span class="star">
+                                                                <i class=" m-icon--star-blue-full-lines"></i>
+                                                            </span>';
+                                                        }
+                                                    }
+                                                ?>
                                             </div>
                                             <p style="color: black" class="text-center">
                                                 0
@@ -329,11 +353,35 @@
                                             <div class="title"><a style="color: #00b1ff;" href="" target="_blank">Amazon</a></div>
                                             <div class="reviews">Reviews</div>
                                             <div class="star-raiting" style="text-align: center">
-                                                <span class="star"></span>
-                                                <span class="star"></span>
-                                                <span class="star"></span>
-                                                <span class="star"></span>
-                                                <span class="star"></span>
+                                                <?php
+                                                    $stars = 3.3;
+                                                    $fStar = floor($stars);
+                                                    $cStar = ceil($stars);
+                                                    $halfStar = -1;
+                                                    if ($fStar == $cStar)
+                                                        $halfStar = $cStar;
+
+                                                    for($i=1; $i<=5; $i++){
+                                                        if($i <= $fStar){
+                                                            echo '
+                                                            <span class="star active">
+                                                                <i class="m-icon--star-blue-full"></i>
+                                                            </span>
+                                                            ';
+                                                        }elseif($cStar == $i){
+                                                            echo 
+                                                            '<span class="star half">
+                                                                <i class=" m-icon--star-blue-half2"></i>
+                                                            </span>
+                                                            ';
+                                                        }else{
+                                                            echo 
+                                                            '<span class="star">
+                                                                <i class=" m-icon--star-blue-full-lines"></i>
+                                                            </span>';
+                                                        }
+                                                    }
+                                                ?>
                                             </div>
                                             <p style="color: black" class="text-center">
                                                 <a href="" target="_blank">
@@ -344,6 +392,11 @@
                                                 </a>
                                             </p>
                                         </div>
+                                    </div>
+                                </div>                                
+                                <div class="critic-quote">
+                                    <div>
+                                        <p>It's the perfect balance of comfort and support without any annoying 'quicksand' feel<br><br>-&nbsp;<span class="author vcard"><span class="fn">Sean Fry,&nbsp;http://www.sleepinglikealog.com</span></span><!--EndFragment--><br><br></p>
                                     </div>
                                 </div>                                
 

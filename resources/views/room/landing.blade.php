@@ -99,6 +99,7 @@ jQuery(document).ready(function($) {
         @if(isset($roomInformation['images']))
             @foreach( $roomInformation['images'] as $key => $image )
             <div class="rsContent">
+                <div class="rsInnerContent">
                 @if(isset($roomInformation['images']))
                 <div class="container-fluid fixed-sm full-480">
                     <div class="hero-tags">
@@ -123,12 +124,13 @@ jQuery(document).ready(function($) {
                 <img class="rsImg" src="{{$image['Image']}}" alt="{{$image['Image_alt']}}">
 <!--                <img class="rsImg" src="http://10.0.1.101/1.jpg" alt="{{$image['Image_alt']}}">-->
 
-                <span ng-click="open({{$key}})" class="room-related-product-button" >+</span>
+                </div>
+                <span ng-click="open({{$key}})" class="room-related-product-button" ><i class="m-icon--Add-Active"></i></span>
 
                 <script type="text/ng-template" id="room-related-product-{{$key}}.html">
                     <div class="modal-header">
                         <h3 data-toggle="#related-list">Related Products</h3>
-                        <a class=" box-item__get-it" href="#" ng-click="cancel()">X</a>
+                        <a class=" box-item__get-it" href="#" ng-click="cancel()"><i class="m-icon--Close"></i></a>
                     </div>
                     <div class="modal-body">
                         <section class="hero-related-products ">
@@ -190,7 +192,7 @@ jQuery(document).ready(function($) {
         <div class="app-wrap" >
             <nav id="hero-nav" class="col-sm-12">
                 <div class="container">
-                    <div class="col-md-12 hidden-lg">
+                    <div class="col-lg-12 hidden-lg">
                         <ul class="popular-new text-center">
                         <li class="">
                             <a href="#" class="box-link active">Newest</a>
