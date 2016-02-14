@@ -1,10 +1,10 @@
 @font-face {
     font-family: 'ideaing';
-    src:    url('fonts/ideaing.eot?at767x');
-    src:    url('fonts/ideaing.eot?at767x#iefix') format('embedded-opentype'),
-        url('fonts/ideaing.ttf?at767x') format('truetype'),
-        url('fonts/ideaing.woff?at767x') format('woff'),
-        url('fonts/ideaing.svg?at767x#ideaing') format('svg');
+    src:    url('fonts/ideaing.eot?9ttkil');
+    src:    url('fonts/ideaing.eot?9ttkil#iefix') format('embedded-opentype'),
+        url('fonts/ideaing.ttf?9ttkil') format('truetype'),
+        url('fonts/ideaing.woff?9ttkil') format('woff'),
+        url('fonts/ideaing.svg?9ttkil#ideaing') format('svg');
     font-weight: normal;
     font-style: normal;
 }
@@ -24,6 +24,404 @@
     -moz-osx-font-smoothing: grayscale;
 }
 
+.m-icon--WhiteRed .path1:before {
+    content: "\e9f0";
+    color: rgb(234, 35, 72);
+}
+.m-icon--WhiteRed .path2:before {
+    content: "\e9f1";
+    margin-left: -3.673828125em;
+    color: rgb(234, 35, 72);
+}
+.m-icon--WhiteRed .path3:before {
+    content: "\e9f2";
+    margin-left: -3.673828125em;
+    color: rgb(234, 35, 72);
+}
+.m-icon--WhiteRed .path4:before {
+    content: "\e9f3";
+    margin-left: -3.673828125em;
+    color: rgb(234, 35, 72);
+}
+.m-icon--WhiteRed .path5:before {
+    content: "\e9f4";
+    margin-left: -3.673828125em;
+    color: rgb(234, 35, 72);
+}
+.m-icon--WhiteRed .path6:before {
+    content: "\e9f5";
+    margin-left: -3.673828125em;
+    color: rgb(234, 35, 72);
+}
+.m-icon--WhiteRed .path7:before {
+    content: "\e9f6";
+    margin-left: -3.673828125em;
+    color: rgb(234, 35, 72);
+}
+.m-icon--WhiteRed .path8:before {
+    content: "\e9f7";
+    margin-left: -3.673828125em;
+    color: rgb(68, 137, 201);
+}
+.m-icon--WhiteRed .path9:before {
+    content: "\e9f8";
+    margin-left: -3.673828125em;
+    color: rgb(135, 201, 127);
+}
+.m-icon--WhiteRed .path10:before {
+    content: "\e9f9";
+    margin-left: -3.673828125em;
+    color: rgb(240, 90, 37);
+}
+.m-icon--WhiteRed .path11:before {
+    content: "\e9fa";
+    margin-left: -3.673828125em;
+    color: rgb(255, 255, 255);
+}
+.m-icon--WhiteRed .path12:before {
+    content: "\e9fb";
+    margin-left: -3.673828125em;
+    color: rgb(255, 255, 255);
+}
+.m-icon--WhiteRed .path13:before {
+    content: "\e9fc";
+    margin-left: -3.673828125em;
+    color: rgb(255, 255, 255);
+}
+.m-icon--WhiteRed .path14:before {
+    content: "\e9fd";
+    margin-left: -3.673828125em;
+    color: rgb(255, 255, 255);
+}
+.m-icon--WhiteRed .path15:before {
+    content: "\e9fe";
+    margin-left: -3.673828125em;
+    color: rgb(234, 35, 72);
+}
+.m-icon--WhiteRed .path16:before {
+    content: "\e9ff";
+    margin-left: -3.673828125em;
+    color: rgb(234, 35, 72);
+}
+.m-icon--WhiteRed .path17:before {
+    content: "\ea00";
+    margin-left: -3.673828125em;
+    color: rgb(234, 35, 72);
+}
+.m-icon--WhiteRed .path18:before {
+    content: "\ea01";
+    margin-left: -3.673828125em;
+    color: rgb(234, 35, 72);
+}
+.m-icon--WhiteRed .path19:before {
+    content: "\ea02";
+    margin-left: -3.673828125em;
+    color: rgb(234, 35, 72);
+}
+.m-icon--WhiteRed .path20:before {
+    content: "\ea03";
+    margin-left: -3.673828125em;
+    color: rgb(255, 255, 255);
+}
+.m-icon--WhiteRed .path21:before {
+    content: "\ea04";
+    margin-left: -3.673828125em;
+    color: rgb(255, 255, 255);
+}
+.m-icon--WhiteRed .path22:before {
+    content: "\ea05";
+    margin-left: -3.673828125em;
+    color: rgb(255, 255, 255);
+}
+.m-icon--WhiteRed .path23:before {
+    content: "\ea06";
+    margin-left: -3.673828125em;
+    color: rgb(255, 255, 255);
+}
+.m-icon--WhiteRed .path24:before {
+    content: "\ea07";
+    margin-left: -3.673828125em;
+    color: rgb(255, 255, 255);
+}
+.m-icon--WhiteRed .path25:before {
+    content: "\ea08";
+    margin-left: -3.673828125em;
+    color: rgb(255, 255, 255);
+}
+.m-icon--WhiteRed .path26:before {
+    content: "\ea09";
+    margin-left: -3.673828125em;
+    color: rgb(255, 255, 255);
+}
+.m-icon--WhiteRed .path27:before {
+    content: "\ea0a";
+    margin-left: -3.673828125em;
+    color: rgb(255, 255, 255);
+}
+.m-icon--WhiteRed .path28:before {
+    content: "\ea0b";
+    margin-left: -3.673828125em;
+    color: rgb(255, 255, 255);
+}
+.m-icon--WhiteRed .path29:before {
+    content: "\ea0c";
+    margin-left: -3.673828125em;
+    color: rgb(255, 255, 255);
+}
+.m-icon--WhiteRed .path30:before {
+    content: "\ea0d";
+    margin-left: -3.673828125em;
+    color: rgb(255, 255, 255);
+}
+.m-icon--WhiteRed .path31:before {
+    content: "\ea0e";
+    margin-left: -3.673828125em;
+    color: rgb(255, 255, 255);
+}
+.m-icon--WhiteRed .path32:before {
+    content: "\ea0f";
+    margin-left: -3.673828125em;
+    color: rgb(255, 255, 255);
+}
+.m-icon--WhiteRed .path33:before {
+    content: "\ea10";
+    margin-left: -3.673828125em;
+    color: rgb(255, 255, 255);
+}
+.m-icon--WhiteRed .path34:before {
+    content: "\ea11";
+    margin-left: -3.673828125em;
+    color: rgb(255, 255, 255);
+}
+.m-icon--WhiteRed .path35:before {
+    content: "\ea12";
+    margin-left: -3.673828125em;
+    color: rgb(255, 255, 255);
+}
+.m-icon--WhiteRed .path36:before {
+    content: "\ea13";
+    margin-left: -3.673828125em;
+    color: rgb(255, 255, 255);
+}
+.m-icon--WhiteRed .path37:before {
+    content: "\ea14";
+    margin-left: -3.673828125em;
+    color: rgb(255, 255, 255);
+}
+.m-icon--WhiteRed .path38:before {
+    content: "\ea15";
+    margin-left: -3.673828125em;
+    color: rgb(255, 255, 255);
+}
+.m-icon--WhiteRed .path39:before {
+    content: "\ea16";
+    margin-left: -3.673828125em;
+    color: rgb(255, 255, 255);
+}
+.m-icon--WhiteRed .path40:before {
+    content: "\ea17";
+    margin-left: -3.673828125em;
+    color: rgb(255, 255, 255);
+}
+.m-icon--WhiteBlue .path1:before {
+    content: "\ea18";
+    color: rgb(234, 35, 72);
+}
+.m-icon--WhiteBlue .path2:before {
+    content: "\ea19";
+    margin-left: -3.673828125em;
+    color: rgb(234, 35, 72);
+}
+.m-icon--WhiteBlue .path3:before {
+    content: "\ea1a";
+    margin-left: -3.673828125em;
+    color: rgb(234, 35, 72);
+}
+.m-icon--WhiteBlue .path4:before {
+    content: "\ea1b";
+    margin-left: -3.673828125em;
+    color: rgb(234, 35, 72);
+}
+.m-icon--WhiteBlue .path5:before {
+    content: "\ea1c";
+    margin-left: -3.673828125em;
+    color: rgb(234, 35, 72);
+}
+.m-icon--WhiteBlue .path6:before {
+    content: "\ea1d";
+    margin-left: -3.673828125em;
+    color: rgb(234, 35, 72);
+}
+.m-icon--WhiteBlue .path7:before {
+    content: "\ea1e";
+    margin-left: -3.673828125em;
+    color: rgb(234, 35, 72);
+}
+.m-icon--WhiteBlue .path8:before {
+    content: "\ea1f";
+    margin-left: -3.673828125em;
+    color: rgb(68, 137, 201);
+}
+.m-icon--WhiteBlue .path9:before {
+    content: "\ea20";
+    margin-left: -3.673828125em;
+    color: rgb(135, 201, 127);
+}
+.m-icon--WhiteBlue .path10:before {
+    content: "\ea21";
+    margin-left: -3.673828125em;
+    color: rgb(240, 90, 37);
+}
+.m-icon--WhiteBlue .path11:before {
+    content: "\ea22";
+    margin-left: -3.673828125em;
+    color: rgb(255, 255, 255);
+}
+.m-icon--WhiteBlue .path12:before {
+    content: "\ea23";
+    margin-left: -3.673828125em;
+    color: rgb(255, 255, 255);
+}
+.m-icon--WhiteBlue .path13:before {
+    content: "\ea24";
+    margin-left: -3.673828125em;
+    color: rgb(255, 255, 255);
+}
+.m-icon--WhiteBlue .path14:before {
+    content: "\ea25";
+    margin-left: -3.673828125em;
+    color: rgb(255, 255, 255);
+}
+.m-icon--WhiteBlue .path15:before {
+    content: "\ea26";
+    margin-left: -3.673828125em;
+    color: rgb(68, 137, 201);
+}
+.m-icon--WhiteBlue .path16:before {
+    content: "\ea27";
+    margin-left: -3.673828125em;
+    color: rgb(68, 137, 201);
+}
+.m-icon--WhiteBlue .path17:before {
+    content: "\ea28";
+    margin-left: -3.673828125em;
+    color: rgb(68, 137, 201);
+}
+.m-icon--WhiteBlue .path18:before {
+    content: "\ea29";
+    margin-left: -3.673828125em;
+    color: rgb(68, 137, 201);
+}
+.m-icon--WhiteBlue .path19:before {
+    content: "\ea2a";
+    margin-left: -3.673828125em;
+    color: rgb(234, 35, 72);
+}
+.m-icon--WhiteBlue .path20:before {
+    content: "\ea2b";
+    margin-left: -3.673828125em;
+    color: rgb(255, 255, 255);
+}
+.m-icon--WhiteBlue .path21:before {
+    content: "\ea2c";
+    margin-left: -3.673828125em;
+    color: rgb(255, 255, 255);
+}
+.m-icon--WhiteBlue .path22:before {
+    content: "\ea2d";
+    margin-left: -3.673828125em;
+    color: rgb(255, 255, 255);
+}
+.m-icon--WhiteBlue .path23:before {
+    content: "\ea2e";
+    margin-left: -3.673828125em;
+    color: rgb(255, 255, 255);
+}
+.m-icon--WhiteBlue .path24:before {
+    content: "\ea2f";
+    margin-left: -3.673828125em;
+    color: rgb(255, 255, 255);
+}
+.m-icon--WhiteBlue .path25:before {
+    content: "\ea30";
+    margin-left: -3.673828125em;
+    color: rgb(255, 255, 255);
+}
+.m-icon--WhiteBlue .path26:before {
+    content: "\ea31";
+    margin-left: -3.673828125em;
+    color: rgb(255, 255, 255);
+}
+.m-icon--WhiteBlue .path27:before {
+    content: "\ea32";
+    margin-left: -3.673828125em;
+    color: rgb(255, 255, 255);
+}
+.m-icon--WhiteBlue .path28:before {
+    content: "\ea33";
+    margin-left: -3.673828125em;
+    color: rgb(255, 255, 255);
+}
+.m-icon--WhiteBlue .path29:before {
+    content: "\ea34";
+    margin-left: -3.673828125em;
+    color: rgb(255, 255, 255);
+}
+.m-icon--WhiteBlue .path30:before {
+    content: "\ea35";
+    margin-left: -3.673828125em;
+    color: rgb(255, 255, 255);
+}
+.m-icon--WhiteBlue .path31:before {
+    content: "\ea36";
+    margin-left: -3.673828125em;
+    color: rgb(255, 255, 255);
+}
+.m-icon--WhiteBlue .path32:before {
+    content: "\ea37";
+    margin-left: -3.673828125em;
+    color: rgb(255, 255, 255);
+}
+.m-icon--WhiteBlue .path33:before {
+    content: "\ea38";
+    margin-left: -3.673828125em;
+    color: rgb(255, 255, 255);
+}
+.m-icon--WhiteBlue .path34:before {
+    content: "\ea39";
+    margin-left: -3.673828125em;
+    color: rgb(255, 255, 255);
+}
+.m-icon--WhiteBlue .path35:before {
+    content: "\ea3a";
+    margin-left: -3.673828125em;
+    color: rgb(255, 255, 255);
+}
+.m-icon--WhiteBlue .path36:before {
+    content: "\ea3b";
+    margin-left: -3.673828125em;
+    color: rgb(255, 255, 255);
+}
+.m-icon--WhiteBlue .path37:before {
+    content: "\ea3c";
+    margin-left: -3.673828125em;
+    color: rgb(255, 255, 255);
+}
+.m-icon--WhiteBlue .path38:before {
+    content: "\ea3d";
+    margin-left: -3.673828125em;
+    color: rgb(255, 255, 255);
+}
+.m-icon--WhiteBlue .path39:before {
+    content: "\ea3e";
+    margin-left: -3.673828125em;
+    color: rgb(255, 255, 255);
+}
+.m-icon--WhiteBlue .path40:before {
+    content: "\ea3f";
+    margin-left: -3.673828125em;
+    color: rgb(255, 255, 255);
+}
 .m-icon--star-blue-full:before {
     content: "\e9ea";
 }
@@ -32,6 +430,18 @@
 }
 .m-icon--star-blue-half2:before {
     content: "\e9ec";
+}
+.m-icon--ScrollingHeaderHeart .path1:before {
+    content: "\e9ed";
+    color: rgb(237, 29, 71);
+}
+.m-icon--ScrollingHeaderHeart .path2:before {
+    content: "\e9ee";
+    margin-left: -1em;
+    color: rgb(255, 255, 255);
+}
+.m-icon--footer-up-arrow:before {
+    content: "\e9ef";
 }
 .m-icon--Right-Arrow-Active:before {
     content: "\e9e9";

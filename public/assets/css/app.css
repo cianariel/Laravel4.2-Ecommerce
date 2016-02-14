@@ -5418,6 +5418,18 @@ body.profilepage #hero {
   #ideaing-logo:hover > .m-icon:last-child {
     display: block; }
 
+.login-signup-modal a.logo .m-icon:first-child {
+  display: block; }
+
+.login-signup-modal a.logo .m-icon:last-child {
+  display: none; }
+
+.login-signup-modal a.logo:hover > .m-icon:first-child {
+  display: none; }
+
+.login-signup-modal a.logo:hover > .m-icon:last-child {
+  display: block; }
+
 form input,
 form .btn {
   margin-bottom: 20px; }
@@ -6138,11 +6150,17 @@ article.product {
   bottom: 133px;
   width: 50px;
   height: 50px;
-  background: url("/assets/images/back-to-top.png") no-repeat;
-  text-indent: -9999px;
+  font-size: 36px;
+  text-align: center;
+  border: 1px solid #FF0042;
+  border-radius: 50px;
+  /*  background: url("/assets/images/back-to-top.png") no-repeat;*/
+  /*  text-indent: -9999px;*/
   z-index: 10; }
   #back-to-top:hover {
-    background: url("/assets/images/back-to-top-red.png") no-repeat; }
+    color: #fff;
+    background: #FF0042;
+    /*    background: url("/assets/images/back-to-top-red.png") no-repeat;*/ }
 
 .layout-controls {
   display: none;
@@ -6298,6 +6316,12 @@ header.colophon {
     padding: 0px; }
     #top-nav .top-nav-holder .profile-photo-holder a, #top-nav .top-nav-holder .notification-holder a {
       padding: 0px; }
+  #top-nav .top-nav-holder .profile-photo-holder .box-link-active-line {
+    height: 11px;
+    position: absolute;
+    border-left: 1px solid #c1c1c1;
+    bottom: -12px;
+    right: 22px; }
   #top-nav .top-nav-holder .profile-photo-holder i {
     font-size: 18px;
     position: relative;
@@ -9556,7 +9580,9 @@ p {
     line-height: 26px;
     padding-left: 30px;
     margin: 3px 0; }
-    .social-stats__item:hover .m-icon--heart:before {
+    .social-stats__item:hover .m-hover {
+      display: none; }
+    .social-stats__item:hover .m-icon:before {
       content: "\e906"; }
   .social-stats__item .m-icon {
     font-size: 26px;

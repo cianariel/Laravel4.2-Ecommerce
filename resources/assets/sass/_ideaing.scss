@@ -1291,6 +1291,21 @@ body.profilepage{
     }
 
 }
+.login-signup-modal a.logo{
+    .m-icon:first-child{
+        display: block;
+    }
+    .m-icon:last-child{
+        display: none;
+    }
+    
+    &:hover > .m-icon:first-child{
+        display: none;
+    }
+    &:hover > .m-icon:last-child{
+        display: block;
+    }
+}
 
 form{
   input,
@@ -2473,12 +2488,20 @@ article.product{
   bottom: 133px;
   width: 50px;
   height: 50px;
-  background: url("/assets/images/back-to-top.png") no-repeat;
-  text-indent: -9999px;
+  
+  font-size: 36px;
+    text-align: center;
+    border: 1px solid $iridium;
+    border-radius: 50px;
+  
+/*  background: url("/assets/images/back-to-top.png") no-repeat;*/
+/*  text-indent: -9999px;*/
   z-index: 10;
 
   &:hover{
-    background: url("/assets/images/back-to-top-red.png") no-repeat;
+      color: #fff;
+      background: $iridium;
+/*    background: url("/assets/images/back-to-top-red.png") no-repeat;*/
   }
 }
 
@@ -2726,12 +2749,23 @@ header.colophon{
             a{
                 padding: 0px;
             }
+            
+            
         }
-        .profile-photo-holder i{
+        .profile-photo-holder{
+            .box-link-active-line{
+                height: 11px;
+                position: absolute;
+                border-left: 1px solid #c1c1c1;
+                bottom: -12px;
+                right: 22px;
+            }
+            i{
             font-size: 18px;
             position: relative;
             top: 3px;
         }
+        } 
         .notification-holder{
             position: relative;
             .notification-count{
