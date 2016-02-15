@@ -6,12 +6,19 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Models\Product;
+use App\Models\ProductCategory;
+
 
 class ShopController extends Controller
 {
     public function index()
     {
-        return view('shop.index');
+        $categoryTree = ProductCategory::buildCategoryTree();
+
+        return view('shop.index')
+            ->with('categoryTree', $categoryTree)
+            ;
     }
 
     public function shopCategory()

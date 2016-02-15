@@ -2493,6 +2493,7 @@ article.product{
     text-align: center;
     border: 1px solid $iridium;
     border-radius: 50px;
+    color: $iridium;
   
 /*  background: url("/assets/images/back-to-top.png") no-repeat;*/
 /*  text-indent: -9999px;*/
@@ -3103,7 +3104,7 @@ body.product-details{
 
   .social-stats{
         position: absolute;
-        background: white none repeat scroll 0% 0%;
+/*        background: white none repeat scroll 0% 0%;*/
         right: 0px;
         right: -79px;
         top: -17px;
@@ -3270,15 +3271,16 @@ body.product-details{
         }
 
         /*.homepage .mid-nav li.home .box-link-active-line{*/
+
+    }  
         .box-link-active-line{
             position: absolute;
             display: inline-block;
             width: 0px;
             height: 15px;
             border-left: 1px solid $light-grey;
-            left: 63px;
-        }
-
+        left: 50%;
+        top: -15px;
     }  
   
     .container{
@@ -3374,7 +3376,7 @@ body.product-details{
             box-shadow:none;
           }
           &.active{
-              margin-right: 17px;
+/*              margin-right: 17px;*/
           }
 
         }
@@ -6943,6 +6945,9 @@ body.shop-category{
 }
 body.profilepage{
     background: #f8f8f6;
+    header.colophon{
+        background: #fff;
+    }
     #hero{
         position: relative;
         color: #fff;
@@ -7407,7 +7412,7 @@ html.hide-overflow{
     
     .lbMain{
         background-color: transparent;
-        min-width: 1024px;
+        min-width: 768px;
         
         position: absolute;
         top: 0;
@@ -7423,7 +7428,7 @@ html.hide-overflow{
         right: 0;
         top: 0;
         bottom: 0;
-        width: calc(100% - 620px);
+        width: calc(100% - 610px);
         min-height: 470px;
         height: 100%;
         transition: width 250ms ease-out;
@@ -7432,7 +7437,7 @@ html.hide-overflow{
     .lbInfo {
         position: absolute;
         overflow: hidden;
-        width: 620px;
+        width: 610px;
         right: 0;
         top: 0;
         bottom: 0;
@@ -7449,7 +7454,7 @@ html.hide-overflow{
         }
         .rsArrow{
             display: block;
-            background-color: rgb(255, 255, 255);
+/*            background-color: rgb(255, 255, 255);*/
             border-radius: 30px;
             width: 50px;
             height: 50px;
@@ -7485,7 +7490,7 @@ html.hide-overflow{
         .p-average-ideaing-score{
             width: 204px;
             text-align: center;
-            background: $sky-blue;
+            background: $iridium;
             color: #fff;
             padding-top: 17px;
             height: 125px;
@@ -7502,13 +7507,20 @@ html.hide-overflow{
         .ideaing-score-holder{
             background: #f7f7f7;
         }
-        .p-nest-protect{
-            margin-left: 15px;
-            
+        .p-top-bar{
+            height: 83px;
+            padding-left: 15px;
+            padding-right: 15px;
+            padding-top: 20px;
+        }
             .p-title{
                 font-size: 20px;
-                margin-top: 25px;
             }
+            
+        .p-nest-protect{
+            margin-left: 15px;
+            padding-top: 33px;
+            
             
             > ul > li{
                 float: left;
@@ -7551,7 +7563,8 @@ html.hide-overflow{
                 }
             }
             .p-get-it-right{
-                width: 395px;
+                display: none;
+                width: 428px;
                 padding-top: 6px;
                 .p-btn-get-it{
                     background: #c6c646;
@@ -7630,6 +7643,7 @@ html.hide-overflow{
                 color: $iridium;
                 font-weight: bold;
                 font-size: 17px;
+                text-align: center;
             }
             .p-critic-reviews-title{
                 color: #7f7f7f;

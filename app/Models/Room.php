@@ -102,6 +102,10 @@
                     $pr->media_link = $path;
                     $pr->product_name = $product->product_name;
                     $pr->price = $product->price;
+                    $pr->sale_price = $product->sale_price ;
+                    $pr->store = $temp->getStoreInfoByProductId($pr->product_id);
+                    $pr->affiliate_link = $product->affiliate_link;
+                    $pr->product_permalink = $product->product_permalink;
                 }
                 $Image['Image_Products'] = $products;
                 $Image['Image_Description'] = $roomData['room']->hero_image_1_desc;
@@ -126,6 +130,10 @@
                     $pr->media_link = $path;
                     $pr->product_name = $product->product_name;
                     $pr->price = $product->price;
+                    $pr->sale_price = $product->sale_price ;
+                    $pr->store = $temp->getStoreInfoByProductId($pr->product_id);
+                    $pr->affiliate_link = $product->affiliate_link;
+                    $pr->product_permalink = $product->product_permalink;
                 }
                 $Image['Image_Products'] = $products;
                 $Image['Image_Description'] = $roomData['room']->hero_image_2_desc;
@@ -149,6 +157,11 @@
                     $pr->media_link = $path;
                     $pr->product_name = $product->product_name;
                     $pr->price = $product->price;
+                    $pr->sale_price = $product->sale_price ;
+                    $pr->store = $product->storeInfo;
+                    $pr->store = $temp->getStoreInfoByProductId($pr->product_id);
+                    $pr->affiliate_link = $product->affiliate_link;
+                    $pr->product_permalink = $product->product_permalink;
                 }
                 $Image['Image_Products'] = $products;
                 $Image['Image_Description'] = $roomData['room']->hero_image_3_desc;
