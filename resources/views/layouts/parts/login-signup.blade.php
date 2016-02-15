@@ -64,8 +64,8 @@
                 <a class="btn btn-info col-xs-12"  ng-click="registerWithFB()" href="#"><i class="icon fb-icon"></i>Log in with Facebook</a>
                 <div class="line-wrap modal-minor-text">or</div>
 
-                <input {{--class="form-control" style="height: 45px"--}} ng-model="Email" type="text" placeholder="Email" name="email">
-                <input {{--class="form-control" style="height: 45px"--}} ng-model="Password" type="password" placeholder="Password" name="password">
+                <input class="form-control" ng-model="Email" type="text" placeholder="Email" name="email">
+                <input class="form-control" ng-model="Password" type="password" placeholder="Password" name="password">
                 <div class="modal-minor-text">
                     <input type="checkbox" id="remember" name="remember"><label for="remember"><span></span>Remember me
                     </label>
@@ -85,10 +85,10 @@
                     up with Facebook</a>
                 <div class="line-wrap modal-minor-text">or</div>
 
-                <input {{--class="form-control"--}} ng-model="FullName" type="text" placeholder="Name" >
-                <input {{--class="form-control"--}} ng-model="Email" type="text" placeholder="Email" >
-                <input {{--class="form-control"--}} ng-model="Password" type="password" placeholder="Password" >
-                <input {{--class="form-control"--}} ng-model="PasswordConf" type="password" placeholder="Retype Password" >
+                <input class="form-control" ng-model="FullName" type="text" placeholder="Name" >
+                <input class="form-control" ng-model="Email" type="text" placeholder="Email" >
+                <input class="form-control" ng-model="Password" type="password" placeholder="Password" >
+                <input class="form-control" ng-model="PasswordConf" type="password" placeholder="Retype Password" >
 
                 <a class="btn btn-success col-xs-12" ng-click="registerUser()" href="#">Sign up</a>
 
