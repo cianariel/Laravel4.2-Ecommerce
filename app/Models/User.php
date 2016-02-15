@@ -231,7 +231,8 @@
 
             } catch (\Exception $ex)
             {
-                throw new \Exception($ex);
+               // throw new \Exception($ex);
+                return false;
             }
         }
 

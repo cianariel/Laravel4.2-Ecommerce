@@ -1,5 +1,8 @@
 <?php
 
+// Handel Error Reporting
+error_reporting(E_ERROR | E_WARNING | E_PARSE | E_NOTICE);
+
 /**
  * Laravel - A PHP Framework For Web Artisans
  *

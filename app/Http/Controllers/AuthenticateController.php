@@ -25,15 +25,6 @@
             $this->user = new User();
             $this->subscriber = new Subscriber();
 
-            // Apply the jwt.auth middleware to all methods in this controller
-            /*$this->middleware('jwt.auth', [
-                'except' => [
-                    'logOut', 'passwordResetForm',
-                    'passwordReset', 'sendPasswordResetEmail', 'verifyEmail', 'index',
-                    'authenticate', 'fbLogin', 'registerUser'
-                ]
-            ]);*/
-            //parent::__construct();
         }
 
 
@@ -74,7 +65,7 @@
 
         public function passwordResetForm($code)
         {
-            return $code;
+            return view('password-reset')->with('code',$code);
         }
 
         public function securePage()
@@ -95,11 +86,12 @@
         public function logOut()
         {
             // get token form input or session
-            $tokenValue = \Input::get('token');
+            $tokenValue = session('auth.token');
 
             if ($tokenValue == null)
             {
-                $tokenValue = session('auth.token');
+                $tokenValue = \Input::get('token');
+
             }
 
             //$tokenValue = \Input::all();
@@ -178,10 +170,22 @@
             }
 
 
-            // if no errors are encountered we can return a JWT
-            return $this->setStatusCode(\Config::get("const.api-status.success"))
+            // if no errors are encountered jwt token returned
+
+            $rolesCollection = $user->getUserRolesByEmail($credentials['Email']);
+
+            $roles = array();
+            foreach($rolesCollection as $role)
+            {
+                array_push($roles,$role['name']);
+            }
+
+            $response['message'] = "Successfully authenticated.";
+            $response['roles'] = $roles;
+
+            return $this->setStatusCode(\Config::get("const.api-status.success-redirect"))
                 ->setAuthToken($token)
-                ->makeResponse("Successfully authenticated.");
+                ->makeResponse($response);
 
         }
 
@@ -212,15 +216,22 @@
             Set authentication code and pass JSON data in API response.
             */
             $token = JWTAuth::fromUser($userInfo);
+            session(['auth.token' => isset($token) ? $token : null]);
+
+             return redirect()->action('UserController@userProfile');
+
+            // return redirect('user/profile');
 
             /* $userInfo['token'] = $token;
 
              $userInfo['message'] = 'Successfully registered with Facebook';*/
 
-            return $this->setStatusCode(IlluminateResponse::HTTP_OK)
+
+            /*
+            return $this->setStatusCode(\Config::get("const.api-status.success-with-fb"))
                 ->setAuthToken($token)
                 ->makeResponse("Successfully registered with Facebook");
-
+*/
         }
 
 
@@ -292,7 +303,7 @@
                                     Crypt::encrypt($userData['Email'])
                                 ));
 
-                                return $this->setStatusCode(IlluminateResponse::HTTP_OK)
+                                return $this->setStatusCode(\Config::get("const.api-status.success"))
                                     ->makeResponse('Registration completed successfully,please verify email');
                             }
                         }
@@ -405,7 +416,7 @@
                     $user->save();
                     $message = "Thanks " . $user->name . " for verify your email";
 
-                    return Redirect::to('/')->withFlashMessage('Email verification complete.');
+                    return Redirect::to('login')->withFlashMessage('Email verification complete.');
 
                 } else
                 {
@@ -433,8 +444,8 @@
 
             if (!$isValidation)
             {
-                return $this->setStatusCode(IlluminateResponse::HTTP_NOT_ACCEPTABLE)
-                    ->makeResponseWithError("User not available with " . $email);
+                return $this->setStatusCode(\Config::get("const.api-status.success-with-variation"))
+                    ->makeResponse("User not available with " . $email);
 
             } else
             {

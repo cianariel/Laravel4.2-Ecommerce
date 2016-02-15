@@ -4,7 +4,7 @@
 
 var publicApp = angular.module('publicApp', ['ui.bootstrap', 'ngSanitize']);
 
-publicApp.config(['$httpProvider', function($httpProvider) {
+publicApp.config(['$httpProvider', function ($httpProvider) {
     $httpProvider.defaults.headers.common["X-Requested-With"] = 'XMLHttpRequest';
 }]);
 
@@ -20,6 +20,7 @@ publicApp.controller('publicController', ['$scope', '$http', '$window', '$timeou
 
             $scope.alerts = [];
             $scope.alertHTML = '';
+            $scope.Code='';
 
             $scope.logingRedirectLocation = '/';
 
@@ -67,14 +68,30 @@ publicApp.controller('publicController', ['$scope', '$http', '$window', '$timeou
                     }
                 }
                     break;
+                case 401:
+                {
+                    $scope.addAlert('danger', data.data.error.message);
+
+                }
+                    break;
                 case 200:
                 {
                     $scope.addAlert('success', message);
+                    if(message == 'Successfully password reset')
+                        window.location = '/login';
+
                 }
                     break;
                 case 210:
                 {
                     $scope.addAlert('', message);
+                }
+                    break;
+                case 220:
+                {
+                    $scope.addAlert('success', data.data.message);
+                    if (data.data.message == 'Successfully authenticated.')
+                        $scope.redirectUser(data.data.roles)
                 }
                     break;
                 case 410:
@@ -91,6 +108,25 @@ publicApp.controller('publicController', ['$scope', '$http', '$window', '$timeou
                 {
                     $scope.addAlert('danger', 'Request failed !');
                 }
+            }
+        };
+
+        $scope.redirectUser = function (role) {
+            switch (role[0]) {
+                case 'admin':
+                    console.log("inside AAAAA ");
+                    window.location = '/admin/dashboard';
+                    break;
+                case 'editor':
+                    console.log("inside ----- ");
+                    window.location = '/admin/dashboard';
+                    break;
+                case 'user':
+                    console.log("inside right ");
+                    window.location = '/user/profile';
+
+                    break;
+
             }
         };
 
@@ -129,8 +165,7 @@ publicApp.controller('publicController', ['$scope', '$http', '$window', '$timeou
         $scope.registerSubscribedUser = function () {
             $scope.closeAlert();
 
-            if ($scope.Password != $scope.PasswordConf)
-            {
+            if ($scope.Password != $scope.PasswordConf) {
                 $scope.addAlert('danger', 'Password not match !');
                 return;
             }
@@ -158,8 +193,7 @@ publicApp.controller('publicController', ['$scope', '$http', '$window', '$timeou
         $scope.registerUser = function (email) {
             $scope.closeAlert();
 
-            if ($scope.Password != $scope.PasswordConf)
-            {
+            if ($scope.Password != $scope.PasswordConf) {
                 $scope.addAlert('danger', 'Password not match !');
                 return;
             }
@@ -177,20 +211,20 @@ publicApp.controller('publicController', ['$scope', '$http', '$window', '$timeou
             }).success(function (data) {
                 $scope.outputStatus(data, data.data);
 
-               /* if(data.status_code == 200)
-                    window.location = $scope.logingRedirectLocation;
-*/
+                /* if(data.status_code == 200)
+                 window.location = $scope.logingRedirectLocation;
+                 */
             });
 
         };
 
 
-        $scope.registerWithFB = function(){
+        $scope.registerWithFB = function () {
 
             window.location = '/api/fb-login';
         };
 
-        $scope.loginUser = function(){
+        $scope.loginUser = function () {
             $scope.closeAlert();
             $http({
                 url: '/api/authenticate',
@@ -211,14 +245,56 @@ publicApp.controller('publicController', ['$scope', '$http', '$window', '$timeou
             });
         };
 
-        $scope.chk = function(){
+        $scope.passwordResetRequest = function () {
+            $scope.closeAlert();
+            $http({
+                url: '/password-reset-request/'+$scope.Email,
+                method: "GET",
+            }).success(function (data) {
+                //console.log(data.data);
+
+                $scope.outputStatus(data, data.data);
+
+                /* if(data.status_code == 200)
+                 window.location = $scope.logingRedirectLocation;
+                 */
+            });
+        };
+
+        $scope.passwordReset = function () {
+            $scope.closeAlert();
+
+            if ($scope.Password != $scope.PasswordConf) {
+                $scope.addAlert('danger', 'Password not match !');
+                return;
+            }
+
+            $http({
+                url: '/api/password-reset',
+                method: "POST",
+                data:{
+                    Password: $scope.Password,
+                    Code: $scope.Code
+                }
+            }).success(function (data) {
+                //console.log(data.data);
+
+                $scope.outputStatus(data, data.data);
+
+                /* if(data.status_code == 200)
+                 window.location = $scope.logingRedirectLocation;
+                 */
+            });
+        };
+
+        $scope.chk = function () {
             $scope.closeAlert();
             $http({
                 url: '/secure-page-header',
                 method: "GET",
 
             }).success(function (data) {
-               // $scope.outputStatus(data, data.data);
+                // $scope.outputStatus(data, data.data);
 
                 /* if(data.status_code == 200)
                  window.location = $scope.logingRedirectLocation;
