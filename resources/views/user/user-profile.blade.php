@@ -3,7 +3,24 @@
 @section('body-class'){{ 'profilepage' }}@stop
 
 @section('content')
-    <div ng-app="pagingApp" ng-controller="pagingController">
+    <div id="pagingApp" ng-app="pagingApp" ng-controller="pagingController">
+        <nav class="mid-nav hidden-xs">
+            <div class="container">
+                <div class="col-sm-8 col-sm-offset-2">
+                    <ul class="left-nav hidden-620">
+                        <li class="box-link-ul  active-ul ">
+                            <a class="box-link active" href="/user/profile">
+                                <span class="box-link-active-line"></span>
+<!--                                <img class="profile-photo" src="/assets/images/profile.jpg" alt="" width="40px"> -->
+                                My Profile
+                            </a>
+                        </li>
+                    </ul>
+                </div>                
+            </div>
+        </nav>
+
+
         <section id="hero" class="landing-hero">
             <div class="hero-background" style="background-image: url('/assets/images/landing-hero-3.jpg');"></div>
             <div class="color-overlay"></div>
@@ -39,19 +56,16 @@
                     Edit background
                 </a>
             </div>
-            <div class="hidden-xs hidden-sm edit-profile">
+            <div class=" edit-profile">
                 <div><a href="#" class="edit-profile-link" ng-click="openProfileSetting()">Edit Profile&nbsp;&nbsp;<i class="m-icon--Edit-Profile"></i></a></div>
-                <p><a href="#">View your profile as other people see it</a></p>
+                <p class="hidden-xs hidden-sm"><a href="#">View your profile as other people see it</a></p>
+                <p class="visible-xs visible-sm">&nbsp;</p>
             </div>
         </section>
         <div class="app-wrap" >
             <div class="container ">
                 <nav id="hero-nav" >
-                    <ul class="breadcrumb pull-left hidden-xs hidden-sm">
-                        <li><a href="/"><i class="m-icon--Home"></i> Home</a> <span>-></span></li>
-                        <li><a href="/user/profile"><img class="profile-photo" width="40px" src="{{$profile}}" alt=""> My Profile</a></li>
-                    </ul>
-                    <ul class=" main-content-filter pull-right">
+                    <ul class=" main-content-filter ">
                         <li ng-class="{active: (activeMenu == '1' || !activeMenu)}" ng-click="activeMenu='1'">
                             <a ng-click="filterContent(null)"  href="" data-filterby="all" class="all-activity">
                                 <i class="m-icon m-icon--menu"></i>

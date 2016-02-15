@@ -25,10 +25,11 @@ jQuery(document).ready(function($) {
     },
     /* size of all images http://help.dimsemenov.com/kb/royalslider-jquery-plugin-faq/adding-width-and-height-properties-to-images */
     imgWidth: "100%",
+    autoHeight: true,
     imageScaleMode: "fill",
-    autoScaleSliderWidth: 1500,
-    autoScaleSliderHeight: 500,
-    autoScaleSlider: true
+//    autoScaleSliderWidth: 1500,
+//    autoScaleSliderHeight: 500,
+//    autoScaleSlider: true
   });
   
   $('#newest-arrivals').royalSlider({
@@ -36,7 +37,6 @@ jQuery(document).ready(function($) {
     loop: false,
     keyboardNavEnabled: true,
     controlsInside: false,
-    imageScaleMode: 'fit',
     arrowsNavAutoHide: false,
     controlNavigation: 'bullets',
     thumbsFitInViewport: false,

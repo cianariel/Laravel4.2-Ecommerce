@@ -1,7 +1,8 @@
+<div>
 <img src="@{{item.media_link_full_path}}" alt="@{{item.product_name}}"/>
 
 <span class="box-item__time">@{{item.updated_at}}</span>
-<div class="box-item__overlay"></div>
+    <div class="box-item__overlay" ng-click="openProductPopup()"></div>
 
 <ul class="social-stats">
     <li class="social-stats__item">
@@ -19,6 +20,7 @@
 
 <div class="box-item__label-prod">
     <a href="/product/@{{item.product_permalink}}" class="box-item__label box-item__label--clear">@{{item.product_name}}</a>
+    <!--    <a href="#" class="box-item__label box-item__label--clear" ng-click="openProductPopup()">@{{item.product_name}}</a>-->
     <div class="clearfix"></div>
     <div class="merchant-widget">
         <span class="merchant-widget__price">$@{{item.sale_price}}</span>
@@ -29,5 +31,4 @@
     <div class="clearfix"></div>
     <a target="_blank" href="@{{item.affiliate_link}}" class="box-item__get-it">Get it</a>
 </div>
-
-
+</div>

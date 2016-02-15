@@ -66,7 +66,7 @@
     e.stopPropagation()
 
     if (files.length === 0) {
-      this.clear()
+      //this.clear()
       return
     }
 
@@ -128,7 +128,12 @@
     this.$preview.html('')
     this.$element.find('.fileinput-filename').text('')
     this.$element.addClass('fileinput-new').removeClass('fileinput-exists')
-    
+    $('#'+this.name+'_alt').val("");
+    $('#'+this.name+'_title').val("");
+    $('#'+this.name+'_caption').val("");
+    $('#'+this.name+'_desc').val("");
+    $('#'+this.name+'_table').remove();
+    $('#'+this.name+'_products').val('[]');
     if (e !== undefined) {
       this.$input.trigger('change')
       this.$element.trigger('clear.bs.fileinput')
@@ -144,7 +149,7 @@
 
     if (this.original.exists) this.$element.addClass('fileinput-exists').removeClass('fileinput-new')
      else this.$element.addClass('fileinput-new').removeClass('fileinput-exists')
-    
+
     this.$element.trigger('reset.bs.fileinput')
   },
 
