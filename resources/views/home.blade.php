@@ -145,6 +145,7 @@
             <a ng-click="loadMore()" class="btn btn-success bottom-load-more col-xs-12">Load More</a>
         </div>
 
+        <!-- custom angular template - START -->
         
         <script type="text/ng-template" id="product-popup.html">
             <div class="lbMain">
@@ -464,6 +465,8 @@
                 </div>
             </div>
         </script>
+
+        <!-- custom angular template - END -->
         
         </div>
 
