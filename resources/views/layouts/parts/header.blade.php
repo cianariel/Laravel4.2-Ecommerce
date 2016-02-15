@@ -135,7 +135,10 @@
                 </div>
         </header>
 
-        @include('layouts.parts.shop-submenu')
+        <?php // have to use only pure php includes, or the CMS wont read it
+             include('/var/www/ideaing/resources/views/layouts/parts/shop-submenu.blade.php')
+        ?>
+
 
         <nav class="mid-nav rooms hidden-xs">
             <div class="container full-sm fixed-sm">

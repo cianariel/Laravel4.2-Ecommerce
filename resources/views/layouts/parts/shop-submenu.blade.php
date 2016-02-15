@@ -20,7 +20,6 @@
                             <a href="/product/@{{item.product_permalink}}">
                                 <img  style="width: 70%;height: auto;" class="img-responsive" src="@{{item.media_link_full_path}}">
                             </a>
-                            {{--<b><a href="/product/@{{item.product_permalink}}">@{{item.product_name}}</a></b>--}}
                         </div>
                     </section>
 
@@ -31,7 +30,6 @@
                             <a href="/product/@{{item.product_permalink}}">
                                  <img  style="width: 70%;height: auto;" class="img-responsive" src="@{{item.media_link_full_path}}">
                             </a>
-                            {{--<b><a href="/product/@{{item.product_permalink}}">@{{item.product_name}}</a></b>--}}
                         </div>
                     </section>
 
@@ -41,7 +39,6 @@
                             <a href="/product/@{{item.product_permalink}}">
                                 <img style="width: 70%;height: auto;"  class="img-responsive" src="@{{item.media_link_full_path}}">
                             </a>
-                            {{--<b><a href="/product/@{{item.product_permalink}}">@{{item.product_name}}</a></b>--}}
                         </div>
                     </section>
 
@@ -52,7 +49,6 @@
                             <a href="/product/@{{item.product_permalink}}">
                                 <img  style="width: 70%;height: auto;" class="img-responsive" src="@{{item.media_link_full_path}}">
                             </a>
-                            {{--<b><a href="/product/@{{item.product_permalink}}">@{{item.product_name}}</a></b>--}}
                         </div>
                     </section>
                 </div>
