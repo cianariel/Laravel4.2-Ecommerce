@@ -254,26 +254,39 @@
 
             if (@$settings['CategoryId'] != null)
             {
-                $productModel = $productModel->where("product_category_id", $settings['CategoryId']);
+                if(@$settings['GetChildCategories']){
+                    $catID = $settings['CategoryId'];
+                    $productModel = $productModel->where(function($query) use ($catID)
+                    {
+                        $query->where("product_category_id", $catID)
+                              ->orWhereHas('productCategory', function($query) use ($catID)
+                              {
+                                  $query->where("parent_id", $catID);
+                              });
+                    });
+                }else{
+                    $productModel = $productModel->where("product_category_id", $settings['CategoryId']);
+                }
             }
 
             if (isset($settings['TagId']) && is_array($settings['TagId']))
             {
                 $tagID = $settings['TagId'];
-
-//                if(!is_array($tagID)){
-//                    $tagID = [$tagID];
-//                }
                 $productModel = $productModel->whereHas('tags', function($query) use ($tagID){
                     $query->whereIn('tag_id', $tagID);
                 });
             }
-
-
 //
-//            if (@$settings['excludeID'] != null)
+            if (@$settings['ExcludeIDs'] != null)
+            {
+                $productModel = $productModel->whereNotIn("id", $settings['excludeIDs']);
+            }
+//
+//            if (@$settings['parentCategoryID'] != null)
 //            {
-//                $productModel = $productModel->whereNotIn("id", $settings['excludeID']);
+//                $productModel = $productModel->whereHas('tags', function($query) use ($tagID){
+//                    $query->whereIn('tag_id', $tagID);
+//                });
 //            }
 
             if (@$settings['ShowFor'] != null)
@@ -323,7 +336,7 @@
 
             $product['total'] = $productModel->count();
 
-            $product['result'] = $productModel
+            $product['allIDs'] = $productModel
                 ->take($settings['limit'])
                 ->offset($skip)
                 ->orderBy('created_at', 'desc')
@@ -331,11 +344,11 @@
 
             $data = array();
 
-            $count = $product['result']->count();
+            $count = $product['allIDs']->count();
 
             for ($i = 0; $i < $count; $i++)
             {
-                $id = $product['result'][ $i ]['id'];
+                $id = $product['allIDs'][ $i ]['id'];
                 $tmp = $this->getSingleProductInfoForView($id);
 
                 // making the thumbnail url by injecting "thumb-" in the url which has been uploaded during media submission.
@@ -356,6 +369,7 @@
             }
 
             $product['result'] = $data;
+            $product['allIDs'] = $product['allIDs']->lists('id')->toArray();
 
             return $product;
         }
@@ -614,5 +628,52 @@
 
             }
         }
+
+        public static function getForShopMenu(){
+            $settings = [
+                'ActiveItem' => true,
+                'limit'      => 3,
+                'page'       => 1,
+                'CustomSkip' => false,
+                'GetChildCategories' => true,
+
+                'CategoryId' => false,
+                'FilterType' => false,
+                'FilterText' => false,
+                'ShowFor'    => false,
+                'WithTags'   => false,
+            ];
+
+            $prod = new Product();
+
+            $settings['CategoryId'] = 55;
+            $travel = $prod->getProductList($settings);
+            $return['travel'] = $travel['result'];
+            $settings['IgnoreIDs'] = $travel['allIDs'];
+
+            $settings['CategoryId'] = 62;
+            $wearables = $prod->getProductList($settings);
+            $return['wearables'] = $wearables['result'];
+            $settings['IgnoreIDs'] = array_merge($settings['IgnoreIDs'], $wearables['allIDs']);
+
+            $settings['CategoryId'] = 65;
+            $homeDecor = $prod->getProductList($settings);
+            $return['homeDecor'] = $homeDecor['result'];
+            $settings['IgnoreIDs'] = array_merge($settings['IgnoreIDs'], $homeDecor['allIDs']);
+
+            $settings['CategoryId'] = 44;
+            $smartHome = $prod->getProductList($settings);
+            $return['smartHome'] = $smartHome['result'];
+            $settings['IgnoreIDs'] = array_merge($settings['IgnoreIDs'], $smartHome['allIDs']);
+
+            $settings['CategoryId'] = 44;
+            $settings['limit'] = 1;
+            $mostPopular = $prod->getProductList($settings);
+            $return['mostPopular'] = $mostPopular['result'];
+
+            return $return;
+
+        }
+
 
     }
