@@ -280,8 +280,10 @@
             <div class="container full-sm fixed-sm">
                 <ul class="wrap col-xs-9">
                     <li class="home active">
+                        <a class="box-link" href="">
                         <span class="box-link-active-line"></span>
-                        <a class="box-link" href=""><i class="m-icon m-icon--smart-home"></i> Smart Home</a>
+                            <i class="m-icon m-icon--smart-home"></i> Smart Home
+                        </a>
                     </li>
                     <li><a class="box-link" href="/room/kitchen">Kitchen</a></li>
                     <li><a class="box-link" href="/room/bath">Bath</a></li>
