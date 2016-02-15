@@ -1,7 +1,7 @@
 
 angular.module('pagingApp', [
     'pagingApp.controllers',
-    'pagingApp.services',
+    //'pagingApp.services',
     'pagingApp.filters',
     'cgBusy'
 ]);
@@ -329,13 +329,13 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
             });
         }
 
-        pagingApi.getFilteredContent = function(currentPage, $tag, $category, $sliceFunction) {
+        pagingApi.getFilteredContent = function(currentPage, $tag, $type, $sliceFunction) {
             var promiseArray = [];
 
-            for(var $page = 1; $page < currentPage + 2; $page++) {
+            for(var $page = 1; $page < currentPage + 1; $page++) {
 
                 promiseArray.push(
-                    $http.get('/api/paging/get-content/' + $page + '/' + 9 + '/' + $tag+ '/' + $category)
+                    $http.get('/api/paging/get-grid-content/' + $page + '/' + 9 + '/' + $tag+ '/' + $type)
                 );
             }
 
@@ -349,7 +349,7 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
 
                     endContent['regular'] = batch.data['regular'];
 
-                    if($category != null && $category != 'idea'){
+                    if($type != null && $type != 'idea'){
                         endContent['featured'] = [];
                     }else{
                         endContent['featured'] =  batch.data['featured']; // we don't filter
