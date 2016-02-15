@@ -70,10 +70,10 @@ class ApiController extends Controller
      * @param $toke
      * @return $this
      */
-    public function setAuthToken($toke = null)
+    public function setAuthToken($token = null)
     {
-        session(['auth.token' => isset($toke) ? $toke : null]);
-        $this->authToken = $toke;
+        session(['auth.token' => isset($token) ? $token : null]);
+        $this->authToken = $token;
 
         return $this;
     }
@@ -220,10 +220,11 @@ class ApiController extends Controller
         $response['role-authorized'] = false;
 
         // get token form input or session
-        $token = \Input::get('token');
 
-        if ($token == null || $token = '') {
-            $token = session('auth.token');
+        $token = session('auth.token');
+
+        if ($token == null || $token == '') {
+            $token = \Input::get('token');
         }
 
         // check authentication and catch exception

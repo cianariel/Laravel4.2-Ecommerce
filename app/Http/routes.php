@@ -203,7 +203,7 @@
 
     //User Profile
     Route::get('user/profile', 'UserController@userProfile');
-    Route::get('user/profile/{permalink}', 'UserController@userProfile');
+    Route::get('user/profile/{permalink?}', 'UserController@userProfile');
 
 
 

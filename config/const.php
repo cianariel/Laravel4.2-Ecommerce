@@ -35,6 +35,9 @@
         'api-status'             => [
             'success'                => 200,
             'success-with-variation' => 210,
+            'success-redirect'       => 220,
+            'success-with-fb'        => 230,
+            'success-with-out-verification'        => 250,
             'validation-fail'        => 400,
             'app-failure'            => 410,
             'system-fail'            => 500
