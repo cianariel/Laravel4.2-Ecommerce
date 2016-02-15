@@ -316,7 +316,7 @@
                                                         if($products)
                                                         {
                                                     ?>
-                                                        <table class="table table-striped table-bordered table-hover table-checkable order-column" id="hero_image_1_table">
+                                                        <table class="table table-striped table-bordered table-hover table-checkable order-column" id="hero_image_2_table">
                                                             <thead>
                                                                 <tr>
                                                                     <th> Product Thumb </th>
@@ -340,7 +340,7 @@
                                                                         echo '<td>'.$rm->product_id.'</td>';
                                                                         echo '<td>'.$prod->product_name.'</td>';
                                                                         echo '<td>'.$rm->product_color.'</td>';
-                                                                        echo '<td width="20%"><a href="javascript:void()" class="btn btn-sm blue btn-edit-product" data-xpos="'.$rm->x.'" data-ypos="'.$rm->y.'" data-heroimageid="hero_image_1" data-productid="'.$rm->product_id.'"><i class="fa fa-pencil"></i></a> <a href="javascript:void()" class="btn btn-sm red btn-delete-product" data-productid="'.($key+1).'"><i class="fa fa-times"></i></a></td></tr>';
+                                                                        echo '<td width="20%"><a href="javascript:void()" class="btn btn-sm blue btn-edit-product" data-xpos="'.$rm->x.'" data-ypos="'.$rm->y.'" data-heroimageid="hero_image_2" data-productid="'.$rm->product_id.'"><i class="fa fa-pencil"></i></a> <a href="javascript:void()" class="btn btn-sm red btn-delete-product" data-productid="'.($key+1).'"><i class="fa fa-times"></i></a></td></tr>';
                                                                     }
                                                                 
                                                             ?>
@@ -424,7 +424,7 @@
                                                         if($products)
                                                         {
                                                     ?>
-                                                        <table class="table table-striped table-bordered table-hover table-checkable order-column" id="hero_image_1_table">
+                                                        <table class="table table-striped table-bordered table-hover table-checkable order-column" id="hero_image_3_table">
                                                             <thead>
                                                                 <tr>
                                                                     <th> Product Thumb </th>
@@ -448,7 +448,7 @@
                                                                         echo '<td>'.$rm->product_id.'</td>';
                                                                         echo '<td>'.$prod->product_name.'</td>';
                                                                         echo '<td>'.$rm->product_color.'</td>';
-                                                                        echo '<td width="20%"><a href="javascript:void()" class="btn btn-sm blue btn-edit-product" data-xpos="'.$rm->x.'" data-ypos="'.$rm->y.'" data-heroimageid="hero_image_1" data-productid="'.$rm->product_id.'"><i class="fa fa-pencil"></i></a> <a href="javascript:void()" class="btn btn-sm red btn-delete-product" data-productid="'.($key+1).'"><i class="fa fa-times"></i></a></td></tr>';
+                                                                        echo '<td width="20%"><a href="javascript:void()" class="btn btn-sm blue btn-edit-product" data-xpos="'.$rm->x.'" data-ypos="'.$rm->y.'" data-heroimageid="hero_image_3" data-productid="'.$rm->product_id.'"><i class="fa fa-pencil"></i></a> <a href="javascript:void()" class="btn btn-sm red btn-delete-product" data-productid="'.($key+1).'"><i class="fa fa-times"></i></a></td></tr>';
                                                                     }
                                                                 
                                                             ?>
@@ -581,7 +581,7 @@ $(function() {
     }
     $('#btn_add_product_image').click(function(){
         var obj = {'hero_image_id':$('#hero_image_id').val(),'x' : $('#Xpos').val(),'y':$('#Ypos').val(),'product_id' : $('#select_product').val(),'product_color':$('#product_color').val()};
-        var row = "<tr><td><img src='"+ $('#product_thumb').val() + "' /></td><td>"+ $('#select_product').val() + "</td><td>"+ $('#product_name').val() + "</td><td>"+$('#product_color').val()+'</td><td><a href="javascript:void()" class="btn btn-sm blue btn-edit-product" data-xpos="'+$('#Xpos').val()+'" data-ypos="'+$('#Ypos').val()+'" data-heroimageid="hero_image_1" data-productid="'+$('#select_product').val()+'"><i class="fa fa-pencil"></i></a> <a href="javascript:void()" class="btn btn-sm red btn-delete-product" data-productid="1"><i class="fa fa-times"></i></a></td></tr></td>';
+        var row = "<tr><td><img src='"+ $('#product_thumb').val() + "' /></td><td>"+ $('#select_product').val() + "</td><td>"+ $('#product_name').val() + "</td><td>"+$('#product_color').val()+'</td><td><a href="javascript:void()" class="btn btn-sm blue btn-edit-product" data-xpos="'+$('#Xpos').val()+'" data-ypos="'+$('#Ypos').val()+'" data-heroimageid="hero_image_1" data-productid="'+$('#select_product').val()+'"><i class="fa fa-pencil"></i></a> <a href="javascript:void()" class="btn btn-sm red btn-delete-product" data-productid="1"><i class="fa fa-times"></i></a></td></tr>';
         if($('#hero_image_id').val() == "hero_image_1")
         {
             heroimageproducts1.push(obj);
