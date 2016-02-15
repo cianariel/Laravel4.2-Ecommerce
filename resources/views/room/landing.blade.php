@@ -271,6 +271,5 @@ jQuery(document).ready(function($) {
   color: #000;
 }
 </style>
-    <script src="/assets/js/vendor/angular-busy.min.js"></script>
-    <script src="/assets/js/angular-custom/custom.paging.js"></script>
+ 
 @stop
