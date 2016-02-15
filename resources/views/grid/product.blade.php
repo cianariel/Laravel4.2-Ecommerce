@@ -1,6 +1,10 @@
-<div>
+<div class="img-holder">
 <img src="@{{item.media_link_full_path}}" alt="@{{item.product_name}}"/>
-
+</div>
+    <span class="mobile-show">
+        <i class="p-show m-icon--Add-Active"></i>
+        <i class="p-close m-icon--Close"></i>
+    </span>
 <span class="box-item__time">@{{item.updated_at}}</span>
     <div class="box-item__overlay" ng-click="openProductPopup()"></div>
 
@@ -31,4 +35,4 @@
     <div class="clearfix"></div>
     <a target="_blank" href="@{{item.affiliate_link}}" class="box-item__get-it">Get it</a>
 </div>
-</div>
+

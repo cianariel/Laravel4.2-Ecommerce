@@ -14,7 +14,7 @@
 
   }
 
-	&:hover {
+	&:hover, &.hover {
 		.box-item__overlay,
 		.merchant-widget,
 		.box-item__label--clear,
@@ -25,6 +25,17 @@
 			@include opacity(1);
 		}
 	}
+    &.un-hover{
+        .box-item__overlay,
+        .merchant-widget,
+        .box-item__label--clear,
+        .user-widget__name,
+        .box-item__get-it,
+        .box-item__label--clear,
+        .box-item__read-more {
+            @include opacity(0);
+        }
+    }
 
     .img-holder{
         height: 100%;

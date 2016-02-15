@@ -3,66 +3,6 @@
 @section('body-class'){{ 'shoppage shop-landing' }}@stop
 
 @section('content')
-<script>
-jQuery(document).ready(function($) {
-  $('#daily-deals').royalSlider({
-    arrowsNav: true,
-    loop: false,
-    keyboardNavEnabled: true,
-    controlsInside: false,
-    imageScaleMode: 'fit',
-    arrowsNavAutoHide: false,
-    controlNavigation: 'bullets',
-    thumbsFitInViewport: false,
-    navigateByClick: false,
-    startSlideId: 0,
-    autoPlay: false,
-    transitionType:'move',
-    globalCaption: false,
-    deeplinking: {
-      enabled: true,
-      change: false
-    },
-    /* size of all images http://help.dimsemenov.com/kb/royalslider-jquery-plugin-faq/adding-width-and-height-properties-to-images */
-    imgWidth: "100%",
-    autoHeight: true,
-    imageScaleMode: "fill",
-//    autoScaleSliderWidth: 1500,
-//    autoScaleSliderHeight: 500,
-//    autoScaleSlider: true
-  });
-  
-  $('#newest-arrivals').royalSlider({
-    arrowsNav: true,
-    loop: false,
-    keyboardNavEnabled: true,
-    controlsInside: false,
-    arrowsNavAutoHide: false,
-    controlNavigation: 'bullets',
-    thumbsFitInViewport: false,
-    navigateByClick: false,
-    startSlideId: 0,
-    autoPlay: false,
-    transitionType:'move',
-    globalCaption: false,
-    deeplinking: {
-      enabled: true,
-      change: false
-    },
-    /* size of all images http://help.dimsemenov.com/kb/royalslider-jquery-plugin-faq/adding-width-and-height-properties-to-images */
-    imgWidth: "100%",
-    imageScaleMode: "fill",
-    autoHeight: true
-//    autoScaleSliderWidth: 1500,
-//    autoScaleSliderHeight: 500,
-//    autoScaleSlider: true
-  });
-
-  
-});
-</script>
-
-
     <div class="app-wrap" ng-app="pagingApp" ng-controller="shoplandingController">
         
         <div class="container">
@@ -75,11 +15,11 @@ jQuery(document).ready(function($) {
                 <div class="loader loader-abs" cg-busy="firstLoad"></div>
                 <div class="row">
                     <div id="daily-deals" class="slider has-bullets">
-                        <div class="grid-box rsContent">
-                            <div class="box-item idea-box box-item--featured" ng-repeat="item in dailyDeals" >
+<!--                        <div class="grid-box rsContent">-->
+                            <div class="box-item idea-box box-item--featured rsContent" ng-repeat="item in dailyDeals" >
                                 @include('grid.idea')
                             </div>
-                        </div>
+<!--                        </div>-->
                     </div>
                 </div>
                 <fieldset class="shoplanding-title">
@@ -87,11 +27,14 @@ jQuery(document).ready(function($) {
                 </fieldset>
                 <div class="row">
                     <div id="newest-arrivals" class="slider col-xs-12 has-bullets" >
-                        <div class="grid-box-3 rsContent">
-                            <div class="box-item product-box "ng-repeat="item in newestArrivals">
+                        <div class="grid-box-3 rsContent" ng-repeat="items in newestArrivals">
+                            <div class="box-item product-box text-center" ng-repeat="item in items" >
                                 @include('grid.product')
                             </div>
                         </div>
+                    
+                    
+                    
                     </div>
                 </div>
                 <fieldset class="shoplanding-title">
@@ -100,48 +43,48 @@ jQuery(document).ready(function($) {
                 <div class="row hidden-xs hidden-sm">
                     <div class="col-xs-3 shop-by-category-item smart-home active" data-submenu="smart-home">
                         <img src="/assets/images/category-home.png" alt=""><br><br>
-                        <span>Smart Homes</span>
+                        <span>Smart Home</span>
                         <a href="#" class="show-menus">
-                            <img src="/assets/images/plus.png" alt="">
+                            <i class="m-icon--Add-Active"></i>
                         </a>
                         <a href="#" class="hide-menus">
-                            <img src="/assets/images/close.png" alt="">
+                            <i class=" m-icon--Close"></i>
                         </a>
                     </div>
                     <div class="col-xs-3 shop-by-category-item travel" data-submenu="travel">
                         <img src="assets/images/category-travel.png" alt=""><br><br>
                         <span>Travel</span>
                         <a href="#" class="show-menus">
-                            <img src="/assets/images/plus.png" alt="">
+                            <i class="m-icon--Add-Active"></i>
                         </a>
                         <a href="#" class="hide-menus">
-                            <img src="/assets/images/close.png" alt="">
+                            <i class=" m-icon--Close"></i>
                         </a>
                     </div>
-                    <div class="col-xs-3 shop-by-category-item wearable" data-submenu="wearable">
+                    <div class="col-xs-3 shop-by-category-item wearables" data-submenu="wearables">
                         <img src="assets/images/category-wearable.png" alt=""><br><br>
                         <span>Wearable</span>
                         <a href="#" class="show-menus">
-                            <img src="/assets/images/plus.png" alt="">
+                            <i class="m-icon--Add-Active"></i>
                         </a>
                         <a href="#" class="hide-menus">
-                            <img src="/assets/images/close.png" alt="">
+                            <i class=" m-icon--Close"></i>
                         </a>
                     </div>
-                    <div class="col-xs-3 shop-by-category-item decor" data-submenu="decor">
+                    <div class="col-xs-3 shop-by-category-item home-decor" data-submenu="home-decor">
                         <img src="assets/images/category-decor.png" alt=""><br><br>
                         <span>Home & Decor</span>
                         <a href="#" class="show-menus">
-                            <img src="/assets/images/plus.png" alt="">
+                            <i class="m-icon--Add-Active"></i>
                         </a>
                         <a href="#" class="hide-menus">
-                            <img src="/assets/images/close.png" alt="">
+                            <i class=" m-icon--Close"></i>
                         </a>
                     </div>
                 </div>
                 <div class="visible-xs visible-sm">
                     <select id="mobile-shop-by-category-items" class="form-control">
-                        <option value="smart-home">Smart Homes</option>
+                        <option value="smart-home">Smart Home</option>
                         <option value="travel">Travel</option>
                         <option value="wearable">Wearable</option>
                         <option value="decor">Home & Decor</option>
@@ -154,6 +97,7 @@ jQuery(document).ready(function($) {
                         <div class="shop-by-category-submneu {{$topCategory}} {{$i == 1 ? 'active' : ''}}">
                             @foreach($parentCategories as $parent => $grandChildren)
                                 <div class="col-md-2">
+                                    <div>
                                     <a href="/shop/category/{{trim($parent)}}">
                                         <i class="m-icon--energy"></i>
                                         <p class="title"><strong>{{strtoupper(str_replace('-', ' ', $parent))}}</strong></p>
@@ -163,6 +107,7 @@ jQuery(document).ready(function($) {
                                             @endforeach
                                         </p>
                                     </a>
+                                </div>
                                 </div>
                             @endforeach
                             <?php $i++; ?>

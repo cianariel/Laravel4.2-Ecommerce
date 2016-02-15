@@ -139,6 +139,20 @@
             $(".hideen-hero-category-menu").hide();
         })
 
+        $("body").on('click', '.mobile-show', function(){
+            if($(this).find('.p-show').is(":visible")){
+                $(this).parent().addClass('hover');
+                $(this).parent().removeClass('un-hover');
+                $(this).find('.p-show').hide();
+                $(this).find('.p-close').show();
+            }else{
+                $(this).parent().addClass('un-hover');
+                $(this).parent().removeClass('hover');
+                $(this).find('.p-show').show();
+                $(this).find('.p-close').hide();
+            }
+        })
+
         // scroll and stick the share bar
         function sticky_relocate() {
             if(window.innerWidth < 620){
