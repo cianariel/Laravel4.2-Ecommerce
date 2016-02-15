@@ -49,7 +49,14 @@
 </a>
 
 <script src="/assets/js/app.js"></script>
-
+<script src="/assets/js/vendor/angular-busy.min.js"></script>
+<script src="/assets/js/angular-custom/custom.paging.js"></script>
+<script src="/assets/js/angular-custom/public.common.js"></script>
+<script type="text/javascript" src="/assets/js/vendor/autocomplete.js"></script>
+<script type="text/javascript" src="/assets/product/js/custom.product.js"></script>
+<script>
+    var rootApp = angular.module('rootApp', ['pagingApp', 'publicApp','productApp']);
+</script>
 
 <script>
     (function(f,i,r,e,s,h,l){i['GoogleAnalyticsObject']=s;f[s]=f[s]||function(){
