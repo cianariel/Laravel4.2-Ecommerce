@@ -187,10 +187,10 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap']).
                           change: false
                         },
                         
-//                        autoHeight: true,
+                        autoHeight: true,
                     });
-                }, 1000);
-                
+                    document.getElementById( 'product-slider' ).style.visibility = 'visible';
+                }, 100);
             })
             modalInstance.result.finally(function(){
                 var className = document.getElementsByTagName('html')[0].className;
@@ -438,6 +438,18 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap']).
             ]
         ;
     })
+    .directive('a', function() {
+    return {
+        restrict: 'E',
+        link: function(scope, elem, attrs) {
+            if(attrs.ngClick || attrs.href === '' || attrs.href === '#'){
+                elem.on('click', function(e){
+                    e.preventDefault();
+                });
+            }
+        }
+   };
+});
 ;
 
 //angular.module('pagingApp.directives', [])
