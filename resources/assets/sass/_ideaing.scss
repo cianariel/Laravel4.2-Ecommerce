@@ -6736,6 +6736,9 @@ body.shop-landing{
         .box-item{
             margin-left: 30px;
         }
+        .box-item__time{
+            margin-right: 30px;
+        }
     }
     .slider{
         margin-bottom: 20px;
@@ -6757,8 +6760,9 @@ body.shop-landing{
             position: absolute;
             right: 20px;
             bottom: 20px;
-            > img{
-                width: 23px;
+            > i{
+                color: #003e54;
+                font-size: 25px;
             }
         }
         .show-menus{
@@ -6776,11 +6780,11 @@ body.shop-landing{
             color: #406e7f;
         }
         
-        &.wearable{
+        &.wearables{
             color: #78944d;
         }
         
-        &.decor{
+        &.home-decor{
             color: #78944d;
         }
 
@@ -6801,11 +6805,11 @@ body.shop-landing{
                 background: #eef8fb;
             }
             
-            &.wearable{
+            &.wearables{
                 background: #f9f9ec;
             }
             
-            &.decor{
+            &.home-decor{
                 background: #f9f9ec;
             }
         }
@@ -6819,7 +6823,8 @@ body.shop-landing{
         
         > div{
             text-align: center;
-            min-height: 250px;
+            height: 284px;
+            overflow: hidden;
             padding-top: 35px;
             border: 1px solid #fff;
             color: white;
@@ -6842,12 +6847,12 @@ body.shop-landing{
                 background: #59bdd7;
             }
         }
-        &.wearable{
+        &.wearables{
             > div{
                 background: #c6c646;
             }
         }
-        &.decor{
+        &.home-decor{
             > div{
                 background: #ffaa00;
             }
@@ -7371,7 +7376,37 @@ html.hide-overflow{
         }
     }
 }
+.box-item.product-box{
+    .mobile-show{
+        position: absolute;
+        left: 0px;
+        bottom: 0px;
+        font-size: 30px;
+        width: 50px;
+        height: 50px;
+        background: #fff;
+        display: block;
+        line-height: 50px;
+        text-align: center;
+        cursor: pointer;
+        z-index: 100;
+        .p-close{
+            display: none;
+        }
+    }
+    @media (min-width: 1600px) {
+        .mobile-show{
+            display: none;
+        }
 
+    }
+    @media (max-width: 1600px) {
+        .mobile-show{
+            display: inline-block;
+        }
+    }
+    
+}
 @media (max-width: 490px){
     .show-hero-category{
         display: block;

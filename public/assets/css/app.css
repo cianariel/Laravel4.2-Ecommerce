@@ -8716,6 +8716,8 @@ body.shop-landing #daily-deals {
   margin-right: 15px; }
   body.shop-landing #daily-deals .box-item {
     margin-left: 30px; }
+  body.shop-landing #daily-deals .box-item__time {
+    margin-right: 30px; }
 
 body.shop-landing .slider {
   margin-bottom: 20px; }
@@ -8735,8 +8737,9 @@ body.shop-landing .shop-by-category-item {
     position: absolute;
     right: 20px;
     bottom: 20px; }
-    body.shop-landing .shop-by-category-item .show-menus > img, body.shop-landing .shop-by-category-item .hide-menus > img {
-      width: 23px; }
+    body.shop-landing .shop-by-category-item .show-menus > i, body.shop-landing .shop-by-category-item .hide-menus > i {
+      color: #003e54;
+      font-size: 25px; }
   body.shop-landing .shop-by-category-item .show-menus {
     display: block; }
   body.shop-landing .shop-by-category-item .hide-menus {
@@ -8745,9 +8748,9 @@ body.shop-landing .shop-by-category-item {
     color: #c47289; }
   body.shop-landing .shop-by-category-item.travel {
     color: #406e7f; }
-  body.shop-landing .shop-by-category-item.wearable {
+  body.shop-landing .shop-by-category-item.wearables {
     color: #78944d; }
-  body.shop-landing .shop-by-category-item.decor {
+  body.shop-landing .shop-by-category-item.home-decor {
     color: #78944d; }
   body.shop-landing .shop-by-category-item.active .show-menus {
     display: none; }
@@ -8757,9 +8760,9 @@ body.shop-landing .shop-by-category-item {
     background: #ffe5ec; }
   body.shop-landing .shop-by-category-item.active.travel {
     background: #eef8fb; }
-  body.shop-landing .shop-by-category-item.active.wearable {
+  body.shop-landing .shop-by-category-item.active.wearables {
     background: #f9f9ec; }
-  body.shop-landing .shop-by-category-item.active.decor {
+  body.shop-landing .shop-by-category-item.active.home-decor {
     background: #f9f9ec; }
 
 body.shop-landing .shop-by-category-submneu {
@@ -8768,7 +8771,8 @@ body.shop-landing .shop-by-category-submneu {
     display: block; }
   body.shop-landing .shop-by-category-submneu > div {
     text-align: center;
-    min-height: 250px;
+    height: 284px;
+    overflow: hidden;
     padding-top: 35px;
     border: 1px solid #fff;
     color: white; }
@@ -8782,9 +8786,9 @@ body.shop-landing .shop-by-category-submneu {
     background: #ff0042; }
   body.shop-landing .shop-by-category-submneu.travel > div {
     background: #59bdd7; }
-  body.shop-landing .shop-by-category-submneu.wearable > div {
+  body.shop-landing .shop-by-category-submneu.wearables > div {
     background: #c6c646; }
-  body.shop-landing .shop-by-category-submneu.decor > div {
+  body.shop-landing .shop-by-category-submneu.home-decor > div {
     background: #ffaa00; }
   @media (max-width: 991px) {
     body.shop-landing .shop-by-category-submneu > div {
@@ -9158,6 +9162,30 @@ html.hide-overflow {
     padding-bottom: 10px; }
     .hideen-hero-category-menu a i {
       margin-right: 5px; }
+
+.box-item.product-box .mobile-show {
+  position: absolute;
+  left: 0px;
+  bottom: 0px;
+  font-size: 30px;
+  width: 50px;
+  height: 50px;
+  background: #fff;
+  display: block;
+  line-height: 50px;
+  text-align: center;
+  cursor: pointer;
+  z-index: 100; }
+  .box-item.product-box .mobile-show .p-close {
+    display: none; }
+
+@media (min-width: 1600px) {
+  .box-item.product-box .mobile-show {
+    display: none; } }
+
+@media (max-width: 1600px) {
+  .box-item.product-box .mobile-show {
+    display: inline-block; } }
 
 @media (max-width: 490px) {
   .show-hero-category {
@@ -9693,10 +9721,26 @@ p {
   .box-item:hover .user-widget__name,
   .box-item:hover .box-item__get-it,
   .box-item:hover .box-item__label--clear,
-  .box-item:hover .box-item__read-more {
+  .box-item:hover .box-item__read-more, .box-item.hover .box-item__overlay,
+  .box-item.hover .merchant-widget,
+  .box-item.hover .box-item__label--clear,
+  .box-item.hover .user-widget__name,
+  .box-item.hover .box-item__get-it,
+  .box-item.hover .box-item__label--clear,
+  .box-item.hover .box-item__read-more {
     opacity: 1;
     -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
     filter: alpha(opacity=100); }
+  .box-item.un-hover .box-item__overlay,
+  .box-item.un-hover .merchant-widget,
+  .box-item.un-hover .box-item__label--clear,
+  .box-item.un-hover .user-widget__name,
+  .box-item.un-hover .box-item__get-it,
+  .box-item.un-hover .box-item__label--clear,
+  .box-item.un-hover .box-item__read-more {
+    opacity: 0;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+    filter: alpha(opacity=0); }
   .box-item .img-holder {
     height: 100%;
     overflow: hidden;
