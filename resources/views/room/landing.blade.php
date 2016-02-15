@@ -106,14 +106,14 @@ jQuery(document).ready(function($) {
                         @foreach($image['Image_Products'] as $i_products)
                         <div class="tag {{$i_products->product_color}}" style="left:{{$i_products->x}}%;top:{{$i_products->y}}%" >
                             <span class="tag-icon"><i class="m-icon--shopping-bag-light-green"></i> </span>
-                            <a class="{{$i_products->product_color}}-border" href="#">
+                            <a class="{{$i_products->product_color}}-border" href="/product/{{$i_products->product_permalink}}">
                                 <img src="{{$i_products->media_link}}" class="round" alt="" />
                             </a>
                            <div class="hover-box">
                                <h6>{{$i_products->product_name}}</h6>
                                <div>
-                                   Get it from {{$i_products->price}}
-                                   <img class="vendor-logo" src="/assets/images/dummies/amazon-black.png">
+                                   <a href="{{$i_products->affiliate_link}}">Get it</a> from {{$i_products->sale_price}}
+                                   <a href="{{$i_products->affiliate_link}}"> <img class="vendor-logo" alt="{{ $i_products->store['Description'] }}" src="{{ $i_products->store['ThumbnailPath'] }}"></a>
                                </div>
                            </div>
                         </div>
@@ -139,7 +139,7 @@ jQuery(document).ready(function($) {
                                     <li class="{{$i_products->product_color}}">
                                         <div class="row">
                                             <div class="col-xs-8 col-sm-10">
-                                                <a class="{{$i_products->product_color}}-border " href="#">
+                                                <a class="{{$i_products->product_color}}-border " href="/product/{{$i_products->product_permalink}}">
                                                     <span class="img-holder">
                                                         <img src="{{$i_products->media_link}}" class="round" alt="" />
                                                     </span>
@@ -149,7 +149,7 @@ jQuery(document).ready(function($) {
                                                 </a> 
                                             </div>
                                             <div class="col-xs-4 col-sm-2">
-                                                <a href="#" class="get solid pull-right ">Get it</a>
+                                                <a href="{{$i_products->affiliate_link}}" class="get solid pull-right ">Get it</a>
                                             </div>
                                         </div>
                                     </li>
