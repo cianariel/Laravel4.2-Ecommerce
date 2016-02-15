@@ -45,6 +45,9 @@ var ComponentsSelect2 = function() {
         }
 
         function formatRepoSelection(repo) {
+            $('#product_name').val(repo.product_name);
+            $('#product_thumb').val(repo.media_link);
+            
             return repo.product_name || repo.id;
         }
 

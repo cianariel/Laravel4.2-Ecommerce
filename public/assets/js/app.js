@@ -80,9 +80,9 @@
             var $modal = $(this).data('target');
             $($modal).fadeToggle();
             $('.page-overlay').fadeToggle();
-            //if($modal.hasClass('login-signup-modal')){
-            //    $('.picture-overlay').fadeToggle();
-            //}
+            if($($modal).hasClass('login-signup-modal')){
+                $('.picture-overlay').show();
+            }
         });
 
         $('[data-dismiss="modal"]').click(function() {
@@ -124,6 +124,19 @@
             }else{
                 $('.profilelinks-popup').show();
             }
+        })
+
+        $(".show-hero-category").click(function(e){
+            e.preventDefault();
+            if($(".hideen-hero-category-menu").is(":visible")){
+                $(".hideen-hero-category-menu").hide();
+            }else{
+                $(".hideen-hero-category-menu").show();
+            }
+        })
+        
+        $(".hideen-hero-category-menu a").click(function(){
+            $(".hideen-hero-category-menu").hide();
         })
 
         // scroll and stick the share bar

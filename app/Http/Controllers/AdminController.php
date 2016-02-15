@@ -19,18 +19,9 @@
 
         public function __construct()
         {
-            /*// Apply the jwt.auth middleware to all methods in this controller
-            $this->middleware('jwt.auth',
-                [
-                    'except' => ['index', 'categoryView', 'addCategory',
-                        'editCategory', 'productView', 'addProduct', 'editProduct'
-                    ]
-                ]);
-            $this->product = new Product();*/
-
             // check authentication with role 'admin' (default parameter)
             $this->authCheck = $this->RequestAuthentication(array('admin'));
-            $this->authCheck['method-status'] = 'success-with-http';
+          //  $this->authCheck['method-status'] = 'success-with-http';
         }
 
         public function index()

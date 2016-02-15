@@ -12,9 +12,14 @@
 		padding-left: 30px;
 		margin: 3px 0;
 
-		&:hover .m-icon--heart:before {
+		&:hover{
+            .m-hover{
+                display: none;
+            }
+            .m-icon:before {
 			content: "\e906";
 		}
+	}
 	}
 
 	&__item .m-icon {

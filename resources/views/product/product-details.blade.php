@@ -6,26 +6,25 @@
     <script type="text/javascript">
         var permalink = "{{$permalink}}";
     </script>
-    <div ng-app="productApp" data-ng-controller="productController" ng-cloak>
+    <div id="productApp" ng-app="productApp" data-ng-controller="productController" ng-cloak>
         <nav class="mid-nav hidden-xs">
             <div class="container">
                 <div class="col-sm-8 col-sm-offset-2">
-                    <ul class="left-nav breadcrumbs hidden-620">
-
+                    <ul class="left-nav hidden-620">
                         @if(isset($productInformation['CatTree']))
                             @foreach( $productInformation['CatTree'] as $key => $category )
                                 <li class="box-link-ul @if($key==0) active-ul @endif">
-                                    <span class="box-link-active-line"></span>
                                     <a class="box-link @if($key==0) active @endif"
                                        href="/category/@if(isset($category['CategoryPermalink'])){{$category['CategoryPermalink']}}@endif"
                                        @if($category == end($productInformation['CatTree']))class="current"
                                             @endif>
+                                        <span class="box-link-active-line"></span>
                                         @if(isset($category['CategoryName']))
                                             {{$category['CategoryName']}}
                                         @endif
                                     </a>
                                 </li>
-                                <li class="horizontal-line-holder hidden-xs hidden-sm">
+                                <li class="horizontal-line-holder hidden-xs ">
                                     <span class="horizontal-line"></span>
                                 </li>
                             @endforeach
@@ -35,13 +34,16 @@
             </div>
         </nav>
         <header class="story-header hidden-620 hidden-soft">
+            <div class="col-xs-1">
             <a href="#" class="side-logo lamp-logo">
                 <i class="m-icon m-icon--bulb2">
                     <span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span><span class="path6"></span><span class="path7"></span><span class="path8"></span><span class="path9"></span><span class="path10"></span>
                 </i>
             </a>
-
+            </div>
+            <div class="col-xs-4">
             <h1>
+                    <span class="title-holder"> 
                 <span class="title">
                     @if(isset($productInformation['ProductName']))
                         {{$productInformation['ProductName']}}
@@ -50,14 +52,19 @@
                 <ul class="social-stats center-block ">
                     <li class="social-stats__item">
                         <a href="#">
-                            <i class="m-icon m-icon--heart"></i>
+                                    <i class="m-icon m-icon--ScrollingHeaderHeart">
+                                        <span class="m-hover">
+                                            <span class="path1"></span><span class="path2"></span>
+                                        </span>
+                                    </i>
                             <span class="social-stats__text">1819</span>
                         </a>
                     </li>
                 </ul>
-
+                    </span>
             </h1>
-
+            </div>
+            <div class="col-xs-7">
             <ul class="share-buttons short hidden-xs col-lg-6 col-sm-8 pull-right">
                 <li class="all-shares"><b>120K </b>all shares</li>
                 <li><a class="fb" href="#"><i class="m-icon m-icon--facebook-id"></i> <b>189</b></a></li>
@@ -77,6 +84,7 @@
                     @endif
                 </b>
             </div>
+            </div>
         </header>
 
         <section id="hero" class="product-hero">
@@ -93,15 +101,11 @@
                             <div class="score">
                                 <i class=" m-icon--bulb-detailed-on-rating"></i>
                                 @if(isset($productInformation['Review']))
-                                    {{intval(((($productInformation['Review'][0]->value > 0 ? $productInformation['Review'][0]->value : $productInformation['Review'][1]->value) + $productInformation['Review'][1]->value)/2)*20)}}
-                                @endif%
+                                    {{intval(((($productInformation['Review'][0]->value > 0 ? $productInformation['Review'][0]->value : $productInformation['Review'][1]->value) + $productInformation['Review'][1]->value)/2)*20)}}%
+                                @endif
                             </div>
                             <span class="caption">Average Ideaing Score</span>
                         </div>
-                    </div>
-                    <div class="col-sm-1"></div>
-                    <div class="clearfix"></div>
-                    <div class="col-sm-11 ">
                         <h1 class="text-right average-score-title">
                             @if(isset($productInformation['ProductName']))
                                 {{$productInformation['ProductName']}}
@@ -155,7 +159,6 @@
 //                            imgHeight: 680
                                 });
                             } else {
-                                jQuery(document).ready(function ($) {
                                     $('#gallery').royalSlider({
 //                            arrowsNav: true,
                                         loop: false,
@@ -186,8 +189,6 @@
 //                        imgWidth: 1400,
 //                        imgHeight: 680
                                     });
-                                });
-
                             }
                         });
                     </script>
@@ -243,18 +244,24 @@
                 </div>
             </div>
         </section>
+        
         <nav id="hero-nav" class="product-nav col-sm-12">
             <div class="container full-620 fixed-sm">
                 <ul class="category-nav full-620">
-                    <li><a href="#" class="photos-link"><i class="m-icon m-icon--photos"></i>&nbsp;Photos</a></li>
-                    <li><a href="#" class="features-link"><i class="m-icon m-icon--features-c1"></i>&nbsp;Features</a>
+                    <li class="active"><a href="#" class="photos-link"><i class="m-icon m-icon--photos"></i>Photos</a></li>
+                    <li><a href="#" data-scrollto="#features" class="features-link"><i class="m-icon m-icon--features-c1"></i>Features</a>
                     </li>
-                    <li><a href="#" data-scrollto="#specs" class="specs-link"><i class="m-icon m-icon--specs"></i>&nbsp;Specs</a>
+                    <li><a href="#" data-scrollto="#specs" class="specs-link"><i class="m-icon m-icon--specs"></i>Specs</a>
                     </li>
-                    <li><a href="#" data-scrollto="#compare" class="compare-link"><i class="m-icon  m-icon--comparisons"></i>&nbsp;Comparisons</a></li>
-                    <li><a href="#" data-scrollto="#reviews" class="reviews-link"><i class="m-icon m-icon--reviews"></i>&nbsp;Reviews</a>
+                    <li class="hidden-category-menu"><a href="#" data-scrollto="#compare" class="compare-link"><i class="m-icon  m-icon--comparisons"></i>Comparisons</a></li>
+                    <li class="hidden-category-menu"><a href="#" data-scrollto="#reviews" class="reviews-link"><i class="m-icon m-icon--reviews"></i>Reviews</a>
                     </li>
                 </ul>
+                <a class="show-hero-category" href="#">></a>
+                <div class="hideen-hero-category-menu">
+                    <div><a href="#" data-scrollto="#compare" class="compare-link"><i class="m-icon  m-icon--comparisons"></i>Comparisons</a></div>
+                    <div><a href="#" data-scrollto="#reviews" class="reviews-link"><i class="m-icon m-icon--reviews"></i>Reviews</a></div>
+                </div>
             </div>
         </nav>
 
@@ -265,7 +272,7 @@
 
                     @include('layouts.parts.share-bar')
 
-                    <section class="article-content col-lg-12 col-sm-11 pull-right">
+                    <section class="article-content col-lg-12 col-sm-11 pull-right" id="features">
                         <div>
                             @if(isset($productInformation['Description']))
                                 {!! $productInformation['Description'] !!}
@@ -323,15 +330,23 @@
                                     <div class="tab-wrap">
                                         <h4 style="height: 35px;overflow: hidden;">@{{ item.data.productInformation.ProductName | limitTo: 50 }} @{{item.data.productInformation.ProductName.length > 50 ? '...' : ''}}</h4>
 
-                                        <b class="score">@{{ item.data.productInformation.Review[1].value }}</b>
+<!--                                        <b class="score">@{{ item.data.productInformation.Review[1].value }}</b>-->
+
+                                        <div class="star-raiting score" style="text-align: center">
+                                            <span class="star active" ng-repeat="n in [1, 2, 3, 4, 5]">
+                                                <i ng-class="item.data.productInformation.Review[1].value<=(n-1) ?  'm-icon--star-blue-full-lines' : (item.data.productInformation.Review[1].value<n ? 'm-icon--star-blue-half2' :  'm-icon--star-blue-full')"></i>
+                                            </span>
+                                        </div>
 
                                         <div class="star-raiting" style="text-align: center">
                                             <span class="stars">(@{{ item.data.productInformation.Review[1].counter | number:0 }}
                                                 ) Customer Reviews</span>
                                         </div>
-                                        <div class="btn purple-bg price-badge">
+                                        <div class="purple-bg price-badge">
+                                            <a href="@{{ item.data.productInformation.AffiliateLink }}" target="_blank">
                                             <span>@{{ item.data.storeInformation.StoreName }}</span>
                                             <b>$@{{ item.data.productInformation.SellPrice }}</b>
+                                            </a>
                                         </div>
                                         <a class="btn-none" href="@{{ item.data.productInformation.AffiliateLink }}"
                                            target="_blank">More Info</a>
@@ -411,8 +426,8 @@
                                         <div class="score">
                                             <i class="  m-icon--bulb-detailed-on-rating"></i>
                                             @if(isset($productInformation['Review']))
-                                                {{intval(((($productInformation['Review'][0]->value > 0 ? $productInformation['Review'][0]->value : $productInformation['Review'][1]->value) + $productInformation['Review'][1]->value)/2)*20)}}
-                                            @endif%
+                                                {{intval(((($productInformation['Review'][0]->value > 0 ? $productInformation['Review'][0]->value : $productInformation['Review'][1]->value) + $productInformation['Review'][1]->value)/2)*20)}}%
+                                            @endif
                                         </div>
                                         <span class="caption">Average Ideaing Score</span>
                                     </div>
@@ -433,8 +448,8 @@
                                                 $productInformation['Review'][0]->value)
                                                 + $productInformation['Review'][1]->value)/2)*20
                                                 )
-                                                }}
-                                            @endif%
+                                                }}%
+                                            @endif
                                         </div>
                                         <span class="caption">Average Ideaing Score</span>
                                     </div>
@@ -459,11 +474,17 @@
                                         ?>
                                         @for($i=1; $i<=5; $i++)
                                             @if($i <= $fStar)
-                                                <span class="star active"></span>
+                                                <span class="star active">
+                                                    <i class="m-icon--star-blue-full"></i>
+                                                </span>
                                             @elseif($cStar == $i)
-                                                <span class="star half"></span>
+                                                <span class="star half">
+                                                    <i class=" m-icon--star-blue-half2"></i>
+                                                </span>
                                             @else
-                                                <span class="star"></span>
+                                                <span class="star">
+                                                    <i class=" m-icon--star-blue-full-lines"></i>
+                                                </span>
                                             @endif
                                         @endfor
                                     </div>
@@ -481,7 +502,7 @@
 
                                     @if(isset($productInformation['Review']))
                                         @foreach( array_slice($productInformation['Review'],2) as $review )
-                                            <div style="background: #ffffff" class="outer-line">
+                                            <div class="critic-outer-rating">
                                                 <div class="line-label "><a
                                                             href="@if(isset($review->link)){{$review->link}}@endif"
                                                             target="_blank">@if(isset($review->key)){{$review->key}}@endif
@@ -499,11 +520,17 @@
                                                     ?>
                                                     @for($i=1; $i<=5; $i++)
                                                         @if($i <= $fStar)
-                                                            <span class="star active"></span>
+                                                            <span class="star active">
+                                                                <i class="m-icon--star-blue-full"></i>
+                                                            </span>
                                                         @elseif($cStar == $i)
-                                                            <span class="star half"></span>
+                                                            <span class="star half">
+                                                                <i class=" m-icon--star-blue-half2"></i>
+                                                            </span>
                                                         @else
-                                                            <span class="star"></span>
+                                                            <span class="star">
+                                                                <i class=" m-icon--star-blue-full-lines"></i>
+                                                            </span>
                                                         @endif
                                                     @endfor
                                                 </div>
@@ -531,11 +558,17 @@
                                         ?>
                                         @for($i=1; $i<=5; $i++)
                                             @if($i <= $fStar)
-                                                <span class="star active"></span>
+                                                <span class="star active">
+                                                    <i class="m-icon--star-blue-full"></i>
+                                                </span>
                                             @elseif($cStar == $i)
-                                                <span class="star half"></span>
+                                                <span class="star half">
+                                                    <i class=" m-icon--star-blue-half2"></i>
+                                                </span>
                                             @else
-                                                <span class="star"></span>
+                                                <span class="star">
+                                                    <i class=" m-icon--star-blue-full-lines"></i>
+                                                </span>
                                             @endif
                                         @endfor
                                     </div>
@@ -559,7 +592,7 @@
                             
                         </div>
 
-                        <div style="left: 12%" class="col-sm-3 col-md-offset-3 critic-quote">
+                        <div class="col-md-4 col-md-offset-4 critic-quote">
                             <div>
                                 @if(isset($productInformation['ReviewExtLink']))
                                     {!! $productInformation['ReviewExtLink'] !!}
@@ -615,7 +648,7 @@
 
 
             <section class="related-items pale-grey-bg">
-                <div class="container full-620 fixed-sm">
+                <div class="main-content full-620 fixed-sm">
                     <h3 class="green">Related Products</h3>
                     <div class="related-products grid-box-3">
                         
@@ -654,7 +687,7 @@
                         @endif
                     </div>
 
-                    <div class="related-ideas col-xs-12">
+                    <div class="related-ideas grid-box-3">
                         <h3 class="orange">Related Ideas</h3>
 
                             @if(isset($relatedIdeas) && ($relatedIdeas != null) )
