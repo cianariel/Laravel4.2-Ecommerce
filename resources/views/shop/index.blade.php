@@ -156,7 +156,7 @@ jQuery(document).ready(function($) {
                                 <div class="col-md-2">
                                     <a href="/shop/category/{{trim($parent)}}">
                                         <i class="m-icon--energy"></i>
-                                        <p class="title"><strong>{{$parent}}</strong></p>
+                                        <p class="title"><strong>{{strtoupper(str_replace('-', ' ', $parent))}}</strong></p>
                                         <p class="hidden-xs hidden-sm">
                                             @foreach($grandChildren as $item)
                                                 {{trim($item->category_name)}}<br>
