@@ -10,7 +10,7 @@
                         <div style="position: static">
                             <span class="in" style="position: static; text-transform: capitalize;">In {{item.category_name}}</span>
                             <b><a style="position: static;" href="/product/{{item.product_permalink}}">{{item.product_name}}</a></b>
-                        </div> 
+                        </div>
 
                     </section>
 

@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 //use FeedParser;
 use MetaTag;
 use App\Models\Product;
+use App\Models\ProductCategory;
 use App\Models\Tag;
 use App\Models\Room;
 
@@ -25,7 +26,7 @@ class PageController extends Controller
     }
 
 
-    public function getContent($page = 1, $limit = 5, $tag = false,  $type = false){
+    public function getContent($page = 1, $limit = 5, $tag = false,  $type = false, $productCategory = false){
 
         if($tag && $tag !== 'undefined' && $tag != 'false' && $tag != ''){
             $tagID = Tag::where('tag_name', $tag)->lists('id')->toArray();
@@ -40,7 +41,17 @@ class PageController extends Controller
             $stories = [];
         }
 
-        if($type == 'idea' || !$products = self::getProducts($limit, $page, $offset, $tagID)){
+        if($productCategory){
+            $productCategory = ProductCategory::where('category_name', $productCategory)->first();
+        }
+
+        if(@$productCategory){
+            $productCategoryID = $productCategory->id;
+        }else{
+            $productCategoryID = false;
+        }
+
+        if($type == 'idea' || !$products = self::getProducts($limit, $page, $offset, $tagID, $productCategoryID)){
             $products['result'] = [];
         }
 
@@ -192,14 +203,14 @@ class PageController extends Controller
         return view('login');
     }
 
-    public function getProducts($limit, $page, $offset, $tagID){
+    public function getProducts($limit, $page, $offset, $tagID, $productCategoryID){
         $productSettings = [
             'ActiveItem' => true,
             'limit'      => $limit,
             'page'       => $page,
             'CustomSkip' => $offset,
 
-            'CategoryId' => false,
+            'CategoryId' => $productCategoryID,
             'FilterType' => false,
             'FilterText' => false,
             'ShowFor'    => false,
