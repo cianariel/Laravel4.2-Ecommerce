@@ -84,10 +84,10 @@
                 </div>
                 <div class="visible-xs visible-sm">
                     <select id="mobile-shop-by-category-items" class="form-control">
-                        <option value="smart-home">Smart Home</option>
-                        <option value="travel">Travel</option>
-                        <option value="wearable">Wearable</option>
-                        <option value="decor">Home & Decor</option>
+                        <option value="smart-home"><a href="/shop/smart-home">Smart Home</a></option>
+                        <option value="travel"><a href="/shop/travel">Travel</a></option>
+                        <option value="wearable"><a href="/shop/wearables">Wearable</a></option>
+                        <option value="decor"><a href="/shop/home-decor">Home & Decor</a></option>
                     </select>
                     <br>
                 </div>
@@ -98,9 +98,9 @@
                             @foreach($parentCategories as $parent => $grandChildren)
                                 <div class="col-md-2">
                                     <div>
-                                    <a href="/shop/category/{{trim($parent)}}">
+                                    <a href="/shop/{{trim($parent)}}">
                                         <i class="m-icon--energy"></i>
-                                        <p class="title"><strong>{{strtoupper(str_replace('-', ' ', $parent))}}</strong></p>
+                                        <p class="title"><strong><a href="/shop/{{trim($parent)}}">{{strtoupper(str_replace('-', ' ', $parent))}}</a></strong></p>
                                         <p class="hidden-xs hidden-sm">
                                             @foreach($grandChildren as $item)
                                                 {{trim($item->category_name)}}<br>

@@ -44,7 +44,7 @@
 
 
                     <section class="home-decor col-xs-2">
-                        <h5><a href="/shop/wearables">Home and Decor</a></h5>
+                        <h5><a href="/shop/home-decor">Home and Decor</a></h5>
                         <div class="img-wrap" ng-repeat="item in productsForShopMenu.homeDecor">
                             <a href="/product/{{item.product_permalink}}">
                                 <img  style="width: 70%;height: auto;" class="img-responsive" src="{{item.media_link_full_path}}">
