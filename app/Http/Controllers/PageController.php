@@ -35,7 +35,7 @@ class PageController extends Controller
             $tag = false;
         }
 
-        $offset = 4 *  ($page - 1);
+        $offset = $limit *  ($page - 1);
 
         if($type == 'product' || !$stories = self::getStories($limit, $offset, $tag)){
             $stories = [];

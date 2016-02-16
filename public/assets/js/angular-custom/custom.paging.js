@@ -349,10 +349,8 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
                 var $limit = 15;
             //}
 
-            $scope.nextLoad =  pagingApi.getPlainContent($scope.currentPage, $limit, false, $scope.filterByCategory).success(function (response) {
-                var $newStuff = [];
-                $newStuff[0] = response;
-                $scope.content = $scope.content.concat($newStuff);
+            $scope.nextLoad =  pagingApi.getPlainContent($scope.currentPage, $limit, false, 'product', $scope.filterByCategory).success(function (response) {
+                $scope.content = $scope.content.concat(response);
             });
         };
 
