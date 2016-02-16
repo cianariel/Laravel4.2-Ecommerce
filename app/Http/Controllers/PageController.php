@@ -26,7 +26,7 @@ class PageController extends Controller
     }
 
 
-    public function getContent($page = 1, $limit = 5, $tag = false,  $type = false, $productCategory = false){
+    public function getContent($page = 1, $limit = 5, $tag = false,  $type = false, $productCategory = false, $sortBy = false){
 
         if($tag && $tag !== 'undefined' && $tag != 'false' && $tag != ''){
             $tagID = Tag::where('tag_name', $tag)->lists('id')->toArray();
@@ -51,15 +51,19 @@ class PageController extends Controller
             $productCategoryID = false;
         }
 
-        if($type == 'idea' || !$products = self::getProducts($limit, $page, $offset, $tagID, $productCategoryID)){
+        if($type == 'idea' || !$products = self::getProducts($limit, $page, $offset, $tagID, $productCategoryID, $sortBy)){
             $products['result'] = [];
         }
 
         $return = array_merge($stories, $products['result']);
 
-        usort($return, function($a, $b) {
-            return strtotime(@$b->updated_at) - strtotime(@$a->updated_at);
-        });
+            usort($return, function($a, $b) use ($sortBy){
+                if($sortBy && @$b->$sortBy && @$a->$sortBy){
+                        return @$a->$sortBy - @$b->$sortBy;
+                }else{
+                    return strtotime(@$b->updated_at) - strtotime(@$a->updated_at);
+                }
+            });
 
         return $return;
     }
@@ -203,7 +207,7 @@ class PageController extends Controller
         return view('login');
     }
 
-    public function getProducts($limit, $page, $offset, $tagID, $productCategoryID){
+    public function getProducts($limit, $page, $offset, $tagID, $productCategoryID = false, $sortBy = false){
         $productSettings = [
             'ActiveItem' => true,
             'limit'      => $limit,
@@ -211,6 +215,7 @@ class PageController extends Controller
             'CustomSkip' => $offset,
 
             'CategoryId' => $productCategoryID,
+            'sortBy'     => $sortBy,
             'FilterType' => false,
             'FilterText' => false,
             'ShowFor'    => false,

@@ -307,6 +307,10 @@
             {
                 $productModel = $productModel->where("product_name", "like", "%$filterText%");
             }
+//            if(!@$settings['sortBy'] || $settings['sortBy'] == 'undefined')
+//            {
+//                @$settings['sortBy'] = 'created_at';
+//            }
 
             if (@$settings['WithTags'] == true && $settings['CategoryId'] != null)
             {
@@ -421,7 +425,7 @@
             $productInfo['Permalink'] = $productData['product']->product_permalink;
             $productInfo['Description'] = $productData['product']->product_description;
             $productInfo['Specifications'] = $productData['product']->specifications;
-            $productInfo['Price'] = $productData['product']->price;
+            $productInfo['Price'] = number_format((float)$productData['product']->price, 2, '.', '');
             $productInfo['SellPrice'] = $productData['product']->sale_price;
             $productInfo['StoreName'] = $productData['product']->store_id;
             $productInfo['AffiliateLink'] = $productData['product']->affiliate_link;
