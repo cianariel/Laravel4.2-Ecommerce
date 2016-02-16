@@ -7,7 +7,7 @@ angular.module('pagingApp', [
 ]);
 
 angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
-    .controller('pagingController', function($scope, $timeout, $uibModal,$http,pagingApi, $filter) {
+    .controller('pagingController', function($scope, $timeout, $uibModal, $http, pagingApi, $filter) {
         $scope.allContent = [];
         $scope.content = [];
         $scope.newStuff = [];
@@ -319,65 +319,49 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
         });
     }])
 
-    .controller('shopcategoryController', function ($scope) {
+    .controller('shopcategoryController', function ($scope, $filter, pagingApi) {
         $scope.renderHTML = function(html_code)
         {
             var decoded = angular.element('<div />').html(html_code).text();
             return decoded;
         };
 
-        $scope.items = 
-            [
-                {
-                    'media_link_full_path': "http://s3-us-west-1.amazonaws.com/ideaing-01/product-56b246aab5372-dvx-at100-thumb.jpg",
-                    'product_name': "AT100 Electronic Bidet Smart Toilet Seat",
-                    'updated_at': "2 hours ago",
-                    'product_permalink': "at100-electronic-luxury-bidet-seat",
-                    'sale_price': "0",
-                    'storeInfo': {
-                        "Description" : "dxv",
-                        "ImagePath" : "http://s3-us-west-1.amazonaws.com/ideaing-01/product-56b38cfc58fb0-DXV_logo_png.png"
-                    },
-                    'affiliate_link': "http://www.dxv.com/product/at100-electronic-luxury-bidet-seat-by-dxv"
-                },
-                {
-                    'media_link_full_path': "http://s3-us-west-1.amazonaws.com/ideaing-01/product-56b246aab5372-dvx-at100-thumb.jpg",
-                    'product_name': "AT100 Electronic Bidet Smart Toilet Seat",
-                    'updated_at': "2 hours ago",
-                    'product_permalink': "at100-electronic-luxury-bidet-seat",
-                    'sale_price': "0",
-                    'storeInfo': {
-                        "Description" : "dxv",
-                        "ImagePath" : "http://s3-us-west-1.amazonaws.com/ideaing-01/product-56b38cfc58fb0-DXV_logo_png.png"
-                    },
-                    'affiliate_link': "http://www.dxv.com/product/at100-electronic-luxury-bidet-seat-by-dxv"
-                },
-                {
-                    'media_link_full_path': "http://s3-us-west-1.amazonaws.com/ideaing-01/product-56b246aab5372-dvx-at100-thumb.jpg",
-                    'product_name': "AT100 Electronic Bidet Smart Toilet Seat",
-                    'updated_at': "2 hours ago",
-                    'product_permalink': "at100-electronic-luxury-bidet-seat",
-                    'sale_price': "0",
-                    'storeInfo': {
-                        "Description" : "dxv",
-                        "ImagePath" : "http://s3-us-west-1.amazonaws.com/ideaing-01/product-56b38cfc58fb0-DXV_logo_png.png"
-                    },
-                    'affiliate_link': "http://www.dxv.com/product/at100-electronic-luxury-bidet-seat-by-dxv"
-                },
-                {
-                    'media_link_full_path': "http://s3-us-west-1.amazonaws.com/ideaing-01/product-56b246aab5372-dvx-at100-thumb.jpg",
-                    'product_name': "AT100 Electronic Bidet Smart Toilet Seat",
-                    'updated_at': "2 hours ago",
-                    'product_permalink': "at100-electronic-luxury-bidet-seat",
-                    'sale_price': "0",
-                    'storeInfo': {
-                        "Description" : "dxv",
-                        "ImagePath" : "http://s3-us-west-1.amazonaws.com/ideaing-01/product-56b38cfc58fb0-DXV_logo_png.png"
-                    },
-                    'affiliate_link': "http://www.dxv.com/product/at100-electronic-luxury-bidet-seat-by-dxv"
-                }
-            ]
-        ;
+        $scope.currentPage = 1;
+        $scope.filterByCategory = false;
+
+        var $route =  $filter('getURISegment')(2);
+
+        if($route == 'shop'){
+            $scope.currentCategory = $filter('getURISegment')(3);
+        }
+
+        $scope.nextLoad = pagingApi.getPlainContent(1, 15, false, 'product', $scope.currentCategory).success(function (response) {
+            $scope.content = response;
+        });
+
+        $scope.loadMore = function() {
+            $scope.currentPage++;
+
+            //if(!$scope.filterBy || typeof $scope.filterBy === 'undefined'){
+            //    var $limit = 0;
+            //    $scope.filterBy = null;
+            //}else{
+                var $limit = 15;
+            //}
+
+            $scope.nextLoad =  pagingApi.getPlainContent($scope.currentPage, $limit, false, $scope.filterByCategory).success(function (response) {
+                var $newStuff = [];
+                $newStuff[0] = response;
+                $scope.content = $scope.content.concat($newStuff);
+            });
+        };
+
+
+
+
+
+
+
     })
     .directive('a', function() {
     return {
@@ -395,11 +379,10 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
 
         var pagingApi = {};
 
-
-        pagingApi.getPlainContent = function(page, limit, tag, type) {
+        pagingApi.getPlainContent = function(page, limit, tag, type, productCategoryID) {
             return $http({
                 method: 'GET',
-                url: '/api/paging/get-content/' + page + '/' + limit + '/' + tag + '/' + type,
+                url: '/api/paging/get-content/' + page + '/' + limit + '/' + tag + '/' + type + '/' + productCategoryID,
             });
         }
 

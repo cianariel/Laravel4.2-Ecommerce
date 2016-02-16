@@ -3,7 +3,7 @@
 @section('body-class'){{ 'shoppage shop-category' }}@stop
 
 @section('content')
-    <section id="category-banner" class="landing-hero">
+    <section id="category-banner" class="landing-hero {{$currentCategory}}-hero">
         <img src="/assets/images/shop-category-banner.png" class="img-responsive" alt="">
     </section>
 
@@ -32,10 +32,13 @@
                 </div>
                 <div class="row">
                     <div class="grid-box-3" >
-                        <div class="box-item product-box " ng-repeat="item in items" >
+                        <div class="box-item product-box " ng-repeat="item in content" >
                             @include('grid.product')
                         </div>
                     </div>
+                </div>
+                <div class="container">
+                    <a ng-click="loadMore()" class="btn btn-success bottom-load-more col-xs-12">Load More</a>
                 </div>
             </div>
         </div>
