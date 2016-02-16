@@ -208,26 +208,26 @@ jQuery(document).ready(function($) {
                     <div class="col-lg-offset-3 col-lg-6">
                         <div class="row">
                         <ul class="category-nav main-content-filter ">
-                        <li class="active">
+                                <li ng-click="activeMenu='1'" ng-class="{active: !activeMenu || activeMenu == '1'}">
                             <a ng-click="filterContent(null)" href="" data-filterby="all" class="all-link">
                                         <i class="m-icon m-icon--menu"></i>
                                 All
                             </a>
                         </li>
-                        <li>
+                                <li ng-click="activeMenu='2'" ng-class="{active: activeMenu == '2'}">
                             <a ng-click="filterContent('idea')" data-filterby="ideas" href="" class="ideas-link">
                                 <i class="m-icon m-icon--bulb"></i>
                                 Ideas
                             </a>
                         </li>
-                        <li>
+                                <li ng-click="activeMenu='3'" ng-class="{active: activeMenu == '3'}">
                             <a ng-click="filterContent('product')" data-filterby="products" href=""
                                class="products-link">
                                         <i class="m-icon m-icon--item"></i>
                                 Products
                             </a>
                         </li>
-                        <li>
+                                <li ng-click="activeMenu='4'" ng-class="{active: activeMenu == '4'}">
                             <a data-filterby="photos" href="" class="photos-link">
                                         <i class="m-icon m-icon--image"></i>
                                 Photos

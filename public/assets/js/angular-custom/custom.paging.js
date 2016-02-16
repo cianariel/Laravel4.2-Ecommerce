@@ -234,7 +234,7 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
         $uibModalInstance.dismiss('cancel');
       };
     })
-    .controller('shoplandingController', ['$scope', '$http', 'pagingApi', function ($scope, $http, pagingApi) {
+    .controller('shoplandingController', ['$scope', '$http', 'pagingApi', '$timeout', function ($scope, $http, pagingApi, $timeout) {
         $scope.renderHTML = function(html_code)
         {
             var decoded = angular.element('<div />').html(html_code).text();
@@ -243,11 +243,79 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
 
         $scope.nextLoad = pagingApi.getPlainContent(1, 3, 'deal', 'idea').success(function (response) {
             $scope.dailyDeals = response;
+            $timeout(function() {
+                jQuery('#daily-deals').royalSlider({
+                    arrowsNav: true,
+                    loop: false,
+                    keyboardNavEnabled: true,
+                    controlsInside: false,
+                    imageScaleMode: 'fit',
+                    arrowsNavAutoHide: false,
+                    controlNavigation: 'bullets',
+                    thumbsFitInViewport: false,
+                    navigateByClick: false,
+                    startSlideId: 0,
+                    autoPlay: false,
+                    transitionType:'move',
+                    globalCaption: false,
+                    deeplinking: {
+                      enabled: true,
+                      change: false
+                    },
+                    /* size of all images http://help.dimsemenov.com/kb/royalslider-jquery-plugin-faq/adding-width-and-height-properties-to-images */
+                    imgWidth: "100%",
+                    autoHeight: true,
+                    imageScaleMode: "fill",
+                    //    autoScaleSliderWidth: 1500,
+                    //    autoScaleSliderHeight: 500,
+                    //    autoScaleSlider: true
+                });
+                }, 
+            100);
+            
+            
+              
+
         });
 
 
         pagingApi.getPlainContent(1, 9, false, 'product').success(function (response) {
-            $scope.newestArrivals = response;
+            $scope.newestArrivals = [];
+            for(var i=0; i<= response.length; i++){
+                if(i%3 == 0){
+                    var newestArrival = [response[i]];
+                }else{
+                    newestArrival.push(response[i]);
+                    if(i%3 == 2 || i == response.length-1){
+                        $scope.newestArrivals.push(newestArrival);
+                    }
+                }
+            }
+            
+            $timeout(function(){
+                jQuery('#newest-arrivals').royalSlider({
+                    arrowsNav: true,
+                    loop: false,
+                    keyboardNavEnabled: true,
+                    controlsInside: false,
+                    arrowsNavAutoHide: false,
+                    controlNavigation: 'bullets',
+                    thumbsFitInViewport: false,
+                    navigateByClick: false,
+                    startSlideId: 0,
+                    autoPlay: false,
+                    transitionType:'move',
+                    globalCaption: false,
+                    deeplinking: {
+                      enabled: true,
+                      change: false
+                    },
+                    /* size of all images http://help.dimsemenov.com/kb/royalslider-jquery-plugin-faq/adding-width-and-height-properties-to-images */
+                    imgWidth: "100%",
+                    imageScaleMode: "fill",
+                    autoHeight: true
+                }, 100);
+            })
         });
     }])
 
@@ -311,6 +379,18 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
             ]
         ;
     })
+    .directive('a', function() {
+    return {
+        restrict: 'E',
+        link: function(scope, elem, attrs) {
+            if(attrs.ngClick || attrs.href === '' || attrs.href === '#'){
+                elem.on('click', function(e){
+                    e.preventDefault();
+                });
+            }
+        }
+    };
+  })
     .factory('pagingApi', function($http, $q) {
 
         var pagingApi = {};
