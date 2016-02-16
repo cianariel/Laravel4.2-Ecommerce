@@ -256,14 +256,14 @@
             {
                 if(@$settings['GetChildCategories']){
                     $catID = $settings['CategoryId'];
-                    $productModel = $productModel->where(function($query) use ($catID)
-                    {
-                        $query->where("product_category_id", $catID)
-                              ->orWhereHas('productCategory', function($query) use ($catID)
-                              {
-                                  $query->where("parent_id", $catID);
-                              });
-                    });
+                    $childCats = ProductCategory::where("parent_id", $catID)->lists('id');
+                    $grandChildCats = ProductCategory::whereIn("parent_id", $childCats)->lists('id');
+
+                    $productModel = $productModel
+                        ->where("product_category_id", $settings['CategoryId'])
+                        ->orWhereIn("product_category_id", $childCats)
+                        ->orWhereIn("product_category_id", $grandChildCats)
+                    ;
                 }else{
                     $productModel = $productModel->where("product_category_id", $settings['CategoryId']);
                 }
