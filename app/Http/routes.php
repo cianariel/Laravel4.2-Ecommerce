@@ -231,7 +231,7 @@
     // default
     Route::get('login', 'PageController@loginView');
 
-    Route::get('/api/paging/get-content/{page?}/{limit?}/{type?}/{tag?}/{productCategory?}', 'PageController@getContent');
+    Route::get('/api/paging/get-content/{page?}/{limit?}/{type?}/{tag?}/{productCategory?}/{sortBy?}', 'PageController@getContent');
     Route::get('/api/paging/get-grid-content/{page?}/{limit?}/{category?}/{tag?}', 'PageController@getGridContent');
     Route::get('/api/layout/get-shop-menu', 'PageController@getShopMenu');
 
