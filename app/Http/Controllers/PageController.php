@@ -42,7 +42,7 @@ class PageController extends Controller
         }
 
         if($productCategory){
-            $productCategory = ProductCategory::where('category_name', $productCategory)->first();
+            $productCategory = ProductCategory::where('extra_info', $productCategory)->first();
         }
 
         if(@$productCategory){
@@ -221,6 +221,10 @@ class PageController extends Controller
             'ShowFor'    => false,
             'WithTags'   => false,
         ];
+
+        if(@$productCategoryID){
+            $productSettings['GetChildCategories'] = true;
+        }
 
         if(is_array($tagID)){
             $productSettings['TagId'] = $tagID;

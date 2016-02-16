@@ -15,6 +15,11 @@ class ShopController extends Controller
     public function index($category = false)
     {
         if($category){
+
+            if(!ProductCategory::where('extra_info', $category)->count()){
+                return redirect('/shop/');
+            }
+
             return view('shop.shop-category')
                 ->with('currentCategory', $category)
                 ;
