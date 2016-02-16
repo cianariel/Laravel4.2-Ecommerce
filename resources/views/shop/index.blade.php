@@ -43,7 +43,7 @@
                 <div class="row hidden-xs hidden-sm">
                     <div class="col-xs-3 shop-by-category-item smart-home active" data-submenu="smart-home">
                         <img src="/assets/images/category-home.png" alt=""><br><br>
-                        <span>Smart Home</span>
+                        <span><a href="/shop/smart-home">Smart Home</a></span>
                         <a href="#" class="show-menus">
                             <i class="m-icon--Add-Active"></i>
                         </a>
@@ -53,7 +53,7 @@
                     </div>
                     <div class="col-xs-3 shop-by-category-item travel" data-submenu="travel">
                         <img src="assets/images/category-travel.png" alt=""><br><br>
-                        <span>Travel</span>
+                        <span><a href="/travel/">Travel</a></span>
                         <a href="#" class="show-menus">
                             <i class="m-icon--Add-Active"></i>
                         </a>
@@ -63,7 +63,7 @@
                     </div>
                     <div class="col-xs-3 shop-by-category-item wearables" data-submenu="wearables">
                         <img src="assets/images/category-wearable.png" alt=""><br><br>
-                        <span>Wearable</span>
+                        <span><a href="/wearables/">Wearable</a></span>
                         <a href="#" class="show-menus">
                             <i class="m-icon--Add-Active"></i>
                         </a>
@@ -73,7 +73,7 @@
                     </div>
                     <div class="col-xs-3 shop-by-category-item home-decor" data-submenu="home-decor">
                         <img src="assets/images/category-decor.png" alt=""><br><br>
-                        <span>Home & Decor</span>
+                        <span><a href="/home-decor/">Home & Decor</a></span>
                         <a href="#" class="show-menus">
                             <i class="m-icon--Add-Active"></i>
                         </a>
@@ -100,7 +100,7 @@
                                     <div>
                                     <a href="/shop/{{trim($parent)}}">
                                         <i class="m-icon--energy"></i>
-                                        <p class="title"><strong><a href="/shop/{{trim($parent)}}">{{strtoupper(str_replace('-', ' ', $parent))}}</a></strong></p>
+                                        <p class="title"><strong>{{strtoupper(str_replace('-', ' ', $parent))}}</strong></p>
                                         <p class="hidden-xs hidden-sm">
                                             @foreach($grandChildren as $item)
                                                 {{trim($item->category_name)}}<br>
