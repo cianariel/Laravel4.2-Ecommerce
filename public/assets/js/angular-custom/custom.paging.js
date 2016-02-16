@@ -327,7 +327,7 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
         };
 
         $scope.currentPage = 1;
-        $scope.filterByCategory = false;
+        $scope.currentCategory = false;
         $scope.sortBy = false;
 
         var $route =  $filter('getURISegment')(2);
@@ -352,7 +352,7 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
 
             var $limit = 15;
 
-            $scope.nextLoad =  pagingApi.getPlainContent($scope.currentPage, $limit, false, 'product', $scope.filterByCategory).success(function (response) {
+            $scope.nextLoad =  pagingApi.getPlainContent($scope.currentPage, $limit, false, 'product', $scope.currentCategory).success(function (response) {
                 var $newStuff = $scope.content.concat(response)
 
                 if($scope.sortBy){
@@ -375,7 +375,7 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
             $('a[data-sortby="'+$sortBy+'"]').addClass('active');
 
             $('.grid-box-3').fadeOut(500, function(){
-                $scope.nextLoad =  pagingApi.getPlainContent($scope.currentPage, 15, false, 'product', $scope.filterByCategory).success(function (response) {
+                $scope.nextLoad =  pagingApi.getPlainContent(1, 15, false, 'product', $scope.currentCategory).success(function (response) {
                     console.log($sortBy)
                     if($sortBy) {
                         response.sort(function (a, b) {
