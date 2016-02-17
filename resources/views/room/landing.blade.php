@@ -90,9 +90,9 @@
                                         </a>
                                         <div style="border:none">
                                         <b class="price">
-                                            &nbsp;$
+                                            &nbsp;
                                             @if(isset($i_products->sale_price))
-                                                {{$i_products->sale_price}}
+                                                ${{$i_products->sale_price}}
                                             @endif
                                         </b>
                                         </div>
