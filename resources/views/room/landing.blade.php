@@ -84,10 +84,19 @@
                             </a>
                            <div class="hover-box">
                                <h6>{{$i_products->product_name}}</h6>
-                               <div>
-                                   <a href="{{$i_products->affiliate_link}}">Get it</a> from {{$i_products->sale_price}}
-                                   <a href="{{$i_products->affiliate_link}}"> <img class="vendor-logo" alt="{{ $i_products->store['Description'] }}" src="{{ $i_products->store['ThumbnailPath'] }}"></a>
-                               </div>
+                                   <div class="icon-wrap" style="height: 90px">
+                                        <a class="category-tag get-round" href="{{$i_products->affiliate_link}}" target="_blank">
+                                            Get it
+                                        </a>
+                                        <div style="border:none">
+                                        <b class="price">
+                                            &nbsp;$
+                                            @if(isset($i_products->sale_price))
+                                                {{$i_products->sale_price}}
+                                            @endif
+                                        </b>
+                                        </div>
+                                    </div>
                            </div>
                         </div>
                         @endforeach
