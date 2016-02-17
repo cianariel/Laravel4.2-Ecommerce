@@ -3,10 +3,13 @@ angular.module('pagingApp', [
     'pagingApp.controllers',
     //'pagingApp.services',
     'pagingApp.filters',
+    'angularFileUpload',
     'cgBusy'
 ]);
 
 angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
+//angular.module('pagingApp.controllers', [ 'ui.bootstrap','angularFileUpload'])
+
     .controller('pagingController', function($scope, $timeout, $uibModal,$http,pagingApi, $filter) {
         $scope.allContent = [];
         $scope.content = [];
@@ -209,9 +212,10 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
             
         };
     })
-    .controller('headerController', function($scope, $uibModal,$http,pagingApi, $filter, layoutApi) {
+    .controller('headerController', function($scope, $uibModal,$http,pagingApi, $filter, layoutApi, FileUploader) {
         $scope.openProfileSetting = function () {
             var templateUrl = "profile-setting.html";
+            $scope.TEST = "TTTTTT";
             var modalInstance = $uibModal.open({
               templateUrl: templateUrl,
               size: 'lg',
@@ -554,9 +558,6 @@ angular.module('pagingApp.filters', [])
             return false;
         }
     });
-
-// bootstrap for modularization ( add id="pagingApp" with initializing ng-app='pagingApp')
-//angular.bootstrap(document.getElementById('pagingApp'),['pagingApp']);
 
 
 
