@@ -2972,7 +2972,7 @@ box-shadow: -1px -1px 20px -7px rgba(0,0,0,0.75);
 
 }
 
-body.homepage #top-nav .ideas, body.single-post #top-nav .ideas, body.product-details #top-nav a.shop, .room-landing #top-nav a.ideas, body.shop-landing #top-nav a.m-icon-text-holder{
+body.homepage #top-nav .ideas, body.single-post #top-nav .ideas, body.product-details #top-nav a.shop, .room-landing #top-nav a.ideas, body.shop-landing #top-nav .nested a.m-icon-text-holder, body.shop-category #top-nav .nested a.m-icon-text-holder{
     position: relative;
     color: $pink;
     .box-link-active-line{
@@ -6833,19 +6833,19 @@ body.shop-landing{
             }
             
             &.smart-home{
-                background: #ffe5ec;
+                background: $smart-home-light;
             }
             
             &.travel{
-                background: #eef8fb;
+                background: $travel-light;
             }
             
             &.wearables{
-                background: #f9f9ec;
+                background: $wearables-light;
             }
             
             &.home-decor{
-                background: #f9f9ec;
+                background: $home-decor-light;
             }
         }
     }
@@ -6874,22 +6874,22 @@ body.shop-landing{
         }
         &.smart-home{
             > div{
-                background: #ff0042;
+                background: $smart-home;
             }
         }
         &.travel{
             > div{
-                background: #59bdd7;
+                background: $travel;
             }
         }
         &.wearables{
             > div{
-                background: #c6c646;
+                background: $wearables;
             }
         }
         &.home-decor{
             > div{
-                background: #ffaa00;
+                background: $home-decor;
             }
         }
         @media (max-width: 991px){
@@ -6920,9 +6920,20 @@ body.shop-landing{
         .shop-by-category-item{
             text-align: left;
             border: 0px;
-            margin-top: 20px;
             padding-top: 10px;
-            padding-bottom: 0px;
+            padding-bottom: 20px;
+            &.smart-home{
+                background-color: $smart-home-light;
+            }
+            &.travel{
+                background-color: $travel-light;
+            }
+            &.wearables{
+                background-color: $wearables-light;
+            }
+            &.home-decor{
+                background-color: $home-decor-light;
+            }
             .shop-by-category-item-link {
                 img{
                     margin-right: 15px;
@@ -7073,16 +7084,16 @@ body.shop-category{
                 padding: 5px 25px;
                 color: #fff;
                 &.smart-home{
-                    background: $smart-home;
+                    background-color: rgba(255, 0, 66, 0.7);
                 }
                 &.travel{
-                    background: $travel;
+                    background-color: rgba(89, 189, 215, 0.7);
                 }
                 &.wearables{
-                    background: $wearables;
+                    background-color: rgba(198, 198, 70, 0.7);
                 }
                 &.home-decor{
-                    background: $home-decor;
+                    background-color: rgba(255, 170, 0, 0.7);
                 }
             }
         }
