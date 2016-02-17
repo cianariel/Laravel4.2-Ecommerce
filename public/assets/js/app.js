@@ -142,11 +142,16 @@
         $("body").on('click', '.mobile-show', function(){
             if($(this).find('.p-show').is(":visible")){
                 $(this).parent().addClass('hover');
+                if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
                 $(this).parent().removeClass('un-hover');
+                }                
+                
                 $(this).find('.p-show').hide();
                 $(this).find('.p-close').show();
             }else{
+                if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
                 $(this).parent().addClass('un-hover');
+                }                
                 $(this).parent().removeClass('hover');
                 $(this).find('.p-show').show();
                 $(this).find('.p-close').hide();
