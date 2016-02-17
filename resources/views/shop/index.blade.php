@@ -53,7 +53,7 @@
                     </div>
                     <div class="col-xs-3 shop-by-category-item travel" data-submenu="travel">
                         <img src="assets/images/category-travel.png" alt=""><br><br>
-                        <span><a href="/travel/">Travel</a></span>
+                        <span><a href="/shop/travel/">Travel</a></span>
                         <!--<a href="#" class="show-menus">
                             <i class="m-icon--Add-Active"></i>
                         </a>
@@ -63,7 +63,7 @@
                     </div>
                     <div class="col-xs-3 shop-by-category-item wearables" data-submenu="wearables">
                         <img src="assets/images/category-wearable.png" alt=""><br><br>
-                        <span><a href="/wearables/">Wearables</a></span>
+                        <span><a href="/shop/wearables/">Wearables</a></span>
                         <!--<a href="#" class="show-menus">
                             <i class="m-icon--Add-Active"></i>
                         </a>
@@ -73,7 +73,7 @@
                     </div>
                     <div class="col-xs-3 shop-by-category-item home-decor" data-submenu="home-decor">
                         <img src="assets/images/category-decor.png" alt=""><br><br>
-                        <span><a href="/home-decor/">Home & Decor</a></span>
+                        <span><a href="/shop/home-decor/">Home & Decor</a></span>
                         <!--<a href="#" class="show-menus">
                             <i class="m-icon--Add-Active"></i>
                         </a>
