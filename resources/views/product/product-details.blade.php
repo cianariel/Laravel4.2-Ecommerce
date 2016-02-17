@@ -6,33 +6,31 @@
     <script type="text/javascript">
         var permalink = "{{$permalink}}";
     </script>
+    <nav class="mid-nav hidden-xs">
+        <div class="container full-sm fixed-sm">
+            <ul class="wrap col-xs-9">
+                @if(isset($productInformation['CatTree']))
+                    @foreach( $productInformation['CatTree'] as $key => $category )
+                        <li class="box-link-ul @if($key==0) active-ul @endif">
+                            <a class="box-link @if($key==0) active @endif"
+                               href="/category/@if(isset($category['CategoryPermalink'])){{$category['CategoryPermalink']}}@endif"
+                               @if($category == end($productInformation['CatTree']))class="current"
+                                    @endif>
+                                <span class="box-link-active-line"></span>
+                                @if(isset($category['CategoryName']))
+                                    {{$category['CategoryName']}}
+                                @endif
+                            </a>
+                        </li>
+                        <li class="horizontal-line-holder hidden-xs ">
+                            <span class="horizontal-line"></span>
+                        </li>
+                    @endforeach
+                @endif
+            </ul>
+        </div>
+    </nav>
     <div id="productApp" ng-app="productApp" data-ng-controller="productController" ng-cloak>
-        <nav class="mid-nav hidden-xs">
-            <div class="container">
-                <div class="col-sm-8 col-sm-offset-2">
-                    <ul class="left-nav hidden-620">
-                        @if(isset($productInformation['CatTree']))
-                            @foreach( $productInformation['CatTree'] as $key => $category )
-                                <li class="box-link-ul @if($key==0) active-ul @endif">
-                                    <a class="box-link @if($key==0) active @endif"
-                                       href="/category/@if(isset($category['CategoryPermalink'])){{$category['CategoryPermalink']}}@endif"
-                                       @if($category == end($productInformation['CatTree']))class="current"
-                                            @endif>
-                                        <span class="box-link-active-line"></span>
-                                        @if(isset($category['CategoryName']))
-                                            {{$category['CategoryName']}}
-                                        @endif
-                                    </a>
-                                </li>
-                                <li class="horizontal-line-holder hidden-xs ">
-                                    <span class="horizontal-line"></span>
-                                </li>
-                            @endforeach
-                        @endif
-                    </ul>
-                </div>
-            </div>
-        </nav>
         <header class="story-header hidden-620 hidden-soft">
             <div class="col-xs-1">
             <a href="#" class="side-logo lamp-logo">

@@ -3,6 +3,36 @@
 @section('body-class'){{ 'shoppage shop-category' }}@stop
 
 @section('content')
+    <nav class="mid-nav hidden-xs">
+        <div class="container full-sm fixed-sm">
+            <ul class="wrap col-xs-9">
+                <li class="box-link-ul active">
+                    <a class="box-link" href="/shop/smart-home" >
+                        <span class="box-link-active-line"></span>
+                        SMART HOME
+                    </a>
+                </li>
+                <li class="horizontal-line-holder hidden-xs ">
+                    <span class="horizontal-line"></span>
+                </li>
+                <li class="box-link-ul ">
+                    <a class="box-link active" href="/category/@if(isset($category['CategoryPermalink'])){{$category['CategoryPermalink']}}@endif" >
+                        <span class="box-link-active-line"></span>
+                        {{ucfirst($currentCategory)}}
+                    </a>
+                </li>
+            </ul>
+                <a class="browse-all" data-toggle="#all-shop-menu" href="#">
+                    <i class="m-icon--menu"></i>
+                    <span>
+                        BROWSE ALL
+                        <i class="m-icon--Header-Dropdown down"></i>
+                        <i class="m-icon--footer-up-arrow up"></i>
+                    </span>
+                </a>
+        </div>
+    </nav>
+
     <section id="category-banner" class="landing-hero {{$currentCategory}}-hero">
         <img src="/assets/images/shop-category-banner.png" class="img-responsive" alt="">
         <div class="head-wrap container">
@@ -30,7 +60,7 @@
                     </div>
         </nav>
 
-
+        <div class="clearfix"></div>
 
 
 
