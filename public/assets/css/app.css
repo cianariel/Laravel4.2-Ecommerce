@@ -6475,10 +6475,10 @@ header.colophon {
   #top-nav li.nested ul {
     display: none; }
 
-body.homepage #top-nav .ideas, body.single-post #top-nav .ideas, body.product-details #top-nav a.shop, .room-landing #top-nav a.ideas, body.shop-landing #top-nav a.m-icon-text-holder {
+body.homepage #top-nav .ideas, body.single-post #top-nav .ideas, body.product-details #top-nav a.shop, .room-landing #top-nav a.ideas, body.shop-landing #top-nav .nested a.m-icon-text-holder, body.shop-category #top-nav .nested a.m-icon-text-holder {
   position: relative;
   color: #ed2049; }
-  body.homepage #top-nav .ideas .box-link-active-line, body.single-post #top-nav .ideas .box-link-active-line, body.product-details #top-nav a.shop .box-link-active-line, .room-landing #top-nav a.ideas .box-link-active-line, body.shop-landing #top-nav a.m-icon-text-holder .box-link-active-line {
+  body.homepage #top-nav .ideas .box-link-active-line, body.single-post #top-nav .ideas .box-link-active-line, body.product-details #top-nav a.shop .box-link-active-line, .room-landing #top-nav a.ideas .box-link-active-line, body.shop-landing #top-nav .nested a.m-icon-text-holder .box-link-active-line, body.shop-category #top-nav .nested a.m-icon-text-holder .box-link-active-line {
     height: 50px;
     width: 0px;
     border-left: 1px solid #c1c1c1;
@@ -8784,7 +8784,7 @@ body.shop-landing .shop-by-category-item {
   body.shop-landing .shop-by-category-item.active.wearables {
     background: #f9f9ec; }
   body.shop-landing .shop-by-category-item.active.home-decor {
-    background: #f9f9ec; }
+    background: #f9cc66; }
 
 body.shop-landing .shop-by-category-submneu {
   display: none; }
@@ -8831,9 +8831,16 @@ body.shop-landing .shop-by-category-submneu {
 body.shop-landing .mobile-shop-by-category-holder .shop-by-category-item {
   text-align: left;
   border: 0px;
-  margin-top: 20px;
   padding-top: 10px;
-  padding-bottom: 0px; }
+  padding-bottom: 20px; }
+  body.shop-landing .mobile-shop-by-category-holder .shop-by-category-item.smart-home {
+    background-color: #ffe5ec; }
+  body.shop-landing .mobile-shop-by-category-holder .shop-by-category-item.travel {
+    background-color: #eef8fb; }
+  body.shop-landing .mobile-shop-by-category-holder .shop-by-category-item.wearables {
+    background-color: #f9f9ec; }
+  body.shop-landing .mobile-shop-by-category-holder .shop-by-category-item.home-decor {
+    background-color: #f9cc66; }
   body.shop-landing .mobile-shop-by-category-holder .shop-by-category-item .shop-by-category-item-link img {
     margin-right: 15px; }
   body.shop-landing .mobile-shop-by-category-holder .shop-by-category-item.active .shop-by-category-submneu {
@@ -8936,13 +8943,13 @@ body.shop-category #category-banner {
       padding: 5px 25px;
       color: #fff; }
       body.shop-category #category-banner .head-wrap span.smart-home {
-        background: #ff0042; }
+        background-color: rgba(255, 0, 66, 0.7); }
       body.shop-category #category-banner .head-wrap span.travel {
-        background: #59bdd7; }
+        background-color: rgba(89, 189, 215, 0.7); }
       body.shop-category #category-banner .head-wrap span.wearables {
-        background: #c6c646; }
+        background-color: rgba(198, 198, 70, 0.7); }
       body.shop-category #category-banner .head-wrap span.home-decor {
-        background: #ffaa00; }
+        background-color: rgba(255, 170, 0, 0.7); }
 
 body.shop-category .popular-new {
   width: 100%;
