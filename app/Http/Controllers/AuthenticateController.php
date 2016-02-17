@@ -362,7 +362,12 @@
                 } elseif ($validator->passes())
                 {
                     // Assign role for the user
-                    $this->user->assignRole($userData['Email'],$userRoles);
+
+                    if (isset($userRoles) && ($userRoles != ""))
+                    {
+                        $this->user->assignRole($userData['Email'],$userRoles);
+                    }
+
 
                     if (isset($userData['FullName']) && ($userData['FullName'] != ""))
                     {
@@ -375,7 +380,22 @@
                         $user->password = \Hash::make($userData['Password']);
                     }
 
-                    $user->status = $input['UserStatus'];
+                    if (isset($userData['MediaLink']) && ($userData['MediaLink'] != ""))
+                    {
+                        $this->media->media_name = $userData['name'];
+                        $this->media->media_type = 'img-upload';
+                        $this->media->media_link = $userData['MediaLink'];
+
+                        $result = $user->medias()->save($this->media);
+                    }
+
+                    if (isset($userData['UserStatus']) && ($userData['UserStatus'] != ""))
+                    {
+                        $user->status = $input['UserStatus'];
+                    }
+
+
+
 
                     $user->save();
 

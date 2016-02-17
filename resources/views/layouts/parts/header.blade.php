@@ -1,13 +1,5 @@
 <div id="publicApp" ng-app="publicApp" ng-controller="publicController">
-    <input type="file" name="file" nv-file-select=""
-           uploader="uploader"/>
-
-    <button type="button"
-            ng-show="isMediaUploadable"
-            class="btn btn-success btn-s"
-            ng-click="uploader.uploadAll()">Upload
-    </button>
-   {{-- <div ng-app="pagingApp" ng-controller="headerController" >--}}
+   {{-- <div ng-app="pagingApp" ng-controller="headerController" > --}}
         <header class="colophon">
                 <div class="col-xs-12">
                     <h2 id="site-name">Ideaing | Ideas for Smarter Living</h2>
@@ -202,67 +194,83 @@
                 
                 <div class="profile-background">
                     <div class="text-center"><img class="profile-photo" width="150px" src="<?php echo isset($profile) ? $profile : ""?>"></div>
-                    <div class="text-center">
-                        <a href="#" class="upload-photo">
-                            <i class="m-icon--Upload-Inactive"></i><br>
-                            <span>Upload new profile picture</span>
-                        </a>
-                    </div>
+
                 </div>
                 <div class="first-form">
                     <div class="custom-container ">
                         <form class="form-horizontal">
                             <div class="form-group ">
-                                <label class="col-lg-12 control-label">Full name</label>
+                                <label class="col-lg-12 control-label">Full Name</label>
                                 <div class="col-lg-12">
-                                    <input class="form-control" placeholder="Full name">
+                                    <input class="form-control" ng-model="FullName" ng-init="FullName = '{{ $userData['name'] }}'"   placeholder="Full name">
                                 </div>
                             </div>
                             <div class="form-group ">
                                 <label class="col-lg-12 control-label">Email</label>
                                 <div class="col-lg-12">
-                                    <input class="form-control" placeholder="Email">
+                                    <input class="form-control" ng-model="Email" ng-init="Email = '{{ $userData['email'] }}'" placeholder="Email" />
                                 </div>
                             </div>
                             <div class="form-group ">
                                 <label class="col-lg-12 control-label">New password</label>
                                 <div class="col-lg-12">
-                                    <input class="form-control" placeholder="New password">
+                                    <input class="form-control" ng-model="Password" placeholder="New password">
                                 </div>
                             </div>
                             <div class="form-group ">
                                 <label class="col-lg-12 control-label">Bio</label>
                                 <div class="col-lg-12">
-                                    <textarea class="form-control" placeholder="Bio"></textarea>
+                                    <textarea class="form-control"  ng-model="PersonalInfo" ng-init="PersonalInfo = '{{ $userData['userProfile']['personal_info'] }}'" placeholder="Bio"></textarea>
+                                </div>
+                            </div>
+                            <div class="form-group ">
+                                <label class="col-lg-12 control-label">Address</label>
+                                <div class="col-lg-12">
+                                    <textarea class="form-control"  ng-model="Address" ng-init="Address = '{{ $userData['userProfile']['address']  }}'" placeholder="Address"></textarea>
                                 </div>
                             </div>
                             <div class="form-group ">
                                 <label class="col-lg-12 control-label">Personal link</label>
                                 <div class="col-lg-12">
-                                    <span class="ideaing-domain">http://ideaing.  </span>
-                                    <input class="form-control personal-link" placeholder="">
+                                    <div class="col-lg-6">http://staging.ideaing.com/user/</div>
+                                    <div class="col-lg-6">
+                                    <input class="form-control personal-link" ng-model="Permalink" ng-init="Permalink = '{{ $userData['userProfile']['permalink']  }}'"  placeholder="">
+                               </div>
                                 </div>
                             </div>
                             <div class="form-group ">
                                 <label class="col-lg-12 control-label">Profie Picture</label>
                                 <div class="col-lg-12">
-                                  <span class="ideaing-domain">http://ideaing.</span>
 
 
 
+                                    <div class="col-lg-6">
                               <input type="file" name="file" nv-file-select=""
-                                           uploader="$parent.uploader"/>
+                                     uploader="uploader"/>
+                                        </div>
+                                    <div class="col-lg-4">
+                                        <img id="currentPhoto"
+                                             ng-src='@{{ mediaLink }}'
+                                             onerror="this.src='http://s3-us-west-1.amazonaws.com/ideaing-01/thumb-product-568d28a6701c7-no-item.jpg'"
+                                             width="170">
+                                    </div>
 
-                                    <button type="button"
-                                            ng-show="$parent.isMediaUploadable"
-                                            class="btn btn-success btn-s"
-                                            ng-click="$parent.uploader.uploadAll()">Upload
+
+
+
+                                        {{--ng-click="$parent.uploader.uploadAll()">Upload--}}
                                     </button>
+                                </div>
+                                <div class="text-center">
+                                    <a href="#"  ng-click="uploader.uploadAll()" class="upload-photo">
+                                        <i class="m-icon--Upload-Inactive"></i><br>
+                                        <span>Upload new profile picture</span>
+                                    </a>
                                 </div>
                             </div>
                             <div class="form-group text-center">
                                 <button class="btn btn-nevermind">Nevermind</button>
-                                <button class="btn btn-save">Save</button>
+                                <button class="btn btn-save" ng-click="updateUser()">Save</button>
                             </div>
                         </form>   
                         <div class="clearfix"></div>

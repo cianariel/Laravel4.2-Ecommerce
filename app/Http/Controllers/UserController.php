@@ -26,6 +26,7 @@
             $this->subscriber = new Subscriber();
             $this->user = new User();
             $this->roleModel = new Role();
+            $this->media = new Media();
 
             //check user authentication and get user basic information
             $this->authCheck = $this->RequestAuthentication(array('admin','editor','user'));
@@ -181,6 +182,7 @@
                 $userData = $this->authCheck['user-data'] ;
 
                 $data = array(
+                    'userData' => $userData,
                     'profile'   => "/assets/images/profile.jpg",
                     'fullname'  => "Denzel Wars",
                     'login'     => true,
