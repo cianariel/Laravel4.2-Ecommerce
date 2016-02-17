@@ -66,38 +66,9 @@
         </div>
     </nav>
     
-<script>
-jQuery(document).ready(function($) {
-  $('#hero').royalSlider({
-    arrowsNav: true,
-    loop: false,
-    keyboardNavEnabled: true,
-    controlsInside: false,
-    imageScaleMode: 'fit',
-    arrowsNavAutoHide: false,
-    controlNavigation: 'bullets',
-    thumbsFitInViewport: false,
-    navigateByClick: false,
-    startSlideId: 0,
-    autoPlay: false,
-    transitionType:'move',
-    globalCaption: false,
-    deeplinking: {
-      enabled: true,
-      change: false
-    },
-    /* size of all images http://help.dimsemenov.com/kb/royalslider-jquery-plugin-faq/adding-width-and-height-properties-to-images */
-    imgWidth: "100%",
-    imageScaleMode: "fill",
-    autoScaleSliderWidth: 1500,
-    autoScaleSliderHeight: 500,
-    autoScaleSlider: true
-  });
-});
-</script>
 
 <div id="pagingApp" ng-app="pagingApp" ng-controller="pagingController">
-    <div id="hero" class="royalSlider heroSlider rsMinW room-hero slider">
+    <div id="hero" class="royalSlider heroSlider rsMinW room-hero slider" style="display: none;">
         @if(isset($roomInformation['images']))
             @foreach( $roomInformation['images'] as $key => $image )
             <div class="rsContent">
@@ -113,10 +84,19 @@ jQuery(document).ready(function($) {
                             </a>
                            <div class="hover-box">
                                <h6>{{$i_products->product_name}}</h6>
-                               <div>
-                                   <a href="{{$i_products->affiliate_link}}">Get it</a> from {{$i_products->sale_price}}
-                                   <a href="{{$i_products->affiliate_link}}"> <img class="vendor-logo" alt="{{ $i_products->store['Description'] }}" src="{{ $i_products->store['ThumbnailPath'] }}"></a>
-                               </div>
+                                   <div class="icon-wrap" style="height: 90px">
+                                        <a class="category-tag get-round" href="{{$i_products->affiliate_link}}" target="_blank">
+                                            Get it
+                                        </a>
+                                        <div style="border:none">
+                                        <b class="price">
+                                            &nbsp;
+                                            @if(isset($i_products->sale_price))
+                                                ${{$i_products->sale_price}}
+                                            @endif
+                                        </b>
+                                        </div>
+                                    </div>
                            </div>
                         </div>
                         @endforeach
@@ -277,6 +257,36 @@ jQuery(document).ready(function($) {
   width: 100%;
   color: #000;
 }
+.royalSlider { display:none }
 </style>
- 
+ <script>
+jQuery(document).ready(function($) {
+  $('#hero').royalSlider({
+    arrowsNav: true,
+    loop: false,
+    keyboardNavEnabled: true,
+    controlsInside: false,
+    imageScaleMode: 'fit',
+    arrowsNavAutoHide: false,
+    controlNavigation: 'bullets',
+    thumbsFitInViewport: false,
+    navigateByClick: false,
+    startSlideId: 0,
+    autoPlay: false,
+    transitionType:'move',
+    globalCaption: false,
+    deeplinking: {
+      enabled: true,
+      change: false
+    },
+    /* size of all images http://help.dimsemenov.com/kb/royalslider-jquery-plugin-faq/adding-width-and-height-properties-to-images */
+    imgWidth: "100%",
+    imageScaleMode: "fill",
+    autoScaleSliderWidth: 1500,
+    autoScaleSliderHeight: 500,
+    autoScaleSlider: true
+  });
+  $('.royalSlider').css('display', 'block');
+});
+</script>
 @stop
