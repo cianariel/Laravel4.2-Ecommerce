@@ -27,9 +27,8 @@
     {{--</header>--}}
 
     
-    <nav class="mid-nav hidden-xs">
+    <!--<nav class="mid-nav hidden-xs">
         <div class="container full-sm fixed-sm">
-<!--            <ul class=" col-sm-offset-1 col-sm-9">-->
             <ul class=" wrap col-xs-9">
                 <li class="home box-link">
                     <a class="box-link" href="">
@@ -46,15 +45,8 @@
                 <li><a class="box-link @if($roomInformation['Permalink'] == 'outdoor') active @endif " href="{{url('room/outdoor')}}">Outdoor</a></li>
                 <li><a class="box-link @if($roomInformation['Permalink'] == 'lighting') active @endif " href="{{url('room/lighting')}}">Lighting</a></li>
                 <li><a @if($roomInformation['Permalink'] == 'decor') class="active" @endif href="{{url('room/decor')}}">Decor</a></li>
-                <!--<li><a data-toggle=".extra-nav" class="more-link extra" href="">...</a>
-                    <ul class="extra-nav hidden-620 hidden-soft">
-                        <li><a class="travel-link blue" href="#">Travel</a></li>
-                        <li><a class="wearables-link green" href="#">Wearables</a></li>
-                    </ul>
-                </li>-->
 
             </ul>
-<!--            <div class="hidden-xs col-sm-2">-->
             <div class="hide">
                 <ul class="pull-right"> 
                     <li class="nested">
@@ -64,7 +56,7 @@
         </div>
 
         </div>
-    </nav>
+    </nav>-->
     
 
 <div id="pagingApp" ng-app="pagingApp" ng-controller="pagingController">

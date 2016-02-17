@@ -1,5 +1,5 @@
         <header class="sub-head">
-            <nav class="shop-menu hidden-soft hidden-620">
+            <nav id="shop-menu" class="shop-menu hidden-soft hidden-620">
                 <div class="container full-sm">
                     <section class="most-popular col-xs-4" ng-repeat="item in productsForShopMenu.mostPopular">
                         <h5><a style="position: static" href="/shop/">Most Popular</a></h5>
@@ -51,6 +51,39 @@
                             </a>
                         </div>
                     </section>
+                </div>
+            </nav>
+            <nav id="all-shop-menu" class="shop-menu hidden-soft hidden-620">
+                <div class="container full-sm">
+                    <section class="col-xs-4 shop-by-category" >
+                        <p class="title"><a href="/shop/">Shop by Category</a></p>
+
+                        <div class="link-row">
+                            <a href="#">Smart Home</a>
+                        </div>
+                        <div class="link-row">
+                            <a href="#">Travel</a>
+                        </div>
+                        <div class="link-row">
+                            <a href="#">Wearables</a>
+                        </div>
+                        <div class="link-row">
+                            <a href="#">Home & Decor</a>
+                        </div>
+
+                    </section>
+
+                    <section class="smart-home col-xs-8">
+                        <div class="col-md-12">                        
+                            <p class="title"><a href="/shop/">Smart Home</a></p>
+                        </div>
+                        <div class="col-sm-4 link-row"><a href="#">Energy and Air</a></div>
+                        <div class="col-sm-4 link-row"><a href="#">Energy and Air</a></div>
+                        <div class="col-sm-4 link-row"><a href="#">Energy and Air</a></div>
+                        <div class="col-sm-4 link-row"><a href="#">Energy and Air</a></div>
+                        <div class="col-sm-4 link-row"><a href="#">Energy and Air</a></div>
+                    </section>
+
                 </div>
             </nav>
         </header>

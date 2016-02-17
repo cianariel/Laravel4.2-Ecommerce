@@ -32,7 +32,7 @@
                                                 <span class="m-icon-text">Shop</span> 
                                                 <span class="box-link-active-line" style="margin-left: 10px;"></span>
                                             </a>
-                                            <a class="shop" data-toggle=".shop-menu" href="#">
+                                            <a class="shop" data-toggle="#shop-menu" href="#">
                                                 <i class="m-icon--Header-Dropdown down"></i>
                                                 <i class="m-icon--footer-up-arrow up"></i>
                                             </a>
@@ -146,26 +146,21 @@
         <nav class="mid-nav rooms hidden-xs">
             <div class="container full-sm fixed-sm">
                 <ul class="wrap col-xs-9">
-                    <li class="home active">
-                        <a class="box-link" href="">
+                    <li class="home ">
+                        <a class="box-link @if(!isset($roomInformation['Permalink']) || $roomInformation['Permalink'] == '/') active @endif"   href="/">
                         <span class="box-link-active-line"></span>
                             <i class="m-icon m-icon--smart-home"></i> Smart Home
                         </a>
                     </li>
-                    <li><a class="box-link" href="/room/kitchen">Kitchen</a></li>
-                    <li><a class="box-link" href="/room/bath">Bath</a></li>
-                    <li><a class="box-link" href="/room/bedroom">Bedroom</a></li>
-                    <li><a class="box-link" href="/room/office">Office</a></li>
-                    <li><a class="box-link" href="/room/living">Living</a></li>
-                    <li><a class="box-link" href="/room/outdoor">Outdoor</a></li>
-                    <li><a class="box-link" href="/room/lighting">Lighting</a></li>
-                    <li><a class="box-link" href="/room/decor">Decor</a></li>
-                    <!--<li><a data-toggle=".extra-nav" class="more-link extra" href="">...</a>
-                        <ul class="extra-nav hidden-620 hidden-soft">
-                            <li><a class="travel-link blue" href="#">Travel</a></li>
-                            <li><a class="wearables-link green" href="#">Wearables</a></li>
-                        </ul>
-                    </li>-->
+
+                    <li><a class="box-link @if(isset($roomInformation['Permalink']) && $roomInformation['Permalink'] == 'kitchen') active @endif " href="{{url('room/kitchen')}}">Kitchen</a></li>
+                    <li><a class="box-link @if(isset($roomInformation['Permalink']) && $roomInformation['Permalink'] == 'bath') active @endif " href="{{url('room/bath')}}">Bath</a></li>
+                    <li><a class="box-link @if(isset($roomInformation['Permalink']) && $roomInformation['Permalink'] == 'bedroom') active @endif " href="{{url('room/bedroom')}}">Bedroom</a></li>
+                    <li><a class="box-link @if(isset($roomInformation['Permalink']) && $roomInformation['Permalink'] == 'office') active @endif " href="{{url('room/office')}}">Office</a></li>
+                    <li><a class="box-link @if(isset($roomInformation['Permalink']) && $roomInformation['Permalink'] == 'living') active @endif " href="{{url('room/living')}}">Living</a></li>
+                    <li><a class="box-link @if(isset($roomInformation['Permalink']) && $roomInformation['Permalink'] == 'outdoor') active @endif " href="{{url('room/outdoor')}}">Outdoor</a></li>
+                    <li><a class="box-link @if(isset($roomInformation['Permalink']) && $roomInformation['Permalink'] == 'lighting') active @endif " href="{{url('room/lighting')}}">Lighting</a></li>
+                    <li><a class="box-link @if(isset($roomInformation['Permalink']) && $roomInformation['Permalink'] == 'decor') active @endif" href="{{url('room/decor')}}">Decor</a></li>
 
                 </ul>
             </div>

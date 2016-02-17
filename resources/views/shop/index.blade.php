@@ -3,6 +3,38 @@
 @section('body-class'){{ 'shoppage shop-landing' }}@stop
 
 @section('content')
+    <nav class="mid-nav hidden-xs">
+        <div class="container full-sm fixed-sm">
+            <div class="">
+                <ul class="wrap col-xs-9">
+                    <li class="box-link-ul ">
+                        <a class="box-link " href="/category/@if(isset($category['CategoryPermalink'])){{$category['CategoryPermalink']}}@endif" >
+                            <span class="box-link-active-line"></span>
+                            SMART HOME
+                        </a>
+                    </li>
+                    <li class="box-link-ul ">
+                        <a class="box-link " href="/category/@if(isset($category['CategoryPermalink'])){{$category['CategoryPermalink']}}@endif" >
+                            <span class="box-link-active-line"></span>
+                            TRAVEL
+                        </a>
+                    </li>
+                    <li class="box-link-ul ">
+                        <a class="box-link " href="/category/@if(isset($category['CategoryPermalink'])){{$category['CategoryPermalink']}}@endif" >
+                            <span class="box-link-active-line"></span>
+                            WEARABLES
+                        </a>
+                    </li>
+                    <li class="box-link-ul ">
+                        <a class="box-link " href="/category/@if(isset($category['CategoryPermalink'])){{$category['CategoryPermalink']}}@endif" >
+                            <span class="box-link-active-line"></span>
+                            HOME & DECOR
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
     <div class="app-wrap" ng-app="pagingApp" ng-controller="shoplandingController">
         
         <div class="homepage-grid center-block">
