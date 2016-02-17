@@ -199,6 +199,10 @@
 
     //Shop view
     Route::get('shop/{categoty?}', 'ShopController@index');
+    Route::get('shop/smart-home/{categoty?}', 'ShopController@index');
+    Route::get('shop/travel/{categoty?}', 'ShopController@index');
+    Route::get('shop/wearables/{categoty?}', 'ShopController@index');
+    Route::get('shop/home-decor/{categoty?}', 'ShopController@index');
 //    Route::get('shop/category', 'ShopController@shopCategory');
 
     //User Profile

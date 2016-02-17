@@ -287,11 +287,24 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
 
         var $route =  $filter('getURISegment')(2);
 
+
+
         if($route == 'shop'){
-            $scope.currentCategory = $filter('getURISegment')(3);
+            if(
+                ($filter('getURISegment')(3) == 'smart-home' ||
+                $filter('getURISegment')(3) == 'travel' ||
+                $filter('getURISegment')(3) == 'wearables' ||
+                $filter('getURISegment')(3) == 'home-decor')
+            &&
+                $filter('getURISegment')(4)
+            ){
+                $scope.currentCategory = $filter('getURISegment')(4);
+            }else{
+                $scope.currentCategory = $filter('getURISegment')(3);
+            }
         }
 
-        $scope.nextLoad = pagingApi.getPlainContent(1, 15, false, 'product', $scope.currentCategory).success(function (response) {
+        $scope.nextLoad = pagingApi.getPlainContent(1, 15,  $scope.currentCategory, 'product', $scope.currentCategory).success(function (response) {
 
             if($scope.sortBy){
                 response.sort(function(a, b) {
@@ -307,7 +320,7 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
 
             var $limit = 15;
 
-            $scope.nextLoad =  pagingApi.getPlainContent($scope.currentPage, $limit, false, 'product', $scope.currentCategory).success(function (response) {
+            $scope.nextLoad =  pagingApi.getPlainContent($scope.currentPage, $limit,  $scope.currentCategory, 'product', $scope.currentCategory).success(function (response) {
                 var $newStuff = $scope.content.concat(response)
 
                 if($scope.sortBy){
@@ -330,8 +343,7 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
             $('a[data-sortby="'+$sortBy+'"]').addClass('active');
 
             $('.grid-box-3').fadeOut(500, function(){
-                $scope.nextLoad =  pagingApi.getPlainContent(1, 15, false, 'product', $scope.currentCategory).success(function (response) {
-                    console.log($sortBy)
+                $scope.nextLoad =  pagingApi.getPlainContent(1, 15,  $scope.currentCategory, 'product', $scope.currentCategory).success(function (response) {
                     if($sortBy) {
                         response.sort(function (a, b) {
                             return parseFloat(a[$sortBy]) - parseFloat(b[$sortBy]);
