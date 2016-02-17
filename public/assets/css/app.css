@@ -7777,14 +7777,12 @@ body.room-landing .grid-insert {
       border-style: solid;
       border-width: 0 7.5px 10px 7.5px;
       border-color: transparent transparent #007bff transparent;
-      left: 30%;
+      left: 33%;
       top: -7px; }
   .hero-tags img:not(.vendor-logo) {
-    width: 90px;
-    height: 90px;
-    background: #fff;
-    margin-left:25px; }
-}
+    width: 135px;
+    height: 135px;
+    background: #fff; }
   .hero-tags .vendor-logo {
     margin-top: 25px; }
 

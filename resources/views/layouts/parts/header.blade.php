@@ -20,7 +20,7 @@
                                 <div  class="col-sm-5 category-menu hidden-xs">
                                     <ul>
                                         <li>
-                                            <a class="ideas" href="#">
+                                            <a class="ideas" href="/">
                                                 <i class="m-icon m-icon--bulb"></i>
                                                 <span class="m-icon-text">Ideas</span>
                                                 <span class="box-link-active-line"></span>
@@ -30,7 +30,7 @@
                                             <a class="m-icon-text-holder" href="/shop">
                                                 <i class="m-icon m-icon--shopping-bag-light-green"></i>
                                                 <span class="m-icon-text">Shop</span> 
-                                                <span class="box-link-active-line"></span>
+                                                <span class="box-link-active-line" style="margin-left: 10px;"></span>
                                             </a>
                                             <a class="shop" data-toggle=".shop-menu" href="#">
                                                 <i class="m-icon--Header-Dropdown down"></i>
