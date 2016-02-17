@@ -231,7 +231,7 @@
                                                                         echo '<td>'.$rm->product_id.'</td>';
                                                                         echo '<td>'.$prod->product_name.'</td>';
                                                                         echo '<td>'.$rm->product_color.'</td>';
-                                                                        echo '<td width="20%"><a href="javascript:void()" class="btn btn-sm blue btn-edit-product" data-xpos="'.$rm->x.'" data-ypos="'.$rm->y.'" data-heroimageid="hero_image_1" data-productid="'.$rm->product_id.'"><i class="fa fa-pencil"></i></a> <a href="javascript:void()" class="btn btn-sm red btn-delete-product" data-productid="'.($key+1).'"><i class="fa fa-times"></i></a></td></tr>';
+                                                                        echo '<td width="20%"><a href="javascript:void()" class="btn btn-sm blue btn-edit-product" data-xpos="'.$rm->x.'" data-ypos="'.$rm->y.'" data-heroimageid="hero_image_1" data-productid="'.$rm->product_id.'"><i class="fa fa-pencil"></i></a> <a href="javascript:void()" class="btn btn-sm red btn-delete-product" data-heroimageid="hero_image_1" data-productid="'.($key+1).'"><i class="fa fa-times"></i></a></td></tr>';
                                                                     }
                                                                 
                                                             ?>
@@ -340,7 +340,7 @@
                                                                         echo '<td>'.$rm->product_id.'</td>';
                                                                         echo '<td>'.$prod->product_name.'</td>';
                                                                         echo '<td>'.$rm->product_color.'</td>';
-                                                                        echo '<td width="20%"><a href="javascript:void()" class="btn btn-sm blue btn-edit-product" data-xpos="'.$rm->x.'" data-ypos="'.$rm->y.'" data-heroimageid="hero_image_2" data-productid="'.$rm->product_id.'"><i class="fa fa-pencil"></i></a> <a href="javascript:void()" class="btn btn-sm red btn-delete-product" data-productid="'.($key+1).'"><i class="fa fa-times"></i></a></td></tr>';
+                                                                        echo '<td width="20%"><a href="javascript:void()" class="btn btn-sm blue btn-edit-product" data-xpos="'.$rm->x.'" data-ypos="'.$rm->y.'" data-heroimageid="hero_image_2" data-productid="'.$rm->product_id.'"><i class="fa fa-pencil"></i></a> <a href="javascript:void()" class="btn btn-sm red btn-delete-product" data-heroimageid="hero_image_2" data-productid="'.($key+1).'"><i class="fa fa-times"></i></a></td></tr>';
                                                                     }
                                                                 
                                                             ?>
@@ -448,7 +448,7 @@
                                                                         echo '<td>'.$rm->product_id.'</td>';
                                                                         echo '<td>'.$prod->product_name.'</td>';
                                                                         echo '<td>'.$rm->product_color.'</td>';
-                                                                        echo '<td width="20%"><a href="javascript:void()" class="btn btn-sm blue btn-edit-product" data-xpos="'.$rm->x.'" data-ypos="'.$rm->y.'" data-heroimageid="hero_image_3" data-productid="'.$rm->product_id.'"><i class="fa fa-pencil"></i></a> <a href="javascript:void()" class="btn btn-sm red btn-delete-product" data-productid="'.($key+1).'"><i class="fa fa-times"></i></a></td></tr>';
+                                                                        echo '<td width="20%"><a href="javascript:void()" class="btn btn-sm blue btn-edit-product" data-xpos="'.$rm->x.'" data-ypos="'.$rm->y.'" data-heroimageid="hero_image_3" data-productid="'.$rm->product_id.'"><i class="fa fa-pencil"></i></a> <a href="javascript:void()" class="btn btn-sm red btn-delete-product" data-heroimageid="hero_image_3" data-productid="'.($key+1).'"><i class="fa fa-times"></i></a></td></tr>';
                                                                     }
                                                                 
                                                             ?>
@@ -612,7 +612,25 @@ $(function() {
     });
     $('.btn-delete-product').click(function(){
         var productid = $(this).data('productid');
+        var hero_image_id = $(this).data('heroimageid');
         $(this).closest('tr').remove();
+        if(hero_image_id == "hero_image_1")
+        {
+            heroimageproducts1.splice(productid-1, 1);
+            //delete heroimageproducts1[productid-1];
+            //heroimageproducts1.pop(productid-1);
+            $('#hero_image_1_products').val(JSON.stringify(heroimageproducts1));
+        }
+        if(hero_image_id == "hero_image_2")
+        {
+            heroimageproducts2.splice(productid-1, 1);
+            $('#hero_image_2_products').val(JSON.stringify(heroimageproducts2));
+        }
+        if(hero_image_id == "hero_image_3")
+        {
+            heroimageproducts3.splice(productid-1, 1);
+            $('#hero_image_3_products').val(JSON.stringify(heroimageproducts3));
+        }
         //$('product_thumb').test();
     });
     
