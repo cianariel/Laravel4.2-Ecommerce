@@ -88,7 +88,7 @@
                         <div class="shop-by-category-submneu {{$topCategory}} {{$i == 1 ? 'active' : ''}}">
                             @foreach($parentCategories as $parent => $grandChildren)
                                 <div class="col-md-2">
-                                    <a href="/shop/{{trim($parent)}}">
+                                    <a href="/shop/{{$topCategory}}/{{trim($parent)}}">
                                         <i class="m-icon--energy"></i>
                                         <p class="title"><strong>{{strtoupper(str_replace('-', ' ', $parent))}}</strong></p>
                                         <p class="hidden-xs hidden-sm">
