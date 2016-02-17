@@ -210,15 +210,12 @@ publicApp.controller('publicController', ['$scope', '$http', '$window', '$timeou
         $scope.redirectUser = function (role) {
             switch (role[0]) {
                 case 'admin':
-                    console.log("inside AAAAA ");
                     window.location = '/admin/dashboard';
                     break;
                 case 'editor':
-                    console.log("inside ----- ");
                     window.location = '/admin/dashboard';
                     break;
                 case 'user':
-                    console.log("inside right ");
                     window.location = '/user/profile';
 
                     break;
@@ -380,6 +377,30 @@ publicApp.controller('publicController', ['$scope', '$http', '$window', '$timeou
                 /* if(data.status_code == 200)
                  window.location = $scope.logingRedirectLocation;
                  */
+            });
+        };
+
+        //update user information
+        $scope.updateUser = function () {
+            $scope.closeAlert();
+//console.log("isside");
+
+            $http({
+                url: '/api/change-profile',
+                method: "POST",
+                data: {
+                    FullName: $scope.FullName == '' ? null : $scope.FullName,
+                    Email: $scope.Email,
+                    Password: $scope.Password == '' ? null : $scope.Password,
+                    UserRoles: $scope.userRoles,
+                    UserStatus: $scope.UserStatus
+                }
+            }).success(function (data) {
+                // console.log(data);
+                $scope.outputStatus(data, 'User information updated successfully');
+
+                $scope.Password = '';
+                $window.location = '/admin/user-list';
             });
         };
 
