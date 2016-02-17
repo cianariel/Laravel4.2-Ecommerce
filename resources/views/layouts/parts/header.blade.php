@@ -1,5 +1,13 @@
-<!--    <div {{--id="pagingApp" ng-app="pagingApp" ng-controller="headerController"--}}>-->
-    <div ng-app="pagingApp" ng-controller="headerController" >
+<div id="publicApp" ng-app="publicApp" ng-controller="publicController">
+    <input type="file" name="file" nv-file-select=""
+           uploader="uploader"/>
+
+    <button type="button"
+            ng-show="isMediaUploadable"
+            class="btn btn-success btn-s"
+            ng-click="uploader.uploadAll()">Upload
+    </button>
+   {{-- <div ng-app="pagingApp" ng-controller="headerController" >--}}
         <header class="colophon">
                 <div class="col-xs-12">
                     <h2 id="site-name">Ideaing | Ideas for Smarter Living</h2>
@@ -231,8 +239,25 @@
                             <div class="form-group ">
                                 <label class="col-lg-12 control-label">Personal link</label>
                                 <div class="col-lg-12">
-                                    <span class="ideaing-domain">http://ideaing.</span>
+                                    <span class="ideaing-domain">http://ideaing.  </span>
                                     <input class="form-control personal-link" placeholder="">
+                                </div>
+                            </div>
+                            <div class="form-group ">
+                                <label class="col-lg-12 control-label">Profie Picture</label>
+                                <div class="col-lg-12">
+                                  <span class="ideaing-domain">http://ideaing.</span>
+
+
+
+                              <input type="file" name="file" nv-file-select=""
+                                           uploader="$parent.uploader"/>
+
+                                    <button type="button"
+                                            ng-show="$parent.isMediaUploadable"
+                                            class="btn btn-success btn-s"
+                                            ng-click="$parent.uploader.uploadAll()">Upload
+                                    </button>
                                 </div>
                             </div>
                             <div class="form-group text-center">

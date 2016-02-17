@@ -20,8 +20,8 @@
         public function __construct()
         {
             // check authentication with role 'admin' (default parameter)
-            $this->authCheck = $this->RequestAuthentication(array('admin'));
-          //  $this->authCheck['method-status'] = 'success-with-http';
+            $this->authCheck = $this->RequestAuthentication(array('admin','editor'));
+
         }
 
         public function index()

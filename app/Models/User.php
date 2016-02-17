@@ -139,7 +139,7 @@
         {
             try
             {
-                return User::with('UserProfile')
+                return User::with('userProfile')
                     ->where('email', $email)
                     ->firstOrFail();
 

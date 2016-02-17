@@ -2,17 +2,102 @@
  * Created by sanzeeb on 1/7/2016.
  */
 
-var publicApp = angular.module('publicApp', ['ui.bootstrap', 'ngSanitize']);
+var publicApp = angular.module('publicApp', ['ui.bootstrap', 'ngSanitize', 'angularFileUpload']);
 
 publicApp.config(['$httpProvider', function ($httpProvider) {
     $httpProvider.defaults.headers.common["X-Requested-With"] = 'XMLHttpRequest';
 }]);
 
-publicApp.controller('publicController', ['$scope', '$http', '$window', '$timeout', '$location', '$anchorScroll'
-    , function ($scope, $http, $window, $timeout, $location, $anchorScroll) {
+
+publicApp.controller('ModalInstanceCtrltest', function ($scope, $uibModalInstance) {
+        $scope.ok = function () {
+            $uibModalInstance.close();
+        };
+
+        $scope.cancel = function () {
+            $uibModalInstance.dismiss('cancel');
+        };
+    });
+//$scope, $uibModal,$http,pagingApi, $filter, layoutApi, FileUploader
+publicApp.controller('publicController', ['$scope', '$http', '$window', '$timeout', '$location', '$anchorScroll','$uibModal','FileUploader'
+    , function ($scope, $http, $window, $timeout, $location, $anchorScroll, $uibModal ,FileUploader) {
+
+       // var uploader = null;
+        $scope.TEST = "TSSSSST";
+        $scope.openProfileSetting = function () {
+
+            var templateUrl = "profile-setting.html";
+            var modalInstance = $uibModal.open({
+                templateUrl: templateUrl,
+                scope: $scope,
+                size: 'lg',
+                windowClass : 'profile-setting-modal',
+                controller: 'ModalInstanceCtrltest'
+            });
+
+        };
+
+
+        // uploader section //
+
+         uploader = $scope.uploader = new FileUploader({
+        //  var uploader = new FileUploader({
+            url: '/api/media/media-upload',
+        });
+
+        // FILTERS
+
+        uploader.filters.push({
+            name: 'customFilter',
+            fn: function (item /*{File|FileLikeObject}*/, options) {
+                return this.queue.length < 10;
+            }
+        });
+
+        // Content upload CALLBACKS
+
+        uploader.onWhenAddingFileFailed = function (item /*{File|FileLikeObject}*/, filter, options) {
+            //  console.info('onWhenAddingFileFailed', item, filter, options);
+        };
+        uploader.onAfterAddingFile = function (fileItem) {
+            //   console.info('onAfterAddingFile', fileItem);
+        };
+        uploader.onAfterAddingAll = function (addedFileItems) {
+            //   console.info('onAfterAddingAll', addedFileItems);
+        };
+        uploader.onBeforeUploadItem = function (item) {
+            //   console.info('onBeforeUploadItem', item);
+        };
+        uploader.onProgressItem = function (fileItem, progress) {
+            //   console.info('onProgressItem', fileItem, progress);
+        };
+        uploader.onProgressAll = function (progress) {
+            //   console.info('onProgressAll', progress);
+        };
+        uploader.onSuccessItem = function (fileItem, response, status, headers) {
+            //     console.info('onSuccessItem', fileItem, response, status, headers);
+        };
+        uploader.onErrorItem = function (fileItem, response, status, headers) {
+            //   console.info('onErrorItem', fileItem, response, status, headers);
+        };
+        uploader.onCancelItem = function (fileItem, response, status, headers) {
+            //   console.info('onCancelItem', fileItem, response, status, headers);
+        };
+        uploader.onCompleteItem = function (fileItem, response, status, headers) {
+            //     console.info('onCompleteItem', response);
+            $scope.mediaLink = response.result;
+        };
+        uploader.onCompleteAll = function () {
+            //    console.info('onCompleteAll');
+        };
+        // End uploader section //
+
 
         // initialize variables
         $scope.initPage = function () {
+
+            $scope.TEST = "TSSSSST";
+            console.log($scope.TEST);
 
             // email subscription
             $scope.SubscriberEmail = '';
@@ -23,6 +108,17 @@ publicApp.controller('publicController', ['$scope', '$http', '$window', '$timeou
             $scope.Code='';
 
             $scope.logingRedirectLocation = '/';
+
+            // Media Upload //
+            $scope.mediaTitle = '';
+            $scope.mediaTypes = [
+                {"key": "img-link", "value": "Image Link"},
+                {"key": "img-upload", "value": "Image Upload"},
+                {"key": "video-link", "value": "Video Link"},
+                {"key": "video-upload", "value": "Video Upload"}
+            ];
+            $scope.mediaLink = "";
+            $scope.isMediaUploadable = true;
 
         };
 
@@ -308,6 +404,3 @@ publicApp.controller('publicController', ['$scope', '$http', '$window', '$timeou
 
     }]);
 
-
-// bootstrap for modularization
-//angular.bootstrap(document.getElementById('publicApp'),['publicApp']);
