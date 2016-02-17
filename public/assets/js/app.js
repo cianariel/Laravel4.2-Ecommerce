@@ -92,7 +92,7 @@
             return true;
         });
 
-        $('.shop-by-category-item a').click(function(e){
+        $('.desktop-view .shop-by-category-item a.show-menus, .desktop-view .shop-by-category-item a.hide-menus').click(function(e){
             e.preventDefault();
             $('.shop-by-category-item').removeClass('active');
             $('.shop-by-category-submneu').removeClass('active');
@@ -103,6 +103,26 @@
                 $('.shop-by-category-submneu.' + submenu).addClass('active');
             }
         })
+        $('.desktop-view .shop-by-category-item').mouseover(function(e){
+            $('.shop-by-category-item').removeClass('active');
+            $('.shop-by-category-submneu').removeClass('active');
+            
+//            if($(this).find('a').hasClass('show-menus')){
+                $(this).addClass('active');
+                var submenu = $(this).data('submenu');
+                $('.shop-by-category-submneu.' + submenu).addClass('active');
+//            }
+        });
+        
+        $('.show-and-hide-grandchild').click(function(){
+            if($(this).parent().hasClass('active')){
+                $(".shop-by-category-submneu > div").removeClass('active');
+            }else{
+                $(".shop-by-category-submneu > div").removeClass('active');
+                $(this).parent().addClass('active');
+            }
+        })
+        
         
         $('#mobile-shop-by-category-items').change(function(){
             $('.shop-by-category-submneu').removeClass('active');
@@ -155,6 +175,15 @@
                 $(this).parent().removeClass('hover');
                 $(this).find('.p-show').show();
                 $(this).find('.p-close').hide();
+            }
+        })
+
+        $("body").on('click', '.show-and-hide', function(){
+            if($(this).parent().hasClass('active')){
+                $('.shop-by-category-item').removeClass('active');
+            }else{
+                $('.shop-by-category-item').removeClass('active');
+                $(this).parent().addClass('active');
             }
         })
 

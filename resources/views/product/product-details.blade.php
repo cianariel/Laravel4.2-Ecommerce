@@ -677,11 +677,10 @@
                                         <div class="clearfix"></div>
 
                                         <div class="clearfix"></div>
-                                        <a target="_blank" href="{{ $product['Permalink'] }}" class="box-item__get-it">Get
-                                            it</a>
+                                        <a target="_blank" href="{{ $product['Permalink'] }}" class="box-item__get-it">
+                                            Get it
+                                        </a>
                                     </div>
-                                    
-                                    
                                 </div>
                             @endforeach
                         @endif

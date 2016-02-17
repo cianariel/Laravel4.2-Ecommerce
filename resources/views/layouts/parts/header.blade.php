@@ -15,7 +15,6 @@
                                         <li><a class="ideas" href="#"><i class="m-icon m-icon--bulb"></i>&nbsp; Ideas</a></li>
                                         <li><a class="shop" href="#"><i class="m-icon m-icon--item"></i>&nbsp; Shop</a></li>
                                         <li><a class="disc" href="#"><i class="m-icon m-icon--discuss-active"></i>&nbsp; Discuss</a></li>
-
                                     </ul>
                                 </div>
                                 <div  class="col-sm-5 category-menu hidden-xs">
@@ -28,10 +27,14 @@
                                             </a>
                                         </li>
                                         <li class="nested">
-                                            
-                                            <a class="shop" data-toggle=".shop-menu" href="#"><i class="m-icon m-icon--item"></i>
+                                            <a class="m-icon-text-holder" href="/shop">
+                                                <i class="m-icon m-icon--shopping-bag-light-green"></i>
                                                 <span class="m-icon-text">Shop</span> 
                                                 <span class="box-link-active-line"></span>
+                                            </a>
+                                            <a class="shop" data-toggle=".shop-menu" href="#">
+                                                <i class="m-icon--Header-Dropdown down"></i>
+                                                <i class="m-icon--footer-up-arrow up"></i>
                                             </a>
                                         </li>
                                         <li>
