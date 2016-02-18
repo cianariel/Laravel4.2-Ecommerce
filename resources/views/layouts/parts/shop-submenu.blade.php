@@ -53,7 +53,7 @@
                     </section>
                 </div>
             </nav>
-            <nav id="all-shop-menu" class="shop-menu hidden-soft hidden-620">
+            <nav id="all-shop-menu" class="shop-menu hidden-soft ">
                 <div class="container full-sm">
                     <section class="col-xs-4 shop-by-category" >
                         <p class="title"><a href="/shop/">Shop by Category</a></p>
@@ -87,3 +87,5 @@
                 </div>
             </nav>
         </header>
+
+        

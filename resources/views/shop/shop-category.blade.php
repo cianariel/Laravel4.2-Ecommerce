@@ -3,9 +3,9 @@
 @section('body-class'){{ 'shoppage shop-category' }}@stop
 
 @section('content')
-    <nav class="mid-nav hidden-xs">
+    <nav class="mid-nav ">
         <div class="container full-sm fixed-sm">
-            <ul class="wrap col-xs-9">
+            <ul class="wrap col-lg-9">
                 @if($parentCategory)
                     <li class="box-link-ul active">
                         <a class="box-link" href="/shop/smart-home" >
@@ -32,7 +32,7 @@
                     </li>
                 @endif
             </ul>
-                <a class="browse-all" data-toggle="#all-shop-menu" href="#">
+                <a class="browse-all hidden-xs hidden-sm" data-toggle="#all-shop-menu" href="#">
                     <i class="m-icon--menu"></i>
                     <span>
                         BROWSE ALL

@@ -4358,6 +4358,12 @@ a:hover, a:focus {
 
 [data-toggle] {
   cursor: pointer; }
+  [data-toggle] .up {
+    display: none; }
+  [data-toggle].active .up {
+    display: block; }
+  [data-toggle].active .down {
+    display: none; }
 
 .clearfix.pocket {
   height: 50px;
@@ -5141,8 +5147,7 @@ nav ul {
 nav a {
   display: inline-block;
   float: left;
-  padding: 20px;
-  padding-left: 10px;
+  padding: 20px 0px;
   text-transform: uppercase; }
 
 #hero {
@@ -6160,23 +6165,19 @@ article.product {
 
 header.colophon {
   min-height: 60px; }
-  header.colophon #top-nav .signin {
-    /*      padding-right: 0;*/ }
-    header.colophon #top-nav .signin a {
-      float: right;
-      /*        margin-right: 10px;*/
-      padding-left: 33px;
-      white-space: nowrap;
-      /*        margin-right: 0px;*/
-      padding-right: 0px; }
-      header.colophon #top-nav .signin a .m-icon {
-        margin-right: 5px;
-        border: 1px solid;
-        border-radius: 16px;
-        font-size: 23px;
-        margin-top: -5px; }
-      header.colophon #top-nav .signin a:hover {
-        /*          background-image: url("/assets/images/signin-blue.png");*/ }
+  header.colophon #top-nav a.signin {
+    float: right;
+    padding-left: 33px;
+    white-space: nowrap;
+    padding-right: 0px; }
+    header.colophon #top-nav a.signin .m-icon {
+      margin-right: 5px;
+      border: 1px solid;
+      border-radius: 16px;
+      font-size: 23px;
+      margin-top: -5px; }
+    header.colophon #top-nav a.signin:hover {
+      /*          background-image: url("/assets/images/signin-blue.png");*/ }
   header.colophon .logo-wrap {
     position: absolute;
     left: 42%; }
@@ -6260,6 +6261,37 @@ header.colophon {
 
 .box-link-active-line {
   position: absolute; }
+
+.mobile-top-menu {
+  position: absolute;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  display: none;
+  z-index: 999;
+  padding: 20px 0px; }
+  .mobile-top-menu a {
+    color: #fff; }
+  .mobile-top-menu ul li {
+    padding-top: 15px;
+    padding-bottom: 10px;
+    padding-left: 15px;
+    border-bottom: 1px solid #444; }
+  .mobile-top-menu ul li:last-child {
+    border-bottom: 0px; }
+  .mobile-top-menu.mobile-mid-menu {
+    top: 115px; }
+
+#top-nav .mobile-top-menu-switcher i {
+  font-size: 16px; }
+
+#top-nav .mobile-top-menu-switcher .up {
+  display: none; }
+
+#top-nav .mobile-top-menu-switcher.active .up {
+  display: block; }
+
+#top-nav .mobile-top-menu-switcher.active .down {
+  display: none; }
 
 #top-nav .category-menu {
   padding-left: 0px; }
@@ -6656,7 +6688,7 @@ body.product-details .article-content p {
   top: 60px;
   z-index: 39;
   width: 100%;
-  background: rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 0.9);
   overflow: hidden;
   /*    .box-link.active{*/ }
   .mid-nav li.home {
@@ -6689,12 +6721,15 @@ body.product-details .article-content p {
     float: right;
     margin-top: 15px; }
     .mid-nav .browse-all .m-icon--menu {
-      font-size: 20px;
+      font-size: 17px;
       float: left;
       margin-right: 5px; }
     .mid-nav .browse-all span {
       position: relative;
-      top: 2px; }
+      top: 0px; }
+      .mid-nav .browse-all span i {
+        margin-left: 2px;
+        font-size: 10px; }
     .mid-nav .browse-all .up {
       display: none; }
     .mid-nav .browse-all.active .down {
@@ -6810,6 +6845,21 @@ body.product-details .article-content p {
 .mid-nav:not(.rooms) .box-link-ul:not(:first-child) .box-link, .mid-nav .extra-nav:not(.rooms) .box-link-ul:not(:first-child) .box-link {
   margin-left: 17px; }
 
+@media only screen and (max-width: 767px) {
+  .mid-nav:not(.rooms), .mid-nav .extra-nav:not(.rooms) {
+    /*.box-link.active{
+            margin-right: 0px;
+        }
+        
+        .box-link-ul:not(:first-child){
+            .box-link{
+                margin-left: 0px;
+            }
+        }
+        .box-link-active-line{
+            display: none;
+        }*/ } }
+
 .mobile-extra-nav,
 .mobile-more-nav {
   padding: 20px; }
@@ -6827,7 +6877,7 @@ header.sub-head {
   overflow: hidden;
   background: #F2F5F5;
   z-index: 10;
-  top: 50px; }
+  top: 55px; }
   @media only screen and (max-width: 768px) {
     .shop-menu {
       top: 0px; } }
@@ -7062,8 +7112,8 @@ header.sub-head {
 
 #myModal.login-signup-modal .close-button {
   position: absolute;
-  top: -12%;
-  right: -12%;
+  top: -36px;
+  right: 15px;
   color: #fff;
   font-size: 3rem; }
 
@@ -7788,12 +7838,13 @@ body.room-landing .grid-insert {
       border-style: solid;
       border-width: 0 7.5px 10px 7.5px;
       border-color: transparent transparent #007bff transparent;
-      left: 33%;
+      left: 30%;
       top: -7px; }
   .hero-tags img:not(.vendor-logo) {
-    width: 135px;
-    height: 135px;
-    background: #fff; }
+    width: 90px;
+    height: 90px;
+    background: #fff;
+    margin-left: 25px; }
   .hero-tags .vendor-logo {
     margin-top: 25px; }
 
@@ -7895,11 +7946,11 @@ footer.about-footer {
 
 @media only screen and (max-width: 860px) {
   #top-nav a .m-icon-text {
-    display: none; } }
+    /*        display: none;*/ } }
 
 @media only screen and (max-width: 1200px) {
   #top-nav a {
-    margin-right: 3%; }
+    /*    margin-right: 15px;*/ }
   .mid-nav a, .mid-nav .extra-nav a {
     padding-left: 10px;
     padding-right: 10px; }
@@ -7971,9 +8022,10 @@ footer.about-footer {
   header.colophon .logo-wrap {
     left: 38%; }
   header.colophon #top-nav .category-menu {
-    padding: 0 10px 0 5px; }
-  header.colophon .signin {
-    /*      width: 144px;*/ }
+    /*            padding: 0 10px 0 5px;*/
+    padding-left: 15px; }
+  header.colophon #top-nav .signin {
+    padding-right: 15px !important; }
   .shop-menu {
     padding-left: 10px;
     padding-right: 10px; }
@@ -8079,22 +8131,22 @@ footer.about-footer {
         margin: 0;
         margin-right: 30px;
         padding: 0; }
-    #top-nav .signin {
-      /*      width: 80px !important;*/
-      padding: 0 15px;
-      /*      margin-right: 10px;*/
-      margin-top: 10px; }
-      #top-nav .signin a {
-        cursor: pointer;
-        /*        width: 100% !important;*/
+    #top-nav a.signin {
+      /*cursor: pointer;
         text-indent: 0 !important;
-        background: #FF0042;
+        background: $iridium;
         border-radius: 3px;
-        color: #fff  !important;
+        color: #fff  !important;;
         text-transform: none;
         padding: 12px 23px 7px  5px !important;
         width: 83px;
-        margin-right: 15px; }
+        margin-right: 15px;*/
+      padding-right: 15px !important;
+      padding-left: 15px !important; }
+      #top-nav a.signin i {
+        display: none; }
+    #top-nav .category-menu {
+      padding-left: 15px; }
   .main-content.landing {
     padding: 0 0 20px; }
   article.product .article-content {
@@ -8164,7 +8216,7 @@ footer.about-footer {
           margin-right: 5px;
           margin-top: -3px; }
   .mid-nav a, .mid-nav .extra-nav a {
-    font-size: 1.8rem; }
+    /*    font-size: 1.8rem;*/ }
   .idea-stories header.story-details {
     padding-bottom: 0; }
   body.product-details .share-bar .all-shares,
@@ -8285,8 +8337,6 @@ footer.about-footer {
     /*      padding-left: 7%;*/ }
   #top-nav .search-bar a {
     width: 30px; }
-  header.colophon #top-nav .category-menu {
-    margin-left: 10px; }
   .story-details .author-image-big {
     max-width: 100px;
     float: left; }
@@ -8398,8 +8448,8 @@ footer.about-footer {
   #top-nav a {
     /*      text-indent: -9999px;*/
     /*      width: 40px;*/
-    padding-left: 5px;
-    padding-right: 0px;
+    /*      padding-left: 5px;*/
+    /*      padding-right: 0px;*/
     margin-left: 0; }
     #top-nav a#ideaing-logo {
       width: auto;
@@ -8410,19 +8460,19 @@ footer.about-footer {
       #top-nav a#ideaing-logo .m-icon.scroll-logo {
         display: block; }
   .mid-nav a, .mid-nav .extra-nav a {
-    padding-left: 2.2%;
-    padding-right: 2.2%;
-    padding-left: 3%;
-    padding-right: 2.5%;
-    font-size: 1.6rem; }
+    /*      padding-left: 2.2%;*/
+    /*      padding-right: 2.2%;*/
+    /*      padding-left: 3%;*/
+    /*      padding-right: 2.5%;*/
+    /*      font-size: 1.6rem;*/ }
     .mid-nav a.more-link {
       padding-left: 5%; }
   .mid-nav li.selected a,
   .mid-nav a:hover {
-    margin-top: 6px;
-    padding-left: 1.5%;
-    padding-right: 1.5%;
-    background-color: #CE1F46; }
+    /*      margin-top: 6px;*/
+    /*      padding-left: 1.5%;*/
+    /*      padding-right: 1.5%;*/
+    /*      background-color: #CE1F46;*/ }
   #hero-nav .category-nav {
     /*      padding-left: 3%;*/ }
   #hero-nav a {
@@ -8468,9 +8518,9 @@ footer.about-footer {
   header.colophon #top-nav .category-menu {
     margin-left: 0; }
   .mid-nav a, .mid-nav .extra-nav a {
-    padding-left: 1.5%;
-    padding-right: 1.5%;
-    font-size: 1.5rem; }
+    /*      padding-left: 1.5%;*/
+    /*      padding-right: 1.5%;*/
+    /*      font-size: 1.5rem;*/ }
   #hero-nav a {
     /*      padding-right: 4%;*/ }
   #hero-nav .container {
@@ -8478,8 +8528,8 @@ footer.about-footer {
 
 @media screen and (max-width: 370px) {
   #top-nav a {
-    width: 28px;
-    margin-left: 0; }
+    /*      width: 28px;*/
+    /*      margin-left: 0;*/ }
   #top-nav .mobile-wrap {
     width: 170px; }
   #hero-nav {
@@ -8729,7 +8779,10 @@ body.shop-landing .app-wrap {
   margin-top: 75px; }
 
 body.shop-landing .mid-nav .wrap, .mid-nav body.shop-landing .extra-nav .wrap {
-  width: 494px; }
+  /*            width: 494px;*/
+  text-align: center; }
+  body.shop-landing .mid-nav .wrap li, .mid-nav body.shop-landing .extra-nav .wrap li {
+    display: inline-block; }
 
 body.shop-landing .shoplanding-title {
   border: 0px;
@@ -9033,7 +9086,7 @@ body.profilepage {
       position: absolute;
       /*            text-shadow: 1px 0 #585858;*/
       right: 20px;
-      top: 20px;
+      top: 65px;
       text-align: center; }
       body.profilepage #hero .edit-background i {
         color: white;
@@ -9304,7 +9357,7 @@ html.hide-overflow {
   line-height: 50px;
   text-align: center;
   cursor: pointer;
-  z-index: 100; }
+  z-index: 35; }
   .box-item.product-box .mobile-show .p-close {
     display: none; }
 
@@ -9631,6 +9684,8 @@ html.hide-overflow {
     margin: auto; }
   .star-raiting {
     margin-top: 0px; }
+  #top-nav .box-link-active-line {
+    display: none; }
   #top-nav .mobile-menu {
     width: 80%;
     position: absolute;
