@@ -12,7 +12,7 @@
                                     <li class="visible-xs">
                                         <a class="mobile-top-menu-switcher" data-toggle="#mobile-top-menu" href="#">
                                             <i class=" m-icon--Close up"></i>
-                                            <img class=" m-icon--Close down" src="/assets/images/menu-black.png">
+                                            <i class="m-icon--MenuButton down"></i>
 <!--                                            <i class="m-icon--footer-up-arrow down"></i>-->
                                         </a>
                                     </li>
@@ -155,6 +155,7 @@
         </div>
         <div id="mobile-home-menu" class="mobile-top-menu mobile-mid-menu">
             <ul>
+                <li><a class="box-link @if(isset($roomInformation['Permalink']) && $roomInformation['Permalink'] == 'bedroom') active @endif " href="{{url('room/bedroom')}}">Bedroom</a></li>
                 <li><a class="box-link @if(isset($roomInformation['Permalink']) && $roomInformation['Permalink'] == 'office') active @endif " href="{{url('room/office')}}">Office</a></li>
                 <li><a class="box-link @if(isset($roomInformation['Permalink']) && $roomInformation['Permalink'] == 'living') active @endif " href="{{url('room/living')}}">Living</a></li>
                 <li><a class="box-link @if(isset($roomInformation['Permalink']) && $roomInformation['Permalink'] == 'outdoor') active @endif " href="{{url('room/outdoor')}}">Outdoor</a></li>
@@ -165,7 +166,7 @@
         </div>
 
         <nav class="mid-nav rooms ">
-            <div class="container full-sm fixed-sm hidden-xs hidden-sm">
+            <div class="container full-sm fixed-sm hidden-xs ">
                 <ul class="wrap col-lg-9">
                     <li class="home ">
                         <a class="box-link @if(!isset($roomInformation['Permalink']) || $roomInformation['Permalink'] == '/') active @endif"   href="/">
@@ -185,12 +186,11 @@
 
                 </ul>
             </div>
-            <div class="container mobile-menu visible-xs visible-sm full-sm fixed-sm">
+            <div class="container mobile-menu visible-xs full-sm fixed-sm">
                 <ul class="wrap col-lg-9">
                     <li ><a class="box-link @if(!isset($roomInformation['Permalink']) || $roomInformation['Permalink'] == '/') active @endif"   href="/">Smart Home</a></li>
                     <li><a class="box-link @if(isset($roomInformation['Permalink']) && $roomInformation['Permalink'] == 'kitchen') active @endif " href="{{url('room/kitchen')}}">Kitchen</a></li>
                     <li><a class="box-link @if(isset($roomInformation['Permalink']) && $roomInformation['Permalink'] == 'bath') active @endif " href="{{url('room/bath')}}">Bath</a></li>
-                    <li><a class="box-link @if(isset($roomInformation['Permalink']) && $roomInformation['Permalink'] == 'bedroom') active @endif " href="{{url('room/bedroom')}}">Bedroom</a></li>
                 </ul>
                 <a class="right-menu-arrow pull-right" data-toggle="#mobile-home-menu" href="#">
                     <i class="m-icon--Header-Dropdown down"></i>
