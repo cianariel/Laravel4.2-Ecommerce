@@ -508,13 +508,13 @@
 
                                                 <div class="star-raiting" style="text-align: center">
                                                     <?php
-                                                    $stars = $review->value;
+                                                    $stars = isset($review->value) ? $review->value : 0;
                                                     $fStar = floor($stars);
                                                     $cStar = ceil($stars);
                                                     $halfStar = -1;
                                                     if ($fStar == $cStar)
                                                         $halfStar = $cStar;
-
+                                                    // TODO - move to model or Angular
                                                     ?>
                                                     @for($i=1; $i<=5; $i++)
                                                         @if($i <= $fStar)
