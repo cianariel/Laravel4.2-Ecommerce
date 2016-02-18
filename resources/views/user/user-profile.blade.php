@@ -4,10 +4,9 @@
 
 @section('content')
     <div id="pagingApp" ng-app="pagingApp" ng-controller="pagingController">
-        <nav class="mid-nav hidden-xs">
-            <div class="container">
-                <div class="col-sm-8 col-sm-offset-2">
-                    <ul class="left-nav hidden-620">
+        <nav class="mid-nav">
+            <div class="container full-sm fixed-sm">
+                    <ul class="wrap col-lg-9">
                         <li class="box-link-ul  active-ul ">
                             <a class="box-link active" href="/user/profile">
                                 <span class="box-link-active-line"></span>
@@ -17,7 +16,6 @@
                         </li>
                     </ul>
                 </div>                
-            </div>
         </nav>
 
 

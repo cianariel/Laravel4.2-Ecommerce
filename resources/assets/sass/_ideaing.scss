@@ -67,6 +67,17 @@ a:hover, a:focus{
 
 [data-toggle]{
   cursor: pointer;
+  .up{
+      display: none;
+  }
+  &.active{
+      .up{
+          display: block;
+      }
+      .down{
+          display: none;
+      }
+  }
 }
 
 .clearfix.pocket{
@@ -800,8 +811,7 @@ nav {
   a{
     display: inline-block;
     float: left;
-    padding: 20px;
-    padding-left: 10px;
+    padding: 20px 0px;
     text-transform: uppercase;
   }
 }
@@ -2535,15 +2545,11 @@ article.product{
 header.colophon{
   min-height: 60px;
   #top-nav{
-    .signin{
-/*      padding-right: 0;*/
+        a.signin{
 
-      a{
         float: right;
-/*        margin-right: 10px;*/
         padding-left: 33px;
         white-space: nowrap;
-/*        margin-right: 0px;*/
         padding-right: 0px;
         .m-icon{
             margin-right: 5px;
@@ -2558,7 +2564,6 @@ header.colophon{
         }
       }
     }
-  }
 
   .logo-wrap{
     position: absolute;
@@ -2695,7 +2700,51 @@ header.colophon{
     position: absolute;
 }
 
+.mobile-top-menu{
+    position: absolute;
+    width: 100%;
+    background: rgba(0,0,0, 0.8);
+    display: none;
+    z-index: 999;
+    padding: 20px 0px;
+    a{
+        color: #fff;
+    }
+    ul{
+        li{
+            padding-top: 15px;
+            padding-bottom: 10px;
+            padding-left: 15px;
+            border-bottom: 1px solid #444;
+        }
+        li:last-child{
+            border-bottom: 0px;
+        }
+    }
+    &.mobile-mid-menu{
+        top: 115px;
+    }
+}
+
 #top-nav{
+    
+    .mobile-top-menu-switcher{
+        i{
+            font-size: 16px;
+        }
+        .up{
+            display: none;
+        }
+        &.active{
+            .up{
+                display: block;
+            }
+            .down{
+                display: none;
+            }
+        }
+    }
+    
     .category-menu{
         a{
             padding-bottom: 0px;
@@ -3270,7 +3319,7 @@ body.product-details{
     top: 60px;
     z-index: 39;
     width: 100%;
-    background: rgba(255,255,255,.8);
+    background: rgba(255,255,255,.9);
     overflow: hidden;
 
     li.home{
@@ -3317,13 +3366,17 @@ body.product-details{
         float: right;
         margin-top: 15px;
         .m-icon--menu{
-            font-size: 20px;
+            font-size: 17px;
             float: left;
             margin-right: 5px;
         }
         span{
             position: relative;
-            top: 2px;
+            top: 0px;
+            i{
+                margin-left: 2px;
+                font-size: 10px;
+            }
         }
 
         .up{
@@ -3518,6 +3571,20 @@ body.product-details{
             margin-left: 17px;
         }
     }
+    @media only screen and (max-width: 767px){
+        /*.box-link.active{
+            margin-right: 0px;
+        }
+        
+        .box-link-ul:not(:first-child){
+            .box-link{
+                margin-left: 0px;
+            }
+        }
+        .box-link-active-line{
+            display: none;
+        }*/
+    }    
 }
 
 
@@ -3540,7 +3607,7 @@ header.sub-head{
   overflow: hidden;
   background: $pale-grey;
   z-index: 10;
-  top: 50px;
+  top: 55px;
   
     @media only screen and (max-width: 768px){
         top:0px;
@@ -3894,8 +3961,8 @@ header.sub-head{
 #myModal.login-signup-modal{
   .close-button{
     position: absolute;
-    top: -12%;
-    right: -12%;
+    top: -36px;
+    right: 15px;
     color: #fff;
     font-size: 3rem;
   }
@@ -5278,12 +5345,12 @@ footer.about-footer{
 
 @media only screen and (max-width: 860px){
     #top-nav a .m-icon-text{
-        display: none;
+/*        display: none;*/
     }
 }
 @media only screen and (max-width: 1200px){
   #top-nav a {
-    margin-right: 3%;
+/*    margin-right: 15px;*/
   }
 
   .mid-nav{
@@ -5421,13 +5488,14 @@ footer.about-footer{
 
     #top-nav{
       .category-menu{
-        padding: 0 10px 0 5px;
-      }
+/*            padding: 0 10px 0 5px;*/
+            padding-left: 15px;
     }
-
     .signin{
-/*      width: 144px;*/
+            padding-right: 15px !important;
     }
+  }
+
   }
 
   .shop-menu{
@@ -5662,14 +5730,8 @@ footer.about-footer{
 
     }
 
-    .signin{
-/*      width: 80px !important;*/
-      padding: 0 15px;
-/*      margin-right: 10px;*/
-      margin-top: 10px;
-      a{
-        cursor: pointer;
-/*        width: 100% !important;*/
+    a.signin{
+        /*cursor: pointer;
         text-indent: 0 !important;
         background: $iridium;
         border-radius: 3px;
@@ -5677,12 +5739,18 @@ footer.about-footer{
         text-transform: none;
         padding: 12px 23px 7px  5px !important;
         width: 83px;
-        margin-right: 15px;
+        margin-right: 15px;*/
+        
+        padding-right: 15px !important;
+        padding-left: 15px !important;
+        i{
+            display: none;
       }
     }
-
+    .category-menu {
+        padding-left: 15px;
+    }
   }
-//}
 
 
   .main-content.landing{
@@ -5828,7 +5896,7 @@ footer.about-footer{
 
 
   .mid-nav a {
-    font-size: 1.8rem;
+/*    font-size: 1.8rem;*/
   }
 
   .idea-stories  header.story-details{
@@ -6064,10 +6132,6 @@ footer.about-footer{
     width: 30px;
   }
 
-  header.colophon #top-nav .category-menu {
-    margin-left: 10px;
-  }
-
   .story-details{
     .author-image-big{
       max-width: 100px;
@@ -6280,8 +6344,8 @@ footer.about-footer{
     a {
 /*      text-indent: -9999px;*/
 /*      width: 40px;*/
-      padding-left: 5px;
-      padding-right: 0px;
+/*      padding-left: 5px;*/
+/*      padding-right: 0px;*/
       margin-left: 0;
       
       &#ideaing-logo{
@@ -6303,11 +6367,11 @@ footer.about-footer{
 
   .mid-nav{
     a {
-      padding-left: 2.2%;
-      padding-right: 2.2%;
-      padding-left: 3%;
-      padding-right: 2.5%;
-      font-size: 1.6rem;
+/*      padding-left: 2.2%;*/
+/*      padding-right: 2.2%;*/
+/*      padding-left: 3%;*/
+/*      padding-right: 2.5%;*/
+/*      font-size: 1.6rem;*/
 
       &.more-link{
         padding-left: 5%;
@@ -6316,10 +6380,10 @@ footer.about-footer{
 
     li.selected a,
     a:hover{
-      margin-top: 6px;
-      padding-left: 1.5%;
-      padding-right: 1.5%;
-      background-color: #CE1F46;
+/*      margin-top: 6px;*/
+/*      padding-left: 1.5%;*/
+/*      padding-right: 1.5%;*/
+/*      background-color: #CE1F46;*/
     }
   }
 
@@ -6422,9 +6486,9 @@ footer.about-footer{
 
   .mid-nav {
     a {
-      padding-left: 1.5%;
-      padding-right: 1.5%;
-      font-size: 1.5rem;
+/*      padding-left: 1.5%;*/
+/*      padding-right: 1.5%;*/
+/*      font-size: 1.5rem;*/
     }
   }
 
@@ -6444,8 +6508,8 @@ footer.about-footer{
 
   #top-nav{
     a {
-      width: 28px;
-      margin-left: 0;
+/*      width: 28px;*/
+/*      margin-left: 0;*/
     }
     .mobile-wrap{
       width: 170px;
@@ -6785,7 +6849,11 @@ body.shop-landing{
     }
     .mid-nav{
         .wrap{
-            width: 494px;
+/*            width: 494px;*/
+            text-align: center;
+            li{
+                display: inline-block;
+            }
         }
     }
     .shoplanding-title{
@@ -7220,7 +7288,7 @@ body.profilepage{
             position: absolute;
 /*            text-shadow: 1px 0 #585858;*/
             right: 20px;
-            top: 20px;
+            top: 65px;
             text-align: center;
             i{
                 color: white;
@@ -7608,7 +7676,7 @@ html.hide-overflow{
         line-height: 50px;
         text-align: center;
         cursor: pointer;
-        z-index: 100;
+        z-index: 35;
         .p-close{
             display: none;
         }
@@ -8049,6 +8117,10 @@ html.hide-overflow{
         margin-top: 0px;
     }
   #top-nav{
+      .box-link-active-line{
+          display: none;
+      }
+      
     .mobile-menu{
       width: 80%;
       //display: block !important;

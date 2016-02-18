@@ -54,9 +54,9 @@
 
         }
     ?>
-        <nav class="mid-nav hidden-xs" >
+        <nav class="mid-nav " >
                 <div class="container">
-                    <ul class="wrap col-xs-9">
+                    <ul class="wrap col-lg-9 ">
                         <!--                    <li><a class="home-link" href="#">Home</a></li>-->
                     @if(empty($mainCategory))
                         <li class="box-link-ul   ">

@@ -95,5 +95,7 @@
             </form>
         </div>
     </div>
-    <span class="close-button" data-dismiss="modal">X</span>
+    <span class="close-button" data-dismiss="modal">
+        <i class="m-icon--Close"></i>
+    </span>
 </div>

@@ -6,9 +6,9 @@
     <script type="text/javascript">
         var permalink = "{{$permalink}}";
     </script>
-    <nav class="mid-nav hidden-xs">
+    <nav class="mid-nav ">
         <div class="container full-sm fixed-sm">
-            <ul class="wrap col-xs-9">
+            <ul class="wrap col-lg-9">
                 @if(isset($productInformation['CatTree']))
                     @foreach( $productInformation['CatTree'] as $key => $category )
                         <li class="box-link-ul ">

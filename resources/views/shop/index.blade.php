@@ -3,7 +3,7 @@
 @section('body-class'){{ 'shoppage shop-landing' }}@stop
 
 @section('content')
-    <nav class="mid-nav hidden-xs">
+    <nav class="mid-nav ">
         <div class="container full-sm fixed-sm">
             <div class="">
                 <ul class="wrap">

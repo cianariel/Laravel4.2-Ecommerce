@@ -7,37 +7,34 @@
                     <nav id="top-nav" class="row">
                         <div class="container full-sm fixed-sm">
                             <div class="top-nav-holder">
-                                <div class="visible-xs col-xs-1">
-                                    <div class="mobile-menu-switch " data-toggle=".mobile-menu" data-overlay="true"></div>
-                                </div>
-                                <div class="mobile-menu col-xs-8 hidden-soft">
+                            <div class="col-xs-5 col-sm-5 category-menu">
                                     <ul>
-                                        <li><a class="ideas" href="#"><i class="m-icon m-icon--bulb"></i>&nbsp; Ideas</a></li>
-                                        <li><a class="shop" href="#"><i class="m-icon m-icon--item"></i>&nbsp; Shop</a></li>
-                                        <li><a class="disc" href="#"><i class="m-icon m-icon--discuss-active"></i>&nbsp; Discuss</a></li>
-                                    </ul>
-                                </div>
-                                <div  class="col-sm-5 category-menu hidden-xs">
-                                    <ul>
+                                    <li class="visible-xs">
+                                        <a class="mobile-top-menu-switcher" data-toggle="#mobile-top-menu" href="#">
+                                            <i class=" m-icon--Close up"></i>
+                                            <img class=" m-icon--Close down" src="/assets/images/menu-black.png">
+<!--                                            <i class="m-icon--footer-up-arrow down"></i>-->
+                                        </a>
+                                    </li>
                                         <li>
                                             <a class="ideas" href="/">
-                                                <i class="m-icon m-icon--bulb"></i>
+                                            <i class="hidden-xs m-icon m-icon--bulb"></i>
                                                 <span class="m-icon-text">Ideas</span>
                                                 <span class="box-link-active-line"></span>
                                             </a>
                                         </li>
                                         <li class="nested">
                                             <a class="m-icon-text-holder" href="/shop">
-                                                <i class="m-icon m-icon--shopping-bag-light-green"></i>
+                                            <i class="hidden-xs m-icon m-icon--shopping-bag-light-green"></i>
                                                 <span class="m-icon-text">Shop</span> 
                                                 <span class="box-link-active-line" style="margin-left: 10px;"></span>
                                             </a>
-                                            <a class="shop" data-toggle="#shop-menu" href="#">
+                                        <a class="shop hidden-xs" data-toggle="#shop-menu" href="#">
                                                 <i class="m-icon--Header-Dropdown down"></i>
                                                 <i class="m-icon--footer-up-arrow up"></i>
                                             </a>
                                         </li>
-                                        <li>
+                                    <li class="hidden-xs">
                                             <a class="disc" href="#"><i class="m-icon m-icon--discuss-active"></i>&nbsp;
                                                 <span class="m-icon-text">Discuss</span>
                                             </a>
@@ -45,8 +42,8 @@
                                     </ul>
                                 </div>
 
-                                <div class="col-xs-6 col-sm-3 text-center">
-                                    <a id="ideaing-logo" class="center-block" href="/">
+                            <div class="col-xs-2 col-sm-3 text-center">
+                                <a id="ideaing-logo" class="center-block hidden-xs" href="/">
                                         <i class="m-icon m-icon--logo-without-text-blue">
                                             <span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span><span class="path6"></span><span class="path7"></span><span class="path8"></span><span class="path9"></span><span class="path10"></span><span class="path11"></span><span class="path12"></span><span class="path13"></span><span class="path14"></span><span class="path15"></span><span class="path16"></span><span class="path17"></span><span class="path18"></span>
                                         </i>
@@ -59,6 +56,14 @@
                                         </i>
     <!--                                    <img src="/assets/images/logo-hover.png" class="img-responsive " alt="">-->
                                     </a>
+                                <a id="ideaing-logo" class="center-block visible-xs" href="/">
+                                    <i class="m-icon m-icon--bulb2">
+                                        <span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span><span class="path6"></span><span class="path7"></span><span class="path8"></span><span class="path9"></span><span class="path10"></span>
+                                    </i>
+                                    <i class="m-icon m-icon--bulb2 scroll-logo">
+                                        <span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span><span class="path6"></span><span class="path7"></span><span class="path8"></span><span class="path9"></span><span class="path10"></span>
+                                    </i>
+                                </a>
                                 </div>
 
                                 <section class="search-bar col-sm-2 hidden-xs">
@@ -67,12 +72,15 @@
                                             <i class="m-icon m-icon--search-id"></i>
                                             <input class="form-control  " type="text" name="search" placeholder="Search..."/>
                                         </span>
+                                    <span class="search-input-holder visible-xs">
+                                        <i class="m-icon m-icon--search-id"></i>
+                                    </span>
                                     </div>
                                 </section>
 
-                                <?php if(isset($login) && $login) { ?>
                                     <div class="col-xs-5 col-sm-2">
                                         <div class="row">
+                                    <?php if(isset($login) && $login) { ?>
                                             <div class="pull-right profile-photo-holder">
                                                 <a href="#"><img width="40px" src="<?php echo isset($profile) ? $profile : "" ?>" alt="" class="profile-photo "></a>
                                                 <span class="box-link-active-line"></span>
@@ -116,17 +124,13 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <a href="#" class="search-toggle visible-xs pull-right" data-toggle=".mobile-search-bar"><i class="m-icon m-icon--search-id"></i></a>
 
-                                        </div>
-                                    </div>
                                 <?php }  else { ?>
-                                <div class="col-xs-3 col-sm-2  signin">
-                                    <div class="row">
-                                        <a data-toggle="modal" data-target="#myModal" href="/login"><i class="m-icon m-icon--user"></i> Log in</a>
+                                        <a class="pull-right signin" data-toggle="modal" data-target="#myModal" href="/login"><i class="m-icon m-icon--user"></i> Log in</a>
+                                    <?php } ?>
+                                    <a href="#" class="search-toggle visible-xs pull-right" data-toggle=".mobile-search-bar"><i class="m-icon m-icon--search-id"></i></a>
                                     </div>
                                 </div>
-                               <?php } ?>
                                 <div class="clearfix"></div>
                             </div>
                             <div class="clearfix"></div>
@@ -142,10 +146,28 @@
              include('/var/www/ideaing/resources/views/layouts/parts/shop-submenu.blade.php')
         ?>
 
+        <div id="mobile-top-menu" class="mobile-top-menu" >
+            <ul>
+                <li><a class="ideas" href="/"><i class="m-icon m-icon--bulb"></i>&nbsp; IDEAS</a></li>
+                <li><a class="shop" href="/shop"><i class="m-icon m-icon--item"></i>&nbsp; SHOP</a></li>
+                <li><a class="disc" href="#"><i class="m-icon m-icon--discuss-active"></i>&nbsp; DISCUSS</a></li>
+            </ul>
+        </div>
+        <div id="mobile-home-menu" class="mobile-top-menu mobile-mid-menu">
+            <ul>
+                <li><a class="box-link @if(isset($roomInformation['Permalink']) && $roomInformation['Permalink'] == 'bedroom') active @endif " href="{{url('room/bedroom')}}">Bedroom</a></li>
+                <li><a class="box-link @if(isset($roomInformation['Permalink']) && $roomInformation['Permalink'] == 'office') active @endif " href="{{url('room/office')}}">Office</a></li>
+                <li><a class="box-link @if(isset($roomInformation['Permalink']) && $roomInformation['Permalink'] == 'living') active @endif " href="{{url('room/living')}}">Living</a></li>
+                <li><a class="box-link @if(isset($roomInformation['Permalink']) && $roomInformation['Permalink'] == 'outdoor') active @endif " href="{{url('room/outdoor')}}">Outdoor</a></li>
+                <li><a class="box-link @if(isset($roomInformation['Permalink']) && $roomInformation['Permalink'] == 'lighting') active @endif " href="{{url('room/lighting')}}">Lighting</a></li>
+                <li><a class="box-link @if(isset($roomInformation['Permalink']) && $roomInformation['Permalink'] == 'decor') active @endif" href="{{url('room/decor')}}">Decor</a></li>
 
-        <nav class="mid-nav rooms hidden-xs">
-            <div class="container full-sm fixed-sm">
-                <ul class="wrap col-xs-9">
+            </ul>
+        </div>
+
+        <nav class="mid-nav rooms ">
+            <div class="container full-sm fixed-sm hidden-xs hidden-sm">
+                <ul class="wrap col-lg-9">
                     <li class="home ">
                         <a class="box-link @if(!isset($roomInformation['Permalink']) || $roomInformation['Permalink'] == '/') active @endif"   href="/">
                         <span class="box-link-active-line"></span>
@@ -164,26 +186,17 @@
 
                 </ul>
             </div>
-            <div class="container mobile-menu hidden-lg hidden-md hidden-sm hidden-xs full-620  fixed-sm">
-                <ul>
-                    <li><a href="/room/kitchen">Kitchen</a></li>
-                    <li><a href="/room/kitchen">Bath</a></li>
-                    <li><a class="nested" data-toggle=".mobile-more-nav" data-hide=".mobile-extra-nav" href="">More</a></li>
-                    <li><a class="more-link" data-toggle=".mobile-extra-nav"  data-hide=".mobile-more-nav" href="">...</a></li>
-
-                    <ul class="extra-nav mobile-extra-nav">
-                        <li><a href="">Wallpaper</a></li>
-                        <li><a href="">Pillows</a></li>
-                        <li><a href="">Travel</a></li>
-                        <li><a href="">Wearables</a></li>
-                    </ul>
-                    <ul class="extra-nav mobile-more-nav">
-                        <li><a href="/room/bedroom">Bedroom</a></li>
-                        <li><a href="/room/office">Office</a></li>
-                        <li><a href="/room/living">Living</a></li>
-                        <li><a href="/room/outdoor">Outdoor</a></li>
-                    </ul>
+            <div class="container mobile-menu visible-xs visible-sm full-sm fixed-sm">
+                <ul class="wrap col-lg-9">
+                    <li ><a class="box-link @if(!isset($roomInformation['Permalink']) || $roomInformation['Permalink'] == '/') active @endif"   href="/">Smart Home</a></li>
+                    <li><a class="box-link @if(isset($roomInformation['Permalink']) && $roomInformation['Permalink'] == 'kitchen') active @endif " href="{{url('room/kitchen')}}">Kitchen</a></li>
+                    <li><a class="box-link @if(isset($roomInformation['Permalink']) && $roomInformation['Permalink'] == 'bath') active @endif " href="{{url('room/bath')}}">Bath</a></li>
                 </ul>
+                <a class="right-menu-arrow pull-right" data-toggle="#mobile-home-menu" href="#">
+                    <i class="m-icon--Header-Dropdown down"></i>
+                    <i class="m-icon--footer-up-arrow up"></i>
+                </a>                
+                
             </div>
         </nav>
         <?php if(isset($login) && $login) {?>
@@ -362,4 +375,6 @@
                 </div>
             </script>
         <?php } ?>
+
+
     </div>
