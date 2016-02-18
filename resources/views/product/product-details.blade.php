@@ -41,7 +41,7 @@
             </div>
             <div class="col-xs-4">
             <h1>
-                    <span class="title-holder"> 
+                    <span class="title-holder">
                 <span class="title">
                     @if(isset($productInformation['ProductName']))
                         {{$productInformation['ProductName']}}
@@ -95,7 +95,7 @@
                 <div class="row hero-content-holder">
                     <div class="col-sm-11">
                         <div class="average-score pull-right">
-                            
+
                             <div class="score">
                                 <i class=" m-icon--bulb-detailed-on-rating"></i>
                                 @if(isset($productInformation['Review']))
@@ -242,7 +242,7 @@
                 </div>
             </div>
         </section>
-        
+
         <nav id="hero-nav" class="product-nav col-sm-12">
             <div class="container full-620 fixed-sm">
                 <ul class="category-nav full-620">
@@ -545,14 +545,14 @@
                                                           target="_blank">Amazon</a></div>
                                     <div class="reviews">Reviews</div>
                                     <div class="star-raiting" style="text-align: center">
-                                        <?php 
+                                        <?php
                                             $stars = $productInformation['Review'][1]->value;
                                             $fStar = floor($stars);
                                             $cStar = ceil($stars);
                                             $halfStar = -1;
                                             if($fStar == $cStar)
                                                 $halfStar = $cStar;
-                                            
+
                                         ?>
                                         @for($i=1; $i<=5; $i++)
                                             @if($i <= $fStar)
@@ -587,7 +587,7 @@
                             </div>
                         </div>
                         <div class="visible-xs visible-sm">
-                            
+
                         </div>
 
                         <div class="col-md-4 col-md-offset-4 critic-quote">
@@ -649,7 +649,7 @@
                 <div class="main-content full-620 fixed-sm">
                     <h3 class="green">Related Products</h3>
                     <div class="related-products grid-box-3">
-                        
+
 
                         @if(isset($relatedProducts) && ($relatedProducts != null) )
                             @foreach( $relatedProducts as $product )
