@@ -6651,7 +6651,7 @@ body.product-details .article-content p {
   min-height: 47px;
   position: absolute;
   top: 60px;
-  z-index: 100;
+  z-index: 39;
   width: 100%;
   background: rgba(232, 232, 232, 0.95);
   overflow: hidden; }
