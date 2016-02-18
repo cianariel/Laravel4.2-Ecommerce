@@ -78,7 +78,20 @@
                     <div class="hero-tags">
                         @foreach($image['Image_Products'] as $i_products)
                         <div class="tag {{$i_products->product_color}}" style="left:{{$i_products->x}}%;top:{{$i_products->y}}%" >
-                            <span class="tag-icon"><i class="m-icon--shopping-bag-light-green"></i> </span>
+
+                            <span class="tag-icon">
+                            @if(property_exists($i_products,'tag_type'))
+                            @if($i_products->tag_type=="thumb")
+                            
+                                <img src="{{$i_products->media_link}}" class="round" alt="" />
+                            
+                            @else 
+                            <i class="m-icon--shopping-bag-light-green"></i>
+                            @endif
+                            @else 
+                            <i class="m-icon--shopping-bag-light-green"></i>
+                            @endif
+                            </span>
                             <a class="{{$i_products->product_color}}-border" href="/product/{{$i_products->product_permalink}}">
                                 <img src="{{$i_products->media_link}}" class="round" alt="" />
                             </a>
