@@ -6,28 +6,24 @@
     <nav class="mid-nav hidden-xs">
         <div class="container full-sm fixed-sm">
             <div class="">
-                <ul class="wrap col-xs-9">
+                <ul class="wrap">
                     <li class="box-link-ul ">
-                        <a class="box-link " href="/category/@if(isset($category['CategoryPermalink'])){{$category['CategoryPermalink']}}@endif" >
-                            <span class="box-link-active-line"></span>
+                        <a class="box-link " href="/shop/smart-home" >
                             SMART HOME
                         </a>
                     </li>
                     <li class="box-link-ul ">
-                        <a class="box-link " href="/category/@if(isset($category['CategoryPermalink'])){{$category['CategoryPermalink']}}@endif" >
-                            <span class="box-link-active-line"></span>
+                        <a class="box-link " href="/shop/travel" >
                             TRAVEL
                         </a>
                     </li>
                     <li class="box-link-ul ">
-                        <a class="box-link " href="/category/@if(isset($category['CategoryPermalink'])){{$category['CategoryPermalink']}}@endif" >
-                            <span class="box-link-active-line"></span>
+                        <a class="box-link " href="/shop/wearables" >
                             WEARABLES
                         </a>
                     </li>
                     <li class="box-link-ul ">
-                        <a class="box-link " href="/category/@if(isset($category['CategoryPermalink'])){{$category['CategoryPermalink']}}@endif" >
-                            <span class="box-link-active-line"></span>
+                        <a class="box-link " href="/shop/home-decor" >
                             HOME & DECOR
                         </a>
                     </li>
