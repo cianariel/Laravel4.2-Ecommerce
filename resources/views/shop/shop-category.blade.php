@@ -6,21 +6,31 @@
     <nav class="mid-nav hidden-xs">
         <div class="container full-sm fixed-sm">
             <ul class="wrap col-xs-9">
-                <li class="box-link-ul active">
-                    <a class="box-link" href="/shop/smart-home" >
-                        <span class="box-link-active-line"></span>
-                        SMART HOME
-                    </a>
-                </li>
-                <li class="horizontal-line-holder hidden-xs ">
-                    <span class="horizontal-line"></span>
-                </li>
-                <li class="box-link-ul ">
-                    <a class="box-link active" href="/category/@if(isset($category['CategoryPermalink'])){{$category['CategoryPermalink']}}@endif" >
-                        <span class="box-link-active-line"></span>
-                        {{ucfirst($currentCategory)}}
-                    </a>
-                </li>
+                @if($parentCategory)
+                    <li class="box-link-ul active">
+                        <a class="box-link" href="/shop/smart-home" >
+                            <span class="box-link-active-line"></span>
+                            {{ucfirst($parentCategory)}}
+                        </a>
+                    </li>
+
+                    <li class="horizontal-line-holder hidden-xs ">
+                        <span class="horizontal-line"></span>
+                    </li>
+                    <li class="box-link-ul ">
+                        <a class="box-link active" href="/category/@if(isset($category['CategoryPermalink'])){{$category['CategoryPermalink']}}@endif" >
+                            <span class="box-link-active-line"></span>
+                            {{ucfirst($currentCategory)}}
+                        </a>
+                    </li>
+                @else
+                    <li class="box-link-ul active">
+                        <a class="box-link active" href="/shop/smart-home" >
+                            <span class="box-link-active-line"></span>
+                            {{ucfirst($currentCategory)}}
+                        </a>
+                    </li>
+                @endif
             </ul>
                 <a class="browse-all" data-toggle="#all-shop-menu" href="#">
                     <i class="m-icon--menu"></i>

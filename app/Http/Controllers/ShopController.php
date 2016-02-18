@@ -15,13 +15,15 @@ class ShopController extends Controller
     public function index($category = false)
     {
         if($category){
-
-            if(!ProductCategory::where('extra_info', $category)->count()){
+            if(!$categoryModel = ProductCategory::where('extra_info', $category)->first()){
                 return redirect('/shop/');
             }
 
+            $parentCategoryName =  @ProductCategory::where('id', $categoryModel->parent_id)->first()->category_name;
+
             return view('shop.shop-category')
                 ->with('currentCategory', $category)
+                ->with('parentCategory', $parentCategoryName)
                 ;
         }else{
             $categoryTree = ProductCategory::buildCategoryTree();
