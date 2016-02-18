@@ -96,7 +96,7 @@ publicApp.controller('publicController', ['$scope', '$http', '$window', '$timeou
         // initialize variables
         $scope.initPage = function () {
 
-            $scope.TEST = "TSSSSST";
+           // $scope.TEST = "TSSSSST";
             console.log($scope.TEST);
 
             // email subscription
@@ -119,6 +119,16 @@ publicApp.controller('publicController', ['$scope', '$http', '$window', '$timeou
             ];
             $scope.mediaLink = "";
             $scope.isMediaUploadable = true;
+
+
+            $scope.FullName = '';
+
+            $scope.Email = '';
+            $scope.Password = '' ;
+            $scope.PersonalInfo = '';
+            $scope.Address='';
+            $scope.Permalink='';
+
 
         };
 
@@ -381,26 +391,30 @@ publicApp.controller('publicController', ['$scope', '$http', '$window', '$timeou
         };
 
         //update user information
-        $scope.updateUser = function () {
+        $scope.updateUser = function (formData,meidaLink) {
             $scope.closeAlert();
-//console.log("isside");
+//console.log("address :"+ tmp.FullName);
 
             $http({
                 url: '/api/change-profile',
                 method: "POST",
                 data: {
-                    FullName: $scope.FullName == '' ? null : $scope.FullName,
-                    Email: $scope.Email,
-                    Password: $scope.Password == '' ? null : $scope.Password,
-                    UserRoles: $scope.userRoles,
-                    UserStatus: $scope.UserStatus
+                    FullName: formData.FullName ,
+                    Email: formData.Email,
+                    Password: formData.Password ,
+                    PersonalInfo : formData.PersonalInfo,
+                    Address: formData.Address,
+                    Permalink: formData.Permalink,
+                    MediaLink: meidaLink
+
                 }
             }).success(function (data) {
                 // console.log(data);
                 $scope.outputStatus(data, 'User information updated successfully');
+                location.reload();
 
-                $scope.Password = '';
-                $window.location = '/admin/user-list';
+               // $scope.Password = '';
+            //    $window.location = '/admin/user-list';
             });
         };
 

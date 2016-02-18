@@ -1,5 +1,5 @@
 <div id="publicApp" ng-app="publicApp" ng-controller="publicController">
-   {{-- <div ng-app="pagingApp" ng-controller="headerController" > --}}
+  <!-- {{-- <div ng-app="pagingApp" ng-controller="headerController" > --}} -->
         <header class="colophon">
                 <div class="col-xs-12">
                     <h2 id="site-name">Ideaing | Ideas for Smarter Living</h2>
@@ -202,31 +202,32 @@
                             <div class="form-group ">
                                 <label class="col-lg-12 control-label">Full Name</label>
                                 <div class="col-lg-12">
-                                    <input class="form-control" ng-model="FullName" ng-init="FullName = '{{ $userData['name'] }}'"   placeholder="Full name">
+                                    <input class="form-control" ng-model="data.FullName" ng-init="data.FullName = '{{ $userData['name'] }}'"   placeholder="Full name">
                                 </div>
                             </div>
                             <div class="form-group ">
                                 <label class="col-lg-12 control-label">Email</label>
                                 <div class="col-lg-12">
-                                    <input class="form-control" ng-model="Email" ng-init="Email = '{{ $userData['email'] }}'" placeholder="Email" />
+                                    <input class="form-control" ng-model="data.Email" ng-init="data.Email = '{{ $userData['email'] }}'" placeholder="Email" />
                                 </div>
                             </div>
                             <div class="form-group ">
                                 <label class="col-lg-12 control-label">New password</label>
                                 <div class="col-lg-12">
-                                    <input class="form-control" ng-model="Password" placeholder="New password">
+                                    <input class="form-control" ng-model="data.Password" placeholder="New password">
                                 </div>
                             </div>
                             <div class="form-group ">
                                 <label class="col-lg-12 control-label">Bio</label>
                                 <div class="col-lg-12">
-                                    <textarea class="form-control"  ng-model="PersonalInfo" ng-init="PersonalInfo = '{{ $userData['userProfile']['personal_info'] }}'" placeholder="Bio"></textarea>
+                                    <textarea class="form-control"  ng-model="data.PersonalInfo" ng-init="data.PersonalInfo = '{{ $userData['userProfile']['personal_info'] }}'" placeholder="Bio"></textarea>
                                 </div>
                             </div>
                             <div class="form-group ">
                                 <label class="col-lg-12 control-label">Address</label>
                                 <div class="col-lg-12">
-                                    <textarea class="form-control"  ng-model="Address" ng-init="Address = '{{ $userData['userProfile']['address']  }}'" placeholder="Address"></textarea>
+
+                                    <textarea class="form-control"  ng-model="data.Address" ng-init="data.Address = '{{ $userData['userProfile']['address']  }}'" placeholder="Address"></textarea>
                                 </div>
                             </div>
                             <div class="form-group ">
@@ -234,7 +235,7 @@
                                 <div class="col-lg-12">
                                     <div class="col-lg-6">http://staging.ideaing.com/user/</div>
                                     <div class="col-lg-6">
-                                    <input class="form-control personal-link" ng-model="Permalink" ng-init="Permalink = '{{ $userData['userProfile']['permalink']  }}'"  placeholder="">
+                                    <input class="form-control personal-link" ng-model="data.Permalink" ng-init="data.Permalink = '{{ $userData['userProfile']['permalink']  }}'"  placeholder="">
                                </div>
                                 </div>
                             </div>
@@ -270,7 +271,7 @@
                             </div>
                             <div class="form-group text-center">
                                 <button class="btn btn-nevermind">Nevermind</button>
-                                <button class="btn btn-save" ng-click="updateUser()">Save</button>
+                                <button class="btn btn-save" ng-click="updateUser(data,mediaLink)">Save</button>
                             </div>
                         </form>   
                         <div class="clearfix"></div>
