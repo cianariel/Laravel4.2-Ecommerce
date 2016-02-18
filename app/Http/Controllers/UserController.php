@@ -6,6 +6,8 @@
     use App\Models\Subscriber;
     use App\Models\User;
     use App\Models\Role;
+    use App\Models\Media;
+
     use App\Http\Requests;
 
     use Illuminate\Http\Response as IlluminateResponse;

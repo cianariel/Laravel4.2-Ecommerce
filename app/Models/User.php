@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 //use App\Models\UserProfile;
+use App\Models\Media;
 
 
 use Illuminate\Auth\Authenticatable;
@@ -121,10 +122,20 @@ class User extends Model implements AuthenticatableContract,
                 $user->save();
 
                 $userProfile = new UserProfile();
+                $media = new Media();
+
                 // $userProfile->full_name = $data['FullName'];
                 // $userProfile->save();
 
+
+                $media->media_name = $data['FullName'];
+                $media->media_type = 'img-upload';
+                $media->media_link = '';
+
+                // $result = $store->medias()->save($this->media);
+
                 $user->userProfile()->save($userProfile);
+                $user->medias()->save($media);
 
             });
         } catch (\Exception $ex) {
@@ -150,6 +161,7 @@ class User extends Model implements AuthenticatableContract,
     {
         try {
             return User::with('userProfile')
+                       ->with('medias')
                        ->where('email', $email)
                        ->firstOrFail();
 
