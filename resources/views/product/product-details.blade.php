@@ -11,8 +11,8 @@
             <ul class="wrap col-xs-9">
                 @if(isset($productInformation['CatTree']))
                     @foreach( $productInformation['CatTree'] as $key => $category )
-                        <li class="box-link-ul @if($key==0) active-ul @endif">
-                            <a class="box-link @if($key==0) active @endif"
+                        <li class="box-link-ul ">
+                            <a class="box-link @if($key==(count($productInformation['CatTree'])-1)) active @endif"
                                href="/category/@if(isset($category['CategoryPermalink'])){{$category['CategoryPermalink']}}@endif"
                                @if($category == end($productInformation['CatTree']))class="current"
                                     @endif>
@@ -92,7 +92,7 @@
 
             <div class="container fixed-sm full-480">
 
-                <div class="row">
+                <div class="row hero-content-holder">
                     <div class="col-sm-11">
                         <div class="average-score pull-right">
                             

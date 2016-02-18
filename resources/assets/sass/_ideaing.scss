@@ -2724,7 +2724,7 @@ header.colophon{
         
     }
     .top-nav-holder{
-/*        border-bottom: 1px solid $light-grey;*/
+        border-bottom: 1px solid $light-grey;
         height: 60px;
         
         .mobile-menu-switch{
@@ -3068,6 +3068,9 @@ body.product-details{
         max-width: 1170px;
         margin: auto;
     }
+    .hero-content-holder{
+        padding-top: 60px;
+    }
   .story-header{
     h1{
 /*      width: 34%;*/
@@ -3267,7 +3270,7 @@ body.product-details{
     top: 60px;
     z-index: 39;
     width: 100%;
-    background: rgba(232,232,232,.95);
+    background: rgba(255,255,255,.8);
     overflow: hidden;
 
     li.home{
@@ -3303,7 +3306,8 @@ body.product-details{
         left: 50%;
         top: -15px;
     }
-    .box-link.active{
+/*    .box-link.active{*/
+    .box-link-ul:first-child .box-link{
         .box-link-active-line{
             display: block;
         }
@@ -3507,6 +3511,12 @@ body.product-details{
 .mid-nav:not(.rooms){
     .box-link.active{
         margin-right: 17px;
+    }
+    
+    .box-link-ul:not(:first-child){
+        .box-link{
+            margin-left: 17px;
+        }
     }
 }
 
@@ -6771,6 +6781,11 @@ body.shoppage, body.profilepage, body.single-post, body.product-details{
 body.shop-landing{
     .app-wrap{
         margin-top: 75px;
+    }
+    .mid-nav{
+        .wrap{
+            width: 494px;
+        }
     }
     .shoplanding-title{
         border:0px;

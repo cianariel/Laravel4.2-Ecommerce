@@ -6278,7 +6278,7 @@ header.colophon {
     text-decoration: none; }
 
 #top-nav .top-nav-holder {
-  /*        border-bottom: 1px solid $light-grey;*/
+  border-bottom: 1px solid #c1c1c1;
   height: 60px; }
   #top-nav .top-nav-holder .mobile-menu-switch {
     width: 20px;
@@ -6535,6 +6535,9 @@ body.product-details .related-products, body.product-details .related-ideas {
   max-width: 1170px;
   margin: auto; }
 
+body.product-details .hero-content-holder {
+  padding-top: 60px; }
+
 body.product-details .story-header h1 {
   /*      width: 34%;*/
   font-size: 13px;
@@ -6653,8 +6656,9 @@ body.product-details .article-content p {
   top: 60px;
   z-index: 39;
   width: 100%;
-  background: rgba(232, 232, 232, 0.95);
-  overflow: hidden; }
+  background: rgba(255, 255, 255, 0.8);
+  overflow: hidden;
+  /*    .box-link.active{*/ }
   .mid-nav li.home {
     position: relative;
     /*.homepage .mid-nav li.home .box-link-active-line{*/ }
@@ -6679,7 +6683,7 @@ body.product-details .article-content p {
     border-left: 1px solid #c1c1c1;
     left: 50%;
     top: -15px; }
-  .mid-nav .box-link.active .box-link-active-line {
+  .mid-nav .box-link-ul:first-child .box-link .box-link-active-line {
     display: block; }
   .mid-nav .browse-all {
     float: right;
@@ -6802,6 +6806,9 @@ body.product-details .article-content p {
 
 .mid-nav:not(.rooms) .box-link.active, .mid-nav .extra-nav:not(.rooms) .box-link.active {
   margin-right: 17px; }
+
+.mid-nav:not(.rooms) .box-link-ul:not(:first-child) .box-link, .mid-nav .extra-nav:not(.rooms) .box-link-ul:not(:first-child) .box-link {
+  margin-left: 17px; }
 
 .mobile-extra-nav,
 .mobile-more-nav {
@@ -8720,6 +8727,9 @@ body.shoppage #back-to-top, body.profilepage #back-to-top, body.single-post #bac
 
 body.shop-landing .app-wrap {
   margin-top: 75px; }
+
+body.shop-landing .mid-nav .wrap, .mid-nav body.shop-landing .extra-nav .wrap {
+  width: 494px; }
 
 body.shop-landing .shoplanding-title {
   border: 0px;
