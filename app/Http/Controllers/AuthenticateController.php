@@ -362,7 +362,12 @@
                 } elseif ($validator->passes())
                 {
                     // Assign role for the user
-                    $this->user->assignRole($userData['Email'],$userRoles);
+
+                    if (isset($userRoles) && ($userRoles != ""))
+                    {
+                        $this->user->assignRole($userData['Email'],$userRoles);
+                    }
+
 
                     if (isset($userData['FullName']) && ($userData['FullName'] != ""))
                     {
@@ -375,7 +380,42 @@
                         $user->password = \Hash::make($userData['Password']);
                     }
 
-                    $user->status = $input['UserStatus'];
+                    if (isset($userData['UserStatus']) && ($userData['UserStatus'] != ""))
+                    {
+                        $user->status = $input['UserStatus'];
+                    }
+
+                    if (isset($userData['PersonalInfo']) && ($userData['PersonalInfo'] != ""))
+                    {
+                        $user->userProfile()->update(['personal_info' => $input['PersonalInfo']]);
+                    }
+
+                    if (isset($userData['Address']) && ($userData['Address'] != ""))
+                    {
+                        $user->userProfile()->update(['address' => $input['Address']]);
+
+                    }
+
+                    if (isset($userData['Permalink']) && ($userData['Permalink'] != ""))
+                    {
+                        $user->userProfile()->update(['permalink' => $input['Permalink']]);
+                    }
+
+                    if (isset($userData['MediaLink']) && ($userData['MediaLink'] != ""))
+                    {
+                        /*$this->media->media_name = $userData['name'];
+                        $this->media->media_type = 'img-upload';
+                        $this->media->media_link = $userData['MediaLink'];
+
+                        $result = $user->medias()->update($this->media);*/
+
+                        $user->medias()->update([
+                            'media_name' => $userData['FullName'],
+
+                            'media_link' => $input['MediaLink'],
+                        ]);
+
+                    }
 
                     $user->save();
 
