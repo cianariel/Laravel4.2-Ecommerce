@@ -2337,6 +2337,7 @@ article.product{
   padding: 10px;
   display: none;
   background: $light-grey;
+  margin-top: 55px;
 }
 
 #mobile-side-filters{
@@ -6854,6 +6855,12 @@ body.shop-landing{
             li{
                 display: inline-block;
             }
+            .box-link{
+                margin-left: 0px !important;
+                margin-right: 0px;
+                font-size: 10px;
+            }
+
         }
     }
     .shoplanding-title{
