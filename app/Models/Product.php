@@ -256,25 +256,35 @@
             {
                 if(@$settings['GetChildCategories']){
                     $catID = $settings['CategoryId'];
-                    $productModel = $productModel->where(function($query) use ($catID)
-                    {
-                        $query->where("product_category_id", $catID)
-                              ->orWhereHas('productCategory', function($query) use ($catID)
-                              {
-                                  $query->where("parent_id", $catID);
-                              });
-                    });
+                    $childCats = ProductCategory::where("parent_id", $catID)->lists('id');
+                    $grandChildCats = ProductCategory::whereIn("parent_id", $childCats)->lists('id');
+
+                    $productModel = $productModel
+                        ->where("product_category_id", $settings['CategoryId'])
+                        ->orWhereIn("product_category_id", $childCats)
+                        ->orWhereIn("product_category_id", $grandChildCats)
+                    ;
+
                 }else{
                     $productModel = $productModel->where("product_category_id", $settings['CategoryId']);
                 }
-            }
 
-            if (isset($settings['TagId']) && is_array($settings['TagId']))
-            {
-                $tagID = $settings['TagId'];
-                $productModel = $productModel->whereHas('tags', function($query) use ($tagID){
-                    $query->whereIn('tag_id', $tagID);
-                });
+                if (isset($settings['TagId']) && is_array($settings['TagId']))
+                {
+                    $tagID = $settings['TagId'];
+                    $productModel = $productModel->orWhereHas('tags', function($query) use ($tagID){
+                        $query->whereIn('tag_id', $tagID);
+                    });
+                }
+
+            }else{
+                if (isset($settings['TagId']) && is_array($settings['TagId']))
+                {
+                    $tagID = $settings['TagId'];
+                    $productModel = $productModel->whereHas('tags', function($query) use ($tagID){
+                        $query->whereIn('tag_id', $tagID);
+                    });
+                }
             }
 //
             if (@$settings['ExcludeIDs'] != null)
@@ -307,6 +317,10 @@
             {
                 $productModel = $productModel->where("product_name", "like", "%$filterText%");
             }
+//            if(!@$settings['sortBy'] || $settings['sortBy'] == 'undefined')
+//            {
+//                @$settings['sortBy'] = 'created_at';
+//            }
 
             if (@$settings['WithTags'] == true && $settings['CategoryId'] != null)
             {
@@ -421,7 +435,7 @@
             $productInfo['Permalink'] = $productData['product']->product_permalink;
             $productInfo['Description'] = $productData['product']->product_description;
             $productInfo['Specifications'] = $productData['product']->specifications;
-            $productInfo['Price'] = $productData['product']->price;
+            $productInfo['Price'] = number_format((float)$productData['product']->price, 2, '.', '');
             $productInfo['SellPrice'] = $productData['product']->sale_price;
             $productInfo['StoreName'] = $productData['product']->store_id;
             $productInfo['AffiliateLink'] = $productData['product']->affiliate_link;

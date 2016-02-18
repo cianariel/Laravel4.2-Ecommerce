@@ -12,17 +12,28 @@ use App\Models\ProductCategory;
 
 class ShopController extends Controller
 {
-    public function index()
+    public function index($category = false)
     {
-        $categoryTree = ProductCategory::buildCategoryTree();
+        if($category){
+            if(!$categoryModel = ProductCategory::where('extra_info', $category)->first()){
+                return redirect('/shop/');
+            }
 
-        return view('shop.index')
-            ->with('categoryTree', $categoryTree)
-            ;
+            $parentCategoryName =  @ProductCategory::where('id', $categoryModel->parent_id)->first()->category_name;
+
+            return view('shop.shop-category')
+                ->with('currentCategory', $category)
+                ->with('parentCategory', $parentCategoryName)
+                ;
+        }else{
+            $categoryTree = ProductCategory::buildCategoryTree();
+
+            return view('shop.index')
+                ->with('categoryTree', $categoryTree)
+                ;
+        }
     }
 
-    public function shopCategory()
-    {
-        return view('shop.shop-category');
-    }
+
+
 }

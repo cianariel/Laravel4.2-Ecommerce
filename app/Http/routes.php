@@ -198,8 +198,12 @@
     });
 
     //Shop view
-    Route::get('shop', 'ShopController@index');
-    Route::get('shop/category', 'ShopController@shopCategory');
+    Route::get('shop/{categoty?}', 'ShopController@index');
+    Route::get('shop/smart-home/{categoty?}', 'ShopController@index');
+    Route::get('shop/travel/{categoty?}', 'ShopController@index');
+    Route::get('shop/wearables/{categoty?}', 'ShopController@index');
+    Route::get('shop/home-decor/{categoty?}', 'ShopController@index');
+//    Route::get('shop/category', 'ShopController@shopCategory');
 
     //User Profile
     Route::get('user/profile', 'UserController@userProfile');
@@ -231,7 +235,7 @@
     // default
     Route::get('login', 'PageController@loginView');
 
-    Route::get('/api/paging/get-content/{page?}/{limit?}/{category?}/{tag?}', 'PageController@getContent');
+    Route::get('/api/paging/get-content/{page?}/{limit?}/{type?}/{tag?}/{productCategory?}/{sortBy?}', 'PageController@getContent');
     Route::get('/api/paging/get-grid-content/{page?}/{limit?}/{category?}/{tag?}', 'PageController@getGridContent');
     Route::get('/api/layout/get-shop-menu', 'PageController@getShopMenu');
 

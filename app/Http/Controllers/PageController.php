@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 //use FeedParser;
 use MetaTag;
 use App\Models\Product;
+use App\Models\ProductCategory;
 use App\Models\Tag;
 use App\Models\Room;
 
@@ -40,7 +41,7 @@ class PageController extends ApiController
     }
 
 
-    public function getContent($page = 1, $limit = 5, $tag = false,  $type = false){
+    public function getContent($page = 1, $limit = 5, $tag = false,  $type = false, $productCategory = false, $sortBy = false){
 
         if($tag && $tag !== 'undefined' && $tag != 'false' && $tag != ''){
             $tagID = Tag::where('tag_name', $tag)->lists('id')->toArray();
@@ -49,21 +50,35 @@ class PageController extends ApiController
             $tag = false;
         }
 
-        $offset = 4 *  ($page - 1);
+        $offset = $limit *  ($page - 1);
 
         if($type == 'product' || !$stories = self::getStories($limit, $offset, $tag)){
             $stories = [];
         }
 
-        if($type == 'idea' || !$products = self::getProducts($limit, $page, $offset, $tagID)){
+        if($productCategory){
+            $productCategory = ProductCategory::where('extra_info', $productCategory)->first();
+        }
+
+        if(@$productCategory){
+            $productCategoryID = $productCategory->id;
+        }else{
+            $productCategoryID = false;
+        }
+
+        if($type == 'idea' || !$products = self::getProducts($limit, $page, $offset, $tagID, $productCategoryID, $sortBy)){
             $products['result'] = [];
         }
 
         $return = array_merge($stories, $products['result']);
 
-        usort($return, function($a, $b) {
-            return strtotime(@$b->updated_at) - strtotime(@$a->updated_at);
-        });
+            usort($return, function($a, $b) use ($sortBy){
+                if($sortBy && @$b->$sortBy && @$a->$sortBy){
+                        return @$a->$sortBy - @$b->$sortBy;
+                }else{
+                    return strtotime(@$b->updated_at) - strtotime(@$a->updated_at);
+                }
+            });
 
         return $return;
     }
@@ -206,19 +221,24 @@ class PageController extends ApiController
         return view('login');
     }
 
-    public function getProducts($limit, $page, $offset, $tagID){
+    public function getProducts($limit, $page, $offset, $tagID, $productCategoryID = false, $sortBy = false){
         $productSettings = [
             'ActiveItem' => true,
             'limit'      => $limit,
             'page'       => $page,
             'CustomSkip' => $offset,
 
-            'CategoryId' => false,
+            'CategoryId' => $productCategoryID,
+            'sortBy'     => $sortBy,
             'FilterType' => false,
             'FilterText' => false,
             'ShowFor'    => false,
             'WithTags'   => false,
         ];
+
+        if(@$productCategoryID){
+            $productSettings['GetChildCategories'] = true;
+        }
 
         if(is_array($tagID)){
             $productSettings['TagId'] = $tagID;
