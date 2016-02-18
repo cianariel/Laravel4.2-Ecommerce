@@ -6,6 +6,8 @@
     use App\Models\Subscriber;
     use App\Models\User;
     use App\Models\Role;
+    use App\Models\Media;
+
     use App\Http\Requests;
 
     use Illuminate\Http\Response as IlluminateResponse;
@@ -26,6 +28,11 @@
             $this->subscriber = new Subscriber();
             $this->user = new User();
             $this->roleModel = new Role();
+            $this->media = new Media();
+
+            //check user authentication and get user basic information
+            $this->authCheck = $this->RequestAuthentication(array('admin','editor','user'));
+
         }
 
         public function userList()
@@ -53,6 +60,7 @@
 
         }
 
+        // used in Admin. Get user information by id with user role
         public function getUserById($id)
         {
 
@@ -88,6 +96,7 @@
         }
 
 
+    /*    // Redirecting non authenticated user to login page
         public function securePageHeader()
         {
             $authCheck = $this->RequestAuthentication();
@@ -120,7 +129,7 @@
             {
                 return \Redirect::to('/login');
             }
-        }
+        }*/
 
         // Email subscription
         /**
@@ -170,14 +179,31 @@
 
         public function userProfile($permalink = "")
         {
-            $data = array(
-                'profile'   => "/assets/images/profile.jpg",
-                'fullname'  => "Denzel Wars",
-                'login'     => true,
-                'permalink' => $permalink
-            );
+            if ($this->authCheck['method-status'] == 'success-with-http')
+            {
+                $userData = $this->authCheck['user-data'] ;
 
-            return view('user.user-profile', $data);
+               // 'profilePicture'   => $this->authCheck['profile-picture'],
+                $data = array(
+                    'userData' => $userData,
+                    'profile'   => ($userData->medias[0]->media_link == '')? \Config::get("const.user-image"):$userData->medias[0]->media_link,
+                    'fullname'  => $userData->name,
+                    'address' => $userData->userProfile->address,
+                    'personalInfo' => $userData->userProfile->personal_info,
+                 //   'login'     => true,
+                 //   'permalink' => $userData->userProfile->permalink
+                    'permalink' => $permalink
+                );
+
+                return view('user.user-profile', $data);
+
+
+            } elseif ($this->authCheck['method-status'] == 'fail-with-http')
+            {
+                return \Redirect::to('login');
+            }
+
+
         }
 
 

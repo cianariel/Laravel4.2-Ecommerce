@@ -58,6 +58,8 @@ if (screen.width < 992 && screen.width > 620) {
 <script src="/assets/js/vendor/angular.min.js"></script>
 <script src="/assets/js/vendor/ui-bootstrap.min.js"></script>
 <script src="/assets/js/vendor/textAngular-sanitize.min.js"></script>
+<script src="/assets/admin/js/angular-file-upload.min.js"></script>
+
 
 <style>
     .homepage-grid{

@@ -13,8 +13,18 @@ use App\Models\ProductCategory;
 use App\Models\Tag;
 use App\Models\Room;
 
-class PageController extends Controller
+class PageController extends ApiController
 {
+
+    public function __construct()
+    {
+        //check user authentication and get user basic information
+        $this->authCheck = $this->RequestAuthentication(array('admin','editor','user'));
+
+    }
+
+
+
     /**
      * Display the homepage.
      *
@@ -22,7 +32,12 @@ class PageController extends Controller
      */
     public function home()
     {
-        return view('home');
+        $userData = '';
+        if ($this->authCheck['method-status'] == 'success-with-http') {
+            $userData = $this->authCheck['user-data'];
+        }
+
+        return view('home')->with('userData',$userData);
     }
 
 
@@ -197,8 +212,7 @@ class PageController extends Controller
 
     public function signupPage($email = '')
     {
-       // dd($email);
-       // isset($email)?$email= $email:$email = '';
+
         return view('signup')->with('email',$email);
     }
 
@@ -266,6 +280,12 @@ class PageController extends Controller
 
     public function productDetailsPage($permalink)
     {
+        $userData = '';
+        if ($this->authCheck['method-status'] == 'success-with-http') {
+            $userData = $this->authCheck['user-data'];
+        }
+
+       // return view('home')->with('userData',$userData);
       //  dd($this->getProducts(3,1,6));
 
         $product = new Product();
@@ -293,6 +313,7 @@ class PageController extends Controller
 
      //   dd($result['selfImages']['picture'][0]['link']);
         return view('product.product-details')
+            ->with('userData',$userData)
             ->with('permalink',$permalink)
             ->with('productInformation',$result['productInformation'])
             ->with('relatedProducts',$result['relatedProducts'])
@@ -302,13 +323,21 @@ class PageController extends Controller
     }
     public function getRoomPage($permalink)
     {
+        $userData = '';
+        if ($this->authCheck['method-status'] == 'success-with-http') {
+            $userData = $this->authCheck['user-data'];
+        }
+
+        // return view('home')->with('userData',$userData);
         $room = new Room();
         $roomData['room'] = $room->getViewForPublic($permalink);
         $result = $room->roomDetailsViewGenerate($roomData);
         MetaTag::set('title',$result['roomInformation']['MetaTitle']);
         MetaTag::set('description',$result['roomInformation']['MetaDescription']);
         //return $result;
-        return view('room.landing')->with('roomInformation',$result['roomInformation']);
+        return view('room.landing')
+            ->with('userData',$userData)
+            ->with('roomInformation',$result['roomInformation']);
         // Get category tree
         /*$catTree = $product->getCategoryHierarchy($productData['product']->product_category_id);
 
