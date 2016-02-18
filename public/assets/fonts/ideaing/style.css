@@ -1,10 +1,10 @@
 @font-face {
     font-family: 'ideaing';
-    src:    url('fonts/ideaing.eot?9ttkil');
-    src:    url('fonts/ideaing.eot?9ttkil#iefix') format('embedded-opentype'),
-        url('fonts/ideaing.ttf?9ttkil') format('truetype'),
-        url('fonts/ideaing.woff?9ttkil') format('woff'),
-        url('fonts/ideaing.svg?9ttkil#ideaing') format('svg');
+    src:    url('fonts/ideaing.eot?ac21vy');
+    src:    url('fonts/ideaing.eot?ac21vy#iefix') format('embedded-opentype'),
+        url('fonts/ideaing.ttf?ac21vy') format('truetype'),
+        url('fonts/ideaing.woff?ac21vy') format('woff'),
+        url('fonts/ideaing.svg?ac21vy#ideaing') format('svg');
     font-weight: normal;
     font-style: normal;
 }
@@ -24,6 +24,9 @@
     -moz-osx-font-smoothing: grayscale;
 }
 
+.m-icon--footer-up-arrow:before {
+    content: "\e9ef";
+}
 .m-icon--WhiteRed .path1:before {
     content: "\e9f0";
     color: rgb(234, 35, 72);
@@ -431,6 +434,9 @@
 .m-icon--star-blue-half2:before {
     content: "\e9ec";
 }
+.m-icon--Header-Dropdown:before {
+    content: "\ea40";
+}
 .m-icon--ScrollingHeaderHeart .path1:before {
     content: "\e9ed";
     color: rgb(237, 29, 71);
@@ -439,9 +445,6 @@
     content: "\e9ee";
     margin-left: -1em;
     color: rgb(255, 255, 255);
-}
-.m-icon--footer-up-arrow:before {
-    content: "\e9ef";
 }
 .m-icon--Right-Arrow-Active:before {
     content: "\e9e9";

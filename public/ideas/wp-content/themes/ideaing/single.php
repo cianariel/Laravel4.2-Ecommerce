@@ -59,15 +59,15 @@
                     <ul class="wrap col-xs-9">
                         <!--                    <li><a class="home-link" href="#">Home</a></li>-->
                     @if(empty($mainCategory))
-                        <li class="kitchen box-link-ul  active-ul ">
-                            <a href="{{get_site_url()}}" class="box-link">
+                        <li class="box-link-ul   ">
+                            <a href="{{get_site_url()}}" class="box-link active">
                                 Smart Home
                                 <span class="box-link-active-line"></span>
                             </a>
                         </li>
                     @else
-                        <li class="kitchen box-link-ul  active-ul ">
-                            <a href="{{get_site_url()}}/category/{{$mainCategory->slug}}" class="box-link">
+                        <li class=" box-link-ul  ">
+                            <a href="{{get_site_url()}}/category/{{$mainCategory->slug}}" class="box-link @if(!@$childCategory && !@$firstTag) active @endif">
                                     {{$mainCategory->name}}
                                 <span class="box-link-active-line"></span>
                                 </a>
@@ -76,14 +76,14 @@
                             <li class="horizontal-line-holder hidden-xs ">
                                 <span class="horizontal-line"></span>
                             </li>
-                            <li><a href="{{get_site_url()}}/cateogry/{{$childCategory->slug}}" class="box-link">{{$childCategory->name}}</a></li>
+                            <li class="box-link-ul"><a href="{{get_site_url()}}/cateogry/{{$childCategory->slug}}" class="box-link @if(!@$firstTag) active @endif ">{{$childCategory->name}}</a></li>
                         @endif
 
                         @if(@$firstTag)
                             <li class="horizontal-line-holder hidden-xs ">
                                 <span class="horizontal-line"></span>
                             </li>
-                            <li><a href="{{get_site_url()}}/tag/{{$firstTag->slug}}" class="box-link">{{$firstTag->name}}</a></li>
+                            <li class="box-link-ul"><a href="{{get_site_url()}}/tag/{{$firstTag->slug}}" class="box-link active">{{$firstTag->name}}</a></li>
                         @endif
                     @endif
                     </ul>
