@@ -486,6 +486,15 @@
                     <input type="hidden" id="product_thumb" name="product_thumb" />
                     <input type="hidden" id="product_name" name="product_name" />
                     <div class="form-group">
+                        <label class="control-label col-md-4">Tag Type</label>
+                        <div class="col-md-8">
+                            <select id="tag_type" class="form-control">
+                                <option value="bag">Shopping Bag</option>
+                                <option value="thumb">Product Thumb</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
                         <label class="control-label col-md-4">Product</label>
                         <div class="col-md-8">
                             <select id="select_product" class="form-control select2 js-data-example-ajax select2-allow-clear">
@@ -580,7 +589,7 @@ $(function() {
         $("#select_product").select2("val", "");
     }
     $('#btn_add_product_image').click(function(){
-        var obj = {'hero_image_id':$('#hero_image_id').val(),'x' : $('#Xpos').val(),'y':$('#Ypos').val(),'product_id' : $('#select_product').val(),'product_color':$('#product_color').val()};
+        var obj = {'hero_image_id':$('#hero_image_id').val(),'x' : $('#Xpos').val(),'y':$('#Ypos').val(),'product_id' : $('#select_product').val(),'product_color':$('#product_color').val(),'tag_type':$('#tag_type').val()};
         var row = "<tr><td><img src='"+ $('#product_thumb').val() + "' /></td><td>"+ $('#select_product').val() + "</td><td>"+ $('#product_name').val() + "</td><td>"+$('#product_color').val()+'</td><td><a href="javascript:void()" class="btn btn-sm blue btn-edit-product" data-xpos="'+$('#Xpos').val()+'" data-ypos="'+$('#Ypos').val()+'" data-heroimageid="hero_image_1" data-productid="'+$('#select_product').val()+'"><i class="fa fa-pencil"></i></a> <a href="javascript:void()" class="btn btn-sm red btn-delete-product" data-productid="1"><i class="fa fa-times"></i></a></td></tr>';
         if($('#hero_image_id').val() == "hero_image_1")
         {
