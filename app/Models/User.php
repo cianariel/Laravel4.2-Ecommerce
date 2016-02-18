@@ -130,7 +130,7 @@ class User extends Model implements AuthenticatableContract,
 
                 $media->media_name = $data['FullName'];
                 $media->media_type = 'img-upload';
-                $media->media_link = '';
+                $media->media_link = \Config::get("const.user-image");
 
                 // $result = $store->medias()->save($this->media);
 
