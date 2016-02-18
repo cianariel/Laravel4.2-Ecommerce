@@ -31,9 +31,9 @@
                 <div class="col-sm-6">
                     <p>
                         <span class="fullname">{{$fullname}}</span>&nbsp;
-                        <span class="location"><i class=" m-icon--Location"></i> Oklahoma, USA</span>
+                        <span class="location"><i class=" m-icon--Location"></i> {{$address}}</span>
                     </p>
-                    <p class="description">Only the best tech gadgets from Apple. Samsung and LG.</p>
+                    <p class="description">{{$personalInfo}}</p>
                     <div>
                         <button id="btn-follow" type="button" class="btn " uib-dropdown-toggle>
                             Follow <i class=" m-icon--Actions-Down-Arrow-Active"></i>

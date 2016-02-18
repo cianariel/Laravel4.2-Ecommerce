@@ -67,4 +67,7 @@
         // API product update time (in Hour)
         'product-update-time-limit' => 24,
 
+        // default user picture
+        'user-image' => 'http://s3-us-west-1.amazonaws.com/ideaing-01/product-56c602ae87429-user-default.png'
+
     ];

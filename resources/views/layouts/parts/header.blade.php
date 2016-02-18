@@ -67,11 +67,14 @@
                                     </div>
                                 </section>
 
-                                <?php if(isset($login) && $login) { ?>
+                                <?php if(isset($userData['login']) && $userData['login']) { ?>
                                     <div class="col-xs-5 col-sm-2">
                                         <div class="row">
                                             <div class="pull-right profile-photo-holder">
-                                                <a href="#"><img width="40px" src="<?php echo isset($profile) ? $profile : "" ?>" alt="" class="profile-photo "></a>
+                                                <a href="#"><img width="40px"
+                                                                 src="<?php echo isset($userData['medias'][0]['media_link']) ? $userData['medias'][0]['media_link']: "" ?>"
+                                                                 alt="" class="profile-photo "></a>
+
                                                 <span class="box-link-active-line"></span>
                                                 <div class="profilelinks-popup">
                                                     <div class="menu-group">
@@ -83,7 +86,7 @@
                                                         <div><small>855 Friends</small> </div>
                                                         <div><small>12 Messages</small> </div>
                                                     </div>
-                                                    <div class="log-out"><a href=""><i class="m-icon--Logout-Active"></i> Log Out</a></div>
+                                                    <div class="log-out"><a href="/api/logout"><i class="m-icon--Logout-Active"></i> Log Out</a></div>
                                                 </div>
                                             </div>
                                             <div class="notification pull-right">
@@ -188,12 +191,12 @@
                 </ul>
             </div>
         </nav>
-        <?php if(isset($login) && $login) {?>
+    <?php if(isset($userData['login']) && $userData['login']) { ?>
             <script type="text/ng-template"  id="profile-setting.html">
                 <a class="close" href="#" ng-click="cancel()"><i class="m-icon--Close"></i> </a>
                 
                 <div class="profile-background">
-                    <div class="text-center"><img class="profile-photo" width="150px" src="<?php echo isset($profile) ? $profile : ""?>"></div>
+                    <div class="text-center"><img class="profile-photo" width="150px" src="<?php echo isset($userData['medias'][0]['media_link']) ? $userData['medias'][0]['media_link']: "" ?>"></div>
 
                 </div>
                 <div class="first-form">
@@ -202,13 +205,13 @@
                             <div class="form-group ">
                                 <label class="col-lg-12 control-label">Full Name</label>
                                 <div class="col-lg-12">
-                                    <input class="form-control" ng-model="data.FullName" ng-init="data.FullName = '{{ $userData['name'] }}'"   placeholder="Full name">
+                                    <input class="form-control" ng-model="data.FullName" ng-init="data.FullName = '<?php echo  $userData['name'] ?>'"   placeholder="Full name">
                                 </div>
                             </div>
                             <div class="form-group ">
                                 <label class="col-lg-12 control-label">Email</label>
                                 <div class="col-lg-12">
-                                    <input class="form-control" ng-model="data.Email" ng-init="data.Email = '{{ $userData['email'] }}'" placeholder="Email" />
+                                    <input class="form-control" ng-model="data.Email" ng-init="data.Email = '<?php echo  $userData['email'] ?>'" placeholder="Email" />
                                 </div>
                             </div>
                             <div class="form-group ">
@@ -220,14 +223,14 @@
                             <div class="form-group ">
                                 <label class="col-lg-12 control-label">Bio</label>
                                 <div class="col-lg-12">
-                                    <textarea class="form-control"  ng-model="data.PersonalInfo" ng-init="data.PersonalInfo = '{{ $userData['userProfile']['personal_info'] }}'" placeholder="Bio"></textarea>
+                                    <textarea class="form-control"  ng-model="data.PersonalInfo" ng-init="data.PersonalInfo = '<?php echo  $userData['userProfile']['personal_info'] ?>'" placeholder="Bio"></textarea>
                                 </div>
                             </div>
                             <div class="form-group ">
                                 <label class="col-lg-12 control-label">Address</label>
                                 <div class="col-lg-12">
 
-                                    <textarea class="form-control"  ng-model="data.Address" ng-init="data.Address = '{{ $userData['userProfile']['address']  }}'" placeholder="Address"></textarea>
+                                    <textarea class="form-control"  ng-model="data.Address" ng-init="data.Address = '<?php echo  $userData['userProfile']['address']  ?>'" placeholder="Address"></textarea>
                                 </div>
                             </div>
                             <div class="form-group ">
@@ -235,15 +238,13 @@
                                 <div class="col-lg-12">
                                     <div class="col-lg-6">http://staging.ideaing.com/user/</div>
                                     <div class="col-lg-6">
-                                    <input class="form-control personal-link" ng-model="data.Permalink" ng-init="data.Permalink = '{{ $userData['userProfile']['permalink']  }}'"  placeholder="">
+                                    <input class="form-control personal-link" ng-model="data.Permalink" ng-init="data.Permalink = '<?php echo  $userData['userProfile']['permalink']  ?>'"  placeholder="">
                                </div>
                                 </div>
                             </div>
                             <div class="form-group ">
-                                <label class="col-lg-12 control-label">Profie Picture</label>
+                                <label class="col-lg-12 control-label">Profile Picture</label>
                                 <div class="col-lg-12">
-
-
 
                                     <div class="col-lg-6">
                               <input type="file" name="file" nv-file-select=""
@@ -251,16 +252,12 @@
                                         </div>
                                     <div class="col-lg-4">
                                         <img id="currentPhoto"
-                                             ng-src='@{{ mediaLink }}'
+
+                                        ng-src='<?php echo "{{ mediaLink }}"  ?>'
                                              onerror="this.src='http://s3-us-west-1.amazonaws.com/ideaing-01/thumb-product-568d28a6701c7-no-item.jpg'"
                                              width="170">
                                     </div>
 
-
-
-
-                                        {{--ng-click="$parent.uploader.uploadAll()">Upload--}}
-                                    </button>
                                 </div>
                                 <div class="text-center">
                                     <a href="#"  ng-click="uploader.uploadAll()" class="upload-photo">
