@@ -219,6 +219,7 @@ class ApiController extends Controller
         $response['status-code'] = '';
         $response['status-message'] = '';
         $response['user-data'] = '';
+        $response['profile-picture']='';
         $response['toke'] = '';
         $response['role-authorized'] = false;
 
@@ -241,6 +242,10 @@ class ApiController extends Controller
                 $userModel = new User();
 
                 $response['user-data'] = $userModel->IsEmailAvailable($user['email']);
+                $response['user-data']['login'] = true;
+               // $response['profile-picture'] = isset($response['user-data']->medias[0]->media_link)?$response['user-data']->medias[0]->media_link:'';
+                // User::find($response['user-data']['id'])->medias->first();
+
 
                 $newToken = JWTAuth::refresh($token);
                 $this->setAuthToken($newToken);

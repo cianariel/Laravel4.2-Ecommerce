@@ -183,11 +183,15 @@
             {
                 $userData = $this->authCheck['user-data'] ;
 
+               // 'profilePicture'   => $this->authCheck['profile-picture'],
                 $data = array(
                     'userData' => $userData,
-                    'profile'   => "/assets/images/profile.jpg",
-                    'fullname'  => "Denzel Wars",
-                    'login'     => true,
+                    'profile'   => ($userData->medias[0]->media_link == '')? \Config::get("const.user-image"):$userData->medias[0]->media_link,
+                    'fullname'  => $userData->name,
+                    'address' => $userData->userProfile->address,
+                    'personalInfo' => $userData->userProfile->personal_info,
+                 //   'login'     => true,
+                 //   'permalink' => $userData->userProfile->permalink
                     'permalink' => $permalink
                 );
 

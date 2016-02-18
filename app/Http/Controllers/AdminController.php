@@ -21,7 +21,7 @@
         {
             // check authentication with role 'admin' (default parameter)
             $this->authCheck = $this->RequestAuthentication(array('admin','editor'));
-            $this->authCheck['method-status'] = 'success-with-http';
+          //  $this->authCheck['method-status'] = 'success-with-http';
 
         }
 

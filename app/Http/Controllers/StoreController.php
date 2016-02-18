@@ -44,7 +44,6 @@
                     ->makeResponseWithError("System Failure !", $ex);
             }
 
-
         }
 
         public function updateStore()

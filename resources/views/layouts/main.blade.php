@@ -5,7 +5,7 @@
 </head>
 
 <body ng-app="rootApp" class="@yield('body-class', '')">
-<div {{--ng-app="pagingApp"--}}>
+<div>
     @include('layouts.parts.header')
 
     @yield('content')
