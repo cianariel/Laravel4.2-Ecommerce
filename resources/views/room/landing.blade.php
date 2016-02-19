@@ -67,10 +67,26 @@
 <!--                <div class="rsInnerContent">-->
                 @if(isset($roomInformation['images']))
                 <div class="container-fluid fixed-sm full-480">
+
                     <div class="hero-tags">
+                            <div class="photoCopy">{{$image['Image_Title']}}: {{$image['Image_Caption']}} @if($image['Image_hyperlink']!="")<a href="{{$image['Image_hyperlink']}}">{{$image['Image_hyperlink_title']}}</a>@endif </div>
+
                         @foreach($image['Image_Products'] as $i_products)
                         <div class="tag {{$i_products->product_color}}" style="left:{{$i_products->x}}%;top:{{$i_products->y}}%" >
-                            <span class="tag-icon"><i class="m-icon--shopping-bag-light-green"></i> </span>
+
+                            <span class="tag-icon">
+                            @if(property_exists($i_products,'tag_type'))
+                            @if($i_products->tag_type=="thumb")
+                            
+                                <img src="{{$i_products->media_link}}" class="round" alt="" />
+                            
+                            @else 
+                            <i class="m-icon--shopping-bag-light-green"></i>
+                            @endif
+                            @else 
+                            <i class="m-icon--shopping-bag-light-green"></i>
+                            @endif
+                            </span>
                             <a class="{{$i_products->product_color}}-border" href="/product/{{$i_products->product_permalink}}">
                                 <img src="{{$i_products->media_link}}" class="round" alt="" />
                             </a>
@@ -95,7 +111,9 @@
                     </div>
                 </div>
                 @endif
+
                 <img class="rsImg" src="{{$image['Image']}}" alt="{{$image['Image_alt']}}">
+
 <!--                <img class="rsImg" src="http://10.0.1.101/1.jpg" alt="{{$image['Image_alt']}}">-->
 
 <!--                </div>-->
@@ -248,6 +266,24 @@
 #full-width-slider {
   width: 100%;
   color: #000;
+}
+.photoCopy {
+  position: absolute;
+  line-height: 24px;
+  font-size: 12px;
+  background: black;
+  color: black;
+  background-color: rgba(255, 255, 255, 0.75);
+  padding: 0px 10px;
+  position: absolute;
+  left: 12px;
+  bottom: 12px;
+  top: auto;
+  border-radius: 2px;
+  z-index: 25;
+}
+.photoCopy a {
+  color: grey;
 }
 .royalSlider { display:none }
 </style>

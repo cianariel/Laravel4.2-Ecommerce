@@ -200,14 +200,34 @@
                                                             </div>
                                                         </div>
                                                     </div>
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            <div class="form-group">
+                                                                <label class="col-md-3 control-label">HyperLink:
+                                                                </label>
+                                                                <div class="col-md-9">
+                                                                    <input class="form-control"
+                                                                                   placeholder="HyperLink" name="hero_image_1_link" id="hero_image_1_link" value="{{$room->hero_image_1_link}}">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <div class="form-group">
+                                                                <label class="col-md-3 control-label">Link Title:
+                                                                </label>
+                                                                <div class="col-md-9">
+                                                                    <input class="form-control"
+                                                                                   placeholder="Link Title" name="hero_image_1_link_title" id="hero_image_1_link_title" value="{{$room->hero_image_1_link_title}}">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                     <div>
                                                         <?php
                                                         use App\Models\Product;
                                                         $products = json_decode($room->hero_image_1_products);
-                                                        if($products)
-                                                        {
-                                                    ?>
-                                                        <table class="table table-striped table-bordered table-hover table-checkable order-column" id="hero_image_1_table">
+                                                    ?> 
+                                                        <table <?php if($products==null){echo "style='display:none'"; } ?> class="table table-striped table-bordered table-hover table-checkable order-column" id="hero_image_1_table">
                                                             <thead>
                                                                 <tr>
                                                                     <th> Product Thumb </th>
@@ -231,16 +251,14 @@
                                                                         echo '<td>'.$rm->product_id.'</td>';
                                                                         echo '<td>'.$prod->product_name.'</td>';
                                                                         echo '<td>'.$rm->product_color.'</td>';
-                                                                        echo '<td width="20%"><a href="javascript:void()" class="btn btn-sm blue btn-edit-product" data-xpos="'.$rm->x.'" data-ypos="'.$rm->y.'" data-heroimageid="hero_image_1" data-productid="'.$rm->product_id.'"><i class="fa fa-pencil"></i></a> <a href="javascript:void()" class="btn btn-sm red btn-delete-product" data-heroimageid="hero_image_1" data-productid="'.($key+1).'"><i class="fa fa-times"></i></a></td></tr>';
+                                                                        echo '<td width="20%"><a href="javascript:;" class="btn btn-sm blue btn-edit-product" data-xpos="'.$rm->x.'" data-ypos="'.$rm->y.'" data-heroimageid="hero_image_1" data-productid="'.$rm->product_id.'" data-productcolor="'.$rm->product_color.'" data-tagicon="'.$rm->tag_type.'"><i class="fa fa-pencil"></i></a> <a href="javascript:;" class="btn btn-sm red btn-delete-product" data-heroimageid="hero_image_1" data-productid="'.($key+1).'"><i class="fa fa-times"></i></a></td></tr>';
                                                                     }
                                                                 
                                                             ?>
 
                                                             </tbody>
                                                         </table>
-                                                    <?php
-                                                        }
-                                                    ?>       
+                                                          
                                                     </div>
                                                 </div>
                                                 <div class="tab-pane fade" id="Hero2">
@@ -310,6 +328,28 @@
                                                             </div>
                                                         </div>
                                                     </div>
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            <div class="form-group">
+                                                                <label class="col-md-3 control-label">HyperLink:
+                                                                </label>
+                                                                <div class="col-md-9">
+                                                                    <input class="form-control"
+                                                                                   placeholder="HyperLink" name="hero_image_2_link" id="hero_image_2_link" value="{{$room->hero_image_2_link}}">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <div class="form-group">
+                                                                <label class="col-md-3 control-label">Link Title:
+                                                                </label>
+                                                                <div class="col-md-9">
+                                                                    <input class="form-control"
+                                                                                   placeholder="Link Title" name="hero_image_2_link_title" id="hero_image_2_link_title" value="{{$room->hero_image_2_link_title}}">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                     <div>
                                                     <?php
                                                         $products = json_decode($room->hero_image_2_products);
@@ -340,7 +380,7 @@
                                                                         echo '<td>'.$rm->product_id.'</td>';
                                                                         echo '<td>'.$prod->product_name.'</td>';
                                                                         echo '<td>'.$rm->product_color.'</td>';
-                                                                        echo '<td width="20%"><a href="javascript:void()" class="btn btn-sm blue btn-edit-product" data-xpos="'.$rm->x.'" data-ypos="'.$rm->y.'" data-heroimageid="hero_image_2" data-productid="'.$rm->product_id.'"><i class="fa fa-pencil"></i></a> <a href="javascript:void()" class="btn btn-sm red btn-delete-product" data-heroimageid="hero_image_2" data-productid="'.($key+1).'"><i class="fa fa-times"></i></a></td></tr>';
+                                                                        echo '<td width="20%"><a href="javascript:;" class="btn btn-sm blue btn-edit-product" data-xpos="'.$rm->x.'" data-ypos="'.$rm->y.'" data-heroimageid="hero_image_2" data-productid="'.$rm->product_id.'" data-productcolor="'.$rm->product_color.'" data-tagicon="'.$rm->tag_type.'"><i class="fa fa-pencil"></i></a> <a href="javascript:;" class="btn btn-sm red btn-delete-product" data-heroimageid="hero_image_2" data-productid="'.($key+1).'"><i class="fa fa-times"></i></a></td></tr>';
                                                                     }
                                                                 
                                                             ?>
@@ -418,6 +458,28 @@
                                                             </div>
                                                         </div>
                                                     </div>
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            <div class="form-group">
+                                                                <label class="col-md-3 control-label">HyperLink:
+                                                                </label>
+                                                                <div class="col-md-9">
+                                                                    <input class="form-control"
+                                                                                   placeholder="HyperLink" name="hero_image_3_link" id="hero_image_3_link" value="{{$room->hero_image_3_link}}">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <div class="form-group">
+                                                                <label class="col-md-3 control-label">Link Title:
+                                                                </label>
+                                                                <div class="col-md-9">
+                                                                    <input class="form-control"
+                                                                                   placeholder="Link Title" name="hero_image_3_link_title" id="hero_image_3_link_title" value="{{$room->hero_image_3_link_title}}">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                     <div>
                                                     <?php
                                                         $products = json_decode($room->hero_image_3_products);
@@ -448,7 +510,7 @@
                                                                         echo '<td>'.$rm->product_id.'</td>';
                                                                         echo '<td>'.$prod->product_name.'</td>';
                                                                         echo '<td>'.$rm->product_color.'</td>';
-                                                                        echo '<td width="20%"><a href="javascript:void()" class="btn btn-sm blue btn-edit-product" data-xpos="'.$rm->x.'" data-ypos="'.$rm->y.'" data-heroimageid="hero_image_3" data-productid="'.$rm->product_id.'"><i class="fa fa-pencil"></i></a> <a href="javascript:void()" class="btn btn-sm red btn-delete-product" data-heroimageid="hero_image_3" data-productid="'.($key+1).'"><i class="fa fa-times"></i></a></td></tr>';
+                                                                        echo '<td width="20%"><a href="javascript:;" class="btn btn-sm blue btn-edit-product" data-xpos="'.$rm->x.'" data-ypos="'.$rm->y.'" data-heroimageid="hero_image_3" data-productid="'.$rm->product_id.'" data-productcolor="'.$rm->product_color.'" data-tagicon="'.$rm->tag_type.'"><i class="fa fa-pencil"></i></a> <a href="javascript:;" class="btn btn-sm red btn-delete-product" data-heroimageid="hero_image_3" data-productid="'.($key+1).'"><i class="fa fa-times"></i></a></td></tr>';
                                                                     }
                                                                 
                                                             ?>
@@ -485,6 +547,15 @@
                     <input type="hidden" id="hero_image_id" name="hero_image_id" />
                     <input type="hidden" id="product_thumb" name="product_thumb" />
                     <input type="hidden" id="product_name" name="product_name" />
+                    <div class="form-group">
+                        <label class="control-label col-md-4">Tag Type</label>
+                        <div class="col-md-8">
+                            <select id="tag_type" class="form-control">
+                                <option value="bag">Shopping Bag</option>
+                                <option value="thumb">Product Thumb</option>
+                            </select>
+                        </div>
+                    </div>
                     <div class="form-group">
                         <label class="control-label col-md-4">Product</label>
                         <div class="col-md-8">
@@ -580,13 +651,14 @@ $(function() {
         $("#select_product").select2("val", "");
     }
     $('#btn_add_product_image').click(function(){
-        var obj = {'hero_image_id':$('#hero_image_id').val(),'x' : $('#Xpos').val(),'y':$('#Ypos').val(),'product_id' : $('#select_product').val(),'product_color':$('#product_color').val()};
-        var row = "<tr><td><img src='"+ $('#product_thumb').val() + "' /></td><td>"+ $('#select_product').val() + "</td><td>"+ $('#product_name').val() + "</td><td>"+$('#product_color').val()+'</td><td><a href="javascript:void()" class="btn btn-sm blue btn-edit-product" data-xpos="'+$('#Xpos').val()+'" data-ypos="'+$('#Ypos').val()+'" data-heroimageid="hero_image_1" data-productid="'+$('#select_product').val()+'"><i class="fa fa-pencil"></i></a> <a href="javascript:void()" class="btn btn-sm red btn-delete-product" data-productid="1"><i class="fa fa-times"></i></a></td></tr>';
+        var obj = {'hero_image_id':$('#hero_image_id').val(),'x' : $('#Xpos').val(),'y':$('#Ypos').val(),'product_id' : $('#select_product').val(),'product_color':$('#product_color').val(),'tag_type':$('#tag_type').val()};
+        var row = "<tr><td><img src='"+ $('#product_thumb').val() + "' /></td><td>"+ $('#select_product').val() + "</td><td>"+ $('#product_name').val() + "</td><td>"+$('#product_color').val()+'</td><td><a href="javascript:;" class="btn btn-sm blue btn-edit-product" data-xpos="'+$('#Xpos').val()+'" data-ypos="'+$('#Ypos').val()+'" data-heroimageid="hero_image_1" data-productid="'+$('#select_product').val()+'" data-productcolor="'+$('#product_color').val()+'" data-tagicon="'+$('#tag_type').val()+'"><i class="fa fa-pencil"></i></a> <a href="javascript:;" class="btn btn-sm red btn-delete-product" data-productid="1"><i class="fa fa-times"></i></a></td></tr>';
         if($('#hero_image_id').val() == "hero_image_1")
         {
             heroimageproducts1.push(obj);
             $('#hero_image_1_products').val(JSON.stringify(heroimageproducts1));
             $('#hero_image_1_table > tbody:last-child').append(row);
+            $('#hero_image_1_table').show();
 
         }
         if($('#hero_image_id').val() == "hero_image_2")
@@ -594,23 +666,30 @@ $(function() {
             heroimageproducts2.push(obj);
             $('#hero_image_2_products').val(JSON.stringify(heroimageproducts2));
             $('#hero_image_2_table > tbody:last-child').append(row);
+            $('#hero_image_2_table').show();
         }
         if($('#hero_image_id').val() == "hero_image_3")
         {
             heroimageproducts3.push(obj);
             $('#hero_image_3_products').val(JSON.stringify(heroimageproducts3));
             $('#hero_image_3_table > tbody:last-child').append(row);
+            $('#hero_image_3_table').show();
         }
-        
+        $('.btn-edit-product').click(onproductedit);
+        $('.btn-delete-product').click(onproductedelete);
     });
-    $('.btn-edit-product').click(function(){
+    $('.btn-edit-product').click(onproductedit);
+    function onproductedit(){
         $('#Xpos').val($(this).data('xpos'));
         $('#Ypos').val($(this).data('ypos'));
+        $('#product_color').val($(this).data('productcolor'));
+        $('#tag_type').val($(this).data('tagicon'));
         $('#hero_image_id').val($(this).data('heroimageid'));
         $("#select_product").select2("val", $(this).data('productid'));
         $('#select_product_modal').modal();
-    });
-    $('.btn-delete-product').click(function(){
+    }
+    $('.btn-delete-product').click(onproductedelete);
+    function onproductedelete(){
         var productid = $(this).data('productid');
         var hero_image_id = $(this).data('heroimageid');
         $(this).closest('tr').remove();
@@ -632,7 +711,7 @@ $(function() {
             $('#hero_image_3_products').val(JSON.stringify(heroimageproducts3));
         }
         //$('product_thumb').test();
-    });
+    }
     
 });
 
