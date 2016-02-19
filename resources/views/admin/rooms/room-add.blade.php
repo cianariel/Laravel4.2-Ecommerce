@@ -200,6 +200,28 @@
                                                             </div>
                                                         </div>
                                                     </div>
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            <div class="form-group">
+                                                                <label class="col-md-3 control-label">HyperLink:
+                                                                </label>
+                                                                <div class="col-md-9">
+                                                                    <input class="form-control"
+                                                                                   placeholder="HyperLink" name="hero_image_1_link" id="hero_image_1_link" value="{{$room->hero_image_1_link}}">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <div class="form-group">
+                                                                <label class="col-md-3 control-label">Link Title:
+                                                                </label>
+                                                                <div class="col-md-9">
+                                                                    <input class="form-control"
+                                                                                   placeholder="Link Title" name="hero_image_1_link_title" id="hero_image_1_link_title" value="{{$room->hero_image_1_link_title}}">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                     <div>
                                                         <?php
                                                         use App\Models\Product;
@@ -310,6 +332,28 @@
                                                             </div>
                                                         </div>
                                                     </div>
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            <div class="form-group">
+                                                                <label class="col-md-3 control-label">HyperLink:
+                                                                </label>
+                                                                <div class="col-md-9">
+                                                                    <input class="form-control"
+                                                                                   placeholder="HyperLink" name="hero_image_2_link" id="hero_image_2_link" value="{{$room->hero_image_2_link}}">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <div class="form-group">
+                                                                <label class="col-md-3 control-label">Link Title:
+                                                                </label>
+                                                                <div class="col-md-9">
+                                                                    <input class="form-control"
+                                                                                   placeholder="Link Title" name="hero_image_2_link_title" id="hero_image_2_link_title" value="{{$room->hero_image_2_link_title}}">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                     <div>
                                                     <?php
                                                         $products = json_decode($room->hero_image_2_products);
@@ -414,6 +458,28 @@
                                                                 <div class="col-md-9">
                                                                     <input class="form-control"
                                                                                    placeholder="Desciption"  name="hero_image_3_desc" id="hero_image_3_desc" value="{{$room->hero_image_3_desc}}">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            <div class="form-group">
+                                                                <label class="col-md-3 control-label">HyperLink:
+                                                                </label>
+                                                                <div class="col-md-9">
+                                                                    <input class="form-control"
+                                                                                   placeholder="HyperLink" name="hero_image_3_link" id="hero_image_3_link" value="{{$room->hero_image_3_link}}">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <div class="form-group">
+                                                                <label class="col-md-3 control-label">Link Title:
+                                                                </label>
+                                                                <div class="col-md-9">
+                                                                    <input class="form-control"
+                                                                                   placeholder="Link Title" name="hero_image_3_link_title" id="hero_image_3_link_title" value="{{$room->hero_image_3_link_title}}">
                                                                 </div>
                                                             </div>
                                                         </div>
