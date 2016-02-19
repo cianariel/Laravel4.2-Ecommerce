@@ -31,18 +31,17 @@ class ShopController extends ApiController
             if(!$categoryModel = ProductCategory::where('extra_info', $category)->first()){
                 return redirect('/shop/');
             }
-
-            $parentCategory =  @ProductCategory::where('id', $categoryModel->parent_id)->first()->category_name;
+            $categoryTree = ProductCategory::buildCategoryTree(false);
+            $parentCategory =  @ProductCategory::where('id', $categoryModel->parent_id)->first();
 
             return view('shop.shop-category')
-
                 ->with('userData',$userData)
-                ->with('currentCategory', $category)
-                 ->with('parentCategory', $parentCategory)
-
+                ->with('currentCategory', $categoryModel)
+                ->with('parentCategory', $parentCategory)
+                ->with('categoryTree', $categoryTree)
                 ;
         }else{
-            $categoryTree = ProductCategory::buildCategoryTree();
+            $categoryTree = ProductCategory::buildCategoryTree(true);
 
             return view('shop.index')
                 ->with('userData',$userData)
