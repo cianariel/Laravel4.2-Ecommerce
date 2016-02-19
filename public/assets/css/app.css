@@ -6034,7 +6034,8 @@ article.product {
 .mobile-search-bar {
   padding: 10px;
   display: none;
-  background: #c1c1c1; }
+  background: #c1c1c1;
+  margin-top: 55px; }
 
 #mobile-side-filters div {
   margin-top: 20px; }
@@ -8783,6 +8784,10 @@ body.shop-landing .mid-nav .wrap, .mid-nav body.shop-landing .extra-nav .wrap {
   text-align: center; }
   body.shop-landing .mid-nav .wrap li, .mid-nav body.shop-landing .extra-nav .wrap li {
     display: inline-block; }
+  body.shop-landing .mid-nav .wrap .box-link, .mid-nav body.shop-landing .extra-nav .wrap .box-link {
+    margin-left: 0px !important;
+    margin-right: 0px;
+    font-size: 10px; }
 
 body.shop-landing .shoplanding-title {
   border: 0px;
