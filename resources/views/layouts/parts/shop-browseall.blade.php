@@ -4,15 +4,13 @@
                         <p class="title"><a href="/shop/">Shop by Category</a></p>
                         @foreach($categoryTree as $name => $unused)
                             <div class="link-row">
-                                <a href="/shop/{{$name}}">{{ucfirst(str_replace('-', ' ', $name))}}</a>
+                                <a class="{{@$parentCategory == $name ||  @$grandParent == $name ? 'pink' : ''}}" href="/shop/{{$name}}">{{ucfirst(str_replace('-', ' ', $name))}}</a>
                             </div>
                         @endforeach
                     </section>
 
-
-
                             @foreach($categoryTree as $parent => $children)
-                                <section class="{{$parent}} col-xs-8 {{$parent != 'smart-home' ? 'hidden' : ''}}">
+                                <section class="{{$parent}} col-xs-8 {{@$parentCategory->category_name != $parent &&  @$grandParent != $parent ? 'hidden' : ''}}">
                                     <div class="col-md-12">
                                         <p class="title"><a href="/shop/{{$parent}}">{{ucfirst(str_replace('-', ' ', $parent))}}</a></p>
                                         @foreach($children as $child)
