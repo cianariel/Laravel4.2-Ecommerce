@@ -19,11 +19,11 @@ class ShopController extends Controller
                 return redirect('/shop/');
             }
 
-            $parentCategoryName =  @ProductCategory::where('id', $categoryModel->parent_id)->first()->category_name;
+            $parentCategory =  @ProductCategory::where('id', $categoryModel->parent_id)->first()->category_name;
 
             return view('shop.shop-category')
-                ->with('currentCategory', $category)
-                ->with('parentCategory', $parentCategoryName)
+                ->with('currentCategory', $categoryModel)
+                ->with('parentCategory', $parentCategory)
                 ;
         }else{
             $categoryTree = ProductCategory::buildCategoryTree();
