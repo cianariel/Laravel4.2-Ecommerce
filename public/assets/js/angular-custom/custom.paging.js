@@ -145,7 +145,7 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
               controller: 'ModalInstanceCtrltest'
             });
         };
-        
+        /*
         $scope.openProfileSetting = function () {
             var templateUrl = "profile-setting.html";
             var modalInstance = $uibModal.open({
@@ -154,29 +154,30 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
               windowClass : 'profile-setting-modal',
               controller: 'ModalInstanceCtrltest'
             });
-        };
+        };*/
 
         $scope.openProductPopup = function () {
             pagingApi.openProductPopup($scope, $uibModal, $timeout);
             }
             
     })
-    .controller('headerController', function($scope, $uibModal,$http,pagingApi, $filter, layoutApi) {
-        $scope.openProfileSetting = function () {
-            var templateUrl = "profile-setting.html";
-            var modalInstance = $uibModal.open({
-              templateUrl: templateUrl,
-              size: 'lg',
-              windowClass : 'profile-setting-modal',
-              controller: 'ModalInstanceCtrltest'
-            });
-        };
+/*    .controller('headerController', function ($scope, $uibModal, $http, pagingApi, $filter, layoutApi) {
 
-        layoutApi.getProductsForShopMenu().success(function (response) {
-            $scope.productsForShopMenu = response;
-        });
+        /!*$scope.openProfileSetting = function () {
+         var templateUrl = "profile-setting.html";
+         var modalInstance = $uibModal.open({
+         templateUrl: templateUrl,
+         size: 'lg',
+         windowClass : 'profile-setting-modal',
+         controller: 'ModalInstanceCtrltest'
+         });
+         };*!/
 
-    })
+        /!*layoutApi.getProductsForShopMenu().success(function (response) {
+         $scope.productsForShopMenu = response;
+         });*!/
+
+    })*/
     .controller('ModalInstanceCtrltest', function ($scope, $uibModalInstance) {
       $scope.ok = function () {
         $uibModalInstance.close();
@@ -537,7 +538,7 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
 //        return pagingApi;
 //    });
 
-.factory('layoutApi', function($http) {
+/*.factory('layoutApi', function($http) {
 
         var layoutApi = {};
 
@@ -562,7 +563,7 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
                 }
             }
         };
-    });
+    });*/
 ;
 
 angular.module('pagingApp').value('cgBusyDefaults',{
