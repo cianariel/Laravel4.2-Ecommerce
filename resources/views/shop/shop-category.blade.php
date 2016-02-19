@@ -3,6 +3,7 @@
 @section('body-class'){{ 'shoppage shop-category' }}@stop
 
 @section('content')
+    @include('layouts.parts.shop-browseall')
     <nav class="mid-nav ">
         <div class="container full-sm fixed-sm">
             <ul class="wrap col-lg-9">
@@ -52,8 +53,6 @@
     </section>
 
     <div class="app-wrap" ng-app="pagingApp" ng-controller="shopcategoryController">
-        
-            
         <nav id="hero-nav" class="col-sm-12">
             <div class="container full-620  fixed-sm banner-nav">
                         <ul class="popular-new ">
@@ -71,8 +70,6 @@
         </nav>
 
         <div class="clearfix"></div>
-
-
 
         <div class="homepage-grid center-block">
             <div class="loader loader-abs" cg-busy="firstLoad"></div>
