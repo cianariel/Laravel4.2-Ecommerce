@@ -19,7 +19,7 @@ class ShopController extends ApiController
 
     }
 
-    public function index($category = false)
+    public function index($grandParent = false, $parent = false, $child = false)
     {
 
         $userData = '';
@@ -27,7 +27,23 @@ class ShopController extends ApiController
             $userData = $this->authCheck['user-data'];
         }
 
-        if($category){
+        if(!$grandParent){ // shop landing page
+            $categoryTree = ProductCategory::buildCategoryTree(true);
+
+            return view('shop.index')
+                ->with('userData',$userData)
+                ->with('categoryTree', $categoryTree)
+                ;
+        }else{
+
+            if($child){
+                $category = $child;
+            }elseif($parent){
+                $category = $parent;
+            }else{
+                $category = $grandParent;
+            }
+
             if(!$categoryModel = ProductCategory::where('extra_info', $category)->first()){
                 return redirect('/shop/');
             }
@@ -40,14 +56,11 @@ class ShopController extends ApiController
                 ->with('parentCategory', $parentCategory)
                 ->with('categoryTree', $categoryTree)
                 ;
-        }else{
-            $categoryTree = ProductCategory::buildCategoryTree(true);
 
-            return view('shop.index')
-                ->with('userData',$userData)
-                ->with('categoryTree', $categoryTree)
-                ;
         }
+
+
+
     }
 
 

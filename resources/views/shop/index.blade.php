@@ -119,12 +119,16 @@
                                     <a href="/shop/{{$topCategory}}/{{trim($parent)}}">
                                         <i class="m-icon--energy"></i>
                                         <p class="title"><strong>{{strtoupper(str_replace('-', ' ', $parent))}}</strong></p>
-                                        <p class="hidden-xs hidden-sm">
+                                    </a>
+
+                                         <p class="hidden-xs hidden-sm">
                                             @foreach($grandChildren as $item)
-                                                {{trim($item->category_name)}}<br>
+                                                 <a href="/shop/{{$topCategory}}/{{trim($parent)}}/{{$item->extra_info}}">
+                                                     {{trim($item->category_name)}}
+                                                 </a>
+                                                 <br>
                                             @endforeach
                                         </p>
-                                    </a>
                                 </div>
                             @endforeach
                             <?php $i++; ?>

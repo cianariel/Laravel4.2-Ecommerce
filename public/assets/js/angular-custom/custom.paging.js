@@ -287,19 +287,14 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
         $scope.sortBy = false;
 
         var $route =  $filter('getURISegment')(2);
-
+        var $category = false;
 
 
         if($route == 'shop'){
-            if(
-                ($filter('getURISegment')(3) == 'smart-home' ||
-                $filter('getURISegment')(3) == 'travel' ||
-                $filter('getURISegment')(3) == 'wearables' ||
-                $filter('getURISegment')(3) == 'home-decor')
-            &&
-                $filter('getURISegment')(4)
-            ){
-                $scope.currentCategory = $filter('getURISegment')(4);
+            if($category = $filter('getURISegment')(5)){
+                $scope.currentCategory = $category;
+            }else if($category = $filter('getURISegment')(4)){
+                $scope.currentCategory = $category;
             }else{
                 $scope.currentCategory = $filter('getURISegment')(3);
             }
