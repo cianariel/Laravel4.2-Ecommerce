@@ -8784,10 +8784,11 @@ body.shop-landing .mid-nav .wrap, .mid-nav body.shop-landing .extra-nav .wrap {
   text-align: center; }
   body.shop-landing .mid-nav .wrap li, .mid-nav body.shop-landing .extra-nav .wrap li {
     display: inline-block; }
-  body.shop-landing .mid-nav .wrap .box-link, .mid-nav body.shop-landing .extra-nav .wrap .box-link {
-    margin-left: 0px !important;
-    margin-right: 0px;
-    font-size: 10px; }
+  @media (max-width: 460px) {
+    body.shop-landing .mid-nav .wrap .box-link, .mid-nav body.shop-landing .extra-nav .wrap .box-link {
+      margin-left: 0px !important;
+      margin-right: 0px;
+      font-size: 11px; } }
 
 body.shop-landing .shoplanding-title {
   border: 0px;

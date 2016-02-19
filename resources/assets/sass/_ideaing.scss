@@ -6855,10 +6855,12 @@ body.shop-landing{
             li{
                 display: inline-block;
             }
+            @media (max-width: 460px){
             .box-link{
                 margin-left: 0px !important;
                 margin-right: 0px;
-                font-size: 10px;
+                    font-size: 11px;
+                }
             }
 
         }
