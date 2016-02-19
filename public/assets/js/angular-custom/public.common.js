@@ -8,6 +8,35 @@ publicApp.config(['$httpProvider', function ($httpProvider) {
     $httpProvider.defaults.headers.common["X-Requested-With"] = 'XMLHttpRequest';
 }]);
 
+// custom directive //
+publicApp.factory('layoutApi', function($http) {
+
+    var layoutApi = {};
+
+    layoutApi.getProductsForShopMenu = function() {
+        return $http({
+            method: 'GET',
+            url: '/api/layout/get-shop-menu/',
+        });
+    }
+
+
+    return layoutApi;
+})
+    .directive('a', function() {
+        return {
+            restrict: 'E',
+            link: function(scope, elem, attrs) {
+                if(attrs.ngClick || attrs.href === '' || attrs.href === '#'){
+                    elem.on('click', function(e){
+                        e.preventDefault();
+                    });
+                }
+            }
+        };
+    });
+// //
+
 
 publicApp.controller('ModalInstanceCtrltest', function ($scope, $uibModalInstance) {
         $scope.ok = function () {
@@ -19,8 +48,8 @@ publicApp.controller('ModalInstanceCtrltest', function ($scope, $uibModalInstanc
         };
     });
 //$scope, $uibModal,$http,pagingApi, $filter, layoutApi, FileUploader
-publicApp.controller('publicController', ['$scope', '$http', '$window', '$timeout', '$location', '$anchorScroll','$uibModal','FileUploader'
-    , function ($scope, $http, $window, $timeout, $location, $anchorScroll, $uibModal ,FileUploader) {
+publicApp.controller('publicController', ['$scope', '$http', '$window', '$timeout', '$location', '$anchorScroll','$uibModal','layoutApi','FileUploader'
+    , function ($scope, $http, $window, $timeout, $location, $anchorScroll, $uibModal,layoutApi ,FileUploader) {
 
        // var uploader = null;
         $scope.TEST = "TSSSSST";
@@ -36,6 +65,9 @@ publicApp.controller('publicController', ['$scope', '$http', '$window', '$timeou
             });
 
         };
+        layoutApi.getProductsForShopMenu().success(function (response) {
+            $scope.productsForShopMenu = response;
+        });
 
 
         // uploader section //
