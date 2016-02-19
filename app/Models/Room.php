@@ -23,18 +23,24 @@
             'hero_image_1_alt',
             'hero_image_1_desc',
             'hero_image_1_caption',
+            'hero_image_1_link_title',
+            'hero_image_1_link',
             'hero_image_1_products',
             'hero_image_2',
             'hero_image_2_title',
             'hero_image_2_alt',
             'hero_image_2_desc',
             'hero_image_2_caption',
+            'hero_image_2_link_title',
+            'hero_image_2_link',
             'hero_image_2_products',
             'hero_image_3',
             'hero_image_3_title',
             'hero_image_3_alt',
             'hero_image_3_desc',
             'hero_image_3_caption',
+            'hero_image_3_link_title',
+            'hero_image_3_link',
             'hero_image_3_products',
         );
         protected $hidden = ['created_at'];
@@ -92,6 +98,9 @@
                 $Image['Image_alt'] = $roomData['room']->hero_image_1_alt;
                 $Image['Image_Title'] = $roomData['room']->hero_image_1_title;
                 $Image['Image_Caption'] = $roomData['room']->hero_image_1_caption;
+                $Image['Image_hyperlink'] = $roomData['room']->hero_image_1_link;
+                $Image['Image_hyperlink_title'] = $roomData['room']->hero_image_1_link_title;
+                
                 $products = json_decode($roomData['room']->hero_image_1_products);
                 $temp = new Product();
                 foreach ($products as $pr) {
@@ -118,6 +127,9 @@
                 $Image['Image_alt'] = $roomData['room']->hero_image_2_alt;
                 $Image['Image_Title'] = $roomData['room']->hero_image_2_title;
                 $Image['Image_Caption'] = $roomData['room']->hero_image_2_caption;
+                $Image['Image_hyperlink'] = $roomData['room']->hero_image_2_link;
+                $Image['Image_hyperlink_title'] = $roomData['room']->hero_image_2_link_title;
+
                 $products = json_decode($roomData['room']->hero_image_2_products);
 
                 $products = json_decode($roomData['room']->hero_image_2_products);
@@ -147,6 +159,9 @@
                 $Image['Image_alt'] = $roomData['room']->hero_image_3_alt;
                 $Image['Image_Title'] = $roomData['room']->hero_image_3_title;
                 $Image['Image_Caption'] = $roomData['room']->hero_image_3_caption;
+                $Image['Image_hyperlink'] = $roomData['room']->hero_image_3_link;
+                $Image['Image_hyperlink_title'] = $roomData['room']->hero_image_3_link_title;
+
                 $products = json_decode($roomData['room']->hero_image_3_products);
                 $temp = new Product();
                 foreach ($products as $pr) {

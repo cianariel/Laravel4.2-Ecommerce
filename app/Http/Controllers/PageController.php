@@ -309,23 +309,6 @@ class PageController extends Controller
         MetaTag::set('description',$result['roomInformation']['MetaDescription']);
         //return $result;
         return view('room.landing')->with('roomInformation',$result['roomInformation']);
-        // Get category tree
-        /*$catTree = $product->getCategoryHierarchy($productData['product']->product_category_id);
-
-        $result = $product->productDetailsViewGenerate($productData, $catTree);
-
-        MetaTag::set('title',$result['productInformation']['PageTitle']);
-        MetaTag::set('description',$result['productInformation']['MetaDescription']);
-
-     //   dd($result['selfImages']['picture'][0]['link']);
-        return view('product.product-details')
-            ->with('permalink',$permalink)
-            ->with('productInformation',$result['productInformation'])
-            ->with('relatedProducts',$result['relatedProducts'])
-            ->with('selfImages',$result['selfImages'])
-            ->with('storeInformation',$result['storeInformation']);*/
-
-
     }
 
     public static function getShopMenu(){
