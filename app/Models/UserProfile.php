@@ -14,9 +14,9 @@ class UserProfile extends Model
      */
     protected $table = 'user_profiles';
 
-    protected $fillable = ['user_name'];
+    protected $fillable = ['personal_info'];
 
-    protected $hidden = ['id','created_at','updated_at'];
+    protected $hidden = ['created_at','updated_at'];
 
     /**
      * Define Relationship
