@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Role;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -29,6 +30,8 @@ class ApiController extends Controller
         //  $this->middleware('jwt.auth', ['except' => ['mediaUpload']]);
 
         // $this->role = new Role();
+
+        $this->userModel = new User();
     }
 
     /**
@@ -216,6 +219,7 @@ class ApiController extends Controller
         $response['status-code'] = '';
         $response['status-message'] = '';
         $response['user-data'] = '';
+        $response['profile-picture']='';
         $response['toke'] = '';
         $response['role-authorized'] = false;
 
@@ -234,7 +238,14 @@ class ApiController extends Controller
                 $response['status-code'] = '900';
                 $response['status-message'] = 'No user Found';
             } else {
-                $response['user-data'] = $user;
+
+                $userModel = new User();
+
+                $response['user-data'] = $userModel->IsEmailAvailable($user['email']);
+                $response['user-data']['login'] = true;
+               // $response['profile-picture'] = isset($response['user-data']->medias[0]->media_link)?$response['user-data']->medias[0]->media_link:'';
+                // User::find($response['user-data']['id'])->medias->first();
+
 
                 $newToken = JWTAuth::refresh($token);
                 $this->setAuthToken($newToken);

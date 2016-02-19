@@ -6,33 +6,31 @@
     <script type="text/javascript">
         var permalink = "{{$permalink}}";
     </script>
+    <nav class="mid-nav ">
+        <div class="container full-sm fixed-sm">
+            <ul class="wrap col-lg-9">
+                @if(isset($productInformation['CatTree']))
+                    @foreach( $productInformation['CatTree'] as $key => $category )
+                        <li class="box-link-ul ">
+                            <a class="box-link @if($key==(count($productInformation['CatTree'])-1)) active @endif"
+                               href="/category/@if(isset($category['CategoryPermalink'])){{$category['CategoryPermalink']}}@endif"
+                               @if($category == end($productInformation['CatTree']))class="current"
+                                    @endif>
+                                <span class="box-link-active-line"></span>
+                                @if(isset($category['CategoryName']))
+                                    {{$category['CategoryName']}}
+                                @endif
+                            </a>
+                        </li>
+                        <li class="horizontal-line-holder hidden-xs ">
+                            <span class="horizontal-line"></span>
+                        </li>
+                    @endforeach
+                @endif
+            </ul>
+        </div>
+    </nav>
     <div id="productApp" ng-app="productApp" data-ng-controller="productController" ng-cloak>
-        <nav class="mid-nav hidden-xs">
-            <div class="container">
-                <div class="col-sm-8 col-sm-offset-2">
-                    <ul class="left-nav hidden-620">
-                        @if(isset($productInformation['CatTree']))
-                            @foreach( $productInformation['CatTree'] as $key => $category )
-                                <li class="box-link-ul @if($key==0) active-ul @endif">
-                                    <a class="box-link @if($key==0) active @endif"
-                                       href="/category/@if(isset($category['CategoryPermalink'])){{$category['CategoryPermalink']}}@endif"
-                                       @if($category == end($productInformation['CatTree']))class="current"
-                                            @endif>
-                                        <span class="box-link-active-line"></span>
-                                        @if(isset($category['CategoryName']))
-                                            {{$category['CategoryName']}}
-                                        @endif
-                                    </a>
-                                </li>
-                                <li class="horizontal-line-holder hidden-xs ">
-                                    <span class="horizontal-line"></span>
-                                </li>
-                            @endforeach
-                        @endif
-                    </ul>
-                </div>
-            </div>
-        </nav>
         <header class="story-header hidden-620 hidden-soft">
             <div class="col-xs-1">
             <a href="#" class="side-logo lamp-logo">
@@ -43,7 +41,7 @@
             </div>
             <div class="col-xs-4">
             <h1>
-                    <span class="title-holder"> 
+                    <span class="title-holder">
                 <span class="title">
                     @if(isset($productInformation['ProductName']))
                         {{$productInformation['ProductName']}}
@@ -94,10 +92,10 @@
 
             <div class="container fixed-sm full-480">
 
-                <div class="row">
+                <div class="row hero-content-holder">
                     <div class="col-sm-11">
                         <div class="average-score pull-right">
-                            
+
                             <div class="score">
                                 <i class=" m-icon--bulb-detailed-on-rating"></i>
                                 @if(isset($productInformation['Review']))
@@ -244,7 +242,7 @@
                 </div>
             </div>
         </section>
-        
+
         <nav id="hero-nav" class="product-nav col-sm-12">
             <div class="container full-620 fixed-sm">
                 <ul class="category-nav full-620">
@@ -510,13 +508,13 @@
 
                                                 <div class="star-raiting" style="text-align: center">
                                                     <?php
-                                                    $stars = $review->value;
+                                                    $stars = isset($review->value) ? $review->value : 0;
                                                     $fStar = floor($stars);
                                                     $cStar = ceil($stars);
                                                     $halfStar = -1;
                                                     if ($fStar == $cStar)
                                                         $halfStar = $cStar;
-
+                                                    // TODO - move to model or Angular
                                                     ?>
                                                     @for($i=1; $i<=5; $i++)
                                                         @if($i <= $fStar)
@@ -547,14 +545,14 @@
                                                           target="_blank">Amazon</a></div>
                                     <div class="reviews">Reviews</div>
                                     <div class="star-raiting" style="text-align: center">
-                                        <?php 
+                                        <?php
                                             $stars = $productInformation['Review'][1]->value;
                                             $fStar = floor($stars);
                                             $cStar = ceil($stars);
                                             $halfStar = -1;
                                             if($fStar == $cStar)
                                                 $halfStar = $cStar;
-                                            
+
                                         ?>
                                         @for($i=1; $i<=5; $i++)
                                             @if($i <= $fStar)
@@ -589,7 +587,7 @@
                             </div>
                         </div>
                         <div class="visible-xs visible-sm">
-                            
+
                         </div>
 
                         <div class="col-md-4 col-md-offset-4 critic-quote">
@@ -651,7 +649,7 @@
                 <div class="main-content full-620 fixed-sm">
                     <h3 class="green">Related Products</h3>
                     <div class="related-products grid-box-3">
-                        
+
 
                         @if(isset($relatedProducts) && ($relatedProducts != null) )
                             @foreach( $relatedProducts as $product )
@@ -677,11 +675,10 @@
                                         <div class="clearfix"></div>
 
                                         <div class="clearfix"></div>
-                                        <a target="_blank" href="{{ $product['Permalink'] }}" class="box-item__get-it">Get
-                                            it</a>
+                                        <a target="_blank" href="{{ $product['Permalink'] }}" class="box-item__get-it">
+                                            Get it
+                                        </a>
                                     </div>
-                                    
-                                    
                                 </div>
                             @endforeach
                         @endif

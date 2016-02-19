@@ -4,10 +4,9 @@
 
 @section('content')
     <div id="pagingApp" ng-app="pagingApp" ng-controller="pagingController">
-        <nav class="mid-nav hidden-xs">
-            <div class="container">
-                <div class="col-sm-8 col-sm-offset-2">
-                    <ul class="left-nav hidden-620">
+        <nav class="mid-nav">
+            <div class="container full-sm fixed-sm">
+                    <ul class="wrap col-lg-9">
                         <li class="box-link-ul  active-ul ">
                             <a class="box-link active" href="/user/profile">
                                 <span class="box-link-active-line"></span>
@@ -17,7 +16,6 @@
                         </li>
                     </ul>
                 </div>                
-            </div>
         </nav>
 
 
@@ -31,9 +29,9 @@
                 <div class="col-sm-6">
                     <p>
                         <span class="fullname">{{$fullname}}</span>&nbsp;
-                        <span class="location"><i class=" m-icon--Location"></i> Oklahoma, USA</span>
+                        <span class="location"><i class=" m-icon--Location"></i> {{$address}}</span>
                     </p>
-                    <p class="description">Only the best tech gadgets from Apple. Samsung and LG.</p>
+                    <p class="description">{{$personalInfo}}</p>
                     <div>
                         <button id="btn-follow" type="button" class="btn " uib-dropdown-toggle>
                             Follow <i class=" m-icon--Actions-Down-Arrow-Active"></i>
@@ -87,7 +85,7 @@
                         </li>
                         <li ng-class="{active: activeMenu == '4'}" ng-click="activeMenu='4'">
                             <a data-filterby="photos" href="" class="my-product">
-                                <i class="m-icon m-icon--shopping-bag-light-green"></i>
+                                <i class="m-icon m-icon--menu"></i>
                                 My Products
                             </a>
                         </li>

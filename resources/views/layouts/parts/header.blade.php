@@ -1,40 +1,40 @@
 <!--    <div {{--id="pagingApp" ng-app="pagingApp" ng-controller="headerController"--}}>-->
-    <div ng-app="pagingApp" ng-controller="headerController" >
-        <header class="colophon">
+<div id="publicApp" ng-app="publicApp" ng-controller="publicController">
+<header class="colophon">
                 <div class="col-xs-12">
                     <h2 id="site-name">Ideaing | Ideas for Smarter Living</h2>
 
                     <nav id="top-nav" class="row">
                         <div class="container full-sm fixed-sm">
                             <div class="top-nav-holder">
-                                <div class="visible-xs col-xs-1">
-                                    <div class="mobile-menu-switch " data-toggle=".mobile-menu" data-overlay="true"></div>
-                                </div>
-                                <div class="mobile-menu col-xs-8 hidden-soft">
+                            <div class="col-xs-5 col-sm-5 category-menu">
                                     <ul>
-                                        <li><a class="ideas" href="#"><i class="m-icon m-icon--bulb"></i>&nbsp; Ideas</a></li>
-                                        <li><a class="shop" href="#"><i class="m-icon m-icon--item"></i>&nbsp; Shop</a></li>
-                                        <li><a class="disc" href="#"><i class="m-icon m-icon--discuss-active"></i>&nbsp; Discuss</a></li>
-
-                                    </ul>
-                                </div>
-                                <div  class="col-sm-5 category-menu hidden-xs">
-                                    <ul>
+                                    <li class="visible-xs">
+                                        <a class="mobile-top-menu-switcher" data-toggle="#mobile-top-menu" href="#">
+                                            <i class=" m-icon--Close up"></i>
+                                            <i class="m-icon--MenuButton down"></i>
+<!--                                            <i class="m-icon--footer-up-arrow down"></i>-->
+                                        </a>
+                                    </li>
                                         <li>
-                                            <a class="ideas" href="#">
-                                                <i class="m-icon m-icon--bulb"></i>
+                                            <a class="ideas" href="/">
+                                            <i class="hidden-xs m-icon m-icon--bulb"></i>
                                                 <span class="m-icon-text">Ideas</span>
                                                 <span class="box-link-active-line"></span>
                                             </a>
                                         </li>
                                         <li class="nested">
-                                            
-                                            <a class="shop" data-toggle=".shop-menu" href="#"><i class="m-icon m-icon--item"></i>
+                                            <a class="m-icon-text-holder" href="/shop">
+                                            <i class="hidden-xs m-icon m-icon--shopping-bag-light-green"></i>
                                                 <span class="m-icon-text">Shop</span> 
-                                                <span class="box-link-active-line"></span>
+                                                <span class="box-link-active-line" style="margin-left: 10px;"></span>
+                                            </a>
+                                        <a class="shop hidden-xs" data-toggle="#shop-menu" href="#">
+                                                <i class="m-icon--Header-Dropdown down"></i>
+                                                <i class="m-icon--footer-up-arrow up"></i>
                                             </a>
                                         </li>
-                                        <li>
+                                    <li class="hidden-xs">
                                             <a class="disc" href="#"><i class="m-icon m-icon--discuss-active"></i>&nbsp;
                                                 <span class="m-icon-text">Discuss</span>
                                             </a>
@@ -42,8 +42,8 @@
                                     </ul>
                                 </div>
 
-                                <div class="col-xs-6 col-sm-3 text-center">
-                                    <a id="ideaing-logo" class="center-block" href="/">
+                            <div class="col-xs-2 col-sm-3 text-center">
+                                <a id="ideaing-logo" class="center-block hidden-xs" href="/">
                                         <i class="m-icon m-icon--logo-without-text-blue">
                                             <span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span><span class="path6"></span><span class="path7"></span><span class="path8"></span><span class="path9"></span><span class="path10"></span><span class="path11"></span><span class="path12"></span><span class="path13"></span><span class="path14"></span><span class="path15"></span><span class="path16"></span><span class="path17"></span><span class="path18"></span>
                                         </i>
@@ -56,6 +56,14 @@
                                         </i>
     <!--                                    <img src="/assets/images/logo-hover.png" class="img-responsive " alt="">-->
                                     </a>
+                                <a id="ideaing-logo" class="center-block visible-xs" href="/">
+                                    <i class="m-icon m-icon--bulb2">
+                                        <span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span><span class="path6"></span><span class="path7"></span><span class="path8"></span><span class="path9"></span><span class="path10"></span>
+                                    </i>
+                                    <i class="m-icon m-icon--bulb2 scroll-logo">
+                                        <span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span><span class="path6"></span><span class="path7"></span><span class="path8"></span><span class="path9"></span><span class="path10"></span>
+                                    </i>
+                                </a>
                                 </div>
 
                                 <section class="search-bar col-sm-2 hidden-xs">
@@ -64,18 +72,21 @@
                                             <i class="m-icon m-icon--search-id"></i>
                                             <input class="form-control  " type="text" name="search" placeholder="Search..."/>
                                         </span>
+                                    <span class="search-input-holder visible-xs">
+                                        <i class="m-icon m-icon--search-id"></i>
+                                    </span>
                                     </div>
                                 </section>
 
-                                <?php if(isset($login) && $login) { ?>
                                     <div class="col-xs-5 col-sm-2">
                                         <div class="row">
+                                            <?php if(isset($userData['login']) && $userData['login']) { ?>
                                             <div class="pull-right profile-photo-holder">
-                                                <a href="#"><img width="40px" src="<?php echo isset($profile) ? $profile : "" ?>" alt="" class="profile-photo "></a>
+                                                <a href="#"><img width="40px" src="<?php echo isset($userData['medias'][0]['media_link']) ? $userData['medias'][0]['media_link']: "" ?>" alt="" class="profile-photo "></a>
                                                 <span class="box-link-active-line"></span>
                                                 <div class="profilelinks-popup">
                                                     <div class="menu-group">
-                                                        <div><a href="#">My Profile</a> </div>
+                                                        <div><a href="/user/profile">My Profile</a> </div>
                                                         <div><a href="#" class="edit-profile-link" ng-click="openProfileSetting()">Edit Profile</a> </div>
                                                     </div>
                                                     <div class="menu-group">
@@ -83,7 +94,8 @@
                                                         <div><small>855 Friends</small> </div>
                                                         <div><small>12 Messages</small> </div>
                                                     </div>
-                                                    <div class="log-out"><a href=""><i class="m-icon--Logout-Active"></i> Log Out</a></div>
+                                                    <div class="log-out"><a href="/api/logout"><i class="m-icon--Logout-Active"></i> Log Out</a></div>
+
                                                 </div>
                                             </div>
                                             <div class="notification pull-right">
@@ -100,7 +112,7 @@
                                                     <div class="notification-body">
                                                         <?php for($i=0; $i<5; $i++) {?>
                                                             <div class="notification-item">
-                                                                <img width="40px" src="<?php echo isset($profile) ? $profile : "" ?>" class="profile-photo pull-left">
+                                                                <img width="40px" src="<?php echo isset($userData['medias'][0]['media_link']) ? $userData['medias'][0]['media_link']: "" ?>" class="profile-photo pull-left">
                                                                 <div>
                                                                     <span><strong>Syvia Saint Creat</strong> commented on your photos</span><br>
                                                                     <small>58 minutes ago</small>
@@ -113,17 +125,13 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <a href="#" class="search-toggle visible-xs pull-right" data-toggle=".mobile-search-bar"><i class="m-icon m-icon--search-id"></i></a>
 
-                                        </div>
-                                    </div>
                                 <?php }  else { ?>
-                                <div class="col-xs-3 col-sm-2  signin">
-                                    <div class="row">
-                                        <a data-toggle="modal" data-target="#myModal" href="/login"><i class="m-icon m-icon--user"></i> Log in</a>
+                                        <a class="pull-right signin" data-toggle="modal" data-target="#myModal" href="/login"><i class="m-icon m-icon--user"></i> Log in</a>
+                                    <?php } ?>
+                                    <a href="#" class="search-toggle visible-xs pull-right" data-toggle=".mobile-search-bar"><i class="m-icon m-icon--search-id"></i></a>
                                     </div>
                                 </div>
-                               <?php } ?>
                                 <div class="clearfix"></div>
                             </div>
                             <div class="clearfix"></div>
@@ -139,67 +147,67 @@
              include('/var/www/ideaing/resources/views/layouts/parts/shop-submenu.blade.php')
         ?>
 
+        <div id="mobile-top-menu" class="mobile-top-menu" >
+            <ul>
+                <li><a class="ideas" href="/"><i class="m-icon m-icon--bulb"></i>&nbsp; IDEAS</a></li>
+                <li><a class="shop" href="/shop"><i class="m-icon m-icon--item"></i>&nbsp; SHOP</a></li>
+                <li><a class="disc" href="#"><i class="m-icon m-icon--discuss-active"></i>&nbsp; DISCUSS</a></li>
+            </ul>
+        </div>
+        <div id="mobile-home-menu" class="mobile-top-menu mobile-mid-menu">
+            <ul>
+                <li><a class="box-link @if(isset($roomInformation['Permalink']) && $roomInformation['Permalink'] == 'bedroom') active @endif " href="{{url('room/bedroom')}}">Bedroom</a></li>
+                <li><a class="box-link @if(isset($roomInformation['Permalink']) && $roomInformation['Permalink'] == 'office') active @endif " href="{{url('room/office')}}">Office</a></li>
+                <li><a class="box-link @if(isset($roomInformation['Permalink']) && $roomInformation['Permalink'] == 'living') active @endif " href="{{url('room/living')}}">Living</a></li>
+                <li><a class="box-link @if(isset($roomInformation['Permalink']) && $roomInformation['Permalink'] == 'outdoor') active @endif " href="{{url('room/outdoor')}}">Outdoor</a></li>
+                <li><a class="box-link @if(isset($roomInformation['Permalink']) && $roomInformation['Permalink'] == 'lighting') active @endif " href="{{url('room/lighting')}}">Lighting</a></li>
+                <li><a class="box-link @if(isset($roomInformation['Permalink']) && $roomInformation['Permalink'] == 'decor') active @endif" href="{{url('room/decor')}}">Decor</a></li>
 
-        <nav class="mid-nav rooms hidden-xs">
-            <div class="container full-sm fixed-sm">
-                <ul class="wrap col-xs-9">
-                    <li class="home active">
-                        <a class="box-link" href="">
+            </ul>
+        </div>
+
+        <nav class="mid-nav rooms ">
+            <div class="container full-sm fixed-sm hidden-xs ">
+                <ul class="wrap col-lg-9">
+                    <li class="home ">
+                        <a class="box-link @if(!isset($roomInformation['Permalink']) || $roomInformation['Permalink'] == '/') active @endif"   href="/">
                         <span class="box-link-active-line"></span>
                             <i class="m-icon m-icon--smart-home"></i> Smart Home
                         </a>
                     </li>
-                    <li><a class="box-link" href="/room/kitchen">Kitchen</a></li>
-                    <li><a class="box-link" href="/room/bath">Bath</a></li>
-                    <li><a class="box-link" href="/room/bedroom">Bedroom</a></li>
-                    <li><a class="box-link" href="/room/office">Office</a></li>
-                    <li><a class="box-link" href="/room/living">Living</a></li>
-                    <li><a class="box-link" href="/room/outdoor">Outdoor</a></li>
-                    <li><a class="box-link" href="/room/lighting">Lighting</a></li>
-                    <li><a class="box-link" href="/room/decor">Decor</a></li>
-                    <!--<li><a data-toggle=".extra-nav" class="more-link extra" href="">...</a>
-                        <ul class="extra-nav hidden-620 hidden-soft">
-                            <li><a class="travel-link blue" href="#">Travel</a></li>
-                            <li><a class="wearables-link green" href="#">Wearables</a></li>
-                        </ul>
-                    </li>-->
+
+                    <li><a class="box-link @if(isset($roomInformation['Permalink']) && $roomInformation['Permalink'] == 'kitchen') active @endif " href="{{url('room/kitchen')}}">Kitchen</a></li>
+                    <li><a class="box-link @if(isset($roomInformation['Permalink']) && $roomInformation['Permalink'] == 'bath') active @endif " href="{{url('room/bath')}}">Bath</a></li>
+                    <li><a class="box-link @if(isset($roomInformation['Permalink']) && $roomInformation['Permalink'] == 'bedroom') active @endif " href="{{url('room/bedroom')}}">Bedroom</a></li>
+                    <li><a class="box-link @if(isset($roomInformation['Permalink']) && $roomInformation['Permalink'] == 'office') active @endif " href="{{url('room/office')}}">Office</a></li>
+                    <li><a class="box-link @if(isset($roomInformation['Permalink']) && $roomInformation['Permalink'] == 'living') active @endif " href="{{url('room/living')}}">Living</a></li>
+                    <li><a class="box-link @if(isset($roomInformation['Permalink']) && $roomInformation['Permalink'] == 'outdoor') active @endif " href="{{url('room/outdoor')}}">Outdoor</a></li>
+                    <li><a class="box-link @if(isset($roomInformation['Permalink']) && $roomInformation['Permalink'] == 'lighting') active @endif " href="{{url('room/lighting')}}">Lighting</a></li>
+                    <li><a class="box-link @if(isset($roomInformation['Permalink']) && $roomInformation['Permalink'] == 'decor') active @endif" href="{{url('room/decor')}}">Decor</a></li>
 
                 </ul>
             </div>
-            <div class="container mobile-menu hidden-lg hidden-md hidden-sm hidden-xs full-620  fixed-sm">
-                <ul>
-                    <li><a href="/room/kitchen">Kitchen</a></li>
-                    <li><a href="/room/kitchen">Bath</a></li>
-                    <li><a class="nested" data-toggle=".mobile-more-nav" data-hide=".mobile-extra-nav" href="">More</a></li>
-                    <li><a class="more-link" data-toggle=".mobile-extra-nav"  data-hide=".mobile-more-nav" href="">...</a></li>
-
-                    <ul class="extra-nav mobile-extra-nav">
-                        <li><a href="">Wallpaper</a></li>
-                        <li><a href="">Pillows</a></li>
-                        <li><a href="">Travel</a></li>
-                        <li><a href="">Wearables</a></li>
-                    </ul>
-                    <ul class="extra-nav mobile-more-nav">
-                        <li><a href="/room/bedroom">Bedroom</a></li>
-                        <li><a href="/room/office">Office</a></li>
-                        <li><a href="/room/living">Living</a></li>
-                        <li><a href="/room/outdoor">Outdoor</a></li>
-                    </ul>
+            <div class="container mobile-menu visible-xs full-sm fixed-sm">
+                <ul class="wrap col-lg-9">
+                    <li ><a class="box-link @if(!isset($roomInformation['Permalink']) || $roomInformation['Permalink'] == '/') active @endif"   href="/">Smart Home</a></li>
+                    <li><a class="box-link @if(isset($roomInformation['Permalink']) && $roomInformation['Permalink'] == 'kitchen') active @endif " href="{{url('room/kitchen')}}">Kitchen</a></li>
+                    <li><a class="box-link @if(isset($roomInformation['Permalink']) && $roomInformation['Permalink'] == 'bath') active @endif " href="{{url('room/bath')}}">Bath</a></li>
                 </ul>
+                <a class="right-menu-arrow pull-right" data-toggle="#mobile-home-menu" href="#">
+                    <i class="m-icon--Header-Dropdown down"></i>
+                    <i class="m-icon--footer-up-arrow up"></i>
+                </a>                
+                
             </div>
         </nav>
-        <?php if(isset($login) && $login) {?>
-            <script type="text/ng-template"  id="profile-setting.html">
+    <?php if(isset($userData['login']) && $userData['login']) { ?>
+
+    <script type="text/ng-template"  id="profile-setting.html">
                 <a class="close" href="#" ng-click="cancel()"><i class="m-icon--Close"></i> </a>
                 
                 <div class="profile-background">
-                    <div class="text-center"><img class="profile-photo" width="150px" src="<?php echo isset($profile) ? $profile : ""?>"></div>
-                    <div class="text-center">
-                        <a href="#" class="upload-photo">
-                            <i class="m-icon--Upload-Inactive"></i><br>
-                            <span>Upload new profile picture</span>
-                        </a>
-                    </div>
+                    <div class="text-center"><img class="profile-photo" width="150px" src="<?php echo isset($userData['medias'][0]['media_link']) ? $userData['medias'][0]['media_link']: "" ?>"></div>
+
                 </div>
                 <div class="first-form">
                     <div class="custom-container ">
@@ -207,37 +215,75 @@
                             <div class="form-group ">
                                 <label class="col-lg-12 control-label">Full name</label>
                                 <div class="col-lg-12">
-                                    <input class="form-control" placeholder="Full name">
+                                    <input class="form-control" ng-model="data.FullName" ng-init="data.FullName = '<?php echo  $userData['name'] ?>'"   placeholder="Full name">
+
                                 </div>
                             </div>
                             <div class="form-group ">
                                 <label class="col-lg-12 control-label">Email</label>
                                 <div class="col-lg-12">
-                                    <input class="form-control" placeholder="Email">
+                                    <input class="form-control" ng-model="data.Email" ng-readonly="true" ng-init="data.Email = '<?php echo  $userData['email'] ?>'" placeholder="Email" />
+
                                 </div>
                             </div>
                             <div class="form-group ">
                                 <label class="col-lg-12 control-label">New password</label>
                                 <div class="col-lg-12">
-                                    <input class="form-control" placeholder="New password">
+                                    <input class="form-control" type="password" ng-model="data.Password" placeholder="New password">
+
                                 </div>
                             </div>
                             <div class="form-group ">
                                 <label class="col-lg-12 control-label">Bio</label>
                                 <div class="col-lg-12">
-                                    <textarea class="form-control" placeholder="Bio"></textarea>
+                                    <textarea class="form-control"  ng-model="data.PersonalInfo" ng-init="data.PersonalInfo = '<?php echo  $userData['userProfile']['personal_info'] ?>'" placeholder="Bio"></textarea>
+                                </div>
+                            </div>
+                            <div class="form-group ">
+                                <label class="col-lg-12 control-label">Address</label>
+                                <div class="col-lg-12">
+
+                                    <textarea class="form-control"  ng-model="data.Address" ng-init="data.Address = '<?php echo  $userData['userProfile']['address']  ?>'" placeholder="Address"></textarea>
+
                                 </div>
                             </div>
                             <div class="form-group ">
                                 <label class="col-lg-12 control-label">Personal link</label>
                                 <div class="col-lg-12">
-                                    <span class="ideaing-domain">http://ideaing.</span>
-                                    <input class="form-control personal-link" placeholder="">
+                                    <div class="col-lg-6">http://staging.ideaing.com/user/</div>
+                                    <div class="col-lg-6">
+                                        <input class="form-control personal-link" ng-model="data.Permalink" ng-init="data.Permalink = '<?php echo  $userData['userProfile']['permalink']  ?>'"  placeholder="">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group ">
+                                <label class="col-lg-12 control-label">Profile Picture</label>
+                                <div class="col-lg-12">
+
+                                    <div class="col-lg-6">
+                                        <input type="file" name="file" nv-file-select=""
+                                               uploader="uploader"/>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <img id="currentPhoto"
+
+                                             ng-src='<?php echo "{{ mediaLink }}"  ?>'
+                                             onerror="this.src='http://s3-us-west-1.amazonaws.com/ideaing-01/thumb-product-568d28a6701c7-no-item.jpg'"
+                                             width="170">
+                                    </div>
+
+                                </div>
+                                <div class="text-center">
+                                    <a href="#"  ng-click="uploader.uploadAll()" class="upload-photo">
+                                        <i class="m-icon--Upload-Inactive"></i><br>
+                                        <span>Upload new profile picture</span>
+                                    </a>
+
                                 </div>
                             </div>
                             <div class="form-group text-center">
-                                <button class="btn btn-nevermind">Nevermind</button>
-                                <button class="btn btn-save">Save</button>
+                              <!--  <button class="btn btn-nevermind">Nevermind</button> -->
+                                <button class="btn btn-save" ng-click="updateUser(data,mediaLink)">Save</button>
                             </div>
                         </form>   
                         <div class="clearfix"></div>
@@ -364,4 +410,6 @@
                 </div>
             </script>
         <?php } ?>
+
+
     </div>

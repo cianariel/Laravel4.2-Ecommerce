@@ -264,17 +264,27 @@
                         ->orWhereIn("product_category_id", $childCats)
                         ->orWhereIn("product_category_id", $grandChildCats)
                     ;
+
                 }else{
                     $productModel = $productModel->where("product_category_id", $settings['CategoryId']);
                 }
-            }
 
-            if (isset($settings['TagId']) && is_array($settings['TagId']))
-            {
-                $tagID = $settings['TagId'];
-                $productModel = $productModel->whereHas('tags', function($query) use ($tagID){
-                    $query->whereIn('tag_id', $tagID);
-                });
+                if (isset($settings['TagId']) && is_array($settings['TagId']))
+                {
+                    $tagID = $settings['TagId'];
+                    $productModel = $productModel->orWhereHas('tags', function($query) use ($tagID){
+                        $query->whereIn('tag_id', $tagID);
+                    });
+                }
+
+            }else{
+                if (isset($settings['TagId']) && is_array($settings['TagId']))
+                {
+                    $tagID = $settings['TagId'];
+                    $productModel = $productModel->whereHas('tags', function($query) use ($tagID){
+                        $query->whereIn('tag_id', $tagID);
+                    });
+                }
             }
 //
             if (@$settings['ExcludeIDs'] != null)

@@ -157,57 +157,9 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
         };
 
         $scope.openProductPopup = function () {
-            var body = angular.element(document).find('body');
-            if(body[0].offsetWidth < 880){
-                return;
+            pagingApi.openProductPopup($scope, $uibModal, $timeout);
             }
             
-            document.getElementsByTagName('html')[0].className += " hide-overflow ";
-            var templateUrl = "product-popup.html";
-            var modalInstance = $uibModal.open({
-              templateUrl: templateUrl,
-              size: 'lg',
-              windowClass : 'product-popup-modal',
-              controller: 'ModalInstanceCtrltest'
-            });
-            modalInstance.opened.then(function(){
-                $timeout(function() {
-                    jQuery('#product-slider').royalSlider({
-                        loop: false,
-                        keyboardNavEnabled: true,
-                        controlsInside: false,
-                        imageScaleMode: 'fill',
-                        arrowsNavAutoHide: false,
-                        controlNavigation: 'thumbnails',
-                        thumbsFitInViewport: false,
-                        navigateByClick: true,
-                        startSlideId: 0,
-                        autoPlay: false,
-                        transitionType: 'move',
-                        globalCaption: false,
-                        autoScaleSlider: false,
-                        imgWidth: "100%",
-                        autoHeight: true,
-                        deeplinking: {
-                          enabled: true,
-                          change: false
-                        },
-                        
-                        autoHeight: true,
-                    });
-                    document.getElementById( 'product-slider' ).style.visibility = 'visible';
-                }, 100);
-
-            })
-            modalInstance.result.finally(function(){
-                var className = document.getElementsByTagName('html')[0].className;
-                className = className.replace('hide-overflow', '');
-                document.getElementsByTagName('html')[0].className = className;
-            });
-            
-            
-            
-        };
     })
     .controller('headerController', function($scope, $uibModal,$http,pagingApi, $filter, layoutApi) {
         $scope.openProfileSetting = function () {
@@ -234,7 +186,7 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
         $uibModalInstance.dismiss('cancel');
       };
     })
-    .controller('shoplandingController', ['$scope', '$http', 'pagingApi', '$timeout', function ($scope, $http, pagingApi, $timeout) {
+    .controller('shoplandingController', ['$scope', '$http', 'pagingApi', '$timeout', '$uibModal', function ($scope, $http, pagingApi, $timeout, $uibModal) {
         $scope.renderHTML = function(html_code)
         {
             var decoded = angular.element('<div />').html(html_code).text();
@@ -319,12 +271,15 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
         });
     }])
 
-    .controller('shopcategoryController', function ($scope, $filter, pagingApi) {
+    .controller('shopcategoryController', function ($scope, $filter, pagingApi, $uibModal, $timeout) {
         $scope.renderHTML = function(html_code)
         {
             var decoded = angular.element('<div />').html(html_code).text();
             return decoded;
         };
+        $scope.openProductPopup = function(){
+            pagingApi.openProductPopup($scope, $uibModal, $timeout);
+        }
 
         $scope.currentPage = 1;
         $scope.currentCategory = false;
@@ -332,11 +287,24 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
 
         var $route =  $filter('getURISegment')(2);
 
+
+
         if($route == 'shop'){
-            $scope.currentCategory = $filter('getURISegment')(3);
+            if(
+                ($filter('getURISegment')(3) == 'smart-home' ||
+                $filter('getURISegment')(3) == 'travel' ||
+                $filter('getURISegment')(3) == 'wearables' ||
+                $filter('getURISegment')(3) == 'home-decor')
+            &&
+                $filter('getURISegment')(4)
+            ){
+                $scope.currentCategory = $filter('getURISegment')(4);
+            }else{
+                $scope.currentCategory = $filter('getURISegment')(3);
+            }
         }
 
-        $scope.nextLoad = pagingApi.getPlainContent(1, 15, false, 'product', $scope.currentCategory).success(function (response) {
+        $scope.nextLoad = pagingApi.getPlainContent(1, 15,  $scope.currentCategory, 'product', $scope.currentCategory).success(function (response) {
 
             if($scope.sortBy){
                 response.sort(function(a, b) {
@@ -352,7 +320,7 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
 
             var $limit = 15;
 
-            $scope.nextLoad =  pagingApi.getPlainContent($scope.currentPage, $limit, false, 'product', $scope.currentCategory).success(function (response) {
+            $scope.nextLoad =  pagingApi.getPlainContent($scope.currentPage, $limit,  $scope.currentCategory, 'product', $scope.currentCategory).success(function (response) {
                 var $newStuff = $scope.content.concat(response)
 
                 if($scope.sortBy){
@@ -375,8 +343,7 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
             $('a[data-sortby="'+$sortBy+'"]').addClass('active');
 
             $('.grid-box-3').fadeOut(500, function(){
-                $scope.nextLoad =  pagingApi.getPlainContent(1, 15, false, 'product', $scope.currentCategory).success(function (response) {
-                    console.log($sortBy)
+                $scope.nextLoad =  pagingApi.getPlainContent(1, 15,  $scope.currentCategory, 'product', $scope.currentCategory).success(function (response) {
                     if($sortBy) {
                         response.sort(function (a, b) {
                             return parseFloat(a[$sortBy]) - parseFloat(b[$sortBy]);
@@ -409,6 +376,58 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
     .factory('pagingApi', function($http, $q) {
 
         var pagingApi = {};
+        pagingApi.openProductPopup = function ($scope, $uibModal, $timeout) {
+            var body = angular.element(document).find('body');
+            if(body[0].offsetWidth < 880){
+                return;
+            }
+            
+            document.getElementsByTagName('html')[0].className += " hide-overflow ";
+            var templateUrl = "product-popup.html";
+            var modalInstance = $uibModal.open({
+              templateUrl: templateUrl,
+              size: 'lg',
+              windowClass : 'product-popup-modal',
+              controller: 'ModalInstanceCtrltest'
+            });
+            modalInstance.opened.then(function(){
+                $timeout(function() {
+                    jQuery('#product-slider').royalSlider({
+                        loop: false,
+                        keyboardNavEnabled: true,
+                        controlsInside: false,
+                        imageScaleMode: 'fill',
+                        arrowsNavAutoHide: false,
+                        controlNavigation: 'thumbnails',
+                        thumbsFitInViewport: false,
+                        navigateByClick: true,
+                        startSlideId: 0,
+                        autoPlay: false,
+                        transitionType: 'move',
+                        globalCaption: false,
+                        autoScaleSlider: false,
+                        imgWidth: "100%",
+                        autoHeight: true,
+                        deeplinking: {
+                          enabled: true,
+                          change: false
+                        },
+                        
+                        autoHeight: true,
+                    });
+                    document.getElementById( 'product-slider' ).style.visibility = 'visible';
+                }, 100);
+
+            })
+            modalInstance.result.finally(function(){
+                var className = document.getElementsByTagName('html')[0].className;
+                className = className.replace('hide-overflow', '');
+                document.getElementsByTagName('html')[0].className = className;
+            });
+            
+            
+            
+        };
 
         pagingApi.getPlainContent = function(page, limit, tag, type, productCategoryID, sortBy) {
             return $http({
