@@ -55,6 +55,7 @@ class ShopController extends ApiController
                 ->with('currentCategory', $categoryModel)
                 ->with('parentCategory', $parentCategory)
                 ->with('categoryTree', $categoryTree)
+                ->with('grandParent', $grandParent)
                 ;
 
         }
