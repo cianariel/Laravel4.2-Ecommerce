@@ -54,7 +54,6 @@
 <script src="/assets/js/angular-custom/public.common.js"></script>
 <script type="text/javascript" src="/assets/js/vendor/autocomplete.js"></script>
 <script type="text/javascript" src="/assets/product/js/custom.product.js"></script>
-
 <script>
     var rootApp = angular.module('rootApp', ['pagingApp', 'publicApp','productApp']);
 </script>
