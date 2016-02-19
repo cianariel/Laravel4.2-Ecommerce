@@ -226,10 +226,8 @@
                                                         <?php
                                                         use App\Models\Product;
                                                         $products = json_decode($room->hero_image_1_products);
-                                                        if($products)
-                                                        {
-                                                    ?>
-                                                        <table class="table table-striped table-bordered table-hover table-checkable order-column" id="hero_image_1_table">
+                                                    ?> 
+                                                        <table <?php if($products==null){echo "style='display:none'"; } ?> class="table table-striped table-bordered table-hover table-checkable order-column" id="hero_image_1_table">
                                                             <thead>
                                                                 <tr>
                                                                     <th> Product Thumb </th>
@@ -260,9 +258,7 @@
 
                                                             </tbody>
                                                         </table>
-                                                    <?php
-                                                        }
-                                                    ?>       
+                                                          
                                                     </div>
                                                 </div>
                                                 <div class="tab-pane fade" id="Hero2">
@@ -662,6 +658,7 @@ $(function() {
             heroimageproducts1.push(obj);
             $('#hero_image_1_products').val(JSON.stringify(heroimageproducts1));
             $('#hero_image_1_table > tbody:last-child').append(row);
+            $('#hero_image_1_table').show();
 
         }
         if($('#hero_image_id').val() == "hero_image_2")
@@ -669,23 +666,28 @@ $(function() {
             heroimageproducts2.push(obj);
             $('#hero_image_2_products').val(JSON.stringify(heroimageproducts2));
             $('#hero_image_2_table > tbody:last-child').append(row);
+            $('#hero_image_2_table').show();
         }
         if($('#hero_image_id').val() == "hero_image_3")
         {
             heroimageproducts3.push(obj);
             $('#hero_image_3_products').val(JSON.stringify(heroimageproducts3));
             $('#hero_image_3_table > tbody:last-child').append(row);
+            $('#hero_image_3_table').show();
         }
-        
+        $('.btn-edit-product').click(onproductedit);
+        $('.btn-delete-product').click(onproductedelete);
     });
-    $('.btn-edit-product').click(function(){
+    $('.btn-edit-product').click(onproductedit);
+    function onproductedit(){
         $('#Xpos').val($(this).data('xpos'));
         $('#Ypos').val($(this).data('ypos'));
         $('#hero_image_id').val($(this).data('heroimageid'));
         $("#select_product").select2("val", $(this).data('productid'));
         $('#select_product_modal').modal();
-    });
-    $('.btn-delete-product').click(function(){
+    }
+    $('.btn-delete-product').click(onproductedelete);
+    function onproductedelete(){
         var productid = $(this).data('productid');
         var hero_image_id = $(this).data('heroimageid');
         $(this).closest('tr').remove();
@@ -707,7 +709,7 @@ $(function() {
             $('#hero_image_3_products').val(JSON.stringify(heroimageproducts3));
         }
         //$('product_thumb').test();
-    });
+    }
     
 });
 
