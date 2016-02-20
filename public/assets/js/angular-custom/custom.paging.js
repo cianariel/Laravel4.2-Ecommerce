@@ -330,35 +330,35 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
             });
         };
 
-        $scope.sortContent = function($sortBy){
-
-            if($sortBy === $scope.sortBy){
-                return true;
-            }
-
-            $('a[data-sortby]').removeClass('active');
-            $('a[data-sortby="'+$sortBy+'"]').addClass('active');
-
-            var contentBlock =  $('.grid-box-3');
-
-            contentBlock.fadeOut(500, function(){
-                $scope.nextLoad =  pagingApi.getPlainContent(1, 15,  $scope.currentCategory, 'product', $scope.currentCategory).success(function (response) {
-                    if($sortBy) {
-                        response.sort(function (a, b) {
-                            return parseFloat(a[$sortBy]) - parseFloat(b[$sortBy]);
-                        });
-                        $scope.sortBy = $sortBy;
-                        $scope.content = response;
-                        contentBlock.fadeIn();
-                    }else{
-                        $scope.content = response;
-                        contentBlock.fadeIn();
-                    }
-                    $scope.sortBy = $sortBy;
-
-                });
-            });
-        }
+        //$scope.sortContent = function($sortBy){
+        //
+        //    if($sortBy === $scope.sortBy){
+        //        return true;
+        //    }
+        //
+        //    $('a[data-sortby]').removeClass('active');
+        //    $('a[data-sortby="'+$sortBy+'"]').addClass('active');
+        //
+        //    var contentBlock =  $('.grid-box-3');
+        //
+        //    contentBlock.fadeOut(500, function(){
+        //        $scope.nextLoad =  pagingApi.getPlainContent(1, 15,  $scope.currentCategory, 'product', $scope.currentCategory).success(function (response) {
+        //            if($sortBy) {
+        //                response.sort(function (a, b) {
+        //                    return parseFloat(a[$sortBy]) - parseFloat(b[$sortBy]);
+        //                });
+        //                $scope.sortBy = $sortBy;
+        //                $scope.content = response;
+        //                contentBlock.fadeIn();
+        //            }else{
+        //                $scope.content = response;
+        //                contentBlock.fadeIn();
+        //            }
+        //            $scope.sortBy = $sortBy;
+        //
+        //        });
+        //    });
+        //}
 
         $scope.filterPlainContent = function($filterBy, $sortBy) {
 
@@ -366,18 +366,11 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
                 return true;
             }
 
-            console.log('$filterBy')
-            console.log($filterBy)
-
-            console.log('$sortBy')
-            console.log($sortBy)
-
-            if(!$filterBy){
-                $filterBy = $scope.currentCategory;
+            if($filterBy){
+                $scope.currentCategory = $filterBy;
             }
 
             if($sortBy && $sortBy != 'undefined' && $sortBy != $scope.sortBy){
-                console.log(1)
                 $('a[data-sortby]').removeClass('active');
                 $('a[data-sortby="'+$sortBy+'"]').addClass('active');
             }
@@ -386,20 +379,16 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
 
             contentBlock.fadeOut(500, function(){
 
-                $scope.nextLoad =  pagingApi.getPlainContent(1, 15,  $filterBy, 'product', $filterBy).success(function (response) {
+                $scope.nextLoad =  pagingApi.getPlainContent(1, 15,   $scope.currentCategory, 'product',  $scope.currentCategory).success(function (response) {
                     if($sortBy != false){
-                        console.log('u!')
                         $scope.sortBy = $sortBy;
                     }
 
-                    if($scope.sortBy){
+                    if($scope.sortBy && $scope.sortBy != 'default' ){
                         response.sort(function (a, b) {
                             return parseFloat(a[$scope.sortBy]) - parseFloat(b[$scope.sortBy]);
                         });
                     }
-
-                    //console.log('response')
-                    //console.log(response)
 
                     $scope.content = response;
                     $scope.currentCategory = $filterBy;
@@ -471,9 +460,6 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
                 className = className.replace('hide-overflow', '');
                 document.getElementsByTagName('html')[0].className = className;
             });
-            
-            
-            
         };
 
         pagingApi.getPlainContent = function(page, limit, tag, type, productCategoryID, sortBy) {

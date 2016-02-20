@@ -60,10 +60,10 @@
                                 {{--<a ng-click="sortBy(popularity)" href="#" class="box-link active">POPULAR</a>--}}
                             {{--</li>--}}
                             <li class="">
-                                <a ng-click="sortContent(false)" data-sortby="false" href="#" class="box-link active">NEWEST</a>
+                                <a ng-click="filterPlainContent(false, 'default')" data-sortby="false" href="#" class="box-link active">NEWEST</a>
                             </li>
                             <li class="">
-                                <a ng-click="sortContent('sale_price')"  data-sortby="sale_price"  href="#" class="box-link">PRICE</a>
+                                <a ng-click="filterPlainContent(false, 'sale_price')"  data-sortby="sale_price"  href="#" class="box-link">PRICE</a>
                             </li>
                         </ul>
                     </div>
