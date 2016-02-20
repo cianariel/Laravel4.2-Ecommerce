@@ -145,7 +145,7 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
               controller: 'ModalInstanceCtrltest'
             });
         };
-        /*
+
         $scope.openProfileSetting = function () {
             var templateUrl = "profile-setting.html";
             var modalInstance = $uibModal.open({
@@ -154,7 +154,7 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
               windowClass : 'profile-setting-modal',
               controller: 'ModalInstanceCtrltest'
             });
-        };*/
+        };
 
         $scope.openProductPopup = function () {
             pagingApi.openProductPopup($scope, $uibModal, $timeout);

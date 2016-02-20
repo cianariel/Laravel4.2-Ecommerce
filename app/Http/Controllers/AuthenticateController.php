@@ -562,6 +562,16 @@
 
         }
 
+        public function authCheckApi()
+        {
+            //check user authentication and get user basic information
+            $this->authCheck = $this->RequestAuthentication(array('admin','editor','user'));
+
+            return $this->setStatusCode(IlluminateResponse::HTTP_OK)
+                        ->makeResponse($this->authCheck);
+
+        }
+
 
         /**
          * return valid user object as per provided credentials or else return false

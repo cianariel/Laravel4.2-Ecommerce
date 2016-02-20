@@ -17,7 +17,7 @@
                 </ul>
             </div>
             <div  id="publicApp" ng-app="publicApp" ng-controller="publicController"
-                  class="col-md-4 col-xs-6 col-md-offset-1 hero-box qiuck-signup hidden-620">
+                  class="col-md-4 col-xs-6 col-md-offset-1 hero-box qiuck-signup hidden-620" ng-cloak>
 <!--            <div class="col-md-4 col-xs-6 col-md-offset-1 hero-box qiuck-signup hidden-620">-->
                 <div style="background-color: lightgrey; text-align: center;">
                     <strong style="color: red">@{{ responseMessage }}</strong>
@@ -42,7 +42,7 @@
 
         </div>
     </section>
-    <div class="app-wrap" id="pagingApp" ng-app="pagingApp" ng-controller="pagingController">
+    <div class="app-wrap" id="pagingApp" ng-app="pagingApp" ng-controller="pagingController" ng-cloak>
         <nav id="hero-nav" class="col-sm-12">
             <div class="container full-620  fixed-sm">
                 {{--<ul class="left-nav col-xs-1 hidden-620">--}}

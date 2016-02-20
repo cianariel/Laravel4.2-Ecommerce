@@ -18,8 +18,9 @@
         </div>
         <!-- END PAGE BAR -->
         <div ng-app="adminApp" data-ng-controller="AdminController" class="row" nv-file-drop="" uploader="uploader"
-             filters="queueLimit, customFilter">
+             filters="queueLimit, customFilter" ng-cloak>
 
+            <input type="hidden" ng-model="ProductAuthorName" ng-init="ProductAuthorName = '{{$userName}}' " >
             <div class="col-md-12" ng-cloak>
                 @if( !empty($id))
                     <div ng-init="loadProductData({{$id}})"></div>

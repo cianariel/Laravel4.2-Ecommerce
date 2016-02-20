@@ -16,9 +16,9 @@ publicApp.factory('layoutApi', function($http) {
     layoutApi.getProductsForShopMenu = function() {
         return $http({
             method: 'GET',
-            url: '/api/layout/get-shop-menu/',
+            url: '/api/layout/get-shop-menu',
         });
-    }
+    };
 
 
     return layoutApi;
@@ -52,7 +52,7 @@ publicApp.controller('publicController', ['$scope', '$http', '$window', '$timeou
     , function ($scope, $http, $window, $timeout, $location, $anchorScroll, $uibModal,layoutApi ,FileUploader) {
 
        // var uploader = null;
-        $scope.TEST = "TSSSSST";
+      //  $scope.TEST = "TSSSSST";
         $scope.openProfileSetting = function () {
 
             var templateUrl = "profile-setting.html";
@@ -65,6 +65,8 @@ publicApp.controller('publicController', ['$scope', '$http', '$window', '$timeou
             });
 
         };
+
+        // load shop information.
         layoutApi.getProductsForShopMenu().success(function (response) {
             $scope.productsForShopMenu = response;
         });
@@ -129,7 +131,7 @@ publicApp.controller('publicController', ['$scope', '$http', '$window', '$timeou
         $scope.initPage = function () {
 
            // $scope.TEST = "TSSSSST";
-            console.log($scope.TEST);
+           // console.log($scope.TEST);
 
             // email subscription
             $scope.SubscriberEmail = '';
@@ -370,7 +372,7 @@ publicApp.controller('publicController', ['$scope', '$http', '$window', '$timeou
 
                 }
             }).success(function (data) {
-                console.log(data.data);
+             //   console.log(data.data);
 
                 $scope.outputStatus(data, data.data);
 

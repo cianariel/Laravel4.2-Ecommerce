@@ -268,7 +268,7 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
             $scope.tmpUrl = '';
 
             /// product fields initialize
-            $scope.ProductAuthorName = 'Anonymous User';
+            $scope.ProductAuthorName = ($scope.ProductAuthorName != '')?$scope.ProductAuthorName :'Anonymous User';
             $scope.ProductList = [];
             $scope.ProductVendorId = '';
             $scope.ProductVendorType = 'Amazon';
