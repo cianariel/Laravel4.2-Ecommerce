@@ -3,7 +3,7 @@
 @section('body-class'){{ 'shoppage shop-category' }}@stop
 
 @section('content')
-    @include('layouts.parts.shop-browseall')
+    @include('shop.browseall-menu')
     <nav class="mid-nav ">
         <div class="container full-sm fixed-sm">
             <ul class="wrap col-lg-9">
@@ -71,7 +71,7 @@
 
         <div class="clearfix"></div>
 
-        <div class="homepage-grid center-block">
+        <div class="homepage-grid center-block" style="float:right">
             <div class="loader loader-abs" cg-busy="firstLoad"></div>
             {{--<div class="loader loader-abs" cg-busy="filterLoad"></div>--}}
             <div class="loader loader-fixed" cg-busy="nextLoad"></div>
@@ -87,9 +87,9 @@
                 </div>
             </div>
         </div>
+        @include('shop.filter-menu')
 
         @include('layouts.parts.product-popup')
-
     </div>
     
     <script src="/assets/js/vendor/angular-busy.min.js"></script>
