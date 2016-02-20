@@ -9,7 +9,7 @@
         @foreach($categoryTree as $parent => $children)
             @foreach($children as $child)
                 <li>
-                    <a href="/shop/{{$parent}}/{{$child->extra_info}}">{{$child->category_name}}</a>
+                    <a ng-click="filterPlainContent('{{$child->extra_info}}', false)"  href="/shop/{{$parent}}/{{$child->extra_info}}">{{$child->category_name}}</a>
                 </li>
             @endforeach
         @endforeach
