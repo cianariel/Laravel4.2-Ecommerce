@@ -16,7 +16,7 @@
     </ul>
 
     <ul class="sortby">
-        <li ng-click="sortContent(false)">Popularity</li>
+        <li ng-click="filterPlainContent(false, 'sale_price')">Price</li>
     </ul>
 
     <h6 class="gift">Gift ideas</h6>
