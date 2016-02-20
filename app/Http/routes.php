@@ -201,12 +201,12 @@
     });
 
     //Shop view
-    Route::get('shop/{categoty?}', 'ShopController@index');
-    Route::get('shop/smart-home/{categoty?}', 'ShopController@index');
-    Route::get('shop/travel/{categoty?}', 'ShopController@index');
-    Route::get('shop/wearables/{categoty?}', 'ShopController@index');
-    Route::get('shop/home-decor/{categoty?}', 'ShopController@index');
-//    Route::get('shop/category', 'ShopController@shopCategory');
+//    Route::get('shop/{categoty?}', 'ShopController@index');
+//    Route::get('shop/{parent?}/{categoty?}', 'ShopController@index');
+    Route::get('shop/{grandParent?}/{parent?}/{child?}', 'ShopController@index');
+//    Route::get('shop/travel/{categoty?}', 'ShopController@index');
+//    Route::get('shop/wearables/{categoty?}', 'ShopController@index');
+//    Route::get('shop/home-decor/{categoty?}', 'ShopController@index');
 
     //User Profile
     Route::get('user/profile', 'UserController@userProfile');
