@@ -260,13 +260,12 @@
                                 <label class="col-lg-12 control-label">Profile Picture</label>
                                 <div class="col-lg-12">
 
-                                    <div class="col-lg-6">
-                                        <input type="file" name="file" nv-file-select=""
-                                               uploader="uploader"/>
+                                    <div class="col-lg-6"
+                                         ng-init="initProfilePicture('<?php echo isset($userData['medias'][0]['media_link']) ? $userData['medias'][0]['media_link']: "" ?>')"
+                                    >&nbsp;
                                     </div>
                                     <div class="col-lg-4">
                                         <img id="currentPhoto"
-
                                              ng-src='<?php echo "{{ mediaLink }}"  ?>'
                                              onerror="this.src='http://s3-us-west-1.amazonaws.com/ideaing-01/thumb-product-568d28a6701c7-no-item.jpg'"
                                              width="170">
@@ -274,10 +273,27 @@
 
                                 </div>
                                 <div class="text-center">
-                                    <a href="#"  ng-click="uploader.uploadAll()" class="upload-photo">
-                                        <i class="m-icon--Upload-Inactive"></i><br>
-                                        <span>Upload new profile picture</span>
-                                    </a>
+                                    <div ng-show="showBrowseButton">
+                                        <input ng-init="initProfilePage()"
+                                               id="fileLabel"
+                                               style="width: 90px; color: transparent"
+                                               type="file"
+                                               name="file"
+                                               nv-file-select=""
+                                               uploader="uploader" />
+                                    </div>
+                                    <div ng-hide="showBrowseButton">
+                                        <button ng-click="updateProfilePicture(data,mediaLink)">Save Picture</button>
+                                        <button ng-click="cancelPictureUpdate()">Cancel</button>
+                                    </div>
+<!--
+                                    <div>
+                                        <a href="#"  ng-click="" class="upload-photo">
+                                            <i class="m-icon--Upload-Inactive"></i><br>
+                                            <span>Upload new profile picture</span>
+                                        </a>
+                                    </div>
+-->
 
                                 </div>
                             </div>
