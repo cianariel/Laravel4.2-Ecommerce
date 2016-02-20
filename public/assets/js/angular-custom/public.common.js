@@ -9,26 +9,26 @@ publicApp.config(['$httpProvider', function ($httpProvider) {
 }]);
 
 // custom directive //
-publicApp.factory('layoutApi', function($http) {
+publicApp.factory('layoutApi', function ($http) {
 
-    var layoutApi = {};
+        var layoutApi = {};
 
-    layoutApi.getProductsForShopMenu = function() {
-        return $http({
-            method: 'GET',
-            url: '/api/layout/get-shop-menu',
-        });
-    };
+        layoutApi.getProductsForShopMenu = function () {
+            return $http({
+                method: 'GET',
+                url: '/api/layout/get-shop-menu',
+            });
+        };
 
 
-    return layoutApi;
-})
-    .directive('a', function() {
+        return layoutApi;
+    })
+    .directive('a', function () {
         return {
             restrict: 'E',
-            link: function(scope, elem, attrs) {
-                if(attrs.ngClick || attrs.href === '' || attrs.href === '#'){
-                    elem.on('click', function(e){
+            link: function (scope, elem, attrs) {
+                if (attrs.ngClick || attrs.href === '' || attrs.href === '#') {
+                    elem.on('click', function (e) {
                         e.preventDefault();
                     });
                 }
@@ -39,20 +39,26 @@ publicApp.factory('layoutApi', function($http) {
 
 
 publicApp.controller('ModalInstanceCtrltest', function ($scope, $uibModalInstance) {
-        $scope.ok = function () {
-            $uibModalInstance.close();
-        };
+    $scope.ok = function () {
+        $uibModalInstance.close();
+    };
 
-        $scope.cancel = function () {
-            $uibModalInstance.dismiss('cancel');
-        };
-    });
+    $scope.cancel = function () {
+        $uibModalInstance.dismiss('cancel');
+    };
+});
 //$scope, $uibModal,$http,pagingApi, $filter, layoutApi, FileUploader
-publicApp.controller('publicController', ['$scope', '$http', '$window', '$timeout', '$location', '$anchorScroll','$uibModal','layoutApi','FileUploader'
-    , function ($scope, $http, $window, $timeout, $location, $anchorScroll, $uibModal,layoutApi ,FileUploader) {
+publicApp.controller('publicController', ['$scope', '$http', '$window', '$timeout', '$location', '$anchorScroll', '$uibModal', 'layoutApi', 'FileUploader'
+    , function ($scope, $http, $window, $timeout, $location, $anchorScroll, $uibModal, layoutApi, FileUploader) {
 
-       // var uploader = null;
-      //  $scope.TEST = "TSSSSST";
+
+
+
+
+
+
+        // Header profile option open and close on click action.
+
         $scope.openProfileSetting = function () {
 
             var templateUrl = "profile-setting.html";
@@ -60,7 +66,7 @@ publicApp.controller('publicController', ['$scope', '$http', '$window', '$timeou
                 templateUrl: templateUrl,
                 scope: $scope,
                 size: 'lg',
-                windowClass : 'profile-setting-modal',
+                windowClass: 'profile-setting-modal',
                 controller: 'ModalInstanceCtrltest'
             });
 
@@ -74,8 +80,8 @@ publicApp.controller('publicController', ['$scope', '$http', '$window', '$timeou
 
         // uploader section //
 
-         uploader = $scope.uploader = new FileUploader({
-        //  var uploader = new FileUploader({
+        uploader = $scope.uploader = new FileUploader({
+            //  var uploader = new FileUploader({
             url: '/api/media/media-upload',
         });
 
@@ -95,6 +101,19 @@ publicApp.controller('publicController', ['$scope', '$http', '$window', '$timeou
         };
         uploader.onAfterAddingFile = function (fileItem) {
             //   console.info('onAfterAddingFile', fileItem);
+           // console.log($scope.isProfilePage);
+
+            // if the page is profile update then this auto upload will work on profile image select
+            if($scope.isProfilePage){
+
+                $scope.oldMediaLink = $scope.mediaLink;
+                $scope.showBrowseButton = !$scope.showBrowseButton;
+
+                $scope.uploader.uploadAll();
+
+                console.log($scope.oldMediaLink,' : ',$scope.MediaLink);
+
+            }
         };
         uploader.onAfterAddingAll = function (addedFileItems) {
             //   console.info('onAfterAddingAll', addedFileItems);
@@ -103,7 +122,8 @@ publicApp.controller('publicController', ['$scope', '$http', '$window', '$timeou
             //   console.info('onBeforeUploadItem', item);
         };
         uploader.onProgressItem = function (fileItem, progress) {
-            //   console.info('onProgressItem', fileItem, progress);
+           //    console.info('onProgressItem');
+            $scope.initProfilePicture('/assets/images/ajax-loader.gif');
         };
         uploader.onProgressAll = function (progress) {
             //   console.info('onProgressAll', progress);
@@ -130,8 +150,8 @@ publicApp.controller('publicController', ['$scope', '$http', '$window', '$timeou
         // initialize variables
         $scope.initPage = function () {
 
-           // $scope.TEST = "TSSSSST";
-           // console.log($scope.TEST);
+            // $scope.TEST = "TSSSSST";
+            // console.log($scope.TEST);
 
             // email subscription
             $scope.SubscriberEmail = '';
@@ -139,7 +159,7 @@ publicApp.controller('publicController', ['$scope', '$http', '$window', '$timeou
 
             $scope.alerts = [];
             $scope.alertHTML = '';
-            $scope.Code='';
+            $scope.Code = '';
 
             $scope.logingRedirectLocation = '/';
 
@@ -158,11 +178,13 @@ publicApp.controller('publicController', ['$scope', '$http', '$window', '$timeou
             $scope.FullName = '';
 
             $scope.Email = '';
-            $scope.Password = '' ;
+            $scope.Password = '';
             $scope.PersonalInfo = '';
-            $scope.Address='';
-            $scope.Permalink='';
+            $scope.Address = '';
+            $scope.Permalink = '';
 
+            $scope.isProfilePage = false ;
+            $scope.showBrowseButton = true;
 
         };
 
@@ -217,7 +239,7 @@ publicApp.controller('publicController', ['$scope', '$http', '$window', '$timeou
                 case 200:
                 {
                     $scope.addAlert('success', message);
-                    if(message == 'Successfully password reset')
+                    if (message == 'Successfully password reset')
                         window.location = '/login';
 
                 }
@@ -372,7 +394,7 @@ publicApp.controller('publicController', ['$scope', '$http', '$window', '$timeou
 
                 }
             }).success(function (data) {
-             //   console.log(data.data);
+                //   console.log(data.data);
 
                 $scope.outputStatus(data, data.data);
 
@@ -385,7 +407,7 @@ publicApp.controller('publicController', ['$scope', '$http', '$window', '$timeou
         $scope.passwordResetRequest = function () {
             $scope.closeAlert();
             $http({
-                url: '/password-reset-request/'+$scope.Email,
+                url: '/password-reset-request/' + $scope.Email,
                 method: "GET",
             }).success(function (data) {
                 //console.log(data.data);
@@ -409,7 +431,7 @@ publicApp.controller('publicController', ['$scope', '$http', '$window', '$timeou
             $http({
                 url: '/api/password-reset',
                 method: "POST",
-                data:{
+                data: {
                     Password: $scope.Password,
                     Code: $scope.Code
                 }
@@ -425,18 +447,18 @@ publicApp.controller('publicController', ['$scope', '$http', '$window', '$timeou
         };
 
         //update user information
-        $scope.updateUser = function (formData,meidaLink) {
+        $scope.updateUser = function (formData, meidaLink) {
             $scope.closeAlert();
-//console.log("address :"+ tmp.FullName);
+            //console.log("address :"+ tmp.FullName);
 
             $http({
                 url: '/api/change-profile',
                 method: "POST",
                 data: {
-                    FullName: formData.FullName ,
+                    FullName: formData.FullName,
                     Email: formData.Email,
-                    Password: formData.Password ,
-                    PersonalInfo : formData.PersonalInfo,
+                    Password: formData.Password,
+                    PersonalInfo: formData.PersonalInfo,
                     Address: formData.Address,
                     Permalink: formData.Permalink,
                     MediaLink: meidaLink
@@ -447,12 +469,52 @@ publicApp.controller('publicController', ['$scope', '$http', '$window', '$timeou
                 $scope.outputStatus(data, 'User information updated successfully');
                 location.reload();
 
-               // $scope.Password = '';
-            //    $window.location = '/admin/user-list';
+                // $scope.Password = '';
+                //    $window.location = '/admin/user-list';
             });
         };
 
-        $scope.chk = function () {
+
+        // Profile picture upload and edit section //
+
+        // init page //
+
+        $scope.initProfilePage = function(){
+            $scope.isProfilePage = true;
+        };
+
+        $scope.initProfilePicture = function(link){
+            $scope.mediaLink = link;
+        };
+
+        //update only profile picture information
+        $scope.updateProfilePicture = function (formData, meidaLink) {
+            $scope.closeAlert();
+            $http({
+                url: '/api/change-profile',
+                method: "POST",
+                data: {
+                    FullName: formData.FullName,
+                    Email: formData.Email,
+                    MediaLink: meidaLink
+                }
+            }).success(function (data) {
+                // console.log(data);
+                $scope.outputStatus(data, 'Profile picture updated successfully');
+                $scope.showBrowseButton = !$scope.showBrowseButton;
+
+            });
+        };
+
+        $scope.cancelPictureUpdate = function(){
+            $scope.mediaLink = $scope.oldMediaLink;
+            $scope.showBrowseButton = !$scope.showBrowseButton;
+
+        };
+
+
+        // test function //
+            $scope.chk = function () {
             $scope.closeAlert();
             $http({
                 url: '/secure-page-header',
