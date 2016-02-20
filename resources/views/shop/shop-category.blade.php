@@ -3,14 +3,15 @@
 @section('body-class'){{ 'shoppage shop-category' }}@stop
 
 @section('content')
+    @include('layouts.parts.shop-browseall')
     <nav class="mid-nav ">
         <div class="container full-sm fixed-sm">
             <ul class="wrap col-lg-9">
                 @if($parentCategory)
                     <li class="box-link-ul active">
-                        <a class="box-link" href="/shop/smart-home" >
+                        <a class="box-link" href="/shop/{{$parentCategory->extra_info}}" >
                             <span class="box-link-active-line"></span>
-                            {{ucfirst($parentCategory)}}
+                            {{ucfirst($parentCategory->category_name)}}
                         </a>
                     </li>
 
@@ -18,16 +19,16 @@
                         <span class="horizontal-line"></span>
                     </li>
                     <li class="box-link-ul ">
-                        <a class="box-link active" href="/category/@if(isset($category['CategoryPermalink'])){{$category['CategoryPermalink']}}@endif" >
+                        <a class="box-link active" href="/shop/{{$parentCategory->extra_info}}/@if(isset($category['CategoryPermalink'])){{$category['CategoryPermalink']}}@endif" >
                             <span class="box-link-active-line"></span>
-                            {{ucfirst($currentCategory)}}
+                            {{ucfirst($currentCategory->category_name)}}
                         </a>
                     </li>
                 @else
                     <li class="box-link-ul active">
-                        <a class="box-link active" href="/shop/smart-home" >
+                        <a class="box-link active" href="/shop/{{$currentCategory->extra_info}}" >
                             <span class="box-link-active-line"></span>
-                            {{ucfirst($currentCategory)}}
+                            {{ucfirst($currentCategory->category_name)}}
                         </a>
                     </li>
                 @endif
@@ -43,17 +44,15 @@
         </div>
     </nav>
 
-    <section id="category-banner" class="landing-hero {{$currentCategory}}-hero">
+    <section id="category-banner" class="landing-hero {{$currentCategory->extra_info}}-hero">
         <img src="/assets/images/shop-category-banner.png" class="img-responsive" alt="">
         <div class="head-wrap container">
             <!--  class name: smart-home, travel, wearables, home-decor -->
-            <h1 class="text-center"><span class="smart-home">{{ucfirst($currentCategory)}}</span></h1>
+            <h1 class="text-center"><span class="smart-home">{{ucfirst($currentCategory->category_name)}}</span></h1>
         </div>        
     </section>
 
     <div class="app-wrap" ng-app="pagingApp" ng-controller="shopcategoryController">
-        
-            
         <nav id="hero-nav" class="col-sm-12">
             <div class="container full-620  fixed-sm banner-nav">
                         <ul class="popular-new ">
@@ -71,8 +70,6 @@
         </nav>
 
         <div class="clearfix"></div>
-
-
 
         <div class="homepage-grid center-block">
             <div class="loader loader-abs" cg-busy="firstLoad"></div>
