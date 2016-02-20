@@ -194,6 +194,10 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
             return decoded;
         };
 
+        $scope.openProductPopup = function(){
+            pagingApi.openProductPopup($scope, $uibModal, $timeout);
+        }
+
         $scope.nextLoad = pagingApi.getPlainContent(1, 3, 'deal', 'idea').success(function (response) {
             $scope.dailyDeals = response;
             $timeout(function() {

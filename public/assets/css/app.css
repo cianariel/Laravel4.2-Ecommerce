@@ -6229,7 +6229,7 @@ header.colophon {
           height: 40px; } }
   header.colophon.scroll-header + header.sub-head .shop-menu {
     position: fixed;
-    top: 61px;
+    top: 60px;
     z-index: 200; }
 
 #top-nav .search-bar a.search-toggle {
