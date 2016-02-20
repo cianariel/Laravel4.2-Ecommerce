@@ -129,8 +129,9 @@
         {
             if ($this->authCheck['method-status'] == 'success-with-http')
             {
-                return view('admin.product-add');
-
+               // dd($this->authCheck['user-data']['name']);
+                return view('admin.product-add')
+                    ->with('userName',$this->authCheck['user-data']['name']);
 
             } elseif ($this->authCheck['method-status'] == 'fail-with-http')
             {
@@ -143,7 +144,9 @@
         {
             if ($this->authCheck['method-status'] == 'success-with-http')
             {
-                return view('admin.product-add')->with('id',$id);
+                return view('admin.product-add')
+                    ->with('userName',$this->authCheck['user-data']['name'])
+                    ->with('id',$id);
 
 
             } elseif ($this->authCheck['method-status'] == 'fail-with-http')

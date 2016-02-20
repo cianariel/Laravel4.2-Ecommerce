@@ -37,15 +37,13 @@ class ShopController extends ApiController
             return view('shop.shop-category')
                 ->with('userData',$userData)
                 ->with('currentCategory', $category)
-                ->with('parentCategory', $parentCategoryName)
-                ;
+                ->with('parentCategory', $parentCategoryName);
         }else{
             $categoryTree = ProductCategory::buildCategoryTree();
 
             return view('shop.index')
                 ->with('userData',$userData)
-                ->with('categoryTree', $categoryTree)
-                ;
+                ->with('categoryTree', $categoryTree);
         }
     }
 

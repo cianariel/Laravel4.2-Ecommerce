@@ -56,6 +56,9 @@
 
         Route::post('secure-page', 'AuthenticateController@securePage');
         Route::any('logout', 'AuthenticateController@logOut');
+        // chech authentication and return data through api
+        Route::get('auth-check', 'AuthenticateController@authCheckApi');
+
 
         /*
          * User management for Admin Panel
