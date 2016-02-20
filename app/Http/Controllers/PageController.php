@@ -125,7 +125,7 @@ class PageController extends ApiController
             $stories['regular'] = [];
         }
 
-        $return['regular'] = array_merge($stories['regular'], $products['result']);
+        $return['regular'] = array_merge(isset($stories['regular']) ?  $stories['regular'] : array(), $products['result']);
         $return['featured'] = $stories['featured'];
 
         usort($return['regular'], function($a, $b) {
