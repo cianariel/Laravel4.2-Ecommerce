@@ -11,7 +11,11 @@
 <ul class="social-stats">
     <li class="social-stats__item">
         <a href="#">
-            <i class="m-icon m-icon--heart"></i>
+                <i class="m-icon m-icon--ScrollingHeaderHeart">
+                    <span class="m-hover">
+                        <span class="path1"></span><span class="path2"></span>
+                    </span>
+                </i>
             <span class="social-stats__text">52</span>
         </a>
     </li>
