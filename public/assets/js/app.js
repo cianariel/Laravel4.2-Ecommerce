@@ -145,6 +145,9 @@
                 $('.profilelinks-popup').show();
             }
         })
+        $("#top-nav .profilelinks-popup a").click(function(){
+            $('.profilelinks-popup').hide();
+        })
 
         $(".show-hero-category").click(function(e){
             e.preventDefault();

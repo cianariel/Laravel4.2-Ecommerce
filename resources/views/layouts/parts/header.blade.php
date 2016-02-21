@@ -206,7 +206,39 @@
                 <a class="close" href="#" ng-click="cancel()"><i class="m-icon--Close"></i> </a>
                 
                 <div class="profile-background">
-                    <div class="text-center"><img class="profile-photo" width="150px" src="<?php echo isset($userData['medias'][0]['media_link']) ? $userData['medias'][0]['media_link']: "" ?>"></div>
+                    <div class="text-center">
+                        <!-- <img id="currentPhoto" class="profile-photo" width="150px" src="<?php echo isset($userData['medias'][0]['media_link']) ? $userData['medias'][0]['media_link']: "" ?>" onerror="this.src='http://s3-us-west-1.amazonaws.com/ideaing-01/thumb-product-568d28a6701c7-no-item.jpg'" width="170"> -->
+                        <img id="currentPhoto" class="profile-photo" width="150px" ng-src='<?php echo "{{ mediaLink }}"  ?>' onerror="this.src='http://s3-us-west-1.amazonaws.com/ideaing-01/thumb-product-568d28a6701c7-no-item.jpg'" width="170">
+                    </div>
+                    <div class="text-center">
+                        <span ng-show="showBrowseButton" class="upload-photo">
+                            <i class="m-icon--Upload-Inactive"></i><br>
+                            <span>Upload new profile picture</span>
+
+                            <input ng-init="initProfilePage()"
+                                   id="fileLabel"
+                                   class="upload-profile"
+                                   type="file"
+                                   name="file"
+                                   nv-file-select=""
+                                   uploader="uploader" />
+                        </span>
+                        <span ng-hide="showBrowseButton" class="uploading-photo">
+                            <button class="btn" ng-click="updateProfilePicture(data,mediaLink)">Save Picture</button>
+                            <button class="btn" ng-click="cancelPictureUpdate()">Cancel</button>
+                        </span>
+
+                    </div>
+
+                    <div class="form-group ">
+                        <div class="col-lg-12">
+
+                            <div class="col-lg-6"
+                                 ng-init="initProfilePicture('<?php echo isset($userData['medias'][0]['media_link']) ? $userData['medias'][0]['media_link']: "" ?>')"
+                            >&nbsp;
+                            </div>
+                        </div>
+                    </div>
 
                 </div>
                 <div class="first-form">
@@ -254,47 +286,6 @@
                                     <div class="col-lg-6">
                                         <input class="form-control personal-link" ng-model="data.Permalink" ng-init="data.Permalink = '<?php echo  $userData['userProfile']['permalink']  ?>'"  placeholder="">
                                     </div>
-                                </div>
-                            </div>
-                            <div class="form-group ">
-                                <label class="col-lg-12 control-label">Profile Picture</label>
-                                <div class="col-lg-12">
-
-                                    <div class="col-lg-6"
-                                         ng-init="initProfilePicture('<?php echo isset($userData['medias'][0]['media_link']) ? $userData['medias'][0]['media_link']: "" ?>')"
-                                    >&nbsp;
-                                    </div>
-                                    <div class="col-lg-4">
-                                        <img id="currentPhoto"
-                                             ng-src='<?php echo "{{ mediaLink }}"  ?>'
-                                             onerror="this.src='http://s3-us-west-1.amazonaws.com/ideaing-01/thumb-product-568d28a6701c7-no-item.jpg'"
-                                             width="170">
-                                    </div>
-
-                                </div>
-                                <div class="text-center">
-                                    <div ng-show="showBrowseButton">
-                                        <input ng-init="initProfilePage()"
-                                               id="fileLabel"
-                                               style="width: 90px; color: transparent"
-                                               type="file"
-                                               name="file"
-                                               nv-file-select=""
-                                               uploader="uploader" />
-                                    </div>
-                                    <div ng-hide="showBrowseButton">
-                                        <button ng-click="updateProfilePicture(data,mediaLink)">Save Picture</button>
-                                        <button ng-click="cancelPictureUpdate()">Cancel</button>
-                                    </div>
-<!--
-                                    <div>
-                                        <a href="#"  ng-click="" class="upload-photo">
-                                            <i class="m-icon--Upload-Inactive"></i><br>
-                                            <span>Upload new profile picture</span>
-                                        </a>
-                                    </div>
--->
-
                                 </div>
                             </div>
                             <div class="form-group text-center">
@@ -456,12 +447,6 @@
                                 "<img src = '/assets/images/emailpopupimg.png' style = 'width:100%; height:100%; position:relative'></div>";
             
             element.id = 'subscribe_email_popup';
-            element.style.position = 'fixed';
-            element.style.left = 0;
-            element.style.top = 0;
-            element.style.width = '100%';
-            element.style.height = '100%';
-            element.style.zIndex = '50';
             
             element.style.visibility = 'visible';   
             document.body.appendChild(element);
