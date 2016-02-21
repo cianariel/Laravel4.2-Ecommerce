@@ -138,7 +138,7 @@
             }
         })
 
-        $('.profile-photo').click(function(){
+        $('#top-nav .profile-photo').click(function(){
             if($('.profilelinks-popup').is(":visible")){
                 $('.profilelinks-popup').hide();
             }else{

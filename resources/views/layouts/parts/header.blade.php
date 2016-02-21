@@ -445,14 +445,14 @@
         {
             element = document.createElement('div');
             element.innerHTML = "<div style = 'position:absolute; left:0px; top:0px; width:100%; height:100%; background-color:black; opacity:0.5'></div>" +
-                                "<div style = 'position:absolute;width:500px; height:300px; left:50%; top: 50%; transform:translate(-50%, -50%); background-color:white'>" + 
-                                "<div style = 'width:500px; padding-left:150px; padding-top:50px; height:100px'>" +
-                                "<div><h4>Subscribe me to the world's finest design ideas community</h4></div>" + 
+                                "<div class='content-container' >" + 
+                                "<div class='content-holder'>" +
+                                "<div><h4>Subscribe me to the world's finest design ideas community</h4></div><br>" + 
                                 "<div><h5>Enter your email</h5></div>" +
-                                "<div><input type = 'text' placeholder = 'me@email.com'></div>" + 
-                                "<div style = 'overflow:auto;width:150px; padding-top: 10px;'><a class='btn btn-success col-xs-12'  href='javascript:closeSubscriptionPopup();''>Subscribe</a></div>" +
-                                "<div><a href = 'javascript:closeSubscriptionPopup();'>Never mind</a></div></div></div>" + 
-                                "<div style = 'position:absolute; left:calc(50% - 250px); top: calc(50% - 150px); transform:translate(-50%, -50%); width:300px; height:300px; border-radius:150px; border-color:white; border-style:solid; border-width:3px'>" +
+                                "<div><input class='form-control' type = 'text' placeholder = 'me@email.com'></div><br>" + 
+                                "<div ><a class='btn btn-success form-control'  href='javascript:closeSubscriptionPopup();''>Subscribe to Ideaing's newsletter</a></div><br>" +
+                                "<p><a href = 'javascript:closeSubscriptionPopup();'>Never mind</a></p></div></div>" + 
+                                "<div class='img-holder' >" +
                                 "<img src = '/assets/images/emailpopupimg.png' style = 'width:100%; height:100%; position:relative'></div>";
             
             element.id = 'subscribe_email_popup';
@@ -461,6 +461,7 @@
             element.style.top = 0;
             element.style.width = '100%';
             element.style.height = '100%';
+            element.style.zIndex = '50';
             
             element.style.visibility = 'visible';   
             document.body.appendChild(element);

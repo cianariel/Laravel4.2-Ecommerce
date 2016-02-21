@@ -22,7 +22,7 @@
                         </li>
                         <li>
                             <a href="#">
-                                <i class="m-icon m-icon--menu"></i>&nbsp;
+                                <i class="m-icon m-icon--Saved-Active"></i>&nbsp;
                                 Saved
                             </a>
                         </li>
