@@ -4408,7 +4408,7 @@ button {
   width: 100%;
   height: 100%;
   background: #000;
-  opacity: .9;
+  opacity: .6;
   z-index: 40; }
   .page-overlay.picture-overlay {
     display: none;
@@ -9684,10 +9684,12 @@ html.hide-overflow {
 #all-shop-menu {
   font-family: "Montserrat", sans-serif;
   padding-top: 30px;
+  background: rgba(0, 0, 0, 0.8);
   top: 115px; }
   #all-shop-menu a {
     position: initial;
-    float: none; }
+    float: none;
+    color: #fff; }
   #all-shop-menu .title {
     margin-bottom: 20px;
     font-size: 18px; }
@@ -9734,6 +9736,44 @@ html.hide-overflow {
 
 .alert .close {
   float: right; }
+
+body.login-signup {
+  height: 100%;
+  width: 100%; }
+  body.login-signup #about-button, body.login-signup #back-to-top, body.login-signup .pocket {
+    display: none; }
+  body.login-signup .background {
+    position: absolute;
+    background-color: #000;
+    width: 100%;
+    height: 100%;
+    top: 0px; }
+  body.login-signup .background-image {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: none;
+    background: url("/assets/images/picture-overlay.jpg");
+    opacity: 0.6;
+    z-index: 39;
+    display: block;
+    left: 0px;
+    top: 0px; }
+  body.login-signup .login-signup-modal {
+    position: absolute;
+    width: 100%;
+    max-height: 100%;
+    overflow: auto;
+    z-index: 999;
+    padding-top: 50px; }
+  body.login-signup .content-holder {
+    padding-bottom: 50px;
+    max-width: 650px;
+    position: relative;
+    margin: auto; }
+  body.login-signup .hero-box {
+    padding: 35px;
+    overflow: hidden; }
 
 @media (max-width: 620px) {
   .reviews-medium-container .average-score .caption {

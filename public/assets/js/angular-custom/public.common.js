@@ -51,12 +51,6 @@ publicApp.controller('ModalInstanceCtrltest', function ($scope, $uibModalInstanc
 publicApp.controller('publicController', ['$scope', '$http', '$window', '$timeout', '$location', '$anchorScroll', '$uibModal', 'layoutApi', 'FileUploader'
     , function ($scope, $http, $window, $timeout, $location, $anchorScroll, $uibModal, layoutApi, FileUploader) {
 
-
-
-
-
-
-
         // Header profile option open and close on click action.
 
         $scope.openProfileSetting = function () {
