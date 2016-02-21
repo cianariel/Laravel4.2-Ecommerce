@@ -6879,7 +6879,7 @@ header.sub-head {
   /*  background: $pale-grey;*/
   background: #fff;
   z-index: 10;
-  top: 115px; }
+  top: 55px; }
   @media only screen and (max-width: 768px) {
     .shop-menu {
       top: 0px; } }
@@ -9250,7 +9250,19 @@ body.profilepage {
     display: inline-block;
     padding: 10px 20px;
     color: #fff;
-    margin-top: 20px; }
+    margin-top: 20px;
+    position: relative;
+    cursor: pointer; }
+    .profile-setting-modal .modal-content .upload-photo input[type="file"] {
+      position: absolute;
+      font-size: 200px;
+      top: 0px;
+      right: 0px;
+      opacity: 0;
+      cursor: pointer; }
+  .profile-setting-modal .modal-content .uploading-photo {
+    margin-top: 20px;
+    display: block; }
   .profile-setting-modal .modal-content .custom-container {
     max-width: 690px;
     margin: auto;
@@ -9671,7 +9683,8 @@ html.hide-overflow {
 
 #all-shop-menu {
   font-family: "Montserrat", sans-serif;
-  padding-top: 30px; }
+  padding-top: 30px;
+  top: 115px; }
   #all-shop-menu a {
     position: initial;
     float: none; }
@@ -9686,31 +9699,38 @@ html.hide-overflow {
 #all-shop-menu-mobile {
   top: 115px; }
 
-#subscribe_email_popup .content-container {
-  position: absolute;
-  width: 500px;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  background-color: white;
-  padding-bottom: 50px; }
-  #subscribe_email_popup .content-container .content-holder {
+#subscribe_email_popup {
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  width: 100%;
+  height: 100%;
+  z-index: 1000;
+  visibility: hidden; }
+  #subscribe_email_popup .content-container {
+    position: absolute;
     width: 500px;
-    padding-left: 174px;
-    padding-top: 50px;
-    padding-right: 13px; }
-
-#subscribe_email_popup .img-holder {
-  position: absolute;
-  left: calc(50% - 250px);
-  top: calc(50% - 49px);
-  transform: translate(-50%, -50%);
-  width: 300px;
-  height: 300px;
-  border-radius: 150px;
-  border-color: white;
-  border-style: solid;
-  border-width: 3px; }
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding-bottom: 50px; }
+    #subscribe_email_popup .content-container .content-holder {
+      width: 500px;
+      padding-left: 174px;
+      padding-top: 50px;
+      padding-right: 13px; }
+  #subscribe_email_popup .img-holder {
+    position: absolute;
+    left: calc(50% - 250px);
+    top: calc(50% - 49px);
+    transform: translate(-50%, -50%);
+    width: 300px;
+    height: 300px;
+    border-radius: 150px;
+    border-color: white;
+    border-style: solid;
+    border-width: 3px; }
 
 .alert .close {
   float: right; }

@@ -5,7 +5,9 @@
 </div>
 
 <span class="box-item__time">@{{item.updated_at}}</span>
+<a href="@{{item.url}}">
 <div class="box-item__overlay"></div>
+</a>
 
 <ul class="social-stats">
     <li class="social-stats__item">
