@@ -80,6 +80,14 @@
                 // pointing filesystem to AWS S3
                 $s3 = Storage::disk('s3');
 
+                if ($s3->put($fileName, file_get_contents($request->file('file')), 'public'))
+                {
+//                    $fileResponse['result'] = \Config::get("const.file.s3-path") . $fileName;
+//                    $fileResponse['status_code'] = \Config::get("const.api-status.success");
+
+//                    return $fileResponse;
+                }
+
                 // Thumbnail creation and uploading to AWS S3
                 if (in_array($request->file('file')->guessClientExtension(), array("jpeg", "jpg", "bmp", "png")))
                 {
@@ -92,17 +100,23 @@
 
                     $thumb = $thumb->stream();
                     $thumbFileName = 'thumb-' . $fileName;
+                    
                     $s3->put($thumbFileName, $thumb->__toString(), 'public');
-                }
+                     $thumb = \Image::make($request->file('file'))->crop(120,120);
+//                    $thumb = \Image::make($request->file('file'))
+//                        ->resize(120, 120, 1);
 
+                    $thumb = $thumb->stream();
+                    $thumbFileName = '120-' . $fileName;
+                    $s3->put($thumbFileName, $thumb->__toString(), 'public');
 
-                if ($s3->put($fileName, file_get_contents($request->file('file')), 'public'))
-                {
-                    $fileResponse['result'] = \Config::get("const.file.s3-path") . $fileName;
+                    $fileResponse['result'] = \Config::get("const.file.s3-path") . $thumbFileName;
                     $fileResponse['status_code'] = \Config::get("const.api-status.success");
 
                     return $fileResponse;
+                    
                 }
+
             }
         }
 
