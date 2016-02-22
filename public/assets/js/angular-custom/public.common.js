@@ -47,14 +47,9 @@ publicApp.controller('ModalInstanceCtrltest', function ($scope, $uibModalInstanc
         $uibModalInstance.dismiss('cancel');
     };
 });
-//$scope, $uibModal,$http,pagingApi, $filter, layoutApi, FileUploader
+
 publicApp.controller('publicController', ['$scope', '$http', '$window', '$timeout', '$location', '$anchorScroll', '$uibModal', 'layoutApi', 'FileUploader'
     , function ($scope, $http, $window, $timeout, $location, $anchorScroll, $uibModal, layoutApi, FileUploader) {
-
-
-
-
-
 
 
         // Header profile option open and close on click action.
@@ -150,9 +145,6 @@ publicApp.controller('publicController', ['$scope', '$http', '$window', '$timeou
         // initialize variables
         $scope.initPage = function () {
 
-            // $scope.TEST = "TSSSSST";
-            // console.log($scope.TEST);
-
             // email subscription
             $scope.SubscriberEmail = '';
             $scope.responseMessage = '';
@@ -183,6 +175,7 @@ publicApp.controller('publicController', ['$scope', '$http', '$window', '$timeou
             $scope.Address = '';
             $scope.Permalink = '';
 
+            //settings for user profile edit section
             $scope.isProfilePage = false ;
             $scope.showBrowseButton = true;
 
@@ -213,7 +206,7 @@ publicApp.controller('publicController', ['$scope', '$http', '$window', '$timeou
             alertHTML += '</ul>';
 
             return alertHTML;
-        }
+        };
 
 
         // Build popup notification box based on status.
@@ -273,6 +266,7 @@ publicApp.controller('publicController', ['$scope', '$http', '$window', '$timeou
             }
         };
 
+        // redirect a user after login as per role.
         $scope.redirectUser = function (role) {
             switch (role[0]) {
                 case 'admin':
@@ -316,8 +310,6 @@ publicApp.controller('publicController', ['$scope', '$http', '$window', '$timeou
                 }
 
             });
-
-            //   'layouts.parts.login-signup'
 
         };
 
