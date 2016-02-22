@@ -57,7 +57,7 @@
                 <span data-toggle="#login-modal" data-hide="#signup-modal" class="col-xs-6 {{(!isset($tab) || $tab == 'login' || $tab =='') ? 'active' : ''}} ">Log in</span>
                 <span  data-toggle="#signup-modal" data-hide="#login-modal" class="col-xs-6 {{(isset($tab) && $tab == 'signup') ? 'active' : ''}} ">Sign up</span>
             </nav>
-            <div id="login-modal" class="modal-content contentable hero-box qiuck-signup modal-login">
+            <div id="login-modal" class="modal-content contentable hero-box qiuck-signup modal-login" style="{{(isset($tab) && $tab != 'login') ? 'display: none;' : ''}}">
                 <form>
                         <a class="btn btn-info col-xs-12"  ng-click="registerWithFB()" href="#"><i class="icon fb-icon"></i>Log in with Facebook</a>
                     <div class="line-wrap modal-minor-text">or</div>
@@ -77,7 +77,7 @@
 
                 </form>
             </div>
-            <div id="signup-modal" style="display: none" class="modal-content hero-box qiuck-signup modal-login">
+            <div id="signup-modal" style="{{(isset($tab) && $tab != 'signup') ? 'display: none;' : ''}}" class="modal-content hero-box qiuck-signup modal-login">
                 <form>
                         <a class="btn btn-info col-xs-12" ng-click="registerWithFB()" href="#"><i class="fa fa-facebook"></i>Sign
                             up with Facebook</a>
