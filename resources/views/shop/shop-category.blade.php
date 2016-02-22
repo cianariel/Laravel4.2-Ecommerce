@@ -41,6 +41,12 @@
                         <i class="m-icon--footer-up-arrow up"></i>
                     </span>
                 </a>
+                <a class="browse-all visible-xs visible-sm" data-toggle="#all-shop-menu-mobile" href="#">
+                    <span>
+                        <i class="m-icon--Header-Dropdown down"></i>
+                        <i class="m-icon--footer-up-arrow up"></i>
+                    </span>
+                </a>
         </div>
     </nav>
 

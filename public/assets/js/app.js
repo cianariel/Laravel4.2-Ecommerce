@@ -138,12 +138,15 @@
             }
         })
 
-        $('.profile-photo').click(function(){
+        $('#top-nav .profile-photo').click(function(){
             if($('.profilelinks-popup').is(":visible")){
                 $('.profilelinks-popup').hide();
             }else{
                 $('.profilelinks-popup').show();
             }
+        })
+        $("#top-nav .profilelinks-popup a").click(function(){
+            $('.profilelinks-popup').hide();
         })
 
         $(".show-hero-category").click(function(e){

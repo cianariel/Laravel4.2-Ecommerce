@@ -152,7 +152,7 @@ button{
   width:100%;
   height:100%;
   background:#000;
-  opacity: .9;
+  opacity: .6;
   z-index: 40;
 
   &.picture-overlay{
@@ -2650,7 +2650,7 @@ header.colophon{
 
     & + header.sub-head .shop-menu{
       position: fixed;
-      top: 61px;
+      top: 60px;
       //min-height: 800px;
       z-index: 200;
     }
@@ -2702,7 +2702,7 @@ header.colophon{
 }
 
 .mobile-top-menu{
-    position: absolute;
+    position: fixed;
     width: 100%;
     background: rgba(0,0,0, 0.8);
     display: none;
@@ -3606,7 +3606,8 @@ header.sub-head{
   min-height: 375px;
   position: absolute;
   overflow: hidden;
-  background: $pale-grey;
+/*  background: $pale-grey;*/
+  background: #fff;
   z-index: 10;
   top: 55px;
   
@@ -3623,6 +3624,9 @@ header.sub-head{
     padding-bottom: 22px;
     border-bottom: 1px solid lighten($light-grey, 15%);
     margin-bottom: 25px;
+    a:hover{
+        color: $iridium;
+    }
   }
 
   .img-wrap{
@@ -4247,13 +4251,6 @@ header.sub-head{
 
 }
 
-.product-details #hero-nav{
-  .category-nav{
-    width: 568px;
-    margin: 0 auto;
-    max-width: 100%;
-  }
-}
 
 .homepage #hero-nav{
   .category-nav{
@@ -5677,7 +5674,7 @@ footer.about-footer{
     /*padding-top: 15px ;
     padding-bottom: 15px ;*/
     position: relative;
-    z-index: 35;
+    z-index: 40;
     background: #fff;
 
     .mobile-wrap{
@@ -7243,6 +7240,9 @@ body.shop-category{
 .profile-photo{
     border-radius: 100px;
     border: 3px solid #bebbbc;
+    &:hover{
+        border-color: $iridium;
+    }
 }
 body.profilepage{
     background: #f8f8f6;
@@ -7479,6 +7479,9 @@ body.profilepage{
         margin-right: 10px;
         position: relative;
         background: $iridium;
+        &:hover{
+            background: #000;
+        }
         i{
             font-size: 10px;
             right: 24px;
@@ -7532,6 +7535,20 @@ body.profilepage{
             padding: 10px 20px;
             color: #fff;
             margin-top: 20px;
+            position: relative;
+            cursor: pointer;
+            input[type="file"]{
+                position: absolute;
+                font-size: 200px;
+                top: 0px;
+                right: 0px;
+                opacity: 0;   
+                cursor: pointer;             
+            }
+        }
+        .uploading-photo{
+            margin-top: 20px;
+            display: block;
         }
         .custom-container{
             max-width: 690px;
@@ -7640,12 +7657,25 @@ html.hide-overflow{
     overflow: hidden;
 }
 
+.product-details #hero-nav{
+  .category-nav{
+/*    width: 568px;*/
+    margin: 0 auto;
+    max-width: 100%;
+    text-align: center;
+    >li{
+        margin-right: 15px;
+    }
+  }
+}
+
 .show-hero-category{
     position: absolute;
     right: -18px;
     top: 0px;
     display: none;
 }
+#hero-nav{
 .hideen-hero-category-menu{
     display: none;
     width: 100%;
@@ -7654,24 +7684,33 @@ html.hide-overflow{
 /*    background: #efefef;*/
     top: 57px;
     z-index: 99;
-    > div{
-        &:nth-child(odd) {
-            background: #f6e9e9;
+        margin-left: -15px;
+        li{
+            float: none;
+            display: block;
+            a{
+                float:none;
+                color: #fff;
+                padding-top: 0px;
+                padding-bottom: 0px;
+                &:hover{
+                    color: #fff !important;
         }
-        &:nth-child(even) {
-            background: #efefef;
         }
     }
     
-    a{
-        float: none;
-        padding-top: 10px;
-        padding-bottom: 10px;
-        i{
-            margin-right: 5px;
         }
     }
+
+@media (max-width: 550px){
+    .show-hero-category{
+        display: block;
 }
+    #hero-nav li.hidden-category-menu{
+        display: none;
+    }
+}
+
 .box-item.product-box{
     .mobile-show{
         position: absolute;
@@ -7702,14 +7741,6 @@ html.hide-overflow{
         }
     }
     
-}
-@media (max-width: 490px){
-    .show-hero-category{
-        display: block;
-    }
-    #hero-nav li.hidden-category-menu{
-        display: none;
-    }
 }
 
 @media (min-width: 880px){
@@ -8084,9 +8115,12 @@ html.hide-overflow{
 #all-shop-menu{
     font-family: "Montserrat", sans-serif;
     padding-top: 30px;
+    background: rgba(0, 0, 0, 0.8);
+    top: 115px;
     a{
         position: initial;
         float: none;
+        color: #fff;
     }
     .title{
         margin-bottom: 20px;
@@ -8097,6 +8131,95 @@ html.hide-overflow{
     }
     .link-row{
         height: 40px;
+    }
+}
+
+#all-shop-menu-mobile{
+    top: 115px;
+}
+
+#subscribe_email_popup{
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 1000;
+    visibility: hidden;
+    .content-container{
+        position:absolute;
+        width:500px; 
+        left:50%; 
+        top: 50%; 
+        transform:translate(-50%, -50%); 
+        background-color:white;
+        padding-bottom: 50px;
+        .content-holder{
+            width: 500px; 
+            padding-left: 174px; 
+            padding-top: 50px; 
+            padding-right: 13px;
+        }
+    }
+    .img-holder{
+        position:absolute; 
+        left:calc(50% - 250px); 
+        top: calc(50% - 49px); 
+        transform:translate(-50%, -50%); 
+        width:300px; 
+        height:300px; 
+        border-radius:150px; 
+        border-color:white; 
+        border-style:solid; 
+        border-width:3px
+    }
+}
+.alert .close{
+    float: right;
+}
+body.login-signup{
+    height: 100%;
+    width: 100%;
+    #about-button, #back-to-top, .pocket{
+        display: none;
+    }
+    .background{
+        position: absolute;
+        background-color: #000;
+        width: 100%;
+        height: 100%;
+        top: 0px;
+    }
+    .background-image{
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        display: none;
+        background: url("/assets/images/picture-overlay.jpg");
+        opacity: 0.6;
+        z-index: 39;
+        display: block;
+        left: 0px;
+        top: 0px;
+    }
+    .login-signup-modal{
+        position: absolute;
+        width: 100%;
+        max-height: 100%;
+        overflow: auto;
+        z-index: 999;
+        padding-top: 50px;
+        
+    }
+    .content-holder{
+        padding-bottom: 50px;
+        max-width: 650px;
+        position: relative;
+        margin: auto;
+    }
+    .hero-box{
+        padding: 35px;
+        overflow: hidden;
     }
 }
 
