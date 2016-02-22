@@ -155,7 +155,7 @@ class PageController extends ApiController
     }
 
     public function getGridStories($limit, $offset, $featuredLimit, $featuredOffset, $tag){
-        $url = 'http://staging.ideaing.com/ideas/feeds/index.php?count='.$limit.'&no-featured&offset='. $offset;
+        $url = 'http://ideaing.com/ideas/feeds/index.php?count='.$limit.'&no-featured&offset='. $offset;
         if($tag && $tag != 'false'){
             $url .= '&tag=' . $tag;
         }
@@ -189,7 +189,7 @@ class PageController extends ApiController
     }
 
     public function getRelatedStories($currentStoryID, $limit, $tags){
-        $url = 'http://staging.ideaing.com/ideas/feeds/index.php?count='.$limit;
+        $url = 'http://ideaing.com/ideas/feeds/index.php?count='.$limit;
 
         if($tags && $tags != 'false'){
             $url .= '&tag_in=' . implode(',', $tags);
