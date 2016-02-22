@@ -20,7 +20,6 @@ class PageController extends ApiController
     {
         //check user authentication and get user basic information
         $this->authCheck = $this->RequestAuthentication(array('admin','editor','user'));
-        //$this->authToken =
 
     }
 
