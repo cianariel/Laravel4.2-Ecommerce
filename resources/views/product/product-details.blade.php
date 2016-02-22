@@ -256,9 +256,11 @@
                     </li>
                 </ul>
                 <a class="show-hero-category" href="#">></a>
-                <div class="hideen-hero-category-menu">
-                    <div><a href="#" data-scrollto="#compare" class="compare-link"><i class="m-icon  m-icon--comparisons"></i>Comparisons</a></div>
-                    <div><a href="#" data-scrollto="#reviews" class="reviews-link"><i class="m-icon m-icon--reviews"></i>Reviews</a></div>
+                <div class="hideen-hero-category-menu mobile-top-menu">
+                    <ul>
+                        <li><a href="#" data-scrollto="#compare" class="compare-link"><i class="m-icon  m-icon--comparisons"></i>Comparisons</a></li>
+                        <li><a href="#" data-scrollto="#reviews" class="reviews-link"><i class="m-icon m-icon--reviews"></i>Reviews</a></li>
+                    </ul>
                 </div>
             </div>
         </nav>
@@ -660,7 +662,11 @@
                                     <ul class="social-stats">
                                         <li class="social-stats__item">
                                             <a href="#">
-                                                <i class="m-icon m-icon--heart"></i>
+                                                <i class="m-icon m-icon--ScrollingHeaderHeart">
+                                                    <span class="m-hover">
+                                                        <span class="path1"></span><span class="path2"></span>
+                                                    </span>
+                                                </i>
                                                 <span class="social-stats__text">157</span>
                                             </a>
                                         </li>
@@ -700,7 +706,11 @@
                                     <ul class="social-stats">
                                         <li class="social-stats__item">
                                             <a href="#">
-                                                <i class="m-icon m-icon--heart"></i>
+                                                <i class="m-icon m-icon--ScrollingHeaderHeart">
+                                                    <span class="m-hover">
+                                                        <span class="path1"></span><span class="path2"></span>
+                                                    </span>
+                                                </i>
                                                 <span class="social-stats__text">52</span>
                                             </a>
                                         </li>

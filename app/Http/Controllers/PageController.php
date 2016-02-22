@@ -125,7 +125,7 @@ class PageController extends ApiController
             $stories['regular'] = [];
         }
 
-        $return['regular'] = array_merge($stories['regular'], $products['result']);
+        $return['regular'] = array_merge(isset($stories['regular']) ?  $stories['regular'] : array(), $products['result']);
         $return['featured'] = $stories['featured'];
 
         usort($return['regular'], function($a, $b) {
@@ -213,12 +213,12 @@ class PageController extends ApiController
     public function signupPage($email = '')
     {
 
-        return view('signup')->with('email',$email);
+        return view('signup')->with('email',$email)->with('tab', 'signup');
     }
 
     public function loginView()
     {
-        return view('login');
+        return view('signup')->with('tab', 'login');
     }
 
     public function getProducts($limit, $page, $offset, $tagID, $productCategoryID = false, $sortBy = false){

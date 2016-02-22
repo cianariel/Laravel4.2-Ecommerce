@@ -16,7 +16,11 @@
                     <ul class="social-stats center-block ">
                         <li class="social-stats__item">
                             <a href="#">
-                                <i class="m-icon m-icon--heart"></i>
+                                    <i class="m-icon m-icon--ScrollingHeaderHeart">
+                                        <span class="m-hover">
+                                            <span class="path1"></span><span class="path2"></span>
+                                        </span>
+                                    </i>
                                 <span class="social-stats__text">1819</span>
                             </a>
                         </li>
@@ -97,7 +101,11 @@
                 <ul class="social-stats center-block hidden-soft shown-620">
                     <li class="social-stats__item">
                         <a href="#">
-                            <i class="m-icon m-icon--heart"></i>
+                            <i class="m-icon m-icon--ScrollingHeaderHeart">
+                                <span class="m-hover">
+                                    <span class="path1"></span><span class="path2"></span>
+                                </span>
+                            </i>
                             <span class="social-stats__text">1819</span>
                         </a>
                     </li>
@@ -125,7 +133,11 @@
                         <div class="social-stats  ">
                             <div class="social-stats__item">
                                 <a href="#">
-                                    <i class="m-icon m-icon--heart"></i>
+                                    <i class="m-icon m-icon--ScrollingHeaderHeart">
+                                        <span class="m-hover">
+                                            <span class="path1"></span><span class="path2"></span>
+                                        </span>
+                                    </i>
                                     <span class="social-stats__text">1819</span>
                                 </a>
                             </div>
@@ -311,7 +323,11 @@
                                         <ul class="social-stats">
                                             <li class="social-stats__item">
                                                 <a href="#">
-                                                    <i class="m-icon m-icon--heart"></i>
+                                    <i class="m-icon m-icon--ScrollingHeaderHeart">
+                                        <span class="m-hover">
+                                            <span class="path1"></span><span class="path2"></span>
+                                        </span>
+                                    </i>
                                                     <span class="social-stats__text">52</span>
                                                 </a>
                                             </li>

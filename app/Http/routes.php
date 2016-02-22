@@ -234,9 +234,10 @@
     Route::get('room/{permalink?}', 'PageController@getRoomPage');
     // default signup
     Route::get('signup/{email?}', 'PageController@signupPage');
+    Route::get('login', 'PageController@loginView');
 
     // default
-    Route::get('login', 'PageController@loginView');
+//    Route::get('login', 'PageController@loginView');
 
     Route::get('/api/paging/get-content/{page?}/{limit?}/{type?}/{tag?}/{productCategory?}/{sortBy?}', 'PageController@getContent');
     Route::get('/api/paging/get-grid-content/{page?}/{limit?}/{category?}/{tag?}', 'PageController@getGridContent');
