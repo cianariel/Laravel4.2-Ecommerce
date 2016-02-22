@@ -170,7 +170,7 @@ class PageController extends ApiController
 
         $return['regular'] = json_decode($json);
 
-        $featuredUrl = 'http://staging.ideaing.com/ideas/feeds/index.php?count='.$featuredLimit.'&only-featured&offset='. $featuredOffset. '&tag=' . $tag;
+        $featuredUrl = 'http://ideaing.com/ideas/feeds/index.php?count='.$featuredLimit.'&only-featured&offset='. $featuredOffset. '&tag=' . $tag;
 
         if($tag && $tag != 'false' && $tag != false){
             $featuredUrl .= '&tag=' . $tag;
