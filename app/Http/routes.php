@@ -236,6 +236,11 @@
     Route::get('signup/{email?}', 'PageController@signupPage');
     Route::get('login', 'PageController@loginView');
 
+    // Hide signup popup
+    Route::get('hide-signup', 'UserController@hideSignup');
+    Route::get('cookie/{cookieName?}', 'ApiController@getCookie');
+
+
     // default
 //    Route::get('login', 'PageController@loginView');
 

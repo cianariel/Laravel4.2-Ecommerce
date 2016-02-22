@@ -206,6 +206,13 @@
 
         }
 
+        public function hideSignup()
+        {
+            $this->setCookie('hide-signup','true',1440);
+            return \Redirect::back();
+
+        }
+
         //todo need to implement permalink check feature
 
         public function checkUserPermalink($permalink)
