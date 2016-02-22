@@ -206,5 +206,12 @@
 
         }
 
+        //todo need to implement permalink check feature
+
+        public function checkUserPermalink($permalink)
+        {
+
+        }
+
 
     }
