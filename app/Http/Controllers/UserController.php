@@ -171,6 +171,9 @@
                     $userData['Email']
                 ));
 
+                // set cookie to hid popup 
+                $this->setCookie('hide-signup','true',9999999);
+
                 return $this->setStatusCode(\Config::get("const.api-status.success"))
                     ->makeResponse($subs);
             }

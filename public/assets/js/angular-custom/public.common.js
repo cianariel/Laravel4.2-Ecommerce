@@ -48,8 +48,8 @@ publicApp.controller('ModalInstanceCtrltest', function ($scope, $uibModalInstanc
     };
 });
 
-publicApp.controller('publicController', ['$scope', '$http', '$window', '$timeout', '$location', '$anchorScroll', '$uibModal', 'layoutApi', 'FileUploader'
-    , function ($scope, $http, $window, $timeout, $location, $anchorScroll, $uibModal, layoutApi, FileUploader) {
+publicApp.controller('publicController', ['$scope', '$http', '$window', '$timeout', '$location', '$anchorScroll', '$uibModal', 'layoutApi','$compile', 'FileUploader'
+    , function ($scope, $http, $window, $timeout, $location, $anchorScroll, $uibModal, layoutApi,$compile,FileUploader) {
 
 
         // Header profile option open and close on click action.
@@ -308,6 +308,10 @@ publicApp.controller('publicController', ['$scope', '$http', '$window', '$timeou
                 else if (data.status_code == 200) {
                     $scope.responseMessage = "Successfully Subscribed";
                     $scope.SubscriberEmail = '';
+
+                    // reload window to hide popup
+                    location.reload();
+
 
                 } else {
                     $scope.responseMessage = "Email already subscribed";
