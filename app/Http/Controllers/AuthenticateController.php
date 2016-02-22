@@ -85,6 +85,9 @@
 
         public function logOut()
         {
+            // reset the token
+            $this->setCookie('hide-signup','',1440);
+
             // get token form input or session
             $tokenValue = session('auth.token');
 

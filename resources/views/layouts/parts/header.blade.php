@@ -310,7 +310,7 @@
                                         </div>
                                         <div class="pull-right">
                                             <label class="setting-custom-checkbox">
-                                                <input type="checkbox" value="1" >
+                                                <input type="checkbox" value="1" checked>
                                                 <span class="">
                                                     <i class="m-icon--Settings-Toggles-Active on">
                                                         <span class="path1"></span><span class="path2"></span>
@@ -329,7 +329,7 @@
                                         </div>
                                         <div class="pull-right">
                                             <label class="setting-custom-checkbox">
-                                                <input type="checkbox" value="1" >
+                                                <input type="checkbox" value="1" checked>
                                                 <span class="">
                                                     <i class="m-icon--Settings-Toggles-Active on">
                                                         <span class="path1"></span><span class="path2"></span>
@@ -348,7 +348,7 @@
                                         </div>
                                         <div class="pull-right">
                                             <label class="setting-custom-checkbox">
-                                                <input type="checkbox" value="1" >
+                                                <input type="checkbox" value="1" checked>
                                                 <span class="">
                                                     <i class="m-icon--Settings-Toggles-Active on">
                                                         <span class="path1"></span><span class="path2"></span>
@@ -374,7 +374,7 @@
                                         </div>
                                         <div class="pull-right">
                                             <label class="setting-custom-checkbox">
-                                                <input type="checkbox" value="1" >
+                                                <input type="checkbox" value="1" checked>
                                                 <span class="">
                                                     <i class="m-icon--Settings-Toggles-Active on">
                                                         <span class="path1"></span><span class="path2"></span>
@@ -419,11 +419,18 @@
         <?php } ?>
 
 
-    </div>
+   <!-- </div> -->
+
+<?php
+        //dd($userData['email'],);
+if(empty($userData['email']))
+{
+if($userData['user-data']['hide-signup'] != 'true')
+{
+
+?>
 
 <SCRIPT>
-
-
 
     setTimeout(function() {
         element = document.getElementById('subscribe_email_popup');
@@ -435,16 +442,19 @@
         else
         {
             element = document.createElement('div');
-            element.innerHTML = "<div style = 'position:absolute; left:0px; top:0px; width:100%; height:100%; background-color:black; opacity:0.5'></div>" +
+            element.innerHTML = "<div ng-model='popupSignup' ng-hide='popupSignup' >"+
+                                "<div style = 'position:absolute; left:0px; top:0px; width:100%; height:100%; background-color:black; opacity:0.5'></div>" +
                                 "<div class='content-container' >" + 
                                 "<div class='content-holder'>" +
                                 "<div><h4>Subscribe me to the world's finest design ideas community</h4></div><br>" + 
                                 "<div><h5>Enter your email</h5></div>" +
                                 "<div><input class='form-control' type = 'text' placeholder = 'me@email.com'></div><br>" + 
                                 "<div ><a class='btn btn-success form-control'  href='javascript:closeSubscriptionPopup();''>Subscribe to Ideaing's newsletter</a></div><br>" +
-                                "<p><a href = 'javascript:closeSubscriptionPopup();'>Never mind</a></p></div></div>" + 
+                                "<p><a href = '/hide-signup'>Never mind</a></p></div></div>" +
+                                //"<p><a href = 'javascript:closeSubscriptionPopup();'>Never mind</a></p></div></div>" +
                                 "<div class='img-holder' >" +
-                                "<img src = '/assets/images/emailpopupimg.png' style = 'width:100%; height:100%; position:relative'></div>";
+                                "<img src = '/assets/images/emailpopupimg.png' style = 'width:100%; height:100%; position:relative'></div>"+
+                                "</div>";
             
             element.id = 'subscribe_email_popup';
             
@@ -452,11 +462,16 @@
             document.body.appendChild(element);
         }
 
-    }, 300000);
+    }, 3000); // 300000
    function closeSubscriptionPopup()
     {
         document.getElementById('subscribe_email_popup').style.visibility = 'hidden';
     }
         
 </script>
+<?php
+    }
 
+} ?>
+
+</div>

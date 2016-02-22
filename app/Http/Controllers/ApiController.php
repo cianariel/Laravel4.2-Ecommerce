@@ -18,6 +18,7 @@ use Illuminate\Contracts\Filesystem\Factory;
 use JWTAuth;
 use Tymon\JWTAuth\Exceptions\JWTException;
 use FeedParser;
+use Cookie;
 
 class ApiController extends Controller
 {
@@ -76,6 +77,11 @@ class ApiController extends Controller
     public function setAuthToken($token = null)
     {
         session(['auth.token' => isset($token) ? $token : null]);
+
+        // if the a value is found in auth-token cookie / default value set from login, then will set the cookie
+       // if(!empty($this->getCookie('auth-token')))
+         //   $this->setCookie('auth-token',$token);
+
         $this->authToken = $token;
 
         return $this;
@@ -209,6 +215,22 @@ class ApiController extends Controller
         return array($cleanData, $validator);
     }
 
+    // Check and return Cookie
+    public function getCookie($cookieName = '')
+    {
+        // 'hide-signup'
+        return \Request::cookie($cookieName);
+    }
+
+    public function setCookie($name, $value, $expireMinuet = null)
+    {
+        if ($expireMinuet == null)
+            Cookie::queue(Cookie::make($name,$value,9999999));
+        else
+            Cookie::queue(Cookie::make($name,$value,$expireMinuet));
+    }
+
+
 
     /** Authenticate a user
      * @return mixed
@@ -216,19 +238,25 @@ class ApiController extends Controller
     public function RequestAuthentication($roles = null)
     {
         // initializing response variables
+
+      //  $initVariables = $this->initHeaderSettings();
+
         $response['status-code'] = '';
         $response['status-message'] = '';
         $response['user-data'] = '';
-        $response['profile-picture']='';
+        $response['profile-picture'] = '';
         $response['toke'] = '';
         $response['role-authorized'] = false;
+        $response['user-data']['hide-signup'] = $this->getCookie('hide-signup');//$initVariables['hide-signup'];
 
         // get token form input or session
 
         $token = session('auth.token');
 
-        if ($token == null || $token == '') {
+        if (empty($token)) {
             $token = \Input::get('token');
+          //  if(empty($token))
+        //        $token = $response['auth-token'];//$this->getCookie('auth-token');
         }
 
         // check authentication and catch exception
@@ -243,7 +271,7 @@ class ApiController extends Controller
 
                 $response['user-data'] = $userModel->IsEmailAvailable($user['email']);
                 $response['user-data']['login'] = true;
-               // $response['profile-picture'] = isset($response['user-data']->medias[0]->media_link)?$response['user-data']->medias[0]->media_link:'';
+                // $response['profile-picture'] = isset($response['user-data']->medias[0]->media_link)?$response['user-data']->medias[0]->media_link:'';
                 // User::find($response['user-data']['id'])->medias->first();
 
 

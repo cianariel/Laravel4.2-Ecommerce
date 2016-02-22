@@ -179,6 +179,9 @@ publicApp.controller('publicController', ['$scope', '$http', '$window', '$timeou
             $scope.isProfilePage = false ;
             $scope.showBrowseButton = true;
 
+            // popup signup
+            $scope.popupSignup = true;
+
         };
 
         // Add an Alert in a web application
@@ -292,7 +295,8 @@ publicApp.controller('publicController', ['$scope', '$http', '$window', '$timeou
                 url: '/api/subscribe',
                 method: "POST",
                 data: {
-                    'Email': $scope.SubscriberEmail
+                    'Email': $scope.SubscriberEmail,
+                    'SetCookie':'true'
                 }
             }).success(function (data) {
 

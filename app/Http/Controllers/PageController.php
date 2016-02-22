@@ -20,6 +20,7 @@ class PageController extends ApiController
     {
         //check user authentication and get user basic information
         $this->authCheck = $this->RequestAuthentication(array('admin','editor','user'));
+        //$this->authToken =
 
     }
 
@@ -32,7 +33,7 @@ class PageController extends ApiController
      */
     public function home()
     {
-        $userData = '';
+        $userData = $this->authCheck;
         if ($this->authCheck['method-status'] == 'success-with-http') {
             $userData = $this->authCheck['user-data'];
         }
