@@ -5412,7 +5412,7 @@ form .btn {
   margin-bottom: 20px; }
 
 main.page-content section {
-  margin-top: 20px;
+  /*    margin-top: 20px;*/
   margin-bottom: 20px;
   padding-top: 15px;
   padding-bottom: 15px; }
@@ -5912,7 +5912,7 @@ article.product {
   padding-top: 10px;
   width: 100%; }
   article.product .article-content {
-    margin-top: 50px;
+    /*    margin-top: 50px;*/
     padding-right: 0;
     padding-left: 40px; }
     article.product .article-content p:first-child:first-letter {
