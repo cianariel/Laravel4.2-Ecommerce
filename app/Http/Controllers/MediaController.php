@@ -102,9 +102,14 @@
                     $thumbFileName = 'thumb-' . $fileName;
                     
                     $s3->put($thumbFileName, $thumb->__toString(), 'public');
-                     $thumb = \Image::make($request->file('file'))->crop(120,120);
-//                    $thumb = \Image::make($request->file('file'))
-//                        ->resize(120, 120, 1);
+//                     $thumb = \Image::make($request->file('file'))->crop(120,120);
+                    $thumb = \Image::make($request->file('file'))
+                        ->resize(120, 120, function ($constraint)
+                        {
+                            $constraint->aspectRatio();
+                        })
+                        ->crop(120,120)
+                        ;
 
                     $thumb = $thumb->stream();
                     $thumbFileName = '120-' . $fileName;
