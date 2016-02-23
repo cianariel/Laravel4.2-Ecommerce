@@ -84,7 +84,7 @@
                     <div class="line-wrap modal-minor-text">or</div>
 
                         <input class="form-control" ng-model="FullName" type="text" placeholder="Name" >
-                        <input class="form-control" ng-model="Email" type="text" placeholder="Email" >
+                        <input class="form-control" ng-model="Email" ng-readonly="{{empty($email)?'false':'true'}}" ng-init="Email='{{empty($email)?'':$email}}'" type="text" placeholder="Email" >
                         <input class="form-control" ng-model="Password" type="password" placeholder="Password" >
                         <input class="form-control" ng-model="PasswordConf" type="password" placeholder="Retype Password" >
 
