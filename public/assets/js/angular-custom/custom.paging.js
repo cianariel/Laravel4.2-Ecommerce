@@ -24,7 +24,7 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
 
         var $route =  $filter('getURISegment')(2);
 
-        if($route == 'room'){
+        if($route == 'idea'){
             $scope.currentTag = $filter('getURISegment')(3);
         }
 
