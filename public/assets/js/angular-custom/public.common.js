@@ -62,7 +62,11 @@ publicApp.controller('publicController', ['$scope', '$http', '$window', '$timeou
                 size: 'lg',
                 windowClass: 'profile-setting-modal',
                 controller: 'ModalInstanceCtrltest'
-            });
+            })
+            .result.finally(function(){
+                $scope.uploader.formData = [];
+            })
+            ;
 
         };
 
@@ -96,14 +100,10 @@ publicApp.controller('publicController', ['$scope', '$http', '$window', '$timeou
         uploader.onAfterAddingFile = function (fileItem) {
             //   console.info('onAfterAddingFile', fileItem);
            // console.log($scope.isProfilePage);
-
             // if the page is profile update then this auto upload will work on profile image select
             if($scope.isProfilePage){
                 $scope.oldMediaLink = $scope.mediaLink;
                 $scope.showBrowseButton = !$scope.showBrowseButton;
-				$scope.uploader.formData.push({
-					'isProfilePage': 1
-				});
                 $scope.uploader.uploadAll();
 
                 console.log($scope.oldMediaLink,' : ',$scope.MediaLink);
@@ -180,6 +180,7 @@ publicApp.controller('publicController', ['$scope', '$http', '$window', '$timeou
 
             //settings for user profile edit section
             $scope.isProfilePage = false ;
+            $scope.uploader.formData = [];
             $scope.showBrowseButton = true;
 
             // popup signup
@@ -484,6 +485,9 @@ publicApp.controller('publicController', ['$scope', '$http', '$window', '$timeou
 
         $scope.initProfilePage = function(){
             $scope.isProfilePage = true;
+            $scope.uploader.formData.push({
+                'isProfilePage': 1
+            });
         };
 
         $scope.initProfilePicture = function(link){
