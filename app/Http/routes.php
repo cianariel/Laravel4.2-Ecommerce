@@ -231,7 +231,8 @@
     // Route for product detail view
     //    Route::get('pro-details/{permalink?}', 'PageController@productDetailsPage');
     Route::get('product/{permalink?}', 'PageController@productDetailsPage');
-    Route::get('room/{permalink?}', 'PageController@getRoomPage');
+    Route::get('idea/{permalink?}', 'PageController@getRoomPage'); // single room page
+    Route::get('room/{permalink?}', 'PageController@getRoomPage'); // temp keeping the old link, to prevent breaks
     // default signup
     Route::get('signup/{email?}', 'PageController@signupPage');
     Route::get('login', 'PageController@loginView');
