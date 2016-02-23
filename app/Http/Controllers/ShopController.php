@@ -50,12 +50,15 @@ class ShopController extends ApiController
             $categoryTree = ProductCategory::buildCategoryTree(false);
             $parentCategory =  @ProductCategory::where('id', $categoryModel->parent_id)->first();
 
+            $masterCategory = $parentCategory ?: $categoryModel;
+
             return view('shop.shop-category')
                 ->with('userData',$userData)
                 ->with('currentCategory', $categoryModel)
                 ->with('parentCategory', $parentCategory)
                 ->with('categoryTree', $categoryTree)
                 ->with('grandParent', $grandParent)
+                ->with('masterCategory', $masterCategory)
                 ;
 
         }

@@ -1,18 +1,19 @@
 <aside class="room-filter">
+
     <ul class="extra-nav hidden-620">
 {{--        @foreach($categoryTree as $name => $unused)--}}
-            <li><a class="{{@$parentCategory->extra_info ?: $currentCategory->extra_info}}-link" href="/shop/{{@$parentCategory->extra_info ? $parentCategory . '/' : ''}}{{$currentCategory->extra_info}}">{{@$parentCategory->category_name  ?: $currentCategory->category_name}}</a></li>
+            <li><a class="{{$masterCategory->extra_info}}-link" href="/shop/{{@$parentCategory->extra_info ? $parentCategory . '/' : ''}}{{$currentCategory->extra_info}}">{{$masterCategory->category_name}}</a></li>
         {{--@endforeach--}}
     </ul>
 
     <ul class="room-list">
-        @foreach($categoryTree as $parent => $children)
-            @foreach($children as $child)
+{{--        @foreach($categoryTree as $parent => $children)--}}
+            @foreach($categoryTree[$masterCategory->extra_info] as $child)
                 <li>
-                    <a ng-click="filterPlainContent('{{$child->extra_info}}', false)"  href="/shop/{{$parent}}/{{$child->extra_info}}">{{$child->category_name}}</a>
+                    <a ng-click="filterPlainContent('{{$child->extra_info}}', false)"  href="/shop/{{$masterCategory->extra_info}}/{{$child->extra_info}}" data-filterby="{{$child->extra_info}}">{{$child->category_name}}</a>
                 </li>
             @endforeach
-        @endforeach
+        {{--@endforeach--}}
     </ul>
 
     {{--<ul class="sortby">--}}
