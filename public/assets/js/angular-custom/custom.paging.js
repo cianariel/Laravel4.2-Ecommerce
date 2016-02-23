@@ -362,15 +362,27 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
 
         $scope.filterPlainContent = function($filterBy, $sortBy) {
 
-            if($filterBy === $scope.currentCategory){
-                return true;
-            }
+            //if($filterBy === $scope.currentCategory){
+            //    return true;
+            //}
 
             if($filterBy){
+                if($('a[data-filterby="'+$filterBy+'"]').hasClass('active')){
+                    return true;
+                }
+
                 $scope.currentCategory = $filterBy;
+                $('a[data-filterby]').removeClass('active');
+                $('a[data-filterby="'+$filterBy+'"]').addClass('active');
+
             }
 
             if($sortBy && $sortBy != 'undefined' && $sortBy != $scope.sortBy){
+
+                if($('a[data-sotyby="'+$sortBy+'"]').hasClass('active')){
+                    return true;
+                }
+
                 $('a[data-sortby]').removeClass('active');
                 $('a[data-sortby="'+$sortBy+'"]').addClass('active');
             }
@@ -391,7 +403,6 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
                     }
 
                     $scope.content = response;
-                    $scope.currentCategory = $filterBy;
                     contentBlock.fadeIn();
                 });
             });
