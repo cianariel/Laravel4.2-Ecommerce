@@ -3,7 +3,7 @@
 @section('body-class'){{ 'shoppage shop-category' }}@stop
 
 @section('content')
-    @include('layouts.parts.shop-browseall')
+    @include('shop.browseall-menu')
     <nav class="mid-nav ">
         <div class="container full-sm fixed-sm">
             <ul class="wrap col-lg-9">
@@ -66,10 +66,10 @@
                                 {{--<a ng-click="sortBy(popularity)" href="#" class="box-link active">POPULAR</a>--}}
                             {{--</li>--}}
                             <li class="">
-                                <a ng-click="sortContent(false)" data-sortby="false" href="#" class="box-link active">NEWEST</a>
+                                <a ng-click="filterPlainContent(false, 'default')" data-sortby="default" href="#" class="box-link active">NEWEST</a>
                             </li>
                             <li class="">
-                                <a ng-click="sortContent('sale_price')"  data-sortby="sale_price"  href="#" class="box-link">PRICE</a>
+                                <a ng-click="filterPlainContent(false, 'sale_price')"  data-sortby="sale_price"  href="#" class="box-link">PRICE</a>
                             </li>
                         </ul>
                     </div>
@@ -92,10 +92,10 @@
                     <a ng-click="loadMore()" class="btn btn-success bottom-load-more col-xs-12">Load More</a>
                 </div>
             </div>
+            @include('shop.filter-menu')
         </div>
 
         @include('layouts.parts.product-popup')
-
     </div>
     
     <script src="/assets/js/vendor/angular-busy.min.js"></script>
