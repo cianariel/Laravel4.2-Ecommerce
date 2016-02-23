@@ -16,6 +16,8 @@
                     <li class="shop-cool"><i class="m-icon m-icon--products"></i>Shop for cool gadgets and unique decor</li>
                 </ul>
             </div>
+
+            @if(empty($userData['email']))
             <div  id="publicApp" ng-app="publicApp" ng-controller="publicController"
                   class="col-md-4 col-xs-6 col-md-offset-1 hero-box qiuck-signup hidden-620" ng-cloak>
 <!--            <div class="col-md-4 col-xs-6 col-md-offset-1 hero-box qiuck-signup hidden-620">-->
@@ -38,6 +40,7 @@
                     <button ng-click="registerWithFB()" class="btn btn-info col-xs-12" href="#"><i class="m-icon m-icon--facebook-id"></i>Sign up with Facebook</button>
                 </form>
             </div>
+            @endif
 
 
         </div>

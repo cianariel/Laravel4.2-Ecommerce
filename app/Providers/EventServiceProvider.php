@@ -33,6 +33,10 @@
 
             SendSubscriptionMail::class => [
                 SendSubscriptionMailHandler::class
+            ],
+
+            SendWelcomeMail::class => [
+                SendWelcomeMailHandler::class
             ]
 
         ];

@@ -187,7 +187,7 @@
                                             <td height="45" align="center" width="169">
                                                 <div class="imgpop">
                                                     <a href="#"><img id="kgva7ywpd3"
-                                                                     src="http://s3-us-west-1.amazonaws.com/ideaing-01/product-56ccaf1928dce-logo.jpg"
+                                                                     src="http://s3-us-west-1.amazonaws.com/ideaing-01/product-56c81ac803839-bcac248d972540329fbc09486050b074.jpg"
                                                                      st-image="logo" alt=""
                                                                      style="display:block; border:none; outline:none; text-decoration:none;"
                                                                      height="45" border="0" width="169"></a>
@@ -245,11 +245,11 @@
                                             <td style="font-family: Helvetica, arial, sans-serif; font-size: 30px; color: #333333; text-align:center; line-height: 30px;"
                                                 st-title="fulltext-heading">
                                                 <p align="left">
-                                                    <span class="im"><span style="font-size: 14pt;">Dear User
-                                                            ,</span><br><span style="font-size: 14pt;">Thanks for subscribing . Please follow the link to signup.</span><br><span
+                                                    <span class="im"><span style="font-size: 14pt;">Hi {{ $name }}
+                                                            ,</span><br><br><span style="font-size: 14pt;">Let's make sure we've got your email right.</span><br><span
                                                                 style="font-size: 14pt;"><a
-                                                                    style="color:rgb(254,39,65);text-decoration:none"
-                                                                    href="{{ url('/').'/signup/'.$email}}">Confirming
+                                                                    style="color:rgb(61,137,1);text-decoration:none"
+                                                                    href="{{ url('/verify-email').'/'.$link}}">Confirming
                                                                 your
                                                                 email</a> will unlock all feartures of Ideaing.</span></span>
                                                 </p>
@@ -321,18 +321,18 @@
                                                 <!-- start of text content table -->
 
                                                 <table class="devicewidth" align="left" border="0" cellpadding="0"
-                                                       cellspacing="0" width="">
+                                                       cellspacing="0" width="290">
                                                     <tbody>
                                                     <!-- image -->
                                                     <tr>
-                                                        <td class="devicewidth" height="" align="center" width="">
+                                                        <td class="devicewidth" height="160" align="center" width="290">
                                                             <div class="imgpop">
                                                                 <img id="diasbyt3mu"
-                                                                     src="http://s3-us-west-1.amazonaws.com/ideaing-01/product-56ccb01f35c3f-common.jpg"
+                                                                     src="http://s3-us-west-1.amazonaws.com/ideaing-01/product-56c81aa2ac718-30940238bf4e4614bac7efcaeabf1497.png"
                                                                      alt="" st-image="ipad"
                                                                      style="display:block; border:none; outline:none; text-decoration:none;"
-                                                                     class="colimg2" height="" border="0"
-                                                                     width="">
+                                                                     class="colimg2" height="160" border="0"
+                                                                     width="290">
                                                             </div>
                                                         </td>
                                                     </tr>
@@ -358,19 +358,19 @@
                                                 <!-- start of text content table -->
 
                                                 <table class="devicewidth" align="left" border="0" cellpadding="0"
-                                                       cellspacing="0" width="">
+                                                       cellspacing="0" width="290">
                                                     <tbody>
                                                     <!-- image -->
                                                     <tr>
-                                                        <td class="devicewidth" height="93" align="center" width="">
+                                                        <td class="devicewidth" height="160" align="center" width="290">
                                                             <div class="imgpop">
-                                                                <a href="{{ url('/').'/signup/'.$email}}"><img
+                                                                <a href="{{ url('/verify-email').'/'.$link}}"><img
                                                                             id="9e1kcwzabc8"
-                                                                            src="http://s3-us-west-1.amazonaws.com/ideaing-01/product-56ccb13e31c8d-signup-now.jpg"
+                                                                            src="http://s3-us-west-1.amazonaws.com/ideaing-01/product-56c81a6294e06-e8d6bc4c8e434dacaa227d4f5509d49b.png"
                                                                             alt="" st-image="ipad"
                                                                             style="display:block; border:none; outline:none; text-decoration:none;"
-                                                                            class="colimg2" height="" border="0"
-                                                                            width=""></a>
+                                                                            class="colimg2" height="160" border="0"
+                                                                            width="290"></a>
                                                             </div>
                                                         </td>
                                                     </tr>
@@ -395,6 +395,32 @@
                             <!-- Spacing -->
                             </tbody>
                         </table>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </td>
+    </tr>
+    </tbody>
+</table>
+<table id="backgroundTable" st-sortable="separator" bgcolor="#ffffff" border="0" cellpadding="0" cellspacing="0"
+       width="100%">
+    <tbody>
+    <tr>
+        <td>
+            <table hasbackground="true" class="devicewidth" align="center" border="0" cellpadding="0" cellspacing="0"
+                   width="600">
+                <tbody>
+                <tr>
+                    <td style="font-size:1px; line-height:1px;" height="30" align="center">
+                    </td>
+                </tr>
+                <tr>
+                    <td style="font-size:1px; line-height:1px;" height="1" align="center" bgcolor="#d1d1d1" width="550">
+                    </td>
+                </tr>
+                <tr>
+                    <td style="font-size:1px; line-height:1px;" height="30" align="center">
                     </td>
                 </tr>
                 </tbody>
@@ -457,9 +483,6 @@
                                     <p style="text-align: center;">
                                         Ideaing Califonia , USA
                                     </p>
-                                </td>
-                                <td>
-
                                 </td>
                             </tr>
                             <!-- Spacing -->
