@@ -280,7 +280,7 @@ class PageController extends ApiController
 
     public function productDetailsPage($permalink)
     {
-        $userData = '';
+        $userData = $this->authCheck;;
         if ($this->authCheck['method-status'] == 'success-with-http') {
             $userData = $this->authCheck['user-data'];
         }
@@ -323,7 +323,7 @@ class PageController extends ApiController
     }
     public function getRoomPage($permalink)
     {
-        $userData = '';
+        $userData = $this->authCheck;;
         if ($this->authCheck['method-status'] == 'success-with-http') {
             $userData = $this->authCheck['user-data'];
         }
