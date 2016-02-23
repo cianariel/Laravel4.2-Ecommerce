@@ -345,6 +345,7 @@ publicApp.controller('publicController', ['$scope', '$http', '$window', '$timeou
 
             }).success(function (data) {
                 $scope.outputStatus(data, data.data);
+                window.location = '/login';
 
                 /* if(data.status_code == 200)
                  window.location = $scope.logingRedirectLocation;
