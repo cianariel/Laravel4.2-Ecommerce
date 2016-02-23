@@ -12,6 +12,7 @@ use App\Models\Product;
 use App\Models\ProductCategory;
 use App\Models\Tag;
 use App\Models\Room;
+use URL;
 
 class PageController extends ApiController
 {
