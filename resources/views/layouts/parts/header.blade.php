@@ -425,7 +425,7 @@
         //dd($userData['email'],);
 if(empty($userData['email']))
 {
-if($userData['user-data']['hide-signup'] != 'true')
+if((isset($userData['user-data']['hide-signup'])) && ($userData['user-data']['hide-signup'] != 'true'))
 {
 
 ?>
