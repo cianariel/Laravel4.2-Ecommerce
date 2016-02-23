@@ -37,14 +37,14 @@
                     </a>
                 </li>
 
-                <li><a class="box-link @if($roomInformation['Permalink'] == 'kitchen') active @endif " href="{{url('room/kitchen')}}">Kitchen</a></li>
-                <li><a class="box-link @if($roomInformation['Permalink'] == 'bath') active @endif " href="{{url('room/bath')}}">Bath</a></li>
-                <li><a class="box-link @if($roomInformation['Permalink'] == 'bedroom') active @endif " href="{{url('room/bedroom')}}">Bedroom</a></li>
-                <li><a class="box-link @if($roomInformation['Permalink'] == 'office') active @endif " href="{{url('room/office')}}">Office</a></li>
-                <li><a class="box-link @if($roomInformation['Permalink'] == 'living') active @endif " href="{{url('room/living')}}">Living</a></li>
-                <li><a class="box-link @if($roomInformation['Permalink'] == 'outdoor') active @endif " href="{{url('room/outdoor')}}">Outdoor</a></li>
-                <li><a class="box-link @if($roomInformation['Permalink'] == 'lighting') active @endif " href="{{url('room/lighting')}}">Lighting</a></li>
-                <li><a @if($roomInformation['Permalink'] == 'decor') class="active" @endif href="{{url('room/decor')}}">Decor</a></li>
+                <li><a class="box-link @if($roomInformation['Permalink'] == 'kitchen') active @endif " href="{{url('idea/kitchen')}}">Kitchen</a></li>
+                <li><a class="box-link @if($roomInformation['Permalink'] == 'bath') active @endif " href="{{url('idea/bath')}}">Bath</a></li>
+                <li><a class="box-link @if($roomInformation['Permalink'] == 'bedroom') active @endif " href="{{url('idea/bedroom')}}">Bedroom</a></li>
+                <li><a class="box-link @if($roomInformation['Permalink'] == 'office') active @endif " href="{{url('idea/office')}}">Office</a></li>
+                <li><a class="box-link @if($roomInformation['Permalink'] == 'living') active @endif " href="{{url('idea/living')}}">Living</a></li>
+                <li><a class="box-link @if($roomInformation['Permalink'] == 'outdoor') active @endif " href="{{url('idea/outdoor')}}">Outdoor</a></li>
+                <li><a class="box-link @if($roomInformation['Permalink'] == 'lighting') active @endif " href="{{url('idea/lighting')}}">Lighting</a></li>
+                <li><a @if($roomInformation['Permalink'] == 'decor') class="active" @endif href="{{url('idea/decor')}}">Decor</a></li>
 
             </ul>
             <div class="hide">
