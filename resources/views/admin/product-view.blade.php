@@ -113,13 +113,6 @@
                                                         </div>
                                                         {{--  </div>--}}
                                                     </div>
-                                                    {{--  <div class="btn-group col-md-6">
-                                                          <label class="btn btn-primary" ng-model="ActiveItem"
-                                                                 uib-btn-radio="'Active'" uibButtonConfig="activeClass">With
-                                                              Active Items</label>
-                                                          <label class="btn btn-primary" ng-model="ActiveItem"
-                                                                 uib-btn-radio="'Inactive'">With Inactive Items</label>
-                                                      </div>--}}
 
                                                 </div>
                                                 <div style="margin-top: 5px">&nbsp;</div>

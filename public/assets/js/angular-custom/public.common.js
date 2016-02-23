@@ -99,10 +99,11 @@ publicApp.controller('publicController', ['$scope', '$http', '$window', '$timeou
 
             // if the page is profile update then this auto upload will work on profile image select
             if($scope.isProfilePage){
-
                 $scope.oldMediaLink = $scope.mediaLink;
                 $scope.showBrowseButton = !$scope.showBrowseButton;
-
+				$scope.uploader.formData.push({
+					'isProfilePage': 1
+				});
                 $scope.uploader.uploadAll();
 
                 console.log($scope.oldMediaLink,' : ',$scope.MediaLink);

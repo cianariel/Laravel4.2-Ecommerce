@@ -46,6 +46,8 @@
 
         public function fileUploader(Request $request)
         {
+            $isProfilePage = $request->get('isProfilePage');
+            
             $fileResponse = [];
 
             if (!$request->hasFile('file'))
@@ -82,10 +84,10 @@
 
                 if ($s3->put($fileName, file_get_contents($request->file('file')), 'public'))
                 {
-//                    $fileResponse['result'] = \Config::get("const.file.s3-path") . $fileName;
-//                    $fileResponse['status_code'] = \Config::get("const.api-status.success");
-
-//                    return $fileResponse;
+                    if(!$isProfilePage){
+                        $fileResponse['result'] = \Config::get("const.file.s3-path") . $fileName;
+                        $fileResponse['status_code'] = \Config::get("const.api-status.success");
+                    }
                 }
 
                 // Thumbnail creation and uploading to AWS S3
@@ -103,6 +105,8 @@
                     
                     $s3->put($thumbFileName, $thumb->__toString(), 'public');
 //                     $thumb = \Image::make($request->file('file'))->crop(120,120);
+
+                    if($isProfilePage){
                     $thumb = \Image::make($request->file('file'))
                         ->resize(120, 120, function ($constraint)
                         {
@@ -117,10 +121,9 @@
 
                     $fileResponse['result'] = \Config::get("const.file.s3-path") . $thumbFileName;
                     $fileResponse['status_code'] = \Config::get("const.api-status.success");
-
-                    return $fileResponse;
-                    
                 }
+                }
+                return $fileResponse;
 
             }
         }
