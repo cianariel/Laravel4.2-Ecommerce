@@ -82,4 +82,4 @@ if (screen.width < 992 && screen.width > 620) {
 <script src="/assets/js/vendor/ng-tags-input.min.js"></script>
 -->
 
-
+<meta name="google-site-verification" content="xiWn24mA3aZopoTkElR97n-HdvsfctffW493Q6x_vZU" />
