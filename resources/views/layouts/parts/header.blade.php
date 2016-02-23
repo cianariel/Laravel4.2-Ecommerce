@@ -466,7 +466,7 @@ if($userData['user-data']['hide-signup'] != 'true')
 
         }
 
-    }, 3000); // 300000
+    }, 300000); // 300000
    function closeSubscriptionPopup()
     {
         document.getElementById('subscribe_email_popup').style.visibility = 'hidden';
