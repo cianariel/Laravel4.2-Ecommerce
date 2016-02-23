@@ -33,7 +33,7 @@ class PageController extends ApiController
      */
     public function home()
     {
-        $userData = '';
+        $userData = $this->authCheck;
         if ($this->authCheck['method-status'] == 'success-with-http') {
             $userData = $this->authCheck['user-data'];
         }
@@ -214,12 +214,12 @@ class PageController extends ApiController
     public function signupPage($email = '')
     {
 
-        return view('signup')->with('email',$email);
+        return view('signup')->with('email',$email)->with('tab', 'signup');
     }
 
     public function loginView()
     {
-        return view('login');
+        return view('signup')->with('tab', 'login');
     }
 
     public function getProducts($limit, $page, $offset, $tagID, $productCategoryID = false, $sortBy = false){
@@ -281,7 +281,7 @@ class PageController extends ApiController
 
     public function productDetailsPage($permalink)
     {
-        $userData = '';
+        $userData = $this->authCheck;
         if ($this->authCheck['method-status'] == 'success-with-http') {
             $userData = $this->authCheck['user-data'];
         }
@@ -324,7 +324,7 @@ class PageController extends ApiController
     }
     public function getRoomPage($permalink)
     {
-        $userData = '';
+        $userData = $this->authCheck;
         if ($this->authCheck['method-status'] == 'success-with-http') {
             $userData = $this->authCheck['user-data'];
         }

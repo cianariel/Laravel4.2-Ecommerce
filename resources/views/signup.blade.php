@@ -88,7 +88,7 @@
                         <input class="form-control" ng-model="Password" type="password" placeholder="Password" >
                         <input class="form-control" ng-model="PasswordConf" type="password" placeholder="Retype Password" >
 
-                        <a class="btn btn-success col-xs-12" ng-click="registerUser()" href="#">Sign up</a>
+                        <a class="btn btn-success col-xs-12" ng-click="registerSubscribedUser()" href="#">Sign up</a>
 
                 </form>
             </div>
