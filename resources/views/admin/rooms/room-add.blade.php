@@ -239,6 +239,8 @@
                                                             </thead>
                                                             <tbody>
                                                             <?php
+                                                                if($products!=null)
+                                                                {
                                                                     foreach($products as $key=>$rm)
                                                                     {
                                                                         //$prod = Product::where('id', $rm->product_id)->first();
@@ -253,6 +255,7 @@
                                                                         echo '<td>'.$rm->product_color.'</td>';
                                                                         echo '<td width="20%"><a href="javascript:;" class="btn btn-sm blue btn-edit-product" data-xpos="'.$rm->x.'" data-ypos="'.$rm->y.'" data-heroimageid="hero_image_1" data-productid="'.$rm->product_id.'" data-productcolor="'.$rm->product_color.'" data-tagicon="'.$rm->tag_type.'"><i class="fa fa-pencil"></i></a> <a href="javascript:;" class="btn btn-sm red btn-delete-product" data-heroimageid="hero_image_1" data-productid="'.($key+1).'"><i class="fa fa-times"></i></a></td></tr>';
                                                                     }
+                                                                }
                                                                 
                                                             ?>
 
@@ -353,10 +356,8 @@
                                                     <div>
                                                     <?php
                                                         $products = json_decode($room->hero_image_2_products);
-                                                        if($products)
-                                                        {
                                                     ?>
-                                                        <table class="table table-striped table-bordered table-hover table-checkable order-column" id="hero_image_2_table">
+                                                        <table <?php if($products==null){echo "style='display:none'"; } ?> class="table table-striped table-bordered table-hover table-checkable order-column" id="hero_image_2_table">
                                                             <thead>
                                                                 <tr>
                                                                     <th> Product Thumb </th>
@@ -368,6 +369,8 @@
                                                             </thead>
                                                             <tbody>
                                                             <?php
+                                                                if($products)
+                                                                {
                                                                     foreach($products as $key=>$rm)
                                                                     {
                                                                         //$prod = Product::where('id', $rm->product_id)->first();
@@ -382,14 +385,12 @@
                                                                         echo '<td>'.$rm->product_color.'</td>';
                                                                         echo '<td width="20%"><a href="javascript:;" class="btn btn-sm blue btn-edit-product" data-xpos="'.$rm->x.'" data-ypos="'.$rm->y.'" data-heroimageid="hero_image_2" data-productid="'.$rm->product_id.'" data-productcolor="'.$rm->product_color.'" data-tagicon="'.$rm->tag_type.'"><i class="fa fa-pencil"></i></a> <a href="javascript:;" class="btn btn-sm red btn-delete-product" data-heroimageid="hero_image_2" data-productid="'.($key+1).'"><i class="fa fa-times"></i></a></td></tr>';
                                                                     }
-                                                                
+                                                                }
                                                             ?>
 
                                                             </tbody>
                                                         </table>
-                                                    <?php
-                                                        }
-                                                    ?>       
+   
                                                     </div>
                                                 </div>
                                                 <div class="tab-pane fade" id="Hero3">
@@ -483,10 +484,8 @@
                                                     <div>
                                                     <?php
                                                         $products = json_decode($room->hero_image_3_products);
-                                                        if($products)
-                                                        {
                                                     ?>
-                                                        <table class="table table-striped table-bordered table-hover table-checkable order-column" id="hero_image_3_table">
+                                                        <table <?php if($products==null){echo "style='display:none'"; } ?> class="table table-striped table-bordered table-hover table-checkable order-column" id="hero_image_3_table">
                                                             <thead>
                                                                 <tr>
                                                                     <th> Product Thumb </th>
@@ -498,6 +497,8 @@
                                                             </thead>
                                                             <tbody>
                                                             <?php
+                                                                if($products)
+                                                                {
                                                                     foreach($products as $key=>$rm)
                                                                     {
                                                                         //$prod = Product::where('id', $rm->product_id)->first();
@@ -512,14 +513,12 @@
                                                                         echo '<td>'.$rm->product_color.'</td>';
                                                                         echo '<td width="20%"><a href="javascript:;" class="btn btn-sm blue btn-edit-product" data-xpos="'.$rm->x.'" data-ypos="'.$rm->y.'" data-heroimageid="hero_image_3" data-productid="'.$rm->product_id.'" data-productcolor="'.$rm->product_color.'" data-tagicon="'.$rm->tag_type.'"><i class="fa fa-pencil"></i></a> <a href="javascript:;" class="btn btn-sm red btn-delete-product" data-heroimageid="hero_image_3" data-productid="'.($key+1).'"><i class="fa fa-times"></i></a></td></tr>';
                                                                     }
+                                                                }
                                                                 
                                                             ?>
 
                                                             </tbody>
                                                         </table>
-                                                    <?php
-                                                        }
-                                                    ?>                                                        
                                                     </div>
                                                 </div>
                                             </div>
