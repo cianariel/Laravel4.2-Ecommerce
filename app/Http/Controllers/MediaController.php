@@ -118,7 +118,6 @@
                     $thumb = $thumb->stream();
                     $thumbFileName = '120-' . $fileName;
                     $s3->put($thumbFileName, $thumb->__toString(), 'public');
-
                     $fileResponse['result'] = \Config::get("const.file.s3-path") . $thumbFileName;
                     $fileResponse['status_code'] = \Config::get("const.api-status.success");
                 }
