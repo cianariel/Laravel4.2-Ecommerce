@@ -288,6 +288,7 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
 
         $scope.currentPage = 1;
         $scope.currentCategory = false;
+        $scope.$filterBy = false;
         $scope.sortBy = false;
 
         var $route =  $filter('getURISegment')(2);
@@ -333,30 +334,80 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
             });
         };
 
-        $scope.sortContent = function($sortBy){
+        //$scope.sortContent = function($sortBy){
+        //
+        //    if($sortBy === $scope.sortBy){
+        //        return true;
+        //    }
+        //
+        //    $('a[data-sortby]').removeClass('active');
+        //    $('a[data-sortby="'+$sortBy+'"]').addClass('active');
+        //
+        //    var contentBlock =  $('.grid-box-3');
+        //
+        //    contentBlock.fadeOut(500, function(){
+        //        $scope.nextLoad =  pagingApi.getPlainContent(1, 15,  $scope.currentCategory, 'product', $scope.currentCategory).success(function (response) {
+        //            if($sortBy) {
+        //                response.sort(function (a, b) {
+        //                    return parseFloat(a[$sortBy]) - parseFloat(b[$sortBy]);
+        //                });
+        //                $scope.sortBy = $sortBy;
+        //                $scope.content = response;
+        //                contentBlock.fadeIn();
+        //            }else{
+        //                $scope.content = response;
+        //                contentBlock.fadeIn();
+        //            }
+        //            $scope.sortBy = $sortBy;
+        //
+        //        });
+        //    });
+        //}
 
-            if($sortBy === $scope.sortBy){
-                return true;
+        $scope.filterPlainContent = function($filterBy, $sortBy) {
+
+            //if($filterBy === $scope.currentCategory){
+            //    return true;
+            //}
+
+            if($filterBy){
+                if($('a[data-filterby="'+$filterBy+'"]').hasClass('active')){
+                    return true;
+                }
+
+                $scope.currentCategory = $filterBy;
+                $('a[data-filterby]').removeClass('active');
+                $('a[data-filterby="'+$filterBy+'"]').addClass('active');
+
             }
 
-            $('a[data-sortby]').removeClass('active');
-            $('a[data-sortby="'+$sortBy+'"]').addClass('active');
+            if($sortBy && $sortBy != 'undefined' && $sortBy != $scope.sortBy){
 
-            $('.grid-box-3').fadeOut(500, function(){
-                $scope.nextLoad =  pagingApi.getPlainContent(1, 15,  $scope.currentCategory, 'product', $scope.currentCategory).success(function (response) {
-                    if($sortBy) {
-                        response.sort(function (a, b) {
-                            return parseFloat(a[$sortBy]) - parseFloat(b[$sortBy]);
-                        });
+                if($('a[data-sotyby="'+$sortBy+'"]').hasClass('active')){
+                    return true;
+                }
+
+                $('a[data-sortby]').removeClass('active');
+                $('a[data-sortby="'+$sortBy+'"]').addClass('active');
+            }
+
+            var contentBlock =  $('.grid-box-3');
+
+            contentBlock.fadeOut(500, function(){
+
+                $scope.nextLoad =  pagingApi.getPlainContent(1, 15,   $scope.currentCategory, 'product',  $scope.currentCategory).success(function (response) {
+                    if($sortBy != false){
                         $scope.sortBy = $sortBy;
-                        $scope.content = response;
-                        $('.grid-box-3').fadeIn();
-                    }else{
-                        $scope.content = response;
-                        $('.grid-box-3').fadeIn();
                     }
-                    $scope.sortBy = $sortBy;
 
+                    if($scope.sortBy && $scope.sortBy != 'default' ){
+                        response.sort(function (a, b) {
+                            return parseFloat(a[$scope.sortBy]) - parseFloat(b[$scope.sortBy]);
+                        });
+                    }
+
+                    $scope.content = response;
+                    contentBlock.fadeIn();
                 });
             });
         }
@@ -424,9 +475,6 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
                 className = className.replace('hide-overflow', '');
                 document.getElementsByTagName('html')[0].className = className;
             });
-            
-            
-            
         };
 
         pagingApi.getPlainContent = function(page, limit, tag, type, productCategoryID, sortBy) {

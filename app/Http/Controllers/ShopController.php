@@ -15,47 +15,58 @@ class ShopController extends ApiController
     public function __construct()
     {
         //check user authentication and get user basic information
-        $this->authCheck = $this->RequestAuthentication(array('admin', 'editor', 'user'));
+        $this->authCheck = $this->RequestAuthentication(array('admin','editor','user'));
 
     }
 
     public function index($grandParent = false, $parent = false, $child = false)
     {
 
-        $userData = $this->authCheck;;
+        $userData = '';
         if ($this->authCheck['method-status'] == 'success-with-http') {
             $userData = $this->authCheck['user-data'];
         }
 
-        if (!$grandParent) { // shop landing page
+        if(!$grandParent){ // shop landing page
             $categoryTree = ProductCategory::buildCategoryTree(true);
 
             return view('shop.index')
-                ->with('userData', $userData)
-                ->with('categoryTree', $categoryTree);
-        } else {
+                ->with('userData',$userData)
+                ->with('categoryTree', $categoryTree)
+                ;
+        }else{
 
-            if ($child) {
+            if($child){
                 $category = $child;
-            } elseif ($parent) {
+            }elseif($parent){
                 $category = $parent;
-            } else {
+            }else{
                 $category = $grandParent;
             }
 
-            if (!$categoryModel = ProductCategory::where('extra_info', $category)->first()) {
+            if(!$categoryModel = ProductCategory::where('extra_info', $category)->first()){
                 return redirect('/shop/');
             }
             $categoryTree = ProductCategory::buildCategoryTree(false);
-            $parentCategory = @ProductCategory::where('id', $categoryModel->parent_id)->first();
+            $parentCategory =  @ProductCategory::where('id', $categoryModel->parent_id)->first();
+
+            $masterCategory = $parentCategory ?: $categoryModel;
 
             return view('shop.shop-category')
-                ->with('userData', $userData)
+                ->with('userData',$userData)
                 ->with('currentCategory', $categoryModel)
                 ->with('parentCategory', $parentCategory)
                 ->with('categoryTree', $categoryTree)
-                ->with('grandParent', $grandParent);
+                ->with('grandParent', $grandParent)
+                ->with('masterCategory', $masterCategory)
+                ;
 
         }
+
+
+
     }
+
+
+
 }

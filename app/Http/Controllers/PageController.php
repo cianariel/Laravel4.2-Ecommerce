@@ -12,6 +12,7 @@ use App\Models\Product;
 use App\Models\ProductCategory;
 use App\Models\Tag;
 use App\Models\Room;
+use URL;
 
 class PageController extends ApiController
 {
@@ -32,7 +33,7 @@ class PageController extends ApiController
      */
     public function home()
     {
-        $userData = $this->authCheck;
+        $userData = '';
         if ($this->authCheck['method-status'] == 'success-with-http') {
             $userData = $this->authCheck['user-data'];
         }
@@ -125,7 +126,7 @@ class PageController extends ApiController
             $stories['regular'] = [];
         }
 
-        $return['regular'] = array_merge(isset($stories['regular']) ?  $stories['regular'] : array(), $products['result']);
+        $return['regular'] = array_merge($stories['regular'], $products['result']);
         $return['featured'] = $stories['featured'];
 
         usort($return['regular'], function($a, $b) {
@@ -137,7 +138,7 @@ class PageController extends ApiController
 
 
     public function getStories($limit, $offset, $tag){
-        $url = 'http://staging.ideaing.com/ideas/feeds/index.php?count='.$limit.'&offset='. $offset;
+        $url =  URL::to('/') . '/ideas/feeds/index.php?count='.$limit.'&offset='. $offset;
         if($tag && $tag != 'false'){
             $url .= '&tag=' . $tag;
         }
@@ -155,7 +156,7 @@ class PageController extends ApiController
     }
 
     public function getGridStories($limit, $offset, $featuredLimit, $featuredOffset, $tag){
-        $url = 'http://ideaing.com/ideas/feeds/index.php?count='.$limit.'&no-featured&offset='. $offset;
+        $url = URL::to('/') . '/ideas/feeds/index.php?count='.$limit.'&no-featured&offset='. $offset;
         if($tag && $tag != 'false'){
             $url .= '&tag=' . $tag;
         }
@@ -170,7 +171,7 @@ class PageController extends ApiController
 
         $return['regular'] = json_decode($json);
 
-        $featuredUrl = 'http://ideaing.com/ideas/feeds/index.php?count='.$featuredLimit.'&only-featured&offset='. $featuredOffset. '&tag=' . $tag;
+        $featuredUrl = URL::to('/') . '/ideas/feeds/index.php?count='.$featuredLimit.'&only-featured&offset='. $featuredOffset. '&tag=' . $tag;
 
         if($tag && $tag != 'false' && $tag != false){
             $featuredUrl .= '&tag=' . $tag;
@@ -189,7 +190,7 @@ class PageController extends ApiController
     }
 
     public function getRelatedStories($currentStoryID, $limit, $tags){
-        $url = 'http://ideaing.com/ideas/feeds/index.php?count='.$limit;
+        $url = URL::to('/') . '/ideas/feeds/index.php?count='.$limit;
 
         if($tags && $tags != 'false'){
             $url .= '&tag_in=' . implode(',', $tags);
@@ -213,12 +214,12 @@ class PageController extends ApiController
     public function signupPage($email = '')
     {
 
-        return view('signup')->with('email',$email)->with('tab', 'signup');
+        return view('signup')->with('email',$email);
     }
 
     public function loginView()
     {
-        return view('signup')->with('tab', 'login');
+        return view('login');
     }
 
     public function getProducts($limit, $page, $offset, $tagID, $productCategoryID = false, $sortBy = false){
@@ -280,7 +281,7 @@ class PageController extends ApiController
 
     public function productDetailsPage($permalink)
     {
-        $userData = $this->authCheck;;
+        $userData = '';
         if ($this->authCheck['method-status'] == 'success-with-http') {
             $userData = $this->authCheck['user-data'];
         }
@@ -323,7 +324,7 @@ class PageController extends ApiController
     }
     public function getRoomPage($permalink)
     {
-        $userData = $this->authCheck;;
+        $userData = '';
         if ($this->authCheck['method-status'] == 'success-with-http') {
             $userData = $this->authCheck['user-data'];
         }
