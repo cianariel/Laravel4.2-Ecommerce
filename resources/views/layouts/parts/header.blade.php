@@ -429,9 +429,39 @@ if((isset($userData['user-data']['hide-signup'])) && ($userData['user-data']['hi
 {
 
 ?>
+    <input ng-model="canOpenEmailPopup" ng-init="canOpenEmailPopup = 1" type="hidden" >
+
+    <script type="text/ng-template" id="subscribe_email_popup.html">
+        <div id="subscribe_email_popup" ng-init="initEmailpopupPage()">
+            <div id="publicApp">
+                <div class="content-container">
+                    <div class="content-holder">
+                        <div>
+                            <h4>Subscribe me to the world's finest design ideas community</h4></div><br><div>
+                            <h5>Enter your email</h5> 
+                            <strong style="color: red">@{{ responseMessage }}</strong>
+                        </div>
+                    <div>
+                        <input class="form-control" ng-model="SubscriberEmail" placeholder="me@email.com" type="text"></div>
+                        <br>
+                        <div>
+                            <a class="btn btn-success form-control" ng-click="subscribe()">Subscribe to Ideaing's newsletter</a>
+                        </div>
+                        <br>
+                        <p>
+                            <a href="/hide-signup">Never mind</a>
+                        </p>
+                    </div>
+                </div>
+                <div class="img-holder"><img src="/assets/images/emailpopupimg.png" style="width:100%; height:100%; position:relative"></div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+        
+    </script>
 
 <SCRIPT>
-
+/*
     setTimeout(function() {
         element = document.getElementById('subscribe_email_popup');
         
@@ -471,7 +501,7 @@ if((isset($userData['user-data']['hide-signup'])) && ($userData['user-data']['hi
     {
         document.getElementById('subscribe_email_popup').style.visibility = 'hidden';
     }
-
+*/        
 
 </script>
 <?php
@@ -480,3 +510,4 @@ if((isset($userData['user-data']['hide-signup'])) && ($userData['user-data']['hi
 } ?>
 
 
+    

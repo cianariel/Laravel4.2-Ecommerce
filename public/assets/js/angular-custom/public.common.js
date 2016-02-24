@@ -48,10 +48,29 @@ publicApp.controller('ModalInstanceCtrltest', function ($scope, $uibModalInstanc
     };
 });
 
-publicApp.controller('publicController', ['$scope', '$http', '$window', '$timeout', '$location', '$anchorScroll', '$uibModal', 'layoutApi','$compile', 'FileUploader'
-    , function ($scope, $http, $window, $timeout, $location, $anchorScroll, $uibModal, layoutApi,$compile,FileUploader) {
+publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$window', '$timeout', '$location', '$anchorScroll', '$uibModal', 'layoutApi','$compile', 'FileUploader'
+    , function ($rootScope, $scope, $http, $window, $timeout, $location, $anchorScroll, $uibModal, layoutApi,$compile,FileUploader) {
 
         // Header profile option open and close on click action.
+        if(!$rootScope.isCallEmailPopup){
+            $timeout(function(){
+                if($scope.canOpenEmailPopup){
+                    var templateUrl = "subscribe_email_popup.html";
+                    var modalInstance = $uibModal.open({
+                        templateUrl: templateUrl,
+                        scope: $scope,
+                        size: 'md',
+                        windowClass : 'subscribe_email_popup',
+                        controller: 'ModalInstanceCtrltest'
+                    })
+                    .result.finally(function(){
+                        $scope.uploader.formData = [];
+                    })
+                    ;
+                }
+            }, 3000)
+        }
+        $rootScope.isCallEmailPopup = true;
 
         $scope.openProfileSetting = function () {
 
@@ -69,6 +88,7 @@ publicApp.controller('publicController', ['$scope', '$http', '$window', '$timeou
             ;
 
         };
+
 
         // load shop information.
         layoutApi.getProductsForShopMenu().success(function (response) {
