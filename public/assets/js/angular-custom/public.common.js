@@ -68,7 +68,7 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                     })
                     ;
                 }
-            }, 3000)
+            }, 300000)
         }
         $rootScope.isCallEmailPopup = true;
 
