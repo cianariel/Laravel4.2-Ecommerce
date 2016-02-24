@@ -53,16 +53,16 @@ class ShopController extends ApiController
             $masterCategory = $parentCategory ?: $categoryModel;
             switch($categoryModel->category_name){
                 case "Smart Home":
-                    $categoryModel->background_image = "/assets/images/shop-category/smart-home.png";
+                    $categoryModel->background_image = "/assets/images/shop-category/smarthome.jpg";
                 break;
                 case "Travel":
-                    $categoryModel->background_image = "/assets/images/shop-category/travel.png";
+                    $categoryModel->background_image = "/assets/images/shop-category/travel.jpg";
                 break;
                 case "Wearables":
-                    $categoryModel->background_image = "/assets/images/shop-category/wearables.png";
+                    $categoryModel->background_image = "/assets/images/shop-category/wearables.jpg";
                 break;
                 case "Home Decor":
-                    $categoryModel->background_image = "/assets/images/shop-category/homedecor.png";
+                    $categoryModel->background_image = "/assets/images/shop-category/homedecor.jpg";
                 break;
             }
 
