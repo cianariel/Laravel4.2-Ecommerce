@@ -20,10 +20,9 @@ class PageController extends ApiController
     public function __construct()
     {
         //check user authentication and get user basic information
-        $this->authCheck = $this->RequestAuthentication(array('admin','editor','user'));
+        $this->authCheck = $this->RequestAuthentication(array('admin', 'editor', 'user'));
 
     }
-
 
 
     /**
@@ -38,98 +37,100 @@ class PageController extends ApiController
             $userData = $this->authCheck['user-data'];
         }
 
-        return view('home')->with('userData',$userData);
+        return view('home')->with('userData', $userData);
     }
 
 
-    public function getContent($page = 1, $limit = 5, $tag = false,  $type = false, $productCategory = false, $sortBy = false){
+    public function getContent($page = 1, $limit = 5, $tag = false, $type = false, $productCategory = false, $sortBy = false)
+    {
 
-        if($tag && $tag !== 'undefined' && $tag != 'false' && $tag != ''){
+        if ($tag && $tag !== 'undefined' && $tag != 'false' && $tag != '') {
             $tagID = Tag::where('tag_name', $tag)->lists('id')->toArray();
-        }else{
+        } else {
             $tagID = false;
             $tag = false;
         }
 
-        $offset = $limit *  ($page - 1);
+        $offset = $limit * ($page - 1);
 
-        if($type == 'product' || !$stories = self::getStories($limit, $offset, $tag)){
+        if ($type == 'product' || !$stories = self::getStories($limit, $offset, $tag)) {
             $stories = [];
         }
 
-        if($productCategory){
+        if ($productCategory) {
             $productCategory = ProductCategory::where('extra_info', $productCategory)->first();
         }
 
-        if(@$productCategory){
+        if (@$productCategory) {
             $productCategoryID = $productCategory->id;
-        }else{
+        } else {
             $productCategoryID = false;
         }
 
-        if($type == 'idea' || !$products = self::getProducts($limit, $page, $offset, $tagID, $productCategoryID, $sortBy)){
+        if ($type == 'idea' || !$products = self::getProducts($limit, $page, $offset, $tagID, $productCategoryID, $sortBy)) {
             $products['result'] = [];
         }
 
         $return = array_merge($stories, $products['result']);
 
-            usort($return, function($a, $b) use ($sortBy){
-                if($sortBy && @$b->$sortBy && @$a->$sortBy){
-                        return @$a->$sortBy - @$b->$sortBy;
-                }else{
-                    return strtotime(@$b->updated_at) - strtotime(@$a->updated_at);
-                }
-            });
+        usort($return, function ($a, $b) use ($sortBy) {
+            if ($sortBy && @$b->$sortBy && @$a->$sortBy) {
+                return @$a->$sortBy - @$b->$sortBy;
+            } else {
+                return strtotime(@$b->updated_at) - strtotime(@$a->updated_at);
+            }
+        });
 
         return $return;
     }
 
-    public function getGridContent($page = 1, $limit = 5, $tag = false,  $type = false, $grid = true){
+    public function getGridContent($page = 1, $limit = 5, $tag = false, $type = false, $grid = true)
+    {
 
-        if($tag && $tag !== 'undefined' && $tag != 'false' && $tag != ''){
+        if ($tag && $tag !== 'undefined' && $tag != 'false' && $tag != '') {
             $tagID = Tag::where('tag_name', $tag)->lists('id')->toArray();
-        }else{
+        } else {
             $tagID = false;
             $tag = false;
         }
 
-        if($limit == 'undefined' || $limit == 0){
+        if ($limit == 'undefined' || $limit == 0) {
             $productLimit = 6;
             $productOffset = 6 * ($page - 1);
 
             $storyLimit = 3;
-            $storyOffset = 4 *  ($page - 1);
+            $storyOffset = 4 * ($page - 1);
 
-        }else{
+        } else {
             $productLimit = $limit;
             $storyLimit = $limit;
 
-            $productOffset = $limit *  ($page - 1);
-            $storyOffset =   $limit *  ($page - 1);
+            $productOffset = $limit * ($page - 1);
+            $storyOffset = $limit * ($page - 1);
         }
 
         $featuredLimit = 3;
         $featuredOffset = $featuredLimit * ($page - 1);
 
-        if($type == 'product' || !$stories = self::getGridStories($storyLimit, $storyOffset, $featuredLimit, $featuredOffset, $tag)){
+        if ($type == 'product' || !$stories = self::getGridStories($storyLimit, $storyOffset, $featuredLimit, $featuredOffset, $tag)) {
             $stories = [
                 'regular' => [],
                 'featured' => [],
             ];
         }
 
-        if($type == 'idea' || !$products = self::getProducts($productLimit, $page, $productOffset, $tagID)){
+        if ($type == 'idea' || !$products = self::getProducts($productLimit, $page, $productOffset, $tagID)) {
             $products['result'] = [];
         }
 
-        if(!$stories['regular']){
+        if (!$stories['regular']) {
             $stories['regular'] = [];
         }
 
         $return['regular'] = array_merge($stories['regular'], $products['result']);
         $return['featured'] = $stories['featured'];
 
-        usort($return['regular'], function($a, $b) {
+        usort($return['regular'], function ($a, $b) {
             return strtotime(@$b->updated_at) - strtotime(@$a->updated_at);
         });
 
@@ -137,9 +138,10 @@ class PageController extends ApiController
     }
 
 
-    public function getStories($limit, $offset, $tag){
-        $url =  URL::to('/') . '/ideas/feeds/index.php?count='.$limit.'&offset='. $offset;
-        if($tag && $tag != 'false'){
+    public function getStories($limit, $offset, $tag)
+    {
+        $url = URL::to('/') . '/ideas/feeds/index.php?count=' . $limit . '&offset=' . $offset;
+        if ($tag && $tag != 'false') {
             $url .= '&tag=' . $tag;
         }
 
@@ -147,7 +149,7 @@ class PageController extends ApiController
         curl_setopt($ch, CURLOPT_URL, $url);
         curl_setopt($ch, CURLOPT_HEADER, 0);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($ch, CURLOPT_ENCODING ,"");
+        curl_setopt($ch, CURLOPT_ENCODING, "");
         $json = curl_exec($ch);
 
         $return = json_decode($json);
@@ -155,9 +157,15 @@ class PageController extends ApiController
         return $return;
     }
 
-    public function getGridStories($limit, $offset, $featuredLimit, $featuredOffset, $tag){
-        $url = URL::to('/') . '/ideas/feeds/index.php?count='.$limit.'&no-featured&offset='. $offset;
-        if($tag && $tag != 'false'){
+    public function getGridStories($limit, $offset, $featuredLimit, $featuredOffset, $tag)
+    {
+
+        if (env('FEED_PROD') == true)
+            $url = 'http://ideaing.com/ideas/feeds/index.php?count=' . $limit . '&no-featured&offset=' . $offset;
+        else
+            $url = URL::to('/') . '/ideas/feeds/index.php?count=' . $limit . '&no-featured&offset=' . $offset;
+
+        if ($tag && $tag != 'false') {
             $url .= '&tag=' . $tag;
         }
 //        print_r($url); die();
@@ -166,14 +174,19 @@ class PageController extends ApiController
         curl_setopt($ch, CURLOPT_URL, $url);
         curl_setopt($ch, CURLOPT_HEADER, 0);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($ch, CURLOPT_ENCODING ,"");
+        curl_setopt($ch, CURLOPT_ENCODING, "");
         $json = curl_exec($ch);
 
         $return['regular'] = json_decode($json);
 
-        $featuredUrl = URL::to('/') . '/ideas/feeds/index.php?count='.$featuredLimit.'&only-featured&offset='. $featuredOffset. '&tag=' . $tag;
 
-        if($tag && $tag != 'false' && $tag != false){
+        if (env('FEED_PROD') == true)
+            $featuredUrl = 'http://ideaing.com/ideas/feeds/index.php?count=' . $featuredLimit . '&only-featured&offset=' . $featuredOffset . '&tag=' . $tag;
+        else
+            $featuredUrl = URL::to('/') . '/ideas/feeds/index.php?count=' . $featuredLimit . '&only-featured&offset=' . $featuredOffset . '&tag=' . $tag;
+
+
+        if ($tag && $tag != 'false' && $tag != false) {
             $featuredUrl .= '&tag=' . $tag;
         }
 
@@ -189,13 +202,14 @@ class PageController extends ApiController
         return $return;
     }
 
-    public function getRelatedStories($currentStoryID, $limit, $tags){
-        $url = URL::to('/') . '/ideas/feeds/index.php?count='.$limit;
+    public function getRelatedStories($currentStoryID, $limit, $tags)
+    {
+        $url = URL::to('/') . '/ideas/feeds/index.php?count=' . $limit;
 
-        if($tags && $tags != 'false'){
+        if ($tags && $tags != 'false') {
             $url .= '&tag_in=' . implode(',', $tags);
         }
-        if($currentStoryID){
+        if ($currentStoryID) {
             $url .= '&excludeid=' . $currentStoryID;
         }
 
@@ -203,7 +217,7 @@ class PageController extends ApiController
         curl_setopt($ch, CURLOPT_URL, $url);
         curl_setopt($ch, CURLOPT_HEADER, 0);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($ch, CURLOPT_ENCODING ,"");
+        curl_setopt($ch, CURLOPT_ENCODING, "");
         $json = curl_exec($ch);
 
         $return = json_decode($json);
@@ -214,7 +228,7 @@ class PageController extends ApiController
     public function signupPage($email = '')
     {
 
-        return view('signup')->with('email',$email)->with('tab', 'signup');
+        return view('signup')->with('email', $email)->with('tab', 'signup');
     }
 
     public function loginView()
@@ -222,26 +236,27 @@ class PageController extends ApiController
         return view('signup')->with('tab', 'login');
     }
 
-    public function getProducts($limit, $page, $offset, $tagID, $productCategoryID = false, $sortBy = false){
+    public function getProducts($limit, $page, $offset, $tagID, $productCategoryID = false, $sortBy = false)
+    {
         $productSettings = [
             'ActiveItem' => true,
-            'limit'      => $limit,
-            'page'       => $page,
+            'limit' => $limit,
+            'page' => $page,
             'CustomSkip' => $offset,
 
             'CategoryId' => $productCategoryID,
-            'sortBy'     => $sortBy,
+            'sortBy' => $sortBy,
             'FilterType' => false,
             'FilterText' => false,
-            'ShowFor'    => false,
-            'WithTags'   => false,
+            'ShowFor' => false,
+            'WithTags' => false,
         ];
 
-        if(@$productCategoryID){
+        if (@$productCategoryID) {
             $productSettings['GetChildCategories'] = true;
         }
 
-        if(is_array($tagID)){
+        if (is_array($tagID)) {
             $productSettings['TagId'] = $tagID;
         }
 
@@ -252,11 +267,12 @@ class PageController extends ApiController
         return $products;
     }
 
-    public function getRelatedProducts($productID, $limit, $tagID){
+    public function getRelatedProducts($productID, $limit, $tagID)
+    {
         $productSettings = [
             'ActiveItem' => true,
             'excludeID' => $productID,
-            'limit'      => $limit,
+            'limit' => $limit,
 //            'page'       => $page,
 //            'CustomSkip' => $offset,
 //
@@ -267,7 +283,7 @@ class PageController extends ApiController
 //            'WithTags'   => false,
         ];
 
-        if(is_array($tagID)){
+        if (is_array($tagID)) {
             $productSettings['TagId'] = $tagID;
         }
 
@@ -286,8 +302,8 @@ class PageController extends ApiController
             $userData = $this->authCheck['user-data'];
         }
 
-       // return view('home')->with('userData',$userData);
-      //  dd($this->getProducts(3,1,6));
+        // return view('home')->with('userData',$userData);
+        //  dd($this->getProducts(3,1,6));
 
         $product = new Product();
         $productData['product'] = $product->getViewForPublic($permalink);
@@ -301,7 +317,7 @@ class PageController extends ApiController
         $currentTags = Product::find($productData['product']['id'])->tags()->lists('tag_id');
 
 //        $tagNames = [];
-        foreach($currentTags as $tagID){
+        foreach ($currentTags as $tagID) {
             $tagNames[] = Tag::find($tagID)->tag_name;
         }
 
@@ -309,19 +325,20 @@ class PageController extends ApiController
 
 //        $related
 
-        MetaTag::set('title',$result['productInformation']['PageTitle']);
-        MetaTag::set('description',$result['productInformation']['MetaDescription']);
+        MetaTag::set('title', $result['productInformation']['PageTitle']);
+        MetaTag::set('description', $result['productInformation']['MetaDescription']);
 
-     //   dd($result['selfImages']['picture'][0]['link']);
+        //   dd($result['selfImages']['picture'][0]['link']);
         return view('product.product-details')
-            ->with('userData',$userData)
-            ->with('permalink',$permalink)
-            ->with('productInformation',$result['productInformation'])
-            ->with('relatedProducts',$result['relatedProducts'])
-            ->with('relatedIdeas',$relatedIdeas)
-            ->with('selfImages',$result['selfImages'])
-            ->with('storeInformation',$result['storeInformation']);
+            ->with('userData', $userData)
+            ->with('permalink', $permalink)
+            ->with('productInformation', $result['productInformation'])
+            ->with('relatedProducts', $result['relatedProducts'])
+            ->with('relatedIdeas', $relatedIdeas)
+            ->with('selfImages', $result['selfImages'])
+            ->with('storeInformation', $result['storeInformation']);
     }
+
     public function getRoomPage($permalink)
     {
         $userData = $this->authCheck;
@@ -333,12 +350,12 @@ class PageController extends ApiController
         $room = new Room();
         $roomData['room'] = $room->getViewForPublic($permalink);
         $result = $room->roomDetailsViewGenerate($roomData);
-        MetaTag::set('title',$result['roomInformation']['MetaTitle']);
-        MetaTag::set('description',$result['roomInformation']['MetaDescription']);
+        MetaTag::set('title', $result['roomInformation']['MetaTitle']);
+        MetaTag::set('description', $result['roomInformation']['MetaDescription']);
         //return $result;
         return view('room.landing')
-            ->with('userData',$userData)
-            ->with('roomInformation',$result['roomInformation']);
+            ->with('userData', $userData)
+            ->with('roomInformation', $result['roomInformation']);
         // Get category tree
         /*$catTree = $product->getCategoryHierarchy($productData['product']->product_category_id);
 
@@ -358,9 +375,10 @@ class PageController extends ApiController
 
     }
 
-    public static function getShopMenu(){
+    public static function getShopMenu()
+    {
 
-         $return = Product::getForShopMenu();
+        $return = Product::getForShopMenu();
 
         return $return;
     }

@@ -5,11 +5,10 @@
         <div class="col-sm-3 col-xs-12">
             <h4 class="blue">About Ideaing</h4>
             <ul>
-                <li><a href="#">About Us</a></li>
+                <li><a href="/aboutus">About Us</a></li>
                 <li><a href="#">Contact Us</a></li>
                 <li><a href="#">Terms of Use</a></li>
                 <li><a href="#">Privacy Policy</a></li>
-                <li><a href="#">Copyright</a></li>
             </ul>
         </div>
         <div class="col-sm-3 col-xs-12">

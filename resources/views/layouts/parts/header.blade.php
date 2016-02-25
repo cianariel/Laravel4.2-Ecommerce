@@ -442,10 +442,10 @@ if((isset($userData['user-data']['hide-signup'])) && ($userData['user-data']['hi
                             <strong style="color: red">@{{ responseMessage }}</strong>
                         </div>
                     <div>
-                        <input class="form-control" ng-model="SubscriberEmail" placeholder="me@email.com" type="text"></div>
+                        <input class="form-control" ng-model="data.SubscriberEmail" placeholder="me@email.com" type="text"></div>
                         <br>
                         <div>
-                            <a class="btn btn-success form-control" ng-click="subscribe()">Subscribe to Ideaing's newsletter</a>
+                            <a class="btn btn-success form-control" ng-click="subscribe(data)">Subscribe to Ideaing's newsletter</a>
                         </div>
                         <br>
                         <p>

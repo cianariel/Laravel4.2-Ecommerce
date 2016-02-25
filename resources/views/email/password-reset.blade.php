@@ -259,11 +259,11 @@
                                             <td style="font-family: Helvetica, arial, sans-serif; font-size: 30px; color: #333333; text-align:center; line-height: 30px;"
                                                 st-title="fulltext-heading">
                                                 <p align="left">
-                                                    <span class="im"><span style="font-size: 14pt;">Dear User
-                                                            ,</span><br><span style="font-size: 14pt;">Please click on the </span><span
+                                                    <span style="font-size: 14pt;" class="im"><span style="font-size: 14pt;">Hi
+                                                            ,</span><br><span style="font-size: 14pt;">Please click on the </span><br><span
                                                                 style="font-size: 14pt;"><a
                                                                     style="color:rgb(254,39,65);text-decoration:none"
-                                                                    href="{{ url('/password-reset-form').'/'.$code}}">Reset Link</a> to reset your password.</span></span>
+                                                                    href="{{ url('/password-reset-form').'/'.$code}}">Reset password</a> </span> to change password.</span>
                                                 </p>
                                             </td>
                                         </tr>
