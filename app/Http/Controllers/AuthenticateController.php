@@ -198,7 +198,7 @@
          * @param Request $request
          * @return mixed
          * @throws \Exception
-         */
+         *//**/
         public function fbLogin(Request $request)
         {
 
