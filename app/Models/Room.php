@@ -185,55 +185,5 @@
             $roomInfo['images'] = $images;
             $result['roomInformation'] = $roomInfo;
             return $result;
-            // setting information for related products
-            /*$relatedProducts = [];
-            $relatedProductsData = [];
-
-            // generate related products from category
-            $products = $this->populateProductsFromSameCategory($productInfo['CategoryId'], $productData['product']->similar_product_ids, $productInfo['Id']);
-
-            if ($products != "" || $products != null)
-            {
-                foreach ($products as $key => $value)
-                {
-                    if (!isset($value['id']))
-                        continue;
-
-                    $relatedProducts[ $key ] = $this->getViewForPublic('', $value['id']);
-
-                    if ($relatedProducts[ $key ] == null)
-                        continue;
-
-                    $tmp = $relatedProducts[ $key ];
-                    $image = '';
-
-                    foreach ($tmp->medias as $single)
-                    {
-                        if (($single->media_type == 'img-upload' || $single->media_type == 'img-link') && $single->is_main_item == 1)
-                        {
-                            $image = $single->media_link;
-                            break;
-                        }
-                    }
-
-                    $relatedProductsData[ $key ]['Name'] = $relatedProducts[ $key ]->product_name;
-                    $relatedProductsData[ $key ]['Permalink'] = $relatedProducts[ $key ]->product_permalink;
-                    $relatedProductsData[ $key ]['AffiliateLink'] = $relatedProducts[ $key ]->affiliate_link;
-                    $relatedProductsData[ $key ]['Image'] = $image;
-                    $relatedProductsData[ $key ]['UpdateTime'] = Carbon::createFromTimestamp(strtotime($relatedProducts[ $key ]->updated_at))->diffForHumans();
-                }
-            }
-
-            $result['productInformation'] = $productInfo;
-            $result['relatedProducts'] = $relatedProductsData;
-            $result['selfImages'] = $selfImage;
-            $result['storeInformation'] = $this->getStoreInfoByProductId($productData['product']->id);
-
-            //removing duplicate data entry for related product (set distinct value for related products)
-            $result['relatedProducts'] = array_map("unserialize", array_unique(array_map("serialize", $result['relatedProducts'])));
-
-            //    dd($result);
-            return $result;*/
-
         }
     }
