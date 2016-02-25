@@ -236,7 +236,7 @@ class User extends Model implements AuthenticatableContract,
                     $subscriber->email = $userData->email;
                     $subscriber->status = 'Subscribed';
 
-                    $this->subscriber->save();
+                    $subscriber->save();
                 }
 
                 // set true if the user is a new user.

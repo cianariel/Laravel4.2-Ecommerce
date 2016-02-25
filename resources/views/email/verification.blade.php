@@ -246,7 +246,7 @@
                                                 st-title="fulltext-heading">
                                                 <p align="left">
                                                     <span style="font-size: 14pt;" class="im"><span style="font-size: 14pt;">Hi {{ $name }}
-                                                            ,</span><br><span style="font-size: 14pt;">>Let's make sure we've got your email right.</span><br><span
+                                                            ,</span><br><span style="font-size: 14pt;">Let's make sure we've got your email right.</span><br><span
                                                                 style="font-size: 14pt;"><a
                                                                     style="color:rgb(254,39,65);text-decoration:none"
                                                                     href="{{ url('/verify-email').'/'.$link}}">Confirming
