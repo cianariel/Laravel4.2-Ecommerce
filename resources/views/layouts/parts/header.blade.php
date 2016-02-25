@@ -165,9 +165,9 @@
 
         <?php
 
-            if(!function_exists(is_single()){
-                @include('room.header-menu')
-            }
+                if(!function_exists('is_single')){ ?>
+                        @include('room.header-menu');
+           <?php     }
 
         ?>
 
