@@ -88,6 +88,10 @@
                                                     <div class="menu-group">
                                                         <div><a href="/user/profile">My Profile</a> </div>
                                                         <div><a href="#" class="edit-profile-link" ng-click="openProfileSetting()">Edit Profile</a> </div>
+                                                        <?php if(isset($isAdmin) && ($isAdmin == true)){ ?>
+                                                        <div><a href="/admin/dashboard" target="_blank" class="edit-profile-link">Admin Panel</a> </div>
+                                                        <?php } ?>
+
                                                     </div>
                                                     <div class="menu-group">
                                                         <div><a href="#">Invite Friends</a> </div>
