@@ -46,7 +46,6 @@
         $tags = wp_get_post_tags($post->ID);
         $categories = get_the_category($post->ID);
         $firstTag = $tags[0];
-
         foreach($categories as $cat){
             if($cat->name != 'Smart Home'){
                 if($cat->category_parent == 0){
@@ -276,7 +275,64 @@
 
     <section class="related-items pale-grey-bg">
         <div class="main-content full-620 fixed-sm">
-            <h3 class="orange">Related Ideas</h3><br>
+            <?php 
+                $limit=10;
+                $offset = 0;
+                $url = str_replace('/ideas',"", get_site_url()) . '/api/paging/get-grid-content/1/3/'.$firstTag->name.'/product';
+                //$url = "http://dev.ideaing.com:81/api/paging/get-grid-content/1/3/kitchen/product";
+                /*if($tag && $tag != 'false'){
+                    $url .= '&tag=' . $tag;
+                }*/
+                $ch = curl_init();
+                curl_setopt($ch, CURLOPT_URL, $url);
+                curl_setopt($ch, CURLOPT_HEADER, 0);
+                curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+                curl_setopt($ch, CURLOPT_ENCODING ,"");
+                $json = curl_exec($ch);
+                $json = json_decode($json);
+                $relatedProducts = $json->regular;
+            ?>
+            @if(count($relatedProducts)>0)
+            <h3 class="green">Related Products</h3>
+            <div class="related-products grid-box-3">
+            @endif
+                @if(isset($relatedProducts) && ($relatedProducts != null) )
+                    @foreach( $relatedProducts as $product )
+                        <div class="box-item product-box ">
+                            <img class="img-responsive" src="{{ $product->media_link_full_path }}">
+                            <span class="box-item__time">{{ $product->updated_at }}</span>
+                            <div class="box-item__overlay"></div>
+                            <ul class="social-stats">
+                                <li class="social-stats__item">
+                                    <a href="#">
+                                        <i class="m-icon m-icon--ScrollingHeaderHeart">
+                                            <span class="m-hover">
+                                                <span class="path1"></span><span class="path2"></span>
+                                            </span>
+                                        </i>
+                                        <span class="social-stats__text">157</span>
+                                    </a>
+                                </li>
+                            </ul>
+                            <div class="round-tag round-tag--product">
+                                <i class="m-icon m-icon--item"></i>
+                                <span class="round-tag__label">Product</span>
+                            </div>
+                            <div class="box-item__label-prod">
+                                <a href="/product/{{$product->product_permalink}}"
+                                   class="box-item__label box-item__label--clear ">{{ $product->product_name }}</a>
+                                <div class="clearfix"></div>
+
+                                <div class="clearfix"></div>
+                                <a target="_blank" href="/product/{{ $product->product_permalink }}" class="box-item__get-it">
+                                    Get it
+                                </a>
+                            </div>
+                        </div>
+                    @endforeach
+                @endif
+            </div>
+            <h3 class="orange">Related Ideas</h3><br />
             <div class="related-ideas  grid-box-3">
 
 <!--                <section class="col-sm-12 related-stories">-->
@@ -426,3 +482,4 @@
 
 
 <?php get_footer(); ?>
+<script type="text/javascript" src="/assets/product/js/custom.product.js"></script>

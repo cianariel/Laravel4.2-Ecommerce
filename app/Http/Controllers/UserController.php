@@ -195,7 +195,9 @@
                     'personalInfo' => $userData->userProfile->personal_info,
                  //   'login'     => true,
                  //   'permalink' => $userData->userProfile->permalink
-                    'permalink' => $permalink
+                    'permalink' => $permalink,
+                    'isAdmin' => $userData->hasRole('admin') || $userData->hasRole('editor')
+
                 );
 
                 return view('user.user-profile', $data);
