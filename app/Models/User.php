@@ -224,6 +224,8 @@ class User extends Model implements AuthenticatableContract,
                 $user->status = 'Active';
                 $user->save();
 
+
+
                 // Assign role for the user
                 $this->assignRole($userData->email, array('user'));
 
@@ -236,6 +238,9 @@ class User extends Model implements AuthenticatableContract,
 
                     $this->subscriber->save();
                 }
+
+                // set true if the user is a new user.
+                $user['NewUser'] = true;
 
                 return $user;
 

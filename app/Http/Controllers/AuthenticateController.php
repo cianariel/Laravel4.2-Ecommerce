@@ -4,6 +4,8 @@
 
     use App\Events\SendActivationMail;
     use App\Events\SendResetEmail;
+    use App\Events\SendWelcomeMail;
+
     use App\Models\Subscriber;
     use Crypt;
     use Illuminate\Http\Request;
@@ -214,6 +216,15 @@
             */
             $userInfo = $this->user->FindOrCreateUser($fbUser);
 
+            // send welcome mail to new user
+            if(!empty($userInfo['NewUser']) && ($userInfo['NewUser'] == true) )
+            {
+                \Event::fire(new SendWelcomeMail
+                (
+                    $userInfo['name'],
+                    $userInfo['email']
+                ));
+            }
 
             /*
             Set authentication code and pass JSON data in API response.
@@ -457,6 +468,16 @@
                 {
                     $user->status = "Active";
                     $user->save();
+
+                    // send welcome mail to new user
+
+                        \Event::fire(new SendWelcomeMail
+                        (
+                            $user['name'],
+                            $user['email']
+                        ));
+
+
                     $message = "Thanks " . $user->name . " for verify your email";
 
                     return Redirect::to('login')->withFlashMessage('Email verification complete.');

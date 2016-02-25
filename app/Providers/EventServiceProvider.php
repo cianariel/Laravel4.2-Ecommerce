@@ -10,6 +10,8 @@
     use App\Handlers\Events\SendResetEmailHandler;
     use App\Events\SendSubscriptionMail;
     use App\Handlers\Events\SendSubscriptionMailHandler;
+    use App\Events\SendWelcomeMail;
+    use App\Handlers\Events\SendWelcomeMailHandler;
 
 
 
@@ -37,7 +39,7 @@
 
             SendWelcomeMail::class => [
                 SendWelcomeMailHandler::class
-            ]
+            ],
 
         ];
 
