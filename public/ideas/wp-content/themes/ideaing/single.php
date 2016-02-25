@@ -278,7 +278,7 @@
             <?php 
                 $limit=10;
                 $offset = 0;
-                //$url = str_replace('/ideas',"", get_site_url()) . '/api/paging/get-grid-content/1/3/'.$firstTag->name.'/product';
+                $url = str_replace('/ideas',"", get_site_url()) . '/api/paging/get-grid-content/1/3/'.$firstTag->name.'/product';
                 //$url = "http://dev.ideaing.com:81/api/paging/get-grid-content/1/3/kitchen/product";
                 /*if($tag && $tag != 'false'){
                     $url .= '&tag=' . $tag;
