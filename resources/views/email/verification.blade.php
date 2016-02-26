@@ -251,7 +251,7 @@
                                                                     style="color:rgb(254,39,65);text-decoration:none"
                                                                     href="{{ url('/verify-email').'/'.$link}}">Confirming
                                                                 your
-                                                                email</a> will unlock all feartures of Ideaing.</span> </span>
+                                                                email</a> will unlock all features of Ideaing.</span> </span>
                                                 </p>
                                             </td>
                                         </tr>
