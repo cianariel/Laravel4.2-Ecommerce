@@ -52,7 +52,7 @@ class ShopController extends ApiController
             $parentCategory =  @ProductCategory::where('id', $categoryModel->parent_id)->first();
 
             $masterCategory = $parentCategory ?: $categoryModel;
-            switch($categoryModel->category_name){
+            switch($masterCategory->category_name){
                 case "Smart Home":
                     $categoryModel->background_image = "/assets/images/shop-category/smarthome.jpg";
                 break;
