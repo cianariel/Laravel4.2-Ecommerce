@@ -22,7 +22,8 @@ class ShopController extends ApiController
     public function index($grandParent = false, $parent = false, $child = false)
     {
 
-        $userData = '';
+        $userData = $this->authCheck;
+
         if ($this->authCheck['method-status'] == 'success-with-http') {
             $userData = $this->authCheck['user-data'];
         }
