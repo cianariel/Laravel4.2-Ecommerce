@@ -6538,7 +6538,7 @@ body.single-post #top-nav .kitchen {
 body.single-post .article-content ul li {
   list-style: disc; }
 
-body.single-post .related-ideas {
+body.single-post .related-ideas, body.single-post .related-products {
   max-width: 1170px;
   margin: auto; }
 

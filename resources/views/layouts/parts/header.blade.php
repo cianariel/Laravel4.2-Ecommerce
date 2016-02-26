@@ -166,7 +166,7 @@
         <?php
 
                 if(!function_exists('is_single')){ ?>
-                        @include('room.header-menu');
+                        @include('room.header-menu')
            <?php     }
 
         ?>
