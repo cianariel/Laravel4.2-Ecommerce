@@ -46,6 +46,7 @@
         $tags = wp_get_post_tags($post->ID);
         $categories = get_the_category($post->ID);
         $firstTag = $tags[0];
+
         foreach($categories as $cat){
             if($cat->name != 'Smart Home'){
                 if($cat->category_parent == 0){

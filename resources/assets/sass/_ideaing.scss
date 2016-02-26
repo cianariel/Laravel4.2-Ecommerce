@@ -4904,6 +4904,10 @@ body.room-landing{
                 margin-left: -55px;
             }
         }
+        .rsOverflow > .hero-tags .tag{
+            margin-top: -40px;
+            margin-left: -40px;
+        }
     }
     #hero-nav{
         border-top: 0px;
@@ -4940,80 +4944,29 @@ body.room-landing{
     }
 
     .red{
-      span{
-/*        background-image: url('/assets/images/icons/bag-glow-red.png');*/
-      }
-      h6{
-        background: $pinterest-red;
-      }
-      img.round{
-        border-color: $pinterest-red !important;
-        -webkit-box-shadow: 0px 0px 62px 5px $pinterest-red;
-        -moz-box-shadow: 0px 0px 62px 5px $pinterest-red;
-        box-shadow: 0px 0px 62px 5px $pinterest-red;
-      }
-      .hover-box{
-        &::before{
-          border-color: transparent transparent $pinterest-red transparent;
-        }
-      }
+        @include idea-hero-tags($pinterest-red);
     }
 
     .blue{
-      span{
-/*        background-image: url('/assets/images/icons/bag-glow-blue.png');*/
-      }
-      h6{
-        background: $sky-blue;
-      }
-      img.round{
-        border-color: $sky-blue !important;
-        -webkit-box-shadow: 0px 0px 62px 5px $sky-blue;
-        -moz-box-shadow: 0px 0px 62px 5px$sky-blue;
-        box-shadow: 0px 0px 62px 5px $sky-blue;
-      }
-      .hover-box{
-        &::before{
-          border-color: transparent transparent $sky-blue transparent;
-        }
-      }
+        @include idea-hero-tags($sky-blue);
     }
     .green{
-      span{
-/*        background-image: url('/assets/images/icons/bag-glow-green.png');*/
-      }
-      h6{
-        background: $pine-green;
-      }
-      img.round{
-        border-color: $pine-green !important;
-        -webkit-box-shadow: 0px 0px 62px 5px $pine-green;
-        -moz-box-shadow: 0px 0px 62px 5px $pine-green;
-        box-shadow: 0px 0px 62px 5px $pine-green;
-      }
-      .hover-box{
-        &::before{
-          border-color: transparent transparent $pine-green transparent;
-        }
-      }
+        @include idea-hero-tags($pine-green);
     }
 
     .pink{
+        @include idea-hero-tags($iridium);
       img.round{
         border-color: $iridium;
       }
     }
 
     .orange{
-      img.round{
-        border-color: $dark-orange;
-      }
+        @include idea-hero-tags($dark-orange);
     }
 
     .yellow{
-      img.round{
-        border-color: yellow;
-      }
+        @include idea-hero-tags(yellow);
     }
   }
 
@@ -5111,7 +5064,7 @@ body.room-landing{
     background: #fff;
     z-index: 10;
     position: relative;
-    margin-top: 7px;
+    margin-top: 10px;
 
     h6{
       padding: 15px;
@@ -5135,7 +5088,7 @@ body.room-landing{
       border-color: transparent transparent #007bff transparent;
 
       left:30%;
-      top: -7px;
+      top: -10px;
     }
   }
 

@@ -7680,6 +7680,9 @@ body.room-landing #hero {
     body.room-landing #hero .hero-tags > .tag {
       margin-top: -55px;
       margin-left: -55px; }
+  body.room-landing #hero .rsOverflow > .hero-tags .tag {
+    margin-top: -40px;
+    margin-left: -40px; }
 
 body.room-landing #hero-nav {
   border-top: 0px; }
@@ -7720,7 +7723,7 @@ body.room-landing #hero .red .hover-box::before {
   border-color: transparent transparent #E61D25 transparent; }
 
 body.room-landing #hero .blue span {
-  /*        background-image: url('/assets/images/icons/bag-glow-blue.png');*/ }
+  /*        background-image: url('/assets/images/icons/bag-glow-red.png');*/ }
 
 body.room-landing #hero .blue h6 {
   background: #00B1FF; }
@@ -7735,7 +7738,7 @@ body.room-landing #hero .blue .hover-box::before {
   border-color: transparent transparent #00B1FF transparent; }
 
 body.room-landing #hero .green span {
-  /*        background-image: url('/assets/images/icons/bag-glow-green.png');*/ }
+  /*        background-image: url('/assets/images/icons/bag-glow-red.png');*/ }
 
 body.room-landing #hero .green h6 {
   background: #C7C747; }
@@ -7749,14 +7752,53 @@ body.room-landing #hero .green img.round {
 body.room-landing #hero .green .hover-box::before {
   border-color: transparent transparent #C7C747 transparent; }
 
+body.room-landing #hero .pink span {
+  /*        background-image: url('/assets/images/icons/bag-glow-red.png');*/ }
+
+body.room-landing #hero .pink h6 {
+  background: #FF0042; }
+
+body.room-landing #hero .pink img.round {
+  border-color: #FF0042 !important;
+  -webkit-box-shadow: 0px 0px 62px 5px #FF0042;
+  -moz-box-shadow: 0px 0px 62px 5px #FF0042;
+  box-shadow: 0px 0px 62px 5px #FF0042; }
+
+body.room-landing #hero .pink .hover-box::before {
+  border-color: transparent transparent #FF0042 transparent; }
+
 body.room-landing #hero .pink img.round {
   border-color: #FF0042; }
 
+body.room-landing #hero .orange span {
+  /*        background-image: url('/assets/images/icons/bag-glow-red.png');*/ }
+
+body.room-landing #hero .orange h6 {
+  background: #FF7F00; }
+
 body.room-landing #hero .orange img.round {
-  border-color: #FF7F00; }
+  border-color: #FF7F00 !important;
+  -webkit-box-shadow: 0px 0px 62px 5px #FF7F00;
+  -moz-box-shadow: 0px 0px 62px 5px #FF7F00;
+  box-shadow: 0px 0px 62px 5px #FF7F00; }
+
+body.room-landing #hero .orange .hover-box::before {
+  border-color: transparent transparent #FF7F00 transparent; }
+
+body.room-landing #hero .yellow span {
+  /*        background-image: url('/assets/images/icons/bag-glow-red.png');*/ }
+
+body.room-landing #hero .yellow h6 {
+  background: yellow; }
 
 body.room-landing #hero .yellow img.round {
-  border-color: yellow; }
+  border-color: yellow !important;
+  -webkit-box-shadow: 0px 0px 62px 5px yellow;
+  -moz-box-shadow: 0px 0px 62px 5px yellow;
+  box-shadow: 0px 0px 62px 5px yellow; }
+
+body.room-landing #hero .yellow .hover-box::before {
+  border-color: transparent transparent yellow transparent; }
 
 body.room-landing .category-nav {
   width: 412px;
@@ -7819,7 +7861,7 @@ body.room-landing .grid-insert {
     background: #fff;
     z-index: 10;
     position: relative;
-    margin-top: 7px; }
+    margin-top: 10px; }
     .hero-tags .hover-box h6 {
       padding: 15px;
       font-size: inherit;
@@ -7838,7 +7880,7 @@ body.room-landing .grid-insert {
       border-width: 0 7.5px 10px 7.5px;
       border-color: transparent transparent #007bff transparent;
       left: 30%;
-      top: -7px; }
+      top: -10px; }
   .hero-tags img:not(.vendor-logo) {
     width: 90px;
     height: 90px;
