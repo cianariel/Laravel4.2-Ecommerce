@@ -263,7 +263,7 @@
                                                             ,</span><br><span style="font-size: 14pt;">Thanks for being with Ideaing.</span><br><span
                                                                 style="font-size: 14pt;"><a
                                                                     style="color:rgb(254,39,65);text-decoration:none"
-                                                                    href="{{ url('/') }}">Visit Ideaing</a> right now.</span> to change password.</span>
+                                                                    href="{{ url('/') }}">Visit Ideaing</a> right now !</span> </span>
                                                 </p>
                                             </td>
                                         </tr>
