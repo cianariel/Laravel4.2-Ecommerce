@@ -65,3 +65,9 @@
     ga('create', 'UA-XXXXXXXX-XX', 'yourdomain.com');
     ga('send', 'pageview');
 </script>
+
+<script>
+    // CompleteRegistration
+    // Track when a registration form is completed (ex. complete subscription, sign up for a service)
+    fbq('track', 'CompleteRegistration');
+</script>
