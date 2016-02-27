@@ -1,18 +1,4 @@
-{{--<!DOCTYPE html>
-<html>
-<head>
-</head>
-<body>
-
-<div class="content">
-    <div class="title">Dear {{ $name }}</div>
-    Please click on the "Reset" link to Reset your email [ <a href="{{ url('/password-reset-form').'/'.$code}}">Verify</a> ]
-</div>
-
-</body>
-</html>--}}
-
-        <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -198,13 +184,13 @@
                                            width="140">
                                         <tbody>
                                         <tr>
-                                            <td height="45" align="center" width="169">
+                                            <td height="" align="center" width="218">
                                                 <div class="imgpop">
                                                     <a href="#"><img id="kgva7ywpd3"
-                                                                     src="http://s3-us-west-1.amazonaws.com/ideaing-01/product-56ccaf1928dce-logo.jpg"
+                                                                     src="http://ideaing.com/assets/images/email/common/logo-email.png"
                                                                      st-image="logo" alt=""
                                                                      style="display:block; border:none; outline:none; text-decoration:none;"
-                                                                     height="45" border="0" width="169"></a>
+                                                                     height="" border="0" width="218"></a>
                                                 </div>
                                             </td>
                                         </tr>
@@ -260,9 +246,9 @@
                                                 st-title="fulltext-heading">
                                                 <p align="left">
                                                     <span style="font-size: 14pt;" class="im"><span style="font-size: 14pt;">Hi
-                                                            ,</span><br><span style="font-size: 14pt;">Please click on the </span><br><span
+                                                            ,</span><br><span style="font-size: 14pt;">Please click on the </span><span
                                                                 style="font-size: 14pt;"><a
-                                                                    style="color:rgb(254,39,65);text-decoration:none"
+                                                                    style="color:rgb(250,0,51);text-decoration:none"
                                                                     href="{{ url('/password-reset-form').'/'.$code}}">Reset password</a> </span> to change password.</span>
                                                 </p>
                                             </td>
@@ -340,11 +326,11 @@
                                                         <td class="devicewidth" height="" align="center" width="">
                                                             <div class="imgpop">
                                                                 <img id="diasbyt3mu"
-                                                                     src="http://s3-us-west-1.amazonaws.com/ideaing-01/product-56ccb01f35c3f-common.jpg"
+                                                                     src="http://ideaing.com/assets/images/email/common/graphic-800x279.png"
                                                                      alt="" st-image="ipad"
                                                                      style="display:block; border:none; outline:none; text-decoration:none;"
                                                                      class="colimg2" height="" border="0"
-                                                                     width="">
+                                                                     width="285">
                                                             </div>
                                                         </td>
                                                     </tr>
@@ -375,14 +361,8 @@
                                                     <!-- image -->
                                                     <tr>
                                                         <td class="devicewidth" height="93" align="center" width="">
-                                                            <div class="imgpop">
-                                                                <a href="{{ url('/password-reset-form').'/'.$code}}"><img
-                                                                            id="9e1kcwzabc8"
-                                                                            src="http://s3-us-west-1.amazonaws.com/ideaing-01/product-56ccb17dea536-reset-password.jpg"
-                                                                            alt="" st-image="ipad"
-                                                                            style="display:block; border:none; outline:none; text-decoration:none;"
-                                                                            class="colimg2" height="" border="0"
-                                                                            width=""></a>
+                                                            <div class="imgpop" style="background-color:rgb(250,0,51);min-height:50px;min-width:225px;text-align: center; line-height:50px;">
+                                                                <a style=" color:white;font-weight: bold;" href="{{ url('/password-reset-form').'/'.$code}}">Reset Password</a>
                                                             </div>
                                                         </td>
                                                     </tr>
@@ -459,7 +439,7 @@
                                     st-content="postfooter" align="center" valign="middle">
                                     <p style="text-align: center;">
                                         Click here to <a style="text-decoration: none; color: #0a8cce"
-                                                         href="http://staging.ideaing.com/unsubscribe">Unsubscribe</a>
+                                                         href="http://ideaing.com/unsubscribe">Unsubscribe</a>
                                     </p>
                                     <p style="text-align: center;">
                                     </p>
