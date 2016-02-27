@@ -36,19 +36,19 @@
             {
                 $inputData = \Input::all();
                 $newRoom = $this->room->create($inputData);
-                $ImageResult = $this->addMediaForRoom($request,'hero_image_1');
+                $ImageResult = $this->addMediaForRoom($request,'hero_image_1',$newRoom->id);
                 if($ImageResult['status_code'] == 200)
                 {
                    $newRoom->hero_image_1 = $ImageResult['result'];
                 }
 
-                $ImageResult = $this->addMediaForRoom($request,'hero_image_2');
+                $ImageResult = $this->addMediaForRoom($request,'hero_image_2',$newRoom->id);
                 if($ImageResult['status_code'] == 200)
                 {
                    $newRoom->hero_image_2 = $ImageResult['result'];
                 }
 
-                $ImageResult = $this->addMediaForRoom($request,'hero_image_3');
+                $ImageResult = $this->addMediaForRoom($request,'hero_image_3',$newRoom->id);
                 if($ImageResult['status_code'] == 200)
                 {
                    $newRoom->hero_image_3 = $ImageResult['result'];
@@ -74,19 +74,19 @@
                 $editRoom  = Room::find($inputData['room_id']);
                 $editRoom->update($inputData);
                 //$editRoom = $this->room->update($inputData);
-                $ImageResult = $this->addMediaForRoom($request,'hero_image_1');
+                $ImageResult = $this->addMediaForRoom($request,'hero_image_1',$editRoom->id);
                 if($ImageResult['status_code'] == 200)
                 {
                    $editRoom->hero_image_1 = $ImageResult['result'];
                 }
 
-                $ImageResult = $this->addMediaForRoom($request,'hero_image_2');
+                $ImageResult = $this->addMediaForRoom($request,'hero_image_2',$editRoom->id);
                 if($ImageResult['status_code'] == 200)
                 {
                    $editRoom->hero_image_2 = $ImageResult['result'];
                 }
 
-                $ImageResult = $this->addMediaForRoom($request,'hero_image_3');
+                $ImageResult = $this->addMediaForRoom($request,'hero_image_3',$editRoom->id);
                 if($ImageResult['status_code'] == 200)
                 {
                    $editRoom->hero_image_3 = $ImageResult['result'];
@@ -105,7 +105,7 @@
 
         }
         
-        public function addMediaForRoom(Request $request,$filename)
+        public function addMediaForRoom(Request $request,$filename,$room_id)
         {
             $fileResponse = [];
 
@@ -140,7 +140,8 @@
 
                 // pointing filesystem to AWS S3
                 $s3 = Storage::disk('s3');
-
+                $destinationPath = 'idea/'.$room_id.'/';
+                $directory = $s3->makeDirectory($destinationPath);
                 // Thumbnail creation and uploading to AWS S3
                 if (in_array($request->file($filename)->guessClientExtension(), array("jpeg", "jpg", "bmp", "png")))
                 {
@@ -153,13 +154,13 @@
 
                     $thumb = $thumb->stream();
                     $thumbFileName = 'thumb-' . $fileName;
-                    $s3->put($thumbFileName, $thumb->__toString(), 'public');
+                    $s3->put($destinationPath.$thumbFileName, $thumb->__toString(), 'public');
                 }
 
 
-                if ($s3->put($fileName, file_get_contents($request->file($filename)), 'public'))
+                if ($s3->put($destinationPath.$fileName, file_get_contents($request->file($filename)), 'public'))
                 {
-                    $fileResponse['result'] = \Config::get("const.file.s3-path") . $fileName;
+                    $fileResponse['result'] = \Config::get("const.file.s3-path").$destinationPath.$fileName;
                     $fileResponse['status_code'] = \Config::get("const.api-status.success");
 
                     return $fileResponse;
