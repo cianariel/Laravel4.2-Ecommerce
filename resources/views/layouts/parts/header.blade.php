@@ -431,50 +431,6 @@ if((isset($userData['user-data']['hide-signup'])) && ($userData['user-data']['hi
         
     </script>
 
-<SCRIPT>
-/*
-    setTimeout(function() {
-        element = document.getElementById('subscribe_email_popup');
-        
-        if (typeof(element) != 'undefined' && element != null)
-        {
-            element.style.visibility = 'visible';
-        }
-        else
-        {
-            element = document.createElement('div');
-            element.innerHTML = "<div id='publicApp' ng-app='publicApp' ng-controller='publicController'>"+
-          //  element.innerHTML = "<div>"+
-                                "<div style = 'position:absolute; left:0px; top:0px; width:100%; height:100%; background-color:black; opacity:0.5'></div>" +
-                                "<div class='content-container' >" + 
-                                "<div class='content-holder'>" +
-                                "<div><h4>Subscribe me to the world's finest design ideas community</h4></div><br>" + 
-                                "<div><h5>Enter your email</h5> <strong style=\"color: red\"><?php echo "{{ responseMessage }}" ?></strong></div>" +
-                                "<div><input class='form-control' type = 'text' ng-model='SubscriberEmail' placeholder = 'me@email.com'></div><br>" +
-                                "<div ><a class='btn btn-success form-control' ng-click='subscribe()'>Subscribe to Ideaing's newsletter</a></div><br>" +
-                              //  "<div ><a class='btn btn-success form-control'  href='javascript:closeSubscriptionPopup();''>Subscribe to Ideaing's newsletter</a></div><br>" +
-                                "<p><a href = '/hide-signup'>Never mind</a></p></div></div>" +
-                                //"<p><a href = 'javascript:closeSubscriptionPopup();'>Never mind</a></p></div></div>" +
-                                "<div class='img-holder' >" +
-                                "<img src = '/assets/images/emailpopupimg.png' style = 'width:100%; height:100%; position:relative'></div>"+
-                                "</div>";
-            
-            element.id = 'subscribe_email_popup';
-            
-            element.style.visibility = 'visible';   
-            document.body.appendChild(element);
-
-
-        }
-
-    }, 300000); // 300000
-   function closeSubscriptionPopup()
-    {
-        document.getElementById('subscribe_email_popup').style.visibility = 'hidden';
-    }
-*/        
-
-</script>
 <?php
     }
 
