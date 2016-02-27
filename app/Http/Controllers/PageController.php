@@ -400,7 +400,8 @@ class PageController extends ApiController
 
 
     private function getFacebookLikes($url) {
-        $json_string = file_get_contents('https://api.facebook.com/method/links.getStats?urls=' . $url . '&format=json');
+//        $json_string = file_get_contents('https://api.facebook.com/method/links.getStats?urls=' . $url . '&format=json');
+        $json_string = file_get_contents('https://graph.facebook.com/v2.2/?id='.$url.'&fields=og_object{engagement}&access_token='.env('FB_APP').'|' . env('FB_SECRET'));
         $json = json_decode($json_string, true);
         if(isset($json[0]['total_count'])){
             return intval( $json[0]['total_count'] );
