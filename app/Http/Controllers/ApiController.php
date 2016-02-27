@@ -255,8 +255,10 @@ class ApiController extends Controller
 
         if (empty($token)) {
             $token = \Input::get('token');
-          //  if(empty($token))
-        //        $token = $response['auth-token'];//$this->getCookie('auth-token');
+
+            // check token from cookie (Remember Me)
+            if(empty($token))
+               $token = $this->getCookie('auth-token');
         }
 
         // check authentication and catch exception

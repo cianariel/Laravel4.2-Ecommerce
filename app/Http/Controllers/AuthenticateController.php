@@ -89,6 +89,7 @@
         {
             // reset the token
             $this->setCookie('hide-signup','',1440);
+            $this->setCookie('auth-token',null);
 
             // get token form input or session
             $tokenValue = session('auth.token');
@@ -131,6 +132,7 @@
         public function authenticate(Request $request)
         {
             $credentials = $request->only('Email', 'Password');
+            //$token = '';
 
             try
             {
@@ -188,6 +190,9 @@
             $response['message'] = "Successfully authenticated.";
             $response['roles'] = $roles;
 
+            if($request['RememberMe'] == true)
+                $this->setCookie('auth-token',$token);
+
             return $this->setStatusCode(\Config::get("const.api-status.success-redirect"))
                 ->setAuthToken($token)
                 ->makeResponse($response);
@@ -231,6 +236,11 @@
             */
             $token = JWTAuth::fromUser($userInfo);
             session(['auth.token' => isset($token) ? $token : null]);
+
+            if(isset($token))
+            {
+                $this->setCookie('auth-token',$token);
+            }
 
              return redirect()->action('UserController@userProfile');
 

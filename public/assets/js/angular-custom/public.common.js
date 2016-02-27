@@ -263,10 +263,10 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                         window.location = '/login';
                     }
                     else if (data.data == 'Registration completed successfully') {
-                      //  console.log("credentials : " + $scope.Email + " " + $scope.Password);
+                        //  console.log("credentials : " + $scope.Email + " " + $scope.Password);
 
-                         $scope.loginUser();
-                    }else if (data.data == 'Registration completed successfully,please verify email') {
+                        $scope.loginUser();
+                    } else if (data.data == 'Registration completed successfully,please verify email') {
                         //  console.log("credentials : " + $scope.Email + " " + $scope.Password);
 
                         $scope.loginUser();
@@ -430,6 +430,9 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
         };
 
         $scope.loginUser = function () {
+
+            console.log($scope.rememberMe);
+            //  return;
             $scope.closeAlert();
             $http({
                 url: '/api/authenticate',
@@ -437,6 +440,7 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                 data: {
                     Email: $scope.Email,
                     Password: $scope.Password,
+                    RememberMe: $scope.rememberMe == true ? true : false
 
                 }
             }).success(function (data) {
