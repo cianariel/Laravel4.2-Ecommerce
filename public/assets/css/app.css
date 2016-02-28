@@ -8821,7 +8821,11 @@ body.shoppage .mid-nav .container, .mid-nav body.shoppage .extra-nav .container 
   body.shoppage .mid-nav .container a.browse-all, .mid-nav body.shoppage .extra-nav .container a.browse-all {
     position: absolute;
     right: 0px;
-    top: 0px; }
+    top: 0px;
+    overflow: visible; }
+    body.shoppage .mid-nav .container a.browse-all .box-link-active-line, .mid-nav body.shoppage .extra-nav .container a.browse-all .box-link-active-line {
+      position: absolute;
+      top: -15px; }
 
 body.shoppage .mid-nav .shop-landing-submenu.wrap, .mid-nav body.shoppage .extra-nav .shop-landing-submenu.wrap {
   text-align: center; }
@@ -8829,6 +8833,10 @@ body.shoppage .mid-nav .shop-landing-submenu.wrap, .mid-nav body.shoppage .extra
     display: inline-block; }
   body.shoppage .mid-nav .shop-landing-submenu.wrap a, .mid-nav body.shoppage .extra-nav .shop-landing-submenu.wrap a {
     margin-right: 0px; }
+    body.shoppage .mid-nav .shop-landing-submenu.wrap a .box-link-active-line, .mid-nav body.shoppage .extra-nav .shop-landing-submenu.wrap a .box-link-active-line {
+      display: none; }
+    body.shoppage .mid-nav .shop-landing-submenu.wrap a.active .box-link-active-line, .mid-nav body.shoppage .extra-nav .shop-landing-submenu.wrap a.active .box-link-active-line {
+      display: inline-block; }
   @media (max-width: 460px) {
     body.shoppage .mid-nav .shop-landing-submenu.wrap .box-link, .mid-nav body.shoppage .extra-nav .shop-landing-submenu.wrap .box-link {
       margin-left: 0px !important;
