@@ -29,27 +29,32 @@
                 <ul class="wrap shop-landing-submenu">
                     <li class="box-link-ul ">
                         <a class="box-link @if($currentCategory->extra_info == 'smart-home') active @endif" href="/shop/smart-home" >
+                            <span class="box-link-active-line"></span>
                             SMART HOME
                         </a>
                     </li>
                     <li class="box-link-ul ">
                         <a class="box-link @if($currentCategory->extra_info == 'travel') active @endif" href="/shop/travel" >
+                            <span class="box-link-active-line"></span>
                             TRAVEL
                         </a>
                     </li>
                     <li class="box-link-ul ">
                         <a class="box-link @if($currentCategory->extra_info == 'wearables') active @endif" href="/shop/wearables" >
+                            <span class="box-link-active-line"></span>
                             WEARABLES
                         </a>
                     </li>
                     <li class="box-link-ul ">
                         <a class="box-link @if($currentCategory->extra_info == 'home-decor') active @endif" href="/shop/home-decor" >
+                            <span class="box-link-active-line"></span>
                             HOME & DECOR
                         </a>
                     </li>
             </ul>
             @endif
                 <a class="browse-all hidden-xs hidden-sm" data-toggle="#all-shop-menu" href="#">
+                    <span class="box-link-active-line"></span>
                     <i class="m-icon--menu"></i>
                     <span>
                         BROWSE ALL

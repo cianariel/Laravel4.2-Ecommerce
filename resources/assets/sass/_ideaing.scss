@@ -6801,6 +6801,11 @@ body.shoppage{
                 position: absolute;
                 right: 0px;
                 top: 0px;
+                overflow: visible;
+                .box-link-active-line{
+                    position: absolute;
+                    top: -15px;
+                }
             }
         }
         .shop-landing-submenu.wrap{
@@ -6810,6 +6815,14 @@ body.shoppage{
             }
             a{
                 margin-right: 0px;
+                .box-link-active-line{
+                    display: none;
+                }
+                &.active{
+                    .box-link-active-line{
+                        display: inline-block;
+                    }
+                }
             }
             @media (max-width: 460px){
                 .box-link{
