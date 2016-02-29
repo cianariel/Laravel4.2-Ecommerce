@@ -70,11 +70,13 @@
                     'rules'  => [
                         'CategoryName' => 'required | max: 50',
                         'ExtraInfo'    => 'required | max: 50',
+                        'Icon'         => 'required',
                         'ParentId'     => 'integer'
                     ],
                     'values' => [
                         'CategoryName' => isset($inputData['CategoryName']) ? $inputData['CategoryName'] : null,
                         'ExtraInfo'    => isset($inputData['ExtraInfo']) ? $inputData['ExtraInfo'] : null,
+                        'Icon'         => isset($inputData['Icon']) ? $inputData['Icon'] : null,
                         'ParentId'     => (isset($inputData['ParentId']) or ($inputData['ParentId']!="") ) ? $inputData['ParentId'] : null
                     ]
                 ];
@@ -195,12 +197,14 @@
                 'rules'  => [
                     'CategoryName' => 'required | max: 50',
                     'ExtraInfo'    => 'required | max: 50',
-                    'CategoryId'   => 'required | integer'
+                    'CategoryId'   => 'required | integer',
+                    'Icon'         => 'required'
                 ],
                 'values' => [
                     'CategoryName' => isset($inputData['CategoryName']) ? $inputData['CategoryName'] : null,
                     'ExtraInfo'    => isset($inputData['ExtraInfo']) ? $inputData['ExtraInfo'] : null,
-                    'CategoryId'   => isset($inputData['CategoryId']) ? $inputData['CategoryId'] : null
+                    'CategoryId'   => isset($inputData['CategoryId']) ? $inputData['CategoryId'] : null,
+                    'Icon'         => isset($inputData['Icon']) ? $inputData['Icon'] : null
                 ]
             ];
 

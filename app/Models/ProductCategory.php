@@ -47,10 +47,12 @@
 
             if ($product['ParentId'] != null)
                 return $this->addSubCategory($product);
-
-            return ProductCategory::create(['category_name' => $product['CategoryName'],
-                                            'extra_info'    => isset($product['ExtraInfo']) ? $product['ExtraInfo'] : null
-            ]);
+            $data = array(
+                'category_name' => $product['CategoryName'],
+                'extra_info'    => isset($product['ExtraInfo']) ? $product['ExtraInfo'] : null,
+                'icon'          => isset($product['Icon']) ? $product['Icon'] : null
+            );
+            return ProductCategory::create($data);
         }
 
         /** Add a sub category item in the category and return it the object.
@@ -63,10 +65,13 @@
 
             if ($parentNode == null)
                 return \Config::get("const.parent-id-not-exist");
+            $data = array(
+                'category_name' => $product['CategoryName'],
+                'extra_info'    => isset($product['ExtraInfo']) ? $product['ExtraInfo'] : null,
+                'icon'          => isset($product['Icon']) ? $product['Icon'] : null
+            );
 
-            return $parentNode->children()->create(['category_name' => $product['CategoryName'],
-                                                    'extra_info'    => isset($product['ExtraInfo']) ? $product['ExtraInfo'] : null
-            ]);
+            return $parentNode->children()->create($data);
         }
 
         /** Makes an category object through category id.
@@ -125,6 +130,7 @@
             {
                 $category->category_name = $categoryOld['CategoryName'];
                 $category->extra_info = $categoryOld['ExtraInfo'];
+                $category->icon = $categoryOld['Icon'];
                 $category->save();
 
                 return \Config::get("const.category-updated");
@@ -187,7 +193,7 @@
                 return $this->getAllRootCategory();
             else
             {
-                $categories = $this->getCategory($categoryId)->getImmediateDescendants(array('id', 'category_name', 'extra_info'));
+                $categories = $this->getCategory($categoryId)->getImmediateDescendants(array('id', 'category_name', 'extra_info', 'icon'));
 
                 $categoryList = collect([]);
                 foreach ($categories as $key => $value)
@@ -196,6 +202,7 @@
                         'id'          => $value->id,
                         'category'    => $value->category_name,
                         'info'        => $value->extra_info,
+                        'icon'        => $value->icon,
                         'hasChildren' => ($this->hasChildOfCategory($value->id)->count() > 0) ? true : false
                     ]);
                 }
@@ -220,17 +227,22 @@
                 $cats = ProductCategory::where('parent_id', $top->id)->get();
 
                 if($withGrandChildren){
+                    $categoryTree[$top->extra_info] = array();
                     foreach($cats as $cat){
-                        $categoryTree[$top->extra_info][$cat->extra_info] = ProductCategory::where('parent_id', $cat->id)->where(function($query){
+                        
+                        $grandchildCategory = ProductCategory::where('parent_id', $cat->id)->where(function($query){
                             $query->where('type', '!==', 'room')
                                 ->orWhere('type', null);
                         })->get();
+                        $categoryTree[$top->extra_info][] = array(
+                            'childCategory' => $cat,
+                            'grandchildCategories' => $grandchildCategory
+                        );
                     }
                 }else{
                     $categoryTree[$top->extra_info] = $cats;
                 }
             }
-
             return $categoryTree;
         }
     }
