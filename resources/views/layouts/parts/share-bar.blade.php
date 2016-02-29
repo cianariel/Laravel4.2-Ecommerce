@@ -1,19 +1,37 @@
+<script>
+    var thisUrl = 'http://' + window.location.host + window.location.pathname;
+</script>
+
 <aside class="share-bar sticks-on-scroll">
     <ul class="share-buttons">
         <li class="all-shares"><b>120K </b>all shares</li>
-        <li><a class="fb" href="#"><i class="m-icon m-icon--facebook-id"></i> <b class="fb share-count">189</b></a></li>
-        <li><a class="twi" href="#"><i class="m-icon  m-icon--twitter-id"></i> <b class="twi share-count">189</b></a></li>
-        <li><a class="gp" href="#"><i class="m-icon m-icon--google-plus-id"></i> <b class="gp share-count">189</b></a></li>
-        <li><a class="pint" href="#"><i class="m-icon  m-icon--pinterest-id"></i> <b class="pint share-count">189</b></a></li>
+
+        <li><a class="fb" href="#"
+               onclick="javascript: (function() {
+							   window.open('https://www.facebook.com/sharer/sharer.php?u=' +  thisUrl, 'fbwindow', 'width=600, height=360, left=250, top=150, toolbar=0, location=0, menubar=0, scrollbars=0');})();">
+                <i class="m-icon m-icon--facebook-id">
+
+                </i> <b class="fb share-count">189</b></a></li>
+
+        <li><a class="twi" href="#"
+               onclick="javascript: (function() {
+							   window.open('https://twitter.com/share?url=' + thisUrl + '&counturl=' + thisUrl + '&text=@Ideaing', 'fbwindow', 'width=600, height=360, left=250, top=150, toolbar=0, location=0, menubar=0, scrollbars=0');})();">
+                <i class="m-icon  m-icon--twitter-id"></i> <b class="twi share-count">189</b></a></li>
+
+        <li><a class="gp" href="#" id=""
+               onclick="javascript: (function() {
+                       window.open('https://plus.google.com/share?url=' + thisUrl, 'fbwindow', 'width=600, height=360, left=250, top=150, toolbar=0, location=0, menubar=0, scrollbars=0');})();"
+                    ><i class="m-icon m-icon--google-plus-id"></i> <b class="gp share-count">189</b></a></li>
+
+        <li><a class="pint" href="javascript:void((function()%7Bvar%20e=document.createElement(&apos;script&apos;);e.setAttribute(&apos;type&apos;,&apos;text/javascript&apos;);e.setAttribute(&apos;charset&apos;,&apos;UTF-8&apos;);e.setAttribute(&apos;src&apos;,&apos;http://assets.pinterest.com/js/pinmarklet.js?r=&apos;+Math.random()*99999999);document.body.appendChild(e)%7D)());"><i class="m-icon  m-icon--pinterest-id"></i> <b class="pint share-count">189</b></a></li>
     </ul>
 </aside>
 
 <script>
     function get_social_counts() {
-        var thisUrl = window.location.host + window.location.pathname;
         $.ajax({
             type: "GET",
-            url: 'http://medialoot.com/images/get_social_counts.php?thisurl='+thisUrl,
+            url: '',
             dataType: "json",
             success: function (data){
                 $('.share-count.twi').html(data.twitter);
@@ -23,4 +41,5 @@
             }
         });
     }
+
 </script>
