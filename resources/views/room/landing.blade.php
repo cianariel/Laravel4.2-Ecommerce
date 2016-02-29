@@ -72,41 +72,43 @@
                             <div class="photoCopy">{{$image['Image_Title']}}: {{$image['Image_Caption']}} @if($image['Image_hyperlink']!="")<a href="{{$image['Image_hyperlink']}}">{{$image['Image_hyperlink_title']}}</a>@endif </div>
 
                         @foreach($image['Image_Products'] as $i_products)
-                        <div class="tag {{$i_products->product_color}}" style="left:{{$i_products->x}}%;top:{{$i_products->y}}%" >
+                            @if($i_products->product_id!=null)
+                            <div class="tag {{$i_products->product_color}}" style="left:{{$i_products->x}}%;top:{{$i_products->y}}%" >
 
-                            <span class="tag-icon">
-                            @if(property_exists($i_products,'tag_type'))
-                            @if($i_products->tag_type=="thumb")
-                            
-                                <img src="{{$i_products->media_link}}" class="round" alt="" />
-                            
-                            @else 
-                            <i class="m-icon--shopping-bag-light-green"></i>
-                            @endif
-                            @else 
-                            <i class="m-icon--shopping-bag-light-green"></i>
-                            @endif
-                            </span>
-                            <a class="{{$i_products->product_color}}-border" href="/product/{{$i_products->product_permalink}}">
-                                <img src="{{$i_products->media_link}}" class="round" alt="" />
-                            </a>
-                           <div class="hover-box">
-                               <h6>{{$i_products->product_name}}</h6>
-                                   <div class="icon-wrap" style="height: 90px">
-                                        <a class="category-tag get-round" href="{{$i_products->affiliate_link}}" target="_blank">
-                                            Get it
-                                        </a>
-                                        <div style="border:none">
-                                        <b class="price">
-                                            &nbsp;
-                                            @if(isset($i_products->sale_price))
-                                                ${{$i_products->sale_price}}
-                                            @endif
-                                        </b>
+                                <span class="tag-icon">
+                                @if(property_exists($i_products,'tag_type'))
+                                @if($i_products->tag_type=="thumb")
+                                
+                                    <img src="{{$i_products->media_link}}" class="round" alt="" />
+                                
+                                @else 
+                                <i class="m-icon--shopping-bag-light-green"></i>
+                                @endif
+                                @else 
+                                <i class="m-icon--shopping-bag-light-green"></i>
+                                @endif
+                                </span>
+                                <a class="{{$i_products->product_color}}-border" href="/product/{{$i_products->product_permalink}}">
+                                    <img src="{{$i_products->media_link}}" class="round" alt="" />
+                                </a>
+                               <div class="hover-box">
+                                   <h6>{{$i_products->product_name}}</h6>
+                                       <div class="icon-wrap" style="height: 90px">
+                                            <a class="category-tag get-round" href="{{$i_products->affiliate_link}}" target="_blank">
+                                                Get it
+                                            </a>
+                                            <div style="border:none">
+                                            <b class="price">
+                                                &nbsp;
+                                                @if(isset($i_products->sale_price))
+                                                    ${{$i_products->sale_price}}
+                                                @endif
+                                            </b>
+                                            </div>
                                         </div>
-                                    </div>
-                           </div>
-                        </div>
+                               </div>
+                            </div>
+                            @endif
                         @endforeach
                     </div>
                 </div>
@@ -128,6 +130,7 @@
                         <section class="hero-related-products ">
                             <ul  >
                             @foreach($image['Image_Products'] as $i_products)
+                                @if($i_products->product_id!=null)
                                     <li class="{{$i_products->product_color}}">
                                         <div class="row">
                                             <div class="col-xs-8 col-sm-10">
@@ -145,6 +148,7 @@
                                             </div>
                                         </div>
                                     </li>
+                                @endif
                             @endforeach
                         </ul>
                     </section>
