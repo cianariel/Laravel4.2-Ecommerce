@@ -582,6 +582,24 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
             });
         };
 
+        $scope.countSocialShares = function(){
+            // Однажды в студеную зимнюю пору
+
+            var thisUrl = window.location.host + window.location.pathname;
+
+            $http({
+                url: '/api/social/get-social-counts/',
+                method: "GET",
+                params: {'url' : thisUrl}
+            }).success(function (response) {
+                $('.share-count.twi').html(response.twitter);
+                $('.share-count.fb').html(response.facebook);
+                $('.share-count.gp').html(response.gplus);
+                $('.share-count.pint').html(response.pinterest);
+            });
+        }
+
+        $scope.countSocialShares();
 
         $scope.initPage();
         // $scope.addAlert('danger','testingtestingtestingtestingtestingtestingtesting');
