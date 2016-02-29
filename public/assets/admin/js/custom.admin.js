@@ -829,11 +829,13 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
                 data: {
                     ParentId: $scope.selectedItem,
                     CategoryName: $scope.categoryName,
-                    ExtraInfo: $scope.extraInfo
+                    ExtraInfo: $scope.extraInfo,
+                    Icon: $scope.icon
                 },
             }).success(function (data) {
                 $scope.categoryName = '';
                 $scope.extraInfo = '';
+                $scope.icon = '';
                 $scope.resetCategory();
                 //   console.log('in function: '+data.status_code);
                 $scope.outputStatus(data, 'Category item added successfully');
@@ -947,7 +949,8 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
                 data: {
                     CategoryId: $scope.categoryItems[idx].id,
                     CategoryName: $scope.tableTemporaryValue.category,// $scope.categoryItems[idx].category,
-                    ExtraInfo: $scope.tableTemporaryValue.info //$scope.categoryItems[idx].info
+                    ExtraInfo: $scope.tableTemporaryValue.info, //$scope.categoryItems[idx].info
+                    Icon: $scope.tableTemporaryValue.icon //$scope.categoryItems[idx].icon
                 },
             }).success(function (data) {
                 $scope.outputStatus(data, 'Category item updated successfully');

@@ -8935,7 +8935,7 @@ body.shop-landing .shop-by-category-submneu {
     color: white; }
     body.shop-landing .shop-by-category-submneu > div a {
       color: white; }
-    body.shop-landing .shop-by-category-submneu > div i {
+    body.shop-landing .shop-by-category-submneu > div i.desktop-parent-icon {
       font-size: 25px;
       margin-bottom: 25px;
       display: inline-block; }
@@ -9011,7 +9011,7 @@ body.shop-landing .mobile-shop-by-category-holder .shop-by-category-submneu > di
     clear: both;
     text-align: left;
     color: #333;
-    margin-top: 60px; }
+    margin-top: 45px; }
     body.shop-landing .mobile-shop-by-category-holder .shop-by-category-submneu > div .grandchild-holder .grandchild-item > a {
       display: block;
       padding: 5px; }
