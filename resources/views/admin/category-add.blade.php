@@ -93,6 +93,11 @@
                                         <input ng-model="extraInfo" class="form-control"
                                                placeholder="Custom URL Name Required">
                                     </div>
+                                    <div class="form-group">
+                                        <label>Icon Class Name</label>
+                                        <input ng-model="icon" class="form-control"
+                                               placeholder="Icon Class Name Required">
+                                    </div>
                                     <p>
                                         <button class="btn btn-primary" ng-click="addCategory()" type="submit">Submit
                                         </button>
