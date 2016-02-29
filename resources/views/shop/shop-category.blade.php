@@ -6,8 +6,8 @@
     @include('shop.browseall-menu')
     <nav class="mid-nav ">
         <div class="container full-sm fixed-sm">
-            <ul class="wrap col-lg-9">
                 @if($parentCategory)
+                <ul class="wrap col-lg-9">
                     <li class="box-link-ul active">
                         <a class="box-link" href="/shop/{{$parentCategory->extra_info}}" >
                             <span class="box-link-active-line"></span>
@@ -24,16 +24,37 @@
                             {{ucfirst($currentCategory->category_name)}}
                         </a>
                     </li>
+                </ul>
                 @else
-                    <li class="box-link-ul active">
-                        <a class="box-link active" href="/shop/{{$currentCategory->extra_info}}" >
+                <ul class="wrap shop-landing-submenu">
+                    <li class="box-link-ul ">
+                        <a class="box-link @if($currentCategory->extra_info == 'smart-home') active @endif" href="/shop/smart-home" >
                             <span class="box-link-active-line"></span>
-                            {{ucfirst($currentCategory->category_name)}}
+                            SMART HOME
                         </a>
                     </li>
-                @endif
+                    <li class="box-link-ul ">
+                        <a class="box-link @if($currentCategory->extra_info == 'travel') active @endif" href="/shop/travel" >
+                            <span class="box-link-active-line"></span>
+                            TRAVEL
+                        </a>
+                    </li>
+                    <li class="box-link-ul ">
+                        <a class="box-link @if($currentCategory->extra_info == 'wearables') active @endif" href="/shop/wearables" >
+                            <span class="box-link-active-line"></span>
+                            WEARABLES
+                        </a>
+                    </li>
+                    <li class="box-link-ul ">
+                        <a class="box-link @if($currentCategory->extra_info == 'home-decor') active @endif" href="/shop/home-decor" >
+                            <span class="box-link-active-line"></span>
+                            HOME & DECOR
+                        </a>
+                    </li>
             </ul>
+            @endif
                 <a class="browse-all hidden-xs hidden-sm" data-toggle="#all-shop-menu" href="#">
+                    <span class="box-link-active-line"></span>
                     <i class="m-icon--menu"></i>
                     <span>
                         BROWSE ALL

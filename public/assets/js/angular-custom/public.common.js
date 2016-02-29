@@ -430,9 +430,6 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
         };
 
         $scope.loginUser = function () {
-
-            console.log($scope.rememberMe);
-            //  return;
             $scope.closeAlert();
             $http({
                 url: '/api/authenticate',

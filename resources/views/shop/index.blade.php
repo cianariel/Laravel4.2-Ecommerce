@@ -6,7 +6,7 @@
     <nav class="mid-nav ">
         <div class="container full-sm fixed-sm">
             <div class="">
-                <ul class="wrap">
+                <ul class="wrap shop-landing-submenu">
                     <li class="box-link-ul ">
                         <a class="box-link " href="/shop/smart-home" >
                             SMART HOME
