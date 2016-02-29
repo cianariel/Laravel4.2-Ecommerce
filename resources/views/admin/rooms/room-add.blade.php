@@ -246,14 +246,18 @@
                                                                         //$prod = Product::where('id', $rm->product_id)->first();
                                                                         $tempprod = new Product();
                                                                         $prod = $tempprod->getSingleProductInfoForView($rm->product_id);
-                                                                        $strReplace = \Config::get("const.file.s3-path");
-                                                                        $path = str_replace($strReplace, '', $prod->media_link);
-                                                                        $path = $strReplace . 'thumb-' . $path;
-                                                                        echo '<tr><td width="20%"><img src="'.$path.'"/></td>';
-                                                                        echo '<td>'.$rm->product_id.'</td>';
-                                                                        echo '<td>'.$prod->product_name.'</td>';
-                                                                        echo '<td>'.$rm->product_color.'</td>';
-                                                                        echo '<td width="20%"><a href="javascript:;" class="btn btn-sm blue btn-edit-product" data-xpos="'.$rm->x.'" data-ypos="'.$rm->y.'" data-heroimageid="hero_image_1" data-productid="'.$rm->product_id.'" data-productcolor="'.$rm->product_color.'" data-tagicon="'.$rm->tag_type.'"><i class="fa fa-pencil"></i></a> <a href="javascript:;" class="btn btn-sm red btn-delete-product" data-heroimageid="hero_image_1" data-productid="'.($key+1).'"><i class="fa fa-times"></i></a></td></tr>';
+                                                                        if($prod)
+                                                                        {
+                                                                            $strReplace = \Config::get("const.file.s3-path");
+                                                                            $path = str_replace($strReplace, '', $prod->media_link);
+                                                                            $path = $strReplace . 'thumb-' . $path;
+                                                                            echo '<tr><td width="20%"><img src="'.$path.'"/></td>';
+                                                                            echo '<td>'.$rm->product_id.'</td>';
+                                                                            echo '<td>'.$prod->product_name.'</td>';
+                                                                            echo '<td>'.$rm->product_color.'</td>';
+                                                                            echo '<td width="20%"><a href="javascript:;" class="btn btn-sm blue btn-edit-product" data-xpos="'.$rm->x.'" data-ypos="'.$rm->y.'" data-heroimageid="hero_image_1" data-productid="'.$rm->product_id.'" data-productcolor="'.$rm->product_color.'" data-tagicon="'.$rm->tag_type.'"><i class="fa fa-pencil"></i></a> <a href="javascript:;" class="btn btn-sm red btn-delete-product" data-heroimageid="hero_image_1" data-productid="'.($key+1).'"><i class="fa fa-times"></i></a></td></tr>';
+                                                                        }
+                                                                        
                                                                     }
                                                                 }
                                                                 
@@ -376,14 +380,17 @@
                                                                         //$prod = Product::where('id', $rm->product_id)->first();
                                                                         $tempprod = new Product();
                                                                         $prod = $tempprod->getSingleProductInfoForView($rm->product_id);
-                                                                        $strReplace = \Config::get("const.file.s3-path");
-                                                                        $path = str_replace($strReplace, '', $prod->media_link);
-                                                                        $path = $strReplace . 'thumb-' . $path;
-                                                                        echo '<tr><td width="20%"><img src="'.$path.'"/></td>';
-                                                                        echo '<td>'.$rm->product_id.'</td>';
-                                                                        echo '<td>'.$prod->product_name.'</td>';
-                                                                        echo '<td>'.$rm->product_color.'</td>';
-                                                                        echo '<td width="20%"><a href="javascript:;" class="btn btn-sm blue btn-edit-product" data-xpos="'.$rm->x.'" data-ypos="'.$rm->y.'" data-heroimageid="hero_image_2" data-productid="'.$rm->product_id.'" data-productcolor="'.$rm->product_color.'" data-tagicon="'.$rm->tag_type.'"><i class="fa fa-pencil"></i></a> <a href="javascript:;" class="btn btn-sm red btn-delete-product" data-heroimageid="hero_image_2" data-productid="'.($key+1).'"><i class="fa fa-times"></i></a></td></tr>';
+                                                                        if($prod)
+                                                                        {
+                                                                            $strReplace = \Config::get("const.file.s3-path");
+                                                                            $path = str_replace($strReplace, '', $prod->media_link);
+                                                                            $path = $strReplace . 'thumb-' . $path;
+                                                                            echo '<tr><td width="20%"><img src="'.$path.'"/></td>';
+                                                                            echo '<td>'.$rm->product_id.'</td>';
+                                                                            echo '<td>'.$prod->product_name.'</td>';
+                                                                            echo '<td>'.$rm->product_color.'</td>';
+                                                                            echo '<td width="20%"><a href="javascript:;" class="btn btn-sm blue btn-edit-product" data-xpos="'.$rm->x.'" data-ypos="'.$rm->y.'" data-heroimageid="hero_image_2" data-productid="'.$rm->product_id.'" data-productcolor="'.$rm->product_color.'" data-tagicon="'.$rm->tag_type.'"><i class="fa fa-pencil"></i></a> <a href="javascript:;" class="btn btn-sm red btn-delete-product" data-heroimageid="hero_image_2" data-productid="'.($key+1).'"><i class="fa fa-times"></i></a></td></tr>';
+                                                                        }
                                                                     }
                                                                 }
                                                             ?>
@@ -504,14 +511,17 @@
                                                                         //$prod = Product::where('id', $rm->product_id)->first();
                                                                         $tempprod = new Product();
                                                                         $prod = $tempprod->getSingleProductInfoForView($rm->product_id);
-                                                                        $strReplace = \Config::get("const.file.s3-path");
-                                                                        $path = str_replace($strReplace, '', $prod->media_link);
-                                                                        $path = $strReplace . 'thumb-' . $path;
-                                                                        echo '<tr><td width="20%"><img src="'.$path.'"/></td>';
-                                                                        echo '<td>'.$rm->product_id.'</td>';
-                                                                        echo '<td>'.$prod->product_name.'</td>';
-                                                                        echo '<td>'.$rm->product_color.'</td>';
-                                                                        echo '<td width="20%"><a href="javascript:;" class="btn btn-sm blue btn-edit-product" data-xpos="'.$rm->x.'" data-ypos="'.$rm->y.'" data-heroimageid="hero_image_3" data-productid="'.$rm->product_id.'" data-productcolor="'.$rm->product_color.'" data-tagicon="'.$rm->tag_type.'"><i class="fa fa-pencil"></i></a> <a href="javascript:;" class="btn btn-sm red btn-delete-product" data-heroimageid="hero_image_3" data-productid="'.($key+1).'"><i class="fa fa-times"></i></a></td></tr>';
+                                                                        if($prod)
+                                                                        {
+                                                                            $strReplace = \Config::get("const.file.s3-path");
+                                                                            $path = str_replace($strReplace, '', $prod->media_link);
+                                                                            $path = $strReplace . 'thumb-' . $path;
+                                                                            echo '<tr><td width="20%"><img src="'.$path.'"/></td>';
+                                                                            echo '<td>'.$rm->product_id.'</td>';
+                                                                            echo '<td>'.$prod->product_name.'</td>';
+                                                                            echo '<td>'.$rm->product_color.'</td>';
+                                                                            echo '<td width="20%"><a href="javascript:;" class="btn btn-sm blue btn-edit-product" data-xpos="'.$rm->x.'" data-ypos="'.$rm->y.'" data-heroimageid="hero_image_3" data-productid="'.$rm->product_id.'" data-productcolor="'.$rm->product_color.'" data-tagicon="'.$rm->tag_type.'"><i class="fa fa-pencil"></i></a> <a href="javascript:;" class="btn btn-sm red btn-delete-product" data-heroimageid="hero_image_3" data-productid="'.($key+1).'"><i class="fa fa-times"></i></a></td></tr>';
+                                                                        }
                                                                     }
                                                                 }
                                                                 
