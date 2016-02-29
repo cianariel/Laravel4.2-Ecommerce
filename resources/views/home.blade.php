@@ -7,6 +7,7 @@
         <div class="hero-background"></div>
         <div class="color-overlay"></div>
 
+        @if(empty($userData['email']))
         <div class="container fixed-sm full-480">
             <div class="col-md-5 col-xs-6 full-620 col-md-offset-1 why-us">
                 <h2>Ideas for Smarter Living</h2>
@@ -16,6 +17,8 @@
                     <li class="shop-cool"><i class="m-icon m-icon--products"></i>Shop for cool gadgets and unique decor</li>
                 </ul>
             </div>
+
+
             <div  id="publicApp" ng-app="publicApp" ng-controller="publicController"
                   class="col-md-4 col-xs-6 col-md-offset-1 hero-box qiuck-signup hidden-620" ng-cloak>
 <!--            <div class="col-md-4 col-xs-6 col-md-offset-1 hero-box qiuck-signup hidden-620">-->
@@ -33,11 +36,12 @@
                         <input class="form-control" ng-model="SubscriberEmail" type="text" placeholder="Email" name="email">
                     </span>
                     
-                    <button ng-click="subscribe()" class="btn btn-success col-xs-12"  href="#">Sign up</button>
+                    <button ng-click="subscribe('')" class="btn btn-success col-xs-12"  href="#">Sign up</button>
                     <div class="line-wrap">or</div>
                     <button ng-click="registerWithFB()" class="btn btn-info col-xs-12" href="#"><i class="m-icon m-icon--facebook-id"></i>Sign up with Facebook</button>
                 </form>
             </div>
+            @endif
 
 
         </div>

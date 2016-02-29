@@ -65,7 +65,7 @@
                         <input class="form-control" ng-model="Email" type="text" placeholder="Email" name="email">
                         <input class="form-control" ng-model="Password" type="password" placeholder="Password" name="password">
                     <div class="modal-minor-text">
-                            <input type="checkbox" id="remember" name="remember"><label for="remember"><span></span>Remember me
+                            <input ng-model="rememberMe" type="checkbox" id="remember" name="remember"><label for="remember"><span></span>Remember me
                             </label>
                     </div>
 
@@ -88,7 +88,7 @@
                         <input class="form-control" ng-model="Password" type="password" placeholder="Password" >
                         <input class="form-control" ng-model="PasswordConf" type="password" placeholder="Retype Password" >
 
-                        <a class="btn btn-success col-xs-12" ng-click="registerUser()" href="#">Sign up</a>
+                        <a class="btn btn-success col-xs-12" ng-click="registerSubscribedUser()" href="#">Sign up</a>
 
                 </form>
             </div>

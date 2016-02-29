@@ -4,6 +4,8 @@
 
     use App\Events\SendActivationMail;
     use App\Events\SendResetEmail;
+    use App\Events\SendWelcomeMail;
+
     use App\Models\Subscriber;
     use Crypt;
     use Illuminate\Http\Request;
@@ -87,6 +89,7 @@
         {
             // reset the token
             $this->setCookie('hide-signup','',1440);
+            $this->setCookie('auth-token',null);
 
             // get token form input or session
             $tokenValue = session('auth.token');
@@ -129,6 +132,7 @@
         public function authenticate(Request $request)
         {
             $credentials = $request->only('Email', 'Password');
+            //$token = '';
 
             try
             {
@@ -186,6 +190,9 @@
             $response['message'] = "Successfully authenticated.";
             $response['roles'] = $roles;
 
+            if($request['RememberMe'] == true)
+                $this->setCookie('auth-token',$token);
+
             return $this->setStatusCode(\Config::get("const.api-status.success-redirect"))
                 ->setAuthToken($token)
                 ->makeResponse($response);
@@ -196,7 +203,7 @@
          * @param Request $request
          * @return mixed
          * @throws \Exception
-         */
+         *//**/
         public function fbLogin(Request $request)
         {
 
@@ -214,12 +221,26 @@
             */
             $userInfo = $this->user->FindOrCreateUser($fbUser);
 
+            // send welcome mail to new user
+            if(!empty($userInfo['NewUser']) && ($userInfo['NewUser'] == true) )
+            {
+                \Event::fire(new SendWelcomeMail
+                (
+                    $userInfo['name'],
+                    $userInfo['email']
+                ));
+            }
 
             /*
             Set authentication code and pass JSON data in API response.
             */
             $token = JWTAuth::fromUser($userInfo);
             session(['auth.token' => isset($token) ? $token : null]);
+
+            if(isset($token))
+            {
+                $this->setCookie('auth-token',$token);
+            }
 
              return redirect()->action('UserController@userProfile');
 
@@ -457,6 +478,16 @@
                 {
                     $user->status = "Active";
                     $user->save();
+
+                    // send welcome mail to new user
+
+                        \Event::fire(new SendWelcomeMail
+                        (
+                            $user['name'],
+                            $user['email']
+                        ));
+
+
                     $message = "Thanks " . $user->name . " for verify your email";
 
                     return Redirect::to('login')->withFlashMessage('Email verification complete.');

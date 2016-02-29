@@ -46,6 +46,7 @@
         $tags = wp_get_post_tags($post->ID);
         $categories = get_the_category($post->ID);
         $firstTag = $tags[0];
+
         foreach($categories as $cat){
             if($cat->name != 'Smart Home'){
                 if($cat->category_parent == 0){
@@ -275,16 +276,10 @@
 
     <section class="related-items pale-grey-bg">
         <div class="main-content full-620 fixed-sm">
-            <h3 class="green">Related Products</h3>
-            <div class="related-products grid-box-3">
             <?php 
                 $limit=10;
                 $offset = 0;
-                //$url = str_replace('/ideas',"", get_site_url()) . '/api/paging/get-grid-content/1/3/'.$firstTag->name.'/product';
-                $url = "http://dev.ideaing.com:81/api/paging/get-grid-content/1/3/kitchen/product";
-                if($tag && $tag != 'false'){
-                    $url .= '&tag=' . $tag;
-                }
+                $url = str_replace('/ideas',"", get_site_url()) . '/api/paging/get-grid-content/1/3/'.$firstTag->name.'/product';
                 $ch = curl_init();
                 curl_setopt($ch, CURLOPT_URL, $url);
                 curl_setopt($ch, CURLOPT_HEADER, 0);
@@ -294,7 +289,9 @@
                 $json = json_decode($json);
                 $relatedProducts = $json->regular;
             ?>
-                @if(isset($relatedProducts) && ($relatedProducts != null) )
+            @if(isset($relatedProducts) && ($relatedProducts != null) && count($relatedProducts)>0 )
+                <h3 class="green">Related Products</h3>
+                <div class="related-products grid-box-3">
                     @foreach( $relatedProducts as $product )
                         <div class="box-item product-box ">
                             <img class="img-responsive" src="{{ $product->media_link_full_path }}">
@@ -328,8 +325,8 @@
                             </div>
                         </div>
                     @endforeach
-                @endif
-            </div>
+                </div>
+            @endif
             <h3 class="orange">Related Ideas</h3><br />
             <div class="related-ideas  grid-box-3">
 

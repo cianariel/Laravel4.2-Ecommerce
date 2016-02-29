@@ -143,3 +143,23 @@
 		}
 	}
 }
+@mixin idea-hero-tags($color) {
+      span{
+/*        background-image: url('/assets/images/icons/bag-glow-red.png');*/
+      }
+      h6{
+        background: $color;
+      }
+      img.round{
+        border-color: $color !important;
+        -webkit-box-shadow: 0px 0px 62px 5px $color;
+        -moz-box-shadow: 0px 0px 62px 5px $color;
+        box-shadow: 0px 0px 62px 5px $color;
+      }
+      .hover-box{
+        &::before{
+          border-color: transparent transparent $color transparent;
+        }
+      }
+
+}

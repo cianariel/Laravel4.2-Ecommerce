@@ -914,7 +914,7 @@ nav {
     padding-right: 0;
   }
 
-  &.landing-hero > .container{
+  &.landing-hero > div > .container{
     padding-top: 100px;
   }
 
@@ -2149,10 +2149,10 @@ article.product{
     p:first-child{
       &:first-letter{
         color: $dark-orange;
-        font-size: 5rem;
+        font-size: 4.5rem;
         line-height: 1;
         float: left;
-        margin-top: -36px;
+/*        margin-top: -36px;*/
       }
     }
   }
@@ -3079,7 +3079,7 @@ body.single-post{
     .article-content ul li{
         list-style: disc;
     }
-    .related-products, .related-ideas{
+    .related-ideas, .related-products{
         max-width: 1170px;
         margin: auto;
     }
@@ -4904,6 +4904,10 @@ body.room-landing{
                 margin-left: -55px;
             }
         }
+        .rsOverflow > .hero-tags .tag{
+            margin-top: -40px;
+            margin-left: -40px;
+        }
     }
     #hero-nav{
         border-top: 0px;
@@ -4940,80 +4944,29 @@ body.room-landing{
     }
 
     .red{
-      span{
-/*        background-image: url('/assets/images/icons/bag-glow-red.png');*/
-      }
-      h6{
-        background: $pinterest-red;
-      }
-      img.round{
-        border-color: $pinterest-red !important;
-        -webkit-box-shadow: 0px 0px 62px 5px $pinterest-red;
-        -moz-box-shadow: 0px 0px 62px 5px $pinterest-red;
-        box-shadow: 0px 0px 62px 5px $pinterest-red;
-      }
-      .hover-box{
-        &::before{
-          border-color: transparent transparent $pinterest-red transparent;
-        }
-      }
+        @include idea-hero-tags($pinterest-red);
     }
 
     .blue{
-      span{
-/*        background-image: url('/assets/images/icons/bag-glow-blue.png');*/
-      }
-      h6{
-        background: $sky-blue;
-      }
-      img.round{
-        border-color: $sky-blue !important;
-        -webkit-box-shadow: 0px 0px 62px 5px $sky-blue;
-        -moz-box-shadow: 0px 0px 62px 5px$sky-blue;
-        box-shadow: 0px 0px 62px 5px $sky-blue;
-      }
-      .hover-box{
-        &::before{
-          border-color: transparent transparent $sky-blue transparent;
-        }
-      }
+        @include idea-hero-tags($sky-blue);
     }
     .green{
-      span{
-/*        background-image: url('/assets/images/icons/bag-glow-green.png');*/
-      }
-      h6{
-        background: $pine-green;
-      }
-      img.round{
-        border-color: $pine-green !important;
-        -webkit-box-shadow: 0px 0px 62px 5px $pine-green;
-        -moz-box-shadow: 0px 0px 62px 5px $pine-green;
-        box-shadow: 0px 0px 62px 5px $pine-green;
-      }
-      .hover-box{
-        &::before{
-          border-color: transparent transparent $pine-green transparent;
-        }
-      }
+        @include idea-hero-tags($pine-green);
     }
 
     .pink{
+        @include idea-hero-tags($iridium);
       img.round{
         border-color: $iridium;
       }
     }
 
     .orange{
-      img.round{
-        border-color: $dark-orange;
-      }
+        @include idea-hero-tags($dark-orange);
     }
 
     .yellow{
-      img.round{
-        border-color: yellow;
-      }
+        @include idea-hero-tags(yellow);
     }
   }
 
@@ -5111,7 +5064,7 @@ body.room-landing{
     background: #fff;
     z-index: 10;
     position: relative;
-    margin-top: 7px;
+    margin-top: 10px;
 
     h6{
       padding: 15px;
@@ -5135,7 +5088,7 @@ body.room-landing{
       border-color: transparent transparent #007bff transparent;
 
       left:30%;
-      top: -7px;
+      top: -10px;
     }
   }
 
@@ -6829,7 +6782,7 @@ footer.about-footer{
 }
 
 
-body.shoppage, body.profilepage, body.single-post, body.product-details{
+body.shoppage, body.profilepage, body.single-post, body.product-details, body.aboutus-page{
     .clearfix.pocket{
         height: 100px;
     }
@@ -8138,41 +8091,42 @@ html.hide-overflow{
     top: 115px;
 }
 
+.subscribe_email_popup{
 #subscribe_email_popup{
-    position: fixed;
-    left: 0px;
-    top: 0px;
-    width: 100%;
-    height: 100%;
-    z-index: 1000;
-    visibility: hidden;
-    .content-container{
-        position:absolute;
-        width:500px; 
-        left:50%; 
-        top: 50%; 
-        transform:translate(-50%, -50%); 
-        background-color:white;
-        padding-bottom: 50px;
-        .content-holder{
-            width: 500px; 
-            padding-left: 174px; 
-            padding-top: 50px; 
-            padding-right: 13px;
-        }
+        padding: 25px;
     }
     .img-holder{
-        position:absolute; 
-        left:calc(50% - 250px); 
-        top: calc(50% - 49px); 
-        transform:translate(-50%, -50%); 
-        width:300px; 
-        height:300px; 
-        border-radius:150px; 
-        border-color:white; 
-        border-style:solid; 
-        border-width:3px
+        position: absolute;
+        top: -50px;
+        left: -100px;
+        >img{
+            border: 2px solid #fff;
+            border-radius: 500px;
+        }
     }
+
+    @media (max-width: 990px){
+        .content-container{
+            margin-top: 50px;
+            margin-bottom: 50px;
+    width: 100%;
+        }
+        .img-holder{
+            display: none;
+        }
+    }
+    @media (min-width: 991px){
+        .modal-dialog{
+            top: 40px;;
+        }
+    .content-container{
+            margin-top: 50px;
+            margin-bottom: 50px;
+            width: calc(100% - 250px);
+            float: right;
+        }
+    }
+
 }
 .alert .close{
     float: right;
@@ -8221,6 +8175,70 @@ body.login-signup{
         padding: 35px;
         overflow: hidden;
     }
+}
+
+body.aboutus-page{
+    .space
+    {
+        height:30px;
+    }
+    .about_para_1
+    {
+        left:0px; width:100%; background-color:#eeeeee;
+        margin-top: 60px;
+    }
+    .para1_center
+    {
+        max-width:1000px; 
+        margin: auto;
+    }
+    .para1_image
+    {
+        max-width:100%;max-height:500px
+    }
+    .para1_content
+    {
+        padding-left:10%; padding-right:10%
+    }
+    .para1_button
+    {
+        width:100px; margin-top:30px; height:60px
+    }
+    .about_para_2
+    {
+        position:relative;left:0px; width:100%; background-image:url("/assets/images/about2.png");background-size: cover;background-repeat: no-repeat;background-position: 50% 100%; z-index:1
+    }
+    .para2_space
+    {
+        height:460px
+    }
+    .about_para_3
+    {
+        overflow: auto;left:0px; width:100%; background-color:#dddddd; margin-top:-200px; z-index:0; 
+    }
+    .about_para_4
+    {
+        left:0px; width:100%; background-color:#eeeeee; z-index:0
+    }
+    .para3_1
+    {
+/*        position:absolute;  left:100%; top:50%; transform:translate(-120%, -50%)*/
+    }
+    .para3_2
+    {
+/*        position:absolute;  left:0%; top:50%; transform:translate(20%, -50%)*/
+    }
+    .para3_content
+    {
+        padding-top: 125px;
+        position:relative;
+        background-color:#cccccc; 
+        height:400px;
+        &:nth-child(2){
+            background-color:#dddddd; 
+        }
+    }
+    
 }
 
 @media (max-width: 620px){
