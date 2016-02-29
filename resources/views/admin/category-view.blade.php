@@ -116,6 +116,7 @@
                                                                     <th>Category Id</th>
                                                                     <th>Category Name</th>
                                                                     <th>URL Info</th>
+                                                                    <th ng-if="tempCategoryList.length">Icon</th>
                                                                     <th>URL Structure</th>
                                                                 </tr>
                                                                 </thead>
@@ -128,6 +129,7 @@
                                                                 <td>@{{ category.id }}</td>
                                                                 <td>@{{ category.category }}</td>
                                                                 <td>@{{ category.info }}</td>
+                                                                <td ng-if="tempCategoryList.length">@{{ category.icon }}</td>
                                                                 <td>
                                                                     <lable> {{Request::root()}}/@{{ buildURL(category.info )}} </lable>
                                                                 </td>
@@ -139,6 +141,8 @@
                                                                 </td>
                                                                 <td><input type="text"
                                                                            ng-model="tableTemporaryValue.info"/></td>
+                                                                <td ng-if="tempCategoryList.length"><input type="text"
+                                                                           ng-model="tableTemporaryValue.icon"/></td>
                                                                 <td>
                                                                     <button ng-click="updateCategory($index)">Save
                                                                     </button>
