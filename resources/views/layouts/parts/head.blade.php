@@ -16,7 +16,7 @@ if (! preg_match("/\/ideas\//", $actual_link))
 <meta charset="<?php // bloginfo('charset'); ?>">
 
 <!--		<link href="//www.google-analytics.com" rel="dns-prefetch">-->
-<!--        <link href="--><?php //echo get_template_directory_uri(); ?><!--/img/icons/favicon.ico" rel="shortcut icon">-->
+        <link href="/favicon.png" rel="shortcut icon">
 <!--        <link href="--><?php //echo get_template_directory_uri(); ?><!--/img/icons/touch.png" rel="apple-touch-icon-precomposed">-->
 
 <script>
