@@ -140,7 +140,11 @@ class PageController extends ApiController
 
     public function getStories($limit, $offset, $tag)
     {
-        $url = URL::to('/') . '/ideas/feeds/index.php?count=' . $limit . '&offset=' . $offset;
+        if (env('FEED_PROD') == true)
+            $url = 'http://ideaing.com//ideas/feeds/index.php?count=' . $limit . '&offset=' . $offset;
+        else
+            $url = URL::to('/') . '/ideas/feeds/index.php?count=' . $limit . '&offset=' . $offset;
+
         if ($tag && $tag != 'false') {
             $url .= '&tag=' . $tag;
         }
@@ -204,7 +208,10 @@ class PageController extends ApiController
 
     public function getRelatedStories($currentStoryID, $limit, $tags)
     {
-        $url = URL::to('/') . '/ideas/feeds/index.php?count=' . $limit;
+        if (env('FEED_PROD') == true)
+            $url = 'http://ideaing.com/ideas/feeds/index.php?count=' . $limit;
+        else
+            $url = URL::to('/') . '/ideas/feeds/index.php?count=' . $limit;
 
         if ($tags && $tags != 'false') {
             $url .= '&tag_in=' . implode(',', $tags);
