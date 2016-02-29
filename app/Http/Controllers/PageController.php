@@ -13,6 +13,7 @@ use App\Models\ProductCategory;
 use App\Models\Tag;
 use App\Models\Room;
 use URL;
+use Input;
 
 class PageController extends ApiController
 {
@@ -382,9 +383,10 @@ class PageController extends ApiController
     }
 
 
-    public function getSocialCounts($url){
+    public function getSocialCounts($url = ''){
+        $input = Input::all();
 
-        $url = 'http://' . $url;
+        $url = 'http://' . $input['url'];
 
         if(!strpos($url, 'ideaing')){ // TODO - make more strict check on Production
             return 'Stop trying to hack my app, thanks';
@@ -393,27 +395,24 @@ class PageController extends ApiController
         $data['facebook'] = self::getFacebookLikes($url);
         $data['twitter'] = self::getTweets($url);
         $data['gplus'] = self::getPlusones($url);
-        $data['pintereset'] = self::getPlusones($url);
+        $data['pinterest'] = self::getPinterestShares($url);
 
         return $data;
     }
 
 
     private function getFacebookLikes($url) {
-//        $json_string = file_get_contents('https://api.facebook.com/method/links.getStats?urls=' . $url . '&format=json');
-        $json_string = file_get_contents('https://graph.facebook.com/v2.2/?id='.$url.'&fields=og_object{engagement}&access_token='.env('FB_APP').'|' . env('FB_SECRET'));
+        $json_string = file_get_contents('http://graph.facebook.com/?id='.$url);
         $json = json_decode($json_string, true);
-        if(isset($json[0]['total_count'])){
-            return intval( $json[0]['total_count'] );
+        if(isset($json['shares'])){
+            return intval($json['shares']);
         } else {
             return 0;
         }
     }
 
     private function getTweets($url) {
-//        TODO -- add auth and use new endpoint https://api.twitter.com/1.1/search/tweets.json?q=
-
-//        $json_string = file_get_contents('http://urls.api.twitter.com/1/urls/count.json?url=' . $url);
+//        $json_string = file_get_contents(' https://api.twitter.com/1.1/search/tweets.json?q=' . $url);
 //        $json = json_decode($json_string, true);
 //        if(isset($json['count'])){
 //            return intval( $json['count'] );
@@ -427,15 +426,15 @@ class PageController extends ApiController
         $curl = curl_init();
         curl_setopt($curl, CURLOPT_URL, "https://clients6.google.com/rpc");
         curl_setopt($curl, CURLOPT_POST, 1);
-        curl_setopt($curl, CURLOPT_POSTFIELDS, '[{"method":"pos.plusones.get","id":"p","params":{"nolog":true,"id":"' . $url . '","source":"widget","userId":"@viewer","groupId":"@self"},"jsonrpc":"2.0","key":"p","apiVersion":"v1"}]');
+        curl_setopt($curl, CURLOPT_POSTFIELDS, '{"method":"pos.plusones.get","id":"p","params":{"nolog":true,"id":"' . $url . '","source":"widget","userId":"@viewer","groupId":"@self"},"jsonrpc":"2.0","key":"p","apiVersion":"v1"}');
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($curl, CURLOPT_HTTPHEADER, array('Content-type: application/json'));
         $curl_results = curl_exec ($curl);
         curl_close ($curl);
 
         $json = json_decode($curl_results, true);
-        if(isset($json[0]['result']['metadata']['globalCounts']['count'])){
-            return intval( $json[0]['result']['metadata']['globalCounts']['count'] );
+        if(isset($json['result']['metadata']['globalCounts']['count'])){
+            return intval( $json['result']['metadata']['globalCounts']['count'] );
         } else {
             return 0;
         }
@@ -443,9 +442,11 @@ class PageController extends ApiController
 
 
     function getPinterestShares($url) {
-        $json_string = file_get_contents('http://api.pinterest.com/v1/urls/count.json?url='.$url);
-        $json = json_decode($json_string, true);
-        if (isset($json['count'])) {
+        $json_string = file_get_contents('http://api.pinterest.com/v1/urls/count.json?&url='.$url .'&format=json');
+        $json_string = str_replace('receiveCount(', '', $json_string);
+        $json_string = str_replace(')', '', $json_string);
+        $json = json_decode( $json_string, true );
+        if (isset($json)) {
             return intval($json['count']);
         } else {
             return 0;
