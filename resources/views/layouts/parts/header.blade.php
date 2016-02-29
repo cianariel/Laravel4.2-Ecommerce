@@ -1,3 +1,7 @@
+<?php
+  // !! IMPORTANT !! -- please use only pure PHP here, no Laravel, othrwise the header will break   in Wordpress !!
+?>
+
 <!--    <div {{--id="pagingApp" ng-app="pagingApp" ng-controller="headerController"--}}>-->
 <div id="publicApp" ng-app="publicApp" ng-controller="publicController">
 <header class="colophon">
@@ -88,6 +92,10 @@
                                                     <div class="menu-group">
                                                         <div><a href="/user/profile">My Profile</a> </div>
                                                         <div><a href="#" class="edit-profile-link" ng-click="openProfileSetting()">Edit Profile</a> </div>
+                                                        <?php if(isset($isAdmin) && ($isAdmin == true)){ ?>
+                                                        <div><a href="/admin/dashboard" target="_blank" class="edit-profile-link">Admin Panel</a> </div>
+                                                        <?php } ?>
+
                                                     </div>
                                                     <div class="menu-group">
                                                         <div><a href="#">Invite Friends</a> </div>
@@ -154,52 +162,15 @@
                 <li><a class="disc" href="#"><i class="m-icon m-icon--discuss-active"></i>&nbsp; DISCUSS</a></li>
             </ul>
         </div>
-        <div id="mobile-home-menu" class="mobile-top-menu mobile-mid-menu">
-            <ul>
-                <li><a class="box-link @if(isset($roomInformation['Permalink']) && $roomInformation['Permalink'] == 'bedroom') active @endif " href="{{url('idea/bedroom')}}">Bedroom</a></li>
-                <li><a class="box-link @if(isset($roomInformation['Permalink']) && $roomInformation['Permalink'] == 'office') active @endif " href="{{url('idea/office')}}">Office</a></li>
-                <li><a class="box-link @if(isset($roomInformation['Permalink']) && $roomInformation['Permalink'] == 'living') active @endif " href="{{url('idea/living')}}">Living</a></li>
-                <li><a class="box-link @if(isset($roomInformation['Permalink']) && $roomInformation['Permalink'] == 'outdoor') active @endif " href="{{url('idea/outdoor')}}">Outdoor</a></li>
-                <li><a class="box-link @if(isset($roomInformation['Permalink']) && $roomInformation['Permalink'] == 'lighting') active @endif " href="{{url('idea/lighting')}}">Lighting</a></li>
-                <li><a class="box-link @if(isset($roomInformation['Permalink']) && $roomInformation['Permalink'] == 'decor') active @endif" href="{{url('idea/decor')}}">Decor</a></li>
 
-            </ul>
-        </div>
+        <?php
 
-        <nav class="mid-nav rooms ">
-            <div class="container full-sm fixed-sm hidden-xs ">
-                <ul class="wrap col-lg-9">
-                    <li class="home ">
-                        <a class="box-link @if(!isset($roomInformation['Permalink']) || $roomInformation['Permalink'] == '/') active @endif"   href="/">
-                        <span class="box-link-active-line"></span>
-                            <i class="m-icon m-icon--smart-home"></i> Smart Home
-                        </a>
-                    </li>
+                if(!function_exists('is_single')){ ?>
+                        @include('room.header-menu')
+           <?php     }
 
-                    <li><a class="box-link @if(isset($roomInformation['Permalink']) && $roomInformation['Permalink'] == 'kitchen') active @endif " href="{{url('idea/kitchen')}}">Kitchen</a></li>
-                    <li><a class="box-link @if(isset($roomInformation['Permalink']) && $roomInformation['Permalink'] == 'bath') active @endif " href="{{url('idea/bath')}}">Bath</a></li>
-                    <li><a class="box-link @if(isset($roomInformation['Permalink']) && $roomInformation['Permalink'] == 'bedroom') active @endif " href="{{url('idea/bedroom')}}">Bedroom</a></li>
-                    <li><a class="box-link @if(isset($roomInformation['Permalink']) && $roomInformation['Permalink'] == 'office') active @endif " href="{{url('idea/office')}}">Office</a></li>
-                    <li><a class="box-link @if(isset($roomInformation['Permalink']) && $roomInformation['Permalink'] == 'living') active @endif " href="{{url('idea/living')}}">Living</a></li>
-                    <li><a class="box-link @if(isset($roomInformation['Permalink']) && $roomInformation['Permalink'] == 'outdoor') active @endif " href="{{url('idea/outdoor')}}">Outdoor</a></li>
-                    <li><a class="box-link @if(isset($roomInformation['Permalink']) && $roomInformation['Permalink'] == 'lighting') active @endif " href="{{url('idea/lighting')}}">Lighting</a></li>
-                    <li><a class="box-link @if(isset($roomInformation['Permalink']) && $roomInformation['Permalink'] == 'decor') active @endif" href="{{url('idea/decor')}}">Decor</a></li>
+        ?>
 
-                </ul>
-            </div>
-            <div class="container mobile-menu visible-xs full-sm fixed-sm">
-                <ul class="wrap col-lg-9">
-                    <li ><a class="box-link @if(!isset($roomInformation['Permalink']) || $roomInformation['Permalink'] == '/') active @endif"   href="/">Smart Home</a></li>
-                    <li><a class="box-link @if(isset($roomInformation['Permalink']) && $roomInformation['Permalink'] == 'kitchen') active @endif " href="{{url('idea/kitchen')}}">Kitchen</a></li>
-                    <li><a class="box-link @if(isset($roomInformation['Permalink']) && $roomInformation['Permalink'] == 'bath') active @endif " href="{{url('idea/bath')}}">Bath</a></li>
-                </ul>
-                <a class="right-menu-arrow pull-right" data-toggle="#mobile-home-menu" href="#">
-                    <i class="m-icon--Header-Dropdown down"></i>
-                    <i class="m-icon--footer-up-arrow up"></i>
-                </a>                
-                
-            </div>
-        </nav>
     <?php if(isset($userData['login']) && $userData['login']) { ?>
 
     <script type="text/ng-template"  id="profile-setting.html">
@@ -429,54 +400,41 @@ if((isset($userData['user-data']['hide-signup'])) && ($userData['user-data']['hi
 {
 
 ?>
+    <input ng-model="canOpenEmailPopup" ng-init="canOpenEmailPopup = 1" type="hidden" >
 
-<SCRIPT>
-
-    setTimeout(function() {
-        element = document.getElementById('subscribe_email_popup');
+    <script type="text/ng-template" id="subscribe_email_popup.html">
+        <div id="subscribe_email_popup" ng-init="initEmailpopupPage()">
+            <div id="publicApp">
+                <div class="content-container">
+                    <div class="content-holder">
+                        <div>
+                            <h4>Subscribe me to the world's finest design ideas community</h4></div><br><div>
+                            <h5>Enter your email</h5> 
+                            <strong style="color: red">@{{ responseMessage }}</strong>
+                        </div>
+                    <div>
+                        <input class="form-control" ng-model="data.SubscriberEmail" placeholder="me@email.com" type="text"></div>
+                        <br>
+                        <div>
+                            <a class="btn btn-success form-control" ng-click="subscribe(data)">Subscribe to Ideaing's newsletter</a>
+                        </div>
+                        <br>
+                        <p>
+                            <a href="/hide-signup">Never mind</a>
+                        </p>
+                    </div>
+                </div>
+                <div class="img-holder"><img src="/assets/images/emailpopupimg.png" style="width:100%; height:100%; position:relative"></div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
         
-        if (typeof(element) != 'undefined' && element != null)
-        {
-            element.style.visibility = 'visible';
-        }
-        else
-        {
-            element = document.createElement('div');
-            element.innerHTML = "<div id='publicApp' ng-app='publicApp' ng-controller='publicController'>"+
-          //  element.innerHTML = "<div>"+
-                                "<div style = 'position:absolute; left:0px; top:0px; width:100%; height:100%; background-color:black; opacity:0.5'></div>" +
-                                "<div class='content-container' >" + 
-                                "<div class='content-holder'>" +
-                                "<div><h4>Subscribe me to the world's finest design ideas community</h4></div><br>" + 
-                                "<div><h5>Enter your email</h5> <strong style=\"color: red\"><?php echo "{{ responseMessage }}" ?></strong></div>" +
-                                "<div><input class='form-control' type = 'text' ng-model='SubscriberEmail' placeholder = 'me@email.com'></div><br>" +
-                                "<div ><a class='btn btn-success form-control' ng-click='subscribe()'>Subscribe to Ideaing's newsletter</a></div><br>" +
-                              //  "<div ><a class='btn btn-success form-control'  href='javascript:closeSubscriptionPopup();''>Subscribe to Ideaing's newsletter</a></div><br>" +
-                                "<p><a href = '/hide-signup'>Never mind</a></p></div></div>" +
-                                //"<p><a href = 'javascript:closeSubscriptionPopup();'>Never mind</a></p></div></div>" +
-                                "<div class='img-holder' >" +
-                                "<img src = '/assets/images/emailpopupimg.png' style = 'width:100%; height:100%; position:relative'></div>"+
-                                "</div>";
-            
-            element.id = 'subscribe_email_popup';
-            
-            element.style.visibility = 'visible';   
-            document.body.appendChild(element);
+    </script>
 
-
-        }
-
-    }, 300000); // 300000
-   function closeSubscriptionPopup()
-    {
-        document.getElementById('subscribe_email_popup').style.visibility = 'hidden';
-    }
-
-
-</script>
 <?php
     }
 
 } ?>
 
 
+    

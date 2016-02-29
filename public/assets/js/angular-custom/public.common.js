@@ -48,23 +48,47 @@ publicApp.controller('ModalInstanceCtrltest', function ($scope, $uibModalInstanc
     };
 });
 
-publicApp.controller('publicController', ['$scope', '$http', '$window', '$timeout', '$location', '$anchorScroll', '$uibModal', 'layoutApi','$compile', 'FileUploader'
-    , function ($scope, $http, $window, $timeout, $location, $anchorScroll, $uibModal, layoutApi,$compile,FileUploader) {
+publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$window', '$timeout', '$location', '$anchorScroll', '$uibModal', 'layoutApi', '$compile', 'FileUploader'
+    , function ($rootScope, $scope, $http, $window, $timeout, $location, $anchorScroll, $uibModal, layoutApi, $compile, FileUploader) {
 
         // Header profile option open and close on click action.
+        if (!$rootScope.isCallEmailPopup) {
+            $timeout(function () {
+                if ($scope.canOpenEmailPopup) {
+                    var templateUrl = "subscribe_email_popup.html";
+                    var modalInstance = $uibModal.open({
+                            templateUrl: templateUrl,
+                            scope: $scope,
+                            size: 'md',
+                            windowClass: 'subscribe_email_popup',
+                            controller: 'ModalInstanceCtrltest'
+                        })
+                        .result.finally(function () {
+                                $scope.uploader.formData = [];
+                            })
+                        ;
+                }
+            }, 300000)  //300000
+        }
+        $rootScope.isCallEmailPopup = true;
 
         $scope.openProfileSetting = function () {
 
             var templateUrl = "profile-setting.html";
             var modalInstance = $uibModal.open({
-                templateUrl: templateUrl,
-                scope: $scope,
-                size: 'lg',
-                windowClass: 'profile-setting-modal',
-                controller: 'ModalInstanceCtrltest'
-            });
+                    templateUrl: templateUrl,
+                    scope: $scope,
+                    size: 'lg',
+                    windowClass: 'profile-setting-modal',
+                    controller: 'ModalInstanceCtrltest'
+                })
+                .result.finally(function () {
+                        $scope.uploader.formData = [];
+                    })
+                ;
 
         };
+
 
         // load shop information.
         layoutApi.getProductsForShopMenu().success(function (response) {
@@ -95,18 +119,14 @@ publicApp.controller('publicController', ['$scope', '$http', '$window', '$timeou
         };
         uploader.onAfterAddingFile = function (fileItem) {
             //   console.info('onAfterAddingFile', fileItem);
-           // console.log($scope.isProfilePage);
-
+            // console.log($scope.isProfilePage);
             // if the page is profile update then this auto upload will work on profile image select
-            if($scope.isProfilePage){
+            if ($scope.isProfilePage) {
                 $scope.oldMediaLink = $scope.mediaLink;
                 $scope.showBrowseButton = !$scope.showBrowseButton;
-				$scope.uploader.formData.push({
-					'isProfilePage': 1
-				});
                 $scope.uploader.uploadAll();
 
-                console.log($scope.oldMediaLink,' : ',$scope.MediaLink);
+                console.log($scope.oldMediaLink, ' : ', $scope.MediaLink);
 
             }
         };
@@ -117,7 +137,7 @@ publicApp.controller('publicController', ['$scope', '$http', '$window', '$timeou
             //   console.info('onBeforeUploadItem', item);
         };
         uploader.onProgressItem = function (fileItem, progress) {
-           //    console.info('onProgressItem');
+            //    console.info('onProgressItem');
             $scope.initProfilePicture('/assets/images/ajax-loader.gif');
         };
         uploader.onProgressAll = function (progress) {
@@ -145,7 +165,7 @@ publicApp.controller('publicController', ['$scope', '$http', '$window', '$timeou
         // initialize variables
         $scope.initPage = function () {
 
-           // $scope.TEST = "TSSSSST";
+            // $scope.TEST = "TSSSSST";
             // console.log($scope.TEST);
 
             // email subscription
@@ -179,7 +199,8 @@ publicApp.controller('publicController', ['$scope', '$http', '$window', '$timeou
             $scope.Permalink = '';
 
             //settings for user profile edit section
-            $scope.isProfilePage = false ;
+            $scope.isProfilePage = false;
+            $scope.uploader.formData = [];
             $scope.showBrowseButton = true;
 
             // popup signup
@@ -238,8 +259,19 @@ publicApp.controller('publicController', ['$scope', '$http', '$window', '$timeou
                 case 200:
                 {
                     $scope.addAlert('success', message);
-                    if (message == 'Successfully password reset')
+                    if (message == 'Successfully password reset') {
                         window.location = '/login';
+                    }
+                    else if (data.data == 'Registration completed successfully') {
+                        //  console.log("credentials : " + $scope.Email + " " + $scope.Password);
+
+                        $scope.loginUser();
+                    } else if (data.data == 'Registration completed successfully,please verify email') {
+                        //  console.log("credentials : " + $scope.Email + " " + $scope.Password);
+
+                        $scope.loginUser();
+                    }
+
 
                 }
                     break;
@@ -250,9 +282,13 @@ publicApp.controller('publicController', ['$scope', '$http', '$window', '$timeou
                     break;
                 case 220:
                 {
-                    $scope.addAlert('success', data.data.message);
-                    if (data.data.message == 'Successfully authenticated.')
-                        $scope.redirectUser(data.data.roles)
+                    if (data.data.message == 'Successfully authenticated.') {
+                        $scope.redirectUser(data.data.roles);
+
+                    } else {
+                        $scope.addAlert('success', data.data.message);
+                    }
+
                 }
                     break;
                 case 410:
@@ -290,16 +326,24 @@ publicApp.controller('publicController', ['$scope', '$http', '$window', '$timeou
         };
 
 
-        $scope.subscribe = function () {
+        // Subscribe a user through email and redirect to registration page.
+        $scope.subscribe = function (formData) {
 
             $scope.responseMessage = '';
+            if ((typeof formData.SubscriberEmail != 'undefined')) //|| (formData.SubscriberEmail != '')
+            {
+                //  console.log('in side :'+ formData.SubscriberEmail);
+                $scope.SubscriberEmail = formData.SubscriberEmail;
+            }
+
+            //console.log('out side :'+ $scope.SubscriberEmail);
 
             $http({
                 url: '/api/subscribe',
                 method: "POST",
                 data: {
                     'Email': $scope.SubscriberEmail,
-                    'SetCookie':'true'
+                    'SetCookie': 'true'
                 }
             }).success(function (data) {
 
@@ -310,11 +354,9 @@ publicApp.controller('publicController', ['$scope', '$http', '$window', '$timeou
 
                 else if (data.status_code == 200) {
                     $scope.responseMessage = "Successfully Subscribed";
-                    $scope.SubscriberEmail = '';
 
-                    // reload window to hide popup
-                    location.reload();
-
+                    //Redirect a user to registration page.
+                    window.location = '/signup/' + $scope.SubscriberEmail;
 
                 } else {
                     $scope.responseMessage = "Email already subscribed";
@@ -344,6 +386,7 @@ publicApp.controller('publicController', ['$scope', '$http', '$window', '$timeou
 
             }).success(function (data) {
                 $scope.outputStatus(data, data.data);
+                // window.location = '/login';
 
                 /* if(data.status_code == 200)
                  window.location = $scope.logingRedirectLocation;
@@ -387,6 +430,9 @@ publicApp.controller('publicController', ['$scope', '$http', '$window', '$timeou
         };
 
         $scope.loginUser = function () {
+
+            console.log($scope.rememberMe);
+            //  return;
             $scope.closeAlert();
             $http({
                 url: '/api/authenticate',
@@ -394,6 +440,7 @@ publicApp.controller('publicController', ['$scope', '$http', '$window', '$timeou
                 data: {
                     Email: $scope.Email,
                     Password: $scope.Password,
+                    RememberMe: $scope.rememberMe == true ? true : false
 
                 }
             }).success(function (data) {
@@ -482,11 +529,14 @@ publicApp.controller('publicController', ['$scope', '$http', '$window', '$timeou
 
         // init page //
 
-        $scope.initProfilePage = function(){
+        $scope.initProfilePage = function () {
             $scope.isProfilePage = true;
+            $scope.uploader.formData.push({
+                'isProfilePage': 1
+            });
         };
 
-        $scope.initProfilePicture = function(link){
+        $scope.initProfilePicture = function (link) {
             $scope.mediaLink = link;
         };
 
@@ -509,7 +559,7 @@ publicApp.controller('publicController', ['$scope', '$http', '$window', '$timeou
             });
         };
 
-        $scope.cancelPictureUpdate = function(){
+        $scope.cancelPictureUpdate = function () {
             $scope.mediaLink = $scope.oldMediaLink;
             $scope.showBrowseButton = !$scope.showBrowseButton;
 
@@ -517,7 +567,7 @@ publicApp.controller('publicController', ['$scope', '$http', '$window', '$timeou
 
 
         // test function //
-            $scope.chk = function () {
+        $scope.chk = function () {
             $scope.closeAlert();
             $http({
                 url: '/secure-page-header',

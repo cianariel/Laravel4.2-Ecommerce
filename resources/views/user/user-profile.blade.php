@@ -3,7 +3,7 @@
 @section('body-class'){{ 'profilepage' }}@stop
 
 @section('content')
-    <div id="pagingApp" ng-app="pagingApp" ng-controller="pagingController">
+    <div>
         <nav class="mid-nav">
             <div class="container full-sm fixed-sm">
                     <ul class="wrap col-lg-9">
@@ -20,6 +20,7 @@
 
 
         <section id="hero" class="landing-hero">
+            <div  ng-app="publicApp" ng-controller="publicController">
             <div class="hero-background" style="background-image: url('/assets/images/landing-hero-3.jpg');"></div>
             <div class="color-overlay"></div>
             <div class="container">
@@ -59,8 +60,9 @@
                 <p class="hidden-xs hidden-sm"><a href="#">View your profile as other people see it</a></p>
                 <p class="visible-xs visible-sm">&nbsp;</p>
             </div>
+            </div>
         </section>
-        <div class="app-wrap" >
+        <div class="app-wrap" id="pagingApp" ng-app="pagingApp" ng-controller="pagingController" >
             <div class="container ">
                 <nav id="hero-nav" >
                     <ul class=" main-content-filter ">

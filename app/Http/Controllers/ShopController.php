@@ -22,7 +22,8 @@ class ShopController extends ApiController
     public function index($grandParent = false, $parent = false, $child = false)
     {
 
-        $userData = '';
+        $userData = $this->authCheck;
+
         if ($this->authCheck['method-status'] == 'success-with-http') {
             $userData = $this->authCheck['user-data'];
         }
@@ -51,6 +52,20 @@ class ShopController extends ApiController
             $parentCategory =  @ProductCategory::where('id', $categoryModel->parent_id)->first();
 
             $masterCategory = $parentCategory ?: $categoryModel;
+            switch($masterCategory->category_name){
+                case "Smart Home":
+                    $categoryModel->background_image = "/assets/images/shop-category/smarthome.jpg";
+                break;
+                case "Travel":
+                    $categoryModel->background_image = "/assets/images/shop-category/travel.jpg";
+                break;
+                case "Wearables":
+                    $categoryModel->background_image = "/assets/images/shop-category/wearables.jpg";
+                break;
+                case "Home Decor":
+                    $categoryModel->background_image = "/assets/images/shop-category/homedecor.jpg";
+                break;
+            }
 
             return view('shop.shop-category')
                 ->with('userData',$userData)
