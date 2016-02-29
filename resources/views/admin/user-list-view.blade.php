@@ -116,6 +116,7 @@
                                                                 <th class="col-md-1">Image</th>
                                                                 <th class="col-md-2">Name</th>
                                                                 <th class="col-md-1">Email</th>
+                                                                <th class="col-md-1">From</th>
                                                                 <th class="col-md-2">Product Name</th>
                                                                 {{--<th class="col-md-1">Status</th>
                                                                 <th class="col-md-1">Category</th>
@@ -131,7 +132,7 @@
                                                                     <a 
                                                                        target="_blank">
                                                                         <img id="currentPhoto"
-                                                                             ng-src='@{{ user.user-img }}'
+                                                                             ng-src='@{{ user.medias[0].media_link }}'
                                                                              onerror="this.src='http://s3-us-west-1.amazonaws.com/ideaing-01/thumb-product-568d28a6701c7-no-item.jpg'"
                                                                              width="90">
                                                                     </a>
@@ -143,6 +144,10 @@
                                                                 <td>
                                                                     <strong>@{{ user.email }}</strong>
                                                                 </td>
+                                                                <td>
+                                                                    <strong>@{{ user.user_profile.user_from }}</strong>
+                                                                </td>
+
                                                                 <td>
                                                                     <b ng-style="user.status == 'Active' && {'color': 'green'} || {'color': 'red'}">@{{ user.status }}</b>
                                                                 </td>

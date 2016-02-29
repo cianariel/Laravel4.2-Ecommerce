@@ -94,6 +94,8 @@ class User extends Model implements AuthenticatableContract,
 
         $skip = $settings['limit'] * ($settings['page'] - 1);
         $userList['result'] = $userModel
+            ->with('userProfile')
+            ->with('medias')
             ->take($settings['limit'])
             ->offset($skip)
             ->orderBy('created_at', 'desc')
@@ -122,6 +124,12 @@ class User extends Model implements AuthenticatableContract,
                 $user->save();
 
                 $userProfile = new UserProfile();
+
+                if (!empty($data['UserFrom']))
+                    $userProfile->user_from = $data['UserFrom'];
+                else
+                    $userProfile->user_from = "Registration";
+
                 $media = new Media();
 
                 // $userProfile->full_name = $data['FullName'];
@@ -129,8 +137,8 @@ class User extends Model implements AuthenticatableContract,
 
 
                 $media->media_name = $data['FullName'];
-                $media->media_type = 'img-upload';
-                $media->media_link = \Config::get("const.user-image");
+                $media->media_type = 'img-link';
+                $media->media_link = (!empty($data['Picture'])) ? $data['Picture'] : \Config::get("const.user-image");
 
                 // $result = $store->medias()->save($this->media);
 
@@ -213,9 +221,17 @@ class User extends Model implements AuthenticatableContract,
             $user = $this->IsEmailAvailable($userData->email);
 
             if ($user == false) {
+
                 $user['FullName'] = $userData->name;
                 $user['Email'] = $userData->email;
                 $user['Password'] = env('FB_DEFAULT_PASSWORD');
+
+                // Remove FB's atatched width parameter from the image link
+                //$user['Picture'] = explode("?", $userData->avatar_original)[0];
+
+                $user['Picture'] = $userData->avatar_original;
+
+                $user['UserFrom'] = 'Facebook';
 
                 $this->SaveUserInformation($user);
 
@@ -223,7 +239,6 @@ class User extends Model implements AuthenticatableContract,
 
                 $user->status = 'Active';
                 $user->save();
-
 
 
                 // Assign role for the user
