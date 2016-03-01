@@ -392,10 +392,12 @@ class PageController extends ApiController
             return 'Stop trying to hack my app, thanks';
         }
 
-        $data['facebook'] = self::getFacebookLikes($url);
-        $data['twitter'] = self::getTweets($url);
-        $data['gplus'] = self::getPlusones($url);
+        $data['facebook']  = self::getFacebookLikes($url);
+        $data['twitter']   = self::getTweets($url);
+        $data['gplus']     = self::getPlusones($url);
         $data['pinterest'] = self::getPinterestShares($url);
+
+        // TODO -- update counts, set to all boxes, set Twitter
 
         return $data;
     }
