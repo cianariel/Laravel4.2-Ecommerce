@@ -178,6 +178,19 @@ class User extends Model implements AuthenticatableContract,
         }
     }
 
+    public function getUserById($id)
+    {
+        try {
+            return User::with('userProfile')
+                       ->with('medias')
+                       ->where('id', $id)
+                       ->firstOrFail();
+
+        } catch (\Exception $ex) {
+            return false;
+        }
+    }
+
     //todo need to implement permalink check feature
     public function checkUserByPermalink($permalink)
     {
