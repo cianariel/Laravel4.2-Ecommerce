@@ -38,6 +38,16 @@
         return view('layouts.aboutus');
     });
 
+    Route::get('/privacy-policy', function()
+    {
+        return view('layouts.privacy-policy');
+    });
+
+    Route::get('/terms-of-use', function()
+    {
+        return view('layouts.terms-of-use');
+    });
+
     Route::group(['prefix' => 'api'], function ()
     {
         /*

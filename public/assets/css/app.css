@@ -5211,10 +5211,10 @@ nav a {
   #hero .container {
     position: relative; }
 
-body.single .mid-nav.rooms, body.single .mid-nav .rooms.extra-nav, .mid-nav body.single .rooms.extra-nav, body.product-details .mid-nav.rooms, body.product-details .mid-nav .rooms.extra-nav, .mid-nav body.product-details .rooms.extra-nav, body.profilepage .mid-nav.rooms, body.profilepage .mid-nav .rooms.extra-nav, .mid-nav body.profilepage .rooms.extra-nav, body.shoppage .mid-nav.rooms, body.shoppage .mid-nav .rooms.extra-nav, .mid-nav body.shoppage .rooms.extra-nav {
+body.single .mid-nav.rooms, body.single .mid-nav .rooms.extra-nav, .mid-nav body.single .rooms.extra-nav, body.product-details .mid-nav.rooms, body.product-details .mid-nav .rooms.extra-nav, .mid-nav body.product-details .rooms.extra-nav, body.profilepage .mid-nav.rooms, body.profilepage .mid-nav .rooms.extra-nav, .mid-nav body.profilepage .rooms.extra-nav, body.shoppage .mid-nav.rooms, body.shoppage .mid-nav .rooms.extra-nav, .mid-nav body.shoppage .rooms.extra-nav, body.error-page .mid-nav.rooms, body.error-page .mid-nav .rooms.extra-nav, .mid-nav body.error-page .rooms.extra-nav, body.aboutus-page .mid-nav.rooms, body.aboutus-page .mid-nav .rooms.extra-nav, .mid-nav body.aboutus-page .rooms.extra-nav {
   display: none; }
 
-body.single #hero, body.product-details #hero, body.profilepage #hero, body.shoppage #hero {
+body.single #hero, body.product-details #hero, body.profilepage #hero, body.shoppage #hero, body.error-page #hero, body.aboutus-page #hero {
   /*    margin-top: -50px;*/ }
 
 .slider.product-slider #gallery, .slider.heroSlider #gallery {
@@ -7324,18 +7324,16 @@ body.single #top-nav a.ideas {
 body.single .like-nav {
   float: right;
   width: 280px; }
-body.single .related-items
-  {
+
+body.single .related-items {
     margin-bottom: 20px;
     padding-top: 15px;
-    padding-bottom: 15px;
-  }
-body.single .related-items h3
-  {
+  padding-bottom: 15px; }
+  body.single .related-items h3 {
       text-align: center;
       font-weight: bold;
-      margin-bottom: 20px;
-  }  
+    margin-bottom: 20px; }
+
 @media only screen and (max-width: 960px) {
   body.single .like-nav {
     width: 100%;
@@ -9908,6 +9906,15 @@ body.aboutus-page .para3_content {
   height: 400px; }
   body.aboutus-page .para3_content:nth-child(2) {
     background-color: #dddddd; }
+
+body.error-page .pocket, body.error-page #back-to-top, body.error-page #about-button, body.error-page footer.about-footer .close-down {
+  display: none; }
+
+body.error-page .about-footer {
+  display: block; }
+
+body.error-page .shop-menu {
+  top: 0px; }
 
 @media (max-width: 620px) {
   .reviews-medium-container .average-score .caption {
