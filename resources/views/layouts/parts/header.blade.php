@@ -163,11 +163,10 @@
             </ul>
         </div>
 
-        <?php
-
+            <?php
                 if(!function_exists('is_single')){ ?>
                         @include('room.header-menu')
-           <?php     }
+            <?php     }
 
         ?>
 
