@@ -94,7 +94,7 @@
                                 <div class="col-lg-10">
                                     <div class="form-group">
                                         <div class="row">
-                                            <div class="col-lg-10">
+                                            <div class="">
                                                 <div class="panel panel-default">
                                                     <div class="panel-heading">
                                                         Category Items
@@ -109,6 +109,7 @@
                                                                     <th>Category Id</th>
                                                                     <th>Category Name</th>
                                                                     <th>URL Info</th>
+                                                                    <th ng-if="currentCategoryName">Icon</th>
                                                                     <th>Action</th>
                                                                 </tr>
                                                                 </thead>
@@ -121,6 +122,7 @@
                                                                 <td>@{{ category.id }}</td>
                                                                 <td>@{{ category.category }}</td>
                                                                 <td>@{{ category.info }}</td>
+                                                                <td ng-if="currentCategoryName">@{{ category.icon }}</td>
                                                                 <td>
                                                                     <button ng-click="editCategory(category)" class="btn btn-info btn-circle" uib-tooltip="Edit"
                                                                             tooltip-placement="bottom">
@@ -137,8 +139,8 @@
                                                                 <td><input type="text"
                                                                            ng-model="tableTemporaryValue.category"/>
                                                                 </td>
-                                                                <td><input type="text"
-                                                                           ng-model="tableTemporaryValue.info"/></td>
+                                                                <td><input type="text" ng-model="tableTemporaryValue.info"/></td>
+                                                                <td ng-if="currentCategoryName"><input type="text" ng-model="tableTemporaryValue.icon"/></td>
                                                                 <td>
                                                                     <button ng-click="updateCategory($index)" class="btn btn-success btn-circle" uib-tooltip="Save"
                                                                             tooltip-placement="bottom">
