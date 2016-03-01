@@ -33,6 +33,12 @@ class CommentController extends ApiController
 
     public function getCommentForProduct()
     {
+        $data['ProductId'] = 40;
+
+        $result = $this->comment->findCommentForProduct($data);
+
+        return $this->setStatusCode(\Config::get("const.api-status.success"))
+                    ->makeResponse($result);
 
     }
 }

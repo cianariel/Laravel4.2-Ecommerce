@@ -2,7 +2,7 @@
  * Created by sanzeeb on 1/7/2016.
  */
 
-var productApp = angular.module('productApp', ['ui.bootstrap', 'autocomplete']);
+var productApp = angular.module('productApp', ['ui.bootstrap', 'autocomplete','ngSanitize', 'angular-confirm', 'textAngular']);
 
 
 productApp.controller('productController', ['$scope', '$http', '$window'

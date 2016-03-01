@@ -44,7 +44,7 @@
          * Comments
          * */
         Route::post('comment/add-product-comment', 'CommentController@addCommentForProduct');
-        Route::post('comment/get-product-comment', 'CommentController@getCommentForProduct');
+        Route::get('comment/get-product-comment', 'CommentController@getCommentForProduct');
 
 
 

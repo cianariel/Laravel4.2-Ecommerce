@@ -4,6 +4,10 @@
 
     use Illuminate\Database\Eloquent\Model;
     use App\Models\Product;
+    use App\Models\User;
+    use Illuminate\Support\Collection;
+    use Carbon\Carbon;
+
 
     class Comment extends Model {
 
@@ -60,15 +64,31 @@
         public function findCommentForProduct($data)
         {
             $product = Product::where('id',$data['ProductId'])
-            ->with();
+            ->with('comments')
+            ->first();
 
+            // product_permalink
+            $productComments = $product->comments;
+            $commentCollection = new Collection();
 
+            $user = new User();
 
+            foreach($productComments as $singleComment)
+            {
+                $userInfo = $user->getUserById($singleComment['user_id']);
 
+                $data['CommentId'] = $singleComment['id'];
+                $data['Comment'] = $singleComment['comment'];
+                $data['UserName'] = $userInfo['name'];
+                $data['Picture'] = $userInfo->medias[0]->media_link;
+                $data['Flag'] = $singleComment['flag'];
+                $data['PostTime'] = Carbon::createFromTimestamp(strtotime($singleComment['created_at']))->diffForHumans();
+
+                $commentCollection->push($data);
+
+            }
+
+            return $commentCollection;
         }
-
-
-
-
 
     }
