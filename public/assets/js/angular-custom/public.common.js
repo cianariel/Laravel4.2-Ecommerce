@@ -592,6 +592,7 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                 method: "GET",
                 params: {'url' : thisUrl}
             }).success(function (response) {
+                $('.share-count.all').html(response.all);
                 $('.share-count.twi').html(response.twitter);
                 $('.share-count.fb').html(response.facebook);
                 $('.share-count.gp').html(response.gplus);
