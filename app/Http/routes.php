@@ -41,6 +41,14 @@
     Route::group(['prefix' => 'api'], function ()
     {
         /*
+         * Comments
+         * */
+        Route::post('comment/add-product-comment', 'CommentController@addCommentForProduct');
+        Route::post('comment/get-product-comment', 'CommentController@getCommentForProduct');
+
+
+
+        /*
          * User Authentication route collection
          *
          * */
