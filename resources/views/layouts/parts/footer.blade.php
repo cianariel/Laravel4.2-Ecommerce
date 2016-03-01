@@ -7,8 +7,8 @@
             <ul>
                 <li><a href="/aboutus">About Us</a></li>
                 <li><a href="#">Contact Us</a></li>
-                <li><a href="#">Terms of Use</a></li>
-                <li><a href="#">Privacy Policy</a></li>
+                <li><a href="/terms-of-use">Terms of Use</a></li>
+                <li><a href="/privacy-policy">Privacy Policy</a></li>
             </ul>
         </div>
         <div class="col-sm-3 col-xs-12">
