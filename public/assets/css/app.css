@@ -7324,7 +7324,18 @@ body.single #top-nav a.ideas {
 body.single .like-nav {
   float: right;
   width: 280px; }
-
+body.single .related-items
+  {
+    margin-bottom: 20px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+  }
+body.single .related-items h3
+  {
+      text-align: center;
+      font-weight: bold;
+      margin-bottom: 20px;
+  }  
 @media only screen and (max-width: 960px) {
   body.single .like-nav {
     width: 100%;
@@ -8935,7 +8946,7 @@ body.shop-landing .shop-by-category-submneu {
     color: white; }
     body.shop-landing .shop-by-category-submneu > div a {
       color: white; }
-    body.shop-landing .shop-by-category-submneu > div i {
+    body.shop-landing .shop-by-category-submneu > div i.desktop-parent-icon {
       font-size: 25px;
       margin-bottom: 25px;
       display: inline-block; }
@@ -9011,7 +9022,7 @@ body.shop-landing .mobile-shop-by-category-holder .shop-by-category-submneu > di
     clear: both;
     text-align: left;
     color: #333;
-    margin-top: 60px; }
+    margin-top: 45px; }
     body.shop-landing .mobile-shop-by-category-holder .shop-by-category-submneu > div .grandchild-holder .grandchild-item > a {
       display: block;
       padding: 5px; }

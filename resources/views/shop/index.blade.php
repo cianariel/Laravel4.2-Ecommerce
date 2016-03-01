@@ -114,17 +114,17 @@
                     <?php $i =1 ?>
                     @foreach($categoryTree as $topCategory => $parentCategories)
                         <div class="shop-by-category-submneu {{$topCategory}} {{$i == 1 ? 'active' : ''}}">
-                            @foreach($parentCategories as $parent => $grandChildren)
+                        @foreach($parentCategories as $parentCategory)
                                 <div class="col-md-2">
-                                    <a href="/shop/{{$topCategory}}/{{trim($parent)}}">
-                                        <i class="m-icon--energy"></i>
-                                        <p class="title"><strong>{{strtoupper(str_replace('-', ' ', $parent))}}</strong></p>
+                                <a href="/shop/{{$topCategory}}/{{trim($parentCategory['childCategory']->extra_info)}}">
+                                <i class="{{$parentCategory['childCategory']->icon}}  desktop-parent-icon"></i>
+                                <p class="title"><strong>{{strtoupper($parentCategory['childCategory']->category_name)}}</strong></p>
                                     </a>
 
                                          <p class="hidden-xs hidden-sm">
-                                            @foreach($grandChildren as $item)
-                                                 <a href="/shop/{{$topCategory}}/{{trim($parent)}}/{{$item->extra_info}}">
-                                                     {{trim($item->category_name)}}
+                                    @foreach($parentCategory['grandchildCategories'] as $item)
+                                         <a href="/shop/{{$topCategory}}/{{trim($parentCategory['childCategory']->extra_info)}}/{{$item->extra_info}}">
+                                             <i class="{{$item->icon}} "></i>&nbsp; {{trim($item->category_name)}}
                                                  </a>
                                                  <br>
                                             @endforeach
@@ -148,21 +148,21 @@
                             </a>
 
                             <div class="shop-by-category-submneu smart-home ">
-                                @foreach($categoryTree['smart-home'] as $parent => $grandChildren)
+                                @foreach($categoryTree['smart-home'] as $parentCategory)
                                     <div class="col-md-12">
-                                        <a href="/shop/{{trim($parent)}}">
-                                            <i class="m-icon--energy"></i>
-                                            <span class="title"><strong>{{strtoupper(str_replace('-', ' ', $parent))}}</strong></span>
+                                        <a href="/shop/{{trim($parentCategory['childCategory']->extra_info)}}">
+                                            <i class="{{$parentCategory['childCategory']->icon}}  desktop-parent-icon"></i>
+                                            <span class="title"><strong>{{strtoupper($parentCategory['childCategory']->category_name)}}</strong></span>
                                         </a>
-                                        @if(count($grandChildren))
+                                        @if(count($parentCategory['grandchildCategories']))
                                             <a class="show-and-hide-grandchild">
                                                 <i class=" m-icon--Add-Active add"></i>
                                                 <i class=" m-icon--Close close"></i>
                                             </a>
                                             <div class="grandchild-holder">
-                                                @foreach($grandChildren as $item)
+                                                @foreach($parentCategory['grandchildCategories'] as $item)
                                                     <div class="grandchild-item">
-                                                        <a href="#">{{trim($item->category_name)}}</a>
+                                                        <a href="#"><i class="{{$item->icon}} "></i>&nbsp; {{trim($item->category_name)}}</a>
                                                     </div>
                                                 @endforeach
                                             </div>
@@ -173,6 +173,7 @@
 
                         </div>
 
+                        
                         <div class="col-sm-12 shop-by-category-item travel" >
                             <a href="/shop/travel" class="shop-by-category-item-link">
                                 <img src="assets/images/category-travel.png" alt="">
@@ -182,22 +183,23 @@
                                 <i class="m-icon--Header-Dropdown down"></i> 
                                 <i class="m-icon--footer-up-arrow up"></i> 
                             </a> 
+
                             <div class="shop-by-category-submneu smart-home ">
-                                @foreach($categoryTree['travel'] as $parent => $grandChildren)
+                                @foreach($categoryTree['travel'] as $parentCategory)
                                     <div class="col-md-12">
-                                        <a href="/shop/{{trim($parent)}}">
-                                            <i class="m-icon--energy"></i>
-                                            <span class="title"><strong>{{strtoupper(str_replace('-', ' ', $parent))}}</strong></span>
+                                        <a href="/shop/{{trim($parentCategory['childCategory']->extra_info)}}">
+                                            <i class="{{$parentCategory['childCategory']->icon}} desktop-parent-icon"></i>
+                                            <span class="title"><strong>{{strtoupper($parentCategory['childCategory']->category_name)}}</strong></span>
                                         </a>
-                                        @if(count($grandChildren))
+                                        @if(count($parentCategory['grandchildCategories']))
                                             <a class="show-and-hide-grandchild">
                                                 <i class=" m-icon--Add-Active add"></i>
                                                 <i class=" m-icon--Close close"></i>
                                             </a>
                                             <div class="grandchild-holder">
-                                                @foreach($grandChildren as $item)
+                                                @foreach($parentCategory['grandchildCategories'] as $item)
                                                     <div class="grandchild-item">
-                                                        <a href="#">{{trim($item->category_name)}}</a>
+                                                        <a href="#"><i class="{{$item->icon}}"></i>&nbsp; {{trim($item->category_name)}}</a>
                                                     </div>
                                                 @endforeach
                                             </div>
@@ -205,6 +207,8 @@
                                     </div>
                                 @endforeach
                             </div>
+                            
+
                         </div>
                         <div class="col-sm-12 shop-by-category-item wearables" >
                             <a href="/shop/wearables" class="shop-by-category-item-link">
@@ -215,22 +219,23 @@
                                 <i class="m-icon--Header-Dropdown down"></i> 
                                 <i class="m-icon--footer-up-arrow up"></i> 
                             </a> 
+
                             <div class="shop-by-category-submneu smart-home ">
-                                @foreach($categoryTree['wearables'] as $parent => $grandChildren)
+                                @foreach($categoryTree['wearables'] as $parentCategory)
                                     <div class="col-md-12">
-                                        <a href="/shop/{{trim($parent)}}">
-                                            <i class="m-icon--energy"></i>
-                                            <span class="title"><strong>{{strtoupper(str_replace('-', ' ', $parent))}}</strong></span>
+                                        <a href="/shop/{{trim($parentCategory['childCategory']->extra_info)}}">
+                                            <i class="{{$parentCategory['childCategory']->icon}} desktop-parent-icon"></i>
+                                            <span class="title"><strong>{{strtoupper($parentCategory['childCategory']->category_name)}}</strong></span>
                                         </a>
-                                        @if(count($grandChildren))
+                                        @if(count($parentCategory['grandchildCategories']))
                                             <a class="show-and-hide-grandchild">
                                                 <i class=" m-icon--Add-Active add"></i>
                                                 <i class=" m-icon--Close close"></i>
                                             </a>
                                             <div class="grandchild-holder">
-                                                @foreach($grandChildren as $item)
+                                                @foreach($parentCategory['grandchildCategories'] as $item)
                                                     <div class="grandchild-item">
-                                                        <a href="#">{{trim($item->category_name)}}</a>
+                                                        <a href="#"><i class="{{$item->icon}}"></i>&nbsp; {{trim($item->category_name)}}</a>
                                                     </div>
                                                 @endforeach
                                             </div>
@@ -238,6 +243,8 @@
                                     </div>
                                 @endforeach
                             </div>
+
+
                         </div>
                         <div class="col-sm-12 shop-by-category-item home-decor" >
                             <a href="/shop/home-decor" class="shop-by-category-item-link">
@@ -249,21 +256,21 @@
                                 <i class="m-icon--footer-up-arrow up"></i> 
                             </a> 
                             <div class="shop-by-category-submneu smart-home ">
-                                @foreach($categoryTree['home-decor'] as $parent => $grandChildren)
+                                @foreach($categoryTree['home-decor'] as $parentCategory)
                                     <div class="col-md-12">
-                                        <a href="/shop/{{trim($parent)}}">
-                                            <i class="m-icon--energy"></i>
-                                            <span class="title"><strong>{{strtoupper(str_replace('-', ' ', $parent))}}</strong></span>
+                                        <a href="/shop/{{trim($parentCategory['childCategory']->extra_info)}}">
+                                            <i class="{{$parentCategory['childCategory']->icon}} desktop-parent-icon"></i>
+                                            <span class="title"><strong>{{strtoupper($parentCategory['childCategory']->category_name)}}</strong></span>
                                         </a>
-                                        @if(count($grandChildren)>0)
+                                        @if(count($parentCategory['grandchildCategories']))
                                             <a class="show-and-hide-grandchild">
                                                 <i class=" m-icon--Add-Active add"></i>
                                                 <i class=" m-icon--Close close"></i>
                                             </a>
                                             <div class="grandchild-holder">
-                                                @foreach($grandChildren as $item)
+                                                @foreach($parentCategory['grandchildCategories'] as $item)
                                                     <div class="grandchild-item">
-                                                        <a href="#">{{trim($item->category_name)}}</a>
+                                                        <a href="#"><i class="{{$item->icon}}"></i>&nbsp; {{trim($item->category_name)}}</a>
                                                     </div>
                                                 @endforeach
                                             </div>
@@ -272,6 +279,7 @@
                                 @endforeach
                             </div>
                         </div>
+
                     </div>
                     
 
