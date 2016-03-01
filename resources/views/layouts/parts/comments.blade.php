@@ -22,7 +22,7 @@
                 <div class="col-md-1 col-sm-2 col-xs-3 comment-author">
                     <a class="author" href="#"></a>
                 </div>
-                <div class="col-xs-8 field-wrap">
+                <div class="col-xs-8">
 
                     <div  class="form-control" name="comment" id="you-comment" text-angular data-ng-model="htmlContent"
                          name="description-editor"
@@ -30,10 +30,10 @@
                          ta-html-editor-class="border-around ta-editor">
                     </div>
 
-                    <div class="pull-right comment-controls">
+                   {{-- <div class="pull-right comment-controls">
                         <a href="#" class="add-photo"><i class="m-icon m-icon--camera"></i> Add a photo</a>
                         <button class="btn btn-info">Post</button>
-                    </div>
+                    </div>--}}
                 </div>
             </div>
         </section>

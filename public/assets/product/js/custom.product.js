@@ -39,6 +39,12 @@ productApp.controller('productController', ['$scope', '$http', '$window'
 
         };
 
+        // Comment for product section
+        $scope.addCommentForProduct = function(){
+
+        };
+
+
         // toggle comapare button
         $scope.toggleCompareButton = function(){
             $scope.showCompareButton = ! $scope.showCompareButton;
