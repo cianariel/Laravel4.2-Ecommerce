@@ -14,6 +14,7 @@ use App\Models\Tag;
 use App\Models\Room;
 use URL;
 use Input;
+use App\Models\Sharing;
 
 class PageController extends ApiController
 {
@@ -392,76 +393,9 @@ class PageController extends ApiController
             return 'Stop trying to hack my app, thanks';
         }
 
-        $data['facebook']  = self::getFacebookLikes($url);
-        $data['twitter']   = self::getTweets($url);
-        $data['gplus']     = self::getPlusones($url);
-        $data['pinterest'] = self::getPinterestShares($url);
-
-        // TODO -- update counts, set to all boxes, set Twitter
-
-        return $data;
+        return Sharing::getCountsFromAPIs($url);
     }
 
-
-    private function getFacebookLikes($url) {
-        $json_string = file_get_contents('http://graph.facebook.com/?id='.$url);
-        $json = json_decode($json_string, true);
-        if(isset($json['shares'])){
-            return intval($json['shares']);
-        } else {
-            return 0;
-        }
-    }
-
-    private function getTweets($url) {
-//        $json_string = file_get_contents(' https://api.twitter.com/1.1/search/tweets.json?q=' . $url);
-//        $json = json_decode($json_string, true);
-//        if(isset($json['count'])){
-//            return intval( $json['count'] );
-//        } else {
-            return 0;
-//        }
-    }
-
-    private function getPlusones($url) {
-
-        $curl = curl_init();
-        curl_setopt($curl, CURLOPT_URL, "https://clients6.google.com/rpc");
-        curl_setopt($curl, CURLOPT_POST, 1);
-        curl_setopt($curl, CURLOPT_POSTFIELDS, '{"method":"pos.plusones.get","id":"p","params":{"nolog":true,"id":"' . $url . '","source":"widget","userId":"@viewer","groupId":"@self"},"jsonrpc":"2.0","key":"p","apiVersion":"v1"}');
-        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($curl, CURLOPT_HTTPHEADER, array('Content-type: application/json'));
-        $curl_results = curl_exec ($curl);
-        curl_close ($curl);
-
-        $json = json_decode($curl_results, true);
-        if(isset($json['result']['metadata']['globalCounts']['count'])){
-            return intval( $json['result']['metadata']['globalCounts']['count'] );
-        } else {
-            return 0;
-        }
-    }
-
-
-    function getPinterestShares($url) {
-        $json_string = file_get_contents('http://api.pinterest.com/v1/urls/count.json?&url='.$url .'&format=json');
-        $json_string = str_replace('receiveCount(', '', $json_string);
-        $json_string = str_replace(')', '', $json_string);
-        $json = json_decode( $json_string, true );
-        if (isset($json)) {
-            return intval($json['count']);
-        } else {
-            return 0;
-        }
-    }
-
-//    function get_stumble($url) {
-//        $json_string = file_get_contents('http://www.stumbleupon.com/services/1.01/badge.getinfo?url='.$url);
-//        $json = json_decode($json_string, true);
-//        if (isset($json['result']['views'])) {
-//            return intval($json['result']['views']);
-//        } else {return 0;}
-//    }
 
 
 

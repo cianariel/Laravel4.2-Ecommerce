@@ -4,7 +4,7 @@
 
 <aside class="share-bar sticks-on-scroll">
     <ul class="share-buttons">
-        <li class="all-shares"><b>120K </b>all shares</li>
+        <li class="all-shares"><b class="share-count all"></b><br/>all shares</li>
 
         <li><a class="fb" href="#"
                onclick="javascript: (function() {
