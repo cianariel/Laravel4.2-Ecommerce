@@ -29,6 +29,7 @@
 
         public static function getFollowersFromAPIs($url = ''){
             $fans['facebook'] = self::getFacebookFollowers();
+            $fans['twitter'] = self::getTwitterFollowers();
             $fans['instagram'] = self::getInstagramFollowers();
 
             return $fans;
@@ -116,6 +117,19 @@
             }
         }
 
+        private static function getTwitterFollowers() {
+            // Twitter API, the king of overkills
+            $bearer_token = Sharing::getTwitterBearerToken(); // get the bearer token
+
+            $json_string = Sharing::pullTwtterFollowers($bearer_token); //  search for the work 'test'
+            $json = json_decode($json_string, true);
+            if($count = count($json['ids'])){
+                return intval($count);
+            } else {
+                return 0;
+            }
+        }
+
 
         /**
      * Search
@@ -137,6 +151,25 @@
         );
         $ch = curl_init();  // setup a curl
         curl_setopt($ch, CURLOPT_URL,$url.$formed_url);  // set url to send to
+        curl_setopt($ch, CURLOPT_HTTPHEADER, $headers); // set custom headers
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true); // return output
+        $retrievedhtml = curl_exec ($ch); // execute the curl
+        curl_close($ch); // close the curl
+        return $retrievedhtml;
+    }
+
+    public static function pullTwtterFollowers($bearer_token){
+        $url = "https://api.twitter.com/1.1/followers/ids.json?user_id=23203721"; // base url
+//        if($count!='15'){$formed_url = $formed_url.'&count='.$count;} // results per page - defaulted to 15
+//        $formed_url = $formed_url.'&include_entities=true'; // makes sure the entities are included, note @mentions are not included see documentation
+        $headers = array(
+            "GET /followers/ids.json?user_id=23203721 HTTP/1.1",
+            "Host: api.twitter.com",
+            "User-Agent: jonhurlock Twitter Application-only OAuth App v.1",
+            "Authorization: Bearer ".$bearer_token
+        );
+        $ch = curl_init();  // setup a curl
+        curl_setopt($ch, CURLOPT_URL,$url);  // set url to send to
         curl_setopt($ch, CURLOPT_HTTPHEADER, $headers); // set custom headers
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true); // return output
         $retrievedhtml = curl_exec ($ch); // execute the curl
