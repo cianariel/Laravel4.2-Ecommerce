@@ -21,13 +21,17 @@
             $data['twitter']   = self::getTweets($url);
             $data['gplus']     = self::getPlusones($url);
             $data['pinterest'] = self::getPinterestShares($url);
-            $data['instagram'] = self::getInstagramFollowers();
 
             $data['all'] = array_sum($data);
 
-            // TODO -- set to all boxes
-
             return $data;
+        }
+
+        public static function getFollowersFromAPIs($url = ''){
+            $fans['facebook'] = self::getFacebookFollowers();
+            $fans['instagram'] = self::getInstagramFollowers();
+
+            return $fans;
         }
 
 
@@ -36,6 +40,16 @@
             $json = json_decode($json_string, true);
             if(isset($json['shares'])){
                 return intval($json['shares']);
+            } else {
+                return 0;
+            }
+        }
+
+        private static function getFacebookFollowers() {
+            $json_string = file_get_contents('https://graph.facebook.com/v2.5/?fields=likes.summary(true).limit(0)&id=609910205748189&access_token=244498015882895%7C742d8db5713e9c10a01fa150380ed797');
+            $json = json_decode($json_string, true);
+            if($count = $json['likes']){
+                return intval($count);
             } else {
                 return 0;
             }
