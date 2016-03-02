@@ -418,5 +418,9 @@ class PageController extends ApiController
         return Sharing::getCountsFromAPIs($url);
     }
 
+    public function getFollowerCounts(){
+        return Sharing::getFollowersFromAPIs();
+    }
+
 
 }
