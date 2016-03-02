@@ -362,11 +362,11 @@ a.likes {
                                                          <td width="290" height="160" align="center" class="devicewidth">
                                                             <p style="text-align: center;">
                                                                 <a style="text-decoration: none; color: #007baa"
-                                                                                 href="http://ideaing.com"><img src="/assets/images/email/ideaing.png" width="70px"/></a>
+                                                                                 href="http://ideaing.com"><img src="http://ideaing.com/assets/images/email/ideaing.png" width="70px"/></a>
                                                                 <a style="text-decoration: none; color: #007baa"
-                                                                 href="http://ideaing.com/aboutus"><img  src="/assets/images/email/about.png" width="70px"/></a>
+                                                                 href="http://ideaing.com/aboutus"><img  src="http://ideaing.com/assets/images/email/about.png" width="70px"/></a>
                                                                  <a style="text-decoration: none; color: #808080"
-                                                                 href="http://ideaing.com/"><img src="/assets/images/email/copyright.png" width="100px"/></a>
+                                                                 href="http://ideaing.com/"><img src="http://ideaing.com/assets/images/email/copyright.png" width="100px"/></a>
                                                             </p>
 
                                                          </td>
@@ -395,8 +395,8 @@ a.likes {
                                                       <!-- image -->
                                                       <tr>
                                                          <td width="290" height="160" align="center" class="devicewidth">
-                                                            <a class="fb" href="#"><img src="/assets/images/email/fb.png"/></a>
-                                                            <a class="twi" href="#"><img src="/assets/images/email/twitter.jpg"/></a>
+                                                            <a class="fb" href="https://www.facebook.com/ideaingsmarterliving"><img src="/assets/images/email/fb.png"/></a>
+                                                            <a class="twi" href="https://twitter.com/ideaing/"><img src="/assets/images/email/twitter.jpg"/></a>
                                                             <a class="likes" href="#"><img src="/assets/images/email/likes.png"/></a>
                                                             <a class="discuss" href="#"><img src="/assets/images/email/discuss.png"/></a>
                                                          </td>
