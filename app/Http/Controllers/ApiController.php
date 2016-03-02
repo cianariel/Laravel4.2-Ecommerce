@@ -225,7 +225,7 @@ class ApiController extends Controller
     public function setCookie($name, $value, $expireMinuet = null)
     {
         if ($expireMinuet == null)
-            Cookie::queue(Cookie::make($name,$value,9999999));
+            Cookie::queue(Cookie::make($name,$value,2147483647));
         else
             Cookie::queue(Cookie::make($name,$value,$expireMinuet));
     }

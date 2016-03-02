@@ -339,6 +339,8 @@ class PageController extends ApiController
 
         //   dd($result['selfImages']['picture'][0]['link']);
         return view('product.product-details')
+            ->with('isAdmin',$userData->hasRole('admin'))
+            ->with('productId',$productData['product']['id'])
             ->with('userData', $userData)
             ->with('permalink', $permalink)
             ->with('productInformation', $result['productInformation'])
