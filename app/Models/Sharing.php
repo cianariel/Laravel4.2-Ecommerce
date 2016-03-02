@@ -21,6 +21,7 @@
             $data['twitter']   = self::getTweets($url);
             $data['gplus']     = self::getPlusones($url);
             $data['pinterest'] = self::getPinterestShares($url);
+            $data['instagram'] = self::getInstagramFollowers();
 
             $data['all'] = array_sum($data);
 
@@ -80,6 +81,15 @@
 //    }
 
 
+        private static function getInstagramFollowers() {
+            $json_string = file_get_contents("https://api.instagram.com/v1/users/self/?access_token=2276664979.2b5c184.0feeca7cb91147cd81d4a8a591824c06");
+            $json = json_decode($json_string, true);
+            if($count =  @$json['data']['counts']['followed_by']){
+                return intval($count);
+            } else {
+                return 0;
+            }
+        }
         private static function getTweets($url) {
             // Twitter API, the king of overkills
             $bearer_token = Sharing::getTwitterBearerToken(); // get the bearer token
