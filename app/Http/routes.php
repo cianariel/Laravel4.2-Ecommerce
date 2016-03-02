@@ -38,6 +38,16 @@
         return view('layouts.aboutus');
     });
 
+    Route::get('/privacy-policy', function()
+    {
+        return view('layouts.privacy-policy');
+    });
+
+    Route::get('/terms-of-use', function()
+    {
+        return view('layouts.terms-of-use');
+    });
+
     Route::group(['prefix' => 'api'], function ()
     {
         /*
@@ -259,6 +269,7 @@
     Route::get('/api/paging/get-content/{page?}/{limit?}/{type?}/{tag?}/{productCategory?}/{sortBy?}', 'PageController@getContent');
     Route::get('/api/paging/get-grid-content/{page?}/{limit?}/{category?}/{tag?}', 'PageController@getGridContent');
     Route::get('/api/layout/get-shop-menu', 'PageController@getShopMenu');
+    Route::get('/api/social/get-social-counts', 'PageController@getSocialCounts');
 
 
     // temporary category tag generator

@@ -9,6 +9,19 @@
     <body class="@yield('body-class', 'aboutus-page')">
     @include('layouts.parts.header')
 
+        <nav class="mid-nav">
+            <div class="container full-sm fixed-sm">
+                <ul class="wrap col-lg-9">
+                    <li class="box-link-ul active-ul ">
+                        <a class="box-link active" href="#">
+                            <span class="box-link-active-line"></span>
+                            About Us
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        
 <div class = 'about_para_1'>
     <div class = 'para1_center' align='center'>
         <div class = 'space'></div>
