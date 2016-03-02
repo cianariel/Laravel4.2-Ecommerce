@@ -53,8 +53,9 @@ productApp.config(['$provide', function($provide){
 }]);
 
 
-productApp.controller('productController', ['$scope', '$http', '$window'
-    , function ($scope, $http, $window) {
+productApp.controller('productController', ['$scope', '$http', '$window','$interval'
+    , function ($scope, $http, $window,$interval) {
+
 
 
         // initialize variables
@@ -85,17 +86,111 @@ productApp.controller('productController', ['$scope', '$http', '$window'
             $scope.showCompareButton = true;
 
             $scope.htmlContent = "";
+            $scope.comments = [];
+            $scope.commentsCount = 0;
+            $scope.commentsCountView = "";//$scope.commentsCount < 2? $scope.commentsCount +" "+"Comment" : $scope.commentsCount +" "+"Comments";
+
+            $scope.productId = 0;
+            $scope.userId = 0;
+            $scope.isAdmin = false;
+            $scope.isEdit = false;
+            $scope.commentId = null;
 
 
         };
 
         // Comment for product section
-        $scope.addCommentForProduct = function(){
+        $scope.addCommentForProduct = function(userId,productId,permalink,comment){
+            //console.log(userId,productId,permalink,comment);
+
+            $http({
+                url: '/api/comment/add-product-comment',
+                method: "POST",
+                data:{
+                    uid: userId,
+                    pid: productId,
+                    plink: permalink,
+                    comment: comment
+                }
+            }).success(function (data) {
+                $scope.htmlContent = "";
+                $scope.getCommentsForProduct($scope.productId);
+
+
+            });
+        };
+
+        $scope.getCommentsForProduct = function(pid){
+
+            $http({
+                url: '/api/comment/get-product-comment/'+pid,
+                method: "GET"
+            }).success(function (data) {
+                $scope.productId = pid;
+                $scope.comments = data.data;
+                $scope.commentsCount = $scope.comments.length;
+                $scope.commentsCountView = $scope.commentsCount < 2? $scope.commentsCount +" "+"Comment" : $scope.commentsCount +" "+"Comments";
+
+              //  console.log($scope.comments.length);
+            });
+
+        };
+
+        // update comment in the comment view through AJAX call.
+        var commnetTimer = $interval(function(){
+          //  console.log("in");
+            if($scope.productId != 0)
+            {
+                $scope.getCommentsForProduct($scope.productId);
+            }
+        },10000);//10000
+
+
+        $scope.editComment = function(comment){
+          //  console.log(comment);
+
+            $scope.isEdit = true;
+
+            $scope.commentId = comment.CommentId;
+
+            $scope.htmlContent = comment.Comment;
+
+
+        };
+
+        $scope.updateCommentForProduct = function(id,comment){
+            $http({
+                url: '/api/comment/update-product-comment',
+                method: "POST",
+                data:{
+                    cid: $scope.commentId,
+                    comment: $scope.htmlContent
+                }
+            }).success(function (data) {
+                $scope.htmlContent = "";
+                $scope.isEdit = false;
+               // console.log("pid :"+ $scope.productId);
+                $scope.getCommentsForProduct($scope.productId);
+            });
 
         };
 
 
-        // toggle comapare button
+        $scope.deleteCommentForProduct = function(id){
+            $http({
+                url: '/api/comment/delete-product-comment',
+                method: "POST",
+                data:{
+                    cid: id
+                }
+            }).success(function (data) {
+                $scope.getCommentsForProduct($scope.productId);
+            });
+
+        };
+
+
+        // toggle compare button
         $scope.toggleCompareButton = function(){
             $scope.showCompareButton = ! $scope.showCompareButton;
 

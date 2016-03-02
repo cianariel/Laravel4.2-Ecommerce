@@ -22,10 +22,10 @@
         | Specify the length of time (in minutes) that the token will be valid for.
         | Defaults to 1 hour
 
-        |   /// custom - changed to 3 hours
+        |   /// custom - changed to 2 week
         */
 
-        'ttl'               => 180,
+        'ttl'               => 20160,
 
         /*
         |--------------------------------------------------------------------------

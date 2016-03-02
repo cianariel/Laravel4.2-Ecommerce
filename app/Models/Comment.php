@@ -79,6 +79,7 @@
 
                 $data['CommentId'] = $singleComment['id'];
                 $data['Comment'] = $singleComment['comment'];
+                $data['UserId'] = $userInfo['id'];
                 $data['UserName'] = $userInfo['name'];
                 $data['Picture'] = $userInfo->medias[0]->media_link;
                 $data['Flag'] = $singleComment['flag'];
@@ -89,6 +90,20 @@
             }
 
             return $commentCollection;
+        }
+
+        public function updateCommentForProduct($data)
+        {
+            $comment = Comment::where('id',$data['Id'])->update(['comment' => $data['Comment'] ]);
+
+            return $comment;
+        }
+
+        public function deleteCommentForProduct($commentId)
+        {
+            $comment = Comment::where('id',$commentId)->delete();
+
+            return $comment;
         }
 
     }

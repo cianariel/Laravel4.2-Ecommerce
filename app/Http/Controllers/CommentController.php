@@ -16,29 +16,70 @@ class CommentController extends ApiController
 
     public function addCommentForProduct()
     {
+        $inputData = \Input::all();
 
-        $data['ProductId'] = 40;
+        if (!empty($inputData['comment']) && !empty($inputData['pid'])) {
+            $data['UserId'] = $inputData['uid'];
+            $data['ProductId'] = $inputData['pid'];
+            $data['Comment'] = $inputData['comment'];
 
-        $data['Comment'] = 'new com';
-        $data['UserId'] = 32;
-        $data['Link'] = 'sdf.com';
-        $data['Flag'] = 'new';
+            $data['Link'] = $inputData['plink'];
+            $data['Flag'] = 'Show';
 
-        $result = $this->comment->addCommentForProduct($data);
+            $result = $this->comment->addCommentForProduct($data);
 
-        return $this->setStatusCode(\Config::get("const.api-status.success"))
-                    ->makeResponse($result);
+            return $this->setStatusCode(\Config::get("const.api-status.success"))
+                        ->makeResponse($result);
+
+        }
 
     }
 
-    public function getCommentForProduct()
+    public function getCommentForProduct($pid = null)
     {
-        $data['ProductId'] = 40;
+        if(!empty($pid))
+        {
+            $data['ProductId'] = $pid;
 
         $result = $this->comment->findCommentForProduct($data);
 
-        return $this->setStatusCode(\Config::get("const.api-status.success"))
-                    ->makeResponse($result);
+            return $this->setStatusCode(\Config::get("const.api-status.success"))
+                        ->makeResponse($result);
+
+        }
+
+    }
+
+    public function updateCommentForProduct()
+    {
+        $inputData = \Input::all();
+
+        if (!empty($inputData['comment']) && !empty($inputData['cid'])) {
+            $data['Id'] = $inputData['cid'];
+            $data['Comment'] = $inputData['comment'];
+
+
+            $result = $this->comment->updateCommentForProduct($data);
+
+            return $this->setStatusCode(\Config::get("const.api-status.success"))
+                        ->makeResponse($result);
+
+        }
+
+    }
+
+    public function deleteCommentForProduct()
+    {
+        $inputData = \Input::all();
+
+        if (!empty($inputData['cid'])) {
+            $data['Id'] = $inputData['cid'];
+            $result = $this->comment->deleteCommentForProduct($inputData['cid']);
+
+            return $this->setStatusCode(\Config::get("const.api-status.success"))
+                        ->makeResponse($result);
+
+        }
 
     }
 }
