@@ -4,6 +4,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ideaing - Email Notification</title>
+    <link rel="stylesheet" href="/assets/fonts/ideaing/style.css">
     <style type="text/css">
         /* Client-specific Styles */
         #outlook a {
@@ -31,12 +32,20 @@
 
         /* Force Hotmail to display normal line spacing.*/
         #backgroundTable {
-            margin: 0;
+            margin: 0 auto;
             padding: 0;
-            width: 100% !important;
             line-height: 100% !important;
-        }
 
+        }
+        #backgroundTable span{
+            color:grey;
+        }
+        #backgroundTableHeader{
+            margin: 0 auto;
+            padding: 0;
+            line-height: 100% !important;
+           
+        }
         img {
             outline: none;
             text-decoration: none;
@@ -77,6 +86,81 @@
             width: 100%;
             clear: both;
         }
+    a.fb {
+        display: inline-block;
+        height: 35px;
+        font-size: 1rem;
+        border-radius: 30px;
+        padding: 0 10px 0 0 !important;
+        color: #5C7CBD;
+        text-align: center;
+    }
+    a.fb i.m-icon {
+      color: white;
+      background: #5C7CBD;
+      padding: 5px;
+      border-radius: 20px;
+      padding-top: 7px;
+      padding-left: 7px;
+      padding-right: 7px;
+      padding-bottom: 6px;
+      float: left; }
+   
+  a.twi {
+    display: inline-block;
+    height: 35px;
+    font-size: 1rem;
+    border-radius: 30px;
+    padding: 0 10px 0 0 !important;
+    color: #079DD1;
+    text-align: center;}
+    a.twi i.m-icon {
+      color: white;
+      background: #079DD1;
+      padding: 5px;
+      border-radius: 20px;
+      padding-top: 7px;
+      padding-left: 7px;
+      padding-right: 7px;
+      padding-bottom: 6px;
+      float: left; }
+
+a.likes {
+    display: inline-block;
+    height: 35px;
+    font-size: 1rem;
+    border-radius: 30px;
+    padding: 0 10px 0 0 !important;
+    color: #fa0033;
+    text-align: center;}
+    a.likes i.m-icon {
+      color: white;
+      background: #fa0033;
+      padding: 5px;
+      border-radius: 20px;
+      padding-top: 7px;
+      padding-left: 7px;
+      padding-right: 7px;
+      padding-bottom: 6px;
+      float: left; }
+      a.discuss {
+    display: inline-block;
+    height: 35px;
+    font-size: 1rem;
+    border-radius: 30px;
+    padding: 0 10px 0 0 !important;
+    color: #dfdfdf;
+    text-align: center;}
+    a.discuss i.m-icon {
+      color: white;
+      background: #dfdfdf;
+      padding: 5px;
+      border-radius: 20px;
+      padding-top: 7px;
+      padding-left: 7px;
+      padding-right: 7px;
+      padding-bottom: 6px;
+      float: left; }
 
         /*IPAD STYLES*/
         @media only screen and (max-width: 640px) {
@@ -154,11 +238,11 @@
 
         }
     </style>
-</head>
-<body>
 
-<table id="backgroundTable" st-sortable="header" bgcolor="#ffffff" border="0" cellpadding="0" cellspacing="0"
-       width="100%">
+</head>
+<body bgcolor="#EBEBEB" style="background-color:#EBEBEB;">
+<table id="backgroundTableHeader" st-sortable="header" bgcolor="#EBEBEB" border="0" cellpadding="0" cellspacing="0"
+       width="600px">
     <tbody>
     <tr>
         <td>
@@ -215,10 +299,10 @@
     </tr>
     </tbody>
 </table>
-
-<table id="backgroundTable" st-sortable="full-text" bgcolor="#ffffff" border="0" cellpadding="0" cellspacing="0"
-       width="100%">
+<table id="backgroundTable" st-sortable="header" bgcolor="#FFFFFF" border="0" cellpadding="0" cellspacing="0"
+       width="600px">
     <tbody>
+    
     <tr>
         <td>
             <table hasbackground="true" class="devicewidth" align="center" border="0" cellpadding="0" cellspacing="0"
@@ -238,7 +322,7 @@
                             <tr>
                                 <td>
                                     <table class="devicewidthinner" align="center" border="0" cellpadding="0"
-                                           cellspacing="0" width="560">
+                                           cellspacing="0" width="500">
                                         <tbody>
                                         <!-- Title -->
                                         <tr>
@@ -246,12 +330,10 @@
                                                 st-title="fulltext-heading">
                                                 <p align="left">
                                                     <span style="font-size: 14pt;" class="im"><span style="font-size: 14pt;">Hi {{ $name }}
-                                                            ,</span><br><span style="font-size: 14pt;">Let's make sure we've got your email right.</span><span
+                                                            ,</span><br><br><span style="font-size: 14pt;">You are just one step away.</span><span
                                                                 style="font-size: 14pt;"><a
                                                                     style="color:rgb(250,0,51);text-decoration:none"
-                                                                    href="{{ url('/verify-email').'/'.$link}}">Confirming
-                                                                your
-                                                                email</a> will unlock all features of Ideaing.</span> </span>
+                                                                    href="{{ url('/verify-email').'/'.$link}}"> Click confirm</a> and join the ideaing family.</span> </span>
                                                 </p>
                                             </td>
                                         </tr>
@@ -288,27 +370,22 @@
             </table>
         </td>
     </tr>
-    </tbody>
-</table>
-<table id="backgroundTable" st-sortable="2-images+text-columns" bgcolor="#ffffff" border="0" cellpadding="0"
-       cellspacing="0" width="100%">
-    <tbody>
     <tr>
         <td>
             <table hasbackground="true" class="devicewidth" align="center" border="0" cellpadding="0" cellspacing="0"
-                   width="600">
+                   width="500">
                 <tbody>
                 <tr>
                     <td width="100%">
                         <table class="devicewidth" align="center" bgcolor="#ffffff" border="0" cellpadding="0"
-                               cellspacing="0" width="600">
+                               cellspacing="0" width="500">
                             <tbody>
                             <tr>
                                 <td>
                                     <!-- start of left column -->
 
                                     <table class="devicewidth" align="left" border="0" cellpadding="0" cellspacing="0"
-                                           width="290">
+                                           width="300">
                                         <tbody>
                                         <!-- Spacing -->
                                         <tr>
@@ -332,7 +409,7 @@
                                                                      alt="" st-image="ipad"
                                                                      style="display:block; border:none; outline:none; text-decoration:none;"
                                                                      class="colimg2" height="" border="0"
-                                                                     width="285">
+                                                                     width="250">
                                                             </div>
                                                         </td>
                                                     </tr>
@@ -345,7 +422,7 @@
                                     </table>
                                     <!-- end of left column --><!-- start of right column -->
                                     <table class="devicewidth" align="right" border="0" cellpadding="0" cellspacing="0"
-                                           width="290">
+                                           width="200">
                                         <tbody>
                                         <!-- Spacing -->
                                         <tr>
@@ -362,9 +439,9 @@
                                                     <tbody>
                                                     <!-- image -->
                                                     <tr>
-                                                        <td class="devicewidth" height="93" align="center" width="">
-                                                            <div class="imgpop" style="background-color:rgb(250,0,51);min-height:50px;min-width:225px;text-align: center; line-height:50px;">
-                                                                <a style=" color:white;font-weight: bold;" href="{{ url('/verify-email').'/'.$link}}"> Confirm Email !</a>
+                                                        <td class="devicewidth" align="center" width="">
+                                                            <div class="imgpop" style="margin-top: 20px;border-radius:6px;background-color:rgb(250,0,51);min-height:25px;width:150px;text-align: center; line-height:50px;">
+                                                                <a style=" color:white;font-weight: bold;" href="{{ url('/verify-email').'/'.$link}}"> Get Started</a>
                                                             </div>
                                                         </td>
                                                     </tr>
@@ -395,11 +472,6 @@
             </table>
         </td>
     </tr>
-    </tbody>
-</table>
-<table id="backgroundTable" st-sortable="separator" bgcolor="#ffffff" border="0" cellpadding="0" cellspacing="0"
-       width="100%">
-    <tbody>
     <tr>
         <td>
             <table hasbackground="true" class="devicewidth" align="center" border="0" cellpadding="0" cellspacing="0"
@@ -421,11 +493,6 @@
             </table>
         </td>
     </tr>
-    </tbody>
-</table>
-<table id="backgroundTable" st-sortable="footer" bgcolor="#ffffff" border="0" cellpadding="0" cellspacing="0"
-       width="100%">
-    <tbody>
     <tr>
         <td>
             <table hasbackground="true" class="devicewidth" align="center" border="0" cellpadding="0" cellspacing="0"
@@ -437,29 +504,29 @@
                                width="600">
                             <tbody>
                             <tr>
-                                <td style="font-family: Helvetica, arial, sans-serif; font-size: 14px;color: #666666"
+                                <td width="400px" style="font-family: ideaing; font-size: 14px;color: #666666"
                                     st-content="postfooter" align="center" valign="middle">
                                     <p style="text-align: center;">
-                                        Click here to <a style="text-decoration: none; color: #0a8cce"
-                                                         href="http://ideaing.com/unsubscribe">Unsubscribe</a>
-                                    </p>
-                                    <p style="text-align: center;">
-                                    </p>
-                                    <p style="text-align: center;">
-                                        Ideaing Inc.
-                                    </p>
-                                    <p style="text-align: center;">
-                                        Ideaing Califonia , USA
+                                        <a style="text-decoration: none; color: #007baa"
+                                                         href="http://ideaing.com">Ideaing</a>
+                                        <a style="text-decoration: none; color: #007baa"
+                                         href="http://ideaing.com/unsubscribe">About</a>
+                                         <a style="text-decoration: none; color: #808080"
+                                         href="http://ideaing.com/unsubscribe">Ideaing</a>
                                     </p>
                                 </td>
                                 <td>
-
+                                    <a class="fb" href="#"><i class="m-icon m-icon--facebook-id"></i></a>
+                                    <a class="twi" href="#"><i class="m-icon  m-icon--twitter-id"></i></a>
+                                    <a class="likes" href="#"><i class="m-icon m-icon--heart-solid"></i></a>
+                                    <a class="discuss" href="#"><i class="m-icon m-icon--discuss-active"></i></a>
                                 </td>
                             </tr>
                             <!-- Spacing -->
                             <tr>
-                                <td height="20" width="100%">
+                                <td height="20" width="400px">
                                 </td>
+                                <td></td>
                             </tr>
                             <!-- Spacing -->
                             </tbody>
