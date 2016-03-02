@@ -64,7 +64,7 @@
             </div>
             <div class="col-xs-7">
             <ul class="share-buttons short hidden-xs col-lg-6 col-sm-8 pull-right">
-                <li class="all-shares"><b class="share-count all">120K </b> <br/>all shares</li>
+                <li class="all-shares"><b class="share-count all"></b> <br/>all shares</li>
                 <li><a class="fb" href="#"
                        onclick="javascript: (function() {
 							   window.open('https://www.facebook.com/sharer/sharer.php?u=' +  thisUrl, 'fbwindow', 'width=600, height=360, left=250, top=150, toolbar=0, location=0, menubar=0, scrollbars=0');})();">
