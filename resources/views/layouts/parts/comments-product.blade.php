@@ -20,7 +20,7 @@
     <div class="container">
 
 <input type="hidden" ng-init="userId='<?php echo $userData['id']?>'">
-        <input type="hidden" ng-init="isAdmin='<?php echo $isAdmin?>'">
+        <input type="hidden" ng-init="isAdmin='<?php echo $isAdminForEdit?>'">
         <div ng-init="getCommentsForProduct(<?php echo $productId?>)">
             <h4><?php echo "{{ commentsCountView }}" ?></h4>
             <div ng-repeat="comment in comments">

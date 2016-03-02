@@ -338,9 +338,21 @@ class PageController extends ApiController
         MetaTag::set('description', $result['productInformation']['MetaDescription']);
 
         //   dd($result['selfImages']['picture'][0]['link']);
+
+
+        if($userData['method-status'] == 'fail-with-http')
+        {
+            $isAdmin = false;
+            $userData['id'] = 0;
+        }else{
+            $isAdmin = $userData->hasRole('admin');
+        }
+
+
+
         return view('product.product-details')
-            ->with('isAdmin',$userData->hasRole('admin'))
-            ->with('productId',$productData['product']['id'])
+            ->with('isAdminForEdit', $isAdmin)
+            ->with('productId', $productData['product']['id'])
             ->with('userData', $userData)
             ->with('permalink', $permalink)
             ->with('productInformation', $result['productInformation'])
@@ -393,20 +405,18 @@ class PageController extends ApiController
     }
 
 
-    public function getSocialCounts($url = ''){
+    public function getSocialCounts($url = '')
+    {
         $input = Input::all();
 
         $url = 'http://' . $input['url'];
 
-        if(!strpos($url, 'ideaing')){ // TODO - make more strict check on Production
+        if (!strpos($url, 'ideaing')) { // TODO - make more strict check on Production
             return 'Stop trying to hack my app, thanks';
         }
 
         return Sharing::getCountsFromAPIs($url);
     }
-
-
-
 
 
 }
