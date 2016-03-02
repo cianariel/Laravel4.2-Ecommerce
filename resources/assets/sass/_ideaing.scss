@@ -8296,6 +8296,16 @@ body.error-page{
 .mid-bottom-container{
     margin-top: 55px;
 }
+.login-signup-modal{
+    .alert-danger{
+        background: black;
+        border: 0px;
+        color: #fff;
+        .close{
+            color: #000;
+        }
+    }
+}
 @media (max-width: 620px){
     .reviews-medium-container .average-score .caption{
         padding-top: 17px;
