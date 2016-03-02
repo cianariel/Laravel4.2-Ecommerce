@@ -22,10 +22,10 @@
         <div class="col-sm-3 col-xs-12 social-connect">
             <h4 class="orange">Let's connect</h4>
             <ul>
-                <li><a class="fb" href="https://www.facebook.com/ideaingsmarterliving"><span><i class="m-icon--facebook-id"></i> Like <b class="share-count  count"></b></span></a></li>
-                <li><a class="twi" href="https://twitter.com/ideaing/"><span><i class="m-icon--twitter-id"></i> Follow  <b class="share-count  count"></b></span></a></li>
-                <li><a class="gp" href="http://google.com/+Ideaingsmarterliving"><span><i class="m-icon--google-plus-id"></i> Follow <b class="share-count  count"></b></span></a></li>
-                <li><a class="pint" href="https://www.pinterest.com/ideaing_com"><span><i class="m-icon--pinterest-id"></i> Follow <b class="share-count  count"></b></span></a></li>
+                <li><a class="fb" href="https://www.facebook.com/ideaingsmarterliving"><span><i class="m-icon--facebook-id"></i> Like <b class="share-count fb count"></b></span></a></li>
+                <li><a class="twi" href="https://twitter.com/ideaing/"><span><i class="m-icon--twitter-id"></i> Follow  <b class="share-count twi count"></b></span></a></li>
+                <li><a class="gp" href="http://google.com/+Ideaingsmarterliving"><span><i class="m-icon--google-plus-id"></i> Follow <b class="share-count gp count"></b></span></a></li>
+                <li><a class="pint" href="https://www.pinterest.com/ideaing_com"><span><i class="m-icon--pinterest-id"></i> Follow <b class="share-count pint count"></b></span></a></li>
                 <li><a class="inst" href="https://www.instagram.com/ideaing_com/"><span><i class=" m-icon--footer-instagram"></i> Follow <b class="count"></b></span></a></li>
             </ul>
         </div>
