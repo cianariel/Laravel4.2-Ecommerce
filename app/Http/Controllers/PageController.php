@@ -13,6 +13,8 @@ use App\Models\ProductCategory;
 use App\Models\Tag;
 use App\Models\Room;
 use URL;
+use Input;
+use App\Models\Sharing;
 
 class PageController extends ApiController
 {
@@ -384,10 +386,25 @@ class PageController extends ApiController
 
     public static function getShopMenu()
     {
-
         $return = Product::getForShopMenu();
-
         return $return;
     }
+
+
+    public function getSocialCounts($url = ''){
+        $input = Input::all();
+
+        $url = 'http://' . $input['url'];
+
+        if(!strpos($url, 'ideaing')){ // TODO - make more strict check on Production
+            return 'Stop trying to hack my app, thanks';
+        }
+
+        return Sharing::getCountsFromAPIs($url);
+    }
+
+
+
+
 
 }

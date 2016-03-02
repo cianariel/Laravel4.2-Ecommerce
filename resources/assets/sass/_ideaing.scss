@@ -925,7 +925,7 @@ nav {
 
 }
 
-body.single, body.product-details, body.profilepage, body.shoppage{
+body.single, body.product-details, body.profilepage, body.shoppage, body.error-page, body.aboutus-page{
   .mid-nav.rooms{
     display: none;
   }
@@ -8278,6 +8278,18 @@ body.aboutus-page{
         &:nth-child(2){
             background-color:#dddddd; 
         }
+    }
+    
+}
+body.error-page{
+    .pocket, #back-to-top, #about-button, footer.about-footer .close-down{
+        display: none;
+    }
+    .about-footer{
+        display: block;
+    }
+    .shop-menu{
+        top: 0px;
     }
     
 }
