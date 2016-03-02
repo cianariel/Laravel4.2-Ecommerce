@@ -3,7 +3,7 @@
     <ul class="share-buttons">
         <?php
         if(!function_exists('is_single')){ ?>
-            @include('room.header-menu')
+            @include('layouts.parts.share-buttons')
         <?php     }else{
             loadLaravelView('share-buttons');
             }
