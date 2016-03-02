@@ -605,7 +605,7 @@
             </article>
 
 
-            @include('layouts.parts.comments')
+            @include('layouts.parts.comments-product')
 
 
             <!-- /article -->
