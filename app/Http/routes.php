@@ -272,6 +272,7 @@
     Route::get('/api/paging/get-grid-content/{page?}/{limit?}/{category?}/{tag?}', 'PageController@getGridContent');
     Route::get('/api/layout/get-shop-menu', 'PageController@getShopMenu');
     Route::get('/api/social/get-social-counts', 'PageController@getSocialCounts');
+    Route::get('/api/social/get-fan-counts', 'PageController@getFollowerCounts');
 
 
     // temporary category tag generator

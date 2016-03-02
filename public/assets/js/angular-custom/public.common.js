@@ -597,8 +597,26 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                 $('.share-count.inst').html(response.instagram);
             });
         }
+        $scope.countSocialFollowers = function(){
+            // Я из лесу вышел и сразу зашел
+
+            var thisUrl = window.location.host + window.location.pathname;
+
+            $http({
+                url: '/api/social/get-fan-counts/',
+                method: "GET",
+                params: {'url' : thisUrl}
+            }).success(function (response) {
+                $('.fan-count.twi').html(response.twitter);
+                $('.fan-count.fb').html(response.facebook);
+                $('.fan-count.gp').html(response.gplus);
+                $('.fan-count.pint').html(response.pinterest);
+                $('.fan-count.inst').html(response.instagram);
+            });
+        }
 
         $scope.countSocialShares();
+        $scope.countSocialFollowers();
 
         $scope.initPage();
         // $scope.addAlert('danger','testingtestingtestingtestingtestingtestingtesting');
