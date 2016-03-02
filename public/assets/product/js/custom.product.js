@@ -2,11 +2,60 @@
  * Created by sanzeeb on 1/7/2016.
  */
 
-var productApp = angular.module('productApp', ['ui.bootstrap', 'autocomplete']);
+var productApp = angular.module('productApp', ['ui.bootstrap', 'autocomplete','ngSanitize', 'angular-confirm', 'textAngular']);
+
+// Setting values of Angular Text Editor
+productApp.config(['$provide', function($provide){
+    // this demonstrates how to register a new tool and add it to the default toolbar
+    $provide.decorator('taOptions', ['$delegate', function(taOptions){
+        // $delegate is the taOptions we are decorating
+        // here we override the default toolbars and classes specified in taOptions.
+        taOptions.forceTextAngularSanitize = true; // set false to allow the textAngular-sanitize provider to be replaced
+        taOptions.keyMappings = []; // allow customizable keyMappings for specialized key boards or languages
+        taOptions.toolbar = [
+            ['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p', 'quote',
+            'bold', 'italics', 'underline', 'ul', 'ol', 'redo', 'undo', 'clear',
+            'justifyLeft','justifyCenter','justifyRight', 'justifyFull',
+            'insertImage', 'insertLink']
+        ];
+        taOptions.classes = {
+            focussed: 'focussed',
+            toolbar: 'btn-toolbar',
+            toolbarGroup: 'btn-group',
+            toolbarButton: 'btn btn-default',
+            toolbarButtonActive: 'active',
+            disabled: 'disabled',
+            textEditor: 'form-control',
+            htmlEditor: 'form-control'
+        };
+        return taOptions; // whatever you return will be the taOptions
+    }]);
+    // this demonstrates changing the classes of the icons for the tools for font-awesome v3.x
+    /*$provide.decorator('taTools', ['$delegate', function(taTools){
+        taTools.bold.iconclass = 'icon-bold';
+        taTools.italics.iconclass = 'icon-italic';
+        taTools.underline.iconclass = 'icon-underline';
+        taTools.ul.iconclass = 'icon-list-ul';
+        taTools.ol.iconclass = 'icon-list-ol';
+        taTools.undo.iconclass = 'icon-undo';
+        taTools.redo.iconclass = 'icon-repeat';
+        taTools.justifyLeft.iconclass = 'icon-align-left';
+        taTools.justifyRight.iconclass = 'icon-align-right';
+        taTools.justifyCenter.iconclass = 'icon-align-center';
+        taTools.clear.iconclass = 'icon-ban-circle';
+        taTools.insertLink.iconclass = 'icon-link';
+        taTools.insertImage.iconclass = 'icon-picture';
+        // there is no quote icon in old font-awesome so we change to text as follows
+        delete taTools.quote.iconclass;
+        taTools.quote.buttontext = 'quote';
+        return taTools;
+    }]);*/
+}]);
 
 
-productApp.controller('productController', ['$scope', '$http', '$window'
-    , function ($scope, $http, $window) {
+productApp.controller('productController', ['$scope', '$http', '$window','$interval'
+    , function ($scope, $http, $window,$interval) {
+
 
 
         // initialize variables
@@ -36,10 +85,112 @@ productApp.controller('productController', ['$scope', '$http', '$window'
 
             $scope.showCompareButton = true;
 
+            $scope.htmlContent = "";
+            $scope.comments = [];
+            $scope.commentsCount = 0;
+            $scope.commentsCountView = "";//$scope.commentsCount < 2? $scope.commentsCount +" "+"Comment" : $scope.commentsCount +" "+"Comments";
+
+            $scope.productId = 0;
+            $scope.userId = 0;
+            $scope.isAdmin = false;
+            $scope.isEdit = false;
+            $scope.commentId = null;
+
 
         };
 
-        // toggle comapare button
+        // Comment for product section
+        $scope.addCommentForProduct = function(userId,productId,permalink,comment){
+            //console.log(userId,productId,permalink,comment);
+
+            $http({
+                url: '/api/comment/add-product-comment',
+                method: "POST",
+                data:{
+                    uid: userId,
+                    pid: productId,
+                    plink: permalink,
+                    comment: comment
+                }
+            }).success(function (data) {
+                $scope.htmlContent = "";
+                $scope.getCommentsForProduct($scope.productId);
+
+
+            });
+        };
+
+        $scope.getCommentsForProduct = function(pid){
+
+            $http({
+                url: '/api/comment/get-product-comment/'+pid,
+                method: "GET"
+            }).success(function (data) {
+                $scope.productId = pid;
+                $scope.comments = data.data;
+                $scope.commentsCount = $scope.comments.length;
+                $scope.commentsCountView = $scope.commentsCount < 2? $scope.commentsCount +" "+"Comment" : $scope.commentsCount +" "+"Comments";
+
+              //  console.log($scope.comments.length);
+            });
+
+        };
+
+        // update comment in the comment view through AJAX call.
+        var commnetTimer = $interval(function(){
+          //  console.log("in");
+            if($scope.productId != 0)
+            {
+                $scope.getCommentsForProduct($scope.productId);
+            }
+        },10000);//10000
+
+
+        $scope.editComment = function(comment){
+          //  console.log(comment);
+
+            $scope.isEdit = true;
+
+            $scope.commentId = comment.CommentId;
+
+            $scope.htmlContent = comment.Comment;
+
+
+        };
+
+        $scope.updateCommentForProduct = function(id,comment){
+            $http({
+                url: '/api/comment/update-product-comment',
+                method: "POST",
+                data:{
+                    cid: $scope.commentId,
+                    comment: $scope.htmlContent
+                }
+            }).success(function (data) {
+                $scope.htmlContent = "";
+                $scope.isEdit = false;
+               // console.log("pid :"+ $scope.productId);
+                $scope.getCommentsForProduct($scope.productId);
+            });
+
+        };
+
+
+        $scope.deleteCommentForProduct = function(id){
+            $http({
+                url: '/api/comment/delete-product-comment',
+                method: "POST",
+                data:{
+                    cid: id
+                }
+            }).success(function (data) {
+                $scope.getCommentsForProduct($scope.productId);
+            });
+
+        };
+
+
+        // toggle compare button
         $scope.toggleCompareButton = function(){
             $scope.showCompareButton = ! $scope.showCompareButton;
 
