@@ -7,8 +7,8 @@
             <ul>
                 <li><a href="/aboutus">About Us</a></li>
                 <li><a href="#">Contact Us</a></li>
-                <li><a href="#">Terms of Use</a></li>
-                <li><a href="#">Privacy Policy</a></li>
+                <li><a href="/terms-of-use">Terms of Use</a></li>
+                <li><a href="/privacy-policy">Privacy Policy</a></li>
             </ul>
         </div>
         <div class="col-sm-3 col-xs-12">
@@ -22,11 +22,11 @@
         <div class="col-sm-3 col-xs-12 social-connect">
             <h4 class="orange">Let's connect</h4>
             <ul>
-                <li><a class="fb" href="#"><span><i class="m-icon--facebook-id"></i> Like <b class="count">12k</b></span></a></li>
-                <li><a class="twi" href="#"><span><i class="m-icon--twitter-id"></i> Follow  <b class="count">12k</b></span></a></li>
-                <li><a class="gp" href="#"><span><i class="m-icon--google-plus-id"></i> Follow <b class="count">12k</b></span></a></li>
-                <li><a class="pint" href="#"><span><i class="m-icon--pinterest-id"></i> Follow <b class="count">12k</b></span></a></li>
-                <li><a class="inst" href="#"><span><i class=" m-icon--footer-instagram"></i> Follow <b class="count">12k</b></span></a></li>
+                <li><a class="fb" href="https://www.facebook.com/ideaingsmarterliving"><span><i class="m-icon--facebook-id"></i> Like <b class="share-count  count"></b></span></a></li>
+                <li><a class="twi" href="https://twitter.com/ideaing/"><span><i class="m-icon--twitter-id"></i> Follow  <b class="share-count  count"></b></span></a></li>
+                <li><a class="gp" href="http://google.com/+Ideaingsmarterliving"><span><i class="m-icon--google-plus-id"></i> Follow <b class="share-count  count"></b></span></a></li>
+                <li><a class="pint" href="https://www.pinterest.com/ideaing_com"><span><i class="m-icon--pinterest-id"></i> Follow <b class="share-count  count"></b></span></a></li>
+                <li><a class="inst" href="https://www.instagram.com/ideaing_com/"><span><i class=" m-icon--footer-instagram"></i> Follow <b class="count"></b></span></a></li>
             </ul>
         </div>
         <div class="col-sm-3 col-xs-12">
