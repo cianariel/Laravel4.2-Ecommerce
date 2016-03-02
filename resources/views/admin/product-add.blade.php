@@ -207,7 +207,11 @@
                                                     <label class="col-md-2 control-label">Description:
                                                     </label>
                                                     <div class="col-md-10">
-                                                        3
+                                                        <div text-angular data-ng-model="htmlContent"
+                                                             name="description-editor"
+                                                             ta-text-editor-class="border-around ta-editor"
+                                                             ta-html-editor-class="border-around ta-editor">
+                                                        </div>
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
