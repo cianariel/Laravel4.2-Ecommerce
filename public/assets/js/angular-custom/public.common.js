@@ -594,6 +594,7 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                 $('.share-count.fb').html(response.facebook);
                 $('.share-count.gp').html(response.gplus);
                 $('.share-count.pint').html(response.pinterest);
+                $('.share-count.inst').html(response.instagram);
             });
         }
 
