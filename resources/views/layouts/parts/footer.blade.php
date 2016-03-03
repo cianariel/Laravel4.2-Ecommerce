@@ -41,20 +41,6 @@
 <div class="page-overlay"></div>
 <div class="page-overlay picture-overlay"></div>
 
-<div class="app-wrap" ng-app="publicApp" ng-controller="publicController">
-    <button class="btn" ng-click="openSharingModal()">Open Modal</button>
-
-    <script type="text/ng-template" id="sharing-modal.html">
-        <div class="modal-footer">
-            <button class="btn btn-primary" type="button" ng-click="ok()">OK</button>
-            <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
-        </div>
-        <div id=sharing-modal-content">
-        </div>
-    </script>
-
-</div>
-
 
 <button class="btn btn-success" id="about-button" data-toggle=".about-footer">About</button>
 <a href="#" id="back-to-top">

@@ -91,19 +91,43 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
 
         $scope.openSharingModal = function () {
 
-            var templateUrl = "sharing-modal.html";
-            var modalInstance = $uibModal.open({
-                    templateUrl: templateUrl,
-                    scope: $scope,
-                    size: 'lg',
-                    windowClass: 'sharing-modal',
-                    controller: 'ModalInstanceCtrltest'
-                })
-                    .result.finally(function () {
-                        console.log('boba fett comes for ye')
-                    })
-                ;
+            //$scope.openWindow = function() {
+                var $modal = $window.open('https://www.facebook.com/sharer/sharer.php?u=http://ideaing.com', 'C-Sharpcorner', 'width=500,height=400');
+            //};
 
+            // TODO -- add service name var, case links
+            // TODO -- fire counter updates for shares, only on pages where they are used (CMS)
+
+            var timer = setInterval(function() {
+                if($modal.closed) {
+                    clearInterval(timer);
+                    //do your process here
+                    $scope.countSocialShares();
+                    console.log('share counters updated')
+                }
+            }, 1000);
+
+            //var templateUrl = "sharing-modal.html";
+            //var modalInstance = $uibModal.open({
+            //        templateUrl: templateUrl,
+            //        scope: $scope,
+            //        size: 'lg',
+            //        windowClass: 'sharing-modal',
+            //        controller: 'ModalInstanceCtrltest'
+            //    });
+            //    modalInstance.opened.then(function () {
+            //        $http({
+            //            url: 'https://www.facebook.com/sharer/sharer.php?u=http://ideaing.com',
+            //            method: "GET",
+            //        }).success(function (response) {
+            //            $scope.sharingContent = response;
+            //        });
+            //        //$('#sharing-modal-content').load('https://www.facebook.com/sharer/sharer.php?u=http://ideaing.com');
+            //    })
+            //    modalInstance.result.finally(function () {
+            //            console.log('boba fett comes for ye')
+            //        })
+            //    ;
         };
 
 
