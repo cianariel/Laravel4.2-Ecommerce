@@ -602,6 +602,7 @@
             <div class="modal-footer">
                 <button class="btn dark btn-outline" data-dismiss="modal" aria-hidden="true">Close</button>
                 <button class="btn green" id="btn_add_product_image" data-dismiss="modal">Add Product Tag </button>
+                <button class="btn green" id="btn_edit_product_image" style="display:none" data-dismiss="modal">Edit Product Tag </button>
             </div>
         </div>
     </div>
@@ -650,6 +651,8 @@ $(function() {
     $('#Hero3 .fileinput.fileinput-new').removeClass('fileinput-new').addClass('fileinput-exists');
     @endif
     function onheroclick(e){
+        $("#btn_add_product_image").show();
+        $("#btn_edit_product_image").hide();
         var parentOffset = $(this).parent().offset(); 
         $('#hero_image_id').val($(this).parent().data('image'));
         var relX = e.pageX - parentOffset.left;
@@ -659,6 +662,10 @@ $(function() {
         $('#select_product_modal').modal();
         $("#select_product").select2("val", "");
     }
+    
+    $('#btn_edit_product_image').click(function(){
+        
+    });
     $('#btn_add_product_image').click(function(){
         var obj = {'hero_image_id':$('#hero_image_id').val(),'x' : $('#Xpos').val(),'y':$('#Ypos').val(),'product_id' : $('#select_product').val(),'product_color':$('#product_color').val(),'tag_type':$('#tag_type').val()};
         var row = "<tr><td><img src='"+ $('#product_thumb').val() + "' /></td><td>"+ $('#select_product').val() + "</td><td>"+ $('#product_name').val() + "</td><td>"+$('#product_color').val()+'</td><td><a href="javascript:;" class="btn btn-sm blue btn-edit-product" data-xpos="'+$('#Xpos').val()+'" data-ypos="'+$('#Ypos').val()+'" data-heroimageid="hero_image_1" data-productid="'+$('#select_product').val()+'" data-productcolor="'+$('#product_color').val()+'" data-tagicon="'+$('#tag_type').val()+'"><i class="fa fa-pencil"></i></a> <a href="javascript:;" class="btn btn-sm red btn-delete-product" data-productid="1"><i class="fa fa-times"></i></a></td></tr>';
@@ -695,6 +702,8 @@ $(function() {
         $('#tag_type').val($(this).data('tagicon'));
         $('#hero_image_id').val($(this).data('heroimageid'));
         $("#select_product").select2("val", $(this).data('productid'));
+        $("#btn_add_product_image").hide();
+        $("#btn_edit_product_image").show();
         $('#select_product_modal').modal();
     }
     $('.btn-delete-product').click(onproductedelete);
