@@ -7,7 +7,7 @@
 
                 </i> <b class="fb share-count"></b></a></li>
 
-        <li><a class="twi"
+        <li><a class="twi" href="#"
                onclick="javascript: (function() {
 							   window.open('https://twitter.com/share?url=http://' + window.location.host + window.location.pathname + '&counturl=' + window.location.host + window.location.pathname + '&text=@Ideaing', 'fbwindow', 'width=600, height=360, left=250, top=150, toolbar=0, location=0, menubar=0, scrollbars=0');})();">
                 <i class="m-icon  m-icon--twitter-id"></i> <b class="twi share-count"></b></a></li>
