@@ -30,6 +30,8 @@
         public static function getFollowersFromAPIs($url = ''){
             $fans['facebook'] = self::getFacebookFollowers();
             $fans['twitter'] = self::getTwitterFollowers();
+            $fans['gplus'] = self::getGooglePlusFollowers();
+            $fans['pinterest'] = self::getPinterestFollowers();
             $fans['instagram'] = self::getInstagramFollowers();
 
             return $fans;
@@ -74,6 +76,16 @@
             }
         }
 
+        private static function getGooglePlusFollowers() {
+            $json_string = file_get_contents('https://www.googleapis.com/plus/v1/people/+Ideaingsmarterliving?key=AIzaSyAp7CNY6xSR2FS9493v8jcyY3qqJGIt2ac');
+            $json = json_decode($json_string, true);
+            if($count = $json['circledByCount']){
+                return intval($count);
+            } else {
+                return 0;
+            }
+        }
+
 
         private static function getPinterestShares($url) {
             $json_string = file_get_contents('http://api.pinterest.com/v1/urls/count.json?&url='.$url .'&format=json');
@@ -82,6 +94,15 @@
             $json = json_decode( $json_string, true );
             if (isset($json)) {
                 return intval($json['count']);
+            } else {
+                return 0;
+            }
+        }
+
+        private static function getPinterestFollowers() {
+            $json_string = get_meta_tags('http://pinterest.com/ideaing_com/');
+            if ($count = $json_string['pinterestapp:followers']) {
+                return intval($count);
             } else {
                 return 0;
             }
@@ -118,7 +139,6 @@
         }
 
         private static function getTwitterFollowers() {
-            // Twitter API, the king of overkills
             $bearer_token = Sharing::getTwitterBearerToken(); // get the bearer token
 
             $json_string = Sharing::pullTwtterFollowers($bearer_token); //  search for the work 'test'
@@ -160,8 +180,6 @@
 
     public static function pullTwtterFollowers($bearer_token){
         $url = "https://api.twitter.com/1.1/followers/ids.json?user_id=23203721"; // base url
-//        if($count!='15'){$formed_url = $formed_url.'&count='.$count;} // results per page - defaulted to 15
-//        $formed_url = $formed_url.'&include_entities=true'; // makes sure the entities are included, note @mentions are not included see documentation
         $headers = array(
             "GET /followers/ids.json?user_id=23203721 HTTP/1.1",
             "Host: api.twitter.com",
