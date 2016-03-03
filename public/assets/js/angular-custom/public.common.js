@@ -89,6 +89,23 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
 
         };
 
+        $scope.openSharingModal = function () {
+
+            var templateUrl = "sharing-modal.html";
+            var modalInstance = $uibModal.open({
+                    templateUrl: templateUrl,
+                    scope: $scope,
+                    size: 'lg',
+                    windowClass: 'sharing-modal',
+                    controller: 'ModalInstanceCtrltest'
+                })
+                    .result.finally(function () {
+                        console.log('boba fett comes for ye')
+                    })
+                ;
+
+        };
+
 
         // load shop information.
         layoutApi.getProductsForShopMenu().success(function (response) {
@@ -205,6 +222,9 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
 
             // popup signup
             $scope.popupSignup = true;
+
+            //$scope.countSocialShares();
+            //$scope.countSocialFollowers();
 
         };
 
@@ -613,8 +633,6 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
             });
         }
 
-        $scope.countSocialShares();
-        $scope.countSocialFollowers();
 
         $scope.initPage();
         // $scope.addAlert('danger','testingtestingtestingtestingtestingtestingtesting');
