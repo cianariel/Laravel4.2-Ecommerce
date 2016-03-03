@@ -12,12 +12,18 @@ productApp.config(['$provide', function($provide){
         // here we override the default toolbars and classes specified in taOptions.
         taOptions.forceTextAngularSanitize = true; // set false to allow the textAngular-sanitize provider to be replaced
         taOptions.keyMappings = []; // allow customizable keyMappings for specialized key boards or languages
-        taOptions.toolbar = [
+
+        /*taOptions.toolbar = [
             ['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p', 'quote',
             'bold', 'italics', 'underline', 'ul', 'ol', 'redo', 'undo', 'clear',
             'justifyLeft','justifyCenter','justifyRight', 'justifyFull',
             'insertImage', 'insertLink']
+        ];*/
+
+        taOptions.toolbar = [
+            ['bold', 'italics', 'ul', 'ol','insertImage', 'insertLink']
         ];
+
         taOptions.classes = {
             focussed: 'focussed',
             toolbar: 'btn-toolbar',
