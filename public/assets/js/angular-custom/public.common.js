@@ -580,7 +580,6 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
         };
 
         $scope.countSocialShares = function(){
-            // Однажды в студеную зимнюю пору
 
             var thisUrl = window.location.host + window.location.pathname;
 
@@ -598,7 +597,6 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
             });
         }
         $scope.countSocialFollowers = function(){
-            // Я из лесу вышел и сразу зашел
 
             var thisUrl = window.location.host + window.location.pathname;
 

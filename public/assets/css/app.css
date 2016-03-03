@@ -5211,10 +5211,10 @@ nav a {
   #hero .container {
     position: relative; }
 
-body.single .mid-nav.rooms, body.single .mid-nav .rooms.extra-nav, .mid-nav body.single .rooms.extra-nav, body.product-details .mid-nav.rooms, body.product-details .mid-nav .rooms.extra-nav, .mid-nav body.product-details .rooms.extra-nav, body.profilepage .mid-nav.rooms, body.profilepage .mid-nav .rooms.extra-nav, .mid-nav body.profilepage .rooms.extra-nav, body.shoppage .mid-nav.rooms, body.shoppage .mid-nav .rooms.extra-nav, .mid-nav body.shoppage .rooms.extra-nav, body.error-page .mid-nav.rooms, body.error-page .mid-nav .rooms.extra-nav, .mid-nav body.error-page .rooms.extra-nav, body.aboutus-page .mid-nav.rooms, body.aboutus-page .mid-nav .rooms.extra-nav, .mid-nav body.aboutus-page .rooms.extra-nav {
+body.single .mid-nav.rooms, body.single .mid-nav .rooms.extra-nav, .mid-nav body.single .rooms.extra-nav, body.product-details .mid-nav.rooms, body.product-details .mid-nav .rooms.extra-nav, .mid-nav body.product-details .rooms.extra-nav, body.profilepage .mid-nav.rooms, body.profilepage .mid-nav .rooms.extra-nav, .mid-nav body.profilepage .rooms.extra-nav, body.shoppage .mid-nav.rooms, body.shoppage .mid-nav .rooms.extra-nav, .mid-nav body.shoppage .rooms.extra-nav, body.error-page .mid-nav.rooms, body.error-page .mid-nav .rooms.extra-nav, .mid-nav body.error-page .rooms.extra-nav, body.aboutus-page .mid-nav.rooms, body.aboutus-page .mid-nav .rooms.extra-nav, .mid-nav body.aboutus-page .rooms.extra-nav, body.privacy-policy-page .mid-nav.rooms, body.privacy-policy-page .mid-nav .rooms.extra-nav, .mid-nav body.privacy-policy-page .rooms.extra-nav, body.terms-of-use-page .mid-nav.rooms, body.terms-of-use-page .mid-nav .rooms.extra-nav, .mid-nav body.terms-of-use-page .rooms.extra-nav, body.contactus-page .mid-nav.rooms, body.contactus-page .mid-nav .rooms.extra-nav, .mid-nav body.contactus-page .rooms.extra-nav {
   display: none; }
 
-body.single #hero, body.product-details #hero, body.profilepage #hero, body.shoppage #hero, body.error-page #hero, body.aboutus-page #hero {
+body.single #hero, body.product-details #hero, body.profilepage #hero, body.shoppage #hero, body.error-page #hero, body.aboutus-page #hero, body.privacy-policy-page #hero, body.terms-of-use-page #hero, body.contactus-page #hero {
   /*    margin-top: -50px;*/ }
 
 .slider.product-slider #gallery, .slider.heroSlider #gallery {
@@ -8816,13 +8816,13 @@ footer.about-footer {
   /*    background: rgba(232, 232, 232, 0.75);*/
   /*    background: rgba(153,153,153,.4);*/ }
 
-body.shoppage .clearfix.pocket, body.profilepage .clearfix.pocket, body.single-post .clearfix.pocket, body.product-details .clearfix.pocket, body.aboutus-page .clearfix.pocket, body.privacy-policy-page .clearfix.pocket, body.terms-of-use-page .clearfix.pocket {
+body.shoppage .clearfix.pocket, body.profilepage .clearfix.pocket, body.single-post .clearfix.pocket, body.product-details .clearfix.pocket, body.aboutus-page .clearfix.pocket, body.privacy-policy-page .clearfix.pocket, body.terms-of-use-page .clearfix.pocket, body.contactus-page .clearfix.pocket {
   height: 100px; }
 
-body.shoppage #about-button, body.profilepage #about-button, body.single-post #about-button, body.product-details #about-button, body.aboutus-page #about-button, body.privacy-policy-page #about-button, body.terms-of-use-page #about-button {
+body.shoppage #about-button, body.profilepage #about-button, body.single-post #about-button, body.product-details #about-button, body.aboutus-page #about-button, body.privacy-policy-page #about-button, body.terms-of-use-page #about-button, body.contactus-page #about-button {
   bottom: 25px; }
 
-body.shoppage #back-to-top, body.profilepage #back-to-top, body.single-post #back-to-top, body.product-details #back-to-top, body.aboutus-page #back-to-top, body.privacy-policy-page #back-to-top, body.terms-of-use-page #back-to-top {
+body.shoppage #back-to-top, body.profilepage #back-to-top, body.single-post #back-to-top, body.product-details #back-to-top, body.aboutus-page #back-to-top, body.privacy-policy-page #back-to-top, body.terms-of-use-page #back-to-top, body.contactus-page #back-to-top {
   bottom: 21px; }
 
 body.shoppage .mid-nav .container, .mid-nav body.shoppage .extra-nav .container {
@@ -9928,6 +9928,76 @@ body.error-page .shop-menu {
     border: 0px;
     font-size: 23px;
     color: #ed2049; }
+
+body.contactus-page #hero .hero-background {
+  background-image: url("/assets/images/contactus-background.jpg"); }
+
+body.contactus-page #hero .contactus-form-container {
+  top: 130px;
+  position: relative;
+  max-width: 350px;
+  margin: auto; }
+  body.contactus-page #hero .contactus-form-container .title {
+    text-align: center;
+    color: #fff;
+    font-size: 25px; }
+  body.contactus-page #hero .contactus-form-container .control-row {
+    margin-top: 5px; }
+  body.contactus-page #hero .contactus-form-container input, body.contactus-page #hero .contactus-form-container textarea {
+    border-radius: 0px; }
+  body.contactus-page #hero .contactus-form-container textarea {
+    resize: none;
+    height: 150px; }
+  body.contactus-page #hero .contactus-form-container .btn {
+    background: #FF0042;
+    border-radius: 0px;
+    padding-left: 50px;
+    padding-right: 50px;
+    color: #fff; }
+  body.contactus-page #hero .contactus-form-container #support-dropdown-holder {
+    position: relative; }
+    body.contactus-page #hero .contactus-form-container #support-dropdown-holder .support-button {
+      padding: 6px 15px;
+      background: #4389c8;
+      color: #fff;
+      display: block;
+      width: 100%; }
+      body.contactus-page #hero .contactus-form-container #support-dropdown-holder .support-button ul.support-list {
+        padding-top: 10px;
+        border-top: 1px solid #fff;
+        position: absolute;
+        display: none;
+        width: 100%;
+        left: 0px;
+        top: 32px;
+        background: #4389c8;
+        color: #fff; }
+        body.contactus-page #hero .contactus-form-container #support-dropdown-holder .support-button ul.support-list > li {
+          padding: 6px 15px; }
+      body.contactus-page #hero .contactus-form-container #support-dropdown-holder .support-button.active .support-list {
+        display: block; }
+
+body.contactus-page .author-container {
+  padding-top: 100px; }
+
+body.contactus-page .author-holder {
+  padding-bottom: 40px; }
+
+body.contactus-page .contactus-footer {
+  background: #f2f2f2;
+  padding-top: 75px;
+  padding-bottom: 75px; }
+
+body.contactus-page #about-button, body.contactus-page #back-to-top {
+  display: none; }
+
+body.contactus-page footer.about-footer {
+  display: block; }
+  body.contactus-page footer.about-footer .close-down {
+    display: none; }
+
+body.contactus-page .pocket {
+  display: none; }
 
 @media (max-width: 620px) {
   .reviews-medium-container .average-score .caption {
