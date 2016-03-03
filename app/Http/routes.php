@@ -33,6 +33,11 @@
         return view('static.product-details');
     });
 
+    Route::get('/contactus', function()
+    {
+        return view('contactus.index');
+    });
+
      Route::get('/aboutus', function()
     {
         return view('layouts.aboutus');

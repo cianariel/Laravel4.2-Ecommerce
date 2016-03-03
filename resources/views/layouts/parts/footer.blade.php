@@ -6,7 +6,7 @@
             <h4 class="blue">About Ideaing</h4>
             <ul>
                 <li><a href="/aboutus">About Us</a></li>
-                <li><a href="#">Contact Us</a></li>
+                <li><a href="/contactus">Contact Us</a></li>
                 <li><a href="/terms-of-use">Terms of Use</a></li>
                 <li><a href="/privacy-policy">Privacy Policy</a></li>
             </ul>
