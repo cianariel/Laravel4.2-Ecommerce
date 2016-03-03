@@ -188,6 +188,16 @@
         color: #5C7CBD;
         text-align: center;
     }
+    a.insta,a.gplus,a.pint{
+        display: inline-block;
+        height: 35px;
+        font-size: 1rem;
+        border-radius: 30px;
+        padding: 0 10px 0 0 !important;
+        color: #5C7CBD;
+        text-align: center;
+    }
+
     a.fb i.m-icon {
       color: white;
       background: #5C7CBD;
@@ -389,19 +399,23 @@ a.likes {
             <a href="https://twitter.com/ideaing">
                 <img src="http://ideaing.com/assets/images/email/welcome/twitter.gif" width="478" height="59" border="0" alt="ideaing twitter"></a></td>
     </tr>
-    
-    <tr style="font-size: 0px">
-        <td style="background-color: white;text-align: center;height:44px" colspan="10" >
-            <a class="fb" href="https://www.facebook.com/ideaingsmarterliving"><img src="http://ideaing.com/assets/images/email/fb.png"/></a>
-            <a class="twi" href="https://twitter.com/ideaing/"><img src="http://ideaing.com/assets/images/email/twitter.jpg"/></a>
-            <a class="likes" href="#"><img src="http://ideaing.com/assets/images/email/likes.png"/></a>
-            <a class="discuss" href="#"><img src="http://ideaing.com/assets/images/email/discuss.png"/></a>
-        </td>
-    </tr>
     <tr style="font-size: 0px">
         <td colspan="10">
             <img src="http://ideaing.com/assets/images/email/welcome/Newsletter-Inp_35.gif" width="478" height="44" alt=""></td>
     </tr>
+    <tr style="font-size: 0px">
+        <td style="background-color: white;text-align: center;height:44px" colspan="10" >
+            <a class="fb" href="https://www.facebook.com/ideaingsmarterliving"><img src="http://ideaing.com/assets/images/email/fb.png"/></a>
+            <a class="twi" href="https://twitter.com/ideaing/"><img src="http://ideaing.com/assets/images/email/twitter.jpg"/></a>
+            <a class="insta" href="https://www.instagram.com/ideaing_com/"><img src="http://ideaing.com/assets/images/email/insta.png"/></a>
+            <a class="gplus" href="http://google.com/+Ideaingsmarterliving"><img src="http://ideaing.com/assets/images/email/gplus.gif"/></a>
+            <a class="pint" href="https://www.pinterest.com/ideaing_com"><img src="http://ideaing.com/assets/images/email/pint.png"/></a>
+            <a class="likes" href="#"><img src="http://ideaing.com/assets/images/email/likes.png"/></a>
+            <a class="discuss" href="#"><img src="http://ideaing.com/assets/images/email/discuss.png"/></a>
+
+        </td>
+    </tr>
+    
     <tr style="font-size: 0px">
         <td colspan="10">
             <img src="http://ideaing.com/assets/images/email/welcome/Newsletter-Inp_39.gif" width="478" height="40" alt=""></td>
