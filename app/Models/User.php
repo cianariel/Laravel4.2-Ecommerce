@@ -239,7 +239,7 @@ class User extends Model implements AuthenticatableContract,
                 $user['Email'] = $userData->email;
                 $user['Password'] = env('FB_DEFAULT_PASSWORD');
 
-                // Remove FB's atatched width parameter from the image link
+                // Remove FB's attached width parameter from the image link
                 //$user['Picture'] = explode("?", $userData->avatar_original)[0];
 
                 $user['Picture'] = $userData->avatar_original;

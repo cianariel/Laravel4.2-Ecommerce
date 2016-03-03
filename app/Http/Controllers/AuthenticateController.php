@@ -316,6 +316,14 @@
                                 $this->user->status = 'Active';
                                 $this->user->save();
 
+                                // send welcome mail to new user
+
+                                \Event::fire(new SendWelcomeMail
+                                (
+                                    $userData['FullName'],
+                                    $userData['Email']
+                                ));
+
                                 return $this->setStatusCode(IlluminateResponse::HTTP_OK)
                                     ->makeResponse('Registration completed successfully');
                             } else
@@ -326,6 +334,7 @@
                                     $userData['Email'],
                                     Crypt::encrypt($userData['Email'])
                                 ));
+
 
                                 return $this->setStatusCode(\Config::get("const.api-status.success"))
                                     ->makeResponse('Registration completed successfully,please verify email');
@@ -479,6 +488,7 @@
                     $user->status = "Active";
                     $user->save();
 
+
                     // send welcome mail to new user
 
                         \Event::fire(new SendWelcomeMail
@@ -486,6 +496,7 @@
                             $user['name'],
                             $user['email']
                         ));
+
 
                     return redirect('user/profile'); //->withFlashMessage('Email verification complete.');
 
