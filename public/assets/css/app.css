@@ -6542,21 +6542,21 @@ body.single-post .related-ideas, body.single-post .related-products {
   max-width: 1170px;
   margin: auto; }
 
-.article-content ol, .article-content ul {
+.article-content ol, .article-content ul, body.terms-of-use-page .mid-bottom-container ol, body.terms-of-use-page .mid-bottom-container ul, body.privacy-policy-page .mid-bottom-container ol, body.privacy-policy-page .mid-bottom-container ul {
   list-style: initial; }
-  .article-content ol li, .article-content ul li {
+  .article-content ol li, .article-content ul li, body.terms-of-use-page .mid-bottom-container ol li, body.terms-of-use-page .mid-bottom-container ul li, body.privacy-policy-page .mid-bottom-container ol li, body.privacy-policy-page .mid-bottom-container ul li {
     list-style: initial; }
 
-.article-content a {
+.article-content a, body.terms-of-use-page .mid-bottom-container a, body.privacy-policy-page .mid-bottom-container a {
   color: #4489c9; }
 
-.article-content a:hover {
+.article-content a:hover, body.terms-of-use-page .mid-bottom-container a:hover, body.privacy-policy-page .mid-bottom-container a:hover {
   color: #FF0042; }
 
-.article-content h1 a, .article-content h2 a {
+.article-content h1 a, .article-content h2 a, body.terms-of-use-page .mid-bottom-container h1 a, body.terms-of-use-page .mid-bottom-container h2 a, body.privacy-policy-page .mid-bottom-container h1 a, body.privacy-policy-page .mid-bottom-container h2 a {
   color: inherit; }
 
-.article-content h1 a:hover, .article-content h2 a:hover {
+.article-content h1 a:hover, .article-content h2 a:hover, body.terms-of-use-page .mid-bottom-container h1 a:hover, body.terms-of-use-page .mid-bottom-container h2 a:hover, body.privacy-policy-page .mid-bottom-container h1 a:hover, body.privacy-policy-page .mid-bottom-container h2 a:hover {
   color: #FF0042; }
 
 body.product-details .story-header h1 .title, .single-post .story-header h1 .title {
@@ -7326,12 +7326,12 @@ body.single .like-nav {
   width: 280px; }
 
 body.single .related-items {
-    margin-bottom: 20px;
-    padding-top: 15px;
+  margin-bottom: 20px;
+  padding-top: 15px;
   padding-bottom: 15px; }
   body.single .related-items h3 {
-      text-align: center;
-      font-weight: bold;
+    text-align: center;
+    font-weight: bold;
     margin-bottom: 20px; }
 
 @media only screen and (max-width: 960px) {
@@ -8816,13 +8816,13 @@ footer.about-footer {
   /*    background: rgba(232, 232, 232, 0.75);*/
   /*    background: rgba(153,153,153,.4);*/ }
 
-body.shoppage .clearfix.pocket, body.profilepage .clearfix.pocket, body.single-post .clearfix.pocket, body.product-details .clearfix.pocket, body.aboutus-page .clearfix.pocket {
+body.shoppage .clearfix.pocket, body.profilepage .clearfix.pocket, body.single-post .clearfix.pocket, body.product-details .clearfix.pocket, body.aboutus-page .clearfix.pocket, body.privacy-policy-page .clearfix.pocket, body.terms-of-use-page .clearfix.pocket {
   height: 100px; }
 
-body.shoppage #about-button, body.profilepage #about-button, body.single-post #about-button, body.product-details #about-button, body.aboutus-page #about-button {
+body.shoppage #about-button, body.profilepage #about-button, body.single-post #about-button, body.product-details #about-button, body.aboutus-page #about-button, body.privacy-policy-page #about-button, body.terms-of-use-page #about-button {
   bottom: 25px; }
 
-body.shoppage #back-to-top, body.profilepage #back-to-top, body.single-post #back-to-top, body.product-details #back-to-top, body.aboutus-page #back-to-top {
+body.shoppage #back-to-top, body.profilepage #back-to-top, body.single-post #back-to-top, body.product-details #back-to-top, body.aboutus-page #back-to-top, body.privacy-policy-page #back-to-top, body.terms-of-use-page #back-to-top {
   bottom: 21px; }
 
 body.shoppage .mid-nav .container, .mid-nav body.shoppage .extra-nav .container {
@@ -9915,6 +9915,19 @@ body.error-page .about-footer {
 
 body.error-page .shop-menu {
   top: 0px; }
+
+.mid-bottom-container {
+  margin-top: 55px; }
+
+.login-signup-modal .alert-danger {
+  background: black;
+  border: 0px;
+  color: #fff; }
+  .login-signup-modal .alert-danger .close {
+    background: none;
+    border: 0px;
+    font-size: 23px;
+    color: #ed2049; }
 
 @media (max-width: 620px) {
   .reviews-medium-container .average-score .caption {

@@ -3084,7 +3084,7 @@ body.single-post{
         margin: auto;
     }
 }
-.article-content{
+.article-content, body.terms-of-use-page .mid-bottom-container, body.privacy-policy-page .mid-bottom-container{
     ol, ul{
         list-style: initial;
         li{
@@ -6794,7 +6794,7 @@ footer.about-footer{
 }
 
 
-body.shoppage, body.profilepage, body.single-post, body.product-details, body.aboutus-page{
+body.shoppage, body.profilepage, body.single-post, body.product-details, body.aboutus-page, body.privacy-policy-page, body.terms-of-use-page{
     .clearfix.pocket{
         height: 100px;
     }
@@ -8293,7 +8293,22 @@ body.error-page{
     }
     
 }
-
+.mid-bottom-container{
+    margin-top: 55px;
+}
+.login-signup-modal{
+    .alert-danger{
+        background: black;
+        border: 0px;
+        color: #fff;
+        .close{
+            background: none;
+            border: 0px;
+            font-size: 23px;
+            color: #ed2049;
+        }
+    }
+}
 @media (max-width: 620px){
     .reviews-medium-container .average-score .caption{
         padding-top: 17px;
