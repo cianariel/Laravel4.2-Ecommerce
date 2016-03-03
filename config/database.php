@@ -64,6 +64,19 @@ return [
             'strict'    => false,
         ],
 
+        'wpdb' => [
+            'driver'    => 'mysql',
+            'host'      => env('BLOG_DB_HOST', 'ideaing-staging-2.c9zzhwcfjtcc.us-west-2.rds.amazonaws.com'),
+            'database'  => env('BLOG_DB_DATABASE', 'ideaingwpideas'),
+            'username'  => env('BLOG_DB_USERNAME', 'megaStuff_'),
+            'password'  => env('BLOG_DB_PASSWORD', 'iAmBob__'),
+            'charset'   => 'utf8mb4',
+            'collation' => '',
+            'prefix'    => 'wp_',
+            'strict'    => false,
+        ],
+
+
         'pgsql' => [
             'driver'   => 'pgsql',
             'host'     => env('DB_HOST', 'localhost'),

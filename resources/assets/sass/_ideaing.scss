@@ -925,7 +925,7 @@ nav {
 
 }
 
-body.single, body.product-details, body.profilepage, body.shoppage, body.error-page, body.aboutus-page{
+body.single, body.product-details, body.profilepage, body.shoppage, body.error-page, body.aboutus-page, body.privacy-policy-page, body.terms-of-use-page, body.contactus-page{
   .mid-nav.rooms{
     display: none;
   }
@@ -6794,7 +6794,7 @@ footer.about-footer{
 }
 
 
-body.shoppage, body.profilepage, body.single-post, body.product-details, body.aboutus-page, body.privacy-policy-page, body.terms-of-use-page{
+body.shoppage, body.profilepage, body.single-post, body.product-details, body.aboutus-page, body.privacy-policy-page, body.terms-of-use-page, body.contactus-page{
     .clearfix.pocket{
         height: 100px;
     }
@@ -8307,6 +8307,91 @@ body.error-page{
             font-size: 23px;
             color: #ed2049;
         }
+    }
+}
+body.contactus-page{
+    #hero{
+        .hero-background{
+            background-image: url("/assets/images/contactus-background.jpg");
+        }
+        .contactus-form-container{
+            top: 130px;
+            position: relative;
+            max-width: 350px;
+            margin: auto;
+            .title{
+                text-align: center;
+                color: #fff;
+                font-size: 25px;
+            }
+            .control-row{
+                margin-top: 5px;
+            }
+            input, textarea{
+                border-radius: 0px;
+            }
+            textarea{
+                resize: none;
+                height: 150px;
+            }
+            .btn{
+                background: $iridium;
+                border-radius: 0px;
+                padding-left: 50px;
+                padding-right: 50px;
+                color: #fff;
+            }
+            #support-dropdown-holder{
+                position: relative;
+                .support-button{
+                    padding: 6px 15px;
+                    background: #4389c8;
+                    color: #fff;;
+                    display: block;
+                    width: 100%;
+                    ul.support-list{
+                        padding-top: 10px;
+                        border-top: 1px solid #fff;
+                        position: absolute;
+                        display: none;
+                        width: 100%;
+                        left: 0px;
+                        top: 32px;
+                        background: #4389c8;
+                        color: #fff;
+                        > li{
+                            padding: 6px 15px;
+                        }
+                    }
+                    &.active .support-list{
+                        display: block;
+                    }
+                }
+            }
+        }
+    }
+    .author-container{
+        padding-top: 100px;
+    }
+    .author-holder{
+        padding-bottom: 40px;
+    }
+    .contactus-footer{
+        background: #f2f2f2;
+        padding-top: 75px;
+        padding-bottom: 75px;
+    }
+    #about-button, #back-to-top{
+        display: none;
+    }
+    footer.about-footer{
+        display: block;
+        .close-down{
+            display: none;
+        }
+    }
+    .pocket{
+        display: none;
     }
 }
 @media (max-width: 620px){
