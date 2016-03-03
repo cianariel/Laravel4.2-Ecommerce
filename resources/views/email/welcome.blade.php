@@ -179,6 +179,81 @@
   {
     font-size: 0px;
   }
+  a.fb {
+        display: inline-block;
+        height: 35px;
+        font-size: 1rem;
+        border-radius: 30px;
+        padding: 0 10px 0 0 !important;
+        color: #5C7CBD;
+        text-align: center;
+    }
+    a.fb i.m-icon {
+      color: white;
+      background: #5C7CBD;
+      padding: 5px;
+      border-radius: 20px;
+      padding-top: 7px;
+      padding-left: 7px;
+      padding-right: 7px;
+      padding-bottom: 6px;
+      float: left; }
+   
+  a.twi {
+    display: inline-block;
+    height: 35px;
+    font-size: 1rem;
+    border-radius: 30px;
+    padding: 0 10px 0 0 !important;
+    color: #079DD1;
+    text-align: center;}
+    a.twi i.m-icon {
+      color: white;
+      background: #079DD1;
+      padding: 5px;
+      border-radius: 20px;
+      padding-top: 7px;
+      padding-left: 7px;
+      padding-right: 7px;
+      padding-bottom: 6px;
+      float: left; }
+
+a.likes {
+    display: inline-block;
+    height: 35px;
+    font-size: 1rem;
+    border-radius: 30px;
+    padding: 0 10px 0 0 !important;
+    color: #fa0033;
+    text-align: center;}
+    a.likes i.m-icon {
+      color: white;
+      background: #fa0033;
+      padding: 5px;
+      border-radius: 20px;
+      padding-top: 7px;
+      padding-left: 7px;
+      padding-right: 7px;
+      padding-bottom: 6px;
+      float: left; }
+      a.discuss {
+    display: inline-block;
+    height: 35px;
+    font-size: 1rem;
+    border-radius: 30px;
+    padding: 0 10px 0 0 !important;
+    color: #dfdfdf;
+    text-align: center;}
+    a.discuss i.m-icon {
+      color: white;
+      background: #dfdfdf;
+      padding: 5px;
+      border-radius: 20px;
+      padding-top: 7px;
+      padding-left: 7px;
+      padding-right: 7px;
+      padding-bottom: 6px;
+      float: left; }
   /* There is no way to set these inline so you have the option of adding pseudo class definitions here. They won't work for Gmail nor older versions of Lotus Notes but its a nice addition for all other clients. */
   /*** EMBEDDED CSS NOTES *** 1.) Be aware that Gmail will not read any of your embedded CSS 2.) Although I have seen the !important priority used in other examples, it is not necessary. If you use "!important" you can no longer overwrite your styles inline which is required for Gmail. 3.) The Android does not support "class" declarations outside of the media query. Here is more info on that: http://www.emailonacid.com/blog/the_android_mail_app_and_css_class_declarations/ 4.) You might want to consider duplicating your embedded CSS after the closing body tag for Yahoo! Mail in IE7 & 8. *** END EMBEDDED CSS NOTES ***/
   </style>
@@ -186,7 +261,7 @@
 
 <body bgcolor="#EBEBEB" style="background-color:#EBEBEB;" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
 <!-- Save for Web Slices (Newsletter Inp.psd) -->
-<table id="Table_01" style="margin:0 auto;" width="584" height="3808" border="0" cellpadding="0" cellspacing="0">
+<table id="Table_01" style="margin:0 auto;" width="584" height="3708" border="0" cellpadding="0" cellspacing="0">
     <tr style="font-size: 0px">
         <td colspan="12">
             <img src="http://ideaing.com/assets/images/email/welcome/Newsletter-Inp_01.gif" width="584" height="43" alt=""></td>
@@ -274,8 +349,8 @@
         <td colspan="10">
             <a href="http://ideaing.com/">
                 <img src="http://ideaing.com/assets/images/email/welcome/product-25.gif" width="478" height="492" border="0" alt="ideaing"></a></td>
-        <td colspan="2" rowspan="11">
-            <img src="http://ideaing.com/assets/images/email/welcome/Newsletter-Inp_25.gif" width="106" height="2333" alt=""></td>
+        <td colspan="2" rowspan="10">
+            <img src="http://ideaing.com/assets/images/email/welcome/Newsletter-Inp_25.gif" width="106" height="2233" alt=""></td>
     </tr>
     <tr  style="font-size: 0px">
         <td colspan="10">
@@ -312,25 +387,26 @@
     <tr style="font-size: 0px">
         <td colspan="10">
             <a href="https://twitter.com/ideaing">
-                <img src="http://ideaing.com/assets/images/email/welcome/twitter.gif" width="478" height="124" border="0" alt="ideaing twitter"></a></td>
+                <img src="http://ideaing.com/assets/images/email/welcome/twitter.gif" width="478" height="59" border="0" alt="ideaing twitter"></a></td>
+    </tr>
+    
+    <tr style="font-size: 0px">
+        <td style="background-color: white;text-align: center;height:44px" colspan="10" >
+            <a class="fb" href="https://www.facebook.com/ideaingsmarterliving"><img src="http://ideaing.com/assets/images/email/fb.png"/></a>
+            <a class="twi" href="https://twitter.com/ideaing/"><img src="http://ideaing.com/assets/images/email/twitter.jpg"/></a>
+            <a class="likes" href="#"><img src="http://ideaing.com/assets/images/email/likes.png"/></a>
+            <a class="discuss" href="#"><img src="http://ideaing.com/assets/images/email/discuss.png"/></a>
+        </td>
     </tr>
     <tr style="font-size: 0px">
         <td colspan="10">
             <img src="http://ideaing.com/assets/images/email/welcome/Newsletter-Inp_35.gif" width="478" height="44" alt=""></td>
     </tr>
     <tr style="font-size: 0px">
-        <td colspan="4">
-            <img src="http://ideaing.com/assets/images/email/welcome/Newsletter-Inp_36.gif" width="280" height="35" alt=""></td>
-        <td colspan="3">
-            <a href="http://ideaing.com/unsubscribe">
-                <img src="http://ideaing.com/assets/images/email/welcome/unsubscribe.gif" width="82" height="35" border="0" alt="unsubscribe"></a></td>
-        <td colspan="3">
-            <img src="http://ideaing.com/assets/images/email/welcome/Newsletter-Inp_38.gif" width="116" height="35" alt=""></td>
-    </tr>
-    <tr style="font-size: 0px">
         <td colspan="10">
             <img src="http://ideaing.com/assets/images/email/welcome/Newsletter-Inp_39.gif" width="478" height="40" alt=""></td>
     </tr>
+    
     <tr style="font-size: 0px">
         <td>
             <img src="http://ideaing.com/assets/images/email/welcome/spacer.gif" width="39" height="1" alt=""></td>
