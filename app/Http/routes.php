@@ -76,7 +76,7 @@
 
         Route::post('secure-page', 'AuthenticateController@securePage');
         Route::any('logout', 'AuthenticateController@logOut');
-        // chech authentication and return data through api
+        // check authentication and return data through api
         Route::get('auth-check', 'AuthenticateController@authCheckApi');
 
 

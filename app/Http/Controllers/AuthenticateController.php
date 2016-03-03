@@ -487,10 +487,11 @@
                             $user['email']
                         ));
 
+                    return redirect('user/profile'); //->withFlashMessage('Email verification complete.');
 
-                    $message = "Thanks " . $user->name . " for verify your email";
+                   // $message = "Thanks " . $user->name . " for verify your email";
 
-                    return Redirect::to('login')->withFlashMessage('Email verification complete.');
+                    // return Redirect::to('login')->withFlashMessage('Email verification complete.');
 
                 } else
                 {
