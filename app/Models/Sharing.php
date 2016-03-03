@@ -143,7 +143,7 @@
 
             $json_string = Sharing::pullTwtterFollowers($bearer_token); //  search for the work 'test'
             $json = json_decode($json_string, true);
-            if($count = count($json['ids'])){
+            if($count = count(@$json['ids'])){
                 return intval($count);
             } else {
                 return 0;
