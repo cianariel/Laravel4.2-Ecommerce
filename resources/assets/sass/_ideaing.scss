@@ -8302,7 +8302,10 @@ body.error-page{
         border: 0px;
         color: #fff;
         .close{
-            color: #000;
+            background: none;
+            border: 0px;
+            font-size: 23px;
+            color: #ed2049;
         }
     }
 }

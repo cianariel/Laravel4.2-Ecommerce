@@ -9924,7 +9924,10 @@ body.error-page .shop-menu {
   border: 0px;
   color: #fff; }
   .login-signup-modal .alert-danger .close {
-    color: #000; }
+    background: none;
+    border: 0px;
+    font-size: 23px;
+    color: #ed2049; }
 
 @media (max-width: 620px) {
   .reviews-medium-container .average-score .caption {
