@@ -3,5 +3,5 @@
 @section('body-class'){{ 'error-page' }}@stop
 
 @section('content')
-    <img src="/assets/images/404-error.png" class="" alt="">
+    <img src="/assets/images/404-error.jpg" class="" alt="">
 @stop
