@@ -84,6 +84,8 @@
         // check authentication and return data through api
         Route::get('auth-check', 'AuthenticateController@authCheckApi');
 
+        Route::get('wp','UserController@getWpUsers');
+
 
         /*
          * User management for Admin Panel
