@@ -89,6 +89,55 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
 
         };
 
+        $scope.openSharingModal = function ($service) {
+            console.log('ii!')
+            var baseUrl = 'http://' + window.location.host + window.location.pathname;
+            var shareUrl = false;
+
+            var $pitnerestShare = function(){
+                    var e=document.createElement('script');
+                    e.setAttribute('type','text/javascript');
+                    e.setAttribute('charset','UTF-8');
+                    e.setAttribute('src','http://assets.pinterest.com/js/pinmarklet.js?r='+Math.random()*99999999);
+                    document.body.appendChild(e);
+            }
+
+            switch($service){
+                case 'facebook':
+                    shareUrl = 'https://www.facebook.com/sharer/sharer.php?u=' + baseUrl;
+                    break;
+                case 'twitter':
+                    shareUrl = 'https://twitter.com/share?url=http://' + baseUrl + '&counturl=' + baseUrl + '&text=@Ideaing';
+                    break;
+                case 'googleplus':
+                    shareUrl = 'https://plus.google.com/share?url=http://' + baseUrl;
+                    break;
+                case 'pinterest':
+                    $pitnerestShare();
+                    return true
+            }
+
+            if(!shareUrl){
+                return false;
+            }
+
+            //$scope.openWindow = function() {
+            var $modal = $window.open(shareUrl, 'C-Sharpcorner', 'width=500,height=400');
+            //};
+
+            // TODO -- fire counter updates for shares, only on pages where they are used (CMS)
+
+            var timer = setInterval(function() {
+                if($modal.closed) {
+                    clearInterval(timer);
+                    //do your process here
+                    $scope.countSocialShares();
+                    console.log('share counters updated')
+                }
+            }, 1000);
+
+        };
+
 
         // load shop information.
         layoutApi.getProductsForShopMenu().success(function (response) {
@@ -205,6 +254,16 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
 
             // popup signup
             $scope.popupSignup = true;
+
+            //$scope.countSocialShares();
+            //$scope.countSocialFollowers();
+
+            $scope.socialCounter = function(){
+                console.log("before call");
+                $scope.countSocialShares();
+                $scope.countSocialFollowers();
+                console.log("call");
+            };
 
         };
 
@@ -613,8 +672,6 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
             });
         }
 
-        $scope.countSocialShares();
-        $scope.countSocialFollowers();
 
         $scope.initPage();
         // $scope.addAlert('danger','testingtestingtestingtestingtestingtestingtesting');
