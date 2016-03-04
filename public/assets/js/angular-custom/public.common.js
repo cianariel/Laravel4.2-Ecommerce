@@ -89,13 +89,42 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
 
         };
 
-        $scope.openSharingModal = function () {
+        $scope.openSharingModal = function ($service) {
+            console.log('ii!')
+            var baseUrl = 'http://' + window.location.host + window.location.pathname;
+            var shareUrl = false;
+
+            var $pitnerestShare = function(){
+                    var e=document.createElement('script');
+                    e.setAttribute('type','text/javascript');
+                    e.setAttribute('charset','UTF-8');
+                    e.setAttribute('src','http://assets.pinterest.com/js/pinmarklet.js?r='+Math.random()*99999999);
+                    document.body.appendChild(e);
+            }
+
+            switch($service){
+                case 'facebook':
+                    shareUrl = 'https://www.facebook.com/sharer/sharer.php?u=' + baseUrl;
+                    break;
+                case 'twitter':
+                    shareUrl = 'https://twitter.com/share?url=http://' + baseUrl + '&counturl=' + baseUrl + '&text=@Ideaing';
+                    break;
+                case 'googleplus':
+                    shareUrl = 'https://plus.google.com/share?url=http://' + baseUrl;
+                    break;
+                case 'pinterest':
+                    $pitnerestShare();
+                    return true
+            }
+
+            if(!shareUrl){
+                return false;
+            }
 
             //$scope.openWindow = function() {
-                var $modal = $window.open('https://www.facebook.com/sharer/sharer.php?u=http://ideaing.com', 'C-Sharpcorner', 'width=500,height=400');
+            var $modal = $window.open(shareUrl, 'C-Sharpcorner', 'width=500,height=400');
             //};
 
-            // TODO -- add service name var, case links
             // TODO -- fire counter updates for shares, only on pages where they are used (CMS)
 
             var timer = setInterval(function() {
@@ -107,27 +136,6 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                 }
             }, 1000);
 
-            //var templateUrl = "sharing-modal.html";
-            //var modalInstance = $uibModal.open({
-            //        templateUrl: templateUrl,
-            //        scope: $scope,
-            //        size: 'lg',
-            //        windowClass: 'sharing-modal',
-            //        controller: 'ModalInstanceCtrltest'
-            //    });
-            //    modalInstance.opened.then(function () {
-            //        $http({
-            //            url: 'https://www.facebook.com/sharer/sharer.php?u=http://ideaing.com',
-            //            method: "GET",
-            //        }).success(function (response) {
-            //            $scope.sharingContent = response;
-            //        });
-            //        //$('#sharing-modal-content').load('https://www.facebook.com/sharer/sharer.php?u=http://ideaing.com');
-            //    })
-            //    modalInstance.result.finally(function () {
-            //            console.log('boba fett comes for ye')
-            //        })
-            //    ;
         };
 
 
