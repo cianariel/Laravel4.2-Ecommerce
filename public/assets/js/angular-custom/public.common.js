@@ -258,6 +258,13 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
             //$scope.countSocialShares();
             //$scope.countSocialFollowers();
 
+            $scope.socialCounter = function(){
+                console.log("before call");
+                $scope.countSocialShares();
+                $scope.countSocialFollowers();
+                console.log("call");
+            };
+
         };
 
         // Add an Alert in a web application
