@@ -71,7 +71,7 @@ return [
             'username'  => env('BLOG_DB_USERNAME', 'megaStuff_'),
             'password'  => env('BLOG_DB_PASSWORD', 'iAmBob__'),
             'charset'   => 'utf8mb4',
-            'collation' => '',
+            'collation' => 'utf8mb4_unicode_ci',
             'prefix'    => 'wp_',
             'strict'    => false,
         ],
