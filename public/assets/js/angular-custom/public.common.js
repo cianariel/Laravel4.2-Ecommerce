@@ -130,8 +130,10 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
             var timer = setInterval(function() {
                 if($modal.closed) {
                     clearInterval(timer);
-                    //do your process here
-                    $scope.countSocialShares();
+
+                    setTimeout(function(){
+                        $scope.countSocialShares();
+                    }, 1000);
                     console.log('share counters updated')
                 }
             }, 1000);
