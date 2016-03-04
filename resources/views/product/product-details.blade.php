@@ -63,19 +63,10 @@
             </h1>
             </div>
             <div class="col-xs-7">
-            <ul class="share-buttons short hidden-xs col-lg-6 col-sm-8 pull-right">
+            <ul ng-app="publicApp" ng-controller="publicController" class="share-buttons short hidden-xs col-lg-6 col-sm-8 pull-right">
                 <li class="all-shares"><b class="share-count all"></b> <br/>all shares</li>
-                <li><a class="fb" href="#"
-                       onclick="javascript: (function() {
-							   window.open('https://www.facebook.com/sharer/sharer.php?u=' +  window.location.host + window.location.pathname, 'fbwindow', 'width=600, height=360, left=250, top=150, toolbar=0, location=0, menubar=0, scrollbars=0');})();">
-                        <i class="m-icon m-icon--facebook-id">
-
-                        </i> <b class="fb share-count"></b></a></li>
-
-                <li><a class="twi" href="#"
-                       onclick="javascript: (function() {
-                               window.open('https://twitter.com/share?url=' + window.location.host + window.location.pathname + '&counturl=' + window.location.host + window.location.pathname + '&text='+ window.location.host + window.location.pathname + '%20@Ideaing', 'fbwindow', 'width=600, height=360, left=250, top=150, toolbar=0, location=0, menubar=0, scrollbars=0');})();">
-                        <i class="m-icon  m-icon--twitter-id"></i> <b class="twi share-count"></b></a></li>
+                <li><a class="fb" href="#" ng-click="openSharingModal('facebook')"><i class="m-icon m-icon--facebook-id"></i> <b class="fb share-count"></b></a></li>
+                <li><a class="twi" href="#" ng-click="openSharingModal('twitter')"><i class="m-icon  m-icon--twitter-id"></i> <b class="twi share-count"></b></a></li>
             </ul>
 
             <div class="icon-wrap pull-right">
