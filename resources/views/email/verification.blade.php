@@ -395,10 +395,10 @@ a.likes {
                                                       <!-- image -->
                                                       <tr>
                                                          <td width="290" height="160" align="center" class="devicewidth">
-                                                            <a class="fb" href="https://www.facebook.com/ideaingsmarterliving"><img src="/assets/images/email/fb.png"/></a>
-                                                            <a class="twi" href="https://twitter.com/ideaing/"><img src="/assets/images/email/twitter.jpg"/></a>
-                                                            <a class="likes" href="#"><img src="/assets/images/email/likes.png"/></a>
-                                                            <a class="discuss" href="#"><img src="/assets/images/email/discuss.png"/></a>
+                                                            <a class="fb" href="https://www.facebook.com/ideaingsmarterliving"><img src="http://ideaing.com/assets/images/email/fb.png"/></a>
+                                                            <a class="twi" href="https://twitter.com/ideaing/"><img src="http://ideaing.com/assets/images/email/twitter.jpg"/></a>
+                                                            <a class="likes" href="#"><img src="http://ideaing.com/assets/images/email/likes.png"/></a>
+                                                            <a class="discuss" href="#"><img src="http://ideaing.com/assets/images/email/discuss.png"/></a>
                                                          </td>
                                                       </tr>
                                                    </tbody>

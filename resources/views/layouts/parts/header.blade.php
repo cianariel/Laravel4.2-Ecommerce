@@ -5,7 +5,7 @@
 <!--    <div {{--id="pagingApp" ng-app="pagingApp" ng-controller="headerController"--}}>-->
 <div id="publicApp" ng-app="publicApp" ng-controller="publicController">
 <header class="colophon">
-                <div class="col-xs-12">
+                <div ng-init="socialCounter()" class="col-xs-12">
                     <h2 id="site-name">Ideaing | Ideas for Smarter Living</h2>
 
                     <nav id="top-nav" class="row">
@@ -391,6 +391,8 @@
 
 </div>
 
+<!-- fake controller -->
+{{--<div id="pagingApp" ng-app="pagingApp" ng-controller="pagingController"">&nbsp;</div>--}}
 <?php
         //dd($userData['email'],);
 if(empty($userData['email']))
