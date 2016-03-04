@@ -166,7 +166,7 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
         $scope.initPage = function () {
 
             // $scope.TEST = "TSSSSST";
-            // console.log($scope.TEST);
+
 
             // email subscription
             $scope.SubscriberEmail = '';
@@ -613,8 +613,14 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
             });
         }
 
-        $scope.countSocialShares();
-        $scope.countSocialFollowers();
+
+        $scope.socialCounter = function(){
+            console.log("before call");
+                $scope.countSocialShares();
+                $scope.countSocialFollowers();
+            console.log("call");
+        };
+
 
         $scope.initPage();
         // $scope.addAlert('danger','testingtestingtestingtestingtestingtestingtesting');
