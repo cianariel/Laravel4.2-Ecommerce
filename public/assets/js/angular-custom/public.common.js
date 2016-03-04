@@ -643,7 +643,7 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
             var thisUrl = window.location.host + window.location.pathname;
 
             $http({
-                url: '/api/social/get-social-counts/',
+                url: '/api/social/get-social-counts',
                 method: "GET",
                 params: {'url' : thisUrl}
             }).success(function (response) {
@@ -660,7 +660,7 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
             var thisUrl = window.location.host + window.location.pathname;
 
             $http({
-                url: '/api/social/get-fan-counts/',
+                url: '/api/social/get-fan-counts',
                 method: "GET",
                 params: {'url' : thisUrl}
             }).success(function (response) {
