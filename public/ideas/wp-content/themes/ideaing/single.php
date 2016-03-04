@@ -468,4 +468,70 @@
 
 
 <?php get_footer(); ?>
+<script>
+    // TEMP - until the Angular vs. WP issue is resolved
+    $('.share-buttons a').click(function (e) {
+        e.preventDefault();
+        var baseUrl = 'http://' + window.location.host + window.location.pathname;
+        var shareUrl = false;
+
+        var $service = $(this).data('service');
+
+        var $pitnerestShare = function(){
+            var e=document.createElement('script');
+            e.setAttribute('type','text/javascript');
+            e.setAttribute('charset','UTF-8');
+            e.setAttribute('src','http://assets.pinterest.com/js/pinmarklet.js?r='+Math.random()*99999999);
+            document.body.appendChild(e);
+        }
+
+        switch($service){
+            case 'facebook':
+                shareUrl = 'https://www.facebook.com/sharer/sharer.php?u=' + baseUrl;
+                break;
+            case 'twitter':
+                shareUrl = 'https://twitter.com/share?url=http://' + baseUrl + '&counturl=' + baseUrl + '&text=@Ideaing';
+                break;
+            case 'googleplus':
+                shareUrl = 'https://plus.google.com/share?url=http://' + baseUrl;
+                break;
+            case 'pinterest':
+                $pitnerestShare();
+                return true
+        }
+
+        if(!shareUrl){
+            return false;
+        }
+
+        var $modal = window.open(shareUrl, 'C-Sharpcorner', 'width=500,height=400');
+
+        // TODO -- fire counter updates for shares, only on pages where they are used (CMS)
+
+        var timer = setInterval(function() {
+            if($modal.closed) {
+                clearInterval(timer);
+
+                var thisUrl = window.location.host + window.location.pathname;
+
+                setTimeout(function() {
+                    $.ajax({
+                        url: '/api/social/get-social-counts/',
+                        data: {'url': thisUrl},
+                        success: (function (response) {
+                            $('.share-count.all').html(response.all);
+                            $('.share-count.twi').html(response.twitter);
+                            $('.share-count.fb').html(response.facebook);
+                            $('.share-count.gp').html(response.gplus);
+                            $('.share-count.pint').html(response.pinterest);
+                            $('.share-count.inst').html(response.instagram);
+                        })
+                    });
+                    console.log('share counters updated')
+                }, 1000);
+            }
+        }, 1000);
+
+    });
+</script>
 <script type="text/javascript" src="/assets/product/js/custom.product.js"></script>
