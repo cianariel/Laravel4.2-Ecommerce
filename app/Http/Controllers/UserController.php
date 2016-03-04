@@ -95,6 +95,12 @@
 
         }
 
+        public function getWpUsers()
+        {
+           $data  = $this->user->syncWpAdmin();
+            dd($data);
+        }
+
 
     /*    // Redirecting non authenticated user to login page
         public function securePageHeader()

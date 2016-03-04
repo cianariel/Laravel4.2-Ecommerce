@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 //use App\Models\UserProfile;
 use App\Models\Media;
+use App\Models\WpUser;
 
 
 use Illuminate\Auth\Authenticatable;
@@ -279,6 +280,15 @@ class User extends Model implements AuthenticatableContract,
             \Log::error($ex);
             throw new \Exception($ex);
         }
+
+    }
+
+    public function syncWpAdmin($userInfo = null)
+    {
+        $wpUser = new WpUser();
+
+        return $wpUser->all();
+       // User::setConnection('wpdb')where
 
     }
 
