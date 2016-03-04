@@ -31,7 +31,7 @@
                 </h1>
             </div>
             <div class="col-sm-8 hidden-xs">
-                <ul class="share-buttons  pull-right">
+                <ul class="share-buttons  pull-right" ng-app="publicApp" ng-controller="publicController">
                     <?php loadLaravelView('share-buttons'); ?>
                 </ul>
             </div>
@@ -114,10 +114,13 @@
         <nav id="hero-nav" class="col-sm-12">
             <div class="container full-620  fixed-sm">
 
-                <ul class="share-buttons hidden-xs col-lg-7 col-md-8 pull-right">
+                <ul class="share-buttons hidden-xs col-lg-7 col-md-8 pull-right" ng-app="publicApp" ng-controller="publicController">
                     <?php loadLaravelView('share-buttons'); ?>
+
                     <li><a class="comment" data-scrollto=".comments" href="#"><i class="m-icon m-icon--comments-id"></i><b>189</b></a></li>
                 </ul>
+
+
 
                 <ul class="like-nav hidden-xs">
                     <li>
@@ -468,4 +471,57 @@
 
 
 <?php get_footer(); ?>
+<script>
+    // TEMP - until the Angular vs. WP issue is resolved
+    $('.share-buttons a').click(function (e) {
+        e.preventDefault();
+        var baseUrl = 'http://' + window.location.host + window.location.pathname;
+        var shareUrl = false;
+
+        var $service = $(this).data('service');
+
+        var $pitnerestShare = function(){
+            var e=document.createElement('script');
+            e.setAttribute('type','text/javascript');
+            e.setAttribute('charset','UTF-8');
+            e.setAttribute('src','http://assets.pinterest.com/js/pinmarklet.js?r='+Math.random()*99999999);
+            document.body.appendChild(e);
+        }
+
+        switch($service){
+            case 'facebook':
+                shareUrl = 'https://www.facebook.com/sharer/sharer.php?u=' + baseUrl;
+                break;
+            case 'twitter':
+                shareUrl = 'https://twitter.com/share?url=http://' + baseUrl + '&counturl=' + baseUrl + '&text=@Ideaing';
+                break;
+            case 'googleplus':
+                shareUrl = 'https://plus.google.com/share?url=http://' + baseUrl;
+                break;
+            case 'pinterest':
+                $pitnerestShare();
+                return true
+        }
+
+        if(!shareUrl){
+            return false;
+        }
+
+        //$scope.openWindow = function() {
+        var $modal = window.open(shareUrl, 'C-Sharpcorner', 'width=500,height=400');
+        //};
+
+        // TODO -- fire counter updates for shares, only on pages where they are used (CMS)
+
+        var timer = setInterval(function() {
+            if($modal.closed) {
+                clearInterval(timer);
+                //do your process here
+                $scope.countSocialShares();
+                console.log('share counters updated')
+            }
+        }, 1000);
+
+    });
+</script>
 <script type="text/javascript" src="/assets/product/js/custom.product.js"></script>
