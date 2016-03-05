@@ -194,6 +194,8 @@ class S3Client extends AwsClient
         $stack->appendInit(Middleware::sourceFile($this->getApi()), 's3.source_file');
         $stack->appendInit($this->getSaveAsParameter(), 's3.save_as');
         $stack->appendInit($this->getLocationConstraintMiddleware(), 's3.location');
+        $stack->appendInit($this->getEncodingTypeMiddleware(), 's3.auto_encode');
+        $stack->appendInit($this->getHeadObjectMiddleware(), 's3.head_object');
     }
 
     /**
@@ -727,6 +729,86 @@ class S3Client extends AwsClient
                 }
 
                 return $handler($command, $request);
+            };
+        };
+    }
+
+    /**
+     * Provides a middleware that disables content decoding on HeadObject
+     * commands.
+     *
+     * @return \Closure
+     */
+    private function getHeadObjectMiddleware()
+    {
+        return static function (callable $handler) {
+            return function (
+                CommandInterface $command,
+                RequestInterface $request = null
+            ) use ($handler) {
+                if ($command->getName() === 'HeadObject'
+                    && !isset($command['@http']['decode_content'])
+                ) {
+                    $command['@http']['decode_content'] = false;
+                }
+
+                return $handler($command, $request);
+            };
+        };
+    }
+
+    /**
+     * Provides a middleware that autopopulates the EncodingType parameter on
+     * ListObjects commands.
+     *
+     * @return \Closure
+     */
+    private function getEncodingTypeMiddleware()
+    {
+        return static function (callable $handler) {
+            return function (Command $command, $request = null) use ($handler) {
+                $autoSet = false;
+                if ($command->getName() === 'ListObjects'
+                    && empty($command['EncodingType'])
+                ) {
+                    $command['EncodingType'] = 'url';
+                    $autoSet = true;
+                }
+
+                return $handler($command, $request)
+                    ->then(function (ResultInterface $result) use ($autoSet) {
+                        if ($result['EncodingType'] === 'url' && $autoSet) {
+                            static $topLevel = [
+                                'Delimiter',
+                                'Marker',
+                                'NextMarker',
+                                'Prefix',
+                            ];
+                            static $nested = [
+                                ['Contents', 'Key'],
+                                ['CommonPrefixes', 'Prefix'],
+                            ];
+
+                            foreach ($topLevel as $key) {
+                                if (isset($result[$key])) {
+                                    $result[$key] = urldecode($result[$key]);
+                                }
+                            }
+                            foreach ($nested as $steps) {
+                                if (isset($result[$steps[0]])) {
+                                    foreach ($result[$steps[0]] as &$part) {
+                                        if (isset($part[$steps[1]])) {
+                                            $part[$steps[1]]
+                                                = urldecode($part[$steps[1]]);
+                                        }
+                                    }
+                                }
+                            }
+
+                        }
+
+                        return $result;
+                    });
             };
         };
     }

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 //use FeedParser;
@@ -15,6 +15,7 @@ use App\Models\Room;
 use URL;
 use Input;
 use App\Models\Sharing;
+use Sitemap;
 
 class PageController extends ApiController
 {
@@ -420,6 +421,113 @@ class PageController extends ApiController
 
     public function getFollowerCounts(){
         return Sharing::getFollowersFromAPIs();
+    }
+
+    public function generateSitemap(){
+
+        // create new sitemap object
+        $sitemap = App::make('sitemap');
+
+        // set cache key (string), duration in minutes (Carbon|Datetime|int), turn on/off (boolean)
+        // by default cache is disabled
+       // $sitemap->setCache('laravel.sitemap', 60);
+
+        // check if there is cached sitemap and build new only if is not
+//if (!$sitemap->isCached())
+      //  { 
+            // add item to the sitemap (url, date, priority, freq)
+            $sitemap->add(URL::to('/'),  date('c', strtotime('today')), '1.0', 'daily');
+
+
+
+
+		  //  URL::to('/product-details', function () // temp, used for tweaking frontend
+		  //  {
+		  //      return view('static.product-details');
+		  //  });
+
+            // INFO PAGES
+
+		    $sitemap->add( URL::to('/contactus'),  date('c', strtotime('1 February 2016')), '0.3', 'monthly');
+		    $sitemap->add( URL::to('/aboutus'),  date('c', strtotime('1 February 2016')), '0.3', 'monthly');
+		    $sitemap->add( URL::to('/privacy-policy'),  date('c', strtotime('1 February 2016')), '0.3', 'monthly');
+		    $sitemap->add( URL::to('/terms-of-use'),  date('c', strtotime('1 February 2016')), '0.3', 'monthly');
+            $sitemap->add(URL::to('/shop'),  date('c', strtotime('today')), '1.0', 'daily');
+
+
+            // SHOP
+            $shopCategories = ProductCategory::buildCategoryTree(true);
+            foreach($shopCategories as $grandparent => $parents){
+            	$sitemap->add(URL::to('/shop/' . $grandparent),  date('c', strtotime('today')), '1.0', 'daily');
+            	foreach ($parents as $key => $parent) {
+            		$sitemap->add(URL::to('/shop/' . $grandparent . '/' . $parent['childCategory']->extra_info),  date('c', strtotime('today')), '1.0', 'daily');
+
+            		foreach($parent['grandchildCategories'] as $grandchild){
+            			$sitemap->add(URL::to('/shop/' . $grandparent . '/' . $parent['childCategory']->extra_info . '/' . $grandchild->extra_info),  date('c', strtotime('today')), '1.0', 'daily');
+            		}
+            	}
+            }
+
+            $rooms = Room::all();
+            foreach($rooms as $room){
+            	$sitemap->add(URL::to('/idea/' . $room->room_permalink),  date('c', strtotime('today')), '1.0', 'monthly'); 
+            }
+
+            $products = Product::where('post_status', 'Active')->get();
+            foreach($products as $product){
+            	$sitemap->add(URL::to('/product/' . $product->product_permalink),  date('c', strtotime('today')), '1.0', 'monthly'); 
+            }
+
+         
+
+            // TODO -- change into direct call to WP DB for better perf?
+       if (env('FEED_PROD') == true)
+            $url = 'http://ideaing.com//ideas/feeds/index.php?count=0';
+        else
+            $url = URL::to('/') . '/ideas/feeds/index.php?count=0';
+
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_HEADER, 0);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_ENCODING, "");
+        $json = curl_exec($ch);
+
+        $posts = json_decode($json);
+
+        //$posts = WpPost::where('post_status', 'publish')->get();
+        foreach($posts as $post){
+            	$sitemap->add($post->url,  date('c', strtotime('today')), '1.0', 'monthly'); 
+         }
+
+//            $sitemap->add(URL::to('page'), '2012-08-26T12:30:00+02:00', '0.9', 'monthly');
+
+            // add item with images
+//            $images = [
+//                ['url' => URL::to('images/pic1.jpg'), 'title' => 'Image title', 'caption' => 'Image caption', 'geo_location' => 'Plovdiv, Bulgaria'],
+//                ['url' => URL::to('images/pic2.jpg'), 'title' => 'Image title2', 'caption' => 'Image caption2'],
+//                ['url' => URL::to('images/pic3.jpg'), 'title' => 'Image title3'],
+//            ];
+//            $sitemap->add(URL::to('post-with-images'), '2015-06-24T14:30:00+02:00', '0.9', 'monthly', $images);
+
+            // get all posts from db
+//            $posts = DB::table('posts')->orderBy('created_at', 'desc')->get();
+
+//            $products = DB::table('posts')->orderBy('created_at', 'desc')->get();
+
+            // add every post to the sitemap
+//            foreach ($posts as $post)
+//            {
+//                $sitemap->add($post->slug, $post->modified, $post->priority, $post->freq);
+//            }
+    //    }
+
+        // show your sitemap (options: 'xml' (default), 'html', 'txt', 'ror-rss', 'ror-rdf')
+        return $sitemap->render('xml');
+
+
+
+
     }
 
 

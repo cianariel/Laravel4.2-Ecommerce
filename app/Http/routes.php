@@ -274,6 +274,8 @@
 
     // default
 //    Route::get('login', 'PageController@loginView');
+  
+    Route::get('sitemap', 'PageController@generateSitemap');
 
     Route::get('/api/paging/get-content/{page?}/{limit?}/{type?}/{tag?}/{productCategory?}/{sortBy?}', 'PageController@getContent');
     Route::get('/api/paging/get-grid-content/{page?}/{limit?}/{category?}/{tag?}', 'PageController@getGridContent');
