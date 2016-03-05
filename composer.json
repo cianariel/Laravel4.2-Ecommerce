@@ -20,7 +20,8 @@
     "laravelcollective/html": "5.1.*",
     "intervention/image": "^2.3",
     "torann/laravel-meta-tags": "^3.0",
-    "barryvdh/laravel-cors": "^0.7.3"
+    "barryvdh/laravel-cors": "^0.7.3",
+    "roumen/sitemap": "^2.6"
 
   },
   "require-dev": {
