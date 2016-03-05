@@ -283,12 +283,26 @@ class User extends Model implements AuthenticatableContract,
 
     }
 
-    public function syncWpAdmin($userInfo = null)
+    public function syncWpAdmin($id = null)
     {
+        $systemUser = $this->getUserById($id);
+
         $wpUser = new WpUser();
 
-        return $wpUser->all();
-       // User::setConnection('wpdb')where
+        $wpUserInfo = $wpUser->where('user_email',$systemUser['email'])->get();
+
+        if(empty($wpUserInfo)){
+            $wpUser->user_login = $systemUser['email'];
+            $wpUser->user_pass  = $systemUser['password'];
+          //  $wpUser->user_nicename = $systemUser->personal_info->;
+            $wpUser->user_login = $systemUser['email'];
+            $wpUser->user_login = $systemUser['email'];
+            $wpUser->user_login = $systemUser['email'];
+            $wpUser->user_login = $systemUser['email'];
+
+        }
+
+
 
     }
 
