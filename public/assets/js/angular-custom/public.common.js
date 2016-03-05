@@ -259,10 +259,10 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
             //$scope.countSocialFollowers();
 
             $scope.socialCounter = function(){
-                console.log("before call");
+             //   console.log("before call");
                 $scope.countSocialShares();
                 $scope.countSocialFollowers();
-                console.log("call");
+             //   console.log("call");
             };
 
         };
