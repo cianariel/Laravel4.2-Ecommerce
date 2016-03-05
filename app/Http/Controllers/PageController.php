@@ -430,7 +430,7 @@ class PageController extends ApiController
 
         // set cache key (string), duration in minutes (Carbon|Datetime|int), turn on/off (boolean)
         // by default cache is disabled
-      $sitemap->setCache('laravel.sitemap', 300, false);
+      $sitemap->setCache('laravel.sitemap', 300, true);
 
         // check if there is cached sitemap and build new only if is not
 	if (!$sitemap->isCached()){ 
@@ -457,7 +457,7 @@ class PageController extends ApiController
             		}
             	}
             }
-
+ 
             $rooms = Room::all();
             foreach($rooms as $room){
             	$sitemap->add(URL::to('/idea/' . $room->room_permalink),  date('c', strtotime('today')), '1.0', 'monthly'); 
@@ -465,7 +465,7 @@ class PageController extends ApiController
 
             $products = Product::where('post_status', 'Active')->get();
             foreach($products as $product){
-            	$sitemap->add(URL::to('/product/' . $product->product_permalink),  date('c', strtotime('today')), '1.0', 'monthly'); 
+            	$sitemap->add(URL::to('/product/' . $product->product_permalink),  date('c', strtotime($product->updated_at)), '1.0', 'monthly'); 
             }
 
             //CMS POSTS -- TODO -- if we wont use images in the sitemap, change into direct call to WP DB for better perf?
@@ -485,7 +485,7 @@ class PageController extends ApiController
 
 	        //$posts = WpPost::where('post_status', 'publish')->get();
 	        foreach($posts as $post){
-	            	$sitemap->add($post->url,  date('c', strtotime('today')), '1.0', 'monthly'); 
+	            	$sitemap->add($post->url,  date('c', strtotime($post->updated_at)), '1.0', 'monthly'); 
 	         }
 
     	}
