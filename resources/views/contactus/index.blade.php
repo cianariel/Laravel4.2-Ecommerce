@@ -46,7 +46,7 @@
                     <textarea class="form-control" placeholder="Start typing question or comment"></textarea>
                 </div><br>
                 <div class="row text-center">
-                    <button class="btn">Support</button>
+                    <button class="btn">Send</button>
                 </div>
             </div>
         </section>

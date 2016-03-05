@@ -130,8 +130,10 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
             var timer = setInterval(function() {
                 if($modal.closed) {
                     clearInterval(timer);
-                    //do your process here
-                    $scope.countSocialShares();
+
+                    setTimeout(function(){
+                        $scope.countSocialShares();
+                    }, 1000);
                     console.log('share counters updated')
                 }
             }, 1000);
@@ -643,7 +645,7 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
             var thisUrl = window.location.host + window.location.pathname;
 
             $http({
-                url: '/api/social/get-social-counts/',
+                url: '/api/social/get-social-counts',
                 method: "GET",
                 params: {'url' : thisUrl}
             }).success(function (response) {
@@ -660,7 +662,7 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
             var thisUrl = window.location.host + window.location.pathname;
 
             $http({
-                url: '/api/social/get-fan-counts/',
+                url: '/api/social/get-fan-counts',
                 method: "GET",
                 params: {'url' : thisUrl}
             }).success(function (response) {
