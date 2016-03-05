@@ -9,5 +9,7 @@
 
         protected $connection = 'wpdb';
         protected $table = 'users';
+        public $timestamps = false;
+
 
     }

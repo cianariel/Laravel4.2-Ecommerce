@@ -18,6 +18,8 @@ use Mockery\CountValidator\Exception;
 use Zizaco\Entrust\Traits\EntrustUserTrait;
 
 use CustomAppException;
+use Illuminate\Contracts\Hashing\Hasher;
+
 
 
 class User extends Model implements AuthenticatableContract,
@@ -121,7 +123,9 @@ class User extends Model implements AuthenticatableContract,
 
                 $user->name = $data['FullName'];
                 $user->email = $data['Email'];
-                $user->password = \Hash::make($data['Password']);
+//                $user->password = \Hash::make($data['Password']);
+                $user->password = hash('md5',$data['Password']);
+
                 $user->save();
 
                 $userProfile = new UserProfile();
@@ -283,27 +287,109 @@ class User extends Model implements AuthenticatableContract,
 
     }
 
-    public function syncWpAdmin($id = null)
+    // Sync system user with blog (wordpress) user
+    public function syncWpAdmin($id = 65, $makeUserActive = true)
     {
         $systemUser = $this->getUserById($id);
 
+        $name = explode(" ", $systemUser['name']);
+        $firstName = $name[0];
+        $lastName = $name[1];
+
         $wpUser = new WpUser();
 
-        $wpUserInfo = $wpUser->where('user_email',$systemUser['email'])->get();
+        $wpUserInfo = $wpUser->where('user_email', $systemUser['email'])->get();
 
-        if(empty($wpUserInfo)){
+        if (empty($wpUserInfo->count())) {
             $wpUser->user_login = $systemUser['email'];
-            $wpUser->user_pass  = $systemUser['password'];
-          //  $wpUser->user_nicename = $systemUser->personal_info->;
-            $wpUser->user_login = $systemUser['email'];
-            $wpUser->user_login = $systemUser['email'];
-            $wpUser->user_login = $systemUser['email'];
-            $wpUser->user_login = $systemUser['email'];
+            $wpUser->user_pass = $makeUserActive == true ? $systemUser['password'] : 'NO ACCESS';
+            $wpUser->user_nicename = $firstName;//$systemUser->personal_info->;
+            $wpUser->user_registered = $systemUser['created_at'];
+            $wpUser->user_status = 0;//$systemUser['email'];
+            $wpUser->display_name = $systemUser['name'];
+            $wpUser->user_email = $systemUser['email'];
+
+            $wpUser->save();
+
+            // set wp-meta table info
+
+            $data = [
+                'firstName' => $firstName,
+                'lastName' => $lastName,
+                'id' => $wpUser->id
+            ];
+
+            $this->wpUserMetaAdd($data);
+
+            // update the main user table info
+
+            $this->updateUserStatusForWpUser($makeUserActive, $systemUser);
+        } else {
+
+            // $datas =  WpUser::where('user_login', $wpUserInfo[0]['user_login'])
+            //     ->all();
+
+            WpUser::where('user_login', $wpUserInfo[0]['user_login'])
+                  ->update([
+                      'user_login' => $systemUser['email'],
+                      'user_pass' => $makeUserActive == true ? $systemUser['password'] : 'NO ACCESS',
+                      'user_nicename' => $firstName,//$systemUser->personal_info->;
+                      'user_registered' => $systemUser['created_at'],
+                      'user_status' => 0,//$systemUser['email'];
+                      'display_name' => $systemUser['name'],
+                      'user_email' => $systemUser['email']
+                  ]);
+
+            $data = [
+                'firstName' => $firstName,
+                'lastName' => $lastName,
+                'id' => $wpUserInfo[0]['ID']
+            ];
+
+            // delete the previos meta info and insert with the new info
+            $wpUserMeta = \DB::connection('wpdb');//->table('usermeta');
+            $wpUserMeta->delete('delete from wp_usermeta where user_id=' . $wpUserInfo[0]['ID']);
+
+            $this->wpUserMetaAdd($data);
+
+            // update the main user table info
+            $this->updateUserStatusForWpUser($makeUserActive, $systemUser);
+
 
         }
+    }
 
+    /**
+     * @param $data
+     */
+    private function wpUserMetaAdd($data)
+    {
+        $metaHead = [
+            'nickname', 'first_name', 'last_name', 'description', 'rich_editing', 'comment_shortcuts', 'admin_color', 'use_ssl', 'show_admin_bar_front',
+            'wp_capabilities', 'wp_user_level', 'wp_user_avatar', 'dismissed_wp_pointers', 'default_password_nag', 'session_tokens', 'wp_dashboard_quick_press_last_post_id'
+        ];
+        $metaInfo = [
+            $data['firstName'], $data['firstName'], $data['lastName'], '', 'true', 'false', 'fresh', 0, 'true', 'a:1:{s:6:"editor";b:1;}', '7',
+            '', '', '', 'a:1:{s:64:"165c21c817a63200b4e63661dcd00ca58ec0b5a5af81cd84f4f61657dcceb10f";a:4:{s:10:"expiration";i:1456954939;s:2:"ip";s:14:"67.164.191.103";s:2:"ua";s:121:"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/48.0.2564.109 Safari/537.36";s:5:"login";i:1456782139;}}',
+            '2147'
+        ];
 
+        $wpUserMeta = \DB::connection('wpdb');//->table('usermeta');
 
+        for ($i = 0; $i < count($metaHead); $i++) {
+            $wpUserMeta->insert("insert into wp_usermeta (user_id,meta_key,meta_value) values (?,?,?)", array($data['id'], $metaHead[$i], $metaInfo[$i]));
+        }
+    }
+
+    /**
+     * @param $makeUserActive
+     * @param $systemUser
+     */
+    private function updateUserStatusForWpUser($makeUserActive, $systemUser)
+    {
+        $systemUser = User::find($systemUser['id']);
+        $systemUser->is_blog_user = $makeUserActive == true ? 'true' : '';
+        $systemUser->save();
     }
 
     public function IsAuthorizedUser($userData)
@@ -311,7 +397,11 @@ class User extends Model implements AuthenticatableContract,
         try {
             $user = User::where('email', $userData['Email'])->first();
 
-            return \Hash::check($userData['Password'], $user->password) ? $user : false;
+          //  return \Hash::check($userData['Password'], $user->password) ? $user : false;
+
+            $password = hash('md5',$userData['Password']);
+
+            return ($password == $user->password) ? $user : false;
 
         } catch (\Exception $ex) {
             // throw new \Exception($ex);
@@ -324,6 +414,4 @@ class User extends Model implements AuthenticatableContract,
         throw new CustomAppException("hi");
     }
 
-
 }
-
