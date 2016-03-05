@@ -56,14 +56,20 @@ productApp.config(['$provide', function($provide){
         taTools.quote.buttontext = 'quote';
         return taTools;
     }]);*/
-}]);
+}])
+;
 
+productApp.controller('productController', ['$scope', '$http', '$window', '$interval', '$timeout'
+    , function ($scope, $http, $window, $interval, $timeout) {
 
-productApp.controller('productController', ['$scope', '$http', '$window','$interval'
-    , function ($scope, $http, $window,$interval) {
-
-
-
+        $scope.focusEditor = function(){
+            $timeout(function(){
+                angular.element('div[contenteditable=true]').trigger('focus');
+            })
+        }
+        $scope.textAreaSetup = function($element){
+          $element.attr('focus-me', 'focus_editor');
+        };
         // initialize variables
         $scope.initPage = function () {
 

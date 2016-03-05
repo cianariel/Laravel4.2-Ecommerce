@@ -2807,7 +2807,7 @@ header.colophon{
                 position: absolute;
                 border-left: 1px solid #c1c1c1;
                 bottom: -12px;
-                right: 22px;
+                right: 19px;
             }
             i{
                 font-size: 18px;
@@ -4520,7 +4520,7 @@ body.single{
   }
 
   .comment-controls{
-    width: 250px;
+/*    width: 250px;*/
     margin-top: 10px;
     //padding-left: 57px;
     .add-photo{
@@ -8393,6 +8393,36 @@ body.contactus-page{
     .pocket{
         display: none;
     }
+}
+.comment-edit-container{
+    div[contenteditable=true]{
+        min-height: inherit;
+        &:before{
+            color: #a9a9a9;
+            content: "Write a comment";
+        }
+        &:focus:before{
+            display: none;
+        }
+    }
+    &.has-content{
+        div[contenteditable=true]{
+            &:before{
+                display: none;
+            }
+        }
+    }
+    .ta-editor {
+        min-height: 100px;
+        height: auto;
+        overflow: auto;
+        font-family: inherit;
+        font-size: 100%;
+        border: 1px solid #e6e6e6;
+        color: black;
+        padding: 4px;
+    }
+    
 }
 @media (max-width: 620px){
     .reviews-medium-container .average-score .caption{
