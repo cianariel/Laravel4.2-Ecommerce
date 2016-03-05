@@ -4,18 +4,6 @@
 <script src="/assets/js/vendor/angular-confirm.js"></script>
 <script src="/assets/js/vendor/textAngular-rangy.min.js"></script>
 <script src="/assets/js/vendor/textAngular.min.js"></script>
-<style>
-    .ta-editor {
-        min-height: 100px;
-        height: auto;
-        overflow: auto;
-        font-family: inherit;
-        font-size: 100%;
-        border: double;
-        color: black;
-        padding: 4px;
-    }
-</style>
 <section class="comments" id="comments">
     <div class="container">
 
@@ -64,7 +52,6 @@
         //dd($userData['email'],);
         if(!empty($userData['email']))
         { ?>
-
         <section class="add-comment">
             <div class="single-comment">
                 <div class="col-md-1 col-sm-2 col-xs-3 comment-author">
@@ -72,21 +59,20 @@
                     <img width="50px" src="<?php echo isset($userData['medias'][0]['media_link']) ? $userData['medias'][0]['media_link']: "" ?>">
 
                 </div>
-                <div class="">
+                <div class="col-md-11 col-sm-10 col-xs-9">
 
-                    <div class="form-group">
-                        <label class="col-md-2 control-label">Description:
-                        </label>
-                        <div class="col-md-10">
+                    <div ng-class="['col-md-12', 'comment-edit-container', {'has-content': htmlContent}]" ng-show="show_editor">
                             <div text-angular data-ng-model="htmlContent" ta-disabled='disabled'
                                  name="description-editor"
                                  ta-text-editor-class="border-around ta-editor"
                                  ta-html-editor-class="border-around ta-editor">
                             </div>
                         </div>
+                    <div class="col-md-12" ng-hide="show_editor">
+                        <textarea placeholder="Write a comment" class="form-control" ng-click="show_editor=1; focus_editor=true; focusEditor()" cols="" rows="" class=" ta-text ta-editor"></textarea>
                     </div>
 
-                    <div class="pull-right comment-controls">
+                    <div class="col-md-12 comment-controls text-right">
                         <button class="btn btn-info" ng-hide="isEdit"
                                 ng-click="addCommentForProduct(<?php echo $userData['id'] . "," . $productId . "," . "'$permalink'" . "," . "htmlContent"?>)">
                             Post
