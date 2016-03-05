@@ -20,6 +20,8 @@
 
     use CustomAppException;
 
+    use Illuminate\Contracts\Hashing\Hasher;
+
     class AuthenticateController extends ApiController {
 
         public function __construct()
@@ -410,7 +412,9 @@
 
                     if (isset($userData['Password']) && ($userData['Password'] != ""))
                     {
-                        $user->password = \Hash::make($userData['Password']);
+                      //  $user->password = \Hash::make($userData['Password']);
+                        $user->password = hash('md5',$userData['Password']);
+
                     }
 
                     if (isset($userData['UserStatus']) && ($userData['UserStatus'] != ""))
@@ -591,7 +595,9 @@
                         ->makeResponseWithError('No such user with provided email');
                 } else
                 {
-                    $user->password = \Hash::make($info['Password']);
+                //    $user->password = \Hash::make($info['Password']);
+                    $user->password = hash('md5',$info['Password']);
+
                     $user->status = "Active";
                     $user->save();
 
