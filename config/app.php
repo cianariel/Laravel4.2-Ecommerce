@@ -158,8 +158,9 @@
             'Baum\Providers\BaumServiceProvider',
             'Intervention\Image\ImageServiceProvider',
             'Barryvdh\Cors\ServiceProvider',
+            'Roumen\Sitemap\SitemapServiceProvider',
 
-        ],
+        ], 
 
         /*
         |--------------------------------------------------------------------------
