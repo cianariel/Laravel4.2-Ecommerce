@@ -31,7 +31,7 @@
                 </h1>
             </div>
             <div class="col-sm-8 hidden-xs">
-                <ul class="share-buttons  pull-right" ng-app="publicApp" ng-controller="publicController">
+                <ul class="share-buttons  pull-right">
                     <?php loadLaravelView('share-buttons'); ?>
                 </ul>
             </div>
@@ -114,13 +114,10 @@
         <nav id="hero-nav" class="col-sm-12">
             <div class="container full-620  fixed-sm">
 
-                <ul class="share-buttons hidden-xs col-lg-7 col-md-8 pull-right" ng-app="publicApp" ng-controller="publicController">
+                <ul class="share-buttons hidden-xs col-lg-7 col-md-8 pull-right">
                     <?php loadLaravelView('share-buttons'); ?>
-
                     <li><a class="comment" data-scrollto=".comments" href="#"><i class="m-icon m-icon--comments-id"></i><b>189</b></a></li>
                 </ul>
-
-
 
                 <ul class="like-nav hidden-xs">
                     <li>
@@ -507,18 +504,31 @@
             return false;
         }
 
-        //$scope.openWindow = function() {
         var $modal = window.open(shareUrl, 'C-Sharpcorner', 'width=500,height=400');
-        //};
 
         // TODO -- fire counter updates for shares, only on pages where they are used (CMS)
 
         var timer = setInterval(function() {
             if($modal.closed) {
                 clearInterval(timer);
-                //do your process here
-                $scope.countSocialShares();
-                console.log('share counters updated')
+
+                var thisUrl = window.location.host + window.location.pathname;
+
+                setTimeout(function() {
+                    $.ajax({
+                        url: '/api/social/get-social-counts/',
+                        data: {'url': thisUrl},
+                        success: (function (response) {
+                            $('.share-count.all').html(response.all);
+                            $('.share-count.twi').html(response.twitter);
+                            $('.share-count.fb').html(response.facebook);
+                            $('.share-count.gp').html(response.gplus);
+                            $('.share-count.pint').html(response.pinterest);
+                            $('.share-count.inst').html(response.instagram);
+                        })
+                    });
+                    console.log('share counters updated')
+                }, 1000);
             }
         }, 1000);
 
