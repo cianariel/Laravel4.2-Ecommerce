@@ -294,7 +294,7 @@ class User extends Model implements AuthenticatableContract,
 
         $name = explode(" ", $systemUser['name']);
         $firstName = $name[0];
-        $lastName = $name[1];
+        $lastName = !empty($name[1])?$name[1]:'';
 
         $wpUser = new WpUser();
 

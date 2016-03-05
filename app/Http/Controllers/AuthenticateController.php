@@ -369,7 +369,6 @@
                 unset($input['UserRoles']);
                 $userData = $input;//\Input::all();
 
-
                 // $user = $this->isEmailValidate(JWTAuth::parseToken()->authenticate()->email);
                  $user = $this->isEmailValidate($userData['Email']);
 
@@ -401,6 +400,14 @@
                     if (isset($userRoles) && ($userRoles != ""))
                     {
                         $this->user->assignRole($userData['Email'],$userRoles);
+                    }
+
+                    // Add a user as blog user from admin panel
+                    //
+
+                    if (isset($userData['IsBlogUser']))
+                    {
+                        $user->is_blog_user = $userData['IsBlogUser']=='true'?'true':'';
                     }
 
 
@@ -455,6 +462,14 @@
                     }
 
                     $user->save();
+
+                    // Sync wp user if profile is eligible
+                    if($user->is_blog_user == "true")
+                    {
+                        $this->user->syncWpAdmin($user->id);
+                    }else{
+                        $this->user->syncWpAdmin($user->id,false);
+                    }
 
                     return $this->setStatusCode(\Config::get("const.api-status.success"))
                         ->makeResponse('Successfully profile information changed');
