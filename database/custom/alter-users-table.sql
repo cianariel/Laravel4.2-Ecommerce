@@ -1,0 +1,2 @@
+ALTER TABLE `users` MODIFY COLUMN `is_blog_user` VARCHAR(20) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL AFTER `status`;
+
