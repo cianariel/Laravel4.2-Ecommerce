@@ -6335,7 +6335,7 @@ header.colophon {
     position: absolute;
     border-left: 1px solid #c1c1c1;
     bottom: -12px;
-    right: 22px; }
+    right: 19px; }
   #top-nav .top-nav-holder .profile-photo-holder i {
     font-size: 18px;
     position: relative;
@@ -7425,7 +7425,7 @@ body.single .related-items {
     min-height: 100px; }
 
 .comments .comment-controls {
-  width: 250px;
+  /*    width: 250px;*/
   margin-top: 10px; }
   .comments .comment-controls .add-photo {
     color: #a8a8a8;
@@ -9998,6 +9998,27 @@ body.contactus-page footer.about-footer {
 
 body.contactus-page .pocket {
   display: none; }
+
+.comment-edit-container div[contenteditable=true] {
+  min-height: inherit; }
+  .comment-edit-container div[contenteditable=true]:before {
+    color: #a9a9a9;
+    content: "Write a comment"; }
+  .comment-edit-container div[contenteditable=true]:focus:before {
+    display: none; }
+
+.comment-edit-container.has-content div[contenteditable=true]:before {
+  display: none; }
+
+.comment-edit-container .ta-editor {
+  min-height: 100px;
+  height: auto;
+  overflow: auto;
+  font-family: inherit;
+  font-size: 100%;
+  border: 1px solid #e6e6e6;
+  color: black;
+  padding: 4px; }
 
 @media (max-width: 620px) {
   .reviews-medium-container .average-score .caption {
