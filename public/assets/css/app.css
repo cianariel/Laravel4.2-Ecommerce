@@ -6545,7 +6545,8 @@ body.single-post .related-ideas, body.single-post .related-products {
 .article-content ol, .article-content ul, body.terms-of-use-page .mid-bottom-container ol, body.terms-of-use-page .mid-bottom-container ul, body.privacy-policy-page .mid-bottom-container ol, body.privacy-policy-page .mid-bottom-container ul {
   list-style: initial; }
   .article-content ol li, .article-content ul li, body.terms-of-use-page .mid-bottom-container ol li, body.terms-of-use-page .mid-bottom-container ul li, body.privacy-policy-page .mid-bottom-container ol li, body.privacy-policy-page .mid-bottom-container ul li {
-    list-style: initial; }
+    list-style: initial;
+    margin-left: 30px; }
 
 .article-content a, body.terms-of-use-page .mid-bottom-container a, body.privacy-policy-page .mid-bottom-container a {
   color: #4489c9; }

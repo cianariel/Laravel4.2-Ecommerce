@@ -15,7 +15,7 @@
                 <div class="single-comment">
                     <div class="col-md-1 col-sm-2 col-xs-3 comment-author">
                         <!--<a class="author" href="#"></a>-->
-                        <img ng-src="<?php echo "{{ comment.Picture }}"?>" width="50px">
+                        <img class="profile-photo " ng-src="<?php echo "{{ comment.Picture }}"?>" width="50px">
 
 
                         <div><b class="comment-name"><?php echo "{{ comment.UserName }}" ?></b></div>
@@ -56,7 +56,7 @@
             <div class="single-comment">
                 <div class="col-md-1 col-sm-2 col-xs-3 comment-author">
                   <!--  <a class="author" href="#"></a> -->
-                    <img width="50px" src="<?php echo isset($userData['medias'][0]['media_link']) ? $userData['medias'][0]['media_link']: "" ?>">
+                    <img class="profile-photo" width="50px" src="<?php echo isset($userData['medias'][0]['media_link']) ? $userData['medias'][0]['media_link']: "" ?>">
 
                 </div>
                 <div class="col-md-11 col-sm-10 col-xs-9">

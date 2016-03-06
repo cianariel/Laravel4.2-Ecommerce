@@ -96,7 +96,7 @@
                                     <div class="form-group">
                                         <label>Icon Class Name</label>
                                         <input ng-model="icon" class="form-control"
-                                               placeholder="Icon Class Name Required">
+                                               placeholder="Icon Class Name">
                                     </div>
                                     <p>
                                         <button class="btn btn-primary" ng-click="addCategory()" type="submit">Submit
