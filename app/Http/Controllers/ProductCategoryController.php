@@ -70,13 +70,11 @@
                     'rules'  => [
                         'CategoryName' => 'required | max: 50',
                         'ExtraInfo'    => 'required | max: 50',
-                        'Icon'         => 'required',
                         'ParentId'     => 'integer'
                     ],
                     'values' => [
                         'CategoryName' => isset($inputData['CategoryName']) ? $inputData['CategoryName'] : null,
                         'ExtraInfo'    => isset($inputData['ExtraInfo']) ? $inputData['ExtraInfo'] : null,
-                        'Icon'         => isset($inputData['Icon']) ? $inputData['Icon'] : null,
                         'ParentId'     => (isset($inputData['ParentId']) or ($inputData['ParentId']!="") ) ? $inputData['ParentId'] : null
                     ]
                 ];
