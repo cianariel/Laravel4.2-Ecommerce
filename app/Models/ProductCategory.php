@@ -50,7 +50,7 @@
             $data = array(
                 'category_name' => $product['CategoryName'],
                 'extra_info'    => isset($product['ExtraInfo']) ? $product['ExtraInfo'] : null,
-                'icon'          => isset($product['Icon']) ? $product['Icon'] : null
+                'icon'          => isset($product['Icon']) ? $product['Icon'] : ''
             );
             return ProductCategory::create($data);
         }
