@@ -61,13 +61,13 @@
             'file-max-size'          => 3758094,
             'file-max-limit-exit'    => 'file-max-limit-exit',
             'file-extension-invalid' => 'file-extension-invalid',
-            's3-path'                => 'http://s3-us-west-1.amazonaws.com/ideaing-01/'
+            's3-path'                => 'https://s3-us-west-1.amazonaws.com/ideaing-01/'
         ],
 
         // API product update time (in Hour)
         'product-update-time-limit' => 24,
 
         // default user picture
-        'user-image' => 'http://s3-us-west-1.amazonaws.com/ideaing-01/product-56c602ae87429-user-default.png'
+        'user-image' => 'https://s3-us-west-1.amazonaws.com/ideaing-01/product-56c602ae87429-user-default.png'
 
     ];

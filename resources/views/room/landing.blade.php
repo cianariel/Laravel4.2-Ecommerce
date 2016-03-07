@@ -70,7 +70,7 @@
 
                     <div class="hero-tags">
                             <div class="photoCopy">{{$image['Image_Title']}}: {{$image['Image_Caption']}} @if($image['Image_hyperlink']!="")<a href="{{$image['Image_hyperlink']}}">{{$image['Image_hyperlink_title']}}</a>@endif </div>
-
+ 
                         @foreach($image['Image_Products'] as $i_products)
                             @if($i_products->product_id!=null)
                             <div class="tag {{$i_products->product_color}}" style="left:{{$i_products->x}}%;top:{{$i_products->y}}%" >
@@ -79,7 +79,7 @@
                                 @if(property_exists($i_products,'tag_type'))
                                 @if($i_products->tag_type=="thumb")
                                 
-                                    <img src="{{$i_products->media_link}}" class="round" alt="" />
+                                    <img src="{{@$i_products->media_link}}" class="round" alt="" />
                                 
                                 @else 
                                 <i class="m-icon--shopping-bag-light-green"></i>
@@ -88,13 +88,13 @@
                                 <i class="m-icon--shopping-bag-light-green"></i>
                                 @endif
                                 </span>
-                                <a class="{{$i_products->product_color}}-border" href="/product/{{$i_products->product_permalink}}">
-                                    <img src="{{$i_products->media_link}}" class="round" alt="" />
+                                <a class="{{$i_products->product_color}}-border" href="/product/{{@$i_products->product_permalink}}">
+                                    <img src="{{@$i_products->media_link}}" class="round" alt="" />
                                 </a>
                                <div class="hover-box">
-                                   <h6>{{$i_products->product_name}}</h6>
+                                   <h6>{{@$i_products->product_name}}</h6>
                                        <div class="icon-wrap" style="height: 90px">
-                                            <a class="category-tag get-round" href="{{$i_products->affiliate_link}}" target="_blank">
+                                            <a class="category-tag get-round" href="{{@$i_products->affiliate_link}}" target="_blank">
                                                 Get it
                                             </a>
                                             <div style="border:none">
@@ -134,17 +134,17 @@
                                     <li class="{{$i_products->product_color}}">
                                         <div class="row">
                                             <div class="col-xs-8 col-sm-10">
-                                                <a class="{{$i_products->product_color}}-border " href="/product/{{$i_products->product_permalink}}">
+                                                <a class="{{@$i_products->product_color}}-border " href="/product/{{@$i_products->product_permalink}}">
                                                     <span class="img-holder">
-                                                        <img src="{{$i_products->media_link}}" class="round" alt="" />
+                                                        <img src="{{@$i_products->media_link}}" class="round" alt="" />
                                                     </span>
                                                     <span class="name-holder">
-                                                        {{$i_products->product_name}}
+                                                        {{@$i_products->product_name}}
                                                     </span>
                                                 </a> 
                                             </div>
                                             <div class="col-xs-4 col-sm-2">
-                                                <a href="{{$i_products->affiliate_link}}" class="get solid pull-right ">Get it</a>
+                                                <a href="{{@$i_products->affiliate_link}}" class="get solid pull-right ">Get it</a>
                                             </div>
                                         </div>
                                     </li>
