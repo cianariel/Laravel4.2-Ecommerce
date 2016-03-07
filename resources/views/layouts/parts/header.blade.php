@@ -392,7 +392,6 @@
 </div>
 
 <!-- fake controller -->
-{{--<div id="pagingApp" ng-app="pagingApp" ng-controller="pagingController"">&nbsp;</div>--}}
 <?php
         //dd($userData['email'],);
 if(empty($userData['email']))
