@@ -284,6 +284,7 @@
     Route::get('/api/social/get-fan-counts', 'PageController@getFollowerCounts');
 
 
+
     // temporary category tag generator
     // Route::get('gen', 'TagsController@temporaryCategoryTagGenerator');
 

@@ -144,20 +144,24 @@ class PageController extends ApiController
     public function getStories($limit, $offset, $tag)
     {
         if (env('FEED_PROD') == true)
-            $url = 'http://ideaing.com//ideas/feeds/index.php?count=' . $limit . '&offset=' . $offset;
+            $url = 'https://ideaing.com//ideas/feeds/index.php?count=' . $limit . '&offset=' . $offset;
         else
             $url = URL::to('/') . '/ideas/feeds/index.php?count=' . $limit . '&offset=' . $offset;
 
         if ($tag && $tag != 'false') {
-            $url .= '&tag=' . $tag;
+            $url .= '&tag=' . $tag; 
         }
 
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $url);
         curl_setopt($ch, CURLOPT_HEADER, 0);
+        curl_setopt($ch, CURLOPT_VERBOSE, true);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
         curl_setopt($ch, CURLOPT_ENCODING, "");
         $json = curl_exec($ch);
+
+        echo $json; die();
 
         $return = json_decode($json);
 
@@ -168,19 +172,20 @@ class PageController extends ApiController
     {
 
         if (env('FEED_PROD') == true)
-            $url = 'http://ideaing.com/ideas/feeds/index.php?count=' . $limit . '&no-featured&offset=' . $offset;
+            $url = 'https://ideaing.com/ideas/feeds/index.php?count=' . $limit . '&no-featured&offset=' . $offset;
         else
             $url = URL::to('/') . '/ideas/feeds/index.php?count=' . $limit . '&no-featured&offset=' . $offset;
 
         if ($tag && $tag != 'false') {
             $url .= '&tag=' . $tag;
         }
-//        print_r($url); die();
 
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $url);
         curl_setopt($ch, CURLOPT_HEADER, 0);
+        curl_setopt($ch, CURLOPT_VERBOSE, true);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
         curl_setopt($ch, CURLOPT_ENCODING, "");
         $json = curl_exec($ch);
 
@@ -188,7 +193,7 @@ class PageController extends ApiController
 
 
         if (env('FEED_PROD') == true)
-            $featuredUrl = 'http://ideaing.com/ideas/feeds/index.php?count=' . $featuredLimit . '&only-featured&offset=' . $featuredOffset . '&tag=' . $tag;
+            $featuredUrl = 'https://ideaing.com/ideas/feeds/index.php?count=' . $featuredLimit . '&only-featured&offset=' . $featuredOffset . '&tag=' . $tag;
         else
             $featuredUrl = URL::to('/') . '/ideas/feeds/index.php?count=' . $featuredLimit . '&only-featured&offset=' . $featuredOffset . '&tag=' . $tag;
 
@@ -198,6 +203,7 @@ class PageController extends ApiController
         }
 
 //                print_r($featuredUrl); die();
+       // print_r($return); die();
 
 
         curl_setopt($ch, CURLOPT_URL, $featuredUrl);
@@ -206,13 +212,15 @@ class PageController extends ApiController
 
         $return['featured'] = json_decode($json);
 
+
+
         return $return;
     }
 
     public function getRelatedStories($currentStoryID, $limit, $tags)
     {
         if (env('FEED_PROD') == true)
-            $url = 'http://ideaing.com/ideas/feeds/index.php?count=' . $limit;
+            $url = 'https://ideaing.com/ideas/feeds/index.php?count=' . $limit;
         else
             $url = URL::to('/') . '/ideas/feeds/index.php?count=' . $limit;
 
@@ -226,7 +234,9 @@ class PageController extends ApiController
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $url);
         curl_setopt($ch, CURLOPT_HEADER, 0);
+        curl_setopt($ch, CURLOPT_VERBOSE, true);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
         curl_setopt($ch, CURLOPT_ENCODING, "");
         $json = curl_exec($ch);
 
@@ -476,10 +486,12 @@ class PageController extends ApiController
 
 	        $ch = curl_init();
 	        curl_setopt($ch, CURLOPT_URL, $url);
-	        curl_setopt($ch, CURLOPT_HEADER, 0);
-	        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-	        curl_setopt($ch, CURLOPT_ENCODING, "");
-	        $json = curl_exec($ch);
+            curl_setopt($ch, CURLOPT_HEADER, 0);
+            curl_setopt($ch, CURLOPT_VERBOSE, true);
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+            curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+            curl_setopt($ch, CURLOPT_ENCODING, "");
+	        $json = curl_exec($ch); 
 
 	        $posts = json_decode($json);
 
