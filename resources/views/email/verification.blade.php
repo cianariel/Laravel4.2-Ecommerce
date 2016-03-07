@@ -3,7 +3,7 @@
    <head>
       <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-      <title>Simples-Minimalistic Responsive Template</title>
+      <title>Ideaing - Email Verification</title>
       <style type="text/css">
          /* Client-specific Styles */
          #outlook a {padding:0;} /* Force Outlook to provide a "view in browser" menu link. */
@@ -73,6 +73,16 @@
         color: #5C7CBD;
         text-align: center;
     }
+    a.insta,a.gplus,a.pint{
+        display: inline-block;
+        height: 35px;
+        font-size: 1rem;
+        border-radius: 30px;
+        padding: 0 10px 0 0 !important;
+        color: #5C7CBD;
+        text-align: center;
+    }
+
     a.fb i.m-icon {
       color: white;
       background: #5C7CBD;
@@ -397,8 +407,10 @@ a.likes {
                                                          <td width="290" height="160" align="center" class="devicewidth">
                                                             <a class="fb" href="https://www.facebook.com/ideaingsmarterliving"><img src="http://ideaing.com/assets/images/email/fb.png"/></a>
                                                             <a class="twi" href="https://twitter.com/ideaing/"><img src="http://ideaing.com/assets/images/email/twitter.jpg"/></a>
+                                                            <a class="insta" href="https://www.instagram.com/ideaing_com/"><img src="http://ideaing.com/assets/images/email/insta.png"/></a>
+                                                            <a class="gplus" href="http://google.com/+Ideaingsmarterliving"><img src="http://ideaing.com/assets/images/email/gplus.gif"/></a>
+                                                            <a class="pint" href="https://www.pinterest.com/ideaing_com"><img src="http://ideaing.com/assets/images/email/pint.png"/></a>
                                                             <a class="likes" href="#"><img src="http://ideaing.com/assets/images/email/likes.png"/></a>
-                                                            <a class="discuss" href="#"><img src="http://ideaing.com/assets/images/email/discuss.png"/></a>
                                                          </td>
                                                       </tr>
                                                    </tbody>

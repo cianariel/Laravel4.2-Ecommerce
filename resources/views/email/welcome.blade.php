@@ -410,9 +410,6 @@ a.likes {
             <a class="insta" href="https://www.instagram.com/ideaing_com/"><img src="http://ideaing.com/assets/images/email/insta.png"/></a>
             <a class="gplus" href="http://google.com/+Ideaingsmarterliving"><img src="http://ideaing.com/assets/images/email/gplus.gif"/></a>
             <a class="pint" href="https://www.pinterest.com/ideaing_com"><img src="http://ideaing.com/assets/images/email/pint.png"/></a>
-            <a class="likes" href="#"><img src="http://ideaing.com/assets/images/email/likes.png"/></a>
-            <a class="discuss" href="#"><img src="http://ideaing.com/assets/images/email/discuss.png"/></a>
-
         </td>
     </tr>
     
