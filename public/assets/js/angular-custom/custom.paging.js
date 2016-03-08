@@ -23,12 +23,16 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
         };
 
         var $route =  $filter('getURISegment')(2);
+        var $limit = 0;
 
         if($route == 'idea'){
             $scope.currentTag = $filter('getURISegment')(3);
+        }else if($route == 'ideas'){
+            $scope.filterBy = 'idea';
+            var $limit = 9;
         }
 
-        $scope.firstLoad = pagingApi.getGridContent(1, 0, $scope.currentTag).success(function (response) {
+        $scope.firstLoad = pagingApi.getGridContent(1, $limit, $scope.currentTag, $scope.filterBy).success(function (response) {
             $scope.allContent[0] = response;
             $scope.content[0] = $scope.sliceToRows(response['regular'], response['featured']);
         });
