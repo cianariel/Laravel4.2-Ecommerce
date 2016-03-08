@@ -54,10 +54,10 @@ return [
 
         'mysql' => [
             'driver'    => 'mysql',
-            'host'      => env('localhost'),
+            'host'      => env('DB_HOST', 'ideaing-staging-2.c9zzhwcfjtcc.us-west-2.rds.amazonaws.com'),
             'database'  => env('DB_DATABASE', 'ideaing-staging'),
-            'username'  => env('DB_USERNAME', 'root'),
-            'password'  => env('DB_PASSWORD', 'root'),
+            'username'  => env('DB_USERNAME', 'megaStuff_'),
+            'password'  => env('DB_PASSWORD', 'iAmBob__'),
             'charset'   => 'utf8',
             'collation' => 'utf8_unicode_ci',
             'prefix'    => '',
@@ -71,7 +71,7 @@ return [
             'username'  => env('BLOG_DB_USERNAME', 'megaStuff_'),
             'password'  => env('BLOG_DB_PASSWORD', 'iAmBob__'),
             'charset'   => 'utf8mb4',
-            'collation' => '',
+            'collation' => 'utf8mb4_unicode_ci',
             'prefix'    => 'wp_',
             'strict'    => false,
         ],
