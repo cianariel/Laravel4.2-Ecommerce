@@ -86,6 +86,11 @@
             </div>
         </section>
 
+        <?php } else{ ?>
+        <section>
+<!--        <a class="pull-right signin active" data-toggle="modal" data-target="#myModal" href="/login"><i class="m-icon m-icon--user"></i> Log in</a>-->
+            <a class="signup-to-comment" href="#" data-toggle="modal" data-target="#myModal" href="/login">Sign Up to Comment</a>
+        </section>
         <?php } ?>
     </div>
 </section>
