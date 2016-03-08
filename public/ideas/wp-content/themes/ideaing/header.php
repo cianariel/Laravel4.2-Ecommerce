@@ -8,6 +8,6 @@
 
 
 	</head>
-	<body <?php body_class(); ?>>
+	<body  ng-app="rootApp" <?php body_class(); ?>>
 
     <?php loadLaravelView('header'); ?>
