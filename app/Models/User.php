@@ -16,8 +16,9 @@ use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
 use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
 use Mockery\CountValidator\Exception;
 use Zizaco\Entrust\Traits\EntrustUserTrait;
+use Fenos\Notifynder\Notifable;
 
-use CustomAppException;
+//use CustomAppException;
 
 
 class User extends Model implements AuthenticatableContract,
@@ -25,7 +26,7 @@ class User extends Model implements AuthenticatableContract,
                                     CanResetPasswordContract
 {
 
-    use Authenticatable, Authorizable, CanResetPassword,
+    use Notifable,Authenticatable, Authorizable, CanResetPassword,
         EntrustUserTrait {
         EntrustUserTrait::can insteadof Authorizable;
     }
@@ -305,10 +306,25 @@ class User extends Model implements AuthenticatableContract,
         }
     }
 
-    public function throwExc()
+    public function userNotification(){
+        $user = User::find(34);
+
+      //  $user
+
+            /*
+$user->getNotifications($limit = null, $paginate = null, $order = 'desc');
+$user->getNotificationsNotRead($limit = null, $paginate = null, $order = 'desc');
+$user->getLastNotification();
+$user->countNotificationsNotRead($category = null);
+$user->readAllNotifications();
+             * */
+
+    }
+
+   /* public function throwExc()
     {
         throw new CustomAppException("hi");
-    }
+    }*/
 
 
 }
