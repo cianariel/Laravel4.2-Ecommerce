@@ -448,34 +448,34 @@ class PageController extends ApiController
             $sitemap->add(URL::to('/'),  date('c', strtotime('today')), '1.0', 'daily');
 
             // INFO PAGES
-		    $sitemap->add( URL::to('/contactus'),  date('c', strtotime('1 February 2016')), '0.3', 'monthly');
-		    $sitemap->add( URL::to('/aboutus'),  date('c', strtotime('1 February 2016')), '0.3', 'monthly');
-		    $sitemap->add( URL::to('/privacy-policy'),  date('c', strtotime('1 February 2016')), '0.3', 'monthly');
-		    $sitemap->add( URL::to('/terms-of-use'),  date('c', strtotime('1 February 2016')), '0.3', 'monthly');
+		    $sitemap->add( URL::to('/contactus'),  date('c', strtotime('1 February 2016')), '0.3', 'yearly');
+		    $sitemap->add( URL::to('/aboutus'),  date('c', strtotime('1 February 2016')), '0.3', 'yearly');
+		    $sitemap->add( URL::to('/privacy-policy'),  date('c', strtotime('1 February 2016')), '0.3', 'yearly');
+		    $sitemap->add( URL::to('/terms-of-use'),  date('c', strtotime('1 February 2016')), '0.3', 'yearly');
             $sitemap->add(URL::to('/shop'),  date('c', strtotime('today')), '1.0', 'daily');
 
 
             // SHOP
             $shopCategories = ProductCategory::buildCategoryTree(true);
             foreach($shopCategories as $grandparent => $parents){
-            	$sitemap->add(URL::to('/shop/' . $grandparent),  date('c', strtotime('today')), '1.0', 'daily');
+            	$sitemap->add(URL::to('/shop/' . $grandparent),  date('c', strtotime('today')), '0.5', 'daily');
             	foreach ($parents as $key => $parent) {
-            		$sitemap->add(URL::to('/shop/' . $grandparent . '/' . $parent['childCategory']->extra_info),  date('c', strtotime('today')), '1.0', 'daily');
+            		$sitemap->add(URL::to('/shop/' . $grandparent . '/' . $parent['childCategory']->extra_info),  date('c', strtotime('today')), '0.5', 'daily');
 
             		foreach($parent['grandchildCategories'] as $grandchild){
-            			$sitemap->add(URL::to('/shop/' . $grandparent . '/' . $parent['childCategory']->extra_info . '/' . $grandchild->extra_info),  date('c', strtotime('today')), '1.0', 'daily');
+            			$sitemap->add(URL::to('/shop/' . $grandparent . '/' . $parent['childCategory']->extra_info . '/' . $grandchild->extra_info),  date('c', strtotime('today')), '0.5', 'daily');
             		}
             	}
             }
  
             $rooms = Room::all();
             foreach($rooms as $room){
-            	$sitemap->add(URL::to('/idea/' . $room->room_permalink),  date('c', strtotime('today')), '1.0', 'monthly'); 
+            	$sitemap->add(URL::to('/idea/' . $room->room_permalink),  date('c', strtotime('today')), '0.5', 'weekly');
             }
 
             $products = Product::where('post_status', 'Active')->get();
             foreach($products as $product){
-            	$sitemap->add(URL::to('/product/' . $product->product_permalink),  date('c', strtotime($product->updated_at)), '1.0', 'monthly'); 
+            	$sitemap->add(URL::to('/product/' . $product->product_permalink),  date('c', strtotime($product->updated_at)), '0.5', 'yearly');
             }
 
             //CMS POSTS -- TODO -- if we wont use images in the sitemap, change into direct call to WP DB for better perf?
@@ -497,7 +497,7 @@ class PageController extends ApiController
 
 	        //$posts = WpPost::where('post_status', 'publish')->get();
 	        foreach($posts as $post){
-	            	$sitemap->add($post->url,  date('c', strtotime($post->updated_at)), '1.0', 'monthly'); 
+	            	$sitemap->add($post->url,  date('c', strtotime($post->updated_at)), '0.5', 'yearly');
 	         }
 
     	}
