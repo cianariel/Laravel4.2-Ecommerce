@@ -4544,6 +4544,21 @@ body.single{
   time{
     font-size: .9rem;
   }
+  
+  .signup-to-comment{
+      display: block;
+      color: #3d8901;
+      display: block;
+      padding: 9px;
+      font-weight: bold;
+      border: 1px solid #3d8901;
+      text-align: center;
+      border-radius: 3px;
+      &:hover{
+          color: #fff;
+          background-color: #3d8901;
+      }
+  }
 
 }
 
@@ -8424,6 +8439,34 @@ body.contactus-page{
         padding: 4px;
     }
     
+}
+body.error-page{
+    #hero{
+        .hero-background{
+            background-image: url("/assets/images/404-error.jpg");
+            filter: none;
+        }
+    }
+    .error-banner-holder{
+        position: relative;
+        .register-btn{
+            position: absolute;
+            display: block;
+            left: 32.85%;
+            top: 73.8%;
+            width: 13.1%;
+            height: 5%;
+/*            border: 1px solid;*/
+        }
+        .facebook-btn{
+            position: absolute;
+            display: block;
+            left: 32.85%;
+            top: 73.8%;
+            width: 13.1%;
+            height: 5%;
+        }
+    }
 }
 @media (max-width: 620px){
     .reviews-medium-container .average-score .caption{
