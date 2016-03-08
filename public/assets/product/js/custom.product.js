@@ -7,7 +7,7 @@ var productApp = angular.module('productApp', ['ui.bootstrap', 'autocomplete','n
 // Setting values of Angular Text Editor
 productApp.config(['$provide', function($provide){
     // this demonstrates how to register a new tool and add it to the default toolbar
-    $provide.decorator('taOptions', ['$delegate', function(taOptions){
+    $provide.decorator('taOptions', ['taRegisterTool', '$delegate', function(taRegisterTool, taOptions){
         // $delegate is the taOptions we are decorating
         // here we override the default toolbars and classes specified in taOptions.
         taOptions.forceTextAngularSanitize = true; // set false to allow the textAngular-sanitize provider to be replaced
@@ -20,8 +20,16 @@ productApp.config(['$provide', function($provide){
             'insertImage', 'insertLink']
         ];*/
 
+        taRegisterTool('insertCustomImage', {
+            iconclass: "fa fa-picture-o",
+            action: function(){
+                this.$editor().$parent.insertCustomImagePopup();
+                
+            }
+        });
+
         taOptions.toolbar = [
-            ['bold', 'italics', 'ul', 'ol','insertImage', 'insertLink']
+            ['bold', 'insertCustomImage']
         ];
 
         taOptions.classes = {
@@ -66,6 +74,9 @@ productApp.controller('productController', ['$scope', '$http', '$window', '$inte
             $timeout(function(){
                 angular.element('div[contenteditable=true]').trigger('focus');
             })
+        }
+        $scope.insertCustomImagePopup = function(){
+            alert("Please add the code for photo uploading here");
         }
         $scope.textAreaSetup = function($element){
           $element.attr('focus-me', 'focus_editor');
