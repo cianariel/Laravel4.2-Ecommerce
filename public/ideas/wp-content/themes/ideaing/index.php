@@ -12,10 +12,9 @@
         <div class="loader loader-abs" cg-busy="firstLoad"></div>
         <div class="loader loader-fixed" cg-busy="nextLoad"></div>
             <?php include('/var/www/ideaing/resources/views/grid/grid.blade.php') ?>
-        <div class="container">
-            <a ng-click="loadMore()" class="btn btn-success bottom-load-more col-xs-12">Load More</a>
-        </div>
-
+    </div>
+    <div class="container">
+        <a ng-click="loadMore()" class="btn btn-success bottom-load-more col-xs-12">Load More</a>
     </div>
 </div>
 
