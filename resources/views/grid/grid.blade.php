@@ -1,9 +1,5 @@
 <?php // !!!! for use on WP PLEASE USER PURE PHP HERE
-    if(function_exists('is_single')){
         $ideaView = 'ideaWP';
-    }else{
-        $ideaView = 'idea';
-    }
 ?>
 <div ng-repeat="batch in content" class="container main-content col-xs-12">
     <div class="grid-box-3">
