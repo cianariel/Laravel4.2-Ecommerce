@@ -1,7 +1,7 @@
 <div class="img-holder">
-    <img ng-if="item.is_featured == true || item.feed_image == undefined" src="@{{item.image}}">
+    <img ng-if="item.is_featured == true || item.feed_image == undefined" src="{{item.image}}">
 
-    <img ng-if="item.feed_image !== undefined && item.is_featured != true" alt="@{{item.feed_image.alt}}" title="{{item.feed_image.alt}}" src="{{item.feed_image.url}}">
+    <img ng-if="item.feed_image !== undefined && item.is_featured != true" alt="{{item.feed_image.alt}}" title="{{item.feed_image.alt}}" src="{{item.feed_image.url}}">
 </div>
 
 <span class="box-item__time">{{item.updated_at}}</span>
