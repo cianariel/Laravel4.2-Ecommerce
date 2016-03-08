@@ -187,7 +187,7 @@
                                             <td height="" align="center" width="218">
                                                 <div class="imgpop">
                                                     <a href="#"><img id="kgva7ywpd3"
-                                                                     src="http://ideaing.com/assets/images/email/common/logo-email.png"
+                                                                     src="https://ideaing.com/assets/images/email/common/logo-email.png"
                                                                      st-image="logo" alt=""
                                                                      style="display:block; border:none; outline:none; text-decoration:none;"
                                                                      height="" border="0" width="218"></a>
@@ -326,7 +326,7 @@
                                                         <td class="devicewidth" height="" align="center" width="">
                                                             <div class="imgpop">
                                                                 <img id="diasbyt3mu"
-                                                                     src="http://ideaing.com/assets/images/email/common/graphic-800x279.png"
+                                                                     src="https://ideaing.com/assets/images/email/common/graphic-800x279.png"
                                                                      alt="" st-image="ipad"
                                                                      style="display:block; border:none; outline:none; text-decoration:none;"
                                                                      class="colimg2" height="" border="0"
@@ -439,7 +439,7 @@
                                     st-content="postfooter" align="center" valign="middle">
                                     <p style="text-align: center;">
                                         Click here to <a style="text-decoration: none; color: #0a8cce"
-                                                         href="http://ideaing.com/unsubscribe">Unsubscribe</a>
+                                                         href="https://ideaing.com/unsubscribe">Unsubscribe</a>
                                     </p>
                                     <p style="text-align: center;">
                                     </p>

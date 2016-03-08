@@ -39,7 +39,7 @@
          */
         public function index()
         {
-            return "hi";
+          //  return "hi";
             // dd(Config::get('Constant.val'));
             /*try
             {
