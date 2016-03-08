@@ -196,13 +196,11 @@
                     'CategoryName' => 'required | max: 50',
                     'ExtraInfo'    => 'required | max: 50',
                     'CategoryId'   => 'required | integer',
-                    'Icon'         => 'required'
                 ],
                 'values' => [
                     'CategoryName' => isset($inputData['CategoryName']) ? $inputData['CategoryName'] : null,
                     'ExtraInfo'    => isset($inputData['ExtraInfo']) ? $inputData['ExtraInfo'] : null,
                     'CategoryId'   => isset($inputData['CategoryId']) ? $inputData['CategoryId'] : null,
-                    'Icon'         => isset($inputData['Icon']) ? $inputData['Icon'] : null
                 ]
             ];
 
