@@ -113,6 +113,10 @@ $args = array(
 'showposts' => $postCount,
 'offset' => $offset,);
 
+if($catName = $_REQUEST['category-name']){
+    $args['category_name'] = $catName;
+}
+
 if($byTags = $_REQUEST['tag']){
     $args['tag'] = $byTags;
 }
