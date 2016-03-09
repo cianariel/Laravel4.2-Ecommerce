@@ -13,7 +13,7 @@
                     @foreach( $productInformation['CatTree'] as $key => $category )
                         <li class="box-link-ul ">
                             <a class="box-link @if($key==(count($productInformation['CatTree'])-1)) active @endif"
-                               href="/category/@if(isset($category['CategoryPermalink'])){{$category['CategoryPermalink']}}@endif"
+                               href="/shop/{{$category['parentPath'] ? $category['parentPath'] . '/'  : ''}}{{@$category['CategoryPermalink'] ?: ''}}"
                                @if($category == end($productInformation['CatTree']))class="current"
                                     @endif>
                                 <span class="box-link-active-line"></span>
