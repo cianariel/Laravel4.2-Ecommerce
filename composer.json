@@ -21,7 +21,8 @@
     "intervention/image": "^2.3",
     "torann/laravel-meta-tags": "^3.0",
     "barryvdh/laravel-cors": "^0.7.3",
-    "roumen/sitemap": "^2.6"
+    "roumen/sitemap": "^2.6",
+    "fenos/notifynder": "3.*"
 
   },
   "require-dev": {
