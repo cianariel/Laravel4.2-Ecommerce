@@ -6594,7 +6594,7 @@ body.product-details #top-nav a.shop {
       font-weight: bold;
       position: relative;*/ }
 
-body.product-details .article-content p {
+body.product-details .article-content {
   /*      line-height: 1;*/
   font-size: 15px;
   font-family: montserratlight; }
@@ -9201,7 +9201,7 @@ body.profilepage {
           top: 5px; }
     @media (max-width: 767px) {
       body.profilepage #hero .container {
-        padding-top: 20px; }
+        padding-top: 90px; }
         body.profilepage #hero .container > div {
           text-align: center; }
           body.profilepage #hero .container > div #btn-follow {
