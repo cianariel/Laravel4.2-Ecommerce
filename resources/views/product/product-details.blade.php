@@ -607,7 +607,6 @@
 
             @include('layouts.parts.comments-product')
 
-
             <!-- /article -->
 
 
