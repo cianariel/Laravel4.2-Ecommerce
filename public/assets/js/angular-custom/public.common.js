@@ -131,9 +131,17 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                 if($modal.closed) {
                     clearInterval(timer);
 
-                    setTimeout(function(){
-                        $scope.countSocialShares();
-                    }, 1000);
+                    var currentCounters =  $('.share-buttons a[data-service="' + $service + '"]').children('.share-count');
+                    currentCounters.each(function(){
+                        var that = $(this);
+                        var oldNumber = +(that.text());
+                        var newNumber = oldNumber + 1;
+                        that.text(newNumber);
+                    });
+
+                    //setTimeout(function(){
+                    //    $scope.countSocialShares();
+                    //}, 1000);
                     console.log('share counters updated')
                 }
             }, 1000);
