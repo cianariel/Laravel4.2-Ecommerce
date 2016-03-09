@@ -87,7 +87,7 @@ class PageController extends ApiController
         return $return;
     }
 
-    public function getGridContent($page = 1, $limit = 5, $tag = false, $type = false, $grid = true)
+    public function getGridContent($page = 1, $limit = 5, $tag = false, $type = false, $ideaCategory = false)
     {
 
         if ($tag && $tag !== 'undefined' && $tag != 'false' && $tag != '') {
@@ -115,7 +115,7 @@ class PageController extends ApiController
         $featuredLimit = 3;
         $featuredOffset = $featuredLimit * ($page - 1);
 
-        if ($type == 'product' || !$stories = self::getGridStories($storyLimit, $storyOffset, $featuredLimit, $featuredOffset, $tag)) {
+        if ($type == 'product' || !$stories = self::getGridStories($storyLimit, $storyOffset, $featuredLimit, $featuredOffset, $tag, $ideaCategory)) {
             $stories = [
                 'regular' => [],
                 'featured' => [],
@@ -168,7 +168,9 @@ class PageController extends ApiController
         return $return;
     }
 
-    public function getGridStories($limit, $offset, $featuredLimit, $featuredOffset, $tag)
+
+
+    public function getGridStories($limit, $offset, $featuredLimit, $featuredOffset, $tag = false, $category = false)
     {
 
         if (env('FEED_PROD') == true)
@@ -178,6 +180,10 @@ class PageController extends ApiController
 
         if ($tag && $tag != 'false') {
             $url .= '&tag=' . $tag;
+        }
+
+        if ($category && $category != 'false') {
+            $url .= '&category-name=' . $category;
         }
 
         $ch = curl_init();
