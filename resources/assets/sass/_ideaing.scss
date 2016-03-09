@@ -609,6 +609,7 @@ ul.share-buttons{
   &.stick{
     position: fixed;
     top: 120px;
+    z-index: 1;
   }
 
   li {
@@ -3158,7 +3159,7 @@ body.product-details{
 /*      line-height: 1;*/
       font-size: 15px;
       font-family: montserratlight;
-    }
+  }
 
 
 }
@@ -7346,7 +7347,7 @@ body.profilepage{
                         float: none;
                     }
                 }
-            } 
+            }
         }
     }
     #hero-nav{
