@@ -1,4 +1,24 @@
 @include('header')
+
+<?php
+$categories = get_categories();
+?>
+<nav class="mid-nav" >
+    <div class="container">
+        <ul class="wrap col-lg-6">
+            @foreach($categories as $cat)
+                @if($cat->category_parent == 0)
+                    <li class="box-link-ul">
+                        <a href=" {{$cat->slug}}" class="box-link">
+                            {{$cat->name}}
+                        </a>
+                    </li>
+                @endif
+            @endforeach
+        </ul>
+    </div>
+</nav>
+
 <section id="hero" class="landing-hero">
     <div class="hero-background" style="background-image: url('/assets/images/ideas-hero.jpg')"></div>
     <div class="color-overlay"></div>
