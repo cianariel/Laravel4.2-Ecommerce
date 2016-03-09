@@ -307,8 +307,8 @@ class User extends Model implements AuthenticatableContract,
     }
 
     public function userNotification(){
-        $user = User::find(34);
-
+        $user = User::find(41);
+//$user->
       //  $user
 
             /*

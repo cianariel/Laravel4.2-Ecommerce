@@ -50,7 +50,7 @@ return [
             'driver'   => 'sqlite',
             'database' => storage_path('database.sqlite'),
             'prefix'   => '',
-        ], 
+        ],
 
         'mysql' => [
             'driver'    => 'mysql',
