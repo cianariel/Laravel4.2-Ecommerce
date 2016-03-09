@@ -11,7 +11,7 @@
         @if(@$categoryTree[$grandParent])
             @foreach(@$categoryTree[$grandParent] as $child)
                 <li>
-                    <a ng-click="filterPlainContent('{{$child->extra_info}}', false)"  href="/shop/{{$masterCategory->extra_info}}/{{$child->extra_info}}" data-filterby="{{$child->extra_info}}">{{$child->category_name}}</a>
+                    <a ng-click="filterPlainContent('{{$child->extra_info}}', false)"  href="#" data-filterby="{{$child->extra_info}}">{{$child->category_name}}</a>
                 </li>
             @endforeach
         @endif
