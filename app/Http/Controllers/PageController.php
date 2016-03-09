@@ -11,7 +11,7 @@ use MetaTag;
 use App\Models\Product;
 use App\Models\ProductCategory;
 use App\Models\Tag;
-use App\Models\Room;
+use App\Models\Room; 
 use URL;
 use Input;
 use App\Models\Sharing;
@@ -426,7 +426,7 @@ class PageController extends ApiController
     {
         $input = Input::all();
 
-        $url = 'http://' . $input['url'];
+        $url = 'https://' . $input['url'];
 
         if (!strpos($url, 'ideaing')) { // TODO - make more strict check on Production
             return 'Stop trying to hack my app, thanks';
@@ -486,7 +486,7 @@ class PageController extends ApiController
 
             //CMS POSTS -- TODO -- if we wont use images in the sitemap, change into direct call to WP DB for better perf?
 	       if (env('FEED_PROD') == true)
-	            $url = 'http://ideaing.com//ideas/feeds/index.php?count=0';
+	            $url = 'https://ideaing.com//ideas/feeds/index.php?count=0';
 	        else
 	            $url = URL::to('/') . '/ideas/feeds/index.php?count=0';
 
