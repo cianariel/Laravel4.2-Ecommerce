@@ -135,7 +135,7 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                     clearInterval(timer);
 
                     setTimeout(function(){
-                        $scope.fakeUpdateCounts('pinterest');
+                        $scope.fakeUpdateCounts($service);
                     }, 2000);
                     //setTimeout(function(){
                     //    $scope.countSocialShares();
