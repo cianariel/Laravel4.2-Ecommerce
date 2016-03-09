@@ -31,7 +31,7 @@
                 </h1>
             </div>
             <div class="col-sm-8 hidden-xs">
-                <ul class="share-buttons  pull-right">
+                <ul class="share-buttons pull-right" ng-app="publicApp" ng-controller="publicController">
                     <?php loadLaravelView('share-buttons'); ?>
                 </ul>
             </div>
@@ -114,7 +114,7 @@
         <nav id="hero-nav" class="col-sm-12">
             <div class="container full-620  fixed-sm">
 
-                <ul class="share-buttons hidden-xs col-lg-7 col-md-8 pull-right">
+                <ul class="share-buttons hidden-xs col-lg-7 col-md-8 pull-right"  ng-app="publicApp" ng-controller="publicController">
                     <?php loadLaravelView('share-buttons'); ?>
                     <li><a class="comment" data-scrollto=".comments" href="#"><i class="m-icon m-icon--comments-id"></i><b>189</b></a></li>
                 </ul>
@@ -408,130 +408,10 @@
                         endwhile;
                     }
                     ?>
-<!--                </section>-->
-
-<!--                <div class="col-md-3 col-sm-4 col-xs-12 grid-box">-->
-<!--                    <div class="wrap">-->
-<!--                        <img class="img-responsive" src="/assets/images/dummies/box-image-dummy.png">-->
-<!--                        <div class="color-overlay">-->
-<!--                            <h4>Mr Coffee smart <div class="get solid">Get it</div></h4>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--                @for($i=0; $i<3; $i++)-->
-<!--                <div class="box-item product-box">-->
-<!--                    <img class="img-responsive" src="/assets/images/dummies/box-image-dummy.png">-->
-<!--                    <span class="box-item__time ng-binding">5 hours ago</span>-->
-<!--                    <div class="box-item__overlay"></div>-->
-<!--                    <ul class="social-stats">-->
-<!--                        <li class="social-stats__item">-->
-<!--                            <a href="#">-->
-<!--                                <i class="m-icon m-icon--heart"></i>-->
-<!--                                <span class="social-stats__text">52</span>-->
-<!--                            </a>-->
-<!--                        </li>-->
-<!--                    </ul>-->
-<!--                    <div class="round-tag round-tag--product">-->
-<!--                        <i class="m-icon m-icon--item"></i>-->
-<!--                        <span class="round-tag__label">Product</span>-->
-<!--                    </div>-->
-<!--                    <div class="box-item__label-prod">-->
-<!--                        <a href="#" class="box-item__label box-item__label--clear ng-binding">Mr Coffee smart</a>-->
-<!--                        <div class="clearfix"></div>-->
-<!--                        <div class="merchant-widget">-->
-<!--                            <span class="merchant-widget__price ng-binding">$259.95</span>-->
-<!--                            <span>from</span>-->
-<!--                            <img class="merchant-widget__store" src="/assets/images/dummies/amazon-black.png">-->
-<!--                        </div>-->
-<!--                        <div class="clearfix"></div>-->
-<!--                        <a target="_blank" href="#" class="box-item__get-it">Get it</a>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--                @endfor-->
-                
             </div>
-
-
         </div>
     </section>
 
-<!--<aside class="share-bar sticks-on-scroll mobile">-->
-<!--    <ul>-->
-<!--        <li class="fb"><a href="#">55</a></li>-->
-<!--        <li class="twi"><a href="#">120</a></li>-->
-<!--        <li class="gp"><a href="#">521</a></li>-->
-<!--        <li class="email"><a href="#">Email</a></li>-->
-<!--        <li class="heart"><a href="#">12.5</a></li>-->
-<!--        <li class="comment"><a href="#">322</a></li>-->
-<!--    </ul>-->
-<!--</aside>-->
-
 
 <?php get_footer(); ?>
-<script>
-    // TEMP - until the Angular vs. WP issue is resolved
-    $('.share-buttons a').click(function (e) {
-        e.preventDefault();
-        var baseUrl = 'http://' + window.location.host + window.location.pathname;
-        var shareUrl = false;
-
-        var $service = $(this).data('service');
-
-        var $pitnerestShare = function(){
-            var e=document.createElement('script');
-            e.setAttribute('type','text/javascript');
-            e.setAttribute('charset','UTF-8');
-            e.setAttribute('src','http://assets.pinterest.com/js/pinmarklet.js?r='+Math.random()*99999999);
-            document.body.appendChild(e);
-        }
-
-        switch($service){
-            case 'facebook':
-                shareUrl = 'https://www.facebook.com/sharer/sharer.php?u=' + baseUrl;
-                break;
-            case 'twitter':
-                shareUrl = 'https://twitter.com/share?url=http://' + baseUrl + '&counturl=' + baseUrl + '&text=@Ideaing';
-                break;
-            case 'googleplus':
-                shareUrl = 'https://plus.google.com/share?url=http://' + baseUrl;
-                break;
-            case 'pinterest':
-                $pitnerestShare();
-                return true
-        }
-
-        if(!shareUrl){
-            return false;
-        }
-
-        var $modal = window.open(shareUrl, 'C-Sharpcorner', 'width=500,height=400');
-
-        // TODO -- fire counter updates for shares, only on pages where they are used (CMS)
-
-        var timer = setInterval(function() {
-            if($modal.closed) {
-                clearInterval(timer);
-
-                var thisUrl = window.location.host + window.location.pathname;
-
-                setTimeout(function() {
-                    $.ajax({
-                        url: '/api/social/get-social-counts/',
-                        data: {'url': thisUrl},
-                        success: (function (response) {
-                            $('.share-count.all').html(response.all);
-                            $('.share-count.twi').html(response.twitter);
-                            $('.share-count.fb').html(response.facebook);
-                            $('.share-count.gp').html(response.gplus);
-                            $('.share-count.pint').html(response.pinterest);
-                            $('.share-count.inst').html(response.instagram);
-                        })
-                    });
-                    console.log('share counters updated')
-                }, 1000);
-            }
-        }, 1000);
-
-    });
-</script>
 <script type="text/javascript" src="/assets/product/js/custom.product.js"></script>
