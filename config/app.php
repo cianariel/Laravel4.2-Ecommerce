@@ -159,7 +159,7 @@
             'Intervention\Image\ImageServiceProvider',
             'Barryvdh\Cors\ServiceProvider',
             'Roumen\Sitemap\SitemapServiceProvider',
-            'Fenos\Notifynder\NotifynderServiceProvider'
+            Fenos\Notifynder\NotifynderServiceProvider::class
 
         ], 
 
@@ -229,7 +229,7 @@
             'ViewHelper'         => 'App\Core\ViewHelper',
             'Image'              => 'Intervention\Image\Facades\Image',
             'MetaTag'            => Torann\LaravelMetaTags\Facades\MetaTag::class,
-            'Notifynder'         => 'Fenos\Notifynder\Facades\Notifynder',
+            'Notifynder'         => Fenos\Notifynder\Facades\Notifynder::class
 
 
         ],
