@@ -65,8 +65,8 @@
             <div class="col-xs-7">
             <ul ng-app="publicApp" ng-controller="publicController" class="share-buttons short hidden-xs col-lg-6 col-sm-8 pull-right">
                 <li class="all-shares"><b class="share-count all"></b> <br/>all shares</li>
-                <li><a class="fb" href="#" ng-click="openSharingModal('facebook')"><i class="m-icon m-icon--facebook-id"></i> <b class="fb share-count"></b></a></li>
-                <li><a class="twi" href="#" ng-click="openSharingModal('twitter')"><i class="m-icon  m-icon--twitter-id"></i> <b class="twi share-count"></b></a></li>
+                <li><a data-service="facebook" class="fb" href="#" ng-click="openSharingModal('facebook')"><i class="m-icon m-icon--facebook-id"></i> <b class="fb share-count"></b></a></li>
+                <li><a data-service="twitter" class="twi" href="#" ng-click="openSharingModal('twitter')"><i class="m-icon  m-icon--twitter-id"></i> <b class="twi share-count"></b></a></li>
             </ul>
 
             <div class="icon-wrap pull-right">
