@@ -134,7 +134,9 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                 if($modal.closed) {
                     clearInterval(timer);
 
-                    $scope.fakeUpdateCounts($service);
+                    setTimeout(function(){
+                        $scope.fakeUpdateCounts('pinterest');
+                    }, 2000);
                     //setTimeout(function(){
                     //    $scope.countSocialShares();
                     //}, 1000);
