@@ -2,7 +2,7 @@
 
     <ul class="extra-nav hidden-620">
 {{--        @foreach($categoryTree as $name => $unused)--}}
-            <li><a class="{{$masterCategory->extra_info}}-link" href="/shop/{{@$parentCategory->extra_info ? $parentCategory . '/' : ''}}{{$currentCategory->extra_info}}">{{$masterCategory->category_name}}</a></li>
+            <li><a class="{{$masterCategory->extra_info}}-link" href="/shop/{{@$parentCategory->extra_info ? $parentCategory->extra_info . '/' : ''}}{{$currentCategory->extra_info}}">{{$masterCategory->category_name}}</a></li>
         {{--@endforeach--}}
     </ul>
 
