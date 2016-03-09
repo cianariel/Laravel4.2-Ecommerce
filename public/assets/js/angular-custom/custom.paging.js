@@ -14,6 +14,7 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
         $scope.currentPage = 1;
         $scope.contentBlock = angular.element( document.querySelector('.main-content') );
         $scope.filterLoad = [];
+        $scope.ideaCategory = false;
         //$scope.globalOffset = 0;
 
         $scope.renderHTML = function(html_code)
@@ -29,10 +30,15 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
             $scope.currentTag = $filter('getURISegment')(3);
         }else if($route == 'ideas'){
             $scope.filterBy = 'idea';
+            if($filter('getURISegment')(3) == 'category'){
+                $scope.ideaCategory = $filter('getURISegment')(4);
+            }else{
+                $scope.ideaCategory = $filter('getURISegment')(3);
+            }
             var $limit = 9;
         }
 
-        $scope.firstLoad = pagingApi.getGridContent(1, $limit, $scope.currentTag, $scope.filterBy).success(function (response) {
+        $scope.firstLoad = pagingApi.getGridContent(1, $limit, $scope.currentTag, $scope.filterBy,  $scope.ideaCategory).success(function (response) {
             $scope.allContent[0] = response;
             $scope.content[0] = $scope.sliceToRows(response['regular'], response['featured']);
         });
@@ -48,7 +54,7 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
                 var $limit = 9;
             }
 
-            $scope.nextLoad =  pagingApi.getGridContent($scope.currentPage, $limit, $scope.currentTag, $scope.filterBy).success(function (response) {
+            $scope.nextLoad =  pagingApi.getGridContent($scope.currentPage, $limit, $scope.currentTag, $scope.filterBy, $scope.ideaCategory).success(function (response) {
                 $scope.newStuff[0] = $scope.sliceToRows(response['regular'], response['featured']);
                 $scope.content = $scope.content.concat($scope.newStuff);
 
@@ -488,10 +494,10 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
             });
         }
 
-        pagingApi.getGridContent = function(page, limit, tag, type) {
+        pagingApi.getGridContent = function(page, limit, tag, type, ideaCategory) {
             return $http({
                 method: 'GET',
-                url: '/api/paging/get-grid-content/' + page + '/' + limit + '/' + tag + '/' + type,
+                url: '/api/paging/get-grid-content/' + page + '/' + limit + '/' + tag + '/' + type + '/' + ideaCategory,
             });
         }
 

@@ -21,7 +21,7 @@
                                         </a>
                                     </li>
                                         <li>
-                                            <a class="ideas" href="/">
+                                            <a class="ideas" href="/ideas">
                                             <i class="hidden-xs m-icon m-icon--bulb"></i>
                                                 <span class="m-icon-text">Ideas</span>
                                                 <span class="box-link-active-line"></span>
@@ -157,7 +157,7 @@
 
         <div id="mobile-top-menu" class="mobile-top-menu" >
             <ul>
-                <li><a class="ideas" href="/"><i class="m-icon m-icon--bulb"></i>&nbsp; IDEAS</a></li>
+                <li><a class="ideas" href="/ideas"><i class="m-icon m-icon--bulb"></i>&nbsp; IDEAS</a></li>
                 <li><a class="shop" href="/shop"><i class="m-icon m-icon--item"></i>&nbsp; SHOP</a></li>
                 <li><a class="disc" href="#"><i class="m-icon m-icon--discuss-active"></i>&nbsp; DISCUSS</a></li>
             </ul>
