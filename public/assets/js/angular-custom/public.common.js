@@ -533,7 +533,14 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                 /* if(data.status_code == 200)
                  window.location = $scope.logingRedirectLocation;
                  */
+                var from = $location.search().from;
+
+                if(from === 'cms'){
+                    $window.location.href = '/ideas/wp-admin';
+                }
             });
+
+
         };
 
         $scope.passwordResetRequest = function () {

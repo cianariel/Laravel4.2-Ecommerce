@@ -21,12 +21,12 @@
                 $user_id = $user->data->ID;
                 wp_set_current_user($user_id, $creds['user_login']);
                 wp_set_auth_cookie($user_id);
-                $response['success'] = 'Logged in!';
+                $response['success'] = 'Logged in';
             }
         }
     }elseif($_REQUEST['call'] == 'logout'){
         wp_logout();
-        $response['success'] = 'Logged out!';
+        $response['success'] = 'Logged out';
     }
 
     echo json_encode($response);
