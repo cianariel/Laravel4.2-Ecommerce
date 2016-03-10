@@ -312,23 +312,23 @@ class User extends Model implements AuthenticatableContract,
     {
         $PostTime = $info['PostTime'];
 
-        Notifynder::loop($info['Users'], function(NotifynderBuilder $builder,$user) use($info,$PostTime){
+        if (count($info['Users']) != 0) {
+            Notifynder::loop($info['Users'], function (NotifynderBuilder $builder, $user) use ($info, $PostTime) {
 
-            $builder->category($info['Category'])
-                    ->from($info['SenderId'])
-                    ->to($user)
-                    ->url($info['Permalink'])
-                    ->extra(compact('PostTime'));
+                $builder->category($info['Category'])
+                        ->from($info['SenderId'])
+                        ->to($user)
+                        ->url($info['Permalink'])
+                        ->extra(compact('PostTime'));
 
-        })->send();
+            })->send();
 
+        }
     }
 
     public function getNotification($userId)
     {
         $user = User::find($userId);
-
-
 
 
     }
@@ -338,15 +338,15 @@ class User extends Model implements AuthenticatableContract,
     {
         $user = User::find(41);
 
-       // $flag = true;
+        // $flag = true;
 
-        if($flag){
+        if ($flag) {
             Notifynder::category("user.following")
                       ->from(41)
                       ->to(41)
                       ->url('/notice/do/5')
                       ->send();
-        }else{
+        } else {
             Notifynder::category("hello")
                       ->from(41)
                       ->to(41)
@@ -355,24 +355,23 @@ class User extends Model implements AuthenticatableContract,
         }
 
 
-       // dd($user->getNotificationsNotRead());
-        dd($user->getNotifications());
+        // dd($user->getNotificationsNotRead());
+        dd($user->getNotifications($limit = 3, $paginate = true));
 
 
-       // dd($user->getNotificationsNotRead(),$user->readAllNotifications(),$user->getNotificationsNotRead());
+        // dd($user->getNotificationsNotRead(),$user->readAllNotifications(),$user->getNotificationsNotRead());
         // dd();
 
 
+        //  $user
 
-      //  $user
-
-            /*
+        /*
 $user->getNotifications($limit = null, $paginate = null, $order = 'desc');
 $user->getNotificationsNotRead($limit = null, $paginate = null, $order = 'desc');
 $user->getLastNotification();
 $user->countNotificationsNotRead($category = null);
 $user->readAllNotifications();
-             * */
+         * */
 
     }
 

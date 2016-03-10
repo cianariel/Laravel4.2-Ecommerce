@@ -26,7 +26,7 @@ class CommentController extends ApiController
             if ($commenter['UserId'] != $data['SenderId'])
                 array_push($info['Users'], $commenter['UserId']);
         }
-
+        $info['Users'] = array_unique($info['Users'] );
         $info['Category'] = 'comment';//$data['Category'];
         $info['SenderId'] = $data['SenderId'];
         $info['Permalink'] = 'product/' . $data['Permalink'] . '/#comment';
