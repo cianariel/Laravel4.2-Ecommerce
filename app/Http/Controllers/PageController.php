@@ -11,7 +11,7 @@ use MetaTag;
 use App\Models\Product;
 use App\Models\ProductCategory;
 use App\Models\Tag;
-use App\Models\Room;
+use App\Models\Room; 
 use URL;
 use Input;
 use App\Models\Sharing;
@@ -87,7 +87,7 @@ class PageController extends ApiController
         return $return;
     }
 
-    public function getGridContent($page = 1, $limit = 5, $tag = false, $type = false, $grid = true)
+    public function getGridContent($page = 1, $limit = 5, $tag = false, $type = false, $ideaCategory = false)
     {
 
         if ($tag && $tag !== 'undefined' && $tag != 'false' && $tag != '') {
@@ -115,7 +115,7 @@ class PageController extends ApiController
         $featuredLimit = 3;
         $featuredOffset = $featuredLimit * ($page - 1);
 
-        if ($type == 'product' || !$stories = self::getGridStories($storyLimit, $storyOffset, $featuredLimit, $featuredOffset, $tag)) {
+        if ($type == 'product' || !$stories = self::getGridStories($storyLimit, $storyOffset, $featuredLimit, $featuredOffset, $tag, $ideaCategory)) {
             $stories = [
                 'regular' => [],
                 'featured' => [],
@@ -168,7 +168,9 @@ class PageController extends ApiController
         return $return;
     }
 
-    public function getGridStories($limit, $offset, $featuredLimit, $featuredOffset, $tag)
+
+
+    public function getGridStories($limit, $offset, $featuredLimit, $featuredOffset, $tag = false, $category = false)
     {
 
         if (env('FEED_PROD') == true)
@@ -178,6 +180,10 @@ class PageController extends ApiController
 
         if ($tag && $tag != 'false') {
             $url .= '&tag=' . $tag;
+        }
+
+        if ($category && $category != 'false') {
+            $url .= '&category-name=' . $category;
         }
 
         $ch = curl_init();
@@ -420,7 +426,7 @@ class PageController extends ApiController
     {
         $input = Input::all();
 
-        $url = 'http://' . $input['url'];
+        $url = 'https://' . $input['url'];
 
         if (!strpos($url, 'ideaing')) { // TODO - make more strict check on Production
             return 'Stop trying to hack my app, thanks';
@@ -480,7 +486,7 @@ class PageController extends ApiController
 
             //CMS POSTS -- TODO -- if we wont use images in the sitemap, change into direct call to WP DB for better perf?
 	       if (env('FEED_PROD') == true)
-	            $url = 'http://ideaing.com//ideas/feeds/index.php?count=0';
+	            $url = 'https://ideaing.com//ideas/feeds/index.php?count=0';
 	        else
 	            $url = URL::to('/') . '/ideas/feeds/index.php?count=0';
 

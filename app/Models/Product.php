@@ -410,6 +410,18 @@
                 $val[ $key ]['CategoryId'] = $value->id;
                 $val[ $key ]['CategoryPermalink'] = $value->extra_info;
                 $val[ $key ]['CategoryName'] = $value->category_name;
+                $val[ $key ]['parentPath'] = false;
+
+                if(isset($val[$key - 1])){
+                    $parentsPath = $val[$key - 1]['CategoryPermalink'];
+
+                    if(isset($val[$key - 2])){
+                        $parentsPath = $val[$key - 2]['CategoryPermalink'] . '/' . $parentsPath;
+                    }
+
+                    $val[ $key ]['parentPath'] = $parentsPath;
+                }
+
             }
             }catch(\Exception $ex)
             {

@@ -90,16 +90,19 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
         };
 
         $scope.openSharingModal = function ($service) {
-            console.log('ii!')
-            var baseUrl = 'http://' + window.location.host + window.location.pathname;
+            var baseUrl = 'https://' + window.location.host + window.location.pathname;
             var shareUrl = false;
 
             var $pitnerestShare = function(){
                     var e=document.createElement('script');
                     e.setAttribute('type','text/javascript');
                     e.setAttribute('charset','UTF-8');
-                    e.setAttribute('src','http://assets.pinterest.com/js/pinmarklet.js?r='+Math.random()*99999999);
+                    e.setAttribute('src','https://assets.pinterest.com/js/pinmarklet.js?r='+Math.random()*99999999);
                     document.body.appendChild(e);
+
+                setTimeout(function(){
+                    $scope.fakeUpdateCounts('pinterest');
+                }, 10000);
             }
 
             switch($service){
@@ -107,10 +110,10 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                     shareUrl = 'https://www.facebook.com/sharer/sharer.php?u=' + baseUrl;
                     break;
                 case 'twitter':
-                    shareUrl = 'https://twitter.com/share?url=http://' + baseUrl + '&counturl=' + baseUrl + '&text=@Ideaing';
+                    shareUrl = 'https://twitter.com/share?url=' + baseUrl + '&counturl=' + baseUrl + '&text=@Ideaing';
                     break;
                 case 'googleplus':
-                    shareUrl = 'https://plus.google.com/share?url=http://' + baseUrl;
+                    shareUrl = 'https://plus.google.com/share?url=' + baseUrl;
                     break;
                 case 'pinterest':
                     $pitnerestShare();
@@ -132,13 +135,34 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                     clearInterval(timer);
 
                     setTimeout(function(){
-                        $scope.countSocialShares();
-                    }, 1000);
+                        $scope.fakeUpdateCounts($service);
+                    }, 2000);
+                    //setTimeout(function(){
+                    //    $scope.countSocialShares();
+                    //}, 1000);
                     console.log('share counters updated')
                 }
             }, 1000);
 
         };
+
+        $scope.fakeUpdateCounts = function($service){ // add +1 to a counter that's being used, to save performance, until the next page reload
+            var currentCounters =  $('.share-buttons a[data-service="' + $service + '"]').children('.share-count');
+            var totalCounters = $('b.share-count.all');
+
+            currentCounters.each(function(){
+                var that = $(this);
+                var oldNumber = +(that.text());
+                var newNumber = oldNumber + 1;
+                that.text(newNumber);
+            });
+            totalCounters.each(function(){
+                var that = $(this);
+                var oldTotal = +(that.text());
+                var newTotal = oldTotal + 1;
+                that.text(newTotal);
+            });
+        }
 
 
         // load shop information.
