@@ -5075,7 +5075,8 @@ ul.share-buttons {
   text-align: center; }
   .share-bar.stick {
     position: fixed;
-    top: 120px; }
+    top: 120px;
+    z-index: 1; }
   .share-bar li {
     margin-bottom: 8px; }
 
@@ -7410,7 +7411,7 @@ body.single .related-items {
 .comments .single-comment {
   min-height: 100%;
   overflow: hidden;
-  color: #c1c1c1; }
+  /*    color: $light-grey;*/ }
   .comments .single-comment .comment-author {
     text-align: center;
     padding-right: 0; }
@@ -7443,16 +7444,16 @@ body.single .related-items {
 
 .comments .signup-to-comment {
   display: block;
-  color: #3d8901;
+  color: #FF0042;
   display: block;
   padding: 9px;
   font-weight: bold;
-  border: 1px solid #3d8901;
+  border: 1px solid #FF0042;
   text-align: center;
   border-radius: 3px; }
   .comments .signup-to-comment:hover {
     color: #fff;
-    background-color: #3d8901; }
+    background-color: #FF0042; }
 
 .related-items {
   margin-top: 100px; }
