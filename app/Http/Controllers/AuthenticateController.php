@@ -176,7 +176,6 @@
 
             }
 
-
             // if no errors are encountered jwt token returned
 
             $rolesCollection = $user->getUserRolesByEmail($credentials['Email']);
@@ -190,8 +189,19 @@
             $response['message'] = "Successfully authenticated.";
             $response['roles'] = $roles;
 
-            if($request['RememberMe'] == true)
+            if($request['RememberMe'] == true){
                 $this->setCookie('auth-token',$token);
+            }
+
+            $wpLogin = WpUser::login($credentials['Email'], $credentials['Password'], $request['RememberMe']);
+
+            if(@$wpLogin['error']){
+                return $this->setStatusCode(IlluminateResponse::HTTP_INTERNAL_SERVER_ERROR)
+                    ->makeResponseWithError('Internal Server Error!' . $wpLogin['error']);
+            }else{
+                $response['WP'] = $wpLogin;
+            }
+
 
             return $this->setStatusCode(\Config::get("const.api-status.success-redirect"))
                 ->setAuthToken($token)
