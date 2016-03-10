@@ -359,7 +359,7 @@ class PageController extends ApiController
             $tagNames[] = Tag::find($tagID)->tag_name;
         }
 
-        $relatedIdeas = self::getRelatedStories($productData['product']['id'], 3, $tagNames);
+        @$relatedIdeas = self::getRelatedStories($productData['product']['id'], 3, $tagNames);
 
 //        $related
 

@@ -609,6 +609,7 @@ ul.share-buttons{
   &.stick{
     position: fixed;
     top: 120px;
+    z-index: 1;
   }
 
   li {
@@ -3158,7 +3159,7 @@ body.product-details{
 /*      line-height: 1;*/
       font-size: 15px;
       font-family: montserratlight;
-    }
+  }
 
 
 }
@@ -4494,7 +4495,7 @@ body.single{
   .single-comment{
     min-height: 100%;
     overflow: hidden;
-    color: $light-grey;
+/*    color: $light-grey;*/
 
     .comment-author{
       text-align: center;
@@ -4545,16 +4546,16 @@ body.single{
   
   .signup-to-comment{
       display: block;
-      color: #3d8901;
+      color: $iridium;
       display: block;
       padding: 9px;
       font-weight: bold;
-      border: 1px solid #3d8901;
+      border: 1px solid $iridium;
       text-align: center;
       border-radius: 3px;
       &:hover{
           color: #fff;
-          background-color: #3d8901;
+          background-color: $iridium;
       }
   }
 
@@ -7346,7 +7347,7 @@ body.profilepage{
                         float: none;
                     }
                 }
-            } 
+            }
         }
     }
     #hero-nav{
