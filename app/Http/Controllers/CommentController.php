@@ -18,6 +18,7 @@ class CommentController extends ApiController
         $this->user = new User();
     }
 
+    // Broadcast notification to the relevant users
     public function addProductNotification($data)
     {
         $info['Users'] = [];
