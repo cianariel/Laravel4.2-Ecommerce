@@ -231,9 +231,14 @@
 
         }
 
-        public function notification()
+        public function notification($uid)
         {
-            $this->user->userNotification();
+//            $this->user->userNotification();
+           $data = $this->user->getNotificationForUser($uid);
+
+            return $this->setStatusCode(\Config::get("const.api-status.success"))
+                        ->makeResponse($data);
+
         }
 
 

@@ -20,7 +20,8 @@
          });
     */
 
-Route::get('notification', 'UserController@notification');
+    // test route
+    Route::get('notification', 'UserController@notification');
 
 
     Route::any('secure-page-header', 'UserController@securePageHeader');
@@ -189,6 +190,8 @@ Route::get('notification', 'UserController@notification');
 
         Route::post('subscribe','UserController@emailSubscription');
         Route::get('unsubscribe','PageController@home');
+        Route::get('notification/{uid?}', 'UserController@notification');
+
 
 
 

@@ -337,11 +337,13 @@ class PageController extends ApiController
 
         // todo - check login user and implement mark as reade notification for the user
 
-        if(isset($userData))
+        if(isset($userData['id']))
         {
             $user = new User();
 
-            $user->markNotificationAsRead(['UserId'=>$userData['Id']]);
+        //    $tmpPermalink = 'product/' . $permalink . '/#comment';
+
+        //    $user->markNotificationAsRead(['UserId'=>$userData['id'],'Permalink' => $tmpPermalink]);
 
         }
 
