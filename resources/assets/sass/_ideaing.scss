@@ -3155,12 +3155,10 @@ body.product-details{
   }
 
   .article-content{
-    p{
 /*      line-height: 1;*/
       font-size: 15px;
       font-family: montserratlight;
     }
-  }
 
 
 }
@@ -7341,7 +7339,7 @@ body.profilepage{
         
         @media (max-width: 767px){
             .container{
-                padding-top: 20px;
+                padding-top: 90px;
                 > div{
                     text-align: center;
                     #btn-follow{
