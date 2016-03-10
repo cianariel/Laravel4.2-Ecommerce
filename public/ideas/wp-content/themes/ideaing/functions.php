@@ -497,5 +497,21 @@ function my_save_extra_profile_fields( $user_id ) {
     update_usermeta( $user_id, 'about', $_POST['about'] );
 }
 
+// Replace WP-Login with a redirect to Laravel Login
+add_action( 'wp_logout', 'auto_redirect_external_after_logout');
+function auto_redirect_external_after_logout(){
+    wp_redirect( 'https://ideaing.com/login#?from=cms' );
+    exit();
+}
+
+add_action('init','custom_login');
+function custom_login(){
+    global $pagenow;
+    if( 'wp-login.php' == $pagenow ) {
+        wp_redirect('https://ideaing.com/login#?from=cms');
+        exit();
+    }
+}
+
 
 ?>
