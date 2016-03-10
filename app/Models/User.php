@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use Fenos\Notifynder\Builder\NotifynderBuilder;
+use Fenos\Notifynder\Facades\Notifynder;
 use Illuminate\Database\Eloquent\Model;
 //use App\Models\UserProfile;
 use App\Models\Media;
@@ -26,7 +28,7 @@ class User extends Model implements AuthenticatableContract,
                                     CanResetPasswordContract
 {
 
-    use Notifable,Authenticatable, Authorizable, CanResetPassword,
+    use Notifable, Authenticatable, Authorizable, CanResetPassword,
         EntrustUserTrait {
         EntrustUserTrait::can insteadof Authorizable;
     }
@@ -289,7 +291,7 @@ class User extends Model implements AuthenticatableContract,
         $wpUser = new WpUser();
 
         return $wpUser->all();
-       // User::setConnection('wpdb')where
+        // User::setConnection('wpdb')where
 
     }
 
@@ -306,9 +308,62 @@ class User extends Model implements AuthenticatableContract,
         }
     }
 
-    public function userNotification(){
+    public function sendNotificationToUsers($info)
+    {
+        $PostTime = $info['PostTime'];
+
+        Notifynder::loop($info['Users'], function(NotifynderBuilder $builder,$user) use($info,$PostTime){
+
+            $builder->category($info['Category'])
+                    ->from($info['SenderId'])
+                    ->to($user)
+                    ->url($info['Permalink'])
+                    ->extra(compact('PostTime'));
+
+        })->send();
+
+    }
+
+    public function getNotification($userId)
+    {
+        $user = User::find($userId);
+
+
+
+
+    }
+
+
+    public function userNotification($flag = false)
+    {
         $user = User::find(41);
-//$user->
+
+       // $flag = true;
+
+        if($flag){
+            Notifynder::category("user.following")
+                      ->from(41)
+                      ->to(41)
+                      ->url('/notice/do/5')
+                      ->send();
+        }else{
+            Notifynder::category("hello")
+                      ->from(41)
+                      ->to(41)
+                      ->url('/cccc/do/5')
+                      ->send();
+        }
+
+
+       // dd($user->getNotificationsNotRead());
+        dd($user->getNotifications());
+
+
+       // dd($user->getNotificationsNotRead(),$user->readAllNotifications(),$user->getNotificationsNotRead());
+        // dd();
+
+
+
       //  $user
 
             /*
@@ -321,10 +376,10 @@ $user->readAllNotifications();
 
     }
 
-   /* public function throwExc()
-    {
-        throw new CustomAppException("hi");
-    }*/
+    /* public function throwExc()
+     {
+         throw new CustomAppException("hi");
+     }*/
 
 
 }
