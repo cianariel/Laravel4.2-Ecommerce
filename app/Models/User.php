@@ -17,9 +17,11 @@ use Illuminate\Foundation\Auth\Access\Authorizable;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
 use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
+use Illuminate\Support\Collection;
 use Mockery\CountValidator\Exception;
 use Zizaco\Entrust\Traits\EntrustUserTrait;
 use Fenos\Notifynder\Notifable;
+use Carbon\Carbon;
 
 //use CustomAppException;
 
@@ -328,19 +330,52 @@ class User extends Model implements AuthenticatableContract,
         }
     }
 
+
+    // Wrapper for all type of notification (future implementation)
     public function getNotificationForUser($userId)
     {
-        $user = User::find($userId);
-
+        return $this->getProductNotification($userId);
 
     }
 
-    public function getNotification($userId)
+    public function getProductNotification($userId = 32)
     {
         $user = User::find($userId);
 
-        $notification['NotReadNotice'] = $user->getNotificationsNotRead();
         $notification['NotReadNoticeCount'] = $user->countNotificationsNotRead();
+
+        $notifications = $user->getNotificationsNotRead();
+
+        $userInfo = new User();
+
+        $product = new Product();
+
+        $noticeCollection = new Collection();
+
+        foreach($notifications as $notice)
+        {
+
+            $userInfo = $userInfo->getUserById($notice['from_id']);
+
+            $permalink = explode('/',$notice['url'])[1];
+
+            $product = $product->checkPermalink($permalink);
+
+            $data['UserId'] = $userInfo['id'];
+            $data['UserName'] = $userInfo['name'] ;
+            $data['UserPicture'] = $userInfo->medias[0]->media_link;
+            $data['ProductTitle'] = $product['product_name'];
+            $data['ProductLink'] = $notice['url'];
+            $data['NoticeRead'] = $notice['read'];
+
+            $dateTime = json_decode($notice['extra']);
+
+            $data['Time'] = Carbon::createFromTimestamp(strtotime($dateTime->PostTime))->diffForHumans();
+
+            $noticeCollection->push($data);
+        }
+
+        $notification['NoticeNotRead'] = $noticeCollection;
 
         return $notification;
     }

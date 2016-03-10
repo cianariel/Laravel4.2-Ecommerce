@@ -6,7 +6,7 @@
 <script src="/assets/js/vendor/textAngular.min.js"></script>
 <section class="comments" id="comments">
     <div class="container">
-
+        <a name="comment"></a>
 <input type="hidden" ng-init="userId='<?php echo $userData['id']?>'">
         <input type="hidden" ng-init="isAdmin='<?php echo $isAdminForEdit?>'">
         <div ng-init="getCommentsForProduct(<?php echo $productId?>)">

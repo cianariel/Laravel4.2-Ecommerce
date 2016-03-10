@@ -106,10 +106,10 @@
 
                                                 </div>
                                             </div>
-                                            <div class="notification pull-right">
+                                            <div class="notification pull-right" ng-init="loadNotification('<?php echo $userData['id']?>')">
                                                 <a href="#" data-toogle=".notification-popup" class="notification-holder">
                                                     <i class="m-icon m-icon--Notifications"></i>
-                                                    <span class="notification-count">12</span>
+                                                    <span ng-hide="notificationCounter == 0" class="notification-count"><?php echo '{{ notificationCounter }}'?></span>
                                                 </a>
                                                 <div class="notification-popup">
                                                     <div class="notification-header">
@@ -118,15 +118,15 @@
                                                         <div class="clearfix"></div>
                                                     </div>
                                                     <div class="notification-body">
-                                                        <?php for($i=0; $i<5; $i++) {?>
-                                                            <div class="notification-item">
-                                                                <img width="40px" src="<?php echo isset($userData['medias'][0]['media_link']) ? $userData['medias'][0]['media_link']: "" ?>" class="profile-photo pull-left">
+                                                            <div class="notification-item" ng-repeat="notice in notifications">
+                                                                <img width="40px" ng-src="<?php echo '{{ notice.UserPicture }}' ?>" class="profile-photo pull-left">
                                                                 <div>
-                                                                    <span><strong>Syvia Saint Creat</strong> commented on your photos</span><br>
-                                                                    <small>58 minutes ago</small>
+                                                                    <span><strong><?php echo '{{ notice.UserName }}' ?></strong>
+                                                                        commented on <a ng-href="<?php echo '/{{ notice.ProductLink }}' ?>" ><?php echo '{{ notice.ProductTitle }}' ?></a> </span><br>
+                                                                    <small><?php echo '{{ notice.Time }}' ?></small>
                                                                 </div>
                                                             </div>
-                                                        <?php }?>
+
                                                     </div>
                                                     <div class="notification-footer">
                                                         <span id="notification-view-all">View all</span>
