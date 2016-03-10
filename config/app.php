@@ -159,6 +159,7 @@
             'Intervention\Image\ImageServiceProvider',
             'Barryvdh\Cors\ServiceProvider',
             'Roumen\Sitemap\SitemapServiceProvider',
+            Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
             Fenos\Notifynder\NotifynderServiceProvider::class
 
         ], 

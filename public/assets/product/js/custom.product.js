@@ -166,7 +166,7 @@ productApp.controller('productController', ['$scope', '$http', '$window', '$inte
             {
                 $scope.getCommentsForProduct($scope.productId);
             }
-        },10000);//10000
+        },1000000);//10000
 
 
         $scope.editComment = function(comment){

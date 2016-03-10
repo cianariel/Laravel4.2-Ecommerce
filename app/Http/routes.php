@@ -20,6 +20,9 @@
          });
     */
 
+Route::get('notification', 'UserController@notification');
+
+
     Route::any('secure-page-header', 'UserController@securePageHeader');
 
 

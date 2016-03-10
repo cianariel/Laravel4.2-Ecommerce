@@ -231,5 +231,10 @@
 
         }
 
+        public function notification()
+        {
+            $this->user->userNotification();
+        }
+
 
     }
