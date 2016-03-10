@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 //use App\Models\UserProfile;
 use App\Models\Media;
 use App\Models\WpUser;
+use App\Models\Notification;
 
 
 use Illuminate\Auth\Authenticatable;
@@ -308,6 +309,7 @@ class User extends Model implements AuthenticatableContract,
         }
     }
 
+    // Broadcast notification for new event.
     public function sendNotificationToUsers($info)
     {
         $PostTime = $info['PostTime'];
@@ -326,11 +328,28 @@ class User extends Model implements AuthenticatableContract,
         }
     }
 
-    public function getNotification($userId)
+    public function getNotificationForUser($userId)
     {
         $user = User::find($userId);
 
 
+    }
+
+    public function getNotification($userId)
+    {
+        $user = User::find($userId);
+
+        $notification['NotReadNotice'] = $user->getNotificationsNotRead();
+        $notification['NotReadNoticeCount'] = $user->countNotificationsNotRead();
+
+        return $notification;
+    }
+
+    public function markNotificationAsRead($info)
+    {
+        $notice = Notification::where('to_id', $info['UserId'])
+                              ->where('url', $info['Permalink'])
+                              ->update(['read' => 1]);
     }
 
 

@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 //use FeedParser;
 use MetaTag;
 use App\Models\Product;
+use App\Models\User;
 use App\Models\ProductCategory;
 use App\Models\Tag;
 use App\Models\Room; 
@@ -333,6 +334,17 @@ class PageController extends ApiController
 
         $product = new Product();
         $productData['product'] = $product->getViewForPublic($permalink);
+
+        // todo - check login user and implement mark as reade notification for the user
+
+        if(isset($userData))
+        {
+            $user = new User();
+
+            $user->markNotificationAsRead(['UserId'=>$userData['Id']]);
+
+        }
+
 
         // Get category tree
         $catTree = $product->getCategoryHierarchy($productData['product']->product_category_id);
