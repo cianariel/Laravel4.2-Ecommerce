@@ -83,7 +83,11 @@
     <div class="app-wrap" ng-app="pagingApp" ng-controller="shopcategoryController">
         <nav id="hero-nav" class="col-sm-12">
             <div class="container full-620  fixed-sm banner-nav">
-                        <ul class="popular-new ">
+                <a class="pull-left visible-md visible-lg" id="shop-filter-menu-button" href="#" ng-click="showFilter ? showFilter=0: showFilter=1">
+                    <i class="m-icon--MenuButton"></i>
+                    Filter
+                </a>
+                <ul class="popular-new pull-right">
                             {{--<li class="">--}}
                                 {{--<a ng-click="sortBy(popularity)" href="#" class="box-link active">POPULAR</a>--}}
                             {{--</li>--}}
@@ -105,16 +109,20 @@
             <div class="loader loader-fixed" cg-busy="nextLoad"></div>
             
             <div class="main-content ">
+                <div id="shop-filter-grid-box-3" ng-class="['col-lg-12', {'show-filter': showFilter}]">
+                    <div class="visible-md visible-lg">
+                        @include('shop.filter-menu')
+                    </div>
                     <div class="grid-box-3" >
                         <div class="box-item product-box " ng-repeat="item in content" >
                             @include('grid.product')
                         </div>
                     </div>
+                </div>
                 <div class="container">
                     <a ng-click="loadMore()" class="btn btn-success bottom-load-more col-xs-12">Load More</a>
                 </div>
             </div>
-            @include('shop.filter-menu')
         </div>
 
         @include('layouts.parts.product-popup')
