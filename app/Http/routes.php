@@ -190,7 +190,14 @@
 
         Route::post('subscribe','UserController@emailSubscription');
         Route::get('unsubscribe','PageController@home');
+
+        /*
+         * Notification
+         * */
         Route::get('notification/{uid?}', 'UserController@notification');
+        Route::get('read-all-notification/{uid?}', 'UserController@notificationReadAll');
+
+
 
 
 

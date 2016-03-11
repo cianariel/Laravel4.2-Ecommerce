@@ -58,7 +58,7 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
             {
                 $scope.loadNotification($scope.uid);
             }
-        },1000000);//10000
+        },15000);//10000
 
 
         // Header profile option open and close on click action.
@@ -674,18 +674,25 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                 $scope.notificationCounter = data.data.NotReadNoticeCount;
                 $scope.notifications = data.data.NoticeNotRead;
 
-
-                //console.log(data.data);
-
-                //$scope.outputStatus(data, data.data);
-
-
-
-                /* if(data.status_code == 200)
-                 window.location = $scope.logingRedirectLocation;
-                 */
             });
         };
+
+        $scope.readAllNotification = function(){
+
+           // $scope.uid = uid;
+            $http({
+                url: '/api/read-all-notification/' + $scope.uid,
+                method: "GET",
+            }).success(function (data) {
+
+                $scope.loadNotification($scope.uid);
+            //    $scope.notificationCounter = data.data.NotReadNoticeCount;
+            //    $scope.notifications = data.data.NoticeNotRead;
+
+            });
+        };
+
+
 
 
         // test function //
