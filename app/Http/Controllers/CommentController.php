@@ -54,8 +54,9 @@ class CommentController extends ApiController
             $notification['SenderId'] = $inputData['uid'];
             $notification['Permalink'] = $data['Link'];
 
-            $dateTime = Carbon::now();
-            $notification['PostTime'] = (string)$dateTime->date;//$data['Link'];
+           // $dateTime = Carbon::now();
+            $dataStr = date("Y-m-d H:i:s");//$dateTime->date;
+            $notification['PostTime'] = (string)$dataStr;//$data['Link'];
 
             $this->addProductNotification($notification);
 

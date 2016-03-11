@@ -114,7 +114,7 @@
                                                 <div class="notification-popup">
                                                     <div class="notification-header">
                                                         <span class="pull-left">Notifications</span>
-                                                        <span class="pull-right" id="mark-all-as-read">Mark all as read</span>
+                                                        <span ng-click="readAllNotification()" class="pull-right" id="mark-all-as-read">Mark all as read</span>
                                                         <div class="clearfix"></div>
                                                     </div>
                                                     <div class="notification-body">

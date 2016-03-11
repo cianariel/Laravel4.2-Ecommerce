@@ -380,6 +380,14 @@ class User extends Model implements AuthenticatableContract,
         return $notification;
     }
 
+    public function notificationMarkReadAll($userId)
+    {
+        $user = User::find($userId);
+
+        return $user->readAllNotifications();
+
+    }
+
     public function markNotificationAsRead($info)
     {
         $notice = Notification::where('to_id', $info['UserId'])
