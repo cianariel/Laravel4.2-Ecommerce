@@ -1,7 +1,7 @@
 <?php
 /**
  * A helper file for Laravel 5, to provide autocomplete information to your IDE
- * Generated for Laravel 5.1.24 (LTS) on 2015-11-16.
+ * Generated for Laravel 5.1.31 (LTS) on 2016-03-09.
  *
  * @author Barry vd. Heuvel <barryvdh@gmail.com>
  * @see https://github.com/barryvdh/laravel-ide-helper
@@ -1271,7 +1271,7 @@ namespace {
         /**
          * Get the currently authenticated user.
          *
-         * @return \App\User|null 
+         * @return \App\Models\User|null 
          * @static 
          */
         public static function user(){
@@ -1373,7 +1373,7 @@ namespace {
          *
          * @param mixed $id
          * @param bool $remember
-         * @return \App\User 
+         * @return \App\Models\User 
          * @static 
          */
         public static function loginUsingId($id, $remember = false){
@@ -1478,7 +1478,7 @@ namespace {
         /**
          * Return the currently cached user.
          *
-         * @return \App\User|null 
+         * @return \App\Models\User|null 
          * @static 
          */
         public static function getUser(){
@@ -1520,7 +1520,7 @@ namespace {
         /**
          * Get the last user we attempted to authenticate.
          *
-         * @return \App\User 
+         * @return \App\Models\User 
          * @static 
          */
         public static function getLastAttempted(){
@@ -2110,6 +2110,30 @@ namespace {
         }
         
         /**
+         * Begin executing a new tags operation if the store supports it.
+         *
+         * @param string $name
+         * @return \Illuminate\Cache\TaggedCache 
+         * @deprecated since version 5.1. Use tags instead.
+         * @static 
+         */
+        public static function section($name){
+            return \Illuminate\Cache\Repository::section($name);
+        }
+        
+        /**
+         * Begin executing a new tags operation if the store supports it.
+         *
+         * @param array|mixed $names
+         * @return \Illuminate\Cache\TaggedCache 
+         * @throws \BadMethodCallException
+         * @static 
+         */
+        public static function tags($names){
+            return \Illuminate\Cache\Repository::tags($names);
+        }
+        
+        /**
          * Get the default cache time.
          *
          * @return int 
@@ -2505,11 +2529,12 @@ namespace {
          *
          * @param string $path
          * @param string $domain
+         * @param bool $secure
          * @return $this 
          * @static 
          */
-        public static function setDefaultPathAndDomain($path, $domain){
-            return \Illuminate\Cookie\CookieJar::setDefaultPathAndDomain($path, $domain);
+        public static function setDefaultPathAndDomain($path, $domain, $secure = false){
+            return \Illuminate\Cookie\CookieJar::setDefaultPathAndDomain($path, $domain, $secure);
         }
         
         /**
@@ -2544,6 +2569,7 @@ namespace {
          *
          * @param string $value
          * @return string 
+         * @throws \Illuminate\Contracts\Encryption\EncryptException
          * @static 
          */
         public static function encrypt($value){
@@ -2555,6 +2581,7 @@ namespace {
          *
          * @param string $payload
          * @return string 
+         * @throws \Illuminate\Contracts\Encryption\DecryptException
          * @static 
          */
         public static function decrypt($payload){
@@ -3375,6 +3402,52 @@ namespace {
         }
         
         /**
+         * Find a model by its primary key or return fresh model instance.
+         *
+         * @param mixed $id
+         * @param array $columns
+         * @return \Illuminate\Database\Eloquent\Model 
+         * @static 
+         */
+        public static function findOrNew($id, $columns = array()){
+            return \Illuminate\Database\Eloquent\Builder::findOrNew($id, $columns);
+        }
+        
+        /**
+         * Get the first record matching the attributes or instantiate it.
+         *
+         * @param array $attributes
+         * @return \Illuminate\Database\Eloquent\Model 
+         * @static 
+         */
+        public static function firstOrNew($attributes){
+            return \Illuminate\Database\Eloquent\Builder::firstOrNew($attributes);
+        }
+        
+        /**
+         * Get the first record matching the attributes or create it.
+         *
+         * @param array $attributes
+         * @return \Illuminate\Database\Eloquent\Model 
+         * @static 
+         */
+        public static function firstOrCreate($attributes){
+            return \Illuminate\Database\Eloquent\Builder::firstOrCreate($attributes);
+        }
+        
+        /**
+         * Create or update a record matching the attributes, and fill it with values.
+         *
+         * @param array $attributes
+         * @param array $values
+         * @return \Illuminate\Database\Eloquent\Model 
+         * @static 
+         */
+        public static function updateOrCreate($attributes, $values = array()){
+            return \Illuminate\Database\Eloquent\Builder::updateOrCreate($attributes, $values);
+        }
+        
+        /**
          * Execute the query and get the first result.
          *
          * @param array $columns
@@ -3438,18 +3511,18 @@ namespace {
          *
          * @param int $count
          * @param callable $callback
-         * @return void 
+         * @return bool 
          * @static 
          */
         public static function chunk($count, $callback){
-            \Illuminate\Database\Eloquent\Builder::chunk($count, $callback);
+            return \Illuminate\Database\Eloquent\Builder::chunk($count, $callback);
         }
         
         /**
          * Get an array with the values of a given column.
          *
          * @param string $column
-         * @param string $key
+         * @param string|null $key
          * @return \Illuminate\Support\Collection 
          * @static 
          */
@@ -4447,7 +4520,7 @@ namespace {
         /**
          * Determine if any rows exist for the current query.
          *
-         * @return bool|null 
+         * @return bool 
          * @static 
          */
         public static function exists(){
@@ -4868,7 +4941,7 @@ namespace {
     class File extends \Illuminate\Support\Facades\File{
         
         /**
-         * Determine if a file exists.
+         * Determine if a file or directory exists.
          *
          * @param string $path
          * @return bool 
@@ -6937,7 +7010,7 @@ namespace {
          * Determine if a translation exists for a given locale.
          *
          * @param string $key
-         * @param string $locale
+         * @param string|null $locale
          * @return bool 
          * @static 
          */
@@ -6949,7 +7022,7 @@ namespace {
          * Determine if a translation exists.
          *
          * @param string $key
-         * @param string $locale
+         * @param string|null $locale
          * @param bool $fallback
          * @return bool 
          * @static 
@@ -6963,7 +7036,7 @@ namespace {
          *
          * @param string $key
          * @param array $replace
-         * @param string $locale
+         * @param string|null $locale
          * @param bool $fallback
          * @return string 
          * @static 
@@ -9922,7 +9995,6 @@ namespace {
          *
          * @param array $controllers
          * @return void 
-         * @deprecated since version 5.1.
          * @static 
          */
         public static function controllers($controllers){
@@ -9936,7 +10008,6 @@ namespace {
          * @param string $controller
          * @param array $names
          * @return void 
-         * @deprecated since version 5.1.
          * @static 
          */
         public static function controller($uri, $controller, $names = array()){
@@ -10929,6 +11000,19 @@ namespace {
         }
         
         /**
+         * Flash a key / value pair to the session
+         * for immediate use.
+         *
+         * @param string $key
+         * @param mixed $value
+         * @return void 
+         * @static 
+         */
+        public static function now($key, $value){
+            \Illuminate\Session\Store::now($key, $value);
+        }
+        
+        /**
          * Flash an input array to the session.
          *
          * @param array $value
@@ -10992,14 +11076,14 @@ namespace {
         }
         
         /**
-         * Remove an item from the session.
+         * Remove one or many items from the session.
          *
-         * @param string $key
+         * @param string|array $keys
          * @return void 
          * @static 
          */
-        public static function forget($key){
-            \Illuminate\Session\Store::forget($key);
+        public static function forget($keys){
+            \Illuminate\Session\Store::forget($keys);
         }
         
         /**
@@ -11470,6 +11554,29 @@ namespace {
             return \Illuminate\Routing\UrlGenerator::setRootControllerNamespace($rootNamespace);
         }
         
+        /**
+         * Register a custom macro.
+         *
+         * @param string $name
+         * @param callable $macro
+         * @return void 
+         * @static 
+         */
+        public static function macro($name, $macro){
+            \Illuminate\Routing\UrlGenerator::macro($name, $macro);
+        }
+        
+        /**
+         * Checks if macro is registered.
+         *
+         * @param string $name
+         * @return bool 
+         * @static 
+         */
+        public static function hasMacro($name){
+            return \Illuminate\Routing\UrlGenerator::hasMacro($name);
+        }
+        
     }
 
 
@@ -11580,7 +11687,7 @@ namespace {
          * @param string $path
          * @param array $data
          * @param array $mergeData
-         * @return \Illuminate\View\View 
+         * @return \Illuminate\Contracts\View\View 
          * @static 
          */
         public static function file($path, $data = array(), $mergeData = array()){
@@ -11605,7 +11712,7 @@ namespace {
          *
          * @param string $view
          * @param mixed $data
-         * @return \Illuminate\View\View 
+         * @return \Illuminate\Contracts\View\View 
          * @static 
          */
         public static function of($view, $data = array()){
@@ -11724,7 +11831,7 @@ namespace {
         /**
          * Call the composer for a given view.
          *
-         * @param \Illuminate\View\View $view
+         * @param \Illuminate\Contracts\View\View $view
          * @return void 
          * @static 
          */
@@ -11735,7 +11842,7 @@ namespace {
         /**
          * Call the creator for a given view.
          *
-         * @param \Illuminate\View\View $view
+         * @param \Illuminate\Contracts\View\View $view
          * @return void 
          * @static 
          */
@@ -11782,6 +11889,7 @@ namespace {
          *
          * @param bool $overwrite
          * @return string 
+         * @throws \InvalidArgumentException
          * @static 
          */
         public static function stopSection($overwrite = false){
@@ -11792,6 +11900,7 @@ namespace {
          * Stop injecting content into a section and append it.
          *
          * @return string 
+         * @throws \InvalidArgumentException
          * @static 
          */
         public static function appendSection(){
@@ -12047,90 +12156,1062 @@ namespace {
     }
 
 
-    class Entrust extends \Zizaco\Entrust\EntrustFacade{
+    class Form extends \Collective\Html\FormFacade{
         
         /**
-         * Checks if the current user has a role by its name
+         * Open up a new HTML form.
          *
-         * @param string $name Role name.
-         * @return bool 
+         * @param array $options
+         * @return string 
          * @static 
          */
-        public static function hasRole($role, $requireAll = false){
-            return \Zizaco\Entrust\Entrust::hasRole($role, $requireAll);
+        public static function open($options = array()){
+            return \Collective\Html\FormBuilder::open($options);
         }
         
         /**
-         * Check if the current user has a permission by its name
+         * Create a new model based form builder.
          *
-         * @param string $permission Permission string.
-         * @return bool 
+         * @param mixed $model
+         * @param array $options
+         * @return string 
          * @static 
          */
-        public static function can($permission, $requireAll = false){
-            return \Zizaco\Entrust\Entrust::can($permission, $requireAll);
+        public static function model($model, $options = array()){
+            return \Collective\Html\FormBuilder::model($model, $options);
         }
         
         /**
-         * Get the currently authenticated user or null.
+         * Set the model instance on the form builder.
          *
-         * @return \Zizaco\Entrust\Illuminate\Auth\UserInterface|null 
-         * @static 
-         */
-        public static function user(){
-            return \Zizaco\Entrust\Entrust::user();
-        }
-        
-        /**
-         * Filters a route for a role or set of roles.
-         * 
-         * If the third parameter is null then abort with status code 403.
-         * Otherwise the $result is returned.
-         *
-         * @param string $route Route pattern. i.e: "admin/*"
-         * @param array|string $roles The role(s) needed
-         * @param mixed $result i.e: Redirect::to('/')
-         * @param bool $requireAll User must have all roles
-         * @return mixed 
-         * @static 
-         */
-        public static function routeNeedsRole($route, $roles, $result = null, $requireAll = true){
-            return \Zizaco\Entrust\Entrust::routeNeedsRole($route, $roles, $result, $requireAll);
-        }
-        
-        /**
-         * Filters a route for a permission or set of permissions.
-         * 
-         * If the third parameter is null then abort with status code 403.
-         * Otherwise the $result is returned.
-         *
-         * @param string $route Route pattern. i.e: "admin/*"
-         * @param array|string $permissions The permission(s) needed
-         * @param mixed $result i.e: Redirect::to('/')
-         * @param bool $requireAll User must have all permissions
-         * @return mixed 
-         * @static 
-         */
-        public static function routeNeedsPermission($route, $permissions, $result = null, $requireAll = true){
-            return \Zizaco\Entrust\Entrust::routeNeedsPermission($route, $permissions, $result, $requireAll);
-        }
-        
-        /**
-         * Filters a route for role(s) and/or permission(s).
-         * 
-         * If the third parameter is null then abort with status code 403.
-         * Otherwise the $result is returned.
-         *
-         * @param string $route Route pattern. i.e: "admin/*"
-         * @param array|string $roles The role(s) needed
-         * @param array|string $permissions The permission(s) needed
-         * @param mixed $result i.e: Redirect::to('/')
-         * @param bool $requireAll User must have all roles and permissions
+         * @param mixed $model
          * @return void 
          * @static 
          */
-        public static function routeNeedsRoleOrPermission($route, $roles, $permissions, $result = null, $requireAll = false){
-            \Zizaco\Entrust\Entrust::routeNeedsRoleOrPermission($route, $roles, $permissions, $result, $requireAll);
+        public static function setModel($model){
+            \Collective\Html\FormBuilder::setModel($model);
+        }
+        
+        /**
+         * Close the current form.
+         *
+         * @return string 
+         * @static 
+         */
+        public static function close(){
+            return \Collective\Html\FormBuilder::close();
+        }
+        
+        /**
+         * Generate a hidden field with the current CSRF token.
+         *
+         * @return string 
+         * @static 
+         */
+        public static function token(){
+            return \Collective\Html\FormBuilder::token();
+        }
+        
+        /**
+         * Create a form label element.
+         *
+         * @param string $name
+         * @param string $value
+         * @param array $options
+         * @return string 
+         * @static 
+         */
+        public static function label($name, $value = null, $options = array()){
+            return \Collective\Html\FormBuilder::label($name, $value, $options);
+        }
+        
+        /**
+         * Create a form input field.
+         *
+         * @param string $type
+         * @param string $name
+         * @param string $value
+         * @param array $options
+         * @return string 
+         * @static 
+         */
+        public static function input($type, $name, $value = null, $options = array()){
+            return \Collective\Html\FormBuilder::input($type, $name, $value, $options);
+        }
+        
+        /**
+         * Create a text input field.
+         *
+         * @param string $name
+         * @param string $value
+         * @param array $options
+         * @return string 
+         * @static 
+         */
+        public static function text($name, $value = null, $options = array()){
+            return \Collective\Html\FormBuilder::text($name, $value, $options);
+        }
+        
+        /**
+         * Create a password input field.
+         *
+         * @param string $name
+         * @param array $options
+         * @return string 
+         * @static 
+         */
+        public static function password($name, $options = array()){
+            return \Collective\Html\FormBuilder::password($name, $options);
+        }
+        
+        /**
+         * Create a hidden input field.
+         *
+         * @param string $name
+         * @param string $value
+         * @param array $options
+         * @return string 
+         * @static 
+         */
+        public static function hidden($name, $value = null, $options = array()){
+            return \Collective\Html\FormBuilder::hidden($name, $value, $options);
+        }
+        
+        /**
+         * Create an e-mail input field.
+         *
+         * @param string $name
+         * @param string $value
+         * @param array $options
+         * @return string 
+         * @static 
+         */
+        public static function email($name, $value = null, $options = array()){
+            return \Collective\Html\FormBuilder::email($name, $value, $options);
+        }
+        
+        /**
+         * Create a tel input field.
+         *
+         * @param string $name
+         * @param string $value
+         * @param array $options
+         * @return string 
+         * @static 
+         */
+        public static function tel($name, $value = null, $options = array()){
+            return \Collective\Html\FormBuilder::tel($name, $value, $options);
+        }
+        
+        /**
+         * Create a number input field.
+         *
+         * @param string $name
+         * @param string $value
+         * @param array $options
+         * @return string 
+         * @static 
+         */
+        public static function number($name, $value = null, $options = array()){
+            return \Collective\Html\FormBuilder::number($name, $value, $options);
+        }
+        
+        /**
+         * Create a date input field.
+         *
+         * @param string $name
+         * @param string $value
+         * @param array $options
+         * @return string 
+         * @static 
+         */
+        public static function date($name, $value = null, $options = array()){
+            return \Collective\Html\FormBuilder::date($name, $value, $options);
+        }
+        
+        /**
+         * Create a datetime input field.
+         *
+         * @param string $name
+         * @param string $value
+         * @param array $options
+         * @return string 
+         * @static 
+         */
+        public static function datetime($name, $value = null, $options = array()){
+            return \Collective\Html\FormBuilder::datetime($name, $value, $options);
+        }
+        
+        /**
+         * Create a datetime-local input field.
+         *
+         * @param string $name
+         * @param string $value
+         * @param array $options
+         * @return string 
+         * @static 
+         */
+        public static function datetimeLocal($name, $value = null, $options = array()){
+            return \Collective\Html\FormBuilder::datetimeLocal($name, $value, $options);
+        }
+        
+        /**
+         * Create a time input field.
+         *
+         * @param string $name
+         * @param string $value
+         * @param array $options
+         * @return string 
+         * @static 
+         */
+        public static function time($name, $value = null, $options = array()){
+            return \Collective\Html\FormBuilder::time($name, $value, $options);
+        }
+        
+        /**
+         * Create a url input field.
+         *
+         * @param string $name
+         * @param string $value
+         * @param array $options
+         * @return string 
+         * @static 
+         */
+        public static function url($name, $value = null, $options = array()){
+            return \Collective\Html\FormBuilder::url($name, $value, $options);
+        }
+        
+        /**
+         * Create a file input field.
+         *
+         * @param string $name
+         * @param array $options
+         * @return string 
+         * @static 
+         */
+        public static function file($name, $options = array()){
+            return \Collective\Html\FormBuilder::file($name, $options);
+        }
+        
+        /**
+         * Create a textarea input field.
+         *
+         * @param string $name
+         * @param string $value
+         * @param array $options
+         * @return string 
+         * @static 
+         */
+        public static function textarea($name, $value = null, $options = array()){
+            return \Collective\Html\FormBuilder::textarea($name, $value, $options);
+        }
+        
+        /**
+         * Create a select box field.
+         *
+         * @param string $name
+         * @param array $list
+         * @param string $selected
+         * @param array $options
+         * @return string 
+         * @static 
+         */
+        public static function select($name, $list = array(), $selected = null, $options = array()){
+            return \Collective\Html\FormBuilder::select($name, $list, $selected, $options);
+        }
+        
+        /**
+         * Create a select range field.
+         *
+         * @param string $name
+         * @param string $begin
+         * @param string $end
+         * @param string $selected
+         * @param array $options
+         * @return string 
+         * @static 
+         */
+        public static function selectRange($name, $begin, $end, $selected = null, $options = array()){
+            return \Collective\Html\FormBuilder::selectRange($name, $begin, $end, $selected, $options);
+        }
+        
+        /**
+         * Create a select year field.
+         *
+         * @param string $name
+         * @param string $begin
+         * @param string $end
+         * @param string $selected
+         * @param array $options
+         * @return string 
+         * @static 
+         */
+        public static function selectYear(){
+            return \Collective\Html\FormBuilder::selectYear();
+        }
+        
+        /**
+         * Create a select month field.
+         *
+         * @param string $name
+         * @param string $selected
+         * @param array $options
+         * @param string $format
+         * @return string 
+         * @static 
+         */
+        public static function selectMonth($name, $selected = null, $options = array(), $format = '%B'){
+            return \Collective\Html\FormBuilder::selectMonth($name, $selected, $options, $format);
+        }
+        
+        /**
+         * Get the select option for the given value.
+         *
+         * @param string $display
+         * @param string $value
+         * @param string $selected
+         * @return string 
+         * @static 
+         */
+        public static function getSelectOption($display, $value, $selected){
+            return \Collective\Html\FormBuilder::getSelectOption($display, $value, $selected);
+        }
+        
+        /**
+         * Create a checkbox input field.
+         *
+         * @param string $name
+         * @param mixed $value
+         * @param bool $checked
+         * @param array $options
+         * @return string 
+         * @static 
+         */
+        public static function checkbox($name, $value = 1, $checked = null, $options = array()){
+            return \Collective\Html\FormBuilder::checkbox($name, $value, $checked, $options);
+        }
+        
+        /**
+         * Create a radio button input field.
+         *
+         * @param string $name
+         * @param mixed $value
+         * @param bool $checked
+         * @param array $options
+         * @return string 
+         * @static 
+         */
+        public static function radio($name, $value = null, $checked = null, $options = array()){
+            return \Collective\Html\FormBuilder::radio($name, $value, $checked, $options);
+        }
+        
+        /**
+         * Create a HTML reset input element.
+         *
+         * @param string $value
+         * @param array $attributes
+         * @return string 
+         * @static 
+         */
+        public static function reset($value, $attributes = array()){
+            return \Collective\Html\FormBuilder::reset($value, $attributes);
+        }
+        
+        /**
+         * Create a HTML image input element.
+         *
+         * @param string $url
+         * @param string $name
+         * @param array $attributes
+         * @return string 
+         * @static 
+         */
+        public static function image($url, $name = null, $attributes = array()){
+            return \Collective\Html\FormBuilder::image($url, $name, $attributes);
+        }
+        
+        /**
+         * Create a color input field.
+         *
+         * @param string $name
+         * @param string $value
+         * @param array $options
+         * @return string 
+         * @static 
+         */
+        public static function color($name, $value = null, $options = array()){
+            return \Collective\Html\FormBuilder::color($name, $value, $options);
+        }
+        
+        /**
+         * Create a submit button element.
+         *
+         * @param string $value
+         * @param array $options
+         * @return string 
+         * @static 
+         */
+        public static function submit($value = null, $options = array()){
+            return \Collective\Html\FormBuilder::submit($value, $options);
+        }
+        
+        /**
+         * Create a button element.
+         *
+         * @param string $value
+         * @param array $options
+         * @return string 
+         * @static 
+         */
+        public static function button($value = null, $options = array()){
+            return \Collective\Html\FormBuilder::button($value, $options);
+        }
+        
+        /**
+         * Get the ID attribute for a field name.
+         *
+         * @param string $name
+         * @param array $attributes
+         * @return string 
+         * @static 
+         */
+        public static function getIdAttribute($name, $attributes){
+            return \Collective\Html\FormBuilder::getIdAttribute($name, $attributes);
+        }
+        
+        /**
+         * Get the value that should be assigned to the field.
+         *
+         * @param string $name
+         * @param string $value
+         * @return mixed 
+         * @static 
+         */
+        public static function getValueAttribute($name, $value = null){
+            return \Collective\Html\FormBuilder::getValueAttribute($name, $value);
+        }
+        
+        /**
+         * Get a value from the session's old input.
+         *
+         * @param string $name
+         * @return mixed 
+         * @static 
+         */
+        public static function old($name){
+            return \Collective\Html\FormBuilder::old($name);
+        }
+        
+        /**
+         * Determine if the old input is empty.
+         *
+         * @return bool 
+         * @static 
+         */
+        public static function oldInputIsEmpty(){
+            return \Collective\Html\FormBuilder::oldInputIsEmpty();
+        }
+        
+        /**
+         * Get the session store implementation.
+         *
+         * @return \Illuminate\Session\SessionInterface $session
+         * @static 
+         */
+        public static function getSessionStore(){
+            return \Collective\Html\FormBuilder::getSessionStore();
+        }
+        
+        /**
+         * Set the session store implementation.
+         *
+         * @param \Illuminate\Session\SessionInterface $session
+         * @return $this 
+         * @static 
+         */
+        public static function setSessionStore($session){
+            return \Collective\Html\FormBuilder::setSessionStore($session);
+        }
+        
+        /**
+         * Register a custom macro.
+         *
+         * @param string $name
+         * @param callable $macro
+         * @return void 
+         * @static 
+         */
+        public static function macro($name, $macro){
+            \Collective\Html\FormBuilder::macro($name, $macro);
+        }
+        
+        /**
+         * Checks if macro is registered.
+         *
+         * @param string $name
+         * @return bool 
+         * @static 
+         */
+        public static function hasMacro($name){
+            return \Collective\Html\FormBuilder::hasMacro($name);
+        }
+        
+    }
+
+
+    class Html extends \Collective\Html\HtmlFacade{
+        
+        /**
+         * Convert an HTML string to entities.
+         *
+         * @param string $value
+         * @return string 
+         * @static 
+         */
+        public static function entities($value){
+            return \Collective\Html\HtmlBuilder::entities($value);
+        }
+        
+        /**
+         * Convert entities to HTML characters.
+         *
+         * @param string $value
+         * @return string 
+         * @static 
+         */
+        public static function decode($value){
+            return \Collective\Html\HtmlBuilder::decode($value);
+        }
+        
+        /**
+         * Generate a link to a JavaScript file.
+         *
+         * @param string $url
+         * @param array $attributes
+         * @param bool $secure
+         * @return string 
+         * @static 
+         */
+        public static function script($url, $attributes = array(), $secure = null){
+            return \Collective\Html\HtmlBuilder::script($url, $attributes, $secure);
+        }
+        
+        /**
+         * Generate a link to a CSS file.
+         *
+         * @param string $url
+         * @param array $attributes
+         * @param bool $secure
+         * @return string 
+         * @static 
+         */
+        public static function style($url, $attributes = array(), $secure = null){
+            return \Collective\Html\HtmlBuilder::style($url, $attributes, $secure);
+        }
+        
+        /**
+         * Generate an HTML image element.
+         *
+         * @param string $url
+         * @param string $alt
+         * @param array $attributes
+         * @param bool $secure
+         * @return string 
+         * @static 
+         */
+        public static function image($url, $alt = null, $attributes = array(), $secure = null){
+            return \Collective\Html\HtmlBuilder::image($url, $alt, $attributes, $secure);
+        }
+        
+        /**
+         * Generate a link to a Favicon file.
+         *
+         * @param string $url
+         * @param array $attributes
+         * @param bool $secure
+         * @return string 
+         * @static 
+         */
+        public static function favicon($url, $attributes = array(), $secure = null){
+            return \Collective\Html\HtmlBuilder::favicon($url, $attributes, $secure);
+        }
+        
+        /**
+         * Generate a HTML link.
+         *
+         * @param string $url
+         * @param string $title
+         * @param array $attributes
+         * @param bool $secure
+         * @return string 
+         * @static 
+         */
+        public static function link($url, $title = null, $attributes = array(), $secure = null){
+            return \Collective\Html\HtmlBuilder::link($url, $title, $attributes, $secure);
+        }
+        
+        /**
+         * Generate a HTTPS HTML link.
+         *
+         * @param string $url
+         * @param string $title
+         * @param array $attributes
+         * @return string 
+         * @static 
+         */
+        public static function secureLink($url, $title = null, $attributes = array()){
+            return \Collective\Html\HtmlBuilder::secureLink($url, $title, $attributes);
+        }
+        
+        /**
+         * Generate a HTML link to an asset.
+         *
+         * @param string $url
+         * @param string $title
+         * @param array $attributes
+         * @param bool $secure
+         * @return string 
+         * @static 
+         */
+        public static function linkAsset($url, $title = null, $attributes = array(), $secure = null){
+            return \Collective\Html\HtmlBuilder::linkAsset($url, $title, $attributes, $secure);
+        }
+        
+        /**
+         * Generate a HTTPS HTML link to an asset.
+         *
+         * @param string $url
+         * @param string $title
+         * @param array $attributes
+         * @return string 
+         * @static 
+         */
+        public static function linkSecureAsset($url, $title = null, $attributes = array()){
+            return \Collective\Html\HtmlBuilder::linkSecureAsset($url, $title, $attributes);
+        }
+        
+        /**
+         * Generate a HTML link to a named route.
+         *
+         * @param string $name
+         * @param string $title
+         * @param array $parameters
+         * @param array $attributes
+         * @return string 
+         * @static 
+         */
+        public static function linkRoute($name, $title = null, $parameters = array(), $attributes = array()){
+            return \Collective\Html\HtmlBuilder::linkRoute($name, $title, $parameters, $attributes);
+        }
+        
+        /**
+         * Generate a HTML link to a controller action.
+         *
+         * @param string $action
+         * @param string $title
+         * @param array $parameters
+         * @param array $attributes
+         * @return string 
+         * @static 
+         */
+        public static function linkAction($action, $title = null, $parameters = array(), $attributes = array()){
+            return \Collective\Html\HtmlBuilder::linkAction($action, $title, $parameters, $attributes);
+        }
+        
+        /**
+         * Generate a HTML link to an email address.
+         *
+         * @param string $email
+         * @param string $title
+         * @param array $attributes
+         * @return string 
+         * @static 
+         */
+        public static function mailto($email, $title = null, $attributes = array()){
+            return \Collective\Html\HtmlBuilder::mailto($email, $title, $attributes);
+        }
+        
+        /**
+         * Obfuscate an e-mail address to prevent spam-bots from sniffing it.
+         *
+         * @param string $email
+         * @return string 
+         * @static 
+         */
+        public static function email($email){
+            return \Collective\Html\HtmlBuilder::email($email);
+        }
+        
+        /**
+         * Generate an ordered list of items.
+         *
+         * @param array $list
+         * @param array $attributes
+         * @return string 
+         * @static 
+         */
+        public static function ol($list, $attributes = array()){
+            return \Collective\Html\HtmlBuilder::ol($list, $attributes);
+        }
+        
+        /**
+         * Generate an un-ordered list of items.
+         *
+         * @param array $list
+         * @param array $attributes
+         * @return string 
+         * @static 
+         */
+        public static function ul($list, $attributes = array()){
+            return \Collective\Html\HtmlBuilder::ul($list, $attributes);
+        }
+        
+        /**
+         * Generate a description list of items.
+         *
+         * @param array $list
+         * @param array $attributes
+         * @return string 
+         * @static 
+         */
+        public static function dl($list, $attributes = array()){
+            return \Collective\Html\HtmlBuilder::dl($list, $attributes);
+        }
+        
+        /**
+         * Build an HTML attribute string from an array.
+         *
+         * @param array $attributes
+         * @return string 
+         * @static 
+         */
+        public static function attributes($attributes){
+            return \Collective\Html\HtmlBuilder::attributes($attributes);
+        }
+        
+        /**
+         * Obfuscate a string to prevent spam-bots from sniffing it.
+         *
+         * @param string $value
+         * @return string 
+         * @static 
+         */
+        public static function obfuscate($value){
+            return \Collective\Html\HtmlBuilder::obfuscate($value);
+        }
+        
+        /**
+         * Generate a meta tag.
+         *
+         * @param string $name
+         * @param string $content
+         * @param array $attributes
+         * @return string 
+         * @static 
+         */
+        public static function meta($name, $content, $attributes = array()){
+            return \Collective\Html\HtmlBuilder::meta($name, $content, $attributes);
+        }
+        
+        /**
+         * Register a custom macro.
+         *
+         * @param string $name
+         * @param callable $macro
+         * @return void 
+         * @static 
+         */
+        public static function macro($name, $macro){
+            \Collective\Html\HtmlBuilder::macro($name, $macro);
+        }
+        
+        /**
+         * Checks if macro is registered.
+         *
+         * @param string $name
+         * @return bool 
+         * @static 
+         */
+        public static function hasMacro($name){
+            return \Collective\Html\HtmlBuilder::hasMacro($name);
+        }
+        
+    }
+
+
+    class JWTAuth extends \Tymon\JWTAuth\Facades\JWTAuth{
+        
+        /**
+         * Find a user using the user identifier in the subject claim.
+         *
+         * @param bool|string $token
+         * @return mixed 
+         * @static 
+         */
+        public static function toUser($token = false){
+            return \Tymon\JWTAuth\JWTAuth::toUser($token);
+        }
+        
+        /**
+         * Generate a token using the user identifier as the subject claim.
+         *
+         * @param mixed $user
+         * @param array $customClaims
+         * @return string 
+         * @static 
+         */
+        public static function fromUser($user, $customClaims = array()){
+            return \Tymon\JWTAuth\JWTAuth::fromUser($user, $customClaims);
+        }
+        
+        /**
+         * Attempt to authenticate the user and return the token.
+         *
+         * @param array $credentials
+         * @param array $customClaims
+         * @return false|string 
+         * @static 
+         */
+        public static function attempt($credentials = array(), $customClaims = array()){
+            return \Tymon\JWTAuth\JWTAuth::attempt($credentials, $customClaims);
+        }
+        
+        /**
+         * Authenticate a user via a token.
+         *
+         * @param mixed $token
+         * @return mixed 
+         * @static 
+         */
+        public static function authenticate($token = false){
+            return \Tymon\JWTAuth\JWTAuth::authenticate($token);
+        }
+        
+        /**
+         * Refresh an expired token.
+         *
+         * @param mixed $token
+         * @return string 
+         * @static 
+         */
+        public static function refresh($token = false){
+            return \Tymon\JWTAuth\JWTAuth::refresh($token);
+        }
+        
+        /**
+         * Invalidate a token (add it to the blacklist).
+         *
+         * @param mixed $token
+         * @return bool 
+         * @static 
+         */
+        public static function invalidate($token = false){
+            return \Tymon\JWTAuth\JWTAuth::invalidate($token);
+        }
+        
+        /**
+         * Get the token.
+         *
+         * @return bool|string 
+         * @static 
+         */
+        public static function getToken(){
+            return \Tymon\JWTAuth\JWTAuth::getToken();
+        }
+        
+        /**
+         * Get the raw Payload instance.
+         *
+         * @param mixed $token
+         * @return \Tymon\JWTAuth\Payload 
+         * @static 
+         */
+        public static function getPayload($token = false){
+            return \Tymon\JWTAuth\JWTAuth::getPayload($token);
+        }
+        
+        /**
+         * Parse the token from the request.
+         *
+         * @param string $query
+         * @return \Tymon\JWTAuth\JWTAuth 
+         * @static 
+         */
+        public static function parseToken($method = 'bearer', $header = 'authorization', $query = 'token'){
+            return \Tymon\JWTAuth\JWTAuth::parseToken($method, $header, $query);
+        }
+        
+        /**
+         * Set the identifier.
+         *
+         * @param string $identifier
+         * @return $this 
+         * @static 
+         */
+        public static function setIdentifier($identifier){
+            return \Tymon\JWTAuth\JWTAuth::setIdentifier($identifier);
+        }
+        
+        /**
+         * Get the identifier.
+         *
+         * @return string 
+         * @static 
+         */
+        public static function getIdentifier(){
+            return \Tymon\JWTAuth\JWTAuth::getIdentifier();
+        }
+        
+        /**
+         * Set the token.
+         *
+         * @param string $token
+         * @return $this 
+         * @static 
+         */
+        public static function setToken($token){
+            return \Tymon\JWTAuth\JWTAuth::setToken($token);
+        }
+        
+        /**
+         * Set the request instance.
+         *
+         * @param \Tymon\JWTAuth\Request $request
+         * @static 
+         */
+        public static function setRequest($request){
+            return \Tymon\JWTAuth\JWTAuth::setRequest($request);
+        }
+        
+        /**
+         * Get the JWTManager instance.
+         *
+         * @return \Tymon\JWTAuth\JWTManager 
+         * @static 
+         */
+        public static function manager(){
+            return \Tymon\JWTAuth\JWTAuth::manager();
+        }
+        
+    }
+
+
+    class JWTFactory extends \Tymon\JWTAuth\Facades\JWTFactory{
+        
+        /**
+         * Create the Payload instance.
+         *
+         * @param array $customClaims
+         * @return \Tymon\JWTAuth\Payload 
+         * @static 
+         */
+        public static function make($customClaims = array()){
+            return \Tymon\JWTAuth\PayloadFactory::make($customClaims);
+        }
+        
+        /**
+         * Add an array of claims to the Payload.
+         *
+         * @param array $claims
+         * @return $this 
+         * @static 
+         */
+        public static function addClaims($claims){
+            return \Tymon\JWTAuth\PayloadFactory::addClaims($claims);
+        }
+        
+        /**
+         * Add a claim to the Payload.
+         *
+         * @param string $name
+         * @param mixed $value
+         * @return $this 
+         * @static 
+         */
+        public static function addClaim($name, $value){
+            return \Tymon\JWTAuth\PayloadFactory::addClaim($name, $value);
+        }
+        
+        /**
+         * Build out the Claim DTO's.
+         *
+         * @return array 
+         * @static 
+         */
+        public static function resolveClaims(){
+            return \Tymon\JWTAuth\PayloadFactory::resolveClaims();
+        }
+        
+        /**
+         * Set the Issuer (iss) claim.
+         *
+         * @return string 
+         * @static 
+         */
+        public static function iss(){
+            return \Tymon\JWTAuth\PayloadFactory::iss();
+        }
+        
+        /**
+         * Set the Issued At (iat) claim.
+         *
+         * @return int 
+         * @static 
+         */
+        public static function iat(){
+            return \Tymon\JWTAuth\PayloadFactory::iat();
+        }
+        
+        /**
+         * Set the Expiration (exp) claim.
+         *
+         * @return int 
+         * @static 
+         */
+        public static function exp(){
+            return \Tymon\JWTAuth\PayloadFactory::exp();
+        }
+        
+        /**
+         * Set the Not Before (nbf) claim.
+         *
+         * @return int 
+         * @static 
+         */
+        public static function nbf(){
+            return \Tymon\JWTAuth\PayloadFactory::nbf();
+        }
+        
+        /**
+         * Set the token ttl (in minutes).
+         *
+         * @param int $ttl
+         * @return $this 
+         * @static 
+         */
+        public static function setTTL($ttl){
+            return \Tymon\JWTAuth\PayloadFactory::setTTL($ttl);
+        }
+        
+        /**
+         * Get the token ttl.
+         *
+         * @return int 
+         * @static 
+         */
+        public static function getTTL(){
+            return \Tymon\JWTAuth\PayloadFactory::getTTL();
+        }
+        
+        /**
+         * Set the refresh flow.
+         *
+         * @param bool $refreshFlow
+         * @return $this 
+         * @static 
+         */
+        public static function setRefreshFlow($refreshFlow = true){
+            return \Tymon\JWTAuth\PayloadFactory::setRefreshFlow($refreshFlow);
         }
         
     }
@@ -12217,6 +13298,864 @@ namespace {
         public static function getDrivers(){
             //Method inherited from \Illuminate\Support\Manager            
             return \Laravel\Socialite\SocialiteManager::getDrivers();
+        }
+        
+    }
+
+
+    class Entrust extends \Zizaco\Entrust\EntrustFacade{
+        
+        /**
+         * Checks if the current user has a role by its name
+         *
+         * @param string $name Role name.
+         * @return bool 
+         * @static 
+         */
+        public static function hasRole($role, $requireAll = false){
+            return \Zizaco\Entrust\Entrust::hasRole($role, $requireAll);
+        }
+        
+        /**
+         * Check if the current user has a permission by its name
+         *
+         * @param string $permission Permission string.
+         * @return bool 
+         * @static 
+         */
+        public static function can($permission, $requireAll = false){
+            return \Zizaco\Entrust\Entrust::can($permission, $requireAll);
+        }
+        
+        /**
+         * Check if the current user has a role or permission by its name
+         *
+         * @param array|string $roles The role(s) needed.
+         * @param array|string $permissions The permission(s) needed.
+         * @param array $options The Options.
+         * @return bool 
+         * @static 
+         */
+        public static function ability($roles, $permissions, $options = array()){
+            return \Zizaco\Entrust\Entrust::ability($roles, $permissions, $options);
+        }
+        
+        /**
+         * Get the currently authenticated user or null.
+         *
+         * @return \Zizaco\Entrust\Illuminate\Auth\UserInterface|null 
+         * @static 
+         */
+        public static function user(){
+            return \Zizaco\Entrust\Entrust::user();
+        }
+        
+        /**
+         * Filters a route for a role or set of roles.
+         * 
+         * If the third parameter is null then abort with status code 403.
+         * Otherwise the $result is returned.
+         *
+         * @param string $route Route pattern. i.e: "admin/*"
+         * @param array|string $roles The role(s) needed
+         * @param mixed $result i.e: Redirect::to('/')
+         * @param bool $requireAll User must have all roles
+         * @return mixed 
+         * @static 
+         */
+        public static function routeNeedsRole($route, $roles, $result = null, $requireAll = true){
+            return \Zizaco\Entrust\Entrust::routeNeedsRole($route, $roles, $result, $requireAll);
+        }
+        
+        /**
+         * Filters a route for a permission or set of permissions.
+         * 
+         * If the third parameter is null then abort with status code 403.
+         * Otherwise the $result is returned.
+         *
+         * @param string $route Route pattern. i.e: "admin/*"
+         * @param array|string $permissions The permission(s) needed
+         * @param mixed $result i.e: Redirect::to('/')
+         * @param bool $requireAll User must have all permissions
+         * @return mixed 
+         * @static 
+         */
+        public static function routeNeedsPermission($route, $permissions, $result = null, $requireAll = true){
+            return \Zizaco\Entrust\Entrust::routeNeedsPermission($route, $permissions, $result, $requireAll);
+        }
+        
+        /**
+         * Filters a route for role(s) and/or permission(s).
+         * 
+         * If the third parameter is null then abort with status code 403.
+         * Otherwise the $result is returned.
+         *
+         * @param string $route Route pattern. i.e: "admin/*"
+         * @param array|string $roles The role(s) needed
+         * @param array|string $permissions The permission(s) needed
+         * @param mixed $result i.e: Redirect::to('/')
+         * @param bool $requireAll User must have all roles and permissions
+         * @return void 
+         * @static 
+         */
+        public static function routeNeedsRoleOrPermission($route, $roles, $permissions, $result = null, $requireAll = false){
+            \Zizaco\Entrust\Entrust::routeNeedsRoleOrPermission($route, $roles, $permissions, $result, $requireAll);
+        }
+        
+    }
+
+
+    class role extends \Zizaco\Entrust\Middleware\EntrustRole{
+        
+    }
+
+
+    class permission extends \Zizaco\Entrust\Middleware\EntrustPermission{
+        
+    }
+
+
+    class ability extends \Zizaco\Entrust\Middleware\EntrustAbility{
+        
+    }
+
+
+    class Carbon extends \Carbon\Carbon{
+        
+    }
+
+
+    class CustomAppException extends \App\Core\CustomAppException{
+        
+    }
+
+
+    class FeedParser extends \App\Core\FeedParser{
+        
+    }
+
+
+    class ViewHelper extends \App\Core\ViewHelper{
+        
+    }
+
+
+    class Image extends \Intervention\Image\Facades\Image{
+        
+        /**
+         * Overrides configuration settings
+         *
+         * @param array $config
+         * @static 
+         */
+        public static function configure($config = array()){
+            return \Intervention\Image\ImageManager::configure($config);
+        }
+        
+        /**
+         * Initiates an Image instance from different input types
+         *
+         * @param mixed $data
+         * @return \Intervention\Image\Image 
+         * @static 
+         */
+        public static function make($data){
+            return \Intervention\Image\ImageManager::make($data);
+        }
+        
+        /**
+         * Creates an empty image canvas
+         *
+         * @param integer $width
+         * @param integer $height
+         * @param mixed $background
+         * @return \Intervention\Image\Image 
+         * @static 
+         */
+        public static function canvas($width, $height, $background = null){
+            return \Intervention\Image\ImageManager::canvas($width, $height, $background);
+        }
+        
+        /**
+         * Create new cached image and run callback
+         * (requires additional package intervention/imagecache)
+         *
+         * @param \Closure $callback
+         * @param integer $lifetime
+         * @param boolean $returnObj
+         * @return \Intervention\Image\Image 
+         * @static 
+         */
+        public static function cache($callback, $lifetime = null, $returnObj = false){
+            return \Intervention\Image\ImageManager::cache($callback, $lifetime, $returnObj);
+        }
+        
+    }
+
+
+    class MetaTag extends \Torann\LaravelMetaTags\Facades\MetaTag{
+        
+        /**
+         * Set app support locales.
+         *
+         * @param array $locals
+         * @static 
+         */
+        public static function setLocales($locals = array()){
+            return \Torann\LaravelMetaTags\MetaTag::setLocales($locals);
+        }
+        
+        /**
+         * 
+         *
+         * @param string $key
+         * @param string $default
+         * @return string 
+         * @static 
+         */
+        public static function get($key, $default = null){
+            return \Torann\LaravelMetaTags\MetaTag::get($key, $default);
+        }
+        
+        /**
+         * 
+         *
+         * @param string $key
+         * @param string $value
+         * @return string 
+         * @static 
+         */
+        public static function set($key, $value = null){
+            return \Torann\LaravelMetaTags\MetaTag::set($key, $value);
+        }
+        
+        /**
+         * Create a tag based on the given key
+         *
+         * @param string $key
+         * @param string $value
+         * @return string 
+         * @static 
+         */
+        public static function tag($key, $value = ''){
+            return \Torann\LaravelMetaTags\MetaTag::tag($key, $value);
+        }
+        
+        /**
+         * Create canonical tags
+         *
+         * @return string 
+         * @static 
+         */
+        public static function canonical(){
+            return \Torann\LaravelMetaTags\MetaTag::canonical();
+        }
+        
+        /**
+         * Create open graph tags
+         *
+         * @return string 
+         * @static 
+         */
+        public static function openGraph(){
+            return \Torann\LaravelMetaTags\MetaTag::openGraph();
+        }
+        
+        /**
+         * Create twitter card tags
+         *
+         * @return string 
+         * @static 
+         */
+        public static function twitterCard(){
+            return \Torann\LaravelMetaTags\MetaTag::twitterCard();
+        }
+        
+    }
+
+
+    class Notifynder extends \Fenos\Notifynder\Facades\Notifynder{
+        
+        /**
+         * Set the category of the
+         * notification
+         *
+         * @param $name
+         * @return $this 
+         * @static 
+         */
+        public static function category($name){
+            return \Fenos\Notifynder\NotifynderManager::category($name);
+        }
+        
+        /**
+         * Define an entity when Notifynder is
+         * used Polymorpically
+         *
+         * @param $name
+         * @return $this 
+         * @static 
+         */
+        public static function entity($name){
+            return \Fenos\Notifynder\NotifynderManager::entity($name);
+        }
+        
+        /**
+         * Add a category
+         *
+         * @param $name
+         * @param $text
+         * @return static 
+         * @static 
+         */
+        public static function addCategory($name, $text){
+            return \Fenos\Notifynder\NotifynderManager::addCategory($name, $text);
+        }
+        
+        /**
+         * Update a category
+         *
+         * @param array $updates
+         * @param $id
+         * @return mixed 
+         * @static 
+         */
+        public static function updateCategory($updates, $id){
+            return \Fenos\Notifynder\NotifynderManager::updateCategory($updates, $id);
+        }
+        
+        /**
+         * Send notifications
+         * Both multiple and single
+         *
+         * @param array $info
+         * @return mixed 
+         * @static 
+         */
+        public static function send($info = array()){
+            return \Fenos\Notifynder\NotifynderManager::send($info);
+        }
+        
+        /**
+         * Send immediately the notification
+         * even if the queue is enabled
+         *
+         * @param array $info
+         * @return mixed 
+         * @static 
+         */
+        public static function sendNow($info = array()){
+            return \Fenos\Notifynder\NotifynderManager::sendNow($info);
+        }
+        
+        /**
+         * Send One notification
+         *
+         * @param array $info
+         * @return mixed 
+         * @static 
+         */
+        public static function sendOne($info = array()){
+            return \Fenos\Notifynder\NotifynderManager::sendOne($info);
+        }
+        
+        /**
+         * Send multiple notifications
+         *
+         * @param array $info
+         * @return \Fenos\Notifynder\Senders\SendMultiple 
+         * @static 
+         */
+        public static function sendMultiple($info = array()){
+            return \Fenos\Notifynder\NotifynderManager::sendMultiple($info);
+        }
+        
+        /**
+         * Send a group of notifications
+         *
+         * @param $group_name
+         * @param $info
+         * @return mixed 
+         * @static 
+         */
+        public static function sendGroup($group_name, $info = array()){
+            return \Fenos\Notifynder\NotifynderManager::sendGroup($group_name, $info);
+        }
+        
+        /**
+         * Read one notification
+         *
+         * @param $notification_id
+         * @return bool|\Fenos\Notifynder\Models\Notification 
+         * @static 
+         */
+        public static function readOne($notification_id){
+            return \Fenos\Notifynder\NotifynderManager::readOne($notification_id);
+        }
+        
+        /**
+         * Read notification in base the number
+         * Given
+         *
+         * @param $to_id
+         * @param $numbers
+         * @param string $order
+         * @return mixed 
+         * @static 
+         */
+        public static function readLimit($to_id, $numbers, $order = 'ASC'){
+            return \Fenos\Notifynder\NotifynderManager::readLimit($to_id, $numbers, $order);
+        }
+        
+        /**
+         * Read all notifications of the given
+         * entity
+         *
+         * @param $to_id
+         * @return \Fenos\Notifynder\Number 
+         * @static 
+         */
+        public static function readAll($to_id){
+            return \Fenos\Notifynder\NotifynderManager::readAll($to_id);
+        }
+        
+        /**
+         * Delete a single notification
+         *
+         * @param $notification_id
+         * @return Bool 
+         * @static 
+         */
+        public static function delete($notification_id){
+            return \Fenos\Notifynder\NotifynderManager::delete($notification_id);
+        }
+        
+        /**
+         * Delete number of notifications
+         * secified of the given entity
+         *
+         * @param $to_id
+         * @param $number
+         * @param string $order
+         * @return mixed 
+         * @static 
+         */
+        public static function deleteLimit($to_id, $number, $order = 'ASC'){
+            return \Fenos\Notifynder\NotifynderManager::deleteLimit($to_id, $number, $order);
+        }
+        
+        /**
+         * Delete all notifications
+         * of the the given entity
+         *
+         * @param $to_id
+         * @return Bool 
+         * @static 
+         */
+        public static function deleteAll($to_id){
+            return \Fenos\Notifynder\NotifynderManager::deleteAll($to_id);
+        }
+        
+        /**
+         * Delete All notifications from a
+         * defined category
+         *
+         * @param $category_name string
+         * @param $expired Bool
+         * @return Bool 
+         * @static 
+         */
+        public static function deleteByCategory($category_name, $expired = false){
+            return \Fenos\Notifynder\NotifynderManager::deleteByCategory($category_name, $expired);
+        }
+        
+        /**
+         * Get Notifications not read
+         * of the given entity
+         *
+         * @param $to_id
+         * @param null $limit
+         * @param null|int $paginate
+         * @param string $order
+         * @param \Closure $filterScope
+         * @return mixed 
+         * @static 
+         */
+        public static function getNotRead($to_id, $limit = null, $paginate = null, $order = 'desc', $filterScope = null){
+            return \Fenos\Notifynder\NotifynderManager::getNotRead($to_id, $limit, $paginate, $order, $filterScope);
+        }
+        
+        /**
+         * Get all notifications of the
+         * given entity
+         *
+         * @param $to_id
+         * @param null $limit
+         * @param int|null $paginate
+         * @param string $order
+         * @param \Closure $filterScope
+         * @return mixed 
+         * @static 
+         */
+        public static function getAll($to_id, $limit = null, $paginate = null, $order = 'desc', $filterScope = null){
+            return \Fenos\Notifynder\NotifynderManager::getAll($to_id, $limit, $paginate, $order, $filterScope);
+        }
+        
+        /**
+         * Get number of notification not read
+         * of the given entity
+         *
+         * @param $to_id
+         * @param \Closure $filterScope
+         * @return mixed 
+         * @static 
+         */
+        public static function countNotRead($to_id, $filterScope = null){
+            return \Fenos\Notifynder\NotifynderManager::countNotRead($to_id, $filterScope);
+        }
+        
+        /**
+         * Find Notification by ID
+         *
+         * @param $notification_id
+         * @return \Illuminate\Database\Eloquent\Collection|\Illuminate\Database\Eloquent\Model|static 
+         * @static 
+         */
+        public static function findNotificationById($notification_id){
+            return \Fenos\Notifynder\NotifynderManager::findNotificationById($notification_id);
+        }
+        
+        /**
+         * Get last notification of the given
+         * entity, second parameter can filter by
+         * category
+         *
+         * @param $to_id
+         * @param null $category
+         * @param \Closure $filterScope
+         * @return mixed 
+         * @static 
+         */
+        public static function getLastNotification($to_id, $category = null, $filterScope = null){
+            return \Fenos\Notifynder\NotifynderManager::getLastNotification($to_id, $category, $filterScope);
+        }
+        
+        /**
+         * Add category to a group
+         * giving the names of them
+         *
+         * @param $gorup_name
+         * @param $category_name
+         * @return mixed 
+         * @static 
+         */
+        public static function addCategoryToGroupByName($gorup_name, $category_name){
+            return \Fenos\Notifynder\NotifynderManager::addCategoryToGroupByName($gorup_name, $category_name);
+        }
+        
+        /**
+         * Add category to a group
+         * giving the ids of them
+         *
+         * @param $gorup_id
+         * @param $category_id
+         * @return mixed 
+         * @static 
+         */
+        public static function addCategoryToGroupById($gorup_id, $category_id){
+            return \Fenos\Notifynder\NotifynderManager::addCategoryToGroupById($gorup_id, $category_id);
+        }
+        
+        /**
+         * Add categories to a group having as first parameter
+         * the name of the group, and others as name
+         * categories
+         *
+         * @return mixed 
+         * @static 
+         */
+        public static function addCategoriesToGroup(){
+            return \Fenos\Notifynder\NotifynderManager::addCategoriesToGroup();
+        }
+        
+        /**
+         * Fire method for fire listeners
+         * of logic
+         *
+         * @param string $key
+         * @param string $category_name
+         * @param mixed|null $values
+         * @return mixed|null 
+         * @static 
+         */
+        public static function fire($key, $category_name, $values = array()){
+            return \Fenos\Notifynder\NotifynderManager::fire($key, $category_name, $values);
+        }
+        
+        /**
+         * Associate events to categories
+         *
+         * @param $data
+         * @param array $delegation
+         * @return mixed 
+         * @static 
+         */
+        public static function delegate($delegation, $data = array()){
+            return \Fenos\Notifynder\NotifynderManager::delegate($delegation, $data);
+        }
+        
+        /**
+         * Boot Listeners
+         *
+         * @param array $listeners
+         * @static 
+         */
+        public static function bootListeners($listeners){
+            return \Fenos\Notifynder\NotifynderManager::bootListeners($listeners);
+        }
+        
+        /**
+         * Get instance of the notifynder builder
+         *
+         * @return \Fenos\Notifynder\NotifynderBuilder 
+         * @static 
+         */
+        public static function builder(){
+            return \Fenos\Notifynder\NotifynderManager::builder();
+        }
+        
+        /**
+         * Extend a custom sender method
+         *
+         * @param $name
+         * @param callable $registrar
+         * @return $this 
+         * @static 
+         */
+        public static function extend($name, $registrar){
+            return \Fenos\Notifynder\NotifynderManager::extend($name, $registrar);
+        }
+        
+        /**
+         * Return the Id of the category
+         *
+         * @return mixed 
+         * @static 
+         */
+        public static function id(){
+            return \Fenos\Notifynder\NotifynderManager::id();
+        }
+        
+        /**
+         * Get the categoriesContainer property
+         *
+         * @param $name
+         * @return array 
+         * @static 
+         */
+        public static function getCategoriesContainer($name){
+            return \Fenos\Notifynder\NotifynderManager::getCategoriesContainer($name);
+        }
+        
+        /**
+         * Define which method
+         * the event dispatcher has
+         * to send the notifications
+         *
+         * @param $customSenderName
+         * @return $this 
+         * @static 
+         */
+        public static function dipatchWith($customSenderName){
+            return \Fenos\Notifynder\NotifynderManager::dipatchWith($customSenderName);
+        }
+        
+        /**
+         * Set who will send the notification
+         *
+         * @return $this 
+         * @static 
+         */
+        public static function from(){
+            //Method inherited from \Fenos\Notifynder\Builder\NotifynderBuilder            
+            return \Fenos\Notifynder\NotifynderManager::from();
+        }
+        
+        /**
+         * Set who will receive the notification
+         *
+         * @return $this 
+         * @static 
+         */
+        public static function to(){
+            //Method inherited from \Fenos\Notifynder\Builder\NotifynderBuilder            
+            return \Fenos\Notifynder\NotifynderManager::to();
+        }
+        
+        /**
+         * Set the url of the notification
+         *
+         * @param $url
+         * @return $this 
+         * @static 
+         */
+        public static function url($url){
+            //Method inherited from \Fenos\Notifynder\Builder\NotifynderBuilder            
+            return \Fenos\Notifynder\NotifynderManager::url($url);
+        }
+        
+        /**
+         * Set expire time
+         *
+         * @param $datetime
+         * @return $this 
+         * @static 
+         */
+        public static function expire($datetime){
+            //Method inherited from \Fenos\Notifynder\Builder\NotifynderBuilder            
+            return \Fenos\Notifynder\NotifynderManager::expire($datetime);
+        }
+        
+        /**
+         * Set extra value
+         *
+         * @param $extra
+         * @return $this 
+         * @static 
+         */
+        public static function extra($extra = array()){
+            //Method inherited from \Fenos\Notifynder\Builder\NotifynderBuilder            
+            return \Fenos\Notifynder\NotifynderManager::extra($extra);
+        }
+        
+        /**
+         * Build the array with the builder inside
+         * a Closure, it has more flexibility for
+         * the generation of your array
+         *
+         * @param callable|\Closure $closure
+         * @return array|false 
+         * @throws NotificationBuilderException
+         * @static 
+         */
+        public static function raw($closure){
+            //Method inherited from \Fenos\Notifynder\Builder\NotifynderBuilder            
+            return \Fenos\Notifynder\NotifynderManager::raw($closure);
+        }
+        
+        /**
+         * Loop the datas for create
+         * multi notifications array
+         *
+         * @param $dataToIterate
+         * @param \Closure $builder
+         * @return $this 
+         * @throws NotificationBuilderException
+         * @static 
+         */
+        public static function loop($dataToIterate, $builder){
+            //Method inherited from \Fenos\Notifynder\Builder\NotifynderBuilder            
+            return \Fenos\Notifynder\NotifynderManager::loop($dataToIterate, $builder);
+        }
+        
+        /**
+         * Compose the builder to
+         * the array
+         *
+         * @throws NotificationBuilderException
+         * @return mixed 
+         * @static 
+         */
+        public static function toArray(){
+            //Method inherited from \Fenos\Notifynder\Builder\NotifynderBuilder            
+            return \Fenos\Notifynder\NotifynderManager::toArray();
+        }
+        
+        /**
+         * 
+         *
+         * @param mixed $offset
+         * @return bool 
+         * @static 
+         */
+        public static function offsetExists($offset){
+            //Method inherited from \Fenos\Notifynder\Builder\NotifynderBuilder            
+            return \Fenos\Notifynder\NotifynderManager::offsetExists($offset);
+        }
+        
+        /**
+         * 
+         *
+         * @param mixed $offset
+         * @return mixed 
+         * @static 
+         */
+        public static function offsetGet($offset){
+            //Method inherited from \Fenos\Notifynder\Builder\NotifynderBuilder            
+            return \Fenos\Notifynder\NotifynderManager::offsetGet($offset);
+        }
+        
+        /**
+         * 
+         *
+         * @param mixed $offset
+         * @param mixed $value
+         * @static 
+         */
+        public static function offsetSet($offset, $value){
+            //Method inherited from \Fenos\Notifynder\Builder\NotifynderBuilder            
+            return \Fenos\Notifynder\NotifynderManager::offsetSet($offset, $value);
+        }
+        
+        /**
+         * 
+         *
+         * @param mixed $offset
+         * @return null 
+         * @static 
+         */
+        public static function offsetUnset($offset){
+            //Method inherited from \Fenos\Notifynder\Builder\NotifynderBuilder            
+            return \Fenos\Notifynder\NotifynderManager::offsetUnset($offset);
+        }
+        
+        /**
+         * Check that the builder has
+         * the required field to send the
+         * notifications correctly
+         *
+         * @param $array
+         * @return bool 
+         * @static 
+         */
+        public static function hasRequiredFields($array){
+            //Method inherited from \Fenos\Notifynder\Builder\NotifynderBuilder            
+            return \Fenos\Notifynder\NotifynderManager::hasRequiredFields($array);
+        }
+        
+        /**
+         * Check if is a required field
+         *
+         * @param $offset
+         * @return bool 
+         * @static 
+         */
+        public static function isRequiredField($offset){
+            //Method inherited from \Fenos\Notifynder\Builder\NotifynderBuilder            
+            return \Fenos\Notifynder\NotifynderManager::isRequiredField($offset);
+        }
+        
+        /**
+         * Check if the array is
+         * multidimensional
+         *
+         * @param $arr
+         * @return bool 
+         * @static 
+         */
+        public static function isMultidimensionalArray($arr){
+            //Method inherited from \Fenos\Notifynder\Builder\NotifynderBuilder            
+            return \Fenos\Notifynder\NotifynderManager::isMultidimensionalArray($arr);
         }
         
     }
