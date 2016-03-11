@@ -5861,43 +5861,6 @@ main.page-content .card {
         padding: 5px 5px 2px;
         background: #88C880; }
 
-.room-filter {
-  position: absolute;
-  left: 10px;
-  width: 190px; }
-  .room-filter .extra-nav li {
-    border-bottom: 1px solid #c1c1c1;
-    text-transform: uppercase;
-    position: relative; }
-    .room-filter .extra-nav li::after {
-      content: '+';
-      position: absolute;
-      right: 10px;
-      top: 20px;
-      color: #000; }
-    .room-filter .extra-nav li a {
-      display: block;
-      width: 100%;
-      padding: 20px 0 20px 30px;
-      background-repeat: no-repeat;
-      background-position: left center; }
-      .room-filter .extra-nav li a.diy-link {
-        background-image: url("/assets/images/icons/tools-3d.png"); }
-      .room-filter .extra-nav li a.shopping-link {
-        background-image: url("/assets/images/icons/bag-3d-green.png"); }
-      .room-filter .extra-nav li a.travel-link {
-        background-image: url("/assets/images/icons/bag-3d-blue.png"); }
-      .room-filter .extra-nav li a.wearables-link {
-        background-image: url("/assets/images/icons/watch-3d.png"); }
-      .room-filter .extra-nav li a.decor-link {
-        background-image: url("/assets/images/icons/fire-3d.png"); }
-  .room-filter .room-list {
-    margin-top: 35px; }
-    .room-filter .room-list li a {
-      font-size: 1.55rem;
-      color: #a8a8a8;
-      line-height: 2; }
-
 .box-container {
   width: 100%;
   float: left;
@@ -8007,7 +7970,7 @@ footer.about-footer {
 
 @media only screen and (max-width: 1570px) {
   aside.room-filter {
-    display: none; } }
+    /*    display: none;*/ } }
 
 @media only screen and (max-width: 860px) {
   #top-nav a .m-icon-text {
@@ -9112,19 +9075,84 @@ body.shop-category #category-banner {
         background-color: rgba(255, 170, 0, 0.7); }
 
 body.shop-category .popular-new {
-  width: 100%;
+  /*        width: 100%;*/
   text-align: right;
   /*        padding-top: 35px;*/
   /*        padding-bottom: 35px;*/ }
 
-body.shop-category .main-content > div .grid-box-3 {
-  border-left: 1px solid #eee;
-  border-top: 1px solid #eee; }
+body.shop-category .main-content {
+  float: right; }
+  body.shop-category .main-content .grid-box-3 {
+    border-left: 1px solid #eee;
+    border-top: 1px solid #eee;
+    width: 100%; }
+  body.shop-category .main-content .box-item {
+    border: 0px;
+    border-right: 1px solid #eee;
+    border-bottom: 1px solid #eee; }
 
-body.shop-category .main-content > div .box-item {
-  border: 0px;
-  border-right: 1px solid #eee;
-  border-bottom: 1px solid #eee; }
+body.shop-category .room-filter {
+  /*  position: absolute;*/
+  display: none;
+  left: 10px;
+  width: 190px;
+  float: left; }
+  body.shop-category .room-filter .extra-nav li {
+    border-bottom: 1px solid #c1c1c1;
+    text-transform: uppercase;
+    position: relative; }
+    body.shop-category .room-filter .extra-nav li::after {
+      content: '+';
+      position: absolute;
+      right: 10px;
+      top: 20px;
+      color: #000; }
+    body.shop-category .room-filter .extra-nav li a {
+      display: block;
+      width: 100%;
+      padding: 20px 0 20px 0px;
+      background-repeat: no-repeat;
+      background-position: left center; }
+      body.shop-category .room-filter .extra-nav li a.diy-link {
+        background-image: url("/assets/images/icons/tools-3d.png"); }
+      body.shop-category .room-filter .extra-nav li a.shopping-link {
+        background-image: url("/assets/images/icons/bag-3d-green.png"); }
+      body.shop-category .room-filter .extra-nav li a.travel-link {
+        background-image: url("/assets/images/icons/bag-3d-blue.png"); }
+      body.shop-category .room-filter .extra-nav li a.wearables-link {
+        background-image: url("/assets/images/icons/watch-3d.png"); }
+      body.shop-category .room-filter .extra-nav li a.decor-link {
+        background-image: url("/assets/images/icons/fire-3d.png"); }
+  body.shop-category .room-filter .room-list {
+    margin-top: 35px; }
+    body.shop-category .room-filter .room-list li a {
+      font-size: 1.55rem;
+      color: #a8a8a8;
+      line-height: 2; }
+
+body.shop-category .show-filter .room-filter {
+  display: block;
+  animation-name: room-filter-animation;
+  animation-duration: 2s; }
+
+body.shop-category .show-filter .grid-box-3 {
+  width: calc(100% - 190px);
+  /*            animation-name: room-filter-gridbox-animation;*/
+  /*            animation-duration: 2s;*/ }
+
+@keyframes room-filter-animation {
+  from {
+    opacity: 0;
+    filter: alpha(opacity=0); }
+  to {
+    opacity: 1;
+    filter: alpha(opacity=100); } }
+
+@keyframes room-filter-gridbox-animation {
+  from {
+    width: 100%; }
+  to {
+    width: calc(100% - 190px); } }
 
 .profile-photo {
   border-radius: 100px;
