@@ -21,7 +21,10 @@
                 $user_id = $user->data->ID;
                 wp_set_current_user($user_id, $creds['user_login']);
                 wp_set_auth_cookie($user_id);
-                $response['success'] = 'Logged in';
+                echo json_encode(['success' => 'logged in']);
+
+
+//                wp_redirect(get_admin_url()); exit;
             }
         }
     }elseif($_REQUEST['call'] == 'logout'){
@@ -29,5 +32,4 @@
         $response['success'] = 'Logged out';
     }
 
-    echo json_encode($response);
 ?>

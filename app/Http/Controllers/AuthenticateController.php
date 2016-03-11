@@ -7,6 +7,7 @@
     use App\Events\SendWelcomeMail;
 
     use App\Models\Subscriber;
+    use App\Models\WpUser;
     use Crypt;
     use Illuminate\Http\Request;
     use Illuminate\Support\Facades\Redirect;
@@ -193,20 +194,23 @@
                 $this->setCookie('auth-token',$token);
             }
 
-            $wpLogin = WpUser::login($credentials['Email'], $credentials['Password'], $request['RememberMe']);
+            $from = $request->only('FromWP');
 
-            if(@$wpLogin['error']){
-                return $this->setStatusCode(IlluminateResponse::HTTP_INTERNAL_SERVER_ERROR)
-                    ->makeResponseWithError('Internal Server Error!' . $wpLogin['error']);
-            }else{
-                $response['WP'] = $wpLogin;
+            if($from['FromWP']){
+
+                if($request['RememberMe'] == true){
+                    $remember = 1;
+                }else{
+                    $remember = 0;
+                }
+                $url = '/ideas/api/?call=login&username=' . $credentials['Email'] . '&password=' . $credentials['Password'] . '&remember=' . $remember;
+
+                $response['redirectTo'] = $url;
             }
-
 
             return $this->setStatusCode(\Config::get("const.api-status.success-redirect"))
                 ->setAuthToken($token)
                 ->makeResponse($response);
-
         }
 
         /**
