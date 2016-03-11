@@ -231,5 +231,26 @@
 
         }
 
+        // Fetch notification for current user
+        public function notification($uid)
+        {
+//            $this->user->userNotification();
+           $data = $this->user->getNotificationForUser($uid);
+
+            return $this->setStatusCode(\Config::get("const.api-status.success"))
+                        ->makeResponse($data);
+
+        }
+
+        // Mark all notice as read
+        public function notificationReadAll($uid)
+        {
+            $result = $this->user->notificationMarkReadAll($uid);
+
+            return $this->setStatusCode(\Config::get("const.api-status.success"))
+                        ->makeResponse($result);
+
+        }
+
 
     }

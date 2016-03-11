@@ -48,8 +48,18 @@ publicApp.controller('ModalInstanceCtrltest', function ($scope, $uibModalInstanc
     };
 });
 
-publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$window', '$timeout', '$location', '$anchorScroll', '$uibModal', 'layoutApi', '$compile', 'FileUploader'
-    , function ($rootScope, $scope, $http, $window, $timeout, $location, $anchorScroll, $uibModal, layoutApi, $compile, FileUploader) {
+publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$window', '$timeout', '$location', '$anchorScroll', '$uibModal', 'layoutApi', '$compile','$interval', 'FileUploader'
+    , function ($rootScope, $scope, $http, $window, $timeout, $location, $anchorScroll, $uibModal, layoutApi, $compile, $interval ,FileUploader) {
+
+        // update comment in the comment view through AJAX call.
+        var commnetTimer = $interval(function(){
+            //  console.log("in");
+            if($scope.uid != null)
+            {
+                $scope.loadNotification($scope.uid);
+            }
+        },15000);//10000
+
 
         // Header profile option open and close on click action.
         if (!$rootScope.isCallEmailPopup) {
@@ -281,16 +291,21 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
             // popup signup
             $scope.popupSignup = true;
 
+            // notification
+            $scope.notificationCounter = 0;
+            $scope.notifications = [];
+            $scope.uid = null;
+
+
             //$scope.countSocialShares();
             //$scope.countSocialFollowers();
 
             $scope.socialCounter = function(){
-                console.log("before call");
+              //  console.log("before call");
                 $scope.countSocialShares();
                 $scope.countSocialFollowers();
-                console.log("call");
+               // console.log("call");
             };
-
         };
 
         // Add an Alert in a web application
@@ -647,6 +662,38 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
 
         };
 
+        //notification
+        $scope.loadNotification = function(uid){
+
+            $scope.uid = uid;
+            $http({
+                url: '/api/notification/' + uid,
+                method: "GET",
+            }).success(function (data) {
+
+                $scope.notificationCounter = data.data.NotReadNoticeCount;
+                $scope.notifications = data.data.NoticeNotRead;
+
+            });
+        };
+
+        $scope.readAllNotification = function(){
+
+           // $scope.uid = uid;
+            $http({
+                url: '/api/read-all-notification/' + $scope.uid,
+                method: "GET",
+            }).success(function (data) {
+
+                $scope.loadNotification($scope.uid);
+            //    $scope.notificationCounter = data.data.NotReadNoticeCount;
+            //    $scope.notifications = data.data.NoticeNotRead;
+
+            });
+        };
+
+
+
 
         // test function //
         $scope.chk = function () {
@@ -696,11 +743,10 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                 $('.fan-count.pint').html(response.pinterest);
                 $('.fan-count.inst').html(response.instagram);
             });
-        }
+        };
 
 
         $scope.initPage();
-        // $scope.addAlert('danger','testingtestingtestingtestingtestingtestingtesting');
 
     }]);
 

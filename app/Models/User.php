@@ -2,10 +2,13 @@
 
 namespace App\Models;
 
+use Fenos\Notifynder\Builder\NotifynderBuilder;
+use Fenos\Notifynder\Facades\Notifynder;
 use Illuminate\Database\Eloquent\Model;
 //use App\Models\UserProfile;
 use App\Models\Media;
 use App\Models\WpUser;
+use App\Models\Notification;
 
 
 use Illuminate\Auth\Authenticatable;
@@ -14,9 +17,11 @@ use Illuminate\Foundation\Auth\Access\Authorizable;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
 use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
+use Illuminate\Support\Collection;
 use Mockery\CountValidator\Exception;
 use Zizaco\Entrust\Traits\EntrustUserTrait;
 use Fenos\Notifynder\Notifable;
+use Carbon\Carbon;
 
 //use CustomAppException;
 
@@ -26,7 +31,7 @@ class User extends Model implements AuthenticatableContract,
                                     CanResetPasswordContract
 {
 
-    use Notifable,Authenticatable, Authorizable, CanResetPassword,
+    use Notifable, Authenticatable, Authorizable, CanResetPassword,
         EntrustUserTrait {
         EntrustUserTrait::can insteadof Authorizable;
     }
@@ -289,7 +294,7 @@ class User extends Model implements AuthenticatableContract,
         $wpUser = new WpUser();
 
         return $wpUser->all();
-       // User::setConnection('wpdb')where
+        // User::setConnection('wpdb')where
 
     }
 
@@ -306,25 +311,136 @@ class User extends Model implements AuthenticatableContract,
         }
     }
 
-    public function userNotification(){
-        $user = User::find(34);
+    // Broadcast notification for new event.
+    public function sendNotificationToUsers($info)
+    {
+        $PostTime = $info['PostTime'];
 
-      //  $user
+        if (count($info['Users']) != 0) {
+            Notifynder::loop($info['Users'], function (NotifynderBuilder $builder, $user) use ($info, $PostTime) {
 
-            /*
+                $builder->category($info['Category'])
+                        ->from($info['SenderId'])
+                        ->to($user)
+                        ->url($info['Permalink'])
+                        ->extra(compact('PostTime'));
+
+            })->send();
+
+        }
+    }
+
+
+    // Wrapper for all type of notification (future implementation)
+    public function getNotificationForUser($userId)
+    {
+        return $this->getProductNotification($userId);
+
+    }
+
+    public function getProductNotification($userId = 32)
+    {
+        $user = User::find($userId);
+
+        $notification['NotReadNoticeCount'] = $user->countNotificationsNotRead();
+
+        $notifications = $user->getNotificationsNotRead();
+
+        $userInfo = new User();
+
+        $product = new Product();
+
+        $noticeCollection = new Collection();
+
+        foreach($notifications as $notice)
+        {
+
+            $userInfo = $userInfo->getUserById($notice['from_id']);
+
+            $permalink = explode('/',$notice['url'])[1];
+
+            $product = $product->checkPermalink($permalink);
+
+            $data['UserId'] = $userInfo['id'];
+            $data['UserName'] = $userInfo['name'] ;
+            $data['UserPicture'] = $userInfo->medias[0]->media_link;
+            $data['ProductTitle'] = $product['product_name'];
+            $data['ProductLink'] = $notice['url'];
+            $data['NoticeRead'] = $notice['read'];
+
+            $dateTime = json_decode($notice['extra']);
+
+            $data['Time'] = Carbon::createFromTimestamp(strtotime($dateTime->PostTime))->diffForHumans();
+
+            $noticeCollection->push($data);
+        }
+
+        $notification['NoticeNotRead'] = $noticeCollection;
+
+        return $notification;
+    }
+
+    public function notificationMarkReadAll($userId)
+    {
+        $user = User::find($userId);
+
+        return $user->readAllNotifications();
+
+    }
+
+    public function markNotificationAsRead($info)
+    {
+        $notice = Notification::where('to_id', $info['UserId'])
+                              ->where('url', $info['Permalink'])
+                              ->update(['read' => 1]);
+    }
+
+
+    public function userNotification($flag = false)
+    {
+        $user = User::find(41);
+
+        // $flag = true;
+
+        if ($flag) {
+            Notifynder::category("user.following")
+                      ->from(41)
+                      ->to(41)
+                      ->url('/notice/do/5')
+                      ->send();
+        } else {
+            Notifynder::category("hello")
+                      ->from(41)
+                      ->to(41)
+                      ->url('/cccc/do/5')
+                      ->send();
+        }
+
+
+        // dd($user->getNotificationsNotRead());
+        dd($user->getNotifications($limit = 3, $paginate = true));
+
+
+        // dd($user->getNotificationsNotRead(),$user->readAllNotifications(),$user->getNotificationsNotRead());
+        // dd();
+
+
+        //  $user
+
+        /*
 $user->getNotifications($limit = null, $paginate = null, $order = 'desc');
 $user->getNotificationsNotRead($limit = null, $paginate = null, $order = 'desc');
 $user->getLastNotification();
 $user->countNotificationsNotRead($category = null);
 $user->readAllNotifications();
-             * */
+         * */
 
     }
 
-   /* public function throwExc()
-    {
-        throw new CustomAppException("hi");
-    }*/
+    /* public function throwExc()
+     {
+         throw new CustomAppException("hi");
+     }*/
 
 
 }

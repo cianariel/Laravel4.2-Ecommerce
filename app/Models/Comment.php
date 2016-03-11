@@ -68,7 +68,7 @@
             ->first();
 
             // product_permalink
-            $productComments = $product->comments;
+            $productComments = isset($product->comments)?$product->comments:[];
             $commentCollection = new Collection();
 
             $user = new User();

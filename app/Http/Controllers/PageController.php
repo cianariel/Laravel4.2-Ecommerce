@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 //use FeedParser;
 use MetaTag;
 use App\Models\Product;
+use App\Models\User;
 use App\Models\ProductCategory;
 use App\Models\Tag;
 use App\Models\Room; 
@@ -334,6 +335,19 @@ class PageController extends ApiController
         $product = new Product();
         $productData['product'] = $product->getViewForPublic($permalink);
 
+        // todo - check login user and implement mark as reade notification for the user
+
+        if(isset($userData['id']))
+        {
+            $user = new User();
+
+        //    $tmpPermalink = 'product/' . $permalink . '/#comment';
+
+        //    $user->markNotificationAsRead(['UserId'=>$userData['id'],'Permalink' => $tmpPermalink]);
+
+        }
+
+
         // Get category tree
         $catTree = $product->getCategoryHierarchy($productData['product']->product_category_id);
 
@@ -347,7 +361,7 @@ class PageController extends ApiController
             $tagNames[] = Tag::find($tagID)->tag_name;
         }
 
-        $relatedIdeas = self::getRelatedStories($productData['product']['id'], 3, $tagNames);
+        @$relatedIdeas = self::getRelatedStories($productData['product']['id'], 3, $tagNames);
 
 //        $related
 
