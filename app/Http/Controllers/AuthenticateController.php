@@ -194,19 +194,19 @@
                 $this->setCookie('auth-token',$token);
             }
 
-            $from = $request->only('FromWP');
-
-            if($from['FromWP']){
-
-                if($request['RememberMe'] == true){
-                    $remember = 1;
-                }else{
-                    $remember = 0;
-                }
-                $url = '/ideas/api/?call=login&username=' . $credentials['Email'] . '&password=' . $credentials['Password'] . '&remember=' . $remember;
-
-                $response['redirectTo'] = $url;
-            }
+//            $from = $request->only('FromWP');
+//
+//            if($from['FromWP']){
+//
+//                if($request['RememberMe'] == true){
+//                    $remember = 1;
+//                }else{
+//                    $remember = 0;
+//                }
+//                $url = '/ideas/api/?call=login&username=' . $credentials['Email'] . '&password=' . $credentials['Password'] . '&remember=' . $remember;
+//
+//                $response['redirectTo'] = $url;
+//            }
 
             return $this->setStatusCode(\Config::get("const.api-status.success-redirect"))
                 ->setAuthToken($token)
