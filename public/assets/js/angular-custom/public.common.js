@@ -542,34 +542,34 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                 }
             }).success(function (data) {
                 //   console.log(data.data);
+              
+                var WpLoginURL = 'https://ideaing.com/ideas/api?call=login&username=' + $scope.Email + '&password=' +  $scope.Password + '&remember=' + $scope.rememberMe;
 
-                var from = $location.search().from;
-                if(from === 'cms'){
-                    window.location = 'https://ideaing.com/ideas/wp-admin';
-                }
-
+                $http({
+                    url: WpLoginURL, 
+                    method: "GET"
+     
+                }).success(function (data) {
+                    var from = $location.search().from; // TODO -- disable this
+                    if(from === 'cms'){
+                        window.location = 'https://ideaing.com/ideas/wp-admin';
+                    }
+                }).error(function(data, status, headers, config) {
+                    if(data.success){
+                        var from = $location.search().from; // TODO -- disable this
+                        if(from === 'cms'){
+                            window.location = 'https://ideaing.com/ideas/wp-admin';
+                        }
+                    }
+                });
                 $scope.outputStatus(data, data.data);
-
                 /* if(data.status_code == 200)
                  window.location = $scope.logingRedirectLocation;
                  */
 
             });
 
-            //$http({
-            //    url: 'https://ideaing.dev/ideas/api?call=login&username=tanvir@carbon51.com&password=123456',
-            //    method: "POST",
-            //    //data: {
-            //    //    call: 'login',
-            //    //    usename: 'tanvir@carbon51',
-            //    //    password: 123456,
-            //    //}
-            //}).success(function (data) {
-            //    //   console.log(data.data);
-            //    if(data.redirectTo){
-            //        window.location = 'ideaing.dev/ideas/wp-admin';
-            //    }
-            //});
+       
 
 
         };
