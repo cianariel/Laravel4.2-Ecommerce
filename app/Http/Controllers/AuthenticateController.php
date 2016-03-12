@@ -91,6 +91,11 @@
             $this->setCookie('hide-signup','',1440);
             $this->setCookie('auth-token',null);
 
+
+            // set token in cookie for WP use.
+            setcookie('_wptk',"",time() - (86400 * 14));
+
+
             // get token form input or session
             $tokenValue = session('auth.token');
 
@@ -190,6 +195,9 @@
             $response['message'] = "Successfully authenticated.";
             $response['roles'] = $roles;
 
+            // set token in cookie for WP use.
+            setcookie('_wptk',$token,time() + (86400 * 14));
+
             if($request['RememberMe'] == true)
                 $this->setCookie('auth-token',$token);
 
@@ -240,6 +248,10 @@
             if(isset($token))
             {
                 $this->setCookie('auth-token',$token);
+
+                // set token in cookie for WP use.
+                setcookie('_wptk',$token,time() + (86400 * 14));
+
             }
 
              return redirect()->action('UserController@userProfile');
