@@ -76,13 +76,14 @@ class ApiController extends Controller
      */
     public function setAuthToken($token = null)
     {
+        // set token in cookie for WP use.
+        setcookie('_wptk',$token,time() + (86400 * 14));
+       // \PlainCookie::queue('_wptk',$token);
+
         session(['auth.token' => isset($token) ? $token : null]);
 
-        // if the a value is found in auth-token cookie / default value set from login, then will set the cookie
-       // if(!empty($this->getCookie('auth-token')))
-         //   $this->setCookie('auth-token',$token);
-
         $this->authToken = $token;
+
 
         return $this;
     }
