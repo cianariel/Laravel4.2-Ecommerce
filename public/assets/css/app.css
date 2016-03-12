@@ -9950,15 +9950,6 @@ body.aboutus-page .para3_content {
   body.aboutus-page .para3_content:nth-child(2) {
     background-color: #dddddd; }
 
-body.error-page .pocket, body.error-page #back-to-top, body.error-page #about-button, body.error-page footer.about-footer .close-down {
-  display: none; }
-
-body.error-page .about-footer {
-  display: block; }
-
-body.error-page .shop-menu {
-  top: 0px; }
-
 .mid-bottom-container {
   margin-top: 55px; }
 
@@ -10063,9 +10054,110 @@ body.contactus-page .pocket {
   color: black;
   padding: 4px; }
 
+body.error-page .pocket, body.error-page #back-to-top, body.error-page #about-button, body.error-page footer.about-footer .close-down {
+  display: none; }
+
+body.error-page .about-footer {
+  display: block; }
+
+body.error-page .shop-menu {
+  top: 0px; }
+
+body.error-page #hero {
+  min-height: 800px; }
 body.error-page #hero .hero-background {
   background-image: url("/assets/images/404-error.jpg");
   filter: none; }
+  body.error-page #hero .desktop {
+    display: block; }
+  body.error-page #hero .mobile {
+    display: none; }
+  body.error-page #hero .image-404 {
+    position: absolute;
+    right: 0px;
+    top: 15px; }
+  body.error-page #hero .arrow-down {
+    position: absolute;
+    right: 455px;
+    top: 219px; }
+  body.error-page #hero .white-button, body.error-page #hero .red-button {
+    position: absolute;
+    display: inline-block;
+    width: 200px;
+    height: 50px;
+    text-align: center;
+    font-weight: bold;
+    line-height: 50px; }
+  body.error-page #hero .white-button {
+    background-color: rgba(255, 255, 255, 0.8); }
+    body.error-page #hero .white-button a {
+      color: #000; }
+  body.error-page #hero .red-button {
+    background-color: rgba(223, 56, 90, 0.8); }
+    body.error-page #hero .red-button a {
+      color: #fff; }
+  body.error-page #hero .buster {
+    right: 368px;
+    top: 385px; }
+  body.error-page #hero .arrow-circle {
+    position: absolute;
+    right: 460px;
+    top: 432px; }
+  body.error-page #hero .and {
+    right: 530px;
+    top: 462px; }
+  body.error-page #hero .arrow-left1 {
+    position: absolute;
+    right: 730px;
+    top: 473px; }
+  body.error-page #hero .tap {
+    top: 462px;
+    right: 802px; }
+  body.error-page #hero .arrow-or {
+    position: absolute;
+    top: 512px;
+    right: 882px; }
+  body.error-page #hero .register {
+    top: 700px;
+    right: 802px; }
+  body.error-page #hero .arrow-left2 {
+    position: absolute;
+    right: 730px;
+    top: 712px; }
+  body.error-page #hero .fb-button {
+    position: absolute;
+    background: #6388bd;
+    width: 250px;
+    height: 50px;
+    display: inline-block;
+    color: #fff;
+    line-height: 50px;
+    padding-left: 10px;
+    top: 700px;
+    right: 480px; }
+    body.error-page #hero .fb-button a {
+      color: #fff; }
+    body.error-page #hero .fb-button img {
+      width: 35px; }
+  body.error-page #hero .white-button a, body.error-page #hero .red-button a, body.error-page #hero .fb-button a {
+    display: block; }
+  @media (max-width: 1017px) {
+    body.error-page #hero .desktop {
+      display: none; }
+    body.error-page #hero .mobile {
+      display: block;
+      width: 480px;
+      position: absolute;
+      left: 50%;
+      margin-left: -240px;
+      text-align: center;
+      top: 246px; }
+    body.error-page #hero .white-button, body.error-page #hero .red-button, body.error-page #hero .fb-button {
+      display: block;
+      position: initial;
+      margin: auto; }
+    body.error-page #hero .arrow-down-short, body.error-page #hero .arrow-or {
+      position: initial; } }
 
 body.error-page .error-banner-holder {
   position: relative; }
