@@ -383,7 +383,7 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                 case 220:
                 {
                     if (data.data.message == 'Successfully authenticated.') {
-                        //$scope.redirectUser(data.data.roles);
+                        $scope.redirectUser(data.data.roles);
 
                     } else {
                         $scope.addAlert('success', data.data.message);
@@ -532,38 +532,20 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
         $scope.loginUser = function () {
             $scope.closeAlert();
 
-            var from = $location.search().from;
-
-            console.log('from')
-            console.log(from)
-
-            //if(from === 'cms'){
-            //    $window.location.href = '/ideas/wp-admin';
-            //}
-
-            if(from === 'cms'){
-               var $fromWP = true;
-                console.log('$fromWP')
-                console.log($fromWP)
-            }
-
-
             $http({
                 url: '/api/authenticate',
                 method: "POST",
                 data: {
                     Email: $scope.Email,
                     Password: $scope.Password,
-                    RememberMe: $scope.rememberMe == true ? true : false,
-                   FromWP: $fromWP
-
+                    RememberMe: $scope.rememberMe == true ? true : false
                 }
             }).success(function (data) {
                 //   console.log(data.data);
 
-
-                if(data.redirectTo){
-                    window.location = data.redirectTo;
+                var from = $location.search().from;
+                if(from === 'cms'){
+                    window.location = 'https://ideaing.com/ideas/wp-admin';
                 }
 
                 $scope.outputStatus(data, data.data);
@@ -574,20 +556,20 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
 
             });
 
-            $http({
-                url: 'https://ideaing.dev/ideas/api?call=login&username=tanvir@carbon51.com&password=123456',
-                method: "POST",
-                //data: {
-                //    call: 'login',
-                //    usename: 'tanvir@carbon51',
-                //    password: 123456,
-                //}
-            }).success(function (data) {
-                //   console.log(data.data);
-                if(data.redirectTo){
-                    window.location = 'ideaing.dev/ideas/wp-admin';
-                }
-            });
+            //$http({
+            //    url: 'https://ideaing.dev/ideas/api?call=login&username=tanvir@carbon51.com&password=123456',
+            //    method: "POST",
+            //    //data: {
+            //    //    call: 'login',
+            //    //    usename: 'tanvir@carbon51',
+            //    //    password: 123456,
+            //    //}
+            //}).success(function (data) {
+            //    //   console.log(data.data);
+            //    if(data.redirectTo){
+            //        window.location = 'ideaing.dev/ideas/wp-admin';
+            //    }
+            //});
 
 
         };

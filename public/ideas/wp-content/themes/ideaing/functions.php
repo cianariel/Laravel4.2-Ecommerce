@@ -498,11 +498,11 @@ function my_save_extra_profile_fields( $user_id ) {
 }
 
 // Replace WP-Login with a redirect to Laravel Login
-add_action( 'wp_logout', 'auto_redirect_external_after_logout');
-function auto_redirect_external_after_logout(){
-    wp_redirect( 'https://ideaing.com/login#?from=cms' );
-    exit();
-}
+//add_action( 'wp_logout', 'auto_redirect_external_after_logout');
+//function auto_redirect_external_after_logout(){
+//    wp_redirect( 'https://ideaing.com/login#?from=cms' );
+//    exit();
+//}
 
 add_action('init','custom_login');
 function custom_login(){
@@ -537,8 +537,29 @@ function custom_login(){
 
     global $pagenow;
     if( 'wp-login.php' == $pagenow ) {
-        wp_redirect('https://ideaing.com/login#?from=cms');
-        exit();
+
+        if($token = $_COOKIE['auth-token']){
+            $url = 'https://ideaing.com//api/auth-check?token';
+            $json = file_get_contents($url);
+            $response = json_decode($json);
+
+            $creds['user_login'] =  $response->data->user->data->email;
+
+            $user = wp_signon($creds, false);
+            if (is_wp_error($user)) {
+            echo  $response['error'] = $user->get_error_message();
+        } else {
+            $user_id = $user->data->ID;
+            wp_set_current_user($user_id, $creds['user_login']);
+            wp_set_auth_cookie($user_id);
+
+            wp_redirect(get_admin_url()); exit;
+        }
+        }else{
+            echo 'Can\'t find token cookie';
+//            wp_redirect('https://ideaing.com/login#?from=cms');
+            exit();
+        }
     }
 }
 
