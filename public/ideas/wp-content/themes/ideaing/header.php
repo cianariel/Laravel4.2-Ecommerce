@@ -1,3 +1,5 @@
+<?php // print_r($_COOKIE); die();?>
+
 <!doctype html>
 <html <?php language_attributes(); ?> class="no-js idea-stories">
 	<head>
@@ -9,5 +11,4 @@
 
 	</head>
 	<body  ng-app="rootApp" <?php body_class(); ?>>
-
     <?php loadLaravelView('header'); ?>
