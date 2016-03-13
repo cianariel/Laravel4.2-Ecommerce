@@ -531,6 +531,7 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
 
         $scope.loginUser = function () {
             $scope.closeAlert();
+
             $http({
                 url: '/api/authenticate',
                 method: "POST",
@@ -538,17 +539,39 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                     Email: $scope.Email,
                     Password: $scope.Password,
                     RememberMe: $scope.rememberMe == true ? true : false
-
                 }
             }).success(function (data) {
                 //   console.log(data.data);
+              
+                var WpLoginURL = 'https://ideaing.com/ideas/api?call=login&username=' + $scope.Email + '&password=' +  $scope.Password + '&remember=' + $scope.rememberMe;
 
+                $http({
+                    url: WpLoginURL, 
+                    method: "GET"
+     
+                }).success(function (data) {
+                    var from = $location.search().from; // TODO -- disable this
+                    if(from === 'cms'){
+                        window.location = 'https://ideaing.com/ideas/wp-admin';
+                    }
+                }).error(function(data, status, headers, config) {
+                    if(data.success){
+                        var from = $location.search().from; // TODO -- disable this
+                        if(from === 'cms'){
+                            window.location = 'https://ideaing.com/ideas/wp-admin';
+                        }
+                    }
+                });
                 $scope.outputStatus(data, data.data);
-
                 /* if(data.status_code == 200)
                  window.location = $scope.logingRedirectLocation;
                  */
+
             });
+
+       
+
+
         };
 
         $scope.passwordResetRequest = function () {
