@@ -77,7 +77,7 @@ class ApiController extends Controller
     public function setAuthToken($token = null)
     {
         // set token in cookie for WP use.
-        setcookie('_wptk',$token,time() + (86400 * 14));
+       // setcookie('_wptk',$token,time() + (86400 * 14));
        // \PlainCookie::queue('_wptk',$token);
 
         session(['auth.token' => isset($token) ? $token : null]);
@@ -281,6 +281,10 @@ class ApiController extends Controller
                 $newToken = JWTAuth::refresh($token);
                 $this->setAuthToken($newToken);
                 //    $response['token'] = $newToken;
+
+                // set email in cookie for WP use.
+                 setcookie('_wptk',base64_encode($user['email']),time() + (86400 * 14));
+
                 $response['status-code'] = '200';
                 $response['status-message'] = 'User Validated';
 
