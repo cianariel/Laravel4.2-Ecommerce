@@ -570,11 +570,19 @@ class Product extends Model
 
 
     // Get product information form Product's vendor API
-    public function getApiProductInformation($itemId, $store = null)
+    public function getApiProductInformation($itemId, $storeId = null)
     {
         try {
             $productStrategy = new ProductStrategy();
-            $store = Store::where('id', $store)->first();
+
+            if($storeId == null)
+            {
+                $product = Product::where('product_vendor_id', $itemId)->first();
+
+                $storeId = $product['store_id'];
+            }
+
+            $store = Store::where('id', $storeId)->first();
 
             $result = null;
 
@@ -609,6 +617,15 @@ class Product extends Model
                               ->where('store_id', '=', $store)
                               ->where('product_vendor_id', '=', $productVendorId)
                               ->first(array("id", "product_permalink", "price", "sale_price", "updated_at", "product_vendor_id"));
+
+            /*
+
+            //todo - test (withouth time limit) entity Block It After Test
+
+            $product = Product::where('store_id', '=', $store)
+                              ->where('product_vendor_id', '=', $productVendorId)
+                              ->first(array("id", "product_permalink", "price", "sale_price", "updated_at", "product_vendor_id"));
+            */
 
             if (isset($product)) {
                 $apiData = $this->getApiProductInformation($productVendorId, $store);
