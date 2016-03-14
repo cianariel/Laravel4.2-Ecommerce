@@ -1,9 +1,14 @@
 <?php
-  // !! IMPORTANT !! -- please use only pure PHP here, no Laravel, othrwise the header will break   in Wordpress !!
+  // !! IMPORTANT !! -- please use only pure PHP here, no Laravel, otherwise the header will break   in Wordpress !!
 ?>
 
 <!--    <div {{--id="pagingApp" ng-app="pagingApp" ng-controller="headerController"--}}>-->
-<div id="publicApp" ng-app="publicApp" ng-controller="publicController">
+<style>
+    [ng\:cloak], [ng-cloak], .ng-cloak {
+        display: none !important;
+    }
+</style>
+<div id="publicApp" ng-app="publicApp" ng-controller="publicController" ng-cloak>
 <header class="colophon">
                 <div ng-init="socialCounter()" class="col-xs-12">
                     <h2 id="site-name">Ideaing | Ideas for Smarter Living</h2>
@@ -106,10 +111,10 @@
 
                                                 </div>
                                             </div>
-                                            <div class="notification pull-right" ng-init="loadNotification('<?php echo $userData['id']?>')">
+                                            <div class="notification pull-right" ng-cloak ng-init="loadNotification('<?php echo $userData['id']?>')">
                                                 <a href="#" data-toogle=".notification-popup" class="notification-holder">
                                                     <i class="m-icon m-icon--Notifications"></i>
-                                                    <span ng-hide="notificationCounter == 0" class="notification-count"><?php echo '{{ notificationCounter }}'?></span>
+                                                    <span ng-hide="notificationCounter == 0" class="notification-count" ng-bind="notificationCounter"></span>
                                                 </a>
                                                 <div class="notification-popup">
                                                     <div class="notification-header">
