@@ -20,7 +20,7 @@
 
                         <div><b class="comment-name"><?php echo "{{ comment.UserName }}" ?></b></div>
                     </div>
-                    <div class="col-md-8 col-sm-8 col-xs-7">
+                    <div class="col-md-8 col-sm-8 col-xs-7 comment-row-content">
                         <p>
                         <div ng-bind-html="comment.Comment"></div>
 
@@ -61,8 +61,8 @@
                 </div>
                 <div class="col-md-11 col-sm-10 col-xs-9">
 
-                    <div ng-class="['col-md-12', 'comment-edit-container', {'has-content': htmlContent}]" ng-show="show_editor">
-                            <div text-angular data-ng-model="htmlContent" ta-disabled='disabled'
+                    <div ng-class="['col-md-12', 'comment-edit-container', {'has-content': html}]" ng-show="show_editor">
+                        <div text-angular data-ng-model="html" ta-disabled='disabled'
                                  name="description-editor"
                                  ta-text-editor-class="border-around ta-editor"
                                  ta-html-editor-class="border-around ta-editor">
@@ -73,8 +73,8 @@
                     </div>
 
                     <div class="col-md-12 comment-controls text-right">
-                        <button class="btn btn-info" ng-hide="isEdit"
-                                ng-click="addCommentForProduct(<?php echo $userData['id'] . "," . $productId . "," . "'$permalink'" . "," . "htmlContent"?>)">
+                        <button class="btn btn-info btn-outline" ng-hide="isEdit"
+                                ng-click="addCommentForProduct(<?php echo $userData['id'] . "," . $productId . "," . "'$permalink'" . "," . "html"?>)">
                             Post
                         </button>
                         <button class="btn btn-info" ng-show="isEdit"

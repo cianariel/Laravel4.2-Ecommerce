@@ -108,7 +108,7 @@ productApp.controller('productController', ['$scope', '$http', '$window', '$inte
 
             $scope.showCompareButton = true;
 
-            $scope.htmlContent = "";
+            $scope.html = "";
             $scope.comments = [];
             $scope.commentsCount = 0;
             $scope.commentsCountView = "";//$scope.commentsCount < 2? $scope.commentsCount +" "+"Comment" : $scope.commentsCount +" "+"Comments";
@@ -136,7 +136,7 @@ productApp.controller('productController', ['$scope', '$http', '$window', '$inte
                     comment: comment
                 }
             }).success(function (data) {
-                $scope.htmlContent = "";
+                $scope.html = "";
                 $scope.getCommentsForProduct($scope.productId);
 
 
@@ -176,7 +176,7 @@ productApp.controller('productController', ['$scope', '$http', '$window', '$inte
 
             $scope.commentId = comment.CommentId;
 
-            $scope.htmlContent = comment.Comment;
+            $scope.html = comment.Comment;
 
 
         };
@@ -187,10 +187,10 @@ productApp.controller('productController', ['$scope', '$http', '$window', '$inte
                 method: "POST",
                 data:{
                     cid: $scope.commentId,
-                    comment: $scope.htmlContent
+                    comment: $scope.html
                 }
             }).success(function (data) {
-                $scope.htmlContent = "";
+                $scope.html = "";
                 $scope.isEdit = false;
                // console.log("pid :"+ $scope.productId);
                 $scope.getCommentsForProduct($scope.productId);
