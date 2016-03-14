@@ -122,16 +122,17 @@
                                                         <span ng-click="readAllNotification()" class="pull-right" id="mark-all-as-read">Mark all as read</span>
                                                         <div class="clearfix"></div>
                                                     </div>
+                                                
                                                     <div class="notification-body">
                                                             <div class="notification-item" ng-repeat="notice in notifications">
                                                                 <img width="40px" ng-src="<?php echo '{{ notice.UserPicture }}' ?>" class="profile-photo pull-left">
-                                                                <div>
-                                                                    <span><strong><?php echo '{{ notice.UserName }}' ?></strong>
-                                                                        commented on <a ng-href="<?php echo '/{{ notice.ProductLink }}' ?>" ><?php echo '{{ notice.ProductTitle }}' ?></a> </span><br>
-                                                                    <small><?php echo '{{ notice.Time }}' ?></small>
+                                                        <div class="notification-row-content">
+                                                            <div><strong><?php echo '{{ notice.UserName }}' ?></strong>
+                                                                commented on <a ng-href="<?php echo '/{{ notice.ProductLink }}' ?>" ><?php echo '{{ notice.ProductTitle }}' ?></a> </div>
+                                                            <small class="clearfix time "><?php echo '{{ notice.Time }}' ?></small>
                                                                 </div>
+                                                        <div class="clearfix"></div>
                                                             </div>
-
                                                     </div>
                                                     <div class="notification-footer">
                                                         <span id="notification-view-all">View all</span>

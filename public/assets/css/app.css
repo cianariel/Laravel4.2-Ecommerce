@@ -6084,6 +6084,18 @@ article.product {
     background: #FF0042;
     color: #fff; }
 
+.btn-outline {
+  width: 80px;
+  padding: 13px;
+  font-size: 1.5rem;
+  background: #fff;
+  color: #FF0042;
+  border-color: #FF0042 !important;
+  box-shadow: none !important; }
+  .btn-outline:hover {
+    background: #FF0042;
+    color: #fff; }
+
 #back-to-top {
   -webkit-appearance: none;
   border: 0;
@@ -6346,6 +6358,11 @@ header.colophon {
       #top-nav .top-nav-holder .notification-popup .notification-body .profile-photo {
         margin-top: 0px;
         margin-right: 10px; }
+      #top-nav .top-nav-holder .notification-popup .notification-body .notification-row-content {
+        padding-left: 52px; }
+      #top-nav .top-nav-holder .notification-popup .notification-body .time {
+        display: block;
+        clear: both; }
     #top-nav .top-nav-holder .notification-popup .notification-footer {
       padding: 15px;
       background: #fff;
@@ -7383,6 +7400,8 @@ body.single .related-items {
   .comments .single-comment .btn-white {
     background: url("/assets/images/heart-grey-outline.png") 2px center no-repeat;
     padding-left: 25px; }
+  .comments .single-comment .comment-row-content {
+    margin-left: -8px; }
 
 .comments .add-comment {
   margin-top: 35px; }
@@ -10065,9 +10084,9 @@ body.error-page .shop-menu {
 
 body.error-page #hero {
   min-height: 800px; }
-body.error-page #hero .hero-background {
-  background-image: url("/assets/images/404-error.jpg");
-  filter: none; }
+  body.error-page #hero .hero-background {
+    background-image: url("/assets/images/404-error.jpg");
+    filter: none; }
   body.error-page #hero .desktop {
     display: block; }
   body.error-page #hero .mobile {

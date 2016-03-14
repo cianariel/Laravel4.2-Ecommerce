@@ -2413,7 +2413,23 @@ article.product{
   //  border-color: $iridium;
   //}
 }
+.btn-outline{
+  width: 80px;
+  padding: 13px;
+  font-size: 1.5rem;
+  background: #fff;
+  color: $iridium;
+  border-color: $iridium !important;
+  box-shadow: none !important;
 
+  &:hover{
+    background:$iridium;
+    color: #fff;
+  }
+  //&:active{
+  //  border-color: $iridium;
+  //}
+}
 #back-to-top{
     -webkit-appearance: none;
     border: 0;
@@ -2800,6 +2816,13 @@ header.colophon{
                 .profile-photo{
                     margin-top: 0px;
                     margin-right: 10px;
+                }
+                .notification-row-content{
+                    padding-left: 52px;
+                }
+                .time{
+                    display: block;
+                    clear: both;
                 }
             }
             
@@ -4442,6 +4465,9 @@ body.single{
       background: url("/assets/images/heart-grey-outline.png") 2px center no-repeat;
       padding-left: 25px;
 
+    }
+    .comment-row-content{
+        margin-left: -8px;
     }
   }
 
