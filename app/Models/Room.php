@@ -103,7 +103,7 @@
                 
                 $products = json_decode($roomData['room']->hero_image_1_products);
                 $temp = new Product();
-                foreach ($products as $pr) {
+                foreach ($products as $elementKey => $pr) {
                     $product = $temp->getSingleProductInfoForView($pr->product_id);
                     if($product)
                     {
@@ -117,6 +117,10 @@
                         $pr->store = $temp->getStoreInfoByProductId($pr->product_id);
                         $pr->affiliate_link = $product->affiliate_link;
                         $pr->product_permalink = $product->product_permalink;
+                    }
+                    else{
+                        $pr->product_id="";
+                        unset($products[$elementKey]);
                     }
                 }
                 $Image['Image_Products'] = $products;
@@ -151,6 +155,10 @@
                         $pr->affiliate_link = $product->affiliate_link;
                         $pr->product_permalink = $product->product_permalink;
                     }
+                    else{
+                        $pr->product_id="";
+                        unset($products[$elementKey]);
+                    }
                 }
                 $Image['Image_Products'] = $products;
                 $Image['Image_Description'] = $roomData['room']->hero_image_2_desc;
@@ -184,6 +192,10 @@
                         $pr->store = $temp->getStoreInfoByProductId($pr->product_id);
                         $pr->affiliate_link = $product->affiliate_link;
                         $pr->product_permalink = $product->product_permalink;
+                    }
+                    else{
+                        $pr->product_id="";
+                        unset($products[$elementKey]);
                     }
                 }
                 $Image['Image_Products'] = $products;
