@@ -535,10 +535,10 @@ function custom_login(){
 //
 
 //
-//    global $pagenow;
-//    if( 'wp-login.php' == $pagenow ) {
-//
-//        if($token = $_COOKIE['auth-token']){
+    global $pagenow;
+    if( 'wp-login.php' == $pagenow ) {
+
+        if($token = $_COOKIE['_wptk']){
 //            $url = 'https://ideaing.com//api/auth-check?token=' . $token;
 //            $json = file_get_contents($url);
 //            // echo $json;
@@ -546,25 +546,27 @@ function custom_login(){
 //
 //            if($response['data']->status-code != 200){
 //	        	   wp_redirect('https://ideaing.com/login#?from=cms'); // TODO -- change to error display msg
-//            } 
-//
-//            $creds['user_login'] =  $response['data']->user->data->email;
-//
-//            $user = wp_signon($creds, false);
-//            if (is_wp_error($user)) {
-//            	echo  $response['error'] = $user->get_error_message();
-//		    } else {
-//		        $user_id = $user->data->ID;
-//		        wp_set_current_user($user_id, $creds['user_login']);
-//		        wp_set_auth_cookie($user_id);
-//
-//		        wp_redirect(get_admin_url()); exit;
-//		    }
-//        }else{
-//            wp_redirect('https://ideaing.com/login#?from=cms');
-//            exit();
-//        }
-//    }
+//            }
+
+            // TODO -- 1. encode user ID in the token 2. add salt to the encode  3. add Lar side check
+            //
+
+            $username = base64_decode($token);
+
+            if(!$userID = username_exists( $username )){
+                echo  'This user does not exist';
+            }else{
+                wp_set_current_user($userID, $username);
+                wp_set_auth_cookie($userID);
+
+                wp_redirect(get_admin_url()); exit;
+            }
+
+        }else{
+            wp_redirect('https://ideaing.com/login#?from=cms');
+            exit();
+        }
+    }
 }
 
 
