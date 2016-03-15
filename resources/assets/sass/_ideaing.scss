@@ -2422,13 +2422,10 @@ article.product{
   border-color: $iridium !important;
   box-shadow: none !important;
 
-  &:hover{
+  &:hover, &:active, &:focus{
     background:$iridium;
     color: #fff;
   }
-  //&:active{
-  //  border-color: $iridium;
-  //}
 }
 #back-to-top{
     -webkit-appearance: none;

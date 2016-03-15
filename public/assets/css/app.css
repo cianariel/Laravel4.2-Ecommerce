@@ -6092,7 +6092,7 @@ article.product {
   color: #FF0042;
   border-color: #FF0042 !important;
   box-shadow: none !important; }
-  .btn-outline:hover {
+  .btn-outline:hover, .btn-outline:active, .btn-outline:focus {
     background: #FF0042;
     color: #fff; }
 
