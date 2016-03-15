@@ -9,7 +9,7 @@
                 @if($parentCategory)
                 <ul class="wrap col-lg-9">
                     <li class="box-link-ul active">
-                        <a class="box-link" href="/shop/{{$parentCategory->extra_info}}" >
+                        <a class="box-link" href="/shop/{{$grandParent}}/{{$grandParent != $parentCategory->extra_info ? $parentCategory->extra_info . '/' : ''}}" >
                             <span class="box-link-active-line"></span>
                             {{ucfirst($parentCategory->category_name)}}
                         </a>
@@ -19,7 +19,7 @@
                         <span class="horizontal-line"></span>
                     </li>
                     <li class="box-link-ul ">
-                        <a class="box-link active" href="/shop/{{$parentCategory->extra_info}}/@if(isset($category['CategoryPermalink'])){{$category['CategoryPermalink']}}@endif" >
+                        <a class="box-link active" href="/shop/{{$grandParent}}/{{$grandParent != $parentCategory->extra_info ? $parentCategory->extra_info . '/' : ''}}{{$currentCategory->extra_info}}" >
                             <span class="box-link-active-line"></span>
                             {{ucfirst($currentCategory->category_name)}}
                         </a>
