@@ -37,15 +37,15 @@
 //            return $products['result'];
 
 
-            $products = Product::where('post_status', 'Active')->take(20);
+            $products = Product::where('post_status', 'Active')->take(20)->get();
             foreach($products as $product){
                 $data = [
                   'title' => $product->product_name,
                   'content' => $product->product_description,
-                  'date_created' => $product->created_at,
+                  'date_created' => $product->created_at->toDateString(),
                   'price' => $product->price,
-                  'categories' => $product->category->category_name,
-                  'tags' => $product->tags->lists('name'),
+                  'categories' => $product->productCategory->category_name,
+                  'tags' => $product->tags->lists('tag_name'),
                 ];
 
                 $return[] = $data;
