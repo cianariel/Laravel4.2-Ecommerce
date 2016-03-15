@@ -297,6 +297,8 @@
     Route::get('/api/social/get-fan-counts', 'PageController@getFollowerCounts');
 
 
+    Route::get('search/index', 'SearchController@indexData');
+
 
     // temporary category tag generator
     // Route::get('gen', 'TagsController@temporaryCategoryTagGenerator');
