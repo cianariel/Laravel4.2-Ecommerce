@@ -107,7 +107,7 @@
                                                         <div><small>855 Friends</small> </div>
                                                         <div><small>12 Messages</small> </div>
                                                     </div>
-                                                    <div class="log-out"><a href="/api/logout"><i class="m-icon--Logout-Active"></i> Log Out</a></div>
+                                                    <div ng-click="logoutUser()" class="#"><a href="/api/logout"><i class="m-icon--Logout-Active"></i> Log Out</a></div>
 
                                                 </div>
                                             </div>
