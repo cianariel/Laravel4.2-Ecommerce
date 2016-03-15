@@ -2,7 +2,7 @@
 
 <!-- BEGIN FOOTER -->
         <div class="page-footer">
-            <div class="page-footer-inner"> Ideaing LLC
+            <div class="page-footer-inner"> Idea Centric LLC
             </div>
             <div class="scroll-to-top">
                 <i class="icon-arrow-up"></i>
@@ -50,6 +50,7 @@
         <!-- Angular JS and components-->
         <script src="/assets/js/vendor/ui-bootstrap.min.js"></script>
         <script src="/assets/admin/js/custom.admin.js"></script>
+
 
 
         <!-- BEGIN PAGE LEVEL PLUGINS -->

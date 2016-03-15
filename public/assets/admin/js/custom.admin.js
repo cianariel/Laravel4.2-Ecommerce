@@ -511,6 +511,20 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
             });
         };
 
+        $scope.logoutUser = function () {
+            var WpLogoutURL = 'https://ideaing.com/ideas/api?call=logout';
+
+            $http({
+                url: WpLogoutURL,
+                method: "GET"
+
+            }).success(function (data) {
+                window.location = '/api/logout';
+            }).error(function(data) {
+                window.location = '/api/logout';
+            });
+        }
+
         //// Store ///
 
         $scope.updateStore = function () {

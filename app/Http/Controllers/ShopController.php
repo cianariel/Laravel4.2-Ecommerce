@@ -48,6 +48,13 @@ class ShopController extends ApiController
             if(!$categoryModel = ProductCategory::where('extra_info', $category)->first()){
                 return redirect('/shop/');
             }
+
+            $filterCategories = ProductCategory::where('parent_id', $categoryModel->id)->get();
+
+            if(($filterCategories->isEmpty())){
+                $filterCategories = ProductCategory::where('parent_id', $categoryModel->parent_id)->get();
+            }
+
             $categoryTree = ProductCategory::buildCategoryTree(false);
             $parentCategory =  @ProductCategory::where('id', $categoryModel->parent_id)->first();
 
@@ -74,6 +81,7 @@ class ShopController extends ApiController
                 ->with('categoryTree', $categoryTree)
                 ->with('grandParent', $grandParent)
                 ->with('masterCategory', $masterCategory)
+                ->with('filterCategories', $filterCategories)
                 ;
 
         }

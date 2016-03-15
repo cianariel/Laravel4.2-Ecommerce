@@ -310,7 +310,7 @@
                         <span class="username username-hide-on-mobile"> Nick </span>
                         <i class="fa fa-angle-down"></i>
                     </a>
-                    <ul class="dropdown-menu dropdown-menu-default">
+                    <ul ng-app="adminApp" ng-controller="AdminController" class="dropdown-menu dropdown-menu-default">
                         <li>
                             <a href="page_user_profile_1.html">
                                 <i class="icon-user"></i> My Profile </a>
@@ -337,7 +337,7 @@
                                 <i class="icon-lock"></i> Lock Screen </a>
                         </li>
                         <li>
-                            <a href="page_user_login_1.html">
+                            <a ng-click="logoutUser()" href="#">
                                 <i class="icon-key"></i> Log Out </a>
                         </li>
                     </ul>
