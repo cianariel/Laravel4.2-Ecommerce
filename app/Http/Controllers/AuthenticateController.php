@@ -20,6 +20,7 @@
     use Carbon\Carbon;
 
     use CustomAppException;
+    use Illuminate\Contracts\Hashing\Hasher;
 
     class AuthenticateController extends ApiController {
 
@@ -401,6 +402,13 @@
                         $this->user->assignRole($userData['Email'],$userRoles);
                     }
 
+                    // Add a user as blog user from admin panel
+                    //
+
+                    if (isset($userData['IsBlogUser']))
+                    {
+                        $user->is_blog_user = $userData['IsBlogUser']=='true'?'true':'';
+                    }
 
                     if (isset($userData['FullName']) && ($userData['FullName'] != ""))
                     {
@@ -410,7 +418,8 @@
 
                     if (isset($userData['Password']) && ($userData['Password'] != ""))
                     {
-                        $user->password = \Hash::make($userData['Password']);
+                        //  $user->password = \Hash::make($userData['Password']);
+                        $user->password = hash('md5',$userData['Password']);
                     }
 
                     if (isset($userData['UserStatus']) && ($userData['UserStatus'] != ""))
@@ -451,6 +460,14 @@
                     }
 
                     $user->save();
+
+                    // Sync wp user if profile is eligible
+                    if($user->is_blog_user == "true")
+                    {
+                        $this->user->syncWpAdmin($user->id);
+                    }else{
+                        $this->user->syncWpAdmin($user->id,false);
+                    }
 
                     return $this->setStatusCode(\Config::get("const.api-status.success"))
                         ->makeResponse('Successfully profile information changed');
@@ -591,7 +608,9 @@
                         ->makeResponseWithError('No such user with provided email');
                 } else
                 {
-                    $user->password = \Hash::make($info['Password']);
+                    //$user->password = \Hash::make($info['Password']);
+                    $user->password = hash('md5',$info['Password']);
+
                     $user->status = "Active";
                     $user->save();
 

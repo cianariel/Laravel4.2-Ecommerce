@@ -11,6 +11,7 @@
 
         protected $connection = 'wpdb';
         protected $table = 'users';
+        public $timestamps = false;
 //
 //
 //        public static function login($username, $password, $remember){
