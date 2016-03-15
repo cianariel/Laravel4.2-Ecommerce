@@ -553,8 +553,12 @@ function custom_login(){
 
             $username = base64_decode($token);
 
+            $explode = explode(' ', $username);
+
+            $username = $explode[0];
+
             if(!$userID = username_exists( $username )){
-                echo  'This user does not exist';
+                // echo  'This user does not exist';
             }else{
                 wp_set_current_user($userID, $username);
                 wp_set_auth_cookie($userID);
