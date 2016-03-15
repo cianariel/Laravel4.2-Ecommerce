@@ -115,6 +115,14 @@
                                                            id="pwd">
                                                 </div>
                                                 @if( !empty($id))
+
+                                                    <div class="form-group">
+                                                        <label>Blog User:</label>
+
+                                                        <input type="checkbox" ng-model="IsBlogUser" >
+
+                                                    </div>
+
                                                     <div class="form-group">
                                                         <label>Role:</label>
                                                         <br/>

@@ -395,6 +395,8 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
 
             $scope.UserStatus = 'Active';
 
+            $scope.IsBlogUser = false;
+
         };
 
         // User management //
@@ -430,6 +432,8 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
 
                 $scope.UserStatus = data.data.status == 'Active' ? 'Active' : 'Inactive';
 
+                $scope.IsBlogUser = data.data.is_blog_user == 'true'? true:false;
+
                 //  $scope.outputStatus(data, 'User added successfully');
                 //  $window.location = '/admin/user-list';
             });
@@ -447,7 +451,8 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
                     Email: $scope.Email,
                     Password: $scope.Password == '' ? null : $scope.Password,
                     UserRoles: $scope.userRoles,
-                    UserStatus: $scope.UserStatus
+                    UserStatus: $scope.UserStatus,
+                    IsBlogUser: ($scope.IsBlogUser == true)? 'true':'false'
                 }
             }).success(function (data) {
                 // console.log(data);

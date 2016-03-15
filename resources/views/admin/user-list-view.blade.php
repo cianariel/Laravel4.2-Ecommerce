@@ -117,7 +117,7 @@
                                                                 <th class="col-md-2">Name</th>
                                                                 <th class="col-md-1">Email</th>
                                                                 <th class="col-md-1">From</th>
-                                                                <th class="col-md-2">Product Name</th>
+                                                                <th class="col-md-2">User Status</th>
                                                                 {{--<th class="col-md-1">Status</th>
                                                                 <th class="col-md-1">Category</th>
                                                                 <th class="col-md-1">Affiliate</th>
@@ -150,6 +150,7 @@
 
                                                                 <td>
                                                                     <b ng-style="user.status == 'Active' && {'color': 'green'} || {'color': 'red'}">@{{ user.status }}</b>
+                                                                    <b ng-style="user.is_blog_user == 'true' && {'color': 'green'}">@{{ user.is_blog_user == 'true'?', Blog User':'' }}</b>
                                                                 </td>
 
                                                                 <td>
