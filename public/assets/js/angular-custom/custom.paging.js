@@ -170,6 +170,7 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
             pagingApi.openProductPopup($scope, $uibModal, $timeout, id);
             }
             
+
     })
 /*    .controller('headerController', function ($scope, $uibModal, $http, pagingApi, $filter, layoutApi) {
 
@@ -188,7 +189,7 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
          });*!/
 
     })*/
-    .controller('ModalInstanceCtrltest', function ($scope, $uibModalInstance) {
+    .controller('ModalInstanceCtrltest', function ($scope, $uibModalInstance, pagingApi) {
       $scope.ok = function () {
         $uibModalInstance.close();
       };
@@ -196,6 +197,10 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
       $scope.cancel = function () {
         $uibModalInstance.dismiss('cancel');
       };
+
+        $scope.openSharingModal = function ($service) {
+            pagingApi.openSharingModal($service);
+        };
     })
     .controller('shoplandingController', ['$scope', '$http', 'pagingApi', '$timeout', '$uibModal', function ($scope, $http, pagingApi, $timeout, $uibModal) {
         $scope.renderHTML = function(html_code)
@@ -204,10 +209,11 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
             return decoded;
         };
 
-        $scope.openProductPopup = function(){
-            pagingApi.openProductPopup($scope, $uibModal, $timeout);
+        $scope.openProductPopup = function(id){
+            pagingApi.openProductPopup($scope, $uibModal, $timeout, id);
         }
 
+        
         $scope.nextLoad = pagingApi.getPlainContent(1, 3, 'deal', 'idea').success(function (response) {
             $scope.dailyDeals = response;
             $timeout(function() {
@@ -292,10 +298,9 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
             var decoded = angular.element('<div />').html(html_code).text();
             return decoded;
         };
-        $scope.openProductPopup = function(){
-            pagingApi.openProductPopup($scope, $uibModal, $timeout);
+        $scope.openProductPopup = function(id){
+            pagingApi.openProductPopup($scope, $uibModal, $timeout, id);
         }
-
         $scope.currentPage = 1;
         $scope.currentCategory = false;
         $scope.$filterBy = false;
@@ -434,7 +439,7 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
         }
     };
   })
-    .factory('pagingApi', function($http, $q) {
+    .factory('pagingApi', function($http, $window, $q) {
         var pagingApi = {};
         pagingApi.openProductPopup = function ($scope, $uibModal, $timeout, productId) {
             var body = angular.element(document).find('body');
@@ -472,6 +477,8 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
                                 '
                             }
                             $('.product-popup-modal #product-slider').html(imageHTML);
+                            $('.product-popup-modal .p-title').html(data.productInformation['ProductName']);
+                            $('.product-popup-modal .get-round').attr('href', data.productInformation['AffiliateLink']);
                             
                             if(data.productInformation['Review']){
                                 var pScore = parseInt(((( Number(data.productInformation['Review'][0].value) > 0 ? Number(data.productInformation['Review'][0].value) : Number(data.productInformation['Review'][1].value)) + Number(data.productInformation['Review'][1].value))/2)*20) + "%";
@@ -720,6 +727,68 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
                 document.getElementsByTagName('html')[0].className = className;
             });
         };
+
+        pagingApi.openSharingModal = function ($service, $scope) {
+            var baseUrl = 'https://' + window.location.host + window.location.pathname;
+            var shareUrl = false;
+
+            var $pitnerestShare = function(){
+                    var e=document.createElement('script');
+                    e.setAttribute('type','text/javascript');
+                    e.setAttribute('charset','UTF-8');
+                    e.setAttribute('src','https://assets.pinterest.com/js/pinmarklet.js?r='+Math.random()*99999999);
+                    document.body.appendChild(e);
+
+                setTimeout(function(){
+                    if($scope)
+                        $scope.fakeUpdateCounts('pinterest');
+                }, 10000);
+            }
+
+            switch($service){
+                case 'facebook':
+                    shareUrl = 'https://www.facebook.com/sharer/sharer.php?u=' + baseUrl;
+                    break;
+                case 'twitter':
+                    shareUrl = 'https://twitter.com/share?url=' + baseUrl + '&counturl=' + baseUrl + '&text=@Ideaing';
+                    break;
+                case 'googleplus':
+                    shareUrl = 'https://plus.google.com/share?url=' + baseUrl;
+                    break;
+                case 'pinterest':
+                    $pitnerestShare();
+                    return true
+            }
+
+            if(!shareUrl){
+                return false;
+            }
+
+            //$scope.openWindow = function() {
+            var $modal = $window.open(shareUrl, 'C-Sharpcorner', 'width=500,height=400');
+            //};
+
+            // TODO -- fire counter updates for shares, only on pages where they are used (CMS)
+
+            var timer = setInterval(function() {
+                if($modal.closed) {
+                    clearInterval(timer);
+
+                    setTimeout(function(){
+                        if($scope)
+                            $scope.fakeUpdateCounts($service);
+                    }, 2000);
+                    //setTimeout(function(){
+                    //    $scope.countSocialShares();
+                    //}, 1000);
+                    console.log('share counters updated')
+                }
+            }, 1000);
+
+        };
+        
+        
+        
 
         pagingApi.getPlainContent = function(page, limit, tag, type, productCategoryID, sortBy) {
             return $http({

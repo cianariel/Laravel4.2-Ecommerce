@@ -38,7 +38,7 @@ publicApp.factory('layoutApi', function ($http) {
 // //
 
 
-publicApp.controller('ModalInstanceCtrltest', function ($scope, $uibModalInstance) {
+publicApp.controller('ModalInstanceCtrltest', function ($scope, $uibModalInstance, pagingApi) {
     $scope.ok = function () {
         $uibModalInstance.close();
     };
@@ -46,10 +46,15 @@ publicApp.controller('ModalInstanceCtrltest', function ($scope, $uibModalInstanc
     $scope.cancel = function () {
         $uibModalInstance.dismiss('cancel');
     };
+
+    $scope.openSharingModal = function ($service) {
+        pagingApi.openSharingModal($service);
+    };
+
 });
 
-publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$window', '$timeout', '$location', '$anchorScroll', '$uibModal', 'layoutApi', '$compile','$interval', 'FileUploader'
-    , function ($rootScope, $scope, $http, $window, $timeout, $location, $anchorScroll, $uibModal, layoutApi, $compile, $interval ,FileUploader) {
+publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$window', '$timeout', '$location', '$anchorScroll', '$uibModal', 'layoutApi', '$compile','$interval', 'FileUploader', 'pagingApi'
+    , function ($rootScope, $scope, $http, $window, $timeout, $location, $anchorScroll, $uibModal, layoutApi, $compile, $interval ,FileUploader, pagingApi) {
 
         // update comment in the comment view through AJAX call.
         var commnetTimer = $interval(function(){
@@ -100,6 +105,8 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
         };
 
         $scope.openSharingModal = function ($service) {
+            pagingApi.openSharingModal($service, $scope)
+            /*
             var baseUrl = 'https://' + window.location.host + window.location.pathname;
             var shareUrl = false;
 
@@ -153,7 +160,7 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                     console.log('share counters updated')
                 }
             }, 1000);
-
+*/
         };
 
         $scope.fakeUpdateCounts = function($service){ // add +1 to a counter that's being used, to save performance, until the next page reload
