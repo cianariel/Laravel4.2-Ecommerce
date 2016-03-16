@@ -162,8 +162,6 @@ class PageController extends ApiController
         curl_setopt($ch, CURLOPT_ENCODING, "");
         $json = curl_exec($ch);
 
-        echo $json; die();
-
         $return = json_decode($json);
 
         return $return;
