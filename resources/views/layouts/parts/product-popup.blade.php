@@ -8,7 +8,7 @@
                 <div class="lbInfo">
                     <a class="close" href="#" ng-click="cancel()"><i class="m-icon--Close"></i> </a>
                     <div class="p-top-bar">
-                        <p class="p-title">Nest Protect (second generation)</p>
+                        <p class="p-title"></p>
                     </div>
                     <div class="row">
                         <div class="col-xs-12 ideaing-score-holder">
@@ -36,7 +36,7 @@
                         <div class="col-xs-12 p-get-it-holder">
                             <div class="p-get-it-amazon">
                                 <div class="p-body">
-                                    <a class="get-round" href="http://www.dxv.com/product/at100-electronic-luxury-bidet-seat-by-dxv" target="_blank">Get it</a>
+                                    <a class="get-round" href="" target="_blank">Get it</a>
                                     <img src="/assets/images/dummies/amazon-2.png">
                                     
                                 </div>
