@@ -6,7 +6,7 @@
         <i class="p-close m-icon--Close"></i>
     </span>
 <span class="box-item__time"><?php echo '{{item.updated_at}}' ?></span>
-    <div class="box-item__overlay" ng-click="openProductPopup()"></div>
+    <div class="box-item__overlay" ng-click="openProductPopup(item.id)"></div>
 
 <ul class="social-stats">
     <li class="social-stats__item">
