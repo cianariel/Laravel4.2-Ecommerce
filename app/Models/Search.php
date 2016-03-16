@@ -42,7 +42,7 @@
                 $data = [
                   'title' => $product->product_name,
                   'content' => $product->product_description,
-                  'date_created' => $product->created_at->toDateString(),
+                  'date_created' => $product->created_at->format('Y-m-d\TH:i:s\Z'),
                   'price' => $product->price,
                   'categories' => $product->productCategory->category_name,
                   'tags' => $product->tags->lists('tag_name'),

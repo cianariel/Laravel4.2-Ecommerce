@@ -21,18 +21,11 @@ class SearchController extends Controller
     public function indexData($data = 'all'){
 
         // 1. Setup CloudSeach client
-        $csClient = CloudSearchClient::factory(array(
-            'key'          => 'AKIAJIBIY57I4ZATMUHA',
-            'secret'      => '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',
-            'region'     =>  'us_west'
-        ));
-        $csDomainClient = $csClient->getDomainClient(
-            'arn:aws:cloudsearch:us-west-2:890219607996:domain/ideaing-01',
-            array(
-                'credentials' => $csClient->getCredentials(),
-            )
+        $csDomainClient = AWS::createClient('CloudsearchDomain',
+            [
+                'endpoint'    => 'https://search-ideaing-01-3xyefj3ouifu7hm677jeqj4z5u.us-west-2.cloudsearch.amazonaws.com',
+            ]
         );
-
 
         // 2. Build index
         $index = Search::buildIndex();
@@ -45,15 +38,26 @@ class SearchController extends Controller
                'fields'     => $batch
            );
            $result = $csDomainClient->uploadDocuments(array(
-               'documents'     => json_encode($batch),
+               'documents'     => json_encode($send),
                'contentType'     =>'application/json'
            ));
        }
 
+        print_r($result);
+    }
 
 
+    public function searchData($query = ''){
 
+        $csDomainClient = AWS::createClient('CloudsearchDomain',
+            [
+                'endpoint'    => 'https://search-ideaing-01-3xyefj3ouifu7hm677jeqj4z5u.us-west-2.cloudsearch.amazonaws.com',
+            ]
+        );
 
+        $result = $csDomainClient->search(array(
+            'query'  =>  $query
+        ));
 
         print_r($result);
     }

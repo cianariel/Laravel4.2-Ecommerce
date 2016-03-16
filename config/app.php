@@ -160,8 +160,8 @@
             'Barryvdh\Cors\ServiceProvider',
             'Roumen\Sitemap\SitemapServiceProvider',
             Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
-            Fenos\Notifynder\NotifynderServiceProvider::class
-
+            Fenos\Notifynder\NotifynderServiceProvider::class,
+             Aws\Laravel\AwsServiceProvider::class
         ], 
 
         /*
@@ -230,8 +230,8 @@
             'ViewHelper'         => 'App\Core\ViewHelper',
             'Image'              => 'Intervention\Image\Facades\Image',
             'MetaTag'            => Torann\LaravelMetaTags\Facades\MetaTag::class,
-            'Notifynder'         => Fenos\Notifynder\Facades\Notifynder::class
-
+            'Notifynder'         => Fenos\Notifynder\Facades\Notifynder::class,
+            'AWS' => Aws\Laravel\AwsFacade::class
 
         ],
 

@@ -298,6 +298,7 @@
 
 
     Route::get('search/index', 'SearchController@indexData');
+    Route::get('search/search/{query?}', 'SearchController@searchData');
 
 
     // temporary category tag generator
