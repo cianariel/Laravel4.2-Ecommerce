@@ -95,7 +95,8 @@
             $this->setCookie('auth-token',null);
 
             // expire email in cookie for WP use.
-            setcookie('_wptk','',time() - (86400 * 14));
+           // setcookie('_wptk','',time() - (86400 * 14));
+            setcookie('_wptk',null,-1,'/');
 
             // get token form input or session
             $tokenValue = session('auth.token');
