@@ -109,7 +109,7 @@ class UserController extends ApiController
         $result = base64_encode(serialize(['data' => $userInfo, 'IsAdmin' => $isAdmin]));
 
         // Decode process from WP end , check returning $decode
-         $result = unserialize(base64_decode($result));
+        // $result = unserialize(base64_decode($result));
         return $result;
     }
 
