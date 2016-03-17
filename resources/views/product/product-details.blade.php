@@ -332,13 +332,13 @@
 
 <!--                                        <b class="score">@{{ item.data.productInformation.Review[1].value }}</b>-->
 
-                                        <div class="star-raiting score" style="text-align: center">
+                                        <div class="star-rating score" style="text-align: center">
                                             <span class="star active" ng-repeat="n in [1, 2, 3, 4, 5]">
                                                 <i ng-class="item.data.productInformation.Review[1].value<=(n-1) ?  'm-icon--star-blue-full-lines' : (item.data.productInformation.Review[1].value<n ? 'm-icon--star-blue-half2' :  'm-icon--star-blue-full')"></i>
                                             </span>
                                         </div>
 
-                                        <div class="star-raiting" style="text-align: center">
+                                        <div class="star-rating" style="text-align: center">
                                             <span class="stars">(@{{ item.data.productInformation.Review[1].counter | number:0 }}
                                                 ) Customer Reviews</span>
                                         </div>
@@ -462,7 +462,7 @@
                                     <div class="title">Critic</div>
                                     <div class="reviews">Reviews</div>
 
-                                    <div class="star-raiting" style="text-align: center">
+                                    <div class="star-rating" style="text-align: center">
                                         <?php
                                         $stars = $productInformation['Review'][0]->value;
                                         $fStar = floor($stars);
@@ -508,7 +508,7 @@
                                                             target="_blank">@if(isset($review->key)){{$review->key}}@endif
                                                     </a></div>
 
-                                                <div class="star-raiting" style="text-align: center">
+                                                <div class="star-rating" style="text-align: center">
                                                     <?php
                                                     $stars = isset($review->value) ? $review->value : 0;
                                                     $fStar = floor($stars);
@@ -546,7 +546,7 @@
                                                           href="@if(isset($productInformation['Review'][1]->link)){{$productInformation['Review'][1]->link}}@endif"
                                                           target="_blank">Amazon</a></div>
                                     <div class="reviews">Reviews</div>
-                                    <div class="star-raiting" style="text-align: center">
+                                    <div class="star-rating" style="text-align: center">
                                         <?php
                                             $stars = $productInformation['Review'][1]->value;
                                             $fStar = floor($stars);

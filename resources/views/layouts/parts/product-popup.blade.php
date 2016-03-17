@@ -2,18 +2,7 @@
             <div class="lbMain">
                 <div class="lbImageContainer">
                     <div id="product-slider" class="product-slider slider" style="visibility:hidden">
-                        <div>
-                            <img 
-                                 src="http://s3-us-west-1.amazonaws.com/ideaing-01/product-56b246ce6326f-dvx-at100-1.jpg"
-                                 class="attachment-large wp-post-image"
-                                 alt=""/>
-                        </div>
-                        <div>
-                            <img 
-                                 src="http://s3-us-west-1.amazonaws.com/ideaing-01/product-56b246ce6326f-dvx-at100-1.jpg"
-                                 class="attachment-large wp-post-image"
-                                 alt=""/>
-                        </div>
+                        
                     </div>
                 </div>
                 <div class="lbInfo">
@@ -24,7 +13,7 @@
                     <div class="row">
                         <div class="col-xs-12 ideaing-score-holder">
                             <div class="p-average-ideaing-score">
-                                <i class="m-icon--bulb-detailed-on-rating"></i> <span class="p-score">98%</span><br>
+                                <i class="m-icon--bulb-detailed-on-rating"></i> <span class="p-score"></span><br>
                                 <span>Average Ideaing Score</span>
                             </div>
                             <div class="pull-left p-nest-protect">
@@ -52,7 +41,7 @@
                                     
                                 </div>
                                 <div class="p-footer">
-                                    From $375.00 <i class=" m-icon--Right-Arrow-Active"></i>
+                                    From $<span class="aws-price"></span> <i class=" m-icon--Right-Arrow-Active"></i>
                                 </div>
                             </div>
                             <div class="pull-left p-get-it-right">
@@ -87,9 +76,9 @@
                         </div>
                         
                         <div class="col-xs-12 p-row-group">
-                            <div class="p-row-inner">
-                                <p>Nest Labs apparently loves a good challenge. Its ability to transform a real boring, utilitarian household products into smart devices beaustiful enough make a desing giant like Yves we(I imagine) is an incredible feat. And yet. Nest's original Protect smoke and carbon monoxide (CO)</p>
-                                <p><a href="#" class="p-read-more">Read more <i class=" m-icon--Actions-Down-Arrow-Active"></i></a></p>
+                            <div class="p-row-inner" id="features">
+                                <p></p>
+                                <!-- p><a href="#" class="p-read-more">Read more <i class=" m-icon--Actions-Down-Arrow-Active"></i></a></p -->
                             </div>
                         </div>
 
@@ -107,16 +96,17 @@
                         <div class="col-xs-12 p-row-group">
                             <div class="p-row-inner p-reviews-holder">
                                 <br><br>
+                                <!--
                                 <p class="p-reviews-title">Reviews(4)</p>
                                 <br><br>
+                                -->
                                 <div class="reviews-medium-container">
                                     <div class="">
                                         <div class=" col-xs-12">
                                             <div class="average-score block-center">
                                                 <div class="score">
                                                     <i class=" m-icon--bulb-detailed-on-rating"></i>
-                                                                                                    0
-                                                    %
+                                                    <span class="p-score"></span>
                                                 </div>
                                                 <span class="caption">Average Ideaing Score</span>
                                             </div>
@@ -129,86 +119,24 @@
                                             <div class="title">Critic</div>
                                             <div class="reviews">Reviews</div>
 
-                                            <div class="star-raiting" style="text-align: center">
-                                                <?php
-                                                    $stars = 4.5;
-                                                    $fStar = floor($stars);
-                                                    $cStar = ceil($stars);
-                                                    $halfStar = -1;
-                                                    if ($fStar == $cStar)
-                                                        $halfStar = $cStar;
+                                            <div class="star-rating" style="text-align: center">
 
-                                                    for($i=1; $i<=5; $i++){
-                                                        if($i <= $fStar){
-                                                            echo '
-                                                            <span class="star active">
-                                                                <i class="m-icon--star-blue-full"></i>
-                                                            </span>
-                                                            ';
-                                                        }elseif($cStar == $i){
-                                                            echo 
-                                                            '<span class="star half">
-                                                                <i class=" m-icon--star-blue-half2"></i>
-                                                            </span>
-                                                            ';
-                                                        }else{
-                                                            echo 
-                                                            '<span class="star">
-                                                                <i class=" m-icon--star-blue-full-lines"></i>
-                                                            </span>';
-                                                        }
-                                                    }
-                                                ?>
                                             </div>
-                                            <p style="color: black" class="text-center">
-                                                0
-                                                <span class="light-black">
-                                                    Review
-                                                </span>
+                                            <p style="color: black" class="star-rating-label text-center">
                                             </p>
+                                            
+                                            <div id="critic-outer-rating-holder"></div>
                                         </div>
+                                        
                                         <div class="col-xs-6 text-center reviews-service-holder amazon">
                                             <div class="vertical-line"></div>
                                             <div class="title"><a style="color: #00b1ff;" href="" target="_blank">Amazon</a></div>
                                             <div class="reviews">Reviews</div>
-                                            <div class="star-raiting" style="text-align: center">
-                                                <?php
-                                                    $stars = 3.3;
-                                                    $fStar = floor($stars);
-                                                    $cStar = ceil($stars);
-                                                    $halfStar = -1;
-                                                    if ($fStar == $cStar)
-                                                        $halfStar = $cStar;
+                                            <div class="star-rating" style="text-align: center">
 
-                                                    for($i=1; $i<=5; $i++){
-                                                        if($i <= $fStar){
-                                                            echo '
-                                                            <span class="star active">
-                                                                <i class="m-icon--star-blue-full"></i>
-                                                            </span>
-                                                            ';
-                                                        }elseif($cStar == $i){
-                                                            echo 
-                                                            '<span class="star half">
-                                                                <i class=" m-icon--star-blue-half2"></i>
-                                                            </span>
-                                                            ';
-                                                        }else{
-                                                            echo 
-                                                            '<span class="star">
-                                                                <i class=" m-icon--star-blue-full-lines"></i>
-                                                            </span>';
-                                                        }
-                                                    }
-                                                ?>
                                             </div>
-                                            <p style="color: black" class="text-center">
-                                                <a href="" target="_blank">
-                                                    1
-                                                    <span class="light-black">
-                                                        Review
-                                                    </span>
-                                                </a>
+                                            <p style="color: black" class="text-center star-rating-label">
+                                                
                                             </p>
                                         </div>
                                     </div>
@@ -226,41 +154,17 @@
                             <div class="p-row-inner p-comment-holder">
                                 <br>
                                 <div>
-                                    <p class="p-comments-title pull-left">Comments<span class="p-responses"> (211 responses)</span></p>
+                                    <p class="p-comments-title pull-left">Comments (<span class="p-responses p-comment-responses"></span>)</p>
                                     <!-- span class="pull-right p-favorite"><i class="m-icon--heart-id"></i> 2,349</span> -->
                                     <div class="clearfix"></div>
                                 </div>
                                 <br><br>
-                                <div class="p-comment-row">
-                                    <div class="pull-left">
-                                        <img src="/assets/images/dummies/author.png" width="50px" class="p-photo">
-                                    </div>
-                                    <div class="p-comment">
-                                        <p>We very much enjoyed our summer stay at this incline Village condo. Very comfortable, had all thenecessites and a very responsive host. The location was great - close to bike paths, recreation center and beached. Recommended!</p>
-                                        <div class="p-footer">
-                                            <span class="p-time pull-left">August 2015</span>
-                                            <button class="pull-right btn btn-helpful"><i class="m-icon--heart"></i> Helpful</button>
-                                            <div class="clearfix"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="p-comment-row">
-                                    <div class="pull-left">
-                                        <img src="/assets/images/dummies/author.png" width="50px" class="p-photo">
-                                    </div>
-                                    <div class="p-comment">
-                                        <p>We very much enjoyed our summer stay at this incline Village condo. Very comfortable, had all thenecessites and a very responsive host. The location was great - close to bike paths, recreation center and beached. Recommended!</p>
-                                        <div class="p-footer">
-                                            <span class="p-time pull-left">August 2015</span>
-                                            <button class="pull-right btn btn-helpful"><i class="m-icon--heart"></i> Helpful</button>
-                                            <div class="clearfix"></div>
-                                        </div>
-                                    </div>
-                                </div>
+                                
+                                <div class="p-comment-content-holder comments"></div>
                             </div>
                         </div>
                         
-                        <div class="col-xs-12 p-row-group">
+                        <!-- div class="col-xs-12 p-row-group">
                             <div class="p-row-inner p-comment-holder p-add-comment">
                                 <div class="p-comment-row">
                                     <div class="pull-left">
@@ -276,7 +180,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div -->
                         
                     </div>
                 

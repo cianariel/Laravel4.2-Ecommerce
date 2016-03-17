@@ -5239,18 +5239,19 @@ body.single #hero, body.product-details #hero, body.profilepage #hero, body.shop
   position: absolute;
   width: 40px;
   height: 40px;
+  margin-top: -20px;
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat; }
   .slider.product-slider .rsArrow.rsArrowLeft,
   .slider.product-slider .rsThumbsArrow.rsArrowLeft, .slider.heroSlider .rsArrow.rsArrowLeft,
   .slider.heroSlider .rsThumbsArrow.rsArrowLeft {
-    top: 40%;
+    top: 50%;
     background-image: url("/assets/images/arrow-left-pink.png"); }
   .slider.product-slider .rsArrow.rsArrowRight,
   .slider.product-slider .rsThumbsArrow.rsArrowRight, .slider.heroSlider .rsArrow.rsArrowRight,
   .slider.heroSlider .rsThumbsArrow.rsArrowRight {
-    top: 40%;
+    top: 50%;
     right: 165px;
     background-image: url("/assets/images/arrow-right-pink.png"); }
   .slider.product-slider .rsArrow.rsThumbsArrowLeft,
@@ -6092,7 +6093,7 @@ article.product {
   color: #FF0042;
   border-color: #FF0042 !important;
   box-shadow: none !important; }
-  .btn-outline:hover {
+  .btn-outline:hover, .btn-outline:active, .btn-outline:focus {
     background: #FF0042;
     color: #fff; }
 
@@ -7608,7 +7609,7 @@ body.single .related-items {
   .comparison-tab h4 {
     font-size: 1.6rem;
     font-weight: bold; }
-  .comparison-tab .star-raiting {
+  .comparison-tab .star-rating {
     margin-bottom: 19px; }
   .comparison-tab i, .comparison-tab .stars {
     color: #c1c1c1;
@@ -8616,7 +8617,7 @@ footer.about-footer {
     margin-top: 15px; }
     .reviews-medium-container .reviews-service-holder .critic-outer-rating .line-label {
       /*                font-size: 25px;*/ }
-    .reviews-medium-container .reviews-service-holder .critic-outer-rating .star-raiting {
+    .reviews-medium-container .reviews-service-holder .critic-outer-rating .star-rating {
       margin-top: 0px; }
   .reviews-medium-container .reviews-service-holder.amazon {
     color: #00b1ff; }
@@ -8652,20 +8653,20 @@ footer.about-footer {
 .reviews-service-holder.amazon .inner-line {
   background: #00b1ff; }
 
-.star-raiting {
+.star-rating {
   margin-top: 28px; }
 
-.star-raiting .star {
+.star-rating .star {
   /*    background: url('/assets/images/star-white.png') no-repeat;*/
   /*    width:20px;*/
   /*    height:19px;*/
   display: inline-block;
   font-size: 18px; }
 
-.star-raiting .star.active {
+.star-rating .star.active {
   /*    background: url('/assets/images/star-blue.png');*/ }
 
-.star-raiting .star.half {
+.star-rating .star.half {
   /*    background: url('/assets/images/star-half.png');*/ }
 
 .light-black {
@@ -9595,22 +9596,25 @@ html.hide-overflow {
 
 .product-popup-modal #product-slider {
   position: relative;
-  width: 100%; }
+  width: 100%;
+  height: 100%; }
   .product-popup-modal #product-slider img {
-    width: 100%; }
+    max-width: 100%;
+    max-height: 100%; }
   .product-popup-modal #product-slider .rsArrow {
     display: block;
     /*            background-color: rgb(255, 255, 255);*/
     border-radius: 30px;
     width: 50px;
-    height: 50px; }
+    height: 50px;
+    margin-top: -25px; }
   .product-popup-modal #product-slider .rsArrowLeft {
     left: 20px; }
   .product-popup-modal #product-slider .rsArrowRight {
     right: 20px; }
 
 .product-popup-modal .lbInfo {
-  color: #9f9f9f;
+  /*        color: #9f9f9f;*/
   overflow-y: auto; }
   .product-popup-modal .lbInfo .p-category-holder > li {
     float: left;
@@ -9757,6 +9761,10 @@ html.hide-overflow {
       font-size: 27px;
       position: relative;
       top: 5px; }
+  .product-popup-modal .lbInfo .p-comment-holder .p-comment-user {
+    max-width: 77px;
+    padding: 0px 2px;
+    text-align: center; }
   .product-popup-modal .lbInfo .p-photo {
     border-radius: 50px;
     width: 50px; }
@@ -9812,6 +9820,11 @@ html.hide-overflow {
       left: -23px;
       border-color: transparent #d9d9d9 transparent transparent;
       border-width: 11px; }
+  .product-popup-modal .lbInfo #features ul {
+    list-style: initial; }
+    .product-popup-modal .lbInfo #features ul li {
+      list-style: initial;
+      margin-left: 30px; }
 
 #all-shop-menu {
   font-family: "Montserrat", sans-serif;
@@ -10212,7 +10225,7 @@ body.error-page .error-banner-holder {
   .reviews-medium-container .average-score {
     float: none;
     margin: auto; }
-  .star-raiting {
+  .star-rating {
     margin-top: 0px; }
   #top-nav .box-link-active-line {
     display: none; }
