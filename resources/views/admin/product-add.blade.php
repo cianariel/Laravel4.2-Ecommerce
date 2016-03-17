@@ -17,7 +17,7 @@
             </ul>
         </div>
         <!-- END PAGE BAR -->
-        <div ng-app="adminApp" data-ng-controller="AdminController" class="row" nv-file-drop="" uploader="uploader"
+        <div {{--ng-app="adminApp" data-ng-controller="AdminController"--}} class="row" nv-file-drop="" uploader="uploader"
              filters="queueLimit, customFilter" ng-cloak>
 
             <input type="hidden" ng-model="ProductAuthorName" ng-init="ProductAuthorName = '{{$userName}}' " >

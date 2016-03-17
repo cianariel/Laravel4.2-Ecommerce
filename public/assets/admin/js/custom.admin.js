@@ -512,7 +512,8 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
         };
 
         $scope.logoutUser = function () {
-            var WpLogoutURL = 'https://ideaing.com/ideas/api?call=logout';
+           // var WpLogoutURL = 'https://ideaing.com/ideas/api?call=logout';
+            var WpLogoutURL = '/ideas/api?call=logout';
 
             $http({
                 url: WpLogoutURL,
