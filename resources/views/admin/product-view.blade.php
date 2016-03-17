@@ -26,7 +26,7 @@
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
-            <div ng-app="adminApp" data-ng-controller="AdminController" class="row">
+            <div {{--ng-app="adminApp" data-ng-controller="AdminController"--}} class="row">
 
                 <div class="col-lg-12" ng-cloak>
                     <div class="panel panel-default">
