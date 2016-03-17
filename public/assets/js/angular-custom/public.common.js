@@ -572,7 +572,9 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
 
 
         $scope.logoutUser = function () {
-            var WpLogoutURL = 'https://ideaing.com/ideas/api?call=logout';
+          //  var WpLogoutURL = 'https://ideaing.com/ideas/api?call=logout';
+            var WpLogoutURL = '/ideas/api?call=logout';
+
 
             $http({
                 url: WpLogoutURL,
