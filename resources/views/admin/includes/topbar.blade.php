@@ -310,7 +310,7 @@
                         <span class="username username-hide-on-mobile"> Nick </span>
                         <i class="fa fa-angle-down"></i>
                     </a>
-                    <ul ng-app="adminApp" ng-controller="AdminController" class="dropdown-menu dropdown-menu-default">
+                    <ul {{--ng-app="adminApp" ng-controller="AdminController"--}} class="dropdown-menu dropdown-menu-default">
                         <li>
                             <a href="page_user_profile_1.html">
                                 <i class="icon-user"></i> My Profile </a>
