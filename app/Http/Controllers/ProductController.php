@@ -87,12 +87,20 @@ class ProductController extends ApiController
     public function getProductById($id = null)
     {
         try {
+                $productModel = new Product();
+                $productData['product'] = $productModel->getViewForPublic('', $id);
+                $catTree = $productModel->getCategoryHierarchy($productData['product']->product_category_id);
+                $result = $productModel->productDetailsViewGenerate($productData, $catTree);
+
+
             $product = $this->product->where('id', $id)->first();
 
             // automatic update price for any changes and fetch new data with updated price
             if ($this->product->updateProductPrice($product['product_vendor_id'], $product['store_id'])) {
                 $product = $this->product->where('id', $id)->first();
             }
+                $product['selfImages'] = $result['selfImages'];
+                $product['productInformation'] = $result['productInformation'];
 
             if ($product == null) {
                 return $this->setStatusCode(\Config::get("const.api-status.app-failure"))

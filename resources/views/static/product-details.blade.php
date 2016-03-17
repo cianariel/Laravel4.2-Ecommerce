@@ -313,7 +313,7 @@
                                         <h4>Next Project <br>(second generation)</h4>
                                         <i>Announced 29 October 2015</i>
                                         <b class="score">9.0</b>
-                                        <div class="star-raiting">
+                                        <div class="star-rating">
                                             <span class="stars">(543)</span>
                                         </div>
                                         <div class="btn purple-bg price-badge">
@@ -331,7 +331,7 @@
                                         <h4>Next Project <br>(second generation)</h4>
                                         <i>Announced 29 October 2015</i>
                                         <b class="score">9.0</b>
-                                        <div class="star-raiting">
+                                        <div class="star-rating">
                                             <span class="stars">(543)</span>
                                         </div>
                                         <div class="btn purple-bg price-badge">
