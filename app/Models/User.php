@@ -400,7 +400,11 @@ class User extends Model implements AuthenticatableContract,
         try {
             $user = User::where('email', $userData['Email'])->first();
 
-            return \Hash::check($userData['Password'], $user->password) ? $user : false;
+            //  return \Hash::check($userData['Password'], $user->password) ? $user : false;
+
+            $password = hash('md5',$userData['Password']);
+
+            return ($password == $user->password) ? $user : false;
 
         } catch (\Exception $ex) {
             // throw new \Exception($ex);
