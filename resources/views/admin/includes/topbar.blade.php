@@ -310,7 +310,7 @@
                         <span class="username username-hide-on-mobile"> Nick </span>
                         <i class="fa fa-angle-down"></i>
                     </a>
-                    <ul ng-app="adminApp" ng-controller="AdminController" class="dropdown-menu dropdown-menu-default">
+                    <ul {{--ng-app="adminApp" ng-controller="AdminController"--}} class="dropdown-menu dropdown-menu-default">
                         <li>
                             <a href="page_user_profile_1.html">
                                 <i class="icon-user"></i> My Profile </a>
@@ -346,7 +346,8 @@
                 <!-- BEGIN QUICK SIDEBAR TOGGLER -->
                 <!-- DOC: Apply "dropdown-dark" class after below "dropdown-extended" to change the dropdown styte -->
                 <li class="dropdown dropdown-quick-sidebar-toggler">
-                    <a href="/api/logout" class="dropdown-toggle">
+                   {{-- <a href="/api/logout" class="dropdown-toggle">--}}
+                        <a ng-click="logoutUser()" class="dropdown-toggle">
                         <i class="icon-logout"></i>
                     </a>
                 </li>
