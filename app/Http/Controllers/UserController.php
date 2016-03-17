@@ -186,7 +186,7 @@ class UserController extends ApiController
                 $userData['Email']
             ));
 
-            // set cookie to hid popup
+            // set cookie to hide popup
             $this->setCookie('hide-signup', 'true', 9999999);
 
             return $this->setStatusCode(\Config::get("const.api-status.success"))
