@@ -1,5 +1,7 @@
 <?php
   // !! IMPORTANT !! -- please use only pure PHP here, no Laravel, otherwise the header will break   in Wordpress !!
+
+// print_r($isAdmin); die();
 ?>
 
 <!--    <div {{--id="pagingApp" ng-app="pagingApp" ng-controller="headerController"--}}>-->
