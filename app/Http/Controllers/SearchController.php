@@ -13,6 +13,7 @@ use Illuminate\Contracts\Filesystem\Factory;
 use App\Models\Product;
 use App\Models\Search;
 use AWS;
+use Input;
 
 
 class SearchController extends Controller
@@ -47,7 +48,13 @@ class SearchController extends Controller
     }
 
 
-    public function searchData($query = ''){
+    public function searchData($query = false){
+
+        $input = Input::all();
+
+        if(!$query){
+            $query = Input::get('search');
+        }
 
         $csDomainClient = AWS::createClient('CloudsearchDomain',
             [
@@ -55,11 +62,15 @@ class SearchController extends Controller
             ]
         );
 
-        $result = $csDomainClient->search(array(
+        $results = $csDomainClient->search(array(
             'query'  =>  $query
         ));
 
-        print_r($result);
+        foreach($results['hits']['hit'] as $hit){
+            $return[] = $hit['fields'];
+        }
+
+        return $return;
     }
 
 }

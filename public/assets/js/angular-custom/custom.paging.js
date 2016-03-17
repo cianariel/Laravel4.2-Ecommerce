@@ -171,23 +171,69 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
             }
             
     })
-/*    .controller('headerController', function ($scope, $uibModal, $http, pagingApi, $filter, layoutApi) {
+    .controller('SearchController', function ($scope, $http, pagingApi, $filter) {
 
-        /!*$scope.openProfileSetting = function () {
-         var templateUrl = "profile-setting.html";
-         var modalInstance = $uibModal.open({
-         templateUrl: templateUrl,
-         size: 'lg',
-         windowClass : 'profile-setting-modal',
-         controller: 'ModalInstanceCtrltest'
-         });
-         };*!/
+        console.log('y!')
 
-        /!*layoutApi.getProductsForShopMenu().success(function (response) {
-         $scope.productsForShopMenu = response;
-         });*!/
+        //$scope.getContentFromSearch = function() {
+            var $route = $filter('getURISegment')(2);
+            var $searchQuery = false;
+            if ($route == 'search') {
+                if ($searchQuery = $filter('getURISegment')(3)) {
+                    $scope.$searchQuery = $searchQuery;
+                }
+            }
+        console.log($scope.$searchQuery)
 
-    })*/
+        $scope.currentPage = 1;
+            $scope.currentCategory = false;
+            $scope.$filterBy = false;
+            $scope.sortBy = false;
+
+            //if($route == 'shop'){
+            //    if($category = $filter('getURISegment')(5)){
+            //        $scope.currentCategory = $category;
+            //    }else if($category = $filter('getURISegment')(4)){
+            //        $scope.currentCategory = $category;
+            //    }else{
+            //        $scope.currentCategory = $filter('getURISegment')(3);
+            //    }
+            //}
+
+            $scope.nextLoad = pagingApi.getSearchContent($scope.$searchQuery).success(function (response) {
+
+                //if($scope.sortBy){
+                //    response.sort(function(a, b) {
+                //        return parseFloat(a[$scope.sortBy]) - parseFloat(b[$scope.sortBy]);
+                //    });
+                //}
+
+                $scope.content = response;
+            });
+            //
+            //    $scope.loadMore = function() {
+            //        $scope.currentPage++;
+            //
+            //        var $limit = 15;
+            //
+            //        $scope.nextLoad =  pagingApi.getPlainContent($scope.currentPage, $limit,  $scope.currentCategory, 'product', $scope.currentCategory).success(function (response) {
+            //            var $newStuff = $scope.content.concat(response)
+            //
+            //            if($scope.sortBy){
+            //                $newStuff.sort(function (a, b) {
+            //                    return parseFloat(a[$scope.sortBy]) - parseFloat(b[$scope.sortBy]);
+            //                });
+            //            }
+            //
+            //            $scope.content = $newStuff;
+            //        });
+            //
+            //}
+        //}
+        //
+        //$scope.getContentFromSearch();
+
+    })
     .controller('ModalInstanceCtrltest', function ($scope, $uibModalInstance) {
       $scope.ok = function () {
         $uibModalInstance.close();
@@ -501,6 +547,13 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
             });
         }
 
+        pagingApi.getSearchContent = function(query) {
+            return $http({
+                method: "get",
+                url: '/api/search/' + query,
+            });
+        }
+
         pagingApi.getFilteredContent = function(currentPage, $tag, $type, $sliceFunction) {
             var promiseArray = [];
 
@@ -645,6 +698,8 @@ angular.module('pagingApp.filters', [])
             return false;
         }
     });
+
+
 
 // bootstrap for modularization ( add id="pagingApp" with initializing ng-app='pagingApp')
 //angular.bootstrap(document.getElementById('pagingApp'),['pagingApp']);

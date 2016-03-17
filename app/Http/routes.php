@@ -296,9 +296,10 @@
     Route::get('/api/social/get-social-counts', 'PageController@getSocialCounts');
     Route::get('/api/social/get-fan-counts', 'PageController@getFollowerCounts');
 
+    Route::get('api/search/{query?}', 'SearchController@searchData');
 
-    Route::get('search/index', 'SearchController@indexData');
-    Route::get('search/search/{query?}', 'SearchController@searchData');
+    Route::get('api/search/index', 'SearchController@indexData');
+    Route::get('search/{query?}', 'PageController@searchPage');
 
 
     // temporary category tag generator
