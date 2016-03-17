@@ -574,4 +574,43 @@ function custom_login(){
 }
 
 
+// SSO variables
+global $userData;
+global $isAdmin;
+
+if($token = $_COOKIE['_wptk']){
+
+    $ch = curl_init();
+
+   $url = 'https://ideaing.com/api/info';
+
+    $data = array('_wptk' => $token);
+
+    // use key 'http' even if you send the request to https://...
+    $options = array(
+        'http' => array(
+            'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
+            'method'  => 'POST',
+            'content' => http_build_query($data)
+        )
+    );
+    $context  = stream_context_create($options);
+    $result = file_get_contents($url, false, $context);
+
+    if ($result === FALSE) { /* Handle error */ }
+
+    $result = unserialize(base64_decode($result));
+
+    $userData = $result['data'];
+    $isAdmin = $result['IsAdmin'];
+
+  //  print_r($userData); die();
+
+   //  print_r($isAdmin); die();
+
+}
+
+
+
+
 ?>

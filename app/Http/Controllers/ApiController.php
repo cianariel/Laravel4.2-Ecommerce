@@ -283,7 +283,7 @@ class ApiController extends Controller
                 //    $response['token'] = $newToken;
 
                 // set email in cookie for WP use.
-                 setcookie('_wptk',base64_encode($user['email']),time() + (86400 * 14));
+                 setcookie('_wptk',base64_encode($user['email']),time() + (86400 * 14), '/');
 
                 $response['status-code'] = '200';
                 $response['status-message'] = 'User Validated';
