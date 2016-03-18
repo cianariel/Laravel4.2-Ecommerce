@@ -9110,7 +9110,7 @@ body.shop-category .popular-new {
   /*        padding-bottom: 35px;*/ }
 
 body.shop-category .main-content {
-  float: right; }
+  /*        float: right;*/ }
   body.shop-category .main-content .grid-box-3 {
     border-left: 1px solid #eee;
     border-top: 1px solid #eee;
