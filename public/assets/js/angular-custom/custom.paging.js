@@ -463,7 +463,6 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
                     }).success(function (data) {
                         if (data.status_code == 200) {
                             var data = data.data;
-                            console.log(data)
                             var imageHTML = "";
                             for(var key in data.selfImages.picture){
                                 var picture = data.selfImages.picture[key];
@@ -478,7 +477,15 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
                             }
                             $('.product-popup-modal #product-slider').html(imageHTML);
                             $('.product-popup-modal .p-title').html(data.productInformation['ProductName']);
-                            $('.product-popup-modal .get-round').attr('href', data.productInformation['AffiliateLink']);
+                            
+                            var html = '\
+                                <a class="get-round" href="'+ data.productInformation['AffiliateLink'] +'" target="_blank">Get it</a>\
+                                <img class="vendor-logo" width="107" src="'+ data.storeInformation['ImagePath'] +'" alt="'+ data.storeInformation['StoreName'] +'">\
+                            ';
+                            $('.product-popup-modal .p-get-it-amazon .p-body').html(html);
+                            
+                            
+//                            $('.product-popup-modal .get-round').attr('href', data.productInformation['AffiliateLink']);
                             
                             if(data.productInformation['Review']){
                                 var pScore = parseInt(((( Number(data.productInformation['Review'][0].value) > 0 ? Number(data.productInformation['Review'][0].value) : Number(data.productInformation['Review'][1].value)) + Number(data.productInformation['Review'][1].value))/2)*20) + "%";
@@ -728,6 +735,17 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
             });
         };
 
+        pagingApi.fakeUpdateCounts = function ($service) {
+            var currentCounters =  $('.share-buttons a[data-service="' + $service + '"]').children('.share-count');
+            var totalCounters = $('b.share-count.all');
+			
+			var currentCount = Number(currentCounters.html());
+			currentCounters.html(currentCount + 1);
+
+			var totalCount = Number(totalCounters.html());
+			totalCounters.html(totalCount + 1);
+		}
+
         pagingApi.openSharingModal = function ($service, $scope) {
             var baseUrl = 'https://' + window.location.host + window.location.pathname;
             var shareUrl = false;
@@ -740,8 +758,7 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
                     document.body.appendChild(e);
 
                 setTimeout(function(){
-                    if($scope)
-                        $scope.fakeUpdateCounts('pinterest');
+					pagingApi.fakeUpdateCounts('pinterest');
                 }, 10000);
             }
 
@@ -775,8 +792,7 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
                     clearInterval(timer);
 
                     setTimeout(function(){
-                        if($scope)
-                            $scope.fakeUpdateCounts($service);
+			pagingApi.fakeUpdateCounts($service);
                     }, 2000);
                     //setTimeout(function(){
                     //    $scope.countSocialShares();

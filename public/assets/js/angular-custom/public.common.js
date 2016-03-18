@@ -163,25 +163,6 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
 */
         };
 
-        $scope.fakeUpdateCounts = function($service){ // add +1 to a counter that's being used, to save performance, until the next page reload
-            var currentCounters =  $('.share-buttons a[data-service="' + $service + '"]').children('.share-count');
-            var totalCounters = $('b.share-count.all');
-
-            currentCounters.each(function(){
-                var that = $(this);
-                var oldNumber = +(that.text());
-                var newNumber = oldNumber + 1;
-                that.text(newNumber);
-            });
-            totalCounters.each(function(){
-                var that = $(this);
-                var oldTotal = +(that.text());
-                var newTotal = oldTotal + 1;
-                that.text(newTotal);
-            });
-        }
-
-
         // load shop information.
         layoutApi.getProductsForShopMenu().success(function (response) {
             $scope.productsForShopMenu = response;
