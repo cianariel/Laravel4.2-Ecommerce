@@ -307,10 +307,17 @@
                 <li class="dropdown dropdown-user">
                     <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
                         <img alt="" class="img-circle" src="/assets/admin/vendor/layouts/layout/img/avatar3_small.jpg" />
-                        <span class="username username-hide-on-mobile"> Nick </span>
+                        <span class="username username-hide-on-mobile"> Admin </span>
                         <i class="fa fa-angle-down"></i>
                     </a>
                     <ul {{--ng-app="adminApp" ng-controller="AdminController"--}} class="dropdown-menu dropdown-menu-default">
+
+                        <li>
+                            <a href="/ideas/wp-admin">
+                                <i class="icon-rocket"></i> WP Admin
+                            </a>
+                        </li>
+{{--
                         <li>
                             <a href="page_user_profile_1.html">
                                 <i class="icon-user"></i> My Profile </a>
@@ -335,7 +342,7 @@
                         <li>
                             <a href="page_user_lock_1.html">
                                 <i class="icon-lock"></i> Lock Screen </a>
-                        </li>
+                        </li>--}}
                         <li>
                             <a ng-click="logoutUser()" href="#">
                                 <i class="icon-key"></i> Log Out </a>
