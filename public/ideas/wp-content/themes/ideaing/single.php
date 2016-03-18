@@ -205,59 +205,14 @@
                 </div>
             </section>
 
-
-<!--			<span class="comments">--><?php //if (comments_open( get_the_ID() ) ) comments_popup_link( __( 'Leave your thoughts', 'html5blank' ), __( '1 Comment', 'html5blank' ), __( '% Comments', 'html5blank' )); ?><!--</span>-->
-			<!-- /post details -->
-
-
-			<?php // the_tags( __( 'Tags: ', 'html5blank' ), ', ', '<br>'); // Separated by commas with a line break at the end ?>
-
-<!--			<p>--><?php //// _e( 'Categorised in: ', 'html5blank' ); the_category(', '); // Separated by commas ?><!--</p>-->
-
-<!--			<p>--><?php ////  _e( 'This post was written by ', 'html5blank' ); the_author(); ?><!--</p>-->
-
-			<?php // edit_post_link(); // Always handy to have Edit Post Links available ?>
-
-<!--			--><?php //comments_template(); ?>
-
-        <section class="comments">
-            <div class="container">
-                <h4>211 Comments</h4>
-
-                <div class="single-comment">
-                    <div class="col-md-1 col-sm-2 col-xs-3 comment-author">
-                        <a class="author" href="#"></a>
-                        <div><b class="comment-name">Carrie</b></div>
-                    </div>
-                    <div  class="col-md-8 col-sm-8 col-xs-7">
-                        <p>
-                            Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur?
-                        </p>
-                        <time>August 2015</time>
-                    </div>
-                </div>
-
-                <section class="add-comment">
-                    <div class="single-comment">
-                        <div class="col-md-1 col-sm-2 col-xs-3 comment-author">
-                            <a class="author" href="#"></a>
-                        </div>
-                        <div  class="col-xs-8 field-wrap">
-                            <textarea class="form-control" name="comment" id="you-comment" placeholder="Share your thoughts"></textarea>
-                            <div class="pull-right comment-controls">
-                                <a href="#" class="add-photo"><i class="m-icon m-icon--camera"></i>&nbsp;<span>Add a photo</span> </a>
-                                <button class="btn btn-info">Post</button>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-            </div>
-        </section>
+      <?php 
+       loadLaravelView('comments-product'); 
+      ?>
 
 
 		<!-- /article -->
 
-	<?php endwhile; ?>
+	<?php endwhile; ?> 
 
 	<?php else: ?>
 

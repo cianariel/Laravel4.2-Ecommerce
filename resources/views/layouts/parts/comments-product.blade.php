@@ -4,6 +4,20 @@
 <script src="/assets/js/vendor/angular-confirm.js"></script>
 <script src="/assets/js/vendor/textAngular-rangy.min.js"></script>
 <script src="/assets/js/vendor/textAngular.min.js"></script>
+<?php
+   
+    if(function_exists('is_single')){
+         if(isset($GLOBALS['userData']) &&  isset($GLOBALS['isAdmin'])){
+                 $userData = $GLOBALS['userData'];
+                 $isAdmin =  $GLOBALS['isAdmin']; 
+        }
+
+        $permalink = get_the_permalink();
+        
+        global $post;
+        $productId = $post->ID;
+    }  
+?>
 <section class="comments" id="comments">
     <div class="container">
         <a name="comment"></a>

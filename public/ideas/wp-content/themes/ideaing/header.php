@@ -11,4 +11,8 @@
 
 	</head>
 	<body  ng-app="rootApp" <?php body_class(); ?>>
+
+
+
+
     <?php loadLaravelView('header'); ?>
