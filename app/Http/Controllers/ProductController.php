@@ -101,6 +101,7 @@ class ProductController extends ApiController
             }
                 $product['selfImages'] = $result['selfImages'];
                 $product['productInformation'] = $result['productInformation'];
+                $product['storeInformation'] = $result['storeInformation'];
 
             if ($product == null) {
                 return $this->setStatusCode(\Config::get("const.api-status.app-failure"))

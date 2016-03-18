@@ -548,34 +548,24 @@ ul.share-buttons{
     &.twi {
       @include round-box($facebook-blue, "/assets/images/twi-white-small.png");
 
-      //background-color: $facebook-blue;
-      //background-image: url("/assets/images/twi-white-small.png");
     }
     &.gp {
       @include round-box($iridium, "/assets/images/gp-white-small.png");
 
-      //background-color: $iridium;
-      //background-image: url("/assets/images/gp-white-small.png");
     }
     &.email {
       @include round-box($light-grey, "/assets/images/email-white-small.png");
 
-      //background-color: $light-grey;
-      //background-image: url("/assets/images/email-white-small.png");
       background-position: 5px 8px;
     }
     &.pint {
       @include round-box($pinterest-red, "/assets/images/pint-white-small.png");
 
-      //background-color: $pinterest-red;
-      //background-image: url("/assets/images/pint-white-small.png");
     }
     
     &.heart {
       @include round-box($iridium, "");
 
-      //background-color: $iridium;
-      //background-image: url("/assets/images/heart-white.png");
       background-size: 19px;
     }
     
@@ -710,7 +700,8 @@ li.all-shares{
   padding-right: 9px;
 
   b{
-    display: inline-block;
+    display: block;
+    height: 20px;
     font-size: 3rem;
   }
 }

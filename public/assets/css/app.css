@@ -4617,7 +4617,8 @@ a.like-counter {
     float: left; }
   a.like-counter b {
     display: inline-block;
-    padding-top: 5px;
+    position: relative;
+    top: 5px;
     color: #FF0042; }
   a.like-counter:hover {
     background: #FF0042;
@@ -4783,7 +4784,8 @@ ul.share-buttons {
       float: left; }
     ul.share-buttons a.fb b {
       display: inline-block;
-      padding-top: 5px;
+      position: relative;
+      top: 5px;
       color: #5C7CBD; }
     ul.share-buttons a.fb:hover {
       background: #5C7CBD;
@@ -4827,7 +4829,8 @@ ul.share-buttons {
       float: left; }
     ul.share-buttons a.twi b {
       display: inline-block;
-      padding-top: 5px;
+      position: relative;
+      top: 5px;
       color: #079DD1; }
     ul.share-buttons a.twi:hover {
       background: #079DD1;
@@ -4871,7 +4874,8 @@ ul.share-buttons {
       float: left; }
     ul.share-buttons a.gp b {
       display: inline-block;
-      padding-top: 5px;
+      position: relative;
+      top: 5px;
       color: #FF0042; }
     ul.share-buttons a.gp:hover {
       background: #FF0042;
@@ -4916,7 +4920,8 @@ ul.share-buttons {
       float: left; }
     ul.share-buttons a.email b {
       display: inline-block;
-      padding-top: 5px;
+      position: relative;
+      top: 5px;
       color: #c1c1c1; }
     ul.share-buttons a.email:hover {
       background: #c1c1c1;
@@ -4960,7 +4965,8 @@ ul.share-buttons {
       float: left; }
     ul.share-buttons a.pint b {
       display: inline-block;
-      padding-top: 5px;
+      position: relative;
+      top: 5px;
       color: #E61D25; }
     ul.share-buttons a.pint:hover {
       background: #E61D25;
@@ -5005,7 +5011,8 @@ ul.share-buttons {
       float: left; }
     ul.share-buttons a.heart b {
       display: inline-block;
-      padding-top: 5px;
+      position: relative;
+      top: 5px;
       color: #FF0042; }
     ul.share-buttons a.heart:hover {
       background: #FF0042;
@@ -5053,7 +5060,8 @@ ul.share-buttons {
       float: left; }
     ul.share-buttons a.comment b {
       display: inline-block;
-      padding-top: 5px;
+      position: relative;
+      top: 5px;
       color: #4791D4; }
     ul.share-buttons a.comment:hover {
       background: #4791D4;
@@ -5091,7 +5099,8 @@ li.all-shares {
   text-align: center;
   padding-right: 9px; }
   li.all-shares b {
-    display: inline-block;
+    display: block;
+    height: 20px;
     font-size: 3rem; }
 
 @media (max-width: 1670px) {
