@@ -574,43 +574,47 @@ function custom_login(){
 }
 
 
-// SSO variables
-global $userData;
-global $isAdmin;
 
-if($token = $_COOKIE['_wptk']){
+/*
+ * CUSTOM GLOBAL VARIABLES, mostly for Single Sing-on
+ */
+function ideaingGlobalVars() {
 
-    $ch = curl_init();
+    // SSO variables
+    global $userData;
+    global $isAdmin;
 
-   $url = 'https://ideaing.com/api/info';
+    if($token = $_COOKIE['_wptk']){
 
-    $data = array('_wptk' => $token);
+        $ch = curl_init();
 
-    // use key 'http' even if you send the request to https://...
-    $options = array(
-        'http' => array(
-            'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
-            'method'  => 'POST',
-            'content' => http_build_query($data)
-        )
-    );
-    $context  = stream_context_create($options);
-    $result = file_get_contents($url, false, $context);
+       $url = 'https://ideaing.com/api/info';
 
-    if ($result === FALSE) { /* Handle error */ }
+        $data = array('_wptk' => $token);
 
-    $result = unserialize(base64_decode($result));
+        // use key 'http' even if you send the request to https://...
+        $options = array(
+            'http' => array(
+                'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
+                'method'  => 'POST',
+                'content' => http_build_query($data)
+            )
+        );
+        $context  = stream_context_create($options);
+        $result = file_get_contents($url, false, $context);
 
-    $userData = $result['data'];
-    $isAdmin = $result['IsAdmin'];
+        if ($result === FALSE) { /* Handle error */ }
 
-  //  print_r($userData); die();
+        $result = unserialize(base64_decode($result));
 
-   //  print_r($isAdmin); die();
+        
+        $userData = $result['data']['user-data'];
+        $isAdmin = $result['IsAdmin'];
+
+    }
 
 }
-
-
+add_action( 'parse_query', 'ideaingGlobalVars' );
 
 
 ?>

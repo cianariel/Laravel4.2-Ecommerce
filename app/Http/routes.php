@@ -89,6 +89,8 @@
         Route::get('auth-check', 'AuthenticateController@authCheckApi');
 
         Route::post('info','UserController@getUserByEmail');
+        Route::get('info','UserController@getUserByEmail');
+
 
         Route::get('wp','UserController@getWpUsers');
 

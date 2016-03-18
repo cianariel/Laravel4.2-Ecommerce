@@ -1,8 +1,15 @@
 <?php
   // !! IMPORTANT !! -- please use only pure PHP here, no Laravel, otherwise the header will break   in Wordpress !!
 
-// print_r($isAdmin); die();
+if(function_exists('is_single')){
+    if(isset($GLOBALS['userData']) &&  isset($GLOBALS['isAdmin'])){
+        $userData = $GLOBALS['userData'];
+        $isAdmin =  $GLOBALS['isAdmin']; 
+    }  
+}                                            
 ?>
+
+
 
 <!--    <div {{--id="pagingApp" ng-app="pagingApp" ng-controller="headerController"--}}>-->
 <style>
@@ -91,7 +98,9 @@
 
                                     <div class="col-xs-5 col-sm-2">
                                         <div class="row">
-                                            <?php if(isset($userData['login']) && $userData['login']) { ?>
+
+                                            <?php 
+                                            if(isset($userData['login']) && $userData['login']) { ?>
                                             <div class="pull-right profile-photo-holder">
                                                 <a href="#"><img width="40px" src="<?php echo isset($userData['medias'][0]['media_link']) ? $userData['medias'][0]['media_link']: "" ?>" alt="" class="profile-photo "></a>
                                                 <span class="box-link-active-line"></span>
@@ -442,7 +451,11 @@ if((isset($userData['user-data']['hide-signup'])) && ($userData['user-data']['hi
 <?php
     }
 
-} ?>
+} 
+
+
+?>
+
 
 
     
