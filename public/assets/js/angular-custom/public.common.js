@@ -63,6 +63,11 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
             {
                 $scope.loadNotification($scope.uid);
             }
+
+            if($scope.itemId != 0)
+            {
+                $scope.getCommentsForIdeas($scope.itemId);
+            }
         },15000);//10000
 
 
@@ -284,6 +289,12 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
             $scope.notifications = [];
             $scope.uid = null;
 
+            // comment ideas
+            $scope.itemId = 0;
+            $scope.userId = 0;
+            $scope.isAdmin = false;
+            $scope.commentId = null;
+
 
             //$scope.countSocialShares();
             //$scope.countSocialFollowers();
@@ -413,6 +424,84 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
             }
         };
 
+        // Comment for ideas section
+        $scope.addCommentForIdeas = function(userId,itemId,permalink,comment){
+            //console.log(userId,productId,permalink,comment);
+
+            $http({
+                url: '/api/comment/add-ideas-comment',
+                method: "POST",
+                data:{
+                    uid: userId,
+                    pid: itemId,
+                    plink: permalink,
+                    comment: comment
+                }
+            }).success(function (data) {
+                $scope.html = "";
+                $scope.getCommentsForIdeas($scope.itemId);
+            });
+        };
+
+        $scope.getCommentsForIdeas = function(pid){
+
+            $http({
+                url: '/api/comment/get-ideas-comment/'+pid,
+                method: "GET"
+            }).success(function (data) {
+                $scope.itemId = pid;
+                $scope.comments = data.data;
+                $scope.commentsCount = $scope.comments.length;
+                $scope.commentsCountView = $scope.commentsCount < 2? $scope.commentsCount +" "+"Comment" : $scope.commentsCount +" "+"Comments";
+
+                //  console.log($scope.comments.length);
+            });
+
+        };
+
+
+        $scope.editComment = function(comment){
+            //  console.log(comment);
+
+            $scope.isEdit = true;
+
+            $scope.commentId = comment.CommentId;
+
+            $scope.html = comment.Comment;
+
+
+        };
+
+        $scope.updateComment = function(comment){
+            $http({
+                url: '/api/comment/update-comment',
+                method: "POST",
+                data:{
+                    cid: $scope.commentId,
+                    comment: $scope.html
+                }
+            }).success(function (data) {
+                $scope.html = "";
+                $scope.isEdit = false;
+                // console.log("pid :"+ $scope.productId);
+                $scope.getCommentsForIdeas($scope.itemId);
+            });
+
+        };
+
+
+        $scope.deleteComment = function(id){
+            $http({
+                url: '/api/comment/delete-comment',
+                method: "POST",
+                data:{
+                    cid: id
+                }
+            }).success(function (data) {
+                $scope.getCommentsForIdeas($scope.itemId);
+            });
+
+        };
 
         // Subscribe a user through email and redirect to registration page.
         $scope.subscribe = function (formData) {

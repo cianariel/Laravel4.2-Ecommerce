@@ -66,7 +66,7 @@
         //Add comment for ideas
         public function addCommentForIdeas($data)
         {
-            $product = WpPost::where('id',$data['ProductId'])->first();
+            $wpPost = WpPost::where('ID',$data['ItemId'])->first();
 
             $comment = new Comment();
             $comment->comment = $data['Comment'];
@@ -74,7 +74,7 @@
             $comment->link = $data['Link'];
             $comment->flag = $data['Flag'];
 
-            $result = $product->comments()->save($comment);
+            $result = $wpPost->comments()->save($comment);
 
             return $result;
 
@@ -111,6 +111,39 @@
 
             return $commentCollection;
         }
+
+        // comment search for ideas section
+        public function findCommentForIdeas($data)
+        {
+            $wpPost = WpPost::where('ID',$data['ItemId'])
+                              ->with('comments')
+                              ->first();
+
+            // product_permalink
+            $ideasComments = isset($wpPost->comments)?$wpPost->comments:[];
+            $commentCollection = new Collection();
+
+            $user = new User();
+
+            foreach($ideasComments as $singleComment)
+            {
+                $userInfo = $user->getUserById($singleComment['user_id']);
+
+                $data['CommentId'] = $singleComment['id'];
+                $data['Comment'] = $singleComment['comment'];
+                $data['UserId'] = $userInfo['id'];
+                $data['UserName'] = $userInfo['name'];
+                $data['Picture'] = $userInfo->medias[0]->media_link;
+                $data['Flag'] = $singleComment['flag'];
+                $data['PostTime'] = Carbon::createFromTimestamp(strtotime($singleComment['created_at']))->diffForHumans();
+
+                $commentCollection->push($data);
+
+            }
+
+            return $commentCollection;
+        }
+
 
         public function updateCommentForProduct($data)
         {

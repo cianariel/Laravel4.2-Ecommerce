@@ -206,7 +206,9 @@
             </section>
 
       <?php 
-       loadLaravelView('comments-product'); 
+       //loadLaravelView('comments-product');
+        loadLaravelView('comments-ideas');
+
       ?>
 
 
@@ -369,4 +371,4 @@
 
 
 <?php get_footer(); ?>
-<script type="text/javascript" src="/assets/product/js/custom.product.js"></script>
+<!-- <script type="text/javascript" src="/assets/product/js/custom.product.js"></script> -->

@@ -22,16 +22,32 @@ class CommentController extends ApiController
     // Broadcast notification to the relevant users
     public function addProductNotification($data)
     {
+        $this->addNotification($data, 'product');
+    }
+
+    public function addIdeasNotification($data)
+    {
+        $this->addNotification($data, 'ideas');
+    }
+
+
+    /**
+     * @param $data
+     * @param $section
+     * @internal param $info
+     */
+    private function addNotification($data,$section)
+    {
         $info['Users'] = [];
         foreach ($data['CommentInfo'] as $commenter) {
 
             if ($commenter['UserId'] != $data['SenderId'])
                 array_push($info['Users'], $commenter['UserId']);
         }
-        $info['Users'] = array_unique($info['Users'] );
+        $info['Users'] = array_unique($info['Users']);
         $info['Category'] = 'comment';//$data['Category'];
         $info['SenderId'] = $data['SenderId'];
-        $info['Permalink'] = 'product/' . $data['Permalink'] . '/#comment';
+        $info['Permalink'] = $section.'/' . $data['Permalink'] . '/#comment';
         $info['PostTime'] = $data['PostTime'];
 
         $this->user->sendNotificationToUsers($info);
@@ -68,6 +84,38 @@ class CommentController extends ApiController
 
     }
 
+    // add comment for ideas
+    public function addCommentForIdeas()
+    {
+        $inputData = \Input::all();
+
+        if (!empty($inputData['comment']) && !empty($inputData['pid'])) {
+            $data['UserId'] = $inputData['uid'];
+            $data['ItemId'] = $inputData['pid'];
+            $data['Comment'] = $inputData['comment'];
+
+            $data['Link'] = $inputData['plink'];
+            $data['Flag'] = 'Show';
+
+            $result = $this->comment->addCommentForIdeas($data);
+
+            $notification['CommentInfo'] = $this->comment->findCommentForIdeas(['ItemId' => $inputData['pid']]);
+            $notification['SenderId'] = $inputData['uid'];
+            $notification['Permalink'] = $data['Link'];
+
+            // $dateTime = Carbon::now();
+            $dataStr = date("Y-m-d H:i:s");//$dateTime->date;
+            $notification['PostTime'] = (string)$dataStr;//$data['Link'];
+
+            $this->addIdeasNotification($notification);
+
+            return $this->setStatusCode(\Config::get("const.api-status.success"))
+                        ->makeResponse($result);
+
+        }
+
+    }
+
     public function getCommentForProduct($pid = null)
     {
         if (!empty($pid)) {
@@ -82,7 +130,22 @@ class CommentController extends ApiController
 
     }
 
-    public function updateCommentForProduct()
+    public function getCommentForIdeas($pid = null)
+    {
+        if (!empty($pid)) {
+            $data['ItemId'] = $pid;
+
+            $result = $this->comment->findCommentForIdeas($data);
+
+            return $this->setStatusCode(\Config::get("const.api-status.success"))
+                        ->makeResponse($result);
+
+        }
+
+    }
+
+
+    public function updateComment()
     {
         $inputData = \Input::all();
 
@@ -100,7 +163,7 @@ class CommentController extends ApiController
 
     }
 
-    public function deleteCommentForProduct()
+    public function deleteComment()
     {
         $inputData = \Input::all();
 
@@ -114,4 +177,6 @@ class CommentController extends ApiController
         }
 
     }
+
+
 }
