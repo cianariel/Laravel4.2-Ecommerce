@@ -9,10 +9,10 @@
     use Illuminate\Support\Collection;
     use Carbon\Carbon;
 
-    class WpUser extends \Eloquent {
+    class WpPost extends \Eloquent {
 
         protected $connection = 'wpdb';
-        protected $table = 'users';
+        protected $table = 'posts';
         public $timestamps = false;
 
         /**
@@ -22,5 +22,10 @@
          * /*
          * @return media object
          */
+
+        public function comments()
+        {
+            return $this->morphMany('App\Models\Comment', 'commentable');
+        }
 
     }
