@@ -208,6 +208,8 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
                 //    });
                 //}
 
+                console.log(response)
+
                 $scope.content = response;
             });
             //
