@@ -298,7 +298,7 @@
 
     Route::get('api/search/{query?}', 'SearchController@searchData');
 
-    Route::get('api/search/index', 'SearchController@indexData');
+    Route::get('api/search/do/index', 'SearchController@indexData');
     Route::get('search/{query?}', 'PageController@searchPage');
 
 

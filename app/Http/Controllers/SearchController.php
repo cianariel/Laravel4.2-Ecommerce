@@ -32,6 +32,7 @@ class SearchController extends Controller
         $index = Search::buildIndex();
 //        $json = json_encode($index);
 
+
        foreach($index as $key => $batch){
            $send[] = array(
                'type'        => 'add',
@@ -66,8 +67,20 @@ class SearchController extends Controller
             'query'  =>  $query
         ));
 
+        $return = [];
+
         foreach($results['hits']['hit'] as $hit){
-            $return[] = $hit['fields'];
+            $item = $hit['fields'];
+
+            if($item['type'] == 'idea'){
+
+            }else{
+
+            }
+
+
+
+            $return[] = $item;
         }
 
         return $return;
