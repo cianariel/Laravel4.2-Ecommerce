@@ -5,6 +5,8 @@
     use Illuminate\Database\Eloquent\Model;
     use App\Models\Product;
     use App\Models\User;
+    use App\Models\WpPost;
+
     use Illuminate\Support\Collection;
     use Carbon\Carbon;
 
@@ -42,9 +44,9 @@
         }
 
 
-
         // custom Functions
 
+        //Add comment for product
         public function addCommentForProduct($data)
         {
             $product = Product::where('id',$data['ProductId'])->first();
@@ -61,6 +63,24 @@
 
         }
 
+        //Add comment for ideas
+        public function addCommentForIdeas($data)
+        {
+            $product = WpPost::where('id',$data['ProductId'])->first();
+
+            $comment = new Comment();
+            $comment->comment = $data['Comment'];
+            $comment->user_id = $data['UserId'];
+            $comment->link = $data['Link'];
+            $comment->flag = $data['Flag'];
+
+            $result = $product->comments()->save($comment);
+
+            return $result;
+
+        }
+
+        // comment search for product section
         public function findCommentForProduct($data)
         {
             $product = Product::where('id',$data['ProductId'])
