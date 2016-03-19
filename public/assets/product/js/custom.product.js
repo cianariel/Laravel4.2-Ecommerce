@@ -183,7 +183,7 @@ productApp.controller('productController', ['$scope', '$http', '$window', '$inte
 
         $scope.updateCommentForProduct = function(id,comment){
             $http({
-                url: '/api/comment/update-product-comment',
+                url: '/api/comment/update-comment',
                 method: "POST",
                 data:{
                     cid: $scope.commentId,
@@ -201,7 +201,7 @@ productApp.controller('productController', ['$scope', '$http', '$window', '$inte
 
         $scope.deleteCommentForProduct = function(id){
             $http({
-                url: '/api/comment/delete-product-comment',
+                url: '/api/comment/delete-comment',
                 method: "POST",
                 data:{
                     cid: id

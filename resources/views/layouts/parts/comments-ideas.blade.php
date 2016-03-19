@@ -14,19 +14,24 @@
 
         $permalink = get_the_permalink();
 
+        $permalink = parse_url($permalink)['path'];
 
+        $permalink = str_replace('/ideas/','',$permalink);
+
+        echo $permalink ."-".$isAdmin."-".$isAdminForEdit;
+        echo "sd".$isAdminForEdit;
+        
         global $post;
-        $productId = $post->ID;
-    }
-
-        echo $isAdminForEdit;
+        $itemId = $post->ID;
+    }  
 ?>
+<div ng-app="publicApp" ng-controller="publicController">
 <section class="comments" id="comments">
     <div class="container">
         <a name="comment"></a>
 <input type="hidden" ng-init="userId='<?php echo $userData['id']?>'">
-        <input type="hidden" ng-init="isAdmin='<?php echo $isAdminForEdit?>'">
-        <div ng-init="getCommentsForProduct(<?php echo $productId?>)">
+        <input type="hidden" ng-init="isAdmin='<?php echo $isAdmin?>'">
+        <div ng-init="getCommentsForIdeas(<?php echo $itemId?>)">
             <h4><?php echo "{{ commentsCountView }}" ?></h4>
             <div ng-repeat="comment in comments">
                 <div class="single-comment">
@@ -52,7 +57,7 @@
                             <i class="fa fa-edit"></i>
                         </button>
                         <button ng-show="(comment.UserId == userId)  || (isAdmin == 1)"
-                                data-ng-click="deleteCommentForProduct(comment.CommentId)"
+                                data-ng-click="deleteComment(comment.CommentId)"
                                 confirm="Are you sure to delete this product ?"
                                 confirm-settings="{size: 'sm'}"
                                 uib-tooltip="Delete"
@@ -91,11 +96,11 @@
 
                     <div class="col-md-12 comment-controls text-right">
                         <button class="btn btn-info btn-outline" ng-hide="isEdit"
-                                ng-click="addCommentForProduct(<?php echo $userData['id'] . "," . $productId . "," . "'$permalink'" . "," . "html"?>)">
+                                ng-click="addCommentForIdeas(<?php echo $userData['id'] . "," . $itemId . "," . "'$permalink'" . "," . "html"?>)">
                             Post
                         </button>
                         <button class="btn btn-info" ng-show="isEdit"
-                                ng-click="updateCommentForProduct()">
+                                ng-click="updateComment()">
                             Update
                         </button>
                     </div>
@@ -111,4 +116,4 @@
         <?php } ?>
     </div>
 </section>
-
+</div>

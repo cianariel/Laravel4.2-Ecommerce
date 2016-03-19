@@ -11,6 +11,7 @@
 
     class WpPost extends \Eloquent {
 
+        protected  $primaryKey = 'ID';
         protected $connection = 'wpdb';
         protected $table = 'posts';
         public $timestamps = false;
