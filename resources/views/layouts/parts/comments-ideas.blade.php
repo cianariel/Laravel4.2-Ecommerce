@@ -18,8 +18,8 @@
 
         $permalink = str_replace('/ideas/','',$permalink);
 
-        echo $permalink ."-".$isAdmin."-".$isAdminForEdit;
-        echo "sd".$isAdminForEdit;
+        //echo $permalink ."-".$isAdmin."-".$isAdminForEdit;
+        //echo "sd".$isAdminForEdit;
         
         global $post;
         $itemId = $post->ID;
