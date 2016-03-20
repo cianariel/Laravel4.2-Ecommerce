@@ -616,5 +616,12 @@ function ideaingGlobalVars() {
 }
 add_action( 'parse_query', 'ideaingGlobalVars' );
 
+function create_dwb_menu() {
+    global $wp_admin_bar;
+
+    $menu_id = 'dwb';
+    $wp_admin_bar->add_menu(array('id' => $menu_id, 'title' => __('App Admin Panel'), 'href' => '/admin/dashboard'));
+}
+add_action('admin_bar_menu', 'create_dwb_menu', 2000);
 
 ?>
