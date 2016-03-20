@@ -139,7 +139,7 @@ if(function_exists('is_single')){
                                                                 <img width="40px" ng-src="<?php echo '{{ notice.UserPicture }}' ?>" class="profile-photo pull-left">
                                                         <div class="notification-row-content">
                                                             <div><strong><?php echo '{{ notice.UserName }}' ?></strong>
-                                                                commented on <a ng-href="<?php echo '/{{ notice.ProductLink }}' ?>" ><?php echo '{{ notice.ProductTitle }}' ?></a> </div>
+                                                                commented on <a ng-href="<?php echo '/{{ notice.ItemLink }}' ?>" ><?php echo '{{ notice.ItemTitle }}' ?></a> </div>
                                                             <small class="clearfix time "><?php echo '{{ notice.Time }}' ?></small>
                                                                 </div>
                                                         <div class="clearfix"></div>

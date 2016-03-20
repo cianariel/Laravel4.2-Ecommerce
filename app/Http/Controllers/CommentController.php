@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Comment;
+use App\Models\Product;
 use App\Models\User;
 
+use App\Models\WpPost;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -47,8 +49,10 @@ class CommentController extends ApiController
         $info['Users'] = array_unique($info['Users']);
         $info['Category'] = 'comment';//$data['Category'];
         $info['SenderId'] = $data['SenderId'];
-        $info['Permalink'] = $section.'/' . $data['Permalink'] . '/#comment';
+        $info['Permalink'] = $section.'/' . $data['Permalink'] . '#comment';
         $info['PostTime'] = $data['PostTime'];
+        $info['ItemTitle'] = $data['ItemTitle'];
+        $info['Section'] = $section;
 
         $this->user->sendNotificationToUsers($info);
     }
@@ -71,9 +75,14 @@ class CommentController extends ApiController
             $notification['SenderId'] = $inputData['uid'];
             $notification['Permalink'] = $data['Link'];
 
-           // $dateTime = Carbon::now();
-            $dataStr = date("Y-m-d H:i:s");//$dateTime->date;
-            $notification['PostTime'] = (string)$dataStr;//$data['Link'];
+            $dataStr = date("Y-m-d H:i:s");
+            $notification['PostTime'] = (string)$dataStr;
+
+            // Add product title in the notification
+            $product = Product::where('id',$inputData['pid'])->first();
+            $notification['ItemTitle'] = $product['product_name'];
+          //  $notification['Section'] = 'product';
+
 
             $this->addProductNotification($notification);
 
@@ -106,6 +115,10 @@ class CommentController extends ApiController
             // $dateTime = Carbon::now();
             $dataStr = date("Y-m-d H:i:s");//$dateTime->date;
             $notification['PostTime'] = (string)$dataStr;//$data['Link'];
+
+            // Add product title in the notification
+            $product = WpPost::where('ID',$inputData['pid'])->first();
+            $notification['ItemTitle'] = $product['post_title'];
 
             $this->addIdeasNotification($notification);
 
