@@ -71,10 +71,6 @@
         Route::post('comment/update-comment', 'CommentController@updateComment');
         Route::post('comment/delete-comment', 'CommentController@deleteComment');
 
-
-
-
-
         /*
          * User Authentication route collection
          *
@@ -207,12 +203,6 @@
         Route::get('notification/{uid?}', 'UserController@notification');
         Route::get('read-all-notification/{uid?}', 'UserController@notificationReadAll');
 
-
-
-
-
-
-
         /*
          * RSS feed parser from WP to App home page
          *
@@ -265,8 +255,6 @@
     Route::get('user/profile', 'UserController@userProfile');
     Route::get('user/profile/{permalink?}', 'UserController@userProfile');
 
-
-
     // Route for password reset , email verification ,feed example
     Route::get('password-reset-form/{code?}', 'AuthenticateController@passwordResetForm');
 
@@ -282,7 +270,6 @@
     Route::get('category/{identity?}', 'ProductCategoryController@showProductInCategoryName');
 
     // Route for product detail view
-    //    Route::get('pro-details/{permalink?}', 'PageController@productDetailsPage');
     Route::get('product/{permalink?}', 'PageController@productDetailsPage');
     Route::get('idea/{permalink?}', 'PageController@getRoomPage'); // single room page
     Route::get('room/{permalink?}', 'PageController@getRoomPage'); // temp keeping the old link, to prevent breaks
@@ -295,9 +282,6 @@
     Route::get('cookie/{cookieName?}', 'ApiController@getCookie');
 
 
-    // default
-//    Route::get('login', 'PageController@loginView');
-  
     Route::get('sitemap', 'PageController@generateSitemap');
 
     Route::get('/api/paging/get-content/{page?}/{limit?}/{type?}/{tag?}/{productCategory?}/{sortBy?}', 'PageController@getContent');
@@ -306,11 +290,5 @@
     Route::get('/api/social/get-social-counts', 'PageController@getSocialCounts');
     Route::get('/api/social/get-fan-counts', 'PageController@getFollowerCounts');
 
-
-
     // temporary category tag generator
     // Route::get('gen', 'TagsController@temporaryCategoryTagGenerator');
-
-
-
-

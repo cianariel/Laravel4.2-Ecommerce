@@ -6,7 +6,7 @@
 <script src="/assets/js/vendor/textAngular.min.js"></script>
 <?php
    
-    if(function_exists('is_single')){
+   /* if(function_exists('is_single')){
          if(isset($GLOBALS['userData']) &&  isset($GLOBALS['isAdmin'])){
                  $userData = $GLOBALS['userData'];
                  $isAdmin =  $GLOBALS['isAdmin']; 
@@ -19,7 +19,7 @@
         $productId = $post->ID;
     }
 
-        echo $isAdminForEdit;
+        echo $isAdminForEdit;*/
 ?>
 <section class="comments" id="comments">
     <div class="container">
@@ -111,4 +111,3 @@
         <?php } ?>
     </div>
 </section>
-
