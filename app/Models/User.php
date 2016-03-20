@@ -417,14 +417,17 @@ class User extends Model implements AuthenticatableContract,
     {
         $PostTime = $info['PostTime'];
 
+        $ItemTitle = $info['ItemTitle'];
+        $Section = $info['Section'];
+
         if (count($info['Users']) != 0) {
-            Notifynder::loop($info['Users'], function (NotifynderBuilder $builder, $user) use ($info, $PostTime) {
+            Notifynder::loop($info['Users'], function (NotifynderBuilder $builder, $user) use ($info, $PostTime,$ItemTitle,$Section) {
 
                 $builder->category($info['Category'])
                         ->from($info['SenderId'])
                         ->to($user)
                         ->url($info['Permalink'])
-                        ->extra(compact('PostTime'));
+                        ->extra(compact('PostTime','ItemTitle','Section'));
 
             })->send();
 
@@ -435,12 +438,12 @@ class User extends Model implements AuthenticatableContract,
     // Wrapper for all type of notification (future implementation)
     public function getNotificationForUser($userId)
     {
-        return $this->getProductNotification($userId);
+        /*return $this->getProductNotification($userId);
 
     }
 
     public function getProductNotification($userId = 32)
-    {
+    {*/
         $user = User::find($userId);
 
         $notification['NotReadNoticeCount'] = $user->countNotificationsNotRead();
@@ -449,7 +452,7 @@ class User extends Model implements AuthenticatableContract,
 
         $userInfo = new User();
 
-        $product = new Product();
+       // $product = new Product();
 
         $noticeCollection = new Collection();
 
@@ -458,20 +461,28 @@ class User extends Model implements AuthenticatableContract,
 
             $userInfo = $userInfo->getUserById($notice['from_id']);
 
-            $permalink = explode('/',$notice['url'])[1];
+            $extraInfo = json_decode($notice['extra']);
 
-            $product = $product->checkPermalink($permalink);
+        //    $permalink = explode('/',$notice['url'])[1];
+
+        //    $product = $product->checkPermalink($permalink);
 
             $data['UserId'] = $userInfo['id'];
             $data['UserName'] = $userInfo['name'] ;
             $data['UserPicture'] = $userInfo->medias[0]->media_link;
-            $data['ProductTitle'] = $product['product_name'];
-            $data['ProductLink'] = $notice['url'];
+        //    $data['ProductTitle'] = $product['product_name'];
+        //    $data['ProductLink'] = $notice['url'];
+            $data['ItemTitle'] = $extraInfo->ItemTitle;
+            $data['ItemLink'] = $notice['url'];
             $data['NoticeRead'] = $notice['read'];
 
-            $dateTime = json_decode($notice['extra']);
+            //$dateTime = json_decode($notice['extra']);
 
-            $data['Time'] = Carbon::createFromTimestamp(strtotime($dateTime->PostTime))->diffForHumans();
+            $data['Section'] = $extraInfo->Section;
+
+            $data['ActualDateTime'] = $extraInfo->PostTime;
+            $data['Time'] = Carbon::createFromTimestamp(strtotime($extraInfo->PostTime))->diffForHumans();
+
 
             $noticeCollection->push($data);
         }

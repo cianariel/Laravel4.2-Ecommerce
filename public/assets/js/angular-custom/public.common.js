@@ -56,6 +56,20 @@ publicApp.controller('ModalInstanceCtrltest', function ($scope, $uibModalInstanc
 publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$window', '$timeout', '$location', '$anchorScroll', '$uibModal', 'layoutApi', '$compile','$interval', 'FileUploader', 'pagingApi'
     , function ($rootScope, $scope, $http, $window, $timeout, $location, $anchorScroll, $uibModal, layoutApi, $compile, $interval ,FileUploader, pagingApi) {
 
+        // text area internal function for comment
+        $scope.focusEditor = function(){
+            $timeout(function(){
+                angular.element('div[contenteditable=true]').trigger('focus');
+            })
+        }
+        $scope.insertCustomImagePopup = function(){
+            alert("Please add the code for photo uploading here");
+        }
+        $scope.textAreaSetup = function($element){
+            $element.attr('focus-me', 'focus_editor');
+        };
+
+
         // update comment in the comment view through AJAX call.
         var commnetTimer = $interval(function(){
             //  console.log("in");
@@ -238,6 +252,7 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
             //    console.info('onCompleteAll');
         };
         // End uploader section //
+
 
 
         // initialize variables
@@ -426,7 +441,7 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
 
         // Comment for ideas section
         $scope.addCommentForIdeas = function(userId,itemId,permalink,comment){
-            //console.log(userId,productId,permalink,comment);
+            console.log(userId,itemId,permalink,comment);
 
             $http({
                 url: '/api/comment/add-ideas-comment',
