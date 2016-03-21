@@ -93,8 +93,9 @@ Route::get('testx','CommentController@dt');
         // check authentication and return data through api
         Route::get('auth-check', 'AuthenticateController@authCheckApi');
 
-        Route::post('info','UserController@getUserByEmail');
+      //  Route::post('info','UserController@getUserByEmail');
         Route::get('info','UserController@getUserByEmail');
+        Route::get('info-raw/{email?}','UserController@getUserByEmailRaw');
 
 
         Route::get('wp','UserController@getWpUsers');

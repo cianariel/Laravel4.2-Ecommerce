@@ -498,7 +498,7 @@ class PageController extends ApiController
 
             //CMS POSTS -- TODO -- if we wont use images in the sitemap, change into direct call to WP DB for better perf?
             if (env('FEED_PROD') == true)
-                $url = 'https://ideaing.com//ideas/feeds/index.php?count=0';
+                $url = 'https://ideaing.com/ideas/feeds/index.php?count=0';
             else
                 $url = URL::to('/') . '/ideas/feeds/index.php?count=0';
 
