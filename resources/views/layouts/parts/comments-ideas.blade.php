@@ -25,6 +25,9 @@
         $itemId = $post->ID;
     }  
 ?>
+<script>
+    var itemId = <?php echo $itemId ;?> ;
+</script>
 <div ng-app="publicApp" ng-controller="publicController">
 <section class="comments" id="comments">
     <div class="container">

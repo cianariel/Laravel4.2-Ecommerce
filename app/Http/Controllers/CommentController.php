@@ -33,6 +33,13 @@ class CommentController extends ApiController
     }
 
 
+    /*public function dt()
+    {
+
+        $commnet = new \App\Models\Comment();
+        return $commnet->ideasCommentCounter(2883);
+    }*/
+
     /**
      * @param $data
      * @param $section

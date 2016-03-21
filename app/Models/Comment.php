@@ -159,4 +159,11 @@
             return $comment;
         }
 
+        public function ideasCommentCounter($itemId)
+        {
+           return Comment::where('commentable_id',$itemId)
+               ->where('commentable_type','App\Models\WpPost')
+                ->count();
+        }
+
     }
