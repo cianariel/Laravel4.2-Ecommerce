@@ -163,15 +163,16 @@
         <article id="post-<?php the_ID(); ?>" {{post_class(
         'col-xs-11 col-md-offset-1 pull-right')}}>
 
-        <header class="story-details col-lg-7  col-sm-8 col-xs-10 full-480">
-            <div class="author-image-big col-lg-3 col-sm-4 col-xs-5 full-480">
-                {{ get_avatar(get_the_author_meta('ID'), '170') }}
-            </div>
+        <div ng-app="publicApp"
+             ng-controller="publicController">
+        <header class="story-details col-lg-7  col-sm-8 col-xs-10 full-480" ng-init="getAuthorInfoByEmail('<?php echo get_the_author_meta('user_login') ?>')">
+            @include('authorinfo')
+
             <div class="author-overview col-lg-5 col-sm-5 col-xs-6 full-480">
                 <h4 class="author-name">
                     <div id="sticky-anchor"></div>
 
-                    by <b>{{ the_author_meta('first_name') }} {{ the_author_meta('last_name') }}</b>
+                    by <b ng-bind="authorName"></b>
                     <!--                            <a class="like-counter" href="#">189</a>-->
 
                 </h4>
@@ -187,6 +188,7 @@
 
 
         </header>
+        </div>
 
         <div class="shown-620 hidden-soft">
             <?php loadLaravelView('share-bar'); ?>
@@ -341,12 +343,12 @@
                                     <span class="social-stats__text">52</span>
                                 </a>
                             </li>
-                            <li class="social-stats__item">
+                            <!--<li class="social-stats__item">
                                 <a href="#">
                                     <i class="m-icon m-icon--buble"></i>
                                     <span class="social-stats__text">157</span>
                                 </a>
-                            </li>
+                            </li>-->
                         </ul>
 
                         <div class="round-tag round-tag--idea">
