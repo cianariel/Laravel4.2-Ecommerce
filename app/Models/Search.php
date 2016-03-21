@@ -37,10 +37,12 @@
 
                     'type' => 'product',
                     'affiliate_link' => $product->affiliate_link,
-                    'media_link' =>  $ThumbnailPath,
+//                    'media_link' =>  $ThumbnailPath,
+                    'feed_image' =>  $product->media_link,
                     'permalink' => $product->product_permalink,
-                    'storeinfo' => $storeInfo,
+                    'storeinfo' => json_encode($storeInfo),
                     'store' => $storeInfo['StoreName'],
+//                    'feed_image' => '',
                 ];
 
                 $products[] = $data;
@@ -74,11 +76,12 @@
                     'tags' => $idea->tags_all,
                     'permalink' => $idea->url,
 
-                    'type' => 'ideas',
+                    'type' => 'idea',
                     'author' => $idea->author,
                     'authorlink' => $idea->authorlink,
                     'avator' => $idea->avator,
-                    'feed_image' => ['url' => $idea->feed_image->url], // cut off unnecessary data
+                    'feed_image' => json_encode($idea->feed_image), // cut off unnecessary data
+                    'storeinfo' => ''
                 ];
 
                 $ideas[] = $data;

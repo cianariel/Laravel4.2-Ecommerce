@@ -4,7 +4,7 @@
 
 @section('content')
 
-    <div class="app-wrap" id="pagingApp" ng-app="pagingApp" ng-controller="SearchController" ng-cloak>
+    <div style="padding-top: 120px" class="app-wrap" id="pagingApp" ng-app="pagingApp" ng-controller="SearchController" ng-cloak>
         <div class="clearfix"></div>
 
         <div class="homepage-grid center-block">
