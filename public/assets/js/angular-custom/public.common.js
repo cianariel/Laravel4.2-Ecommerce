@@ -309,6 +309,7 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
             $scope.userId = 0;
             $scope.isAdmin = false;
             $scope.commentId = null;
+            $scope.commentsCount = 0;
 
 
             //$scope.countSocialShares();
