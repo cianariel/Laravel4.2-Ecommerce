@@ -24,7 +24,7 @@ class SearchController extends Controller
         // 1. Setup CloudSeach client
         $csDomainClient = AWS::createClient('CloudsearchDomain',
             [
-                'endpoint'    => 'https://search-ideaing-01-3xyefj3ouifu7hm677jeqj4z5u.us-west-2.cloudsearch.amazonaws.com',
+                'endpoint'    => 'https://search-ideaing-production-sykvgbgxrd4moqagcoyh3pt5nq.us-west-2.cloudsearch.amazonaws.com',
             ]
         );
 
@@ -59,7 +59,7 @@ class SearchController extends Controller
 
         $csDomainClient = AWS::createClient('CloudsearchDomain',
             [
-                'endpoint'    => 'https://search-ideaing-01-3xyefj3ouifu7hm677jeqj4z5u.us-west-2.cloudsearch.amazonaws.com',
+                'endpoint'    => 'https://search-ideaing-production-sykvgbgxrd4moqagcoyh3pt5nq.us-west-2.cloudsearch.amazonaws.com',
             ]
         );
 
@@ -68,17 +68,25 @@ class SearchController extends Controller
         ));
 
         $return = [];
+        foreach( $results->getPath('hits/hit') as $hit){
+            $item =[];
 
-        foreach($results['hits']['hit'] as $hit){
-            $item = $hit['fields'];
-
-            if($item['type'] == 'idea'){
-
-            }else{
-
+            foreach($hit['fields'] as $key => $it){ // flatten results TODO - get rid of this
+                if(is_array($it) && count($it) == 1){
+                    $item[$key] = $it[0];
+                }
             }
 
 
+            if($item['type'] == 'idea'){
+                $item['url'] = $item['permalink'];
+                $item['feed_image'] = json_decode($item['feed_image']);
+            }elseif($item['type'] == 'product'){
+                $item['product_name'] = $item['title'];
+                $item['product_permalink'] = $item['permalink'];
+                $item['media_link_full_path'] = $item['feed_image'];
+                $item['storeInfo'] = json_decode($item['storeinfo']);
+            }
 
             $return[] = $item;
         }

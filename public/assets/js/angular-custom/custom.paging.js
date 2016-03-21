@@ -173,8 +173,6 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
     })
     .controller('SearchController', function ($scope, $http, pagingApi, $filter) {
 
-        console.log('y!')
-
         //$scope.getContentFromSearch = function() {
             var $route = $filter('getURISegment')(2);
             var $searchQuery = false;
@@ -234,6 +232,12 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
         //}
         //
         //$scope.getContentFromSearch();
+
+        $scope.renderHTML = function(html_code)
+        {
+            var decoded = angular.element('<div />').html(html_code).text();
+            return decoded;
+        };
 
     })
     .controller('ModalInstanceCtrltest', function ($scope, $uibModalInstance) {
