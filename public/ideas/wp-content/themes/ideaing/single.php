@@ -116,7 +116,7 @@
 
                 <ul class="share-buttons hidden-xs col-lg-7 col-md-8 pull-right"  ng-app="publicApp" ng-controller="publicController">
                     <?php loadLaravelView('share-buttons'); ?>
-                    <li><a class="comment" data-scrollto=".comments" href="#"><i class="m-icon m-icon--comments-id"></i><b>189</b></a></li>
+                    <li><a class="comment" data-scrollto=".comments" href="#"><i class="m-icon m-icon--comments-id"></i><b><?php echo"{{ commentsCount }}" ?></b></a></li>
                 </ul>
 
                 <ul class="like-nav hidden-xs">
