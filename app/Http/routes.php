@@ -18,7 +18,10 @@
          {
              var_dump($query);
          });
-    */
+
+
+Route::get('testx','CommentController@dt');
+     */
 
     // test route
     Route::get('notification', 'UserController@notification');

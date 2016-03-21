@@ -23,7 +23,7 @@
     <li class="social-stats__item">
         <a href="#">
             <i class="m-icon m-icon--buble"></i>
-            <span class="social-stats__text">157</span>
+            <span class="social-stats__text">{{item.CommentCount}}</span>
         </a>
     </li>
 </ul>

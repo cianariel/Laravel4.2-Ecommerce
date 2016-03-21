@@ -309,7 +309,7 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
             $scope.userId = 0;
             $scope.isAdmin = false;
             $scope.commentId = null;
-            $scope.commentsCount = 0;
+            $scope.commentsCount = 2;
 
 
             //$scope.countSocialShares();
@@ -470,9 +470,14 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                 $scope.commentsCount = $scope.comments.length;
                 $scope.commentsCountView = $scope.commentsCount < 2? $scope.commentsCount +" "+"Comment" : $scope.commentsCount +" "+"Comments";
 
-                //  console.log($scope.comments.length);
+                  console.log($scope.commentsCount);
+
             });
 
+        };
+
+        $scope.initCommentCounter =function(){
+            $scope.getCommentsForIdeas($window.itemId);
         };
 
 

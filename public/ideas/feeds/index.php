@@ -154,6 +154,7 @@ $datam = array();
 $data = array();
 while(have_posts()) : the_post();
 $ID = get_the_ID();
+$data['id'] = $ID;
 $data['title'] = get_the_title();
 $data['content'] = carbon_the_content_limit(200);
 $cats = get_the_category();
