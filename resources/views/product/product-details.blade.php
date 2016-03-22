@@ -660,7 +660,7 @@
                                 @foreach( $relatedIdeas as $item )
                                 <div class="box-item" >
                                     <div class="img-holder">
-                                        <img alt="{{$item->feed_image->alt}}" title="{{$item->feed_image->alt}}" src="{{$item->feed_image->url}}">
+                                        <img alt="{{@$item->feed_image->alt}}" title="{@{$item->feed_image->alt}}" src="{{@$item->feed_image->url}}">
                                     </div>
 
                                     <span class="box-item__time">{{$item->updated_at}}</span>
