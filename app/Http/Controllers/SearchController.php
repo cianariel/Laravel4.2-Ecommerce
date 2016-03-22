@@ -14,13 +14,29 @@ use App\Models\Product;
 use App\Models\Search;
 use AWS;
 use Input;
+use Redirect;
 
 
 class SearchController extends Controller
 {
 
     public function indexData($data = 'all'){
+        ini_set('memory_limit', '1024M');
 
+//        // 1. Setup CloudSeach client
+//        $csDomainClient = AWS::createClient('CloudSearch',
+//            [
+//                'endpoint'    => 'https://search-ideaing-production-sykvgbgxrd4moqagcoyh3pt5nq.us-west-2.cloudsearch.amazonaws.com',
+//            ]
+//        );
+//
+//        $result = $csDomainClient->indexDocuments(array(
+//            // DomainName is required
+//            'DomainName' => 'https://search-ideaing-production-sykvgbgxrd4moqagcoyh3pt5nq.us-west-2.cloudsearch.amazonaws.com',
+//        ));
+
+//
+//
         // 1. Setup CloudSeach client
         $csDomainClient = AWS::createClient('CloudsearchDomain',
             [
@@ -48,14 +64,26 @@ class SearchController extends Controller
         print_r($result);
     }
 
+    public function formatAndRedirectSearch(){
+
+            $input = Input::all();
+
+            $searchQuery = str_replace('+', '-', $input['search']);
+
+            return Redirect::to('search/' . $searchQuery);
+
+    }
+
 
     public function searchData($query = false, $size = 12, $offset = 0, $type = false, $sort = false){
 
-//        $input = Input::all();
+        $input = Input::all();
 
         if(!$query){
             $query = Input::get('search');
         }
+
+        $query = str_replace('-', ' ', $query);
 
         $csDomainClient = AWS::createClient('CloudsearchDomain',
             [
@@ -71,9 +99,12 @@ class SearchController extends Controller
 
         if($sort && $sort != 'undefined' && $sort != 'false'){
             $arguments['sort'] = "$sort asc";
+        }else{
+            $arguments['sort'] = "date_created asc";
+
         }
 
-        if($type && $type != 'undefined'){
+        if($type && $type != 'undefined' && $type != 'false'){
             $arguments['filterQuery'] = "(term field=type '$type')";
 //                "type: '$type''";
         }

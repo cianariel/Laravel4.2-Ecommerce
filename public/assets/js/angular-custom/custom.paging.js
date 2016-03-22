@@ -181,7 +181,8 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
                     $scope.$searchQuery = $searchQuery;
                 }
             }
-        console.log($scope.$searchQuery)
+
+            console.log($scope.$searchQuery)
 
             $scope.currentPage = 1;
             $scope.offset = 0;
@@ -189,7 +190,6 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
             $scope.sortBy = false;
 
             $scope.nextLoad = pagingApi.getSearchContent($scope.$searchQuery, 15, 0).success(function (response) {
-                console.log(response)
                 $scope.content = response;
             });
 
@@ -219,9 +219,13 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
                     return true;
                 }
 
-                $scope.currentCategory = $filterBy;
+                $scope.type = $filterBy;
                 $('a[data-filterby]').removeClass('active');
                 $('a[data-filterby="'+$filterBy+'"]').addClass('active');
+
+            }else{
+                $('a[data-filterby]').removeClass('active');
+                $('a[data-filterby="false"]').addClass('active');
 
             }
 
