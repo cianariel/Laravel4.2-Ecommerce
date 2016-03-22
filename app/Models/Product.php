@@ -77,6 +77,11 @@ class Product extends Model
         return $this->morphMany('App\Models\Comment', 'commentable');
     }
 
+    public function hearts()
+    {
+        return $this->morphMany('App\Models\Heart', 'heartable');
+    }
+
     public function tags()
     {
         return $this->morphToMany('App\Models\Tag', 'taggable');
