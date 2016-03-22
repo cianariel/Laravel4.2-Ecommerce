@@ -296,7 +296,7 @@
     Route::get('/api/social/get-social-counts', 'PageController@getSocialCounts');
     Route::get('/api/social/get-fan-counts', 'PageController@getFollowerCounts');
 
-    Route::get('api/search/{query?}', 'SearchController@searchData');
+    Route::get('api/find/{query?}/{limit?}/{offset?}/{type?}/{sort?}', 'SearchController@searchData');
 
     Route::get('api/search/do/index', 'SearchController@indexData');
     Route::get('search/{query?}', 'PageController@searchPage');

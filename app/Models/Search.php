@@ -16,15 +16,21 @@
         public static function buildIndex()
         {
 
-            $rawProducts = Product::where('post_status', 'Active')->take(20)->get();
+            $rawProducts = Product::where('post_status', 'Active')->get();
 
             foreach($rawProducts as $product){
 
                 // making the thumbnail url by injecting "thumb-" in the url which has been uploaded during media submission.
-                $strReplace = \Config::get("const.file.s3-path");
-                $ThumbnailPath = str_replace($strReplace, '', $product->media_link);
-                $ThumbnailPath = $strReplace . 'thumb-' . $ThumbnailPath;
                 $storeInfo = $product->getStoreInfoByProductId($product->id);
+
+                $media = $product->medias()
+                                ->where('media_type', '=', 'img-upload')
+                                ->where('is_main_item', '=', '1')
+                                ->first();
+
+                $strReplace = \Config::get("const.file.s3-path");
+                $ThumbnailPath = str_replace($strReplace, '', $media->media_link);
+                $mediaLink = $strReplace . 'thumb-' . $ThumbnailPath;
 
                 $data = [
                     'title' => $product->product_name,
@@ -37,8 +43,6 @@
 
                     'type' => 'product',
                     'affiliate_link' => $product->affiliate_link,
-//                    'media_link' =>  $ThumbnailPath,
-                    'feed_image' =>  $product->media_link,
                     'permalink' => $product->product_permalink,
                     'storeinfo' => json_encode($storeInfo),
                     'store' => $storeInfo['StoreName'],
@@ -51,9 +55,9 @@
             // 2.Get Ideas
 
             if (env('FEED_PROD') == true){
-                $url = 'https://ideaing.com//ideas/feeds/index.php?count=20&with_tags';
+                $url = 'https://ideaing.com//ideas/feeds/index.php?with_tags';
             }else{
-                $url = URL::to('/') . '/ideas/feeds/index.php?count=20&with_tags';
+                $url = URL::to('/') . '/ideas/feeds/index.php?with_tags';
             }
 
             $ch = curl_init();
@@ -75,7 +79,6 @@
                     'categories' => $idea->category_all,
                     'tags' => $idea->tags_all,
                     'permalink' => $idea->url,
-
                     'type' => 'idea',
                     'author' => $idea->author,
                     'authorlink' => $idea->authorlink,
@@ -89,6 +92,10 @@
 
             // Mix up
             $return = array_merge($ideas, $products);
+
+            $return = array_values(array_sort($return, function ($value) {
+                return $value['date_created'];
+            }));
 
             return $return;
         }
