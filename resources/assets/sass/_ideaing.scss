@@ -7939,11 +7939,11 @@ html.hide-overflow{
             > ul > li{
                 float: left;
                 color: $iridium;
-                font-size: 12px;
+                font-size: 20px;
                 padding-left: 10px;
                 padding-right: 10px;
                 i{
-                    font-size: 15px;
+                    font-size: 25px;
                     margin-right:5px;
                 }
             }
@@ -8644,6 +8644,17 @@ body.error-page{
         }
     }
 }
+
+.m-icon.m-icon--ScrollingHeaderHeart:hover {
+    .m-hover {
+        display: none;
+    }
+    &:before{
+        content: "\e906";
+    }
+}
+
+
 @media (max-width: 620px){
     .reviews-medium-container .average-score .caption{
         padding-top: 17px;
