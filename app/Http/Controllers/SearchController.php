@@ -49,9 +49,9 @@ class SearchController extends Controller
     }
 
 
-    public function searchData($query = false){
+    public function searchData($query = false, $size = 12, $offset = 0, $type = false, $sort = false){
 
-        $input = Input::all();
+//        $input = Input::all();
 
         if(!$query){
             $query = Input::get('search');
@@ -63,9 +63,22 @@ class SearchController extends Controller
             ]
         );
 
-        $results = $csDomainClient->search(array(
-            'query'  =>  $query
-        ));
+        $arguments = [
+            'query' =>  $query,
+            'size'  =>  $size,
+            'start' =>  $offset,
+        ];
+
+        if($sort && $sort != 'undefined' && $sort != 'false'){
+            $arguments['sort'] = "$sort asc";
+        }
+
+        if($type && $type != 'undefined'){
+            $arguments['filterQuery'] = "(term field=type '$type')";
+//                "type: '$type''";
+        }
+
+        $results = $csDomainClient->search($arguments);
 
         $return = [];
         foreach( $results->getPath('hits/hit') as $hit){
@@ -84,7 +97,7 @@ class SearchController extends Controller
             }elseif($item['type'] == 'product'){
                 $item['product_name'] = $item['title'];
                 $item['product_permalink'] = $item['permalink'];
-                $item['media_link_full_path'] = $item['feed_image'];
+                $item['media_link_full_path'] = @$item['feed_image'];
                 $item['storeInfo'] = json_decode($item['storeinfo']);
             }
 

@@ -183,52 +183,72 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
             }
         console.log($scope.$searchQuery)
 
-        $scope.currentPage = 1;
-            $scope.currentCategory = false;
-            $scope.$filterBy = false;
+            $scope.currentPage = 1;
+            $scope.offset = 0;
+            $scope.type = 'undefined';
             $scope.sortBy = false;
 
-            //if($route == 'shop'){
-            //    if($category = $filter('getURISegment')(5)){
-            //        $scope.currentCategory = $category;
-            //    }else if($category = $filter('getURISegment')(4)){
-            //        $scope.currentCategory = $category;
-            //    }else{
-            //        $scope.currentCategory = $filter('getURISegment')(3);
-            //    }
-            //}
-
-            $scope.nextLoad = pagingApi.getSearchContent($scope.$searchQuery).success(function (response) {
-
-                //if($scope.sortBy){
-                //    response.sort(function(a, b) {
-                //        return parseFloat(a[$scope.sortBy]) - parseFloat(b[$scope.sortBy]);
-                //    });
-                //}
-
+            $scope.nextLoad = pagingApi.getSearchContent($scope.$searchQuery, 15, 0).success(function (response) {
                 console.log(response)
-
                 $scope.content = response;
             });
-            //
-            //    $scope.loadMore = function() {
-            //        $scope.currentPage++;
-            //
-            //        var $limit = 15;
-            //
-            //        $scope.nextLoad =  pagingApi.getPlainContent($scope.currentPage, $limit,  $scope.currentCategory, 'product', $scope.currentCategory).success(function (response) {
-            //            var $newStuff = $scope.content.concat(response)
-            //
-            //            if($scope.sortBy){
-            //                $newStuff.sort(function (a, b) {
-            //                    return parseFloat(a[$scope.sortBy]) - parseFloat(b[$scope.sortBy]);
-            //                });
-            //            }
-            //
-            //            $scope.content = $newStuff;
-            //        });
-            //
-            //}
+
+            $scope.loadMore = function() {
+                $scope.currentPage++;
+
+                $scope.offset = 15 * $scope.currentPage++;
+                $scope.nextLoad =  pagingApi.getSearchContent($scope.$searchQuery, 15,  $scope.offset,  $scope.type,  $scope.sortBy).success(function (response) {
+                    var $newStuff = $scope.content.concat(response)
+
+                    if($scope.sortBy){
+                        $newStuff.sort(function (a, b) {
+                            return parseFloat(a[$scope.sortBy]) - parseFloat(b[$scope.sortBy]);
+                        });
+                    }
+
+                    $scope.content = $newStuff;
+                });
+        }
+
+
+
+        $scope.filterSearchContent = function($filterBy, $sortBy) {
+
+            if($filterBy){
+                if($('a[data-filterby="'+$filterBy+'"]').hasClass('active')){
+                    return true;
+                }
+
+                $scope.currentCategory = $filterBy;
+                $('a[data-filterby]').removeClass('active');
+                $('a[data-filterby="'+$filterBy+'"]').addClass('active');
+
+            }
+
+            if($sortBy && $sortBy != 'undefined' && $sortBy != $scope.sortBy){
+
+                if($('a[data-sotyby="'+$sortBy+'"]').hasClass('active')){
+                    return true;
+                }
+
+                $('a[data-sortby]').removeClass('active');
+                $('a[data-sortby="'+$sortBy+'"]').addClass('active');
+            }
+
+            var contentBlock =  $('.grid-box-3');
+
+            contentBlock.fadeOut(500, function(){
+                $scope.nextLoad =  pagingApi.getSearchContent($scope.$searchQuery, 15,   $scope.offset, $filterBy, $sortBy).success(function (response) {
+
+                    $scope.content = response;
+                    contentBlock.fadeIn();
+                });
+            });
+        }
+
+
+
+
         //}
         //
         //$scope.getContentFromSearch();
@@ -553,10 +573,10 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
             });
         }
 
-        pagingApi.getSearchContent = function(query) {
+        pagingApi.getSearchContent = function(query, limit, offset, type, sortBy) {
             return $http({
                 method: "get",
-                url: '/api/search/' + query,
+                url: '/api/find/' + query + '/' + limit + '/' + offset + '/' + type + '/' + sortBy,
             });
         }
 
