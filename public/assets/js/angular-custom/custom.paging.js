@@ -182,8 +182,6 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
                 }
             }
 
-            console.log($scope.$searchQuery)
-
             $scope.currentPage = 1;
             $scope.offset = 0;
             $scope.type = 'undefined';
@@ -214,13 +212,12 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
 
         $scope.filterSearchContent = function($filterBy, $sortBy) {
 
-            console.log('u!');
             if(!$filterBy){
                 $filterBy = $scope.type;
             }
 
             if($filterBy){
-                if($('a[data-filterby="'+$filterBy+'"]').hasClass('active')){
+                if(!$sortBy && $('a[data-filterby="'+$filterBy+'"]').hasClass('active')){
                     return true;
                 }
 
@@ -247,7 +244,7 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
 
             if($sortBy && $sortBy != 'undefined'){
 
-                if($('a[data-sotyby="'+$sortBy+'"]').hasClass('active')){
+                if(!$filterBy && $('a[data-sotyby="'+$sortBy+'"]').hasClass('active')){
                     return true;
                 }
 
