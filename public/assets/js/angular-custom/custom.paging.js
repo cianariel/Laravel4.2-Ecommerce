@@ -171,7 +171,7 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
             }
             
     })
-    .controller('SearchController', function ($scope, $http, pagingApi, $filter) {
+    .controller('SearchController', function ($scope, $http, pagingApi, $filter, $window) {
 
         //$scope.getContentFromSearch = function() {
             var $route = $filter('getURISegment')(2);
@@ -267,18 +267,62 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
             });
         }
 
+        $scope.openSearchDropdown = function (query){
+            console.log(query)
 
-
-
-        //}
-        //
-        //$scope.getContentFromSearch();
+                $http({
+                    method: "get",
+                    url: '/api/search/find-categories/' + query,
+                }).success(function (response) {
+                    $scope.categorySuggestions = response;
+                }).error(function (response) {
+                    $scope.categorySuggestions = [];
+                });
+        }
 
         $scope.renderHTML = function(html_code)
         {
             var decoded = angular.element('<div />').html(html_code).text();
             return decoded;
         };
+
+        $scope.$window = $window;
+
+        $scope.open = false;
+
+        $scope.toggleSearch = function () {
+            console.log('toggle')
+            $scope.open = !$scope.open;
+            console.log($scope.open);
+
+            if ($scope.open) {
+                $scope.$window.onclick = function (event) {
+                    closeSearchWhenClickingElsewhere(event, $scope.toggleSearch);
+                };
+            } else {
+                $scope.open = false;
+                $scope.$window.onclick = null;
+                $scope.$apply();
+            }
+        };
+
+        function closeSearchWhenClickingElsewhere(event, callbackOnClose) {
+
+            var clickedElement = event.target;
+            if (!clickedElement) return;
+
+            var elementClasses = clickedElement.classList;
+            console.log(clickedElement.classList);
+            var clickedOnSearchDrawer = elementClasses.contains('top-search') || elementClasses.contains('cat-suggestions');
+
+            if (!clickedOnSearchDrawer) {
+                callbackOnClose();
+                return;
+            }
+
+        }
+
+
 
     })
     .controller('ModalInstanceCtrltest', function ($scope, $uibModalInstance) {

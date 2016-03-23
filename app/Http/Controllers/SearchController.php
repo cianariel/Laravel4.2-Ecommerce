@@ -62,29 +62,25 @@ class SearchController extends Controller
         echo '<br/>';
     }  
 
-    public function indexData($indexType = 'content'){
+    public function indexData($indexType = false){
         ini_set('memory_limit', '1024M');
 
         if($indexType == 'content'){
             $endPoin = 'https://search-ideaing-production-sykvgbgxrd4moqagcoyh3pt5nq.us-west-2.cloudsearch.amazonaws.com';
-            // 2. Build index
             $index = Search::buildIndex();
         }else if($indexType == 'categories'){
             $endPoin = 'https://search-ideaing-categories-fclsu4tj7xw64w7pfqnvkoedxq.us-west-2.cloudsearch.amazonaws.com';
-            // 2. Build index
             $index = Search::buildCategoriesIndex();
         }else{
             return 'Please specify the index type';
         }
 
-        // 0. Setup CloudSeach client
         $csDomainClient = AWS::createClient('CloudsearchDomain',
             [
                 'endpoint' => $endPoin,
             ]
         );
 
-        // 1. Delete old data
         self::deleteAllDocs($csDomainClient);
 
        foreach($index as $key => $batch){
@@ -201,6 +197,43 @@ class SearchController extends Controller
                 $item['product_permalink'] = $item['permalink'];
                 $item['media_link_full_path'] = @$item['feed_image'];
                 $item['storeInfo'] = json_decode($item['storeinfo']);
+            }
+
+            $return[] = $item;
+        }
+
+        return $return;
+    }
+
+
+    public function searchCategories($query = false){
+
+
+        if(!$query){
+            $query = Input::get('search');
+        }
+
+
+        $csDomainClient = AWS::createClient('CloudsearchDomain',
+            [
+                'endpoint'    => 'https://search-ideaing-categories-fclsu4tj7xw64w7pfqnvkoedxq.us-west-2.cloudsearch.amazonaws.com',
+            ]
+        );
+
+        $arguments = [
+            'query' =>  $query,
+        ];
+
+        $results = $csDomainClient->search($arguments);
+
+        $return = [];
+        foreach( $results->getPath('hits/hit') as $hit){
+            $item =[];
+
+            foreach($hit['fields'] as $key => $it){ // flatten results TODO - get rid of this
+                if(is_array($it) && count($it) == 1){
+                    $item[$key] = $it[0];
+                }
             }
 
             $return[] = $item;
