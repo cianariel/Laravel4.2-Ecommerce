@@ -111,22 +111,22 @@
                 $item = [];
 
                 $item['type'] = 'shop';
-                $item['name'] = $grandparent;
+                $item['term'] = str_replace('-', '', $grandparent);
                 $item['link'] = '/shop/' . $grandparent;
 
                 $return[] = $item;
 
                 foreach ($parents as $key => $parent) {
-                    $subItem['link'] = 'shop';
-                    $subItem['name'] = $parent['childCategory']->category_name;
-                    $subItem['url'] = '/shop/' . $grandparent . '/' . $parent['childCategory']->extra_info;
+                    $subItem['type'] = 'shop';
+                    $subItem['term'] = $parent['childCategory']->category_name;
+                    $subItem['link'] = '/shop/' . $grandparent . '/' . $parent['childCategory']->extra_info;
 
                     $return[] = $subItem;
 
                     foreach($parent['grandchildCategories'] as $grandchild){
                         $grandChildItem = [];
                         $grandChildItem['type'] = 'shop';
-                        $grandChildItem['name'] = $grandchild->category_name;
+                        $grandChildItem['term'] = $grandchild->category_name;
                         $grandChildItem['link'] = '/shop/' . $grandparent . '/' . $parent['childCategory']->extra_info . '/' . $grandchild->extra_info;
 
                         $return[] = $grandChildItem;
@@ -138,7 +138,7 @@
             foreach($rooms as $room){
                 $roomItem = [];
                 $roomItem['type'] = 'rooms';
-                $roomItem['name'] = $room->room_name;
+                $roomItem['term'] = $room->room_name;
                 $roomItem['link'] = '/idea/' . $room->room_permalink;
 
                 $return[] = $roomItem;

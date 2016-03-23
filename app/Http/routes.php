@@ -103,7 +103,7 @@
         Route::get('auth-check', 'AuthenticateController@authCheckApi');
 
 
-      //  Route::post('info','UserController@getUserByEmail');
+        Route::post('info','UserController@getUserByEmail');
         Route::get('info','UserController@getUserByEmail');
         Route::get('info-raw/{email?}','UserController@getUserByEmailRaw');
 
@@ -313,6 +313,7 @@
     Route::get('api/find/{query?}/{limit?}/{offset?}/{type?}/{sort?}', 'SearchController@searchData');
 
     Route::get('api/search/do/index/{indexType?}', 'SearchController@indexData');
+    Route::get('api/search/find-categories/{quert?}', 'SearchController@searchCategories');
 
     Route::get('search-form-query', 'SearchController@formatAndRedirectSearch');
     Route::get('search/{query?}', 'PageController@searchPage');
