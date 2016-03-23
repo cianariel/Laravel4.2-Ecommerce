@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App;
 use App\Http\Requests;
-use Illuminate\Support\Collection;
 use App\Http\Controllers\Controller;
 //use FeedParser;
 use MetaTag;
@@ -13,7 +12,7 @@ use App\Models\Product;
 use App\Models\User;
 use App\Models\ProductCategory;
 use App\Models\Tag;
-use App\Models\Room;
+use App\Models\Room; 
 use URL;
 use Input;
 use App\Models\Sharing;
@@ -25,8 +24,8 @@ class PageController extends ApiController
     public function __construct()
     {
         //check user authentication and get user basic information
-
         $this->authCheck = $this->RequestAuthentication(array('admin', 'editor', 'user'));
+
     }
 
 
@@ -43,6 +42,20 @@ class PageController extends ApiController
         }
 
         return view('home')->with('userData', $userData);
+    }
+    /**
+     * Display the homepage.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function searchPage()
+    {
+        $userData = $this->authCheck;
+        if ($this->authCheck['method-status'] == 'success-with-http') {
+            $userData = $this->authCheck['user-data'];
+        }
+
+        return view('search.index')->with('userData', $userData);
     }
 
 
@@ -146,12 +159,12 @@ class PageController extends ApiController
     public function getStories($limit, $offset, $tag)
     {
         if (env('FEED_PROD') == true)
-            $url = 'https://ideaing.com/ideas/feeds/index.php?count=' . $limit . '&offset=' . $offset;
+            $url = 'https://ideaing.com//ideas/feeds/index.php?count=' . $limit . '&offset=' . $offset;
         else
             $url = URL::to('/') . '/ideas/feeds/index.php?count=' . $limit . '&offset=' . $offset;
 
         if ($tag && $tag != 'false') {
-            $url .= '&tag=' . $tag;
+            $url .= '&tag=' . $tag; 
         }
 
         $ch = curl_init();
@@ -163,13 +176,11 @@ class PageController extends ApiController
         curl_setopt($ch, CURLOPT_ENCODING, "");
         $json = curl_exec($ch);
 
-        echo $json;
-        die();
-
         $return = json_decode($json);
 
         return $return;
     }
+
 
 
     public function getGridStories($limit, $offset, $featuredLimit, $featuredOffset, $tag = false, $category = false)
@@ -211,33 +222,16 @@ class PageController extends ApiController
         }
 
 //                print_r($featuredUrl); die();
-        // print_r($return); die();
+       // print_r($return); die();
 
 
         curl_setopt($ch, CURLOPT_URL, $featuredUrl);
         $json = curl_exec($ch);
         curl_close($ch);
 
-        // $return['featured'] = json_decode($json);
+        $return['featured'] = json_decode($json);
 
-        $ideaCollection = json_decode($json);
 
-        $newIdeaCollection = new Collection();
-        $comment = new App\Models\Comment();
-
-        foreach ($ideaCollection as $singleIdea) {
-
-            $tempIdea = collect($singleIdea);
-
-            $countValue = $comment->ideasCommentCounter($singleIdea->id);
-
-            $tempIdea->put('CommentCount', $countValue);
-
-            $newIdeaCollection->push($tempIdea);
-
-        }
-
-        $return['featured'] = $newIdeaCollection;
 
         return $return;
     }
@@ -355,12 +349,13 @@ class PageController extends ApiController
 
         // todo - check login user and implement mark as reade notification for the user
 
-        if (isset($userData['id'])) {
+        if(isset($userData['id']))
+        {
             $user = new User();
 
-            //    $tmpPermalink = 'product/' . $permalink . '/#comment';
+        //    $tmpPermalink = 'product/' . $permalink . '/#comment';
 
-            //    $user->markNotificationAsRead(['UserId'=>$userData['id'],'Permalink' => $tmpPermalink]);
+        //    $user->markNotificationAsRead(['UserId'=>$userData['id'],'Permalink' => $tmpPermalink]);
 
         }
 
@@ -388,12 +383,14 @@ class PageController extends ApiController
         //   dd($result['selfImages']['picture'][0]['link']);
 
 
-        if ($userData['method-status'] == 'fail-with-http') {
+        if($userData['method-status'] == 'fail-with-http')
+        {
             $isAdmin = false;
             $userData['id'] = 0;
-        } else {
+        }else{
             $isAdmin = $userData->hasRole('admin');
         }
+
 
 
         return view('product.product-details')
@@ -445,80 +442,78 @@ class PageController extends ApiController
         return Sharing::getCountsFromAPIs($url);
     }
 
-    public function getFollowerCounts()
-    {
+    public function getFollowerCounts(){
         return Sharing::getFollowersFromAPIs();
     }
 
-    public function generateSitemap()
-    {
+    public function generateSitemap(){
 
         // create new sitemap object
         $sitemap = App::make('sitemap');
 
         // set cache key (string), duration in minutes (Carbon|Datetime|int), turn on/off (boolean)
         // by default cache is disabled
-        $sitemap->setCache('laravel.sitemap', 300, true);
+      $sitemap->setCache('laravel.sitemap', 300, true);
 
         // check if there is cached sitemap and build new only if is not
-        if (!$sitemap->isCached()) {
+	if (!$sitemap->isCached()){ 
             // add item to the sitemap (url, date, priority, freq)
-            $sitemap->add(URL::to('/'), date('c', strtotime('today')), '1.0', 'daily');
+            $sitemap->add(URL::to('/'),  date('c', strtotime('today')), '1.0', 'daily');
 
             // INFO PAGES
-            $sitemap->add(URL::to('/contactus'), date('c', strtotime('1 February 2016')), '0.3', 'yearly');
-            $sitemap->add(URL::to('/aboutus'), date('c', strtotime('1 February 2016')), '0.3', 'yearly');
-            $sitemap->add(URL::to('/privacy-policy'), date('c', strtotime('1 February 2016')), '0.3', 'yearly');
-            $sitemap->add(URL::to('/terms-of-use'), date('c', strtotime('1 February 2016')), '0.3', 'yearly');
-            $sitemap->add(URL::to('/shop'), date('c', strtotime('today')), '1.0', 'daily');
+		    $sitemap->add( URL::to('/contactus'),  date('c', strtotime('1 February 2016')), '0.3', 'yearly');
+		    $sitemap->add( URL::to('/aboutus'),  date('c', strtotime('1 February 2016')), '0.3', 'yearly');
+		    $sitemap->add( URL::to('/privacy-policy'),  date('c', strtotime('1 February 2016')), '0.3', 'yearly');
+		    $sitemap->add( URL::to('/terms-of-use'),  date('c', strtotime('1 February 2016')), '0.3', 'yearly');
+            $sitemap->add(URL::to('/shop'),  date('c', strtotime('today')), '1.0', 'daily');
 
 
             // SHOP
             $shopCategories = ProductCategory::buildCategoryTree(true);
-            foreach ($shopCategories as $grandparent => $parents) {
-                $sitemap->add(URL::to('/shop/' . $grandparent), date('c', strtotime('today')), '0.5', 'daily');
-                foreach ($parents as $key => $parent) {
-                    $sitemap->add(URL::to('/shop/' . $grandparent . '/' . $parent['childCategory']->extra_info), date('c', strtotime('today')), '0.5', 'daily');
+            foreach($shopCategories as $grandparent => $parents){
+            	$sitemap->add(URL::to('/shop/' . $grandparent),  date('c', strtotime('today')), '0.5', 'daily');
+            	foreach ($parents as $key => $parent) {
+            		$sitemap->add(URL::to('/shop/' . $grandparent . '/' . $parent['childCategory']->extra_info),  date('c', strtotime('today')), '0.5', 'daily');
 
-                    foreach ($parent['grandchildCategories'] as $grandchild) {
-                        $sitemap->add(URL::to('/shop/' . $grandparent . '/' . $parent['childCategory']->extra_info . '/' . $grandchild->extra_info), date('c', strtotime('today')), '0.5', 'daily');
-                    }
-                }
+            		foreach($parent['grandchildCategories'] as $grandchild){
+            			$sitemap->add(URL::to('/shop/' . $grandparent . '/' . $parent['childCategory']->extra_info . '/' . $grandchild->extra_info),  date('c', strtotime('today')), '0.5', 'daily');
+            		}
+            	}
             }
-
+ 
             $rooms = Room::all();
-            foreach ($rooms as $room) {
-                $sitemap->add(URL::to('/idea/' . $room->room_permalink), date('c', strtotime('today')), '0.5', 'weekly');
+            foreach($rooms as $room){
+            	$sitemap->add(URL::to('/idea/' . $room->room_permalink),  date('c', strtotime('today')), '0.5', 'weekly');
             }
 
             $products = Product::where('post_status', 'Active')->get();
-            foreach ($products as $product) {
-                $sitemap->add(URL::to('/product/' . $product->product_permalink), date('c', strtotime($product->updated_at)), '0.5', 'yearly');
+            foreach($products as $product){
+            	$sitemap->add(URL::to('/product/' . $product->product_permalink),  date('c', strtotime($product->updated_at)), '0.5', 'yearly');
             }
 
             //CMS POSTS -- TODO -- if we wont use images in the sitemap, change into direct call to WP DB for better perf?
-            if (env('FEED_PROD') == true)
-                $url = 'https://ideaing.com//ideas/feeds/index.php?count=0';
-            else
-                $url = URL::to('/') . '/ideas/feeds/index.php?count=0';
+	       if (env('FEED_PROD') == true)
+	            $url = 'https://ideaing.com//ideas/feeds/index.php?count=0';
+	        else
+	            $url = URL::to('/') . '/ideas/feeds/index.php?count=0';
 
-            $ch = curl_init();
-            curl_setopt($ch, CURLOPT_URL, $url);
+	        $ch = curl_init();
+	        curl_setopt($ch, CURLOPT_URL, $url);
             curl_setopt($ch, CURLOPT_HEADER, 0);
             curl_setopt($ch, CURLOPT_VERBOSE, true);
             curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
             curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
             curl_setopt($ch, CURLOPT_ENCODING, "");
-            $json = curl_exec($ch);
+	        $json = curl_exec($ch); 
 
-            $posts = json_decode($json);
+	        $posts = json_decode($json);
 
-            //$posts = WpPost::where('post_status', 'publish')->get();
-            foreach ($posts as $post) {
-                $sitemap->add($post->url, date('c', strtotime($post->updated_at)), '0.5', 'yearly');
-            }
+	        //$posts = WpPost::where('post_status', 'publish')->get();
+	        foreach($posts as $post){
+	            	$sitemap->add($post->url,  date('c', strtotime($post->updated_at)), '0.5', 'yearly');
+	         }
 
-        }
+    	}
 
         // show your sitemap (options: 'xml' (default), 'html', 'txt', 'ror-rss', 'ror-rdf')
         return $sitemap->render('xml');

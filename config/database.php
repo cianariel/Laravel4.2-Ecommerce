@@ -37,7 +37,7 @@ return [
     | Of course, examples of configuring each database platform that is
     | supported by Laravel is shown below to make development simple.
     |
-    | 
+    |
     | All database work in Laravel is done through the PHP PDO facilities
     | so make sure you have the driver for your particular database of
     | choice installed on your machine before you begin development.
@@ -54,10 +54,10 @@ return [
 
         'mysql' => [
             'driver'    => 'mysql',
-            'host'      => env('DB_HOST', 'ideaing-staging-2.c9zzhwcfjtcc.us-west-2.rds.amazonaws.com'),
+            'host'      => env('localhost'),
             'database'  => env('DB_DATABASE', 'ideaing-staging'),
-            'username'  => env('DB_USERNAME', 'megaStuff_'),
-            'password'  => env('DB_PASSWORD', 'iAmBob__'),
+            'username'  => env('DB_USERNAME', 'root'),
+            'password'  => env('DB_PASSWORD', 'root'),
             'charset'   => 'utf8',
             'collation' => 'utf8_unicode_ci',
             'prefix'    => '',
@@ -71,7 +71,7 @@ return [
             'username'  => env('BLOG_DB_USERNAME', 'megaStuff_'),
             'password'  => env('BLOG_DB_PASSWORD', 'iAmBob__'),
             'charset'   => 'utf8mb4',
-            'collation' => 'utf8mb4_unicode_ci',
+            'collation' => '',
             'prefix'    => 'wp_',
             'strict'    => false,
         ],
