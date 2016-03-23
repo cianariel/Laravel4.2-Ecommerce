@@ -90,7 +90,6 @@ if(function_exists('is_single')){
                                             <i class="m-icon m-icon--search-id"></i>
                                             <input id="search-input" ng-change="openSearchDropdown(query)" ng-model="query" class="form-control"  type="text" name="search" placeholder="Search..."/>
                                         </span>
-                                        {{--<input type="submit"/>--}}
                                     <span class="search-input-holder visible-xs">
                                         <i class="m-icon m-icon--search-id"></i>
                                     </span>
