@@ -67,6 +67,13 @@
         Route::post('comment/update-product-comment', 'CommentController@updateCommentForProduct');
         Route::post('comment/delete-product-comment', 'CommentController@deleteCommentForProduct');
 
+        Route::post('comment/add-ideas-comment', 'CommentController@addCommentForIdeas');
+        Route::get('comment/get-ideas-comment/{pid?}', 'CommentController@getCommentForIdeas');
+
+        Route::post('comment/update-comment', 'CommentController@updateComment');
+        Route::post('comment/delete-comment', 'CommentController@deleteComment');
+
+
 
 
         /*
