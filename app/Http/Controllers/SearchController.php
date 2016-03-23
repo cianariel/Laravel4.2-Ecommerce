@@ -20,23 +20,65 @@ use Redirect;
 class SearchController extends Controller
 {
 
+
+    public function deleteAllDocs(){
+        ini_set('memory_limit', '1024M');
+
+           $csDomainClient = AWS::createClient('CloudsearchDomain',
+            [
+                'endpoint'    => 'https://search-ideaing-production-sykvgbgxrd4moqagcoyh3pt5nq.us-west-2.cloudsearch.amazonaws.com',
+            ]
+        );
+
+        $result = $csDomainClient->search(array('query' => 'matchall', 'queryParser' => 'structured', 'size' => 10000));
+
+        foreach ($result["hits"]["hit"] as $hit){
+             
+                   $send[] = array(
+                       'type'        => 'delete',
+                       'id'        => $hit['id'],
+                     //  'fields'     => $batch
+                   );
+                   $result = $csDomainClient->uploadDocuments(array(
+                       'documents'     => json_encode($send),
+                       'contentType'     =>'application/json'
+                   ));
+        }
+                print_r($result);
+                echo '<br/>';
+
+    }   
+
+
+    public function reIndexAll(){
+        ini_set('memory_limit', '1024M');
+
+        
+       // 1. Setup CloudSeach client
+       $csDomainClient = AWS::createClient('CloudSearch',
+           [
+               'endpoint'    => 'https://search-ideaing-production-sykvgbgxrd4moqagcoyh3pt5nq.us-west-2.cloudsearch.amazonaws.com',
+           ]
+       );
+
+       $result = $csDomainClient->indexDocuments(array(
+           // DomainName is required
+           'DomainName' => 'https://search-ideaing-production-sykvgbgxrd4moqagcoyh3pt5nq.us-west-2.cloudsearch.amazonaws.com',
+       ));
+
+
+
+                print_r($result);
+                echo '<br/>';
+    }  
+
     public function indexData($data = 'all'){
         ini_set('memory_limit', '1024M');
 
-//        // 1. Setup CloudSeach client
-//        $csDomainClient = AWS::createClient('CloudSearch',
-//            [
-//                'endpoint'    => 'https://search-ideaing-production-sykvgbgxrd4moqagcoyh3pt5nq.us-west-2.cloudsearch.amazonaws.com',
-//            ]
-//        );
-//
-//        $result = $csDomainClient->indexDocuments(array(
-//            // DomainName is required
-//            'DomainName' => 'https://search-ideaing-production-sykvgbgxrd4moqagcoyh3pt5nq.us-west-2.cloudsearch.amazonaws.com',
-//        ));
 
-//
-//
+        // 0. Delete old data
+        self::deleteAllDocs();
+
         // 1. Setup CloudSeach client
         $csDomainClient = AWS::createClient('CloudsearchDomain',
             [
