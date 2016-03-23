@@ -25,10 +25,13 @@
                                         <i class="m-icon m-icon--shares-active"></i> 99
                                     </li>
                                     <li>
-                                        <i class="m-icon m-icon--heart2"></i> 768
-                                    </li>
-                                    <li>
-                                        <i class="m-icon m-icon--discuss"></i> 1.2K
+                                        <a href="#">
+                                            <i class="m-icon m-icon--ScrollingHeaderHeart">
+                                                <span class="m-hover">
+                                                    <span class="path1"></span><span class="path2"></span>
+                                                </span>
+                                            </i> 768
+                                        </a>
                                     </li>
                                 </ul>
                             </div>
