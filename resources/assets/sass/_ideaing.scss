@@ -7929,6 +7929,9 @@ html.hide-overflow{
         .p-title{
             font-size: 20px;
             padding-right: 70px;
+            &:hover{
+                color: $pink;
+            }
         }
         
         .p-nest-protect{
