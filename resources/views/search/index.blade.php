@@ -1,6 +1,6 @@
 @extends('layouts.main')
 
-@section('body-class'){{ 'homepage' }}@stop
+@section('body-class'){{ 'search' }}@stop
 
 @section('content')
 
