@@ -57,7 +57,7 @@ class HeartController extends ApiController
         $info['Permalink'] = $data['Section'] . '/' . $data['Link'];
         $info['PostTime'] = $notification['PostTime'];
         $info['ItemTitle'] = $notification['HeartInfo']['ItemTitle'];
-        $info['Section'] = $data['Section'];
+        $info['Section'] = $data['Section'].'-heart';
         $info['Category'] = 'heart';//$data['Section'];
 
         $this->user->sendNotificationToUsers($info);
