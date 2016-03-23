@@ -21,33 +21,25 @@ class SearchController extends Controller
 {
 
 
-    public function deleteAllDocs(){
+    public function deleteAllDocs($csDomainClient){
         ini_set('memory_limit', '1024M');
-
-           $csDomainClient = AWS::createClient('CloudsearchDomain',
-            [
-                'endpoint'    => 'https://search-ideaing-production-sykvgbgxrd4moqagcoyh3pt5nq.us-west-2.cloudsearch.amazonaws.com',
-            ]
-        );
 
         $result = $csDomainClient->search(array('query' => 'matchall', 'queryParser' => 'structured', 'size' => 10000));
 
         foreach ($result["hits"]["hit"] as $hit){
-             
-                   $send[] = array(
-                       'type'        => 'delete',
-                       'id'        => $hit['id'],
-                     //  'fields'     => $batch
-                   );
-                   $result = $csDomainClient->uploadDocuments(array(
-                       'documents'     => json_encode($send),
-                       'contentType'     =>'application/json'
-                   ));
+           $send[] = array(
+               'type'        => 'delete',
+               'id'        => $hit['id'],
+           );
+           $result = $csDomainClient->uploadDocuments(array(
+               'documents'     => json_encode($send),
+               'contentType'     =>'application/json'
+           ));
         }
-                print_r($result);
-                echo '<br/>';
 
-    }   
+        print_r($result);
+        echo '<br/>';
+    }
 
 
     public function reIndexAll(){
@@ -66,45 +58,82 @@ class SearchController extends Controller
            'DomainName' => 'https://search-ideaing-production-sykvgbgxrd4moqagcoyh3pt5nq.us-west-2.cloudsearch.amazonaws.com',
        ));
 
-
-
-                print_r($result);
-                echo '<br/>';
+        print_r($result);
+        echo '<br/>';
     }  
 
-    public function indexData($data = 'all'){
+    public function indexData($indexType = 'content'){
         ini_set('memory_limit', '1024M');
 
+        if($indexType == 'content'){
+            $endPoin = 'https://search-ideaing-production-sykvgbgxrd4moqagcoyh3pt5nq.us-west-2.cloudsearch.amazonaws.com';
+            // 2. Build index
+            $index = Search::buildIndex();
+        }else if($indexType == 'categories'){
+            $endPoin = 'https://search-ideaing-categories-fclsu4tj7xw64w7pfqnvkoedxq.us-west-2.cloudsearch.amazonaws.com';
+            // 2. Build index
+            $index = Search::buildCategoriesIndex();
+        }else{
+            return 'Please specify the index type';
+        }
 
-        // 0. Delete old data
-        self::deleteAllDocs();
-
-        // 1. Setup CloudSeach client
+        // 0. Setup CloudSeach client
         $csDomainClient = AWS::createClient('CloudsearchDomain',
             [
-                'endpoint'    => 'https://search-ideaing-production-sykvgbgxrd4moqagcoyh3pt5nq.us-west-2.cloudsearch.amazonaws.com',
+                'endpoint' => $endPoin,
             ]
         );
 
-        // 2. Build index
-        $index = Search::buildIndex();
-//        $json = json_encode($index);
-
+        // 1. Delete old data
+        self::deleteAllDocs($csDomainClient);
 
        foreach($index as $key => $batch){
            $send[] = array(
-               'type'        => 'add',
-               'id'        => $key,
-               'fields'     => $batch
+               'type'   => 'add',
+               'id'     => $key,
+               'fields' => $batch
            );
            $result = $csDomainClient->uploadDocuments(array(
-               'documents'     => json_encode($send),
-               'contentType'     =>'application/json'
+               'documents'   => json_encode($send),
+               'contentType' =>'application/json'
            ));
        }
 
         print_r($result);
     }
+
+
+//    public function indexCategoryData($data = 'all'){
+//        ini_set('memory_limit', '1024M');
+//
+//
+//        // 0. Delete old data
+//    //    self::deleteAllDocs();
+//
+//        // 1. Setup CloudSeach client
+//        $csDomainClient = AWS::createClient('CloudsearchDomain',
+//            [
+//                'endpoint'    => '',
+//            ]
+//        );
+//
+//        // 2. Build index
+//        $categoryIndex = Search::buildCategoryIndex();
+//
+//       foreach($categoryIndex as $key => $batch){
+//           $send[] = array(
+//               'type'        => 'add',
+//               'id'        => $key,
+//               'fields'     => $batch
+//           );
+//           $result = $csDomainClient->uploadDocuments(array(
+//               'documents'     => json_encode($send),
+//               'contentType'     =>'application/json'
+//           ));
+//       }
+//
+//        print_r($result);
+//    }
 
     public function formatAndRedirectSearch(){
 

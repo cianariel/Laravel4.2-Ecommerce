@@ -12,7 +12,7 @@
                     {{--<a ng-click="sortBy(popularity)" href="#" class="box-link active">POPULAR</a>--}}
                     {{--</li>--}}
                     <li class="">
-                        <a ng-click="filterSearchContent(false, false)" data-filterby="false" href="#" class="box-link active">ALL</a>
+                        <a ng-click="filterSearchContent('all', false)" data-filterby="all" href="#" class="box-link active">ALL</a>
                     </li>
                     <li class="">
                         <a ng-click="filterSearchContent('idea', false)" data-filterby="idea" href="#" class="box-link">IDEAS</a>

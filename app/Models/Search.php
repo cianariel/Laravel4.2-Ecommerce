@@ -100,6 +100,55 @@
 
 
 
+        public static function buildCategoriesIndex()
+        {
+
+            $return = [];
+
+            // SHOP
+            $shopCategories = ProductCategory::buildCategoryTree(true);
+            foreach($shopCategories as $grandparent => $parents){
+                $item = [];
+
+                $item['type'] = 'shop';
+                $item['name'] = $grandparent;
+                $item['link'] = '/shop/' . $grandparent;
+
+                $return[] = $item;
+
+                foreach ($parents as $key => $parent) {
+                    $subItem['link'] = 'shop';
+                    $subItem['name'] = $parent['childCategory']->category_name;
+                    $subItem['url'] = '/shop/' . $grandparent . '/' . $parent['childCategory']->extra_info;
+
+                    $return[] = $subItem;
+
+                    foreach($parent['grandchildCategories'] as $grandchild){
+                        $grandChildItem = [];
+                        $grandChildItem['type'] = 'shop';
+                        $grandChildItem['name'] = $grandchild->category_name;
+                        $grandChildItem['link'] = '/shop/' . $grandparent . '/' . $parent['childCategory']->extra_info . '/' . $grandchild->extra_info;
+
+                        $return[] = $grandChildItem;
+                    }
+                }
+            }
+
+            $rooms = Room::all();
+            foreach($rooms as $room){
+                $roomItem = [];
+                $roomItem['type'] = 'rooms';
+                $roomItem['name'] = $room->room_name;
+                $roomItem['link'] = '/idea/' . $room->room_permalink;
+
+                $return[] = $roomItem;
+            }
+
+            return $return;
+        }
+
+
+
 
 
 
