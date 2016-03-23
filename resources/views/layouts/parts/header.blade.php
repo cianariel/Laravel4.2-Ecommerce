@@ -86,9 +86,15 @@ if(function_exists('is_single')){
 
                                 <form class="search-bar col-sm-2 hidden-xs" ng-app="publicApp"  ng-controller="SearchController" action="/search-form-query" >
                                     <div class="row">
-                                        <span class="search-input-holder visible-sm visible-md visible-lg">
+                                        <span style="position: relative" class="search-input-holder visible-sm visible-md visible-lg">
                                             <i class="m-icon m-icon--search-id"></i>
-                                            <input id="search-input" ng-change="openSearchDropdown(query)" ng-model="query" class="form-control"  type="text" name="search" placeholder="Search..."/>
+                                            <input ng-click="toggleSearch()" id="search-input" ng-change="openSearchDropdown(query)" ng-model="query" ng-model-options='{ debounce: 800 }' class="form-control top-search"  type="text" name="search" placeholder="Search..."/>
+                                            <div id="suggest-category" ng-class="{shown: open, hidden: !open}" style="background: #fff; width: 100%; z-index: 50; border: 1px solid lightgray; position: absolute; top: 32px;">
+                                                <?php // have to use only pure php includes, or the CMS wont read it
+                                                include('/var/www/ideaing/resources/views/layouts/parts/search-dropdown.blade.php')
+                                                ?>
+
+                                            </div>
                                         </span>
                                     <span class="search-input-holder visible-xs">
                                         <i class="m-icon m-icon--search-id"></i>

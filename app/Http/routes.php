@@ -313,6 +313,7 @@
     Route::get('api/find/{query?}/{limit?}/{offset?}/{type?}/{sort?}', 'SearchController@searchData');
 
     Route::get('api/search/do/index/{indexType?}', 'SearchController@indexData');
+    Route::get('api/search/find-categories/{quert?}', 'SearchController@searchCategories');
 
     Route::get('search-form-query', 'SearchController@formatAndRedirectSearch');
     Route::get('search/{query?}', 'PageController@searchPage');
