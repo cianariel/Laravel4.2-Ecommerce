@@ -35,6 +35,18 @@ class PageController extends ApiController
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function searchPage()
+    {
+        $userData = $this->authCheck;
+        if ($this->authCheck['method-status'] == 'success-with-http') {
+            $userData = $this->authCheck['user-data'];
+        }
+
+        return view('search.index')->with('userData', $userData);
+    }
+
+
     public function home()
     {
         $userData = $this->authCheck;
@@ -44,6 +56,7 @@ class PageController extends ApiController
 
         return view('home')->with('userData', $userData);
     }
+
 
 
     public function getContent($page = 1, $limit = 5, $tag = false, $type = false, $productCategory = false, $sortBy = false)

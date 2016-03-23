@@ -18,10 +18,7 @@
          {
              var_dump($query);
          });
-
-
-Route::get('testx','CommentController@dt');
-     */
+    */
 
     // test route
     Route::get('notification', 'UserController@notification');
@@ -67,12 +64,10 @@ Route::get('testx','CommentController@dt');
          * */
         Route::post('comment/add-product-comment', 'CommentController@addCommentForProduct');
         Route::get('comment/get-product-comment/{pid?}', 'CommentController@getCommentForProduct');
+        Route::post('comment/update-product-comment', 'CommentController@updateCommentForProduct');
+        Route::post('comment/delete-product-comment', 'CommentController@deleteCommentForProduct');
 
-        Route::post('comment/add-ideas-comment', 'CommentController@addCommentForIdeas');
-        Route::get('comment/get-ideas-comment/{pid?}', 'CommentController@getCommentForIdeas');
 
-        Route::post('comment/update-comment', 'CommentController@updateComment');
-        Route::post('comment/delete-comment', 'CommentController@deleteComment');
 
         /*
          *  Heart Counter
@@ -100,9 +95,11 @@ Route::get('testx','CommentController@dt');
         // check authentication and return data through api
         Route::get('auth-check', 'AuthenticateController@authCheckApi');
 
+
       //  Route::post('info','UserController@getUserByEmail');
         Route::get('info','UserController@getUserByEmail');
         Route::get('info-raw/{email?}','UserController@getUserByEmailRaw');
+
 
         Route::get('wp','UserController@getWpUsers');
 
@@ -265,6 +262,8 @@ Route::get('testx','CommentController@dt');
     Route::get('user/profile', 'UserController@userProfile');
     Route::get('user/profile/{permalink?}', 'UserController@userProfile');
 
+
+
     // Route for password reset , email verification ,feed example
     Route::get('password-reset-form/{code?}', 'AuthenticateController@passwordResetForm');
 
@@ -280,6 +279,7 @@ Route::get('testx','CommentController@dt');
     Route::get('category/{identity?}', 'ProductCategoryController@showProductInCategoryName');
 
     // Route for product detail view
+    //    Route::get('pro-details/{permalink?}', 'PageController@productDetailsPage');
     Route::get('product/{permalink?}', 'PageController@productDetailsPage');
     Route::get('idea/{permalink?}', 'PageController@getRoomPage'); // single room page
     Route::get('room/{permalink?}', 'PageController@getRoomPage'); // temp keeping the old link, to prevent breaks
@@ -292,6 +292,9 @@ Route::get('testx','CommentController@dt');
     Route::get('cookie/{cookieName?}', 'ApiController@getCookie');
 
 
+    // default
+//    Route::get('login', 'PageController@loginView');
+  
     Route::get('sitemap', 'PageController@generateSitemap');
 
     Route::get('/api/paging/get-content/{page?}/{limit?}/{type?}/{tag?}/{productCategory?}/{sortBy?}', 'PageController@getContent');
@@ -300,5 +303,18 @@ Route::get('testx','CommentController@dt');
     Route::get('/api/social/get-social-counts', 'PageController@getSocialCounts');
     Route::get('/api/social/get-fan-counts', 'PageController@getFollowerCounts');
 
+    Route::get('api/find/{query?}/{limit?}/{offset?}/{type?}/{sort?}', 'SearchController@searchData');
+
+    Route::get('api/search/do/index/{indexType?}', 'SearchController@indexData');
+
+    Route::get('search-form-query', 'SearchController@formatAndRedirectSearch');
+    Route::get('search/{query?}', 'PageController@searchPage');
+
+
+
     // temporary category tag generator
     // Route::get('gen', 'TagsController@temporaryCategoryTagGenerator');
+
+
+
+

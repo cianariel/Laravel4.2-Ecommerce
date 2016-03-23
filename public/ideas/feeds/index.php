@@ -211,6 +211,11 @@ $data['is_featured'] = $is_featured;
 
 //$data['feed_image'] = get_post_custom_values('feed_image',$ID);
 $data['feed_image'] = get_field('feed_image');
+
+if(isset($_REQUEST['with_tags'])){
+    $data['tags_all'] = wp_get_post_tags( $post->ID, array( 'fields' => 'names' ) );;
+}
+
 $datam[]= $data;
 endwhile;
 echo json_encode($datam);
