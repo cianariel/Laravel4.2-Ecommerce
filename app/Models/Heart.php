@@ -38,12 +38,12 @@ class Heart extends Model
 
         } elseif ($info['Section'] == 'ideas') {
 
-            $item = WpPost::where('ID',$info['ItemId'])
+            $item = WpPost::where('ID', $info['ItemId'])
                           ->with('hearts')
                           ->first();
         }
 
-       // $product = Product::where('id', $info['pid'])->first();
+        // $product = Product::where('id', $info['pid'])->first();
 
         $heart = new Heart();
         $heart->user_id = $info['UserId'];
@@ -53,30 +53,57 @@ class Heart extends Model
         return $result;
     }
 
+    public function deleteHeartCounter($id)
+    {
+        if (!empty($id)) {
+            $heart = Heart::find($id);
+            $$heart->delete();
+
+            return true;
+        }
+        return false;
+    }
+
+    public function heartCounter($info)
+    {
+        if ($info['Section'] == 'product') {
+
+            $item = Product::where('id', $info['ItemId'])
+                           ->with('hearts')
+                           ->first();
+
+        } elseif ($info['Section'] == 'ideas') {
+
+            $item = WpPost::where('ID', $info['ItemId'])
+                          ->with('hearts')
+                          ->first();
+
+        }
+    }
+
     public function findHeartCountForItem($data)
     {
         if ($data['Section'] == 'product') {
 
             $item = Product::where('id', $data['ItemId'])
-                              ->with('hearts')
-                              ->first();
+                           ->with('hearts')
+                           ->first();
             $itemTitle = $item['product_name'];
 
         } elseif ($data['Section'] == 'ideas') {
 
-            $item = WpPost::where('ID',$data['ItemId'])
-                            ->with('hearts')
-                            ->first();
+            $item = WpPost::where('ID', $data['ItemId'])
+                          ->with('hearts')
+                          ->first();
             $itemTitle = $item['post_title'];
         }
 
-        $itemsHeartCounts = isset($item->hearts)?$item->hearts:[];
+        $itemsHeartCounts = isset($item->hearts) ? $item->hearts : [];
         $HeartCountCollection = new Collection();
 
         $user = new User();
 
-        foreach($itemsHeartCounts as $singleComment)
-        {
+        foreach ($itemsHeartCounts as $singleComment) {
             $userInfo = $user->getUserById($singleComment['user_id']);
 
             $data['HeartId'] = $singleComment['id'];
