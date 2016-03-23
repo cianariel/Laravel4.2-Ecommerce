@@ -6223,7 +6223,8 @@ header.colophon {
   float: right; }
 
 .search-bar {
-  padding-top: 13px;
+  position: relative;
+  top: 13px;
   /*  width: 20%;*/ }
   .search-bar a.search-toggle {
     display: none;
@@ -7361,7 +7362,10 @@ body.single .related-items {
   .idea-stories .story-details .about-author {
     color: #a8a8a8; }
   .idea-stories .story-details .author-overview {
-    padding: 5% 0 0; }
+    padding: 5% 0 0;
+    text-align: left; }
+    .idea-stories .story-details .author-overview h4 {
+      text-align: left; }
     .idea-stories .story-details .author-overview time {
       font-size: 1.3rem;
       color: #c1c1c1; }
@@ -10227,6 +10231,10 @@ body.error-page .error-banner-holder {
 
 .m-icon.m-icon--ScrollingHeaderHeart:hover:before {
   content: "\e906"; }
+
+#comments .profile-photo {
+  width: 44px;
+  height: 44px; }
 
 @media (max-width: 620px) {
   .reviews-medium-container .average-score .caption {
