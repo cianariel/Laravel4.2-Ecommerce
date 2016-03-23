@@ -165,32 +165,32 @@
 
         <div ng-app="publicApp"
              ng-controller="publicController">
-        <header class="story-details col-lg-7  col-sm-8 col-xs-10 full-480" ng-init="getAuthorInfoByEmail('{{get_the_author_meta('user_email')}}')">
+            <header class="story-details col-lg-7  col-sm-8 col-xs-10 full-480"
+                    ng-init="getAuthorInfoByEmail('{{get_the_author_meta('user_email')}}')">
 
-            <div ng-app="publicApp" ng-controller="publicController">
-            <div ng-init="getAuthorInfoByEmail('{{get_the_author_meta('user_email')}}')" >&nbsp;</div>
-            <?php include('/var/www/ideaing/public/ideas/wp-content/themes/ideaing/author-info.php') ?>
-            </div>
-            <div class="author-overview col-lg-5 col-sm-5 col-xs-6 full-480">
-                <h4 class="author-name">
-                    <div id="sticky-anchor"></div>
+                <div ng-init="getAuthorInfoByEmail('{{get_the_author_meta('user_email')}}')">&nbsp;</div>
+                <?php include('/var/www/ideaing/public/ideas/wp-content/themes/ideaing/author-info.php') ?>
 
-                    by <b ng-bind="authorName"></b>
-                    <!--                            <a class="like-counter" href="#">189</a>-->
+                <div class="author-overview col-lg-5 col-sm-5 col-xs-6 full-480">
+                    <h4 class="author-name">
+                        <div id="sticky-anchor"></div>
 
-                </h4>
-                <time datetime="{{the_date('Y-m-d')}}">{{the_time( get_option( 'date_format' ) )}}</time>
-                <!--                        <div class="content-tags">-->
-                <!--                            <ul>-->
-                <!--                                <li><a href="#" class="ideas-link">12 Ideas</a></li>-->
-                <!--                                <li><a href="#" class="products-link">95 Products</a></li>-->
-                <!--                                <li><a href="#" class="photos-link">255 photos</a></li>-->
-                <!--                            </ul>-->
-                <!--                        </div>-->
-            </div>
+                        by <b ng-bind="authorName"></b>
+                        <!--                            <a class="like-counter" href="#">189</a>-->
+
+                    </h4>
+                    <time datetime="{{the_date('Y-m-d')}}">{{the_time( get_option( 'date_format' ) )}}</time>
+                    <!--                        <div class="content-tags">-->
+                    <!--                            <ul>-->
+                    <!--                                <li><a href="#" class="ideas-link">12 Ideas</a></li>-->
+                    <!--                                <li><a href="#" class="products-link">95 Products</a></li>-->
+                    <!--                                <li><a href="#" class="photos-link">255 photos</a></li>-->
+                    <!--                            </ul>-->
+                    <!--                        </div>-->
+                </div>
 
 
-        </header>
+            </header>
         </div>
 
         <div class="shown-620 hidden-soft">
@@ -210,7 +210,10 @@
 
     <section class="author-description">
         <div class="container">
-            <?php include('/var/www/ideaing/public/ideas/wp-content/themes/ideaing/author-desc.php') ?>
+            <div ng-app="publicApp" ng-controller="publicController" ng-init="getAuthorInfoByEmail('{{get_the_author_meta('user_email')}}')">
+
+                <?php include('/var/www/ideaing/public/ideas/wp-content/themes/ideaing/author-desc.php') ?>
+            </div>
             <div class="col-sm-10 col-xs-9">
                 <p>
                     <?php the_author_meta('description'); ?>
