@@ -90,7 +90,7 @@
             // product_permalink
             $productComments = isset($product->comments)?$product->comments:[];
             $commentCollection = new Collection();
-
+0
             $user = new User();
 
             foreach($productComments as $singleComment)
