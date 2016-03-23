@@ -9660,6 +9660,8 @@ html.hide-overflow {
   .product-popup-modal .lbInfo .p-title {
     font-size: 20px;
     padding-right: 70px; }
+    .product-popup-modal .lbInfo .p-title:hover {
+      color: #ed2049; }
   .product-popup-modal .lbInfo .p-nest-protect {
     margin-left: 15px;
     padding-top: 33px; }
@@ -10574,7 +10576,7 @@ p {
       background: #fff;
       color: #000; }
       .box-item__label--clear:hover, .box-item__label--clear:active, .box-item__label--clear:focus {
-        color: #000; }
+        color: #ed2049; }
   .box-item__read-more {
     color: #ccc;
     display: block;
