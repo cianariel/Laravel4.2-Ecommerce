@@ -166,12 +166,13 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
             });
         };
 
-        $scope.openProductPopup = function () {
-            pagingApi.openProductPopup($scope, $uibModal, $timeout);
+        $scope.openProductPopup = function(id){
+            pagingApi.openProductPopup($scope, $uibModal, $timeout, id);
             }
             
+
     })
-    .controller('SearchController', function ($scope, $http, pagingApi, $filter, $window) {
+    .controller('SearchController', function ($scope, $http, $uibModal, pagingApi, $timeout, $filter, $window) {
 
         //$scope.getContentFromSearch = function() {
             var $route = $filter('getURISegment')(2);
@@ -322,6 +323,9 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
 
         }
 
+        $scope.openProductPopup = function(id){
+            pagingApi.openProductPopup($scope, $uibModal, $timeout, id);
+        }
 
 
     })
@@ -341,10 +345,11 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
             return decoded;
         };
 
-        $scope.openProductPopup = function(){
-            pagingApi.openProductPopup($scope, $uibModal, $timeout);
+        $scope.openProductPopup = function(id){
+            pagingApi.openProductPopup($scope, $uibModal, $timeout, id);
         }
 
+        
         $scope.nextLoad = pagingApi.getPlainContent(1, 3, 'deal', 'idea').success(function (response) {
             $scope.dailyDeals = response;
             $timeout(function() {
@@ -429,10 +434,9 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
             var decoded = angular.element('<div />').html(html_code).text();
             return decoded;
         };
-        $scope.openProductPopup = function(){
-            pagingApi.openProductPopup($scope, $uibModal, $timeout);
+        $scope.openProductPopup = function(id){
+            pagingApi.openProductPopup($scope, $uibModal, $timeout, id);
         }
-
         $scope.currentPage = 1;
         $scope.currentCategory = false;
         $scope.$filterBy = false;
@@ -571,10 +575,9 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
         }
     };
   })
-    .factory('pagingApi', function($http, $q) {
-
+    .factory('pagingApi', function($http, $window, $q) {
         var pagingApi = {};
-        pagingApi.openProductPopup = function ($scope, $uibModal, $timeout) {
+        pagingApi.openProductPopup = function ($scope, $uibModal, $timeout, productId) {
             var body = angular.element(document).find('body');
             if(body[0].offsetWidth < 880){
                 return;
@@ -590,11 +593,250 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
             });
             modalInstance.opened.then(function(){
                 $timeout(function() {
+                    $http({
+                        url: '/api/product/get-product/' + productId,
+                        method: "get",
+                    }).success(function (data) {
+                        if (data.status_code == 200) {
+                            var data = data.data;
+                            var imageHTML = "";
+                            for(var key in data.selfImages.picture){
+                                var picture = data.selfImages.picture[key];
+                                imageHTML += '\
+                                    <div>\
+                                        <img class="rsImg " \
+                                             src="'+ picture['link'] +'"\
+                                             class="attachment-large wp-post-image"\
+                                             alt=""/>\
+                                    </div>\
+                                '
+                            }
+                            $('.product-popup-modal #product-slider').html(imageHTML);
+                            $('.product-popup-modal .p-title').html("<a target='_blank' href='/product/"+ data.productInformation['Permalink'] +"'>"+ data.productInformation['ProductName'] +"</a>");
+                            
+                            var html = '\
+                                <a class="get-round" href="'+ data.productInformation['AffiliateLink'] +'" target="_blank">Get it</a>\
+                                <img class="vendor-logo" width="107" src="'+ data.storeInformation['ImagePath'] +'" alt="'+ data.storeInformation['StoreName'] +'">\
+                            ';
+                            $('.product-popup-modal .p-get-it-amazon .p-body').html(html);
+                            
+                            
+//                            $('.product-popup-modal .get-round').attr('href', data.productInformation['AffiliateLink']);
+                            
+                            if(data.productInformation['Review']){
+                                var pScore = parseInt(((( Number(data.productInformation['Review'][0].value) > 0 ? Number(data.productInformation['Review'][0].value) : Number(data.productInformation['Review'][1].value)) + Number(data.productInformation['Review'][1].value))/2)*20) + "%";
+                            }else{
+                                var pScore = "0%";
+                            }
+                            $('.product-popup-modal .p-score').html(pScore);
+                            
+                            var price;
+                            if(data.productInformation['SellPrice']){
+                                price = data.productInformation['SellPrice'];
+                            }else{
+                                price = 0;
+                            }
+                            $('.product-popup-modal .aws-price').html(price);
+                            
+                            var features;
+                            if(data.productInformation['Description']){
+                                features = data.productInformation['Description'];
+                            }else{
+                                features = "";
+                            }
+                            $('#features').html(features);
+                            
+                            var starRatingHtml = "";
+                                $stars = data.productInformation['Review'][0].value;
+                                $fStar = Math.floor($stars);
+                                $cStar = Math.ceil($stars);
+                                $halfStar = -1;
+                                if ($fStar == $cStar)
+                                    $halfStar = $cStar;
+
+                                for($i=1; $i<=5; $i++){
+                                    if($i <= $fStar){
+                                        starRatingHtml += '\
+                                        <span class="star active">\
+                                            <i class="m-icon--star-blue-full"></i>\
+                                        </span>\
+                                        ';
+                                    }else if($cStar == $i){
+                                        starRatingHtml += '\
+                                        <span class="star half">\
+                                            <i class=" m-icon--star-blue-half2"></i>\
+                                        </span>\
+                                        ';
+                                    }else{
+                                        starRatingHtml += '\
+                                        <span class="star">\
+                                            <i class=" m-icon--star-blue-full-lines"></i>\
+                                        </span>\
+                                        ';
+                                    }
+                                }
+                                $(".product-popup-modal .critic .star-rating").html(starRatingHtml);
+                                var counter = data.productInformation['Review'][0].counter == '' ? 0 : data.productInformation['Review'][0].counter;
+                                if(counter>1){
+                                    var starRatingLabelHtml =  counter + '\
+                                        <span class="light-black">\
+                                            Reviews\
+                                        </span>\
+                                    ';
+                                }else{
+                                    var starRatingLabelHtml =  counter + '\
+                                        <span class="light-black">\
+                                            Review\
+                                        </span>\
+                                    ';
+                                }
+                                $(".product-popup-modal .critic .star-rating-label").html(starRatingLabelHtml);
+
+                            var criticOuterRatingHtml = "";
+                                if(data.productInformation['Review']){
+                                    var outrReviews = data.productInformation['Review'].slice(2);
+                                    for( reviewKey in outrReviews ){
+                                        var review = outrReviews[reviewKey];
+                                        console.log("reviewKey", reviewKey)
+                                        console.log("review", review)
+                                        criticOuterRatingHtml += '\
+                                            <div class="critic-outer-rating">\
+                                                <div class="line-label ">\
+                                                    <a\
+                                                        href="' + review.link + '"\
+                                                        target="_blank">'+ review.key + '\
+                                                    </a></div>\
+                                                <div class="star-rating" style="text-align: center">';
+                                                
+                                                    $stars = review.value ? review.value : 0;
+                                                    $fStar = Math.floor($stars);
+                                                    $cStar = Math.ceil($stars);
+                                                    $halfStar = -1;
+                                                    if ($fStar == $cStar)
+                                                        $halfStar = $cStar;
+                                                    // TODO - move to model or Angular
+
+                                                    for($i=1; $i<=5; $i++){
+                                                        if($i <= $fStar){
+                                                            criticOuterRatingHtml += '\
+                                                                <span class="star active">\
+                                                                    <i class="m-icon--star-blue-full"></i>\
+                                                                </span>\
+                                                            ';
+                                                        }
+                                                        else if($cStar == $i){
+                                                            criticOuterRatingHtml += '\
+                                                                <span class="star half">\
+                                                                    <i class=" m-icon--star-blue-half2"></i>\
+                                                                </span>\
+                                                            ';
+                                                        }
+                                                        else{
+                                                            criticOuterRatingHtml += '\
+                                                                <span class="star">\
+                                                                    <i class=" m-icon--star-blue-full-lines"></i>\
+                                                                </span>\
+                                                            ';
+                                                        }
+                                                    }
+                                        criticOuterRatingHtml += '\
+                                                </div>\
+                                            </div>\
+                                        ';
+                                    }
+                                }
+                            jQuery(".product-popup-modal .critic #critic-outer-rating-holder").html(criticOuterRatingHtml);
+
+                            var starRatingHtml = "";
+                                $stars = data.productInformation['Review'][1].value;
+                                $fStar = Math.floor($stars);
+                                $cStar = Math.ceil($stars);
+                                $halfStar = -1;
+                                if ($fStar == $cStar)
+                                    $halfStar = $cStar;
+
+                                for($i=1; $i<=5; $i++){
+                                    if($i <= $fStar){
+                                        starRatingHtml += '\
+                                        <span class="star active">\
+                                            <i class="m-icon--star-blue-full"></i>\
+                                        </span>\
+                                        ';
+                                    }else if($cStar == $i){
+                                        starRatingHtml += '\
+                                        <span class="star half">\
+                                            <i class=" m-icon--star-blue-half2"></i>\
+                                        </span>\
+                                        ';
+                                    }else{
+                                        starRatingHtml += '\
+                                        <span class="star">\
+                                            <i class=" m-icon--star-blue-full-lines"></i>\
+                                        </span>\
+                                        ';
+                                    }
+                                }
+                                $(".product-popup-modal .amazon .star-rating").html(starRatingHtml);
+                                var counter = data.productInformation['Review'][1].counter == '' ? 0 : data.productInformation['Review'][1].counter;
+                                var starRatingLabelHtml = '<a href="' + (data.productInformation['Review'][1].link ? data.productInformation['Review'][1].link : "#") + '" target="_blank">'; 
+                                if(counter>1){
+                                    starRatingLabelHtml +=  counter + '\
+                                        <span class="light-black">\
+                                            Reviews\
+                                        </span>\
+                                    ';
+                                }else{
+                                    starRatingLabelHtml +=  counter + '\
+                                        <span class="light-black">\
+                                            Review\
+                                        </span>\
+                                    ';
+                                }
+                                starRatingLabelHtml += "</a>";
+                                $(".product-popup-modal .amazon .star-rating-label").html(starRatingLabelHtml);
+                            
+                            var criticQuoteHtml = '\
+                                <div>' + (data.productInformation['ReviewExtLink'] ? data.productInformation['ReviewExtLink'] : "") + '</div>';
+                            $('.product-popup-modal .critic-quote').html(criticQuoteHtml);
+
+                            $http({
+                                url: '/api/comment/get-product-comment/'+productId,
+                                method: "GET"
+                            }).success(function (result) {
+                                var comments = result.data;
+                                var commentsCount = comments.length;
+                                var commentsCountView = commentsCount < 2 ? commentsCount +" "+"Comment" : commentsCount +" "+"Comments";
+                                var commentsHtml = "";
+                                for(var i=0; i<comments.length; i++){
+                                    var comment = comments[i];
+                                    commentsHtml += '\
+                                        <div class="p-comment-row">\
+                                            <div class="pull-left text-center p-comment-user">\
+                                                <img src="'+ comment.Picture + '" width="50px" class="p-photo"><br>' + comment.UserName + '</div>\
+                                            <div class="p-comment">'
+                                                + comment.Comment +
+                                                '<div class="p-footer">\
+                                                    <time class="p-time pull-left">'+comment.PostTime+'</time>\
+                                                    <div class="clearfix"></div>\
+                                                </div>\
+                                            </div>\
+                                        </div>\
+                                    ';
+                                }
+                                
+                                
+                                $('.p-comment-content-holder').html(commentsHtml);
+                                $('.p-comment-responses').html(commentsCountView);
+                                console.log("comments", comments)
+                              //  console.log($scope.comments.length);
+                            });
+
+                            
                     jQuery('#product-slider').royalSlider({
                         loop: false,
                         keyboardNavEnabled: true,
                         controlsInside: false,
-                        imageScaleMode: 'fill',
+                                imageScaleMode: 'fit',
                         arrowsNavAutoHide: false,
                         controlNavigation: 'thumbnails',
                         thumbsFitInViewport: false,
@@ -604,8 +846,10 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
                         transitionType: 'move',
                         globalCaption: false,
                         autoScaleSlider: false,
-                        imgWidth: "100%",
-                        autoHeight: true,
+                                imgHeight: "100%",
+//                                imgWidth: "100%",
+//                                imgWidth: "100%",
+//                                autoHeight: true,
                         deeplinking: {
                           enabled: true,
                           change: false
@@ -614,6 +858,9 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
                         autoHeight: true,
                     });
                     document.getElementById( 'product-slider' ).style.visibility = 'visible';
+                        }
+                    });                    
+                    
                 }, 100);
 
             })
@@ -623,6 +870,77 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
                 document.getElementsByTagName('html')[0].className = className;
             });
         };
+
+        pagingApi.fakeUpdateCounts = function ($service) {
+            var currentCounters =  $('.share-buttons a[data-service="' + $service + '"]').children('.share-count');
+            var totalCounters = $('b.share-count.all');
+			
+			var currentCount = Number(currentCounters.html());
+			currentCounters.html(currentCount + 1);
+
+			var totalCount = Number(totalCounters.html());
+			totalCounters.html(totalCount + 1);
+		}
+
+		pagingApi.openSharingModal = function ($service, $scope) {
+            var baseUrl = 'https://' + window.location.host + window.location.pathname;
+            var shareUrl = false;
+
+            var $pitnerestShare = function(){
+                    var e=document.createElement('script');
+                    e.setAttribute('type','text/javascript');
+                    e.setAttribute('charset','UTF-8');
+                    e.setAttribute('src','https://assets.pinterest.com/js/pinmarklet.js?r='+Math.random()*99999999);
+                    document.body.appendChild(e);
+
+                setTimeout(function(){
+					pagingApi.fakeUpdateCounts('pinterest');
+                }, 10000);
+            }
+
+            switch($service){
+                case 'facebook':
+                    shareUrl = 'https://www.facebook.com/sharer/sharer.php?u=' + baseUrl;
+                    break;
+                case 'twitter':
+                    shareUrl = 'https://twitter.com/share?url=' + baseUrl + '&counturl=' + baseUrl + '&text=@Ideaing';
+                    break;
+                case 'googleplus':
+                    shareUrl = 'https://plus.google.com/share?url=' + baseUrl;
+                    break;
+                case 'pinterest':
+                    $pitnerestShare();
+                    return true
+            }
+
+            if(!shareUrl){
+                return false;
+            }
+
+            //$scope.openWindow = function() {
+            var $modal = $window.open(shareUrl, 'C-Sharpcorner', 'width=500,height=400');
+            //};
+
+            // TODO -- fire counter updates for shares, only on pages where they are used (CMS)
+
+            var timer = setInterval(function() {
+                if($modal.closed) {
+                    clearInterval(timer);
+
+                    setTimeout(function(){
+			pagingApi.fakeUpdateCounts($service);
+                    }, 2000);
+                    //setTimeout(function(){
+                    //    $scope.countSocialShares();
+                    //}, 1000);
+                    console.log('share counters updated')
+                }
+            }, 1000);
+
+        };
+        
+        
+        
 
         pagingApi.getPlainContent = function(page, limit, tag, type, productCategoryID, sortBy) {
             return $http({
