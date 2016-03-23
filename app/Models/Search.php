@@ -28,9 +28,7 @@
                                 ->where('is_main_item', '=', '1')
                                 ->first();
 
-                $strReplace = \Config::get("const.file.s3-path");
-                $ThumbnailPath = str_replace($strReplace, '', $media->media_link);
-                $mediaLink = $strReplace . 'thumb-' . $ThumbnailPath;
+                $feedImage = $media->media_link;
 
                 $data = [
                     'title' => $product->product_name,
@@ -46,7 +44,7 @@
                     'permalink' => $product->product_permalink,
                     'storeinfo' => json_encode($storeInfo),
                     'store' => $storeInfo['StoreName'],
-//                    'feed_image' => '',
+                     'feed_image' => $feedImage,
                 ];
 
                 $products[] = $data;
@@ -58,7 +56,7 @@
                 $url = 'https://ideaing.com//ideas/feeds/index.php?with_tags';
             }else{
                 $url = URL::to('/') . '/ideas/feeds/index.php?with_tags';
-            }
+            } 
 
             $ch = curl_init();
             curl_setopt($ch, CURLOPT_URL, $url);
