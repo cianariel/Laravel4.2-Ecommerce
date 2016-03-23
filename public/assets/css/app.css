@@ -9666,11 +9666,11 @@ html.hide-overflow {
     .product-popup-modal .lbInfo .p-nest-protect > ul > li {
       float: left;
       color: #FF0042;
-      font-size: 12px;
+      font-size: 20px;
       padding-left: 10px;
       padding-right: 10px; }
       .product-popup-modal .lbInfo .p-nest-protect > ul > li i {
-        font-size: 15px;
+        font-size: 25px;
         margin-right: 5px; }
   .product-popup-modal .lbInfo .p-get-it-holder {
     border-bottom: 1px solid #f0f0f0;
@@ -10220,6 +10220,12 @@ body.error-page .error-banner-holder {
     width: 13.1%;
     height: 5%; }
 
+.m-icon.m-icon--ScrollingHeaderHeart:hover .m-hover {
+  display: none; }
+
+.m-icon.m-icon--ScrollingHeaderHeart:hover:before {
+  content: "\e906"; }
+
 @media (max-width: 620px) {
   .reviews-medium-container .average-score .caption {
     padding-top: 17px; } }
@@ -10373,8 +10379,6 @@ p {
     margin: 3px 0; }
     .social-stats__item:hover .m-hover {
       display: none; }
-    .social-stats__item:hover .m-icon.m-icon--ScrollingHeaderHeart:before {
-      content: "\e906"; }
   .social-stats__item .m-icon {
     font-size: 26px;
     position: absolute;

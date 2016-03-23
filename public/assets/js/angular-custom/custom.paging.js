@@ -476,7 +476,7 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
                                 '
                             }
                             $('.product-popup-modal #product-slider').html(imageHTML);
-                            $('.product-popup-modal .p-title').html(data.productInformation['ProductName']);
+                            $('.product-popup-modal .p-title').html("<a target='_blank' href='/product/"+ data.productInformation['Permalink'] +"'>"+ data.productInformation['ProductName'] +"</a>");
                             
                             var html = '\
                                 <a class="get-round" href="'+ data.productInformation['AffiliateLink'] +'" target="_blank">Get it</a>\
