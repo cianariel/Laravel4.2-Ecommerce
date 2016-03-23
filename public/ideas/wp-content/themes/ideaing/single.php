@@ -166,8 +166,11 @@
         <div ng-app="publicApp"
              ng-controller="publicController">
         <header class="story-details col-lg-7  col-sm-8 col-xs-10 full-480" ng-init="getAuthorInfoByEmail('{{get_the_author_meta('user_email')}}')">
-            <?php include('/var/www/ideaing/public/ideas/wp-content/themes/ideaing/authorinfo.php') ?>
 
+            <div ng-app="publicApp" ng-controller="publicController">
+            <div ng-init="getAuthorInfoByEmail('{{get_the_author_meta('user_email')}}')" >&nbsp;</div>
+            <?php include('/var/www/ideaing/public/ideas/wp-content/themes/ideaing/author-info.php') ?>
+            </div>
             <div class="author-overview col-lg-5 col-sm-5 col-xs-6 full-480">
                 <h4 class="author-name">
                     <div id="sticky-anchor"></div>
@@ -207,10 +210,7 @@
 
     <section class="author-description">
         <div class="container">
-            <h4>About the Author, {{ the_author_meta('first_name') }} {{ the_author_meta('last_name') }}</h4>
-            <div class="col-md-1 col-sm-2 col-xs-3">
-                {{ get_avatar(get_the_author_meta('ID'), '80') }}
-            </div>
+            <?php include('/var/www/ideaing/public/ideas/wp-content/themes/ideaing/author-desc.php') ?>
             <div class="col-sm-10 col-xs-9">
                 <p>
                     <?php the_author_meta('description'); ?>
