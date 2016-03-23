@@ -75,6 +75,13 @@ Route::get('testx','CommentController@dt');
         Route::post('comment/delete-comment', 'CommentController@deleteComment');
 
         /*
+         *  Heart Counter
+         * */
+        Route::post('heart/add-heart', 'HeartController@addHeart');
+
+
+
+        /*
          * User Authentication route collection
          *
          * */
@@ -96,7 +103,6 @@ Route::get('testx','CommentController@dt');
       //  Route::post('info','UserController@getUserByEmail');
         Route::get('info','UserController@getUserByEmail');
         Route::get('info-raw/{email?}','UserController@getUserByEmailRaw');
-
 
         Route::get('wp','UserController@getWpUsers');
 

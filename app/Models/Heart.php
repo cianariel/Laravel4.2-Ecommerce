@@ -3,6 +3,8 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Collection;
+use Carbon\Carbon;
 
 class Heart extends Model
 {
@@ -58,12 +60,14 @@ class Heart extends Model
             $item = Product::where('id', $data['ItemId'])
                               ->with('hearts')
                               ->first();
+            $itemTitle = $item['product_name'];
 
         } elseif ($data['Section'] == 'ideas') {
 
             $item = WpPost::where('ID',$data['ItemId'])
                             ->with('hearts')
                             ->first();
+            $itemTitle = $item['post_title'];
         }
 
         $itemsHeartCounts = isset($item->hearts)?$item->hearts:[];
@@ -85,6 +89,8 @@ class Heart extends Model
             $HeartCountCollection->push($data);
 
         }
+
+        $HeartCountCollection->put('ItemTitle', $itemTitle);
 
         return $HeartCountCollection;
 

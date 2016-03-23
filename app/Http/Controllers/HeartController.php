@@ -14,17 +14,17 @@ use App\Http\Requests;
 use Carbon\Carbon;
 
 
-class CommentController extends ApiController
+class HeartController extends ApiController
 {
     public function __construct()
     {
         //   $this->comment = new Comment();
-        //    $this->user = new User();
+        $this->user = new User();
 
         $this->heart = new Heart();
     }
 
-    public function addNotification()
+    public function addHeart()
     {
         // saving heart information
         $inputData = \Input::all();
@@ -35,7 +35,6 @@ class CommentController extends ApiController
 
         $data['Link'] = $inputData['plink'];
 
-
         $result = $this->heart->addHeartCounter($data);
 
         $notification['HeartInfo'] = $this->heart->findHeartCountForItem($data);
@@ -45,24 +44,23 @@ class CommentController extends ApiController
         $dataStr = date("Y-m-d H:i:s");
         $notification['PostTime'] = (string)$dataStr;
 
-
         // sending notification
         $info['Users'] = [];
-        foreach ($data['HeartInfo'] as $heart) {
+        foreach ($notification['HeartInfo'] as $heart) {
 
-            if ($heart['UserId'] != $data['SenderId'])
+            if (isset($heart['UserId']) && $heart['UserId'] != $notification['SenderId'])
                 array_push($info['Users'], $heart['UserId']);
         }
         $info['Users'] = array_unique($info['Users']);
-        $info['Category'] = 'comment';//$data['Category'];
-        $info['SenderId'] = $data['SenderId'];
-        $info['Permalink'] = $data['Section'] . '/' . $data['Permalink'] ;
-        $info['PostTime'] = $data['PostTime'];
-        $info['ItemTitle'] = $data['ItemTitle'];
+        $info['Category'] = 'heart';//$data['Category'];
+        $info['SenderId'] = $notification['SenderId'];
+        $info['Permalink'] = $data['Section'] . '/' . $data['Link'];
+        $info['PostTime'] = $notification['PostTime'];
+        $info['ItemTitle'] = $notification['HeartInfo']['ItemTitle'];
         $info['Section'] = $data['Section'];
+        $info['Category'] = 'heart';//$data['Section'];
 
         $this->user->sendNotificationToUsers($info);
-
 
     }
 
