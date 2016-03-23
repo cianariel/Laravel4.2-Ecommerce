@@ -165,7 +165,7 @@
 
         <div ng-app="publicApp"
              ng-controller="publicController">
-        <header class="story-details col-lg-7  col-sm-8 col-xs-10 full-480" ng-init="getAuthorInfoByEmail('<?php echo get_the_author_meta('user_login') ?>')">
+        <header class="story-details col-lg-7  col-sm-8 col-xs-10 full-480" ng-init="getAuthorInfoByEmail('{{get_the_author_meta('user_email')}}')">
             @include('authorinfo')
 
             <div class="author-overview col-lg-5 col-sm-5 col-xs-6 full-480">
