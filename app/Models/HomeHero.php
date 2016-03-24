@@ -22,28 +22,6 @@
             'hero_image_products',
         );
         protected $hidden = ['created_at'];
-        /*public function updateRoom($room)
-        {
-            try
-            {
-
-                $data = array(
-                    
-                );
-
-                $roomId = $room['id'];
-
-                Product::where('id', '=', $roomId)->update($data);
-
-                $data = Product::where('id', $roomId)->first();
-
-                return $data;
-
-            } catch (Exception $ex)
-            {
-                return $ex;
-            }
-        }
         // return room information data for public view
         public function getViewForPublic($permalink, $id = null)
         {
@@ -55,31 +33,53 @@
             return $roomInfo;
 
         }
-        public function roomDetailsViewGenerate($roomData)
+        public function heroDetailsViewGenerate()
         {
             // dd($productData);
-            $roomInfo['Id'] = $roomData['room']->id;
-            $roomInfo['RoomName'] = $roomData['room']->room_name;
-            $roomInfo['Permalink'] = $roomData['room']->room_permalink;
-            $roomInfo['Description'] = $roomData['room']->room_description;
-            $roomInfo['MetaDescription'] = $roomData['room']->meta_description;
-            $roomInfo['MetaTitle'] = $roomData['room']->meta_title;
+            $homeheroImages = HomeHero::all();
+            foreach ($homeheroImages as $hero) {
+                $products = json_decode($hero->hero_image_products);
+                $temp = new Product();
+                foreach ($products as $elementKey => $pr) {
+                    $product = $temp->getSingleProductInfoForView($pr->product_id);
+                    if($product)
+                    {
+                        $strReplace = \Config::get("const.file.s3-path");
+                        $path = str_replace($strReplace, '', $product->media_link);
+                        $path = $strReplace . 'thumb-' . $path;
+                        $pr->media_link = $path;
+                        $pr->product_name = $product->product_name;
+                        $pr->price = $product->price;
+                        $pr->sale_price = $product->sale_price ;
+                        $pr->store = $temp->getStoreInfoByProductId($pr->product_id);
+                        $pr->affiliate_link = $product->affiliate_link;
+                        $pr->product_permalink = $product->product_permalink;
+                    }
+                    else{
+                        $pr->product_id="";
+                        unset($products[$elementKey]);
+                    }
+                }
+                $hero['Image_Products'] = $products;
+            }
+            return $homeheroImages;
             
-            $roomInfo['Status'] = $roomData['room']->room_status;
+            /*
+            //$roomInfo['Status'] = $roomData['room']->room_status;
 
-            $image1['Image'] = $roomData['room']->hero_image_1;
+            $image1['Image'] = $heroData['room']->hero_image;
             $images = [];
-            if($roomData['room']->hero_image_1)
+            if($heroData['room']->hero_image_1)
             {
                 $Image = [];
-                $Image['Image'] = $roomData['room']->hero_image_1;
-                $Image['Image_alt'] = $roomData['room']->hero_image_1_alt;
-                $Image['Image_Title'] = $roomData['room']->hero_image_1_title;
-                $Image['Image_Caption'] = $roomData['room']->hero_image_1_caption;
-                $Image['Image_hyperlink'] = $roomData['room']->hero_image_1_link;
-                $Image['Image_hyperlink_title'] = $roomData['room']->hero_image_1_link_title;
+                $Image['Image'] = $heroData['room']->hero_image;
+                $Image['Image_alt'] = $heroData['room']->hero_image_alt;
+                $Image['Image_Title'] = $heroData['room']->hero_image_title;
+                $Image['Image_Caption'] = $heroData['room']->hero_image_caption;
+                $Image['Image_hyperlink'] = $heroData['room']->hero_image_link;
+                $Image['Image_hyperlink_title'] = $heroData['room']->hero_image_link_title;
                 
-                $products = json_decode($roomData['room']->hero_image_1_products);
+                $products = json_decode($heroData['room']->hero_image_products);
                 $temp = new Product();
                 foreach ($products as $elementKey => $pr) {
                     $product = $temp->getSingleProductInfoForView($pr->product_id);
@@ -181,7 +181,7 @@
                 $images[] = $Image;
             }
             $roomInfo['images'] = $images;
-            $result['roomInformation'] = $roomInfo;
-            return $result;
-        }*/
+            $result['homehero'] = $roomInfo;
+            return $result;*/
+        }
     }
