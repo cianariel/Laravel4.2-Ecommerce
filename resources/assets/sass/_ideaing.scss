@@ -8777,3 +8777,27 @@ body.error-page{
   }
     
 }
+// Hasan 25-03-2016
+#full-width-slider {
+  width: 100%;
+  color: #000;
+}
+.photoCopy {
+  position: absolute;
+  line-height: 24px;
+  font-size: 12px;
+  background: black;
+  color: black;
+  background-color: rgba(255, 255, 255, 0.75);
+  padding: 0px 10px;
+  position: absolute;
+  left: 12px;
+  bottom: 12px;
+  top: auto;
+  border-radius: 2px;
+  z-index: 25;
+}
+.photoCopy a {
+  color: grey;
+}
+.royalSlider { display:none }
