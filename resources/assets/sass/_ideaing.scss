@@ -2602,7 +2602,8 @@ header.colophon{
     float: right;
 }
 .search-bar{
-  padding-top: 13px;
+  position: relative;
+  top: 13px;
 /*  width: 20%;*/
 
 
@@ -4374,7 +4375,10 @@ body.single{
 
     .author-overview{
       padding: 5% 0 0;
-
+      text-align: left;
+      h4{
+          text-align: left;
+      }
       time{
         font-size: 1.3rem;
         color: $light-grey;
@@ -7929,6 +7933,9 @@ html.hide-overflow{
         .p-title{
             font-size: 20px;
             padding-right: 70px;
+            &:hover{
+                color: $pink;
+            }
         }
         
         .p-nest-protect{
@@ -7939,11 +7946,11 @@ html.hide-overflow{
             > ul > li{
                 float: left;
                 color: $iridium;
-                font-size: 12px;
+                font-size: 20px;
                 padding-left: 10px;
                 padding-right: 10px;
                 i{
-                    font-size: 15px;
+                    font-size: 25px;
                     margin-right:5px;
                 }
             }
@@ -8642,6 +8649,22 @@ body.error-page{
             width: 13.1%;
             height: 5%;
         }
+    }
+}
+
+.m-icon.m-icon--ScrollingHeaderHeart:hover {
+    .m-hover {
+        display: none;
+    }
+    &:before{
+        content: "\e906";
+    }
+}
+
+#comments{
+    .profile-photo{
+        width: 44px;
+        height: 44px;
     }
 }
 @media (max-width: 620px){

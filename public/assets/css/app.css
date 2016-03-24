@@ -6223,7 +6223,8 @@ header.colophon {
   float: right; }
 
 .search-bar {
-  padding-top: 13px;
+  position: relative;
+  top: 13px;
   /*  width: 20%;*/ }
   .search-bar a.search-toggle {
     display: none;
@@ -7361,7 +7362,10 @@ body.single .related-items {
   .idea-stories .story-details .about-author {
     color: #a8a8a8; }
   .idea-stories .story-details .author-overview {
-    padding: 5% 0 0; }
+    padding: 5% 0 0;
+    text-align: left; }
+    .idea-stories .story-details .author-overview h4 {
+      text-align: left; }
     .idea-stories .story-details .author-overview time {
       font-size: 1.3rem;
       color: #c1c1c1; }
@@ -9660,17 +9664,19 @@ html.hide-overflow {
   .product-popup-modal .lbInfo .p-title {
     font-size: 20px;
     padding-right: 70px; }
+    .product-popup-modal .lbInfo .p-title:hover {
+      color: #ed2049; }
   .product-popup-modal .lbInfo .p-nest-protect {
     margin-left: 15px;
     padding-top: 33px; }
     .product-popup-modal .lbInfo .p-nest-protect > ul > li {
       float: left;
       color: #FF0042;
-      font-size: 12px;
+      font-size: 20px;
       padding-left: 10px;
       padding-right: 10px; }
       .product-popup-modal .lbInfo .p-nest-protect > ul > li i {
-        font-size: 15px;
+        font-size: 25px;
         margin-right: 5px; }
   .product-popup-modal .lbInfo .p-get-it-holder {
     border-bottom: 1px solid #f0f0f0;
@@ -10220,6 +10226,16 @@ body.error-page .error-banner-holder {
     width: 13.1%;
     height: 5%; }
 
+.m-icon.m-icon--ScrollingHeaderHeart:hover .m-hover {
+  display: none; }
+
+.m-icon.m-icon--ScrollingHeaderHeart:hover:before {
+  content: "\e906"; }
+
+#comments .profile-photo {
+  width: 44px;
+  height: 44px; }
+
 @media (max-width: 620px) {
   .reviews-medium-container .average-score .caption {
     padding-top: 17px; } }
@@ -10373,8 +10389,6 @@ p {
     margin: 3px 0; }
     .social-stats__item:hover .m-hover {
       display: none; }
-    .social-stats__item:hover .m-icon.m-icon--ScrollingHeaderHeart:before {
-      content: "\e906"; }
   .social-stats__item .m-icon {
     font-size: 26px;
     position: absolute;
@@ -10570,7 +10584,7 @@ p {
       background: #fff;
       color: #000; }
       .box-item__label--clear:hover, .box-item__label--clear:active, .box-item__label--clear:focus {
-        color: #000; }
+        color: #ed2049; }
   .box-item__read-more {
     color: #ccc;
     display: block;
