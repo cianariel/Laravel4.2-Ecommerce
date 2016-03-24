@@ -309,7 +309,11 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
             $scope.userId = 0;
             $scope.isAdmin = false;
             $scope.commentId = null;
-            $scope.commentsCount = 2;
+            $scope.commentsCount = 0;
+
+            //Ideas author info
+            $scope.authorName = '';
+            $scope.authorImage = null;
 
 
             //$scope.countSocialShares();
@@ -438,6 +442,21 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                     break;
 
             }
+        };
+
+        $scope.getAuthorInfoByEmail = function(email){
+            console.log("inside");
+            $http({
+                url: '/api/info-raw/'+ email,
+                method: "GET",
+            }).success(function (data) {
+
+                $scope.authorName = data.name;
+                $scope.authorImage = data.medias[0].media_link;
+
+               // console.log($scope.authorName," - ",$scope.authorImage);
+
+            });
         };
 
         // Comment for ideas section

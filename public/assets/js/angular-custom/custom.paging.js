@@ -172,24 +172,164 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
             
 
     })
-/*    .controller('headerController', function ($scope, $uibModal, $http, pagingApi, $filter, layoutApi) {
+    .controller('SearchController', function ($scope, $http, $uibModal, pagingApi, $timeout, $filter, $window) {
 
-        /!*$scope.openProfileSetting = function () {
-         var templateUrl = "profile-setting.html";
-         var modalInstance = $uibModal.open({
-         templateUrl: templateUrl,
-         size: 'lg',
-         windowClass : 'profile-setting-modal',
-         controller: 'ModalInstanceCtrltest'
-         });
-         };*!/
+        //$scope.getContentFromSearch = function() {
+            var $route = $filter('getURISegment')(2);
+            var $searchQuery = false;
+            if ($route == 'search') {
+                if ($searchQuery = $filter('getURISegment')(3)) {
+                    $scope.$searchQuery = $searchQuery;
+                }
+            }
 
-        /!*layoutApi.getProductsForShopMenu().success(function (response) {
-         $scope.productsForShopMenu = response;
-         });*!/
+            $scope.currentPage = 1;
+            $scope.offset = 0;
+            $scope.type = 'undefined';
+            $scope.sortBy = false;
 
-    })*/
-    .controller('ModalInstanceCtrltest', function ($scope, $uibModalInstance, pagingApi) {
+            $scope.nextLoad = pagingApi.getSearchContent($scope.$searchQuery, 15, 0).success(function (response) {
+                $scope.content = response;
+            });
+
+            $scope.loadMore = function() {
+                $scope.currentPage++;
+
+                $scope.offset = 15 * $scope.currentPage++;
+                $scope.nextLoad =  pagingApi.getSearchContent($scope.$searchQuery, 15,  $scope.offset,  $scope.type,  $scope.sortBy).success(function (response) {
+                    var $newStuff = $scope.content.concat(response)
+
+                    if($scope.sortBy){
+                        $newStuff.sort(function (a, b) {
+                            return parseFloat(a[$scope.sortBy]) - parseFloat(b[$scope.sortBy]);
+                        });
+                    }
+
+                    $scope.content = $newStuff;
+                });
+        }
+
+
+
+        $scope.filterSearchContent = function($filterBy, $sortBy) {
+
+            if(!$filterBy){
+                $filterBy = $scope.type;
+            }
+
+            if($filterBy){
+                if(!$sortBy && $('a[data-filterby="'+$filterBy+'"]').hasClass('active')){
+                    return true;
+                }
+
+                $scope.type = $filterBy;
+                $scope.currentPage = 1;
+                $scope.offset = 0;
+
+                $('a[data-filterby]').removeClass('active');
+                $('a[data-filterby="'+$filterBy+'"]').addClass('active');
+
+            }
+
+            if($filterBy == 'all'){
+                $('a[data-filterby]').removeClass('active');
+                $('a[data-filterby="false"]').addClass('active');
+
+                $filterBy = 'undefined';
+            }
+
+
+            if(!$sortBy){
+                $sortBy = $scope.sortBy;
+            }
+
+            if($sortBy && $sortBy != 'undefined'){
+
+                if(!$filterBy && $('a[data-sotyby="'+$sortBy+'"]').hasClass('active')){
+                    return true;
+                }
+
+                $scope.sortBy = $sortBy;
+                $scope.currentPage = 1;
+                $scope.offset = 0;
+
+                $('a[data-sortby]').removeClass('active');
+                $('a[data-sortby="'+$sortBy+'"]').addClass('active');
+            }
+
+            var contentBlock =  $('.grid-box-3');
+
+            contentBlock.fadeOut(500, function(){
+                $scope.nextLoad =  pagingApi.getSearchContent($scope.$searchQuery, 15, $scope.offset, $filterBy, $sortBy).success(function (response) {
+
+                    $scope.content = response;
+                    contentBlock.fadeIn();
+                });
+            });
+        }
+
+        $scope.openSearchDropdown = function (query){
+            console.log(query)
+
+                $http({
+                    method: "get",
+                    url: '/api/search/find-categories/' + query,
+                }).success(function (response) {
+                    $scope.categorySuggestions = response;
+                }).error(function (response) {
+                    $scope.categorySuggestions = [];
+                });
+        }
+
+        $scope.renderHTML = function(html_code)
+        {
+            var decoded = angular.element('<div />').html(html_code).text();
+            return decoded;
+        };
+
+        $scope.$window = $window;
+
+        $scope.open = false;
+
+        $scope.toggleSearch = function () {
+            console.log('toggle')
+            $scope.open = !$scope.open;
+            console.log($scope.open);
+
+            if ($scope.open) {
+                $scope.$window.onclick = function (event) {
+                    closeSearchWhenClickingElsewhere(event, $scope.toggleSearch);
+                };
+            } else {
+                $scope.open = false;
+                $scope.$window.onclick = null;
+                $scope.$apply();
+            }
+        };
+
+        function closeSearchWhenClickingElsewhere(event, callbackOnClose) {
+
+            var clickedElement = event.target;
+            if (!clickedElement) return;
+
+            var elementClasses = clickedElement.classList;
+            console.log(clickedElement.classList);
+            var clickedOnSearchDrawer = elementClasses.contains('top-search') || elementClasses.contains('cat-suggestions');
+
+            if (!clickedOnSearchDrawer) {
+                callbackOnClose();
+                return;
+            }
+
+        }
+
+        $scope.openProductPopup = function(id){
+            pagingApi.openProductPopup($scope, $uibModal, $timeout, id);
+        }
+
+
+    })
+    .controller('ModalInstanceCtrltest', function ($scope, $uibModalInstance) {
       $scope.ok = function () {
         $uibModalInstance.close();
       };
@@ -197,10 +337,6 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
       $scope.cancel = function () {
         $uibModalInstance.dismiss('cancel');
       };
-
-        $scope.openSharingModal = function ($service) {
-            pagingApi.openSharingModal($service);
-        };
     })
     .controller('shoplandingController', ['$scope', '$http', 'pagingApi', '$timeout', '$uibModal', function ($scope, $http, pagingApi, $timeout, $uibModal) {
         $scope.renderHTML = function(html_code)
@@ -476,7 +612,7 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
                                 '
                             }
                             $('.product-popup-modal #product-slider').html(imageHTML);
-                            $('.product-popup-modal .p-title').html(data.productInformation['ProductName']);
+                            $('.product-popup-modal .p-title').html("<a target='_blank' href='/product/"+ data.productInformation['Permalink'] +"'>"+ data.productInformation['ProductName'] +"</a>");
                             
                             var html = '\
                                 <a class="get-round" href="'+ data.productInformation['AffiliateLink'] +'" target="_blank">Get it</a>\
@@ -746,7 +882,7 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
 			totalCounters.html(totalCount + 1);
 		}
 
-        pagingApi.openSharingModal = function ($service, $scope) {
+		pagingApi.openSharingModal = function ($service, $scope) {
             var baseUrl = 'https://' + window.location.host + window.location.pathname;
             var shareUrl = false;
 
@@ -817,6 +953,13 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
             return $http({
                 method: 'GET',
                 url: '/api/paging/get-grid-content/' + page + '/' + limit + '/' + tag + '/' + type + '/' + ideaCategory,
+            });
+        }
+
+        pagingApi.getSearchContent = function(query, limit, offset, type, sortBy) {
+            return $http({
+                method: "get",
+                url: '/api/find/' + query + '/' + limit + '/' + offset + '/' + type + '/' + sortBy,
             });
         }
 
@@ -964,6 +1107,8 @@ angular.module('pagingApp.filters', [])
             return false;
         }
     });
+
+
 
 // bootstrap for modularization ( add id="pagingApp" with initializing ng-app='pagingApp')
 //angular.bootstrap(document.getElementById('pagingApp'),['pagingApp']);

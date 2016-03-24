@@ -109,6 +109,12 @@ class UserController extends ApiController
         return $result;
     }
 
+    public function getUserByEmailRaw($email)
+    {
+        return $this->user->IsEmailAvailable($email);
+       // return serialize(['data' => $data]);
+    }
+
     // Email subscription
     /**
      * @return mixed

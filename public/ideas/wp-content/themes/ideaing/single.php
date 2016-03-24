@@ -163,38 +163,46 @@
         <article id="post-<?php the_ID(); ?>" {{post_class(
         'col-xs-11 col-md-offset-1 pull-right')}}>
 
-        <header class="story-details col-lg-7  col-sm-8 col-xs-10 full-480">
-            <div class="author-image-big col-lg-3 col-sm-4 col-xs-5 full-480">
-                {{ get_avatar(get_the_author_meta('ID'), '170') }}
-            </div>
-            <div class="author-overview col-lg-5 col-sm-5 col-xs-6 full-480">
-                <h4 class="author-name">
-                    <div id="sticky-anchor"></div>
+        <div ng-app="publicApp"
+             ng-controller="publicController">
+            <header class="story-details col-lg-7  col-sm-8 col-xs-10 full-480"
+                    ng-init="getAuthorInfoByEmail('{{get_the_author_meta('user_email')}}')">
 
-                    by <b>{{ the_author_meta('first_name') }} {{ the_author_meta('last_name') }}</b>
-                    <!--                            <a class="like-counter" href="#">189</a>-->
+                <div ng-init="getAuthorInfoByEmail('{{get_the_author_meta('user_email')}}')">&nbsp;</div>
+                <?php include('/var/www/ideaing/public/ideas/wp-content/themes/ideaing/author-info.php') ?>
 
-                </h4>
-                <time datetime="{{the_date('Y-m-d')}}">{{the_time( get_option( 'date_format' ) )}}</time>
-                <!--                        <div class="content-tags">-->
-                <!--                            <ul>-->
-                <!--                                <li><a href="#" class="ideas-link">12 Ideas</a></li>-->
-                <!--                                <li><a href="#" class="products-link">95 Products</a></li>-->
-                <!--                                <li><a href="#" class="photos-link">255 photos</a></li>-->
-                <!--                            </ul>-->
-                <!--                        </div>-->
-            </div>
+                <div class="author-overview col-lg-5 col-sm-5 col-xs-6 full-480">
+                    <h4 class="author-name">
+                        <div id="sticky-anchor"></div>
+
+                        by <b ng-bind="authorName"></b>
+                        <!--                            <a class="like-counter" href="#">189</a>-->
+
+                    </h4>
+                    <time datetime="{{the_date('Y-m-d')}}">{{the_time( get_option( 'date_format' ) )}}</time>
+                    <!--                        <div class="content-tags">-->
+                    <!--                            <ul>-->
+                    <!--                                <li><a href="#" class="ideas-link">12 Ideas</a></li>-->
+                    <!--                                <li><a href="#" class="products-link">95 Products</a></li>-->
+                    <!--                                <li><a href="#" class="photos-link">255 photos</a></li>-->
+                    <!--                            </ul>-->
+                    <!--                        </div>-->
+                </div>
 
 
-        </header>
-
-        <div class="shown-620 hidden-soft">
-            <?php loadLaravelView('share-bar'); ?>
+            </header>
         </div>
 
-        <section class="article-content dropcapped">
-            <?php the_content(); ?>
-        </section>
+            <div class="shown-620 hidden-soft">
+                <?php loadLaravelView('share-bar'); ?>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <section class="article-content dropcapped">
+                        <?php the_content(); ?>
+                    </section>
+                </div>
+            </div>
 
 
         </article>
@@ -205,9 +213,9 @@
 
     <section class="author-description">
         <div class="container">
-            <h4>About the Author, {{ the_author_meta('first_name') }} {{ the_author_meta('last_name') }}</h4>
-            <div class="col-md-1 col-sm-2 col-xs-3">
-                {{ get_avatar(get_the_author_meta('ID'), '80') }}
+            <div ng-app="publicApp" ng-controller="publicController" ng-init="getAuthorInfoByEmail('{{get_the_author_meta('user_email')}}')">
+
+                <?php include('/var/www/ideaing/public/ideas/wp-content/themes/ideaing/author-desc.php') ?>
             </div>
             <div class="col-sm-10 col-xs-9">
                 <p>
@@ -341,12 +349,12 @@
                                     <span class="social-stats__text">52</span>
                                 </a>
                             </li>
-                            <li class="social-stats__item">
+                            <!--<li class="social-stats__item">
                                 <a href="#">
                                     <i class="m-icon m-icon--buble"></i>
                                     <span class="social-stats__text">157</span>
                                 </a>
-                            </li>
+                            </li>-->
                         </ul>
 
                         <div class="round-tag round-tag--idea">

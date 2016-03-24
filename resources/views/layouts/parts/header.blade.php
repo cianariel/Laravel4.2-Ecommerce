@@ -84,17 +84,23 @@ if(function_exists('is_single')){
                                 </a>
                                 </div>
 
-                                <section class="search-bar col-sm-2 hidden-xs">
+                                <form class="search-bar col-sm-2 hidden-xs" ng-app="publicApp"  ng-controller="SearchController" action="/search-form-query" >
                                     <div class="row">
-                                        <span class="search-input-holder visible-sm visible-md visible-lg">
+                                        <span style="position: relative" class="search-input-holder visible-sm visible-md visible-lg">
                                             <i class="m-icon m-icon--search-id"></i>
-                                            <input class="form-control  " type="text" name="search" placeholder="Search..."/>
+                                            <input ng-click="toggleSearch()" id="search-input" ng-change="openSearchDropdown(query)" ng-model="query" ng-model-options='{ debounce: 800 }' class="form-control top-search"  type="text" name="search" placeholder="Search..."/>
+                                            <div id="suggest-category" ng-class="{shown: open, hidden: !open}" style="background: #fff; width: 100%; z-index: 50; border: 1px solid lightgray; position: absolute; top: 32px;">
+                                                <?php // have to use only pure php includes, or the CMS wont read it
+                                                include('/var/www/ideaing/resources/views/layouts/parts/search-dropdown.blade.php')
+                                                ?>
+
+                                            </div>
                                         </span>
                                     <span class="search-input-holder visible-xs">
                                         <i class="m-icon m-icon--search-id"></i>
                                     </span>
                                     </div>
-                                </section>
+                                </form>
 
                                     <div class="col-xs-5 col-sm-2">
                                         <div class="row">
@@ -139,7 +145,12 @@ if(function_exists('is_single')){
                                                                 <img width="40px" ng-src="<?php echo '{{ notice.UserPicture }}' ?>" class="profile-photo pull-left">
                                                         <div class="notification-row-content">
                                                             <div><strong><?php echo '{{ notice.UserName }}' ?></strong>
-                                                                commented on <a ng-href="<?php echo '/{{ notice.ItemLink }}' ?>" ><?php echo '{{ notice.ItemTitle }}' ?></a> </div>
+                                                                <div ng-switch="notice.Section">
+                                                                    <div ng-switch-when="ideas-heart">Liked</div>
+                                                                    <div ng-switch-when="product-heart">Liked</div>
+                                                                    <div ng-switch-default>Commented on</div>
+                                                                </div>
+                                                                <a ng-href="<?php echo '/{{ notice.ItemLink }}' ?>" ><?php echo '{{ notice.ItemTitle }}' ?></a> </div>
                                                             <small class="clearfix time "><?php echo '{{ notice.Time }}' ?></small>
                                                                 </div>
                                                         <div class="clearfix"></div>
@@ -163,9 +174,18 @@ if(function_exists('is_single')){
                         </div>
                     </nav>
                 </div>
-                <div class="mobile-search-bar col-xs-12">
-                    <input class="form-control col-xs-10" type="text" value="Search..."/>
-                </div>
+
+                <form class="search-bar" ng-app="publicApp"  ng-controller="SearchController" action="/search-form-query" >
+                    <div style="position: relative" class="mobile-search-bar col-xs-12">
+                        <input ng-click="toggleSearch()" ng-change="openSearchDropdown(query)" ng-model="query" ng-model-options='{ debounce: 800 }'  class="form-control col-xs-10  top-search" type="text" value="Search..."  name="search" />
+                        <div id="suggest-category" ng-class="{shown: open, hidden: !open}" style="background: #fff; width: 100%; float:left; z-index: 50; border: 1px solid lightgray; position: absolute; top: 45px;">
+                            <?php // have to use only pure php includes, or the CMS wont read it
+                            include('/var/www/ideaing/resources/views/layouts/parts/search-dropdown.blade.php')
+                            ?>
+                        </div>
+                    </div>
+                </form>
+
         </header>
 
         <?php // have to use only pure php includes, or the CMS wont read it

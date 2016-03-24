@@ -59,7 +59,7 @@ return [
             'username'  => env('DB_USERNAME', 'megaStuff_'),
             'password'  => env('DB_PASSWORD', 'iAmBob__'),
             'charset'   => 'utf8',
-            'collation' => 'utf8_unicode_ci',
+            'collation' => 'utf8_unicode_ci', 
             'prefix'    => '',
             'strict'    => false,
         ],
