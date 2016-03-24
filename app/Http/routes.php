@@ -201,8 +201,12 @@
 
         Route::post('room/add-room', 'RoomController@addRoom');
         Route::post('room/update-room', 'RoomController@updateRoom');
-        Route::post('room/get-room-list', 'ProductController@getAllRoomList');
         Route::post('room/delete-room', 'RoomController@deleteRoom');
+
+        Route::post('homehero/add-home-hero', 'RoomController@addHomeHero');
+        Route::post('homehero/update-home-hero', 'RoomController@updateHomeHero');
+        Route::post('homehero/delete-home-hero', 'RoomController@deleteHomeHero');
+        
 
         /*
          * User route collection
@@ -250,6 +254,11 @@
         Route::get('room-view', 'AdminController@roomsView');
         Route::get('room-add', 'AdminController@addRoom');
         Route::get('room-edit/{id?}', 'AdminController@editRoom');
+
+        //Home Hero view
+        Route::get('home-hero-view', 'AdminController@homeHeroView');
+        Route::get('home-hero-add', 'AdminController@addHomeHero');
+        Route::get('home-hero-edit/{id?}', 'AdminController@editHomeHero');
 
         // User View
         Route::get('user-list', 'AdminController@userList');
