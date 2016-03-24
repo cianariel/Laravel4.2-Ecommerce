@@ -199,6 +199,7 @@
         <!-- custom angular template - END -->
         
         </div>
+        <style>
 #full-width-slider {
   width: 100%;
   color: #000;
