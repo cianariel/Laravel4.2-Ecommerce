@@ -33,6 +33,9 @@ class HeartController extends ApiController
         $data['ItemId'] = $inputData['iid'];
         $data['Section'] = $inputData['section'];
 
+        //isset($info['UnHart']) && $info['UnHart'] == true
+        $data['UnHeart'] = isset($inputData['uht']) ? $inputData['uht'] : false;
+
         $data['Link'] = $inputData['plink'];
 
         $result = $this->heart->addHeartCounter($data);
@@ -69,7 +72,7 @@ class HeartController extends ApiController
     {
         $inputData = \Input::all();
 
-        $heartCount = $this->heart->heartCounter(['Section' => $inputData['section'], 'ItemId' => $inputData['iid'],'UserId' =>$inputData['uid']]);
+        $heartCount = $this->heart->heartCounter(['Section' => $inputData['section'], 'ItemId' => $inputData['iid'], 'UserId' => $inputData['uid']]);
 
         return $heartCount;
     }

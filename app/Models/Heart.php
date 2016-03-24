@@ -30,6 +30,13 @@ class Heart extends Model
 
     public function addHeartCounter($info)
     {
+        $this->deleteHeartCounterByData($info);
+
+        if($info['UnHeart'] == true)
+        {
+           return 'UnHearted';
+        }
+
         if ($info['Section'] == 'product') {
 
             $item = Product::where('id', $info['ItemId'])
@@ -51,7 +58,33 @@ class Heart extends Model
         return $result;
     }
 
-    public function deleteHeartCounter($id)
+    public function deleteHeartCounterByData($info)
+    {
+        if ($info['Section'] == 'product') {
+
+            $section = 'App\Models\Product';
+
+        } elseif ($info['Section'] == 'ideas') {
+
+            $section = 'App\Models\WpPost';
+        }
+
+        $heart = Heart::where('user_id', $info['UserId'])
+                     ->where('heartable_id', $info['ItemId'])
+            ->where('heartable_type',$section)
+        ->first();
+
+        if($heart->count() > 0)
+        {
+            $heart->delete();
+
+            return true;
+        }
+
+        return false;
+    }
+
+    public function deleteHeartCounterById($id)
     {
         if (!empty($id)) {
             $heart = Heart::find($id);
@@ -71,22 +104,27 @@ class Heart extends Model
                            ->with('hearts')
                            ->first();
 
-            dd($item->hearts);
-
-            $item = $item->hearts->count();
-
-           // dd($item);
-
         } elseif ($info['Section'] == 'ideas') {
 
             $item = WpPost::where('ID', $info['ItemId'])
                           ->with('hearts')
                           ->first();
-            $item = $item->hearts->count();
-
         }
 
-        return $item;
+        // set user status whether the user liked the item or not
+        $user = false;
+        foreach ($item->hearts as $heart) {
+            if ($heart['user_id'] == $info['UserId']) {
+                $user = true;
+                break;
+            }
+        }
+
+        $data['UserStatus'] = $user;
+        $data['Count'] = $item->hearts->count();
+        // dd($data);
+
+        return $data;
     }
 
     // return related heart information
