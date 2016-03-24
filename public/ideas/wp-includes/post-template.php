@@ -545,7 +545,7 @@ function body_class( $class = '' ) {
 function get_body_class( $class = '' ) {
 	global $wp_query;
 
-	$classes = array();
+	$classes = array('single-post');
 
 	if ( is_rtl() )
 		$classes[] = 'rtl';

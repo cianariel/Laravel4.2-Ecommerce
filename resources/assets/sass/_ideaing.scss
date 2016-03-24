@@ -2602,7 +2602,8 @@ header.colophon{
     float: right;
 }
 .search-bar{
-  padding-top: 13px;
+  position: relative;
+  top: 13px;
 /*  width: 20%;*/
 
 
@@ -4374,7 +4375,10 @@ body.single{
 
     .author-overview{
       padding: 5% 0 0;
-
+      text-align: left;
+      h4{
+          text-align: left;
+      }
       time{
         font-size: 1.3rem;
         color: $light-grey;
@@ -8657,7 +8661,12 @@ body.error-page{
     }
 }
 
-
+#comments{
+    .profile-photo{
+        width: 44px;
+        height: 44px;
+    }
+}
 @media (max-width: 620px){
     .reviews-medium-container .average-score .caption{
         padding-top: 17px;
