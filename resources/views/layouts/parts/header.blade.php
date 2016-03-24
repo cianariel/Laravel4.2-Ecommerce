@@ -82,7 +82,7 @@ if(function_exists('is_single')){
                                 </a>
                                 </div>
 
-                                <form class="search-bar col-sm-2 hidden-xs" ng-app="publicApp"  ng-controller="SearchController" action="/search-form-query" >
+                                <form class="search-bar col-sm-2 hidden-xs" ng-app="publicApp"  ng-controller="SearchController" action="/search-form-query" autocomplete="off">
                                     <div class="row">
                                         <span style="position: relative" class="search-input-holder visible-sm visible-md visible-lg">
                                             <i class="m-icon m-icon--search-id"></i>

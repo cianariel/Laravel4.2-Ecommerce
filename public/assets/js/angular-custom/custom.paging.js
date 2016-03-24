@@ -189,7 +189,9 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
             $scope.sortBy = false;
 
             $scope.nextLoad = pagingApi.getSearchContent($scope.$searchQuery, 15, 0).success(function (response) {
-                $scope.content = response;
+                $scope.content = response['content'];
+                $('#search-header').show();
+                $('#hit-count').text(response['count']);
             });
 
             $scope.loadMore = function() {
@@ -197,7 +199,7 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
 
                 $scope.offset = 15 * $scope.currentPage++;
                 $scope.nextLoad =  pagingApi.getSearchContent($scope.$searchQuery, 15,  $scope.offset,  $scope.type,  $scope.sortBy).success(function (response) {
-                    var $newStuff = $scope.content.concat(response)
+                    var $newStuff = $scope.content.concat(response['content'])
 
                     if($scope.sortBy){
                         $newStuff.sort(function (a, b) {
@@ -261,9 +263,10 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
 
             contentBlock.fadeOut(500, function(){
                 $scope.nextLoad =  pagingApi.getSearchContent($scope.$searchQuery, 15, $scope.offset, $filterBy, $sortBy).success(function (response) {
-
-                    $scope.content = response;
+                    $scope.content = response['content'];
+                    $('#hit-count').text(response['count']);
                     contentBlock.fadeIn();
+
                 });
             });
         }
