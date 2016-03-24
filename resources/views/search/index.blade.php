@@ -21,6 +21,7 @@
                         <a ng-click="filterSearchContent('product', false)"  data-filterby="product"  href="#" class="box-link">PRODUCTS</a>
                     </li>
                 </ul>
+                <h5 id="search-header" style="display:none; float: left;text-align: center;padding-left: 25%;padding-top: 12px;">Found: <span id="hit-count"></span> items</h5>  
                 <ul class="popular-new pull-right">
                     {{--<li class="">--}}
                     {{--<a ng-click="sortBy(popularity)" href="#" class="box-link active">POPULAR</a>--}}
