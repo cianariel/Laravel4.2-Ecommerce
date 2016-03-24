@@ -43,8 +43,6 @@ class Heart extends Model
                           ->first();
         }
 
-        // $product = Product::where('id', $info['pid'])->first();
-
         $heart = new Heart();
         $heart->user_id = $info['UserId'];
 
@@ -64,6 +62,7 @@ class Heart extends Model
         return false;
     }
 
+    // return heart count for an item
     public function heartCounter($info)
     {
         if ($info['Section'] == 'product') {
@@ -72,15 +71,25 @@ class Heart extends Model
                            ->with('hearts')
                            ->first();
 
+            dd($item->hearts);
+
+            $item = $item->hearts->count();
+
+           // dd($item);
+
         } elseif ($info['Section'] == 'ideas') {
 
             $item = WpPost::where('ID', $info['ItemId'])
                           ->with('hearts')
                           ->first();
+            $item = $item->hearts->count();
 
         }
+
+        return $item;
     }
 
+    // return related heart information
     public function findHeartCountForItem($data)
     {
         if ($data['Section'] == 'product') {

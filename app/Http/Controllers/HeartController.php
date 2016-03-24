@@ -57,11 +57,21 @@ class HeartController extends ApiController
         $info['Permalink'] = $data['Section'] . '/' . $data['Link'];
         $info['PostTime'] = $notification['PostTime'];
         $info['ItemTitle'] = $notification['HeartInfo']['ItemTitle'];
-        $info['Section'] = $data['Section'].'-heart';
+        $info['Section'] = $data['Section'] . '-heart';
         $info['Category'] = 'heart';//$data['Section'];
 
         $this->user->sendNotificationToUsers($info);
 
+    }
+
+    // count heart based on item id and type(product/ideas)
+    public function heartCounter()
+    {
+        $inputData = \Input::all();
+
+        $heartCount = $this->heart->heartCounter(['Section' => $inputData['section'], 'ItemId' => $inputData['iid'],'UserId' =>$inputData['uid']]);
+
+        return $heartCount;
     }
 
 }
