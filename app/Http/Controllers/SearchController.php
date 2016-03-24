@@ -159,7 +159,7 @@ class SearchController extends Controller
         );
 
         $arguments = [
-            'query' =>  $query,
+            'query' =>  "$query~2",
             'size'  =>  $size,
             'start' =>  $offset,
         ];
@@ -187,7 +187,6 @@ class SearchController extends Controller
                     $item[$key] = $it[0];
                 }
             }
-
 
             if($item['type'] == 'idea'){
                 $item['url'] = $item['permalink'];
@@ -217,15 +216,17 @@ class SearchController extends Controller
             $query = Input::get('search');
         }
 
+        $query = strtolower($query);
 
+        // 1.Search categories
         $csDomainClient = AWS::createClient('CloudsearchDomain',
             [
-                'endpoint'    => 'https://search-ideaing-categories-fclsu4tj7xw64w7pfqnvkoedxq.us-west-2.cloudsearch.amazonaws.com',
+                'endpoint'    => env('CATS_ENDPOINT'),
             ]
         );
 
         $arguments = [
-            'query' =>  $query,
+            'query' =>  "$query~2",
         ];
 
         $results = $csDomainClient->search($arguments);
@@ -238,6 +239,46 @@ class SearchController extends Controller
                 if(is_array($it) && count($it) == 1){
                     $item[$key] = $it[0];
                 }
+            }
+
+            $return[] = $item;
+        }
+
+        // 2.Search content for exact matches
+
+        $csDomainClient = AWS::createClient('CloudsearchDomain',
+            [
+                'endpoint'    => env('CONTENT_ENDPOINT'),
+            ]
+        );
+
+        $arguments = [
+            'query' =>  "$query~2",
+            'fields' =>  'title',
+            'size' =>  3,
+        ];
+
+        $results = $csDomainClient->search($arguments);
+
+        foreach( $results->getPath('hits/hit') as $hit){
+            $item =[];
+
+            foreach($hit['fields'] as $key => $it){ // flatten results TODO - get rid of this
+                if(is_array($it) && count($it) == 1){
+                    $item[$key] = $it[0];
+                }
+            }
+
+            $item['term'] = $item['title'];
+
+            if($item['type'] == 'idea'){
+                $item['type'] = 'ideas';
+                $item['link'] = $item['permalink'];
+
+            }elseif($item['type'] == 'product'){
+                $item['link'] = '/product/' . $item['permalink'];
+                $item['type'] = 'Shop';
+                $item['isProduct'] = 1;
             }
 
             $return[] = $item;

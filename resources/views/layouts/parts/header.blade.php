@@ -9,8 +9,6 @@ if(function_exists('is_single')){
 }                                            
 ?>
 
-
-
 <!--    <div {{--id="pagingApp" ng-app="pagingApp" ng-controller="headerController"--}}>-->
 <style>
     [ng\:cloak], [ng-cloak], .ng-cloak {
@@ -89,7 +87,7 @@ if(function_exists('is_single')){
                                         <span style="position: relative" class="search-input-holder visible-sm visible-md visible-lg">
                                             <i class="m-icon m-icon--search-id"></i>
                                             <input ng-click="toggleSearch()" id="search-input" ng-change="openSearchDropdown(query)" ng-model="query" ng-model-options='{ debounce: 800 }' class="form-control top-search"  type="text" name="search" placeholder="Search..."/>
-                                            <div id="suggest-category" ng-class="{shown: open, hidden: !open}" style="background: #fff; width: 100%; z-index: 50; border: 1px solid lightgray; position: absolute; top: 32px;">
+                                            <div id="suggest-category" ng-class="{shown: open, hidden: !open}" style="background: #fff; width: 200%; z-index: 50; border: 1px solid lightgray; position: absolute; top: 32px;">
                                                 <?php // have to use only pure php includes, or the CMS wont read it
                                                 include('/var/www/ideaing/resources/views/layouts/parts/search-dropdown.blade.php')
                                                 ?>
@@ -178,7 +176,7 @@ if(function_exists('is_single')){
                 <form class="search-bar" ng-app="publicApp"  ng-controller="SearchController" action="/search-form-query" >
                     <div style="position: relative" class="mobile-search-bar col-xs-12">
                         <input ng-click="toggleSearch()" ng-change="openSearchDropdown(query)" ng-model="query" ng-model-options='{ debounce: 800 }'  class="form-control col-xs-10  top-search" type="text" value="Search..."  name="search" />
-                        <div id="suggest-category" ng-class="{shown: open, hidden: !open}" style="background: #fff; width: 100%; float:left; z-index: 50; border: 1px solid lightgray; position: absolute; top: 45px;">
+                        <div id="suggest-category" ng-class="{shown: open, hidden: !open}" style="background: #fff; width: 200%; float:left; z-index: 50; border: 1px solid lightgray; position: absolute; top: 45px;">
                             <?php // have to use only pure php includes, or the CMS wont read it
                             include('/var/www/ideaing/resources/views/layouts/parts/search-dropdown.blade.php')
                             ?>
