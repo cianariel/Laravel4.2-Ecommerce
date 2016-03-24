@@ -31,6 +31,7 @@
                 $feedImage = $media->media_link;
 
                 $data = [
+                    'record_id' => $product->id,
                     'title' => $product->product_name,
                     'content' => $product->product_description,
                     'date_created' => $product->created_at->format('Y-m-d\TH:i:s\Z'),
@@ -71,6 +72,7 @@
 
             foreach($rawIdeas as $idea){
                 $data = [
+                    'record_id' => $idea->id,
                     'title' => $idea->title,
                     'content' => $idea->content,
                     'date_created' => date('Y-m-d\TH:i:s\Z', strtotime($idea->creation_date)), // TODO -- also save string date for display

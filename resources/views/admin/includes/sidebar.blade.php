@@ -156,6 +156,25 @@
                     </li>
                 </ul>
             </li>
+            <li class="nav-item  ">
+                <a href="javascript:;#room" class="nav-link nav-toggle">
+                    <i class="icon-wallet"></i>
+                    <span class="title">HomePage Hero</span>
+                    <span class="arrow"></span>
+                </a>
+                <ul class="sub-menu">
+                    <li class="nav-item  ">
+                        <a href="/admin/home-hero-view" class="nav-link ">
+                            <span class="title">Hero List</span>
+                        </a>
+                    </li>
+                    <li class="nav-item  ">
+                        <a href="/admin/home-hero-add" class="nav-link ">
+                            <span class="title">Add Hero</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
         </ul>
         <!-- END SIDEBAR MENU -->
     </div>

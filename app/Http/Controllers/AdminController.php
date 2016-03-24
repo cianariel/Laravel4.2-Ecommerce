@@ -8,6 +8,7 @@
     use App\Http\Requests;
 
     use App\Models\Room;
+    use App\Models\HomeHero;
 
 
     class AdminController extends ApiController {
@@ -196,7 +197,7 @@
             }
 
         }
-
+        
         public function addRoom()
         {
             if ($this->authCheck['method-status'] == 'success-with-http')
@@ -225,6 +226,45 @@
 
             }
 
+        }
+        //Home Hero View
+        public function homeHeroView()
+        {
+            if ($this->authCheck['method-status'] == 'success-with-http')
+            {
+                $Rooms = HomeHero::all();
+                return \View::make('admin.homehero.home-hero-list', ['homeheros' => $Rooms]);
+
+            } elseif ($this->authCheck['method-status'] == 'fail-with-http')
+            {
+                return \Redirect::to('login');
+            }
+        }
+        public function addHomeHero()
+        {
+            if ($this->authCheck['method-status'] == 'success-with-http')
+            {
+                $homehero = new HomeHero();
+                return view('admin.homehero.home-hero-add')->with('homehero',$homehero);
+
+            } elseif ($this->authCheck['method-status'] == 'fail-with-http')
+            {
+                return \Redirect::to('login');
+
+            }
+        }
+        public function editHomeHero($id)
+        {
+            if ($this->authCheck['method-status'] == 'success-with-http')
+            {
+                $homehero = HomeHero::find($id);
+                return view('admin.homehero.home-hero-add')->with('homehero',$homehero);
+
+            } elseif ($this->authCheck['method-status'] == 'fail-with-http')
+            {
+                return \Redirect::to('login');
+
+            }
         }
 
     }
