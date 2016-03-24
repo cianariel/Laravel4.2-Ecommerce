@@ -14,6 +14,7 @@ use App\Models\User;
 use App\Models\ProductCategory;
 use App\Models\Tag;
 use App\Models\Room;
+use App\Models\HomeHero;
 use URL;
 use Input;
 use App\Models\Sharing;
@@ -53,8 +54,10 @@ class PageController extends ApiController
         if ($this->authCheck['method-status'] == 'success-with-http') {
             $userData = $this->authCheck['user-data'];
         }
-
-        return view('home')->with('userData', $userData);
+        $homehero = new HomeHero();
+        $result = $homehero->heroDetailsViewGenerate();
+        //return $result;
+        return view('home')->with('userData', $userData)->with('homehero', $result);
     }
 
 
