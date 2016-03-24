@@ -199,6 +199,10 @@ class SearchController extends Controller
                 $item['storeInfo'] = json_decode($item['storeinfo']);
             }
 
+            if(isset($item['record_id'])){
+              $item['id'] = $item['record_id'];
+            }
+
             $return[] = $item;
         }
 
