@@ -69,7 +69,7 @@
                 </li>
                 @else
                 <li class=" box-link-ul  ">
-                    <a href="{{get_site_url()}}/category/{{$mainCategory->slug}}"
+                    <a href="{{get_site_url()}}/{{$mainCategory->slug}}"
                        class="box-link @if(!@$childCategory && !@$firstTag) active @endif">
                         {{$mainCategory->name}}
                         <span class="box-link-active-line"></span>
