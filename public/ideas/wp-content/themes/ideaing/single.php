@@ -79,7 +79,7 @@
                 <li class="horizontal-line-holder hidden-xs ">
                     <span class="horizontal-line"></span>
                 </li>
-                <li class="box-link-ul"><a href="{{get_site_url()}}/cateogry/{{$childCategory->slug}}"
+                <li class="box-link-ul"><a href="{{get_site_url()}}/{{$mainCategory->slug}}/{{$childCategory->slug}}"
                                            class="box-link @if(!@$firstTag) active @endif ">{{$childCategory->name}}</a>
                 </li>
                 @endif
