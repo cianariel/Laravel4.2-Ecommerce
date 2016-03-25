@@ -640,6 +640,8 @@
 <script src="/assets/admin/vendor/global/plugins/bootstrap-fileinput/bootstrap-fileinput.js" type="text/javascript"></script>
 <script src="/assets/admin/vendor/global/plugins/select2/js/select2.full.min.js" type="text/javascript"></script>
 <script src="/assets/admin/vendor/pages/scripts/components-select2.js" type="text/javascript"></script>
+<script src="/assets/admin/vendor/global/plugins/bootstrap-wysihtml5/wysihtml5-0.3.0.js" type="text/javascript"></script>
+<script src="/assets/admin/vendor/global/plugins/bootstrap-wysihtml5/bootstrap-wysihtml5.js" type="text/javascript"></script>
 <script src="/assets/admin/vendor/pages/scripts/components-editors.js" type="text/javascript"></script>
 <script>
 $(function() {

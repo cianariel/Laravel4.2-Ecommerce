@@ -156,7 +156,13 @@ while(have_posts()) : the_post();
 $ID = get_the_ID();
 $data['id'] = $ID;
 $data['title'] = get_the_title();
-$data['content'] = carbon_the_content_limit(200);
+
+    if(isset($_REQUEST['full_content'])){
+        $data['content'] = get_the_content();
+    }else{
+        $data['content'] = carbon_the_content_limit(200);
+    }
+
 $cats = get_the_category();
 $data['category'] = $cat_name = $cats[0]->name;
 //$tags = get_the_tags();
