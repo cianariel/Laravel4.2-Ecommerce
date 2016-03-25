@@ -74,7 +74,7 @@ class Heart extends Model
             ->where('heartable_type',$section)
         ->first();
 
-        if($heart->count() > 0)
+        if(!empty($heart) && $heart->count() > 0)
         {
             $heart->delete();
 

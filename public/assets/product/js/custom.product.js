@@ -131,6 +131,11 @@ productApp.controller('productController', ['$scope', '$http', '$window', '$inte
         // Heart //
 
         $scope.heartAction = function(userId,ItemId,permalink,section){
+
+            // an anonymous will be returned withough performing any action.
+            if(userId==0)
+                return;
+
             $http({
                 url: '/api/heart/add-heart',
                 method: "POST",
@@ -138,7 +143,8 @@ productApp.controller('productController', ['$scope', '$http', '$window', '$inte
                     uid: userId,
                     iid: ItemId,
                     plink: permalink,
-                    section: section
+                    section: section,
+                    uht: $scope.unHeart
                 }
             }).success(function (data) {
                 $scope.heartCounterAction(userId,ItemId,section);
@@ -206,7 +212,7 @@ productApp.controller('productController', ['$scope', '$http', '$window', '$inte
             {
                 $scope.getCommentsForProduct($scope.productId);
             }
-        },15000);//10000
+        },1500000);//10000
 
 
         $scope.editComment = function(comment){
