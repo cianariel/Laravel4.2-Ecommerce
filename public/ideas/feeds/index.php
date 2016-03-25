@@ -205,7 +205,19 @@ $data['image'] = $image;
 $data['author'] = get_the_author();
 $data['authorlink'] = get_author_posts_url( get_the_author_meta( 'ID' ) );
 $data['author_id'] = get_the_author_meta( 'ID' );
-$data['avator'] = get_avatar_url( get_the_author_email(), '80' );
+
+//$data['avator'] = get_avatar_url( get_the_author_email(), '80' );
+
+//$laravelUser = file_get_contents('https://ideaing.com/api/info-raw/' .  get_the_author_email());
+$laravelUser = file_get_contents('https://ideaing.com/api/info-raw/tanvir@carbon51.com');
+$laravelUser = json_decode($laravelUser, true);
+
+if(isset($laravelUser['medias'][0])){
+    $data['avator'] = $laravelUser['medias'][0][media_link];
+}else{
+    $data['avator'] = get_avatar_url( get_the_author_email(), '80' );
+}
+
 $data['type'] = 'idea';
 $get_is_featured = get_post_custom_values('is_featured',$ID);
 $is_featured = false;
