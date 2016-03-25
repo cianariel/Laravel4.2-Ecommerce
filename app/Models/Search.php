@@ -16,8 +16,8 @@
         public static function buildIndex()
         {
 
-//            $rawProducts = Product::where('post_status', 'Active')->get();
-            $rawProducts = Product::where('post_status', 'Active')->take(10)->get();
+			  $rawProducts = Product::where('post_status', 'Active')->get();
+         //   $rawProducts = Product::where('post_status', 'Active')->take(10)->get();
 
             foreach($rawProducts as $product){
 
@@ -55,11 +55,11 @@
             // 2.Get Ideas
 
             if (env('FEED_PROD') == true){
-//                $url = 'https://ideaing.com//ideas/feeds/index.php?with_tags&full_content';
-                $url = 'https://ideaing.com//ideas/feeds/index.php?with_tags&full_content&count=10';
+               $url = 'https://ideaing.com//ideas/feeds/index.php?with_tags&full_content';
+               // $url = 'https://ideaing.com//ideas/feeds/index.php?with_tags&full_content&count=10';
             }else{
-//                $url = URL::to('/') . '/ideas/feeds/index.php?with_tags&full_content';
-                $url = URL::to('/') . '/ideas/feeds/index.php?with_tags&full_content&count=10';
+             $url = URL::to('/') . '/ideas/feeds/index.php?with_tags&full_content';
+             //   $url = URL::to('/') . '/ideas/feeds/index.php?with_tags&full_content&count=10';
             }
 
             $ch = curl_init();
@@ -99,8 +99,6 @@
             $return = array_values(array_sort($return, function ($value) {
                 return $value['date_created'];
             }));
-
-            die();
 
             return $return;
         }
