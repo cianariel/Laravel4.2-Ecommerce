@@ -82,7 +82,7 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
             {
                 $scope.getCommentsForIdeas($scope.itemId);
             }
-        },15000);//10000
+        },1500000);//10000
 
 
         // Header profile option open and close on click action.
