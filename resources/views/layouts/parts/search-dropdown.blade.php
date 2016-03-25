@@ -1,5 +1,5 @@
 <ul class="cat-suggestions">
-    <li style="width: 100%; display: block; float: left; padding: 5px 10px;" ng-repeat="item in categorySuggestions" >
+    <li ng-repeat="item in categorySuggestions" >
         <a href="{{item.link}}">
             <i ng-if="item.isProduct == 1" class="hidden-xs m-icon m-icon--shopping-bag-light-green" style="float: left; position: static; padding-right: 5px; padding-botom: 5px;"></i>
             <i ng-if="item.type == 'ideas'" class="hidden-xs m-icon m-icon--bulb" style="float: left; position: static; padding-right: 5px; padding-botom: 5px;"></i>
