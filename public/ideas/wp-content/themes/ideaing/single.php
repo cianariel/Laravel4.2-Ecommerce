@@ -1,6 +1,7 @@
 @include('header')
 
 <?php if (have_posts()): while (have_posts()) : the_post(); ?>
+    <div ng-app="publicApp" ng-controller="publicController">
     <header class="story-header hidden-620 hidden-soft">
         <div class="col-xs-1 col-sm-1">
             <a href="#" class="side-logo lamp-logo">
@@ -18,23 +19,24 @@
                         <span class="title">{{the_title()}}</span>
                     <ul class="social-stats center-block ">
                         <li class="social-stats__item">
-                            <a href="#">
-                                <i class="m-icon m-icon--ScrollingHeaderHeart">
+                            <a href="#" class="likes"
+                               ng-init="heartCounterAction()"
+                               ng-click="heartAction()"
+                            >
+                                <i ng-class="unHeart != false ? 'm-icon m-icon--heart-solid' : 'm-icon m-icon--ScrollingHeaderHeart'">
                                         <span class="m-hover">
                                             <span class="path1"></span><span class="path2"></span>
                                         </span>
                                 </i>
-                                <span class="social-stats__text">1819</span>
+                                <span class="social-stats__text" ng-bind="heartCounter">&nbsp; </span>
                             </a>
                         </li>
                     </ul>
                     </span>
-
-                <!--                <a class="like-counter" href="#"><i class="m-icon m-icon--heart-solid"></i>&nbsp;<b>1819</b></a>-->
             </h1>
         </div>
         <div class="col-sm-8 hidden-xs">
-            <ul class="share-buttons pull-right" ng-app="publicApp" ng-controller="publicController">
+            <ul class="share-buttons pull-right">
                 <?php loadLaravelView('share-buttons'); ?>
             </ul>
         </div>
@@ -101,16 +103,7 @@
 
             <h1 class="col-sm-8 col-xs-12"><span>{{the_title()}}</span></h1>
             <ul class="social-stats center-block hidden-soft shown-620">
-                <li class="social-stats__item">
-                    <a href="#">
-                        <i class="m-icon m-icon--ScrollingHeaderHeart">
-                                <span class="m-hover">
-                                    <span class="path1"></span><span class="path2"></span>
-                                </span>
-                        </i>
-                        <span class="social-stats__text">1819</span>
-                    </a>
-                </li>
+
             </ul>
         </div>
 
@@ -121,8 +114,7 @@
     <nav id="hero-nav" class="col-sm-12">
         <div class="container full-620  fixed-sm">
 
-            <ul class="share-buttons hidden-xs col-lg-7 col-md-8 pull-right" ng-app="publicApp"
-                ng-controller="publicController">
+            <ul class="share-buttons hidden-xs col-lg-7 col-md-8 pull-right">
                 <?php loadLaravelView('share-buttons'); ?>
                 <li><a class="comment" data-scrollto=".comments" href="#"><i class="m-icon m-icon--comments-id"></i>
                         <b ng-init="initCommentCounter()" ng-bind="commentsCount">
@@ -135,13 +127,15 @@
                 <li>
                     <div class="social-stats  ">
                         <div class="social-stats__item">
-                            <a href="#">
-                                <i class="m-icon m-icon--ScrollingHeaderHeart">
+                            <a href="#" class="likes"
+                               ng-click="heartAction()"
+                            >
+                                <i ng-class="unHeart != false ? 'm-icon m-icon--heart-solid' : 'm-icon m-icon--ScrollingHeaderHeart'">
                                         <span class="m-hover">
                                             <span class="path1"></span><span class="path2"></span>
                                         </span>
                                 </i>
-                                <span class="social-stats__text">1819</span>
+                                <span class="social-stats__text" ng-bind="heartCounter">&nbsp; </span>
                             </a>
                         </div>
                     </div>
@@ -156,6 +150,7 @@
 
         </div>
     </nav>
+</div>
     <!-- article -->
 
     <div class="container full-620 main-container fixed-sm">
