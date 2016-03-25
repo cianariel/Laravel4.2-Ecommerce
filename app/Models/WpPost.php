@@ -29,4 +29,9 @@
             return $this->morphMany('App\Models\Comment', 'commentable');
         }
 
+        public function hearts()
+        {
+            return $this->morphMany('App\Models\Heart', 'heartable');
+        }
+
     }

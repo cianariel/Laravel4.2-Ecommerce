@@ -5022,7 +5022,9 @@ ul.share-buttons {
         color: #fff !important; }
   ul.share-buttons a .m-icon--heart-solid {
     margin-left: 0px;
-    margin-right: 7px; }
+    margin-right: 7px;
+    background: #345454;
+  }
   ul.share-buttons a.comment {
     display: inline-block;
     width: 88px;
