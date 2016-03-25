@@ -2489,7 +2489,7 @@ header.colophon{
         a.signin{
 
             float: right;
-            padding-left: 33px;
+            padding-left: 15px;
             white-space: nowrap;
             padding-right: 0px;
             .m-icon{
@@ -2520,7 +2520,7 @@ header.colophon{
       position: fixed;
       top: 0;
       width: 100%;
-      z-index: 30;
+      z-index: 41;
       background: #fff;
       background: rgba(255,255,255,.90);
       border-bottom: 1px solid lighten($light-grey, 10%);
@@ -2603,7 +2603,6 @@ header.colophon{
 }
 .search-bar{
   position: relative;
-  top: 13px;
 /*  width: 20%;*/
 
 
@@ -2615,8 +2614,9 @@ header.colophon{
 /*    background: url('/assets/images/magnif-grey.png') center no-repeat;*/
   }
   
-  .search-input-holder{
+  .desktop-search-bar{
         position: relative;
+        top: 13px;
         >input:focus{
             border-color: #ff0041;
         }
@@ -2633,6 +2633,7 @@ header.colophon{
     color: #999;
     text-align: left;
     padding-left: 36px;
+    margin-bottom: 0px;
     box-shadow: none;
 /*    background: url('/assets/images/magnif-grey.png') 10% no-repeat;*/
   }
@@ -4445,6 +4446,8 @@ body.single{
   .single-comment{
     min-height: 100%;
     overflow: hidden;
+    padding-top: 15px;
+    padding-bottom: 15px;
 /*    color: $light-grey;*/
 
     .comment-author{
@@ -6816,10 +6819,12 @@ body.shoppage{
 }
 body.shop-landing{
     .app-wrap{
-        margin-top: 75px;
+        position: relative;
+        top: 30px;
     }
     .mid-nav{
         .wrap{
+            height: 55px;
 /*            width: 494px;*/
 
         }
@@ -8463,6 +8468,8 @@ body.contactus-page{
 }
 .comment-edit-container{
     div[contenteditable=true]{
+        padding: 4px;
+        height: 100%;
         min-height: inherit;
         &:before{
             color: #a9a9a9;
@@ -8487,7 +8494,7 @@ body.contactus-page{
         font-size: 100%;
         border: 1px solid #e6e6e6;
         color: black;
-        padding: 4px;
+/*        padding: 4px;*/
     }
     
 }
@@ -8665,6 +8672,29 @@ body.error-page{
     .profile-photo{
         width: 44px;
         height: 44px;
+    }
+}
+#suggest-category {
+    background: rgb(255, 255, 255) none repeat scroll 0% 0%;
+    width: 100%;
+    z-index: 50;
+    border: 1px solid lightgray;
+    position: absolute;
+    top: 34px;
+    > ul.cat-suggestions{
+        > li{
+            width: 100%; display: block; float: left; padding: 5px 10px;
+            &:not(:first-child){
+                border-top: 1px solid $border-grey;
+            }
+            a{
+                width: 100% !important;
+                height: auto !important;
+                float:none !important;
+                padding: 20px 10px 20px 0px !important;
+                margin: inherit !important;
+            }
+        }
     }
 }
 @media (max-width: 620px){
