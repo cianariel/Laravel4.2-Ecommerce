@@ -23,7 +23,7 @@ class ProductController extends ApiController
     public function __construct()
     {
         // Apply the jwt.auth middleware to all methods in this controller
-        $this->middleware('jwt.auth',
+  /*      $this->middleware('jwt.auth',
             ['except' => [
                 'publishProduct', 'searchProductByName', 'updateProductInfo', 'productDetailsView',
                 'getAllProductList', 'getProductById', 'isPermalinkExist', 'addProduct',
@@ -31,13 +31,13 @@ class ProductController extends ApiController
                 'getProductInfoFromApi', 'priceUpdate', 'deleteProduct', 'productDetailsViewByName',
                 'getStoreInformation','generateCategoryHierarchy'
 
-            ]]);
+            ]]);*/
         $this->product = new Product();
 
         $this->media = new Media();
     }
 
-    // todo check and clena this function
+    // todo check and clean this function
     public function getStoreInformation()
     {
         $productId = 64;
