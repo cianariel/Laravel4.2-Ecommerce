@@ -45,7 +45,7 @@
                 <div class="form-group">
                         <button type="submit" ng-click="passwordReset()" class="btn btn-default">
                             <i class="fa fa-paper-plane"></i>
-                            Rest Password
+                            Reset Password
                         </button>
                 </div>
 
