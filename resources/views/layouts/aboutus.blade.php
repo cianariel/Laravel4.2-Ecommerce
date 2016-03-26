@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
         @include('layouts.parts.head')
         <style type = 'text/css'>
