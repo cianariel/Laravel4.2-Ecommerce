@@ -9154,15 +9154,15 @@ body.shop-category .room-filter {
       background-repeat: no-repeat;
       background-position: left center; }
       body.shop-category .room-filter .extra-nav li a.diy-link {
-        background-image: url("/assets/images/icons/tools-3d.png"); }
+        /*              background-image: url("/assets/images/icons/tools-3d.png");*/ }
       body.shop-category .room-filter .extra-nav li a.shopping-link {
-        background-image: url("/assets/images/icons/bag-3d-green.png"); }
+        /*              background-image: url("/assets/images/icons/bag-3d-green.png");*/ }
       body.shop-category .room-filter .extra-nav li a.travel-link {
-        background-image: url("/assets/images/icons/bag-3d-blue.png"); }
+        /*              background-image: url("/assets/images/icons/bag-3d-blue.png");*/ }
       body.shop-category .room-filter .extra-nav li a.wearables-link {
-        background-image: url("/assets/images/icons/watch-3d.png"); }
+        /*              background-image: url("/assets/images/icons/watch-3d.png");*/ }
       body.shop-category .room-filter .extra-nav li a.decor-link {
-        background-image: url("/assets/images/icons/fire-3d.png"); }
+        /*              background-image: url("/assets/images/icons/fire-3d.png");*/ }
   body.shop-category .room-filter .room-list {
     margin-top: 35px; }
     body.shop-category .room-filter .room-list li a {
