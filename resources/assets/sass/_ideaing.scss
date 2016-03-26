@@ -990,14 +990,17 @@ body.single, body.product-details, body.profilepage, body.shoppage, body.error-p
       }
 
       &.rsThumbsArrowLeft{
-        left: 40%;
-        top: 0px;
+        right: 50%;
+        margin-right: -20px;
+        
+        top: 20px;
         background-image: url('/assets/images/arrow-up-pink.png');
       }
       &.rsThumbsArrowRight{
         //bottom: 0 !important;
-        right: 40%;
-        top: 443px;
+        right: 50%;
+        margin-right: -20px;
+        bottom: 20px;
         background-image: url('/assets/images/icons/arrow-down-pink.png');
       }
     }
@@ -8807,7 +8810,7 @@ body.error-page{
   }
     
 }
-// Hasan 25-03-2016
+/* Hasan 25-03-2016 */
 #full-width-slider {
   width: 100%;
   color: #000;
@@ -8830,4 +8833,3 @@ body.error-page{
 .photoCopy a {
   color: grey;
 }
-.royalSlider { display:none }

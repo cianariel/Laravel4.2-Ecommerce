@@ -28,6 +28,7 @@ if (! preg_match("/\/ideas\//", $actual_link))
 //        });
 </script>
 
+<link href=https://plus.google.com/+Ideaingsmarterliving rel="publisher" />
 
 <script>
 if (screen.width < 992 && screen.width > 620) {
