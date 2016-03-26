@@ -31,7 +31,6 @@
             </div>
         </div>
     </nav>
-    <div class="clearfix"></div>
     <div class="app-wrap" ng-app="pagingApp" ng-controller="shoplandingController">
         
         <div class="homepage-grid center-block">
