@@ -153,7 +153,7 @@
 </div>
     <!-- article -->
 
-    <div class="container full-620 main-container fixed-sm">
+        <div class="container main-container">
 
         <article id="post-<?php the_ID(); ?>" {{post_class(
         'col-xs-11 col-md-offset-1 pull-right')}}>
