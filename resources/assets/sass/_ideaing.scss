@@ -4285,7 +4285,7 @@ header.sub-head{
       &.likes{
         color: $light-grey !important;
         font-size: 1.6rem;
-        padding-top: 15px;
+/*        padding-top: 15px;*/
         padding-left: 10px !important;
       }
 
@@ -8700,6 +8700,17 @@ body.error-page{
         }
     }
 }
+body.search{
+    #pagingApp{
+        padding-top: 60px;
+    }
+    #search-header{
+        display:none; 
+        text-align: center;
+        padding-top: 12px;
+    }
+}
+
 @media (max-width: 620px){
     .reviews-medium-container .average-score .caption{
         padding-top: 17px;
