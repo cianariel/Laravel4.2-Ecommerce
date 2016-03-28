@@ -61,7 +61,6 @@ class PageController extends ApiController
     }
 
 
-
     public function getContent($page = 1, $limit = 5, $tag = false, $type = false, $productCategory = false, $sortBy = false)
     {
 
@@ -224,7 +223,7 @@ class PageController extends ApiController
             $featuredUrl .= '&tag=' . $tag;
         }
 
-//                print_r($featuredUrl); die();
+        // print_r($featuredUrl); die();
         // print_r($return); die();
 
 
@@ -239,15 +238,20 @@ class PageController extends ApiController
         $newIdeaCollection = new Collection();
         $comment = new App\Models\Comment();
 
-        foreach ($ideaCollection as $singleIdea) {
 
-            $tempIdea = collect($singleIdea);
+        if (!empty($ideaCollection)) {
 
-            $countValue = $comment->ideasCommentCounter($singleIdea->id);
+            foreach ($ideaCollection as $singleIdea) {
 
-            $tempIdea->put('CommentCount', $countValue);
+                $tempIdea = collect($singleIdea);
 
-            $newIdeaCollection->push($tempIdea);
+                $countValue = $comment->ideasCommentCounter($singleIdea->id);
+
+                $tempIdea->put('CommentCount', $countValue);
+
+                $newIdeaCollection->push($tempIdea);
+
+            }
 
         }
 
