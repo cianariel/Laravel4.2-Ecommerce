@@ -9,10 +9,19 @@ class PageHelper {
 
     public static function getCanonicalLink($route, $key = false) {
 
-        $base = 'https://ideaing.com/';
+        $base = 'https://ideaing.com';
+        $routeName = $route->getName();
+        $url = '';
 
         if($route->getName() == 'productDetails' && $key){
-            $url = 'product/' . $key;
+            $url = '/product/' . $key;
+        }elseif($routeName == 'shopCategory' && is_array($key)) {
+            $url = '/shop';
+            foreach ($key as $k) {
+                if($k){
+                    $url .= '/' . $k;
+                }
+            }
         }
 
         if($url){
