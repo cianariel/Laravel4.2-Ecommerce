@@ -117,7 +117,7 @@
             <ul class="share-buttons hidden-xs col-lg-7 col-md-8 pull-right">
                 <?php loadLaravelView('share-buttons'); ?>
                 <li><a class="comment" data-scrollto=".comments" href="#"><i class="m-icon m-icon--comments-id"></i>
-                        <b ng-init="initCommentCounter()" ng-bind="commentsCount">
+                        <b ng-bind="commentsCount">
                         </b>
                     </a>
                 </li>
@@ -162,7 +162,6 @@
             <header class="story-details col-lg-7  col-sm-8 col-xs-10 full-480"
                     ng-init="getAuthorInfoByEmail('{{get_the_author_meta('user_email')}}')">
 
-                <div ng-init="getAuthorInfoByEmail('{{get_the_author_meta('user_email')}}')">&nbsp;</div>
                 <?php include('/var/www/ideaing/public/ideas/wp-content/themes/ideaing/author-info.php') ?>
 
                 <div class="author-overview col-lg-5 col-sm-5 col-xs-6 full-480">
@@ -207,13 +206,13 @@
 
     <section class="author-description">
         <div class="container">
-            <div ng-init="getAuthorInfoByEmail('{{get_the_author_meta('user_email')}}')">
+            <div>
 
                 <?php include('/var/www/ideaing/public/ideas/wp-content/themes/ideaing/author-desc.php') ?>
             </div>
             <div class="col-sm-10 col-xs-9">
-                <p>
-                    <?php the_author_meta('description'); ?>
+                <p ng-bind="authorBio">
+                    <?php //the_author_meta('description'); ?>
                 </p>
             </div>
         </div>

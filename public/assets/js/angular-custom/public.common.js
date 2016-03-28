@@ -602,6 +602,7 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
 
                 $scope.authorName = data.name;
                 $scope.authorImage = data.medias[0].media_link;
+                $scope.authorBio = data.user_profile.personal_info;
 
                // console.log($scope.authorName," - ",$scope.authorImage);
 
@@ -638,14 +639,14 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                 $scope.commentsCount = $scope.comments.length;
                 $scope.commentsCountView = $scope.commentsCount < 2? $scope.commentsCount +" "+"Comment" : $scope.commentsCount +" "+"Comments";
 
-                  console.log($scope.commentsCount);
+                //  console.log($scope.commentsCount);
 
             });
 
         };
 
         $scope.initCommentCounter =function(){
-            $scope.getCommentsForIdeas($window.itemId);
+          //  $scope.getCommentsForIdeas($window.itemId);
         };
 
 
