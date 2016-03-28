@@ -63,7 +63,9 @@
                                     <td><input type="checkbox" class="checkboxes" value="1" /> </td>
                                     <td>{{$hero->hero_image_title }}</td>
                                     <td><a href="/admin/home-hero-edit/{{$hero->id}}" class="btn btn-sm btn-default blue btn-editable"><i class="fa fa-pencil"></i> Edit</a>
+                                    @if($hero->hero_status!=1)
                                     <button class="btn btn-sm btn-danger btn-editable" data-heroid="{{$hero->id}}" id="btn_delete_hero" data-dismiss="modal"><i class="fa fa-close"></i> Delete</button></td>
+                                    @endif
                                 </tr>
                                 @endforeach
                             </tbody>
