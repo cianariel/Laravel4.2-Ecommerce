@@ -34,4 +34,12 @@ class PageHelper {
 
 
     }
+    public static function formatForMetaDesc($content) {
+
+        $content = strip_tags($content);
+        $excerpt = preg_replace('/(\.)\s+[^\.]*$/', '\1', substr($content, 0, 70));
+
+        return $excerpt;
+
+    }
 }

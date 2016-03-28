@@ -417,6 +417,7 @@ class PageController extends ApiController
         }
 
         $result['canonicURL'] = PageHelper::getCanonicalLink(Route::getCurrentRoute(), $permalink);
+//        $result['metaDescription'] = PageHelper::formatForMetaDesc($product->product_description);
 
         return view('product.product-details')
             ->with('isAdminForEdit', $isAdmin)
@@ -428,7 +429,9 @@ class PageController extends ApiController
             ->with('relatedIdeas', $relatedIdeas)
             ->with('selfImages', $result['selfImages'])
             ->with('storeInformation', $result['storeInformation'])
-            ->with('canonicURL', $result['canonicURL']);
+            ->with('canonicURL', $result['canonicURL'])
+            ->with('MetaDescription', $result['productInformation']['MetaDescription'])
+            ;
     }
 
     public function getRoomPage($permalink)

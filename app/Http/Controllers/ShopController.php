@@ -76,25 +76,27 @@ class ShopController extends ApiController
                 break;
             }
 
-            if(!$parent || !$child){
-                if($categoryModel->parent_id && $trueParent = ProductCategory::find( $categoryModel->parent_id)){
+            if((!$parent || !$child) && $categoryModel->parent_id && $trueParent = ProductCategory::find($categoryModel->parent_id)) {
+//                if () {
 //                    foreach($parents as $par){
-                        if(!$trueParent->parent_id){
-                            $key['grandparent'] = $trueParent->extra_info;
-                        }else{
-                            $key['parent'] = $trueParent->extra_info;
-                            $key['grandparent'] = ProductCategory::find($trueParent->parent_id)->extra_info;
+                    if (!$trueParent->parent_id) {
+                        $key['grandparent'] = $trueParent->extra_info;
+                        $key['parent'] = false;
+                    } else {
+                        $key['parent'] = $trueParent->extra_info;
+                        $key['grandparent'] = ProductCategory::find($trueParent->parent_id)->extra_info;
+                    }
+//
+                    $canonicURL = PageHelper::getCanonicalLink(Route::getCurrentRoute(), [$key['grandparent'], $key['parent'], $categoryModel->extra_info]);
 
-                        }
-//                    }
-                }
+//                }
             }else{
-                $key['parent'] = $parent;
-                $key['grandparent'] = $grandParent;
+                $canonicURL = PageHelper::getCanonicalLink(Route::getCurrentRoute(), [$grandParent, $parent, $child]);
             }
 
 
-            $result['canonicURL'] = PageHelper::getCanonicalLink(Route::getCurrentRoute(), [$key['grandparent'] , $key['parent'], $categoryModel->extra_info]);
+
+
 
 //            $grandParent = false, $parent = false, $child = false
 
@@ -106,7 +108,7 @@ class ShopController extends ApiController
                 ->with('grandParent', $grandParent)
                 ->with('masterCategory', $masterCategory)
                 ->with('filterCategories', $filterCategories)
-                ->with('canonicURL', $result['canonicURL'])
+                ->with('canonicURL', $canonicURL)
             ;
 
         }
