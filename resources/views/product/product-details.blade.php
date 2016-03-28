@@ -639,14 +639,13 @@
                                     <div class="box-item__overlay"></div>
                                     <ul class="social-stats">
                                         <li class="social-stats__item">
-                                            <a href="#">
-                                                <i class="m-icon m-icon--ScrollingHeaderHeart">
-                                                    <span class="m-hover">
-                                                        <span class="path1"></span><span class="path2"></span>
-                                                    </span>
-                                                </i>
-                                                <span class="social-stats__text">157</span>
-                                            </a>
+                                            <?php
+                                            $userId = !empty($userData->id) ? $userData->id : 0;
+                                            ?>
+
+                                            <heart-counter-product uid="<?php echo $userId ?>" iid="{{$product['ItemId']}}" plink="{{ json_encode($product['Permalink']) }}" sec='product'>
+
+                                            </heart-counter-product>
                                         </li>
                                     </ul>
                                     <div class="round-tag round-tag--product">
@@ -683,20 +682,19 @@
 
                                     <ul class="social-stats">
                                         <li class="social-stats__item">
-                                            <a href="#">
-                                                <i class="m-icon m-icon--ScrollingHeaderHeart">
-                                                    <span class="m-hover">
-                                                        <span class="path1"></span><span class="path2"></span>
-                                                    </span>
-                                                </i>
-                                                <span class="social-stats__text">52</span>
-                                            </a>
+                                            <?php
+                                            $userId = !empty($userData->id) ? $userData->id : 0;
+                                            ?>
+
+                                            <heart-counter-product uid="<?php echo $userId ?>" iid="{{  $item->id }}" plink="{{ json_encode($item->url) }}" sec='ideas'>
+
+                                            </heart-counter-product>
                                         </li>
                                         <li class="social-stats__item">
-                                            <a href="#">
+                                           {{-- <a href="#">
                                                 <i class="m-icon m-icon--buble"></i>
                                                 <span class="social-stats__text">157</span>
-                                            </a>
+                                            </a>--}}
                                         </li>
                                     </ul>
 

@@ -508,6 +508,7 @@ class Product extends Model
                     }
                 }
 
+                $relatedProductsData[$key]['ItemId'] = $relatedProducts[$key]->id;
                 $relatedProductsData[$key]['Name'] = $relatedProducts[$key]->product_name;
                 $relatedProductsData[$key]['Permalink'] = $relatedProducts[$key]->product_permalink;
                 $relatedProductsData[$key]['AffiliateLink'] = $relatedProducts[$key]->affiliate_link;
