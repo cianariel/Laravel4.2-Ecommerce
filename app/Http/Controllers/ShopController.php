@@ -10,6 +10,7 @@ use App\Models\Product;
 use App\Models\ProductCategory;
 use PageHelper;
 use Route;
+use MetaTag;
 
 
 class ShopController extends ApiController
@@ -32,6 +33,8 @@ class ShopController extends ApiController
 
         if(!$grandParent){ // shop landing page
             $categoryTree = ProductCategory::buildCategoryTree(true);
+
+            MetaTag::set('title', 'Shop | Ideaing');
 
             return view('shop.index')
                 ->with('userData',$userData)
@@ -94,10 +97,7 @@ class ShopController extends ApiController
                 $canonicURL = PageHelper::getCanonicalLink(Route::getCurrentRoute(), [$grandParent, $parent, $child]);
             }
 
-
-
-
-
+            MetaTag::set('title', $categoryModel->category_name);
 //            $grandParent = false, $parent = false, $child = false
 
             return view('shop.shop-category')

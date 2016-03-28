@@ -3,6 +3,12 @@
 @section('body-class'){{ 'homepage' }}@stop
 
 @section('content')
+    <?php
+    if(!function_exists('is_single')){
+        echo  '<h1 id="site-name">Ideaing</h1>
+              <h2 id="site-subhead" style="display:none;">Ideas for Smarter Living</h2>';
+    }
+    ?>
     <section id="hero" class="landing-hero royalSlider heroSlider rsMinW room-hero slider" style="display: none;">
         @if(isset($homehero))
             @foreach( $homehero as $key => $image )
