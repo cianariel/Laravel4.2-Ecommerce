@@ -8,6 +8,8 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Models\Product;
 use App\Models\ProductCategory;
+use PageHelper;
+use Route;
 
 
 class ShopController extends ApiController
@@ -74,6 +76,28 @@ class ShopController extends ApiController
                 break;
             }
 
+            if(!$parent || !$child){
+                if($categoryModel->parent_id && $trueParent = ProductCategory::find( $categoryModel->parent_id)){
+//                    foreach($parents as $par){
+                        if(!$trueParent->parent_id){
+                            $key['grandparent'] = $trueParent->extra_info;
+                        }else{
+                            $key['parent'] = $trueParent->extra_info;
+                            $key['grandparent'] = ProductCategory::find($trueParent->parent_id)->extra_info;
+
+                        }
+//                    }
+                }
+            }else{
+                $key['parent'] = $parent;
+                $key['grandparent'] = $grandParent;
+            }
+
+
+            $result['canonicURL'] = PageHelper::getCanonicalLink(Route::getCurrentRoute(), [$key['grandparent'] , $key['parent'], $categoryModel->extra_info]);
+
+//            $grandParent = false, $parent = false, $child = false
+
             return view('shop.shop-category')
                 ->with('userData',$userData)
                 ->with('currentCategory', $categoryModel)
@@ -82,7 +106,8 @@ class ShopController extends ApiController
                 ->with('grandParent', $grandParent)
                 ->with('masterCategory', $masterCategory)
                 ->with('filterCategories', $filterCategories)
-                ;
+                ->with('canonicURL', $result['canonicURL'])
+            ;
 
         }
 
