@@ -28,10 +28,10 @@
     </li>
 </ul>
 
-<div class="round-tag round-tag--idea">
+<a href="/ideas" class="round-tag round-tag--idea">
     <i class="m-icon m-icon--item"></i>
     <span class="round-tag__label">Idea</span>
-</div>
+</a>
 
 <div class="box-item__label-idea">
     <a href="{{item.url}}" class="box-item__label">{{renderHTML(item.title)}}</a>
