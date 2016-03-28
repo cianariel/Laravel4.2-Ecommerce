@@ -97,6 +97,10 @@
             {
                 $userInfo = $user->getUserById($singleComment['user_id']);
 
+                // if a user information is deleted then it will not consider it
+                if($userInfo == false)
+                    continue;
+
                 $data['CommentId'] = $singleComment['id'];
                 $data['Comment'] = $singleComment['comment'];
                 $data['UserId'] = $userInfo['id'];
