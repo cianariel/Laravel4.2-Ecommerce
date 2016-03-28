@@ -294,7 +294,7 @@
 
     // Route for product detail view
     //    Route::get('pro-details/{permalink?}', 'PageController@productDetailsPage');
-    Route::get('product/{permalink?}', 'PageController@productDetailsPage');
+    Route::get('product/{permalink?}', ['as' => 'productDetails', 'uses' => 'PageController@productDetailsPage']);
     Route::get('idea/{permalink?}', 'PageController@getRoomPage'); // single room page
     Route::get('room/{permalink?}', 'PageController@getRoomPage'); // temp keeping the old link, to prevent breaks
     // default signup
@@ -329,7 +329,5 @@
 
     // temporary category tag generator
     // Route::get('gen', 'TagsController@temporaryCategoryTagGenerator');
-
-
 
 
