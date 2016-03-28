@@ -8,6 +8,9 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Models\Product;
 use App\Models\ProductCategory;
+use PageHelper;
+use Route;
+use MetaTag;
 
 
 class ShopController extends ApiController
@@ -30,6 +33,8 @@ class ShopController extends ApiController
 
         if(!$grandParent){ // shop landing page
             $categoryTree = ProductCategory::buildCategoryTree(true);
+
+            MetaTag::set('title', 'Shop | Ideaing');
 
             return view('shop.index')
                 ->with('userData',$userData)
@@ -74,6 +79,27 @@ class ShopController extends ApiController
                 break;
             }
 
+            if((!$parent || !$child) && $categoryModel->parent_id && $trueParent = ProductCategory::find($categoryModel->parent_id)) {
+//                if () {
+//                    foreach($parents as $par){
+                    if (!$trueParent->parent_id) {
+                        $key['grandparent'] = $trueParent->extra_info;
+                        $key['parent'] = false;
+                    } else {
+                        $key['parent'] = $trueParent->extra_info;
+                        $key['grandparent'] = ProductCategory::find($trueParent->parent_id)->extra_info;
+                    }
+//
+                    $canonicURL = PageHelper::getCanonicalLink(Route::getCurrentRoute(), [$key['grandparent'], $key['parent'], $categoryModel->extra_info]);
+
+//                }
+            }else{
+                $canonicURL = PageHelper::getCanonicalLink(Route::getCurrentRoute(), [$grandParent, $parent, $child]);
+            }
+
+            MetaTag::set('title', $categoryModel->category_name);
+//            $grandParent = false, $parent = false, $child = false
+
             return view('shop.shop-category')
                 ->with('userData',$userData)
                 ->with('currentCategory', $categoryModel)
@@ -82,7 +108,8 @@ class ShopController extends ApiController
                 ->with('grandParent', $grandParent)
                 ->with('masterCategory', $masterCategory)
                 ->with('filterCategories', $filterCategories)
-                ;
+                ->with('canonicURL', $canonicURL)
+            ;
 
         }
 

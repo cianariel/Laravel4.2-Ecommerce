@@ -20,6 +20,7 @@
             'hero_image_link_title',
             'hero_image_link',
             'hero_image_products',
+            'hero_status'
         );
         protected $hidden = ['created_at'];
         // return room information data for public view
