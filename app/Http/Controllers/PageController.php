@@ -57,6 +57,7 @@ class PageController extends ApiController
         $homehero = new HomeHero();
         $result = $homehero->heroDetailsViewGenerate();
         //return $result;
+       // dd($userData);
         return view('home')->with('userData', $userData)->with('homehero', $result);
     }
 
@@ -413,6 +414,7 @@ class PageController extends ApiController
             $isAdmin = $userData->hasRole('admin');
         }
 
+        //dd($result['relatedProducts'],$relatedIdeas);
 
         return view('product.product-details')
             ->with('isAdminForEdit', $isAdmin)

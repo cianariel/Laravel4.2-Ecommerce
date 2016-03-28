@@ -7,6 +7,95 @@ angular.module('pagingApp', [
 ]);
 
 angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
+
+    // directive for heart action for grid items
+    .directive('heartCounterDir', ['$http', function($http) {
+        return {
+            restrict: 'E',
+            transclude: true,
+            replace: true,
+            scope:{
+                uid:'=',
+                iid:'=',
+                plink:'=',
+                sec:'=',
+            },
+            controller:function($scope, $element, $attrs){
+
+                // Heart Section
+
+                $scope.unHeart = false;
+                $scope.heartCounter = 0;
+
+                $scope.heartCounterAction = function(){
+
+
+                    $http({
+                        url: '/api/heart/count-heart',
+                        method: "POST",
+                        data:{
+                            section: $attrs.sec,
+                            uid: $scope.uid,
+                            iid: $scope.iid,
+                            plink: $scope.plink,
+                        }
+                    }).success(function (data) {
+                        $attrs.ustatus = data.UserStatus;
+
+                        $scope.unHeart = data.UserStatus;
+                        $scope.heartCounter = data.Count;
+
+                    });
+                };
+
+                // clean url for ideaing URL (take only permalink)
+                $scope.cleanUrl = function(url){
+                    var domainBuilder = "https://"+window.location.host+"/ideas/";
+                    return url.replace(domainBuilder,'');
+                };
+
+                $scope.heartAction = function(){
+
+                    // an anonymous will be returned without performing any action.
+                    if($attrs.uid==0)
+                        return;
+
+                    $http({
+                        url: '/api/heart/add-heart',
+                        method: "POST",
+                        data:{
+                            section: $attrs.sec,
+                            uid: $scope.uid,
+                            iid: $scope.iid,
+                            plink: $scope.cleanUrl($scope.plink),
+                            uht: $scope.unHeart
+                        }
+                    }).success(function (data) {
+                        $scope.heartCounterAction();
+                        $scope.unHeart = ! $scope.unHeart;
+                    });
+                };
+
+                $scope.heartCounterAction();
+
+            },
+
+            template: '      <div class="">'+
+            '                    <a href="#" class="likes"'+
+            '                       ng-click="heartAction()"'+
+            '                    >'+
+            '                        <i ng-class="unHeart != false ? \'m-icon m-icon--heart-solid\' : \'m-icon m-icon--ScrollingHeaderHeart\'">'+
+            '                                <span class="m-hover">'+
+            '                                    <span class="path1"></span><span class="path2"></span>'+
+            '                                </span>'+
+            '                        </i>'+
+            '                        <span class="social-stats__text" ng-bind="heartCounter">&nbsp; </span>'+
+            '                    </a>'+
+            '                </div>'
+
+        }
+    }])
+
     .controller('pagingController', function($scope, $timeout, $uibModal, $http, pagingApi, $filter) {
         $scope.allContent = [];
         $scope.content = [];

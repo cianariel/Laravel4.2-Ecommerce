@@ -1,7 +1,7 @@
 @include('header')
-
+<div ng-app="publicApp" ng-controller="publicController">
 <?php if (have_posts()): while (have_posts()) : the_post(); ?>
-    <div ng-app="publicApp" ng-controller="publicController">
+    <div>
     <header class="story-header hidden-620 hidden-soft">
         <div class="col-xs-1 col-sm-1">
             <a href="#" class="side-logo lamp-logo">
@@ -158,8 +158,7 @@
         <article id="post-<?php the_ID(); ?>" {{post_class(
         'col-xs-11 col-md-offset-1 pull-right')}}>
 
-        <div ng-app="publicApp"
-             ng-controller="publicController">
+        <div>
             <header class="story-details col-lg-7  col-sm-8 col-xs-10 full-480"
                     ng-init="getAuthorInfoByEmail('{{get_the_author_meta('user_email')}}')">
 
@@ -208,7 +207,7 @@
 
     <section class="author-description">
         <div class="container">
-            <div ng-app="publicApp" ng-controller="publicController" ng-init="getAuthorInfoByEmail('{{get_the_author_meta('user_email')}}')">
+            <div ng-init="getAuthorInfoByEmail('{{get_the_author_meta('user_email')}}')">
 
                 <?php include('/var/www/ideaing/public/ideas/wp-content/themes/ideaing/author-desc.php') ?>
             </div>
@@ -335,14 +334,20 @@
 
                         <ul class="social-stats">
                             <li class="social-stats__item">
-                                <a href="#">
-                                    <i class="m-icon m-icon--ScrollingHeaderHeart">
-                                        <span class="m-hover">
-                                            <span class="path1"></span><span class="path2"></span>
-                                        </span>
-                                    </i>
-                                    <span class="social-stats__text">52</span>
-                                </a>
+                                <?php
+
+                                $userId = !empty($userData['id'] ) ? $userData['id']  : 0;
+
+                                $urlTmp = parse_url(get_the_permalink())['path'];
+                                $urlTmp = str_replace('/ideas/','',$urlTmp);
+                              //  die($urlTmp);
+
+                                //echo $urlTmp;
+                                ?>
+
+                                <heart-counter-public uid="<?php echo $userId ?>" iid="{{ get_the_ID() }}" plink="{{ $urlTmp }}" sec='ideas'>
+
+                                </heart-counter-public>
                             </li>
                             <!--<li class="social-stats__item">
                                 <a href="#">
@@ -383,6 +388,6 @@
     </div>
 </section>
 
-
+</div>
 <?php get_footer(); ?>
 <!-- <script type="text/javascript" src="/assets/product/js/custom.product.js"></script> -->
