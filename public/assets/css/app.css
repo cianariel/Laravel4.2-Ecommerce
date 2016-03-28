@@ -7311,7 +7311,7 @@ header.sub-head {
     .like-nav li a.likes {
       color: #c1c1c1 !important;
       font-size: 1.6rem;
-      padding-top: 15px;
+      /*        padding-top: 15px;*/
       padding-left: 10px !important; }
 
 body.single #top-nav a.ideas {
@@ -9154,15 +9154,15 @@ body.shop-category .room-filter {
       background-repeat: no-repeat;
       background-position: left center; }
       body.shop-category .room-filter .extra-nav li a.diy-link {
-        background-image: url("/assets/images/icons/tools-3d.png"); }
+        /*              background-image: url("/assets/images/icons/tools-3d.png");*/ }
       body.shop-category .room-filter .extra-nav li a.shopping-link {
-        background-image: url("/assets/images/icons/bag-3d-green.png"); }
+        /*              background-image: url("/assets/images/icons/bag-3d-green.png");*/ }
       body.shop-category .room-filter .extra-nav li a.travel-link {
-        background-image: url("/assets/images/icons/bag-3d-blue.png"); }
+        /*              background-image: url("/assets/images/icons/bag-3d-blue.png");*/ }
       body.shop-category .room-filter .extra-nav li a.wearables-link {
-        background-image: url("/assets/images/icons/watch-3d.png"); }
+        /*              background-image: url("/assets/images/icons/watch-3d.png");*/ }
       body.shop-category .room-filter .extra-nav li a.decor-link {
-        background-image: url("/assets/images/icons/fire-3d.png"); }
+        /*              background-image: url("/assets/images/icons/fire-3d.png");*/ }
   body.shop-category .room-filter .room-list {
     margin-top: 35px; }
     body.shop-category .room-filter .room-list li a {
@@ -10266,6 +10266,14 @@ body.error-page .error-banner-holder {
       padding: 20px 10px 20px 0px !important;
       margin: inherit !important; }
 
+body.search #pagingApp {
+  padding-top: 60px; }
+
+body.search #search-header {
+  display: none;
+  text-align: center;
+  padding-top: 12px; }
+
 @media (max-width: 620px) {
   .reviews-medium-container .average-score .caption {
     padding-top: 17px; } }
@@ -10440,8 +10448,6 @@ p {
     line-height: 26px;
     padding-left: 30px;
     margin: 3px 0; }
-    .social-stats__item:hover .m-hover {
-      display: none; }
   .social-stats__item .m-icon {
     font-size: 26px;
     position: absolute;

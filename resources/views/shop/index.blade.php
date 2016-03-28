@@ -237,7 +237,7 @@
                                             <div class="grandchild-holder">
                                                 @foreach($parentCategory['grandchildCategories'] as $item)
                                                     <div class="grandchild-item">
-                                                        <a href="/shop/{{$topCategory}}/{{trim($parentCategory['childCategory']->extra_info)}}/{{$item->extra_info}}"><i class="{{$item->icon}}"><i class="{{$item->icon}}"></i>&nbsp; {{trim($item->category_name)}}</a>
+                                                        <a href="/shop/{{$topCategory}}/{{trim($parentCategory['childCategory']->extra_info)}}/{{$item->extra_info}}"><i class="{{$item->icon}}"></i>&nbsp; {{trim($item->category_name)}}</a>
                                                     </div>
                                                 @endforeach
                                             </div>
@@ -272,7 +272,7 @@
                                             <div class="grandchild-holder">
                                                 @foreach($parentCategory['grandchildCategories'] as $item)
                                                     <div class="grandchild-item">
-                                                        <a href="/shop/{{$topCategory}}/{{trim($parentCategory['childCategory']->extra_info)}}/{{$item->extra_info}}"><i class="{{$item->icon}}"><i class="{{$item->icon}}"></i>&nbsp; {{trim($item->category_name)}}</a>
+                                                        <a href="/shop/{{$topCategory}}/{{trim($parentCategory['childCategory']->extra_info)}}/{{$item->extra_info}}"><i class="{{$item->icon}}"></i>&nbsp; {{trim($item->category_name)}}</a>
                                                     </div>
                                                 @endforeach
                                             </div>

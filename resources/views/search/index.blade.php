@@ -4,9 +4,11 @@
 
 @section('content')
 
-    <div style="padding-top: 120px" class="app-wrap" id="pagingApp" ng-app="pagingApp" ng-controller="SearchController" ng-cloak>
-        <nav id="hero-nav" class="col-sm-12">
-            <div class="container full-620  fixed-sm banner-nav">
+    <div class="app-wrap" id="pagingApp" ng-app="pagingApp" ng-controller="SearchController" ng-cloak>
+        <div class="container  banner-nav">
+            <nav id="hero-nav" >
+                <div class="row">
+                    <div class="col-md-7">
                 <ul class="popular-new pull-left">
                     {{--<li class="">--}}
                     {{--<a ng-click="sortBy(popularity)" href="#" class="box-link active">POPULAR</a>--}}
@@ -21,7 +23,10 @@
                         <a ng-click="filterSearchContent('product', false)"  data-filterby="product"  href="#" class="box-link">PRODUCTS</a>
                     </li>
                 </ul>
-                <h5 id="search-header" style="display:none; float: left;text-align: center;padding-left: 25%;padding-top: 12px;">Found: <span id="hit-count"></span> items</h5>  
+                        <h5 id="search-header" class="pull-right">Found: <span id="hit-count"></span> items</h5>  
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="col-md-5">
                 <ul class="popular-new pull-right">
                     {{--<li class="">--}}
                     {{--<a ng-click="sortBy(popularity)" href="#" class="box-link active">POPULAR</a>--}}
@@ -34,7 +39,9 @@
                     </li>
                 </ul>
             </div>
+                </div>
         </nav>
+        </div>
         <div class="clearfix"></div>
 
         <div class="homepage-grid center-block">
