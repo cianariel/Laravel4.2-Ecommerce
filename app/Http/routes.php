@@ -32,30 +32,19 @@
     Route::get('update-price', 'ProductController@priceUpdate');
 
 
-    Route::get('/product-details', function () // temp, used for tweaking frontend
-    {
-        return view('static.product-details');
-    });
+//    Route::get('/product-details', function () // temp, used for tweaking frontend
+//    {
+//        return view('static.product-details');
+//    });
 
-    Route::get('/contactus', function()
-    {
-        return view('contactus.index');
-    });
+    Route::get('/contactus', 'PageController@contactUs');
 
-     Route::get('/aboutus', function()
-    {
-        return view('layouts.aboutus');
-    });
+    Route::get('/aboutus', 'PageController@aboutUs');
 
-    Route::get('/privacy-policy', function()
-    {
-        return view('layouts.privacy-policy');
-    });
+    Route::get('/privacy-policy', 'PageController@privacyPolicy');
 
-    Route::get('/terms-of-use', function()
-    {
-        return view('layouts.terms-of-use');
-    });
+    Route::get('/terms-of-use', 'PageController@termsOfUse');
+
 
     Route::group(['prefix' => 'api'], function ()
     {
