@@ -4285,7 +4285,7 @@ header.sub-head{
       &.likes{
         color: $light-grey !important;
         font-size: 1.6rem;
-        padding-top: 15px;
+/*        padding-top: 15px;*/
         padding-left: 10px !important;
       }
 
@@ -7241,19 +7241,19 @@ body.shop-category{
             background-position: left center;
 
             &.diy-link{
-              background-image: url("/assets/images/icons/tools-3d.png");
+/*              background-image: url("/assets/images/icons/tools-3d.png");*/
             }
             &.shopping-link{
-              background-image: url("/assets/images/icons/bag-3d-green.png");
+/*              background-image: url("/assets/images/icons/bag-3d-green.png");*/
             }
             &.travel-link{
-              background-image: url("/assets/images/icons/bag-3d-blue.png");
+/*              background-image: url("/assets/images/icons/bag-3d-blue.png");*/
             }
             &.wearables-link{
-              background-image: url("/assets/images/icons/watch-3d.png");
+/*              background-image: url("/assets/images/icons/watch-3d.png");*/
             }
             &.decor-link{
-              background-image: url("/assets/images/icons/fire-3d.png");
+/*              background-image: url("/assets/images/icons/fire-3d.png");*/
             }
           }
         }
@@ -8700,6 +8700,17 @@ body.error-page{
         }
     }
 }
+body.search{
+    #pagingApp{
+        padding-top: 60px;
+    }
+    #search-header{
+        display:none; 
+        text-align: center;
+        padding-top: 12px;
+    }
+}
+
 @media (max-width: 620px){
     .reviews-medium-container .average-score .caption{
         padding-top: 17px;

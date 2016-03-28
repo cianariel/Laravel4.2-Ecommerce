@@ -139,7 +139,6 @@ class PageController extends ApiController
                 'featured' => [],
             ];
         }
-
         if ($type == 'idea' || !$products = self::getProducts($productLimit, $page, $productOffset, $tagID)) {
             $products['result'] = [];
         }
@@ -154,7 +153,6 @@ class PageController extends ApiController
         usort($return['regular'], function ($a, $b) {
             return strtotime(@$b->updated_at) - strtotime(@$a->updated_at);
         });
-
         return $return;
     }
 
