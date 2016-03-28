@@ -16,7 +16,8 @@
         public static function buildIndex()
         {
 
-            $rawProducts = Product::where('post_status', 'Active')->get();
+			  $rawProducts = Product::where('post_status', 'Active')->get();
+         //   $rawProducts = Product::where('post_status', 'Active')->take(10)->get();
 
             foreach($rawProducts as $product){
 
@@ -33,7 +34,7 @@
                 $data = [
                     'record_id' => $product->id,
                     'title' => $product->product_name,
-                    'content' => $product->product_description,
+                    'content' => strip_tags($product->product_description),
                     'date_created' => $product->created_at->format('Y-m-d\TH:i:s\Z'),
                     'price' => $product->price,
                     'sale_price' => $product->sale_price,
@@ -54,10 +55,12 @@
             // 2.Get Ideas
 
             if (env('FEED_PROD') == true){
-                $url = 'https://ideaing.com//ideas/feeds/index.php?with_tags';
+               $url = 'https://ideaing.com//ideas/feeds/index.php?with_tags&full_content';
+               // $url = 'https://ideaing.com//ideas/feeds/index.php?with_tags&full_content&count=10';
             }else{
-                $url = URL::to('/') . '/ideas/feeds/index.php?with_tags';
-            } 
+             $url = URL::to('/') . '/ideas/feeds/index.php?with_tags&full_content';
+             //   $url = URL::to('/') . '/ideas/feeds/index.php?with_tags&full_content&count=10';
+            }
 
             $ch = curl_init();
             curl_setopt($ch, CURLOPT_URL, $url);
@@ -74,7 +77,7 @@
                 $data = [
                     'record_id' => $idea->id,
                     'title' => $idea->title,
-                    'content' => $idea->content,
+                    'content' => strip_tags($idea->content),
                     'date_created' => date('Y-m-d\TH:i:s\Z', strtotime($idea->creation_date)), // TODO -- also save string date for display
                     'categories' => $idea->category_all,
                     'tags' => $idea->tags_all,

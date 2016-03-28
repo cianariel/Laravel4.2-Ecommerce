@@ -156,7 +156,13 @@ while(have_posts()) : the_post();
 $ID = get_the_ID();
 $data['id'] = $ID;
 $data['title'] = get_the_title();
-$data['content'] = carbon_the_content_limit(200);
+
+    if(isset($_REQUEST['full_content'])){
+        $data['content'] = get_the_content();
+    }else{
+        $data['content'] = carbon_the_content_limit(200);
+    }
+
 $cats = get_the_category();
 $data['category'] = $cat_name = $cats[0]->name;
 //$tags = get_the_tags();
@@ -199,7 +205,18 @@ $data['image'] = $image;
 $data['author'] = get_the_author();
 $data['authorlink'] = get_author_posts_url( get_the_author_meta( 'ID' ) );
 $data['author_id'] = get_the_author_meta( 'ID' );
-$data['avator'] = get_avatar_url( get_the_author_email(), '80' );
+
+//$data['avator'] = get_avatar_url( get_the_author_email(), '80' );
+
+$laravelUser = file_get_contents('https://ideaing.com/api/info-raw/' .  get_the_author_email());
+$laravelUser = json_decode($laravelUser, true);
+
+if(isset($laravelUser['medias'][0])){
+    $data['avator'] = $laravelUser['medias'][0][media_link];
+}else{
+    $data['avator'] = get_avatar_url( get_the_author_email(), '80' );
+}
+
 $data['type'] = 'idea';
 $get_is_featured = get_post_custom_values('is_featured',$ID);
 $is_featured = false;

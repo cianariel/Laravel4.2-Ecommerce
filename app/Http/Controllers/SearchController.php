@@ -99,38 +99,6 @@ class SearchController extends Controller
     }
 
 
-//    public function indexCategoryData($data = 'all'){
-//        ini_set('memory_limit', '1024M');
-//
-//
-//        // 0. Delete old data
-//    //    self::deleteAllDocs();
-//
-//        // 1. Setup CloudSeach client
-//        $csDomainClient = AWS::createClient('CloudsearchDomain',
-//            [
-//                'endpoint'    => '',
-//            ]
-//        );
-//
-//        // 2. Build index
-//        $categoryIndex = Search::buildCategoryIndex();
-//
-//       foreach($categoryIndex as $key => $batch){
-//           $send[] = array(
-//               'type'        => 'add',
-//               'id'        => $key,
-//               'fields'     => $batch
-//           );
-//           $result = $csDomainClient->uploadDocuments(array(
-//               'documents'     => json_encode($send),
-//               'contentType'     =>'application/json'
-//           ));
-//       }
-//
-//        print_r($result);
-//    }
-
     public function formatAndRedirectSearch(){
 
             $input = Input::all();
@@ -157,6 +125,12 @@ class SearchController extends Controller
                 'endpoint'    => 'https://search-ideaing-production-sykvgbgxrd4moqagcoyh3pt5nq.us-west-2.cloudsearch.amazonaws.com',
             ]
         );
+    
+        if(strlen($query) > 4){ // fuzzy search for longer words 
+            $query = "$query~1"; 
+        }elseif(strlen($query) > 6){
+            $query = "$query~2"; 
+        }
 
         $arguments = [
             'query' =>  $query,
@@ -188,7 +162,6 @@ class SearchController extends Controller
                 }
             }
 
-
             if($item['type'] == 'idea'){
                 $item['url'] = $item['permalink'];
                 $item['feed_image'] = json_decode($item['feed_image']);
@@ -206,7 +179,10 @@ class SearchController extends Controller
             $return[] = $item;
         }
 
-        return $return;
+        $final['content'] = $return;
+        $final['count'] = $results->getPath('hits/found');
+
+        return $final;
     }
 
 
@@ -217,12 +193,20 @@ class SearchController extends Controller
             $query = Input::get('search');
         }
 
+        $query = strtolower($query);
 
+        // 1.Search categories
         $csDomainClient = AWS::createClient('CloudsearchDomain',
             [
-                'endpoint'    => 'https://search-ideaing-categories-fclsu4tj7xw64w7pfqnvkoedxq.us-west-2.cloudsearch.amazonaws.com',
+                'endpoint'    => env('CATS_ENDPOINT'),
             ]
         );
+
+        if(strlen($query) > 4){ // fuzzy search for longer words
+            $query = "$query~1"; 
+        }elseif(strlen($query) > 6){
+            $query = "$query~2"; 
+        }
 
         $arguments = [
             'query' =>  $query,
@@ -240,6 +224,65 @@ class SearchController extends Controller
                 }
             }
 
+            $return[] = $item;
+        }
+
+        // 2.Search content for exact matches
+
+        $csDomainClient = AWS::createClient('CloudsearchDomain',
+            [
+                'endpoint'    => env('CONTENT_ENDPOINT'),
+            ]
+        );
+
+        $arguments = [
+            'query' =>  $query,
+            'fields' =>  'title',
+            'filterQuery' => "(term field=type 'product')",
+            'size' =>  3,
+        ];
+
+        $results = $csDomainClient->search($arguments);
+
+        foreach( $results->getPath('hits/hit') as $hit){
+            $item =[];
+
+            foreach($hit['fields'] as $key => $it){ // flatten results TODO - get rid of this
+                if(is_array($it) && count($it) == 1){
+                    $item[$key] = $it[0];
+                }
+            }
+
+            $item['term'] = $item['title'];
+            $item['link'] = '/product/' . $item['permalink'];
+            $item['type'] = 'Shop';
+            $item['isProduct'] = 1;
+
+            $return[] = $item;
+        }
+
+
+        $arguments = [
+            'query' =>  $query,
+            'fields' =>  'title,content',
+            'filterQuery' => "(term field=type 'idea')",
+            'size' =>  2, 
+        ];
+
+        $results = $csDomainClient->search($arguments);
+
+        foreach( $results->getPath('hits/hit') as $hit){
+            $item =[];
+
+            foreach($hit['fields'] as $key => $it){ // flatten results TODO - get rid of this
+                if(is_array($it) && count($it) == 1){
+                    $item[$key] = $it[0];
+                }
+            }
+
+            $item['term'] = $item['title'];
+            $item['type'] = 'ideas';
+            $item['link'] = $item['permalink'];
             $return[] = $item;
         }
 

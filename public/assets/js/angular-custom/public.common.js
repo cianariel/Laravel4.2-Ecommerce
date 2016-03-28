@@ -315,6 +315,11 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
             $scope.authorName = '';
             $scope.authorImage = null;
 
+            // Heart Section
+
+            $scope.unHeart = false;
+            $scope.heartCounter = 0;
+
 
             //$scope.countSocialShares();
             //$scope.countSocialFollowers();
@@ -325,6 +330,60 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                 $scope.countSocialFollowers();
                // console.log("call");
             };
+        };
+
+        // Heart //
+
+        $scope.heartAction = function(){
+
+          //  console.log($window.plink,$window.uid,$window.itemId);
+            //return;
+            userId = $window.uid;
+            ItemId = $window.itemId;
+            permalink = $window.plink;
+            section = 'ideas';
+
+            // an anonymous will be returned without performing any action.
+            if(userId==0)
+                return;
+
+            $http({
+                url: '/api/heart/add-heart',
+                method: "POST",
+                data:{
+                    uid: userId,
+                    iid: ItemId,
+                    plink: permalink,
+                    section: section,
+                    uht: $scope.unHeart
+                }
+            }).success(function (data) {
+                $scope.heartCounterAction();
+                $scope.unHeart = ! $scope.unHeart;
+            });
+        };
+
+        $scope.heartCounterAction = function(){
+
+            userId = $window.uid;
+            ItemId = $window.itemId;
+            section = 'ideas';
+
+            $http({
+                url: '/api/heart/count-heart',
+                method: "POST",
+                data:{
+                    uid: userId,
+                    iid: ItemId,
+                    section: section
+                }
+            }).success(function (data) {
+                $scope.unHeart = data.UserStatus;
+                $scope.heartCounter = data.Count;
+
+                console.log($scope.heartCounter);
+            });
+
         };
 
         // Add an Alert in a web application

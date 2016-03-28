@@ -108,6 +108,7 @@ productApp.controller('productController', ['$scope', '$http', '$window', '$inte
 
             $scope.showCompareButton = true;
 
+            // Comment section
             $scope.html = "";
             $scope.comments = [];
             $scope.commentsCount = 0;
@@ -119,6 +120,51 @@ productApp.controller('productController', ['$scope', '$http', '$window', '$inte
             $scope.isEdit = false;
             $scope.commentId = null;
 
+            // Heart Section
+
+            $scope.unHeart = false;
+            $scope.heartCounter = 0;
+
+
+        };
+
+        // Heart //
+
+        $scope.heartAction = function(userId,ItemId,permalink,section){
+
+            // an anonymous will be returned withough performing any action.
+            if(userId==0)
+                return;
+
+            $http({
+                url: '/api/heart/add-heart',
+                method: "POST",
+                data:{
+                    uid: userId,
+                    iid: ItemId,
+                    plink: permalink,
+                    section: section,
+                    uht: $scope.unHeart
+                }
+            }).success(function (data) {
+                $scope.heartCounterAction(userId,ItemId,section);
+                $scope.unHeart = ! $scope.unHeart;
+            });
+        };
+
+        $scope.heartCounterAction = function(userId,ItemId,section){
+            $http({
+                url: '/api/heart/count-heart',
+                method: "POST",
+                data:{
+                    uid: userId,
+                    iid: ItemId,
+                    section: section
+                }
+            }).success(function (data) {
+                $scope.unHeart = data.UserStatus;
+                $scope.heartCounter = data.Count;
+            });
 
         };
 

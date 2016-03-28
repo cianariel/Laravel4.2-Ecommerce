@@ -26,7 +26,9 @@
     }  
 ?>
 <script>
+    var plink = '<?php echo $permalink ;?>' ;
     var itemId = <?php echo $itemId ;?> ;
+    var uid = <?php echo $userData['id'] ;?> ;
 </script>
 <div ng-app="publicApp" ng-controller="publicController">
 <section class="comments" id="comments">

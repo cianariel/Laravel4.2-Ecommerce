@@ -30,7 +30,7 @@
             </ul>
         </div>
     </nav>
-    <div id="productApp" ng-app="productApp" data-ng-controller="productController" ng-cloak>
+    <div id="productApp" ng-app="productApp" data-ng-controller="productController" class="ideaing-product" ng-cloak itemscope itemtype="http://schema.org/Product">
         <header class="story-header hidden-620 hidden-soft">
             <div class="col-xs-1">
             <a href="#" class="side-logo lamp-logo">
@@ -42,20 +42,23 @@
             <div class="col-xs-4">
             <h1>
                     <span class="title-holder">
-                <span class="title">
+                <span class="title" itemprop="name">
                     @if(isset($productInformation['ProductName']))
                         {{$productInformation['ProductName']}}
                     @endif
                 </span>
-                <ul class="social-stats center-block ">
+                <ul class="social-stats center-block">
                     <li class="social-stats__item">
-                        <a href="#">
-                                    <i class="m-icon m-icon--ScrollingHeaderHeart">
+                        <a href="#" class="likes"
+                           ng-init="heartCounterAction(<?php echo $userData['id'] . "," . $productId . "," . "'product'"?>)"
+                           ng-click="heartAction(<?php echo $userData['id'] . "," . $productId . "," ."'$permalink'".",". "'product'"?>)"
+                        >
+                                    <i ng-class="unHeart != false ? 'm-icon m-icon--heart-solid' : 'm-icon m-icon--ScrollingHeaderHeart'">
                                         <span class="m-hover">
                                             <span class="path1"></span><span class="path2"></span>
                                         </span>
                                     </i>
-                            <span class="social-stats__text">1819</span>
+                            <span class="social-stats__text"> &nbsp; <?php echo "{{ heartCounter }}" ?> </span>
                         </a>
                     </li>
                 </ul>
@@ -75,10 +78,11 @@
                 @endif" target="_blank">
                     Get it
                 </a>
-                <b class="price">
+                <b class="price" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
                     &nbsp;
                     @if(isset($productInformation['SellPrice']))
-                        ${{$productInformation['SellPrice']}}
+                        <span itemprop="priceCurrency" content="USD">$</span>
+                        <span itemprop="price" content="{{$productInformation['SellPrice']}}">{{$productInformation['SellPrice']}}</span>
                     @endif
                 </b>
             </div>
@@ -94,9 +98,8 @@
 
                 <div class="row hero-content-holder">
                     <div class="col-sm-11">
-                        <div class="average-score pull-right">
-
-                            <div class="score">
+                        <div class="average-score pull-right" itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating">
+                            <div class="score" itemprop="ratingValue">
                                 <i class=" m-icon--bulb-detailed-on-rating"></i>
                                 @if(isset($productInformation['Review']))
                                     {{intval(((($productInformation['Review'][0]->value > 0 ? $productInformation['Review'][0]->value : $productInformation['Review'][1]->value) + $productInformation['Review'][1]->value)/2)*20)}}%
@@ -117,9 +120,21 @@
                 <nav class="top-product-controls">
                     <ul>
                         <li><a href="#" class="get-alerts"><i class="m-icon m-icon--alert"></i>&nbsp; Get alerts</a></li>
-                        {{--<li><a class="compare">99</a></li>--}}
-                        <li><a href="#" class="likes"><i class="m-icon m-icon--heart-solid"></i>&nbsp; 768</a></li>
-                        <li><a href="#" data-scrollto="#comments" class="comments"><i class="m-icon m-icon--discuss-products"></i>&nbsp; 1.2K</a></li>
+                        <li class="social-stats__item">
+                            <a href="#" class="likes"
+                               ng-init="heartCounterAction(<?php echo $userData['id'] . "," . $productId . "," . "'product'"?>)"
+                               ng-click="heartAction(<?php echo $userData['id'] . "," . $productId . "," ."'$permalink'".",". "'product'"?>)"
+                            >
+                                <i ng-class="unHeart != false ? 'm-icon m-icon--heart-solid' : 'm-icon m-icon--ScrollingHeaderHeart'">
+                                        <span class="m-hover">
+                                            <span class="path1"></span><span class="path2"></span>
+                                        </span>
+                                </i>
+                                <span class="social-stats__text"> &nbsp; <?php echo "{{ heartCounter }}" ?> </span>
+                            </a>
+
+                        </li>
+                        <li><a href="#" data-scrollto="#comments" class="comments"><i class="m-icon m-icon--discuss-products"></i>&nbsp; <?php echo "{{ commentsCount }}" ?></a></li>
                     </ul>
                 </nav>
 
@@ -272,7 +287,7 @@
 
                     @include('layouts.parts.share-bar')
 
-                    <section class="article-content col-lg-12 col-sm-11 pull-right" id="features">
+                    <section class="article-content col-lg-12 col-sm-11 pull-right" id="features"   itemprop="description">
                         <div>
                             @if(isset($productInformation['Description']))
                                 {!! $productInformation['Description'] !!}
