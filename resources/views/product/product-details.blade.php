@@ -120,7 +120,7 @@
                 <nav class="top-product-controls">
                     <ul>
                         <li><a href="#" class="get-alerts"><i class="m-icon m-icon--alert"></i>&nbsp; Get alerts</a></li>
-                        <li class="social-stats__item">
+                        <li class="">
                             <a href="#" class="likes"
                                ng-init="heartCounterAction(<?php echo $userData['id'] . "," . $productId . "," . "'product'"?>)"
                                ng-click="heartAction(<?php echo $userData['id'] . "," . $productId . "," ."'$permalink'".",". "'product'"?>)"

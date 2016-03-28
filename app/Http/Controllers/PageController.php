@@ -19,6 +19,8 @@ use URL;
 use Input;
 use App\Models\Sharing;
 use Sitemap;
+use PageHelper;
+use Route;
 
 class PageController extends ApiController
 {
@@ -31,12 +33,6 @@ class PageController extends ApiController
     }
 
 
-    /**
-     * Display the homepage.
-     *
-     * @return \Illuminate\Http\Response
-     */
-
     public function searchPage()
     {
         $userData = $this->authCheck;
@@ -44,8 +40,18 @@ class PageController extends ApiController
             $userData = $this->authCheck['user-data'];
         }
 
+        MetaTag::set('title', 'Search Results | Ideaing');
+
         return view('search.index')->with('userData', $userData);
     }
+
+
+
+    /**
+     * Display the homepage.
+     *
+     * @return \Illuminate\Http\Response
+     */
 
 
     public function home()
@@ -57,9 +63,9 @@ class PageController extends ApiController
         $homehero = new HomeHero();
         $result = $homehero->heroDetailsViewGenerate();
         //return $result;
-       // dd($userData);
         return view('home')->with('userData', $userData)->with('homehero', $result);
     }
+
 
 
     public function getContent($page = 1, $limit = 5, $tag = false, $type = false, $productCategory = false, $sortBy = false)
@@ -224,7 +230,7 @@ class PageController extends ApiController
             $featuredUrl .= '&tag=' . $tag;
         }
 
-        // print_r($featuredUrl); die();
+//                print_r($featuredUrl); die();
         // print_r($return); die();
 
 
@@ -239,8 +245,7 @@ class PageController extends ApiController
         $newIdeaCollection = new Collection();
         $comment = new App\Models\Comment();
 
-
-        if (!empty($ideaCollection)) {
+        if($ideaCollection){
 
             foreach ($ideaCollection as $singleIdea) {
 
@@ -253,7 +258,6 @@ class PageController extends ApiController
                 $newIdeaCollection->push($tempIdea);
 
             }
-
         }
 
         $return['featured'] = $newIdeaCollection;
@@ -291,12 +295,15 @@ class PageController extends ApiController
 
     public function signupPage($email = '')
     {
+        MetaTag::set('title', 'Sign Up | Ideaing');
 
         return view('signup')->with('email', $email)->with('tab', 'signup');
     }
 
     public function loginView()
     {
+        MetaTag::set('title', 'Log In | Ideaing');
+
         return view('signup')->with('tab', 'login');
     }
 
@@ -414,7 +421,8 @@ class PageController extends ApiController
             $isAdmin = $userData->hasRole('admin');
         }
 
-        //dd($result['relatedProducts'],$relatedIdeas);
+        $result['canonicURL'] = PageHelper::getCanonicalLink(Route::getCurrentRoute(), $permalink);
+//        $result['metaDescription'] = PageHelper::formatForMetaDesc($product->product_description);
 
         return view('product.product-details')
             ->with('isAdminForEdit', $isAdmin)
@@ -425,7 +433,10 @@ class PageController extends ApiController
             ->with('relatedProducts', $result['relatedProducts'])
             ->with('relatedIdeas', $relatedIdeas)
             ->with('selfImages', $result['selfImages'])
-            ->with('storeInformation', $result['storeInformation']);
+            ->with('storeInformation', $result['storeInformation'])
+            ->with('canonicURL', $result['canonicURL'])
+            ->with('MetaDescription', $result['productInformation']['MetaDescription'])
+            ;
     }
 
     public function getRoomPage($permalink)
@@ -544,6 +555,51 @@ class PageController extends ApiController
         return $sitemap->render('xml');
 
     }
+
+
+    public function privacyPolicy()
+    {
+
+        MetaTag::set('title', 'Privacy Policy | Ideaing');
+//        MetaTag::set('description', $result['productInformation']['MetaDescription']);
+
+        return view('layouts.privacy-policy');
+
+    }
+
+
+    public function contactUs()
+    {
+
+        MetaTag::set('title', 'Contact us | Ideaing');
+//        MetaTag::set('description', $result['productInformation']['MetaDescription']);
+
+        return view('contactus.index');
+    }
+
+    public function aboutUs()
+    {
+
+        MetaTag::set('title', 'About us | Ideaing');
+//        MetaTag::set('description', $result['productInformation']['MetaDescription']);
+
+        return view('layouts.aboutus');
+    }
+
+    public function termsOfUse()
+    {
+
+        MetaTag::set('title', 'Terms of Use | Ideaing');
+//        MetaTag::set('description', $result['productInformation']['MetaDescription']);
+
+        return view('layouts.terms-of-use');
+    }
+
+
+
+
+
+
 
 
 }

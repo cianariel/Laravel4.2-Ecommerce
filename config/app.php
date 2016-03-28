@@ -161,7 +161,8 @@
             'Roumen\Sitemap\SitemapServiceProvider',
             Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
             Fenos\Notifynder\NotifynderServiceProvider::class,
-             Aws\Laravel\AwsServiceProvider::class
+             Aws\Laravel\AwsServiceProvider::class,
+            App\Providers\HelperServiceProvider::class,
         ], 
 
         /*
@@ -231,7 +232,8 @@
             'Image'              => 'Intervention\Image\Facades\Image',
             'MetaTag'            => Torann\LaravelMetaTags\Facades\MetaTag::class,
             'Notifynder'         => Fenos\Notifynder\Facades\Notifynder::class,
-            'AWS' => Aws\Laravel\AwsFacade::class
+            'AWS' => Aws\Laravel\AwsFacade::class,
+            'PageHelper' => App\Helpers\PageHelper::class
 
         ],
 

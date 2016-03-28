@@ -20,10 +20,10 @@
     </div>
 </div>
 
-<div class="round-tag round-tag--product">
+<a href="/shop" class="round-tag round-tag--product">
     <i class="m-icon m-icon--item"></i>
     <span class="round-tag__label">Product</span>
-</div>
+</a>
 
 <div class="box-item__label-prod">
     <a href="/product/<?php echo '{{item.product_permalink}}' ?>"

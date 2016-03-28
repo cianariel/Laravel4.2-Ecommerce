@@ -352,21 +352,8 @@ $(function() {
         if(hero_image_id == "hero_image")
         {
             heroimageproducts1.splice(productid-1, 1);
-            //delete heroimageproducts1[productid-1];
-            //heroimageproducts1.pop(productid-1);
             $('#hero_image_products').val(JSON.stringify(heroimageproducts1));
         }
-        if(hero_image_id == "hero_image_2")
-        {
-            heroimageproducts2.splice(productid-1, 1);
-            $('#hero_image_2_products').val(JSON.stringify(heroimageproducts2));
-        }
-        if(hero_image_id == "hero_image_3")
-        {
-            heroimageproducts3.splice(productid-1, 1);
-            $('#hero_image_3_products').val(JSON.stringify(heroimageproducts3));
-        }
-        //$('product_thumb').test();
     }
     
 });
