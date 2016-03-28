@@ -5,7 +5,12 @@ if (! preg_match("/\/ideas\//", $actual_link))
 {
 ?>
 <title>{{ MetaTag::get('title') }}</title>
-{!! MetaTag::tag('description') !!}
+
+@if(@$MetaDescription)
+    <meta name="description" content="{{$MetaDescription}}">
+@else
+    {!! MetaTag::tag('description') !!}
+@endif
 <?php
 }
 ?>
