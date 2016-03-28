@@ -22,7 +22,7 @@
         echo $isAdminForEdit;*/
 ?>
 <section class="comments" id="comments">
-    <div class="container">
+    <div class="container product-comment" itemprop="review" itemscope itemtype="http://schema.org/Review">
         <a name="comment"></a>
 <input type="hidden" ng-init="userId='<?php echo $userData['id']?>'">
         <input type="hidden" ng-init="isAdmin='<?php echo $isAdminForEdit?>'">
@@ -35,14 +35,14 @@
                         <img class="profile-photo " ng-src="<?php echo "{{ comment.Picture }}"?>" width="50px">
 
 
-                        <div><b class="comment-name"><?php echo "{{ comment.UserName }}" ?></b></div>
+                        <div><b class="comment-name" itemprop="author"><?php echo "{{ comment.UserName }}" ?></b></div>
                     </div>
                     <div class="col-md-8 col-sm-8 col-xs-7 comment-row-content">
                         <p>
-                        <div ng-bind-html="comment.Comment"></div>
+                        <div itemprop="description" ng-bind-html="comment.Comment"></div>
 
                         </p>
-                        <time> <?php echo "{{ comment.PostTime }}"?></time>
+                        <time itemprop="datePublished" content="{{date('y-m-d')}}"> <?php echo "{{ comment.PostTime }}"?></time>
 
                         <button ng-show="(comment.UserId == userId)  || (isAdmin == 1)"
                                 data-ng-click="editComment(comment)"

@@ -74,13 +74,11 @@
         Route::post('comment/delete-comment', 'CommentController@deleteComment');
 
 
-
-
         /*
          *  Heart Counter
          * */
         Route::post('heart/add-heart', 'HeartController@addHeart');
-
+        Route::post('heart/count-heart', 'HeartController@heartCounter');
 
 
         /*

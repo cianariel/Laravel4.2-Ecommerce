@@ -3,61 +3,6 @@
 @section('body-class'){{ 'room-landing kitchen-landing' }}@stop
 
 @section('content')
-    {{--<header class="story-header hidden-620 hidden-soft" >--}}
-        {{--<a href="#" class="side-logo lamp-logo">--}}
-        {{--</a>--}}
-        {{--<h1>Nest Protect (Second Generation)</h1>--}}
-
-        {{--<ul class="social-rounds hidden-sm hidden-xs pull-right">--}}
-            {{--<li><a class="fb" href="#"></a></li>--}}
-            {{--<li><a class="twi" href="#"></a></li>--}}
-            {{--<li><a class="gp" href="#"></a></li>--}}
-            {{--<li><a class="pint" href="#"></a></li>--}}
-        {{--</ul>--}}
-
-        {{--<ul class="like-nav hidden-xs pull-right pull-right">--}}
-            {{--<li><a class="like-counter" href="#"><span></span><b>189</b></a></li>--}}
-        {{--</ul>--}}
-
-        {{--<div class="icon-wrap pull-right">--}}
-            {{--<div class="get solid">Get it</div>--}}
-            {{--<img class="vendor-logo" src="/assets/images/dummies/amazon-black.png">--}}
-            {{--<b class="price">$199</b>--}}
-        {{--</div>--}}
-    {{--</header>--}}
-
-    
-    <!--<nav class="mid-nav hidden-xs">
-        <div class="container full-sm fixed-sm">
-            <ul class=" wrap col-xs-9">
-                <li class="home box-link">
-                    <a class="box-link" href="">
-                    <span class="box-link-active-line"></span>
-                        <i class="m-icon m-icon--smart-home"></i> Smart Home
-                    </a>
-                </li>
-
-                <li><a class="box-link @if($roomInformation['Permalink'] == 'kitchen') active @endif " href="{{url('idea/kitchen')}}">Kitchen</a></li>
-                <li><a class="box-link @if($roomInformation['Permalink'] == 'bath') active @endif " href="{{url('idea/bath')}}">Bath</a></li>
-                <li><a class="box-link @if($roomInformation['Permalink'] == 'bedroom') active @endif " href="{{url('idea/bedroom')}}">Bedroom</a></li>
-                <li><a class="box-link @if($roomInformation['Permalink'] == 'office') active @endif " href="{{url('idea/office')}}">Office</a></li>
-                <li><a class="box-link @if($roomInformation['Permalink'] == 'living') active @endif " href="{{url('idea/living')}}">Living</a></li>
-                <li><a class="box-link @if($roomInformation['Permalink'] == 'outdoor') active @endif " href="{{url('idea/outdoor')}}">Outdoor</a></li>
-                <li><a class="box-link @if($roomInformation['Permalink'] == 'lighting') active @endif " href="{{url('idea/lighting')}}">Lighting</a></li>
-                <li><a @if($roomInformation['Permalink'] == 'decor') class="active" @endif href="{{url('idea/decor')}}">Decor</a></li>
-
-            </ul>
-            <div class="hide">
-                <ul class="pull-right"> 
-                    <li class="nested">
-                        <a id="browse-all" href="#" class="" data-toggle=".shop-menu"><i class="m-icon m-icon--menu"></i>&nbsp; Browse all</a>
-                    </li>
-            </ul>
-        </div>
-
-        </div>
-    </nav>-->
-    
 
 <div id="pagingApp" ng-app="pagingApp" ng-controller="pagingController">
     <div id="hero" class="royalSlider heroSlider rsMinW room-hero slider" style="display: none;">
@@ -159,30 +104,6 @@
             @endforeach
         @endif
         </div>
-
-
-    <!--<nav id="hero-nav" class="col-sm-12">
-        <div class="container full-620  fixed-sm">
-            <ul class="left-nav col-xs-1 hidden-620">
-                 <li><a class="filter-link" href="#">Filter</a></li>
-            </ul>
-
-            <ul class="col-sm-4 pull-right popular-new">
-                <li class="pull-right">
-                    <a href="#" class="box-link">Popular</a>
-                </li>
-                <li class="pull-right">
-                    <a href="#" class="box-link active">Newest</a>
-                </li>
-            </ul>
-            <ul class="category-nav col-sm-6 pull-right">
-                <li><a href="" class="all-link">All</a></li>
-                <li><a href="" class="ideas-link">Ideas</a></li>
-                <li><a href="" class="products-link">Products</a></li>
-                <li><a href="" class="photos-link">Photos</a></li>
-            </ul>
-        </div>
-    </nav>-->
 
     <main class="page-content">
         <div class="app-wrap" >
