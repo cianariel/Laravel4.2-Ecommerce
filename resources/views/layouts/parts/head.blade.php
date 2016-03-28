@@ -56,6 +56,12 @@ if (screen.width < 992 && screen.width > 620) {
 <!-- Custom script and css link for Application -->
 <link rel="stylesheet" href="/assets/css/autocomplete.css">
 
+<?php
+  if(!function_exists('is_single') && @$canonicURL){
+        echo '<link rel="canonical" href="'.$canonicURL.'">';
+}
+?>
+
 <script src="/assets/js/vendor/angular.min.js"></script>
 <script src="/assets/js/vendor/ui-bootstrap.min.js"></script>
 <script src="/assets/js/vendor/textAngular-sanitize.min.js"></script>

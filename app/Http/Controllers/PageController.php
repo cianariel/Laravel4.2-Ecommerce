@@ -19,6 +19,8 @@ use URL;
 use Input;
 use App\Models\Sharing;
 use Sitemap;
+use PageHelper;
+use Route;
 
 class PageController extends ApiController
 {
@@ -31,12 +33,6 @@ class PageController extends ApiController
     }
 
 
-    /**
-     * Display the homepage.
-     *
-     * @return \Illuminate\Http\Response
-     */
-
     public function searchPage()
     {
         $userData = $this->authCheck;
@@ -46,6 +42,14 @@ class PageController extends ApiController
 
         return view('search.index')->with('userData', $userData);
     }
+
+
+
+    /**
+     * Display the homepage.
+     *
+     * @return \Illuminate\Http\Response
+     */
 
 
     public function home()
@@ -239,16 +243,19 @@ class PageController extends ApiController
         $newIdeaCollection = new Collection();
         $comment = new App\Models\Comment();
 
-        foreach ($ideaCollection as $singleIdea) {
+        if($ideaCollection){
 
-            $tempIdea = collect($singleIdea);
+            foreach ($ideaCollection as $singleIdea) {
 
-            $countValue = $comment->ideasCommentCounter($singleIdea->id);
+                $tempIdea = collect($singleIdea);
 
-            $tempIdea->put('CommentCount', $countValue);
+                $countValue = $comment->ideasCommentCounter($singleIdea->id);
 
-            $newIdeaCollection->push($tempIdea);
+                $tempIdea->put('CommentCount', $countValue);
 
+                $newIdeaCollection->push($tempIdea);
+
+            }
         }
 
         $return['featured'] = $newIdeaCollection;
@@ -409,6 +416,7 @@ class PageController extends ApiController
             $isAdmin = $userData->hasRole('admin');
         }
 
+        $result['canonicURL'] = PageHelper::getCanonicalLink(Route::getCurrentRoute(), $permalink);
 
         return view('product.product-details')
             ->with('isAdminForEdit', $isAdmin)
@@ -419,7 +427,8 @@ class PageController extends ApiController
             ->with('relatedProducts', $result['relatedProducts'])
             ->with('relatedIdeas', $relatedIdeas)
             ->with('selfImages', $result['selfImages'])
-            ->with('storeInformation', $result['storeInformation']);
+            ->with('storeInformation', $result['storeInformation'])
+            ->with('canonicURL', $result['canonicURL']);
     }
 
     public function getRoomPage($permalink)
