@@ -177,7 +177,7 @@ a.likes {
                                              <td width="218" align="center">
                                                 <div class="imgpop">
                                                    <a target="_blank" href="#">
-                                                   <img src="https://ideaing.com/assets/images/email/common/logo-email.png" alt="" border="0" width="169" height="45" style="display:block; border:none; outline:none; text-decoration:none;">
+                                                   <img src="https://ideaing.com<?php echo env('ASSETS_CDN') ?>/images/email/common/logo-email.png" alt="" border="0" width="169" height="45" style="display:block; border:none; outline:none; text-decoration:none;">
                                                    </a>
                                                 </div>
                                              </td>
@@ -284,7 +284,7 @@ a.likes {
                                                       <!-- image -->
                                                       <tr>
                                                          <td width="250" height="160" align="center" class="devicewidth">
-                                                            <img src="https://ideaing.com/assets/images/email/common/graphic-800x279.png" alt="" border="0" width="250" style="display:block; border:none; outline:none; text-decoration:none;" class="colimg2">
+                                                            <img src="https://ideaing.com<?php echo env('ASSETS_CDN') ?>/images/email/common/graphic-800x279.png" alt="" border="0" width="250" style="display:block; border:none; outline:none; text-decoration:none;" class="colimg2">
                                                          </td>
                                                       </tr>
                                                    </tbody>
@@ -372,11 +372,11 @@ a.likes {
                                                          <td width="290" height="160" align="center" class="devicewidth">
                                                             <p style="text-align: center;">
                                                                 <a style="text-decoration: none; color: #007baa"
-                                                                                 href="http://ideaing.com"><img src="https://ideaing.com/assets/images/email/ideaing.png" width="70px"/></a>
+                                                                                 href="http://ideaing.com"><img src="https://ideaing.com<?php echo env('ASSETS_CDN') ?>/images/email/ideaing.png" width="70px"/></a>
                                                                 <a style="text-decoration: none; color: #007baa"
-                                                                 href="https://ideaing.com/aboutus"><img  src="https://ideaing.com/assets/images/email/about.png" width="70px"/></a>
+                                                                 href="https://ideaing.com/aboutus"><img  src="https://ideaing.com<?php echo env('ASSETS_CDN') ?>/images/email/about.png" width="70px"/></a>
                                                                  <a style="text-decoration: none; color: #808080"
-                                                                 href="https://ideaing.com/"><img src="https://ideaing.com/assets/images/email/copyright.png" width="100px"/></a>
+                                                                 href="https://ideaing.com/"><img src="https://ideaing.com<?php echo env('ASSETS_CDN') ?>/images/email/copyright.png" width="100px"/></a>
                                                             </p>
 
                                                          </td>
@@ -405,12 +405,12 @@ a.likes {
                                                       <!-- image -->
                                                       <tr>
                                                          <td width="290" height="160" align="center" class="devicewidth">
-                                                            <a class="fb" href="https://www.facebook.com/ideaingsmarterliving"><img src="https://ideaing.com/assets/images/email/fb.png"/></a>
-                                                            <a class="twi" href="https://twitter.com/ideaing/"><img src="https://ideaing.com/assets/images/email/twitter.jpg"/></a>
-                                                            <a class="insta" href="https://www.instagram.com/ideaing_com/"><img src="https://ideaing.com/assets/images/email/insta.png"/></a>
-                                                            <a class="gplus" href="http://google.com/+Ideaingsmarterliving"><img src="https://ideaing.com/assets/images/email/gplus.gif"/></a>
-                                                            <a class="pint" href="https://www.pinterest.com/ideaing_com"><img src="https://ideaing.com/assets/images/email/pint.png"/></a>
-                                                            <a class="likes" href="#"><img src="https://ideaing.com/assets/images/email/likes.png"/></a>
+                                                            <a class="fb" href="https://www.facebook.com/ideaingsmarterliving"><img src="https://ideaing.com<?php echo env('ASSETS_CDN') ?>/images/email/fb.png"/></a>
+                                                            <a class="twi" href="https://twitter.com/ideaing/"><img src="https://ideaing.com<?php echo env('ASSETS_CDN') ?>/images/email/twitter.jpg"/></a>
+                                                            <a class="insta" href="https://www.instagram.com/ideaing_com/"><img src="https://ideaing.com<?php echo env('ASSETS_CDN') ?>/images/email/insta.png"/></a>
+                                                            <a class="gplus" href="http://google.com/+Ideaingsmarterliving"><img src="https://ideaing.com<?php echo env('ASSETS_CDN') ?>/images/email/gplus.gif"/></a>
+                                                            <a class="pint" href="https://www.pinterest.com/ideaing_com"><img src="https://ideaing.com<?php echo env('ASSETS_CDN') ?>/images/email/pint.png"/></a>
+                                                            <a class="likes" href="#"><img src="https://ideaing.com<?php echo env('ASSETS_CDN') ?>/images/email/likes.png"/></a>
                                                          </td>
                                                       </tr>
                                                    </tbody>
