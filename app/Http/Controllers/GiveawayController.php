@@ -21,10 +21,10 @@
         public function __construct()
         {
             // Apply the jwt.auth middleware to all methods in this controller
-            /*$this->middleware('jwt.auth',
+            $this->middleware('jwt.auth',
                 ['except' => [
                     'addGiveaway', 'updateGiveaway','deleteGiveaway',
-                ]]);*/
+                ]]);
             $this->giveaway = new Giveaway();
             $this->media = new Media();
         }
