@@ -44,11 +44,8 @@
     Route::get('/privacy-policy', 'PageController@privacyPolicy');
 
     Route::get('/terms-of-use', 'PageController@termsOfUse');
-    
-    Route::get('/giveaway', function()
-    {
-        return view('giveaway.giveaway');
-    });
+
+    Route::get('/giveaway', 'PageController@giveaway');
 
     Route::group(['prefix' => 'api'], function ()
     {

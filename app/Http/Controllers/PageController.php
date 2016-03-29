@@ -15,6 +15,7 @@ use App\Models\ProductCategory;
 use App\Models\Tag;
 use App\Models\Room;
 use App\Models\HomeHero;
+use App\Models\Giveaway;
 use URL;
 use Input;
 use App\Models\Sharing;
@@ -550,56 +551,44 @@ class PageController extends ApiController
             }
 
         }
-
         // show your sitemap (options: 'xml' (default), 'html', 'txt', 'ror-rss', 'ror-rdf')
         return $sitemap->render('xml');
-
     }
-
-
     public function privacyPolicy()
     {
-
         MetaTag::set('title', 'Privacy Policy | Ideaing');
 //        MetaTag::set('description', $result['productInformation']['MetaDescription']);
-
         return view('layouts.privacy-policy');
-
     }
-
-
     public function contactUs()
     {
-
         MetaTag::set('title', 'Contact us | Ideaing');
 //        MetaTag::set('description', $result['productInformation']['MetaDescription']);
-
         return view('contactus.index');
     }
-
     public function aboutUs()
     {
-
         MetaTag::set('title', 'About us | Ideaing');
 //        MetaTag::set('description', $result['productInformation']['MetaDescription']);
-
         return view('layouts.aboutus');
     }
 
     public function termsOfUse()
     {
-
         MetaTag::set('title', 'Terms of Use | Ideaing');
 //        MetaTag::set('description', $result['productInformation']['MetaDescription']);
-
         return view('layouts.terms-of-use');
     }
-
-
-
-
-
-
-
-
+    public function giveaway()
+    {
+        MetaTag::set('title', 'Giveaway | Ideaing');
+//        MetaTag::set('description', $result['productInformation']['MetaDescription']);
+        $userData = $this->authCheck;
+        if ($this->authCheck['method-status'] == 'success-with-http') {
+            $userData = $this->authCheck['user-data'];
+        }
+        $giveaway = Giveaway::where('giveaway_status', 1)->first();
+        return view('giveaway.giveaway')->with('userData', $userData)->with('giveaway',$giveaway);
+    }
+    
 }
