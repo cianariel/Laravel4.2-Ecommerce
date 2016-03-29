@@ -136,7 +136,7 @@
                     $strReplace = \Config::get("const.file.s3-path");// "http://s3-us-west-1.amazonaws.com/ideaing-01/";
                     $file = str_replace($strReplace, '', $store[ $key ]->medias[0]->media_link);
 
-                    $storeInfo[ $key ]['ThumbImageLink'] = $strReplace . 'thumb-' . $file;
+                    $storeInfo[ $key ]['ThumbImageLink'] = env('ASSETS_CDN') . 'thumb-' . $file;
                 }
 
                 return $this->setStatusCode(\Config::get("const.api-status.success"))
