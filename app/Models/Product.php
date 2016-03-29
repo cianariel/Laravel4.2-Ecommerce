@@ -131,7 +131,7 @@ class Product extends Model
         $strReplace = \Config::get("const.file.s3-path");// "http://s3-us-west-1.amazonaws.com/ideaing-01/";
         $file = str_replace($strReplace, '', $itemLogoInfo->media_link);
 
-        $data['ThumbnailPath'] = $strReplace . 'thumb-' . $file;
+        $data['ThumbnailPath'] = env('ASSETS_CDN') . 'thumb-' . $file;
 
         return $data;
     }
