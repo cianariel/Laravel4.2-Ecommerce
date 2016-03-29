@@ -32,30 +32,19 @@
     Route::get('update-price', 'ProductController@priceUpdate');
 
 
-    Route::get('/product-details', function () // temp, used for tweaking frontend
-    {
-        return view('static.product-details');
-    });
+//    Route::get('/product-details', function () // temp, used for tweaking frontend
+//    {
+//        return view('static.product-details');
+//    });
 
-    Route::get('/contactus', function()
-    {
-        return view('contactus.index');
-    });
+    Route::get('/contactus', 'PageController@contactUs');
 
-    Route::get('/aboutus', function()
-    {
-        return view('layouts.aboutus');
-    });
+    Route::get('/aboutus', 'PageController@aboutUs');
 
-    Route::get('/privacy-policy', function()
-    {
-        return view('layouts.privacy-policy');
-    });
+    Route::get('/privacy-policy', 'PageController@privacyPolicy');
 
-    Route::get('/terms-of-use', function()
-    {
-        return view('layouts.terms-of-use');
-    });
+    Route::get('/terms-of-use', 'PageController@termsOfUse');
+    
     Route::get('/giveaway', function()
     {
         return view('giveaway.giveaway');
@@ -278,7 +267,7 @@
     //Shop view
 //    Route::get('shop/{categoty?}', 'ShopController@index');
 //    Route::get('shop/{parent?}/{categoty?}', 'ShopController@index');
-    Route::get('shop/{grandParent?}/{parent?}/{child?}', 'ShopController@index');
+    Route::get('shop/{grandParent?}/{parent?}/{child?}',['as' => 'shopCategory', 'uses' => 'ShopController@index']);
 //    Route::get('shop/travel/{categoty?}', 'ShopController@index');
 //    Route::get('shop/wearables/{categoty?}', 'ShopController@index');
 //    Route::get('shop/home-decor/{categoty?}', 'ShopController@index');
@@ -305,7 +294,7 @@
 
     // Route for product detail view
     //    Route::get('pro-details/{permalink?}', 'PageController@productDetailsPage');
-    Route::get('product/{permalink?}', 'PageController@productDetailsPage');
+    Route::get('product/{permalink?}', ['as' => 'productDetails', 'uses' => 'PageController@productDetailsPage']);
     Route::get('idea/{permalink?}', 'PageController@getRoomPage'); // single room page
     Route::get('room/{permalink?}', 'PageController@getRoomPage'); // temp keeping the old link, to prevent breaks
     // default signup
@@ -340,7 +329,5 @@
 
     // temporary category tag generator
     // Route::get('gen', 'TagsController@temporaryCategoryTagGenerator');
-
-
 
 

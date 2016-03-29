@@ -4,6 +4,96 @@
 
 var publicApp = angular.module('publicApp', ['ui.bootstrap', 'ngSanitize', 'angularFileUpload']);
 
+// directive for heart action for grid items
+publicApp.directive('heartCounterPublic', ['$http', function($http) {
+    return {
+        restrict: 'E',
+        transclude: true,
+        replace: true,
+        scope:{
+            uid:'=',
+            iid:'=',
+            plink:'=',
+            sec:'=',
+        },
+        controller:function($scope, $element, $attrs){
+
+            // console.log(window.location.host);
+            // Heart Section
+
+            $scope.unHeart = false;
+            $scope.heartCounter = 0;
+
+            $scope.heartCounterAction = function(){
+
+
+                $http({
+                    url: '/api/heart/count-heart',
+                    method: "POST",
+                    data:{
+                        section: $attrs.sec,
+                        uid: $scope.uid,
+                        iid: $scope.iid,
+                        plink: $scope.cleanUrl($attrs.plink),
+                    }
+                }).success(function (data) {
+                    $attrs.ustatus = data.UserStatus;
+
+                    $scope.unHeart = data.UserStatus;
+                    $scope.heartCounter = data.Count;
+
+                });
+            };
+
+            // clean url for ideaing URL (take only permalink)
+            $scope.cleanUrl = function(urlString){
+                //console.log('url : '+ urlString);
+                return urlString;
+            };
+
+            $scope.heartAction = function(){
+
+                // an anonymous will be returned without performing any action.
+                if($attrs.uid==0)
+                    return;
+
+                $http({
+                    url: '/api/heart/add-heart',
+                    method: "POST",
+                    data:{
+                        section: $attrs.sec,
+                        uid: $scope.uid,
+                        iid: $scope.iid,
+                        plink: $scope.cleanUrl($attrs.plink),
+                        uht: $scope.unHeart
+                    }
+                }).success(function (data) {
+                    $scope.heartCounterAction();
+                    $scope.unHeart = ! $scope.unHeart;
+                });
+            };
+
+            $scope.heartCounterAction();
+
+        },
+
+        template: '      <div class="">'+
+        '                    <a class="likes"'+
+        '                       ng-click="heartAction()"'+
+        '                    >'+
+        '                        <i ng-class="unHeart != false ? \'m-icon m-icon--heart-solid\' : \'m-icon m-icon--ScrollingHeaderHeart\'">'+
+        '                                <span class="m-hover">'+
+        '                                    <span class="path1"></span><span class="path2"></span>'+
+        '                                </span>'+
+        '                        </i>'+
+        '                        <span class="social-stats__text" ng-bind="heartCounter">&nbsp; </span>'+
+        '                    </a>'+
+        '                </div>'
+
+
+    }
+}]);
+
 publicApp.config(['$httpProvider', function ($httpProvider) {
     $httpProvider.defaults.headers.common["X-Requested-With"] = 'XMLHttpRequest';
 }]);
@@ -381,7 +471,7 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                 $scope.unHeart = data.UserStatus;
                 $scope.heartCounter = data.Count;
 
-                console.log($scope.heartCounter);
+             //   console.log($scope.heartCounter);
             });
 
         };
@@ -512,6 +602,7 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
 
                 $scope.authorName = data.name;
                 $scope.authorImage = data.medias[0].media_link;
+                $scope.authorBio = data.user_profile.personal_info;
 
                // console.log($scope.authorName," - ",$scope.authorImage);
 
@@ -548,14 +639,14 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                 $scope.commentsCount = $scope.comments.length;
                 $scope.commentsCountView = $scope.commentsCount < 2? $scope.commentsCount +" "+"Comment" : $scope.commentsCount +" "+"Comments";
 
-                  console.log($scope.commentsCount);
+                //  console.log($scope.commentsCount);
 
             });
 
         };
 
         $scope.initCommentCounter =function(){
-            $scope.getCommentsForIdeas($window.itemId);
+          //  $scope.getCommentsForIdeas($window.itemId);
         };
 
 

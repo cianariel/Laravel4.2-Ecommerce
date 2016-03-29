@@ -11,14 +11,12 @@
 
 <ul class="social-stats">
     <li class="social-stats__item">
-        <a href="#">
-            <i class="m-icon m-icon--ScrollingHeaderHeart">
-                <span class="m-hover">
-                    <span class="path1"></span><span class="path2"></span>
-                </span>
-            </i>
-            <span class="social-stats__text">52</span>
-        </a>
+        <?php
+        $userId = !empty($userData->id) ? $userData->id:0;
+        ?>
+        <heart-counter-dir uid = "<?php echo $userId ?>" iid = item.id plink = item.url sec = 'ideas' >
+
+        </heart-counter-dir>
     </li>
     <li class="social-stats__item">
         <a href="#">
@@ -28,10 +26,10 @@
     </li>
 </ul>
 
-<div class="round-tag round-tag--idea">
+<a href="/ideas" class="round-tag round-tag--idea">
     <i class="m-icon m-icon--item"></i>
     <span class="round-tag__label">Idea</span>
-</div>
+</a>
 
 <div class="box-item__label-idea">
     <a href="{{item.url}}" class="box-item__label">{{renderHTML(item.title)}}</a>

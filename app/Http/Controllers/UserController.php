@@ -101,7 +101,7 @@ class UserController extends ApiController
         $userInfo['user-data']['login'] = true;
         $isAdmin = $userInfo['user-data']->hasRole('admin');
         $userInfo['user-data'] = $userInfo['user-data']->toArray();
-        
+
         $result = base64_encode(serialize(['data' => $userInfo, 'IsAdmin' => $isAdmin]));
 
         // Decode process from WP end , check returning $decode
@@ -111,8 +111,10 @@ class UserController extends ApiController
 
     public function getUserByEmailRaw($email)
     {
-        return $this->user->IsEmailAvailable($email);
-       // return serialize(['data' => $data]);
+        $data = $this->user->IsEmailAvailable($email);
+        return $data == false ? "false" : $data;
+
+        // return serialize(['data' => $data]);
     }
 
     // Email subscription

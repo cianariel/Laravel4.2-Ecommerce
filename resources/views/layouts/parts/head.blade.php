@@ -5,7 +5,12 @@ if (! preg_match("/\/ideas\//", $actual_link))
 {
 ?>
 <title>{{ MetaTag::get('title') }}</title>
-{!! MetaTag::tag('description') !!}
+
+@if(@$MetaDescription)
+    <meta name="description" content="{{$MetaDescription}}">
+@else
+    {!! MetaTag::tag('description') !!}
+@endif
 <?php
 }
 ?>
@@ -55,6 +60,12 @@ if (screen.width < 992 && screen.width > 620) {
 
 <!-- Custom script and css link for Application -->
 <link rel="stylesheet" href="/assets/css/autocomplete.css">
+
+<?php
+  if(!function_exists('is_single') && @$canonicURL){
+        echo '<link rel="canonical" href="'.$canonicURL.'">';
+}
+?>
 
 <script src="/assets/js/vendor/angular.min.js"></script>
 <script src="/assets/js/vendor/ui-bootstrap.min.js"></script>
