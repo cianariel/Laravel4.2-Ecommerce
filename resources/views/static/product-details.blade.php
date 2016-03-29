@@ -21,13 +21,13 @@
 
         <div class="icon-wrap pull-right">
             <div class="get solid">Get it</div>
-            <img class="vendor-logo" src="/assets/images/dummies/amazon-black.png">
+            <img class="vendor-logo" src="<?php echo env('ASSETS_CDN') ?>/images/dummies/amazon-black.png">
             <b class="price">$199</b>
         </div>
     </header>
 
     <section id="hero" class="product-hero">
-        <div class="hero-background" style="background-image: url('/assets/images/dummies/product-hero.jpg')"></div>
+        <div class="hero-background" style="background-image: url('<?php echo env('ASSETS_CDN') ?>/images/dummies/product-hero.jpg')"></div>
         <div class="color-overlay"></div>
 
         <div class="container fixed-sm full-480">
@@ -126,48 +126,48 @@
 
                 <div id="gallery" class="royalSlider rsDefault">
 
-                    <a class="rsImg" data-rsbigimg="/assets/images/dummies/slider/PC220020-1024x683.jpg" href="/assets/images/dummies/slider/PC220020-1024x683.jpg">
-                        <img  itemprop="image" class="rsTmb" src="/assets/images/dummies/slider/PC220020-1024x683.jpg"> 
+                    <a class="rsImg" data-rsbigimg="<?php echo env('ASSETS_CDN') ?>/images/dummies/slider/PC220020-1024x683.jpg" href="<?php echo env('ASSETS_CDN') ?>/images/dummies/slider/PC220020-1024x683.jpg">
+                        <img  itemprop="image" class="rsTmb" src="<?php echo env('ASSETS_CDN') ?>/images/dummies/slider/PC220020-1024x683.jpg">
                     </a>
 
-                    <a class="rsImg" data-rsbigimg="/assets/images/dummies/slider/PC220024-1024x683.jpg" href="/assets/images/dummies/slider/PC220024-1024x683.jpg">
-                        <img  itemprop="image" class="rsTmb" src="/assets/images/dummies/slider/PC220024-1024x683.jpg">
+                    <a class="rsImg" data-rsbigimg="<?php echo env('ASSETS_CDN') ?>/images/dummies/slider/PC220024-1024x683.jpg" href="<?php echo env('ASSETS_CDN') ?>/images/dummies/slider/PC220024-1024x683.jpg">
+                        <img  itemprop="image" class="rsTmb" src="<?php echo env('ASSETS_CDN') ?>/images/dummies/slider/PC220024-1024x683.jpg">
                     </a>
 
-                    <a class="rsImg" data-rsbigimg="/assets/images/dummies/slider/PC220022-1024x683.jpg" href="/assets/images/dummies/slider/PC220022-1024x683.jpg">
-                        <img  itemprop="image" class="rsTmb" src="/assets/images/dummies/slider/PC220022-1024x683.jpg">
+                    <a class="rsImg" data-rsbigimg="<?php echo env('ASSETS_CDN') ?>/images/dummies/slider/PC220022-1024x683.jpg" href="<?php echo env('ASSETS_CDN') ?>/images/dummies/slider/PC220022-1024x683.jpg">
+                        <img  itemprop="image" class="rsTmb" src="<?php echo env('ASSETS_CDN') ?>/images/dummies/slider/PC220022-1024x683.jpg">
                     </a>
 
-                    <a class="rsImg" data-rsbigimg="/assets/images/dummies/slider/The-Next-Garden-Suite-112-6.jpg" href="/assets/images/dummies/slider/The-Next-Garden-Suite-112-6.jpg">
-                        <img  itemprop="image" class="rsTmb" src="/assets/images/dummies/slider/The-Next-Garden-Suite-112-6.jpg">
+                    <a class="rsImg" data-rsbigimg="<?php echo env('ASSETS_CDN') ?>/images/dummies/slider/The-Next-Garden-Suite-112-6.jpg" href="<?php echo env('ASSETS_CDN') ?>/images/dummies/slider/The-Next-Garden-Suite-112-6.jpg">
+                        <img  itemprop="image" class="rsTmb" src="<?php echo env('ASSETS_CDN') ?>/images/dummies/slider/The-Next-Garden-Suite-112-6.jpg">
                     </a>
 
-                    <a class="rsImg" data-rsbigimg="/assets/images/dummies/slider/PC220019-1024x683.jpg" href="/assets/images/dummies/slider/PC220019-1024x683.jpg">
-                        <img  itemprop="image" class="rsTmb" src="/assets/images/dummies/slider/PC220019-1024x683.jpg">
+                    <a class="rsImg" data-rsbigimg="<?php echo env('ASSETS_CDN') ?>/images/dummies/slider/PC220019-1024x683.jpg" href="<?php echo env('ASSETS_CDN') ?>/images/dummies/slider/PC220019-1024x683.jpg">
+                        <img  itemprop="image" class="rsTmb" src="<?php echo env('ASSETS_CDN') ?>/images/dummies/slider/PC220019-1024x683.jpg">
                     </a>
 
-                    <a class="rsImg" data-rsbigimg="/assets/images/dummies/slider/PC220021-1024x683.jpg" href="/assets/images/dummies/slider/PC220021-1024x683.jpg">
-                        <img  itemprop="image" class="rsTmb" src="/assets/images/dummies/slider/PC220021-1024x683.jpg">
+                    <a class="rsImg" data-rsbigimg="<?php echo env('ASSETS_CDN') ?>/images/dummies/slider/PC220021-1024x683.jpg" href="<?php echo env('ASSETS_CDN') ?>/images/dummies/slider/PC220021-1024x683.jpg">
+                        <img  itemprop="image" class="rsTmb" src="<?php echo env('ASSETS_CDN') ?>/images/dummies/slider/PC220021-1024x683.jpg">
                     </a>
 
-                    <a class="rsImg" data-rsbigimg="/assets/images/dummies/slider/PC220026-1024x683.jpg" href="/assets/images/dummies/slider/PC220026-1024x683.jpg">
-                        <img  itemprop="image" class="rsTmb" src="/assets/images/dummies/slider/PC220026-1024x683.jpg">
+                    <a class="rsImg" data-rsbigimg="<?php echo env('ASSETS_CDN') ?>/images/dummies/slider/PC220026-1024x683.jpg" href="<?php echo env('ASSETS_CDN') ?>/images/dummies/slider/PC220026-1024x683.jpg">
+                        <img  itemprop="image" class="rsTmb" src="<?php echo env('ASSETS_CDN') ?>/images/dummies/slider/PC220026-1024x683.jpg">
                     </a>
 
-                    <a class="rsImg" data-rsbigimg="/assets/images/dummies/slider/PC220027-1024x683.jpg" href="/assets/images/dummies/slider/PC220027-1024x683.jpg">
-                        <img  itemprop="image" class="rsTmb" src="/assets/images/dummies/slider/PC220027-1024x683.jpg">
+                    <a class="rsImg" data-rsbigimg="<?php echo env('ASSETS_CDN') ?>/images/dummies/slider/PC220027-1024x683.jpg" href="<?php echo env('ASSETS_CDN') ?>/images/dummies/slider/PC220027-1024x683.jpg">
+                        <img  itemprop="image" class="rsTmb" src="<?php echo env('ASSETS_CDN') ?>/images/dummies/slider/PC220027-1024x683.jpg">
                     </a>
 
-                    <a class="rsImg" data-rsbigimg="/assets/images/dummies/slider/PC220025-1024x683.jpg" href="/assets/images/dummies/slider/PC220025-1024x683.jpg">
-                        <img  itemprop="image" class="rsTmb" src="/assets/images/dummies/slider/PC220025-1024x683.jpg">
+                    <a class="rsImg" data-rsbigimg="<?php echo env('ASSETS_CDN') ?>/images/dummies/slider/PC220025-1024x683.jpg" href="<?php echo env('ASSETS_CDN') ?>/images/dummies/slider/PC220025-1024x683.jpg">
+                        <img  itemprop="image" class="rsTmb" src="<?php echo env('ASSETS_CDN') ?>/images/dummies/slider/PC220025-1024x683.jpg">
                     </a>
-                    <img width="640" height="427" src="/assets/images/dummies/slider/PC2200201-1024x683.jpg" class="attachment-large wp-post-image" alt="OLYMPUS DIGITAL CAMERA" />
+                    <img width="640" height="427" src="<?php echo env('ASSETS_CDN') ?>/images/dummies/slider/PC2200201-1024x683.jpg" class="attachment-large wp-post-image" alt="OLYMPUS DIGITAL CAMERA" />
                 </div>
 
                 <div class="slider-side-block">
                     <div class="top">
                         <div class="get solid">Get it</div>
-                        <img class="vendor-logo" src="/assets/images/dummies/amazon-2.png">
+                        <img class="vendor-logo" src="<?php echo env('ASSETS_CDN') ?>/images/dummies/amazon-2.png">
                         <b class="price">$199</b>
                     </div>
                     <div class="table">
@@ -308,7 +308,7 @@
 
                             <div class="col-sm-3 col-xs-6 comparison-tab">
                                 <div>
-                                    <img class="img-responsive" src="/assets/images/dummies/nest-2.png"/>
+                                    <img class="img-responsive" src="<?php echo env('ASSETS_CDN') ?>/images/dummies/nest-2.png"/>
                                     <div class="tab-wrap">
                                         <h4>Next Project <br>(second generation)</h4>
                                         <i>Announced 29 October 2015</i>
@@ -326,7 +326,7 @@
                             </div>
                             <div class="col-sm-3 col-xs-6 comparison-tab">
                                 <div>
-                                    <img class="img-responsive" src="/assets/images/dummies/nest-3.png"/>
+                                    <img class="img-responsive" src="<?php echo env('ASSETS_CDN') ?>/images/dummies/nest-3.png"/>
                                     <div class="tab-wrap">
                                         <h4>Next Project <br>(second generation)</h4>
                                         <i>Announced 29 October 2015</i>
@@ -501,7 +501,7 @@
                     <h3 class="green">Related Products</h3>
                     <div class="col-sm-4 col-xs-12 grid-box">
                         <div class="wrap">
-                            <img class="img-responsive" src="/assets/images/dummies/box-image-dummy.png">
+                            <img class="img-responsive" src="<?php echo env('ASSETS_CDN') ?>/images/dummies/box-image-dummy.png">
                             <div class="color-overlay">
                                 <h4>Mr Coffee smart <div class="get solid">Get it</div></h4>
                             </div>
@@ -514,7 +514,7 @@
                     </div>
                     <div class="col-sm-4 col-xs-12 grid-box">
                         <div class="wrap">
-                            <img class="img-responsive" src="/assets/images/dummies/box-image-dummy.png">
+                            <img class="img-responsive" src="<?php echo env('ASSETS_CDN') ?>/images/dummies/box-image-dummy.png">
                             <div class="color-overlay">
                                 <h4>Mr Coffee smart <div class="get solid">Get it</div></h4>
                             </div>
@@ -527,7 +527,7 @@
                     </div>
                     <div class="col-sm-4 col-xs-12 grid-box">
                         <div class="wrap">
-                            <img class="img-responsive" src="/assets/images/dummies/box-image-dummy.png">
+                            <img class="img-responsive" src="<?php echo env('ASSETS_CDN') ?>/images/dummies/box-image-dummy.png">
                             <div class="color-overlay">
                                 <h4>Mr Coffee smart <div class="get solid">Get it</div></h4>
                             </div>
@@ -547,7 +547,7 @@
 
                     <div class="col-sm-4 col-xs-12 grid-box">
                         <div class="wrap">
-                            <img class="img-responsive" src="/assets/images/dummies/box-image-dummy.png">
+                            <img class="img-responsive" src="<?php echo env('ASSETS_CDN') ?>/images/dummies/box-image-dummy.png">
                             <div class="color-overlay">
                                 <h4>Mr Coffee smart</h4>
                             </div>
@@ -560,7 +560,7 @@
                     </div>
                     <div class="col-sm-4 col-xs-12 grid-box">
                         <div class="wrap">
-                            <img class="img-responsive" src="/assets/images/dummies/box-image-dummy.png">
+                            <img class="img-responsive" src="<?php echo env('ASSETS_CDN') ?>/images/dummies/box-image-dummy.png">
                             <div class="color-overlay">
                                 <h4>Mr Coffee smart</h4>
                             </div>
@@ -573,7 +573,7 @@
                     </div>
                     <div class="col-sm-4 col-xs-12 grid-box">
                         <div class="wrap">
-                            <img class="img-responsive" src="/assets/images/dummies/box-image-dummy.png">
+                            <img class="img-responsive" src="<?php echo env('ASSETS_CDN') ?>/images/dummies/box-image-dummy.png">
                             <div class="color-overlay">
                                 <h4>Mr Coffee smart</h4>
                             </div>

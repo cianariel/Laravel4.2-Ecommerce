@@ -26,7 +26,7 @@
     <div class = 'para1_center' align='center'>
         <div class = 'space'></div>
         <div><h4>Get inspiration</h4></div>
-        <div><img src = '/assets/images/about1.png' class = 'para1_image'></div>
+        <div><img src = '<?php echo env('ASSETS_CDN') ?>/images/about1.png' class = 'para1_image'></div>
         <div class = 'para1_content'>Get inspiration on making your home smarter. We've created a platform that will inspire you to make your home smarter. We'll recommend &amp; demonstrate the most cutting edge products designed to make your home more efficient &amp; more secure. thus making your life easier.</div>
                 <div class = 'para1_button'><a class="btn btn-success col-xs-12" href="{{url('signup')}}">Get started</a></div>
     </div>
@@ -69,7 +69,7 @@
     
         <div class = 'para1_content'>Find the best deals for home tech</div>
                 <div class = 'para1_button'><a class="btn btn-success col-xs-12" href="{{url('shop')}}">Get started</a></div>
-        <div><img src = '/assets/images/about3.png' style = 'max-width:100%; max-height:500px'></div>
+        <div><img src = '<?php echo env('ASSETS_CDN') ?>/images/about3.png' style = 'max-width:100%; max-height:500px'></div>
     </div>
 </div>
 

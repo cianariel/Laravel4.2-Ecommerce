@@ -39,7 +39,7 @@
                                         <i class="m-icon m-icon--email-form-id"></i>
                                         <input class="form-control" ng-model="SubscriberEmail" type="text" placeholder="Email" name="email">
                                     </span>
-                                    
+
                                     <button ng-click="subscribe('')" class="btn btn-success col-xs-12"  href="#">Sign up</button>
                                     <div class="line-wrap">or</div>
                                     <button ng-click="registerWithFB()" class="btn btn-info col-xs-12" href="#"><i class="m-icon m-icon--facebook-id"></i>Sign up with Facebook</button>
@@ -57,13 +57,13 @@
                                         <span class="tag-icon">
                                         @if(property_exists($i_products,'tag_type'))
                                         @if($i_products->tag_type=="thumb")
-                                        
+
                                             <img src="{{@$i_products->media_link}}" class="round" alt="" />
-                                        
-                                        @else 
+
+                                        @else
                                         <i class="m-icon--shopping-bag-light-green"></i>
                                         @endif
-                                        @else 
+                                        @else
                                         <i class="m-icon--shopping-bag-light-green"></i>
                                         @endif
                                         </span>
@@ -113,7 +113,7 @@
                                                             <span class="name-holder">
                                                                 {{@$i_products->product_name}}
                                                             </span>
-                                                        </a> 
+                                                        </a>
                                                     </div>
                                                     <div class="col-xs-4 col-sm-2">
                                                         <a href="{{@$i_products->affiliate_link}}" class="get solid pull-right ">Get it</a>
@@ -142,7 +142,7 @@
                         <a ng-click="filterContent(null)"  href="" data-filterby="all" class="all-link">
                             <i class="m-icon m-icon--menu"></i>
                             All
-                            
+
                         </a>
                     </li>
                     <li ng-class="{active: activeMenu == '2'}" ng-click="activeMenu='2'">
@@ -181,11 +181,11 @@
         </div>
 
         <!-- custom angular template - START -->
-        
+
         @include('layouts.parts.product-popup')
 
         <!-- custom angular template - END -->
-        
+
         </div>
      <script>
     jQuery(document).ready(function($) {

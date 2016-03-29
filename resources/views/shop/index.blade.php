@@ -72,7 +72,7 @@
                 </fieldset>
                 <div class="row desktop-view hidden-xs hidden-sm">
                     <div class="col-xs-3 shop-by-category-item smart-home active" data-submenu="smart-home">
-                        <img src="/assets/images/category-home.png" alt=""><br><br>
+                        <img src="<?php echo env('ASSETS_CDN') ?>/images/category-home.png" alt=""><br><br>
                         <span><a href="/shop/smart-home">Smart Home</a></span>
                         <!--<a href="#" class="show-menus">
                             <i class="m-icon--Add-Active"></i>
@@ -141,7 +141,7 @@
                     <div class="">
                         <div class="col-sm-12 shop-by-category-item smart-home" >
                             <a href="/shop/smart-home" class="shop-by-category-item-link"> 
-                                <img src="/assets/images/category-home.png" alt="">
+                                <img src="<?php echo env('ASSETS_CDN') ?>/images/category-home.png" alt="">
                                 Smart Home
                             </a> &nbsp; 
                             <a data-content="smart-home" class="show-and-hide">
@@ -298,7 +298,7 @@
         </div>
         @include('layouts.parts.product-popup')
     </div>
-    <script src="/assets/js/vendor/angular-busy.min.js"></script>
-    <script src="/assets/js/angular-custom/custom.paging.js"></script>
-    <script src="/assets/js/angular-custom/public.common.js"></script>
+    <script src="<?php echo env('ASSETS_CDN') ?>/js/vendor/angular-busy.min.js"></script>
+    <script src="<?php echo env('ASSETS_CDN') ?>/js/angular-custom/custom.paging.js"></script>
+    <script src="<?php echo env('ASSETS_CDN') ?>/js/angular-custom/public.common.js"></script>
 @stop
