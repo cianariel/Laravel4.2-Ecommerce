@@ -259,14 +259,29 @@
                 <div class="box-item__overlay"></div>
                 <ul class="social-stats">
                     <li class="social-stats__item">
-                        <a href="#">
+
+                        <?php
+
+                        $userId = !empty($userData['id'] ) ? $userData['id']  : 0;
+
+                      //  $urlTmp = parse_url(get_the_permalink())['path'];
+                      //  $urlTmp = str_replace('/ideas/','',$urlTmp);
+                        //  die($urlTmp);
+
+                        //echo $urlTmp;
+                        ?>
+
+                        <heart-counter-public uid="<?php echo $userId ?>" iid="{{ $product->id }}" plink="{{ $product->product_permalink }}" sec='ideas'>
+
+                        </heart-counter-public>
+                        <!--<a href="#">
                             <i class="m-icon m-icon--ScrollingHeaderHeart">
                                             <span class="m-hover">
                                                 <span class="path1"></span><span class="path2"></span>
                                             </span>
                             </i>
                             <span class="social-stats__text">157</span>
-                        </a>
+                        </a>-->
                     </li>
                 </ul>
                 <div class="round-tag round-tag--product">
