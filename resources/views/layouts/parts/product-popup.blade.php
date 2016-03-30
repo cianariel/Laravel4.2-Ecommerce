@@ -19,12 +19,6 @@
                             <div class="pull-left p-nest-protect">
                                 <ul class="">
                                     <li>
-                                        <i class="m-icon m-icon--alert"></i> GetAlerts
-                                    </li>
-                                    <li>
-                                        <i class="m-icon m-icon--shares-active"></i> 99
-                                    </li>
-                                    <li>
                                         <a href="#">
                                             <i class="m-icon m-icon--ScrollingHeaderHeart">
                                                 <span class="m-hover">
@@ -32,6 +26,12 @@
                                                 </span>
                                             </i> 768
                                         </a>
+                                    </li>
+                                    <li>
+                                        <i class="m-icon m-icon--alert"></i> GetAlerts
+                                    </li>
+                                    <li>
+                                        <i class="m-icon m-icon--shares-active"></i> 99
                                     </li>
                                 </ul>
                             </div>
