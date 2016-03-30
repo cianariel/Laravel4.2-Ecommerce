@@ -38,6 +38,7 @@
                 if($ImageResult['status_code'] == 200)
                 {
                    $newGiveaway->giveaway_image = $ImageResult['result'];
+                   $newGiveaway->giveaway_status = 1;
                 }
                 $newGiveaway->save();
                 return Redirect::to('/admin/giveaway-edit/'.$newGiveaway->id)->with('id', $newGiveaway->id);
