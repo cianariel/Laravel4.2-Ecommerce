@@ -5304,7 +5304,7 @@ body.single #hero, body.product-details #hero, body.profilepage #hero, body.shop
       padding-left: 15px;
       background-position: left center;
       background-repeat: no-repeat; }
-      .top-product-controls li a:hover {
+      .top-product-controls li a:hover, .top-product-controls li a.active {
         color: #ED295C; }
       .top-product-controls li a .m-icon {
         font-size: 28px;
@@ -7285,7 +7285,8 @@ header.sub-head {
   .like-nav li:last-child {
     width: auto; }
   .like-nav li .social-stats {
-    margin-top: 5px; }
+    margin-top: 5px;
+    float: left; }
     .like-nav li .social-stats a {
       float: none;
       padding: 0px; }
@@ -7337,7 +7338,7 @@ body.single .related-items {
     body.single .like-nav > li {
       float: none; }
       body.single .like-nav > li:first-child {
-        top: -27px; } }
+        /*                    top: -27px;*/ } }
 
 .idea-stories .article-content p {
   font-family: montserratlight;
@@ -8252,15 +8253,16 @@ footer.about-footer {
       right: 27% !important; }
     #hero-nav a:not(.box-link) {
       /*      padding-left: 35px;*/
-      padding-top: 20px;
+      /*      padding-top: 20px;*/
       background-size: 30px;
       /*      margin-right: 1%;*/
       font-size: 1.3rem; }
       #hero-nav a:not(.box-link).home-link {
         display: none; }
       #hero-nav a:not(.box-link):not(.home-link) {
+        /*        //padding-top: 30px;*/
         background-position: center 13px !important;
-        min-width: 72px;
+        /*        min-width: 72px;*/
         text-align: center; }
       #hero-nav a:not(.box-link).products-link {
         background-position: 56px 13px !important; }

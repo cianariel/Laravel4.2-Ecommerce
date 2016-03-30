@@ -112,7 +112,7 @@
         <div class="color-overlay"></div>
     </section>
     <nav id="hero-nav" class="col-sm-12">
-        <div class="container full-620  fixed-sm">
+            <div class="container ">
 
             <ul class="share-buttons hidden-xs col-lg-7 col-md-8 pull-right">
                 <?php loadLaravelView('share-buttons'); ?>
@@ -123,13 +123,11 @@
                 </li>
             </ul>
 
-            <ul class="like-nav hidden-xs">
+                <ul class="like-nav ">
                 <li>
                     <div class="social-stats  ">
                         <div class="social-stats__item">
-                            <a href="#" class="likes"
-                               ng-click="heartAction()"
-                            >
+                                <a href="#" class="likes" ng-click="heartAction()" >
                                 <i ng-class="unHeart != false ? 'm-icon m-icon--heart-solid' : 'm-icon m-icon--ScrollingHeaderHeart'">
                                         <span class="m-hover">
                                             <span class="path1"></span><span class="path2"></span>
@@ -141,10 +139,10 @@
                     </div>
 
                 </li>
-                <li><a class="author" href="#"></a></li>
-                <li><a class="author" href="#"></a></li>
-                <li><a class="author" href="#"></a></li>
-                <li><a class="likes" href="#">+ 186</a></li>
+                    <li class="hidden-xs"><a class="author" href="#"></a></li>
+                    <li class="hidden-xs"><a class="author" href="#"></a></li>
+                    <li class="hidden-xs"><a class="author" href="#"></a></li>
+                    <li class="hidden-xs"><a class="likes" href="#">+ 186</a></li>
             </ul>
 
 

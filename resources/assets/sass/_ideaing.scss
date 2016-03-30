@@ -1135,7 +1135,7 @@ body.single, body.product-details, body.profilepage, body.shoppage, body.error-p
       background-position: left center;
       background-repeat: no-repeat;
 
-      &:hover{
+      &:hover, &.active{
         color: #ED295C;
       }
       
@@ -4248,6 +4248,7 @@ header.sub-head{
     }
     .social-stats {
         margin-top: 5px;
+        float: left;
         a{
             float: none;
             padding: 0px;
@@ -4329,7 +4330,7 @@ body.single{
             > li{
                 float: none;
                 &:first-child{
-                    top: -27px;
+/*                    top: -27px;*/
                 }
             }
         }
@@ -5765,7 +5766,7 @@ footer.about-footer{
       //background-position: left;
       //background-repeat: no-repeat;
 /*      padding-left: 35px;*/
-      padding-top: 20px;
+/*      padding-top: 20px;*/
       background-size: 30px;
 /*      margin-right: 1%;*/
       font-size: 1.3rem;
@@ -5775,10 +5776,10 @@ footer.about-footer{
       }
 
       &:not(.home-link) {
-        //padding-top: 30px;
+/*        //padding-top: 30px;*/
         background-position: center 13px !important;
         //margin-top: 7px;
-        min-width: 72px;
+/*        min-width: 72px;*/
         text-align: center;
       }
       //
