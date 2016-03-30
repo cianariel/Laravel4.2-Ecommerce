@@ -564,11 +564,10 @@ function custom_login(){
                 wp_set_auth_cookie($userID);
 
                 wp_redirect(get_admin_url()); exit;
-            }
+            } 
 
         }else{
-            wp_redirect('https://ideaing.com/login#?from=cms');
-            exit();
+             
         }
     }
 }
@@ -623,5 +622,17 @@ function create_dwb_menu() {
     $wp_admin_bar->add_menu(array('id' => $menu_id, 'title' => __('App Admin Panel'), 'href' => '/admin/dashboard'));
 }
 add_action('admin_bar_menu', 'create_dwb_menu', 2000);
+
+
+    add_filter( 'the_content', 'wpse44503_filter_content' );
+function wpse44503_filter_content( $content ) {
+    
+     $newURL = str_replace('ideaing-ideas.s3.amazonaws.com', 'd3f8t323tq9ys5.cloudfront.net', $content);
+
+    return $newURL; 
+}
+
+
+
 
 ?>
