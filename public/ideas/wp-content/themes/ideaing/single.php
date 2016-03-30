@@ -107,7 +107,7 @@
             </ul>
         </div>
 
-        <div class="hero-background" style="background-image:url( {{getThumbnailLink($post->ID)}} ) "></div>
+        <div class="hero-background" style="background-image:url( {{str_replace('ideaing-ideas.s3.amazonaws.com', 'd3f8t323tq9ys5.cloudfront.net', getThumbnailLink($post->ID))}} ) "></div>
         <!-- TODO - use as the hero-bg					--><?php //the_post_thumbnail(); // Fullsize image for the single post ?>
         <div class="color-overlay"></div>
     </section>
@@ -257,14 +257,29 @@
                 <div class="box-item__overlay"></div>
                 <ul class="social-stats">
                     <li class="social-stats__item">
-                        <a href="#">
+
+                        <?php
+
+                        $userId = !empty($userData['id'] ) ? $userData['id']  : 0;
+
+                      //  $urlTmp = parse_url(get_the_permalink())['path'];
+                      //  $urlTmp = str_replace('/ideas/','',$urlTmp);
+                        //  die($urlTmp);
+
+                        //echo $urlTmp;
+                        ?>
+
+                        <heart-counter-public uid="<?php echo $userId ?>" iid="{{ $product->id }}" plink="{{ $product->product_permalink }}" sec='ideas'>
+
+                        </heart-counter-public>
+                        <!--<a href="#">
                             <i class="m-icon m-icon--ScrollingHeaderHeart">
                                             <span class="m-hover">
                                                 <span class="path1"></span><span class="path2"></span>
                                             </span>
                             </i>
                             <span class="social-stats__text">157</span>
-                        </a>
+                        </a>-->
                     </li>
                 </ul>
                 <div class="round-tag round-tag--product">
