@@ -91,6 +91,17 @@
                                             </div>
                                         </div>
                                     </div>
+                                    <div class="row">
+                                        <div class="col-lg-9">
+                                            <div class="form-group">
+                                                <label class="control-label col-md-3">Terms of Conditions:</label>
+                                                <div class="col-md-9">
+                                                    <textarea  rows="6" name="giveaway_toc" class="wysihtml5 form-control"
+                                                                   placeholder="Terms of Conditions" value="{{$giveaway->giveaway_toc}}">{{$giveaway->giveaway_toc}}</textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 <h3 class="form-section">Giveaway Image</h3>
                                 <div class="" id="Giveaway">
                                     
