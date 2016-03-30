@@ -50,7 +50,7 @@
                                 <div class="feed-body ">
                                     <div class="row">
                                         <div class="col-xs-12">
-                                            <img src="<?php echo env('ASSETS_CDN') ?>/images/feed1.jpg">
+                                            <img src="/assets/images/feed1.jpg">
                                         </div>
                                         <div class="col-xs-12">
                                             <br>
@@ -97,7 +97,7 @@
                                 <div class="feed-body ">
                                     <div class="row">
                                         <div class="col-xs-12">
-                                            <img src="<?php echo env('ASSETS_CDN') ?>/images/feed1.jpg">
+                                            <img src="/assets/images/feed1.jpg">
                                         </div>
                                         <div class="col-xs-12">
                                             <br>

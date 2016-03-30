@@ -1,9 +1,9 @@
-<link href="<?php echo env('ASSETS_CDN') ?>/admin/vendor/global/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet"
+<link href="/assets/admin/vendor/global/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet"
       type="text/css"/>
-<script src="<?php echo env('ASSETS_CDN') ?>/js/vendor/textAngular-sanitize.min.js"></script>
-<script src="<?php echo env('ASSETS_CDN') ?>/js/vendor/angular-confirm.js"></script>
-<script src="<?php echo env('ASSETS_CDN') ?>/js/vendor/textAngular-rangy.min.js"></script>
-<script src="<?php echo env('ASSETS_CDN') ?>/js/vendor/textAngular.min.js"></script>
+<script src="/assets/js/vendor/textAngular-sanitize.min.js"></script>
+<script src="/assets/js/vendor/angular-confirm.js"></script>
+<script src="/assets/js/vendor/textAngular-rangy.min.js"></script>
+<script src="/assets/js/vendor/textAngular.min.js"></script>
 <?php
    
    /* if(function_exists('is_single')){

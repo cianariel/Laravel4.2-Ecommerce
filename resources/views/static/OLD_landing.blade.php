@@ -99,12 +99,12 @@
 
             <div class="col-xs-6 grid-box full-620">
                 <div class="img-wrap">
-                    <img class="img-responsive" src="<?php echo env('ASSETS_CDN') ?>/images/dummies/box-image-dummy.png">
+                    <img class="img-responsive" src="/assets/images/dummies/box-image-dummy.png">
                     <a href="#" class="overlay-tag category-tag top product">Category: Products</a>
 
                     <div class="color-overlay">
                         <b class="price">$199</b>
-                        <img class="vendor-logo" src="<?php echo env('ASSETS_CDN') ?>/images/dummies/amazon.png">
+                        <img class="vendor-logo" src="/assets/images/dummies/amazon.png">
                         <div class="get solid">Get it</div>
                         <h4>Venetian Louge Suite</h4>
                     </div>
@@ -118,11 +118,11 @@
             </div>
             <div class="col-xs-6 grid-box full-620">
                 <div class="img-wrap">
-                    <img class="img-responsive" src="<?php echo env('ASSETS_CDN') ?>/images/dummies/img-small.jpg">
+                    <img class="img-responsive" src="/assets/images/dummies/img-small.jpg">
                     <a href="#" class="overlay-tag category-tag top product">Category: Products</a>
                     <div class="color-overlay">
                         <b class="price">$199</b>
-                        <img class="vendor-logo" src="<?php echo env('ASSETS_CDN') ?>/images/dummies/amazon.png">
+                        <img class="vendor-logo" src="/assets/images/dummies/amazon.png">
                         <div class="get solid">Get it</div>
                         <h4>Venetian Louge Suite</h4>
                     </div>
@@ -137,7 +137,7 @@
             </div>
             <div class="col-xs-12 grid-box big-box full-620">
                 <div class="img-wrap">
-                    <img class="img-responsive" src="<?php echo env('ASSETS_CDN') ?>/images/dummies/img-small.jpg">
+                    <img class="img-responsive" src="/assets/images/dummies/img-small.jpg">
                     <a href="#" class="overlay-tag category-tag top idea">Style</a>
                     <a href="#" class="overlay-tag bottom author">Get it</a>
 
@@ -173,7 +173,7 @@
                 <div class="grid-box sidebar-box">
                     <a href="#" class="overlay-tag top-left-corner number">1</a>
                     <div class="img-wrap">
-                            <img class="img-responsive" src="<?php echo env('ASSETS_CDN') ?>/images/dummies/img-small.jpg">
+                            <img class="img-responsive" src="/assets/images/dummies/img-small.jpg">
                             <a class="sidebar-social-counter like">31</a>
                         </div>
                     <h5><a href="#">4 Tier wood utility</a></h5>
@@ -185,7 +185,7 @@
                 <div class="grid-box sidebar-box">
                     <a href="#" class="overlay-tag top-left-corner number">1</a>
                     <div class="img-wrap">
-                            <img class="img-responsive" src="<?php echo env('ASSETS_CDN') ?>/images/dummies/box-image-dummy.png">
+                            <img class="img-responsive" src="/assets/images/dummies/box-image-dummy.png">
                             <a class="sidebar-social-counter like">31</a>
                         </div>
                     <h5><a href="#">4 Tier wood utility</a></h5>
@@ -197,7 +197,7 @@
                 <div class="grid-box sidebar-box">
                     <a href="#" class="overlay-tag top-left-corner number">1</a>
                     <div class="img-wrap">
-                            <img class="img-responsive" src="<?php echo env('ASSETS_CDN') ?>/images/dummies/img-small.jpg">
+                            <img class="img-responsive" src="/assets/images/dummies/img-small.jpg">
                             <a class="sidebar-social-counter like">31</a>
                         </div>
                     <h5><a href="#">4 Tier wood utility</a></h5>

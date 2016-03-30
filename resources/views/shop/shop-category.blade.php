@@ -72,7 +72,7 @@
     </nav>
 
     <section id="category-banner" class="landing-hero {{$currentCategory->extra_info}}-hero">
-<!--        <img src="<?php echo env('ASSETS_CDN') ?>/images/shop-category-banner.png" class="img-responsive" alt="">-->
+<!--        <img src="/assets/images/shop-category-banner.png" class="img-responsive" alt="">-->
         <img src="{{$currentCategory->background_image}}" class="img-responsive" alt="" style="width: 100%;">
         <div class="head-wrap container">
             <!--  class name: smart-home, travel, wearables, home-decor -->
@@ -128,7 +128,7 @@
         @include('layouts.parts.product-popup')
     </div>
     
-    <script src="<?php echo env('ASSETS_CDN') ?>/js/vendor/angular-busy.min.js"></script>
-    <script src="<?php echo env('ASSETS_CDN') ?>/js/angular-custom/custom.paging.js"></script>
-    <script src="<?php echo env('ASSETS_CDN') ?>/js/angular-custom/public.common.js"></script>
+    <script src="/assets/js/vendor/angular-busy.min.js"></script>
+    <script src="/assets/js/angular-custom/custom.paging.js"></script>
+    <script src="/assets/js/angular-custom/public.common.js"></script>
 @stop

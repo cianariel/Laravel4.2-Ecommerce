@@ -1,8 +1,8 @@
 @extends('layouts.admin')
 
 @section('content')
-<link href="<?php echo env('ASSETS_CDN') ?>/admin/vendor/global/plugins/datatables/datatables.min.css" rel="stylesheet" type="text/css" />
-<link href="<?php echo env('ASSETS_CDN') ?>/admin/vendor/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.css" rel="stylesheet" type="text/css" />
+<link href="/assets/admin/vendor/global/plugins/datatables/datatables.min.css" rel="stylesheet" type="text/css" />
+<link href="/assets/admin/vendor/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.css" rel="stylesheet" type="text/css" />
 
 
 <div class="page-content-wrapper">
@@ -80,10 +80,10 @@
 </div>
 @stop
 @section('pagelevelscript')
-<script src="<?php echo env('ASSETS_CDN') ?>/admin/vendor/global/scripts/datatable.js" type="text/javascript"></script>
-<script src="<?php echo env('ASSETS_CDN') ?>/admin/vendor/global/plugins/datatables/datatables.min.js" type="text/javascript"></script>
-<script src="<?php echo env('ASSETS_CDN') ?>/admin/vendor/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.js" type="text/javascript"></script>
-<script src="<?php echo env('ASSETS_CDN') ?>/admin/vendor/pages/scripts/table-datatables-managed.js" type="text/javascript"></script>
+<script src="/assets/admin/vendor/global/scripts/datatable.js" type="text/javascript"></script>
+<script src="/assets/admin/vendor/global/plugins/datatables/datatables.min.js" type="text/javascript"></script>
+<script src="/assets/admin/vendor/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.js" type="text/javascript"></script>
+<script src="/assets/admin/vendor/pages/scripts/table-datatables-managed.js" type="text/javascript"></script>
 <script>
 $(function() {
     $('#btn_delete_room').click(function(){
