@@ -9,7 +9,7 @@
               <h2 id="site-subhead" style="display:none;">Ideas for Smarter Living</h2>';
     }
     ?>
-    <section id="hero" class="landing-hero royalSlider heroSlider rsMinW room-hero slider" style="display: none;">
+    <section id="hero" class="landing-hero">
         @if(isset($homehero))
             @foreach( $homehero as $key => $image )
                 <div class="rsContent">
@@ -190,34 +190,4 @@
         <!-- custom angular template - END -->
         
         </div>
-     <script>
-    jQuery(document).ready(function($) {
-      $('#hero').royalSlider({
-        arrowsNav: true,
-        loop: false,
-        keyboardNavEnabled: true,
-        controlsInside: false,
-        imageScaleMode: 'fit',
-        arrowsNavAutoHide: false,
-        controlNavigation: 'bullets',
-        thumbsFitInViewport: false,
-        navigateByClick: false,
-        startSlideId: 0,
-        autoPlay: false,
-        transitionType:'move',
-        globalCaption: false,
-        deeplinking: {
-          enabled: true,
-          change: false
-        },
-        /* size of all images http://help.dimsemenov.com/kb/royalslider-jquery-plugin-faq/adding-width-and-height-properties-to-images */
-        imgWidth: "100%",
-        imageScaleMode: "fill",
-//        autoScaleSliderWidth: 1500,
-//        autoScaleSliderHeight: 500,
-//        autoScaleSlider: true
-      });
-      $('.royalSlider').css('display', 'block');
-    });
-    </script>
 @stop
