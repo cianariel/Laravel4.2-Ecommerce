@@ -109,7 +109,7 @@
                                         <div class="col-md-12">
                                             <div class="fileinput fileinput-new" data-provides="fileinput">
                                                 <div class="fileinput-new thumbnail" style="width: 100%;" data-image="giveaway_image">
-                                                    <img style="width: 100%;" src="http://www.placehold.it/1500x550/EFEFEF/AAAAAA&amp;text=no+image" alt="" />
+                                                    <img style="width: 100%;" src="http://www.placehold.it/500x350/EFEFEF/AAAAAA&amp;text=no+image" alt="" />
                                                 </div>    
                                                 <div class="fileinput-preview fileinput-exists thumbnail" style="width: 100%;" data-image="giveaway_image"> 
                                                     @if($giveaway->giveaway_image)
@@ -123,7 +123,6 @@
                                                         <span class="fileinput-exists"> Change </span>
                                                         <input type="file" id="giveaway_image" name="giveaway_image" class="hero-image" accept='image/*'> </span>
                                                     <a href="javascript:;" class="btn red fileinput-exists" data-dismiss="fileinput"> Remove </a>
-                                                    <span style="float:right">image should be 1500 x 500</span>
                                                 </div>
                                             </div>
                                         </div>
@@ -138,6 +137,8 @@
                                                 </div>
                                             </div>
                                         </div>
+                                    </div>
+                                    <div class="row">
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label class="col-md-3 control-label">Alt Text:

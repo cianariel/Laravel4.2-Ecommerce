@@ -34,11 +34,11 @@
             {
                 $inputData = \Input::all();
                 $newGiveaway = $this->giveaway->create($inputData);
-                /*$ImageResult = $this->addMediaForRoom($request,'giveaway_image',$newGiveaway->id);
+                $ImageResult = $this->addMediaForGiveaway($request,'giveaway_image',$newGiveaway->id);
                 if($ImageResult['status_code'] == 200)
                 {
                    $newGiveaway->giveaway_image = $ImageResult['result'];
-                }*/
+                }
                 $newGiveaway->save();
                 return Redirect::to('/admin/giveaway-edit/'.$newGiveaway->id)->with('id', $newGiveaway->id);
             } catch (Exception $ex)
@@ -55,17 +55,15 @@
                 $inputData = \Input::all();
                 $editGiveaway  = Giveaway::find($inputData['giveaway_id']);
                 $editGiveaway->update($inputData);
-                //$editRoom = $this->room->update($inputData);
-                /*$ImageResult = $this->addMediaForGiveaway($request,'giveaway_image',$editGiveaway->id);
+
+                $ImageResult = $this->addMediaForGiveaway($request,'giveaway_image',$editGiveaway->id);
                 if($ImageResult['status_code'] == 200)
                 {
                    $editGiveaway->giveaway_image = $ImageResult['result'];
-                }*/
+                }
 
                 $editGiveaway->save();
                 return Redirect::to('/admin/giveaway-edit/'.$editGiveaway->id)->with('id', $editGiveaway->id);
-                /*return $this->setStatusCode(\Config::get("const.api-status.success"))
-                    ->makeResponse($newProduct);*/
 
             } catch (Exception $ex)
             {
@@ -75,7 +73,7 @@
 
         }
         
-        public function addMediaForGiveaway(Request $request,$filename,$room_id)
+        public function addMediaForGiveaway(Request $request,$filename,$Giveaway_id)
         {
             $fileResponse = [];
 
@@ -106,11 +104,11 @@
                 return $fileResponse;
             } else
             {
-                $fileName = 'room-image-' . uniqid() . '-' . $request->file($filename)->getClientOriginalName();
+                $fileName = 'giveaway-image-' . uniqid() . '-' . $request->file($filename)->getClientOriginalName();
 
                 // pointing filesystem to AWS S3
                 $s3 = Storage::disk('s3');
-                $destinationPath = 'idea/'.$room_id.'/';
+                $destinationPath = 'giveaway/'.$Giveaway_id.'/';
                 $directory = $s3->makeDirectory($destinationPath);
                 // Thumbnail creation and uploading to AWS S3
                 if (in_array($request->file($filename)->guessClientExtension(), array("jpeg", "jpg", "bmp", "png")))
