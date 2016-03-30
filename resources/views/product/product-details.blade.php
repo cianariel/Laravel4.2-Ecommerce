@@ -120,13 +120,12 @@
                 <nav class="top-product-controls">
                     <ul>
                         <li><a href="#" class="get-alerts"><i class="m-icon m-icon--alert"></i>&nbsp; Get alerts</a></li>
-                        <li class="">
-                            <a href="#" ng-class="['likes', {active: unHeart==false}]"
+                        <li class="social-stats__item">
+                            <a href="#" class="likes"
                                ng-init="heartCounterAction(<?php echo $userData['id'] . "," . $productId . "," . "'product'"?>)"
                                ng-click="heartAction(<?php echo $userData['id'] . "," . $productId . "," ."'$permalink'".",". "'product'"?>)"
                             >
-<!--                                <i ng-class="unHeart != false ? 'm-icon m-icon--heart-solid' : 'm-icon m-icon--ScrollingHeaderHeart'">-->
-                                <i ng-class="'m-icon m-icon--heart-solid'">
+                                <i ng-class="unHeart != false ? 'm-icon m-icon--heart-solid' : 'm-icon m-icon--ScrollingHeaderHeart'">
                                         <span class="m-hover">
                                             <span class="path1"></span><span class="path2"></span>
                                         </span>
