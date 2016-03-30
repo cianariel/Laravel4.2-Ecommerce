@@ -183,12 +183,33 @@ class PageController extends ApiController
         curl_setopt($ch, CURLOPT_ENCODING, "");
         $json = curl_exec($ch);
 
-        echo $json;
-        die();
+       // echo $json;
+        //die();
 
-        $return = json_decode($json);
+      //  $return = json_decode($json);
 
-        return $return;
+        $ideaCollection = json_decode($json);
+
+        $newIdeaCollection = new Collection();
+        $comment = new App\Models\Comment();
+
+        if($ideaCollection){
+
+            foreach ($ideaCollection as $singleIdea) {
+
+                $tempIdea = collect($singleIdea);
+
+                $countValue = $comment->ideasCommentCounter($singleIdea->id);
+
+                $tempIdea->put('CommentCount', $countValue);
+
+                $newIdeaCollection->push($tempIdea);
+
+            }
+        }
+
+
+        return $newIdeaCollection->toArray();//$return;
     }
 
 
