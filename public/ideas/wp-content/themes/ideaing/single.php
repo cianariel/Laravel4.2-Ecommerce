@@ -171,13 +171,7 @@
 
                     </h4>
                     <time datetime="{{the_date('Y-m-d')}}">{{the_time( get_option( 'date_format' ) )}}</time>
-                    <!--                        <div class="content-tags">-->
-                    <!--                            <ul>-->
-                    <!--                                <li><a href="#" class="ideas-link">12 Ideas</a></li>-->
-                    <!--                                <li><a href="#" class="products-link">95 Products</a></li>-->
-                    <!--                                <li><a href="#" class="photos-link">255 photos</a></li>-->
-                    <!--                            </ul>-->
-                    <!--                        </div>-->
+
                 </div>
 
 
@@ -257,29 +251,19 @@
                 <div class="box-item__overlay"></div>
                 <ul class="social-stats">
                     <li class="social-stats__item">
-
                         <?php
 
                         $userId = !empty($userData['id'] ) ? $userData['id']  : 0;
 
-                      //  $urlTmp = parse_url(get_the_permalink())['path'];
-                      //  $urlTmp = str_replace('/ideas/','',$urlTmp);
-                        //  die($urlTmp);
+                        $urlTmp = parse_url(get_the_permalink())['path'];
+                        $urlTmp = str_replace('/ideas/','',$urlTmp);
 
                         //echo $urlTmp;
                         ?>
 
-                        <heart-counter-public uid="<?php echo $userId ?>" iid="{{ $product->id }}" plink="{{ $product->product_permalink }}" sec='ideas'>
+                        <heart-counter-public uid="<?php echo $userId ?>" iid="{{ $product->id }}" plink="{{ $urlTmp }}" sec='ideas'>
 
                         </heart-counter-public>
-                        <!--<a href="#">
-                            <i class="m-icon m-icon--ScrollingHeaderHeart">
-                                            <span class="m-hover">
-                                                <span class="path1"></span><span class="path2"></span>
-                                            </span>
-                            </i>
-                            <span class="social-stats__text">157</span>
-                        </a>-->
                     </li>
                 </ul>
                 <div class="round-tag round-tag--product">
@@ -384,6 +368,7 @@
                             <a href="{{get_author_posts_url( get_the_author_meta( 'ID' ) )}}" class="user-widget">
                                 <img class="user-widget__img" src="{{get_avatar_url( get_the_author_email(), '80' )}}">
                                 <span class="user-widget__name">{{get_the_author()}}</span>
+                                {{ get_the_author_meta( 'user_login' ) }}
                             </a>
                         </div>
                     </div>
