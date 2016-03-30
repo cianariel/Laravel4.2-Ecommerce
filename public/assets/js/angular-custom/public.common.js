@@ -94,6 +94,50 @@ publicApp.directive('heartCounterPublic', ['$http', function($http) {
     }
 }]);
 
+// directive for pulling author info pulling in grid items
+publicApp.directive('showAuthorInfo', ['$http', function($http) {
+    return {
+        restrict: 'E',
+        transclude: true,
+        replace: true,
+        scope:{
+            email:'@',
+            url:'@'
+
+        },
+        controller:function($scope, $element, $attrs){
+
+            $scope.authorInfo = function(){
+
+                $http({
+                    url: '/api/info-raw/'+ $scope.email,
+                    method: "GET",
+                }).success(function (data) {
+
+                    $scope.authorName = data.name;
+                    $scope.authorImage = data.medias[0].media_link;
+                    $scope.authorBio = data.user_profile.personal_info;
+
+                    // console.log($scope.authorName," - ",$scope.authorImage);
+
+                });
+            };
+
+            $scope.authorInfo();
+
+        },
+
+        template: '      <div class="box-item__author">'+
+        '                    <a href="{{ url }}" class="user-widget">'+
+        '                       <img class="user-widget__img" src="{{ authorImage }}">'+
+        '                     <span class="user-widget__name">{{ authorName }}</span>'+
+        '                    </a>'+
+        '                </div>'
+    }
+
+}]);
+
+
 publicApp.config(['$httpProvider', function ($httpProvider) {
     $httpProvider.defaults.headers.common["X-Requested-With"] = 'XMLHttpRequest';
 }]);
@@ -594,7 +638,7 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
         };
 
         $scope.getAuthorInfoByEmail = function(email){
-            console.log("inside");
+            //console.log("inside");
             $http({
                 url: '/api/info-raw/'+ email,
                 method: "GET",

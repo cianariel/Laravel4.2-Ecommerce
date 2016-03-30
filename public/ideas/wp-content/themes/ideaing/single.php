@@ -144,8 +144,6 @@
                     <li class="hidden-xs"><a class="author" href="#"></a></li>
                     <li class="hidden-xs"><a class="likes" href="#">+ 186</a></li>
             </ul>
-
-
         </div>
     </nav>
 </div>
@@ -331,26 +329,18 @@
                         <ul class="social-stats">
                             <li class="social-stats__item">
                                 <?php
-
                                 $userId = !empty($userData['id'] ) ? $userData['id']  : 0;
 
                                 $urlTmp = parse_url(get_the_permalink())['path'];
                                 $urlTmp = str_replace('/ideas/','',$urlTmp);
-                              //  die($urlTmp);
 
-                                //echo $urlTmp;
                                 ?>
 
                                 <heart-counter-public uid="<?php echo $userId ?>" iid="{{ get_the_ID() }}" plink="{{ $urlTmp }}" sec='ideas'>
 
                                 </heart-counter-public>
                             </li>
-                            <!--<li class="social-stats__item">
-                                <a href="#">
-                                    <i class="m-icon m-icon--buble"></i>
-                                    <span class="social-stats__text">157</span>
-                                </a>
-                            </li>-->
+
                         </ul>
 
                         <div class="round-tag round-tag--idea">
@@ -364,20 +354,12 @@
                             <a href="{{the_permalink()}}" class="box-item__read-more">Read More</a>
                         </div>
 
-                        <div class="box-item__author">
-                            <a href="{{get_author_posts_url( get_the_author_meta( 'ID' ) )}}" class="user-widget">
-                                <img class="user-widget__img" src="{{get_avatar_url( get_the_author_email(), '80' )}}">
-                                <span class="user-widget__name">{{get_the_author()}}</span>
-                                {{ get_the_author_meta( 'user_login' ) }}
-                            </a>
-                        </div>
+                        <show-author-info email="{{ htmlentities(get_the_author_meta( 'user_login' )) }}" url="{{ get_author_posts_url( get_the_author_meta( 'ID' ) )}}">
+
+                        </show-author-info>
                     </div>
 
                     <?php
-//                            $data['author'] = get_the_author();
-//                            $data['authorlink'] = get_author_posts_url( get_the_author_meta( 'ID' ) );
-//                            $data['author_id'] = get_the_author_meta( 'ID' );
-//                            $data['avator'] = get_avatar_url( get_the_author_email(), '80' );
                 endwhile;
             }
             ?>
