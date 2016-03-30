@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <img style="margin-left:40%" class="img-responsive " alt="" src="<?php echo env('ASSETS_CDN') ?>/images/ideaing-logo-small.png">
+    <img style="margin-left:40%" class="img-responsive " alt="" src="/assets/images/ideaing-logo-small.png">
 
     <div id="publicApp" ng-app="publicApp" ng-controller="publicController"
          class="col-lg-4" style="float: none;
@@ -52,6 +52,6 @@
             </form>
         </div>
     </div>
-    <script src="<?php echo env('ASSETS_CDN') ?>/js/angular-custom/public.common.js"></script>
+    <script src="/assets/js/angular-custom/public.common.js"></script>
 @stop
 

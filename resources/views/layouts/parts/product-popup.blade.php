@@ -40,7 +40,7 @@
                             <div class="p-get-it-amazon">
                                 <div class="p-body">
                                     <a class="get-round" href="" target="_blank">Get it</a>
-                                    <img src="<?php echo env('ASSETS_CDN') ?>/images/dummies/amazon-2.png">
+                                    <img src="/assets/images/dummies/amazon-2.png">
                                     
                                 </div>
                                 <div class="p-footer">
@@ -171,7 +171,7 @@
                             <div class="p-row-inner p-comment-holder p-add-comment">
                                 <div class="p-comment-row">
                                     <div class="pull-left">
-                                        <img src="<?php echo env('ASSETS_CDN') ?>/images/dummies/author.png" width="50px" class="p-photo">
+                                        <img src="/assets/images/dummies/author.png" width="50px" class="p-photo">
                                     </div>
                                     <div class="p-comment-box-holder">
                                         <div>

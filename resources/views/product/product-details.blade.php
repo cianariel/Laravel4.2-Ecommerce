@@ -435,7 +435,7 @@
                         <div class="reviews-medium-container">
                             <div class="row hidden-xs">
                                 <div class="average-ideaing-line col-xs-4 text-right">
-                                    <img src="<?php echo env('ASSETS_CDN') ?>/images/average-ideaing-left-line.png" alt="">
+                                    <img src="/assets/images/average-ideaing-left-line.png" alt="">
                                 </div>
                                 <div class="text-center col-xs-4">
                                     <div class="average-score">
@@ -450,7 +450,7 @@
 
                                 </div>
                                 <div class="average-ideaing-line col-xs-4 text-left">
-                                    <img src="<?php echo env('ASSETS_CDN') ?>/images/average-ideaing-right-line.png" alt="">
+                                    <img src="/assets/images/average-ideaing-right-line.png" alt="">
                                 </div>
                             </div>
                             <div class="visible-xs">
@@ -727,6 +727,6 @@
     </div>
     <!-- Angular JS and components-->
 
-    <script type="text/javascript" src="<?php echo env('ASSETS_CDN') ?>/js/vendor/autocomplete.js"></script>
-    <script type="text/javascript" src="<?php echo env('ASSETS_CDN') ?>/product/js/custom.product.js"></script>
+    <script type="text/javascript" src="/assets/js/vendor/autocomplete.js"></script>
+    <script type="text/javascript" src="/assets/product/js/custom.product.js"></script>
 @stop

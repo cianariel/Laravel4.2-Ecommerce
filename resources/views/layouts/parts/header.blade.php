@@ -61,14 +61,14 @@ if(function_exists('is_single')){
                                         <i class="m-icon m-icon--logo-without-text-blue">
                                             <span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span><span class="path6"></span><span class="path7"></span><span class="path8"></span><span class="path9"></span><span class="path10"></span><span class="path11"></span><span class="path12"></span><span class="path13"></span><span class="path14"></span><span class="path15"></span><span class="path16"></span><span class="path17"></span><span class="path18"></span>
                                         </i>
-    <!--                                    <img src="<?php echo env('ASSETS_CDN') ?>/images/logo.png" class="img-responsive " alt="">-->
+    <!--                                    <img src="/assets/images/logo.png" class="img-responsive " alt="">-->
                                         <i class="m-icon m-icon--bulb2 scroll-logo">
                                             <span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span><span class="path6"></span><span class="path7"></span><span class="path8"></span><span class="path9"></span><span class="path10"></span>
                                         </i>
                                         <i class="m-icon m-icon--logo-without-text-red">
                                             <span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span><span class="path6"></span><span class="path7"></span><span class="path8"></span><span class="path9"></span><span class="path10"></span><span class="path11"></span><span class="path12"></span><span class="path13"></span><span class="path14"></span><span class="path15"></span><span class="path16"></span><span class="path17"></span><span class="path18"></span>
                                         </i>
-    <!--                                    <img src="<?php echo env('ASSETS_CDN') ?>/images/logo-hover.png" class="img-responsive " alt="">-->
+    <!--                                    <img src="/assets/images/logo-hover.png" class="img-responsive " alt="">-->
                                     </a>
                                 <a id="ideaing-logo" class="center-block visible-xs" href="/">
                                     <i class="m-icon m-icon--bulb2">
@@ -457,7 +457,7 @@ if((isset($userData['user-data']['hide-signup'])) && ($userData['user-data']['hi
                         </p>
                     </div>
                 </div>
-                <div class="img-holder"><img src="<?php echo env('ASSETS_CDN') ?>/images/emailpopupimg.png" style="width:100%; height:100%; position:relative"></div>
+                <div class="img-holder"><img src="/assets/images/emailpopupimg.png" style="width:100%; height:100%; position:relative"></div>
                 <div class="clearfix"></div>
             </div>
         </div>

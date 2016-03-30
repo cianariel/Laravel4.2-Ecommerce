@@ -10,7 +10,7 @@
                         <li class="box-link-ul  active-ul ">
                             <a class="box-link active" href="/user/profile">
                                 <span class="box-link-active-line"></span>
-<!--                                <img class="profile-photo" src="<?php echo env('ASSETS_CDN') ?>/images/profile.jpg" alt="" width="40px"> -->
+<!--                                <img class="profile-photo" src="/assets/images/profile.jpg" alt="" width="40px"> -->
                                 My Profile
                             </a>
                         </li>
@@ -21,7 +21,7 @@
 
         <section id="hero" class="landing-hero">
             <div  ng-app="publicApp" ng-controller="publicController">
-            <div class="hero-background" style="background-image: url('<?php echo env('ASSETS_CDN') ?>/images/landing-hero-3.jpg');"></div>
+            <div class="hero-background" style="background-image: url('/assets/images/landing-hero-3.jpg');"></div>
             <div class="color-overlay"></div>
             <div class="container">
                 <div class="col-sm-6 text-right">
@@ -103,7 +103,7 @@
             @endif
         </div>
     </div>
-    <script src="<?php echo env('ASSETS_CDN') ?>/js/vendor/angular-busy.min.js"></script>
-    <script src="<?php echo env('ASSETS_CDN') ?>/js/angular-custom/custom.paging.js"></script>
-    <script src="<?php echo env('ASSETS_CDN') ?>/js/angular-custom/public.common.js"></script>
+    <script src="/assets/js/vendor/angular-busy.min.js"></script>
+    <script src="/assets/js/angular-custom/custom.paging.js"></script>
+    <script src="/assets/js/angular-custom/public.common.js"></script>
 @stop

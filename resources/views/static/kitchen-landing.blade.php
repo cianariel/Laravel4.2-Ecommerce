@@ -21,7 +21,7 @@
 
         {{--<div class="icon-wrap pull-right">--}}
             {{--<div class="get solid">Get it</div>--}}
-            {{--<img class="vendor-logo" src="<?php echo env('ASSETS_CDN') ?>/images/dummies/amazon-black.png">--}}
+            {{--<img class="vendor-logo" src="/assets/images/dummies/amazon-black.png">--}}
             {{--<b class="price">$199</b>--}}
         {{--</div>--}}
     {{--</header>--}}
@@ -80,7 +80,7 @@ jQuery(document).ready(function($) {
                                <h6>{{$i_products->product_name}}</h6>
                                <div>
                                    Get it from {{$i_products->price}}
-                                   <img class="vendor-logo" src="<?php echo env('ASSETS_CDN') ?>/images/dummies/amazon-black.png">
+                                   <img class="vendor-logo" src="/assets/images/dummies/amazon-black.png">
                                </div>
                            </div>
                         </div>
@@ -131,7 +131,7 @@ jQuery(document).ready(function($) {
             <div class="box-container">
                 <div class="grid-box square not-rounded idea-box col-xs-4 full-620">
                     <div class="img-wrap">
-                        <img class="img-responsive" src="<?php echo env('ASSETS_CDN') ?>/images/dummies/webcam-square.jpg">
+                        <img class="img-responsive" src="/assets/images/dummies/webcam-square.jpg">
 
                         <div class="like-wrap">
                             <a href="#" class="social-pic likes">157</a>
@@ -141,7 +141,7 @@ jQuery(document).ready(function($) {
                         <h4><a href="#">10 Ideas for Gorgeous Kitchens</a></h4>
                         {{--<b>In wooden Kitchen styles</b>--}}
                     </div>
-                    <a href="#" class="overlay-tag bottom author" style="background-image: url('<?php echo env('ASSETS_CDN') ?>/images/dummies/author.png')"><span>Bob Barbarian</span></a>
+                    <a href="#" class="overlay-tag bottom author" style="background-image: url('/assets/images/dummies/author.png')"><span>Bob Barbarian</span></a>
 
                     <time>Posted 5 hours ago</time>
 
@@ -155,7 +155,7 @@ jQuery(document).ready(function($) {
                 </div>
                 <div class="grid-box square not-rounded product-box product col-xs-4 full-620">
                     <div class="img-wrap">
-                        <img class="img-responsive" src="<?php echo env('ASSETS_CDN') ?>/images/dummies/webcam-square.jpg">
+                        <img class="img-responsive" src="/assets/images/dummies/webcam-square.jpg">
 
                         <div class="like-wrap">
                             <a href="#" class="social-pic likes">157</a>
@@ -171,7 +171,7 @@ jQuery(document).ready(function($) {
                         <h4><a href="#">The Awesome Webcam</a></h4>
                         <ul class="prices">
                                 <li>
-                                    <a href="#"><b>$35.00</b> from  <img class="vendor-logo" src="<?php echo env('ASSETS_CDN') ?>/images/dummies/amazon-black.png"></a>
+                                    <a href="#"><b>$35.00</b> from  <img class="vendor-logo" src="/assets/images/dummies/amazon-black.png"></a>
                                 </li>
 
                             </ul>
@@ -180,7 +180,7 @@ jQuery(document).ready(function($) {
                 </div>
                 <div class="grid-box square not-rounded idea-box col-xs-4 full-620">
                     <div class="img-wrap">
-                        <img class="img-responsive" src="<?php echo env('ASSETS_CDN') ?>/images/dummies/webcam-square.jpg">
+                        <img class="img-responsive" src="/assets/images/dummies/webcam-square.jpg">
 
                         <div class="like-wrap">
                             <a href="#" class="social-pic likes">157</a>
@@ -190,7 +190,7 @@ jQuery(document).ready(function($) {
                         <h4><a href="#">10 Ideas for Gorgeous Kitchens</a></h4>
                         {{--<b>In wooden Kitchen styles</b>--}}
                     </div>
-                    <a href="#" class="overlay-tag bottom author" style="background-image: url('<?php echo env('ASSETS_CDN') ?>/images/dummies/author.png')"><span>Bob Barbarian</span></a>
+                    <a href="#" class="overlay-tag bottom author" style="background-image: url('/assets/images/dummies/author.png')"><span>Bob Barbarian</span></a>
 
                     <time>Posted 5 hours ago</time>
                     <div class="color-overlay">
@@ -203,7 +203,7 @@ jQuery(document).ready(function($) {
                 </div>
                 <div class="grid-box square not-rounded idea-box huge col-xs-12 full-620">
                     <div class="img-wrap">
-                        <img class="img-responsive" src="<?php echo env('ASSETS_CDN') ?>/images/dummies/clock.png">
+                        <img class="img-responsive" src="/assets/images/dummies/clock.png">
 
                         <div class="like-wrap">
                             <a href="#" class="social-pic likes">157</a>
@@ -212,7 +212,7 @@ jQuery(document).ready(function($) {
                         <a href="#" class="overlay-tag category-tag top idea">Idea</a>
                         <h4><a href="#">10 Ideas for Gorgeous Kitchens</a></h4>
                     </div>
-                    <a href="#" class="overlay-tag bottom author" style="background-image: url('<?php echo env('ASSETS_CDN') ?>/images/dummies/author.png')"><span>Bob Barbarian</span></a>
+                    <a href="#" class="overlay-tag bottom author" style="background-image: url('/assets/images/dummies/author.png')"><span>Bob Barbarian</span></a>
 
                     <time>Posted 5 hours ago</time>
                     <a href="#" class="overlay-tag bottom featured-badge big">

@@ -53,7 +53,7 @@
                     <div class="feed-body ">
                         <div class="row">
                             <div class="col-xs-4">
-                                <img src="<?php echo env('ASSETS_CDN') ?>/images/feed1.jpg">
+                                <img src="/assets/images/feed1.jpg">
                             </div>
                             <div class="col-xs-8">
                                 <strong>You recently liked a story</strong>: Epic samle happneing right now of all Apple devices in the 2015 Festive season across the boards!
@@ -97,7 +97,7 @@
                     <div class="feed-body ">
                         <div class="row">
                             <div class="col-xs-4">
-                                <img src="<?php echo env('ASSETS_CDN') ?>/images/feed1.jpg">
+                                <img src="/assets/images/feed1.jpg">
                             </div>
                             <div class="col-xs-8">
                                 <strong>You recently liked a story</strong>: Epic samle happneing right now of all Apple devices in the 2015 Festive season across the boards!
@@ -112,7 +112,7 @@
                                     <span class="comment"><i class="m-icon--buble"></i> 758</span>
                                 </div>
                                 <div class="pull-right">
-                                    <strong>From $350.00 on &nbsp;</strong><img src="<?php echo env('ASSETS_CDN') ?>/images/dummies/amazon-black.png" alt="">
+                                    <strong>From $350.00 on &nbsp;</strong><img src="/assets/images/dummies/amazon-black.png" alt="">
                                 </div>
                             </div>
                         </div>
