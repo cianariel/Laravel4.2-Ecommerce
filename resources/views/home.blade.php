@@ -21,7 +21,10 @@
                                 <h2>Ideas for Smarter Living</h2>
                                 <ul>
                                     <li class="get-ideas"><i class="m-icon m-icon--bulb3"></i>Get ideas for a smarter and sexier home</li>
-                                    <li class="share-vote"><i class="m-icon m-icon--heart-id"></i>Share and Vote on the best theme decor</li>
+                                <li class="share-vote">
+                                    <i class="m-icon m-icon--heart-id"></i>Share and Vote on the best theme decor
+                                    <img id="hero-arrow" src="assets/images/home-arrow.png" alt="">
+                                </li>
                                     <li class="shop-cool"><i class="m-icon m-icon--products"></i>Shop for cool gadgets and unique decor</li>
                                 </ul>
                             </div>
@@ -210,9 +213,9 @@
         /* size of all images http://help.dimsemenov.com/kb/royalslider-jquery-plugin-faq/adding-width-and-height-properties-to-images */
         imgWidth: "100%",
         imageScaleMode: "fill",
-        autoScaleSliderWidth: 1500,
-        autoScaleSliderHeight: 500,
-        autoScaleSlider: true
+//        autoScaleSliderWidth: 1500,
+//        autoScaleSliderHeight: 500,
+//        autoScaleSlider: true
       });
       $('.royalSlider').css('display', 'block');
     });

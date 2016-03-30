@@ -5193,7 +5193,7 @@ nav a {
     width: 100%;
     height: 100%; }
   #hero .color-overlay {
-    background-color: rgba(0, 0, 0, 0.2);
+    /*    background-color: rgba(0,0,0,.2);*/
     position: absolute;
     width: 100%;
     height: 100%;
@@ -5292,8 +5292,11 @@ body.single #hero, body.product-details #hero, body.profilepage #hero, body.shop
   box-shadow: none !important; }
 
 .top-product-controls {
-  float: right;
-  margin-top: 10px; }
+  /*  float: right;*/
+  margin-top: 10px;
+  text-align: center; }
+  .top-product-controls > ul {
+    display: inline-block; }
   .top-product-controls li {
     float: left;
     position: relative; }
@@ -5319,7 +5322,7 @@ body.single #hero, body.product-details #hero, body.profilepage #hero, body.shop
           /*          background-image: url("/assets/images/icons/heart-pink.png");*/ }
       .top-product-controls li a.comments {
         /*        background-image: url("/assets/images/icons/chat-white.png");*/
-        padding-left: 40px; }
+        /*        padding-left: 40px;*/ }
         .top-product-controls li a.comments:hover {
           /*          background-image: url("/assets/images/icons/chat-pink.png");*/ }
 
@@ -6942,6 +6945,12 @@ header.sub-head {
 
 .why-us {
   margin-top: 25px; }
+  .why-us #hero-arrow {
+    position: absolute;
+    width: 190px;
+    top: -60px;
+    right: -145px;
+    z-index: 999; }
   .why-us h2 {
     font-size: 3.5rem;
     font-weight: normal;
@@ -8225,10 +8234,10 @@ footer.about-footer {
     /*    padding-bottom: 20px;*/ }
     #hero .hero-background {
       -webkit-filter: none;
-      -moz-filter: blur(2px);
-      -o-filter: blur(2px);
-      -ms-filter: blur(2px);
-      filter: blur(2px); }
+      /*      -moz-filter: blur(2px);*/
+      /*      -o-filter: blur(2px);*/
+      /*      -ms-filter: blur(2px);*/
+      /*      filter: blur(2px);*/ }
     #hero > .container {
       padding-top: 0; }
     #hero.details-hero {
@@ -8287,7 +8296,7 @@ footer.about-footer {
     /*    font-size: 1.8rem;*/ }
   .idea-stories header.story-details {
     padding-bottom: 0; }
-  body.product-details .share-bar .all-shares,
+  /*  body.product-details,*/
   .post.type-post .share-bar .all-shares {
     float: none;
     margin: 0 auto; }
@@ -8319,6 +8328,11 @@ footer.about-footer {
     padding-top: 25%; }
     .why-us li {
       background-position: 10px 15px !important; }
+      .why-us li .m-icon {
+        float: none;
+        position: relative;
+        margin-right: 10px;
+        top: 5px; }
     .why-us .btn {
       margin: 0 auto;
       display: block;
@@ -10276,6 +10290,9 @@ body.search #search-header {
   text-align: center;
   padding-top: 12px; }
 
+body.homepage #hero {
+  height: 634px; }
+
 @media (max-width: 620px) {
   .reviews-medium-container .average-score .caption {
     padding-top: 17px; } }
@@ -10339,7 +10356,9 @@ body.search #search-header {
   .reviews-service-holder .outer-line .line-value {
     top: -27px;
     right: 0px;
-    font-size: 16px; } }
+    font-size: 16px; }
+  #hero-arrow {
+    display: none; } }
 
 /* Hasan 25-03-2016 */
 #full-width-slider {
