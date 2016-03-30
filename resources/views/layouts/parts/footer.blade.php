@@ -12,12 +12,11 @@
             </ul>
         </div>
         <div class="col-sm-3 col-xs-12">
-            <h4 class="green">Explore</h4>
-            <ul>
-                <li><a href="#">Share your ideas</a></li>
-                <li><a href="#">Sell on Ideaing</a></li>
-                <li><a href="#">Professional Installers</a></li>
-            </ul>
+            <h4 class="green">Giveaway</h4>
+            <?php
+                $giveaway = PageHelper::getGiveaway();
+                echo "<img src='".$giveaway->giveaway_image."' />"
+            ?>
         </div>
         <div class="col-sm-3 col-xs-12 social-connect">
             <h4 class="orange">Let's connect</h4>
