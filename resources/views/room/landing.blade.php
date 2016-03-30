@@ -37,20 +37,22 @@
                                     <img src="{{@$i_products->media_link}}" class="round" alt="" />
                                 </a>
                                <div class="hover-box">
-                                   <h6>{{@$i_products->product_name}}</h6>
-                                       <div class="icon-wrap" style="height: 90px">
-                                            <a class="category-tag get-round" href="{{@$i_products->affiliate_link}}" target="_blank">
-                                                Get it
-                                            </a>
-                                            <div style="border:none">
-                                            <b class="price">
-                                                &nbsp;
-                                                @if(isset($i_products->sale_price))
-                                                    ${{$i_products->sale_price}}
-                                                @endif
-                                            </b>
-                                            </div>
+                                    <a class="{{$i_products->product_color}}-border" href="/product/{{@$i_products->product_permalink}}">
+                                        <h6>{{@$i_products->product_name}}</h6>
+                                    </a>
+                                   <div class="icon-wrap" style="height: 90px">
+                                        <a class="category-tag get-round" href="{{@$i_products->affiliate_link}}" target="_blank">
+                                            Get it
+                                        </a>
+                                        <div style="border:none">
+                                        <b class="price">
+                                            &nbsp;
+                                            @if(isset($i_products->sale_price))
+                                                ${{$i_products->sale_price}}
+                                            @endif
+                                        </b>
                                         </div>
+                                    </div>
                                </div>
                             </div>
                             @endif

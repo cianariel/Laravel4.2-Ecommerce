@@ -909,6 +909,7 @@ nav {
 
   &.landing-hero .container{
     padding-top: 100px;
+    min-height: 450px;
   }
 
   .container{
@@ -918,7 +919,7 @@ nav {
 
 }
 
-body.single, body.product-details, body.profilepage, body.shoppage, body.error-page, body.aboutus-page, body.privacy-policy-page, body.terms-of-use-page, body.contactus-page{
+body.single, body.product-details, body.profilepage, body.shoppage, body.error-page, body.aboutus-page, body.giveaway-page , body.privacy-policy-page, body.terms-of-use-page, body.contactus-page{
   .mid-nav.rooms{
     display: none;
   }
@@ -6785,7 +6786,7 @@ footer.about-footer{
 }
 
 
-body.shoppage, body.profilepage, body.single-post, body.product-details, body.aboutus-page, body.privacy-policy-page, body.terms-of-use-page, body.contactus-page{
+body.shoppage, body.profilepage, body.single-post, body.product-details, body.aboutus-page, body.giveaway-page, body.privacy-policy-page, body.terms-of-use-page, body.contactus-page{
     .clearfix.pocket{
         height: 100px;
     }
@@ -8869,4 +8870,19 @@ body.homepage{
 }
 .photoCopy a {
   color: grey;
+}
+body.giveaway-page{
+  .giveaway-row{
+    padding-top: 100px;
+  }
+  .giveaway-row-2{
+    margin-top: 50px; 
+    margin-bottom: 50px; 
+  }
+  .giveaway_button{
+   margin: 0px auto; 
+   width: 100px;
+   margin-top: 30px;
+   height: 60px;
+  }
 }
