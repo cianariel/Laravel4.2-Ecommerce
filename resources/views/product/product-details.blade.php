@@ -119,9 +119,8 @@
 
                 <nav class="top-product-controls">
                     <ul>
-                        <li><a href="#" class="get-alerts"><i class="m-icon m-icon--alert"></i>&nbsp; Get alerts</a></li>
                         <li class="">
-                            <a href="#" ng-class="['likes', {active: unHeart==false}]"
+                            <a href="#" ng-class="['likes', {active: unHeart!=false}]"
                                ng-init="heartCounterAction(<?php echo $userData['id'] . "," . $productId . "," . "'product'"?>)"
                                ng-click="heartAction(<?php echo $userData['id'] . "," . $productId . "," ."'$permalink'".",". "'product'"?>)"
                             >
@@ -135,6 +134,7 @@
                             </a>
 
                         </li>
+                        <li><a href="#" class="get-alerts"><i class="m-icon m-icon--alert"></i>&nbsp; Get alerts</a></li>
                         <li><a href="#" data-scrollto="#comments" class="comments"><i class="m-icon m-icon--discuss-products"></i>&nbsp; <?php echo "{{ commentsCount }}" ?></a></li>
                     </ul>
                 </nav>
