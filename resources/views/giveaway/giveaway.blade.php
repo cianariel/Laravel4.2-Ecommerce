@@ -20,7 +20,7 @@
 	    	<div class='row'>
 	        	<div class="col-md-7 col-xs-8  hero-box" style="text-align: center;">
 				        <div class = 'giveaway_title'><h2>{{$giveaway->giveaway_title}}</h2></div>
-				        <div class = 'giveaway_img'><img src = '/assets/images/about1.png' class = 'giveaway_image'></div>
+				        <div class = 'giveaway_img'><img src = '{{$giveaway->giveaway_image}}' class = 'giveaway_image'></div>
 				        <div class = 'giveaway_desc'>{{$giveaway->giveaway_desc}}</div>
 				        <div class = 'giveaway_button'><a class="btn btn-success col-xs-12" href="{{url('signup')}}">Get started</a></div>
 				</div>
