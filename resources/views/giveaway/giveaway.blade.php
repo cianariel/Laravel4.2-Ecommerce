@@ -52,7 +52,7 @@
 				        <div>
 				        <h2>Terms of Conditions</h2>
 				        <p>
-				        	{{$giveaway->giveaway_title}}
+				        	{{$giveaway->giveaway_toc}}
 				        </p>
 				        </div>
 
