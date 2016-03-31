@@ -25,11 +25,12 @@
     <link href="/assets/admin/vendor/layouts/layout/css/themes/darkblue.min.css" rel="stylesheet" type="text/css" id="style_color" />
     <link href="/assets/admin/vendor/layouts/layout/css/custom.css" rel="stylesheet" type="text/css" />
     
-    <link href="/assets/css/wysiwyg.style.css" rel="stylesheet">
-    <link href="/assets/css/ng-tags-input.min.css" rel="stylesheet">
-    <link href="/assets/admin/css/ng-rateit.css" rel="stylesheet">
+    {{--<link href="/assets/css/wysiwyg.style.css" rel="stylesheet">--}}
+    {{--<link href="/assets/css/ng-tags-input.min.css" rel="stylesheet">--}}
+    {{--<link href="/assets/admin/css/ng-rateit.css" rel="stylesheet">--}}
 
-    <link href="/assets/admin/css/admin.custom.css" rel="stylesheet">
+    {{--<link href="/assets/admin/css/admin.custom.css" rel="stylesheet">--}}
+    <link href="/assets/css/admin.css" rel="stylesheet">
 
     
     <!-- END THEME STYLES -->
