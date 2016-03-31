@@ -11,19 +11,17 @@
 
 <ul class="social-stats">
     <li class="social-stats__item">
-        <a href="#">
-            <i class="m-icon m-icon--ScrollingHeaderHeart">
-                <span class="m-hover">
-                    <span class="path1"></span><span class="path2"></span>
-                </span>
-            </i>
-            <span class="social-stats__text">52</span>
-        </a>
+        <?php
+        $userId = !empty($userData->id) ? $userData->id:0;
+        ?>
+        <heart-counter-dir uid = "<?php echo $userId ?>" iid = item.id plink = item.url sec = 'ideas' >
+
+        </heart-counter-dir>
     </li>
     <li class="social-stats__item">
         <a href="#">
             <i class="m-icon m-icon--buble"></i>
-            <span class="social-stats__text">157</span>
+            <span class="social-stats__text">@{{item.CommentCount}}</span>
         </a>
     </li>
 </ul>
