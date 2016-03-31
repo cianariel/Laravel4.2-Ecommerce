@@ -5235,7 +5235,8 @@ body.single #hero, body.product-details #hero, body.profilepage #hero, body.shop
 
 .slider.product-slider .rsNav.rsThumbs.rsThumbsVer, .slider.heroSlider .rsNav.rsThumbs.rsThumbsVer {
   width: 150px !important;
-  padding-left: 3px; }
+  padding-left: 3px;
+  height: 100%; }
 
 .slider.product-slider .rsThumbsContainer, .slider.heroSlider .rsThumbsContainer {
   max-height: 500px; }
