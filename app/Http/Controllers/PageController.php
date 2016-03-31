@@ -14,6 +14,7 @@ use App\Models\User;
 use App\Models\ProductCategory;
 use App\Models\Tag;
 use App\Models\Room;
+use App\Models\Giveaway;
 use App\Models\HomeHero;
 use URL;
 use Input;
