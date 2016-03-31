@@ -43,23 +43,18 @@ if (screen.width < 992 && screen.width > 620) {
 
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-<link rel="stylesheet" href="/assets/css/app.css">
 <link rel="stylesheet" href="/assets/fonts/ideaing/style.css">
+<link rel="stylesheet" href="/assets/css/main.css">
 
 <script src="/assets/js/vendor/jquery-1.11.3.min.js"></script>
 
-<!-- basic stylesheet -->
-<link rel="stylesheet" href="/assets/js/vendor/royalslider/royalslider.css">
-
-<!-- skin stylesheet (change it if you use another) -->
-<link rel="stylesheet" href="/assets/js/vendor/royalslider/skins/default/rs-default.css">
 
 <!-- Main slider JS script file -->
 <!-- Create it with slider online build tool for better performance. -->
 <script src="/assets/js/vendor/royalslider/jquery.royalslider.min.js"></script>
 
 <!-- Custom script and css link for Application -->
-<link rel="stylesheet" href="/assets/css/autocomplete.css">
+{{--<link rel="stylesheet" href="/assets/css/autocomplete.css">--}}
 
 <?php
   if(!function_exists('is_single') && @$canonicURL){
@@ -71,6 +66,7 @@ if (screen.width < 992 && screen.width > 620) {
 <script src="/assets/js/vendor/ui-bootstrap.min.js"></script>
 <script src="/assets/js/vendor/textAngular-sanitize.min.js"></script>
 <script src="/assets/admin/js/angular-file-upload.min.js"></script>
+
 
 
 <style>

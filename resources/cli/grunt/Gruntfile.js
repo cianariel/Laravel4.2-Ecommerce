@@ -16,10 +16,10 @@ module.exports = function(grunt) {
             },
             main: {
                 src: [
-                    '../../assets/js/app.js',
+                    '../../assets/main/js/app.js',
+                    '../../assets/main/js/angular-custom/public.common.js',
                     '../../assets/main/js/angular-custom/custom.paging.js',
                     '../../assets/main/js/angular-custom/custom.product.js',
-                    '../../assets/main/js/angular-custom/public.common.js',
                 ],
                 dest: '../../../public/assets/js/main.js'
             },
@@ -55,7 +55,7 @@ module.exports = function(grunt) {
             },
             all: {
                 files: {
-                    '../../../public/assets/js/main.js': ['<%= concat.main.dest %>'],
+                    //'../../../public/assets/js/main.js': ['<%= concat.main.dest %>'], // TODO - breaks ang scaffolding?
                     '../../../public/assets/js/admin.js': ['<%= concat.admin.dest %>']
                 }
             },
