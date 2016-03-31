@@ -15,7 +15,6 @@ use App\Models\ProductCategory;
 use App\Models\Tag;
 use App\Models\Room;
 use App\Models\HomeHero;
-use App\Models\Giveaway;
 use URL;
 use Input;
 use App\Models\Sharing;
@@ -47,7 +46,6 @@ class PageController extends ApiController
     }
 
 
-
     /**
      * Display the homepage.
      *
@@ -66,7 +64,6 @@ class PageController extends ApiController
         //return $result;
         return view('home')->with('userData', $userData)->with('homehero', $result);
     }
-
 
 
     public function getContent($page = 1, $limit = 5, $tag = false, $type = false, $productCategory = false, $sortBy = false)
@@ -166,10 +163,8 @@ class PageController extends ApiController
 
     public function getStories($limit, $offset, $tag)
     {
-        if (env('FEED_PROD') == true)
-            $url = 'https://ideaing.com/ideas/feeds/index.php?count=' . $limit . '&offset=' . $offset;
-        else
-            $url = URL::to('/') . '/ideas/feeds/index.php?count=' . $limit . '&offset=' . $offset;
+
+        $url = URL::to('/') . '/ideas/feeds/index.php?count=' . $limit . '&offset=' . $offset;
 
         if ($tag && $tag != 'false') {
             $url .= '&tag=' . $tag;
@@ -184,17 +179,17 @@ class PageController extends ApiController
         curl_setopt($ch, CURLOPT_ENCODING, "");
         $json = curl_exec($ch);
 
-       // echo $json;
+        // echo $json;
         //die();
 
-      //  $return = json_decode($json);
+        //  $return = json_decode($json);
 
         $ideaCollection = json_decode($json);
 
         $newIdeaCollection = new Collection();
         $comment = new App\Models\Comment();
 
-        if($ideaCollection){
+        if ($ideaCollection) {
 
             foreach ($ideaCollection as $singleIdea) {
 
@@ -217,10 +212,7 @@ class PageController extends ApiController
     public function getGridStories($limit, $offset, $featuredLimit, $featuredOffset, $tag = false, $category = false)
     {
 
-        if (env('FEED_PROD') == true)
-            $url = 'https://ideaing.com/ideas/feeds/index.php?count=' . $limit . '&no-featured&offset=' . $offset;
-        else
-            $url = URL::to('/') . '/ideas/feeds/index.php?count=' . $limit . '&no-featured&offset=' . $offset;
+        $url = URL::to('/') . '/ideas/feeds/index.php?count=' . $limit . '&no-featured&offset=' . $offset;
 
         if ($tag && $tag != 'false') {
             $url .= '&tag=' . $tag;
@@ -239,22 +231,36 @@ class PageController extends ApiController
         curl_setopt($ch, CURLOPT_ENCODING, "");
         $json = curl_exec($ch);
 
-        $return['regular'] = json_decode($json);
+        $ideaCollection = json_decode($json);
 
+        $newIdeaCollection = new Collection();
+        $comment = new App\Models\Comment();
 
-        if (env('FEED_PROD') == true)
-            $featuredUrl = 'https://ideaing.com/ideas/feeds/index.php?count=' . $featuredLimit . '&only-featured&offset=' . $featuredOffset . '&tag=' . $tag;
-        else
-            $featuredUrl = URL::to('/') . '/ideas/feeds/index.php?count=' . $featuredLimit . '&only-featured&offset=' . $featuredOffset . '&tag=' . $tag;
+        if ($ideaCollection) {
+
+            foreach ($ideaCollection as $singleIdea) {
+
+                $tempIdea = collect($singleIdea);
+
+                $countValue = $comment->ideasCommentCounter($singleIdea->id);
+
+                $tempIdea->put('CommentCount', $countValue);
+
+                $newIdeaCollection->push($tempIdea);
+
+            }
+        }
+
+        // type casting to object
+
+        $return['regular'] = json_decode($newIdeaCollection->toJson(), FALSE);
+
+        $featuredUrl = URL::to('/') . '/ideas/feeds/index.php?count=' . $featuredLimit . '&only-featured&offset=' . $featuredOffset . '&tag=' . $tag;
 
 
         if ($tag && $tag != 'false' && $tag != false) {
             $featuredUrl .= '&tag=' . $tag;
         }
-
-//                print_r($featuredUrl); die();
-        // print_r($return); die();
-
 
         curl_setopt($ch, CURLOPT_URL, $featuredUrl);
         $json = curl_exec($ch);
@@ -267,7 +273,7 @@ class PageController extends ApiController
         $newIdeaCollection = new Collection();
         $comment = new App\Models\Comment();
 
-        if($ideaCollection){
+        if ($ideaCollection) {
 
             foreach ($ideaCollection as $singleIdea) {
 
@@ -289,10 +295,8 @@ class PageController extends ApiController
 
     public function getRelatedStories($currentStoryID, $limit, $tags)
     {
-        if (env('FEED_PROD') == true)
-            $url = 'https://ideaing.com/ideas/feeds/index.php?count=' . $limit;
-        else
-            $url = URL::to('/') . '/ideas/feeds/index.php?count=' . $limit;
+
+        $url = URL::to('/') . '/ideas/feeds/index.php?count=' . $limit;
 
         if ($tags && $tags != 'false') {
             $url .= '&tag_in=' . implode(',', $tags);
@@ -457,8 +461,7 @@ class PageController extends ApiController
             ->with('selfImages', $result['selfImages'])
             ->with('storeInformation', $result['storeInformation'])
             ->with('canonicURL', $result['canonicURL'])
-            ->with('MetaDescription', $result['productInformation']['MetaDescription'])
-            ;
+            ->with('MetaDescription', $result['productInformation']['MetaDescription']);
     }
 
     public function getRoomPage($permalink)
@@ -550,10 +553,8 @@ class PageController extends ApiController
             }
 
             //CMS POSTS -- TODO -- if we wont use images in the sitemap, change into direct call to WP DB for better perf?
-            if (env('FEED_PROD') == true)
-                $url = 'https://ideaing.com/ideas/feeds/index.php?count=0';
-            else
-                $url = URL::to('/') . '/ideas/feeds/index.php?count=0';
+
+            $url = URL::to('/') . '/ideas/feeds/index.php?count=0';
 
             $ch = curl_init();
             curl_setopt($ch, CURLOPT_URL, $url);
@@ -572,44 +573,50 @@ class PageController extends ApiController
             }
 
         }
+
         // show your sitemap (options: 'xml' (default), 'html', 'txt', 'ror-rss', 'ror-rdf')
         return $sitemap->render('xml');
+
     }
+
+
     public function privacyPolicy()
     {
+
         MetaTag::set('title', 'Privacy Policy | Ideaing');
 //        MetaTag::set('description', $result['productInformation']['MetaDescription']);
+
         return view('layouts.privacy-policy');
+
     }
+
+
     public function contactUs()
     {
+
         MetaTag::set('title', 'Contact us | Ideaing');
 //        MetaTag::set('description', $result['productInformation']['MetaDescription']);
+
         return view('contactus.index');
     }
+
     public function aboutUs()
     {
+
         MetaTag::set('title', 'About us | Ideaing');
 //        MetaTag::set('description', $result['productInformation']['MetaDescription']);
+
         return view('layouts.aboutus');
     }
 
     public function termsOfUse()
     {
+
         MetaTag::set('title', 'Terms of Use | Ideaing');
 //        MetaTag::set('description', $result['productInformation']['MetaDescription']);
+
         return view('layouts.terms-of-use');
     }
-    public function giveaway()
-    {
-        MetaTag::set('title', 'Giveaway | Ideaing');
-//        MetaTag::set('description', $result['productInformation']['MetaDescription']);
-        $userData = $this->authCheck;
-        if ($this->authCheck['method-status'] == 'success-with-http') {
-            $userData = $this->authCheck['user-data'];
-        }
-        $giveaway = Giveaway::where('giveaway_status', 1)->first();
-        return view('giveaway.giveaway')->with('userData', $userData)->with('giveaway',$giveaway);
-    }
-    
+
+
 }
