@@ -116,7 +116,7 @@
 
             <ul class="share-buttons hidden-xs col-lg-7 col-md-8 pull-right">
                 <?php loadLaravelView('share-buttons'); ?>
-                <li><a class="comment" data-scrollto=".comments" href="#"><i class="m-icon m-icon--comments-id"></i>
+                <li><a class="comment" data-scrollto=".comments" href="#"><i class="m-icon m-icon--comments-id" ng-init="getCommentsForIdeas('<?php the_ID(); ?>')"></i>
                         <b ng-bind="commentsCount">
                         </b>
                     </a>
