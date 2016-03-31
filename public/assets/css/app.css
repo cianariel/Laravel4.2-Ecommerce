@@ -5217,14 +5217,15 @@ nav a {
     padding-left: 0;
     padding-right: 0; }
   #hero.landing-hero .container {
-    padding-top: 100px; }
+    padding-top: 100px;
+    min-height: 450px; }
   #hero .container {
     position: relative; }
 
-body.single .mid-nav.rooms, body.single .mid-nav .rooms.extra-nav, .mid-nav body.single .rooms.extra-nav, body.product-details .mid-nav.rooms, body.product-details .mid-nav .rooms.extra-nav, .mid-nav body.product-details .rooms.extra-nav, body.profilepage .mid-nav.rooms, body.profilepage .mid-nav .rooms.extra-nav, .mid-nav body.profilepage .rooms.extra-nav, body.shoppage .mid-nav.rooms, body.shoppage .mid-nav .rooms.extra-nav, .mid-nav body.shoppage .rooms.extra-nav, body.error-page .mid-nav.rooms, body.error-page .mid-nav .rooms.extra-nav, .mid-nav body.error-page .rooms.extra-nav, body.aboutus-page .mid-nav.rooms, body.aboutus-page .mid-nav .rooms.extra-nav, .mid-nav body.aboutus-page .rooms.extra-nav, body.privacy-policy-page .mid-nav.rooms, body.privacy-policy-page .mid-nav .rooms.extra-nav, .mid-nav body.privacy-policy-page .rooms.extra-nav, body.terms-of-use-page .mid-nav.rooms, body.terms-of-use-page .mid-nav .rooms.extra-nav, .mid-nav body.terms-of-use-page .rooms.extra-nav, body.contactus-page .mid-nav.rooms, body.contactus-page .mid-nav .rooms.extra-nav, .mid-nav body.contactus-page .rooms.extra-nav {
+body.single .mid-nav.rooms, body.single .mid-nav .rooms.extra-nav, .mid-nav body.single .rooms.extra-nav, body.product-details .mid-nav.rooms, body.product-details .mid-nav .rooms.extra-nav, .mid-nav body.product-details .rooms.extra-nav, body.profilepage .mid-nav.rooms, body.profilepage .mid-nav .rooms.extra-nav, .mid-nav body.profilepage .rooms.extra-nav, body.shoppage .mid-nav.rooms, body.shoppage .mid-nav .rooms.extra-nav, .mid-nav body.shoppage .rooms.extra-nav, body.error-page .mid-nav.rooms, body.error-page .mid-nav .rooms.extra-nav, .mid-nav body.error-page .rooms.extra-nav, body.aboutus-page .mid-nav.rooms, body.aboutus-page .mid-nav .rooms.extra-nav, .mid-nav body.aboutus-page .rooms.extra-nav, body.giveaway-page .mid-nav.rooms, body.giveaway-page .mid-nav .rooms.extra-nav, .mid-nav body.giveaway-page .rooms.extra-nav, body.privacy-policy-page .mid-nav.rooms, body.privacy-policy-page .mid-nav .rooms.extra-nav, .mid-nav body.privacy-policy-page .rooms.extra-nav, body.terms-of-use-page .mid-nav.rooms, body.terms-of-use-page .mid-nav .rooms.extra-nav, .mid-nav body.terms-of-use-page .rooms.extra-nav, body.contactus-page .mid-nav.rooms, body.contactus-page .mid-nav .rooms.extra-nav, .mid-nav body.contactus-page .rooms.extra-nav {
   display: none; }
 
-body.single #hero, body.product-details #hero, body.profilepage #hero, body.shoppage #hero, body.error-page #hero, body.aboutus-page #hero, body.privacy-policy-page #hero, body.terms-of-use-page #hero, body.contactus-page #hero {
+body.single #hero, body.product-details #hero, body.profilepage #hero, body.shoppage #hero, body.error-page #hero, body.aboutus-page #hero, body.giveaway-page #hero, body.privacy-policy-page #hero, body.terms-of-use-page #hero, body.contactus-page #hero {
   /*    margin-top: -50px;*/ }
 
 .slider.product-slider #gallery, .slider.heroSlider #gallery {
@@ -6350,7 +6351,7 @@ header.colophon {
       line-height: 15px; }
   #top-nav .top-nav-holder .notification-popup {
     position: absolute;
-    max-height: 600px;
+    /*            max-height: 600px;*/
     width: 400px;
     min-height: 50px;
     right: 0px;
@@ -6368,10 +6369,16 @@ header.colophon {
       #top-nav .top-nav-holder .notification-popup .notification-header #mark-all-as-read {
         cursor: pointer; }
     #top-nav .top-nav-holder .notification-popup .notification-body {
-      background: #fff; }
+      background: #fff;
+      border-left: 1px solid #c1c1c1;
+      border-right: 1px solid #c1c1c1;
+      height: 300px;
+      overflow: auto; }
       #top-nav .top-nav-holder .notification-popup .notification-body .notification-item {
         border-bottom: 1px solid #f3f6f6;
         padding: 15px; }
+        #top-nav .top-nav-holder .notification-popup .notification-body .notification-item:last-child {
+          border-bottom: 0px; }
       #top-nav .top-nav-holder .notification-popup .notification-body .profile-photo {
         margin-top: 0px;
         margin-right: 10px; }
@@ -6384,6 +6391,7 @@ header.colophon {
       padding: 15px;
       background: #fff;
       text-align: center;
+      border: 1px solid #c1c1c1;
       border-bottom-left-radius: 20px;
       border-bottom-right-radius: 20px; }
       #top-nav .top-nav-holder .notification-popup .notification-footer #notification-view-all {
@@ -6950,7 +6958,7 @@ header.sub-head {
     width: 190px;
     top: -60px;
     right: -145px;
-    z-index: 999; }
+    z-index: 39; }
   .why-us h2 {
     font-size: 3.5rem;
     font-weight: normal;
@@ -8725,7 +8733,7 @@ footer.about-footer {
   position: absolute;
   bottom: 2px;
   right: 10%;
-  z-index: 999;
+  z-index: 38;
   background: #FF0042;
   color: #fff;
   border-radius: 50px;
@@ -8848,13 +8856,13 @@ footer.about-footer {
   /*    background: rgba(232, 232, 232, 0.75);*/
   /*    background: rgba(153,153,153,.4);*/ }
 
-body.shoppage .clearfix.pocket, body.profilepage .clearfix.pocket, body.single-post .clearfix.pocket, body.product-details .clearfix.pocket, body.aboutus-page .clearfix.pocket, body.privacy-policy-page .clearfix.pocket, body.terms-of-use-page .clearfix.pocket, body.contactus-page .clearfix.pocket {
+body.shoppage .clearfix.pocket, body.profilepage .clearfix.pocket, body.single-post .clearfix.pocket, body.product-details .clearfix.pocket, body.aboutus-page .clearfix.pocket, body.giveaway-page .clearfix.pocket, body.privacy-policy-page .clearfix.pocket, body.terms-of-use-page .clearfix.pocket, body.contactus-page .clearfix.pocket {
   height: 100px; }
 
-body.shoppage #about-button, body.profilepage #about-button, body.single-post #about-button, body.product-details #about-button, body.aboutus-page #about-button, body.privacy-policy-page #about-button, body.terms-of-use-page #about-button, body.contactus-page #about-button {
+body.shoppage #about-button, body.profilepage #about-button, body.single-post #about-button, body.product-details #about-button, body.aboutus-page #about-button, body.giveaway-page #about-button, body.privacy-policy-page #about-button, body.terms-of-use-page #about-button, body.contactus-page #about-button {
   bottom: 25px; }
 
-body.shoppage #back-to-top, body.profilepage #back-to-top, body.single-post #back-to-top, body.product-details #back-to-top, body.aboutus-page #back-to-top, body.privacy-policy-page #back-to-top, body.terms-of-use-page #back-to-top, body.contactus-page #back-to-top {
+body.shoppage #back-to-top, body.profilepage #back-to-top, body.single-post #back-to-top, body.product-details #back-to-top, body.aboutus-page #back-to-top, body.giveaway-page #back-to-top, body.privacy-policy-page #back-to-top, body.terms-of-use-page #back-to-top, body.contactus-page #back-to-top {
   bottom: 21px; }
 
 body.shoppage .mid-nav .container, .mid-nav body.shoppage .extra-nav .container {
@@ -10382,6 +10390,19 @@ body.homepage #hero {
 
 .photoCopy a {
   color: grey; }
+
+body.giveaway-page .giveaway-row {
+  padding-top: 100px; }
+
+body.giveaway-page .giveaway-row-2 {
+  margin-top: 50px;
+  margin-bottom: 50px; }
+
+body.giveaway-page .giveaway_button {
+  margin: 0px auto;
+  width: 100px;
+  margin-top: 30px;
+  height: 60px; }
 
 @font-face {
   font-family: 'montserratlight';
