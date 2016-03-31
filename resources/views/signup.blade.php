@@ -106,6 +106,6 @@
     
     {{--<script src="/assets/js/angular-custom/public.common.js"></script>--}}
     <script src="/assets/js/main.js"></script>
-    <script src="/assets/admin/js/angular-file-upload.min.js"></script>
+    {{--<script src="/assets/admin/js/angular-file-upload.min.js"></script>--}}
 @stop
 

@@ -56,7 +56,7 @@ module.exports = function(grunt) {
             all: {
                 files: {
                     //'../../../public/assets/js/main.js': ['<%= concat.main.dest %>'], // TODO - breaks ang scaffolding?
-                    '../../../public/assets/js/admin.js': ['<%= concat.admin.dest %>']
+                    //'../../../public/assets/js/admin.js': ['<%= concat.admin.dest %>']
                 }
             },
         },
