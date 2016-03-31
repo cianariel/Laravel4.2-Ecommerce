@@ -29,6 +29,7 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
 
                 $scope.heartCounterAction = function(){
 
+                    console.log('hi : ',$scope.iid,$scope.plink);
 
                     $http({
                         url: '/api/heart/count-heart',
@@ -55,7 +56,7 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
                 };
 
                 $scope.heartAction = function(){
-
+console.log('hi : ',$scope.iid,$scope.plink);
                     // an anonymous will be returned without performing any action.
                     if($attrs.uid==0)
                         return;
@@ -690,6 +691,8 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
                         method: "get",
                     }).success(function (data) {
                         if (data.status_code == 200) {
+                            console.log(data.data);
+                            $scope.productData = data.data;
                             var data = data.data;
                             var imageHTML = "";
                             for(var key in data.selfImages.picture){
