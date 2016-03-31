@@ -16,6 +16,25 @@ module.exports = function(grunt) {
             },
             main: {
                 src: [
+                    '../../assets/main/js/vendor/jquery-1.11.3.min.js',
+                    '../../assets/main/js/vendor/jquery.easing-1.3.js',
+
+                    '../../assets/main/js/vendor/angular.min.js',
+                    '../../assets/main/js/vendor/angular-busy.min.js',
+                    '../../assets/main/js/vendor/angular-confirm.js',
+                    '../../assets/main/js/vendor/angular-sanitize.min.js',
+                    '../../assets/main/js/vendor/autocomplete.js',
+                    '../../assets/main/js/vendor/ng-tags-input.min.js',
+                    '../../assets/main/js/vendor/textAngular.min.js',
+                    '../../assets/main/js/vendor/textAngular-rangy.min.js',
+                    '../../assets/main/js/vendor/textAngular-sanitize.min.js',
+                    '../../assets/admin/js/vendor/angular-file-upload.min.js',
+
+                    '../../assets/main/js/vendor/royalslider/jquery.royalslider.min.js',
+
+                    '../../assets/main/js/vendor/ui-bootstrap.min.js',
+                    '../../assets/main/js/vendor/bootstrap-colorpicker-module.js',
+
                     '../../assets/main/js/app.js',
                     '../../assets/main/js/angular-custom/public.common.js',
                     '../../assets/main/js/angular-custom/custom.paging.js',
@@ -38,6 +57,8 @@ module.exports = function(grunt) {
             maincss: {
                 src: [
                     '../../assets/main/css/*.css',
+                    '../../assets/main/js/vendor/royalslider/royalslider.css',
+
                 ],
                 dest: '../../../public/assets/css/main.css'
             },

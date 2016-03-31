@@ -46,26 +46,14 @@ if (screen.width < 992 && screen.width > 620) {
 <link rel="stylesheet" href="/assets/fonts/ideaing/style.css">
 <link rel="stylesheet" href="/assets/css/main.css">
 
-<script src="/assets/js/vendor/jquery-1.11.3.min.js"></script>
-
-
-<!-- Main slider JS script file -->
-<!-- Create it with slider online build tool for better performance. -->
-<script src="/assets/js/vendor/royalslider/jquery.royalslider.min.js"></script>
-
-<!-- Custom script and css link for Application -->
-{{--<link rel="stylesheet" href="/assets/css/autocomplete.css">--}}
-
 <?php
   if(!function_exists('is_single') && @$canonicURL){
         echo '<link rel="canonical" href="'.$canonicURL.'">';
 }
 ?>
 
-<script src="/assets/js/vendor/angular.min.js"></script>
-<script src="/assets/js/vendor/ui-bootstrap.min.js"></script>
-<script src="/assets/js/vendor/textAngular-sanitize.min.js"></script>
-<script src="/assets/admin/js/angular-file-upload.min.js"></script>
+<script type="text/javascript" src="/assets/js/main.js"></script>
+{{--<script src="/assets/js/vendor/royalslider/jquery.royalslider.min.js"></script>--}}
 
 
 
@@ -77,18 +65,6 @@ if (screen.width < 992 && screen.width > 620) {
         opacity:0;
     }
 </style>
-<!--
-
-<script src="/assets/js/vendor/textAngular-sanitize.min.js"></script>
-
-<script src="/assets/js/vendor/angular-confirm.js"></script>
-
-<script src="/assets/js/vendor/textAngular-rangy.min.js"></script>
-
-<script src="/assets/js/vendor/textAngular.min.js"></script>
-
-<script src="/assets/js/vendor/ng-tags-input.min.js"></script>
--->
 
 <meta name="google-site-verification" content="xiWn24mA3aZopoTkElR97n-HdvsfctffW493Q6x_vZU" />
 
