@@ -2785,7 +2785,7 @@ header.colophon{
         } 
         .notification-popup{
             position: absolute;
-            max-height: 600px;
+/*            max-height: 600px;*/
             width: 400px;
             min-height: 50px;
             right: 0px;
@@ -2808,9 +2808,16 @@ header.colophon{
             
             .notification-body{
                 background: #fff;
+                border-left: 1px solid $light-grey;
+                border-right: 1px solid $light-grey;
+                height: 300px;
+                overflow: auto;
                 .notification-item{
                     border-bottom: 1px solid #f3f6f6;
                     padding: 15px;
+                    &:last-child{
+                        border-bottom: 0px;
+                    }
                 }
                 .profile-photo{
                     margin-top: 0px;
@@ -2829,6 +2836,7 @@ header.colophon{
                 padding: 15px;
                 background: #fff;
                 text-align: center;
+                border: 1px solid $light-grey;
                 border-bottom-left-radius: 20px;
                 border-bottom-right-radius: 20px;
                 #notification-view-all{
@@ -3678,7 +3686,7 @@ header.sub-head{
         width: 190px;
         top: -60px;
         right: -145px;
-        z-index: 999;
+        z-index: 39;
     }
 
   h2{
@@ -6619,7 +6627,7 @@ footer.about-footer{
     position: absolute;
     bottom: 2px;
     right: 10%;
-    z-index: 999;
+    z-index: 38;
     background: #FF0042;
     color: #fff;
     border-radius: 50px;
