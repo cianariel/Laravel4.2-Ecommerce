@@ -15,7 +15,11 @@
             <h4 class="green">Giveaway</h4>
             <?php
                 $giveaway = PageHelper::getGiveaway();
-                echo "<img src='".$giveaway->giveaway_image."' />"
+                if($giveaway)
+                {
+                    echo "<img src='".$giveaway->giveaway_image."' />";
+                }
+                
             ?>
         </div>
         <div class="col-sm-3 col-xs-12 social-connect">
