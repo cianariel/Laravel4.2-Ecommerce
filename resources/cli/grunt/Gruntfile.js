@@ -2,76 +2,77 @@ module.exports = function(grunt) {
 
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
+        sass: {
+            main: {
+                src: [
+                    '../../assets/main/sass/app.scss',
+                ],
+                dest: '../../assets/main/css/app.css'
+            },
+        },
         concat: {
             options: {
-                separator: ';'
+                separator:  ';\n' ,
             },
-            general: {
+            main: {
                 src: [
                     '../../assets/js/app.js',
-                    //'../../public/media/js/binumi/packages/*.js'
+                    '../../assets/main/js/angular-custom/custom.paging.js',
+                    '../../assets/main/js/angular-custom/custom.product.js',
+                    '../../assets/main/js/angular-custom/public.common.js',
                 ],
-                dest: '../../../public/assets/js/general.js'
+                dest: '../../../public/assets/js/main.js'
             },
-            //admin: {
-            //    src: [
-            //        '../../public/media/js/admin/packages/core.js',
-            //        '../../public/media/js/binumi/packages/layout.js',
-            //        '../../public/media/js/binumi/packages/ajax.js',
-            //        '../../public/media/js/binumi/packages/language.js',
-            //        '../../public/media/js/binumi/packages/uploader.js',
-            //        '../../public/media/js/binumi/packages/utils.js',
-            //        '../../public/media/js/admin/packages/*.js'
-            //    ],
-            //    dest: '../../public/media/js/admin/admin.js'
-            //}
+            admin: {
+                src: [
+                    '../../assets/admin/js/custom.admin.js',
+                    '../../assets/admin/js/vendor/angular-file-upload.min.js',
+                    '../../assets/admin/js/vendor/bootstrap.min.js',
+                    '../../assets/admin/js/vendor/jquery.min.js',
+                    '../../assets/admin/js/vendor/metisMenu.min.js',
+                    '../../assets/admin/js/vendor/ng-rateit.min.js',
+                    //'../../assets/admin/js/vendor/sb-admin-2.js', TODO -- unused?
+                ],
+                dest: '../../../public/assets/js/admin.js'
+            },
+            maincss: {
+                src: [
+                    '../../assets/main/css/*.css',
+                ],
+                dest: '../../../public/assets/css/main.css'
+            },
+            admincss: {
+                src: [
+                    '../../assets/admin/css/*.css',
+                ],
+                dest: '../../../public/assets/css/admin.css'
+            },
         },
         uglify: {
             options: {
-                banner: '/*! <%= pkg.name %> <%= grunt.template.today("dd-mm-yyyy") %> */\n'
+                banner: '/*! <%= pkg.name %> <%= grunt.template.today("dd-mm-yyyy") %> */\n',
+                //preserveComments: 'all',
             },
-            general: {
+            all: {
                 files: {
-                    '../../../public/assets/js/general.js': ['<%= concat.general.dest %>']
+                    '../../../public/assets/js/main.js': ['<%= concat.main.dest %>'],
+                    '../../../public/assets/js/admin.js': ['<%= concat.admin.dest %>']
                 }
             },
-            //portal: {
-            //    files: {
-            //        '../../public/media/js/portal/portal.min.js': ['<%= concat.portal.dest %>']
-            //    }
-            //},
-            //admin: {
-            //    files: {
-            //        '../../public/media/js/admin/admin.min.js': ['<%= concat.admin.dest %>']
-            //    }
-            //}
         },
-        //cssmin: {
-        //    binumi: {
-        //        options:{
-        //            keepSpecialComments:0
-        //        },
-        //        files: {
-        //            "../../public/media/css/v3/binumi.min.css": ["../../public/media/css/v3/binumi.css"]
-        //        }
-        //    },
-        //    portal:{
-        //        options:{
-        //            keepSpecialComments:0
-        //        },
-        //        files: {
-        //            "../../public/media/css/portal/portal.min.css": ["../../public/media/css/portal/portal.css"]
-        //        }
-        //    },
-        //    admin:{
-        //        options:{
-        //            keepSpecialComments:0
-        //        },
-        //        files: {
-        //            "../../public/media/css/admin/admin.min.css": ["../../public/media/css/admin/admin.css"]
-        //        }
-        //    }
-        //},
+        cssmin: {
+            main: {
+                options:{
+                    keepSpecialComments:0
+                },
+                files: {
+                    '../../../public/assets/css/main.css': ['<%= concat.maincss.dest %>'],
+                    '../../../public/assets/css/admin.css': ['<%= concat.admincss.dest %>']
+
+                }
+            },
+        },
+
         //jshint: {
         //    files: ['gruntfile.js', '../../public/media/js/binumi/packages/*.js'],
         //    options: {
@@ -85,26 +86,14 @@ module.exports = function(grunt) {
         //    }
         //},
         watch: {
-            /*test: {
-                files: ['<%= jshint.files %>'],
-                tasks: ['jshint', 'qunit']
-            },*/
             js: {
-                files: ['<%= concat.general.src %>'],
+                files: ['<%= concat.main.src %>', '<%= concat.admin.src %>'],
                 tasks: ['js']
             },
-            //css: {
-            //    files: ['../../public/media/css/v3/less/*'],
-            //    tasks: ['css']
-            //},
-            //jsAdmin: {
-            //    files: ['<%= concat.admin.src %>'],
-            //    tasks: ['jsAdmin']
-            //},
-            //cssAdmin: {
-            //    files: ['../../public/media/css/admin/less/*'],
-            //    tasks: ['cssAdmin']
-            //}
+            css: {
+                files: ['../../assets/main/css/*', '../../assets/admin/css/*', '../../assets/main/sass/*'],
+                tasks: ['css']
+            },
         },
         apidoc: {
             ideaing_api: {
@@ -112,64 +101,20 @@ module.exports = function(grunt) {
                 dest: "../../doc/api/"
             }
         },
-        closureCompiler:  {
-
-            options: {
-                compilerFile: '../compiler.jar',
-                checkModified: true,
-                compilerOpts: {
-                    compilation_level: 'SIMPLE_OPTIMIZATIONS',
-                    externs: ['externs/*.js'],
-                    //define: ["'goog.DEBUG=false'"],
-                    warning_level: 'verbose',
-                    jscomp_off: ['checkTypes', 'fileoverviewTags'],
-                    summary_detail_level: 3,
-                    output_wrapper: '"(function(){%output%}).call(this);"'
-                },
-                execOpts: {
-                    maxBuffer: 999999 * 1024
-                }
-            },
-            //binumi: {
-            //    src: '../../public/media/js/binumi/binumi.js',
-            //    dest: '../../public/media/js/binumi/binumi.compile.js'
-            //},
-            //portal: {
-            //    src: '../../public/media/js/portal/portal.js',
-            //    dest: '../../public/media/js/portal/portal.compile.js'
-            //},
-            //admin: {
-            //    src: '../../public/media/js/admin/admin.js',
-            //    dest: '../../public/media/js/admin/admin.compile.js'
-            //}
-        }
     });
 
     grunt.loadNpmTasks('grunt-contrib-uglify');
     //grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-concat');
-    //grunt.loadNpmTasks('grunt-contrib-less');
-    //grunt.loadNpmTasks('grunt-contrib-cssmin');
+    grunt.loadNpmTasks('grunt-contrib-sass');
+    grunt.loadNpmTasks('grunt-contrib-cssmin');
     grunt.loadNpmTasks('grunt-closure-tools');
-    //grunt.loadNpmTasks('grunt-apidoc');
-    
-    grunt.registerTask('test', ['jshint']);
 
-    grunt.registerTask('default', ['concat', 'uglify']);
+    //grunt.registerTask('jshint', ['jshint']);
+    grunt.registerTask('default', ['sass', 'concat', 'uglify', 'cssmin']);
+    grunt.registerTask('js', ['concat:main', 'concat:admin', 'uglify:all']);
+    grunt.registerTask('css', ['sass', 'concat:maincss','concat:admincss','cssmin']);
 
-    grunt.registerTask('js', ['concat:general', 'uglify:general']);
-    //grunt.registerTask('closure', ['closureCompiler:binumi']);
-    //grunt.registerTask('css', ['less:binumi','cssmin:binumi']);
-
-    //grunt.registerTask('jsPortal', ['concat:portal', 'uglify:portal']);
-    //grunt.registerTask('closurePortal', ['closureCompiler:portal']);
-    //grunt.registerTask('cssPortal', ['less:portal','cssmin:portal']);
-    //
-    //grunt.registerTask('jsAdmin', ['concat:admin', 'uglify:admin']);
-    //grunt.registerTask('closureAdmin', ['closureCompiler:admin']);
-    //grunt.registerTask('cssAdmin', ['less:admin','cssmin:admin']);
-    //
-    //grunt.registerTask('doc', ['apidoc']);
 
 };
