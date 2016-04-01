@@ -79,12 +79,10 @@ class HeartController extends ApiController
 
     public function recentHeartedUsers()
     {
-//$itemId,$section,$count = 3
-        $data = $this->heart->recentHeartedUsers(601,'product');
+        $inputData = \Input::all();
+        $data = $this->heart->recentHeartedUsers($inputData['iid'],$inputData['section']);
 
-        dd($data);
-
-
+        return $data;
     }
 
 }
