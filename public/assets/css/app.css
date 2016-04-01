@@ -7720,7 +7720,7 @@ body.single .related-items {
     display: inline-block; }
 
 body.room-landing #hero, body.homepage #hero {
-  min-height: auto; }
+  min-height: auto !important; }
   body.room-landing #hero .hero-tags, body.homepage #hero .hero-tags {
     min-height: auto; }
     body.room-landing #hero .hero-tags > .tag, body.homepage #hero .hero-tags > .tag {
