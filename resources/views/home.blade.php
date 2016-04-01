@@ -20,12 +20,12 @@
                             <div class="col-md-5 col-xs-6 full-620 col-md-offset-1 why-us">
                                 <h2>Ideas for Smarter Living</h2>
                                 <ul>
-                                    <li class="get-ideas"><i class="m-icon m-icon--bulb3"></i>Get ideas for a smarter and sexier home</li>
+                                <li class="get-ideas"><i class="m-icon m-icon--heart-id"></i>Discover smart home products that will change your life</li>
                                 <li class="share-vote">
-                                    <i class="m-icon m-icon--heart-id"></i>Share and Vote on the best theme decor
+                                    <i class="m-icon m-icon--bulb"></i>Share ideas on making your home automated and beautiful
                                     <img id="hero-arrow" src="assets/images/home-arrow.png" alt="">
                                 </li>
-                                    <li class="shop-cool"><i class="m-icon m-icon--products"></i>Shop for cool gadgets and unique decor</li>
+                                <li class="shop-cool"><i class="m-icon m-icon--shopping-bag-light-green"></i>Shop for new and innovative home gadgets and decor</li>
                                 </ul>
                             </div>
                             <div  id="publicApp" ng-app="publicApp" ng-controller="publicController" class="col-md-4 col-xs-6 col-md-offset-1 hero-box qiuck-signup hidden-620" ng-cloak>
