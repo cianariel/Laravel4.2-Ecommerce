@@ -51,7 +51,7 @@
                         </div>
                     @else
                         <div style="background-image: url('{{$image['hero_image']}}'); background-size: cover;background-repeat: no-repeat;position: absolute;width: 100%;height: 100%;"></div>
-                    <div class="container-fluid container fixed-sm full-480">
+                    <div class="container-fluid fixed-sm full-480">
                             <div class="hero-tags">
                                 <div class="photoCopy">{{$image['hero_image_title']}}: {{$image['hero_image_caption']}} @if($image['hero_image_link']!="")<a href="{{$image['hero_image_link']}}">{{$image['hero_image_link_title']}}</a>@endif </div>
                                 @foreach($image['Image_Products'] as $i_products)
