@@ -360,7 +360,7 @@ class Product extends Model
             $tmp = $this->getSingleProductInfoForView($id);
 
             // making the thumbnail url by injecting "thumb-" in the url which has been uploaded during media submission.
-            $strReplace = \Config::get("const.file.s3-path");
+            $strReplace = env('IMG_CDN');
             $path = str_replace($strReplace, '', $tmp->media_link);
             $path = $strReplace . 'thumb-' . $path;
 
