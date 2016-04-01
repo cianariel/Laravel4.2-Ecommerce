@@ -4906,7 +4906,7 @@ body.single{
 
 body.room-landing, body.homepage{
     #hero{
-        min-height: auto !important;
+        min-height: initial;
         .hero-tags{
             min-height: auto;
             >.tag{
@@ -5922,14 +5922,17 @@ footer.about-footer{
   .why-us{
     text-align: center;
 /*    padding-top: 25%;*/
+    >ul{
+        text-align: left;      
+    }
     li{
       background-position: 10px 15px !important;
-      .m-icon{
+      /*.m-icon{
           float: none;
           position: relative;
           margin-right: 10px;
           top: 5px;
-      }
+      }*/
     }
     .btn{
       margin: 0 auto;
