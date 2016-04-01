@@ -8337,13 +8337,16 @@ footer.about-footer {
   .why-us {
     text-align: center;
     /*    padding-top: 25%;*/ }
+    .why-us > ul {
+      text-align: left; }
     .why-us li {
-      background-position: 10px 15px !important; }
-      .why-us li .m-icon {
+      background-position: 10px 15px !important;
+      /*.m-icon{
         float: none;
         position: relative;
         margin-right: 10px;
-        top: 5px; }
+          top: 5px;
+      }*/ }
     .why-us .btn {
       margin: 0 auto;
       display: block;
