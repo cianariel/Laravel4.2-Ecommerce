@@ -172,6 +172,21 @@ publicApp.factory('layoutApi', function ($http) {
 // //
 
 
+publicApp.controller('ProductModalInstanceCtrl', function ($scope, $uibModalInstance, pagingApi, productData) {
+    $scope.data = productData.data;
+
+    $scope.ok = function () {
+        $uibModalInstance.close();
+    };
+
+    $scope.cancel = function () {
+        $uibModalInstance.dismiss('cancel');
+    };
+
+    $scope.openSharingModal = function ($service) {
+        pagingApi.openSharingModal($service);
+    };
+});
 publicApp.controller('ModalInstanceCtrltest', function ($scope, $uibModalInstance, pagingApi) {
     $scope.ok = function () {
         $uibModalInstance.close();
@@ -199,6 +214,9 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
         $scope.insertCustomImagePopup = function(){
             alert("Please add the code for photo uploading here");
         }
+        $scope.openProductPopup = function(id){
+            pagingApi.openProductPopup($scope, $uibModal, $timeout, id);
+        };
         $scope.textAreaSetup = function($element){
             $element.attr('focus-me', 'focus_editor');
         };
