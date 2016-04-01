@@ -422,15 +422,16 @@ console.log('hi : ',$scope.iid,$scope.plink);
 
 
     })
-    .controller('ModalInstanceCtrltest', function ($scope, $uibModalInstance) {
-      $scope.ok = function () {
-        $uibModalInstance.close();
-      };
+//    .controller('ModalInstanceCtrltest', function ($scope, $uibModalInstance) {
+//        
+//        $scope.ok = function () {
+//            $uibModalInstance.close();
+//        };
 
-      $scope.cancel = function () {
-        $uibModalInstance.dismiss('cancel');
-      };
-    })
+//        $scope.cancel = function () {
+//            $uibModalInstance.dismiss('cancel');
+//        };
+//    })
     .controller('shoplandingController', ['$scope', '$http', 'pagingApi', '$timeout', '$uibModal', function ($scope, $http, pagingApi, $timeout, $uibModal) {
         $scope.renderHTML = function(html_code)
         {
@@ -678,21 +679,27 @@ console.log('hi : ',$scope.iid,$scope.plink);
             
             document.getElementsByTagName('html')[0].className += " hide-overflow ";
             var templateUrl = "product-popup.html";
+            $http({
+                url: '/api/product/get-product/' + productId,
+                method: "get",
+            }).success(function (data) {  
+                $scope.productData = data;
             var modalInstance = $uibModal.open({
               templateUrl: templateUrl,
               size: 'lg',
               windowClass : 'product-popup-modal',
-              controller: 'ModalInstanceCtrltest'
+                    controller: 'ProductModalInstanceCtrl',
+                    resolve: {
+                        productData: function(){
+                            return $scope.productData;
+                        }
+                    }
             });
             modalInstance.opened.then(function(){
                 $timeout(function() {
-                    $http({
-                        url: '/api/product/get-product/' + productId,
-                        method: "get",
-                    }).success(function (data) {
+                        var data = $scope.productData;
                         if (data.status_code == 200) {
                             console.log(data.data);
-                            $scope.productData = data.data;
                             var data = data.data;
                             var imageHTML = "";
                             for(var key in data.selfImages.picture){
@@ -871,6 +878,7 @@ console.log('hi : ',$scope.iid,$scope.plink);
                                         ';
                                     }
                                 }
+                                
                                 $(".product-popup-modal .amazon .star-rating").html(starRatingHtml);
                                 var counter = data.productInformation['Review'][1].counter == '' ? 0 : data.productInformation['Review'][1].counter;
                                 var starRatingLabelHtml = '<a href="' + (data.productInformation['Review'][1].link ? data.productInformation['Review'][1].link : "#") + '" target="_blank">'; 
@@ -922,7 +930,6 @@ console.log('hi : ',$scope.iid,$scope.plink);
                                 
                                 $('.p-comment-content-holder').html(commentsHtml);
                                 $('.p-comment-responses').html(commentsCountView);
-                                console.log("comments", comments)
                               //  console.log($scope.comments.length);
                             });
 
@@ -954,16 +961,16 @@ console.log('hi : ',$scope.iid,$scope.plink);
                     });
                     document.getElementById( 'product-slider' ).style.visibility = 'visible';
                         }
-                    });                    
+                    }, 100)
+                })
                     
-                }, 100);
 
-            })
             modalInstance.result.finally(function(){
                 var className = document.getElementsByTagName('html')[0].className;
                 className = className.replace('hide-overflow', '');
                 document.getElementsByTagName('html')[0].className = className;
             });
+            });                    
         };
 
         pagingApi.fakeUpdateCounts = function ($service) {
