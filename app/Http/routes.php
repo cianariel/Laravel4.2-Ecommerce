@@ -69,6 +69,8 @@
          * */
         Route::post('heart/add-heart', 'HeartController@addHeart');
         Route::post('heart/count-heart', 'HeartController@heartCounter');
+        Route::post('heart/heart-users', 'HeartController@recentHeartedUsers');
+
 
 
         /*

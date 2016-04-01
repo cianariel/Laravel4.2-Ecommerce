@@ -471,6 +471,7 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
 
             $scope.unHeart = false;
             $scope.heartCounter = 0;
+            $scope.heartUsersInfo = [];
 
 
             //$scope.countSocialShares();
@@ -536,6 +537,23 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
              //   console.log($scope.heartCounter);
             });
 
+        };
+
+        // get recently liked users list
+        $scope.heartUsers = function(section){
+            ItemId = $window.itemId;
+
+            $http({
+                url: '/api/heart/heart-users',
+                method: "POST",
+                data:{
+                    iid: ItemId,
+                    section: section
+                }
+
+            }).success(function (data) {
+                $scope.heartUsersInfo = data;
+            });
         };
 
         // Add an Alert in a web application
