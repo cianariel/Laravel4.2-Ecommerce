@@ -170,5 +170,28 @@ class Heart extends Model
 
     }
 
+    public function recentHeartedUsers($itemId,$section,$count = 3)
+    {
+        $section = $section == 'product'? 'App\Models\Product':'App\Models\WpPost';
+        $heartInfo = Heart::where('heartable_type',$section)
+            ->where('heartable_id',$itemId)
+            ->orderBy('created_at','DESC')
+            ->take($count)
+            ->get();
+
+        $userCollection = new Collection();
+        $user = new User();
+
+        foreach($heartInfo as $singleItem)
+        {
+            $userInfo = $user->getUserById($singleItem->user_id);
+
+            $userCollection->push($userInfo);
+
+        }
+
+        return $userCollection;
+    }
+
 
 }

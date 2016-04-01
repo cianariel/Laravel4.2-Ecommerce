@@ -21,7 +21,7 @@
     */
 
     // test route
-    Route::get('notification', 'UserController@notification');
+    Route::get('x', 'HeartController@recentHeartedUsers');
 
 
     Route::any('secure-page-header', 'UserController@securePageHeader');
