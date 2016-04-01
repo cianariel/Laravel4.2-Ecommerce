@@ -139,11 +139,8 @@
                     </div>
 
                 </li>
-                    <li class="hidden-xs"><a class="author" href="#"></a></li>
-                    <li class="hidden-xs"><a class="author" href="#"></a></li>
-                    <li class="hidden-xs"><a class="author" href="#"></a></li>
-                    <li class="hidden-xs"><a class="likes" href="#">+ 186</a></li>
-            </ul>
+                    <?php include('/var/www/ideaing/public/ideas/wp-content/themes/ideaing/heart-user-img.php') ?>
+                </ul>
         </div>
     </nav>
 </div>
