@@ -246,7 +246,7 @@
             <div class="box-item product-box ">
                 <img class="img-responsive" src="{{ $product->media_link_full_path }}">
                 <span class="box-item__time">{{ $product->updated_at }}</span>
-                <div class="box-item__overlay"></div>
+                            <div class="box-item__overlay" ng-click="openProductPopup({{$product->id}})"></div>
                 <ul class="social-stats">
                     <li class="social-stats__item">
                         <?php
@@ -366,6 +366,10 @@
         </div>
     </div>
 </section>
+    <?php 
+       include('../../../../../../../resources/views/layouts/parts/product-popup.blade.php') 
+    ?>
+
 
 </div>
 <?php get_footer(); ?>

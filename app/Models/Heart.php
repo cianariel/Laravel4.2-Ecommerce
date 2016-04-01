@@ -122,8 +122,7 @@ class Heart extends Model
 
         $data['UserStatus'] = $user;
         $data['Count'] = $item->hearts->count();
-        // dd($data);
-
+        
         return $data;
     }
 

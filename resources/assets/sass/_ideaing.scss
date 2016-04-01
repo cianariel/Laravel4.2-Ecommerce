@@ -911,6 +911,9 @@ nav {
     padding-top: 100px;
     min-height: 450px;
   }
+  &.landing-hero .container-fluid{
+      min-height: 450px;
+  }
 
   .container{
     position: relative;
@@ -4903,7 +4906,7 @@ body.single{
 
 body.room-landing, body.homepage{
     #hero{
-        min-height: auto;
+        min-height: auto !important;
         .hero-tags{
             min-height: auto;
             >.tag{
@@ -5316,8 +5319,8 @@ footer.about-footer{
       //padding-left: 60px;
     }
     a {
-      padding-left: 10px;
-      padding-right: 10px;
+      padding-left: 8px;
+      padding-right: 8px;
 
       &.more-link {
         background-size: contain !important;
@@ -5918,7 +5921,7 @@ footer.about-footer{
 
   .why-us{
     text-align: center;
-    padding-top: 25%;
+/*    padding-top: 25%;*/
     li{
       background-position: 10px 15px !important;
       .m-icon{
@@ -6072,7 +6075,7 @@ footer.about-footer{
     min-height: 450px;
 
     .why-us{
-      padding-top: 70px;
+/*      padding-top: 70px;*/
 
       h2{
         font-size: 2.8rem;
@@ -8735,12 +8738,6 @@ body.search{
         display:none; 
         text-align: center;
         padding-top: 12px;
-    }
-}
-
-body.homepage{
-    #hero{
-        height: 634px;
     }
 }
 
