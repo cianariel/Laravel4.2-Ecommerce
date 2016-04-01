@@ -5219,6 +5219,8 @@ nav a {
   #hero.landing-hero .container {
     padding-top: 100px;
     min-height: 450px; }
+  #hero.landing-hero .container-fluid {
+    min-height: 450px; }
   #hero .container {
     position: relative; }
 
