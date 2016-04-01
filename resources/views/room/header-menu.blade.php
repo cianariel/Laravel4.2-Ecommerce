@@ -1,4 +1,4 @@
-<div id="mobile-home-menu" class="mobile-top-menu mobile-mid-menu visible-xs">
+<div id="mobile-home-menu" class="mobile-top-menu mobile-mid-menu ">
     <ul>
         <li><a class="box-link @if(isset($roomInformation['Permalink']) && $roomInformation['Permalink'] == 'bedroom') active @endif " href="{{url('idea/bedroom')}}">Bedroom</a></li>
         <li><a class="box-link @if(isset($roomInformation['Permalink']) && $roomInformation['Permalink'] == 'office') active @endif " href="{{url('idea/office')}}">Office</a></li>
@@ -11,7 +11,7 @@
     </ul>
 </div>
 
-<div id="desktop-home-deopdown-menu" class="mobile-top-menu mobile-mid-menu hidden-xs">
+<div id="desktop-home-deopdown-menu" class="mobile-top-menu mobile-mid-menu ">
     <ul>
         <li><a class="box-link @if(isset($roomInformation['Permalink']) && $roomInformation['Permalink'] == 'decor') active @endif" href="{{url('idea/decor')}}">Decor</a></li>
         <li><a class="box-link @if(isset($roomInformation['Permalink']) && $roomInformation['Permalink'] == 'garage') active @endif" href="{{url('idea/garage')}}">Garage</a></li>
