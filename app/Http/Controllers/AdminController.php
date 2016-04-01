@@ -9,6 +9,7 @@
 
     use App\Models\Room;
     use App\Models\HomeHero;
+    use App\Models\Giveaway;
 
 
     class AdminController extends ApiController {
@@ -266,5 +267,43 @@
 
             }
         }
+        //Giveaway View
+        public function giveawayView()
+        {
+            if ($this->authCheck['method-status'] == 'success-with-http')
+            {
+                $giveaways = Giveaway::all();
+                return \View::make('admin.giveaway.giveaways-list', ['giveaways' => $giveaways]);
 
+            } elseif ($this->authCheck['method-status'] == 'fail-with-http')
+            {
+                return \Redirect::to('login');
+            }
+        }
+        public function addGiveaway()
+        {
+            if ($this->authCheck['method-status'] == 'success-with-http')
+            {
+                $giveaway = new Giveaway();
+                return view('admin.giveaway.giveaway-add')->with('giveaway',$giveaway);
+
+            } elseif ($this->authCheck['method-status'] == 'fail-with-http')
+            {
+                return \Redirect::to('login');
+
+            }
+        }
+        public function editGiveaway($id)
+        {
+            if ($this->authCheck['method-status'] == 'success-with-http')
+            {
+                $giveaway = Giveaway::find($id);
+                return view('admin.giveaway.giveaway-add')->with('giveaway',$giveaway);
+
+            } elseif ($this->authCheck['method-status'] == 'fail-with-http')
+            {
+                return \Redirect::to('login');
+
+            }
+        }
     }
