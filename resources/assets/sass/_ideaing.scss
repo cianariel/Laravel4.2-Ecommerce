@@ -7865,6 +7865,12 @@ html.hide-overflow{
         color: #fff;
     }
     
+    .likes{
+        .m-icon--heart-solid{
+            color: $iridium;
+        }
+    }
+    
     .lbMain{
         background-color: transparent;
         min-width: 768px;
