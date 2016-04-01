@@ -4,7 +4,7 @@ namespace App\Helpers;
 
 use \Illuminate\Routing\Route;
 use  Illuminate\Routing\Router;;
-
+use App\Models\Giveaway;
 class PageHelper {
 
     public static function getCanonicalLink($route, $key = false) {
@@ -40,6 +40,11 @@ class PageHelper {
         $excerpt = preg_replace('/(\.)\s+[^\.]*$/', '\1', substr($content, 0, 70));
 
         return $excerpt;
+
+    }
+    public static function getGiveaway() {
+        $giveaway = Giveaway::where('giveaway_status', 1)->first();
+        return $giveaway;
 
     }
 }

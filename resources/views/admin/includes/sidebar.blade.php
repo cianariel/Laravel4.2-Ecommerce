@@ -157,7 +157,7 @@
                 </ul>
             </li>
             <li class="nav-item  ">
-                <a href="javascript:;#room" class="nav-link nav-toggle">
+                <a href="javascript:;#home" class="nav-link nav-toggle">
                     <i class="icon-wallet"></i>
                     <span class="title">HomePage Hero</span>
                     <span class="arrow"></span>
@@ -171,6 +171,25 @@
                     <li class="nav-item  ">
                         <a href="/admin/home-hero-add" class="nav-link ">
                             <span class="title">Add Hero</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="nav-item  ">
+                <a href="javascript:;#giveaway" class="nav-link nav-toggle">
+                    <i class="icon-wallet"></i>
+                    <span class="title">Giveaway</span>
+                    <span class="arrow"></span>
+                </a>
+                <ul class="sub-menu">
+                    <li class="nav-item  ">
+                        <a href="/admin/giveaway-view" class="nav-link ">
+                            <span class="title">Giveaway List</span>
+                        </a>
+                    </li>
+                    <li class="nav-item  ">
+                        <a href="/admin/giveaway-add" class="nav-link ">
+                            <span class="title">Add Giveaway</span>
                         </a>
                     </li>
                 </ul>

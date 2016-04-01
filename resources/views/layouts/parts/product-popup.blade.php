@@ -19,19 +19,27 @@
                             <div class="pull-left p-nest-protect">
                                 <ul class="">
                                     <li>
-                                        <i class="m-icon m-icon--alert"></i> GetAlerts
-                                    </li>
-                                    <li>
-                                        <i class="m-icon m-icon--shares-active"></i> 99
-                                    </li>
-                                    <li>
-                                        <a href="#">
+                                        <?php
+                                        $userId = !empty($userData->id) ? $userData->id : 0;
+                                        ?>
+
+                                        <heart-counter-dir uid="<?php echo $userId ?>" iid=data.id plink=data.product_permalink sec='product'>
+
+                                        </heart-counter-dir>
+
+                                      <!--  <a href="#">
                                             <i class="m-icon m-icon--ScrollingHeaderHeart">
                                                 <span class="m-hover">
                                                     <span class="path1"></span><span class="path2"></span>
                                                 </span>
-                                            </i> 768
-                                        </a>
+                                            </i> 7682
+                                        </a> -->
+                                    </li>
+                                    <li>
+                                        <i class="m-icon m-icon--alert"></i> GetAlerts
+                                    </li>
+                                    <li>
+                                        <i class="m-icon m-icon--shares-active"></i> 99
                                     </li>
                                 </ul>
                             </div>

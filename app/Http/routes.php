@@ -45,6 +45,7 @@
 
     Route::get('/terms-of-use', 'PageController@termsOfUse');
 
+    Route::get('/giveaway', 'PageController@giveaway');
 
     Route::group(['prefix' => 'api'], function ()
     {
@@ -193,8 +194,11 @@
         Route::post('homehero/add-home-hero', 'RoomController@addHomeHero');
         Route::post('homehero/update-home-hero', 'RoomController@updateHomeHero');
         Route::post('homehero/delete-home-hero', 'RoomController@deleteHomeHero');
-        
 
+        Route::post('giveaway/add-giveaway', 'GiveawayController@addGiveaway');
+        Route::post('giveaway/update-giveaway', 'GiveawayController@updateGiveaway');
+        Route::post('giveaway/delete-giveaway', 'GiveawayController@deleteGiveaway');
+        
         /*
          * User route collection
          * */
@@ -247,6 +251,10 @@
         Route::get('home-hero-add', 'AdminController@addHomeHero');
         Route::get('home-hero-edit/{id?}', 'AdminController@editHomeHero');
 
+        //Giveaway view
+        Route::get('giveaway-view', 'AdminController@giveawayView');
+        Route::get('giveaway-add', 'AdminController@addGiveaway');
+        Route::get('giveaway-edit/{id?}', 'AdminController@editGiveaway');
         // User View
         Route::get('user-list', 'AdminController@userList');
         Route::get('user-add/{id?}', 'AdminController@userEdit');
