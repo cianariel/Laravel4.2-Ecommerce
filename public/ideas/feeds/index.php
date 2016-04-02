@@ -212,7 +212,7 @@ $laravelUser = file_get_contents('https://ideaing.com/api/info-raw/' .  get_the_
 $laravelUser = json_decode($laravelUser, true);
 
 if(isset($laravelUser['medias'][0])){
-    $data['avator'] = $laravelUser['medias'][0][media_link];
+    $data['avator'] = $laravelUser['medias'][0]['media_link'];
 }else{
     $data['avator'] = get_avatar_url( get_the_author_email(), '80' );
 }
