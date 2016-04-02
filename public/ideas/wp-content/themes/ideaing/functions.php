@@ -567,7 +567,8 @@ function custom_login(){
             } 
 
         }else{
-             
+            wp_redirect('https://ideaing.com/login#?from=cms');
+            exit(); 
         }
     }
 }
