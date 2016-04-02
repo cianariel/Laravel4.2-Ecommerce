@@ -9613,6 +9613,9 @@ html.hide-overflow {
   background: #FF0042;
   color: #fff; }
 
+.product-popup-modal .likes .m-icon--heart-solid {
+  color: #FF0042; }
+
 .product-popup-modal .lbMain {
   background-color: transparent;
   min-width: 768px;

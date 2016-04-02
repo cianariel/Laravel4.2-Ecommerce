@@ -131,7 +131,7 @@ class Product extends Model
         $strReplace = \Config::get("const.file.s3-path");// "http://s3-us-west-1.amazonaws.com/ideaing-01/";
         $file = str_replace($strReplace, '', $itemLogoInfo->media_link);
 
-        $data['ThumbnailPath'] = $strReplace . 'thumb-' . $file;
+        $data['ThumbnailPath'] = env('ASSETS_CDN') . 'thumb-' . $file;
 
         return $data;
     }
@@ -360,7 +360,7 @@ class Product extends Model
             $tmp = $this->getSingleProductInfoForView($id);
 
             // making the thumbnail url by injecting "thumb-" in the url which has been uploaded during media submission.
-            $strReplace = \Config::get("const.file.s3-path");
+            $strReplace = env('IMG_CDN') . '/';
             $path = str_replace($strReplace, '', $tmp->media_link);
             $path = $strReplace . 'thumb-' . $path;
 
