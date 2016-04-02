@@ -107,7 +107,7 @@
             </ul>
         </div>
 
-        <div class="hero-background" style="background-image:url( {{getThumbnailLink($post->ID)}} ) "></div>
+        <div class="hero-background" style="background-image:url( {{str_replace('ideaing-ideas.s3.amazonaws.com', 'd3f8t323tq9ys5.cloudfront.net', getThumbnailLink($post->ID))}} ) "></div>
         <!-- TODO - use as the hero-bg					--><?php //the_post_thumbnail(); // Fullsize image for the single post ?>
         <div class="color-overlay"></div>
     </section>
