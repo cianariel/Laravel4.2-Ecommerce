@@ -204,6 +204,7 @@ class UserController extends ApiController
     public function checkUserPermalink($permalink)
     {
 
+
     }
 
     // Fetch notification for current user

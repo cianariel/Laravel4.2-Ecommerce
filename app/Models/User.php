@@ -200,13 +200,14 @@ class User extends Model implements AuthenticatableContract,
     }
 
     //todo need to implement permalink check feature
+
     public function checkUserByPermalink($permalink)
     {
         try {
-            /*return User::with('userProfile')
+            return User::with('userProfile')
                        ->with('medias')
                        ->where('email', $permalink)
-                       ->firstOrFail();*/
+                       ->firstOrFail();
 
         } catch (\Exception $ex) {
             return false;

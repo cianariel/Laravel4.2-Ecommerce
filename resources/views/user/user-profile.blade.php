@@ -70,7 +70,6 @@
                             <a ng-click="filterContent(null)"  href="" data-filterby="all" class="all-activity">
                                 <i class="m-icon m-icon--menu"></i>
                                 All Activity
-                                
                             </a>
                         </li>
                         <li ng-class="{active: activeMenu == '2'}" ng-click="activeMenu='2'">
