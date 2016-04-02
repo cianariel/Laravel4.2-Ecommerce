@@ -44,7 +44,7 @@
                     $product = $temp->getSingleProductInfoForView($pr->product_id);
                     if($product)
                     {
-                        $strReplace = env('IMG_CDN');
+                        $strReplace = env('IMG_CDN') . '/';
                         $path = str_replace($strReplace, '', $product->media_link);
                         $path = $strReplace . 'thumb-' . $path;
                         $pr->media_link = $path;
