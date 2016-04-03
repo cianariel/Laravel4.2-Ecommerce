@@ -445,7 +445,9 @@
 
                     if (isset($userData['Permalink']) && ($userData['Permalink'] != ""))
                     {
-                        $user->userProfile()->update(['permalink' => $input['Permalink']]);
+                        // $user->userProfile()->update(['permalink' => $input['Permalink']]);
+
+                        $user->permalink = $input['Permalink'];
                     }
 
                     if (isset($userData['MediaLink']) && ($userData['MediaLink'] != ""))
@@ -461,7 +463,6 @@
 
                             'media_link' => $input['MediaLink'],
                         ]);
-
                     }
 
                     $user->save();
