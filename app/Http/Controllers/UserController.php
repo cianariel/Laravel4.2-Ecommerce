@@ -171,6 +171,7 @@ class UserController extends ApiController
             // 'profilePicture'   => $this->authCheck['profile-picture'],
             $data = array(
                 'userData' => $userData,
+                'userProfileData' => $userData,
                 'profile' => ($userData->medias[0]->media_link == '') ? \Config::get("const.user-image") : $userData->medias[0]->media_link,
                 'fullname' => $userData->name,
                 'address' => $userData->userProfile->address,
@@ -178,7 +179,8 @@ class UserController extends ApiController
                 //   'login'     => true,
                 //   'permalink' => $userData->userProfile->permalink
                 'permalink' => $permalink,
-                'isAdmin' => $userData->hasRole('admin') || $userData->hasRole('editor')
+                'isAdmin' => $userData->hasRole('admin') || $userData->hasRole('editor'),
+                'showEditOption' => true
 
             );
 
@@ -188,6 +190,37 @@ class UserController extends ApiController
         } elseif ($this->authCheck['method-status'] == 'fail-with-http') {
             return \Redirect::to('login');
         }
+    }
+
+
+    //show public profile as per given permalink
+
+    public function viewPublicProfile($permalink)
+    {
+
+        if ($this->authCheck['method-status'] == 'success-with-http') {
+            $userData = $this->authCheck['user-data'];
+        }
+
+            // 'profilePicture'   => $this->authCheck['profile-picture'],
+        $userProfileData = $this->user->checkUserByPermalink($permalink);
+            $data = array(
+                'userData' => $userData,
+                'userProfileData' => $userProfileData,
+                'profile' => ($userProfileData->medias[0]->media_link == '') ? \Config::get("const.user-image") : $userProfileData->medias[0]->media_link,
+                'fullname' => $userProfileData->name,
+                'address' => $userProfileData->userProfile->address,
+                'personalInfo' => $userProfileData->userProfile->personal_info,
+                //   'login'     => true,
+                //   'permalink' => $userData->userProfile->permalink
+                'permalink' => $permalink,
+                'isAdmin' => $userData->hasRole('admin') || $userData->hasRole('editor'),
+                'showEditOption' => false
+
+            );
+
+            return view('user.user-profile', $data);
+
 
 
     }
@@ -196,14 +229,6 @@ class UserController extends ApiController
     {
         $this->setCookie('hide-signup', 'true', 1440);
         return \Redirect::back();
-
-    }
-
-    //todo need to implement permalink check feature
-
-    public function checkUserPermalink($permalink)
-    {
-
 
     }
 

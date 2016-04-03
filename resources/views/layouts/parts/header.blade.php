@@ -285,9 +285,9 @@ if(function_exists('is_single')){
                             <div class="form-group ">
                                 <label class="col-lg-12 control-label">Personal link</label>
                                 <div class="col-lg-12">
-                                    <div class="col-lg-6">http://staging.ideaing.com/user/</div>
+                                    <div class="col-lg-6">https://ideaing.com/user/profile/</div>
                                     <div class="col-lg-6">
-                                        <input class="form-control personal-link" ng-model="data.Permalink" ng-init="data.Permalink = '<?php echo  $userData['userProfile']['permalink']  ?>'"  placeholder="">
+                                        <input class="form-control personal-link" ng-model="data.Permalink" ng-init="data.Permalink = '<?php echo  $userData['permalink']  ?>'"  placeholder="">
                                     </div>
                                 </div>
                             </div>
