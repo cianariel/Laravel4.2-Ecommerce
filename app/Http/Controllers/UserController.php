@@ -202,8 +202,9 @@ class UserController extends ApiController
             $userData = $this->authCheck['user-data'];
         }
 
-            // 'profilePicture'   => $this->authCheck['profile-picture'],
-        $userProfileData = $this->user->checkUserByPermalink($permalink);
+        $userProfileData = $this->user->checkUserByPermalink($permalink) ;
+
+        $userProfileData = $userProfileData != false ? $userProfileData : $userData;
             $data = array(
                 'userData' => $userData,
                 'userProfileData' => $userProfileData,
@@ -211,8 +212,6 @@ class UserController extends ApiController
                 'fullname' => $userProfileData->name,
                 'address' => $userProfileData->userProfile->address,
                 'personalInfo' => $userProfileData->userProfile->personal_info,
-                //   'login'     => true,
-                //   'permalink' => $userData->userProfile->permalink
                 'permalink' => $permalink,
                 'isAdmin' => $userData->hasRole('admin') || $userData->hasRole('editor'),
                 'showEditOption' => false
@@ -220,9 +219,6 @@ class UserController extends ApiController
             );
 
             return view('user.user-profile', $data);
-
-
-
     }
 
     public function hideSignup()
