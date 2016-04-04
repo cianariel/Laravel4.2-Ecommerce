@@ -81,7 +81,7 @@ class PageController extends ApiController
 
         $offset = $limit * ($page - 1);
 
-        if ($type == 'product' || !$stories = self::getStories($limit, $offset, $tag)) {
+        if ($type == 'product' || !$stories = self::getStories($limit + 1, $offset, $tag)) {
             $stories = [];
         }
 
@@ -95,11 +95,18 @@ class PageController extends ApiController
             $productCategoryID = false;
         }
 
-        if ($type == 'idea' || !$products = self::getProducts($limit, $page, $offset, $tagID, $productCategoryID, $sortBy)) {
+        if ($type == 'idea' || !$products = self::getProducts($limit + 1, $page, $offset, $tagID, $productCategoryID, $sortBy)) {
             $products['result'] = [];
         }
 
-        $return = array_merge($stories, $products['result']);
+        // we try to pull one extra item in each category, to know if there is more content availiable (in that case, we later display a 'Load More' button
+        $regularStories = array_slice($stories, 0, 5);
+        $leftOver[] = array_slice($stories['regular'], 5, 1);
+
+        $prods = array_slice($products['result'], 0, 5);
+        $leftOver[] = array_slice($products['result'], 5, 1);
+
+        $return['content'] = array_merge($regularStories, $prods);
 
         usort($return, function ($a, $b) use ($sortBy) {
             if ($sortBy && @$b->$sortBy && @$a->$sortBy) {
@@ -108,6 +115,12 @@ class PageController extends ApiController
                 return strtotime(@$b->updated_at) - strtotime(@$a->updated_at);
             }
         });
+
+        if($allHas = array_values($leftOver)){
+            $return['hasMore'] = true;
+        }else{
+            $return['hasMore'] = false;
+        }
 
         return $return;
     }
@@ -126,8 +139,8 @@ class PageController extends ApiController
             $productLimit = 6;
             $productOffset = 6 * ($page - 1);
 
-            $storyLimit = 3;
-            $storyOffset = 4 * ($page - 1);
+            $storyLimit = 4;
+            $storyOffset = 5 * ($page - 1);
 
         } else {
             $productLimit = $limit;
@@ -140,13 +153,13 @@ class PageController extends ApiController
         $featuredLimit = 3;
         $featuredOffset = $featuredLimit * ($page - 1);
 
-        if ($type == 'product' || !$stories = self::getGridStories($storyLimit, $storyOffset, $featuredLimit, $featuredOffset, $tag, $ideaCategory)) {
+        if ($type == 'product' || !$stories = self::getGridStories($storyLimit + 1, $storyOffset, $featuredLimit + 1, $featuredOffset, $tag, $ideaCategory)) {
             $stories = [
                 'regular' => [],
                 'featured' => [],
             ];
         }
-        if ($type == 'idea' || !$products = self::getProducts($productLimit, $page, $productOffset, $tagID)) {
+        if ($type == 'idea' || !$products = self::getProducts($productLimit + 1, $page, $productOffset, $tagID)) {
             $products['result'] = [];
         }
 
@@ -154,12 +167,33 @@ class PageController extends ApiController
             $stories['regular'] = [];
         }
 
-        $return['regular'] = array_merge($stories['regular'], $products['result']);
-        $return['featured'] = $stories['featured'];
+        // we try to pull one extra item in each category, to know if there is more content availiable (in that case, we later display a 'Load More' button
+        $regularStories = array_slice($stories['regular'], 0, 4);
+        $leftOver[] = array_slice($stories['regular'], 4, 1);
 
-        usort($return['regular'], function ($a, $b) {
+//        print_r($stories['featured']->toArray()); die();
+
+
+        $featuredStories = array_slice($stories['featured']->toArray(), 0, 3);
+        $leftOver[] = array_slice($stories['featured']->toArray(), 3, 1);
+
+
+        $prods = array_slice($products['result'], 0, 5);
+        $leftOver[] = array_slice($products['result'], 5, 1);
+
+        $return['content']['regular'] = array_merge($regularStories, $prods);
+        $return['content']['featured'] = $featuredStories;
+
+        usort($return['content']['regular'], function ($a, $b) {
             return strtotime(@$b->updated_at) - strtotime(@$a->updated_at);
         });
+
+        if($allHas = array_values($leftOver)){
+            $return['hasMore'] = true;
+        }else{
+            $return['hasMore'] = false;
+        }
+
         return $return;
     }
 
