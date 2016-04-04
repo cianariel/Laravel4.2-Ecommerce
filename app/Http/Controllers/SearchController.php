@@ -134,7 +134,7 @@ class SearchController extends Controller
 
         $arguments = [
             'query' =>  $query,
-            'size'  =>  $size,
+            'size'  =>  $size + 1,
             'start' =>  $offset,
         ];
 
@@ -181,6 +181,13 @@ class SearchController extends Controller
 
         $final['content'] = $return;
         $final['count'] = $results->getPath('hits/found');
+
+        if(!empty(array_slice($return, $size, 1))){
+             $final['hasMore'] = true;
+             unset($final['content'][count($final['content'])-1]);
+        }else{
+             $final['hasMore'] = false;
+        }
 
         return $final;
     }
