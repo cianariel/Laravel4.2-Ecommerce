@@ -61,7 +61,7 @@
                                 @foreach ($giveaways as $giveaway)
                                 <tr>
                                     <td><input type="checkbox" class="checkboxes" value="1" /> </td>
-                                    <td>{{$giveaway->giveaway_image_title }}</td>
+                                    <td>{{$giveaway->giveaway_title }}</td>
                                     <td><a href="/admin/giveaway-edit/{{$giveaway->id}}" class="btn btn-sm btn-default blue btn-editable"><i class="fa fa-pencil"></i> Edit</a>
                                     @if($giveaway->giveaway_status!=1)
                                     <button class="btn btn-sm btn-danger btn-editable btn_delete_giveaway" data-giveawayid="{{$giveaway->id}}" id="btn_delete_giveaway" data-dismiss="modal"><i class="fa fa-close"></i> Delete</button></td>
