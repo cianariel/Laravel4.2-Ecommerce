@@ -54,10 +54,10 @@ return [
 
         'mysql' => [
             'driver'    => 'mysql',
-            'host'      => env('DB_HOST', 'ideaing-staging-2.c9zzhwcfjtcc.us-west-2.rds.amazonaws.com'),
+            'host'      => env('DB_HOST', 'localhost'),
             'database'  => env('DB_DATABASE', 'ideaing-staging'),
-            'username'  => env('DB_USERNAME', 'megaStuff_'),
-            'password'  => env('DB_PASSWORD', 'iAmBob__'),
+            'username'  => env('DB_USERNAME', 'root'),
+            'password'  => env('DB_PASSWORD', 'root'),
             'charset'   => 'utf8',
             'collation' => 'utf8_unicode_ci', 
             'prefix'    => '',

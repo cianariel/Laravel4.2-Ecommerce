@@ -180,7 +180,7 @@
                 @include('grid.grid')
 
         <div class="container">
-            <a ng-click="loadMore()" class="btn btn-success bottom-load-more col-xs-12">Load More</a>
+            <a ng-show="hasMore" ng-click="loadMore()" class="btn btn-success bottom-load-more col-xs-12">Load More</a>
         </div>
 
         <!-- custom angular template - START -->
