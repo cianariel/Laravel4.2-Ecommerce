@@ -80,6 +80,7 @@ class PageController extends ApiController
         }
 
         $offset = $limit * ($page - 1);
+        $leftOver = 0;
 
         if ($type == 'product' || !$stories = self::getStories($limit + 1, $offset, $tag)) {
             $stories = [];
@@ -100,15 +101,19 @@ class PageController extends ApiController
         }
 
         // we try to pull one extra item in each category, to know if there is more content availiable (in that case, we later display a 'Load More' button
-        $regularStories = array_slice($stories, 0, 5);
-        $leftOver[] = array_slice($stories['regular'], 5, 1);
+        $stories = array_slice($stories, 0, $limit);
+        if(!empty(array_slice($stories, $limit, 1))){
+            $leftOver++;
+        }
 
-        $prods = array_slice($products['result'], 0, 5);
-        $leftOver[] = array_slice($products['result'], 5, 1);
+        $prods = array_slice($products['result'], 0, $limit);
+        if(!empty(array_slice($products['result'], $limit, 1))){
+            $leftOver++;
+        }
 
-        $return['content'] = array_merge($regularStories, $prods);
+        $return['content'] = array_merge($stories, $prods);
 
-        usort($return, function ($a, $b) use ($sortBy) {
+        usort($return['content'], function ($a, $b) use ($sortBy) {
             if ($sortBy && @$b->$sortBy && @$a->$sortBy) {
                 return @$a->$sortBy - @$b->$sortBy;
             } else {
@@ -116,7 +121,7 @@ class PageController extends ApiController
             }
         });
 
-        if($allHas = array_values($leftOver)){
+        if($leftOver > 0){
             $return['hasMore'] = true;
         }else{
             $return['hasMore'] = false;
@@ -152,6 +157,7 @@ class PageController extends ApiController
 
         $featuredLimit = 3;
         $featuredOffset = $featuredLimit * ($page - 1);
+        $leftOver = 0;
 
         if ($type == 'product' || !$stories = self::getGridStories($storyLimit + 1, $storyOffset, $featuredLimit + 1, $featuredOffset, $tag, $ideaCategory)) {
             $stories = [
@@ -168,18 +174,29 @@ class PageController extends ApiController
         }
 
         // we try to pull one extra item in each category, to know if there is more content availiable (in that case, we later display a 'Load More' button
-        $regularStories = array_slice($stories['regular'], 0, 4);
-        $leftOver[] = array_slice($stories['regular'], 4, 1);
+        $regularStories = array_slice($stories['regular'], 0, $storyLimit);
+
+        if(!empty(array_slice($stories['regular'], $storyLimit, 1))){
+            $leftOver++;
+        }
 
 //        print_r($stories['featured']->toArray()); die();
 
 
-        $featuredStories = array_slice($stories['featured']->toArray(), 0, 3);
-        $leftOver[] = array_slice($stories['featured']->toArray(), 3, 1);
+if($stories['featured']){
+     $featuredStories = array_slice($stories['featured']->toArray(), 0, $featuredLimit);
+        if(!empty(array_slice($stories['featured']->toArray(), $featuredLimit, 1))){
+            $leftOver++;
+        }
+    }else{
+        $featuredStories = [];
+    }
 
+        $prods = array_slice($products['result'], 0, $productLimit);
 
-        $prods = array_slice($products['result'], 0, 5);
-        $leftOver[] = array_slice($products['result'], 5, 1);
+        if(!empty(array_slice($products['result'], $productLimit, 1))){
+            $leftOver++;
+        }
 
         $return['content']['regular'] = array_merge($regularStories, $prods);
         $return['content']['featured'] = $featuredStories;
@@ -188,7 +205,7 @@ class PageController extends ApiController
             return strtotime(@$b->updated_at) - strtotime(@$a->updated_at);
         });
 
-        if($allHas = array_values($leftOver)){
+        if($leftOver > 0){
             $return['hasMore'] = true;
         }else{
             $return['hasMore'] = false;

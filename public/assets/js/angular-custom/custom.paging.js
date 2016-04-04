@@ -154,12 +154,13 @@ console.log('hi : ',$scope.iid,$scope.plink);
             }
 
             $scope.nextLoad =  pagingApi.getGridContent($scope.currentPage, $limit, $scope.currentTag, $scope.filterBy, $scope.ideaCategory).success(function (response) {
-                $scope.newStuff[0] = $scope.sliceToRows(response['regular'], response['featured']);
+                $scope.newStuff[0] = $scope.sliceToRows(response['content']['regular'], response['content']['featured']);
                 $scope.content = $scope.content.concat($scope.newStuff);
 
-                $scope.allContent[$scope.currentPage]['regular']  = response['regular'];
-                $scope.allContent[$scope.currentPage]['featured'] = response['featured'];
                 $scope.hasMore = response['hasMore'];
+                console.log('hasMore');
+                console.log(response['hasMore']);
+
             });
         };
 
@@ -178,7 +179,7 @@ console.log('hi : ',$scope.iid,$scope.plink);
                         $scope.hasMore = response['hasMore'];
                     });
                     $scope.currentPage = 1;
-                    $scope.filterBy = null;
+                    $scope.filterBy = null; 
 
                     $scope.content = $replacer;
                     $('.main-content').fadeIn();
@@ -293,12 +294,13 @@ console.log('hi : ',$scope.iid,$scope.plink);
 
             $scope.nextLoad = pagingApi.getSearchContent($scope.$searchQuery, 15, 0).success(function (response) {
                 $scope.content = response['content'];
+                $scope.hasMore = response['hasMore'];
+
                 $('#search-header').show();
                 $('#hit-count').text(response['count']);
             });
 
             $scope.loadMore = function() {
-                $scope.currentPage++;
 
                 $scope.offset = 15 * $scope.currentPage++;
                 $scope.nextLoad =  pagingApi.getSearchContent($scope.$searchQuery, 15,  $scope.offset,  $scope.type,  $scope.sortBy).success(function (response) {
@@ -312,6 +314,8 @@ console.log('hi : ',$scope.iid,$scope.plink);
 
                     $scope.content = $newStuff;
                     $scope.hasMore = response['hasMore'];
+                    $scope.currentPage++;
+
                 });
         }
 
@@ -458,9 +462,10 @@ console.log('hi : ',$scope.iid,$scope.plink);
             pagingApi.openProductPopup($scope, $uibModal, $timeout, id);
         }
 
-        
+        $scope.hasMore = false;
+
         $scope.nextLoad = pagingApi.getPlainContent(1, 3, 'deal', 'idea').success(function (response) {
-            $scope.dailyDeals = response;
+            $scope.dailyDeals = response['content'];
             $timeout(function() {
                 jQuery('#daily-deals').royalSlider({
                     arrowsNav: true,
@@ -499,15 +504,16 @@ console.log('hi : ',$scope.iid,$scope.plink);
 
         pagingApi.getPlainContent(1, 9, false, 'product').success(function (response) {
             $scope.newestArrivals = [];
-            for(var i=0; i<= response.length; i++){
+            for(var i=0; i<= response['content'].length; i++){
                 if(i%3 == 0){
-                    var newestArrival = [response[i]];
+                    var newestArrival = [response['content'][i]];
                 }else{
-                    newestArrival.push(response[i]);
-                    if(i%3 == 2 || i == response.length-1){
+                    newestArrival.push(response['content'][i]);
+                    if(i%3 == 2 || i == response['content'].length-1){
                         $scope.newestArrivals.push(newestArrival);
                     }
                 }
+                $scope.hasMore = response['hasMore'];
             }
             
             $timeout(function(){
@@ -550,6 +556,8 @@ console.log('hi : ',$scope.iid,$scope.plink);
         $scope.currentCategory = false;
         $scope.$filterBy = false;
         $scope.sortBy = false;
+        $scope.hasMore = false;
+
 
         var $route =  $filter('getURISegment')(2);
         var $category = false;
@@ -573,7 +581,8 @@ console.log('hi : ',$scope.iid,$scope.plink);
                 });
             }
 
-            $scope.content = response;
+            $scope.content = response['content'];
+            $scope.hasMore = response['hasMore'];
         });
 
         $scope.loadMore = function() {
@@ -582,7 +591,7 @@ console.log('hi : ',$scope.iid,$scope.plink);
             var $limit = 15;
 
             $scope.nextLoad =  pagingApi.getPlainContent($scope.currentPage, $limit,  $scope.currentCategory, 'product', $scope.currentCategory).success(function (response) {
-                var $newStuff = $scope.content.concat(response)
+                var $newStuff = $scope.content.concat(response['content'])
 
                 if($scope.sortBy){
                     $newStuff.sort(function (a, b) {
@@ -591,6 +600,8 @@ console.log('hi : ',$scope.iid,$scope.plink);
                 }
 
                 $scope.content = $newStuff;
+                $scope.hasMore = response['hasMore'];
+
             });
         };
 
@@ -1103,15 +1114,16 @@ console.log('hi : ',$scope.iid,$scope.plink);
                         endContent['featured'] =  batch.data['content']['featured']; // we don't filter
                     }
 
-                    endContent['hasMore'] = batch.data['hasMore'];
+                    $hasMore = batch.data['hasMore'];
 
-                    $filtered[$i] = [];
-                    $filtered[$i]['content'] = $sliceFunction(endContent['regular'], endContent['featured'] );
-                    $filtered[$i]['hasMore'] = batch.data['hasMore'];
+                    $filtered[$i] = $sliceFunction(endContent['regular'], endContent['featured'] );
                     $i++;
                 });
 
-                var $return = $filtered;
+                var $return = [];
+
+                $return['content'] = $filtered;
+                $return['hasMore'] = $hasMore;
 
                 return $return;
             });
