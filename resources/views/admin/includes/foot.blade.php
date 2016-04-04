@@ -15,7 +15,8 @@
 <![endif]-->
         <!-- BEGIN CORE PLUGINS -->
         <!-- Metis Menu Plugin JavaScript -->
-
+        <script src="/assets/js/main.js"></script>
+        <script src="/assets/js/admin.js"></script>
         <script src="/assets/admin/vendor/global/plugins/jquery.min.js" type="text/javascript"></script>
         <script src="/assets/admin/vendor/global/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
         <script src="/assets/admin/vendor/global/plugins/js.cookie.min.js" type="text/javascript"></script>
@@ -38,8 +39,7 @@
         <!-- END THEME LAYOUT SCRIPTS -->
 
 
-        <script src="/assets/js/main.js"></script>
-        <script src="/assets/js/admin.js"></script>
+        
 
         {{--<script src="/assets/js/vendor/angular.min.js"></script>--}}
         {{--<script src="/assets/js/vendor/textAngular-sanitize.min.js"></script>--}}
