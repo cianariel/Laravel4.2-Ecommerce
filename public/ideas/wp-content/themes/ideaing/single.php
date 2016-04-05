@@ -123,7 +123,7 @@
                 </li>
             </ul>
 
-                <ul class="like-nav ">
+                <ul class="like-nav " ng-init="heartUsers('ideas')">
                 <li>
                     <div class="social-stats  ">
                         <div class="social-stats__item">
