@@ -11,11 +11,13 @@
     </ul>
 </div>
 
+<div class="container desktop-home-deopdown-container full-sm fixed-sm">
 <div id="desktop-home-deopdown-menu" class="mobile-top-menu mobile-mid-menu ">
     <ul>
         <li><a class="box-link @if(isset($roomInformation['Permalink']) && $roomInformation['Permalink'] == 'decor') active @endif" href="{{url('idea/decor')}}">Decor</a></li>
         <li><a class="box-link @if(isset($roomInformation['Permalink']) && $roomInformation['Permalink'] == 'garage') active @endif" href="{{url('idea/garage')}}">Garage</a></li>
     </ul>
+</div>
 </div>
 
 <nav class="mid-nav rooms ">
