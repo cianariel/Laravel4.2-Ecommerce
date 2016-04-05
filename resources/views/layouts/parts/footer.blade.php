@@ -43,17 +43,6 @@
     <i class="m-icon--footer-up-arrow"></i>
 </a>
 
-<script src="/assets/js/app.js"></script>
-<script src="/assets/js/vendor/textAngular-sanitize.min.js"></script>
-<script src="/assets/js/vendor/angular-confirm.js"></script>
-<script src="/assets/js/vendor/textAngular-rangy.min.js"></script>
-<script src="/assets/js/vendor/textAngular.min.js"></script>
-
-<script src="/assets/js/vendor/angular-busy.min.js"></script>
-<script src="/assets/js/angular-custom/custom.paging.js"></script>
-<script src="/assets/js/angular-custom/public.common.js"></script>
-<script type="text/javascript" src="/assets/js/vendor/autocomplete.js"></script>
-<script type="text/javascript" src="/assets/product/js/custom.product.js"></script>
 <script>
     var rootApp = angular.module('rootApp', ['pagingApp', 'publicApp','productApp']);
 </script>
