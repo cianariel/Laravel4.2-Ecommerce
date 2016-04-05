@@ -368,6 +368,7 @@ class Product extends Model
 
             $tmp->media_link = $path;
             $tmp->updated_at = Carbon::createFromTimestamp(strtotime($tmp->updated_at))->diffForHumans();
+            $tmp->raw_creation_date = $tmp->updated_at;
             $tmp->type = 'product';
 
             // Add store information

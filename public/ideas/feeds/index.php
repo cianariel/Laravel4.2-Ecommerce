@@ -186,6 +186,7 @@ $data['category_all'] = $cat_names;
 $data['url'] = get_the_permalink();
 $datepublishstring = get_the_time('Y-m-d H:i:s');
 $datepublish = timeAgo($datepublishstring);
+$data['raw_creation_date'] = $datepublishstring;
 $data['creation_date'] = $datepublish;
 $data['updated_at'] = $datepublish;
 if( has_post_thumbnail( $ID ) ) {

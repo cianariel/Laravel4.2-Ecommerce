@@ -117,7 +117,7 @@ class PageController extends ApiController
             if ($sortBy && @$b->$sortBy && @$a->$sortBy) {
                 return @$a->$sortBy - @$b->$sortBy;
             } else {
-                return strtotime(@$b->updated_at) - strtotime(@$a->updated_at);
+                return strtotime(@$b->raw_creation_date) - strtotime(@$a->raw_creation_date);
             }
         });
 
@@ -202,7 +202,7 @@ if($stories['featured']){
         $return['content']['featured'] = $featuredStories;
 
         usort($return['content']['regular'], function ($a, $b) {
-            return strtotime(@$b->updated_at) - strtotime(@$a->updated_at);
+            return strtotime(@$b->raw_creation_date) - strtotime(@$a->raw_creation_date);
         });
 
         if($leftOver > 0){
@@ -257,6 +257,8 @@ if($stories['featured']){
 
             }
         }
+
+
 
 
         return $newIdeaCollection->toArray();//$return;
