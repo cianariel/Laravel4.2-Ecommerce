@@ -7,6 +7,7 @@ use App\Models\Subscriber;
 use App\Models\User;
 use App\Models\Role;
 use App\Models\Media;
+use App\Models\Contact;
 
 use App\Http\Requests;
 
@@ -25,6 +26,7 @@ class UserController extends ApiController
         $this->user = new User();
         $this->roleModel = new Role();
         $this->media = new Media();
+        $this->contact = new Contact();
 
         //check user authentication and get user basic information
         $this->authCheck = $this->RequestAuthentication(array('admin', 'editor', 'user'));
@@ -246,6 +248,17 @@ class UserController extends ApiController
 
         return $this->setStatusCode(\Config::get("const.api-status.success"))
                     ->makeResponse($result);
+
+    }
+
+    // Contact us
+
+    public function postContactUsInfo()
+    {
+        $inputData = \Input::all();
+
+       // $this->contact::
+
 
     }
 
