@@ -56,8 +56,15 @@ module.exports = function(grunt) {
             },
             maincss: {
                 src: [
-                    '../../assets/main/css/*.css',
+                    '../../assets/main/css/autocomplete.css',
+                    '../../assets/main/css/colors.css',
+                    '../../assets/main/css/global.css',
+                    '../../assets/main/css/modal.css',
+                    '../../assets/main/css/ng-tags-input.min.css',
+                    '../../assets/main/css/styles.css',
+                    '../../assets/main/css/wysiwyg.style.css',
                     '../../assets/main/js/vendor/royalslider/royalslider.css',
+                    '../../assets/main/css/app.css',
 
                 ],
                 dest: '../../../public/assets/css/main.css'

@@ -259,7 +259,7 @@ console.log('hi : ',$scope.iid,$scope.plink);
             });
         };
 
-        $scope.openProfileSetting = function () {
+        $scope.openProfileSetting = function () { 
             var templateUrl = "profile-setting.html";
             var modalInstance = $uibModal.open({
               templateUrl: templateUrl,
