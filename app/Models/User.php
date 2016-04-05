@@ -161,6 +161,17 @@ class User extends Model implements AuthenticatableContract,
         return true;
     }
 
+    public function addContactUsInfo($data)
+    {
+        try{
+
+        }catch(\Exception $ex){
+            \Log::error($ex);
+
+
+        }
+
+    }
 
     public function updateUserInformation($userData)
     {

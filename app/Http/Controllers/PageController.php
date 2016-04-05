@@ -113,13 +113,14 @@ class PageController extends ApiController
 
         $return['content'] = array_merge($stories, $prods);
 
-        usort($return['content'], function ($a, $b) use ($sortBy) {
-            if ($sortBy && @$b->$sortBy && @$a->$sortBy) {
-                return @$a->$sortBy - @$b->$sortBy;
-            } else {
-                return strtotime(@$b->updated_at) - strtotime(@$a->updated_at);
-            }
-        });
+       $return['content'] = array_values(array_sort($return['content'], function ($value) {
+                        $value = (object)$value;
+                        return strtotime($value->raw_creation_date);
+
+        }));
+
+        $return['content']  = array_reverse( $return['content'] );
+
 
         if($leftOver > 0){
             $return['hasMore'] = true;
@@ -202,7 +203,7 @@ if($stories['featured']){
         $return['content']['featured'] = $featuredStories;
 
         usort($return['content']['regular'], function ($a, $b) {
-            return strtotime(@$b->updated_at) - strtotime(@$a->updated_at);
+            return strtotime(@$b->raw_creation_date) - strtotime(@$a->raw_creation_date);
         });
 
         if($leftOver > 0){
@@ -259,6 +260,8 @@ if($stories['featured']){
         }
 
 
+
+
         return $newIdeaCollection->toArray();//$return;
     }
 
@@ -275,6 +278,8 @@ if($stories['featured']){
         if ($category && $category != 'false') {
             $url .= '&category-name=' . $category;
         }
+
+        //print_r($url); die();
 
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $url);
@@ -310,14 +315,20 @@ if($stories['featured']){
         $return['regular'] = json_decode($newIdeaCollection->toJson(), FALSE);
 
 
-            $featuredUrl = URL::to('/') . '/ideas/feeds/index.php?count=' . $featuredLimit . '&only-featured&offset=' . $featuredOffset . '&tag=' . $tag;
+            $featuredUrl = URL::to('/') . '/ideas/feeds/index.php?count=' . $featuredLimit . '&only-featured&offset=' . $featuredOffset;
 
 
         if ($tag && $tag != 'false' && $tag != false) {
             $featuredUrl .= '&tag=' . $tag;
         }
 
-//                print_r($featuredUrl); die();
+        if ($category && $category != 'false') {
+            $featuredUrl .= '&category-name=' . $category;
+        }
+
+            //  print_r('tag'); 
+            //  print_r($tag); die();
+
         // print_r($return); die();
 
 
