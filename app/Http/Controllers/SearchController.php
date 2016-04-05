@@ -273,7 +273,7 @@ class SearchController extends Controller
             'query' =>  $query,
             'fields' =>  'title,content',
             'filterQuery' => "(term field=type 'idea')",
-            'size' =>  2, 
+            'size' =>  3,
         ];
 
         $results = $csDomainClient->search($arguments);
