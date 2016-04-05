@@ -381,8 +381,6 @@ console.log('hi : ',$scope.iid,$scope.plink);
         }
 
         $scope.openSearchDropdown = function (query){
-            console.log(query)
-
                 $http({
                     method: "get",
                     url: '/api/search/find-categories/' + query,
