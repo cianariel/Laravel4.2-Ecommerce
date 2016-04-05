@@ -208,14 +208,14 @@ class UserController extends ApiController
 
         $userProfileData = $userProfileData != false ? $userProfileData : $userData;
             $data = array(
-                'userData' => $userData,
+                'userData' => empty($userData)?null:$userData,
                 'userProfileData' => $userProfileData,
                 'profile' => ($userProfileData->medias[0]->media_link == '') ? \Config::get("const.user-image") : $userProfileData->medias[0]->media_link,
                 'fullname' => $userProfileData->name,
                 'address' => $userProfileData->userProfile->address,
                 'personalInfo' => $userProfileData->userProfile->personal_info,
                 'permalink' => $permalink,
-                'isAdmin' => $userData->hasRole('admin') || $userData->hasRole('editor'),
+                'isAdmin' => empty($userData)?null:($userData->hasRole('admin') || $userData->hasRole('editor')),
                 'showEditOption' => false
 
             );
