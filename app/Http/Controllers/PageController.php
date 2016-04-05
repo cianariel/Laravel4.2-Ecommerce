@@ -279,6 +279,8 @@ if($stories['featured']){
             $url .= '&category-name=' . $category;
         }
 
+        //print_r($url); die();
+
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $url);
         curl_setopt($ch, CURLOPT_HEADER, 0);
@@ -313,14 +315,20 @@ if($stories['featured']){
         $return['regular'] = json_decode($newIdeaCollection->toJson(), FALSE);
 
 
-            $featuredUrl = URL::to('/') . '/ideas/feeds/index.php?count=' . $featuredLimit . '&only-featured&offset=' . $featuredOffset . '&tag=' . $tag;
+            $featuredUrl = URL::to('/') . '/ideas/feeds/index.php?count=' . $featuredLimit . '&only-featured&offset=' . $featuredOffset;
 
 
         if ($tag && $tag != 'false' && $tag != false) {
             $featuredUrl .= '&tag=' . $tag;
         }
 
-//                print_r($featuredUrl); die();
+        if ($category && $category != 'false') {
+            $featuredUrl .= '&category-name=' . $category;
+        }
+
+            //  print_r('tag'); 
+            //  print_r($tag); die();
+
         // print_r($return); die();
 
 
