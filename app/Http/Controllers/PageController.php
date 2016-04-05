@@ -113,13 +113,14 @@ class PageController extends ApiController
 
         $return['content'] = array_merge($stories, $prods);
 
-        usort($return['content'], function ($a, $b) use ($sortBy) {
-            if ($sortBy && @$b->$sortBy && @$a->$sortBy) {
-                return @$a->$sortBy - @$b->$sortBy;
-            } else {
-                return strtotime(@$b->raw_creation_date) - strtotime(@$a->raw_creation_date);
-            }
-        });
+       $return['content'] = array_values(array_sort($return['content'], function ($value) {
+                        $value = (object)$value;
+                        return strtotime($value->raw_creation_date);
+
+        }));
+
+        $return['content']  = array_reverse( $return['content'] );
+
 
         if($leftOver > 0){
             $return['hasMore'] = true;
