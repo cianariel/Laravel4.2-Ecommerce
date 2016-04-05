@@ -907,7 +907,7 @@ nav {
     padding-right: 0;
   }
 
-  &.landing-hero .container{
+  &.landing-hero .container {
     padding-top: 100px;
     min-height: 450px;
   }
@@ -2654,9 +2654,9 @@ header.colophon{
 .box-link-active-line{
     position: absolute;
 }
-
+      
 .mobile-top-menu{
-    position: fixed;
+    position: absolute;
     width: 100%;
     background: rgba(0,0,0, 0.8);
     display: none;
@@ -2811,7 +2811,7 @@ header.colophon{
             }
             
             .notification-body{
-                background: #fff;
+                background: #fff;      
                 border-left: 1px solid $light-grey;
                 border-right: 1px solid $light-grey;
                 height: 300px;
@@ -3281,7 +3281,14 @@ body.product-details{
 //
 
 //
-
+.desktop-home-deopdown-container{
+    position: relative;
+    #desktop-home-deopdown-menu{
+        width: 300px;
+        right: 15px;
+        top: 55px;
+    }
+}
 .mid-nav{
     min-height: 47px;
     position: absolute;
@@ -3290,6 +3297,9 @@ body.product-details{
     width: 100%;
     background: rgba(255,255,255,.9);
     overflow: hidden;
+    > .container{
+        position: relative;
+    }
 
     li.home{
         position: relative;
@@ -4280,7 +4290,7 @@ header.sub-head{
     }
     
     a{
-      padding-top: 15px;
+      padding-top: 5px;
       padding-left: 10px;
       background-position: initial;
 
@@ -5918,12 +5928,12 @@ footer.about-footer{
     top: 49px;
     right: 8%;
   }
-
+  
   .why-us{
     text-align: center;
-/*    padding-top: 25%;*/
+/*    padding-top: 25%;*/     
     >ul{
-        text-align: left;      
+        text-align: left;
     }
     li{
       background-position: 10px 15px !important;
@@ -7863,7 +7873,7 @@ html.hide-overflow{
         padding: 20px 22px;
         background: $iridium;
         color: #fff;
-    }
+    }      
     
     .likes{
         .m-icon--heart-solid{

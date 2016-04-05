@@ -6261,7 +6261,7 @@ header.colophon {
   position: absolute; }
 
 .mobile-top-menu {
-  position: fixed;
+  position: absolute;
   width: 100%;
   background: rgba(0, 0, 0, 0.8);
   display: none;
@@ -6693,6 +6693,13 @@ body.product-details .article-content {
   .story-header .icon-wrap {
     /*    padding-right: 35px;*/ }
 
+.desktop-home-deopdown-container {
+  position: relative; }
+  .desktop-home-deopdown-container #desktop-home-deopdown-menu {
+    width: 300px;
+    right: 15px;
+    top: 55px; }
+
 .mid-nav, .mid-nav .extra-nav {
   min-height: 47px;
   position: absolute;
@@ -6702,6 +6709,8 @@ body.product-details .article-content {
   background: rgba(255, 255, 255, 0.9);
   overflow: hidden;
   /*    .box-link.active{*/ }
+  .mid-nav > .container, .mid-nav .extra-nav > .container {
+    position: relative; }
   .mid-nav li.home {
     position: relative;
     /*.homepage .mid-nav li.home .box-link-active-line{*/ }
@@ -7311,7 +7320,7 @@ header.sub-head {
       float: none;
       padding: 0px; }
   .like-nav li a {
-    padding-top: 15px;
+    padding-top: 5px;
     padding-left: 10px;
     background-position: initial; }
     .like-nav li a.like-counter {
@@ -8342,9 +8351,9 @@ footer.about-footer {
     .why-us li {
       background-position: 10px 15px !important;
       /*.m-icon{
-        float: none;
-        position: relative;
-        margin-right: 10px;
+          float: none;
+          position: relative;
+          margin-right: 10px;
           top: 5px;
       }*/ }
     .why-us .btn {
