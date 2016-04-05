@@ -43,23 +43,8 @@ if (screen.width < 992 && screen.width > 620) {
 
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-<link rel="stylesheet" href="/assets/css/app.css">
 <link rel="stylesheet" href="/assets/fonts/ideaing/style.css">
-
-<script src="/assets/js/vendor/jquery-1.11.3.min.js"></script>
-
-<!-- basic stylesheet -->
-<link rel="stylesheet" href="/assets/js/vendor/royalslider/royalslider.css">
-
-<!-- skin stylesheet (change it if you use another) -->
-<link rel="stylesheet" href="/assets/js/vendor/royalslider/skins/default/rs-default.css">
-
-<!-- Main slider JS script file -->
-<!-- Create it with slider online build tool for better performance. -->
-<script src="/assets/js/vendor/royalslider/jquery.royalslider.min.js"></script>
-
-<!-- Custom script and css link for Application -->
-<link rel="stylesheet" href="/assets/css/autocomplete.css">
+<link rel="stylesheet" href="/assets/css/main.css">
 
 <?php
   if(!function_exists('is_single') && @$canonicURL){
@@ -67,11 +52,7 @@ if (screen.width < 992 && screen.width > 620) {
 }
 ?>
 
-<script src="/assets/js/vendor/angular.min.js"></script>
-<script src="/assets/js/vendor/ui-bootstrap.min.js"></script>
-<script src="/assets/js/vendor/textAngular-sanitize.min.js"></script>
-<script src="/assets/admin/js/angular-file-upload.min.js"></script>
-
+<script type="text/javascript" src="/assets/js/main.js"></script>
 
 <style>
     .homepage-grid{
@@ -81,18 +62,6 @@ if (screen.width < 992 && screen.width > 620) {
         opacity:0;
     }
 </style>
-<!--
-
-<script src="/assets/js/vendor/textAngular-sanitize.min.js"></script>
-
-<script src="/assets/js/vendor/angular-confirm.js"></script>
-
-<script src="/assets/js/vendor/textAngular-rangy.min.js"></script>
-
-<script src="/assets/js/vendor/textAngular.min.js"></script>
-
-<script src="/assets/js/vendor/ng-tags-input.min.js"></script>
--->
 
 <meta name="google-site-verification" content="xiWn24mA3aZopoTkElR97n-HdvsfctffW493Q6x_vZU" />
 
