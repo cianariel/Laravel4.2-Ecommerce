@@ -5,11 +5,11 @@ $categories = get_categories();
 ?>
 <nav class="mid-nav" >
     <div class="container">
-        <ul class="wrap col-lg-6">
+        <ul class="wrap col-lg-7">
             @foreach($categories as $cat)
                 @if($cat->category_parent == 0)
                     <li class="box-link-ul">
-                        <a href=" {{$cat->slug}}" class="box-link">
+                        <a href="/ideas/{{$cat->slug}}" class="box-link">
                             {{$cat->name}}
                         </a>
                     </li>
