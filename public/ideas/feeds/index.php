@@ -186,6 +186,7 @@ $data['category_all'] = $cat_names;
 $data['url'] = get_the_permalink();
 $datepublishstring = get_the_time('Y-m-d H:i:s');
 $datepublish = timeAgo($datepublishstring);
+$data['raw_creation_date'] = $datepublishstring;
 $data['creation_date'] = $datepublish;
 $data['updated_at'] = $datepublish;
 if( has_post_thumbnail( $ID ) ) {
@@ -203,13 +204,14 @@ if( has_post_thumbnail( $ID ) ) {
 	}
 $data['image'] = str_replace('ideaing-ideas.s3.amazonaws.com', 'd3f8t323tq9ys5.cloudfront.net', $image);
 $data['author'] = get_the_author();
-$data['authorlink'] = get_author_posts_url( get_the_author_meta( 'ID' ) );
 $data['author_id'] = get_the_author_meta( 'ID' );
 
 //$data['avator'] = get_avatar_url( get_the_author_email(), '80' );
 
 $laravelUser = file_get_contents('https://ideaing.com/api/info-raw/' .  get_the_author_email());
 $laravelUser = json_decode($laravelUser, true);
+
+$data['authorlink'] = $laravelUser['permalink'];
 
 if(isset($laravelUser['medias'][0])){
     $data['avator'] = $laravelUser['medias'][0]['media_link'];

@@ -38,7 +38,7 @@
 </div>
 
 <div class="box-item__author">
-    <a href="" class="user-widget">
+    <a href="/user/profile/@{{item.authorlink}}" class="user-widget">
         <img class="user-widget__img" src="@{{item.avator}}">
         <span class="user-widget__name">@{{item.author}}</span>
     </a>
