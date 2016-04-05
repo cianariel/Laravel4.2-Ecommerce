@@ -21,7 +21,7 @@
     */
 
     // test route
-    Route::get('notification', 'UserController@notification');
+    Route::get('x', 'HeartController@recentHeartedUsers');
 
 
     Route::any('secure-page-header', 'UserController@securePageHeader');
@@ -69,6 +69,8 @@
          * */
         Route::post('heart/add-heart', 'HeartController@addHeart');
         Route::post('heart/count-heart', 'HeartController@heartCounter');
+        Route::post('heart/heart-users', 'HeartController@recentHeartedUsers');
+
 
 
         /*
@@ -271,7 +273,7 @@
 
     //User Profile
     Route::get('user/profile', 'UserController@userProfile');
-    Route::get('user/profile/{permalink?}', 'UserController@userProfile');
+    Route::get('user/profile/{permalink?}', 'UserController@viewPublicProfile');
 
 
 

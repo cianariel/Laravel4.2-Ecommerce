@@ -129,9 +129,12 @@ class Product extends Model
         $data['ImagePath'] = $itemLogoInfo->media_link;
 
         $strReplace = \Config::get("const.file.s3-path");// "http://s3-us-west-1.amazonaws.com/ideaing-01/";
-        $file = str_replace($strReplace, '', $itemLogoInfo->media_link);
+        $strReplace2 = env('IMG_CDN')  . '/';
 
-        $data['ThumbnailPath'] = $strReplace . 'thumb-' . $file;
+        $file = str_replace($strReplace, '', $itemLogoInfo->media_link);
+        $file = str_replace($strReplace2, '', $file);
+
+        $data['ThumbnailPath'] = env('IMG_CDN') . 'thumb-' . $file;
 
         return $data;
     }
@@ -360,14 +363,19 @@ class Product extends Model
             $tmp = $this->getSingleProductInfoForView($id);
 
             // making the thumbnail url by injecting "thumb-" in the url which has been uploaded during media submission.
-            $strReplace = \Config::get("const.file.s3-path");
+            $strReplace =  \Config::get("const.file.s3-path");
+            $strReplace2 = env('IMG_CDN')  . '/';
+
             $path = str_replace($strReplace, '', $tmp->media_link);
-            $path = $strReplace . 'thumb-' . $path;
+            $path = str_replace($strReplace2, '', $path);
+
+            $path = env('IMG_CDN') . '/' . 'thumb-' . $path;
 
             $tmp->media_link_full_path = $tmp->media_link;
 
             $tmp->media_link = $path;
             $tmp->updated_at = Carbon::createFromTimestamp(strtotime($tmp->updated_at))->diffForHumans();
+            $tmp->raw_creation_date = $tmp->updated_at;
             $tmp->type = 'product';
 
             // Add store information

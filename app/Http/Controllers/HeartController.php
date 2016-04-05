@@ -77,4 +77,12 @@ class HeartController extends ApiController
         return $heartCount;
     }
 
+    public function recentHeartedUsers()
+    {
+        $inputData = \Input::all();
+        $data = $this->heart->recentHeartedUsers($inputData['iid'],$inputData['section']);
+
+        return $data;
+    }
+
 }

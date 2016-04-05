@@ -44,7 +44,7 @@
                     $product = $temp->getSingleProductInfoForView($pr->product_id);
                     if($product)
                     {
-                        $strReplace = \Config::get("const.file.s3-path");
+                        $strReplace = env('IMG_CDN') . '/';
                         $path = str_replace($strReplace, '', $product->media_link);
                         $path = $strReplace . 'thumb-' . $path;
                         $pr->media_link = $path;
