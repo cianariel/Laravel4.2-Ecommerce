@@ -161,6 +161,17 @@ class User extends Model implements AuthenticatableContract,
         return true;
     }
 
+    public function addContactUsInfo($data)
+    {
+        try{
+
+        }catch(\Exception $ex){
+            \Log::error($ex);
+
+
+        }
+
+    }
 
     public function updateUserInformation($userData)
     {
@@ -200,13 +211,15 @@ class User extends Model implements AuthenticatableContract,
     }
 
     //todo need to implement permalink check feature
+
     public function checkUserByPermalink($permalink)
     {
+
         try {
-            /*return User::with('userProfile')
+            return User::with('userProfile')
                        ->with('medias')
-                       ->where('email', $permalink)
-                       ->firstOrFail();*/
+                       ->where('permalink', $permalink)
+                       ->firstOrFail();
 
         } catch (\Exception $ex) {
             return false;
@@ -329,9 +342,6 @@ class User extends Model implements AuthenticatableContract,
             $this->updateUserStatusForWpUser($makeUserActive, $systemUser);
         } else {
 
-            // $datas =  WpUser::where('user_login', $wpUserInfo[0]['user_login'])
-            //     ->all();
-
             WpUser::where('user_login', $wpUserInfo[0]['user_login'])
                   ->update([
                       'user_login' => $systemUser['email'],
@@ -349,7 +359,7 @@ class User extends Model implements AuthenticatableContract,
                 'id' => $wpUserInfo[0]['ID']
             ];
 
-            // delete the previos meta info and insert with the new info
+            // delete previous meta info and insert with the new info
             $wpUserMeta = \DB::connection('wpdb');//->table('usermeta');
             $wpUserMeta->delete('delete from wp_usermeta where user_id=' . $wpUserInfo[0]['ID']);
 
@@ -377,7 +387,7 @@ class User extends Model implements AuthenticatableContract,
             '2147'
         ];
 
-        $wpUserMeta = \DB::connection('wpdb');//->table('usermeta');
+        $wpUserMeta = \DB::connection('wpdb');
 
         for ($i = 0; $i < count($metaHead); $i++) {
             $wpUserMeta->insert("insert into wp_usermeta (user_id,meta_key,meta_value) values (?,?,?)", array($data['id'], $metaHead[$i], $metaInfo[$i]));
@@ -407,7 +417,6 @@ class User extends Model implements AuthenticatableContract,
             return ($password == $user->password) ? $user : false;
 
         } catch (\Exception $ex) {
-            // throw new \Exception($ex);
             return false;
         }
     }
@@ -438,12 +447,7 @@ class User extends Model implements AuthenticatableContract,
     // Wrapper for all type of notification (future implementation)
     public function getNotificationForUser($userId)
     {
-        /*return $this->getProductNotification($userId);
 
-    }
-
-    public function getProductNotification($userId = 32)
-    {*/
         $user = User::find($userId);
 
         $notification['NotReadNoticeCount'] = $user->countNotificationsNotRead();
@@ -500,59 +504,13 @@ class User extends Model implements AuthenticatableContract,
 
     }
 
+    //todo : Implement when individual notice will be updated on read
     public function markNotificationAsRead($info)
     {
         $notice = Notification::where('to_id', $info['UserId'])
                               ->where('url', $info['Permalink'])
                               ->update(['read' => 1]);
     }
-
-
-    public function userNotification($flag = false)
-    {
-        $user = User::find(41);
-
-        // $flag = true;
-
-        if ($flag) {
-            Notifynder::category("user.following")
-                      ->from(41)
-                      ->to(41)
-                      ->url('/notice/do/5')
-                      ->send();
-        } else {
-            Notifynder::category("hello")
-                      ->from(41)
-                      ->to(41)
-                      ->url('/cccc/do/5')
-                      ->send();
-        }
-
-
-        // dd($user->getNotificationsNotRead());
-        dd($user->getNotifications($limit = 3, $paginate = true));
-
-
-        // dd($user->getNotificationsNotRead(),$user->readAllNotifications(),$user->getNotificationsNotRead());
-        // dd();
-
-
-        //  $user
-
-        /*
-$user->getNotifications($limit = null, $paginate = null, $order = 'desc');
-$user->getNotificationsNotRead($limit = null, $paginate = null, $order = 'desc');
-$user->getLastNotification();
-$user->countNotificationsNotRead($category = null);
-$user->readAllNotifications();
-         * */
-
-    }
-
-    /* public function throwExc()
-     {
-         throw new CustomAppException("hi");
-     }*/
 
 
 }

@@ -66,16 +66,16 @@ class ShopController extends ApiController
             $masterCategory = $parentCategory ?: $categoryModel;
             switch($grandParent){
                 case "smart-home":
-                    $categoryModel->background_image = "/assets/images/shop-category/smarthome.jpg";
+                    $categoryModel->background_image =env('IMG_CDN') . "/shop-category/smarthome.jpg";
                 break;
                 case "travel":
-                    $categoryModel->background_image = "/assets/images/shop-category/travel.jpg";
+                    $categoryModel->background_image = env('IMG_CDN') ."/shop-category/travel.jpg";
                 break;
                 case "wearables":
-                    $categoryModel->background_image = "/assets/images/shop-category/wearables.jpg";
+                    $categoryModel->background_image = env('IMG_CDN') ."/shop-category/wearables.jpg";
                 break;
                 case "home-decor":
-                    $categoryModel->background_image = "/assets/images/shop-category/homedecor.jpg";
+                    $categoryModel->background_image = env('IMG_CDN') ."shop-category/homedecor.jpg";
                 break;
             }
 

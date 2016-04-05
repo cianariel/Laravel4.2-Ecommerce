@@ -134,7 +134,7 @@ class SearchController extends Controller
 
         $arguments = [
             'query' =>  $query,
-            'size'  =>  $size,
+            'size'  =>  $size + 1,
             'start' =>  $offset,
         ];
 
@@ -181,6 +181,13 @@ class SearchController extends Controller
 
         $final['content'] = $return;
         $final['count'] = $results->getPath('hits/found');
+
+        if(!empty(array_slice($return, $size, 1))){
+             $final['hasMore'] = true;
+             unset($final['content'][count($final['content'])-1]);
+        }else{
+             $final['hasMore'] = false;
+        }
 
         return $final;
     }
@@ -266,7 +273,7 @@ class SearchController extends Controller
             'query' =>  $query,
             'fields' =>  'title,content',
             'filterQuery' => "(term field=type 'idea')",
-            'size' =>  2, 
+            'size' =>  3,
         ];
 
         $results = $csDomainClient->search($arguments);

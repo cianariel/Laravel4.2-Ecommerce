@@ -7,6 +7,7 @@ use App\Models\Subscriber;
 use App\Models\User;
 use App\Models\Role;
 use App\Models\Media;
+use App\Models\Contact;
 
 use App\Http\Requests;
 
@@ -25,6 +26,7 @@ class UserController extends ApiController
         $this->user = new User();
         $this->roleModel = new Role();
         $this->media = new Media();
+        $this->contact = new Contact();
 
         //check user authentication and get user basic information
         $this->authCheck = $this->RequestAuthentication(array('admin', 'editor', 'user'));
@@ -171,6 +173,7 @@ class UserController extends ApiController
             // 'profilePicture'   => $this->authCheck['profile-picture'],
             $data = array(
                 'userData' => $userData,
+                'userProfileData' => $userData,
                 'profile' => ($userData->medias[0]->media_link == '') ? \Config::get("const.user-image") : $userData->medias[0]->media_link,
                 'fullname' => $userData->name,
                 'address' => $userData->userProfile->address,
@@ -178,7 +181,8 @@ class UserController extends ApiController
                 //   'login'     => true,
                 //   'permalink' => $userData->userProfile->permalink
                 'permalink' => $permalink,
-                'isAdmin' => $userData->hasRole('admin') || $userData->hasRole('editor')
+                'isAdmin' => $userData->hasRole('admin') || $userData->hasRole('editor'),
+                'showEditOption' => true
 
             );
 
@@ -188,21 +192,42 @@ class UserController extends ApiController
         } elseif ($this->authCheck['method-status'] == 'fail-with-http') {
             return \Redirect::to('login');
         }
+    }
 
 
+
+    //show public profile as per given permalink
+
+    public function viewPublicProfile($permalink)
+    {
+
+        if ($this->authCheck['method-status'] == 'success-with-http') {
+            $userData = $this->authCheck['user-data'];
+        }
+
+        $userProfileData = $this->user->checkUserByPermalink($permalink) ;
+
+        $userProfileData = $userProfileData != false ? $userProfileData : $userData;
+            $data = array(
+                'userData' => empty($userData)?null:$userData,
+                'userProfileData' => $userProfileData,
+                'profile' => ($userProfileData->medias[0]->media_link == '') ? \Config::get("const.user-image") : $userProfileData->medias[0]->media_link,
+                'fullname' => $userProfileData->name,
+                'address' => $userProfileData->userProfile->address,
+                'personalInfo' => $userProfileData->userProfile->personal_info,
+                'permalink' => $permalink,
+                'isAdmin' => empty($userData)?null:($userData->hasRole('admin') || $userData->hasRole('editor')),
+                'showEditOption' => false
+
+            );
+
+            return view('user.user-profile', $data);
     }
 
     public function hideSignup()
     {
         $this->setCookie('hide-signup', 'true', 1440);
         return \Redirect::back();
-
-    }
-
-    //todo need to implement permalink check feature
-
-    public function checkUserPermalink($permalink)
-    {
 
     }
 
@@ -224,6 +249,17 @@ class UserController extends ApiController
 
         return $this->setStatusCode(\Config::get("const.api-status.success"))
                     ->makeResponse($result);
+
+    }
+
+    // Contact us
+
+    public function postContactUsInfo()
+    {
+        $inputData = \Input::all();
+
+       // $this->contact::
+
 
     }
 

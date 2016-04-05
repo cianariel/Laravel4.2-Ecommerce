@@ -48,18 +48,20 @@
                     @endif
                 </span>
                 <ul class="social-stats center-block">
-                    <li class="social-stats__item">
-                        <a href="#" class="likes"
+                    <li class="">
+                        <a href="#" class="likes" ng-class="['likes', {active: unHeart != false}]"
                            ng-init="heartCounterAction(<?php echo $userData['id'] . "," . $productId . "," . "'product'"?>)"
                            ng-click="heartAction(<?php echo $userData['id'] . "," . $productId . "," ."'$permalink'".",". "'product'"?>)"
                         >
-                                    <i ng-class="unHeart != false ? 'm-icon m-icon--heart-solid' : 'm-icon m-icon--ScrollingHeaderHeart'">
+                            <!--                                <i ng-class="unHeart != false ? 'm-icon m-icon--heart-solid' : 'm-icon m-icon--ScrollingHeaderHeart'">-->
+                            <i class="m-icon m-icon--heart-solid">
                                         <span class="m-hover">
                                             <span class="path1"></span><span class="path2"></span>
                                         </span>
-                                    </i>
+                            </i>
                             <span class="social-stats__text"> &nbsp; <?php echo "{{ heartCounter }}" ?> </span>
                         </a>
+
                     </li>
                 </ul>
                     </span>
@@ -119,13 +121,13 @@
 
                 <nav class="top-product-controls">
                     <ul>
-                        <li><a href="#" class="get-alerts"><i class="m-icon m-icon--alert"></i>&nbsp; Get alerts</a></li>
-                        <li class="social-stats__item">
-                            <a href="#" class="likes"
+                        <li class="">
+                            <a href="#" class="likes" ng-class="['likes', {active: unHeart != false}]"
                                ng-init="heartCounterAction(<?php echo $userData['id'] . "," . $productId . "," . "'product'"?>)"
                                ng-click="heartAction(<?php echo $userData['id'] . "," . $productId . "," ."'$permalink'".",". "'product'"?>)"
                             >
-                                <i ng-class="unHeart != false ? 'm-icon m-icon--heart-solid' : 'm-icon m-icon--ScrollingHeaderHeart'">
+<!--                                <i ng-class="unHeart != false ? 'm-icon m-icon--heart-solid' : 'm-icon m-icon--ScrollingHeaderHeart'">-->
+                                <i class="m-icon m-icon--heart-solid">
                                         <span class="m-hover">
                                             <span class="path1"></span><span class="path2"></span>
                                         </span>
@@ -134,6 +136,7 @@
                             </a>
 
                         </li>
+                        <li><a href="#" class="get-alerts"><i class="m-icon m-icon--alert"></i>&nbsp; Get alerts</a></li>
                         <li><a href="#" data-scrollto="#comments" class="comments"><i class="m-icon m-icon--discuss-products"></i>&nbsp; <?php echo "{{ commentsCount }}" ?></a></li>
                     </ul>
                 </nav>

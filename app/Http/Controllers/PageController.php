@@ -14,8 +14,8 @@ use App\Models\User;
 use App\Models\ProductCategory;
 use App\Models\Tag;
 use App\Models\Room;
-use App\Models\HomeHero;
 use App\Models\Giveaway;
+use App\Models\HomeHero;
 use URL;
 use Input;
 use App\Models\Sharing;
@@ -80,8 +80,9 @@ class PageController extends ApiController
         }
 
         $offset = $limit * ($page - 1);
+        $leftOver = 0;
 
-        if ($type == 'product' || !$stories = self::getStories($limit, $offset, $tag)) {
+        if ($type == 'product' || !$stories = self::getStories($limit + 1, $offset, $tag)) {
             $stories = [];
         }
 
@@ -95,19 +96,37 @@ class PageController extends ApiController
             $productCategoryID = false;
         }
 
-        if ($type == 'idea' || !$products = self::getProducts($limit, $page, $offset, $tagID, $productCategoryID, $sortBy)) {
+        if ($type == 'idea' || !$products = self::getProducts($limit + 1, $page, $offset, $tagID, $productCategoryID, $sortBy)) {
             $products['result'] = [];
         }
 
-        $return = array_merge($stories, $products['result']);
+        // we try to pull one extra item in each category, to know if there is more content availiable (in that case, we later display a 'Load More' button
+        $stories = array_slice($stories, 0, $limit);
+        if(!empty(array_slice($stories, $limit, 1))){
+            $leftOver++;
+        }
 
-        usort($return, function ($a, $b) use ($sortBy) {
-            if ($sortBy && @$b->$sortBy && @$a->$sortBy) {
-                return @$a->$sortBy - @$b->$sortBy;
-            } else {
-                return strtotime(@$b->updated_at) - strtotime(@$a->updated_at);
-            }
-        });
+        $prods = array_slice($products['result'], 0, $limit);
+        if(!empty(array_slice($products['result'], $limit, 1))){
+            $leftOver++;
+        }
+
+        $return['content'] = array_merge($stories, $prods);
+
+       $return['content'] = array_values(array_sort($return['content'], function ($value) {
+                        $value = (object)$value;
+                        return strtotime($value->raw_creation_date);
+
+        }));
+
+        $return['content']  = array_reverse( $return['content'] );
+
+
+        if($leftOver > 0){
+            $return['hasMore'] = true;
+        }else{
+            $return['hasMore'] = false;
+        }
 
         return $return;
     }
@@ -126,8 +145,8 @@ class PageController extends ApiController
             $productLimit = 6;
             $productOffset = 6 * ($page - 1);
 
-            $storyLimit = 3;
-            $storyOffset = 4 * ($page - 1);
+            $storyLimit = 4;
+            $storyOffset = 5 * ($page - 1);
 
         } else {
             $productLimit = $limit;
@@ -139,14 +158,15 @@ class PageController extends ApiController
 
         $featuredLimit = 3;
         $featuredOffset = $featuredLimit * ($page - 1);
+        $leftOver = 0;
 
-        if ($type == 'product' || !$stories = self::getGridStories($storyLimit, $storyOffset, $featuredLimit, $featuredOffset, $tag, $ideaCategory)) {
+        if ($type == 'product' || !$stories = self::getGridStories($storyLimit + 1, $storyOffset, $featuredLimit + 1, $featuredOffset, $tag, $ideaCategory)) {
             $stories = [
                 'regular' => [],
                 'featured' => [],
             ];
         }
-        if ($type == 'idea' || !$products = self::getProducts($productLimit, $page, $productOffset, $tagID)) {
+        if ($type == 'idea' || !$products = self::getProducts($productLimit + 1, $page, $productOffset, $tagID)) {
             $products['result'] = [];
         }
 
@@ -154,21 +174,51 @@ class PageController extends ApiController
             $stories['regular'] = [];
         }
 
-        $return['regular'] = array_merge($stories['regular'], $products['result']);
-        $return['featured'] = $stories['featured'];
+        // we try to pull one extra item in each category, to know if there is more content availiable (in that case, we later display a 'Load More' button
+        $regularStories = array_slice($stories['regular'], 0, $storyLimit);
 
-        usort($return['regular'], function ($a, $b) {
-            return strtotime(@$b->updated_at) - strtotime(@$a->updated_at);
+        if(!empty(array_slice($stories['regular'], $storyLimit, 1))){
+            $leftOver++;
+        }
+
+//        print_r($stories['featured']->toArray()); die();
+
+
+if($stories['featured']){
+     $featuredStories = array_slice($stories['featured']->toArray(), 0, $featuredLimit);
+        if(!empty(array_slice($stories['featured']->toArray(), $featuredLimit, 1))){
+            $leftOver++;
+        }
+    }else{
+        $featuredStories = [];
+    }
+
+        $prods = array_slice($products['result'], 0, $productLimit);
+
+        if(!empty(array_slice($products['result'], $productLimit, 1))){
+            $leftOver++;
+        }
+
+        $return['content']['regular'] = array_merge($regularStories, $prods);
+        $return['content']['featured'] = $featuredStories;
+
+        usort($return['content']['regular'], function ($a, $b) {
+            return strtotime(@$b->raw_creation_date) - strtotime(@$a->raw_creation_date);
         });
+
+        if($leftOver > 0){
+            $return['hasMore'] = true;
+        }else{
+            $return['hasMore'] = false;
+        }
+
         return $return;
     }
 
 
     public function getStories($limit, $offset, $tag)
     {
-        if (env('FEED_PROD') == true)
-            $url = 'https://ideaing.com/ideas/feeds/index.php?count=' . $limit . '&offset=' . $offset;
-        else
+
             $url = URL::to('/') . '/ideas/feeds/index.php?count=' . $limit . '&offset=' . $offset;
 
         if ($tag && $tag != 'false') {
@@ -184,21 +234,41 @@ class PageController extends ApiController
         curl_setopt($ch, CURLOPT_ENCODING, "");
         $json = curl_exec($ch);
 
-        echo $json;
-        die();
+      //  echo $json;
+      //  die();
 
-        $return = json_decode($json);
+        //  $return = json_decode($json);
 
-        return $return;
+        $ideaCollection = json_decode($json);
+
+        $newIdeaCollection = new Collection();
+        $comment = new App\Models\Comment();
+
+        if ($ideaCollection) {
+
+            foreach ($ideaCollection as $singleIdea) {
+
+                $tempIdea = collect($singleIdea);
+
+                $countValue = $comment->ideasCommentCounter($singleIdea->id);
+
+                $tempIdea->put('CommentCount', $countValue);
+
+                $newIdeaCollection->push($tempIdea);
+
+            }
+        }
+
+
+
+
+        return $newIdeaCollection->toArray();//$return;
     }
 
 
     public function getGridStories($limit, $offset, $featuredLimit, $featuredOffset, $tag = false, $category = false)
     {
 
-        if (env('FEED_PROD') == true)
-            $url = 'https://ideaing.com/ideas/feeds/index.php?count=' . $limit . '&no-featured&offset=' . $offset;
-        else
             $url = URL::to('/') . '/ideas/feeds/index.php?count=' . $limit . '&no-featured&offset=' . $offset;
 
         if ($tag && $tag != 'false') {
@@ -209,6 +279,8 @@ class PageController extends ApiController
             $url .= '&category-name=' . $category;
         }
 
+        //print_r($url); die();
+
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $url);
         curl_setopt($ch, CURLOPT_HEADER, 0);
@@ -218,20 +290,45 @@ class PageController extends ApiController
         curl_setopt($ch, CURLOPT_ENCODING, "");
         $json = curl_exec($ch);
 
-        $return['regular'] = json_decode($json);
+        $ideaCollection = json_decode($json);
+
+        $newIdeaCollection = new Collection();
+        $comment = new App\Models\Comment();
+
+        if ($ideaCollection) {
+
+            foreach ($ideaCollection as $singleIdea) {
+
+                $tempIdea = collect($singleIdea);
+
+                $countValue = $comment->ideasCommentCounter($singleIdea->id);
+
+                $tempIdea->put('CommentCount', $countValue);
+
+                $newIdeaCollection->push($tempIdea);
+
+            }
+        }
+
+        // type casting to object
+
+        $return['regular'] = json_decode($newIdeaCollection->toJson(), FALSE);
 
 
-        if (env('FEED_PROD') == true)
-            $featuredUrl = 'https://ideaing.com/ideas/feeds/index.php?count=' . $featuredLimit . '&only-featured&offset=' . $featuredOffset . '&tag=' . $tag;
-        else
-            $featuredUrl = URL::to('/') . '/ideas/feeds/index.php?count=' . $featuredLimit . '&only-featured&offset=' . $featuredOffset . '&tag=' . $tag;
+            $featuredUrl = URL::to('/') . '/ideas/feeds/index.php?count=' . $featuredLimit . '&only-featured&offset=' . $featuredOffset;
 
 
         if ($tag && $tag != 'false' && $tag != false) {
             $featuredUrl .= '&tag=' . $tag;
         }
 
-//                print_r($featuredUrl); die();
+        if ($category && $category != 'false') {
+            $featuredUrl .= '&category-name=' . $category;
+        }
+
+            //  print_r('tag'); 
+            //  print_r($tag); die();
+
         // print_r($return); die();
 
 
@@ -268,10 +365,7 @@ class PageController extends ApiController
 
     public function getRelatedStories($currentStoryID, $limit, $tags)
     {
-        if (env('FEED_PROD') == true)
-            $url = 'https://ideaing.com/ideas/feeds/index.php?count=' . $limit;
-        else
-            $url = URL::to('/') . '/ideas/feeds/index.php?count=' . $limit;
+        $url = URL::to('/') . '/ideas/feeds/index.php?count=' . $limit;
 
         if ($tags && $tags != 'false') {
             $url .= '&tag_in=' . implode(',', $tags);
@@ -436,8 +530,7 @@ class PageController extends ApiController
             ->with('selfImages', $result['selfImages'])
             ->with('storeInformation', $result['storeInformation'])
             ->with('canonicURL', $result['canonicURL'])
-            ->with('MetaDescription', $result['productInformation']['MetaDescription'])
-            ;
+            ->with('MetaDescription', $result['productInformation']['MetaDescription']);
     }
 
     public function getRoomPage($permalink)
@@ -529,9 +622,7 @@ class PageController extends ApiController
             }
 
             //CMS POSTS -- TODO -- if we wont use images in the sitemap, change into direct call to WP DB for better perf?
-            if (env('FEED_PROD') == true)
-                $url = 'https://ideaing.com/ideas/feeds/index.php?count=0';
-            else
+
                 $url = URL::to('/') . '/ideas/feeds/index.php?count=0';
 
             $ch = curl_init();
@@ -551,34 +642,51 @@ class PageController extends ApiController
             }
 
         }
+
         // show your sitemap (options: 'xml' (default), 'html', 'txt', 'ror-rss', 'ror-rdf')
         return $sitemap->render('xml');
+
     }
+
+
     public function privacyPolicy()
     {
+
         MetaTag::set('title', 'Privacy Policy | Ideaing');
 //        MetaTag::set('description', $result['productInformation']['MetaDescription']);
+
         return view('layouts.privacy-policy');
+
     }
+
+
     public function contactUs()
     {
+
         MetaTag::set('title', 'Contact us | Ideaing');
 //        MetaTag::set('description', $result['productInformation']['MetaDescription']);
+
         return view('contactus.index');
     }
+
     public function aboutUs()
     {
+
         MetaTag::set('title', 'About us | Ideaing');
 //        MetaTag::set('description', $result['productInformation']['MetaDescription']);
+
         return view('layouts.aboutus');
     }
 
     public function termsOfUse()
     {
+
         MetaTag::set('title', 'Terms of Use | Ideaing');
 //        MetaTag::set('description', $result['productInformation']['MetaDescription']);
+
         return view('layouts.terms-of-use');
     }
+
     public function giveaway()
     {
         MetaTag::set('title', 'Giveaway | Ideaing');
@@ -591,4 +699,5 @@ class PageController extends ApiController
         return view('giveaway.giveaway')->with('userData', $userData)->with('giveaway',$giveaway);
     }
     
+
 }

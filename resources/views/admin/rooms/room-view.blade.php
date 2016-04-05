@@ -66,7 +66,7 @@
                                     <td>{{$room->room_permalink}} </td>
                                     <td><a href="/admin/room-edit/{{$room->id}}" class="btn btn-sm btn-default blue btn-editable"><i class="fa fa-pencil"></i> Edit</a>
                                     <a href="/idea/{{$room->room_permalink}}" class="btn btn-sm btn-default blue btn-editable"> View</a>
-                                    <button class="btn btn-sm btn-danger btn-editable" data-roomid="{{$room->id}}" id="btn_delete_room" data-dismiss="modal"><i class="fa fa-close"></i> Delete</button></td>
+                                    <button class="btn btn-sm btn-danger btn-editable btn_delete_room" data-roomid="{{$room->id}}" id="btn_delete_room" data-dismiss="modal"><i class="fa fa-close"></i> Delete</button></td>
                                 </tr>
                                 @endforeach
                             </tbody>
@@ -86,16 +86,25 @@
 <script src="/assets/admin/vendor/pages/scripts/table-datatables-managed.js" type="text/javascript"></script>
 <script>
 $(function() {
-    $('#btn_delete_room').click(function(){
-        var post={};
-         post.RoomId = $(this).data("roomid");
-        $.ajax({
-            type : 'POST',
-            url : '/api/room/delete-room',
-            data : post,
-            success : function(x) { alert('Room Deleted'); },
-            error : function(r) { alert('errror'); }
-        });
+    $('.btn_delete_room').click(function(){
+        if(confirm('Are you sure you want to Delete?'))
+        {
+            var post={};
+            post.RoomId = $(this).data("roomid");
+
+            var thisrow = $(this).closest('tr');
+
+            $.ajax({
+                type : 'POST',
+                url : '/api/room/delete-room',
+                data : post,
+                success : function(x) {
+                    alert('Room Deleted');
+                    $(thisrow).remove();
+                },
+                error : function(r) { alert('errror'); }
+            });
+        }
     });
 });
 

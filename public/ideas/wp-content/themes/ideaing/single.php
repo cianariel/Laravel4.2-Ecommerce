@@ -107,7 +107,7 @@
             </ul>
         </div>
 
-        <div class="hero-background" style="background-image:url( {{getThumbnailLink($post->ID)}} ) "></div>
+        <div class="hero-background" style="background-image:url( {{str_replace('ideaing-ideas.s3.amazonaws.com', 'd3f8t323tq9ys5.cloudfront.net', getThumbnailLink($post->ID))}} ) "></div>
         <!-- TODO - use as the hero-bg					--><?php //the_post_thumbnail(); // Fullsize image for the single post ?>
         <div class="color-overlay"></div>
     </section>
@@ -123,7 +123,7 @@
                 </li>
             </ul>
 
-                <ul class="like-nav ">
+                <ul class="like-nav " ng-init="heartUsers('ideas')">
                 <li>
                     <div class="social-stats  ">
                         <div class="social-stats__item">
@@ -133,17 +133,14 @@
                                             <span class="path1"></span><span class="path2"></span>
                                         </span>
                                 </i>
-                                <span class="social-stats__text" ng-bind="heartCounter">&nbsp; </span>
+                                <span class="social-stats__text" ng-bind="heartCounter">&nbsp;  </span>
                             </a>
                         </div>
                     </div>
 
                 </li>
-                    <li class="hidden-xs"><a class="author" href="#"></a></li>
-                    <li class="hidden-xs"><a class="author" href="#"></a></li>
-                    <li class="hidden-xs"><a class="author" href="#"></a></li>
-                    <li class="hidden-xs"><a class="likes" href="#">+ 186</a></li>
-            </ul>
+                    <?php include('/var/www/ideaing/public/ideas/wp-content/themes/ideaing/heart-user-img.php') ?>
+                </ul>
         </div>
     </nav>
 </div>
@@ -246,7 +243,7 @@
             <div class="box-item product-box ">
                 <img class="img-responsive" src="{{ $product->media_link_full_path }}">
                 <span class="box-item__time">{{ $product->updated_at }}</span>
-                <div class="box-item__overlay"></div>
+                            <div class="box-item__overlay" ng-click="openProductPopup({{$product->id}})"></div>
                 <ul class="social-stats">
                     <li class="social-stats__item">
                         <?php
@@ -366,6 +363,10 @@
         </div>
     </div>
 </section>
+    <?php 
+       include('../../../../../../../resources/views/layouts/parts/product-popup.blade.php') 
+    ?>
+
 
 </div>
 <?php get_footer(); ?>
