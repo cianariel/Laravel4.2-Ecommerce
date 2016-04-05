@@ -5683,7 +5683,7 @@ console.log('hi : ',$scope.iid,$scope.plink);
                     }
 
                     if($scope.sortBy && $scope.sortBy != 'default' ){
-                        response.sort(function (a, b) {
+                        response['content'].sort(function (a, b) {
                             return parseFloat(a[$scope.sortBy]) - parseFloat(b[$scope.sortBy]);
                         });
                     }
