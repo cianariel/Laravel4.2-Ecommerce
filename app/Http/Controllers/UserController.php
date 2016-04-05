@@ -195,6 +195,7 @@ class UserController extends ApiController
     }
 
 
+
     //show public profile as per given permalink
 
     public function viewPublicProfile($permalink)
