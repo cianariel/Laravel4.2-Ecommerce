@@ -53,9 +53,6 @@ if (screen.width < 992 && screen.width > 620) {
 ?>
 
 <script type="text/javascript" src="/assets/js/main.js"></script>
-{{--<script src="/assets/js/vendor/royalslider/jquery.royalslider.min.js"></script>--}}
-
-
 
 <style>
     .homepage-grid{
