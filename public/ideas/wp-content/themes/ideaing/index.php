@@ -19,10 +19,9 @@ $categories = get_categories();
     </div>
 </nav>
 
-
 <?php
 ?>
-<section id="hero" class="landing-hero">
+<section id="hero" class="landing-hero" style="margin-top: 50px;">
         <?php loadLaravelView('hero-slider'); ?>
 </section>
 
