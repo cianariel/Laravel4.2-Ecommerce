@@ -24,21 +24,21 @@
          */
         public function handle(SendContactUsMail $event)
         {
-            \Mail::send('email.welcome',
+            \Mail::send('email.contact-us',
                 [
-                    'name' => $event->name,
+                   'name' => $event->name,
                     'email' => $event->email,
                     'type' => $event->type,
-                    'message' => $event->message,
+                    'content' => $event->message
 
                 ],
                 function ($message) use ($event)
                 {
+
                     $message->to(env('CONTACT_MAIL_TO'), $event->name)
                         ->from($event->email)
-                        ->subject("Ideaing - Contact Us Query");
+                        ->subject("Ideaing - Contact Us (". $event->type .")-   From - ".$event->name);
                 });
 
-            // dd($event);
         }
     }
