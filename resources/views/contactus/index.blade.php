@@ -1,13 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        @include('layouts.parts.head')
-        <style type = 'text/css'>
-        </style>
-    </head>
+@extends('layouts.main')
+@section('body-class'){{ 'contactus-page' }}@stop
 
-    <body class="@yield('body-class', 'contactus-page')">
-        @include('layouts.parts.header')
+        @section('content')
 
         <nav class="mid-nav">
             <div class="container full-sm fixed-sm">
@@ -100,10 +94,5 @@
             </div>
         </div>
 
-        @include('layouts.parts.footer')
-
-        @include('layouts.parts.login-signup')
+        @stop
     
-
-    </body>
-</html>

@@ -41,6 +41,10 @@
                 SendWelcomeMailHandler::class
             ],
 
+            SendContactUsMail::class => [
+                SendContactUsMailHandler::class
+            ]
+
         ];
 
         /**

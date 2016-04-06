@@ -167,38 +167,20 @@ class User extends Model implements AuthenticatableContract,
             \DB::transaction(function () use ($data) {
 
                 $contact = new Contact();
-                $contact->type = $data['type'];
-                $contact->email = $data['email'];
-                $contact->name = $data['name'];
-                $contact->message = $data['message'];
+                $contact->type = $data['Type'];
+                $contact->email = $data['Email'];
+                $contact->name = $data['Name'];
+                $contact->message = $data['Message'];
 
                 $data = $contact->save();
-                //$contact->type = $data['type'];
 
-
-
+                return $data;
             });
-
-
 
         }catch(\Exception $ex){
             \Log::error($ex);
-
-
-        }
-
-    }
-
-    public function updateUserInformation($userData)
-    {
-        try {
-            //$user = $this->IsEmailAvailable($userData['Email']);
-
-        } catch (\Exception $ex) {
-
         }
     }
-
 
     public function IsEmailAvailable($email)
     {
