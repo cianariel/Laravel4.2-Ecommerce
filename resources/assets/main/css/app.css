@@ -7407,7 +7407,7 @@ header.sub-head {
     width: auto; }
   .like-nav li .more-like-count {
     padding-bottom: 0px;
-    margin-left: 20px;
+    margin-left: 10px;
     margin-top: 12px;
     color: #c1c1c1 !important; }
   .like-nav li .social-stats {
@@ -7439,7 +7439,7 @@ header.sub-head {
       color: #c1c1c1 !important;
       font-size: 1.6rem;
       /*        padding-top: 15px;*/
-      padding-left: 10px !important; }
+      /*        padding-left: 10px !important;*/ }
 
 body.single #top-nav a.ideas {
   color: #ed2049; }
