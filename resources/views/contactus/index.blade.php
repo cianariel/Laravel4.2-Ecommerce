@@ -1,14 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        @include('layouts.parts.head')
-        <style type = 'text/css'>
-        </style>
-    </head>
+@extends('layouts.main')
+@section('body-class'){{ 'contactus-page' }}@stop
 
-    <body class="@yield('body-class', 'contactus-page')">
-        @include('layouts.parts.header')
-
+        @section('content')
         <nav class="mid-nav">
             <div class="container full-sm fixed-sm">
                 <ul class="wrap col-lg-9">
@@ -22,31 +15,43 @@
             </div>
         </nav>
         
-        <section id="hero">
+        <section id="hero" ng-app="publicApp" ng-controller="publicController">
             <div class="hero-background"></div>
             <div class="contactus-form-container ">
+
+                <div ng-show="Code" class="alert alert-info">
+                    <strong>Congratulation!</strong> Your message has been sent .
+                </div>
                 <p class="title">Get in touch</p>
                 <div class="row control-row " id="support-dropdown-holder">
-                    <a href="#" class="support-button" data-toggle="#support-list">
+                    <select class="support-button" ng-model="Type">
+                        <option value="Support">Support@</option>
+                        <option value="Professionals">Professionals@</option>
+                        <option value="Legal">Legal@</option>
+                        <option value="Press">Press@</option>
+                        <option value="Info">Info@</option>
+                    </select>
+                    {{--<a href="#" class="support-button" data-toggle="#support-list">
                         Support
                         <i class=" m-icon--Actions-Down-Arrow-Active pull-right"></i>
                         <ul class="support-list">
                             <li>First Menu</li>
                             <li>Second Menu</li>
                         </ul>
-                    </a>
+                    </a>--}}
                 </div>
                 <div class="row control-row">
-                    <input class="form-control" placeholder="Your name">
+                    <input class="form-control" ng-model="Name" placeholder="Your name">
                 </div>
                 <div class="row control-row">
-                    <input class="form-control" placeholder="Email address">
+                    <input class="form-control"  ng-model="Email" placeholder="Email address">
                 </div>
                 <div class="row control-row">
-                    <textarea class="form-control" placeholder="Start typing question or comment"></textarea>
-                </div><br>
+                    <textarea class="form-control"  ng-model="Message"  placeholder="Start typing question or comment"></textarea>
+                </div>
+                <br>
                 <div class="row text-center">
-                    <button class="btn">Send</button>
+                    <button ng-click="sendContactUsQuery()" class="btn">Send</button>
                 </div>
             </div>
         </section>
@@ -54,7 +59,7 @@
         <div class="container author-container">
             <div class="row">
                 <div class="col-sm-6 author-holder">
-                    <p>Are you a customer in need of support? If you have an issue with an order, please contact us at (We should have an order issue resolution link in the user account order history page).</p>
+                    <p>Are you a customer in need of support? If you have an issue with an order, please contact us at.</p>
                     <p>Support@</p>
                 </div>
                 <div class="col-sm-6 author-holder">
@@ -80,7 +85,7 @@
             </div>
             <div class="row ">
                 <div class="col-sm-6 author-holder">
-                    <p>If you would like to contact us regarding any trademark, copyright, or other legal issues, please let us know. (link T&C and PP).</p>
+                    <p>If you would like to contact us regarding any trademark, copyright, or other legal issues, please let us know.</p>
                     <p>Legal@</p>
                 </div>
                 <div class="col-sm-6 author-holder">
@@ -100,10 +105,5 @@
             </div>
         </div>
 
-        @include('layouts.parts.footer')
-
-        @include('layouts.parts.login-signup')
+        @stop
     
-
-    </body>
-</html>

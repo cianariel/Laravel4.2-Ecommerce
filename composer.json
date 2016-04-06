@@ -22,7 +22,8 @@
     "torann/laravel-meta-tags": "^3.0",
     "barryvdh/laravel-cors": "^0.7.3",
     "roumen/sitemap": "^2.6",
-    "fenos/notifynder": "3.*"
+    "fenos/notifynder": "3.*",
+    "greggilbert/recaptcha": "dev-master"
 
   },
   "require-dev": {
