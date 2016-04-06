@@ -4433,7 +4433,6 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
 
             }).success(function (data) {
                 $scope.heartUsersInfo = data;
-                console.log("heartUsersInfo", $scope.heartUsersInfo);
             });
         };
 
@@ -4816,7 +4815,6 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
         }
 
         $scope.passwordResetRequest = function () {
-            alert("this is password request")
             $scope.closeAlert();
             $http({
                 url: '/password-reset-request/' + $scope.Email,
