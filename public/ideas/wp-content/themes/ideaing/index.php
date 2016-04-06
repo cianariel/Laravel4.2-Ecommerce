@@ -21,31 +21,12 @@ $categories = get_categories();
 
 
 <?php
-$sliderContent = getHeroSliderContent();
 ?>
-
 <section id="hero" class="landing-hero">
-        <div class="rsContent" style="padding-top: 50px">
-            @foreach($sliderContent as $item)
-                <div class="box-item product-box text-center" style="max-width: 33%;float:left;">
-                    <div class="img-holder">
-                        <img src="{{$item['image']}}">
-                    </div>
-                    <div class="box-item__label-idea">
-                        <a href="{{$item['url']}}" class="box-item__label">{{$item['title']}}</a>
-                        <div class="clearfix"></div>
-                        <a href="{{$item['url']}}" class="box-item__read-more">Read More</a>
-                    </div>
-                    <div class="box-item__author">
-                        <a href="/user/profile/{{$item['authorlink']}}" class="user-widget">
-                            <img class="user-widget__img" src="{{$item['avator']}}">
-                            <span class="user-widget__name">{{$item['author']}}</span>
-                        </a>
-                    </div>
-                </div>
-            @endforeach
-        </div>
+        <?php loadLaravelView('hero-slider'); ?>
 </section>
+
+
 <div class="app-wrap" id="pagingApp" ng-app="pagingApp" ng-controller="pagingController" ng-cloak>
     <nav id="hero-nav" class="col-sm-12">
 
