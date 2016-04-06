@@ -207,6 +207,10 @@
 
         Route::post('subscribe','UserController@emailSubscription');
         Route::get('unsubscribe','PageController@home');
+        Route::post('contact-us','UserController@postContactUsInfo');
+
+
+
 
         /*
          * Notification
