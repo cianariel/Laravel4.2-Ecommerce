@@ -26,7 +26,7 @@ class UserController extends ApiController
         $this->user = new User();
         $this->roleModel = new Role();
         $this->media = new Media();
-        $this->contact = new Contact();
+       // $this->contact = new Contact();
 
         //check user authentication and get user basic information
         $this->authCheck = $this->RequestAuthentication(array('admin', 'editor', 'user'));
@@ -272,7 +272,7 @@ class UserController extends ApiController
         if ($validator->fails()) {
             // return with the failed reason and field's information
             return $this->setStatusCode(IlluminateResponse::HTTP_NOT_ACCEPTABLE)
-                        ->makeResponseWithError("Invalid Input Data :" . $validator->messages());
+                        ->makeResponseWithError("Please provide valid email" . $validator->messages());
         }
 
         $result = $this->user->addContactUsInfo($inputData);
