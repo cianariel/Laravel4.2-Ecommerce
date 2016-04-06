@@ -9329,7 +9329,8 @@ body.shop-category .show-filter .grid-box-3 {
 
 .like-nav .profile-photo {
   height: 40px;
-  width: 40px; }
+  width: 40px;
+  max-width: none; }
 
 body.profilepage {
   background: #f8f8f6; }

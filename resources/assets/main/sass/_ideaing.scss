@@ -42,7 +42,7 @@ a:hover, a:focus{
 .purple{
   color: $magenta;
 }
-
+       
 .purple-bg{
   background-color: $magenta;
 }
@@ -7350,12 +7350,13 @@ body.shop-category{
     border: 3px solid #bebbbc;
     &:hover{
         border-color: $iridium;
-    }
+    }                     
 }
 .like-nav{
     .profile-photo{
         height: 40px;
         width: 40px;
+        max-width: none;
     }    
 }
 body.profilepage{
