@@ -623,9 +623,8 @@ function create_dwb_menu() {
     $wp_admin_bar->add_menu(array('id' => $menu_id, 'title' => __('App Admin Panel'), 'href' => '/admin/dashboard'));
 }
 add_action('admin_bar_menu', 'create_dwb_menu', 2000);
+add_filter( 'the_content', 'wpse44503_filter_content' );
 
-
-    add_filter( 'the_content', 'wpse44503_filter_content' );
 function wpse44503_filter_content( $content ) {
     
      $newURL = str_replace('ideaing-ideas.s3.amazonaws.com', 'd3f8t323tq9ys5.cloudfront.net', $content);
@@ -634,6 +633,66 @@ function wpse44503_filter_content( $content ) {
 }
 
 
+function getHeroSliderContent() {
+    $args = [
+//        'cat' => $postCat,
+        'posts_per_page' => 3,
+//        'offset' => $offset,
+
+    ];
+
+    $args['meta_query'] = [
+            'relation'  => 'AND',
+            [
+                'key'  => 'slider_content',
+                'value' => 'yes',
+                'compare' => '='
+            ]
+    ];
+
+    $the_query = new WP_Query( $args );
+
+if ( $the_query->have_posts() ) {
+    while ( $the_query->have_posts() ) {
+        $the_query->the_post();
+        $ID = get_the_ID();
+        $data['url'] = get_the_permalink();
+        $data['title'] = get_the_title();
+
+//        $data = (array)$post;
+        $laravelUser = file_get_contents('https://ideaing.com/api/info-raw/' . get_the_author_email());
+        $laravelUser = json_decode($laravelUser, true);
+
+        if (has_post_thumbnail($ID)) {
+            $image = get_the_post_thumbnail_url($ID, 'full', false);
+        } else {
+            $files = get_children('post_parent=' . $ID . '&post_type=attachment&post_mime_type=image');
+            if ($files) :
+                $keys = array_reverse(array_keys($files));
+                $j = 0;
+                $num = $keys[$j];
+                $image = wp_get_attachment_image_url($num, 'full', false);
+            endif;
+        }
+        $data['image'] = str_replace('ideaing-ideas.s3.amazonaws.com', 'd3f8t323tq9ys5.cloudfront.net', $image);
+
+
+        $data['author'] = get_the_author();
+        $data['author_id'] = get_the_author_meta('ID');
+        $data['authorlink'] = $laravelUser['permalink'];
+
+        if (isset($laravelUser['medias'][0])) {
+            $data['avator'] = $laravelUser['medias'][0]['media_link'];
+        } else {
+            $data['avator'] = get_avatar_url(get_the_author_email(), '80');
+        }
+        $return[] = $data;
+
+    }
+}
+
+    return $return;
+}
 
 
 ?>

@@ -98,6 +98,12 @@ if($postCount==0)
 $onlyfeatured = $_REQUEST['only-featured'];
 $no_featured = $_REQUEST['no-featured'];
 $is_featured = "";
+$forSlider = $_REQUEST['only-slider'];
+
+if(isset($forSlider)){
+    $sliderContent = 'yes';
+}
+
 if(isset($no_featured))
 {
     $is_featured = "No";
@@ -133,11 +139,16 @@ if($is_featured != "")
 {
 $args['meta_query'] = array(
        'relation'  => 'AND',
-       array(
-        'key'  => 'is_featured',
-        'value' => $is_featured,
-        'compare' => '='
-       )
+       [
+            'key'  => 'is_featured',
+            'value' => $is_featured,
+            'compare' => '='
+       ],
+       [
+            'key'  => 'slider_content',
+            'value' => $sliderContent,
+            'compare' => '='
+       ],
 );
 }
 
