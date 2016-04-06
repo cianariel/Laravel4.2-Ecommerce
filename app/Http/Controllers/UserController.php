@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Events\SendSubscriptionMail;
+use App\Events\SendContactUsMail;
+
 use App\Models\Subscriber;
 use App\Models\User;
 use App\Models\Role;
@@ -26,7 +28,7 @@ class UserController extends ApiController
         $this->user = new User();
         $this->roleModel = new Role();
         $this->media = new Media();
-        $this->contact = new Contact();
+       // $this->contact = new Contact();
 
         //check user authentication and get user basic information
         $this->authCheck = $this->RequestAuthentication(array('admin', 'editor', 'user'));
@@ -257,10 +259,37 @@ class UserController extends ApiController
     public function postContactUsInfo()
     {
         $inputData = \Input::all();
+        $validationRules = [
 
-       // $this->contact::
+            'rules' => [
+                'Email' => isset($inputData['Email']) ? 'required | email' : '',
+              //  'g-recaptcha-response' => 'required|recaptcha',
+            ],
+            'values' => [
+                'Email' => isset($inputData['Email']) ? $inputData['Email'] : null,
+            ]
+        ];
 
+        list($inputData, $validator) = $this->inputValidation($inputData, $validationRules);
 
+        if ($validator->fails()) {
+
+            // return with the failed reason and field's information
+
+               return $this->setStatusCode(IlluminateResponse::HTTP_NOT_ACCEPTABLE)
+                      ->makeResponseWithError("Please provide valid email" . $validator->messages());
+        }
+
+        \Event::fire(new SendContactUsMail(
+            $inputData['Name'],
+            $inputData['Email'],
+            $inputData['Type'],
+            $inputData['Message']
+
+        ));
+
+        return $this->setStatusCode(\Config::get("const.api-status.success"))
+                    ->makeResponse('Request successfully submitted.');
     }
 
 
