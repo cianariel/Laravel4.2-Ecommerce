@@ -245,7 +245,10 @@
                                             <td style="font-family: Helvetica, arial, sans-serif; font-size: 30px; color: #333333; text-align:center; line-height: 30px;"
                                                 st-title="fulltext-heading">
                                                 <p align="left">
-                                                    <span style="font-size: 14pt;" class="im"></span>
+                                                    <span style="font-size: 14pt;" class="im">
+                                                        {{ $content }}
+
+                                                    </span>
                                                 </p>
                                             </td>
                                         </tr>
