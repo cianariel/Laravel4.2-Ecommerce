@@ -257,8 +257,29 @@ class UserController extends ApiController
     public function postContactUsInfo()
     {
         $inputData = \Input::all();
+        $validationRules = [
 
-       // $this->contact::
+            'rules' => [
+                'Email' => isset($inputData['Email']) ? 'required | email' : '',
+            ],
+            'values' => [
+                'Email' => isset($inputData['Email']) ? $inputData['Email'] : null,
+            ]
+        ];
+
+        list($inputData, $validator) = $this->inputValidation($inputData, $validationRules);
+
+        if ($validator->fails()) {
+            // return with the failed reason and field's information
+            return $this->setStatusCode(IlluminateResponse::HTTP_NOT_ACCEPTABLE)
+                        ->makeResponseWithError("Invalid Input Data :" . $validator->messages());
+        }
+
+        $result = $this->user->addContactUsInfo($inputData);
+
+        return $this->setStatusCode(\Config::get("const.api-status.success"))
+                    ->makeResponse($result);
+
 
 
     }
