@@ -63,10 +63,35 @@ class PageController extends ApiController
         }
         $homehero = new HomeHero();
         $result = $homehero->heroDetailsViewGenerate();
+
+        $sliderContent = self::getHeroSliderContent();
+//        $sliderContent = (array)$sliderContent;
+
         //return $result;
-        return view('home')->with('userData', $userData)->with('homehero', $result);
+        return view('home')
+            ->with('userData', $userData)
+            ->with('sliderContent', $sliderContent)
+            ->with('homehero', $result);
     }
 
+
+    public static function getHeroSliderContent()
+    {
+        $url = URL::to('/') . '/ideas/feeds/index.php?count=3&only-slider';
+
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_HEADER, 0);
+        curl_setopt($ch, CURLOPT_VERBOSE, true);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+        curl_setopt($ch, CURLOPT_ENCODING, "");
+        $json = curl_exec($ch);
+
+        $return = json_decode($json, true);
+
+        return $return;
+    }
 
 
     public function getContent($page = 1, $limit = 5, $tag = false, $type = false, $productCategory = false, $sortBy = false)
