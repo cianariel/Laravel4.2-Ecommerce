@@ -666,7 +666,15 @@ if($stories['featured']){
         MetaTag::set('title', 'Contact us | Ideaing');
 //        MetaTag::set('description', $result['productInformation']['MetaDescription']);
 
-        return view('contactus.index');
+        $userData = $this->authCheck;
+        if ($this->authCheck['method-status'] == 'success-with-http') {
+            $userData = $this->authCheck['user-data'];
+        }
+
+        return view('contactus.index')
+            ->with('userData', $userData);
+
+
     }
 
     public function aboutUs()

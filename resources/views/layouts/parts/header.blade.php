@@ -9,7 +9,6 @@ if(function_exists('is_single')){
 }                                            
 ?>
 
-<!--    <div {{--id="pagingApp" ng-app="pagingApp" ng-controller="headerController"--}}>-->
 <style>
     [ng\:cloak], [ng-cloak], .ng-cloak {
         display: none !important;

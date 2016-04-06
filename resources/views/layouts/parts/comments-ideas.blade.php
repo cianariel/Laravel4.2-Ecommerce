@@ -1,9 +1,5 @@
 <link href="/assets/admin/vendor/global/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet"
       type="text/css"/>
-<script src="/assets/js/vendor/textAngular-sanitize.min.js"></script>
-<script src="/assets/js/vendor/angular-confirm.js"></script>
-<script src="/assets/js/vendor/textAngular-rangy.min.js"></script>
-<script src="/assets/js/vendor/textAngular.min.js"></script>
 <?php
    
     if(function_exists('is_single')){

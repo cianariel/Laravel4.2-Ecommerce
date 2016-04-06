@@ -106,7 +106,9 @@
             @endif
         </div>
     </div>
-    <script src="/assets/js/vendor/angular-busy.min.js"></script>
-    <script src="/assets/js/angular-custom/custom.paging.js"></script>
-    <script src="/assets/js/angular-custom/public.common.js"></script>
+    {{--<script src="/assets/js/vendor/angular-busy.min.js"></script>--}}
+    {{--<script src="/assets/js/main.js"></script>--}}
+
+    {{--<script src="/assets/js/angular-custom/custom.paging.js"></script>--}}
+    {{--<script src="/assets/js/angular-custom/public.common.js"></script>--}}
 @stop
