@@ -194,6 +194,9 @@
   width: 100%;
   color: #000;
 }
+#hero{
+    height: 500px;
+}
 .photoCopy {
   position: absolute;
   line-height: 24px;
@@ -239,7 +242,7 @@ jQuery(document).ready(function($) {
     imageScaleMode: "fill",
     autoScaleSliderWidth: 1500,
     autoScaleSliderHeight: 500,
-    autoScaleSlider: true
+//    autoScaleSlider: true
   });
   $('.royalSlider').css('display', 'block');
 });
