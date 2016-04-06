@@ -7401,10 +7401,15 @@ header.sub-head {
   width: 35px;
   float: left; }
   .like-nav li:first-child {
-    width: 100px;
+    width: 80px;
     display: inline-block; }
   .like-nav li:last-child {
     width: auto; }
+  .like-nav li .more-like-count {
+    padding-bottom: 0px;
+    margin-left: 20px;
+    margin-top: 12px;
+    color: #c1c1c1 !important; }
   .like-nav li .social-stats {
     margin-top: 5px;
     float: left; }
@@ -9321,6 +9326,10 @@ body.shop-category .show-filter .grid-box-3 {
   border: 3px solid #bebbbc; }
   .profile-photo:hover {
     border-color: #FF0042; }
+
+.like-nav .profile-photo {
+  height: 40px;
+  width: 40px; }
 
 body.profilepage {
   background: #f8f8f6; }

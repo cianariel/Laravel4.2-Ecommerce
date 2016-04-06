@@ -4273,12 +4273,18 @@ header.sub-head{
     float: left;
 
     &:first-child{
-      width: 100px;
+      width: 80px;
       //padding-top: 15px;
       display: inline-block;
     }
     &:last-child{
       width: auto;
+    }
+    .more-like-count{
+        padding-bottom: 0px;
+        margin-left: 20px ;
+        margin-top: 12px ;
+        color: $light-grey !important;
     }
     .social-stats {
         margin-top: 5px;
@@ -7342,11 +7348,15 @@ body.shop-category{
 .profile-photo{
     border-radius: 100px;
     border: 3px solid #bebbbc;
-    height: 40px;
-    width: 40px;
     &:hover{
         border-color: $iridium;
     }
+}
+.like-nav{
+    .profile-photo{
+        height: 40px;
+        width: 40px;
+    }    
 }
 body.profilepage{
     background: #f8f8f6;
