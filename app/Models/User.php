@@ -164,6 +164,22 @@ class User extends Model implements AuthenticatableContract,
     public function addContactUsInfo($data)
     {
         try{
+            \DB::transaction(function () use ($data) {
+
+                $contact = new Contact();
+                $contact->type = $data['type'];
+                $contact->email = $data['email'];
+                $contact->name = $data['name'];
+                $contact->message = $data['message'];
+
+                $data = $contact->save();
+                //$contact->type = $data['type'];
+
+
+
+            });
+
+
 
         }catch(\Exception $ex){
             \Log::error($ex);
