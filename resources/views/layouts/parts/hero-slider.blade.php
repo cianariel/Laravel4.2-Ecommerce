@@ -41,7 +41,7 @@
                         autoScaleSliderHeight: 394,
                         thumbsFitInViewport: false,
                         navigateByClick: true,
-                        startSlideId: 1,
+                        startSlideId: 0,
                         autoPlay: false,
                         transitionType: 'move',
                         globalCaption: false,
