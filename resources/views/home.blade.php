@@ -10,7 +10,7 @@
     }
     ?>
     <section id="hero" class="landing-hero" style="min-height: 480px; margin-top: 50px">
-        @if(2 == 1)
+        @if(empty($userData['email']))
              @if(isset($homehero))
                 @foreach( $homehero as $key => $image )
                     <div class="rsContent">
