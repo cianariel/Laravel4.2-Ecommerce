@@ -45,22 +45,55 @@
     float: none;
   }
 
-  //@media(max-width:1600px) and (min-width:1176px){
-  //  width: 110%;
-  //  margin-left: -10%;
-  //}
-  //@media(max-width:1350px) and (min-width:1176px){
-  //  width: 150%;
-  //  margin-left: -25%;
-  //}
-  @media(max-width:460px){
-    .rsArrow{
-      top: 61%;
-    }
-  }
-
   .box-item .img-holder img{
     width: 1176px;
     max-width: 100%;
   }
+
+  .box-item .img-holder img{
+    max-width: none;
+  }
+
+  .product-box {
+    max-width: 100%;
+  }
+
+  .rsArrow {
+    &.rsArrowLeft{
+      -webkit-animation: antiBounce 2s infinite ease-in-out;
+    }
+    &.rsArrowRight{
+      -webkit-animation: bounce 2s infinite ease-in-out;
+    }
+  }
+  @-webkit-keyframes bounce {
+    0%, 20%, 60%, 100%  { -webkit-transform: translateX(0); }
+    40%  { -webkit-transform: translateX(-20px); }
+    80% { -webkit-transform: translateX(-10px); }
+  }
+
+  @-webkit-keyframes antiBounce {
+    0%, 20%, 60%, 100%  { -webkit-transform: translateX(0); }
+    40%  { -webkit-transform: translateX(20px); }
+    80% { -webkit-transform: translateX(10px); }
+  }
+
+ .rsNav.rsBullets{
+    padding-top: 0;
+    margin-top: -25px;
+  }
+
+  @media(max-width:500px){
+
+    .rsArrow{
+      top: 61%;
+    }
+
+    .rsSlide:not(.rsActiveSlide)  {
+      display: none;
+    }
+
+
+  }
+
 }
