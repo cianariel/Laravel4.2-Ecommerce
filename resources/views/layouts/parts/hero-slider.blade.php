@@ -1,4 +1,4 @@
-<div id="hero-slider" class="slider heroSlider">
+<div id="hero-slider" class="slider heroSlider has-bullets">
         <?php
          if(function_exists('is_single')){
              $sliderContent = getHeroSliderContent();
@@ -31,6 +31,7 @@
                         loopRewind: true,
                         keyboardNavEnabled: true,
                         controlsInside: true,
+                        controlNavigation: 'bullets',
                         arrowsNavAutoHide: false,
                         slidesSpacing: 0,
                         imageScaleMode: 'none',
