@@ -9,8 +9,8 @@
               <h2 id="site-subhead" style="display:none;">Ideas for Smarter Living</h2>';
     }
     ?>
-    <section id="hero" class="landing-hero" style="min-height: 540px; margin-top: 50px">
-        @if(empty($userData['email']) )
+    <section id="hero" class="landing-hero" style="min-height: 480px; margin-top: 50px">
+        @if(empty($userData['email']))
              @if(isset($homehero))
                 @foreach( $homehero as $key => $image )
                     <div class="rsContent">
