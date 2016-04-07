@@ -77,7 +77,7 @@ class PageController extends ApiController
 
     public static function getHeroSliderContent()
     {
-        $url = URL::to('/') . '/ideas/feeds/index.php?count=3&only-slider';
+        $url = URL::to('/') . '/ideas/feeds/index.php?count=6&only-slider';
 
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $url);

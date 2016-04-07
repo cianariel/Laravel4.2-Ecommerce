@@ -636,7 +636,7 @@ function wpse44503_filter_content( $content ) {
 function getHeroSliderContent() {
     $args = [
 //        'cat' => $postCat,
-        'posts_per_page' => 3,
+        'posts_per_page' => 6,
 //        'offset' => $offset,
 
     ];
