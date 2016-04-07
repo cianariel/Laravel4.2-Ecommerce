@@ -10872,4 +10872,30 @@ p {
   .homepage-grid .grid-box-3:first-child {
     /*		margin-top: -1px;*/ }
 
+#hero-slider {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image: url("https://d234pm57oy3062.cloudfront.net/homehero/11/homehero-image-56f8ffa2244c6-landing-hero-3.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  padding-top: 80px; }
+  .homepage #hero-slider {
+    padding-top: 50px; }
+  #hero-slider .product-box {
+    float: left; }
+  #hero-slider .box-item__author {
+    position: relative;
+    margin: 0 auto;
+    width: 193px;
+    top: -75px; }
+  #hero-slider .box-item__label {
+    float: none; }
+  @media (max-width: 460px) {
+    #hero-slider .rsArrow {
+      top: 61%; } }
+  #hero-slider .box-item .img-holder img {
+    width: 1176px;
+    max-width: 100%; }
+
 /*# sourceMappingURL=app.css.map */

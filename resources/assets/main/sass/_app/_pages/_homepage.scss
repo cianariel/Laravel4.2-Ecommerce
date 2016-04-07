@@ -17,3 +17,50 @@
 	}
 
 }
+
+#hero-slider{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image: url('https://d234pm57oy3062.cloudfront.net/homehero/11/homehero-image-56f8ffa2244c6-landing-hero-3.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  padding-top: 80px;
+
+  .homepage &{
+    padding-top: 50px;
+  }
+
+  .product-box{
+    float: left;
+  }
+
+  .box-item__author{
+    position: relative;
+    margin: 0 auto;
+    width: 193px;
+    top: -75px
+  }
+  .box-item__label{
+    float: none;
+  }
+
+  //@media(max-width:1600px) and (min-width:1176px){
+  //  width: 110%;
+  //  margin-left: -10%;
+  //}
+  //@media(max-width:1350px) and (min-width:1176px){
+  //  width: 150%;
+  //  margin-left: -25%;
+  //}
+  @media(max-width:460px){
+    .rsArrow{
+      top: 61%;
+    }
+  }
+
+  .box-item .img-holder img{
+    width: 1176px;
+    max-width: 100%;
+  }
+}
