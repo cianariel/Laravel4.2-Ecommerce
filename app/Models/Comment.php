@@ -56,6 +56,9 @@
             $comment->user_id = $data['UserId'];
             $comment->link = $data['Link'];
             $comment->flag = $data['Flag'];
+            $comment->title = $data['ItemTitle'];
+            $comment->image_link = $data['Img'];
+            $comment->section = 'product';
 
             $result = $product->comments()->save($comment);
 
@@ -73,6 +76,10 @@
             $comment->user_id = $data['UserId'];
             $comment->link = $data['Link'];
             $comment->flag = $data['Flag'];
+            $comment->title = $data['ItemTitle'];
+            $comment->image_link = $data['Img'];
+            $comment->section = 'ideas';
+
 
             $result = $wpPost->comments()->save($comment);
 
@@ -170,6 +177,26 @@
            return Comment::where('commentable_id',$itemId)
                ->where('commentable_type','App\Models\WpPost')
                 ->count();
+        }
+
+        // Gather comment activity by user id
+
+        public function getCommentsByUserId($userId,$count=null)
+        {
+            $comments = Comment::where('user_id',$userId)->whereNotNull('section');
+
+            if($count == null)
+            {
+                $comments = $comments->orderBy('created_at', 'desc')->get(['id','section','title','link','image_link','updated_at']);
+            }
+            else
+            {
+                $comments = $comments->orderBy('created_at', 'desc')->count($count)->get(['id','section','title','link','image_link','updated_at']);
+            }
+
+            return $comments;
+
+
         }
 
     }

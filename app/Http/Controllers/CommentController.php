@@ -75,6 +75,11 @@ class CommentController extends ApiController
 
             $data['Link'] = $inputData['plink'];
             $data['Flag'] = 'Show';
+            $data['Img'] = $inputData['img'];
+
+            // Add product title in the notification
+            $product = Product::where('id',$inputData['pid'])->first();
+            $data['ItemTitle'] = $product['product_name'];
 
             $result = $this->comment->addCommentForProduct($data);
 
@@ -85,8 +90,6 @@ class CommentController extends ApiController
             $dataStr = date("Y-m-d H:i:s");
             $notification['PostTime'] = (string)$dataStr;
 
-            // Add product title in the notification
-            $product = Product::where('id',$inputData['pid'])->first();
             $notification['ItemTitle'] = $product['product_name'];
           //  $notification['Section'] = 'product';
 
@@ -109,9 +112,15 @@ class CommentController extends ApiController
             $data['UserId'] = $inputData['uid'];
             $data['ItemId'] = $inputData['pid'];
             $data['Comment'] = $inputData['comment'];
+            $data['Img'] = $inputData['img'];
 
             $data['Link'] = $inputData['plink'];
             $data['Flag'] = 'Show';
+
+            // Add product title in the notification
+            $product = WpPost::where('ID',$inputData['pid'])->first();
+            $data['ItemTitle'] = $product['post_title'];
+
 
             $result = $this->comment->addCommentForIdeas($data);
 
@@ -123,8 +132,6 @@ class CommentController extends ApiController
             $dataStr = date("Y-m-d H:i:s");//$dateTime->date;
             $notification['PostTime'] = (string)$dataStr;//$data['Link'];
 
-            // Add product title in the notification
-            $product = WpPost::where('ID',$inputData['pid'])->first();
             $notification['ItemTitle'] = $product['post_title'];
 
             $this->addIdeasNotification($notification);

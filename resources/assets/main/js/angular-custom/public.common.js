@@ -95,7 +95,7 @@ publicApp.directive('heartCounterPublic', ['$http', function ($http) {
 }]);
 
 // directive for pulling author info pulling in grid items
-publicApp.directive('showAuthorInfo', ['$http', function ($http) {
+publicApp.directive('showAuthorInfo', ['$http','$window', function ($http,$window) {
     return {
         restrict: 'E',
         transclude: true,
@@ -682,7 +682,8 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                     uid: userId,
                     pid: itemId,
                     plink: permalink,
-                    comment: comment
+                    comment: comment,
+                    img: $window.img
                 }
             }).success(function (data) {
                 $scope.html = "";

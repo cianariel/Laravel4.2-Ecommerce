@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Events\SendSubscriptionMail;
 use App\Events\SendContactUsMail;
 
+use App\Models\Comment;
 use App\Models\Subscriber;
 use App\Models\User;
 use App\Models\Role;
@@ -28,6 +29,7 @@ class UserController extends ApiController
         $this->user = new User();
         $this->roleModel = new Role();
         $this->media = new Media();
+        $this->comment = new Comment();
        // $this->contact = new Contact();
 
         //check user authentication and get user basic information
@@ -290,6 +292,25 @@ class UserController extends ApiController
 
         return $this->setStatusCode(\Config::get("const.api-status.success"))
                     ->makeResponse('Request successfully submitted.');
+    }
+
+    // Track User Activity
+
+    public function getUserActivity()
+    {
+        $inputData = \Input::all();
+
+        $userId = $inputData['UserId'];
+
+        // gather comment activities
+
+        $comments = $this->comment->getCommentsByUserId($userId);
+
+        return $comments;
+
+
+
+
     }
 
 

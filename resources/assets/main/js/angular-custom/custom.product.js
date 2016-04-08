@@ -266,7 +266,8 @@ productApp.controller('productController', ['$scope', '$http', '$window', '$inte
                     uid: userId,
                     pid: productId,
                     plink: permalink,
-                    comment: comment
+                    comment: comment,
+                    img: $window.img
                 }
             }).success(function (data) {
                 $scope.html = "";

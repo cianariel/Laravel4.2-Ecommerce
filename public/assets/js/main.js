@@ -3975,7 +3975,7 @@ publicApp.directive('heartCounterPublic', ['$http', function ($http) {
 }]);
 
 // directive for pulling author info pulling in grid items
-publicApp.directive('showAuthorInfo', ['$http', function ($http) {
+publicApp.directive('showAuthorInfo', ['$http','$window', function ($http,$window) {
     return {
         restrict: 'E',
         transclude: true,
@@ -4562,7 +4562,8 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                     uid: userId,
                     pid: itemId,
                     plink: permalink,
-                    comment: comment
+                    comment: comment,
+                    img: $window.img
                 }
             }).success(function (data) {
                 $scope.html = "";
@@ -6332,7 +6333,7 @@ productApp.directive('heartCounterProduct', ['$http', function($http) {
 }]);
 
 
-// Setting values of Angular Text Editor
+// Setting values of Angular Text Editor 
 productApp.config(['$provide', function ($provide) {
     // this demonstrates how to register a new tool and add it to the default toolbar
     $provide.decorator('taOptions', ['taRegisterTool', '$delegate', function (taRegisterTool, taOptions) {
@@ -6507,7 +6508,8 @@ productApp.controller('productController', ['$scope', '$http', '$window', '$inte
                     uid: userId,
                     pid: productId,
                     plink: permalink,
-                    comment: comment
+                    comment: comment,
+                    img: $window.img
                 }
             }).success(function (data) {
                 $scope.html = "";
