@@ -209,14 +209,17 @@
         Route::get('unsubscribe','PageController@home');
         Route::post('contact-us','UserController@postContactUsInfo');
 
-
-
-
         /*
          * Notification
          * */
         Route::get('notification/{uid?}', 'UserController@notification');
         Route::get('read-all-notification/{uid?}', 'UserController@notificationReadAll');
+
+        /*
+         * User Activity
+         * */
+        Route::post('user-activity','UserController@getUserActivity');
+
 
         /*
          * RSS feed parser from WP to App home page

@@ -1,6 +1,8 @@
 <link href="/assets/admin/vendor/global/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet"
       type="text/css"/>
-
+<script>
+    var img = "<?php echo $selfImages['heroImage'] ?>" ;
+</script>
 
 <section class="comments" id="comments">
     <div class="container product-comment" itemprop="review" itemscope itemtype="http://schema.org/Review">
