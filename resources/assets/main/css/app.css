@@ -5301,7 +5301,7 @@ nav a {
 #hero {
   position: relative;
   width: 100%;
-  min-height: 540px;
+  min-height: 450px;
   float: left; }
   #hero .head-wrap {
     position: absolute;
@@ -5335,7 +5335,8 @@ nav a {
     position: absolute;
     width: 100%;
     height: 100%;
-    border-radius: 5px; }
+    border-radius: 5px;
+    background-color: rgba(0, 0, 0, 0.2); }
   #hero.details-hero h1 {
     float: left;
     text-align: left;
@@ -8321,7 +8322,7 @@ footer.about-footer {
     margin-bottom: 15px; }
 
   #hero {
-    min-height: 570px;
+    /*    min-height: 570px;*/
     /*    padding-bottom: 20px;*/ }
     #hero .hero-background {
       -webkit-filter: none;
@@ -9218,14 +9219,14 @@ body.shop-landing .mobile-shop-by-category-holder .shop-by-category-submneu .gra
     *zoom: 1;
     margin-right: 10px; }
     .has-bullets .rsNav.rsBullets .rsBullet.rsNavSelected span {
-      background-color: #C7C747; }
+      background-color: #0096dd; }
     .has-bullets .rsNav.rsBullets .rsBullet span {
       display: block;
       width: 30px;
       height: 10px;
       border-radius: 7px;
       background: #fff;
-      border: 1px solid #BCB946; }
+      border: 1px solid #0096dd; }
       .has-bullets .rsNav.rsBullets .rsBullet span:hover {
         cursor: pointer; }
 
@@ -10879,7 +10880,8 @@ p {
   background-image: url("https://d234pm57oy3062.cloudfront.net/homehero/11/homehero-image-56f8ffa2244c6-landing-hero-3.jpg");
   background-size: cover;
   background-repeat: no-repeat;
-  padding-top: 80px; }
+  /*  padding-top: 80px;*/
+  z-index: 20; }
   .homepage #hero-slider {
     padding-top: 50px; }
   #hero-slider .product-box {

@@ -68,7 +68,7 @@ $categories = get_categories();
 </div>
 
 
-<section id="hero" class="landing-hero" style="margin-top: 50px;">
+<section id="hero" class="landing-hero" >
         <?php loadLaravelView('hero-slider'); ?>
     <div class="color-overlay"></div>
 </section>
