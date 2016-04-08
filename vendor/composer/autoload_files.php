@@ -6,6 +6,7 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'f5b3ada715b2e75e9a702d70d0eeca62' => $vendorDir . '/symfony/polyfill-mbstring/bootstrap.php',
     'ee65fd8033b69a16866fce8167c9aa34' => $vendorDir . '/hamcrest/hamcrest-php/hamcrest/Hamcrest.php',
     '025bea19df83471e989e01acafc2c4ae' => $vendorDir . '/guzzlehttp/psr7/src/functions_include.php',
     'b12accd861ed682ce314297046b7e8de' => $vendorDir . '/guzzlehttp/promises/src/functions_include.php',
@@ -14,7 +15,7 @@ return array(
     '490132635c2242f734334b7c79438624' => $vendorDir . '/mtdowling/jmespath.php/src/JmesPath.php',
     'f1a8b258cf6854bbbc358cc7e65f84fc' => $vendorDir . '/aws/aws-sdk-php/src/functions.php',
     '01b872096dad055849387e42d41a176d' => $vendorDir . '/swiftmailer/swiftmailer/lib/swift_required.php',
-    'c842b1fe0ca47d69d520e2d8091024b3' => $vendorDir . '/paragonie/random_compat/lib/random.php',
+    '524fb8ef3401e477660fcd9493a8d013' => $vendorDir . '/paragonie/random_compat/lib/random.php',
     '03d83d8496ed2ba16ae326b097a7a1a9' => $vendorDir . '/symfony/polyfill-php56/bootstrap.php',
     '9b24cdf6705c981dc519077514baadf4' => $vendorDir . '/danielstjules/stringy/src/Create.php',
     '180bd1acac6213400e50fecd486b7dc3' => $vendorDir . '/phpseclib/phpseclib/phpseclib/Crypt/Random.php',
