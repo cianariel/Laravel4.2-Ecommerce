@@ -4544,6 +4544,7 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                 $scope.authorName = data.name;
                 $scope.authorImage = data.medias[0].media_link;
                 $scope.authorBio = data.user_profile.personal_info;
+                $scope.authorPermalink = data.permalink;
 
                // console.log($scope.authorName," - ",$scope.authorImage);
 

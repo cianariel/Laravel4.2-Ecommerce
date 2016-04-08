@@ -98,11 +98,8 @@ if($postCount==0)
 $onlyfeatured = $_REQUEST['only-featured'];
 $no_featured = $_REQUEST['no-featured'];
 $is_featured = "";
-$forSlider = $_REQUEST['only-slider'];
 
-if(isset($forSlider)){
-    $sliderContent = 'yes';
-}
+
 
 if(isset($no_featured))
 {
@@ -135,21 +132,30 @@ if($excludeID = $_REQUEST['excludeid']){
     $args['post__not_in'] = array($excludeID);
 }
 
+$args['meta_query'] = [
+    'relation'  => 'AND'
+];
+
 if($is_featured != "")
 {
-$args['meta_query'] = array(
-       'relation'  => 'AND',
+$push= array(
        [
             'key'  => 'is_featured',
             'value' => $is_featured,
             'compare' => '='
        ],
-       [
-            'key'  => 'slider_content',
-            'value' => $sliderContent,
-            'compare' => '='
-       ],
+
 );
+    array_push($args['meta_query'], $push);
+}
+
+if(isset($_REQUEST['only-slider'])){
+    $push = [
+    'key'  => 'slider_content',
+            'value' => 'yes',
+            'compare' => '='
+    ];
+    array_push($args['meta_query'], $push);
 }
 
 $posts = query_posts($args);
