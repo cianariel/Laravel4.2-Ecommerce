@@ -25,7 +25,8 @@
   background-image: url('https://d234pm57oy3062.cloudfront.net/homehero/11/homehero-image-56f8ffa2244c6-landing-hero-3.jpg');
   background-size: cover;
   background-repeat: no-repeat;
-  padding-top: 80px;
+/*  padding-top: 80px;*/
+  z-index: 20;
 
   .homepage &{
     padding-top: 50px;

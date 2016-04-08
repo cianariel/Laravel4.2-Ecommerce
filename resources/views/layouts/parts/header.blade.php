@@ -116,8 +116,6 @@ if(function_exists('is_single')){
                                                     </div>
                                                     <div class="menu-group">
                                                         <div><a href="#">Invite Friends</a> </div>
-                                                        <div><small>855 Friends</small> </div>
-                                                        <div><small>12 Messages</small> </div>
                                                     </div>
                                                     <div class="log-out"><a ng-click="logoutUser()"  href="#"><i class="m-icon--Logout-Active"></i> Log Out</a></div>
 
