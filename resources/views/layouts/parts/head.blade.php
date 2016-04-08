@@ -15,7 +15,7 @@ if (! preg_match("/\/ideas\//", $actual_link))
 }
 ?>
 <meta name="viewport" id="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-
+<meta name="p:domain_verify" content="9c11cb39dc3e55a845725fee2454dade"/>
 
 <?php // TODO ?>
 <meta charset="<?php // bloginfo('charset'); ?>">

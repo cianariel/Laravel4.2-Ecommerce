@@ -105,6 +105,7 @@
                 $data['Comment'] = $singleComment['comment'];
                 $data['UserId'] = $userInfo['id'];
                 $data['UserName'] = $userInfo['name'];
+                $data['Permalink'] = $userInfo['permalink'];
                 $data['Picture'] = $userInfo->medias[0]->media_link;
                 $data['Flag'] = $singleComment['flag'];
                 $data['PostTime'] = Carbon::createFromTimestamp(strtotime($singleComment['created_at']))->diffForHumans();
@@ -137,6 +138,7 @@
                 $data['Comment'] = $singleComment['comment'];
                 $data['UserId'] = $userInfo['id'];
                 $data['UserName'] = $userInfo['name'];
+                $data['Permalink'] = $userInfo['permalink'];
                 $data['Picture'] = $userInfo->medias[0]->media_link;
                 $data['Flag'] = $singleComment['flag'];
                 $data['PostTime'] = Carbon::createFromTimestamp(strtotime($singleComment['created_at']))->diffForHumans();
