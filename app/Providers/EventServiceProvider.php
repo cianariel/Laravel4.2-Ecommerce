@@ -12,6 +12,8 @@
     use App\Handlers\Events\SendSubscriptionMailHandler;
     use App\Events\SendWelcomeMail;
     use App\Handlers\Events\SendWelcomeMailHandler;
+    use App\Events\SendContactUsMail;
+    use App\Handlers\Events\SendContactUsMailHandler;
 
 
 
@@ -39,6 +41,10 @@
 
             SendWelcomeMail::class => [
                 SendWelcomeMailHandler::class
+            ],
+
+            SendContactUsMail::class => [
+                SendContactUsMailHandler::class
             ],
 
         ];

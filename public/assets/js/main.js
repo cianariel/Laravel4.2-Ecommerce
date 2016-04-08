@@ -4105,13 +4105,11 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
         // update comment in the comment view through AJAX call.
         var commnetTimer = $interval(function(){
             //  console.log("in");
-            if($scope.uid != null)
-            {
+            if ($scope.uid != null) {
                 $scope.loadNotification($scope.uid);
             }
 
-            if($scope.itemId != 0)
-            {
+            if ($scope.itemId != 0) {
                 $scope.getCommentsForIdeas($scope.itemId);
             }
         },15000);//10000
@@ -4157,61 +4155,7 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
 
         $scope.openSharingModal = function ($service) {
             pagingApi.openSharingModal($service, $scope)
-            /*
-            var baseUrl = 'https://' + window.location.host + window.location.pathname;
-            var shareUrl = false;
 
-            var $pitnerestShare = function(){
-                    var e=document.createElement('script');
-                    e.setAttribute('type','text/javascript');
-                    e.setAttribute('charset','UTF-8');
-                    e.setAttribute('src','https://assets.pinterest.com/js/pinmarklet.js?r='+Math.random()*99999999);
-                    document.body.appendChild(e);
-
-                setTimeout(function(){
-                    $scope.fakeUpdateCounts('pinterest');
-                }, 10000);
-            }
-
-            switch($service){
-                case 'facebook':
-                    shareUrl = 'https://www.facebook.com/sharer/sharer.php?u=' + baseUrl;
-                    break;
-                case 'twitter':
-                    shareUrl = 'https://twitter.com/share?url=' + baseUrl + '&counturl=' + baseUrl + '&text=@Ideaing';
-                    break;
-                case 'googleplus':
-                    shareUrl = 'https://plus.google.com/share?url=' + baseUrl;
-                    break;
-                case 'pinterest':
-                    $pitnerestShare();
-                    return true
-            }
-
-            if(!shareUrl){
-                return false;
-            }
-
-            //$scope.openWindow = function() {
-            var $modal = $window.open(shareUrl, 'C-Sharpcorner', 'width=500,height=400');
-            //};
-
-            // TODO -- fire counter updates for shares, only on pages where they are used (CMS)
-
-            var timer = setInterval(function() {
-                if($modal.closed) {
-                    clearInterval(timer);
-
-                    setTimeout(function(){
-                        $scope.fakeUpdateCounts($service);
-                    }, 2000);
-                    //setTimeout(function(){
-                    //    $scope.countSocialShares();
-                    //}, 1000);
-                    console.log('share counters updated')
-                }
-            }, 1000);
-*/
         };
 
         // load shop information.
@@ -4286,7 +4230,6 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
         // End uploader section //
 
 
-
         // initialize variables
         $scope.initPage = function () {
 
@@ -4353,16 +4296,54 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
             $scope.heartCounter = 0;
             $scope.heartUsersInfo = [];
 
+            // Contact Us
+            $scope.Type = 'Support';
 
-            //$scope.countSocialShares();
-            //$scope.countSocialFollowers();
 
             $scope.socialCounter = function(){
-              //  console.log("before call");
+
                 $scope.countSocialShares();
                 $scope.countSocialFollowers();
-               // console.log("call");
             };
+        };
+
+        $scope.isEmpty = function (data) {
+            if (!data || data.length === 0)
+                return true;
+            else
+                return false;
+
+        };
+
+        // contact us
+
+        $scope.sendContactUsQuery = function () {
+            if ($scope.isEmpty($scope.Email) || $scope.isEmpty($scope.Message)) {
+                return;
+            }
+
+            $http({
+                url: '/api/contact-us',
+                method: "POST",
+                data: {
+                    Name: $scope.Name,
+                    Email: $scope.Email,
+                    Type: $scope.Type,
+                    Message: $scope.Message,
+                }
+            }).success(function (data) {
+
+                if(data.status_code == '406')
+                {
+                    $scope.errorMessage = 'Invalid Email provided';
+                }else{
+
+                    $scope.Code = true;
+                    window.location = '/';
+                }
+
+            });
+
         };
 
         // Heart //
@@ -4960,8 +4941,6 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
         };
 
 
-
-
         // test function //
         $scope.chk = function () {
             $scope.closeAlert();
@@ -5178,8 +5157,6 @@ console.log('hi : ',$scope.iid,$scope.plink);
                 $scope.content = $scope.content.concat($scope.newStuff);
 
                 $scope.hasMore = response['hasMore'];
-                console.log('hasMore');
-                console.log(response['hasMore']);
 
             });
         };
@@ -5211,7 +5188,6 @@ console.log('hi : ',$scope.iid,$scope.plink);
                 $scope.filterBy = $criterion;
 
                 $scope.nextLoad = pagingApi.getFilteredContent($scope.currentPage, $scope.currentTag, $criterion, $scope.sliceToRows).then(function(response){
-                    console.log(response)
                     var $newStuff  = response['content'];
                     $scope.hasMore = response['hasMore'];
                     $scope.content = $newStuff;
@@ -5690,12 +5666,14 @@ console.log('hi : ',$scope.iid,$scope.plink);
                     }
 
                     if($scope.sortBy && $scope.sortBy != 'default' ){
-                        response.sort(function (a, b) {
+                        response['content'].sort(function (a, b) {
                             return parseFloat(a[$scope.sortBy]) - parseFloat(b[$scope.sortBy]);
                         });
                     }
 
-                    $scope.content = response;
+                    $scope.content = response['content'];
+                    $scope.hasMore = response['hasMore'];
+
                     contentBlock.fadeIn();
                 });
             });

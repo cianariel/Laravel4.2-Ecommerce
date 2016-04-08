@@ -9,129 +9,51 @@
               <h2 id="site-subhead" style="display:none;">Ideas for Smarter Living</h2>';
     }
     ?>
-    <section id="hero" class="landing-hero">
-        @if(isset($homehero))
-            @foreach( $homehero as $key => $image )
-                <div class="rsContent">
-                    @if(empty($userData['email']) && $key == 0)
-                        <div style="background-image: url('{{$image['hero_image']}}'); background-size: cover;background-repeat: no-repeat;position: absolute;width: 100%;height: 100%;"></div>
-                        <div class="color-overlay"></div>
-                        <div class="container fixed-sm full-480">
-                            <div class="col-md-5 col-xs-6 full-620 col-md-offset-1 why-us">
-                                <h2>Ideas for Smarter Living</h2>
-                                <ul>
-                                <li class="get-ideas"><i class="m-icon m-icon--heart-id"></i>Discover smart home products that will change your life</li>
-                                <li class="share-vote">
-                                    <i class="m-icon m-icon--bulb"></i>Share ideas on making your home automated and beautiful
-                                    <img id="hero-arrow" src="assets/images/home-arrow.png" alt="">
-                                </li>
-                                <li class="shop-cool"><i class="m-icon m-icon--shopping-bag-light-green"></i>Shop for new and innovative home gadgets and decor</li>
-                                </ul>
-                            </div>
-                            <div  id="publicApp" ng-app="publicApp" ng-controller="publicController" class="col-md-4 col-xs-6 col-md-offset-1 hero-box qiuck-signup hidden-620" ng-cloak>
-                                <div style="background-color: lightgrey; text-align: center;">
-                                    <strong style="color: red">@{{ responseMessage }}</strong>
-                                </div>
-                                <form>
-                                    <h4>
-                                        <b>Sign-up in Seconds</b>
-                                    </h4>
-
-                                    {{--<input class="form-control hide" type="text" placeholder="First name" name="name">--}}
-                                    <span class="email-input-holder ">
-                                        <i class="m-icon m-icon--email-form-id"></i>
-                                        <input class="form-control" ng-model="SubscriberEmail" type="text" placeholder="Email" name="email">
-                                    </span>
-                                    
-                                    <button ng-click="subscribe('')" class="btn btn-success col-xs-12"  href="#">Sign up</button>
-                                    <div class="line-wrap">or</div>
-                                    <button ng-click="registerWithFB()" class="btn btn-info col-xs-12" href="#"><i class="m-icon m-icon--facebook-id"></i>Sign up with Facebook</button>
-                                </form>
-                            </div>
-                        </div>
-                    @else
-                        <div style="background-image: url('{{$image['hero_image']}}'); background-size: cover;background-repeat: no-repeat;position: absolute;width: 100%;height: 100%;"></div>
-                    <div class="container-fluid fixed-sm full-480">
-                            <div class="hero-tags">
-                                <div class="photoCopy">{{$image['hero_image_title']}}: {{$image['hero_image_caption']}} @if($image['hero_image_link']!="")<a href="{{$image['hero_image_link']}}">{{$image['hero_image_link_title']}}</a>@endif </div>
-                                @foreach($image['Image_Products'] as $i_products)
-                                    @if($i_products->product_id!=null)
-                                    <div class="tag {{$i_products->product_color}}" style="left:{{$i_products->x}}%;top:{{$i_products->y}}%" >
-
-                                        <span class="tag-icon">
-                                        @if(property_exists($i_products,'tag_type'))
-                                        @if($i_products->tag_type=="thumb")
-                                        
-                                            <img src="{{@$i_products->media_link}}" class="round" alt="" />
-                                        
-                                        @else 
-                                        <i class="m-icon--shopping-bag-light-green"></i>
-                                        @endif
-                                        @else 
-                                        <i class="m-icon--shopping-bag-light-green"></i>
-                                        @endif
-                                        </span>
-                                        <a class="{{$i_products->product_color}}-border" href="/product/{{@$i_products->product_permalink}}">
-                                            <img src="{{@$i_products->media_link}}" class="round" alt="" />
-                                        </a>
-                                       <div class="hover-box">
-                                           <h6>{{@$i_products->product_name}}</h6>
-                                               <div class="icon-wrap" style="height: 90px">
-                                                    <a class="category-tag get-round" href="{{@$i_products->affiliate_link}}" target="_blank">
-                                                        Get it
-                                                    </a>
-                                                    <div style="border:none">
-                                                    <b class="price">
-                                                        &nbsp;
-                                                        @if(isset($i_products->sale_price))
-                                                            ${{$i_products->sale_price}}
-                                                        @endif
-                                                    </b>
-                                                    </div>
-                                                </div>
-                                       </div>
-                                    </div>
-                                    @endif
-                                @endforeach
-                            </div>
-                        </div>
-                        <span ng-click="open({{$key}})" class="room-related-product-button" ><i class="m-icon--Add-Active"></i></span>
-                        <script type="text/ng-template" id="room-related-product-{{$key}}.html">
-                            <div class="modal-header">
-                                <h3 data-toggle="#related-list">Related Products</h3>
-                                <a class=" box-item__get-it" href="#" ng-click="cancel()"><i class="m-icon--Close"></i></a>
-                            </div>
-                            <div class="modal-body">
-                                <section class="hero-related-products ">
-                                    <ul  >
-                                    @foreach($image['Image_Products'] as $i_products)
-                                        @if($i_products->product_id!=null)
-                                            <li class="{{$i_products->product_color}}">
-                                                <div class="row">
-                                                    <div class="col-xs-8 col-sm-10">
-                                                        <a class="{{@$i_products->product_color}}-border " href="/product/{{@$i_products->product_permalink}}">
-                                                            <span class="img-holder">
-                                                                <img src="{{@$i_products->media_link}}" class="round" alt="" />
-                                                            </span>
-                                                            <span class="name-holder">
-                                                                {{@$i_products->product_name}}
-                                                            </span>
-                                                        </a> 
-                                                    </div>
-                                                    <div class="col-xs-4 col-sm-2">
-                                                        <a href="{{@$i_products->affiliate_link}}" class="get solid pull-right ">Get it</a>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                        @endif
-                                    @endforeach
+    <section id="hero" class="landing-hero" style="min-height: 540px; margin-top: 50px">
+        @if(empty($userData['email']) && $key == 0)
+             @if(isset($homehero))
+                @foreach( $homehero as $key => $image )
+                    <div class="rsContent">
+                            <div style="background-image: url('{{$image['hero_image']}}'); background-size: cover;background-repeat: no-repeat;position: absolute;width: 100%;height: 100%;"></div>
+                            <div class="color-overlay"></div>
+                            <div class="container fixed-sm full-480">
+                                <div class="col-md-5 col-xs-6 full-620 col-md-offset-1 why-us">
+                                    <h2>Ideas for Smarter Living</h2>
+                                    <ul>
+                                    <li class="get-ideas"><i class="m-icon m-icon--heart-id"></i>Discover smart home products that will change your life</li>
+                                    <li class="share-vote">
+                                        <i class="m-icon m-icon--bulb"></i>Share ideas on making your home automated and beautiful
+                                        <img id="hero-arrow" src="assets/images/home-arrow.png" alt="">
+                                    </li>
+                                    <li class="shop-cool"><i class="m-icon m-icon--shopping-bag-light-green"></i>Shop for new and innovative home gadgets and decor</li>
                                     </ul>
-                                </section>
+                                </div>
+                                <div  id="publicApp" ng-app="publicApp" ng-controller="publicController" class="col-md-4 col-xs-6 col-md-offset-1 hero-box qiuck-signup hidden-620" ng-cloak>
+                                    <div style="background-color: lightgrey; text-align: center;">
+                                        <strong style="color: red">@{{ responseMessage }}</strong>
+                                    </div>
+                                    <form>
+                                        <h4>
+                                            <b>Sign-up in Seconds</b>
+                                        </h4>
+
+                                        {{--<input class="form-control hide" type="text" placeholder="First name" name="name">--}}
+                                        <span class="email-input-holder ">
+                                            <i class="m-icon m-icon--email-form-id"></i>
+                                            <input class="form-control" ng-model="SubscriberEmail" type="text" placeholder="Email" name="email">
+                                        </span>
+
+                                        <button ng-click="subscribe('')" class="btn btn-success col-xs-12"  href="#">Sign up</button>
+                                        <div class="line-wrap">or</div>
+                                        <button ng-click="registerWithFB()" class="btn btn-info col-xs-12" href="#"><i class="m-icon m-icon--facebook-id"></i>Sign up with Facebook</button>
+                                    </form>
+                                </div>
                             </div>
-                        </script>
-                    @endif
-                </div>
-            @endforeach
+                    </div>
+                @endforeach
+            @endif
+        @else
+                @include('layouts.parts.hero-slider')
         @endif
     </section>
     <div class="app-wrap" id="pagingApp" ng-app="pagingApp" ng-controller="pagingController" ng-cloak>

@@ -68,10 +68,13 @@ $categories = get_categories();
 </div>
 
 
-<section id="hero" class="landing-hero">
+<section id="hero" class="landing-hero" style="margin-top: 50px;">
     <div class="hero-background" style="background-image: url('/assets/images/ideas-hero.jpg')"></div>
     <div class="color-overlay"></div>
+        <?php loadLaravelView('hero-slider'); ?>
 </section>
+
+
 <div class="app-wrap" id="pagingApp" ng-app="pagingApp" ng-controller="pagingController" ng-cloak>
     <nav id="hero-nav" class="col-sm-12">
 

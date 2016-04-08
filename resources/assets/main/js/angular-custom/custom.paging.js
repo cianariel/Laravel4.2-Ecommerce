@@ -158,8 +158,6 @@ console.log('hi : ',$scope.iid,$scope.plink);
                 $scope.content = $scope.content.concat($scope.newStuff);
 
                 $scope.hasMore = response['hasMore'];
-                console.log('hasMore');
-                console.log(response['hasMore']);
 
             });
         };
@@ -191,7 +189,6 @@ console.log('hi : ',$scope.iid,$scope.plink);
                 $scope.filterBy = $criterion;
 
                 $scope.nextLoad = pagingApi.getFilteredContent($scope.currentPage, $scope.currentTag, $criterion, $scope.sliceToRows).then(function(response){
-                    console.log(response)
                     var $newStuff  = response['content'];
                     $scope.hasMore = response['hasMore'];
                     $scope.content = $newStuff;
@@ -670,12 +667,14 @@ console.log('hi : ',$scope.iid,$scope.plink);
                     }
 
                     if($scope.sortBy && $scope.sortBy != 'default' ){
-                        response.sort(function (a, b) {
+                        response['content'].sort(function (a, b) {
                             return parseFloat(a[$scope.sortBy]) - parseFloat(b[$scope.sortBy]);
                         });
                     }
 
-                    $scope.content = response;
+                    $scope.content = response['content'];
+                    $scope.hasMore = response['hasMore'];
+
                     contentBlock.fadeIn();
                 });
             });
