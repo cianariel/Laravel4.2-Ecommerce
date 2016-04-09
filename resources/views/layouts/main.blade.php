@@ -10,7 +10,7 @@
 
     @yield('content')
 
-    @include('user.login-signup')
+    @include('layouts.parts.login-signup')
     @include('layouts.parts.footer')
 </div>
 

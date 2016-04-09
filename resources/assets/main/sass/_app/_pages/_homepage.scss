@@ -25,12 +25,12 @@
   background-image: url('https://d234pm57oy3062.cloudfront.net/homehero/11/homehero-image-56f8ffa2244c6-landing-hero-3.jpg');
   background-size: cover;
   background-repeat: no-repeat;
-/*  padding-top: 80px;*/
+  padding-top: 50px;
   z-index: 20;
 
-  .homepage &{
-    padding-top: 50px;
-  }
+  //.homepage &{
+  //  padding-top: 50px;
+  //}
 
   .product-box{
     float: left;
@@ -81,7 +81,15 @@
 
  .rsNav.rsBullets{
     padding-top: 0;
-    top: -25px;
+    top: -26px;
+  }
+
+  .rsVisibleNearbyWrap{
+    background-color:rgba(0,0,0,.4);
+  }
+
+  .rsOverflow{
+    margin-top:30px;
   }
 
   @media(max-width:500px){

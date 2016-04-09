@@ -4936,7 +4936,7 @@ body.single{
 
 body.room-landing, body.homepage{
     #hero{
-        min-height: initial;
+        min-height: 515px;
         .hero-tags{
             min-height: auto;
             >.tag{
@@ -5041,6 +5041,12 @@ body.room-landing, body.homepage{
 
 
 
+}
+
+html.idea-stories{
+  #hero{
+    min-height: 515px;
+  }
 }
 
 .hero-tags{
