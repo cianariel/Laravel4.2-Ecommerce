@@ -94,6 +94,11 @@
 
   @media(max-width:500px){
 
+    .rsNav.rsBullets{
+      padding-top: 0;
+      top: -56px;
+    }
+
     .rsArrow{
       top: 61%;
     }
