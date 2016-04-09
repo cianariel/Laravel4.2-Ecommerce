@@ -52,7 +52,7 @@ $categories = get_categories();
                 <?php
                     if($key<3){
                         $key++;
-                        continue;                    
+                        continue;
                     }
                 ?>
                     
@@ -70,7 +70,7 @@ $categories = get_categories();
 
 <section id="hero" class="landing-hero" >
         <?php loadLaravelView('hero-slider'); ?>
-    <div class="color-overlay"></div>
+<!--    <div class="color-overlay"></div>-->
 </section>
 
 
