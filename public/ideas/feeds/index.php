@@ -53,21 +53,10 @@ function timeAgo($time_ago)
     //Months
     else if($months <=12){
     	return $d1;
-        /*if($months==1){
-            return "a month ago";
-        }else{
-            return "$months months ago";
-        }*/
     }
     //Years
     else{
     	return $d1;
-    	/*
-        if($years==1){
-            return "one year ago";
-        }else{
-            return "$years years ago";
-        }*/
     }
 }
 
@@ -88,18 +77,17 @@ function carbon_the_content_limit($max_char, $more_link_text = '(more...)', $str
 		return $content;
 	}
 }
+
 require_once('../wp-load.php');
 $postCount = $_REQUEST['count']; // The number of posts to show in the feed
-$postCount  = isset($postCount)? $postCount : -1;
 if($postCount==0)
 {
     $postCount = -1;
 }
+
 $onlyfeatured = $_REQUEST['only-featured'];
 $no_featured = $_REQUEST['no-featured'];
 $is_featured = "";
-
-
 
 if(isset($no_featured))
 {
@@ -139,19 +127,16 @@ $args['meta_query'] = [
 if($is_featured != "")
 {
 $push= array(
-       [
             'key'  => 'is_featured',
             'value' => $is_featured,
             'compare' => '='
-       ],
-
 );
     array_push($args['meta_query'], $push);
 }
 
 if(isset($_REQUEST['only-slider'])){
     $push = [
-    'key'  => 'slider_content',
+            'key'  => 'slider_content',
             'value' => 'yes',
             'compare' => '='
     ];
@@ -159,105 +144,95 @@ if(isset($_REQUEST['only-slider'])){
 }
 
 $posts = query_posts($args);
+$posts = new WP_Query( $args );
 
+if ( $posts->have_posts() ) {
 
-if(isset($args['tag_slug__in']) && (!have_posts() || count($posts) < 3)){ // if there are not posts with similar tags, get just any posts
-    unset($args['tag_slug__in']);
-    $posts = query_posts($args);
-}
-
-//$posts = query_posts('cat='.$postCat.'&showposts=' . $postCount.'&offset='.$offset);
-$datam = array();
-$data = array();
-while(have_posts()) : the_post();
-$ID = get_the_ID();
-$data['id'] = $ID;
-$data['title'] = get_the_title();
-
-    if(isset($_REQUEST['full_content'])){
-        $data['content'] = get_the_content();
-    }else{
-        $data['content'] = carbon_the_content_limit(200);
+    if(isset($args['tag_slug__in']) && !have_posts()){ // if there are not posts with similar tags, get just any posts
+        unset($args['tag_slug__in']);
+        $posts = new WP_Query( $args );
     }
+    $datam = array();
+    $data = array();
+        while ($posts->have_posts()) {
+            $posts->the_post();
+            $ID = get_the_ID();
+            $data['id'] = $ID;
+            $data['title'] = get_the_title();
 
-$cats = get_the_category();
-$data['category'] = $cat_name = $cats[0]->name;
-//$tags = get_the_tags();
-$the_list = '';
-$cat_names = array();
+            if (isset($_REQUEST['full_content'])) {
+                $data['content'] = get_the_content();
+            } else {
+                $data['content'] = carbon_the_content_limit(200);
+            }
 
-$filter = 'rss';
-if ( 'atom' == $type )
-    $filter = 'raw';
+            $cats = get_the_category();
+            $data['category'] = $cat_name = $cats[0]->name;
+            $the_list = '';
+            $cat_names = array();
 
-if ( !empty($cats) ) foreach ( (array) $cats as $category ) {
-    $cat_names[] = sanitize_term_field('name', $category->name, $category->term_id, 'category', $filter);
+            $filter = 'rss';
+            if ('atom' == $type)
+                $filter = 'raw';
+
+            if (!empty($cats)) foreach ((array)$cats as $category) {
+                $cat_names[] = sanitize_term_field('name', $category->name, $category->term_id, 'category', $filter);
+            }
+
+            $cat_names = array_unique($cat_names);
+            $data['category_all'] = $cat_names;
+            $data['url'] = get_the_permalink();
+            $datepublishstring = get_the_time('Y-m-d H:i:s');
+            $datepublish = timeAgo($datepublishstring);
+            $data['raw_creation_date'] = $datepublishstring;
+            $data['creation_date'] = $datepublish;
+            $data['updated_at'] = $datepublish;
+            if (has_post_thumbnail($ID)) {
+                $image = get_the_post_thumbnail_url($ID, 'full', false);
+            } else {
+                $files = get_children('post_parent=' . $ID . '&post_type=attachment&post_mime_type=image');
+                if ($files) :
+                    $keys = array_reverse(array_keys($files));
+                    $j = 0;
+                    $num = $keys[$j];
+                    $image = wp_get_attachment_image_url($num, 'full', false);
+                endif;
+            }
+            $data['image'] = str_replace('ideaing-ideas.s3.amazonaws.com', 'd3f8t323tq9ys5.cloudfront.net', $image);
+            $data['author'] = get_the_author();
+            $data['author_id'] = get_the_author_meta('ID');
+
+            $laravelUser = file_get_contents('https://ideaing.com/api/info-raw/' . get_the_author_email());
+            $laravelUser = json_decode($laravelUser, true);
+
+            $data['authorlink'] = $laravelUser['permalink'];
+
+            if (isset($laravelUser['medias'][0])) {
+                $data['avator'] = $laravelUser['medias'][0]['media_link'];
+            } else {
+                $data['avator'] = get_avatar_url(get_the_author_email(), '80');
+            }
+
+            $data['type'] = 'idea';
+            $get_is_featured = get_post_custom_values('is_featured', $ID);
+            $is_featured = false;
+            if ($get_is_featured[0] == "Yes") {
+                $is_featured = true;
+            }
+            $data['is_featured'] = $is_featured;
+            $data['feed_image'] = get_field('feed_image');
+
+            $data['feed_image']['url'] = str_replace('ideaing-ideas.s3.amazonaws.com', 'd3f8t323tq9ys5.cloudfront.net', $data['feed_image']['url']);
+
+            if (isset($_REQUEST['with_tags'])) {
+                $data['tags_all'] = wp_get_post_tags($post->ID, array('fields' => 'names'));;
+            }
+
+            $datam[] = $data;
+        }
+
 }
 
-/*if ( !empty($tags) ) foreach ( (array) $tags as $tag ) {
-    $cat_names[] = sanitize_term_field('name', $tag->name, $tag->term_id, 'post_tag', $filter);
-}*/
-
-$cat_names = array_unique($cat_names);
-$data['category_all'] = $cat_names;
-$data['url'] = get_the_permalink();
-$datepublishstring = get_the_time('Y-m-d H:i:s');
-$datepublish = timeAgo($datepublishstring);
-$data['raw_creation_date'] = $datepublishstring;
-$data['creation_date'] = $datepublish;
-$data['updated_at'] = $datepublish;
-if( has_post_thumbnail( $ID ) ) {
-        $image = get_the_post_thumbnail_url( $ID, 'full', false );
-    }
-	else
-	{
-		$files = get_children('post_parent='.$ID .'&post_type=attachment&post_mime_type=image');
-	  if($files) :
-		$keys = array_reverse(array_keys($files));
-		$j=0;
-		$num = $keys[$j];
-		$image=wp_get_attachment_image_url($num, 'full', false);
-	  endif;
-	}
-$data['image'] = str_replace('ideaing-ideas.s3.amazonaws.com', 'd3f8t323tq9ys5.cloudfront.net', $image);
-$data['author'] = get_the_author();
-$data['author_id'] = get_the_author_meta( 'ID' );
-
-//$data['avator'] = get_avatar_url( get_the_author_email(), '80' );
-
-$laravelUser = file_get_contents('https://ideaing.com/api/info-raw/' .  get_the_author_email());
-$laravelUser = json_decode($laravelUser, true);
-
-$data['authorlink'] = $laravelUser['permalink'];
-
-if(isset($laravelUser['medias'][0])){
-    $data['avator'] = $laravelUser['medias'][0]['media_link'];
-}else{
-    $data['avator'] = get_avatar_url( get_the_author_email(), '80' );
-}
-
-$data['type'] = 'idea';
-$get_is_featured = get_post_custom_values('is_featured',$ID);
-$is_featured = false;
-if($get_is_featured[0] == "Yes")
-{
-	$is_featured = true;
-}
-$data['is_featured'] = $is_featured;
-
-//$data['feed_image'] = get_post_custom_values('feed_image',$ID);
-$data['feed_image'] = get_field('feed_image');
-
-// print_r($data['feed_image'] ); die(); 
-
-$data['feed_image']['url'] = str_replace('ideaing-ideas.s3.amazonaws.com', 'd3f8t323tq9ys5.cloudfront.net', $data['feed_image']['url']);
-
-if(isset($_REQUEST['with_tags'])){
-    $data['tags_all'] = wp_get_post_tags( $post->ID, array( 'fields' => 'names' ) );;
-}
-
-$datam[]= $data;
-endwhile;
 echo json_encode($datam);
 //print_r(json_decode(json_encode($data)));
 ?>
