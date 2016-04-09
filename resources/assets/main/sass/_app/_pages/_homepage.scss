@@ -22,11 +22,9 @@
   position: absolute;
   width: 100%;
   height: 100%;
-  background-image: url('https://d234pm57oy3062.cloudfront.net/homehero/11/homehero-image-56f8ffa2244c6-landing-hero-3.jpg');
   background-size: cover;
   background-repeat: no-repeat;
   padding-top: 50px;
-  z-index: 20;
 
   //.homepage &{
   //  padding-top: 50px;
@@ -82,15 +80,21 @@
  .rsNav.rsBullets{
     padding-top: 0;
     top: -26px;
+   z-index: 40;
   }
 
-  .rsVisibleNearbyWrap{
+  & + .color-overlay{
     background-color:rgba(0,0,0,.4);
+    z-index: 30;
   }
 
   .rsOverflow{
     margin-top:30px;
+    z-index: 40;
+
   }
+
+
 
   @media(max-width:500px){
 
@@ -111,3 +115,15 @@
   }
 
 }
+
+.blur-overlay{
+  background-image: url('https://d234pm57oy3062.cloudfront.net/homehero/11/homehero-image-56f8ffa2244c6-landing-hero-3.jpg');
+  -webkit-filter: blur(2px);
+  -moz-filter: blur(2px);
+  -o-filter: blur(2px);
+  -ms-filter: blur(2px);
+  filter: blur(2px);
+}
+//.idea-stories .color-overlay{
+//  margin-top: -21px;
+//}
