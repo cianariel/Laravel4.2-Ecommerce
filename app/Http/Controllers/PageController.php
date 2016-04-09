@@ -419,14 +419,14 @@ if($stories['featured']){
     {
         MetaTag::set('title', 'Sign Up | Ideaing');
 
-        return view('signup')->with('email', $email)->with('tab', 'signup');
+        return view('user.signup')->with('email', $email)->with('tab', 'signup');
     }
 
     public function loginView()
     {
         MetaTag::set('title', 'Log In | Ideaing');
 
-        return view('signup')->with('tab', 'login');
+        return view('user.signup')->with('tab', 'login');
     }
 
     public function getProducts($limit, $page, $offset, $tagID, $productCategoryID = false, $sortBy = false)

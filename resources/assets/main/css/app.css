@@ -5363,9 +5363,57 @@ nav a {
   #hero .container {
     position: relative; }
 
-body.single .mid-nav.rooms, body.single .mid-nav .rooms.extra-nav, .mid-nav body.single .rooms.extra-nav, body.product-details .mid-nav.rooms, body.product-details .mid-nav .rooms.extra-nav, .mid-nav body.product-details .rooms.extra-nav, body.profilepage .mid-nav.rooms, body.profilepage .mid-nav .rooms.extra-nav, .mid-nav body.profilepage .rooms.extra-nav, body.shoppage .mid-nav.rooms, body.shoppage .mid-nav .rooms.extra-nav, .mid-nav body.shoppage .rooms.extra-nav, body.error-page .mid-nav.rooms, body.error-page .mid-nav .rooms.extra-nav, .mid-nav body.error-page .rooms.extra-nav, body.aboutus-page .mid-nav.rooms, body.aboutus-page .mid-nav .rooms.extra-nav, .mid-nav body.aboutus-page .rooms.extra-nav, body.giveaway-page .mid-nav.rooms, body.giveaway-page .mid-nav .rooms.extra-nav, .mid-nav body.giveaway-page .rooms.extra-nav, body.privacy-policy-page .mid-nav.rooms, body.privacy-policy-page .mid-nav .rooms.extra-nav, .mid-nav body.privacy-policy-page .rooms.extra-nav, body.terms-of-use-page .mid-nav.rooms, body.terms-of-use-page .mid-nav .rooms.extra-nav, .mid-nav body.terms-of-use-page .rooms.extra-nav, body.contactus-page .mid-nav.rooms, body.contactus-page .mid-nav .rooms.extra-nav, .mid-nav body.contactus-page .rooms.extra-nav {
+body.single .mid-nav.rooms, body.single .mid-nav .rooms.extra-nav, .mid-nav body.single .rooms.extra-nav,
+body.product-details .mid-nav.rooms,
+body.product-details .mid-nav .rooms.extra-nav,
+.mid-nav body.product-details .rooms.extra-nav,
+body.profilepage .mid-nav.rooms,
+body.profilepage .mid-nav .rooms.extra-nav,
+.mid-nav body.profilepage .rooms.extra-nav,
+body.shoppage .mid-nav.rooms,
+body.shoppage .mid-nav .rooms.extra-nav,
+.mid-nav body.shoppage .rooms.extra-nav,
+body.error-page .mid-nav.rooms,
+body.error-page .mid-nav .rooms.extra-nav,
+.mid-nav body.error-page .rooms.extra-nav,
+body.aboutus-page .mid-nav.rooms,
+body.aboutus-page .mid-nav .rooms.extra-nav,
+.mid-nav body.aboutus-page .rooms.extra-nav,
+body.giveaway-page .mid-nav.rooms,
+body.giveaway-page .mid-nav .rooms.extra-nav,
+.mid-nav body.giveaway-page .rooms.extra-nav,
+body.privacy-policy-page .mid-nav.rooms,
+body.privacy-policy-page .mid-nav .rooms.extra-nav,
+.mid-nav body.privacy-policy-page .rooms.extra-nav,
+body.terms-of-use-page .mid-nav.rooms,
+body.terms-of-use-page .mid-nav .rooms.extra-nav,
+.mid-nav body.terms-of-use-page .rooms.extra-nav,
+body.login-signup .mid-nav.rooms,
+body.login-signup .mid-nav .rooms.extra-nav,
+.mid-nav body.login-signup .rooms.extra-nav,
+body.terms-of-use-page .mid-nav.rooms,
+body.terms-of-use-page .mid-nav .rooms.extra-nav,
+.mid-nav body.terms-of-use-page .rooms.extra-nav,
+body.terms-of-use-page .mid-nav.rooms,
+body.terms-of-use-page .mid-nav .rooms.extra-nav,
+.mid-nav body.terms-of-use-page .rooms.extra-nav,
+body.contactus-page .mid-nav.rooms,
+body.contactus-page .mid-nav .rooms.extra-nav,
+.mid-nav body.contactus-page .rooms.extra-nav {
   display: none; }
-body.single #hero, body.product-details #hero, body.profilepage #hero, body.shoppage #hero, body.error-page #hero, body.aboutus-page #hero, body.giveaway-page #hero, body.privacy-policy-page #hero, body.terms-of-use-page #hero, body.contactus-page #hero {
+body.single #hero,
+body.product-details #hero,
+body.profilepage #hero,
+body.shoppage #hero,
+body.error-page #hero,
+body.aboutus-page #hero,
+body.giveaway-page #hero,
+body.privacy-policy-page #hero,
+body.terms-of-use-page #hero,
+body.login-signup #hero,
+body.terms-of-use-page #hero,
+body.terms-of-use-page #hero,
+body.contactus-page #hero {
   /*    margin-top: -50px;*/ }
 
 .slider.product-slider #gallery, .slider.heroSlider #gallery {
