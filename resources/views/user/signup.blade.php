@@ -1,4 +1,4 @@
-@extends('info.signup-layout')
+@extends('layouts.main')
 @section('body-class'){{ 'login-signup' }}@stop
 
 @section('content')

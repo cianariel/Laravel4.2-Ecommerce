@@ -70,7 +70,7 @@
 
         public function passwordResetForm($code)
         {
-            return view('password-reset')->with('code',$code);
+            return view('user.password-reset')->with('code',$code);
         }
 
         public function securePage()
