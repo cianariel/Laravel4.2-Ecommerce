@@ -30,7 +30,7 @@ class UserController extends ApiController
         $this->roleModel = new Role();
         $this->media = new Media();
         $this->comment = new Comment();
-       // $this->contact = new Contact();
+        // $this->contact = new Contact();
 
         //check user authentication and get user basic information
         $this->authCheck = $this->RequestAuthentication(array('admin', 'editor', 'user'));
@@ -199,7 +199,6 @@ class UserController extends ApiController
     }
 
 
-
     //show public profile as per given permalink
 
     public function viewPublicProfile($permalink)
@@ -209,23 +208,23 @@ class UserController extends ApiController
             $userData = $this->authCheck['user-data'];
         }
 
-        $userProfileData = $this->user->checkUserByPermalink($permalink) ;
+        $userProfileData = $this->user->checkUserByPermalink($permalink);
 
         $userProfileData = $userProfileData != false ? $userProfileData : $userData;
-            $data = array(
-                'userData' => empty($userData)?null:$userData,
-                'userProfileData' => $userProfileData,
-                'profile' => ($userProfileData->medias[0]->media_link == '') ? \Config::get("const.user-image") : $userProfileData->medias[0]->media_link,
-                'fullname' => $userProfileData->name,
-                'address' => $userProfileData->userProfile->address,
-                'personalInfo' => $userProfileData->userProfile->personal_info,
-                'permalink' => $permalink,
-                'isAdmin' => empty($userData)?null:($userData->hasRole('admin') || $userData->hasRole('editor')),
-                'showEditOption' => false
+        $data = array(
+            'userData' => empty($userData) ? null : $userData,
+            'userProfileData' => $userProfileData,
+            'profile' => ($userProfileData->medias[0]->media_link == '') ? \Config::get("const.user-image") : $userProfileData->medias[0]->media_link,
+            'fullname' => $userProfileData->name,
+            'address' => $userProfileData->userProfile->address,
+            'personalInfo' => $userProfileData->userProfile->personal_info,
+            'permalink' => $permalink,
+            'isAdmin' => empty($userData) ? null : ($userData->hasRole('admin') || $userData->hasRole('editor')),
+            'showEditOption' => false
 
-            );
+        );
 
-            return view('user.user-profile', $data);
+        return view('user.user-profile', $data);
     }
 
     public function hideSignup()
@@ -265,7 +264,7 @@ class UserController extends ApiController
 
             'rules' => [
                 'Email' => isset($inputData['Email']) ? 'required | email' : '',
-              //  'g-recaptcha-response' => 'required|recaptcha',
+                //  'g-recaptcha-response' => 'required|recaptcha',
             ],
             'values' => [
                 'Email' => isset($inputData['Email']) ? $inputData['Email'] : null,
@@ -278,8 +277,8 @@ class UserController extends ApiController
 
             // return with the failed reason and field's information
 
-               return $this->setStatusCode(IlluminateResponse::HTTP_NOT_ACCEPTABLE)
-                      ->makeResponseWithError("Please provide valid email" . $validator->messages());
+            return $this->setStatusCode(IlluminateResponse::HTTP_NOT_ACCEPTABLE)
+                        ->makeResponseWithError("Please provide valid email" . $validator->messages());
         }
 
         \Event::fire(new SendContactUsMail(
@@ -304,12 +303,11 @@ class UserController extends ApiController
 
         // gather comment activities
 
-        $comments = $this->comment->getCommentsByUserId($userId);
-
-        return $comments;
+        $activityWithHumanTime = $this->comment->getCommentsAndHeatByUserId($userId, 10);
 
 
 
+        return $activityWithHumanTime;
 
     }
 

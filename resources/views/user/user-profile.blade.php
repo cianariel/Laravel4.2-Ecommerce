@@ -66,8 +66,9 @@
                 @endif
             </div>
         </section>
-        <div class="app-wrap" id="pagingApp" ng-app="pagingApp" ng-controller="pagingController">
-            <div class="container ">
+       {{-- <div class="app-wrap" id="pagingApp" ng-app="pagingApp" ng-controller="pagingController">--}}
+        <div class="app-wrap" id="pupblicApp" ng-app="publicApp" ng-controller="publicController">
+        <div class="container ">
                 <nav id="hero-nav">
                     <ul class=" main-content-filter ">
                         <li ng-class="{active: (activeMenu == '1' || !activeMenu)}" ng-click="activeMenu='1'">

@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use App\Models\Product;
 use App\Models\User;
 use App\Models\WpPost;
+use App\Models\Heart;
 
 use Illuminate\Support\Collection;
 use Carbon\Carbon;
@@ -173,33 +174,172 @@ class Comment extends Model
 
     public function ideasCommentCounter($itemId)
     {
-        return Comment::where('commentable_id', $itemId)
+        $count = Comment::where('commentable_id', $itemId)
                       ->where('commentable_type', 'App\Models\WpPost')
+                      ->count();
+        return $count;
+    }
+
+    public function productCommentCounter($itemId)
+    {
+        return Comment::where('commentable_id', $itemId)
+                      ->where('commentable_type', 'App\Models\Product')
                       ->count();
     }
 
-    // Gather comment activity by user id
 
-    public function getCommentsByUserId($userId, $count = null)
+    public function commentCounter($itemId, $section)
     {
-        $heartProductCollection = Heart::where('user_id', $userId)
-            ->where('heartable_type','App\Models\Product')
-            ->get(['heartable_id']);
+        if ($section == 'ideas') {
+            return $this->ideasCommentCounter($itemId);
+        } elseif ($section == 'product') {
+            return $this->productCommentCounter($itemId);
+        }
+    }
 
-        dd($heartProductCollection);
+    // Gather comment and heart activity by user id
+
+    public function getCommentsAndHeatByUserId($userId, $count = null)
+    {
+
+        $activityCollection = new Collection();
+
+        $domain = \Request::root();
+
+        $heartProductCollection = Heart::where('user_id', $userId)->where('heartable_type', 'App\Models\Product');
+
+        if ($count == null) {
+            $heartProductCollection = $heartProductCollection->orderBy('created_at', 'desc')->get(['heartable_id']);
+        } else {
+            $heartProductCollection = $heartProductCollection->orderBy('created_at', 'desc')->limit($count)->get(['heartable_id']);
+
+        }
+
+        $productInfoOfHeart = Product::whereIn('id', $heartProductCollection)->get(['id', 'product_name AS title', 'product_permalink AS link', 'updated_at']);
+
+
+        foreach ($productInfoOfHeart as $item) {
+            $tmpCollection = new Collection();
+
+            $tmpCollection['Id'] = $item['id'];
+            $tmpCollection['Title'] = $item['title'];
+            $tmpCollection['Link'] = $domain . '/product/' . $item['link'];
+            $tmpCollection['Image'] = '';
+            $tmpCollection['UpdateTime'] = $item['updated_at'];
+            $tmpCollection['Section'] = 'product';
+            $tmpCollection['Type'] = 'heart';
+
+            $activityCollection->push($tmpCollection);
+
+        }
+
+        //  dd($commentCollection);
+
+        $heartIdeasCollection = Heart::where('user_id', $userId)->where('heartable_type', 'App\Models\WpPost');
+
+        if ($count == null) {
+            $heartIdeasCollection = $heartIdeasCollection->orderBy('created_at', 'desc')->get(['heartable_id', 'updated_at']);
+        } else {
+            $heartIdeasCollection = $heartIdeasCollection->orderBy('created_at', 'desc')->limit($count)->get(['heartable_id', 'updated_at']);
+        }
+        // dd($heartIdeasCollection);
+
+        $ideasIdCollection = $heartIdeasCollection->map(function ($item) {
+            return $item->heartable_id;
+        });
+
+        $ideasInfoOfHeart = WpPost::whereIn('ID', $ideasIdCollection)->get();
+
+        //dd($ideasInfoOfHeart);
+        foreach ($ideasInfoOfHeart as $item) {
+            $tmpCollection = new Collection();
+
+            $tmpCollection['Id'] = $item['ID'];
+            $tmpCollection['Title'] = $item['post_title'];
+            $tmpCollection['Link'] = $item['guid'];
+            $tmpCollection['Image'] = '';//$item['image_link'];
+            $tmpCollection['UpdateTime'] = $heartIdeasCollection->where('heartable_id', $item['ID'])->first()->updated_at;
+            $tmpCollection['Section'] = 'ideas';
+            $tmpCollection['Type'] = 'heart';
+
+            $activityCollection->push($tmpCollection);
+        }
+
+        //  dd($ideasInfoOfHeart->count(),$activityCollection);
+
+        //  dd($commentCollection);
 
 
         $comments = Comment::where('user_id', $userId)->whereNotNull('section');
 
         if ($count == null) {
-            $comments = $comments->orderBy('created_at', 'desc')->get(['id', 'section', 'title', 'link', 'image_link', 'updated_at']);
+            $comments = $comments->orderBy('created_at', 'desc')->get(['id','commentable_id', 'section', 'title', 'link', 'image_link', 'updated_at']);
         } else {
-            $comments = $comments->orderBy('created_at', 'desc')->count($count)->get(['id', 'section', 'title', 'link', 'image_link', 'updated_at']);
+            $comments = $comments->orderBy('created_at', 'desc')->limit($count)->get(['id', 'commentable_id','section', 'title', 'link', 'image_link', 'updated_at']);
         }
 
-        return $comments;
+
+        foreach ($comments as $item) {
+            $tmpCollection = new Collection();
+
+            // dd($item);
+            $tmpCollection['Id'] = $item['commentable_id'];
+            $tmpCollection['Title'] = $item['title'];
+            $tmpCollection['Link'] = $domain . "/" . $item['section'] . "/" . $item['link'];
+            $tmpCollection['Image'] = $item['image_link'];
+            $tmpCollection['UpdateTime'] = $item['updated_at'];
+            $tmpCollection['Section'] = $item['section'];//'product';
+            $tmpCollection['Type'] = 'comment';
+
+            $activityCollection->push($tmpCollection);
+
+        }
+
+        $data = $activityCollection->sortByDesc('UpdateTime')->map(function ($item) {
+            return [
+                'Id' => $item['Id'],
+                'Title' => $item['Title'],
+                'Link' => $item['Link'],
+                'Image' => $item['Image'],
+                'UpdateTime' => Carbon::createFromTimestamp(strtotime($item['UpdateTime']))->diffForHumans(),
+                'Section' => $item['Section'],
+                'Type' => $item['Type']
+            ];
+
+        });
+
+        $activityCollection = new Collection();
+
+        $heart = new Heart();
+        foreach ($data as $item) {
+            $tmpCollection = new Collection();
+
+            if ($item['Type'] == 'comment') {
+                $commentCount = $this->commentCounter($item['Id'], $item['Section']);
+            } elseif ($item['Type'] == 'heart') {
+
+                $info = ['ItemId' => $item['Id'], 'Section' => $item['Section']];
+                $heartCount = $heart->simpleHeartCounter($info);
+            }
 
 
+            $tmpCollection['Id'] = $item['Id'];
+            $tmpCollection['Title'] = $item['Title'];
+            $tmpCollection['Link'] = $item['Link'];
+            $tmpCollection['Image'] = $item['Image'];
+            $tmpCollection['UpdateTime'] = Carbon::createFromTimestamp(strtotime($item['UpdateTime']))->diffForHumans();
+            $tmpCollection['CommentCount'] = empty($commentCount) ? 0 : $commentCount;
+            $tmpCollection['HeartCount'] = empty($heartCount) ? 0 : $heartCount;
+
+            $tmpCollection['Section'] = $item['Section'];
+            $tmpCollection['Type'] = $item['Type'];
+
+
+            $activityCollection->push($tmpCollection);
+
+        }
+
+        return $activityCollection;
     }
 
 }

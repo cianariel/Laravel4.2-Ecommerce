@@ -37,18 +37,7 @@ class Heart extends Model
            return 'UnHearted';
         }
 
-        if ($info['Section'] == 'product') {
-
-            $item = Product::where('id', $info['ItemId'])
-                           ->with('hearts')
-                           ->first();
-
-        } elseif ($info['Section'] == 'ideas') {
-
-            $item = WpPost::where('ID', $info['ItemId'])
-                          ->with('hearts')
-                          ->first();
-        }
+        $item = $this->heartCounterByItemInfo($info);
 
         $heart = new Heart();
         $heart->user_id = $info['UserId'];
@@ -98,18 +87,7 @@ class Heart extends Model
     // return heart count for an item
     public function heartCounter($info)
     {
-        if ($info['Section'] == 'product') {
-
-            $item = Product::where('id', $info['ItemId'])
-                           ->with('hearts')
-                           ->first();
-
-        } elseif ($info['Section'] == 'ideas') {
-
-            $item = WpPost::where('ID', $info['ItemId'])
-                          ->with('hearts')
-                          ->first();
-        }
+        $item = $this->heartCounterByItemInfo($info);
 
         // set user status whether the user liked the item or not
         $user = false;
@@ -190,6 +168,46 @@ class Heart extends Model
         }
 
         return $userCollection;
+    }
+
+    /**
+     * @param $info
+     * @return Model|null|static
+     */
+    public function heartCounterByItemInfo($info)
+    {
+        if ($info['Section'] == 'product') {
+
+            $item = Product::where('id', $info['ItemId'])
+                           ->with('hearts')
+                           ->first();
+            //return $item;
+
+        } elseif ($info['Section'] == 'ideas') {
+
+            $item = WpPost::where('ID', $info['ItemId'])
+                          ->with('hearts')
+                          ->first();
+           // return $item;
+        }
+        return $item;
+    }
+
+    public function simpleHeartCounter($info)
+    {
+        if ($info['Section'] == 'product') {
+
+            $item = Heart::where('heartable_id', $info['ItemId'])
+                ->where('heartable_type','App\Models\Product')
+                           ->count();
+        } elseif ($info['Section'] == 'ideas') {
+
+            $item = Heart::where('heartable_id', $info['ItemId'])
+                         ->where('heartable_type','App\Models\WpPost')
+                         ->count();
+        }
+        return $item;
+
     }
 
 
