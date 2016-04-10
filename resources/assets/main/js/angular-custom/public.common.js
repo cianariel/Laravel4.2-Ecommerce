@@ -919,6 +919,10 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
 
         $scope.passwordResetRequest = function () {
             $scope.closeAlert();
+            if(!$scope.Email){
+                $scope.addAlert('danger', 'Email is required!');
+                return;
+            }
             $http({
                 url: '/password-reset-request/' + $scope.Email,
                 method: "GET",

@@ -9,7 +9,7 @@
               <h2 id="site-subhead" style="display:none;">Ideas for Smarter Living</h2>';
     }
     ?>
-    <section id="hero" class="landing-hero" style="min-height: 480px; margin-top: 50px">
+    <section id="hero" class="landing-hero" style="">
         @if(empty($userData['email']))
              @if(isset($homehero))
                 @foreach( $homehero as $key => $image )

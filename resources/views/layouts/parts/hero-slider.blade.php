@@ -1,13 +1,11 @@
-<div style="background-image: url('https://d234pm57oy3062.cloudfront.net/homehero/11/homehero-image-56f8ffa2244c6-landing-hero-3.jpg'); background-size: cover;background-repeat: no-repeat;position: absolute;width: 100%;height: 100%;">
-    <div class="rsContent" style="padding-top: 50px; width: 140%; margin-left: -20%;">
-
+<div id="hero-slider" class="slider heroSlider has-bullets">
         <?php
          if(function_exists('is_single')){
              $sliderContent = getHeroSliderContent();
          }
 
         foreach($sliderContent as $item){ ?>
-            <div class="box-item product-box text-center" style="max-width: 33%;float:left;">
+            <div class="box-item product-box text-center">
                 <div class="img-holder">
                     <img src="<?php echo $item['image']?>">
                 </div>
@@ -24,70 +22,52 @@
                 </div>
             </div>
         <?php } ?>
-    </div>
 </div>
+<div class="color-overlay"></div>
+<div class="color-overlay blur-overlay"></div>
+
     <script>
-//        jQuery(document).ready(function($) {
-//            if (window.innerWidth < 480) {
+        jQuery(document).ready(function($) {
+                var args = {
+                    arrowsNav: true,
+                        loop: true,
+                        loopRewind: true,
+                        keyboardNavEnabled: true,
+                        controlsInside: true,
+                        controlNavigation: 'bullets',
+                        arrowsNavAutoHide: false,
+                        slidesSpacing: 0,
+                        imageScaleMode: 'none',
+                        imgWidth: 1175,
+                        imageAlignCenter: true,
+                        autoScaleSliderWidth: 1180,
+                        autoScaleSliderHeight: 394,
+                        thumbsFitInViewport: false,
+                        navigateByClick: true,
+                        startSlideId: 0,
+                        autoPlay: false,
+                        transitionType: 'move',
+                        globalCaption: false,
+                          addActiveClass:true,
+                        deeplinking: {
+                            enabled: true,
+                            change: false
+                },
+            };
 //
-//                $('#gallery').royalSlider({
-//                    arrowsNav: true,
-//                    keyboardNavEnabled: true,
-//                    controlsInside: false,
-//                    imageScaleMode: 'fit',
-//                    arrowsNavAutoHide: false,
-//                    autoScaleSlider: true,
-//                    controlNavigation: 'thumbnails',
-//                    thumbsFitInViewport: false,
-//                    navigateByClick: true,
-//                    startSlideId: 0,
-//                    autoPlay: false,
-//                    transitionType: 'move',
-//                    globalCaption: false,
-//                    deeplinking: {
-//                        enabled: true,
-//                        change: false
-//                    },
-//                    thumbs: {
-//                        appendSpan: true,
-//                        firstMargin: false,
-////                                orientation: 'horizntal',
-//                    },
-//                    loop: true
-////                            imgWidth: 1400,
-////                            imgHeight: 680
-//                });
-//            } else {
-//                $('#gallery').royalSlider({
-////                            arrowsNav: true,
-//                    loop: false,
-//                    keyboardNavEnabled: true,
-//                    controlsInside: false,
-//                    imageScaleMode: 'fit',
-//                    arrowsNavAutoHide: false,
-////                        autoScaleSlider: true,
-//                    controlNavigation: 'thumbnails',
-//                    thumbsFitInViewport: false,
-//                    navigateByClick: true,
-//                    startSlideId: 0,
-//                    autoPlay: false,
-//                    transitionType: 'move',
-//                    globalCaption: false,
-//                    deeplinking: {
-//                        enabled: true,
-//                        change: false
-//                    },
-//                    thumbs: {
-//                        arrows: true,
-//                        appendSpan: true,
-//                        firstMargin: false,
-//                        orientation: 'vertical'
-//                    },
-//                    loop: true
-//
-////                        imgWidth: 1400,
-////                        imgHeight: 680
-//                });
-//            }
-//        });
+            if (window.innerWidth < 1176) {
+                args.visibleNearby = {
+                    enabled: false,
+                    center: false,
+                }
+            }else{
+                args.visibleNearby = {
+                    enabled: true,
+                    center: true,
+                    navigateByCenterClick: true
+                }
+            }
+
+                $('#hero-slider').royalSlider(args);
+        });
     </script>

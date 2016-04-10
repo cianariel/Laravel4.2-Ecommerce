@@ -4,7 +4,7 @@
 $categories = get_categories();
 ?>
 <nav class="mid-nav" >
-    <div class="container">
+    <div class="container hidden-xs">
         <ul class="wrap col-lg-7">
             @foreach($categories as $cat)
                 @if($cat->category_parent == 0)
@@ -17,19 +17,69 @@ $categories = get_categories();
             @endforeach
         </ul>
     </div>
+    <div class="container mobile-menu visible-xs ">
+        <ul class="wrap col-lg-7">
+            <?php $key=0; ?>
+            @foreach($categories as $cat)
+                @if($cat->category_parent == 0)
+                    <?php
+                        if($key>=3)
+                            break;                    
+                    ?>
+                        
+                    <li class="box-link-ul">
+                        <a href="/ideas/{{$cat->slug}}" class="box-link">
+                            {{$cat->name}}
+                        </a>
+                    </li>
+                    <?php $key++ ?>
+                @endif
+            @endforeach
+        </ul>
+        <a class="right-menu-arrow pull-right" data-toggle="#mobile-ideas-menu" href="#">
+            <i class="m-icon--Header-Dropdown down"></i>
+            <i class="m-icon--footer-up-arrow up"></i>
+        </a>
+
+    </div>
 </nav>
 
-<?php
-?>
-<section id="hero" class="landing-hero" style="margin-top: 50px;">
+<div id="mobile-ideas-menu" class="mobile-top-menu mobile-mid-menu ">
+    <ul>
+        <?php $key=0; ?>
+        @foreach($categories as $cat)
+            @if($cat->category_parent == 0)
+                <?php
+                    if($key<3){
+                        $key++;
+                        continue;
+                    }
+                ?>
+                    
+                <li class="box-link-ul">
+                    <a href="/ideas/{{$cat->slug}}" class="box-link">
+                        {{$cat->name}}
+                    </a>
+                </li>
+                <?php $key++ ?>
+            @endif
+        @endforeach
+    </ul>
+</div>
+
+
+<section id="hero" class="landing-hero" >
         <?php loadLaravelView('hero-slider'); ?>
+<!--    <div class="color-overlay"></div>-->
 </section>
 
 
-<div class="app-wrap" id="pagingApp" ng-app="pagingApp" ng-controller="pagingController" ng-cloak>
-    <nav id="hero-nav" class="col-sm-12">
 
-    </nav>
+
+<div class="app-wrap" id="pagingApp" ng-app="pagingApp" ng-controller="pagingController" ng-cloak>
+<!--    <nav id="hero-nav" class="col-sm-12">-->
+<!---->
+<!--    </nav>-->
     <div class="clearfix"></div>
     <div class="homepage-grid center-block" style="min-height:1000px">
         <div class="loader loader-abs" cg-busy="firstLoad"></div>

@@ -4799,6 +4799,10 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
 
         $scope.passwordResetRequest = function () {
             $scope.closeAlert();
+            if(!$scope.Email){
+                $scope.addAlert('danger', 'Email is required!');
+                return;
+            }
             $http({
                 url: '/password-reset-request/' + $scope.Email,
                 method: "GET",
@@ -6332,8 +6336,8 @@ productApp.directive('heartCounterProduct', ['$http', function($http) {
     }
 }]);
 
-
-// Setting values of Angular Text Editor 
+ 
+// Setting values of Angular Text Editor
 productApp.config(['$provide', function ($provide) {
     // this demonstrates how to register a new tool and add it to the default toolbar
     $provide.decorator('taOptions', ['taRegisterTool', '$delegate', function (taRegisterTool, taOptions) {
