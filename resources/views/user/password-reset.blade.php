@@ -1,4 +1,4 @@
-@extends('layouts.signup-layout')
+@extends('layouts.main')
 
 @section('content')
 

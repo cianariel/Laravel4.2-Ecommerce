@@ -67,6 +67,8 @@ class PageController extends ApiController
         $sliderContent = self::getHeroSliderContent();
 //        $sliderContent = (array)$sliderContent;
 
+        MetaTag::set('title', ' Ideas for Smarter Living | Save, Share & Shop Online');
+        MetaTag::set('description', 'Visit our Online Showroom.  Save the Latest  Smart Home Products to Your Personal Account.  Share & Discuss with Friends.  Shop Online for Daily Discounts.');
         //return $result;
         return view('home')
             ->with('userData', $userData)
@@ -77,7 +79,7 @@ class PageController extends ApiController
 
     public static function getHeroSliderContent()
     {
-        $url = URL::to('/') . '/ideas/feeds/index.php?count=3&only-slider';
+        $url = URL::to('/') . '/ideas/feeds/index.php?count=5&only-slider';
 
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $url);
@@ -417,14 +419,14 @@ if($stories['featured']){
     {
         MetaTag::set('title', 'Sign Up | Ideaing');
 
-        return view('signup')->with('email', $email)->with('tab', 'signup');
+        return view('user.signup')->with('email', $email)->with('tab', 'signup');
     }
 
     public function loginView()
     {
         MetaTag::set('title', 'Log In | Ideaing');
 
-        return view('signup')->with('tab', 'login');
+        return view('user.signup')->with('tab', 'login');
     }
 
     public function getProducts($limit, $page, $offset, $tagID, $productCategoryID = false, $sortBy = false)
@@ -680,7 +682,7 @@ if($stories['featured']){
         MetaTag::set('title', 'Privacy Policy | Ideaing');
 //        MetaTag::set('description', $result['productInformation']['MetaDescription']);
 
-        return view('layouts.privacy-policy');
+        return view('info.privacy-policy');
 
     }
 
@@ -696,7 +698,7 @@ if($stories['featured']){
             $userData = $this->authCheck['user-data'];
         }
 
-        return view('contactus.index')
+        return view('info.contactus')
             ->with('userData', $userData);
 
 
@@ -708,7 +710,7 @@ if($stories['featured']){
         MetaTag::set('title', 'About us | Ideaing');
 //        MetaTag::set('description', $result['productInformation']['MetaDescription']);
 
-        return view('layouts.aboutus');
+        return view('info.aboutus');
     }
 
     public function termsOfUse()
@@ -717,7 +719,7 @@ if($stories['featured']){
         MetaTag::set('title', 'Terms of Use | Ideaing');
 //        MetaTag::set('description', $result['productInformation']['MetaDescription']);
 
-        return view('layouts.terms-of-use');
+        return view('info.terms-of-use');
     }
 
     public function giveaway()

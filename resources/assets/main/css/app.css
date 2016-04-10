@@ -5301,7 +5301,7 @@ nav a {
 #hero {
   position: relative;
   width: 100%;
-  min-height: 540px;
+  min-height: 450px;
   float: left; }
   #hero .head-wrap {
     position: absolute;
@@ -5335,7 +5335,8 @@ nav a {
     position: absolute;
     width: 100%;
     height: 100%;
-    border-radius: 5px; }
+    border-radius: 5px;
+    background-color: rgba(0, 0, 0, 0.2); }
   #hero.details-hero h1 {
     float: left;
     text-align: left;
@@ -5362,9 +5363,57 @@ nav a {
   #hero .container {
     position: relative; }
 
-body.single .mid-nav.rooms, body.single .mid-nav .rooms.extra-nav, .mid-nav body.single .rooms.extra-nav, body.product-details .mid-nav.rooms, body.product-details .mid-nav .rooms.extra-nav, .mid-nav body.product-details .rooms.extra-nav, body.profilepage .mid-nav.rooms, body.profilepage .mid-nav .rooms.extra-nav, .mid-nav body.profilepage .rooms.extra-nav, body.shoppage .mid-nav.rooms, body.shoppage .mid-nav .rooms.extra-nav, .mid-nav body.shoppage .rooms.extra-nav, body.error-page .mid-nav.rooms, body.error-page .mid-nav .rooms.extra-nav, .mid-nav body.error-page .rooms.extra-nav, body.aboutus-page .mid-nav.rooms, body.aboutus-page .mid-nav .rooms.extra-nav, .mid-nav body.aboutus-page .rooms.extra-nav, body.giveaway-page .mid-nav.rooms, body.giveaway-page .mid-nav .rooms.extra-nav, .mid-nav body.giveaway-page .rooms.extra-nav, body.privacy-policy-page .mid-nav.rooms, body.privacy-policy-page .mid-nav .rooms.extra-nav, .mid-nav body.privacy-policy-page .rooms.extra-nav, body.terms-of-use-page .mid-nav.rooms, body.terms-of-use-page .mid-nav .rooms.extra-nav, .mid-nav body.terms-of-use-page .rooms.extra-nav, body.contactus-page .mid-nav.rooms, body.contactus-page .mid-nav .rooms.extra-nav, .mid-nav body.contactus-page .rooms.extra-nav {
+body.single .mid-nav.rooms, body.single .mid-nav .rooms.extra-nav, .mid-nav body.single .rooms.extra-nav,
+body.product-details .mid-nav.rooms,
+body.product-details .mid-nav .rooms.extra-nav,
+.mid-nav body.product-details .rooms.extra-nav,
+body.profilepage .mid-nav.rooms,
+body.profilepage .mid-nav .rooms.extra-nav,
+.mid-nav body.profilepage .rooms.extra-nav,
+body.shoppage .mid-nav.rooms,
+body.shoppage .mid-nav .rooms.extra-nav,
+.mid-nav body.shoppage .rooms.extra-nav,
+body.error-page .mid-nav.rooms,
+body.error-page .mid-nav .rooms.extra-nav,
+.mid-nav body.error-page .rooms.extra-nav,
+body.aboutus-page .mid-nav.rooms,
+body.aboutus-page .mid-nav .rooms.extra-nav,
+.mid-nav body.aboutus-page .rooms.extra-nav,
+body.giveaway-page .mid-nav.rooms,
+body.giveaway-page .mid-nav .rooms.extra-nav,
+.mid-nav body.giveaway-page .rooms.extra-nav,
+body.privacy-policy-page .mid-nav.rooms,
+body.privacy-policy-page .mid-nav .rooms.extra-nav,
+.mid-nav body.privacy-policy-page .rooms.extra-nav,
+body.terms-of-use-page .mid-nav.rooms,
+body.terms-of-use-page .mid-nav .rooms.extra-nav,
+.mid-nav body.terms-of-use-page .rooms.extra-nav,
+body.login-signup .mid-nav.rooms,
+body.login-signup .mid-nav .rooms.extra-nav,
+.mid-nav body.login-signup .rooms.extra-nav,
+body.terms-of-use-page .mid-nav.rooms,
+body.terms-of-use-page .mid-nav .rooms.extra-nav,
+.mid-nav body.terms-of-use-page .rooms.extra-nav,
+body.terms-of-use-page .mid-nav.rooms,
+body.terms-of-use-page .mid-nav .rooms.extra-nav,
+.mid-nav body.terms-of-use-page .rooms.extra-nav,
+body.contactus-page .mid-nav.rooms,
+body.contactus-page .mid-nav .rooms.extra-nav,
+.mid-nav body.contactus-page .rooms.extra-nav {
   display: none; }
-body.single #hero, body.product-details #hero, body.profilepage #hero, body.shoppage #hero, body.error-page #hero, body.aboutus-page #hero, body.giveaway-page #hero, body.privacy-policy-page #hero, body.terms-of-use-page #hero, body.contactus-page #hero {
+body.single #hero,
+body.product-details #hero,
+body.profilepage #hero,
+body.shoppage #hero,
+body.error-page #hero,
+body.aboutus-page #hero,
+body.giveaway-page #hero,
+body.privacy-policy-page #hero,
+body.terms-of-use-page #hero,
+body.login-signup #hero,
+body.terms-of-use-page #hero,
+body.terms-of-use-page #hero,
+body.contactus-page #hero {
   /*    margin-top: -50px;*/ }
 
 .slider.product-slider #gallery, .slider.heroSlider #gallery {
@@ -7407,7 +7456,7 @@ header.sub-head {
     width: auto; }
   .like-nav li .more-like-count {
     padding-bottom: 0px;
-    margin-left: 20px;
+    margin-left: 10px;
     margin-top: 12px;
     color: #c1c1c1 !important; }
   .like-nav li .social-stats {
@@ -7439,7 +7488,7 @@ header.sub-head {
       color: #c1c1c1 !important;
       font-size: 1.6rem;
       /*        padding-top: 15px;*/
-      padding-left: 10px !important; }
+      /*        padding-left: 10px !important;*/ }
 
 body.single #top-nav a.ideas {
   color: #ed2049; }
@@ -7812,7 +7861,7 @@ body.single .related-items {
     display: inline-block; }
 
 body.room-landing #hero, body.homepage #hero {
-  min-height: initial; }
+  min-height: 515px; }
   body.room-landing #hero .hero-tags, body.homepage #hero .hero-tags {
     min-height: auto; }
     body.room-landing #hero .hero-tags > .tag, body.homepage #hero .hero-tags > .tag {
@@ -7923,6 +7972,9 @@ body.room-landing .grid-insert, body.homepage .grid-insert {
   text-align: center; }
   body.room-landing .grid-insert p, body.homepage .grid-insert p {
     line-height: 2.3; }
+
+html.idea-stories #hero {
+  min-height: 515px; }
 
 .hero-tags {
   position: absolute;
@@ -8321,7 +8373,7 @@ footer.about-footer {
     margin-bottom: 15px; }
 
   #hero {
-    min-height: 570px;
+    /*    min-height: 570px;*/
     /*    padding-bottom: 20px;*/ }
     #hero .hero-background {
       -webkit-filter: none;
@@ -9218,14 +9270,14 @@ body.shop-landing .mobile-shop-by-category-holder .shop-by-category-submneu .gra
     *zoom: 1;
     margin-right: 10px; }
     .has-bullets .rsNav.rsBullets .rsBullet.rsNavSelected span {
-      background-color: #C7C747; }
+      background-color: #0096dd; }
     .has-bullets .rsNav.rsBullets .rsBullet span {
       display: block;
       width: 30px;
       height: 10px;
       border-radius: 7px;
       background: #fff;
-      border: 1px solid #BCB946; }
+      border: 1px solid #0096dd; }
       .has-bullets .rsNav.rsBullets .rsBullet span:hover {
         cursor: pointer; }
 
@@ -10871,5 +10923,73 @@ p {
       padding: 0 0; } }
   .homepage-grid .grid-box-3:first-child {
     /*		margin-top: -1px;*/ }
+
+#hero-slider {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  padding-top: 50px; }
+  #hero-slider .product-box {
+    float: left; }
+  #hero-slider .box-item__author {
+    position: relative;
+    margin: 0 auto;
+    width: 193px;
+    top: -75px; }
+  #hero-slider .box-item__label {
+    float: none; }
+  #hero-slider .box-item .img-holder img {
+    width: 1176px;
+    max-width: 100%; }
+  #hero-slider .box-item .img-holder img {
+    max-width: none; }
+  #hero-slider .product-box {
+    max-width: 100%; }
+  #hero-slider .rsArrow.rsArrowLeft {
+    -webkit-animation: antiBounce 2s infinite ease-in-out; }
+  #hero-slider .rsArrow.rsArrowRight {
+    -webkit-animation: bounce 2s infinite ease-in-out; }
+@-webkit-keyframes bounce {
+  0%, 20%, 60%, 100% {
+    -webkit-transform: translateX(0); }
+  40% {
+    -webkit-transform: translateX(-20px); }
+  80% {
+    -webkit-transform: translateX(-10px); } }
+@-webkit-keyframes antiBounce {
+  0%, 20%, 60%, 100% {
+    -webkit-transform: translateX(0); }
+  40% {
+    -webkit-transform: translateX(20px); }
+  80% {
+    -webkit-transform: translateX(10px); } }
+  #hero-slider .rsNav.rsBullets {
+    padding-top: 0;
+    top: -26px;
+    z-index: 40; }
+  #hero-slider + .color-overlay {
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: 30; }
+  #hero-slider .rsOverflow {
+    margin-top: 30px;
+    z-index: 40; }
+  @media (max-width: 500px) {
+    #hero-slider .rsNav.rsBullets {
+      padding-top: 0;
+      top: -56px; }
+    #hero-slider .rsArrow {
+      top: 61%; }
+    #hero-slider .rsSlide:not(.rsActiveSlide) {
+      display: none; } }
+
+.blur-overlay {
+  background-image: url("https://d234pm57oy3062.cloudfront.net/homehero/11/homehero-image-56f8ffa2244c6-landing-hero-3.jpg");
+  -webkit-filter: blur(2px);
+  -moz-filter: blur(2px);
+  -o-filter: blur(2px);
+  -ms-filter: blur(2px);
+  filter: blur(2px); }
 
 /*# sourceMappingURL=app.css.map */
