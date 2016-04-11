@@ -43,8 +43,8 @@
                         </div>
                         <br>
                         <div>
-                            <a href="#" class="follow">1550 Followers</a>
-                            <a href="#" class="follow">91 Following</a>
+                            <a href="#" class="follow">0 Follower</a>
+                            <a href="#" class="follow">0 Following</a>
                         </div>
                     </div>
                 </div>
