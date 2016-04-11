@@ -722,15 +722,22 @@ if($stories['featured']){
         return view('info.terms-of-use');
     }
 
-    public function giveaway()
+    public function giveaway($permalink = false)
     {
         MetaTag::set('title', 'Giveaway | Ideaing');
 //        MetaTag::set('description', $result['productInformation']['MetaDescription']);
+
         $userData = $this->authCheck;
         if ($this->authCheck['method-status'] == 'success-with-http') {
             $userData = $this->authCheck['user-data'];
         }
-        $giveaway = Giveaway::where('giveaway_status', 1)->first();
+
+        $giveaway = Giveaway::where('giveaway_permalink', $permalink)->first();
+
+        if(!$giveaway){
+            return \Redirect::to('not-found');
+
+        }
         return view('giveaway.giveaway')->with('userData', $userData)->with('giveaway',$giveaway);
     }
     
