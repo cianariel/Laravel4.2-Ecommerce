@@ -95,7 +95,7 @@ publicApp.directive('heartCounterPublic', ['$http', function ($http) {
 }]);
 
 // directive for pulling author info pulling in grid items
-publicApp.directive('showAuthorInfo', ['$http','$window', function ($http,$window) {
+publicApp.directive('showAuthorInfo', ['$http', '$window', function ($http, $window) {
     return {
         restrict: 'E',
         transclude: true,
@@ -419,6 +419,14 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
             // Contact Us
             $scope.Type = 'Support';
 
+            // user profile heart comment hide/show
+
+            $scope.showComment = true;
+            $scope.showHeart = true;
+
+            $scope.activeClassAll = 'active';
+            $scope.activeClassComment = '';
+            $scope.activeClassHeart = '';
 
             $scope.socialCounter = function () {
 
@@ -453,10 +461,9 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                 }
             }).success(function (data) {
 
-                if(data.status_code == '406')
-                {
+                if (data.status_code == '406') {
                     $scope.errorMessage = 'Invalid Email provided';
-                }else{
+                } else {
 
                     $scope.Code = true;
                     window.location = '/';
@@ -919,7 +926,7 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
 
         $scope.passwordResetRequest = function () {
             $scope.closeAlert();
-            if(!$scope.Email){
+            if (!$scope.Email) {
                 $scope.addAlert('danger', 'Email is required!');
                 return;
             }
@@ -1060,6 +1067,37 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                 //    $scope.notifications = data.data.NoticeNotRead;
 
             });
+        };
+
+        // Activity hide show for user profile
+
+        $scope.showActivity = function (data) {
+            if (data == 'all') {
+                $scope.showComment = true;
+                $scope.showHeart = true;
+
+                $scope.activeClassAll = 'active';
+                $scope.activeClassComment = '';
+                $scope.activeClassHeart = '';
+
+
+
+            } else if (data == 'comment') {
+                $scope.showComment = true;
+                $scope.showHeart = false;
+
+                $scope.activeClassAll = '';
+                $scope.activeClassComment = 'active';
+                $scope.activeClassHeart = '';
+
+            } else if (data == 'heart') {
+                $scope.showComment = false;
+                $scope.showHeart = true;
+
+                $scope.activeClassAll = '';
+                $scope.activeClassComment = '';
+                $scope.activeClassHeart = 'active';
+            }
         };
 
 

@@ -78,7 +78,7 @@
                             </a>
                         </li>
                         <li ng-class="{active: activeMenu == '2'}" ng-click="activeMenu='2'">
-                            <a href="/user/profile/my-posts" class="my-post">
+                            <a href="{{--/user/profile/my-posts--}}" class="my-post">
                                 <i class="m-icon m-icon--image"></i>
                                 My Posts
                             </a>
