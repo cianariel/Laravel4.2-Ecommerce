@@ -4298,6 +4298,7 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
 
             // Contact Us
             $scope.Type = 'Support';
+            $scope.contactError = false;
 
             // user profile heart comment hide/show
 
@@ -4326,9 +4327,13 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
         // contact us
 
         $scope.sendContactUsQuery = function () {
+            $scope.contactError = false;
             if ($scope.isEmpty($scope.Email) || $scope.isEmpty($scope.Message)) {
+                $scope.contactError = true;
                 return;
             }
+
+
 
             $http({
                 url: '/api/contact-us',
@@ -4343,6 +4348,7 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
 
                 if (data.status_code == '406') {
                     $scope.errorMessage = 'Invalid Email provided';
+                    $scope.contactError = true;
                 } else {
 
                     $scope.Code = true;
