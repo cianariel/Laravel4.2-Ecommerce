@@ -4956,9 +4956,11 @@ body.single{
 
 // ROOM LADNING PAGE
 
-body.room-landing, body.homepage{
+body.room-landing,
+body.homepage{
     #hero{
-        min-height: 515px;
+        //min-height: 515px;
+        padding-top: 2px;
         .hero-tags{
             min-height: auto;
             >.tag{
@@ -4971,6 +4973,11 @@ body.room-landing, body.homepage{
             margin-left: -40px;
         }
     }
+   &.logged-in {
+     #hero {
+       min-height: 515px;
+     }
+   }
     #hero-nav{
         border-top: 0px;
     }
@@ -5061,9 +5068,9 @@ body.room-landing, body.homepage{
     }
   }
 
-
-
 }
+
+
 
 html.idea-stories{
   #hero{
