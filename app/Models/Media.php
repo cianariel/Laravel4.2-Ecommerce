@@ -84,6 +84,7 @@
         public static function getVideoPreview($videoURL){
             if(strpos($videoURL, 'youtube')){
                 $videoLink = str_replace('https://www.youtube.com/watch?v=', '', $videoURL);
+                $videoLink = str_replace('https://www.youtube.com/embed/', '', $videoLink);
                 $previewLink = "https://img.youtube.com/vi/$videoLink/hqdefault.jpg";
             }elseif(strpos($videoURL, 'vimeo')){
                 $explode = explode('/', $videoURL);
