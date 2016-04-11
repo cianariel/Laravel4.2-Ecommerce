@@ -21,7 +21,7 @@ $currentCat = $cat->slug;
 ?>
 <nav class="mid-nav" >
     <div class="container">
-        <ul class="wrap col-lg-6">
+        <ul class="wrap col-lg-7">
             @foreach($categories as $cat)
             @if($cat->category_parent == 0)
             <li class="box-link-ul">

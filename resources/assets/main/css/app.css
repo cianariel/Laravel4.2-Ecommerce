@@ -7877,171 +7877,220 @@ body.single .related-items {
   .popular-new li {
     display: inline-block; }
 
+html.idea-stories #hero {
+  min-height: 515px; }
+
+html.idea-stories #hero,
 body.room-landing #hero,
 body.homepage #hero {
-  padding-top: 2px; }
+  overflow: hidden; }
+  html.idea-stories #hero .hero-tags,
   body.room-landing #hero .hero-tags,
   body.homepage #hero .hero-tags {
     min-height: auto; }
+    html.idea-stories #hero .hero-tags > .tag,
     body.room-landing #hero .hero-tags > .tag,
     body.homepage #hero .hero-tags > .tag {
       margin-top: -55px;
       margin-left: -55px; }
+  html.idea-stories #hero .rsOverflow > .hero-tags .tag,
   body.room-landing #hero .rsOverflow > .hero-tags .tag,
   body.homepage #hero .rsOverflow > .hero-tags .tag {
     margin-top: -40px;
     margin-left: -40px; }
+html.idea-stories.logged-in #hero,
 body.room-landing.logged-in #hero,
 body.homepage.logged-in #hero {
-  min-height: 515px; }
+  min-height: 515px;
+  padding-top: 2px; }
+html.idea-stories #hero-nav,
 body.room-landing #hero-nav,
 body.homepage #hero-nav {
   border-top: 0px; }
-body.room-landing .mid-nav .container, .mid-nav body.room-landing .extra-nav .container,
+html.idea-stories .mid-nav .container, .mid-nav html.idea-stories .extra-nav .container,
+body.room-landing .mid-nav .container,
+.mid-nav body.room-landing .extra-nav .container,
 body.homepage .mid-nav .container,
 .mid-nav body.homepage .extra-nav .container {
   /*      padding-left: 0;*/
   /*      padding-right: 0;*/ }
-body.room-landing .mid-nav .left-nav, .mid-nav body.room-landing .extra-nav .left-nav,
+html.idea-stories .mid-nav .left-nav, .mid-nav html.idea-stories .extra-nav .left-nav,
+body.room-landing .mid-nav .left-nav,
+.mid-nav body.room-landing .extra-nav .left-nav,
 body.homepage .mid-nav .left-nav,
 .mid-nav body.homepage .extra-nav .left-nav {
   width: 135px; }
-  body.room-landing .mid-nav .left-nav a.all-link, .mid-nav body.room-landing .extra-nav .left-nav a.all-link,
+  html.idea-stories .mid-nav .left-nav a.all-link, .mid-nav html.idea-stories .extra-nav .left-nav a.all-link,
+  body.room-landing .mid-nav .left-nav a.all-link,
+  .mid-nav body.room-landing .extra-nav .left-nav a.all-link,
   body.homepage .mid-nav .left-nav a.all-link,
   .mid-nav body.homepage .extra-nav .left-nav a.all-link {
     width: 180px;
     min-width: 0; }
-body.room-landing .mid-nav a, .mid-nav body.room-landing .extra-nav a,
+html.idea-stories .mid-nav a, .mid-nav html.idea-stories .extra-nav a,
+body.room-landing .mid-nav a,
+.mid-nav body.room-landing .extra-nav a,
 body.homepage .mid-nav a,
 .mid-nav body.homepage .extra-nav a {
   border: 0; }
-  body.room-landing .mid-nav a:hover, .mid-nav body.room-landing .extra-nav a:hover,
+  html.idea-stories .mid-nav a:hover, .mid-nav html.idea-stories .extra-nav a:hover,
+  body.room-landing .mid-nav a:hover,
+  .mid-nav body.room-landing .extra-nav a:hover,
   body.homepage .mid-nav a:hover,
   .mid-nav body.homepage .extra-nav a:hover {
     box-shadow: none; }
+html.idea-stories #hero img.round,
 body.room-landing #hero img.round,
 body.homepage #hero img.round {
   border: 2px solid;
   border-radius: 50%;
   background-color: #fff; }
+html.idea-stories #hero .red span,
 body.room-landing #hero .red span,
 body.homepage #hero .red span {
   /*        background-image: url('/assets/images/icons/bag-glow-red.png');*/ }
+html.idea-stories #hero .red h6,
 body.room-landing #hero .red h6,
 body.homepage #hero .red h6 {
   background: #E61D25; }
+html.idea-stories #hero .red img.round,
 body.room-landing #hero .red img.round,
 body.homepage #hero .red img.round {
   border-color: #E61D25 !important;
   -webkit-box-shadow: 0px 0px 62px 5px #E61D25;
   -moz-box-shadow: 0px 0px 62px 5px #E61D25;
   box-shadow: 0px 0px 62px 5px #E61D25; }
+html.idea-stories #hero .red .hover-box::before,
 body.room-landing #hero .red .hover-box::before,
 body.homepage #hero .red .hover-box::before {
   border-color: transparent transparent #E61D25 transparent; }
+html.idea-stories #hero .blue span,
 body.room-landing #hero .blue span,
 body.homepage #hero .blue span {
   /*        background-image: url('/assets/images/icons/bag-glow-red.png');*/ }
+html.idea-stories #hero .blue h6,
 body.room-landing #hero .blue h6,
 body.homepage #hero .blue h6 {
   background: #00B1FF; }
+html.idea-stories #hero .blue img.round,
 body.room-landing #hero .blue img.round,
 body.homepage #hero .blue img.round {
   border-color: #00B1FF !important;
   -webkit-box-shadow: 0px 0px 62px 5px #00B1FF;
   -moz-box-shadow: 0px 0px 62px 5px #00B1FF;
   box-shadow: 0px 0px 62px 5px #00B1FF; }
+html.idea-stories #hero .blue .hover-box::before,
 body.room-landing #hero .blue .hover-box::before,
 body.homepage #hero .blue .hover-box::before {
   border-color: transparent transparent #00B1FF transparent; }
+html.idea-stories #hero .green span,
 body.room-landing #hero .green span,
 body.homepage #hero .green span {
   /*        background-image: url('/assets/images/icons/bag-glow-red.png');*/ }
+html.idea-stories #hero .green h6,
 body.room-landing #hero .green h6,
 body.homepage #hero .green h6 {
   background: #C7C747; }
+html.idea-stories #hero .green img.round,
 body.room-landing #hero .green img.round,
 body.homepage #hero .green img.round {
   border-color: #C7C747 !important;
   -webkit-box-shadow: 0px 0px 62px 5px #C7C747;
   -moz-box-shadow: 0px 0px 62px 5px #C7C747;
   box-shadow: 0px 0px 62px 5px #C7C747; }
+html.idea-stories #hero .green .hover-box::before,
 body.room-landing #hero .green .hover-box::before,
 body.homepage #hero .green .hover-box::before {
   border-color: transparent transparent #C7C747 transparent; }
+html.idea-stories #hero .pink span,
 body.room-landing #hero .pink span,
 body.homepage #hero .pink span {
   /*        background-image: url('/assets/images/icons/bag-glow-red.png');*/ }
+html.idea-stories #hero .pink h6,
 body.room-landing #hero .pink h6,
 body.homepage #hero .pink h6 {
   background: #FF0042; }
+html.idea-stories #hero .pink img.round,
 body.room-landing #hero .pink img.round,
 body.homepage #hero .pink img.round {
   border-color: #FF0042 !important;
   -webkit-box-shadow: 0px 0px 62px 5px #FF0042;
   -moz-box-shadow: 0px 0px 62px 5px #FF0042;
   box-shadow: 0px 0px 62px 5px #FF0042; }
+html.idea-stories #hero .pink .hover-box::before,
 body.room-landing #hero .pink .hover-box::before,
 body.homepage #hero .pink .hover-box::before {
   border-color: transparent transparent #FF0042 transparent; }
+html.idea-stories #hero .pink img.round,
 body.room-landing #hero .pink img.round,
 body.homepage #hero .pink img.round {
   border-color: #FF0042; }
+html.idea-stories #hero .orange span,
 body.room-landing #hero .orange span,
 body.homepage #hero .orange span {
   /*        background-image: url('/assets/images/icons/bag-glow-red.png');*/ }
+html.idea-stories #hero .orange h6,
 body.room-landing #hero .orange h6,
 body.homepage #hero .orange h6 {
   background: #FF7F00; }
+html.idea-stories #hero .orange img.round,
 body.room-landing #hero .orange img.round,
 body.homepage #hero .orange img.round {
   border-color: #FF7F00 !important;
   -webkit-box-shadow: 0px 0px 62px 5px #FF7F00;
   -moz-box-shadow: 0px 0px 62px 5px #FF7F00;
   box-shadow: 0px 0px 62px 5px #FF7F00; }
+html.idea-stories #hero .orange .hover-box::before,
 body.room-landing #hero .orange .hover-box::before,
 body.homepage #hero .orange .hover-box::before {
   border-color: transparent transparent #FF7F00 transparent; }
+html.idea-stories #hero .yellow span,
 body.room-landing #hero .yellow span,
 body.homepage #hero .yellow span {
   /*        background-image: url('/assets/images/icons/bag-glow-red.png');*/ }
+html.idea-stories #hero .yellow h6,
 body.room-landing #hero .yellow h6,
 body.homepage #hero .yellow h6 {
   background: yellow; }
+html.idea-stories #hero .yellow img.round,
 body.room-landing #hero .yellow img.round,
 body.homepage #hero .yellow img.round {
   border-color: yellow !important;
   -webkit-box-shadow: 0px 0px 62px 5px yellow;
   -moz-box-shadow: 0px 0px 62px 5px yellow;
   box-shadow: 0px 0px 62px 5px yellow; }
+html.idea-stories #hero .yellow .hover-box::before,
 body.room-landing #hero .yellow .hover-box::before,
 body.homepage #hero .yellow .hover-box::before {
   border-color: transparent transparent yellow transparent; }
+html.idea-stories .category-nav,
 body.room-landing .category-nav,
 body.homepage .category-nav {
   width: 412px;
   margin: auto;
   text-align: center; }
+html.idea-stories .left-nav,
 body.room-landing .left-nav,
 body.homepage .left-nav {
   padding-left: 0; }
+html.idea-stories .box-link,
 body.room-landing .box-link,
 body.homepage .box-link {
   border-color: #c1c1c1;
   /*    padding-right: 35px;*/ }
+html.idea-stories .page-content,
 body.room-landing .page-content,
 body.homepage .page-content {
   overflow: hidden;
   width: 100%; }
+html.idea-stories .grid-insert,
 body.room-landing .grid-insert,
 body.homepage .grid-insert {
   text-align: center; }
+  html.idea-stories .grid-insert p,
   body.room-landing .grid-insert p,
   body.homepage .grid-insert p {
     line-height: 2.3; }
-
-html.idea-stories #hero {
-  min-height: 515px; }
 
 .hero-tags {
   position: absolute;
