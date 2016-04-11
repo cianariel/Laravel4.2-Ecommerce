@@ -200,7 +200,13 @@
                                             firstMargin: false,
                                             orientation: 'vertical'
                                         },
-                                        loop: true
+                                        loop: true,
+                                        video: {
+                                            autoHideArrows:true,
+                                            autoHideControlNav:false,
+                                            autoHideBlocks: true,
+                                            youTubeCode: '<iframe src="https://www.youtube.com/embed/%id%?rel=1&autoplay=1&showinfo=0" frameborder="no" allowFullscreen></iframe>'
+                                        },
 
 //                        imgWidth: 1400,
 //                        imgHeight: 680
@@ -213,11 +219,21 @@
 
                         @if(isset($selfImages['picture']))
                             @foreach( $selfImages['picture'] as $image )
-                                <a class="rsImg" data-rsbigimg="{{$image['link']}}"
-                                   href="{{$image['link']}}">
-                                    <img itemprop="image" class="rsTmb" src="{{$image['link']}}"
-                                         alt="{{$image['picture-name']}}">
-                                </a>
+                                @if($image['type'] == 'img-link' || $image['type'] == 'img-upload')
+                                    <a class="rsImg" data-rsbigimg="{{$image['link']}}"
+                                       href="{{$image['link']}}">
+                                        <img itemprop="image" class="rsTmb" src="{{$image['link']}}"
+                                             alt="{{$image['picture-name']}}">
+                                    </a>
+                                @elseif(($image['type'] == 'video-link' || $image['type'] == 'video-upload'))
+                                    <a class="rsImg"
+                                       data-rsVideo="{{$image['link']}}"
+                                       href="{{$image['preview']}}"
+                                    >
+                                        <img itemprop="image" class="rsTmb" src="{{$image['preview']}}"
+                                             alt="{{$image['picture-name']}}">
+                                    </a>
+                                @endif
                             @endforeach
                         @endif
                         <img width="640" height="427"

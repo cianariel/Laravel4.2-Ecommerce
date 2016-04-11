@@ -81,5 +81,20 @@
             }
         }
 
+        public static function getVideoPreview($videoURL){
+            if(strpos($videoURL, 'youtube')){
+                $videoLink = str_replace('https://www.youtube.com/watch?v=', '', $videoURL);
+                $previewLink = "https://img.youtube.com/vi/$videoLink/hqdefault.jpg";
+            }elseif(strpos($videoURL, 'vimeo')){
+                $explode = explode('/', $videoURL);
+                $videoLink = end($explode);
+                $hash = unserialize(file_get_contents("http://vimeo.com/api/v2/video/$videoLink.php"));
+                $previewLink = $hash[0]['thumbnail_medium'];
+            }else{
+                $previewLink = "http://img.youtube.com/vi/0.jpg";
+            }
+            return $previewLink;
+        }
+
 
     }
