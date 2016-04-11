@@ -7877,6 +7877,9 @@ body.single .related-items {
   .popular-new li {
     display: inline-block; }
 
+html.idea-stories #hero {
+  min-height: 515px; }
+
 html.idea-stories #hero,
 body.room-landing #hero,
 body.homepage #hero {
@@ -7898,7 +7901,8 @@ body.homepage #hero {
 html.idea-stories.logged-in #hero,
 body.room-landing.logged-in #hero,
 body.homepage.logged-in #hero {
-  min-height: 515px; }
+  min-height: 515px;
+  padding-top: 2px; }
 html.idea-stories #hero-nav,
 body.room-landing #hero-nav,
 body.homepage #hero-nav {

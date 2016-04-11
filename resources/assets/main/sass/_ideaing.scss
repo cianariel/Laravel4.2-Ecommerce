@@ -4954,6 +4954,13 @@ body.single{
     }
 }
 
+html.idea-stories{
+  #hero{
+    min-height: 515px;
+  }
+}
+
+
 // ROOM LADNING PAGE
 html.idea-stories,
 body.room-landing,
@@ -4977,7 +4984,7 @@ body.homepage{
    &.logged-in {
      #hero {
        min-height: 515px;
-       //padding-top: 2px;
+       padding-top: 2px;
      }
    }
     #hero-nav{
