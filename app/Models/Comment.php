@@ -322,7 +322,6 @@ class Comment extends Model
                 $heartCount = $heart->simpleHeartCounter($info);
             }
 
-
             $tmpCollection['Id'] = $item['Id'];
             $tmpCollection['Title'] = $item['Title'];
             $tmpCollection['Link'] = $item['Link'];

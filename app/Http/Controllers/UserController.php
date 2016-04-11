@@ -178,6 +178,7 @@ class UserController extends ApiController
             $data = array(
                 'userData' => $userData,
                 'userProfileData' => $userData,
+                'activity' => $this->comment->getCommentsAndHeatByUserId($userData['id'], 10),
                 'profile' => ($userData->medias[0]->media_link == '') ? \Config::get("const.user-image") : $userData->medias[0]->media_link,
                 'fullname' => $userData->name,
                 'address' => $userData->userProfile->address,
@@ -214,6 +215,7 @@ class UserController extends ApiController
         $data = array(
             'userData' => empty($userData) ? null : $userData,
             'userProfileData' => $userProfileData,
+            'activity' => $this->comment->getCommentsAndHeatByUserId($userProfileData['id'], 10),
             'profile' => ($userProfileData->medias[0]->media_link == '') ? \Config::get("const.user-image") : $userProfileData->medias[0]->media_link,
             'fullname' => $userProfileData->name,
             'address' => $userProfileData->userProfile->address,
@@ -224,6 +226,7 @@ class UserController extends ApiController
 
         );
 
+       // dd($data);
         return view('user.user-profile', $data);
     }
 
@@ -310,6 +313,4 @@ class UserController extends ApiController
         return $activityWithHumanTime;
 
     }
-
-
 }
