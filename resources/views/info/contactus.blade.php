@@ -22,6 +22,9 @@
                 <div ng-show="Code" class="alert alert-info">
                     <strong>Congratulation!</strong> Your message has been sent .
                 </div>
+                <div ng-show="contactError" class="alert alert-danger">
+                    <strong>Warning!</strong> Please provide valid email address and query.
+                </div>
                 <p class="title">Get in touch</p>
                 <div class="row control-row " id="support-dropdown-holder">
                     <select class="support-button" ng-model="Type">
@@ -55,7 +58,8 @@
                 </div>
             </div>
         </section>
-        <div class="clearfix"></div>
+
+        <div class="clearfix">&nbsp;</div>
         <div class="container author-container">
             <div class="row">
                 <div class="col-sm-6 author-holder">
