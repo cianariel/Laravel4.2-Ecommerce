@@ -955,8 +955,10 @@ body.contactus-page
 
 
 .slider{
-  //position: relative;
-  &.product-slider, &.heroSlider{
+  &.product-slider,
+  &.heroSlider,
+  &#daily-deals,
+  &#newest-arrivals{
     #gallery{
       width: 100%;
       height: 500px;
@@ -1024,6 +1026,8 @@ body.contactus-page
       }
     }
 
+
+
     //.gallery-wrap{
     //  height: 500px;
     //  width: 100%;
@@ -1085,6 +1089,24 @@ body.contactus-page
   //  position: absolute;
   //  z-index: 99;
   //}
+
+  &#newest-arrivals,
+  &#daily-deals{
+    div.rsArrow{
+      top:60% !important;
+
+      &.rsArrowRight{
+        right:0%;
+      }
+    }
+  }
+  &#daily-deals{
+      .rsArrowLeft{
+        left:2% !important;
+      }
+  }
+
+
 }
 
 .breadcrumbs{
