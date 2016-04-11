@@ -244,15 +244,26 @@
                                         <tr>
                                             <td style="font-family: Helvetica, arial, sans-serif; font-size: 30px; color: #333333; text-align:center; line-height: 30px;"
                                                 st-title="fulltext-heading">
-                                                <p align="left">
+
+                                                <p>
                                                     <span style="font-size: 14pt;" class="im">
+
+                                                    <b> {{ $name }}  </b> has sent following query for - {{ $type }}
+                                                    </span>
+                                                </p>
+                                                <hr />
+
+                                                <p align="left">
+                                                    <span style="font-size: 13pt;" class="im">
                                                         {{ $content }}
 
                                                     </span>
                                                 </p>
+                                                <hr />
                                                 <p>
-                                                    <span style="font-size: 14pt;" class="im">
-                                                     Sender's Email : {{ $email }}
+                                                    <span style="font-size: 11pt;" class="im">
+
+                                                     {{ $name }}'s Email : <a href="mailto:{{ $email }}"> {{ $email }} </a>
                                                     </span>
                                                 </p>
                                             </td>

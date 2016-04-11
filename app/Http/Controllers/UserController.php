@@ -308,8 +308,6 @@ class UserController extends ApiController
 
         $activityWithHumanTime = $this->comment->getCommentsAndHeatByUserId($userId, 10);
 
-
-
         return $activityWithHumanTime;
 
     }
