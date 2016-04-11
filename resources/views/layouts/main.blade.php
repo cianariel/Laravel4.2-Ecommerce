@@ -4,7 +4,7 @@
     @include('layouts.parts.head')
 </head>
 
-<body ng-app="rootApp" class="@yield('body-class', '')">
+<body ng-app="rootApp" class="@yield('body-class', ''){{@$userData['login'] ? ' logged-in' : ''}}">
 <div>
     @include('layouts.parts.header')
 
