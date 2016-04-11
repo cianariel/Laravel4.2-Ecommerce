@@ -250,6 +250,11 @@
 
                                                     </span>
                                                 </p>
+                                                <p>
+                                                    <span style="font-size: 14pt;" class="im">
+                                                     Sender's Email : {{ $email }}
+                                                    </span>
+                                                </p>
                                             </td>
                                         </tr>
                                         <!-- End of Title --><!-- spacing -->

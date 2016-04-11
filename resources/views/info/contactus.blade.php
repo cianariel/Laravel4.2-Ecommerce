@@ -82,7 +82,7 @@
                 </div>
                 <div class="col-sm-6 author-holder">
                     <p>
-                        Ideaing is a fun site dedicated to growing the smart home market. If you are looking for more information information to write an article about us or the smart home market, please contact us! (We should have a link to our press kit).
+                        Ideaing is a fun site dedicated to growing the smart home market. If you are looking for more information information to write an article about us or the smart home market, please contact us!
                     </p>
                     <p>Press@</p>
                 </div>
