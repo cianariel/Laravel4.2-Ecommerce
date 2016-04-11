@@ -5417,22 +5417,24 @@ body.terms-of-use-page #hero,
 body.contactus-page #hero {
   /*    margin-top: -50px;*/ }
 
-.slider.product-slider #gallery, .slider.heroSlider #gallery {
+.slider.product-slider #gallery, .slider.heroSlider #gallery, .slider#daily-deals #gallery, .slider#newest-arrivals #gallery {
   width: 100%;
   height: 500px;
   overflow: hidden; }
-.slider.product-slider .rsNav.rsThumbs.rsThumbsVer, .slider.heroSlider .rsNav.rsThumbs.rsThumbsVer {
+.slider.product-slider .rsNav.rsThumbs.rsThumbsVer, .slider.heroSlider .rsNav.rsThumbs.rsThumbsVer, .slider#daily-deals .rsNav.rsThumbs.rsThumbsVer, .slider#newest-arrivals .rsNav.rsThumbs.rsThumbsVer {
   width: 150px !important;
   padding-left: 3px;
   height: 100%; }
-.slider.product-slider .rsThumbsContainer, .slider.heroSlider .rsThumbsContainer {
+.slider.product-slider .rsThumbsContainer, .slider.heroSlider .rsThumbsContainer, .slider#daily-deals .rsThumbsContainer, .slider#newest-arrivals .rsThumbsContainer {
   max-height: 500px; }
-  .slider.product-slider .rsThumbsContainer img, .slider.heroSlider .rsThumbsContainer img {
+  .slider.product-slider .rsThumbsContainer img, .slider.heroSlider .rsThumbsContainer img, .slider#daily-deals .rsThumbsContainer img, .slider#newest-arrivals .rsThumbsContainer img {
     width: 145px;
     height: 115px; }
 .slider.product-slider .rsArrow,
 .slider.product-slider .rsThumbsArrow, .slider.heroSlider .rsArrow,
-.slider.heroSlider .rsThumbsArrow {
+.slider.heroSlider .rsThumbsArrow, .slider#daily-deals .rsArrow,
+.slider#daily-deals .rsThumbsArrow, .slider#newest-arrivals .rsArrow,
+.slider#newest-arrivals .rsThumbsArrow {
   position: absolute;
   width: 40px;
   height: 40px;
@@ -5442,31 +5444,45 @@ body.contactus-page #hero {
   background-repeat: no-repeat; }
   .slider.product-slider .rsArrow.rsArrowLeft,
   .slider.product-slider .rsThumbsArrow.rsArrowLeft, .slider.heroSlider .rsArrow.rsArrowLeft,
-  .slider.heroSlider .rsThumbsArrow.rsArrowLeft {
+  .slider.heroSlider .rsThumbsArrow.rsArrowLeft, .slider#daily-deals .rsArrow.rsArrowLeft,
+  .slider#daily-deals .rsThumbsArrow.rsArrowLeft, .slider#newest-arrivals .rsArrow.rsArrowLeft,
+  .slider#newest-arrivals .rsThumbsArrow.rsArrowLeft {
     top: 50%;
     background-image: url("/assets/images/arrow-left-pink.png"); }
   .slider.product-slider .rsArrow.rsArrowRight,
   .slider.product-slider .rsThumbsArrow.rsArrowRight, .slider.heroSlider .rsArrow.rsArrowRight,
-  .slider.heroSlider .rsThumbsArrow.rsArrowRight {
+  .slider.heroSlider .rsThumbsArrow.rsArrowRight, .slider#daily-deals .rsArrow.rsArrowRight,
+  .slider#daily-deals .rsThumbsArrow.rsArrowRight, .slider#newest-arrivals .rsArrow.rsArrowRight,
+  .slider#newest-arrivals .rsThumbsArrow.rsArrowRight {
     top: 50%;
     right: 165px;
     background-image: url("/assets/images/arrow-right-pink.png"); }
   .slider.product-slider .rsArrow.rsThumbsArrowLeft,
   .slider.product-slider .rsThumbsArrow.rsThumbsArrowLeft, .slider.heroSlider .rsArrow.rsThumbsArrowLeft,
-  .slider.heroSlider .rsThumbsArrow.rsThumbsArrowLeft {
+  .slider.heroSlider .rsThumbsArrow.rsThumbsArrowLeft, .slider#daily-deals .rsArrow.rsThumbsArrowLeft,
+  .slider#daily-deals .rsThumbsArrow.rsThumbsArrowLeft, .slider#newest-arrivals .rsArrow.rsThumbsArrowLeft,
+  .slider#newest-arrivals .rsThumbsArrow.rsThumbsArrowLeft {
     right: 50%;
     margin-right: -20px;
     top: 20px;
     background-image: url("/assets/images/arrow-up-pink.png"); }
   .slider.product-slider .rsArrow.rsThumbsArrowRight,
   .slider.product-slider .rsThumbsArrow.rsThumbsArrowRight, .slider.heroSlider .rsArrow.rsThumbsArrowRight,
-  .slider.heroSlider .rsThumbsArrow.rsThumbsArrowRight {
+  .slider.heroSlider .rsThumbsArrow.rsThumbsArrowRight, .slider#daily-deals .rsArrow.rsThumbsArrowRight,
+  .slider#daily-deals .rsThumbsArrow.rsThumbsArrowRight, .slider#newest-arrivals .rsArrow.rsThumbsArrowRight,
+  .slider#newest-arrivals .rsThumbsArrow.rsThumbsArrowRight {
     right: 50%;
     margin-right: -20px;
     bottom: 20px;
     background-image: url("/assets/images/icons/arrow-down-pink.png"); }
-.slider.product-slider.heroSlider .rsArrow.rsArrowRight, .slider.heroSlider.heroSlider .rsArrow.rsArrowRight {
+.slider.product-slider.heroSlider .rsArrow.rsArrowRight, .slider.heroSlider.heroSlider .rsArrow.rsArrowRight, .slider#daily-deals.heroSlider .rsArrow.rsArrowRight, .slider#newest-arrivals.heroSlider .rsArrow.rsArrowRight {
   right: 0px; }
+.slider#newest-arrivals div.rsArrow, .slider#daily-deals div.rsArrow {
+  top: 60% !important; }
+  .slider#newest-arrivals div.rsArrow.rsArrowRight, .slider#daily-deals div.rsArrow.rsArrowRight {
+    right: 0%; }
+.slider#daily-deals .rsArrowLeft {
+  left: 2% !important; }
 
 .breadcrumbs li a {
   padding-top: 2px !important;
@@ -10982,24 +10998,6 @@ p {
     max-width: none; }
   #hero-slider .product-box {
     max-width: 100%; }
-  #hero-slider .rsArrow.rsArrowLeft {
-    -webkit-animation: antiBounce 2s infinite ease-in-out; }
-  #hero-slider .rsArrow.rsArrowRight {
-    -webkit-animation: bounce 2s infinite ease-in-out; }
-@-webkit-keyframes bounce {
-  0%, 20%, 60%, 100% {
-    -webkit-transform: translateX(0); }
-  40% {
-    -webkit-transform: translateX(-20px); }
-  80% {
-    -webkit-transform: translateX(-10px); } }
-@-webkit-keyframes antiBounce {
-  0%, 20%, 60%, 100% {
-    -webkit-transform: translateX(0); }
-  40% {
-    -webkit-transform: translateX(20px); }
-  80% {
-    -webkit-transform: translateX(10px); } }
   #hero-slider .rsNav.rsBullets {
     padding-top: 0;
     top: -26px;
@@ -11026,5 +11024,27 @@ p {
   -o-filter: blur(2px);
   -ms-filter: blur(2px);
   filter: blur(2px); }
+
+.rsArrow {
+  z-index: 50; }
+  .rsArrow.rsArrowLeft {
+    -webkit-animation: antiBounce 2s infinite ease-in-out; }
+  .rsArrow.rsArrowRight {
+    -webkit-animation: bounce 2s infinite ease-in-out; }
+
+@-webkit-keyframes bounce {
+  0%, 20%, 60%, 100% {
+    -webkit-transform: translateX(0); }
+  40% {
+    -webkit-transform: translateX(-20px); }
+  80% {
+    -webkit-transform: translateX(-10px); } }
+@-webkit-keyframes antiBounce {
+  0%, 20%, 60%, 100% {
+    -webkit-transform: translateX(0); }
+  40% {
+    -webkit-transform: translateX(20px); }
+  80% {
+    -webkit-transform: translateX(10px); } }
 
 /*# sourceMappingURL=app.css.map */
