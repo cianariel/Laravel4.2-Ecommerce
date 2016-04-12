@@ -7521,6 +7521,10 @@ body.single #top-nav a.ideas {
 body.single .like-nav {
   float: right;
   width: 280px; }
+body.single .article-content iframe {
+  margin: 0 auto;
+  float: none;
+  display: block; }
 body.single .related-items {
   margin-bottom: 20px;
   padding-top: 15px;
