@@ -81,14 +81,16 @@
             }
         }
 
-        public static function getVideoPreview($videoURL){
-            if(strpos($videoURL, 'youtube')){
+        public static function getVideoPreview($videoURL, $videoType = false){
+            if(strpos($videoURL, 'youtube') || $videoType == 'youtube-link'){
                 $videoLink = str_replace('https://www.youtube.com/watch?v=', '', $videoURL);
                 $videoLink = str_replace('https://www.youtube.com/embed/', '', $videoLink);
                 $previewLink = "https://img.youtube.com/vi/$videoLink/hqdefault.jpg";
-            }elseif(strpos($videoURL, 'vimeo')){
+            }elseif(strpos($videoURL, 'vimeo')  || $videoType == 'vimeo-link'){
                 $explode = explode('/', $videoURL);
-                $videoLink = end($explode);
+                if($explode){
+                    $videoLink = end($explode);
+                }
                 $hash = unserialize(file_get_contents("http://vimeo.com/api/v2/video/$videoLink.php"));
                 $previewLink = $hash[0]['thumbnail_medium'];
             }else{
