@@ -2523,6 +2523,10 @@ header.colophon{
         left: 42%;
     }
 
+    .logo-holder{
+      padding-left: 0;
+    }
+
   &.scroll-header{
     .fixed-sm{
       min-width: 0 !important;
@@ -2556,20 +2560,15 @@ header.colophon{
             }
 
             &:after{
-              /*position: absolute;
-              right: 9px;*/
               top: 2px;
-/*              background-size: 22px;*/
             }
           }
         }
 
         a#ideaing-logo {
           display: block;
-/*          width: 45px;*/
           min-height: 60px;
           padding: 0;
-/*          background-image: url("/assets/images/ideaing-logo-lamp-only.png");*/
           background-repeat: no-repeat;
           background-position: right;
           background-size: initial;
@@ -2587,16 +2586,7 @@ header.colophon{
           }
           
         }
-
-        //.search-bar{
-        //  margin-left: 7%;
-        //}
       }
-
-      //.signin a{
-      //  //background-size: 23px !important;
-      //}
-
 
     }
 
@@ -2607,18 +2597,24 @@ header.colophon{
       z-index: 200;
     }
   }
+  @media (min-width: 1025px){
+    .user-controls{
+      max-width: 120px;
+    }
+  }
+
 
 }
-#top-nav .search-bar a.search-toggle{
+#top-nav{
+  .search-bar a.search-toggle{
     padding-top: 6px;
     float: right;
+  }
+
 }
 .search-bar{
   position: relative;
-/*  width: 20%;*/
-
-
-  //margin-left: 3%;
+  margin-left: 3%;
 
   a.search-toggle{
     display: none;
@@ -2642,6 +2638,7 @@ header.colophon{
 
   input{
     min-width: 128px;
+    //max-width: 85%;
     color: #999;
     text-align: left;
     padding-left: 36px;
@@ -5450,14 +5447,14 @@ footer.about-footer{
 }
 
 @media only screen and (max-width: 992px){
-  header.colophon.scroll-header #top-nav .search-bar {
-    margin-left: 0%;
-  }
+  //header.colophon.scroll-header #top-nav .search-bar {
+  //  margin-left: 0%;
+  //}
 
   header.colophon{
-    .search-bar{
-      margin-left: 0;
-    }
+    //.search-bar{
+    //  margin-left: 0;
+    //}
 
     .logo-wrap{
       left: 38%;
