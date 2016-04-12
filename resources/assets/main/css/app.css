@@ -8771,15 +8771,14 @@ footer.about-footer {
     .product-hero #gallery .rsArrow.rsArrowLeft {
       left: 5%; }
     .product-hero #gallery .rsArrow.rsArrowRight {
-      right: 5%;
-      top: 40%; }
+      right: 5%; }
     .product-hero #gallery .rsThumbsArrow {
       top: 15%; }
       .product-hero #gallery .rsThumbsArrow.rsThumbsArrowLeft {
         left: 0;
         background-image: url("/assets/images/arrow-left-pink.png"); }
       .product-hero #gallery .rsThumbsArrow.rsThumbsArrowRight {
-        left: 80%;
+        left: 90%;
         background-image: url("/assets/images/arrow-right-pink.png"); }
     .product-hero #gallery .rsThumbs,
     .product-hero #gallery .rsThumbsContainer {
