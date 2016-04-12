@@ -88,7 +88,7 @@
                                 <i class="m-icon m-icon--Messages"></i>
                                 Messages
                             </a>
-                        </li>
+                          </li>
                         <li ng-class="{active: activeMenu == '4'}" ng-click="activeMenu='4'">
                             <a data-filterby="photos" href="" class="my-product">
                                 <i class="m-icon m-icon--menu"></i>
