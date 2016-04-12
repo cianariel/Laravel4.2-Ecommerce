@@ -4594,6 +4594,9 @@ button {
     opacity: 1;
     z-index: 41; }
 
+[ng\:cloak], [ng-cloak], .ng-cloak {
+  display: none !important; }
+
 .btn-success {
   background-color: #FF0042;
   border-color: #FF0042; }
@@ -6164,6 +6167,12 @@ article.product {
     display: block; }
   .critic-quote span:last-child {
     font-size: 1.1rem; }
+
+.homepage-grid {
+  transition: opacity 1s; }
+
+.homepage-grid.hidden {
+  opacity: 0; }
 
 .grid-insert {
   padding: 45px;
