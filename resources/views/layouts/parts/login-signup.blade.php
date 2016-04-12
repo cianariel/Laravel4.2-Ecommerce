@@ -1,6 +1,5 @@
-<div id="myModal" class="modal login-signup-modal col-sm-7 col-sm-9 col-xs-12 col-offset-md-2">
-
-
+<div id="myModal" class="modal login-signup-modal ">
+    <div class="col-sm-7 col-sm-9 col-xs-12 col-offset-md-2 login-signup-content">
     <div class="modal-intro contentable">
         <a class="logo" href="/">
                 <i class="m-icon m-icon--logo-with-text-blues">
@@ -98,4 +97,6 @@
     <span class="close-button" data-dismiss="modal">
         <i class="m-icon--Close"></i>
     </span>
+</div>
+
 </div>
