@@ -123,21 +123,36 @@ button{
   -moz-appearance:    none;
   appearance:         none;
 }
-
-.login-signup-modal.modal{
-  //display: block !important; // keep for debuggins
-  top: 40%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  -webkit-transform: translate(-50%, -50%) ;
-  overflow: visible;
-  z-index: 50;
-
+.login-signup-modal{
+/*  display: block !important; // keep for debuggins*/
+/*  top: 40%;*/
+/*  left: 50%;*/
+/*  transform: translate(-50%, -50%);*/
+/*  -webkit-transform: translate(-50%, -50%) ;*/
+    overflow: visible;
+    z-index: 50;
+    width: 100%;
+    height: 100%;
+    margin: auto;
+    overflow: auto;
 
   .modal-content{
     overflow: hidden;
     padding: 5.5%;
     border-radius: 3px;
+  }
+  .close-button{
+    position: absolute;
+    top: 36px;
+    right: 15px;
+    color: #fff;
+    font-size: 3rem;
+  }
+  .login-signup-content{
+      float: none;
+      margin: auto;
+      padding-top: 50px;
+      padding-bottom: 50px;
   }
 }
 
@@ -154,13 +169,13 @@ button{
   height:100%;
   background:#000;
   opacity: .6;
-  z-index: 40;
+  z-index: 42;
 
   &.picture-overlay{
       display: none ;
     background:url('/assets/images/picture-overlay.jpg');
     opacity: 1;
-    z-index: 39;
+    z-index: 41;
   }
 }
 
@@ -3985,16 +4000,6 @@ header.sub-head{
 
 }
 
-#myModal.login-signup-modal{
-  .close-button{
-    position: absolute;
-    top: -36px;
-    right: 15px;
-    color: #fff;
-    font-size: 3rem;
-  }
-}
-
 .modal-login{
   max-width: 400px;
   margin: 0 auto;
@@ -6122,6 +6127,10 @@ footer.about-footer{
 
   #myModal.modal {
     top: 34%;
+  }
+
+  #myModal.login-signup-modal.modal {
+    top: 0px;
   }
 
   .modal-intro{

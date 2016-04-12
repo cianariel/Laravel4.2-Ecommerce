@@ -62,12 +62,12 @@
     padding-top: 0;
     top: -26px;
    z-index: 40;
-  }
+    }
 
   & + .color-overlay{
     background-color:rgba(0,0,0,.4);
     z-index: 30;
-  }
+    }
 
   .rsOverflow{
     margin-top:30px;
@@ -79,10 +79,10 @@
 
   @media(max-width:500px){
 
-    .rsNav.rsBullets{
-      padding-top: 0;
+ .rsNav.rsBullets{
+    padding-top: 0;
       top: -56px;
-    }
+  }
 
     .rsArrow{
       top: 61%;
@@ -96,7 +96,6 @@
   }
 
 }
-
 .blur-overlay{
   background-image: url('https://d234pm57oy3062.cloudfront.net/homehero/11/homehero-image-56f8ffa2244c6-landing-hero-3.jpg');
   -webkit-filter: blur(2px);
