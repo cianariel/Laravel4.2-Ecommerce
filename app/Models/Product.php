@@ -465,7 +465,7 @@ class Product extends Model
         $selfImage = [];
         foreach ($productData['product']->medias as $key => $value) {
             // if (($value->media_type == 'img-upload' || $value->media_type == 'img-link') && ($value->is_hero_item == null || $value->is_hero_item == false))
-            if($value->media_type == 'video-link'){
+            if($value->media_type == 'video-link' || $value->media_type == 'youtube-link' || $value->media_type == 'vimeo-link'){
                 $selfImage['picture'][$key]['link'] = $value->media_link;
                 $selfImage['picture'][$key]['picture-name'] = $value->media_name;
                 $selfImage['picture'][$key]['type'] = $value->media_type;
