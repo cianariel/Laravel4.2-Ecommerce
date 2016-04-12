@@ -6595,12 +6595,12 @@ header.colophon {
       content: '1';
       display: block;
       position: absolute;
-      top: -2px;
-      right: -2px;
-      padding: 2px 4px;
+      top: 9px;
+      right: 6px;
+      padding: 2px 6px;
       border-radius: 8px;
       color: #fff;
-      font-weight: bold;
+      font-weight: 700;
       background: #FF0042; }
   #top-nav a:hover, #top-nav a .active {
     color: #ed2049; }
