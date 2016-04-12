@@ -6282,7 +6282,7 @@ header.colophon {
   min-height: 60px; }
   header.colophon #top-nav a.signin {
     float: right;
-    padding-left: 15px;
+    padding-left: 10px;
     white-space: nowrap;
     padding-right: 0px; }
     header.colophon #top-nav a.signin .m-icon {
@@ -6344,7 +6344,9 @@ header.colophon {
     z-index: 200; }
   @media (min-width: 1025px) {
     header.colophon .user-controls {
-      max-width: 120px; } }
+      max-width: 120px; }
+      header.colophon .user-controls .new-message {
+        padding-top: 15px; } }
 
 #top-nav .search-bar a.search-toggle {
   padding-top: 6px;
@@ -6577,8 +6579,6 @@ header.colophon {
     margin-right: 20px;
     margin-top: 20px; }
 #top-nav a {
-  /*margin-right: 8%;
-  padding-left: 30px;*/
   padding-right: 10px;
   font-size: 1.2rem;
   color: #999;
@@ -6587,6 +6587,21 @@ header.colophon {
     background: url("/assets/images/pro-grey.png") left center no-repeat; }
   #top-nav a.ideas:hover {
     color: #ed2049; }
+  #top-nav a.new-message {
+    position: relative; }
+    #top-nav a.new-message i {
+      font-size: 2.5rem; }
+    #top-nav a.new-message::after {
+      content: '1';
+      display: block;
+      position: absolute;
+      top: -2px;
+      right: -2px;
+      padding: 2px 4px;
+      border-radius: 8px;
+      color: #fff;
+      font-weight: bold;
+      background: #FF0042; }
   #top-nav a:hover, #top-nav a .active {
     color: #ed2049; }
 #top-nav li.nested {
