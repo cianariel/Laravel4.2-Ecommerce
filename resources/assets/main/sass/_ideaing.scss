@@ -179,6 +179,10 @@ button{
   }
 }
 
+[ng\:cloak], [ng-cloak], .ng-cloak {
+  display: none !important;
+}
+
 // BUTTONS
 
 .btn-success{
@@ -2231,13 +2235,12 @@ article.product{
   }
 }
 
-
-
-
-
-
-
-
+.homepage-grid{
+  transition: opacity 1s;
+}
+.homepage-grid.hidden{
+  opacity:0;
+}
 
 
 .grid-insert{
@@ -4392,7 +4395,7 @@ body.single{
     float: right;
     width: 280px;
   }
-  .article-content{ 
+  .article-content{
     iframe{
       margin: 0 auto;
       float: none;

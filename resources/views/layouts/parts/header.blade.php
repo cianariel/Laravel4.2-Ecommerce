@@ -9,11 +9,6 @@ if(function_exists('is_single')){
 }                                            
 ?>
 
-<style>
-    [ng\:cloak], [ng-cloak], .ng-cloak {
-        display: none !important;
-    }
-</style>
 <div id="publicApp" ng-app="publicApp" ng-controller="publicController" ng-cloak>
 <header class="colophon">
                 <div ng-init="socialCounter()" class="col-xs-12">
@@ -40,7 +35,7 @@ if(function_exists('is_single')){
                                             <a class="m-icon-text-holder" href="/shop">
                                             <i class="hidden-xs m-icon m-icon--shopping-bag-light-green"></i>
                                                 <span class="m-icon-text">Shop</span> 
-                                                <span class="box-link-active-line" style="margin-left: 10px;"></span>
+                                                <span class="box-link-active-line"></span>
                                             </a>
                                         <a class="shop hidden-xs" data-toggle="#shop-menu" href="#">
                                                 <i class="m-icon--Header-Dropdown down"></i>
@@ -81,7 +76,7 @@ if(function_exists('is_single')){
 
                             <form class="search-bar col-sm-2 col-lg-3 hidden-xs" ng-app="publicApp"  ng-controller="SearchController" action="/search-form-query" autocomplete="off">
                                     <div class="row">
-                                    <span style="position: relative" class="search-input-holder desktop-search-bar visible-sm visible-md visible-lg">
+                                    <span class="search-input-holder desktop-search-bar visible-sm visible-md visible-lg">
                                             <i class="m-icon m-icon--search-id"></i>
                                             <input ng-click="toggleSearch()" id="search-input" ng-change="openSearchDropdown(query)" ng-model="query" ng-model-options='{ debounce: 800 }' class="form-control top-search"  type="text" name="search" placeholder="Search..."/>
                                         <div id="suggest-category" ng-class="{shown: open, hidden: !open}" ng-show="categorySuggestions.length">
