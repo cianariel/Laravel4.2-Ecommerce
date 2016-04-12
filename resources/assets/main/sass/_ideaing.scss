@@ -4392,6 +4392,13 @@ body.single{
     float: right;
     width: 280px;
   }
+  .article-content{ 
+    iframe{
+      margin: 0 auto;
+      float: none;
+      display: block;
+    }
+  }
   .related-items
   {
     margin-bottom: 20px;
