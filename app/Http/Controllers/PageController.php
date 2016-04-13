@@ -67,7 +67,7 @@ class PageController extends ApiController
         $sliderContent = self::getHeroSliderContent();
 //        $sliderContent = (array)$sliderContent;
 
-        MetaTag::set('title', ' Ideas for Smarter Living | Save, Share & Shop Online');
+        MetaTag::set('title', 'Ideaing | Ideas for Smarter Living');
         MetaTag::set('description', 'Visit our Online Showroom.  Save the Latest  Smart Home Products to Your Personal Account.  Share & Discuss with Friends.  Shop Online for Daily Discounts.');
         //return $result;
         return view('home')
@@ -690,7 +690,7 @@ if($stories['featured']){
     public function contactUs()
     {
 
-        MetaTag::set('title', 'Contact us | Ideaing');
+        MetaTag::set('title', 'Contact Ideaing Support Team');
 //        MetaTag::set('description', $result['productInformation']['MetaDescription']);
 
         $userData = $this->authCheck;
@@ -707,7 +707,7 @@ if($stories['featured']){
     public function aboutUs()
     {
 
-        MetaTag::set('title', 'About us | Ideaing');
+        MetaTag::set('title', 'About Ideaing: What We Do at Ideaing.com');
 //        MetaTag::set('description', $result['productInformation']['MetaDescription']);
 
         return view('info.aboutus');
