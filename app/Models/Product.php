@@ -629,8 +629,6 @@ class Product extends Model
     public function updateProductPrice($productVendorId = 'B00OHY14CS', $store = 'Amazon')
     {
         try {
-            // $timeCompare['now'] = date("Y-m-d H:i:s", time());
-            // $timeCompare['required'] = date("Y-m-d H:i:s", (time() - (60 * 60 * $hours)));
 
             $hours = \Config::get("const.product-update-time-limit");
 
@@ -653,15 +651,14 @@ class Product extends Model
             if (isset($product)) {
                 $apiData = $this->getApiProductInformation($productVendorId, $store);
                 if (isset($apiData) && (($product['price'] != $apiData['ApiPrice']) || ($product['sale_price'] != $apiData['ApiSalePrice']))) {
-                    // echo $product['sale_price'];
-                    $product->price = $apiData['ApiPrice'];
-                    $product->sale_price = $apiData['ApiSalePrice'];
+
+                    $product->price = empty($apiData['ApiPrice'])? $product['price'] : $apiData['ApiPrice'] ;
+                    $product->sale_price = empty($apiData['ApiSalePrice']) ? $product['sale_price'] : $apiData['ApiSalePrice'] ;
                     $product->save();
 
                 }
 
                 return true;
-                //     dd($timeCompare,$product,$apiData);
 
             } else {
                 return false;
