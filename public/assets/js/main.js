@@ -4534,10 +4534,10 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
         $scope.redirectUser = function (role) {
             switch (role[0]) {
                 case 'admin':
-                    window.location = '/admin/dashboard';
+                    window.location = '/user/profile'; //window.location = '/admin/dashboard';
                     break;
                 case 'editor':
-                    window.location = '/admin/dashboard';
+                    window.location = '/user/profile'; //window.location = '/admin/dashboard';
                     break;
                 case 'user':
                     window.location = '/user/profile';
