@@ -18,6 +18,7 @@ use Illuminate\Http\Response as IlluminateResponse;
 use JWTAuth;
 
 use Carbon\Carbon;
+use MetaTag;
 
 class UserController extends ApiController
 {
