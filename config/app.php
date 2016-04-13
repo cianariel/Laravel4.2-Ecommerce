@@ -164,6 +164,7 @@ return [
         Aws\Laravel\AwsServiceProvider::class,
         App\Providers\HelperServiceProvider::class,
         Greggilbert\Recaptcha\RecaptchaServiceProvider::class,
+        Approached\LaravelImageOptimizer\ServiceProvider::class,
     ],
 
     /*

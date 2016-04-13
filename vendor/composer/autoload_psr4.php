@@ -18,6 +18,7 @@ return array(
     'Symfony\\Component\\Translation\\' => array($vendorDir . '/symfony/translation'),
     'Symfony\\Component\\Routing\\' => array($vendorDir . '/symfony/routing'),
     'Symfony\\Component\\Process\\' => array($vendorDir . '/symfony/process'),
+    'Symfony\\Component\\OptionsResolver\\' => array($vendorDir . '/symfony/options-resolver'),
     'Symfony\\Component\\HttpKernel\\' => array($vendorDir . '/symfony/http-kernel'),
     'Symfony\\Component\\HttpFoundation\\' => array($vendorDir . '/symfony/http-foundation'),
     'Symfony\\Component\\Finder\\' => array($vendorDir . '/symfony/finder'),
@@ -54,5 +55,6 @@ return array(
     'Barryvdh\\Cors\\' => array($vendorDir . '/barryvdh/laravel-cors/src'),
     'Aws\\Laravel\\' => array($vendorDir . '/aws/aws-sdk-php-laravel/src'),
     'Aws\\' => array($vendorDir . '/aws/aws-sdk-php/src'),
+    'Approached\\LaravelImageOptimizer\\' => array($vendorDir . '/approached/laravel-image-optimizer/src'),
     'App\\' => array($baseDir . '/app'),
 );

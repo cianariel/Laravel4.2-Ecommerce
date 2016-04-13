@@ -6,6 +6,8 @@
     use Aws\CloudFront\Exception\Exception;
     use Illuminate\Http\Request;
 
+    use Approached\LaravelImageOptimizer\ImageOptimizer;
+
     use App\Http\Requests;
     use App\Http\Controllers\Controller;
     use App\Models\Room;
@@ -157,8 +159,10 @@
                     $s3->put($destinationPath.$thumbFileName, $thumb->__toString(), 'public');
                 }
 
+                $fileObject = $this->optimizeImage($request,$filename);
 
-                if ($s3->put($destinationPath.$fileName, file_get_contents($request->file($filename)), 'public'))
+        //        if ($s3->put($destinationPath.$fileName, file_get_contents($request->file($filename)), 'public'))
+                if ($s3->put($destinationPath.$fileName, $fileObject, 'public'))
                 {
                     $fileResponse['result'] = \Config::get("const.file.s3-path").$destinationPath.$fileName;
                     $fileResponse['status_code'] = \Config::get("const.api-status.success");
@@ -168,6 +172,24 @@
             }
 
         }
+
+        /**
+         * @param Request $request
+         * @return array|null|string|\Symfony\Component\HttpFoundation\File\UploadedFile
+         */
+        private function optimizeImage(Request $request,$filename)
+        {
+            $fileObject = $request->file($filename);
+
+            // optimizaing image
+            $imageOptimizer = new ImageOptimizer();
+            $imageOptimizer->optimizeUploadedImageFile($fileObject);
+
+            $fileObject = \File::get($fileObject);
+            return $fileObject;
+        }
+
+
         public function deleteRoom()
         {
             $id = \Input::get('RoomId');
