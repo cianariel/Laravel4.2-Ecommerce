@@ -377,12 +377,6 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
             });
         }
 
-        if (window.innerWidth < 768) {
-            $scope.query = 'Search for products and ideas';
-        }else{
-            $scope.query = 'Search...';
-        }
-
         $scope.openSearchDropdown = function (query){
                 $http({
                     method: "get",
