@@ -53,16 +53,6 @@ if (screen.width < 992 && screen.width > 620) {
 ?>
 
 <script type="text/javascript" src="/assets/js/main.js"></script>
-
-<style>
-    .homepage-grid{
-       transition: opacity 1s;
-    }
-    .homepage-grid.hidden{
-        opacity:0;
-    }
-</style>
-
 <meta name="google-site-verification" content="xiWn24mA3aZopoTkElR97n-HdvsfctffW493Q6x_vZU" />
 
 <script>

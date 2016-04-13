@@ -319,6 +319,8 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
                 {"key": "img-link", "value": "Image Link"},
                 {"key": "img-upload", "value": "Image Upload"},
                 {"key": "video-link", "value": "Video Link"},
+                {"key": "video-youtube-link", "value": "Youtube Link"},
+                {"key": "video-vimeo-link", "value": "Vimeo Link"},
                 {"key": "video-upload", "value": "Video Upload"}
             ];
             $scope.mediaLink = "";
