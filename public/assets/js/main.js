@@ -3885,18 +3885,18 @@ angular.module('colorpicker.module', [])
 var publicApp = angular.module('publicApp', ['ui.bootstrap', 'ngSanitize', 'angularFileUpload']);
 
 // directive for heart action for grid items
-publicApp.directive('heartCounterPublic', ['$http', function($http) {
+publicApp.directive('heartCounterPublic', ['$http', function ($http) {
     return {
         restrict: 'E',
         transclude: true,
         replace: true,
-        scope:{
-            uid:'=',
-            iid:'=',
-            plink:'=',
-            sec:'=',
+        scope: {
+            uid: '=',
+            iid: '=',
+            plink: '=',
+            sec: '=',
         },
-        controller:function($scope, $element, $attrs){
+        controller: function ($scope, $element, $attrs) {
 
             // console.log(window.location.host);
             // Heart Section
@@ -3904,13 +3904,13 @@ publicApp.directive('heartCounterPublic', ['$http', function($http) {
             $scope.unHeart = false;
             $scope.heartCounter = 0;
 
-            $scope.heartCounterAction = function(){
+            $scope.heartCounterAction = function () {
 
 
                 $http({
                     url: '/api/heart/count-heart',
                     method: "POST",
-                    data:{
+                    data: {
                         section: $attrs.sec,
                         uid: $scope.uid,
                         iid: $scope.iid,
@@ -3926,21 +3926,21 @@ publicApp.directive('heartCounterPublic', ['$http', function($http) {
             };
 
             // clean url for ideaing URL (take only permalink)
-            $scope.cleanUrl = function(urlString){
+            $scope.cleanUrl = function (urlString) {
                 //console.log('url : '+ urlString);
                 return urlString;
             };
 
-            $scope.heartAction = function(){
+            $scope.heartAction = function () {
 
                 // an anonymous will be returned without performing any action.
-                if($attrs.uid==0)
+                if ($attrs.uid == 0)
                     return;
 
                 $http({
                     url: '/api/heart/add-heart',
                     method: "POST",
-                    data:{
+                    data: {
                         section: $attrs.sec,
                         uid: $scope.uid,
                         iid: $scope.iid,
@@ -3949,7 +3949,7 @@ publicApp.directive('heartCounterPublic', ['$http', function($http) {
                     }
                 }).success(function (data) {
                     $scope.heartCounterAction();
-                    $scope.unHeart = ! $scope.unHeart;
+                    $scope.unHeart = !$scope.unHeart;
                 });
             };
 
@@ -3957,17 +3957,17 @@ publicApp.directive('heartCounterPublic', ['$http', function($http) {
 
         },
 
-        template: '      <div class="">'+
-        '                    <a class="likes"'+
-        '                       ng-click="heartAction()"'+
-        '                    >'+
-        '                        <i ng-class="unHeart != false ? \'m-icon m-icon--heart-solid\' : \'m-icon m-icon--ScrollingHeaderHeart\'">'+
-        '                                <span class="m-hover">'+
-        '                                    <span class="path1"></span><span class="path2"></span>'+
-        '                                </span>'+
-        '                        </i>'+
-        '                        <span class="social-stats__text" ng-bind="heartCounter">&nbsp; </span>'+
-        '                    </a>'+
+        template: '      <div class="">' +
+        '                    <a class="likes"' +
+        '                       ng-click="heartAction()"' +
+        '                    >' +
+        '                        <i ng-class="unHeart != false ? \'m-icon m-icon--heart-solid\' : \'m-icon m-icon--ScrollingHeaderHeart\'">' +
+        '                                <span class="m-hover">' +
+        '                                    <span class="path1"></span><span class="path2"></span>' +
+        '                                </span>' +
+        '                        </i>' +
+        '                        <span class="social-stats__text" ng-bind="heartCounter">&nbsp; </span>' +
+        '                    </a>' +
         '                </div>'
 
 
@@ -3980,17 +3980,17 @@ publicApp.directive('showAuthorInfo', ['$http', '$window', function ($http, $win
         restrict: 'E',
         transclude: true,
         replace: true,
-        scope:{
-            email:'@',
-            url:'@'
+        scope: {
+            email: '@',
+            url: '@'
 
         },
-        controller:function($scope, $element, $attrs){
+        controller: function ($scope, $element, $attrs) {
 
-            $scope.authorInfo = function(){
+            $scope.authorInfo = function () {
 
                 $http({
-                    url: '/api/info-raw/'+ $scope.email,
+                    url: '/api/info-raw/' + $scope.email,
                     method: "GET",
                 }).success(function (data) {
 
@@ -4007,11 +4007,11 @@ publicApp.directive('showAuthorInfo', ['$http', '$window', function ($http, $win
 
         },
 
-        template: '      <div class="box-item__author">'+
-        '                    <a href="{{ url }}" class="user-widget">'+
-        '                       <img class="user-widget__img" src="{{ authorImage }}">'+
-        '                     <span class="user-widget__name">{{ authorName }}</span>'+
-        '                    </a>'+
+        template: '      <div class="box-item__author">' +
+        '                    <a href="{{ url }}" class="user-widget">' +
+        '                       <img class="user-widget__img" src="{{ authorImage }}">' +
+        '                     <span class="user-widget__name">{{ authorName }}</span>' +
+        '                    </a>' +
         '                </div>'
     }
 
@@ -4082,28 +4082,28 @@ publicApp.controller('ModalInstanceCtrltest', function ($scope, $uibModalInstanc
 
 });
 
-publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$window', '$timeout', '$location', '$anchorScroll', '$uibModal', 'layoutApi', '$compile','$interval', 'FileUploader', 'pagingApi'
-    , function ($rootScope, $scope, $http, $window, $timeout, $location, $anchorScroll, $uibModal, layoutApi, $compile, $interval ,FileUploader, pagingApi) {
+publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$window', '$timeout', '$location', '$anchorScroll', '$uibModal', 'layoutApi', '$compile', '$interval', 'FileUploader', 'pagingApi'
+    , function ($rootScope, $scope, $http, $window, $timeout, $location, $anchorScroll, $uibModal, layoutApi, $compile, $interval, FileUploader, pagingApi) {
 
         // text area internal function for comment
-        $scope.focusEditor = function(){
-            $timeout(function(){
+        $scope.focusEditor = function () {
+            $timeout(function () {
                 angular.element('div[contenteditable=true]').trigger('focus');
             })
         }
-        $scope.insertCustomImagePopup = function(){
+        $scope.insertCustomImagePopup = function () {
             alert("Please add the code for photo uploading here");
         }
-        $scope.openProductPopup = function(id){
+        $scope.openProductPopup = function (id) {
             pagingApi.openProductPopup($scope, $uibModal, $timeout, id);
         };
-        $scope.textAreaSetup = function($element){
+        $scope.textAreaSetup = function ($element) {
             $element.attr('focus-me', 'focus_editor');
         };
 
 
         // update comment in the comment view through AJAX call.
-        var commnetTimer = $interval(function(){
+        var commnetTimer = $interval(function () {
             //  console.log("in");
             if ($scope.uid != null) {
                 $scope.loadNotification($scope.uid);
@@ -4112,7 +4112,7 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
             if ($scope.itemId != 0) {
                 $scope.getCommentsForIdeas($scope.itemId);
             }
-        },15000);//10000
+        }, 15000);//10000
 
 
         // Header profile option open and close on click action.
@@ -4309,7 +4309,7 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
             $scope.activeClassComment = '';
             $scope.activeClassHeart = '';
 
-            $scope.socialCounter = function(){
+            $scope.socialCounter = function () {
 
                 $scope.countSocialShares();
                 $scope.countSocialFollowers();
@@ -4349,7 +4349,7 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                 if (data.status_code == '406') {
                     $scope.errorMessage = 'Invalid Email provided';
                     $scope.contactError = true;
-                }else{
+                } else {
 
                     $scope.Code = true;
                     window.location = '/';
@@ -4361,9 +4361,9 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
 
         // Heart //
 
-        $scope.heartAction = function(){
+        $scope.heartAction = function () {
 
-          //  console.log($window.plink,$window.uid,$window.itemId);
+            //  console.log($window.plink,$window.uid,$window.itemId);
             //return;
             userId = $window.uid;
             ItemId = $window.itemId;
@@ -4371,13 +4371,13 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
             section = 'ideas';
 
             // an anonymous will be returned without performing any action.
-            if(userId==0)
+            if (userId == 0)
                 return;
 
             $http({
                 url: '/api/heart/add-heart',
                 method: "POST",
-                data:{
+                data: {
                     uid: userId,
                     iid: ItemId,
                     plink: permalink,
@@ -4386,11 +4386,11 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                 }
             }).success(function (data) {
                 $scope.heartCounterAction();
-                $scope.unHeart = ! $scope.unHeart;
+                $scope.unHeart = !$scope.unHeart;
             });
         };
 
-        $scope.heartCounterAction = function(){
+        $scope.heartCounterAction = function () {
 
             userId = $window.uid;
             ItemId = $window.itemId;
@@ -4399,7 +4399,7 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
             $http({
                 url: '/api/heart/count-heart',
                 method: "POST",
-                data:{
+                data: {
                     uid: userId,
                     iid: ItemId,
                     section: section
@@ -4408,19 +4408,19 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                 $scope.unHeart = data.UserStatus;
                 $scope.heartCounter = data.Count;
 
-             //   console.log($scope.heartCounter);
+                //   console.log($scope.heartCounter);
             });
 
         };
 
         // get recently liked users list
-        $scope.heartUsers = function(section){
+        $scope.heartUsers = function (section) {
             ItemId = $window.itemId;
 
             $http({
                 url: '/api/heart/heart-users',
                 method: "POST",
-                data:{
+                data: {
                     iid: ItemId,
                     section: section
                 }
@@ -4547,10 +4547,10 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
             }
         };
 
-        $scope.getAuthorInfoByEmail = function(email){
+        $scope.getAuthorInfoByEmail = function (email) {
             //console.log("inside");
             $http({
-                url: '/api/info-raw/'+ email,
+                url: '/api/info-raw/' + email,
                 method: "GET",
             }).success(function (data) {
 
@@ -4559,19 +4559,19 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                 $scope.authorBio = data.user_profile.personal_info;
                 $scope.authorPermalink = data.permalink;
 
-               // console.log($scope.authorName," - ",$scope.authorImage);
+                // console.log($scope.authorName," - ",$scope.authorImage);
 
             });
         };
 
         // Comment for ideas section
-        $scope.addCommentForIdeas = function(userId,itemId,permalink,comment){
-            console.log(userId,itemId,permalink,comment);
+        $scope.addCommentForIdeas = function (userId, itemId, permalink, comment) {
+            console.log(userId, itemId, permalink, comment);
 
             $http({
                 url: '/api/comment/add-ideas-comment',
                 method: "POST",
-                data:{
+                data: {
                     uid: userId,
                     pid: itemId,
                     plink: permalink,
@@ -4584,16 +4584,16 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
             });
         };
 
-        $scope.getCommentsForIdeas = function(pid){
+        $scope.getCommentsForIdeas = function (pid) {
 
             $http({
-                url: '/api/comment/get-ideas-comment/'+pid,
+                url: '/api/comment/get-ideas-comment/' + pid,
                 method: "GET"
             }).success(function (data) {
                 $scope.itemId = pid;
                 $scope.comments = data.data;
                 $scope.commentsCount = $scope.comments.length;
-                $scope.commentsCountView = $scope.commentsCount < 2? $scope.commentsCount +" "+"Comment" : $scope.commentsCount +" "+"Comments";
+                $scope.commentsCountView = $scope.commentsCount < 2 ? $scope.commentsCount + " " + "Comment" : $scope.commentsCount + " " + "Comments";
 
                 //  console.log($scope.commentsCount);
 
@@ -4601,12 +4601,12 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
 
         };
 
-        $scope.initCommentCounter =function(){
-          //  $scope.getCommentsForIdeas($window.itemId);
+        $scope.initCommentCounter = function () {
+            //  $scope.getCommentsForIdeas($window.itemId);
         };
 
 
-        $scope.editComment = function(comment){
+        $scope.editComment = function (comment) {
             //  console.log(comment);
 
             $scope.isEdit = true;
@@ -4618,11 +4618,11 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
 
         };
 
-        $scope.updateComment = function(comment){
+        $scope.updateComment = function (comment) {
             $http({
                 url: '/api/comment/update-comment',
                 method: "POST",
-                data:{
+                data: {
                     cid: $scope.commentId,
                     comment: $scope.html
                 }
@@ -4636,11 +4636,11 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
         };
 
 
-        $scope.deleteComment = function(id){
+        $scope.deleteComment = function (id) {
             $http({
                 url: '/api/comment/delete-comment',
                 method: "POST",
-                data:{
+                data: {
                     cid: id
                 }
             }).success(function (data) {
@@ -4765,22 +4765,22 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                 }
             }).success(function (data) {
                 //   console.log(data.data);
-              
-                var WpLoginURL = 'https://ideaing.com/ideas/api?call=login&username=' + $scope.Email + '&password=' +  $scope.Password + '&remember=' + $scope.rememberMe;
+
+                var WpLoginURL = 'https://ideaing.com/ideas/api?call=login&username=' + $scope.Email + '&password=' + $scope.Password + '&remember=' + $scope.rememberMe;
 
                 $http({
-                    url: WpLoginURL, 
+                    url: WpLoginURL,
                     method: "GET"
-     
+
                 }).success(function (data) {
                     var from = $location.search().from; // TODO -- disable this
-                    if(from === 'cms'){
+                    if (from === 'cms') {
                         window.location = 'https://ideaing.com/ideas/wp-admin';
                     }
-                }).error(function(data, status, headers, config) {
-                    if(data.success){
+                }).error(function (data, status, headers, config) {
+                    if (data.success) {
                         var from = $location.search().from; // TODO -- disable this
-                        if(from === 'cms'){
+                        if (from === 'cms') {
                             window.location = 'https://ideaing.com/ideas/wp-admin';
                         }
                     }
@@ -4795,7 +4795,7 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
 
 
         $scope.logoutUser = function () {
-          //  var WpLogoutURL = 'https://ideaing.com/ideas/api?call=logout';
+            //  var WpLogoutURL = 'https://ideaing.com/ideas/api?call=logout';
             var WpLogoutURL = '/ideas/api?call=logout';
 
 
@@ -4805,14 +4805,14 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
 
             }).success(function (data) {
                 window.location = '/api/logout';
-            }).error(function(data) {
+            }).error(function (data) {
                 window.location = '/api/logout';
             });
         }
 
         $scope.passwordResetRequest = function () {
             $scope.closeAlert();
-            if(!$scope.Email){
+            if (!$scope.Email) {
                 $scope.addAlert('danger', 'Email is required!');
                 return;
             }
@@ -4926,7 +4926,7 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
         };
 
         //notification
-        $scope.loadNotification = function(uid){
+        $scope.loadNotification = function (uid) {
 
             $scope.uid = uid;
             $http({
@@ -4940,17 +4940,17 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
             });
         };
 
-        $scope.readAllNotification = function(){
+        $scope.readAllNotification = function () {
 
-           // $scope.uid = uid;
+            // $scope.uid = uid;
             $http({
                 url: '/api/read-all-notification/' + $scope.uid,
                 method: "GET",
             }).success(function (data) {
 
                 $scope.loadNotification($scope.uid);
-            //    $scope.notificationCounter = data.data.NotReadNoticeCount;
-            //    $scope.notifications = data.data.NoticeNotRead;
+                //    $scope.notificationCounter = data.data.NotReadNoticeCount;
+                //    $scope.notifications = data.data.NoticeNotRead;
 
             });
         };
@@ -5003,14 +5003,14 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
             });
         };
 
-        $scope.countSocialShares = function(){
+        $scope.countSocialShares = function () {
 
             var thisUrl = window.location.host + window.location.pathname;
 
             $http({
                 url: '/api/social/get-social-counts',
                 method: "GET",
-                params: {'url' : thisUrl}
+                params: {'url': thisUrl}
             }).success(function (response) {
                 $('.share-count.all').html(response.all);
                 $('.share-count.twi').html(response.twitter);
@@ -5020,14 +5020,14 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                 $('.share-count.inst').html(response.instagram);
             });
         }
-        $scope.countSocialFollowers = function(){
+        $scope.countSocialFollowers = function () {
 
             var thisUrl = window.location.host + window.location.pathname;
 
             $http({
                 url: '/api/social/get-fan-counts',
                 method: "GET",
-                params: {'url' : thisUrl}
+                params: {'url': thisUrl}
             }).success(function (response) {
                 $('.fan-count.twi').html(response.twitter);
                 $('.fan-count.fb').html(response.facebook);
