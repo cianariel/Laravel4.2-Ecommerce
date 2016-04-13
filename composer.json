@@ -23,7 +23,8 @@
     "barryvdh/laravel-cors": "^0.7.3",
     "roumen/sitemap": "^2.6",
     "fenos/notifynder": "3.*",
-    "greggilbert/recaptcha": "dev-master"
+    "greggilbert/recaptcha": "dev-master",
+    "approached/laravel-image-optimizer": "^2.0"
 
   },
   "require-dev": {

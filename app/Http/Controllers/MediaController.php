@@ -3,6 +3,7 @@
     namespace App\Http\Controllers;
 
     use App\Models\Media;
+    use Approached\LaravelImageOptimizer\ImageOptimizer;
     use Aws\CloudFront\Exception\Exception;
     use Illuminate\Http\Request;
 
@@ -82,7 +83,10 @@
                 // pointing filesystem to AWS S3
                 $s3 = Storage::disk('s3');
 
-                if ($s3->put($fileName, file_get_contents($request->file('file')), 'public'))
+                $fileObject = $this->optimizeImage($request);
+
+
+                if ($s3->put($fileName, $fileObject , 'public'))
                 {
                     if(!$isProfilePage){
                         $fileResponse['result'] = \Config::get("const.file.s3-path") . $fileName;
@@ -134,6 +138,22 @@
             $id = \Input::get('id');
             $this->media->deleteMediaItem($id);
 
+        }
+
+        /**
+         * @param Request $request
+         * @return array|null|string|\Symfony\Component\HttpFoundation\File\UploadedFile
+         */
+        private function optimizeImage(Request $request)
+        {
+            $fileObject = $request->file('file');
+
+            // optimizaing image
+            $imageOptimizer = new ImageOptimizer();
+            $imageOptimizer->optimizeUploadedImageFile($fileObject);
+
+            $fileObject = \File::get($fileObject);
+            return $fileObject;
         }
 
 
