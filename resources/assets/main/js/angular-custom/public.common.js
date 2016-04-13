@@ -235,10 +235,12 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
         }, 15000);//10000
 
 
-        // Header profile option open and close on click action.
-        if (!$rootScope.isCallEmailPopup) {
-            $timeout(function () {
-                if ($scope.canOpenEmailPopup) {
+
+        $scope.getEmailPopup = function(){
+            // Header profile option open and close on click action.
+            if (!$rootScope.isCallEmailPopup) {
+                //$timeout(function () {
+                //if ($scope.canOpenEmailPopup) {
                     var templateUrl = "subscribe_email_popup.html";
                     var modalInstance = $uibModal.open({
                             templateUrl: templateUrl,
@@ -247,14 +249,15 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                             windowClass: 'subscribe_email_popup',
                             controller: 'ModalInstanceCtrltest'
                         })
-                        .result.finally(function () {
+                            .result.finally(function () {
                                 $scope.uploader.formData = [];
                             })
                         ;
-                }
-            }, 300000)  //300000
-        }
-        $rootScope.isCallEmailPopup = true;
+                //}
+                //}, 300000)  //300000
+                $rootScope.isCallEmailPopup = true;
+            }
+        };
 
         $scope.openProfileSetting = function () {
 
