@@ -1460,7 +1460,7 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
                 $scope.isMediaUploadable = false;
                 $scope.mediaLinkTmp = $scope.mediaLink;
                 //   console.log($scope.isMediaUploadable);
-            } else if (($scope.selectedMediaType == 'video-link')) {
+            } else if (($scope.selectedMediaType == 'video-link') || ($scope.selectedMediaType == 'video-youtube-link') ||($scope.selectedMediaType == 'video-vimeo-link')) {
 
                 $scope.isMediaUploadable = false;
                 $scope.mediaLinkTmp = $scope.mediaLink;
@@ -1469,7 +1469,6 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
 
                 $scope.isMediaUploadable = true;
                 $scope.mediaLink = $scope.mediaLinkTmp;
-                //  console.log( $scope.isMediaUploadable);
             } else if (($scope.selectedMediaType == 'video-upload')) {
 
                 $scope.isMediaUploadable = true;

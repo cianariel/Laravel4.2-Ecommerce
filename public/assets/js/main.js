@@ -5101,7 +5101,7 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
                 };
 
                 $scope.heartAction = function(){
-console.log('hi : ',$scope.iid,$scope.plink);
+//console.log('hi : ',$scope.iid,$scope.plink);
                     // an anonymous will be returned without performing any action.
                     if($attrs.uid==0)
                         return;
