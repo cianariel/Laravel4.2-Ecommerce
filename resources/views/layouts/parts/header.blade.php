@@ -158,7 +158,7 @@ if(function_exists('is_single')){
                                             </div>
 
                                 <?php }  else { ?>
-                                        <a class="new-message" data-toggle="modal" data-target="#myModal" href="/login"><i class="m-icon m-icon--email-form-id"></i></a>
+                                        <a class="new-message" href="#" ng-click="getEmailPopup()"><i class="m-icon m-icon--email-form-id"></i></a>
                                         <a class="pull-right signin" data-toggle="modal" data-target="#myModal" href="/login"><i class="m-icon m-icon--user"></i> Log in</a>
                                     <?php } ?>
                                     <a href="#" class="search-toggle visible-xs pull-right" data-toggle=".mobile-search-bar"><i class="m-icon m-icon--search-id"></i></a>
@@ -467,7 +467,7 @@ if((isset($userData['user-data']['hide-signup'])) && ($userData['user-data']['hi
 <?php
     }
 
-} 
+}
 
 
 ?>
