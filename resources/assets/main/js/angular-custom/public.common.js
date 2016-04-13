@@ -686,7 +686,7 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
 
         // Comment for ideas section
         $scope.addCommentForIdeas = function (userId, itemId, permalink, comment) {
-            console.log(userId, itemId, permalink, comment);
+         //   console.log(userId, itemId, permalink, comment);
 
             $http({
                 url: '/api/comment/add-ideas-comment',

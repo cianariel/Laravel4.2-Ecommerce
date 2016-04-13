@@ -13,6 +13,10 @@
     <li class="social-stats__item">
         <?php
         $userId = !empty($userData->id) ? $userData->id:0;
+        if($userId == 0)
+        {
+            $userId = !empty($userData['id'] ) ? $userData['id']  : 0;
+        }
         ?>
         <heart-counter-dir uid = "<?php echo $userId ?>" iid = item.id plink = item.url sec = 'ideas' >
 
