@@ -81,23 +81,30 @@
             }
         }
 
-        public static function getVideoPreview($videoURL, $videoType = false){
-            if(strpos($videoURL, 'youtube') || $videoType == 'youtube-link'){
+        public static function getVideoData($videoURL, $videoType = false){
+            if(strpos($videoURL, 'youtube') || $videoType == 'video-youtube-link'){
                 $videoLink = str_replace('https://www.youtube.com/watch?v=', '', $videoURL);
                 $videoLink = str_replace('https://www.youtube.com/embed/', '', $videoLink);
-                $previewLink = "https://img.youtube.com/vi/$videoLink/hqdefault.jpg";
-            }elseif(strpos($videoURL, 'vimeo')  || $videoType == 'vimeo-link'){
+                $return['videoLink'] = "https://www.youtube.com//embed/$videoLink";
+                $return['previewLink'] = "https://img.youtube.com/vi/$videoLink/hqdefault.jpg";
+
+            }elseif(strpos($videoURL, 'vimeo')  || $videoType == 'video-vimeo-link'){
                 $explode = explode('/', $videoURL);
                 if($explode){
                     $videoLink = end($explode);
                 }
                 $hash = unserialize(file_get_contents("http://vimeo.com/api/v2/video/$videoLink.php"));
-                $previewLink = $hash[0]['thumbnail_medium'];
+                $return['videoLink'] = "https://vimeo.com/$videoLink";
+                $return['previewLink'] = $hash[0]['thumbnail_medium'];
             }else{
-                $previewLink = "http://img.youtube.com/vi/0.jpg";
+                $return['videoLink'] = $videoURL;
+                $return['previewLink'] = "http://img.youtube.com/vi/0.jpg";
             }
-            return $previewLink;
+            print_r( $return);
+            return $return;
         }
+
+
 
 
     }
