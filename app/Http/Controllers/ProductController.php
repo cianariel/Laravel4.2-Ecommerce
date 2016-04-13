@@ -22,27 +22,9 @@ class ProductController extends ApiController
 
     public function __construct()
     {
-        // Apply the jwt.auth middleware to all methods in this controller
-  /*      $this->middleware('jwt.auth',
-            ['except' => [
-                'publishProduct', 'searchProductByName', 'updateProductInfo', 'productDetailsView',
-                'getAllProductList', 'getProductById', 'isPermalinkExist', 'addProduct',
-                'fileUploader', 'addMediaInfo', 'getMediaForProduct', 'deleteSingleMediaItem',
-                'getProductInfoFromApi', 'priceUpdate', 'deleteProduct', 'productDetailsViewByName',
-                'getStoreInformation','generateCategoryHierarchy'
-
-            ]]);*/
         $this->product = new Product();
 
         $this->media = new Media();
-    }
-
-    // todo check and clean this function
-    public function getStoreInformation()
-    {
-        $productId = 64;
-        $val = $this->product->getStoreInfoByProductId($productId);
-
     }
 
     /**
@@ -225,11 +207,9 @@ class ProductController extends ApiController
     {
         try {
             $inputData = \Input::all();
-            //$inputData['SimilarProductIds'] = $inputData['SimilarProductIds'];
 
             $newProduct = $this->product->updateProductInfo($inputData);
 
-            // dd($newProduct);
             return $this->setStatusCode(\Config::get("const.api-status.success"))
                 ->makeResponse($newProduct);
         } catch (Exception $ex) {

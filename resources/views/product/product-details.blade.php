@@ -103,9 +103,13 @@
                         <div class="average-score pull-right" itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating">
                             <div class="score" itemprop="ratingValue">
                                 <i class=" m-icon--bulb-detailed-on-rating"></i>
-                                @if(isset($productInformation['Review']))
-                                    {{intval(((($productInformation['Review'][0]->value > 0 ? $productInformation['Review'][0]->value : $productInformation['Review'][1]->value) + $productInformation['Review'][1]->value)/2)*20)}}%
-                                @endif
+                                <?php
+                                if(isset($productInformation['Review']))
+                                $value = intval(((($productInformation['Review'][0]->value > 0 ? $productInformation['Review'][0]->value : $productInformation['Review'][1]->value) + $productInformation['Review'][1]->value)/2)*20);
+
+                                echo $value > 0 ? $value."%" : '<span style="font-size: medium">Not Available</span>';
+
+                                ?>
                             </div>
                             <span class="caption">Average Ideaing Score</span>
                         </div>

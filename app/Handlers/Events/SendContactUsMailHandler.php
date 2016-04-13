@@ -36,7 +36,7 @@
                 {
 
                     $message->to(env('CONTACT_MAIL_TO'), $event->name)
-                        ->from(env('MAIL_FROM','no-reply@ideaing.com'))
+                        ->from(env('CONTACT_MAIL_FROM','help@ideaing.com'))
                         ->subject("Ideaing - Contact Us (". $event->type .")-   From - ".$event->name);
                 });
 
