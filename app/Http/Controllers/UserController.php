@@ -18,6 +18,7 @@ use Illuminate\Http\Response as IlluminateResponse;
 use JWTAuth;
 
 use Carbon\Carbon;
+use MetaTag;
 
 class UserController extends ApiController
 {
@@ -191,8 +192,9 @@ class UserController extends ApiController
 
             );
 
-            return view('user.user-profile', $data);
+            MetaTag::set('title', 'Ideaing | My profile');
 
+            return view('user.user-profile', $data);
 
         } elseif ($this->authCheck['method-status'] == 'fail-with-http') {
             return \Redirect::to('login');
@@ -226,7 +228,9 @@ class UserController extends ApiController
 
         );
 
-       // dd($data);
+        MetaTag::set('title', $userProfileData->name . ' | Ideaing');
+
+        // dd($data);
         return view('user.user-profile', $data);
     }
 

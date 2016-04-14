@@ -50,7 +50,7 @@ if(function_exists('is_single')){
                                     </ul>
                                 </div>
 
-                            <div class="col-xs-2 col-sm-3 text-center">
+                            <div class="col-xs-2 text-center logo-holder">
                                 <a id="ideaing-logo" class="center-block hidden-xs" href="/">
                                         <i class="m-icon m-icon--logo-without-text-blue">
                                             <span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span><span class="path6"></span><span class="path7"></span><span class="path8"></span><span class="path9"></span><span class="path10"></span><span class="path11"></span><span class="path12"></span><span class="path13"></span><span class="path14"></span><span class="path15"></span><span class="path16"></span><span class="path17"></span><span class="path18"></span>
@@ -92,7 +92,7 @@ if(function_exists('is_single')){
                                     </div>
                                 </form>
 
-                            <div class="col-xs-5 col-sm-2 col-lg-1">
+                            <div class="col-xs-5 col-sm-2 pull-right user-controls">
                                         <div class="row">
 
                                             <?php 
@@ -151,6 +151,7 @@ if(function_exists('is_single')){
                                             </div>
 
                                 <?php }  else { ?>
+                                        <a class="new-message" href="#" ng-click="getEmailPopup()"><i class="m-icon m-icon--email-form-id"></i></a>
                                         <a class="pull-right signin" data-toggle="modal" data-target="#myModal" href="/login"><i class="m-icon m-icon--user"></i> Log in</a>
                                     <?php } ?>
                                     <a href="#" class="search-toggle visible-xs pull-right" data-toggle=".mobile-search-bar"><i class="m-icon m-icon--search-id"></i></a>
@@ -165,7 +166,7 @@ if(function_exists('is_single')){
 
                 <form class="search-bar" ng-app="publicApp"  ng-controller="SearchController" action="/search-form-query" >
                     <div style="position: relative" class="mobile-search-bar col-xs-12">
-                        <input ng-click="toggleSearch()" ng-change="openSearchDropdown(query)" ng-model="query" ng-model-options='{ debounce: 800 }'  class="form-control col-xs-10  top-search" type="text" value="Search..."  name="search" />
+                        <input ng-click="toggleSearch()" ng-change="openSearchDropdown(query)" ng-model="query" ng-model-options='{ debounce: 800 }'  class="form-control col-xs-10  top-search" type="text" value="Search..."  placeholder="Search for products and ideas..."  name="search" />
                         <div id="suggest-category" ng-class="{shown: open, hidden: !open}" ng-show="categorySuggestions.length">
                             <?php // have to use only pure php includes, or the CMS wont read it
                             include('/var/www/ideaing/resources/views/layouts/parts/search-dropdown.blade.php')
@@ -459,7 +460,7 @@ if((isset($userData['user-data']['hide-signup'])) && ($userData['user-data']['hi
 <?php
     }
 
-} 
+}
 
 
 ?>

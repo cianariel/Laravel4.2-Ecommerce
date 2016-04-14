@@ -2331,6 +2331,7 @@ article.product{
   display: none;
   background: $light-grey;
   margin-top: 55px;
+  z-index: 10;
 }
 
 #mobile-side-filters{
@@ -2555,7 +2556,7 @@ header.colophon{
         a.signin{
 
             float: right;
-            padding-left: 15px;
+            padding-left: 10px;
             white-space: nowrap;
             padding-right: 0px;
             .m-icon{
@@ -2575,6 +2576,10 @@ header.colophon{
     .logo-wrap{
         position: absolute;
         left: 42%;
+    }
+
+    .logo-holder{
+      padding-left: 0;
     }
 
   &.scroll-header{
@@ -2610,20 +2615,15 @@ header.colophon{
             }
 
             &:after{
-              /*position: absolute;
-              right: 9px;*/
               top: 2px;
-/*              background-size: 22px;*/
             }
           }
         }
 
         a#ideaing-logo {
           display: block;
-/*          width: 45px;*/
           min-height: 60px;
           padding: 0;
-/*          background-image: url("/assets/images/ideaing-logo-lamp-only.png");*/
           background-repeat: no-repeat;
           background-position: right;
           background-size: initial;
@@ -2641,16 +2641,7 @@ header.colophon{
           }
           
         }
-
-        //.search-bar{
-        //  margin-left: 7%;
-        //}
       }
-
-      //.signin a{
-      //  //background-size: 23px !important;
-      //}
-
 
     }
 
@@ -2661,18 +2652,29 @@ header.colophon{
       z-index: 200;
     }
   }
+  @media (min-width: 1025px){
+    .user-controls{
+      max-width: 120px;
+
+      .new-message{
+        padding-top: 15px;
+
+      }
+    }
+  }
+
 
 }
-#top-nav .search-bar a.search-toggle{
+#top-nav{
+  .search-bar a.search-toggle{
     padding-top: 6px;
     float: right;
+  }
+
 }
 .search-bar{
   position: relative;
-/*  width: 20%;*/
-
-
-  //margin-left: 3%;
+  margin-left: 3%;
 
   a.search-toggle{
     display: none;
@@ -2696,6 +2698,7 @@ header.colophon{
 
   input{
     min-width: 128px;
+    //max-width: 85%;
     color: #999;
     text-align: left;
     padding-left: 36px;
@@ -2982,8 +2985,6 @@ box-shadow: -1px -1px 20px -7px rgba(0,0,0,0.75);
     }
     
   a{
-    /*margin-right: 8%;
-    padding-left: 30px;*/
     padding-right: 10px;
     font-size: 1.2rem;
     color: #999;
@@ -2996,6 +2997,25 @@ box-shadow: -1px -1px 20px -7px rgba(0,0,0,0.75);
     &.ideas{
       &:hover{
           color: $pink;
+      }
+    }
+
+    &.new-message{
+      position: relative;
+      i{
+        font-size: 2.5rem;
+      }
+      &::after{
+        content: '1';
+        display: block;
+        position: absolute;
+        top: 9px;
+        right: 6px;
+        padding:0px 4px;
+        border-radius: 8px;
+        color: #fff;
+        font-weight: 700;
+        background: #FF0042;
       }
     }
 
@@ -5525,14 +5545,14 @@ footer.about-footer{
 }
 
 @media only screen and (max-width: 992px){
-  header.colophon.scroll-header #top-nav .search-bar {
-    margin-left: 0%;
-  }
+  //header.colophon.scroll-header #top-nav .search-bar {
+  //  margin-left: 0%;
+  //}
 
   header.colophon{
-    .search-bar{
-      margin-left: 0;
-    }
+    //.search-bar{
+    //  margin-left: 0;
+    //}
 
     .logo-wrap{
       left: 38%;

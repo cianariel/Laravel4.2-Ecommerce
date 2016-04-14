@@ -52,3 +52,14 @@
     // Track when a registration form is completed (ex. complete subscription, sign up for a service)
     fbq('track', 'CompleteRegistration');
 </script>
+
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- Homepage -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-8975651769887133"
+     data-ad-slot="7018993602"
+     data-ad-format="auto"></ins>
+<script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+</script>

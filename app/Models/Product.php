@@ -465,12 +465,15 @@ class Product extends Model
         $selfImage = [];
         foreach ($productData['product']->medias as $key => $value) {
             // if (($value->media_type == 'img-upload' || $value->media_type == 'img-link') && ($value->is_hero_item == null || $value->is_hero_item == false))
-            if($value->media_type == 'video-link' || $value->media_type == 'youtube-link' || $value->media_type == 'vimeo-link'){
-                $selfImage['picture'][$key]['link'] = $value->media_link;
+            if($value->media_type == 'video-link' || $value->media_type == 'video-youtube-link' || $value->media_type == 'video-vimeo-link'){
                 $selfImage['picture'][$key]['picture-name'] = $value->media_name;
                 $selfImage['picture'][$key]['type'] = $value->media_type;
 
-               $selfImage['picture'][$key]['preview'] = Media::getVideoPreview($value->media_link);
+               $imgData = Media::getVideoData($value->media_link, $value->media_type);
+
+               $selfImage['picture'][$key]['preview'] = $imgData['previewLink'];
+               $selfImage['picture'][$key]['link'] = $imgData['videoLink'];
+
             }
             elseif (($value->media_type == 'img-upload' || $value->media_type == 'img-link')
                 && ($value->is_hero_item == null || $value->is_hero_item == false)

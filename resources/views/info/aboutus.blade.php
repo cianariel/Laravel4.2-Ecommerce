@@ -4,7 +4,18 @@
 
 @section('content')
 
-
+<nav class="mid-nav">
+    <div class="container full-sm fixed-sm">
+        <ul class="wrap col-lg-9">
+            <li class="box-link-ul active-ul ">
+                <a class="box-link active" href="#">
+                    <span class="box-link-active-line"></span>
+                    About Us
+                </a>
+            </li>
+        </ul>
+    </div>
+</nav>
 <section itemscope itemtype="http://schema.org/Organization">
         <h1 itemprop="name" class="hidden">Ideaing.com</h1>
     <article itemprop="description">
