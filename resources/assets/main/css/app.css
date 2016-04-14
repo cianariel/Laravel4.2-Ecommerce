@@ -6680,6 +6680,7 @@ header.colophon {
   #top-nav a.ideas:hover {
     color: #ed2049; }
   #top-nav a.new-message {
+    opacity: 0;
     position: relative; }
     #top-nav a.new-message i {
       font-size: 2.5rem; }

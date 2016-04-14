@@ -437,7 +437,21 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                 $scope.countSocialShares();
                 $scope.countSocialFollowers();
             };
+
+            setTimeout(
+                function(){
+            console.log('~~~~')
+                $('#top-nav a.new-message').animate({
+                    "opacity": "1",
+                }, 1000)
+                //$('#top-nav a.new-message').css( "visibility", "visible" );
+            },
+             3000);
         };
+
+        //$('#top-nav a.new-message').animate({
+        //    visibility: 'visible',
+        //}, 500)
 
         $scope.isEmpty = function (data) {
             if (!data || data.length === 0)
