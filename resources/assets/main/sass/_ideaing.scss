@@ -3001,6 +3001,8 @@ box-shadow: -1px -1px 20px -7px rgba(0,0,0,0.75);
     }
 
     &.new-message{
+      //visibility: hidden;
+      opacity: 0;
       position: relative;
       i{
         font-size: 2.5rem;
