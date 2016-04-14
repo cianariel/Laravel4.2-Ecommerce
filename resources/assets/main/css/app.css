@@ -6680,13 +6680,13 @@ header.colophon {
   #top-nav a.ideas:hover {
     color: #ed2049; }
   #top-nav a.new-message {
-    opacity: 0;
     position: relative; }
     #top-nav a.new-message i {
       font-size: 2.5rem; }
-    #top-nav a.new-message::after {
+    #top-nav a.new-message span {
       content: '1';
       color: #fff;
+      visibility: hidden;
       display: inline-block;
       background: #ed1d47;
       width: 15px;
