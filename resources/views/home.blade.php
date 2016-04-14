@@ -6,15 +6,15 @@
     <?php
     if(!function_exists('is_single')){
         echo  '<h1 id="site-name">Ideaing</h1>
-              <h2 id="site-subhead" style="display:none;">Ideas for Smarter Living</h2>';
+              <h2 id="site-subhead" class="hidden">Ideas for Smarter Living</h2>';
     }
     ?>
-    <section id="hero" class="landing-hero" style="">
+    <section id="hero" class="landing-hero">
         @if(empty($userData['email']))
              @if(isset($homehero))
                 @foreach( $homehero as $key => $image )
                     <div class="rsContent">
-                            <div style="background-image: url('{{$image['hero_image']}}'); background-size: cover;background-repeat: no-repeat;position: absolute;width: 100%;height: 100%;"></div>
+                            <div id="hero-bg" style="background-image: url('{{$image['hero_image']}}'); "></div>
                             <div class="color-overlay"></div>
                             <div class="container fixed-sm full-480">
                                 <div class="col-md-5 col-xs-6 full-620 col-md-offset-1 why-us">
@@ -29,8 +29,8 @@
                                     </ul>
                                 </div>
                                 <div  id="publicApp" ng-app="publicApp" ng-controller="publicController" class="col-md-4 col-xs-6 col-md-offset-1 hero-box qiuck-signup hidden-620" ng-cloak>
-                                    <div style="background-color: lightgrey; text-align: center;">
-                                        <strong style="color: red">@{{ responseMessage }}</strong>
+                                    <div class="response-wrap">
+                                        <strong>@{{ responseMessage }}</strong>
                                     </div>
                                     <form>
                                         <h4>
@@ -94,7 +94,7 @@
 
         <div class="clearfix"></div>
 
-        <div class="homepage-grid center-block" style="min-height:1000px">
+        <div class="homepage-grid center-block">
                 <div class="loader loader-abs" cg-busy="firstLoad"></div>
                 {{--<div class="loader loader-abs" cg-busy="filterLoad"></div>--}}
                 <div class="loader loader-fixed" cg-busy="nextLoad"></div>
