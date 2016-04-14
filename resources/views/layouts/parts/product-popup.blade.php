@@ -1,8 +1,7 @@
         <script type="text/ng-template" id="product-popup.html">
             <div class="lbMain">
                 <div class="lbImageContainer">
-                    <div id="product-slider" class="product-slider slider" style="visibility:hidden">
-                        
+                    <div id="product-slider" class="product-slider slider">
                     </div>
                 </div>
                 <div class="lbInfo">
@@ -130,10 +129,10 @@
                                             <div class="title">Critic</div>
                                             <div class="reviews">Reviews</div>
 
-                                            <div class="star-rating" style="text-align: center">
+                                            <div class="star-rating">
 
                                             </div>
-                                            <p style="color: black" class="star-rating-label text-center">
+                                            <p class="black star-rating-label text-center">
                                             </p>
                                             
                                             <div id="critic-outer-rating-holder"></div>
@@ -141,12 +140,11 @@
                                         
                                         <div class="col-xs-6 text-center reviews-service-holder amazon">
                                             <div class="vertical-line"></div>
-                                            <div class="title"><a style="color: #00b1ff;" href="" target="_blank">Amazon</a></div>
+                                            <div class="title"><a href="" target="_blank">Amazon</a></div>
                                             <div class="reviews">Reviews</div>
-                                            <div class="star-rating" style="text-align: center">
-
+                                            <div class="star-rating text-center">
                                             </div>
-                                            <p style="color: black" class="text-center star-rating-label">
+                                            <p class="black text-center star-rating-label">
                                                 
                                             </p>
                                         </div>

@@ -1,3 +1,6 @@
+ins.adsbygoogle{
+  display: block;
+}
 
 .form-control{
     box-shadow: none;
@@ -1350,6 +1353,11 @@ body.contactus-page
     }
 
 }
+
+#signup-modal{
+  display: none;
+}
+
 .login-signup-modal a.logo{
     .m-icon:first-child{
         display: block;
@@ -2332,6 +2340,7 @@ article.product{
   background: $light-grey;
   margin-top: 55px;
   z-index: 10;
+  position: relative;
 }
 
 #mobile-side-filters{
@@ -2650,6 +2659,25 @@ header.colophon{
       top: 60px;
       //min-height: 800px;
       z-index: 200;
+
+      .sub-title{
+        position: static;
+      }
+
+      .img-wrap{
+        width: 70%;
+        height: auto;
+      }
+
+      .in{
+        position: static;
+        text-transform: capitalize;
+      }
+
+      .item-image{
+        width: 70%;
+        height: auto;
+      }
     }
   }
   @media (min-width: 1025px){
@@ -4736,6 +4764,7 @@ body.single{
   }
 
   .product-slider{
+
     .main-image{
       width: 100%;
     }
@@ -6668,6 +6697,9 @@ footer.about-footer{
         height: 76px;
     }
     .reviews-service-holder{
+        .title a{
+          color: #00b1ff;
+        }
         .critic{
             color: #ff0042;
         }
@@ -8031,6 +8063,10 @@ html.hide-overflow{
         min-height: 470px;
         height: 100%;
         transition: width 250ms ease-out;
+
+        #product-slider{
+          visibility: hidden;
+        }
     }
     
     .lbInfo {
@@ -8886,6 +8922,18 @@ body.error-page{
                 padding: 20px 10px 20px 0px !important;
                 margin: inherit !important;
             }
+            .m-icon--shopping-bag-light-green{
+              float: left;
+              position: static;
+              padding-right: 5px;
+              padding-botom: 5px;
+            }
+            .m-icon--bulb{
+              float: left;
+              position: static;
+              padding-right: 5px;
+              padding-botom: 5px;
+            }
         }
     }
 }
@@ -8924,6 +8972,7 @@ body.search{
   }
   .star-rating{
         margin-top: 0px;
+        text-align: center;
     }
   #top-nav{
       .box-link-active-line{

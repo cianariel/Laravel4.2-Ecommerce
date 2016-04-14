@@ -78,7 +78,7 @@
 
             </form>
         </div>
-        <div id="signup-modal" style="display: none" class="modal-content hero-box qiuck-signup modal-login">
+        <div id="signup-modal" class="modal-content hero-box qiuck-signup modal-login">
             <form>
                 <a class="btn btn-info col-xs-12" ng-click="registerWithFB()" href="#"><i class="fa fa-facebook"></i>Sign
                     up with Facebook</a>
