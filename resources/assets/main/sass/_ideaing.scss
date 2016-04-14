@@ -3002,12 +3002,11 @@ box-shadow: -1px -1px 20px -7px rgba(0,0,0,0.75);
 
     &.new-message{
       //visibility: hidden;
-      opacity: 0;
       position: relative;
       i{
         font-size: 2.5rem;
       }
-      &::after{
+      span{
         content: '1';
         //display: block;
         //position: absolute;
@@ -3017,9 +3016,11 @@ box-shadow: -1px -1px 20px -7px rgba(0,0,0,0.75);
         //border-radius: 8px;
         //color: #fff;
         //font-weight: 700;
-        //background: #FF0042;
-
+        //background: #FF0
+        //042;
+        //opacity: 0;
         color: #fff;
+        visibility: hidden;
         display: inline-block;
         background: #ed1d47;
         width: 15px;

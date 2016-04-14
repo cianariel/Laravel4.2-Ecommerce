@@ -153,6 +153,7 @@ if(function_exists('is_single')){
                                 <?php }  else { ?>
                                         <a class="new-message" href="#" ng-click="getEmailPopup()">
                                             <i class="m-icon m-icon--Notifications"></i>
+                                            <span class="notification-count ng-binding">1</span>
                                         </a>
                                         <a class="pull-right signin" data-toggle="modal" data-target="#myModal" href="/login"><i class="m-icon m-icon--user"></i> Log in</a>
                                     <?php } ?>
