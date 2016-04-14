@@ -2,7 +2,11 @@
     position: relative;
 	width: auto;
 	max-width: 1170px;
-  overflow: visible;
+    overflow: visible;
+
+    &.center-block{
+      min-height:1000px;
+    }
 
    .wrap{
      min-height: 300px;
@@ -16,6 +20,14 @@
 /*		margin-top: -1px;*/
 	}
 
+}
+
+#hero-bg{
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: absolute;
+  width: 100%;
+  height: 100%;
 }
 
 #hero-slider{
@@ -128,4 +140,12 @@
   0%, 20%, 60%, 100%  { -webkit-transform: translateX(0); }
   40%  { -webkit-transform: translateX(20px); }
   80% { -webkit-transform: translateX(10px); }
+}
+
+.response-wrap{
+  background-color: lightgrey;
+  text-align: center;
+  strong{
+    color: $iridium;
+  }
 }

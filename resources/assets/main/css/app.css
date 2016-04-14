@@ -10265,6 +10265,15 @@ body.login-signup {
   body.login-signup .hero-box {
     padding: 35px;
     overflow: hidden; }
+  body.login-signup .login-logo {
+    margin-left: 40%; }
+  body.login-signup .logo-app-wrap {
+    float: none;
+    display: block;
+    margin-left: auto;
+    margin-right: auto; }
+  body.login-signup .login-main-block {
+    margin-top: 45px; }
 
 body.aboutus-page .space {
   height: 30px; }
@@ -11105,6 +11114,8 @@ p {
   width: auto;
   max-width: 1170px;
   overflow: visible; }
+  .homepage-grid.center-block {
+    min-height: 1000px; }
   .homepage-grid .wrap {
     min-height: 300px; }
   @media (max-width: 767px) {
@@ -11112,6 +11123,13 @@ p {
       padding: 0 0; } }
   .homepage-grid .grid-box-3:first-child {
     /*		margin-top: -1px;*/ }
+
+#hero-bg {
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: absolute;
+  width: 100%;
+  height: 100%; }
 
 #hero-slider {
   position: absolute;
@@ -11184,5 +11202,10 @@ p {
     -webkit-transform: translateX(20px); }
   80% {
     -webkit-transform: translateX(10px); } }
+.response-wrap {
+  background-color: lightgrey;
+  text-align: center; }
+  .response-wrap strong {
+    color: #FF0042; }
 
 /*# sourceMappingURL=app.css.map */

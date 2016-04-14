@@ -2,20 +2,16 @@
 
 @section('content')
 
-    <img style="margin-left:40%" class="img-responsive " alt="" src="/assets/images/ideaing-logo-small.png">
+    <img class="login-logo" class="img-responsive " alt="" src="/assets/images/ideaing-logo-small.png">
 
     <div id="publicApp" ng-app="publicApp" ng-controller="publicController"
-         class="col-lg-4" style="float: none;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;">
+         class="col-lg-4 logo-app-wrap">
 
-        <div style="margin-top: 45px">
+        <div class="login-main-block">
 
             <label for="email"><h2>Ideaing - Login </h2></label>
             <div class="row">
                 <div>
-
                     <div class="row">
                         <div class="col-lg-12">
                             <div>
@@ -26,7 +22,6 @@
                             </div>
                         </div>
                     </div>
-
                 </div>
             </div>
 
