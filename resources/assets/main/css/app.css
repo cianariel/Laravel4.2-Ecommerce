@@ -6228,7 +6228,8 @@ article.product {
   padding: 10px;
   display: none;
   background: #c1c1c1;
-  margin-top: 55px; }
+  margin-top: 55px;
+  z-index: 10; }
 
 #mobile-side-filters div {
   margin-top: 20px; }
@@ -6373,7 +6374,7 @@ header.colophon {
   min-height: 60px; }
   header.colophon #top-nav a.signin {
     float: right;
-    padding-left: 15px;
+    padding-left: 10px;
     white-space: nowrap;
     padding-right: 0px; }
     header.colophon #top-nav a.signin .m-icon {
@@ -6387,6 +6388,8 @@ header.colophon {
   header.colophon .logo-wrap {
     position: absolute;
     left: 42%; }
+  header.colophon .logo-holder {
+    padding-left: 0; }
   header.colophon.scroll-header .fixed-sm {
     min-width: 0 !important; }
   header.colophon.scroll-header #top-nav {
@@ -6411,16 +6414,11 @@ header.colophon {
         header.colophon.scroll-header #top-nav li a .m-icon-text {
           display: none; }
         header.colophon.scroll-header #top-nav li a:after {
-          /*position: absolute;
-          right: 9px;*/
-          top: 2px;
-          /*              background-size: 22px;*/ }
+          top: 2px; }
       header.colophon.scroll-header #top-nav a#ideaing-logo {
         display: block;
-        /*          width: 45px;*/
         min-height: 60px;
         padding: 0;
-        /*          background-image: url("/assets/images/ideaing-logo-lamp-only.png");*/
         background-repeat: no-repeat;
         background-position: right;
         background-size: initial;
@@ -6436,6 +6434,11 @@ header.colophon {
     position: fixed;
     top: 60px;
     z-index: 200; }
+  @media (min-width: 1025px) {
+    header.colophon .user-controls {
+      max-width: 120px; }
+      header.colophon .user-controls .new-message {
+        padding-top: 15px; } }
 
 #top-nav .search-bar a.search-toggle {
   padding-top: 6px;
@@ -6443,7 +6446,7 @@ header.colophon {
 
 .search-bar {
   position: relative;
-  /*  width: 20%;*/ }
+  margin-left: 3%; }
   .search-bar a.search-toggle {
     display: none;
     /*    text-indent: -9999px;*/
@@ -6668,8 +6671,6 @@ header.colophon {
     margin-right: 20px;
     margin-top: 20px; }
 #top-nav a {
-  /*margin-right: 8%;
-  padding-left: 30px;*/
   padding-right: 10px;
   font-size: 1.2rem;
   color: #999;
@@ -6678,6 +6679,21 @@ header.colophon {
     background: url("/assets/images/pro-grey.png") left center no-repeat; }
   #top-nav a.ideas:hover {
     color: #ed2049; }
+  #top-nav a.new-message {
+    position: relative; }
+    #top-nav a.new-message i {
+      font-size: 2.5rem; }
+    #top-nav a.new-message::after {
+      content: '1';
+      display: block;
+      position: absolute;
+      top: 9px;
+      right: 6px;
+      padding: 0px 4px;
+      border-radius: 8px;
+      color: #fff;
+      font-weight: 700;
+      background: #FF0042; }
   #top-nav a:hover, #top-nav a .active {
     color: #ed2049; }
 #top-nav li.nested {
@@ -8350,11 +8366,6 @@ footer.about-footer {
     left: 42%;
     top: 170px; } }
 @media only screen and (max-width: 992px) {
-  header.colophon.scroll-header #top-nav .search-bar {
-    margin-left: 0%; }
-
-  header.colophon .search-bar {
-    margin-left: 0; }
   header.colophon .logo-wrap {
     left: 38%; }
   header.colophon #top-nav .category-menu {

@@ -229,7 +229,7 @@
                                         <img itemprop="image" class="rsTmb" src="{{$image['link']}}"
                                              alt="{{$image['picture-name']}}">
                                     </a>
-                                @elseif(($image['type'] == 'video-link' || $image['type'] == 'video-upload'))
+                                @elseif($image['type'] == 'video-link' || $image['type'] == 'video-upload' || $image['type'] == 'video-youtube-link' || $image['type'] == 'video-vimeo-link'))
                                     <a class="rsImg"
                                        data-rsVideo="{{$image['link']}}"
                                        href="{{$image['preview']}}"
