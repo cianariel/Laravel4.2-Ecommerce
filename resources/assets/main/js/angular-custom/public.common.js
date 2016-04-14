@@ -442,7 +442,51 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                 function(){
                 $('#top-nav a.new-message span').css('visibility', 'visible');
             },
-             6000);
+            6000);
+
+            jQuery(document).ready(function($) {
+                var args = {
+                    arrowsNav: true,
+                    loop: true,
+                    loopRewind: true,
+                    keyboardNavEnabled: true,
+                    controlsInside: true,
+                    controlNavigation: 'bullets',
+                    arrowsNavAutoHide: false,
+                    slidesSpacing: 0,
+                    imageScaleMode: 'none',
+                    imgWidth: 1175,
+                    imageAlignCenter: true,
+                    autoScaleSliderWidth: 1180,
+                    autoScaleSliderHeight: 394,
+                    thumbsFitInViewport: false,
+                    navigateByClick: true,
+                    startSlideId: 0,
+                    autoPlay: false,
+                    transitionType: 'move',
+                    globalCaption: false,
+                    addActiveClass:true,
+                    deeplinking: {
+                        enabled: true,
+                        change: false
+                    },
+                };
+//
+                if (window.innerWidth < 1176) {
+                    args.visibleNearby = {
+                        enabled: false,
+                        center: false,
+                    }
+                }else{
+                    args.visibleNearby = {
+                        enabled: true,
+                        center: true,
+                        navigateByCenterClick: true
+                    }
+                }
+
+                $('#hero-slider').royalSlider(args);
+            });
         };
 
         //$('#top-nav a.new-message').animate({
