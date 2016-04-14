@@ -3007,15 +3007,28 @@ box-shadow: -1px -1px 20px -7px rgba(0,0,0,0.75);
       }
       &::after{
         content: '1';
-        display: block;
-        position: absolute;
-        top: 9px;
-        right: 6px;
-        padding:0px 4px;
-        border-radius: 8px;
+        //display: block;
+        //position: absolute;
+        //top: 9px;
+        //right: 6px;
+        //padding:0px 4px;
+        //border-radius: 8px;
+        //color: #fff;
+        //font-weight: 700;
+        //background: #FF0042;
+
         color: #fff;
-        font-weight: 700;
-        background: #FF0042;
+        display: inline-block;
+        background: #ed1d47;
+        width: 15px;
+        font-size: 10px;
+        position: absolute;
+        border-radius: 10px;
+        left: 10px;
+        top: 10px;
+        height: 15px;
+        text-align: center;
+        line-height: 15px;
       }
     }
 
