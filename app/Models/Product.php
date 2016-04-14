@@ -160,7 +160,7 @@ class Product extends Model
         try {
             //ProductAuthorName: $scope.ProductAuthorName,
             $data = array(
-                "product_category_id" => ($product['CategoryId'] != null) ? $product['CategoryId'] : null,
+                "product_category_id" => ($product['CategoryId'] != null) ? $product['CategoryId'] : env('DEFAULT_CATEGORY_ID','44'),
                 "user_name" => ($product['ProductAuthorName'] != null) ? $product['ProductAuthorName'] : 'Anonymous User',
                 "product_vendor_id" => $product['ProductVendorId'],
                 "product_vendor_type" => $product['ProductVendorType'],
