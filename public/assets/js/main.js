@@ -4324,7 +4324,7 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
             },
             6000);
 
-            jQuery(document).ready(function($) {
+            //jQuery(document).ready(function($) {
                 var args = {
                     arrowsNav: true,
                     loop: true,
@@ -4366,7 +4366,7 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                 }
 
                 $('#hero-slider').royalSlider(args);
-            });
+            //});
         };
 
         //$('#top-nav a.new-message').animate({

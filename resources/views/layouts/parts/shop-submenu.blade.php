@@ -2,14 +2,14 @@
             <nav id="shop-menu" class="shop-menu hidden-soft hidden-620">
                 <div class="container full-sm">
                     <section class="most-popular col-xs-4" ng-repeat="item in productsForShopMenu.mostPopular">
-                        <h5 class="sub-title"><a style="position: static" href="/shop/">Most Popular</a></h5>
+                        <h5 class="sub-title"><a href="/shop/">Most Popular</a></h5>
 
                         <div class="img-wrap">
-                            <img style="width: 70%;height: auto;" class="img-responsive" src="{{item.media_link_full_path}}">
+                            <img class="img-responsive" src="{{item.media_link_full_path}}">
                         </div>
-                        <div style="position: static">
-                            <span class="in" style="position: static; text-transform: capitalize;">In {{item.category_name}}</span>
-                            <b><a style="position: static;" href="/product/{{item.product_permalink}}">{{item.product_name}}</a></b>
+                        <div class="static">
+                            <span class="in">In {{item.category_name}}</span>
+                            <b><a class="static" href="/product/{{item.product_permalink}}">{{item.product_name}}</a></b>
                         </div> 
                     </section>
 
@@ -17,7 +17,7 @@
                         <h5 class="sub-title"><a href="/shop/smart-home">Smart Home</a></h5>
                         <div class="img-wrap" ng-repeat="item in productsForShopMenu.smartHome">
                             <a href="/product/{{item.product_permalink}}">
-                                <img  style="width: 70%;height: auto;" class="img-responsive" src="{{item.media_link_full_path}}">
+                                <img class="item-image img-responsive" src="{{item.media_link_full_path}}">
                             </a>
                         </div>
                     </section>
@@ -27,7 +27,7 @@
                         <h5 class="sub-title"><a href="/shop/travel">Travel</h5>
                         <div class="img-wrap" ng-repeat="item in productsForShopMenu.travel">
                             <a href="/product/{{item.product_permalink}}">
-                                 <img  style="width: 70%;height: auto;" class="img-responsive" src="{{item.media_link_full_path}}">
+                                 <img class="item-image img-responsive" src="{{item.media_link_full_path}}">
                             </a>
                         </div>
                     </section>
@@ -36,7 +36,7 @@
                         <h5 class="sub-title"><a href="/shop/wearables">Wearables</h5>
                         <div class="img-wrap" ng-repeat="item in productsForShopMenu.wearables">
                             <a href="/product/{{item.product_permalink}}">
-                                <img style="width: 70%;height: auto;"  class="img-responsive" src="{{item.media_link_full_path}}">
+                                <img class="item-image img-responsive" src="{{item.media_link_full_path}}">
                             </a>
                         </div>
                     </section>
@@ -46,7 +46,7 @@
                         <h5 class="sub-title"><a href="/shop/home-decor">Home and Decor</a></h5>
                         <div class="img-wrap" ng-repeat="item in productsForShopMenu.homeDecor">
                             <a href="/product/{{item.product_permalink}}">
-                                <img  style="width: 70%;height: auto;" class="img-responsive" src="{{item.media_link_full_path}}">
+                                <img class="item-image img-responsive" src="{{item.media_link_full_path}}">
                             </a>
                         </div>
                     </section>

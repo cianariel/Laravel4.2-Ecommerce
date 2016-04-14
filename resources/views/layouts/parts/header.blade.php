@@ -168,7 +168,7 @@ if(function_exists('is_single')){
                 </div>
 
                 <form class="search-bar" ng-app="publicApp"  ng-controller="SearchController" action="/search-form-query" >
-                    <div style="position: relative" class="mobile-search-bar col-xs-12">
+                    <div class="mobile-search-bar col-xs-12">
                         <input ng-click="toggleSearch()" ng-change="openSearchDropdown(query)" ng-model="query" ng-model-options='{ debounce: 800 }'  class="form-control col-xs-10  top-search" type="text" value="Search..."  placeholder="Search for products and ideas..."  name="search" />
                         <div id="suggest-category" ng-class="{shown: open, hidden: !open}" ng-show="categorySuggestions.length">
                             <?php // have to use only pure php includes, or the CMS wont read it
