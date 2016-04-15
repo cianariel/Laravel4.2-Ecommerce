@@ -238,7 +238,7 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
 
         $scope.getEmailPopup = function(){
             // Header profile option open and close on click action.
-            if (!$rootScope.isCallEmailPopup) {
+            //if (!$rootScope.isCallEmailPopup) {
                 //$timeout(function () {
                 //if ($scope.canOpenEmailPopup) {
                     var templateUrl = "subscribe_email_popup.html";
@@ -255,8 +255,8 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                         ;
                 //}
                 //}, 300000)  //300000
-                $rootScope.isCallEmailPopup = true;
-            }
+                //$rootScope.isCallEmailPopup = true;
+            //}
         };
 
         $scope.openProfileSetting = function () {
@@ -437,7 +437,17 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                 $scope.countSocialShares();
                 $scope.countSocialFollowers();
             };
+
+            setTimeout(
+                function(){
+                $('#top-nav a.new-message span').css('visibility', 'visible');
+            },
+             6000);
         };
+
+        //$('#top-nav a.new-message').animate({
+        //    visibility: 'visible',
+        //}, 500)
 
         $scope.isEmpty = function (data) {
             if (!data || data.length === 0)
