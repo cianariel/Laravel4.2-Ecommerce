@@ -6683,17 +6683,21 @@ header.colophon {
     position: relative; }
     #top-nav a.new-message i {
       font-size: 2.5rem; }
-    #top-nav a.new-message::after {
+    #top-nav a.new-message span {
       content: '1';
-      display: block;
-      position: absolute;
-      top: 9px;
-      right: 6px;
-      padding: 0px 4px;
-      border-radius: 8px;
       color: #fff;
-      font-weight: 700;
-      background: #FF0042; }
+      visibility: hidden;
+      display: inline-block;
+      background: #ed1d47;
+      width: 15px;
+      font-size: 10px;
+      position: absolute;
+      border-radius: 10px;
+      left: 10px;
+      top: 10px;
+      height: 15px;
+      text-align: center;
+      line-height: 15px; }
   #top-nav a:hover, #top-nav a .active {
     color: #ed2049; }
 #top-nav li.nested {
