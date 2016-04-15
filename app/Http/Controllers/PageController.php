@@ -353,12 +353,6 @@ if($stories['featured']){
             $featuredUrl .= '&category-name=' . $category;
         }
 
-            //  print_r('tag'); 
-            //  print_r($tag); die();
-
-        // print_r($return); die();
-
-
         curl_setopt($ch, CURLOPT_URL, $featuredUrl);
         $json = curl_exec($ch);
         curl_close($ch);
@@ -495,22 +489,9 @@ if($stories['featured']){
             $userData = $this->authCheck['user-data'];
         }
 
-        // return view('home')->with('userData',$userData);
-        //  dd($this->getProducts(3,1,6));
 
         $product = new Product();
         $productData['product'] = $product->getViewForPublic($permalink);
-
-        // todo - check login user and implement mark as reade notification for the user
-
-        if (isset($userData['id'])) {
-            $user = new User();
-
-            //    $tmpPermalink = 'product/' . $permalink . '/#comment';
-
-            //    $user->markNotificationAsRead(['UserId'=>$userData['id'],'Permalink' => $tmpPermalink]);
-
-        }
 
 
         // Get category tree
