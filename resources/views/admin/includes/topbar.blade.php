@@ -4,7 +4,7 @@
     <div class="page-header-inner ">
         <!-- BEGIN LOGO -->
         <div class="page-logo">
-            <a href="index.html">
+            <a href="/">
                 <img src="/assets/images/ideaing-logo-white-letters.png" alt="logo" class="logo-default" /> </a>
             <div class="menu-toggler sidebar-toggler"> </div>
         </div>
@@ -18,9 +18,16 @@
                 <!-- BEGIN NOTIFICATION DROPDOWN -->
                 <!-- DOC: Apply "dropdown-dark" class after below "dropdown-extended" to change the dropdown styte -->
                 <li class="dropdown dropdown-extended dropdown-notification" id="header_notification_bar">
+                <a href="/ideas/wp-admin"
+                   data-toggle="tooltip" data-placement="bottom" title="Wordpress Admin"
+                   class="dropdown-toggle"  data-close-others="true">
+                    <i class="fa fa-wordpress fa-2"></i>
+                </a>
+                </li>
+                {{--<li class="dropdown dropdown-extended dropdown-notification" id="header_notification_bar">
                     <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
-                        <i class="icon-bell"></i>
-                        <span class="badge badge-default"> 7 </span>
+                        <i class="fa fa-wordpress"></i>
+                        <span class="badge badge-default"> 4 </span>
                     </a>
                     <ul class="dropdown-menu">
                         <li class="external">
@@ -300,13 +307,13 @@
                             </ul>
                         </li>
                     </ul>
-                </li>
+                </li>--}}
                 <!-- END TODO DROPDOWN -->
                 <!-- BEGIN USER LOGIN DROPDOWN -->
                 <!-- DOC: Apply "dropdown-dark" class after below "dropdown-extended" to change the dropdown styte -->
                 <li class="dropdown dropdown-user">
                     <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
-                        <img alt="" class="img-circle" src="/assets/admin/vendor/layouts/layout/img/avatar3_small.jpg" />
+                        <img alt="" class="img-circle" src="{{$userData['user-data']['medias'][0]['media_link']}}" />
                         <span class="username username-hide-on-mobile"> Admin </span>
                         <i class="fa fa-angle-down"></i>
                     </a>

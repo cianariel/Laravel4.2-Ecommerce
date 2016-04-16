@@ -24,12 +24,13 @@
             // check authentication with role 'admin' (default parameter)
             $this->authCheck = $this->RequestAuthentication(array('admin','editor'));
           //  $this->authCheck['method-status'] = 'success-with-http';
+          //  dd($this->authCheck);
 
         }
 
         public function index()
         {
-            return view('admin.index');
+            return view('admin.index')->with('userData' , $this->authCheck);
         }
 
         // User view
@@ -38,7 +39,7 @@
         {
             if ($this->authCheck['method-status'] == 'success-with-http')
             {
-                return view('admin.user-list-view');
+                return view('admin.user-list-view')->with('userData' , $this->authCheck);
 
             } elseif ($this->authCheck['method-status'] == 'fail-with-http')
             {
@@ -56,9 +57,9 @@
             if ($this->authCheck['method-status'] == 'success-with-http')
             {
                 if($id == null)
-                    return view('admin.user-add')->with('roles',$roles);
+                    return view('admin.user-add')->with('roles',$roles)->with('userData' , $this->authCheck);
                 else
-                    return view('admin.user-add')->with('id',$id)->with('roles',$roles);
+                    return view('admin.user-add')->with('id',$id)->with('roles',$roles)->with('userData' , $this->authCheck);
 
             } elseif ($this->authCheck['method-status'] == 'fail-with-http')
             {
@@ -75,7 +76,7 @@
 
             if ($this->authCheck['method-status'] == 'success-with-http')
             {
-                return view('admin.category-view');
+                return view('admin.category-view')->with('userData' , $this->authCheck);
 
             } elseif ($this->authCheck['method-status'] == 'fail-with-http')
             {
@@ -88,7 +89,7 @@
         {
             if ($this->authCheck['method-status'] == 'success-with-http')
             {
-                return view('admin.category-add');
+                return view('admin.category-add')->with('userData' , $this->authCheck);
 
 
             } elseif ($this->authCheck['method-status'] == 'fail-with-http')
@@ -104,7 +105,7 @@
 
             if ($this->authCheck['method-status'] == 'success-with-http')
             {
-                return view('admin.category-edit');
+                return view('admin.category-edit')->with('userData' , $this->authCheck);
 
             } elseif ($this->authCheck['method-status'] == 'fail-with-http')
             {
@@ -118,7 +119,7 @@
         {
             if ($this->authCheck['method-status'] == 'success-with-http')
             {
-                return view('admin.product-view');
+                return view('admin.product-view')->with('userData' , $this->authCheck);
 
             } elseif ($this->authCheck['method-status'] == 'fail-with-http')
             {
@@ -133,7 +134,7 @@
             {
                // dd($this->authCheck['user-data']['name']);
                 return view('admin.product-add')
-                    ->with('userName',$this->authCheck['user-data']['name']);
+                    ->with('userName',$this->authCheck['user-data']['name'])->with('userData' , $this->authCheck);
 
             } elseif ($this->authCheck['method-status'] == 'fail-with-http')
             {
@@ -146,7 +147,7 @@
         {
             if ($this->authCheck['method-status'] == 'success-with-http')
             {
-                return view('admin.product-add')
+                return view('admin.product-add')->with('userData' , $this->authCheck)
                     ->with('userName',$this->authCheck['user-data']['name'])
                     ->with('id',$id);
 
@@ -162,7 +163,7 @@
         {
             if ($this->authCheck['method-status'] == 'success-with-http')
             {
-                return view('admin.stores');
+                return view('admin.stores')->with('userData' , $this->authCheck);
 
 
             } elseif ($this->authCheck['method-status'] == 'fail-with-http')
@@ -175,7 +176,7 @@
         {
             if ($this->authCheck['method-status'] == 'success-with-http')
             {
-                return view('admin.tag-view');
+                return view('admin.tag-view')->with('userData' , $this->authCheck);
 
 
             } elseif ($this->authCheck['method-status'] == 'fail-with-http')
@@ -190,7 +191,7 @@
             if ($this->authCheck['method-status'] == 'success-with-http')
             {
                 $Rooms = Room::all();
-                return \View::make('admin.rooms.room-view', ['Rooms' => $Rooms]);
+                return \View::make('admin.rooms.room-view', ['Rooms' => $Rooms])->with('userData' , $this->authCheck);
 
             } elseif ($this->authCheck['method-status'] == 'fail-with-http')
             {
@@ -204,7 +205,7 @@
             if ($this->authCheck['method-status'] == 'success-with-http')
             {
                 $room = new Room();
-                return view('admin.rooms.room-add')->with('room',$room);
+                return view('admin.rooms.room-add')->with('room',$room)->with('userData' , $this->authCheck);
 
             } elseif ($this->authCheck['method-status'] == 'fail-with-http')
             {
@@ -219,7 +220,7 @@
             if ($this->authCheck['method-status'] == 'success-with-http')
             {
                 $room = Room::find($id);
-                return view('admin.rooms.room-add')->with('room',$room);
+                return view('admin.rooms.room-add')->with('room',$room)->with('userData' , $this->authCheck);
 
             } elseif ($this->authCheck['method-status'] == 'fail-with-http')
             {
@@ -234,7 +235,7 @@
             if ($this->authCheck['method-status'] == 'success-with-http')
             {
                 $Rooms = HomeHero::all();
-                return \View::make('admin.homehero.home-hero-list', ['homeheros' => $Rooms]);
+                return \View::make('admin.homehero.home-hero-list', ['homeheros' => $Rooms])->with('userData' , $this->authCheck);
 
             } elseif ($this->authCheck['method-status'] == 'fail-with-http')
             {
@@ -246,7 +247,7 @@
             if ($this->authCheck['method-status'] == 'success-with-http')
             {
                 $homehero = new HomeHero();
-                return view('admin.homehero.home-hero-add')->with('homehero',$homehero);
+                return view('admin.homehero.home-hero-add')->with('homehero',$homehero)->with('userData' , $this->authCheck);
 
             } elseif ($this->authCheck['method-status'] == 'fail-with-http')
             {
@@ -259,7 +260,7 @@
             if ($this->authCheck['method-status'] == 'success-with-http')
             {
                 $homehero = HomeHero::find($id);
-                return view('admin.homehero.home-hero-add')->with('homehero',$homehero);
+                return view('admin.homehero.home-hero-add')->with('homehero',$homehero)->with('userData' , $this->authCheck);
 
             } elseif ($this->authCheck['method-status'] == 'fail-with-http')
             {
@@ -273,7 +274,7 @@
             if ($this->authCheck['method-status'] == 'success-with-http')
             {
                 $giveaways = Giveaway::all();
-                return \View::make('admin.giveaway.giveaways-list', ['giveaways' => $giveaways]);
+                return \View::make('admin.giveaway.giveaways-list', ['giveaways' => $giveaways])->with('userData' , $this->authCheck);
 
             } elseif ($this->authCheck['method-status'] == 'fail-with-http')
             {
@@ -285,7 +286,7 @@
             if ($this->authCheck['method-status'] == 'success-with-http')
             {
                 $giveaway = new Giveaway();
-                return view('admin.giveaway.giveaway-add')->with('giveaway',$giveaway);
+                return view('admin.giveaway.giveaway-add')->with('giveaway',$giveaway)->with('userData' , $this->authCheck);
 
             } elseif ($this->authCheck['method-status'] == 'fail-with-http')
             {
@@ -298,7 +299,7 @@
             if ($this->authCheck['method-status'] == 'success-with-http')
             {
                 $giveaway = Giveaway::find($id);
-                return view('admin.giveaway.giveaway-add')->with('giveaway',$giveaway);
+                return view('admin.giveaway.giveaway-add')->with('giveaway',$giveaway)->with('userData' , $this->authCheck);
 
             } elseif ($this->authCheck['method-status'] == 'fail-with-http')
             {

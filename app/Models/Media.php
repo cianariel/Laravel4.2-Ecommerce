@@ -100,11 +100,8 @@
                 $return['videoLink'] = $videoURL;
                 $return['previewLink'] = "http://img.youtube.com/vi/0.jpg";
             }
-            print_r( $return);
+          //  print_r( $return);
             return $return;
         }
-
-
-
 
     }
