@@ -238,9 +238,7 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
 
         $scope.getEmailPopup = function(){
             // Header profile option open and close on click action.
-            //if (!$rootScope.isCallEmailPopup) {
-                //$timeout(function () {
-                //if ($scope.canOpenEmailPopup) {
+
                     var templateUrl = "subscribe_email_popup.html";
                     var modalInstance = $uibModal.open({
                             templateUrl: templateUrl,
@@ -251,12 +249,7 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                         })
                             .result.finally(function () {
                                 $scope.uploader.formData = [];
-                            })
-                        ;
-                //}
-                //}, 300000)  //300000
-                //$rootScope.isCallEmailPopup = true;
-            //}
+                            });
         };
 
         $scope.openProfileSetting = function () {
@@ -271,9 +264,7 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                 })
                 .result.finally(function () {
                         $scope.uploader.formData = [];
-                    })
-                ;
-
+                    });
         };
 
         $scope.openSharingModal = function ($service) {
@@ -317,7 +308,7 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                 $scope.showBrowseButton = !$scope.showBrowseButton;
                 $scope.uploader.uploadAll();
 
-                console.log($scope.oldMediaLink, ' : ', $scope.MediaLink);
+              //  console.log($scope.oldMediaLink, ' : ', $scope.MediaLink);
 
             }
         };

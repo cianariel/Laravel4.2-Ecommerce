@@ -29,7 +29,7 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
 
                 $scope.heartCounterAction = function(){
 
-                    console.log('hi : ',$scope.iid,$scope.plink);
+                   // console.log('hi : ',$scope.iid,$scope.plink);
 
                     $http({
                         url: '/api/heart/count-heart',
