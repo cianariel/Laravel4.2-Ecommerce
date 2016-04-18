@@ -7943,8 +7943,7 @@ body.homepage #hero {
 html.idea-stories.logged-in #hero,
 body.room-landing.logged-in #hero,
 body.homepage.logged-in #hero {
-  min-height: 515px;
-  padding-top: 2px; }
+  min-height: 515px; }
 html.idea-stories #hero-nav,
 body.room-landing #hero-nav,
 body.homepage #hero-nav {
