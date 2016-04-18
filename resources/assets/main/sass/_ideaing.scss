@@ -2852,7 +2852,7 @@ header.colophon{
         .notification-popup{
             position: absolute;
 /*            max-height: 600px;*/
-            width: 400px;
+            width: 375px;
             min-height: 50px;
             right: 0px;
             top: 70px;
@@ -3079,7 +3079,7 @@ box-shadow: -1px -1px 20px -7px rgba(0,0,0,0.75);
     }
 
   }
-  
+
   @media (max-width: 775px){
     &{
       max-height: 60px;
@@ -9094,4 +9094,12 @@ body.giveaway-page{
 
 
 
+}
+
+.adsbygoogle{
+  & > ins{
+    display: block !important;
+    margin: 0 auto  !important;;
+    float: none;
+  }
 }
