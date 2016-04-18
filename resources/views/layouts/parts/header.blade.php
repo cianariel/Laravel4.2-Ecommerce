@@ -425,7 +425,7 @@ if(function_exists('is_single')){
         //dd($userData['email'],);
 if(empty($userData['email']))
 {
-if((isset($userData['user-data']['hide-signup'])) && ($userData['user-data']['hide-signup'] != 'true'))
+if(@$userData['user-data']['hide-signup'] != 'true')
 {
 
 ?>
