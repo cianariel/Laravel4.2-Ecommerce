@@ -25,10 +25,11 @@
                 <li><a class="inst" href="https://www.instagram.com/ideaing_com/"><span><i class=" m-icon--footer-instagram"></i> Follow <b class="fan-count inst count"></b></span></a></li>
             </ul>
         </div>
-        <div class="col-sm-3 col-xs-12">
+        <div class="col-sm-3 col-xs-12" ng-app="publicApp" ng-controller="publicController">
+            <strong style="color: red"><?php echo "{{ responseMessage }}";?></strong>
             <h4 class="pink">Ideas to You</h4>
-            <input class="form-control" type="text" placeholder="Email address">
-            <input class="form-control" type="submit" value="Submit">
+            <input class="form-control" type="text" ng-model="data.SubscriberEmail" placeholder="Email address">
+            <input class="form-control" type="submit" ng-click="subscribe(data)" >
         </div>
     </div>
     <button class="btn-none close-down" data-toggle=".about-footer"></button>
