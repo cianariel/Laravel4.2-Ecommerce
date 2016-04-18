@@ -9,9 +9,9 @@ if(function_exists('is_single')){
 }                                            
 ?>
 
-<div id="publicApp" ng-app="publicApp" ng-controller="publicController" ng-cloak>
+<div id="publicApp" ng-app="publicApp" ng-controller="publicController" class="header-cloak" ng-cloak>
 <header class="colophon">
-                <div ng-init="socialCounter()" class="col-xs-12">
+                <div ng-init="socialCounter()" class="socialcounter col-xs-12">
                     <nav id="top-nav" class="row">
                         <div class="container full-sm fixed-sm">
                             <div class="top-nav-holder">

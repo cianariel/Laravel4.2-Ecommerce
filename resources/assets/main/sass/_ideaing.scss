@@ -2738,6 +2738,11 @@ header.colophon{
     }
 }
 
+.socialcounter{
+  max-height: 60px;
+  //overflow: hidden;
+}
+
 #top-nav{
     
     .mobile-top-menu-switcher{
@@ -3073,6 +3078,12 @@ box-shadow: -1px -1px 20px -7px rgba(0,0,0,0.75);
       display: none;
     }
 
+  }
+  
+  @media (max-width: 775px){
+    &{
+      max-height: 60px;
+    }
   }
 
 
