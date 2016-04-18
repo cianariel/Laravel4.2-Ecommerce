@@ -53,13 +53,16 @@
     fbq('track', 'CompleteRegistration');
 </script>
 
-<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+<?php if(function_exists('is_single') || Request::segment(1) != 'login'){ ?>
+     <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-8975651769887133"
+         data-ad-slot="7018993602"
+         data-ad-format="auto"></ins>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+<?php } ?>
 <!-- Homepage -->
-<ins class="adsbygoogle"
-     style="display:block"
-     data-ad-client="ca-pub-8975651769887133"
-     data-ad-slot="7018993602"
-     data-ad-format="auto"></ins>
-<script>
-    (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
