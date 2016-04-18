@@ -116,7 +116,7 @@ productApp.config(['$provide', function ($provide) {
         });
 
         taOptions.toolbar = [
-            ['bold', 'insertCustomImage']
+            ['bold', 'insertImage']
         ];
 
         taOptions.classes = {
