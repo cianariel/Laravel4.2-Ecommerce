@@ -6943,31 +6943,36 @@ footer.about-footer{
 }
 
 
-body.shoppage,
-body.profilepage,
-body.single-post,
-body.product-details,
-body.aboutus-page,
-body.giveaway-page,
-body.privacy-policy-page,
-body.terms-of-use-page,
-body.contactus-page{
-    .clearfix.pocket{
-        //height: 100px;
-      display: none;
-    }
-    #about-button{
-        bottom:39px;
-    }
-    #back-to-top{
-        bottom: 35px;
-    }
+//body.shoppage,
+//body.profilepage,
+//body.single-post,
+//body.product-details,
+//body.aboutus-page,
+//body.giveaway-page,
+//body.privacy-policy-page,
+//body.terms-of-use-page,
+//body.contactus-page{
+//
+//}
 
-    .bottom-block{
-      height: 100px;
-      position: relative;
-    }
+.clearfix.pocket{
+  //height: 100px;
+  display: none;
 }
+
+.bottom-block{
+  height: 100px;
+  position: relative;
+}
+
+#about-button{
+  bottom:39px;
+}
+#back-to-top{
+  bottom: 35px;
+}
+
+
 body.shoppage{
     .mid-nav{
         .container{
