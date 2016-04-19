@@ -6943,15 +6943,29 @@ footer.about-footer{
 }
 
 
-body.shoppage, body.profilepage, body.single-post, body.product-details, body.aboutus-page, body.giveaway-page, body.privacy-policy-page, body.terms-of-use-page, body.contactus-page{
+body.shoppage,
+body.profilepage,
+body.single-post,
+body.product-details,
+body.aboutus-page,
+body.giveaway-page,
+body.privacy-policy-page,
+body.terms-of-use-page,
+body.contactus-page{
     .clearfix.pocket{
-        height: 100px;
+        //height: 100px;
+      display: none;
     }
     #about-button{
-        bottom:25px;
+        bottom:39px;
     }
     #back-to-top{
-        bottom: 21px;
+        bottom: 35px;
+    }
+
+    .bottom-block{
+      height: 100px;
+      position: relative;
     }
 }
 body.shoppage{

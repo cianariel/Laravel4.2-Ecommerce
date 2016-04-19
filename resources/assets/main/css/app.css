@@ -9194,12 +9194,47 @@ footer.about-footer {
   /*    background: rgba(232, 232, 232, 0.75);*/
   /*    background: rgba(153,153,153,.4);*/ }
 
-body.shoppage .clearfix.pocket, body.profilepage .clearfix.pocket, body.single-post .clearfix.pocket, body.product-details .clearfix.pocket, body.aboutus-page .clearfix.pocket, body.giveaway-page .clearfix.pocket, body.privacy-policy-page .clearfix.pocket, body.terms-of-use-page .clearfix.pocket, body.contactus-page .clearfix.pocket {
-  height: 100px; }
-body.shoppage #about-button, body.profilepage #about-button, body.single-post #about-button, body.product-details #about-button, body.aboutus-page #about-button, body.giveaway-page #about-button, body.privacy-policy-page #about-button, body.terms-of-use-page #about-button, body.contactus-page #about-button {
-  bottom: 25px; }
-body.shoppage #back-to-top, body.profilepage #back-to-top, body.single-post #back-to-top, body.product-details #back-to-top, body.aboutus-page #back-to-top, body.giveaway-page #back-to-top, body.privacy-policy-page #back-to-top, body.terms-of-use-page #back-to-top, body.contactus-page #back-to-top {
-  bottom: 21px; }
+body.shoppage .clearfix.pocket,
+body.profilepage .clearfix.pocket,
+body.single-post .clearfix.pocket,
+body.product-details .clearfix.pocket,
+body.aboutus-page .clearfix.pocket,
+body.giveaway-page .clearfix.pocket,
+body.privacy-policy-page .clearfix.pocket,
+body.terms-of-use-page .clearfix.pocket,
+body.contactus-page .clearfix.pocket {
+  display: none; }
+body.shoppage #about-button,
+body.profilepage #about-button,
+body.single-post #about-button,
+body.product-details #about-button,
+body.aboutus-page #about-button,
+body.giveaway-page #about-button,
+body.privacy-policy-page #about-button,
+body.terms-of-use-page #about-button,
+body.contactus-page #about-button {
+  bottom: 39px; }
+body.shoppage #back-to-top,
+body.profilepage #back-to-top,
+body.single-post #back-to-top,
+body.product-details #back-to-top,
+body.aboutus-page #back-to-top,
+body.giveaway-page #back-to-top,
+body.privacy-policy-page #back-to-top,
+body.terms-of-use-page #back-to-top,
+body.contactus-page #back-to-top {
+  bottom: 35px; }
+body.shoppage .bottom-block,
+body.profilepage .bottom-block,
+body.single-post .bottom-block,
+body.product-details .bottom-block,
+body.aboutus-page .bottom-block,
+body.giveaway-page .bottom-block,
+body.privacy-policy-page .bottom-block,
+body.terms-of-use-page .bottom-block,
+body.contactus-page .bottom-block {
+  height: 100px;
+  position: relative; }
 
 body.shoppage .mid-nav .container, .mid-nav body.shoppage .extra-nav .container {
   position: relative; }
