@@ -437,7 +437,7 @@ if(@$userData['user-data']['hide-signup'] != 'true')
                 <div class="content-container">
                     <div class="content-holder">
                         <div>
-                            <h4>Subscribe me to the world's finest design ideas community</h4></div><br><div>
+                            <h4>Subscribe to the world’s finest Smart Home & Design Ideas</h4></div><br><div>
                             <h5>Enter your email</h5> 
                             <strong style="color: red">@{{ responseMessage }}</strong>
                         </div>
