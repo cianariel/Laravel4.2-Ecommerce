@@ -490,7 +490,7 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
         $scope.getUserList = function () {
 
             // todo - test init .remove after test
-            console.log('sdf');
+          //  console.log('sdf');
             $scope.limit = $scope.userListPageLimit;
 
             $http({
@@ -505,11 +505,35 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
                     FilterValue: $scope.FilterUserItem
                 }
             }).success(function (data) {
-                console.log(data);
+             //   console.log(data);
                 $scope.limit = data.data.limit;
                 $scope.page = data.data.page;
                 $scope.total = data.data.count;
                 $scope.userList = data.data.result;
+            });
+        };
+
+        $scope.getSubscribersList = function () {
+
+            // todo - test init .remove after test
+            //  console.log('sdf');
+            $scope.limit = $scope.userListPageLimit;
+
+            $http({
+                url: '/api/user/subscriber-list',
+                method: "POST",
+                data: {
+                    // Pagination info - Reusing from the product pagination
+                    limit: $scope.limit,
+                    page: $scope.page,
+                    total: $scope.total,
+                }
+            }).success(function (data) {
+                //   console.log(data);
+                $scope.limit = data.data.limit;
+                $scope.page = data.data.page;
+                $scope.total = data.data.count;
+                $scope.subscriberList = data.data.result;
             });
         };
 

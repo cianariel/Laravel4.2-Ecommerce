@@ -102,6 +102,7 @@ Route::group(['prefix' => 'api'], function () {
      * */
 
     Route::post('user/user-list', 'UserController@userList');
+    Route::post('user/subscriber-list', 'UserController@subscriberList');
     Route::get('user/get-user/{id?}', 'UserController@getUserById');
     // Route::any('user/user-add/{id?}','UserController@userList');
 
@@ -261,9 +262,11 @@ Route::group(['prefix' => 'admin'], function () {
     Route::get('giveaway-view', 'AdminController@giveawayView');
     Route::get('giveaway-add', 'AdminController@addGiveaway');
     Route::get('giveaway-edit/{id?}', 'AdminController@editGiveaway');
+
     // User View
     Route::get('user-list', 'AdminController@userList');
     Route::get('user-add/{id?}', 'AdminController@userEdit');
+    Route::get('subscribers-list', 'AdminController@subscriberList');
 
 });
 

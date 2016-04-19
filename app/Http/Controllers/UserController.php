@@ -38,6 +38,10 @@ class UserController extends ApiController
 
     }
 
+    /*
+     * Return user list as per given settings in pagging order
+     * */
+
     public function userList()
     {
 
@@ -60,6 +64,31 @@ class UserController extends ApiController
         }
 
     }
+
+    /*
+     * Return email list of subscriber as per given settings in pagging order
+     * */
+
+    public function subscriberList()
+    {
+
+        try {
+            $emailData = \Input::all();
+
+            $settings['limit'] = $emailData['limit'];
+            $settings['page'] = $emailData['page'];
+
+            $emailList = $this->user->getSubscriberList($settings);
+
+            return $this->setStatusCode(\Config::get("const.api-status.success"))
+                        ->makeResponse(array_merge($emailList, $settings));
+        } catch (Excpetion $ex) {
+            return $this->setStatusCode(\Config::get("const.api-status.system-fail"))
+                        ->makeResponseWithError("System Failure !", $ex);
+        }
+
+    }
+
 
     // used in Admin. Get user information by id with user role
     public function getUserById($id)
