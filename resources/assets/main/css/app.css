@@ -8782,6 +8782,8 @@ footer.about-footer {
       height: auto !important;
       min-height: 300px;
       margin-left: 0 !important; }
+    .product-hero #gallery .rsVideoContainer .rsImg.rsMainSlideImage {
+      min-height: 0; }
     .product-hero #gallery .rsOverflow {
       height: auto !important;
       min-height: 300px; }
