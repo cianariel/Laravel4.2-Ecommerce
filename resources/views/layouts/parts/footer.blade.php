@@ -38,11 +38,12 @@
 <div class="page-overlay"></div>
 <div class="page-overlay picture-overlay"></div>
 
-
-<button class="btn btn-success" id="about-button" data-toggle=".about-footer">About</button>
-<a href="#" id="back-to-top">
-    <i class="m-icon--footer-up-arrow"></i>
-</a>
+<div class="bottom-block">
+    <button class="btn btn-success" id="about-button" data-toggle=".about-footer">About</button>
+    <a href="#" id="back-to-top">
+        <i class="m-icon--footer-up-arrow"></i>
+    </a>
+</div>
 
 <script>
     var rootApp = angular.module('rootApp', ['pagingApp', 'publicApp','productApp']);
