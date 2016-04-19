@@ -6291,6 +6291,11 @@ footer.about-footer{
         min-height: 300px;
         margin-left: 0 !important;
       }
+      .rsVideoContainer{
+        .rsImg.rsMainSlideImage{
+          min-height: 0;
+        }
+      }
       .rsOverflow {
         //margin-left: 20px;
         //width: 90% !important;
