@@ -897,7 +897,7 @@ nav {
       text-align: left;
       //width: 50%;
       margin: 0;
-      font-size: 4rem;
+      font-size: 3.5rem;
       //max-width: 80%;
       //margin-left: auto;
       //margin-right: auto;
@@ -3089,7 +3089,13 @@ box-shadow: -1px -1px 20px -7px rgba(0,0,0,0.75);
 
 }
 
-body.homepage #top-nav .ideas, body.single-post #top-nav .ideas, body.product-details #top-nav .nested a.m-icon-text-holder, .room-landing #top-nav a.ideas, body.shop-landing #top-nav .nested a.m-icon-text-holder, body.shop-category #top-nav .nested a.m-icon-text-holder{
+body.homepage #top-nav .ideas,
+body.single-post #top-nav .ideas,
+html.idea-stories #top-nav .ideas,
+body.product-details #top-nav .nested a.m-icon-text-holder,
+.room-landing #top-nav a.ideas,
+body.shop-landing #top-nav .nested a.m-icon-text-holder,
+body.shop-category #top-nav .nested a.m-icon-text-holder{
     position: relative;
     color: $pink;
     .box-link-active-line{
@@ -3687,7 +3693,7 @@ header.sub-head{
   overflow: hidden;
 /*  background: $pale-grey;*/
   background: #fff;
-  z-index: 10;
+  z-index: 40;
   top: 55px;
   
     @media only screen and (max-width: 768px){
@@ -6291,6 +6297,11 @@ footer.about-footer{
         min-height: 300px;
         margin-left: 0 !important;
       }
+      .rsVideoContainer{
+        .rsImg.rsMainSlideImage{
+          min-height: 0;
+        }
+      }
       .rsOverflow {
         //margin-left: 20px;
         //width: 90% !important;
@@ -6943,17 +6954,36 @@ footer.about-footer{
 }
 
 
-body.shoppage, body.profilepage, body.single-post, body.product-details, body.aboutus-page, body.giveaway-page, body.privacy-policy-page, body.terms-of-use-page, body.contactus-page{
-    .clearfix.pocket{
-        height: 100px;
-    }
-    #about-button{
-        bottom:25px;
-    }
-    #back-to-top{
-        bottom: 21px;
-    }
+//body.shoppage,
+//body.profilepage,
+//body.single-post,
+//body.product-details,
+//body.aboutus-page,
+//body.giveaway-page,
+//body.privacy-policy-page,
+//body.terms-of-use-page,
+//body.contactus-page{
+//
+//}
+
+.clearfix.pocket{
+  //height: 100px;
+  display: none;
 }
+
+.bottom-block{
+  height: 100px;
+  position: relative;
+}
+
+#about-button{
+  bottom:39px;
+}
+#back-to-top{
+  bottom: 35px;
+}
+
+
 body.shoppage{
     .mid-nav{
         .container{
