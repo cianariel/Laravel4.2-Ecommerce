@@ -227,6 +227,8 @@
         $limit = 10;
         $offset = 0;
         $url = str_replace('/ideas', "", get_site_url()) . '/api/paging/get-grid-content/1/3/' . $firstTag->name . '/product';
+
+//        echo $url; die();
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $url);
         curl_setopt($ch, CURLOPT_HEADER, 0);
@@ -234,7 +236,8 @@
         curl_setopt($ch, CURLOPT_ENCODING, "");
         $json = curl_exec($ch);
         $json = json_decode($json);
-        $relatedProducts = $json->regular;
+        $relatedProducts = $json->content->regular;
+//        print_r($json); die();
         ?>
         @if(isset($relatedProducts) && ($relatedProducts != null) && count($relatedProducts)>0 )
         <h3 class="green">Related Products</h3>
