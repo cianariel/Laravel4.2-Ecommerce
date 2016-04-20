@@ -6055,7 +6055,7 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
                                 imgHeight: "100%",
 //                                imgWidth: "100%",
 //                                imgWidth: "100%",
-//                                autoHeight: true,
+//                                autoHeight: true,  
                         deeplinking: {
                           enabled: true,
                           change: false
