@@ -7881,7 +7881,6 @@ body.single .related-items {
 .comparison-tab {
   padding: 5px; }
   .comparison-tab.table-cells {
-    height: 35px;
     overflow: hidden; }
   .comparison-tab > div:not(.bordered) {
     min-height: 607px;
