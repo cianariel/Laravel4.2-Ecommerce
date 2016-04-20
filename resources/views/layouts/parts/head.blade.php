@@ -76,7 +76,7 @@ if (screen.width < 992 && screen.width > 620) {
 
     fbq('init', '1695690547327420');
     fbq('track', "PageView");</script>
-<noscript><img height="1" width="1" style="display:none"
+<noscript><img class="hidden" height="1" width="1"
    src="https://www.facebook.com/tr?id=1695690547327420&ev=PageView&noscript=1"
 /></noscript>
 <!-- End Facebook Pixel Code -->

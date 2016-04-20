@@ -5,7 +5,7 @@
 @section('content')
 
 <div id="pagingApp" ng-app="pagingApp" ng-controller="pagingController">
-    <div id="hero" class="royalSlider heroSlider rsMinW room-hero slider" style="display: none;">
+    <div id="hero" class="royalSlider heroSlider rsMinW room-hero slider hidden">
         @if(isset($roomInformation['images']))
             @foreach( $roomInformation['images'] as $key => $image )
             <div class="rsContent">
@@ -40,11 +40,11 @@
                                     <a class="{{$i_products->product_color}}-border" href="/product/{{@$i_products->product_permalink}}">
                                         <h6>{{@$i_products->product_name}}</h6>
                                     </a>
-                                   <div class="icon-wrap" style="height: 90px">
+                                   <div class="icon-wrap">
                                         <a class="category-tag get-round" href="{{@$i_products->affiliate_link}}" target="_blank">
                                             Get it
                                         </a>
-                                        <div style="border:none">
+                                        <div>
                                         <b class="price">
                                             &nbsp;
                                             @if(isset($i_products->sale_price))
@@ -169,7 +169,7 @@
 
             <div class="clearfix"></div>
 
-            <div class="homepage-grid center-block" style="min-height:1000px">
+            <div class="homepage-grid center-block">
                 <div class="loader loader-abs" cg-busy="firstLoad"></div>
                 <div class="loader loader-fixed" cg-busy="nextLoad"></div>
 
