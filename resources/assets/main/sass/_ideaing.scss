@@ -69,6 +69,10 @@ a:hover, a:focus{
   -o-transition: width 0.3s; /* Opera */
 }
 
+.full-wide{
+  width: 100%;
+}
+
 [data-toggle]{
   cursor: pointer;
   .up{
@@ -2250,6 +2254,11 @@ article.product{
   opacity:0;
 }
 
+.room-landing{
+  .homepage-grid{
+    min-height: 1000px;
+  }
+}
 
 .grid-insert{
   padding: 45px;
@@ -4926,9 +4935,17 @@ body.single{
 
 }
 
+.comparison-select{
+  margin-top: 265px;
+}
+
 .comparison-tab{
   padding: 5px;
 
+  &.table-cells{
+    height: 35px;
+    overflow: hidden;
+  }
 
   & > div:not(.bordered){
     min-height: 607px;
@@ -4938,6 +4955,11 @@ body.single{
 
     .tab-wrap{
       padding: 15px;
+
+      h4{
+        height: 35px;
+        overflow: hidden;
+      }
     }
   }
 
@@ -5471,21 +5493,21 @@ footer.about-footer{
 
 // RESPONSIVE BEHAVIOUR
 
-@media only screen and (max-width: 1570px){
-  aside.room-filter{
-/*    display: none;*/
-  }
-}
+//@media only screen and (max-width: 1570px){
+////  aside.room-filter{
+/////*    display: none;*/
+////  }
+//}
 
-@media only screen and (max-width: 860px){
-    #top-nav a .m-icon-text{
-/*        display: none;*/
-    }
-}
+//@media only screen and (max-width: 860px){
+////    #top-nav a .m-icon-text{
+/////*        display: none;*/
+////    }
+//}
 @media only screen and (max-width: 1200px){
-  #top-nav a {
-/*    margin-right: 15px;*/
-  }
+//  #top-nav a {
+///*    margin-right: 15px;*/
+//  }
 
   .mid-nav{
     .container{
@@ -6815,6 +6837,15 @@ footer.about-footer{
         color: $pink;
     }
 }
+
+.head-image-holder{
+  img{
+    width:100%;
+    height:100%;
+    position:relative;
+  }
+}
+
 .room-related-product-button{
     position: absolute;
     bottom: 2px;
@@ -7512,6 +7543,8 @@ body.shop-category{
             display: block;
             animation-name: room-filter-animation;
             animation-duration: 2s;
+            top:0;
+            left:-220px
         }
         .grid-box-3{
             width: calc(100% - 190px);

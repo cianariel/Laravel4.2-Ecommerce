@@ -26,7 +26,7 @@
             </ul>
         </div>
         <div class="col-sm-3 col-xs-12" ng-app="publicApp" ng-controller="publicController">
-            <strong style="color: red"><?php echo "{{ responseMessage }}";?></strong>
+            <strong class="red"><?php echo "{{ responseMessage }}";?></strong>
             <h4 class="pink">Ideas to You</h4>
             <input class="form-control" type="text" ng-model="data.SubscriberEmail" placeholder="Email address">
             <input class="form-control" type="submit" ng-click="subscribe(data)" >
@@ -59,7 +59,6 @@
 <?php if(function_exists('is_single') || Request::segment(1) != 'login'){ ?>
      <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
     <ins class="adsbygoogle"
-         style="display:block"
          data-ad-client="ca-pub-8975651769887133"
          data-ad-slot="7018993602"
          data-ad-format="auto"></ins>

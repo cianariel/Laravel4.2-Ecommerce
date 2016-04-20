@@ -1,4 +1,4 @@
-<aside class="room-filter" style="top:0; left:-220px">
+<aside class="room-filter">
 
     <ul class="extra-nav hidden-620">
 {{--        @foreach($categoryTree as $name => $unused)--}}

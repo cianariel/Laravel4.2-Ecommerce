@@ -79,7 +79,7 @@
 
     <section id="category-banner" class="landing-hero {{$currentCategory->extra_info}}-hero">
         <!--        <img src="/assets/images/shop-category-banner.png" class="img-responsive" alt="">-->
-        <img src="{{$currentCategory->background_image}}" class="img-responsive" alt="" style="width: 100%;">
+        <img src="{{$currentCategory->background_image}}" class="img-responsive full-wide" alt="{{ucfirst($currentCategory->category_name)}}">
         <div class="head-wrap container">
             <!--  class name: smart-home, travel, wearables, home-decor -->
             <h1 class="text-center"><span class="smart-home">{{ucfirst($currentCategory->category_name)}}</span></h1>

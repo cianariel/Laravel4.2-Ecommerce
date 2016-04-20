@@ -107,7 +107,7 @@
                                 if(isset($productInformation['Review']))
                                 $value = intval(((($productInformation['Review'][0]->value > 0 ? $productInformation['Review'][0]->value : $productInformation['Review'][1]->value) + $productInformation['Review'][1]->value)/2)*20);
 
-                                echo $value > 0 ? $value."%" : '<span style="font-size: medium">Not Available</span>';
+                                echo $value > 0 ? $value."%" : '<span>Not Available</span>';
 
                                 ?>
                             </div>
@@ -266,7 +266,7 @@
                             <b class="price">$ @if(isset($productInformation['SellPrice']))
                                     {{$productInformation['SellPrice']}}
                                 @endif</b>
-                            <div style="color: white; text-align: center;">@if(isset($productInformation['Available']))
+                            <div>@if(isset($productInformation['Available']))
                                     {{$productInformation['Available']}}
                                 @endif
                             </div>
@@ -331,8 +331,7 @@
                         <h3 class="green">Specifications</h3>
 
                         @if(isset($productInformation['Specifications']))
-                            <div class="col-lg-6"
-                                 style="float: none;margin-left: auto; margin-right: auto; text-align: center">
+                            <div class="col-lg-6 text-center">
                                 <table class="table col-sm-3">
 
                                     <tbody>
@@ -372,17 +371,17 @@
                                          alt="@{{ item.data.selfImages.mainImageName}}"/>
 
                                     <div class="tab-wrap">
-                                        <h4 style="height: 35px;overflow: hidden;">@{{ item.data.productInformation.ProductName | limitTo: 50 }} @{{item.data.productInformation.ProductName.length > 50 ? '...' : ''}}</h4>
+                                        <h4>@{{ item.data.productInformation.ProductName | limitTo: 50 }} @{{item.data.productInformation.ProductName.length > 50 ? '...' : ''}}</h4>
 
 <!--                                        <b class="score">@{{ item.data.productInformation.Review[1].value }}</b>-->
 
-                                        <div class="star-rating score" style="text-align: center">
+                                        <div class="star-rating score text-center">
                                             <span class="star active" ng-repeat="n in [1, 2, 3, 4, 5]">
                                                 <i ng-class="item.data.productInformation.Review[1].value<=(n-1) ?  'm-icon--star-blue-full-lines' : (item.data.productInformation.Review[1].value<n ? 'm-icon--star-blue-half2' :  'm-icon--star-blue-full')"></i>
                                             </span>
                                         </div>
 
-                                        <div class="star-rating" style="text-align: center">
+                                        <div class="star-rating text-center">
                                             <span class="stars">(@{{ item.data.productInformation.Review[1].counter | number:0 }}
                                                 ) Customer Reviews</span>
                                         </div>
@@ -404,7 +403,7 @@
                              ng-init="loadProductDetails()">
 
                             <div ng-hide="showCompareButton">
-                                <div style="margin-top: 265px">
+                                <div class="comparison-select">
                                     <autocomplete ng-model="selectedProduct"
                                                   attr-placeholder="Search product to add..."
                                                   {{--attr-input-class="form-control"--}}
@@ -442,7 +441,7 @@
                         <!-- compare dynamic 2nd part start-->
                         <div ng-repeat="item in temporaryViewList | limitTo:3">
                             <div class="col-sm-3 col-xs-6 comparison-tab table-cells">
-                                <h4 style="height: 35px;overflow: hidden;">@{{ item.data.productInformation.ProductName | limitTo: 65 }} @{{item.data.productInformation.ProductName.length > 65 ? '...' : ''}}</h4>
+                                <h4>@{{ item.data.productInformation.ProductName | limitTo: 65 }} @{{item.data.productInformation.ProductName.length > 65 ? '...' : ''}}</h4>
 
                                 <hr>
                                 <div class="bordered" ng-repeat="spec in item.data.productInformation.Specifications">
@@ -506,7 +505,7 @@
                                     <div class="title">Critic</div>
                                     <div class="reviews">Reviews</div>
 
-                                    <div class="star-rating" style="text-align: center">
+                                    <div class="star-rating text-center">
                                         <?php
                                         $stars = $productInformation['Review'][0]->value;
                                         $fStar = floor($stars);
@@ -532,7 +531,7 @@
                                             @endif
                                         @endfor
                                     </div>
-                                    <p style="color: black" class="text-center">
+                                    <p class="text-center">
                                         {{number_format($productInformation['Review'][0]->counter == ''?0:$productInformation['Review'][0]->counter)}}
                                         <span class="light-black">
                                             @if(isset($productInformation['Review'][0]->counter)&& $productInformation['Review'][0]->counter >1)
@@ -552,7 +551,7 @@
                                                             target="_blank">@if(isset($review->key)){{$review->key}}@endif
                                                     </a></div>
 
-                                                <div class="star-rating" style="text-align: center">
+                                                <div class="star-rating text-center">
                                                     <?php
                                                     $stars = isset($review->value) ? $review->value : 0;
                                                     $fStar = floor($stars);
@@ -586,11 +585,11 @@
                                 </div>
                                 <div class="col-xs-6 col-sm-4 col-sm-offset-4 text-center reviews-service-holder amazon">
                                     <div class="vertical-line visible-xs"></div>
-                                    <div class="title"><a style="color: #00b1ff;"
+                                    <div class="title"><a
                                                           href="@if(isset($productInformation['Review'][1]->link)){{$productInformation['Review'][1]->link}}@endif"
                                                           target="_blank">Amazon</a></div>
                                     <div class="reviews">Reviews</div>
-                                    <div class="star-rating" style="text-align: center">
+                                    <div class="star-rating text-center">
                                         <?php
                                             $stars = $productInformation['Review'][1]->value;
                                             $fStar = floor($stars);
@@ -616,7 +615,7 @@
                                             @endif
                                         @endfor
                                     </div>
-                                    <p style="color: black" class="text-center">
+                                    <p class="text-center">
                                         <a href="@if(isset($productInformation['Review'][1]->link)){{$productInformation['Review'][1]->link}}@endif"
                                            target="_blank">
                                             {{$productInformation['Review'][1]->counter == ''?0:number_format($productInformation['Review'][1]->counter)}}
