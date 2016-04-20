@@ -1128,21 +1128,7 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
         };
 
         $scope.countSocialShares = function () {
-
-            var thisUrl = window.location.host + window.location.pathname;
-
-            $http({
-                url: '/api/social/get-social-counts',
-                method: "GET",
-                params: {'url': thisUrl}
-            }).success(function (response) {
-                $('.share-count.all').html(response.all);
-                $('.share-count.twi').html(response.twitter);
-                $('.share-count.fb').html(response.facebook);
-                $('.share-count.gp').html(response.gplus);
-                $('.share-count.pint').html(response.pinterest);
-                $('.share-count.inst').html(response.instagram);
-            });
+            pagingApi.countSocialShares();
         }
         $scope.countSocialFollowers = function () {
 
