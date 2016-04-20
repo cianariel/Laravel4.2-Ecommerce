@@ -5,7 +5,7 @@
 @section('content')
 
 <div id="pagingApp" ng-app="pagingApp" ng-controller="pagingController">
-    <div id="hero" class="royalSlider heroSlider rsMinW room-hero slider hidden">
+    <div id="hero" class="royalSlider heroSlider rsMinW room-hero slider">
         @if(isset($roomInformation['images']))
             @foreach( $roomInformation['images'] as $key => $image )
             <div class="rsContent">
