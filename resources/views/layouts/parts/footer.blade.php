@@ -25,10 +25,11 @@
                 <li><a class="inst" href="https://www.instagram.com/ideaing_com/"><span><i class=" m-icon--footer-instagram"></i> Follow <b class="fan-count inst count"></b></span></a></li>
             </ul>
         </div>
-        <div class="col-sm-3 col-xs-12">
+        <div class="col-sm-3 col-xs-12" ng-app="publicApp" ng-controller="publicController">
+            <strong style="color: red"><?php echo "{{ responseMessage }}";?></strong>
             <h4 class="pink">Ideas to You</h4>
-            <input class="form-control" type="text" placeholder="Email address">
-            <input class="form-control" type="submit" value="Submit">
+            <input class="form-control" type="text" ng-model="data.SubscriberEmail" placeholder="Email address">
+            <input class="form-control" type="submit" ng-click="subscribe(data)" >
         </div>
     </div>
     <button class="btn-none close-down" data-toggle=".about-footer"></button>
@@ -37,11 +38,12 @@
 <div class="page-overlay"></div>
 <div class="page-overlay picture-overlay"></div>
 
-
-<button class="btn btn-success" id="about-button" data-toggle=".about-footer">About</button>
-<a href="#" id="back-to-top">
-    <i class="m-icon--footer-up-arrow"></i>
-</a>
+<div class="bottom-block">
+    <button class="btn btn-success" id="about-button" data-toggle=".about-footer">About</button>
+    <a href="#" id="back-to-top">
+        <i class="m-icon--footer-up-arrow"></i>
+    </a>
+</div>
 
 <script>
     var rootApp = angular.module('rootApp', ['pagingApp', 'publicApp','productApp']);
@@ -53,12 +55,16 @@
     fbq('track', 'CompleteRegistration');
 </script>
 
-<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+<?php if(function_exists('is_single') || Request::segment(1) != 'login'){ ?>
+     <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-8975651769887133"
+         data-ad-slot="7018993602"
+         data-ad-format="auto"></ins>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+<?php } ?>
 <!-- Homepage -->
-<ins class="adsbygoogle"
-     data-ad-client="ca-pub-8975651769887133"
-     data-ad-slot="7018993602"
-     data-ad-format="auto"></ins>
-<script>
-    (adsbygoogle = window.adsbygoogle || []).push({});
-</script>

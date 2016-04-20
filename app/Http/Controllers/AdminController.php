@@ -68,6 +68,20 @@
 
         }
 
+        public function subscriberList()
+        {
+            if ($this->authCheck['method-status'] == 'success-with-http')
+            {
+                return view('admin.subscriber-list-view')->with('userData' , $this->authCheck);
+
+            } elseif ($this->authCheck['method-status'] == 'fail-with-http')
+            {
+                return \Redirect::to('login');
+            }
+
+        }
+
+
 
         // Category view
 

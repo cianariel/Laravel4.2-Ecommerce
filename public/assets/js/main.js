@@ -4118,9 +4118,7 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
 
         $scope.getEmailPopup = function(){
             // Header profile option open and close on click action.
-            //if (!$rootScope.isCallEmailPopup) {
-                //$timeout(function () {
-                //if ($scope.canOpenEmailPopup) {
+
                     var templateUrl = "subscribe_email_popup.html";
                     var modalInstance = $uibModal.open({
                             templateUrl: templateUrl,
@@ -4131,12 +4129,7 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                         })
                             .result.finally(function () {
                                 $scope.uploader.formData = [];
-                            })
-                        ;
-                //}
-                //}, 300000)  //300000
-                //$rootScope.isCallEmailPopup = true;
-            //}
+                            });
         };
 
         $scope.openProfileSetting = function () {
@@ -4151,9 +4144,7 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                 })
                 .result.finally(function () {
                         $scope.uploader.formData = [];
-                    })
-                ;
-
+                    });
         };
 
         $scope.openSharingModal = function ($service) {
@@ -4197,7 +4188,7 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                 $scope.showBrowseButton = !$scope.showBrowseButton;
                 $scope.uploader.uploadAll();
 
-                console.log($scope.oldMediaLink, ' : ', $scope.MediaLink);
+              //  console.log($scope.oldMediaLink, ' : ', $scope.MediaLink);
 
             }
         };
@@ -5061,21 +5052,7 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
         };
 
         $scope.countSocialShares = function () {
-
-            var thisUrl = window.location.host + window.location.pathname;
-
-            $http({
-                url: '/api/social/get-social-counts',
-                method: "GET",
-                params: {'url': thisUrl}
-            }).success(function (response) {
-                $('.share-count.all').html(response.all);
-                $('.share-count.twi').html(response.twitter);
-                $('.share-count.fb').html(response.facebook);
-                $('.share-count.gp').html(response.gplus);
-                $('.share-count.pint').html(response.pinterest);
-                $('.share-count.inst').html(response.instagram);
-            });
+            pagingApi.countSocialShares();
         }
         $scope.countSocialFollowers = function () {
 
@@ -5131,7 +5108,7 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
 
                 $scope.heartCounterAction = function(){
 
-                    console.log('hi : ',$scope.iid,$scope.plink);
+                   // console.log('hi : ',$scope.iid,$scope.plink);
 
                     $http({
                         url: '/api/heart/count-heart',
@@ -5370,7 +5347,7 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
 
         $scope.openProductPopup = function(id){
             pagingApi.openProductPopup($scope, $uibModal, $timeout, id);
-            }
+        }
             
 
     })
@@ -6096,8 +6073,12 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
                 var className = document.getElementsByTagName('html')[0].className;
                 className = className.replace('hide-overflow', '');
                 document.getElementsByTagName('html')[0].className = className;
+
             });
-            });                    
+                pagingApi.countSocialShares();
+            });
+
+
         };
 
         pagingApi.fakeUpdateCounts = function ($service) {
@@ -6168,6 +6149,24 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
 
         };
 
+        pagingApi.countSocialShares = function () {
+
+            var thisUrl = window.location.host + window.location.pathname;
+
+            $http({
+                url: '/api/social/get-social-counts',
+                method: "GET",
+                params: {'url': thisUrl}
+            }).success(function (response) {
+                $('.share-count.all').html(response.all);
+                $('.share-count.twi').html(response.twitter);
+                $('.share-count.fb').html(response.facebook);
+                $('.share-count.gp').html(response.gplus);
+                $('.share-count.pint').html(response.pinterest);
+                $('.share-count.inst').html(response.instagram);
+            });
+        }
+
         pagingApi.getPlainContent = function(page, limit, tag, type, productCategoryID, sortBy) {
             return $http({
                 method: 'GET',
@@ -6230,6 +6229,8 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
             });
             return $return;
         }
+
+
 
         return pagingApi;
     })
@@ -6465,7 +6466,7 @@ productApp.config(['$provide', function ($provide) {
         });
 
         taOptions.toolbar = [
-            ['bold', 'insertCustomImage']
+            ['bold', 'insertImage']
         ];
 
         taOptions.classes = {
