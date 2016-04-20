@@ -112,6 +112,23 @@ class User extends Model implements AuthenticatableContract,
         return $userList;
     }
 
+    public function getSubscriberList($settings)
+    {
+        $subscriberModel = new Subscriber();
+
+        $skip = $settings['limit'] * ($settings['page'] - 1);
+        $subscriberList['result'] = $subscriberModel
+            ->groupBy('email')
+            ->take($settings['limit'])
+            ->offset($skip)
+            ->orderBy('created_at', 'desc')
+            ->get();
+
+        $subscriberList['count'] = $subscriberModel->get()->count();
+        return $subscriberList;
+
+    }
+
 
     /**
      * Save user information

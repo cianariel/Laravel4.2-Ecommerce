@@ -54,7 +54,7 @@
                            ng-click="heartAction(<?php echo $userData['id'] . "," . $productId . "," ."'$permalink'".",". "'product'"?>)"
                         >
                             <!--                                <i ng-class="unHeart != false ? 'm-icon m-icon--heart-solid' : 'm-icon m-icon--ScrollingHeaderHeart'">-->
-                            <i class="m-icon m-icon--heart-solid">
+                            <i class="m-icon m-icon--heart">
                                         <span class="m-hover">
                                             <span class="path1"></span><span class="path2"></span>
                                         </span>
@@ -174,7 +174,13 @@
                                         firstMargin: false,
 //                                orientation: 'horizntal',
                                     },
-                                    loop: true
+                                    loop: true,
+                                    video: {
+                                        autoHideArrows:true,
+                                        autoHideControlNav:false,
+                                        autoHideBlocks: true,
+                                        youTubeCode: '<iframe src="https://www.youtube.com/embed/%id%?rel=1&autoplay=1&showinfo=0" frameborder="no" allowFullscreen></iframe>'
+                                    },
 //                            imgWidth: 1400,
 //                            imgHeight: 680
                                 });

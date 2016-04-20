@@ -9,9 +9,9 @@ if(function_exists('is_single')){
 }                                            
 ?>
 
-<div id="publicApp" ng-app="publicApp" ng-controller="publicController" ng-cloak>
+<div id="publicApp" ng-app="publicApp" ng-controller="publicController" class="header-cloak" ng-cloak>
 <header class="colophon">
-                <div ng-init="socialCounter()" class="col-xs-12">
+                <div ng-init="socialCounter()" class="socialcounter col-xs-12">
                     <nav id="top-nav" class="row">
                         <div class="container full-sm fixed-sm">
                             <div class="top-nav-holder">
@@ -168,7 +168,7 @@ if(function_exists('is_single')){
                 </div>
 
                 <form class="search-bar" ng-app="publicApp"  ng-controller="SearchController" action="/search-form-query" >
-                    <div class="mobile-search-bar col-xs-12">
+                    <div style="position: relative" class="mobile-search-bar col-xs-12" ng-cloak>
                         <input ng-click="toggleSearch()" ng-change="openSearchDropdown(query)" ng-model="query" ng-model-options='{ debounce: 800 }'  class="form-control col-xs-10  top-search" type="text" value="Search..."  placeholder="Search for products and ideas..."  name="search" />
                         <div id="suggest-category" ng-class="{shown: open, hidden: !open}" ng-show="categorySuggestions.length">
                             <?php // have to use only pure php includes, or the CMS wont read it
@@ -425,7 +425,7 @@ if(function_exists('is_single')){
         //dd($userData['email'],);
 if(empty($userData['email']))
 {
-if((isset($userData['user-data']['hide-signup'])) && ($userData['user-data']['hide-signup'] != 'true'))
+if(@$userData['user-data']['hide-signup'] != 'true')
 {
 
 ?>
@@ -437,7 +437,7 @@ if((isset($userData['user-data']['hide-signup'])) && ($userData['user-data']['hi
                 <div class="content-container">
                     <div class="content-holder">
                         <div>
-                            <h4>Subscribe me to the world's finest design ideas community</h4></div><br><div>
+                            <h4>Subscribe to the world’s finest Smart Home & Design Ideas</h4></div><br><div>
                             <h5>Enter your email</h5> 
                             <strong style="color: red">@{{ responseMessage }}</strong>
                         </div>

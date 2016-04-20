@@ -62,6 +62,11 @@
                             <span class="title">Add User</span>
                         </a>
                     </li>
+                    <li class="nav-item  ">
+                        <a href="/admin/subscribers-list" class="nav-link ">
+                            <span class="title">Subscribers List</span>
+                        </a>
+                    </li>
                 </ul>
             </li>
             <li class="nav-item  ">
