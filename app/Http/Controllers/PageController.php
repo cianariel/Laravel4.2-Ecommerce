@@ -261,11 +261,6 @@ if($stories['featured']){
         curl_setopt($ch, CURLOPT_ENCODING, "");
         $json = curl_exec($ch);
 
-      //  echo $json;
-      //  die();
-
-        //  $return = json_decode($json);
-
         $ideaCollection = json_decode($json);
 
         $newIdeaCollection = new Collection();
