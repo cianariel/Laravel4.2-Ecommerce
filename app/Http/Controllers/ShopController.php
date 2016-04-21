@@ -34,7 +34,8 @@ class ShopController extends ApiController
         if(!$grandParent){ // shop landing page
             $categoryTree = ProductCategory::buildCategoryTree(true);
 
-            MetaTag::set('title', 'Shop | Ideaing');
+            MetaTag::set('title', 'Shop Smart Home & Home Automation Gadgets | Ideaing');
+            MetaTag::set('description', 'Buy the newest home automation gadgets, travel, wearables, and décor. Save and get deals on the best products for your home.');
 
             return view('shop.index')
                 ->with('userData',$userData)
@@ -97,8 +98,8 @@ class ShopController extends ApiController
                 $canonicURL = PageHelper::getCanonicalLink(Route::getCurrentRoute(), [$grandParent, $parent, $child]);
             }
 
-            MetaTag::set('title', $categoryModel->category_name);
-//            $grandParent = false, $parent = false, $child = false
+            MetaTag::set('title', $categoryModel->meta_title);
+            MetaTag::set('description', $categoryModel->meta_description);
 
             return view('shop.shop-category')
                 ->with('userData',$userData)
