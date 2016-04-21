@@ -8183,6 +8183,9 @@ body.homepage .grid-insert {
   body.homepage .grid-insert p {
     line-height: 2.3; }
 
+.not-availiable {
+  font-size: 2rem; }
+
 .hero-tags {
   position: absolute;
   width: 100%;

@@ -107,7 +107,7 @@
                                 if(isset($productInformation['Review']))
                                 $value = intval(((($productInformation['Review'][0]->value > 0 ? $productInformation['Review'][0]->value : $productInformation['Review'][1]->value) + $productInformation['Review'][1]->value)/2)*20);
 
-                                echo $value > 0 ? $value."%" : '<span>Not Available</span>';
+                                echo $value > 0 ? $value."%" : '<span class="not-availiable">Not Available</span>';
 
                                 ?>
                             </div>
