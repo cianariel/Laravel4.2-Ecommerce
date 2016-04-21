@@ -37,7 +37,7 @@
     <div class="merchant-widget" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
         <span class="merchant-widget__price" >
             <span itemprop="priceCurrency" content="USD">$</span>
-             <span itemprop="price" content="{{$productInformation['SellPrice']}}">
+             <span itemprop="price" content=" <?php echo '{{item.sale_price}}' ?>">
                  <?php echo '{{item.sale_price}}' ?>
              </span>
         </span>
