@@ -1,5 +1,5 @@
 <div class="img-holder">
-    <img src="<?php echo '{{item.media_link_full_path}}' ?>" alt="<?php echo '{{item.product_name}}' ?>"/>
+    <img  itemprop="image"  src="<?php echo '{{item.media_link_full_path}}' ?>" alt="<?php echo '{{item.product_name}}' ?>"/>
 </div>
 <span class="mobile-show">
         <i class="p-show m-icon--Add-Active"></i>
@@ -8,7 +8,7 @@
 <span class="box-item__time"><?php echo '{{item.updated_at}}' ?></span>
 <div class="box-item__overlay" ng-click="openProductPopup(item.id)"></div>
 
-<div class="social-stats  ">
+<div class="social-stats">
     <div class="social-stats__item">
         <?php
         $userId = !empty($userData->id) ? $userData->id : 0;
@@ -16,7 +16,6 @@
             {
                 $userId = !empty($userData['id'] ) ? $userData['id']  : 0;
             }
-
         ?>
 
         <heart-counter-dir uid="<?php echo $userId ?>" iid=item.id plink=item.product_permalink sec='product'>
@@ -32,11 +31,16 @@
 
 <div class="box-item__label-prod">
     <a href="/product/<?php echo '{{item.product_permalink}}' ?>"
-       class="box-item__label box-item__label--clear"><?php echo '{{item.product_name}}' ?></a>
+       class="box-item__label box-item__label--clear" itemprop="name"><?php echo '{{item.product_name}}' ?></a>
     <!--    <a href="#" class="box-item__label box-item__label--clear" ng-click="openProductPopup()"><?php echo '{{item.product_name}}' ?></a>-->
     <div class="clearfix"></div>
-    <div class="merchant-widget">
-        <span class="merchant-widget__price">$<?php echo '{{item.sale_price}}' ?></span>
+    <div class="merchant-widget" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+        <span class="merchant-widget__price" >
+            <span itemprop="priceCurrency" content="USD">$</span>
+             <span itemprop="price" content="{{$productInformation['SellPrice']}}">
+                 <?php echo '{{item.sale_price}}' ?>
+             </span>
+        </span>
         <span>from</span>
         <img class="merchant-widget__store" alt="<?php echo '{{ item.storeInfo.Description }}' ?>"
              ng-src='<?php echo '{{ item.storeInfo.ImagePath }}' ?>'/>
