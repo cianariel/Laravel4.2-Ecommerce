@@ -24,14 +24,6 @@ if (! preg_match("/\/ideas\//", $actual_link))
         <link href="/favicon.png" rel="shortcut icon">
 <!--        <link href="--><?php //echo get_template_directory_uri(); ?><!--/img/icons/touch.png" rel="apple-touch-icon-precomposed">-->
 
-<script>
-    // conditionizr.com
-    // configure environment tests
-    //        conditionizr.config({
-    //            assets: '<?php //echo get_template_directory_uri(); ?>//',
-//            tests: {}
-//        });
-</script>
 
 <link href=https://plus.google.com/+Ideaingsmarterliving rel="publisher" />
 
