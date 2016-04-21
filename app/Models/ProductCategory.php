@@ -130,7 +130,9 @@
             {
                 $category->category_name = $categoryOld['CategoryName'];
                 $category->extra_info = $categoryOld['ExtraInfo'];
-                $category->icon = $categoryOld['Icon'];
+                $category->icon = @$categoryOld['Icon'];
+                $category->meta_title = @$categoryOld['Icon'];
+                $category->meta_description = @$categoryOld['Icon'];
                 $category->save();
 
                 return \Config::get("const.category-updated");
