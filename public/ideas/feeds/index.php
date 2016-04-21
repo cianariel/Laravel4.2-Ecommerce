@@ -181,6 +181,8 @@ if ( $posts->have_posts() ) {
 
             $cat_names = array_unique($cat_names);
             $data['category_all'] = $cat_names;
+            $allTags = get_tags();
+            $data['is_deal'] = has_tag('deal');
             $data['url'] = get_the_permalink();
             $datepublishstring = get_the_time('Y-m-d H:i:s');
             $datepublish = timeAgo($datepublishstring);

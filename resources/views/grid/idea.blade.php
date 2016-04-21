@@ -27,8 +27,11 @@
 </ul>
 
 <a href="/ideas" class="round-tag round-tag--idea">
-    <i class="m-icon m-icon--item"></i>
-    <span class="round-tag__label">Idea</span>
+    <i ng-if="item.is_deal" class="m-icon m-icon--item"></i>
+    <span ng-if="item.is_deal" class="round-tag__label">Deal</span>
+
+    <i ng-if="!item.is_deal"  class="m-icon m-icon--bulb"></i>
+    <span ng-if="!item.is_deal" class="round-tag__label">Idea</span>
 </a>
 
 <div class="box-item__label-idea">
