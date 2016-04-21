@@ -876,7 +876,9 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
                     ParentId: $scope.selectedItem,
                     CategoryName: $scope.categoryName,
                     ExtraInfo: $scope.extraInfo,
-                    Icon: $scope.icon
+                    Icon: $scope.icon,
+                    MetaTitle: $scope.meta_title, //$scope.categoryItems[idx].icon
+                    MetaDescription: $scope.meta_description, //$scope.categoryItems[idx].icon
                 },
             }).success(function (data) {
                 $scope.categoryName = '';
@@ -988,7 +990,7 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
             // console.log("Saving contact");
             // console.log($scope.categoryItems[idx]);
             $scope.closeAlert();
-
+                console.log($scope.tableTemporaryValue)
             $http({
                 url: '/api/category/update-category',
                 method: "POST",
@@ -997,8 +999,8 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
                     CategoryName: $scope.tableTemporaryValue.category,// $scope.categoryItems[idx].category,
                     ExtraInfo: $scope.tableTemporaryValue.info, //$scope.categoryItems[idx].info
                     Icon: $scope.tableTemporaryValue.icon, //$scope.categoryItems[idx].icon
-                    Icon: $scope.tableTemporaryValue.meta_title, //$scope.categoryItems[idx].icon
-                    Icon: $scope.tableTemporaryValue.meta_description, //$scope.categoryItems[idx].icon
+                    MetaTitle: $scope.tableTemporaryValue.meta_title, //$scope.categoryItems[idx].icon
+                    MetaDescription: $scope.tableTemporaryValue.meta_description, //$scope.categoryItems[idx].icon
                 },
             }).success(function (data) {
                 $scope.outputStatus(data, 'Category item updated successfully');

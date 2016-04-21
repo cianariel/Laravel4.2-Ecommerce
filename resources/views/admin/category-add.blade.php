@@ -94,6 +94,16 @@
                                                placeholder="Custom URL Name Required">
                                     </div>
                                     <div class="form-group">
+                                        <label>Meta Title</label>
+                                        <input ng-model="meta_title" class="form-control"
+                                               placeholder="Text">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Meta Description</label>
+                                        <input ng-model="meta_description" class="form-control"
+                                               placeholder="Text">
+                                    </div>
+                                    <div class="form-group">
                                         <label>Icon Class Name</label>
                                         <input ng-model="icon" class="form-control"
                                                placeholder="Icon Class Name">
