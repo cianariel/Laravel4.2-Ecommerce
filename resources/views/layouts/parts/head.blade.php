@@ -1,9 +1,8 @@
 <?php
+$actual_link = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 
-if (function_exists('is_single')){ // This is woredpress
-    get_template_part('meta');
-}else{ // this is laravel
-
+if (! preg_match("/\/ideas\//", $actual_link))
+{
 ?>
 <title>{{ MetaTag::get('title') }}</title>
 
@@ -12,7 +11,6 @@ if (function_exists('is_single')){ // This is woredpress
 @else
     <meta name="description" content="{{ MetaTag::get('description') }}">
 @endif
-
 <?php
 }
 ?>
