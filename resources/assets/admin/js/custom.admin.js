@@ -997,8 +997,8 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
                     CategoryName: $scope.tableTemporaryValue.category,// $scope.categoryItems[idx].category,
                     ExtraInfo: $scope.tableTemporaryValue.info, //$scope.categoryItems[idx].info
                     Icon: $scope.tableTemporaryValue.icon, //$scope.categoryItems[idx].icon
-                    Icon: $scope.tableTemporaryValue.meta_title, //$scope.categoryItems[idx].icon
-                    Icon: $scope.tableTemporaryValue.meta_description, //$scope.categoryItems[idx].icon
+                    MetaTitle: $scope.tableTemporaryValue.meta_title, //$scope.categoryItems[idx].icon
+                    MetaDescription: $scope.tableTemporaryValue.meta_description, //$scope.categoryItems[idx].icon
                 },
             }).success(function (data) {
                 $scope.outputStatus(data, 'Category item updated successfully');
