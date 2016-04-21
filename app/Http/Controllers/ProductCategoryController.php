@@ -75,7 +75,9 @@
                     'values' => [
                         'CategoryName' => isset($inputData['CategoryName']) ? $inputData['CategoryName'] : null,
                         'ExtraInfo'    => isset($inputData['ExtraInfo']) ? $inputData['ExtraInfo'] : null,
-                        'ParentId'     => (isset($inputData['ParentId']) or ($inputData['ParentId']!="") ) ? $inputData['ParentId'] : null
+                        'ParentId'     => (isset($inputData['ParentId']) or ($inputData['ParentId']!="") ) ? $inputData['ParentId'] : null,
+                        'MetaTitle'    => isset($inputData['MetaTitle']) ? $inputData['MetaTitle'] : null,
+                        'MetaDescription'    => isset($inputData['MetaDescription']) ? $inputData['MetaDescription'] : null,
                     ]
                 ];
 
@@ -201,6 +203,8 @@
                     'CategoryName' => isset($inputData['CategoryName']) ? $inputData['CategoryName'] : null,
                     'ExtraInfo'    => isset($inputData['ExtraInfo']) ? $inputData['ExtraInfo'] : null,
                     'CategoryId'   => isset($inputData['CategoryId']) ? $inputData['CategoryId'] : null,
+                    'MetaTitle'    => isset($inputData['MetaTitle']) ? $inputData['MetaTitle'] : null,
+                     'MetaDescription'    => isset($inputData['MetaDescription']) ? $inputData['MetaDescription'] : null,
                 ]
             ];
 

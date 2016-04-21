@@ -106,7 +106,6 @@
                                                                 <thead>
                                                                 <tr>
 
-
                                                                     <th>Category Id</th>
                                                                     <th>Category Name</th>
                                                                     <th>URL Info</th>
@@ -128,7 +127,7 @@
                                                                 <td>@{{ category.info }}</td>
                                                                 <td>@{{ category.meta_title}}</td>
                                                                 <td>@{{ category.meta_description}}</td>
-
+                                                                
                                                                 <td ng-if="currentCategoryName">@{{ category.icon }}</td>
                                                                 <td>
                                                                     <button ng-click="editCategory(category)" class="btn btn-info btn-circle" uib-tooltip="Edit"
@@ -138,7 +137,7 @@
                                                                     <button ng-click="deleteCategory($index)" confirm="Are you sure to delete this item ?" confirm-settings="{size: 'sm'}"
                                                                             class="btn btn-danger btn-circle" uib-tooltip="Delete" tooltip-placement="bottom">
                                                                         <i class="fa fa-times"></i>
-                                                                    </button>
+                                                                    </button> 
                                                                 </td>
                                                             </script>
                                                             <script type="text/ng-template" id="edit">
@@ -148,7 +147,7 @@
                                                                 </td>
                                                                 <td><input type="text" ng-model="tableTemporaryValue.info"/></td>
                                                                 <td><input type="text" ng-model="tableTemporaryValue.meta_title"/></td>
-                                                                <td><input type="text" ng-model="tableTemporaryValue.meta_description"/></td>
+                                                                <td><input type="text" ng-model="tableTemporaryValue.meta_description"/></td> 
                                                                 <td ng-if="currentCategoryName"><input type="text" ng-model="tableTemporaryValue.icon"/></td>
                                                                 <td>
                                                                     <button ng-click="updateCategory($index)" class="btn btn-success btn-circle" uib-tooltip="Save"

@@ -50,7 +50,9 @@
             $data = array(
                 'category_name' => $product['CategoryName'],
                 'extra_info'    => isset($product['ExtraInfo']) ? $product['ExtraInfo'] : null,
-                'icon'          => isset($product['Icon']) ? $product['Icon'] : ''
+                'icon'          => isset($product['Icon']) ? $product['Icon'] : '',
+                'meta_title' => @$product['MetaTitle'],
+                'meta_description' => @$product['MetaDescription'],
             );
             return ProductCategory::create($data);
         }
@@ -68,7 +70,9 @@
             $data = array(
                 'category_name' => $product['CategoryName'],
                 'extra_info'    => isset($product['ExtraInfo']) ? $product['ExtraInfo'] : null,
-                'icon'          => isset($product['Icon']) ? $product['Icon'] : null
+                'icon'          => isset($product['Icon']) ? $product['Icon'] : null,
+                   'meta_title' => @$product['MetaTitle'],
+                'meta_description' => @$product['MetaDescription'],
             );
 
             return $parentNode->children()->create($data);
@@ -105,6 +109,8 @@
                         'id' => $value->id,
                         'category' => $value->category_name,
                         'info' => $value->extra_info,
+                        'meta_title'        => $value->meta_title,
+                        'meta_description'        => $value->meta_description,
                         'hasChildren' => ($this->hasChildOfCategory($value->id)->count() > 0) ? true : false
                     ]);
                 }
@@ -131,8 +137,8 @@
                 $category->category_name = $categoryOld['CategoryName'];
                 $category->extra_info = $categoryOld['ExtraInfo'];
                 $category->icon = @$categoryOld['Icon'];
-                $category->meta_title = @$categoryOld['Icon'];
-                $category->meta_description = @$categoryOld['Icon'];
+                $category->meta_title = @$categoryOld['MetaTitle'];
+                $category->meta_description = @$categoryOld['MetaDescription'];
                 $category->save();
 
                 return \Config::get("const.category-updated");
@@ -204,6 +210,8 @@
                         'id'          => $value->id,
                         'category'    => $value->category_name,
                         'info'        => $value->extra_info,
+                        'meta_title'        => $value->meta_title,
+                        'meta_description'        => $value->meta_description,
                         'icon'        => $value->icon,
                         'hasChildren' => ($this->hasChildOfCategory($value->id)->count() > 0) ? true : false
                     ]);
