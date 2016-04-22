@@ -266,7 +266,7 @@
                             <b class="price">$ @if(isset($productInformation['SellPrice']))
                                     {{$productInformation['SellPrice']}}
                                 @endif</b>
-                            <div>@if(isset($productInformation['Available']))
+                            <div class="availabible">@if(isset($productInformation['Available']))
                                     {{$productInformation['Available']}}
                                 @endif
                             </div>
