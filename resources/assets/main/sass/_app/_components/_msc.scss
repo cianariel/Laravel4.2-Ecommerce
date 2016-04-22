@@ -37,7 +37,11 @@
 	@include border-radius(62px);
 
 	&--idea {
-		background: $dark-orange;
+		background: $sky-blue;
+
+      &.deal{
+        background-color: $dark-orange;
+      }
 	}
 	&--product {
 		background: $pine-green;
