@@ -10913,7 +10913,9 @@ p {
   -moz-border-radius: 62px;
   border-radius: 62px; }
   .round-tag--idea {
-    background: #FF7F00; }
+    background: #00B1FF; }
+    .round-tag--idea.deal {
+      background-color: #FF7F00; }
   .round-tag--product {
     background: #C7C747; }
   .round-tag__label {
@@ -11092,12 +11094,14 @@ p {
     display: inline-block;
     font-family: "Montserrat", sans-serif;
     font-size: 16px;
-    background: #FF7F00;
+    background: #00B1FF;
     color: #fff;
     padding: 6px 10px;
     float: left;
     text-align: left;
     margin-bottom: 10px; }
+    .deal .box-item__label {
+      background-color: #FF7F00; }
     .box-item__label:hover, .box-item__label:active, .box-item__label:focus {
       color: #fff; }
     .box-item__label--clear {

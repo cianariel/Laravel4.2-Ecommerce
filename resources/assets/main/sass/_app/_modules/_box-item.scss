@@ -118,12 +118,16 @@
 		display: inline-block;
 		font-family: $heading-base-font;
 		font-size: 16px;
-		background: #FF7F00;
+		background: $sky-blue;
 		color: #fff;
 		padding: 6px 10px;
 		float: left;
 		text-align: left;
 		margin-bottom: 10px;
+
+      .deal &{
+        background-color: #FF7F00;
+      }
 
 		&:hover, &:active, &:focus {
 			color: #fff;
