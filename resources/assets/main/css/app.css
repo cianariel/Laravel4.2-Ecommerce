@@ -7795,6 +7795,10 @@ body.single .related-items {
     width: 100%;
     border-top: 1px solid #fff; }
 
+.availabible {
+  color: #fff;
+  padding-top: 15px; }
+
 .comparison {
   position: relative; }
   .comparison .search-bar {
