@@ -876,7 +876,10 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
                     ParentId: $scope.selectedItem,
                     CategoryName: $scope.categoryName,
                     ExtraInfo: $scope.extraInfo,
-                    Icon: $scope.icon
+                    Icon: $scope.icon,
+                    MetaTitle: $scope.meta_title, //$scope.categoryItems[idx].icon
+                    MetaDescription: $scope.meta_description, //$scope.categoryItems[idx].icon
+
                 },
             }).success(function (data) {
                 $scope.categoryName = '';

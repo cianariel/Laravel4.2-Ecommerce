@@ -879,6 +879,7 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
                     Icon: $scope.icon,
                     MetaTitle: $scope.meta_title, //$scope.categoryItems[idx].icon
                     MetaDescription: $scope.meta_description, //$scope.categoryItems[idx].icon
+
                 },
             }).success(function (data) {
                 $scope.categoryName = '';
@@ -990,7 +991,7 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
             // console.log("Saving contact");
             // console.log($scope.categoryItems[idx]);
             $scope.closeAlert();
-                console.log($scope.tableTemporaryValue)
+
             $http({
                 url: '/api/category/update-category',
                 method: "POST",
