@@ -84,7 +84,7 @@
                     'permalink' => $idea->url,
                     'type' => 'idea',
                     'author' => $idea->author,
-                    'authorlink' => $idea->authorlink,
+                    'authorlink' => $idea->authorlink ?: '',
                     'avator' => $idea->avator,
                     'feed_image' => json_encode($idea->feed_image), // cut off unnecessary data
                     'storeinfo' => ''
