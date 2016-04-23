@@ -282,7 +282,7 @@
             @endforeach
         </div>
         @endif
-        <h3 class="orange">Related Ideas</h3><br/>
+        <h3 class="blue">Related Ideas</h3><br/>
         <div class="related-ideas  grid-box-3">
 
             <!--                <section class="col-sm-12 related-stories">-->
