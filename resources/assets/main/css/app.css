@@ -6751,18 +6751,14 @@ body.homepage #top-nav .ideas,
 body.single-post #top-nav .ideas,
 html.idea-stories #top-nav .ideas,
 body.product-details #top-nav .nested a.m-icon-text-holder,
-.room-landing #top-nav a.ideas,
-body.shop-landing #top-nav .nested a.m-icon-text-holder,
-body.shop-category #top-nav .nested a.m-icon-text-holder {
+.room-landing #top-nav a.ideas {
   position: relative;
   color: #00B1FF; }
   body.homepage #top-nav .ideas .box-link-active-line,
   body.single-post #top-nav .ideas .box-link-active-line,
   html.idea-stories #top-nav .ideas .box-link-active-line,
   body.product-details #top-nav .nested a.m-icon-text-holder .box-link-active-line,
-  .room-landing #top-nav a.ideas .box-link-active-line,
-  body.shop-landing #top-nav .nested a.m-icon-text-holder .box-link-active-line,
-  body.shop-category #top-nav .nested a.m-icon-text-holder .box-link-active-line {
+  .room-landing #top-nav a.ideas .box-link-active-line {
     height: 50px;
     width: 0px;
     border-left: 1px solid #c1c1c1;
@@ -6770,6 +6766,10 @@ body.shop-category #top-nav .nested a.m-icon-text-holder {
     top: 43px;
     left: 50%;
     /*        margin-left: -2px;*/ }
+
+body.shop-landing #top-nav .nested a.m-icon-text-holder,
+body.shop-category #top-nav .nested a.m-icon-text-holder {
+  color: #FF0042; }
 
 body.shop-landing #top-nav a.m-icon-text-holder .box-link-active-line {
   margin-left: 10px; }
@@ -9493,7 +9493,8 @@ body.shop-landing .mobile-shop-by-category-holder .shop-by-category-submneu .gra
       width: 30px;
       height: 10px;
       border-radius: 7px;
-      background: #fff; }
+      background: #fff;
+      border: 1px solid #FF0042; }
       .has-bullets .rsNav.rsBullets .rsBullet span:hover {
         cursor: pointer; }
 
