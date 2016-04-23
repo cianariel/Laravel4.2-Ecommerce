@@ -6755,7 +6755,7 @@ body.product-details #top-nav .nested a.m-icon-text-holder,
 body.shop-landing #top-nav .nested a.m-icon-text-holder,
 body.shop-category #top-nav .nested a.m-icon-text-holder {
   position: relative;
-  color: #ed2049; }
+  color: #00B1FF; }
   body.homepage #top-nav .ideas .box-link-active-line,
   body.single-post #top-nav .ideas .box-link-active-line,
   html.idea-stories #top-nav .ideas .box-link-active-line,
@@ -11120,6 +11120,10 @@ p {
     .box-item__read-more:hover, .box-item__read-more:active, .box-item__read-more:focus {
       background: #00B1FF;
       color: #fff; }
+    .deal .box-item__read-more {
+      border: 2px solid #FF7F00; }
+      .deal .box-item__read-more:hover, .deal .box-item__read-more:active, .deal .box-item__read-more:focus {
+        background: #FF7F00; }
   .box-item__get-it {
     display: block;
     width: 60px;

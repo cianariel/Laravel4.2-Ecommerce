@@ -116,6 +116,8 @@ if($tag_in = $_REQUEST['tag_in']){
     $args['tag_slug__in'] = explode(',', $tag_in);
 }
 
+//echo $args['tag_slug__in']; die();
+
 if($excludeID = $_REQUEST['excludeid']){
     $args['post__not_in'] = array($excludeID);
 }
