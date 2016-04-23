@@ -555,7 +555,7 @@ li.nested{
 .dropcapped{
   p:first-child{
     &:first-letter{
-      color: $dark-orange;
+      color: $sky-blue;
       font-size: 5rem;
       line-height: .7;
       float: left;
@@ -7420,7 +7420,7 @@ body.shop-landing{
             margin-right: 10px;
             
             &.rsNavSelected span{
-                background-color: #0096dd;
+                background-color: $iridium;
             }
                 
             span{
@@ -7429,7 +7429,7 @@ body.shop-landing{
                 height: 10px;
                 border-radius: 7px;
                 background: #fff;        
-                border: 1px solid #0096dd;
+                //border: 1px solid #0096dd;
                 &:hover{
                     cursor: pointer;
                 }

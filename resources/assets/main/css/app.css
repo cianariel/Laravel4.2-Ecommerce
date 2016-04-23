@@ -4908,7 +4908,7 @@ li.nested {
   }*/ }
 
 .dropcapped p:first-child:first-letter {
-  color: #FF7F00;
+  color: #00B1FF;
   font-size: 5rem;
   line-height: .7;
   float: left;
@@ -9487,14 +9487,13 @@ body.shop-landing .mobile-shop-by-category-holder .shop-by-category-submneu .gra
     *zoom: 1;
     margin-right: 10px; }
     .has-bullets .rsNav.rsBullets .rsBullet.rsNavSelected span {
-      background-color: #0096dd; }
+      background-color: #FF0042; }
     .has-bullets .rsNav.rsBullets .rsBullet span {
       display: block;
       width: 30px;
       height: 10px;
       border-radius: 7px;
-      background: #fff;
-      border: 1px solid #0096dd; }
+      background: #fff; }
       .has-bullets .rsNav.rsBullets .rsBullet span:hover {
         cursor: pointer; }
 
@@ -11116,10 +11115,10 @@ p {
     border-radius: 0;
     padding: 3px 0;
     width: 140px;
-    border: 2px solid #FF7F00;
+    border: 2px solid #00B1FF;
     margin: 0 auto; }
     .box-item__read-more:hover, .box-item__read-more:active, .box-item__read-more:focus {
-      background: #FF7F00;
+      background: #00B1FF;
       color: #fff; }
   .box-item__get-it {
     display: block;

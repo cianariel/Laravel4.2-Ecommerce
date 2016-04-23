@@ -696,7 +696,7 @@
                     </div>
 
                     <div class="related-ideas grid-box-3">
-                        <h3 class="orange">Related Ideas</h3>
+                        <h3 class="blue">Related Ideas</h3>
 
                             @if(isset($relatedIdeas) && ($relatedIdeas != null) )
                                 @foreach( $relatedIdeas as $item )
