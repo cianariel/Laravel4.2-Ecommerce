@@ -156,6 +156,14 @@
 			background: $sky-blue;
 			color: #fff;
 		}
+
+      .deal &{
+        border: 2px solid $dark-orange;
+
+        &:hover, &:active, &:focus {
+          background: $dark-orange;
+        }
+      }
 	}
 	&__get-it {
 		display: block;

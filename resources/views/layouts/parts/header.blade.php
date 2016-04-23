@@ -42,11 +42,11 @@ if(function_exists('is_single')){
                                                 <i class="m-icon--footer-up-arrow up"></i>
                                             </a>
                                         </li>
-                                    <li class="hidden-xs">
-                                            <a class="disc" href="#"><i class="m-icon m-icon--discuss-active"></i>&nbsp;
-                                                <span class="m-icon-text">Discuss</span>
-                                            </a>
-                                        </li>
+                                    {{--<li class="hidden-xs">--}}
+                                            {{--<a class="disc" href="#"><i class="m-icon m-icon--discuss-active"></i>&nbsp;--}}
+                                                {{--<span class="m-icon-text">Discuss</span>--}}
+                                            {{--</a>--}}
+                                        {{--</li>--}}
                                     </ul>
                                 </div>
 
@@ -188,7 +188,7 @@ if(function_exists('is_single')){
             <ul>
                 <li><a class="ideas" href="/ideas"><i class="m-icon m-icon--bulb"></i>&nbsp; IDEAS</a></li>
                 <li><a class="shop" href="/shop"><i class="m-icon m-icon--item"></i>&nbsp; SHOP</a></li>
-                <li><a class="disc" href="#"><i class="m-icon m-icon--discuss-active"></i>&nbsp; DISCUSS</a></li>
+                {{--<li><a class="disc" href="#"><i class="m-icon m-icon--discuss-active"></i>&nbsp; DISCUSS</a></li>--}}
             </ul>
         </div>
 

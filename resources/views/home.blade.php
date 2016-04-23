@@ -83,10 +83,10 @@
                         </a>
                     </li>
                     <li ng-class="{active: activeMenu == '4'}" ng-click="activeMenu='4'">
-                        <a data-filterby="photos" href="" class="photos-link">
-                            <i class="m-icon m-icon--image"></i>
-                            Photos
-                        </a>
+                        {{--<a data-filterby="photos" href="" class="photos-link">--}}
+                            {{--<i class="m-icon m-icon--image"></i>--}}
+                            {{--Photos--}}
+                        {{--</a>--}}
                     </li>
                 </ul>
             </div>
