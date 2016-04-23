@@ -389,7 +389,7 @@ if($stories['featured']){
         $url = URL::to('/') . '/ideas/feeds/index.php?count=' . $limit;
 
         if ($tags && $tags != 'false') {
-            $url .= '&tag_in=' . implode(',', $tags);
+            $url .= '&tag_in=' . strtolower(implode(',', $tags));
         }
         if ($currentStoryID) {
             $url .= '&excludeid=' . $currentStoryID;
@@ -504,7 +504,7 @@ if($stories['featured']){
 
 //        $tagNames = [];
         foreach ($currentTags as $tagID) {
-            $tagNames[] = Tag::find($tagID)->tag_name;
+            $tagNames[] = str_replace(' ', '-',Tag::find($tagID)->tag_name);
         }
 
         @$relatedIdeas = self::getRelatedStories($productData['product']['id'], 3, $tagNames);
