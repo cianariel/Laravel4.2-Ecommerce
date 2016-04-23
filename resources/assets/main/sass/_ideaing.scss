@@ -3120,7 +3120,7 @@ box-shadow: -1px -1px 20px -7px rgba(0,0,0,0.75);
   @media (max-width: 775px){
     &{
       max-height: 60px;
-    }
+    } 
   }
 
 
@@ -3130,9 +3130,8 @@ body.homepage #top-nav .ideas,
 body.single-post #top-nav .ideas,
 html.idea-stories #top-nav .ideas,
 body.product-details #top-nav .nested a.m-icon-text-holder,
-.room-landing #top-nav a.ideas,
-body.shop-landing #top-nav .nested a.m-icon-text-holder,
-body.shop-category #top-nav .nested a.m-icon-text-holder{
+.room-landing #top-nav a.ideas
+{
     position: relative;
     color:$sky-blue;
     .box-link-active-line{
@@ -3144,6 +3143,10 @@ body.shop-category #top-nav .nested a.m-icon-text-holder{
         left: 50%;
 /*        margin-left: -2px;*/
     }
+}
+body.shop-landing #top-nav .nested a.m-icon-text-holder,
+body.shop-category #top-nav .nested a.m-icon-text-holder{
+  color: $iridium;
 }
 body.shop-landing #top-nav a.m-icon-text-holder .box-link-active-line{
     margin-left: 10px;
@@ -7429,7 +7432,7 @@ body.shop-landing{
                 height: 10px;
                 border-radius: 7px;
                 background: #fff;        
-                //border: 1px solid #0096dd;
+                border: 1px solid $iridium;
                 &:hover{
                     cursor: pointer;
                 }
