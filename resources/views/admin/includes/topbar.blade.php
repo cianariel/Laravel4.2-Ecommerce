@@ -18,9 +18,7 @@
                 <!-- BEGIN NOTIFICATION DROPDOWN -->
                 <!-- DOC: Apply "dropdown-dark" class after below "dropdown-extended" to change the dropdown styte -->
                 <li class="dropdown dropdown-extended dropdown-notification" id="header_notification_bar">
-                <a href="/ideas/wp-admin"
-                   data-toggle="tooltip" data-placement="bottom" title="Wordpress Admin"
-                   class="dropdown-toggle"  data-close-others="true">
+                <a href="/ideas/wp-admin" style="background: transparent !important;">
                     <i class="fa fa-wordpress fa-2"></i>
                 </a>
                 </li>
