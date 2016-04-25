@@ -10758,16 +10758,43 @@ body.search #search-header {
 .photoCopy a {
   color: grey; }
 
-body.giveaway-page .giveaway-row {
-  padding-top: 100px; }
-body.giveaway-page .giveaway-row-2 {
-  margin-top: 50px;
-  margin-bottom: 50px; }
+body.giveaway-page .hero-box {
+  position: relative;
+  top: 110px;
+  padding: 50px;
+  z-index: 10; }
+  body.giveaway-page .hero-box .line-wrap {
+    font-weight: bold;
+    text-decoration: underline; }
+body.giveaway-page .giveaway-content {
+  padding-top: 30px; }
+  body.giveaway-page .giveaway-content h2 {
+    font-size: 2.5rem; }
+body.giveaway-page .giveaway-toc {
+  padding-top: 10px;
+  border: 1px solid #eee; }
 body.giveaway-page .giveaway_button {
   margin: 0px auto;
   width: 100px;
   margin-top: 30px;
   height: 60px; }
+body.giveaway-page .giveaway-banner {
+  background: #FF0042;
+  position: relative;
+  bottom: 0;
+  top: 10px;
+  padding-top: 10px;
+  padding-bottom: 20px; }
+  body.giveaway-page .giveaway-banner .container {
+    min-height: 0  !important;
+    padding-top: 0 !important; }
+  body.giveaway-page .giveaway-banner h3, body.giveaway-page .giveaway-banner h4 {
+    color: #fff;
+    float: left; }
+  body.giveaway-page .giveaway-banner h4 {
+    padding-left: 5%; }
+body.giveaway-page .container-fluid {
+  overflow: hidden; }
 
 .rsDefault .rsBtnCenterer {
   position: absolute;
