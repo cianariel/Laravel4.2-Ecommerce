@@ -46,11 +46,12 @@
 
                                         <div class="form-group ">
                                             <div class="clearfix">
-
-                                                <div style="margin-top: 5px">&nbsp;</div>
-
-                                                <div style="margin-top: 5px">&nbsp;</div>
                                                 <div class="row">
+                                                    <div class="text-center">
+                                                        <a href="/api/user/download/subscriber-list" class="btn btn-success">
+                                                            <i class="fa fa-check"></i> Download Subscribers List
+                                                        </a>
+                                                    </div>
                                                     <div class="text-center">
                                                         <pagination ng-show="total != 0" total-items="total"
                                                                     ng-model="page"
