@@ -3129,7 +3129,6 @@ box-shadow: -1px -1px 20px -7px rgba(0,0,0,0.75);
 body.homepage #top-nav .ideas,
 body.single-post #top-nav .ideas,
 html.idea-stories #top-nav .ideas,
-body.product-details #top-nav .nested a.m-icon-text-holder,
 .room-landing #top-nav a.ideas
 {
     position: relative;
@@ -3145,6 +3144,7 @@ body.product-details #top-nav .nested a.m-icon-text-holder,
     }
 }
 body.shop-landing #top-nav .nested a.m-icon-text-holder,
+body.product-details #top-nav .nested a.m-icon-text-holder,
 body.shop-category #top-nav .nested a.m-icon-text-holder{
   color: $iridium;
 }
