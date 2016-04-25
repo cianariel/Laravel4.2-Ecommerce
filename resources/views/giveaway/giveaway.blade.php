@@ -122,12 +122,31 @@
 				        	{{$giveaway->giveaway_toc}}
 				        </p>
 				</div>
-                <section class="giveaway-slider col-lg-12">
-                    <img class="giveaway-thumb" src="/assets/images/dummies/giveaway-thumb.jpg" />
-                    <img class="giveaway-thumb" src="/assets/images/dummies/giveaway-thumb.jpg" />
-                    <img class="giveaway-thumb" src="/assets/images/dummies/giveaway-thumb.jpg" />
-                    <img class="giveaway-thumb" src="/assets/images/dummies/giveaway-thumb.jpg" />
-                    <img class="giveaway-thumb" src="/assets/images/dummies/giveaway-thumb.jpg" />
+                <section class="giveaway-slider black-slider col-lg-12">
+                    <img src="/assets/images/giveaway-logo.png" class="giveaway-logo col-lg-3" />
+                    <div class="col-lg-9">
+                        <div class="thumb-wrap">
+                            <img class="giveaway-thumb" src="/assets/images/dummies/giveaway-thumb.jpg" />
+                            October
+                        </div>
+                        <div class="thumb-wrap">
+                            <img class="giveaway-thumb" src="/assets/images/dummies/giveaway-thumb.jpg" />
+                            October
+                        </div>
+                        <div class="thumb-wrap">
+                            <img class="giveaway-thumb" src="/assets/images/dummies/giveaway-thumb.jpg" />
+                            October
+                        </div>
+                        <div class="thumb-wrap">
+                            <img class="giveaway-thumb" src="/assets/images/dummies/giveaway-thumb.jpg" />
+                            October
+                        </div>
+                        <div class="thumb-wrap">
+                            <img class="giveaway-thumb" src="/assets/images/dummies/giveaway-thumb.jpg" />
+                            October
+                        </div>
+
+                    </div>
                 </section>
         </div>
 
