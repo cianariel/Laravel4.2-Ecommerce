@@ -103,6 +103,8 @@ Route::group(['prefix' => 'api'], function () {
 
     Route::post('user/user-list', 'UserController@userList');
     Route::post('user/subscriber-list', 'UserController@subscriberList');
+    Route::get('user/download/subscriber-list', 'UserController@downloadSubscribersList');
+
     Route::get('user/get-user/{id?}', 'UserController@getUserById');
     // Route::any('user/user-add/{id?}','UserController@userList');
 

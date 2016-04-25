@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 use App\Models\Media;
 use App\Models\WpUser;
 use App\Models\Notification;
-
+use App\Models\Subscriber;
 
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Auth\Passwords\CanResetPassword;
@@ -114,18 +114,8 @@ class User extends Model implements AuthenticatableContract,
 
     public function getSubscriberList($settings)
     {
-        $subscriberModel = new Subscriber();
-
-        $skip = $settings['limit'] * ($settings['page'] - 1);
-        $subscriberList['result'] = $subscriberModel
-            ->groupBy('email')
-            ->take($settings['limit'])
-            ->offset($skip)
-            ->orderBy('created_at', 'desc')
-            ->get();
-
-        $subscriberList['count'] = $subscriberModel->get()->count();
-        return $subscriberList;
+        $subs = new Subscriber();
+        return $subs->subscribersList($settings);
 
     }
 
@@ -145,7 +135,7 @@ class User extends Model implements AuthenticatableContract,
                 $user->name = $data['FullName'];
                 $user->email = $data['Email'];
                 //$user->password = \Hash::make($data['Password']);
-                $user->password = hash('md5',$data['Password']);
+                $user->password = hash('md5', $data['Password']);
                 $user->save();
 
                 $userProfile = new UserProfile();
@@ -180,7 +170,7 @@ class User extends Model implements AuthenticatableContract,
 
     public function addContactUsInfo($data)
     {
-        try{
+        try {
             \DB::transaction(function () use ($data) {
 
                 $contact = new Contact();
@@ -194,7 +184,7 @@ class User extends Model implements AuthenticatableContract,
                 return $data;
             });
 
-        }catch(\Exception $ex){
+        } catch (\Exception $ex) {
             \Log::error($ex);
         }
     }
@@ -325,7 +315,7 @@ class User extends Model implements AuthenticatableContract,
 
         $name = explode(" ", $systemUser['name']);
         $firstName = $name[0];
-        $lastName = !empty($name[1])?$name[1]:'';
+        $lastName = !empty($name[1]) ? $name[1] : '';
 
         $wpUser = new WpUser();
 
@@ -427,7 +417,7 @@ class User extends Model implements AuthenticatableContract,
 
             //  return \Hash::check($userData['Password'], $user->password) ? $user : false;
 
-            $password = hash('md5',$userData['Password']);
+            $password = hash('md5', $userData['Password']);
 
             return ($password == $user->password) ? $user : false;
 
@@ -445,13 +435,13 @@ class User extends Model implements AuthenticatableContract,
         $Section = $info['Section'];
 
         if (count($info['Users']) != 0) {
-            Notifynder::loop($info['Users'], function (NotifynderBuilder $builder, $user) use ($info, $PostTime,$ItemTitle,$Section) {
+            Notifynder::loop($info['Users'], function (NotifynderBuilder $builder, $user) use ($info, $PostTime, $ItemTitle, $Section) {
 
                 $builder->category($info['Category'])
                         ->from($info['SenderId'])
                         ->to($user)
                         ->url($info['Permalink'])
-                        ->extra(compact('PostTime','ItemTitle','Section'));
+                        ->extra(compact('PostTime', 'ItemTitle', 'Section'));
 
             })->send();
 
@@ -471,26 +461,25 @@ class User extends Model implements AuthenticatableContract,
 
         $userInfo = new User();
 
-       // $product = new Product();
+        // $product = new Product();
 
         $noticeCollection = new Collection();
 
-        foreach($notifications as $notice)
-        {
+        foreach ($notifications as $notice) {
 
             $userInfo = $userInfo->getUserById($notice['from_id']);
 
             $extraInfo = json_decode($notice['extra']);
 
-        //    $permalink = explode('/',$notice['url'])[1];
+            //    $permalink = explode('/',$notice['url'])[1];
 
-        //    $product = $product->checkPermalink($permalink);
+            //    $product = $product->checkPermalink($permalink);
 
             $data['UserId'] = $userInfo['id'];
-            $data['UserName'] = $userInfo['name'] ;
+            $data['UserName'] = $userInfo['name'];
             $data['UserPicture'] = $userInfo->medias[0]->media_link;
-        //    $data['ProductTitle'] = $product['product_name'];
-        //    $data['ProductLink'] = $notice['url'];
+            //    $data['ProductTitle'] = $product['product_name'];
+            //    $data['ProductLink'] = $notice['url'];
             $data['ItemTitle'] = $extraInfo->ItemTitle;
             $data['ItemLink'] = $notice['url'];
             $data['NoticeRead'] = $notice['read'];

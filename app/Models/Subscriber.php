@@ -61,7 +61,32 @@ class Subscriber extends Model
         return $subs;
     }
 
+    /**
+     * @param $settings
+     * @return mixed
+     * @internal param $subscriberList
+     */
+    public function subscribersList($settings)
+    {
+        $subscriberModel = new Subscriber();
 
+        $skip = $settings['limit'] * ($settings['page'] - 1);
+        $subscriberList['result'] = $subscriberModel
+            ->groupBy('email')
+            ->take($settings['limit'])
+            ->offset($skip)
+            ->orderBy('created_at', 'desc')
+            ->get();
+
+        $subscriberList['count'] = $subscriberModel->get()->count();
+        return $subscriberList;
+    }
+
+    public function allSubscribers()
+    {
+        $subscriberModel = new Subscriber();
+        return $subscriberModel->all(['email']);
+    }
 
 
 }
