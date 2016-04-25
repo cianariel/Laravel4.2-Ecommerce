@@ -6750,14 +6750,12 @@ header.colophon {
 body.homepage #top-nav .ideas,
 body.single-post #top-nav .ideas,
 html.idea-stories #top-nav .ideas,
-body.product-details #top-nav .nested a.m-icon-text-holder,
 .room-landing #top-nav a.ideas {
   position: relative;
   color: #00B1FF; }
   body.homepage #top-nav .ideas .box-link-active-line,
   body.single-post #top-nav .ideas .box-link-active-line,
   html.idea-stories #top-nav .ideas .box-link-active-line,
-  body.product-details #top-nav .nested a.m-icon-text-holder .box-link-active-line,
   .room-landing #top-nav a.ideas .box-link-active-line {
     height: 50px;
     width: 0px;
@@ -6768,6 +6766,7 @@ body.product-details #top-nav .nested a.m-icon-text-holder,
     /*        margin-left: -2px;*/ }
 
 body.shop-landing #top-nav .nested a.m-icon-text-holder,
+body.product-details #top-nav .nested a.m-icon-text-holder,
 body.shop-category #top-nav .nested a.m-icon-text-holder {
   color: #FF0042; }
 
