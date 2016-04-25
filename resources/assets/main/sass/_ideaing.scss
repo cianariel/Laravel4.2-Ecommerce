@@ -9205,19 +9205,23 @@ body.giveaway-page{
     padding-top: 10px;
     border: 1px solid #eee;
   }
-  .giveaway_button{
-   margin: 0px auto; 
-   width: 100px;
-   margin-top: 30px;
-   height: 60px;
+  .share-buttons{
+    margin-top: 10px;
+  }
+  .all-shares{
+    top: -20px;
+  }
+  .social-stats__item{
+    position: relative;
+    bottom: 10px;
   }
   .giveaway-banner{
     background: #FF0042;
     position: relative;
     bottom: 0;
     top: 10px;
-    padding-top: 10px;
-    padding-bottom: 20px;
+    padding-top: 0;
+    padding-bottom: 10px;
 
     .container{
       min-height: 0  !important;
@@ -9228,13 +9232,45 @@ body.giveaway-page{
       color: #fff;
       float: left;
     }
+
+    h3{
+      display: block;
+      width: 212px;
+      height: 60px;
+      text-indent: -9999px;
+      background: url("/assets/images/giveaway-logo.png") no-repeat;
+      //background-size: contain;
+    }
     h4{
       padding-left: 5%;
+      padding-top: 25px;
+      text-transform: uppercase;
     }
 
   }
   .container-fluid{
     overflow: hidden;
+  }
+  .black-slider{
+    background: #000;
+    padding: 5px;
+
+    .giveaway-logo{
+      float: left;
+      margin-top: 20px;
+        max-width: 220px;
+    }
+    .thumb-wrap{
+      float: left;
+      color: #fff;
+      text-align: center;
+      padding-left: 8px;
+
+      img{
+        display: block;
+      }
+    }
+
   }
 }
 
