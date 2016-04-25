@@ -3120,7 +3120,7 @@ box-shadow: -1px -1px 20px -7px rgba(0,0,0,0.75);
   @media (max-width: 775px){
     &{
       max-height: 60px;
-    } 
+    }
   }
 
 
@@ -3129,7 +3129,6 @@ box-shadow: -1px -1px 20px -7px rgba(0,0,0,0.75);
 body.homepage #top-nav .ideas,
 body.single-post #top-nav .ideas,
 html.idea-stories #top-nav .ideas,
-body.product-details #top-nav .nested a.m-icon-text-holder,
 .room-landing #top-nav a.ideas
 {
     position: relative;
@@ -3145,6 +3144,7 @@ body.product-details #top-nav .nested a.m-icon-text-holder,
     }
 }
 body.shop-landing #top-nav .nested a.m-icon-text-holder,
+body.product-details #top-nav .nested a.m-icon-text-holder,
 body.shop-category #top-nav .nested a.m-icon-text-holder{
   color: $iridium;
 }
@@ -9176,18 +9176,101 @@ body.search{
   color: grey;
 }
 body.giveaway-page{
-  .giveaway-row{
-    padding-top: 100px;
+  .hero-box{
+    position: relative;
+    top: 110px;
+    padding: 50px;
+    z-index: 10;
+
+    .line-wrap{
+      font-weight: bold;
+      text-decoration: underline;
+    }
   }
-  .giveaway-row-2{
-    margin-top: 50px; 
-    margin-bottom: 50px; 
+  //.giveaway-row{
+  //  padding-top: 100px;
+  //}
+  //.giveaway-row-2{
+  //  margin-top: 50px;
+  //  margin-bottom: 50px;
+  //}
+  .giveaway-content{
+    padding-top: 30px;
+
+    h2{
+      font-size: 2.5rem;
+    }
   }
-  .giveaway_button{
-   margin: 0px auto; 
-   width: 100px;
-   margin-top: 30px;
-   height: 60px;
+  .giveaway-toc{
+    padding-top: 10px;
+    border: 1px solid #eee;
+  }
+  .share-buttons{
+    margin-top: 10px;
+  }
+  .all-shares{
+    top: -20px;
+  }
+  .social-stats__item{
+    position: relative;
+    bottom: 10px;
+  }
+  .giveaway-banner{
+    background: #FF0042;
+    position: relative;
+    bottom: 0;
+    top: 10px;
+    padding-top: 0;
+    padding-bottom: 10px;
+
+    .container{
+      min-height: 0  !important;
+      padding-top: 0 !important;
+    }
+
+    h3, h4{
+      color: #fff;
+      float: left;
+    }
+
+    h3{
+      display: block;
+      width: 212px;
+      height: 60px;
+      text-indent: -9999px;
+      background: url("/assets/images/giveaway-logo.png") no-repeat;
+      //background-size: contain;
+    }
+    h4{
+      padding-left: 5%;
+      padding-top: 25px;
+      text-transform: uppercase;
+    }
+
+  }
+  .container-fluid{
+    overflow: hidden;
+  }
+  .black-slider{
+    background: #000;
+    padding: 5px;
+
+    .giveaway-logo{
+      float: left;
+      margin-top: 20px;
+        max-width: 220px;
+    }
+    .thumb-wrap{
+      float: left;
+      color: #fff;
+      text-align: center;
+      padding-left: 8px;
+
+      img{
+        display: block;
+      }
+    }
+
   }
 }
 
