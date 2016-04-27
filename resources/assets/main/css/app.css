@@ -7146,6 +7146,9 @@ header.sub-head {
   background: #fff;
   z-index: 40;
   top: 55px; }
+  .shop-menu .sub-title a {
+    position: static !important;
+    text-transform: uppercase !important; }
   @media only screen and (max-width: 768px) {
     .shop-menu {
       top: 0px; } }
