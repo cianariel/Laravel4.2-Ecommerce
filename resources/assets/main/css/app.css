@@ -4689,6 +4689,9 @@ h6.gift {
 ul.for li {
   padding: 15px 10px; }
 
+html {
+  height: 100%; }
+
 body,
 html {
   overflow-x: hidden; }
@@ -5637,9 +5640,6 @@ body.contactus-page #hero {
     display: none; }
   #ideaing-logo:hover > .m-icon:last-child {
     display: block; }
-
-#signup-modal {
-  display: none; }
 
 .login-signup-modal a.logo .m-icon:first-child {
   display: block; }
@@ -7398,6 +7398,7 @@ header.sub-head {
     padding-bottom: 15px; }
   .modal-login .btn-info {
     margin-bottom: 0; }
+  .modal-login input[type="password"].form-control,
   .modal-login input[type="text"].form-control {
     height: 40px;
     /*    padding-top: 15px;*/
@@ -8230,6 +8231,8 @@ body.homepage .grid-insert {
     z-index: 10;
     position: relative;
     margin-top: 10px; }
+    .hero-tags .hover-box .icon-wrap {
+      border: 1px solid #eee; }
     .hero-tags .hover-box h6 {
       padding: 15px;
       font-size: inherit;
@@ -8237,8 +8240,9 @@ body.homepage .grid-insert {
       margin: 0; }
     .hero-tags .hover-box div {
       padding: 15px;
-      color: #757575;
-      border: 1px solid #c1c1c1; }
+      color: #757575; }
+      .hero-tags .hover-box div .get-round {
+        margin-top: -6px; }
     .hero-tags .hover-box::before {
       content: ' ';
       position: absolute;
@@ -9145,6 +9149,8 @@ footer.about-footer {
   padding: 4px 11px;
   border-radius: 20px; }
 
+.room-landing .rsContent {
+  overflow: visible; }
 .room-landing .modal-dialog {
   position: relative;
   /*        width: auto;*/
@@ -10301,6 +10307,11 @@ body.login-signup {
   width: 100%; }
   body.login-signup #about-button, body.login-signup #back-to-top, body.login-signup .pocket {
     display: none; }
+  body.login-signup > div {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    overflow: hidden; }
   body.login-signup .background {
     position: absolute;
     background-color: #000;

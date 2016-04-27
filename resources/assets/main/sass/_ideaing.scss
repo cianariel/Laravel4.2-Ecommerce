@@ -306,6 +306,9 @@ ul.for{
   }
 }
 
+html{
+  height: 100%;
+}
 
 body,
 html{
@@ -1358,9 +1361,9 @@ body.contactus-page
 
 }
 
-#signup-modal{
-  display: none;
-}
+//#signup-modal{
+//  display: none;
+//}
 
 .login-signup-modal a.logo{
     .m-icon:first-child{
@@ -4115,6 +4118,7 @@ header.sub-head{
   .btn-info{
     margin-bottom: 0;
   }
+  input[type="password"].form-control,
   input[type="text"].form-control{
     height: 40px;
 /*    padding-top: 15px;*/
@@ -5282,6 +5286,10 @@ body.homepage{
     position: relative;
     margin-top: 10px;
 
+    .icon-wrap{
+      border: 1px solid #eee;
+    }
+
     h6{
       padding: 15px;
       //background: $iridium;
@@ -5292,7 +5300,11 @@ body.homepage{
     div{
       padding: 15px;
       color: darken($light-grey, 30%);
-      border: 1px solid $light-grey;
+      //border: 1px solid $light-grey;
+
+      .get-round{
+        margin-top: -6px;
+      }
     }
     &::before{
       content: ' ';
@@ -6885,6 +6897,9 @@ footer.about-footer{
     border-radius: 20px;
 }
 .room-landing{
+  .rsContent{
+    overflow: visible;
+  }
     .modal-dialog{
         position: relative;
 /*        width: auto;*/
@@ -8568,6 +8583,12 @@ body.login-signup{
     #about-button, #back-to-top, .pocket{
         display: none;
     }
+  > div{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+  }
     .background{
         position: absolute;
         background-color: #000;

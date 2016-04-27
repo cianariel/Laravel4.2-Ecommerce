@@ -3597,7 +3597,7 @@ angular.module('colorpicker.module', [])
                 $('.page-overlay').fadeToggle();
             }
 
-            $($show).fadeToggle();
+            $($show).fadeIn();
             $that.toggleClass('active');
         });
 

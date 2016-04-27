@@ -21,7 +21,7 @@
                 $('.page-overlay').fadeToggle();
             }
 
-            $($show).fadeToggle();
+            $($show).fadeIn();
             $that.toggleClass('active');
         });
 
