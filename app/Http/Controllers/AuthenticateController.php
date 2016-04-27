@@ -446,8 +446,9 @@
                     if (isset($userData['Permalink']) && ($userData['Permalink'] != ""))
                     {
                         // $user->userProfile()->update(['permalink' => $input['Permalink']]);
+                        // $user->permalink = $input['Permalink'];
 
-                        $user->permalink = $input['Permalink'];
+                        $user->permalink = $this->user->generatePermalink( ['Permalink' => $input['Permalink'],'Email' => $userData['Email']]);
                     }
 
                     if (isset($userData['MediaLink']) && ($userData['MediaLink'] != ""))

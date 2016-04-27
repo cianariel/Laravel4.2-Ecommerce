@@ -134,6 +134,7 @@ class User extends Model implements AuthenticatableContract,
 
                 $user->name = $data['FullName'];
                 $user->email = $data['Email'];
+                $user->permalink = $this->generatePermalink($data);
                 //$user->password = \Hash::make($data['Password']);
                 $user->password = hash('md5', $data['Password']);
                 $user->save();
@@ -166,6 +167,18 @@ class User extends Model implements AuthenticatableContract,
             throw new \Exception($ex);
         }
         return true;
+    }
+
+    // Generate permalink for empty permalink or return given permalink
+    public function generatePermalink($data)
+    {
+        if(empty($data['Permalink']))
+        {
+            $charList = ['@','.','_','-'];
+            return str_replace($charList,'-',$data['Email']);
+        }else{
+            return $data['Permalink'];
+        }
     }
 
     public function addContactUsInfo($data)
