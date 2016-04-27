@@ -17,7 +17,7 @@
 	</nav>
     <section id="hero" class="landing-hero">
         <div class="rsContent">
-            <div id="hero-bg" style="background-image: url('/assets/images/dummies/giveaway-hero.jpg'); "></div>
+            <div id="hero-bg" style="background-image: url({{$giveaway->giveaway_image}}); "></div>
             {{--<div class="color-overlay"></div>--}}
             <div class="container fixed-sm full-480">
                 <div  id="publicApp" ng-app="publicApp" ng-controller="publicController" class="col-md-offset-1 col-md-4  col-xs-4 hero-box qiuck-signup hidden-620 pull-right" ng-cloak>
@@ -87,7 +87,6 @@
 	        	<div class="col-md-7 col-xs-8">
                     {{--<img src="/assets/images/dummies/giveaway-hero.jpg" />--}}
 				        <div class='giveaway_title'><h2>{{$giveaway->giveaway_title}}</h2></div>
-				        <div class='giveaway_img'><img src='{{$giveaway->giveaway_image}}' class='giveaway_image'></div>
 				        <div class='giveaway_desc'>{{$giveaway->giveaway_desc}}</div>
 				        {{--<div class='giveaway_button'><a class="btn btn-success col-xs-12" href="{{url('signup')}}">Get started</a></div>--}}
                    <section class="col-lg-12 sign-in">
@@ -127,29 +126,12 @@
             <section class="slider giveaway-slider black-slider col-lg-12">
                     <img src="/assets/images/giveaway-logo.png" class="giveaway-logo col-lg-3" />
                     <div class="giveaway-slider-content col-lg-9">
-                        <div class="thumb-wrap">
-                            <img class="giveaway-thumb" src="/assets/images/dummies/giveaway-thumb.jpg" />
-                            <h6>October</h6>
-                        </div>
-                        <div class="thumb-wrap">
-                            <img class="giveaway-thumb" src="/assets/images/dummies/giveaway-thumb.jpg" />
-                            <h6>October</h6>
-
-                        </div>
-                        <div class="thumb-wrap">
-                            <img class="giveaway-thumb" src="/assets/images/dummies/giveaway-thumb.jpg" />
-                            <h6>October</h6>
-                        </div>
-                        <div class="thumb-wrap">
-                            <img class="giveaway-thumb" src="/assets/images/dummies/giveaway-thumb.jpg" />
-                            <h6>October</h6>
-
-                        </div>
-                        <div class="thumb-wrap">
-                            <img class="giveaway-thumb" src="/assets/images/dummies/giveaway-thumb.jpg" />
-                            <h6>October</h6>
-                        </div>
-
+                        @foreach($nextGiveaways as $nextGive)
+                            <div class="thumb-wrap">
+                                <img class="giveaway-thumb" src="{{$nextGive->giveaway_image}}" />
+                                <h6>{{date('F', strtotime($nextGive->goes_live))}}</h6>
+                            </div>
+                        @endforeach
                     </div>
                 </section>
 

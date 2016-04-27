@@ -715,11 +715,18 @@ if($stories['featured']){
 
         $giveaway = Giveaway::where('giveaway_permalink', $permalink)->first();
 
+//        $nextGiveaways = Giveaway::where('created_at', '>=', date('Y-m-d').' 00:00:00')->get();
+        $nextGiveaways = Giveaway::whereDate('goes_live', '>=', date('Y-m-d'))->get();
+
         if(!$giveaway){
             return \Redirect::to('not-found');
 
         }
-        return view('giveaway.giveaway')->with('userData', $userData)->with('giveaway',$giveaway);
+        return view('giveaway.giveaway')
+            ->with('userData', $userData)
+            ->with('nextGiveaways', $nextGiveaways)
+            ->with('giveaway',$giveaway)
+            ;
     }
     
 
