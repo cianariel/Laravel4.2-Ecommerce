@@ -85,7 +85,7 @@
 	<div class="container-fluid">
 	    <div class="container fixed-sm full-480 giveaway-content" >
 	        	<div class="col-md-7 col-xs-8">
-                    <img src="/assets/images/dummies/giveaway-hero.jpg" />
+                    {{--<img src="/assets/images/dummies/giveaway-hero.jpg" />--}}
 				        <div class='giveaway_title'><h2>{{$giveaway->giveaway_title}}</h2></div>
 				        <div class='giveaway_img'><img src='{{$giveaway->giveaway_image}}' class='giveaway_image'></div>
 				        <div class='giveaway_desc'>{{$giveaway->giveaway_desc}}</div>
@@ -124,28 +124,30 @@
 				</div>
             <h4 class="red col-xs-12 text-center">Stay tuned for these upcoming giveaways!</h4>
 
-            <section class="giveaway-slider black-slider col-lg-12">
+            <section class="slider giveaway-slider black-slider col-lg-12">
                     <img src="/assets/images/giveaway-logo.png" class="giveaway-logo col-lg-3" />
-                    <div class="col-lg-9">
+                    <div class="giveaway-slider-content col-lg-9">
                         <div class="thumb-wrap">
                             <img class="giveaway-thumb" src="/assets/images/dummies/giveaway-thumb.jpg" />
-                            October
+                            <h6>October</h6>
                         </div>
                         <div class="thumb-wrap">
                             <img class="giveaway-thumb" src="/assets/images/dummies/giveaway-thumb.jpg" />
-                            October
+                            <h6>October</h6>
+
                         </div>
                         <div class="thumb-wrap">
                             <img class="giveaway-thumb" src="/assets/images/dummies/giveaway-thumb.jpg" />
-                            October
+                            <h6>October</h6>
                         </div>
                         <div class="thumb-wrap">
                             <img class="giveaway-thumb" src="/assets/images/dummies/giveaway-thumb.jpg" />
-                            October
+                            <h6>October</h6>
+
                         </div>
                         <div class="thumb-wrap">
                             <img class="giveaway-thumb" src="/assets/images/dummies/giveaway-thumb.jpg" />
-                            October
+                            <h6>October</h6>
                         </div>
 
                     </div>
@@ -154,4 +156,42 @@
         </div>
 
     </div>
+
+    <script>
+        jQuery(document).ready(function($) {
+            $('.giveaway-slider-content ').royalSlider({
+                arrowsNav: true,
+                loop: false,
+                keyboardNavEnabled: true,
+                controlsInside: true,
+                imageScaleMode: 'fit',
+                arrowsNavAutoHide: false,
+//                controlNavigation: 'bullets',
+//                thumbsFitInViewport: false,
+                navigateByClick: false,
+//                startSlideId: 0,
+                autoPlay: false,
+                transitionType:'move',
+                globalCaption: false,
+                deeplinking: {
+                    enabled: true,
+                    change: false
+                },
+                /* size of all images http://help.dimsemenov.com/kb/royalslider-jquery-plugin-faq/adding-width-and-height-properties-to-images */
+                imgWidth: "100%",
+                imageScaleMode: "fill",
+//                autoScaleSliderWidth: 300,
+//                autoScaleSliderHeight: 150,
+                visibleNearby: {
+                    enabled: true,
+                    centerArea: 0.17,
+                    center: false,
+//                    breakpoint: 650,
+//                    breakpointCenterArea: 0.64,
+//                    navigateByCenterClick: true
+                }
+//    autoScaleSlider: true
+            });
+        });
+    </script>
 @stop
