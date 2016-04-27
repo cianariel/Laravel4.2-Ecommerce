@@ -9206,19 +9206,13 @@ body.giveaway-page{
     top: 110px;
     padding: 50px;
     z-index: 10;
+    outline: 2px solid #eee;
 
     .line-wrap{
       font-weight: bold;
       text-decoration: underline;
     }
   }
-  //.giveaway-row{
-  //  padding-top: 100px;
-  //}
-  //.giveaway-row-2{
-  //  margin-top: 50px;
-  //  margin-bottom: 50px;
-  //}
   .giveaway-content{
     padding-top: 30px;
 
@@ -9272,6 +9266,24 @@ body.giveaway-page{
       text-transform: uppercase;
     }
 
+  }
+  .sign-in{
+    border: 2px solid #eee;
+    text-align: center;
+    padding-top: 10px;
+    margin-top: 40px;
+
+    h5{
+      font-size: 3.5rem;
+      padding-top: 25px;
+    }
+    span{
+      color: $iridium;
+    }
+    .line-wrap{
+      font-weight: bold;
+      text-decoration: underline;
+    }
   }
   .container-fluid{
     overflow: hidden;
