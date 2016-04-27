@@ -68,7 +68,7 @@ class PageController extends ApiController
 //        $sliderContent = (array)$sliderContent;
 
         MetaTag::set('title', 'Ideaing | Ideas for Smarter Living');
-        MetaTag::set('description', 'Visit our Online Showroom.  Save the Latest  Smart Home Products to Your Personal Account.  Share & Discuss with Friends.  Shop Online for Daily Discounts.');
+        MetaTag::set('description', 'Ideaing inspires you to live a smarter and beautiful home. Get ideas on using home automation devices including WiFi cameras, WiFi doorbells, door locks, security, energy, water and many more.');
         //return $result;
         return view('home')
             ->with('userData', $userData)
