@@ -38,7 +38,7 @@
                             class="path37"></span><span class="path38"></span><span class="path39"></span><span
                             class="path40"></span>
                     </i>
-                    
+
                 </a>
 
             <p>Join <b>Ideaing</b> to get tips on transforming your home to a Smart Home. Plus share photos of your home,
@@ -97,13 +97,7 @@
     </div>
     <div class="background"></div>
     <div class="background-image"></div>
-    <style type="">
-        html{
-            height: 100%;
-            width: 100%;
-        }
-    </style>
-    
+
     {{--<script src="/assets/js/angular-custom/public.common.js"></script>--}}
     <script src="/assets/js/main.js"></script>
     {{--<script src="/assets/admin/js/angular-file-upload.min.js"></script>--}}

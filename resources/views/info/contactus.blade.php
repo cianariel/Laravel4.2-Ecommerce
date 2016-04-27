@@ -20,7 +20,7 @@
             <div class="contactus-form-container ">
 
                 <div ng-show="Code" class="alert alert-info">
-                    <strong>Congratulation!</strong> Your message has been sent .
+                    <strong>Congratulations!</strong> Your message has been sent .
                 </div>
                 <div ng-show="contactError" class="alert alert-danger">
                     <strong>Warning!</strong> Please provide valid email address and query.
