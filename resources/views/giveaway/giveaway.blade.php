@@ -90,30 +90,30 @@
 				        <div class='giveaway_img'><img src='{{$giveaway->giveaway_image}}' class='giveaway_image'></div>
 				        <div class='giveaway_desc'>{{$giveaway->giveaway_desc}}</div>
 				        {{--<div class='giveaway_button'><a class="btn btn-success col-xs-12" href="{{url('signup')}}">Get started</a></div>--}}
-                    <div class="col-lg-6">
-                        <h5>Sign in to WIN</h5>
-                        <div class="line-wrap">Not yet a member? Create an account!</div>
-                    </div>
-
-                    <div  id="publicApp" ng-app="publicApp" ng-controller="publicController" class="col-lg-6 qiuck-signup hidden-620 pull-right" ng-cloak>
-                        <div>
-                            <strong style="color: red">@{{ responseMessage }}</strong>
+                   <section class="col-lg-12 sign-in">
+                        <div class="col-lg-6">
+                            <h5>Sign in to <span>WIN!</span></h5>
+                            <div class="line-wrap">Not yet a member? Create an account!</div>
                         </div>
-                        <form>
-                        <span class="email-input-holder ">
-		                    {{--<i class="m-icon m-icon--email-form-id"></i>--}}
-                            <input class="form-control" ng-model="SubscriberEmail" type="text" placeholder="Email" name="email">
-		                </span>
-                        <span class="password-input-holder ">
-		                    {{--<i class="m-icon m-icon--email-form-id"></i>--}}
-                            <input class="form-control" ng-model="SubscriberEmail" type="text" placeholder="Password" name="password">
-		                </span>
 
-                            <button ng-click="subscribe('')" class="btn btn-success col-xs-12"  href="#">Enter</button>
+                        <div  id="publicApp" ng-app="publicApp" ng-controller="publicController" class="col-lg-6 qiuck-signup hidden-620 pull-right" ng-cloak>
+                            <div>
+                                <strong style="color: red">@{{ responseMessage }}</strong>
+                            </div>
+                            <form>
+                            <span class="email-input-holder ">
+                                {{--<i class="m-icon m-icon--email-form-id"></i>--}}
+                                <input class="form-control" ng-model="SubscriberEmail" type="text" placeholder="Email" name="email">
+                            </span>
+                            <span class="password-input-holder ">
+                                {{--<i class="m-icon m-icon--email-form-id"></i>--}}
+                                <input class="form-control" ng-model="SubscriberEmail" type="text" placeholder="Password" name="password">
+                            </span>
 
-                        </form>
-                    </div>
-                    <h5 class="red">Stay tuned for these upcoming giveaways!</h5>
+                                <button ng-click="subscribe('')" class="btn btn-success col-xs-12"  href="#">Enter</button>
+                            </form>
+                        </div>
+                   </section>
 				</div>
 
 	        	<div class="col-md-4 col-xs-8 pull-right giveaway-toc">
@@ -122,7 +122,9 @@
 				        	{{$giveaway->giveaway_toc}}
 				        </p>
 				</div>
-                <section class="giveaway-slider black-slider col-lg-12">
+            <h4 class="red col-xs-12 text-center">Stay tuned for these upcoming giveaways!</h4>
+
+            <section class="giveaway-slider black-slider col-lg-12">
                     <img src="/assets/images/giveaway-logo.png" class="giveaway-logo col-lg-3" />
                     <div class="col-lg-9">
                         <div class="thumb-wrap">
@@ -148,6 +150,7 @@
 
                     </div>
                 </section>
+
         </div>
 
     </div>

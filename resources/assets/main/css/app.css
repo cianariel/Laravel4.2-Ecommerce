@@ -10775,7 +10775,8 @@ body.giveaway-page .hero-box {
   position: relative;
   top: 110px;
   padding: 50px;
-  z-index: 10; }
+  z-index: 10;
+  outline: 2px solid #eee; }
   body.giveaway-page .hero-box .line-wrap {
     font-weight: bold;
     text-decoration: underline; }
@@ -10816,6 +10817,19 @@ body.giveaway-page .giveaway-banner {
     padding-left: 5%;
     padding-top: 25px;
     text-transform: uppercase; }
+body.giveaway-page .sign-in {
+  border: 2px solid #eee;
+  text-align: center;
+  padding-top: 10px;
+  margin-top: 40px; }
+  body.giveaway-page .sign-in h5 {
+    font-size: 3.5rem;
+    padding-top: 25px; }
+  body.giveaway-page .sign-in span {
+    color: #FF0042; }
+  body.giveaway-page .sign-in .line-wrap {
+    font-weight: bold;
+    text-decoration: underline; }
 body.giveaway-page .container-fluid {
   overflow: hidden; }
 body.giveaway-page .black-slider {
