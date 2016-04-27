@@ -12,17 +12,20 @@
             var $hide = $that.data('hide');
             var $overlay = $that.data('overlay');
 
-            if($hide){
-                $($hide).hide();
-                $that.siblings().removeClass('active');
-            }
-
             if($overlay){
                 $('.page-overlay').fadeToggle();
             }
 
-            $($show).fadeIn();
-            $that.toggleClass('active');
+            if($hide){
+                $($hide).hide();
+                $that.siblings().removeClass('active');
+                $($show).fadeIn();
+                $that.addClass('active');
+            }else{
+                $($show).fadeToggle();
+                $that.toggleClass('active');
+            }
+
         });
 
         $('.page-overlay, .login-signup-modal').click(function(event){
