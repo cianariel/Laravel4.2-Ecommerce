@@ -134,6 +134,7 @@ class User extends Model implements AuthenticatableContract,
 
                 $user->name = $data['FullName'];
                 $user->email = $data['Email'];
+                $user->permalink = $this->generatePermalink($data);
                 //$user->password = \Hash::make($data['Password']);
                 $user->password = hash('md5', $data['Password']);
                 $user->save();
@@ -166,6 +167,46 @@ class User extends Model implements AuthenticatableContract,
             throw new \Exception($ex);
         }
         return true;
+    }
+
+    // Generate permalink for empty permalink or return given permalink
+    public function generatePermalink($data)
+    {
+        if(empty($data['Permalink']))
+        {
+            $charList = ['@','.','_','-',' '];
+            $tmpPermalink = str_replace($charList,'-',$data['FullName']);
+
+            while($this->checkPermalink($tmpPermalink) != false)
+            {
+                $tmpPermalink = $tmpPermalink.'-'.random_int(0,99);
+            }
+
+        }else{
+            $tmpPermalink = $data['Permalink'];
+
+            $charList = ['@','.','_','-',' '];
+            $tmpPermalink = str_replace($charList,'-',$tmpPermalink);
+
+            while($this->checkPermalink($tmpPermalink) != false)
+            {
+                $tmpPermalink = $tmpPermalink.'-'.random_int(0,99);
+            }
+        }
+
+        return $tmpPermalink;
+    }
+
+    public function checkPermalink($permalink)
+    {
+        try {
+            return User::where('permalink', $permalink)
+                       ->firstOrFail();
+
+        } catch (\Exception $ex) {
+            return false;
+        }
+
     }
 
     public function addContactUsInfo($data)
