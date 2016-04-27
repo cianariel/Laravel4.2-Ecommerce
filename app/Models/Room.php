@@ -109,6 +109,7 @@
                     {
                         $strReplace = env('IMG_CDN') . '/';
                         $path = str_replace($strReplace, '', $product->media_link);
+                        $path = str_replace('https://s3-us-west-1.amazonaws.com/ideaing-01/', '', $path);
                         $path = $strReplace . 'thumb-' . $path;
                         $pr->media_link = $path;
                         $pr->product_name = $product->product_name;
