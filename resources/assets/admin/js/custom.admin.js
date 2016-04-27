@@ -1421,7 +1421,7 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
                     $scope.ProductId = data.data.id;
                     $scope.selectedItem = data.data.product_category_id;
                     $scope.ProductVendorId = data.data.product_vendor_id;
-                    $scope.ProductVendorType = data.data.product_vendor_type;
+                //  $scope.ProductVendorType = data.data.product_vendor_type;
                     $scope.ShowFor = data.data.show_for;
                     $scope.Name = data.data.product_name;
                     $scope.Permalink = data.data.product_permalink;

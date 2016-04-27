@@ -4,6 +4,8 @@ use ArrayAccess;
 use Carbon\Carbon;
 use Fenos\Notifynder\Contracts\NotifynderCategory;
 use Fenos\Notifynder\Exceptions\NotificationBuilderException;
+use Illuminate\Contracts\Config\Repository;
+use Illuminate\Database\Eloquent\Model;
 use InvalidArgumentException;
 use Traversable;
 use Closure;
@@ -33,6 +35,11 @@ class NotifynderBuilder implements ArrayAccess
      * @var array
      */
     protected $notifications = [];
+
+    /**
+     * @var Repository
+     */
+    protected $config;
 
     /**
      * @var NotifynderCategory
@@ -227,7 +234,7 @@ class NotifynderBuilder implements ArrayAccess
             }
         }
 
-        $error = "The fields:  'from_id' , 'to_id', 'url', 'category_id' are required";
+        $error = "The fields: ".implode(',', $this->getRequiredFields())." are required";
         throw new NotificationBuilderException($error);
     }
 
@@ -269,6 +276,9 @@ class NotifynderBuilder implements ArrayAccess
 
             $this->setBuilderData("{$property}_type", $from[0]);
             $this->setBuilderData("{$property}_id", $from[1]);
+        } elseif($from[0] instanceof Model) {
+            $this->setBuilderData("{$property}_type", get_class($from[0]));
+            $this->setBuilderData("{$property}_id", $from[0]->getKey());
         } else {
             $this->isNumeric($from[0]);
             $this->setBuilderData("{$property}_id", $from[0]);
@@ -313,7 +323,7 @@ class NotifynderBuilder implements ArrayAccess
      * @param $field
      * @param $data
      */
-    protected function setBuilderData($field, $data)
+    public function setBuilderData($field, $data)
     {
         return $this->notifications[$field] = $data;
     }
@@ -353,6 +363,14 @@ class NotifynderBuilder implements ArrayAccess
         if ($this->isRequiredField($offset)) {
             $this->notifications[$offset] = $value;
         }
+    }
+
+    /**
+     * @param Repository $config
+     */
+    public function setConfig(Repository $config)
+    {
+        $this->config = $config;
     }
 
     /**
