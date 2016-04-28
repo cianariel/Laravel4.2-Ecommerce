@@ -180,6 +180,14 @@
                             </div>
                         </div>
                     </form>
+                    @if(isset($giveawayUsers))
+                        <h3>Participants:</h3>
+                        <ul>
+                        @foreach($giveawayUsers as $user)
+                               <b>{{$user}}</b>
+                        @endforeach
+                        </ul>
+                    @endif
                 </div>
             </div>
         </div>
