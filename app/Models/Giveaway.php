@@ -21,6 +21,7 @@
             'giveaway_image_alt',
             'giveaway_status',
             'goes_live',
+            'ends',
         );
         protected $hidden = ['created_at'];
 
