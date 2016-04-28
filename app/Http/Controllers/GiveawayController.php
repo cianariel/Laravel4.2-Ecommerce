@@ -87,6 +87,7 @@
                 $editGiveaway  = Giveaway::find($inputData['giveaway_id']);
                 if($inputData['goes_live']){
                     $inputData['goes_live'] = date('Y-m-d', strtotime($inputData['goes_live']));
+                    $inputData['ends'] = date('Y-m-d', strtotime($inputData['ends']));
                 }
                 $editGiveaway->update($inputData);
 
