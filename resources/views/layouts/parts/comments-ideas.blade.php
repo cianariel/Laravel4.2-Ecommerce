@@ -25,7 +25,7 @@ if (function_exists('is_single')) {
     // store info for comment
     var plink = '<?php echo $permalink;?>';
     var itemId = <?php echo $itemId;?> ;
-    var uid = <?php echo $userData['id'];?> ;
+    var uid = <?php echo isset($userData['id'])?$userData['id']:0;?> ;
     var img = "<?php echo str_replace('ideaing-ideas.s3.amazonaws.com', 'd3f8t323tq9ys5.cloudfront.net', getThumbnailLink($post->ID)); ?>" ;
 </script>
 <div ng-app="publicApp" ng-controller="publicController">
