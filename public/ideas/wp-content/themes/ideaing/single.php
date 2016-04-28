@@ -1,5 +1,5 @@
 @include('header')
-<div ng-app="publicApp" ng-controller="publicController">
+<div ng-app="publicApp" ng-controller="publicController" ng-cloak>
 <?php if (have_posts()): while (have_posts()) : the_post(); ?>
     <div>
     <header class="story-header hidden-620 hidden-soft">
@@ -256,7 +256,7 @@
                         $urlTmp = parse_url(get_the_permalink())['path'];
                         $urlTmp = str_replace('/ideas/','',$urlTmp);
 
-                        //echo $urlTmp;
+                        //echo "XXXXXXXX ". $userId;
                         ?>
 
                         <heart-counter-public uid="<?php echo $userId ?>" iid="{{ $product->id }}" plink="{{ $urlTmp }}" sec='ideas'>

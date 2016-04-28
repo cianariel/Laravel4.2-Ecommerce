@@ -7,6 +7,7 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'phpDocumentor' => array($vendorDir . '/phpdocumentor/reflection-docblock/src'),
+    'Webpatser\\Uuid' => array($vendorDir . '/webpatser/laravel-uuid/src'),
     'System' => array($vendorDir . '/phpseclib/phpseclib/phpseclib'),
     'Roumen\\Sitemap' => array($vendorDir . '/roumen/sitemap/src'),
     'Psr\\Log\\' => array($vendorDir . '/psr/log'),

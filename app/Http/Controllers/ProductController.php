@@ -405,22 +405,27 @@ class ProductController extends ApiController
      */
     private function deleteMediaById($id)
     {
-        $mediaItem = $this->media->where('id', $id)->first();
+        try{
+            $mediaItem = $this->media->where('id', $id)->first();
 
-        //delete entry from database
-        $this->media->where('id', $id)->delete();
+            //delete entry from database
+            $this->media->where('id', $id)->delete();
 
-        if (($mediaItem['media_type'] == 'img-upload') || ($mediaItem['media_type'] == 'video-upload')) {
-            // delete file from S3
-            $strReplace = \Config::get("const.file.s3-path");// "http://s3-us-west-1.amazonaws.com/ideaing-01/";
-            $file = str_replace($strReplace, '', $mediaItem['media_link']);
-            $s3 = Storage::disk('s3');
-            $s3->delete($file);
-
-            if ($mediaItem['media_type'] == 'img-upload') {
-                $file = 'thumb-' . $file;
+            if (($mediaItem['media_type'] == 'img-upload') || ($mediaItem['media_type'] == 'video-upload')) {
+                // delete file from S3
+                $strReplace = \Config::get("const.file.s3-path");// "http://s3-us-west-1.amazonaws.com/ideaing-01/";
+                $file = str_replace($strReplace, '', $mediaItem['media_link']);
+                $s3 = Storage::disk('s3');
                 $s3->delete($file);
+
+                if ($mediaItem['media_type'] == 'img-upload') {
+                    $file = 'thumb-' . $file;
+                    $s3->delete($file);
+                }
             }
+        }catch(\Exception $ex)
+        {
+            return;
         }
     }
 
