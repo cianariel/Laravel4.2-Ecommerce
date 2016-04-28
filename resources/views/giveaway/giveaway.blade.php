@@ -1,6 +1,6 @@
 @extends('layouts.main')
 
-@section('body-class'){{ 'giveaway-page' }}@stop
+@section('body-class'){{ 'giveaway-page'}}{{$ended ? ' expired' : ''}}@stop
 
 @section('content')
 	<nav class="mid-nav">
@@ -17,8 +17,7 @@
 	</nav>
     <section id="hero" class="landing-hero">
         <div class="rsContent">
-            <div id="hero-bg" style="background-image: url({{$giveaway->giveaway_image}}); "></div>
-            {{--<div class="color-overlay"></div>--}}
+            <div id="hero-bg"  style="background-image: url({{$giveaway->giveaway_image}}); "></div>
             <div class="container fixed-sm full-480">
                 <div  id="publicApp" ng-app="publicApp" ng-controller="publicController" class="col-md-offset-1 col-md-4 col-xs-12 hero-box qiuck-signup pull-right" ng-cloak>
                     <div>
@@ -26,15 +25,15 @@
                     </div>
                     <form>
                         <span class="email-input-holder ">
-		                    {{--<i class="m-icon m-icon--email-form-id"></i>--}}
-		                    <input class="form-control" ng-model="SubscriberEmail" type="text" placeholder="Email" name="email">
+		                    <input class="form-control" ng-model="SubscriberEmail" type="text" placeholder="Email" name="email" value="{{@$userData['email']}}">
 		                </span>
                         <span class="password-input-holder ">
-		                    {{--<i class="m-icon m-icon--email-form-id"></i>--}}
-		                    <input class="form-control" ng-model="SubscriberEmail" type="text" placeholder="Password" name="password">
+		                    <input class="form-control" ng-model="SubscriberPassword" type="text" placeholder="Password" name="password">
+                           <input ng-model="GiveAwayID" type="hidden" name="giveaway_id" value="{{$giveaway->id}}">
+
 		                </span>
 
-                        <button ng-click="subscribe('')" class="btn btn-success col-xs-12"  href="#">Enter</button>
+                        <button ng-click="enterGiveaway('')" class="btn btn-success col-xs-12"  href="#">Enter</button>
                         <div class="line-wrap">Not yet a member? Create an account!</div>
                     </form>
                 </div>
@@ -85,10 +84,8 @@
 	<div class="container-fluid">
 	    <div class="container fixed-sm full-480 giveaway-content" >
 	        	<div class="col-md-7 col-xs-12">
-                    {{--<img src="/assets/images/dummies/giveaway-hero.jpg" />--}}
 				        <div class='giveaway_title'><h2>{{$giveaway->giveaway_title}}</h2></div>
 				        <div class='giveaway_desc'>{{$giveaway->giveaway_desc}}</div>
-				        {{--<div class='giveaway_button'><a class="btn btn-success col-xs-12" href="{{url('signup')}}">Get started</a></div>--}}
                    <section class="col-lg-12 sign-in">
                         <div class="col-lg-6">
                             <h5>Sign in to <span>WIN!</span></h5>
@@ -101,15 +98,14 @@
                             </div>
                             <form>
                             <span class="email-input-holder ">
-                                {{--<i class="m-icon m-icon--email-form-id"></i>--}}
-                                <input class="form-control" ng-model="SubscriberEmail" type="text" placeholder="Email" name="email">
+                                <input class="form-control" ng-model="SubscriberEmail" type="text" placeholder="Email" name="email" value="{{@$userData['email']}}">
                             </span>
                             <span class="password-input-holder ">
-                                {{--<i class="m-icon m-icon--email-form-id"></i>--}}
-                                <input class="form-control" ng-model="SubscriberEmail" type="text" placeholder="Password" name="password">
+                                <input class="form-control" ng-model="SubscriberPassword" type="text" placeholder="Password" name="password">
+                                 <input id="giveaway_id" ng-model="GiveAwayID" type="hidden" name="giveaway_id" value="{{$giveaway->id}}">
                             </span>
 
-                                <button ng-click="subscribe('')" class="btn btn-success col-xs-12"  href="#">Enter</button>
+                                <button ng-click="enterGiveaway('')" class="btn btn-success col-xs-12"  href="#">Enter</button>
                             </form>
                         </div>
                    </section>

@@ -93,6 +93,19 @@
                                         </div>
                                     </div>
                                 </div>
+                                <div class="row">
+                                    <div class="col-lg-9">
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">Ends:</label>
+                                            <div class="col-md-6">
+                                                <input name="goes_live" class="form-control datepicker"
+                                                       placeholder="Select Date" value="{{date('m/d/Y', strtotime($giveaway->ends))}}">
+                                                <script>
+                                                </script>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                                     <div class="row">
                                         <div class="col-lg-9">
                                             <div class="form-group">
