@@ -10,6 +10,8 @@
     use App\Models\Room;
     use App\Models\HomeHero;
     use App\Models\Giveaway;
+    use App\Models\User;
+    use DB;
 
 
     class AdminController extends ApiController {
@@ -313,7 +315,13 @@
             if ($this->authCheck['method-status'] == 'success-with-http')
             {
                 $giveaway = Giveaway::find($id);
-                return view('admin.giveaway.giveaway-add')->with('giveaway',$giveaway)->with('userData' , $this->authCheck);
+                $giveawayuserIDs = DB::table('giveaway_users')->where('giveaway_id', $id)->lists('user_id');;
+                $giveawayusers = User::whereIn('id', array_unique($giveawayuserIDs))->lists('name', 'id');
+
+                return view('admin.giveaway.giveaway-add')
+                    ->with('giveaway',$giveaway)
+                    ->with('giveawayUsers',$giveawayusers)
+                    ->with('userData' , $this->authCheck);
 
             } elseif ($this->authCheck['method-status'] == 'fail-with-http')
             {
