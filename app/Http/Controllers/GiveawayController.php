@@ -9,25 +9,55 @@
     use App\Http\Requests;
     use App\Http\Controllers\Controller;
     use App\Models\Giveaway;
+    use App\Models\User;
     use App\Models\Media;
     use Illuminate\Contracts\Filesystem\Factory;
     use Illuminate\Support\Facades\Redirect;
     use Storage;
     use Folklore\Image\Facades;
     use Carbon\Carbon;
+    use DB;
 
 
     class GiveawayController extends ApiController {
-        public function __construct()
+
+        public function enterUser()
         {
-            // Apply the jwt.auth middleware to all methods in this controller
-            $this->middleware('jwt.auth',
-                ['except' => [
-                    'addGiveaway', 'updateGiveaway','deleteGiveaway',
-                ]]);
-            $this->giveaway = new Giveaway();
-            $this->media = new Media();
+            $inputData = \Input::all();
+
+            $user = new User;
+
+            if($authUser = $user->IsAuthorizedUser($inputData)){
+                try
+                {
+                    if(! DB::table('giveaway_users')->where(
+                        [
+                            'user_id' => $authUser->id,
+                            'giveaway_id' => $inputData['giveaway_id'],
+                        ]
+                    )){
+                        DB::table('giveaway_users')->insert(
+                            [
+                                'user_id' => $authUser->id,
+                                'giveaway_id' => $inputData['giveaway_id'],
+                            ]
+                        );
+                        return ['success' => 'Thank you!'];
+                    }else{
+                        return ['error' => 'You have already entered this Giveaway'];
+                    }
+
+                } catch (Exception $ex)
+                {
+                    return $this->setStatusCode(\Config::get("const.api-status.system-fail"))
+                        ->makeResponseWithError("System Failure !", $ex);
+                }
+
+            }else{
+                    return ['error' => 'Incorrect email or password'];
+            }
         }
+
         public function addGiveaway(Request $request)
         {
             try

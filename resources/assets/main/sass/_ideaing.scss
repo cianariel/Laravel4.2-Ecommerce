@@ -9201,7 +9201,25 @@ body.search{
 .photoCopy a {
   color: grey;
 }
+
+
 body.giveaway-page{
+  &.expired{
+    #hero-bg{
+      -webkit-filter: grayscale(100%) !important;
+      filter: grayscale(100%) !important;
+
+      &::after{
+        content: 'ENDED';
+        color: $iridium !important;
+        font-size: 5rem;
+        display: block;
+        position: absolute;
+        top: 10%;
+        left: 10%;
+      }
+   }
+  }
   .hero-box{
     position: relative;
     top: 110px;
@@ -9222,6 +9240,7 @@ body.giveaway-page{
    }
 
   }
+
   .btn-success{
     text-transform: uppercase;
   }
@@ -9279,6 +9298,7 @@ body.giveaway-page{
     }
 
   }
+
   .sign-in{
     border: 2px solid #eee;
     text-align: center;
