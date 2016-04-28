@@ -24,6 +24,11 @@
         );
         protected $hidden = ['created_at'];
 
+        public function users()
+        {
+            return $this->hasMany('App\Models\User');
+        }
+
         // return room information data for public view
 //        public function getViewForPublic($permalink, $id = null)
 //        {
