@@ -20,7 +20,7 @@
             <div id="hero-bg" style="background-image: url({{$giveaway->giveaway_image}}); "></div>
             {{--<div class="color-overlay"></div>--}}
             <div class="container fixed-sm full-480">
-                <div  id="publicApp" ng-app="publicApp" ng-controller="publicController" class="col-md-offset-1 col-md-4  col-xs-4 hero-box qiuck-signup hidden-620 pull-right" ng-cloak>
+                <div  id="publicApp" ng-app="publicApp" ng-controller="publicController" class="col-md-offset-1 col-md-4 col-xs-12 hero-box qiuck-signup pull-right" ng-cloak>
                     <div>
                         <strong style="color: red">@{{ responseMessage }}</strong>
                     </div>
@@ -84,7 +84,7 @@
     </nav>
 	<div class="container-fluid">
 	    <div class="container fixed-sm full-480 giveaway-content" >
-	        	<div class="col-md-7 col-xs-8">
+	        	<div class="col-md-7 col-xs-12">
                     {{--<img src="/assets/images/dummies/giveaway-hero.jpg" />--}}
 				        <div class='giveaway_title'><h2>{{$giveaway->giveaway_title}}</h2></div>
 				        <div class='giveaway_desc'>{{$giveaway->giveaway_desc}}</div>
@@ -95,7 +95,7 @@
                             <div class="line-wrap">Not yet a member? Create an account!</div>
                         </div>
 
-                        <div  id="publicApp" ng-app="publicApp" ng-controller="publicController" class="col-lg-6 qiuck-signup hidden-620 pull-right" ng-cloak>
+                        <div  id="publicApp" ng-app="publicApp" ng-controller="publicController" class="col-lg-6 col-xs-12 qiuck-signup pull-right" ng-cloak>
                             <div>
                                 <strong style="color: red">@{{ responseMessage }}</strong>
                             </div>
@@ -115,7 +115,7 @@
                    </section>
 				</div>
 
-	        	<div class="col-md-4 col-xs-8 pull-right giveaway-toc">
+	        	<div class="col-md-4 col-xs-12 pull-right giveaway-toc">
 				        <h4>Terms of Conditions</h4>
 				        <p>
 				        	{{$giveaway->giveaway_toc}}
@@ -124,8 +124,8 @@
             <h4 class="red col-xs-12 text-center">Stay tuned for these upcoming giveaways!</h4>
 
             <section class="slider giveaway-slider black-slider col-lg-12">
-                    <img src="/assets/images/giveaway-logo.png" class="giveaway-logo col-lg-3" />
-                    <div class="giveaway-slider-content col-lg-9">
+                    <img src="/assets/images/giveaway-logo.png" class="giveaway-logo col-xs-3" />
+                    <div class="giveaway-slider-content col-xs-9">
                         @foreach($nextGiveaways as $nextGive)
                             <div class="thumb-wrap">
                                 <img class="giveaway-thumb" src="{{$nextGive->giveaway_image}}" />

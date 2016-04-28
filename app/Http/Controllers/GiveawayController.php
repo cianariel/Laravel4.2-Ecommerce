@@ -55,6 +55,9 @@
             {
                 $inputData = \Input::all();
                 $editGiveaway  = Giveaway::find($inputData['giveaway_id']);
+                if($inputData['goes_live']){
+                    $inputData['goes_live'] = date('Y-m-d', strtotime($inputData['goes_live']));
+                }
                 $editGiveaway->update($inputData);
 
                 $ImageResult = $this->addMediaForGiveaway($request,'giveaway_image',$editGiveaway->id);
