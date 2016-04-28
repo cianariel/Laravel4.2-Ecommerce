@@ -50,7 +50,8 @@ module.exports = function(grunt) {
                     '../../assets/admin/js/vendor/jquery.min.js',
                     '../../assets/admin/js/vendor/metisMenu.min.js',
                     '../../assets/admin/js/vendor/ng-rateit.min.js',
-                    //'../../assets/admin/js/vendor/sb-admin-2.js', TODO -- unused?
+                    '../../assets/admin/js/vendor/ng-rateit.min.js',
+                    '../../assets/admin/js/vendor/bootstrap-datepicker.min.js',
                 ],
                 dest: '../../../public/assets/js/admin.js'
             },

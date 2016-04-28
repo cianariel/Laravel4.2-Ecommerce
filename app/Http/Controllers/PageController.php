@@ -703,7 +703,7 @@ if($stories['featured']){
         return view('info.terms-of-use');
     }
 
-    public function giveaway($permalink = false)
+    public function giveaway()
     {
         MetaTag::set('title', 'Giveaway | Ideaing');
 //        MetaTag::set('description', $result['productInformation']['MetaDescription']);
@@ -713,13 +713,25 @@ if($stories['featured']){
             $userData = $this->authCheck['user-data'];
         }
 
-        $giveaway = Giveaway::where('giveaway_permalink', $permalink)->first();
+        $giveaway = Giveaway::whereDate('ends', '>=', date('Y-m-d'))->whereDate('goes_live', '<=', date('Y-m-d'))->first();
+        $ended = false;
+
+        if(!$giveaway){
+            $giveaway = Giveaway::whereDate('ends', '<=', date('Y-m-d'))->first();
+            $ended = true;
+        }
+        $nextGiveaways = Giveaway::whereDate('goes_live', '>=', date('Y-m-d'))->get();
 
         if(!$giveaway){
             return \Redirect::to('not-found');
 
         }
-        return view('giveaway.giveaway')->with('userData', $userData)->with('giveaway',$giveaway);
+        return view('giveaway.giveaway')
+            ->with('userData', $userData)
+            ->with('nextGiveaways', $nextGiveaways)
+            ->with('giveaway',$giveaway)
+            ->with('ended', $ended)
+            ;
     }
     
 

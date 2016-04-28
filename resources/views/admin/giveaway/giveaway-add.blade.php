@@ -80,6 +80,32 @@
                                             </div>
                                         </div>
                                     </div>
+                                <div class="row">
+                                    <div class="col-lg-9">
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">Goes Live:</label>
+                                            <div class="col-md-6">
+                                                <input name="goes_live" class="form-control datepicker"
+                                                       placeholder="Select Date" value="{{date('m/d/Y', strtotime($giveaway->goes_live))}}">
+                                                <script>
+                                                </script>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-9">
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">Ends:</label>
+                                            <div class="col-md-6">
+                                                <input name="ends" class="form-control datepicker"
+                                                       placeholder="Select Date" value="{{date('m/d/Y', strtotime($giveaway->ends))}}">
+                                                <script>
+                                                </script>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                                     <div class="row">
                                         <div class="col-lg-9">
                                             <div class="form-group">
@@ -166,12 +192,16 @@
 <script src="/assets/admin/vendor/global/plugins/select2/js/select2.full.min.js" type="text/javascript"></script>
 <script src="/assets/admin/vendor/pages/scripts/components-select2.js" type="text/javascript"></script>
 <script src="/assets/admin/vendor/pages/scripts/components-editors.js" type="text/javascript"></script>
+<script src="/assets/admin/vendor/pages/scripts/components-editors.js" type="text/javascript"></script>
+<script src="/assets/js/admin.js"></script>
 <script>
 $(function() {
 
     @if($giveaway->giveaway_image)
     $('#Giveaway .fileinput.fileinput-new').removeClass('fileinput-new').addClass('fileinput-exists');
     @endif
+    $( ".datepicker" ).datepicker();
+
 });
 
 </script>

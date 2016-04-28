@@ -987,6 +987,7 @@ body.contactus-page
   &.product-slider,
   &.heroSlider,
   &#daily-deals,
+  &.giveaway-slider,
   &#newest-arrivals{
     #gallery{
       width: 100%;
@@ -9200,25 +9201,49 @@ body.search{
 .photoCopy a {
   color: grey;
 }
+
+
 body.giveaway-page{
+  &.expired{
+    #hero-bg{
+      -webkit-filter: grayscale(100%) !important;
+      filter: grayscale(100%) !important;
+
+      &::after{
+        content: 'ENDED';
+        color: $iridium !important;
+        font-size: 5rem;
+        display: block;
+        position: absolute;
+        top: 10%;
+        left: 10%;
+      }
+   }
+  }
   .hero-box{
     position: relative;
     top: 110px;
     padding: 50px;
     z-index: 10;
+    outline: 2px solid #eee;
 
     .line-wrap{
       font-weight: bold;
       text-decoration: underline;
     }
+
+   input{
+     &[type=text],
+     &[name=email]{
+       padding-left: 15px;
+     }
+   }
+
   }
-  //.giveaway-row{
-  //  padding-top: 100px;
-  //}
-  //.giveaway-row-2{
-  //  margin-top: 50px;
-  //  margin-bottom: 50px;
-  //}
+
+  .btn-success{
+    text-transform: uppercase;
+  }
   .giveaway-content{
     padding-top: 30px;
 
@@ -9273,12 +9298,47 @@ body.giveaway-page{
     }
 
   }
+
+  .sign-in{
+    border: 2px solid #eee;
+    text-align: center;
+    padding-top: 10px;
+    margin-top: 40px;
+
+
+    h5{
+      font-size: 3.5rem;
+      padding-top: 25px;
+    }
+    span{
+      color: $iridium;
+    }
+    .line-wrap{
+      font-weight: bold;
+      text-decoration: underline;
+    }
+  }
   .container-fluid{
     overflow: hidden;
   }
   .black-slider{
+    min-height: 140px;
     background: #000;
     padding: 5px;
+
+    .rsContainer{
+      width: 150px;
+      height: 150px;
+    }
+
+    .rsOverflow{
+      padding-left: 4.5%;
+    }
+
+    .rsOverflow,
+    .rsVisibleNearbyWrap{
+      min-height: 130px;
+    }
 
     .giveaway-logo{
       float: left;
@@ -9293,8 +9353,27 @@ body.giveaway-page{
 
       img{
         display: block;
+        width: 200px;
+        height: 100px;
+        min-height: 100px;
       }
     }
+    h6{
+      color: #fff;
+    }
+    .rsArrow{
+      color: #fff;
+
+      &.rsArrowRight{
+        right: 0;
+      }
+    }
+    //
+    //.giveaway-slider-content{
+    //  img{
+    //
+    //  }
+    //}
 
   }
 }
