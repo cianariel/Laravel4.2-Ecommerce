@@ -22,7 +22,7 @@ class SearchController extends Controller
 
 
     public function deleteAllDocs($csDomainClient){
-        ini_set('memory_limit', '1024M');
+        ini_set('memory_limit', '5024M');
 
         $result = $csDomainClient->search(array('query' => 'matchall', 'queryParser' => 'structured', 'size' => 10000));
 
