@@ -353,6 +353,7 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
             // email subscription
             $scope.SubscriberEmail = '';
             $scope.responseMessage = '';
+            $scope.giveAwayID = '';
 
             $scope.alerts = [];
             $scope.alertHTML = '';
@@ -821,11 +822,11 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
         $scope.subscribe = function (formData) {
 
             $scope.responseMessage = '';
-            if ((typeof formData.SubscriberEmail != 'undefined')) //|| (formData.SubscriberEmail != '')
-            {
-                //  console.log('in side :'+ formData.SubscriberEmail);
-                $scope.SubscriberEmail = formData.SubscriberEmail;
-            }
+            //if ((typeof formData.SubscriberEmail != 'undefined')) //|| (formData.SubscriberEmail != '')
+            //{
+            //    //  console.log('in side :'+ formData.SubscriberEmail);
+            //    $scope.SubscriberEmail = formData.SubscriberEmail;
+            //}
 
             //console.log('out side :'+ $scope.SubscriberEmail);
 
@@ -851,6 +852,30 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
 
                 } else {
                     $scope.responseMessage = "Email already subscribed";
+                }
+
+            });
+
+        };
+        // Subscribe a user through email and redirect to registration page.
+        $scope.enterGiveaway = function () {
+            $scope.responseMessage = '';
+
+            $http({
+                url: '/api/giveaway/enter',
+                method: "POST",
+                data: {
+                    'Email': $scope.SubscriberEmail,
+                    'Password': $scope.SubscriberPassword,
+                    'giveaway_id': $('#giveaway_id').val(),
+                    //'SetCookie': 'true'
+                }
+            }).success(function (data) {
+
+            if (data.success) {
+                    $scope.responseMessage = data.success;
+                } else {
+                    $scope.responseMessage = data.error;
                 }
 
             });
