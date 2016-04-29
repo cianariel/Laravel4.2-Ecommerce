@@ -19,7 +19,9 @@
         <div class="rsContent">
             <div id="hero-bg"  style="background-image: url({{$giveaway->giveaway_image}}); "></div>
             <div class="container fixed-sm full-480">
+
                 <div  id="publicApp" ng-app="publicApp" ng-controller="publicController" class="col-md-offset-1 col-md-4 col-xs-12 hero-box qiuck-signup pull-right" ng-cloak>
+                    <img id="hero-arrow" src="assets/images/home-arrow.png" alt="">
                     <div>
                         <strong style="color: red">@{{ responseMessage }}</strong>
                     </div>
