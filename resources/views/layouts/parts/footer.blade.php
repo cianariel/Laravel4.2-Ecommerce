@@ -13,7 +13,12 @@
         </div>
         <div class="col-sm-3 col-xs-12">
             <h4 class="green">Giveaway</h4>
-            
+            <?php
+                $theGiveAway = PageHelper::getCurrentGiveaway();
+            ?>
+            <a href="/giveaway">
+                <img src="{{@$theGiveAway->giveaway_image}}" title="{{@$theGiveAway->giveaway_image_title}}" alt="{{@$theGiveAway->giveaway_image_alt}}" />
+            </a>
         </div>
         <div class="col-sm-3 col-xs-12 social-connect">
             <h4 class="orange">Let's connect</h4>

@@ -42,9 +42,8 @@ class PageHelper {
         return $excerpt;
 
     }
-    public static function getGiveaway() {
-        $giveaway = Giveaway::where('giveaway_status', 1)->first();
+    public static function getCurrentGiveaway() {
+        $giveaway = Giveaway::whereDate('ends', '>=', date('Y-m-d'))->whereDate('goes_live', '<=', date('Y-m-d'))->first();
         return $giveaway;
-
     }
 }
