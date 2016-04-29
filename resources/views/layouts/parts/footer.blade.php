@@ -15,14 +15,16 @@
             <h4 class="green">Giveaway</h4>
             <?php
                 if(!function_exists('is_single')){
-                $theGiveAway = PageHelper::getCurrentGiveaway(); ?>
-                    @if(@$theGiveAway)
-                        <a href="/giveaway">
-                            <img src="{{@$theGiveAway->giveaway_image}}" title="{{@$theGiveAway->giveaway_image_title}}" alt="{{@$theGiveAway->giveaway_image_alt}}" />
-                        </a>
-                    @endif
-
-           <?php }
+                    $theGiveAway = PageHelper::getCurrentGiveaway();
+                }else{
+                    $json = file_get_contents('http://ideaing.dev/api/giveaway/get-current');
+                    $theGiveAway = json_decode($json);
+            }
+            if($theGiveAway){
+                    echo '<a href="/giveaway">';
+                    echo '<img src="' . $theGiveAway->giveaway_image. '" title="'.$theGiveAway->giveaway_image_title.'" alt="'.$theGiveAway->giveaway_image_alt.'" />';
+                    echo '</a>';
+            }
             ?>
 
         </div>
