@@ -6,6 +6,7 @@
  * @subpackage Meta
  * @since 4.5.0
  */
+
 /**
  * Core class used for lazy-loading object metadata.
  *
@@ -36,6 +37,7 @@ class WP_Metadata_Lazyloader {
 	 * @var array
 	 */
 	protected $pending_objects;
+
 	/**
 	 * Settings for supported object types.
 	 *
@@ -44,6 +46,7 @@ class WP_Metadata_Lazyloader {
 	 * @var array
 	 */
 	protected $settings = array();
+
 	/**
 	 * Constructor.
 	 *
@@ -62,6 +65,7 @@ class WP_Metadata_Lazyloader {
 			),
 		);
 	}
+
 	/**
 	 * Adds objects to the metadata lazy-load queue.
 	 *
@@ -76,17 +80,22 @@ class WP_Metadata_Lazyloader {
 		if ( ! isset( $this->settings[ $object_type ] ) ) {
 			return new WP_Error( 'invalid_object_type', __( 'Invalid object type' ) );
 		}
+
 		$type_settings = $this->settings[ $object_type ];
+
 		if ( ! isset( $this->pending_objects[ $object_type ] ) ) {
 			$this->pending_objects[ $object_type ] = array();
 		}
+
 		foreach ( $object_ids as $object_id ) {
 			// Keyed by ID for faster lookup.
 			if ( ! isset( $this->pending_objects[ $object_type ][ $object_id ] ) ) {
 				$this->pending_objects[ $object_type ][ $object_id ] = 1;
 			}
 		}
+
 		add_filter( $type_settings['filter'], $type_settings['callback'] );
+
 		/**
 		 * Fires after objects are added to the metadata lazy-load queue.
 		 *
@@ -98,6 +107,7 @@ class WP_Metadata_Lazyloader {
 		 */
 		do_action( 'metadata_lazyloader_queued_objects', $object_ids, $object_type, $this );
 	}
+
 	/**
 	 * Resets lazy-load queue for a given object type.
 	 *
@@ -111,10 +121,13 @@ class WP_Metadata_Lazyloader {
 		if ( ! isset( $this->settings[ $object_type ] ) ) {
 			return new WP_Error( 'invalid_object_type', __( 'Invalid object type' ) );
 		}
+
 		$type_settings = $this->settings[ $object_type ];
+
 		$this->pending_objects[ $object_type ] = array();
 		remove_filter( $type_settings['filter'], $type_settings['callback'] );
 	}
+
 	/**
 	 * Lazy-loads term meta for queued terms.
 	 *
@@ -131,11 +144,14 @@ class WP_Metadata_Lazyloader {
 	public function lazyload_term_meta( $check ) {
 		if ( ! empty( $this->pending_objects['term'] ) ) {
 			update_termmeta_cache( array_keys( $this->pending_objects['term'] ) );
+
 			// No need to run again for this set of terms.
 			$this->reset_queue( 'term' );
 		}
+
 		return $check;
 	}
+
 	/**
 	 * Lazy-loads comment meta for queued comments.
 	 *
@@ -150,9 +166,11 @@ class WP_Metadata_Lazyloader {
 	public function lazyload_comment_meta( $check ) {
 		if ( ! empty( $this->pending_objects['comment'] ) ) {
 			update_meta_cache( 'comment', array_keys( $this->pending_objects['comment'] ) );
+
 			// No need to run again for this set of comments.
 			$this->reset_queue( 'comment' );
 		}
+
 		return $check;
 	}
 }

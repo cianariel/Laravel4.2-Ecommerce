@@ -63,7 +63,14 @@
             try
             {
                 $inputData = \Input::all();
-                $newGiveaway = $this->giveaway->create($inputData);
+                if($inputData['goes_live']){
+                    $inputData['goes_live'] = date('Y-m-d', strtotime($inputData['goes_live']));
+                }
+                if($inputData['ends']){
+                    $inputData['ends'] = date('Y-m-d', strtotime($inputData['ends']));
+                }   
+                $newGiveaway = Giveaway::create($inputData);
+             
                 $ImageResult = $this->addMediaForGiveaway($request,'giveaway_image',$newGiveaway->id);
                 if($ImageResult['status_code'] == 200)
                 {
@@ -87,8 +94,10 @@
                 $editGiveaway  = Giveaway::find($inputData['giveaway_id']);
                 if($inputData['goes_live']){
                     $inputData['goes_live'] = date('Y-m-d', strtotime($inputData['goes_live']));
-                    $inputData['ends'] = date('Y-m-d', strtotime($inputData['ends']));
                 }
+                 if($inputData['ends']){
+                    $inputData['ends'] = date('Y-m-d', strtotime($inputData['ends']));
+                } 
                 $editGiveaway->update($inputData);
 
                 $ImageResult = $this->addMediaForGiveaway($request,'giveaway_image',$editGiveaway->id);
