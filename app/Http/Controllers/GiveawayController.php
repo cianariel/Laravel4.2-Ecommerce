@@ -17,6 +17,7 @@
     use Folklore\Image\Facades;
     use Carbon\Carbon;
     use DB;
+    use PageHelper;
 
 
     class GiveawayController extends ApiController {
@@ -190,5 +191,9 @@
             $this->giveaway->find($id)->delete();
             return $this->setStatusCode(\Config::get("const.api-status.success"))
                 ->makeResponse("Data deleted Successfully");
+        }
+        public function getCurrentGiveaway()
+        {
+            return json_encode(PageHelper::getCurrentGiveaway());
         }
     }
