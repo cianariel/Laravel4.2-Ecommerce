@@ -24,6 +24,7 @@
                     echo '<a href="/giveaway">';
                     echo '<img src="' . $theGiveAway->giveaway_image. '" title="'.$theGiveAway->giveaway_image_title.'" alt="'.$theGiveAway->giveaway_image_alt.'" />';
                     echo '</a>';
+                    echo '<h6 class="white">' . $theGiveAway->giveaway_title . '</h6>';
             }
             ?>
 

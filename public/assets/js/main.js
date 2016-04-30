@@ -3604,6 +3604,33 @@ angular.module('colorpicker.module', [])
 
         });
 
+        $('body').on('click', '[data-switch]', function(e){
+            e.preventDefault();
+            var $that = $(this);
+            var $show = $that.data('switch');
+            var $hide = $that.data('hide');
+            //var $overlay = $that.data('overlay');
+
+            //if($overlay){
+            //    $('.page-overlay').fadeToggle();
+            //}
+
+            //if($hide){
+            $($hide).fadeOut(
+                function(){
+                    $that.siblings().removeClass('active');
+                    $($show).fadeIn();
+                    $that.addClass('active');
+                }
+            );
+
+            //}else{
+            //    $($show).fadeToggle();
+            //    $that.toggleClass('active');
+            //}
+
+        });
+
         $('.page-overlay, .login-signup-modal').click(function(event){
             if(event.target !== this){ // only fire if the block itself is clicked, not it's children (sometimes we need to hide the modal when anything outside it's main block is clickced
                 return;
@@ -4755,11 +4782,11 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                 }
             }).success(function (data) {
 
-            if (data.success) {
-                    $scope.responseMessage = data.success;
-                } else {
-                    $scope.responseMessage = data.error;
-                }
+            //if (data.success) {
+                    $scope.responseMessage = data;
+                //} else {
+                //    $scope.responseMessage = data.error;
+                //}
 
             });
 
