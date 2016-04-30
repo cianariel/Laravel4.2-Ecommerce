@@ -73,7 +73,10 @@
                    <section class="col-lg-12 sign-in">
                        @if(@$userData['login'])
                            <div class="col-lg-6">
-                               <h5>Hi <span>{{$userData['name']}}!</span></h5>
+                               <h5 style="font-size: 2.5rem; padding-top: 10px;">
+                               		Hi, <br/> 
+                               		<span>{{$userData['name']}}!</span>
+                               </h5>
                            </div>
                            <div  id="publicApp" ng-app="publicApp" ng-controller="publicController" class="col-lg-6 col-xs-12 qiuck-signup pull-right" ng-cloak>
 
@@ -82,8 +85,8 @@
                                        <strong class="red">@{{ responseMessage.error }}</strong>
                                    </div>
                                 <input id="user-email" ng-model="SubscriberEmail" type="hidden" name="email" value="{{@$userData['email']}}">
-                                 <input id="giveaway_id" ng-model="GiveAwayID" type="hidden" name="giveaway_id" value="{{$giveaway->id}}">
-                                   <button ng-click="enterGiveaway('')" class="btn btn-success col-xs-12"  href="#">Enter Giveaway</button>
+                                <input id="giveaway_id" ng-model="GiveAwayID" type="hidden" name="giveaway_id" value="{{$giveaway->id}}">
+                                <button style="margin-top: 30px;" ng-click="enterGiveaway('')" class="btn btn-success col-xs-12"  href="#">Enter Giveaway</button>
                                </form>
 
                                <form ng-if="responseMessage.success">
