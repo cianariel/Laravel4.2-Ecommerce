@@ -858,26 +858,18 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
 
         };
         // Subscribe a user through email and redirect to registration page.
-        $scope.enterGiveaway = function () {
-            $scope.responseMessage = '';
-
+        $scope.enterGiveaway = function (formID) {
             $http({
-                url: '/api/giveaway/enter',
+                url: '/api/giveaway/enter', 
                 method: "POST",
                 data: {
-                    'Email': $scope.SubscriberEmail,
-                    'Password': $scope.SubscriberPassword,
-                    'giveaway_id': $('#giveaway_id').val(),
+                    'Email': form.find('input[name="email"]').val(),
+                    'Password': form.find('input[name="password"]').val(),
+                    'giveaway_id': $('#giveaway_id').val(), 
                     //'SetCookie': 'true'
                 }
             }).success(function (data) {
-
-            //if (data.success) {
-                    $scope.responseMessage = data;
-                //} else {
-                //    $scope.responseMessage = data.error;
-                //}
-
+                $scope.responseMessage = data;
             });
 
         };

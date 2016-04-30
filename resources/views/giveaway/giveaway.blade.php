@@ -25,17 +25,16 @@
                     <div>
                         <strong style="color: red">@{{ responseMessage }}</strong>
                     </div>
-                    <form>
+                    <form id="giveaway-one">
                         <span class="email-input-holder ">
 		                    <input class="form-control" ng-model="SubscriberEmail" type="text" placeholder="Email" name="email" value="{{@$userData['email']}}">
 		                </span>
                         <span class="password-input-holder ">
 		                    <input class="form-control" ng-model="SubscriberPassword" type="text" placeholder="Password" name="password">
                            <input ng-model="GiveAwayID" type="hidden" name="giveaway_id" value="{{$giveaway->id}}">
-
 		                </span>
 
-                        <button ng-click="enterGiveaway('')" class="btn btn-success col-xs-12"  href="#">Enter</button>
+                        <button ng-submit="enterGiveaway('giveaway-one')" class="btn btn-success col-xs-12"  href="#">Enter</button> 
                         <div class="line-wrap">Not yet a member? Create an account!</div>
                     </form>
                 </div>
@@ -85,13 +84,13 @@
                                        <strong style="display: block; padding-top: 30px" class="red">Congratulations, you have entered!</strong>
                                    </div>
                                 @else
-                                   <form ng-if="!responseMessage.success">
+                                   <form id="giveaway-two" ng-if="!responseMessage.success">
 	                                   <div>
 	                                       <strong class="red">@{{ responseMessage.error }}</strong>
 	                                   </div>
 		                                <input id="user-email" ng-model="SubscriberEmail" type="hidden" name="email" value="{{@$userData['email']}}">
 		                                <input id="giveaway_id" ng-model="GiveAwayID" type="hidden" name="giveaway_id" value="{{$giveaway->id}}">
-		                                <button style="margin-top: 30px;" ng-click="enterGiveaway('')" class="btn btn-success col-xs-12"  href="#">Enter Giveaway</button>
+		                                <button style="margin-top: 30px;" ng-submit="enterGiveaway('giveaway-two')" class="btn btn-success col-xs-12"  href="#">Enter Giveaway</button>
 	                               </form>
 
 	                                <div ng-if="responseMessage.success">
@@ -108,7 +107,7 @@
 
                            <div  id="publicApp" ng-app="publicApp" ng-controller="publicController" class="col-lg-6 col-xs-12 qiuck-signup pull-right giveaway-login" ng-cloak>
 
-                             		<form ng-if="!responseMessage.success">
+                             		<form id="giveaway-two" ng-if="!responseMessage.success">
 	                                   <div>
 	                                   <strong style="color: red">@{{ responseMessage.error }}</strong>
 	                               	   </div>
@@ -119,7 +118,7 @@
 			                                <input class="form-control" ng-model="SubscriberPassword" type="text" placeholder="Password" name="password">
 			                                 <input id="giveaway_id" ng-model="GiveAwayID" type="hidden" name="giveaway_id" value="{{$giveaway->id}}">
 			                            </span>
-	                                   <button ng-click="enterGiveaway('')" class="btn btn-success col-xs-12"  href="#">Enter Giveaway</button>
+	                                   <button ng-click="enterGiveaway('giveaway-two')" class="btn btn-success col-xs-12"  href="#">Enter Giveaway</button>
 		                            </form>
 
 	                                <div ng-if="responseMessage.success">
@@ -131,8 +130,7 @@
 
                            <div class="col-lg-6 col-xs-12 qiuck-signup pull-right hidden-soft giveaway-signup">
                                <form>
-                                   <a class="btn btn-info col-xs-12" ng-click="registerWithFB()" href="#"><i class="fa fa-facebook"></i>Sign
-                                       up with Facebook</a>
+                                   <a class="btn btn-info col-xs-12" ng-click="registerWithFB()" href="#"><i class="fa fa-facebook"></i>Sign up with Facebook</a>
                                    <div class="line-wrap modal-minor-text">or</div>
 
                                    <input class="form-control" ng-model="FullName" type="text" placeholder="Name" >
