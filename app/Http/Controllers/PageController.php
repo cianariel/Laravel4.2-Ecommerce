@@ -22,6 +22,8 @@ use App\Models\Sharing;
 use Sitemap;
 use PageHelper;
 use Route;
+use DB;
+
 
 class PageController extends ApiController
 {
@@ -726,11 +728,26 @@ if($stories['featured']){
             return \Redirect::to('not-found');
 
         }
+
+       // print_r($userData['id']); die();
+
+        if(@$userData['id'] && DB::table('giveaway_users')->where(
+            [
+                'user_id'     => $userData['id'],
+                'giveaway_id' => $giveaway->id,
+            ]
+        )->count()){
+            $alreadyIn = true;
+        }else{
+            $alreadyIn = false;
+        }
         return view('giveaway.giveaway')
             ->with('userData', $userData)
             ->with('nextGiveaways', $nextGiveaways)
             ->with('giveaway',$giveaway)
             ->with('ended', $ended)
+            ->with('alreadyIn', $alreadyIn)
+
             ;
     }
     

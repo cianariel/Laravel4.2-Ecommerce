@@ -18,41 +18,69 @@
     use Carbon\Carbon;
     use DB;
     use PageHelper;
+    use Cookie;
+
+
 
 
     class GiveawayController extends ApiController {
 
-        public function enterUser()
+          public function __construct()
+            {
+                //check user authentication and get user basic information
+
+                $this->authCheck = $this->RequestAuthentication(array('admin', 'editor', 'user'));
+            }
+
+        public function enterUser(Request $request)
         {
+            
             $inputData = \Input::all();
+            $loggedIn = $this->authCheck['method-status'] == 'success-with-ajax';
 
-            $user = new User;
+            if ($loggedIn) {
+                $validUser = $this->authCheck['user-data'];
+              //  $validUser['Email'] = $userData['Email'];
+              //  $validUser['Password'] = $userData['Password'];
+            }else{
+                 $user = new User;
+                 $validUser = $user->IsAuthorizedUser($inputData);
+            }
 
-            if($authUser = $user->IsAuthorizedUser($inputData)){
+       //  print_r($inputData); die();
+
+            if($validUser){
                 try
                 {
                     if(! DB::table('giveaway_users')->where(
                         [
-                            'user_id' => $authUser->id,
+                            'user_id' => $validUser->id,
                             'giveaway_id' => $inputData['giveaway_id'],
                         ]
-                    )){
+                    )->count()){
                         DB::table('giveaway_users')->insert(
                             [
-                                'user_id' => $authUser->id,
+                                'user_id' => $validUser->id,
                                 'giveaway_id' => $inputData['giveaway_id'],
                             ]
                         );
-                        return ['success' => 'Thank you!'];
+                        return ['success' => 'Congratulations, you have entered!'];
                     }else{
                         return ['error' => 'You have already entered this Giveaway'];
                     }
+
+                  //    if(!$loggedIn){
+                   //         $authMe = AuthenticateController::authenticate($request);
+                         //   echo $authMe;
+                   //    }
 
                 } catch (Exception $ex)
                 {
                     return $this->setStatusCode(\Config::get("const.api-status.system-fail"))
                         ->makeResponseWithError("System Failure !", $ex);
                 }
+
+
 
             }else{
                     return ['error' => 'Incorrect email or password'];

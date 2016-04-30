@@ -80,20 +80,24 @@
                            </div>
                            <div  id="publicApp" ng-app="publicApp" ng-controller="publicController" class="col-lg-6 col-xs-12 qiuck-signup pull-right" ng-cloak>
 
-                               <form ng-if="!responseMessage.success">
-                                   <div>
-                                       <strong class="red">@{{ responseMessage.error }}</strong>
+                           		@if(@$alreadyIn)
+                           		    <div>
+                                       <strong style="display: block; padding-top: 30px" class="red">Congratulations, you have entered!</strong>
                                    </div>
-                                <input id="user-email" ng-model="SubscriberEmail" type="hidden" name="email" value="{{@$userData['email']}}">
-                                <input id="giveaway_id" ng-model="GiveAwayID" type="hidden" name="giveaway_id" value="{{$giveaway->id}}">
-                                <button style="margin-top: 30px;" ng-click="enterGiveaway('')" class="btn btn-success col-xs-12"  href="#">Enter Giveaway</button>
-                               </form>
+                                @else
+                                   <form ng-if="!responseMessage.success">
+	                                   <div>
+	                                       <strong class="red">@{{ responseMessage.error }}</strong>
+	                                   </div>
+		                                <input id="user-email" ng-model="SubscriberEmail" type="hidden" name="email" value="{{@$userData['email']}}">
+		                                <input id="giveaway_id" ng-model="GiveAwayID" type="hidden" name="giveaway_id" value="{{$giveaway->id}}">
+		                                <button style="margin-top: 30px;" ng-click="enterGiveaway('')" class="btn btn-success col-xs-12"  href="#">Enter Giveaway</button>
+	                               </form>
 
-                               <form ng-if="responseMessage.success">
-                                   <div>
-                                       <strong class="red">@{{ responseMessage.success }}</strong>
-                                   </div>
-                               </form>
+	                                <div ng-if="responseMessage.success">
+	                                       <strong style="display: block; padding-top: 30px" class="red">@{{ responseMessage.success }}</strong>
+	                                </div>
+                           		@endif
                            </div>
                        @else
                            <div class="col-lg-6">
@@ -103,19 +107,25 @@
                            </div>
 
                            <div  id="publicApp" ng-app="publicApp" ng-controller="publicController" class="col-lg-6 col-xs-12 qiuck-signup pull-right giveaway-login" ng-cloak>
-                               <div>
-                                   <strong style="color: red">@{{ responseMessage }}</strong>
-                               </div>
-                               <form>
-                            <span class="email-input-holder ">
-                                <input class="form-control" ng-model="SubscriberEmail" type="text" placeholder="Email" name="email">
-                            </span>
-                            <span class="password-input-holder ">
-                                <input class="form-control" ng-model="SubscriberPassword" type="text" placeholder="Password" name="password">
-                                 <input id="giveaway_id" ng-model="GiveAwayID" type="hidden" name="giveaway_id" value="{{$giveaway->id}}">
-                            </span>
 
-                                   <button ng-click="enterGiveaway('')" class="btn btn-success col-xs-12"  href="#">Enter</button>
+                             		<form ng-if="!responseMessage.success">
+	                                   <div>
+	                                   <strong style="color: red">@{{ responseMessage.error }}</strong>
+	                               	   </div>
+			                            <span class="email-input-holder ">
+			                                <input class="form-control" ng-model="SubscriberEmail" type="text" placeholder="Email" name="email">
+			                            </span>
+			                            <span class="password-input-holder ">
+			                                <input class="form-control" ng-model="SubscriberPassword" type="text" placeholder="Password" name="password">
+			                                 <input id="giveaway_id" ng-model="GiveAwayID" type="hidden" name="giveaway_id" value="{{$giveaway->id}}">
+			                            </span>
+	                                   <button ng-click="enterGiveaway('')" class="btn btn-success col-xs-12"  href="#">Enter Giveaway</button>
+		                            </form>
+
+	                                <div ng-if="responseMessage.success">
+	                                       <strong style="display: block; padding-top: 30px" class="red">@{{ responseMessage.success }}</strong>
+	                                </div>
+
                                </form>
                            </div>
 
