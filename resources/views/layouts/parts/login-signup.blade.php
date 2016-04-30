@@ -66,8 +66,7 @@
                 <input class="form-control" ng-model="Email" type="text" placeholder="Email" name="email">
                 <input class="form-control" ng-model="Password" type="password" placeholder="Password" name="password">
                 <div class="modal-minor-text">
-                    <input type="checkbox"  ng-model="rememberMe"  id="remember" name="remember"><label for="remember"><span></span>Remember me
-                    </label>
+                    <input type="checkbox"  ng-model="rememberMe"  id="remember" name="remember"><label for="remember"><span></span>Remember me</label>
                 </div>
 
                 <a class="btn btn-success col-xs-12" ng-click="loginUser()" href="#">Log in</a>
@@ -78,10 +77,9 @@
 
             </form>
         </div>
-        <div id="signup-modal" class="modal-content hero-box qiuck-signup modal-login">
+        <div id="signup-modal" class="modal-content hero-box qiuck-signup modal-login hidden-soft">
             <form>
-                <a class="btn btn-info col-xs-12" ng-click="registerWithFB()" href="#"><i class="fa fa-facebook"></i>Sign
-                    up with Facebook</a>
+                <a class="btn btn-info col-xs-12" ng-click="registerWithFB()" href="#"><i class="fa fa-facebook"></i>Sign up with Facebook</a>
                 <div class="line-wrap modal-minor-text">or</div>
 
                 <input class="form-control" ng-model="FullName" type="text" placeholder="Name" >
