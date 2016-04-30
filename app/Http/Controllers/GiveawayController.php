@@ -47,7 +47,7 @@
                  $validUser = $user->IsAuthorizedUser($inputData);
             }
 
-       //  print_r($inputData); die();
+       // print_r($inputData); die();
 
             if($validUser){
                 try
@@ -69,10 +69,10 @@
                         return ['error' => 'You have already entered this Giveaway'];
                     }
 
-                  //    if(!$loggedIn){
-                   //         $authMe = AuthenticateController::authenticate($request);
-                         //   echo $authMe;
-                   //    }
+                  if(!$loggedIn){
+                    $authController = new AuthenticateController;
+                   $authMe = $authController->authenticate($request);
+                  }
 
                 } catch (Exception $ex)
                 {
