@@ -841,7 +841,7 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
 
                 if (data.status_code == 406) {
 
-                    $scope.responseMessage = "Invalid Email !";
+                    $scope.responseMessage = "Invalid Email!";
                 }
 
                 else if (data.status_code == 200) {
