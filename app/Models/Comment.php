@@ -209,14 +209,21 @@ class Comment extends Model
         $heartProductCollection = Heart::where('user_id', $userId)->where('heartable_type', 'App\Models\Product');
 
         if ($count == null) {
-            $heartProductCollection = $heartProductCollection->orderBy('created_at', 'desc')->get(['heartable_id']);
+            $heartProductCollection = $heartProductCollection->orderBy('created_at', 'desc')->get(['heartable_id','updated_at']);
         } else {
-            $heartProductCollection = $heartProductCollection->orderBy('created_at', 'desc')->limit($count)->get(['heartable_id']);
+            $heartProductCollection = $heartProductCollection->orderBy('created_at', 'desc')->limit($count)->get(['heartable_id','updated_at']);
 
         }
 
-        $productInfoOfHeart = Product::whereIn('id', $heartProductCollection)->get(['id', 'product_name AS title', 'product_permalink AS link', 'updated_at']);
 
+        $productHeatItemsId = $heartProductCollection->map(function($item){
+                return $item['heartable_id'];
+            });
+
+
+        $productInfoOfHeart = Product::whereIn('id', $productHeatItemsId)->get(['id', 'product_name AS title', 'product_permalink AS link', 'updated_at']);
+
+//dd($heartProductCollection);
 
         foreach ($productInfoOfHeart as $item) {
             $tmpCollection = new Collection();
@@ -229,11 +236,25 @@ class Comment extends Model
             $tmpCollection['Section'] = 'product';
             $tmpCollection['Type'] = 'heart';
 
+
+                foreach($heartProductCollection as $singleItem)
+                {
+                    if($singleItem['heartable_id'] == $item['id'])
+                    {
+                        $tmpCollection['UpdateTime'] = $singleItem['updated_at'];
+                    }
+                };
+
+           // dd($item['id'],$tmpCollection['UpdateTime']);
+
+
             $activityCollection->push($tmpCollection);
 
         }
 
-        //  dd($commentCollection);
+
+
+      //    dd($activityCollection);
 
         $heartIdeasCollection = Heart::where('user_id', $userId)->where('heartable_type', 'App\Models\WpPost');
 
@@ -265,11 +286,6 @@ class Comment extends Model
             $activityCollection->push($tmpCollection);
         }
 
-        //  dd($ideasInfoOfHeart->count(),$activityCollection);
-
-        //  dd($commentCollection);
-
-
         $comments = Comment::where('user_id', $userId)->whereNotNull('section');
 
         if ($count == null) {
@@ -282,7 +298,6 @@ class Comment extends Model
         foreach ($comments as $item) {
             $tmpCollection = new Collection();
 
-            // dd($item);
             $tmpCollection['Id'] = $item['commentable_id'];
             $tmpCollection['Title'] = $item['title'];
             $tmpCollection['Link'] = $domain . "/" . $item['section'] . "/" . $item['link'];
@@ -301,7 +316,7 @@ class Comment extends Model
                 'Title' => $item['Title'],
                 'Link' => $item['Link'],
                 'Image' => $item['Image'],
-                'UpdateTime' => Carbon::createFromTimestamp(strtotime($item['UpdateTime']))->diffForHumans(),
+                'UpdateTime' => $item['UpdateTime'],
                 'Section' => $item['Section'],
                 'Type' => $item['Type']
             ];

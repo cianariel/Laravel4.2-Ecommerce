@@ -693,7 +693,16 @@ if($stories['featured']){
         MetaTag::set('title', 'About Ideaing: What We Do at Ideaing.com');
 //        MetaTag::set('description', $result['productInformation']['MetaDescription']);
 
-        return view('info.aboutus');
+      //  return view('info.aboutus');
+
+        $userData = $this->authCheck;
+        if ($this->authCheck['method-status'] == 'success-with-http') {
+            $userData = $this->authCheck['user-data'];
+        }
+
+        return view('info.aboutus')
+            ->with('userData', $userData);
+
     }
 
     public function termsOfUse()
@@ -702,7 +711,15 @@ if($stories['featured']){
         MetaTag::set('title', 'Terms of Use | Ideaing');
 //        MetaTag::set('description', $result['productInformation']['MetaDescription']);
 
-        return view('info.terms-of-use');
+       // return view('info.terms-of-use');
+
+        $userData = $this->authCheck;
+        if ($this->authCheck['method-status'] == 'success-with-http') {
+            $userData = $this->authCheck['user-data'];
+        }
+
+        return view('info.terms-of-use')
+            ->with('userData', $userData);
     }
 
     public function giveaway()
