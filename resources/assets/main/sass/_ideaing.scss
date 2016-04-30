@@ -45,6 +45,10 @@ a:hover, a:focus{
 .purple{
   color: $magenta;
 }
+
+.white{
+  color: #fff;
+}
        
 .purple-bg{
   background-color: $magenta;
@@ -73,7 +77,8 @@ a:hover, a:focus{
   width: 100%;
 }
 
-[data-toggle]{
+[data-toggle],
+[data-switch]{
   cursor: pointer;
   .up{
       display: none;
@@ -8675,7 +8680,7 @@ body.aboutus-page{
     }
     .about_para_2
     {
-        position:relative;left:0px; width:100%; background-image:url("/assets/images/about2.png");background-size: cover;background-repeat: no-repeat;background-position: 50% 100%; z-index:1
+        position:relative;left:0px; width:100%; background-image:url("https://d234pm57oy3062.cloudfront.net/assets/images/about-2.png");background-size: cover;background-repeat: no-repeat;background-position: 50% 100%; z-index:1
     }
     .para2_space
     {
@@ -9204,6 +9209,12 @@ body.search{
 
 
 body.giveaway-page{
+
+  &.logged-in{
+    .hero-box{
+      display: none;
+    }
+  }
   #hero-arrow{
     position: absolute;
     left: -182px;

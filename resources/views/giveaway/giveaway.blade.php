@@ -63,24 +63,6 @@
                 </li>
             </ul>
 
-            <ul class="like-nav " ng-init="heartUsers('ideas')">
-                <li>
-                    <div class="social-stats">
-                        <div class="social-stats__item">
-                            <a href="#" class="likes" ng-click="heartAction()" >
-                                <i ng-class="unHeart != false ? 'm-icon m-icon--heart-solid' : 'm-icon m-icon--ScrollingHeaderHeart'">
-                                        <span class="m-hover">
-                                            <span class="path1"></span><span class="path2"></span>
-                                        </span>
-                                </i>
-                                <span class="social-stats__text" ng-bind="heartCounter">&nbsp;  </span>
-                            </a>
-                        </div>
-                    </div>
-
-                </li>
-                <?php // include('/var/www/ideaing/public/ideas/wp-content/themes/ideaing/heart-user-img.php') ?>
-            </ul>
         </div>
     </nav>
 	<div class="container-fluid">
@@ -89,27 +71,67 @@
 				        <div class='giveaway_title'><h2>{{$giveaway->giveaway_title}}</h2></div>
 				        <div class='giveaway_desc'>{{$giveaway->giveaway_desc}}</div>
                    <section class="col-lg-12 sign-in">
-                        <div class="col-lg-6">
-                            <h5>Sign in to <span>WIN!</span></h5>
-                            <div class="line-wrap">Not yet a member? Create an account!</div>
-                        </div>
+                       @if(@$userData['login'])
+                           <div class="col-lg-6">
+                               <h5>Hi <span>{{$userData['name']}}!</span></h5>
+                           </div>
+                           <div  id="publicApp" ng-app="publicApp" ng-controller="publicController" class="col-lg-6 col-xs-12 qiuck-signup pull-right" ng-cloak>
 
-                        <div  id="publicApp" ng-app="publicApp" ng-controller="publicController" class="col-lg-6 col-xs-12 qiuck-signup pull-right" ng-cloak>
-                            <div>
-                                <strong style="color: red">@{{ responseMessage }}</strong>
-                            </div>
-                            <form>
+                               <form ng-if="!responseMessage.success">
+                                   <div>
+                                       <strong class="red">@{{ responseMessage.error }}</strong>
+                                   </div>
+                                <input id="user-email" ng-model="SubscriberEmail" type="hidden" name="email" value="{{@$userData['email']}}">
+                                 <input id="giveaway_id" ng-model="GiveAwayID" type="hidden" name="giveaway_id" value="{{$giveaway->id}}">
+                                   <button ng-click="enterGiveaway('')" class="btn btn-success col-xs-12"  href="#">Enter Giveaway</button>
+                               </form>
+
+                               <form ng-if="responseMessage.success">
+                                   <div>
+                                       <strong class="red">@{{ responseMessage.success }}</strong>
+                                   </div>
+                               </form>
+                           </div>
+                       @else
+                           <div class="col-lg-6">
+                               <h5>Sign in to <span>WIN!</span></h5>
+                               <div data-switch=".giveaway-signup" data-hide=".giveaway-login" class="giveaway-login line-wrap">Not yet a member? Create an account!</div>
+                               <div data-switch=".giveaway-login" data-hide=".giveaway-signup" class="giveaway-signup line-wrap hidden-soft">Already a member? Sign in!</div>
+                           </div>
+
+                           <div  id="publicApp" ng-app="publicApp" ng-controller="publicController" class="col-lg-6 col-xs-12 qiuck-signup pull-right giveaway-login" ng-cloak>
+                               <div>
+                                   <strong style="color: red">@{{ responseMessage }}</strong>
+                               </div>
+                               <form>
                             <span class="email-input-holder ">
-                                <input class="form-control" ng-model="SubscriberEmail" type="text" placeholder="Email" name="email" value="{{@$userData['email']}}">
+                                <input class="form-control" ng-model="SubscriberEmail" type="text" placeholder="Email" name="email">
                             </span>
                             <span class="password-input-holder ">
                                 <input class="form-control" ng-model="SubscriberPassword" type="text" placeholder="Password" name="password">
                                  <input id="giveaway_id" ng-model="GiveAwayID" type="hidden" name="giveaway_id" value="{{$giveaway->id}}">
                             </span>
 
-                                <button ng-click="enterGiveaway('')" class="btn btn-success col-xs-12"  href="#">Enter</button>
-                            </form>
-                        </div>
+                                   <button ng-click="enterGiveaway('')" class="btn btn-success col-xs-12"  href="#">Enter</button>
+                               </form>
+                           </div>
+
+                           <div class="col-lg-6 col-xs-12 qiuck-signup pull-right hidden-soft giveaway-signup">
+                               <form>
+                                   <a class="btn btn-info col-xs-12" ng-click="registerWithFB()" href="#"><i class="fa fa-facebook"></i>Sign
+                                       up with Facebook</a>
+                                   <div class="line-wrap modal-minor-text">or</div>
+
+                                   <input class="form-control" ng-model="FullName" type="text" placeholder="Name" >
+                                   <input class="form-control" ng-model="Email" type="text" placeholder="Email" >
+                                   <input class="form-control" ng-model="Password" type="password" placeholder="Password" >
+                                   <input class="form-control" ng-model="PasswordConf" type="password" placeholder="Retype Password" >
+
+                                   <a class="btn btn-success col-xs-12" ng-click="registerUser()" href="#">Sign up</a>
+
+                               </form>
+                           </div>
+                       @endif
                    </section>
 				</div>
 
@@ -132,7 +154,6 @@
                         @endforeach
                     </div>
                 </section>
-
         </div>
 
     </div>

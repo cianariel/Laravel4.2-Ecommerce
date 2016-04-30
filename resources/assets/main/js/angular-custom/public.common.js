@@ -872,11 +872,11 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                 }
             }).success(function (data) {
 
-            if (data.success) {
-                    $scope.responseMessage = data.success;
-                } else {
-                    $scope.responseMessage = data.error;
-                }
+            //if (data.success) {
+                    $scope.responseMessage = data;
+                //} else {
+                //    $scope.responseMessage = data.error;
+                //}
 
             });
 

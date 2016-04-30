@@ -4499,6 +4499,9 @@ a:hover, a:focus {
 .purple {
   color: #9E009E; }
 
+.white {
+  color: #fff; }
+
 .purple-bg {
   background-color: #9E009E; }
 
@@ -4524,13 +4527,17 @@ a:hover, a:focus {
 .full-wide {
   width: 100%; }
 
-[data-toggle] {
+[data-toggle],
+[data-switch] {
   cursor: pointer; }
-  [data-toggle] .up {
+  [data-toggle] .up,
+  [data-switch] .up {
     display: none; }
-  [data-toggle].active .up {
+  [data-toggle].active .up,
+  [data-switch].active .up {
     display: block; }
-  [data-toggle].active .down {
+  [data-toggle].active .down,
+  [data-switch].active .down {
     display: none; }
 
 .clearfix.pocket {
@@ -10386,7 +10393,7 @@ body.aboutus-page .about_para_2 {
   position: relative;
   left: 0px;
   width: 100%;
-  background-image: url("/assets/images/about2.png");
+  background-image: url("https://d234pm57oy3062.cloudfront.net/assets/images/about-2.png");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: 50% 100%;
@@ -10776,6 +10783,8 @@ body.search #search-header {
 .photoCopy a {
   color: grey; }
 
+body.giveaway-page.logged-in .hero-box {
+  display: none; }
 body.giveaway-page #hero-arrow {
   position: absolute;
   left: -182px;
