@@ -54,6 +54,18 @@
     <nav id="hero-nav" class="col-sm-12">
         <div class="container">
             <ul class="share-buttons hidden-xs col-lg-7 col-md-8 pull-right">
+
+                <li class="social-stats__item">
+                    <?php
+                    $userId = !empty($userData->id) ? $userData->id : 0;
+                    ?>
+
+                    <heart-counter-public uid="<?php echo $userId ?>" iid="{{  $giveaway->id }}"
+                                           plink="" sec='giveaway'>
+
+                    </heart-counter-public>
+                </li>
+
                 @include('layouts.parts.share-buttons')
                 <li><a class="comment" data-scrollto=".comments" href="#"><i class="m-icon m-icon--comments-id" ng-init="getCommentsForIdeas()"></i>
                         <b ng-bind="commentsCount">

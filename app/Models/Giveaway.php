@@ -25,6 +25,11 @@
         );
         protected $hidden = ['created_at'];
 
+        public function hearts()
+        {
+            return $this->morphMany('App\Models\Heart', 'heartable');
+        }
+
         public function users()
         {
             return $this->hasMany('App\Models\User');
