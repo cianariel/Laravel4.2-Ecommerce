@@ -30,17 +30,21 @@
             </ul>
         </div>
     </nav>
-    <div id="productApp" ng-app="productApp" data-ng-controller="productController" class="ideaing-product" ng-cloak itemscope itemtype="http://schema.org/Product">
+    <div id="productApp" ng-app="productApp" data-ng-controller="productController" class="ideaing-product" ng-cloak
+         itemscope itemtype="http://schema.org/Product">
         <header class="story-header hidden-620 hidden-soft">
             <div class="col-xs-1">
-            <a href="#" class="side-logo lamp-logo">
-                <i class="m-icon m-icon--bulb2">
-                    <span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span><span class="path6"></span><span class="path7"></span><span class="path8"></span><span class="path9"></span><span class="path10"></span>
-                </i>
-            </a>
+                <a href="#" class="side-logo lamp-logo">
+                    <i class="m-icon m-icon--bulb2">
+                        <span class="path1"></span><span class="path2"></span><span class="path3"></span><span
+                                class="path4"></span><span class="path5"></span><span class="path6"></span><span
+                                class="path7"></span><span class="path8"></span><span class="path9"></span><span
+                                class="path10"></span>
+                    </i>
+                </a>
             </div>
             <div class="col-xs-4">
-            <h1>
+                <h1>
                     <span class="title-holder">
                 <span class="title" itemprop="name">
                     @if(isset($productInformation['ProductName']))
@@ -51,7 +55,7 @@
                     <li class="">
                         <a href="#" class="likes" ng-class="['likes', {active: unHeart != false}]"
                            ng-init="heartCounterAction(<?php echo $userData['id'] . "," . $productId . "," . "'product'"?>)"
-                           ng-click="heartAction(<?php echo $userData['id'] . "," . $productId . "," ."'$permalink'".",". "'product'"?>)"
+                           ng-click="heartAction(<?php echo $userData['id'] . "," . $productId . "," . "'$permalink'" . "," . "'product'"?>)"
                         >
                             <!--                                <i ng-class="unHeart != false ? 'm-icon m-icon--heart-solid' : 'm-icon m-icon--ScrollingHeaderHeart'">-->
                             <i class="m-icon m-icon--ScrollingHeaderHeart">
@@ -65,29 +69,33 @@
                     </li>
                 </ul>
                     </span>
-            </h1>
+                </h1>
             </div>
             <div class="col-xs-7">
-            <ul ng-app="publicApp" ng-controller="publicController" class="share-buttons short hidden-xs col-lg-6 col-sm-8 pull-right">
-                <li class="all-shares"><b class="share-count all"></b> <br/>all shares</li>
-                <li><a data-service="facebook" class="fb" href="#" ng-click="openSharingModal('facebook')"><i class="m-icon m-icon--facebook-id"></i> <b class="fb share-count"></b></a></li>
-                <li><a data-service="twitter" class="twi" href="#" ng-click="openSharingModal('twitter')"><i class="m-icon  m-icon--twitter-id"></i> <b class="twi share-count"></b></a></li>
-            </ul>
+                <ul ng-app="publicApp" ng-controller="publicController"
+                    class="share-buttons short hidden-xs col-lg-6 col-sm-8 pull-right">
+                    <li class="all-shares"><b class="share-count all"></b> <br/>all shares</li>
+                    <li><a data-service="facebook" class="fb" href="#" ng-click="openSharingModal('facebook')"><i
+                                    class="m-icon m-icon--facebook-id"></i> <b class="fb share-count"></b></a></li>
+                    <li><a data-service="twitter" class="twi" href="#" ng-click="openSharingModal('twitter')"><i
+                                    class="m-icon  m-icon--twitter-id"></i> <b class="twi share-count"></b></a></li>
+                </ul>
 
-            <div class="icon-wrap pull-right">
-                <a class="category-tag get-round" ng-href="@if(isset($productInformation['AffiliateLink']))
-                {{$productInformation['AffiliateLink']}}
-                @endif" target="_blank">
-                    Get it
-                </a>
-                <b class="price" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
-                    &nbsp;
-                    @if(isset($productInformation['SellPrice']))
-                        <span itemprop="priceCurrency" content="USD">$</span>
-                        <span itemprop="price" content="{{$productInformation['SellPrice']}}">{{$productInformation['SellPrice']}}</span>
-                    @endif
-                </b>
-            </div>
+                <div class="icon-wrap pull-right">
+                    <a class="category-tag get-round" ng-href="@if(isset($productInformation['AffiliateLink']))
+                    {{$productInformation['AffiliateLink']}}
+                    @endif" target="_blank">
+                        Get it
+                    </a>
+                    <b class="price" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+                        &nbsp;
+                        @if(isset($productInformation['SellPrice']))
+                            <span itemprop="priceCurrency" content="USD">$</span>
+                            <span itemprop="price"
+                                  content="{{$productInformation['SellPrice']}}">{{$productInformation['SellPrice']}}</span>
+                        @endif
+                    </b>
+                </div>
             </div>
         </header>
 
@@ -100,14 +108,15 @@
 
                 <div class="row hero-content-holder">
                     <div class="col-sm-11">
-                        <div class="average-score pull-right" itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating">
+                        <div class="average-score pull-right" itemprop="aggregateRating" itemscope
+                             itemtype="http://schema.org/AggregateRating">
                             <div class="score" itemprop="ratingValue">
                                 <i class=" m-icon--bulb-detailed-on-rating"></i>
                                 <?php
-                                if(isset($productInformation['Review']))
-                                $value = intval(((($productInformation['Review'][0]->value > 0 ? $productInformation['Review'][0]->value : $productInformation['Review'][1]->value) + $productInformation['Review'][1]->value)/2)*20);
+                                if (isset($productInformation['Review']))
+                                    $value = intval(((($productInformation['Review'][0]->value > 0 ? $productInformation['Review'][0]->value : $productInformation['Review'][1]->value) + $productInformation['Review'][1]->value) / 2) * 20);
 
-                                echo $value > 0 ? $value."%" : '<span class="not-availiable">Not Available</span>';
+                                echo $value > 0 ? $value . "%" : '<span class="not-availiable">Not Available</span>';
 
                                 ?>
                             </div>
@@ -128,9 +137,9 @@
                         <li class="">
                             <a href="#" class="likes" ng-class="['likes', {active: unHeart != false}]"
                                ng-init="heartCounterAction(<?php echo $userData['id'] . "," . $productId . "," . "'product'"?>)"
-                               ng-click="heartAction(<?php echo $userData['id'] . "," . $productId . "," ."'$permalink'".",". "'product'"?>)"
+                               ng-click="heartAction(<?php echo $userData['id'] . "," . $productId . "," . "'$permalink'" . "," . "'product'"?>)"
                             >
-<!--                                <i ng-class="unHeart != false ? 'm-icon m-icon--heart-solid' : 'm-icon m-icon--ScrollingHeaderHeart'">-->
+                                <!--                                <i ng-class="unHeart != false ? 'm-icon m-icon--heart-solid' : 'm-icon m-icon--ScrollingHeaderHeart'">-->
                                 <i class="m-icon m-icon--heart-solid">
                                         <span class="m-hover">
                                             <span class="path1"></span><span class="path2"></span>
@@ -140,15 +149,18 @@
                             </a>
 
                         </li>
-                        <li><a href="#" class="get-alerts"><i class="m-icon m-icon--alert"></i>&nbsp; Get alerts</a></li>
-                        <li><a href="#" data-scrollto="#comments" class="comments"><i class="m-icon m-icon--discuss-products"></i>&nbsp; <?php echo "{{ commentsCount }}" ?></a></li>
+                        <li><a href="#" class="get-alerts"><i class="m-icon m-icon--alert"></i>&nbsp; Get alerts</a>
+                        </li>
+                        <li><a href="#" data-scrollto="#comments" class="comments"><i
+                                        class="m-icon m-icon--discuss-products"></i>&nbsp; <?php echo "{{ commentsCount }}" ?>
+                            </a></li>
                     </ul>
                 </nav>
 
 
                 <div class="slider product-slider">
                     <script>
-      jQuery(document).ready(function($) {
+                        jQuery(document).ready(function ($) {
                             if (window.innerWidth < 480) {
 
                                 $('#gallery').royalSlider({
@@ -176,8 +188,8 @@
                                     },
                                     loop: true,
                                     video: {
-                                        autoHideArrows:true,
-                                        autoHideControlNav:false,
+                                        autoHideArrows: true,
+                                        autoHideControlNav: false,
                                         autoHideBlocks: true,
                                         youTubeCode: '<iframe src="https://www.youtube.com/embed/%id%?rel=1&autoplay=1&showinfo=0" frameborder="no" allowFullscreen></iframe>'
                                     },
@@ -185,42 +197,42 @@
 //                            imgHeight: 680
                                 });
                             } else {
-                                    $('#gallery').royalSlider({
+                                $('#gallery').royalSlider({
 //                            arrowsNav: true,
-                                        loop: false,
-                                        keyboardNavEnabled: true,
-                                        controlsInside: false,
-                                        imageScaleMode: 'fit',
-                                        arrowsNavAutoHide: false,
+                                    loop: false,
+                                    keyboardNavEnabled: true,
+                                    controlsInside: false,
+                                    imageScaleMode: 'fit',
+                                    arrowsNavAutoHide: false,
 //                        autoScaleSlider: true,
-                                        controlNavigation: 'thumbnails',
-                                        thumbsFitInViewport: false,
-                                        navigateByClick: true,
-                                        startSlideId: 0,
-                                        autoPlay: false,
-                                        transitionType: 'move',
-                                        globalCaption: false,
-                                        deeplinking: {
-                                            enabled: true,
-                                            change: false
-                                        },
-                                        thumbs: {
-                                            arrows: true,
-                                            appendSpan: true,
-                                            firstMargin: false,
-                                            orientation: 'vertical'
-                                        },
-                                        loop: true,
-                                        video: {
-                                            autoHideArrows:true,
-                                            autoHideControlNav:false,
-                                            autoHideBlocks: true,
-                                            youTubeCode: '<iframe src="https://www.youtube.com/embed/%id%?rel=1&autoplay=1&showinfo=0" frameborder="no" allowFullscreen></iframe>'
-                                        },
+                                    controlNavigation: 'thumbnails',
+                                    thumbsFitInViewport: false,
+                                    navigateByClick: true,
+                                    startSlideId: 0,
+                                    autoPlay: false,
+                                    transitionType: 'move',
+                                    globalCaption: false,
+                                    deeplinking: {
+                                        enabled: true,
+                                        change: false
+                                    },
+                                    thumbs: {
+                                        arrows: true,
+                                        appendSpan: true,
+                                        firstMargin: false,
+                                        orientation: 'vertical'
+                                    },
+                                    loop: true,
+                                    video: {
+                                        autoHideArrows: true,
+                                        autoHideControlNav: false,
+                                        autoHideBlocks: true,
+                                        youTubeCode: '<iframe src="https://www.youtube.com/embed/%id%?rel=1&autoplay=1&showinfo=0" frameborder="no" allowFullscreen></iframe>'
+                                    },
 
 //                        imgWidth: 1400,
 //                        imgHeight: 680
-                                    });
+                                });
                             }
                         });
                     </script>
@@ -235,7 +247,8 @@
                                         <img itemprop="image" class="rsTmb" src="{{$image['link']}}"
                                              alt="{{$image['picture-name']}}">
                                     </a>
-                                @elseif($image['type'] == 'video-link' || $image['type'] == 'video-upload' || $image['type'] == 'video-youtube-link' || $image['type'] == 'video-vimeo-link'))
+                                @elseif($image['type'] == 'video-link' || $image['type'] == 'video-upload' || $image['type'] == 'video-youtube-link' || $image['type'] == 'video-vimeo-link')
+                                    )
                                     <a class="rsImg"
                                        data-rsVideo="{{$image['link']}}"
                                        href="{{$image['preview']}}"
@@ -262,7 +275,7 @@
                             </a>
                             <img class="vendor-logo" width="107"
                                  src="@if(isset($storeInformation['ImagePath'])){{$storeInformation['ImagePath']}}@endif"
-                            alt="@if(isset($storeInformation['StoreName'])){{$storeInformation['StoreName']}}@endif">
+                                 alt="@if(isset($storeInformation['StoreName'])){{$storeInformation['StoreName']}}@endif">
                             <b class="price">$ @if(isset($productInformation['SellPrice']))
                                     {{$productInformation['SellPrice']}}
                                 @endif</b>
@@ -290,20 +303,26 @@
         <nav id="hero-nav" class="product-nav col-sm-12">
             <div class="container full-620 fixed-sm">
                 <ul class="category-nav full-620">
-                    <li class="active"><a href="#" class="photos-link"><i class="m-icon m-icon--photos"></i>Photos</a></li>
-                    <li><a href="#" data-scrollto="#features" class="features-link"><i class="m-icon m-icon--features-c1"></i>Features</a>
+                    <li class="active"><a href="#" class="photos-link"><i class="m-icon m-icon--photos"></i>Photos</a>
+                    </li>
+                    <li><a href="#" data-scrollto="#features" class="features-link"><i
+                                    class="m-icon m-icon--features-c1"></i>Features</a>
                     </li>
                     <li><a href="#" data-scrollto="#specs" class="specs-link"><i class="m-icon m-icon--specs"></i>Specs</a>
                     </li>
-                    <li class="hidden-category-menu"><a href="#" data-scrollto="#compare" class="compare-link"><i class="m-icon  m-icon--comparisons"></i>Comparisons</a></li>
-                    <li class="hidden-category-menu"><a href="#" data-scrollto="#reviews" class="reviews-link"><i class="m-icon m-icon--reviews"></i>Reviews</a>
+                    <li class="hidden-category-menu"><a href="#" data-scrollto="#compare" class="compare-link"><i
+                                    class="m-icon  m-icon--comparisons"></i>Comparisons</a></li>
+                    <li class="hidden-category-menu"><a href="#" data-scrollto="#reviews" class="reviews-link"><i
+                                    class="m-icon m-icon--reviews"></i>Reviews</a>
                     </li>
                 </ul>
                 <a class="show-hero-category" href="#">></a>
                 <div class="hideen-hero-category-menu mobile-top-menu">
                     <ul>
-                        <li><a href="#" data-scrollto="#compare" class="compare-link"><i class="m-icon  m-icon--comparisons"></i>Comparisons</a></li>
-                        <li><a href="#" data-scrollto="#reviews" class="reviews-link"><i class="m-icon m-icon--reviews"></i>Reviews</a></li>
+                        <li><a href="#" data-scrollto="#compare" class="compare-link"><i
+                                        class="m-icon  m-icon--comparisons"></i>Comparisons</a></li>
+                        <li><a href="#" data-scrollto="#reviews" class="reviews-link"><i
+                                        class="m-icon m-icon--reviews"></i>Reviews</a></li>
                     </ul>
                 </div>
             </div>
@@ -316,7 +335,8 @@
 
                     @include('layouts.parts.share-bar')
 
-                    <section class="article-content col-lg-12 col-sm-11 pull-right" id="features"   itemprop="description">
+                    <section class="article-content col-lg-12 col-sm-11 pull-right" id="features"
+                             itemprop="description">
                         <div>
                             @if(isset($productInformation['Description']))
                                 {!! $productInformation['Description'] !!}
@@ -373,7 +393,7 @@
                                     <div class="tab-wrap">
                                         <h4>@{{ item.data.productInformation.ProductName | limitTo: 50 }} @{{item.data.productInformation.ProductName.length > 50 ? '...' : ''}}</h4>
 
-<!--                                        <b class="score">@{{ item.data.productInformation.Review[1].value }}</b>-->
+                                        <!--                                        <b class="score">@{{ item.data.productInformation.Review[1].value }}</b>-->
 
                                         <div class="star-rating score text-center">
                                             <span class="star active" ng-repeat="n in [1, 2, 3, 4, 5]">
@@ -387,8 +407,8 @@
                                         </div>
                                         <div class="purple-bg price-badge">
                                             <a href="@{{ item.data.productInformation.AffiliateLink }}" target="_blank">
-                                            <span>@{{ item.data.storeInformation.StoreName }}</span>
-                                            <b>$@{{ item.data.productInformation.SellPrice }}</b>
+                                                <span>@{{ item.data.storeInformation.StoreName }}</span>
+                                                <b>$@{{ item.data.productInformation.SellPrice }}</b>
                                             </a>
                                         </div>
                                         <a class="btn-none" href="@{{ item.data.productInformation.AffiliateLink }}"
@@ -469,7 +489,8 @@
                                         <div class="score">
                                             <i class="  m-icon--bulb-detailed-on-rating"></i>
                                             @if(isset($productInformation['Review']))
-                                                {{intval(((($productInformation['Review'][0]->value > 0 ? $productInformation['Review'][0]->value : $productInformation['Review'][1]->value) + $productInformation['Review'][1]->value)/2)*20)}}%
+                                                {{intval(((($productInformation['Review'][0]->value > 0 ? $productInformation['Review'][0]->value : $productInformation['Review'][1]->value) + $productInformation['Review'][1]->value)/2)*20)}}
+                                                %
                                             @endif
                                         </div>
                                         <span class="caption">Average Ideaing Score</span>
@@ -578,7 +599,7 @@
                                                     @endfor
                                                 </div>
 
-                                    </div>
+                                            </div>
                                         @endforeach
                                     @endif
 
@@ -586,17 +607,17 @@
                                 <div class="col-xs-6 col-sm-4 col-sm-offset-4 text-center reviews-service-holder amazon">
                                     <div class="vertical-line visible-xs"></div>
                                     <div class="title"><a
-                                                          href="@if(isset($productInformation['Review'][1]->link)){{$productInformation['Review'][1]->link}}@endif"
-                                                          target="_blank">Amazon</a></div>
+                                                href="@if(isset($productInformation['Review'][1]->link)){{$productInformation['Review'][1]->link}}@endif"
+                                                target="_blank">Amazon</a></div>
                                     <div class="reviews">Reviews</div>
                                     <div class="star-rating text-center">
                                         <?php
-                                            $stars = $productInformation['Review'][1]->value;
-                                            $fStar = floor($stars);
-                                            $cStar = ceil($stars);
-                                            $halfStar = -1;
-                                            if($fStar == $cStar)
-                                                $halfStar = $cStar;
+                                        $stars = $productInformation['Review'][1]->value;
+                                        $fStar = floor($stars);
+                                        $cStar = ceil($stars);
+                                        $halfStar = -1;
+                                        if ($fStar == $cStar)
+                                            $halfStar = $cStar;
 
                                         ?>
                                         @for($i=1; $i<=5; $i++)
@@ -650,7 +671,7 @@
 
             @include('layouts.parts.comments-product')
 
-            <!-- /article -->
+                    <!-- /article -->
 
 
             <section class="related-items pale-grey-bg">
@@ -671,7 +692,10 @@
                                             $userId = !empty($userData->id) ? $userData->id : 0;
                                             ?>
 
-                                            <heart-counter-product uid="<?php echo $userId ?>" iid="{{$product['ItemId']}}" plink="{{ json_encode($product['Permalink']) }}" sec='product'>
+                                            <heart-counter-product uid="<?php echo $userId ?>"
+                                                                   iid="{{$product['ItemId']}}"
+                                                                   plink="{{ json_encode($product['Permalink']) }}"
+                                                                   sec='product'>
 
                                             </heart-counter-product>
                                         </li>
@@ -698,11 +722,12 @@
                     <div class="related-ideas grid-box-3">
                         <h3 class="blue">Related Ideas</h3>
 
-                            @if(isset($relatedIdeas) && ($relatedIdeas != null) )
-                                @foreach( $relatedIdeas as $item )
-                                <div class="box-item" >
+                        @if(isset($relatedIdeas) && ($relatedIdeas != null) )
+                            @foreach( $relatedIdeas as $item )
+                                <div class="box-item">
                                     <div class="img-holder">
-                                        <img alt="{{@$item->feed_image->alt}}" title="{@{$item->feed_image->alt}}" src="{{@$item->feed_image->url}}">
+                                        <img alt="{{@$item->feed_image->alt}}" title="{@{$item->feed_image->alt}}"
+                                             src="{{@$item->feed_image->url}}">
                                     </div>
 
                                     <span class="box-item__time">{{$item->updated_at}}</span>
@@ -714,15 +739,16 @@
                                             $userId = !empty($userData->id) ? $userData->id : 0;
                                             ?>
 
-                                            <heart-counter-product uid="<?php echo $userId ?>" iid="{{  $item->id }}" plink="{{ json_encode($item->url) }}" sec='ideas'>
+                                            <heart-counter-product uid="<?php echo $userId ?>" iid="{{  $item->id }}"
+                                                                   plink="{{ json_encode($item->url) }}" sec='ideas'>
 
                                             </heart-counter-product>
                                         </li>
                                         <li class="social-stats__item">
-                                           {{-- <a href="#">
-                                                <i class="m-icon m-icon--buble"></i>
-                                                <span class="social-stats__text">157</span>
-                                            </a>--}}
+                                            {{-- <a href="#">
+                                                 <i class="m-icon m-icon--buble"></i>
+                                                 <span class="social-stats__text">157</span>
+                                             </a>--}}
                                         </li>
                                     </ul>
 
@@ -746,7 +772,7 @@
                                 </div>
 
                             @endforeach
-                            @endif
+                        @endif
                     </div>
                 </div>
             </section>

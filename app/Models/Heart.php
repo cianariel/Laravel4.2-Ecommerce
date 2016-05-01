@@ -56,7 +56,11 @@ class Heart extends Model
         } elseif ($info['Section'] == 'ideas') {
 
             $section = 'App\Models\WpPost';
+        }elseif ($info['Section'] == 'giveaway') {
+
+            $section = 'App\Models\Giveaway';
         }
+
 
         $heart = Heart::where('user_id', $info['UserId'])
                      ->where('heartable_id', $info['ItemId'])
@@ -120,6 +124,12 @@ class Heart extends Model
                           ->with('hearts')
                           ->first();
             $itemTitle = $item['post_title'];
+        }elseif ($data['Section'] == 'giveaway') {
+
+            $item = Giveaway::where('id', $data['ItemId'])
+                          ->with('hearts')
+                          ->first();
+            $itemTitle = $item['giveaway_title'];
         }
 
         $itemsHeartCounts = isset($item->hearts) ? $item->hearts : [];
@@ -189,6 +199,12 @@ class Heart extends Model
                           ->with('hearts')
                           ->first();
            // return $item;
+        }elseif ($info['Section'] == 'giveaway') {
+
+            $item = Giveaway::where('id', $info['ItemId'])
+                          ->with('hearts')
+                          ->first();
+            // return $item;
         }
         return $item;
     }
