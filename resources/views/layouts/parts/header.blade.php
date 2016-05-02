@@ -131,6 +131,7 @@ if(function_exists('is_single')){
                                                                 <div ng-switch="notice.Section">
                                                                     <div ng-switch-when="ideas-heart">Liked</div>
                                                                     <div ng-switch-when="product-heart">Liked</div>
+                                                                    <div ng-switch-when="giveaway-heart">Liked</div>
                                                                     <div ng-switch-default>Commented on</div>
                                                                 </div>
                                                                 <a ng-href="<?php echo '/{{ notice.ItemLink }}' ?>" ><?php echo '{{ notice.ItemTitle }}' ?></a> </div>
