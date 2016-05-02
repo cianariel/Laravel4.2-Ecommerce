@@ -43,7 +43,8 @@ Route::get('/contactus', 'PageController@contactUs');
 Route::get('/aboutus', 'PageController@aboutUs');
 Route::get('/privacy-policy', 'PageController@privacyPolicy');
 Route::get('/terms-of-use', 'PageController@termsOfUse');
-Route::get('giveaway', 'PageController@giveaway');
+Route::get('giveaway/{permalink?}', 'PageController@giveaway');
+//Route::get('giveaway-details/{permalink?}', 'PageController@giveaway');
 
 Route::group(['prefix' => 'api'], function () {
     /*

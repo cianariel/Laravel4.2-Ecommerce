@@ -19,27 +19,6 @@
         <div class="rsContent">
             <div id="hero-bg"  style="background-image: url({{$giveaway->giveaway_image}}); "></div>
             <div class="container fixed-sm full-480">
-
-                <div  id="publicApp" ng-app="publicApp" ng-controller="publicController" class="col-md-offset-1 col-md-4 col-xs-12 hero-box qiuck-signup pull-right" ng-cloak>
-                    <img id="hero-arrow" src="assets/images/home-arrow.png" alt="">
-                    <div>
-                        <strong ng-if="responseMessage.success" style="color: red">@{{ responseMessage.success }}</strong>
-                        <strong ng-if="responseMessage.error" style="color: red">@{{ responseMessage.error }}</strong>
-
-                    </div>
-                    <form id="giveaway-one">
-                        <span class="email-input-holder ">
-		                    <input class="form-control" ng-model="SubscriberEmail" type="text" placeholder="Email" name="email" value="{{@$userData['email']}}">
-		                </span>
-                        <span class="password-input-holder ">
-		                    <input class="form-control" ng-model="SubscriberPassword" type="text" placeholder="Password" name="password">
-                           <input ng-model="GiveAwayID" type="hidden" name="giveaway_id" value="{{$giveaway->id}}">
-		                </span>
-
-                        <button ng-click="enterGiveaway('giveaway-one')" class="btn btn-success col-xs-12"  href="#">Enter</button> 
-                        <div class="line-wrap">Not yet a member? Create an account!</div>
-                    </form>
-                </div>
             </div>
             <hgroup class="giveaway-banner">
                 <div class="container">
@@ -47,7 +26,7 @@
                         Monthly Giveaway
                     </h3>
                     <h4>
-                        {{$giveaway->giveaway_title}}
+                        {{$heading}}
                     </h4>
                 </div>
             </hgroup>

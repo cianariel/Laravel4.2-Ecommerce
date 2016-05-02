@@ -722,31 +722,34 @@ if($stories['featured']){
             ->with('userData', $userData);
     }
 
-    public function giveaway()
+    public function giveaway($permalink = false)
     {
-        MetaTag::set('title', 'Giveaway | Ideaing');
-//        MetaTag::set('description', $result['productInformation']['MetaDescription']);
 
         $userData = $this->authCheck;
         if ($this->authCheck['method-status'] == 'success-with-http') {
             $userData = $this->authCheck['user-data'];
         }
 
-        $giveaway = Giveaway::whereDate('ends', '>=', date('Y-m-d'))->whereDate('goes_live', '<=', date('Y-m-d'))->first();
+        if($permalink){
+            $giveaway = Giveaway::where('giveaway_permalink', $permalink)->first();
+            $heading = $giveaway->giveaway_title;
+        }else{
+            $giveaway = Giveaway::whereDate('ends', '>=', date('Y-m-d'))->whereDate('goes_live', '<=', date('Y-m-d'))->first();
+            $heading = 'Ideaing Giveaway';
+        }
+
         $ended = false;
 
         if(!$giveaway){
             $giveaway = Giveaway::whereDate('ends', '<=', date('Y-m-d'))->first();
             $ended = true;
         }
+
         $nextGiveaways = Giveaway::whereDate('goes_live', '>=', date('Y-m-d'))->get();
 
         if(!$giveaway){
             return \Redirect::to('not-found');
-
         }
-
-       // print_r($userData['id']); die();
 
         if(@$userData['id'] && DB::table('giveaway_users')->where(
             [
@@ -759,13 +762,64 @@ if($stories['featured']){
             $alreadyIn = false;
         }
        // dd($giveaway);
+        MetaTag::set('title', $heading);
+//        MetaTag::set('description', $result['productInformation']['MetaDescription']);
+
         return view('giveaway.giveaway')
             ->with('userData', $userData)
             ->with('nextGiveaways', $nextGiveaways)
             ->with('giveaway',$giveaway)
             ->with('ended', $ended)
             ->with('alreadyIn', $alreadyIn)
+            ->with('heading', $heading)
+            ;
+    }
 
+    public function giveawayDetails($permalink)
+    {
+        $userData = $this->authCheck;
+        if ($this->authCheck['method-status'] == 'success-with-http'){
+            $userData = $this->authCheck['user-data'];
+        }
+
+        $giveaway = Giveaway::whereDate('permalink', $permalink)->first();
+
+        if(!$giveaway){
+            return \Redirect::to('giveaway');
+        }
+
+        $heading = $giveaway->giveaway_title;
+
+        if(strtotime($giveaway->ends) < time()){
+            $ended = true;
+        }else{
+            $ended = false;
+        }
+
+        $nextGiveaways = Giveaway::whereDate('goes_live', '>=', date('Y-m-d'))->get();
+
+        if(@$userData['id'] && DB::table('giveaway_users')->where(
+            [
+                'user_id'     => $userData['id'],
+                'giveaway_id' => $giveaway->id,
+            ]
+        )->count()){
+            $alreadyIn = true;
+        }else{
+            $alreadyIn = false;
+        }
+       // dd($giveaway);
+
+        MetaTag::set('title', $heading);
+//        MetaTag::set('description', $result['productInformation']['MetaDescription']);
+
+        return view('giveaway.giveaway')
+            ->with('userData', $userData)
+            ->with('nextGiveaways', $nextGiveaways)
+            ->with('giveaway',$giveaway)
+            ->with('ended', $ended)
+            ->with('alreadyIn', $alreadyIn)
+            ->with('heading', $heading)
             ;
     }
     

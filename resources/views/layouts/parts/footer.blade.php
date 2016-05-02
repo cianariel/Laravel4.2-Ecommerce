@@ -20,13 +20,20 @@
                     $json = file_get_contents('http://ideaing.dev/api/giveaway/get-current');
                     $theGiveAway = json_decode($json);
             }
-            if($theGiveAway){
-                    echo '<a href="/giveaway">';
-                    echo '<img src="' . $theGiveAway->giveaway_image. '" title="'.$theGiveAway->giveaway_image_title.'" alt="'.$theGiveAway->giveaway_image_alt.'" />';
-                    echo '</a>';
-                    echo '<h6 class="white">' . $theGiveAway->giveaway_title . '</h6>';
-            }
+
+            if($theGiveAway){ ?>
+                <a href="/giveaway-details/<?php echo $theGiveAway->giveaway_permalink ?>">
+                    <img src="<?php echo $theGiveAway->giveaway_image ?>" title="<?php echo $theGiveAway->giveaway_image_title ?>" alt="<?php echo $theGiveAway->giveaway_image_alt ?>" />
+                </a>
+
+                <a href="/giveaway-details/" <?php echo $theGiveAway->giveaway_permalink ?>>
+                   <h6 class="white"> <?php echo $theGiveAway->giveaway_title ?></h6>
+                </a>
+
+            <?php
+                }
             ?>
+
 
         </div>
         <div class="col-sm-3 col-xs-12 social-connect">
