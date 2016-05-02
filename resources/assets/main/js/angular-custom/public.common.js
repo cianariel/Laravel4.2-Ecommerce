@@ -859,6 +859,8 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
         };
         // Subscribe a user through email and redirect to registration page.
         $scope.enterGiveaway = function (formID) {
+            var form = $('#' + formID);
+
             $http({
                 url: '/api/giveaway/enter', 
                 method: "POST",

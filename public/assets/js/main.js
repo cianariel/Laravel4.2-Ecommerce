@@ -4751,7 +4751,7 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
 
                 if (data.status_code == 406) {
 
-                    $scope.responseMessage = "Invalid Email !";
+                    $scope.responseMessage = "Invalid Email!";
                 }
 
                 else if (data.status_code == 200) {
@@ -4769,15 +4769,7 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
         };
         // Subscribe a user through email and redirect to registration page.
         $scope.enterGiveaway = function (formID) {
-            console.log(formID)
             var form = $('#' + formID);
-
-            console.log(form);   
-            
-            console.log(form.find('input[name="email"]').val());               
-
-
-            console.log(form.find('input[name="password"]').val());               
 
             $http({
                 url: '/api/giveaway/enter', 
@@ -4789,13 +4781,7 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                     //'SetCookie': 'true'
                 }
             }).success(function (data) {
-
-            //if (data.success) {
-                    $scope.responseMessage = data;
-                //} else {
-                //    $scope.responseMessage = data.error;
-                //}
-
+                $scope.responseMessage = data;
             });
 
         };
