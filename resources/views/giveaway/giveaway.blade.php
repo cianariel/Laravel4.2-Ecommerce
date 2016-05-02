@@ -32,7 +32,7 @@
             </hgroup>
         </div>
     </section>
-    <nav id="hero-nav" class="col-sm-12">
+    <nav id="hero-nav" class="col-sm-12" id="publicApp" ng-app="publicApp" ng-controller="publicController" ng-cloak>
         <div class="container">
             <ul class="share-buttons hidden-xs col-lg-7 col-md-8 pull-right">
 
