@@ -758,6 +758,7 @@ if($stories['featured']){
         }else{
             $alreadyIn = false;
         }
+       // dd($giveaway);
         return view('giveaway.giveaway')
             ->with('userData', $userData)
             ->with('nextGiveaways', $nextGiveaways)
