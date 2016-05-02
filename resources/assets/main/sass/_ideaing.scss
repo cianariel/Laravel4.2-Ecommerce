@@ -3803,9 +3803,9 @@ header.sub-head{
   a{
     padding: 0;
 
-    img{
-      width: 100%;
-    }
+    //img{
+    //  width: 100%;
+    //}
   }
 
   .col-xs-4{
@@ -3829,7 +3829,7 @@ header.sub-head{
     }
 
     img{
-      width: 100%;
+      //width: 100%;
       height: 217px;
       display: block;
     }
@@ -7210,11 +7210,11 @@ body.shop-landing{
         }
         
         &.wearables{
-            color: #78944d;
+            color: $pine-green;
         }
         
         &.home-decor{
-            color: #78944d;
+            color: $pine-green;
         }
 
         &.active{
@@ -7278,7 +7278,7 @@ body.shop-landing{
         }
         &.wearables{
             > div{
-                background: $wearables;
+                background: $pine-green;
             }
         }
         &.home-decor{

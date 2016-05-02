@@ -85,7 +85,6 @@
 	}
 }
 
-// Merchant widget
 .merchant-widget {
 
 	line-height: 20px;
@@ -93,7 +92,7 @@
 	&__price {
 		font-weight: bold;
 		display: inline-block;
-		background: #94942d;
+		background: $pine-green;
 		color: #fff;
 		padding: 0 5px;
 	}

@@ -4479,7 +4479,7 @@ a:hover, a:focus {
   color: #FF7F00 !important; }
 
 .green {
-  color: #C7C747 !important; }
+  color: #89C981 !important; }
 
 .blue {
   color: #00B1FF !important; }
@@ -4825,7 +4825,7 @@ a.like-counter {
 a.ideas-link {
   color: #FF7F00; }
 a.products-link {
-  color: #C7C747; }
+  color: #89C981; }
 a.photos-link {
   color: #00B1FF; }
 a.featured-badge {
@@ -5705,7 +5705,7 @@ main.page-content .card {
     padding: 10px 0;
     background: url("/assets/images/elements/grey-line.png") center repeat-x; }
     main.page-content .card li b {
-      color: #C7C747;
+      color: #89C981;
       font-weight: normal; }
     main.page-content .card li i {
       float: right;
@@ -5862,12 +5862,12 @@ main.page-content .card {
       .grid-box .img-wrap .get-it.big {
         top: 20px; }
         .grid-box .img-wrap .get-it.big div {
-          border-color: #C7C747; }
+          border-color: #89C981; }
           .grid-box .img-wrap .get-it.big div.circle-1 {
             width: 80px;
             height: 77px;
             padding: 30px 5px 5px 3px;
-            background: #C7C747;
+            background: #89C981;
             font-size: 1.1rem;
             border-radius: 50%;
             color: #fff; }
@@ -6009,7 +6009,7 @@ main.page-content .card {
       .grid-box.square .category-tag.idea {
         background: #FF7F00 url("/assets/images/icons/lamp-white-3.png") center 5px no-repeat; }
       .grid-box.square .category-tag.product {
-        background: #C7C747 url("/assets/images/icons/bag-white-3.png") center 5px no-repeat; }
+        background: #89C981 url("/assets/images/icons/bag-white-3.png") center 5px no-repeat; }
     .grid-box.square .like-wrap {
       width: 86px;
       background: rgba(255, 255, 255, 0.9);
@@ -6068,7 +6068,7 @@ main.page-content .card {
           color: #fff; }
           .grid-box.square .color-overlay ul.prices a b {
             display: inline-block;
-            background: #94942d;
+            background: #57b14c;
             color: #fff;
             padding-left: 3px; }
           .grid-box.square .color-overlay ul.prices a img {
@@ -6266,7 +6266,7 @@ article.product {
     margin-bottom: 0;
     text-align: center; }
   .sidebar-category.products h4 {
-    color: #C7C747; }
+    color: #89C981; }
   .sidebar-category.ideas h4 {
     color: #FF7F00; }
   .sidebar-category.photos h4 {
@@ -6300,7 +6300,7 @@ article.product {
     text-indent: 0;
     padding: 2px 10px;
     border-radius: 20px;
-    background: #C7C747;
+    background: #89C981;
     color: #fff; }
   .photos .sidebar-box a.number {
     background: #00B1FF; }
@@ -7197,8 +7197,6 @@ header.sub-head {
     font-weight: normal; }
   .shop-menu a {
     padding: 0; }
-    .shop-menu a img {
-      width: 100%; }
   .shop-menu .col-xs-4 span,
   .shop-menu .col-xs-4 a {
     position: absolute;
@@ -7213,7 +7211,6 @@ header.sub-head {
     text-transform: capitalize;
     font-size: 1.7rem; }
   .shop-menu .col-xs-4 img {
-    width: 100%;
     height: 217px;
     display: block; }
   .shop-menu .col-xs-2 img {
@@ -7496,13 +7493,13 @@ header.sub-head {
     #hero-nav a:not(.author).ideas-link:hover {
       color: #00B1FF; }
     #hero-nav a:not(.author).products-link:hover {
-      color: #C7C747; }
+      color: #89C981; }
     #hero-nav a:not(.author).photos-link:hover {
       color: #00B1FF; }
     #hero-nav a:not(.author).features-link:hover {
       color: #FF7F00; }
     #hero-nav a:not(.author).specs-link:hover {
-      color: #C7C747; }
+      color: #89C981; }
     #hero-nav a:not(.author).compare-link:hover {
       color: #9E009E; }
     #hero-nav a:not(.author).reviews-link:hover {
@@ -7532,7 +7529,7 @@ header.sub-head {
     color: #00B1FF;
     /*      background-image: url('/assets/images/lamp-orange.png');*/ }
   #hero-nav li.active a.products-link {
-    color: #C7C747; }
+    color: #89C981; }
   #hero-nav li.active a.photos-link {
     color: #00B1FF; }
   #hero-nav .main-content-filter {
@@ -8100,18 +8097,18 @@ body.homepage #hero .green span {
 html.idea-stories #hero .green h6,
 body.room-landing #hero .green h6,
 body.homepage #hero .green h6 {
-  background: #C7C747; }
+  background: #89C981; }
 html.idea-stories #hero .green img.round,
 body.room-landing #hero .green img.round,
 body.homepage #hero .green img.round {
-  border-color: #C7C747 !important;
-  -webkit-box-shadow: 0px 0px 62px 5px #C7C747;
-  -moz-box-shadow: 0px 0px 62px 5px #C7C747;
-  box-shadow: 0px 0px 62px 5px #C7C747; }
+  border-color: #89C981 !important;
+  -webkit-box-shadow: 0px 0px 62px 5px #89C981;
+  -moz-box-shadow: 0px 0px 62px 5px #89C981;
+  box-shadow: 0px 0px 62px 5px #89C981; }
 html.idea-stories #hero .green .hover-box::before,
 body.room-landing #hero .green .hover-box::before,
 body.homepage #hero .green .hover-box::before {
-  border-color: transparent transparent #C7C747 transparent; }
+  border-color: transparent transparent #89C981 transparent; }
 html.idea-stories #hero .pink span,
 body.room-landing #hero .pink span,
 body.homepage #hero .pink span {
@@ -8292,7 +8289,7 @@ body.homepage .grid-insert {
   border-color: #00B1FF; }
 
 .green-border img {
-  border-color: #C7C747; }
+  border-color: #89C981; }
 
 .yellow-border img {
   border-color: yellow; }
@@ -9364,9 +9361,9 @@ body.shop-landing .shop-by-category-item {
   body.shop-landing .shop-by-category-item.travel {
     color: #406e7f; }
   body.shop-landing .shop-by-category-item.wearables {
-    color: #78944d; }
+    color: #89C981; }
   body.shop-landing .shop-by-category-item.home-decor {
-    color: #78944d; }
+    color: #89C981; }
   body.shop-landing .shop-by-category-item.active .show-menus {
     display: none; }
   body.shop-landing .shop-by-category-item.active .hide-menus {
@@ -9401,7 +9398,7 @@ body.shop-landing .shop-by-category-submneu {
   body.shop-landing .shop-by-category-submneu.travel > div {
     background: #59bdd7; }
   body.shop-landing .shop-by-category-submneu.wearables > div {
-    background: #c6c646; }
+    background: #89C981; }
   body.shop-landing .shop-by-category-submneu.home-decor > div {
     background: #ffaa00; }
   @media (max-width: 991px) {
@@ -11055,7 +11052,7 @@ p {
     .round-tag--idea.deal {
       background-color: #FF7F00; }
   .round-tag--product {
-    background: #C7C747; }
+    background: #89C981; }
   .round-tag__label {
     font-size: 11px;
     display: inline-block;
@@ -11078,7 +11075,7 @@ p {
   .user-widget__name {
     display: inline-block;
     padding: 5px 5px 4px;
-    background: #C7C747;
+    background: #89C981;
     color: #fff;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     margin-top: 22px;
@@ -11091,7 +11088,7 @@ p {
   .merchant-widget__price {
     font-weight: bold;
     display: inline-block;
-    background: #94942d;
+    background: #89C981;
     color: #fff;
     padding: 0 5px; }
   .merchant-widget__store {
