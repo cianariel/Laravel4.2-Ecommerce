@@ -23,7 +23,9 @@
                 <div  id="publicApp" ng-app="publicApp" ng-controller="publicController" class="col-md-offset-1 col-md-4 col-xs-12 hero-box qiuck-signup pull-right" ng-cloak>
                     <img id="hero-arrow" src="assets/images/home-arrow.png" alt="">
                     <div>
-                        <strong style="color: red">@{{ responseMessage }}</strong>
+                        <strong ng-if="responseMessage.success" style="color: red">@{{ responseMessage.success }}</strong>
+                        <strong ng-if="responseMessage.error" style="color: red">@{{ responseMessage.error }}</strong>
+
                     </div>
                     <form id="giveaway-one">
                         <span class="email-input-holder ">
@@ -34,7 +36,7 @@
                            <input ng-model="GiveAwayID" type="hidden" name="giveaway_id" value="{{$giveaway->id}}">
 		                </span>
 
-                        <button ng-submit="enterGiveaway('giveaway-one')" class="btn btn-success col-xs-12"  href="#">Enter</button> 
+                        <button ng-click="enterGiveaway('giveaway-one')" class="btn btn-success col-xs-12"  href="#">Enter</button> 
                         <div class="line-wrap">Not yet a member? Create an account!</div>
                     </form>
                 </div>
@@ -90,7 +92,7 @@
 	                                   </div>
 		                                <input id="user-email" ng-model="SubscriberEmail" type="hidden" name="email" value="{{@$userData['email']}}">
 		                                <input id="giveaway_id" ng-model="GiveAwayID" type="hidden" name="giveaway_id" value="{{$giveaway->id}}">
-		                                <button style="margin-top: 30px;" ng-submit="enterGiveaway('giveaway-two')" class="btn btn-success col-xs-12"  href="#">Enter Giveaway</button>
+		                                <button style="margin-top: 30px;" ng-click="enterGiveaway('giveaway-two')" class="btn btn-success col-xs-12"  href="#">Enter Giveaway</button>
 	                               </form>
 
 	                                <div ng-if="responseMessage.success">

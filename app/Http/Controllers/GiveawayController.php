@@ -23,6 +23,7 @@
 
 
 
+
     class GiveawayController extends ApiController {
 
           public function __construct()
@@ -70,8 +71,8 @@
                     }
 
                   if(!$loggedIn){
-                    $authController = new AuthenticateController;
-                   $authMe = $authController->authenticate($request);
+                        $authController = new AuthenticateController;
+                        $authMe = $authController->authenticate($request);
                   }
 
                 } catch (Exception $ex)
