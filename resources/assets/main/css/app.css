@@ -8514,9 +8514,6 @@ footer.about-footer {
       padding: 8px 12px;
       /*        padding-right: 30px !important;*/ }
 
-  body:not(.single-post) #about-button {
-    display: none; }
-
   header.colophon .logo-wrap {
     position: static; }
 
