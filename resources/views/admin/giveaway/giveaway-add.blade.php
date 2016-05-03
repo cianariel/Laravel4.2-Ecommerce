@@ -1,9 +1,9 @@
 @extends('layouts.admin')
 @section('pagelevelstyle')
 <link href="/assets/admin/vendor/global/plugins/bootstrap-fileinput/bootstrap-fileinput.css" rel="stylesheet" type="text/css" />
-<link href="/assets/admin/vendor/global/plugins/select2/css/select2.min.css" rel="stylesheet" type="text/css" />
-<link href="/assets/admin/vendor/global/plugins/select2/css/select2-bootstrap.min.css" rel="stylesheet" type="text/css" />
-<link href="/assets/admin/vendor/global/plugins/bootstrap-wysihtml5/bootstrap-wysihtml5.css" rel="stylesheet" type="text/css" />
+{{--<link href="/assets/admin/vendor/global/plugins/select2/css/select2.min.css" rel="stylesheet" type="text/css" />--}}
+{{--<link href="/assets/admin/vendor/global/plugins/select2/css/select2-bootstrap.min.css" rel="stylesheet" type="text/css" />--}}
+{{--<link href="/assets/admin/vendor/global/plugins/bootstrap-wysihtml5/bootstrap-wysihtml5.css" rel="stylesheet" type="text/css" />--}}
 @stop
 @section('content')
 
@@ -52,8 +52,16 @@
                                     Add Giveaway
                                     @endif</div>
                                 <div class="actions btn-set">
-                                    <button  class="btn btn-success">
-                                        <i class="fa fa-check"></i> Save</button>
+                                    <button  class="btn btn-success"><i class="fa fa-check"></i> Save</button>
+                                    <button data-ng-click="deleteGiveaway(giveaway.id, true)"
+                                            confirm="Are you sure to delete this giveaway ?"
+                                            confirm-settings="{size: 'sm'}"
+                                            uib-tooltip="Delete"
+                                            class="btn btn-sm btn-danger btn-editable"
+                                            type="button">
+                                        <i class="fa fa-times"></i>
+                                        Delete
+                                    </button>
                                 </div>
                             </div>
                             <div class="portlet-body form"  id="tag-giveaway">
@@ -196,11 +204,11 @@
 
 @stop
 @section('pagelevelscript')
-<script src="/assets/admin/vendor/global/plugins/bootstrap-fileinput/bootstrap-fileinput.js" type="text/javascript"></script>
-<script src="/assets/admin/vendor/global/plugins/select2/js/select2.full.min.js" type="text/javascript"></script>
-<script src="/assets/admin/vendor/pages/scripts/components-select2.js" type="text/javascript"></script>
-<script src="/assets/admin/vendor/pages/scripts/components-editors.js" type="text/javascript"></script>
-<script src="/assets/admin/vendor/pages/scripts/components-editors.js" type="text/javascript"></script>
+{{--<script src="/assets/admin/vendor/global/plugins/bootstrap-fileinput/bootstrap-fileinput.js" type="text/javascript"></script>--}}
+{{--<script src="/assets/admin/vendor/global/plugins/select2/js/select2.full.min.js" type="text/javascript"></script>--}}
+{{--<script src="/assets/admin/vendor/pages/scripts/components-select2.js" type="text/javascript"></script>--}}
+{{--<script src="/assets/admin/vendor/pages/scripts/components-editors.js" type="text/javascript"></script>--}}
+{{--<script src="/assets/admin/vendor/pages/scripts/components-editors.js" type="text/javascript"></script>--}}
 <script src="/assets/js/admin.js"></script>
 <script>
 $(function() {

@@ -287,16 +287,17 @@
         //Giveaway View
         public function giveawayView()
         {
-            if ($this->authCheck['method-status'] == 'success-with-http')
-            {
+//            if ($this->authCheck['method-status'] == 'success-with-http')
+//            {
                 $giveaways = Giveaway::all();
                 return \View::make('admin.giveaway.giveaways-list', ['giveaways' => $giveaways])->with('userData' , $this->authCheck);
 
-            } elseif ($this->authCheck['method-status'] == 'fail-with-http')
-            {
-                return \Redirect::to('login');
-            }
+//            } elseif ($this->authCheck['method-status'] == 'fail-with-http')
+//            {
+//                return \Redirect::to('login');
+//            }
         }
+
         public function addGiveaway()
         {
             if ($this->authCheck['method-status'] == 'success-with-http')
@@ -312,8 +313,8 @@
         }
         public function editGiveaway($id)
         {
-            if ($this->authCheck['method-status'] == 'success-with-http')
-            {
+//            if ($this->authCheck['method-status'] == 'success-with-http')
+//            {
                 $giveaway = Giveaway::find($id);
                 $giveawayuserIDs = DB::table('giveaway_users')->where('giveaway_id', $id)->lists('user_id');;
                 $giveawayusers = User::whereIn('id', array_unique($giveawayuserIDs))->lists('name', 'id');
@@ -323,10 +324,10 @@
                     ->with('giveawayUsers',$giveawayusers)
                     ->with('userData' , $this->authCheck);
 
-            } elseif ($this->authCheck['method-status'] == 'fail-with-http')
-            {
-                return \Redirect::to('login');
-
-            }
+//            } elseif ($this->authCheck['method-status'] == 'fail-with-http')
+//            {
+//                return \Redirect::to('login');
+//
+//            }
         }
     }
