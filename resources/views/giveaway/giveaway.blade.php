@@ -83,7 +83,7 @@
 	                                   </div>
 		                                <input id="user-email" ng-model="SubscriberEmail" type="hidden" name="email" value="{{@$userData['email']}}">
 		                                <input id="giveaway_id" ng-model="GiveAwayID" type="hidden" name="giveaway_id" value="{{$giveaway->id}}">
-		                                <button style="margin-top: 30px;" ng-click="enterGiveaway('giveaway-two')" class="btn btn-success col-xs-12"  href="#">Enter Giveaway</button>
+		                                <button style="margin-top: 30px;" ng-click="enterGiveaway('giveaway-two',  {{@$userData['login'] ? 'true' : 'false'}})" class="btn btn-success col-xs-12"  href="#">Enter Giveaway</button>
 	                               </form>
 
 	                                <div ng-if="responseMessage.success">
@@ -111,7 +111,7 @@
 			                                <input class="form-control" ng-model="SubscriberPassword" type="text" placeholder="Password" name="password">
 			                                 <input id="giveaway_id" ng-model="GiveAwayID" type="hidden" name="giveaway_id" value="{{$giveaway->id}}">
 			                            </span>
-	                                   <button ng-click="enterGiveaway('giveaway-two')" class="btn btn-success col-xs-12"  href="#">Enter Giveaway</button>
+	                                   <button ng-click="enterGiveaway('giveaway-two', {{@$userData['login'] ? 'true' : 'false'}})" class="btn btn-success col-xs-12"  href="#">Enter Giveaway</button>
 		                            </form>
 
 	                                <div ng-if="responseMessage.success">

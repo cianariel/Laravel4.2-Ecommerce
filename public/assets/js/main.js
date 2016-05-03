@@ -4768,7 +4768,7 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
 
         };
         // Subscribe a user through email and redirect to registration page.
-        $scope.enterGiveaway = function (formID) {
+        $scope.enterGiveaway = function (formID, redirect) {
             var form = $('#' + formID);
 
             $http({
@@ -4781,7 +4781,11 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                     //'SetCookie': 'true'
                 }
             }).success(function (data) {
-                $scope.responseMessage = data;
+                if(redirect){
+                    window.location.href = '/giveaway'
+                }else{
+                    $scope.responseMessage = data;
+                }
             });
 
         };
