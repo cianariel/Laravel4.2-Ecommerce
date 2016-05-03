@@ -33,6 +33,21 @@
                 $this->authCheck = $this->RequestAuthentication(array('admin', 'editor', 'user'));
             }
 
+        //Giveaway List for API
+        public function getGiveawayList()
+        {
+//            if ($this->authCheck['method-status'] == 'success-with-http')
+//            {
+            $giveaways = Giveaway::all();
+
+            return json_encode($giveaways);
+
+//            } elseif ($this->authCheck['method-status'] == 'fail-with-http')
+//            {
+//                return \Redirect::to('login');
+//            }
+        }
+
         public function enterUser(Request $request)
         {
             
@@ -65,9 +80,9 @@
                                 'giveaway_id' => $inputData['giveaway_id'],
                             ]
                         );
-                        return ['success' => 'Congratulations, you have entered!'];
+                        $return = ['success' => 'Congratulations, you have entered!'];
                     }else{
-                        return ['error' => 'You have already entered this Giveaway'];
+                        $return = ['error' => 'You have already entered this Giveaway'];
                     }
 
                   if(!$loggedIn){
@@ -81,7 +96,7 @@
                         ->makeResponseWithError("System Failure !", $ex);
                 }
 
-
+                return $return;
 
             }else{
                     return ['error' => 'Incorrect email or password'];
@@ -213,14 +228,15 @@
         public function deleteGiveaway()
         {
             $id = \Input::get('GiveawayId');
-            $Giveaway = $this->giveaway->find($id);
+            $Giveaway = Giveaway::find($id);
             if ($Giveaway == null)
                 return $this->setStatusCode(\Config::get("const.api-status.system-fail"))
                     ->makeResponseWithError("No data available !");
-            $this->giveaway->find($id)->delete();
+            $Giveaway->delete();
             return $this->setStatusCode(\Config::get("const.api-status.success"))
                 ->makeResponse("Data deleted Successfully");
         }
+
         public function getCurrentGiveaway()
         {
             return json_encode(PageHelper::getCurrentGiveaway());

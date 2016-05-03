@@ -399,6 +399,8 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
 
             $scope.IsBlogUser = false;
 
+            $scope.GiveawayList = {};
+
         };
 
         // User management //
@@ -1605,6 +1607,82 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
 
             });
         };
+
+        //delete a product
+        $scope.deleteGiveaway = function (id, redirect) {
+            //console.log(redirect);
+
+            $http({
+                url: '/api/giveaway/delete-giveaway',
+                method: 'POST',
+                data: {'GiveawayId': id}
+            }).success(function (data) {
+                $scope.outputStatus(data, "Giveaway deleted!");
+
+                if (redirect == true)
+                    $window.location = '/admin/giveaway-view';
+                else
+                    $scope.showAllGiveaways();
+            });
+
+        };
+
+        //$(function() {
+        //    $('.btn_delete_giveaway').click(function(){
+        //        var post={};
+        //        post.GiveawayId = $(this).data("giveawayid");
+        //        $.ajax({
+        //            type : 'POST',
+        //            url : '/api/giveaway/delete-giveaway',
+        //            data : post,
+        //            success : function(x) {
+        //                alert('Giveaway Deleted');
+        //
+        //            }
+        //
+        //            ,
+        //            error : function(r) { alert('errror'); }
+        //        });
+        //    });
+        //});
+
+        // view product list
+        $scope.showAllGiveaways = function () {
+
+            $http({
+                url: '/api/giveaway/get-giveaway-list',
+                method: 'POST',
+                data: {
+                    Title: $scope.selectedItem,
+                    id: $scope.ActiveItem,
+                    //FilterType: $scope.selectedFilter,
+                    //FilterText: $scope.filterName,
+                    //ShowFor: $scope.ShowFor,
+                    //WithTags: $scope.WithTags,
+
+                    //// Pagination info
+                    //limit: $scope.limit,
+                    //page: $scope.page,
+                    //total: $scope.total,
+                }
+
+            }).success(function (data) {
+
+                //if (data.status_code == 200) {
+                    $scope.GiveawayList = data;
+
+                    //$scope.limit = data.data.limit;
+                    //$scope.page = data.data.page;
+                    //$scope.total = data.data.total;
+
+                //} else {
+                //    $scope.outputStatus(data, "Failed to Load");
+                //}
+
+            });
+
+        };
+
 
         // Initialize variables and functions Globally.
         $scope.initPage();

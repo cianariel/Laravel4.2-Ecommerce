@@ -198,6 +198,7 @@ Route::group(['prefix' => 'api'], function () {
     Route::post('homehero/delete-home-hero', 'RoomController@deleteHomeHero');
 
     Route::post('giveaway/add-giveaway', 'GiveawayController@addGiveaway');
+    Route::post('giveaway/get-giveaway-list', 'GiveawayController@getGiveawayList');
     Route::post('giveaway/update-giveaway', 'GiveawayController@updateGiveaway');
     Route::post('giveaway/delete-giveaway', 'GiveawayController@deleteGiveaway');
 
