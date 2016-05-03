@@ -5220,6 +5220,23 @@ body.homepage{
 
 }
 
+body.room-landing{
+  #hero{
+    overflow: visible;
+  }
+  .heroSlider{
+    z-index: 10;
+    overflow: visible;
+
+    .rsMainSlideImage{
+      max-height: 100%;
+      margin-top: 0 !important;
+    }
+  }
+
+}
+
+
 .not-availiable{
   font-size: 2rem;
 }
