@@ -351,7 +351,7 @@
                         <h3 class="green">Specifications</h3>
 
                         @if(isset($productInformation['Specifications']))
-                            <div class="col-lg-6 text-center">
+                            <div class="col-lg-6 text-center center-block nofloat">
                                 <table class="table col-sm-3">
 
                                     <tbody>
