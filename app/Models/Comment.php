@@ -245,9 +245,6 @@ class Comment extends Model
                     }
                 };
 
-           // dd($item['id'],$tmpCollection['UpdateTime']);
-
-
             $activityCollection->push($tmpCollection);
 
         }
@@ -285,6 +282,40 @@ class Comment extends Model
 
             $activityCollection->push($tmpCollection);
         }
+
+        // give away
+        $heartGiveawayCollection = Heart::where('user_id', $userId)->where('heartable_type', 'App\Models\Giveaway');
+
+        if ($count == null) {
+            $heartGiveawayCollection = $heartGiveawayCollection->orderBy('created_at', 'desc')->get(['heartable_id', 'updated_at']);
+        } else {
+            $heartGiveawayCollection = $heartGiveawayCollection->orderBy('created_at', 'desc')->limit($count)->get(['heartable_id', 'updated_at']);
+        }
+        // dd($heartIdeasCollection);
+
+        $heartIdCollection = $heartGiveawayCollection->map(function ($item) {
+            return $item->heartable_id;
+        });
+
+        $giveawayInfoOfHeart = Giveaway::whereIn('id', $heartIdCollection)->get();
+
+        foreach ($giveawayInfoOfHeart as $item) {
+            $tmpCollection = new Collection();
+
+            $tmpCollection['Id'] = $item['id'];
+            $tmpCollection['Title'] = $item['giveaway_title'];
+            $tmpCollection['Link'] = '/giveaway';//$item['guid'];
+            $tmpCollection['Image'] = '';//$item['image_link'];
+            $tmpCollection['UpdateTime'] = $heartGiveawayCollection->where('heartable_id', $item['id'])->first()->updated_at;
+            $tmpCollection['Section'] = 'giveaway';
+            $tmpCollection['Type'] = 'heart';
+
+            $activityCollection->push($tmpCollection);
+        }
+        //
+
+
+
 
         $comments = Comment::where('user_id', $userId)->whereNotNull('section');
 

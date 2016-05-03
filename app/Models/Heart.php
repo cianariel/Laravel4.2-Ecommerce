@@ -221,7 +221,15 @@ class Heart extends Model
             $item = Heart::where('heartable_id', $info['ItemId'])
                          ->where('heartable_type','App\Models\WpPost')
                          ->count();
+        }elseif ($info['Section'] == 'giveaway') {
+
+            $item = Heart::where('heartable_id', $info['ItemId'])
+                         ->where('heartable_type','App\Models\Giveaway')
+                         ->count();
         }
+
+
+
         return $item;
 
     }
