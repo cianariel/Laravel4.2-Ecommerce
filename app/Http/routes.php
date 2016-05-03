@@ -236,6 +236,7 @@ Route::group(['prefix' => 'api'], function () {
 
 // Admin Route
 Route::group(['prefix' => 'admin'], function () {
+    Route::get('dashboard', 'AdminController@index');
     Route::get('/', 'AdminController@index');
 
     // Category view
