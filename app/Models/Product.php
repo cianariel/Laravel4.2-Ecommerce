@@ -171,7 +171,8 @@ class Product extends Model
                 "specifications" => json_encode($product['Specifications']),
                 "price" => $product['Price'],
                 "sale_price" => $product['SalePrice'],
-                "store_id" => $product['StoreId'],
+              //  "store_id" => $product['StoreId'],
+                "store_id" => ($product['StoreId'] != null) ? $product['StoreId'] : env('DEFAULT_STORE_ID','1'),
                 "affiliate_link" => $product['AffiliateLink'],
                 "price_grabber_master_id" => $product['PriceGrabberId'],
                 "review" => json_encode($product['Review']),
@@ -190,6 +191,9 @@ class Product extends Model
 
             Product::where('id', '=', $productId)->update($data);
 
+            // delete empty product which is not containing a store id or category id ( for security check from backend)
+            $this->deleteEmptyProduct();
+
             $data = Product::where('id', $productId)->first();
 
             return $data;
@@ -197,6 +201,16 @@ class Product extends Model
         } catch (Exception $ex) {
             return $ex;
         }
+    }
+
+    public function deleteEmptyProduct()
+    {
+        $data = Product::where('product_category_id',null)
+            ->orWhere('store_id',null);
+
+       // $val = $data->get();
+
+        $data->delete();
     }
 
     public function getSingleProductInfoForView($productId)
