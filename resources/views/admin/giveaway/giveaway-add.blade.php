@@ -190,11 +190,11 @@
                     </form>
                     @if(isset($giveawayUsers))
                         <h3>Participants:</h3>
-                        <ul>
+                        <ol>
                         @foreach($giveawayUsers as $user)
-                               <b>{{$user}}</b>
+                               <li><b>{{$user}}</b></li>
                         @endforeach
-                        </ul>
+                        </ol>
                     @endif
                 </div>
             </div>
