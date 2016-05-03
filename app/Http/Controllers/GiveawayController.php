@@ -86,13 +86,18 @@
                         if(!$loggedIn){
                              $authController->authenticate($request);
                         }
-                        return ['success' => 'Congratulations, you have entered!'];
+                        return Redirect::to('/giveaway/'.@Giveaway::find($inputData['giveaway_id'])->permalink);
+
+//                        return ['success' => 'Congratulations, you have entered!'];
                     }else{
 
                         if(!$loggedIn){
                              $authController->authenticate($request);
+
+                            return Redirect::to('/giveaway/'.@Giveaway::find($inputData['giveaway_id'])->permalink);
+
                         }
-                        return ['error' => 'You have already entered this Giveaway'];
+//                        return ['error' => 'You have already entered this Giveaway'];
                     }
 
                 } catch (Exception $ex)
