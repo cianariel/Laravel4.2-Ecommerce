@@ -53,7 +53,7 @@
                                     @endif</div>
                                 <div class="actions btn-set">
                                     <button  class="btn btn-success"><i class="fa fa-check"></i> Save</button>
-                                    <button data-ng-click="deleteGiveaway(giveaway.id, true)"
+                                    <button data-ng-click="deleteGiveaway({{$giveaway->id}}, true)"
                                             confirm="Are you sure to delete this giveaway ?"
                                             confirm-settings="{size: 'sm'}"
                                             uib-tooltip="Delete"
