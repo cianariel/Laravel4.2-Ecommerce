@@ -4527,6 +4527,9 @@ a:hover, a:focus {
 .full-wide {
   width: 100%; }
 
+.nofloat {
+  float: none !important; }
+
 [data-toggle],
 [data-switch] {
   cursor: pointer; }
