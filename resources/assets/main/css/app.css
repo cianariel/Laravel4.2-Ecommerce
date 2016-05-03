@@ -9170,6 +9170,8 @@ footer.about-footer {
   padding: 4px 11px;
   border-radius: 20px; }
 
+.room-landing .hero-tags {
+  z-index: 10; }
 .room-landing .rsContent {
   overflow: visible; }
 .room-landing .modal-dialog {
