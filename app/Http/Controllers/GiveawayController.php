@@ -68,6 +68,8 @@
             if($validUser){
                 try
                 {
+                    $authController = new AuthenticateController();
+
                     if(! DB::table('giveaway_users')->where(
                         [
                             'user_id' => $validUser->id,
@@ -80,15 +82,18 @@
                                 'giveaway_id' => $inputData['giveaway_id'],
                             ]
                         );
-                        $return = ['success' => 'Congratulations, you have entered!'];
-                    }else{
-                        $return = ['error' => 'You have already entered this Giveaway'];
-                    }
 
-                  if(!$loggedIn){
-                        $authController = new AuthenticateController;
-                        $authMe = $authController->authenticate($request);
-                  }
+                        if(!$loggedIn){
+                             $authController->authenticate($request);
+                        }
+                        return ['success' => 'Congratulations, you have entered!'];
+                    }else{
+
+                        if(!$loggedIn){
+                             $authController->authenticate($request);
+                        }
+                        return ['error' => 'You have already entered this Giveaway'];
+                    }
 
                 } catch (Exception $ex)
                 {
@@ -96,7 +101,7 @@
                         ->makeResponseWithError("System Failure !", $ex);
                 }
 
-                return $return;
+
 
             }else{
                     return ['error' => 'Incorrect email or password'];
@@ -236,7 +241,6 @@
             return $this->setStatusCode(\Config::get("const.api-status.success"))
                 ->makeResponse("Data deleted Successfully");
         }
-
         public function getCurrentGiveaway()
         {
             return json_encode(PageHelper::getCurrentGiveaway());
