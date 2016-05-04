@@ -38,3 +38,13 @@
     background-color: #ddd;
     padding: 1px 3px;
 }
+.jHtmlArea{
+    border: 1px solid #777;
+    overflow: hidden;
+    min-height: 300px;
+}
+
+.jHtmlArea iframe{
+    height: 100%;
+    min-height: 300px;
+}
