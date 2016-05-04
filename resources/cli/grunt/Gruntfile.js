@@ -51,7 +51,7 @@ module.exports = function(grunt) {
                     '../../assets/admin/js/vendor/metisMenu.min.js',
                     '../../assets/admin/js/vendor/ng-rateit.min.js',
                     '../../assets/admin/js/vendor/ng-rateit.min.js',
-                    '../../assets/admin/js/vendor/bootstrap-datepicker.min.js',
+
                 ],
                 dest: '../../../public/assets/js/admin.js'
             },
@@ -133,6 +133,7 @@ module.exports = function(grunt) {
     });
 
     grunt.loadNpmTasks('grunt-contrib-uglify');
+    grunt.loadNpmTasks('grunt-contrib-sass');
     //grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-concat');
@@ -144,6 +145,8 @@ module.exports = function(grunt) {
     grunt.registerTask('default', ['sass', 'concat', 'uglify', 'cssmin']);
     grunt.registerTask('js', ['concat:main', 'concat:admin', 'uglify:all']);
     grunt.registerTask('css', ['sass', 'concat:maincss','concat:admincss','cssmin']);
+    grunt.registerTask('admincss', ['concat:admincss','cssmin']);
+
 
 
 };
