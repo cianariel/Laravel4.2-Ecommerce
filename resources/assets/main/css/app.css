@@ -10865,9 +10865,14 @@ body.giveaway-page .giveaway-banner {
     background-position: 0px -110px; }
   body.giveaway-page .giveaway-banner h4 {
     padding-left: 5%;
-    padding-top: 25px;
+    padding-top: 15px;
     text-transform: uppercase;
     font-size: 3rem; }
+body.giveaway-page .morecontent span {
+  display: none; }
+body.giveaway-page .morelink {
+  display: block;
+  color: #FF0042; }
 body.giveaway-page .sign-in {
   border: 2px solid #eee;
   text-align: center;

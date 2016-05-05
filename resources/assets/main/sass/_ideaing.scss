@@ -9364,7 +9364,7 @@ body.giveaway-page{
     }
     h4{
       padding-left: 5%;
-      padding-top: 25px;
+      padding-top: 15px;
       text-transform: uppercase;
 
       //@media (max-width:420px) {
@@ -9372,6 +9372,14 @@ body.giveaway-page{
       //}
     }
 
+  }
+
+  .morecontent span {
+    display: none;
+  }
+  .morelink {
+    display: block;
+    color: $iridium;
   }
 
   .sign-in{
