@@ -2802,7 +2802,10 @@ header.colophon{
         top: 115px;
     }
   .idea-list,
-  .category-list{
+  .cat-list{
+    li{
+      overflow: hidden;
+    }
     a{
       color: #fff;
     }
