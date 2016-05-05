@@ -182,6 +182,11 @@ if(function_exists('is_single')){
 
         <?php
         if(function_exists('is_single')){
+            $args = array(
+                'numberposts' => 5,
+            );
+
+            $topMenuContent = wp_get_recent_posts( $args, ARRAY_A );
         }else{
             $topMenuContent = PageHelper::getTopMenuItems();
         }
@@ -196,7 +201,17 @@ if(function_exists('is_single')){
                         <i class="m-icon--footer-up-arrow up"></i>
                     </a>
                     <ul class="idea-list">
-                    
+                        <?php
+                            foreach($topMenuContent as $story){
+
+                        if($story->url){  ?>
+                               <li><a href="<?php echo $story->url ?>"><?php echo $story->title ?> </a></li>
+                        <?php    }else{ ?>
+                            <li><a href="/ideas/<?php echo $story['post_name'] ?>"><?php echo $story['post_title'] ?> </a></li>
+
+                        <?php }
+                            }
+                        ?>
                     </ul>
                 </li>
                 <li class="nested-parent">
