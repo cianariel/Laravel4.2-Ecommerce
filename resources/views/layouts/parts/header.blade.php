@@ -196,11 +196,7 @@ if(function_exists('is_single')){
                         <i class="m-icon--footer-up-arrow up"></i>
                     </a>
                     <ul class="idea-list">
-                        @foreach($topMenuContent as $story)
-                            <li>
-                                <a href="/ideas/{{$story->url}}">{{$story->title}}</a>
-                            </li>
-                        @endforeach
+                    
                     </ul>
                 </li>
                 <li class="nested-parent">
