@@ -24,7 +24,7 @@ if(function_exists('is_single')){
 <!--                                            <i class="m-icon--footer-up-arrow down"></i>-->
                                         </a>
                                     </li>
-                                        <li>
+                                        <li class="nested">
                                             <a class="ideas" href="/ideas">
                                             <i class="hidden-xs m-icon m-icon--bulb"></i>
                                                 <span class="m-icon-text">Ideas</span>
@@ -182,8 +182,36 @@ if(function_exists('is_single')){
 
         <div id="mobile-top-menu" class="mobile-top-menu" >
             <ul>
-                <li><a class="ideas" href="/ideas"><i class="m-icon m-icon--bulb"></i>&nbsp; IDEAS</a></li>
-                <li><a class="shop" href="/shop"><i class="m-icon m-icon--item"></i>&nbsp; SHOP</a></li>
+                <li class="nested nested-parent">
+                    <a class="ideas" href="/ideas"><i class="m-icon m-icon--bulb"></i>&nbsp; IDEAS</a>
+                    <a class="ideas" href="/ideas" data-switch=".idea-list" href="#">
+                        <i class="m-icon--Header-Dropdown down"></i>
+                        <i class="m-icon--footer-up-arrow up"></i>
+                    </a>
+                    <ul class="idea-list">
+                        <li>
+                            <a href="#">Idea 1</a>
+                        </li>
+                        <li>
+                            <a href="#">Idea 2</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nested-parent">
+                    <a class="shop" href="/shop"><i class="m-icon m-icon--item"></i>&nbsp; SHOP</a>
+                    <a class="shop" href="/shop" data-toggle=".cat-list" href="#">
+                        <i class="m-icon--Header-Dropdown down"></i>
+                        <i class="m-icon--footer-up-arrow up"></i>
+                    </a>
+                    <ul class="cat-list">
+                        <li>
+                            <a href="#">Cat 1</a>
+                        </li>
+                        <li>
+                            <a href="#">Cat 2</a>
+                        </li>
+                    </ul>
+                </li>
             </ul>
         </div>
 

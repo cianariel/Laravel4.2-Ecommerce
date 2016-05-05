@@ -3618,11 +3618,16 @@ angular.module('colorpicker.module', [])
             //if($hide){
             $($hide).fadeOut(
                 function(){
-                    $that.siblings().removeClass('active');
                     $($show).fadeIn();
-                    $that.addClass('active');
                 }
             );
+
+            if(!$that.hasClass('active')){
+                $that.addClass('active');
+                $that.siblings().removeClass('active');
+            }else{
+                $that.removeClass('active');
+            }
 
             //}else{
             //    $($show).fadeToggle();
