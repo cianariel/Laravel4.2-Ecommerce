@@ -182,11 +182,6 @@ if(function_exists('is_single')){
 
         <?php
         if(function_exists('is_single')){
-            $args = array(
-                'numberposts' => 5,
-            );
-
-            $topMenuContent = wp_get_recent_posts( $args, ARRAY_A );
         }else{
             $topMenuContent = PageHelper::getTopMenuItems();
         }
