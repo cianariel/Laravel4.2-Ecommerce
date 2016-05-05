@@ -10866,10 +10866,8 @@ body.giveaway-page .giveaway-banner {
   body.giveaway-page .giveaway-banner h4 {
     padding-left: 5%;
     padding-top: 25px;
-    text-transform: uppercase; }
-    @media (max-width: 420px) {
-      body.giveaway-page .giveaway-banner h4 {
-        font-size: 3rem; } }
+    text-transform: uppercase;
+    font-size: 3rem; }
 body.giveaway-page .sign-in {
   border: 2px solid #eee;
   text-align: center;
