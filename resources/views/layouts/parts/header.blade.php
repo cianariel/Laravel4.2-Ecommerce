@@ -180,6 +180,18 @@ if(function_exists('is_single')){
              include('/var/www/ideaing/resources/views/layouts/parts/shop-submenu.blade.php')
         ?>
 
+        <?php
+        if(function_exists('is_single')){
+            $args = array(
+                'numberposts' => 5,
+            );
+
+            $topMenuContent = wp_get_recent_posts( $args, ARRAY_A );
+        }else{
+            $topMenuContent = PageHelper::getTopMenuItems();
+        }
+        ?>
+
         <div id="mobile-top-menu" class="mobile-top-menu" >
             <ul>
                 <li class="nested nested-parent">
@@ -189,12 +201,11 @@ if(function_exists('is_single')){
                         <i class="m-icon--footer-up-arrow up"></i>
                     </a>
                     <ul class="idea-list">
-                        <li>
-                            <a href="#">Idea 1</a>
-                        </li>
-                        <li>
-                            <a href="#">Idea 2</a>
-                        </li>
+                        @foreach($topMenuContent as $story)
+                            <li>
+                                <a href="/ideas/{{$story->url}}">{{$story->title}}</a>
+                            </li>
+                        @endforeach
                     </ul>
                 </li>
                 <li class="nested-parent">
@@ -204,12 +215,18 @@ if(function_exists('is_single')){
                         <i class="m-icon--footer-up-arrow up"></i>
                     </a>
                     <ul class="cat-list">
-                        <li>
-                            <a href="#">Cat 1</a>
-                        </li>
-                        <li>
-                            <a href="#">Cat 2</a>
-                        </li>
+                            <li>
+                                <a href="/shop/smart-home">Smart Home</a>
+                            </li>
+                            <li>
+                                <a href="/shop/travel">Travel</a>
+                            </li>
+                            <li>
+                                <a href="/shop/wearables">Wearables</a>
+                            </li>
+                            <li>
+                                <a href="/shop/home-decor">Home & Decor</a>
+                            </li>
                     </ul>
                 </li>
             </ul>
