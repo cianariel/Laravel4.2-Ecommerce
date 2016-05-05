@@ -544,23 +544,38 @@ a{ // Custom Link Styles
 
 }
 
-li.nested{
-  
-  /*a.active::after{
-    background-image: url("/assets/images/arrow-up-black.png");
+li.nested-parent{
+
+  //a.active::after{
+  //  background-image: url("/assets/images/arrow-up-black.png");
+  //}
+  //a::after{
+  //  display: inline-block;
+  //  content: '	';
+  //  width: 25px;
+  //  height: 13px;
+  //  position: relative;
+  //  top: 2px;
+  //  background: url("/assets/images/arrow-down-pink.png") no-repeat;
+  //  background-size: contain;
+  //  color: $iridium;
+  //  margin-right: -19px;
+  //}
+  a{
+    float: left;
+
+    &[data-toggle],
+    &[data-switch],{
+      float: left;
+      margin-left: 7px;
+      margin-top: 2px;
+    }
   }
-  a::after{
-    display: inline-block;
-    content: '	';
-    width: 25px;
-    height: 13px;
-    position: relative;
-    top: 2px;
-    background: url("/assets/images/arrow-down-pink.png") no-repeat;
-    background-size: contain;
-    color: $iridium;
-    margin-right: -19px;
-  }*/
+  ul{
+    display: none;
+    overflow: hidden;
+    clear: both;
+  }
 
 }
 
@@ -2786,6 +2801,12 @@ header.colophon{
     &.mobile-mid-menu{
         top: 115px;
     }
+  .idea-list,
+  .category-list{
+    a{
+      color: #fff;
+    }
+  }
 }
 
 .socialcounter{

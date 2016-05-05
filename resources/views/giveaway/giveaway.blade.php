@@ -62,7 +62,7 @@
 	        	<div class="col-md-7 col-xs-12">
 				        <div class='giveaway_title'><h2>{{$giveaway->giveaway_title}}</h2></div>
 				        <div class='giveaway_desc'>{{$giveaway->giveaway_desc}}</div>
-                   <section class="col-lg-12 sign-in">
+                   <section class="col-lg-12 sign-in" id="publicApp" ng-app="publicApp" ng-controller="publicController" ng-cloak>
                        @if(@$userData['login'])
                            <div class="col-lg-6">
                                <h5 style="font-size: 2.5rem; padding-top: 10px;">
@@ -70,7 +70,7 @@
                                		<span>{{$userData['name']}}!</span>
                                </h5>
                            </div>
-                           <div  id="publicApp" ng-app="publicApp" ng-controller="publicController" class="col-lg-6 col-xs-12 qiuck-signup pull-right" ng-cloak>
+                           <div class="col-lg-6 col-xs-12 qiuck-signup pull-right" ng-cloak>
 
                            		@if(@$alreadyIn)
                            		    <div>
