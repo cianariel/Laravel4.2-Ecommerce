@@ -61,7 +61,7 @@
 	    <div class="container fixed-sm full-480 giveaway-content" >
 	        	<div class="col-md-7 col-xs-12">
 				        <div class='giveaway_title'><h2>{{$giveaway->giveaway_title}}</h2></div>
-				        <div class='giveaway_desc'>{{$giveaway->giveaway_desc}}</div>
+				        <div class='giveaway_desc'>{!! $giveaway->giveaway_desc !!}</div>
                    <section class="col-lg-12 sign-in" id="publicApp" ng-app="publicApp" ng-controller="publicController" ng-cloak>
                        @if(@$userData['login'])
                            <div class="col-lg-6">
@@ -142,7 +142,7 @@
 	        	<div class="col-md-4 col-xs-12 pull-right giveaway-toc">
 				        <h4>Terms of Conditions</h4>
 				        <p>
-				        	{{$giveaway->giveaway_toc}}
+				        	{!!$giveaway->giveaway_toc!!}
 				        </p>
 				</div>
             <h4 class="red col-xs-12 text-center">Stay tuned for these upcoming giveaways!</h4>
