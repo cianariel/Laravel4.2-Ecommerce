@@ -219,10 +219,11 @@ $(function() {
     $('textarea').htmlarea({
 		toolbar: [
 		        "bold", "italic", "underline",
+		        "orderedList", "unorderedList",
 		        "link", "unlink"
 		    ]
 	});
-	
+
     $( ".datepicker" ).datepicker();
 
     @if($giveaway->giveaway_image)
