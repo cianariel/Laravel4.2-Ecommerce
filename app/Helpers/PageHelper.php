@@ -5,6 +5,9 @@ namespace App\Helpers;
 use \Illuminate\Routing\Route;
 use  Illuminate\Routing\Router;;
 use App\Models\Giveaway;
+use App\Models\ProductCategory;
+use URL;
+
 class PageHelper {
 
     public static function getCanonicalLink($route, $key = false) {
@@ -42,6 +45,34 @@ class PageHelper {
         return $excerpt;
 
     }
+
+
+    public static function getTopMenuItems() {
+        $url = URL::to('/') . '/ideas/feeds/index.php?count=5 ';
+
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_HEADER, 0);
+        curl_setopt($ch, CURLOPT_VERBOSE, true);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+        curl_setopt($ch, CURLOPT_ENCODING, "");
+        $json = curl_exec($ch);
+
+        $return = json_decode($json);
+//        $productCategories = ProductCategory::orderBy('created_at','asc')->take(2)->get();
+
+//        $productCategories = [
+//
+//        ];
+
+        if(!$return){
+            $return = [];
+        }
+
+        return ($return);
+    }
+
     public static function getCurrentGiveaway() {
         $giveaway = Giveaway::whereDate('ends', '>=', date('Y-m-d'))->whereDate('goes_live', '<=', date('Y-m-d'))->first();
         return $giveaway;

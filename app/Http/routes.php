@@ -323,6 +323,9 @@ Route::get('cookie/{cookieName?}', 'ApiController@getCookie');
 
 Route::get('sitemap', 'PageController@generateSitemap');
 
+Route::get('/api/paging/get-top-mobile-menu', 'PageController@getTopMenuItems');
+
+
 Route::get('/api/paging/get-content/{page?}/{limit?}/{type?}/{tag?}/{productCategory?}/{sortBy?}', 'PageController@getContent');
 Route::get('/api/paging/get-grid-content/{page?}/{limit?}/{tag?}/{type?}/{ideaCategory?}', 'PageController@getGridContent');
 Route::get('/api/layout/get-shop-menu', 'PageController@getShopMenu');
