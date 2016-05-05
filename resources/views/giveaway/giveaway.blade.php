@@ -141,9 +141,7 @@
 
 	        	<div class="col-md-4 col-xs-12 pull-right giveaway-toc">
 				        <h4>Terms of Conditions</h4>
-				        <p>
-				        	<span class="more">{!!$giveaway->giveaway_toc!!}</span>
-                        </p>
+				        	<div class="readmore">{!!$giveaway->giveaway_toc!!}</div>
 				</div>
             <h4 class="red col-xs-12 text-center">Stay tuned for these upcoming giveaways!</h4>
 
@@ -162,46 +160,15 @@
 
     </div>
 
+    <script src="/assets/js/readmore.min.js"></script>
+
     <script>
-        $(document).ready(function() {
-            // Configure/customize these variables.
-            var showChar = 500;  // How many characters are shown by default
-            var ellipsestext = "...";
-            var moretext = "Read more";
-            var lesstext = "Read less";
-
-
-            $('.more').each(function() {
-                var content = $(this).html();
-
-                if(content.length > showChar) {
-
-                    var c = content.substr(0, showChar);
-                    var h = content.substr(showChar, content.length - showChar);
-
-                    var html = c + '<span class="moreellipses">' + ellipsestext+ '&nbsp;</span><span class="morecontent"><span>' + h + '</span>&nbsp;&nbsp;<a href="" class="morelink">' + moretext + '</a></span>';
-
-                    $(this).html(html);
-                }
-
-            });
-
-            $(".morelink").click(function(){
-                if($(this).hasClass("less")) {
-                    $(this).removeClass("less");
-                    $(this).html(moretext);
-                } else {
-                    $(this).addClass("less");
-                    $(this).html(lesstext);
-                }
-                $(this).parent().prev().fadeToggle();
-                $(this).prev().fadeToggle();
-                return false;
-            });
-        });
-
-
-
+    $('.readmore').readmore({
+      startOpen: false,
+      collapsedHeight: 300,
+      moreLink: '<a class="morelink" href="#">Read more</a>',
+      lessLink: '<a class="morelink" href="#">Close</a>',
+    });
 
 
         jQuery(document).ready(function($) {
