@@ -6524,8 +6524,11 @@ header.colophon {
     border-bottom: 0px; }
   .mobile-top-menu.mobile-mid-menu {
     top: 115px; }
+  .mobile-top-menu .idea-list li,
+  .mobile-top-menu .cat-list li {
+    overflow: hidden; }
   .mobile-top-menu .idea-list a,
-  .mobile-top-menu .category-list a {
+  .mobile-top-menu .cat-list a {
     color: #fff; }
 
 .socialcounter {
