@@ -9252,7 +9252,8 @@ footer.about-footer {
           transform: unset !important;
       }*/ }
   #hero .rsOverflow .hero-tags.extra {
-    position: unset; }
+    position: unset;
+    display: none; }
     #hero .rsOverflow .hero-tags.extra .tag-icon {
       display: none; }
     #hero .rsOverflow .hero-tags.extra .tag:hover a {
@@ -10840,7 +10841,6 @@ body.giveaway-page .social-stats__item {
   position: relative;
   bottom: 10px; }
 body.giveaway-page .giveaway-banner {
-  background: #FF0042;
   position: relative;
   bottom: 0;
   top: 10px;
@@ -10854,10 +10854,12 @@ body.giveaway-page .giveaway-banner {
     float: left; }
   body.giveaway-page .giveaway-banner h3 {
     display: block;
-    width: 212px;
-    height: 60px;
+    width: 202px;
+    height: 59px;
     text-indent: -9999px;
-    background: url("/assets/images/giveaway-logo.png") no-repeat; }
+    background: url(/assets/images/giveaway.svg) no-repeat;
+    background-size: 220px;
+    background-position: 0px -110px; }
   body.giveaway-page .giveaway-banner h4 {
     padding-left: 5%;
     padding-top: 25px;

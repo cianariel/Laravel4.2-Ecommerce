@@ -7039,6 +7039,7 @@ footer.about-footer{
 #hero .rsOverflow{
     .hero-tags.extra{
         position: unset;
+      display: none;
         .tag-icon{
             display: none;
         }
@@ -9311,7 +9312,7 @@ body.giveaway-page{
     bottom: 10px;
   }
   .giveaway-banner{
-    background: #FF0042;
+    //background: #FF0042;
     position: relative;
     bottom: 0;
     top: 10px;
@@ -9330,11 +9331,12 @@ body.giveaway-page{
 
     h3{
       display: block;
-      width: 212px;
-      height: 60px;
+      width: 202px;
+      height: 59px;
       text-indent: -9999px;
-      background: url("/assets/images/giveaway-logo.png") no-repeat;
-      //background-size: contain;
+      background: url(/assets/images/giveaway.svg) no-repeat;
+      background-size: 220px;
+      background-position: 0px -110px;
     }
     h4{
       padding-left: 5%;
