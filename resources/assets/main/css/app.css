@@ -4903,16 +4903,18 @@ a.get-round {
     background: #cc0035;
     color: #fff; }
 
-li.nested-parent a {
-  float: left; }
-  li.nested-parent a[data-toggle], li.nested-parent a[data-switch] {
-    float: left;
-    margin-left: 7px;
-    margin-top: 2px; }
-li.nested-parent ul {
-  display: none;
-  overflow: hidden;
-  clear: both; }
+li.nested-parent {
+  overflow: hidden; }
+  li.nested-parent a {
+    float: left; }
+    li.nested-parent a[data-toggle], li.nested-parent a[data-switch] {
+      float: left;
+      margin-left: 7px;
+      margin-top: 2px; }
+  li.nested-parent ul {
+    display: none;
+    overflow: hidden;
+    clear: both; }
 
 .dropcapped p:first-child:first-letter {
   color: #00B1FF;
