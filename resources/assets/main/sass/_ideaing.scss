@@ -9366,6 +9366,10 @@ body.giveaway-page{
       padding-left: 5%;
       padding-top: 25px;
       text-transform: uppercase;
+
+      @media (max-width:420px) {
+        font-size: 3rem;
+      }
     }
 
   }
