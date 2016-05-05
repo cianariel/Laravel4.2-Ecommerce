@@ -10843,6 +10843,7 @@ body.giveaway-page .social-stats__item {
   position: relative;
   bottom: 10px; }
 body.giveaway-page .giveaway-banner {
+  background: rgba(255, 0, 66, 0.7);
   position: relative;
   bottom: 0;
   top: 10px;
