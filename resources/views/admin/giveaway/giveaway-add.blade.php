@@ -209,14 +209,27 @@
 {{--<script src="/assets/admin/vendor/pages/scripts/components-select2.js" type="text/javascript"></script>--}}
 {{--<script src="/assets/admin/vendor/pages/scripts/components-editors.js" type="text/javascript"></script>--}}
 {{--<script src="/assets/admin/vendor/pages/scripts/components-editors.js" type="text/javascript"></script>--}}
-<script src="/assets/js/admin.js"></script>
+<script src="/assets/admin/vendor/global/plugins/jhtml/jHtmlArea-0.8.min.js"></script>
+<script src="/assets/admin/vendor/global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js" type="text/javascript"></script>
+
+
 <script>
 $(function() {
+
+    $('textarea').htmlarea({
+		toolbar: [
+		        "bold", "italic", "underline",
+		        "link", "unlink"
+		    ]
+	});
+	
+    $( ".datepicker" ).datepicker();
 
     @if($giveaway->giveaway_image)
     $('#Giveaway .fileinput.fileinput-new').removeClass('fileinput-new').addClass('fileinput-exists');
     @endif
-    $( ".datepicker" ).datepicker();
+
+ 
 
 });
 
