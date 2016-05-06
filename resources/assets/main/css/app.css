@@ -10799,6 +10799,8 @@ body.search #search-header {
 
 body.giveaway-page.logged-in .hero-box {
   display: none; }
+body.giveaway-page #hero {
+  overflow: hidden; }
 body.giveaway-page #hero-arrow {
   position: absolute;
   left: -182px;
