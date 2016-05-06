@@ -7181,7 +7181,8 @@ header.sub-head {
   .shop-menu .img-wrap {
     padding-left: 5px;
     padding-right: 5px;
-    margin-bottom: 9px; }
+    margin-bottom: 9px;
+    overflow: hidden; }
   .shop-menu .travel .img-wrap,
   .shop-menu .wearables .img-wrap,
   .shop-menu .home-decor .img-wrap {
