@@ -8239,7 +8239,7 @@ body.room-landing .heroSlider {
     .hero-tags .tag:hover {
       z-index: 11; }
       .hero-tags .tag:hover a, .hero-tags .tag:hover .hover-box {
-        /*        display: block;*/ }
+        display: block; }
       .hero-tags .tag:hover a {
         /*        margin-top: -114px;*/ }
   .hero-tags .tag-icon {
@@ -9176,7 +9176,7 @@ footer.about-footer {
 .room-landing .hero-tags {
   z-index: 10; }
 .room-landing .rsContent {
-  overflow: visible; }
+  overflow: visible !important; }
 .room-landing .modal-dialog {
   position: relative;
   /*        width: auto;*/

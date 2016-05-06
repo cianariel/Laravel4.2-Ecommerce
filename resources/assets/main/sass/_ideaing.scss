@@ -5309,7 +5309,7 @@ body.room-landing{
     &:hover{
         z-index:11;
       a, .hover-box{
-/*        display: block;*/
+        display: block;
       }
       a{
 /*        margin-top: -114px;*/
@@ -6957,7 +6957,7 @@ footer.about-footer{
      z-index: 10;
    }
   .rsContent{
-    overflow: visible;
+    overflow: visible !important;
   }
     .modal-dialog{
         position: relative;
