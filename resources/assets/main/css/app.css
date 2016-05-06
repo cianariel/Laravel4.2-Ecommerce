@@ -8006,7 +8006,8 @@ body.homepage #hero {
     body.room-landing #hero .hero-tags > .tag,
     body.homepage #hero .hero-tags > .tag {
       margin-top: -55px;
-      margin-left: -55px; }
+      margin-left: -55px;
+      z-index: 50; }
   html.idea-stories #hero .rsOverflow > .hero-tags .tag,
   body.room-landing #hero .rsOverflow > .hero-tags .tag,
   body.homepage #hero .rsOverflow > .hero-tags .tag {
@@ -8255,7 +8256,7 @@ body.room-landing .heroSlider {
   .hero-tags .hover-box {
     width: 200px;
     background: #fff;
-    z-index: 10;
+    z-index: 40;
     position: relative;
     margin-top: 10px; }
     .hero-tags .hover-box .icon-wrap {
@@ -9174,7 +9175,7 @@ footer.about-footer {
   border-radius: 20px; }
 
 .room-landing .hero-tags {
-  z-index: 10; }
+  position: static; }
 .room-landing .rsContent {
   overflow: visible !important; }
 .room-landing .modal-dialog {
@@ -10790,7 +10791,7 @@ body.search #search-header {
   bottom: 12px;
   top: auto;
   border-radius: 2px;
-  z-index: 25; }
+  z-index: 9; }
 
 .photoCopy a {
   color: grey; }
