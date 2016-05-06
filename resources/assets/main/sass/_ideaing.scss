@@ -7087,7 +7087,10 @@ footer.about-footer{
 /*            transform: unset !important;*/
         }
         .rsSlide{
-            overflow: visible;
+          overflow: hidden;
+          padding-bottom: 100px;
+          height: 600px;
+          max-width: 100%;
         }
     }
     
@@ -9269,9 +9272,9 @@ body.giveaway-page{
       display: none;
     }
   }
-  #hero{
-    overflow: hidden;
-  }
+  //#hero{
+  //  overflow: hidden;
+  //}
   #hero-arrow{
     position: absolute;
     left: -182px;
