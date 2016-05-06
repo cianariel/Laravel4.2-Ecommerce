@@ -5144,6 +5144,7 @@ body.homepage{
             >.tag{
                 margin-top: -55px;
                 margin-left: -55px;
+                z-index: 50;
             }
         }
         .rsOverflow > .hero-tags .tag{
@@ -5338,7 +5339,7 @@ body.room-landing{
   .hover-box{
     width: 200px;
     background: #fff;
-    z-index: 10;
+    z-index: 40;
     position: relative;
     margin-top: 10px;
 
@@ -6954,8 +6955,11 @@ footer.about-footer{
 }
 .room-landing{
    .hero-tags{
-     z-index: 10;
+     position: static;
    }
+  //.rsSlide{
+  //  z-index: 40;
+  //}
   .rsContent{
     overflow: visible !important;
   }
@@ -9251,7 +9255,7 @@ body.search{
   bottom: 12px;
   top: auto;
   border-radius: 2px;
-  z-index: 25;
+  z-index: 9;
 }
 .photoCopy a {
   color: grey;
