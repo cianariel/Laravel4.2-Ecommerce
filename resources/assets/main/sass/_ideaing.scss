@@ -544,23 +544,38 @@ a{ // Custom Link Styles
 
 }
 
-li.nested{
-  
-  /*a.active::after{
-    background-image: url("/assets/images/arrow-up-black.png");
+li.nested-parent{
+  overflow: hidden;
+  //a.active::after{
+  //  background-image: url("/assets/images/arrow-up-black.png");
+  //}
+  //a::after{
+  //  display: inline-block;
+  //  content: '	';
+  //  width: 25px;
+  //  height: 13px;
+  //  position: relative;
+  //  top: 2px;
+  //  background: url("/assets/images/arrow-down-pink.png") no-repeat;
+  //  background-size: contain;
+  //  color: $iridium;
+  //  margin-right: -19px;
+  //}
+  a{
+    float: left;
+
+    &[data-toggle],
+    &[data-switch],{
+      float: left;
+      margin-left: 7px;
+      margin-top: 2px;
+    }
   }
-  a::after{
-    display: inline-block;
-    content: '	';
-    width: 25px;
-    height: 13px;
-    position: relative;
-    top: 2px;
-    background: url("/assets/images/arrow-down-pink.png") no-repeat;
-    background-size: contain;
-    color: $iridium;
-    margin-right: -19px;
-  }*/
+  ul{
+    display: none;
+    overflow: hidden;
+    clear: both;
+  }
 
 }
 
@@ -2786,6 +2801,15 @@ header.colophon{
     &.mobile-mid-menu{
         top: 115px;
     }
+  .idea-list,
+  .cat-list{
+    li{
+      overflow: hidden;
+    }
+    a{
+      color: #fff;
+    }
+  }
 }
 
 .socialcounter{
@@ -7039,6 +7063,7 @@ footer.about-footer{
 #hero .rsOverflow{
     .hero-tags.extra{
         position: unset;
+      display: none;
         .tag-icon{
             display: none;
         }
@@ -9311,7 +9336,7 @@ body.giveaway-page{
     bottom: 10px;
   }
   .giveaway-banner{
-    background: #FF0042;
+    background: rgba($iridium, 0.7);
     position: relative;
     bottom: 0;
     top: 10px;
@@ -9330,18 +9355,31 @@ body.giveaway-page{
 
     h3{
       display: block;
-      width: 212px;
-      height: 60px;
+      width: 202px;
+      height: 59px;
       text-indent: -9999px;
-      background: url("/assets/images/giveaway-logo.png") no-repeat;
-      //background-size: contain;
+      background: url(/assets/images/giveaway.svg) no-repeat;
+      background-size: 220px;
+      background-position: 0px -110px;
     }
     h4{
       padding-left: 5%;
-      padding-top: 25px;
+      padding-top: 15px;
       text-transform: uppercase;
+
+      //@media (max-width:420px) {
+        font-size: 3rem;
+      //}
     }
 
+  }
+
+  .morecontent span {
+    display: none;
+  }
+  .morelink {
+    display: block;
+    color: $iridium;
   }
 
   .sign-in{
