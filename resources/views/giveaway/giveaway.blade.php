@@ -33,7 +33,7 @@
                 </hgroup>
             </div>
         </section>
-        <nav id="hero-nav" class="col-sm-12" >
+        <nav id="hero-nav" class="col-sm-12">
             <div class="container">
                 <ul class="share-buttons hidden-xs col-lg-7 col-md-8 pull-right">
 
@@ -63,7 +63,7 @@
             <div class="container fixed-sm full-480 giveaway-content">
                 <div class="col-md-7 col-xs-12">
                     <div class='giveaway_title'><h2>{{$giveaway->giveaway_title}}</h2></div>
-                    <div class='giveaway_desc'>{{$giveaway->giveaway_desc}}</div>
+                    <div class='giveaway_desc'>{!! $giveaway->giveaway_desc !!}</div>
                     <section class="col-lg-12 sign-in">
                         @if(@$userData['login'])
                             <div class="col-lg-6">
@@ -72,7 +72,7 @@
                                     <span>{{$userData['name']}}!</span>
                                 </h5>
                             </div>
-                            <div class="col-lg-6 col-xs-12 qiuck-signup pull-right">
+                            <div class="col-lg-6 col-xs-12 qiuck-signup pull-right" ng-cloak>
 
                                 @if(@$alreadyIn)
                                     <div>
@@ -111,7 +111,7 @@
                                 </div>
                             </div>
 
-                            <div class="col-lg-6 col-xs-12 qiuck-signup pull-right giveaway-login" >
+                            <div class="col-lg-6 col-xs-12 qiuck-signup pull-right giveaway-login">
 
                                 <form id="giveaway-two" ng-if="!responseMessage.success">
                                     <div>
@@ -163,9 +163,7 @@
 
                 <div class="col-md-4 col-xs-12 pull-right giveaway-toc">
                     <h4>Terms of Conditions</h4>
-                    <p>
-                        {{$giveaway->giveaway_toc}}
-                    </p>
+                    <div class="readmore">{!!$giveaway->giveaway_toc!!}</div>
                 </div>
                 <h4 class="red col-xs-12 text-center">Stay tuned for these upcoming giveaways!</h4>
 
@@ -183,11 +181,19 @@
             </div>
 
         </div>
-
         @include('layouts.parts.comments-product')
     </div>
+    <script src="/assets/js/readmore.min.js"></script>
 
     <script>
+        $('.readmore').readmore({
+            startOpen: false,
+            collapsedHeight: 300,
+            moreLink: '<a class="morelink" href="#">Read more</a>',
+            lessLink: '<a class="morelink" href="#">Close</a>',
+        });
+
+
         jQuery(document).ready(function ($) {
             $('.giveaway-slider-content ').royalSlider({
                 arrowsNav: true,

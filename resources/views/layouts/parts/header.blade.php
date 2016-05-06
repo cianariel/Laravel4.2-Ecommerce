@@ -24,7 +24,7 @@ if(function_exists('is_single')){
 <!--                                            <i class="m-icon--footer-up-arrow down"></i>-->
                                         </a>
                                     </li>
-                                        <li>
+                                        <li class="nested">
                                             <a class="ideas" href="/ideas">
                                             <i class="hidden-xs m-icon m-icon--bulb"></i>
                                                 <span class="m-icon-text">Ideas</span>
@@ -180,10 +180,61 @@ if(function_exists('is_single')){
              include('/var/www/ideaing/resources/views/layouts/parts/shop-submenu.blade.php')
         ?>
 
+        <?php
+        if(function_exists('is_single')){
+            $args = array(
+                'numberposts' => 5,
+            );
+
+            $topMenuContent = wp_get_recent_posts( $args, ARRAY_A );
+        }else{
+            $topMenuContent = PageHelper::getTopMenuItems();
+        }
+        ?>
+
         <div id="mobile-top-menu" class="mobile-top-menu" >
             <ul>
-                <li><a class="ideas" href="/ideas"><i class="m-icon m-icon--bulb"></i>&nbsp; IDEAS</a></li>
-                <li><a class="shop" href="/shop"><i class="m-icon m-icon--item"></i>&nbsp; SHOP</a></li>
+                <li class="nested nested-parent">
+                    <a class="ideas" href="/ideas"><i class="m-icon m-icon--bulb"></i>&nbsp; IDEAS</a>
+                    <a class="ideas" href="/ideas" data-switch=".idea-list" href="#">
+                        <i class="m-icon--Header-Dropdown down"></i>
+                        <i class="m-icon--footer-up-arrow up"></i>
+                    </a>
+                    <ul class="idea-list">
+                        <?php
+                            foreach($topMenuContent as $story){
+
+                        if($story->url){  ?>
+                               <li><a href="<?php echo $story->url ?>"><?php echo $story->title ?> </a></li>
+                        <?php    }else{ ?>
+                            <li><a href="/ideas/<?php echo $story['post_name'] ?>"><?php echo $story['post_title'] ?> </a></li>
+
+                        <?php }
+                            }
+                        ?>
+                    </ul>
+                </li>
+                <li class="nested-parent">
+                    <a class="shop" href="/shop"><i class="m-icon m-icon--item"></i>&nbsp; SHOP</a>
+                    <a class="shop" href="/shop" data-toggle=".cat-list" href="#">
+                        <i class="m-icon--Header-Dropdown down"></i>
+                        <i class="m-icon--footer-up-arrow up"></i>
+                    </a>
+                    <ul class="cat-list">
+                            <li>
+                                <a href="/shop/smart-home">Smart Home</a>
+                            </li>
+                            <li>
+                                <a href="/shop/travel">Travel</a>
+                            </li>
+                            <li>
+                                <a href="/shop/wearables">Wearables</a>
+                            </li>
+                            <li>
+                                <a href="/shop/home-decor">Home & Decor</a>
+                            </li>
+                    </ul>
+                </li>
             </ul>
         </div>
 
