@@ -58,6 +58,9 @@ Route::group(['prefix' => 'api'], function () {
     Route::post('comment/add-ideas-comment', 'CommentController@addCommentForIdeas');
     Route::get('comment/get-ideas-comment/{pid?}', 'CommentController@getCommentForIdeas');
 
+    Route::post('comment/add-giveaway-comment', 'CommentController@addCommentForGiveaway');
+    Route::get('comment/get-giveaway-comment/{pid?}', 'CommentController@getCommentForGiveaway');
+
     Route::post('comment/update-comment', 'CommentController@updateComment');
     Route::post('comment/delete-comment', 'CommentController@deleteComment');
 
