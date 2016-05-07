@@ -3799,6 +3799,7 @@ header.sub-head{
     padding-left: 5px;
     padding-right: 5px;
     margin-bottom: 9px;
+    overflow: hidden;
   }
 
   .travel,
@@ -5143,6 +5144,7 @@ body.homepage{
             >.tag{
                 margin-top: -55px;
                 margin-left: -55px;
+                z-index: 50;
             }
         }
         .rsOverflow > .hero-tags .tag{
@@ -5308,7 +5310,7 @@ body.room-landing{
     &:hover{
         z-index:11;
       a, .hover-box{
-/*        display: block;*/
+        display: block;
       }
       a{
 /*        margin-top: -114px;*/
@@ -5337,7 +5339,7 @@ body.room-landing{
   .hover-box{
     width: 200px;
     background: #fff;
-    z-index: 10;
+    z-index: 40;
     position: relative;
     margin-top: 10px;
 
@@ -6952,11 +6954,14 @@ footer.about-footer{
     border-radius: 20px;
 }
 .room-landing{
-   .hero-tags{
-     z-index: 10;
-   }
+   //.hero-tags{
+   //  position: static;
+   //}
+  //.rsSlide{
+  //  z-index: 40;
+  //}
   .rsContent{
-    overflow: visible;
+    overflow: visible !important;
   }
     .modal-dialog{
         position: relative;
@@ -7082,7 +7087,10 @@ footer.about-footer{
 /*            transform: unset !important;*/
         }
         .rsSlide{
-            overflow: visible;
+          overflow: hidden;
+          padding-bottom: 100px;
+          height: 600px;
+          max-width: 100%;
         }
     }
     
@@ -9250,7 +9258,7 @@ body.search{
   bottom: 12px;
   top: auto;
   border-radius: 2px;
-  z-index: 25;
+  z-index: 9;
 }
 .photoCopy a {
   color: grey;
@@ -9263,6 +9271,9 @@ body.giveaway-page{
     .hero-box{
       display: none;
     }
+  }
+  #hero{
+    overflow: hidden;
   }
   #hero-arrow{
     position: absolute;

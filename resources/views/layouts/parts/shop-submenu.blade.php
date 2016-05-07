@@ -8,7 +8,7 @@
                             <img class="img-responsive" src="{{item.media_link_full_path}}">
                         </div>
                         <div class="static">
-                            <span class="in">In {{item.category_name}}</span>
+                         <!--   <span class="in">In {{item.category_name}}</span> -->
                             <b><a class="static" href="/product/{{item.product_permalink}}">{{item.product_name}}</a></b>
                         </div> 
                     </section>
