@@ -164,7 +164,7 @@
                             </li>
                         </ul>
                     </div>
-                    
+
                 </div>
             </nav>
 
@@ -246,6 +246,15 @@ jQuery(document).ready(function($) {
 //    autoScaleSlider: true
   });
   $('.royalSlider').css('display', 'block');
+
+});
+$('.room-landing .tag-icon').hover(function(){
+    console.log('bob');
+    $('#hero').css('z-index', '30');
+});
+$('.room-landing .tag-icon').mouseleave(function(){
+    console.log('bob');
+    $('#hero').css('z-index', '10');
 });
 </script>
 @stop

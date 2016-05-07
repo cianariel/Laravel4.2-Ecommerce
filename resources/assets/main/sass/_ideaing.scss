@@ -5251,6 +5251,15 @@ body.homepage{
 }
 
 body.room-landing{
+  .main-content-filter,
+  .popular-new a{
+    position: relative;
+    z-index: 10;
+    overflow: hidden !important;
+  }
+  //.box-item{
+  //  z-index: 15;
+  //}
   #hero{
     overflow: visible;
   }
