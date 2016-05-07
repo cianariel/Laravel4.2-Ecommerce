@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Comment;
+use App\Models\Giveaway;
 use App\Models\Product;
 use App\Models\User;
 
@@ -45,7 +46,7 @@ class CommentController extends ApiController
      * @param $section
      * @internal param $info
      */
-    private function addNotification($data,$section)
+    private function addNotification($data, $section)
     {
         $info['Users'] = [];
         foreach ($data['CommentInfo'] as $commenter) {
@@ -56,7 +57,7 @@ class CommentController extends ApiController
         $info['Users'] = array_unique($info['Users']);
         $info['Category'] = 'comment';//$data['Category'];
         $info['SenderId'] = $data['SenderId'];
-        $info['Permalink'] = $section.'/' . $data['Permalink'] . '#comment';
+        $info['Permalink'] = $section . '/' . $data['Permalink'] . '#comment';
         $info['PostTime'] = $data['PostTime'];
         $info['ItemTitle'] = $data['ItemTitle'];
         $info['Section'] = $section;
@@ -78,7 +79,7 @@ class CommentController extends ApiController
             $data['Img'] = $inputData['img'];
 
             // Add product title in the notification
-            $product = Product::where('id',$inputData['pid'])->first();
+            $product = Product::where('id', $inputData['pid'])->first();
             $data['ItemTitle'] = $product['product_name'];
 
             $result = $this->comment->addCommentForProduct($data);
@@ -91,7 +92,7 @@ class CommentController extends ApiController
             $notification['PostTime'] = (string)$dataStr;
 
             $notification['ItemTitle'] = $product['product_name'];
-          //  $notification['Section'] = 'product';
+            //  $notification['Section'] = 'product';
 
 
             $this->addProductNotification($notification);
@@ -118,7 +119,7 @@ class CommentController extends ApiController
             $data['Flag'] = 'Show';
 
             // Add product title in the notification
-            $product = WpPost::where('ID',$inputData['pid'])->first();
+            $product = WpPost::where('ID', $inputData['pid'])->first();
             $data['ItemTitle'] = $product['post_title'];
 
 
@@ -133,6 +134,44 @@ class CommentController extends ApiController
             $notification['PostTime'] = (string)$dataStr;//$data['Link'];
 
             $notification['ItemTitle'] = $product['post_title'];
+
+            $this->addIdeasNotification($notification);
+
+            return $this->setStatusCode(\Config::get("const.api-status.success"))
+                        ->makeResponse($result);
+
+        }
+
+    }
+
+    public function addCommentForGiveaway()
+    {
+        if (!empty($inputData['comment']) && !empty($inputData['pid'])) {
+            $data['UserId'] = $inputData['uid'];
+            $data['ItemId'] = $inputData['pid'];
+            $data['Comment'] = $inputData['comment'];
+            $data['Img'] = $inputData['img'];
+
+            $data['Link'] = $inputData['plink'];
+            $data['Flag'] = 'Show';
+
+            // Add giveaway title in the notification
+            $giveaway = Giveaway::where('id', $inputData['pid'])->first();
+            $data['ItemTitle'] = $giveaway['giveaway_title'];
+
+
+            //
+            $result = $this->comment->addCommentForGiveaway($data);
+
+            $notification['CommentInfo'] = $this->comment->findCommentForGiveaway(['ItemId' => $inputData['pid']]);
+            $notification['SenderId'] = $inputData['uid'];
+            $notification['Permalink'] = $data['Link'];
+
+            // $dateTime = Carbon::now();
+            $dataStr = date("Y-m-d H:i:s");//$dateTime->date;
+            $notification['PostTime'] = (string)$dataStr;//$data['Link'];
+
+            $notification['ItemTitle'] = $giveaway['giveaway_title'];
 
             $this->addIdeasNotification($notification);
 

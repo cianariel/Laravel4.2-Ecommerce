@@ -39,7 +39,7 @@
                         </button>
                         <button ng-show="(comment.UserId == userId)  || (isAdmin == 1)"
                                 data-ng-click="deleteCommentForProduct(comment.CommentId)"
-                                confirm="Are you sure to delete this product ?"
+                                confirm="Are you sure to delete this comment ?"
                                 confirm-settings="{size: 'sm'}"
                                 uib-tooltip="Delete"
                                 class="btn btn-danger btn-circle"

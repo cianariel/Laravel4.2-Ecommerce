@@ -89,6 +89,27 @@ class Comment extends Model
 
     }
 
+    //Add comment for giveaway
+    public function addCommentForGiveaway($data)
+    {
+        $giveaway = Giveaway::where('id', $data['ItemId'])->first();
+
+        $comment = new Comment();
+        $comment->comment = $data['Comment'];
+        $comment->user_id = $data['UserId'];
+        $comment->link = $data['Link'];
+        $comment->flag = $data['Flag'];
+        $comment->title = $data['ItemTitle'];
+        $comment->image_link = $data['Img'];
+        $comment->section = 'giveaway';
+
+
+        $result = $giveaway->comments()->save($comment);
+
+        return $result;
+
+    }
+
     // comment search for product section
     public function findCommentForProduct($data)
     {
@@ -157,6 +178,37 @@ class Comment extends Model
         return $commentCollection;
     }
 
+    // comment search for ideas section
+    public function findCommentForGiveaway($data)
+    {
+        $giveaway = Giveaway::where('id', $data['ItemId'])
+                        ->with('comments')
+                        ->first();
+
+        // product_permalink
+        $giveawayComments = isset($giveaway->comments) ? $giveaway->comments : [];
+        $commentCollection = new Collection();
+
+        $user = new User();
+
+        foreach ($giveawayComments as $singleComment) {
+            $userInfo = $user->getUserById($singleComment['user_id']);
+
+            $data['CommentId'] = $singleComment['id'];
+            $data['Comment'] = $singleComment['comment'];
+            $data['UserId'] = $userInfo['id'];
+            $data['UserName'] = $userInfo['name'];
+            $data['Permalink'] = $userInfo['permalink'];
+            $data['Picture'] = $userInfo->medias[0]->media_link;
+            $data['Flag'] = $singleComment['flag'];
+            $data['PostTime'] = Carbon::createFromTimestamp(strtotime($singleComment['created_at']))->diffForHumans();
+
+            $commentCollection->push($data);
+
+        }
+
+        return $commentCollection;
+    }
 
     public function updateCommentForProduct($data)
     {
@@ -175,8 +227,8 @@ class Comment extends Model
     public function ideasCommentCounter($itemId)
     {
         $count = Comment::where('commentable_id', $itemId)
-                      ->where('commentable_type', 'App\Models\WpPost')
-                      ->count();
+                        ->where('commentable_type', 'App\Models\WpPost')
+                        ->count();
         return $count;
     }
 
@@ -187,6 +239,12 @@ class Comment extends Model
                       ->count();
     }
 
+    public function giveawayCommentCounter($itemId)
+    {
+        return Comment::where('commentable_id', $itemId)
+                      ->where('commentable_type', 'App\Models\Giveaway')
+                      ->count();
+    }
 
     public function commentCounter($itemId, $section)
     {
@@ -194,6 +252,8 @@ class Comment extends Model
             return $this->ideasCommentCounter($itemId);
         } elseif ($section == 'product') {
             return $this->productCommentCounter($itemId);
+        }elseif ($section == 'giveaway') {
+            return $this->giveawayCommentCounter($itemId);
         }
     }
 
@@ -209,16 +269,16 @@ class Comment extends Model
         $heartProductCollection = Heart::where('user_id', $userId)->where('heartable_type', 'App\Models\Product');
 
         if ($count == null) {
-            $heartProductCollection = $heartProductCollection->orderBy('created_at', 'desc')->get(['heartable_id','updated_at']);
+            $heartProductCollection = $heartProductCollection->orderBy('created_at', 'desc')->get(['heartable_id', 'updated_at']);
         } else {
-            $heartProductCollection = $heartProductCollection->orderBy('created_at', 'desc')->limit($count)->get(['heartable_id','updated_at']);
+            $heartProductCollection = $heartProductCollection->orderBy('created_at', 'desc')->limit($count)->get(['heartable_id', 'updated_at']);
 
         }
 
 
-        $productHeatItemsId = $heartProductCollection->map(function($item){
-                return $item['heartable_id'];
-            });
+        $productHeatItemsId = $heartProductCollection->map(function ($item) {
+            return $item['heartable_id'];
+        });
 
 
         $productInfoOfHeart = Product::whereIn('id', $productHeatItemsId)->get(['id', 'product_name AS title', 'product_permalink AS link', 'updated_at']);
@@ -237,21 +297,16 @@ class Comment extends Model
             $tmpCollection['Type'] = 'heart';
 
 
-                foreach($heartProductCollection as $singleItem)
-                {
-                    if($singleItem['heartable_id'] == $item['id'])
-                    {
-                        $tmpCollection['UpdateTime'] = $singleItem['updated_at'];
-                    }
-                };
+            foreach ($heartProductCollection as $singleItem) {
+                if ($singleItem['heartable_id'] == $item['id']) {
+                    $tmpCollection['UpdateTime'] = $singleItem['updated_at'];
+                }
+            };
 
             $activityCollection->push($tmpCollection);
-
         }
 
-
-
-      //    dd($activityCollection);
+        //    dd($activityCollection);
 
         $heartIdeasCollection = Heart::where('user_id', $userId)->where('heartable_type', 'App\Models\WpPost');
 
@@ -315,14 +370,12 @@ class Comment extends Model
         //
 
 
-
-
         $comments = Comment::where('user_id', $userId)->whereNotNull('section');
 
         if ($count == null) {
-            $comments = $comments->orderBy('created_at', 'desc')->get(['id','commentable_id', 'section', 'title', 'link', 'image_link', 'updated_at']);
+            $comments = $comments->orderBy('created_at', 'desc')->get(['id', 'commentable_id', 'section', 'title', 'link', 'image_link', 'updated_at']);
         } else {
-            $comments = $comments->orderBy('created_at', 'desc')->limit($count)->get(['id', 'commentable_id','section', 'title', 'link', 'image_link', 'updated_at']);
+            $comments = $comments->orderBy('created_at', 'desc')->limit($count)->get(['id', 'commentable_id', 'section', 'title', 'link', 'image_link', 'updated_at']);
         }
 
 

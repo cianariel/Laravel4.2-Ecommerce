@@ -231,6 +231,7 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
 
             if ($scope.itemId != 0) {
                 $scope.getCommentsForIdeas($scope.itemId);
+                $scope.getCommentsForGiveaway($scope.itemId);
             }
         }, 15000);//10000
 
@@ -463,7 +464,7 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                         change: false
                     },
                 };
-//
+
                 if (window.innerWidth < 1176) {
                     args.visibleNearby = {
                         enabled: false,
@@ -481,9 +482,6 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
             });
         };
 
-        //$('#top-nav a.new-message').animate({
-        //    visibility: 'visible',
-        //}, 500)
 
         $scope.isEmpty = function (data) {
             if (!data || data.length === 0)
@@ -767,8 +765,45 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                 //  console.log($scope.commentsCount);
 
             });
-
         };
+
+        // Comment for giveaway section
+        $scope.addCommentForGiveaway = function (userId, itemId, permalink, comment) {
+            //   console.log(userId, itemId, permalink, comment);
+
+            $http({
+                url: '/api/comment/add-giveaway-comment',
+                method: "POST",
+                data: {
+                    uid: userId,
+                    pid: itemId,
+                    plink: permalink,
+                    comment: comment,
+                    img: $window.img
+                }
+            }).success(function (data) {
+                $scope.html = "";
+                $scope.getCommentsForGiveaway($scope.itemId);
+            });
+        };
+
+        $scope.getCommentsForGiveaway = function (pid) {
+
+            $http({
+                url: '/api/comment/get-giveaway-comment/' + pid,
+                method: "GET"
+            }).success(function (data) {
+                $scope.itemId = pid;
+                $scope.comments = data.data;
+                $scope.commentsCount = $scope.comments.length;
+                $scope.commentsCountView = $scope.commentsCount < 2 ? $scope.commentsCount + " " + "Comment" : $scope.commentsCount + " " + "Comments";
+
+                //  console.log($scope.commentsCount);
+
+            });
+        };
+
+
 
         $scope.initCommentCounter = function () {
             //  $scope.getCommentsForIdeas($window.itemId);

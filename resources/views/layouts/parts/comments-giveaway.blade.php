@@ -1,15 +1,15 @@
 <link href="/assets/admin/vendor/global/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet"
       type="text/css"/>
 <script>
-    var img = "<?php echo $selfImages['heroImage'] ?>" ;
+    var img = "<?php echo empty($giveaway->giveaway_image) ? "" : $giveaway->giveaway_image ?>";
 </script>
 
 <section class="comments" id="comments">
     <div class="container product-comment" itemprop="review" itemscope itemtype="http://schema.org/Review">
         <a name="comment"></a>
-        <input type="hidden" ng-init="userId='<?php echo $userData['id']?>'">
+        <input type="hidden" ng-init="userId='<?php echo $userId ?>'">
         <input type="hidden" ng-init="isAdmin='<?php echo $isAdminForEdit?>'">
-        <div ng-init="getCommentsForProduct(<?php echo $itemId?>)">
+        <div ng-init="getCommentsForProduct(<?php echo $giveaway->id ?>)">
             <h4><?php echo "{{ commentsCountView }}" ?></h4>
             <div ng-repeat="comment in comments">
                 <div class="single-comment">
@@ -38,8 +38,8 @@
                             <i class="fa fa-edit"></i>
                         </button>
                         <button ng-show="(comment.UserId == userId)  || (isAdmin == 1)"
-                                data-ng-click="deleteCommentForProduct(comment.CommentId)"
-                                confirm="Are you sure to delete this product ?"
+                                data-ng-click="deleteComment(comment.CommentId)"
+                                confirm="Are you sure to delete this comment ?"
                                 confirm-settings="{size: 'sm'}"
                                 uib-tooltip="Delete"
                                 class="btn btn-danger btn-circle"
@@ -80,11 +80,11 @@
 
                     <div class="col-md-12 comment-controls text-right">
                         <button class="btn btn-info btn-outline" ng-hide="isEdit"
-                                ng-click="addCommentForProduct(<?php echo $userData['id'] . "," . $itemId . "," . "'$permalink'" . "," . "html"?>)">
+                                ng-click="addCommentForGiveaway(<?php echo $userData['id'] . "," . $giveaway->id . "," . "'giveaway'" . "," . "html"?>)">
                             Post
                         </button>
                         <button class="btn btn-info" ng-show="isEdit"
-                                ng-click="updateCommentForProduct()">
+                                ng-click="updateComment()">
                             Update
                         </button>
                     </div>
@@ -94,7 +94,7 @@
 
         <?php } else{ ?>
         <section>
-             <a class="signup-to-comment" href="#" data-toggle="modal" data-target="#myModal" href="/login">Sign Up to
+            <a class="signup-to-comment" href="#" data-toggle="modal" data-target="#myModal" href="/login">Sign Up to
                 Comment</a>
         </section>
         <?php } ?>

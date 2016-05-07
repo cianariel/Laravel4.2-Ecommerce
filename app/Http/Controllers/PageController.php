@@ -765,6 +765,7 @@ if($stories['featured']){
         MetaTag::set('title', $heading);
 //        MetaTag::set('description', $result['productInformation']['MetaDescription']);
 
+        dd($giveaway,$heading);
         return view('giveaway.giveaway')
             ->with('userData', $userData)
             ->with('nextGiveaways', $nextGiveaways)
