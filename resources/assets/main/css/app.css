@@ -7181,7 +7181,8 @@ header.sub-head {
   .shop-menu .img-wrap {
     padding-left: 5px;
     padding-right: 5px;
-    margin-bottom: 9px; }
+    margin-bottom: 9px;
+    overflow: hidden; }
   .shop-menu .travel .img-wrap,
   .shop-menu .wearables .img-wrap,
   .shop-menu .home-decor .img-wrap {
@@ -8005,7 +8006,8 @@ body.homepage #hero {
     body.room-landing #hero .hero-tags > .tag,
     body.homepage #hero .hero-tags > .tag {
       margin-top: -55px;
-      margin-left: -55px; }
+      margin-left: -55px;
+      z-index: 50; }
   html.idea-stories #hero .rsOverflow > .hero-tags .tag,
   body.room-landing #hero .rsOverflow > .hero-tags .tag,
   body.homepage #hero .rsOverflow > .hero-tags .tag {
@@ -8238,7 +8240,7 @@ body.room-landing .heroSlider {
     .hero-tags .tag:hover {
       z-index: 11; }
       .hero-tags .tag:hover a, .hero-tags .tag:hover .hover-box {
-        /*        display: block;*/ }
+        display: block; }
       .hero-tags .tag:hover a {
         /*        margin-top: -114px;*/ }
   .hero-tags .tag-icon {
@@ -8254,7 +8256,7 @@ body.room-landing .heroSlider {
   .hero-tags .hover-box {
     width: 200px;
     background: #fff;
-    z-index: 10;
+    z-index: 40;
     position: relative;
     margin-top: 10px; }
     .hero-tags .hover-box .icon-wrap {
@@ -9172,10 +9174,8 @@ footer.about-footer {
   padding: 4px 11px;
   border-radius: 20px; }
 
-.room-landing .hero-tags {
-  z-index: 10; }
 .room-landing .rsContent {
-  overflow: visible; }
+  overflow: visible !important; }
 .room-landing .modal-dialog {
   position: relative;
   /*        width: auto;*/
@@ -9264,7 +9264,10 @@ footer.about-footer {
   #hero .rsOverflow .rsContainer:hover {
     /*            transform: unset !important;*/ }
   #hero .rsOverflow .rsContainer .rsSlide {
-    overflow: visible; }
+    overflow: hidden;
+    padding-bottom: 100px;
+    height: 600px;
+    max-width: 100%; }
   #hero .rsOverflow .rsContent {
     overflow: hidden; }
     #hero .rsOverflow .rsContent .rsInnerContent {
@@ -10789,13 +10792,15 @@ body.search #search-header {
   bottom: 12px;
   top: auto;
   border-radius: 2px;
-  z-index: 25; }
+  z-index: 9; }
 
 .photoCopy a {
   color: grey; }
 
 body.giveaway-page.logged-in .hero-box {
   display: none; }
+body.giveaway-page #hero {
+  overflow: hidden; }
 body.giveaway-page #hero-arrow {
   position: absolute;
   left: -182px;
