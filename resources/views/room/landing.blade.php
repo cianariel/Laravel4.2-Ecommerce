@@ -248,11 +248,11 @@ jQuery(document).ready(function($) {
   $('.royalSlider').css('display', 'block');
 
 });
-$('.room-landing .tag-icon').hover(function(){
+$('.room-landing .tag-icon').mouseover(function(){
     console.log('bob');
     $('#hero').css('z-index', '30');
 });
-$('.room-landing .tag-icon').mouseleave(function(){
+$('.room-landing .tag-icon').mouseout(function(){
     console.log('bob');
     $('#hero').css('z-index', '10');
 });
