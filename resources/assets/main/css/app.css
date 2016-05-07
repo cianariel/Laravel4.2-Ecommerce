@@ -9270,8 +9270,8 @@ footer.about-footer {
     /*            transform: unset !important;*/ }
   #hero .rsOverflow .rsContainer .rsSlide {
     overflow: hidden;
-    padding-bottom: 100px;
-    height: 600px;
+    padding-bottom: 200px;
+    height: 700px;
     max-width: 100%; }
   #hero .rsOverflow .rsContent {
     overflow: hidden; }
