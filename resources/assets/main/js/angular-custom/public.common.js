@@ -230,27 +230,31 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
             }
 
             if ($scope.itemId != 0) {
-                $scope.getCommentsForIdeas($scope.itemId);
-                $scope.getCommentsForGiveaway($scope.itemId);
+
+                // reduce http call in comment section.
+                if ($scope.commentSection == 'giveaway')
+                    $scope.getCommentsForGiveaway($scope.itemId);
+                else
+                    $scope.getCommentsForIdeas($scope.itemId);
+
             }
         }, 15000);//10000
 
 
-
-        $scope.getEmailPopup = function(){
+        $scope.getEmailPopup = function () {
             // Header profile option open and close on click action.
 
-                    var templateUrl = "subscribe_email_popup.html";
-                    var modalInstance = $uibModal.open({
-                            templateUrl: templateUrl,
-                            scope: $scope,
-                            size: 'md',
-                            windowClass: 'subscribe_email_popup',
-                            controller: 'ModalInstanceCtrltest'
-                        })
-                            .result.finally(function () {
-                                $scope.uploader.formData = [];
-                            });
+            var templateUrl = "subscribe_email_popup.html";
+            var modalInstance = $uibModal.open({
+                    templateUrl: templateUrl,
+                    scope: $scope,
+                    size: 'md',
+                    windowClass: 'subscribe_email_popup',
+                    controller: 'ModalInstanceCtrltest'
+                })
+                .result.finally(function () {
+                    $scope.uploader.formData = [];
+                });
         };
 
         $scope.openProfileSetting = function () {
@@ -264,8 +268,8 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                     controller: 'ModalInstanceCtrltest'
                 })
                 .result.finally(function () {
-                        $scope.uploader.formData = [];
-                    });
+                    $scope.uploader.formData = [];
+                });
         };
 
         $scope.openSharingModal = function ($service) {
@@ -309,7 +313,7 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                 $scope.showBrowseButton = !$scope.showBrowseButton;
                 $scope.uploader.uploadAll();
 
-              //  console.log($scope.oldMediaLink, ' : ', $scope.MediaLink);
+                //  console.log($scope.oldMediaLink, ' : ', $scope.MediaLink);
 
             }
         };
@@ -395,12 +399,15 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
             $scope.notifications = [];
             $scope.uid = null;
 
-            // comment ideas
+            // comment ideas and giveaway
             $scope.itemId = 0;
             $scope.userId = 0;
             $scope.isAdmin = false;
             $scope.commentId = null;
             $scope.commentsCount = 0;
+
+            $scope.commentSection = '';
+
 
             //Ideas author info
             $scope.authorName = '';
@@ -432,12 +439,12 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
             };
 
             setTimeout(
-                function(){
-                $('#top-nav a.new-message span').css('visibility', 'visible');
-            },
-            6000);
+                function () {
+                    $('#top-nav a.new-message span').css('visibility', 'visible');
+                },
+                6000);
 
-            jQuery(document).ready(function($) {
+            jQuery(document).ready(function ($) {
                 var args = {
                     arrowsNav: true,
                     loop: true,
@@ -458,7 +465,7 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                     autoPlay: false,
                     transitionType: 'move',
                     globalCaption: false,
-                    addActiveClass:true,
+                    addActiveClass: true,
                     deeplinking: {
                         enabled: true,
                         change: false
@@ -470,7 +477,7 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                         enabled: false,
                         center: false,
                     }
-                }else{
+                } else {
                     args.visibleNearby = {
                         enabled: true,
                         center: true,
@@ -499,7 +506,6 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                 $scope.contactError = true;
                 return;
             }
-
 
 
             $http({
@@ -733,7 +739,7 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
 
         // Comment for ideas section
         $scope.addCommentForIdeas = function (userId, itemId, permalink, comment) {
-         //   console.log(userId, itemId, permalink, comment);
+            //   console.log(userId, itemId, permalink, comment);
 
             $http({
                 url: '/api/comment/add-ideas-comment',
@@ -789,6 +795,8 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
 
         $scope.getCommentsForGiveaway = function (pid) {
 
+            // set comment section to reduce call
+            $scope.commentSection = 'giveaway';
             $http({
                 url: '/api/comment/get-giveaway-comment/' + pid,
                 method: "GET"
@@ -798,11 +806,11 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                 $scope.commentsCount = $scope.comments.length;
                 $scope.commentsCountView = $scope.commentsCount < 2 ? $scope.commentsCount + " " + "Comment" : $scope.commentsCount + " " + "Comments";
 
-                //  console.log($scope.commentsCount);
+
+                //   console.log('item id :'+ $scope.itemId );
 
             });
         };
-
 
 
         $scope.initCommentCounter = function () {
@@ -834,7 +842,13 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                 $scope.html = "";
                 $scope.isEdit = false;
                 // console.log("pid :"+ $scope.productId);
-                $scope.getCommentsForIdeas($scope.itemId);
+              //  $scope.getCommentsForIdeas($scope.itemId);
+
+                // reduce http call in comment section.
+                if ($scope.commentSection == 'giveaway')
+                    $scope.getCommentsForGiveaway($scope.itemId);
+                else
+                    $scope.getCommentsForIdeas($scope.itemId);
             });
 
         };
@@ -848,7 +862,12 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                     cid: id
                 }
             }).success(function (data) {
-                $scope.getCommentsForIdeas($scope.itemId);
+              //  $scope.getCommentsForIdeas($scope.itemId);
+                // reduce http call in comment section.
+                if ($scope.commentSection == 'giveaway')
+                    $scope.getCommentsForGiveaway($scope.itemId);
+                else
+                    $scope.getCommentsForIdeas($scope.itemId);
             });
 
         };
@@ -897,18 +916,18 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
             var form = $('#' + formID);
 
             $http({
-                url: '/api/giveaway/enter', 
+                url: '/api/giveaway/enter',
                 method: "POST",
                 data: {
                     'Email': form.find('input[name="email"]').val(),
                     'Password': form.find('input[name="password"]').val(),
-                    'giveaway_id': $('#giveaway_id').val(), 
+                    'giveaway_id': $('#giveaway_id').val(),
                     //'SetCookie': 'true'
                 }
             }).success(function (data) {
-                if(redirect){
+                if (redirect) {
                     window.location.href = '/giveaway'
-                }else{
+                } else {
                     $scope.responseMessage = data;
                 }
             });
@@ -1191,7 +1210,6 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                 $scope.activeClassAll = 'active';
                 $scope.activeClassComment = '';
                 $scope.activeClassHeart = '';
-
 
 
             } else if (data == 'comment') {
