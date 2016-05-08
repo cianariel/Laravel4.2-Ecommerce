@@ -140,6 +140,8 @@ Route::group(['prefix' => 'api'], function () {
     Route::post('product/update-product', 'ProductController@updateProductInfo');
     Route::post('product/publish-product', 'ProductController@publishProduct');
     Route::get('product/get-by-name/{name?}', 'ProductController@productDetailsViewByName');
+    Route::post('product/promote-product', 'ProductController@promoteProduct');
+
 
     // Test method for logo
     Route::get('product/logo', 'ProductController@getStoreInformation');

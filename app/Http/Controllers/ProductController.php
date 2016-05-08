@@ -300,6 +300,28 @@ class ProductController extends ApiController
 
     }
 
+    public function promoteProduct()
+    {
+        try {
+            $inputData = \Input::all();
+
+            $product = $this->product->where('id',$inputData['id'])->first();
+
+          //  dd($product->get());
+            $product->created_at = Carbon::createFromFormat('Y-m-d H:i:s',Carbon::now())->toDateTimeString();
+            $product->post_status ='Active';
+            $result = $product->save();
+
+            return $this->setStatusCode(\Config::get("const.api-status.success"))
+                        ->makeResponse($result);
+
+        } catch (Exception $ex) {
+            return $this->setStatusCode(\Config::get("const.api-status.system-fail"))
+                        ->makeResponseWithError("System Failure !", $ex);
+        }
+
+    }
+
 
     public function searchProductByName($name)
     {
