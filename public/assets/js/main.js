@@ -4757,7 +4757,7 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                 $scope.html = "";
                 $scope.isEdit = false;
                 // console.log("pid :"+ $scope.productId);
-              //  $scope.getCommentsForIdeas($scope.itemId);
+                //  $scope.getCommentsForIdeas($scope.itemId);
 
                 // reduce http call in comment section.
                 if ($scope.commentSection == 'giveaway')
@@ -4777,7 +4777,7 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                     cid: id
                 }
             }).success(function (data) {
-              //  $scope.getCommentsForIdeas($scope.itemId);
+                //  $scope.getCommentsForIdeas($scope.itemId);
                 // reduce http call in comment section.
                 if ($scope.commentSection == 'giveaway')
                     $scope.getCommentsForGiveaway($scope.itemId);
@@ -4878,7 +4878,7 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
 
         };
 
-        $scope.registerUser = function (email) {
+        $scope.registerUser = function (source) {
             $scope.closeAlert();
 
             if ($scope.Password != $scope.PasswordConf) {
@@ -4898,6 +4898,10 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
 
             }).success(function (data) {
                 $scope.outputStatus(data, data.data);
+                if (source == 'giveaway') {
+                    // window.location = 'giveaway';
+                    $scope.loginUser('giveaway');
+                }
 
                 /* if(data.status_code == 200)
                  window.location = $scope.logingRedirectLocation;
@@ -4912,7 +4916,13 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
             window.location = '/api/fb-login';
         };
 
-        $scope.loginUser = function () {
+        $scope.giveawayLoginFB = function () {
+
+            window.location = '/api/fb-login?vlu=giveaway';
+        };
+
+
+        $scope.loginUser = function (source) {
             $scope.closeAlert();
 
             $http({
@@ -4925,8 +4935,13 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                 }
             }).success(function (data) {
                 //   console.log(data.data);
+                if (source == 'giveaway') {
+                    console.log('redirecting to giveaway');
+                    window.location = '/giveaway';
+                    return;
+                }
 
-             //   var WpLoginURL = 'https://ideaing.com/ideas/api?call=login&username=' + $scope.Email + '&password=' + $scope.Password + '&remember=' + $scope.rememberMe;
+                //   var WpLoginURL = 'https://ideaing.com/ideas/api?call=login&username=' + $scope.Email + '&password=' + $scope.Password + '&remember=' + $scope.rememberMe;
                 var WpLoginURL = '/ideas/api?call=login&username=' + $scope.Email + '&password=' + $scope.Password + '&remember=' + $scope.rememberMe;
 
                 $http({
@@ -4936,7 +4951,7 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                 }).success(function (data) {
                     var from = $location.search().from; // TODO -- disable this
                     if (from === 'cms') {
-                      //  window.location = 'https://ideaing.com/ideas/wp-admin';
+                        //  window.location = 'https://ideaing.com/ideas/wp-admin';
                         window.location = '/ideas/wp-admin';
 
                     }
@@ -4944,7 +4959,7 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                     if (data.success) {
                         var from = $location.search().from; // TODO -- disable this
                         if (from === 'cms') {
-                        //    window.location = 'https://ideaing.com/ideas/wp-admin';
+                            //    window.location = 'https://ideaing.com/ideas/wp-admin';
                             window.location = '/ideas/wp-admin';
                         }
                     }
@@ -4952,7 +4967,7 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                 $scope.outputStatus(data, data.data);
                 /* if(data.status_code == 200)
                  window.location = $scope.logingRedirectLocation;
-                 */ 
+                 */
 
             });
         };

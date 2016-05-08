@@ -81,6 +81,8 @@ Route::group(['prefix' => 'api'], function () {
     Route::post('authenticate', 'AuthenticateController@authenticate');
     Route::post('register-user', 'AuthenticateController@registerUser');
     Route::get('fb-login', 'AuthenticateController@fbLogin');
+    Route::get('giveaway-fb-login', 'AuthenticateController@giveawayFbCheck');
+
     Route::get('secure-page', 'AuthenticateController@securePage');
     Route::get('index', 'AuthenticateController@index');
     //Route::get('password-rest/{code?}', 'AuthenticateController@index');
