@@ -5251,6 +5251,15 @@ body.homepage{
 }
 
 body.room-landing{
+  .main-content-filter,
+  .popular-new a{
+    position: relative;
+    z-index: 10;
+    overflow: hidden !important;
+  }
+  //.box-item{
+  //  z-index: 15;
+  //}
   #hero{
     overflow: visible;
   }
@@ -7088,8 +7097,8 @@ footer.about-footer{
         }
         .rsSlide{
           overflow: hidden;
-          padding-bottom: 100px;
-          height: 600px;
+          padding-bottom: 200px;
+          height: 700px;
           max-width: 100%;
         }
     }
