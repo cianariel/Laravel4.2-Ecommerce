@@ -9,7 +9,7 @@
         <a name="comment"></a>
         <input type="hidden" ng-init="userId='<?php echo $userId ?>'">
         <input type="hidden" ng-init="isAdmin='<?php echo $isAdminForEdit?>'">
-        <div ng-init="getCommentsForProduct(<?php echo $giveaway->id ?>)">
+        <div ng-init="getCommentsForGiveaway(<?php echo $giveaway->id ?>)">
             <h4><?php echo "{{ commentsCountView }}" ?></h4>
             <div ng-repeat="comment in comments">
                 <div class="single-comment">

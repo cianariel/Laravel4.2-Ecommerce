@@ -133,19 +133,21 @@ module.exports = function(grunt) {
     });
 
     grunt.loadNpmTasks('grunt-contrib-uglify');
-    grunt.loadNpmTasks('grunt-contrib-sass');
+  //  grunt.loadNpmTasks('grunt-contrib-sass');
     //grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-concat');
-    grunt.loadNpmTasks('grunt-contrib-sass');
-    grunt.loadNpmTasks('grunt-contrib-cssmin');
+  //  grunt.loadNpmTasks('grunt-contrib-sass');
+  //  grunt.loadNpmTasks('grunt-contrib-cssmin');
     grunt.loadNpmTasks('grunt-closure-tools');
 
     //grunt.registerTask('jshint', ['jshint']);
-    grunt.registerTask('default', ['sass', 'concat', 'uglify', 'cssmin']);
+   // grunt.registerTask('default', ['sass', 'concat', 'uglify', 'cssmin']);
+    grunt.registerTask('default', ['concat', 'uglify']);
+
     grunt.registerTask('js', ['concat:main', 'concat:admin', 'uglify:all']);
-    grunt.registerTask('css', ['sass', 'concat:maincss','concat:admincss','cssmin']);
-    grunt.registerTask('admincss', ['concat:admincss','cssmin']);
+   // grunt.registerTask('css', ['sass', 'concat:maincss','concat:admincss','cssmin']);
+   // grunt.registerTask('admincss', ['concat:admincss','cssmin']);
 
 
 

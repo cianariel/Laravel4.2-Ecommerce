@@ -146,6 +146,8 @@ class CommentController extends ApiController
 
     public function addCommentForGiveaway()
     {
+        $inputData = \Input::all();
+
         if (!empty($inputData['comment']) && !empty($inputData['pid'])) {
             $data['UserId'] = $inputData['uid'];
             $data['ItemId'] = $inputData['pid'];
@@ -210,7 +212,19 @@ class CommentController extends ApiController
 
     }
 
+    public function getCommentForGiveaway($pid = null)
+    {
+        if (!empty($pid)) {
+            $data['ItemId'] = $pid;
 
+            $result = $this->comment->findCommentForGiveaway($data);
+
+            return $this->setStatusCode(\Config::get("const.api-status.success"))
+                        ->makeResponse($result);
+
+        }
+
+    }
     public function updateComment()
     {
         $inputData = \Input::all();
