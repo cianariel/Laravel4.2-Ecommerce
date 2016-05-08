@@ -765,8 +765,16 @@ if($stories['featured']){
         MetaTag::set('title', $heading);
 //        MetaTag::set('description', $result['productInformation']['MetaDescription']);
 
-        dd($giveaway,$heading);
+        if ($userData['method-status'] == 'fail-with-http') {
+            $isAdmin = false;
+            $userData['id'] = 0;
+        } else {
+            $isAdmin = $userData->hasRole('admin');
+        }
+
+       // dd($giveaway,$heading);
         return view('giveaway.giveaway')
+            ->with('isAdminForEdit', $isAdmin)
             ->with('userData', $userData)
             ->with('nextGiveaways', $nextGiveaways)
             ->with('giveaway',$giveaway)

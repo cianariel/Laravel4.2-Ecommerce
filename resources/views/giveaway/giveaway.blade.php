@@ -181,7 +181,7 @@
             </div>
 
         </div>
-        @include('layouts.parts.comments-product')
+        @include('layouts.parts.comments-giveaway')
     </div>
     <script src="/assets/js/readmore.min.js"></script>
 
