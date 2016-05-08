@@ -1037,7 +1037,7 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                 $scope.outputStatus(data, data.data);
                 /* if(data.status_code == 200)
                  window.location = $scope.logingRedirectLocation;
-                 */
+                 */ 
 
             });
         };
