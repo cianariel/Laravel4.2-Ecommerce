@@ -8206,6 +8206,11 @@ body.homepage .grid-insert {
   body.homepage .grid-insert p {
     line-height: 2.3; }
 
+body.room-landing .main-content-filter,
+body.room-landing .popular-new a {
+  position: relative;
+  z-index: 10;
+  overflow: hidden !important; }
 body.room-landing #hero {
   overflow: visible; }
 body.room-landing .heroSlider {
@@ -9265,8 +9270,8 @@ footer.about-footer {
     /*            transform: unset !important;*/ }
   #hero .rsOverflow .rsContainer .rsSlide {
     overflow: hidden;
-    padding-bottom: 100px;
-    height: 600px;
+    padding-bottom: 200px;
+    height: 700px;
     max-width: 100%; }
   #hero .rsOverflow .rsContent {
     overflow: hidden; }
@@ -11126,7 +11131,7 @@ p {
   width: 40px;
   height: 40px;
   border-radius: 10px;
-  z-index: 5; }
+  z-index: 55; }
   .loader svg path,
   .loader svg rect {
     fill: #FF0042; }
