@@ -48,7 +48,7 @@
                                                         class="btn btn-warning" type="button">
                                         <i class="fa fa-angle-left"></i> Inactive</button>
                                     <button ng-hide="ProductId == ''"
-                                            data-ng-click="promoteProduct(ProductId)"
+                                            data-ng-click="promoteProduct({{$id}})"
                                             confirm="Are you sure to promote this product ?"
                                             confirm-settings="{size: 'sm'}"
                                             class="btn btn-success" type="button">

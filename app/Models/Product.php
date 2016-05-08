@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Core\ProductApi\AmazonProductApi;
 use App\Core\ProductApi\ProductStrategy;
+use Faker\Provider\DateTime;
 use Illuminate\Database\Eloquent\Model;
 use Carbon\Carbon;
 use App\Models\ProductCategory;

@@ -1461,9 +1461,27 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
             });
         };
 
+
+        // Product Promote
+
+        $scope.promoteProduct = function(id){
+            $scope.closeAlert();
+            $http({
+                url: '/api/product/promote-product',
+                method: "POST",
+                data: {
+                    id: id
+                }
+            }).success(function (data) {
+                $scope.outputStatus(data, "Product promoted successfully.");
+                $scope.loadProductData($scope.ProductId);
+
+            });
+        };
+
         //delete a product
         $scope.deleteProduct = function (id, redirect) {
-            console.log(redirect);
+           // console.log(redirect);
 
             $http({
                 url: '/api/product/delete-product',
