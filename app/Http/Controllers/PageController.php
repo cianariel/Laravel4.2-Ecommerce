@@ -725,6 +725,11 @@ if($stories['featured']){
     public function giveaway($permalink = false)
     {
 
+        if (!empty(session('page.source')) && session('page.source') == 'giveaway')
+        {
+            session(['page.source' => null]);
+        }
+
         $userData = $this->authCheck;
         if ($this->authCheck['method-status'] == 'success-with-http') {
             $userData = $this->authCheck['user-data'];

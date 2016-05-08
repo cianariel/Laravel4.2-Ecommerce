@@ -142,7 +142,7 @@
 
                             <div class="col-lg-6 col-xs-12 qiuck-signup pull-right hidden-soft giveaway-signup">
                                 <form>
-                                    <a class="btn btn-info col-xs-12" ng-click="registerWithFB()" href="#"><i
+                                    <a class="btn btn-info col-xs-12" ng-click="giveawayLoginFB()" href="#"><i
                                                 class="fa fa-facebook"></i>Sign up with Facebook</a>
                                     <div class="line-wrap modal-minor-text">or</div>
 
@@ -153,7 +153,7 @@
                                     <input class="form-control" ng-model="PasswordConf" type="password"
                                            placeholder="Retype Password">
 
-                                    <a class="btn btn-success col-xs-12" ng-click="registerUser()" href="#">Sign up</a>
+                                    <a class="btn btn-success col-xs-12" ng-click="registerUser('giveaway')" href="#">Sign up</a>
 
                                 </form>
                             </div>
