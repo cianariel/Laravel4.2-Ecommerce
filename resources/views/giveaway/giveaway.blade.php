@@ -183,7 +183,7 @@
         </div>
         @include('layouts.parts.comments-giveaway')
     </div>
-    <script src="/assets/js/readmore.min.js"></script>
+    {{--<script src="/assets/js/readmore.min.js"></script>--}}
 
     <script>
         $('.readmore').readmore({
