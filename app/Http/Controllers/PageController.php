@@ -23,6 +23,7 @@ use Sitemap;
 use PageHelper;
 use Route;
 use DB;
+use Redis;
 
 
 class PageController extends ApiController
@@ -100,6 +101,13 @@ class PageController extends ApiController
 
     public function getContent($page = 1, $limit = 5, $tag = false, $type = false, $productCategory = false, $sortBy = false)
     {
+        $cache = new Redis;
+        $cache->connect('localhost');
+        $cachedContent =$cache->get("plain-content-.$page-$limit-$tag-$type-$productCategory-$sortBy");
+
+        if($cachedContent){
+            return $cachedContent;
+        }
 
         if ($tag && $tag !== 'undefined' && $tag != 'false' && $tag != '') {
             $tagID = Tag::where('tag_name', $tag)->lists('id')->toArray();
@@ -157,11 +165,22 @@ class PageController extends ApiController
             $return['hasMore'] = false;
         }
 
+        $cache->set("plain-content-.$page-$limit-$tag-$type-$productCategory-$sortBy", $return);
+
         return $return;
     }
 
     public function getGridContent($page = 1, $limit = 5, $tag = false, $type = false, $ideaCategory = false)
     {
+
+        $cache = new Redis;
+        $cache->connect('localhost');
+        $cachedContent = $cache->get("grid-content-.$page-$limit-$tag-$type-$ideaCategory");
+
+        if($cachedContent){
+            return $cachedContent;
+        }
+
 
         if ($tag && $tag !== 'undefined' && $tag != 'false' && $tag != '') {
             $tagID = Tag::where('tag_name', $tag)->lists('id')->toArray();
@@ -240,6 +259,8 @@ if($stories['featured']){
         }else{
             $return['hasMore'] = false;
         }
+
+        $cache->set("grid-content-.$page-$limit-$tag-$type-$ideaCategory", $return);
 
         return $return;
     }
