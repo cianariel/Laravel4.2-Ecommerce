@@ -186,14 +186,6 @@
     {{--<script src="/assets/js/readmore.min.js"></script>--}}
 
     <script>
-        $('.readmore').readmore({
-            startOpen: false,
-            collapsedHeight: 300,
-            moreLink: '<a class="morelink" href="#">Read more</a>',
-            lessLink: '<a class="morelink" href="#">Close</a>',
-        });
-
-
         jQuery(document).ready(function ($) {
             $('.giveaway-slider-content ').royalSlider({
                 arrowsNav: true,

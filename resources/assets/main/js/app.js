@@ -299,6 +299,13 @@
         //    //$contentBox.addClass('only-' + $type);
         //});
 
+        $('.readmore').readmore({
+            startOpen: false,
+            collapsedHeight: 300,
+            moreLink: '<a class="morelink" href="#">Read more</a>',
+            lessLink: '<a class="morelink" href="#">Close</a>',
+        });
+
 
 	}); // global function()
 
