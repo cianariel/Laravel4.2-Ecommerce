@@ -5462,8 +5462,7 @@ body.contactus-page #hero {
 .slider.product-slider .rsThumbsContainer, .slider.heroSlider .rsThumbsContainer, .slider#daily-deals .rsThumbsContainer, .slider.giveaway-slider .rsThumbsContainer, .slider#newest-arrivals .rsThumbsContainer {
   max-height: 500px; }
   .slider.product-slider .rsThumbsContainer img, .slider.heroSlider .rsThumbsContainer img, .slider#daily-deals .rsThumbsContainer img, .slider.giveaway-slider .rsThumbsContainer img, .slider#newest-arrivals .rsThumbsContainer img {
-    width: 145px;
-    height: 115px; }
+    width: 145px; }
 .slider.product-slider .rsArrow,
 .slider.product-slider .rsThumbsArrow, .slider.heroSlider .rsArrow,
 .slider.heroSlider .rsThumbsArrow, .slider#daily-deals .rsArrow,
@@ -7513,14 +7512,12 @@ header.sub-head {
   #hero-nav .category-nav li.active a:not(.home-link)::after, #hero-nav .category-nav li a:not(.home-link):hover::after {
     content: ' ';
     width: 17px;
-    height: 19px;
-    /*          display: block;*/
+    height: 12px;
     font-size: 1.7rem;
     position: absolute;
-    bottom: -13px;
-    /*      right: 38%;*/
+    bottom: -6px;
     color: #fff;
-    background: white url("/assets/images/pointer-arrow-grey.png") no-repeat;
+    background: url(/assets/images/pointer-arrow-grey.png) no-repeat #fff;
     left: 50%;
     margin-left: -8px; }
   #hero-nav li.active a.home-link {
