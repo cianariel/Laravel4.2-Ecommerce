@@ -82,31 +82,40 @@ class PageController extends ApiController
 
     public static function getHeroSliderContent()
     {
-        $url = URL::to('/') . '/ideas/feeds/index.php?count=5&only-slider';
+        $cacheKey = "slider-ideas";
 
-        $ch = curl_init();
-        curl_setopt($ch, CURLOPT_URL, $url);
-        curl_setopt($ch, CURLOPT_HEADER, 0);
-        curl_setopt($ch, CURLOPT_VERBOSE, true);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-        curl_setopt($ch, CURLOPT_ENCODING, "");
-        $json = curl_exec($ch);
+        if($cachedContent = PageHelper::getFromRedis($cacheKey, true)){
+            $return = $cachedContent;
+        }else{
+            $url = URL::to('/') . '/ideas/feeds/index.php?count=5&only-slider';
 
-        $return = json_decode($json, true);
+            $ch = curl_init();
+            curl_setopt($ch, CURLOPT_URL, $url);
+            curl_setopt($ch, CURLOPT_HEADER, 0);
+            curl_setopt($ch, CURLOPT_VERBOSE, true);
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+            curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+            curl_setopt($ch, CURLOPT_ENCODING, "");
+            $json = curl_exec($ch);
+
+            $return = json_decode($json, true);
+
+            $cached = PageHelper::putIntoRedis($cacheKey, $return);
+        }
 
         return $return;
+
     }
 
 
     public function getContent($page = 1, $limit = 5, $tag = false, $type = false, $productCategory = false, $sortBy = false)
     {
-     //   $cache = new Redis;
-     //   $cache->connect('localhost');
-     //   $cachedContent =$cache->get("plain-content-.$page-$limit-$tag-$type-$productCategory-$sortBy");
+        $cacheKey = "plain-content-$page-$limit-$tag-$type-$productCategory-$sortBy";
 
-        if(@$cachedContent){
-            return $cachedContent;
+        if($cachedContent = PageHelper::getFromRedis($cacheKey)){
+            $return = $cachedContent;
+            $return->fromCache = true;
+            return json_encode($return);
         }
 
         if ($tag && $tag !== 'undefined' && $tag != 'false' && $tag != '') {
@@ -165,7 +174,10 @@ class PageController extends ApiController
             $return['hasMore'] = false;
         }
 
-       // $cache->set("plain-content-.$page-$limit-$tag-$type-$productCategory-$sortBy", $return);
+        $cached = PageHelper::putIntoRedis($cacheKey, $return);
+
+        $return['wasCached'] = $cached;
+        $return['fromCache'] = false;
 
         return $return;
     }
@@ -173,12 +185,9 @@ class PageController extends ApiController
     public function getGridContent($page = 1, $limit = 5, $tag = false, $type = false, $ideaCategory = false)
     {
 
-        $cache = new Redis;
-        $cache->connect('127.0.0.1', 6379);
-        $cacheString = "grid-content-$page-$limit-$tag-$type-$ideaCategory";
-        $cachedContent = json_decode($cache->get($cacheString));
+        $cacheKey = "grid-content-$page-$limit-$tag-$type-$ideaCategory";
 
-        if($cachedContent){
+        if($cachedContent = PageHelper::getFromRedis($cacheKey)){
             $return = $cachedContent;
             $return->fromCache = true;
             return json_encode($return);
@@ -263,9 +272,8 @@ if($stories['featured']){
             $return['hasMore'] = false;
         }
 
-        $cached = $cache->set($cacheString, json_encode($return));
+        $cached = PageHelper::putIntoRedis($cacheKey, $return);
 
-       // echo $bob; die();
         $return['wasCached'] = $cached;
         $return['fromCache'] = false;
         return $return;
@@ -415,27 +423,34 @@ if($stories['featured']){
 
     public function getRelatedStories($currentStoryID, $limit, $tags)
     {
-        $url = URL::to('/') . '/ideas/feeds/index.php?count=' . $limit;
+        $cacheKey = "related-products-$currentStoryID-$limit-$tags";
 
-        if ($tags && $tags != 'false') {
-            $url .= '&tag_in=' . strtolower(implode(',', $tags));
+        if($cachedContent = PageHelper::getFromRedis($cacheKey)) {
+            return $cachedContent;
+        }else{
+            $url = URL::to('/') . '/ideas/feeds/index.php?count=' . $limit;
+
+            if ($tags && $tags != 'false') {
+                $url .= '&tag_in=' . strtolower(implode(',', $tags));
+            }
+            if ($currentStoryID) {
+                $url .= '&excludeid=' . $currentStoryID;
+            }
+
+            $ch = curl_init();
+            curl_setopt($ch, CURLOPT_URL, $url);
+            curl_setopt($ch, CURLOPT_HEADER, 0);
+            curl_setopt($ch, CURLOPT_VERBOSE, true);
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+            curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+            curl_setopt($ch, CURLOPT_ENCODING, "");
+            $json = curl_exec($ch);
+
+            $return = json_decode($json);
+            PageHelper::putIntoRedis($cacheKey, $return);
+            return $return;
         }
-        if ($currentStoryID) {
-            $url .= '&excludeid=' . $currentStoryID;
-        }
 
-        $ch = curl_init();
-        curl_setopt($ch, CURLOPT_URL, $url);
-        curl_setopt($ch, CURLOPT_HEADER, 0);
-        curl_setopt($ch, CURLOPT_VERBOSE, true);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-        curl_setopt($ch, CURLOPT_ENCODING, "");
-        $json = curl_exec($ch);
-
-        $return = json_decode($json);
-
-        return $return;
     }
 
     public function signupPage($email = '')
@@ -485,29 +500,27 @@ if($stories['featured']){
 
     public function getRelatedProducts($productID, $limit, $tagID)
     {
-        $productSettings = [
-            'ActiveItem' => true,
-            'excludeID' => $productID,
-            'limit' => $limit,
-//            'page'       => $page,
-//            'CustomSkip' => $offset,
-//
-//            'CategoryId' => false,
-//            'FilterType' => false,
-//            'FilterText' => false,
-//            'ShowFor'    => false,
-//            'WithTags'   => false,
-        ];
+        $cacheKey = "related-products-$productID-$limit-$tagID";
+        if($cachedContent = PageHelper::getFromRedis($cacheKey)) {
+            return $cachedContent;
+        }else{
+            $productSettings = [
+                'ActiveItem' => true,
+                'excludeID' => $productID,
+                'limit' => $limit,
+            ];
 
-        if (is_array($tagID)) {
-            $productSettings['TagId'] = $tagID;
+            if (is_array($tagID)) {
+                $productSettings['TagId'] = $tagID;
+            }
+
+            $prod = new Product();
+
+            $products = $prod->getProductList($productSettings);
+            PageHelper::putIntoRedis($cacheKey, $products);
+
+            return $products;
         }
-
-        $prod = new Product();
-
-        $products = $prod->getProductList($productSettings);
-
-        return $products;
     }
 
 
@@ -589,7 +602,13 @@ if($stories['featured']){
 
     public static function getShopMenu()
     {
-        $return = Product::getForShopMenu();
+        if($return = PageHelper::getFromRedis('header-shop-menu')){
+            $return->fromCache = true;
+            $return = json_encode($return);
+        }else{
+            $return = Product::getForShopMenu();
+            PageHelper::putIntoRedis('header-shop-menu', $return);
+        }
         return $return;
     }
 
@@ -609,7 +628,15 @@ if($stories['featured']){
 
     public function getFollowerCounts()
     {
-        return Sharing::getFollowersFromAPIs();
+        if($return = PageHelper::getFromRedis('footer-follower-counts')){
+            $return->fromCache = true;
+            $return = json_encode($return);
+        }else{
+            $return = Sharing::getFollowersFromAPIs();
+            PageHelper::putIntoRedis('footer-follower-counts', $return);
+        }
+
+        return $return;
     }
 
     public function generateSitemap()
