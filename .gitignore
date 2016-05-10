@@ -8,5 +8,4 @@ Vagrantfile
 /public/ideas/wp-content/uploads/
 /public/ideas/wp-content/plugins/blade/storage/views/
 /node_modules
-/resources/cli/grunt/node_modules
-/resources/cli/grunt/Gruntfile.js
+

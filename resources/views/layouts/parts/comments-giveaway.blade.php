@@ -2,6 +2,7 @@
       type="text/css"/>
 <script>
     var img = "<?php echo empty($giveaway->giveaway_image) ? "" : $giveaway->giveaway_image ?>";
+    var giveawayLink = "<?php echo empty($giveaway->giveaway_permalink) ? "" : $giveaway->giveaway_permalink ?>";
 </script>
 
 <section class="comments" id="comments">
