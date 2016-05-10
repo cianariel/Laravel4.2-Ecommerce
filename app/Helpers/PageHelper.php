@@ -7,6 +7,7 @@ use  Illuminate\Routing\Router;;
 use App\Models\Giveaway;
 use App\Models\ProductCategory;
 use URL;
+use Redis;
 
 class PageHelper {
 
@@ -76,5 +77,34 @@ class PageHelper {
     public static function getCurrentGiveaway() {
         $giveaway = Giveaway::whereDate('ends', '>=', date('Y-m-d'))->whereDate('goes_live', '<=', date('Y-m-d'))->first();
         return $giveaway;
+    }
+
+    public static function getFromRedis($key, $returnArray = false, $redis = false){
+
+        if(!$redis){
+            $redis = new Redis;
+            $redis->connect('127.0.0.1', 6379);
+        }
+
+        $cachedContent = json_decode($redis->get($key), $returnArray);
+
+        return $cachedContent;
+    }
+
+    public static function putIntoRedis($key, $content, $expire = false, $redis = false){
+
+        if(!$redis){
+            $redis = new Redis;
+            $redis->connect('127.0.0.1', 6379);
+        }
+
+        if(!$expire){
+            $expire = '+2 days';
+        }
+
+        $success = $redis->set($key, json_encode($content));
+        $redis->expire($key, $expire);
+
+        return $success;
     }
 }
