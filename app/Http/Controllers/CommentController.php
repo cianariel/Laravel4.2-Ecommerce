@@ -33,6 +33,11 @@ class CommentController extends ApiController
         $this->addNotification($data, 'ideas');
     }
 
+    public function addGiveawayNotification($data)
+    {
+        $this->addNotification($data, 'giveaway');
+    }
+
 
     /*public function dt()
     {
@@ -175,7 +180,7 @@ class CommentController extends ApiController
 
             $notification['ItemTitle'] = $giveaway['giveaway_title'];
 
-            $this->addIdeasNotification($notification);
+            $this->addGiveawayNotification($notification);
 
             return $this->setStatusCode(\Config::get("const.api-status.success"))
                         ->makeResponse($result);

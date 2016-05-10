@@ -783,7 +783,9 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                 data: {
                     uid: userId,
                     pid: itemId,
-                    plink: permalink,
+                //  plink: permalink + '/' + $window.giveawayLink,
+                    plink: $window.giveawayLink,
+
                     comment: comment,
                     img: $window.img
                 }
@@ -1003,7 +1005,7 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
 
         $scope.giveawayLoginFB = function () {
 
-            window.location = '/api/fb-login?vlu=giveaway';
+            window.location = '/api/fb-login?vlu=giveaway&pl=' + $window.giveawayLink;
         };
 
 
@@ -1022,7 +1024,7 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                 //   console.log(data.data);
                 if (source == 'giveaway') {
                     console.log('redirecting to giveaway');
-                    window.location = '/giveaway';
+                    window.location = '/giveaway/' + $window.giveawayLink;
                     return;
                 }
 
