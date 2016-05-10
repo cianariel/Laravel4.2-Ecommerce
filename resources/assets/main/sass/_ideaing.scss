@@ -1040,7 +1040,7 @@ body.contactus-page
 
       img{
         width: 145px;
-        height: 115px;
+        //height: 115px;
       }
     }
 
@@ -4349,18 +4349,16 @@ header.sub-head{
 
   .category-nav{
       li.active a:not(.home-link)::after, li a:not(.home-link):hover::after{
-          content: ' ';
-          width: 17px;
-          height: 19px;
-/*          display: block;*/
-          font-size: 1.7rem;
-          position: absolute;
-          bottom: -13px;
-    /*      right: 38%;*/
-          color: #fff;
-          background: white url('/assets/images/pointer-arrow-grey.png') no-repeat;
-          left: 50%;
-          margin-left: -8px;
+        content: ' ';
+        width: 17px;
+        height: 12px;
+        font-size: 1.7rem;
+        position: absolute;
+        bottom: -6px;
+        color: #fff;
+        background: url(/assets/images/pointer-arrow-grey.png) no-repeat #fff;
+        left: 50%;
+        margin-left: -8px;
 
           //text-shadow:
           //-1px -1px 0 darken($pale-grey, 10%),
