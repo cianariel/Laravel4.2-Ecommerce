@@ -196,7 +196,7 @@ class AuthenticateController extends ApiController
     {
         //dd($request);
 
-        session(['page.source' => 'giveaway']);
+      //  session(['page.source' => 'giveaway']);
 
         $this->fbLogin($request);
 
@@ -213,7 +213,8 @@ class AuthenticateController extends ApiController
         $isGiveaway = $request->has('vlu');
         if(!empty($isGiveaway) && $request['vlu'] == 'giveaway')
         {
-            session(['page.source' => 'giveaway']);
+            $link = 'giveaway/'.$request['pl'];
+            session(['page.source.giveaway' => $link]);
         }
 
 
@@ -250,8 +251,11 @@ class AuthenticateController extends ApiController
             $this->setCookie('auth-token', $token);
         }
 
-        if (!empty(session('page.source')) && session('page.source') == 'giveaway')
-            return redirect()->action('PageController@giveaway');
+        if (!empty(session('page.source.giveaway')))
+        {
+            return redirect(session('page.source.giveaway'));
+            //return redirect()->action('PageController@giveaway');
+        }
         else
             return redirect()->action('UserController@userProfile');
 

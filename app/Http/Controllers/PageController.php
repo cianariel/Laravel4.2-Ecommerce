@@ -34,6 +34,8 @@ class PageController extends ApiController
         //check user authentication and get user basic information
 
         $this->authCheck = $this->RequestAuthentication(array('admin', 'editor', 'user'));
+
+        $this->clearTemporarySessionData();
     }
 
 
@@ -48,7 +50,6 @@ class PageController extends ApiController
 
         return view('search.index')->with('userData', $userData);
     }
-
 
 
     /**
@@ -148,29 +149,29 @@ class PageController extends ApiController
 
         // we try to pull one extra item in each category, to know if there is more content availiable (in that case, we later display a 'Load More' button
         $stories = array_slice($stories, 0, $limit);
-        if(!empty(array_slice($stories, $limit, 1))){
+        if (!empty(array_slice($stories, $limit, 1))) {
             $leftOver++;
         }
 
         $prods = array_slice($products['result'], 0, $limit);
-        if(!empty(array_slice($products['result'], $limit, 1))){
+        if (!empty(array_slice($products['result'], $limit, 1))) {
             $leftOver++;
         }
 
         $return['content'] = array_merge($stories, $prods);
 
-       $return['content'] = array_values(array_sort($return['content'], function ($value) {
-                        $value = (object)$value;
-                        return strtotime($value->raw_creation_date);
+        $return['content'] = array_values(array_sort($return['content'], function ($value) {
+            $value = (object)$value;
+            return strtotime($value->raw_creation_date);
 
         }));
 
-        $return['content']  = array_reverse( $return['content'] );
+        $return['content'] = array_reverse($return['content']);
 
 
-        if($leftOver > 0){
+        if ($leftOver > 0) {
             $return['hasMore'] = true;
-        }else{
+        } else {
             $return['hasMore'] = false;
         }
 
@@ -237,25 +238,25 @@ class PageController extends ApiController
         // we try to pull one extra item in each category, to know if there is more content availiable (in that case, we later display a 'Load More' button
         $regularStories = array_slice($stories['regular'], 0, $storyLimit);
 
-        if(!empty(array_slice($stories['regular'], $storyLimit, 1))){
+        if (!empty(array_slice($stories['regular'], $storyLimit, 1))) {
             $leftOver++;
         }
 
 //        print_r($stories['featured']->toArray()); die();
 
 
-if($stories['featured']){
-     $featuredStories = array_slice($stories['featured']->toArray(), 0, $featuredLimit);
-        if(!empty(array_slice($stories['featured']->toArray(), $featuredLimit, 1))){
-            $leftOver++;
+        if ($stories['featured']) {
+            $featuredStories = array_slice($stories['featured']->toArray(), 0, $featuredLimit);
+            if (!empty(array_slice($stories['featured']->toArray(), $featuredLimit, 1))) {
+                $leftOver++;
+            }
+        } else {
+            $featuredStories = [];
         }
-    }else{
-        $featuredStories = [];
-    }
 
         $prods = array_slice($products['result'], 0, $productLimit);
 
-        if(!empty(array_slice($products['result'], $productLimit, 1))){
+        if (!empty(array_slice($products['result'], $productLimit, 1))) {
             $leftOver++;
         }
 
@@ -266,9 +267,9 @@ if($stories['featured']){
             return strtotime(@$b->raw_creation_date) - strtotime(@$a->raw_creation_date);
         });
 
-        if($leftOver > 0){
+        if ($leftOver > 0) {
             $return['hasMore'] = true;
-        }else{
+        } else {
             $return['hasMore'] = false;
         }
 
@@ -283,7 +284,7 @@ if($stories['featured']){
     public function getStories($limit, $offset, $tag)
     {
 
-            $url = URL::to('/') . '/ideas/feeds/index.php?count=' . $limit . '&offset=' . $offset;
+        $url = URL::to('/') . '/ideas/feeds/index.php?count=' . $limit . '&offset=' . $offset;
 
         if ($tag && $tag != 'false') {
             $url .= '&tag=' . $tag;
@@ -298,8 +299,8 @@ if($stories['featured']){
         curl_setopt($ch, CURLOPT_ENCODING, "");
         $json = curl_exec($ch);
 
-      //  echo $json;
-      //  die();
+        //  echo $json;
+        //  die();
 
         //  $return = json_decode($json);
 
@@ -324,8 +325,6 @@ if($stories['featured']){
         }
 
 
-
-
         return $newIdeaCollection->toArray();//$return;
     }
 
@@ -333,7 +332,7 @@ if($stories['featured']){
     public function getGridStories($limit, $offset, $featuredLimit, $featuredOffset, $tag = false, $category = false)
     {
 
-            $url = URL::to('/') . '/ideas/feeds/index.php?count=' . $limit . '&no-featured&offset=' . $offset;
+        $url = URL::to('/') . '/ideas/feeds/index.php?count=' . $limit . '&no-featured&offset=' . $offset;
 
         if ($tag && $tag != 'false') {
             $url .= '&tag=' . $tag;
@@ -379,7 +378,7 @@ if($stories['featured']){
         $return['regular'] = json_decode($newIdeaCollection->toJson(), FALSE);
 
 
-            $featuredUrl = URL::to('/') . '/ideas/feeds/index.php?count=' . $featuredLimit . '&only-featured&offset=' . $featuredOffset;
+        $featuredUrl = URL::to('/') . '/ideas/feeds/index.php?count=' . $featuredLimit . '&only-featured&offset=' . $featuredOffset;
 
 
         if ($tag && $tag != 'false' && $tag != false) {
@@ -401,7 +400,7 @@ if($stories['featured']){
         $newIdeaCollection = new Collection();
         $comment = new App\Models\Comment();
 
-        if($ideaCollection){
+        if ($ideaCollection) {
 
             foreach ($ideaCollection as $singleIdea) {
 
@@ -546,7 +545,7 @@ if($stories['featured']){
 
 //        $tagNames = [];
         foreach ($currentTags as $tagID) {
-            $tagNames[] = str_replace(' ', '-',Tag::find($tagID)->tag_name);
+            $tagNames[] = str_replace(' ', '-', Tag::find($tagID)->tag_name);
         }
 
         @$relatedIdeas = self::getRelatedStories($productData['product']['id'], 3, $tagNames);
@@ -687,7 +686,7 @@ if($stories['featured']){
 
             //CMS POSTS -- TODO -- if we wont use images in the sitemap, change into direct call to WP DB for better perf?
 
-                $url = URL::to('/') . '/ideas/feeds/index.php?count=0';
+            $url = URL::to('/') . '/ideas/feeds/index.php?count=0';
 
             $ch = curl_init();
             curl_setopt($ch, CURLOPT_URL, $url);
@@ -747,7 +746,7 @@ if($stories['featured']){
         MetaTag::set('title', 'About Ideaing: What We Do at Ideaing.com');
 //        MetaTag::set('description', $result['productInformation']['MetaDescription']);
 
-      //  return view('info.aboutus');
+        //  return view('info.aboutus');
 
         $userData = $this->authCheck;
         if ($this->authCheck['method-status'] == 'success-with-http') {
@@ -765,7 +764,7 @@ if($stories['featured']){
         MetaTag::set('title', 'Terms of Use | Ideaing');
 //        MetaTag::set('description', $result['productInformation']['MetaDescription']);
 
-       // return view('info.terms-of-use');
+        // return view('info.terms-of-use');
 
         $userData = $this->authCheck;
         if ($this->authCheck['method-status'] == 'success-with-http') {
@@ -779,48 +778,44 @@ if($stories['featured']){
     public function giveaway($permalink = false)
     {
 
-        if (!empty(session('page.source')) && session('page.source') == 'giveaway')
-        {
-            session(['page.source' => null]);
-        }
-
         $userData = $this->authCheck;
         if ($this->authCheck['method-status'] == 'success-with-http') {
             $userData = $this->authCheck['user-data'];
         }
 
-        if($permalink){
+        if ($permalink) {
             $giveaway = Giveaway::where('giveaway_permalink', $permalink)->first();
             $heading = $giveaway->giveaway_title;
-        }else{
+        } else {
             $giveaway = Giveaway::whereDate('ends', '>=', date('Y-m-d'))->whereDate('goes_live', '<=', date('Y-m-d'))->first();
             $heading = 'Ideaing Giveaway';
         }
 
         $ended = false;
 
-        if(!$giveaway){
+        if (!$giveaway) {
             $giveaway = Giveaway::whereDate('ends', '<=', date('Y-m-d'))->first();
             $ended = true;
         }
 
         $nextGiveaways = Giveaway::whereDate('goes_live', '>=', date('Y-m-d'))->get();
 
-        if(!$giveaway){
+        if (!$giveaway) {
             return \Redirect::to('not-found');
         }
 
-        if(@$userData['id'] && DB::table('giveaway_users')->where(
-            [
-                'user_id'     => $userData['id'],
-                'giveaway_id' => $giveaway->id,
-            ]
-        )->count()){
+        if (@$userData['id'] && DB::table('giveaway_users')->where(
+                [
+                    'user_id' => $userData['id'],
+                    'giveaway_id' => $giveaway->id,
+                ]
+            )->count()
+        ) {
             $alreadyIn = true;
-        }else{
+        } else {
             $alreadyIn = false;
         }
-       // dd($giveaway);
+        // dd($giveaway);
         MetaTag::set('title', $heading);
 //        MetaTag::set('description', $result['productInformation']['MetaDescription']);
 
@@ -831,52 +826,59 @@ if($stories['featured']){
             $isAdmin = $userData->hasRole('admin');
         }
 
-       // dd($giveaway,$heading);
+        //  dd($giveaway,$heading);
         return view('giveaway.giveaway')
             ->with('isAdminForEdit', $isAdmin)
             ->with('userData', $userData)
             ->with('nextGiveaways', $nextGiveaways)
-            ->with('giveaway',$giveaway)
+            ->with('giveaway', $giveaway)
             ->with('ended', $ended)
             ->with('alreadyIn', $alreadyIn)
-            ->with('heading', $heading)
-            ;
+            ->with('heading', $heading);
+    }
+
+    private function clearTemporarySessionData()
+    {
+        if (!empty(session('page.source.giveaway'))) {
+            session(['page.source.giveaway' => null]);
+        }
     }
 
     public function giveawayDetails($permalink)
     {
         $userData = $this->authCheck;
-        if ($this->authCheck['method-status'] == 'success-with-http'){
+        if ($this->authCheck['method-status'] == 'success-with-http') {
             $userData = $this->authCheck['user-data'];
         }
 
         $giveaway = Giveaway::whereDate('permalink', $permalink)->first();
 
-        if(!$giveaway){
+        if (!$giveaway) {
             return \Redirect::to('giveaway');
         }
 
         $heading = $giveaway->giveaway_title;
 
-        if(strtotime($giveaway->ends) < time()){
+        if (strtotime($giveaway->ends) < time()) {
             $ended = true;
-        }else{
+        } else {
             $ended = false;
         }
 
         $nextGiveaways = Giveaway::whereDate('goes_live', '>=', date('Y-m-d'))->get();
 
-        if(@$userData['id'] && DB::table('giveaway_users')->where(
-            [
-                'user_id'     => $userData['id'],
-                'giveaway_id' => $giveaway->id,
-            ]
-        )->count()){
+        if (@$userData['id'] && DB::table('giveaway_users')->where(
+                [
+                    'user_id' => $userData['id'],
+                    'giveaway_id' => $giveaway->id,
+                ]
+            )->count()
+        ) {
             $alreadyIn = true;
-        }else{
+        } else {
             $alreadyIn = false;
         }
-       // dd($giveaway);
+        // dd($giveaway);
 
         MetaTag::set('title', $heading);
 //        MetaTag::set('description', $result['productInformation']['MetaDescription']);
@@ -884,12 +886,11 @@ if($stories['featured']){
         return view('giveaway.giveaway')
             ->with('userData', $userData)
             ->with('nextGiveaways', $nextGiveaways)
-            ->with('giveaway',$giveaway)
+            ->with('giveaway', $giveaway)
             ->with('ended', $ended)
             ->with('alreadyIn', $alreadyIn)
-            ->with('heading', $heading)
-            ;
+            ->with('heading', $heading);
     }
-    
+
 
 }
