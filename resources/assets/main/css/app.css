@@ -8209,8 +8209,7 @@ body.homepage .grid-insert {
 body.room-landing .main-content-filter,
 body.room-landing .popular-new a {
   position: relative;
-  z-index: 10;
-  overflow: hidden !important; }
+  z-index: 10; }
 body.room-landing #hero {
   overflow: visible; }
 body.room-landing .heroSlider {
