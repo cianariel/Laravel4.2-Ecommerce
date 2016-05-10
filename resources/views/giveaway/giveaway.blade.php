@@ -142,7 +142,7 @@
 
                             <div class="col-lg-6 col-xs-12 qiuck-signup pull-right hidden-soft giveaway-signup">
                                 <form>
-                                    <button ng-click="registerWithFB()" class="btn btn-info col-xs-12" href="#"><i class="m-icon m-icon--facebook-id"></i>Sign up with Facebook</button>
+                                    <button ng-click="giveawayLoginFB()" class="btn btn-info col-xs-12" href="#"><i class="m-icon m-icon--facebook-id"></i>Sign up with Facebook</button>
                                     <div class="line-wrap modal-minor-text">or</div>
 
                                     <input class="form-control" ng-model="FullName" type="text" placeholder="Name">
