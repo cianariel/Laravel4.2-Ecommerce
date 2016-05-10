@@ -3,10 +3,11 @@
 use ArrayAccess;
 use Carbon\Carbon;
 use Fenos\Notifynder\Contracts\NotifynderCategory;
+use Fenos\Notifynder\Exceptions\EntityNotIterableException;
+use Fenos\Notifynder\Exceptions\IterableIsEmptyException;
 use Fenos\Notifynder\Exceptions\NotificationBuilderException;
 use Illuminate\Contracts\Config\Repository;
 use Illuminate\Database\Eloquent\Model;
-use InvalidArgumentException;
 use Traversable;
 use Closure;
 
@@ -175,26 +176,30 @@ class NotifynderBuilder implements ArrayAccess
      * @param          $dataToIterate
      * @param  Closure $builder
      * @return $this
-     * @throws NotificationBuilderException
+     * @throws \Fenos\Notifynder\Exceptions\IterableIsEmptyException
+     * @throws \Fenos\Notifynder\Exceptions\EntityNotIterableException
      */
     public function loop($dataToIterate, Closure $builder)
     {
         if ($this->isIterable($dataToIterate)) {
-            $notifications = [];
+            if(count($dataToIterate) > 0) {
+                $notifications = [];
 
-            $newBuilder = new self($this->notifynderCategory);
+                $newBuilder = new self($this->notifynderCategory);
 
-            foreach ($dataToIterate as $key => $data) {
-                $builder($newBuilder, $data, $key);
-                $notifications[] = $newBuilder->toArray();
+                foreach ($dataToIterate as $key => $data) {
+                    $builder($newBuilder, $data, $key);
+                    $notifications[] = $newBuilder->toArray();
+                }
+
+                $this->notifications = $notifications;
+                return $this;
+            } else {
+                throw new IterableIsEmptyException('The Iterable passed must contain at least one element');
             }
-
-            $this->notifications = $notifications;
-            return $this;
+        } else {
+            throw new EntityNotIterableException('The data passed must be itarable');
         }
-
-        $error = "The data passed must be itarable";
-        throw new InvalidArgumentException($error);
     }
 
     /**
@@ -277,7 +282,7 @@ class NotifynderBuilder implements ArrayAccess
             $this->setBuilderData("{$property}_type", $from[0]);
             $this->setBuilderData("{$property}_id", $from[1]);
         } elseif($from[0] instanceof Model) {
-            $this->setBuilderData("{$property}_type", get_class($from[0]));
+            $this->setBuilderData("{$property}_type", $from[0]->getMorphClass());
             $this->setBuilderData("{$property}_id", $from[0]->getKey());
         } else {
             $this->isNumeric($from[0]);

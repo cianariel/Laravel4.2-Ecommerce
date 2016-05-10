@@ -101,11 +101,11 @@ class PageController extends ApiController
 
     public function getContent($page = 1, $limit = 5, $tag = false, $type = false, $productCategory = false, $sortBy = false)
     {
-        $cache = new Redis;
-        $cache->connect('localhost');
-        $cachedContent =$cache->get("plain-content-.$page-$limit-$tag-$type-$productCategory-$sortBy");
+     //   $cache = new Redis;
+     //   $cache->connect('localhost');
+     //   $cachedContent =$cache->get("plain-content-.$page-$limit-$tag-$type-$productCategory-$sortBy");
 
-        if($cachedContent){
+        if(@$cachedContent){
             return $cachedContent;
         }
 
@@ -165,7 +165,7 @@ class PageController extends ApiController
             $return['hasMore'] = false;
         }
 
-        $cache->set("plain-content-.$page-$limit-$tag-$type-$productCategory-$sortBy", $return);
+       // $cache->set("plain-content-.$page-$limit-$tag-$type-$productCategory-$sortBy", $return);
 
         return $return;
     }
@@ -174,11 +174,14 @@ class PageController extends ApiController
     {
 
         $cache = new Redis;
-        $cache->connect('localhost');
-        $cachedContent = $cache->get("grid-content-.$page-$limit-$tag-$type-$ideaCategory");
+        $cache->connect('127.0.0.1', 6379);
+        $cacheString = "grid-content-$page-$limit-$tag-$type-$ideaCategory";
+        $cachedContent = json_decode($cache->get($cacheString));
 
         if($cachedContent){
-            return $cachedContent;
+            $return = $cachedContent;
+            $return->fromCache = true;
+            return json_encode($return);
         }
 
 
@@ -260,8 +263,11 @@ if($stories['featured']){
             $return['hasMore'] = false;
         }
 
-        $cache->set("grid-content-.$page-$limit-$tag-$type-$ideaCategory", $return);
+        $cached = $cache->set($cacheString, json_encode($return));
 
+       // echo $bob; die();
+        $return['wasCached'] = $cached;
+        $return['fromCache'] = false;
         return $return;
     }
 
