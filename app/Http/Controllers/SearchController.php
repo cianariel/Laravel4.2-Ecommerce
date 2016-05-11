@@ -44,7 +44,7 @@ class SearchController extends Controller
 
     public function reIndexAll(){
         ini_set('memory_limit', '1024M');
-
+        set_time_limit(7200);     
         
        // 1. Setup CloudSeach client
        $csDomainClient = AWS::createClient('CloudSearch',
