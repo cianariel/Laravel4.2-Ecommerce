@@ -422,7 +422,8 @@ class PageController extends ApiController
 
     public function getRelatedStories($currentStoryID, $limit, $tags)
     {
-        $cacheKey = "related-products-$currentStoryID-$limit-$tags";
+        $tagString = implode('-', $tags);
+        $cacheKey = "related-products-$currentStoryID-$limit-$tagString";
 
         if($cachedContent = PageHelper::getFromRedis($cacheKey)) {
             return $cachedContent;
@@ -530,32 +531,45 @@ class PageController extends ApiController
             $userData = $this->authCheck['user-data'];
         }
 
+        $cacheKey = "product-details-$permalink";
+        if($cachedContent = PageHelper::getFromRedis($cacheKey, true)){
+//            $cachedContent->fromCache = true;
+            $result = $cachedContent;
 
-        $product = new Product();
-        $productData['product'] = $product->getViewForPublic($permalink);
+            // TODO -- get rid of loops
+            foreach($result['productInformation']['Review'] as $i => $review){
+                $result['productInformation']['Review'][$i] = (object)$review;
+            }
+            foreach($result['productInformation']['Specifications'] as $i => $spec){
+                $result['productInformation']['Specifications'][$i] = (object)$spec;
+            }
+            foreach($result['relatedIdeas'] as $i => $idea){
+                $result['relatedIdeas'][$i] = (object)$idea;
+            }
+        }else{
 
+            $product = new Product();
+            $productData['product'] = $product->getViewForPublic($permalink);
 
-        // Get category tree
-        $catTree = $product->getCategoryHierarchy($productData['product']->product_category_id);
+            // Get category tree
+            $catTree = $product->getCategoryHierarchy($productData['product']->product_category_id);
 
-        $result = $product->productDetailsViewGenerate($productData, $catTree);
+            $result = $product->productDetailsViewGenerate($productData, $catTree);
 
-//        $currentTag = [];
-        $currentTags = Product::find($productData['product']['id'])->tags()->lists('tag_id');
+            $currentTags = Product::find($productData['product']['id'])->tags()->lists('tag_id');
+            foreach ($currentTags as $tagID) {
+                $tagNames[] = str_replace(' ', '-', Tag::find($tagID)->tag_name);
+            }
 
-//        $tagNames = [];
-        foreach ($currentTags as $tagID) {
-            $tagNames[] = str_replace(' ', '-', Tag::find($tagID)->tag_name);
+            $result['relatedIdeas'] = self::getRelatedStories($productData['product']['id'], 3, $tagNames);
+            $result['canonicURL'] = PageHelper::getCanonicalLink(Route::getCurrentRoute(), $permalink);
+            PageHelper::putIntoRedis($cacheKey, $result, '+3 months');
         }
 
-        @$relatedIdeas = self::getRelatedStories($productData['product']['id'], 3, $tagNames);
 
-//        $related
 
         MetaTag::set('title', $result['productInformation']['PageTitle']);
         MetaTag::set('description', $result['productInformation']['MetaDescription']);
-
-        //   dd($result['selfImages']['picture'][0]['link']);
 
 
         if ($userData['method-status'] == 'fail-with-http') {
@@ -565,17 +579,14 @@ class PageController extends ApiController
             $isAdmin = $userData->hasRole('admin');
         }
 
-        $result['canonicURL'] = PageHelper::getCanonicalLink(Route::getCurrentRoute(), $permalink);
-//        $result['metaDescription'] = PageHelper::formatForMetaDesc($product->product_description);
-
         return view('product.product-details')
             ->with('isAdminForEdit', $isAdmin)
-            ->with('productId', $productData['product']['id'])
+            ->with('productId', $result['productInformation']['Id'])
             ->with('userData', $userData)
             ->with('permalink', $permalink)
             ->with('productInformation', $result['productInformation'])
             ->with('relatedProducts', $result['relatedProducts'])
-            ->with('relatedIdeas', $relatedIdeas)
+            ->with('relatedIdeas', $result['relatedIdeas'])
             ->with('selfImages', $result['selfImages'])
             ->with('storeInformation', $result['storeInformation'])
             ->with('canonicURL', $result['canonicURL'])
