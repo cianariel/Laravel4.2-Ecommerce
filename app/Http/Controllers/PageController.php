@@ -537,15 +537,25 @@ class PageController extends ApiController
             $result = $cachedContent;
 
             // TODO -- get rid of loops
-            foreach($result['productInformation']['Review'] as $i => $review){
-                $result['productInformation']['Review'][$i] = (object)$review;
+
+            if($result['productInformation']['Review']){
+                 foreach($result['productInformation']['Review'] as $i => $review){
+                    $result['productInformation']['Review'][$i] = (object)$review;
+                }
             }
-            foreach($result['productInformation']['Specifications'] as $i => $spec){
-                $result['productInformation']['Specifications'][$i] = (object)$spec;
+
+            if($result['productInformation']['Specifications']){
+                 foreach($result['productInformation']['Specifications'] as $i => $spec){
+                     $result['productInformation']['Specifications'][$i] = (object)$spec;
+                }
             }
-            foreach($result['relatedIdeas'] as $i => $idea){
-                $result['relatedIdeas'][$i] = (object)$idea;
+           
+            if($result['relatedIdeas']){
+                 foreach($result['relatedIdeas'] as $i => $idea){
+                    $result['relatedIdeas'][$i] = (object)$idea;
+                }
             }
+           
         }else{
 
             $product = new Product();
