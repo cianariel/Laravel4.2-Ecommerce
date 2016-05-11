@@ -44,7 +44,7 @@ class SearchController extends Controller
 
     public function reIndexAll(){
         ini_set('memory_limit', '1024M');
-        set_time_limit(7200);     
+        ini_set('max_execution_time', 7200);   
         
        // 1. Setup CloudSeach client
        $csDomainClient = AWS::createClient('CloudSearch',
@@ -84,11 +84,14 @@ class SearchController extends Controller
         self::deleteAllDocs($csDomainClient);
 
        foreach($index as $key => $batch){
+
            $send[] = array(
                'type'   => 'add',
                'id'     => $key,
                'fields' => $batch
            );
+            
+
            $result = $csDomainClient->uploadDocuments(array(
                'documents'   => json_encode($send),
                'contentType' =>'application/json'
