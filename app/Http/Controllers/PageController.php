@@ -175,7 +175,7 @@ class PageController extends ApiController
             $return['hasMore'] = false;
         }
 
-        $cached = PageHelper::putIntoRedis($cacheKey, $return);
+        $cached = PageHelper::putIntoRedis($cacheKey, $return,  '+1 hours');
 
         $return['wasCached'] = $cached;
         $return['fromCache'] = false;
@@ -189,9 +189,8 @@ class PageController extends ApiController
         $cacheKey = "grid-content-$page-$limit-$tag-$type-$ideaCategory";
 
         if($cachedContent = PageHelper::getFromRedis($cacheKey)){
-            $return = $cachedContent;
-            $return->fromCache = true;
-            return json_encode($return);
+          
+     //       return json_encode($return);
         }
 
 
@@ -273,7 +272,7 @@ class PageController extends ApiController
             $return['hasMore'] = false;
         }
 
-        $cached = PageHelper::putIntoRedis($cacheKey, $return);
+        $cached = PageHelper::putIntoRedis($cacheKey, $return, '1 hour');
 
         $return['wasCached'] = $cached;
         $return['fromCache'] = false;

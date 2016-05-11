@@ -102,8 +102,10 @@ class PageHelper {
             $expire = '+2 days';
         }
 
+        $formattedExpire = strtotime($expire, 0);
+
         $success = $redis->set($key, json_encode($content));
-        $redis->expire($key, $expire);
+        $redis->expire($key, $formattedExpire);
 
         return $success;
     }
