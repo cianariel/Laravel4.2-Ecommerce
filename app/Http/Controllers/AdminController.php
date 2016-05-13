@@ -317,7 +317,7 @@
 //            {
                 $giveaway = Giveaway::find($id);
                 $giveawayuserIDs = DB::table('giveaway_users')->where('giveaway_id', $id)->lists('user_id');
-                $giveawayusers = User::whereIn('id', array_unique($giveawayuserIDs))->lists('name');
+                $giveawayusers = User::whereIn('id', array_unique($giveawayuserIDs))->lists('name', 'email');
 
                 return view('admin.giveaway.giveaway-add')
                     ->with('giveaway',$giveaway)
