@@ -116,6 +116,7 @@ class PageController extends ApiController
         if($cachedContent = PageHelper::getFromRedis($cacheKey)){
             $return = $cachedContent;
             $return->fromCache = true;
+            $return->cacheKey = $cacheKey;
             return json_encode($return);
         }
 
