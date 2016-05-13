@@ -190,11 +190,19 @@
                     </form>
                     @if(isset($giveawayUsers))
                         <h3>Participants:</h3>
-                        <ol>
-                        @foreach($giveawayUsers as $user)
-                               <li><b>{{$user}}</b></li>
-                        @endforeach
-                        </ol>
+                        <table class="table">
+                            <tbody class="">
+                                <?php $i =1 ?>
+                                @foreach($giveawayUsers as $email => $name)
+                                       <tr>
+                                            <td>{{$i}}</td>
+                                            <td>{{$name}}</td>
+                                            <td>{{$email}}</td>
+                                       </tr>
+                                <?php $i++; ?>       
+                                @endforeach
+                            </tbody>    
+                        </table>
                     @endif
                 </div>
             </div>
