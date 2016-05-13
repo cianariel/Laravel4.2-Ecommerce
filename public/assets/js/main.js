@@ -4190,7 +4190,13 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                 });
         };
 
-        $scope.openProfileSetting = function () {
+        $scope.openProfileSetting = function (onlyImage) {
+
+            // for changing only image from user profile's "Change Image" button
+            if (onlyImage == true)
+                $scope.onlyImage = true;
+            else
+                $scope.onlyImage = false;
 
             var templateUrl = "profile-setting.html";
             var modalInstance = $uibModal.open({
@@ -4323,6 +4329,7 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
             $scope.isProfilePage = false;
             $scope.uploader.formData = [];
             $scope.showBrowseButton = true;
+            $scope.onlyImage = false;
 
             // popup signup
             $scope.popupSignup = true;
@@ -4716,7 +4723,7 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                 data: {
                     uid: userId,
                     pid: itemId,
-                //  plink: permalink + '/' + $window.giveawayLink,
+                    //  plink: permalink + '/' + $window.giveawayLink,
                     plink: $window.giveawayLink,
 
                     comment: comment,
