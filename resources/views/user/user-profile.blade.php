@@ -30,7 +30,7 @@
                             <br>
                             <br>
                             <div>
-                                <button id="btn-add-friend" type="button" ng-click="openProfileSetting()"
+                                <button id="btn-add-friend" type="button" ng-click="openProfileSetting(true)"
                                         class="btn btn-danger">
                                     <i class=""></i>&nbsp; Change Image
                                 </button>
