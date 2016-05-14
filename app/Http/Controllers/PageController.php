@@ -96,12 +96,12 @@ class PageController extends ApiController
             curl_setopt($ch, CURLOPT_VERBOSE, true);
             curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
             curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-            curl_setopt($ch, CURLOPT_ENCODING, "");
+            curl_setopt($ch, CURLOPT_ENCODING, ""); 
             $json = curl_exec($ch);
 
             $return = json_decode($json, true);
 
-            $cached = PageHelper::putIntoRedis($cacheKey, $return);
+            $cached = PageHelper::putIntoRedis($cacheKey, $return, 3600);
         }
 
         return $return;
