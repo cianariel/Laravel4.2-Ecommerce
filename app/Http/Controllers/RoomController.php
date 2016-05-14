@@ -156,13 +156,19 @@
 
                     $thumb = $thumb->stream();
                     $thumbFileName = 'thumb-' . $fileName;
-                    $s3->put($destinationPath.$thumbFileName, $thumb->__toString(), 'public');
+
+                    // Set expiration time
+
+                    $carbonTime = Carbon::now()->addDays(7);
+                    $expireTime = 'Expires, '.$carbonTime->toRfc2822String(); // 'Expires, Fri, 30 Oct 1998 14:19:41 GMT'
+
+                    $s3->put($destinationPath.$thumbFileName, $thumb->__toString(), 'public', ['Expires' => $expireTime]);
                 }
 
                 $fileObject = $this->optimizeImage($request,$filename);
 
         //        if ($s3->put($destinationPath.$fileName, file_get_contents($request->file($filename)), 'public'))
-                if ($s3->put($destinationPath.$fileName, $fileObject, 'public'))
+                if ($s3->put($destinationPath.$fileName, $fileObject, 'public', ['Expires' => $expireTime]))
                 {
                     $fileResponse['result'] = \Config::get("const.file.s3-path").$destinationPath.$fileName;
                     $fileResponse['status_code'] = \Config::get("const.api-status.success");
