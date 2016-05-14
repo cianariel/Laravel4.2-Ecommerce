@@ -176,7 +176,7 @@ class PageController extends ApiController
             $return['hasMore'] = false;
         }
 
-        $cached = PageHelper::putIntoRedis($cacheKey, $return,  '+1 hours');
+        $cached = PageHelper::putIntoRedis($cacheKey, $return,  '1 hour');
 
         $return['wasCached'] = $cached;
         $return['fromCache'] = false;
