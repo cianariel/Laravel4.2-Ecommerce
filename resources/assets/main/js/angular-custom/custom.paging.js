@@ -274,7 +274,7 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
     })
     .controller('SearchController', function ($scope, $http, $uibModal, pagingApi, $timeout, $filter, $window) {
 
-        //$scope.getContentFromSearch = function() {
+        $scope.searchPage = function(){
             var $route = $filter('getURISegment')(2);
             var $searchQuery = false;
             if ($route == 'search') {
@@ -296,6 +296,10 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
                 $('#search-header').show();
                 $('#hit-count').text(response['count']);
             });
+        }
+
+        //$scope.getContentFromSearch = function() {
+
 
             $scope.loadMore = function() {
 

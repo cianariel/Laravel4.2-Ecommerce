@@ -122,18 +122,32 @@ class SearchController extends Controller
         }
 
         $query = str_replace('-', ' ', $query);
+        $query = str_replace('%20', ' ', $query);
 
         $csDomainClient = AWS::createClient('CloudsearchDomain',
             [
                 'endpoint'    => 'https://search-ideaing-production-sykvgbgxrd4moqagcoyh3pt5nq.us-west-2.cloudsearch.amazonaws.com',
             ]
         );
-    
-        if(strlen($query) > 4){ // fuzzy search for longer words 
-            $query = "$query~1"; 
-        }elseif(strlen($query) > 6){
-            $query = "$query~2"; 
-        }
+
+        // needs to be formatted differently if it's a pharse
+//        if(strpos(' ', $query)){
+//            if(strlen($query) > 6){ // fuzzy search for longer words
+//                $query = '"' . $query . '"~2';
+//            }elseif(strlen($query) > 4){
+//                $query = '"' . $query . '"~1';
+//            }
+//        }else{
+            if(strlen($query) > 6){ // fuzzy search for longer words
+                $query = $query . '~2';
+            }elseif(strlen($query) > 4){
+                $query = $query . '~1';
+            }
+//        }
+//
+
+
+//        $bob = strlen($query);
 
         $arguments = [
             'query' =>  $query,

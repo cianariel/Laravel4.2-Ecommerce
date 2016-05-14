@@ -5,7 +5,7 @@
 @section('content')
 
     <div class="app-wrap" id="pagingApp" ng-app="pagingApp" ng-controller="SearchController" ng-cloak>
-        <div class="container  banner-nav">
+        <div class="container  banner-nav" ng-init="searchPage()">
             <nav id="hero-nav" >
                 <div class="row">
                     <div class="col-md-7">
