@@ -101,7 +101,7 @@ class PageController extends ApiController
 
             $return = json_decode($json, true);
 
-            $cached = PageHelper::putIntoRedis($cacheKey, $return, 3600);
+            $cached = PageHelper::putIntoRedis($cacheKey, $return, '1 hour');
         }
 
         return $return;
