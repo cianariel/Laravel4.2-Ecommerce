@@ -1008,12 +1008,13 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
 
         };
 
+        // Load user activity like/comment in user profile
         $scope.userActivityList = function (userId, count) {
 
-            if (count == null)
-                $scope.userActivityCount = null;
+            if ($scope.userActivityCount == null)
+                $scope.userActivityCount = count;
             else
-                $scope.userActivityCount = $scope.userActivityCount + 10;
+                $scope.userActivityCount = $scope.userActivityCount + count;
 
             console.log('act : ', userId, $scope.userActivityCount);
 

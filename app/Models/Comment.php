@@ -429,7 +429,7 @@ class Comment extends Model
 
         }
 
-        return $activityCollection->slice($count);
+        return $activityCollection->take($count);
     }
 
 }

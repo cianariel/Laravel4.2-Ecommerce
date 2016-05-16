@@ -3904,7 +3904,7 @@ angular.module('colorpicker.module', [])
         $(window).scroll(function() {
 
             if($(window).scrollTop() + $(window).height() == $(document).height()) {
-                console.log('the end is near');
+            //    console.log('the end is near');
                 $('.bottom-load-more').click();
                 $('.bottom-load-more').addClass('disabled').attr('disabled', true);
                 $('.bottom-block').addClass('hard-show');
@@ -4966,12 +4966,13 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
 
         };
 
+        // Load user activity like/comment in user profile
         $scope.userActivityList = function (userId, count) {
 
-            if (count == null)
-                $scope.userActivityCount = null;
+            if ($scope.userActivityCount == null)
+                $scope.userActivityCount = count;
             else
-                $scope.userActivityCount = $scope.userActivityCount + 10;
+                $scope.userActivityCount = $scope.userActivityCount + count;
 
             console.log('act : ', userId, $scope.userActivityCount);
 
