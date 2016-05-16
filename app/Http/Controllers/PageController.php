@@ -534,7 +534,7 @@ class PageController extends ApiController
         }
 
         $cacheKey = "product-details-$permalink";
-        if(false){
+        if($cachedContent = PageHelper::getFromRedis($cacheKey, true)){
 //            $cachedContent->fromCache = true;
             $result = $cachedContent;
 
@@ -551,16 +551,16 @@ class PageController extends ApiController
                      $result['productInformation']['Specifications'][$i] = (object)$spec;
                 }
             }
-           
+
             if($result['relatedIdeas']){
                  foreach($result['relatedIdeas'] as $i => $idea){
                     $result['relatedIdeas'][$i] = (object)$idea;
                 }
             }
-           
+
         }else{
 
-footer            $product = new Product();
+            $product = new Product();
             $productData['product'] = $product->getViewForPublic($permalink);
 
             // Get category tree
