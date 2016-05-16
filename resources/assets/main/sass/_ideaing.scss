@@ -77,6 +77,10 @@ a:hover, a:focus{
   width: 100%;
 }
 
+.overhide{
+  overflow: hidden;
+}
+
 .nofloat{
   float: none !important;
 }
@@ -4415,6 +4419,21 @@ header.sub-head{
 
 }
 
+.load-line{
+  width: 100%;
+  float: left;
+}
+
+.loader-static{
+  position: relative;
+  margin: 0 auto;
+  //width: 80px !important;
+  //padding-left: 20px;
+  //padding-right: 20px;
+  //background: green;
+  position: relative;
+  background: #fff;
+}
 
 .homepage #hero-nav{
   .category-nav{

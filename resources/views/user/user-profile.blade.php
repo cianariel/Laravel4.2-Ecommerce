@@ -26,21 +26,35 @@
                 <div class="container">
                     <div class="col-sm-6 text-right">
                         <img class="profile-photo" width="120px" src="{{$profile}}">
+                        @if($showEditOption)
+                            <br>
+                            <br>
+                            <div>
+                                <button id="btn-add-friend" type="button" ng-click="openProfileSetting(true)"
+                                        class="btn btn-danger">
+                                    <i class=""></i>&nbsp; Change Image
+                                </button>
+                            </div>
+                        @endif
                     </div>
+
                     <div class="col-sm-6">
                         <p>
                             <span class="fullname">{{$fullname}}</span>&nbsp;
                             <span class="location"><i class=" m-icon--Location"></i> {{$address}}</span>
                         </p>
                         <p class="description">{{$personalInfo}}</p>
-                        <div>
-                            <button id="btn-follow" type="button" class="btn " uib-dropdown-toggle>
-                                Follow <i class=" m-icon--Actions-Down-Arrow-Active"></i>
-                            </button>
-                            <button id="btn-add-friend" type="button" class="btn btn-primary">
-                                <i class="m-icon m-icon--Add-Friends"></i>&nbsp; Add Friends
-                            </button>
-                        </div>
+
+                        @if(!$showEditOption)
+                            <div>
+                                <button id="btn-follow" type="button" class="btn " uib-dropdown-toggle>
+                                    Follow <i class=" m-icon--Actions-Down-Arrow-Active"></i>
+                                </button>
+                                <button id="btn-add-friend" type="button" class="btn btn-primary">
+                                    <i class="m-icon m-icon--Add-Friends"></i>&nbsp; Add Friends
+                                </button>
+                            </div>
+                        @endif
                         <br>
                         <div>
                             <a href="#" class="follow">0 Follower</a>
@@ -49,7 +63,9 @@
                     </div>
                 </div>
                 @if($showEditOption)
+                    {{-- Upload Photo hide for timebeing
                     <a href="#" id="upload-photo"><i class="m-icon--Upload-Inactive"></i> Upload Photo</a>
+                    --}}
                     <div class="edit-background hidden-xs hidden-sm">
                         <a href="#">
                             <i class="m-icon--Edit-Background"></i><br>
@@ -60,15 +76,16 @@
                     <div class=" edit-profile">
                         <div><a href="#" class="edit-profile-link" ng-click="openProfileSetting()">Edit Profile&nbsp;&nbsp;<i
                                         class="m-icon--Edit-Profile"></i></a></div>
-                        <p class="hidden-xs hidden-sm"><a href="#">View your profile as other people see it</a></p>
+                        <p class="hidden-xs hidden-sm"><a href="/user/profile/{{$userPermalink}}">View your profile as
+                                other people see it</a></p>
                         <p class="visible-xs visible-sm">&nbsp;</p>
                     </div>
                 @endif
             </div>
         </section>
-       {{-- <div class="app-wrap" id="pagingApp" ng-app="pagingApp" ng-controller="pagingController">--}}
+        {{-- <div class="app-wrap" id="pagingApp" ng-app="pagingApp" ng-controller="pagingController">--}}
         <div class="app-wrap" id="pupblicApp" ng-app="publicApp" ng-controller="publicController">
-        <div class="container ">
+            <div class="container ">
                 <nav id="hero-nav">
                     <ul class=" main-content-filter ">
                         <li ng-class="{active: (activeMenu == '1' || !activeMenu)}" ng-click="activeMenu='1'">
@@ -88,7 +105,7 @@
                                 <i class="m-icon m-icon--Messages"></i>
                                 Messages
                             </a>
-                          </li>
+                        </li>
                         <li ng-class="{active: activeMenu == '4'}" ng-click="activeMenu='4'">
                             <a data-filterby="photos" href="" class="my-product">
                                 <i class="m-icon m-icon--menu"></i>

@@ -3893,6 +3893,23 @@ angular.module('colorpicker.module', [])
             lessLink: '<a class="morelink" href="#">Close</a>',
         });
 
+        //$('body').on('scroll', function() {
+        //    console.log('the end is near');
+        //
+        //    if($(this).scrollTop() + $(this).innerHeight() >= $(this)[0].scrollHeight) {
+        //        console.log('end reached');
+        //    }
+        //})
+
+        $(window).scroll(function() {
+
+            if($(window).scrollTop() + $(window).height() == $(document).height()) {
+                console.log('the end is near');
+                $('.bottom-load-more').click();
+                $('.bottom-load-more').addClass('disabled').attr('disabled', true);
+            }
+        });
+
 
 	}); // global function()
 
@@ -4190,7 +4207,13 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                 });
         };
 
-        $scope.openProfileSetting = function () {
+        $scope.openProfileSetting = function (onlyImage) {
+
+            // for changing only image from user profile's "Change Image" button
+            if (onlyImage == true)
+                $scope.onlyImage = true;
+            else
+                $scope.onlyImage = false;
 
             var templateUrl = "profile-setting.html";
             var modalInstance = $uibModal.open({
@@ -4323,6 +4346,7 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
             $scope.isProfilePage = false;
             $scope.uploader.formData = [];
             $scope.showBrowseButton = true;
+            $scope.onlyImage = false;
 
             // popup signup
             $scope.popupSignup = true;
@@ -4332,7 +4356,7 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
             $scope.notifications = [];
             $scope.uid = null;
 
-            // comment ideas and giveaway
+            // comment ideas and giveawayf
             $scope.itemId = 0;
             $scope.userId = 0;
             $scope.isAdmin = false;
@@ -4716,7 +4740,7 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                 data: {
                     uid: userId,
                     pid: itemId,
-                //  plink: permalink + '/' + $window.giveawayLink,
+                    //  plink: permalink + '/' + $window.giveawayLink,
                     plink: $window.giveawayLink,
 
                     comment: comment,
@@ -5372,6 +5396,10 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
         //});
 
         $scope.loadMore = function() {
+            if($('.bottom-load-more').hasClass('disabled')){
+                return false;
+            }
+
             $scope.currentPage++;
             $scope.allContent[$scope.currentPage] = [];
 
@@ -5387,9 +5415,15 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
                 $scope.content = $scope.content.concat($scope.newStuff);
 
                 $scope.hasMore = response['hasMore'];
+                console.log('BUbba!')
 
+                $('.bottom-load-more').removeClass('disabled').attr('disabled', false);
             });
         };
+
+        //jQuery(function($) {
+
+        //});
 
 
         $scope.filterContent = function($criterion){
@@ -5503,7 +5537,7 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
     })
     .controller('SearchController', function ($scope, $http, $uibModal, pagingApi, $timeout, $filter, $window) {
 
-        //$scope.getContentFromSearch = function() {
+        $scope.searchPage = function(){
             var $route = $filter('getURISegment')(2);
             var $searchQuery = false;
             if ($route == 'search') {
@@ -5518,15 +5552,23 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
             $scope.sortBy = false;
             $scope.hasMore = false;
 
-            $scope.nextLoad = pagingApi.getSearchContent($scope.$searchQuery, 15, 0).success(function (response) {
+            $scope.firstLoad = pagingApi.getSearchContent($scope.$searchQuery, 15, 0).success(function (response) {
                 $scope.content = response['content'];
                 $scope.hasMore = response['hasMore'];
 
                 $('#search-header').show();
                 $('#hit-count').text(response['count']);
             });
+        }
+
+        //$scope.getContentFromSearch = function() {
+
 
             $scope.loadMore = function() {
+
+                if($('.bottom-load-more').hasClass('disabled')){
+                    return false;
+                }
 
                 $scope.offset = 15 * $scope.currentPage++;
                 $scope.nextLoad =  pagingApi.getSearchContent($scope.$searchQuery, 15,  $scope.offset,  $scope.type,  $scope.sortBy).success(function (response) {
@@ -5541,6 +5583,7 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
                     $scope.content = $newStuff;
                     $scope.hasMore = response['hasMore'];
                     $scope.currentPage++;
+                    $('.bottom-load-more').removeClass('disabled').attr('disabled', false);
 
                 });
         }
@@ -5812,6 +5855,11 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
         });
 
         $scope.loadMore = function() {
+
+            if($('.bottom-load-more').hasClass('disabled')){
+                return false;
+            }
+
             $scope.currentPage++;
 
             var $limit = 15;
@@ -5827,6 +5875,7 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
 
                 $scope.content = $newStuff;
                 $scope.hasMore = response['hasMore'];
+                $('.bottom-load-more').removeClass('disabled').attr('disabled', false);
 
             });
         };

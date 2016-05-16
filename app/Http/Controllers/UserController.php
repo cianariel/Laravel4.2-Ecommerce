@@ -210,6 +210,7 @@ class UserController extends ApiController
                 'userProfileData' => $userData,
                 'activity' => $this->comment->getCommentsAndHeatByUserId($userData['id'], 10),
                 'profile' => ($userData->medias[0]->media_link == '') ? \Config::get("const.user-image") : $userData->medias[0]->media_link,
+                'userPermalink' => $userData->permalink,
                 'fullname' => $userData->name,
                 'address' => $userData->userProfile->address,
                 'personalInfo' => $userData->userProfile->personal_info,
