@@ -41,12 +41,3 @@
             </div>
         </div>
 @endforeach
-
-<script>
-    $(document).ready(function(){
-        setTimeout(function(){
-            $('.hero-login').slideDown();
-            $('.login-wrap').fadeIn('slow');
-        }, 3000)
-    });
-</script>
