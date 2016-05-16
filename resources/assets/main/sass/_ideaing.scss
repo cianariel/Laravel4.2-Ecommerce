@@ -267,6 +267,7 @@ button{
   border-radius: 90px;
   border: 0;
   padding: 5px;
+
 }
 
 .sortby{
@@ -5654,6 +5655,12 @@ footer.about-footer{
     position: absolute;
     top: 30px;
     right: 20px;
+
+    @media (max-width: 480px) {
+      &{
+        top:32%;
+      }
+    }
   }
 }
 
