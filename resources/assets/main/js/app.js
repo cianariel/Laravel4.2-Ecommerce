@@ -284,9 +284,9 @@
             }
         });
 
-        $('#about-button').click(function(){
-            $("html, body").animate({ scrollTop: $(document).height() }, "slow");
-        });
+        //$('#about-button').click(function(){
+        //    $("html, body").animate({ scrollTop: $(document).height() }, "slow");
+        //});
 
         //$('.main-content-filter a').click(function(event){
         //    event.preventDefault();
@@ -304,6 +304,31 @@
             collapsedHeight: 300,
             moreLink: '<a class="morelink" href="#">Read more</a>',
             lessLink: '<a class="morelink" href="#">Close</a>',
+        });
+
+        //$('body').on('scroll', function() {
+        //    console.log('the end is near');
+        //
+        //    if($(this).scrollTop() + $(this).innerHeight() >= $(this)[0].scrollHeight) {
+        //        console.log('end reached');
+        //    }
+        //})
+
+        $(window).scroll(function() {
+
+            if($(window).scrollTop() + $(window).height() == $(document).height()) {
+                console.log('the end is near');
+                $('.bottom-load-more').click();
+                $('.bottom-load-more').addClass('disabled').attr('disabled', true);
+                $('.bottom-block').addClass('hard-show');
+            }
+        });
+
+        $(document).ready(function(){
+            setTimeout(function(){
+                $('.hero-login').slideDown();
+                $('.login-wrap').fadeIn('slow');
+            }, 7000)
         });
 
 
