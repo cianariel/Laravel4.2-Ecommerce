@@ -6331,11 +6331,11 @@ article.product {
   bottom: 138px;
   padding: 13px;
   font-size: 1rem;
-  z-index: 9;
   background: #fff;
   color: #FF0042;
   border-color: #FF0042 !important;
-  box-shadow: none !important; }
+  box-shadow: none !important;
+  z-index: 20; }
   #about-button:hover {
     background: #FF0042;
     color: #fff; }
@@ -7603,7 +7603,7 @@ header.sub-head {
   min-height: 520px; }
 .homepage .color-overlay {
   position: absolute;
-  min-height: 1000px;
+  min-height: 1200px;
   width: 100%;
   background-size: cover;
   top: 0;
@@ -8373,10 +8373,11 @@ body.room-landing .heroSlider {
 footer.about-footer {
   padding: 55px 0;
   background: #171617;
-  position: relative;
+  position: fixed;
+  bottom: 0;
   overflow: hidden;
   width: 100%;
-  z-index: 10; }
+  z-index: 50; }
   footer.about-footer h4 {
     margin-bottom: 35px; }
   footer.about-footer li {
@@ -9343,7 +9344,8 @@ footer.about-footer {
   height: 100px;
   position: fixed;
   bottom: 0;
-  right: 0%; }
+  right: 0%;
+  z-index: 20; }
 
 #about-button {
   bottom: 39px; }

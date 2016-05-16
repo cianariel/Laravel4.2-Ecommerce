@@ -5,7 +5,6 @@
             <span class="close-button close-login"  data-toggle=".hero-login">
                 <i class="m-icon--Close"></i>
             </span>
-            <div class="color-overlay"></div>
             <div class="container fixed-sm full-480">
                 <div class="col-md-5 col-xs-6 full-620 col-md-offset-1 why-us">
                     <h2>Ideas for Smarter Living</h2>
@@ -18,7 +17,7 @@
                         <li class="shop-cool"><i class="m-icon m-icon--shopping-bag-light-green"></i>Shop for new and innovative home gadgets and decor</li>
                     </ul>
                 </div>
-                <div  id="publicApp" ng-app="publicApp" ng-controller="publicController" class="col-md-4 col-xs-6 col-md-offset-1 hero-box qiuck-signup hidden-620" ng-cloak>
+                <div  id="publicApp" ng-app="publicApp" ng-controller="publicController" class="col-md-4 col-sm-6 col-xs-12 col-md-offset-1 hero-box qiuck-signup" ng-cloak>
                     <div class="response-wrap">
                         <strong>@{{ responseMessage }}</strong>
                     </div>
