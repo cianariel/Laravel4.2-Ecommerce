@@ -4356,7 +4356,7 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
             $scope.notifications = [];
             $scope.uid = null;
 
-            // comment ideas and giveawayf
+            // comment ideas and giveaway
             $scope.itemId = 0;
             $scope.userId = 0;
             $scope.isAdmin = false;
