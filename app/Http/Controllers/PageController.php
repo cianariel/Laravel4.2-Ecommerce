@@ -534,7 +534,7 @@ class PageController extends ApiController
         }
 
         $cacheKey = "product-details-$permalink";
-        if($cachedContent = PageHelper::getFromRedis($cacheKey, true)){
+        if(false){
 //            $cachedContent->fromCache = true;
             $result = $cachedContent;
 
@@ -560,7 +560,7 @@ class PageController extends ApiController
            
         }else{
 
-            $product = new Product();
+footer            $product = new Product();
             $productData['product'] = $product->getViewForPublic($permalink);
 
             // Get category tree

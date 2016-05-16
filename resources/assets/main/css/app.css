@@ -8380,7 +8380,13 @@ footer.about-footer {
   bottom: 0;
   overflow: hidden;
   width: 100%;
+  max-height: 670px;
+  overflow: scroll;
   z-index: 50; }
+  @media (max-width: 480px) {
+    footer.about-footer {
+      bottom: auto;
+      top: 0; } }
   footer.about-footer h4 {
     margin-bottom: 35px; }
   footer.about-footer li {
@@ -8441,9 +8447,6 @@ footer.about-footer {
     position: absolute;
     top: 30px;
     right: 20px; }
-    @media (max-width: 480px) {
-      footer.about-footer .close-down {
-        top: 32%; } }
 
 @media only screen and (max-width: 1200px) {
   .mid-nav a, .mid-nav .extra-nav a {
