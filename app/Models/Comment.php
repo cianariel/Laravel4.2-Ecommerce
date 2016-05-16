@@ -182,8 +182,8 @@ class Comment extends Model
     public function findCommentForGiveaway($data)
     {
         $giveaway = Giveaway::where('id', $data['ItemId'])
-                        ->with('comments')
-                        ->first();
+                            ->with('comments')
+                            ->first();
 
         // product_permalink
         $giveawayComments = isset($giveaway->comments) ? $giveaway->comments : [];
@@ -252,7 +252,7 @@ class Comment extends Model
             return $this->ideasCommentCounter($itemId);
         } elseif ($section == 'product') {
             return $this->productCommentCounter($itemId);
-        }elseif ($section == 'giveaway') {
+        } elseif ($section == 'giveaway') {
             return $this->giveawayCommentCounter($itemId);
         }
     }
@@ -266,14 +266,13 @@ class Comment extends Model
 
         $domain = \Request::root();
 
+        if ($count == null)
+            $count = 10;
+
         $heartProductCollection = Heart::where('user_id', $userId)->where('heartable_type', 'App\Models\Product');
 
-        if ($count == null) {
-            $heartProductCollection = $heartProductCollection->orderBy('created_at', 'desc')->get(['heartable_id', 'updated_at']);
-        } else {
-            $heartProductCollection = $heartProductCollection->orderBy('created_at', 'desc')->limit($count)->get(['heartable_id', 'updated_at']);
 
-        }
+        $heartProductCollection = $heartProductCollection->orderBy('created_at', 'desc')->limit($count)->get(['heartable_id', 'updated_at']);
 
 
         $productHeatItemsId = $heartProductCollection->map(function ($item) {
@@ -310,11 +309,9 @@ class Comment extends Model
 
         $heartIdeasCollection = Heart::where('user_id', $userId)->where('heartable_type', 'App\Models\WpPost');
 
-        if ($count == null) {
-            $heartIdeasCollection = $heartIdeasCollection->orderBy('created_at', 'desc')->get(['heartable_id', 'updated_at']);
-        } else {
-            $heartIdeasCollection = $heartIdeasCollection->orderBy('created_at', 'desc')->limit($count)->get(['heartable_id', 'updated_at']);
-        }
+
+        $heartIdeasCollection = $heartIdeasCollection->orderBy('created_at', 'desc')->limit($count)->get(['heartable_id', 'updated_at']);
+
         // dd($heartIdeasCollection);
 
         $ideasIdCollection = $heartIdeasCollection->map(function ($item) {
@@ -341,11 +338,9 @@ class Comment extends Model
         // give away
         $heartGiveawayCollection = Heart::where('user_id', $userId)->where('heartable_type', 'App\Models\Giveaway');
 
-        if ($count == null) {
-            $heartGiveawayCollection = $heartGiveawayCollection->orderBy('created_at', 'desc')->get(['heartable_id', 'updated_at']);
-        } else {
-            $heartGiveawayCollection = $heartGiveawayCollection->orderBy('created_at', 'desc')->limit($count)->get(['heartable_id', 'updated_at']);
-        }
+
+        $heartGiveawayCollection = $heartGiveawayCollection->orderBy('created_at', 'desc')->limit($count)->get(['heartable_id', 'updated_at']);
+
         // dd($heartIdeasCollection);
 
         $heartIdCollection = $heartGiveawayCollection->map(function ($item) {
@@ -372,11 +367,8 @@ class Comment extends Model
 
         $comments = Comment::where('user_id', $userId)->whereNotNull('section');
 
-        if ($count == null) {
-            $comments = $comments->orderBy('created_at', 'desc')->get(['id', 'commentable_id', 'section', 'title', 'link', 'image_link', 'updated_at']);
-        } else {
-            $comments = $comments->orderBy('created_at', 'desc')->limit($count)->get(['id', 'commentable_id', 'section', 'title', 'link', 'image_link', 'updated_at']);
-        }
+
+        $comments = $comments->orderBy('created_at', 'desc')->limit($count)->get(['id', 'commentable_id', 'section', 'title', 'link', 'image_link', 'updated_at']);
 
 
         foreach ($comments as $item) {
@@ -437,7 +429,7 @@ class Comment extends Model
 
         }
 
-        return $activityCollection;
+        return $activityCollection->slice($count);
     }
 
 }
