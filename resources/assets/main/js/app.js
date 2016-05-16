@@ -327,7 +327,7 @@
             setTimeout(function(){
                 $('.hero-login').slideDown();
                 $('.login-wrap').fadeIn('slow');
-            }, 5000)
+            }, 7000)
         });
 
 
