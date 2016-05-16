@@ -284,9 +284,9 @@
             }
         });
 
-        $('#about-button').click(function(){
-            $("html, body").animate({ scrollTop: $(document).height() }, "slow");
-        });
+        //$('#about-button').click(function(){
+        //    $("html, body").animate({ scrollTop: $(document).height() }, "slow");
+        //});
 
         //$('.main-content-filter a').click(function(event){
         //    event.preventDefault();
