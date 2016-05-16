@@ -1008,14 +1008,21 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
 
         };
 
-        $scope.userActivityList = function(userId,count){
-            console.log('act : ',userId,count);
+        $scope.userActivityList = function (userId, count) {
+
+            if (count == null)
+                $scope.userActivityCount = null;
+            else
+                $scope.userActivityCount = $scope.userActivityCount + 10;
+
+            console.log('act : ', userId, $scope.userActivityCount);
+
             $http({
-                url: '/user/profile',
+                url: '/api/user/activities',
                 method: "POST",
                 data: {
                     UserId: userId,
-                    ActivityCount: count
+                    ActivityCount: $scope.userActivityCount
                 }
 
             }).success(function (data) {

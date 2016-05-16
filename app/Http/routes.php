@@ -114,6 +114,11 @@ Route::group(['prefix' => 'api'], function () {
     Route::get('user/get-user/{id?}', 'UserController@getUserById');
     // Route::any('user/user-add/{id?}','UserController@userList');
 
+    /*
+    * User Activity
+    * */
+    Route::post('user/activities', 'UserController@getUserActivity');
+
 
     /*
      * Product Category route collection
@@ -217,10 +222,7 @@ Route::group(['prefix' => 'api'], function () {
 
     Route::post('contact-us', 'UserController@postContactUsInfo');
 
-    /*
-    * User Activity
-    * */
-    Route::post('user/activities', 'UserController@getUserActivity');
+
 
     /*
      * Notification
@@ -289,7 +291,7 @@ Route::get('shop/{grandParent?}/{parent?}/{child?}', ['as' => 'shopCategory', 'u
 
 
 //User Profile
-Route::any('user/profile', 'UserController@userProfile');
+Route::get('user/profile', 'UserController@userProfile');
 Route::get('user/profile/{permalink?}', 'UserController@viewPublicProfile');
 
 

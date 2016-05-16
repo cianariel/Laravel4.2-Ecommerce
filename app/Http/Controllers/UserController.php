@@ -226,11 +226,12 @@ class UserController extends ApiController
 
             MetaTag::set('title', 'Ideaing | My profile');
 
-            if (\Request::isXmlHttpRequest()) {
+            /*if (\Request::isXmlHttpRequest()) {
                 return $this->setStatusCode(\Config::get("const.api-status.success"))
                             ->makeResponse($data);
-            } else
-                return view('user.user-profile', $data);
+            } else*/
+
+            return view('user.user-profile', $data);
 
         } elseif ($this->authCheck['method-status'] == 'fail-with-http') {
             return \Redirect::to('login');
