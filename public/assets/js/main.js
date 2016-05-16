@@ -3910,6 +3910,13 @@ angular.module('colorpicker.module', [])
             }
         });
 
+        $(document).ready(function(){
+            setTimeout(function(){
+                $('.hero-login').slideDown();
+                $('.login-wrap').fadeIn('slow');
+            }, 5000)
+        });
+
 
 	}); // global function()
 
