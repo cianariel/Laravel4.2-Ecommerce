@@ -572,6 +572,10 @@ if (@$userData['user-data']['hide-signup'] != 'true')
 
 </script>
 
+<?php
+}
+}
+?>
 
 
     

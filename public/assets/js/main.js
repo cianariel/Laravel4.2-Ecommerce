@@ -3937,6 +3937,10 @@ angular.module('colorpicker.module', [])
 
 var publicApp = angular.module('publicApp', ['ui.bootstrap', 'ngSanitize', 'angularFileUpload']);
 
+publicApp.config(['$httpProvider', function ($httpProvider) {
+    $httpProvider.defaults.headers.common["X-Requested-With"] = 'XMLHttpRequest';
+}]);
+
 // directive for heart action for grid items
 publicApp.directive('heartCounterPublic', ['$http', function ($http) {
     return {
@@ -4933,6 +4937,22 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                 /* if(data.status_code == 200)
                  window.location = $scope.logingRedirectLocation;
                  */
+            });
+
+        };
+
+        $scope.userActivityList = function(userId,count){
+            console.log('act : ',userId,count);
+            $http({
+                url: '/user/profile',
+                method: "POST",
+                data: {
+                    UserId: userId,
+                    ActivityCount: count
+                }
+
+            }).success(function (data) {
+                $scope.activityData = data;
             });
 
         };
