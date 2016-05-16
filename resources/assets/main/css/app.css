@@ -8441,6 +8441,9 @@ footer.about-footer {
     position: absolute;
     top: 30px;
     right: 20px; }
+    @media (max-width: 480px) {
+      footer.about-footer .close-down {
+        top: 32%; } }
 
 @media only screen and (max-width: 1200px) {
   .mid-nav a, .mid-nav .extra-nav a {
