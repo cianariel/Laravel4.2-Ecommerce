@@ -727,8 +727,14 @@
                             <?php // print_r($item->feed_image); ?>
                                 <div class="box-item">
                                     <div class="img-holder">
-                                        <img alt="{{@$item->feed_image->alt ?: @$item->feed_image['alt']}}" title="{{@$item->feed_image->title ?: @$item->feed_image['title']}}"
-                                             src="{{@$item->feed_image->url ?: @$item->feed_image['url']}}">
+                                        @if(is_array($item->feed_image))
+                                            <img alt="{{@$item->feed_image['alt']}}" title="{{@$item->feed_image['title']}}"
+                                                 src="{{ @$item->feed_image['url']}}">
+                                        @else
+                                            <img alt="{{@$item->feed_image->alt}}" title="{{@$item->feed_image->title}}"
+                                                 src="{{@$item->feed_image->url}}">
+                                        @endif
+
                                     </div>
 
                                     <span class="box-item__time">{{$item->updated_at}}</span>

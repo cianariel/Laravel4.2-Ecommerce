@@ -9,56 +9,24 @@
               <h2 id="site-subhead" class="hidden">Ideas for Smarter Living</h2>';
     }
     ?>
-    <section id="hero" class="landing-hero">
-        @if(empty($userData['email']))
-             @if(isset($homehero))
-                @foreach( $homehero as $key => $image )
-                    <div class="rsContent">
-                            <div id="hero-bg" style="background-image: url('{{$image['hero_image']}}'); "></div>
-                            <div class="color-overlay"></div>
-                            <div class="container fixed-sm full-480">
-                                <div class="col-md-5 col-xs-6 full-620 col-md-offset-1 why-us">
-                                    <h2>Ideas for Smarter Living</h2>
-                                    <ul>
-                                    <li class="get-ideas"><i class="m-icon m-icon--heart-id"></i>Discover smart home products that will change your life</li>
-                                    <li class="share-vote">
-                                        <i class="m-icon m-icon--bulb"></i>Share ideas on making your home automated and beautiful
-                                        <img id="hero-arrow" src="assets/images/home-arrow.png" alt="">
-                                    </li>
-                                    <li class="shop-cool"><i class="m-icon m-icon--shopping-bag-light-green"></i>Shop for new and innovative home gadgets and decor</li>
-                                    </ul>
-                                </div>
-                                <div  id="publicApp" ng-app="publicApp" ng-controller="publicController" class="col-md-4 col-xs-6 col-md-offset-1 hero-box qiuck-signup hidden-620" ng-cloak>
-                                    <div class="response-wrap">
-                                        <strong>@{{ responseMessage }}</strong>
-                                    </div>
-                                    <form>
-                                        <h4>
-                                            <b>Sign-up in Seconds</b>
-                                        </h4>
-
-                                        {{--<input class="form-control hide" type="text" placeholder="First name" name="name">--}}
-                                        <span class="email-input-holder ">
-                                            <i class="m-icon m-icon--email-form-id"></i>
-                                            <input class="form-control" ng-model="SubscriberEmail" type="text" placeholder="Email" name="email">
-                                        </span>
-
-                                        <button ng-click="subscribe('')" class="btn btn-success col-xs-12"  href="#">Sign up</button>
-                                        <div class="line-wrap">or</div>
-                                        <button ng-click="registerWithFB()" class="btn btn-info col-xs-12" href="#"><i class="m-icon m-icon--facebook-id"></i>Sign up with Facebook</button>
-                                    </form>
-                                </div>
-                            </div>
-                    </div>
-                @endforeach
+    <div class="hero-wrap">
+        <section id="hero" class="landing-hero">
+            @include('layouts.parts.hero-slider')
+        </section>
+            @if(empty($userData['email']))
+                @if(isset($homehero))
+                <section class="hero-login hidden-soft">
+                    @include('layouts.parts.hero-login')
+                </section>
             @endif
-        @else
-                @include('layouts.parts.hero-slider')
-        @endif
-    </section>
+            @endif
+        <div class="color-overlay"></div>
+        <div class="color-overlay blur-overlay"></div>
+    </div>
+
     <div class="app-wrap" id="pagingApp" ng-app="pagingApp" ng-controller="pagingController" ng-cloak>
         <nav id="hero-nav" class="col-sm-12">
-            <div class="container full-620  fixed-sm">
+            <div class="container full-620 fixed-sm">
                 {{--<ul class="left-nav col-xs-1 hidden-620">--}}
                     {{--<li class="active"><a class="home-link" href="#">Home</a></li>--}}
                 {{--</ul>--}}
@@ -96,14 +64,13 @@
 
         <div class="homepage-grid center-block">
                 <div class="loader loader-abs" cg-busy="firstLoad"></div>
-                {{--<div class="loader loader-abs" cg-busy="filterLoad"></div>--}}
-                <div class="loader loader-fixed" cg-busy="nextLoad"></div>
+                <div class="loader loader-abs" cg-busy="filterLoad"></div>
+                {{--<div class="loader loader-fixed" cg-busy="nextLoad"></div>--}}
 
                 @include('grid.grid')
 
-        <div class="container">
-            <a ng-show="hasMore" ng-click="loadMore()" class="btn btn-success bottom-load-more col-xs-12">Load More</a>
-        </div>
+                @include('layouts.parts.load-more')
+
 
         <!-- custom angular template - START -->
         
