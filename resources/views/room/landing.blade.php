@@ -172,16 +172,14 @@
 
             <div class="homepage-grid center-block">
                 <div class="loader loader-abs" cg-busy="firstLoad"></div>
-                <div class="loader loader-fixed" cg-busy="nextLoad"></div>
+                {{--<div class="loader loader-fixed" cg-busy="nextLoad"></div>--}}
 
                 @include('grid.grid')
 
             </div>
-            <div class="container">
-                <a ng-show="hasMore" ng-click="loadMore()" class="btn btn-success bottom-load-more col-xs-12">Load More</a>
-            </div>
+            @include('layouts.parts.load-more')
 
-            <!-- custom angular template - START -->
+                    <!-- custom angular template - START -->
 
             @include('layouts.parts.product-popup')
 
