@@ -37,7 +37,6 @@
                                             <b>Sign-up in Seconds</b>
                                         </h4>
 
-                                        {{--<input class="form-control hide" type="text" placeholder="First name" name="name">--}}
                                         <span class="email-input-holder ">
                                             <i class="m-icon m-icon--email-form-id"></i>
                                             <input class="form-control" ng-model="SubscriberEmail" type="text" placeholder="Email" name="email">
@@ -83,10 +82,6 @@
                         </a>
                     </li>
                     <li ng-class="{active: activeMenu == '4'}" ng-click="activeMenu='4'">
-                        {{--<a data-filterby="photos" href="" class="photos-link">--}}
-                            {{--<i class="m-icon m-icon--image"></i>--}}
-                            {{--Photos--}}
-                        {{--</a>--}}
                     </li>
                 </ul>
             </div>
@@ -96,16 +91,13 @@
 
         <div class="homepage-grid center-block">
                 <div class="loader loader-abs" cg-busy="firstLoad"></div>
-                {{--<div class="loader loader-abs" cg-busy="filterLoad"></div>--}}
-                <div class="loader loader-fixed" cg-busy="nextLoad"></div>
 
                 @include('grid.grid')
 
-        <div class="container">
-            <a ng-show="hasMore" ng-click="loadMore()" class="btn btn-success bottom-load-more col-xs-12">Load More</a>
-        </div>
+                @include('layouts.parts.load-more')
 
-        <!-- custom angular template - START -->
+
+                        <!-- custom angular template - START -->
         
         @include('layouts.parts.product-popup')
 
