@@ -9377,6 +9377,9 @@ body.giveaway-page{
     width: 250px;
     bottom: 0;
   }
+  .social-stats__item{
+    margin-right: 10px;
+  }
   &.expired{
     #hero-bg{
       -webkit-filter: grayscale(100%) !important;
