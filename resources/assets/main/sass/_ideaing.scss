@@ -5540,7 +5540,14 @@ footer.about-footer{
   bottom: 0;
   overflow: hidden;
   width: 100%;
+  max-height: 670px;
+  overflow: scroll;
   z-index: 50;
+
+  @media (max-width:480px){
+    bottom: auto;
+    top: 0;
+  }
 
   h4{
     margin-bottom: 35px;
@@ -5656,11 +5663,11 @@ footer.about-footer{
     top: 30px;
     right: 20px;
 
-    @media (max-width: 480px) {
-      &{
-        top:32%;
-      }
-    }
+    //@media (max-width: 480px) {
+    //  &{
+    //    top:32%;
+    //  }
+    //}
   }
 }
 
