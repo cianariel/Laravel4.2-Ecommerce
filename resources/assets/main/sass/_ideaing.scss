@@ -77,8 +77,16 @@ a:hover, a:focus{
   width: 100%;
 }
 
+.overhide{
+  overflow: hidden;
+}
+
 .nofloat{
   float: none !important;
+}
+
+.hard-show{
+  display: block !important;
 }
 
 [data-toggle],
@@ -259,6 +267,7 @@ button{
   border-radius: 90px;
   border: 0;
   padding: 5px;
+
 }
 
 .sortby{
@@ -2504,11 +2513,11 @@ article.product{
   bottom: 138px;
   padding: 13px;
   font-size: 1rem;
-  z-index: 9;
   background: #fff;
   color: $iridium;
   border-color: $iridium !important;
   box-shadow: none !important;
+  z-index: 20;
 
   &:hover{
     background:$iridium;
@@ -2547,8 +2556,9 @@ article.product{
     border-radius: 50px;
     color: $iridium;
     line-height: 50px;
-  
-/*  background: url("/assets/images/back-to-top.png") no-repeat;*/
+    background: #fff;
+
+  /*  background: url("/assets/images/back-to-top.png") no-repeat;*/
 /*  text-indent: -9999px;*/
     z-index: 10;
 
@@ -4415,6 +4425,21 @@ header.sub-head{
 
 }
 
+.load-line{
+  width: 100%;
+  float: left;
+}
+
+.loader-static{
+  position: relative;
+  margin: 0 auto;
+  //width: 80px !important;
+  //padding-left: 20px;
+  //padding-right: 20px;
+  //background: green;
+  position: relative;
+  background: #fff;
+} 
 
 .homepage #hero-nav{
   .category-nav{
@@ -4435,7 +4460,63 @@ header.sub-head{
   }
 }
 
+.hero-wrap{
+  position: relative;
+  overflow: hidden;
+}
 
+.hero-login{
+  //background: darken($sky-blue, 10%);
+  width: 100%;
+  overflow: hidden;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  position: relative;
+  z-index: 10;
+
+  .close-login{
+    position: absolute;
+    right: 5%;
+    top: 0;
+    background: transparent;
+    border: 0;
+    outline: 0;
+    padding-left: 10px;
+    padding-right: 10px;
+    z-index: 20;
+    i{
+      color: #fff;
+      font-size: 2.5rem;
+      font-weight: bold;
+      padding-left: 30px;
+    }
+
+  }
+}
+
+.homepage{
+  #hero{
+    min-height: 520px;
+  }
+  .color-overlay{
+    position: absolute;
+    min-height: 1200px;
+    width: 100%;
+    background-size: cover;
+    top: 0;
+    z-index: 0;
+  }
+  #hero-slider .rsNav.rsBullets{
+    top: -30px;
+
+    @media (max-width: 1200px){
+      &{
+        top: -55px;
+      }
+    }
+  }
+
+}
 
 .product-nav{
   a.photos-link {
@@ -5454,12 +5535,19 @@ footer.about-footer{
   //display: none;
   padding: 55px 0;
   background: #171617;
-  position: relative;
-  //position: fixed;
-  //bottom: 0;
+  //position: relative;
+  position: fixed;
+  bottom: 0;
   overflow: hidden;
   width: 100%;
-  z-index: 10;
+  max-height: 670px;
+  overflow: scroll;
+  z-index: 50;
+
+  @media (max-width:480px){
+    bottom: auto;
+    top: 0;
+  }
 
   h4{
     margin-bottom: 35px;
@@ -5574,6 +5662,12 @@ footer.about-footer{
     position: absolute;
     top: 30px;
     right: 20px;
+
+    //@media (max-width: 480px) {
+    //  &{
+    //    top:32%;
+    //  }
+    //}
   }
 }
 
@@ -7136,7 +7230,16 @@ footer.about-footer{
 
 .bottom-block{
   height: 100px;
-  position: relative;
+  //position: relative;
+  position: fixed;
+  bottom: 0;
+  right: 0%;
+  z-index: 20;
+
+  @media (max-width: 480px){
+    display: none;
+  }
+
 }
 
 #about-button{
@@ -9287,6 +9390,9 @@ body.giveaway-page{
     left: -182px;
     width: 250px;
     bottom: 0;
+  }
+  .social-stats__item{
+    margin-right: 10px;
   }
   &.expired{
     #hero-bg{
