@@ -10873,6 +10873,8 @@ body.giveaway-page #hero-arrow {
   left: -182px;
   width: 250px;
   bottom: 0; }
+body.giveaway-page .social-stats__item {
+  margin-right: 10px; }
 body.giveaway-page.expired #hero-bg {
   -webkit-filter: grayscale(100%) !important;
   filter: grayscale(100%) !important; }
