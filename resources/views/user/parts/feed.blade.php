@@ -29,7 +29,7 @@
             </ul>
         </div>
     </div>
-    <div class="col-md-9 main-content">
+    <div class="col-md-9 main-content" ng-init="userActivityList({{$userData['id']}},null)">
 
         @foreach($activity as $item)
 
