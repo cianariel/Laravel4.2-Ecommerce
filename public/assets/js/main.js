@@ -3893,6 +3893,23 @@ angular.module('colorpicker.module', [])
             lessLink: '<a class="morelink" href="#">Close</a>',
         });
 
+        //$('body').on('scroll', function() {
+        //    console.log('the end is near');
+        //
+        //    if($(this).scrollTop() + $(this).innerHeight() >= $(this)[0].scrollHeight) {
+        //        console.log('end reached');
+        //    }
+        //})
+
+        $(window).scroll(function() {
+
+            if($(window).scrollTop() + $(window).height() == $(document).height()) {
+                console.log('the end is near');
+                $('.bottom-load-more').click();
+                $('.bottom-load-more').addClass('disabled').attr('disabled', true);
+            }
+        });
+
 
 	}); // global function()
 
@@ -5379,6 +5396,10 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
         //});
 
         $scope.loadMore = function() {
+            if($('.bottom-load-more').hasClass('disabled')){
+                return false;
+            }
+
             $scope.currentPage++;
             $scope.allContent[$scope.currentPage] = [];
 
@@ -5394,9 +5415,15 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
                 $scope.content = $scope.content.concat($scope.newStuff);
 
                 $scope.hasMore = response['hasMore'];
+                console.log('BUbba!')
 
+                $('.bottom-load-more').removeClass('disabled').attr('disabled', false);
             });
         };
+
+        //jQuery(function($) {
+
+        //});
 
 
         $scope.filterContent = function($criterion){
@@ -5539,6 +5566,10 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
 
             $scope.loadMore = function() {
 
+                if($('.bottom-load-more').hasClass('disabled')){
+                    return false;
+                }
+
                 $scope.offset = 15 * $scope.currentPage++;
                 $scope.nextLoad =  pagingApi.getSearchContent($scope.$searchQuery, 15,  $scope.offset,  $scope.type,  $scope.sortBy).success(function (response) {
                     var $newStuff = $scope.content.concat(response['content'])
@@ -5552,6 +5583,7 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
                     $scope.content = $newStuff;
                     $scope.hasMore = response['hasMore'];
                     $scope.currentPage++;
+                    $('.bottom-load-more').removeClass('disabled').attr('disabled', false);
 
                 });
         }
@@ -5823,6 +5855,11 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
         });
 
         $scope.loadMore = function() {
+
+            if($('.bottom-load-more').hasClass('disabled')){
+                return false;
+            }
+
             $scope.currentPage++;
 
             var $limit = 15;
@@ -5838,6 +5875,7 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
 
                 $scope.content = $newStuff;
                 $scope.hasMore = response['hasMore'];
+                $('.bottom-load-more').removeClass('disabled').attr('disabled', false);
 
             });
         };

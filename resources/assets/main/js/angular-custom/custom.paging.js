@@ -143,6 +143,10 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
         //});
 
         $scope.loadMore = function() {
+            if($('.bottom-load-more').hasClass('disabled')){
+                return false;
+            }
+
             $scope.currentPage++;
             $scope.allContent[$scope.currentPage] = [];
 
@@ -158,9 +162,15 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
                 $scope.content = $scope.content.concat($scope.newStuff);
 
                 $scope.hasMore = response['hasMore'];
+                console.log('BUbba!')
 
+                $('.bottom-load-more').removeClass('disabled').attr('disabled', false);
             });
         };
+
+        //jQuery(function($) {
+
+        //});
 
 
         $scope.filterContent = function($criterion){
@@ -303,6 +313,10 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
 
             $scope.loadMore = function() {
 
+                if($('.bottom-load-more').hasClass('disabled')){
+                    return false;
+                }
+
                 $scope.offset = 15 * $scope.currentPage++;
                 $scope.nextLoad =  pagingApi.getSearchContent($scope.$searchQuery, 15,  $scope.offset,  $scope.type,  $scope.sortBy).success(function (response) {
                     var $newStuff = $scope.content.concat(response['content'])
@@ -316,6 +330,7 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
                     $scope.content = $newStuff;
                     $scope.hasMore = response['hasMore'];
                     $scope.currentPage++;
+                    $('.bottom-load-more').removeClass('disabled').attr('disabled', false);
 
                 });
         }
@@ -587,6 +602,11 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
         });
 
         $scope.loadMore = function() {
+
+            if($('.bottom-load-more').hasClass('disabled')){
+                return false;
+            }
+
             $scope.currentPage++;
 
             var $limit = 15;
@@ -602,6 +622,7 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
 
                 $scope.content = $newStuff;
                 $scope.hasMore = response['hasMore'];
+                $('.bottom-load-more').removeClass('disabled').attr('disabled', false);
 
             });
         };

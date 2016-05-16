@@ -306,6 +306,23 @@
             lessLink: '<a class="morelink" href="#">Close</a>',
         });
 
+        //$('body').on('scroll', function() {
+        //    console.log('the end is near');
+        //
+        //    if($(this).scrollTop() + $(this).innerHeight() >= $(this)[0].scrollHeight) {
+        //        console.log('end reached');
+        //    }
+        //})
+
+        $(window).scroll(function() {
+
+            if($(window).scrollTop() + $(window).height() == $(document).height()) {
+                console.log('the end is near');
+                $('.bottom-load-more').click();
+                $('.bottom-load-more').addClass('disabled').attr('disabled', true);
+            }
+        });
+
 
 	}); // global function()
 
