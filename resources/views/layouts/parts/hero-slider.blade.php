@@ -23,5 +23,4 @@
             </div>
         <?php } ?>
 </div>
-<div class="color-overlay"></div>
-<div class="color-overlay blur-overlay"></div>
+{{--<div class="color-overlay blur-overlay"></div>--}}

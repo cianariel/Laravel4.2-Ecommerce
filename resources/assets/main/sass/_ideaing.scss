@@ -4435,36 +4435,62 @@ header.sub-head{
   }
 }
 
+.hero-wrap{
+  position: relative;
+  overflow: hidden;
+}
+
 .hero-login{
-  background: darken($sky-blue, 10%);
+  //background: darken($sky-blue, 10%);
   width: 100%;
   overflow: hidden;
   padding-top: 30px;
   padding-bottom: 30px;
   position: relative;
+  z-index: 10;
 
-  #close-login{
+  .close-login{
     position: absolute;
     right: 5%;
-    top: 10%;
+    top: 0;
     background: transparent;
     border: 0;
     outline: 0;
-    border-radius: 35px;
     padding-left: 10px;
     padding-right: 10px;
-    border: 2px solid #fff;
-    opacity:0.8;
-
-    &::after{
-      font-family: 'ideaing' !important;
-      content: "\e9ef";
+    z-index: 20;
+    i{
       color: #fff;
       font-size: 2.5rem;
-
+      font-weight: bold;
+      padding-left: 30px;
     }
 
   }
+}
+
+.homepage{
+  #hero{
+    min-height: 520px;
+  }
+  .color-overlay{
+    position: absolute;
+    min-height: 1000px;
+    width: 100%;
+    background-size: cover;
+    top: 0;
+    z-index: 0;
+  }
+  #hero-slider .rsNav.rsBullets{
+    top: -30px;
+
+    @media (max-width: 1200px){
+      &{
+        top: -55px;
+      }
+    }
+  }
+
 }
 
 .product-nav{

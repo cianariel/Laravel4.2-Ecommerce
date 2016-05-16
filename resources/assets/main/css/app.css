@@ -7558,30 +7558,47 @@ header.sub-head {
   .single #hero-nav li.all-shares {
     top: -18px; }
 
+.hero-wrap {
+  position: relative;
+  overflow: hidden; }
+
 .hero-login {
-  background: #008ecc;
   width: 100%;
   overflow: hidden;
   padding-top: 30px;
   padding-bottom: 30px;
-  position: relative; }
-  .hero-login #close-login {
+  position: relative;
+  z-index: 10; }
+  .hero-login .close-login {
     position: absolute;
     right: 5%;
-    top: 10%;
+    top: 0;
     background: transparent;
     border: 0;
     outline: 0;
-    border-radius: 35px;
     padding-left: 10px;
     padding-right: 10px;
-    border: 2px solid #fff;
-    opacity: 0.8; }
-    .hero-login #close-login::after {
-      font-family: 'ideaing' !important;
-      content: "\e9ef";
+    z-index: 20; }
+    .hero-login .close-login i {
       color: #fff;
-      font-size: 2.5rem; }
+      font-size: 2.5rem;
+      font-weight: bold;
+      padding-left: 30px; }
+
+.homepage #hero {
+  min-height: 520px; }
+.homepage .color-overlay {
+  position: absolute;
+  min-height: 1000px;
+  width: 100%;
+  background-size: cover;
+  top: 0;
+  z-index: 0; }
+.homepage #hero-slider .rsNav.rsBullets {
+  top: -30px; }
+  @media (max-width: 1200px) {
+    .homepage #hero-slider .rsNav.rsBullets {
+      top: -55px; } }
 
 .like-nav li {
   width: 35px;
