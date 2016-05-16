@@ -320,6 +320,7 @@
                 console.log('the end is near');
                 $('.bottom-load-more').click();
                 $('.bottom-load-more').addClass('disabled').attr('disabled', true);
+                $('.bottom-block').addClass('hard-show');
             }
         });
 
