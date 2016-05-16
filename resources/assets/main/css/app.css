@@ -6366,6 +6366,7 @@ article.product {
   border-radius: 50px;
   color: #FF0042;
   line-height: 50px;
+  background: #fff;
   /*  background: url("/assets/images/back-to-top.png") no-repeat;*/
   /*  text-indent: -9999px;*/
   z-index: 10; }
@@ -9340,7 +9341,9 @@ footer.about-footer {
 
 .bottom-block {
   height: 100px;
-  position: relative; }
+  position: fixed;
+  bottom: 0;
+  right: 0%; }
 
 #about-button {
   bottom: 39px; }

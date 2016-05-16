@@ -13,13 +13,13 @@
         <section id="hero" class="landing-hero">
             @include('layouts.parts.hero-slider')
         </section>
-        <section class="hero-login hidden-soft">
             @if(empty($userData['email']))
                 @if(isset($homehero))
+                <section class="hero-login hidden-soft">
                     @include('layouts.parts.hero-login')
-                @endif
+                </section>
             @endif
-        </section>
+            @endif
         <div class="color-overlay"></div>
         <div class="color-overlay blur-overlay"></div>
     </div>
