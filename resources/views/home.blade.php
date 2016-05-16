@@ -9,19 +9,24 @@
               <h2 id="site-subhead" class="hidden">Ideas for Smarter Living</h2>';
     }
     ?>
-    <section id="hero" class="landing-hero">
+    <div class="hero-wrap">
+        <section id="hero" class="landing-hero">
             @include('layouts.parts.hero-slider')
-    </section>
-    <section class="row hero-login hidden-soft">
-        @if(empty($userData['email']))
-            @if(isset($homehero))
-                @include('layouts.parts.hero-login')
+        </section>
+        <section class="hero-login hidden-soft">
+            @if(empty($userData['email']))
+                @if(isset($homehero))
+                    @include('layouts.parts.hero-login')
+                @endif
             @endif
-        @endif
-    </section>
+        </section>
+        <div class="color-overlay"></div>
+        <div class="color-overlay blur-overlay"></div>
+    </div>
+
     <div class="app-wrap" id="pagingApp" ng-app="pagingApp" ng-controller="pagingController" ng-cloak>
         <nav id="hero-nav" class="col-sm-12">
-            <div class="container full-620  fixed-sm">
+            <div class="container full-620 fixed-sm">
                 {{--<ul class="left-nav col-xs-1 hidden-620">--}}
                     {{--<li class="active"><a class="home-link" href="#">Home</a></li>--}}
                 {{--</ul>--}}

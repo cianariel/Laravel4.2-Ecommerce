@@ -1,6 +1,9 @@
 @foreach( $homehero as $key => $image )
         {{--<div id="hero-bg" style="background-image: url('{{$image['hero_image']}}'); "></div>--}}
-        <button id="close-login" data-toggle=".hero-login"></button>
+        {{--<button id="close-login" data-toggle=".hero-login"></button>--}}
+        <span class="close-button close-login"  data-toggle=".hero-login">
+            <i class="m-icon--Close"></i>
+        </span>
         <div class="color-overlay"></div>
         <div class="container fixed-sm full-480">
             <div class="col-md-5 col-xs-6 full-620 col-md-offset-1 why-us">
@@ -35,12 +38,13 @@
                 </form>
             </div>
         </div>
+
 @endforeach
 
 <script>
     $(document).ready(function(){
         setTimeout(function(){
             $('.hero-login').fadeIn();
-        }, 180000)
+        }, 0)
     });
 </script>
