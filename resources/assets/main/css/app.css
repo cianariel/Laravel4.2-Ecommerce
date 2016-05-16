@@ -4533,6 +4533,9 @@ a:hover, a:focus {
 .nofloat {
   float: none !important; }
 
+.hard-show {
+  display: block !important; }
+
 [data-toggle],
 [data-switch] {
   cursor: pointer; }
@@ -9346,6 +9349,9 @@ footer.about-footer {
   bottom: 0;
   right: 0%;
   z-index: 20; }
+  @media (max-width: 480px) {
+    .bottom-block {
+      display: none; } }
 
 #about-button {
   bottom: 39px; }
