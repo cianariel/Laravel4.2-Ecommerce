@@ -4527,6 +4527,9 @@ a:hover, a:focus {
 .full-wide {
   width: 100%; }
 
+.overhide {
+  overflow: hidden; }
+
 .nofloat {
   float: none !important; }
 
@@ -7545,6 +7548,16 @@ header.sub-head {
       padding-right: 10px; }
       #hero-nav .main-content-filter li > a:focus {
         text-decoration: none; }
+
+.load-line {
+  width: 100%;
+  float: left; }
+
+.loader-static {
+  position: relative;
+  margin: 0 auto;
+  position: relative;
+  background: #fff; }
 
 .homepage #hero-nav .category-nav {
   width: 390px;

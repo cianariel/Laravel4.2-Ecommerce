@@ -299,7 +299,7 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
             $scope.sortBy = false;
             $scope.hasMore = false;
 
-            $scope.nextLoad = pagingApi.getSearchContent($scope.$searchQuery, 15, 0).success(function (response) {
+            $scope.firstLoad = pagingApi.getSearchContent($scope.$searchQuery, 15, 0).success(function (response) {
                 $scope.content = response['content'];
                 $scope.hasMore = response['hasMore'];
 

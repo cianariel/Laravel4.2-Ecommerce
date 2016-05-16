@@ -4356,7 +4356,7 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
             $scope.notifications = [];
             $scope.uid = null;
 
-            // comment ideas and giveaway
+            // comment ideas and giveawayf
             $scope.itemId = 0;
             $scope.userId = 0;
             $scope.isAdmin = false;
@@ -5552,7 +5552,7 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
             $scope.sortBy = false;
             $scope.hasMore = false;
 
-            $scope.nextLoad = pagingApi.getSearchContent($scope.$searchQuery, 15, 0).success(function (response) {
+            $scope.firstLoad = pagingApi.getSearchContent($scope.$searchQuery, 15, 0).success(function (response) {
                 $scope.content = response['content'];
                 $scope.hasMore = response['hasMore'];
 

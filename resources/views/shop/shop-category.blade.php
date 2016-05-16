@@ -113,7 +113,7 @@
             <div class="homepage-grid center-block">
                 <div class="loader loader-abs" cg-busy="firstLoad"></div>
                 {{--<div class="loader loader-abs" cg-busy="filterLoad"></div>--}}
-                <div class="loader loader-fixed" cg-busy="nextLoad"></div>
+                {{--<div class="loader loader-fixed" cg-busy="nextLoad"></div>--}}
 
                 <div class="main-content ">
                     <div id="shop-filter-grid-box-3" ng-class="['col-lg-12', {'show-filter': showFilter}]">
@@ -126,10 +126,9 @@
                             </div>
                         </div>
                     </div>
-                    <div class="container">
-                        <a ng-show="hasMore" ng-click="loadMore()" class="btn btn-success bottom-load-more col-xs-12">Load
-                            More</a>
-                    </div>
+
+                    @include('layouts.parts.load-more')
+
                 </div>
             </div>
 
