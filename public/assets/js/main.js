@@ -4974,6 +4974,10 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
             else
                 $scope.userActivityCount = $scope.userActivityCount + count;
 
+            $scope.profilePicture = $window.profilePicture;
+            $scope.profileFullName = $window.profileFullName;
+
+
             console.log('act : ', userId, $scope.userActivityCount);
 
             $http({
@@ -4985,7 +4989,7 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                 }
 
             }).success(function (data) {
-                $scope.activityData = data;
+                $scope.activityData = data.data;
             });
 
         };
