@@ -5542,7 +5542,7 @@ footer.about-footer{
   width: 100%;
   max-height: 670px;
   overflow: scroll;
-  z-index: 50;
+  z-index: 60;
 
   @media (max-width:480px){
     bottom: auto;
@@ -7290,6 +7290,15 @@ body.shoppage{
             }
         }
     }
+  .app-wrap{
+    overflow: hidden; 
+    padding-bottom:40px;
+  }
+    //.main-content{
+    //  overflow: hidden;
+    //  float:left;
+    //  padding-bottom: 40px;
+    //}
 }
 body.shop-landing{
     .app-wrap{
@@ -9636,6 +9645,9 @@ body.giveaway-page{
 }
 
 .adsbygoogle{
+  //float: left;
+  //margin-top: 42px;
+
   & > ins{
     display: block !important;
     margin: 0 auto  !important;;
