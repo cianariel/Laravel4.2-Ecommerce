@@ -9390,6 +9390,10 @@ body.shoppage .mid-nav .shop-landing-submenu.wrap, .mid-nav body.shoppage .extra
       margin-left: 0px !important;
       margin-right: 0px;
       font-size: 11px; } }
+body.shoppage .main-content {
+  overflow: hidden;
+  float: left;
+  padding-bottom: 40px; }
 
 body.shop-landing .app-wrap {
   position: relative;
@@ -11040,13 +11044,10 @@ body.giveaway-page .black-slider {
     left: 16%;
     font-size: 5rem; }
 
-.adsbygoogle {
-  float: left;
-  margin-top: 42px; }
-  .adsbygoogle > ins {
-    display: block !important;
-    margin: 0 auto  !important;
-    float: none; }
+.adsbygoogle > ins {
+  display: block !important;
+  margin: 0 auto  !important;
+  float: none; }
 
 @font-face {
   font-family: 'montserratlight';

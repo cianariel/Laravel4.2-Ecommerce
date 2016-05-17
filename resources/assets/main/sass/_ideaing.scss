@@ -7290,6 +7290,11 @@ body.shoppage{
             }
         }
     }
+    .main-content{
+      overflow: hidden;
+      float:left;
+      padding-bottom: 40px;
+    }
 }
 body.shop-landing{
     .app-wrap{
@@ -9636,8 +9641,8 @@ body.giveaway-page{
 }
 
 .adsbygoogle{
-  float: left;
-  margin-top: 42px;
+  //float: left;
+  //margin-top: 42px;
 
   & > ins{
     display: block !important;
