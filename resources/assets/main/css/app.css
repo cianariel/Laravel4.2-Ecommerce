@@ -9390,11 +9390,8 @@ body.shoppage .mid-nav .shop-landing-submenu.wrap, .mid-nav body.shoppage .extra
       margin-left: 0px !important;
       margin-right: 0px;
       font-size: 11px; } }
-body.shoppage .homepage-grid {
-  overflow: hidden; }
-body.shoppage .main-content {
+body.shoppage .app-wrap {
   overflow: hidden;
-  float: left;
   padding-bottom: 40px; }
 
 body.shop-landing .app-wrap {
