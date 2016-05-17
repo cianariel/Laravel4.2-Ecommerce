@@ -8382,7 +8382,7 @@ footer.about-footer {
   width: 100%;
   max-height: 670px;
   overflow: scroll;
-  z-index: 50; }
+  z-index: 60; }
   @media (max-width: 480px) {
     footer.about-footer {
       bottom: auto;
@@ -9390,6 +9390,9 @@ body.shoppage .mid-nav .shop-landing-submenu.wrap, .mid-nav body.shoppage .extra
       margin-left: 0px !important;
       margin-right: 0px;
       font-size: 11px; } }
+body.shoppage .app-wrap {
+  overflow: hidden;
+  padding-bottom: 40px; }
 
 body.shop-landing .app-wrap {
   position: relative;
