@@ -3904,7 +3904,7 @@ angular.module('colorpicker.module', [])
         $(window).scroll(function() {
 
             if($(window).scrollTop() + $(window).height() == $(document).height()) {
-                console.log('the end is near');
+            //    console.log('the end is near');
                 $('.bottom-load-more').click();
                 $('.bottom-load-more').addClass('disabled').attr('disabled', true);
                 $('.bottom-block').addClass('hard-show');
@@ -3961,6 +3961,10 @@ angular.module('colorpicker.module', [])
  */
 
 var publicApp = angular.module('publicApp', ['ui.bootstrap', 'ngSanitize', 'angularFileUpload']);
+
+publicApp.config(['$httpProvider', function ($httpProvider) {
+    $httpProvider.defaults.headers.common["X-Requested-With"] = 'XMLHttpRequest';
+}]);
 
 // directive for heart action for grid items
 publicApp.directive('heartCounterPublic', ['$http', function ($http) {
@@ -4958,6 +4962,34 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                 /* if(data.status_code == 200)
                  window.location = $scope.logingRedirectLocation;
                  */
+            });
+
+        };
+
+        // Load user activity like/comment in user profile
+        $scope.userActivityList = function (userId, count) {
+
+            if ($scope.userActivityCount == null)
+                $scope.userActivityCount = count;
+            else
+                $scope.userActivityCount = $scope.userActivityCount + count;
+
+            $scope.profilePicture = $window.profilePicture;
+            $scope.profileFullName = $window.profileFullName;
+
+
+            console.log('act : ', userId, $scope.userActivityCount);
+
+            $http({
+                url: '/api/user/activities',
+                method: "POST",
+                data: {
+                    UserId: userId,
+                    ActivityCount: $scope.userActivityCount
+                }
+
+            }).success(function (data) {
+                $scope.activityData = data.data;
             });
 
         };

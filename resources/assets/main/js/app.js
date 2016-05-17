@@ -317,7 +317,7 @@
         $(window).scroll(function() {
 
             if($(window).scrollTop() + $(window).height() == $(document).height()) {
-                console.log('the end is near');
+            //    console.log('the end is near');
                 $('.bottom-load-more').click();
                 $('.bottom-load-more').addClass('disabled').attr('disabled', true);
                 $('.bottom-block').addClass('hard-show');

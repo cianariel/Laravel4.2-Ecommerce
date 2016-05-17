@@ -114,6 +114,11 @@ Route::group(['prefix' => 'api'], function () {
     Route::get('user/get-user/{id?}', 'UserController@getUserById');
     // Route::any('user/user-add/{id?}','UserController@userList');
 
+    /*
+    * User Activity
+    * */
+    Route::post('user/activities', 'UserController@getUserActivity');
+
 
     /*
      * Product Category route collection
@@ -217,16 +222,13 @@ Route::group(['prefix' => 'api'], function () {
 
     Route::post('contact-us', 'UserController@postContactUsInfo');
 
+
+
     /*
      * Notification
      * */
     Route::get('notification/{uid?}', 'UserController@notification');
     Route::get('read-all-notification/{uid?}', 'UserController@notificationReadAll');
-
-    /*
-     * User Activity
-     * */
-    Route::post('user-activity', 'UserController@getUserActivity');
 
 
     /*
@@ -237,9 +239,9 @@ Route::group(['prefix' => 'api'], function () {
     Route::get('feed', 'ApiController@feedDispatcher');
 });
 
-    Route::post('/api/giveaway/enter', 'GiveawayController@enterUser');
-    Route::get('/api/giveaway/enter', 'GiveawayController@enterUser');
-    Route::get('/api/giveaway/get-current', 'GiveawayController@getCurrentGiveaway');
+Route::post('/api/giveaway/enter', 'GiveawayController@enterUser');
+Route::get('/api/giveaway/enter', 'GiveawayController@enterUser');
+Route::get('/api/giveaway/get-current', 'GiveawayController@getCurrentGiveaway');
 
 // Admin Route
 Route::group(['prefix' => 'admin'], function () {
@@ -285,12 +287,8 @@ Route::group(['prefix' => 'admin'], function () {
 });
 
 //Shop view
-//    Route::get('shop/{categoty?}', 'ShopController@index');
-//    Route::get('shop/{parent?}/{categoty?}', 'ShopController@index');
 Route::get('shop/{grandParent?}/{parent?}/{child?}', ['as' => 'shopCategory', 'uses' => 'ShopController@index']);
-//    Route::get('shop/travel/{categoty?}', 'ShopController@index');
-//    Route::get('shop/wearables/{categoty?}', 'ShopController@index');
-//    Route::get('shop/home-decor/{categoty?}', 'ShopController@index');
+
 
 //User Profile
 Route::get('user/profile', 'UserController@userProfile');

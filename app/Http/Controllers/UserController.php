@@ -205,6 +205,8 @@ class UserController extends ApiController
             $userData = $this->authCheck['user-data'];
 
             // 'profilePicture'   => $this->authCheck['profile-picture'],
+
+
             $data = array(
                 'userData' => $userData,
                 'userProfileData' => $userData,
@@ -214,15 +216,20 @@ class UserController extends ApiController
                 'fullname' => $userData->name,
                 'address' => $userData->userProfile->address,
                 'personalInfo' => $userData->userProfile->personal_info,
-                //   'login'     => true,
-                //   'permalink' => $userData->userProfile->permalink
                 'permalink' => $permalink,
                 'isAdmin' => $userData->hasRole('admin') || $userData->hasRole('editor'),
                 'showEditOption' => true
 
             );
 
+            // dd($data);
+
             MetaTag::set('title', 'Ideaing | My profile');
+
+            /*if (\Request::isXmlHttpRequest()) {
+                return $this->setStatusCode(\Config::get("const.api-status.success"))
+                            ->makeResponse($data);
+            } else*/
 
             return view('user.user-profile', $data);
 
@@ -244,6 +251,7 @@ class UserController extends ApiController
         $userProfileData = $this->user->checkUserByPermalink($permalink);
 
         $userProfileData = $userProfileData != false ? $userProfileData : $userData;
+
         $data = array(
             'userData' => empty($userData) ? null : $userData,
             'userProfileData' => $userProfileData,
@@ -337,12 +345,16 @@ class UserController extends ApiController
         $inputData = \Input::all();
 
         $userId = $inputData['UserId'];
+        $activityCount = $inputData['ActivityCount'];
 
         // gather comment activities
 
-        $activityWithHumanTime = $this->comment->getCommentsAndHeatByUserId($userId, 10);
+        $activityWithHumanTime = $this->comment->getCommentsAndHeatByUserId($userId, $activityCount);
 
-        return $activityWithHumanTime;
+        //return $activityWithHumanTime;
+
+        return $this->setStatusCode(\Config::get("const.api-status.success"))
+                    ->makeResponse($activityWithHumanTime);
 
     }
 
