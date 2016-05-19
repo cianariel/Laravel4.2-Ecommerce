@@ -92,7 +92,10 @@
                                                 </a> 
                                             </div>
                                             <div class="col-xs-4 col-sm-2">
-                                                <a href="{{@$i_products->affiliate_link}}" class="get solid pull-right ">Get it</a>
+                                                {{--<a href="{{@$i_products->affiliate_link}}" class="get solid pull-right ">Get it</a>--}}
+                                                <a target="_blank" href="/open/{{ $i_products->product_id }}/room" class="get solid pull-right ">Get it</a>
+
+
                                             </div>
                                         </div>
                                     </li>

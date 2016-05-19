@@ -33,6 +33,8 @@ Route::get('update-price', 'ProductController@priceUpdate');
 
 Route::get('unsubscribe', 'PageController@home');
 
+Route::get('open/{productId}/{reference}', 'ProductQueryController@link');
+
 
 //    Route::get('/product-details', function () // temp, used for tweaking frontend
 //    {
