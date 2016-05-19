@@ -39,7 +39,7 @@ class ProductQueryController extends ApiController
         $existingProduct = $this->product->where('id', $productId);
         $count = $existingProduct->count();
 
-        if (($reference != 'product') && ($reference != 'ideas') && ($reference != 'home'))
+        if (($reference != 'product') && ($reference != 'ideas') && ($reference != 'home') && ($reference != 'room'))
             $reference = 'product';
 
         if (!empty($count)) {
