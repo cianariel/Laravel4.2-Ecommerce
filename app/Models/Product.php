@@ -94,6 +94,12 @@ class Product extends Model
     }
 
 
+    public function productQueries()
+    {
+        return $this->hasMany('App\Models\ProductQuery');
+    }
+
+
     // accessor for JSON decode
     public function getSimilarProductIdsAttribute($value)
     {
