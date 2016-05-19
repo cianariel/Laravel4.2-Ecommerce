@@ -46,7 +46,6 @@ $currentCat = $cat->slug;
     <div class="clearfix"></div>
     <div class="homepage-grid center-block" style="min-height:1000px">
         <div class="loader loader-abs" cg-busy="firstLoad"></div>
-        <div class="loader loader-fixed" cg-busy="nextLoad"></div>
         <?php include('/var/www/ideaing/resources/views/grid/grid.blade.php') ?>
     </div>
     <?php loadLaravelView('load-more'); ?>
