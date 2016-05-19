@@ -81,6 +81,11 @@ class User extends Model implements AuthenticatableContract,
         return $this->morphMany('App\Models\Media', 'mediable');
     }
 
+    public function productQueries()
+    {
+        return $this->hasMany('App\Models\ProductQuery');
+    }
+
     /**
      * Defile custom model method
      */
