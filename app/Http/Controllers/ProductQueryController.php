@@ -15,8 +15,6 @@ use Carbon\Carbon;
 use PageHelper;
 
 
-
-
 class ProductQueryController extends ApiController
 {
 
@@ -33,26 +31,27 @@ class ProductQueryController extends ApiController
         $this->user = new User();
     }
 
-    public function link($userId,$productId,$reference)
+    public function link($productId, $reference)
     {
 
-        $existingUser = $this->user->where('id',$userId)->count();//->first();
+        //   $existingUser = $this->user->where('id',$userId)->count();//->first();
 
-        $existingProduct = $this->product->where('id',$productId)->count();
+        $existingProduct = $this->product->where('id', $productId);
+        $count = $existingProduct->count();
 
-        if(($reference != 'product') && ($reference != 'ideas'))
+        if (($reference != 'product') && ($reference != 'ideas') && ($reference != 'home'))
             $reference = 'product';
 
-        if(!empty($existingUser) && !empty($existingProduct))
-        {
-            $result = $this->productQuery->saveProductRequest(['userId' => $userId,'productId'=>$productId,'reference'=>$reference]);
+        if (!empty($count)) {
+            $result = $this->productQuery->saveProductRequest(['productId' => $productId, 'reference' => $reference]);
 
-            dd($existingUser,$existingProduct,$reference,$result);
+            $product = $existingProduct->first();
+
+            if (!empty($product['affiliate_link']))
+                return redirect($product['affiliate_link']);
+            else
+                return redirect()->back();
         }
-
-        dd('exit',$existingUser,$existingProduct,$reference);
-
-
     }
 
 
