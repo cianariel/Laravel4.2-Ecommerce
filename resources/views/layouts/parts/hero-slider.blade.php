@@ -4,6 +4,7 @@
              $sliderContent = getHeroSliderContent();
          }
 
+        if($sliderContent){
         foreach($sliderContent as $item){ ?>
             <div class="box-item product-box text-center">
                 <div class="img-holder">
@@ -21,6 +22,7 @@
                     </a>
                 </div>
             </div>
-        <?php } ?>
+        <?php }
+            }   ?>
 </div>
 {{--<div class="color-overlay blur-overlay"></div>--}}
