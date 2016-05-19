@@ -116,6 +116,10 @@ if($tag_in = $_REQUEST['tag_in']){
     $args['tag_slug__in'] = explode(',', $tag_in);
 }
 
+if($tag_not_in = $_REQUEST['tag_not_in']){
+    $args['tag__not_in'] = explode(',', $tag_not_in);
+}
+
 //echo $args['tag_slug__in']; die();
 
 if($excludeID = $_REQUEST['excludeid']){
