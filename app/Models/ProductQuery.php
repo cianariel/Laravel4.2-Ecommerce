@@ -39,8 +39,6 @@ class ProductQuery extends Model
     {
        // dd($data);
         $productQuery = new ProductQuery();
-
-        $productQuery->user_id = $data['userId'];
         $productQuery->product_id = $data['productId'];
         $productQuery->reference = $data['reference'];
 

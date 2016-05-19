@@ -274,7 +274,8 @@
                     <div class="clearfix"></div>
 
                     <div class="clearfix"></div>
-                    <a target="_blank" href="/product/{{ $product->product_permalink }}" class="box-item__get-it">
+                   <!-- <a target="_blank" href="/product/{{ $product->product_permalink }}" class="box-item__get-it"> -->
+                    <a target="_blank" href="/open/{{ $product->id }}/ideas" class="box-item__get-it">
                         Get it
                     </a>
                 </div>

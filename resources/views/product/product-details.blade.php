@@ -3,6 +3,8 @@
 @section('body-class'){{ 'product-details' }}@stop
 
 @section('content')
+
+
     <script type="text/javascript">
         var permalink = "{{$permalink}}";
     </script>
@@ -82,9 +84,7 @@
                 </ul>
 
                 <div class="icon-wrap pull-right">
-                    <a class="category-tag get-round" ng-href="@if(isset($productInformation['AffiliateLink']))
-                    {{$productInformation['AffiliateLink']}}
-                    @endif" target="_blank">
+                    <a class="category-tag get-round" ng-href="/open/<?php echo $productInformation['Id'] ?>/product" target="_blank">
                         Get it
                     </a>
                     <b class="price" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
@@ -268,9 +268,7 @@
                     <div class="slider-side-block">
 
                         <div class="top">
-                            <a class="get-round" href="@if(isset($productInformation['AffiliateLink']))
-                            {{$productInformation['AffiliateLink']}}
-                            @endif" target="_blank">
+                            <a class="get-round" href="/open/<?php echo $productInformation['Id'] ?>/product" target="_blank">
                                 Get it
                             </a>
                             <img class="vendor-logo" width="107"
@@ -710,7 +708,7 @@
                                         <div class="clearfix"></div>
 
                                         <div class="clearfix"></div>
-                                        <a target="_blank" href="{{ $product['Permalink'] }}" class="box-item__get-it">
+                                        <a target="_blank" href="/open/{{ $product['ItemId'] }}/product" class="box-item__get-it">
                                             Get it
                                         </a>
                                     </div>

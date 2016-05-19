@@ -47,6 +47,7 @@
 
     </div>
     <div class="clearfix"></div>
-    <a target="_blank" href="<?php echo '{{item.affiliate_link}}' ?>" class="box-item__get-it">Get it</a>
+    <!-- <a target="_blank" href="<?php // echo '{{item.affiliate_link}}' ?>" class="box-item__get-it">Get it</a> -->
+    <a target="_blank" href="/open/<?php echo '{{item.id}}' ?>/home" class="box-item__get-it">Get it</a>
 </div>
 
