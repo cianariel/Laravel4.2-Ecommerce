@@ -380,7 +380,7 @@ class PageController extends ApiController
         $return['regular'] = json_decode($newIdeaCollection->toJson(), FALSE);
 
 
-        $featuredUrl = URL::to('/') . '/ideas/feeds/index.php?count=' . $featuredLimit . '&only-featured&offset=' . $featuredOffset . '&tag_not_in=deal';
+        $featuredUrl = URL::to('/') . '/ideas/feeds/index.php?count=' . $featuredLimit . '&only-featured&offset=' . $featuredOffset . '&no-deals';
 
 
         if ($tag && $tag != 'false' && $tag != false) {

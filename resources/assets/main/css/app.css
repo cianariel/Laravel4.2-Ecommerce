@@ -6543,7 +6543,9 @@ header.colophon {
   max-height: 60px; }
 
 #top-nav .mobile-top-menu-switcher i {
-  font-size: 16px; }
+  font-size: 26px;
+  position: relative;
+  bottom: 4px; }
 #top-nav .mobile-top-menu-switcher .up {
   display: none; }
 #top-nav .mobile-top-menu-switcher.active .up {
