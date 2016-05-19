@@ -54,13 +54,15 @@
 
             // 2.Get Ideas
 
-            if (env('FEED_PROD') == true){
+            /*if (env('FEED_PROD') == true){
                $url = 'https://ideaing.com//ideas/feeds/index.php?with_tags&full_content';
                // $url = 'https://ideaing.com//ideas/feeds/index.php?with_tags&full_content&count=10';
             }else{
              $url = URL::to('/') . '/ideas/feeds/index.php?with_tags&full_content';
              //   $url = URL::to('/') . '/ideas/feeds/index.php?with_tags&full_content&count=10';
-            }
+            }*/
+
+            $url = URL::to('/') . '/ideas/feeds/index.php?with_tags&full_content';
 
             $ch = curl_init();
             curl_setopt($ch, CURLOPT_URL, $url);
