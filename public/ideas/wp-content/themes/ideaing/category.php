@@ -46,12 +46,9 @@ $currentCat = $cat->slug;
     <div class="clearfix"></div>
     <div class="homepage-grid center-block" style="min-height:1000px">
         <div class="loader loader-abs" cg-busy="firstLoad"></div>
-        <div class="loader loader-fixed" cg-busy="nextLoad"></div>
         <?php include('/var/www/ideaing/resources/views/grid/grid.blade.php') ?>
     </div>
-    <div class="container">
-        <a ng-click="loadMore()" class="btn btn-success bottom-load-more col-xs-12">Load More</a>
-    </div>
+    <?php loadLaravelView('load-more'); ?>
 </div>
 
 <?php get_footer(); ?>
