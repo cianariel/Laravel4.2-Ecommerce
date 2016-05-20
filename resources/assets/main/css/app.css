@@ -10981,7 +10981,6 @@ body.giveaway-page .container-fluid {
   overflow: hidden; }
 body.giveaway-page .black-slider {
   min-height: 170px;
-  padding: 5px;
   float: left;
   position: relative;
   /* for the child pseudo-elements */
@@ -11000,7 +10999,7 @@ body.giveaway-page .black-slider {
     right: 100%;
     background: #000; }
   body.giveaway-page .black-slider:after {
-    width: 320px;
+    width: 920px;
     left: 100%;
     /* you're free to do something totally different here */
     background: #000; }
