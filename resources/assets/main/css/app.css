@@ -10981,9 +10981,29 @@ body.giveaway-page .container-fluid {
   overflow: hidden; }
 body.giveaway-page .black-slider {
   min-height: 170px;
-  background: #000;
   padding: 5px;
-  float: left; }
+  float: left;
+  position: relative;
+  /* for the child pseudo-elements */
+  /* negative offset = section padding */
+  margin: 0 -30px;
+  /* add back section padding value */
+  padding: 0.25rem 30px;
+  background: #000; }
+  body.giveaway-page .black-slider:before, body.giveaway-page .black-slider:after {
+    content: "";
+    position: absolute;
+    /* fill vertically */
+    top: 0;
+    bottom: 0;
+    width: 9600px;
+    right: 100%;
+    background: #000; }
+  body.giveaway-page .black-slider:after {
+    width: 320px;
+    left: 100%;
+    /* you're free to do something totally different here */
+    background: #000; }
   body.giveaway-page .black-slider .rsContainer {
     width: 120px;
     height: 180px; }
@@ -10995,7 +11015,7 @@ body.giveaway-page .black-slider {
   body.giveaway-page .black-slider .giveaway-logo {
     float: left;
     margin-top: 20px;
-    max-width: 220px; }
+    max-width: 285px; }
   body.giveaway-page .black-slider .thumb-wrap {
     float: left;
     color: #fff;
