@@ -112,9 +112,10 @@ if($byTags = $_REQUEST['tag']){
     $args['tag'] = $byTags;
 }
 
-if($tag_in = $_REQUEST['tag_in']){
-    $args['tag_slug__in'] = explode(',', $tag_in);
+ if(isset($_REQUEST['no-deals'])){
+    $args['tag__not_in'] = [29];
 }
+
 
 //echo $args['tag_slug__in']; die();
 
