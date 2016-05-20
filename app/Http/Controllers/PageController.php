@@ -840,7 +840,7 @@ class PageController extends ApiController
         }
         // dd($giveaway);
         MetaTag::set('title', $heading);
-//        MetaTag::set('description', $result['productInformation']['MetaDescription']);
+        MetaTag::set('description', $giveaway->giveaway_desc);
 
         if ($userData['method-status'] == 'fail-with-http') {
             $isAdmin = false;
@@ -848,6 +848,8 @@ class PageController extends ApiController
         } else {
             $isAdmin = $userData->hasRole('admin');
         }
+
+
 
         //  dd($giveaway,$heading);
         return view('giveaway.giveaway')
