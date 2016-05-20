@@ -10,6 +10,7 @@ use Carbon\Carbon;
 use App\Models\ProductCategory;
 use App\Models\Tag;
 use App\Models\Store;
+use PageHelper;
 
 
 class Product extends Model
@@ -200,11 +201,13 @@ class Product extends Model
 
             // delete empty product which is not containing a store id or category id ( for security check from backend)
             $this->deleteEmptyProduct();
-
-            $deleted = PageHelper::deleteFromRedis($data['product_permalink']);
+ 
+            $deleted = PageHelper::deleteFromRedis('product-details-' . $data['product_permalink']);
 
             $data = Product::where('id', $productId)->first();
 
+            $data['deleted'] = $deleted;
+            // print_r($deleted); die();
             return $data;
 
         } catch (Exception $ex) {

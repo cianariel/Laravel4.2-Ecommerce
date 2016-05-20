@@ -100,7 +100,7 @@ class PageHelper {
 
         if(!$expire){
             $expire = '+2 days';
-        }
+        } 
 
         $formattedExpire = strtotime($expire, 0);
 
