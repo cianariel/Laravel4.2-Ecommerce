@@ -171,8 +171,9 @@
                     <div class="giveaway-slider-content col-xs-9">
                         @foreach($nextGiveaways as $nextGive)
                             <div class="thumb-wrap">
-                                <img class="giveaway-thumb" src="{{$nextGive->giveaway_image}}"/>
                                 <h6>{{date('F', strtotime($nextGive->goes_live))}}</h6>
+                                <img class="giveaway-thumb img-circle" src="{{$nextGive->giveaway_image}}"/>
+                                <h6>{{$giveaway->giveaway_title}}</h6>
                             </div>
                         @endforeach
                     </div>
