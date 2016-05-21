@@ -113,12 +113,7 @@ class PageController extends ApiController
     {
         $cacheKey = "plain-content-$page-$limit-$tag-$type-$productCategory-$sortBy";
 
-        if($cachedContent = PageHelper::getFromRedis($cacheKey)){
-            $return = $cachedContent;
-            $return->fromCache = true;
-            $return->cacheKey = $cacheKey;
-            return json_encode($return);
-        }
+    
 
         if ($tag && $tag !== 'undefined' && $tag != 'false' && $tag != '') {
             $tagID = Tag::where('tag_name', $tag)->lists('id')->toArray();
@@ -314,6 +309,10 @@ class PageController extends ApiController
         if ($ideaCollection) {
 
             foreach ($ideaCollection as $singleIdea) {
+
+                if($tag == 'deal'){
+                    $singleIdea->dealPage = true;
+                }
 
                 $tempIdea = collect($singleIdea);
 
