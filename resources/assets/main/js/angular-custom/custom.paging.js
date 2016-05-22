@@ -1059,7 +1059,9 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
                     shareUrl = 'https://www.facebook.com/sharer/sharer.php?u=' + baseUrl;
                     break;
                 case 'twitter':
-                    shareUrl = 'https://twitter.com/share?url=' + baseUrl + '&counturl=' + baseUrl + '&hashtags=smarthome&text=.@ideaing';
+                    var title = $('h1').first().text().trim();
+                    console.log(title);
+                    shareUrl = 'https://twitter.com/share?url=' + baseUrl + '&counturl=' + baseUrl + '&hashtags=smarthome&text=' + title.replace('%', '%25');
                     break;
                 case 'googleplus':
                     shareUrl = 'https://plus.google.com/share?url=' + baseUrl;
