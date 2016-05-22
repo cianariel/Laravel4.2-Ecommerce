@@ -26,9 +26,9 @@
                         <h3>
                             Monthly Giveaway
                         </h3>
-                        <h4>
+                        <h1>
                             {{$heading}}
-                        </h4>
+                        </h1>
                     </div>
                 </hgroup>
             </div>
