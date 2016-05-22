@@ -14,7 +14,7 @@
             </a>
         </div>
         <div class="col-xs-8 col-sm-3">
-            <h1>
+            <h2>
                     <span class="title-holder"> 
                         <span class="title">{{the_title()}}</span>
                     <ul class="social-stats center-block ">
@@ -33,7 +33,7 @@
                         </li>
                     </ul>
                     </span>
-            </h1>
+            </h2>
         </div>
         <div class="col-sm-8 hidden-xs">
             <ul class="share-buttons pull-right">

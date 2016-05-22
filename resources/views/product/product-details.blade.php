@@ -46,7 +46,7 @@
                 </a>
             </div>
             <div class="col-xs-4">
-                <h1>
+                <h2>
                     <span class="title-holder">
                 <span class="title" itemprop="name">
                     @if(isset($productInformation['ProductName']))
@@ -71,7 +71,7 @@
                     </li>
                 </ul>
                     </span>
-                </h1>
+                </h2>
             </div>
             <div class="col-xs-7">
                 <ul ng-app="publicApp" ng-controller="publicController"

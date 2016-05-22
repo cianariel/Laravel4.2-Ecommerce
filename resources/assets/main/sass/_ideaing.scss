@@ -3301,7 +3301,8 @@ body.single-post{
     }
 } 
 body.product-details, .single-post{
-    .story-header h1 .title, {
+    .story-header h1 .title,
+    .story-header h2 .title, {
         height:15px;
         display: inline-block;
         overflow: hidden;
@@ -3372,7 +3373,7 @@ body.product-details{
 /*        background: white none repeat scroll 0% 0%;*/
         right: 0px;
         right: -79px;
-        top: -17px;
+        top: -7px;
         z-index: 58;
   }
   
@@ -3385,12 +3386,13 @@ body.product-details{
     margin-top: -14px;
   }
 
-  h1{
+  h1,
+  h2{
 /*    width: 100%;*/
     padding-left: 10px;
     float: left;
     //margin-left: 3%;
-    margin-top: 0;
+    margin-top: 5px;
     font-size: 13px;
     text-align: center;
   }
@@ -9514,7 +9516,7 @@ body.giveaway-page{
       padding-top: 0 !important;
     }
 
-    h3, h4{
+    h3, h1{
       color: #fff;
       float: left;
     }
@@ -9528,13 +9530,13 @@ body.giveaway-page{
       background-size: 220px;
       background-position: 0px -110px;
     }
-    h4{
+    h1{
       padding-left: 5%;
       padding-top: 15px;
       text-transform: uppercase;
 
       //@media (max-width:420px) {
-        font-size: 3rem;
+        font-size: 3rem !important;
       //}
     }
 
