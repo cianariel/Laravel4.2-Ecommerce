@@ -1053,13 +1053,13 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
 					pagingApi.fakeUpdateCounts('pinterest');
                 }, 10000);
             }
-
-            switch($service){
+ 
+            switch($service){ 
                 case 'facebook':
                     shareUrl = 'https://www.facebook.com/sharer/sharer.php?u=' + baseUrl;
                     break;
                 case 'twitter':
-                    shareUrl = 'https://twitter.com/share?url=' + baseUrl + '&counturl=' + baseUrl + '&text=@Ideaing';
+                    shareUrl = 'https://twitter.com/share?url=' + baseUrl + '&counturl=' + baseUrl + '&hashtags=smarthome&text=.@ideaing';
                     break;
                 case 'googleplus':
                     shareUrl = 'https://plus.google.com/share?url=' + baseUrl;
