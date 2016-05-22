@@ -404,12 +404,12 @@
                                                 ) Customer Reviews</span>
                                         </div>
                                         <div class="purple-bg price-badge">
-                                            <a href="@{{ item.data.productInformation.AffiliateLink }}" target="_blank">
+                                            <a href="/open/@{{ item.data.productInformation.Id }}/product" target="_blank">
                                                 <span>@{{ item.data.storeInformation.StoreName }}</span>
                                                 <b>$@{{ item.data.productInformation.SellPrice }}</b>
                                             </a>
                                         </div>
-                                        <a class="btn-none" href="@{{ item.data.productInformation.AffiliateLink }}"
+                                        <a class="btn-none" href="/open/@{{ item.data.productInformation.Id }}/product"
                                            target="_blank">More Info</a>
                                     </div>
                                     <span class="close-button" ng-click="deleteSelectedItem($index)">✕</span>
