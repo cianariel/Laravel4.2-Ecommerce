@@ -6851,7 +6851,9 @@ body.single-post .related-ideas, body.single-post .related-products {
 .article-content h1 a:hover, .article-content h2 a:hover, body.terms-of-use-page .mid-bottom-container h1 a:hover, body.terms-of-use-page .mid-bottom-container h2 a:hover, body.privacy-policy-page .mid-bottom-container h1 a:hover, body.privacy-policy-page .mid-bottom-container h2 a:hover {
   color: #FF0042; }
 
-body.product-details .story-header h1 .title, .single-post .story-header h1 .title {
+body.product-details .story-header h1 .title,
+body.product-details .story-header h2 .title, .single-post .story-header h1 .title,
+.single-post .story-header h2 .title {
   height: 15px;
   display: inline-block;
   overflow: hidden; }
@@ -6897,18 +6899,19 @@ body.product-details .article-content {
     /*        background: white none repeat scroll 0% 0%;*/
     right: 0px;
     right: -79px;
-    top: -17px;
+    top: -7px;
     z-index: 58; }
   .story-header .lamp-logo {
     float: left;
     min-height: 50px;
     background-size: initial;
     margin-top: -14px; }
-  .story-header h1 {
+  .story-header h1,
+  .story-header h2 {
     /*    width: 100%;*/
     padding-left: 10px;
     float: left;
-    margin-top: 0;
+    margin-top: 5px;
     font-size: 13px;
     text-align: center; }
   .story-header .title-holder {
@@ -10939,7 +10942,7 @@ body.giveaway-page .giveaway-banner {
   body.giveaway-page .giveaway-banner .container {
     min-height: 0  !important;
     padding-top: 0 !important; }
-  body.giveaway-page .giveaway-banner h3, body.giveaway-page .giveaway-banner h4 {
+  body.giveaway-page .giveaway-banner h3, body.giveaway-page .giveaway-banner h1 {
     color: #fff;
     float: left; }
   body.giveaway-page .giveaway-banner h3 {
@@ -10950,11 +10953,11 @@ body.giveaway-page .giveaway-banner {
     background: url(/assets/images/giveaway.svg) no-repeat;
     background-size: 220px;
     background-position: 0px -110px; }
-  body.giveaway-page .giveaway-banner h4 {
+  body.giveaway-page .giveaway-banner h1 {
     padding-left: 5%;
     padding-top: 15px;
     text-transform: uppercase;
-    font-size: 3rem; }
+    font-size: 3rem !important; }
 body.giveaway-page .morecontent span {
   display: none; }
 body.giveaway-page .morelink {
