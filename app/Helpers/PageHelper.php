@@ -8,6 +8,7 @@ use App\Models\Giveaway;
 use App\Models\ProductCategory;
 use URL;
 use Redis;
+use Cookie;
 
 class PageHelper {
 
@@ -76,6 +77,15 @@ class PageHelper {
 
     public static function getCurrentGiveaway() {
         $giveaway = Giveaway::whereDate('ends', '>=', date('Y-m-d'))->whereDate('goes_live', '<=', date('Y-m-d'))->first();
+
+        if(!isset($_COOKIE['giveaway_pop_shown'])) {
+            setcookie('giveaway_pop_shown', true, (time()+(60*60*24)), '/');
+            $giveaway->showPopup = true;
+        }else{
+            $giveaway->showPopup = false;
+        }
+//        $giveaway->showPopup = true;
+
         return $giveaway;
     }
 

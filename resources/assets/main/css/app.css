@@ -11045,7 +11045,7 @@ body.giveaway-page .black-slider {
       right: 0; }
 
 #giveaway-popup {
-  background: rgba(255, 0, 66, 0.6);
+  background: rgba(255, 0, 66, 0.75);
   position: fixed;
   min-height: 150px;
   bottom: 0;
