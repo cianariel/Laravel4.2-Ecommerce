@@ -14,19 +14,21 @@
         <div class="col-sm-3 col-xs-12">
             <h4 class="green">Giveaway</h4>
             <?php
-                if(!function_exists('is_single')){
-                    $theGiveAway = PageHelper::getCurrentGiveaway();
-                }else{
-                    $json = file_get_contents('http://ideaing.dev/api/giveaway/get-current');
-                    $theGiveAway = json_decode($json);
-            }
+                if(!isset($theGiveAway)){
+                    if(!function_exists('is_single')){
+                        $theGiveAway = PageHelper::getCurrentGiveaway();
+                    }else{
+                        $json = file_get_contents('http://ideaing.dev/api/giveaway/get-current');
+                        $theGiveAway = json_decode($json);
+                    }
+                }
 
             if($theGiveAway){ ?>
                 <a href="/giveaway/<?php echo $theGiveAway->giveaway_permalink ?>">
                     <img src="<?php echo $theGiveAway->giveaway_image ?>" title="<?php echo $theGiveAway->giveaway_image_title ?>" alt="<?php echo $theGiveAway->giveaway_image_alt ?>" />
                 </a>
 
-                <a href="/giveaway-details/" <?php echo $theGiveAway->giveaway_permalink ?>>
+                <a href="/giveaway/ <?php echo $theGiveAway->giveaway_permalink ?>">
                    <h6 class="white"> <?php echo $theGiveAway->giveaway_title ?></h6>
                 </a>
 
@@ -65,6 +67,7 @@
         <i class="m-icon--footer-up-arrow"></i>
     </a>
 </div>
+
 
 <script>
     var rootApp = angular.module('rootApp', ['pagingApp', 'publicApp','productApp']);

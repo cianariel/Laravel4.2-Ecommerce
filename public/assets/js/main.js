@@ -3916,6 +3916,12 @@ angular.module('colorpicker.module', [])
                 $('.hero-login').slideDown();
                 $('.login-wrap').fadeIn('slow');
             }, 7000)
+
+            if(!$('body').hasClass('.giveaway-page')){
+                setTimeout(function(){
+                    $('#giveaway-popup').fadeIn('slow');
+                }, 15000)
+            }
         });
 
 
