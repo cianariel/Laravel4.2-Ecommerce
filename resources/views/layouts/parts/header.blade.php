@@ -32,7 +32,7 @@ if (function_exists('is_single')) {
                                     </a>
                                 </li>
                                 <li class="nested">
-                                    <a class="m-icon-text-holder" href="/shop">
+                                    <a class="shop m-icon-text-holder" href="/shop">
                                         <i class="hidden-xs m-icon m-icon--shopping-bag-light-green"></i>
                                         <span class="m-icon-text">Shop</span>
                                         <span class="box-link-active-line"></span>
