@@ -11047,27 +11047,27 @@ body.giveaway-page .black-slider {
 #giveaway-popup {
   background: rgba(255, 0, 66, 0.6);
   position: fixed;
-  min-height: 300px;
+  min-height: 150px;
   bottom: 0;
   z-index: 99;
   text-align: center;
-  padding: 30px; }
+  padding: 15px; }
   #giveaway-popup h4 {
-    font-size: 3rem; }
+    font-size: 2rem; }
   #giveaway-popup h5 {
     font-size: 1.5rem;
-    margin-bottom: 20px; }
+    margin-bottom: 10px; }
   #giveaway-popup img {
-    width: 450px;
+    width: 250px;
     float: none;
     border: 1px solid #000;
     padding: 0; }
   #giveaway-popup a.btn {
-    background-color: #008ecc;
-    border-color: #008ecc; }
+    background-color: #b3002e;
+    border-color: #b3002e; }
   #giveaway-popup .close-button {
     top: 35px;
-    font-size: 3rem; }
+    font-size: 2rem; }
     #giveaway-popup .close-button i {
       font-weight: bold; }
 

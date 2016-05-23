@@ -26,6 +26,6 @@
         </a>
     </h5>
 
-    <a class="btn btn-info col-xs-3 center-block" href="/giveaway/<?php echo $theGiveAway->giveaway_permalink ?>">ENTER</a>
+    <a class="btn btn-info col-xs-2 center-block" href="/giveaway/<?php echo $theGiveAway->giveaway_permalink ?>">ENTER</a>
 </div>
 
