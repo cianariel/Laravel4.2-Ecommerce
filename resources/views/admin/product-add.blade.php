@@ -266,6 +266,12 @@
                                                                    placeholder="Enter text">
                                                         </div>
                                                     </div>
+                                                    <div ng-hide="ProductId == ''" class="form-group">
+                                                        <label class="col-md-2 control-label">Ideas Short Link</label>
+                                                        <div class="col-md-10">
+                                                            <input class="form-control" ng-readonly="true" value="{{URL::to('/')}}/open/@{{ ProductId }}/ideas">
+                                                        </div>
+                                                    </div>
                                                     <div class="form-group">
                                                         <label class="col-md-2 control-label">Price Grabber Id</label>
                                                         <div class="col-md-10">
