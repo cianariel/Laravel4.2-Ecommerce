@@ -16,7 +16,7 @@
         <i class="m-icon--Close"></i>
     </span>
 
-    <h4>Ideaing Giveaway</h4>
+    <h4><b class="white">Ideaing Giveaway</b></h4>
 
 
 
@@ -26,7 +26,7 @@
 
     <h5>
         <a class="white" href="/giveaway/<?php echo $theGiveAway->giveaway_permalink ?>">
-            <?php echo $theGiveAway->giveaway_title ?>
+            <b><?php echo $theGiveAway->giveaway_title ?></b>
         </a>
     </h5>
 
