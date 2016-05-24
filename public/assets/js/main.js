@@ -3924,6 +3924,10 @@ angular.module('colorpicker.module', [])
             }
         });
 
+        $('.subscribe_email_popup').on('hidden.bs.modal', function () {
+            console.log('23948762374862');
+            // do something…
+        })
 
 	}); // global function()
 
@@ -4218,7 +4222,7 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
         }, 15000);//10000
 
         $scope.openEmailPopuponTime = function(){
-            if(!$('body').hasClass('login-signup')){
+            if($('body').hasClass('login-signup')){
                 setTimeout(function(){
                     $scope.getEmailPopup();
                 }, 25000)
@@ -4239,6 +4243,14 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                 })
                 .result.finally(function () {
                     $scope.uploader.formData = [];
+
+                    $http({
+                        url: '/hide-signup',
+                        method: "GET",
+
+                    }).success(function (data) {
+                        console.log(data)
+                    });
                 });
         };
 
