@@ -11,6 +11,10 @@ if (function_exists('is_single')) {
 
 <div id="publicApp" ng-app="publicApp" ng-controller="publicController" class="header-cloak" ng-cloak>
     <header class="colophon">
+        <?php
+
+        ?>
+            <div  ng-init="openEmailPopuponTime"></div>
         <div ng-init="socialCounter()" class="socialcounter col-xs-12">
             <nav id="top-nav" class="row">
                 <div class="container full-sm fixed-sm">
@@ -535,12 +539,15 @@ if(empty($userData['email']))
 {
 if (@$userData['user-data']['hide-signup'] != 'true')
 {
+// echo '<input ng-init="openEmailPopuponTime">';
+}
 
 ?>
+
 <input ng-model="canOpenEmailPopup" ng-init="canOpenEmailPopup = 1" type="hidden">
 
 <script type="text/ng-template" id="subscribe_email_popup.html">
-    <div id="subscribe_email_popup" ng-init="initEmailpopupPage()">
+    <div id="subscribe_email_popup">
         <div id="publicApp">
             <div class="content-container">
                 <div class="content-holder">
@@ -578,7 +585,7 @@ if (@$userData['user-data']['hide-signup'] != 'true')
 </script>
 
 <?php
-}
+
 }
 ?>
 

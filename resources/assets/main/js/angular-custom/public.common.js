@@ -253,6 +253,10 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
             }
         }, 15000);//10000
 
+        $scope.openEmailPopuponTime = function(){
+            console.log('!!!');
+            $scope.getEmailPopup();
+        }
 
         $scope.getEmailPopup = function () {
             // Header profile option open and close on click action.
