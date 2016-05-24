@@ -767,7 +767,7 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
                             $('.product-popup-modal .p-title').html("<a target='_blank' href='/product/"+ data.productInformation['Permalink'] +"'>"+ data.productInformation['ProductName'] +"</a>");
                             
                             var html = '\
-                                <a class="get-round" href="'+ data.productInformation['AffiliateLink'] +'" target="_blank">Get it</a>\
+                                <a class="get-round" href="/open/' + productId + '/product" target="_blank">Get it</a>\
                                 <img class="vendor-logo" width="107" src="'+ data.storeInformation['ImagePath'] +'" alt="'+ data.storeInformation['StoreName'] +'">\
                             ';
                             $('.product-popup-modal .p-get-it-amazon .p-body').html(html);
