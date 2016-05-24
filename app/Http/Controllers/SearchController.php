@@ -183,9 +183,7 @@ class SearchController extends Controller
                 $item['url'] = $item['permalink'];
                 $item['feed_image'] = json_decode($item['feed_image']);
 
-                if(isset($item['tags']) && strpos($item['tags'], 'deal') !== false){
-                    $item['is_deal'] = true;
-                }
+
 
             }elseif($item['type'] == 'product'){
                 $item['product_name'] = $item['title'];
@@ -198,7 +196,10 @@ class SearchController extends Controller
               $item['id'] = $item['record_id'];
             }
 
-            $return[] = $item;
+            if(!(isset($item['tags']) && strpos($item['tags'], 'deal') !== false)){
+                $return[] = $item;
+            }
+
         }
 
         $final['content'] = $return;
