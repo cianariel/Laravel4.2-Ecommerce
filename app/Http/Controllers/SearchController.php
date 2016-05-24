@@ -182,6 +182,11 @@ class SearchController extends Controller
             if($item['type'] == 'idea'){
                 $item['url'] = $item['permalink'];
                 $item['feed_image'] = json_decode($item['feed_image']);
+
+                if(isset($item['tags']) && strpos($item['tags'], 'deal') !== false){
+                    $item['is_deal'] = true;
+                }
+
             }elseif($item['type'] == 'product'){
                 $item['product_name'] = $item['title'];
                 $item['product_permalink'] = $item['permalink'];
