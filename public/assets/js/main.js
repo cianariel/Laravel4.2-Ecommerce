@@ -4218,8 +4218,9 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
         }, 15000);//10000
 
         $scope.openEmailPopuponTime = function(){
-            console.log('!!!');
-            $scope.getEmailPopup();
+            setTimeout(function(){
+                $scope.getEmailPopup();
+            }, 15000)
         }
 
         $scope.getEmailPopup = function () {
