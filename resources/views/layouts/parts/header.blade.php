@@ -546,6 +546,11 @@ if (@$userData['user-data']['hide-signup'] != 'true')
                 <div class="content-holder">
                     <div>
                         <h4>Subscribe to the world’s finest Smart Home & Design Ideas</h4></div>
+                    <ul>
+                        <li>Enter to win Free Smart Home devices</li>
+                        <li>Get exclusive coupons & deals on Smart Home devices</li>
+                        <li>Randomly selected to win a complete Smart Home make-over</li>
+                    </ul>
                     <br>
                     <div>
                         <h5>Enter your email</h5>
@@ -561,7 +566,7 @@ if (@$userData['user-data']['hide-signup'] != 'true')
                     </div>
                     <br>
                     <p>
-                        <a href="/hide-signup">Never mind</a>
+                        <a href="/hide-signup">No, thanks</a>
                     </p>
                 </div>
             </div>
