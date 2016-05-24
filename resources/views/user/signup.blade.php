@@ -79,7 +79,7 @@
             </div>
             <div id="signup-modal" style="{{(isset($tab) && $tab != 'signup') ? 'display: none;' : ''}}" class="modal-content hero-box qiuck-signup modal-login">
                 <form>
-                        <a class="btn btn-info col-xs-12" ng-click="registerWithFB()" href="#"><i class="fa fa-facebook"></i>Sign
+                        <a class="btn btn-info col-xs-12" ng-click="registerWithFB()" href="#"><i class="m-icon m-icon--facebook-id"></i>Sign
                             up with Facebook</a>
                     <div class="line-wrap modal-minor-text">or</div>
 
