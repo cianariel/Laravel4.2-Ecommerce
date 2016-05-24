@@ -50,7 +50,7 @@
                     </button>
                     --}}
                     <button type="submit" ng-click="registerWithFB()" class="btn btn-success">
-                        <i class="fa fa-facebook"></i>
+                        <i class="m-icon m-icon--facebook-id"></i>
                         Login with Facebook
                     </button>
                 </div>
