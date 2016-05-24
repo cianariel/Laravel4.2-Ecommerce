@@ -566,7 +566,7 @@ if (@$userData['user-data']['hide-signup'] != 'true')
                     </div>
                     <br>
                     <p>
-                        <a href="/hide-signup">No, thanks</a>
+                        <a href="#" ng-click="hideAndForget()">No, thanks</a>
                     </p>
                 </div>
             </div>

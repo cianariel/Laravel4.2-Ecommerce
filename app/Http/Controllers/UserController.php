@@ -275,7 +275,7 @@ class UserController extends ApiController
     public function hideSignup()
     {
         $this->setCookie('hide-signup', 'true', 1440);
-        return \Redirect::back();
+        return json_encode(['success' => 'Hidden successfully!']);
 
     }
 
