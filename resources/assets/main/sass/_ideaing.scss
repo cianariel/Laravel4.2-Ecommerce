@@ -8759,6 +8759,32 @@ html.hide-overflow{
 
 #subscribe_email_popup{
   background-color:#fff !important;
+
+  //ul{
+  //  padding-left: 30px;
+  //}
+  //li{
+  //  list-style: disc;
+  //}
+
+  ul {
+    list-style: none;
+    padding:0;
+    margin:0;
+  }
+
+  li {
+    padding-left: 1em;
+    text-indent: -.7em;
+  }
+
+  li:before {
+    content: "• ";
+    position: relative;
+    top:3px;
+    font-size: 2rem;
+    color: $iridium; /* or whatever color you prefer */
+  }
 }
 
 .subscribe_email_popup{
@@ -8775,6 +8801,7 @@ html.hide-overflow{
             border-radius: 500px;
         }
     }
+
 
     @media (max-width: 990px){
         .content-container{
