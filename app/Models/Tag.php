@@ -51,7 +51,7 @@
         public function showTagsForProduct($productId)
         {
             $product = new Product();
-            $tagCollection = $product->find($productId)->tags;
+            $tagCollection = $product->find($productId)->tags->unique();
 
             $data = [];
             foreach($tagCollection as $tag)
