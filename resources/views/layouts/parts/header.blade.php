@@ -550,7 +550,7 @@ if (function_exists('is_single')) {
                     <br>
                     <div>
                         <h5>Enter your email</h5>
-                        <strong class="red">@{{ responseMessage }}</strong>
+                        <strong class="red"><?php echo '{{ responseMessage }}' ?></strong>
                     </div>
                     <div>
                         <input class="form-control" ng-model="data.SubscriberEmail" placeholder="me@email.com"
