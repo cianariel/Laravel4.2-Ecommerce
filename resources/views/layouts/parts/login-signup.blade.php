@@ -79,7 +79,7 @@
         </div>
         <div id="signup-modal" class="modal-content hero-box qiuck-signup modal-login hidden-soft">
             <form>
-                <a class="btn btn-info col-xs-12" ng-click="registerWithFB()" href="#"><i class="fa fa-facebook"></i>Sign up with Facebook</a>
+                <a class="btn btn-info col-xs-12" ng-click="registerWithFB()" href="#"><i class="m-icon m-icon--facebook-id"></i>Sign up with Facebook</a>
                 <div class="line-wrap modal-minor-text">or</div>
 
                 <input class="form-control" ng-model="FullName" type="text" placeholder="Name" >
