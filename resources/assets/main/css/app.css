@@ -10392,6 +10392,20 @@ html.hide-overflow {
 
 #subscribe_email_popup {
   background-color: #fff !important; }
+  #subscribe_email_popup ul {
+    list-style: none;
+    padding: 0;
+    margin: 0; }
+  #subscribe_email_popup li {
+    padding-left: 1em;
+    text-indent: -.7em; }
+  #subscribe_email_popup li:before {
+    content: "• ";
+    position: relative;
+    top: 3px;
+    font-size: 2rem;
+    color: #FF0042;
+    /* or whatever color you prefer */ }
 
 .subscribe_email_popup #subscribe_email_popup {
   padding: 25px; }
