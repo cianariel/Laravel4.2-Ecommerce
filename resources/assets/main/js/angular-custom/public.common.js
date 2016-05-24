@@ -254,9 +254,12 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
         }, 15000);//10000
 
         $scope.openEmailPopuponTime = function(){
-            setTimeout(function(){
-                $scope.getEmailPopup();
-            }, 15000)
+            if(!$('body').hasClass('login-signup')){
+                setTimeout(function(){
+                    $scope.getEmailPopup();
+                }, 25000)
+            }
+
         }
 
         $scope.getEmailPopup = function () {

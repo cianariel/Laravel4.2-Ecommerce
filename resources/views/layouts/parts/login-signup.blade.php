@@ -60,7 +60,7 @@
         </nav>
         <div id="login-modal" class="modal-content contentable hero-box qiuck-signup modal-login">
             <form>
-                <a class="btn btn-info col-xs-12"  ng-click="registerWithFB()" href="#"><i class="icon fb-icon"></i>Log in with Facebook</a>
+                <a class="btn btn-info col-xs-12"  ng-click="registerWithFB()" href="#"><i class="m-icon m-icon--facebook-id"></i>Log in with Facebook</a>
                 <div class="line-wrap modal-minor-text">or</div>
 
                 <input class="form-control" ng-model="Email" type="text" placeholder="Email" name="email">
