@@ -25,4 +25,3 @@
         <?php }
             }   ?>
 </div>
-{{--<div class="color-overlay blur-overlay"></div>--}}

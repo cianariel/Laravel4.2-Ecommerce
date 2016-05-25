@@ -783,8 +783,5 @@
             </section>
         </main>
     </div>
-    <!-- Angular JS and components-->
-
-    {{--<script type="text/javascript" src="/assets/js/vendor/autocomplete.js"></script>--}}
-    {{--<script type="text/javascript" src="/assets/product/js/custom.product.js"></script>--}}
+    @include('layouts.parts.giveaway-popup')
 @stop

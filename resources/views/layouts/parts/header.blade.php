@@ -32,7 +32,7 @@ if (function_exists('is_single')) {
                                     </a>
                                 </li>
                                 <li class="nested">
-                                    <a class="m-icon-text-holder" href="/shop">
+                                    <a class="shop m-icon-text-holder" href="/shop">
                                         <i class="hidden-xs m-icon m-icon--shopping-bag-light-green"></i>
                                         <span class="m-icon-text">Shop</span>
                                         <span class="box-link-active-line"></span>
@@ -523,33 +523,34 @@ if (function_exists('is_single')) {
             </div>
         </div>
     </script>
-    <?php } ?>
+    <?php }
+    if(empty($userData['email']) && @$userData['user-data']['hide-signup'] != 'true')
+    {
+    echo '<input  ng-init="openEmailPopuponTime()" type="hidden">';
 
+    } ?>
 
 </div>
 
 <!-- fake controller -->
-<?php
-//dd($userData['email'],);
-if(empty($userData['email']))
-{
-if (@$userData['user-data']['hide-signup'] != 'true')
-{
 
-?>
-<input ng-model="canOpenEmailPopup" ng-init="canOpenEmailPopup = 1" type="hidden">
 
 <script type="text/ng-template" id="subscribe_email_popup.html">
-    <div id="subscribe_email_popup" ng-init="initEmailpopupPage()">
+    <div id="subscribe_email_popup">
         <div id="publicApp">
             <div class="content-container">
                 <div class="content-holder">
                     <div>
                         <h4>Subscribe to the world’s finest Smart Home & Design Ideas</h4></div>
+                    <ul>
+                        <li>Enter to win Free Smart Home devices</li>
+                        <li>Get exclusive coupons & deals on Smart Home devices</li>
+                        <li>Randomly selected to win a complete Smart Home make-over</li>
+                    </ul>
                     <br>
                     <div>
                         <h5>Enter your email</h5>
-                        <strong class="red">@{{ responseMessage }}</strong>
+                        <strong class="red"><?php echo '{{ responseMessage }}' ?></strong>
                     </div>
                     <div>
                         <input class="form-control" ng-model="data.SubscriberEmail" placeholder="me@email.com"
@@ -561,7 +562,7 @@ if (@$userData['user-data']['hide-signup'] != 'true')
                     </div>
                     <br>
                     <p>
-                        <a href="/hide-signup">Never mind</a>
+                        <a href="#" ng-click="hideAndForget()">No, thanks</a>
                     </p>
                 </div>
             </div>
@@ -571,11 +572,5 @@ if (@$userData['user-data']['hide-signup'] != 'true')
     </div>
 
 </script>
-
-<?php
-}
-}
-?>
-
 
     

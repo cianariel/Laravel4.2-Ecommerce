@@ -3916,8 +3916,18 @@ angular.module('colorpicker.module', [])
                 $('.hero-login').slideDown();
                 $('.login-wrap').fadeIn('slow');
             }, 7000)
+
+            if(!$('body').hasClass('.giveaway-page')){
+                setTimeout(function(){
+                    $('#giveaway-popup').fadeIn('slow');
+                }, 15000)
+            }
         });
 
+        $('.subscribe_email_popup').on('hidden.bs.modal', function () {
+            console.log('23948762374862');
+            // do something…
+        })
 
 	}); // global function()
 
@@ -4149,9 +4159,18 @@ publicApp.controller('ProductModalInstanceCtrl', function ($scope, $uibModalInst
         pagingApi.openSharingModal($service);
     };
 });
-publicApp.controller('ModalInstanceCtrltest', function ($scope, $uibModalInstance, pagingApi) {
+publicApp.controller('ModalInstanceCtrltest', function ($scope, $uibModalInstance, pagingApi, $http) {
     $scope.ok = function () {
         $uibModalInstance.close();
+    };
+    $scope.hideAndForget = function () {
+        $http({
+            url: '/hide-signup',
+            method: "GET",
+
+        }).success(function (data) {
+            $uibModalInstance.close();
+        });
     };
 
     $scope.cancel = function () {
@@ -4164,8 +4183,8 @@ publicApp.controller('ModalInstanceCtrltest', function ($scope, $uibModalInstanc
 
 });
 
-publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$window', '$timeout', '$location', '$anchorScroll', '$uibModal', 'layoutApi', '$compile', '$interval', 'FileUploader', 'pagingApi'
-    , function ($rootScope, $scope, $http, $window, $timeout, $location, $anchorScroll, $uibModal, layoutApi, $compile, $interval, FileUploader, pagingApi) {
+publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$window', '$timeout', '$location', '$anchorScroll', '$uibModal', 'layoutApi', '$compile', '$interval', 'FileUploader', 'pagingApi', '$uibModalStack'
+    , function ($rootScope, $scope, $http, $window, $timeout, $location, $anchorScroll, $uibModal, layoutApi, $compile, $interval, FileUploader, pagingApi, $uibModalInstance, $uibModalStack) {
 
         // text area internal function for comment
         $scope.focusEditor = function () {
@@ -4202,12 +4221,20 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
             }
         }, 15000);//10000
 
+        $scope.openEmailPopuponTime = function(){
+            if($('body').hasClass('login-signup')){
+                setTimeout(function(){
+                    $scope.getEmailPopup();
+                }, 25000)
+            }
+
+        }
 
         $scope.getEmailPopup = function () {
             // Header profile option open and close on click action.
 
             var templateUrl = "subscribe_email_popup.html";
-            var modalInstance = $uibModal.open({
+            $scope.modalInstance = $uibModal.open({
                     templateUrl: templateUrl,
                     scope: $scope,
                     size: 'md',
@@ -4216,8 +4243,30 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                 })
                 .result.finally(function () {
                     $scope.uploader.formData = [];
+
+                    $http({
+                        url: '/hide-signup',
+                        method: "GET",
+
+                    }).success(function (data) {
+                        console.log(data)
+                    });
                 });
         };
+
+        //$scope.hideSiggnupModal = function () {
+        //    // Header profile option open and close on click action.
+        //
+        //    $http({
+        //        url: '/hide-signup',
+        //        method: "GET",
+        //
+        //    }).success(function (data) {
+        //        //$('.subscribe_email_popup').fadeOut();
+        //        $uibModalStack.dismissAll();
+        //
+        //    });
+        //};
 
         $scope.openProfileSetting = function (onlyImage) {
 
@@ -6060,7 +6109,7 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
                             $('.product-popup-modal .p-title').html("<a target='_blank' href='/product/"+ data.productInformation['Permalink'] +"'>"+ data.productInformation['ProductName'] +"</a>");
                             
                             var html = '\
-                                <a class="get-round" href="'+ data.productInformation['AffiliateLink'] +'" target="_blank">Get it</a>\
+                                <a class="get-round" href="/open/' + productId + '/product" target="_blank">Get it</a>\
                                 <img class="vendor-logo" width="107" src="'+ data.storeInformation['ImagePath'] +'" alt="'+ data.storeInformation['StoreName'] +'">\
                             ';
                             $('.product-popup-modal .p-get-it-amazon .p-body').html(html);

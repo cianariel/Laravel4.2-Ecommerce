@@ -4536,6 +4536,9 @@ a:hover, a:focus {
 .hard-show {
   display: block !important; }
 
+.center-block {
+  float: none; }
+
 [data-toggle],
 [data-switch] {
   cursor: pointer; }
@@ -6773,12 +6776,18 @@ header.colophon {
     max-height: 60px; } }
 
 body.homepage #top-nav .ideas,
+body.shop-landing #top-nav .shop,
+body.product-details #top-nav .shop,
+body.shop-category #top-nav .shop,
 body.single-post #top-nav .ideas,
 html.idea-stories #top-nav .ideas,
 .room-landing #top-nav a.ideas {
   position: relative;
   color: #00B1FF; }
   body.homepage #top-nav .ideas .box-link-active-line,
+  body.shop-landing #top-nav .shop .box-link-active-line,
+  body.product-details #top-nav .shop .box-link-active-line,
+  body.shop-category #top-nav .shop .box-link-active-line,
   body.single-post #top-nav .ideas .box-link-active-line,
   html.idea-stories #top-nav .ideas .box-link-active-line,
   .room-landing #top-nav a.ideas .box-link-active-line {
@@ -7692,11 +7701,33 @@ body.single .related-items {
       body.single .like-nav > li:first-child {
         /*                    top: -27px;*/ } }
 
+.get-it-inner {
+  text-align: center; }
+  .get-it-inner > a {
+    position: relative;
+    display: inline-block;
+    margin: 0 auto; }
+    .get-it-inner > a::after {
+      content: 'Get it';
+      display: block;
+      position: absolute;
+      width: 60px;
+      height: 60px;
+      top: 15px;
+      left: 15px;
+      background: #FF0042;
+      color: #fff;
+      padding: 20px 3px 6px;
+      border-radius: 50%; }
+    .get-it-inner > a:hover::after {
+      background: #cc0035; }
+
 .idea-stories .article-content p {
   font-family: montserratlight;
   color: black;
   line-height: 1.6;
-  font-size: 1.5rem; }
+  font-size: 1.5rem;
+  text-align: left; }
 .idea-stories .article-content img {
   max-width: 100%;
   height: auto;
@@ -8778,7 +8809,8 @@ footer.about-footer {
     text-align: center;
     /*    padding-top: 25%;*/ }
     .why-us > ul {
-      text-align: left; }
+      text-align: left;
+      padding-left: 10%; }
     .why-us li {
       background-position: 10px 15px !important;
       /*.m-icon{
@@ -9031,6 +9063,8 @@ footer.about-footer {
     /*      padding-left: 3%;*/
     /*      padding-right: 2.5%;*/
     /*      font-size: 1.6rem;*/ }
+    .mid-nav a .right-menu-arrow {
+      font-size: 1.7rem; }
     .mid-nav a.more-link {
       padding-left: 5%; }
   .mid-nav li.selected a,
@@ -10383,6 +10417,20 @@ html.hide-overflow {
 
 #subscribe_email_popup {
   background-color: #fff !important; }
+  #subscribe_email_popup ul {
+    list-style: none;
+    padding: 0;
+    margin: 0; }
+  #subscribe_email_popup li {
+    padding-left: 1em;
+    text-indent: -.7em; }
+  #subscribe_email_popup li:before {
+    content: "• ";
+    position: relative;
+    top: 3px;
+    font-size: 2rem;
+    color: #FF0042;
+    /* or whatever color you prefer */ }
 
 .subscribe_email_popup #subscribe_email_popup {
   padding: 25px; }
@@ -11034,6 +11082,33 @@ body.giveaway-page .black-slider {
     color: #fff; }
     body.giveaway-page .black-slider .rsArrow.rsArrowRight {
       right: 0; }
+
+#giveaway-popup {
+  background: rgba(255, 0, 66, 0.8);
+  position: fixed;
+  min-height: 150px;
+  bottom: 0;
+  z-index: 99;
+  text-align: center;
+  padding: 15px; }
+  #giveaway-popup h4 {
+    font-size: 2rem; }
+  #giveaway-popup h5 {
+    font-size: 1.5rem;
+    margin-bottom: 10px; }
+  #giveaway-popup img {
+    width: 250px;
+    float: none;
+    border: 1px solid #000;
+    padding: 0; }
+  #giveaway-popup a.btn {
+    background-color: #b3002e;
+    border-color: #b3002e; }
+  #giveaway-popup .close-button {
+    top: 35px;
+    font-size: 2rem; }
+    #giveaway-popup .close-button i {
+      font-weight: bold; }
 
 .rsDefault .rsBtnCenterer {
   position: absolute;

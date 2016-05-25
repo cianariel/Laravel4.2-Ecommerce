@@ -48,9 +48,12 @@
     
     <div class="container mobile-menu visible-xs full-sm fixed-sm">
         <ul class="wrap col-lg-9">
-            <li ><a class="box-link @if(!isset($roomInformation['Permalink']) || $roomInformation['Permalink'] == '/') active @endif"   href="/">Smart Home</a></li>
             <li><a class="box-link @if(isset($roomInformation['Permalink']) && $roomInformation['Permalink'] == 'kitchen') active @endif " href="{{url('idea/kitchen')}}">Kitchen</a></li>
-            <li><a class="box-link @if(isset($roomInformation['Permalink']) && $roomInformation['Permalink'] == 'bath') active @endif " href="{{url('idea/bath')}}">Bath</a></li>
+            <li><a class="box-link @if(isset($roomInformation['Permalink']) && $roomInformation['Permalink'] == 'lighting') active @endif " href="{{url('idea/lighting')}}">Lighting</a></li>
+            <li><a class="box-link @if(isset($roomInformation['Permalink']) && $roomInformation['Permalink'] == 'security') active @endif " href="{{url('idea/security')}}">Security</a></li>
+            @if(isset($roomInformation['Permalink']) && $roomInformation['Permalink'] != 'security' && $roomInformation['Permalink'] != 'lighting' && $roomInformation['Permalink'] != 'kitchen')
+                <li><a class="box-link  active" href="{{url('idea/' . $roomInformation['Permalink'])}}">{{ $roomInformation['RoomName']}}</a></li>
+            @endif
         </ul>
         <a class="right-menu-arrow pull-right" data-toggle="#mobile-home-menu" href="#">
             <i class="m-icon--Header-Dropdown down"></i>
