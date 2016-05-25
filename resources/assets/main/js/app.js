@@ -329,8 +329,18 @@
                 $('.hero-login').slideDown();
                 $('.login-wrap').fadeIn('slow');
             }, 7000)
+
+            if(!$('body').hasClass('.giveaway-page')){
+                setTimeout(function(){
+                    $('#giveaway-popup').fadeIn('slow');
+                }, 15000)
+            }
         });
 
+        $('.subscribe_email_popup').on('hidden.bs.modal', function () {
+            console.log('23948762374862');
+            // do something…
+        })
 
 	}); // global function()
 

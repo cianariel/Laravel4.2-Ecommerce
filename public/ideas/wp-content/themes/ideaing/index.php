@@ -88,6 +88,7 @@ $categories = get_categories();
     <?php loadLaravelView('load-more'); ?>
 
 </div>
+<?php loadLaravelView('giveaway-popup'); ?>
 
 <?php get_footer(); ?>
 

@@ -117,6 +117,10 @@ a:hover, a:focus{
   display: block !important;
 }
 
+.center-block{
+  float: none;
+}
+
 [data-toggle],
 [data-switch]{
   cursor: pointer;
@@ -3204,6 +3208,9 @@ box-shadow: -1px -1px 20px -7px rgba(0,0,0,0.75);
 }
 
 body.homepage #top-nav .ideas,
+body.shop-landing #top-nav .shop,
+body.product-details #top-nav  .shop,
+body.shop-category #top-nav  .shop,
 body.single-post #top-nav .ideas,
 html.idea-stories #top-nav .ideas,
 .room-landing #top-nav a.ideas
@@ -4675,6 +4682,41 @@ body.single{
     }
 }
 
+.get-it-inner{
+  text-align: center;
+
+  & > a{
+    position: relative;
+    display: inline-block;
+    margin: 0 auto;
+
+    &::after{
+      content:'Get it';
+      display: block;
+      position: absolute;
+      width: 60px;
+      height: 60px;
+      top: 15px;
+      left: 15px;
+      background: $iridium;
+      color: #fff;
+      padding: 20px 3px 6px;
+      border-radius: 50%;
+    }
+
+    &:hover{
+      &::after{
+        background: darken($iridium, 10%);
+      }
+    }
+  }
+
+  //.get-wrap{
+  //}
+
+
+}
+
 .idea-stories{
 
   //article.post{
@@ -4688,7 +4730,9 @@ body.single{
       color: darken($light-grey, 100%);
       line-height: 1.6;
       font-size: 1.5rem;
+      text-align: left;
     }
+
     img{
       max-width: 100%;
       height: auto;
@@ -6332,6 +6376,7 @@ footer.about-footer{
 /*    padding-top: 25%;*/     
     >ul{
         text-align: left;
+        padding-left: 10%;
     }
     li{
       background-position: 10px 15px !important;
@@ -6759,7 +6804,9 @@ footer.about-footer{
 /*      padding-left: 3%;*/
 /*      padding-right: 2.5%;*/
 /*      font-size: 1.6rem;*/
-
+      .right-menu-arrow{
+        font-size: 1.7rem;
+      }
       &.more-link{
         padding-left: 5%;
       }
@@ -8752,6 +8799,32 @@ html.hide-overflow{
 
 #subscribe_email_popup{
   background-color:#fff !important;
+
+  //ul{
+  //  padding-left: 30px;
+  //}
+  //li{
+  //  list-style: disc;
+  //}
+
+  ul {
+    list-style: none;
+    padding:0;
+    margin:0;
+  }
+
+  li {
+    padding-left: 1em;
+    text-indent: -.7em;
+  }
+
+  li:before {
+    content: "• ";
+    position: relative;
+    top:3px;
+    font-size: 2rem;
+    color: $iridium; /* or whatever color you prefer */
+  }
 }
 
 .subscribe_email_popup{
@@ -8768,6 +8841,7 @@ html.hide-overflow{
             border-radius: 500px;
         }
     }
+
 
     @media (max-width: 990px){
         .content-container{
@@ -9634,6 +9708,48 @@ body.giveaway-page{
 
   }
 }
+
+#giveaway-popup{
+  background: rgba($iridium, .8);
+  position: fixed;
+  min-height: 150px;
+  bottom:0;
+  z-index: 99;
+  text-align: center;
+  padding: 15px;
+
+  h4{
+    font-size: 2rem;
+  }
+  h5{
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+  }
+
+  img{
+    width: 250px;
+    float: none;
+    border: 1px solid #000;
+    padding: 0;
+  }
+
+  a.btn{
+    background-color: darken($iridium, 15%);
+    border-color: darken($iridium, 15%);
+  }
+
+  .close-button{
+    top: 35px;
+    font-size: 2rem;
+
+    i{
+      font-weight: bold;
+    }
+  }
+}
+
+
+
 
 // Slider styles for video
 

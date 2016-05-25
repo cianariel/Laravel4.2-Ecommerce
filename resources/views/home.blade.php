@@ -77,6 +77,8 @@
         @include('layouts.parts.product-popup')
 
         <!-- custom angular template - END -->
-        
+
         </div>
+    @include('layouts.parts.giveaway-popup')
+
 @stop

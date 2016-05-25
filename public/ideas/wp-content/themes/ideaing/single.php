@@ -368,9 +368,11 @@
     </div>
 </section>
     <?php 
-       include('../../../../../../../resources/views/layouts/parts/product-popup.blade.php') 
+//       include('../../../../../../../resources/views/layouts/parts/product-popup.blade.php')
     ?>
 
+    <?php loadLaravelView('giveaway-popup'); ?>
+    <?php loadLaravelView('product-popup'); ?>
 
 </div>
 <?php get_footer(); ?>
