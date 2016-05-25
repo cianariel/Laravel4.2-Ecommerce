@@ -7701,11 +7701,31 @@ body.single .related-items {
       body.single .like-nav > li:first-child {
         /*                    top: -27px;*/ } }
 
+.get-it-inner {
+  text-align: center; }
+  .get-it-inner > a {
+    position: relative;
+    display: inline-block;
+    margin: 0 auto; }
+    .get-it-inner > a::after {
+      content: 'Get it';
+      display: block;
+      position: absolute;
+      top: 15px;
+      left: 15px;
+      background: #FF0042;
+      color: #fff;
+      padding: 3px 6px;
+      border-radius: 4px; }
+    .get-it-inner > a:hover::after {
+      background: #cc0035; }
+
 .idea-stories .article-content p {
   font-family: montserratlight;
   color: black;
   line-height: 1.6;
-  font-size: 1.5rem; }
+  font-size: 1.5rem;
+  text-align: left; }
 .idea-stories .article-content img {
   max-width: 100%;
   height: auto;

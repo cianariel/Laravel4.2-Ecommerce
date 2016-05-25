@@ -4682,6 +4682,39 @@ body.single{
     }
 }
 
+.get-it-inner{
+  text-align: center;
+
+  & > a{
+    position: relative;
+    display: inline-block;
+    margin: 0 auto;
+
+    &::after{
+      content:'Get it';
+      display: block;
+      position: absolute;
+      top: 15px;
+      left: 15px;
+      background: $iridium;
+      color: #fff;
+      padding: 3px 6px;
+      border-radius: 4px;
+    }
+
+    &:hover{
+      &::after{
+        background: darken($iridium, 10%);
+      }
+    }
+  }
+
+  //.get-wrap{
+  //}
+
+
+}
+
 .idea-stories{
 
   //article.post{
@@ -4695,7 +4728,9 @@ body.single{
       color: darken($light-grey, 100%);
       line-height: 1.6;
       font-size: 1.5rem;
+      text-align: left;
     }
+
     img{
       max-width: 100%;
       height: auto;
