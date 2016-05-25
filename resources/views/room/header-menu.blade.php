@@ -51,7 +51,7 @@
             <li><a class="box-link @if(isset($roomInformation['Permalink']) && $roomInformation['Permalink'] == 'kitchen') active @endif " href="{{url('idea/kitchen')}}">Kitchen</a></li>
             <li><a class="box-link @if(isset($roomInformation['Permalink']) && $roomInformation['Permalink'] == 'lighting') active @endif " href="{{url('idea/lighting')}}">Lighting</a></li>
             <li><a class="box-link @if(isset($roomInformation['Permalink']) && $roomInformation['Permalink'] == 'security') active @endif " href="{{url('idea/security')}}">Security</a></li>
-            @if($roomInformation['Permalink'] != 'security' && $roomInformation['Permalink'] != 'lighting' && $roomInformation['Permalink'] != 'kitchen')
+            @if(isset($roomInformation['Permalink']) && $roomInformation['Permalink'] != 'security' && $roomInformation['Permalink'] != 'lighting' && $roomInformation['Permalink'] != 'kitchen')
                 <li><a class="box-link  active" href="{{url('idea/' . $roomInformation['Permalink'])}}">{{ $roomInformation['RoomName']}}</a></li>
             @endif
         </ul>
