@@ -940,7 +940,7 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                 url: '/api/subscribe',
                 method: "POST",
                 data: {
-                    'Email': $scope.SubscriberEmail,
+                    'Email': formData.SubscriberEmail,
                     'SetCookie': 'true'
                 }
             }).success(function (data) {
@@ -954,7 +954,7 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                     $scope.responseMessage = "Successfully Subscribed";
 
                     //Redirect a user to registration page.
-                    window.location = '/signup/' + $scope.SubscriberEmail;
+                    window.location = '/signup/' + formData.SubscriberEmail;
 
                 } else {
                     $scope.responseMessage = "Email already subscribed";
