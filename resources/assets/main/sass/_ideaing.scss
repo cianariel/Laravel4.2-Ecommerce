@@ -6339,6 +6339,7 @@ footer.about-footer{
 /*    padding-top: 25%;*/     
     >ul{
         text-align: left;
+        padding-left: 10%;
     }
     li{
       background-position: 10px 15px !important;
@@ -6766,7 +6767,9 @@ footer.about-footer{
 /*      padding-left: 3%;*/
 /*      padding-right: 2.5%;*/
 /*      font-size: 1.6rem;*/
-
+      .right-menu-arrow{
+        font-size: 1.7rem;
+      }
       &.more-link{
         padding-left: 5%;
       }

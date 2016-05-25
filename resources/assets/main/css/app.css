@@ -8787,7 +8787,8 @@ footer.about-footer {
     text-align: center;
     /*    padding-top: 25%;*/ }
     .why-us > ul {
-      text-align: left; }
+      text-align: left;
+      padding-left: 10%; }
     .why-us li {
       background-position: 10px 15px !important;
       /*.m-icon{
@@ -9040,6 +9041,8 @@ footer.about-footer {
     /*      padding-left: 3%;*/
     /*      padding-right: 2.5%;*/
     /*      font-size: 1.6rem;*/ }
+    .mid-nav a .right-menu-arrow {
+      font-size: 1.7rem; }
     .mid-nav a.more-link {
       padding-left: 5%; }
   .mid-nav li.selected a,
