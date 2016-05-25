@@ -7711,12 +7711,14 @@ body.single .related-items {
       content: 'Get it';
       display: block;
       position: absolute;
+      width: 60px;
+      height: 60px;
       top: 15px;
       left: 15px;
       background: #FF0042;
       color: #fff;
-      padding: 3px 6px;
-      border-radius: 4px; }
+      padding: 20px 3px 6px;
+      border-radius: 50%; }
     .get-it-inner > a:hover::after {
       background: #cc0035; }
 

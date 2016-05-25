@@ -4694,12 +4694,14 @@ body.single{
       content:'Get it';
       display: block;
       position: absolute;
+      width: 60px;
+      height: 60px;
       top: 15px;
       left: 15px;
       background: $iridium;
       color: #fff;
-      padding: 3px 6px;
-      border-radius: 4px;
+      padding: 20px 3px 6px;
+      border-radius: 50%;
     }
 
     &:hover{
