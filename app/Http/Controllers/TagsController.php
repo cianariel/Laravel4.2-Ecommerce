@@ -20,7 +20,7 @@ class TagsController extends ApiController
         $this->middleware('jwt.auth',
             ['except' => [
                 'addTagInfo','updateTagInfo','deleteTagInfo','addTags','showAllTags','showTagByProductId',
-                'getProductsByTag','searchTagByName','temporaryCategoryTagGenerator'
+                'getProductsByTag','searchTagByName'//,'temporaryCategoryTagGenerator'
 
             ]]);
 
@@ -28,7 +28,7 @@ class TagsController extends ApiController
 
     }
 
-    public function temporaryCategoryTagGenerator()
+    /*public function temporaryCategoryTagGenerator()
     {
        // use App\Models\ProductCategory;
 
@@ -52,7 +52,7 @@ class TagsController extends ApiController
       //  $tagData['TagDescription'] = 'Category Tag';
 
 
-    }
+    }*/
 
     public function searchTagByName($name)
     {
@@ -180,11 +180,10 @@ class TagsController extends ApiController
 
     }
 
+    //addTags
     public function addTags()
     {
         $inputData = \Input::all();
-        //addTags
-        //dd($inputData);
 
         try
         {
