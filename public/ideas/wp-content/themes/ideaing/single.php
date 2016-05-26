@@ -191,8 +191,9 @@
         <?php loadLaravelView('share-bar'); ?>
     </div>
 
-    <section class="email-banner"  id="subscribe_email_popup">
+    <section class="email-banner" id="subscribe_email_popup" >
             <div class="col-md-5 col-sm-8 center-block">
+            <div id="publicApp">
                             <h4>Subscribe to the world’s finest Smart Home & Design Ideas</h4>
                         <ul>
                             <li>Enter to win Free Smart Home devices</li>
@@ -212,6 +213,7 @@
                             <a class="btn btn-success form-control" ng-click="subscribe(data)">Subscribe to Ideaing's newsletter</a>
                         </div>
               <!--  <div class="img-holder head-image-holder"><img src="/assets/images/emailpopupimg.png"></div> -->
+            </div>
             </div>
         </div>
     </section>
