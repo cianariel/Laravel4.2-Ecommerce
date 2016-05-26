@@ -4716,6 +4716,21 @@ body.single{
 
 }
 
+.email-banner{
+  padding-top: 25px;
+  padding-bottom: 25px;
+  background: #131313;
+  color: #fff;
+
+  li:before {
+    content: "• ";
+    position: relative;
+    top:3px;
+    font-size: 2rem;
+    color: $iridium; /* or whatever color you prefer */
+  }
+}
+
 .idea-stories{
 
   //article.post{
@@ -8799,31 +8814,27 @@ html.hide-overflow{
 #subscribe_email_popup{
   background-color:#fff !important;
 
-  //ul{
-  //  padding-left: 30px;
-  //}
-  //li{
-  //  list-style: disc;
-  //}
+  &, .email-banner{
+    ul {
+      list-style: none;
+      padding:0;
+      margin:0;
+    }
 
-  ul {
-    list-style: none;
-    padding:0;
-    margin:0;
+    li {
+      padding-left: 1em;
+      text-indent: -.7em;
+    }
+
+    li:before {
+      content: "• ";
+      position: relative;
+      top:3px;
+      font-size: 2rem;
+      color: $iridium; /* or whatever color you prefer */
+    }
   }
 
-  li {
-    padding-left: 1em;
-    text-indent: -.7em;
-  }
-
-  li:before {
-    content: "• ";
-    position: relative;
-    top:3px;
-    font-size: 2rem;
-    color: $iridium; /* or whatever color you prefer */
-  }
 }
 
 .subscribe_email_popup{

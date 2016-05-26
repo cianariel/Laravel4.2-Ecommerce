@@ -130,7 +130,7 @@
                                             <div class="form-group">
                                                 <label class="control-label col-md-3">Terms of Conditions:</label>
                                                 <div class="col-md-9">
-                                                    <textarea  rows="6" name="giveaway_toc" class="wysihtml5 form-control htmlarea"
+                                                    <textarea  rows="6" name="giveaway_toc" class="wysihtml5 form-control"
                                                                    placeholder="Terms of Conditions" value="{{$giveaway->giveaway_toc}}">{{$giveaway->giveaway_toc}}</textarea>
                                                 </div>
                                             </div>
