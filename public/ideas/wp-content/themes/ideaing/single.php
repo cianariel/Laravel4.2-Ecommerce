@@ -191,6 +191,31 @@
         <?php loadLaravelView('share-bar'); ?>
     </div>
 
+    <section class="email-banner"  id="subscribe_email_popup">
+            <div class="col-md-5 col-sm-8 center-block">
+                            <h4>Subscribe to the world’s finest Smart Home & Design Ideas</h4>
+                        <ul>
+                            <li>Enter to win Free Smart Home devices</li>
+                            <li>Get exclusive coupons & deals on Smart Home devices</li>
+                            <li>Randomly selected to win a complete Smart Home make-over</li>
+                        </ul>
+                        <br>
+                        <div>
+                            <h5>Enter your email</h5>
+                            <strong class="red"><?php echo '{{ responseMessage }}' ?></strong>
+                        </div>
+                        <div>
+                            <input class="form-control" ng-model="data.SubscriberEmail" placeholder="me@email.com"
+                                   type="text"></div>
+                        <br>
+                        <div>
+                            <a class="btn btn-success form-control" ng-click="subscribe(data)">Subscribe to Ideaing's newsletter</a>
+                        </div>
+              <!--  <div class="img-holder head-image-holder"><img src="/assets/images/emailpopupimg.png"></div> -->
+            </div>
+        </div>
+    </section>
+
     <section class="author-description">
         <div class="container">
             <div>
