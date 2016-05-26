@@ -373,6 +373,8 @@
             $('.article-content').find('img').each(function(){
                 if(!$(this).parents('.get-it-inner').length){
                     $(this).parent('a[href*="open/"]').wrap('<div class="get-it-inner"></div>');
+                    $(this).parent('a[href*="amazon.com/"]').wrap('<div class="get-it-inner"></div>');
+
                 }
             });
         });
