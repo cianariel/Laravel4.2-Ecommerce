@@ -4721,6 +4721,11 @@ body.single{
   padding-bottom: 25px;
   background: #131313;
   color: #fff;
+  margin-top: 20px;
+
+  h4{
+    text-align: center;
+  }
 
   li:before {
     content: "• ";
