@@ -119,6 +119,7 @@ class SearchController extends Controller
 
         if(!$query){
             $query = Input::get('search');
+
         }
 
         $query = str_replace('-', ' ', $query);
@@ -131,23 +132,19 @@ class SearchController extends Controller
         );
 
         // needs to be formatted differently if it's a pharse
-//        if(strpos(' ', $query)){
-//            if(strlen($query) > 6){ // fuzzy search for longer words
-//                $query = '"' . $query . '"~2';
-//            }elseif(strlen($query) > 4){
-//                $query = '"' . $query . '"~1';
-//            }
-//        }else{
+        if(preg_match('/\s/',$query)){
             if(strlen($query) > 6){ // fuzzy search for longer words
-                $query = $query . '~2';
+                $query = '"' . $query . '"~2';
+            }elseif(strlen($query) > 4){
+                $query = '"' . $query . '"~1';
+            }
+        }else{
+            if(strlen($query) > 6){ // fuzzy search for longer words
+                $query =  $query . '~2';
             }elseif(strlen($query) > 4){
                 $query = $query . '~1';
             }
-//        }
-//
-
-
-//        $bob = strlen($query);
+        }
 
         $arguments = [
             'query' =>  $query,
