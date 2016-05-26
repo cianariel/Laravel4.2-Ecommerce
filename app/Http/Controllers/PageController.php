@@ -434,7 +434,7 @@ class PageController extends ApiController
         if($cachedContent = PageHelper::getFromRedis($cacheKey)) {
             return $cachedContent;
         }else{
-            $url = URL::to('/') . '/ideas/feeds/index.php?count=' . $limit;
+            $url = URL::to('/') . '/ideas/feeds/index.php?count=' . $limit . '&no-deals';
 
             if ($tags && $tags != 'false') {
                 $url .= '&tag_in=' . strtolower(implode(',', $tags));
