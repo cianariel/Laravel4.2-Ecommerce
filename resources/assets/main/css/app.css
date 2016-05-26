@@ -7725,6 +7725,19 @@ body.single .related-items {
     .get-it-inner > a:hover::after {
       background: #cc0035; }
 
+.email-banner {
+  padding-top: 25px;
+  padding-bottom: 25px;
+  background: #131313;
+  color: #fff; }
+  .email-banner li:before {
+    content: "• ";
+    position: relative;
+    top: 3px;
+    font-size: 2rem;
+    color: #FF0042;
+    /* or whatever color you prefer */ }
+
 .idea-stories .article-content p {
   font-family: montserratlight;
   color: black;
@@ -10420,14 +10433,14 @@ html.hide-overflow {
 
 #subscribe_email_popup {
   background-color: #fff !important; }
-  #subscribe_email_popup ul {
+  #subscribe_email_popup ul, #subscribe_email_popup .email-banner ul {
     list-style: none;
     padding: 0;
     margin: 0; }
-  #subscribe_email_popup li {
+  #subscribe_email_popup li, #subscribe_email_popup .email-banner li {
     padding-left: 1em;
     text-indent: -.7em; }
-  #subscribe_email_popup li:before {
+  #subscribe_email_popup li:before, #subscribe_email_popup .email-banner li:before {
     content: "• ";
     position: relative;
     top: 3px;

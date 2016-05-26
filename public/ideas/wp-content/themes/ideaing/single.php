@@ -191,9 +191,9 @@
         <?php loadLaravelView('share-bar'); ?>
     </div>
 
-    <section class="email-banner" id="subscribe_email_popup" >
+    <section class="email-banner">
             <div class="col-md-5 col-sm-8 center-block">
-                            <h4>Subscribe to the world’s finest Smart Home & Design Ideas</h4>
+                            <h4 class="blue">Subscribe to the world’s finest Smart Home & Design Ideas</h4>
                         <ul>
                             <li>Enter to win Free Smart Home devices</li>
                             <li>Get exclusive coupons & deals on Smart Home devices</li>
@@ -318,6 +318,7 @@
 
             $args = [
                 'post__not_in' => array($post->ID),
+                'tag__not_in' => [29],
                 'posts_per_page' => 3,
                 'caller_get_posts' => 1
             ];
