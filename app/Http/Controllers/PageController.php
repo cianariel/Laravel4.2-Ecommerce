@@ -844,7 +844,7 @@ class PageController extends ApiController
         }
         // dd($giveaway);
         MetaTag::set('title', $heading);
-        MetaTag::set('description', $giveaway->giveaway_desc);
+        MetaTag::set('description', $giveaway->giveaway_meta_desc ?: $giveaway->giveaway_desc);
 
         if ($userData['method-status'] == 'fail-with-http') {
             $isAdmin = false;

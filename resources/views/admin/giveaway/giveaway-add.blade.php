@@ -136,6 +136,17 @@
                                             </div>
                                         </div>
                                     </div>
+                                    <div class="row">
+                                        <div class="col-lg-9">
+                                            <div class="form-group">
+                                                <label class="control-label col-md-3">Meta Description:</label>
+                                                <div class="col-md-9">
+                                                    <textarea  rows="6" name="giveaway_meta_desc" class=" form-control"
+                                                                   placeholder="Terms of Conditions" value="{{$giveaway->giveaway_meta_desc}}">{{$giveaway->giveaway_meta_desc}}</textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 <h3 class="form-section">Giveaway Image</h3>
                                 <div class="" id="Giveaway">
                                     
