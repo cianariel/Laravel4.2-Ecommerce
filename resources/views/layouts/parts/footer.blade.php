@@ -78,9 +78,9 @@
     // Track when a registration form is completed (ex. complete subscription, sign up for a service)
     fbq('track', 'CompleteRegistration');
 </script>
+ 
 
-
-<?php if(function_exists('is_single') || (Request::segment(1) != 'login' && Request::segment(1) != 'signup')){ ?>
+<?php if(function_exists('is_single') || (Request::segment(1) != 'login' && Request::segment(1) != 'signup' && Request::segment(1) != 'product')){ ?>
      <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
     <ins class="adsbygoogle"
          data-ad-client="ca-pub-8975651769887133"

@@ -5,9 +5,15 @@ if (function_exists('is_single')) {
     if (isset($GLOBALS['userData']) && isset($GLOBALS['isAdmin'])) {
         $userData = $GLOBALS['userData'];
         $isAdmin = $GLOBALS['isAdmin'];
+       
+    }else{
+      //  $userData['email'] = [];
+        $userData['user-data']['hide-signup'] = $_COOKIE['hide-signup'] ? true : false;
     }
 }
-?>
+
+// print_r($userData); die();
+?> 
 
 <div id="publicApp" ng-app="publicApp" ng-controller="publicController" class="header-cloak" ng-cloak>
     <header class="colophon">
@@ -524,7 +530,7 @@ if (function_exists('is_single')) {
         </div>
     </script>
     <?php }
-    if(empty($userData['email']) && @$userData['user-data']['hide-signup'] != 'true')
+    if((!isset($userData['email']) || empty($userData['email'])) && @$userData['user-data']['hide-signup'] != 'true')
     {
     echo '<input  ng-init="openEmailPopuponTime()" type="hidden">';
 

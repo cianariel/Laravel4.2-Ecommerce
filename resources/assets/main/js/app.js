@@ -337,10 +337,6 @@
             }
         });
 
-        $('.subscribe_email_popup').on('hidden.bs.modal', function () {
-            console.log('23948762374862');
-            // do something…
-        })
 
 	}); // global function()
 
