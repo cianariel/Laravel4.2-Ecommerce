@@ -4691,7 +4691,7 @@ body.single{
     margin: 0 auto;
 
     &::after{
-      content:'Get it';
+      content: 'Get it';
       display: block;
       position: absolute;
       width: 60px;
@@ -4700,8 +4700,9 @@ body.single{
       left: 15px;
       background: $iridium;
       color: #fff;
-      padding: 20px 3px 6px;
+      padding: 23px 3px 6px;
       border-radius: 50%;
+      font-size: 1.4rem;
     }
 
     &:hover{
@@ -4710,10 +4711,6 @@ body.single{
       }
     }
   }
-
-  //.get-wrap{
-  //}
-
 
 }
 

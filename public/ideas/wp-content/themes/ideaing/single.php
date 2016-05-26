@@ -367,9 +367,16 @@
         </div>
     </div>
 </section>
-    <?php 
-//       include('../../../../../../../resources/views/layouts/parts/product-popup.blade.php')
-    ?>
+
+    <script>
+        $(document).ready(function(){ // add Get It Button overlay on images that link to vendors
+            $('.article-content').find('img').each(function(){
+                if(!$(this).parents('.get-it-inner').length){
+                    $(this).parent('a[href*="open/"]').wrap('<div class="get-it-inner"></div>');
+                }
+            });
+        });
+    </script>
 
     <?php loadLaravelView('giveaway-popup'); ?>
     <?php loadLaravelView('product-popup'); ?>
