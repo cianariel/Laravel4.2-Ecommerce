@@ -119,7 +119,7 @@
                                             <div class="form-group">
                                                 <label class="control-label col-md-3">Description:</label>
                                                 <div class="col-md-9">
-                                                    <textarea  rows="6" name="giveaway_desc" class="wysihtml5 form-control"
+                                                    <textarea  rows="6" name="giveaway_desc" class="wysihtml5 form-control htmlarea"
                                                                    placeholder="Description" value="{{$giveaway->giveaway_desc}}">{{$giveaway->giveaway_desc}}</textarea>
                                                 </div>
                                             </div>
@@ -130,7 +130,7 @@
                                             <div class="form-group">
                                                 <label class="control-label col-md-3">Terms of Conditions:</label>
                                                 <div class="col-md-9">
-                                                    <textarea  rows="6" name="giveaway_toc" class="wysihtml5 form-control"
+                                                    <textarea  rows="6" name="giveaway_toc" class="wysihtml5 form-control htmlarea"
                                                                    placeholder="Terms of Conditions" value="{{$giveaway->giveaway_toc}}">{{$giveaway->giveaway_toc}}</textarea>
                                                 </div>
                                             </div>
@@ -141,7 +141,7 @@
                                             <div class="form-group">
                                                 <label class="control-label col-md-3">Meta Description:</label>
                                                 <div class="col-md-9">
-                                                    <textarea  rows="6" name="giveaway_meta_desc" class=" form-control"
+                                                    <textarea  rows="6" name="giveaway_meta_desc" class="form-control"
                                                                    placeholder="Terms of Conditions" value="{{$giveaway->giveaway_meta_desc}}">{{$giveaway->giveaway_meta_desc}}</textarea>
                                                 </div>
                                             </div>
@@ -235,7 +235,7 @@
 <script>
 $(function() {
 
-    $('textarea').htmlarea({
+    $('textarea.htmlarea').htmlarea({
 		toolbar: [
 		        "bold", "italic", "underline",
 		        "orderedList", "unorderedList",
