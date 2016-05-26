@@ -209,7 +209,7 @@
                                    type="text"></div>
                         <br>
                         <div>
-                            <a class="btn btn-success form-control" ng-click="subscribe(data)">Subscribe to Ideaing's newsletter</a>
+                            <a class="btn btn-success form-control" ng-click="subscribe(data)">Subscribe</a>
                         </div>
               <!--  <div class="img-holder head-image-holder"><img src="/assets/images/emailpopupimg.png"></div> -->
         </div>

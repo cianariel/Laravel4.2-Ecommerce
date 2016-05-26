@@ -7729,7 +7729,10 @@ body.single .related-items {
   padding-top: 25px;
   padding-bottom: 25px;
   background: #131313;
-  color: #fff; }
+  color: #fff;
+  margin-top: 20px; }
+  .email-banner h4 {
+    text-align: center; }
   .email-banner li:before {
     content: "• ";
     position: relative;
