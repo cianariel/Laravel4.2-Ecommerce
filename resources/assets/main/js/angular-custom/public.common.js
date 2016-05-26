@@ -947,17 +947,17 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
 
                 if (data.status_code == 406) {
 
-                    $scope.responseMessage = "Invalid Email!";
+                    $scope.responseMessage = "Sorry, the email  character is incorrect";
                 }
 
                 else if (data.status_code == 200) {
                     $scope.responseMessage = "Successfully Subscribed";
 
-                    //Redirect a user to registration page.
+                    //Redirect a user to registration page. 
                     window.location = '/signup/' + formData.SubscriberEmail;
 
                 } else {
-                    $scope.responseMessage = "Email already subscribed";
+                    $scope.responseMessage = "Sorry, this email already exists";
                 }
 
             });
