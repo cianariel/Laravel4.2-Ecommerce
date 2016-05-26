@@ -397,7 +397,7 @@
         $(document).ready(function(){ // add Get It Button overlay on images that link to vendors
             $('.article-content').find('img').each(function(){
                 if(!$(this).parents('.get-it-inner').length){
-                    $(this).parent('a').wrap('<div class="get-it-inner"></div>');
+                    $(this).parent('a').attr('target', '_blank').wrap('<div class="get-it-inner"></div>');
 //                    $(this).parent('a[href*="amazon.com/"]').wrap('<div class="get-it-inner"></div>');
 
                 }
