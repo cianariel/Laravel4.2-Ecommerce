@@ -19,6 +19,7 @@
             'giveaway_title',
             'giveaway_permalink',
             'giveaway_desc',
+            'giveaway_meta_desc',
             'giveaway_toc',
             'giveaway_image',
             'giveaway_image_title',

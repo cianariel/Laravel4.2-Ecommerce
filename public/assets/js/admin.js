@@ -1645,25 +1645,6 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
 
         };
 
-        //$(function() {
-        //    $('.btn_delete_giveaway').click(function(){
-        //        var post={};
-        //        post.GiveawayId = $(this).data("giveawayid");
-        //        $.ajax({
-        //            type : 'POST',
-        //            url : '/api/giveaway/delete-giveaway',
-        //            data : post,
-        //            success : function(x) {
-        //                alert('Giveaway Deleted');
-        //
-        //            }
-        //
-        //            ,
-        //            error : function(r) { alert('errror'); }
-        //        });
-        //    });
-        //});
-
         // view product list
         $scope.showAllGiveaways = function () {
 
@@ -1673,30 +1654,11 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
                 data: {
                     Title: $scope.selectedItem,
                     id: $scope.ActiveItem,
-                    //FilterType: $scope.selectedFilter,
-                    //FilterText: $scope.filterName,
-                    //ShowFor: $scope.ShowFor,
-                    //WithTags: $scope.WithTags,
-
-                    //// Pagination info
-                    //limit: $scope.limit,
-                    //page: $scope.page,
-                    //total: $scope.total,
                 }
 
             }).success(function (data) {
 
-                //if (data.status_code == 200) {
                     $scope.GiveawayList = data;
-
-                    //$scope.limit = data.data.limit;
-                    //$scope.page = data.data.page;
-                    //$scope.total = data.data.total;
-
-                //} else {
-                //    $scope.outputStatus(data, "Failed to Load");
-                //}
-
             });
 
         };
