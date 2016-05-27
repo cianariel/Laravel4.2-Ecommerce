@@ -199,10 +199,10 @@
 <!--                            <h5>Enter your email</h5>-->
                             <strong class="red"><?php echo '{{ responseMessage }}' ?></strong>
                         </div>
-                        <div class="col-xs-7 col-sm-9">
+                        <div class="col-xs-12 col-sm-9">
                             <input class="form-control" ng-model="data.SubscriberEmail" placeholder="me@email.com" type="text">
                         </div>
-                        <div class="col-xs-5 col-sm-3">
+                        <div class="col-xs-12 col-sm-3">
                             <a class="btn btn-success form-control" ng-click="subscribe(data)">SUBSCRIBE</a>
                         </div>
               <!--  <div class="img-holder head-image-holder"><img src="/assets/images/emailpopupimg.png"></div> -->

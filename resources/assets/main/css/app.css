@@ -7755,7 +7755,10 @@ body.single .related-items {
     padding: 30px 25px 50px;
     overflow: hidden;
     border-radius: 5px;
-    background: #131313; }
+    background: #131313;
+    max-width: 85%; }
+    .email-banner > div input {
+      margin-bottom: 7px; }
   .email-banner input,
   .email-banner .btn {
     height: 45px; }
