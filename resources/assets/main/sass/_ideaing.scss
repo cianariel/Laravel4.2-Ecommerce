@@ -4769,6 +4769,22 @@ body.single{
     overflow: hidden;
     border-radius: 5px;
     background: #131313;
+    max-width: 85%;
+
+    input{
+      margin-bottom: 7px;
+    }
+
+    //@media (max-width: 990px){
+    //  .content-container{
+    //    margin-top: 50px;
+    //    margin-bottom: 50px;
+    //    width: 100%;
+    //  }
+    //  .img-holder{
+    //    display: none;
+    //  }
+    //}
   }
 
   input,
