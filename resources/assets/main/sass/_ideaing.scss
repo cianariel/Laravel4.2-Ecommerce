@@ -981,6 +981,7 @@ nav {
       z-index: 1;
       padding-left: 10%;
       background-color: rgba($sky-blue, .7);
+      text-shadow: none;
 
 
       span{
@@ -6297,7 +6298,6 @@ footer.about-footer{
       min-height: 400px;
       h1 {
         font-size: 2rem;
-        text-shadow: none;
 
         a.like-counter span {
           margin-top: -5px;
