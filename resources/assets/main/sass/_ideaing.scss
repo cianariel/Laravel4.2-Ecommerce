@@ -2421,13 +2421,13 @@ article.product{
 
 }
 
-@media (max-width:768px){
+@media (max-width:700px){
   .search-bar{
     margin-left: 0 !important;
 
     input{
       float: right;
-      width: 96%;
+      width: 95%;
     }
   }
 }
@@ -2443,8 +2443,8 @@ article.product{
 
   .close-button{
     margin-top: 4px;
-    position: relative;
-    right: 4px;
+    position: absolute;
+    left: 4px;
   }
 }
 
@@ -9376,6 +9376,10 @@ body.error-page{
     border: 1px solid lightgray;
     position: absolute;
     top: 34px;
+
+    @media (max-width: 768px){
+      top: 47px;
+    }
     > ul.cat-suggestions{
         > li{
             width: 100%; display: block; float: left; padding: 5px 10px;
