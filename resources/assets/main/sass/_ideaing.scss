@@ -1017,6 +1017,14 @@ nav {
 
 }
 
+body.tag-deal{
+  details-hero{
+    h1{ 
+        background-color: rgba($dark-orange, .7);
+      }
+  }
+}
+
 body.single,
 body.product-details,
 body.profilepage,

@@ -694,5 +694,20 @@ if ( $the_query->have_posts() ) {
     return $return;
 }
 
+// Add specific CSS class by filter
+add_filter( 'body_class', 'single_post_tag_classes' );
+function single_post_tag_classes( $classes ) {
+  if ( is_single() ) {
+    global $post;
+    $posttags = get_the_tags( $post->ID );
+    if ( $posttags ) {
+      foreach( $posttags as $tag ) {
+      $classes[] = 'tag-' . $tag->name;
+      }
+    }
+  }
+return $classes;
+}
+
 
 ?>
