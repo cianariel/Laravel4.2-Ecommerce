@@ -4707,6 +4707,21 @@ body.single{
             }
         }
     }
+    @media only screen and (max-width: 420px){
+        #hero.details-hero h1{
+          font-size: 2.7rem;
+        }
+      time{
+        font-size: 1.5rem !important;
+      }
+        .article-content{
+          p,
+          h4{
+            font-size: 1.8rem;
+          }
+
+        }
+    }
 }
 
 .get-it-inner{
