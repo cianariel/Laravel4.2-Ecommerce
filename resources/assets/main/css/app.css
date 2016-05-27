@@ -5389,7 +5389,7 @@ nav a {
     line-height: 1.6;
     z-index: 1;
     padding-left: 10%;
-    background-color: rgba(255, 0, 66, 0.7); }
+    background-color: rgba(0, 177, 255, 0.7); }
     #hero.details-hero h1 span {
       background-position-x: 3px; }
   #hero.details-hero .color-overlay {
@@ -5408,7 +5408,7 @@ nav a {
     position: relative; }
 
 body.tag-deal #hero.details-hero h1 {
-  background-color: rgba(0, 177, 255, 0.7); }
+  background-color: rgba(255, 127, 0, 0.7); }
 
 body.single .mid-nav.rooms, body.single .mid-nav .rooms.extra-nav, .mid-nav body.single .rooms.extra-nav,
 body.product-details .mid-nav.rooms,
