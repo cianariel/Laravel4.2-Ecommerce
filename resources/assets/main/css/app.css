@@ -8773,7 +8773,8 @@ footer.about-footer {
     #hero.details-hero {
       min-height: 400px; }
       #hero.details-hero h1 {
-        font-size: 2rem; }
+        font-size: 2rem;
+        text-shadow: none; }
         #hero.details-hero h1 a.like-counter span {
           margin-top: -5px; }
 
