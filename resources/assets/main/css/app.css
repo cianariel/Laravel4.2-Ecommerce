@@ -6258,12 +6258,12 @@ article.product {
     .mobile-filter-switch li:not(.active) {
       background-color: #f9fcfc; }
 
-@media (max-width: 768px) {
+@media (max-width: 700px) {
   .search-bar {
     margin-left: 0 !important; }
     .search-bar input {
       float: right;
-      width: 96%; } }
+      width: 95%; } }
 .mobile-search-bar {
   padding: 13px;
   display: none;
@@ -6273,8 +6273,8 @@ article.product {
   top: 0; }
   .mobile-search-bar .close-button {
     margin-top: 4px;
-    position: relative;
-    right: 4px; }
+    position: absolute;
+    left: 4px; }
 
 #mobile-side-filters div {
   margin-top: 20px; }
@@ -10844,6 +10844,9 @@ body.error-page .error-banner-holder {
   border: 1px solid lightgray;
   position: absolute;
   top: 34px; }
+  @media (max-width: 768px) {
+    #suggest-category {
+      top: 47px; } }
   #suggest-category > ul.cat-suggestions > li {
     width: 100%;
     display: block;
