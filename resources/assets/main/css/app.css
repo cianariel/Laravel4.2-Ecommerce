@@ -7713,6 +7713,14 @@ body.single .related-items {
       float: none; }
       body.single .like-nav > li:first-child {
         /*                    top: -27px;*/ } }
+@media only screen and (max-width: 420px) {
+  body.single #hero.details-hero h1 {
+    font-size: 2.7rem; }
+  body.single time {
+    font-size: 1.5rem !important; }
+  body.single .article-content p,
+  body.single .article-content h4 {
+    font-size: 1.8rem; } }
 
 .get-it-inner {
   text-align: center; }
