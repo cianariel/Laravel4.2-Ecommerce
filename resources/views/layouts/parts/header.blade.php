@@ -224,6 +224,9 @@ if (function_exists('is_single')) {
                     include('/var/www/ideaing/resources/views/layouts/parts/search-dropdown.blade.php')
                     ?>
                 </div>
+                <span class="close-button close-login" data-toggle=".mobile-search-bar">
+                    <i class="m-icon--Close"></i>
+                </span>
             </div>
         </form>
 
