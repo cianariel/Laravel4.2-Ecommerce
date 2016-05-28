@@ -6283,6 +6283,7 @@ article.product {
   .mobile-search-bar button {
     width: 25px;
     height: 25px;
+    padding-left: 12px;
     float: right;
     background: #FF0042;
     border: 50%;
