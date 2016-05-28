@@ -6290,10 +6290,11 @@ article.product {
     border: 0;
     border-radius: 50%;
     margin-top: 5px;
-    font-weight: bold;
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none; }
+    .mobile-search-bar button span {
+      font-weight: bold; }
   .mobile-search-bar .top-search {
     width: 85%;
     margin-right: 4px; }
