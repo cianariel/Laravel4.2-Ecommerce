@@ -4527,6 +4527,14 @@ a:hover, a:focus {
 .full-wide {
   width: 100%; }
 
+.turn-left, .mobile-search-bar .close-button i:before {
+  display: inline-block;
+  -ms-transform: rotate(45deg);
+  /* IE 9 */
+  -webkit-transform: rotate(45deg);
+  /* Chrome, Safari, Opera */
+  transform: rotate(45deg); }
+
 .overhide {
   overflow: hidden; }
 
@@ -6268,10 +6276,35 @@ article.product {
 .mobile-search-bar {
   padding: 13px;
   display: none;
-  background: #c1c1c1;
+  background: #fff;
   z-index: 40;
   position: absolute;
   top: 0; }
+  .mobile-search-bar button {
+    padding-right: 12px;
+    float: right;
+    background: #fff;
+    color: #fff;
+    font-weight: bold;
+    box-shadow: 0;
+    border: 0;
+    border-radius: 50%;
+    margin-top: 5px;
+    overflow: visible;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none; }
+    .mobile-search-bar button span {
+      font-weight: bold;
+      border-radius: 50%;
+      background: #FF0042;
+      padding: 5px;
+      width: 25px;
+      height: 25px;
+      display: block; }
+  .mobile-search-bar .top-search {
+    width: 80%;
+    margin-right: 4px; }
   .mobile-search-bar .close-button {
     margin-top: 4px;
     position: absolute;

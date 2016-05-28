@@ -216,8 +216,12 @@ if (function_exists('is_single')) {
 
         <form class="search-bar" ng-app="publicApp" ng-controller="SearchController" action="/search-form-query">
             <div class="mobile-search-bar col-xs-12" ng-cloak>
+                <button type="submit">
+                    <span class="m-icon--search-id">
+                    </span>
+                </button>
                 <input ng-click="toggleSearch()" ng-change="openSearchDropdown(query)" ng-model="query"
-                       ng-model-options='{ debounce: 800 }' class="form-control col-xs-10  top-search" type="text"
+                       ng-model-options='{ debounce: 800 }' class="form-control col-xs-10 top-search" type="text"
                        value="Search..." placeholder="Search for products and ideas..." name="search"/>
                 <div id="suggest-category" ng-class="{shown: open, hidden: !open}" ng-show="categorySuggestions.length">
                     <?php // have to use only pure php includes, or the CMS wont read it
@@ -225,7 +229,7 @@ if (function_exists('is_single')) {
                     ?>
                 </div>
                 <span class="close-button close-login" data-toggle=".mobile-search-bar">
-                    <i class="m-icon--Close"></i>
+                    <i class="turn-left m-icon--Header-Dropdown"></i>
                 </span>
             </div>
         </form>
