@@ -3904,10 +3904,29 @@ angular.module('colorpicker.module', [])
         $(window).scroll(function() {
 
             if($(window).scrollTop() + $(window).height() == $(document).height()) {
-            //    console.log('the end is near');
                 $('.bottom-load-more').click();
                 $('.bottom-load-more').addClass('disabled').attr('disabled', true);
-                $('.bottom-block').addClass('hard-show');
+            }
+
+            if(window.innerWidth > 620){
+                return false;
+            }
+
+            var body = $('body');
+            if(body.hasClass('home') || body.hasClass('room-landing')){
+                var $percent = 0.4;
+            }else{
+                var $percent = 0.5;
+            }
+
+            if($('.bottom-block').is(':visible')){
+                if($(window).scrollTop() + $(window).height() < $(document).height() * $percent) {
+                    $('.bottom-block').fadeOut();
+                }
+            }else{
+                if($(window).scrollTop() + $(window).height() > $(document).height() * $percent) {
+                    $('.bottom-block').fadeIn();
+                }
             }
         });
 
@@ -3928,39 +3947,6 @@ angular.module('colorpicker.module', [])
 	}); // global function()
 
 })(jQuery, this);
-
-//(function() {
-//
-//    'use strict';
-//
-//    var loadMore = angular.module('loadMore', [])
-//
-//    angular
-//        .module('loadMore')
-//        .factory('content', content);
-//
-//    content();
-//
-//    function content($resource) {
-//
-//        // ngResource call to the API for the users
-//        var Content = $resource('paging/get-content');
-//
-//        // Query the users and return the results
-//        function getContent() {
-//            return Content.query().$promise.then(function(results) {
-//                return results;
-//                console.log(results)
-//            }, function(error) {
-//                console.log(error);
-//            });
-//        }
-//
-//        return {
-//            getUsers: getContent
-//        }
-//    }
-//})();
 ;
 /**
  * Created by sanzeeb on 1/7/2016.
@@ -4915,7 +4901,7 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
 
                 } else {
                     $scope.responseMessage = "Sorry, this email already exists";
-                    console.log($scope.responseMessage);
+                    console.log($scope.responseMessage); 
                 }
 
             });

@@ -1,3 +1,5 @@
+@charset "UTF-8";
+
 ins.adsbygoogle{
   display: block;
 }
@@ -77,7 +79,12 @@ a:hover, a:focus{
   width: 100%;
 }
 
-
+.turn-left{
+  display: inline-block;
+  -ms-transform: rotate(45deg); /* IE 9 */
+  -webkit-transform: rotate(45deg); /* Chrome, Safari, Opera */
+  transform: rotate(45deg);
+}
 
 @mixin pseudo-full-wide($bgColor) {
   position: relative; /* for the child pseudo-elements */
@@ -2436,16 +2443,51 @@ article.product{
 .mobile-search-bar{
   padding: 13px;
   display: none;
-  background: $light-grey;
-  //margin-top: 55px;
+  background: #fff;
   z-index: 40;
   position: absolute;
   top: 0;
+
+  button{
+   
+    padding-right: 12px;
+    float: right;
+    background: #fff;
+    color: #fff;
+    font-weight: bold;
+    box-shadow: 0;
+    border: 0;
+    border-radius: 50%;
+    margin-top: 5px;
+    overflow:visible;
+
+    -webkit-appearance: none;
+    -moz-appearance:    none;
+    appearance:         none;
+
+    span{
+      font-weight: bold;
+      border-radius: 50%;
+      background: $iridium;
+      padding: 5px;
+      width: 25px;
+      height: 25px;
+      display: block;
+    }
+  }
+
+  .top-search{
+    width: 80%;
+    margin-right: 4px;
+  }
 
   .close-button{
     margin-top: 4px;
     position: absolute;
     left: 4px;
+    i:before{
+      @extend .turn-left;
+    }
   }
 }
 
