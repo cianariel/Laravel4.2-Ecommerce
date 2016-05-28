@@ -229,7 +229,7 @@ if (function_exists('is_single')) {
                     ?>
                 </div>
                 <span class="close-button close-login" data-toggle=".mobile-search-bar">
-                    <i class="turn-left m-icon--Header-Dropdown down"></i>
+                    <i class="turn-left m-icon--Header-Dropdown"></i>
                 </span>
             </div>
         </form>
