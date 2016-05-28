@@ -951,7 +951,6 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
 
                 } else {
                     $scope.responseMessage = "Sorry, this email already exists";
-                    console.log($scope.responseMessage); 
                 }
 
             });
