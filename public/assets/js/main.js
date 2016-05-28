@@ -4892,13 +4892,6 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
         $scope.subscribe = function (formData) {
 
             $scope.responseMessage = '';
-            //if ((typeof formData.SubscriberEmail != 'undefined')) //|| (formData.SubscriberEmail != '')
-            //{
-            //    //  console.log('in side :'+ formData.SubscriberEmail);
-            //    $scope.SubscriberEmail = formData.SubscriberEmail;
-            //}
-
-            //console.log('out side :'+ $scope.SubscriberEmail);
 
             $http({
                 url: '/api/subscribe',
