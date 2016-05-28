@@ -6281,8 +6281,6 @@ article.product {
   position: absolute;
   top: 0; }
   .mobile-search-bar button {
-    width: 25px;
-    height: 25px;
     padding-right: 12px;
     float: right;
     background: #fff;
@@ -6292,6 +6290,7 @@ article.product {
     border: 0;
     border-radius: 50%;
     margin-top: 5px;
+    overflow: visible;
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none; }
@@ -6304,7 +6303,7 @@ article.product {
       height: 25px;
       display: block; }
   .mobile-search-bar .top-search {
-    width: 83%;
+    width: 80%;
     margin-right: 4px; }
   .mobile-search-bar .close-button {
     margin-top: 4px;
