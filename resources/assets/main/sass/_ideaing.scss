@@ -77,7 +77,12 @@ a:hover, a:focus{
   width: 100%;
 }
 
-
+.turn-left{
+  display: inline-block;
+  -ms-transform: rotate(45deg); /* IE 9 */
+  -webkit-transform: rotate(45deg); /* Chrome, Safari, Opera */
+  transform: rotate(45deg);
+}
 
 @mixin pseudo-full-wide($bgColor) {
   position: relative; /* for the child pseudo-elements */
@@ -2436,16 +2441,40 @@ article.product{
 .mobile-search-bar{
   padding: 13px;
   display: none;
-  background: $light-grey;
-  //margin-top: 55px;
+  background: #fff;
   z-index: 40;
   position: absolute;
   top: 0;
+
+  button{
+    float: right;
+    background: $iridium;
+    border: 50%;
+    color: #fff;
+    font-weight: bold;
+    box-shadow: 0;
+    border: 0;
+    border-radius: 50%;
+    margin-top: 5px;
+    ont-weight: bold;
+    
+    -webkit-appearance: none;
+    -moz-appearance:    none;
+    appearance:         none;
+  }
+
+  .top-search{
+    width: 85%;
+    margin-right: 4px;
+  }
 
   .close-button{
     margin-top: 4px;
     position: absolute;
     left: 4px;
+    i:before{
+      @extend .turn-left;
+    }
   }
 }
 
