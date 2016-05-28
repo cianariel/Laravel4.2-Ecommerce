@@ -1,3 +1,5 @@
+@charset "UTF-8";
+
 ins.adsbygoogle{
   display: block;
 }
@@ -2447,8 +2449,7 @@ article.product{
   top: 0;
 
   button{
-    width: 25px;
-    height: 25px;
+   
     padding-right: 12px;
     float: right;
     background: #fff;
@@ -2458,6 +2459,7 @@ article.product{
     border: 0;
     border-radius: 50%;
     margin-top: 5px;
+    overflow:visible;
 
     -webkit-appearance: none;
     -moz-appearance:    none;
@@ -2475,7 +2477,7 @@ article.product{
   }
 
   .top-search{
-    width: 83%;
+    width: 80%;
     margin-right: 4px;
   }
 
