@@ -6281,6 +6281,8 @@ article.product {
   position: absolute;
   top: 0; }
   .mobile-search-bar button {
+    width: 25px;
+    height: 25px;
     float: right;
     background: #FF0042;
     border: 50%;
@@ -6296,7 +6298,7 @@ article.product {
     .mobile-search-bar button span {
       font-weight: bold; }
   .mobile-search-bar .top-search {
-    width: 85%;
+    width: 83%;
     margin-right: 4px; }
   .mobile-search-bar .close-button {
     margin-top: 4px;
