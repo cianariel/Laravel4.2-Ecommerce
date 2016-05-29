@@ -570,7 +570,7 @@ if (function_exists('is_single')) {
                                type="text"></div>
                     <br>
                     <div>
-                        <a class="btn btn-success form-control" ng-click="subscribe(data)">Subscribe to Ideaing's
+                        <a class="btn btn-success form-control" ng-click="subscribe(data,'popup')">Subscribe to Ideaing's
                             newsletter</a>
                     </div>
                     <br>

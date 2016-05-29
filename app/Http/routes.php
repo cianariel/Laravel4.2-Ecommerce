@@ -81,7 +81,7 @@ Route::group(['prefix' => 'api'], function () {
      * */
     Route::resource('authenticate', 'AuthenticateController', ['only' => ['index']]);
     Route::post('authenticate', 'AuthenticateController@authenticate');
-    Route::post('register-user', 'AuthenticateController@registerUser');
+    Route::post('register-user/{source?}', 'AuthenticateController@registerUser');
     Route::get('fb-login', 'AuthenticateController@fbLogin');
     Route::get('giveaway-fb-login', 'AuthenticateController@giveawayFbCheck');
 
@@ -317,7 +317,7 @@ Route::get('product/{permalink?}', ['as' => 'productDetails', 'uses' => 'PageCon
 Route::get('idea/{permalink?}', 'PageController@getRoomPage'); // single room page
 Route::get('room/{permalink?}', 'PageController@getRoomPage'); // temp keeping the old link, to prevent breaks
 // default signup
-Route::get('signup/{email?}', 'PageController@signupPage');
+Route::get('signup/{email?}/{source?}', 'PageController@signupPage');
 Route::get('login', 'PageController@loginView');
 
 // Hide signup popup

@@ -196,7 +196,7 @@ class AuthenticateController extends ApiController
     {
         //dd($request);
 
-      //  session(['page.source' => 'giveaway']);
+        //  session(['page.source' => 'giveaway']);
 
         $this->fbLogin($request);
 
@@ -211,9 +211,8 @@ class AuthenticateController extends ApiController
     {
 
         $isGiveaway = $request->has('vlu');
-        if(!empty($isGiveaway) && $request['vlu'] == 'giveaway')
-        {
-            $link = 'giveaway/'.$request['pl'];
+        if (!empty($isGiveaway) && $request['vlu'] == 'giveaway') {
+            $link = 'giveaway/' . $request['pl'];
             session(['page.source.giveaway' => $link]);
         }
 
@@ -251,12 +250,10 @@ class AuthenticateController extends ApiController
             $this->setCookie('auth-token', $token);
         }
 
-        if (!empty(session('page.source.giveaway')))
-        {
+        if (!empty(session('page.source.giveaway'))) {
             return redirect(session('page.source.giveaway'));
             //return redirect()->action('PageController@giveaway');
-        }
-        else
+        } else
             return redirect()->action('UserController@userProfile');
 
         // return redirect('user/profile');
@@ -309,15 +306,18 @@ class AuthenticateController extends ApiController
                             ->makeResponseWithError(array('Validation failed', $validator->messages()));
             } elseif ($validator->passes()) {
                 if ($this->user->IsEmailAvailable($userData['Email']) == false) {
+
                     /*
                      * After successfully register the user data send JSON response if email is available.
                      * */
+
+                   // $userData['UserFrom'] = empty($source) ? '' : $source;
                     if ($this->user->SaveUserInformation($userData)) {
                         // Assign role for the user
                         $this->user->assignRole($userData['Email'], array('user'));
 
                         // Email subscription.
-                        $this->subscriber->subscribeUser($userData['Email']);
+                        $this->subscriber->subscribeUser($userData);
 
                         // for a subscribed user need not to confirm email for the second time.
                         if (isset($inputData['Valid']) && $inputData['Valid'] == true) {
