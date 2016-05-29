@@ -286,6 +286,9 @@ Route::group(['prefix' => 'admin'], function () {
     Route::get('user-add/{id?}', 'AdminController@userEdit');
     Route::get('subscribers-list', 'AdminController@subscriberList');
 
+    Route::get('subscription-report', 'AdminController@subscriptionReport');
+
+
 });
 
 //Shop view

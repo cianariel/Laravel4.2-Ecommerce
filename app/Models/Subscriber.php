@@ -66,9 +66,6 @@ class Subscriber extends Model
         }else{
             return $existingEmail->first();
         }
-
-
-
     }
 
     /**
@@ -90,6 +87,15 @@ class Subscriber extends Model
 
         $subscriberList['count'] = $subscriberModel->get()->count();
         return $subscriberList;
+    }
+
+    public function totalSubscriberBySource($source)
+    {
+        $subscriberList['result'] = Subscriber::groupBy('email')->havi
+            ->orderBy('created_at', 'desc')
+            ->get();
+
+
     }
 
     public function allSubscribers()

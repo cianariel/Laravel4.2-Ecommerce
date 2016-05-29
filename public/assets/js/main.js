@@ -4882,6 +4882,8 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                 source = 'popup';
             else if (source == 'ideas')
                 source = 'ideas';
+            else if (source == 'footer')
+                source = 'footer';
             else
                 source = '';
 
@@ -5330,7 +5332,6 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                 $('.fan-count.inst').html(response.instagram);
             });
         };
-
 
         $scope.initPage();
 
