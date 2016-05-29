@@ -14,9 +14,9 @@ class Subscriber extends Model
      */
     protected $table = 'subscribers';
 
-    protected $fillable = ['email','status'];
+    protected $fillable = ['email', 'status'];
 
-    protected $hidden = ['created_at','updated_at'];
+    protected $hidden = ['created_at', 'updated_at'];
 
     /**
      * Define Relationship
@@ -34,13 +34,11 @@ class Subscriber extends Model
 
     public function isASubscriber($email)
     {
-        try
-        {
+        try {
             return Subscriber::where('email', $email)
-                ->firstOrFail();
+                             ->firstOrFail();
 
-        } catch (\Exception $ex)
-        {
+        } catch (\Exception $ex) {
             return false;
         }
 
@@ -50,15 +48,27 @@ class Subscriber extends Model
      * @param $userData
      * @return bool
      */
-    public function subscribeUser($email)
+    public function subscribeUser($data)
     {
-        $subscriber = new Subscriber();
-        $subscriber->email = $email;
-        $subscriber->status = 'Subscribed';
+        $existingEmail = Subscriber::where('email',$data['Email']);
 
-        $subs = $subscriber->save();
+        if($existingEmail->count() == 0)
+        {
+            $subscriber = new Subscriber();
+            $subscriber->email = $data['Email'];
+            $subscriber->source = empty($data['Source']) ? '' : $data['Source'];
 
-        return $subs;
+            $subscriber->status = 'Subscribed';
+
+            $subs = $subscriber->save();
+
+            return $subs;
+        }else{
+            return $existingEmail->first();
+        }
+
+
+
     }
 
     /**
@@ -85,7 +95,13 @@ class Subscriber extends Model
     public function allSubscribers()
     {
         $subscriberModel = new Subscriber();
-        return $subscriberModel->all(['email']);
+
+        return $subscriberModel
+            ->groupBy('email')
+            ->orderBy('email')
+            ->get(['email']);
+
+        //return $subscriberModel->all(['email']);
     }
 
 

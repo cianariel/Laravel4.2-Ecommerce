@@ -185,7 +185,7 @@ class UserController extends ApiController
             return $this->setStatusCode(\Config::get("const.api-status.success-with-variation"))
                         ->makeResponse($subs);
         } else {
-            $subs = $this->subscriber->subscribeUser($userData['Email']);
+            $subs = $this->subscriber->subscribeUser($userData);
             \Event::fire(new SendSubscriptionMail(
                 $userData['Email']
             ));
