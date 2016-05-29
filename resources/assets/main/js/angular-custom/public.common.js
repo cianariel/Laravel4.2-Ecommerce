@@ -253,9 +253,9 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
             }
         }, 15000);//10000
 
-        $scope.openEmailPopuponTime = function(){
-            if(!$('body').hasClass('login-signup')){
-                setTimeout(function(){
+        $scope.openEmailPopuponTime = function () {
+            if (!$('body').hasClass('login-signup')) {
+                setTimeout(function () {
                     $scope.getEmailPopup();
                 }, 25000)
             }
@@ -925,22 +925,25 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
         };
 
         // Subscribe a user through email and redirect to registration page.
-        $scope.subscribe = function (formData) {
+        $scope.subscribe = function (formData, source) {
 
             $scope.responseMessage = '';
-            //if ((typeof formData.SubscriberEmail != 'undefined')) //|| (formData.SubscriberEmail != '')
-            //{
-            //    //  console.log('in side :'+ formData.SubscriberEmail);
-            //    $scope.SubscriberEmail = formData.SubscriberEmail;
-            //}
+            if (source == 'popup')
+                source = 'popup';
+            else if (source == 'ideas')
+                source = 'ideas';
+            else if (source == 'footer')
+                source = 'footer';
+            else
+                source = '';
 
-            //console.log('out side :'+ $scope.SubscriberEmail);
 
             $http({
                 url: '/api/subscribe',
                 method: "POST",
                 data: {
                     'Email': formData.SubscriberEmail,
+                    'Source': source,
                     'SetCookie': 'true'
                 }
             }).success(function (data) {
@@ -954,7 +957,7 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                     $scope.responseMessage = "Successfully Subscribed";
 
                     //Redirect a user to registration page. 
-                    window.location = '/signup/' + formData.SubscriberEmail;
+                    window.location = '/signup/' + formData.SubscriberEmail + '/' + source;
 
                 } else {
                     $scope.responseMessage = "Sorry, this email already exists";
@@ -988,6 +991,18 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
         };
 
         $scope.registerSubscribedUser = function () {
+
+            // defining the regsitration source
+            sourceSegment = '';
+            valSeg = window.location.pathname.split('/');
+
+            if (valSeg[3] == 'popup')
+                sourceSegment = 'popup';
+            else if (valSeg[3] == 'ideas')
+                sourceSegment = 'ideas';
+
+          //  console.log(valSeg);
+          //  return;
             $scope.closeAlert();
 
             if ($scope.Password != $scope.PasswordConf) {
@@ -1002,6 +1017,7 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                     FullName: $scope.FullName,
                     Email: $scope.Email,
                     Password: $scope.Password,
+                    UserFrom: sourceSegment,
                     Valid: true
                 }
 
@@ -1366,7 +1382,6 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                 $('.fan-count.inst').html(response.instagram);
             });
         };
-
 
         $scope.initPage();
 
