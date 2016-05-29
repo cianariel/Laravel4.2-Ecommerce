@@ -52,7 +52,7 @@
             <strong class="red"><?php echo "{{ responseMessage }}";?></strong>
             <h4 class="pink">Ideas to You</h4>
             <input class="form-control" type="text" ng-model="data.SubscriberEmail" placeholder="Email address">
-            <input class="form-control" type="button" ng-click="subscribe(data,'footer')" />
+            <input class="form-control" type="submit" ng-click="subscribe(data,'footer')" />
         </div>
     </div>
     <button class="btn-none close-down" data-toggle=".about-footer"></button>
