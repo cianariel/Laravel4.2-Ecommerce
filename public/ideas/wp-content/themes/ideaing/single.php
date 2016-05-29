@@ -203,7 +203,7 @@
                             <input class="form-control" ng-model="data.SubscriberEmail" placeholder="me@email.com" type="text">
                         </div>
                         <div class="col-xs-12 col-sm-3">
-                            <a class="btn btn-success form-control" ng-click="subscribe(data)">SUBSCRIBE</a>
+                            <a class="btn btn-success form-control" ng-click="subscribe(data,'ideas')">SUBSCRIBE</a>
                         </div>
               <!--  <div class="img-holder head-image-holder"><img src="/assets/images/emailpopupimg.png"></div> -->
         </div>
