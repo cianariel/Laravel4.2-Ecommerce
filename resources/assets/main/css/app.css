@@ -7780,6 +7780,15 @@ body.single .related-items {
     .get-it-inner > a:hover::after {
       background: #cc0035; }
 
+.float-thumbs {
+  overflow: hidden; }
+  .float-thumbs .get-it-inner {
+    float: left; }
+  .float-thumbs br {
+    display: none; }
+  .float-thumbs p {
+    display: inline; }
+
 .email-banner {
   margin-top: 25px;
   color: #fff;
