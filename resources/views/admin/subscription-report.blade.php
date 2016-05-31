@@ -30,9 +30,7 @@
                                 <i class="fa fa-shopping-cart"></i>Add / Update Product
                             </div>
                             <div class="actions btn-set">
-                                <button data-ng-click="" class="btn btn-success">
-                                    <i class="fa fa-check"></i> Save
-                                </button>
+                                <!-- button -->
 
                             </div>
                         </div>
