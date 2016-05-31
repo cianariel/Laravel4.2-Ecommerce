@@ -50,10 +50,9 @@ class Subscriber extends Model
      */
     public function subscribeUser($data)
     {
-        $existingEmail = Subscriber::where('email',$data['Email']);
+        $existingEmail = Subscriber::where('email', $data['Email']);
 
-        if($existingEmail->count() == 0)
-        {
+        if ($existingEmail->count() == 0) {
             $subscriber = new Subscriber();
             $subscriber->email = $data['Email'];
             $subscriber->source = empty($data['Source']) ? '' : $data['Source'];
@@ -63,7 +62,7 @@ class Subscriber extends Model
             $subs = $subscriber->save();
 
             return $subs;
-        }else{
+        } else {
             return $existingEmail->first();
         }
     }
@@ -89,14 +88,25 @@ class Subscriber extends Model
         return $subscriberList;
     }
 
-    public function totalSubscriberBySource($source)
+    public function totalSubscriberBySource($data)
     {
-        $subscriberList['result'] = Subscriber::groupBy('email')->havi
-            ->orderBy('created_at', 'desc')
-            ->get();
 
+        if (empty($data['Source'])) {
+            $query = new Subscriber();
+        } else {
+            $query = new Subscriber();
+            $query = $query->where('source', $data['Source']);
+        }
+
+        $subscriberCount = $query->groupBy('email')
+                                 ->orderBy('created_at', 'desc')
+                                 ->get()
+                                 ->count();
+        // dd($subscriberList);
+        return $subscriberCount;
 
     }
+
 
     public function allSubscribers()
     {

@@ -419,6 +419,18 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
             }
         };
 
+        $scope.loadSubscriptionReport = function(){
+            $http({
+                url: '/api/user/subscribed-registered-report',
+                method: "GET",
+
+            }).success(function (data) {
+                $scope.reportData = data.data;
+                console.log($scope.reportData);
+
+            });
+        };
+
         $scope.getUserInfoById = function (id) {
             $http({
                 url: '/api/user/get-user/' + id,

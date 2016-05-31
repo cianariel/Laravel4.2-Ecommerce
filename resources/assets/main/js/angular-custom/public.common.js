@@ -1058,7 +1058,7 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                 }
 
                 /* if(data.status_code == 200)
-                 window.location = $scope.logingRedirectLocation;
+                 window.location = $scope.loginRedirectLocation;
                  */
             });
 
