@@ -4801,6 +4801,19 @@ body.single{
 
 }
 
+.float-thumbs{
+overflow:hidden;
+  .get-it-inner{
+    float:left;
+  }
+  br{
+    display:none;
+  }
+  p{
+    display:inline;
+  }
+}
+
 .email-banner{
   margin-top: 25px;
   color: #fff;
