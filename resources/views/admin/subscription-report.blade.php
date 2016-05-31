@@ -160,7 +160,7 @@
                                                 <div class="widget-thumb-body">
                                                     <span class="widget-thumb-subtitle">Total</span>
                                                     <span class="widget-thumb-body-stat" data-counter="counterup"
-                                                          n++g-bind='reportData["register-total"]'>0</span>
+                                                          ng-bind='reportData["register-total"]'>0</span>
                                                 </div>
                                             </div>
                                         </div>
