@@ -116,6 +116,8 @@ Route::group(['prefix' => 'api'], function () {
     Route::get('user/get-user/{id?}', 'UserController@getUserById');
     // Route::any('user/user-add/{id?}','UserController@userList');
 
+    Route::any('user/subscribed-registered-report', 'UserController@getSubscribedUserAndRegistrationReport');
+
     /*
     * User Activity
     * */

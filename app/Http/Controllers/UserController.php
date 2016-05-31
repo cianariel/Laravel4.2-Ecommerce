@@ -386,4 +386,42 @@ class UserController extends ApiController
         return response()->stream($callback, 200, $headers);
 
     }
+
+    public function getSubscribersCountBySource($data)
+    {
+       // $data = \Input::all();
+
+        $result = $this->subscriber->totalSubscriberBySource($data);
+
+        return $result;
+    }
+
+    public function getRegisteredUserCountBySource($data)
+    {
+       // $data = \Input::all();
+
+        $result = $this->user->registerBySourceCount($data);
+
+        return $result;
+    }
+
+    public function getSubscribedUserAndRegistrationReport()
+    {
+        $data = \Input::all();
+
+        $result['subscribe-popup'] = $this->getSubscribersCountBySource(['Source'=>'popup']);
+        $result['subscribe-ideas'] = $this->getSubscribersCountBySource(['Source'=>'ideas']);
+        $result['subscribe-footer'] = $this->getSubscribersCountBySource(['Source'=>'footer']);
+
+        $result['subscribe-total'] = $this->getSubscribersCountBySource(['Source'=>'']);
+
+        $result['register-direct'] = $this->getRegisteredUserCountBySource(['Source'=>'registration']);
+        $result['register-facebook'] = $this->getRegisteredUserCountBySource(['Source'=>'facebook']);
+        $result['register-total'] = $this->getRegisteredUserCountBySource(['Source'=>'']);
+
+
+        return $this->setStatusCode(\Config::get("const.api-status.success"))
+            ->makeResponse($result);
+    }
+
 }

@@ -149,7 +149,7 @@ class User extends Model implements AuthenticatableContract,
                 if (!empty($data['UserFrom']))
                     $userProfile->user_from = $data['UserFrom'];
                 else
-                    $userProfile->user_from = "Registration";
+                    $userProfile->user_from = "registration";
 
                 $media = new Media();
 
@@ -177,25 +177,22 @@ class User extends Model implements AuthenticatableContract,
     // Generate permalink for empty permalink or return given permalink
     public function generatePermalink($data)
     {
-        if(empty($data['Permalink']))
-        {
-            $charList = ['@','.','_','-',' '];
-            $tmpPermalink = str_replace($charList,'-',$data['FullName']);
+        if (empty($data['Permalink'])) {
+            $charList = ['@', '.', '_', '-', ' '];
+            $tmpPermalink = str_replace($charList, '-', $data['FullName']);
 
-            while($this->checkPermalink($tmpPermalink) != false)
-            {
-                $tmpPermalink = $tmpPermalink.'-'.random_int(0,99);
+            while ($this->checkPermalink($tmpPermalink) != false) {
+                $tmpPermalink = $tmpPermalink . '-' . random_int(0, 99);
             }
 
-        }else{
+        } else {
             $tmpPermalink = $data['Permalink'];
 
-            $charList = ['@','.','_','-',' '];
-            $tmpPermalink = str_replace($charList,'-',$tmpPermalink);
+            $charList = ['@', '.', '_', '-', ' '];
+            $tmpPermalink = str_replace($charList, '-', $tmpPermalink);
 
-            while($this->checkPermalink($tmpPermalink) != false)
-            {
-                $tmpPermalink = $tmpPermalink.'-'.random_int(0,99);
+            while ($this->checkPermalink($tmpPermalink) != false) {
+                $tmpPermalink = $tmpPermalink . '-' . random_int(0, 99);
             }
         }
 
@@ -316,7 +313,7 @@ class User extends Model implements AuthenticatableContract,
 
                 $user['Picture'] = $userData->avatar_original;
 
-                $user['UserFrom'] = 'Facebook';
+                $user['UserFrom'] = 'facebook';
 
                 $this->SaveUserInformation($user);
 
@@ -560,6 +557,20 @@ class User extends Model implements AuthenticatableContract,
         $notice = Notification::where('to_id', $info['UserId'])
                               ->where('url', $info['Permalink'])
                               ->update(['read' => 1]);
+    }
+
+    public function registerBySourceCount($data)
+    {
+        if (empty($data['Source'])) {
+            $query = new UserProfile();
+        } else {
+            $query = new UserProfile();
+            $query = $query->where('user_from', $data['Source']);
+        }
+
+        $result = $query->get()->count();
+
+        return $result;
     }
 
 
