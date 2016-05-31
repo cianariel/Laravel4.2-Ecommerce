@@ -58,13 +58,13 @@
                                     <div class="col-md-3" ng-init="loadSubscriptionReport()">
                                         <!-- BEGIN WIDGET THUMB -->
                                         <div class="widget-thumb widget-bg-color-white text-uppercase margin-bottom-20 bordered">
-                                            <h4 class="widget-thumb-heading">Total Subscribed User</h4>
+                                            <h4 class="widget-thumb-heading">Subscribed User Info</h4>
                                             <div class="widget-thumb-wrap">
                                                 <i class="widget-thumb-icon bg-green icon-bulb"></i>
                                                 <div class="widget-thumb-body">
-                                                    <span class="widget-thumb-subtitle">USD</span>
+                                                    <span class="widget-thumb-subtitle">Pop Up</span>
                                                     <span class="widget-thumb-body-stat" data-counter="counterup"
-                                                          data-value="7,644">7,644</span>
+                                                          ng-bind='reportData["subscribe-popup"]'>0</span>
                                                 </div>
                                             </div>
                                         </div>
@@ -74,13 +74,13 @@
                                     <div class="col-md-3">
                                         <!-- BEGIN WIDGET THUMB -->
                                         <div class="widget-thumb widget-bg-color-white text-uppercase margin-bottom-20 bordered">
-                                            <h4 class="widget-thumb-heading">Total Subscribed User</h4>
+                                            <h4 class="widget-thumb-heading">Subscribed User Info</h4>
                                             <div class="widget-thumb-wrap">
                                                 <i class="widget-thumb-icon bg-green icon-bulb"></i>
                                                 <div class="widget-thumb-body">
-                                                    <span class="widget-thumb-subtitle">USD</span>
+                                                    <span class="widget-thumb-subtitle">Ideas</span>
                                                     <span class="widget-thumb-body-stat" data-counter="counterup"
-                                                          data-value="7,644">7,644</span>
+                                                          ng-bind='reportData["subscribe-ideas"]'>0</span>
                                                 </div>
                                             </div>
                                         </div>
@@ -90,13 +90,13 @@
                                     <div class="col-md-3">
                                         <!-- BEGIN WIDGET THUMB -->
                                         <div class="widget-thumb widget-bg-color-white text-uppercase margin-bottom-20 bordered">
-                                            <h4 class="widget-thumb-heading">Total Subscribed User</h4>
+                                            <h4 class="widget-thumb-heading">Subscribed User Info</h4>
                                             <div class="widget-thumb-wrap">
                                                 <i class="widget-thumb-icon bg-green icon-bulb"></i>
                                                 <div class="widget-thumb-body">
-                                                    <span class="widget-thumb-subtitle">USD</span>
+                                                    <span class="widget-thumb-subtitle">Footer</span>
                                                     <span class="widget-thumb-body-stat" data-counter="counterup"
-                                                          data-value="7,644">7,644</span>
+                                                          ng-bind='reportData["subscribe-footer"]'>0</span>
                                                 </div>
                                             </div>
                                         </div>
@@ -106,13 +106,13 @@
                                     <div class="col-md-3">
                                         <!-- BEGIN WIDGET THUMB -->
                                         <div class="widget-thumb widget-bg-color-white text-uppercase margin-bottom-20 bordered">
-                                            <h4 class="widget-thumb-heading">Total Subscribed User</h4>
+                                            <h4 class="widget-thumb-heading">Subscribed User Info</h4>
                                             <div class="widget-thumb-wrap">
                                                 <i class="widget-thumb-icon bg-green icon-bulb"></i>
                                                 <div class="widget-thumb-body">
-                                                    <span class="widget-thumb-subtitle">USD</span>
+                                                    <span class="widget-thumb-subtitle">Total</span>
                                                     <span class="widget-thumb-body-stat" data-counter="counterup"
-                                                          data-value="7,644">7,644</span>
+                                                          ng-bind='reportData["subscribe-total"]'>0</span>
                                                 </div>
                                             </div>
                                         </div>
@@ -124,13 +124,13 @@
                                     <div class="col-md-3">
                                         <!-- BEGIN WIDGET THUMB -->
                                         <div class="widget-thumb widget-bg-color-white text-uppercase margin-bottom-20 bordered">
-                                            <h4 class="widget-thumb-heading">Total Subscribed User</h4>
+                                            <h4 class="widget-thumb-heading">Registered User Info</h4>
                                             <div class="widget-thumb-wrap">
-                                                <i class="widget-thumb-icon bg-green icon-bulb"></i>
+                                                <i class="widget-thumb-icon bg-blue-steel icon-badge"></i>
                                                 <div class="widget-thumb-body">
-                                                    <span class="widget-thumb-subtitle">USD</span>
+                                                    <span class="widget-thumb-subtitle">Normal</span>
                                                     <span class="widget-thumb-body-stat" data-counter="counterup"
-                                                          data-value="7,644">7,644</span>
+                                                          ng-bind='reportData["register-direct"]'>0</span>
                                                 </div>
                                             </div>
                                         </div>
@@ -140,13 +140,13 @@
                                     <div class="col-md-3">
                                         <!-- BEGIN WIDGET THUMB -->
                                         <div class="widget-thumb widget-bg-color-white text-uppercase margin-bottom-20 bordered">
-                                            <h4 class="widget-thumb-heading">Total Subscribed User</h4>
+                                            <h4 class="widget-thumb-heading">Registered User Info</h4>
                                             <div class="widget-thumb-wrap">
-                                                <i class="widget-thumb-icon bg-green icon-bulb"></i>
+                                                <i class="widget-thumb-icon bg-blue-steel icon-badge"></i>
                                                 <div class="widget-thumb-body">
-                                                    <span class="widget-thumb-subtitle">USD</span>
+                                                    <span class="widget-thumb-subtitle">facebook</span>
                                                     <span class="widget-thumb-body-stat" data-counter="counterup"
-                                                          data-value="7,644">7,644</span>
+                                                          ng-bind='reportData["register-facebook"]'>0</span>
                                                 </div>
                                             </div>
                                         </div>
@@ -156,35 +156,20 @@
                                     <div class="col-md-3">
                                         <!-- BEGIN WIDGET THUMB -->
                                         <div class="widget-thumb widget-bg-color-white text-uppercase margin-bottom-20 bordered">
-                                            <h4 class="widget-thumb-heading">Total Subscribed User</h4>
+                                            <h4 class="widget-thumb-heading">Registered User Info</h4>
                                             <div class="widget-thumb-wrap">
-                                                <i class="widget-thumb-icon bg-green icon-bulb"></i>
+                                                <i class="widget-thumb-icon bg-blue-steel icon-badge"></i>
                                                 <div class="widget-thumb-body">
-                                                    <span class="widget-thumb-subtitle">USD</span>
+                                                    <span class="widget-thumb-subtitle">Total</span>
                                                     <span class="widget-thumb-body-stat" data-counter="counterup"
-                                                          data-value="7,644">7,644</span>
+                                                          n++g-bind='reportData["register-total"]'>0</span>
                                                 </div>
                                             </div>
                                         </div>
 
                                         <!-- END WIDGET THUMB -->
                                     </div>
-                                    <div class="col-md-3">
-                                        <!-- BEGIN WIDGET THUMB -->
-                                        <div class="widget-thumb widget-bg-color-white text-uppercase margin-bottom-20 bordered">
-                                            <h4 class="widget-thumb-heading">Total Subscribed User</h4>
-                                            <div class="widget-thumb-wrap">
-                                                <i class="widget-thumb-icon bg-green icon-bulb"></i>
-                                                <div class="widget-thumb-body">
-                                                    <span class="widget-thumb-subtitle">USD</span>
-                                                    <span class="widget-thumb-body-stat" data-counter="counterup"
-                                                          data-value="7,644">7,644</span>
-                                                </div>
-                                            </div>
-                                        </div>
 
-                                        <!-- END WIDGET THUMB -->
-                                    </div>
                                 </div>
                             </div>
                         </div>
