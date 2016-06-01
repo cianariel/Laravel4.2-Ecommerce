@@ -78,6 +78,10 @@ class PageHelper {
     public static function getCurrentGiveaway() {
         $giveaway = Giveaway::whereDate('ends', '>=', date('Y-m-d'))->whereDate('goes_live', '<=', date('Y-m-d'))->first();
 
+        if(!$giveaway){
+            $giveaway = (object)[];
+        }
+
         if(!isset($_COOKIE['giveaway_pop_shown'])) {
             setcookie('giveaway_pop_shown', true, (time()+(60*60*24)), '/');
             $giveaway->showPopup = true;

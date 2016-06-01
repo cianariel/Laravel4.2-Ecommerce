@@ -4802,9 +4802,16 @@ body.single{
 }
 
 .float-thumbs{
-overflow:hidden;
-  .get-it-inner{
+    overflow:hidden;
+    max-width: 760px;
+    margin: 0 auto;
+
+   .get-it-inner{
     float:left;
+
+     @media (max-width: 420px){
+      float:none;
+    }
   }
   br{
     display:none;
@@ -4812,6 +4819,8 @@ overflow:hidden;
   p{
     display:inline;
   }
+
+
 }
 
 .email-banner{
@@ -5049,6 +5058,7 @@ overflow:hidden;
       border: 1px solid $iridium;
       text-align: center;
       border-radius: 3px;
+      margin-bottom:20px;
       &:hover{
           color: #fff;
           background-color: $iridium;
