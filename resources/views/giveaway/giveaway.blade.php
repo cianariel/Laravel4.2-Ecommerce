@@ -102,12 +102,19 @@
                             </div>
                         @else
                             <div class="col-lg-6">
-                                <h5>Sign in to <span>WIN!</span></h5>
-                                <div data-switch=".giveaway-signup" data-hide=".giveaway-login"
-                                     class="giveaway-login line-wrap">Not yet a member? Create an account!
-                                </div>
+                                <h5 class="giveaway-signup">Join Ideaing for Free</h5>
+                                <ul class="giveaway-signup pointed">
+                                        <li>Enter to win Free Smart Home Devices</li>
+                                        <li>Get exclusive coupons & deals on Smart Home devices</li>
+                                        <li>Unlock additional features to transform your ordinary home to a smart home</li>
+                                </ul>
                                 <div data-switch=".giveaway-login" data-hide=".giveaway-signup"
-                                     class="giveaway-signup line-wrap hidden-soft">Already a member? Sign in!
+                                     class="giveaway-signup line-wrap">Already a member? Sign in!
+                                </div>
+
+                                <h5 class="giveaway-login hidden-soft">Sign in to <span>WIN!</span></h5>
+                                <div data-switch=".giveaway-signup" data-hide=".giveaway-login"
+                                     class="giveaway-login line-wrap hidden-soft">Not yet a member? Create an account!
                                 </div>
                             </div>
 
