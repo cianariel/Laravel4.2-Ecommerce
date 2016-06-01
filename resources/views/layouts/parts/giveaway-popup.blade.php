@@ -7,7 +7,7 @@
             $theGiveAway = json_decode($json);
         }
     }
-   if(@$theGiveAway->showPopup){
+   if(@$theGiveAway->giveaway_permalink && @$theGiveAway->showPopup){
 ?>
 
 
@@ -17,8 +17,6 @@
     </span>
 
     <h4><b class="white">Ideaing Giveaway</b></h4>
-
-
 
     <a href="/giveaway/<?php echo $theGiveAway->giveaway_permalink ?>">
         <img src="<?php echo $theGiveAway->giveaway_image ?>" title="<?php echo $theGiveAway->giveaway_image_title ?>" class="col-xs-2 center-block img-responsive" alt="<?php echo $theGiveAway->giveaway_image_alt ?>" />
