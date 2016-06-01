@@ -11106,6 +11106,8 @@ body.giveaway-page .giveaway-content {
 body.giveaway-page ul.pointed {
   padding-bottom: 20px;
   text-align: left; }
+body.giveaway-page .login-switcher {
+  margin-bottom: 10px; }
 body.giveaway-page .giveaway-toc {
   padding-top: 10px;
   border: 1px solid #eee; }
