@@ -109,12 +109,12 @@
                                         <li>Unlock additional features to transform your ordinary home to a smart home</li>
                                 </ul>
                                 <div data-switch=".giveaway-login" data-hide=".giveaway-signup"
-                                     class="giveaway-signup line-wrap">Already a member? Sign in!
+                                     class="giveaway-signup line-wrap login-switcher">Already a member? Sign in!
                                 </div>
 
                                 <h5 class="giveaway-login hidden-soft">Sign in to <span>WIN!</span></h5>
                                 <div data-switch=".giveaway-signup" data-hide=".giveaway-login"
-                                     class="giveaway-login line-wrap hidden-soft">Not yet a member? Create an account!
+                                     class="giveaway-login line-wrap hidden-soft  login-switcher">Not yet a member? Create an account!
                                 </div>
                             </div>
 
@@ -150,7 +150,7 @@
                             <div class="col-lg-6 col-xs-12 qiuck-signup pull-right giveaway-signup">
                                 <form>
                                     <button ng-click="giveawayLoginFB()" class="btn btn-info col-xs-12" href="#"><i class="m-icon m-icon--facebook-id"></i>Sign up with Facebook</button>
-                                    <div class="line-wrap modal-minor-text">or</div>
+                                    <div class="line-wrap modal-minor-text login-switcher">or</div>
 
                                     <input class="form-control" ng-model="FullName" type="text" placeholder="Name">
                                     <input class="form-control" ng-model="Email" type="text" placeholder="Email">
