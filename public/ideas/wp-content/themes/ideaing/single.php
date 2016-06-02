@@ -191,6 +191,7 @@
         <?php loadLaravelView('share-bar'); ?>
     </div>
 
+    @if(!isset($userData['email']) || empty($userData['email']))
     <section class="email-banner">
             <div class="col-lg-5 col-md-7 col-sm-8 center-block">
                             <h4 class="blue">Subscribe to the world’s finest Smart Home & interior design Ideas, Tips and Freebies</h4>
@@ -208,6 +209,7 @@
               <!--  <div class="img-holder head-image-holder"><img src="/assets/images/emailpopupimg.png"></div> -->
         </div>
     </section>
+    @endif
 
     <section class="author-description">
         <div class="container">

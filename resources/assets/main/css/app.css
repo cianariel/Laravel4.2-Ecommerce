@@ -4535,6 +4535,14 @@ a:hover, a:focus {
   /* Chrome, Safari, Opera */
   transform: rotate(45deg); }
 
+ul.pointed li:before {
+  content: "• ";
+  position: relative;
+  top: 3px;
+  font-size: 2rem;
+  color: #FF0042;
+  /* or whatever color you prefer */ }
+
 .overhide {
   overflow: hidden; }
 
@@ -7780,6 +7788,37 @@ body.single .related-items {
     .get-it-inner > a:hover::after {
       background: #cc0035; }
 
+.float-thumbs {
+  overflow: hidden;
+  max-width: 760px;
+  margin: 0 auto; }
+  .float-thumbs .get-it-inner {
+    float: left;
+    position: relative; }
+  .float-thumbs .thumb-box {
+    position: relative;
+    float: left;
+    display: inline-block; }
+    .float-thumbs .thumb-box strong {
+      position: absolute;
+      bottom: 3px;
+      left: 10px;
+      font-size: 1.7rem;
+      font-weight: normal;
+      width: 100%;
+      text-align: center; }
+    @media (max-width: 420px) {
+      .float-thumbs .thumb-box {
+        float: none;
+        margin-left: 20%;
+        overflow: hidden; }
+        .float-thumbs .thumb-box .thumb-box {
+          width: 100%; } }
+  .float-thumbs br {
+    display: none; }
+  .float-thumbs p {
+    display: inline; }
+
 .email-banner {
   margin-top: 25px;
   color: #fff;
@@ -7917,7 +7956,8 @@ body.single .related-items {
   font-weight: bold;
   border: 1px solid #FF0042;
   text-align: center;
-  border-radius: 3px; }
+  border-radius: 3px;
+  margin-bottom: 20px; }
   .comments .signup-to-comment:hover {
     color: #fff;
     background-color: #FF0042; }
@@ -11063,6 +11103,11 @@ body.giveaway-page .giveaway-content {
   padding-top: 30px; }
   body.giveaway-page .giveaway-content h2 {
     font-size: 2.5rem; }
+body.giveaway-page ul.pointed {
+  padding-bottom: 20px;
+  text-align: left; }
+body.giveaway-page .login-switcher {
+  margin-bottom: 10px; }
 body.giveaway-page .giveaway-toc {
   padding-top: 10px;
   border: 1px solid #eee; }

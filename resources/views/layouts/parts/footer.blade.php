@@ -23,7 +23,7 @@
                     }
                 }
 
-            if($theGiveAway){ ?>
+            if($theGiveAway && @$theGiveAway->giveaway_permalink){ ?>
                 <a href="/giveaway/<?php echo $theGiveAway->giveaway_permalink ?>">
                     <img src="<?php echo $theGiveAway->giveaway_image ?>" title="<?php echo $theGiveAway->giveaway_image_title ?>" alt="<?php echo $theGiveAway->giveaway_image_alt ?>" />
                 </a>
