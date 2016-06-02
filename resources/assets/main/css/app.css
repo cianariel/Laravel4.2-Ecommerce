@@ -6963,19 +6963,19 @@ body.product-details .article-content {
     /*        background: white none repeat scroll 0% 0%;*/
     right: 0px;
     right: -79px;
-    top: -7px;
+    top: -17px;
     z-index: 58; }
   .story-header .lamp-logo {
     float: left;
     min-height: 50px;
     background-size: initial;
-    margin-top: -14px; }
+    margin-top: -6px; }
   .story-header h1,
   .story-header h2 {
     /*    width: 100%;*/
     padding-left: 10px;
     float: left;
-    margin-top: 5px;
+    margin-top: 11px;
     font-size: 13px;
     text-align: center; }
   .story-header .title-holder {
