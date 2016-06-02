@@ -7799,14 +7799,19 @@ body.single .related-items {
     position: relative;
     float: left;
     display: inline-block; }
+    .float-thumbs .thumb-box a {
+      color: #fff; }
     .float-thumbs .thumb-box strong {
+      width: 100%;
       position: absolute;
       bottom: 3px;
-      left: 10px;
+      left: 0;
+      padding: 5px;
       font-size: 1.7rem;
       font-weight: normal;
-      width: 100%;
-      text-align: center; }
+      text-align: center;
+      background: rgba(255, 0, 66, 0.7);
+      color: #fff; }
     @media (max-width: 420px) {
       .float-thumbs .thumb-box {
         float: none;
