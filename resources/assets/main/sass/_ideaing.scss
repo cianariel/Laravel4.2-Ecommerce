@@ -4826,15 +4826,22 @@ body.single{
       float:left;
       display:inline-block;
 
+     a{
+       color:#fff;
+     }
+
     strong{
     //  display:none;
+      width:100%;
       position:absolute;
       bottom:3px;
-      left:10px;
+      left:0;
+      padding: 5px;
       font-size: 1.7rem;
       font-weight: normal;
-      width:100%;
       text-align:center;
+      background:rgba($iridium, .7);
+      color:#fff;
     }
 
     &:hover{
