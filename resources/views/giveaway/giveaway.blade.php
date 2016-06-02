@@ -4,6 +4,7 @@
 
 @section('content')
     <div id="publicApp" ng-app="publicApp" ng-controller="publicController" ng-cloak>
+
         <nav class="mid-nav">
             <div class="container full-sm fixed-sm">
                 <ul class="wrap col-lg-9">
@@ -15,7 +16,15 @@
                     </li>
                 </ul>
             </div>
+            @if (Session::has('giveaway_flash'))
+                <div>
+                    <div class="alert alert-danger">
+                        <strong>Warning!!</strong> {{ Session::get('giveaway_flash') }}
+                    </div>
+                </div>
+            @endif
         </nav>
+
         <section id="hero" class="landing-hero">
             <div class="rsContent">
                 <div id="hero-bg" style="background-image: url({{$giveaway->giveaway_image}}); "></div>
@@ -104,9 +113,9 @@
                             <div class="col-lg-6">
                                 <h5 class="giveaway-signup">Join Ideaing for Free</h5>
                                 <ul class="giveaway-signup pointed">
-                                        <li>Enter to win Free Smart Home Devices</li>
-                                        <li>Get exclusive coupons & deals on Smart Home devices</li>
-                                        <li>Unlock additional features to transform your ordinary home to a smart home</li>
+                                    <li>Enter to win Free Smart Home Devices</li>
+                                    <li>Get exclusive coupons & deals on Smart Home devices</li>
+                                    <li>Unlock additional features to transform your ordinary home to a smart home</li>
                                 </ul>
                                 <div data-switch=".giveaway-login" data-hide=".giveaway-signup"
                                      class="giveaway-signup line-wrap login-switcher">Already a member? Sign in!
@@ -114,7 +123,8 @@
 
                                 <h5 class="giveaway-login hidden-soft">Sign in to <span>WIN!</span></h5>
                                 <div data-switch=".giveaway-signup" data-hide=".giveaway-login"
-                                     class="giveaway-login line-wrap hidden-soft  login-switcher">Not yet a member? Create an account!
+                                     class="giveaway-login line-wrap hidden-soft  login-switcher">Not yet a member?
+                                    Create an account!
                                 </div>
                             </div>
 
@@ -149,7 +159,9 @@
 
                             <div class="col-lg-6 col-xs-12 qiuck-signup pull-right giveaway-signup">
                                 <form>
-                                    <button ng-click="giveawayLoginFB()" class="btn btn-info col-xs-12" href="#"><i class="m-icon m-icon--facebook-id"></i>Sign up with Facebook</button>
+                                    <button ng-click="giveawayLoginFB()" class="btn btn-info col-xs-12" href="#"><i
+                                                class="m-icon m-icon--facebook-id"></i>Sign up with Facebook
+                                    </button>
                                     <div class="line-wrap modal-minor-text login-switcher">or</div>
 
                                     <input class="form-control" ng-model="FullName" type="text" placeholder="Name">
@@ -159,7 +171,8 @@
                                     <input class="form-control" ng-model="PasswordConf" type="password"
                                            placeholder="Retype Password">
 
-                                    <a class="btn btn-success col-xs-12" ng-click="registerUser('giveaway')" href="#">Sign up</a>
+                                    <a class="btn btn-success col-xs-12" ng-click="registerUser('giveaway')" href="#">Sign
+                                        up</a>
 
                                 </form>
                             </div>

@@ -934,6 +934,8 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                 source = 'ideas';
             else if (source == 'footer')
                 source = 'footer';
+            else if (source == 'home')
+                source = 'home';
             else
                 source = '';
 
@@ -961,7 +963,7 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
 
                 } else {
                     $scope.responseMessage = "Sorry, this email already exists";
-                    console.log($scope.responseMessage);
+                   // console.log($scope.responseMessage);
                 }
 
             });
@@ -1000,6 +1002,8 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                 sourceSegment = 'popup';
             else if (valSeg[3] == 'ideas')
                 sourceSegment = 'ideas';
+            else if (valSeg[3] == 'home')
+                sourceSegment = 'home';
 
           //  console.log(valSeg);
           //  return;
