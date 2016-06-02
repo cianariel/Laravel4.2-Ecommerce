@@ -29,10 +29,10 @@
                         {{--<input class="form-control hide" type="text" placeholder="First name" name="name">--}}
                         <span class="email-input-holder ">
                                                 <i class="m-icon m-icon--email-form-id"></i>
-                                                <input class="form-control" ng-model="SubscriberEmail" type="text" placeholder="Email" name="email">
+                                                <input class="form-control" ng-model="data.SubscriberEmail" type="text" placeholder="Email" name="email">
                                             </span>
 
-                        <button ng-click="subscribe('')" class="btn btn-success col-xs-12"  href="#">Sign up</button>
+                        <button ng-click="subscribe(data,'home')" class="btn btn-success col-xs-12"  href="#">Sign up</button>
                         <div class="line-wrap">or</div>
                         <button ng-click="registerWithFB()" class="btn btn-info col-xs-12" href="#"><i class="m-icon m-icon--facebook-id"></i>Sign up with Facebook</button>
                     </form>

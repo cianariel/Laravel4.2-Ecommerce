@@ -52,8 +52,24 @@
                                 </div>
                             </div>
                             <div class="form-body">
-                                <div class="row widget-row">
-                                    <div class="col-md-3" ng-init="loadSubscriptionReport()">
+                                <div class="row widget-row" ng-init="loadSubscriptionReport()">
+                                    <div class="col-md-3">
+                                        <!-- BEGIN WIDGET THUMB -->
+                                        <div class="widget-thumb widget-bg-color-white text-uppercase margin-bottom-20 bordered">
+                                            <h4 class="widget-thumb-heading">Subscribed User Info</h4>
+                                            <div class="widget-thumb-wrap">
+                                                <i class="widget-thumb-icon bg-green icon-bulb"></i>
+                                                <div class="widget-thumb-body">
+                                                    <span class="widget-thumb-subtitle">Home</span>
+                                                    <span class="widget-thumb-body-stat" data-counter="counterup"
+                                                          ng-bind='reportData["subscribe-home"]'>0</span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- END WIDGET THUMB -->
+                                    </div>
+                                    <div class="col-md-3">
                                         <!-- BEGIN WIDGET THUMB -->
                                         <div class="widget-thumb widget-bg-color-white text-uppercase margin-bottom-20 bordered">
                                             <h4 class="widget-thumb-heading">Subscribed User Info</h4>
