@@ -426,7 +426,7 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
 
             }).success(function (data) {
                 $scope.reportData = data.data;
-                console.log($scope.reportData);
+             //   console.log($scope.reportData);
 
             });
         };
