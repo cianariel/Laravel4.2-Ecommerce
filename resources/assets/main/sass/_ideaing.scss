@@ -86,6 +86,16 @@ a:hover, a:focus{
   transform: rotate(45deg);
 }
 
+ul.pointed{
+  li:before {
+    content: "• ";
+    position: relative;
+    top:3px;
+    font-size: 2rem;
+    color: $iridium; /* or whatever color you prefer */
+  }
+}
+
 @mixin pseudo-full-wide($bgColor) {
   position: relative; /* for the child pseudo-elements */
   /* negative offset = section padding */
@@ -4801,6 +4811,58 @@ body.single{
 
 }
 
+.float-thumbs{
+    overflow:hidden;
+    max-width: 760px;
+    margin: 0 auto;
+
+    .get-it-inner{
+      float:left;
+      position:relative;
+    }
+
+   .thumb-box{
+    position:relative;
+      float:left;
+      display:inline-block;
+
+    strong{
+    //  display:none;
+      position:absolute;
+      bottom:3px;
+      left:10px;
+      font-size: 1.7rem;
+      font-weight: normal;
+      width:100%;
+      text-align:center;
+    }
+
+    &:hover{
+      strong{
+     //   display:inline;
+      }
+    }
+
+     @media (max-width: 420px){
+      float:none;
+          margin-left: 20%;
+          overflow:hidden;
+
+      .thumb-box{
+        width:100%;
+      }
+    }
+  }
+  br{
+    display:none;
+  }
+  p{
+    display:inline;
+  }
+
+
+}
+
 .email-banner{
   margin-top: 25px;
   color: #fff;
@@ -5036,6 +5098,7 @@ body.single{
       border: 1px solid $iridium;
       text-align: center;
       border-radius: 3px;
+      margin-bottom:20px;
       &:hover{
           color: #fff;
           background-color: $iridium;
@@ -9704,6 +9767,13 @@ body.giveaway-page{
     h2{
       font-size: 2.5rem;
     }
+  }
+  ul.pointed{
+    padding-bottom: 20px;
+    text-align:left;
+  }
+  .login-switcher{
+    margin-bottom:10px;
   }
   .giveaway-toc{
     padding-top: 10px;
