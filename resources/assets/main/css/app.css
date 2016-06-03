@@ -7794,6 +7794,8 @@ body.single .related-items {
   text-align: center; }
   .float-thumbs .inner {
     display: inline-block; }
+    .float-thumbs .inner .thumb-box {
+      float: left; }
   .float-thumbs .get-it-inner {
     float: left;
     position: relative; }
