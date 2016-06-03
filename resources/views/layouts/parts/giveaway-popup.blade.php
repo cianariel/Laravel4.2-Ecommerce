@@ -7,7 +7,7 @@
             $theGiveAway = json_decode($json);
         }
     }
-   if(@$theGiveAway->giveaway_permalink && @$theGiveAway->showPopup){
+   if(@$theGiveAway->giveaway_permalink && $theGiveAway->showPopup){
 ?>
 
 
