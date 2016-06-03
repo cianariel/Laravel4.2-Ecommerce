@@ -7799,7 +7799,6 @@ body.single .related-items {
     position: relative; }
   .float-thumbs .thumb-box {
     position: relative;
-    float: left;
     display: inline-block; }
     .float-thumbs .thumb-box a {
       color: #fff; }
