@@ -116,6 +116,10 @@ if($byTags = $_REQUEST['tag']){
     $args['tag__not_in'] = [29];
 }
 
+ if(isset($_REQUEST['author_name'])){
+    $args['author_name'] = $_REQUEST['author_name'];
+}
+
 
 //echo $args['tag_slug__in']; die();
 
