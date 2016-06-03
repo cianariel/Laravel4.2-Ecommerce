@@ -7790,8 +7790,10 @@ body.single .related-items {
 
 .float-thumbs {
   overflow: hidden;
-  max-width: 760px;
-  margin: 0 auto; }
+  margin: 0 auto;
+  text-align: center; }
+  .float-thumbs .inner {
+    display: inline-block; }
   .float-thumbs .get-it-inner {
     float: left;
     position: relative; }
@@ -7807,18 +7809,10 @@ body.single .related-items {
       bottom: 3px;
       left: 0;
       padding: 5px;
-      font-size: 1.7rem;
       font-weight: normal;
       text-align: center;
       background: rgba(255, 0, 66, 0.7);
       color: #fff; }
-    @media (max-width: 420px) {
-      .float-thumbs .thumb-box {
-        float: none;
-        margin-left: 20%;
-        overflow: hidden; }
-        .float-thumbs .thumb-box .thumb-box {
-          width: 100%; } }
   .float-thumbs br {
     display: none; }
   .float-thumbs p {
@@ -7860,7 +7854,7 @@ body.single .related-items {
   font-family: montserratlight;
   color: black;
   line-height: 1.6;
-  font-size: 1.5rem;
+  font-size: 1.6rem;
   text-align: left; }
 .idea-stories .article-content img {
   max-width: 100%;

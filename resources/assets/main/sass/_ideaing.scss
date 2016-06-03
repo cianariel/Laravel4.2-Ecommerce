@@ -4813,8 +4813,13 @@ body.single{
 
 .float-thumbs{
     overflow:hidden;
-    max-width: 760px;
+  //  max-width: 760px;
     margin: 0 auto;
+    text-align:center;
+
+    .inner{
+    	display:inline-block;
+    }
 
     .get-it-inner{
       float:left;
@@ -4837,7 +4842,7 @@ body.single{
       bottom:3px;
       left:0;
       padding: 5px;
-      font-size: 1.7rem;
+     // font-size: 1.7rem;
       font-weight: normal;
       text-align:center;
       background:rgba($iridium, .7);
@@ -4851,13 +4856,7 @@ body.single{
     }
 
      @media (max-width: 420px){
-      float:none;
-          margin-left: 20%;
-          overflow:hidden;
-
-      .thumb-box{
-        width:100%;
-      }
+    
     }
   }
   br{
@@ -4940,7 +4939,7 @@ body.single{
       font-family: montserratlight;
       color: darken($light-grey, 100%);
       line-height: 1.6;
-      font-size: 1.5rem;
+      font-size: 1.6rem;
       text-align: left;
     }
 
