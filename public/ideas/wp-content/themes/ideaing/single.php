@@ -191,25 +191,25 @@
         <?php loadLaravelView('share-bar'); ?>
     </div>
 
-    @if(!isset($userData['email']) || empty($userData['email']))
-    <section class="email-banner">
-            <div class="col-lg-5 col-md-7 col-sm-8 center-block">
-                            <h4 class="blue">Subscribe to the world’s finest Smart Home & interior design Ideas, Tips and Freebies</h4>
-                        <p>Join and get exclusive coupons and giveaways on Smart Home devices</p>
-                        <div>
-<!--                            <h5>Enter your email</h5>-->
-                            <strong class="red"><span ng-bind="responseMessage"></span></strong>
-                        </div>
-                        <div class="col-xs-12 col-sm-9">
-                            <input class="form-control" ng-model="data.SubscriberEmail" placeholder="me@email.com" type="text">
-                        </div>
-                        <div class="col-xs-12 col-sm-3">
-                            <a class="btn btn-success form-control" ng-click="subscribe(data,'ideas')">SUBSCRIBE</a>
-                        </div>
-              <!--  <div class="img-holder head-image-holder"><img src="/assets/images/emailpopupimg.png"></div> -->
-        </div>
-    </section>
-    @endif
+        @if(!is_user_logged_in())
+        <section class="email-banner">
+                <div class="col-lg-5 col-md-7 col-sm-8 center-block">
+                                <h4 class="blue">Subscribe to the world’s finest Smart Home & interior design Ideas, Tips and Freebies</h4>
+                            <p>Join and get exclusive coupons and giveaways on Smart Home devices</p>
+                            <div>
+    <!--                            <h5>Enter your email</h5>-->
+                                <strong class="red"><?php echo '{{ responseMessage }}' ?></strong>
+                            </div>
+                            <div class="col-xs-12 col-sm-9">
+                                <input class="form-control" ng-model="data.SubscriberEmail" placeholder="me@email.com" type="text">
+                            </div>
+                            <div class="col-xs-12 col-sm-3">
+                                <a class="btn btn-success form-control" ng-click="subscribe(data)">SUBSCRIBE</a>
+                            </div>
+                  <!--  <div class="img-holder head-image-holder"><img src="/assets/images/emailpopupimg.png"></div> -->
+            </div>
+        </section>
+    @endif 
 
     <section class="author-description">
         <div class="container">
@@ -394,10 +394,24 @@
             $('.article-content').find('img').each(function(){
                 if(!$(this).parents('.get-it-inner').length){
                     $(this).parent('a').attr('target', '_blank').wrap('<div class="get-it-inner"></div>');
-//                    $(this).parent('a[href*="amazon.com/"]').wrap('<div class="get-it-inner"></div>');
-
+                }
+                if($(this).parents('p').next('p').find('a.vendor-link').length){
+                    $(this).parents('p').each(function(){
+                        $(this).next('p').andSelf().wrapAll('<div class="thumb-box"></div>');
+                    });
+                }else if($(this).parents('p').find('a.vendor-link').length){
+                    $(this).parents('.get-it-inner').each(function(){
+                        $(this).parents('p').find('a.vendor-link').andSelf().wrapAll('<div class="thumb-box"></div>');
+                    });
                 }
             });
+
+            $('.thumb-box').each(function(){
+                if(!$(this).parents('.float-thumbs').length){
+                    $(this).next('.thumb-box').andSelf().wrapAll('<div class="float-thumbs"></div>');
+                }
+            });
+
         });
     </script>
 
