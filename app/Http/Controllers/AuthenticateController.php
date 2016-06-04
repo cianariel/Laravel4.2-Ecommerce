@@ -133,14 +133,21 @@ class AuthenticateController extends ApiController
     public function authenticate(Request $request)
     {
         $credentials = $request->only('Email', 'Password');
-        //$token = '';
 
         try {
 
             $authUser = $this->isValidUser($credentials);
+
             if ($authUser == false) {
-                return $this->setStatusCode(IlluminateResponse::HTTP_UNAUTHORIZED)
-                            ->makeResponseWithError('Invalid credentials.');
+
+                if ($this->subscriber->isASubscriber($credentials['Email']) == false) {
+                    return $this->setStatusCode(IlluminateResponse::HTTP_UNAUTHORIZED)
+                                ->makeResponseWithError('Invalid credentials.');
+                } else {
+                    return $this->setStatusCode(IlluminateResponse::HTTP_UNAUTHORIZED)
+                                ->makeResponseWithError('Email already exist, please Sign-up as a Registered User');
+                }
+
             } else {
                 $token = JWTAuth::fromUser($authUser);
             }
@@ -153,7 +160,6 @@ class AuthenticateController extends ApiController
             return $this->setStatusCode(IlluminateResponse::HTTP_INTERNAL_SERVER_ERROR)
                         ->makeResponseWithError('Token creation failed !');
 
-            // return response()->json(['error' => 'could_not_create_token'], 500);
         }
 
         // Check if the user is email verified or not
@@ -162,7 +168,6 @@ class AuthenticateController extends ApiController
             if ($user->status != 'Active') {
                 return $this->setStatusCode(IlluminateResponse::HTTP_UNAUTHORIZED)
                             ->makeResponseWithError('User status not active.');
-
             }
         } catch (\Exception $ex) {
             return $this->setStatusCode(IlluminateResponse::HTTP_INTERNAL_SERVER_ERROR)
@@ -311,7 +316,7 @@ class AuthenticateController extends ApiController
                      * After successfully register the user data send JSON response if email is available.
                      * */
 
-                   // $userData['UserFrom'] = empty($source) ? '' : $source;
+                    // $userData['UserFrom'] = empty($source) ? '' : $source;
                     if ($this->user->SaveUserInformation($userData)) {
                         // Assign role for the user
                         $this->user->assignRole($userData['Email'], array('user'));

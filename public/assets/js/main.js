@@ -5070,9 +5070,9 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                     RememberMe: $scope.rememberMe == true ? true : false
                 }
             }).success(function (data) {
-                //   console.log(data.data);
+                //  console.log(data.data);
                 if (source == 'giveaway') {
-                    console.log('redirecting to giveaway');
+                   // console.log('redirecting to giveaway');
                     window.location = '/giveaway/' + $window.giveawayLink;
                     return;
                 }
