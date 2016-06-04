@@ -962,8 +962,9 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                     window.location = '/signup/' + formData.SubscriberEmail + '/' + source;
 
                 } else {
-                    $scope.responseMessage = "Sorry, this email already exists";
+                    $scope.responseMessage = "This email already exists, redirecting for registration";
                    // console.log($scope.responseMessage);
+                    window.location = '/signup/' + formData.SubscriberEmail + '/' + source;
                 }
 
             });
