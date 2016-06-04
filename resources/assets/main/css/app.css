@@ -7465,6 +7465,10 @@ header.sub-head {
     text-align: center;
     font-size: 1.9rem; }
 
+#login-modal .m-icon.m-icon--email-form-id,
+#signup-modal .m-icon.m-icon--email-form-id {
+  margin-top: 3px; }
+
 .login-controls {
   max-width: 400px;
   margin: 0 auto;
@@ -7830,6 +7834,8 @@ body.single .related-items {
   color: #fff;
   margin-top: 20px;
   text-align: center; }
+  .email-banner .email-input-holder i {
+    margin-top: 5px; }
   .email-banner > div {
     padding: 30px 25px 50px;
     overflow: hidden;
