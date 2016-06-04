@@ -7378,6 +7378,18 @@ header.sub-head {
       background-size: 35px;
       padding-left: 40px; }
 
+.email-input-holder {
+  position: relative;
+  display: inline-block;
+  width: 100%; }
+  .email-input-holder .m-icon {
+    position: absolute;
+    z-index: 9;
+    left: 10px;
+    top: 7px; }
+  .email-input-holder input {
+    padding-left: 40px !important; }
+
 .hero-box {
   padding: 3.5% 5.5%;
   background-color: rgba(255, 255, 255, 0.85); }
@@ -7385,15 +7397,6 @@ header.sub-head {
     font-size: 1.4rem; }
     .hero-box h4 b {
       font-size: 1.9rem; }
-  .hero-box .email-input-holder {
-    position: relative;
-    display: inline-block;
-    width: 100%; }
-    .hero-box .email-input-holder .m-icon {
-      position: absolute;
-      z-index: 9;
-      left: 10px;
-      top: 7px; }
   .hero-box input[type="text"] {
     background: #F5FBFC;
     border: 1px solid #eee;
@@ -11101,8 +11104,10 @@ body.giveaway-page .hero-box {
   body.giveaway-page .hero-box .line-wrap {
     font-weight: bold;
     text-decoration: underline; }
-  body.giveaway-page .hero-box input[type=text], body.giveaway-page .hero-box input[name=email] {
-    padding-left: 15px; }
+  body.giveaway-page .hero-box .m-icon--email-form-id.black {
+    margin-top: 3px; }
+  body.giveaway-page .hero-box input[name=email], body.giveaway-page .hero-box input[placeholder="Email"] {
+    padding-left: 40px; }
 body.giveaway-page .btn-success {
   text-transform: uppercase; }
 body.giveaway-page .giveaway-content {
