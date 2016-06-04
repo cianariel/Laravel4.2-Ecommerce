@@ -93,11 +93,7 @@
                                         <div>
                                             <strong class="red">@{{ responseMessage.error }}</strong>
                                         </div>
-                                         <span class="email-input-holder ">
-                                            <i class="m-icon m-icon--email-form-id black"></i>
                                           <input id="user-email" ng-model="SubscriberEmail" type="hidden" name="email" value="{{@$userData['email']}}">
-			                            </span>
-
                                         <input id="giveaway_id" ng-model="GiveAwayID" type="hidden" name="giveaway_id"
                                                value="{{$giveaway->id}}">
                                         <button style="margin-top: 30px;"
