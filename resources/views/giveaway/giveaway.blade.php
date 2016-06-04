@@ -111,7 +111,7 @@
                             </div>
                         @else
                             <div class="col-lg-6">
-                                <h5 class="giveaway-signup">Join Ideaing for Free</h5>
+                                <h5 class="giveaway-signup">Join Ideaing, it’s FREE</h5>
                                 <ul class="giveaway-signup pointed">
                                     <li>Enter to win Free Smart Home Devices</li>
                                     <li>Get exclusive coupons & deals on Smart Home devices</li>
