@@ -32,8 +32,8 @@
                 function ($message) use ($event,$userId)
                 {
                     $message->to($event->email, $userId)
-                        ->from(env('MAIL_FROM'))
-                        ->subject("Ideaing - Subscription notification.");
+                        ->from('Nicole from Ideaing')
+                        ->subject('Welcome to Ideaing Exclusive Email');
                 });
         }
     }
