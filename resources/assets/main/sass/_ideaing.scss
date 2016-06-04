@@ -4128,7 +4128,7 @@ header.sub-head{
     left: 10px;
     top: 7px;
   }
-  input{
+  input:not([type="submit"]){
     padding-left: 40px !important;
   }
 }
@@ -9806,7 +9806,8 @@ body.giveaway-page{
     padding-top: 30px;
 
     p,
-    .giveaway_desc{
+    .giveaway_desc,
+    .giveaway-toc{
       font-size: 2rem;
     }
 

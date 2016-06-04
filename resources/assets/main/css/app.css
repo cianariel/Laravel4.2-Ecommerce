@@ -7387,7 +7387,7 @@ header.sub-head {
     z-index: 9;
     left: 10px;
     top: 7px; }
-  .email-input-holder input {
+  .email-input-holder input:not([type="submit"]) {
     padding-left: 40px !important; }
 
 .hero-box {
@@ -11119,7 +11119,8 @@ body.giveaway-page .btn-success {
 body.giveaway-page .giveaway-content {
   padding-top: 30px; }
   body.giveaway-page .giveaway-content p,
-  body.giveaway-page .giveaway-content .giveaway_desc {
+  body.giveaway-page .giveaway-content .giveaway_desc,
+  body.giveaway-page .giveaway-content .giveaway-toc {
     font-size: 2rem; }
   body.giveaway-page .giveaway-content h2 {
     font-size: 2.5rem; }
