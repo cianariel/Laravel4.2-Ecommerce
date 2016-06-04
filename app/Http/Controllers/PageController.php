@@ -88,7 +88,7 @@ class PageController extends ApiController
         if($cachedContent = PageHelper::getFromRedis($cacheKey, true)){
             $return = $cachedContent;
         }else{
-            $url = URL::to('/') . '/ideas/feeds/index.php?count=5&only-slider';
+            $url = URL::to('/') . '/ideas/feeds/index.php?count=3&only-slider';
 
             $ch = curl_init();
             curl_setopt($ch, CURLOPT_URL, $url);
