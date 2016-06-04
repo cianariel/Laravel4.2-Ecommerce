@@ -9713,6 +9713,11 @@ body.giveaway-page{
   #hero{
     overflow: hidden;
   }
+  @media (max-width:450px){
+    #hero-bg {
+      background-position-x: -400px;
+    }
+  }
   #hero-arrow{
     position: absolute;
     left: -182px;
