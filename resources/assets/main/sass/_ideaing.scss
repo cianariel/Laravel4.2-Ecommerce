@@ -40,6 +40,9 @@ a:hover, a:focus{
 .grey{
   color: darken($light-grey, 10%);
 }
+.black{
+  color:#000 !important;
+}
 .light-grey{
   color: $light-grey;
 }
@@ -9862,6 +9865,11 @@ body.giveaway-page{
 
       @media (min-width: 992px){
         padding-top: 25px;
+      }
+      @media (max-width: 460px){
+        span{
+          display: block;
+        }
       }
     }
     span{
