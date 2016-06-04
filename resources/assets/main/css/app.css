@@ -11063,6 +11063,9 @@ body.giveaway-page.logged-in .hero-box {
   display: none; }
 body.giveaway-page #hero {
   overflow: hidden; }
+@media (max-width: 450px) {
+  body.giveaway-page #hero-bg {
+    background-position-x: -400px; } }
 body.giveaway-page #hero-arrow {
   position: absolute;
   left: -182px;
