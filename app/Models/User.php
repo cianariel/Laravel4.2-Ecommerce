@@ -125,6 +125,7 @@ class User extends Model implements AuthenticatableContract,
     }
 
 
+
     /**
      * Save user information
      * @param $data

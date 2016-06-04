@@ -387,28 +387,23 @@ class UserController extends ApiController
 
     }
 
-    public function getSubscribersCountBySource($data)
+    private function getSubscribersCountBySource($data)
     {
-       // $data = \Input::all();
-
         $result = $this->subscriber->totalSubscriberBySource($data);
 
         return $result;
     }
 
-    public function getRegisteredUserCountBySource($data)
+    private function getRegisteredUserCountBySource($data)
     {
-       // $data = \Input::all();
-
         $result = $this->user->registerBySourceCount($data);
 
         return $result;
     }
 
+    // Fetch all subscriber and registered users data for admin to show the different types of count.
     public function getSubscribedUserAndRegistrationReport()
     {
-        $data = \Input::all();
-
         $result['subscribe-popup'] = $this->getSubscribersCountBySource(['Source'=>'popup']);
         $result['subscribe-ideas'] = $this->getSubscribersCountBySource(['Source'=>'ideas']);
         $result['subscribe-footer'] = $this->getSubscribersCountBySource(['Source'=>'footer']);

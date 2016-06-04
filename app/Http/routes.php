@@ -21,7 +21,8 @@
 */
 
 // test route
-Route::get('x', 'HeartController@recentHeartedUsers');
+
+//Route::get('x/{email}', 'UserController@isSubscribed');
 
 
 Route::any('secure-page-header', 'UserController@securePageHeader');
