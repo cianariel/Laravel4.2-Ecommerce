@@ -4245,6 +4245,14 @@ header.sub-head{
   }
 }
 
+#login-modal,
+#signup-modal
+{
+  .m-icon.m-icon--email-form-id{
+    margin-top: 3px;
+  }
+}
+
 
 .login-controls{
   max-width: 400px;
@@ -4884,6 +4892,12 @@ body.single{
   color: #fff;
   margin-top: 20px;
   text-align: center;
+
+  .email-input-holder{
+    i{
+      margin-top: 5px;
+    }
+  }
 
   &> div{
     padding: 30px 25px 50px;

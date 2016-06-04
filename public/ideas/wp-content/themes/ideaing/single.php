@@ -201,7 +201,10 @@
                                 <strong class="red"><?php echo '{{ responseMessage }}' ?></strong>
                             </div>
                             <div class="col-xs-12 col-sm-9">
-                                <input class="form-control" ng-model="data.SubscriberEmail" placeholder="me@email.com" type="text">
+                                <span class="email-input-holder ">
+                                    <i class="m-icon m-icon--email-form-id black"></i>
+                                        <input class="form-control" ng-model="data.SubscriberEmail" placeholder="me@email.com" type="text">
+                                </span>
                             </div>
                             <div class="col-xs-12 col-sm-3">
                                 <a class="btn btn-success form-control" ng-click="subscribe(data)">SUBSCRIBE</a>
