@@ -3,7 +3,7 @@
    <head>
       <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-      <title>Ideaing - Email Verification</title>
+      <title>Welcome to Ideaing Exclusive Email</title>
       <style type="text/css">
          /* Client-specific Styles */
          #outlook a {padding:0;} /* Force Outlook to provide a "view in browser" menu link. */
@@ -42,6 +42,10 @@
 
 
          }
+         .main-text p{
+             padding-bottom: 8px;
+         }
+
          /*IPHONE STYLES*/
          @media only screen and (max-width: 480px) {
          a[href^="tel"], a[href^="sms"] {
@@ -237,17 +241,16 @@ a.likes {
                                            cellspacing="0" width="560">
                                         <tbody>
                                         <!-- Title -->
-                                        <tr>
-                                            <td style="font-family: Helvetica, arial, sans-serif; font-size: 30px; color: #333333; text-align:center; line-height: 30px;"
-                                                st-title="fulltext-heading">
-                                                <p align="left">
-                                                    <span class="im"><span style="font-size: 14pt;">Dear User
-                                                            ,</span><br><span style="font-size: 14pt;">Thanks for subscribing . Please follow the link to signup.</span><span
-                                                                style="font-size: 14pt;"><a
-                                                                    style="color:rgb(250,0,51);text-decoration:none"
-                                                                    href="{{ url('/').'/signup/'.$email}}"> Signup </a>
-                                                            will unlock all features of Ideaing.</span></span>
-                                                </p>
+                                        <tr class="main-text">
+                                            <td style="font-family: Helvetica, arial, sans-serif; font-size: 14pt; color: #333333; text-align:left; line-height: 1.5;">
+                                                <p align="left">Hi! <br>Thank you for subscribing to Ideaing’s weekly newsletter. You’ll receive exclusive tips and deals on home automation to transform your ordinary home to a Smart Home.</p>
+
+                                                <p align="left">You’re just one step away from being part of the Ideaing Family. Please follow the link to <a href="{{ url('/').'/signup/'.$email}}" style="color:rgb(250,0,51)">sign-up</a> to become a registered user of Ideaing to unlock all features including exclusive giveaways, freebies, and so much more.</p>
+
+<p>Looking forward to hearing from you!</p>
+<br/>
+    <p><img style="border-radius: 50%;" class="profile-photo" width="120px" src="https://s3-us-west-1.amazonaws.com/ideaing-01/120-product-56f6a374d0d50-2474a18.jpg"><br/><a href="https://ideaing.com/user/profile/9" style="color:rgb(250,0,51)">Nicole</a><br/>
+Ideaing Team</p>
                                             </td>
                                         </tr>
                                         <!-- End of Title --><!-- spacing -->
@@ -359,7 +362,7 @@ a.likes {
                                                     <tr>
                                                         <td class="devicewidth" height="93" align="center" width="">
                                                             <div class="imgpop" style="background-color:rgb(250,0,51);min-height:50px;min-width:225px;text-align: center; line-height:50px;">
-                                                                <a style=" color:white;font-weight: bold;" href="{{ url('/').'/signup/'.$email}}">Signup Now !</a>
+                                                                <a style=" color:white;font-weight: bold; font-family: Helvetica, arial, sans-serif;" href="{{ url('/').'/signup/'.$email}}">Signup Now!</a>
                                                             </div>
                                                         </td>
                                                     </tr>

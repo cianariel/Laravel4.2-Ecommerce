@@ -353,6 +353,8 @@ Route::get('api/search/find-categories/{quert?}', 'SearchController@searchCatego
 Route::get('search-form-query', 'SearchController@formatAndRedirectSearch');
 Route::get('search/{query?}', 'PageController@searchPage');
 
+Route::get('testing/email/{type?}', 'PageController@testEmail');
+
 
 
 // temporary category tag generator
