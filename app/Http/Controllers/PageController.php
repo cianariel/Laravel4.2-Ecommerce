@@ -88,7 +88,7 @@ class PageController extends ApiController
         if($cachedContent = PageHelper::getFromRedis($cacheKey, true)){
             $return = $cachedContent;
         }else{
-            $url = URL::to('/') . '/ideas/feeds/index.php?count=5&only-slider';
+            $url = URL::to('/') . '/ideas/feeds/index.php?count=4&only-slider';
 
             $ch = curl_init();
             curl_setopt($ch, CURLOPT_URL, $url);
@@ -920,6 +920,18 @@ class PageController extends ApiController
             ->with('alreadyIn', $alreadyIn)
             ->with('heading', $heading);
     }
+
+    public function testEmail($type){
+        return view("email.$type")
+            ->with('email', 'bob@bob.com')
+//            ->with('nextGiveaways', $nextGiveaways)
+//            ->with('giveaway', $giveaway)
+//            ->with('ended', $ended)
+//            ->with('alreadyIn', $alreadyIn)
+//            ->with('heading', $heading)
+                ;
+    }
+
 
 
 }
