@@ -61,8 +61,10 @@
                 <form>
                         <a class="btn btn-info col-xs-12"  ng-click="registerWithFB()" href="#"><i class="m-icon m-icon--facebook-id"></i>Log in with Facebook</a>
                     <div class="line-wrap modal-minor-text">or</div>
-
-                        <input class="form-control" ng-model="Email" type="text" placeholder="Email" name="email">
+                        <span class="email-input-holder ">
+                            <i class="m-icon m-icon--email-form-id black"></i>
+                           <input class="form-control" ng-model="Email" type="text" placeholder="Email" name="email">
+                        </span>
                         <input class="form-control" ng-model="Password" type="password" placeholder="Password" name="password">
                     <div class="modal-minor-text">
                             <input ng-model="rememberMe" type="checkbox" id="remember" name="remember"><label for="remember"><span></span>Remember me
@@ -84,7 +86,10 @@
                     <div class="line-wrap modal-minor-text">or</div>
 
                         <input class="form-control" ng-model="FullName" type="text" placeholder="Name" >
-                        <input class="form-control" ng-model="Email" ng-readonly="{{empty($email)?'false':'true'}}" ng-init="Email='{{empty($email)?'':$email}}'" type="text" placeholder="Email" >
+                        <span class="email-input-holder ">
+                            <i class="m-icon m-icon--email-form-id black"></i>
+                            <input class="form-control" ng-model="Email" ng-readonly="{{empty($email)?'false':'true'}}" ng-init="Email='{{empty($email)?'':$email}}'" type="text" placeholder="Email" >
+                        </span>
                         <input class="form-control" ng-model="Password" type="password" placeholder="Password" >
                         <input class="form-control" ng-model="PasswordConf" type="password" placeholder="Retype Password" >
 

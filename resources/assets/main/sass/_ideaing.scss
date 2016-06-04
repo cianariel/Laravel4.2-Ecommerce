@@ -4117,6 +4117,22 @@ header.sub-head{
   }
 }
 
+
+.email-input-holder {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  .m-icon{
+    position: absolute;
+    z-index: 9;
+    left: 10px;
+    top: 7px;
+  }
+  input{
+    padding-left: 40px !important;
+  }
+}
+
 .hero-box{
   padding: 3.5% 5.5%;
   background-color: rgba(255,255,255,.85);
@@ -4130,18 +4146,7 @@ header.sub-head{
   }
 
 
-  
-  .email-input-holder {
-      position: relative;
-      display: inline-block;
-      width: 100%;
-      .m-icon{
-          position: absolute;
-          z-index: 9;
-          left: 10px;
-          top: 7px;
-      }
-  }
+
   
   input[type="text"]{
     background: $pale-blue;
@@ -9765,10 +9770,16 @@ body.giveaway-page{
       text-decoration: underline;
     }
 
+    .m-icon--email-form-id.black{
+      margin-top: 3px;
+    }
+
    input{
-     &[type=text],
-     &[name=email]{
-       padding-left: 15px;
+     //&[type=text]
+     &[name=email],
+     &[placeholder="Email"]
+     {
+       padding-left: 40px;
      }
    }
 

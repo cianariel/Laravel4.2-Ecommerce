@@ -93,8 +93,11 @@
                                         <div>
                                             <strong class="red">@{{ responseMessage.error }}</strong>
                                         </div>
-                                        <input id="user-email" ng-model="SubscriberEmail" type="hidden" name="email"
-                                               value="{{@$userData['email']}}">
+                                         <span class="email-input-holder ">
+                                            <i class="m-icon m-icon--email-form-id black"></i>
+                                          <input id="user-email" ng-model="SubscriberEmail" type="hidden" name="email" value="{{@$userData['email']}}">
+			                            </span>
+
                                         <input id="giveaway_id" ng-model="GiveAwayID" type="hidden" name="giveaway_id"
                                                value="{{$giveaway->id}}">
                                         <button style="margin-top: 30px;"
@@ -135,6 +138,7 @@
                                         <strong style="color: red">@{{ responseMessage.error }}</strong>
                                     </div>
 			                            <span class="email-input-holder ">
+                                            <i class="m-icon m-icon--email-form-id black"></i>
 			                                <input class="form-control" ng-model="SubscriberEmail" type="text"
                                                    placeholder="Email" name="email">
 			                            </span>
@@ -165,7 +169,10 @@
                                     <div class="line-wrap modal-minor-text login-switcher">or</div>
 
                                     <input class="form-control" ng-model="FullName" type="text" placeholder="Name">
-                                    <input class="form-control" ng-model="Email" type="text" placeholder="Email">
+                                    <span class="email-input-holder ">
+                                            <i class="m-icon m-icon--email-form-id black"></i>
+                                           <input class="form-control" ng-model="Email" type="text" placeholder="Email">
+			                            </span>
                                     <input class="form-control" ng-model="Password" type="password"
                                            placeholder="Password">
                                     <input class="form-control" ng-model="PasswordConf" type="password"

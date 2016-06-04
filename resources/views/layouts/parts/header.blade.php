@@ -566,8 +566,11 @@ if (function_exists('is_single')) {
                         <strong class="red"><?php echo '{{ responseMessage }}' ?></strong>
                     </div>
                     <div>
-                        <input class="form-control" ng-model="data.SubscriberEmail" placeholder="me@email.com"
-                               type="text"></div>
+                         <span class="email-input-holder ">
+                                <i class="m-icon m-icon--email-form-id black"></i>
+                               <input class="form-control" ng-model="data.SubscriberEmail" placeholder="me@email.com" type="text">
+                        </span>
+                        </div>
                     <br>
                     <div>
                         <a class="btn btn-success form-control" ng-click="subscribe(data,'popup')">Subscribe to Ideaing's
