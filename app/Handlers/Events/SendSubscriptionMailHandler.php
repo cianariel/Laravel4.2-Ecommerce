@@ -32,7 +32,7 @@
                 function ($message) use ($event,$userId)
                 {
                     $message->to($event->email, $userId)
-                        ->from('Nicole from Ideaing')
+                        ->from('help@ideaing.com', 'Nicole from Ideaing')
                         ->subject('Welcome to Ideaing Exclusive Email');
                 });
         }

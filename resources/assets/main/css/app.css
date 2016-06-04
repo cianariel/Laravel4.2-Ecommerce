@@ -4493,6 +4493,9 @@ a:hover, a:focus {
 .grey {
   color: #a8a8a8; }
 
+.black {
+  color: #000 !important; }
+
 .light-grey {
   color: #c1c1c1; }
 
@@ -11164,6 +11167,9 @@ body.giveaway-page .sign-in {
     @media (min-width: 992px) {
       body.giveaway-page .sign-in h5 {
         padding-top: 25px; } }
+    @media (max-width: 460px) {
+      body.giveaway-page .sign-in h5 span {
+        display: block; } }
   body.giveaway-page .sign-in span {
     color: #FF0042; }
   body.giveaway-page .sign-in .line-wrap {
