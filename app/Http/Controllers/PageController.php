@@ -921,5 +921,17 @@ class PageController extends ApiController
             ->with('heading', $heading);
     }
 
+    public function testEmail($type){
+        return view("email.$type")
+            ->with('email', 'bob@bob.com')
+//            ->with('nextGiveaways', $nextGiveaways)
+//            ->with('giveaway', $giveaway)
+//            ->with('ended', $ended)
+//            ->with('alreadyIn', $alreadyIn)
+//            ->with('heading', $heading)
+                ;
+    }
+
+
 
 }
