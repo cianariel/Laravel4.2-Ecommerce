@@ -117,7 +117,7 @@
             </div>
             <div class="clearfix"></div>
             <br><br>
-            @if($permalink == 'my-posts')
+            @if(!empty($showProfilePosts))
                 @include('user.parts.post')
             @else
                 @include('user.parts.feed')
