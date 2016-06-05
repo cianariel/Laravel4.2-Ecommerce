@@ -4206,16 +4206,20 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
         $scope.openEmailPopuponTime = function () {
             if (!$('body').hasClass('login-signup')) {
                 setTimeout(function () {
-                    $scope.getEmailPopup();
+                    $scope.getEmailPopup(false);
                 }, 25000)
             }
 
         }
 
-        $scope.getEmailPopup = function () {
+        $scope.getEmailPopup = function (clickStatus) {
             // Header profile option open and close on click action.
 
             var templateUrl = "subscribe_email_popup.html";
+
+            $scope.isSubscriberClicked = clickStatus;
+
+            console.log('clicked : '+ $scope.isSubscriberClicked);
             $scope.modalInstance = $uibModal.open({
                     templateUrl: templateUrl,
                     scope: $scope,
@@ -4231,7 +4235,7 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                         method: "GET",
 
                     }).success(function (data) {
-                        console.log(data)
+                      //  console.log(data)
                     });
                 });
         };
@@ -4878,8 +4882,10 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
         $scope.subscribe = function (formData, source) {
 
             $scope.responseMessage = '';
-            if (source == 'popup')
+            if ((source == 'popup') && ($scope.isSubscriberClicked == false))
                 source = 'popup';
+            else if ((source == 'popup') && ($scope.isSubscriberClicked == true))
+                source = 'popup-notice';
             else if (source == 'ideas')
                 source = 'ideas';
             else if (source == 'footer')

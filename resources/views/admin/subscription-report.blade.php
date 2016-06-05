@@ -92,6 +92,22 @@
                                             <div class="widget-thumb-wrap">
                                                 <i class="widget-thumb-icon bg-green icon-bulb"></i>
                                                 <div class="widget-thumb-body">
+                                                    <span class="widget-thumb-subtitle">Pop Up Notice</span>
+                                                    <span class="widget-thumb-body-stat" data-counter="counterup"
+                                                          ng-bind='reportData["subscribe-popup-notice"]'>0</span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- END WIDGET THUMB -->
+                                    </div>
+                                    <div class="col-md-3">
+                                        <!-- BEGIN WIDGET THUMB -->
+                                        <div class="widget-thumb widget-bg-color-white text-uppercase margin-bottom-20 bordered">
+                                            <h4 class="widget-thumb-heading">Subscribed User Info</h4>
+                                            <div class="widget-thumb-wrap">
+                                                <i class="widget-thumb-icon bg-green icon-bulb"></i>
+                                                <div class="widget-thumb-body">
                                                     <span class="widget-thumb-subtitle">Ideas</span>
                                                     <span class="widget-thumb-body-stat" data-counter="counterup"
                                                           ng-bind='reportData["subscribe-ideas"]'>0</span>
@@ -161,6 +177,22 @@
                                                     <span class="widget-thumb-subtitle">facebook</span>
                                                     <span class="widget-thumb-body-stat" data-counter="counterup"
                                                           ng-bind='reportData["register-facebook"]'>0</span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- END WIDGET THUMB -->
+                                    </div>
+                                    <div class="col-md-3">
+                                        <!-- BEGIN WIDGET THUMB -->
+                                        <div class="widget-thumb widget-bg-color-white text-uppercase margin-bottom-20 bordered">
+                                            <h4 class="widget-thumb-heading">Registered User Info</h4>
+                                            <div class="widget-thumb-wrap">
+                                                <i class="widget-thumb-icon bg-blue-steel icon-badge"></i>
+                                                <div class="widget-thumb-body">
+                                                    <span class="widget-thumb-subtitle">others</span>
+                                                    <span class="widget-thumb-body-stat" data-counter="counterup"
+                                                          ng-bind='reportData["register-others"]'>0</span>
                                                 </div>
                                             </div>
                                         </div>
