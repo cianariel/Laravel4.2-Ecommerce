@@ -196,7 +196,7 @@ if (function_exists('is_single')) {
                                 </div>
 
                                 <?php }  else { ?>
-                                <a class="new-message" href="#" ng-click="getEmailPopup()">
+                                <a class="new-message" href="#" ng-click="getEmailPopup(true)">
                                     <i class="m-icon m-icon--Notifications"></i>
                                     <span class="notification-count ng-binding">1</span>
                                 </a>

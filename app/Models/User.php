@@ -125,7 +125,6 @@ class User extends Model implements AuthenticatableContract,
     }
 
 
-
     /**
      * Save user information
      * @param $data
@@ -368,7 +367,8 @@ class User extends Model implements AuthenticatableContract,
         if (empty($wpUserInfo->count())) {
             $wpUser->user_login = $systemUser['email'];
             $wpUser->user_pass = $makeUserActive == true ? $systemUser['password'] : 'NO ACCESS';
-            $wpUser->user_nicename = $firstName;//$systemUser->personal_info->;
+            // $wpUser->user_nicename = $firstName;//$systemUser->personal_info->;
+            $wpUser->user_nicename = $systemUser['permalink'];
             $wpUser->user_registered = $systemUser['created_at'];
             $wpUser->user_status = 0;//$systemUser['email'];
             $wpUser->display_name = $systemUser['name'];
@@ -395,7 +395,9 @@ class User extends Model implements AuthenticatableContract,
                   ->update([
                       'user_login' => $systemUser['email'],
                       'user_pass' => $makeUserActive == true ? $systemUser['password'] : 'NO ACCESS',
-                      'user_nicename' => $firstName,//$systemUser->personal_info->;
+
+                      //    'user_nicename' => $firstName,
+                      'user_nicename' => $systemUser['permalink'],
                       'user_registered' => $systemUser['created_at'],
                       'user_status' => 0,//$systemUser['email'];
                       'display_name' => $systemUser['name'],
@@ -564,6 +566,9 @@ class User extends Model implements AuthenticatableContract,
     {
         if (empty($data['Source'])) {
             $query = new UserProfile();
+        } elseif ($data['Source'] == 'others') {
+            $query = new UserProfile();
+            $query = $query->whereNotIn('user_from',['registration','facebook']);
         } else {
             $query = new UserProfile();
             $query = $query->where('user_from', $data['Source']);
