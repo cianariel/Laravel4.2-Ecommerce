@@ -32,10 +32,10 @@
                                     <div class="row">
                                         <div class="col-xs-12">
                                             <div class="pull-left">
-                                                <img src="{{$profile}}" width="50px" class="profile-photo" alt="">
+                                                <img src="@{{$profile}}" width="50px" class="profile-photo" alt="">
                                             </div>
                                             <div class="pull-left name-time">
-                                                <strong>{{$fullname}}</strong> <i class="m-icon--heart-solid"></i><br>
+                                                <strong>@{{$fullname}}</strong> <i class="m-icon--heart-solid"></i><br>
                                                 <span class="time">Yesterday at 14:45pm</span>
                                             </div>
                                             <div class="pull-right">
@@ -79,10 +79,10 @@
                                     <div class="row">
                                         <div class="col-xs-12">
                                             <div class="pull-left">
-                                                <img src="{{$profile}}" width="50px" class="profile-photo" alt="">
+                                                <img src="@{{$profile}}" width="50px" class="profile-photo" alt="">
                                             </div>
                                             <div class="pull-left name-time">
-                                                <strong>{{$fullname}}</strong> <i class="m-icon--heart-solid"></i><br>
+                                                <strong>@{{$fullname}}</strong> <i class="m-icon--heart-solid"></i><br>
                                                 <span class="time">Yesterday at 14:45pm</span>
                                             </div>
                                             <div class="pull-right">

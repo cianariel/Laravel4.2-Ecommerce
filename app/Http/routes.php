@@ -22,7 +22,7 @@
 
 // test route
 
-//Route::get('x/{email}', 'UserController@isSubscribed');
+Route::get('x', 'UserController@test');
 
 
 Route::any('secure-page-header', 'UserController@securePageHeader');
@@ -301,6 +301,8 @@ Route::get('shop/{grandParent?}/{parent?}/{child?}', ['as' => 'shopCategory', 'u
 //User Profile
 Route::get('user/profile', 'UserController@userProfile');
 Route::get('user/profile/{permalink?}', 'UserController@viewPublicProfile');
+Route::get('user/ideas/{permalink?}', 'UserController@userPostView');
+
 
 
 // Route for password reset , email verification ,feed example
