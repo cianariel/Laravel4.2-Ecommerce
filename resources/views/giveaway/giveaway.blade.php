@@ -16,13 +16,6 @@
                     </li>
                 </ul>
             </div>
-            @if (Session::has('giveaway_flash'))
-                <div>
-                    <div class="alert alert-danger">
-                        <strong>Warning!!</strong> {{ Session::get('giveaway_flash') }}
-                    </div>
-                </div>
-            @endif
         </nav>
 
         <section id="hero" class="landing-hero">
@@ -74,6 +67,13 @@
                     <div class='giveaway_title'><h2>{{$giveaway->giveaway_title}}</h2></div>
                     <div class='giveaway_desc'>{!! $giveaway->giveaway_desc !!}</div>
                     <section class="col-lg-12 sign-in">
+                        @if (Session::has('giveaway_flash'))
+                            <div>
+                                <div class="alert alert-danger">
+                                    <strong>Warning!!</strong> {{-- Session::get('giveaway_flash') --}}
+                                </div>
+                            </div>
+                        @endif
                         @if(@$userData['login'])
                             <div class="col-lg-6">
                                 <h5 style="font-size: 2.5rem; padding-top: 10px;">
