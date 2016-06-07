@@ -57,6 +57,11 @@
                             HOME & DECOR
                         </a>
                     </li>
+                      <li class="box-link-ul ">
+                        <a class="box-link " href="/ideas/deals">
+                            DEALS
+                        </a>
+                    </li>
                 </ul>
             @endif
             <a class="browse-all hidden-xs hidden-sm" data-toggle="#all-shop-menu" href="#">

@@ -6884,9 +6884,13 @@ html.idea-stories #top-nav .ideas,
     left: 50%;
     /*        margin-left: -2px;*/ }
 
+body.archive.category-deals #top-nav a.ideas {
+  color: #999; }
+
 body.shop-landing #top-nav .nested a.m-icon-text-holder,
 body.product-details #top-nav .nested a.m-icon-text-holder,
-body.shop-category #top-nav .nested a.m-icon-text-holder {
+body.shop-category #top-nav .nested a.m-icon-text-holder,
+body.archive.category-deals #top-nav .nested a.m-icon-text-holder {
   color: #FF0042; }
 
 body.shop-landing #top-nav a.m-icon-text-holder .box-link-active-line {
