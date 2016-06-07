@@ -11132,8 +11132,6 @@ body.giveaway-page .hero-box {
   body.giveaway-page .hero-box .line-wrap {
     font-weight: bold;
     text-decoration: underline; }
-  body.giveaway-page .hero-box .m-icon--email-form-id.black {
-    margin-top: 3px; }
   body.giveaway-page .hero-box input[name=email], body.giveaway-page .hero-box input[placeholder="Email"] {
     padding-left: 40px; }
 body.giveaway-page .btn-success {
