@@ -1,4 +1,4 @@
-        <div class="container post">
+        <div id="loadDynamicData" class="container post">
             <div class="row">
                 <div class="col-md-3 side-bar hidden-xs hidden-sm">
                     <div class="row">
