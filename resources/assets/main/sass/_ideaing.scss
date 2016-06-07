@@ -2901,8 +2901,13 @@ header.colophon{
 .box-link-active-line{
     position: absolute;
 }
+
+#mobile-top-menu{
+  margin-top: -6px;
+}
       
-.mobile-top-menu{
+#mobile-top-menu.mobile-top-menu,
+.mobile-top-menu,{
     position: absolute;
     width: 100%;
     background: rgba(0,0,0, 0.8);
@@ -2910,7 +2915,10 @@ header.colophon{
     z-index: 999;
     padding: 20px 0px;
     a{
-        color: #fff;
+      color: #fff !important;
+      font-size:1.4rem;
+      padding: 0 5px 0 0;
+      font-weight: 400;
     }
     ul{
         li{
@@ -2918,6 +2926,15 @@ header.colophon{
             padding-bottom: 10px;
             padding-left: 15px;
             border-bottom: 1px solid #444;
+
+          &.nested-parent{
+            a{
+              padding-top: 3px;
+              padding-bottom: 3px;
+
+              text-transform: none;
+            }
+          }
         }
         li:last-child{
             border-bottom: 0px;
@@ -3241,7 +3258,8 @@ box-shadow: -1px -1px 20px -7px rgba(0,0,0,0.75);
       }
     }
 
-    &:hover, .active{
+    &:hover:not(.mobile-top-menu-switcher),
+    .active:not(.mobile-top-menu-switcher){
       color: $pink;
     }
 
