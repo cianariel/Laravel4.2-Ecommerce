@@ -10,8 +10,9 @@ $currentCat = $cat->slug;
 ?>
 <nav class="mid-nav" >
     <div class="container">
-        <ul class="wrap col-lg-7">
-            @if($currentCat = 'how-to')
+    </div>
+            @if($currentCat == 'deals')
+        <ul class="wrap col-lg-5">
                 <li class="box-link-ul ">
                     <a class="box-link " href="/shop/smart-home">
                         SMART HOME
@@ -33,24 +34,17 @@ $currentCat = $cat->slug;
                     </a>
                 </li>
                 <li class="box-link-ul ">
-                    <a class="box-link " href="/ideas/deals">
+                    <a class="box-link active" href="/ideas/deals">
                         DEALS
                     </a>
                 </li>
+            </ul>
+
             @else
-                @foreach($categories as $cat)
-                    @if($cat->category_parent == 0)
-                        <li class="box-link-ul">
-                            <a href="{{$cat->slug}}" class="box-link {{$cat->slug == $currentCat ? 'active' : ''}}">
-                                {{$cat->name}}
-                            </a>
-                        </li>
-                    @endif
-                @endforeach
+                <?php get_template_part('ideas-menu'); ?>
             @endif
 
 
-        </ul>
     </div>
 </nav>
 
