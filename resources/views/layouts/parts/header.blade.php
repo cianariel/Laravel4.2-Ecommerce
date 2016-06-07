@@ -207,9 +207,7 @@ if (function_exists('is_single')) {
                                    data-toggle=".mobile-search-bar"><i class="m-icon m-icon--search-id"></i></a>
                             </div>
                         </div>
-                        {{--<div class="clearfix"></div>--}}
                     </div>
-                    {{--<div class="clearfix"></div>--}}
                 </div>
                 <?php
                 if (function_exists('is_single')) {
