@@ -4465,6 +4465,10 @@ ins.adsbygoogle {
   box-shadow: none;
   -webkit-box-shadow: none; }
 
+.form-control,
+.btn {
+  height: 45px; }
+
 a:hover, a:focus {
   color: inherit;
   text-decoration: none; }
@@ -6556,6 +6560,8 @@ header.colophon {
   .search-bar .desktop-search-bar {
     position: relative;
     top: 13px; }
+    .search-bar .desktop-search-bar input {
+      height: 35px; }
     .search-bar .desktop-search-bar > input:focus {
       border-color: #ff0041; }
     .search-bar .desktop-search-bar .m-icon {
@@ -7407,7 +7413,7 @@ header.sub-head {
     position: absolute;
     z-index: 9;
     left: 10px;
-    top: 7px; }
+    top: 12px; }
   .email-input-holder input:not([type="submit"]) {
     padding-left: 40px !important; }
 
@@ -7486,10 +7492,6 @@ header.sub-head {
     text-align: center;
     font-size: 1.9rem; }
 
-#login-modal .m-icon.m-icon--email-form-id,
-#signup-modal .m-icon.m-icon--email-form-id {
-  margin-top: 3px; }
-
 .login-controls {
   max-width: 400px;
   margin: 0 auto;
@@ -7524,7 +7526,6 @@ header.sub-head {
     margin-bottom: 0; }
   .modal-login input[type="password"].form-control,
   .modal-login input[type="text"].form-control {
-    height: 40px;
     /*    padding-top: 15px;*/
     /*    padding-bottom: 15px;*/
     margin-bottom: 8px;
