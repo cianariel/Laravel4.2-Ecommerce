@@ -17,7 +17,7 @@
                 </ul>
             </div>
         </nav>
-
+  
         <section id="hero" class="landing-hero">
             <div class="rsContent">
                 <div id="hero-bg" style="background-image: url({{$giveaway->giveaway_image}}); "></div>
@@ -69,8 +69,11 @@
                     <section class="col-lg-12 sign-in">
                         @if (Session::has('giveaway_flash'))
                             <div>
-                                <div class="alert alert-danger">
-                                    <strong>Warning!!</strong> {{-- Session::get('giveaway_flash') --}}
+                                <div class="alert alert-danger giveaway-alert">
+                                    <strong>Warning!</strong> {{ Session::get('giveaway_flash') }}
+                                    <span class="close-button close-login" data-toggle=".giveaway-alert">
+                                         <i class="m-icon--Close"></i>
+                                    </span>
                                 </div>
                             </div>
                         @endif
