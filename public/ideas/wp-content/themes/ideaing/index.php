@@ -13,7 +13,7 @@ $cat_name = $cats[0]->name;
                 <a href="/ideas/smart-home" class="box-link">Smart Home</a>
             </li>
             <li class="box-link-ul">
-                <a href="/ideas/diy" class="box-link">How To</a>
+                <a href="/ideas/how-to" class="box-link">How To</a>
             </li>
             <li class="box-link-ul">
                 <a href="/ideas/style" class="box-link">Style</a>
@@ -66,14 +66,9 @@ $cat_name = $cats[0]->name;
             <a href="/ideas/style" class="box-link">Style</a>
         </li>
         <li class="box-link-ul">
-            <a href="/ideas/diy" class="box-link">DIY</a>
+            <a href="/ideas/how-to" class="box-link">How To</a>
         </li>
-        <li class="box-link-ul">
-            <a href="/ideas/declutter" class="box-link">Declutter</a>
-        </li>
-        <li class="box-link-ul">
-            <a href="/ideas/shop" class="box-link">Shop</a>
-        </li>
+    
     </ul>
 </div>
 
