@@ -5994,7 +5994,22 @@ footer.about-footer{
     border-radius: 4px;
     border: 0;
     float: left;
-    //outline: ;
+
+    &::-webkit-input-placeholder {
+      color: #fff;
+    }
+
+    &:-moz-placeholder { /* Firefox 18- */
+      color: #fff;
+    }
+
+    &::-moz-placeholder {  /* Firefox 19+ */
+      color: #fff;
+    }
+
+    &:-ms-input-placeholder {
+      color: #fff;
+    }
   }
 
   input[type="submit"]{
