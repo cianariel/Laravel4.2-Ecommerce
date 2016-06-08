@@ -21,7 +21,7 @@ if(!isset($theGiveAway)){
     }
 }
 
-// print_r($userData); die();
+// print_r($theGiveAway); die();
 ?> 
 
 <div id="publicApp" ng-app="publicApp" ng-controller="publicController" class="header-cloak" ng-cloak>
@@ -591,8 +591,9 @@ if(!isset($theGiveAway)){
                 </div>
             </div>
             <div class="img-holder head-image-holder">
-                <?php if(isset($theGiveaway) && $theGiveaway->giveaway_image){
-                    echo '<img class="img-round" src="/assets/images/"'.$theGiveaway->giveaway_image.'>';
+                <?php if(false && $theGiveAway && @$theGiveAway->giveaway_permalink){
+                    echo '<img class="img-round" src="'.$theGiveAway->giveaway_image.'">';
+
                 }else{
                     echo '<img src="/assets/images/emailpopupimg.png">';
                 }
