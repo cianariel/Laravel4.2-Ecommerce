@@ -33,7 +33,7 @@ $currentCat = $cat->slug;
                         HOME & DECOR
                     </a>
                 </li>
-                <li class="box-link-ul ">
+                <li class="box-link-ul hidden-xs">
                     <a class="box-link active" href="/ideas/deals">
                         DEALS
                     </a>
