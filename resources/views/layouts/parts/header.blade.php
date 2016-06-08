@@ -562,11 +562,11 @@ if(!isset($theGiveAway)){
             <div class="content-container">
                 <div class="content-holder">
                     <div>
-                        <h4>Subscribe to the world’s finest Smart Home & Design Ideas</h4></div>
+                        <h4>Subscribe to the world’s finest Smart Home & Interior Design Ideas</h4></div>
                     <ul>
                         <li>Enter to win Free Smart Home devices</li>
-                        <li>Get exclusive coupons & deals on Smart Home devices</li>
-                        <li>Randomly selected to win a complete Smart Home make-over</li>
+                        <li>Get exclusive coupons & deals</li>
+                        <li>Get unique tips to transform your home to a Smart Home</li>
                     </ul>
                     <br>
                     <div>
@@ -581,18 +581,17 @@ if(!isset($theGiveAway)){
                         </div>
                     <br>
                     <div>
-                        <a class="btn btn-success form-control" ng-click="subscribe(data,'popup')">Subscribe to Ideaing's
-                            newsletter</a>
+                        <a class="btn btn-success form-control" ng-click="subscribe(data,'popup')">Subscribe</a>
                     </div>
                     <br>
                     <p>
-                        <a href="#" ng-click="hideAndForget()">No, thanks</a>
+                        <a href="#" ng-click="hideAndForget()">Not right now, I don’t want free Smart Home gadgets</a>
                     </p>
                 </div>
             </div>
             <div class="img-holder head-image-holder">
                 <?php if(isset($theGiveaway) && $theGiveaway->giveaway_image){
-                    echo '<img class="img-round" src="/assets/images/"'.$theGiveaway->giveaway_image.'>';
+                    echo '<img class="img-round" src="'.$theGiveaway->giveaway_image.'>';
                 }else{
                     echo '<img src="/assets/images/emailpopupimg.png">';
                 }
