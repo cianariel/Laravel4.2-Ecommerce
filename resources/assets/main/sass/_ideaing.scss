@@ -9835,12 +9835,7 @@ body.giveaway-page{
       text-decoration: underline;
     }
 
-    //.m-icon--email-form-id.black{
-    //  margin-top: 3px;
-    //}
-
    input{
-     //&[type=text]
      &[name=email],
      &[placeholder="Email"]
      {
@@ -9852,6 +9847,7 @@ body.giveaway-page{
 
   .btn-success{
     text-transform: uppercase;
+    padding-top: 13px;
   }
   .giveaway-content{
     padding-top: 30px;
@@ -9860,6 +9856,10 @@ body.giveaway-page{
     .giveaway_desc,
     .giveaway-toc{
       font-size: 2rem;
+    }
+    ul.giveaway-signup,
+    .login-switcher{
+      font-size: 1.7rem;
     }
 
     h2{
