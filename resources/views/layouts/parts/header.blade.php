@@ -12,6 +12,15 @@ if (function_exists('is_single')) {
     }
 }
 
+if(!isset($theGiveAway)){
+    if(!function_exists('is_single')){
+        $theGiveAway = PageHelper::getCurrentGiveaway();
+    }else{
+        $json = file_get_contents('http://ideaing.dev/api/giveaway/get-current');
+        $theGiveAway = json_decode($json);
+    }
+}
+
 // print_r($userData); die();
 ?> 
 
@@ -581,7 +590,14 @@ if (function_exists('is_single')) {
                     </p>
                 </div>
             </div>
-            <div class="img-holder head-image-holder"><img src="/assets/images/emailpopupimg.png"></div>
+            <div class="img-holder head-image-holder">
+                <?php if(isset($theGiveaway) && $theGiveaway->giveaway_image){
+                    echo '<img class="img-round" src="/assets/images/"'.$theGiveaway->giveaway_image.'>';
+                }else{
+                    echo '<img src="/assets/images/emailpopupimg.png">';
+                }
+                ?>
+            </div>
             <div class="clearfix"></div>
         </div>
     </div>
