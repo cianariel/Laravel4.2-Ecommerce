@@ -396,8 +396,15 @@ html{
   overflow-x: hidden;
 }
 
-.main-content{
-  //overflow: hidden;
+@media (max-width: 767px) {
+  .shown-xs{
+    display: block !important;
+  }
+}
+@media (max-width: 991px) {
+  .shown-sm{
+    display: block !important;
+  }
 }
 
 .lamp-logo{
@@ -9117,28 +9124,30 @@ html.hide-overflow{
 
 .subscribe_email_popup{
 
-    #subscribe_email_popup{
-        padding: 25px;
-    }
+    //#subscribe_email_popup{
+    //    padding: 25px;
+    //}
     .img-holder{
+      @media (min-width: 620px){
         position: absolute;
         top: -50px;
         left: -100px;
         >img{
-            border: 2px solid #fff;
-            border-radius: 500px;
+          border: 2px solid #fff;
+          border-radius: 500px;
         }
+      }
+
     }
 
+  .content-container{
+      padding: 25px;
+  }
 
     @media (max-width: 990px){
         .content-container{
-            margin-top: 50px;
-            //margin-bottom: 50px;
+            //margin-top: 50px;
             width: 100%;
-        }
-        .img-holder{
-            display: none;
         }
     }
     @media (min-width: 991px){
