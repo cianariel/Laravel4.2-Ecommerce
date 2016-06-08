@@ -11170,13 +11170,17 @@ body.giveaway-page .hero-box {
   body.giveaway-page .hero-box input[name=email], body.giveaway-page .hero-box input[placeholder="Email"] {
     padding-left: 40px; }
 body.giveaway-page .btn-success {
-  text-transform: uppercase; }
+  text-transform: uppercase;
+  padding-top: 13px; }
 body.giveaway-page .giveaway-content {
   padding-top: 30px; }
   body.giveaway-page .giveaway-content p,
   body.giveaway-page .giveaway-content .giveaway_desc,
   body.giveaway-page .giveaway-content .giveaway-toc {
     font-size: 2rem; }
+  body.giveaway-page .giveaway-content ul.giveaway-signup,
+  body.giveaway-page .giveaway-content .login-switcher {
+    font-size: 1.7rem; }
   body.giveaway-page .giveaway-content h2 {
     font-size: 2.5rem; }
 body.giveaway-page ul.pointed {
