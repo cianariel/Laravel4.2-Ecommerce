@@ -4329,8 +4329,6 @@ header.sub-head{
   border: 1px solid rgba($pale-grey, .2);
   box-shadow: none;
 
-
-
   .btn{
     font-size: 1.2rem;
     padding-top: 15px;
@@ -5994,21 +5992,22 @@ footer.about-footer{
     border-radius: 4px;
     border: 0;
     float: left;
+    color: #fff;
 
     &::-webkit-input-placeholder {
-      color: #fff;
+      color: #c7c7c7;
     }
 
     &:-moz-placeholder { /* Firefox 18- */
-      color: #fff;
+      color: #c7c7c7;
     }
 
     &::-moz-placeholder {  /* Firefox 19+ */
-      color: #fff;
+      color: #c7c7c7;
     }
 
     &:-ms-input-placeholder {
-      color: #fff;
+      color: #c7c7c7;
     }
   }
 
@@ -9086,6 +9085,10 @@ html.hide-overflow{
 #subscribe_email_popup{
   background-color:#fff !important;
 
+  h4{
+    text-align: center;
+  }
+
   &, .email-banner{
     ul {
       list-style: none;
@@ -9104,6 +9107,9 @@ html.hide-overflow{
       top:3px;
       font-size: 2rem;
       color: $iridium; /* or whatever color you prefer */
+    }
+    .btn-success{
+      padding-top: 13px;
     }
   }
 
@@ -9128,7 +9134,7 @@ html.hide-overflow{
     @media (max-width: 990px){
         .content-container{
             margin-top: 50px;
-            margin-bottom: 50px;
+            //margin-bottom: 50px;
             width: 100%;
         }
         .img-holder{
@@ -9141,7 +9147,7 @@ html.hide-overflow{
         }
         .content-container{
             margin-top: 50px;
-            margin-bottom: 50px;
+            //margin-bottom: 50px;
             width: calc(100% - 250px);
             float: right;
         }
