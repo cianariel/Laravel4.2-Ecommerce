@@ -10621,6 +10621,15 @@ html.hide-overflow {
 #all-shop-menu-mobile {
   top: 115px; }
 
+.giveaway-icon {
+  display: block;
+  position: absolute;
+  top: 8px;
+  width: 202px;
+  height: 59px;
+  text-indent: -9999px;
+  background: url(/assets/images/giveaway.svg) 0 -110px/220px no-repeat; }
+
 #subscribe_email_popup {
   background-color: #fff !important; }
   #subscribe_email_popup h4 {

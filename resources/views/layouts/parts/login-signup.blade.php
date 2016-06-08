@@ -55,8 +55,8 @@
             </uib-alert>
         </div>
         <nav class="col-xs-12 login-controls contentable">
-            <span data-toggle="#login-modal" data-hide="#signup-modal" class="col-xs-6">Log in</span>
             <span data-toggle="#signup-modal" data-hide="#login-modal" class="col-xs-6 active">Sign up</span>
+            <span data-toggle="#login-modal" data-hide="#signup-modal" class="col-xs-6">Log in</span>
         </nav>
         <div id="login-modal" class="modal-content contentable hero-box qiuck-signup modal-login hidden-soft">
             <form>
