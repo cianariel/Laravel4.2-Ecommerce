@@ -4465,6 +4465,10 @@ ins.adsbygoogle {
   box-shadow: none;
   -webkit-box-shadow: none; }
 
+.form-control,
+.btn {
+  height: 45px; }
+
 a:hover, a:focus {
   color: inherit;
   text-decoration: none; }
@@ -6556,6 +6560,8 @@ header.colophon {
   .search-bar .desktop-search-bar {
     position: relative;
     top: 13px; }
+    .search-bar .desktop-search-bar input {
+      height: 35px; }
     .search-bar .desktop-search-bar > input:focus {
       border-color: #ff0041; }
     .search-bar .desktop-search-bar .m-icon {
@@ -6575,6 +6581,10 @@ header.colophon {
 .box-link-active-line {
   position: absolute; }
 
+#mobile-top-menu {
+  margin-top: -6px; }
+
+#mobile-top-menu.mobile-top-menu,
 .mobile-top-menu {
   position: absolute;
   width: 100%;
@@ -6582,20 +6592,36 @@ header.colophon {
   display: none;
   z-index: 999;
   padding: 20px 0px; }
+  #mobile-top-menu.mobile-top-menu a,
   .mobile-top-menu a {
-    color: #fff; }
+    color: #fff !important;
+    font-size: 1.4rem;
+    padding: 0 5px 0 0;
+    font-weight: 400; }
+  #mobile-top-menu.mobile-top-menu ul li,
   .mobile-top-menu ul li {
     padding-top: 15px;
     padding-bottom: 10px;
     padding-left: 15px;
     border-bottom: 1px solid #444; }
+    #mobile-top-menu.mobile-top-menu ul li.nested-parent a,
+    .mobile-top-menu ul li.nested-parent a {
+      padding-top: 3px;
+      padding-bottom: 3px;
+      text-transform: none; }
+  #mobile-top-menu.mobile-top-menu ul li:last-child,
   .mobile-top-menu ul li:last-child {
     border-bottom: 0px; }
+  #mobile-top-menu.mobile-top-menu.mobile-mid-menu,
   .mobile-top-menu.mobile-mid-menu {
     top: 115px; }
+  #mobile-top-menu.mobile-top-menu .idea-list li,
+  #mobile-top-menu.mobile-top-menu .cat-list li,
   .mobile-top-menu .idea-list li,
   .mobile-top-menu .cat-list li {
     overflow: hidden; }
+  #mobile-top-menu.mobile-top-menu .idea-list a,
+  #mobile-top-menu.mobile-top-menu .cat-list a,
   .mobile-top-menu .idea-list a,
   .mobile-top-menu .cat-list a {
     color: #fff; }
@@ -6811,7 +6837,8 @@ header.colophon {
       height: 15px;
       text-align: center;
       line-height: 15px; }
-  #top-nav a:hover, #top-nav a .active {
+  #top-nav a:hover:not(.mobile-top-menu-switcher),
+  #top-nav a .active:not(.mobile-top-menu-switcher) {
     color: #ed2049; }
 #top-nav li.nested {
   cursor: pointer; }
@@ -6857,9 +6884,13 @@ html.idea-stories #top-nav .ideas,
     left: 50%;
     /*        margin-left: -2px;*/ }
 
+body.archive.category-deals #top-nav a.ideas {
+  color: #999; }
+
 body.shop-landing #top-nav .nested a.m-icon-text-holder,
 body.product-details #top-nav .nested a.m-icon-text-holder,
-body.shop-category #top-nav .nested a.m-icon-text-holder {
+body.shop-category #top-nav .nested a.m-icon-text-holder,
+body.archive.category-deals #top-nav .nested a.m-icon-text-holder {
   color: #FF0042; }
 
 body.shop-landing #top-nav a.m-icon-text-holder .box-link-active-line {
@@ -7386,7 +7417,7 @@ header.sub-head {
     position: absolute;
     z-index: 9;
     left: 10px;
-    top: 7px; }
+    top: 12px; }
   .email-input-holder input:not([type="submit"]) {
     padding-left: 40px !important; }
 
@@ -7465,10 +7496,6 @@ header.sub-head {
     text-align: center;
     font-size: 1.9rem; }
 
-#login-modal .m-icon.m-icon--email-form-id,
-#signup-modal .m-icon.m-icon--email-form-id {
-  margin-top: 3px; }
-
 .login-controls {
   max-width: 400px;
   margin: 0 auto;
@@ -7503,7 +7530,6 @@ header.sub-head {
     margin-bottom: 0; }
   .modal-login input[type="password"].form-control,
   .modal-login input[type="text"].form-control {
-    height: 40px;
     /*    padding-top: 15px;*/
     /*    padding-bottom: 15px;*/
     margin-bottom: 8px;
@@ -11110,8 +11136,6 @@ body.giveaway-page .hero-box {
   body.giveaway-page .hero-box .line-wrap {
     font-weight: bold;
     text-decoration: underline; }
-  body.giveaway-page .hero-box .m-icon--email-form-id.black {
-    margin-top: 3px; }
   body.giveaway-page .hero-box input[name=email], body.giveaway-page .hero-box input[placeholder="Email"] {
     padding-left: 40px; }
 body.giveaway-page .btn-success {

@@ -28,6 +28,11 @@
                             HOME & DECOR
                         </a>
                     </li>
+                    <li class="box-link-ul ">
+                        <a class="box-link " href="/ideas/deals">
+                            DEALS
+                        </a>
+                    </li>
                 </ul>
             </div>
         </div>
