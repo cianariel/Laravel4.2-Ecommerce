@@ -470,7 +470,7 @@ class PageController extends ApiController
     {
         MetaTag::set('title', 'Log In | Ideaing');
 
-        return view('user.signup')->with('tab', 'login');
+        return view('user.signup')->with('tab', 'signup');
     }
 
     public function getProducts($limit, $page, $offset, $tagID, $productCategoryID = false, $sortBy = false)
