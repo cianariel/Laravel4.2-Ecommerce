@@ -4741,6 +4741,12 @@ body,
 html {
   overflow-x: hidden; }
 
+@media (max-width: 767px) {
+  .shown-xs {
+    display: block !important; } }
+@media (max-width: 991px) {
+  .shown-sm {
+    display: block !important; } }
 .lamp-logo {
   display: block;
   width: 45px;
@@ -10636,21 +10642,19 @@ html.hide-overflow {
   #subscribe_email_popup .btn-success, #subscribe_email_popup .email-banner .btn-success {
     padding-top: 13px; }
 
-.subscribe_email_popup #subscribe_email_popup {
+@media (min-width: 620px) {
+  .subscribe_email_popup .img-holder {
+    position: absolute;
+    top: -50px;
+    left: -100px; }
+    .subscribe_email_popup .img-holder > img {
+      border: 2px solid #fff;
+      border-radius: 500px; } }
+.subscribe_email_popup .content-container {
   padding: 25px; }
-.subscribe_email_popup .img-holder {
-  position: absolute;
-  top: -50px;
-  left: -100px; }
-  .subscribe_email_popup .img-holder > img {
-    border: 2px solid #fff;
-    border-radius: 500px; }
 @media (max-width: 990px) {
   .subscribe_email_popup .content-container {
-    margin-top: 50px;
-    width: 100%; }
-  .subscribe_email_popup .img-holder {
-    display: none; } }
+    width: 100%; } }
 @media (min-width: 991px) {
   .subscribe_email_popup .modal-dialog {
     top: 40px; }
