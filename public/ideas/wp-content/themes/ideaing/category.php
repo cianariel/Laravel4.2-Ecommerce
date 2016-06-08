@@ -9,8 +9,8 @@ $currentCat = $cat->slug;
 
 ?>
 <nav class="mid-nav" >
-    <div class="container">
-        <ul class="wrap col-lg-7">
+    <div class="container full-sm fixed-sm">
+        <ul class="wrap shop-landing-submenu">
             @if($currentCat = 'how-to')
                 <li class="box-link-ul ">
                     <a class="box-link " href="/shop/smart-home">
@@ -27,13 +27,13 @@ $currentCat = $cat->slug;
                         WEARABLES
                     </a>
                 </li>
-                <li class="box-link-ul ">
+                <li class="box-link-ul">
                     <a class="box-link " href="/shop/home-decor">
                         HOME & DECOR
                     </a>
                 </li>
                 <li class="box-link-ul ">
-                    <a class="box-link " href="/ideas/deals">
+                    <a class="box-link" href="/ideas/deals">
                         DEALS
                     </a>
                 </li>

@@ -86,6 +86,13 @@ a:hover, a:focus{
   width: 100%;
 }
 
+@media (max-width:480px) {
+  .left-padded-xs{
+    padding-left: 30px;
+  }
+
+}
+
 .turn-left{
   display: inline-block;
   -ms-transform: rotate(45deg); /* IE 9 */
@@ -7586,7 +7593,8 @@ footer.about-footer{
 }
 
 
-body.shoppage{
+body.shoppage,
+body.category-deals{
     .mid-nav{
         .container{
             position: relative;
