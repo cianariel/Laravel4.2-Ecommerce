@@ -4997,7 +4997,7 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
             $scope.closeAlert();
 
             if ($scope.Password != $scope.PasswordConf) {
-                $scope.addAlert('danger', 'Password not match !');
+                $scope.addAlert('danger', 'Password doesn\'t match!');
                 return;
             }
 
@@ -5021,6 +5021,8 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                 /* if(data.status_code == 200)
                  window.location = $scope.loginRedirectLocation;
                  */
+            }).error(function (data) {
+               console.log(data);
             });
 
         };

@@ -8,6 +8,10 @@ ins.adsbygoogle{
     box-shadow: none;
     -webkit-box-shadow: none;
 }
+.form-control,
+.btn{
+  height: 45px;
+}
 a:hover, a:focus{
     color: inherit;
     text-decoration: none;
@@ -2875,6 +2879,9 @@ header.colophon{
   .desktop-search-bar{
         position: relative;
         top: 13px;
+        input{
+          height: 35px;
+        }
         >input:focus{
             border-color: #ff0041;
         }
@@ -2901,8 +2908,13 @@ header.colophon{
 .box-link-active-line{
     position: absolute;
 }
+
+#mobile-top-menu{
+  margin-top: -6px;
+}
       
-.mobile-top-menu{
+#mobile-top-menu.mobile-top-menu,
+.mobile-top-menu,{
     position: absolute;
     width: 100%;
     background: rgba(0,0,0, 0.8);
@@ -2910,7 +2922,10 @@ header.colophon{
     z-index: 999;
     padding: 20px 0px;
     a{
-        color: #fff;
+      color: #fff !important;
+      font-size:1.4rem;
+      padding: 0 5px 0 0;
+      font-weight: 400;
     }
     ul{
         li{
@@ -2918,6 +2933,15 @@ header.colophon{
             padding-bottom: 10px;
             padding-left: 15px;
             border-bottom: 1px solid #444;
+
+          &.nested-parent{
+            a{
+              padding-top: 3px;
+              padding-bottom: 3px;
+
+              text-transform: none;
+            }
+          }
         }
         li:last-child{
             border-bottom: 0px;
@@ -3241,7 +3265,8 @@ box-shadow: -1px -1px 20px -7px rgba(0,0,0,0.75);
       }
     }
 
-    &:hover, .active{
+    &:hover:not(.mobile-top-menu-switcher),
+    .active:not(.mobile-top-menu-switcher){
       color: $pink;
     }
 
@@ -3310,9 +3335,15 @@ html.idea-stories #top-nav .ideas,
 /*        margin-left: -2px;*/
     }
 }
+body.archive.category-deals{
+  #top-nav a.ideas{
+    color: #999;
+  }
+}
 body.shop-landing #top-nav .nested a.m-icon-text-holder,
 body.product-details #top-nav .nested a.m-icon-text-holder,
-body.shop-category #top-nav .nested a.m-icon-text-holder{
+body.shop-category #top-nav .nested a.m-icon-text-holder,
+body.archive.category-deals  #top-nav .nested a.m-icon-text-holder{
   color: $iridium;
 }
 body.shop-landing #top-nav a.m-icon-text-holder .box-link-active-line{
@@ -4126,7 +4157,7 @@ header.sub-head{
     position: absolute;
     z-index: 9;
     left: 10px;
-    top: 7px;
+    top: 12px;
   }
   input:not([type="submit"]){
     padding-left: 40px !important;
@@ -4245,13 +4276,13 @@ header.sub-head{
   }
 }
 
-#login-modal,
-#signup-modal
-{
-  .m-icon.m-icon--email-form-id{
-    margin-top: 3px;
-  }
-}
+//#login-modal,
+//#signup-modal
+//{
+//  .m-icon.m-icon--email-form-id{
+//    margin-top: 3px;
+//  }
+//}
 
 
 .login-controls{
@@ -4304,10 +4335,9 @@ header.sub-head{
   }
   input[type="password"].form-control,
   input[type="text"].form-control{
-    height: 40px;
+    //height: 40px;
 /*    padding-top: 15px;*/
 /*    padding-bottom: 15px;*/
-
     margin-bottom: 8px;
     border: 1px solid darken($pale-grey, 10%);
     background: #fff;
@@ -4315,8 +4345,6 @@ header.sub-head{
     padding-left: 15px;
     font-size: 1.2rem;
 /*    color: $pale-grey;*/
-
-
   }
   input[type="checkbox"] + label span {
     margin: -1px 10px 0 0;
@@ -9784,9 +9812,9 @@ body.giveaway-page{
       text-decoration: underline;
     }
 
-    .m-icon--email-form-id.black{
-      margin-top: 3px;
-    }
+    //.m-icon--email-form-id.black{
+    //  margin-top: 3px;
+    //}
 
    input{
      //&[type=text]

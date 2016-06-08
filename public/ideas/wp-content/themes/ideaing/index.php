@@ -8,25 +8,26 @@ $cat_name = $cats[0]->name;
 ?>
 <nav class="mid-nav" >
     <div class="container hidden-xs">
-        <ul class="wrap col-lg-7">
+        <ul class="wrap col-lg-5">
             <li class="box-link-ul">
                 <a href="/ideas/smart-home" class="box-link">Smart Home</a>
             </li>
             <li class="box-link-ul">
-                <a href="/ideas/reviews" class="box-link">Reviews</a>
+                <a href="/ideas/how-to" class="box-link">How To</a>
             </li>
             <li class="box-link-ul">
                 <a href="/ideas/style" class="box-link">Style</a>
             </li>
             <li class="box-link-ul">
-                <a href="/ideas/diy" class="box-link">DIY</a>
+                <a href="/ideas/reviews" class="box-link">Reviews</a>
             </li>
-            <li class="box-link-ul">
-                <a href="/ideas/declutter" class="box-link">Declutter</a>
-            </li>
-            <li class="box-link-ul">
-                <a href="/ideas/shop" class="box-link">Shop</a>
-            </li>
+
+<!--            <li class="box-link-ul">-->
+<!--                <a href="/ideas/declutter" class="box-link">Declutter</a>-->
+<!--            </li>-->
+<!--            <li class="box-link-ul">-->
+<!--                <a href="/ideas/shop" class="box-link">Shop</a>-->
+<!--            </li>-->
         </ul>
     </div>
     <div class="container mobile-menu visible-xs ">
@@ -65,14 +66,9 @@ $cat_name = $cats[0]->name;
             <a href="/ideas/style" class="box-link">Style</a>
         </li>
         <li class="box-link-ul">
-            <a href="/ideas/diy" class="box-link">DIY</a>
+            <a href="/ideas/how-to" class="box-link">How To</a>
         </li>
-        <li class="box-link-ul">
-            <a href="/ideas/declutter" class="box-link">Declutter</a>
-        </li>
-        <li class="box-link-ul">
-            <a href="/ideas/shop" class="box-link">Shop</a>
-        </li>
+    
     </ul>
 </div>
 

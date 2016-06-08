@@ -7,31 +7,44 @@ $currentCat = get_the_category();
 $cat = get_category( get_query_var( 'cat' ) );
 $currentCat = $cat->slug;
 
-
-
-//foreach((get_the_category()) as $i => $category) {
-//    if ($category->category_parent == 0) {
-//        $currentCat = $category->slug;
-//        break;
-//    }
-//}
-
-//print_r(get_the_category());die();
-
 ?>
 <nav class="mid-nav" >
     <div class="container">
-        <ul class="wrap col-lg-7">
-            @foreach($categories as $cat)
-            @if($cat->category_parent == 0)
-            <li class="box-link-ul">
-                <a href="{{$cat->slug}}" class="box-link {{$cat->slug == $currentCat ? 'active' : ''}}">
-                    {{$cat->name}}
-                </a>
-            </li>
+    </div>
+            @if($currentCat == 'deals')
+        <ul class="wrap col-lg-5">
+                <li class="box-link-ul ">
+                    <a class="box-link " href="/shop/smart-home">
+                        SMART HOME
+                    </a>
+                </li>
+                <li class="box-link-ul ">
+                    <a class="box-link " href="/shop/travel">
+                        TRAVEL
+                    </a>
+                </li>
+                <li class="box-link-ul ">
+                    <a class="box-link " href="/shop/wearables">
+                        WEARABLES
+                    </a>
+                </li>
+                <li class="box-link-ul ">
+                    <a class="box-link " href="/shop/home-decor">
+                        HOME & DECOR
+                    </a>
+                </li>
+                <li class="box-link-ul ">
+                    <a class="box-link active" href="/ideas/deals">
+                        DEALS
+                    </a>
+                </li>
+            </ul>
+
+            @else
+                <?php get_template_part('ideas-menu'); ?>
             @endif
-            @endforeach
-        </ul>
+
+
     </div>
 </nav>
 
