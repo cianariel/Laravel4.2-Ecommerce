@@ -6472,7 +6472,6 @@ header.colophon {
   min-height: 60px; }
   header.colophon #top-nav a.signin {
     float: right;
-    padding-left: 10px;
     white-space: nowrap;
     padding-right: 0px; }
     header.colophon #top-nav a.signin .m-icon {

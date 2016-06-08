@@ -201,7 +201,7 @@ if (function_exists('is_single')) {
                                     <span class="notification-count ng-binding">1</span>
                                 </a>
                                 <a class="pull-right signin" data-toggle="modal" data-target="#myModal" href="/login"><i
-                                            class="m-icon m-icon--user"></i> Log in</a>
+                                            class="m-icon m-icon--user"></i> Sign up</a>
                                 <?php } ?>
                                 <a href="#" class="search-toggle visible-xs pull-right"
                                    data-toggle=".mobile-search-bar"><i class="m-icon m-icon--search-id"></i></a>
