@@ -10026,8 +10026,6 @@ body.profilepage {
       margin-top: 1px; }
     body.profilepage #hero-nav .main-content-filter .all-activity {
       color: #ff0042; }
-    body.profilepage #hero-nav .main-content-filter .my-post {
-      color: #f7931e; }
     body.profilepage #hero-nav .main-content-filter .message {
       color: #3cb44a; }
     body.profilepage #hero-nav .main-content-filter .my-product {
@@ -10103,10 +10101,13 @@ body.profilepage {
         color: #f7931e; }
   body.profilepage #btn-follow, body.profilepage #btn-add-friend {
     width: 127px; }
+  body.profilepage #btn-add-friend {
+    display: none; }
   body.profilepage #btn-follow {
     float: left;
     color: #fff;
     margin-right: 10px;
+    margin-top: 12px;
     position: relative;
     background: #FF0042; }
     body.profilepage #btn-follow:hover {
@@ -10114,7 +10115,7 @@ body.profilepage {
     body.profilepage #btn-follow i {
       font-size: 10px;
       right: 24px;
-      top: 12px;
+      top: 18px;
       position: absolute;
       /*            color: #000;*/ }
   body.profilepage .post .side-bar .sidenav {

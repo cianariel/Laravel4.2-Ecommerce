@@ -94,18 +94,31 @@
                                 All Activity
                             </a>
                         </li>
+
+                        <li ng-class="{active: activeMenu == '2'}" ng-click="activeMenu='2'">
+                            <a href="/author/{{$permalink}}" class="red my-likes">
+                                <i class="red m-icon m-icon--heart-id"></i>
+                                <span class="red">Likes</span>
+                            </a>
+                        </li>
                         <li ng-class="{active: activeMenu == '2'}" ng-click="activeMenu='2'">
                             <a href="/author/{{$permalink}}" class="my-post">
-                                <i class="m-icon m-icon--image"></i>
-                                Posts
+                                <i class="orange m-icon--comments-id"></i>
+                                <span class="orange">Comments</span>
                             </a>
                         </li>
-                        <li ng-class="{active: activeMenu == '3'}" ng-click="activeMenu='3'">
-                            <a ng-click="filterContent('product')" data-filterby="products" href="" class="message">
-                                <i class="m-icon m-icon--Messages"></i>
-                                Messages
+                        <li ng-class="{active: activeMenu == '2'}" ng-click="activeMenu='2'">
+                            <a href="/author/{{$permalink}}" class="my-post">
+                                <i class="blue m-icon m-icon--image"></i>
+                                <span class="blue">Posts</span>
                             </a>
                         </li>
+                        {{--<li ng-class="{active: activeMenu == '3'}" ng-click="activeMenu='3'">--}}
+                            {{--<a ng-click="filterContent('product')" data-filterby="products" href="" class="message">--}}
+                                {{--<i class="m-icon m-icon--Messages"></i>--}}
+                                {{--Messages--}}
+                            {{--</a>--}}
+                        {{--</li>--}}
                         <li ng-class="{active: activeMenu == '4'}" ng-click="activeMenu='4'">
                             <a data-filterby="photos" href="" class="my-product">
                                 <i class="m-icon m-icon--menu"></i>

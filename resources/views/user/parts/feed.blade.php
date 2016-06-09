@@ -1,4 +1,4 @@
-<div id="loadDynamicData" class="container">
+<div id="loadDynamicData" class="container hidden">
     <div class="col-md-3 side-bar hidden-xs hidden-sm">
         <div class="row">
             <ul class="nav sidenav">
