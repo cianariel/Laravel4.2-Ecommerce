@@ -8248,6 +8248,7 @@ body.profilepage{
             }
         }
     }
+
     #hero-nav{
         background: none;
         
@@ -8261,9 +8262,9 @@ body.profilepage{
             .all-activity{
                 color: #ff0042;
             }
-            .my-post{
-                color: #f7931e;
-            }
+            //.my-post{
+            //    color: #f7931e;
+            //}
             .message{
                 color: #3cb44a;
             }
@@ -8380,10 +8381,14 @@ body.profilepage{
     #btn-follow, #btn-add-friend{
         width: 127px;
     }
+  #btn-add-friend{
+    display: none;
+  }
     #btn-follow{
         float: left;
         color: #fff;
         margin-right: 10px;
+        margin-top: 12px;
         position: relative;
         background: $iridium;
         &:hover{
@@ -8392,7 +8397,7 @@ body.profilepage{
         i{
             font-size: 10px;
             right: 24px;
-            top: 12px;
+            top: 18px;
             position: absolute;
 /*            color: #000;*/
         }
