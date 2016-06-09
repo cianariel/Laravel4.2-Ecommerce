@@ -14,6 +14,8 @@ use App\Models\Contact;
 
 use App\Http\Requests;
 
+use Illuminate\Database\Eloquent\Collection;
+//use Illuminate\Support\Collection;
 use Illuminate\Http\Response as IlluminateResponse;
 use JWTAuth;
 
@@ -272,6 +274,56 @@ class UserController extends ApiController
         return view('user.user-profile', $data);
     }
 
+    public function userPostView($permalink)
+    {
+        // $this->getStoriesByAuthor(0,'Nicole');
+
+        if ($this->authCheck['method-status'] == 'success-with-http') {
+            $userData = $this->authCheck['user-data'];
+        }
+
+        $userProfileData = $this->user->checkUserByPermalink($permalink);
+
+        $userProfileData = $userProfileData != false ? $userProfileData : $userData;
+
+        $data = array(
+            'userData' => empty($userData) ? null : $userData,
+            'userProfileData' => $userProfileData,
+            'activity' => $this->comment->getCommentsAndHeatByUserId($userProfileData['id'], 10),
+            'profile' => ($userProfileData->medias[0]->media_link == '') ? \Config::get("const.user-image") : $userProfileData->medias[0]->media_link,
+            'fullname' => $userProfileData->name,
+            'address' => $userProfileData->userProfile->address,
+            'personalInfo' => $userProfileData->userProfile->personal_info,
+            'permalink' => $permalink,
+            'isAdmin' => empty($userData) ? null : ($userData->hasRole('admin') || $userData->hasRole('editor')),
+            'showEditOption' => false,
+            'showProfilePosts' => true
+
+        );
+
+        MetaTag::set('title', $userProfileData->name . ' | Ideaing');
+
+        // dd($data);
+        return view('user.user-profile', $data);
+    }
+
+    public function test()
+    {
+        $this->getStoriesByAuthor(0, 'Nicole');
+    }
+
+    public function getStoriesByAuthor()
+    {
+        $inputData = \Input::all();
+
+        $data = $this->user->ideasAuthorPost($inputData);
+
+        //dd($data);
+
+        return $this->setStatusCode(\Config::get("const.api-status.success"))
+                    ->makeResponse($data);
+    }
+
     public function hideSignup()
     {
         $this->setCookie('hide-signup', 'true', 1440);
@@ -404,21 +456,21 @@ class UserController extends ApiController
     // Fetch all subscriber and registered users data for admin to show the different types of count.
     public function getSubscribedUserAndRegistrationReport()
     {
-        $result['subscribe-popup'] = $this->getSubscribersCountBySource(['Source'=>'popup']);
-        $result['subscribe-popup-notice'] = $this->getSubscribersCountBySource(['Source'=>'popup-notice']);
-        $result['subscribe-ideas'] = $this->getSubscribersCountBySource(['Source'=>'ideas']);
-        $result['subscribe-footer'] = $this->getSubscribersCountBySource(['Source'=>'footer']);
-        $result['subscribe-home'] = $this->getSubscribersCountBySource(['Source'=>'home']);
-        $result['subscribe-total'] = $this->getSubscribersCountBySource(['Source'=>'']);
+        $result['subscribe-popup'] = $this->getSubscribersCountBySource(['Source' => 'popup']);
+        $result['subscribe-popup-notice'] = $this->getSubscribersCountBySource(['Source' => 'popup-notice']);
+        $result['subscribe-ideas'] = $this->getSubscribersCountBySource(['Source' => 'ideas']);
+        $result['subscribe-footer'] = $this->getSubscribersCountBySource(['Source' => 'footer']);
+        $result['subscribe-home'] = $this->getSubscribersCountBySource(['Source' => 'home']);
+        $result['subscribe-total'] = $this->getSubscribersCountBySource(['Source' => '']);
 
-        $result['register-direct'] = $this->getRegisteredUserCountBySource(['Source'=>'registration']);
-        $result['register-facebook'] = $this->getRegisteredUserCountBySource(['Source'=>'facebook']);
-        $result['register-others'] = $this->getRegisteredUserCountBySource(['Source'=>'others']);
-        $result['register-total'] = $this->getRegisteredUserCountBySource(['Source'=>'']);
+        $result['register-direct'] = $this->getRegisteredUserCountBySource(['Source' => 'registration']);
+        $result['register-facebook'] = $this->getRegisteredUserCountBySource(['Source' => 'facebook']);
+        $result['register-others'] = $this->getRegisteredUserCountBySource(['Source' => 'others']);
+        $result['register-total'] = $this->getRegisteredUserCountBySource(['Source' => '']);
 
 
         return $this->setStatusCode(\Config::get("const.api-status.success"))
-            ->makeResponse($result);
+                    ->makeResponse($result);
     }
 
 }

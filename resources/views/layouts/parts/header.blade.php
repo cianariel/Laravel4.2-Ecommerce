@@ -37,7 +37,7 @@ if(!isset($theGiveAway)){
                         </button>
                         <input ng-click="toggleSearch()" ng-change="openSearchDropdown(query)" ng-model="query"
                                ng-model-options='{ debounce: 800 }' class="form-control col-xs-10 top-search" type="text"
-                               value="Search..." placeholder="Search for products and ideas..." name="search"/>
+                               value="Search..." placeholder="Search for products and ideas..." name="search"  autocomplete="off"/>
                         <div id="suggest-category" ng-class="{shown: open, hidden: !open}" ng-show="categorySuggestions.length">
                             <?php // have to use only pure php includes, or the CMS wont read it
                             include('/var/www/ideaing/resources/views/layouts/parts/search-dropdown.blade.php')

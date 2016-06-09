@@ -580,5 +580,71 @@ class User extends Model implements AuthenticatableContract,
     }
 
 
+    public function ideasAuthorPost($data)
+    {
+        $offset = 0;
+        $permalink = $data['Permalink'];
+        $limit =$data['PostCount'];
+
+
+
+
+        $url = \URL::to('/') . '/ideas/feeds/index.php?count=' . $limit . '&offset=' . $offset . '&author_name=' . $permalink;
+          // dd($url);
+
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_HEADER, 0);
+        curl_setopt($ch, CURLOPT_VERBOSE, true);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+        curl_setopt($ch, CURLOPT_ENCODING, "");
+        $json = curl_exec($ch);
+
+        $ideaCollection = json_decode($json);
+
+      //  dd($ideaCollection);
+
+        $ideaCollection = empty($ideaCollection)?[]:$ideaCollection;
+
+
+        $ideas = new Collection();
+
+        $comment = new Comment();
+        $heart = new Heart();
+
+       // dd($ideaCollection);
+
+        foreach ($ideaCollection as $item) {
+
+            $tmpCollection = collect([
+                'id' => $item->id,
+                'title' => $item->title,
+                'content' => $item->content,
+                'category' => $item->category,
+                'category_all' => $item->category_all,
+                'is_deal' => $item->is_deal,
+                'url' => $item->url,
+                'raw_creation_date' => $item->raw_creation_date,
+                'creation_date' => $item->creation_date,
+                'updated_at' => $item->updated_at,
+                'image' => $item->image,
+                'author' => $data['AuthorName'],
+                'author_id' => $item->author_id,
+                'authorlink' => $item->authorlink,
+                'avator' => $data['AuthorPicture'],
+                'type' => $item->type,
+                'is_featured' => $item->is_featured,
+                'feed_image' => $item->feed_image,
+                'comment_count' => $comment->ideasCommentCounter($item->id),
+                'heart_count' => $heart->findHeartCountForItem(['Section'=>'ideas','ItemId'=>$item->id])->count()
+            ]);
+
+            $ideas->push($tmpCollection);
+
+        }
+            return $ideas;
+    }
+
 }
 
