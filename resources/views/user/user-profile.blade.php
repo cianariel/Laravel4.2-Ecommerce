@@ -89,15 +89,15 @@
                 <nav id="hero-nav">
                     <ul class=" main-content-filter ">
                         <li ng-class="{active: (activeMenu == '1' || !activeMenu)}" ng-click="activeMenu='1'">
-                            <a ng-click="filterContent(null)" href="" data-filterby="all" class="all-activity">
+                            <a {{--ng-click="filterContent(null)"--}} href="/user/profile/{{$permalink}}" data-filterby="all" class="all-activity">
                                 <i class="m-icon m-icon--menu"></i>
                                 All Activity
                             </a>
                         </li>
                         <li ng-class="{active: activeMenu == '2'}" ng-click="activeMenu='2'">
-                            <a href="{{--/user/profile/my-posts--}}" class="my-post">
+                            <a href="/author/{{$permalink}}" class="my-post">
                                 <i class="m-icon m-icon--image"></i>
-                                My Posts
+                                Posts
                             </a>
                         </li>
                         <li ng-class="{active: activeMenu == '3'}" ng-click="activeMenu='3'">
