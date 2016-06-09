@@ -7760,13 +7760,18 @@ body.single .article-content iframe {
   float: none;
   display: block; }
 body.single .related-items {
-  margin-bottom: 20px;
+  margin-bottom: 33px;
   padding-top: 15px;
   padding-bottom: 15px; }
+  body.single .related-items legend {
+    min-height: 40px; }
   body.single .related-items h3 {
     text-align: center;
-    font-weight: bold;
-    margin-bottom: 20px; }
+    font-weight: 700;
+    position: relative;
+    top: 29px;
+    max-width: 190px;
+    margin: 0 auto; }
 @media only screen and (max-width: 960px) {
   body.single .like-nav {
     width: 100%;

@@ -263,7 +263,10 @@
 //        print_r($json); die();
         ?>
         @if(isset($relatedProducts) && ($relatedProducts != null) && count($relatedProducts)>0 )
-        <h3 class="green">Related Products</h3>
+        <fieldset class="shoplanding-title">
+            <legend align="center"><h3 class="green pale-grey-bg">Related Product</h3></legend>
+        </fieldset>
+<!--        <h3 class="green">Related Products</h3>-->
         <div class="related-products grid-box-3">
             @foreach( $relatedProducts as $product )
             <div class="box-item product-box ">
@@ -306,7 +309,10 @@
             @endforeach
         </div>
         @endif
-        <h3 class="blue">Related Ideas</h3><br/>
+        <fieldset class="shoplanding-title">
+            <legend align="center"><h3 class="blue pale-grey-bg">Related Ideas</h3></legend>
+        </fieldset>
+<!--        <h3 class="blue">Related Ideas</h3><br/>-->
         <div class="related-ideas  grid-box-3">
 
             <!--                <section class="col-sm-12 related-stories">-->
