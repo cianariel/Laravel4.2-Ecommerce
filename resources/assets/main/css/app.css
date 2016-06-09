@@ -6904,30 +6904,6 @@ body.archive.category-deals #top-nav .nested a.m-icon-text-holder {
 body.shop-landing #top-nav a.m-icon-text-holder .box-link-active-line {
   margin-left: 10px; }
 
-body.single-post .mid-nav, body.single-post .mid-nav .extra-nav, .mid-nav body.single-post .extra-nav {
-  /*.active{
-      position: relative;
-      
-      > a{
-          background: #ed2049;
-          color: #fff !important;
-          box-shadow: none;
-          margin-right: 17px;
-          position: relative;
-          overflow: visible;
-          
-          .box-link-active-line{
-              position: absolute;
-              display: inline-block;
-              width: 0px;
-              border-left: 1px solid $light-grey;
-          }
-      }
-  }*/
-  /*.horizontal-line{
-      margin-right: 10px;
-      margin-top: 24px;
-  }*/ }
 body.single-post #top-nav .kitchen {
   position: relative; }
   body.single-post #top-nav .kitchen .box-link-active-line {
@@ -7897,6 +7873,8 @@ body.single .related-items {
     color: #FF0042;
     /* or whatever color you prefer */ }
 
+.idea-stories .mid-nav .mobile-menu .wrap, .mid-nav .idea-stories .extra-nav .mobile-menu .wrap {
+  margin-left: 10px; }
 .idea-stories .article-content p {
   font-family: montserratlight;
   color: black;

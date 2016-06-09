@@ -30,8 +30,8 @@ $cat_name = $cats[0]->name;
 <!--            </li>-->
         </ul>
     </div>
-    <div class="container mobile-menu visible-xs ">
-        <ul class="wrap col-lg-7">
+    <div class="container mobile-menu visible-xs full-620">
+        <ul class="wrap col-lg-7 full-620">
             <li class="box-link-ul">
                 <a href="/ideas/smart-home" class="box-link">Smart Home</a>
             </li>
@@ -41,36 +41,36 @@ $cat_name = $cats[0]->name;
             <li class="box-link-ul">
                 <a href="/ideas/style" class="box-link">Style</a>
             </li>
-<!--            <li class="box-link-ul">-->
-<!--                <a href="/ideas/style" class="box-link">{{$cat_name}}</a>-->
-<!--            </li>-->
+            <li class="box-link-ul">
+                <a href="/ideas/how-to" class="box-link">How To</a>
+            </li>
 
         </ul>
-        <a class="right-menu-arrow pull-right" data-toggle="#mobile-ideas-menu" href="#">
-            <i class="m-icon--Header-Dropdown down"></i>
-            <i class="m-icon--footer-up-arrow up"></i>
-        </a>
+<!--        <a class="right-menu-arrow pull-right" data-toggle="#mobile-ideas-menu" href="#">-->
+<!--            <i class="m-icon--Header-Dropdown down"></i>-->
+<!--            <i class="m-icon--footer-up-arrow up"></i>-->
+<!--        </a>-->
 
     </div>
 </nav>
-
-<div id="mobile-ideas-menu" class="mobile-top-menu mobile-mid-menu ">
-    <ul>
-        <li class="box-link-ul">
-            <a href="/ideas/smart-home" class="box-link">Smart Home</a>
-        </li>
-        <li class="box-link-ul">
-            <a href="/ideas/reviews" class="box-link">Reviews</a>
-        </li>
-        <li class="box-link-ul">
-            <a href="/ideas/style" class="box-link">Style</a>
-        </li>
-        <li class="box-link-ul">
-            <a href="/ideas/how-to" class="box-link">How To</a>
-        </li>
-    
-    </ul>
-</div>
+<!---->
+<!--<div id="mobile-ideas-menu" class="mobile-top-menu mobile-mid-menu ">-->
+<!--    <ul>-->
+<!--        <li class="box-link-ul">-->
+<!--            <a href="/ideas/smart-home" class="box-link">Smart Home</a>-->
+<!--        </li>-->
+<!--        <li class="box-link-ul">-->
+<!--            <a href="/ideas/reviews" class="box-link">Reviews</a>-->
+<!--        </li>-->
+<!--        <li class="box-link-ul">-->
+<!--            <a href="/ideas/style" class="box-link">Style</a>-->
+<!--        </li>-->
+<!--        <li class="box-link-ul">-->
+<!--            <a href="/ideas/how-to" class="box-link">How To</a>-->
+<!--        </li>-->
+<!---->
+<!--    </ul>-->
+<!--</div>-->
 
 
 <section id="hero" class="landing-hero" >

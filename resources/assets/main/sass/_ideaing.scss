@@ -3366,32 +3366,6 @@ body.shop-landing #top-nav a.m-icon-text-holder .box-link-active-line{
 
 
 body.single-post{
-    .mid-nav {
-        /*.active{
-            position: relative;
-            
-            > a{
-                background: #ed2049;
-                color: #fff !important;
-                box-shadow: none;
-                margin-right: 17px;
-                position: relative;
-                overflow: visible;
-                
-                .box-link-active-line{
-                    position: absolute;
-                    display: inline-block;
-                    width: 0px;
-                    border-left: 1px solid $light-grey;
-                }
-            }
-        }*/
-        
-        /*.horizontal-line{
-            margin-right: 10px;
-            margin-top: 24px;
-        }*/
-    }
     #top-nav .kitchen{
         position: relative;
         .box-link-active-line{
@@ -4992,11 +4966,13 @@ body.single{
 }
 
 .idea-stories{
-
-  //article.post{
-  //  position: relative;
-  //  overflow: visible;
-  //}
+  .mid-nav{
+    .mobile-menu{
+      .wrap{
+        margin-left: 10px;
+      }
+    }
+  }
 
   .article-content{
     p{
