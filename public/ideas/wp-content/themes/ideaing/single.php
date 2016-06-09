@@ -264,7 +264,7 @@
         ?>
         @if(isset($relatedProducts) && ($relatedProducts != null) && count($relatedProducts)>0 )
         <fieldset class="shoplanding-title">
-            <legend align="center"><h3 class="green pale-grey-bg">Related Product</h3></legend>
+            <legend align="center"><h3 class="green pale-grey-bg">Related Products</h3></legend>
         </fieldset>
 <!--        <h3 class="green">Related Products</h3>-->
         <div class="related-products grid-box-3">
