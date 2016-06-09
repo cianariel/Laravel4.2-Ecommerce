@@ -2477,7 +2477,7 @@ article.product{
   background: #fff;
   z-index: 40;
   position: absolute;
-  top: 0;
+  top: -3px;
 
   button{
    
@@ -7185,7 +7185,7 @@ footer.about-footer{
     }
 
     .search-bar{
-      width: 27px;
+      //width: 27px;
       a {
         margin-right: 0;
       }
