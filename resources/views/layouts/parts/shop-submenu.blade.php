@@ -3,14 +3,9 @@
                 <div class="container full-sm">
                     <section class="most-popular col-xs-4" ng-repeat="item in productsForShopMenu.mostPopular">
                         <h5 class="sub-title"><a href="/shop/">Most Popular</a></h5>
-
                         <div class="img-wrap">
                             <img class="img-responsive" src="{{item.media_link_full_path}}">
                         </div>
-                        <div class="static">
-                         <!--   <span class="in">In {{item.category_name}}</span> -->
-                            <b><a class="static" href="/product/{{item.product_permalink}}">{{item.product_name}}</a></b>
-                        </div> 
                     </section>
 
                     <section class="smart-home col-xs-2">
