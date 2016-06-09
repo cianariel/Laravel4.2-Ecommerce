@@ -4534,6 +4534,9 @@ a:hover, a:focus {
 .full-wide {
   width: 100%; }
 
+@media (max-width: 480px) {
+  .left-padded-xs {
+    padding-left: 30px; } }
 .turn-left, .mobile-search-bar .close-button i:before {
   display: inline-block;
   -ms-transform: rotate(45deg);
@@ -4738,6 +4741,12 @@ body,
 html {
   overflow-x: hidden; }
 
+@media (max-width: 767px) {
+  .shown-xs {
+    display: block !important; } }
+@media (max-width: 991px) {
+  .shown-sm {
+    display: block !important; } }
 .lamp-logo {
   display: block;
   width: 45px;
@@ -6469,7 +6478,6 @@ header.colophon {
   min-height: 60px; }
   header.colophon #top-nav a.signin {
     float: right;
-    padding-left: 10px;
     white-space: nowrap;
     padding-right: 0px; }
     header.colophon #top-nav a.signin .m-icon {
@@ -8641,7 +8649,18 @@ footer.about-footer {
     padding: 3px 12px;
     border-radius: 4px;
     border: 0;
-    float: left; }
+    float: left;
+    color: #fff; }
+    footer.about-footer input[type="text"]::-webkit-input-placeholder {
+      color: #c7c7c7; }
+    footer.about-footer input[type="text"]:-moz-placeholder {
+      /* Firefox 18- */
+      color: #c7c7c7; }
+    footer.about-footer input[type="text"]::-moz-placeholder {
+      /* Firefox 19+ */
+      color: #c7c7c7; }
+    footer.about-footer input[type="text"]:-ms-input-placeholder {
+      color: #c7c7c7; }
   footer.about-footer input[type="submit"] {
     width: 75px;
     float: left;
@@ -9572,32 +9591,51 @@ footer.about-footer {
 #back-to-top {
   bottom: 35px; }
 
-body.shoppage .mid-nav .container, .mid-nav body.shoppage .extra-nav .container {
+body.shoppage .mid-nav .container, .mid-nav body.shoppage .extra-nav .container,
+body.category-deals .mid-nav .container,
+.mid-nav body.category-deals .extra-nav .container {
   position: relative; }
-  body.shoppage .mid-nav .container a.browse-all, .mid-nav body.shoppage .extra-nav .container a.browse-all {
+  body.shoppage .mid-nav .container a.browse-all, .mid-nav body.shoppage .extra-nav .container a.browse-all,
+  body.category-deals .mid-nav .container a.browse-all,
+  .mid-nav body.category-deals .extra-nav .container a.browse-all {
     position: absolute;
     right: 0px;
     top: 0px;
     overflow: visible; }
-    body.shoppage .mid-nav .container a.browse-all .box-link-active-line, .mid-nav body.shoppage .extra-nav .container a.browse-all .box-link-active-line {
+    body.shoppage .mid-nav .container a.browse-all .box-link-active-line, .mid-nav body.shoppage .extra-nav .container a.browse-all .box-link-active-line,
+    body.category-deals .mid-nav .container a.browse-all .box-link-active-line,
+    .mid-nav body.category-deals .extra-nav .container a.browse-all .box-link-active-line {
       position: absolute;
       top: -15px; }
-body.shoppage .mid-nav .shop-landing-submenu.wrap, .mid-nav body.shoppage .extra-nav .shop-landing-submenu.wrap {
+body.shoppage .mid-nav .shop-landing-submenu.wrap, .mid-nav body.shoppage .extra-nav .shop-landing-submenu.wrap,
+body.category-deals .mid-nav .shop-landing-submenu.wrap,
+.mid-nav body.category-deals .extra-nav .shop-landing-submenu.wrap {
   text-align: center; }
-  body.shoppage .mid-nav .shop-landing-submenu.wrap li, .mid-nav body.shoppage .extra-nav .shop-landing-submenu.wrap li {
+  body.shoppage .mid-nav .shop-landing-submenu.wrap li, .mid-nav body.shoppage .extra-nav .shop-landing-submenu.wrap li,
+  body.category-deals .mid-nav .shop-landing-submenu.wrap li,
+  .mid-nav body.category-deals .extra-nav .shop-landing-submenu.wrap li {
     display: inline-block; }
-  body.shoppage .mid-nav .shop-landing-submenu.wrap a, .mid-nav body.shoppage .extra-nav .shop-landing-submenu.wrap a {
+  body.shoppage .mid-nav .shop-landing-submenu.wrap a, .mid-nav body.shoppage .extra-nav .shop-landing-submenu.wrap a,
+  body.category-deals .mid-nav .shop-landing-submenu.wrap a,
+  .mid-nav body.category-deals .extra-nav .shop-landing-submenu.wrap a {
     margin-right: 0px; }
-    body.shoppage .mid-nav .shop-landing-submenu.wrap a .box-link-active-line, .mid-nav body.shoppage .extra-nav .shop-landing-submenu.wrap a .box-link-active-line {
+    body.shoppage .mid-nav .shop-landing-submenu.wrap a .box-link-active-line, .mid-nav body.shoppage .extra-nav .shop-landing-submenu.wrap a .box-link-active-line,
+    body.category-deals .mid-nav .shop-landing-submenu.wrap a .box-link-active-line,
+    .mid-nav body.category-deals .extra-nav .shop-landing-submenu.wrap a .box-link-active-line {
       display: none; }
-    body.shoppage .mid-nav .shop-landing-submenu.wrap a.active .box-link-active-line, .mid-nav body.shoppage .extra-nav .shop-landing-submenu.wrap a.active .box-link-active-line {
+    body.shoppage .mid-nav .shop-landing-submenu.wrap a.active .box-link-active-line, .mid-nav body.shoppage .extra-nav .shop-landing-submenu.wrap a.active .box-link-active-line,
+    body.category-deals .mid-nav .shop-landing-submenu.wrap a.active .box-link-active-line,
+    .mid-nav body.category-deals .extra-nav .shop-landing-submenu.wrap a.active .box-link-active-line {
       display: inline-block; }
   @media (max-width: 460px) {
-    body.shoppage .mid-nav .shop-landing-submenu.wrap .box-link, .mid-nav body.shoppage .extra-nav .shop-landing-submenu.wrap .box-link {
+    body.shoppage .mid-nav .shop-landing-submenu.wrap .box-link, .mid-nav body.shoppage .extra-nav .shop-landing-submenu.wrap .box-link,
+    body.category-deals .mid-nav .shop-landing-submenu.wrap .box-link,
+    .mid-nav body.category-deals .extra-nav .shop-landing-submenu.wrap .box-link {
       margin-left: 0px !important;
       margin-right: 0px;
       font-size: 11px; } }
-body.shoppage .app-wrap {
+body.shoppage .app-wrap,
+body.category-deals .app-wrap {
   overflow: hidden;
   padding-bottom: 40px; }
 
@@ -10583,8 +10621,19 @@ html.hide-overflow {
 #all-shop-menu-mobile {
   top: 115px; }
 
+.giveaway-icon {
+  display: block;
+  position: absolute;
+  top: 8px;
+  width: 202px;
+  height: 59px;
+  text-indent: -9999px;
+  background: url(/assets/images/giveaway.svg) 0 -110px/220px no-repeat; }
+
 #subscribe_email_popup {
   background-color: #fff !important; }
+  #subscribe_email_popup h4 {
+    text-align: center; }
   #subscribe_email_popup ul, #subscribe_email_popup .email-banner ul {
     list-style: none;
     padding: 0;
@@ -10599,29 +10648,27 @@ html.hide-overflow {
     font-size: 2rem;
     color: #FF0042;
     /* or whatever color you prefer */ }
+  #subscribe_email_popup .btn-success, #subscribe_email_popup .email-banner .btn-success {
+    padding-top: 13px; }
 
-.subscribe_email_popup #subscribe_email_popup {
+@media (min-width: 620px) {
+  .subscribe_email_popup .img-holder {
+    position: absolute;
+    top: -50px;
+    left: -100px; }
+    .subscribe_email_popup .img-holder > img {
+      border: 2px solid #fff;
+      border-radius: 500px; } }
+.subscribe_email_popup .content-container {
   padding: 25px; }
-.subscribe_email_popup .img-holder {
-  position: absolute;
-  top: -50px;
-  left: -100px; }
-  .subscribe_email_popup .img-holder > img {
-    border: 2px solid #fff;
-    border-radius: 500px; }
 @media (max-width: 990px) {
   .subscribe_email_popup .content-container {
-    margin-top: 50px;
-    margin-bottom: 50px;
-    width: 100%; }
-  .subscribe_email_popup .img-holder {
-    display: none; } }
+    width: 100%; } }
 @media (min-width: 991px) {
   .subscribe_email_popup .modal-dialog {
     top: 40px; }
   .subscribe_email_popup .content-container {
     margin-top: 50px;
-    margin-bottom: 50px;
     width: calc(100% - 250px);
     float: right; } }
 
@@ -11139,13 +11186,17 @@ body.giveaway-page .hero-box {
   body.giveaway-page .hero-box input[name=email], body.giveaway-page .hero-box input[placeholder="Email"] {
     padding-left: 40px; }
 body.giveaway-page .btn-success {
-  text-transform: uppercase; }
+  text-transform: uppercase;
+  padding-top: 13px; }
 body.giveaway-page .giveaway-content {
   padding-top: 30px; }
   body.giveaway-page .giveaway-content p,
   body.giveaway-page .giveaway-content .giveaway_desc,
   body.giveaway-page .giveaway-content .giveaway-toc {
     font-size: 2rem; }
+  body.giveaway-page .giveaway-content ul.giveaway-signup,
+  body.giveaway-page .giveaway-content .login-switcher {
+    font-size: 1.7rem; }
   body.giveaway-page .giveaway-content h2 {
     font-size: 2.5rem; }
 body.giveaway-page ul.pointed {

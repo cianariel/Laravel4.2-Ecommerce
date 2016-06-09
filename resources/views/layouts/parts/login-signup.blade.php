@@ -55,10 +55,10 @@
             </uib-alert>
         </div>
         <nav class="col-xs-12 login-controls contentable">
-            <span data-toggle="#login-modal" data-hide="#signup-modal" class="col-xs-6 active">Log in</span>
-            <span data-toggle="#signup-modal" data-hide="#login-modal" class="col-xs-6">Sign up</span>
+            <span data-toggle="#signup-modal" data-hide="#login-modal" class="col-xs-6 active">Sign up</span>
+            <span data-toggle="#login-modal" data-hide="#signup-modal" class="col-xs-6">Log in</span>
         </nav>
-        <div id="login-modal" class="modal-content contentable hero-box qiuck-signup modal-login">
+        <div id="login-modal" class="modal-content contentable hero-box qiuck-signup modal-login hidden-soft">
             <form>
                 <a class="btn btn-info col-xs-12"  ng-click="registerWithFB()" href="#"><i class="m-icon m-icon--facebook-id"></i>Log in with Facebook</a>
                 <div class="line-wrap modal-minor-text">or</div>
@@ -79,7 +79,7 @@
 
             </form>
         </div>
-        <div id="signup-modal" class="modal-content hero-box qiuck-signup modal-login hidden-soft">
+        <div id="signup-modal" class="modal-content hero-box qiuck-signup modal-login">
             <form>
                 <a class="btn btn-info col-xs-12" ng-click="registerWithFB()" href="#"><i class="m-icon m-icon--facebook-id"></i>Sign up with Facebook</a>
                 <div class="line-wrap modal-minor-text">or</div>

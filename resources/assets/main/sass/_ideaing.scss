@@ -86,6 +86,13 @@ a:hover, a:focus{
   width: 100%;
 }
 
+@media (max-width:480px) {
+  .left-padded-xs{
+    padding-left: 30px;
+  }
+
+}
+
 .turn-left{
   display: inline-block;
   -ms-transform: rotate(45deg); /* IE 9 */
@@ -389,8 +396,15 @@ html{
   overflow-x: hidden;
 }
 
-.main-content{
-  //overflow: hidden;
+@media (max-width: 767px) {
+  .shown-xs{
+    display: block !important;
+  }
+}
+@media (max-width: 991px) {
+  .shown-sm{
+    display: block !important;
+  }
 }
 
 .lamp-logo{
@@ -2731,7 +2745,7 @@ header.colophon{
         a.signin{
 
             float: right;
-            padding-left: 10px;
+            //padding-left: 10px;
             white-space: nowrap;
             padding-right: 0px;
             .m-icon{
@@ -4321,8 +4335,6 @@ header.sub-head{
   background: transparent;
   border: 1px solid rgba($pale-grey, .2);
   box-shadow: none;
-
-
 
   .btn{
     font-size: 1.2rem;
@@ -5987,7 +5999,23 @@ footer.about-footer{
     border-radius: 4px;
     border: 0;
     float: left;
-    //outline: ;
+    color: #fff;
+
+    &::-webkit-input-placeholder {
+      color: #c7c7c7;
+    }
+
+    &:-moz-placeholder { /* Firefox 18- */
+      color: #c7c7c7;
+    }
+
+    &::-moz-placeholder {  /* Firefox 19+ */
+      color: #c7c7c7;
+    }
+
+    &:-ms-input-placeholder {
+      color: #c7c7c7;
+    }
   }
 
   input[type="submit"]{
@@ -7592,7 +7620,8 @@ footer.about-footer{
 }
 
 
-body.shoppage{
+body.shoppage,
+body.category-deals{
     .mid-nav{
         .container{
             position: relative;
@@ -9060,8 +9089,22 @@ html.hide-overflow{
     top: 115px;
 }
 
+.giveaway-icon{
+  display: block;
+  position: absolute;
+  top: 8px;
+  width: 202px;
+  height: 59px;
+  text-indent: -9999px;
+  background: url(/assets/images/giveaway.svg) 0 -110px/220px no-repeat;
+}
+
 #subscribe_email_popup{
   background-color:#fff !important;
+
+  h4{
+    text-align: center;
+  }
 
   &, .email-banner{
     ul {
@@ -9082,34 +9125,39 @@ html.hide-overflow{
       font-size: 2rem;
       color: $iridium; /* or whatever color you prefer */
     }
+    .btn-success{
+      padding-top: 13px;
+    }
   }
 
 }
 
 .subscribe_email_popup{
 
-    #subscribe_email_popup{
-        padding: 25px;
-    }
+    //#subscribe_email_popup{
+    //    padding: 25px;
+    //}
     .img-holder{
+      @media (min-width: 620px){
         position: absolute;
         top: -50px;
         left: -100px;
         >img{
-            border: 2px solid #fff;
-            border-radius: 500px;
+          border: 2px solid #fff;
+          border-radius: 500px;
         }
+      }
+
     }
 
+  .content-container{
+      padding: 25px;
+  }
 
     @media (max-width: 990px){
         .content-container{
-            margin-top: 50px;
-            margin-bottom: 50px;
+            //margin-top: 50px;
             width: 100%;
-        }
-        .img-holder{
-            display: none;
         }
     }
     @media (min-width: 991px){
@@ -9118,7 +9166,7 @@ html.hide-overflow{
         }
         .content-container{
             margin-top: 50px;
-            margin-bottom: 50px;
+            //margin-bottom: 50px;
             width: calc(100% - 250px);
             float: right;
         }
@@ -9812,12 +9860,7 @@ body.giveaway-page{
       text-decoration: underline;
     }
 
-    //.m-icon--email-form-id.black{
-    //  margin-top: 3px;
-    //}
-
    input{
-     //&[type=text]
      &[name=email],
      &[placeholder="Email"]
      {
@@ -9829,6 +9872,7 @@ body.giveaway-page{
 
   .btn-success{
     text-transform: uppercase;
+    padding-top: 13px;
   }
   .giveaway-content{
     padding-top: 30px;
@@ -9837,6 +9881,10 @@ body.giveaway-page{
     .giveaway_desc,
     .giveaway-toc{
       font-size: 2rem;
+    }
+    ul.giveaway-signup,
+    .login-switcher{
+      font-size: 1.7rem;
     }
 
     h2{
