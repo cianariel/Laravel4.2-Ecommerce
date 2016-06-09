@@ -14,6 +14,8 @@ use App\Models\Contact;
 
 use App\Http\Requests;
 
+use Illuminate\Database\Eloquent\Collection;
+//use Illuminate\Support\Collection;
 use Illuminate\Http\Response as IlluminateResponse;
 use JWTAuth;
 
@@ -274,7 +276,7 @@ class UserController extends ApiController
 
     public function userPostView($permalink)
     {
-       // $this->getStoriesByAuthor(0,'Nicole');
+        // $this->getStoriesByAuthor(0,'Nicole');
 
         if ($this->authCheck['method-status'] == 'success-with-http') {
             $userData = $this->authCheck['user-data'];
@@ -295,7 +297,7 @@ class UserController extends ApiController
             'permalink' => $permalink,
             'isAdmin' => empty($userData) ? null : ($userData->hasRole('admin') || $userData->hasRole('editor')),
             'showEditOption' => false,
-            'showProfilePosts' =>true
+            'showProfilePosts' => true
 
         );
 
@@ -305,30 +307,21 @@ class UserController extends ApiController
         return view('user.user-profile', $data);
     }
 
-    public function getStoriesByAuthor($offset, $permalink, $limit = 10)
+    public function test()
     {
+        $this->getStoriesByAuthor(0, 'Nicole');
+    }
 
-        $url = \URL::to('/') . '/ideas/feeds/index.php?count=' . $limit . '&offset=' . $offset . '&author_name=' . $permalink;
+    public function getStoriesByAuthor()
+    {
+        $inputData = \Input::all();
 
-        $ch = curl_init();
-        curl_setopt($ch, CURLOPT_URL, $url);
-        curl_setopt($ch, CURLOPT_HEADER, 0);
-        curl_setopt($ch, CURLOPT_VERBOSE, true);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-        curl_setopt($ch, CURLOPT_ENCODING, "");
-        $json = curl_exec($ch);
+        $data = $this->user->ideasAuthorPost(0, $inputData['Permalink'], $inputData['PostCount']);
 
-        //  echo $json;
-        //  die();
+        //dd($data);
 
-        //  $return = json_decode($json);
-
-        $ideaCollection = json_decode($json);
-
-        dd($ideaCollection);
-
-
+        return $this->setStatusCode(\Config::get("const.api-status.success"))
+                    ->makeResponse($data);
     }
 
     public function hideSignup()
