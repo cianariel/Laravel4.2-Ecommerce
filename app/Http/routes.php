@@ -22,7 +22,7 @@
 
 // test route
 
-//Route::get('x/{email}', 'UserController@isSubscribed');
+Route::get('x', 'UserController@test');
 
 
 Route::any('secure-page-header', 'UserController@securePageHeader');
@@ -226,6 +226,9 @@ Route::group(['prefix' => 'api'], function () {
     Route::post('subscribe', 'UserController@emailSubscription');
 
     Route::post('contact-us', 'UserController@postContactUsInfo');
+    Route::post('user/posts', 'UserController@getStoriesByAuthor');
+
+
 
 
 
@@ -301,6 +304,8 @@ Route::get('shop/{grandParent?}/{parent?}/{child?}', ['as' => 'shopCategory', 'u
 //User Profile
 Route::get('user/profile', 'UserController@userProfile');
 Route::get('user/profile/{permalink?}', 'UserController@viewPublicProfile');
+Route::get('author/{permalink?}', 'UserController@userPostView');
+
 
 
 // Route for password reset , email verification ,feed example

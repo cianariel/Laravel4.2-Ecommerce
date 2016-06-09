@@ -5055,6 +5055,30 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
 
         };
 
+        // Load user activity like/comment in user profile
+        $scope.userPostList = function (parmalink, count) {
+
+            if ($scope.userActivityCount == null)
+                $scope.userActivityCount = count;
+            else
+                $scope.userActivityCount = $scope.userActivityCount + count;
+
+            $http({
+                url: '/api/user/posts',
+                method: "POST",
+                data: {
+                    Permalink: parmalink,
+                    PostCount: $scope.userActivityCount,
+                    AuthorPicture: $window.profilePicture,
+                    AuthorName: $window.profileFullName,
+                }
+
+            }).success(function (data) {
+                $scope.userPostData = data.data;
+            });
+
+        };
+
 
         $scope.registerWithFB = function () {
 
