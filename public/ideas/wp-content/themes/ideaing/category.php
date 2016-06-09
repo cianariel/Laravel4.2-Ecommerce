@@ -9,10 +9,10 @@ $currentCat = $cat->slug;
 
 ?>
 <nav class="mid-nav" >
-    <div class="container">
+    <div class="container full-sm fixed-sm">
     </div>
             @if($currentCat == 'deals')
-        <ul class="wrap col-lg-5">
+            <ul class="wrap shop-landing-submenu">
                 <li class="box-link-ul ">
                     <a class="box-link " href="/shop/smart-home">
                         SMART HOME
@@ -33,7 +33,7 @@ $currentCat = $cat->slug;
                         HOME & DECOR
                     </a>
                 </li>
-                <li class="box-link-ul ">
+                <li class="box-link-ul hidden-xs">
                     <a class="box-link active" href="/ideas/deals">
                         DEALS
                     </a>

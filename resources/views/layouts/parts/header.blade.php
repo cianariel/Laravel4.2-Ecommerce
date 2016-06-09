@@ -12,6 +12,15 @@ if (function_exists('is_single')) {
     }
 }
 
+if(!isset($theGiveAway)){
+    if(!function_exists('is_single')){
+        $theGiveAway = PageHelper::getCurrentGiveaway();
+    }else{
+        $json = file_get_contents('http://ideaing.dev/api/giveaway/get-current');
+        $theGiveAway = json_decode($json);
+    }
+}
+
 // print_r($userData); die();
 ?> 
 
@@ -201,7 +210,7 @@ if (function_exists('is_single')) {
                                     <span class="notification-count ng-binding">1</span>
                                 </a>
                                 <a class="pull-right signin" data-toggle="modal" data-target="#myModal" href="/login"><i
-                                            class="m-icon m-icon--user"></i> Log in</a>
+                                            class="m-icon m-icon--user"></i> Sign up</a>
                                 <?php } ?>
                                 <a href="#" class="search-toggle visible-xs pull-right"
                                    data-toggle=".mobile-search-bar"><i class="m-icon m-icon--search-id"></i></a>
@@ -550,14 +559,19 @@ if (function_exists('is_single')) {
 <script type="text/ng-template" id="subscribe_email_popup.html">
     <div id="subscribe_email_popup">
         <div id="publicApp">
+            <?php if(isset($theGiveAway) && $theGiveAway->giveaway_image){
+                echo '<img class="hidden-soft shown-sm" src="'.$theGiveAway->giveaway_image.'">';
+            }
+            ?>
+            <div class="giveaway-icon"></div>
             <div class="content-container">
                 <div class="content-holder">
                     <div>
-                        <h4>Subscribe to the world’s finest Smart Home & Design Ideas</h4></div>
+                        <h4>Subscribe to the world’s finest Smart Home & Interior Design Ideas</h4></div>
                     <ul>
                         <li>Enter to win Free Smart Home devices</li>
-                        <li>Get exclusive coupons & deals on Smart Home devices</li>
-                        <li>Randomly selected to win a complete Smart Home make-over</li>
+                        <li>Get exclusive coupons & deals</li>
+                        <li>Get tips to transform your home to a Smart Home</li>
                     </ul>
                     <br>
                     <div>
@@ -569,19 +583,20 @@ if (function_exists('is_single')) {
                                 <i class="m-icon m-icon--email-form-id black"></i>
                                <input class="form-control" ng-model="data.SubscriberEmail" placeholder="me@email.com" type="text">
                         </span>
-                        </div>
-                    <br>
-                    <div>
-                        <a class="btn btn-success form-control" ng-click="subscribe(data,'popup')">Subscribe to Ideaing's
-                            newsletter</a>
                     </div>
                     <br>
-                    <p>
-                        <a href="#" ng-click="hideAndForget()">No, thanks</a>
+                    <div>
+                        <a class="btn btn-success form-control" ng-click="subscribe(data,'popup')">Subscribe</a>
+                    </div>
+                    <br>
+                    <p class="text-center">
+                        <a href="#" ng-click="hideAndForget()">Not right now, I don’t want free Smart Home gadgets</a>
                     </p>
                 </div>
             </div>
-            <div class="img-holder head-image-holder"><img src="/assets/images/emailpopupimg.png"></div>
+            <div class="img-holder head-image-holder hidden-sm hidden-xs">
+                <img  src="/assets/images/emailpopupimg.png">
+            </div>
             <div class="clearfix"></div>
         </div>
     </div>
