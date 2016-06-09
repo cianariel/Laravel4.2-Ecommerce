@@ -226,6 +226,9 @@ Route::group(['prefix' => 'api'], function () {
     Route::post('subscribe', 'UserController@emailSubscription');
 
     Route::post('contact-us', 'UserController@postContactUsInfo');
+    Route::post('user/posts', 'UserController@getStoriesByAuthor');
+
+
 
 
 
