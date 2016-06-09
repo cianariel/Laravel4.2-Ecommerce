@@ -6303,7 +6303,7 @@ article.product {
   background: #fff;
   z-index: 40;
   position: absolute;
-  top: 0; }
+  top: -3px; }
   .mobile-search-bar button {
     padding-right: 12px;
     float: right;
@@ -9293,10 +9293,8 @@ footer.about-footer {
   #top-nav .mobile-wrap {
     width: 225px;
     float: right; }
-  #top-nav .search-bar {
-    width: 27px; }
-    #top-nav .search-bar a {
-      margin-right: 0; }
+  #top-nav .search-bar a {
+    margin-right: 0; }
 
   header.colophon #top-nav .category-menu {
     margin-left: 0; }

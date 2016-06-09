@@ -28,6 +28,27 @@ if(!isset($theGiveAway)){
     <header class="colophon">
         <div ng-init="socialCounter()" class="socialcounter col-xs-12">
             <nav id="top-nav" class="row">
+
+                <form class="search-bar" ng-app="publicApp" ng-controller="SearchController" action="/search-form-query">
+                    <div class="mobile-search-bar col-xs-12" ng-cloak>
+                        <button type="submit">
+                    <span class="m-icon--search-id">
+                    </span>
+                        </button>
+                        <input ng-click="toggleSearch()" ng-change="openSearchDropdown(query)" ng-model="query"
+                               ng-model-options='{ debounce: 800 }' class="form-control col-xs-10 top-search" type="text"
+                               value="Search..." placeholder="Search for products and ideas..." name="search"/>
+                        <div id="suggest-category" ng-class="{shown: open, hidden: !open}" ng-show="categorySuggestions.length">
+                            <?php // have to use only pure php includes, or the CMS wont read it
+                            include('/var/www/ideaing/resources/views/layouts/parts/search-dropdown.blade.php')
+                            ?>
+                        </div>
+                <span class="close-button close-login" data-toggle=".mobile-search-bar">
+                    <i class="turn-left m-icon--Header-Dropdown"></i>
+                </span>
+                    </div>
+                </form>
+
                 <div class="container full-sm fixed-sm">
                     <div class="top-nav-holder">
                         <div class="col-xs-5 col-sm-5 category-menu">
@@ -275,35 +296,14 @@ if(!isset($theGiveAway)){
                         </li>
                     </ul>
                 </div>
+
             </nav>
+
         </div>
-
-        <form class="search-bar" ng-app="publicApp" ng-controller="SearchController" action="/search-form-query">
-            <div class="mobile-search-bar col-xs-12" ng-cloak>
-                <button type="submit">
-                    <span class="m-icon--search-id">
-                    </span>
-                </button>
-                <input ng-click="toggleSearch()" ng-change="openSearchDropdown(query)" ng-model="query"
-                       ng-model-options='{ debounce: 800 }' class="form-control col-xs-10 top-search" type="text"
-                       value="Search..." placeholder="Search for products and ideas..." name="search"/>
-                <div id="suggest-category" ng-class="{shown: open, hidden: !open}" ng-show="categorySuggestions.length">
-                    <?php // have to use only pure php includes, or the CMS wont read it
-                    include('/var/www/ideaing/resources/views/layouts/parts/search-dropdown.blade.php')
-                    ?>
-                </div>
-                <span class="close-button close-login" data-toggle=".mobile-search-bar">
-                    <i class="turn-left m-icon--Header-Dropdown"></i>
-                </span>
-            </div>
-        </form>
-
 
     <?php // have to use only pure php includes, or the CMS wont read it
     include('/var/www/ideaing/resources/views/layouts/parts/shop-submenu.blade.php')
     ?>
-
-
     </header>
 
     <?php
