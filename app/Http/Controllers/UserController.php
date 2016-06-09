@@ -316,7 +316,7 @@ class UserController extends ApiController
     {
         $inputData = \Input::all();
 
-        $data = $this->user->ideasAuthorPost(0, $inputData['Permalink'], $inputData['PostCount']);
+        $data = $this->user->ideasAuthorPost($inputData);
 
         //dd($data);
 

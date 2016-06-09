@@ -580,8 +580,11 @@ class User extends Model implements AuthenticatableContract,
     }
 
 
-    public function ideasAuthorPost($offset, $permalink, $limit)
+    public function ideasAuthorPost($data)
     {
+        $offset = 0;
+        $permalink = $data['Permalink'];
+        $limit =$data['PostCount'];
 
         $url = \URL::to('/') . '/ideas/feeds/index.php?count=' . $limit . '&offset=' . $offset . '&author_name=' . $permalink;
 
@@ -622,10 +625,10 @@ class User extends Model implements AuthenticatableContract,
                 'creation_date' => $item->creation_date,
                 'updated_at' => $item->updated_at,
                 'image' => $item->image,
-                'author' => $item->author,
+                'author' => $data['AuthorName'],
                 'author_id' => $item->author_id,
                 'authorlink' => $item->authorlink,
-                'avator' => $item->avator,
+                'avator' => $data['AuthorPicture'],
                 'type' => $item->type,
                 'is_featured' => $item->is_featured,
                 'feed_image' => $item->feed_image,
