@@ -28,7 +28,7 @@
             var profilePicture = '{{$profile}}';
             var profileFullName = '{{$fullname}}';
         </script>
-        <div class="col-md-9 main-content" ng-init="userPostList('{{$permalink}}', 6)">
+        <div class="col-md-12 main-content" ng-init="userPostList('{{$permalink}}', 6)">
             <div class="row">
 
                 <div ng-repeat="item in userPostData">
@@ -39,30 +39,34 @@
                                 <div class="row">
                                     <div class="col-xs-12">
                                         <div class="pull-left">
-                                            <img ng-src="@{{item}}" width="50px" class="profile-photo" alt="">
+                                            <img ng-src="@{{item.avator}}" width="50px" class="profile-photo" alt="">
                                         </div>
                                         <div class="pull-left name-time">
-                                            <strong>@{{$fullname}}</strong> <i class="m-icon--heart-solid"></i><br>
-                                            <span class="time">Yesterday at 14:45pm</span>
+
+                                            <strong>@{{item.author}}</strong> <i class="m-icon--heart-solid"></i><br>
+                                            <span class="time">@{{item.creation_date}}</span>
+
                                         </div>
-                                        <div class="pull-right">
+                                        {{--<div class="pull-right">
                                             <a href="#">
                                                 Actions
                                                 <span class="caret"></span>
                                             </a>
-                                        </div>
+                                        </div>--}}
                                     </div>
                                 </div>
                             </div>
                             <div class="feed-body ">
                                 <div class="row">
                                     <div class="col-xs-12">
-                                        <img src="/assets/images/feed1.jpg">
+                                        <img ng-src="@{{ item.image }}">
                                     </div>
                                     <div class="col-xs-12">
                                         <br>
-                                        <strong>You recently liked a story</strong><br> Epic samle happneing right now
-                                        of all Apple devices in the 2015 Festive season across the boards!
+                                        <a href="@{{ item.url }}" target="_blank">
+                                            <strong>@{{ item.title }}</strong><br>
+                                            <div ng-bind-html="item.content"></div>
+                                        </a>
                                     </div>
                                 </div>
                             </div>
@@ -70,12 +74,13 @@
                                 <div class="row">
                                     <div class="col-xs-12">
                                         <div class="pull-left">
-                                            <span class="favorite"><i class="m-icon--heart"></i> 2133</span>
-                                            <span class="comment"><i class="m-icon--buble"></i> 758</span>
+                                            <span class="favorite"><i class="m-icon--heart"></i> @{{ item.heart_count }}</span>
+                                            <span class="comment"><i
+                                                        class="m-icon--buble"></i> @{{ item.comment_count }}</span>
                                         </div>
-                                        <div class="pull-right">
-                                            <span class="photos"><i class="m-icon--photos"></i></span>
-                                        </div>
+                                        {{-- <div class="pull-right">
+                                             <span class="photos"><i class="m-icon--photos"></i></span>
+                                         </div>--}}
                                     </div>
                                 </div>
                             </div>

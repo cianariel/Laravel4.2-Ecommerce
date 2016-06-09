@@ -687,6 +687,13 @@ class Product extends Model
 
                 }
 
+                // Update product availability along after mentioned time span
+                if(!empty($apiData))
+                {
+                    $product->product_availability = empty($apiData['ApiPrice'])? $product['product_availability'] : $apiData['ApiAvailable'] ;
+                    $product->save();
+                }
+
                 return true;
 
             } else {

@@ -586,7 +586,11 @@ class User extends Model implements AuthenticatableContract,
         $permalink = $data['Permalink'];
         $limit =$data['PostCount'];
 
+
+
+
         $url = \URL::to('/') . '/ideas/feeds/index.php?count=' . $limit . '&offset=' . $offset . '&author_name=' . $permalink;
+          // dd($url);
 
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $url);
@@ -599,7 +603,7 @@ class User extends Model implements AuthenticatableContract,
 
         $ideaCollection = json_decode($json);
 
-        //dd($ideaCollection);
+      //  dd($ideaCollection);
 
         $ideaCollection = empty($ideaCollection)?[]:$ideaCollection;
 
