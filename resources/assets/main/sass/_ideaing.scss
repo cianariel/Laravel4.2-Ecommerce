@@ -2895,9 +2895,13 @@ header.colophon{
         top: 13px;
         input{
           height: 35px;
+          width: 70%;
+          -webkit-transition: width .2s; /* Safari */
+          transition: width .2s;
         }
         >input:focus{
             border-color: #ff0041;
+            width: 100%;
         }
         .m-icon{
             position: absolute;

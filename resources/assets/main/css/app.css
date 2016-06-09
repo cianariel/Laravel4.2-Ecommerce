@@ -6569,9 +6569,14 @@ header.colophon {
     position: relative;
     top: 13px; }
     .search-bar .desktop-search-bar input {
-      height: 35px; }
+      height: 35px;
+      width: 70%;
+      -webkit-transition: width .2s;
+      /* Safari */
+      transition: width .2s; }
     .search-bar .desktop-search-bar > input:focus {
-      border-color: #ff0041; }
+      border-color: #ff0041;
+      width: 100%; }
     .search-bar .desktop-search-bar .m-icon {
       position: absolute;
       left: 10px;
