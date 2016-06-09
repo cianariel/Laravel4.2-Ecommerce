@@ -1118,7 +1118,9 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                 method: "POST",
                 data: {
                     Permalink: parmalink,
-                    PostCount: $scope.userActivityCount
+                    PostCount: $scope.userActivityCount,
+                    AuthorPicture: $window.profilePicture,
+                    AuthorName: $window.profileFullName,
                 }
 
             }).success(function (data) {
