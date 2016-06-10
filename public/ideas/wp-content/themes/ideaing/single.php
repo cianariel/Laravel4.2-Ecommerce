@@ -249,9 +249,8 @@
         <?php
         $limit = 10;
         $offset = 0;
-        $url = str_replace('/ideas', "", get_site_url()) . '/api/paging/get-grid-content/1/3/' . $firstTag->name . '/product';
+        $url = str_replace('/ideas', "", get_site_url()) . '/api/paging/get-content/1/3/' . str_replace(' ', '%20',$firstTag->name) . '/product';
 
-//        echo $url; die();
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $url);
         curl_setopt($ch, CURLOPT_HEADER, 0);
@@ -259,14 +258,13 @@
         curl_setopt($ch, CURLOPT_ENCODING, "");
         $json = curl_exec($ch);
         $json = json_decode($json);
-        $relatedProducts = $json->content->regular;
-//        print_r($json); die();
+        $relatedProducts = $json->content;
         ?>
+
         @if(isset($relatedProducts) && ($relatedProducts != null) && count($relatedProducts)>0 )
         <fieldset class="shoplanding-title">
             <legend align="center"><h3 class="green pale-grey-bg">Related Products</h3></legend>
         </fieldset>
-<!--        <h3 class="green">Related Products</h3>-->
         <div class="related-products grid-box-3">
             @foreach( $relatedProducts as $product )
             <div class="box-item product-box ">
@@ -281,8 +279,6 @@
 
                         $urlTmp = parse_url(get_the_permalink())['path'];
                         $urlTmp = str_replace('/ideas/','',$urlTmp);
-
-                        //echo "XXXXXXXX ". $userId;
                         ?>
 
                         <heart-counter-public uid="<?php echo $userId ?>" iid="{{ $product->id }}" plink="{{ $urlTmp }}" sec='ideas'>
@@ -300,7 +296,6 @@
                     <div class="clearfix"></div>
 
                     <div class="clearfix"></div>
-                   <!-- <a target="_blank" href="/product/{{ $product->product_permalink }}" class="box-item__get-it"> -->
                     <a target="_blank" href="/open/{{ $product->id }}/ideas" class="box-item__get-it">
                         Get it
                     </a>
