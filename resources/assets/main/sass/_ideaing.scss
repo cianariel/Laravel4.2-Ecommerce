@@ -9068,7 +9068,6 @@ html.hide-overflow{
   position: absolute;
   top: 8px;
   font-size: 5rem;
-  color: $iridium;
 }
 
 #subscribe_email_popup{
@@ -9280,14 +9279,21 @@ body.aboutus-page{
 }
 .login-signup-modal{
     .alert-danger{
-        background: black;
+        max-width:300px;
+        margin: 0 auto 30px;
+        padding-top: 27px;
+        background: rgba($iridium, .7);
         border: 0px;
         color: #fff;
+        font-size: 1.5rem;
+        text-align: center;
+
         .close{
+            margin-top: -5px;
             background: none;
             border: 0px;
             font-size: 23px;
-            color: #ed2049;
+            color: #fff;
         }
     }
 }
