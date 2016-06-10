@@ -6060,14 +6060,8 @@ footer.about-footer{
 
     }
     > a:hover{
-      //padding-left: 16px;
-      //padding-right: 16px;
       background-size: contain !important;
-
     }
-    //.extra-nav {
-    //  right: 16%;
-    //}
   }
 
   .why-us {
@@ -6075,7 +6069,6 @@ footer.about-footer{
   }
 
   .story-header h1 {
-    //width: 63%;
     font-size: 13px;
     margin-bottom: 5px;
   }
@@ -6302,9 +6295,9 @@ footer.about-footer{
     margin-top: 35px;
   }
   
-  .mid-nav{
-      border-top: 1px solid $light-grey;
-  }
+  //.mid-nav{
+  //    border-top: 1px solid $light-grey;
+  //}
   
   .mid-nav .container{
       border-top: 0px;
@@ -8078,22 +8071,6 @@ body.shop-category{
             padding: 20px 0 20px 0px;
             background-repeat: no-repeat;
             background-position: left center;
-
-            &.diy-link{
-/*              background-image: url("/assets/images/icons/tools-3d.png");*/
-            }
-            &.shopping-link{
-/*              background-image: url("/assets/images/icons/bag-3d-green.png");*/
-            }
-            &.travel-link{
-/*              background-image: url("/assets/images/icons/bag-3d-blue.png");*/
-            }
-            &.wearables-link{
-/*              background-image: url("/assets/images/icons/watch-3d.png");*/
-            }
-            &.decor-link{
-/*              background-image: url("/assets/images/icons/fire-3d.png");*/
-            }
           }
         }
       }
