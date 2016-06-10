@@ -1,4 +1,4 @@
-<div id="loadDynamicData" class="container hidden">
+<div id="loadDynamicData" class="container">
     <div class="col-md-3 side-bar hidden-xs hidden-sm">
         <div class="row">
             <ul class="nav sidenav">
@@ -40,7 +40,6 @@
         <div class="col-md-9 main-content" ng-init="userActivityList('{{$permalink}}',5)">
 
         <div ng-repeat="item in activityData">
-            data
 
             <div class="feed-content row" ng-show="(item['Type']=='comment') && showComment">
                 <div class="feed-header ">
