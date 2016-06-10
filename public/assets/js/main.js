@@ -5043,7 +5043,7 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
             $scope.profileFullName = $window.profileFullName;
 
 
-            console.log('act : ', userId, $scope.userActivityCount);
+           // console.log('act : ', userId, $scope.userActivityCount);
 
             $http({
                 url: '/api/user/activities',
@@ -5055,6 +5055,7 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
 
             }).success(function (data) {
                 $scope.activityData = data.data;
+                console.log($scope.activityData);
             });
 
         };
