@@ -2775,6 +2775,8 @@ header.colophon{
     .fixed-sm{
       min-width: 0 !important;
     }
+
+
     
     #top-nav {
       position: fixed;
@@ -2786,6 +2788,9 @@ header.colophon{
       border-bottom: 1px solid lighten($light-grey, 10%);
       height: 60px;
 
+      .top-nav-holder{
+        border-bottom: 0 !important;
+      }
       @media (min-width: 620px){
         li {
           a {

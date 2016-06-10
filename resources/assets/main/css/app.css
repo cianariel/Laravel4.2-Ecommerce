@@ -6504,6 +6504,8 @@ header.colophon {
     background: rgba(255, 255, 255, 0.9);
     border-bottom: 1px solid #dbdbdb;
     height: 60px; }
+    header.colophon.scroll-header #top-nav .top-nav-holder {
+      border-bottom: 0 !important; }
     @media (min-width: 620px) {
       header.colophon.scroll-header #top-nav li a {
         position: relative;

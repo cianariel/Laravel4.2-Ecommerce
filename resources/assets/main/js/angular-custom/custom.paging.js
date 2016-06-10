@@ -418,9 +418,7 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
         $scope.open = false;
 
         $scope.toggleSearch = function () {
-            console.log('toggle')
             $scope.open = !$scope.open;
-            console.log($scope.open);
 
             if ($scope.open) {
                 $scope.$window.onclick = function (event) {
