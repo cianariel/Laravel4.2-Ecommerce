@@ -209,8 +209,6 @@
         </div>
         @include('layouts.parts.comments-giveaway')
     </div>
-    {{--<script src="/assets/js/readmore.min.js"></script>--}}
-
     <script>
         jQuery(document).ready(function ($) {
             $('.giveaway-slider-content ').royalSlider({
