@@ -4466,7 +4466,11 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                     thumbsFitInViewport: false,
                     navigateByClick: true,
                     startSlideId: 0,
-                    autoPlay: false,
+                    autoPlay: {
+                        enabled: true,
+                        pauseOnHover: true,
+                        delay: 6000
+                    },
                     transitionType: 'move',
                     globalCaption: false,
                     addActiveClass: true,
