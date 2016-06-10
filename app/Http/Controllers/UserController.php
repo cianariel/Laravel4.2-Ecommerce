@@ -218,7 +218,8 @@ class UserController extends ApiController
                 'fullname' => $userData->name,
                 'address' => $userData->userProfile->address,
                 'personalInfo' => $userData->userProfile->personal_info,
-                'permalink' => $permalink,
+               // 'permalink' => $permalink,
+                'permalink' => empty($permalink)?$userData['permalink']:$permalink,
                 'isAdmin' => $userData->hasRole('admin') || $userData->hasRole('editor'),
                 'showEditOption' => true
 
@@ -262,7 +263,8 @@ class UserController extends ApiController
             'fullname' => $userProfileData->name,
             'address' => $userProfileData->userProfile->address,
             'personalInfo' => $userProfileData->userProfile->personal_info,
-            'permalink' => $permalink,
+            //'permalink' => $permalink,
+            'permalink' => empty($permalink)?$userData['permalink']:$permalink,
             'isAdmin' => empty($userData) ? null : ($userData->hasRole('admin') || $userData->hasRole('editor')),
             'showEditOption' => false
 
@@ -399,9 +401,19 @@ class UserController extends ApiController
         $userId = $inputData['UserId'];
         $activityCount = $inputData['ActivityCount'];
 
+        $userId = User::where('permalink',$inputData['UserId'])
+                      ->first()->id;
+
+       // dd($userId);
+
+
         // gather comment activities
 
+
         $activityWithHumanTime = $this->comment->getCommentsAndHeatByUserId($userId, $activityCount);
+
+      //  dd($userId,$activityCount,$activityWithHumanTime);
+
 
         //return $activityWithHumanTime;
 
