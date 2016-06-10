@@ -1,10 +1,10 @@
 @font-face {
     font-family: 'ideaing';
-    src:    url('fonts/ideaing.eot?srjxzi');
-    src:    url('fonts/ideaing.eot?srjxzi#iefix') format('embedded-opentype'),
-        url('fonts/ideaing.ttf?srjxzi') format('truetype'),
-        url('fonts/ideaing.woff?srjxzi') format('woff'),
-        url('fonts/ideaing.svg?srjxzi#ideaing') format('svg');
+    src:    url('fonts/ideaing.eot?f5fqdo');
+    src:    url('fonts/ideaing.eot?f5fqdo#iefix') format('embedded-opentype'),
+        url('fonts/ideaing.ttf?f5fqdo') format('truetype'),
+        url('fonts/ideaing.woff?f5fqdo') format('woff'),
+        url('fonts/ideaing.svg?f5fqdo#ideaing') format('svg');
     font-weight: normal;
     font-style: normal;
 }
@@ -24,6 +24,9 @@
     -moz-osx-font-smoothing: grayscale;
 }
 
+.m-icon--giveaway:before {
+    content: "\e96c";
+}
 .m-icon--garage:before {
     content: "\e96a";
 }

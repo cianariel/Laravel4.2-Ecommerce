@@ -563,7 +563,7 @@ if(!isset($theGiveAway)){
                 echo '<img class="hidden-soft shown-sm" src="'.$theGiveAway->giveaway_image.'">';
             }
             ?>
-            <div class="giveaway-icon"></div>
+            <i class="giveaway-icon m-icon m-icon--giveaway"></i>
             <div class="content-container">
                 <div class="content-holder">
                     <div>

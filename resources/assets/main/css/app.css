@@ -10609,13 +10609,10 @@ html.hide-overflow {
   top: 115px; }
 
 .giveaway-icon {
-  display: block;
   position: absolute;
   top: 8px;
-  width: 202px;
-  height: 59px;
-  text-indent: -9999px;
-  background: url(/assets/images/giveaway.svg) 0 -110px/190px no-repeat; }
+  font-size: 5rem;
+  color: #FF0042; }
 
 #subscribe_email_popup {
   background-color: #fff !important; }
