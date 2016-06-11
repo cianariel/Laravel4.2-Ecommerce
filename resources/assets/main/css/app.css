@@ -6946,6 +6946,19 @@ body.product-details .story-header h2 .title, .single-post .story-header h1 .tit
   height: 15px;
   display: inline-block;
   overflow: hidden; }
+body.product-details .related-items, .single-post .related-items {
+  margin-bottom: 33px;
+  padding-top: 15px;
+  padding-bottom: 15px; }
+  body.product-details .related-items legend, .single-post .related-items legend {
+    min-height: 40px; }
+  body.product-details .related-items h3, .single-post .related-items h3 {
+    text-align: center;
+    font-weight: 700;
+    position: relative;
+    top: 29px;
+    max-width: 190px;
+    margin: 0 auto; }
 
 body.product-details .related-products, body.product-details .related-ideas {
   max-width: 1170px;
@@ -7766,19 +7779,6 @@ body.single .article-content iframe {
   margin: 0 auto;
   float: none;
   display: block; }
-body.single .related-items {
-  margin-bottom: 33px;
-  padding-top: 15px;
-  padding-bottom: 15px; }
-  body.single .related-items legend {
-    min-height: 40px; }
-  body.single .related-items h3 {
-    text-align: center;
-    font-weight: 700;
-    position: relative;
-    top: 29px;
-    max-width: 190px;
-    margin: 0 auto; }
 @media only screen and (max-width: 960px) {
   body.single .like-nav {
     width: 100%;
