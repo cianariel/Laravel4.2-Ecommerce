@@ -89,26 +89,26 @@
                 <nav id="hero-nav">
                     <ul class=" main-content-filter ">
                         <li ng-class="{active: (activeMenu == '1' || !activeMenu)}" ng-click="activeMenu='1'">
-                            <a {{--ng-click="filterContent(null)"--}} href="/user/profile/{{$permalink}}" data-filterby="all" class="all-activity">
+                            <a ng-click="clickOnActivity('{{$permalink}}', 5)" href="/user/profile/{{$permalink}}" data-filterby="all" class="all-activity">
                                 <i class="m-icon m-icon--menu"></i>
                                 All Activity
                             </a>
                         </li>
 
                         <li ng-class="{active: activeMenu == '2'}" ng-click="activeMenu='2'">
-                            <a href="/author/{{$permalink}}" class="red my-likes">
+                            <a ng-click="clickOnActivityLike('{{$permalink}}', 5)" class="red my-likes">
                                 <i class="red m-icon m-icon--heart-id"></i>
                                 <span class="red">Likes</span>
                             </a>
                         </li>
                         <li ng-class="{active: activeMenu == '2'}" ng-click="activeMenu='2'">
-                            <a href="/author/{{$permalink}}" class="my-post">
+                            <a ng-click="clickOnActivityComment('{{$permalink}}', 5)" class="my-post">
                                 <i class="orange m-icon--comments-id"></i>
                                 <span class="orange">Comments</span>
                             </a>
                         </li>
                         <li ng-class="{active: activeMenu == '2'}" ng-click="activeMenu='2'">
-                            <a href="/author/{{$permalink}}" class="my-post">
+                            <a ng-click="clickOnPost('{{$permalink}}', 6)" class="my-post">
                                 <i class="blue m-icon m-icon--image"></i>
                                 <span class="blue">Posts</span>
                             </a>
