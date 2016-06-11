@@ -250,7 +250,8 @@
         <?php
         $limit = 10;
         $offset = 0;
-        $url = str_replace('/ideas', "", get_site_url()) . '/api/paging/get-content/1/3/' . strtoupper( str_replace(' ', '%20',$firstTag->name)) . '/product';
+        $prelatedTag =  get_field('related-products-tag') ?: $firstTag->name;
+        $url = str_replace('/ideas', "", get_site_url()) . '/api/paging/get-content/1/3/' . strtoupper( str_replace(' ', '%20', $prelatedTag)) . '/product';
 
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $url);

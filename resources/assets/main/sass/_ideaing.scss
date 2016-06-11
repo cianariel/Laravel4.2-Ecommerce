@@ -7753,7 +7753,7 @@ body.shop-landing{
             color: $pine-green;
         }
 
-        &.active{
+        &.selected{
             
             .show-menus{
                 display: none;
@@ -7782,7 +7782,7 @@ body.shop-landing{
     
     .shop-by-category-submneu{
         display: none;
-        &.active{
+        &.selected{
             display: block;
         }
         
@@ -7807,7 +7807,7 @@ body.shop-landing{
                 background: $smart-home;
             }
         }
-        &.travel{
+        &.active{
             > div{
                 background: $travel;
             }

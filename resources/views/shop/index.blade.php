@@ -75,7 +75,7 @@
                         <legend align="center">Shop by Category</legend>
                     </fieldset>
                     <div class="row desktop-view hidden-xs hidden-sm">
-                        <div class="col-xs-3 shop-by-category-item smart-home active" data-submenu="smart-home">
+                        <div class="col-xs-3 shop-by-category-item smart-home selected" data-submenu="smart-home">
                             <img src="/assets/images/category-home.png" alt=""><br><br>
                             <span><a href="/shop/smart-home">Smart Home</a></span>
                             <!--<a href="#" class="show-menus">
@@ -85,7 +85,7 @@
                                 <i class=" m-icon--Close"></i>
                             </a>-->
                         </div>
-                        <div class="col-xs-3 shop-by-category-item travel" data-submenu="travel">
+                        <div class="col-xs-3 shop-by-category-item active" data-submenu="active">
                             <img src="assets/images/category-travel.png" alt=""><br><br>
                             <span><a href="/shop/active/">Active</a></span>
                             <!--<a href="#" class="show-menus">
@@ -119,7 +119,7 @@
                     <div class="row desktop-view hidden-xs hidden-sm">
                         <?php $i = 1 ?>
                         @foreach($categoryTree as $topCategory => $parentCategories)
-                            <div class="shop-by-category-submneu {{$topCategory}} {{$i == 1 ? 'active' : ''}}">
+                            <div class="shop-by-category-submneu {{$topCategory}} {{$i == 1 ? 'selected' : ''}}">
                                 @foreach($parentCategories as $parentCategory)
                                     <div class="col-md-2">
                                         <a href="/shop/{{$topCategory}}/{{trim($parentCategory['childCategory']->extra_info)}}">

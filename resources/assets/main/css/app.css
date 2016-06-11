@@ -9690,21 +9690,21 @@ body.shop-landing .shop-by-category-item {
     color: #89C981; }
   body.shop-landing .shop-by-category-item.home-decor {
     color: #89C981; }
-  body.shop-landing .shop-by-category-item.active .show-menus {
+  body.shop-landing .shop-by-category-item.selected .show-menus {
     display: none; }
-  body.shop-landing .shop-by-category-item.active .hide-menus {
+  body.shop-landing .shop-by-category-item.selected .hide-menus {
     display: block; }
-  body.shop-landing .shop-by-category-item.active.smart-home {
+  body.shop-landing .shop-by-category-item.selected.smart-home {
     background: #ffe5ec; }
-  body.shop-landing .shop-by-category-item.active.travel {
+  body.shop-landing .shop-by-category-item.selected.travel {
     background: #eef8fb; }
-  body.shop-landing .shop-by-category-item.active.wearables {
+  body.shop-landing .shop-by-category-item.selected.wearables {
     background: #f9f9ec; }
-  body.shop-landing .shop-by-category-item.active.home-decor {
+  body.shop-landing .shop-by-category-item.selected.home-decor {
     background: #f9cc66; }
 body.shop-landing .shop-by-category-submneu {
   display: none; }
-  body.shop-landing .shop-by-category-submneu.active {
+  body.shop-landing .shop-by-category-submneu.selected {
     display: block; }
   body.shop-landing .shop-by-category-submneu > div {
     text-align: center;
@@ -9721,7 +9721,7 @@ body.shop-landing .shop-by-category-submneu {
       display: inline-block; }
   body.shop-landing .shop-by-category-submneu.smart-home > div {
     background: #ff0042; }
-  body.shop-landing .shop-by-category-submneu.travel > div {
+  body.shop-landing .shop-by-category-submneu.active > div {
     background: #59bdd7; }
   body.shop-landing .shop-by-category-submneu.wearables > div {
     background: #89C981; }

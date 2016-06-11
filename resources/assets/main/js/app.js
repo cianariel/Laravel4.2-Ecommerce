@@ -129,32 +129,32 @@
 
         $('.desktop-view .shop-by-category-item a.show-menus, .desktop-view .shop-by-category-item a.hide-menus').click(function(e){
             e.preventDefault();
-            $('.shop-by-category-item').removeClass('active');
-            $('.shop-by-category-submneu').removeClass('active');
+            $('.shop-by-category-item').removeClass('selected');
+            $('.shop-by-category-submneu').removeClass('selected');
             
             if($(this).hasClass('show-menus')){
-                $(this).parent().addClass('active');
+                $(this).parent().addClass('selected');
                 var submenu = $(this).parent().data('submenu');
-                $('.shop-by-category-submneu.' + submenu).addClass('active');
+                $('.shop-by-category-submneu.' + submenu).addClass('selected');
             }
         })
         $('.desktop-view .shop-by-category-item').mouseover(function(e){
-            $('.shop-by-category-item').removeClass('active');
-            $('.shop-by-category-submneu').removeClass('active');
+            $('.shop-by-category-item').removeClass('selected');
+            $('.shop-by-category-submneu').removeClass('selected');
             
 //            if($(this).find('a').hasClass('show-menus')){
-                $(this).addClass('active');
+                $(this).addClass('selected');
                 var submenu = $(this).data('submenu');
-                $('.shop-by-category-submneu.' + submenu).addClass('active');
+                $('.shop-by-category-submneu.' + submenu).addClass('selected');
 //            }
         });
         
         $('.show-and-hide-grandchild').click(function(){
-            if($(this).parent().hasClass('active')){
-                $(".shop-by-category-submneu > div").removeClass('active');
+            if($(this).parent().hasClass('selected')){
+                $(".shop-by-category-submneu > div").removeClass('selected');
             }else{
-                $(".shop-by-category-submneu > div").removeClass('active');
-                $(this).parent().addClass('active');
+                $(".shop-by-category-submneu > div").removeClass('selected');
+                $(this).parent().addClass('selected');
             }
         })
         

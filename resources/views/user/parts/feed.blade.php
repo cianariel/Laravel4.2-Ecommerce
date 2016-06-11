@@ -5,7 +5,7 @@
     </script>
     <!--feed start -->
     <div ng-hide="postActive">
-    <div class="col-md-3 side-bar hidden-xs hidden-sm">
+    <div class="col-md-3 side-bar hidden hidden-xs hidden-sm">
         <div class="row">
             <ul class="nav sidenav">
                 <li ng-class="activeClassAll">
