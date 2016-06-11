@@ -10600,8 +10600,7 @@ html.hide-overflow {
 .giveaway-icon {
   position: absolute;
   top: 8px;
-  font-size: 5rem;
-  color: #FF0042; }
+  font-size: 5rem; }
 
 #subscribe_email_popup {
   background-color: #fff !important; }
@@ -10759,14 +10758,20 @@ body.aboutus-page .para3_content {
   margin-top: 55px; }
 
 .login-signup-modal .alert-danger {
-  background: black;
+  max-width: 300px;
+  margin: 0 auto 30px;
+  padding-top: 27px;
+  background: rgba(255, 0, 66, 0.7);
   border: 0px;
-  color: #fff; }
+  color: #fff;
+  font-size: 1.5rem;
+  text-align: center; }
   .login-signup-modal .alert-danger .close {
+    margin-top: -5px;
     background: none;
     border: 0px;
     font-size: 23px;
-    color: #ed2049; }
+    color: #fff; }
 
 body.contactus-page #hero .hero-background {
   background-image: url("/assets/images/contactus-background.jpg"); }

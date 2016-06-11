@@ -134,6 +134,11 @@ class AuthenticateController extends ApiController
     {
         $credentials = $request->only('Email', 'Password');
 
+        if ($faled = filter_var($credentials['Email'], FILTER_VALIDATE_EMAIL) === false) {
+            return $this->setStatusCode(IlluminateResponse::HTTP_UNAUTHORIZED)
+                ->makeResponseWithError('Please enter a valid email');
+        }
+
         try {
 
             $authUser = $this->isValidUser($credentials);
@@ -142,10 +147,10 @@ class AuthenticateController extends ApiController
 
                 if ($this->subscriber->isASubscriber($credentials['Email']) == false) {
                     return $this->setStatusCode(IlluminateResponse::HTTP_UNAUTHORIZED)
-                                ->makeResponseWithError('Invalid credentials.');
+                                ->makeResponseWithError('Incorrect email or password');
                 } else {
                     return $this->setStatusCode(IlluminateResponse::HTTP_UNAUTHORIZED)
-                                ->makeResponseWithError('Email already exist, please Sign-up as a Registered User');
+                                ->makeResponseWithError('This email already exists, please log in as a registered user');
                 }
 
             } else {
@@ -158,7 +163,7 @@ class AuthenticateController extends ApiController
             \Log::error($ex);
 
             return $this->setStatusCode(IlluminateResponse::HTTP_INTERNAL_SERVER_ERROR)
-                        ->makeResponseWithError('Token creation failed !');
+                        ->makeResponseWithError('Token creation failed!');
 
         }
 

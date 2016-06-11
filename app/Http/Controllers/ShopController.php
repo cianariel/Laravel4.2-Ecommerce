@@ -69,7 +69,7 @@ class ShopController extends ApiController
                 case "smart-home":
                     $categoryModel->background_image = asset("assets/images/shop-category/smarthome.jpg");
                 break;
-                case "travel":
+                case "active":
                     $categoryModel->background_image =  asset("assets/images/shop-category/travel.jpg");
                 break;
                 case "wearables":

@@ -4473,7 +4473,7 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                     autoPlay: {
                         enabled: true,
                         pauseOnHover: true,
-                        delay: 6000
+                        delay: 15000
                     },
                     transitionType: 'move',
                     globalCaption: false,
@@ -4916,17 +4916,17 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
 
                 if (data.status_code == 406) {
 
-                    $scope.responseMessage = "Sorry, the email  character is incorrect";
+                    $scope.responseMessage = "Please enter a valid email";
                 }
 
                 else if (data.status_code == 200) {
-                    $scope.responseMessage = "Successfully Subscribed";
+                    $scope.responseMessage = "Thanks! You've subscribed successfully";
 
                     //Redirect a user to registration page. 
                     window.location = '/signup/' + formData.SubscriberEmail + '/' + source;
 
                 } else {
-                    $scope.responseMessage = "This email already exists, redirecting for registration";
+                    $scope.responseMessage = "Sorry, this email already exists";
                    // console.log($scope.responseMessage);
                     window.location = '/signup/' + formData.SubscriberEmail + '/' + source;
                 }
