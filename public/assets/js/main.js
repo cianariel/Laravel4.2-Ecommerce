@@ -4469,7 +4469,7 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                     autoPlay: {
                         enabled: true,
                         pauseOnHover: true,
-                        delay: 6000
+                        delay: 15000
                     },
                     transitionType: 'move',
                     globalCaption: false,
@@ -5055,7 +5055,7 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
 
             }).success(function (data) {
                 $scope.activityData = data.data;
-                console.log($scope.activityData);
+             //   console.log($scope.activityData);
             });
 
         };
