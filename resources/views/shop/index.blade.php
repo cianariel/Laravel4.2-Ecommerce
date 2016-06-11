@@ -196,7 +196,7 @@
                                 </a>
 
                                 <div class="shop-by-category-submneu smart-home ">
-                                    @foreach($categoryTree['travel'] as $parentCategory)
+                                    @foreach($categoryTree['active'] as $parentCategory)
                                         <div class="col-md-12">
                                             <a href="/shop/{{$topCategory}}/{{trim($parentCategory['childCategory']->extra_info)}}">
                                                 <i class="{{$parentCategory['childCategory']->icon}} desktop-parent-icon"></i>
