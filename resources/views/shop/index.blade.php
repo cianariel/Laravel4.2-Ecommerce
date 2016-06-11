@@ -14,8 +14,8 @@
                         </a>
                     </li>
                     <li class="box-link-ul ">
-                        <a class="box-link " href="/shop/travel">
-                            TRAVEL
+                        <a class="box-link " href="/shop/active">
+                            ACTIVE
                         </a>
                     </li>
                     <li class="box-link-ul ">
@@ -87,7 +87,7 @@
                         </div>
                         <div class="col-xs-3 shop-by-category-item travel" data-submenu="travel">
                             <img src="assets/images/category-travel.png" alt=""><br><br>
-                            <span><a href="/shop/travel/">Travel</a></span>
+                            <span><a href="/shop/active/">Active</a></span>
                             <!--<a href="#" class="show-menus">
                                 <i class="m-icon--Add-Active"></i>
                             </a>
@@ -186,9 +186,9 @@
 
 
                             <div class="col-sm-12 shop-by-category-item travel">
-                                <a href="/shop/travel" class="shop-by-category-item-link">
+                                <a href="/shop/active" class="shop-by-category-item-link">
                                     <img src="assets/images/category-travel.png" alt="">
-                                    Travel
+                                    Active
                                 </a> &nbsp;
                                 <a data-content="smart-home" class="show-and-hide">
                                     <i class="m-icon--Header-Dropdown down"></i>

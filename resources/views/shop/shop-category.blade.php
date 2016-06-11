@@ -37,10 +37,10 @@
                         </a>
                     </li>
                     <li class="box-link-ul ">
-                        <a class="box-link @if($currentCategory->extra_info == 'travel') active @endif"
-                           href="/shop/travel">
+                        <a class="box-link @if($currentCategory->extra_info == 'active') active @endif"
+                           href="/shop/active">
                             <span class="box-link-active-line"></span>
-                            TRAVEL
+                            ACTIVE
                         </a>
                     </li>
                     <li class="box-link-ul ">

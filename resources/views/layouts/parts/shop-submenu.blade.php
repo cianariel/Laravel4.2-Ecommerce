@@ -19,7 +19,7 @@
 
 
                     <section class="travel col-xs-2">
-                        <h5 class="sub-title"><a href="/shop/travel">Active</h5>
+                        <h5 class="sub-title"><a href="/shop/active">Active</h5>
                         <div class="img-wrap" ng-repeat="item in productsForShopMenu.travel">
                             <a href="/product/{{item.product_permalink}}">
                                  <img class="item-image img-responsive" src="{{item.media_link_full_path}}">
