@@ -42,6 +42,7 @@
         </div>
 
     </header>
+
     <?php
     $tags = wp_get_post_tags($post->ID);
     $categories = get_the_category($post->ID);
@@ -58,10 +59,10 @@
 
     }
     ?>
+   
     <nav class="mid-nav">
         <div class="container">
             <ul class="wrap col-lg-9 ">
-                <!--                    <li><a class="home-link" href="#">Home</a></li>-->
                 @if(empty($mainCategory))
                 <li class="box-link-ul   ">
                     <a href="{{get_site_url()}}" class="box-link active">
@@ -249,7 +250,7 @@
         <?php
         $limit = 10;
         $offset = 0;
-        $url = str_replace('/ideas', "", get_site_url()) . '/api/paging/get-content/1/3/' . str_replace(' ', '%20',$firstTag->name) . '/product';
+        $url = str_replace('/ideas', "", get_site_url()) . '/api/paging/get-content/1/3/' . strtoupper( str_replace(' ', '%20',$firstTag->name)) . '/product';
 
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $url);
