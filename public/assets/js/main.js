@@ -4436,6 +4436,10 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
             $scope.activeClassComment = '';
             $scope.activeClassHeart = '';
 
+            // profile feed and post toggle
+
+            $scope.postActive = false;
+
             $scope.socialCounter = function () {
 
                 $scope.countSocialShares();
@@ -5058,6 +5062,34 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
              //   console.log($scope.activityData);
             });
 
+        };
+
+        $scope.clickOnPost = function(parmalink, count){
+
+            $scope.postActive = true;
+            $scope.userActivityCount = null;
+            $scope.userPostList(parmalink, count);
+
+        };
+
+        $scope.clickOnActivity = function(parmalink, count){
+
+            $scope.postActive = false;
+            $scope.userActivityCount = null;
+            $scope.userActivityList(parmalink, count);
+
+        };
+
+        $scope.clickOnActivityLike = function(parmalink, count){
+
+            $scope.clickOnActivity(parmalink, count);
+            $scope.showActivity('heart');
+        };
+
+        $scope.clickOnActivityComment = function(parmalink, count){
+
+            $scope.clickOnActivity(parmalink, count);
+            $scope.showActivity('comment');
         };
 
         // Load user activity like/comment in user profile

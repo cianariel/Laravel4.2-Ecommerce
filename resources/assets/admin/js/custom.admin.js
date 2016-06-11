@@ -688,6 +688,8 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
             $scope.selectedTagId = $scope.AllTags[index].id;
             $scope.TagName = $scope.AllTags[index].tag_name;
             $scope.TagDescription = $scope.AllTags[index].tag_description;
+
+            $window.scrollTo(0, 0);
         };
 
         $scope.updateTagInfo = function () {

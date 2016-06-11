@@ -1,29 +1,5 @@
 <div id="loadDynamicData" class="container post">
     <div class="row">
-        {{--<div class="col-md-3 side-bar hidden-xs hidden-sm">
-            <div class="row">
-                <ul class="nav sidenav">
-                    <li class="active">
-                        <a href="#">
-                            <i class="m-icon m-icon--menu"></i>&nbsp;
-                            All Posts
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <i class="m-icon m-icon--heart-id"></i>&nbsp;
-                            Photos
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <i class="m-icon m-icon--comments-id"></i>&nbsp;
-                            Reviews
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </div>--}}
         <script>
             var profilePicture = '{{$profile}}';
             var profileFullName = '{{$fullname}}';
@@ -47,12 +23,7 @@
                                             <span class="time">@{{item.creation_date}}</span>
 
                                         </div>
-                                        {{--<div class="pull-right">
-                                            <a href="#">
-                                                Actions
-                                                <span class="caret"></span>
-                                            </a>
-                                        </div>--}}
+
                                     </div>
                                 </div>
                             </div>
@@ -78,9 +49,7 @@
                                             <span class="comment"><i
                                                         class="m-icon--buble"></i> @{{ item.comment_count }}</span>
                                         </div>
-                                        {{-- <div class="pull-right">
-                                             <span class="photos"><i class="m-icon--photos"></i></span>
-                                         </div>--}}
+
                                     </div>
                                 </div>
                             </div>
