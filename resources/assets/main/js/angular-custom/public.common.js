@@ -519,7 +519,7 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                     autoPlay: {
                         enabled: true,
                         pauseOnHover: true,
-                        delay: 6000
+                        delay: 15000
                     },
                     transitionType: 'move',
                     globalCaption: false,
