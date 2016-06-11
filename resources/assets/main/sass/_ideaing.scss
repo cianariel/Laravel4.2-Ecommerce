@@ -4992,6 +4992,8 @@ body.single{
   }
 
   .article-content{
+    max-width: 1000px;
+    margin: 0 auto;
     p{
       font-family: montserratlight;
       color: darken($light-grey, 100%);
