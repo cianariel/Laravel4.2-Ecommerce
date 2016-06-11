@@ -7887,18 +7887,21 @@ body.single .related-items {
 
 .idea-stories .mid-nav .mobile-menu .wrap, .mid-nav .idea-stories .extra-nav .mobile-menu .wrap {
   margin-left: 10px; }
-.idea-stories .article-content p {
-  font-family: montserratlight;
-  color: black;
-  line-height: 1.6;
-  font-size: 1.6rem;
-  text-align: left; }
-.idea-stories .article-content img {
-  max-width: 100%;
-  height: auto;
-  margin: 0 auto;
-  display: block;
-  border: 1px solid #eee; }
+.idea-stories .article-content {
+  max-width: 1000px;
+  margin: 0 auto; }
+  .idea-stories .article-content p {
+    font-family: montserratlight;
+    color: black;
+    line-height: 1.6;
+    font-size: 1.6rem;
+    text-align: left; }
+  .idea-stories .article-content img {
+    max-width: 100%;
+    height: auto;
+    margin: 0 auto;
+    display: block;
+    border: 1px solid #eee; }
 .idea-stories .story-details {
   float: none;
   overflow: hidden;

@@ -284,7 +284,7 @@ if(!isset($theGiveAway)){
                                     <a href="/shop/smart-home">Smart Home</a>
                                 </li>
                                 <li>
-                                    <a href="/shop/travel">Travel</a>
+                                    <a href="/shop/active">Active</a>
                                 </li>
                                 <li>
                                     <a href="/shop/wearables">Wearables</a>
