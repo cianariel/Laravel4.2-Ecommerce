@@ -1,4 +1,10 @@
 <div id="loadDynamicData" class="container">
+    <script>
+        var profilePicture = '{{$profile}}';
+        var profileFullName = '{{$fullname}}';
+    </script>
+    <!--feed start -->
+    <div ng-hide="postActive">
     <div class="col-md-3 side-bar hidden-xs hidden-sm">
         <div class="row">
             <ul class="nav sidenav">
@@ -20,21 +26,9 @@
                         Comments
                     </a>
                 </li>
-                {{-- <li>
-                     <a href="#">
-                         <i class="m-icon m-icon--Saved-Active"></i>&nbsp;
-                         Saved
-                     </a>
-                 </li>--}}
             </ul>
         </div>
     </div>
-
-
-    <script>
-        var profilePicture = '{{$profile}}';
-        var profileFullName = '{{$fullname}}';
-    </script>
 
     {{--<div class="col-md-9 main-content" ng-init="userActivityList({{$userData['id']}},5)">--}}
         <div class="col-md-9 main-content" ng-init="userActivityList('{{$permalink}}',5)">
@@ -89,9 +83,6 @@
                                             class="m-icon--heart-solid"></i> @{{ item['HeartCount'] }}</span>
                                 <span class="comment"><i class="m-icon--buble"></i> @{{ item['CommentCount'] }}</span>
                             </div>
-                            {{--<div class="pull-right">
-                                <a href="{{ $item['Link'] }}" target="_blank"><strong>View original post</strong></a>
-                            </div>--}}
                         </div>
                     </div>
                 </div>
@@ -145,9 +136,6 @@
                                             class="m-icon--heart-solid"></i> @{{ item['HeartCount'] }}</span>
                                 <span class="comment"><i class="m-icon--buble"></i> @{{ item['CommentCount'] }}</span>
                             </div>
-                            {{--<div class="pull-right">
-                                <a href="{{ $item['Link'] }}" target="_blank"><strong>View original post</strong></a>
-                            </div>--}}
                         </div>
                     </div>
                 </div>
@@ -155,13 +143,89 @@
         </div>
     </div>
 
+    </div>
+    <!--feed end-->
+
+    <!--post start-->
+    <div ng-show="postActive">
+        <div class="row">
+            <div class="col-md-12 main-content" {{--ng-init="userPostList('{{$permalink}}', 6)"--}}>
+                <div class="row">
+
+                    <div ng-repeat="item in userPostData">
+                        <!-- start -->
+                        <div class="col-sm-6">
+                            <div class="feed-content ">
+                                <div class="feed-header ">
+                                    <div class="row">
+                                        <div class="col-xs-12">
+                                            <div class="pull-left">
+                                                <img ng-src="@{{item.avator}}" width="50px" class="profile-photo" alt="">
+                                            </div>
+                                            <div class="pull-left name-time">
+
+                                                <strong>@{{item.author}}</strong> <br>
+                                                <span class="time">@{{item.creation_date}}</span>
+
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="feed-body ">
+                                    <div class="row">
+                                        <div class="col-xs-12">
+                                            <img ng-src="@{{ item.image }}">
+                                        </div>
+                                        <div class="col-xs-12">
+                                            <br>
+                                            <a href="@{{ item.url }}" target="_blank">
+                                                <strong>@{{ item.title }}</strong><br>
+                                                <div ng-bind-html="item.content"></div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="feed-footer ">
+                                    <div class="row">
+                                        <div class="col-xs-12">
+                                            <div class="pull-left">
+                                                <span class="favorite"><i class="m-icon--heart-solid"></i> @{{ item.heart_count }}</span>
+                                            <span class="comment"><i
+                                                        class="m-icon--buble"></i> @{{ item.comment_count }}</span>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end -->
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--post end-->
+
 
 </div>
 <script>
     $(window).scroll(function () {
         if ($(document).height() <= $(window).scrollTop() + $(window).height()) {
-           // angular.element(document.getElementById('loadDynamicData')).scope().userActivityList({{$userData['id']}}, 5);
-             angular.element(document.getElementById('loadDynamicData')).scope().userActivityList('{{$permalink}}', 5);
+
+            var postActive = angular.element(document.getElementById('loadDynamicData')).scope().postActive;
+
+            if(postActive == false)
+            {// load dynamic feed data
+                angular.element(document.getElementById('loadDynamicData')).scope().userActivityList('{{$permalink}}', 5);
+            }else{
+                // load dynamic post data
+                angular.element(document.getElementById('loadDynamicData')).scope().userPostList('{{$permalink}}', 6);
+            }
+
+           // console.log('test var :',);
         }
     });
 </script>
