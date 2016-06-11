@@ -19,8 +19,8 @@ $currentCat = $cat->slug;
                     </a>
                 </li>
                 <li class="box-link-ul ">
-                    <a class="box-link " href="/shop/travel">
-                        TRAVEL
+                    <a class="box-link " href="/shop/active">
+                        ACTIVE
                     </a>
                 </li>
                 <li class="box-link-ul ">
