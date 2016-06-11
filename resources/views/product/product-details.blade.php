@@ -674,7 +674,9 @@
 
             <section class="related-items pale-grey-bg">
                 <div class="main-content full-620 fixed-sm">
-                    <h3 class="green">Related Products</h3>
+                    <fieldset class="shoplanding-title">
+                        <legend align="center"><h3 class="blue pale-grey-bg">Related Ideas</h3></legend>
+                    </fieldset>
                     <div class="related-products grid-box-3">
 
 
@@ -718,7 +720,9 @@
                     </div>
 
                     <div class="related-ideas grid-box-3">
-                        <h3 class="blue">Related Ideas</h3>
+                        <fieldset class="shoplanding-title">
+                            <legend align="center"><h3 class="blue pale-grey-bg">Related Ideas</h3></legend>
+                        </fieldset>
 
                         @if(isset($relatedIdeas) && ($relatedIdeas != null) )
                             @foreach( $relatedIdeas as $item )
