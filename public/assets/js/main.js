@@ -4219,7 +4219,7 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
 
             $scope.isSubscriberClicked = clickStatus;
 
-            console.log('clicked : '+ $scope.isSubscriberClicked);
+            console.log('clicked : ' + $scope.isSubscriberClicked);
             $scope.modalInstance = $uibModal.open({
                     templateUrl: templateUrl,
                     scope: $scope,
@@ -4235,7 +4235,7 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                         method: "GET",
 
                     }).success(function (data) {
-                      //  console.log(data)
+                        //  console.log(data)
                     });
                 });
         };
@@ -4928,7 +4928,7 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
 
                 } else {
                     $scope.responseMessage = "Sorry, this email already exists";
-                   // console.log($scope.responseMessage);
+                    // console.log($scope.responseMessage);
                     window.location = '/signup/' + formData.SubscriberEmail + '/' + source;
                 }
 
@@ -4937,7 +4937,26 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
         };
         // Subscribe a user through email and redirect to registration page.
         $scope.enterGiveaway = function (formID, redirect) {
+
             var form = $('#' + formID);
+
+            var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+            var emailTest = re.test(form.find('input[name="email"]').val());
+
+            $scope.alertHTML = null;
+
+            if (emailTest == false)
+                $scope.addAlert('danger', 'Invalid Email !')
+
+            if (form.find('input[name="password"]').val() == '')
+                $scope.addAlert('danger', 'Password can\'t be empty  !')
+
+
+            console.log($scope.alertHTML);
+
+            if($scope.alertHTML != null)
+            return;
+
 
             $http({
                 url: '/api/giveaway/enter',
@@ -4949,8 +4968,21 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                     //'SetCookie': 'true'
                 }
             }).success(function (data) {
+                console.log(data,redirect);
+
+                if(data.status_code == 200 || data.status_code == 210)
+                {
+                    $scope.addAlert('success', data.data);
+                    window.location.href = '/giveaway/'+redirect;
+                }else if(data.status_code == 400 || data.status_code == 500)
+                {
+                    $scope.addAlert('danger', data.data);
+
+                }
+
+                return;
                 if (redirect) {
-                    window.location.href = '/giveaway'
+                    window.location.href = '/giveaway/'+redirect;
                 } else {
                     $scope.responseMessage = data;
                 }
@@ -4971,8 +5003,8 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
             else if (valSeg[3] == 'home')
                 sourceSegment = 'home';
 
-          //  console.log(valSeg);
-          //  return;
+            //  console.log(valSeg);
+            //  return;
             $scope.closeAlert();
 
             if ($scope.Password != $scope.PasswordConf) {
@@ -5005,10 +5037,34 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
         $scope.registerUser = function (source) {
             $scope.closeAlert();
 
+            $scope.alertHTML = null;
+
+            console.log($scope.FullName,$scope.Password,$scope.PasswordConf,$scope.Email,$scope.alertHTML);
+
+            if ($scope.FullName == '') {
+                $scope.addAlert('danger', 'Full name can\'t be empty!');
+                return;
+            }
+
+            var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+            var emailTest = re.test($scope.Email);
+
+            if(emailTest == false)
+            {
+                $scope.addAlert('danger', 'Invalid Email !');
+                return;
+            }
+
+            if ($scope.Password == '' || $scope.PasswordConf == '') {
+                $scope.addAlert('danger', 'Invalid password !');
+                return;
+            }
+
             if ($scope.Password != $scope.PasswordConf) {
                 $scope.addAlert('danger', 'Password doesn\'t match!');
                 return;
             }
+
 
             $http({
                 url: '/api/register-user',
@@ -5031,7 +5087,7 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                  window.location = $scope.loginRedirectLocation;
                  */
             }).error(function (data) {
-               console.log(data);
+                console.log(data);
             });
 
         };
@@ -5048,7 +5104,7 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
             $scope.profileFullName = $window.profileFullName;
 
 
-           // console.log('act : ', userId, $scope.userActivityCount);
+            // console.log('act : ', userId, $scope.userActivityCount);
 
             $http({
                 url: '/api/user/activities',
@@ -5060,13 +5116,13 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
 
             }).success(function (data) {
                 $scope.activityData = data.data;
-             //   console.log($scope.activityData);
+                //   console.log($scope.activityData);
             });
 
         };
 
         // Manage different click events in profile menu bar
-        $scope.clickOnPost = function(parmalink, count){
+        $scope.clickOnPost = function (parmalink, count) {
 
             $scope.postActive = true;
             $scope.ActivityActive = false;
@@ -5075,7 +5131,7 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
 
         };
 
-        $scope.clickOnActivity = function(parmalink, count){
+        $scope.clickOnActivity = function (parmalink, count) {
 
             $scope.postActive = true;
             $scope.ActivityActive = true;
@@ -5086,7 +5142,7 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
 
         };
 
-        $scope.clickOnActivityLike = function(parmalink, count){
+        $scope.clickOnActivityLike = function (parmalink, count) {
 
             $scope.postActive = false;
             $scope.ActivityActive = true;
@@ -5094,7 +5150,7 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
             $scope.showActivity('heart');
         };
 
-        $scope.clickOnActivityComment = function(parmalink, count){
+        $scope.clickOnActivityComment = function (parmalink, count) {
 
             $scope.postActive = false;
             $scope.ActivityActive = true;
@@ -5152,7 +5208,7 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
             }).success(function (data) {
                 //  console.log(data.data);
                 if (source == 'giveaway') {
-                   // console.log('redirecting to giveaway');
+                    // console.log('redirecting to giveaway');
                     window.location = '/giveaway/' + $window.giveawayLink;
                     return;
                 }
