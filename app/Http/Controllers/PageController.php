@@ -861,6 +861,7 @@ class PageController extends ApiController
             ->with('userData', $userData)
             ->with('nextGiveaways', $nextGiveaways)
             ->with('giveaway', $giveaway)
+            ->with('giveawayPermalink',empty($permalink)?'':$permalink)
             ->with('ended', $ended)
             ->with('alreadyIn', $alreadyIn)
             ->with('heading', $heading);

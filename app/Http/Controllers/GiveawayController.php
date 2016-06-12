@@ -86,7 +86,9 @@ class GiveawayController extends ApiController
                     }
 
 
-                    return ['success' => 'Congratulations, you have entered!'];
+                   // return ['success' => 'Congratulations, you have entered!'];
+                    return $this->setStatusCode(\Config::get("const.api-status.success"))
+                                ->makeResponse("Congratulations, you have entered!");
                 } else {
 
                     if (!$loggedIn) {
@@ -94,13 +96,15 @@ class GiveawayController extends ApiController
 
 
                     }
-                    return ['error' => 'You have already entered this Giveaway'];
+                    //return ['error' => 'You have already entered this Giveaway'];
+                    return $this->setStatusCode(\Config::get("const.api-status.success-with-variation"))
+                                ->makeResponse("You have already entered this Giveaway");
                 }
 
             } catch (Exception $ex) {
 
                 return $this->setStatusCode(\Config::get("const.api-status.system-fail"))
-                            ->makeResponseWithError("System Failure !", $ex);
+                            ->makeResponse("System Failure !");
             }
 
 
@@ -109,7 +113,9 @@ class GiveawayController extends ApiController
             // Flash message.
             session()->flash('giveaway_flash', 'That’s a new Email address! Register with Ideaing first.');
 
-            return ['error' => 'Incorrect email or password'];
+            //return ['error' => 'Incorrect email or password'];
+            return $this->setStatusCode(\Config::get("const.api-status.validation-fail"))
+                        ->makeResponse("That’s a new Email address! Register with Ideaing first.");
         }
     }
 

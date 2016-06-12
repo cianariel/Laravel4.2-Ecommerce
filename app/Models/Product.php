@@ -23,10 +23,8 @@ class Product extends Model
      */
     protected $table = 'products';
 
-    //protected $fillable = ['product_name'];
     protected $fillable = array(
         'product_vendor_id',
-      //  'product_vendor_type',
         'show_for',
         'product_name',
         'user_name',
@@ -171,7 +169,6 @@ class Product extends Model
                 "product_category_id" => ($product['CategoryId'] != null) ? $product['CategoryId'] : env('DEFAULT_CATEGORY_ID','44'),
                 "user_name" => ($product['ProductAuthorName'] != null) ? $product['ProductAuthorName'] : 'Anonymous User',
                 "product_vendor_id" => $product['ProductVendorId'],
-            //    "product_vendor_type" => $product['ProductVendorType'],
                 "show_for" => ($product['ShowFor'] != null) ? $product['ShowFor'] : '',
                 "product_name" => $product['Name'],
                 "product_permalink" => (isset($product['Permalink'])) ? $product['Permalink'] : null,
@@ -179,7 +176,6 @@ class Product extends Model
                 "specifications" => json_encode($product['Specifications']),
                 "price" => $product['Price'],
                 "sale_price" => $product['SalePrice'],
-              //  "store_id" => $product['StoreId'],
                 "store_id" => ($product['StoreId'] != null) ? $product['StoreId'] : env('DEFAULT_STORE_ID','1'),
                 "affiliate_link" => $product['AffiliateLink'],
                 "price_grabber_master_id" => $product['PriceGrabberId'],
@@ -207,7 +203,7 @@ class Product extends Model
             $data = Product::where('id', $productId)->first();
 
             $data['deleted'] = $deleted;
-            // print_r($deleted); die();
+
             return $data;
 
         } catch (Exception $ex) {
@@ -219,8 +215,6 @@ class Product extends Model
     {
         $data = Product::where('product_category_id',null)
             ->orWhere('store_id',null);
-
-       // $val = $data->get();
 
         $data->delete();
     }
@@ -263,7 +257,6 @@ class Product extends Model
                                   ->first();
         }
 
-        //dd($productInfo);
         return $productInfo;
 
     }
@@ -317,17 +310,10 @@ class Product extends Model
                 });
             }
         }
-//
+
         if (@$settings['ExcludeIDs'] != null) {
             $productModel = $productModel->whereNotIn("id", $settings['excludeIDs']);
         }
-//
-//            if (@$settings['parentCategoryID'] != null)
-//            {
-//                $productModel = $productModel->whereHas('tags', function($query) use ($tagID){
-//                    $query->whereIn('tag_id', $tagID);
-//                });
-//            }
 
         if (@$settings['ShowFor'] != null) {
             $productModel = $productModel->where("show_for", $settings['ShowFor']);
@@ -343,10 +329,6 @@ class Product extends Model
         if (@$settings['FilterType'] == 'product-filter') {
             $productModel = $productModel->where("product_name", "like", "%$filterText%");
         }
-//            if(!@$settings['sortBy'] || $settings['sortBy'] == 'undefined')
-//            {
-//                @$settings['sortBy'] = 'created_at';
-//            }
 
         if (@$settings['WithTags'] == true && $settings['CategoryId'] != null) {
             $category = ProductCategory::where('id', '=', $settings['CategoryId'])->first();
@@ -369,8 +351,6 @@ class Product extends Model
 
         $skip = isset($settings['CustomSkip']) ? intval($settings['CustomSkip']) : $settings['limit'] * ($settings['page'] - 1);
 
-
-//            $skip = $settings['limit'] * ($settings['page'] - 1);
 
         $product['total'] = $productModel->count();
 
@@ -461,14 +441,11 @@ class Product extends Model
      */
     public function productDetailsViewGenerate($productData, $catTree)
     {
-        // dd($productData);
+
         $productInfo['Id'] = $productData['product']->id;
         $productInfo['CategoryId'] = $productData['product']->product_category_id;
         $productInfo['CatTree'] = $catTree;
-
         $productInfo['ProductVendorId'] = $productData['product']->product_vendor_id;
-    //    $productInfo['ProductVendorType'] = $productData['product']->product_vendor_type;
-
         $productInfo['ProductName'] = $productData['product']->product_name;
         $productInfo['Permalink'] = $productData['product']->product_permalink;
         $productInfo['Description'] = $productData['product']->product_description;
@@ -490,7 +467,6 @@ class Product extends Model
         // setting images and hero image link
         $selfImage = [];
         foreach ($productData['product']->medias as $key => $value) {
-            // if (($value->media_type == 'img-upload' || $value->media_type == 'img-link') && ($value->is_hero_item == null || $value->is_hero_item == false))
             if($value->media_type == 'video-link' || $value->media_type == 'video-youtube-link' || $value->media_type == 'video-vimeo-link'){
                 $selfImage['picture'][$key]['picture-name'] = $value->media_name;
                 $selfImage['picture'][$key]['type'] = $value->media_type;

@@ -77,6 +77,14 @@
                                 </div>
                             </div>
                         @endif
+                            <div ng-show="alertHTML">
+                                <div class="alert alert-danger giveaway-alert">
+                                    <strong>@{{ alertHTML }}</strong>
+                                    <span class="close-button close-login" data-toggle=".giveaway-alert">
+                                         <i class="m-icon--Close"></i>
+                                    </span>
+                                </div>
+                            </div>
                         @if(@$userData['login'])
                             <div class="col-lg-6">
                                 <h5 style="font-size: 2.5rem; padding-top: 10px;">
@@ -100,7 +108,7 @@
                                         <input id="giveaway_id" ng-model="GiveAwayID" type="hidden" name="giveaway_id"
                                                value="{{$giveaway->id}}">
                                         <button style="margin-top: 30px;"
-                                                ng-click="enterGiveaway('giveaway-two',  false)"
+                                                ng-click="enterGiveaway('giveaway-two','{{$giveawayPermalink}}')"
                                                 class="btn btn-success col-xs-12" href="#">Enter Giveaway
                                         </button>
                                     </form>
@@ -147,14 +155,23 @@
 			                                 <input id="giveaway_id" ng-model="GiveAwayID" type="hidden"
                                                     name="giveaway_id" value="{{$giveaway->id}}">
 			                            </span>
-                                    <button ng-click="enterGiveaway('giveaway-two', true)"
+                                    <button ng-click="enterGiveaway('giveaway-two', '{{$giveawayPermalink}}')"
                                             class="btn btn-success col-xs-12" href="#">Enter Giveaway
                                     </button>
                                 </form>
 
-                                <div ng-if="responseMessage.success">
+                               {{-- <div ng-if="responseMessage.success">
                                     <strong style="display: block; padding-top: 30px"
                                             class="red">@{{ responseMessage.success }}</strong>
+                                </div>--}}
+
+                                <div ng-show="alertHTML">
+                                    <div class="alert alert-danger giveaway-alert">
+                                        <strong ng-bind-html="responseMessage.success"></strong>
+                                    <span class="close-button close-login" data-toggle=".giveaway-alert">
+                                         <i class="m-icon--Close"></i>
+                                    </span>
+                                    </div>
                                 </div>
 
                                 </form>
