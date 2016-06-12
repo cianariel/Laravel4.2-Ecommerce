@@ -4438,7 +4438,8 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
 
             // profile feed and post toggle
 
-            $scope.postActive = false;
+            $scope.postActive = true;
+            $scope.ActivityActive = true;
 
             $scope.socialCounter = function () {
 
@@ -5064,9 +5065,11 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
 
         };
 
+        // Manage different click events in profile menu bar
         $scope.clickOnPost = function(parmalink, count){
 
             $scope.postActive = true;
+            $scope.ActivityActive = false;
             $scope.userActivityCount = null;
             $scope.userPostList(parmalink, count);
 
@@ -5074,21 +5077,28 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
 
         $scope.clickOnActivity = function(parmalink, count){
 
-            $scope.postActive = false;
+            $scope.postActive = true;
+            $scope.ActivityActive = true;
             $scope.userActivityCount = null;
+            $scope.showActivity('all');
             $scope.userActivityList(parmalink, count);
+            $scope.userPostList(parmalink, count);
 
         };
 
         $scope.clickOnActivityLike = function(parmalink, count){
 
-            $scope.clickOnActivity(parmalink, count);
+            $scope.postActive = false;
+            $scope.ActivityActive = true;
+            $scope.userActivityList(parmalink, count);
             $scope.showActivity('heart');
         };
 
         $scope.clickOnActivityComment = function(parmalink, count){
 
-            $scope.clickOnActivity(parmalink, count);
+            $scope.postActive = false;
+            $scope.ActivityActive = true;
+            $scope.userActivityList(parmalink, count);
             $scope.showActivity('comment');
         };
 

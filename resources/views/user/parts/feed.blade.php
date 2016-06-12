@@ -4,144 +4,148 @@
         var profileFullName = '{{$fullname}}';
     </script>
     <!--feed start -->
-    <div ng-hide="postActive">
-    <div class="col-md-3 side-bar hidden hidden-xs hidden-sm">
-        <div class="row">
-            <ul class="nav sidenav">
-                <li ng-class="activeClassAll">
-                    <a href="#" ng-click="showActivity('all')">
-                        <i class="m-icon m-icon--menu"></i>&nbsp;
-                        All Activity
-                    </a>
-                </li>
-                <li ng-class="activeClassHeart">
-                    <a href="#" ng-click="showActivity('heart')">
-                        <i class="m-icon m-icon--heart-id"></i>&nbsp;
-                        Likes
-                    </a>
-                </li>
-                <li ng-class="activeClassComment">
-                    <a href="#" ng-click="showActivity('comment')">
-                        <i class="m-icon m-icon--comments-id"></i>&nbsp;
-                        Comments
-                    </a>
-                </li>
-            </ul>
+    <div ng-show="ActivityActive">
+        <div class="col-md-3 side-bar hidden hidden-xs hidden-sm">
+            <div class="row">
+                <ul class="nav sidenav">
+                    <li ng-class="activeClassAll">
+                        <a href="#" ng-click="showActivity('all')">
+                            <i class="m-icon m-icon--menu"></i>&nbsp;
+                            All Activity
+                        </a>
+                    </li>
+                    <li ng-class="activeClassHeart">
+                        <a href="#" ng-click="showActivity('heart')">
+                            <i class="m-icon m-icon--heart-id"></i>&nbsp;
+                            Likes
+                        </a>
+                    </li>
+                    <li ng-class="activeClassComment">
+                        <a href="#" ng-click="showActivity('comment')">
+                            <i class="m-icon m-icon--comments-id"></i>&nbsp;
+                            Comments
+                        </a>
+                    </li>
+                </ul>
+            </div>
         </div>
-    </div>
 
-    {{--<div class="col-md-9 main-content" ng-init="userActivityList({{$userData['id']}},5)">--}}
+        {{--<div class="col-md-9 main-content" ng-init="userActivityList({{$userData['id']}},5)">--}}
         <div class="col-md-9 main-content" ng-init="userActivityList('{{$permalink}}',5)">
 
-        <div ng-repeat="item in activityData">
+            <div ng-repeat="item in activityData">
 
-            <div class="feed-content row" ng-show="(item['Type']=='comment') && showComment">
-                <div class="feed-header ">
-                    <div class="row">
-                        <div class="col-xs-12">
-                            <div class="pull-left">
-                                <img ng-src="@{{ profilePicture }}" width="50px" class="profile-photo" alt="">
-                            </div>
-                            <div class="pull-left name-time">
-                                <strong>@{{ profileFullName }}</strong> {{--<i class="m-icon--heart-solid"></i>--}}<br>
-                                <span class="time">@{{ item['UpdateTime'] }}</span>
-                            </div>
-                            <div class="pull-right">
+                <div class="feed-content row" ng-show="(item['Type']=='comment') && showComment">
+                    <div class="feed-header ">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="pull-left">
+                                    <img ng-src="@{{ profilePicture }}" width="50px" class="profile-photo" alt="">
+                                </div>
+                                <div class="pull-left name-time">
+                                    <strong>@{{ profileFullName }}</strong> {{--<i class="m-icon--heart-solid"></i>--}}
+                                    <br>
+                                    <span class="time">@{{ item['UpdateTime'] }}</span>
+                                </div>
+                                <div class="pull-right">
 
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="feed-body ">
-                    <div class="row">
+                    <div class="feed-body ">
+                        <div class="row">
 
 
-                        <div class="col-xs-4" ng-show="item['Image'] !=''">
-                            <img ng-src="@{{ item['Image'] }}">
+                            <div class="col-xs-4" ng-show="item['Image'] !=''">
+                                <img ng-src="@{{ item['Image'] }}">
+                            </div>
+
+
+                            <div ng-class="item['Type'] =='heart' ? 'col-xs-12':'col-xs-8'">
+                                <strong>
+                                    @{{ profileFullName }} recently
+                                    <span ng-if="item['Type']=='comment'"> commented</span>
+                                    <span ng-if="item['Type']!='comment'"> liked</span> a
+
+                                    <span ng-if="item['Section']=='product'"> product</span>
+                                    <span ng-if="item['Section']!='product'"> idea</span>
+
+                                </strong>: <a href="@{{ item['Link'] }}" target="_blank">@{{ item['Title'] }}</a>
+                            </div>
+
                         </div>
-
-
-                        <div ng-class="item['Type'] =='heart' ? 'col-xs-12':'col-xs-8'">
-                            <strong>
-                                @{{ profileFullName }} recently
-                                <span ng-if="item['Type']=='comment'"> commented</span>
-                                <span ng-if="item['Type']!='comment'"> liked</span> a
-
-                                <span ng-if="item['Section']=='product'"> product</span>
-                                <span ng-if="item['Section']!='product'"> idea</span>
-
-                            </strong>: <a href="@{{ item['Link'] }}" target="_blank">@{{ item['Title'] }}</a>
-                        </div>
-
                     </div>
-                </div>
-                <div class="feed-footer ">
-                    <div class="row">
-                        <div class="col-xs-12">
-                            <div class="pull-left">
+                    <div class="feed-footer ">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="pull-left">
                                 <span class="favorite"><i
                                             class="m-icon--heart-solid"></i> @{{ item['HeartCount'] }}</span>
-                                <span class="comment"><i class="m-icon--buble"></i> @{{ item['CommentCount'] }}</span>
+                                    <span class="comment"><i
+                                                class="m-icon--buble"></i> @{{ item['CommentCount'] }}</span>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="feed-content row" ng-show="(item['Type']!='comment') && showHeart">
-                <div class="feed-header ">
-                    <div class="row">
-                        <div class="col-xs-12">
-                            <div class="pull-left">
-                                <img ng-src="@{{ profilePicture }}" width="50px" class="profile-photo" alt="">
-                            </div>
-                            <div class="pull-left name-time">
-                                <strong>@{{ profileFullName }}</strong> {{--<i class="m-icon--heart-solid"></i>--}}<br>
-                                <span class="time">@{{ item['UpdateTime'] }}</span>
-                            </div>
-                            <div class="pull-right">
+                <div class="feed-content row" ng-show="(item['Type']!='comment') && showHeart">
+                    <div class="feed-header ">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="pull-left">
+                                    <img ng-src="@{{ profilePicture }}" width="50px" class="profile-photo" alt="">
+                                </div>
+                                <div class="pull-left name-time">
+                                    <strong>@{{ profileFullName }}</strong> {{--<i class="m-icon--heart-solid"></i>--}}
+                                    <br>
+                                    <span class="time">@{{ item['UpdateTime'] }}</span>
+                                </div>
+                                <div class="pull-right">
 
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="feed-body ">
-                    <div class="row">
+                    <div class="feed-body ">
+                        <div class="row">
 
 
-                        <div class="col-xs-4" ng-show="item['Image'] !=''">
-                            <img ng-src="@{{ item['Image'] }}">
+                            <div class="col-xs-4" ng-show="item['Image'] !=''">
+                                <img ng-src="@{{ item['Image'] }}">
+                            </div>
+
+
+                            <div ng-class="item['Type'] =='heart' ? 'col-xs-12':'col-xs-8'">
+                                <strong>
+                                    @{{ profileFullName }} recently
+                                    <span ng-if="item['Type']=='comment'"> commented</span>
+                                    <span ng-if="item['Type']!='comment'"> liked</span> a
+
+                                    <span ng-if="item['Section']=='product'"> product</span>
+                                    <span ng-if="item['Section']!='product'"> idea</span>
+
+                                </strong>: <a href="@{{ item['Link'] }}" target="_blank">@{{ item['Title'] }}</a>
+                            </div>
+
                         </div>
-
-
-                        <div ng-class="item['Type'] =='heart' ? 'col-xs-12':'col-xs-8'">
-                            <strong>
-                                @{{ profileFullName }} recently
-                                <span ng-if="item['Type']=='comment'"> commented</span>
-                                <span ng-if="item['Type']!='comment'"> liked</span> a
-
-                                <span ng-if="item['Section']=='product'"> product</span>
-                                <span ng-if="item['Section']!='product'"> idea</span>
-
-                            </strong>: <a href="@{{ item['Link'] }}" target="_blank">@{{ item['Title'] }}</a>
-                        </div>
-
                     </div>
-                </div>
-                <div class="feed-footer ">
-                    <div class="row">
-                        <div class="col-xs-12">
-                            <div class="pull-left">
+                    <div class="feed-footer ">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="pull-left">
                                 <span class="favorite"><i
                                             class="m-icon--heart-solid"></i> @{{ item['HeartCount'] }}</span>
-                                <span class="comment"><i class="m-icon--buble"></i> @{{ item['CommentCount'] }}</span>
+                                    <span class="comment"><i
+                                                class="m-icon--buble"></i> @{{ item['CommentCount'] }}</span>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
 
     </div>
     <!--feed end-->
@@ -149,7 +153,7 @@
     <!--post start-->
     <div ng-show="postActive">
         <div class="row">
-            <div class="col-md-12 main-content" {{--ng-init="userPostList('{{$permalink}}', 6)"--}}>
+            <div class="col-md-12 main-content" ng-init="userPostList('{{$permalink}}', 6)">
                 <div class="row">
 
                     <div ng-repeat="item in userPostData">
@@ -160,7 +164,8 @@
                                     <div class="row">
                                         <div class="col-xs-12">
                                             <div class="pull-left">
-                                                <img ng-src="@{{item.avator}}" width="50px" class="profile-photo" alt="">
+                                                <img ng-src="@{{item.avator}}" width="50px" class="profile-photo"
+                                                     alt="">
                                             </div>
                                             <div class="pull-left name-time">
 
@@ -190,7 +195,8 @@
                                     <div class="row">
                                         <div class="col-xs-12">
                                             <div class="pull-left">
-                                                <span class="favorite"><i class="m-icon--heart-solid"></i> @{{ item.heart_count }}</span>
+                                                <span class="favorite"><i
+                                                            class="m-icon--heart-solid"></i> @{{ item.heart_count }}</span>
                                             <span class="comment"><i
                                                         class="m-icon--buble"></i> @{{ item.comment_count }}</span>
                                             </div>
@@ -216,16 +222,18 @@
         if ($(document).height() <= $(window).scrollTop() + $(window).height()) {
 
             var postActive = angular.element(document.getElementById('loadDynamicData')).scope().postActive;
+            var ActivityActive = angular.element(document.getElementById('loadDynamicData')).scope().ActivityActive;
 
-            if(postActive == false)
-            {// load dynamic feed data
+            if (ActivityActive == true) {
+                // load dynamic feed data
                 angular.element(document.getElementById('loadDynamicData')).scope().userActivityList('{{$permalink}}', 5);
-            }else{
+            }
+
+            if (postActive == true) {
                 // load dynamic post data
                 angular.element(document.getElementById('loadDynamicData')).scope().userPostList('{{$permalink}}', 6);
             }
 
-           // console.log('test var :',);
         }
     });
 </script>
