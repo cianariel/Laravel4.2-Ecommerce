@@ -219,6 +219,8 @@ if(!isset($theGiveAway)){
                                                 <div class="clearfix"></div>
                                             </div>
                                         </div>
+                                        <div class="notification-footer">
+                                        </div>
                                     </div>
                                 </div>
 

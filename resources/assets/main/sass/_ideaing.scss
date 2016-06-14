@@ -3124,7 +3124,10 @@ header.colophon{
                 background: #fff;      
                 border-left: 1px solid $light-grey;
                 border-right: 1px solid $light-grey;
-                height: 300px;
+                border: 1px solid $light-grey;
+                border-bottom-left-radius: 20px;
+                border-bottom-right-radius: 20px;
+                height: 315px;
                 overflow: auto;
                 .notification-item{
                     border-bottom: 1px solid #f3f6f6;
@@ -3147,16 +3150,17 @@ header.colophon{
             }
             
             .notification-footer{
-                padding: 15px;
-                background: #fff;
-                text-align: center;
-                border: 1px solid $light-grey;
-                border-bottom-left-radius: 20px;
-                border-bottom-right-radius: 20px;
-                #notification-view-all{
-                    cursor: pointer;
-                    color: #72a7d6;
-                }
+                // padding: 4;
+
+                // background: #fff;
+                // text-align: center;
+                // border: 1px solid $light-grey;
+                // border-bottom-left-radius: 20px;
+                // border-bottom-right-radius: 20px;
+                // #notification-view-all{
+                //     cursor: pointer;
+                //     color: #72a7d6;
+                // }
             }
             
             &::before{
@@ -4869,14 +4873,16 @@ body.single{
     	display:inline-block;
     	.thumb-box{
       		float:left;
-      	}
+      	} 
     }
 
     .get-it-inner{
       float:left;
       position:relative;
+      line-height:1.5rem;
+      font-size: 1.3rem;
     }
-
+  
    .thumb-box{
       position:relative; 
       display:inline-block;
@@ -4895,6 +4901,7 @@ body.single{
       font-size: 1.3rem;
       font-family: montserratlight, sans-serif;
       font-weight: normal;
+      line-height:1.5rem;
       text-align:center;
       background:rgba($iridium, .7);
       color:#fff;
