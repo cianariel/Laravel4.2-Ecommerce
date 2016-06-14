@@ -143,14 +143,14 @@ class AuthenticateController extends ApiController
 
             $authUser = $this->isValidUser($credentials);
 
-            if ($authUser == false) {
+            if (isset($authUser['error'])) {
 
                 if ($this->subscriber->isASubscriber($credentials['Email']) == false) {
                     return $this->setStatusCode(IlluminateResponse::HTTP_UNAUTHORIZED)
-                                ->makeResponseWithError('Incorrect email or password');
+                                ->makeResponseWithError($authUser['error']);
                 } else {
                     return $this->setStatusCode(IlluminateResponse::HTTP_UNAUTHORIZED)
-                                ->makeResponseWithError('This email already exists, please log in as a registered user');
+                                ->makeResponseWithError($authUser['error']);
                 }
 
             } else {
@@ -360,7 +360,7 @@ class AuthenticateController extends ApiController
                     }
                 } else {
                     return $this->setStatusCode(\Config::get("const.api-status.app-failure"))
-                                ->makeResponseWithError('User email exists');
+                                ->makeResponseWithError('This email already exists, please login');
                 }
             }
         } catch (\Exception $ex) {
@@ -641,9 +641,11 @@ class AuthenticateController extends ApiController
         $email = isset($userData['Email']) ? $userData['Email'] : null;
         $password = isset($userData['Password']) ? $userData['Password'] : null;
 
-        if (is_null($email) or is_null($password)) {
-            return false;
-        } else {
+        if (is_null($email)) {
+            return ['error' => 'Please enter email'];
+        }elseif(is_null($password)){
+            return ['error' => 'Please enter password'];
+        }else{
             return $this->user->IsAuthorizedUser($userData);
         }
     }
