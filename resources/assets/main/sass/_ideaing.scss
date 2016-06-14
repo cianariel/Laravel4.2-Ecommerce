@@ -3124,7 +3124,10 @@ header.colophon{
                 background: #fff;      
                 border-left: 1px solid $light-grey;
                 border-right: 1px solid $light-grey;
-                height: 300px;
+                border: 1px solid $light-grey;
+                border-bottom-left-radius: 20px;
+                border-bottom-right-radius: 20px;
+                height: 315px;
                 overflow: auto;
                 .notification-item{
                     border-bottom: 1px solid #f3f6f6;
@@ -3147,16 +3150,17 @@ header.colophon{
             }
             
             .notification-footer{
-                padding: 15px;
-                background: #fff;
-                text-align: center;
-                border: 1px solid $light-grey;
-                border-bottom-left-radius: 20px;
-                border-bottom-right-radius: 20px;
-                #notification-view-all{
-                    cursor: pointer;
-                    color: #72a7d6;
-                }
+                // padding: 4;
+
+                // background: #fff;
+                // text-align: center;
+                // border: 1px solid $light-grey;
+                // border-bottom-left-radius: 20px;
+                // border-bottom-right-radius: 20px;
+                // #notification-view-all{
+                //     cursor: pointer;
+                //     color: #72a7d6;
+                // }
             }
             
             &::before{
@@ -4555,35 +4559,41 @@ header.sub-head{
           //1px 1px 0 #fff;
       }
   }
-  li.active{
-    a.home-link{
-      color: $iridium;
-      background-image: url('/assets/images/house-pink.png');
-      background-position: -18px 10px;
-      background-size: 48px;
-    }
-    a.all-link{
-      color: $iridium;
-      //&::after{
-      //  bottom: -31px;
-      //}
-    }
-    a.ideas-link{
-/*      background-image: url('/assets/images/lamp-grey.png');*/
-      color: $sky-blue;
-/*      background-image: url('/assets/images/lamp-orange.png');*/
-    }
-    a.products-link{
-      color: $pine-green;
-    }
-    a.photos-link{
-      color: $sky-blue;
-    }
+  li{
+  	// a{
+  	// 	color: grey;
+  	// }
+  	&.active{
+	    a.home-link{
+	      color: $iridium;
+	      background-image: url('/assets/images/house-pink.png');
+	      background-position: -18px 10px;
+	      background-size: 48px;
+	    }
+	    a.all-link{
+	      color: $iridium; 
+	      //&::after{
+	      //  bottom: -31px;
+	      //}
+	    }
+	    a.ideas-link{
+	/*      background-image: url('/assets/images/lamp-grey.png');*/
+	      color: $sky-blue;
+	/*      background-image: url('/assets/images/lamp-orange.png');*/
+	    }
+	    a.products-link{
+	      color: $pine-green;
+	    }
+	    a.photos-link{
+	      color: $sky-blue;
+	    }
+  	}
   }
+
 
   .main-content-filter{
       text-align: center;
-      li{
+      li{ 
           .m-icon{
             font-size: 24px;
             margin-top: -3px;
@@ -4594,7 +4604,17 @@ header.sub-head{
               
               &:focus{
                   text-decoration: none;
-              }
+              } 
+            @media (max-width: 620px){
+              i{
+          		position: relative;
+          		bottom:4px; 
+          	  }
+          	}
+          }
+
+          span{
+      		vertical-align: top;
           }
       }
   }
@@ -4869,14 +4889,16 @@ body.single{
     	display:inline-block;
     	.thumb-box{
       		float:left;
-      	}
+      	} 
     }
 
     .get-it-inner{
       float:left;
       position:relative;
+      line-height:1.5rem;
+      font-size: 1.3rem;
     }
-
+  
    .thumb-box{
       position:relative; 
       display:inline-block;
@@ -4895,6 +4917,7 @@ body.single{
       font-size: 1.3rem;
       font-family: montserratlight, sans-serif;
       font-weight: normal;
+      line-height:1.5rem;
       text-align:center;
       background:rgba($iridium, .7);
       color:#fff;
@@ -8240,23 +8263,34 @@ body.profilepage{
         
         .main-content-filter{
             > li > a{
+            	cursor: pointer;
+            	// color: grey;
                 > i{
+            		// color: grey;
                     font-size: 18px;
                     margin-top: 1px;
                 }
             }
-            .all-activity{
-                color: #ff0042;
+
+            li.active, 
+            li:hover{
+            	.all-activity{
+                	color: #ff0042;
+	            }
+	            .my-likes{
+	               color: red;
+	            }
+	            .my-comments{
+	                color: #3cb44a;
+	            }
+	            .my-post{
+	                color: $facebook-blue;
+	            }
+	            .my-product{
+	                color: $facebook-blue;
+	            }
             }
-            //.my-post{
-            //    color: #f7931e;
-            //}
-            .message{
-                color: #3cb44a;
-            }
-            .my-product{
-                color: #c7c747;
-            }
+            
         }
         
         

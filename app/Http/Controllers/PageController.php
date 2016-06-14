@@ -189,6 +189,9 @@ class PageController extends ApiController
 
         $cacheKey = "grid-content-$page-$limit-$tag-$type-$ideaCategory";
 
+       // print_r($cacheKey); die();
+
+
           if($cachedContent = PageHelper::getFromRedis($cacheKey)){
             $return = $cachedContent;
             $return->fromCache = true;
@@ -340,12 +343,16 @@ class PageController extends ApiController
 
         $url = URL::to('/') . '/ideas/feeds/index.php?count=' . $limit . '&no-featured&offset=' . $offset;
 
-        if ($tag && $tag != 'false') {
+        if ($tag && $tag != 'false') { 
             $url .= '&tag=' . $tag;
         }
 
         if ($category && $category != 'false') {
             $url .= '&category-name=' . $category;
+        }
+
+        if($limit == 10){ // CMS homepage, needs to have no deals
+            $url .= '&no-deals';
         }
 
         //print_r($url); die();
