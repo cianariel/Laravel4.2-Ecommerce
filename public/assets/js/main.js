@@ -5020,7 +5020,7 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
 
             if(emailTest == false)
             {
-                $scope.addAlert('danger', 'Please enter a correct email');
+                $scope.addAlert('danger', 'Please enter a valid email');
                 return;
             }
 
@@ -5073,7 +5073,7 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
 
             if(emailTest == false)
             {
-                $scope.addAlert('danger', 'Please enter a correct email');
+                $scope.addAlert('danger', 'Please enter a valid email');
                 return;
             }
 
