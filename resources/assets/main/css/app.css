@@ -7654,6 +7654,11 @@ header.sub-head {
       padding-right: 10px; }
       #hero-nav .main-content-filter li > a:focus {
         text-decoration: none; }
+      #hero-nav .main-content-filter li > a i {
+        position: relative;
+        bottom: 4px; }
+    #hero-nav .main-content-filter li span {
+      vertical-align: top; }
 
 .load-line {
   width: 100%;

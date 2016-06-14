@@ -4587,7 +4587,7 @@ header.sub-head{
 
   .main-content-filter{
       text-align: center;
-      li{
+      li{ 
           .m-icon{
             font-size: 24px;
             margin-top: -3px;
@@ -4598,7 +4598,15 @@ header.sub-head{
               
               &:focus{
                   text-decoration: none;
-              }
+              } 
+              i{
+          		position: relative;
+          		bottom:4px; 
+          	  }
+          }
+
+          span{
+      		vertical-align: top;
           }
       }
   }

@@ -119,7 +119,7 @@
                                 {{--Messages--}}
                             {{--</a>--}}
                         {{--</li>--}}
-                        <li ng-class="{active: activeMenu == '4'}" ng-click="activeMenu='4'">
+                        <li class="hidden" ng-class="{active: activeMenu == '4'}" ng-click="activeMenu='4'">
                             <a data-filterby="photos" href="" class="my-product">
                                 <i class="m-icon m-icon--menu"></i>
                                 My Products
