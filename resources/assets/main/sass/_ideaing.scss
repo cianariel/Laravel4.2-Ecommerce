@@ -4559,31 +4559,37 @@ header.sub-head{
           //1px 1px 0 #fff;
       }
   }
-  li.active{
-    a.home-link{
-      color: $iridium;
-      background-image: url('/assets/images/house-pink.png');
-      background-position: -18px 10px;
-      background-size: 48px;
-    }
-    a.all-link{
-      color: $iridium;
-      //&::after{
-      //  bottom: -31px;
-      //}
-    }
-    a.ideas-link{
-/*      background-image: url('/assets/images/lamp-grey.png');*/
-      color: $sky-blue;
-/*      background-image: url('/assets/images/lamp-orange.png');*/
-    }
-    a.products-link{
-      color: $pine-green;
-    }
-    a.photos-link{
-      color: $sky-blue;
-    }
+  li{
+  	// a{
+  	// 	color: grey;
+  	// }
+  	&.active{
+	    a.home-link{
+	      color: $iridium;
+	      background-image: url('/assets/images/house-pink.png');
+	      background-position: -18px 10px;
+	      background-size: 48px;
+	    }
+	    a.all-link{
+	      color: $iridium; 
+	      //&::after{
+	      //  bottom: -31px;
+	      //}
+	    }
+	    a.ideas-link{
+	/*      background-image: url('/assets/images/lamp-grey.png');*/
+	      color: $sky-blue;
+	/*      background-image: url('/assets/images/lamp-orange.png');*/
+	    }
+	    a.products-link{
+	      color: $pine-green;
+	    }
+	    a.photos-link{
+	      color: $sky-blue;
+	    }
+  	}
   }
+
 
   .main-content-filter{
       text-align: center;
@@ -4599,10 +4605,12 @@ header.sub-head{
               &:focus{
                   text-decoration: none;
               } 
+            @media (max-width: 620px){
               i{
           		position: relative;
           		bottom:4px; 
           	  }
+          	}
           }
 
           span{
@@ -8255,23 +8263,34 @@ body.profilepage{
         
         .main-content-filter{
             > li > a{
+            	cursor: pointer;
+            	// color: grey;
                 > i{
+            		// color: grey;
                     font-size: 18px;
                     margin-top: 1px;
                 }
             }
-            .all-activity{
-                color: #ff0042;
+
+            li.active, 
+            li:hover{
+            	.all-activity{
+                	color: #ff0042;
+	            }
+	            .my-likes{
+	               color: red;
+	            }
+	            .my-comments{
+	                color: #3cb44a;
+	            }
+	            .my-post{
+	                color: $facebook-blue;
+	            }
+	            .my-product{
+	                color: $facebook-blue;
+	            }
             }
-            //.my-post{
-            //    color: #f7931e;
-            //}
-            .message{
-                color: #3cb44a;
-            }
-            .my-product{
-                color: #c7c747;
-            }
+            
         }
         
         

@@ -7654,9 +7654,10 @@ header.sub-head {
       padding-right: 10px; }
       #hero-nav .main-content-filter li > a:focus {
         text-decoration: none; }
-      #hero-nav .main-content-filter li > a i {
-        position: relative;
-        bottom: 4px; }
+      @media (max-width: 620px) {
+        #hero-nav .main-content-filter li > a i {
+          position: relative;
+          bottom: 4px; } }
     #hero-nav .main-content-filter li span {
       vertical-align: top; }
 
@@ -10016,15 +10017,26 @@ body.profilepage {
             float: none; } }
   body.profilepage #hero-nav {
     background: none; }
-    body.profilepage #hero-nav .main-content-filter > li > a > i {
-      font-size: 18px;
-      margin-top: 1px; }
-    body.profilepage #hero-nav .main-content-filter .all-activity {
+    body.profilepage #hero-nav .main-content-filter > li > a {
+      cursor: pointer; }
+      body.profilepage #hero-nav .main-content-filter > li > a > i {
+        font-size: 18px;
+        margin-top: 1px; }
+    body.profilepage #hero-nav .main-content-filter li.active .all-activity,
+    body.profilepage #hero-nav .main-content-filter li:hover .all-activity {
       color: #ff0042; }
-    body.profilepage #hero-nav .main-content-filter .message {
+    body.profilepage #hero-nav .main-content-filter li.active .my-likes,
+    body.profilepage #hero-nav .main-content-filter li:hover .my-likes {
+      color: red; }
+    body.profilepage #hero-nav .main-content-filter li.active .my-comments,
+    body.profilepage #hero-nav .main-content-filter li:hover .my-comments {
       color: #3cb44a; }
-    body.profilepage #hero-nav .main-content-filter .my-product {
-      color: #c7c747; }
+    body.profilepage #hero-nav .main-content-filter li.active .my-post,
+    body.profilepage #hero-nav .main-content-filter li:hover .my-post {
+      color: #079DD1; }
+    body.profilepage #hero-nav .main-content-filter li.active .my-product,
+    body.profilepage #hero-nav .main-content-filter li:hover .my-product {
+      color: #079DD1; }
     @media (max-width: 620px) {
       body.profilepage #hero-nav .main-content-filter > li > a {
         font-size: 10px;
