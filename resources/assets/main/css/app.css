@@ -6737,7 +6737,10 @@ header.colophon {
       background: #fff;
       border-left: 1px solid #c1c1c1;
       border-right: 1px solid #c1c1c1;
-      height: 300px;
+      border: 1px solid #c1c1c1;
+      border-bottom-left-radius: 20px;
+      border-bottom-right-radius: 20px;
+      height: 315px;
       overflow: auto; }
       #top-nav .top-nav-holder .notification-popup .notification-body .notification-item {
         border-bottom: 1px solid #f3f6f6;
@@ -6752,16 +6755,6 @@ header.colophon {
       #top-nav .top-nav-holder .notification-popup .notification-body .time {
         display: block;
         clear: both; }
-    #top-nav .top-nav-holder .notification-popup .notification-footer {
-      padding: 15px;
-      background: #fff;
-      text-align: center;
-      border: 1px solid #c1c1c1;
-      border-bottom-left-radius: 20px;
-      border-bottom-right-radius: 20px; }
-      #top-nav .top-nav-holder .notification-popup .notification-footer #notification-view-all {
-        cursor: pointer;
-        color: #72a7d6; }
     #top-nav .top-nav-holder .notification-popup::before {
       border-left: 10px solid transparent;
       border-right: 10px solid transparent;
@@ -7830,7 +7823,9 @@ body.single .article-content iframe {
       float: left; }
   .float-thumbs .get-it-inner {
     float: left;
-    position: relative; }
+    position: relative;
+    line-height: 1.5rem;
+    font-size: 1.3rem; }
   .float-thumbs .thumb-box {
     position: relative;
     display: inline-block; }
@@ -7845,6 +7840,7 @@ body.single .article-content iframe {
       font-size: 1.3rem;
       font-family: montserratlight, sans-serif;
       font-weight: normal;
+      line-height: 1.5rem;
       text-align: center;
       background: rgba(255, 0, 66, 0.7);
       color: #fff; }
