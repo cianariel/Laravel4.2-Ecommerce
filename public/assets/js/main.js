@@ -4667,14 +4667,14 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                 case 200:
                 {
                     $scope.addAlert('success', message);
-                    if (message == 'Successfully password reset') {
+                    if (message == 'Password was reset successfully') {
                         window.location = '/login';
                     }
                     else if (data.data == 'Registration completed successfully') {
                         //  console.log("credentials : " + $scope.Email + " " + $scope.Password);
 
                         $scope.loginUser();
-                    } else if (data.data == 'Registration completed successfully,please verify email') {
+                    } else if (data.data == 'Registration completed successfully, please verify your email') {
                         //  console.log("credentials : " + $scope.Email + " " + $scope.Password);
 
                         $scope.loginUser();
@@ -5010,8 +5010,27 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
             //  return;
             $scope.closeAlert();
 
+            if ($scope.FullName == '') {
+                $scope.addAlert('danger', 'Full name can\'t be empty!');
+                return;
+            }
+
+            var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+            var emailTest = re.test($scope.Email);
+
+            if(emailTest == false)
+            {
+                $scope.addAlert('danger', 'Please enter a correct email');
+                return;
+            }
+
+            if ($scope.Password == '' || $scope.PasswordConf == '') {
+                $scope.addAlert('danger', 'Please enter both password and confirmation');
+                return;
+            }
+
             if ($scope.Password != $scope.PasswordConf) {
-                $scope.addAlert('danger', 'Password not match !');
+                $scope.addAlert('danger', 'Passwords do not match!');
                 return;
             }
 
@@ -5054,17 +5073,17 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
 
             if(emailTest == false)
             {
-                $scope.addAlert('danger', 'Invalid Email !');
+                $scope.addAlert('danger', 'Please enter a correct email');
                 return;
             }
 
             if ($scope.Password == '' || $scope.PasswordConf == '') {
-                $scope.addAlert('danger', 'Invalid password !');
+                $scope.addAlert('danger', 'Please enter both password and confirmation');
                 return;
             }
 
             if ($scope.Password != $scope.PasswordConf) {
-                $scope.addAlert('danger', 'Password doesn\'t match!');
+                $scope.addAlert('danger', 'Password do not match!');
                 return;
             }
 
@@ -5288,7 +5307,7 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
             $scope.closeAlert();
 
             if ($scope.Password != $scope.PasswordConf) {
-                $scope.addAlert('danger', 'Password not match !');
+                $scope.addAlert('danger', 'Passwords do not match');
                 return;
             }
 
