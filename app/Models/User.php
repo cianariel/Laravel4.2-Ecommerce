@@ -461,14 +461,19 @@ class User extends Model implements AuthenticatableContract,
         try {
             $user = User::where('email', $userData['Email'])->first();
 
+            if(!$user){
+                return ['error' => 'This user email doesn\'t exist, please sign up'];
+            }
+
             //  return \Hash::check($userData['Password'], $user->password) ? $user : false;
 
             $password = hash('md5', $userData['Password']);
 
-            return ($password == $user->password) ? $user : false;
+            return ($password == $user->password) ? $user : ['error' => 'Incorrect password'];
+;
 
         } catch (\Exception $ex) {
-            return false;
+            return ['error' => $ex];
         }
     }
 

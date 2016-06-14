@@ -35,8 +35,15 @@ class Subscriber extends Model
     public function isASubscriber($email)
     {
         try {
-            return Subscriber::where('email', $email)
-                             ->firstOrFail();
+
+
+            $subscriber = Subscriber::where('email', $email)->first();
+
+            if($subscriber){
+                $subscriber->isUser = User::where('email',$email)->count();
+            }
+
+            return $subscriber;
 
         } catch (\Exception $ex) {
             return false;

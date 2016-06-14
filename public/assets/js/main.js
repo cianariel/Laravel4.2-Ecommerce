@@ -4919,16 +4919,19 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
 
                     $scope.responseMessage = "Please enter a valid email";
                 }
-
                 else if (data.status_code == 200) {
                     $scope.responseMessage = "Thanks! You've subscribed successfully";
 
                     //Redirect a user to registration page. 
                     window.location = '/signup/' + formData.SubscriberEmail + '/' + source;
 
+                } else if(data.data.isUser == 1) {
+                    $scope.responseMessage = "This email already exists, redirecting to Log In";
+                    console.log(data);
+                    window.location = '/login/';
                 } else {
-                    $scope.responseMessage = "Sorry, this email already exists";
-                    // console.log($scope.responseMessage);
+                    $scope.responseMessage = "Sorry, this email already exists. Redirecting to Sign Up";
+                     console.log(data);
                     window.location = '/signup/' + formData.SubscriberEmail + '/' + source;
                 }
 
