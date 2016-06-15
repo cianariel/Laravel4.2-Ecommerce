@@ -11203,7 +11203,11 @@ body.giveaway-page .login-switcher {
   margin-bottom: 10px; }
 body.giveaway-page .giveaway-toc {
   padding-top: 10px;
-  border: 1px solid #eee; }
+  border: 1px solid #eee;
+  text-align: center; }
+body.giveaway-page .toggle-toc {
+  padding-bottom: 10px;
+  display: block; }
 body.giveaway-page .toc-content {
   overflow: scroll;
   max-height: 600px; }

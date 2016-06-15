@@ -9918,6 +9918,11 @@ body.giveaway-page{
   .giveaway-toc{
     padding-top: 10px;
     border: 1px solid #eee;
+    text-align: center;
+  }
+  .toggle-toc{
+    padding-bottom: 10px;
+    display: block;
   }
   .toc-content{
     overflow: scroll;
