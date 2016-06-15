@@ -37,7 +37,7 @@
         </section>
         <nav id="hero-nav" class="col-sm-12">
             <div class="container">
-                <ul class="share-buttons hidden-xs col-lg-7 col-md-8 pull-right">
+                <ul class="share-buttons center-block hidden-xs col-lg-7 col-md-8">
 
                     <li class="social-stats__item">
                         <?php
@@ -63,10 +63,16 @@
         </nav>
         <div class="container-fluid">
             <div class="container fixed-sm full-480 giveaway-content">
-                <div class="col-md-7 col-xs-12">
-                    <div class='giveaway_title'><h2>{{$giveaway->giveaway_title}}</h2></div>
+                <div class="col-md-6 col-xs-12">
+                    <div class='giveaway_title'><h2>{{$giveaway->giveaway_title}}</h2>
+                        <a href="#" data-toggle="modal" data-target="#giveAwayModal"><u>View Terms and Conditions</u></a>
+                    </div>
                     <div class='giveaway_desc'>{!! $giveaway->giveaway_desc !!}</div>
-                    <section class="col-lg-12 sign-in">
+
+                </div>
+
+                <div class="col-md-6 col-xs-12 pull-right giveaway-toc">
+                    <section class="sign-in">
                         @if (Session::has('giveaway_flash'))
                             <div>
                                 <div class="alert alert-danger giveaway-alert">
@@ -77,14 +83,14 @@
                                 </div>
                             </div>
                         @endif
-                            <div ng-show="alertHTML">
-                                <div class="alert alert-danger giveaway-alert">
-                                    <strong>@{{ alertHTML }}</strong>
+                        <div ng-show="alertHTML">
+                            <div class="alert alert-danger giveaway-alert">
+                                <strong>@{{ alertHTML }}</strong>
                                     <span class="close-button close-login" data-toggle=".giveaway-alert">
                                          <i class="m-icon--Close"></i>
                                     </span>
-                                </div>
                             </div>
+                        </div>
                         @if(@$userData['login'])
                             <div class="col-lg-6">
                                 <h5 style="font-size: 2.5rem; padding-top: 10px;">
@@ -104,7 +110,7 @@
                                         <div>
                                             <strong class="red">@{{ responseMessage.error }}</strong>
                                         </div>
-                                          <input id="user-email" ng-model="SubscriberEmail" type="hidden" name="email" value="{{@$userData['email']}}">
+                                        <input id="user-email" ng-model="SubscriberEmail" type="hidden" name="email" value="{{@$userData['email']}}">
                                         <input id="giveaway_id" ng-model="GiveAwayID" type="hidden" name="giveaway_id"
                                                value="{{$giveaway->id}}">
                                         <button style="margin-top: 30px;"
@@ -160,10 +166,10 @@
                                     </button>
                                 </form>
 
-                               {{-- <div ng-if="responseMessage.success">
-                                    <strong style="display: block; padding-top: 30px"
-                                            class="red">@{{ responseMessage.success }}</strong>
-                                </div>--}}
+                                {{-- <div ng-if="responseMessage.success">
+                                     <strong style="display: block; padding-top: 30px"
+                                             class="red">@{{ responseMessage.success }}</strong>
+                                 </div>--}}
 
                                 <div ng-show="alertHTML">
                                     <div class="alert alert-danger giveaway-alert">
@@ -202,11 +208,6 @@
                         @endif
                     </section>
                 </div>
-
-                <div class="col-md-4 col-xs-12 pull-right giveaway-toc">
-                    <h4>Terms of Conditions</h4>
-                    <div class="readmore">{!!$giveaway->giveaway_toc!!}</div>
-                </div>
                 <h4 class="red col-xs-12 text-center">Stay tuned for these upcoming giveaways!</h4>
 
                 <section class="slider giveaway-slider black-slider col-lg-12 pseudo-full-wide">
@@ -225,6 +226,20 @@
 
         </div>
         @include('layouts.parts.comments-giveaway')
+    </div>
+    <!-- Modal -->
+    <div class="modal" id="giveAwayModal" tabindex="-1" role="dialog" data-overlay="false">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="col-lg-11 center-block">
+                    <span class="close-button" data-dismiss="modal">
+                         <i class="m-icon--Close"></i>
+                    </span>
+                    <h4>Terms of Conditions</h4>
+                    <div class="toc-content">{!!$giveaway->giveaway_toc!!}</div>
+                </div>
+            </div>
+        </div>
     </div>
     <script>
         jQuery(document).ready(function ($) {

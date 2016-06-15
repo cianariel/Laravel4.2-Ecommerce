@@ -11190,7 +11190,7 @@ body.giveaway-page .giveaway-content {
   body.giveaway-page .giveaway-content p,
   body.giveaway-page .giveaway-content .giveaway_desc,
   body.giveaway-page .giveaway-content .giveaway-toc {
-    font-size: 2rem; }
+    font-size: 1.8rem; }
   body.giveaway-page .giveaway-content ul.giveaway-signup,
   body.giveaway-page .giveaway-content .login-switcher {
     font-size: 1.7rem; }
@@ -11204,8 +11204,12 @@ body.giveaway-page .login-switcher {
 body.giveaway-page .giveaway-toc {
   padding-top: 10px;
   border: 1px solid #eee; }
+body.giveaway-page .toc-content {
+  overflow: scroll;
+  max-height: 600px; }
 body.giveaway-page .share-buttons {
-  margin-top: 10px; }
+  margin-top: 10px;
+  margin-bottom: 10px; }
 body.giveaway-page .all-shares {
   top: -20px; }
 body.giveaway-page .social-stats__item {
@@ -11243,10 +11247,8 @@ body.giveaway-page .morelink {
   display: block;
   color: #FF0042; }
 body.giveaway-page .sign-in {
-  border: 2px solid #eee;
   text-align: center;
   padding-top: 10px;
-  margin-top: 40px;
   overflow: hidden;
   margin-bottom: 10px; }
   body.giveaway-page .sign-in h5 {
