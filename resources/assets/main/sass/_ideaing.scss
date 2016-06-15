@@ -9897,7 +9897,7 @@ body.giveaway-page{
     p,
     .giveaway_desc,
     .giveaway-toc{
-      font-size: 2rem;
+      font-size: 1.8rem;
     }
     ul.giveaway-signup,
     .login-switcher{
@@ -9919,9 +9919,20 @@ body.giveaway-page{
     padding-top: 10px;
     border: 1px solid #eee;
   }
+  .toc-content{
+    overflow: scroll;
+    max-height: 600px;
+  }
   .share-buttons{
     margin-top: 10px;
+    margin-bottom: 10px;
   }
+  //#giveAwayModal{
+  //  .modal-dialog{
+  //    top:185px;
+  //  }
+  //}
+
   .all-shares{
     top: -20px;
   }
@@ -9977,10 +9988,10 @@ body.giveaway-page{
   }
 
   .sign-in{
-    border: 2px solid #eee;
+    //border: 2px solid #eee;
     text-align: center;
     padding-top: 10px;
-    margin-top: 40px;
+    //margin-top: 40px;
     overflow: hidden;
     margin-bottom: 10px;
 

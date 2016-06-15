@@ -3648,8 +3648,11 @@ angular.module('colorpicker.module', [])
         });
 
         $('.page-overlay, .login-signup-modal').click(function(event){
+            console.log(123123)
+
             if(event.target !== this){ // only fire if the block itself is clicked, not it's children (sometimes we need to hide the modal when anything outside it's main block is clickced
                 return;
+                console.log(123123)
             }
 
             $('.modal, .page-overlay').fadeOut();
@@ -3701,7 +3704,10 @@ angular.module('colorpicker.module', [])
         $('[data-toggle="modal"]').click(function() {
             var $modal = $(this).data('target');
             $($modal).fadeToggle();
-            $('.page-overlay').fadeToggle();
+            //if($(this).data('overlay') != 'none'){
+            //
+            //}
+            $('.page-overlay:not(.picture-overlay)').fadeToggle();
             if($($modal).hasClass('login-signup-modal')){
                 $('.picture-overlay').show();
             }
