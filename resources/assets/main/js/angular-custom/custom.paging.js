@@ -1074,7 +1074,7 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
             }
 
             //$scope.openWindow = function() {
-            var $modal = $window.open(shareUrl, 'C-Sharpcorner', 'width=500,height=400');
+            var $modal = $window.open(shareUrl, 'share-box' + Math.random(), 'width=500,height=400');
             //};
 
             // TODO -- fire counter updates for shares, only on pages where they are used (CMS)
