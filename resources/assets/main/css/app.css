@@ -6944,7 +6944,8 @@ body.product-details .related-items, .single-post .related-items {
   padding-top: 15px;
   padding-bottom: 15px; }
   body.product-details .related-items legend, .single-post .related-items legend {
-    min-height: 40px; }
+    min-height: 40px;
+    margin-bottom: 35px; }
   body.product-details .related-items h3, .single-post .related-items h3 {
     text-align: center;
     font-weight: 700;
