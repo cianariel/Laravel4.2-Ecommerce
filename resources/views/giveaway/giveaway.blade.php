@@ -65,7 +65,6 @@
             <div class="container fixed-sm full-480 giveaway-content">
                 <div class="col-md-6 col-xs-12">
                     <div class='giveaway_title'><h2>{{$giveaway->giveaway_title}}</h2>
-                        <a href="#" data-toggle="modal" data-target="#giveAwayModal"><u>View Terms and Conditions</u></a>
                     </div>
                     <div class='giveaway_desc'>{!! $giveaway->giveaway_desc !!}</div>
 
@@ -205,8 +204,10 @@
 
                                 </form>
                             </div>
+
                         @endif
                     </section>
+                    <a href="#" class="toggle-toc" data-toggle="modal" data-target="#giveAwayModal"><u>View Terms and Conditions</u></a>
                 </div>
                 <h4 class="red col-xs-12 text-center">Stay tuned for these upcoming giveaways!</h4>
 
