@@ -351,7 +351,7 @@ class PageController extends ApiController
             $url .= '&category-name=' . $category;
         }
 
-        if($limit == 10){ // CMS homepage, needs to have no deals
+        if($limit == 10 && $category != 'deals'){ // CMS homepage, needs to have no deals
             $url .= '&no-deals';
         }
 
