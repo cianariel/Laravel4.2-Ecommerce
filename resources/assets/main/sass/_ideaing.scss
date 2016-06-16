@@ -4888,9 +4888,11 @@ body.single{
 
     .inner{
     	display:inline-block;
-    	.thumb-box{
-      		float:left;
-      	} 
+      @media (min-width: 620px){
+        .thumb-box{
+          float:left; 
+        } 
+      }
     }
 
     .get-it-inner{
