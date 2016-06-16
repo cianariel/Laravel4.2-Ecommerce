@@ -5018,7 +5018,7 @@ body.single{
   }
 
   .article-content{
-    max-width: 1000px;
+    max-width: 900px;
     margin: 0 auto;
     p{
       font-family: montserratlight;
@@ -9894,6 +9894,15 @@ body.giveaway-page{
   .giveaway-content{
     padding-top: 30px;
 
+    .giveaway_desc{
+        a{
+        color: $facebook-blue;
+        &:hover{
+          color: $iridium;
+        }
+      }
+    }
+
     p,
     .giveaway_desc,
     .giveaway-toc{
@@ -9923,6 +9932,7 @@ body.giveaway-page{
   .toggle-toc{
     padding-bottom: 10px;
     display: block;
+    font-size: 1.2rem;
   }
   .toc-content{
     overflow: scroll;
@@ -10025,10 +10035,9 @@ body.giveaway-page{
   }
   .black-slider{
     min-height: 170px;
-    //background: #000;
-    //padding: 5px;
     float: left;
     @include pseudo-full-wide(#000);
+    top: 40px; 
 
     .rsContainer{
       width: 120px;
