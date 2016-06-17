@@ -5089,7 +5089,7 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
             }
 
             if ($scope.Password != $scope.PasswordConf) {
-                $scope.addAlert('danger', 'Password do not match!');
+                $scope.addAlert('danger', 'Passwords do not match!');
                 return;
             }
 
@@ -5234,11 +5234,11 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                     RememberMe: $scope.rememberMe == true ? true : false
                 }
             }).success(function (data) {
-                //  console.log(data.data);
+                  console.log(data.data);
                 if (source == 'giveaway') {
                     // console.log('redirecting to giveaway');
-                    window.location = '/giveaway/' + $window.giveawayLink;
-                    return;
+                    // window.location = '/giveaway/' + $window.giveawayLink;
+                    //return;
                 }
 
                 //   var WpLoginURL = 'https://ideaing.com/ideas/api?call=login&username=' + $scope.Email + '&password=' + $scope.Password + '&remember=' + $scope.rememberMe;
