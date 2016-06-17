@@ -269,7 +269,7 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
 
             $scope.isSubscriberClicked = clickStatus;
 
-            console.log('clicked : ' + $scope.isSubscriberClicked);
+            //console.log('clicked : ' + $scope.isSubscriberClicked);
             $scope.modalInstance = $uibModal.open({
                     templateUrl: templateUrl,
                     scope: $scope,
@@ -977,11 +977,11 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
 
                 } else if(data.data.isUser == 1) {
                     $scope.responseMessage = "This email already exists, redirecting to Log In";
-                    console.log(data);
+                    //console.log(data);
                     window.location = '/login/';
                 } else {
                     $scope.responseMessage = "Sorry, this email already exists. Redirecting to Sign Up";
-                     console.log(data);
+                     //console.log(data);
                     window.location = '/signup/' + formData.SubscriberEmail + '/' + source;
                 }
 
@@ -1005,7 +1005,7 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                 $scope.addAlert('danger', 'Password can\'t be empty  !')
 
 
-            console.log($scope.alertHTML);
+            //console.log($scope.alertHTML);
 
             if($scope.alertHTML != null)
             return;
@@ -1021,7 +1021,7 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                     //'SetCookie': 'true'
                 }
             }).success(function (data) {
-                console.log(data,redirect);
+                //console.log(data,redirect);
 
                 if(data.status_code == 200 || data.status_code == 210)
                 {
@@ -1111,7 +1111,7 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
 
             $scope.alertHTML = null;
 
-            console.log($scope.FullName,$scope.Password,$scope.PasswordConf,$scope.Email,$scope.alertHTML);
+            //console.log($scope.FullName,$scope.Password,$scope.PasswordConf,$scope.Email,$scope.alertHTML);
 
             if ($scope.FullName == '') {
                 $scope.addAlert('danger', 'Full name can\'t be empty!');
@@ -1278,14 +1278,11 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                     RememberMe: $scope.rememberMe == true ? true : false
                 }
             }).success(function (data) {
-                  console.log(data.data);
                 if (source == 'giveaway') {
-                    // console.log('redirecting to giveaway');
-                    // window.location = '/giveaway/' + $window.giveawayLink;
-                    //return;
+                    //window.location = '/login';
+                    return;
                 }
 
-                //   var WpLoginURL = 'https://ideaing.com/ideas/api?call=login&username=' + $scope.Email + '&password=' + $scope.Password + '&remember=' + $scope.rememberMe;
                 var WpLoginURL = '/ideas/api?call=login&username=' + $scope.Email + '&password=' + $scope.Password + '&remember=' + $scope.rememberMe;
 
                 $http({
@@ -1336,7 +1333,7 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
         $scope.passwordResetRequest = function () {
             $scope.closeAlert();
             if (!$scope.Email) {
-                $scope.addAlert('danger', 'Email is required!');
+                $scope.addAlert('danger', 'The Email field is required!');
                 return;
             }
             $http({
