@@ -7826,8 +7826,9 @@ body.single .article-content iframe {
   text-align: center; }
   .float-thumbs .inner {
     display: inline-block; }
-    .float-thumbs .inner .thumb-box {
-      float: left; }
+    @media (min-width: 620px) {
+      .float-thumbs .inner .thumb-box {
+        float: left; } }
   .float-thumbs .get-it-inner {
     float: left;
     position: relative;
@@ -7893,7 +7894,7 @@ body.single .article-content iframe {
 .idea-stories .mid-nav .mobile-menu .wrap, .mid-nav .idea-stories .extra-nav .mobile-menu .wrap {
   margin-left: 10px; }
 .idea-stories .article-content {
-  max-width: 1000px;
+  max-width: 900px;
   margin: 0 auto; }
   .idea-stories .article-content p {
     font-family: montserratlight;
@@ -11187,6 +11188,10 @@ body.giveaway-page .btn-success {
   padding-top: 13px; }
 body.giveaway-page .giveaway-content {
   padding-top: 30px; }
+  body.giveaway-page .giveaway-content .giveaway_desc a {
+    color: #079DD1; }
+    body.giveaway-page .giveaway-content .giveaway_desc a:hover {
+      color: #FF0042; }
   body.giveaway-page .giveaway-content p,
   body.giveaway-page .giveaway-content .giveaway_desc,
   body.giveaway-page .giveaway-content .giveaway-toc {
@@ -11207,7 +11212,8 @@ body.giveaway-page .giveaway-toc {
   text-align: center; }
 body.giveaway-page .toggle-toc {
   padding-bottom: 10px;
-  display: block; }
+  display: block;
+  font-size: 1.2rem; }
 body.giveaway-page .toc-content {
   overflow: scroll;
   max-height: 600px; }
@@ -11279,7 +11285,8 @@ body.giveaway-page .black-slider {
   margin: 0 -30px;
   /* add back section padding value */
   padding: 0.25rem 30px;
-  background: #000; }
+  background: #000;
+  top: 40px; }
   body.giveaway-page .black-slider:before, body.giveaway-page .black-slider:after {
     content: "";
     position: absolute;
