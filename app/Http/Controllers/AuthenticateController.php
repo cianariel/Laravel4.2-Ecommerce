@@ -355,7 +355,7 @@ class AuthenticateController extends ApiController
 
 
                             return $this->setStatusCode(\Config::get("const.api-status.success"))
-                                        ->makeResponse('Registration completed successfully,please verify email');
+                                        ->makeResponse('Registration completed successfully, please  verify your email');
                         }
                     }
                 } else {
