@@ -999,10 +999,10 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
             $scope.alertHTML = null;
 
             if (emailTest == false)
-                $scope.addAlert('danger', 'Invalid Email !')
+                $scope.addAlert('danger', 'Please enter a valid email address')
 
             if (form.find('input[name="password"]').val() == '')
-                $scope.addAlert('danger', 'Password can\'t be empty  !')
+                $scope.addAlert('danger', 'Please enter a password')
 
 
             //console.log($scope.alertHTML);
@@ -1061,7 +1061,7 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
             $scope.closeAlert();
 
             if ($scope.FullName == '') {
-                $scope.addAlert('danger', 'Full name can\'t be empty!');
+                $scope.addAlert('danger', 'Please enter your name');
                 return;
             }
 

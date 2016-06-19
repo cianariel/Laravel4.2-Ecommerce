@@ -1,3 +1,17 @@
+body.home.logged-in{
+  
+  #hero {
+    min-height: 480px;
+  }
+
+  #hero-slider{
+    .rsNav.rsBullets{
+       top: -26px;
+    }
+  }
+ 
+}
+
 .homepage-grid {
     position: relative;
 	width: auto;
@@ -64,7 +78,7 @@
   .box-item .img-holder img{
     max-width: none;
   }
-
+ 
   .product-box {
     max-width: 100%;
   }
@@ -72,13 +86,13 @@
 
  .rsNav.rsBullets{
     padding-top: 0;
-    top: -26px;
-   z-index: 40;
+    top: -20px; 
+    z-index: 40; 
     }
 
   & + .color-overlay{
     background-color:rgba(0,0,0,.4);
-    z-index: 30;
+    z-index: 30; 
     }
 
   .rsOverflow{
@@ -86,13 +100,8 @@
     margin-top:4px;
   }
 
-body.homepage{
-  #hero-slider{
-    .rsOverflow{
-       margin-top:30px;
-    }
-  }
-}
+
+
 
   @media(max-width:500px){
 
@@ -112,6 +121,17 @@ body.homepage{
 
   }
 
+}
+body.homepage:not(.logged-in){
+  #hero-slider{
+    .rsOverflow{
+       margin-top:30px;
+    }
+    .rsNav.rsBullets{
+       top: -26px;
+    }
+  }
+ 
 }
 .blur-overlay{
   background-image: url('https://d234pm57oy3062.cloudfront.net/homehero/11/homehero-image-56f8ffa2244c6-landing-hero-3.jpg');
