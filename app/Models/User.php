@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Events\SendNotificationMail;
 use Fenos\Notifynder\Builder\NotifynderBuilder;
 use Fenos\Notifynder\Facades\Notifynder;
 use Illuminate\Database\Eloquent\Model;
@@ -10,6 +11,8 @@ use App\Models\Media;
 use App\Models\WpUser;
 use App\Models\Notification;
 use App\Models\Subscriber;
+use App\Models\UserSetting;
+
 
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Auth\Passwords\CanResetPassword;
@@ -19,6 +22,7 @@ use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
 use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
 use Illuminate\Support\Collection;
 use Mockery\CountValidator\Exception;
+use PhpParser\Comment;
 use Zizaco\Entrust\Traits\EntrustUserTrait;
 use Fenos\Notifynder\Notifable;
 use Carbon\Carbon;
@@ -68,6 +72,11 @@ class User extends Model implements AuthenticatableContract,
     public function userProfile()
     {
         return $this->hasOne('App\Models\UserProfile');
+    }
+
+    public function userSetting()
+    {
+        return $this->hasOne('App\Models\UserSetting');
     }
 
     public function subscriber()
@@ -461,7 +470,7 @@ class User extends Model implements AuthenticatableContract,
         try {
             $user = User::where('email', $userData['Email'])->first();
 
-            if(!$user){
+            if (!$user) {
                 return ['error' => 'This user email doesn\'t exist, please sign up'];
             }
 
@@ -469,8 +478,7 @@ class User extends Model implements AuthenticatableContract,
 
             $password = hash('md5', $userData['Password']);
 
-            return ($password == $user->password) ? $user : ['error' => 'Incorrect password'];
-;
+            return ($password == $user->password) ? $user : ['error' => 'Incorrect password'];;
 
         } catch (\Exception $ex) {
             return ['error' => $ex];
@@ -573,7 +581,7 @@ class User extends Model implements AuthenticatableContract,
             $query = new UserProfile();
         } elseif ($data['Source'] == 'others') {
             $query = new UserProfile();
-            $query = $query->whereNotIn('user_from',['registration','facebook']);
+            $query = $query->whereNotIn('user_from', ['registration', 'facebook']);
         } else {
             $query = new UserProfile();
             $query = $query->where('user_from', $data['Source']);
@@ -589,13 +597,11 @@ class User extends Model implements AuthenticatableContract,
     {
         $offset = 0;
         $permalink = $data['Permalink'];
-        $limit =$data['PostCount'];
-
-
+        $limit = $data['PostCount'];
 
 
         $url = \URL::to('/') . '/ideas/feeds/index.php?count=' . $limit . '&offset=' . $offset . '&author_name=' . $permalink;
-          // dd($url);
+        // dd($url);
 
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $url);
@@ -608,9 +614,9 @@ class User extends Model implements AuthenticatableContract,
 
         $ideaCollection = json_decode($json);
 
-      //  dd($ideaCollection);
+        //  dd($ideaCollection);
 
-        $ideaCollection = empty($ideaCollection)?[]:$ideaCollection;
+        $ideaCollection = empty($ideaCollection) ? [] : $ideaCollection;
 
 
         $ideas = new Collection();
@@ -618,7 +624,7 @@ class User extends Model implements AuthenticatableContract,
         $comment = new Comment();
         $heart = new Heart();
 
-       // dd($ideaCollection);
+        // dd($ideaCollection);
 
         foreach ($ideaCollection as $item) {
 
@@ -642,14 +648,56 @@ class User extends Model implements AuthenticatableContract,
                 'is_featured' => $item->is_featured,
                 'feed_image' => $item->feed_image,
                 'comment_count' => $comment->ideasCommentCounter($item->id),
-                'heart_count' => $heart->findHeartCountForItem(['Section'=>'ideas','ItemId'=>$item->id])->count()
+                'heart_count' => $heart->findHeartCountForItem(['Section' => 'ideas', 'ItemId' => $item->id])->count()
             ]);
 
             $ideas->push($tmpCollection);
 
         }
-            return $ideas;
+        return $ideas;
     }
+
+
+    public function sendActivityMail()
+    {
+       // var_dump(getenv('APP_ENV'));
+       // die();
+        $settings = new UserSetting();
+        $comment = new \App\Models\Comment();
+
+        //
+
+        $userCollection = User::all(['id', 'email','name']);
+
+        //  dd($userCollection);
+
+        $activities = collect();
+
+        foreach ($userCollection as $user) {
+
+            $setting = $settings->checkUserProfile(['UserId' => $user['id']]);
+
+            if (!empty($setting['email_notification'])) {
+
+                $data = $comment->getCommentsAndHeatByUserId($user['id']);
+
+                if (!$data->isEmpty())
+                {
+                    $activities->push($data);
+
+                   // \Event::fire(new SendNotificationMail($user['name'],$user['email$'],$data));
+
+                }
+            }
+
+            dd($data);
+        }
+
+
+
+
+    }
+
 
 }
 

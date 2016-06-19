@@ -251,19 +251,45 @@
                                                     <b> {{ $name }}  </b> has sent following query for - {{ $type }}
                                                     </span>
                                                 </p>
-                                                <hr />
+                                                <hr/>
 
                                                 <p align="left">
                                                     <span style="font-size: 13pt;" class="im">
+                                                        <!-- start -->
+
                                                         {{ $content }}
+
+                                                        <table>
+                                                            @foreach($content as $item)
+
+                                                                <tr>
+                                                                    <td align="left"><img align="left"
+                                                                                          src="https://s3-us-west-1.amazonaws.com/ideaing-01/product-573b5a2390c7f-neatothumb.jpg"
+                                                                                          width="50px" alt="sdf desc"/>
+                                                                    </td>
+                                                                    <td align="left">name name</td>
+                                                                    <td align="left"> sdfsdf</td>
+                                                                </tr>
+
+                                                                <tr>
+                                                                    <td>
+                                                                        liked : <a href="http://dfg.com">TSDFES
+                                                                            SDFSD</a>
+                                                                        <strong>6 days aro</strong>
+                                                                    </td>
+                                                            @endforeach
+                                                        </table>
+
+                                                        <!-- end -->
 
                                                     </span>
                                                 </p>
-                                                <hr />
+                                                <hr/>
                                                 <p>
                                                     <span style="font-size: 11pt;" class="im">
 
-                                                     {{ $name }}'s Email : <a href="mailto:{{ $email }}"> {{ $email }} </a>
+                                                     {{ $name }}'s Email : <a
+                                                                href="mailto:{{ $email }}"> {{ $email }} </a>
                                                     </span>
                                                 </p>
                                             </td>

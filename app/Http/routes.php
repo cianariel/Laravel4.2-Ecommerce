@@ -22,7 +22,7 @@
 
 // test route
 
-Route::get('x', 'UserController@test');
+Route::get('x', 'UserController@sendActivityMailToUsers');
 
 
 Route::any('secure-page-header', 'UserController@securePageHeader');
