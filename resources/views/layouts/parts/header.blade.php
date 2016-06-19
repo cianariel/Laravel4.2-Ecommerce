@@ -293,6 +293,26 @@ if(!isset($theGiveAway)){
                                 </li>
                             </ul>
                         </li>
+                        <li class="nested-parent">
+                            <a class="shop" href="/giveaway"></i>&nbsp; GIVEAWAY</a>
+                        </li>
+                        <li class="nested-parent">
+                            <a class="shop"></i>&nbsp; ROOMS</a>
+                            <a class="shop" href="/shop" data-toggle=".room-list" href="#">
+                                <i class="m-icon--Header-Dropdown down"></i>
+                                <i class="m-icon--footer-up-arrow up"></i>
+                            </a>
+                            <ul class="room-list">
+                                 <li><a href=" /idea/kitchen">Kitchen</a></li>
+                                    <li><a href=" /idea/bath">Bath</a></li>
+                                    <li><a href=" /idea/bedroom">Bedroom</a></li>
+                                    <li><a href=" /idea/office">Office</a></li>
+                                    <li><a href=" /idea/living">Living</a></li>
+                                    <li><a href=" /idea/outdoor">Outdoor</a></li>
+                                    <li><a href=" /idea/lighting">Lighting</a></li>
+                                    <li><a href=" /idea/security">Security</a></li>
+                            </ul>
+                        </li>
                     </ul>
                 </div>
 

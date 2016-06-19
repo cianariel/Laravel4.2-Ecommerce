@@ -243,7 +243,7 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
 
                 if (data.status_code == 406) {
 
-                    $scope.responseMessage = "Invalid Email !";
+                    $scope.responseMessage = "Please enter a valid email address";
                 }
 
                 else if (data.status_code == 200) {
