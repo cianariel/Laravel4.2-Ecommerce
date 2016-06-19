@@ -444,11 +444,31 @@ if(!isset($theGiveAway)){
             <div class="second-form">
                 <div class="custom-container ">
                     <form class="form-horizontal">
-                        <div class="col-sm-offset-2 col-sm-8">
+                        <div class="col-sm-offset-2 col-sm-8" ng-init="getProfileSettings('<?php echo $userData['id']  ?>')">
                             <div class="form-group title">
                                 <label>Notify me about</label>
                             </div>
                             <div class="content">
+                                <div class="form-group checkbox-form-group">
+                                    <div class="pull-left">
+                                        Daily notification email
+                                    </div>
+                                    <div class="pull-right">
+                                        <label class="setting-custom-checkbox">
+                                            <input type="checkbox" ng-model="setDailyEmailNotification" ng-click="setDailyEmail('<?php echo $userData['id']  ?>')">
+                                                <span class="">
+                                                    <i class="m-icon--Settings-Toggles-Active on">
+                                                        <span class="path1"></span><span class="path2"></span>
+                                                    </i>
+                                                    <i class="m-icon--Settings-Toggles off">
+                                                        <span class="path1"></span><span class="path2"></span>
+                                                    </i>
+                                                </span>
+                                        </label>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                </div>
+
                                 <div class="form-group checkbox-form-group">
                                     <div class="pull-left">
                                         New followers
@@ -509,10 +529,10 @@ if(!isset($theGiveAway)){
                             </div>
 
 
-                            <div class="form-group title">
+                            {{--<div class="form-group title">
                                 <label>Allow ideaing to use my Location</label>
-                            </div>
-                            <div class="content">
+                            </div>--}}
+                            {{--<div class="content">
                                 <div class="form-group checkbox-form-group">
                                     <div class="pull-left">
                                         Price-drops on products I like
@@ -532,7 +552,7 @@ if(!isset($theGiveAway)){
                                     </div>
                                     <div class="clearfix"></div>
                                 </div>
-                            </div>
+                            </div>--}}
                         </div>
                     </form>
                     <div class="clearfix"></div>
@@ -542,7 +562,7 @@ if(!isset($theGiveAway)){
                 <div class="custom-container ">
                     <form class="form-horizontal">
                         <div class="col-sm-offset-2 col-sm-8">
-                            <div class="form-group ">
+                            {{--<div class="form-group ">
                                 <div class="pull-left its-over">
                                     <label>It's over!</label>
                                 </div>
@@ -555,7 +575,7 @@ if(!isset($theGiveAway)){
                                     </button>
                                 </div>
                                 <div class="clearfix"></div>
-                            </div>
+                            </div>--}}
                         </div>
                     </form>
                     <div class="clearfix"></div>

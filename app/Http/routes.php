@@ -102,6 +102,12 @@ Route::group(['prefix' => 'api'], function () {
     Route::get('info', 'UserController@getUserByEmail');
     Route::get('info-raw/{email?}', 'UserController@getUserByEmailRaw');
 
+    Route::get('/user/profile-settings/{userId?}', 'UserController@getUserProfileSettingsById');
+    Route::post('/user/profile-settings/set-daily-email', 'UserController@setDailyEmail');
+
+
+
+
 
     Route::get('wp', 'UserController@getWpUsers');
 

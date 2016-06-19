@@ -491,6 +491,10 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
             $scope.postActive = true;
             $scope.ActivityActive = true;
 
+            // user profile settings
+
+            $scope.setDailyEmailNotification = true;
+
             $scope.socialCounter = function () {
 
                 $scope.countSocialShares();
@@ -1503,6 +1507,53 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                 $scope.activeClassComment = '';
                 $scope.activeClassHeart = 'active';
             }
+        };
+
+        // Fetch all user settings for profile
+
+        $scope.getProfileSettings = function(id){
+            //console.log("hi !:"+id );
+            $http({
+                url: '/api/user/profile-settings/'+id,
+                method: "GET",
+
+            }).success(function (data) {
+               // console.log(data);
+
+                if(data.data.email_notification == true)
+                {
+                    $scope.setDailyEmailNotification = true;
+                }else
+                {
+                    $scope.setDailyEmailNotification = false;
+                }
+
+            });
+        };
+
+        $scope.setDailyEmail = function(id){
+
+            if($scope.setDailyEmailNotification == true)
+            {
+                $scope.setDailyEmailNotification = false;
+            }else
+            {
+                $scope.setDailyEmailNotification = true;
+            }
+
+            $http({
+                url: '/api/user/profile-settings/set-daily-email',
+                method: "POST",
+                data:{
+                    'UserId' : id,
+                    'Status' : $scope.setDailyEmailNotification
+                }
+
+            }).success(function (data) {
+                // console.log(data);
+
+            });
+
         };
 
 
