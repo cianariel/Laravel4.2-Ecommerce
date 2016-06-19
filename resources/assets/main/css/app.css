@@ -11595,6 +11595,9 @@ p {
   @media (min-width: 768px) {
     .box-item {
       height: 394px; } }
+  @media (max-width: 420px) {
+    .box-item {
+      height: 394px; } }
   .box-item > img {
     width: 100%;
     max-width: none;
