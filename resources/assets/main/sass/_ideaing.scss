@@ -4695,7 +4695,7 @@ header.sub-head{
 
 .homepage{
   #hero{
-    min-height: 520px;
+    min-height: 515px;
   }
   .color-overlay{
     position: absolute;
@@ -4706,11 +4706,11 @@ header.sub-head{
     z-index: 0;
   }
   #hero-slider .rsNav.rsBullets{
-    top: -30px;
+   // top: -30px;
 
     @media (max-width: 1200px){
       &{
-        top: -55px;
+        top: -21px;
       }
     }
   }
@@ -5022,7 +5022,8 @@ body.single{
   .article-content{
     max-width: 900px;
     margin: 0 auto;
-    p{
+    p,
+    ul{
       font-family: montserratlight;
       color: darken($light-grey, 100%);
       line-height: 1.6;
@@ -5579,7 +5580,7 @@ body.single{
 
 html.idea-stories{
   #hero{
-    min-height: 515px;
+    min-height: 480px;
   }
 }
 
@@ -5607,7 +5608,7 @@ body.homepage{
     }
    &.logged-in {
      #hero {
-       min-height: 515px;
+       min-height: 480px;
        //padding-top: 2px;
      }
    }
