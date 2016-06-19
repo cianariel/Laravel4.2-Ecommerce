@@ -11591,13 +11591,12 @@ p {
   position: relative;
   border: 1px solid #eee;
   overflow: hidden;
-  /*	width: 300px;*/ }
-  @media (min-width: 768px) {
+  /*	width: 300px;*/
+  height: 380px; }
+  @media (min-width: 420px) and (max-width: 768px) {
     .box-item {
-      height: 394px; } }
-  @media (max-width: 420px) {
-    .box-item {
-      height: 394px; } }
+      max-width: 60% !important;
+      margin: 0 auto; } }
   .box-item > img {
     width: 100%;
     max-width: none;

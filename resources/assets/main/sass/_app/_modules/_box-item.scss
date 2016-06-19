@@ -5,12 +5,15 @@
 
 	// default
 /*	width: 300px;*/
-  @media (min-width:768px){
-    height: 394px;
+  @media (min-width:420px) and (max-width:768px){
+    max-width: 60% !important;
+    margin: 0 auto;
   }
-  @media  (max-width: 420px){
-    height: 394px;
-  }
+  //@media  (max-width: 420px){
+    height: 380px;
+
+
+  //}
 
   > img{
     width: 100%;
