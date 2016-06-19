@@ -25,7 +25,7 @@
                 </div>
                 <hgroup class="giveaway-banner">
                     <div class="container">
-                        <h3>
+                        <h3 class="hidden">
                             Monthly Giveaway
                         </h3>
                         <h1>
@@ -82,7 +82,7 @@
                                 </div>
                             </div>
                         @endif
-                        <div ng-show="alertHTML">
+                        <div ng-show="alertHTML" class="hidden-620">
                             <div class="alert alert-danger giveaway-alert">
                                 <strong>@{{ alertHTML }}</strong>
                                     <span class="close-button close-login" data-toggle=".giveaway-alert">
@@ -98,14 +98,15 @@
                                 </h5>
                             </div>
                             <div class="col-lg-6 col-xs-12 qiuck-signup pull-right" ng-cloak>
-
                                 @if(@$alreadyIn)
                                     <div>
                                         <strong style="display: block; padding-top: 30px" class="red">Congratulations,
                                             you have entered!</strong>
                                     </div>
                                 @else
+
                                     <form id="giveaway-two" ng-if="!responseMessage.success">
+
                                         <div>
                                             <strong class="red">@{{ responseMessage.error }}</strong>
                                         </div>
@@ -170,14 +171,14 @@
                                              class="red">@{{ responseMessage.success }}</strong>
                                  </div>--}}
 
-                                <div ng-show="alertHTML">
-                                    <div class="alert alert-danger giveaway-alert">
-                                        <strong ng-bind-html="responseMessage.success"></strong>
-                                    <span class="close-button close-login" data-toggle=".giveaway-alert">
-                                         <i class="m-icon--Close"></i>
-                                    </span>
-                                    </div>
-                                </div>
+                                {{--<div ng-show="alertHTML">--}}
+                                    {{--<div class="alert alert-danger giveaway-alert">--}}
+                                        {{--<strong ng-bind-html="responseMessage.success"></strong>--}}
+                                    {{--<span class="close-button close-login" data-toggle=".giveaway-alert">--}}
+                                         {{--<i class="m-icon--Close"></i>--}}
+                                    {{--</span>--}}
+                                    {{--</div>--}}
+                                {{--</div>--}}
 
                                 </form>
                             </div>
@@ -206,6 +207,14 @@
                             </div>
 
                         @endif
+                            <div ng-show="alertHTML" class="hidden-soft shown-620 col-xs-12">
+                                <div class="alert alert-danger giveaway-alert">
+                                    <strong>@{{ alertHTML }}</strong>
+                                                <span class="close-button close-login" data-toggle=".giveaway-alert">
+                                                     <i class="m-icon--Close"></i>
+                                                </span>
+                                </div>
+                            </div>
                     </section>
                     <a href="#" class="toggle-toc" data-toggle="modal" data-target="#giveAwayModal"><u>View Terms and Conditions</u></a>
                 </div>
