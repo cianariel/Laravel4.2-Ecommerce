@@ -485,9 +485,33 @@ class UserController extends ApiController
                     ->makeResponse($result);
     }
 
+    public function getUserProfileSettingsById($userId)
+    {
+        $result = $this->user->getUserProfileSettings($userId);
+
+        return $this->setStatusCode(\Config::get("const.api-status.success"))
+                    ->makeResponse($result);
+
+    }
+
+    public function setDailyEmail()
+    {
+        $inputData = \Input::all();
+        $result = $this->user->setDailyEmail($inputData['UserId'],$inputData['Status']);
+
+        return $this->setStatusCode(\Config::get("const.api-status.success"))
+                    ->makeResponse($result);
+
+    }
+
     public function sendActivityMailToUsers()
     {
-        $this->user->sendActivityMail();
+        $data = $this->user->sendActivityMail();
+
+       // dd($data);
+
+      //  return view('email.regular-notification')
+        //    ->with('content',$data);
     }
 
 }

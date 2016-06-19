@@ -244,53 +244,70 @@
                                         <tr>
                                             <td style="font-family: Helvetica, arial, sans-serif; font-size: 30px; color: #333333; text-align:center; line-height: 30px;"
                                                 st-title="fulltext-heading">
+                                                Daily notification from Ideaing
 
-                                                <p>
-                                                    <span style="font-size: 14pt;" class="im">
-
-                                                    <b> {{ $name }}  </b> has sent following query for - {{ $type }}
-                                                    </span>
-                                                </p>
                                                 <hr/>
 
                                                 <p align="left">
                                                     <span style="font-size: 13pt;" class="im">
                                                         <!-- start -->
 
-                                                        {{ $content }}
-
-                                                        <table>
+                                                        <table style="width: 570px;">
+                                                            <tbody>
                                                             @foreach($content as $item)
 
                                                                 <tr>
-                                                                    <td align="left"><img align="left"
-                                                                                          src="https://s3-us-west-1.amazonaws.com/ideaing-01/product-573b5a2390c7f-neatothumb.jpg"
-                                                                                          width="50px" alt="sdf desc"/>
+                                                                    <td style="width: 57px;">
+                                                                        <img align="left"
+                                                                             src="{{ $item['UserPicture'] }}"
+                                                                             width="50px" alt="sdf desc"/>
                                                                     </td>
-                                                                    <td align="left">name name</td>
-                                                                    <td align="left"> sdfsdf</td>
+                                                                    <td style="width: 190px;"><b>{{ $item['UserName'] }}</b></td>
+                                                                    <td style="width: 300px;">&nbsp;</td>
+
+                                                                </tr>
+                                                                <tr>
+                                                                    <td colspan="3"><strong>{{ $item['Time'] }}</strong></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td colspan="3">&nbsp;</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    @if(($item['Section'] == 'ideas-heart')||($item['Section'] == 'product-heart')||($item['Section'] == 'product-heart'))
+                                                                        <td colspan="3">
+                                                                            {{ $item['UserName'] }} liked :
+                                                                            <a href="{{ URL::to('/').'/'.$item['ItemLink'] }}" target="_blank">{{ $item['ItemTitle'] }}</a>
+                                                                        </td>
+                                                                    @else
+                                                                        <td colspan="3">
+                                                                            {{ $item['UserName'] }} commented on :
+                                                                            <a href="{{ URL::to('/').'/'.$item['ItemLink'] }}" target="_blank">{{ $item['ItemTitle'] }}</a>
+                                                                        </td>
+                                                                    @endif
                                                                 </tr>
 
                                                                 <tr>
-                                                                    <td>
-                                                                        liked : <a href="http://dfg.com">TSDFES
-                                                                            SDFSD</a>
-                                                                        <strong>6 days aro</strong>
-                                                                    </td>
+                                                                    <td colspan="3">&nbsp;</td>
+                                                                </tr>
+
                                                             @endforeach
+                                                            </tbody>
                                                         </table>
+                                                        <!-- DivTable.com -->
+                                                <p>&nbsp;</p>
 
-                                                        <!-- end -->
 
-                                                    </span>
+                                                <!-- end -->
+
+                                                </span>
                                                 </p>
                                                 <hr/>
                                                 <p>
-                                                    <span style="font-size: 11pt;" class="im">
+                                                    {{--<span style="font-size: 11pt;" class="im">
 
                                                      {{ $name }}'s Email : <a
                                                                 href="mailto:{{ $email }}"> {{ $email }} </a>
-                                                    </span>
+                                                    </span>--}}
                                                 </p>
                                             </td>
                                         </tr>

@@ -657,17 +657,29 @@ class User extends Model implements AuthenticatableContract,
         return $ideas;
     }
 
+    public function getUserProfileSettings($userId)
+    {
+       return UserSetting::where('user_id',$userId)->first();
+
+    }
+
+    public function setDailyEmail($userId,$status)
+    {
+        $settings = new UserSetting();
+        $settings = $settings->where('user_id',$userId)->first();
+        //dd($settings);
+        $settings->email_notification = $status;
+        $settings->save();
+
+        return $settings;
+
+    }
 
     public function sendActivityMail()
     {
-       // var_dump(getenv('APP_ENV'));
-       // die();
         $settings = new UserSetting();
-        $comment = new \App\Models\Comment();
 
-        //
-
-        $userCollection = User::all(['id', 'email','name']);
+        $userCollection = User::all(['id', 'email', 'name']);
 
         //  dd($userCollection);
 
@@ -679,25 +691,13 @@ class User extends Model implements AuthenticatableContract,
 
             if (!empty($setting['email_notification'])) {
 
-                $data = $comment->getCommentsAndHeatByUserId($user['id']);
+                $data = $this->getNotificationForUser($user['id'])['NoticeNotRead'];
 
-                if (!$data->isEmpty())
-                {
-                    $activities->push($data);
+                \Event::fire(new SendNotificationMail($user['name'],$user['email'],$data));
 
-                   // \Event::fire(new SendNotificationMail($user['name'],$user['email$'],$data));
-
-                }
             }
-
-            dd($data);
+          //  return $data;
         }
-
-
-
-
     }
-
-
 }
 
