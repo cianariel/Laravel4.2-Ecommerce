@@ -6632,13 +6632,17 @@ header.colophon {
     top: 115px; }
   #mobile-top-menu.mobile-top-menu .idea-list li,
   #mobile-top-menu.mobile-top-menu .cat-list li,
+  #mobile-top-menu.mobile-top-menu .room-list li,
   .mobile-top-menu .idea-list li,
-  .mobile-top-menu .cat-list li {
+  .mobile-top-menu .cat-list li,
+  .mobile-top-menu .room-list li {
     overflow: hidden; }
   #mobile-top-menu.mobile-top-menu .idea-list a,
   #mobile-top-menu.mobile-top-menu .cat-list a,
+  #mobile-top-menu.mobile-top-menu .room-list a,
   .mobile-top-menu .idea-list a,
-  .mobile-top-menu .cat-list a {
+  .mobile-top-menu .cat-list a,
+  .mobile-top-menu .room-list a {
     color: #fff; }
 
 .socialcounter {
@@ -7100,6 +7104,9 @@ body.product-details .article-content {
     .mid-nav li.home.active > a, .mid-nav .extra-nav li.home.active > a {
       background: #ed2049;
       color: #fff !important; }
+  .mid-nav .mobile-top-menu-switcher {
+    padding-top: 5px;
+    font-size: 2rem; }
   .mid-nav .box-link-active-line {
     position: absolute;
     display: inline-block;
