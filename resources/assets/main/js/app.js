@@ -358,7 +358,7 @@
             if(!$('body').hasClass('.giveaway-page')){
                 setTimeout(function(){
                     $('#giveaway-popup').fadeIn('slow');
-                }, 15000)
+                }, 30000)
             }
         });
 
