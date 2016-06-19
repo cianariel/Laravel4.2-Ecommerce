@@ -86,7 +86,7 @@ if (function_exists('is_single')) {
                              src="<?php echo isset($userData['medias'][0]['media_link']) ? $userData['medias'][0]['media_link'] : "" ?>">
 
                     </div>
-                    <div class="col-md-11 col-sm-10 col-xs-9">
+                    <div class="col-md-8 col-sm-10 col-xs-9">
 
                         <div ng-class="['col-md-12', 'comment-edit-container', {'has-content': html}]"
                              ng-show="show_editor">

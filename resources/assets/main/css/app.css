@@ -7712,7 +7712,7 @@ header.sub-head {
       padding-left: 30px; }
 
 .homepage #hero {
-  min-height: 520px; }
+  min-height: 515px; }
 .homepage .color-overlay {
   position: absolute;
   min-height: 1200px;
@@ -7720,11 +7720,9 @@ header.sub-head {
   background-size: cover;
   top: 0;
   z-index: 0; }
-.homepage #hero-slider .rsNav.rsBullets {
-  top: -30px; }
-  @media (max-width: 1200px) {
-    .homepage #hero-slider .rsNav.rsBullets {
-      top: -55px; } }
+@media (max-width: 1200px) {
+  .homepage #hero-slider .rsNav.rsBullets {
+    top: -21px; } }
 
 .like-nav li {
   width: 35px;
@@ -7896,7 +7894,8 @@ body.single .article-content iframe {
 .idea-stories .article-content {
   max-width: 900px;
   margin: 0 auto; }
-  .idea-stories .article-content p {
+  .idea-stories .article-content p,
+  .idea-stories .article-content ul {
     font-family: montserratlight;
     color: black;
     line-height: 1.6;
@@ -8259,7 +8258,7 @@ body.single .article-content iframe {
     display: inline-block; }
 
 html.idea-stories #hero {
-  min-height: 515px; }
+  min-height: 480px; }
 
 html.idea-stories #hero,
 body.room-landing #hero,
@@ -8283,7 +8282,7 @@ body.homepage #hero {
 html.idea-stories.logged-in #hero,
 body.room-landing.logged-in #hero,
 body.homepage.logged-in #hero {
-  min-height: 515px; }
+  min-height: 480px; }
 html.idea-stories #hero-nav,
 body.room-landing #hero-nav,
 body.homepage #hero-nav {
@@ -11806,6 +11805,11 @@ p {
 /* header layout */
 /* footer layout */
 /* main layout */
+body.home.logged-in #hero {
+  min-height: 480px; }
+body.home.logged-in #hero-slider .rsNav.rsBullets {
+  top: -26px; }
+
 .homepage-grid {
   position: relative;
   width: auto;
@@ -11853,7 +11857,7 @@ p {
     max-width: 100%; }
   #hero-slider .rsNav.rsBullets {
     padding-top: 0;
-    top: -26px;
+    top: -20px;
     z-index: 40; }
   #hero-slider + .color-overlay {
     background-color: rgba(0, 0, 0, 0.4);
@@ -11861,8 +11865,6 @@ p {
   #hero-slider .rsOverflow {
     z-index: 38;
     margin-top: 4px; }
-  #hero-slider body.homepage #hero-slider .rsOverflow {
-    margin-top: 30px; }
   @media (max-width: 500px) {
     #hero-slider .rsNav.rsBullets {
       padding-top: 0;
@@ -11871,6 +11873,11 @@ p {
       top: 61%; }
     #hero-slider .rsSlide:not(.rsActiveSlide) {
       display: none; } }
+
+body.homepage:not(.logged-in) #hero-slider .rsOverflow {
+  margin-top: 30px; }
+body.homepage:not(.logged-in) #hero-slider .rsNav.rsBullets {
+  top: -26px; }
 
 .blur-overlay {
   background-image: url("https://d234pm57oy3062.cloudfront.net/homehero/11/homehero-image-56f8ffa2244c6-landing-hero-3.jpg");
