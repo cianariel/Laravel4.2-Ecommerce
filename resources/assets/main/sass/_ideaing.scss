@@ -2974,7 +2974,8 @@ header.colophon{
         top: 115px;
     }
   .idea-list,
-  .cat-list{
+  .cat-list,
+  .room-list{
     li{
       overflow: hidden;
     }
@@ -3693,7 +3694,11 @@ body.product-details{
 
         /*.homepage .mid-nav li.home .box-link-active-line{*/
 
-    }  
+    }
+    .mobile-top-menu-switcher{
+      padding-top: 5px;
+      font-size: 2rem;
+    }
     .box-link-active-line{
         position: absolute;
         display: inline-block;
