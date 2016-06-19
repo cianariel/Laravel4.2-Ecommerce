@@ -485,4 +485,9 @@ class UserController extends ApiController
                     ->makeResponse($result);
     }
 
+    public function sendActivityMailToUsers()
+    {
+        $this->user->sendActivityMail();
+    }
+
 }

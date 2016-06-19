@@ -15,6 +15,8 @@
     use App\Events\SendContactUsMail;
     use App\Handlers\Events\SendContactUsMailHandler;
 
+    use App\Events\SendNotificationMail;
+    use App\Handlers\Events\SendNotificationMailHandler;
 
 
     class EventServiceProvider extends ServiceProvider {
@@ -47,6 +49,9 @@
                 SendContactUsMailHandler::class
             ],
 
+            SendNotificationMail::class => [
+                SendNotificationMailHandler::class
+            ],
         ];
 
         /**
