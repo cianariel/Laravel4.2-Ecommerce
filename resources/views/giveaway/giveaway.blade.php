@@ -25,7 +25,7 @@
                 </div>
                 <hgroup class="giveaway-banner">
                     <div class="container">
-                        <h3 class="hidden">
+                        <h3>
                             Monthly Giveaway
                         </h3>
                         <h1>
@@ -171,14 +171,14 @@
                                              class="red">@{{ responseMessage.success }}</strong>
                                  </div>--}}
 
-                                {{--<div ng-show="alertHTML">--}}
-                                    {{--<div class="alert alert-danger giveaway-alert">--}}
-                                        {{--<strong ng-bind-html="responseMessage.success"></strong>--}}
-                                    {{--<span class="close-button close-login" data-toggle=".giveaway-alert">--}}
-                                         {{--<i class="m-icon--Close"></i>--}}
-                                    {{--</span>--}}
-                                    {{--</div>--}}
-                                {{--</div>--}}
+                                <div ng-show="alertHTML">
+                                    <div class="alert alert-danger giveaway-alert">
+                                        <strong ng-bind-html="responseMessage.success"></strong>
+                                    <span class="close-button close-login" data-toggle=".giveaway-alert">
+                                         <i class="m-icon--Close"></i>
+                                    </span>
+                                    </div>
+                                </div>
 
                                 </form>
                             </div>

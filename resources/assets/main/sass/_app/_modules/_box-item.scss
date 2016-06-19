@@ -5,7 +5,9 @@
 
 	// default
 /*	width: 300px;*/
-	height: 394px;
+  @media (min-width:768px){
+    height: 394px;
+  }
 
   > img{
     width: 100%;

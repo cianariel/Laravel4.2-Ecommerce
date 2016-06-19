@@ -9135,7 +9135,7 @@ footer.about-footer {
   .product-hero .average-score .caption {
     width: 47%; }
   .product-hero #gallery {
-    height: 380px !important;
+    height: 500px !important;
     overflow: hidden !important; }
     .product-hero #gallery .rsImg.rsMainSlideImage,
     .product-hero #gallery .rsContainer,
@@ -9149,7 +9149,7 @@ footer.about-footer {
       min-height: 0; }
     .product-hero #gallery .rsOverflow {
       height: auto !important;
-      min-height: 300px; }
+      min-height: 405px; }
     .product-hero #gallery .rsImg.rsMainSlideImage {
       width: 90% !important;
       margin-left: 5% !important; }
@@ -11591,8 +11591,10 @@ p {
   position: relative;
   border: 1px solid #eee;
   overflow: hidden;
-  /*	width: 300px;*/
-  height: 394px; }
+  /*	width: 300px;*/ }
+  @media (min-width: 768px) {
+    .box-item {
+      height: 394px; } }
   .box-item > img {
     width: 100%;
     max-width: none;
