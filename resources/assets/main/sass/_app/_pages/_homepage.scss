@@ -8,6 +8,10 @@ body.home.logged-in{
     .rsNav.rsBullets{
        top: -26px;
     }
+
+    @media (max-width:620px){
+      top: -30px;
+    }
   }
  
 }
@@ -129,6 +133,10 @@ body.homepage:not(.logged-in){
     }
     .rsNav.rsBullets{
        top: -26px;
+
+       @media (max-width:620px){
+         top: -54px;
+       }
     }
   }
  

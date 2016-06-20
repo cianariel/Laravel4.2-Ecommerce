@@ -4553,6 +4553,22 @@ ul.pointed li:before {
   color: #FF0042;
   /* or whatever color you prefer */ }
 
+.faux-lines {
+  position: relative;
+  background-color: #F2F5F5 !important; }
+  .faux-lines:before, .faux-lines:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 11px;
+    width: 9600px;
+    /* left: -38%; */
+    right: 65%;
+    border-bottom: 1px solid darken #ddd; }
+  .faux-lines:after {
+    width: 920px;
+    left: 65%; }
+
 .overhide {
   overflow: hidden; }
 
@@ -7730,6 +7746,9 @@ header.sub-head {
 @media (max-width: 1200px) {
   .homepage #hero-slider .rsNav.rsBullets {
     top: -21px; } }
+@media (max-width: 620px) {
+  .homepage #hero-slider .rsNav.rsBullets {
+    top: -30px; } }
 
 .like-nav li {
   width: 35px;
@@ -11305,7 +11324,6 @@ body.giveaway-page .black-slider {
   body.giveaway-page .black-slider:after {
     width: 920px;
     left: 100%;
-    /* you're free to do something totally different here */
     background: #000; }
   body.giveaway-page .black-slider .rsContainer {
     width: 120px;
@@ -11821,6 +11839,9 @@ body.home.logged-in #hero {
   min-height: 480px; }
 body.home.logged-in #hero-slider .rsNav.rsBullets {
   top: -26px; }
+@media (max-width: 620px) {
+  body.home.logged-in #hero-slider {
+    top: -30px; } }
 
 .homepage-grid {
   position: relative;
@@ -11890,6 +11911,9 @@ body.homepage:not(.logged-in) #hero-slider .rsOverflow {
   margin-top: 30px; }
 body.homepage:not(.logged-in) #hero-slider .rsNav.rsBullets {
   top: -26px; }
+  @media (max-width: 620px) {
+    body.homepage:not(.logged-in) #hero-slider .rsNav.rsBullets {
+      top: -54px; } }
 
 .blur-overlay {
   background-image: url("https://d234pm57oy3062.cloudfront.net/homehero/11/homehero-image-56f8ffa2244c6-landing-hero-3.jpg");
