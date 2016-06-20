@@ -346,7 +346,7 @@
                 <section class="pale-grey-bg product-specs" id="specs">
                     <div class="container">
 
-                        <h3 class="green faux-lines">Specifications</h3>
+                        <h3 class="green">Specifications</h3>
 
                         @if(isset($productInformation['Specifications']))
                             <div class="col-lg-6 text-center center-block nofloat">
