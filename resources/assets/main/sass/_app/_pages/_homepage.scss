@@ -6,8 +6,8 @@ body.home.logged-in{
 
   #hero-slider{
     .rsNav.rsBullets{
-       top: -26px;
-    }
+       top: -60;
+    } 
 
     @media (max-width:620px){
       top: -30px;
@@ -132,11 +132,11 @@ body.homepage:not(.logged-in){
        margin-top:30px;
     }
     .rsNav.rsBullets{
-       top: -58px;
+       top: -62px;
 
-       @media (max-width:620px){
-         top: -54px;
-       }
+       // @media (max-width:620px){
+       //   top: -54px;
+       // }
 
     }
   }

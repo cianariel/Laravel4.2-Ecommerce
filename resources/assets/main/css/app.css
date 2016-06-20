@@ -11838,7 +11838,7 @@ p {
 body.home.logged-in #hero {
   min-height: 480px; }
 body.home.logged-in #hero-slider .rsNav.rsBullets {
-  top: -26px; }
+  top: -60; }
 @media (max-width: 620px) {
   body.home.logged-in #hero-slider {
     top: -30px; } }
@@ -11910,7 +11910,7 @@ body.home.logged-in #hero-slider .rsNav.rsBullets {
 body.homepage:not(.logged-in) #hero-slider .rsOverflow {
   margin-top: 30px; }
 body.homepage:not(.logged-in) #hero-slider .rsNav.rsBullets {
-  top: -58px; }
+  top: -62px; }
   @media (max-width: 620px) {
     body.homepage:not(.logged-in) #hero-slider .rsNav.rsBullets {
       top: -54px; } }
