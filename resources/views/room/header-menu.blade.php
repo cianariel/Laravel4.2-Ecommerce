@@ -24,7 +24,7 @@
     <div class="container full-sm fixed-sm hidden-xs ">
         <ul class="wrap col-lg-9">
             <li>
-                <a class="mobile-top-menu-switcher" data-toggle=".mobile-cat-menu" href="#">
+                <a class="mobile-top-menu-switcher hidden" data-toggle=".mobile-cat-menu" href="#">
                     <i class=" m-icon--Close up"></i>
                     <i class="m-icon--MenuButton down"></i>
                 </a>
