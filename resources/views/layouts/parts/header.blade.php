@@ -578,7 +578,7 @@ if(!isset($theGiveAway)){
 <script type="text/ng-template" id="subscribe_email_popup.html">
     <div id="subscribe_email_popup">
         <div id="publicApp">
-            <?php if(isset($theGiveAway) && $theGiveAway->giveaway_image){
+            <?php if(isset($theGiveAway) && isset($theGiveAway->giveaway_image)){
                 echo '<img class="hidden-soft shown-sm" src="'.$theGiveAway->giveaway_image.'">';
             }
             ?>
