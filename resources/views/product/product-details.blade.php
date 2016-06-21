@@ -521,8 +521,8 @@
                             <div class="row">
                                 <div class="col-xs-6 col-sm-4 text-center reviews-service-holder critic">
                                     <div class="vertical-line visible-xs"></div>
-                                    <div class="title">Critic</div>
-                                    <div class="reviews">Reviews</div>
+                                    <h3><span class="title">Critic</span>
+                                    <span class="reviews">Reviews</span></h3>
 
                                     <div class="star-rating text-center">
                                         <?php
@@ -604,10 +604,10 @@
                                 </div>
                                 <div class="col-xs-6 col-sm-4 col-sm-offset-4 text-center reviews-service-holder amazon">
                                     <div class="vertical-line visible-xs"></div>
-                                    <div class="title"><a
+                                    <h3><span class="title"><a
                                                 href="@if(isset($productInformation['Review'][1]->link)){{$productInformation['Review'][1]->link}}@endif"
-                                                target="_blank">Amazon</a></div>
-                                    <div class="reviews">Reviews</div>
+                                                target="_blank">Amazon</a></span>
+                                    <span class="reviews">Reviews</span></h3>
                                     <div class="star-rating text-center">
                                         <?php
                                         $stars = $productInformation['Review'][1]->value;

@@ -2303,6 +2303,9 @@ article.product{
 
   .reviews{
     margin-bottom: 0;
+    display: block;
+    font-weight: normal;
+    font-size: 1.5rem;
   }
   //& + .comments{
   //  margin-top: 0;
@@ -5052,6 +5055,7 @@ body.single{
   .article-content{
     max-width: 900px;
     margin: 0 auto;
+    text-align: center;
     p,
     ul{
       font-family: montserratlight;
@@ -5059,6 +5063,47 @@ body.single{
       line-height: 1.6;
       font-size: 1.6rem;
       text-align: left;
+    }
+
+    h4{
+      text-align: left;
+    }
+ 
+    h2{
+       position: relative;
+        background-color: #fff !important;
+        display: inline-block;
+        width: auto;
+        min-width: 0;
+        padding: 0 23px;
+        text-align: center;
+        margin: 0 auto;
+        float: none;
+
+      &:before, &:after {
+        content: "";
+        display: block;
+        float: left;
+        position: absolute;
+        top: 0;
+        bottom: 11px;
+        width: 9600px;
+        /* left: -38%; */
+        right: 100%;
+        border-bottom:1px solid #ddd;
+
+        @media (max-width:620px){
+          display: none;
+        }
+      }
+      &:after {
+        width: 920px;
+        left: 100%;
+        top: -17px;
+        float: right;
+
+        //background: $bgColor;
+      }
     }
 
     img{
