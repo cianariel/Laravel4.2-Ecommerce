@@ -131,8 +131,28 @@ ul.pointed{
   &:after {
     width: 920px;
     left: 100%;
-    /* you're free to do something totally different here */
     background: $bgColor;
+  }
+}
+
+.faux-lines{
+  position: relative;
+  background-color: #F2F5F5 !important;
+
+  &:before, &:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 11px;
+    width: 9600px;
+    /* left: -38%; */
+    right: 65%;
+    border-bottom:1px solid darken #ddd;
+  }
+  &:after {
+    width: 920px;
+    left: 65%;
+    //background: $bgColor;
   }
 }
 
@@ -4715,7 +4735,12 @@ header.sub-head{
 
     @media (max-width: 1200px){
       &{
-        top: -21px;
+        top: -28px;
+      }
+    }
+    @media (max-width: 620px){
+      &{
+        top: -30px;
       }
     }
   }
