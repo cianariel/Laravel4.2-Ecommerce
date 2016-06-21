@@ -7987,7 +7987,7 @@ body.shop-landing{
                         }
                     }
                 }
-                &.active{
+                &.active, &.selected{
                     .show-and-hide-grandchild{
                         .add{
                             display: none;

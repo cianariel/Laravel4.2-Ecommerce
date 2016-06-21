@@ -9826,11 +9826,11 @@ body.shop-landing .mobile-shop-by-category-holder .shop-by-category-submneu > di
       body.shop-landing .mobile-shop-by-category-holder .shop-by-category-submneu > div .grandchild-holder .grandchild-item > a:hover {
         background: #FF0042;
         color: #fff; }
-  body.shop-landing .mobile-shop-by-category-holder .shop-by-category-submneu > div.active .show-and-hide-grandchild .add {
+  body.shop-landing .mobile-shop-by-category-holder .shop-by-category-submneu > div.active .show-and-hide-grandchild .add, body.shop-landing .mobile-shop-by-category-holder .shop-by-category-submneu > div.selected .show-and-hide-grandchild .add {
     display: none; }
-  body.shop-landing .mobile-shop-by-category-holder .shop-by-category-submneu > div.active .show-and-hide-grandchild .close {
+  body.shop-landing .mobile-shop-by-category-holder .shop-by-category-submneu > div.active .show-and-hide-grandchild .close, body.shop-landing .mobile-shop-by-category-holder .shop-by-category-submneu > div.selected .show-and-hide-grandchild .close {
     display: block; }
-  body.shop-landing .mobile-shop-by-category-holder .shop-by-category-submneu > div.active .grandchild-holder {
+  body.shop-landing .mobile-shop-by-category-holder .shop-by-category-submneu > div.active .grandchild-holder, body.shop-landing .mobile-shop-by-category-holder .shop-by-category-submneu > div.selected .grandchild-holder {
     display: block; }
 body.shop-landing .mobile-shop-by-category-holder .shop-by-category-submneu a {
   color: #333; }
