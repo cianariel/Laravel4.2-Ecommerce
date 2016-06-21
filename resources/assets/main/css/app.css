@@ -10116,6 +10116,7 @@ body.profilepage {
         body.profilepage .feed-content .feed-header .name-time i {
           color: #FF0042; }
     body.profilepage .feed-content .feed-body {
+      min-height: 143px;
       padding: 10px 10px;
       border-top: 1px solid #eee;
       border-bottom: 1px solid #eee; }
