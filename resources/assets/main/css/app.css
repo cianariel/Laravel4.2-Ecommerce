@@ -6197,7 +6197,10 @@ article.product {
       float: left;
       /*        margin-top: -36px;*/ }
   article.product .reviews {
-    margin-bottom: 0; }
+    margin-bottom: 0;
+    display: block;
+    font-weight: normal;
+    font-size: 1.5rem; }
   article.product .main-container {
     padding-right: 0; }
 
@@ -7919,7 +7922,8 @@ body.single .article-content iframe {
   margin-left: 10px; }
 .idea-stories .article-content {
   max-width: 900px;
-  margin: 0 auto; }
+  margin: 0 auto;
+  text-align: center; }
   .idea-stories .article-content p,
   .idea-stories .article-content ul {
     font-family: montserratlight;
@@ -7927,6 +7931,37 @@ body.single .article-content iframe {
     line-height: 1.6;
     font-size: 1.6rem;
     text-align: left; }
+  .idea-stories .article-content h4 {
+    text-align: left; }
+  .idea-stories .article-content h2 {
+    position: relative;
+    background-color: #fff !important;
+    display: inline-block;
+    width: auto;
+    min-width: 0;
+    padding: 0 23px;
+    text-align: center;
+    margin: 0 auto;
+    float: none; }
+    .idea-stories .article-content h2:before, .idea-stories .article-content h2:after {
+      content: "";
+      display: block;
+      float: left;
+      position: absolute;
+      top: 0;
+      bottom: 11px;
+      width: 9600px;
+      /* left: -38%; */
+      right: 100%;
+      border-bottom: 1px solid #ddd; }
+      @media (max-width: 620px) {
+        .idea-stories .article-content h2:before, .idea-stories .article-content h2:after {
+          display: none; } }
+    .idea-stories .article-content h2:after {
+      width: 920px;
+      left: 100%;
+      top: -17px;
+      float: right; }
   .idea-stories .article-content img {
     max-width: 100%;
     height: auto;
