@@ -25,7 +25,7 @@ class SendNotificationMailHandler
      */
     public function handle(SendNotificationMail $event)
     {
-        \Mail::send('email.regular-notification',
+        \Mail::send('email.notification',
             [
                 'name' => $event->name,
                 'email' => $event->email,

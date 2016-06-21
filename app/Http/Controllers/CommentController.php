@@ -263,5 +263,10 @@ class CommentController extends ApiController
 
     }
 
+    public function sendEmailToAdmin($data)
+    {
+
+    }
+
 
 }
