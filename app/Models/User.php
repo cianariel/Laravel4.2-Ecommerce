@@ -683,15 +683,16 @@ class User extends Model implements AuthenticatableContract,
 
         //  dd($userCollection);
 
-        $activities = collect();
+        //$activities = collect();
 
         foreach ($userCollection as $user) {
+          //  dd($user['id']);
 
             $setting = $settings->checkUserProfile(['UserId' => $user['id']]);
 
             if (!empty($setting['email_notification'])) {
 
-                $data = $this->getNotificationForUser($user['id'])['NoticeNotRead'];
+                $data = $this->getNotificationForUser($user['id'])['NotReadNoticeCount'];//['NoticeNotRead'];
 
                 \Event::fire(new SendNotificationMail($user['name'],$user['email'],$data));
 

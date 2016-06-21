@@ -3,14 +3,14 @@
 @section('body-class'){{ 'profilepage' }}@stop
 
 @section('content')
-    <div  id="pupblicApp" ng-app="publicApp" ng-controller="publicController">
+    <div id="pupblicApp" ng-app="publicApp" ng-controller="publicController">
         <nav class="mid-nav">
             <div class="container full-sm fixed-sm">
                 <ul class="wrap col-lg-9">
                     <li class="box-link-ul  active-ul ">
                         <a class="box-link active" href="/user/profile">
                             <span class="box-link-active-line"></span>
-                            <!--                                <img class="profile-photo" src="/assets/images/profile.jpg" alt="" width="40px"> -->
+                            <!-- <img class="profile-photo" src="/assets/images/profile.jpg" alt="" width="40px"> -->
                             My Profile
                         </a>
                     </li>
@@ -63,9 +63,7 @@
                     </div>
                 </div>
                 @if($showEditOption)
-                    {{-- Upload Photo hide for timebeing
-                    <a href="#" id="upload-photo"><i class="m-icon--Upload-Inactive"></i> Upload Photo</a>
-                    --}}
+
                     <div class="edit-background hidden-xs hidden-sm">
                         <a href="#">
                             <i class="m-icon--Edit-Background"></i><br>
@@ -83,57 +81,61 @@
                 @endif
             </div>
         </section>
-        {{-- <div class="app-wrap" id="pagingApp" ng-app="pagingApp" ng-controller="pagingController">--}}
+
         <div class="app-wrap">
             <div class="container ">
                 <nav id="hero-nav">
-                    <ul class="main-content-filter ">
-                        <li ng-class="{active: (activeMenu == '1' || !activeMenu)}" ng-click="activeMenu='1'">
-                            <a ng-click="clickOnActivity('{{$permalink}}', 5)" href="/user/profile/{{$permalink}}" data-filterby="all" class="selected all-activity">
-                                <i class="m-icon m-icon--menu"></i>
-                                All Activity
-                            </a>
-                        </li>
+                    @if(empty($notification))
+                        <ul class="main-content-filter ">
+                            <li ng-class="{active: (activeMenu == '1' || !activeMenu)}" ng-click="activeMenu='1'">
+                                <a ng-click="clickOnActivity('{{$permalink}}', 5)" href="/user/profile/{{$permalink}}"
+                                   data-filterby="all" class="selected all-activity">
+                                    <i class="m-icon m-icon--menu"></i>
+                                   All Activity
+                                </a>
+                            </li>
 
-                        <li ng-class="{active: activeMenu == '2'}" ng-click="activeMenu='2'">
-                            <a ng-click="clickOnActivityLike('{{$permalink}}', 5)" class="my-likes">
-                                <i class="m-icon m-icon--heart-id"></i>
-                                <span>Likes</span>
-                            </a>
-                        </li>
-                        <li ng-class="{active: activeMenu == '3'}" ng-click="activeMenu='3'">
-                            <a ng-click="clickOnActivityComment('{{$permalink}}', 5)" class="my-comments">
-                                <i class="m-icon--comments-id"></i>
-                                <span>Comments</span>
-                            </a>
-                        </li>
-                        <li ng-class="{active: activeMenu == '4'}" ng-click="activeMenu='4'">
-                            <a ng-click="clickOnPost('{{$permalink}}', 6)" class="my-post">
-                                <i class="m-icon m-icon--image"></i>
-                                <span>Posts</span>
-                            </a>
-                        </li>
-                        {{--<li ng-class="{active: activeMenu == '3'}" ng-click="activeMenu='3'">--}}
-                            {{--<a ng-click="filterContent('product')" data-filterby="products" href="" class="message">--}}
-                                {{--<i class="m-icon m-icon--Messages"></i>--}}
-                                {{--Messages--}}
-                            {{--</a>--}}
-                        {{--</li>--}}
-                        <li class="hidden" ng-class="{active: activeMenu == '4'}" ng-click="activeMenu='4'">
-                            <a data-filterby="photos" href="" class="my-product">
-                                <i class="m-icon m-icon--menu"></i>
-                                My Products
-                            </a>
-                        </li>
-                    </ul>
+                            <li ng-class="{active: activeMenu == '2'}" ng-click="activeMenu='2'">
+                                <a ng-click="clickOnActivityLike('{{$permalink}}', 5)" class="my-likes">
+                                    <i class="m-icon m-icon--heart-id"></i>
+                                    <span>Likes</span>
+                                </a>
+                            </li>
+                            <li ng-class="{active: activeMenu == '3'}" ng-click="activeMenu='3'">
+                                <a ng-click="clickOnActivityComment('{{$permalink}}', 5)" class="my-comments">
+                                    <i class="m-icon--comments-id"></i>
+                                    <span>Comments</span>
+                                </a>
+                            </li>
+                            <li ng-class="{active: activeMenu == '4'}" ng-click="activeMenu='4'">
+                                <a ng-click="clickOnPost('{{$permalink}}', 6)" class="my-post">
+                                    <i class="m-icon m-icon--image"></i>
+                                    <span>Posts</span>
+                                </a>
+                            </li>
+
+
+                            <li class="hidden" ng-class="{active: activeMenu == '4'}" ng-click="activeMenu='4'">
+                                <a data-filterby="photos" href="" class="my-product">
+                                    <i class="m-icon m-icon--menu"></i>
+                                    My Products
+                                </a>
+                            </li>
+                        </ul>
+                    @endif
                 </nav>
             </div>
             <div class="clearfix"></div>
             <br><br>
-            @if(!empty($showProfilePosts))
-                @include('user.parts.post')
+
+            @if(empty($notification))
+                @if(!empty($showProfilePosts))
+                    @include('user.parts.post')
+                @else
+                    @include('user.parts.feed')
+                @endif
             @else
-                @include('user.parts.feed')
+                @include('user.parts.notification')
             @endif
         </div>
     </div>

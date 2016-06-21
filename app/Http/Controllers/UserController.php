@@ -266,7 +266,44 @@ class UserController extends ApiController
             //'permalink' => $permalink,
             'permalink' => empty($permalink)?$userData['permalink']:$permalink,
             'isAdmin' => empty($userData) ? null : ($userData->hasRole('admin') || $userData->hasRole('editor')),
-            'showEditOption' => false
+            'showEditOption' => false,
+            'notificationPanel'=>false
+
+        );
+
+        MetaTag::set('title', $userProfileData->name . ' | Ideaing');
+
+        // dd($data);
+        return view('user.user-profile', $data);
+    }
+
+    public function viewPublicProfileNotice()
+    {
+
+        if ($this->authCheck['method-status'] == 'success-with-http') {
+            $userData = $this->authCheck['user-data'];
+        }else{
+            return \Redirect::to('login');
+        }
+
+        //$userProfileData = $this->user->checkUserByPermalink($permalink);
+
+        $userProfileData =  $userData;
+
+        $data = array(
+            'userData' => empty($userData) ? null : $userData,
+            'userProfileData' => $userProfileData,
+           // 'activity' => $this->comment->getCommentsAndHeatByUserId($userProfileData['id'], 10),
+            'profile' => ($userProfileData->medias[0]->media_link == '') ? \Config::get("const.user-image") : $userProfileData->medias[0]->media_link,
+            'fullname' => $userProfileData->name,
+            'address' => $userProfileData->userProfile->address,
+            'personalInfo' => $userProfileData->userProfile->personal_info,
+            //'permalink' => $permalink,
+            'permalink' => empty($permalink)?$userData['permalink']:$permalink,
+            'isAdmin' => empty($userData) ? null : ($userData->hasRole('admin') || $userData->hasRole('editor')),
+            'showEditOption' => false,
+            'notification'=>true,
+            'contents'=> $this->user->getNotificationForUser($userData->id)['NoticeNotRead']
 
         );
 
@@ -299,7 +336,8 @@ class UserController extends ApiController
             'permalink' => $permalink,
             'isAdmin' => empty($userData) ? null : ($userData->hasRole('admin') || $userData->hasRole('editor')),
             'showEditOption' => false,
-            'showProfilePosts' => true
+            'showProfilePosts' => true,
+            'notificationPanel'=>false
 
         );
 

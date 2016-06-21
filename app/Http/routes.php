@@ -333,9 +333,13 @@ Route::get('category/{identity?}', 'ProductCategoryController@showProductInCateg
 Route::get('product/{permalink?}', ['as' => 'productDetails', 'uses' => 'PageController@productDetailsPage']);
 Route::get('idea/{permalink?}', 'PageController@getRoomPage'); // single room page
 Route::get('room/{permalink?}', 'PageController@getRoomPage'); // temp keeping the old link, to prevent breaks
+
 // default signup
 Route::get('signup/{email?}/{source?}', 'PageController@signupPage');
 Route::get('login', 'PageController@loginView');
+
+// User Notification
+Route::get('/user/notification','UserController@viewPublicProfileNotice');
 
 // Hide signup popup
 Route::get('hide-signup', 'UserController@hideSignup');
