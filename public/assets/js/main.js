@@ -4408,6 +4408,7 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
             $scope.notificationCounter = 0;
             $scope.notifications = [];
             $scope.uid = null;
+            $scope.notificationLimit = 10;
 
             // comment ideas and giveaway
             $scope.itemId = 0;
@@ -4935,13 +4936,13 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                     //Redirect a user to registration page. 
                     window.location = '/signup/' + formData.SubscriberEmail + '/' + source;
 
-                } else if(data.data.isUser == 1) {
+                } else if (data.data.isUser == 1) {
                     $scope.responseMessage = "This email already exists, redirecting to Log In";
                     //console.log(data);
                     window.location = '/login/';
                 } else {
                     $scope.responseMessage = "Sorry, this email already exists. Redirecting to Sign Up";
-                     //console.log(data);
+                    //console.log(data);
                     window.location = '/signup/' + formData.SubscriberEmail + '/' + source;
                 }
 
@@ -4967,8 +4968,8 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
 
             //console.log($scope.alertHTML);
 
-            if($scope.alertHTML != null)
-            return;
+            if ($scope.alertHTML != null)
+                return;
 
 
             $http({
@@ -4983,19 +4984,17 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
             }).success(function (data) {
                 //console.log(data,redirect);
 
-                if(data.status_code == 200 || data.status_code == 210)
-                {
+                if (data.status_code == 200 || data.status_code == 210) {
                     $scope.addAlert('success', data.data);
-                    window.location.href = '/giveaway/'+redirect;
-                }else if(data.status_code == 400 || data.status_code == 500)
-                {
+                    window.location.href = '/giveaway/' + redirect;
+                } else if (data.status_code == 400 || data.status_code == 500) {
                     $scope.addAlert('danger', data.data);
 
                 }
 
                 return;
                 if (redirect) {
-                    window.location.href = '/giveaway/'+redirect;
+                    window.location.href = '/giveaway/' + redirect;
                 } else {
                     $scope.responseMessage = data;
                 }
@@ -5028,8 +5027,7 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
             var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
             var emailTest = re.test($scope.Email);
 
-            if(emailTest == false)
-            {
+            if (emailTest == false) {
                 $scope.addAlert('danger', 'Please enter a valid email');
                 return;
             }
@@ -5081,8 +5079,7 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
             var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
             var emailTest = re.test($scope.Email);
 
-            if(emailTest == false)
-            {
+            if (emailTest == false) {
                 $scope.addAlert('danger', 'Please enter a valid email');
                 return;
             }
@@ -5409,8 +5406,9 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
         $scope.loadNotification = function (uid) {
 
             $scope.uid = uid;
+            var limit = $scope.notificationLimit;
             $http({
-                url: '/api/notification/' + uid,
+                url: '/api/notification/' + uid + '/' + limit,
                 method: "GET",
             }).success(function (data) {
 
@@ -5418,6 +5416,13 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                 $scope.notifications = data.data.NoticeNotRead;
 
             });
+        };
+
+        // load more notification apart from default load
+        $scope.loadMoreNotifications = function (uid, limit) {
+            $scope.notificationLimit += limit;
+
+            $scope.loadNotification(uid);
         };
 
         $scope.readAllNotification = function () {
@@ -5467,46 +5472,42 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
 
         // Fetch all user settings for profile
 
-        $scope.getProfileSettings = function(id){
+        $scope.getProfileSettings = function (id) {
             //console.log("hi !:"+id );
             $http({
-                url: '/api/user/profile-settings/'+id,
+                url: '/api/user/profile-settings/' + id,
                 method: "GET",
 
             }).success(function (data) {
-               // console.log(data);
+                // console.log(data);
 
-                if(data.data.email_notification == true)
-                {
+                if (data.data.email_notification == true) {
                     $scope.setDailyEmailNotification = true;
-                }else
-                {
+                } else {
                     $scope.setDailyEmailNotification = false;
                 }
 
             });
         };
 
-        $scope.setDailyEmail = function(id){
+        $scope.setDailyEmail = function (id) {
 
-            if($scope.setDailyEmailNotification == true)
-            {
+            if ($scope.setDailyEmailNotification == true) {
                 $scope.setDailyEmailNotification = false;
-            }else
-            {
+            } else {
                 $scope.setDailyEmailNotification = true;
             }
 
             $http({
                 url: '/api/user/profile-settings/set-daily-email',
                 method: "POST",
-                data:{
-                    'UserId' : id,
-                    'Status' : $scope.setDailyEmailNotification
+                data: {
+                    'UserId': id,
+                    'Status': $scope.setDailyEmailNotification
                 }
 
             }).success(function (data) {
-                 console.log(data);
+                // console.log(data);
 
             });
 
