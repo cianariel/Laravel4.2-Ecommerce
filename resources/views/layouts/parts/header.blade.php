@@ -472,6 +472,26 @@ if(!isset($theGiveAway)){
 
                                 <div class="form-group checkbox-form-group">
                                     <div class="pull-left">
+                                        Receive Weekly Newsletters from Ideaing on newest offers
+                                    </div>
+                                    <div class="pull-right">
+                                        <label class="setting-custom-checkbox">
+                                            <input type="checkbox" value="1" checked>
+                                                <span class="">
+                                                    <i class="m-icon--Settings-Toggles-Active on">
+                                                        <span class="path1"></span><span class="path2"></span>
+                                                    </i>
+                                                    <i class="m-icon--Settings-Toggles off">
+                                                        <span class="path1"></span><span class="path2"></span>
+                                                    </i>
+                                                </span>
+                                        </label>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                </div>
+
+                                <div class="form-group checkbox-form-group">
+                                    <div class="pull-left">
                                         New followers
                                     </div>
                                     <div class="pull-right">
