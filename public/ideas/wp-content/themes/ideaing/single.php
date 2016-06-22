@@ -373,7 +373,7 @@
 
                         <div class="round-tag round-tag--idea">
                             <i class="m-icon m-icon--item"></i>
-                            <span class="round-tag__label">Idea</span>
+                            <span class="round-tag__label">idea</span>
                         </div>
 
                         <div class="box-item__label-idea">
