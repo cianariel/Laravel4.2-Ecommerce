@@ -18,7 +18,7 @@
                     if(!function_exists('is_single')){
                         $theGiveAway = PageHelper::getCurrentGiveaway();
                     }else{
-                        $json = file_get_contents('http://ideaing.com/api/giveaway/get-current');
+                        $json = file_get_contents('http://ideaing.dev/api/giveaway/get-current');
                         $theGiveAway = json_decode($json);
                     }
                 }
