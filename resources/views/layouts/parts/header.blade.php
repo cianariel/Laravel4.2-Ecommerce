@@ -16,12 +16,10 @@ if (!isset($theGiveAway)) {
     if (!function_exists('is_single')) {
         $theGiveAway = PageHelper::getCurrentGiveaway();
     } else {
-        $json = file_get_contents('/api/giveaway/get-current');
+        $json = file_get_contents('https://ideaing.com/api/giveaway/get-current');
         $theGiveAway = json_decode($json);
     }
 }
-
-// print_r($userData); die();
 ?>
 
 <div id="publicApp" ng-app="publicApp" ng-controller="publicController" class="header-cloak" ng-cloak>
@@ -596,7 +594,7 @@ if (!isset($theGiveAway)) {
     <div id="subscribe_email_popup">
         <div id="publicApp">
             <?php if (isset($theGiveAway) && @$theGiveAway->giveaway_image){
-            echo '<img class="hidden-soft shown-sm" src="'.@$theGiveAway->giveaway_image.'">';
+                    echo '<img class="hidden-soft shown-sm" src="'.@$theGiveAway->giveaway_image.'">';
             }
             ?>
             <i class="giveaway-icon m-icon m-icon--giveaway"></i>

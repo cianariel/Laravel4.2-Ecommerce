@@ -82,6 +82,11 @@ a:hover, a:focus{
   -o-transition: width 0.3s; /* Opera */
 }
 
+.greyscale{
+  -webkit-filter: grayscale(100%);
+  filter: grayscale(100%);
+}
+
 .full-wide{
   width: 100%;
 }
@@ -7071,7 +7076,7 @@ footer.about-footer{
 
   .comments h4{
     margin-bottom: 30px;
-  } 
+  }
 
   .single-comment{
     padding-bottom: 10px;
@@ -10113,8 +10118,9 @@ body.giveaway-page{
     overflow: hidden;
   }
   .black-slider{
-    min-height: 170px;
+    min-height: 227px;
     float: left;
+
     @include pseudo-full-wide(#000);
     top: 40px; 
 

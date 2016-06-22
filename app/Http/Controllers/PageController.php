@@ -832,7 +832,7 @@ class PageController extends ApiController
             $ended = true;
         }
 
-        $nextGiveaways = Giveaway::whereDate('goes_live', '>=', date('Y-m-d'))->get();
+        $nextGiveaways = Giveaway::where('id', '!=', $giveaway->id)->get();
 
         if (!$giveaway) {
             return \Redirect::to('not-found');
