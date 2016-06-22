@@ -192,7 +192,7 @@
         <?php loadLaravelView('share-bar'); ?>
     </div>
 
-        @if(!is_user_logged_in())
+        @if(!@@$userData['login'])
         <section class="email-banner">
                 <div class="col-lg-5 col-md-7 col-sm-8 center-block">
                                 <h4 class="blue">Subscribe to the world’s finest Smart Home & interior design Ideas, Tips and Freebies</h4>
