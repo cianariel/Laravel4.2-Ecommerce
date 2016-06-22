@@ -4531,6 +4531,10 @@ a:hover, a:focus {
   -o-transition: width 0.3s;
   /* Opera */ }
 
+.greyscale {
+  -webkit-filter: grayscale(100%);
+  filter: grayscale(100%); }
+
 .full-wide {
   width: 100%; }
 
@@ -9254,7 +9258,7 @@ footer.about-footer {
     .single-comment .col-sm-8.col-xs-7 {
       width: 80%; }
       .single-comment .col-sm-8.col-xs-7 p, .single-comment .col-sm-8.col-xs-7 .comment-name {
-        font-size: 1.3rem; }
+        font-size: 1.5rem; }
     .single-comment .btn-white {
       float: right; }
     .single-comment .field-wrap {
@@ -11338,7 +11342,7 @@ body.giveaway-page .sign-in {
 body.giveaway-page .container-fluid {
   overflow: hidden; }
 body.giveaway-page .black-slider {
-  min-height: 170px;
+  min-height: 227px;
   float: left;
   position: relative;
   /* for the child pseudo-elements */
