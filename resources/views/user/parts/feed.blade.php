@@ -209,6 +209,10 @@
                     </div>
 
                 </div>
+                <div ng-hide="userPostData.length > 0" class="row">
+                    <span style="text-align: center" class="btn btn-default btn-lg btn-block"> No post available. </span>
+                </div>
+                <div class="clearfix"> </div>
             </div>
         </div>
     </div>
