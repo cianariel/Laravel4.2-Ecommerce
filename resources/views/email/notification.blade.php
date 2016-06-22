@@ -351,7 +351,7 @@
                                                 st-content="fulltext-content">
                                                 <p align="left">
                                                     <span style="font-size: 14pt;" class="im"><br><span
-                                                                style="font-size: 14pt;">Hi! You have {{$content}} new notifications on Ideaing.You have new notification on Ideaing.</span><span
+                                                                style="font-size: 14pt;">Hi! You have {{$content}} new notifications on Ideaing.</span><span
                                                                 style="font-size: 14pt;">Click<a
                                                                     style="color:rgb(250,0,51);text-decoration:none"
                                                                     href="{{ url('/user/notification')}}"> View Your
