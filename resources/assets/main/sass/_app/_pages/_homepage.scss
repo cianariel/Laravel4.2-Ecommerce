@@ -1,18 +1,17 @@
+body.home{
+  #hero-slider{
+    .rsNav.rsBullets{
+       top: -30px;
+    } 
+  }
+}
 body.home.logged-in{
   
   #hero {
     min-height: 480px;
   }
 
-  #hero-slider{
-    .rsNav.rsBullets{
-       top: -60;
-    } 
-
-    @media (max-width:620px){
-      top: -30px;
-    }
-  }
+ 
  
 }
 
@@ -132,11 +131,11 @@ body.homepage:not(.logged-in){
        margin-top:30px;
     }
     .rsNav.rsBullets{
-       top: -62px;
+       top: -34px;
 
-       // @media (max-width:620px){
-       //   top: -54px;
-       // }
+        @media (max-width:620px){
+          top: -62px;
+       }
 
     }
   }

@@ -6197,7 +6197,10 @@ article.product {
       float: left;
       /*        margin-top: -36px;*/ }
   article.product .reviews {
-    margin-bottom: 0; }
+    margin-bottom: 0;
+    display: block;
+    font-weight: normal;
+    font-size: 1.5rem; }
   article.product .main-container {
     padding-right: 0; }
 
@@ -7919,7 +7922,8 @@ body.single .article-content iframe {
   margin-left: 10px; }
 .idea-stories .article-content {
   max-width: 900px;
-  margin: 0 auto; }
+  margin: 0 auto;
+  text-align: center; }
   .idea-stories .article-content p,
   .idea-stories .article-content ul {
     font-family: montserratlight;
@@ -7927,6 +7931,37 @@ body.single .article-content iframe {
     line-height: 1.6;
     font-size: 1.6rem;
     text-align: left; }
+  .idea-stories .article-content h4 {
+    text-align: left; }
+  .idea-stories .article-content h2 {
+    position: relative;
+    background-color: #fff !important;
+    display: inline-block;
+    width: auto;
+    min-width: 0;
+    padding: 0 23px;
+    text-align: center;
+    margin: 0 auto;
+    float: none; }
+    .idea-stories .article-content h2:before, .idea-stories .article-content h2:after {
+      content: "";
+      display: block;
+      float: left;
+      position: absolute;
+      top: 0;
+      bottom: 11px;
+      width: 9600px;
+      /* left: -38%; */
+      right: 100%;
+      border-bottom: 1px solid #ddd; }
+      @media (max-width: 620px) {
+        .idea-stories .article-content h2:before, .idea-stories .article-content h2:after {
+          display: none; } }
+    .idea-stories .article-content h2:after {
+      width: 920px;
+      left: 100%;
+      top: -17px;
+      float: right; }
   .idea-stories .article-content img {
     max-width: 100%;
     height: auto;
@@ -9826,11 +9861,11 @@ body.shop-landing .mobile-shop-by-category-holder .shop-by-category-submneu > di
       body.shop-landing .mobile-shop-by-category-holder .shop-by-category-submneu > div .grandchild-holder .grandchild-item > a:hover {
         background: #FF0042;
         color: #fff; }
-  body.shop-landing .mobile-shop-by-category-holder .shop-by-category-submneu > div.active .show-and-hide-grandchild .add {
+  body.shop-landing .mobile-shop-by-category-holder .shop-by-category-submneu > div.active .show-and-hide-grandchild .add, body.shop-landing .mobile-shop-by-category-holder .shop-by-category-submneu > div.selected .show-and-hide-grandchild .add {
     display: none; }
-  body.shop-landing .mobile-shop-by-category-holder .shop-by-category-submneu > div.active .show-and-hide-grandchild .close {
+  body.shop-landing .mobile-shop-by-category-holder .shop-by-category-submneu > div.active .show-and-hide-grandchild .close, body.shop-landing .mobile-shop-by-category-holder .shop-by-category-submneu > div.selected .show-and-hide-grandchild .close {
     display: block; }
-  body.shop-landing .mobile-shop-by-category-holder .shop-by-category-submneu > div.active .grandchild-holder {
+  body.shop-landing .mobile-shop-by-category-holder .shop-by-category-submneu > div.active .grandchild-holder, body.shop-landing .mobile-shop-by-category-holder .shop-by-category-submneu > div.selected .grandchild-holder {
     display: block; }
 body.shop-landing .mobile-shop-by-category-holder .shop-by-category-submneu a {
   color: #333; }
@@ -10116,6 +10151,7 @@ body.profilepage {
         body.profilepage .feed-content .feed-header .name-time i {
           color: #FF0042; }
     body.profilepage .feed-content .feed-body {
+      min-height: 143px;
       padding: 10px 10px;
       border-top: 1px solid #eee;
       border-bottom: 1px solid #eee; }
@@ -11835,13 +11871,11 @@ p {
 /* header layout */
 /* footer layout */
 /* main layout */
+body.home #hero-slider .rsNav.rsBullets {
+  top: -30px; }
+
 body.home.logged-in #hero {
   min-height: 480px; }
-body.home.logged-in #hero-slider .rsNav.rsBullets {
-  top: -60; }
-@media (max-width: 620px) {
-  body.home.logged-in #hero-slider {
-    top: -30px; } }
 
 .homepage-grid {
   position: relative;
@@ -11910,10 +11944,10 @@ body.home.logged-in #hero-slider .rsNav.rsBullets {
 body.homepage:not(.logged-in) #hero-slider .rsOverflow {
   margin-top: 30px; }
 body.homepage:not(.logged-in) #hero-slider .rsNav.rsBullets {
-  top: -62px; }
+  top: -34px; }
   @media (max-width: 620px) {
     body.homepage:not(.logged-in) #hero-slider .rsNav.rsBullets {
-      top: -54px; } }
+      top: -62px; } }
 
 .blur-overlay {
   background-image: url("https://d234pm57oy3062.cloudfront.net/homehero/11/homehero-image-56f8ffa2244c6-landing-hero-3.jpg");
