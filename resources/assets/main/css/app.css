@@ -4531,6 +4531,10 @@ a:hover, a:focus {
   -o-transition: width 0.3s;
   /* Opera */ }
 
+.greyscale {
+  -webkit-filter: grayscale(100%);
+  filter: grayscale(100%); }
+
 .full-wide {
   width: 100%; }
 
@@ -11338,7 +11342,7 @@ body.giveaway-page .sign-in {
 body.giveaway-page .container-fluid {
   overflow: hidden; }
 body.giveaway-page .black-slider {
-  min-height: 170px;
+  min-height: 227px;
   float: left;
   position: relative;
   /* for the child pseudo-elements */

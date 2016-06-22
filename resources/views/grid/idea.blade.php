@@ -29,7 +29,7 @@
 
 <a ng-if="!item.is_deal" href="/ideas" class="round-tag round-tag--idea">
     <i class="m-icon m-icon--bulb"></i>
-    <span class="round-tag__label" itemprop="articleSection">Idea</span>
+    <span class="round-tag__label" itemprop="articleSection">idea</span>
 </a>
 
 <a  ng-if="item.is_deal" href="/ideas" class="round-tag round-tag--idea deal">
