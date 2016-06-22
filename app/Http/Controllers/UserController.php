@@ -303,7 +303,7 @@ class UserController extends ApiController
             'isAdmin' => empty($userData) ? null : ($userData->hasRole('admin') || $userData->hasRole('editor')),
             'showEditOption' => false,
             'notification'=>true,
-            'contents'=> $this->user->getNotificationForUser($userData->id)['NoticeNotRead']
+            //'contents'=> $this->user->getNotificationForUser($userData->id)['NoticeNotRead']
 
         );
 
@@ -372,10 +372,10 @@ class UserController extends ApiController
     }
 
     // Fetch notification for current user
-    public function notification($uid)
+    public function notification($uid,$limit=null)
     {
 //            $this->user->userNotification();
-        $data = $this->user->getNotificationForUser($uid);
+        $data = $this->user->getNotificationForUser($uid,$limit);
 
         return $this->setStatusCode(\Config::get("const.api-status.success"))
                     ->makeResponse($data);

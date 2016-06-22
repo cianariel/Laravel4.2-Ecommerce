@@ -10,3 +10,4 @@ Vagrantfile
 /node_modules
 /resources/cli/grunt/node_modules/
 /resources/cli/grunt/externs/
+/resources/assets/main/css/app.css.map

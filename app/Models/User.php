@@ -12,6 +12,7 @@ use App\Models\WpUser;
 use App\Models\Notification;
 use App\Models\Subscriber;
 use App\Models\UserSetting;
+use App\Models\Comment as appComment;
 
 
 use Illuminate\Auth\Authenticatable;
@@ -509,15 +510,33 @@ class User extends Model implements AuthenticatableContract,
 
 
     // Wrapper for all type of notification (future implementation)
-    public function getNotificationForUser($userId)
+    public function getNotificationForUser($userId,$limit = 3)
     {
 
         $user = User::find($userId);
 
         $notification['NotReadNoticeCount'] = $user->countNotificationsNotRead();
 
-        $notifications = $user->getNotificationsNotRead();
+      //  $notifications = $user->getNotificationsNotRead();
 
+        $notifications = \Notifynder::getAll($userId,$limit);
+
+        $noticeCollection = $this->notificationBuilder($notifications);
+
+        $notification['NoticeNotRead'] = $noticeCollection;
+
+        return $notification;
+    }
+
+    /** Build  user's information as per given notification data
+     * to show a complete viewable data collection.
+     *
+     * @param $notifications
+     * @return Collection
+     * @internal param $data
+     */
+    private function notificationBuilder($notifications)
+    {
         $userInfo = new User();
 
         // $product = new Product();
@@ -530,20 +549,14 @@ class User extends Model implements AuthenticatableContract,
 
             $extraInfo = json_decode($notice['extra']);
 
-            //    $permalink = explode('/',$notice['url'])[1];
 
-            //    $product = $product->checkPermalink($permalink);
 
             $data['UserId'] = $userInfo['id'];
             $data['UserName'] = $userInfo['name'];
             $data['UserPicture'] = $userInfo->medias[0]->media_link;
-            //    $data['ProductTitle'] = $product['product_name'];
-            //    $data['ProductLink'] = $notice['url'];
             $data['ItemTitle'] = $extraInfo->ItemTitle;
             $data['ItemLink'] = $notice['url'];
             $data['NoticeRead'] = $notice['read'];
-
-            //$dateTime = json_decode($notice['extra']);
 
             $data['Section'] = $extraInfo->Section;
 
@@ -553,10 +566,7 @@ class User extends Model implements AuthenticatableContract,
 
             $noticeCollection->push($data);
         }
-
-        $notification['NoticeNotRead'] = $noticeCollection;
-
-        return $notification;
+        return $noticeCollection;
     }
 
     public function notificationMarkReadAll($userId)
@@ -612,17 +622,20 @@ class User extends Model implements AuthenticatableContract,
         curl_setopt($ch, CURLOPT_ENCODING, "");
         $json = curl_exec($ch);
 
+      //  dd($json);
+
         $ideaCollection = json_decode($json);
 
-        //  dd($ideaCollection);
+       //   dd($ideaCollection);
 
         $ideaCollection = empty($ideaCollection) ? [] : $ideaCollection;
 
 
         $ideas = new Collection();
 
-        $comment = new Comment();
+        $comment = new appComment();
         $heart = new Heart();
+
 
         // dd($ideaCollection);
 
@@ -700,5 +713,7 @@ class User extends Model implements AuthenticatableContract,
           //  return $data;
         }
     }
+
+
 }
 
