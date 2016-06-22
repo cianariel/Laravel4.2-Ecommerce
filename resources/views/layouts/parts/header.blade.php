@@ -5,44 +5,48 @@ if (function_exists('is_single')) {
     if (isset($GLOBALS['userData']) && isset($GLOBALS['isAdmin'])) {
         $userData = $GLOBALS['userData'];
         $isAdmin = $GLOBALS['isAdmin'];
-       
-    }else{
-      //  $userData['email'] = [];
+
+    } else {
+        //  $userData['email'] = [];
         $userData['user-data']['hide-signup'] = $_COOKIE['hide-signup'] ? true : false;
     }
 }
 
-if(!isset($theGiveAway)){
-    if(!function_exists('is_single')){
+if (!isset($theGiveAway)) {
+    if (!function_exists('is_single')) {
         $theGiveAway = PageHelper::getCurrentGiveaway();
-    }else{
+    } else {
         $json = file_get_contents('/api/giveaway/get-current');
         $theGiveAway = json_decode($json);
     }
 }
 
 // print_r($userData); die();
-?> 
+?>
 
 <div id="publicApp" ng-app="publicApp" ng-controller="publicController" class="header-cloak" ng-cloak>
     <header class="colophon">
         <div ng-init="socialCounter()" class="socialcounter col-xs-12">
             <nav id="top-nav" class="row">
 
-                <form class="search-bar" ng-app="publicApp" ng-controller="SearchController" action="/search-form-query">
+                <form class="search-bar" ng-app="publicApp" ng-controller="SearchController"
+                      action="/search-form-query">
                     <div class="mobile-search-bar col-xs-12" ng-cloak>
                         <button type="submit">
                         <span class="m-icon--search-id">
                         </span>
-                            </button>
-                            <input ng-click="toggleSearch()" ng-change="openSearchDropdown(query)" ng-model="query"
-                                   ng-model-options='{ debounce: 800 }' class="form-control col-xs-10 top-search" type="text"
-                                   value="Search..." placeholder="Search for products and ideas..." name="search"  autocomplete="off"/>
-                            <div id="suggest-category" ng-class="{shown: open, hidden: !open}" ng-show="categorySuggestions.length">
-                                <?php // have to use only pure php includes, or the CMS wont read it
-                                include('/var/www/ideaing/resources/views/layouts/parts/search-dropdown.blade.php')
-                                ?>
-                            </div>
+                        </button>
+                        <input ng-click="toggleSearch()" ng-change="openSearchDropdown(query)" ng-model="query"
+                               ng-model-options='{ debounce: 800 }' class="form-control col-xs-10 top-search"
+                               type="text"
+                               value="Search..." placeholder="Search for products and ideas..." name="search"
+                               autocomplete="off"/>
+                        <div id="suggest-category" ng-class="{shown: open, hidden: !open}"
+                             ng-show="categorySuggestions.length">
+                            <?php // have to use only pure php includes, or the CMS wont read it
+                            include('/var/www/ideaing/resources/views/layouts/parts/search-dropdown.blade.php')
+                            ?>
+                        </div>
                         <span class="close-button close-login" data-toggle=".mobile-search-bar">
                             <i class="turn-left m-icon--Header-Dropdown"></i>
                         </span>
@@ -219,8 +223,16 @@ if(!isset($theGiveAway)){
                                                 </div>
                                                 <div class="clearfix"></div>
                                             </div>
+                                            <div style="text-align: center">
+                                                <button class="btn btn-primary btn-block"
+                                                        ng-click="loadMoreNotifications('<?php echo $userData['id']?>',5)"
+                                                        type="button">Load More ...
+                                                </button>
+                                            </div>
+                                            <div class="clearfix"></div>
                                         </div>
                                         <div class="notification-footer">
+
                                         </div>
                                     </div>
                                 </div>
@@ -266,7 +278,9 @@ if(!isset($theGiveAway)){
                                 if($story->url){  ?>
                                 <li><a href="<?php echo $story->url ?>"><?php echo $story->title ?> </a></li>
                                 <?php    }else{ ?>
-                                <li><a href="/ideas/<?php echo $story['post_name'] ?>"><?php echo $story['post_title'] ?> </a></li>
+                                <li>
+                                    <a href="/ideas/<?php echo $story['post_name'] ?>"><?php echo $story['post_title'] ?> </a>
+                                </li>
 
                                 <?php }
                                 }
@@ -304,14 +318,14 @@ if(!isset($theGiveAway)){
                                 <i class="m-icon--footer-up-arrow up"></i>
                             </a>
                             <ul class="room-list">
-                                 <li><a href=" /idea/kitchen">Kitchen</a></li>
-                                    <li><a href=" /idea/bath">Bath</a></li>
-                                    <li><a href=" /idea/bedroom">Bedroom</a></li>
-                                    <li><a href=" /idea/office">Office</a></li>
-                                    <li><a href=" /idea/living">Living</a></li>
-                                    <li><a href=" /idea/outdoor">Outdoor</a></li>
-                                    <li><a href=" /idea/lighting">Lighting</a></li>
-                                    <li><a href=" /idea/security">Security</a></li>
+                                <li><a href=" /idea/kitchen">Kitchen</a></li>
+                                <li><a href=" /idea/bath">Bath</a></li>
+                                <li><a href=" /idea/bedroom">Bedroom</a></li>
+                                <li><a href=" /idea/office">Office</a></li>
+                                <li><a href=" /idea/living">Living</a></li>
+                                <li><a href=" /idea/outdoor">Outdoor</a></li>
+                                <li><a href=" /idea/lighting">Lighting</a></li>
+                                <li><a href=" /idea/security">Security</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -321,9 +335,9 @@ if(!isset($theGiveAway)){
 
         </div>
 
-    <?php // have to use only pure php includes, or the CMS wont read it
-    include('/var/www/ideaing/resources/views/layouts/parts/shop-submenu.blade.php')
-    ?>
+        <?php // have to use only pure php includes, or the CMS wont read it
+        include('/var/www/ideaing/resources/views/layouts/parts/shop-submenu.blade.php')
+        ?>
     </header>
 
     <?php
@@ -445,7 +459,8 @@ if(!isset($theGiveAway)){
             <div class="second-form">
                 <div class="custom-container ">
                     <form class="form-horizontal">
-                        <div class="col-sm-offset-2 col-sm-8" ng-init="getProfileSettings('<?php echo $userData['id']  ?>')">
+                        <div class="col-sm-offset-2 col-sm-8"
+                             ng-init="getProfileSettings('<?php echo $userData['id']  ?>')">
                             <div class="form-group title">
                                 <label>Notify me about</label>
                             </div>
@@ -456,7 +471,8 @@ if(!isset($theGiveAway)){
                                     </div>
                                     <div class="pull-right">
                                         <label class="setting-custom-checkbox">
-                                            <input type="checkbox" ng-model="setDailyEmailNotification" ng-click="setDailyEmail('<?php echo $userData['id']  ?>')">
+                                            <input type="checkbox" ng-model="setDailyEmailNotification"
+                                                   ng-click="setDailyEmail('<?php echo $userData['id']  ?>')">
                                                 <span class="">
                                                     <i class="m-icon--Settings-Toggles-Active on">
                                                         <span class="path1"></span><span class="path2"></span>
@@ -565,9 +581,9 @@ if(!isset($theGiveAway)){
         </div>
     </script>
     <?php }
-    if((!isset($userData['email']) || empty($userData['email'])) && @$userData['user-data']['hide-signup'] != 'true')
+    if ((!isset($userData['email']) || empty($userData['email'])) && @$userData['user-data']['hide-signup'] != 'true')
     {
-    echo '<input  ng-init="openEmailPopuponTime()" type="hidden">';
+    echo '<input ng-init="openEmailPopuponTime()" type="hidden">';
 
     } ?>
 
@@ -579,8 +595,8 @@ if(!isset($theGiveAway)){
 <script type="text/ng-template" id="subscribe_email_popup.html">
     <div id="subscribe_email_popup">
         <div id="publicApp">
-            <?php if(isset($theGiveAway) && @$theGiveAway->giveaway_image){
-                echo '<img class="hidden-soft shown-sm" src="'.@$theGiveAway->giveaway_image.'">';
+            <?php if (isset($theGiveAway) && @$theGiveAway->giveaway_image){
+            echo '<img class="hidden-soft shown-sm" src="'.@$theGiveAway->giveaway_image.'">';
             }
             ?>
             <i class="giveaway-icon m-icon m-icon--giveaway"></i>
@@ -601,7 +617,8 @@ if(!isset($theGiveAway)){
                     <div>
                          <span class="email-input-holder ">
                                 <i class="m-icon m-icon--email-form-id black"></i>
-                               <input class="form-control" ng-model="data.SubscriberEmail" placeholder="me@email.com" type="text">
+                               <input class="form-control" ng-model="data.SubscriberEmail" placeholder="me@email.com"
+                                      type="text">
                         </span>
                     </div>
                     <br>
@@ -615,7 +632,7 @@ if(!isset($theGiveAway)){
                 </div>
             </div>
             <div class="img-holder head-image-holder hidden-sm hidden-xs">
-                <img  src="/assets/images/emailpopupimg.png">
+                <img src="/assets/images/emailpopupimg.png">
             </div>
             <div class="clearfix"></div>
         </div>
