@@ -389,13 +389,13 @@
                                                                     <div style="margin-top: 20px;
                                                                             border-radius:6px;
                                                                             background-color:rgb(255,255,255);
-                                                                            border-color: red !important;
+                                                                            border-color: #FA0033 !important;
                                                                             border-style: solid;
                                                                             box-shadow: none !important;
                                                                             min-height:25px;
                                                                             width:150px;text-align: center;
                                                                             width:202px; line-height:50px;">
-                                                                        <a style=" color:red;font-weight: bold;"
+                                                                        <a style=" color:#FA0033;font-weight: bold;"
                                                                            href="{{ url('/user/notification')}}"> View
                                                                             Your Notifications</a>
                                                                     </div>
