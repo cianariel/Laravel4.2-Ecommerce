@@ -57,7 +57,7 @@
                             <div class="row">
 
 
-                                <div class="col-xs-4" ng-show="item['Image'] !=''">
+                                <div class="col-xs-12" ng-show="item['Image'] !=''">
                                     <img ng-src="@{{ item['Image'] }}">
                                 </div>
 
@@ -111,7 +111,7 @@
                         <div class="row">
 
 
-                            <div class="col-xs-4" ng-show="item['Image'] !=''">
+                            <div class="col-xs-12" ng-show="item['Image'] !=''">
                                 <img ng-src="@{{ item['Image'] }}">
                             </div>
 

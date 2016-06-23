@@ -222,7 +222,7 @@
 
                 <section class="slider giveaway-slider black-slider col-lg-12 pseudo-full-wide">
                     <img src="/assets/images/giveaway-logo.png" class="giveaway-logo col-xs-4"/>
-                    <div class="giveaway-slider-content col-xs-8">
+                    <div class="giveaway-slider-content col-sm-8">
                         @foreach($nextGiveaways as $nextGive)
                             <div class="thumb-wrap">
                                 <h6>{{date('F', strtotime($nextGive->goes_live))}}</h6>

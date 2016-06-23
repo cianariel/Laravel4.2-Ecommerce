@@ -11343,6 +11343,7 @@ body.giveaway-page .container-fluid {
   overflow: hidden; }
 body.giveaway-page .black-slider {
   min-height: 227px;
+  width: 100%;
   float: left;
   position: relative;
   /* for the child pseudo-elements */
@@ -11352,6 +11353,11 @@ body.giveaway-page .black-slider {
   padding: 0.25rem 30px;
   background: #000;
   top: 40px; }
+  body.giveaway-page .black-slider .rsOverflow {
+    width: 100% !important; }
+    body.giveaway-page .black-slider .rsOverflow .rsSlide {
+      margin-left: 80px !important;
+      min-width: 150px; }
   body.giveaway-page .black-slider:before, body.giveaway-page .black-slider:after {
     content: "";
     position: absolute;

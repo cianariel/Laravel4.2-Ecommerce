@@ -10119,7 +10119,17 @@ body.giveaway-page{
   }
   .black-slider{
     min-height: 227px;
+    width: 100%;
     float: left;
+
+    .rsOverflow{
+      width: 100% !important;
+      .rsSlide{
+        margin-left: 80px !important;
+        min-width: 150px;
+      }
+
+    }
 
     @include pseudo-full-wide(#000);
     top: 40px; 
