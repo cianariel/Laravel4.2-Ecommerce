@@ -54,10 +54,10 @@ return [
 
         'mysql' => [
             'driver'    => 'mysql',
-            'host'      => env('DB_HOST', 'ideaing-staging-2.c9zzhwcfjtcc.us-west-2.rds.amazonaws.com'),
-            'database'  => env('DB_DATABASE', 'ideaing-staging'),
-            'username'  => env('DB_USERNAME', 'megaStuff_'),
-            'password'  => env('DB_PASSWORD', 'iAmBob__'),
+            'host'      => env('DB_HOST'),
+            'database'  => env('DB_DATABASE'),
+            'username'  => env('DB_USERNAME'),
+            'password'  => env('DB_PASSWORD'),
             'charset'   => 'utf8',
             'collation' => 'utf8_unicode_ci', 
             'prefix'    => '',
@@ -66,10 +66,10 @@ return [
 
         'wpdb' => [
             'driver'    => 'mysql',
-            'host'      => env('BLOG_DB_HOST', 'ideaing-staging-2.c9zzhwcfjtcc.us-west-2.rds.amazonaws.com'),
-            'database'  => env('BLOG_DB_DATABASE', 'ideaingwpideas'),
-            'username'  => env('BLOG_DB_USERNAME', 'megaStuff_'),
-            'password'  => env('BLOG_DB_PASSWORD', 'iAmBob__'),
+            'host'      => env('DB_HOST'),
+            'database'  => env('BLOG_DB_DATABASE'),
+            'username'  => env('BLOG_DB_USERNAME'),
+            'password'  => env('BLOG_DB_PASSWORD'),
             'charset'   => 'utf8mb4',
             'collation' => 'utf8mb4_unicode_ci',
             'prefix'    => 'wp_',
