@@ -4916,8 +4916,8 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                 source = '';
 
 
-            console.log('formData')
-            console.log(formData)
+          //  console.log('formData')
+          //  console.log(formData)
 
             $http({
                 url: '/api/subscribe',
@@ -4948,6 +4948,8 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                     //console.log(data);
                     window.location = '/signup/' + formData.SubscriberEmail + '/' + source;
                 }
+
+            //    console.log("in :"+$scope.responseMessage);
 
             });
 
