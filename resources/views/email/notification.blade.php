@@ -259,6 +259,19 @@
             padding-bottom: 6px;
             float: left;
         }
+
+        .button-style{
+            margin-top: 20px;
+            border-radius:6px;
+            background-color:rgb(255,255,255);
+            border-color: red !important;
+            border-style: solid;
+            box-shadow: none !important;
+            min-height:25px;
+            width:150px;text-align: center;
+            width:202px; line-height:50px;
+        }
+
     </style>
 </head>
 <body bgcolor="#ffffff" style="background-color:#ffffff;">
@@ -377,9 +390,8 @@
                                                             <tr>
                                                                 <td width="590" height="160" align="center"
                                                                     class="devicewidth">
-                                                                    <div class="imgpop"
-                                                                         style="margin-top: 20px;border-radius:6px;background-color:rgb(250,0,51);min-height:25px;width:150px;text-align: center;width:202px; line-height:50px;">
-                                                                        <a style=" color:white;font-weight: bold;"
+                                                                    <div class="button-style">
+                                                                        <a style=" color:red;font-weight: bold;"
                                                                            href="{{ url('/user/notification')}}"> View
                                                                             Your Notifications</a>
                                                                     </div>
@@ -539,8 +551,6 @@
                                                             <a class="pint"
                                                                href="https://www.pinterest.com/ideaing_com"><img
                                                                         src="https://ideaing.com/assets/images/email/pint.png"/></a>
-                                                            <a class="likes" href="#"><img
-                                                                        src="https://ideaing.com/assets/images/email/likes.png"/></a>
                                                         </td>
                                                     </tr>
                                                     </tbody>
