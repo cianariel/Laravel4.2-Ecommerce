@@ -260,18 +260,6 @@
             float: left;
         }
 
-        .button-style{
-            margin-top: 20px;
-            border-radius:6px;
-            background-color:rgb(255,255,255);
-            border-color: red !important;
-            border-style: solid;
-            box-shadow: none !important;
-            min-height:25px;
-            width:150px;text-align: center;
-            width:202px; line-height:50px;
-        }
-
     </style>
 </head>
 <body bgcolor="#ffffff" style="background-color:#ffffff;">
@@ -364,7 +352,15 @@
                                                 st-content="fulltext-content">
                                                 <p align="left">
                                                     <span style="font-size: 14pt;" class="im"><br><span
-                                                                style="font-size: 14pt;">Hi! You have {{$content}} new notifications on Ideaing.</span><span
+                                                                style="font-size: 14pt;">Hi {{$name}} ! You have
+                                                            @if($content != 0)
+                                                                {{$content}} new notifications
+                                                            @elseif($content == 1)
+                                                                1 new notification
+                                                            @else
+                                                                no notification today
+                                                            @endif
+                                                            on Ideaing.</span><span
                                                                 style="font-size: 14pt;">Click<a
                                                                     style="color:rgb(250,0,51);text-decoration:none"
                                                                     href="{{ url('/user/notification')}}"> View Your
@@ -390,7 +386,15 @@
                                                             <tr>
                                                                 <td width="590" height="160" align="center"
                                                                     class="devicewidth">
-                                                                    <div class="button-style">
+                                                                    <div style="margin-top: 20px;
+                                                                            border-radius:6px;
+                                                                            background-color:rgb(255,255,255);
+                                                                            border-color: red !important;
+                                                                            border-style: solid;
+                                                                            box-shadow: none !important;
+                                                                            min-height:25px;
+                                                                            width:150px;text-align: center;
+                                                                            width:202px; line-height:50px;">
                                                                         <a style=" color:red;font-weight: bold;"
                                                                            href="{{ url('/user/notification')}}"> View
                                                                             Your Notifications</a>

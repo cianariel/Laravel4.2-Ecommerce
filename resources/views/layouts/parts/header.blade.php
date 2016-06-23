@@ -222,10 +222,11 @@ if (!isset($theGiveAway)) {
                                                 <div class="clearfix"></div>
                                             </div>
                                             <div style="text-align: center">
-                                                <button class="btn btn-primary btn-block"
-                                                        ng-click="loadMoreNotifications('<?php echo $userData['id']?>',5)"
-                                                        type="button">Load More ...
-                                                </button>
+                                                <a class="btn btn-primary btn-block" style="color: white"
+                                                        {{--ng-click="loadMoreNotifications('<?php echo $userData['id']?>',5)"--}}
+                                                                href="/user/notification"
+                                                        type="button">View All ...
+                                                </a>
                                             </div>
                                             <div class="clearfix"></div>
                                         </div>
