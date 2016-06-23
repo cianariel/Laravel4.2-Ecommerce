@@ -960,6 +960,9 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                 source = '';
 
 
+            console.log('formData')
+            console.log(formData)
+
             $http({
                 url: '/api/subscribe',
                 method: "POST",
