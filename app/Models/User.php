@@ -510,16 +510,17 @@ class User extends Model implements AuthenticatableContract,
 
 
     // Wrapper for all type of notification (future implementation)
-    public function getNotificationForUser($userId,$limit = 3)
+    public function getNotificationForUser($userId, $limit = 10)
     {
 
         $user = User::find($userId);
 
         $notification['NotReadNoticeCount'] = $user->countNotificationsNotRead();
 
-      //  $notifications = $user->getNotificationsNotRead();
+        //  $notifications = $user->getNotificationsNotRead();
 
-        $notifications = \Notifynder::getAll($userId,$limit);
+        $notifications = \Notifynder::getAll($userId, $limit);
+
 
         $noticeCollection = $this->notificationBuilder($notifications);
 
@@ -548,8 +549,6 @@ class User extends Model implements AuthenticatableContract,
             $userInfo = $userInfo->getUserById($notice['from_id']);
 
             $extraInfo = json_decode($notice['extra']);
-
-
 
             $data['UserId'] = $userInfo['id'];
             $data['UserName'] = $userInfo['name'];
@@ -622,11 +621,11 @@ class User extends Model implements AuthenticatableContract,
         curl_setopt($ch, CURLOPT_ENCODING, "");
         $json = curl_exec($ch);
 
-      //  dd($json);
+        //  dd($json);
 
         $ideaCollection = json_decode($json);
 
-       //   dd($ideaCollection);
+        //   dd($ideaCollection);
 
         $ideaCollection = empty($ideaCollection) ? [] : $ideaCollection;
 
@@ -672,14 +671,14 @@ class User extends Model implements AuthenticatableContract,
 
     public function getUserProfileSettings($userId)
     {
-       return UserSetting::where('user_id',$userId)->first();
+        return UserSetting::where('user_id', $userId)->first();
 
     }
 
-    public function setDailyEmail($userId,$status)
+    public function setDailyEmail($userId, $status)
     {
         $settings = new UserSetting();
-        $settings = $settings->where('user_id',$userId)->first();
+        $settings = $settings->where('user_id', $userId)->first();
         //dd($settings);
         $settings->email_notification = $status;
         $settings->save();
@@ -699,7 +698,7 @@ class User extends Model implements AuthenticatableContract,
         //$activities = collect();
 
         foreach ($userCollection as $user) {
-          //  dd($user['id']);
+            //  dd($user['id']);
 
             $setting = $settings->checkUserProfile(['UserId' => $user['id']]);
 
@@ -707,10 +706,12 @@ class User extends Model implements AuthenticatableContract,
 
                 $data = $this->getNotificationForUser($user['id'])['NotReadNoticeCount'];//['NoticeNotRead'];
 
-                \Event::fire(new SendNotificationMail($user['name'],$user['email'],$data));
+                $name = explode(" ", $user['name'])[0];
+
+                \Event::fire(new SendNotificationMail($name, $user['email'], $data));
 
             }
-          //  return $data;
+            //  return $data;
         }
     }
 
