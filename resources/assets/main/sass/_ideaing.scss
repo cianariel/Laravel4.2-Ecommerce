@@ -1490,11 +1490,16 @@ body.contactus-page
         display: none;
     }
     
-    &:hover > .m-icon:first-child{
+    &:hover > .m-icon{
+      -webkit-filter: none;
+      filter: none;
+
+      &:first-child{
         display: none;
-    }
-    &:hover > .m-icon:last-child{
+      }
+      &:last-child{
         display: block;
+      }
     }
 
 }
@@ -3161,7 +3166,7 @@ header.colophon{
                 .notification-item{
                     border-bottom: 1px solid #f3f6f6;
                     padding: 15px;
-                    &.read-0{ 
+                    .read-0{
                         color: $iridium !important;
                          a{
                             color: $iridium !important;
@@ -3385,7 +3390,7 @@ body.single-post #top-nav .ideas,
 html.idea-stories #top-nav .ideas,
 .room-landing #top-nav a.ideas
 {
-    position: relative;
+    position: relative; 
     color:$sky-blue;
     .box-link-active-line{
         height: 50px;

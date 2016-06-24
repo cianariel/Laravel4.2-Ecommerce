@@ -5700,11 +5700,11 @@ body.contactus-page #hero {
   margin-left: 0;
   padding: 9px;
   max-width: 100%;
-  margin-top: 0px; }
+  margin-top: 0px;
+  /*  margin-left: 30px;*/ }
   #ideaing-logo .m-icon {
-    font-size: 42px;
-    -webkit-filter: grayscale(100%);
-    filter: grayscale(100%); }
+    /*        display: none;*/
+    font-size: 42px; }
   #ideaing-logo .scroll-logo.m-icon {
     display: none; }
   #ideaing-logo .m-icon:first-child {
@@ -6775,9 +6775,9 @@ header.colophon {
       #top-nav .top-nav-holder .notification-popup .notification-body .notification-item {
         border-bottom: 1px solid #f3f6f6;
         padding: 15px; }
-        #top-nav .top-nav-holder .notification-popup .notification-body .notification-item:first-child {
+        #top-nav .top-nav-holder .notification-popup .notification-body .notification-item .read-0 {
           color: #FF0042 !important; }
-          #top-nav .top-nav-holder .notification-popup .notification-body .notification-item:first-child a {
+          #top-nav .top-nav-holder .notification-popup .notification-body .notification-item .read-0 a {
             color: #FF0042 !important; }
         #top-nav .top-nav-holder .notification-popup .notification-body .notification-item:last-child {
           border-bottom: 0px; }
@@ -6902,6 +6902,7 @@ header.colophon {
   #top-nav {
     max-height: 60px; } }
 
+body.homepage #top-nav .ideas,
 body.shop-landing #top-nav .shop,
 body.product-details #top-nav .shop,
 body.shop-category #top-nav .shop,
@@ -6910,6 +6911,7 @@ html.idea-stories #top-nav .ideas,
 .room-landing #top-nav a.ideas {
   position: relative;
   color: #00B1FF; }
+  body.homepage #top-nav .ideas .box-link-active-line,
   body.shop-landing #top-nav .shop .box-link-active-line,
   body.product-details #top-nav .shop .box-link-active-line,
   body.shop-category #top-nav .shop .box-link-active-line,
