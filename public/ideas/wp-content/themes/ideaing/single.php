@@ -91,7 +91,7 @@
                 <li class="horizontal-line-holder hidden-xs ">
                     <span class="horizontal-line"></span>
                 </li>
-                <li class="box-link-ul"><a href="{{get_site_url()}}/tag/{{$firstTag->slug}}" class="box-link active">{{$firstTag->name}}</a>
+                <li class="box-link-ul"><a href="{{get_site_url()}}/{{$firstTag->slug}}" class="box-link active">{{$firstTag->name}}</a>
                 </li>
                 @endif
                 @endif

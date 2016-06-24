@@ -1,9 +1,8 @@
 <?php
 $cat = get_category( get_query_var( 'cat' ) );
 $currentCat = $cat->slug;
-
 ?>
-                <ul class="wrap col-lg-4">
+                <ul class="wrap col-lg-4 col-lg-6">
                      <li class="box-link-ul {{$currentCat}}">
                                 <a href="/ideas/smart-home" class="box-link <?php echo $currentCat == 'smart-home' ? 'active' : '' ?>">Smart Home</a>
                             </li>
