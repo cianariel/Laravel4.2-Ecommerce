@@ -5460,6 +5460,10 @@ nav a {
   #hero .container {
     position: relative; }
 
+body.homepage .scroll-logo.m-icon, body.home .scroll-logo.m-icon, body.single .scroll-logo.m-icon, body.archive .scroll-logo.m-icon, body.idea-stories .scroll-logo.m-icon {
+  filter: none !important;
+  -webkit-filter: none  !important; }
+
 body.tag-deal #hero.details-hero h1 {
   background-color: rgba(255, 127, 0, 0.7); }
 
@@ -6557,7 +6561,9 @@ header.colophon {
         header.colophon.scroll-header #top-nav a#ideaing-logo .scroll-logo.m-icon {
           display: block;
           width: 30px;
-          height: 40px; } }
+          height: 40px;
+          -webkit-filter: grayscale(100%);
+          filter: grayscale(100%); } }
   header.colophon.scroll-header + header.sub-head .shop-menu {
     position: fixed;
     top: 60px;
@@ -6774,8 +6780,8 @@ header.colophon {
         padding: 15px; }
         #top-nav .top-nav-holder .notification-popup .notification-body .notification-item:first-child {
           color: #FF0042 !important; }
-          #top-nav .top-nav-holder .notification-popup .notification-body .notification-item:first-child .notification-row-content a {
-            color: #FF0042; }
+          #top-nav .top-nav-holder .notification-popup .notification-body .notification-item:first-child a {
+            color: #FF0042 !important; }
         #top-nav .top-nav-holder .notification-popup .notification-body .notification-item:last-child {
           border-bottom: 0px; }
       #top-nav .top-nav-holder .notification-popup .notification-body .profile-photo {
