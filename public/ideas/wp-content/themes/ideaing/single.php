@@ -199,7 +199,8 @@
                             <p>Join and get exclusive coupons and giveaways on Smart Home devices</p>
                             <div>
     <!--                            <h5>Enter your email</h5>-->
-                                <strong class="red"><?php echo '{{ responseMessage }}' ?></strong>
+                                <strong class="red" ng-bind="responseMessage"></strong>
+
                             </div>
                             <div class="col-xs-12 col-sm-9">
                                 <span class="email-input-holder ">

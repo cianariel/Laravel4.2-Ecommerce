@@ -114,10 +114,6 @@
 
                 $data = json_decode($json, true);
 
-                //   dd($data);
-                // dd($data['Items']['Item']['DetailPageURL']);
-                //    return $data;//['Items']['Item']['LargeImage']['URL'];//['Availability'];
-
                 $title = isset($data['Items']['Item']['ItemAttributes']['Title']) ? $data['Items']['Item']['ItemAttributes']['Title'] : "";
                 $imageLink = isset($data['Items']['Item']['LargeImage']['URL']) ? $data['Items']['Item']['LargeImage']['URL'] : "";
                 $listPrice = isset($data['Items']['Item']['ItemAttributes']['ListPrice']['Amount']) ? $data['Items']['Item']['ItemAttributes']['ListPrice']['Amount'] / 100 : "";
