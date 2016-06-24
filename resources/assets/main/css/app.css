@@ -6772,6 +6772,10 @@ header.colophon {
       #top-nav .top-nav-holder .notification-popup .notification-body .notification-item {
         border-bottom: 1px solid #f3f6f6;
         padding: 15px; }
+        #top-nav .top-nav-holder .notification-popup .notification-body .notification-item:first-child {
+          color: #FF0042 !important; }
+          #top-nav .top-nav-holder .notification-popup .notification-body .notification-item:first-child .notification-row-content a {
+            color: #FF0042; }
         #top-nav .top-nav-holder .notification-popup .notification-body .notification-item:last-child {
           border-bottom: 0px; }
       #top-nav .top-nav-holder .notification-popup .notification-body .profile-photo {

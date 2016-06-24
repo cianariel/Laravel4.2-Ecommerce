@@ -3157,10 +3157,16 @@ header.colophon{
                 border-bottom-left-radius: 20px;
                 border-bottom-right-radius: 20px;
                 height: 315px;
-                overflow: auto;
+                overflow: auto; 
                 .notification-item{
                     border-bottom: 1px solid #f3f6f6;
                     padding: 15px;
+                    &:first-child{
+                        color: $iridium !important;
+                         a{
+                            color: $iridium !importan;
+                          }
+                    }
                     &:last-child{
                         border-bottom: 0px;
                     }
