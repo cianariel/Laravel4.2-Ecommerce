@@ -1086,7 +1086,7 @@ body{
   &.single,
   &.archive,
   &.idea-stories{
-    .scroll-logo.m-icon{
+    #ideaing-logo .m-icon{
       filter: none !important;
       -webkit-filter: none  !important;
     }
@@ -1488,10 +1488,10 @@ body.contactus-page
   padding: 9px;
   max-width: 100%;
   margin-top: 0px;
-/*  margin-left: 30px;*/
     .m-icon{
-/*        display: none;*/
-        font-size: 42px;
+      font-size: 42px;
+      -webkit-filter: grayscale(100%);
+      filter: grayscale(100%);
     }
     .scroll-logo.m-icon{
         display: none;
@@ -2869,15 +2869,12 @@ header.colophon{
           padding-top: 11px;
           
           .m-icon{
-              display: none;
+             display: none;
           }
           .scroll-logo.m-icon{
               display: block;
               width: 30px;
               height: 40px;
-
-              -webkit-filter: grayscale(100%);
-              filter: grayscale(100%);
           }
           
         }
