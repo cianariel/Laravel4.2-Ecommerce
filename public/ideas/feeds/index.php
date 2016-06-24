@@ -105,7 +105,20 @@ $args = array(
 'offset' => $offset,);
 
 if($catName = $_REQUEST['category-name']){
-    $args['category_name'] = $catName;
+
+    $args['tax_query'] = array(
+        'relation' => 'OR',
+        array(
+            'taxonomy' => 'post_tag',
+            'field' => 'slug',
+            'terms' => $catName,
+        ),
+        array(
+            'taxonomy' => 'category',
+            'field' => 'slug',
+            'terms' => $catName,
+        ));
+
 }
 
 if($byTags = $_REQUEST['tag']){
