@@ -85,18 +85,9 @@ if (!isset($theGiveAway)) {
 
                         <div class="col-xs-2 text-center logo-holder">
                             <a id="ideaing-logo" class="center-block hidden-xs" href="/">
-                                <i class="m-icon m-icon--logo-without-text-blue">
-                                    <span class="path1"></span><span class="path2"></span><span
-                                            class="path3"></span><span class="path4"></span><span
-                                            class="path5"></span><span class="path6"></span><span
-                                            class="path7"></span><span class="path8"></span><span
-                                            class="path9"></span><span class="path10"></span><span
-                                            class="path11"></span><span class="path12"></span><span
-                                            class="path13"></span><span class="path14"></span><span
-                                            class="path15"></span><span class="path16"></span><span
-                                            class="path17"></span><span class="path18"></span>
-                                </i>
-                                <!--                                    <img src="/assets/images/logo.png" class="img-responsive " alt="">-->
+                               <span class="m-icon m-icon--logo-with-text-black-blue" style="font-size: 42px">
+                <span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span><span class="path6"></span><span class="path7"></span><span class="path8"></span><span class="path9"></span><span class="path10"></span><span class="path11"></span><span class="path12"></span><span class="path13"></span><span class="path14"></span><span class="path15"></span><span class="path16"></span><span class="path17"></span><span class="path18"></span><span class="path19"></span><span class="path20"></span><span class="path21"></span><span class="path22"></span><span class="path23"></span><span class="path24"></span><span class="path25"></span><span class="path26"></span><span class="path27"></span><span class="path28"></span><span class="path29"></span><span class="path30"></span><span class="path31"></span><span class="path32"></span><span class="path33"></span><span class="path34"></span><span class="path35"></span><span class="path36"></span><span class="path37"></span><span class="path38"></span><span class="path39"></span><span class="path40"></span>
+                </span>
                                 <i class="m-icon m-icon--bulb2 scroll-logo">
                                     <span class="path1"></span><span class="path2"></span><span
                                             class="path3"></span><span class="path4"></span><span
@@ -104,18 +95,9 @@ if (!isset($theGiveAway)) {
                                             class="path7"></span><span class="path8"></span><span
                                             class="path9"></span><span class="path10"></span>
                                 </i>
-                                <i class="m-icon m-icon--logo-without-text-red">
-                                    <span class="path1"></span><span class="path2"></span><span
-                                            class="path3"></span><span class="path4"></span><span
-                                            class="path5"></span><span class="path6"></span><span
-                                            class="path7"></span><span class="path8"></span><span
-                                            class="path9"></span><span class="path10"></span><span
-                                            class="path11"></span><span class="path12"></span><span
-                                            class="path13"></span><span class="path14"></span><span
-                                            class="path15"></span><span class="path16"></span><span
-                                            class="path17"></span><span class="path18"></span>
-                                </i>
-                                <!--                                    <img src="/assets/images/logo-hover.png" class="img-responsive " alt="">-->
+                                <span class="m-icon m-icon--logo-with-text-red">
+                                    <span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span><span class="path6"></span><span class="path7"></span><span class="path8"></span><span class="path9"></span><span class="path10"></span><span class="path11"></span><span class="path12"></span><span class="path13"></span><span class="path14"></span><span class="path15"></span><span class="path16"></span><span class="path17"></span><span class="path18"></span><span class="path19"></span><span class="path20"></span><span class="path21"></span><span class="path22"></span><span class="path23"></span><span class="path24"></span><span class="path25"></span><span class="path26"></span><span class="path27"></span><span class="path28"></span><span class="path29"></span><span class="path30"></span><span class="path31"></span><span class="path32"></span><span class="path33"></span><span class="path34"></span><span class="path35"></span><span class="path36"></span><span class="path37"></span><span class="path38"></span><span class="path39"></span><span class="path40"></span>
+                                </span>
                             </a>
                             <a id="ideaing-logo" class="center-block visible-xs" href="/">
                                 <i class="m-icon m-icon--bulb2">

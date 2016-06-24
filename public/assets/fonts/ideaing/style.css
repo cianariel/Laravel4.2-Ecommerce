@@ -1,10 +1,10 @@
 @font-face {
     font-family: 'ideaing';
-    src:    url('fonts/ideaing.eot?f5fqdo');
-    src:    url('fonts/ideaing.eot?f5fqdo#iefix') format('embedded-opentype'),
-        url('fonts/ideaing.ttf?f5fqdo') format('truetype'),
-        url('fonts/ideaing.woff?f5fqdo') format('woff'),
-        url('fonts/ideaing.svg?f5fqdo#ideaing') format('svg');
+    src:    url('fonts/ideaing.eot?t6is8t');
+    src:    url('fonts/ideaing.eot?t6is8t#iefix') format('embedded-opentype'),
+        url('fonts/ideaing.ttf?t6is8t') format('truetype'),
+        url('fonts/ideaing.woff?t6is8t') format('woff'),
+        url('fonts/ideaing.svg?t6is8t#ideaing') format('svg');
     font-weight: normal;
     font-style: normal;
 }
@@ -24,6 +24,205 @@
     -moz-osx-font-smoothing: grayscale;
 }
 
+.m-icon--logo-with-text-black-blue .path1:before {
+    content: "\e96d";
+    color: rgb(234, 35, 72);
+}
+.m-icon--logo-with-text-black-blue .path2:before {
+    content: "\e96e";
+    margin-left: -3.673828125em;
+    color: rgb(234, 35, 72);
+}
+.m-icon--logo-with-text-black-blue .path3:before {
+    content: "\e96f";
+    margin-left: -3.673828125em;
+    color: rgb(234, 35, 72);
+}
+.m-icon--logo-with-text-black-blue .path4:before {
+    content: "\e970";
+    margin-left: -3.673828125em;
+    color: rgb(234, 35, 72);
+}
+.m-icon--logo-with-text-black-blue .path5:before {
+    content: "\e971";
+    margin-left: -3.673828125em;
+    color: rgb(234, 35, 72);
+}
+.m-icon--logo-with-text-black-blue .path6:before {
+    content: "\e972";
+    margin-left: -3.673828125em;
+    color: rgb(234, 35, 72);
+}
+.m-icon--logo-with-text-black-blue .path7:before {
+    content: "\e973";
+    margin-left: -3.673828125em;
+    color: rgb(234, 35, 72);
+}
+.m-icon--logo-with-text-black-blue .path8:before {
+    content: "\e974";
+    margin-left: -3.673828125em;
+    color: rgb(68, 137, 201);
+}
+.m-icon--logo-with-text-black-blue .path9:before {
+    content: "\e975";
+    margin-left: -3.673828125em;
+    color: rgb(135, 201, 127);
+}
+.m-icon--logo-with-text-black-blue .path10:before {
+    content: "\e976";
+    margin-left: -3.673828125em;
+    color: rgb(240, 90, 37);
+}
+.m-icon--logo-with-text-black-blue .path11:before {
+    content: "\e977";
+    margin-left: -3.673828125em;
+    color: rgb(30, 39, 40);
+}
+.m-icon--logo-with-text-black-blue .path12:before {
+    content: "\e978";
+    margin-left: -3.673828125em;
+    color: rgb(30, 39, 40);
+}
+.m-icon--logo-with-text-black-blue .path13:before {
+    content: "\e979";
+    margin-left: -3.673828125em;
+    color: rgb(30, 39, 40);
+}
+.m-icon--logo-with-text-black-blue .path14:before {
+    content: "\e97a";
+    margin-left: -3.673828125em;
+    color: rgb(30, 39, 40);
+}
+.m-icon--logo-with-text-black-blue .path15:before {
+    content: "\e97b";
+    margin-left: -3.673828125em;
+    color: rgb(68, 137, 201);
+}
+.m-icon--logo-with-text-black-blue .path16:before {
+    content: "\e97c";
+    margin-left: -3.673828125em;
+    color: rgb(68, 137, 201);
+}
+.m-icon--logo-with-text-black-blue .path17:before {
+    content: "\e97d";
+    margin-left: -3.673828125em;
+    color: rgb(68, 137, 201);
+}
+.m-icon--logo-with-text-black-blue .path18:before {
+    content: "\e97e";
+    margin-left: -3.673828125em;
+    color: rgb(68, 137, 201);
+}
+.m-icon--logo-with-text-black-blue .path19:before {
+    content: "\e97f";
+    margin-left: -3.673828125em;
+    color: rgb(68, 137, 201);
+}
+.m-icon--logo-with-text-black-blue .path20:before {
+    content: "\e980";
+    margin-left: -3.673828125em;
+    color: rgb(31, 39, 40);
+}
+.m-icon--logo-with-text-black-blue .path21:before {
+    content: "\e981";
+    margin-left: -3.673828125em;
+    color: rgb(31, 39, 40);
+}
+.m-icon--logo-with-text-black-blue .path22:before {
+    content: "\e982";
+    margin-left: -3.673828125em;
+    color: rgb(31, 39, 40);
+}
+.m-icon--logo-with-text-black-blue .path23:before {
+    content: "\e983";
+    margin-left: -3.673828125em;
+    color: rgb(31, 39, 40);
+}
+.m-icon--logo-with-text-black-blue .path24:before {
+    content: "\e984";
+    margin-left: -3.673828125em;
+    color: rgb(31, 39, 40);
+}
+.m-icon--logo-with-text-black-blue .path25:before {
+    content: "\e985";
+    margin-left: -3.673828125em;
+    color: rgb(31, 39, 40);
+}
+.m-icon--logo-with-text-black-blue .path26:before {
+    content: "\e986";
+    margin-left: -3.673828125em;
+    color: rgb(31, 39, 40);
+}
+.m-icon--logo-with-text-black-blue .path27:before {
+    content: "\e987";
+    margin-left: -3.673828125em;
+    color: rgb(31, 39, 40);
+}
+.m-icon--logo-with-text-black-blue .path28:before {
+    content: "\e988";
+    margin-left: -3.673828125em;
+    color: rgb(31, 39, 40);
+}
+.m-icon--logo-with-text-black-blue .path29:before {
+    content: "\e989";
+    margin-left: -3.673828125em;
+    color: rgb(31, 39, 40);
+}
+.m-icon--logo-with-text-black-blue .path30:before {
+    content: "\e98a";
+    margin-left: -3.673828125em;
+    color: rgb(31, 39, 40);
+}
+.m-icon--logo-with-text-black-blue .path31:before {
+    content: "\e98b";
+    margin-left: -3.673828125em;
+    color: rgb(31, 39, 40);
+}
+.m-icon--logo-with-text-black-blue .path32:before {
+    content: "\e98c";
+    margin-left: -3.673828125em;
+    color: rgb(31, 39, 40);
+}
+.m-icon--logo-with-text-black-blue .path33:before {
+    content: "\e98d";
+    margin-left: -3.673828125em;
+    color: rgb(31, 39, 40);
+}
+.m-icon--logo-with-text-black-blue .path34:before {
+    content: "\e98e";
+    margin-left: -3.673828125em;
+    color: rgb(31, 39, 40);
+}
+.m-icon--logo-with-text-black-blue .path35:before {
+    content: "\e98f";
+    margin-left: -3.673828125em;
+    color: rgb(31, 39, 40);
+}
+.m-icon--logo-with-text-black-blue .path36:before {
+    content: "\e990";
+    margin-left: -3.673828125em;
+    color: rgb(31, 39, 40);
+}
+.m-icon--logo-with-text-black-blue .path37:before {
+    content: "\e991";
+    margin-left: -3.673828125em;
+    color: rgb(31, 39, 40);
+}
+.m-icon--logo-with-text-black-blue .path38:before {
+    content: "\ea6a";
+    margin-left: -3.673828125em;
+    color: rgb(31, 39, 40);
+}
+.m-icon--logo-with-text-black-blue .path39:before {
+    content: "\ea6b";
+    margin-left: -3.673828125em;
+    color: rgb(31, 39, 40);
+}
+.m-icon--logo-with-text-black-blue .path40:before {
+    content: "\ea6c";
+    margin-left: -3.673828125em;
+    color: rgb(31, 39, 40);
+}
 .m-icon--giveaway:before {
     content: "\e96c";
 }
