@@ -5718,7 +5718,9 @@ body.contactus-page #hero {
   #ideaing-logo:hover > .m-icon:first-child {
     display: none; }
   #ideaing-logo:hover > .m-icon:last-child {
-    display: block; }
+    display: block;
+    -webkit-filter: none;
+    filter: none; }
 
 .login-signup-modal a.logo .m-icon:first-child {
   display: block; }
