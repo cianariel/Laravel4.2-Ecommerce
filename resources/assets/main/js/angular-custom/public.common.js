@@ -1463,6 +1463,7 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
 
                 $scope.notificationCounter = data.data.NotReadNoticeCount;
                 $scope.notifications = data.data.NoticeNotRead;
+                console.log($scope.notifications)
 
             });
         };
