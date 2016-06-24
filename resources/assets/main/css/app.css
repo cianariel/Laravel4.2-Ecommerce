@@ -4557,6 +4557,10 @@ ul.pointed li:before {
   color: #FF0042;
   /* or whatever color you prefer */ }
 
+body.homepage #ideaing-logo .m-icon {
+  filter: none !important;
+  -webkit-filter: none !important; }
+
 .faux-lines {
   position: relative;
   background-color: #F2F5F5 !important; }
@@ -5704,7 +5708,9 @@ body.contactus-page #hero {
   /*  margin-left: 30px;*/ }
   #ideaing-logo .m-icon {
     /*        display: none;*/
-    font-size: 42px; }
+    font-size: 42px;
+    filter: grayscale(100%);
+    -webkit-filter: grayscale(100%); }
   #ideaing-logo .scroll-logo.m-icon {
     display: none; }
   #ideaing-logo .m-icon:first-child {
@@ -6902,7 +6908,6 @@ header.colophon {
   #top-nav {
     max-height: 60px; } }
 
-body.homepage #top-nav .ideas,
 body.shop-landing #top-nav .shop,
 body.product-details #top-nav .shop,
 body.shop-category #top-nav .shop,
@@ -6911,7 +6916,6 @@ html.idea-stories #top-nav .ideas,
 .room-landing #top-nav a.ideas {
   position: relative;
   color: #00B1FF; }
-  body.homepage #top-nav .ideas .box-link-active-line,
   body.shop-landing #top-nav .shop .box-link-active-line,
   body.product-details #top-nav .shop .box-link-active-line,
   body.shop-category #top-nav .shop .box-link-active-line,
