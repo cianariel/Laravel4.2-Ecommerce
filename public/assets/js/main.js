@@ -5683,7 +5683,7 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
             $scope.currentTag = $filter('getURISegment')(3);
         }else if($route == 'ideas'){
             $scope.filterBy = 'idea';
-            if($filter('getURISegment')(3) == 'category'){
+            if($filter('getURISegment')(3) == 'category' ||  $filter('getURISegment')(3) == 'tag'){
                 $scope.ideaCategory = $filter('getURISegment')(4);
             }else{
                 $scope.ideaCategory = $filter('getURISegment')(3);

@@ -1,19 +1,65 @@
-<?php get_header(); ?>
+@include('header')
 
-	<main role="main">
-		<!-- section -->
-		<section>
+<?php
+$categories = get_categories();
+$currentCat = get_the_category();
 
-			<h1><?php _e( 'Tag Archive: ', 'html5blank' ); echo single_tag_title('', false); ?></h1>
+$cat = get_category( get_query_var( 'cat' ) );
+$currentCat = $cat->slug;
 
-			<?php get_template_part('loop'); ?>
+?>
+<nav class="mid-nav" >
+    <div class="container full-sm fixed-sm">
+    </div>
+    @if($currentCat == 'deals')
+    <ul class="wrap shop-landing-submenu">
+        <li class="box-link-ul ">
+            <a class="box-link " href="/shop/smart-home">
+                SMART HOME
+            </a>
+        </li>
+        <li class="box-link-ul ">
+            <a class="box-link " href="/shop/active">
+                ACTIVE
+            </a>
+        </li>
+        <li class="box-link-ul ">
+            <a class="box-link " href="/shop/wearables">
+                WEARABLES
+            </a>
+        </li>
+        <li class="box-link-ul ">
+            <a class="box-link " href="/shop/home-decor">
+                HOME & DECOR
+            </a>
+        </li>
+        <li class="box-link-ul hidden-xs">
+            <a class="box-link active" href="/ideas/deals">
+                DEALS
+            </a>
+        </li>
+    </ul>
 
-			<?php get_template_part('pagination'); ?>
+    @else
+    <?php get_template_part('ideas-menu'); ?>
+    @endif
 
-		</section>
-		<!-- /section -->
-	</main>
 
-<?php get_sidebar(); ?>
+    </div>
+</nav>
+<div style="padding-top: 50px" class="app-wrap" id="pagingApp" ng-app="pagingApp" ng-controller="pagingController" ng-cloak>
+    <nav id="hero-nav" class="col-sm-12">
+
+    </nav>
+    <div class="clearfix"></div>
+    <div class="homepage-grid center-block" style="min-height:1000px">
+        <div class="loader loader-abs" cg-busy="firstLoad"></div>
+        <?php include('/var/www/ideaing/resources/views/grid/grid.blade.php') ?>
+    </div>
+    <?php loadLaravelView('load-more'); ?>
+</div>
 
 <?php get_footer(); ?>
+
+
+

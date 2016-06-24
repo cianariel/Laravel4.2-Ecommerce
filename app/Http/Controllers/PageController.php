@@ -189,16 +189,12 @@ class PageController extends ApiController
 
         $cacheKey = "grid-content-$page-$limit-$tag-$type-$ideaCategory";
 
-       // print_r($cacheKey); die();
-
-
-          if($cachedContent = PageHelper::getFromRedis($cacheKey)){
-            $return = $cachedContent;
-            $return->fromCache = true;
-            $return->cacheKey = $cacheKey;
-            return json_encode($return);
-       	  }	
-
+//          if($cachedContent = PageHelper::getFromRedis($cacheKey)){
+//            $return = $cachedContent;
+//            $return->fromCache = true;
+//            $return->cacheKey = $cacheKey;
+//            return json_encode($return);
+//       	  }
 
         if ($tag && $tag !== 'undefined' && $tag != 'false' && $tag != '') {
             $tagID = Tag::where('tag_name', $tag)->lists('id')->toArray();
