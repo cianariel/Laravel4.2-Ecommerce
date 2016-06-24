@@ -1080,19 +1080,19 @@ nav {
 
 
 }
-body{
-  &.homepage,
-  &.home,
-  &.single,
-  &.archive,
-  &.idea-stories{
-    #ideaing-logo .m-icon{
-      filter: none !important;
-      -webkit-filter: none  !important;
-    }
-  }
-
-}
+//body{
+//  &.homepage,
+//  &.home,
+//  &.single,
+//  &.archive,
+//  &.idea-stories{
+//    #ideaing-logo .m-icon{
+//      filter: none !important;
+//      -webkit-filter: none  !important;
+//    }
+//  }
+//
+//}
 body.tag-deal{
   #hero.details-hero{
     h1{ 
@@ -1503,14 +1503,20 @@ body.contactus-page
         display: none;
     }
     
-    &:hover > .m-icon:first-child{
-        display: none;
-    }
-    &:hover > .m-icon:last-child{
-        display: block;
+    &:hover > .m-icon{
       -webkit-filter: none;
       filter: none;
+
+      &:first-child{
+        display: none;
+      }
+      &:last-child{
+        display: block;
+      }
     }
+
+
+
 
 }
 
@@ -3396,7 +3402,7 @@ box-shadow: -1px -1px 20px -7px rgba(0,0,0,0.75);
 
 }
 
-body.homepage #top-nav .ideas,
+//body.homepage #top-nav .ideas,
 body.shop-landing #top-nav .shop,
 body.product-details #top-nav  .shop,
 body.shop-category #top-nav  .shop,

@@ -1460,10 +1460,9 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                 url: '/api/notification/' + uid + '/' + limit,
                 method: "GET",
             }).success(function (data) {
-
                 $scope.notificationCounter = data.data.NotReadNoticeCount;
                 $scope.notifications = data.data.NoticeNotRead;
-
+                console.log($scope.notifications);
             });
         };
 
