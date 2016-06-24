@@ -1080,19 +1080,7 @@ nav {
 
 
 }
-body{
-  &.homepage,
-  &.home,
-  &.single,
-  &.archive,
-  &.idea-stories{
-    #ideaing-logo .m-icon{
-      filter: none !important;
-      -webkit-filter: none  !important;
-    }
-  }
 
-}
 body.tag-deal{
   #hero.details-hero{
     h1{ 
@@ -1100,7 +1088,6 @@ body.tag-deal{
       }
   }
 }
-
 
 body.single,
 body.product-details,
@@ -1488,10 +1475,10 @@ body.contactus-page
   padding: 9px;
   max-width: 100%;
   margin-top: 0px;
+/*  margin-left: 30px;*/
     .m-icon{
-      font-size: 42px;
-      -webkit-filter: grayscale(100%);
-      filter: grayscale(100%);
+/*        display: none;*/
+        font-size: 42px;
     }
     .scroll-logo.m-icon{
         display: none;
@@ -1508,8 +1495,6 @@ body.contactus-page
     }
     &:hover > .m-icon:last-child{
         display: block;
-      -webkit-filter: none;
-      filter: none;
     }
 
 }
@@ -2745,10 +2730,7 @@ article.product{
     }
 }
 
-
-
 // LAYOUT
-
 
 .layout-controls{
   display: none; // TEMP
@@ -2823,7 +2805,7 @@ header.colophon{
     }
 
 
-
+    
     #top-nav {
       position: fixed;
       top: 0;
@@ -2871,20 +2853,19 @@ header.colophon{
           padding-top: 11px;
           
           .m-icon{
-             display: none;
+              display: none;
           }
           .scroll-logo.m-icon{
               display: block;
               width: 30px;
               height: 40px;
+
           }
           
         }
       }
 
     }
-
-
 
     & + header.sub-head .shop-menu{
       position: fixed;
@@ -3180,11 +3161,11 @@ header.colophon{
                 .notification-item{
                     border-bottom: 1px solid #f3f6f6;
                     padding: 15px;
-                    &:first-child{
+                    &.read-0{ 
                         color: $iridium !important;
                          a{
                             color: $iridium !important;
-                         }
+                          }
                     }
                     &:last-child{
                         border-bottom: 0px;
