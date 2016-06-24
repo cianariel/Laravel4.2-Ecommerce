@@ -189,7 +189,8 @@ if (!isset($theGiveAway)) {
                                             <div class="notification-item" ng-repeat="notice in notifications">
                                                 <img width="40px" ng-src="<?php echo '{{ notice.UserPicture }}' ?>"
                                                      class="profile-photo pull-left">
-                                                <div class="notification-row-content">
+
+                                                <div class="notification-row-content read-<?php echo '{{ notice.NoticeRead }}' ?>">
                                                     <div><strong><?php echo '{{ notice.UserName }}' ?></strong>
                                                         <div ng-switch="notice.Section">
                                                             <div ng-switch-when="ideas-heart">Liked</div>
