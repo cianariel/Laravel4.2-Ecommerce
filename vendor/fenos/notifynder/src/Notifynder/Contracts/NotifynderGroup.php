@@ -1,64 +1,63 @@
-<?php namespace Fenos\Notifynder\Contracts;
+<?php
+
+namespace Fenos\Notifynder\Contracts;
 
 use InvalidArgumentException;
 
 /**
- * Class NotifynderGroup
- *
- * @package Fenos\Notifynder\Groups
+ * Class NotifynderGroup.
  */
 interface NotifynderGroup
 {
-
     /**
-     * Find a group by id
+     * Find a group by id.
      *
-     * @param $group_id
+     * @param $groupId
      * @return \Illuminate\Database\Eloquent\Collection|\Illuminate\Database\Eloquent\Model|static
      * @throws \Fenos\Notifynder\Exceptions\NotifynderGroupNotFoundException
      */
-    public function findById($group_id);
+    public function findById($groupId);
 
     /**
-     * Find a group By name
+     * Find a group By name.
      *
-     * @param $group_name
+     * @param $groupName
      * @return mixed
      * @throws \Fenos\Notifynder\Exceptions\NotifynderGroupNotFoundException
      */
-    public function findByName($group_name);
+    public function findByName($groupName);
 
     /**
      * Add category to a group
-     * giving the ids of them
+     * giving the ids of them.
      *
-     * @param $gorup_id
-     * @param $category_id
+     * @param $groupId
+     * @param $categoryId
      * @return mixed
      */
-    public function addCategoryToGroupById($gorup_id, $category_id);
+    public function addCategoryToGroupById($groupId, $categoryId);
 
     /**
      * Add category to a group
-     * giving the ids of them
+     * giving the ids of them.
      *
-     * @param $gorup_name
-     * @param $category_name
+     * @param $groupName
+     * @param $categoryName
      * @return mixed
      */
-    public function addCategoryToGroupByName($gorup_name, $category_name);
+    public function addCategoryToGroupByName($groupName, $categoryName);
 
     /**
      * Add Multiple categories in a group
      * First parameter is the group name
-     * all the rest are categories
+     * all the rest are categories.
      *
      * @return mixed
      */
     public function addMultipleCategoriesToGroup();
 
     /**
-     * Add a group in the db
+     * Add a group in the db.
      *
      * @param $name
      * @throws InvalidArgumentException

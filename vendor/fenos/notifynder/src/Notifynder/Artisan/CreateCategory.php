@@ -1,4 +1,6 @@
-<?php namespace Fenos\Notifynder\Artisan;
+<?php
+
+namespace Fenos\Notifynder\Artisan;
 
 use Fenos\Notifynder\Contracts\NotifynderCategory;
 use Illuminate\Console\Command;
@@ -6,7 +8,6 @@ use Symfony\Component\Console\Input\InputArgument;
 
 class CreateCategory extends Command
 {
-
     /**
      * The console command name.
      *
@@ -22,7 +23,7 @@ class CreateCategory extends Command
     protected $description = 'Create and store a new notifynder category';
 
     /**
-     * @var \Fenos\Notifynder\Categories\NotifynderCategory
+     * @var \\Fenos\Notifynder\Contracts\NotifynderCategory
      */
     private $notifynderCategory;
 
@@ -51,11 +52,13 @@ class CreateCategory extends Command
 
         $createCategory = $this->notifynderCategory->add($name, $text);
 
-        if ($createCategory) {
-            $this->info("Category $createCategory->name has been created");
-        } else {
+        if (! $createCategory) {
             $this->error('The category has been not created');
+
+            return false;
         }
+
+        $this->info("Category $createCategory->name has been created");
     }
 
     /**
@@ -65,9 +68,9 @@ class CreateCategory extends Command
      */
     protected function getArguments()
     {
-        return array(
-            array('name', InputArgument::REQUIRED, 'Name of the category.'),
-            array('text', InputArgument::REQUIRED, 'Text of the category.'),
-        );
+        return [
+            ['name', InputArgument::REQUIRED, 'Name of the category.'],
+            ['text', InputArgument::REQUIRED, 'Text of the category.'],
+        ];
     }
 }

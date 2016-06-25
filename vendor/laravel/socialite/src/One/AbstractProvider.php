@@ -13,22 +13,22 @@ abstract class AbstractProvider implements ProviderContract
     /**
      * The HTTP request instance.
      *
-     * @var Request
+     * @var \Illuminate\Http\Request
      */
     protected $request;
 
     /**
      * The OAuth server implementation.
      *
-     * @var Server
+     * @var \League\OAuth1\Client\Server\Server
      */
     protected $server;
 
     /**
      * Create a new provider instance.
      *
-     * @param  Request  $request
-     * @param  Server  $server
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \League\OAuth1\Client\Server\Server  $server
      * @return void
      */
     public function __construct(Request $request, Server $server)
@@ -44,7 +44,7 @@ abstract class AbstractProvider implements ProviderContract
      */
     public function redirect()
     {
-        $this->request->getSession()->set(
+        $this->request->session()->set(
             'oauth.temp', $temp = $this->server->getTemporaryCredentials()
         );
 
@@ -81,7 +81,7 @@ abstract class AbstractProvider implements ProviderContract
      */
     protected function getToken()
     {
-        $temp = $this->request->getSession()->get('oauth.temp');
+        $temp = $this->request->session()->get('oauth.temp');
 
         return $this->server->getTokenCredentials(
             $temp, $this->request->get('oauth_token'), $this->request->get('oauth_verifier')
@@ -101,7 +101,7 @@ abstract class AbstractProvider implements ProviderContract
     /**
      * Set the request instance.
      *
-     * @param  Request  $request
+     * @param  \Illuminate\Http\Request  $request
      * @return $this
      */
     public function setRequest(Request $request)
