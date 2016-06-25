@@ -845,6 +845,16 @@ class PageController extends ApiController
         } else {
             $alreadyIn = false;
         }
+
+        $timeLeft = strtotime($giveaway->ends) - time();
+
+        $dtF = new \DateTime('@0');
+        $dtT = new \DateTime("@$timeLeft");
+        $giveaway->timeLeft = $dtF->diff($dtT)->format('%a days, %h hours and %i minutes');
+
+//        $giveaway->timeLeft = date('D days H hours M minutes', $timeLeft);
+
+
         // dd($giveaway);
         MetaTag::set('title', $heading);
         MetaTag::set('description', $giveaway->giveaway_meta_desc ?: $giveaway->giveaway_desc);
