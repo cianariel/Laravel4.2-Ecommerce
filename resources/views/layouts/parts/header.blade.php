@@ -107,14 +107,14 @@ if (!isset($theGiveAway)) {
                                 </span>
                             </a>
                             <a id="ideaing-logo" class="center-block visible-xs" href="/">
-                                <i class="m-icon m-icon--bulb2">
+                                <i class="m-icon m-icon--bulb2 scroll-logo default-logo">
                                     <span class="path1"></span><span class="path2"></span><span
                                             class="path3"></span><span class="path4"></span><span
                                             class="path5"></span><span class="path6"></span><span
                                             class="path7"></span><span class="path8"></span><span
                                             class="path9"></span><span class="path10"></span>
                                 </i>
-                                <i class="m-icon m-icon--bulb2 scroll-logo">
+                                <i class="m-icon m-icon--bulb2 scroll-logo red-logo">
                                     <span class="path1"></span><span class="path2"></span><span
                                             class="path3"></span><span class="path4"></span><span
                                             class="path5"></span><span class="path6"></span><span
