@@ -1,4 +1,6 @@
-<?php namespace Fenos\Notifynder;
+<?php
+
+namespace Fenos\Notifynder;
 
 use Fenos\Notifynder\Artisan\CreateCategory;
 use Fenos\Notifynder\Artisan\DeleteCategory;
@@ -38,9 +40,8 @@ use Illuminate\Support\ServiceProvider;
 
 class NotifynderServiceProvider extends ServiceProvider
 {
-
     /**
-     * Register Bindings
+     * Register Bindings.
      */
     public function register()
     {
@@ -66,7 +67,7 @@ class NotifynderServiceProvider extends ServiceProvider
     }
 
     /**
-     * Bind Notifynder
+     * Bind Notifynder.
      */
     protected function notifynder()
     {
@@ -85,7 +86,7 @@ class NotifynderServiceProvider extends ServiceProvider
     }
 
     /**
-     * Bind Notifynder Categories to IoC
+     * Bind Notifynder Categories to IoC.
      */
     protected function categories()
     {
@@ -95,7 +96,7 @@ class NotifynderServiceProvider extends ServiceProvider
             );
         });
 
-        $this->app->singleton('notifynder.category.repository', function ($app) {
+        $this->app->singleton('notifynder.category.repository', function () {
             return new CategoryRepository(
                 new NotificationCategory()
             );
@@ -103,7 +104,7 @@ class NotifynderServiceProvider extends ServiceProvider
     }
 
     /**
-     * Bind the notifications
+     * Bind the notifications.
      */
     protected function notifications()
     {
@@ -114,12 +115,11 @@ class NotifynderServiceProvider extends ServiceProvider
         });
 
         $this->app->singleton('notifynder.notification.repository', function ($app) {
-
             $notificationModel = $app['config']->get('notifynder.notification_model');
-            $notificationIstance = $app->make($notificationModel);
+            $notificationInstance = $app->make($notificationModel);
 
             return new NotificationRepository(
-                $notificationIstance,
+                $notificationInstance,
                 $app['db']
             );
         });
@@ -127,7 +127,7 @@ class NotifynderServiceProvider extends ServiceProvider
         // Inject configs when model is resolved
         $this->app->resolving(Notification::class, function (Notification $object, $app) {
             $fillable = $app['config']->get('notifynder.additional_fields.fillable', []);
-            $object->fillable(array_merge($object->getFillable(),$fillable));
+            $object->fillable(array_merge($object->getFillable(), $fillable));
         });
 
         // Default store notification
@@ -135,7 +135,7 @@ class NotifynderServiceProvider extends ServiceProvider
     }
 
     /**
-     * Bind Translator
+     * Bind Translator.
      */
     protected function translator()
     {
@@ -154,12 +154,12 @@ class NotifynderServiceProvider extends ServiceProvider
     }
 
     /**
-     * Bind Senders
+     * Bind Senders.
      */
     protected function senders()
     {
         $this->app->singleton('notifynder.sender', function ($app) {
-             return new SenderManager(
+            return new SenderManager(
                  $app['notifynder.sender.factory'],
                  $app['notifynder.store'],
                  $app[Container::class]
@@ -175,7 +175,7 @@ class NotifynderServiceProvider extends ServiceProvider
     }
 
     /**
-     * Bind Dispatcher
+     * Bind Dispatcher.
      */
     protected function events()
     {
@@ -187,7 +187,7 @@ class NotifynderServiceProvider extends ServiceProvider
     }
 
     /**
-     * Bind Groups
+     * Bind Groups.
      */
     protected function groups()
     {
@@ -198,7 +198,7 @@ class NotifynderServiceProvider extends ServiceProvider
             );
         });
 
-        $this->app->singleton('notifynder.group.repository', function ($app) {
+        $this->app->singleton('notifynder.group.repository', function () {
             return new GroupRepository(
                 new NotificationGroup()
             );
@@ -213,7 +213,7 @@ class NotifynderServiceProvider extends ServiceProvider
     }
 
     /**
-     * Bind Builder
+     * Bind Builder.
      */
     protected function builder()
     {
@@ -229,7 +229,7 @@ class NotifynderServiceProvider extends ServiceProvider
     }
 
     /**
-     * Contracts of notifynder
+     * Contracts of notifynder.
      */
     protected function contracts()
     {
@@ -255,7 +255,7 @@ class NotifynderServiceProvider extends ServiceProvider
     }
 
     /**
-     * Publish config files
+     * Publish config files.
      */
     protected function config()
     {
@@ -266,36 +266,42 @@ class NotifynderServiceProvider extends ServiceProvider
         $this->mergeConfigFrom(__DIR__.'/../config/notifynder.php', 'notifynder');
 
         // Set use strict_extra config option,
-        // you can toggle it in the configuraiton file
-        $strictParam = $this->app['config']->get('notifynder.strict_extra',false);
+        // you can toggle it in the configuration file
+        $strictParam = $this->app['config']->get('notifynder.strict_extra', false);
         NotifynderParser::setStrictExtra($strictParam);
     }
 
     /**
-     * Publish migration files
+     * Publish migration files.
      */
     protected function migration()
     {
-        if (!class_exists('NotificationCategories')) {
+        if (! class_exists('NotificationCategories')) {
             $this->publishMigration('2014_02_10_145728_notification_categories');
         }
-        if (!class_exists('CreateNotificationGroupsTable')) {
+        if (! class_exists('CreateNotificationGroupsTable')) {
             $this->publishMigration('2014_08_01_210813_create_notification_groups_table');
         }
-        if (!class_exists('CreateNotificationCategoryNotificationGroupTable')) {
+        if (! class_exists('CreateNotificationCategoryNotificationGroupTable')) {
             $this->publishMigration('2014_08_01_211045_create_notification_category_notification_group_table');
         }
-        if (!class_exists('CreateNotificationsTable')) {
+        if (! class_exists('CreateNotificationsTable')) {
             $this->publishMigration('2015_05_05_212549_create_notifications_table');
         }
-        if (!class_exists('AddExpireTimeColumnToNotificationTable')) {
+        if (! class_exists('AddExpireTimeColumnToNotificationTable')) {
             $this->publishMigration('2015_06_06_211555_add_expire_time_column_to_notification_table');
         }
-        if (!class_exists('ChangeTypeToExtraInNotificationsTable')) {
+        if (! class_exists('ChangeTypeToExtraInNotificationsTable')) {
             $this->publishMigration('2015_06_06_211555_change_type_to_extra_in_notifications_table');
         }
-        if (!class_exists('AlterCategoryNameToUnique')) {
+        if (! class_exists('AlterCategoryNameToUnique')) {
             $this->publishMigration('2015_06_07_211555_alter_category_name_to_unique');
+        }
+        if (! class_exists('MakeNotificationUrlNullable')) {
+            $this->publishMigration('2016_04_19_200827_make_notification_url_nullable');
+        }
+        if (! class_exists('AddStackIdToNotifications')) {
+            $this->publishMigration('2016_05_19_144531_add_stack_id_to_notifications');
         }
     }
 
@@ -317,7 +323,7 @@ class NotifynderServiceProvider extends ServiceProvider
      */
     protected function migrationFilepath($filename)
     {
-        if(function_exists('database_path')) {
+        if (function_exists('database_path')) {
             return database_path('/migrations/'.$filename);
         } else {
             return base_path('/database/migrations/'.$filename);
@@ -325,7 +331,7 @@ class NotifynderServiceProvider extends ServiceProvider
     }
 
     /**
-     * Register Artisan commands
+     * Register Artisan commands.
      */
     protected function artisan()
     {

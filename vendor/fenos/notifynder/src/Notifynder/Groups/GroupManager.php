@@ -1,4 +1,6 @@
-<?php namespace Fenos\Notifynder\Groups;
+<?php
+
+namespace Fenos\Notifynder\Groups;
 
 use Fenos\Notifynder\Contracts\NotifynderGroup;
 use Fenos\Notifynder\Contracts\NotifynderGroupCategoryDB;
@@ -7,13 +9,10 @@ use Fenos\Notifynder\Exceptions\NotifynderGroupNotFoundException;
 use InvalidArgumentException;
 
 /**
- * Class NotifynderGroup
- *
- * @package Fenos\Notifynder\Groups
+ * Class NotifynderGroup.
  */
 class GroupManager implements NotifynderGroup
 {
-
     /**
      * @var NotifynderGroupCategoryDB
      */
@@ -36,18 +35,18 @@ class GroupManager implements NotifynderGroup
     }
 
     /**
-     * Find a group by id
+     * Find a group by id.
      *
-     * @param $group_id
+     * @param $groupId
      * @return \Illuminate\Database\Eloquent\Collection|\Illuminate\Database\Eloquent\Model|static
      * @throws \Fenos\Notifynder\Exceptions\NotifynderGroupNotFoundException
      */
-    public function findById($group_id)
+    public function findById($groupId)
     {
-        $group = $this->groupRepo->find($group_id);
+        $group = $this->groupRepo->find($groupId);
 
         if (is_null($group)) {
-            $error = "Group Not Found";
+            $error = 'Group Not Found';
             throw new NotifynderGroupNotFoundException($error);
         }
 
@@ -55,18 +54,18 @@ class GroupManager implements NotifynderGroup
     }
 
     /**
-     * Find a group By name
+     * Find a group By name.
      *
-     * @param $group_name
+     * @param $groupName
      * @return mixed
      * @throws \Fenos\Notifynder\Exceptions\NotifynderGroupNotFoundException
      */
-    public function findByName($group_name)
+    public function findByName($groupName)
     {
-        $group = $this->groupRepo->findByName($group_name);
+        $group = $this->groupRepo->findByName($groupName);
 
         if (is_null($group)) {
-            $error = "Group Not Found";
+            $error = 'Group Not Found';
             throw new NotifynderGroupNotFoundException($error);
         }
 
@@ -75,34 +74,34 @@ class GroupManager implements NotifynderGroup
 
     /**
      * Add category to a group
-     * giving the ids of them
+     * giving the ids of them.
      *
-     * @param $gorup_id
-     * @param $category_id
+     * @param $groupId
+     * @param $categoryId
      * @return mixed
      */
-    public function addCategoryToGroupById($gorup_id, $category_id)
+    public function addCategoryToGroupById($groupId, $categoryId)
     {
-        return $this->groupCategory->addCategoryToGroupById($gorup_id, $category_id);
+        return $this->groupCategory->addCategoryToGroupById($groupId, $categoryId);
     }
 
     /**
      * Add category to a group
-     * giving the ids of them
+     * giving the ids of them.
      *
-     * @param $gorup_name
-     * @param $category_name
+     * @param $groupName
+     * @param $categoryName
      * @return mixed
      */
-    public function addCategoryToGroupByName($gorup_name, $category_name)
+    public function addCategoryToGroupByName($groupName, $categoryName)
     {
-        return $this->groupCategory->addCategoryToGroupByName($gorup_name, $category_name);
+        return $this->groupCategory->addCategoryToGroupByName($groupName, $categoryName);
     }
 
     /**
      * Add Multiple categories in a group
      * First parameter is the group name
-     * all the rest are categories
+     * all the rest are categories.
      *
      * @return mixed
      */
@@ -111,15 +110,15 @@ class GroupManager implements NotifynderGroup
         $args = func_get_args();
 
         // First parameter is the group name
-        $group_name = array_shift($args);
+        $groupName = array_shift($args);
 
         $names = (is_array($args[0])) ? $args[0] : $args;
 
-        return $this->groupCategory->addMultipleCategoriesToGroup($group_name, $names);
+        return $this->groupCategory->addMultipleCategoriesToGroup($groupName, $names);
     }
 
     /**
-     * Add a group in the db
+     * Add a group in the db.
      *
      * @param $name
      * @throws InvalidArgumentException
@@ -131,12 +130,12 @@ class GroupManager implements NotifynderGroup
             return $this->groupRepo->create($name);
         }
 
-        $error = "The name must be a string with dots as namespaces";
+        $error = 'The name must be a string with dots as namespaces';
         throw new InvalidArgumentException($error);
     }
 
     /**
-     * Check if a string with dots
+     * Check if a string with dots.
      *
      * @param $name
      * @return bool

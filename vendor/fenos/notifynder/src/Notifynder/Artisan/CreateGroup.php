@@ -1,4 +1,6 @@
-<?php namespace Fenos\Notifynder\Artisan;
+<?php
+
+namespace Fenos\Notifynder\Artisan;
 
 use Fenos\Notifynder\Contracts\NotifynderGroup;
 use Illuminate\Console\Command;
@@ -6,7 +8,6 @@ use Symfony\Component\Console\Input\InputArgument;
 
 class CreateGroup extends Command
 {
-
     /**
      * The console command name.
      *
@@ -47,11 +48,12 @@ class CreateGroup extends Command
     {
         $nameGroup = $this->argument('name');
 
-        if ($this->notifynderGroup->addGroup($nameGroup)) {
-            $this->info("Group {$nameGroup} has Been created");
-        } else {
+        if (! $this->notifynderGroup->addGroup($nameGroup)) {
             $this->error('The name must be a string with dots as namespaces');
+
+            return false;
         }
+        $this->info("Group {$nameGroup} has Been created");
     }
 
     /**
@@ -61,8 +63,8 @@ class CreateGroup extends Command
      */
     protected function getArguments()
     {
-        return array(
-            array('name', InputArgument::REQUIRED, 'user.post.add'),
-        );
+        return [
+            ['name', InputArgument::REQUIRED, 'user.post.add'],
+        ];
     }
 }

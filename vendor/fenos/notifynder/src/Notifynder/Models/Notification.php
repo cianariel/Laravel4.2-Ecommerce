@@ -1,15 +1,17 @@
-<?php namespace Fenos\Notifynder\Models;
+<?php
+
+namespace Fenos\Notifynder\Models;
 
 use Fenos\Notifynder\Notifications\ExtraParams;
 use Fenos\Notifynder\Parsers\NotifynderParser;
-use Illuminate\Contracts\Config\Repository;
 use Illuminate\Contracts\Container\Container;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Carbon\Carbon;
 use Illuminate\Support\Arr;
 
 /**
- * Class Notification
+ * Class Notification.
  *
  * @property int to_id
  * @property string to_type
@@ -25,18 +27,23 @@ use Illuminate\Support\Arr;
  *
  * @method wherePolymorphic
  * @method withNotRead
- *
- * @package Fenos\Notifynder\Models
  */
 class Notification extends Model
 {
-
     /**
      * @var array
      */
     protected $fillable = [
-        'to_id','to_type','from_id','from_type',
-        'category_id','read','url','extra', 'expire_time',
+        'to_id',
+        'to_type',
+        'from_id',
+        'from_type',
+        'category_id',
+        'read',
+        'url',
+        'extra',
+        'expire_time',
+        'stack_id',
     ];
 
     /**
@@ -53,12 +60,12 @@ class Notification extends Model
     }
 
     /**
-     * Custom Collection
+     * Custom Collection.
      *
      * @param  array                                                         $models
      * @return NotifynderCollection|\Illuminate\Database\Eloquent\Collection
      */
-    public function newCollection(array $models = array())
+    public function newCollection(array $models = [])
     {
         return new NotifynderCollection($models);
     }
@@ -77,13 +84,13 @@ class Notification extends Model
     public function from()
     {
         // check if on the configurations file there is the option
-        // polymorphic setted to true, if so Notifynder will work
+        // polymorphic set to true, if so Notifynder will work
         // polymorphic.
         if (config('notifynder.polymorphic') == false) {
             return $this->belongsTo(config('notifynder.model'), 'from_id');
-        } else {
-            return $this->morphTo();
         }
+
+        return $this->morphTo();
     }
 
     /**
@@ -92,17 +99,17 @@ class Notification extends Model
     public function to()
     {
         // check if on the configurations file there is the option
-        // polymorphic setted to true, if so Notifynder will work
+        // polymorphic set to true, if so Notifynder will work
         // polymorphic.
         if (config('notifynder.polymorphic') == false) {
             return $this->belongsTo(config('notifynder.model'), 'to_id');
-        } else {
-            return $this->morphTo();
         }
+
+        return $this->morphTo();
     }
 
     /**
-     * Not read scope
+     * Not read scope.
      *
      * @param $query
      * @return mixed
@@ -113,7 +120,7 @@ class Notification extends Model
     }
 
     /**
-     * Only Expired Notification scope
+     * Only Expired Notification scope.
      *
      * @param $query
      * @return mixed
@@ -124,27 +131,27 @@ class Notification extends Model
     }
 
     /**
-     * Where Polymorphic
+     * Where Polymorphic.
      *
      * @param $query
-     * @param $id
+     * @param $toId
      * @param $type
      * @return mixed
      */
-    public function scopeWherePolymorphic($query, $id, $type)
+    public function scopeWherePolymorphic($query, $toId, $type)
     {
         if (! $type or config('notifynder.polymorphic') === false) {
-            return $query->where('to_id', $id);
-        } else {
-            return $query->where('to_id', $id)
-                ->where('to_type', $type);
+            return $query->where('to_id', $toId);
         }
+
+        return $query->where('to_id', $toId)
+            ->where('to_type', $type);
     }
 
     /**
-     * Get parsed body attributes
+     * Get parsed body attributes.
      *
-     * @return mixed
+     * @return string
      */
     public function getNotifyBodyAttribute()
     {
@@ -154,37 +161,50 @@ class Notification extends Model
     }
 
     /**
-     * @param $value
-     * @return mixed|string
+     * Get parsed body attributes.
+     *
+     * @return string
      */
-    public function getExtraAttribute($value)
+    public function getTextAttribute()
     {
-        return new ExtraParams(json_decode($value));
+        return $this->notify_body;
     }
 
     /**
-     * Filter Scope by category
+     * @param $value
+     * @return \Fenos\Notifynder\Notifications\ExtraParams
+     */
+    public function getExtraAttribute($value)
+    {
+        if (! empty($value)) {
+            return new ExtraParams($value);
+        }
+
+        return new ExtraParams([]);
+    }
+
+    /**
+     * Filter Scope by category.
      *
      * @param $query
      * @param $category
      * @return mixed
      */
-    public function scopeByCategory($query,$category)
+    public function scopeByCategory($query, $category)
     {
         if (is_numeric($category)) {
-
-            return $query->where('category_id',$category);
+            return $query->where('category_id', $category);
         }
 
-        return $query->whereHas('body', function($categoryQuery) use ($category) {
-            $categoryQuery->where('name',$category);
+        return $query->whereHas('body', function ($categoryQuery) use ($category) {
+            $categoryQuery->where('name', $category);
         });
     }
 
     /**
      * Get custom required fields from the configs
      * so that we can automatically bind them to the model
-     * fillable property
+     * fillable property.
      *
      * @return mixed
      */
@@ -193,6 +213,7 @@ class Notification extends Model
         if (function_exists('app') && app() instanceof Container) {
             return Arr::flatten(config('notifynder.additional_fields', []));
         }
+
         return [];
     }
 
@@ -204,5 +225,39 @@ class Notification extends Model
         $fillables = array_unique($this->getFillable() + $this->getCustomFillableFields());
 
         return $fillables;
+    }
+
+    /**
+     * Filter Scope by stack.
+     *
+     * @param $query
+     * @param $stackId
+     * @return mixed
+     */
+    public function scopeByStack($query, $stackId)
+    {
+        return $query->where('stack_id', $stackId);
+    }
+
+    /**
+     * Check if this notification is part of a stack.
+     *
+     * @return bool
+     */
+    public function hasStack()
+    {
+        return ! is_null($this->stack_id);
+    }
+
+    /**
+     * Get the full stack of notifications if this has one.
+     *
+     * @return null|Collection
+     */
+    public function getStack()
+    {
+        if ($this->hasStack()) {
+            return static::byStack($this->stack_id)->get();
+        }
     }
 }
