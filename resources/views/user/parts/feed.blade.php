@@ -184,7 +184,7 @@
                                         <div class="col-xs-12">
                                             <br>
                                             <a href="@{{ item.url }}" target="_blank">
-                                                <strong>@{{ item.title }}</strong><br>
+                                                <strong>@{{ renderHTML(item.title) }}</strong><br>
                                                 <div ng-bind-html="item.content"></div>
                                             </a>
                                         </div>

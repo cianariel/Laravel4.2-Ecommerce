@@ -4011,6 +4011,9 @@ publicApp.directive('heartCounterPublic', ['$http', function ($http) {
                 return urlString;
             };
 
+
+
+
             $scope.heartAction = function () {
 
                 // an anonymous will be returned without performing any action.
@@ -4188,6 +4191,12 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
         };
         $scope.textAreaSetup = function ($element) {
             $element.attr('focus-me', 'focus_editor');
+        };
+
+        $scope.renderHTML = function(html_code)
+                {
+                    var decoded = angular.element('<div />').html(html_code).text();
+                    return decoded;
         };
 
 
