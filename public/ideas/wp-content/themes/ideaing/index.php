@@ -10,7 +10,7 @@ $cat_name = $cats[0]->name;
     <div class="container hidden-xs">
         <ul class="wrap col-lg-5">
             <li class="box-link-ul">
-                <a href="/ideas/usage" class="box-link">Usage</a>
+                <a href="/ideas/usage-link" class="box-link">Usage</a>
             </li>
             <li class="box-link-ul">
                 <a href="/ideas/how-to" class="box-link">How To</a>
