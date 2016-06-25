@@ -2,7 +2,7 @@
 $cat = get_category( get_query_var( 'cat' ) );
 $currentCat = $cat->slug;
 ?>
-                <ul class="wrap col-lg-4 col-lg-6">
+                <ul class="wrap col-lg-4 col-md-6">
                      <li class="box-link-ul {{$currentCat}}">
                                 <a href="/ideas/usage-list" class="box-link <?php echo $currentCat == 'usage-list' ? 'active' : '' ?>">Usage</a>
                             </li>
