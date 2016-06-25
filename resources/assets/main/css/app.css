@@ -5705,25 +5705,37 @@ body.contactus-page #hero {
   padding: 9px;
   max-width: 100%;
   margin-top: 0px;
+  transition: all 5s;
   /*  margin-left: 30px;*/ }
   #ideaing-logo .m-icon {
-    /*        display: none;*/
-    font-size: 42px;
-    filter: grayscale(100%);
-    -webkit-filter: grayscale(100%); }
+    position: absolute;
+    left: 0;
+    font-size: 42px; }
+    #ideaing-logo .m-icon.default-logo {
+      filter: grayscale(100%);
+      -webkit-filter: grayscale(100%); }
+    #ideaing-logo .m-icon.red-logo, #ideaing-logo .m-icon.red-scroll-logo {
+      opacity: 0; }
+      #ideaing-logo .m-icon.red-logo.opaque, #ideaing-logo .m-icon.red-scroll-logo.opaque {
+        opacity: 1; }
   #ideaing-logo .scroll-logo.m-icon {
     display: none; }
   #ideaing-logo .m-icon:first-child {
     display: block; }
-  #ideaing-logo .m-icon:last-child {
-    display: none; }
   #ideaing-logo:hover > .m-icon {
     -webkit-filter: none;
     filter: none; }
     #ideaing-logo:hover > .m-icon:first-child {
       display: none; }
     #ideaing-logo:hover > .m-icon:last-child {
-      display: block; }
+      display: block;
+      opacity: 1; }
+
+.message {
+  width: 400px;
+  margin: 0 auto;
+  opacity: 0;
+  text-align: center; }
 
 .login-signup-modal a.logo .m-icon:first-child {
   display: block; }

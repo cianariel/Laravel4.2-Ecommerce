@@ -1483,23 +1483,66 @@ body.contactus-page
   padding: 9px;
   max-width: 100%;
   margin-top: 0px;
+  transition: all 5s;
 /*  margin-left: 30px;*/
     .m-icon{
-/*        display: none;*/
-        font-size: 42px;
-      filter:grayscale(100%);
-      -webkit-filter:grayscale(100%);
+      position: absolute;
+      left: 0;
+      font-size: 42px;
+      &.default-logo{
+        filter:grayscale(100%);
+        -webkit-filter:grayscale(100%);
+      }
+      &.red-logo,
+      &.red-scroll-logo{
+        opacity:0;
+
+        &.opaque{
+          opacity:1;
+
+        }
+      }
     }
     .scroll-logo.m-icon{
         display: none;
     }
     .m-icon:first-child{
         display: block;
+
+
     }
-    .m-icon:last-child{
-        display: none;
-    }
-    
+    .m-icon:last-child {
+      //display: none;
+
+
+
+      //opacity: 0;
+      //
+      ////@-o-keyframes fadeout { /* Opera */
+      ////  from {
+      ////    opacity:1;
+      ////  }
+      ////  to {
+      ////    opacity: 0;
+      ////  }
+      ////}
+      ////@keyframes fadeout {
+      ////  from {
+      ////    opacity:1;
+      ////  }
+      ////  to {
+      ////    opacity:0;
+      ////  }
+      ////}
+      //
+      //opacity: 0;
+      //-webkit-animation: fadeInOut 6s;
+      //animation: fadeInOut 6s;
+
+
+
+      }
+
     &:hover > .m-icon{
       -webkit-filter: none;
       filter: none;
@@ -1509,11 +1552,35 @@ body.contactus-page
       }
       &:last-child{
         display: block;
+        opacity: 1;
       }
     }
 
 }
+//
+//@keyframes fadeInOut {
+//  0% {
+//    opacity: 0;
+//  }
+//  20% {
+//    opacity: 1;
+//  }
+//  64% {
+//    opacity: 1;
+//  }
+//  100% {
+//    opacity: 0;
+//  }
+//}
 
+.message {
+  width: 400px;
+  margin: 0 auto;
+  opacity: 0;
+  text-align: center;
+  //-webkit-animation: fadeInOut 6s;
+  //animation: fadeInOut 6s;
+}
 //#signup-modal{
 //  display: none;
 //}
