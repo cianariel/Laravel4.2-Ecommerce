@@ -5716,8 +5716,8 @@ body.contactus-page #hero {
       -webkit-filter: grayscale(100%); }
     #ideaing-logo .m-icon.red-logo, #ideaing-logo .m-icon.red-scroll-logo {
       opacity: 0; }
-      #ideaing-logo .m-icon.red-logo.opaque, #ideaing-logo .m-icon.red-scroll-logo.opaque {
-        opacity: 1; }
+      #ideaing-logo .m-icon.red-logo:hover, #ideaing-logo .m-icon.red-scroll-logo:hover {
+        opacity: 1 !important; }
   #ideaing-logo .scroll-logo.m-icon {
     display: none; }
   #ideaing-logo .m-icon:first-child {
@@ -11234,6 +11234,16 @@ body.giveaway-page.logged-in .hero-box {
   display: none; }
 body.giveaway-page #hero {
   overflow: hidden; }
+  body.giveaway-page #hero .giveaway-timer {
+    max-width: 450px;
+    padding: 25px;
+    background: rgba(255, 0, 66, 0.6);
+    font-weight: bold;
+    font-size: 2rem;
+    color: #fff;
+    text-align: right;
+    font-weight: 700;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3); }
 @media (max-width: 450px) {
   body.giveaway-page #hero-bg {
     background-position-x: -400px; } }

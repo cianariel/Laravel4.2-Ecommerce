@@ -1477,7 +1477,6 @@ body.contactus-page
 }
 
 #ideaing-logo{
-
   margin-top: 9px;
   margin-left: 0;
   padding: 9px;
@@ -1497,9 +1496,8 @@ body.contactus-page
       &.red-scroll-logo{
         opacity:0;
 
-        &.opaque{
-          opacity:1;
-
+        &:hover{
+          opacity:1 !important;
         }
       }
     }
@@ -10000,6 +9998,19 @@ body.giveaway-page{
   }
   #hero{
     overflow: hidden;
+
+    .giveaway-timer{
+      max-width: 450px;
+      padding: 25px;
+      background: rgba($iridium, .6);
+      font-weight: bold;
+      font-size: 2rem;
+      color: #fff;
+      text-align: right;
+      //text-transform: uppercase;
+      font-weight: 700;
+      text-shadow: 1px 1px 1px rgba(0,0,0,.3);
+    }
   }
   @media (max-width:450px){
     #hero-bg {
