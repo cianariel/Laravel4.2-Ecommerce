@@ -25,12 +25,17 @@
                 </div>
                 <hgroup class="giveaway-banner">
                     <div class="container">
-                        <h3>
+                        <h3 class="hidden-620">
                             Monthly Giveaway
                         </h3>
+
                         <h1>
                             {{$heading}}
                         </h1>
+                        <div class="giveaway-timer pull-right">
+                            ENDS IN:<br/>
+                            <span>{{$giveaway->timeLeft}}</span>
+                        </div>
                     </div>
                 </hgroup>
             </div>
@@ -51,8 +56,7 @@
                     </li>
 
                     @include('layouts.parts.share-buttons')
-                    <li><a class="comment" data-scrollto=".comments" href="#"><i class="m-icon m-icon--comments-id"
-                                                                                 ng-init="getCommentsForIdeas()"></i>
+                    <li><a class="comment" data-scrollto=".comments" href="#"><i class="m-icon m-icon--comments-id" ng-init="getCommentsForIdeas()"></i>
                             <b ng-bind="commentsCount">
                             </b>
                         </a>

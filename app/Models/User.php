@@ -708,7 +708,10 @@ class User extends Model implements AuthenticatableContract,
 
                 $name = explode(" ", $user['name'])[0];
 
-                \Event::fire(new SendNotificationMail($name, $user['email'], $data));
+                // Email count is "0" then no notification will be send.
+                if ($data != 0) {
+                    \Event::fire(new SendNotificationMail($name, $user['email'], $data));
+                }
 
             }
             //  return $data;

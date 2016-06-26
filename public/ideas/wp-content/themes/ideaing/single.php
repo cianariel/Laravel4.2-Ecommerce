@@ -66,7 +66,7 @@
                 @if(empty($mainCategory))
                 <li class="box-link-ul   ">
                     <a href="{{get_site_url()}}" class="box-link active">
-                        Smart Home
+                        Usage
                         <span class="box-link-active-line"></span>
                     </a>
                 </li>
