@@ -5412,8 +5412,7 @@ nav a {
     /*    text-align: center;*/
     color: #fff;
     font-size: 5rem;
-    font-weight: bold;
-    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3); }
+    font-weight: bold; }
   #hero .like-counter {
     overflow: hidden;
     color: #fff;
@@ -5705,25 +5704,37 @@ body.contactus-page #hero {
   padding: 9px;
   max-width: 100%;
   margin-top: 0px;
+  transition: all 5s;
   /*  margin-left: 30px;*/ }
   #ideaing-logo .m-icon {
-    /*        display: none;*/
-    font-size: 42px;
-    filter: grayscale(100%);
-    -webkit-filter: grayscale(100%); }
+    position: absolute;
+    left: 0;
+    font-size: 42px; }
+    #ideaing-logo .m-icon.default-logo {
+      filter: grayscale(100%);
+      -webkit-filter: grayscale(100%); }
+    #ideaing-logo .m-icon.red-logo, #ideaing-logo .m-icon.red-scroll-logo {
+      opacity: 0; }
+      #ideaing-logo .m-icon.red-logo:hover, #ideaing-logo .m-icon.red-scroll-logo:hover {
+        opacity: 1 !important; }
   #ideaing-logo .scroll-logo.m-icon {
     display: none; }
   #ideaing-logo .m-icon:first-child {
     display: block; }
-  #ideaing-logo .m-icon:last-child {
-    display: none; }
   #ideaing-logo:hover > .m-icon {
     -webkit-filter: none;
     filter: none; }
     #ideaing-logo:hover > .m-icon:first-child {
       display: none; }
     #ideaing-logo:hover > .m-icon:last-child {
-      display: block; }
+      display: block;
+      opacity: 1; }
+
+.message {
+  width: 400px;
+  margin: 0 auto;
+  opacity: 0;
+  text-align: center; }
 
 .login-signup-modal a.logo .m-icon:first-child {
   display: block; }
@@ -11222,6 +11233,20 @@ body.giveaway-page.logged-in .hero-box {
   display: none; }
 body.giveaway-page #hero {
   overflow: hidden; }
+  body.giveaway-page #hero .giveaway-timer {
+    max-width: 450px;
+    padding: 10px 25px 0;
+    font-weight: bold;
+    font-size: 2rem;
+    color: #fff;
+    text-align: right;
+    font-weight: 700; }
+    body.giveaway-page #hero .giveaway-timer span {
+      font-family: 'digital-7'; }
+    @media (max-width: 620px) {
+      body.giveaway-page #hero .giveaway-timer {
+        width: 100%;
+        text-align: center; } }
 @media (max-width: 450px) {
   body.giveaway-page #hero-bg {
     background-position-x: -400px; } }
@@ -11481,6 +11506,12 @@ body.giveaway-page .black-slider {
   font-family: 'montserratlight';
   src: url("/assets/fonts/montserrat-light-webfont.eot");
   src: url("/assets/fonts/montserrat-light-webfont.eot?#iefix") format("embedded-opentype"), url("/assets/fonts/montserrat-light-webfont.woff2") format("woff2"), url("/assets/fonts/montserrat-light-webfont.woff") format("woff"), url("/assets/fonts/montserrat-light-webfont.ttf") format("truetype"), url("/assets/fonts/montserrat-light-webfont.svg#montserratlight") format("svg");
+  font-weight: normal;
+  font-style: normal; }
+@font-face {
+  font-family: 'digital-7';
+  src: url("/assets/fonts/digital-7/Digital-7.eot");
+  src: url("/assets/fonts/digital-7/Digital-7.eot?#iefix") format("embedded-opentype"), url("/assets/fonts/digital-7/Digital-7.woff") format("woff"), url("/assets/fonts/digital-7/Digital-7.ttf") format("truetype");
   font-weight: normal;
   font-style: normal; }
 /* forms base */

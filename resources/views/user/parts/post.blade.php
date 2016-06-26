@@ -34,8 +34,8 @@
                                     </div>
                                     <div class="col-xs-12">
                                         <br>
-                                        <a href="@{{ item.url }}" target="_blank">
-                                            <strong>@{{ item.title }}</strong><br>
+                                        <a class="butaka" href="@{{ item.url }}" target="_blank">
+                                            <strong>@{{ render_html(item.title) }}</strong><br>
                                             <div ng-bind-html="item.content"></div>
                                         </a>
                                     </div>

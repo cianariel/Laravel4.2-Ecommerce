@@ -3648,11 +3648,8 @@ angular.module('colorpicker.module', [])
         });
 
         $('.page-overlay, .login-signup-modal').click(function(event){
-            console.log(123123)
-
             if(event.target !== this){ // only fire if the block itself is clicked, not it's children (sometimes we need to hide the modal when anything outside it's main block is clickced
                 return;
-                console.log(123123)
             }
 
             $('.modal, .page-overlay').fadeOut();
@@ -3846,9 +3843,11 @@ angular.module('colorpicker.module', [])
                 if($('.scroll-header').length){
                     if($(window).scrollTop() < 60){
                         $('header.colophon').removeClass('scroll-header');
+                        //$('.red-scroll-logo').hide();
                     }
                 }else if(($(window).scrollTop() > 60)){
                     $('header.colophon').addClass('scroll-header');
+                    //$('.red-logo').hide();
                 }
 
             });
@@ -3947,6 +3946,24 @@ angular.module('colorpicker.module', [])
                     $('#giveaway-popup').fadeIn('slow');
                 }, 30000)
             }
+
+
+            setInterval(function(){
+                console.log(1)
+                //if($('header.colophon').hasClass('scroll-header')){
+                    $('.red-logo')
+                        .animate({
+                            opacity: 1,
+                        }, 1000, function() {
+                            // Animation complete.
+                        })
+                        .delay(2000)
+                        .animate({
+                            opacity: 0,
+                        }, 1000, function() {
+                            // Animation complete.
+                        })
+            }, 20000);
         });
 
 
@@ -4010,6 +4027,9 @@ publicApp.directive('heartCounterPublic', ['$http', function ($http) {
                 //console.log('url : '+ urlString);
                 return urlString;
             };
+
+
+
 
             $scope.heartAction = function () {
 
@@ -4188,6 +4208,12 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
         };
         $scope.textAreaSetup = function ($element) {
             $element.attr('focus-me', 'focus_editor');
+        };
+
+        $scope.renderHTML = function(html_code)
+                {
+                    var decoded = angular.element('<div />').html(html_code).text();
+                    return decoded;
         };
 
 

@@ -10,7 +10,7 @@ $cat_name = $cats[0]->name;
     <div class="container hidden-xs">
         <ul class="wrap col-lg-5">
             <li class="box-link-ul">
-                <a href="/ideas/smart-home" class="box-link">Smart Home</a>
+                <a href="/ideas/usage-link" class="box-link">Usage</a>
             </li>
             <li class="box-link-ul">
                 <a href="/ideas/how-to" class="box-link">How To</a>
@@ -19,7 +19,7 @@ $cat_name = $cats[0]->name;
                 <a href="/ideas/style" class="box-link">Style</a>
             </li>
             <li class="box-link-ul">
-                <a href="/ideas/reviews" class="box-link">Reviews</a>
+                <a href="/ideas/best-reviews" class="box-link">Best</a>
             </li>
 
 <!--            <li class="box-link-ul">-->
@@ -33,10 +33,10 @@ $cat_name = $cats[0]->name;
     <div class="container mobile-menu visible-xs full-620">
         <ul class="wrap col-lg-7 full-620">
             <li class="box-link-ul">
-                <a href="/ideas/smart-home" class="box-link">Smart Home</a>
+                <a href="/ideas/usage-list" class="box-link">Usage</a>
             </li>
             <li class="box-link-ul">
-                <a href="/ideas/reviews" class="box-link">Reviews</a>
+                <a href="/ideas/best-reviews" class="box-link">Best</a>
             </li>
             <li class="box-link-ul">
                 <a href="/ideas/style" class="box-link">Style</a>

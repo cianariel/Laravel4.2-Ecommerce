@@ -548,7 +548,7 @@ class UserController extends ApiController
 
        // dd($data); 
 
-      //  return view('email.notification')
+      //  return view('email.notification') 
         //    ->with('content',$data);
     }
 
