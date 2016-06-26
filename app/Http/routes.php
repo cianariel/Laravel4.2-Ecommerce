@@ -303,6 +303,11 @@ Route::group(['prefix' => 'admin'], function () {
 
 });
 
+// Payment Route
+Route::group(['prefix' => 'payment'], function () {
+    Route::get('payment-info', 'PaymentController@index');
+});
+
 //Shop view
 Route::get('shop/{grandParent?}/{parent?}/{child?}', ['as' => 'shopCategory', 'uses' => 'ShopController@index']);
 
