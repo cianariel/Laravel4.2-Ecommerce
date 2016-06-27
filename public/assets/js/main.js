@@ -5147,7 +5147,7 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                  window.location = $scope.loginRedirectLocation;
                  */
             }).error(function (data) {
-                console.log(data);
+              //  console.log(data);
             });
 
         };
@@ -5444,7 +5444,7 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
             }).success(function (data) {
                 $scope.notificationCounter = data.data.NotReadNoticeCount;
                 $scope.notifications = data.data.NoticeNotRead;
-                console.log($scope.notifications);
+             //   console.log($scope.notifications);
             });
         };
 

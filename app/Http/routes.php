@@ -306,6 +306,8 @@ Route::group(['prefix' => 'admin'], function () {
 // Payment Route
 Route::group(['prefix' => 'payment'], function () {
     Route::get('payment-info', 'PaymentController@index');
+    Route::post('payment-info', 'PaymentController@paymentProcess');
+
 });
 
 //Shop view

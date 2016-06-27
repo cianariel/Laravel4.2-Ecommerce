@@ -8,8 +8,8 @@
         @include('payment.parts.card-info')
 
 
-        <script type="text/javascript" src="/assets/js/payment.js"></script>
-        <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
 
+        <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+        <script type="text/javascript" src="/assets/js/payment.js"></script>
     </div>
 @stop

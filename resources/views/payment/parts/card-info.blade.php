@@ -3,6 +3,7 @@
         <div class="row">
             <div class="col-md-12 main-content">
                 {!! Form::open(['id' => 'billing-form']) !!}
+                <div id="error-message"></div>
 
                 <div class="row">
                     <div class="col-md-2">
@@ -38,8 +39,8 @@
                     </div>
                     <div class="col-md-4">
 
-                        {!! Form::selectMonth(null) !!}
-                        {!! Form::selectYear(null,date('Y'),date('Y') + 10 ) !!}
+                        {!! Form::selectMonth(null,date('m'),['data-stripe' => 'exp-month']) !!}
+                        {!! Form::selectYear(null,date('Y'),date('Y') + 10,null,['data-stripe' => 'exp-year'] ) !!}
 
                     </div>
 
