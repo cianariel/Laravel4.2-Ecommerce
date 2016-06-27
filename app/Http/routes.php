@@ -255,7 +255,7 @@ Route::group(['prefix' => 'api'], function () {
 
 Route::post('/api/giveaway/enter', 'GiveawayController@enterUser');
 Route::get('/api/giveaway/enter', 'GiveawayController@enterUser');
-Route::get('/api/giveaway/get-current', 'GiveawayController@getCurrentGiveaway');
+Route::get('/api/giveaway/get-current/{noPopup?}', 'GiveawayController@getCurrentGiveaway');
 
 // Admin Route
 Route::group(['prefix' => 'admin'], function () {
