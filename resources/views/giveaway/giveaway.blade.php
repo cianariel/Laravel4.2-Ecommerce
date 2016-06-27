@@ -230,7 +230,7 @@
                         @foreach($nextGiveaways as $nextGive)
                             <div class="thumb-wrap">
                                 <h6>{{date('F', strtotime($nextGive->goes_live))}}</h6>
-                                <img class="giveaway-thumb img-circle {{$nextGive->ends <= date('Y-m-d') ? 'greyscale' : ''}}"
+                                <img class="giveaway-thumb {{$nextGive->ends <= date('Y-m-d') ? 'greyscale' : ''}}"
                                      src="{{$nextGive->giveaway_image}}"/>
                                 <h6>{{$nextGive->giveaway_title}}</h6>
                             </div>
