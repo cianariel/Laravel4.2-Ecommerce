@@ -39,8 +39,12 @@ class PaymentController extends ApiController
             return view('user.signup')->with('tab', 'login');
 
         }
+    }
 
-
+    public function paymentProcess()
+    {
+        $inputData = \Input::all();
+        dd($inputData);
 
     }
 

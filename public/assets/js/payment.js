@@ -1,16 +1,55 @@
-(function(){
+(function () {
 
-	var StripeBilling = {
-		init: function(){
-		//	alert('hi');
-			this.form = $('#billing-form');
-			this.submitButton = this.form.find('input[type=submit]');
+    var StripeBilling = {
+        init: function () {
 
-			var stripeKey = $('#pub').val();
+            this.form = $('#billing-form');
+            this.submitButton = this.form.find('input[type=submit]');
 
-			Stripe.setPublishableKey(stripeKey);
-		}
-	};
+            var stripeKey = $('#pub').val();
 
-	StripeBilling.init();
+            Stripe.setPublishableKey(stripeKey);
+
+            this.bindEvents();
+        },
+
+        bindEvents: function () {
+
+            this.form.on('submit', $.proxy(this.sendToken, this));
+
+        },
+
+        sendToken: function (event) {
+            this.submitButton.val('Processing...');
+
+            Stripe.createToken(this.form, $.proxy(this.stripeResponseHandler, this));
+
+            event.preventDefault();
+
+        },
+
+        stripeResponseHandler: function (status, response) {
+            //console.log(status, response);
+
+            if (response.error) {
+                 this.form.find('#error-message').show().text(response.error.message);
+
+                return this.submitButton.prop('disabled',false).val('Proceed');
+
+            }
+
+            this.submitButton.val('Proceed');
+
+            $('<input>', {
+                type: 'hidden',
+                name: 'stripeToken',
+                value: response.id
+            }).appendTo(this.form);
+
+            this.form[0].submit();
+        }
+
+    };
+
+    StripeBilling.init();
 })();
