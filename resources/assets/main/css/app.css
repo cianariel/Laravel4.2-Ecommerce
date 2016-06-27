@@ -11435,6 +11435,12 @@ body.giveaway-page .black-slider {
     color: #fff; }
     body.giveaway-page .black-slider .rsArrow.rsArrowRight {
       right: 0; }
+  @media (max-width: 620px) {
+    body.giveaway-page .black-slider {
+      width: 110% !important;
+      padding-left: 0 !important;
+      padding-right: 0 !important;
+      margin: 0 -10px; } }
 
 #giveaway-popup {
   background: rgba(255, 0, 66, 0.8);
