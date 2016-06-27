@@ -224,9 +224,9 @@
                 </div>
                 <h4 class="red col-xs-12 text-center">Stay tuned for these upcoming giveaways!</h4>
 
-                <section class="slider giveaway-slider black-slider col-lg-12 pseudo-full-wide">
+                <section class="slider giveaway-slider black-slider col-lg-12  full-620 pseudo-full-wide">
                     <img src="/assets/images/giveaway-logo.png" class="giveaway-logo col-xs-4"/>
-                    <div class="giveaway-slider-content col-sm-8">
+                    <div class="giveaway-slider-content col-sm-8 full-620">
                         @foreach($nextGiveaways as $nextGive)
                             <div class="thumb-wrap">
                                 <h6>{{date('F', strtotime($nextGive->goes_live))}}</h6>
@@ -283,10 +283,10 @@
 //                autoScaleSliderHeight: 150,
                 visibleNearby: {
                     enabled: true,
-                    centerArea: 0.17,
+                    centerArea: 0.25,
                     center: false,
-//                    breakpoint: 650,
-//                    breakpointCenterArea: 0.64,
+                    breakpoint: 620,
+                    breakpointCenterArea: 0.9,
 //                    navigateByCenterClick: true
                 }
 //    autoScaleSlider: true
