@@ -18,7 +18,15 @@
                     if(!function_exists('is_single')){
                         $theGiveAway = PageHelper::getCurrentGiveaway();
                     }else{
-                        $json = file_get_contents('http://ideaing.dev/api/giveaway/get-current');
+
+                    if(isset($_COOKIE['giveaway_pop_shown'])){
+                        $noPopup = 1;
+                    }else{
+                        $noPopup = 0;
+                    }
+
+                    $json = file_get_contents('http://ideaing.com/api/giveaway/get-current/' . $noPopup);
+        
                         $theGiveAway = json_decode($json);
                     }
                 }
