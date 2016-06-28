@@ -363,7 +363,7 @@
                                                             on Ideaing.</span><span
                                                                 style="font-size: 14pt;">Click<a
                                                                     style="color:rgb(250,0,51);text-decoration:none"
-                                                                    href="{{ env('DOMAIN')}}/user/notification"> View Your
+                                                                    href="{{ env('FULL_DOMAIN')}}/user/notification"> View Your
                                                                 Notifications</a> to see what’s happening.</span> </span>
                                                 </p>
                                             </td>
@@ -396,7 +396,7 @@
                                                                             width:150px;text-align: center;
                                                                             width:202px; line-height:50px;">
                                                                         <a style=" color:#FA0033;font-weight: bold;"
-                                                                           href="{{ env('DOMAIN')}}/user/notification">
+                                                                           href="{{ env('FULL_DOMAIN')}}/user/notification">
                                                                             View
                                                                             Your Notifications</a>
                                                                     </div>
