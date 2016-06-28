@@ -247,8 +247,8 @@ class GiveawayController extends ApiController
                     ->makeResponse("Data deleted Successfully");
     }
 
-    public function getCurrentGiveaway()
+    public function getCurrentGiveaway($noPopup = false)
     {
-        return json_encode(PageHelper::getCurrentGiveaway());
+        return json_encode(PageHelper::getCurrentGiveaway($noPopup));
     }
 }
