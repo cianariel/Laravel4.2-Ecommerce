@@ -230,23 +230,25 @@
 
         // scroll and stick the share bar
         function sticky_relocate() {
-            var div_top = $('#sticky-anchor').offset().top;
 
             if(window.innerWidth < 620){
+                var div_top = $('#mobile-sticky-anchor').offset().top;
                 var window_top = $(window).scrollTop();
                 if (window_top > div_top) {
                     $('.ideas-sharing').fadeIn();
                 } else {
                     $('.ideas-sharing').fadeOut();
                 }
+            }else{
+                var div_top = $('#sticky-anchor').offset().top;
+                var window_top = $(window).scrollTop();
+                if (window_top > div_top) {
+                    $('.sticks-on-scroll').addClass('stick');
+                } else {
+                    $('.sticks-on-scroll').removeClass('stick');
+                } 
             }
 
-            var window_top = $(window).scrollTop();
-            if (window_top > div_top) {
-                $('.sticks-on-scroll').addClass('stick');
-            } else {
-                $('.sticks-on-scroll').removeClass('stick');
-            }
         }
 
         $(function () {
