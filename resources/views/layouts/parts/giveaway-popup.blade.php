@@ -13,10 +13,9 @@
         $json = file_get_contents('http://ideaing.com/api/giveaway/get-current/' . $noPopup);
         $theGiveAway = json_decode($json);
 
-        print_r($theGiveAway); 
     }}
    if(@$theGiveAway->giveaway_permalink && $theGiveAway->showPopup){
-?>
+?> 
 
 
 <div id="giveaway-popup" class="col-xs-12 hidden-soft">
