@@ -167,6 +167,9 @@
             </header>
         </div>
 
+            <div class="shown-620 hidden-soft">
+                <?php loadLaravelView('share-bar'); ?>
+            </div>
             <div class="row">
                 <div class="col-lg-12">
                     <section class="article-content dropcapped">
