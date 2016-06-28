@@ -29,7 +29,7 @@
         
                         $theGiveAway = json_decode($json);
                     }
-                }
+                } 
 
             if($theGiveAway && @$theGiveAway->giveaway_permalink){ ?>
                 <a href="/giveaway/<?php echo $theGiveAway->giveaway_permalink ?>">
