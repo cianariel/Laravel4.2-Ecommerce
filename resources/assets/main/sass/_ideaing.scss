@@ -10285,12 +10285,19 @@ body.giveaway-page{
         right: 0;
       }
     }
-    //
-    //.giveaway-slider-content{
-    //  img{
-    //
-    //  }
-    //}
+
+    @media (max-width:620px){
+      width: 110% !important;
+      max-height: 270px;
+      padding-left: 0!important;
+      padding-right: 0!important;
+      margin: 0 -10px;
+
+      .rsArrow{
+        top: 32%;
+        position: absolute;
+      }
+    }
 
   }
 }
