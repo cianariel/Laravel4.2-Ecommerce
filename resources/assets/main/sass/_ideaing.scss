@@ -846,7 +846,6 @@ li.all-shares{
       a.email{
         display: inline-block !important;
       }
-    }
     .share-bar.sticks-on-scroll {
       position: fixed !important;
       bottom: 4px;
@@ -868,7 +867,7 @@ li.all-shares{
      li{
        width: 34px;
        overflow: hidden;
-       margin-left: 15px;
+       margin-left: 15px; 
        padding: 0;
        a{
          width: auto !important;
@@ -880,6 +879,7 @@ li.all-shares{
     }
   }
 
+}
 
 
 .get{
