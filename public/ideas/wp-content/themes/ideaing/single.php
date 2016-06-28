@@ -134,7 +134,8 @@
                 </li>
                     <?php include('/var/www/ideaing/public/ideas/wp-content/themes/ideaing/heart-user-img.php') ?>
                 </ul>
-        </div>
+                <div id="mobile-sticky-anchor"></div>
+            </div>
     </nav>
 </div>
     <!-- article -->
