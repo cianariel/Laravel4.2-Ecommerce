@@ -10,7 +10,7 @@
             $noPopup = 0;
         }
 
-        $json = file_get_contents('http://ideaing.com/api/giveaway/get-current/' . $noPopup);
+        $json = file_get_contents('https://ideaing.com/api/giveaway/get-current/' . $noPopup);
         $theGiveAway = json_decode($json);
 
     }}
@@ -19,7 +19,7 @@
 
 
 <div id="giveaway-popup" class="col-xs-12 hidden-soft">
-     <span class="close-button close-login" data-toggle="#giveaway-popup">
+     <span class="close-button close-login" data-toggle="#giveaway-popup" data-show=".ideas-sharing">
         <i class="m-icon--Close"></i>
     </span>
 
@@ -37,4 +37,4 @@
 
 </div>
 
-<?php } ?>
+<?php  } ?>

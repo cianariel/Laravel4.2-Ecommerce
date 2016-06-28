@@ -230,12 +230,18 @@
 
         // scroll and stick the share bar
         function sticky_relocate() {
+            var div_top = $('#sticky-anchor').offset().top;
+
             if(window.innerWidth < 620){
-                return false;
+                var window_top = $(window).scrollTop();
+                if (window_top > div_top) {
+                    $('.ideas-sharing').fadeIn();
+                } else {
+                    $('.ideas-sharing').fadeOut();
+                }
             }
 
             var window_top = $(window).scrollTop();
-            var div_top = $('#sticky-anchor').offset().top;
             if (window_top > div_top) {
                 $('.sticks-on-scroll').addClass('stick');
             } else {
