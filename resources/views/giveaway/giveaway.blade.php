@@ -34,7 +34,7 @@
                         </h1>
                         <div class="giveaway-timer pull-right">
                             ENDS IN:<br/>
-                            <span>{{$giveaway->timeLeft}}</span>
+                            <span class="final-countdown">{{$giveaway->timeLeft}}</span>
                         </div>
                     </div>
                 </hgroup>
@@ -257,40 +257,16 @@
         </div>
     </div>
     <script>
-        jQuery(document).ready(function ($) {
-            $('.giveaway-slider-content ').royalSlider({
-                arrowsNav: true,
-                loop: false,
-                keyboardNavEnabled: true,
-                controlsInside: true,
-                imageScaleMode: 'fit',
-                arrowsNavAutoHide: false,
-//                controlNavigation: 'bullets',
-//                thumbsFitInViewport: false,
-                navigateByClick: false,
-//                startSlideId: 0,
-                autoPlay: false,
-                transitionType: 'move',
-                globalCaption: false,
-                deeplinking: {
-                    enabled: true,
-                    change: false
-                },
-                /* size of all images http://help.dimsemenov.com/kb/royalslider-jquery-plugin-faq/adding-width-and-height-properties-to-images */
-                imgWidth: "100%",
-                imageScaleMode: "fill",
-//                autoScaleSliderWidth: 300,
-//                autoScaleSliderHeight: 150,
-                visibleNearby: {
-                    enabled: true,
-                    centerArea: 0.25,
-                    center: false,
-                    breakpoint: 620,
-                    breakpointCenterArea: 0.9,
-//                    navigateByCenterClick: true
-                }
-//    autoScaleSlider: true
-            });
+
+        jQuery(function ($) {
+            var timeLeft = <?php echo $giveaway->timeLeft?>;
+            var node = $('.final-countdown');
+            Giveaway.startCountDown(timeLeft, node);
         });
+
+        jQuery(document).ready(function ($) {
+            Giveaway.fireSlider();
+        });
+
     </script>
 @stop
