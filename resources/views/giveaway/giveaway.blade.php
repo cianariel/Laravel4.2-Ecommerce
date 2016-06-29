@@ -1,6 +1,6 @@
 @extends('layouts.main')
 
-@section('body-class'){{ 'giveaway-page'}}{{$ended ? ' expired' : ''}}@stop
+@section('body-class'){{ 'giveaway-page'}}{{$giveaway->timeLeft < 0 ? ' expired' : ''}}@stop
 
 @section('content')
     <div id="publicApp" ng-app="publicApp" ng-controller="publicController" ng-cloak>
@@ -21,6 +21,7 @@
         <section id="hero" class="landing-hero">
             <div class="rsContent">
                 <div id="hero-bg" style="background-image: url({{$giveaway->giveaway_image}}); "></div>
+                <div id="mobile-hero-bg" class="hidden-soft shown-620" style="background-image: url({{$giveaway->giveaway_mobile_image}}); "></div>
                 <div class="container fixed-sm full-480">
                 </div>
                 <hgroup class="giveaway-banner">
@@ -32,10 +33,12 @@
                         <h1>
                             {{$heading}}
                         </h1>
-                        <div class="giveaway-timer pull-right">
-                            ENDS IN:<br/>
-                            <span class="final-countdown">{{$giveaway->timeLeft}}</span>
-                        </div>
+                        @if($giveaway->timeLeft > 0)
+                            <div class="giveaway-timer pull-right">
+                                ENDS IN:<br/>
+                                <span class="final-countdown">{{$giveaway->timeLeft}}</span>
+                            </div>
+                        @endif
                     </div>
                 </hgroup>
             </div>
