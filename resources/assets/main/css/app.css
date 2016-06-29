@@ -11980,7 +11980,8 @@ body.home.logged-in #hero {
   .homepage-grid .grid-box-3:first-child {
     /*		margin-top: -1px;*/ }
 
-#hero-bg {
+#hero-bg,
+#mobile-hero-bg {
   background-size: cover;
   background-repeat: no-repeat;
   position: absolute;
