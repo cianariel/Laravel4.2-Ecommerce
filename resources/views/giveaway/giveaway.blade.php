@@ -18,7 +18,7 @@
             </div>
         </nav>
   
-        <section id="hero" class="landing-hero">
+        <section id="hero" class="landing-hero giveaway-hero">
             <div class="rsContent">
                 <div id="hero-bg" style="background-image: url({{$giveaway->giveaway_image}}); "></div>
                 <div id="mobile-hero-bg" class="hidden-soft shown-620" style="background-image: url({{$giveaway->giveaway_mobile_image}}); "></div>

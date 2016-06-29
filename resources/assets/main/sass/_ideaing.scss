@@ -1036,10 +1036,19 @@ nav {
     padding-right: 0;
   }
 
-  &.landing-hero .container {
-    padding-top: 100px;
-    min-height: 450px;
-  }
+  &.landing-hero{
+     &.giveaway-hero{
+      .container{
+        min-height: 360px;
+      }
+     }
+
+      .container {
+        padding-top: 100px;
+        min-height: 450px;
+      }
+    } 
+ 
   &.landing-hero .container-fluid{
       min-height: 450px;
   }
@@ -9958,6 +9967,7 @@ body.giveaway-page{
       display: none;
     }
   }
+
   #hero{
     overflow: hidden;
 
@@ -9980,6 +9990,13 @@ body.giveaway-page{
       @media (max-width:620px){
         width: 100%;
         text-align: center;
+
+        .final-countdown{
+          max-width: 251px;
+          display: block;
+          margin: 0 auto;
+          float: none;
+        }
       }
     }
   }
