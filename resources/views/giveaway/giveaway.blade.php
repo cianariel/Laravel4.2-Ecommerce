@@ -74,7 +74,7 @@
 
                 </div>
 
-                <div class="col-md-6 col-xs-12 pull-right giveaway-toc">
+                <div class="col-md-6 col-xs-12 pull-right giveaway-toc" ng-init="readSingleNotification(<?php echo $userData['id'] ?>,'<?php echo $giveawayPermalink ?>')">
                     <section class="sign-in">
                         @if (Session::has('giveaway_flash'))
                             <div>

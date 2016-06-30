@@ -85,9 +85,9 @@ class PageController extends ApiController
     {
         $cacheKey = "slider-ideas";
 
-        if($cachedContent = PageHelper::getFromRedis($cacheKey, true)){
+        if ($cachedContent = PageHelper::getFromRedis($cacheKey, true)) {
             $return = $cachedContent;
-        }else{
+        } else {
             $url = URL::to('/') . '/ideas/feeds/index.php?count=4&only-slider';
 
             $ch = curl_init();
@@ -113,7 +113,7 @@ class PageController extends ApiController
     {
         $cacheKey = "plain-content-$page-$limit-$tag-$type-$productCategory-$sortBy";
 
-        if($cachedContent = PageHelper::getFromRedis($cacheKey)){
+        if ($cachedContent = PageHelper::getFromRedis($cacheKey)) {
             $return = $cachedContent;
             $return->fromCache = true;
             $return->cacheKey = $cacheKey;
@@ -176,7 +176,7 @@ class PageController extends ApiController
             $return['hasMore'] = false;
         }
 
-        $cached = PageHelper::putIntoRedis($cacheKey, $return,  '1 hour');
+        $cached = PageHelper::putIntoRedis($cacheKey, $return, '1 hour');
 
         $return['wasCached'] = $cached;
         $return['fromCache'] = false;
@@ -314,7 +314,7 @@ class PageController extends ApiController
 
             foreach ($ideaCollection as $singleIdea) {
 
-                if($tag == 'deal'){
+                if ($tag == 'deal') {
                     $singleIdea->dealPage = true;
                 }
 
@@ -339,7 +339,7 @@ class PageController extends ApiController
 
         $url = URL::to('/') . '/ideas/feeds/index.php?count=' . $limit . '&no-featured&offset=' . $offset;
 
-        if ($tag && $tag != 'false') { 
+        if ($tag && $tag != 'false') {
             $url .= '&tag=' . $tag;
         }
 
@@ -347,7 +347,7 @@ class PageController extends ApiController
             $url .= '&category-name=' . $category;
         }
 
-        if($limit == 10 && $category != 'deals'){ // CMS homepage, needs to have no deals
+        if ($limit == 10 && $category != 'deals') { // CMS homepage, needs to have no deals
             $url .= '&no-deals';
         }
 
@@ -434,9 +434,9 @@ class PageController extends ApiController
         $tagString = implode('-', $tags);
         $cacheKey = "related-products-$currentStoryID-$limit-$tagString";
 
-        if($cachedContent = PageHelper::getFromRedis($cacheKey)) {
+        if ($cachedContent = PageHelper::getFromRedis($cacheKey)) {
             return $cachedContent;
-        }else{
+        } else {
             $url = URL::to('/') . '/ideas/feeds/index.php?count=' . $limit . '&no-deals';
 
             if ($tags && $tags != 'false') {
@@ -510,9 +510,9 @@ class PageController extends ApiController
     public function getRelatedProducts($productID, $limit, $tagID)
     {
         $cacheKey = "related-products-$productID-$limit-$tagID";
-        if($cachedContent = PageHelper::getFromRedis($cacheKey)) {
+        if ($cachedContent = PageHelper::getFromRedis($cacheKey)) {
             return $cachedContent;
-        }else{
+        } else {
             $productSettings = [
                 'ActiveItem' => true,
                 'excludeID' => $productID,
@@ -541,31 +541,31 @@ class PageController extends ApiController
         }
 
         $cacheKey = "product-details-$permalink";
-        if($cachedContent = PageHelper::getFromRedis($cacheKey, true)){
+        if ($cachedContent = PageHelper::getFromRedis($cacheKey, true)) {
 //            $cachedContent->fromCache = true;
             $result = $cachedContent;
 
             // TODO -- get rid of loops
 
-            if($result['productInformation']['Review']){
-                 foreach($result['productInformation']['Review'] as $i => $review){
+            if ($result['productInformation']['Review']) {
+                foreach ($result['productInformation']['Review'] as $i => $review) {
                     $result['productInformation']['Review'][$i] = (object)$review;
                 }
             }
 
-            if($result['productInformation']['Specifications']){
-                 foreach($result['productInformation']['Specifications'] as $i => $spec){
-                     $result['productInformation']['Specifications'][$i] = (object)$spec;
+            if ($result['productInformation']['Specifications']) {
+                foreach ($result['productInformation']['Specifications'] as $i => $spec) {
+                    $result['productInformation']['Specifications'][$i] = (object)$spec;
                 }
             }
 
-            if($result['relatedIdeas']){
-                 foreach($result['relatedIdeas'] as $i => $idea){
+            if ($result['relatedIdeas']) {
+                foreach ($result['relatedIdeas'] as $i => $idea) {
                     $result['relatedIdeas'][$i] = (object)$idea;
                 }
             }
 
-        }else{
+        } else {
 
             $product = new Product();
             $productData['product'] = $product->getViewForPublic($permalink);
@@ -580,11 +580,17 @@ class PageController extends ApiController
                 $tagNames[] = str_replace(' ', '-', Tag::find($tagID)->tag_name);
             }
 
-            $result['relatedIdeas'] = self::getRelatedStories($productData['product']['id'], 3, $tagNames);
+            $tagNames = empty($tagNames) ? "" : $tagNames;
+
+            if ($tagNames != "")
+                $relatedIdeas = self::getRelatedStories($productData['product']['id'], 3, $tagNames);
+            else
+                $relatedIdeas = "";
+
+            $result['relatedIdeas'] = $relatedIdeas;
             $result['canonicURL'] = PageHelper::getCanonicalLink(Route::getCurrentRoute(), $permalink);
             PageHelper::putIntoRedis($cacheKey, $result, '+3 months');
         }
-
 
 
         MetaTag::set('title', $result['productInformation']['PageTitle']);
@@ -631,10 +637,10 @@ class PageController extends ApiController
 
     public static function getShopMenu()
     {
-        if($return = PageHelper::getFromRedis('header-shop-menu')){
+        if ($return = PageHelper::getFromRedis('header-shop-menu')) {
             $return->fromCache = true;
             $return = json_encode($return);
-        }else{
+        } else {
             $return = Product::getForShopMenu();
             PageHelper::putIntoRedis('header-shop-menu', $return);
         }
@@ -657,10 +663,10 @@ class PageController extends ApiController
 
     public function getFollowerCounts()
     {
-        if($return = PageHelper::getFromRedis('footer-follower-counts')){
+        if ($return = PageHelper::getFromRedis('footer-follower-counts')) {
             $return->fromCache = true;
             $return = json_encode($return);
-        }else{
+        } else {
             $return = Sharing::getFollowersFromAPIs();
             PageHelper::putIntoRedis('footer-follower-counts', $return);
         }
@@ -867,14 +873,13 @@ class PageController extends ApiController
         }
 
 
-
         //  dd($giveaway,$heading);
         return view('giveaway.giveaway')
             ->with('isAdminForEdit', $isAdmin)
             ->with('userData', $userData)
             ->with('nextGiveaways', $nextGiveaways)
             ->with('giveaway', $giveaway)
-            ->with('giveawayPermalink',empty($permalink)?'':$permalink)
+            ->with('giveawayPermalink', empty($permalink) ? '' : $permalink)
             ->with('ended', $ended)
             ->with('alreadyIn', $alreadyIn)
             ->with('heading', $heading);
@@ -935,7 +940,8 @@ class PageController extends ApiController
             ->with('heading', $heading);
     }
 
-    public function testEmail($type){
+    public function testEmail($type)
+    {
         return view("email.$type")
             ->with('email', 'bob@bob.com')
 //            ->with('nextGiveaways', $nextGiveaways)
@@ -943,9 +949,8 @@ class PageController extends ApiController
 //            ->with('ended', $ended)
 //            ->with('alreadyIn', $alreadyIn)
 //            ->with('heading', $heading)
-                ;
+            ;
     }
-
 
 
 }
