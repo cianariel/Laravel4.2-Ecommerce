@@ -23,7 +23,7 @@ use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
 use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
 use Illuminate\Support\Collection;
 use Mockery\CountValidator\Exception;
-use PhpParser\Comment;
+use PhpParser\Comment as pharComment;
 use Zizaco\Entrust\Traits\EntrustUserTrait;
 use Fenos\Notifynder\Notifable;
 use Carbon\Carbon;
@@ -35,6 +35,7 @@ class User extends Model implements AuthenticatableContract,
                                     AuthorizableContract,
                                     CanResetPasswordContract
 {
+
 
     use Notifable, Authenticatable, Authorizable, CanResetPassword,
         EntrustUserTrait {
@@ -226,7 +227,7 @@ class User extends Model implements AuthenticatableContract,
         try {
             \DB::transaction(function () use ($data) {
 
-                $contact = new Contact();
+                $contact = new appComment();
                 $contact->type = $data['Type'];
                 $contact->email = $data['Email'];
                 $contact->name = $data['Name'];
@@ -508,6 +509,38 @@ class User extends Model implements AuthenticatableContract,
         }
     }
 
+    // Notifications mark as read for a user
+    public function notificationMarkReadAll($userId)
+    {
+        $user = User::find($userId);
+
+        return $user->readAllNotifications();
+
+    }
+
+    // Single Notification mark as read for a single user
+    public function markNotificationAsRead($data)
+    {
+        $notifications = Notification::where('to_id',$data['UserId'])
+            ->where('read',0)
+            ->where('url','LIKE','%'.$data['Permalink'].'%')
+            ->get();
+
+
+        foreach($notifications as $notification)
+        {
+            $notification->read = 1;
+            $notification->save();
+        }
+
+
+
+
+        return $notifications;
+
+    }
+
+
 
     // Wrapper for all type of notification (future implementation)
     public function getNotificationForUser($userId, $limit = 10)
@@ -568,21 +601,8 @@ class User extends Model implements AuthenticatableContract,
         return $noticeCollection;
     }
 
-    public function notificationMarkReadAll($userId)
-    {
-        $user = User::find($userId);
 
-        return $user->readAllNotifications();
 
-    }
-
-    //todo : Implement when individual notice will be updated on read
-    public function markNotificationAsRead($info)
-    {
-        $notice = Notification::where('to_id', $info['UserId'])
-                              ->where('url', $info['Permalink'])
-                              ->update(['read' => 1]);
-    }
 
     public function registerBySourceCount($data)
     {

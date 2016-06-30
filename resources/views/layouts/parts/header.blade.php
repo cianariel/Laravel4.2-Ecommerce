@@ -31,6 +31,7 @@ if (!isset($theGiveAway)) {
 
 <div id="publicApp" ng-app="publicApp" ng-controller="publicController" class="header-cloak" ng-cloak>
     <header class="colophon">
+
         <div ng-init="socialCounter()" class="socialcounter col-xs-12">
             <nav id="top-nav" class="row">
 
