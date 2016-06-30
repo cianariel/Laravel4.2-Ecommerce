@@ -88,7 +88,6 @@ class PageHelper {
         }else{
             $giveaway->showPopup = false;
         }
-//        $giveaway->showPopup = true;
 
         return $giveaway;
     }

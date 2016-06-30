@@ -854,11 +854,11 @@ class PageController extends ApiController
 
         $timeLeft = strtotime($giveaway->ends) - time();
 
-        $dtF = new \DateTime('@0');
-        $dtT = new \DateTime("@$timeLeft");
-        $giveaway->timeLeft = $dtF->diff($dtT)->format('%a days, %h hours and %i minutes');
+//        $dtF = new \DateTime('@0');
+//        $dtT = new \DateTime("@$timeLeft");
+//        $giveaway->timeLeft = $dtF->diff($dtT)->format('%a days, %h hours and %i minutes');
 
-//        $giveaway->timeLeft = date('D days H hours M minutes', $timeLeft);
+        $giveaway->timeLeft = $timeLeft;
 
 
         // dd($giveaway);

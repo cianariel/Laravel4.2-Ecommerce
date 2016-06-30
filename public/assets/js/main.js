@@ -3817,17 +3817,25 @@ angular.module('colorpicker.module', [])
 
         // scroll and stick the share bar
         function sticky_relocate() {
+
             if(window.innerWidth < 620){
-                return false;
+                var div_top = $('#mobile-sticky-anchor').offset().top;
+                var window_top = $(window).scrollTop();
+                if (window_top > div_top) {
+                    $('.ideas-sharing').fadeIn();
+                } else {
+                    $('.ideas-sharing').fadeOut();
+                }
+            }else{
+                var div_top = $('#sticky-anchor').offset().top;
+                var window_top = $(window).scrollTop();
+                if (window_top > div_top) {
+                    $('.sticks-on-scroll').addClass('stick');
+                } else {
+                    $('.sticks-on-scroll').removeClass('stick');
+                } 
             }
 
-            var window_top = $(window).scrollTop();
-            var div_top = $('#sticky-anchor').offset().top;
-            if (window_top > div_top) {
-                $('.sticks-on-scroll').addClass('stick');
-            } else {
-                $('.sticks-on-scroll').removeClass('stick');
-            }
         }
 
         $(function () {
@@ -3967,7 +3975,68 @@ angular.module('colorpicker.module', [])
         });
 
 
+
 	}); // global function()
+
+    (function(Giveaway, $, undefined) {
+        Giveaway.startCountDown = function(duration, display) {
+            var timer = duration, days, hours, minutes, seconds;
+            setInterval(function () {
+                // get total seconds between the times
+                var delta = timer;
+                // calculate (and subtract) whole days
+                var days = Math.floor(delta / 86400);
+                delta -= days * 86400;
+                // calculate (and subtract) whole hours
+                var hours = Math.floor(delta / 3600) % 24;
+                delta -= hours * 3600;
+                // calculate (and subtract) whole minutes
+                var minutes = Math.floor(delta / 60) % 60;
+                delta -= minutes * 60;
+                // what's left is seconds
+                var seconds = delta % 60;  // in theory the modulus is not required
+
+                minutes = minutes < 10 ? "0" + minutes : minutes;
+                seconds = seconds < 10 ? "0" + seconds : seconds;
+
+                display.text(days + ' days, ' + hours + ' hours, ' + minutes + ' minutes and ' + seconds + ' seconds');
+
+                if (--timer < 0) {
+                    timer = duration;
+                }
+            }, 1000);
+        }
+
+        Giveaway.fireSlider = function () {
+            $('.giveaway-slider-content ').royalSlider({
+                arrowsNav: true,
+                loop: false,
+                keyboardNavEnabled: true,
+                controlsInside: true,
+                imageScaleMode: 'fit',
+                arrowsNavAutoHide: false,
+                navigateByClick: false,
+                autoPlay: false,
+                transitionType: 'move',
+                globalCaption: false,
+                deeplinking: {
+                    enabled: true,
+                    change: false
+                },
+                /* size of all images http://help.dimsemenov.com/kb/royalslider-jquery-plugin-faq/adding-width-and-height-properties-to-images */
+                imgWidth: "100%",
+                imageScaleMode: "fill",
+                visibleNearby: {
+                    enabled: true,
+                    centerArea: 0.25,
+                    center: false,
+                    breakpoint: 620,
+                    breakpointCenterArea: 0.9,
+                }
+            });
+        }
+
+    }( window.Giveaway = window.Giveaway || {}, jQuery ));
 
 })(jQuery, this);
 ;
