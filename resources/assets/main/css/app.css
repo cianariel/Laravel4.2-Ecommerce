@@ -5362,7 +5362,33 @@ li.all-shares {
       .share-bar ul li {
         width: 100px;
         float: left;
-        margin-left: 1.4%; } }
+        margin-left: 1.4%; }
+
+  .ideas-sharing {
+    display: none; }
+    .ideas-sharing a.email {
+      display: inline-block !important; }
+    .ideas-sharing .share-bar.sticks-on-scroll {
+      position: fixed !important;
+      bottom: 4px;
+      z-index: 1;
+      bottom: 0;
+      top: auto; }
+      .ideas-sharing .share-bar.sticks-on-scroll ul {
+        max-width: 70%;
+        float: none;
+        margin: 0 auto; }
+      .ideas-sharing .share-bar.sticks-on-scroll .share-count, .ideas-sharing .share-bar.sticks-on-scroll .all-shares {
+        display: none; }
+      .ideas-sharing .share-bar.sticks-on-scroll li {
+        width: 34px;
+        overflow: hidden;
+        margin-left: 15px;
+        padding: 0; }
+        .ideas-sharing .share-bar.sticks-on-scroll li a {
+          width: auto !important;
+          border: 0 !important;
+          background: transparent !important; } }
 .get {
   display: inline-block;
   vertical-align: middle;
@@ -5455,6 +5481,8 @@ nav a {
   #hero > .container {
     padding-left: 0;
     padding-right: 0; }
+  #hero.landing-hero.giveaway-hero .container {
+    min-height: 360px; }
   #hero.landing-hero .container {
     padding-top: 100px;
     min-height: 450px; }
@@ -9658,7 +9686,7 @@ footer.about-footer {
 .bottom-block {
   height: 100px;
   position: fixed;
-  bottom: 0;
+  bottom: 15px;
   right: 0%;
   z-index: 20; }
   @media (max-width: 480px) {
@@ -11246,7 +11274,12 @@ body.giveaway-page #hero {
     @media (max-width: 620px) {
       body.giveaway-page #hero .giveaway-timer {
         width: 100%;
-        text-align: center; } }
+        text-align: center; }
+        body.giveaway-page #hero .giveaway-timer .final-countdown {
+          max-width: 251px;
+          display: block;
+          margin: 0 auto;
+          float: none; } }
 @media (max-width: 450px) {
   body.giveaway-page #hero-bg {
     background-position-x: -400px; } }
@@ -11438,7 +11471,7 @@ body.giveaway-page .black-slider {
   @media (max-width: 620px) {
     body.giveaway-page .black-slider {
       width: 110% !important;
-      max-height: 270px;
+      max-height: 280px;
       padding-left: 0 !important;
       padding-right: 0 !important;
       margin: 0 -10px; }
@@ -11954,12 +11987,16 @@ body.home.logged-in #hero {
   .homepage-grid .grid-box-3:first-child {
     /*		margin-top: -1px;*/ }
 
-#hero-bg {
+#hero-bg,
+#mobile-hero-bg {
   background-size: cover;
   background-repeat: no-repeat;
   position: absolute;
   width: 100%;
   height: 100%; }
+
+#mobile-hero-bg {
+  background-size: contain; }
 
 #hero-slider {
   position: absolute;

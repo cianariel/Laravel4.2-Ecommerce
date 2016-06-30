@@ -1,6 +1,6 @@
 @extends('layouts.main')
 
-@section('body-class'){{ 'giveaway-page'}}{{$ended ? ' expired' : ''}}@stop
+@section('body-class'){{ 'giveaway-page'}}{{$giveaway->timeLeft < 0 ? ' expired' : ''}}@stop
 
 @section('content')
     <div id="publicApp" ng-app="publicApp" ng-controller="publicController" ng-cloak>
@@ -18,9 +18,10 @@
             </div>
         </nav>
   
-        <section id="hero" class="landing-hero">
+        <section id="hero" class="landing-hero giveaway-hero">
             <div class="rsContent">
                 <div id="hero-bg" style="background-image: url({{$giveaway->giveaway_image}}); "></div>
+                <div id="mobile-hero-bg" class="hidden-soft shown-620" style="background-image: url({{$giveaway->giveaway_mobile_image}}); "></div>
                 <div class="container fixed-sm full-480">
                 </div>
                 <hgroup class="giveaway-banner">
@@ -32,10 +33,12 @@
                         <h1>
                             {{$heading}}
                         </h1>
-                        <div class="giveaway-timer pull-right">
-                            ENDS IN:<br/>
-                            <span>{{$giveaway->timeLeft}}</span>
-                        </div>
+                        @if($giveaway->timeLeft > 0)
+                            <div class="giveaway-timer pull-right">
+                                ENDS IN:<br/>
+                                <span class="final-countdown">{{$giveaway->timeLeft}}</span>
+                            </div>
+                        @endif
                     </div>
                 </hgroup>
             </div>
@@ -257,40 +260,16 @@
         </div>
     </div>
     <script>
-        jQuery(document).ready(function ($) {
-            $('.giveaway-slider-content ').royalSlider({
-                arrowsNav: true,
-                loop: false,
-                keyboardNavEnabled: true,
-                controlsInside: true,
-                imageScaleMode: 'fit',
-                arrowsNavAutoHide: false,
-//                controlNavigation: 'bullets',
-//                thumbsFitInViewport: false,
-                navigateByClick: false,
-//                startSlideId: 0,
-                autoPlay: false,
-                transitionType: 'move',
-                globalCaption: false,
-                deeplinking: {
-                    enabled: true,
-                    change: false
-                },
-                /* size of all images http://help.dimsemenov.com/kb/royalslider-jquery-plugin-faq/adding-width-and-height-properties-to-images */
-                imgWidth: "100%",
-                imageScaleMode: "fill",
-//                autoScaleSliderWidth: 300,
-//                autoScaleSliderHeight: 150,
-                visibleNearby: {
-                    enabled: true,
-                    centerArea: 0.25,
-                    center: false,
-                    breakpoint: 620,
-                    breakpointCenterArea: 0.9,
-//                    navigateByCenterClick: true
-                }
-//    autoScaleSlider: true
-            });
+
+        jQuery(function ($) {
+            var timeLeft = <?php echo $giveaway->timeLeft?>;
+            var node = $('.final-countdown');
+            Giveaway.startCountDown(timeLeft, node);
         });
+
+        jQuery(document).ready(function ($) {
+            Giveaway.fireSlider();
+        });
+
     </script>
 @stop

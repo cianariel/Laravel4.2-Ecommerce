@@ -134,7 +134,7 @@
                 </li>
                     <?php include('/var/www/ideaing/public/ideas/wp-content/themes/ideaing/heart-user-img.php') ?>
                 </ul>
-        </div>
+            </div>
     </nav>
 </div>
     <!-- article -->
@@ -169,7 +169,9 @@
             <div class="shown-620 hidden-soft">
                 <?php loadLaravelView('share-bar'); ?>
             </div>
-            <div class="row">
+        <div id="mobile-sticky-anchor"></div>
+
+        <div class="row">
                 <div class="col-lg-12">
                     <section class="article-content dropcapped">
                         <?php the_content(); ?>
@@ -180,7 +182,7 @@
 
         </article>
     </div>
-    <div class="hidden-620">
+    <div class="ideas-sharing">
         <?php loadLaravelView('share-bar'); ?>
     </div>
 

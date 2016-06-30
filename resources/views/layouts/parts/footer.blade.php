@@ -25,7 +25,7 @@
                         $noPopup = 0;
                     }
 
-                    $json = file_get_contents('http://ideaing.com/api/giveaway/get-current/' . $noPopup);
+                    $json = file_get_contents('https://ideaing.com/api/giveaway/get-current/' . $noPopup);
         
                         $theGiveAway = json_decode($json);
                     }

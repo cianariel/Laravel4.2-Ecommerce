@@ -22,6 +22,7 @@
             'giveaway_meta_desc',
             'giveaway_toc',
             'giveaway_image',
+            'giveaway_mobile_image',
             'giveaway_image_title',
             'giveaway_image_alt',
             'giveaway_status',

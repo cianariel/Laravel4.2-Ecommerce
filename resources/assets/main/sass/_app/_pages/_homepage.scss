@@ -39,12 +39,17 @@ body.home.logged-in{
 
 }
 
-#hero-bg{
+#hero-bg,
+#mobile-hero-bg{
   background-size: cover;
   background-repeat: no-repeat;
   position: absolute;
   width: 100%;
   height: 100%;
+}
+
+#mobile-hero-bg{
+  background-size: contain;
 }
 
 #hero-slider{
