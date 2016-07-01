@@ -449,46 +449,8 @@
                             <tbody>
                             <tr>
                                 <td>
-                                    <!-- start of left column -->
-                                    <table width="290" align="left" border="0" cellpadding="0" cellspacing="0"
-                                           class="devicewidth">
-                                        <tbody>
-
-                                        <tr>
-                                            <td>
-                                                <!-- start of text content table -->
-                                                <table width="290" align="left" border="0" cellpadding="0"
-                                                       cellspacing="0" class="devicewidth">
-                                                    <tbody>
-                                                    <tr>
-                                                        <td width="290" height="" align="center" class="devicewidth">
-                                                            <p style="text-align: center;">
-                                                                <a style="text-decoration: none; color: #007baa"
-                                                                   href="http://ideaing.com"><img
-                                                                            src="https://ideaing.com/assets/images/email/ideaing.png"
-                                                                            width="70px"/></a>
-                                                                <a style="text-decoration: none; color: #007baa"
-                                                                   href="https://ideaing.com/aboutus"><img
-                                                                            src="https://ideaing.com/assets/images/email/about.png"
-                                                                            width="70px"/></a>
-                                                                <a style="text-decoration: none; color: #808080"
-                                                                   href="https://ideaing.com/"><img
-                                                                            src="https://ideaing.com/assets/images/email/copyright.png"
-                                                                            width="100px"/></a>
-                                                            </p>
-
-                                                        </td>
-                                                    </tr>
-                                                    </tbody>
-                                                </table>
-                                            </td>
-                                        </tr>
-                                        <!-- end of text content table -->
-                                        </tbody>
-                                    </table>
-                                    <!-- end of left column -->
                                     <!-- start of right column -->
-                                    <table width="290" align="right" border="0" cellpadding="0" cellspacing="0"
+                                    <table width="290" align="center" border="0" cellpadding="0" cellspacing="0"
                                            class="devicewidth">
                                         <tbody>
 
@@ -501,20 +463,23 @@
                                                     <!-- image -->
                                                     <tr>
                                                         <td width="290" height="" align="center" class="devicewidth">
-                                                            <a class="fb"
-                                                               href="https://www.facebook.com/ideaingsmarterliving"><img
-                                                                        src="https://cdn-images.mailchimp.com/icons/social-block-v2/color-facebook-48.png"/></a>
-                                                            <a class="twi" href="https://twitter.com/ideaing/"><img
-                                                                        src="https://cdn-images.mailchimp.com/icons/social-block-v2/color-twitter-48.png"/></a>
-                                                            <a class="pint"
-                                                               href="https://www.pinterest.com/ideaing_com"><img
-                                                                        src="https://cdn-images.mailchimp.com/icons/social-block-v2/color-pinterest-48.png"/></a>
-                                                            <a class="insta"
-                                                               href="https://www.instagram.com/ideaing_com/"><img
-                                                                        src="https://cdn-images.mailchimp.com/icons/social-block-v2/color-instagram-48.png"/></a>
-                                                            <a class="gplus"
-                                                               href="http://google.com/+Ideaingsmarterliving"><img
-                                                                        src="https://cdn-images.mailchimp.com/icons/social-block-v2/color-googleplus-48.png"/></a>
+
+                                                            <a href="https://www.facebook.com/ideaingsmarterliving"><img width="24" height="25"
+                                                                                                                         src="https://cdn-images.mailchimp.com/icons/social-block-v2/color-facebook-48.png"/></a>
+                                                            &nbsp; &nbsp;
+
+                                                            <a href="https://twitter.com/ideaing/"><img  width="24" height="25"
+                                                                                                         src="https://cdn-images.mailchimp.com/icons/social-block-v2/color-twitter-48.png"/></a>
+                                                            &nbsp; &nbsp;
+
+                                                            <a href="https://www.pinterest.com/ideaing_com"><img  width="24" height="25"
+                                                                                                                  src="https://cdn-images.mailchimp.com/icons/social-block-v2/color-pinterest-48.png"/></a>
+                                                            &nbsp; &nbsp;
+                                                            <a href="https://www.instagram.com/ideaing_com/"><img  width="24" height="25"
+                                                                                                                   src="https://cdn-images.mailchimp.com/icons/social-block-v2/color-instagram-48.png"/></a>
+                                                            &nbsp; &nbsp;
+                                                            <a href="http://google.com/+Ideaingsmarterliving"><img  width="24" height="25"
+                                                                                                                    src="https://cdn-images.mailchimp.com/icons/social-block-v2/color-googleplus-48.png"/></a>
 
                                                         </td>
                                                     </tr>
@@ -554,7 +519,8 @@
                                             Irvine, Ca 92614<br/>
                                             <br/>
 
-                                            <a target="_blank" style="color:rgb(101,101,101);font-weight:normal;text-decoration:underline" href="http://ideaing.us12.list-manage.com/vcard?u=96801fe1d5d2163ffc6ff717e&id=eeb6e8c94f">Add us to your address book</a>
+                                            <a target="_blank" style="text-decoration:underline ; color: #0a8cce" href="http://ideaing.us12.list-manage.com/vcard?u=96801fe1d5d2163ffc6ff717e&id=eeb6e8c94f">Add us to your address book</a>
+                                            <br/>
                                             <br/>
 
                                             Don't want to hear from Ideaing?<br/>
