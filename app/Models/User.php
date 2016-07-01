@@ -730,6 +730,7 @@ class User extends Model implements AuthenticatableContract,
 
                 // Email count is "0" then no notification will be send.
                 if ($data != 0) {
+                  //  dd($name, $user['email'], $data);
                     \Event::fire(new SendNotificationMail($name, $user['email'], $data));
                 }
 

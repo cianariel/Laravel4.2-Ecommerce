@@ -353,17 +353,19 @@
                                                 <p align="left">
                                                     <span style="font-size: 14pt;" class="im"><br><span
                                                                 style="font-size: 14pt;">Hi {{$name}} ! You have
-                                                            @if($content != 0)
-                                                                {{$content}} new notifications
-                                                            @elseif($content == 1)
+
+                                                            @if($content == 1)
                                                                 1 new notification
+                                                            @elseif($content != 0)
+                                                                {{$content}} new notifications
                                                             @else
                                                                 no notification today
                                                             @endif
                                                             on Ideaing.</span><span
                                                                 style="font-size: 14pt;">Click<a
                                                                     style="color:rgb(250,0,51);text-decoration:none"
-                                                                    href="{{ env('FULL_DOMAIN')}}/user/notification"> View Your
+                                                                    href="{{ env('FULL_DOMAIN')}}/user/notification">
+                                                                View Your
                                                                 Notifications</a> to see what’s happening.</span> </span>
                                                 </p>
                                             </td>
@@ -431,50 +433,7 @@
     </tbody>
 </table>
 <!-- end of full text -->
-<!-- 2columns -->
-<table width="100%" bgcolor="#ffffff" cellpadding="0" cellspacing="0" border="0" id="backgroundTable"
-       st-sortable="2columns">
-    <tbody>
-    <tr>
-        <td>
-            <table bgcolor="#ffffff" width="600" cellpadding="0" cellspacing="0" border="0" align="center"
-                   class="devicewidth">
-                <tbody>
-                <tr>
-                    <td width="100%">
-                        <table width="560" cellpadding="0" cellspacing="0" border="0" align="center"
-                               class="devicewidth">
-                            <tbody>
-                            <tr>
-                                <td>
-                                    <!-- start of left column -->
-                                    <table width="250" align="left" border="0" cellpadding="0" cellspacing="0"
-                                           class="devicewidth">
-                                        <tbody>
-                                        <!-- Spacing -->
 
-
-                                        <!-- end of text content table -->
-                                        </tbody>
-                                    </table>
-                                    <!-- end of left column -->
-                                    <!-- start of right column -->
-
-                                    <!-- end of right column -->
-                                </td>
-                            </tr>
-
-                            </tbody>
-                        </table>
-                    </td>
-                </tr>
-                </tbody>
-            </table>
-        </td>
-    </tr>
-    </tbody>
-</table>
-<!-- end of 2 columns -->
 <!-- 2columns -->
 <table width="100%" bgcolor="#ffffff" cellpadding="0" cellspacing="0" border="0" id="backgroundTable"
        st-sortable="2columns">
@@ -502,7 +461,7 @@
                                                        cellspacing="0" class="devicewidth">
                                                     <tbody>
                                                     <tr>
-                                                        <td width="290" height="160" align="center" class="devicewidth">
+                                                        <td width="290" height="" align="center" class="devicewidth">
                                                             <p style="text-align: center;">
                                                                 <a style="text-decoration: none; color: #007baa"
                                                                    href="http://ideaing.com"><img
@@ -541,7 +500,7 @@
                                                     <tbody>
                                                     <!-- image -->
                                                     <tr>
-                                                        <td width="290" height="160" align="center" class="devicewidth">
+                                                        <td width="290" height="" align="center" class="devicewidth">
                                                             <a class="fb"
                                                                href="https://www.facebook.com/ideaingsmarterliving"><img
                                                                         src="https://ideaing.com/assets/images/email/fb.png"/></a>
@@ -558,20 +517,56 @@
                                                                         src="https://ideaing.com/assets/images/email/pint.png"/></a>
                                                         </td>
                                                     </tr>
+
                                                     </tbody>
                                                 </table>
                                             </td>
                                         </tr>
-                                        <!-- end of text content table -->
+
                                         </tbody>
                                     </table>
                                     <!-- end of right column -->
                                 </td>
                             </tr>
-                            <!-- Spacing -->
                             <tr>
-                                <td width="100%" height="10"></td>
+                                <!-- start of text content table -->
+                                <table width="600" align="left" border="0" cellpadding="0" height="10px"
+                                       cellspacing="0" class="devicewidth">
+                                    <tbody>
+                                    <!-- image -->
+                                    <tr>
+                                        <td width="" height="" align="center" class="devicewidth">
+                                            <hr/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td width="" height="" align="center" class="devicewidth"
+                                            style="font-family: Helvetica, arial, sans-serif; font-size: 16px; color: #666666; text-align:center; line-height: 30px;"
+                                            st-content="fulltext-content">
+                                            <br/>
+                                            <i>Copyright © 2016 Idea Centric LLC,</i> All rights reserved.<br/>
+                                            You are on this list because you are a subscriber of Ideaing.<br/>
+                                            <br/>
+                                            <strong>Our mailing address is:</strong><br/>
+                                            Idea Centric LLC<br/>
+                                            Gramercy<br/>
+                                            Irvine, Ca 92614<br/>
+                                            <br/>
+
+                                            Don't want to hear from Ideaing?<br/>
+                                            You can <a style="text-decoration: none; color: #0a8cce"
+                                                       href="https://ideaing.com/unsubscribe">unsubscribe</a> from this list<br/>
+
+                                        </td>
+                                    </tr>
+
+
+                                    </tbody>
+                                </table>
+                                <!-- end of text content table -->
                             </tr>
+                            <!-- Spacing -->
+
                             <!-- Spacing -->
                             </tbody>
                         </table>
