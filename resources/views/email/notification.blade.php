@@ -503,18 +503,19 @@
                                                         <td width="290" height="" align="center" class="devicewidth">
                                                             <a class="fb"
                                                                href="https://www.facebook.com/ideaingsmarterliving"><img
-                                                                        src="https://ideaing.com/assets/images/email/fb.png"/></a>
+                                                                        src="https://cdn-images.mailchimp.com/icons/social-block-v2/color-facebook-48.png"/></a>
                                                             <a class="twi" href="https://twitter.com/ideaing/"><img
-                                                                        src="https://ideaing.com/assets/images/email/twitter.jpg"/></a>
-                                                            <a class="insta"
-                                                               href="https://www.instagram.com/ideaing_com/"><img
-                                                                        src="https://ideaing.com/assets/images/email/insta.png"/></a>
-                                                            <a class="gplus"
-                                                               href="http://google.com/+Ideaingsmarterliving"><img
-                                                                        src="https://ideaing.com/assets/images/email/gplus.gif"/></a>
+                                                                        src="https://cdn-images.mailchimp.com/icons/social-block-v2/color-twitter-48.png"/></a>
                                                             <a class="pint"
                                                                href="https://www.pinterest.com/ideaing_com"><img
-                                                                        src="https://ideaing.com/assets/images/email/pint.png"/></a>
+                                                                        src="https://cdn-images.mailchimp.com/icons/social-block-v2/color-pinterest-48.png"/></a>
+                                                            <a class="insta"
+                                                               href="https://www.instagram.com/ideaing_com/"><img
+                                                                        src="https://cdn-images.mailchimp.com/icons/social-block-v2/color-instagram-48.png"/></a>
+                                                            <a class="gplus"
+                                                               href="http://google.com/+Ideaingsmarterliving"><img
+                                                                        src="https://cdn-images.mailchimp.com/icons/social-block-v2/color-googleplus-48.png"/></a>
+
                                                         </td>
                                                     </tr>
 
@@ -551,6 +552,9 @@
                                             Idea Centric LLC<br/>
                                             Gramercy<br/>
                                             Irvine, Ca 92614<br/>
+                                            <br/>
+
+                                            <a target="_blank" style="color:rgb(101,101,101);font-weight:normal;text-decoration:underline" href="http://ideaing.us12.list-manage.com/vcard?u=96801fe1d5d2163ffc6ff717e&id=eeb6e8c94f">Add us to your address book</a>
                                             <br/>
 
                                             Don't want to hear from Ideaing?<br/>
