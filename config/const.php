@@ -68,6 +68,9 @@
         'product-update-time-limit' => 24,
 
         // default user picture
-        'user-image' => 'https://s3-us-west-1.amazonaws.com/ideaing-01/product-56c602ae87429-user-default.png'
+        'user-image' => 'https://s3-us-west-1.amazonaws.com/ideaing-01/product-56c602ae87429-user-default.png',
+
+        // Membership fee
+        'VIP' => '5',
 
     ];
