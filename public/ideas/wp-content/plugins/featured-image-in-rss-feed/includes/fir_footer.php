@@ -93,8 +93,10 @@ Write us a review <a href="http://dineshkarki.com.np/forums/forum/featured-image
                 <tr>
                 	<td>
                     	<ol class="uaf_list">
-                        	<li> <a target="_blank" href="http://wordpress.org/plugins/wp-masonry-layout/">WP Masonry Layout (Pinterest Like Grid)</a></li>
                         	<li><a href="http://wordpress.org/plugins/use-any-font/" target="_blank">Use Any Font</a></li>
+                            <li> <a target="_blank" href="http://wordpress.org/plugins/wp-masonry-layout/">WP Masonry Layout (Pinterest Like Grid)</a></li>
+                        	
+                            <li><a target="_blank" href="http://wordpress.org/plugins/email-checker/">Real Email Checker</a></li>
                             <li><a href="http://wordpress.org/extend/plugins/any-mobile-theme-switcher/" target="_blank">Any Mobile Theme Switcher</a></li>
                             <li><a href="http://wordpress.org/extend/plugins/jquery-validation-for-contact-form-7/" target="_blank">Jquery Validation For Contact Form 7</a></li>
                             <li><a href="http://wordpress.org/plugins/add-tags-and-category-to-page/" target="_blank">Add Tags and Category To Pages/Post Types</a></li>
