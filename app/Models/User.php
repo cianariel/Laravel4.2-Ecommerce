@@ -97,6 +97,10 @@ class User extends Model implements AuthenticatableContract,
         return $this->hasMany('App\Models\ProductQuery');
     }
 
+    public function payments()
+    {
+        return $this->hasMany('App\Models\Payment');
+    }
     /**
      * Defile custom model method
      */
