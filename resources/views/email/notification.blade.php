@@ -353,17 +353,19 @@
                                                 <p align="left">
                                                     <span style="font-size: 14pt;" class="im"><br><span
                                                                 style="font-size: 14pt;">Hi {{$name}} ! You have
-                                                            @if($content != 0)
-                                                                {{$content}} new notifications
-                                                            @elseif($content == 1)
+
+                                                            @if($content == 1)
                                                                 1 new notification
+                                                            @elseif($content != 0)
+                                                                {{$content}} new notifications
                                                             @else
                                                                 no notification today
                                                             @endif
                                                             on Ideaing.</span><span
                                                                 style="font-size: 14pt;">Click<a
                                                                     style="color:rgb(250,0,51);text-decoration:none"
-                                                                    href="{{ url('/user/notification')}}"> View Your
+                                                                    href="{{ env('FULL_DOMAIN')}}/user/notification">
+                                                                View Your
                                                                 Notifications</a> to see what’s happening.</span> </span>
                                                 </p>
                                             </td>
@@ -396,7 +398,8 @@
                                                                             width:150px;text-align: center;
                                                                             width:202px; line-height:50px;">
                                                                         <a style=" color:#FA0033;font-weight: bold;"
-                                                                           href="{{ url('/user/notification')}}"> View
+                                                                           href="{{ env('FULL_DOMAIN')}}/user/notification">
+                                                                            View
                                                                             Your Notifications</a>
                                                                     </div>
                                                                 </td>
@@ -430,50 +433,7 @@
     </tbody>
 </table>
 <!-- end of full text -->
-<!-- 2columns -->
-<table width="100%" bgcolor="#ffffff" cellpadding="0" cellspacing="0" border="0" id="backgroundTable"
-       st-sortable="2columns">
-    <tbody>
-    <tr>
-        <td>
-            <table bgcolor="#ffffff" width="600" cellpadding="0" cellspacing="0" border="0" align="center"
-                   class="devicewidth">
-                <tbody>
-                <tr>
-                    <td width="100%">
-                        <table width="560" cellpadding="0" cellspacing="0" border="0" align="center"
-                               class="devicewidth">
-                            <tbody>
-                            <tr>
-                                <td>
-                                    <!-- start of left column -->
-                                    <table width="250" align="left" border="0" cellpadding="0" cellspacing="0"
-                                           class="devicewidth">
-                                        <tbody>
-                                        <!-- Spacing -->
 
-
-                                        <!-- end of text content table -->
-                                        </tbody>
-                                    </table>
-                                    <!-- end of left column -->
-                                    <!-- start of right column -->
-
-                                    <!-- end of right column -->
-                                </td>
-                            </tr>
-
-                            </tbody>
-                        </table>
-                    </td>
-                </tr>
-                </tbody>
-            </table>
-        </td>
-    </tr>
-    </tbody>
-</table>
-<!-- end of 2 columns -->
 <!-- 2columns -->
 <table width="100%" bgcolor="#ffffff" cellpadding="0" cellspacing="0" border="0" id="backgroundTable"
        st-sortable="2columns">
@@ -484,96 +444,10 @@
                 <tbody>
                 <tr>
                     <td width="100%">
-                        <table bgcolor="#ffffff" width="600" cellpadding="0" cellspacing="0" border="0" align="center"
-                               class="devicewidth">
-                            <tbody>
-                            <tr>
-                                <td>
-                                    <!-- start of left column -->
-                                    <table width="290" align="left" border="0" cellpadding="0" cellspacing="0"
-                                           class="devicewidth">
-                                        <tbody>
+                        <!-- footer start-->
+                        @include('email.email-footer')
+                        <!-- footer end-->
 
-                                        <tr>
-                                            <td>
-                                                <!-- start of text content table -->
-                                                <table width="290" align="left" border="0" cellpadding="0"
-                                                       cellspacing="0" class="devicewidth">
-                                                    <tbody>
-                                                    <tr>
-                                                        <td width="290" height="160" align="center" class="devicewidth">
-                                                            <p style="text-align: center;">
-                                                                <a style="text-decoration: none; color: #007baa"
-                                                                   href="http://ideaing.com"><img
-                                                                            src="https://ideaing.com/assets/images/email/ideaing.png"
-                                                                            width="70px"/></a>
-                                                                <a style="text-decoration: none; color: #007baa"
-                                                                   href="https://ideaing.com/aboutus"><img
-                                                                            src="https://ideaing.com/assets/images/email/about.png"
-                                                                            width="70px"/></a>
-                                                                <a style="text-decoration: none; color: #808080"
-                                                                   href="https://ideaing.com/"><img
-                                                                            src="https://ideaing.com/assets/images/email/copyright.png"
-                                                                            width="100px"/></a>
-                                                            </p>
-
-                                                        </td>
-                                                    </tr>
-                                                    </tbody>
-                                                </table>
-                                            </td>
-                                        </tr>
-                                        <!-- end of text content table -->
-                                        </tbody>
-                                    </table>
-                                    <!-- end of left column -->
-                                    <!-- start of right column -->
-                                    <table width="290" align="right" border="0" cellpadding="0" cellspacing="0"
-                                           class="devicewidth">
-                                        <tbody>
-
-                                        <tr>
-                                            <td>
-                                                <!-- start of text content table -->
-                                                <table width="290" align="left" border="0" cellpadding="0"
-                                                       cellspacing="0" class="devicewidth">
-                                                    <tbody>
-                                                    <!-- image -->
-                                                    <tr>
-                                                        <td width="290" height="160" align="center" class="devicewidth">
-                                                            <a class="fb"
-                                                               href="https://www.facebook.com/ideaingsmarterliving"><img
-                                                                        src="https://ideaing.com/assets/images/email/fb.png"/></a>
-                                                            <a class="twi" href="https://twitter.com/ideaing/"><img
-                                                                        src="https://ideaing.com/assets/images/email/twitter.jpg"/></a>
-                                                            <a class="insta"
-                                                               href="https://www.instagram.com/ideaing_com/"><img
-                                                                        src="https://ideaing.com/assets/images/email/insta.png"/></a>
-                                                            <a class="gplus"
-                                                               href="http://google.com/+Ideaingsmarterliving"><img
-                                                                        src="https://ideaing.com/assets/images/email/gplus.gif"/></a>
-                                                            <a class="pint"
-                                                               href="https://www.pinterest.com/ideaing_com"><img
-                                                                        src="https://ideaing.com/assets/images/email/pint.png"/></a>
-                                                        </td>
-                                                    </tr>
-                                                    </tbody>
-                                                </table>
-                                            </td>
-                                        </tr>
-                                        <!-- end of text content table -->
-                                        </tbody>
-                                    </table>
-                                    <!-- end of right column -->
-                                </td>
-                            </tr>
-                            <!-- Spacing -->
-                            <tr>
-                                <td width="100%" height="10"></td>
-                            </tr>
-                            <!-- Spacing -->
-                            </tbody>
-                        </table>
                     </td>
                 </tr>
                 </tbody>

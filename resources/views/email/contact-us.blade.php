@@ -314,37 +314,9 @@
                 <tbody>
                 <tr>
                     <td width="100%">
-                        <table class="devicewidth" align="center" border="0" cellpadding="0" cellspacing="0"
-                               width="600">
-                            <tbody>
-                            <tr>
-                                <td style="font-family: Helvetica, arial, sans-serif; font-size: 14px;color: #666666"
-                                    st-content="postfooter" align="center" valign="middle">
-                                    <p style="text-align: center;">
-                                        Click here to <a style="text-decoration: none; color: #0a8cce"
-                                                         href="https://ideaing.com/unsubscribe">Unsubscribe</a>
-                                    </p>
-                                    <p style="text-align: center;">
-                                    </p>
-                                    <p style="text-align: center;">
-                                        Ideaing Inc.
-                                    </p>
-                                    <p style="text-align: center;">
-                                        Ideaing Califonia , USA
-                                    </p>
-                                </td>
-                                <td>
-
-                                </td>
-                            </tr>
-                            <!-- Spacing -->
-                            <tr>
-                                <td height="20" width="100%">
-                                </td>
-                            </tr>
-                            <!-- Spacing -->
-                            </tbody>
-                        </table>
+                        <!-- footer start-->
+                        @include('email.email-footer')
+                        <!-- footer end-->
                     </td>
                 </tr>
                 </tbody>

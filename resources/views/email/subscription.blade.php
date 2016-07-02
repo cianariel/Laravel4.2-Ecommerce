@@ -527,31 +527,9 @@ Ideaing Team</p>
                 <tbody>
                 <tr>
                     <td width="100%">
-                        <table class="devicewidth" align="center" border="0" cellpadding="0" cellspacing="0"
-                               width="600">
-                            <tbody>
-                            <tr>
-                                <td style="font-family: Helvetica, arial, sans-serif; font-size: 14px;color: #666666"
-                                    st-content="postfooter" align="center" valign="middle">
-                                    <p style="text-align: center;">
-                                        <a href="http://Ideaing.com">Ideaing.com</a>
-                                    </p>
-                                    <p style="text-align: center;">
-                                        Irvine, California
-                                    </p>
-                                </td>
-                                <td>
-
-                                </td>
-                            </tr>
-                            <!-- Spacing -->
-                            <tr>
-                                <td height="20" width="100%">
-                                </td>
-                            </tr>
-                            <!-- Spacing -->
-                            </tbody>
-                        </table>
+                        <!-- footer start-->
+                        @include('email.email-footer')
+                                <!-- footer end-->
                     </td>
                 </tr>
                 </tbody>

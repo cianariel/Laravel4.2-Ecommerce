@@ -243,6 +243,7 @@ Route::group(['prefix' => 'api'], function () {
      * */
     Route::get('notification/{uid?}/{limit?}', 'UserController@notification');
     Route::get('read-all-notification/{uid?}', 'UserController@notificationReadAll');
+    Route::post('read-single-notification', 'UserController@singleNotificationRead');
 
 
     /*
@@ -255,7 +256,7 @@ Route::group(['prefix' => 'api'], function () {
 
 Route::post('/api/giveaway/enter', 'GiveawayController@enterUser');
 Route::get('/api/giveaway/enter', 'GiveawayController@enterUser');
-Route::get('/api/giveaway/get-current', 'GiveawayController@getCurrentGiveaway');
+Route::get('/api/giveaway/get-current/{noPopup?}', 'GiveawayController@getCurrentGiveaway');
 
 // Admin Route
 Route::group(['prefix' => 'admin'], function () {

@@ -405,12 +405,43 @@
     </tr>
     <tr style="font-size: 0px">
         <td style="background-color: white;text-align: center;height:44px" colspan="10" >
-            <a class="fb" href="https://www.facebook.com/ideaingsmarterliving"><img src="https://ideaing.com/assets/images/email/fb.png"/></a>
-            <a class="twi" href="https://twitter.com/ideaing/"><img src="https://ideaing.com/assets/images/email/twitter.jpg"/></a>
-            <a class="insta" href="https://www.instagram.com/ideaing_com/"><img src="https://ideaing.com/assets/images/email/insta.png"/></a>
-            <a class="gplus" href="http://google.com/+Ideaingsmarterliving"><img src="https://ideaing.com/assets/images/email/gplus.gif"/></a>
-            <a class="pint" href="https://www.pinterest.com/ideaing_com"><img src="https://ideaing.com/assets/images/email/pint.png"/></a>
+            <a class="fb" href="https://www.facebook.com/ideaingsmarterliving"><img width="24" height="25"
+                                                                                    src="https://cdn-images.mailchimp.com/icons/social-block-v2/color-facebook-48.png"/></a>
+            <a class="twi" href="https://twitter.com/ideaing/"><img  width="24" height="25"
+                                                                     src="https://cdn-images.mailchimp.com/icons/social-block-v2/color-twitter-48.png"/></a>
+            <a class="pint" href="https://www.pinterest.com/ideaing_com"><img  width="24" height="25"
+                                                                               src="https://cdn-images.mailchimp.com/icons/social-block-v2/color-pinterest-48.png"/></a>
+            <a class="insta" href="https://www.instagram.com/ideaing_com/"><img  width="24" height="25"
+                                                                                 src="https://cdn-images.mailchimp.com/icons/social-block-v2/color-instagram-48.png"/></a>
+            <a class="gplus" href="http://google.com/+Ideaingsmarterliving"><img  width="24" height="25"
+                                                                                  src="https://cdn-images.mailchimp.com/icons/social-block-v2/color-googleplus-48.png"/></a>
+
         </td>
+    </tr>
+    <tr  style="font-size: 10px">
+        <td  style="background-color: white;text-align: center;height:44px" colspan="10" >
+            <hr/>
+            <br/>
+
+            <i>Copyright © 2016 Idea Centric LLC,</i> All rights reserved.<br/>
+            You are on this list because you are a subscriber of Ideaing.<br/>
+            <br/>
+            <strong>Our mailing address is:</strong><br/>
+            Idea Centric LLC<br/>
+            Gramercy<br/>
+            Irvine, Ca 92614<br/>
+            <br/>
+
+            <a target="_blank" style="text-decoration:underline ; color: #0a8cce" href="http://ideaing.us12.list-manage.com/vcard?u=96801fe1d5d2163ffc6ff717e&id=eeb6e8c94f">Add us to your address book</a>
+            <br/>
+            <br/>
+
+            Don't want to hear from Ideaing?<br/>
+            You can <a style="text-decoration: none; color: #0a8cce"
+                       href="https://ideaing.com/unsubscribe">unsubscribe</a> from this list<br/>
+
+        </td>
+
     </tr>
 
     <tr style="font-size: 0px">

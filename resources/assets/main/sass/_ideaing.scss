@@ -771,85 +771,8 @@ ul.share-buttons{
   li {
     margin-bottom: 8px;
 
-
-
-    //&.heart,
-    //&.comment{
-    //  //background-color: #fff;
-    //  background-position: 8px 10px;
-    //  border: 1px solid $light-grey;
-    //
-    //  //a{
-    //  //  color: $light-grey;
-    //  //}
-    //}
-
-    //a {
-    //  color: #fff;
-    //}
   }
-  //}
-  //li{
-  //  width: 100%;
-  //  height: 35px;
-  //  margin-bottom: 3px;
-  //  padding-top: 8px;
-  //  padding-bottom: 15px;
-  //  padding-right: 10px;
-  //  border-radius: 20px;
-  //  background-position: 8px center;
-  //  background-repeat: no-repeat;
-  //  text-align: right;
-  //
-  //
-  //  &.fb{
-  //    background-color: $facebook-blue-2;
-  //    background-image: url("/assets/images/fb-white-small.png");
-  //  }
-  //  &.twi{
-  //    background-color: $facebook-blue;
-  //    background-image: url("/assets/images/twi-white-small.png");
-  //  }
-  //  &.gp{
-  //    background-color: $iridium;
-  //    background-image: url("/assets/images/gp-white-small.png");
-  //  }
-  //  &.email{
-  //    background-color: $light-grey;
-  //    background-image: url("/assets/images/email-white-small.png");
-  //    background-position: 5px 8px;
-  //  }
-  //  &.pint{
-  //    background-color: $pinterest-red;
-  //    background-image: url("/assets/images/pint-white-small.png");
-  //  }
-  //  &.heart{
-  //    background-color:  $iridium;
-  //    background-image: url("/assets/images/heart-white.png");
-  //    background-size: 19px;
-  //  }
-  //  &.comment{
-  //    background-color: $ideaing-blue;
-  //    background-image: url("/assets/images/icons/chat-white-outline.png");
-  //    background-size: 19px;
-  //  }
-  //
-  //  //&.heart,
-  //  //&.comment{
-  //  //  //background-color: #fff;
-  //  //  background-position: 8px 10px;
-  //  //  border: 1px solid $light-grey;
-  //  //
-  //  //  //a{
-  //  //  //  color: $light-grey;
-  //  //  //}
-  //  //}
-  //
-  //
-  //  a{
-  //    color: #fff;
-  //  }
-  //}
+
 }
 
 li.all-shares{
@@ -915,6 +838,45 @@ li.all-shares{
       }
     }
 
+  }
+
+  .ideas-sharing {
+      display: none;
+
+      a.email{
+        display: inline-block !important;
+      }
+    .share-bar.sticks-on-scroll {
+      position: fixed !important;
+      bottom: 4px;
+      z-index: 1;
+
+      bottom: 0;
+      top: auto;
+
+      ul{
+        max-width: 70%;
+        float: none;
+        margin: 0 auto;
+      }
+
+      .share-count, .all-shares{
+        display: none;
+      }
+
+     li{
+       width: 34px;
+       overflow: hidden;
+       margin-left: 15px;
+       padding: 0;
+       a{
+         width: auto !important;
+         border: 0 !important;
+         background: transparent !important;
+       }
+     }
+
+    }
   }
 
 }
@@ -1074,10 +1036,19 @@ nav {
     padding-right: 0;
   }
 
-  &.landing-hero .container {
-    padding-top: 100px;
-    min-height: 450px;
-  }
+  &.landing-hero{
+     &.giveaway-hero{
+      .container{
+        min-height: 360px;
+      }
+     }
+
+      .container {
+        padding-top: 100px;
+        min-height: 450px;
+      }
+    } 
+ 
   &.landing-hero .container-fluid{
       min-height: 450px;
   }
@@ -7786,7 +7757,7 @@ footer.about-footer{
   height: 100px;
   //position: relative;
   position: fixed;
-  bottom: 0;
+  bottom: 15px;
   right: 0%;
   z-index: 20;
 
@@ -9996,6 +9967,7 @@ body.giveaway-page{
       display: none;
     }
   }
+
   #hero{
     overflow: hidden;
 
@@ -10018,6 +9990,13 @@ body.giveaway-page{
       @media (max-width:620px){
         width: 100%;
         text-align: center;
+
+        .final-countdown{
+          max-width: 251px;
+          display: block;
+          margin: 0 auto;
+          float: none;
+        }
       }
     }
   }
@@ -10285,12 +10264,19 @@ body.giveaway-page{
         right: 0;
       }
     }
-    //
-    //.giveaway-slider-content{
-    //  img{
-    //
-    //  }
-    //}
+
+    @media (max-width:620px){
+      width: 110% !important;
+      max-height: 280px;
+      padding-left: 0!important;
+      padding-right: 0!important;
+      margin: 0 -10px;
+
+      .rsArrow{
+        top: 32%;
+        position: absolute;
+      }
+    }
 
   }
 }
