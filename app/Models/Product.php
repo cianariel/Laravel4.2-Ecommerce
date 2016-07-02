@@ -450,7 +450,7 @@ class Product extends Model
         $productInfo['Permalink'] = $productData['product']->product_permalink;
         $productInfo['Description'] = $productData['product']->product_description;
         $productInfo['Specifications'] = $productData['product']->specifications;
-        $productInfo['Price'] = number_format((float)$productData['product']->price, 2, '.', '');
+        $productInfo['Price'] = $productData['product']->price;
         $productInfo['SellPrice'] = $productData['product']->sale_price;
         $productInfo['StoreName'] = $productData['product']->store_id;
         $productInfo['AffiliateLink'] = $productData['product']->affiliate_link;

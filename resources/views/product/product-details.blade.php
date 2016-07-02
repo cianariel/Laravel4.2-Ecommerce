@@ -268,16 +268,22 @@
                     <div class="slider-side-block">
 
                         <div class="top">
+
+                            <b class="price col-xs-6">
+                                @if(isset($productInformation['SellPrice']))
+                                    <span class="regular-price">${{@$productInformation['Price']}}</span>
+                                    <span class="sale-price">${{$productInformation['SellPrice']}}</span>
+                                @endif
+                            </b>
+                            <img class="vendor-logo col-xs-6" width="107"
+                                 src="@if(isset($storeInformation['ImagePath'])){{$storeInformation['ImagePath']}}@endif"
+                                 alt="@if(isset($storeInformation['StoreName'])){{$storeInformation['StoreName']}}@endif">
                             <a class="get-round" href="/open/<?php echo $productInformation['Id'] ?>/product" target="_blank">
                                 Get it
                             </a>
-                            <img class="vendor-logo" width="107"
-                                 src="@if(isset($storeInformation['ImagePath'])){{$storeInformation['ImagePath']}}@endif"
-                                 alt="@if(isset($storeInformation['StoreName'])){{$storeInformation['StoreName']}}@endif">
-                            <b class="price">$ @if(isset($productInformation['SellPrice']))
-                                    {{$productInformation['SellPrice']}}
-                                @endif</b>
-                            <div class="availabible">@if(isset($productInformation['Available']))
+
+                            <div class="availabible pull-right">
+                                @if(isset($productInformation['Available']))
                                     {{$productInformation['Available']}}
                                 @endif
                             </div>
