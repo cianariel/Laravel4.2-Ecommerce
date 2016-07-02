@@ -163,6 +163,12 @@ class GiveawayController extends ApiController
                 $editGiveaway->giveaway_image = $ImageResult['result'];
             }
 
+
+            $MobileImageResult = $this->addMediaForGiveaway($request, 'giveaway_mobile_image', $editGiveaway->id);
+            if ($MobileImageResult['status_code'] == 200) {
+                $editGiveaway->giveaway_mobile_image = $MobileImageResult['result'];
+            }
+
             $editGiveaway->save();
             return Redirect::to('/admin/giveaway-edit/' . $editGiveaway->id)->with('id', $editGiveaway->id);
 
@@ -247,8 +253,8 @@ class GiveawayController extends ApiController
                     ->makeResponse("Data deleted Successfully");
     }
 
-    public function getCurrentGiveaway()
+    public function getCurrentGiveaway($noPopup = false)
     {
-        return json_encode(PageHelper::getCurrentGiveaway());
+        return json_encode(PageHelper::getCurrentGiveaway($noPopup));
     }
 }

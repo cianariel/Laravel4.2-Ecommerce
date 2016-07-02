@@ -75,20 +75,19 @@ class PageHelper {
         return ($return);
     }
 
-    public static function getCurrentGiveaway() {
+    public static function getCurrentGiveaway($noPopup = false) {
         $giveaway = Giveaway::whereDate('ends', '>=', date('Y-m-d'))->whereDate('goes_live', '<=', date('Y-m-d'))->first();
 
         if(!$giveaway){
             $giveaway = (object)[];
         }
 
-        if(!isset($_COOKIE['giveaway_pop_shown'])) {
+        if(!isset($_COOKIE['giveaway_pop_shown']) && !$noPopup) {
             setcookie('giveaway_pop_shown', true, (time()+(60*60*24)), '/');
             $giveaway->showPopup = true;
         }else{
             $giveaway->showPopup = false;
         }
-//        $giveaway->showPopup = true;
 
         return $giveaway;
     }

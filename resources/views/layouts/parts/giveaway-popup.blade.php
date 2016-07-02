@@ -3,16 +3,23 @@
         if(!function_exists('is_single')){
             $theGiveAway = PageHelper::getCurrentGiveaway();
         }else{
-            $json = file_get_contents('http://ideaing.com/api/giveaway/get-current');
-            $theGiveAway = json_decode($json);
+
+        if(isset($_COOKIE['giveaway_pop_shown'])){
+            $noPopup = 1;
+        }else{
+            $noPopup = 0;
         }
-    }
+
+        $json = file_get_contents('https://ideaing.com/api/giveaway/get-current/' . $noPopup);
+        $theGiveAway = json_decode($json);
+
+    }}
    if(@$theGiveAway->giveaway_permalink && $theGiveAway->showPopup){
-?>
+?> 
 
 
 <div id="giveaway-popup" class="col-xs-12 hidden-soft">
-     <span class="close-button close-login" data-toggle="#giveaway-popup">
+     <span class="close-button close-login" data-toggle="#giveaway-popup" data-show=".ideas-sharing">
         <i class="m-icon--Close"></i>
     </span>
 
@@ -30,4 +37,4 @@
 
 </div>
 
-<?php } ?>
+<?php  } ?>

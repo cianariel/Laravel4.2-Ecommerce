@@ -16,7 +16,14 @@ if (!isset($theGiveAway)) {
     if (!function_exists('is_single')) {
         $theGiveAway = PageHelper::getCurrentGiveaway();
     } else {
-        $json = file_get_contents('https://ideaing.com/api/giveaway/get-current');
+         if(isset($_COOKIE['giveaway_pop_shown'])){
+            $noPopup = 1;
+         }else{
+            $noPopup = 0;
+         }
+
+        $json = file_get_contents('https://ideaing.com/api/giveaway/get-current/' . $noPopup);
+
         $theGiveAway = json_decode($json);
     }
 }
@@ -24,6 +31,7 @@ if (!isset($theGiveAway)) {
 
 <div id="publicApp" ng-app="publicApp" ng-controller="publicController" class="header-cloak" ng-cloak>
     <header class="colophon">
+
         <div ng-init="socialCounter()" class="socialcounter col-xs-12">
             <nav id="top-nav" class="row">
 

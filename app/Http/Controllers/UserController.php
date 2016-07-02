@@ -392,6 +392,18 @@ class UserController extends ApiController
 
     }
 
+    // Mark single notice as read
+    public function singleNotificationRead()
+    {
+        $inputData = \Input::all();
+        //dd($inputData);
+        $result = $this->user->markNotificationAsRead($inputData);
+
+        return $this->setStatusCode(\Config::get("const.api-status.success"))
+                    ->makeResponse($result);
+
+    }
+
     // Contact us
 
     public function postContactUsInfo()

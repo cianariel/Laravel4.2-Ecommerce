@@ -1174,7 +1174,7 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                  window.location = $scope.loginRedirectLocation;
                  */
             }).error(function (data) {
-              //  console.log(data);
+                console.log(data);
             });
 
         };
@@ -1471,7 +1471,7 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
             }).success(function (data) {
                 $scope.notificationCounter = data.data.NotReadNoticeCount;
                 $scope.notifications = data.data.NoticeNotRead;
-             //   console.log($scope.notifications);
+            //  console.log($scope.notifications);
             });
         };
 
@@ -1480,6 +1480,25 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
             $scope.notificationLimit += limit;
 
             $scope.loadNotification(uid);
+        };
+
+        $scope.readSingleNotification = function(uid,plink){
+
+        //    console.log('data',uid,plink);
+
+            $http({
+                url: '/api/read-single-notification',
+                method: "POST",
+                data:{
+                    UserId: uid,
+                    Permalink: plink
+                }
+            }).success(function (data) {
+
+                $scope.loadNotification(uid);
+
+            });
+
         };
 
         $scope.readAllNotification = function () {
