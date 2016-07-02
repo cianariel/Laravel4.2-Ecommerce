@@ -18,7 +18,7 @@
         public function makeUrl()
         {
 
-            // Your AWS Access Key ID, as taken from the AWS Your Account page
+            // Your AWS Access Key ID, as taken from the AWS Your Account page 
             $aws_access_key_id = \Config::get("const.product-api-key.amazon-product-api.access-key");//"AKIAIQYICLTUI4NBTPGA";
 
             // Your AWS Secret Key corresponding to the above ID, as taken from the AWS Your Account page
