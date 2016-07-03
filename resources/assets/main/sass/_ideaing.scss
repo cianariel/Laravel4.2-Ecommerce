@@ -635,8 +635,9 @@ a{ // Custom Link Styles
     width: 60px;
     height: 60px;
     float: left;
+    clear: left;
     padding-top: 23px;
-    margin-top: -10px;
+    //margin-top: -10px;
 
     border-radius: 50%;
     font-size: 1.1rem;
@@ -1371,6 +1372,7 @@ body.contactus-page
 
   .top{
     width: 100%;
+    overflow: hidden;
 /*    height: 85px;*/
     padding: 12px 35px 35px;
     padding-top:25px;
@@ -1379,13 +1381,23 @@ body.contactus-page
 
   }
   .price{
+    margin-top: 7px;
+    margin-bottom: 10px;
+    padding: 0;
     color: #fff;
     font-size: 1.8rem;
-    float: right;
-    font-weight: normal;
+
+    .regular-price{
+      text-decoration: line-through;
+      font-weight: 200;
+    }
+    .sale-price{
+      color: $iridium;
+      font-weight: bold;
+    }
   }
   .vendor-logo{
-    margin-left: 5%;
+    //margin-left: 5%;
     margin-top: 9px;
   }
 
@@ -3571,12 +3583,12 @@ body.product-details{
       color: $pink;
   }
   
-  #top-nav a.shop{
-      /*color: $grey;
-      font-weight: bold;
-      position: relative;*/
-
-  }
+  //#top-nav a.shop{
+  //    /*color: $grey;
+  //    font-weight: bold;
+  //    position: relative;*/
+  //
+  //}
 
   .article-content{
 /*      line-height: 1;*/
@@ -3597,14 +3609,17 @@ body.product-details{
   background: #fff;
   background: rgba(255,255,255,.85);
   border-bottom: 1px solid lighten($light-grey, 10%);
-
+  .get-round{
+    margin-top: -10px !important;
+  }
   .social-stats{
         position: absolute;
 /*        background: white none repeat scroll 0% 0%;*/
         right: 0px;
         right: -79px;
-        top: -17px;
+        top: -10px;
         z-index: 58;
+        font-size: 1.7rem;
   }
   
   .lamp-logo{
@@ -6281,8 +6296,9 @@ footer.about-footer{
         display: block;
       }
       .price{
-        width: 100%;
-        text-align: center;
+        padding-left: 0;
+      //  //width: 100%;
+      //  //text-align: center;
       }
     }
   }

@@ -4954,8 +4954,8 @@ a.get-round {
   width: 60px;
   height: 60px;
   float: left;
+  clear: left;
   padding-top: 23px;
-  margin-top: -10px;
   border-radius: 50%;
   font-size: 1.1rem;
   font-weight: bold;
@@ -5672,18 +5672,25 @@ body.contactus-page #hero {
   z-index: 2; }
   .slider-side-block .top {
     width: 100%;
+    overflow: hidden;
     /*    height: 85px;*/
     padding: 12px 35px 35px;
     padding-top: 25px;
     background-color: rgba(0, 0, 0, 0.65);
     border-radius: 5px 0 0 0; }
   .slider-side-block .price {
+    margin-top: 7px;
+    margin-bottom: 10px;
+    padding: 0;
     color: #fff;
-    font-size: 1.8rem;
-    float: right;
-    font-weight: normal; }
+    font-size: 1.8rem; }
+    .slider-side-block .price .regular-price {
+      text-decoration: line-through;
+      font-weight: 200; }
+    .slider-side-block .price .sale-price {
+      color: #FF0042;
+      font-weight: bold; }
   .slider-side-block .vendor-logo {
-    margin-left: 5%;
     margin-top: 9px; }
   .slider-side-block .table {
     padding: 10px;
@@ -7048,10 +7055,6 @@ body.product-details .scroll-header #top-nav a.shop {
   color: #999999; }
 body.product-details .scroll-header #top-nav a.shop:hover {
   color: #ed2049; }
-body.product-details #top-nav a.shop {
-  /*color: $grey;
-  font-weight: bold;
-  position: relative;*/ }
 body.product-details .article-content {
   /*      line-height: 1;*/
   font-size: 15px;
@@ -7067,13 +7070,16 @@ body.product-details .article-content {
   background: #fff;
   background: rgba(255, 255, 255, 0.85);
   border-bottom: 1px solid #dbdbdb; }
+  .story-header .get-round {
+    margin-top: -10px !important; }
   .story-header .social-stats {
     position: absolute;
     /*        background: white none repeat scroll 0% 0%;*/
     right: 0px;
     right: -79px;
-    top: -17px;
-    z-index: 58; }
+    top: -10px;
+    z-index: 58;
+    font-size: 1.7rem; }
   .story-header .lamp-logo {
     float: left;
     min-height: 50px;
@@ -8818,8 +8824,7 @@ footer.about-footer {
       margin: 10px auto;
       display: block; }
     .slider-side-block .price {
-      width: 100%;
-      text-align: center; } }
+      padding-left: 0; } }
 @media only screen and (max-width: 1200px) {
   .idea-stories .story-details .author-overview {
     padding-top: 6%; }
