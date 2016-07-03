@@ -533,9 +533,6 @@ class User extends Model implements AuthenticatableContract,
             $notification->save();
         }
 
-
-
-
         return $notifications;
 
     }
