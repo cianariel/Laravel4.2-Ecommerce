@@ -179,6 +179,7 @@ if ( $posts->have_posts() ) {
             $ID = get_the_ID();
             $data['id'] = $ID;
             $data['title'] = get_the_title();
+            $data['views'] = getPostViews($ID);
 
             if (isset($_REQUEST['full_content'])) {
                 $data['content'] = get_the_content();
