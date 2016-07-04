@@ -62,7 +62,7 @@
                                 </div>
 
 
-                                <div ng-class="item['Type'] =='heart' ? 'col-xs-12':'col-xs-8'">
+                                <div ng-class="item['Type'] =='heart' ? 'col-xs-12':'col-xs-12'">
                                     <strong>
                                         @{{ profileFullName }} recently
                                         <span ng-if="item['Type']=='comment'"> commented</span>
@@ -116,7 +116,7 @@
                             </div>
 
 
-                            <div ng-class="item['Type'] =='heart' ? 'col-xs-12':'col-xs-8'">
+                            <div ng-class="item['Type'] =='heart' ? 'col-xs-12':'col-xs-12'">
                                 <strong>
                                     @{{ profileFullName }} recently
                                     <span ng-if="item['Type']=='comment'"> commented</span>
@@ -231,12 +231,10 @@
                 // load dynamic feed data
                 angular.element(document.getElementById('loadDynamicData')).scope().userActivityList('{{$permalink}}', 5);
             }
-
             if (postActive == true) {
                 // load dynamic post data
                 angular.element(document.getElementById('loadDynamicData')).scope().userPostList('{{$permalink}}', 6);
             }
-
         }
     });
 </script>

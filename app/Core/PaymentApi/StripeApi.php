@@ -25,13 +25,15 @@ class StripeApi implements PaymentApiInterface
 
     public function createUser($data)
     {
+        //  dd('create user',$data);
         $userPaymentToken = $this->checkUserPaymentStatus($data['UserId']);
 
         if (empty($userPaymentToken)) {
             try {
                 $customer = Customer::create([
                     'description' => $data['Email'],
-                    'source' => $data['Token']
+                    'source' => $data['Token'],
+                    'plan' => empty($data['Plan']) ? null : $data['Plan']
                 ]);
 
                 User::where('email', $data['Email'])
@@ -94,6 +96,7 @@ class StripeApi implements PaymentApiInterface
 
     public function chargeUser($data)
     {
+        //   dd('charge user',$data);
         $userToken = $this->createUser($data);
 
         if (!empty($userToken['code'])) {
@@ -107,7 +110,7 @@ class StripeApi implements PaymentApiInterface
                 "amount" => $data['Amount'] * 100,
                 "currency" => "usd",
                 "customer" => $userToken,
-                "source" => $data['Token'],
+                //  "source" => $data['Token'],
                 "description" => empty($data['Description']) ? "" : $data['Description']
             ]);
 
@@ -180,7 +183,7 @@ class StripeApi implements PaymentApiInterface
     {
         $user = new User();
 
-        $user = $user->getUserById($data['UserId']);
+        $user = $user->getUserById($data);
 
         return empty($user->payment_token) ? false : $user->payment_token;
     }

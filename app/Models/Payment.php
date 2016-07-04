@@ -16,12 +16,13 @@ class Payment extends Model
      */
     protected $table = 'payments';
 
-    /* protected $fillable = array(
-         'store_name',
-         'store_identifier',
-         'status',
-         'store_description'
-     );*/
+     protected $fillable = [
+         'user_id',
+         'transaction_id',
+         'bill_title',
+         'bill_description',
+         'gateway_response'
+     ];
 
     protected $hidden = ['created_at', 'updated_at'];
 
@@ -40,38 +41,6 @@ class Payment extends Model
 
     // Membership Payment
 
-    public function membershipSubscribe($data)
-    {
-        $fees = \Config::get('const.VIP');
-
-        $payment = new PaymentStrategy();
-
-        $result = $payment->chargeUser([
-            'UserId' => $data['UserId'],
-            'Email' => $data['Email'],
-            'Token' => $data['Token'],
-            'Amount' => $fees,
-
-        ]);
-
-        return $result;
-    }
-
-    public function savePaymentInfo($data)
-    {
-        $payment = new Payment();
-
-        $payment->save([
-            'user_id' => $data['UserId'],
-            'transaction_id' => $data['TransactionId'],
-            'bill_title' => $data['Title'],
-            'bill_description' => $data['Description'],
-            'gateway_response' => $data['Response']
-        ]);
-
-        return $payment;
-    }
-
     public function updateUserMembership($data)
     {
         $status = $this->membershipSubscribe($data);
@@ -88,15 +57,52 @@ class Payment extends Model
         }
 
         $result = $this->savePaymentInfo([
-            'user_id' => $data['UserId'],
-            'transaction_id' => $status['TransactionId'],
-            'bill_title' => $data['Title'],
-            'bill_description' => $data['Description'],
-            'gateway_response' => $status['body']
+            'UserId' => $data['UserId'],
+            'TransactionId' => $status['data']->id,
+            'Title' => $data['Title'],
+            'Description' => $data['Description'],
+            'Response' => json_encode($status['data'])
         ]);
 
         return ['data' => $result, 'code' => '200'];
     }
+
+
+    public function membershipSubscribe($data)
+    {
+        $fees = \Config::get('const.VIP');
+
+        $payment = new PaymentStrategy();
+
+        $result = $payment->chargeUser([
+            'UserId' => $data['UserId'],
+            'Email' => $data['Email'],
+            'Token' => $data['Token'],
+            'Amount' => $fees,
+            'Description' => 'Membership'
+
+        ]);
+
+      //  dd($result);
+        return $result;
+    }
+
+    public function savePaymentInfo($data)
+    {
+        $payment = new Payment();
+
+        $payment->user_id = $data['UserId'];
+        $payment->transaction_id = $data['TransactionId'];
+        $payment->bill_title = $data['Title'];
+        $payment->bill_description = $data['Description'];
+        $payment->gateway_response = $data['Response'];
+
+        $payment->save();
+
+        return $payment;
+    }
+
+
 
     public function checkPaymentStatus($userId)
     {

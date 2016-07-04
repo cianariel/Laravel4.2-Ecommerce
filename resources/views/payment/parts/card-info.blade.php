@@ -5,6 +5,8 @@
                 {!! Form::open(['id' => 'billing-form']) !!}
                 <div id="error-message"></div>
 
+                <input type="hidden" name="payment-type" value="{{$paymentType}}">
+
                 <div class="row">
                     <div class="col-md-2">
                         Card Number :
