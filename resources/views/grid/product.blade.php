@@ -9,18 +9,9 @@
 <div class="box-item__overlay" ng-click="openProductPopup(item.id)"></div>
 
 <div class="social-stats">
-    <div class="social-stats__item">
-        <?php
-        $userId = !empty($userData->id) ? $userData->id : 0;
-            if($userId == 0)
-            {
-                $userId = !empty($userData['id'] ) ? $userData['id']  : 0;
-            }
-        ?>
-
-        <heart-counter-dir uid="<?php echo $userId ?>" iid=item.id plink=item.product_permalink sec='product'>
-
-        </heart-counter-dir>
+    <div class="social-stats__item rating">
+            <span class="m-icon--bulb-detailed-on-rating"></span>
+            <span><?php echo '{{item.AverageScore}}' ?>%</span>
     </div>
 </div>
 
