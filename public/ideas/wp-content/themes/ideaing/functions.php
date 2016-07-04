@@ -87,40 +87,6 @@ function html5blank_nav()
 	);
 }
 
-// Load HTML5 Blank scripts (header.php)
-//function html5blank_header_scripts()
-//{
-//    if ($GLOBALS['pagenow'] != 'wp-login.php' && !is_admin()) {
-//
-//    	wp_register_script('conditionizr', get_template_directory_uri() . '/js/lib/conditionizr-4.3.0.min.js', array(), '4.3.0'); // Conditionizr
-//        wp_enqueue_script('conditionizr'); // Enqueue it!
-//
-//        wp_register_script('modernizr', get_template_directory_uri() . '/js/lib/modernizr-2.7.1.min.js', array(), '2.7.1'); // Modernizr
-//        wp_enqueue_script('modernizr'); // Enqueue it!
-//
-//        wp_register_script('html5blankscripts', get_template_directory_uri() . '/js/scripts.js', array('jquery'), '1.0.0'); // Custom scripts
-//        wp_enqueue_script('html5blankscripts'); // Enqueue it!
-//    }
-//}
-
-//// Load HTML5 Blank conditional scripts
-//function html5blank_conditional_scripts()
-//{
-//    if (is_page('pagenamehere')) {
-//        wp_register_script('scriptname', get_template_directory_uri() . '/js/scriptname.js', array('jquery'), '1.0.0'); // Conditional script(s)
-//        wp_enqueue_script('scriptname'); // Enqueue it!
-//    }
-//}
-
-//// Load HTML5 Blank styles
-//function html5blank_styles()
-//{
-//    wp_register_style('normalize', get_template_directory_uri() . '/normalize.css', array(), '1.0', 'all');
-//    wp_enqueue_style('normalize'); // Enqueue it!
-//
-//    wp_register_style('html5blank', get_template_directory_uri() . '/style.css', array(), '1.0', 'all');
-//    wp_enqueue_style('html5blank'); // Enqueue it!
-//}
 
 // Register HTML5 Blank Navigation
 function register_html5_menu()
@@ -734,5 +700,46 @@ return $classes;
 //
 //// Remove the reponsive stuff from the content
 //remove_filter( 'the_content', 'wp_make_content_images_responsive' );
+
+
+// function to display number of posts.
+function getPostViews($postID){
+    $count_key = 'post_views_count';
+    $count = get_post_meta($postID, $count_key, true);
+    if($count==''){
+        delete_post_meta($postID, $count_key);
+        add_post_meta($postID, $count_key, '0');
+        return "0 View";
+    }
+    return $count;
+}
+
+// function to count views.
+function setPostViews($postID) {
+    $count_key = 'post_views_count';
+    $count = get_post_meta($postID, $count_key, true);
+    if($count==''){
+        $count = 0;
+        delete_post_meta($postID, $count_key);
+        add_post_meta($postID, $count_key, '0');
+    }else{
+        $count++;
+        update_post_meta($postID, $count_key, $count);
+    }
+}
+
+
+// // Add it to a column in WP-Admin
+// add_filter('manage_posts_columns', 'posts_column_views');
+// add_action('manage_posts_custom_column', 'posts_custom_column_views',5,2);
+// function posts_column_views($defaults){
+//     $defaults&#91;'post_views'&#93; = __('Views');
+//     return $defaults;
+// }
+// function posts_custom_column_views($column_name, $id){
+//     if($column_name === 'post_views'){
+//         echo getPostViews(get_the_ID());
+//     }
+// }
 
 ?>
