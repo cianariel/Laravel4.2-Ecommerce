@@ -7812,6 +7812,10 @@ header.sub-head {
 @media (max-width: 620px) {
   .homepage #hero-slider .rsNav.rsBullets {
     top: -30px; } }
+.homepage .product-box .rating {
+  font-size: 1.5rem; }
+  .homepage .product-box .rating .icon {
+    font-size: 3rem; }
 
 .like-nav li {
   width: 35px;

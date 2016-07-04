@@ -79,7 +79,7 @@
 
                     Don't want to hear from Ideaing?<br/>
                     You can <a style="text-decoration: none; color: #0a8cce"
-                               href="https://ideaing.com/unsubscribe">unsubscribe</a> from this list<br/>
+                               href="https://ideaing.com/user/profile">unsubscribe</a> from this list<br/>
 
                 </td>
             </tr>

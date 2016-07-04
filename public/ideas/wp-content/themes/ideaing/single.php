@@ -233,7 +233,11 @@
 
     <!-- /article -->
 
-<?php endwhile; ?>
+<?php 
+    setPostViews(get_the_ID());
+    endwhile; 
+
+?>
 
 <?php else: ?>
 
