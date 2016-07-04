@@ -74,18 +74,35 @@ class Payment extends Model
 
     public function updateUserMembership($data)
     {
+        $status = $this->membershipSubscribe($data);
+
+        if($status['code'] != '200')
+        {
+            return $status;
+        }
+
         try {
             UserSetting::where('user_id', $data['UserId'])->update(['membership_type' => $data['MembershipType']]);
         } catch (\Exception $e) {
             return false;
         }
 
-        $this->savePaymentInfo($data);
-        return true;
+        $result = $this->savePaymentInfo([
+            'user_id' => $data['UserId'],
+            'transaction_id' => $status['TransactionId'],
+            'bill_title' => $data['Title'],
+            'bill_description' => $data['Description'],
+            'gateway_response' => $status['body']
+        ]);
+
+        return ['data' => $result, 'code' => '200'];
     }
 
     public function checkPaymentStatus($userId)
     {
+        $userToken = User::where('id', $userId)->get(['payment_token']);
+
+        return empty($userToken) ? "" : $userToken;
 
     }
 

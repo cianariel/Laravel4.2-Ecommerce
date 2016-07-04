@@ -14,9 +14,7 @@
         },
 
         bindEvents: function () {
-
             this.form.on('submit', $.proxy(this.sendToken, this));
-
         },
 
         sendToken: function (event) {
