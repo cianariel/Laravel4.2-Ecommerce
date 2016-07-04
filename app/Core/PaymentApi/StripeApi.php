@@ -47,42 +47,42 @@ class StripeApi implements PaymentApiInterface
                 // Since it's a decline, \Stripe\Error\Card will be caught
                 $body = $e->getJsonBody();
                 $err = $body['error'];
-                return ['body' => $body, 'code' => $err['code']];
+                return ['data' => $body, 'code' => $err['code']];
 
             } catch (\Stripe\Error\RateLimit $e) {
                 // Too many requests made to the API too quickly
                 $body = $e->getJsonBody();
                 $err = $body['error'];
-                return ['body' => $body, 'code' => $err['code']];
+                return ['data' => $body, 'code' => $err['code']];
 
             } catch (\Stripe\Error\InvalidRequest $e) {
                 // Invalid parameters were supplied to Stripe's API
                 $body = $e->getJsonBody();
                 $err = $body['error'];
-                return ['body' => $body, 'code' => $err['code']];
+                return ['data' => $body, 'code' => $err['code']];
 
             } catch (\Stripe\Error\Authentication $e) {
                 // Authentication with Stripe's API failed
                 $body = $e->getJsonBody();
                 $err = $body['error'];
-                return ['body' => $body, 'code' => $err['code']];
+                return ['data' => $body, 'code' => $err['code']];
 
                 // (maybe you changed API keys recently)
             } catch (\Stripe\Error\ApiConnection $e) {
                 // Network communication with Stripe failed
                 $body = $e->getJsonBody();
                 $err = $body['error'];
-                return ['body' => $body, 'code' => $err['code']];
+                return ['data' => $body, 'code' => $err['code']];
             } catch (\Stripe\Error\Base $e) {
                 // Display a very generic error to the user, and maybe send
 
                 $body = empty($e->getJsonBody()) ? "" : $e->getJsonBody();
                 // $err = $body['error'];
-                return ['body' => $body, 'code' => '666'];
+                return ['data' => $body, 'code' => '666'];
                 // yourself an email
             } catch (\Exception $e) {
 
-                return ['body' => '', 'code' => '777'];
+                return ['data' => '', 'code' => '777'];
 
             }
 
@@ -118,42 +118,42 @@ class StripeApi implements PaymentApiInterface
             // Since it's a decline, \Stripe\Error\Card will be caught
             $body = $e->getJsonBody();
             $err = $body['error'];
-            return ['body' => $body, 'code' => $err['code']];
+            return ['data' => $body, 'code' => $err['code']];
 
         } catch (\Stripe\Error\RateLimit $e) {
             // Too many requests made to the API too quickly
             $body = $e->getJsonBody();
             $err = $body['error'];
-            return ['body' => $body, 'code' => $err['code']];
+            return ['data' => $body, 'code' => $err['code']];
 
         } catch (\Stripe\Error\InvalidRequest $e) {
             // Invalid parameters were supplied to Stripe's API
             $body = $e->getJsonBody();
             $err = $body['error'];
-            return ['body' => $body, 'code' => $err['code']];
+            return ['data' => $body, 'code' => $err['code']];
 
         } catch (\Stripe\Error\Authentication $e) {
             // Authentication with Stripe's API failed
             $body = $e->getJsonBody();
             $err = $body['error'];
-            return ['body' => $body, 'code' => $err['code']];
+            return ['data' => $body, 'code' => $err['code']];
 
             // (maybe you changed API keys recently)
         } catch (\Stripe\Error\ApiConnection $e) {
             // Network communication with Stripe failed
             $body = $e->getJsonBody();
             $err = $body['error'];
-            return ['body' => $body, 'code' => $err['code']];
+            return ['data' => $body, 'code' => $err['code']];
         } catch (\Stripe\Error\Base $e) {
             // Display a very generic error to the user, and maybe send
 
             $body = empty($e->getJsonBody()) ? "" : $e->getJsonBody();
             // $err = $body['error'];
-            return ['body' => $body, 'code' => '666'];
+            return ['data' => $body, 'code' => '666'];
             // yourself an email
         } catch (\Exception $e) {
 
-            return ['body' => '', 'code' => '777'];
+            return ['data' => '', 'code' => '777'];
         }
 
         /*
@@ -186,5 +186,84 @@ class StripeApi implements PaymentApiInterface
         $user = $user->getUserById($data);
 
         return empty($user->payment_token) ? false : $user->payment_token;
+    }
+
+    public function subscribeUser($data)
+    {
+
+        //   dd('charge user',$data);
+        $userToken = $this->createUser($data);
+
+        if (!empty($userToken['code'])) {
+            return $userToken;
+        }
+
+        try {
+
+            $subscribe = \Stripe\Subscription::create([
+
+                "customer" => $userToken,
+                "plan" => $data['Plan']
+            ]);
+
+        } catch (\Stripe\Error\Card $e) {
+            // Since it's a decline, \Stripe\Error\Card will be caught
+            $body = $e->getJsonBody();
+            $err = $body['error'];
+            return ['data' => $body, 'code' => $err['code']];
+
+        } catch (\Stripe\Error\RateLimit $e) {
+            // Too many requests made to the API too quickly
+            $body = $e->getJsonBody();
+            $err = $body['error'];
+            return ['data' => $body, 'code' => $err['code']];
+
+        } catch (\Stripe\Error\InvalidRequest $e) {
+            // Invalid parameters were supplied to Stripe's API
+            $body = $e->getJsonBody();
+            $err = $body['error'];
+            return ['data' => $body, 'code' => $err['code']];
+
+        } catch (\Stripe\Error\Authentication $e) {
+            // Authentication with Stripe's API failed
+            $body = $e->getJsonBody();
+            $err = $body['error'];
+            return ['data' => $body, 'code' => $err['code']];
+
+            // (maybe you changed API keys recently)
+        } catch (\Stripe\Error\ApiConnection $e) {
+            // Network communication with Stripe failed
+            $body = $e->getJsonBody();
+            $err = $body['error'];
+            return ['data' => $body, 'code' => $err['code']];
+        } catch (\Stripe\Error\Base $e) {
+            // Display a very generic error to the user, and maybe send
+
+            $body = empty($e->getJsonBody()) ? "" : $e->getJsonBody();
+            // $err = $body['error'];
+            return ['data' => $body, 'code' => '666'];
+            // yourself an email
+        } catch (\Exception $e) {
+
+            return ['data' => '', 'code' => '777'];
+        }
+
+        return ['data' => $subscribe, 'code' => '200'];
+    }
+
+    public function cancelSubscribedUser($data)
+    {
+        try {
+
+            $subscribe = \Stripe\Subscription::retrieve($data);
+
+            $subscribe->cancel();
+
+            return ['data' => $subscribe, 'code' => '200'];
+
+        }catch(\Exception $e)
+        {
+            return ['data' => $subscribe, 'code' => '777'];
+        }
     }
 }

@@ -72,5 +72,7 @@ return [
 
     // Membership fee
     'VIP' => '5',
+    'VIP-Membership' => 'TEST'
+
 
 ];

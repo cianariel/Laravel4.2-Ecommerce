@@ -308,6 +308,7 @@ Route::group(['prefix' => 'admin'], function () {
 Route::group(['prefix' => 'payment'], function () {
     Route::get('payment-info', 'PaymentController@index');
     Route::post('payment-info', 'PaymentController@paymentProcess');
+    Route::any('cancel-membership', 'PaymentController@cancelMembership');
 
 });
 
