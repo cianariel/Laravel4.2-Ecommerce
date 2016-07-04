@@ -233,7 +233,7 @@ class Product extends Model
                      ->first(array(
                          'products.id', 'products.show_for', 'products.updated_at', 'products.product_vendor_id', 'products.store_id',//'products.product_vendor_type',
                          'products.user_name', 'products.product_name', 'product_categories.category_name', 'products.affiliate_link',
-                         'products.price', 'products.sale_price', 'medias.media_link', 'products.product_permalink', 'products.post_status'
+                         'products.price', 'products.sale_price', 'medias.media_link', 'products.product_permalink', 'products.post_status', 'ideaing_review_score', 'review'
                      ));
 
         return $result;
@@ -349,6 +349,8 @@ class Product extends Model
         }
 
 
+
+
         $skip = isset($settings['CustomSkip']) ? intval($settings['CustomSkip']) : $settings['limit'] * ($settings['page'] - 1);
 
 
@@ -386,6 +388,12 @@ class Product extends Model
 
             // Add store information
             $tmp->storeInfo = $this->getStoreInfoByProductId($id);
+
+            $review = json_decode($tmp->review);
+
+            if (@$settings['WithAverageScore'] == 'true' && isset($review)) {
+                $tmp->AverageScore = intval(((($review[0]->value > 0 ? $review[0]->value : $review[1]->value) + $review[1]->value)/2)*20);
+            }
 
             $data[$i] = $tmp;
         }
