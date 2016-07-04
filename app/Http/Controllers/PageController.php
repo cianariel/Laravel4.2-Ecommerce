@@ -243,8 +243,6 @@ class PageController extends ApiController
             $leftOver++;
         }
 
-//        print_r($stories['featured']->toArray()); die();
-
 
         if ($stories['featured']) {
             $featuredStories = array_slice($stories['featured']->toArray(), 0, $featuredLimit);
@@ -490,6 +488,7 @@ class PageController extends ApiController
             'FilterText' => false,
             'ShowFor' => false,
             'WithTags' => false,
+            'WithAverageScore' => true,
         ];
 
         if (@$productCategoryID) {
