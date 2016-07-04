@@ -26,4 +26,18 @@ class PaymentStrategy
 
         return $paymentEngine->chargeUser($data);
     }
+
+    public function subscribeUser($data, PayemntApiIterface $payment = null)
+    {
+        $paymentEngine = $payment ? $payment : new StripeApi();
+
+        return $paymentEngine->subscribeUser($data);
+    }
+
+    public function cancelSubscribedUser($data, PayemntApiIterface $payment = null)
+    {
+        $paymentEngine = $payment ? $payment : new StripeApi();
+
+        return $paymentEngine->cancelSubscribedUser($data);
+    }
 }

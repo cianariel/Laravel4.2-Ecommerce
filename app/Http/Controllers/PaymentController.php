@@ -72,13 +72,37 @@ class PaymentController extends ApiController
                 'Token' => $inputData['stripeToken'],
                 'MembershipType' => 'VIP',
                 'Title' => 'Membership Payment',
-                'Description' => ''
+                'Description' => 'No Description'
             ]);
 
             dd('controller : ',$result);
 
         return $result;
         }
+
+    }
+
+    public function cancelMembership()
+    {
+        $inputData = \Input::all();
+
+
+            $userData = $this->authCheck['user-data'];
+
+            $result = $this->payment->cancelMembershipSubscription([
+                'UserId' => $userData['id'],
+                'Email' => $userData['email'],
+                'Plan' => 'TEST',
+
+                'MembershipType' => '',
+                'Title' => 'Membership Payment',
+                'Description' => 'Cancel Membership'
+            ]);
+
+            dd('controller : ',$result);
+
+            return $result;
+
 
     }
 

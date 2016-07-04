@@ -14,6 +14,9 @@ interface PaymentApiInterface
 {
     public function createUser($data);
     public function chargeUser($data);
+    public function subscribeUser($data);
+    public function cancelSubscribedUser($data);
+
     public function checkUserPaymentStatus($email);
 
 }
