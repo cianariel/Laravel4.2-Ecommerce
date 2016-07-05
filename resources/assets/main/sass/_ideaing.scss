@@ -4828,9 +4828,19 @@ header.sub-head{
 
   .product-box{
     .rating{
-      font-size: 1.5rem;
+      right: 15px;
+      width: 62px;
+      height: 62px;
+      padding: 9px 19px;
+      border-radius: 50%;
+      font-size: 1.3rem;
+      color: #fff;
+      background: $sky-blue;
+
       .icon{
-        font-size: 3rem;
+        //float: left;
+        font-size: 2.6rem;
+        display: block;
       }
     }
   }
