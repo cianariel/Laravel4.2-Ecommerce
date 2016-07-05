@@ -29,7 +29,7 @@ class PaymentController extends ApiController
 
     public function index()
     {
-       // $userData = $this->authCheck;
+        // $userData = $this->authCheck;
         if ($this->authCheck['method-status'] == 'success-with-http') {
             $userData = $this->authCheck['user-data'];
 
@@ -37,10 +37,10 @@ class PaymentController extends ApiController
             $paymentType = 'membership';
 
             return view('payment.payment-info')
-                ->with('userData',$userData)
-                ->with('invoiceData',$invoiceData)
-                ->with('paymentType',$paymentType);
-        }else{
+                ->with('userData', $userData)
+                ->with('invoiceData', $invoiceData)
+                ->with('paymentType', $paymentType);
+        } else {
 
             MetaTag::set('title', 'Log In | Ideaing');
 
@@ -55,14 +55,11 @@ class PaymentController extends ApiController
         //dd('payment controller - payment process',$inputData);
 
 
-
-        if($inputData['payment-type'] == 'membership')
-        {
+        if ($inputData['payment-type'] == 'membership') {
             $amount = \Config::get('const.VIP');
         }
 
-        if(! empty($amount))
-        {
+        if (!empty($amount)) {
             $userData = $this->authCheck['user-data'];
 
             $result = $this->payment->updateUserMembership([
@@ -75,33 +72,30 @@ class PaymentController extends ApiController
                 'Description' => 'No Description'
             ]);
 
-            dd('controller : ',$result);
+            dd('controller : ', $result);
 
-        return $result;
+            return $result;
         }
 
     }
 
     public function cancelMembership()
     {
-        $inputData = \Input::all();
+        $userData = $this->authCheck['user-data'];
 
+        $result = $this->payment->cancelMembershipSubscription([
+            'UserId' => $userData['id'],
+            'Email' => $userData['email'],
+            'Plan' => 'TEST',
 
-            $userData = $this->authCheck['user-data'];
+            'MembershipType' => '',
+            'Title' => 'Membership Payment',
+            'Description' => 'Cancel Membership'
+        ]);
 
-            $result = $this->payment->cancelMembershipSubscription([
-                'UserId' => $userData['id'],
-                'Email' => $userData['email'],
-                'Plan' => 'TEST',
+        dd('controller : ', $result);
 
-                'MembershipType' => '',
-                'Title' => 'Membership Payment',
-                'Description' => 'Cancel Membership'
-            ]);
-
-            dd('controller : ',$result);
-
-            return $result;
+        return $result;
 
 
     }
