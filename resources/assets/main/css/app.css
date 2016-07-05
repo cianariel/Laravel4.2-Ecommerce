@@ -11663,10 +11663,11 @@ p {
     width: 140px;
     height: 25px;
     right: 67px; }
+  .social-stats a {
+    position: relative; }
   .social-stats__item .m-icon {
     font-size: 26px;
-    position: absolute;
-    left: 0;
+    margin-right: 4px;
     color: #FF0042; }
 
 .round-tag {
