@@ -17,10 +17,15 @@
       right: 67px;
 	}
 
+  a{
+    position: relative;
+  }
+
 	&__item .m-icon {
 		font-size: 26px;
-		position: absolute;
-		left: 0;
+		//position: absolute;
+        margin-right: 4px;
+		//left: 0;
 		color: $iridium;
 	}
 
