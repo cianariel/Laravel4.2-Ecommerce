@@ -95,19 +95,23 @@ class Payment extends Model
             ->where('active',1);
 
 
-        $paymentCollection->update(['active'=>0]);
-
         if ($paymentCollection->count()) {
             $payment = new PaymentStrategy();
 
-            $status = $payment->cancelSubscribedUser($paymentCollection['transaction_id']);
+            $id = $paymentCollection->get(['transaction_id'])[0]->transaction_id;
+
+            $status = $payment->cancelSubscribedUser($id);
 
             if ($status['code'] != '200') {
+
                 return $status;
             }
 
             try {
                 UserSetting::where('user_id', $data['UserId'])->update(['membership_type' => $data['MembershipType']]);
+
+                // update the payment table to make it inactive
+                $paymentCollection->update(['active'=>0]);
             } catch (\Exception $e) {
                 return false;
             }
@@ -124,7 +128,7 @@ class Payment extends Model
             return ['data' => $result, 'code' => '200'];
         }
 
-        return ['data' => 'No subscription inforamtion is available.', 'code' => '777'];
+        return ['data' => 'No subscription information is available.', 'code' => '777'];
 
     }
 
@@ -152,7 +156,7 @@ class Payment extends Model
         $payment = new Payment();
 
         $payment->user_id = $data['UserId'];
-        $payment->active = empty($data['UserId']) ? 0 : 1;
+        $payment->active = empty($data['Active']) ? 0 : 1;
         $payment->transaction_id = $data['TransactionId'];
         $payment->bill_title = $data['Title'];
         $payment->bill_description = $data['Description'];

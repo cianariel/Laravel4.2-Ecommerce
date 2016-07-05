@@ -263,7 +263,7 @@ class StripeApi implements PaymentApiInterface
 
         }catch(\Exception $e)
         {
-            return ['data' => $subscribe, 'code' => '777'];
+            return ['data' => '', 'code' => '777'];
         }
     }
 }
