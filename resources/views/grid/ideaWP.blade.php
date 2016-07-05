@@ -13,11 +13,11 @@
         <li class="social-stats__item">
             <a href="#">
                 <i class="m-icon m-icon--buble"></i>
-                <span class="social-stats__text"  itemprop="commentCount">{{item.CommentCount}}</span>
+                <span class="social-stats__text pink"  itemprop="commentCount">{{item.CommentCount}}</span>
             </a>
         </li>
         <li class="social-stats__item">
-            <i class="m-icon m-icon--flame"></i>
+            <i class="m-icon m-icon--flame" ng-show="item.views >= 100"></i>
             <span class="social-stats__text pink">{{item.views}} views</span>
         </li>
     </ul>
