@@ -7818,12 +7818,16 @@ header.sub-head {
   height: 62px;
   padding: 9px 17px;
   border-radius: 50%;
-  font-size: 1.1rem;
-  color: #fff;
-  background: #00B1FF; }
+  font-size: 1.25rem;
+  color: #FF0042; }
   .homepage .product-box .rating .icon {
-    font-size: 2.6rem;
+    font-size: 2.9rem;
     display: block; }
+  .homepage .product-box .rating .value {
+    width: 120%;
+    text-align: center;
+    display: block;
+    margin: 0 auto; }
 
 .like-nav li {
   width: 35px;
