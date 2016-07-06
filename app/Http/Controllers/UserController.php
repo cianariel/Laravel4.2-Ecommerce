@@ -558,7 +558,7 @@ class UserController extends ApiController
     {
         $data = $this->user->sendActivityMail();
 
-       // dd($data);
+       // dd($data); 
 
       //  return view('email.notification') 
         //    ->with('content',$data);
