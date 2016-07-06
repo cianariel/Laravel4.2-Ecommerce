@@ -7,7 +7,7 @@
         <br>
         @include('payment.parts.invoice')
         <br>
-        <div id="error-message"></div>
+        <div style="" id="error-message"></div>
         <br>
         @include('payment.parts.card-info')
 

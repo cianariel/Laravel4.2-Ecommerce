@@ -501,6 +501,10 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
             $scope.postActive = true;
             $scope.ActivityActive = true;
 
+            // Membership Subscription and Payment
+
+            $scope.setMembershipSubscription = false;
+
             // user profile settings
 
             $scope.setDailyEmailNotification = true;
@@ -573,6 +577,19 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
             else
                 return false;
 
+        };
+
+        // membership subscription
+
+        $scope.changeSubscription = function(){
+
+            if($scope.setMembershipSubscription == true)
+            {
+                window.location = '/payment/payment-info'
+
+            }else{
+
+            }
         };
 
         // contact us
