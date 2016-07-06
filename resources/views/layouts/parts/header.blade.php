@@ -560,8 +560,12 @@ if (!isset($theGiveAway)) {
                                     </div>
                                     <div class="clearfix"></div>
                                 </div>
-
-                                <div class="form-group checkbox-form-group">
+                            </div>
+                            <div class="form-group title">
+                                <label>Subscription</label>
+                            </div>
+                            <div class="content">
+                                <div class="form-group checkbox-form-group" ng-init="checkSubscription()">
                                     <div class="pull-left">
                                         VIP Membership Subscription
                                     </div>
@@ -581,7 +585,6 @@ if (!isset($theGiveAway)) {
                                     </div>
                                     <div class="clearfix"></div>
                                 </div>
-
                             </div>
                         </div>
                     </form>

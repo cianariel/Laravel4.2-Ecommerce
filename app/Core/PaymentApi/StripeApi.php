@@ -216,13 +216,15 @@ class StripeApi implements PaymentApiInterface
             // Too many requests made to the API too quickly
             $body = $e->getJsonBody();
             $err = $body['error'];
-            return ['data' => $body, 'code' => $err['code']];
+            return ['data' => $body, 'code' => empty($err['code'])?'756':$err['code']];
 
         } catch (\Stripe\Error\InvalidRequest $e) {
             // Invalid parameters were supplied to Stripe's API
+
             $body = $e->getJsonBody();
             $err = $body['error'];
-            return ['data' => $body, 'code' => $err['code']];
+          //  dd($body);
+            return ['data' => $body, 'code' => empty($err['code'])?'755':$err['code']];
 
         } catch (\Stripe\Error\Authentication $e) {
             // Authentication with Stripe's API failed

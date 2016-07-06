@@ -310,6 +310,9 @@ Route::group(['prefix' => 'payment'], function () {
     Route::post('payment-info/{param?}', 'PaymentController@paymentProcess');
     Route::any('cancel-membership', 'PaymentController@cancelMembership');
 
+    Route::get('membership-check', 'PaymentController@checkMembership');
+
+
 });
 
 //Shop view

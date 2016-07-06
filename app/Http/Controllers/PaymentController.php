@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Payment;
+use App\Models\UserSetting;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -23,13 +24,14 @@ class PaymentController extends ApiController
         $this->authCheck = $this->RequestAuthentication(array('admin', 'editor', 'user'));
 
         $this->payment = new Payment();
+        $this->userSettings = new UserSetting();
 
         $this->clearTemporarySessionData();
     }
 
     public function index($param = 'membership')
     {
-        // $userData = $this->authCheck;
+
         if ($this->authCheck['method-status'] == 'success-with-http') {
             $userData = $this->authCheck['user-data'];
 
@@ -37,7 +39,7 @@ class PaymentController extends ApiController
 
             // filtering input
 
-            switch($param){
+            switch ($param) {
                 case 'membership':
                     $paymentType = 'membership';
                     break;
@@ -48,11 +50,16 @@ class PaymentController extends ApiController
                     $paymentType = 'membership';
             }
 
+            $payment = New Payment();
+
+            $clientToken = $payment->checkPaymentStatus($userData['id']);
 
             return view('payment.payment-info')
                 ->with('userData', $userData)
                 ->with('invoiceData', $invoiceData)
-                ->with('paymentType', $paymentType);
+                ->with('paymentType', $paymentType)
+                ->with('clientToken', empty($clientToken[0]['payment_token']) ? 0 : 1);
+
         } else {
 
             MetaTag::set('title', 'Log In | Ideaing');
@@ -65,8 +72,6 @@ class PaymentController extends ApiController
     public function paymentProcess()
     {
         $inputData = \Input::all();
-        //dd('payment controller - payment process',$inputData);
-
 
         if ($inputData['payment-type'] == 'membership') {
             $amount = \Config::get('const.VIP');
@@ -85,16 +90,15 @@ class PaymentController extends ApiController
                 'Description' => 'No Description'
             ]);
 
-            if($result['code'] != 200)
-            {
-                \Session::flash('payment-error-message','Transaction Failed !');
+            if ($result['code'] != 200) {
+                \Session::flash('payment-error-message', 'Transaction Failed !');
 
                 $this->index('membership');
+            }else{
+                \Session::flash('payment-error-message', 'Subscription successfully completed !');
+
+                return view('payment.payment-success')->with('userData', $userData);
             }
-
-            //dd('controller : ', $result);
-
-            return $result;
         }
 
     }
@@ -113,9 +117,8 @@ class PaymentController extends ApiController
             'Description' => 'Cancel Membership'
         ]);
 
-        if($result['code'] != 200)
-        {
-            \Session::flash('payment-error-message','Transaction Failed !');
+        if ($result['code'] != 200) {
+            \Session::flash('payment-error-message', 'Transaction Failed !');
 
             $this->index('membership');
 
@@ -123,13 +126,34 @@ class PaymentController extends ApiController
                         ->makeResponseWithError("System Failure !", $result['code']);
         }
 
-        return $this->setStatusCode(\Config::get("const.api-status.success"))
-                    ->makeResponse($result);
+        if($result['code'] == 200)
+        {
+            return $this->setStatusCode(\Config::get("const.api-status.success"))
+                        ->makeResponse('');
+        }else{
+            return $this->setStatusCode(\Config::get("const.api-status.membership-cancellation-fail"))
+                        ->makeResponse('');
+        }
 
+    }
 
-      //  dd('controller : ', $result);
+    public function checkMembership()
+    {
+        try{
+            $userData = $this->authCheck['user-data'];
 
-      //  return $result;
+            $data = $this->userSettings->checkUserProfile(['UserId' => $userData['id']]);
+
+            $result = empty($data['membership_type'])?'':$data['membership_type'];
+
+            return $this->setStatusCode(\Config::get("const.api-status.success"))
+                        ->makeResponse($result);
+
+        }catch(\Exception $e)
+        {
+            return $this->setStatusCode(\Config::get("const.api-status.app-failure"))
+                        ->makeResponse($e);
+        }
 
 
     }
