@@ -19,7 +19,7 @@
             <!-- END PAGE BAR -->
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">Subscribers List</h1>
+                    <h1 class="page-header">Paid Members List</h1>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
@@ -46,19 +46,19 @@
 
                                         <div class="form-group ">
                                             <div class="clearfix">
-                                                <div class="row">
+                                                {{--<div class="row">
                                                     <div class="text-center">
                                                         <a href="/api/user/download/subscriber-list" class="btn btn-success">
                                                             <i class="fa fa-check"></i> Download Subscribers List
                                                         </a>
                                                     </div>
                                                     <div class="text-center">
-                                                        <pagination ng-show="total != 0" total-items="total"
+                                                       <pagination ng-show="total != 0" total-items="total"
                                                                     ng-model="page"
                                                                     ng-change="getSubscribersList()"
                                                                     items-per-page="limit"></pagination>
                                                     </div>
-                                                </div>
+                                                </div>--}}
                                             </div>
                                         </div>
                                     </div>
@@ -66,37 +66,49 @@
                                         <div class="col-lg-12">
                                             <div class="panel panel-default">
                                                 <div class="panel-heading">
-                                                    User list with email and status
+                                                    Paid members list
                                                 </div>
                                                 <!-- /.panel-heading -->
-                                                <div class="panel-body">
+                                                <div class="panel-body" ng-init="getPaidMembersPaymentList()">
                                                     <div class="table-responsive">
                                                         <table class="table table-hover">
                                                             <thead>
                                                             <tr>
-                                                                <th class="col-md-4">Email</th>
-                                                                <th class="col-md-4">Status</th>
+                                                                <th class="col-md-2">Name</th>
+                                                                <th class="col-md-2">Email</th>
+                                                                <th class="col-md-2">Title</th>
+                                                                <th class="col-md-2">Description</th>
+                                                                <th class="col-md-2">TX ID</th>
+
                                                             </tr>
                                                             </thead>
                                                             <tbody>
-                                                            <tr ng-repeat="subscriber in subscriberList">
-
+                                                            <tr ng-repeat="item in paidMembersPaymentList">
                                                                 <td>
-                                                                    @{{ subscriber.email }}
+                                                                    @{{ item.user.name }}
                                                                 </td>
                                                                 <td>
-                                                                    @{{ subscriber.status }}
+                                                                    @{{ item.user.email }}
+                                                                </td>
+                                                                <td>
+                                                                @{{ item.bill_title }}
+                                                                </td>
+                                                                <td>
+                                                                @{{ item.bill_description }}
+                                                                </td>
+                                                                <td>
+                                                                @{{ item.transaction_id }}
                                                                 </td>
                                                             </tr>
                                                             </tbody>
                                                         </table>
                                                     </div>
-                                                    <div class="text-center" ng-init="getSubscribersList()">
+                                                    {{--<div class="text-center" ng-init="getSubscribersList()">
                                                         <pagination ng-show="total != 0" total-items="total"
                                                                     ng-model="page"
                                                                     ng-change="getSubscribersList()"
                                                                     items-per-page="limit"></pagination>
-                                                    </div>
+                                                    </div>--}}
                                                     <!-- /.table-responsive -->
                                                 </div>
                                                 <!-- /.panel-body -->

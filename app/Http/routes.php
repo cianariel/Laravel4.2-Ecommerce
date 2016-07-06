@@ -301,6 +301,8 @@ Route::group(['prefix' => 'admin'], function () {
 
     Route::get('subscription-report', 'AdminController@subscriptionReport');
 
+    Route::get('paid-membership-report', 'AdminController@viewPaidMembers');
+
 
 });
 
@@ -311,6 +313,9 @@ Route::group(['prefix' => 'payment'], function () {
     Route::any('cancel-membership', 'PaymentController@cancelMembership');
 
     Route::get('membership-check', 'PaymentController@checkMembership');
+
+    Route::get('paid-membership-report/{userId?}', 'PaymentController@subscribedMembershipPaymentInfo');
+
 
 
 });

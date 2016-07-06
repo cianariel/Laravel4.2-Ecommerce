@@ -583,13 +583,12 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
 
         $scope.changeSubscription = function(){
 
-            if($scope.setMembershipSubscription == true)
+
+            if($scope.setMembershipSubscription == false)
             {
                 window.location = '/payment/payment-info'
 
             }else{
-
-
                 $http({
                     url: '/payment/cancel-membership',
                     method: "GET",
@@ -604,12 +603,14 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
         // check membership status
         $scope.checkSubscription = function(){
             $http({
-                url: '/payment/cancel-membership',
+                url: '/payment/membership-check',
                 method: "GET",
             }).success(function (data) {
                 console.log('chk subs :',data);
                 if(data.status_code == 200 && data.data != '')
                     $scope.setMembershipSubscription = true;
+
+                console.log('chk subs :',data,$scope.setMembershipSubscription);
 
             });
         };

@@ -302,7 +302,16 @@ class AdminController extends ApiController
             ->with('giveaway', $giveaway)
             ->with('giveawayUsers', $giveawayusers)
             ->with('userData', $this->authCheck);
+    }
 
+    public function viewPaidMembers()
+    {
+        if ($this->authCheck['method-status'] == 'success-with-http') {
+            return view('admin.paid-member-list-view')->with('userData', $this->authCheck);
+
+        } elseif ($this->authCheck['method-status'] == 'fail-with-http') {
+            return \Redirect::to('login');
+        }
 
     }
 }
