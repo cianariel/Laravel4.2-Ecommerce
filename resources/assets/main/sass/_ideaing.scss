@@ -4937,6 +4937,12 @@ header.sub-head{
       .social-stats__item{
         width: 95px;
       }
+      .value{
+        font-size: 1.2rem;
+        line-height: 1;
+        text-align: center;
+        float: right;
+      }
     }
   }
 
@@ -4955,6 +4961,10 @@ body.single{
   .like-nav{
     float: right;
     width: 280px;
+
+    .heart-item{
+      width: 20px;
+    }
   }
   .article-content{
     iframe{
