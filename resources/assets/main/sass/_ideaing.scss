@@ -4932,8 +4932,10 @@ header.sub-head{
 
     }
     &.view-counter{
+      float: right;
+      width: 34px;
       .social-stats__item{
-        width: 82px;
+        width: 95px;
       }
     }
   }
