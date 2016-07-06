@@ -4925,6 +4925,11 @@ header.sub-head{
 
 
     }
+    &.view-counter{
+      .social-stats__item{
+        width: 82px;
+      }
+    }
   }
 
 
