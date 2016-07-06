@@ -721,7 +721,7 @@ ul.share-buttons{
     }
     &.email {
       @include round-box($light-grey, "/assets/images/email-white-small.png");
-
+      border-width: 0;
       background-position: 5px 8px;
     }
     &.pint {
@@ -772,6 +772,10 @@ ul.share-buttons{
   li {
     margin-bottom: 8px;
 
+    a.email{
+      width: 34px;
+      float: left;
+    }
   }
 
 }
@@ -801,22 +805,8 @@ li.all-shares{
   }
 }
 
-//@media (max-width: 1380px){
-//
-//  .share-bar{
-//    //position: absolute !important;
-//    //top: 16px;
-//
-//    &.stick{
-//      top: 16px;
-//    }
-//  }
-//
-//}
-
 @media (max-width: 768px){
   .share-bar{
-    //left: 15px;
     top: 618px;
   }
 
@@ -849,20 +839,25 @@ li.all-shares{
       }
     .share-bar.sticks-on-scroll {
       position: fixed !important;
-      bottom: 4px;
       z-index: 1;
-
-      bottom: 0;
+      bottom: -12px;
       top: auto;
 
       ul{
-        max-width: 70%;
+        width: 84%;
+        max-width: 85%;
         float: none;
         margin: 0 auto;
       }
 
-      .share-count, .all-shares{
+      .share-count{
         display: none;
+      }
+
+      .all-shares{
+        .share-count{
+          display: block;
+        }
       }
 
      li{
@@ -3526,7 +3521,7 @@ body.product-details, .single-post{
     .story-header h2 .title, {
         height:15px;
         display: inline-block;
-        overflow: hidden;
+        text-align: center;
     }
 
   .related-items
@@ -3574,6 +3569,7 @@ body.product-details{
     .social-rounds{
       width: 190px;
     }
+
   }
   
   .scroll-header  #top-nav a.shop{
@@ -3609,17 +3605,23 @@ body.product-details{
   background: #fff;
   background: rgba(255,255,255,.85);
   border-bottom: 1px solid lighten($light-grey, 10%);
+  h2{
+    height: 28px;
+  }
   .get-round{
     margin-top: -10px !important;
   }
   .social-stats{
         position: absolute;
-/*        background: white none repeat scroll 0% 0%;*/
         right: 0px;
         right: -79px;
         top: -10px;
         z-index: 58;
         font-size: 1.7rem;
+
+        .social-stats__item{
+          position: static;
+        }
   }
   
   .lamp-logo{
@@ -4538,12 +4540,10 @@ header.sub-head{
   border-bottom: 1px solid #EFEFEF;
   ul{
     overflow: visible;
-    //
-    //&.category-nav{
-    //  width: 390px;
-    //  margin: 0 auto;
-    //  max-width: 100%;
-    //}
+
+    .email{
+      display: none;
+    }
   }
 
   .like-counter{

@@ -5149,6 +5149,7 @@ ul.share-buttons {
     	background-size: 18px !important;
     	background-position: center !important;
     }*/
+    border-width: 0;
     background-position: 5px 8px; }
     ul.share-buttons a.email i.m-icon {
       color: white;
@@ -5329,6 +5330,9 @@ ul.share-buttons {
     z-index: 1; }
   .share-bar li {
     margin-bottom: 8px; }
+    .share-bar li a.email {
+      width: 34px;
+      float: left; }
 
 li.all-shares {
   width: 90px;
@@ -5370,16 +5374,18 @@ li.all-shares {
       display: inline-block !important; }
     .ideas-sharing .share-bar.sticks-on-scroll {
       position: fixed !important;
-      bottom: 4px;
       z-index: 1;
-      bottom: 0;
+      bottom: -12px;
       top: auto; }
       .ideas-sharing .share-bar.sticks-on-scroll ul {
-        max-width: 70%;
+        width: 84%;
+        max-width: 85%;
         float: none;
         margin: 0 auto; }
-      .ideas-sharing .share-bar.sticks-on-scroll .share-count, .ideas-sharing .share-bar.sticks-on-scroll .all-shares {
+      .ideas-sharing .share-bar.sticks-on-scroll .share-count {
         display: none; }
+      .ideas-sharing .share-bar.sticks-on-scroll .all-shares .share-count {
+        display: block; }
       .ideas-sharing .share-bar.sticks-on-scroll li {
         width: 34px;
         overflow: hidden;
@@ -7022,7 +7028,7 @@ body.product-details .story-header h2 .title, .single-post .story-header h1 .tit
 .single-post .story-header h2 .title {
   height: 15px;
   display: inline-block;
-  overflow: hidden; }
+  text-align: center; }
 body.product-details .related-items, .single-post .related-items {
   margin-bottom: 33px;
   padding-top: 15px;
@@ -7070,16 +7076,19 @@ body.product-details .article-content {
   background: #fff;
   background: rgba(255, 255, 255, 0.85);
   border-bottom: 1px solid #dbdbdb; }
+  .story-header h2 {
+    height: 28px; }
   .story-header .get-round {
     margin-top: -10px !important; }
   .story-header .social-stats {
     position: absolute;
-    /*        background: white none repeat scroll 0% 0%;*/
     right: 0px;
     right: -79px;
     top: -10px;
     z-index: 58;
     font-size: 1.7rem; }
+    .story-header .social-stats .social-stats__item {
+      position: static; }
   .story-header .lamp-logo {
     float: left;
     min-height: 50px;
@@ -7659,6 +7668,8 @@ header.sub-head {
   border-bottom: 1px solid #EFEFEF; }
   #hero-nav ul {
     overflow: visible; }
+    #hero-nav ul .email {
+      display: none; }
   #hero-nav .like-counter {
     margin-top: 7px; }
   #hero-nav li {
