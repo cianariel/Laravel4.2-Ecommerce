@@ -94,7 +94,7 @@ class PaymentController extends ApiController
                 \Session::flash('payment-error-message', 'Transaction Failed !');
 
                 $this->index('membership');
-            }else{
+            } else {
                 \Session::flash('payment-error-message', 'Subscription successfully completed !');
 
                 return view('payment.payment-success')->with('userData', $userData);
@@ -126,11 +126,10 @@ class PaymentController extends ApiController
                         ->makeResponseWithError("System Failure !", $result['code']);
         }
 
-        if($result['code'] == 200)
-        {
+        if ($result['code'] == 200) {
             return $this->setStatusCode(\Config::get("const.api-status.success"))
                         ->makeResponse('');
-        }else{
+        } else {
             return $this->setStatusCode(\Config::get("const.api-status.membership-cancellation-fail"))
                         ->makeResponse('');
         }
@@ -139,22 +138,30 @@ class PaymentController extends ApiController
 
     public function checkMembership()
     {
-        try{
+        try {
             $userData = $this->authCheck['user-data'];
 
             $data = $this->userSettings->checkUserProfile(['UserId' => $userData['id']]);
 
-            $result = empty($data['membership_type'])?'':$data['membership_type'];
+            $result = empty($data['membership_type']) ? '' : $data['membership_type'];
 
             return $this->setStatusCode(\Config::get("const.api-status.success"))
                         ->makeResponse($result);
 
-        }catch(\Exception $e)
-        {
+        } catch (\Exception $e) {
             return $this->setStatusCode(\Config::get("const.api-status.app-failure"))
                         ->makeResponse($e);
         }
 
+
+    }
+
+    public function subscribedMembershipPaymentInfo($userId = null)
+    {
+        $result = $this->payment->getSubscribedMembershipPaymentInfo($userId);
+
+        return $this->setStatusCode(\Config::get("const.api-status.success"))
+                    ->makeResponse($result);
 
     }
 

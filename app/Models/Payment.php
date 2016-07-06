@@ -25,7 +25,7 @@ class Payment extends Model
         'active'
     ];
 
-    protected $hidden = ['created_at', 'updated_at'];
+    protected $hidden = ['gateway_response','created_at', 'updated_at'];
 
     /**
      * Define Relationship
@@ -38,6 +38,12 @@ class Payment extends Model
     public function user()
     {
         return $this->belongsTo('App\Models\User');
+    }
+
+    // accessor for JSON decode
+    public function getGatewayResponseAttribute($value)
+    {
+        return json_decode($value);
     }
 
     // Membership Payment
@@ -187,6 +193,24 @@ class Payment extends Model
 
         return empty($userToken) ? "" : $userToken;
 
+    }
+
+    public function getSubscribedMembershipPaymentInfo($userId = null)
+    {
+        if($userId == null)
+        {
+            $result = Payment::with([
+                'user' =>function($query){
+                    $query->select('id','name','email');
+                }
+            ])->orderBy('updated_at','DESC')->get();
+        }
+        else
+        {
+            $result = Payment::where('user_id',$userId)->get();
+        }
+
+        return $result;
     }
 
 

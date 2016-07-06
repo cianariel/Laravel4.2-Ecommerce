@@ -4543,6 +4543,10 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
             $scope.postActive = true;
             $scope.ActivityActive = true;
 
+            // Membership Subscription and Payment
+
+            $scope.setMembershipSubscription = false;
+
             // user profile settings
 
             $scope.setDailyEmailNotification = true;
@@ -4615,6 +4619,42 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
             else
                 return false;
 
+        };
+
+        // membership subscription
+
+        $scope.changeSubscription = function(){
+
+
+            if($scope.setMembershipSubscription == false)
+            {
+                window.location = '/payment/payment-info'
+
+            }else{
+                $http({
+                    url: '/payment/cancel-membership',
+                    method: "GET",
+                }).success(function (data) {
+                    console.log('cancel membership :',data);
+                    $scope.setMembershipSubscription = false;
+
+                });
+            }
+        };
+
+        // check membership status
+        $scope.checkSubscription = function(){
+            $http({
+                url: '/payment/membership-check',
+                method: "GET",
+            }).success(function (data) {
+                console.log('chk subs :',data);
+                if(data.status_code == 200 && data.data != '')
+                    $scope.setMembershipSubscription = true;
+
+                console.log('chk subs :',data,$scope.setMembershipSubscription);
+
+            });
         };
 
         // contact us
