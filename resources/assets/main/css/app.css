@@ -7797,6 +7797,23 @@ header.sub-head {
       font-weight: bold;
       padding-left: 30px; }
 
+.product-box .rating {
+  right: 22px;
+  width: 110px;
+  height: 62px;
+  padding: 9px 17px;
+  border-radius: 50%;
+  font-size: 1.25rem;
+  color: #FF0042; }
+  .product-box .rating span {
+    float: left; }
+    .product-box .rating span.icon {
+      font-size: 2.9rem; }
+    .product-box .rating span .value {
+      width: 120%;
+      text-align: center;
+      margin: 0 auto; }
+
 .homepage #hero {
   min-height: 515px; }
 .homepage .color-overlay {
@@ -7812,22 +7829,6 @@ header.sub-head {
 @media (max-width: 620px) {
   .homepage #hero-slider .rsNav.rsBullets {
     top: -30px; } }
-.homepage .product-box .rating {
-  right: 15px;
-  width: 62px;
-  height: 62px;
-  padding: 9px 17px;
-  border-radius: 50%;
-  font-size: 1.25rem;
-  color: #FF0042; }
-  .homepage .product-box .rating .icon {
-    font-size: 2.9rem;
-    display: block; }
-  .homepage .product-box .rating .value {
-    width: 120%;
-    text-align: center;
-    display: block;
-    margin: 0 auto; }
 
 .like-nav li {
   width: 35px;
