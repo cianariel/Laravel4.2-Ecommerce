@@ -771,13 +771,15 @@ ul.share-buttons{
 
   li {
     margin-bottom: 8px;
-
-    a.email{
-      width: 34px;
-      float: left;
-    }
   }
 
+}
+
+.share-bar, .story-header{
+  a.email{
+    width: 34px !important;
+    float: left;
+  }
 }
 
 li.all-shares{

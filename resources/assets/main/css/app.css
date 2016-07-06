@@ -5330,9 +5330,10 @@ ul.share-buttons {
     z-index: 1; }
   .share-bar li {
     margin-bottom: 8px; }
-    .share-bar li a.email {
-      width: 34px;
-      float: left; }
+
+.share-bar a.email, .story-header a.email {
+  width: 34px !important;
+  float: left; }
 
 li.all-shares {
   width: 90px;
