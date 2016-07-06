@@ -561,6 +561,31 @@ if (!isset($theGiveAway)) {
                                     <div class="clearfix"></div>
                                 </div>
                             </div>
+                            <div class="form-group title">
+                                <label>Subscription</label>
+                            </div>
+                            <div class="content">
+                                <div class="form-group checkbox-form-group" ng-init="checkSubscription()">
+                                    <div class="pull-left">
+                                        VIP Membership Subscription
+                                    </div>
+                                    <div class="pull-right">
+                                        <label class="setting-custom-checkbox">
+                                            <input type="checkbox" ng-model="setMembershipSubscription"
+                                                   ng-click="changeSubscription()">
+                                                <span class="">
+                                                    <i class="m-icon--Settings-Toggles-Active on">
+                                                        <span class="path1"></span><span class="path2"></span>
+                                                    </i>
+                                                    <i class="m-icon--Settings-Toggles off">
+                                                        <span class="path1"></span><span class="path2"></span>
+                                                    </i>
+                                                </span>
+                                        </label>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </div>
                         </div>
                     </form>
                     <div class="clearfix"></div>

@@ -564,7 +564,19 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
             }).error(function(data) {
                 window.location = '/api/logout';
             });
-        }
+        };
+
+        $scope.getPaidMembersPaymentList = function(){
+
+            $http({
+                url: '/payment/paid-membership-report',
+                method: "GET"
+
+            }).success(function (data) {
+                $scope.paidMembersPaymentList = data.data;
+            });
+
+        };
 
         //// Store ///
 

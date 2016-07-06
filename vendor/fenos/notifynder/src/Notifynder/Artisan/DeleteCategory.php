@@ -1,4 +1,6 @@
-<?php namespace Fenos\Notifynder\Artisan;
+<?php
+
+namespace Fenos\Notifynder\Artisan;
 
 use Fenos\Notifynder\Contracts\NotifynderCategory;
 use Illuminate\Console\Command;
@@ -6,7 +8,6 @@ use Symfony\Component\Console\Input\InputArgument;
 
 class DeleteCategory extends Command
 {
-
     /**
      * The console command name.
      *
@@ -22,7 +23,7 @@ class DeleteCategory extends Command
     protected $description = 'Delete a notifynder category by ID or Name given';
 
     /**
-     * @var \Fenos\Notifynder\Categories\NotifynderCategory
+     * @var \\Fenos\Notifynder\Contracts\NotifynderCategory
      */
     private $notifynderCategory;
 
@@ -45,24 +46,25 @@ class DeleteCategory extends Command
      */
     public function fire()
     {
-        $indentifier = $this->argument('identifier');
+        $identifier = $this->argument('identifier');
 
-        if ($this->isIntegerValue($indentifier)) {
-            $delete = $this->notifynderCategory->delete($indentifier);
+        if ($this->isIntegerValue($identifier)) {
+            $delete = $this->notifynderCategory->delete($identifier);
         } else {
-            $delete = $this->notifynderCategory->deleteByName($indentifier);
+            $delete = $this->notifynderCategory->deleteByName($identifier);
         }
 
-        if ($delete) {
-            $this->info('Category has been deleted');
-        } else {
+        if (! $delete) {
             $this->error('Category Not found');
+
+            return false;
         }
+        $this->info('Category has been deleted');
     }
 
-    public function isIntegerValue($indentifier)
+    public function isIntegerValue($identifier)
     {
-        return preg_match('/[0-9]/', $indentifier);
+        return preg_match('/[0-9]/', $identifier);
     }
 
     /**
@@ -72,8 +74,8 @@ class DeleteCategory extends Command
      */
     protected function getArguments()
     {
-        return array(
-            array('identifier', InputArgument::REQUIRED, '1 - nameCategory'),
-        );
+        return [
+            ['identifier', InputArgument::REQUIRED, '1 - nameCategory'],
+        ];
     }
 }
