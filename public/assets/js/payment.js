@@ -30,9 +30,15 @@
             //console.log(status, response);
 
             if (response.error) {
-                 this.form.find('#error-message').show().text(response.error.message);
 
-                return this.submitButton.prop('disabled',false).val('Proceed');
+                var hideCheck = $('#client-token').val();
+
+                if (hideCheck == 0) {
+
+                    this.form.find('#error-message').show().text(response.error.message);
+
+                    return this.submitButton.prop('disabled', false).val('Proceed');
+                }
 
             }
 
@@ -49,5 +55,19 @@
 
     };
 
+    var CardInfo = {
+        ShowCardInfoBox: function () {
+
+            var hideCheck = $('#client-token').val();
+
+            if (hideCheck == 1) {
+
+                $("#cardInfoSection").hide();
+            }
+
+        }
+    };
+
     StripeBilling.init();
+    CardInfo.ShowCardInfoBox();
 })();

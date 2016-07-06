@@ -40,7 +40,9 @@ return [
         'success-with-out-verification' => 250,
         'validation-fail' => 400,
         'app-failure' => 410,
-        'system-fail' => 500
+        'system-fail' => 500,
+        'membership-cancellation-fail' => 600,
+
     ],
 
     // Category Static Blog Name for Category

@@ -589,7 +589,29 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
 
             }else{
 
+
+                $http({
+                    url: '/payment/cancel-membership',
+                    method: "GET",
+                }).success(function (data) {
+                    console.log('cancel membership :',data);
+                    $scope.setMembershipSubscription = false;
+
+                });
             }
+        };
+
+        // check membership status
+        $scope.checkSubscription = function(){
+            $http({
+                url: '/payment/cancel-membership',
+                method: "GET",
+            }).success(function (data) {
+                console.log('chk subs :',data);
+                if(data.status_code == 200 && data.data != '')
+                    $scope.setMembershipSubscription = true;
+
+            });
         };
 
         // contact us

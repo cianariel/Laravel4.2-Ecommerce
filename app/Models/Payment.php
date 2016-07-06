@@ -75,6 +75,17 @@ class Payment extends Model
 
         $payment = new PaymentStrategy();
 
+        // avoid double membership
+
+        $this->cancelMembershipSubscription(
+            [
+                'UserId' => $data['UserId'],
+                'Title'=> $data['Title'],
+                'Description'=> 'Cancel Membership',
+                'MembershipType'=>''
+            ]
+        );
+
         $result = $payment->subscribeUser([
             'UserId' => $data['UserId'],
             'Email' => $data['Email'],
@@ -83,6 +94,8 @@ class Payment extends Model
             'Description' => 'Membership'
 
         ]);
+
+
 
         //  dd($result);
         return $result;
@@ -108,7 +121,7 @@ class Payment extends Model
             }
 
             try {
-                UserSetting::where('user_id', $data['UserId'])->update(['membership_type' => $data['MembershipType']]);
+                UserSetting::where('user_id', $data['UserId'])->update(['membership_type' => empty($data['MembershipType'])?'':$data['MembershipType']]);
 
                 // update the payment table to make it inactive
                 $paymentCollection->update(['active'=>0]);

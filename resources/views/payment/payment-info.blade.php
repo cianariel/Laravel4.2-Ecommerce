@@ -4,6 +4,7 @@
     <div>
         <div class="clearfix"></div>
         <input type="hidden" id="pub" name="pub" value="{{ env('STRIPE_PUBLIC') }}">
+
         <br>
         @include('payment.parts.invoice')
         <br>
