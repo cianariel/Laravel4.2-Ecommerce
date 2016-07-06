@@ -7870,9 +7870,9 @@ header.sub-head {
         box-shadow: inset 0 0 0 3px #FF0042; }
     .like-nav li a.likes {
       color: #c1c1c1 !important;
-      font-size: 1.6rem;
-      /*        padding-top: 15px;*/
-      /*        padding-left: 10px !important;*/ }
+      font-size: 1.6rem; }
+    .like-nav li a.view-counter {
+      width: 100px; }
 
 body.single #top-nav a.ideas {
   color: #ed2049; }
