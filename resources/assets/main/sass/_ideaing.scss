@@ -867,6 +867,10 @@ li.all-shares{
        overflow: hidden;
        margin-left: 15px;
        padding: 0;
+
+       &.all-shares{
+         width: 45px;
+       }
        a{
          width: auto !important;
          border: 0 !important;
