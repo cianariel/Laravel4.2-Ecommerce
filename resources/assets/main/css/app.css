@@ -7890,12 +7890,19 @@ header.sub-head {
     width: 34px; }
     .like-nav li.view-counter .social-stats__item {
       width: 95px; }
+    .like-nav li.view-counter .value {
+      font-size: 1.2rem;
+      line-height: 1;
+      text-align: center;
+      float: right; }
 
 body.single #top-nav a.ideas {
   color: #ed2049; }
 body.single .like-nav {
   float: right;
   width: 280px; }
+  body.single .like-nav .heart-item {
+    width: 20px; }
 body.single .article-content iframe {
   margin: 0 auto;
   float: none;

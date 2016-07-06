@@ -119,7 +119,7 @@
 <!--                    -->
 <!--                </ul>-->
                 <ul class="like-nav " ng-init="heartUsers('ideas')">
-                <li>
+                <li class="heart-item">
                     <div class="social-stats">
                         <div class="social-stats__item">
                                 <a href="#" class="likes" ng-click="heartAction()" >
@@ -139,7 +139,7 @@
                         <div class="social-stats">
                             <div class="social-stats__item">
                                 <i class="m-icon m-icon--eye"></i>
-                                <span class="grey">{{getPostViews(get_the_ID())}}</span>
+                                <span class="grey value">{{getPostViews(get_the_ID())}}<br> views</span>
                             </div>
                         </div>
                     </li>
