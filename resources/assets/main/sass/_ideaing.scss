@@ -4936,6 +4936,10 @@ header.sub-head{
       width: 34px;
       .social-stats__item{
         width: 95px;
+
+        @media (max-width:620px){
+          right: 15px;
+        }
       }
       .value{
         font-size: 1.2rem;
@@ -4964,6 +4968,10 @@ body.single{
 
     .heart-item{
       width: 20px;
+
+      @media (max-width:620px){
+        width: 50px;
+      }
     }
   }
   .article-content{

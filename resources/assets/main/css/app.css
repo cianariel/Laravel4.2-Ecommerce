@@ -7890,6 +7890,9 @@ header.sub-head {
     width: 34px; }
     .like-nav li.view-counter .social-stats__item {
       width: 95px; }
+      @media (max-width: 620px) {
+        .like-nav li.view-counter .social-stats__item {
+          right: 15px; } }
     .like-nav li.view-counter .value {
       font-size: 1.2rem;
       line-height: 1;
@@ -7903,6 +7906,9 @@ body.single .like-nav {
   width: 280px; }
   body.single .like-nav .heart-item {
     width: 20px; }
+    @media (max-width: 620px) {
+      body.single .like-nav .heart-item {
+        width: 50px; } }
 body.single .article-content iframe {
   margin: 0 auto;
   float: none;
