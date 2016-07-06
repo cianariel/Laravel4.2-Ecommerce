@@ -115,7 +115,9 @@
                     </a>
                 </li>
             </ul>
-
+<!--                <ul class="col-xs-1 pull-right">-->
+<!--                    -->
+<!--                </ul>-->
                 <ul class="like-nav " ng-init="heartUsers('ideas')">
                 <li>
                     <div class="social-stats">
@@ -132,15 +134,15 @@
                     </div>
 
                 </li>
-                    <?php include('/var/www/ideaing/public/ideas/wp-content/themes/ideaing/heart-user-img.php') ?>
-                    <li class="view-counter">
-                        <div class="social-stats">
-                            <div class="social-stats__item">
-                                <i class="m-icon m-icon--eye"></i>
-                                <span class="grey">{{getPostViews(get_the_ID())}}</span>
-                            </div>
+                <li class="view-counter">
+                    <div class="social-stats">
+                        <div class="social-stats__item">
+                            <i class="m-icon m-icon--eye"></i>
+                            <span class="grey">{{getPostViews(get_the_ID())}}</span>
                         </div>
-                    </li>
+                    </div>
+                </li>
+                    <?php include('/var/www/ideaing/public/ideas/wp-content/themes/ideaing/heart-user-img.php') ?>
                 </ul>
 
             </div>
