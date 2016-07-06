@@ -118,7 +118,7 @@
 
                 <ul class="like-nav " ng-init="heartUsers('ideas')">
                 <li>
-                    <div class="social-stats  ">
+                    <div class="social-stats">
                         <div class="social-stats__item">
                                 <a href="#" class="likes" ng-click="heartAction()" >
                                 <i ng-class="unHeart != false ? 'm-icon m-icon--heart-solid' : 'm-icon m-icon--ScrollingHeaderHeart'">
@@ -133,7 +133,16 @@
 
                 </li>
                     <?php include('/var/www/ideaing/public/ideas/wp-content/themes/ideaing/heart-user-img.php') ?>
+                    <li class="view-counter">
+                        <div class="social-stats">
+                            <div class="social-stats__item">
+                                <i class="m-icon m-icon--eye"></i>
+                                <span class="grey">{{getPostViews(get_the_ID())}}</span>
+                            </div>
+                        </div>
+                    </li>
                 </ul>
+
             </div>
     </nav>
 </div>

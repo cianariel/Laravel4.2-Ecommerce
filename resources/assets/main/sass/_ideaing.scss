@@ -4921,14 +4921,12 @@ header.sub-head{
       &.likes{
         color: $light-grey !important;
         font-size: 1.6rem;
-/*        padding-top: 15px;*/
-/*        padding-left: 10px !important;*/
+      }
+      &.view-counter{
+        width: 100px;
       }
 
     }
-    //&:not(:last-child) a.author{
-    //  margin-left: -15px;
-    //}
   }
 
 
