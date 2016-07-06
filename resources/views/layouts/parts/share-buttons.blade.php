@@ -12,4 +12,4 @@
           }
         ?>
 
-        <li class="email-wrap"><a  class="email" href="mailto:?subject=Check this out: <?php echo $theTitle ?>&amp;body=Check  this out on IDEAING: <?php echo "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]" ?>" href="#" ><i class="m-icon m-icon--email-form-id"></i></a></li>
+        <li class="email-wrap"><a  class="email hidden-620" href="mailto:?subject=Check this out: <?php echo $theTitle ?>&amp;body=Check  this out on IDEAING: <?php echo "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]" ?>" href="#" ><i class="m-icon m-icon--email-form-id"></i></a></li>
