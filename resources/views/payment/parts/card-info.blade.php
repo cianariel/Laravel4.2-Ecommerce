@@ -3,7 +3,11 @@
         <div class="row">
             <div class="col-md-12 main-content">
                 {!! Form::open(['id' => 'billing-form']) !!}
-                <div id="error-message"></div>
+                <div style="color: darkred; font: bold;" id="error-message">
+                    @if(Session::has('error-message'))
+                        {{ Session::get('payment-error-message') }}
+                    @endif
+                </div>
 
                 <input type="hidden" name="payment-type" value="{{$paymentType}}">
 

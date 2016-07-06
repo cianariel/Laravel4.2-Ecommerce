@@ -27,14 +27,27 @@ class PaymentController extends ApiController
         $this->clearTemporarySessionData();
     }
 
-    public function index()
+    public function index($param = 'membership')
     {
         // $userData = $this->authCheck;
         if ($this->authCheck['method-status'] == 'success-with-http') {
             $userData = $this->authCheck['user-data'];
 
             $invoiceData = \Config::get('const.VIP');
-            $paymentType = 'membership';
+
+            // filtering input
+
+            switch($param){
+                case 'membership':
+                    $paymentType = 'membership';
+                    break;
+                case 'payment':
+                    $paymentType = 'payment';
+                    break;
+                default:
+                    $paymentType = 'membership';
+            }
+
 
             return view('payment.payment-info')
                 ->with('userData', $userData)
@@ -72,7 +85,14 @@ class PaymentController extends ApiController
                 'Description' => 'No Description'
             ]);
 
-            dd('controller : ', $result);
+            if($result['code'] != 200)
+            {
+                \Session::flash('payment-error-message','Transaction Failed !');
+
+                $this->index('membership');
+            }
+
+            //dd('controller : ', $result);
 
             return $result;
         }
@@ -93,9 +113,23 @@ class PaymentController extends ApiController
             'Description' => 'Cancel Membership'
         ]);
 
-        dd('controller : ', $result);
+        if($result['code'] != 200)
+        {
+            \Session::flash('payment-error-message','Transaction Failed !');
 
-        return $result;
+            $this->index('membership');
+
+            return $this->setStatusCode(\Config::get("const.api-status.system-fail"))
+                        ->makeResponseWithError("System Failure !", $result['code']);
+        }
+
+        return $this->setStatusCode(\Config::get("const.api-status.success"))
+                    ->makeResponse($result);
+
+
+      //  dd('controller : ', $result);
+
+      //  return $result;
 
 
     }
