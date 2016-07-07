@@ -641,7 +641,7 @@ class PageController extends ApiController
             $return = json_encode($return);
         } else {
             $return = Product::getForShopMenu();
-            PageHelper::putIntoRedis('header-shop-menu', $return);
+            PageHelper::putIntoRedis('header-shop-menu', $return, '+30 minutes');
         }
         return $return;
     }
@@ -653,11 +653,24 @@ class PageController extends ApiController
 
         $url = 'https://' . $input['url'];
 
-        if (!strpos($url, 'ideaing')) { // TODO - make more strict check on Production
+        if (!strpos($url, 'ideaing')) {
             return 'Stop trying to hack my app, thanks';
         }
 
         return Sharing::getCountsFromAPIs($url);
+    }
+
+
+    public function updateTwitterCount($url = false)
+    {
+        $input = Input::all();
+
+        if(!@$input['url']){
+            return 'error';
+        }
+        $clear = PageHelper::deleteFromRedis('twitter-shares-' .  $input['url']);
+
+        return 'cleared';
     }
 
     public function getFollowerCounts()

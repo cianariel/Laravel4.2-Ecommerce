@@ -376,6 +376,7 @@ Route::get('/api/paging/get-grid-content/{page?}/{limit?}/{tag?}/{type?}/{ideaCa
 Route::get('/api/layout/get-shop-menu', 'PageController@getShopMenu');
 Route::get('/api/social/get-social-counts', 'PageController@getSocialCounts');
 Route::get('/api/social/get-fan-counts', 'PageController@getFollowerCounts');
+Route::post('/api/social/update-twi-count', 'PageController@updateTwitterCount');
 
 Route::get('api/find/{query?}/{limit?}/{offset?}/{type?}/{sort?}', 'SearchController@searchData');
 
