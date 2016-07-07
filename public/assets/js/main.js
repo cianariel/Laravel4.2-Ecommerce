@@ -6773,7 +6773,6 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
                     break;
                 case 'twitter':
                     var title = $('h1').first().text().trim();
-                    console.log(title);
                     shareUrl = 'https://twitter.com/share?url=' + baseUrl + '&counturl=' + baseUrl + '&hashtags=smarthome&text=' + title.replace('%', '%25');
                     break;
                 case 'googleplus':
@@ -6798,12 +6797,17 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
                 if($modal.closed) {
                     clearInterval(timer);
 
+                    if($service == 'twitter'){
+                        $http({
+                            url: '/api/social/update-twi-count',
+                            method: "POST",
+                            params: {'url': baseUrl}
+                        });
+                    }
+
                     setTimeout(function(){
 			pagingApi.fakeUpdateCounts($service);
                     }, 2000);
-                    //setTimeout(function(){
-                    //    $scope.countSocialShares();
-                    //}, 1000);
                     console.log('share counters updated')
                 }
             }, 1000);

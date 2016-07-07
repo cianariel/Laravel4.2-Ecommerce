@@ -3,10 +3,7 @@
     namespace App\Models;
 
     use Illuminate\Database\Eloquent\Model;
-//    use Illuminate\Contracts\Filesystem\Factory;
-//    use Storage;
-
-    // use Illuminate\Http\Request;
+    use PageHelper;
 
 
     class Sharing extends Model {
@@ -18,7 +15,14 @@
         public static function getCountsFromAPIs($url = ''){
 
             $data['facebook']  = self::getFacebookLikes($url);
-            $data['twitter']   = self::getTweets($url);
+
+            if (!$data['twitter'] = PageHelper::getFromRedis('twitter-shares-' . $url)) {
+                $data['twitter']   = self::getTweets($url);
+                if($data['twitter'] > 0){
+                    PageHelper::putIntoRedis('twitter-shares-' . $url, $data['twitter']);
+                }
+            }
+
             $data['gplus']     = self::getPlusones($url);
             $data['pinterest'] = self::getPinterestShares($url);
 
