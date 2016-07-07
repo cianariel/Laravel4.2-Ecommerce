@@ -19,7 +19,7 @@
             if (!$data['twitter'] = PageHelper::getFromRedis('twitter-shares-' . $url)) {
                 $data['twitter']   = self::getTweets($url);
                 if($data['twitter'] > 0){
-                    PageHelper::putIntoRedis('twitter-shares-' . $url, $data['twitter'], '1 day');
+                    PageHelper::putIntoRedis('twitter-shares-' . $url, $data['twitter'], '3 hours');
                 }
             }
 
