@@ -1,14 +1,11 @@
 <aside class="room-filter">
 
     <ul class="extra-nav hidden-620">
-{{--        @foreach($categoryTree as $name => $unused)--}}
-            <li><a class="{{$masterCategory->extra_info}}-link" href="/shop/{{$masterCategory->extra_info}}">{{$masterCategory->category_name}}</a></li>
-        {{--@endforeach--}}
+            <li><a class="{{$currentCategory->extra_info}}-link" href="/shop/{{$currentCategory->extra_info}}">{{$currentCategory->category_name}}</a></li>
     </ul>
 
     <ul class="room-list">
 
-{{--        @foreach($categoryTree as $parent => $children)--}}
         @if($filterCategories)
             @foreach($filterCategories as $child)
                 <li>
@@ -17,22 +14,5 @@
             @endforeach
         @endif
 
-        {{--@endforeach--}}
     </ul>
-
-    {{--<ul class="sortby">--}}
-        {{--<li ng-click="filterPlainContent(false, 'sale_price')">Price</li>--}}
-    {{--</ul>--}}
-
-    {{--<h6 class="gift">Gift ideas</h6>--}}
-    {{--<ul class="for">--}}
-        {{--<li>For Her</li>--}}
-        {{--<li>For Him</li>--}}
-        {{--<li>For Kids</li>--}}
-        {{--<li>For Pets</li>--}}
-        {{--<li>For the Techie</li>--}}
-        {{--<li>For the Traveler</li>--}}
-        {{--<li>For the Decorator</li>--}}
-        {{--<li>Stocking Suffers</li>--}}
-    {{--</ul>--}}
 </aside>
