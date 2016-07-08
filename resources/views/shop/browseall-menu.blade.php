@@ -1,4 +1,4 @@
-            <nav id="all-shop-menu" class="shop-menu hidden-soft ">
+<nav id="all-shop-menu" class="shop-menu hidden-soft ">
                 <div class="container full-sm">
                     <section class="col-xs-4 shop-by-category" >
                         <p class="title"><a href="/shop/">Shop by Category</a></p>
@@ -14,7 +14,9 @@
                                     <div class="col-md-12">
                                         <p class="title"><a href="/shop/{{$parent}}">{{ucfirst(str_replace('-', ' ', $parent))}}</a></p>
                                         @foreach($children as $child)
-                                            <div class="col-sm-4 link-row"><a href="/shop/{{$parent}}/{{$child->extra_info}}">{{$child->category_name}}</a></div>
+                                            @if($currentCategory->category_name != $child->category_name)
+                                                <div class="col-sm-4 link-row"><a href="/shop/{{$parent}}/{{$child->extra_info}}">{{$child->category_name}}</a></div>
+                                            @endif
                                         @endforeach
                                     </div>
                                 </section>
