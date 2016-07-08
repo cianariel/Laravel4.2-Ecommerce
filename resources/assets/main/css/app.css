@@ -11353,6 +11353,8 @@ body.giveaway-page .hero-box {
     text-decoration: underline; }
   body.giveaway-page .hero-box input[name=email], body.giveaway-page .hero-box input[placeholder="Email"] {
     padding-left: 40px; }
+body.giveaway-page .share-buttons {
+  width: 85%; }
 body.giveaway-page .btn-success {
   text-transform: uppercase;
   padding-top: 13px; }
