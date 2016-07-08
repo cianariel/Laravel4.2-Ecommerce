@@ -3552,16 +3552,18 @@ body.product-details, .single-post{
   }
 }
 body.product-details{
-    .related-products, .related-ideas{
-        max-width: 1170px;
-        margin: auto;
-    }
-    .hero-content-holder{
-        padding-top: 60px;
-    }
+
+
+  .rsThumb{
+    width: 145px;
+    height: 145px;
+  }
+
+  .hero-content-holder{
+      padding-top: 60px;
+  }
   .story-header{
     h1{
-/*      width: 34%;*/
       font-size: 13px;
       margin-top: 6px;
     }
@@ -3584,22 +3586,18 @@ body.product-details{
   .scroll-header  #top-nav a.shop:hover{
       color: $pink;
   }
-  
-  //#top-nav a.shop{
-  //    /*color: $grey;
-  //    font-weight: bold;
-  //    position: relative;*/
-  //
-  //}
 
   .article-content{
-/*      line-height: 1;*/
       font-size: 15px;
       font-family: montserratlight;
   }
 
-
+  .related-products, .related-ideas{
+    max-width: 1170px;
+    margin: auto;
+  }
 }
+
 
 .story-header{
   position: fixed;
@@ -3632,19 +3630,15 @@ body.product-details{
   
   .lamp-logo{
     float: left;
-    //width: 33px;
     min-height: 50px;
-    //min-height: 33px;
     background-size: initial;
     margin-top: -6px;
   }
 
   h1,
   h2{
-/*    width: 100%;*/
     padding-left: 10px;
     float: left;
-    //margin-left: 3%;
     margin-top: 11px;
     font-size: 13px;
     text-align: center;
@@ -3652,10 +3646,6 @@ body.product-details{
   
   .title-holder{
       position: relative;
-  }
-
-  .like-counter{
-/*    margin-top: 0 !important;*/
   }
 
   .share-buttons{
@@ -3670,26 +3660,10 @@ body.product-details{
     }
   }
 
-  //.like-nav{
-  //  margin-top: 3px;
-  //  li{
-  //    padding-top: 0;
   a.like-counter {
     margin-left: 30px;
     margin-top: 5px;
-    //padding-top: 0;
-    //padding-right:8px;
-    //background-position: left top;
   }
-  //  }
-  //}
-  //.like-nav li a.author {
-  //  margin-top: -13px;
-  //}
-
-
-
-
 
   .social-rounds{
     float: right;
@@ -4843,8 +4817,6 @@ header.sub-head{
     z-index: 0;
   }
   #hero-slider .rsNav.rsBullets{
-   // top: -30px;
-
     @media (max-width: 1200px){
       &{
         top: -28px;
@@ -6330,7 +6302,6 @@ footer.about-footer{
   }
 
   #hero-nav{
-/*    padding-left: 0;*/
     & > .container{
       padding-left: 0;
     }
@@ -6338,12 +6309,10 @@ footer.about-footer{
 
   @media (min-width: 480px){
     .slider-side-block{
-      //width: 190px;
       padding: 0px;
 
       .top{
         height: auto;
-/*        padding-top: 10px;*/
       }
       .vendor-logo, .get{
         margin: 10px auto;
@@ -6351,8 +6320,6 @@ footer.about-footer{
       }
       .price{
         padding-left: 0;
-      //  //width: 100%;
-      //  //text-align: center;
       }
     }
   }
@@ -6402,22 +6369,14 @@ footer.about-footer{
 }
 
 @media only screen and (max-width: 992px){
-  //header.colophon.scroll-header #top-nav .search-bar {
-  //  margin-left: 0%;
-  //}
 
   header.colophon{
-    //.search-bar{
-    //  margin-left: 0;
-    //}
-
     .logo-wrap{
       left: 38%;
     }
 
     #top-nav{
         .category-menu{
-/*            padding: 0 10px 0 5px;*/
             padding-left: 15px;
         }
         .signin{
@@ -6436,26 +6395,9 @@ footer.about-footer{
     font-size: 3.3rem;
   }
 
-
-  //#hero-nav {
-  //  li.active{
-  //    a {
-  //      padding-left: 28px;
-  //
-  //      &.home-link{
-  //        background-position: -19px 11px;
-  //      }
-  //    }
-  //  }
-  //}
-
   .bottom-load-more{
     margin-top: 65px;
   }
-
-  //#back-to-top{
-  //  bottom: 3.5%;
-  //}
 
   .full-sm{
     width: 100%;
@@ -6466,23 +6408,9 @@ footer.about-footer{
     margin-bottom: 0;
   }
 
-  //.story-details{
-  //  width: 300px;
-  //}
-
   article.post{
     padding-left: 20px;
     padding-right: 20px;
-  }
-
-
-
-  //.story-header h1 {
-  //  width: 75% !important;
-  //}
-
-  .modal-open .modal{
-/*      width: 90%;*/
   }
 
 }
@@ -6889,19 +6817,12 @@ footer.about-footer{
   
   .why-us{
     text-align: center;
-/*    padding-top: 25%;*/     
     >ul{
         text-align: left;
         padding-left: 10%;
     }
     li{
       background-position: 10px 15px !important;
-      /*.m-icon{
-          float: none;
-          position: relative;
-          margin-right: 10px;
-          top: 5px;
-      }*/
     }
     .btn{
       margin: 0 auto;
@@ -6920,14 +6841,6 @@ footer.about-footer{
     width: 95%;
     margin-left: 3%;
   }
-
-  //.author-image-big{
-  //
-  //  img{
-  //    max-width: 100%;
-  //    height: auto;
-  //  }
-  //}
 
   .like-wrap {
     margin-left: 30%;
