@@ -32,9 +32,9 @@ $cat_name = $cats[0]->name;
     </div>
     <div class="container mobile-menu visible-xs full-620">
         <ul class="wrap col-lg-7 full-620">
-            <li class="box-link-ul">
-                <a href="/ideas/usage-list" class="box-link">Usage</a>
-            </li>
+<!--            <li class="box-link-ul">-->
+<!--                <a href="/ideas/usage-list" class="box-link">Usage</a>-->
+<!--            </li>-->
             <li class="box-link-ul">
                 <a href="/ideas/best-reviews" class="box-link">Best</a>
             </li>
