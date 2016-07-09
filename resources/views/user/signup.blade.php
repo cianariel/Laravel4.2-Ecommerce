@@ -41,8 +41,8 @@
 
                 </a>
 
-            <p>Join <b>Ideaing</b> to get tips on transforming your home to a Smart Home. Plus share photos of your home,
-                engage with others, and earn rewards for being part of of the best platform on smart home & interior design.
+            <p>
+                Join <b>Ideaing</b> to get unique tips on transforming your home to a Smart Home. Plus, earn rewards, freebies and exclusive coupons for being part of the best platform on Smart Living and Home Automation.
             </p>
         </div>
 
