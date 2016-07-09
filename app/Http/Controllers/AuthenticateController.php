@@ -189,7 +189,7 @@ class AuthenticateController extends ApiController
             array_push($roles, $role['name']);
         }
 
-        $response['message'] = "Successfully authenticated.";
+        $response['message'] = "Successfully authenticated";
         $response['roles'] = $roles;
 
         if ($request['RememberMe'] == true) {

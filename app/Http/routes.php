@@ -327,9 +327,6 @@ Route::get('shop/{grandParent?}/{parent?}/{child?}', ['as' => 'shopCategory', 'u
 //User Profile
 Route::get('user/profile', 'UserController@userProfile');
 Route::get('user/profile/{permalink?}', 'UserController@viewPublicProfile');
-//Route::get('author/{permalink?}', 'UserController@userPostView');
-
-
 
 // Route for password reset , email verification ,feed example
 Route::get('password-reset-form/{code?}', 'AuthenticateController@passwordResetForm');
