@@ -214,21 +214,7 @@ body.homepage{
 
 // ELEMENTS
 
-//::-webkit-input-placeholder {
-//  color: red;
-//}
-//
-//:-moz-placeholder { /* Firefox 18- */
-//  color: red;
-//}
-//
-//::-moz-placeholder {  /* Firefox 19+ */
-//  color: red;
-//}
-//
-//:-ms-input-placeholder {
-//  color: red;
-//}
+
 
 a:visited{
   text-decoration: none;
@@ -239,9 +225,14 @@ a:visited{
 }
 
 button{
-  -webkit-appearance: none;
-  -moz-appearance:    none;
-  appearance:         none;
+  -webkit-appearance: none !important;
+  -moz-appearance:    none !important;
+  appearance:         none !important;
+
+  &.close{
+    background: transparent;
+    border: 0;
+  }
 }
 .login-signup-modal{
 /*  display: block !important; // keep for debuggins*/
@@ -9442,7 +9433,8 @@ body.aboutus-page{
     margin-top: 55px;
 }
 .login-signup-modal{
-    .alert-danger{
+    .alert-danger,
+    .alert[type="@danger"]{
         max-width:300px;
         margin: 0 auto 30px;
         padding-top: 27px;

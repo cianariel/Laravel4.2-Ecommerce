@@ -71,7 +71,7 @@
                             </label>
                     </div>
 
-                        <a class="btn btn-success col-xs-12" ng-click="loginUser()" href="#">Log in</a>
+                        <a class="btn btn-success col-xs-12" ng-click="loginUser(true)" href="#">Log in</a>
 
                     <div class="modal-minor-text">
                             <a class="forgot" ng-click="passwordResetRequest()" href="#">Forgot password?</a>

@@ -4617,9 +4617,12 @@ a:visited {
   display: none; }
 
 button {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none; }
+  -webkit-appearance: none !important;
+  -moz-appearance: none !important;
+  appearance: none !important; }
+  button.close {
+    background: transparent;
+    border: 0; }
 
 .login-signup-modal {
   /*  display: block !important; // keep for debuggins*/
@@ -10928,7 +10931,8 @@ body.aboutus-page .para3_content {
 .mid-bottom-container {
   margin-top: 55px; }
 
-.login-signup-modal .alert-danger {
+.login-signup-modal .alert-danger,
+.login-signup-modal .alert[type="@danger"] {
   max-width: 300px;
   margin: 0 auto 30px;
   padding-top: 27px;
@@ -10937,7 +10941,8 @@ body.aboutus-page .para3_content {
   color: #fff;
   font-size: 1.5rem;
   text-align: center; }
-  .login-signup-modal .alert-danger .close {
+  .login-signup-modal .alert-danger .close,
+  .login-signup-modal .alert[type="@danger"] .close {
     margin-top: -5px;
     background: none;
     border: 0px;

@@ -4791,9 +4791,12 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
 
 
         // Build popup notification box based on status.
-        $scope.outputStatus = function (data, message, noReload) {
+        $scope.outputStatus = function (data, message, goHome) {
 
             var statusCode = data.status_code;
+            
+            console.log(statusCode);
+
             switch (statusCode) {
                 case 400:
                 {
@@ -4831,8 +4834,12 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                     break;
                 case 220:
                 {
-                    if (data.data.message == 'Successfully authenticated' && noReload !== true) {
-                        location.reload();
+                    if (data.data.message == 'Successfully authenticated') {
+                    	if(goHome === true){
+                    		window.location = '/';		
+                    	}else{
+                        	location.reload();
+                    	}
                     } else {
                         $scope.addAlert('success', data.data.message);
                     }
@@ -5188,11 +5195,6 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
 
             }).success(function (data) {
                 $scope.outputStatus(data, data.data);
-                // window.location = '/login';
-
-                /* if(data.status_code == 200)
-                 window.location = $scope.logingRedirectLocation;
-                 */
             });
 
         };
@@ -5201,8 +5203,6 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
             $scope.closeAlert();
 
             $scope.alertHTML = null;
-
-            //console.log($scope.FullName,$scope.Password,$scope.PasswordConf,$scope.Email,$scope.alertHTML);
 
             if ($scope.FullName == '') {
                 $scope.addAlert('danger', 'Full name can\'t be empty!');
@@ -5227,7 +5227,6 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                 return;
             }
 
-
             $http({
                 url: '/api/register-user',
                 method: "POST",
@@ -5241,13 +5240,9 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
             }).success(function (data) {
                 $scope.outputStatus(data, data.data);
                 if (source == 'giveaway') {
-                    // window.location = 'giveaway';
                     $scope.loginUser('giveaway');
                 }
 
-                /* if(data.status_code == 200)
-                 window.location = $scope.loginRedirectLocation;
-                 */
             }).error(function (data) {
                 console.log(data);
             });
