@@ -4791,18 +4791,16 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
 
 
         // Build popup notification box based on status.
-        $scope.outputStatus = function (data, message, goHome) {
+        $scope.outputStatus = function (data, message, goTo) {
 
             var statusCode = data.status_code;
             
-            console.log(statusCode);
-
             switch (statusCode) {
                 case 400:
                 {
                     if (data.data.error.message[0] == "Validation failed") {
                         $scope.addAlert('danger', $scope.buildErrorMessage(data.data.error.message[1]));
-                    }
+                    } 
                 }
                     break;
                 case 401:
@@ -4818,8 +4816,7 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                         window.location = '/login';
                     }
                     else if (data.data == 'Registration completed successfully') {
-
-                        $scope.loginUser();
+                        $scope.loginUser('profile');
                     } else if (data.data == 'Registration completed successfully, please verify your email') {
                         $scope.loginUser();
                     }
@@ -4835,11 +4832,16 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                 case 220:
                 {
                     if (data.data.message == 'Successfully authenticated') {
-                    	if(goHome === true){
+                    	if(goTo === 'home'){
+                            console.log(12)
                     		window.location = '/';		
+                    	}else if(goTo == 'profile'){
+                            console.log('bubu')
+                            window.location = '/user/profile';      
                     	}else{
-                        	location.reload();
-                    	}
+                            console.log('kuka')
+                            location.reload();
+                        }
                     } else {
                         $scope.addAlert('success', data.data.message);
                     }
@@ -5194,7 +5196,9 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                 }
 
             }).success(function (data) {
-                $scope.outputStatus(data, data.data);
+                console.log(115)
+
+                $scope.outputStatus(data, data.data, 'profile');
             });
 
         };
@@ -5238,6 +5242,7 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                 }
 
             }).success(function (data) {
+                console.log('0000')
                 $scope.outputStatus(data, data.data);
                 if (source == 'giveaway') {
                     $scope.loginUser('giveaway');
@@ -5351,7 +5356,7 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
         };
 
 
-        $scope.loginUser = function (noReload) {
+        $scope.loginUser = function (goTo) {
             $scope.closeAlert();
 
             $http({
@@ -5370,8 +5375,6 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                     method: "GET"
 
                 }).success(function (data) {
-                    $scope.outputStatus(data, data.data);
-
                     var from = $location.search().from;
                     if (from === 'cms') {
                         window.location = '/ideas/wp-admin';
@@ -5379,15 +5382,14 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                     }
                 }).error(function (data) {
                     if (data.success) {
-
                         var from = $location.search().from;
                         if (from === 'cms') {
                             window.location = '/ideas/wp-admin';
                         }
                     }
                 });
-
-                $scope.outputStatus(data, data.data, noReload);
+                console.log(11)
+                $scope.outputStatus(data, data.data, goTo);
 
             });
         };
@@ -5417,6 +5419,8 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                 url: '/password-reset-request/' + $scope.Email,
                 method: "GET",
             }).success(function (data) {
+                console.log(112)
+
                 $scope.outputStatus(data, data.data);
             });
         };
@@ -5438,6 +5442,7 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                 }
             }).success(function (data) {
                 //console.log(data.data);
+                console.log(113)
 
                 $scope.outputStatus(data, data.data);
 
@@ -5467,6 +5472,8 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                 }
             }).success(function (data) {
                 // console.log(data);
+                console.log(114)
+
                 $scope.outputStatus(data, 'User information updated successfully');
                 location.reload();
 
@@ -5504,6 +5511,8 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                 }
             }).success(function (data) {
                 // console.log(data);
+                console.log(115)
+
                 $scope.outputStatus(data, 'Profile picture updated successfully');
                 $scope.showBrowseButton = !$scope.showBrowseButton;
 
@@ -5671,7 +5680,7 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
 
             $http({
                 url: '/api/social/get-fan-counts',
-                method: "GET",
+                method: "GET", 
                 params: {'url': thisUrl}
             }).success(function (response) {
                 $('.fan-count.twi').html(response.twitter);
