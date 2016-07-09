@@ -749,15 +749,14 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
 
 
         // Build popup notification box based on status.
-        $scope.outputStatus = function (data, message) {
+        $scope.outputStatus = function (data, message, noReload) {
 
             var statusCode = data.status_code;
-            //  console.log('status code:'+statusCode);
+              console.log(data);
             switch (statusCode) {
                 case 400:
                 {
                     if (data.data.error.message[0] == "Validation failed") {
-                        // $scope.requiredFields = buildErrorMessage(data.data.error.message[1]);
                         $scope.addAlert('danger', $scope.buildErrorMessage(data.data.error.message[1]));
                     }
                 }
@@ -775,12 +774,9 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                         window.location = '/login';
                     }
                     else if (data.data == 'Registration completed successfully') {
-                        //  console.log("credentials : " + $scope.Email + " " + $scope.Password);
 
                         $scope.loginUser();
                     } else if (data.data == 'Registration completed successfully, please verify your email') {
-                        //  console.log("credentials : " + $scope.Email + " " + $scope.Password);
-
                         $scope.loginUser();
                     }
 
@@ -794,13 +790,11 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                     break;
                 case 220:
                 {
-                    if (data.data.message == 'Successfully authenticated.') {
-                        $scope.redirectUser(data.data.roles);
-
+                    if (data.data.message == 'Successfully authenticated.' && !noReload) {
+                        location.reload();
                     } else {
                         $scope.addAlert('success', data.data.message);
                     }
-
                 }
                     break;
                 case 410:
@@ -1321,7 +1315,7 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
         };
 
 
-        $scope.loginUser = function (source) {
+        $scope.loginUser = function (noReload) {
             $scope.closeAlert();
 
             $http({
@@ -1333,11 +1327,6 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                     RememberMe: $scope.rememberMe == true ? true : false
                 }
             }).success(function (data) {
-                if (source == 'giveaway') {
-                    //window.location = '/login';
-                    return;
-                }
-
                 var WpLoginURL = '/ideas/api?call=login&username=' + $scope.Email + '&password=' + $scope.Password + '&remember=' + $scope.rememberMe;
 
                 $http({
@@ -1345,25 +1334,24 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                     method: "GET"
 
                 }).success(function (data) {
-                    var from = $location.search().from; // TODO -- disable this
+                    $scope.outputStatus(data, data.data);
+
+                    var from = $location.search().from;
                     if (from === 'cms') {
-                        //  window.location = 'https://ideaing.com/ideas/wp-admin';
                         window.location = '/ideas/wp-admin';
 
                     }
-                }).error(function (data, status, headers, config) {
+                }).error(function (data) {
                     if (data.success) {
-                        var from = $location.search().from; // TODO -- disable this
+
+                        var from = $location.search().from;
                         if (from === 'cms') {
-                            //    window.location = 'https://ideaing.com/ideas/wp-admin';
                             window.location = '/ideas/wp-admin';
                         }
                     }
                 });
-                $scope.outputStatus(data, data.data);
-                /* if(data.status_code == 200)
-                 window.location = $scope.logingRedirectLocation;
-                 */
+
+                $scope.outputStatus(data, data.data, noReload);
 
             });
         };
