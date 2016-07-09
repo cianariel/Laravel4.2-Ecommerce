@@ -138,7 +138,11 @@
                     <li class="view-counter">
                         <div class="social-stats">
                             <div class="social-stats__item">
-                                <i class="m-icon m-icon--eye"></i>
+                                @if(getPostViews(get_the_ID()) >= 100)
+                                    <i class="m-icon m-icon--flame"></i>
+                                @else
+                                    <i class="m-icon m-icon--eye"></i>
+                                @endif
                                 <span class="grey value">{{getPostViews(get_the_ID())}}<br> views</span>
                             </div>
                         </div>
