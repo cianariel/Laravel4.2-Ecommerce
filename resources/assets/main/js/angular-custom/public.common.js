@@ -1377,8 +1377,6 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                 url: '/password-reset-request/' + $scope.Email,
                 method: "GET",
             }).success(function (data) {
-                console.log(112)
-
                 $scope.outputStatus(data, data.data);
             });
         };
@@ -1400,8 +1398,6 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                 }
             }).success(function (data) {
                 //console.log(data.data);
-                console.log(113)
-
                 $scope.outputStatus(data, data.data);
 
                 /* if(data.status_code == 200)
@@ -1430,8 +1426,6 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                 }
             }).success(function (data) {
                 // console.log(data);
-                console.log(114)
-
                 $scope.outputStatus(data, 'User information updated successfully');
                 location.reload();
 
@@ -1469,8 +1463,6 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                 }
             }).success(function (data) {
                 // console.log(data);
-                console.log(115)
-
                 $scope.outputStatus(data, 'Profile picture updated successfully');
                 $scope.showBrowseButton = !$scope.showBrowseButton;
 
