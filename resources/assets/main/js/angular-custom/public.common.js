@@ -752,7 +752,6 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
         $scope.outputStatus = function (data, message, noReload) {
 
             var statusCode = data.status_code;
-              console.log(data);
             switch (statusCode) {
                 case 400:
                 {
@@ -790,7 +789,7 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                     break;
                 case 220:
                 {
-                    if (data.data.message == 'Successfully authenticated.' && !noReload) {
+                    if (data.data.message == 'Successfully authenticated' && noReload !== true) {
                         location.reload();
                     } else {
                         $scope.addAlert('success', data.data.message);
@@ -1360,8 +1359,6 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
         $scope.logoutUser = function () {
             //  var WpLogoutURL = 'https://ideaing.com/ideas/api?call=logout';
             var WpLogoutURL = '/ideas/api?call=logout';
-
-
             $http({
                 url: WpLogoutURL,
                 method: "GET"
@@ -1383,13 +1380,7 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                 url: '/password-reset-request/' + $scope.Email,
                 method: "GET",
             }).success(function (data) {
-                //console.log(data.data);
-
                 $scope.outputStatus(data, data.data);
-
-                /* if(data.status_code == 200)
-                 window.location = $scope.logingRedirectLocation;
-                 */
             });
         };
 

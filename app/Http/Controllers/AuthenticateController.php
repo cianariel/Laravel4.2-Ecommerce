@@ -102,7 +102,6 @@ class AuthenticateController extends ApiController
 
         if ($tokenValue == null) {
             $tokenValue = \Input::get('token');
-
         }
 
         //$tokenValue = \Input::all();
@@ -121,7 +120,7 @@ class AuthenticateController extends ApiController
             return $this->setStatusCode(IlluminateResponse::HTTP_OK)
                         ->makeResponse('successfully LogOut.' . $message);
         } else {
-            return \Redirect::to('/');
+            return back();
         }
     }
 
