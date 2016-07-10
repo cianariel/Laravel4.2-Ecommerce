@@ -290,6 +290,8 @@ class UserController extends ApiController
 
         $userProfileData =  $userData;
 
+        $this->user->notificationMarkReadAll($userData['id']);
+
         $data = array(
             'userData' => empty($userData) ? null : $userData,
             'userProfileData' => $userProfileData,
