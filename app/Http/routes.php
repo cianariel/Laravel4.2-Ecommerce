@@ -242,7 +242,7 @@ Route::group(['prefix' => 'api'], function () {
      * Notification
      * */
     Route::get('notification/{uid?}/{limit?}', 'UserController@notification');
-    Route::get('read-all-notification/{uid?}', 'UserController@notificationReadAll');
+    Route::get('read-all-notification/{uid?}', 'UserController@notificationReadAll'); 
     Route::post('read-single-notification', 'UserController@singleNotificationRead');
 
 
