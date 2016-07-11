@@ -39,8 +39,8 @@ class Subscriber extends Model
 
             $subscriber = Subscriber::where('email', $email)->first();
 
-            if($subscriber){
-                $subscriber->isUser = User::where('email',$email)->count();
+            if ($subscriber) {
+                $subscriber->isUser = User::where('email', $email)->count();
             }
 
             return $subscriber;
@@ -83,13 +83,18 @@ class Subscriber extends Model
     {
         $subscriberModel = new Subscriber();
 
+
+        $inactiveUsers = $this->inactiveUserEmail();
+
+        // dd($inactiveUsers);
+
         $skip = $settings['limit'] * ($settings['page'] - 1);
-        $subscriberList['result'] = $subscriberModel
-            ->groupBy('email')
-            ->take($settings['limit'])
-            ->offset($skip)
-            ->orderBy('created_at', 'desc')
-            ->get();
+        $subscriberList['result'] = Subscriber::whereNotIn('email', $inactiveUsers)
+                                              ->groupBy('email')
+                                              ->take($settings['limit'])
+                                              ->offset($skip)
+                                              ->orderBy('created_at', 'desc')
+                                              ->get();
 
         $subscriberList['count'] = $subscriberModel->get()->count();
         return $subscriberList;
@@ -117,14 +122,31 @@ class Subscriber extends Model
 
     public function allSubscribers()
     {
-        $subscriberModel = new Subscriber();
+        //$subscriberModel = new Subscriber();
 
-        return $subscriberModel
-            ->groupBy('email')
-            ->orderBy('email')
-            ->get(['email']);
+        $inactiveUsers = $this->inactiveUserEmail();
+
+        return Subscriber::whereNotIn('email', $inactiveUsers)
+                         ->groupBy('email')
+                         ->orderBy('email')
+                         ->get(['email']);
 
         //return $subscriberModel->all(['email']);
+    }
+
+    /**
+     * @return mixed
+     * if parameter is false then it will return all an empty array which
+     * will not filter any data where this function will be called.
+     */
+
+    private function inactiveUserEmail($status = true)
+    {
+        if ($status == true)
+            $inactiveUsers = User::where('status', 'Inactive')->get(['email']);
+        else
+            $inactiveUsers = [];
+        return $inactiveUsers;
     }
 
 
