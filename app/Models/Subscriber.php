@@ -81,12 +81,7 @@ class Subscriber extends Model
      */
     public function subscribersList($settings)
     {
-        $subscriberModel = new Subscriber();
-
-
         $inactiveUsers = $this->inactiveUserEmail();
-
-        // dd($inactiveUsers);
 
         $skip = $settings['limit'] * ($settings['page'] - 1);
         $subscriberList['result'] = Subscriber::whereNotIn('email', $inactiveUsers)
@@ -96,7 +91,8 @@ class Subscriber extends Model
                                               ->orderBy('created_at', 'desc')
                                               ->get();
 
-        $subscriberList['count'] = $subscriberModel->get()->count();
+        $subscriberList['count'] = Subscriber::whereNotIn('email', $inactiveUsers)->get()->count();
+      //  dd($subscriberList['count']);
         return $subscriberList;
     }
 
@@ -122,7 +118,6 @@ class Subscriber extends Model
 
     public function allSubscribers()
     {
-        //$subscriberModel = new Subscriber();
 
         $inactiveUsers = $this->inactiveUserEmail();
 
@@ -135,7 +130,8 @@ class Subscriber extends Model
     }
 
     /**
-     * @return mixed
+     * @param bool $status
+     * @return mixed if parameter is false then it will return all an empty array which
      * if parameter is false then it will return all an empty array which
      * will not filter any data where this function will be called.
      */

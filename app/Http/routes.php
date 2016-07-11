@@ -22,7 +22,7 @@
 
 // test route
 
-Route::get('x', 'UserController@sendActivityMailToUsers');
+//Route::get('x', 'UserController@sendActivityMailToUsers');
 
 
 Route::any('secure-page-header', 'UserController@securePageHeader');
@@ -35,12 +35,6 @@ Route::get('update-price', 'ProductController@priceUpdate');
 Route::get('unsubscribe', 'PageController@home');
 
 Route::get('open/{productId}/{reference}', 'ProductQueryController@link');
-
-
-//    Route::get('/product-details', function () // temp, used for tweaking frontend
-//    {
-//        return view('static.product-details');
-//    });
 
 Route::get('/contactus', 'PageController@contactUs');
 Route::get('/aboutus', 'PageController@aboutUs');
@@ -104,10 +98,6 @@ Route::group(['prefix' => 'api'], function () {
 
     Route::get('/user/profile-settings/{userId?}', 'UserController@getUserProfileSettingsById');
     Route::post('/user/profile-settings/set-daily-email', 'UserController@setDailyEmail');
-
-
-
-
 
     Route::get('wp', 'UserController@getWpUsers');
 
@@ -234,10 +224,6 @@ Route::group(['prefix' => 'api'], function () {
     Route::post('contact-us', 'UserController@postContactUsInfo');
     Route::post('user/posts', 'UserController@getStoriesByAuthor');
 
-
-
-
-
     /*
      * Notification
      * */
@@ -315,9 +301,6 @@ Route::group(['prefix' => 'payment'], function () {
     Route::get('membership-check', 'PaymentController@checkMembership');
 
     Route::get('paid-membership-report/{userId?}', 'PaymentController@subscribedMembershipPaymentInfo');
-
-
-
 });
 
 //Shop view
@@ -384,8 +367,6 @@ Route::get('search-form-query', 'SearchController@formatAndRedirectSearch');
 Route::get('search/{query?}', 'PageController@searchPage');
 
 Route::get('testing/email/{type?}', 'PageController@testEmail');
-
-
 
 // temporary category tag generator
 // Route::get('gen', 'TagsController@temporaryCategoryTagGenerator');
