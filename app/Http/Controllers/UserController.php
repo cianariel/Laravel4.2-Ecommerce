@@ -206,9 +206,6 @@ class UserController extends ApiController
         if ($this->authCheck['method-status'] == 'success-with-http') {
             $userData = $this->authCheck['user-data'];
 
-            // 'profilePicture'   => $this->authCheck['profile-picture'],
-
-
             $data = array(
                 'userData' => $userData,
                 'userProfileData' => $userData,
@@ -225,14 +222,7 @@ class UserController extends ApiController
 
             );
 
-            // dd($data);
-
             MetaTag::set('title', 'Ideaing | My profile');
-
-            /*if (\Request::isXmlHttpRequest()) {
-                return $this->setStatusCode(\Config::get("const.api-status.success"))
-                            ->makeResponse($data);
-            } else*/
 
             return view('user.user-profile', $data);
 
