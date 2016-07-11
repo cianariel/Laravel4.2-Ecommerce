@@ -450,14 +450,10 @@ class UserController extends ApiController
     {
         $inputData = \Input::all();
 
-        $userId = $inputData['UserId'];
         $activityCount = $inputData['ActivityCount'];
 
         $userId = User::where('permalink',$inputData['UserId'])
                       ->first()->id;
-
-       // dd($userId);
-
 
         // gather comment activities
 
