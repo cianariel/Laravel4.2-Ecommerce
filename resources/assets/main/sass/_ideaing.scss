@@ -939,7 +939,7 @@ nav {
   .head-wrap{
     position: absolute;
     width: 100%;
-    padding-top: 20%;
+    padding-top: 17%;
     z-index: 1;
   }
 
@@ -996,16 +996,11 @@ nav {
     h1{
       float: left;
       text-align: left;
-      //width: 50%;
       margin: 0;
       font-size: 3.5rem;
-      //max-width: 80%;
-      //margin-left: auto;
-      //margin-right: auto;
-      //margin-top: 200px;
-      line-height: 1.6;
+      line-height: 1.1;
       z-index: 1;
-      padding-left: 10%;
+      padding: 7px 0 7px 10%;
       background-color: rgba($sky-blue, .7);
       text-shadow: none;
 
@@ -6579,16 +6574,6 @@ footer.about-footer{
     }
 
     a.signin{
-        /*cursor: pointer;
-        text-indent: 0 !important;
-        background: $iridium;
-        border-radius: 3px;
-        color: #fff  !important;;
-        text-transform: none;
-        padding: 12px 23px 7px  5px !important;
-        width: 83px;
-        margin-right: 15px;*/
-        
         padding-right: 15px !important;
         padding-left: 15px !important;
         i{
@@ -6614,15 +6599,9 @@ footer.about-footer{
   }
 
   #hero{
-/*    min-height: 570px;*/
-/*    padding-bottom: 20px;*/
-
     .hero-background{
       -webkit-filter: none;
-/*      -moz-filter: blur(2px);*/
-/*      -o-filter: blur(2px);*/
-/*      -ms-filter: blur(2px);*/
-/*      filter: blur(2px);*/
+
     }
 
     & > .container{
