@@ -4093,7 +4093,6 @@ publicApp.directive('heartCounterPublic', ['$http', function ($http) {
 
             // clean url for ideaing URL (take only permalink)
             $scope.cleanUrl = function (urlString) {
-                //console.log('url : '+ urlString);
                 return urlString;
             };
 
@@ -4833,14 +4832,21 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                 {
                     if (data.data.message == 'Successfully authenticated') {
                     	if(goTo === 'home'){
-                            console.log(12)
-                    		window.location = '/';		
+                    		window.location = '/';		 
                     	}else if(goTo == 'profile'){
-                            console.log('bubu')
                             window.location = '/user/profile';      
                     	}else{
-                            console.log('kuka')
-                            location.reload();
+
+                            if($('html').hasClass('idea-stories')){
+                                $timeout = 4000;
+                            }else{
+                                $timeout = 1; 
+                            }
+
+                         // $scope.addAlert('success', data.data.message);
+                           setTimeout(function(){
+                                location.reload();
+                          }, $timeout)
                         }
                     } else {
                         $scope.addAlert('success', data.data.message);
@@ -5242,7 +5248,6 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                 }
 
             }).success(function (data) {
-                console.log('0000')
                 $scope.outputStatus(data, data.data);
                 if (source == 'giveaway') {
                     $scope.loginUser('giveaway');
@@ -5374,22 +5379,23 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                     url: WpLoginURL,
                     method: "GET"
 
-                }).success(function (data) {
+                }).success(function (response) {
                     var from = $location.search().from;
                     if (from === 'cms') {
                         window.location = '/ideas/wp-admin';
 
                     }
-                }).error(function (data) {
-                    if (data.success) {
+                }).error(function (response) {
+                    console.log(response)
+                    if (response.success) {
                         var from = $location.search().from;
                         if (from === 'cms') {
                             window.location = '/ideas/wp-admin';
                         }
                     }
+                     $scope.outputStatus(data, data.data, goTo);
+
                 });
-                console.log(11)
-                $scope.outputStatus(data, data.data, goTo);
 
             });
         };
@@ -5419,8 +5425,6 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                 url: '/password-reset-request/' + $scope.Email,
                 method: "GET",
             }).success(function (data) {
-                console.log(112)
-
                 $scope.outputStatus(data, data.data);
             });
         };
@@ -5442,8 +5446,6 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                 }
             }).success(function (data) {
                 //console.log(data.data);
-                console.log(113)
-
                 $scope.outputStatus(data, data.data);
 
                 /* if(data.status_code == 200)
@@ -5472,8 +5474,6 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                 }
             }).success(function (data) {
                 // console.log(data);
-                console.log(114)
-
                 $scope.outputStatus(data, 'User information updated successfully');
                 location.reload();
 
@@ -5511,8 +5511,6 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                 }
             }).success(function (data) {
                 // console.log(data);
-                console.log(115)
-
                 $scope.outputStatus(data, 'Profile picture updated successfully');
                 $scope.showBrowseButton = !$scope.showBrowseButton;
 

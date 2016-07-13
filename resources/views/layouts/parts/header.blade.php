@@ -29,6 +29,7 @@ if (!isset($theGiveAway)) {
 }
 ?>
 
+
 <div id="publicApp" ng-app="publicApp" ng-controller="publicController" class="header-cloak" ng-cloak>
     <header class="colophon">
 
