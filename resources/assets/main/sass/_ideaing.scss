@@ -4972,6 +4972,7 @@ body.single{
     &::after{
       content: 'Get it';
       display: block;
+      opacity: 0;
       position: absolute;
       width: 60px;
       height: 60px;
@@ -4984,11 +4985,29 @@ body.single{
       font-size: 1.4rem;
       font-family: montserratlight;
       line-height: 1.6;
+
+      -webkit-transition: opacity .5s ease, filter .5s ease;
+      -moz-transition: opacity .5s ease, filter .5s ease;
+      -ms-transition: opacity .5s ease, filter .5s ease;
+      -o-transition: opacity .5s ease, filter .5s ease;
+      transition: opacity .5s ease, filter .5s ease;
     }
 
     &:hover{
+      img{
+        filter: brightness(80%);
+        -webkit-filter: brightness(80%);
+        -khtl-filter: brightness(80%);
+        -mov-filter: brightness(80%);
+        -o-filter: brightness(80%);
+        -ms-filter: brightness(80%);
+      }
+
+
       &::after{
-        background: darken($iridium, 10%);
+        opacity: 1;
+
+        //background: darken($iridium, 10%);
       }
     }
   }
@@ -5194,6 +5213,7 @@ body.single{
       margin: 0 auto;
       display: block;
       border: 1px solid #eee;
+
     }
   }
 
