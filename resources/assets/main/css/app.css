@@ -7066,6 +7066,8 @@ body.product-details .scroll-header #top-nav a.shop {
   color: #999999; }
 body.product-details .scroll-header #top-nav a.shop:hover {
   color: #ed2049; }
+body.product-details .main-container {
+  max-width: 900px; }
 body.product-details .article-content {
   font-size: 15px;
   font-family: montserratlight; }
