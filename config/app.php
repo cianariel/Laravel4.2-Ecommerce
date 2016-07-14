@@ -166,6 +166,7 @@ return [
         App\Providers\HelperServiceProvider::class,
         Greggilbert\Recaptcha\RecaptchaServiceProvider::class,
         Approached\LaravelImageOptimizer\ServiceProvider::class,
+       Kryptonit3\Counter\CounterServiceProvider::class,
     ],
 
     /*
@@ -239,7 +240,7 @@ return [
         'AWS' => Aws\Laravel\AwsFacade::class,
         'PageHelper' => App\Helpers\PageHelper::class,
         'Recaptcha' => Greggilbert\Recaptcha\Facades\Recaptcha::class,
-
+        'Counter' => Kryptonit3\Counter\Facades\CounterFacade::class,
     ],
 
 ];

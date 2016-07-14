@@ -7050,6 +7050,19 @@ body.product-details .related-items, .single-post .related-items {
     max-width: 190px;
     margin: 0 auto; }
 
+body.product-details ul.social-stats {
+  min-width: 220px;
+  position: static;
+  float: left; }
+  body.product-details ul.social-stats li {
+    position: static !important;
+    float: left !important;
+    width: auto !important; }
+  body.product-details ul.social-stats .hearts {
+    width: auto;
+    padding-top: 10px; }
+    body.product-details ul.social-stats .hearts span {
+      margin-top: 2px; }
 body.product-details .rsThumb {
   width: 145px;
   height: 145px; }
