@@ -3530,6 +3530,25 @@ body.product-details, .single-post{
   }
 }
 body.product-details{
+ 
+ul.social-stats{
+      min-width: 220px;
+      position: static;
+      float: left;
+      li{
+        position:static !important;
+        float: left !important; 
+        width: auto !important;
+      }
+      .hearts{
+        width: auto;
+        padding-top:10px;
+
+        span{
+          margin-top: 2px
+        }
+      } 
+    }
 
 
   .rsThumb{
@@ -3545,6 +3564,8 @@ body.product-details{
       font-size: 13px;
       margin-top: 6px;
     }
+
+    
     
     .like-counter{
       b{

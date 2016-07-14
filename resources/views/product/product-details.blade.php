@@ -35,7 +35,7 @@
     <div id="productApp" ng-app="productApp" data-ng-controller="productController" class="ideaing-product" ng-cloak
          itemscope itemtype="http://schema.org/Product">
         <header class="story-header hidden-620 hidden-soft">
-            <div class="col-xs-1">
+            <div>
                 <a href="#" class="side-logo lamp-logo">
                     <i class="m-icon m-icon--bulb2">
                         <span class="path1"></span><span class="path2"></span><span class="path3"></span><span
@@ -45,21 +45,34 @@
                     </i>
                 </a>
             </div>
-            <div class="col-xs-4">
-                <h2>
+            <div>
+                <h2 class="col-xs-3">
                     <span class="title-holder">
                 <span class="title" itemprop="name">
                     @if(isset($productInformation['ProductName']))
                         {{$productInformation['ProductName']}}
                     @endif
                 </span>
+                
+                    </span>
+                </h2>
                 <ul class="social-stats center-block">
-                    <li class="">
+                    <li class="view-counter social-stats">
+                            <div class="social-stats__item">
+                            <?php $views = Counter::showAndCount('product-details-'.$productId); ?>
+                                @if($views >= 100)
+                                    <i class="m-icon m-icon--flame"></i>
+                                @else
+                                    <i class="m-icon m-icon--eye"></i>
+                                @endif
+                                <span class="grey value">{{$views}} views</span>
+                        </div> 
+                    </li>
+                    <li class="hearts">
                         <a href="#" class="likes" ng-class="['likes', {active: unHeart != false}]"
                            ng-init="heartCounterAction(<?php echo $userData['id'] . "," . $productId . "," . "'product'"?>)"
                            ng-click="heartAction(<?php echo $userData['id'] . "," . $productId . "," . "'$permalink'" . "," . "'product'"?>)"
                         >
-                            <!--                                <i ng-class="unHeart != false ? 'm-icon m-icon--heart-solid' : 'm-icon m-icon--ScrollingHeaderHeart'">-->
                             <i class="m-icon m-icon--ScrollingHeaderHeart">
                                         <span class="m-hover">
                                             <span class="path1"></span><span class="path2"></span>
@@ -67,13 +80,10 @@
                             </i>
                             <span class="social-stats__text"> &nbsp; <?php echo "{{ heartCounter }}" ?> </span>
                         </a>
-
                     </li>
                 </ul>
-                    </span>
-                </h2>
             </div>
-            <div class="col-xs-7">
+            <div class="col-xs-7 col-sm-6 pull-right">
                 <ul ng-app="publicApp" ng-controller="publicController"
                     class="share-buttons short hidden-xs col-lg-6 col-sm-8 pull-right">
                     <li class="all-shares"><b class="share-count all" ng-init="readSingleNotification(<?php echo $userData['id'] ?>,'<?php echo $permalink ?>')"></b> <br/>all shares</li>
