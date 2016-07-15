@@ -7988,7 +7988,7 @@ body.single .article-content iframe {
     -ms-transition: opacity .5s ease;
     -o-transition: opacity .5s ease;
     transition: opacity .5s ease; }
-  .get-it-inner:hover a::after, .get-it-inner:hover::after {
+  .get-it-inner:hover a::after, .get-it-inner:hover::after, .get-it-inner.hovered a::after, .get-it-inner.hovered::after {
     opacity: 1; }
 
 .float-thumbs {

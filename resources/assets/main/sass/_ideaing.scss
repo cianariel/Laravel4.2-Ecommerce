@@ -5036,7 +5036,8 @@ body.single{
 
   }
 
-  &:hover{
+  &:hover,
+  &.hovered{
     a::after,
     &::after{
       opacity: 1;
