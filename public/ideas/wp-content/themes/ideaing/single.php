@@ -438,7 +438,7 @@
         });
 //        function imageScrollOver() {
 
-//            if(window.innerWidth < 620){ // mobile only
+            if(window.innerWidth < 620){ // mobile only
                 $(window).scroll(function(){
                     $('.article-content .get-it-inner').each(function(){
                         var that = $(this);
@@ -452,7 +452,7 @@
                         }
                     });
                 });
-//            }
+            }
 //        }
     </script>
 
