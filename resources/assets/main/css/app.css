@@ -7986,22 +7986,24 @@ body.single .article-content iframe {
       -ms-transition: opacity .5s ease;
       -o-transition: opacity .5s ease;
       transition: opacity .5s ease; }
-  .get-it-inner::after {
-    content: '';
-    opacity: 0;
-    width: 100%;
-    display: block;
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.3);
-    -webkit-transition: opacity .5s ease;
-    -moz-transition: opacity .5s ease;
-    -ms-transition: opacity .5s ease;
-    -o-transition: opacity .5s ease;
-    transition: opacity .5s ease; }
-  .get-it-inner:hover a::after, .get-it-inner:hover::after, .get-it-inner.hovered a::after, .get-it-inner.hovered::after {
+    .get-it-inner > a::before {
+      content: '';
+      opacity: 0;
+      width: 100%;
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.3);
+      -webkit-transition: opacity .5s ease;
+      -moz-transition: opacity .5s ease;
+      -ms-transition: opacity .5s ease;
+      -o-transition: opacity .5s ease;
+      transition: opacity .5s ease; }
+  .get-it-inner:hover a::after,
+  .get-it-inner:hover a::before, .get-it-inner:hover::after, .get-it-inner.hovered a::after,
+  .get-it-inner.hovered a::before, .get-it-inner.hovered::after {
     opacity: 1; }
 
 .float-thumbs {
