@@ -5034,32 +5034,32 @@ body.single{
       -o-transition: opacity .5s ease;
       transition: opacity .5s ease;
     }
+    &::before{
+        content: '';
+        opacity: 0;
+        width: 100%;
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        background: rgba(0,0,0,.3);
+
+        -webkit-transition: opacity .5s ease;
+        -moz-transition: opacity .5s ease;
+        -ms-transition: opacity .5s ease;
+        -o-transition: opacity .5s ease;
+        transition: opacity .5s ease;
 
 
-  }
-  &::after{
-    content: '';
-    opacity: 0;
-    width: 100%;
-    display: block;
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    background: rgba(0,0,0,.3);
-
-    -webkit-transition: opacity .5s ease;
-    -moz-transition: opacity .5s ease;
-    -ms-transition: opacity .5s ease;
-    -o-transition: opacity .5s ease;
-    transition: opacity .5s ease;
-
+      }
 
   }
 
   &:hover,
-  &.hovered{
+  &.hovered{ 
     a::after,
+    a::before,
     &::after{
       opacity: 1;
     }
