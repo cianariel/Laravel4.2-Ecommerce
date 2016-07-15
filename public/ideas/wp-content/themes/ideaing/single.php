@@ -438,25 +438,21 @@
         });
 //        function imageScrollOver() {
 
-            if(window.innerWidth < 620){ // mobile only
+//            if(window.innerWidth < 620){ // mobile only
                 $(window).scroll(function(){
                     $('.article-content .get-it-inner').each(function(){
                         var that = $(this);
                         var imgTop = that.offset().top + 100;
                         var imgBottom = imgTop + that.height() + 350;
                         var window_top = $(window).scrollTop() + $(window).height();
-
-                        console.log(imgTop +'-'+ imgBottom +'-'+ window_top)
-                        if (window_top > imgTop && window_top < imgBottom && !that.hasClass('hovered') { // we have scrolled over the element
-                            console.log('ushki')
+                        if (window_top > imgTop && window_top < imgBottom) { // we have scrolled over the element
                             that.addClass('hovered');
                         }else if(that.hasClass('hovered')){
-                            console.log('bobko')
                             that.removeClass('hovered');
                         }
                     });
                 });
-            }
+//            }
 //        }
     </script>
 
