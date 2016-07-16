@@ -5702,6 +5702,8 @@ body.contactus-page #hero {
     .slider-side-block .price .sale-price {
       color: #FF0042;
       font-weight: bold; }
+    .slider-side-block .price .savings {
+      font-weight: normal; }
   .slider-side-block .vendor-logo {
     margin-top: 9px; }
   .slider-side-block .table {

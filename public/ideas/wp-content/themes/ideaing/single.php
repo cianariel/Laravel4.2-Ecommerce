@@ -418,35 +418,37 @@
                 if(!$(this).parents('.get-it-inner').length){
                     var theLinkNode = $(this).parent('a');
                     theLinkNode.attr('target', '_blank').wrap('<div class="get-it-inner"></div>');
+                    var strong = theLinkNode.parents('.thumb-box').find('strong');
+                    var text = strong.text();
 
-                    var href =  theLinkNode.attr('href');
-                    console.log(href)
+                    if(text.indexOf('$') == -1){ // price is not hardcoded into the name
+                        var href =  theLinkNode.attr('href');
+                        postData = false;
 
-                    postData = false;
+                        if(href && href.indexOf('/open/') > -1 && href.indexOf('/idea/') == -1){
+                            productID = href.replace(/\D/g,'');
+                            postData = {'id': productID};
 
-                    if(href && href.indexOf('/open/') > -1 && href.indexOf('/idea/') == -1){
-                        productID = href.replace(/\D/g,'');
-                        console.log('productID: ' + productID);
-                        postData = {'id': productID};
+                        }else if(href && href.indexOf('/product/') > -1){
+                            productURL = href.substr(href.lastIndexOf('/') + 1);
+                            postData = {'url': productURL};
+                                console.log(productURL)
 
-                    }else if(href && href.indexOf('/product/') > -1){
-                        productURL = href.substr(href.lastIndexOf('/') + 1);
-                        console.log('productURL: ' + productURL);
-                        postData = {'url': productURL};
-                    }
-
-                    if(postData){
-                        $.post( "/api/product/get-price", postData)
-                          .success(function( postResp ) {
-                            var strong = theLinkNode.parents('.float-thumbs').find('strong');
-                            var text = strong.text();
-                            if(text.indexOf('$') == -1){ // price is not hardcoded into the name
-                                var newText = text.concat(' ($' + postResp + ')');
-                                strong.text(newText);
+                            if(productURL == 'motorola-pet-scout66-wi-fi-hd-pet-monitoring-camera'){
+                                console.log('ear ear')
                             }
-                        });
-                    }
 
+
+                        }
+
+                        if(postData){
+                            $.post( "/api/product/get-price", postData)
+                              .success(function( postResp ) {
+                                    var newText = text.concat(' ($' + Math.round(postResp) + ')');
+                                    strong.text(newText);
+                            });
+                        }
+                     }
                 }
                 if($(this).parents('p').next('p').find('a.vendor-link').length){
                     $(this).parents('p').each(function(){
