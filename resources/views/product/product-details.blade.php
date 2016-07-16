@@ -285,8 +285,8 @@
                                        $savings = @$productInformation['Price'] - $productInformation['SellPrice'];
                                     ?>
 
-                                    @if($savings > 0)
-                                        <span class="savings">You save ${{@$savings}}</span>
+                                    @if($savings > 1)
+                                        <span class="savings">You save ${{round($savings)}}</span>
                                         <span class="regular-price">${{@$productInformation['Price']}}</span>
                                         <span class="sale-price">${{$productInformation['SellPrice']}}</span>
                                     @else
