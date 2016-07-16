@@ -8003,10 +8003,23 @@ body.single .article-content iframe {
       -ms-transition: opacity .5s ease;
       -o-transition: opacity .5s ease;
       transition: opacity .5s ease; }
+  .get-it-inner .merchant-widget__price {
+    position: absolute;
+    width: 80px;
+    left: -80px;
+    top: 0;
+    padding: 12px;
+    -webkit-transition: all .5s ease;
+    -moz-transition: all .5s ease;
+    -ms-transition: all .5s ease;
+    -o-transition: all .5s ease;
+    transition: all .5s ease; }
   .get-it-inner:hover a::after,
   .get-it-inner:hover a::before, .get-it-inner:hover::after, .get-it-inner.hovered a::after,
   .get-it-inner.hovered a::before, .get-it-inner.hovered::after {
     opacity: 1; }
+  .get-it-inner:hover .merchant-widget__price, .get-it-inner.hovered .merchant-widget__price {
+    left: 0; }
 
 .float-thumbs {
   overflow: hidden;
@@ -8019,6 +8032,7 @@ body.single .article-content iframe {
         float: left; } }
   .float-thumbs .get-it-inner {
     float: left;
+    overflow: hidden;
     position: relative;
     line-height: 1.5rem;
     font-size: 1.3rem; }
