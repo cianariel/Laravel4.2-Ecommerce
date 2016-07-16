@@ -422,15 +422,30 @@
                     var href =  theLinkNode.attr('href');
                     console.log(href)
 
-                    if(href.indexOf('/open/') > -1){
+                    postData = false;
+
+                    if(href && href.indexOf('/open/') > -1 && href.indexOf('/idea/') == -1){
                         productID = href.replace(/\D/g,'');
                         console.log('productID: ' + productID);
+                        postData = {'id': productID};
 
-                    }else if(href.indexOf('/product/') > -1){
+                    }else if(href && href.indexOf('/product/') > -1){
                         productURL = href.substr(href.lastIndexOf('/') + 1);
                         console.log('productURL: ' + productURL);
+                        postData = {'url': productURL};
                     }
 
+                    if(postData){
+                        $.post( "/api/product/get-price", postData)
+                          .success(function( postResp ) {
+                            var strong = theLinkNode.parents('.float-thumbs').find('strong');
+                            var text = strong.text();
+                            if(text.indexOf('$') == -1){ // price is not hardcoded into the name
+                                var newText = text.concat(' ($' + postResp + ')');
+                                strong.text(newText);
+                            }
+                        });
+                    }
 
                 }
                 if($(this).parents('p').next('p').find('a.vendor-link').length){
