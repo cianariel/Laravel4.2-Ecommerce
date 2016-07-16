@@ -523,7 +523,7 @@
                                             @if(isset($productInformation['Review']))
                                                 {{
                                                 intval((((
-                                                $productInformation['Review'][0]->value)
+                                                $productInformation['Review'][1]->value)
                                                 + $productInformation['Review'][1]->value)/2)*20
                                                 )
                                                 }}%
