@@ -36,6 +36,8 @@ Route::get('unsubscribe', 'PageController@home');
 
 Route::get('open/{productId}/{reference}', 'ProductQueryController@link');
 
+Route::post('api/product/get-price/', 'ProductController@getPrice');
+
 
 //    Route::get('/product-details', function () // temp, used for tweaking frontend
 //    {

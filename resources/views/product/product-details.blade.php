@@ -281,8 +281,17 @@
 
                             <b class="price col-xs-6">
                                 @if(isset($productInformation['SellPrice']))
-                                    <span class="regular-price">${{@$productInformation['Price']}}</span>
-                                    <span class="sale-price">${{$productInformation['SellPrice']}}</span>
+                                    <?php
+                                       $savings = @$productInformation['Price'] - $productInformation['SellPrice'];
+                                    ?>
+
+                                    @if($savings > 1)
+                                        <span class="savings">You save ${{round($savings)}}</span>
+                                        <span class="regular-price">${{@$productInformation['Price']}}</span>
+                                        <span class="sale-price">${{$productInformation['SellPrice']}}</span>
+                                    @else
+                                        <span>${{$productInformation['SellPrice']}}</span>
+                                    @endif
                                 @endif
                             </b>
                             <img class="vendor-logo col-xs-6" width="107"

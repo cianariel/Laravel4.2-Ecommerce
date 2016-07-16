@@ -16,6 +16,7 @@ use Folklore\Image\Facades;
 use Carbon\Carbon;
 use App\Models\ProductCategory;
 use App\Core\ProductApi\ProductStrategy;
+use Input;
 
 class ProductController extends ApiController
 {
@@ -448,6 +449,23 @@ class ProductController extends ApiController
         }catch(\Exception $ex)
         {
             return;
+        }
+    }
+    public function getPrice(){
+        $input = Input::all();
+        
+        if(@$input['id']){
+            $product = Product::find($input['id']);
+        }elseif(@$input['url']){
+            $product = Product::find($input['url']);
+        }else{
+            $product = false;
+        }
+
+        if($product){
+            return $product->sale_price;
+        }else{
+            return ['error' => ' No Product Found'];
         }
     }
 
