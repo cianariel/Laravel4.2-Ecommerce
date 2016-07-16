@@ -418,7 +418,7 @@
                 if(!$(this).parents('.get-it-inner').length){
                     var theLinkNode = $(this).parent('a');
                     theLinkNode.attr('target', '_blank').wrap('<div class="get-it-inner"></div>');
-                    var strong = theLinkNode.parents('.thumb-box').find('strong');
+                    var strong = theLinkNode.parents('.thumb-box').find('strong a');
                     var text = strong.text();
 
                     if(text.indexOf('$') == -1){ // price is not hardcoded into the name
@@ -432,20 +432,14 @@
                         }else if(href && href.indexOf('/product/') > -1){
                             productURL = href.substr(href.lastIndexOf('/') + 1);
                             postData = {'url': productURL};
-                                console.log(productURL)
-
-                            if(productURL == 'motorola-pet-scout66-wi-fi-hd-pet-monitoring-camera'){
-                                console.log('ear ear')
-                            }
-
-
                         }
 
                         if(postData){
                             $.post( "/api/product/get-price", postData)
                               .success(function( postResp ) {
-                                    var newText = text.concat(' ($' + Math.round(postResp) + ')');
-                                    strong.text(newText);
+                                    var newText = Math.round(postResp);
+                                    
+                                    theLinkNode.parents('.get-it-inner').append('<span class="merchant-widget__price">$'+ newText +'</span>');    
                             });
                         }
                      }

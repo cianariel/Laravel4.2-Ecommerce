@@ -5059,12 +5059,29 @@ body.single{
 
   }
 
+  .merchant-widget__price{
+        position: absolute;
+        width: 80px;
+        left: -80px;
+        top: 0;
+        padding: 12px;
+
+        -webkit-transition: all .5s ease;
+        -moz-transition: all .5s ease;
+        -ms-transition: all .5s ease;
+        -o-transition: all .5s ease; 
+        transition: all .5s ease;
+  }
+
   &:hover,
-  &.hovered{ 
+  &.hovered{   
     a::after,
     a::before,
     &::after{
       opacity: 1;
+    }
+    .merchant-widget__price{
+       left: 0; 
     }
   }
 
@@ -5075,7 +5092,7 @@ body.single{
   //  max-width: 760px;
     margin: 0 auto;
     text-align:center;
-
+ 
     .inner{
     	display:inline-block;
       @media (min-width: 620px){
@@ -5087,6 +5104,7 @@ body.single{
 
     .get-it-inner{
       float:left;
+      overflow: hidden;
       position:relative;
       line-height:1.5rem;
       font-size: 1.3rem;
@@ -5095,6 +5113,8 @@ body.single{
    .thumb-box{
       position:relative; 
       display:inline-block;
+
+      
 
      a{
        color:#fff;
