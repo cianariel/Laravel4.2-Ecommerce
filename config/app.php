@@ -166,7 +166,7 @@ return [
         App\Providers\HelperServiceProvider::class,
         Greggilbert\Recaptcha\RecaptchaServiceProvider::class,
         Approached\LaravelImageOptimizer\ServiceProvider::class,
-       Kryptonit3\Counter\CounterServiceProvider::class,
+        Kryptonit3\Counter\CounterServiceProvider::class,
     ],
 
     /*
