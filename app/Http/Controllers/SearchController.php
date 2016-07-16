@@ -64,6 +64,7 @@ class SearchController extends Controller
 
     public function indexData($indexType = false){
         ini_set('memory_limit', '1024M');
+        set_time_limit (600);
 
         if($indexType == 'content'){
             $endPoin = 'https://search-ideaing-production-sykvgbgxrd4moqagcoyh3pt5nq.us-west-2.cloudsearch.amazonaws.com';
