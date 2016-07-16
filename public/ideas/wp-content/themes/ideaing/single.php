@@ -416,7 +416,22 @@
         $(document).ready(function(){ // add Get It Button overlay on images that link to vendors
             $('.article-content').find('img').each(function(){
                 if(!$(this).parents('.get-it-inner').length){
-                    $(this).parent('a').attr('target', '_blank').wrap('<div class="get-it-inner"></div>');
+                    var theLinkNode = $(this).parent('a');
+                    theLinkNode.attr('target', '_blank').wrap('<div class="get-it-inner"></div>');
+
+                    var href =  theLinkNode.attr('href');
+                    console.log(href)
+
+                    if(href.indexOf('/open/') > -1){
+                        productID = href.replace(/\D/g,'');
+                        console.log('productID: ' + productID);
+
+                    }else if(href.indexOf('/product/') > -1){
+                        productURL = href.substr(href.lastIndexOf('/') + 1);
+                        console.log('productURL: ' + productURL);
+                    }
+
+
                 }
                 if($(this).parents('p').next('p').find('a.vendor-link').length){
                     $(this).parents('p').each(function(){
@@ -442,7 +457,7 @@
                 $(window).scroll(function(){
                     $('.article-content .get-it-inner').each(function(){
                         var that = $(this);
-                        var imgTop = that.offset().top + 100;
+                        var imgTop = that.offset().top + 450;
                         var imgBottom = imgTop + that.height() + 350;
                         var window_top = $(window).scrollTop() + $(window).height();
                         if (window_top > imgTop && window_top < imgBottom) { // we have scrolled over the element
