@@ -1,7 +1,7 @@
 <div class="img-holder">
     <img  itemprop="image"  src="<?php echo '{{item.media_link_full_path}}' ?>" alt="<?php echo '{{item.product_name}}' ?>"/>
 </div>
-<span class="mobile-show">
+<span class="mobile-show hidden-620">
         <i class="p-show m-icon--Add-Active"></i>
         <i class="p-close m-icon--Close"></i>
     </span>
