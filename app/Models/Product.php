@@ -547,7 +547,7 @@ class Product extends Model
                 $relatedProductsData[$key]['AffiliateLink'] = $relatedProducts[$key]->affiliate_link;
                 $relatedProductsData[$key]['Image'] = $image;
                 $relatedProductsData[$key]['UpdateTime'] = Carbon::createFromTimestamp(strtotime($relatedProducts[$key]->updated_at))->diffForHumans();
-                $review = json_decode($relatedProducts[$key]->review);
+                $review = ($relatedProducts[$key]->review);
                 $relatedProductsData[$key]['AverageScore'] = intval(((($review[0]->value > 0 ? $review[0]->value : $review[1]->value) + $review[1]->value)/2)*20);
 
             }
