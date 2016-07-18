@@ -3884,35 +3884,12 @@ angular.module('colorpicker.module', [])
             }
         });
 
-        //$('#about-button').click(function(){
-        //    $("html, body").animate({ scrollTop: $(document).height() }, "slow");
-        //});
-
-        //$('.main-content-filter a').click(function(event){
-        //    event.preventDefault();
-        //    var $contentBox = $('.main-content');
-        //    var $type = $(this).data('filterby');
-        //
-        //    $contentBox.attr('data-only', $type);
-        //    //
-        //    //$contentBox.removeClass('only-*');
-        //    //$contentBox.addClass('only-' + $type);
-        //});
-
         $('.readmore').readmore({
             startOpen: false,
             collapsedHeight: 300,
             moreLink: '<a class="morelink" href="#">Read more</a>',
             lessLink: '<a class="morelink" href="#">Close</a>',
         });
-
-        //$('body').on('scroll', function() {
-        //    console.log('the end is near');
-        //
-        //    if($(this).scrollTop() + $(this).innerHeight() >= $(this)[0].scrollHeight) {
-        //        console.log('end reached');
-        //    }
-        //})
 
         $(window).scroll(function() {
 
@@ -4037,6 +4014,22 @@ angular.module('colorpicker.module', [])
         }
 
     }( window.Giveaway = window.Giveaway || {}, jQuery ));
+
+    if(window.innerWidth < 1070){ // mobile only
+        $(window).scroll(function(){
+            $('.homepage-grid .product-box').each(function(){
+                var that = $(this);
+                var imgTop = that.offset().top + 450;
+                var imgBottom = imgTop + that.height() + 350;
+                var window_top = $(window).scrollTop() + $(window).height();
+                if (window_top > imgTop && window_top < imgBottom) { // we have scrolled over the element
+                    that.addClass('hovered');
+                }else if(that.hasClass('hovered')){
+                    that.removeClass('hovered');
+                }
+            });
+        });
+    }
 
 })(jQuery, this);
 ;

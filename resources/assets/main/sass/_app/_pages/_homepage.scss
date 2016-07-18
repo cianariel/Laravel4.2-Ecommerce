@@ -42,8 +42,11 @@ body.home.logged-in{
       transition: all .5s ease;
     }
 
+    &.hovered,
     &:hover{
       .box-item__label-prod{
+        display: block;
+        opacity: 1;
         position: absolute;
         left: 0;
       }
