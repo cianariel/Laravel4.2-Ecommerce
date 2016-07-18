@@ -148,12 +148,12 @@
 		}
 
 		&--clear {
-			background: #fff;
-			color: #000;
+			background: $iridium;
+			color: #fff;
 
-			&:hover, &:active, &:focus {
-				color: $pink;
-			}
+			//&:hover, &:active, &:focus {
+			//	color: $pink;
+			//}
 		}
 	}
 	&__read-more {

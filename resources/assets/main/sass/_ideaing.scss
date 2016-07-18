@@ -7607,12 +7607,9 @@ footer.about-footer{
     line-height: 50px;
     font-size: 32px;
     cursor: pointer;
-/*    padding: 20px;*/
     text-align: center;
     display: inline-block;
-/*    font-weight: bold;*/
-/*    top: 10px;*/
-    padding-top: 3px;  
+    padding-top: 3px;
 }
 .circle-button{
     background: $iridium;
@@ -7621,24 +7618,16 @@ footer.about-footer{
     border-radius: 20px;
 }
 .room-landing{
-   //.hero-tags{
-   //  position: static;
-   //}
-  //.rsSlide{
-  //  z-index: 40;
-  //}
+
   .rsContent{
     overflow: visible !important;
   }
     .modal-dialog{
         position: relative;
-/*        width: auto;*/
-/*        margin: 0px;*/
         .modal-content{
             padding: 0px;
             background: transparent;
             .modal-header{
-/*                background-color: #000;*/
                 background: rgba(0,0,0,.9);
                 color: #fff;
                 position: relative;
@@ -7668,15 +7657,11 @@ footer.about-footer{
     
     
     .hero-related-products{
-    /*    display: none;*/
       background: rgba(51,51,51,.9);
       padding: 0;
       z-index: 1;
-      //margin-top: 50px;
       min-width: 267px;
       right: 0;
-      
-      
 
       h5{
         padding: 20px;
@@ -7726,7 +7711,6 @@ footer.about-footer{
         background: none;
         color: #fff;
         &:hover, &:focus{
-/*            color: $iridium;*/
             background: $iridium;
         }
       }
@@ -7745,13 +7729,9 @@ footer.about-footer{
         }
     }
     overflow: visible;
-/*    .hero-tags .tag:hover ~ .rsContainer:hover {
-        transform: unset !important;
-    }*/
 
     .rsContainer{
         &:hover{
-/*            transform: unset !important;*/
         }
         .rsSlide{
           overflow: hidden;
