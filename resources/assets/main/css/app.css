@@ -5744,7 +5744,6 @@ body.contactus-page #hero {
   width: 155px;
   height: 43px;
   min-width: 110px;
-  /*  background: url('/assets/images/ideaing-logo-small-no-text.png') no-repeat;*/
   background-size: contain; }
 
 #ideaing-logo {
@@ -5753,8 +5752,7 @@ body.contactus-page #hero {
   padding: 9px;
   max-width: 100%;
   margin-top: 0px;
-  transition: all 5s;
-  /*  margin-left: 30px;*/ }
+  transition: all 5s; }
   #ideaing-logo .m-icon {
     position: absolute;
     left: 0;
@@ -11848,7 +11846,13 @@ p {
   .box-item.hover .user-widget__name,
   .box-item.hover .box-item__get-it,
   .box-item.hover .box-item__label--clear,
-  .box-item.hover .box-item__read-more {
+  .box-item.hover .box-item__read-more, .box-item.hovered .box-item__overlay,
+  .box-item.hovered .merchant-widget,
+  .box-item.hovered .box-item__label--clear,
+  .box-item.hovered .user-widget__name,
+  .box-item.hovered .box-item__get-it,
+  .box-item.hovered .box-item__label--clear,
+  .box-item.hovered .box-item__read-more {
     opacity: 1;
     -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
     filter: alpha(opacity=100); }
@@ -12073,7 +12077,9 @@ body.home.logged-in #hero {
     -ms-transition: all .5s ease;
     -o-transition: all .5s ease;
     transition: all .5s ease; }
-  .homepage-grid .product-box:hover .box-item__label-prod {
+  .homepage-grid .product-box.hovered .box-item__label-prod, .homepage-grid .product-box:hover .box-item__label-prod {
+    display: block;
+    opacity: 1;
     position: absolute;
     left: 0; }
   @media (max-width: 767px) {

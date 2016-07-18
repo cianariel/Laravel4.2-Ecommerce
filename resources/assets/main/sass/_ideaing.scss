@@ -1437,7 +1437,6 @@ body.contactus-page
   width: 155px;
   height: 43px;
   min-width: 110px;
-/*  background: url('/assets/images/ideaing-logo-small-no-text.png') no-repeat;*/
   background-size: contain;
 }
 
@@ -1448,7 +1447,6 @@ body.contactus-page
   max-width: 100%;
   margin-top: 0px;
   transition: all 5s;
-/*  margin-left: 30px;*/
     .m-icon{
       position: absolute;
       left: 0;
@@ -1475,34 +1473,6 @@ body.contactus-page
 
     }
     .m-icon:last-child {
-      //display: none;
-
-
-
-      //opacity: 0;
-      //
-      ////@-o-keyframes fadeout { /* Opera */
-      ////  from {
-      ////    opacity:1;
-      ////  }
-      ////  to {
-      ////    opacity: 0;
-      ////  }
-      ////}
-      ////@keyframes fadeout {
-      ////  from {
-      ////    opacity:1;
-      ////  }
-      ////  to {
-      ////    opacity:0;
-      ////  }
-      ////}
-      //
-      //opacity: 0;
-      //-webkit-animation: fadeInOut 6s;
-      //animation: fadeInOut 6s;
-
-
 
       }
 
@@ -1632,7 +1602,6 @@ main.page-content{
       }
 
       i{
-        //display: inline-block;
         float: right;
         width: 170px;
         font-style: normal;
@@ -1644,20 +1613,6 @@ main.page-content{
         background: #fff;
         display: inline-block;
       }
-
-      //b, i{
-      //  float: left;
-      //}
-      //i{
-      //  text-align: right;
-      //}
-      //hr{
-      //  display: inline-block;
-      //  float: left;
-      //  width: 46%;
-      //  margin-left: 10px;
-      //  margin-right: 10px;
-      //}
     }
   }
 }
@@ -1676,8 +1631,6 @@ main.page-content{
   }
 
   .color-overlay{
-    //display: none;
-    //visibility: hidden;
     position: absolute;
     width: 100%;
     height: 100%;
