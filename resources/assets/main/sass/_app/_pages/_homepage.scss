@@ -29,13 +29,35 @@ body.home.logged-in{
      min-height: 300px;
    }
 
+  .product-box{
+    .box-item__label-prod{
+      position: absolute;
+      left: -380px;
+      max-width: 100%;
+
+      -webkit-transition: all .5s ease;
+      -moz-transition: all .5s ease;
+      -ms-transition: all .5s ease;
+      -o-transition: all .5s ease;
+      transition: all .5s ease;
+    }
+
+    &:hover{
+      .box-item__label-prod{
+        position: absolute;
+        left: 0;
+      }
+    }
+
+  }
+
+
+
+
 	@media (max-width: 767px) {
 		padding: 0 0;
 	}
 
-	.grid-box-3:first-child {
-/*		margin-top: -1px;*/
-	}
 
 }
 

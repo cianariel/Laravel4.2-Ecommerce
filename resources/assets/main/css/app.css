@@ -9652,11 +9652,8 @@ footer.about-footer {
   line-height: 50px;
   font-size: 32px;
   cursor: pointer;
-  /*    padding: 20px;*/
   text-align: center;
   display: inline-block;
-  /*    font-weight: bold;*/
-  /*    top: 10px;*/
   padding-top: 3px; }
 
 .circle-button {
@@ -9668,14 +9665,11 @@ footer.about-footer {
 .room-landing .rsContent {
   overflow: visible !important; }
 .room-landing .modal-dialog {
-  position: relative;
-  /*        width: auto;*/
-  /*        margin: 0px;*/ }
+  position: relative; }
   .room-landing .modal-dialog .modal-content {
     padding: 0px;
     background: transparent; }
     .room-landing .modal-dialog .modal-content .modal-header {
-      /*                background-color: #000;*/
       background: rgba(0, 0, 0, 0.9);
       color: #fff;
       position: relative;
@@ -9696,7 +9690,6 @@ footer.about-footer {
     .room-landing .modal-dialog .modal-content .modal-body {
       padding: 0px; }
 .room-landing .hero-related-products {
-  /*    display: none;*/
   background: rgba(51, 51, 51, 0.9);
   padding: 0;
   z-index: 1;
@@ -9736,14 +9729,10 @@ footer.about-footer {
     background: none;
     color: #fff; }
     .room-landing .hero-related-products .get:hover, .room-landing .hero-related-products .get:focus {
-      /*            color: $iridium;*/
       background: #FF0042; }
 
 #hero .rsOverflow {
-  overflow: visible;
-  /*    .hero-tags .tag:hover ~ .rsContainer:hover {
-          transform: unset !important;
-      }*/ }
+  overflow: visible; }
   #hero .rsOverflow .hero-tags.extra {
     position: unset;
     display: none; }
@@ -9752,8 +9741,6 @@ footer.about-footer {
     #hero .rsOverflow .hero-tags.extra .tag:hover a {
       margin-top: 0px;
       display: block; }
-  #hero .rsOverflow .rsContainer:hover {
-    /*            transform: unset !important;*/ }
   #hero .rsOverflow .rsContainer .rsSlide {
     overflow: hidden;
     padding-bottom: 200px;
@@ -11951,10 +11938,8 @@ p {
     .box-item__label:hover, .box-item__label:active, .box-item__label:focus {
       color: #fff; }
     .box-item__label--clear {
-      background: #fff;
-      color: #000; }
-      .box-item__label--clear:hover, .box-item__label--clear:active, .box-item__label--clear:focus {
-        color: #ed2049; }
+      background: #FF0042;
+      color: #fff; }
   .box-item__read-more {
     color: #ccc;
     display: block;
@@ -12079,11 +12064,21 @@ body.home.logged-in #hero {
     min-height: 1000px; }
   .homepage-grid .wrap {
     min-height: 300px; }
+  .homepage-grid .product-box .box-item__label-prod {
+    position: absolute;
+    left: -380px;
+    max-width: 100%;
+    -webkit-transition: all .5s ease;
+    -moz-transition: all .5s ease;
+    -ms-transition: all .5s ease;
+    -o-transition: all .5s ease;
+    transition: all .5s ease; }
+  .homepage-grid .product-box:hover .box-item__label-prod {
+    position: absolute;
+    left: 0; }
   @media (max-width: 767px) {
     .homepage-grid {
       padding: 0 0; } }
-  .homepage-grid .grid-box-3:first-child {
-    /*		margin-top: -1px;*/ }
 
 #hero-bg,
 #mobile-hero-bg {
