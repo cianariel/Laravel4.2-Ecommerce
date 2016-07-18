@@ -123,8 +123,8 @@
                             <div class="score" itemprop="ratingValue">
                                 <i class=" m-icon--bulb-detailed-on-rating"></i>
                                 <?php
-                                if (isset($productInformation['Review']))
-                                    $value = intval(((($productInformation['Review'][0]->value > 0 ? $productInformation['Review'][0]->value : $productInformation['Review'][1]->value) + $productInformation['Review'][1]->value) / 2) * 20);
+                                if (isset($reviewScore))
+                                    $value = $reviewScore;
 
                                 echo $value > 0 ? $value . "%" : '<span class="not-availiable">Not Available</span>';
 
@@ -511,8 +511,8 @@
                                     <div class="average-score">
                                         <div class="score">
                                             <i class="  m-icon--bulb-detailed-on-rating"></i>
-                                            @if(isset($productInformation['Review']))
-                                                {{intval(((($productInformation['Review'][0]->value > 0 ? $productInformation['Review'][0]->value : $productInformation['Review'][1]->value) + $productInformation['Review'][1]->value)/2)*20)}}
+                                            @if(isset($reviewScore))
+                                                {{$reviewScore}}
                                                 %
                                             @endif
                                         </div>
@@ -529,13 +529,8 @@
                                     <div class="average-score block-center">
                                         <div class="score">
                                             <i class=" m-icon--bulb-detailed-on-rating"></i>
-                                            @if(isset($productInformation['Review']))
-                                                {{
-                                                intval((((
-                                                $productInformation['Review'][1]->value)
-                                                + $productInformation['Review'][1]->value)/2)*20
-                                                )
-                                                }}%
+                                            @if(isset($reviewScore))
+                                                {{$reviewScore}}%
                                             @endif
                                         </div>
                                         <span class="caption">Average Ideaing Score</span>
