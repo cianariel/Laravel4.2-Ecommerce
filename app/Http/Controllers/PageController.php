@@ -603,12 +603,18 @@ class PageController extends ApiController
             $isAdmin = $userData->hasRole('admin');
         }
 
+        // override the Amazon review if it's zero
+        $amazonReview = empty($result['productInformation']['Review'][1]->value)?$result['productInformation']['Review'][0]->value:$result['productInformation']['Review'][1]->value;
+
+        $reviewScore = intval(((($result['productInformation']['Review'][0]->value > 0 ? $result['productInformation']['Review'][0]->value : $amazonReview) + $amazonReview)/2)*20);
+
         return view('product.product-details')
             ->with('isAdminForEdit', $isAdmin)
             ->with('productId', $result['productInformation']['Id'])
             ->with('userData', $userData)
             ->with('permalink', $permalink)
             ->with('productInformation', $result['productInformation'])
+            ->with('reviewScore', $reviewScore)
             ->with('relatedProducts', $result['relatedProducts'])
             ->with('relatedIdeas', $result['relatedIdeas'])
             ->with('selfImages', $result['selfImages'])
