@@ -695,7 +695,7 @@
             <section class="related-items pale-grey-bg">
                 <div class="main-content full-620 fixed-sm">
                     <fieldset class="shoplanding-title">
-                        <legend align="center"><h3 class="blue pale-grey-bg">Related Ideas</h3></legend>
+                        <legend align="center"><h3 class="blue pale-grey-bg">Related Products</h3></legend>
                     </fieldset>
                     <div class="related-products grid-box-3">
 
