@@ -11852,6 +11852,21 @@ body.home #hero-slider .rsNav.rsBullets {
 body.home.logged-in #hero {
   min-height: 480px; }
 
+.product-box .box-item__label-prod {
+  position: absolute;
+  left: -380px;
+  max-width: 100%;
+  -webkit-transition: all .5s ease;
+  -moz-transition: all .5s ease;
+  -ms-transition: all .5s ease;
+  -o-transition: all .5s ease;
+  transition: all .5s ease; }
+.product-box.hovered .box-item__label-prod, .product-box:hover .box-item__label-prod {
+  display: block;
+  opacity: 1;
+  position: absolute;
+  left: 0; }
+
 .homepage-grid {
   position: relative;
   width: auto;
@@ -11861,20 +11876,6 @@ body.home.logged-in #hero {
     min-height: 1000px; }
   .homepage-grid .wrap {
     min-height: 300px; }
-  .homepage-grid .product-box .box-item__label-prod {
-    position: absolute;
-    left: -380px;
-    max-width: 100%;
-    -webkit-transition: all .5s ease;
-    -moz-transition: all .5s ease;
-    -ms-transition: all .5s ease;
-    -o-transition: all .5s ease;
-    transition: all .5s ease; }
-  .homepage-grid .product-box.hovered .box-item__label-prod, .homepage-grid .product-box:hover .box-item__label-prod {
-    display: block;
-    opacity: 1;
-    position: absolute;
-    left: 0; }
   @media (max-width: 767px) {
     .homepage-grid {
       padding: 0 0; } }

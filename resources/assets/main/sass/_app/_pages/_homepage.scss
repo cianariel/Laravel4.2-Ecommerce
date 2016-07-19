@@ -10,9 +10,32 @@ body.home.logged-in{
   #hero {
     min-height: 480px;
   }
+}
 
- 
- 
+
+.product-box{
+  .box-item__label-prod{
+    position: absolute;
+    left: -380px;
+    max-width: 100%;
+
+    -webkit-transition: all .5s ease;
+    -moz-transition: all .5s ease;
+    -ms-transition: all .5s ease;
+    -o-transition: all .5s ease;
+    transition: all .5s ease;
+  }
+
+  &.hovered,
+  &:hover{
+    .box-item__label-prod{
+      display: block;
+      opacity: 1;
+      position: absolute;
+      left: 0;
+    }
+  }
+
 }
 
 .homepage-grid {
@@ -29,30 +52,6 @@ body.home.logged-in{
      min-height: 300px;
    }
 
-  .product-box{
-    .box-item__label-prod{
-      position: absolute;
-      left: -380px;
-      max-width: 100%;
-
-      -webkit-transition: all .5s ease;
-      -moz-transition: all .5s ease;
-      -ms-transition: all .5s ease;
-      -o-transition: all .5s ease;
-      transition: all .5s ease;
-    }
-
-    &.hovered,
-    &:hover{
-      .box-item__label-prod{
-        display: block;
-        opacity: 1;
-        position: absolute;
-        left: 0;
-      }
-    }
-
-  }
 
 
 
