@@ -45,7 +45,7 @@
         </section>
         <nav id="hero-nav" class="col-sm-12">
             <div class="container">
-                <ul class="share-buttons center-block hidden-xs col-lg-7 col-md-8">
+                <ul class="share-buttons center-block col-lg-7 col-md-8">
 
                     <li class="social-stats__item">
                         <?php
