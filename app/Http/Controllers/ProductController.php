@@ -469,4 +469,17 @@ class ProductController extends ApiController
         }
     }
 
+    public static function getForBar($id)
+    {
+        $productData = Product::find($id);
+        $image = Media::where('mediable_type', 'App\Models\Product')->where('mediable_id', $id)->first();
+
+        if($image){
+            $productData->image = $image->media_link;
+        }
+
+        return json_encode($productData);
+    }
+
+
 }
