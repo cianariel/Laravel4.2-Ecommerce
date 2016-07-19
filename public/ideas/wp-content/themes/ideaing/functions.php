@@ -733,11 +733,15 @@ function product_bar_func( $atts ) {
     $productData = json_decode($json, true);
 
     $markup = '<div class="product-bar">';
-        $markup .= '<h4><a href="'.$productData['product_permalink'].'">'.$productData['product_name']."</a></h4>";
-        $markup .= '<img src="'.$productData['product_name'].'">';
-        $markup .= '<span>'.$productData['sale_price'].'</span>';
+        $markup .= '<div class="col-xm-3">';
+            $markup .= '<img class="img-responsive" src="'.$productData['image'].'">';
+        $markup .= '</div>';
+        $markup .= '<div class="col-xm-9 overhide">';
+            $markup .= '<h4><a href="'.$productData['product_permalink'].'">'.$productData['product_name']."</a></h4>";
+            $markup .= '<div class="col-xs-12">$'.$productData['sale_price'].' from <img class="vendor-logo img-responsive" src="'.$productData['storeLogo'].'"></div>';
+            $markup .= ' <a target="_blank" href="/open/'.$atts['id'].'/ideas" class="box-item__get-it">Get it</a>';
+        $markup .= '</div>';
     $markup .= '</div>';
-
 
     return $markup;
 }

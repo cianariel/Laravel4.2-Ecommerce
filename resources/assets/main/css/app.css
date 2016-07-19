@@ -6968,6 +6968,26 @@ body.single-post .article-content ul li {
 body.single-post .related-ideas, body.single-post .related-products {
   max-width: 1170px;
   margin: auto; }
+body.single-post .product-bar {
+  padding: 8px;
+  overflow: hidden;
+  margin: 50px 0;
+  background: #eee;
+  border-radius: 3px; }
+  body.single-post .product-bar h4 {
+    text-align: center;
+    float: left;
+    clear: right;
+    padding-left: 20px; }
+    body.single-post .product-bar h4 a {
+      color: #000; }
+  body.single-post .product-bar img {
+    width: 150px;
+    float: left; }
+  body.single-post .product-bar .vendor-logo {
+    width: 80px;
+    float: none;
+    display: inline; }
 
 .article-content ol, .article-content ul, body.terms-of-use-page .mid-bottom-container ol, body.terms-of-use-page .mid-bottom-container ul, body.privacy-policy-page .mid-bottom-container ol, body.privacy-policy-page .mid-bottom-container ul {
   list-style: initial; }
