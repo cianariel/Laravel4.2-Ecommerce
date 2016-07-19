@@ -290,7 +290,7 @@
                 <div class="social-stats">
                     <div class="social-stats__item rating" data-toggle="tooltip" title="Ideaing Score">
                         <span class="icon m-icon--bulb-detailed-on-rating"></span>
-                        <span class="value ng-binding">{{ $product->AverageScore }}</span>
+                        <span class="value ng-binding">{{ $product->AverageScore }}%</span>
                     </div>
                 </div>
                 <div class="round-tag round-tag--product">
