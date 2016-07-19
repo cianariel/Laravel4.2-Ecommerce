@@ -2,7 +2,7 @@
 
 ins.adsbygoogle{
   display: block;
-} 
+}
 
 .form-control{
     box-shadow: none;
@@ -1230,7 +1230,7 @@ body.contactus-page
       font-weight: bold;
     }
     .savings{
-      font-weight: normal;  
+      font-weight: 200;
     }
   }
   .vendor-logo{
@@ -4343,6 +4343,10 @@ header.sub-head{
 }
 
 .product-box{
+  .merchant-widget{
+    height: 20px;
+    overflow: hidden;
+  }
   .rating{
     right: 15px;
     width: 62px;
@@ -4671,7 +4675,7 @@ body.single{
     strong{
       width:100%;
       position:absolute;
-      bottom:0;
+      bottom:3px;
       left:0;
       padding: 5px;
       font-size: 1.3rem;
@@ -9194,6 +9198,27 @@ body.giveaway-page{
       display: none;
     }
   }
+
+  @media (max-width: 620px){
+    ul.share-buttons{
+      height: auto;
+      width: 100%;
+      padding: 0;
+
+      .social-stats__item{
+        left: 40px;
+        bottom: 20px;
+      }
+      .all-shares{
+        width: 155px;
+      }
+      a{
+        width: 61px;
+      }
+    }
+  }
+
+
 
   #hero{
     overflow: hidden;
