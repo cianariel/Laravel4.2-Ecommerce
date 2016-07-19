@@ -1,3 +1,8 @@
+<?php
+do_shortcode('[product_bar id="1011"]')
+
+?>
+
 @include('header')
 <div ng-app="publicApp" ng-controller="publicController" ng-cloak>
 <?php if (have_posts()): while (have_posts()) : the_post(); ?>
