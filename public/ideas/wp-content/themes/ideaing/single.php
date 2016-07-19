@@ -416,7 +416,33 @@
         $(document).ready(function(){ // add Get It Button overlay on images that link to vendors
             $('.article-content').find('img').each(function(){
                 if(!$(this).parents('.get-it-inner').length){
-                    $(this).parent('a').attr('target', '_blank').wrap('<div class="get-it-inner"></div>');
+                    var theLinkNode = $(this).parent('a');
+                    theLinkNode.attr('target', '_blank').wrap('<div class="get-it-inner"></div>');
+                    var strong = theLinkNode.parents('.thumb-box').find('strong a');
+                    var text = strong.text();
+
+                    if(text.indexOf('$') == -1){ // price is not hardcoded into the name
+                        var href =  theLinkNode.attr('href');
+                        postData = false;
+
+                        if(href && href.indexOf('/open/') > -1 && href.indexOf('/idea/') == -1){
+                            productID = href.replace(/\D/g,'');
+                            postData = {'id': productID};
+
+                        }else if(href && href.indexOf('/product/') > -1){
+                            productURL = href.substr(href.lastIndexOf('/') + 1);
+                            postData = {'url': productURL};
+                        }
+
+                        if(postData){
+                            $.post( "/api/product/get-price", postData)
+                              .success(function( postResp ) {
+                                    var newText = Math.round(postResp);
+                                    
+                                    theLinkNode.parents('.get-it-inner').append('<span class="merchant-widget__price">$'+ newText +'</span>');    
+                            });
+                        }
+                     }
                 }
                 if($(this).parents('p').next('p').find('a.vendor-link').length){
                     $(this).parents('p').each(function(){
@@ -436,6 +462,24 @@
             });
 
         });
+//        function imageScrollOver() {
+
+            if(window.innerWidth < 620){ // mobile only
+                $(window).scroll(function(){
+                    $('.article-content .get-it-inner').each(function(){
+                        var that = $(this);
+                        var imgTop = that.offset().top + 450;
+                        var imgBottom = imgTop + that.height() + 350;
+                        var window_top = $(window).scrollTop() + $(window).height();
+                        if (window_top > imgTop && window_top < imgBottom) { // we have scrolled over the element
+                            that.addClass('hovered');
+                        }else if(that.hasClass('hovered')){
+                            that.removeClass('hovered');
+                        }
+                    });
+                });
+            }
+//        }
     </script>
 
     <?php loadLaravelView('giveaway-popup'); ?>

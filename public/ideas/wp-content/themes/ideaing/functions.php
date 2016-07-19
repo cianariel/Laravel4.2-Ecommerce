@@ -550,7 +550,15 @@ function ideaingGlobalVars() {
     global $userData;
     global $isAdmin;
 
-    if($token = $_COOKIE['_wptk']){
+     if(is_user_logged_in()){
+        $user = wp_get_current_user();
+        $token = base64_encode($user->user_email);
+    }else{
+        $token = $_COOKIE['_wptk'];
+    }
+
+
+    if($token){
 
         $ch = curl_init();
 
@@ -668,7 +676,7 @@ function single_post_tag_classes( $classes ) {
     $posttags = get_the_tags( $post->ID );
     if ( $posttags ) {
       foreach( $posttags as $tag ) {
-      $classes[] = 'tag-' . $tag->name;
+        $classes[] = 'tag-' . $tag->name;
       }
     }
   }

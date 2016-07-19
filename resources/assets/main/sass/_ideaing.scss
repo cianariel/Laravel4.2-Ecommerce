@@ -939,29 +939,27 @@ nav {
   .head-wrap{
     position: absolute;
     width: 100%;
-    padding-top: 20%;
+    padding-top: 17%;
     z-index: 1;
+
+    @media (max-width:620px){
+      padding-top: 37%;
+    }
   }
 
   h1{
-/*    text-align: center;*/
+    width: auto;
     color: #fff;
     font-size: 5rem;
     font-weight: bold;
-    //text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
 
   }
 
   .like-counter{
     overflow: hidden;
-    //font-size: 2.3rem;
     color: #fff;
-/*    height: 65px;*/
-    //width: 80px;
     margin: 30px auto 0;
-/*    padding: 20px 0 20px 3px !important;*/
     border: 0;
-    //background-position: left 4px;
 
     span{
       margin-right: 8px;
@@ -972,18 +970,12 @@ nav {
     background-image: url('/assets/images/landing-hero-3.jpg');
     background-size: cover;
     background-repeat: no-repeat;
-    //-webkit-filter: blur(2px);
-    //-moz-filter: blur(2px);
-    //-o-filter: blur(2px);
-    //-ms-filter: blur(2px);
-    //filter: blur(2px);
     position: absolute;
     width: 100%;
     height: 100%;
   }
 
   .color-overlay{
-/*    background-color: rgba(0,0,0,.2);*/
     position: absolute;
     width: 100%;
     height: 100%;
@@ -996,16 +988,11 @@ nav {
     h1{
       float: left;
       text-align: left;
-      //width: 50%;
       margin: 0;
       font-size: 3.5rem;
-      //max-width: 80%;
-      //margin-left: auto;
-      //margin-right: auto;
-      //margin-top: 200px;
-      line-height: 1.6;
+      line-height: 1.1;
       z-index: 1;
-      padding-left: 10%;
+      padding: 7px 7px 7px 10%;
       background-color: rgba($sky-blue, .7);
       text-shadow: none;
 
@@ -1386,6 +1373,9 @@ body.contactus-page
     .sale-price{
       color: $iridium;
       font-weight: bold;
+    }
+    .savings{
+      font-weight: normal;  
     }
   }
   .vendor-logo{
@@ -3543,6 +3533,25 @@ body.product-details, .single-post{
   }
 }
 body.product-details{
+ 
+ul.social-stats{
+      min-width: 220px;
+      position: static;
+      float: left;
+      li{
+        position:static !important;
+        float: left !important; 
+        width: auto !important;
+      }
+      .hearts{
+        width: auto;
+        padding-top:10px;
+
+        span{
+          margin-top: 2px
+        }
+      } 
+    }
 
 
   .rsThumb{
@@ -3558,6 +3567,8 @@ body.product-details{
       font-size: 13px;
       margin-top: 6px;
     }
+
+    
     
     .like-counter{
       b{
@@ -3576,6 +3587,10 @@ body.product-details{
   }
   .scroll-header  #top-nav a.shop:hover{
       color: $pink;
+  }
+
+  .main-container{
+    max-width: 900px;
   }
 
   .article-content{
@@ -4977,19 +4992,27 @@ body.single{
 .get-it-inner{
   text-align: center;
 
+
   & > a{
     position: relative;
     display: inline-block;
     margin: 0 auto;
 
+    img::after{
+      content: '';
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,.7);
+    }
+
     &::after{
       content: 'Get it';
       display: block;
+      opacity: 0;
       position: absolute;
       width: 60px;
       height: 60px;
-      top: 15px;
-      left: 15px;
+      top: 35%;
       background: $iridium;
       color: #fff;
       padding: 19px 3px 6px;
@@ -4997,12 +5020,68 @@ body.single{
       font-size: 1.4rem;
       font-family: montserratlight;
       line-height: 1.6;
-    }
+      z-index: 1;
 
-    &:hover{
-      &::after{
-        background: darken($iridium, 10%);
+      left: 0;
+      right: 0;
+      top:0;
+      bottom:0;
+      margin-top: auto;
+      margin-bottom: auto;
+      margin-left: auto;
+      margin-right: auto;
+
+      -webkit-transition: opacity .5s ease;
+      -moz-transition: opacity .5s ease;
+      -ms-transition: opacity .5s ease;
+      -o-transition: opacity .5s ease;
+      transition: opacity .5s ease;
+    }
+    &::before{
+        content: '';
+        opacity: 0;
+        width: 100%;
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        background: rgba(0,0,0,.3);
+
+        -webkit-transition: opacity .5s ease;
+        -moz-transition: opacity .5s ease;
+        -ms-transition: opacity .5s ease;
+        -o-transition: opacity .5s ease;
+        transition: opacity .5s ease;
+
+
       }
+
+  }
+
+  .merchant-widget__price{
+        position: absolute;
+        width: 80px;
+        left: -80px;
+        top: 0;
+        padding: 12px;
+
+        -webkit-transition: all .5s ease;
+        -moz-transition: all .5s ease;
+        -ms-transition: all .5s ease;
+        -o-transition: all .5s ease; 
+        transition: all .5s ease;
+  }
+
+  &:hover,
+  &.hovered{   
+    a::after,
+    a::before,
+    &::after{
+      opacity: 1;
+    }
+    .merchant-widget__price{
+       left: 0; 
     }
   }
 
@@ -5013,7 +5092,7 @@ body.single{
   //  max-width: 760px;
     margin: 0 auto;
     text-align:center;
-
+ 
     .inner{
     	display:inline-block;
       @media (min-width: 620px){
@@ -5025,6 +5104,7 @@ body.single{
 
     .get-it-inner{
       float:left;
+      overflow: hidden;
       position:relative;
       line-height:1.5rem;
       font-size: 1.3rem;
@@ -5034,6 +5114,8 @@ body.single{
       position:relative; 
       display:inline-block;
 
+      
+
      a{
        color:#fff;
      }
@@ -5042,7 +5124,7 @@ body.single{
     //  display:none;
       width:100%;
       position:absolute;
-      bottom:3px;
+      bottom:0;
       left:0;
       padding: 5px;
       font-size: 1.3rem;
@@ -5207,6 +5289,7 @@ body.single{
       margin: 0 auto;
       display: block;
       border: 1px solid #eee;
+
     }
   }
 
@@ -6579,16 +6662,6 @@ footer.about-footer{
     }
 
     a.signin{
-        /*cursor: pointer;
-        text-indent: 0 !important;
-        background: $iridium;
-        border-radius: 3px;
-        color: #fff  !important;;
-        text-transform: none;
-        padding: 12px 23px 7px  5px !important;
-        width: 83px;
-        margin-right: 15px;*/
-        
         padding-right: 15px !important;
         padding-left: 15px !important;
         i{
@@ -6614,15 +6687,9 @@ footer.about-footer{
   }
 
   #hero{
-/*    min-height: 570px;*/
-/*    padding-bottom: 20px;*/
-
     .hero-background{
       -webkit-filter: none;
-/*      -moz-filter: blur(2px);*/
-/*      -o-filter: blur(2px);*/
-/*      -ms-filter: blur(2px);*/
-/*      filter: blur(2px);*/
+
     }
 
     & > .container{
