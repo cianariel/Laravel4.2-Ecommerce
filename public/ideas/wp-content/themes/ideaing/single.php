@@ -287,28 +287,19 @@
                 <img class="img-responsive" src="{{ $product->media_link_full_path }}">
                 <span class="box-item__time">{{ $product->updated_at }}</span>
                             <div class="box-item__overlay" ng-click="openProductPopup({{$product->id}})"></div>
-                <ul class="social-stats">
-                    <li class="social-stats__item">
-                        <?php
-
-                        $userId = !empty($userData['id'] ) ? $userData['id']  : 0;
-
-                        $urlTmp = parse_url(get_the_permalink())['path'];
-                        $urlTmp = str_replace('/ideas/','',$urlTmp);
-                        ?>
-
-                        <heart-counter-public uid="<?php echo $userId ?>" iid="{{ $product->id }}" plink="{{ $urlTmp }}" sec='ideas'>
-
-                        </heart-counter-public>
-                    </li>
-                </ul>
+                <div class="social-stats">
+                    <div class="social-stats__item rating" data-toggle="tooltip" title="Ideaing Score">
+                        <span class="icon m-icon--bulb-detailed-on-rating"></span>
+                        <span class="value ng-binding">{{ $product->AverageScore }}</span>
+                    </div>
+                </div>
                 <div class="round-tag round-tag--product">
                     <i class="m-icon m-icon--item"></i>
                     <span class="round-tag__label">Product</span>
                 </div>
                 <div class="box-item__label-prod">
                     <a href="/product/{{$product->product_permalink}}"
-                       class="box-item__label box-item__label--clear ">{{ $product->product_name }}</a>
+                       class="box-item__label box-item__label--clear ">{{ $product->product_name }}%</a>
                     <div class="clearfix"></div>
 
                     <div class="clearfix"></div>
