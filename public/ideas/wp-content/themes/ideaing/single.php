@@ -1,7 +1,3 @@
-<?php
-do_shortcode('[product_bar id="1011"]')
-
-?>
 
 @include('header')
 <div ng-app="publicApp" ng-controller="publicController" ng-cloak>
@@ -64,8 +60,12 @@ do_shortcode('[product_bar id="1011"]')
 
     }
     ?>
-   
-    <nav class="mid-nav">
+        <?php
+        do_shortcode('[product_bar id="1011"]')
+
+        ?>
+
+        <nav class="mid-nav">
         <div class="container">
             <ul class="wrap col-lg-9 ">
                 @if(empty($mainCategory))
