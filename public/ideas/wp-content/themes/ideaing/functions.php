@@ -729,7 +729,7 @@ function setPostViews($postID) {
 
 // [product_bar id="id_value"]
 function product_bar_func( $atts ) {
-    $json = file_get_contents('http://ideaing.dev/api/products/get-for-bar/' . $atts['id']);
+    $json = file_get_contents('https://ideaing.com/api/products/get-for-bar/' . $atts['id']);
     $productData = json_decode($json, true);
 
     if(!$productData){
