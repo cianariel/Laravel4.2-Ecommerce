@@ -736,9 +736,6 @@ function product_bar_func( $atts ) {
         return false;
     }
 
-    if(isset($productData->store_id) &&  $productData->store_id == 1){
-        $productData['storeLogo'] = 'https://s3-us-west-1.amazonaws.com/ideaing-01/amazon-logo-small.svg';
-    }
 
     $markup = '<div class="product-bar">';
         $markup .= '<div class="col-xs-3 no-padding overhid">';
