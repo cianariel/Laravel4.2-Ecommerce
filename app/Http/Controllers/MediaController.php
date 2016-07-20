@@ -36,6 +36,7 @@ class MediaController extends ApiController
         //   dd($inputData);
         $data = array(
             "media_name" => $inputData['MediaTitle'],
+            "sequence" => $inputData['MediaSequence'],
             "media_type" => $inputData['MediaType'],
             "media_link" => $inputData['MediaLink'],
             "is_hero_item" => $inputData['IsHeroItem'],
