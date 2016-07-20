@@ -135,7 +135,7 @@ class Product extends Model
         $data['ImagePath'] = $itemLogoInfo->media_link;
 
         $strReplace = \Config::get("const.file.s3-path");// "http://s3-us-west-1.amazonaws.com/ideaing-01/";
-        $strReplace2 = env('IMG_CDN')  . '/';
+        $strReplace2 = env('IMG_CDN') . '/';
 
         $file = str_replace($strReplace, '', $itemLogoInfo->media_link);
         $file = str_replace($strReplace2, '', $file);
@@ -166,7 +166,7 @@ class Product extends Model
         try {
             //ProductAuthorName: $scope.ProductAuthorName,
             $data = array(
-                "product_category_id" => ($product['CategoryId'] != null) ? $product['CategoryId'] : env('DEFAULT_CATEGORY_ID','44'),
+                "product_category_id" => ($product['CategoryId'] != null) ? $product['CategoryId'] : env('DEFAULT_CATEGORY_ID', '44'),
                 "user_name" => ($product['ProductAuthorName'] != null) ? $product['ProductAuthorName'] : 'Anonymous User',
                 "product_vendor_id" => $product['ProductVendorId'],
                 "show_for" => ($product['ShowFor'] != null) ? $product['ShowFor'] : '',
@@ -176,7 +176,7 @@ class Product extends Model
                 "specifications" => json_encode($product['Specifications']),
                 "price" => $product['Price'],
                 "sale_price" => $product['SalePrice'],
-                "store_id" => ($product['StoreId'] != null) ? $product['StoreId'] : env('DEFAULT_STORE_ID','1'),
+                "store_id" => ($product['StoreId'] != null) ? $product['StoreId'] : env('DEFAULT_STORE_ID', '1'),
                 "affiliate_link" => $product['AffiliateLink'],
                 "price_grabber_master_id" => $product['PriceGrabberId'],
                 "review" => json_encode($product['Review']),
@@ -197,7 +197,7 @@ class Product extends Model
 
             // delete empty product which is not containing a store id or category id ( for security check from backend)
             $this->deleteEmptyProduct();
- 
+
             $deleted = PageHelper::deleteFromRedis('product-details-' . $data['product_permalink']);
 
             $data = Product::where('id', $productId)->first();
@@ -213,8 +213,8 @@ class Product extends Model
 
     public function deleteEmptyProduct()
     {
-        $data = Product::where('product_category_id',null)
-            ->orWhere('store_id',null);
+        $data = Product::where('product_category_id', null)
+                       ->orWhere('store_id', null);
 
         $data->delete();
     }
@@ -228,8 +228,7 @@ class Product extends Model
                          $join->on('medias.mediable_id', '=', 'products.id')
                               ->where('mediable_type', '=', 'App\Models\Product')
                               ->Where('media_type', '=', 'img-upload')
-                              ->Where('is_main_item', '=', '1')
-                         ;
+                              ->Where('is_main_item', '=', '1');
                      })
                      ->first(array(
                          'products.id', 'products.show_for', 'products.updated_at', 'products.product_vendor_id', 'products.store_id',//'products.product_vendor_type',
@@ -237,7 +236,7 @@ class Product extends Model
                          'products.price', 'products.sale_price', 'medias.media_link', 'products.product_permalink', 'products.post_status', 'ideaing_review_score', 'review'
                      ));
 
-      //  dd($result);
+        //  dd($result);
         return $result;
 
     }
@@ -245,6 +244,7 @@ class Product extends Model
     // return product information data for public view
     public function getViewForPublic($permalink, $id = null)
     {
+
         $column = $id == null ? 'product_permalink' : 'id';
         $value = $id == null ? $permalink : $id;
 
@@ -351,8 +351,6 @@ class Product extends Model
         }
 
 
-
-
         $skip = isset($settings['CustomSkip']) ? intval($settings['CustomSkip']) : $settings['limit'] * ($settings['page'] - 1);
 
 
@@ -373,8 +371,8 @@ class Product extends Model
             $tmp = $this->getSingleProductInfoForView($id);
 
             // making the thumbnail url by injecting "thumb-" in the url which has been uploaded during media submission.
-            $strReplace =  \Config::get("const.file.s3-path");
-            $strReplace2 = env('IMG_CDN')  . '/';
+            $strReplace = \Config::get("const.file.s3-path");
+            $strReplace2 = env('IMG_CDN') . '/';
 
             $path = str_replace($strReplace, '', $tmp->media_link);
             $path = str_replace($strReplace2, '', $path);
@@ -397,7 +395,7 @@ class Product extends Model
             $review = json_decode($tmp->review);
 
             if (@$settings['WithAverageScore'] == 'true' && isset($review)) {
-                $tmp->AverageScore = intval(((($review[0]->value > 0 ? $review[0]->value : $review[1]->value) + $review[1]->value)/2)*20);
+                $tmp->AverageScore = intval(((($review[0]->value > 0 ? $review[0]->value : $review[1]->value) + $review[1]->value) / 2) * 20);
             }
 
             $data[$i] = $tmp;
@@ -479,20 +477,24 @@ class Product extends Model
 
         // setting images and hero image link
         $selfImage = [];
-        foreach ($productData['product']->medias as $key => $value) {
-            if($value->media_type == 'video-link' || $value->media_type == 'video-youtube-link' || $value->media_type == 'video-vimeo-link'){
+
+        // sort image by media sequence in ascending order
+        $sortedMedia = $productData['product']->medias->sortBy('sequence');
+
+    //    dd($sortedMedia);
+        foreach ($sortedMedia as $key => $value) {
+            if ($value->media_type == 'video-link' || $value->media_type == 'video-youtube-link' || $value->media_type == 'video-vimeo-link') {
                 $selfImage['picture'][$key]['picture-name'] = $value->media_name;
                 $selfImage['picture'][$key]['type'] = $value->media_type;
 
-               $imgData = Media::getVideoData($value->media_link, $value->media_type);
+                $imgData = Media::getVideoData($value->media_link, $value->media_type);
 
-               $selfImage['picture'][$key]['preview'] = $imgData['previewLink'];
-               $selfImage['picture'][$key]['link'] = $imgData['videoLink'];
+                $selfImage['picture'][$key]['preview'] = $imgData['previewLink'];
+                $selfImage['picture'][$key]['link'] = $imgData['videoLink'];
 
-            }
-            elseif (($value->media_type == 'img-upload' || $value->media_type == 'img-link')
-                && ($value->is_hero_item == null || $value->is_hero_item == false)
-                && ($value->is_main_item == null || $value->is_main_item == false)
+            } elseif (($value->media_type == 'img-upload' || $value->media_type == 'img-link')
+                      && ($value->is_hero_item == null || $value->is_hero_item == false)
+                      && ($value->is_main_item == null || $value->is_main_item == false)
             ) {
                 $selfImage['picture'][$key]['link'] = $value->media_link;
                 $selfImage['picture'][$key]['picture-name'] = $value->media_name;
@@ -550,7 +552,7 @@ class Product extends Model
                 $relatedProductsData[$key]['Image'] = $image;
                 $relatedProductsData[$key]['UpdateTime'] = Carbon::createFromTimestamp(strtotime($relatedProducts[$key]->updated_at))->diffForHumans();
                 $review = ($relatedProducts[$key]->review);
-                $relatedProductsData[$key]['AverageScore'] = intval(((($review[0]->value > 0 ? $review[0]->value : $review[1]->value) + $review[1]->value)/2)*20);
+                $relatedProductsData[$key]['AverageScore'] = intval(((($review[0]->value > 0 ? $review[0]->value : $review[1]->value) + $review[1]->value) / 2) * 20);
 
             }
         }
@@ -619,8 +621,7 @@ class Product extends Model
         try {
             $productStrategy = new ProductStrategy();
 
-            if($storeId == null)
-            {
+            if ($storeId == null) {
                 $product = Product::where('product_vendor_id', $itemId)->first();
 
                 $storeId = $product['store_id'];
@@ -673,16 +674,15 @@ class Product extends Model
                 $apiData = $this->getApiProductInformation($productVendorId, $store);
                 if (isset($apiData) && (($product['price'] != $apiData['ApiPrice']) || ($product['sale_price'] != $apiData['ApiSalePrice']))) {
 
-                    $product->price = empty($apiData['ApiPrice'])? $product['price'] : $apiData['ApiPrice'] ;
-                    $product->sale_price = empty($apiData['ApiSalePrice']) ? $product['sale_price'] : $apiData['ApiSalePrice'] ;
+                    $product->price = empty($apiData['ApiPrice']) ? $product['price'] : $apiData['ApiPrice'];
+                    $product->sale_price = empty($apiData['ApiSalePrice']) ? $product['sale_price'] : $apiData['ApiSalePrice'];
                     $product->save();
 
                 }
 
                 // Update product availability along after mentioned time span
-                if(!empty($apiData))
-                {
-                    $product->product_availability = empty($apiData['ApiPrice'])? $product['product_availability'] : $apiData['ApiAvailable'] ;
+                if (!empty($apiData)) {
+                    $product->product_availability = empty($apiData['ApiPrice']) ? $product['product_availability'] : $apiData['ApiAvailable'];
                     $product->save();
                 }
 
