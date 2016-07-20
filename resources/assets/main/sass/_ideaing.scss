@@ -3171,7 +3171,7 @@ body.single-post{
     padding: 8px;
     overflow: hidden;
     margin: 50px 0;
-    border: 3px solid #eee;
+    border: 1px solid #eee;  
     border-radius: 3px;
 
     -webkit-transition: all .5s ease;
@@ -3197,21 +3197,35 @@ body.single-post{
       color: #fff;
 
       @media (max-width:620px){
-        margin-top: 138px;
+        // margin-top: 95px;
+            margin-top: -136px;
+            z-index: 1;
+            opacity: 0;
+             -webkit-transition: all .5s ease;
+            -moz-transition: all .5s ease;
+            -ms-transition: all .5s ease;
+            -o-transition: all .5s ease;
+            transition: all .5s ease;
+
+            &:hover{
+              opacity: 1; 
+            }
       }
     }
 
     .leftline{
       margin-top: 8px;
-      border-left: 3px solid rgb(219, 219, 219);
+      border-left: 1px solid #eee; 
       @media (max-width:620px){
+        overflow: visible;
        border: 0;
-      }
+      } 
     }
 
     .merchant-widget__price{
-      position: absolute;
+      position: absolute; 
       left:-80px;
+      top: 0;
 
       -webkit-transition: all .5s ease;
       -moz-transition: all .5s ease;
@@ -3226,12 +3240,22 @@ body.single-post{
       .merchant-widget__price{
         left: 0;
       }
+       .box-item__get-it{ 
+        opacity: 1;
+      } 
     }
 
     img{
       height: 146px;
       float: left;
       border: 0;
+      
+      @media (max-width:620px){
+        max-width: 62%;
+        margin: 0 auto;
+        display: block; 
+        float: none;
+      }  
     }
     .vendor-logo{
       width: 80px;
