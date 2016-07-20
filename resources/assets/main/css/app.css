@@ -4535,6 +4535,9 @@ a:hover, a:focus {
   -webkit-filter: grayscale(100%);
   filter: grayscale(100%); }
 
+.no-padding {
+  padding: 0; }
+
 .full-wide {
   width: 100%; }
 
@@ -6968,6 +6971,77 @@ body.single-post .article-content ul li {
 body.single-post .related-ideas, body.single-post .related-products {
   max-width: 1170px;
   margin: auto; }
+body.single-post .product-bar {
+  padding: 8px;
+  overflow: hidden;
+  margin: 50px 0;
+  border: 1px solid #eee;
+  border-radius: 3px;
+  -webkit-transition: all .5s ease;
+  -moz-transition: all .5s ease;
+  -ms-transition: all .5s ease;
+  -o-transition: all .5s ease;
+  transition: all .5s ease; }
+  body.single-post .product-bar h4 {
+    text-align: center;
+    float: left;
+    clear: right;
+    padding-left: 20px; }
+    body.single-post .product-bar h4 a {
+      color: #000; }
+  body.single-post .product-bar .box-item__get-it {
+    opacity: 1;
+    margin-top: 75px;
+    color: #fff; }
+    @media (max-width: 620px) {
+      body.single-post .product-bar .box-item__get-it {
+        margin-top: -136px;
+        z-index: 1;
+        opacity: 0;
+        -webkit-transition: all .5s ease;
+        -moz-transition: all .5s ease;
+        -ms-transition: all .5s ease;
+        -o-transition: all .5s ease;
+        transition: all .5s ease; }
+        body.single-post .product-bar .box-item__get-it:hover {
+          opacity: 1; } }
+  body.single-post .product-bar .leftline {
+    margin-top: 8px;
+    border-left: 1px solid #eee; }
+    @media (max-width: 620px) {
+      body.single-post .product-bar .leftline {
+        overflow: visible;
+        border: 0; } }
+  body.single-post .product-bar .merchant-widget__price {
+    position: absolute;
+    left: -80px;
+    top: 0;
+    -webkit-transition: all .5s ease;
+    -moz-transition: all .5s ease;
+    -ms-transition: all .5s ease;
+    -o-transition: all .5s ease;
+    transition: all .5s ease; }
+  body.single-post .product-bar:hover {
+    background: #eee; }
+    body.single-post .product-bar:hover .merchant-widget__price {
+      left: 0; }
+    body.single-post .product-bar:hover .box-item__get-it {
+      opacity: 1; }
+  body.single-post .product-bar img {
+    height: 146px;
+    float: left;
+    border: 0; }
+    @media (max-width: 620px) {
+      body.single-post .product-bar img {
+        max-width: 62%;
+        margin: 0 auto;
+        display: block;
+        float: none; } }
+  body.single-post .product-bar .vendor-logo {
+    width: 80px;
+    height: 20px;
+    float: none;
+    display: inline; }
 
 .article-content ol, .article-content ul, body.terms-of-use-page .mid-bottom-container ol, body.terms-of-use-page .mid-bottom-container ul, body.privacy-policy-page .mid-bottom-container ol, body.privacy-policy-page .mid-bottom-container ul {
   list-style: initial; }

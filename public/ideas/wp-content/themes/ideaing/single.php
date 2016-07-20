@@ -1,3 +1,4 @@
+
 @include('header')
 <div ng-app="publicApp" ng-controller="publicController" ng-cloak>
 <?php if (have_posts()): while (have_posts()) : the_post(); ?>
@@ -59,8 +60,9 @@
 
     }
     ?>
-   
-    <nav class="mid-nav">
+
+
+        <nav class="mid-nav">
         <div class="container">
             <ul class="wrap col-lg-9 ">
                 @if(empty($mainCategory))
@@ -153,6 +155,8 @@
     </nav>
 </div>
     <!-- article -->
+
+
 
         <div class="container main-container">
 
