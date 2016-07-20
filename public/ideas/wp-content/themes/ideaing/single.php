@@ -60,10 +60,7 @@
 
     }
     ?>
-        <?php
-        do_shortcode('[product_bar id="1011"]')
 
-        ?>
 
         <nav class="mid-nav">
         <div class="container">
@@ -158,6 +155,8 @@
     </nav>
 </div>
     <!-- article -->
+
+
 
         <div class="container main-container">
 
