@@ -732,13 +732,22 @@ function product_bar_func( $atts ) {
     $json = file_get_contents('http://ideaing.dev/api/products/get-for-bar/' . $atts['id']);
     $productData = json_decode($json, true);
 
+    if(!$productData){
+        return false;
+    }
+
+    if(isset($productData->store_id) &&  $productData->store_id == 1){
+        $productData['storeLogo'] = 'https://s3-us-west-1.amazonaws.com/ideaing-01/amazon-logo-small.svg';
+    }
+
     $markup = '<div class="product-bar">';
-        $markup .= '<div class="col-xm-3">';
+        $markup .= '<div class="col-xs-3 no-padding overhid">';
             $markup .= '<img class="img-responsive" src="'.$productData['image'].'">';
+            $markup .= '<span class="merchant-widget__price">$'.$productData['sale_price'].'</span>';
         $markup .= '</div>';
-        $markup .= '<div class="col-xm-9 overhide">';
+        $markup .= '<div class="col-xs-9 overhide leftline">';
             $markup .= '<h4><a href="'.$productData['product_permalink'].'">'.$productData['product_name']."</a></h4>";
-            $markup .= '<div class="col-xs-12">$'.$productData['sale_price'].' from <img class="vendor-logo img-responsive" src="'.$productData['storeLogo'].'"></div>';
+            $markup .= '<div class="col-xs-12"> from <img class="vendor-logo img-responsive" src="'.$productData['storeLogo'].'"></div>';
             $markup .= ' <a target="_blank" href="/open/'.$atts['id'].'/ideas" class="box-item__get-it">Get it</a>';
         $markup .= '</div>';
     $markup .= '</div>';

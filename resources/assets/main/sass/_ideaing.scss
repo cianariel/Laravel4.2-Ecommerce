@@ -87,6 +87,10 @@ a:hover, a:focus{
   filter: grayscale(100%);
 }
 
+.no-padding{
+  padding: 0;
+}
+
 .full-wide{
   width: 100%;
 }
@@ -3167,9 +3171,14 @@ body.single-post{
     padding: 8px;
     overflow: hidden;
     margin: 50px 0;
-    background: #eee;
-    //border: 1px solid $sky-blue;
+    border: 3px solid #eee;
     border-radius: 3px;
+
+    -webkit-transition: all .5s ease;
+    -moz-transition: all .5s ease;
+    -ms-transition: all .5s ease;
+    -o-transition: all .5s ease;
+    transition: all .5s ease;
 
     h4{
       text-align: center;
@@ -3179,6 +3188,36 @@ body.single-post{
 
       a{
         color: #000;
+      }
+    }
+
+    .box-item__get-it{
+      opacity: 1;
+      margin-top: 75px;
+      color: #fff;
+    }
+
+    .leftline{
+      margin-top: 8px;
+      border-left: 3px solid rgb(219, 219, 219);
+    }
+
+    .merchant-widget__price{
+      position: absolute;
+      left:-80px;
+
+      -webkit-transition: all .5s ease;
+      -moz-transition: all .5s ease;
+      -ms-transition: all .5s ease;
+      -o-transition: all .5s ease;
+      transition: all .5s ease;
+    }
+
+    &:hover{
+      background: #eee;
+
+      .merchant-widget__price{
+        left: 0;
       }
     }
 
