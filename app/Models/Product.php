@@ -228,7 +228,8 @@ class Product extends Model
                          $join->on('medias.mediable_id', '=', 'products.id')
                               ->where('mediable_type', '=', 'App\Models\Product')
                               ->Where('media_type', '=', 'img-upload')
-                              ->Where('is_main_item', '=', '1');
+                              ->Where('is_main_item', '=', '1')
+                         ;
                      })
                      ->first(array(
                          'products.id', 'products.show_for', 'products.updated_at', 'products.product_vendor_id', 'products.store_id',//'products.product_vendor_type',
@@ -236,6 +237,7 @@ class Product extends Model
                          'products.price', 'products.sale_price', 'medias.media_link', 'products.product_permalink', 'products.post_status', 'ideaing_review_score', 'review'
                      ));
 
+      //  dd($result);
         return $result;
 
     }
