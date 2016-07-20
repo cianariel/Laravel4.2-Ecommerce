@@ -505,18 +505,9 @@ function custom_login(){
     if( 'wp-login.php' == $pagenow ) {
 
         if($token = $_COOKIE['_wptk']){
-//            $url = 'https://ideaing.com//api/auth-check?token=' . $token;
-//            $json = file_get_contents($url);
-//            // echo $json;
-//            $response = json_decode($json, true);
-//
-//            if($response['data']->status-code != 200){
-//	        	   wp_redirect('https://ideaing.com/login#?from=cms'); // TODO -- change to error display msg
-//            }
+
 
             // TODO -- 1. encode user ID in the token 2. add salt to the encode  3. add Lar side check
-            //
-
             $username = base64_decode($token);
 
             $explode = explode(' ', $username);
@@ -530,11 +521,11 @@ function custom_login(){
                 wp_set_auth_cookie($userID);
 
                 wp_redirect(get_admin_url()); exit;
-            } 
+            }
 
         }else{
             wp_redirect('https://ideaing.com/login#?from=cms');
-            exit(); 
+            exit();
         }
     }
 }
@@ -717,7 +708,7 @@ function getPostViews($postID){
     if($count==''){
         delete_post_meta($postID, $count_key);
         add_post_meta($postID, $count_key, '0');
-        return "0 View";
+        return "0";
     }
     return $count;
 }
@@ -736,18 +727,31 @@ function setPostViews($postID) {
     }
 }
 
+// [product_bar id="id_value"]
+function product_bar_func( $atts ) {
+    $json = file_get_contents('https://ideaing.com/api/products/get-for-bar/' . $atts['id']);
+    $productData = json_decode($json, true);
 
-// // Add it to a column in WP-Admin
-// add_filter('manage_posts_columns', 'posts_column_views');
-// add_action('manage_posts_custom_column', 'posts_custom_column_views',5,2);
-// function posts_column_views($defaults){
-//     $defaults&#91;'post_views'&#93; = __('Views');
-//     return $defaults;
-// }
-// function posts_custom_column_views($column_name, $id){
-//     if($column_name === 'post_views'){
-//         echo getPostViews(get_the_ID());
-//     }
-// }
+    if(!$productData){
+        return false;
+    }
+
+
+    $markup = '<div class="product-bar">';
+        $markup .= '<div class="col-xs-12 col-sm-2 col-sm-2 no-padding overhid">';
+            $markup .= '<img  style="width:100%; height:auto" class="img-responsive" src="'.$productData['image'].'">';
+            $markup .= '<span class="merchant-widget__price">$'.$productData['sale_price'].'</span>';
+        $markup .= '</div>';
+        $markup .= '<div class="col-xs-12 col-sm-9 overhide leftline">';
+            $markup .= '<h4 class="col-xs-12"><a href="'.$productData['product_permalink'].'">'.$productData['product_name']."</a></h4>";
+            $markup .= '<div class="col-xs-12"> from <img class="vendor-logo img-responsive" src="'.$productData['storeLogo'].'"></div>';
+            $markup .= ' <a target="_blank" href="/open/'.$atts['id'].'/ideas" class="box-item__get-it">Get it</a>';
+        $markup .= '</div>';
+    $markup .= '</div>';
+
+    return $markup;
+}
+add_shortcode( 'product_bar', 'product_bar_func' );
+
 
 ?>
