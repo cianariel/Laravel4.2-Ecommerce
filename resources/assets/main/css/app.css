@@ -6999,6 +6999,9 @@ body.single-post .product-bar {
   body.single-post .product-bar .leftline {
     margin-top: 8px;
     border-left: 3px solid #dbdbdb; }
+    @media (max-width: 620px) {
+      body.single-post .product-bar .leftline {
+        border: 0; } }
   body.single-post .product-bar .merchant-widget__price {
     position: absolute;
     left: -80px;

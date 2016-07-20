@@ -3204,6 +3204,9 @@ body.single-post{
     .leftline{
       margin-top: 8px;
       border-left: 3px solid rgb(219, 219, 219);
+      @media (max-width:620px){
+       border: 0;
+      }
     }
 
     .merchant-widget__price{
