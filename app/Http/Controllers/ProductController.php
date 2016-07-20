@@ -473,6 +473,10 @@ class ProductController extends ApiController
     {
         $productData = Product::find($id);
 
+        if(isset($productData->store_id) &&  $productData->store_id == 1){
+            $productData['storeLogo'] = 'https://s3-us-west-1.amazonaws.com/ideaing-01/amazon-logo-small.svg';
+        }
+
         if($image = Media::where('mediable_type', 'App\Models\Product')->where('mediable_id', $id)->first()){
             $productData->image = $image->media_link;
         }

@@ -7009,7 +7009,7 @@ body.single-post .product-bar {
     body.single-post .product-bar:hover .merchant-widget__price {
       left: 0; }
   body.single-post .product-bar img {
-    width: 150px;
+    height: 146px;
     float: left; }
   body.single-post .product-bar .vendor-logo {
     width: 80px;
