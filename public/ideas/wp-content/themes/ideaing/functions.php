@@ -743,7 +743,7 @@ function product_bar_func( $atts ) {
             $markup .= '<span class="merchant-widget__price">$'.$productData['sale_price'].'</span>';
         $markup .= '</div>';
         $markup .= '<div class="col-xs-9 overhide leftline">';
-            $markup .= '<h4><a href="'.$productData['product_permalink'].'">'.$productData['product_name']."</a></h4>";
+            $markup .= '<h4 class="col-xs-12"><a href="'.$productData['product_permalink'].'">'.$productData['product_name']."</a></h4>";
             $markup .= '<div class="col-xs-12"> from <img class="vendor-logo img-responsive" src="'.$productData['storeLogo'].'"></div>';
             $markup .= ' <a target="_blank" href="/open/'.$atts['id'].'/ideas" class="box-item__get-it">Get it</a>';
         $markup .= '</div>';
