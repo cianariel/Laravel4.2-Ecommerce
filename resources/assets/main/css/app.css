@@ -5479,6 +5479,7 @@ nav a {
     background-color: rgba(0, 0, 0, 0.2); }
   #hero.details-hero h1 {
     float: left;
+    max-width: 75%;
     text-align: left;
     margin: 0;
     font-size: 3.5rem;

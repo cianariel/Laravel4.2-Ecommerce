@@ -291,19 +291,21 @@
                 <img class="img-responsive" src="{{ $product->media_link_full_path }}">
                 <span class="box-item__time">{{ $product->updated_at }}</span>
                             <div class="box-item__overlay" ng-click="openProductPopup({{$product->id}})"></div>
-                <div class="social-stats">
-                    <div class="social-stats__item rating" data-toggle="tooltip" title="Ideaing Score">
-                        <span class="icon m-icon--bulb-detailed-on-rating"></span>
-                        <span class="value ng-binding">{{ $product->AverageScore }}%</span>
+                @if($product->AverageScore != 0)
+                    <div class="social-stats">
+                        <div class="social-stats__item rating" data-toggle="tooltip" title="Ideaing Score">
+                            <span class="icon m-icon--bulb-detailed-on-rating"></span>
+                            <span class="value ng-binding">{{ $product->AverageScore }}%</span>
+                        </div>
                     </div>
-                </div>
+                @endif
                 <div class="round-tag round-tag--product">
                     <i class="m-icon m-icon--item"></i>
                     <span class="round-tag__label">Product</span>
                 </div>
                 <div class="box-item__label-prod">
                     <a href="/product/{{$product->product_permalink}}"
-                       class="box-item__label box-item__label--clear ">{{ $product->product_name }}%</a>
+                       class="box-item__label box-item__label--clear ">{{ $product->product_name }}</a>
                     <div class="clearfix"></div>
 
                     <div class="clearfix"></div>
