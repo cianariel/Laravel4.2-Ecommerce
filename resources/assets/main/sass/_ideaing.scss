@@ -4754,16 +4754,13 @@ body.single{
     	display:inline-block;
       @media (min-width: 620px){
         .thumb-box{
-          max-width: 288px;
+          max-width: 284px;
+          margin-right: 2px;
           display: inline-block;
           vertical-align: top;
         }
       }
-
-
     }
-
-
 
     .get-it-inner{
       float:left;
