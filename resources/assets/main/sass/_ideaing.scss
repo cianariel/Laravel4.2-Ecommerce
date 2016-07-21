@@ -4754,10 +4754,15 @@ body.single{
     	display:inline-block;
       @media (min-width: 620px){
         .thumb-box{
-          float:left; 
-        } 
+          //float:left;
+          display: inline-block;
+        }
       }
+
+
     }
+
+
 
     .get-it-inner{
       float:left;
@@ -4768,7 +4773,7 @@ body.single{
     }
   
    .thumb-box{
-      position:relative; 
+      position:relative;
       display:inline-block;
 
       

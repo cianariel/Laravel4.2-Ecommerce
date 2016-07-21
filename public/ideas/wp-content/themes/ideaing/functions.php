@@ -736,7 +736,6 @@ function product_bar_func( $atts ) {
         return false;
     }
 
-
     $markup = '<div class="product-bar">';
         $markup .= '<div class="col-xs-12 col-sm-2 col-sm-2 no-padding overhid">';
             $markup .= '<img  style="width:100%; height:auto" class="img-responsive" src="'.$productData['image'].'">';
@@ -753,5 +752,38 @@ function product_bar_func( $atts ) {
 }
 add_shortcode( 'product_bar', 'product_bar_func' );
 
+
+// [product_bar id="id_value"]
+function product_thumbs_func( $atts ) {
+    $ids = str_replace(' ', '', $atts['id']);
+
+    $json = file_get_contents('http://ideaing.dev/api/products/get-for-bar/' . $ids);
+    $products = json_decode($json, true);
+
+    $howMany = count($ids);
+
+    if(!$products){
+        return false;
+    }
+
+    $markup = '<div class="float-thumbs">
+                        <div class="inner count-'.$howMany.'">';
+                            foreach($products as $prod){
+                                $markup .= '<div class="thumb-box" style="text-align: center;">
+                                                    <div class="get-it-inner">
+                                                        <a href="https://ideaing.com/open/'.$prod['id'].'/product" target="_blank">
+                                                            <img class="wp-image-8464 aligncenter" src="'.$prod['image'].'" alt="Withings Smart Body Analyzer" width="398" height="250">
+                                                            <strong>'.$prod['product_name'].'</strong>
+                                                        </a>
+                                                        <span class="merchant-widget__price">$'.$prod['sale_price'].'</span>
+                                                    </div>
+                                                </div>';
+                            }
+        $markup .=  '</div>
+                    </div>';
+
+    return $markup;
+}
+add_shortcode( 'product_thumbs', 'product_thumbs_func' );
 
 ?>
