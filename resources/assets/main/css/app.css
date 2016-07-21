@@ -8014,7 +8014,8 @@ body.single .article-content iframe {
     @media (min-width: 620px) {
       .float-thumbs .inner .thumb-box {
         max-width: 288px;
-        display: inline-block; } }
+        display: inline-block;
+        vertical-align: top; } }
   .float-thumbs .get-it-inner {
     float: left;
     overflow: hidden;
