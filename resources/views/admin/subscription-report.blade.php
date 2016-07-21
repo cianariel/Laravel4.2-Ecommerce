@@ -58,7 +58,9 @@
                                         <div class="widget-thumb widget-bg-color-white text-uppercase margin-bottom-20 bordered">
                                             <h4 class="widget-thumb-heading">Subscribed User Info</h4>
                                             <div class="widget-thumb-wrap">
-                                                <i class="widget-thumb-icon bg-green icon-bulb"></i>
+                                                <i class="widget-thumb-icon bg-green icon-bulb"
+                                                   title="People subscribed from homepage's main subscription section."
+                                                ></i>
                                                 <div class="widget-thumb-body">
                                                     <span class="widget-thumb-subtitle">Home</span>
                                                     <span class="widget-thumb-body-stat" data-counter="counterup"
@@ -74,7 +76,9 @@
                                         <div class="widget-thumb widget-bg-color-white text-uppercase margin-bottom-20 bordered">
                                             <h4 class="widget-thumb-heading">Subscribed User Info</h4>
                                             <div class="widget-thumb-wrap">
-                                                <i class="widget-thumb-icon bg-green icon-bulb"></i>
+                                                <i class="widget-thumb-icon bg-green icon-bulb"
+                                                   title="People subscribed from 5 minuit interval popup box"
+                                                ></i>
                                                 <div class="widget-thumb-body">
                                                     <span class="widget-thumb-subtitle">Pop Up</span>
                                                     <span class="widget-thumb-body-stat" data-counter="counterup"
@@ -90,9 +94,11 @@
                                         <div class="widget-thumb widget-bg-color-white text-uppercase margin-bottom-20 bordered">
                                             <h4 class="widget-thumb-heading">Subscribed User Info</h4>
                                             <div class="widget-thumb-wrap">
-                                                <i class="widget-thumb-icon bg-green icon-bulb"></i>
+                                                <i class="widget-thumb-icon bg-green icon-bulb"
+                                                   title="People subscribed through the top notification bubble"
+                                                ></i>
                                                 <div class="widget-thumb-body">
-                                                    <span class="widget-thumb-subtitle">Pop Up Notice</span>
+                                                    <span class="widget-thumb-subtitle">Notification</span>
                                                     <span class="widget-thumb-body-stat" data-counter="counterup"
                                                           ng-bind='reportData["subscribe-popup-notice"]'>0</span>
                                                 </div>
@@ -106,7 +112,9 @@
                                         <div class="widget-thumb widget-bg-color-white text-uppercase margin-bottom-20 bordered">
                                             <h4 class="widget-thumb-heading">Subscribed User Info</h4>
                                             <div class="widget-thumb-wrap">
-                                                <i class="widget-thumb-icon bg-green icon-bulb"></i>
+                                                <i class="widget-thumb-icon bg-green icon-bulb"
+                                                   title="People subscribed from Ideas page"
+                                                ></i>
                                                 <div class="widget-thumb-body">
                                                     <span class="widget-thumb-subtitle">Ideas</span>
                                                     <span class="widget-thumb-body-stat" data-counter="counterup"
@@ -122,7 +130,9 @@
                                         <div class="widget-thumb widget-bg-color-white text-uppercase margin-bottom-20 bordered">
                                             <h4 class="widget-thumb-heading">Subscribed User Info</h4>
                                             <div class="widget-thumb-wrap">
-                                                <i class="widget-thumb-icon bg-green icon-bulb"></i>
+                                                <i class="widget-thumb-icon bg-green icon-bulb"
+                                                   title="People subscribed through the footer form"
+                                                ></i>
                                                 <div class="widget-thumb-body">
                                                     <span class="widget-thumb-subtitle">Footer</span>
                                                     <span class="widget-thumb-body-stat" data-counter="counterup"
@@ -138,7 +148,9 @@
                                         <div class="widget-thumb widget-bg-color-white text-uppercase margin-bottom-20 bordered">
                                             <h4 class="widget-thumb-heading">Subscribed User Info</h4>
                                             <div class="widget-thumb-wrap">
-                                                <i class="widget-thumb-icon bg-green icon-bulb"></i>
+                                                <i class="widget-thumb-icon bg-green icon-bulb"
+                                                   title="Total subscribed user"
+                                                ></i>
                                                 <div class="widget-thumb-body">
                                                     <span class="widget-thumb-subtitle">Total</span>
                                                     <span class="widget-thumb-body-stat" data-counter="counterup"
@@ -156,7 +168,9 @@
                                         <div class="widget-thumb widget-bg-color-white text-uppercase margin-bottom-20 bordered">
                                             <h4 class="widget-thumb-heading">Registered User Info</h4>
                                             <div class="widget-thumb-wrap">
-                                                <i class="widget-thumb-icon bg-blue-steel icon-badge"></i>
+                                                <i class="widget-thumb-icon bg-blue-steel icon-badge"
+                                                title="People who have registered directly with email & password"
+                                                ></i>
                                                 <div class="widget-thumb-body">
                                                     <span class="widget-thumb-subtitle">Normal</span>
                                                     <span class="widget-thumb-body-stat" data-counter="counterup"
@@ -172,7 +186,9 @@
                                         <div class="widget-thumb widget-bg-color-white text-uppercase margin-bottom-20 bordered">
                                             <h4 class="widget-thumb-heading">Registered User Info</h4>
                                             <div class="widget-thumb-wrap">
-                                                <i class="widget-thumb-icon bg-blue-steel icon-badge"></i>
+                                                <i class="widget-thumb-icon bg-blue-steel icon-badge"
+                                                   title="People who have registered with Facebook"
+                                                ></i>
                                                 <div class="widget-thumb-body">
                                                     <span class="widget-thumb-subtitle">facebook</span>
                                                     <span class="widget-thumb-body-stat" data-counter="counterup"
@@ -188,7 +204,9 @@
                                         <div class="widget-thumb widget-bg-color-white text-uppercase margin-bottom-20 bordered">
                                             <h4 class="widget-thumb-heading">Registered User Info</h4>
                                             <div class="widget-thumb-wrap">
-                                                <i class="widget-thumb-icon bg-blue-steel icon-badge"></i>
+                                                <i class="widget-thumb-icon bg-blue-steel icon-badge"
+                                                   title="Old accounts which were created earlier and created by admin from backend"
+                                                ></i>
                                                 <div class="widget-thumb-body">
                                                     <span class="widget-thumb-subtitle">others</span>
                                                     <span class="widget-thumb-body-stat" data-counter="counterup"
@@ -204,7 +222,9 @@
                                         <div class="widget-thumb widget-bg-color-white text-uppercase margin-bottom-20 bordered">
                                             <h4 class="widget-thumb-heading">Registered User Info</h4>
                                             <div class="widget-thumb-wrap">
-                                                <i class="widget-thumb-icon bg-blue-steel icon-badge"></i>
+                                                <i class="widget-thumb-icon bg-blue-steel icon-badge"
+                                                   title="Total count of all registered users"
+                                                ></i>
                                                 <div class="widget-thumb-body">
                                                     <span class="widget-thumb-subtitle">Total</span>
                                                     <span class="widget-thumb-body-stat" data-counter="counterup"

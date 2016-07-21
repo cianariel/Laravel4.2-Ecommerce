@@ -367,7 +367,11 @@ class ProductController extends ApiController
 
     public function getMediaForProduct($id)
     {
-        $result = Product::find($id)->medias;
+        $result['result'] = Product::find($id)->medias;
+
+        $result['count'] = $result['result']->count();
+
+      //  dd($result);
 
         return $this->setStatusCode(\Config::get("const.api-status.success"))
             ->makeResponse($result);

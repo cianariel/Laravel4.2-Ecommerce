@@ -268,7 +268,7 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
             $scope.tmpUrl = '';
 
             /// product fields initialize
-            $scope.ProductAuthorName = ($scope.ProductAuthorName != '')?$scope.ProductAuthorName :'Anonymous User';
+            $scope.ProductAuthorName = ($scope.ProductAuthorName != '') ? $scope.ProductAuthorName : 'Anonymous User';
             $scope.ProductList = [];
             $scope.ProductVendorId = '';
             $scope.ProductVendorType = 'Amazon';
@@ -331,6 +331,9 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
             $scope.isMediaEdit = false;
 
             $scope.mediaList = [];
+
+            $scope.selectedMediaSequence = 1;
+            $scope.mediaSequenceArray = [];
 
             // Pagination info
             $scope.limit = 50;
@@ -419,14 +422,14 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
             }
         };
 
-        $scope.loadSubscriptionReport = function(){
+        $scope.loadSubscriptionReport = function () {
             $http({
                 url: '/api/user/subscribed-registered-report',
                 method: "GET",
 
             }).success(function (data) {
                 $scope.reportData = data.data;
-             //   console.log($scope.reportData);
+                //   console.log($scope.reportData);
 
             });
         };
@@ -448,7 +451,7 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
 
                 $scope.UserStatus = data.data.status == 'Active' ? 'Active' : 'Inactive';
 
-                $scope.IsBlogUser = data.data.is_blog_user == 'true'? true:false;
+                $scope.IsBlogUser = data.data.is_blog_user == 'true' ? true : false;
 
                 //  $scope.outputStatus(data, 'User added successfully');
                 //  $window.location = '/admin/user-list';
@@ -468,7 +471,7 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
                     Password: $scope.Password == '' ? null : $scope.Password,
                     UserRoles: $scope.userRoles,
                     UserStatus: $scope.UserStatus,
-                    IsBlogUser: ($scope.IsBlogUser == true)? 'true':'false'
+                    IsBlogUser: ($scope.IsBlogUser == true) ? 'true' : 'false'
                 }
             }).success(function (data) {
                 // console.log(data);
@@ -504,7 +507,7 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
         $scope.getUserList = function () {
 
             // todo - test init .remove after test
-          //  console.log('sdf');
+            //  console.log('sdf');
             $scope.limit = $scope.userListPageLimit;
 
             $http({
@@ -519,7 +522,7 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
                     FilterValue: $scope.FilterUserItem
                 }
             }).success(function (data) {
-             //   console.log(data);
+                //   console.log(data);
                 $scope.limit = data.data.limit;
                 $scope.page = data.data.page;
                 $scope.total = data.data.count;
@@ -552,7 +555,7 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
         };
 
         $scope.logoutUser = function () {
-           // var WpLogoutURL = 'https://ideaing.com/ideas/api?call=logout';
+            // var WpLogoutURL = 'https://ideaing.com/ideas/api?call=logout';
             var WpLogoutURL = '/ideas/api?call=logout';
 
             $http({
@@ -561,12 +564,12 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
 
             }).success(function (data) {
                 window.location = '/api/logout';
-            }).error(function(data) {
+            }).error(function (data) {
                 window.location = '/api/logout';
             });
         };
 
-        $scope.getPaidMembersPaymentList = function(){
+        $scope.getPaidMembersPaymentList = function () {
 
             $http({
                 url: '/payment/paid-membership-report',
@@ -794,20 +797,20 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
                 }
 
                 catValue += (data.data[i]['CategoryName'] + arrow);
-             //   console.log(i);
+                //   console.log(i);
             }
             $scope.categoryHierarchy = catValue;
-           // console.log('cat :' + $scope.categoryHierarchy);
-          //  console.log('cat :' + catValue);
+            // console.log('cat :' + $scope.categoryHierarchy);
+            //  console.log('cat :' + catValue);
 
         }
 
-        $scope.categoryHierarchyView = function(catId){
+        $scope.categoryHierarchyView = function (catId) {
 
             $http({
-                url: '/api/category/get-category-hierarchy/'+catId,
+                url: '/api/category/get-category-hierarchy/' + catId,
                 method: 'GET',
-            }).success(function (data){
+            }).success(function (data) {
                 console.log(data);
 
                 buildCategoryViewString(data);
@@ -1158,6 +1161,8 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
                     // accociate tags for product on success.
                     $scope.associateTags();
                     $scope.outputStatus(data, "Product updated successfully");
+
+                    $scope.getMedia();
                 } else {
                     $scope.outputStatus(data, "Product information not updated");
                 }
@@ -1175,7 +1180,10 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
                 $scope.productUpdateInfo();
             }
 
+           // $scope.getMediaSequenceList();
             $scope.closeAlert();
+
+            //$scope.getMedia();
 
             return false;
         };
@@ -1451,7 +1459,7 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
                     $scope.ProductId = data.data.id;
                     $scope.selectedItem = data.data.product_category_id;
                     $scope.ProductVendorId = data.data.product_vendor_id;
-                //  $scope.ProductVendorType = data.data.product_vendor_type;
+                    //  $scope.ProductVendorType = data.data.product_vendor_type;
                     $scope.ShowFor = data.data.show_for;
                     $scope.Name = data.data.product_name;
                     $scope.Permalink = data.data.product_permalink;
@@ -1483,7 +1491,7 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
                     $scope.getMedia();
 
                     // initialization category hierarchy view
-                    $scope.categoryHierarchyView( $scope.selectedItem );
+                    $scope.categoryHierarchyView($scope.selectedItem);
 
                 }
             });
@@ -1492,7 +1500,7 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
 
         // Product Promote
 
-        $scope.promoteProduct = function(id){
+        $scope.promoteProduct = function (id) {
             $scope.closeAlert();
             $http({
                 url: '/api/product/promote-product',
@@ -1509,7 +1517,7 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
 
         //delete a product
         $scope.deleteProduct = function (id, redirect) {
-           // console.log(redirect);
+            // console.log(redirect);
 
             $http({
                 url: '/api/product/delete-product',
@@ -1539,7 +1547,7 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
                 $scope.isMediaUploadable = false;
                 $scope.mediaLinkTmp = $scope.mediaLink;
                 //   console.log($scope.isMediaUploadable);
-            } else if (($scope.selectedMediaType == 'video-link') || ($scope.selectedMediaType == 'video-youtube-link') ||($scope.selectedMediaType == 'video-vimeo-link')) {
+            } else if (($scope.selectedMediaType == 'video-link') || ($scope.selectedMediaType == 'video-youtube-link') || ($scope.selectedMediaType == 'video-vimeo-link')) {
 
                 $scope.isMediaUploadable = false;
                 $scope.mediaLinkTmp = $scope.mediaLink;
@@ -1590,7 +1598,17 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
             }).success(function (data) {
 
                 if (data.status_code == 200) {
-                    $scope.mediaList = data.data;
+                    $scope.mediaList = data.data.result;
+                    $scope.mediaCount = 1;
+
+                    if (data.data.count > 0)
+                    {
+                        $scope.mediaCount = data.data.count;
+                    }
+
+                    console.log('media count :', $scope.mediaCount);
+
+                    $scope.getMediaSequenceList();
                 }
 
             });
@@ -1615,15 +1633,33 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
 
             $scope.mediaId = $scope.mediaList[index].id;
 
+            $scope.selectedMediaSequence = $scope.mediaList[index].sequence;
+
             $scope.mediaTitle = $scope.mediaList[index].media_name;
             $scope.selectedMediaType = $scope.mediaList[index].media_type;
             $scope.mediaLink = $scope.mediaList[index].media_link;
 
             var stat = $scope.mediaList[index].is_hero_item == 1 ? true : false;
             $scope.isHeroItem = stat;
-            $scope.isMainItem = $scope.mediaList[index].is_main_item == 1 ? 1 : 0;
+
+            var mainItem = $scope.mediaList[index].is_main_item == 1 ? true : false;
+            $scope.isMainItem = mainItem;
             $scope.isMediaEdit = true;
-            // console.log($scope.mediaId);
+            console.log($scope.selectedMediaSequence);
+
+        };
+
+        $scope.getMediaSequenceList = function () {
+
+            console.log('in-');
+            var list = [];
+
+            for (var i = 1; i <= $scope.mediaCount + 1; i++) {
+
+                list.push(i);
+            }
+            console.log('list size :', list);
+            $scope.mediaSequenceArray = list;
 
         };
 
@@ -1634,6 +1670,7 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
                 data: {
                     MediaId: $scope.mediaId,
                     MediaTitle: $scope.mediaTitle,
+                    MediaSequence: $scope.selectedMediaSequence,
                     MediaType: $scope.selectedMediaType,
                     MediaLink: $scope.mediaLink,
                     IsHeroItem: $scope.isHeroItem,
@@ -1644,6 +1681,7 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
                 // console.log(data);
                 $scope.mediaId = '';
                 $scope.mediaTitle = '';
+                $scope.selectedMediaSequence = 1;
                 $scope.selectedMediaType = '';
                 $scope.mediaLink = '';
                 $scope.isHeroItem = false;
@@ -1686,7 +1724,7 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
 
             }).success(function (data) {
 
-                    $scope.GiveawayList = data;
+                $scope.GiveawayList = data;
             });
 
         };
