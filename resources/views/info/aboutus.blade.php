@@ -32,7 +32,7 @@
         <div class="about_para_2">
             <div style="para1_center" align="center">
                 <div class="space"></div>
-                <div class="white"><h4>Discover the collest and most unique home decor</h4></div>
+                <div class="white"><h4>Discover the coolest and most unique home decor</h4></div>
                 <div class="para1_content white">At ideaing, we believe your home should look its best. We scour thousands of products from Amazon to major online retailers, and curate only the best &amp; most unique home decor.</div>
                 <div class="para1_button center-block"><a class="btn btn-success col-xs-12" href="{{url('/')}}">Get started</a></div>
                 <div class="para2_space"></div>
@@ -44,7 +44,7 @@
                 <div class="para3_1">
                     <div><h4>A Community with Taste</h4></div>
                     <div class="space"></div>
-                    <div class = ''>We are passionate about the connected home and interior design. and we want you to be part of our vision. Vote on your favourite products and ideas.</div>
+                    <div class = ''>We are passionate about the connected home and interior design. And we want you to be part of our vision. Vote on your favourite products and ideas.</div>
                     <div class="space"></div>
                 </div>
             </div>
