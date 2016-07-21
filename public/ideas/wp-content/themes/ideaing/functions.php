@@ -767,7 +767,7 @@ function product_thumbs_func( $atts ) {
     }
 //    <a href="https://ideaing.com/product/'.$prod['product_permalink'].'" target="_blank">
 
-    $markup = '<div class="float-thumbs">
+    $markup = '<div class="float-thumbs shortcode-thumbs">
                         <div class="inner count-'.$howMany.'">';
                             foreach($products as $prod){
                                 $markup .= '<div class="thumb-box" style="text-align: center;">

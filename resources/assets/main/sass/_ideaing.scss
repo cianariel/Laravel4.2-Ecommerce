@@ -4749,15 +4749,23 @@ body.single{
     overflow:hidden;
     margin: 0 auto;
     text-align:center;
+
+  &.shortcode-thumbs{
+    .thumb-box {
+      max-width: 284px;
+    }
+  }
  
     .inner{
     	display:inline-block;
       @media (min-width: 620px){
         .thumb-box{
-          max-width: 284px;
+          //max-width: 284px;
           margin-right: 2px;
           display: inline-block;
           vertical-align: top;
+
+
         }
       }
     }
