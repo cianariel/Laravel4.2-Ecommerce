@@ -4754,9 +4754,9 @@ body.single{
     	display:inline-block;
       @media (min-width: 620px){
         .thumb-box{
-          //float:left;
           max-width: 288px;
           display: inline-block;
+          vertical-align: top;
         }
       }
 
