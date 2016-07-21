@@ -739,7 +739,7 @@ function product_bar_func( $atts ) {
     $markup = '<div class="product-bar">';
         $markup .= '<div class="col-xs-12 col-sm-2 col-sm-2 no-padding overhid">';
             $markup .= '<img  style="width:100%; height:auto" class="img-responsive" src="'.$productData['image'].'">';
-            $markup .= '<span class="merchant-widget__price">$'.$productData['sale_price'].'</span>';
+            $markup .= '<span class="merchant-widget__price">$'.round($productData['sale_price']).'</span>';
         $markup .= '</div>';
         $markup .= '<div class="col-xs-12 col-sm-9 overhide leftline">';
             $markup .= '<h4 class="col-xs-12"><a href="'.$productData['product_permalink'].'">'.$productData['product_name']."</a></h4>";
