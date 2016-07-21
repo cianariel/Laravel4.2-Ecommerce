@@ -172,10 +172,7 @@
                 <div class="author-overview col-lg-5 col-sm-5 col-xs-6 full-480">
                     <h4 class="author-name">
                         <div id="sticky-anchor"></div>
-
                         by <b ng-bind="authorName"></b>
-                        <!--                            <a class="like-counter" href="#">189</a>-->
-
                     </h4>
                     <time datetime="{{the_date('Y-m-d')}}">{{the_time( get_option( 'date_format' ) )}}</time>
 
@@ -193,6 +190,9 @@
         <div class="row">
                 <div class="col-lg-12">
                     <section class="article-content dropcapped">
+                        <?php
+                          //  echo do_shortcode('[product_thumbs id="1266"]');
+                        ?>
                         <?php the_content(); ?>
                     </section>
                 </div>

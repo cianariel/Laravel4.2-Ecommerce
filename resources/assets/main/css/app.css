@@ -8013,7 +8013,7 @@ body.single .article-content iframe {
     display: inline-block; }
     @media (min-width: 620px) {
       .float-thumbs .inner .thumb-box {
-        float: left; } }
+        display: inline-block; } }
   .float-thumbs .get-it-inner {
     float: left;
     overflow: hidden;
