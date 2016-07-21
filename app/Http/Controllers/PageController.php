@@ -608,6 +608,7 @@ class PageController extends ApiController
 
         $reviewScore = intval(((($result['productInformation']['Review'][0]->value > 0 ? $result['productInformation']['Review'][0]->value : $amazonReview) + $amazonReview)/2)*20);
 
+      //  dd($result['selfImages']);
         return view('product.product-details')
             ->with('isAdminForEdit', $isAdmin)
             ->with('productId', $result['productInformation']['Id'])

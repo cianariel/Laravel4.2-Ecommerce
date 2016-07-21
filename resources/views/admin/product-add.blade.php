@@ -558,6 +558,16 @@
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
+                                                        <label class="col-md-2 control-label">Media Sequence :
+                                                        </label>
+                                                        <div class="col-md-4">
+                                                            <select data-ng-model="selectedMediaSequence"
+                                                                    class="form-control"
+                                                                ng-options="item for item in mediaSequenceArray track by item">
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
                                                         <label class="col-md-2 control-label">Media Type :
                                                         </label>
                                                         <div class="col-md-4">
@@ -634,7 +644,8 @@
                                                                     <tr>
                                                                         <th class="col-md-1">#</th>
                                                                         <th class="col-md-2">Title</th>
-                                                                        <th class="col-md-2">Type</th>
+                                                                        <th class="col-md-1">Sequnce</th>
+                                                                        <th class="col-md-1">Type</th>
                                                                         <th class="col-md-1">Hero</th>
                                                                         <th class="col-md-1">Thumb</th>
                                                                         <th class="col-md-4">Link</th>
@@ -645,6 +656,7 @@
                                                                     <tr ng-repeat="media in mediaList">
                                                                         <td>@{{media.id}}</td>
                                                                         <td>@{{ media.media_name}}</td>
+                                                                        <td>@{{ media.sequence}}</td>
                                                                         <td>@{{ media.media_type}} </td>
                                                                         <td>@{{ media.is_hero_item == 1? 'true':''}} </td>
                                                                         <td>@{{ media.is_main_item == 1? 'true':''}} </td>
