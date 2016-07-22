@@ -1180,10 +1180,7 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
                 $scope.productUpdateInfo();
             }
 
-           // $scope.getMediaSequenceList();
             $scope.closeAlert();
-
-            //$scope.getMedia();
 
             return false;
         };
