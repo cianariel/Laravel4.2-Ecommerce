@@ -6464,11 +6464,14 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
                             
                             if(data.productInformation['Review']){
                                 var pScore = parseInt(((( Number(data.productInformation['Review'][0].value) > 0 ? Number(data.productInformation['Review'][0].value) : Number(data.productInformation['Review'][1].value)) + Number(data.productInformation['Review'][1].value))/2)*20) + "%";
+                                $('.product-popup-modal .p-score').html(pScore);
+
                             }else{
-                                var pScore = "0%";
+                                $('.p-average-ideaing-score').css('visibility', 'hidden');
+                                $('.reviews-medium-container').hide();
+
                             }
-                            $('.product-popup-modal .p-score').html(pScore);
-                            
+
                             var price;
                             if(data.productInformation['SellPrice']){
                                 price = data.productInformation['SellPrice'];
