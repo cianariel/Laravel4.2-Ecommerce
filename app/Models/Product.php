@@ -198,11 +198,11 @@ class Product extends Model
             // delete empty product which is not containing a store id or category id ( for security check from backend)
             $this->deleteEmptyProduct();
 
-          //  $deleted = PageHelper::deleteFromRedis('product-details-' . $data['product_permalink']); // MOVED DELETE FROM CACHE TO THE CONTROLLER
+            $deleted = PageHelper::deleteFromRedis('product-details-' . $data['product_permalink']);
 
             $data = Product::where('id', $productId)->first();
 
-         //   $data['deleted'] = $deleted;
+            $data['deleted'] = $deleted;
 
             return $data;
 
