@@ -16,6 +16,7 @@
                                 <span>Average Ideaing Score</span>
                             </div>
                             <div class="pull-left p-nest-protect">
+                                <span class="hidden base-url-holder" data-base-url="data.product_permalink"></span>
                                 <ul class="">
                                     <li>
                                         <?php

@@ -10396,6 +10396,8 @@ html.hide-overflow {
 @media (min-width: 880px) {
   .product-box .box-item__overlay:hover {
     cursor: zoom-in; } }
+.product-popup-modal .email-wrap {
+  top: 18px; }
 .product-popup-modal .modal-content {
   overflow: hidden; }
 .product-popup-modal .modal-dialog {
@@ -10492,7 +10494,8 @@ html.hide-overflow {
     .product-popup-modal .lbInfo .p-average-ideaing-score .p-score {
       font-size: 41px; }
   .product-popup-modal .lbInfo .ideaing-score-holder {
-    background: #f7f7f7; }
+    background: #f7f7f7;
+    padding-bottom: 18px; }
   .product-popup-modal .lbInfo .p-top-bar {
     height: 83px;
     padding-left: 15px;
@@ -10529,7 +10532,8 @@ html.hide-overflow {
         height: 80px;
         padding-top: 20px; }
         .product-popup-modal .lbInfo .p-get-it-holder .p-get-it-amazon .p-body .get-round {
-          margin-left: 12px; }
+          margin-left: 12px;
+          margin-top: -9px; }
         .product-popup-modal .lbInfo .p-get-it-holder .p-get-it-amazon .p-body img {
           position: relative;
           top: 12px; }

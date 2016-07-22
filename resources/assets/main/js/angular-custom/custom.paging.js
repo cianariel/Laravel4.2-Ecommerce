@@ -762,15 +762,16 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
                                 '
                             }
                             $('.product-popup-modal #product-slider').html(imageHTML);
+                            $('.product-popup-modal .base-url-holder').attr('data-base-url', '/product/' + data.product_permalink);
                             $('.product-popup-modal .p-title').html("<a target='_blank' href='/product/"+ data.productInformation['Permalink'] +"'>"+ data.productInformation['ProductName'] +"</a>");
-                            
+
                             var html = '\
                                 <a class="get-round" href="/open/' + productId + '/product" target="_blank">Get it</a>\
                                 <img class="vendor-logo" width="107" src="'+ data.storeInformation['ImagePath'] +'" alt="'+ data.storeInformation['StoreName'] +'">\
                             ';
                             $('.product-popup-modal .p-get-it-amazon .p-body').html(html);
                             
-                            
+
 //                            $('.product-popup-modal .get-round').attr('href', data.productInformation['AffiliateLink']);
                             
                             if(data.productInformation['Review']){
@@ -778,8 +779,8 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
                                 $('.product-popup-modal .p-score').html(pScore);
 
                             }else{
-                                $('.p-average-ideaing-score').css('visibility', 'hidden');
-                                $('.reviews-medium-container').hide();
+                                //$('.p-average-ideaing-score').css('visibility', 'hidden');
+                                $('.p-average-ideaing-score, .reviews-medium-container').hide();
 
                             }
 
@@ -850,8 +851,8 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
                                     var outrReviews = data.productInformation['Review'].slice(2);
                                     for( reviewKey in outrReviews ){
                                         var review = outrReviews[reviewKey];
-                                        console.log("reviewKey", reviewKey)
-                                        console.log("review", review)
+                                        //console.log("reviewKey", reviewKey)
+                                        //console.log("review", review)
                                         criticOuterRatingHtml += '\
                                             <div class="critic-outer-rating">\
                                                 <div class="line-label ">\
@@ -1022,7 +1023,9 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
                 document.getElementsByTagName('html')[0].className = className;
 
             });
-                pagingApi.countSocialShares();
+                console.log('buker')
+                console.log(data.data.product_permalink)
+                pagingApi.countSocialShares('product/' + data.data.product_permalink);
             });
 
 
@@ -1040,7 +1043,15 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
 		}
 
 		pagingApi.openSharingModal = function ($service, $scope) {
-            var baseUrl = 'https://' + window.location.host + window.location.pathname;
+
+            if($('.base-url-holder').length && $('.base-url-holder').data('base-url')){
+                var baseUrl = 'https://' + window.location.host + $('.base-url-holder').data('base-url');
+                console.log('baseUrl')
+                console.log(baseUrl)
+            }else{
+                var baseUrl = 'https://' + window.location.host + window.location.pathname;
+            }
+
             var shareUrl = false;
 
             var $pitnerestShare = function(){
@@ -1102,15 +1113,23 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
 
         };
 
-        pagingApi.countSocialShares = function () {
-
-            var thisUrl = window.location.host + window.location.pathname;
+        pagingApi.countSocialShares = function ($url) {
+            if(typeof $url !== "undefined"){
+                var thisUrl =  window.location.host + $url;
+                console.log('thisUrl')
+                console.log($url)
+            }else{
+                var thisUrl = window.location.host + window.location.pathname;
+                console.log('why oh why')
+            }
 
             $http({
                 url: '/api/social/get-social-counts',
                 method: "GET",
                 params: {'url': thisUrl}
             }).success(function (response) {
+                console.log('response')
+                console.log(response)
                 $('.share-count.all').html(response.all);
                 $('.share-count.twi').html(response.twitter);
                 $('.share-count.fb').html(response.facebook);
