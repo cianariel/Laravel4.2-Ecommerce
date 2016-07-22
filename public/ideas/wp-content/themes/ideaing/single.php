@@ -191,7 +191,7 @@
                 <div class="col-lg-12">
                     <section class="article-content dropcapped">
                         <?php
-                           // echo do_shortcode('[product_thumbs id="1266"]');
+                            echo do_shortcode('[product_thumbs id="1266"]');
                         ?>
                         <?php the_content(); ?>
                     </section>
