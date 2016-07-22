@@ -95,6 +95,15 @@ a:hover, a:focus{
   width: 100%;
 }
 
+.trans-all{
+  -webkit-transition: all .5s ease;
+  -moz-transition: all .5s ease;
+  -ms-transition: all .5s ease;
+  -o-transition: all .5s ease;
+  transition: all .5s ease;
+}
+
+
 @media (max-width:480px) {
   .left-padded-xs{
     padding-left: 30px;
@@ -985,7 +994,6 @@ nav {
   &.details-hero{
     h1{
       float: left;
-      max-width: 75%;
       text-align: left;
       margin: 0;
       font-size: 3.5rem;
@@ -994,6 +1002,10 @@ nav {
       padding: 7px 7px 7px 10%;
       background-color: rgba($sky-blue, .7);
       text-shadow: none;
+
+      @media (min-width:h620px){
+        max-width: 75%;
+      }
 
 
       span{
@@ -4711,8 +4723,6 @@ body.single{
         -ms-transition: opacity .5s ease;
         -o-transition: opacity .5s ease;
         transition: opacity .5s ease;
-
-
       }
 
   }
@@ -4731,11 +4741,15 @@ body.single{
         transition: all .5s ease;
   }
 
+
+
   &:hover,
   &.hovered{   
     a::after,
     a::before,
-    &::after{
+    &::after,
+    .merchant-widget__logo
+    {
       opacity: 1;
     }
     .merchant-widget__price{
@@ -4749,13 +4763,24 @@ body.single{
     overflow:hidden;
     margin: 0 auto;
     text-align:center;
+
+  &.shortcode-thumbs{
+    .thumb-box {
+      max-width: 284px;
+    }
+  }
  
     .inner{
     	display:inline-block;
       @media (min-width: 620px){
         .thumb-box{
-          float:left; 
-        } 
+          //max-width: 284px;
+          margin-right: 2px;
+          display: inline-block;
+          vertical-align: top;
+
+
+        }
       }
     }
 
@@ -4768,7 +4793,7 @@ body.single{
     }
   
    .thumb-box{
-      position:relative; 
+      position:relative;
       display:inline-block;
 
       
@@ -4790,6 +4815,19 @@ body.single{
       text-align:center;
       background:rgba($iridium, .7);
       color:#fff;
+    }
+  }
+  .merchant-widget__logo{
+    opacity: 0;
+    position: absolute;
+    bottom: 29%;
+    width: 100%;
+    text-align: center;
+
+    img.vendor-logo{
+      height: 20px;
+      border: 0;
+      display: inline;
     }
   }
   br{

@@ -14,6 +14,7 @@ use Illuminate\Contracts\Filesystem\Factory;
 use Storage;
 use Folklore\Image\Facades;
 use Carbon\Carbon;
+use PageHelper;
 
 class MediaController extends ApiController
 {
@@ -33,7 +34,7 @@ class MediaController extends ApiController
     {
         $inputData = \Input::all();
 
-        //   dd($inputData);
+         // dd($inputData);
         $data = array(
             "media_name" => $inputData['MediaTitle'],
             "sequence" => $inputData['MediaSequence'],
@@ -42,6 +43,12 @@ class MediaController extends ApiController
             "is_hero_item" => $inputData['IsHeroItem'],
             "is_main_item" => $inputData['IsMainItem']
         );
+
+        $media = Media::where('id', '=', $inputData['MediaId'])->first();
+
+        if($media->mediable_type == 'App\Models\Product' && $media->mediable){
+        	PageHelper::deleteFromRedis('product-details-'.$media->mediable->product_permalink);
+        }
 
         return Media::where('id', '=', $inputData['MediaId'])->update($data);
 
