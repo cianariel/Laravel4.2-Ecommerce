@@ -495,7 +495,7 @@ class ProductController extends ApiController
             }
 
             if(isset($prod->store_id) &&  ($prod->store_id == 1 || $prod->store_id == '1')){
-                $productData['storeLogo'] = 'https://s3-us-west-1.amazonaws.com/ideaing-01/amazon-logo-small.svg';
+                $prod->storeLogo = 'https://s3-us-west-1.amazonaws.com/ideaing-01/amazon-logo-small.svg';
             }elseif($storeLogo = Media::where('mediable_type', 'App\Models\Store')->where('mediable_id', $prod->store_id)->first()){
                 $prod->storeLogo = $storeLogo->media_link;
             }

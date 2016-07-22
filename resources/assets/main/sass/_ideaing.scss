@@ -95,6 +95,15 @@ a:hover, a:focus{
   width: 100%;
 }
 
+.trans-all{
+  -webkit-transition: all .5s ease;
+  -moz-transition: all .5s ease;
+  -ms-transition: all .5s ease;
+  -o-transition: all .5s ease;
+  transition: all .5s ease;
+}
+
+
 @media (max-width:480px) {
   .left-padded-xs{
     padding-left: 30px;
@@ -4711,8 +4720,6 @@ body.single{
         -ms-transition: opacity .5s ease;
         -o-transition: opacity .5s ease;
         transition: opacity .5s ease;
-
-
       }
 
   }
@@ -4731,11 +4738,15 @@ body.single{
         transition: all .5s ease;
   }
 
+
+
   &:hover,
   &.hovered{   
     a::after,
     a::before,
-    &::after{
+    &::after,
+    .merchant-widget__logo
+    {
       opacity: 1;
     }
     .merchant-widget__price{
@@ -4801,6 +4812,19 @@ body.single{
       text-align:center;
       background:rgba($iridium, .7);
       color:#fff;
+    }
+  }
+  .merchant-widget__logo{
+    opacity: 0;
+    position: absolute;
+    bottom: 29%;
+    width: 100%;
+    text-align: center;
+
+    img.vendor-logo{
+      height: 20px;
+      border: 0;
+      display: inline;
     }
   }
   br{

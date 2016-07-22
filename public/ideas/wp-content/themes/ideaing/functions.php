@@ -765,8 +765,6 @@ function product_thumbs_func( $atts ) {
     if(!$products){
         return false;
     }
-//    <a href="https://ideaing.com/product/'.$prod['product_permalink'].'" target="_blank">
-
     $markup = '<div class="float-thumbs shortcode-thumbs">
                         <div class="inner count-'.$howMany.'">';
                             foreach($products as $prod){
@@ -776,7 +774,10 @@ function product_thumbs_func( $atts ) {
                                                             <img class="wp-image-8464 aligncenter" src="'.$prod['image'].'" alt="Withings Smart Body Analyzer" width="398" height="250">
                                                             <strong>'.$prod['product_name'].'</strong>
                                                         </a>
-                                                        <span class="merchant-widget__price">$'.round($prod['sale_price']).'</span>
+                                                            <span class="merchant-widget__price">$'.round($prod['sale_price']).'</span>
+                                                            <div class="merchant-widget__logo trans-all">
+                                                                <span class="white">from <img class="vendor-logo img-responsive merchant-widget__store" src="'.$prod['storeLogo'].'"></span>
+                                                            </div>
                                                     </div>
                                                 </div>';
                             }
