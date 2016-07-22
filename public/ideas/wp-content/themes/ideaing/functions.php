@@ -772,8 +772,11 @@ function product_thumbs_func( $atts ) {
                                                     <div class="get-it-inner">
                                                         <a href="https://ideaing.com/open/'.$prod['id'].'/idea" target="_blank">
                                                             <img class="wp-image-8464 aligncenter" src="'.$prod['image'].'" alt="Withings Smart Body Analyzer" width="398" height="250">
-                                                            <strong>'.$prod['product_name'].'</strong>
                                                         </a>
+
+                                                            <strong><a class="heading-link" href="https://ideaing.com/product/'.$prod['product_permalink'].'" target="_blank">'.$prod['product_name'].' </a></strong>
+
+
                                                             <span class="merchant-widget__price">$'.round($prod['sale_price']).'</span>
                                                             <div class="merchant-widget__logo trans-all">
                                                                 <span class="white">from <img class="vendor-logo img-responsive merchant-widget__store" src="'.$prod['storeLogo'].'"></span>
@@ -781,7 +784,7 @@ function product_thumbs_func( $atts ) {
                                                     </div>
                                                 </div>';
                             }
-        $markup .=  '</div>
+            $markup .=  '</div>
                     </div>';
 
     return $markup;
