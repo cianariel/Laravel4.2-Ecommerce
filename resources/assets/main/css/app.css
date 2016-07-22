@@ -8063,6 +8063,11 @@ body.single .article-content iframe {
     bottom: 35%;
     width: 100%;
     text-align: center; }
+    @media (max-width: 620px) {
+      .float-thumbs .merchant-widget__logo {
+        top: 0;
+        bottom: auto;
+        left: 90px; } }
     .float-thumbs .merchant-widget__logo img.vendor-logo {
       height: 20px;
       border: 0;
