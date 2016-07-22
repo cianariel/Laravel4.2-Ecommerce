@@ -38,16 +38,13 @@
                                     <li>
                                         <i class="m-icon m-icon--alert"></i> Get Alerts
                                     </li>
-                                    <li>
-                                        <i class="m-icon m-icon--shares-active"></i> 99
-                                    </li>
                                 </ul>
                             </div>
                         </div>
                         <div class="col-xs-12 p-get-it-holder">
                             <div class="p-get-it-amazon">
                                 <div class="p-body">
-                                    <a class="get-round" href="" target="_blank">Get it</a>
+                                    <a class="get-round hidden" href="" target="_blank">Get it</a>
                                     <img src="/assets/images/dummies/amazon-2.png">
                                     
                                 </div>

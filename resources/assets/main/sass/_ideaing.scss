@@ -4768,6 +4768,9 @@ body.single{
     .thumb-box {
       max-width: 284px;
     }
+    .merchant-widget__logo {
+      bottom: 29%;
+    }
   }
  
     .inner{
@@ -4820,9 +4823,11 @@ body.single{
   .merchant-widget__logo{
     opacity: 0;
     position: absolute;
-    bottom: 29%;
+    bottom: 35%;
     width: 100%;
     text-align: center;
+
+
 
     img.vendor-logo{
       height: 20px;
