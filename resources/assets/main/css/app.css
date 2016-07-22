@@ -5494,7 +5494,7 @@ nav a {
     padding: 7px 7px 7px 10%;
     background-color: rgba(0, 177, 255, 0.7);
     text-shadow: none; }
-    @media (min-width: h620px) {
+    @media (min-width: 620px) {
       #hero.details-hero h1 {
         max-width: 75%; } }
     #hero.details-hero h1 span {
