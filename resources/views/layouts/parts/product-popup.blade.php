@@ -52,28 +52,6 @@
                                     From $<span class="aws-price"></span> <i class=" m-icon--Right-Arrow-Active"></i>
                                 </div>
                             </div>
-                            {{--<div class="pull-left p-get-it-right">--}}
-                                {{--<div class="col-xs-12">--}}
-                                    {{--<div class="p-row">--}}
-                                        {{--<span class="pull-left">Ctrutchfleld</span>--}}
-                                        {{--<div class="p-horizontal-line"></div>--}}
-                                        {{--<span class="pull-right"><button class="btn p-btn-get-it">$500.00</button></span>--}}
-                                        {{--<div class="clearfix"></div>--}}
-                                    {{--</div>--}}
-                                    {{--<div class="p-row">--}}
-                                        {{--<div class="p-horizontal-line"></div>--}}
-                                        {{--<span class="pull-left">Amazon</span>--}}
-                                        {{--<span class="pull-right"><button class="btn p-btn-get-it">$500.00</button></span>--}}
-                                        {{--<div class="clearfix"></div>--}}
-                                    {{--</div>--}}
-                                    {{--<div class="p-row">--}}
-                                        {{--<div class="p-horizontal-line"></div>--}}
-                                        {{--<span class="pull-left">Bose</span>--}}
-                                        {{--<span class="pull-right"><button class="btn p-btn-get-it">$500.00</button></span>--}}
-                                        {{--<div class="clearfix"></div>--}}
-                                    {{--</div>--}}
-                                {{--</div>--}}
-                            {{--</div>--}}
                         </div>
                     </div>
                     <div class="row">
