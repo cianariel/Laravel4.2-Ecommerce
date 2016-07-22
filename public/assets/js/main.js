@@ -6805,11 +6805,8 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
         pagingApi.countSocialShares = function ($url) {
             if(typeof $url !== "undefined"){
                 var thisUrl =  window.location.host + $url;
-                console.log('thisUrl')
-                console.log($url)
             }else{
                 var thisUrl = window.location.host + window.location.pathname;
-                console.log('why oh why')
             }
 
             $http({
@@ -6817,8 +6814,6 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
                 method: "GET",
                 params: {'url': thisUrl}
             }).success(function (response) {
-                console.log('response')
-                console.log(response)
                 $('.share-count.all').html(response.all);
                 $('.share-count.twi').html(response.twitter);
                 $('.share-count.fb').html(response.facebook);
