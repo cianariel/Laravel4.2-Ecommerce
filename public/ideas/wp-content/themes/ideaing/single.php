@@ -431,7 +431,7 @@
                             postData = {'url': productURL};
                         }
 
-                        if(postData){
+                        if(postData){ 
                             $.post( "/api/product/get-for-thumb", postData)
                               .success(function( postResp ) {
                                     var getItNode = theLinkNode.parents('.get-it-inner');
