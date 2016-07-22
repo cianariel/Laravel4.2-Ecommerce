@@ -8229,6 +8229,9 @@ html.hide-overflow{
     }
 }
 .product-popup-modal{
+    .email-wrap{
+      top:18px;
+    }
     .modal-content{
         overflow: hidden;
     }
@@ -8360,6 +8363,7 @@ html.hide-overflow{
         }
         .ideaing-score-holder{
             background: #f7f7f7;
+            padding-bottom: 18px;
         }
         .p-top-bar{
             height: 83px;
@@ -8407,6 +8411,7 @@ html.hide-overflow{
                     padding-top: 20px;
                     .get-round{
                         margin-left: 12px;
+                        margin-top: -9px;
                     }
                     img{
                         position: relative;
