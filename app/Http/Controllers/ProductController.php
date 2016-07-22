@@ -17,7 +17,6 @@ use Carbon\Carbon;
 use App\Models\ProductCategory;
 use App\Core\ProductApi\ProductStrategy;
 use Input;
-use PageHelper;
 
 class ProductController extends ApiController
 {
@@ -211,8 +210,6 @@ class ProductController extends ApiController
             $inputData = \Input::all();
 
             $newProduct = $this->product->updateProductInfo($inputData);
-
-            PageHelper::deleteFromRedis('product-details-'.$newProduct->product_permalink);
 
             return $this->setStatusCode(\Config::get("const.api-status.success"))
                 ->makeResponse($newProduct);
