@@ -475,20 +475,33 @@ class ProductController extends ApiController
 
     public static function getForBar($id)
     {
-        $productData = Product::find($id);
-       // echo $productData->store_id; die();
-
-        if($image = Media::where('mediable_type', 'App\Models\Product')->where('mediable_id', $id)->where('is_main_item', 1)->first()){
-            $productData->image = $image->media_link;
+        if(!$id || $id == ''){
+            return false;
         }
 
-        if(isset($productData->store_id) &&  ($productData->store_id == 1 || $productData->store_id == '1')){
-            $productData['storeLogo'] = 'https://s3-us-west-1.amazonaws.com/ideaing-01/amazon-logo-small.svg';
-        }elseif($storeLogo = Media::where('mediable_type', 'App\Models\Store')->where('mediable_id', $productData->store_id)->first()){
-           $productData->storeLogo = $storeLogo->media_link;
-       }
+        $ids = explode(',', $id);
 
-        return json_encode($productData);
+        $ids = array_unique($ids);
+
+        if(!$ids){
+            $ids = [$id];
+        }
+
+        $products = Product::whereIn('id', $ids)->get();
+
+        foreach($products as $prod){
+            if($image = Media::where('mediable_type', 'App\Models\Product')->where('mediable_id', $prod->id)->where('is_main_item', 1)->first()){
+                $prod->image = $image->media_link;
+            }
+
+            if(isset($prod->store_id) &&  ($prod->store_id == 1 || $prod->store_id == '1')){
+                $prod->storeLogo = 'https://s3-us-west-1.amazonaws.com/ideaing-01/amazon-logo-small.svg';
+            }elseif($storeLogo = Media::where('mediable_type', 'App\Models\Store')->where('mediable_id', $prod->store_id)->first()){
+                $prod->storeLogo = $storeLogo->media_link;
+            }
+        }
+
+        return json_encode($products);
     }
 
 

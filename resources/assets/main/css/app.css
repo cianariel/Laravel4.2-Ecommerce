@@ -4541,6 +4541,13 @@ a:hover, a:focus {
 .full-wide {
   width: 100%; }
 
+.trans-all {
+  -webkit-transition: all .5s ease;
+  -moz-transition: all .5s ease;
+  -ms-transition: all .5s ease;
+  -o-transition: all .5s ease;
+  transition: all .5s ease; }
+
 @media (max-width: 480px) {
   .left-padded-xs {
     padding-left: 30px; } }
@@ -5479,7 +5486,6 @@ nav a {
     background-color: rgba(0, 0, 0, 0.2); }
   #hero.details-hero h1 {
     float: left;
-    max-width: 75%;
     text-align: left;
     margin: 0;
     font-size: 3.5rem;
@@ -5488,6 +5494,9 @@ nav a {
     padding: 7px 7px 7px 10%;
     background-color: rgba(0, 177, 255, 0.7);
     text-shadow: none; }
+    @media (min-width: h620px) {
+      #hero.details-hero h1 {
+        max-width: 75%; } }
     #hero.details-hero h1 span {
       background-position-x: 3px; }
   #hero.details-hero .color-overlay {
@@ -7999,8 +8008,10 @@ body.single .article-content iframe {
     -o-transition: all .5s ease;
     transition: all .5s ease; }
   .get-it-inner:hover a::after,
-  .get-it-inner:hover a::before, .get-it-inner:hover::after, .get-it-inner.hovered a::after,
-  .get-it-inner.hovered a::before, .get-it-inner.hovered::after {
+  .get-it-inner:hover a::before, .get-it-inner:hover::after,
+  .get-it-inner:hover .merchant-widget__logo, .get-it-inner.hovered a::after,
+  .get-it-inner.hovered a::before, .get-it-inner.hovered::after,
+  .get-it-inner.hovered .merchant-widget__logo {
     opacity: 1; }
   .get-it-inner:hover .merchant-widget__price, .get-it-inner.hovered .merchant-widget__price {
     left: 0; }
@@ -8009,11 +8020,15 @@ body.single .article-content iframe {
   overflow: hidden;
   margin: 0 auto;
   text-align: center; }
+  .float-thumbs.shortcode-thumbs .thumb-box {
+    max-width: 284px; }
   .float-thumbs .inner {
     display: inline-block; }
     @media (min-width: 620px) {
       .float-thumbs .inner .thumb-box {
-        float: left; } }
+        margin-right: 2px;
+        display: inline-block;
+        vertical-align: top; } }
   .float-thumbs .get-it-inner {
     float: left;
     overflow: hidden;
@@ -8038,6 +8053,16 @@ body.single .article-content iframe {
       text-align: center;
       background: rgba(255, 0, 66, 0.7);
       color: #fff; }
+  .float-thumbs .merchant-widget__logo {
+    opacity: 0;
+    position: absolute;
+    bottom: 29%;
+    width: 100%;
+    text-align: center; }
+    .float-thumbs .merchant-widget__logo img.vendor-logo {
+      height: 20px;
+      border: 0;
+      display: inline; }
   .float-thumbs br {
     display: none; }
   .float-thumbs p {
