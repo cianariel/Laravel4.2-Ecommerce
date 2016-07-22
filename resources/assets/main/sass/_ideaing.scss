@@ -4834,9 +4834,10 @@ body.single{
     text-align: center;
 
     @media (max-width: 620px){
-      top:0;
+      top: 12px;
       bottom: auto;
-      left:90px;
+      left: 90px;
+      text-align: left;
     }
 
     img.vendor-logo{

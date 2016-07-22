@@ -8065,9 +8065,10 @@ body.single .article-content iframe {
     text-align: center; }
     @media (max-width: 620px) {
       .float-thumbs .merchant-widget__logo {
-        top: 0;
+        top: 12px;
         bottom: auto;
-        left: 90px; } }
+        left: 90px;
+        text-align: left; } }
     .float-thumbs .merchant-widget__logo img.vendor-logo {
       height: 20px;
       border: 0;
