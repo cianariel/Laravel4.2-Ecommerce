@@ -5486,7 +5486,6 @@ nav a {
     background-color: rgba(0, 0, 0, 0.2); }
   #hero.details-hero h1 {
     float: left;
-    max-width: 75%;
     text-align: left;
     margin: 0;
     font-size: 3.5rem;
@@ -5495,6 +5494,9 @@ nav a {
     padding: 7px 7px 7px 10%;
     background-color: rgba(0, 177, 255, 0.7);
     text-shadow: none; }
+    @media (min-width: h620px) {
+      #hero.details-hero h1 {
+        max-width: 75%; } }
     #hero.details-hero h1 span {
       background-position-x: 3px; }
   #hero.details-hero .color-overlay {
