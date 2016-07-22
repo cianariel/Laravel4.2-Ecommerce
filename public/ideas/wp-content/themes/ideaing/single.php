@@ -191,7 +191,7 @@
                 <div class="col-lg-12">
                     <section class="article-content dropcapped">
                         <?php
-                           //echo do_shortcode('[product_thumbs id="1266"]');
+                          // echo do_shortcode('[product_thumbs id="1266"]');
                         ?>
                         <?php the_content(); ?>
                     </section>
@@ -420,14 +420,14 @@
 
                     if(text.indexOf('$') == -1){ // price is not hardcoded into the name
                         var href =  theLinkNode.attr('href');
-                        var postData = false;
+                        postData = false;
 
                         if(href && href.indexOf('/open/') > -1 && href.indexOf('/idea/') == -1){
-                            var productID = href.replace(/\D/g,'');
+                            productID = href.replace(/\D/g,'');
                             postData = {'id': productID};
 
                         }else if(href && href.indexOf('/product/') > -1){
-                            var productURL = href.substr(href.lastIndexOf('/') + 1);
+                            productURL = href.substr(href.lastIndexOf('/') + 1);
                             postData = {'url': productURL};
                         }
 
@@ -436,7 +436,11 @@
                               .success(function( postResp ) {
                                     var getItNode = theLinkNode.parents('.get-it-inner');
                                         getItNode.append('<span class="merchant-widget__price">$'+ Math.round(postResp.sale_price) +'</span>');   
-                                        getItNode.append('<div class="merchant-widget__logo trans-all"><span class="white">from <img class="vendor-logo img-responsive merchant-widget__store" src="' + postResp.storeLogo + '"></span></div>');    
+                                        getItNode.append('<div class="merchant-widget__logo trans-all"><span class="white">from <img class="vendor-logo img-responsive merchant-widget__store" src="' + postResp.storeLogo + '"></span></div>');
+                                        var width = getItNode.width();
+                                        if(width < 320){
+                                        getItNode.addClass('smallish');    
+                                        }
                             }); 
                         }
                      }
