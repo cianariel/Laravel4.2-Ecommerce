@@ -57,7 +57,12 @@
                     <div class="row">
                         <div class="col-xs-12 p-row-group">
                                 <ul class="share-buttons hidden-xs col-lg-7 col-md-8 pull-right">
-                                    @include('layouts.parts.share-buttons')
+                                    <?php if(function_exists('is_single')){
+                                        loadLaravelView('share-buttons');
+                                    }else{ ?>
+                                        @include('layouts.parts.share-buttons')
+                                  <?php  }
+                                    ?>
                                 </ul>
                         </div>
                         
