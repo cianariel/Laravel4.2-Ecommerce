@@ -8022,6 +8022,8 @@ body.single .article-content iframe {
   text-align: center; }
   .float-thumbs.shortcode-thumbs .thumb-box {
     max-width: 284px; }
+  .float-thumbs.shortcode-thumbs .merchant-widget__logo {
+    bottom: 29%; }
   .float-thumbs .inner {
     display: inline-block; }
     @media (min-width: 620px) {
@@ -8056,7 +8058,7 @@ body.single .article-content iframe {
   .float-thumbs .merchant-widget__logo {
     opacity: 0;
     position: absolute;
-    bottom: 29%;
+    bottom: 35%;
     width: 100%;
     text-align: center; }
     .float-thumbs .merchant-widget__logo img.vendor-logo {

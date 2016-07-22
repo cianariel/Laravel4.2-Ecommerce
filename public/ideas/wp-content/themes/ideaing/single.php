@@ -420,14 +420,14 @@
 
                     if(text.indexOf('$') == -1){ // price is not hardcoded into the name
                         var href =  theLinkNode.attr('href');
-                        postData = false;
+                        var postData = false;
 
                         if(href && href.indexOf('/open/') > -1 && href.indexOf('/idea/') == -1){
-                            productID = href.replace(/\D/g,'');
+                            var productID = href.replace(/\D/g,'');
                             postData = {'id': productID};
 
                         }else if(href && href.indexOf('/product/') > -1){
-                            productURL = href.substr(href.lastIndexOf('/') + 1);
+                            var productURL = href.substr(href.lastIndexOf('/') + 1);
                             postData = {'url': productURL};
                         }
 
