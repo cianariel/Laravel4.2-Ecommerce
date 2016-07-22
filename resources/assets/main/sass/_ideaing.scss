@@ -4793,6 +4793,12 @@ body.single{
       position:relative;
       line-height:1.5rem;
       font-size: 1.3rem;
+
+      &.smallish{
+        .merchant-widget__logo {
+          bottom: 26%;
+        }
+      }
     }
   
    .thumb-box{
