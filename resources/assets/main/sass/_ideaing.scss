@@ -4833,7 +4833,11 @@ body.single{
     width: 100%;
     text-align: center;
 
-
+    @media (max-width: 620px){
+      top:0;
+      bottom: auto;
+      left:90px;
+    }
 
     img.vendor-logo{
       height: 20px;
