@@ -5344,6 +5344,12 @@ ul.share-buttons {
   .share-bar li {
     margin-bottom: 8px; }
 
+.product-details .sticky-anchor {
+  position: absolute;
+  top: -60px; }
+.product-details .share-bar:not(.stick) {
+  top: 80px; }
+
 .share-bar a.email, .story-header a.email {
   width: 34px !important;
   float: left; }
