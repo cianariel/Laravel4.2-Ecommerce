@@ -352,14 +352,15 @@
         </nav>
 
         <main class="page-content">
+
             <article class="product">
-                <div id="sticky-anchor"></div>
+
+
                 <div class="container main-container fixed-sm">
-
                     @include('layouts.parts.share-bar')
-
                     <section class="article-content col-lg-12 col-sm-11 pull-right" id="features"
                              itemprop="description">
+                        <div id="sticky-anchor"></div>
                         <div>
                             @if(isset($productInformation['Description']))
                                 {!! $productInformation['Description'] !!}

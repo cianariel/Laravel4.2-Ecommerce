@@ -764,6 +764,8 @@ ul.share-buttons{
   top: 700px;
   text-align: center;
 
+
+
   &.stick{
     position: fixed;
     top: 120px;
@@ -774,6 +776,16 @@ ul.share-buttons{
     margin-bottom: 8px;
   }
 
+}
+
+.product-details{
+  .sticky-anchor{
+    position: absolute;
+    top: -60px;
+  }
+  .share-bar:not(.stick){
+    top: 80px;
+  }
 }
 
 .share-bar, .story-header{
