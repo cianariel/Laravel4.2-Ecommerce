@@ -347,6 +347,7 @@ class ProductController extends ApiController
         $media = new Media();
 
         $media->media_name = $inputData['MediaTitle'];
+        $media->sequence = $inputData['MediaSequence'];
         $media->media_type = $inputData['MediaType'];
         $media->media_link = $inputData['MediaLink'];
         $media->is_hero_item = $inputData['IsHeroItem'];

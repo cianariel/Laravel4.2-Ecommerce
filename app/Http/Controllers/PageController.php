@@ -457,7 +457,6 @@ class PageController extends ApiController
             PageHelper::putIntoRedis($cacheKey, $return);
             return $return;
         }
-
     }
 
     public function signupPage($email = '')
