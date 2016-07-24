@@ -1563,6 +1563,7 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
         };
 
         // add medial content for a product
+
         $scope.addMediaInfo = function () {
             $http({
                 url: '/api/product/add-media-info',
@@ -1570,6 +1571,7 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
                 data: {
                     ProductId: $scope.ProductId,
                     MediaTitle: $scope.mediaTitle,
+                    MediaSequence: $scope.selectedMediaSequence,
                     MediaType: $scope.selectedMediaType,
                     MediaLink: $scope.mediaLink,
                     IsHeroItem: $scope.isHeroItem,
@@ -1596,14 +1598,14 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
 
                 if (data.status_code == 200) {
                     $scope.mediaList = data.data.result;
-                    $scope.mediaCount = 1;
+                    $scope.mediaCount = 0;
 
                     if (data.data.count > 0)
                     {
                         $scope.mediaCount = data.data.count;
                     }
 
-                    console.log('media count :', $scope.mediaCount);
+                  //  console.log('media count :', $scope.mediaCount);
 
                     $scope.getMediaSequenceList();
                 }
@@ -1642,21 +1644,24 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
             var mainItem = $scope.mediaList[index].is_main_item == 1 ? true : false;
             $scope.isMainItem = mainItem;
             $scope.isMediaEdit = true;
-            console.log($scope.selectedMediaSequence);
+       //     console.log($scope.selectedMediaSequence);
 
         };
 
         $scope.getMediaSequenceList = function () {
 
-            console.log('in-');
+         //   console.log('media count:',$scope.mediaCount);
             var list = [];
 
             for (var i = 1; i <= $scope.mediaCount + 1; i++) {
 
                 list.push(i);
             }
-            console.log('list size :', list);
+
             $scope.mediaSequenceArray = list;
+
+          //  console.log('list size :', list, Math.max.apply(Math,list,'media count:',$scope.mediaCount));
+            $scope.selectedMediaSequence = Math.max.apply(Math,list);
 
         };
 
@@ -1678,7 +1683,7 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
                 // console.log(data);
                 $scope.mediaId = '';
                 $scope.mediaTitle = '';
-                $scope.selectedMediaSequence = 1;
+                $scope.selectedMediaSequence = $scope.selectedMediaSequence++;
                 $scope.selectedMediaType = '';
                 $scope.mediaLink = '';
                 $scope.isHeroItem = false;
