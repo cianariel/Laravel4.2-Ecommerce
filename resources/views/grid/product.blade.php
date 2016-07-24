@@ -8,7 +8,7 @@
 <span class="box-item__time"><?php echo '{{item.updated_at}}' ?></span>
 <div class="box-item__overlay" ng-click="openProductPopup(item.id)"></div>
 
-<div class="social-stats">
+<div ng-if="item.AverageScore" class="social-stats">
     <div class="social-stats__item rating" data-toggle="tooltip" title="Ideaing Score">
         <span class="icon m-icon--bulb-detailed-on-rating"></span>
         <span class="value"><?php echo '{{item.AverageScore}}' ?>%</span>

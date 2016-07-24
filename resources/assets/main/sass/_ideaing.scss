@@ -764,6 +764,8 @@ ul.share-buttons{
   top: 700px;
   text-align: center;
 
+
+
   &.stick{
     position: fixed;
     top: 120px;
@@ -774,6 +776,16 @@ ul.share-buttons{
     margin-bottom: 8px;
   }
 
+}
+
+.product-details{
+  .sticky-anchor{
+    position: absolute;
+    top: -60px;
+  }
+  .share-bar:not(.stick){
+    top: 80px;
+  }
 }
 
 .share-bar, .story-header{
@@ -1003,7 +1015,7 @@ nav {
       background-color: rgba($sky-blue, .7);
       text-shadow: none;
 
-      @media (min-width:h620px){
+      @media (min-width:620px){
         max-width: 75%;
       }
 
@@ -4768,6 +4780,9 @@ body.single{
     .thumb-box {
       max-width: 284px;
     }
+    .merchant-widget__logo {
+      bottom: 29%;
+    }
   }
  
     .inner{
@@ -4790,6 +4805,12 @@ body.single{
       position:relative;
       line-height:1.5rem;
       font-size: 1.3rem;
+
+      &.smallish{
+        .merchant-widget__logo {
+          bottom: 26%;
+        }
+      }
     }
   
    .thumb-box{
@@ -4820,9 +4841,16 @@ body.single{
   .merchant-widget__logo{
     opacity: 0;
     position: absolute;
-    bottom: 29%;
+    bottom: 35%;
     width: 100%;
     text-align: center;
+
+    @media (max-width: 620px){
+      top: 12px;
+      bottom: auto;
+      left: 90px;
+      text-align: left;
+    }
 
     img.vendor-logo{
       height: 20px;
@@ -8229,6 +8257,9 @@ html.hide-overflow{
     }
 }
 .product-popup-modal{
+    .email-wrap{
+      top:18px;
+    }
     .modal-content{
         overflow: hidden;
     }
@@ -8360,6 +8391,7 @@ html.hide-overflow{
         }
         .ideaing-score-holder{
             background: #f7f7f7;
+            padding-bottom: 18px;
         }
         .p-top-bar{
             height: 83px;
@@ -8407,6 +8439,7 @@ html.hide-overflow{
                     padding-top: 20px;
                     .get-round{
                         margin-left: 12px;
+                        margin-top: -9px;
                     }
                     img{
                         position: relative;

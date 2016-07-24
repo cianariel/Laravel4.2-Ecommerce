@@ -16,6 +16,7 @@
                                 <span>Average Ideaing Score</span>
                             </div>
                             <div class="pull-left p-nest-protect">
+                                <span class="hidden base-url-holder" data-base-url="data.product_permalink"></span>
                                 <ul class="">
                                     <li>
                                         <?php
@@ -35,10 +36,7 @@
                                         </a> -->
                                     </li>
                                     <li>
-                                        <i class="m-icon m-icon--alert"></i> GetAlerts
-                                    </li>
-                                    <li>
-                                        <i class="m-icon m-icon--shares-active"></i> 99
+                                        <i class="m-icon m-icon--alert"></i> Get Alerts
                                     </li>
                                 </ul>
                             </div>
@@ -46,7 +44,7 @@
                         <div class="col-xs-12 p-get-it-holder">
                             <div class="p-get-it-amazon">
                                 <div class="p-body">
-                                    <a class="get-round" href="" target="_blank">Get it</a>
+                                    <a class="get-round hidden" href="" target="_blank">Get it</a>
                                     <img src="/assets/images/dummies/amazon-2.png">
                                     
                                 </div>
@@ -54,34 +52,17 @@
                                     From $<span class="aws-price"></span> <i class=" m-icon--Right-Arrow-Active"></i>
                                 </div>
                             </div>
-                            <div class="pull-left p-get-it-right">
-                                <div class="col-xs-12">
-                                    <div class="p-row">
-                                        <span class="pull-left">Ctrutchfleld</span>
-                                        <div class="p-horizontal-line"></div>
-                                        <span class="pull-right"><button class="btn p-btn-get-it">$500.00</button></span>
-                                        <div class="clearfix"></div>
-                                    </div>
-                                    <div class="p-row">
-                                        <div class="p-horizontal-line"></div>
-                                        <span class="pull-left">Amazon</span>
-                                        <span class="pull-right"><button class="btn p-btn-get-it">$500.00</button></span>
-                                        <div class="clearfix"></div>
-                                    </div>
-                                    <div class="p-row">
-                                        <div class="p-horizontal-line"></div>
-                                        <span class="pull-left">Bose</span>
-                                        <span class="pull-right"><button class="btn p-btn-get-it">$500.00</button></span>
-                                        <div class="clearfix"></div>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-xs-12 p-row-group">
                                 <ul class="share-buttons hidden-xs col-lg-7 col-md-8 pull-right">
-                                    @include('layouts.parts.share-buttons')
+                                    <?php if(function_exists('is_single')){
+                                        loadLaravelView('share-buttons');
+                                    }else{ ?>
+                                        @include('layouts.parts.share-buttons')
+                                  <?php  }
+                                    ?>
                                 </ul>
                         </div>
                         
