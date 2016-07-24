@@ -191,7 +191,7 @@
                 <div class="col-lg-12">
                     <section class="article-content dropcapped">
                         <?php
-                           // echo do_shortcode('[product_thumbs id="1266"]');
+                          //echo do_shortcode('[product_thumbs id="1266"]');
                         ?>
                         <?php the_content(); ?>
                     </section>
@@ -431,13 +431,17 @@
                             postData = {'url': productURL};
                         }
 
-                        if(postData){
-                            $.post( "/api/product/get-price", postData)
+                        if(postData){ 
+                            $.post( "/api/product/get-for-thumb", postData)
                               .success(function( postResp ) {
-                                    var newText = Math.round(postResp);
-                                    
-                                    theLinkNode.parents('.get-it-inner').append('<span class="merchant-widget__price">$'+ newText +'</span>');    
-                            });
+                                    var getItNode = theLinkNode.parents('.get-it-inner');
+                                        getItNode.append('<span class="merchant-widget__price">$'+ Math.round(postResp.sale_price) +'</span>');   
+                                        getItNode.append('<div class="merchant-widget__logo trans-all"><span class="white">from <img class="vendor-logo img-responsive merchant-widget__store" src="' + postResp.storeLogo + '"></span></div>');
+                                        var width = getItNode.width();
+                                        if(width < 320){
+                                        getItNode.addClass('smallish');    
+                                        }
+                            }); 
                         }
                      }
                 }

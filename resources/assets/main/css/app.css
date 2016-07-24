@@ -5344,6 +5344,12 @@ ul.share-buttons {
   .share-bar li {
     margin-bottom: 8px; }
 
+.product-details .sticky-anchor {
+  position: absolute;
+  top: -60px; }
+.product-details .share-bar:not(.stick) {
+  top: 80px; }
+
 .share-bar a.email, .story-header a.email {
   width: 34px !important;
   float: left; }
@@ -5494,7 +5500,7 @@ nav a {
     padding: 7px 7px 7px 10%;
     background-color: rgba(0, 177, 255, 0.7);
     text-shadow: none; }
-    @media (min-width: h620px) {
+    @media (min-width: 620px) {
       #hero.details-hero h1 {
         max-width: 75%; } }
     #hero.details-hero h1 span {
@@ -8022,6 +8028,8 @@ body.single .article-content iframe {
   text-align: center; }
   .float-thumbs.shortcode-thumbs .thumb-box {
     max-width: 284px; }
+  .float-thumbs.shortcode-thumbs .merchant-widget__logo {
+    bottom: 29%; }
   .float-thumbs .inner {
     display: inline-block; }
     @media (min-width: 620px) {
@@ -8035,6 +8043,8 @@ body.single .article-content iframe {
     position: relative;
     line-height: 1.5rem;
     font-size: 1.3rem; }
+    .float-thumbs .get-it-inner.smallish .merchant-widget__logo {
+      bottom: 26%; }
   .float-thumbs .thumb-box {
     position: relative;
     display: inline-block; }
@@ -8056,9 +8066,15 @@ body.single .article-content iframe {
   .float-thumbs .merchant-widget__logo {
     opacity: 0;
     position: absolute;
-    bottom: 29%;
+    bottom: 35%;
     width: 100%;
     text-align: center; }
+    @media (max-width: 620px) {
+      .float-thumbs .merchant-widget__logo {
+        top: 12px;
+        bottom: auto;
+        left: 90px;
+        text-align: left; } }
     .float-thumbs .merchant-widget__logo img.vendor-logo {
       height: 20px;
       border: 0;
@@ -10396,6 +10412,8 @@ html.hide-overflow {
 @media (min-width: 880px) {
   .product-box .box-item__overlay:hover {
     cursor: zoom-in; } }
+.product-popup-modal .email-wrap {
+  top: 18px; }
 .product-popup-modal .modal-content {
   overflow: hidden; }
 .product-popup-modal .modal-dialog {
@@ -10492,7 +10510,8 @@ html.hide-overflow {
     .product-popup-modal .lbInfo .p-average-ideaing-score .p-score {
       font-size: 41px; }
   .product-popup-modal .lbInfo .ideaing-score-holder {
-    background: #f7f7f7; }
+    background: #f7f7f7;
+    padding-bottom: 18px; }
   .product-popup-modal .lbInfo .p-top-bar {
     height: 83px;
     padding-left: 15px;
@@ -10529,7 +10548,8 @@ html.hide-overflow {
         height: 80px;
         padding-top: 20px; }
         .product-popup-modal .lbInfo .p-get-it-holder .p-get-it-amazon .p-body .get-round {
-          margin-left: 12px; }
+          margin-left: 12px;
+          margin-top: -9px; }
         .product-popup-modal .lbInfo .p-get-it-holder .p-get-it-amazon .p-body img {
           position: relative;
           top: 12px; }

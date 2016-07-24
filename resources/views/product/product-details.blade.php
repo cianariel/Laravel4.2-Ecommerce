@@ -9,7 +9,7 @@
         var permalink = "{{$permalink}}";
     </script>
     <nav class="mid-nav ">
-        <div class="container full-sm fixed-sm">
+        <div class="container full-sm fixed-sm hidden-md">
             <ul class="wrap col-lg-9">
                 @if(isset($productInformation['CatTree']))
                     @foreach( $productInformation['CatTree'] as $key => $category )
@@ -24,7 +24,7 @@
                                 @endif
                             </a>
                         </li>
-                        <li class="horizontal-line-holder hidden-xs ">
+                        <li class="horizontal-line-holder hidden-xs  hidden-md">
                             <span class="horizontal-line"></span>
                         </li>
                     @endforeach
@@ -34,7 +34,7 @@
     </nav>
     <div id="productApp" ng-app="productApp" data-ng-controller="productController" class="ideaing-product" ng-cloak
          itemscope itemtype="http://schema.org/Product">
-        <header class="story-header hidden-620 hidden-soft">
+        <header class="story-header">
             <div>
                 <a href="#" class="side-logo lamp-logo">
                     <i class="m-icon m-icon--bulb2">
@@ -46,7 +46,7 @@
                 </a>
             </div>
             <div>
-                <h2 class="col-xs-3">
+                <h2 class="col-sm-3 col-xs-8">
                     <span class="title-holder">
                 <span class="title" itemprop="name">
                     @if(isset($productInformation['ProductName']))
@@ -56,7 +56,7 @@
                 
                     </span>
                 </h2>
-                <ul class="social-stats center-block">
+                <ul class="social-stats center-block hidden-620 hidden-xs hidden-sm hidden-md">
                     <li class="view-counter social-stats">
                             <div class="social-stats__item">
                             <?php $views = Counter::showAndCount('product-details-'.$productId); ?>
@@ -68,7 +68,7 @@
                                 <span class="grey value">{{$views}} views</span>
                         </div> 
                     </li>
-                    <li class="hearts">
+                    <li class="hearts hidden-620  hidden-xs hidden-sm">
                         <a href="#" class="likes" ng-class="['likes', {active: unHeart != false}]"
                            ng-init="heartCounterAction(<?php echo $userData['id'] . "," . $productId . "," . "'product'"?>)"
                            ng-click="heartAction(<?php echo $userData['id'] . "," . $productId . "," . "'$permalink'" . "," . "'product'"?>)"
@@ -83,9 +83,9 @@
                     </li>
                 </ul>
             </div>
-            <div class="col-xs-7 col-sm-6 pull-right">
+            <div class="col-xs-2 col-sm-7 pull-right">
                 <ul ng-app="publicApp" ng-controller="publicController"
-                    class="share-buttons short hidden-xs col-lg-6 col-sm-8 pull-right">
+                    class="share-buttons short hidden-xs hidden-sm hidden-md col-lg-6 col-sm-8 pull-right">
                     <li class="all-shares"><b class="share-count all" ng-init="readSingleNotification(<?php echo $userData['id'] ?>,'<?php echo $permalink ?>')"></b> <br/>all shares</li>
                     <li><a data-service="facebook" class="fb" href="#" ng-click="openSharingModal('facebook')"><i
                                     class="m-icon m-icon--facebook-id"></i> <b class="fb share-count"></b></a></li>
@@ -97,7 +97,7 @@
                     <a class="category-tag get-round" ng-href="/open/<?php echo $productInformation['Id'] ?>/product" target="_blank">
                         Get it
                     </a>
-                    <b class="price" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+                    <b class="price hidden-620 hidden-xs hidden-sm hidden-md" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
                         &nbsp;
                         @if(isset($productInformation['SellPrice']))
                             <span itemprop="priceCurrency" content="USD">$</span>
@@ -352,14 +352,15 @@
         </nav>
 
         <main class="page-content">
+
             <article class="product">
-                <div id="sticky-anchor"></div>
+
+
                 <div class="container main-container fixed-sm">
-
                     @include('layouts.parts.share-bar')
-
                     <section class="article-content col-lg-12 col-sm-11 pull-right" id="features"
                              itemprop="description">
+                        <div id="sticky-anchor"></div>
                         <div>
                             @if(isset($productInformation['Description']))
                                 {!! $productInformation['Description'] !!}
