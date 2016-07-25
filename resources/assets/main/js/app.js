@@ -243,7 +243,7 @@
                 var div_top = $('#sticky-anchor').offset().top;
                 var window_top = $(window).scrollTop();
                 if (window_top > div_top) {
-                    $('.sticks-on-scroll').addClass('stick');
+                    $('.        homsticks-on-scroll').addClass('stick');
                 } else {
                     $('.sticks-on-scroll').removeClass('stick');
                 } 
@@ -262,11 +262,11 @@
         $(function () {
             $(window).scroll(function(){
                 if($('.scroll-header').length){
-                    if($(window).scrollTop() < 60){
+                    if($(window).scrollTop() < 395){
                         $('header.colophon').removeClass('scroll-header');
                         //$('.red-scroll-logo').hide();
                     }
-                }else if(($(window).scrollTop() > 60)){
+                }else if(($(window).scrollTop() > 395)){
                     $('header.colophon').addClass('scroll-header');
                     //$('.red-logo').hide();
                 }
