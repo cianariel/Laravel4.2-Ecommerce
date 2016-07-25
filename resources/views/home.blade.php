@@ -9,20 +9,6 @@
               <h2 id="site-subhead" class="hidden">Ideas for Smarter Living</h2>';
     }
     ?>
-    <div class="hero-wrap">
-        <section id="hero" class="landing-hero">
-            @include('layouts.parts.hero-slider')
-        </section>
-            @if(empty($userData['email']))
-                @if(isset($homehero))
-                <section class="hero-login hidden-soft">
-                    @include('layouts.parts.hero-login')
-                </section>
-            @endif
-            @endif
-        <div class="color-overlay"></div>
-        <div class="color-overlay blur-overlay"></div>
-    </div>
 
     <div class="app-wrap" id="pagingApp" ng-app="pagingApp" ng-controller="pagingController" ng-cloak>
         <nav id="hero-nav" class="col-sm-12">
