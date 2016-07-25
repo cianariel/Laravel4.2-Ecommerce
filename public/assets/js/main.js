@@ -3830,7 +3830,7 @@ angular.module('colorpicker.module', [])
                 var div_top = $('#sticky-anchor').offset().top;
                 var window_top = $(window).scrollTop();
                 if (window_top > div_top) {
-                    $('.        homsticks-on-scroll').addClass('stick');
+                    $('.sticks-on-scroll').addClass('stick');
                 } else {
                     $('.sticks-on-scroll').removeClass('stick');
                 } 
@@ -3849,11 +3849,11 @@ angular.module('colorpicker.module', [])
         $(function () {
             $(window).scroll(function(){
                 if($('.scroll-header').length){
-                    if($(window).scrollTop() < 395){
+                    if($(window).scrollTop() < 60){
                         $('header.colophon').removeClass('scroll-header');
                         //$('.red-scroll-logo').hide();
                     }
-                }else if(($(window).scrollTop() > 395)){
+                }else if(($(window).scrollTop() > 60)){
                     $('header.colophon').addClass('scroll-header');
                     //$('.red-logo').hide();
                 }
