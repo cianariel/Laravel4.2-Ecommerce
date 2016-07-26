@@ -440,7 +440,7 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
                 method: "GET",
 
             }).success(function (data) {
-                console.log(data);
+                //   console.log(data);
                 $scope.userId = data.data.id;
                 $scope.FullName = data.data.name;
                 $scope.Password = null;
@@ -495,7 +495,7 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
                     Valid: true
                 }
             }).success(function (data) {
-                console.log(data);
+                //  console.log(data);
                 $scope.outputStatus(data, 'User added successfully');
                 // $window.location = '/admin/user-list';
                 $scope.FullName = '';
@@ -811,7 +811,7 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
                 url: '/api/category/get-category-hierarchy/' + catId,
                 method: 'GET',
             }).success(function (data) {
-                console.log(data);
+                //   console.log(data);
 
                 buildCategoryViewString(data);
 
@@ -1285,12 +1285,12 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
             $scope.reviewKey = '';
             $scope.reviewValue = '';
             $scope.reviewLink = '';
-            console.log($scope.reviewCounter);
+            //  console.log($scope.reviewCounter);
 
             $scope.reviewCounter = '';
             /*$scope.externalReviewLink = '';
              $scope.ideaingReviewScore = 0;*/
-            console.log($scope.reviewCounter);
+            //  console.log($scope.reviewCounter);
 
             $scope.calculateAvg();
 
@@ -1600,12 +1600,11 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
                     $scope.mediaList = data.data.result;
                     $scope.mediaCount = 0;
 
-                    if (data.data.count > 0)
-                    {
+                    if (data.data.count > 0) {
                         $scope.mediaCount = data.data.count;
                     }
 
-                  //  console.log('media count :', $scope.mediaCount);
+                    //  console.log('media count :', $scope.mediaCount);
 
                     $scope.getMediaSequenceList();
                 }
@@ -1644,13 +1643,13 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
             var mainItem = $scope.mediaList[index].is_main_item == 1 ? true : false;
             $scope.isMainItem = mainItem;
             $scope.isMediaEdit = true;
-       //     console.log($scope.selectedMediaSequence);
+            //     console.log($scope.selectedMediaSequence);
 
         };
 
         $scope.getMediaSequenceList = function () {
 
-         //   console.log('media count:',$scope.mediaCount);
+            //   console.log('media count:',$scope.mediaCount);
             var list = [];
 
             for (var i = 1; i <= $scope.mediaCount + 1; i++) {
@@ -1660,8 +1659,8 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
 
             $scope.mediaSequenceArray = list;
 
-          //  console.log('list size :', list, Math.max.apply(Math,list,'media count:',$scope.mediaCount));
-            $scope.selectedMediaSequence = Math.max.apply(Math,list);
+            //  console.log('list size :', list, Math.max.apply(Math,list,'media count:',$scope.mediaCount));
+            $scope.selectedMediaSequence = Math.max.apply(Math, list);
 
         };
 
