@@ -235,7 +235,7 @@
                                 </a>
 
                                 <div class="shop-by-category-submneu smart-home ">
-                                    @foreach($categoryTree['wearables'] as $parentCategory)
+                                    @foreach($categoryTree['smartbody'] as $parentCategory)
                                         <div class="col-md-12">
                                             <a href="/shop/{{$topCategory}}/{{trim($parentCategory['childCategory']->extra_info)}}">
                                                 <i class="{{$parentCategory['childCategory']->icon}} desktop-parent-icon"></i>
@@ -272,7 +272,7 @@
                                     <i class="m-icon--footer-up-arrow up"></i>
                                 </a>
                                 <div class="shop-by-category-submneu smart-home ">
-                                    @foreach($categoryTree['home-decor'] as $parentCategory)
+                                    @foreach($categoryTree['decor'] as $parentCategory)
                                         <div class="col-md-12">
                                             <a href="/shop/{{$topCategory}}/{{trim($parentCategory['childCategory']->extra_info)}}">
                                                 <i class="{{$parentCategory['childCategory']->icon}} desktop-parent-icon"></i>
