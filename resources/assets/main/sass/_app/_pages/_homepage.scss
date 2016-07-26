@@ -154,22 +154,22 @@ body.home.logged-in{
   }
 
 }
-body.homepage:not(.logged-in){
-  #hero-slider{
-    .rsOverflow{
-       margin-top:30px;
-    }
-    .rsNav.rsBullets{
-       top: -34px;
-
-        @media (max-width:620px){
-          top: -62px;
-       }
-
-    }
-  }
- 
-}
+//body.homepage:not(.logged-in){
+//  #hero-slider{
+//    //.rsOverflow{
+//    //   margin-top:30px;
+//    //}
+//    .rsNav.rsBullets{
+//       top: -34px;
+//
+//        @media (max-width:620px){
+//          top: -62px;
+//       }
+//
+//    }
+//  }
+//
+//}
 .blur-overlay{
   background-image: url('https://d234pm57oy3062.cloudfront.net/homehero/11/homehero-image-56f8ffa2244c6-landing-hero-3.jpg');
   -webkit-filter: blur(2px);

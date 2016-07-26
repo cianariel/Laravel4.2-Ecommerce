@@ -77,8 +77,8 @@ if (!isset($theGiveAway)) {
                     <div class="top-nav-holder">
                         <div class="col-xs-5 col-sm-5 category-menu">
                             <ul>
-                                <li class="visible-xs">
-                                    <a class="mobile-top-menu-switcher" data-toggle="#mobile-top-menu" href="#">
+                                <li>
+                                    <a class="home-hamburger mobile-top-menu-switcher" data-toggle="#mobile-top-menu" href="#">
                                         <i class=" m-icon--Close up"></i>
                                         <i class="m-icon--MenuButton down"></i>
                                         <!--                                            <i class="m-icon--footer-up-arrow down"></i>-->

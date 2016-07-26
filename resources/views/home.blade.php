@@ -11,17 +11,17 @@
     ?>
 
     <div class="app-wrap" id="pagingApp" ng-app="pagingApp" ng-controller="pagingController" ng-cloak>
+            <section id="hero" class="landing-hero col-lg-12">
+                @include('layouts.parts.home-hero-slider')
+            </section>
         <nav id="hero-nav" class="col-sm-12">
             <div class="container full-620 fixed-sm">
-                {{--<ul class="left-nav col-xs-1 hidden-620">--}}
-                    {{--<li class="active"><a class="home-link" href="#">Home</a></li>--}}
-                {{--</ul>--}}
                 <ul class="category-nav main-content-filter">
                     <li ng-class="{active: (activeMenu == '1' || !activeMenu)}" ng-click="activeMenu='1'">
                         <a ng-click="filterContent(null)"  href="" data-filterby="all" class="all-link">
                             <i class="m-icon m-icon--menu"></i>
                             All
-                            
+
                         </a>
                     </li>
                     <li ng-class="{active: activeMenu == '2'}" ng-click="activeMenu='2'">
@@ -37,21 +37,13 @@
                         </a>
                     </li>
                     <li ng-class="{active: activeMenu == '4'}" ng-click="activeMenu='4'">
-                        {{--<a data-filterby="photos" href="" class="photos-link">--}}
-                            {{--<i class="m-icon m-icon--image"></i>--}}
-                            {{--Photos--}}
-                        {{--</a>--}}
                     </li>
                 </ul>
             </div>
         </nav>
-
-        <div class="clearfix"></div>
-
         <div class="homepage-grid center-block">
                 <div class="loader loader-abs" cg-busy="firstLoad"></div>
                 <div class="loader loader-abs" cg-busy="filterLoad"></div>
-                {{--<div class="loader loader-fixed" cg-busy="nextLoad"></div>--}}
 
                 @include('grid.grid')
 

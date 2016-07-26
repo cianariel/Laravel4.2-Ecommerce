@@ -6546,16 +6546,18 @@ article.product {
 
 header.colophon {
   min-height: 60px; }
-  header.colophon #top-nav a.signin {
-    float: right;
-    white-space: nowrap;
-    padding-right: 0px; }
-    header.colophon #top-nav a.signin .m-icon {
-      margin-right: 5px;
-      border: 1px solid;
-      border-radius: 16px;
-      font-size: 23px;
-      margin-top: -5px; }
+  header.colophon #top-nav {
+    border-bottom: 1px solid rgba(193, 193, 193, 0.22); }
+    header.colophon #top-nav a.signin {
+      float: right;
+      white-space: nowrap;
+      padding-right: 0px; }
+      header.colophon #top-nav a.signin .m-icon {
+        margin-right: 5px;
+        border: 1px solid;
+        border-radius: 16px;
+        font-size: 23px;
+        margin-top: -5px; }
   header.colophon .logo-wrap {
     position: absolute;
     left: 42%; }
@@ -6739,8 +6741,15 @@ header.colophon {
   #top-nav .category-menu ul > li a:hover, #top-nav .category-menu ul > li a:focus {
     text-decoration: none; }
 #top-nav .top-nav-holder {
-  border-bottom: 1px solid #c1c1c1;
   height: 60px; }
+  #top-nav .top-nav-holder .home-hamburger {
+    background: #000;
+    color: #fff;
+    padding: 10px 8px !important;
+    height: 33px;
+    margin-top: 12px; }
+    #top-nav .top-nav-holder .home-hamburger i {
+      font-size: 1.8rem; }
   #top-nav .top-nav-holder .mobile-menu-switch {
     width: 20px;
     height: 20px;
@@ -7684,9 +7693,7 @@ header.sub-head {
   overflow: visible;
   float: left;
   width: 100%;
-  background-color: #fff;
-  border-top: 1px solid #EFEFEF;
-  border-bottom: 1px solid #EFEFEF; }
+  border-top: 1px solid #EFEFEF; }
   #hero-nav ul {
     overflow: visible; }
     #hero-nav ul .email {
@@ -7855,12 +7862,55 @@ header.sub-head {
   background-size: cover;
   top: 0;
   z-index: 0; }
+.homepage .home-hero-slider {
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+  padding: 0 !important; }
+  .homepage .home-hero-slider .rsOverflow {
+    margin-top: 0 !important;
+    overflow: hidden !important; }
+  .homepage .home-hero-slider .img-holder > img {
+    width: 100% !important;
+    height: auto !important; }
+  .homepage .home-hero-slider .box-item__label-idea {
+    top: 35%; }
+  .homepage .home-hero-slider .box-item {
+    background: rgba(0, 0, 0, 0.4); }
+  .homepage .home-hero-slider .slider-heading {
+    color: #fff;
+    font-size: 2.7rem; }
+  .homepage .home-hero-slider .rsThumbs {
+    position: static; }
+  .homepage .home-hero-slider .rsThumbsContainer {
+    width: 65% !important;
+    position: absolute;
+    bottom: 140px;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    z-index: 100; }
+    .homepage .home-hero-slider .rsThumbsContainer .rsThumb {
+      width: 30%; }
+      .homepage .home-hero-slider .rsThumbsContainer .rsThumb.rsNavSelected::before {
+        content: '';
+        position: absolute;
+        background: rgba(255, 0, 66, 0.5);
+        width: 100%;
+        height: 100%; }
+      .homepage .home-hero-slider .rsThumbsContainer .rsThumb img {
+        width: 100%; }
 @media (max-width: 1200px) {
   .homepage #hero-slider .rsNav.rsBullets {
     top: -28px; } }
 @media (max-width: 620px) {
   .homepage #hero-slider .rsNav.rsBullets {
     top: -30px; } }
+.homepage .app-wrap {
+  background: #F7F7F7; }
 
 .like-nav li {
   width: 35px;
@@ -11740,7 +11790,6 @@ p {
 
 .box-item {
   position: relative;
-  border: 1px solid #eee;
   overflow: hidden;
   /*	width: 300px;*/
   height: 380px; }
@@ -11947,7 +11996,9 @@ p {
     .main-content .grid-box-3 .box-item {
       display: block;
       float: left;
-      width: 33.3%; } }
+      width: 32.3%;
+      margin-left: 8px;
+      margin-top: 4px; } }
   @media (min-width: 992px) {
     .main-content .grid-box-3 .box-item {
       /*			height: auto;*/ } }
@@ -12053,14 +12104,6 @@ body.home.logged-in #hero {
       top: 61%; }
     #hero-slider .rsSlide:not(.rsActiveSlide) {
       display: none; } }
-
-body.homepage:not(.logged-in) #hero-slider .rsOverflow {
-  margin-top: 30px; }
-body.homepage:not(.logged-in) #hero-slider .rsNav.rsBullets {
-  top: -34px; }
-  @media (max-width: 620px) {
-    body.homepage:not(.logged-in) #hero-slider .rsNav.rsBullets {
-      top: -62px; } }
 
 .blur-overlay {
   background-image: url("https://d234pm57oy3062.cloudfront.net/homehero/11/homehero-image-56f8ffa2244c6-landing-hero-3.jpg");

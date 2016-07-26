@@ -565,8 +565,69 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                     }
                 }
 
-                $('#hero-slider').royalSlider(args);
+                $('.story-hero-slider').royalSlider(args);
             });
+
+            jQuery(document).ready(function ($) {
+                var args = {
+                    arrowsNav: false,
+                    loop: true,
+                    loopRewind: true,
+                    keyboardNavEnabled: true,
+                    controlsInside: true,
+                    controlNavigation: 'thumbnails',
+                    arrowsNavAutoHide: false,
+                    slidesSpacing: 0,
+                    imageScaleMode: false,
+                    imgWidth: 1175,
+                    imageAlignCenter: true,
+                    //autoScaleSliderWidth: 1180,
+                    //autoScaleSliderHeight: 394,
+                    thumbsFitInViewport: false,
+                    navigateByClick: true,
+                    startSlideId: 0,
+                    autoPlay: {
+                        enabled: true,
+                        pauseOnHover: true,
+                        delay: 15000
+                    },
+                    transitionType: 'move',
+                    globalCaption: false,
+                    addActiveClass: true,
+                    deeplinking: {
+                        enabled: true,
+                        change: false
+                    },
+                    visibleNearby: {
+                        enabled: false,
+                        center: true,
+                    },
+                    thumbs: {
+                        arrows: false,
+                        appendSpan: true,
+                        firstMargin: false,
+                        orientation: 'horizontal'
+                    },
+
+                };
+
+                ////if (window.innerWidth < 1176) {
+                //    args.visibleNearby = {
+                //        enabled: false,
+                //        center: true,
+                //    }
+                //} else {
+                //    args.visibleNearby = {
+                //        enabled: true,
+                //        center: true,
+                //        navigateByCenterClick: true
+                //    }
+                //}
+
+                $('.home-hero-slider').royalSlider(args);
+            });
+
+
         };
 
 

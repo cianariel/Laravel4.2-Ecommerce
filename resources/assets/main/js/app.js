@@ -262,11 +262,11 @@
         $(function () {
             $(window).scroll(function(){
                 if($('.scroll-header').length){
-                    if($(window).scrollTop() < 395){
+                    if($(window).scrollTop() < 700){
                         $('header.colophon').removeClass('scroll-header');
                         //$('.red-scroll-logo').hide();
                     }
-                }else if(($(window).scrollTop() > 395)){
+                }else if(($(window).scrollTop() > 700)){
                     $('header.colophon').addClass('scroll-header');
                     //$('.red-logo').hide();
                 }

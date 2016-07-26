@@ -214,7 +214,8 @@
                                     controlsInside: false,
                                     imageScaleMode: 'fit',
                                     arrowsNavAutoHide: false,
-//                        autoScaleSlider: true,
+                                    controlsInside: true,
+                                    autoScaleSlider: false,
                                     controlNavigation: 'thumbnails',
                                     thumbsFitInViewport: false,
                                     navigateByClick: true,
@@ -687,11 +688,7 @@
                 </section>
             </article>
 
-
             @include('layouts.parts.comments-product')
-
-                    <!-- /article -->
-
 
             <section class="related-items pale-grey-bg">
                 <div class="main-content full-620 fixed-sm">
