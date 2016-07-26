@@ -52,6 +52,14 @@ Route::get('/terms-of-use', 'PageController@termsOfUse');
 Route::get('giveaway/{permalink?}', 'PageController@giveaway');
 //Route::get('giveaway-details/{permalink?}', 'PageController@giveaway');
 
+/*
+ * Forced redirect
+ * */
+
+Route::get('/smartbody/{parent?}', 'ShopController@forcedShopIndexForSmartBody');
+
+
+
 Route::group(['prefix' => 'api'], function () {
     /*
      * Comments
@@ -107,9 +115,6 @@ Route::group(['prefix' => 'api'], function () {
 
     Route::get('/user/profile-settings/{userId?}', 'UserController@getUserProfileSettingsById');
     Route::post('/user/profile-settings/set-daily-email', 'UserController@setDailyEmail');
-
-
-
 
 
     Route::get('wp', 'UserController@getWpUsers');
@@ -238,14 +243,11 @@ Route::group(['prefix' => 'api'], function () {
     Route::post('user/posts', 'UserController@getStoriesByAuthor');
 
 
-
-
-
     /*
      * Notification
      * */
     Route::get('notification/{uid?}/{limit?}', 'UserController@notification');
-    Route::get('read-all-notification/{uid?}', 'UserController@notificationReadAll'); 
+    Route::get('read-all-notification/{uid?}', 'UserController@notificationReadAll');
     Route::post('read-single-notification', 'UserController@singleNotificationRead');
 
 
@@ -320,7 +322,6 @@ Route::group(['prefix' => 'payment'], function () {
     Route::get('paid-membership-report/{userId?}', 'PaymentController@subscribedMembershipPaymentInfo');
 
 
-
 });
 
 //Shop view
@@ -356,7 +357,7 @@ Route::get('signup/{email?}/{source?}', 'PageController@signupPage');
 Route::get('login', 'PageController@loginView');
 
 // User Notification
-Route::get('/user/notification','UserController@viewPublicProfileNotice');
+Route::get('/user/notification', 'UserController@viewPublicProfileNotice');
 
 // Hide signup popup
 Route::get('hide-signup', 'UserController@hideSignup');
