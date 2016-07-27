@@ -40,9 +40,10 @@ body.home.logged-in{
 
 .homepage-grid {
     position: relative;
-	width: auto;
-	max-width: 1170px;
-    overflow: visible;
+    width: 100%;
+    max-width: 1170px;
+    overflow: hidden;
+    margin-top: 55px;
 
     &.center-block{
       min-height:1000px;
@@ -51,10 +52,6 @@ body.home.logged-in{
    .wrap{
      min-height: 300px;
    }
-
-
-
-
 
 	@media (max-width: 767px) {
 		padding: 0 0;
@@ -110,7 +107,7 @@ body.home.logged-in{
   .box-item .img-holder img{
     max-width: none;
   }
- 
+
   .product-box {
     max-width: 100%;
   }
@@ -118,13 +115,13 @@ body.home.logged-in{
 
  .rsNav.rsBullets{
     padding-top: 0;
-    top: -20px; 
-    z-index: 40; 
+    top: -20px;
+    z-index: 40;
     }
 
   & + .color-overlay{
     background-color:rgba(0,0,0,.4);
-    z-index: 30; 
+    z-index: 30;
     }
 
   .rsOverflow{
