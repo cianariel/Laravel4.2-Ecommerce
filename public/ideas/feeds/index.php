@@ -134,6 +134,25 @@ if($byTags = $_REQUEST['tag']){
 }
 
 
+if(isset($_REQUEST['year'])){
+    $args['date_query'] = [
+        'year'  => $_REQUEST['year'],
+    ];
+}
+
+if(isset($_REQUEST['month'])){
+    $args['date_query'] = [
+        'year'  => $_REQUEST['month'],
+    ];
+}
+
+if(isset($_REQUEST['date'])){
+    $args['date_query'] = [
+        'year'  => $_REQUEST['date'],
+    ];
+}
+
+
 //echo $args['tag_slug__in']; die();
 
 if($excludeID = $_REQUEST['excludeid']){

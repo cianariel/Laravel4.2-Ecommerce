@@ -350,17 +350,33 @@ class Product extends Model
             $productModel = $productModel->orWhereIn("id", $productIds);
         }
 
+        if (@$settings['Date']) {
+            $productModel = $productModel->whereDate("created_at", '=', $settings['Date']);
+        }
+
+//        $bob = $productModel->get();
+//
+//        $reptiloids = 1;
+
 
         $skip = isset($settings['CustomSkip']) ? intval($settings['CustomSkip']) : $settings['limit'] * ($settings['page'] - 1);
 
 
         $product['total'] = $productModel->count();
 
-        $product['allIDs'] = $productModel
-            ->take($settings['limit'])
-            ->offset($skip)
-            ->orderBy('created_at', 'desc')
-            ->get(array("id"));
+        if($settings['limit']){
+            $product['allIDs'] = $productModel
+                ->take($settings['limit'])
+                ->offset($skip)
+                ->orderBy('created_at', 'desc')
+                ->get(array("id"));
+        }else{
+            $product['allIDs'] = $productModel
+                ->orderBy('created_at', 'desc')
+                ->get(array("id"));
+        }
+
+
 
         $data = array();
 

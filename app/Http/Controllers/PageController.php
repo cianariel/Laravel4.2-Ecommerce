@@ -111,6 +111,7 @@ class PageController extends ApiController
 
     public function getContent($page = 1, $limit = 5, $tag = false, $type = false, $productCategory = false, $sortBy = false)
     {
+
         $cacheKey = "plain-content-$page-$limit-$tag-$type-$productCategory-$sortBy";
 
         if ($cachedContent = PageHelper::getFromRedis($cacheKey)) {
@@ -184,17 +185,219 @@ class PageController extends ApiController
         return $return;
     }
 
-    public function getGridContent($page = 1, $limit = 5, $tag = false, $type = false, $ideaCategory = false)
+    public function getTimelineContent($daysback = 1, $tag = false, $type = false, $ideaCategory = false)
     {
 
-        $cacheKey = "grid-content-$page-$limit-$tag-$type-$ideaCategory";
+        $cacheKey = "timeline-content-$daysback-$tag-$type-$ideaCategory";
 
-//          if($cachedContent = PageHelper::getFromRedis($cacheKey)){
+//        if($cachedContent = PageHelper::getFromRedis($cacheKey)){
 //            $return = $cachedContent;
 //            $return->fromCache = true;
 //            $return->cacheKey = $cacheKey;
 //            return json_encode($return);
-//       	  }
+//        }
+
+        if ($tag && $tag !== 'undefined' && $tag != 'false' && $tag != '') {
+            $tagID = Tag::where('tag_name', $tag)->lists('id')->toArray();
+        } else {
+            $tagID = false;
+            $tag = false;
+        }
+
+//        if ($type == 'idea' || !$products = self::getProducts($productLimit + 1, $page, $productOffset, $tagID)) {
+//            $products['result'] = [];
+//        }
+
+//        $date = date_create('Y-m-d', strtotime('-'.$daysback.' days'));
+        $timeStamp = date('Y-m-d', strtotime('-'.$daysback.' days'));
+        $date = date_create($timeStamp);
+
+
+        $productSettings = [
+            'ActiveItem' => true,
+            'limit' => false,
+            'page' => 1,
+            'Date' => date_format($date, 'Y-m-d'),
+//            'page' => $page,
+//            'CustomSkip' => $offset,
+
+//            'CategoryId' => $productCategoryID,
+//            'sortBy' => $sortBy,
+            'FilterType' => false,
+            'FilterText' => false,
+            'ShowFor' => false,
+            'WithTags' => false,
+            'WithAverageScore' => true,
+        ];
+
+//        if (@$productCategoryID) {
+//            $productSettings['GetChildCategories'] = true;
+//        }
+
+        if (is_array($tagID)) {
+            $productSettings['TagId'] = $tagID;
+        }
+
+        $prod = new Product();
+
+        $products = $prod->getProductList($productSettings);
+
+//        return $products;
+
+
+
+        $url = URL::to('/') . '/ideas/feeds/index.php?count=0&no-featured';
+
+        if ($tag && $tag != 'false') {
+            $url .= '&tag=' . $tag;
+        }
+
+        $dateQuery=
+
+//        if ($category && $category != 'false') {
+//            $url .= '&category-name=' . $category;
+//        }
+//
+//        if ($limit == 10 && $category != 'deals') { // CMS homepage, needs to have no deals
+//            $url .= '&no-deals';
+//        }
+
+        //print_r($url); die();
+
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_HEADER, 0);
+        curl_setopt($ch, CURLOPT_VERBOSE, true);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+        curl_setopt($ch, CURLOPT_ENCODING, "");
+        $json = curl_exec($ch);
+
+        $ideaCollection = json_decode($json);
+
+        $newIdeaCollection = new Collection();
+        $comment = new App\Models\Comment();
+
+        if ($ideaCollection) {
+
+            foreach ($ideaCollection as $singleIdea) {
+
+                $tempIdea = collect($singleIdea);
+
+                $countValue = $comment->ideasCommentCounter($singleIdea->id);
+
+                $tempIdea->put('CommentCount', $countValue);
+
+                $newIdeaCollection->push($tempIdea);
+
+            }
+        }
+
+        // type casting to object
+
+        $return['regular'] = json_decode($newIdeaCollection->toJson(), FALSE);
+
+
+        $featuredUrl = URL::to('/') . '/ideas/feeds/index.php?count=' . $featuredLimit . '&only-featured&offset=' . $featuredOffset . '&no-deals';
+
+
+        if ($tag && $tag != 'false' && $tag != false) {
+            $featuredUrl .= '&tag=' . $tag;
+        }
+
+        if ($category && $category != 'false') {
+            $featuredUrl .= '&category-name=' . $category;
+        }
+
+        curl_setopt($ch, CURLOPT_URL, $featuredUrl);
+        $json = curl_exec($ch);
+        curl_close($ch);
+
+        // $return['featured'] = json_decode($json);
+
+        $ideaCollection = json_decode($json);
+
+        $newIdeaCollection = new Collection();
+        $comment = new App\Models\Comment();
+
+        if ($ideaCollection) {
+
+            foreach ($ideaCollection as $singleIdea) {
+
+                $tempIdea = collect($singleIdea);
+
+                $countValue = $comment->ideasCommentCounter($singleIdea->id);
+
+                $tempIdea->put('CommentCount', $countValue);
+
+                $newIdeaCollection->push($tempIdea);
+
+            }
+        }
+
+        $return['featured'] = $newIdeaCollection;
+
+//        return $return;
+
+
+
+
+        // we try to pull one extra item in each category, to know if there is more content availiable (in that case, we later display a 'Load More' button
+//        $regularStories = array_slice($stories['regular'], 0, $storyLimit);
+//
+//        if (!empty(array_slice($stories['regular'], $storyLimit, 1))) {
+//            $leftOver++;
+//        }
+//
+//
+//        if ($stories['featured']) {
+//            $featuredStories = array_slice($stories['featured']->toArray(), 0, $featuredLimit);
+//            if (!empty(array_slice($stories['featured']->toArray(), $featuredLimit, 1))) {
+//                $leftOver++;
+//            }
+//        } else {
+//            $featuredStories = [];
+//        }
+//
+//        $prods = array_slice($products['result'], 0, $productLimit);
+//
+//        if (!empty(array_slice($products['result'], $productLimit, 1))) {
+//            $leftOver++;
+//        }
+//
+//        $return['content']['regular'] = array_merge($regularStories, $prods);
+//        $return['content']['featured'] = $featuredStories;
+//
+//        usort($return['content']['regular'], function ($a, $b) {
+//            return strtotime(@$b->raw_creation_date) - strtotime(@$a->raw_creation_date);
+//        });
+//
+//        if ($leftOver > 0) {
+//            $return['hasMore'] = true;
+//        } else {
+//            $return['hasMore'] = false;
+//        }
+//
+//        $cached = PageHelper::putIntoRedis($cacheKey, $return, '1 hour');
+//
+//        $return['wasCached'] = $cached;
+//        $return['fromCache'] = false;
+        return $return;
+    }
+
+    public function getGridContent($page = 1, $limit = 5, $tag = false, $type = false, $ideaCategory = false)
+    {
+        return self::getTimelineContent($daysback = 3, $tag = false, $type = false, $ideaCategory = false);
+
+
+        $cacheKey = "grid-content-$page-$limit-$tag-$type-$ideaCategory";
+
+          if($cachedContent = PageHelper::getFromRedis($cacheKey)){
+            $return = $cachedContent;
+            $return->fromCache = true;
+            $return->cacheKey = $cacheKey;
+            return json_encode($return);
+       	  }
 
         if ($tag && $tag !== 'undefined' && $tag != 'false' && $tag != '') {
             $tagID = Tag::where('tag_name', $tag)->lists('id')->toArray();
