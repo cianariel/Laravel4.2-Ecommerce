@@ -204,23 +204,17 @@ class PageController extends ApiController
             $tag = false;
         }
 
-//        if ($type == 'idea' || !$products = self::getProducts($productLimit + 1, $page, $productOffset, $tagID)) {
-//            $products['result'] = [];
-//        }
 
-//        $date = date_create('Y-m-d', strtotime('-'.$daysback.' days'));
         $timeStamp = date('Y-m-d', strtotime('-'.$daysback.' days'));
         $date = date_create($timeStamp);
 
 
         $productSettings = [
             'ActiveItem' => true,
-            'limit' => false,
+            'limit' => 3,
             'page' => 1,
             'Date' => date_format($date, 'Y-m-d'),
-//            'page' => $page,
 //            'CustomSkip' => $offset,
-
 //            'CategoryId' => $productCategoryID,
 //            'sortBy' => $sortBy,
             'FilterType' => false,
@@ -242,8 +236,9 @@ class PageController extends ApiController
 
         $products = $prod->getProductList($productSettings);
 
-//        return $products;
-
+        if ($type == 'idea' || !$products) {
+            $products['result'] = [];
+        }
 
 
         $url = URL::to('/') . '/ideas/feeds/index.php?count=3&no-featured';
@@ -264,7 +259,7 @@ class PageController extends ApiController
 //            $url .= '&no-deals';
 //        }
 
-        print_r($url); die();
+//        print_r($url); die();
 
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $url);
@@ -281,64 +276,48 @@ class PageController extends ApiController
         $comment = new App\Models\Comment();
 
         if ($ideaCollection) {
-
             foreach ($ideaCollection as $singleIdea) {
-
                 $tempIdea = collect($singleIdea);
-
                 $countValue = $comment->ideasCommentCounter($singleIdea->id);
-
                 $tempIdea->put('CommentCount', $countValue);
-
                 $newIdeaCollection->push($tempIdea);
-
             }
         }
 
         // type casting to object
+        $regularStories = json_decode($newIdeaCollection->toJson(), FALSE);
 
-        $return['regular'] = json_decode($newIdeaCollection->toJson(), FALSE);
-        return $return['regular'];
-            $bob = 1;
-//        $featuredUrl = URL::to('/') . '/ideas/feeds/index.php?count=' . $featuredLimit . '&only-featured&offset=' . $featuredOffset . '&no-deals';
-//        $featuredUrl = URL::to('/') . '/ideas/feeds/index.php?count=' . $featuredLimit . '&only-featured&offset=' . $featuredOffset . '&no-deals';
+        $featuredUrl = URL::to('/') . '/ideas/feeds/index.php?count=1&only-featured&no-deals';
 //
 //
-//        if ($tag && $tag != 'false' && $tag != false) {
-//            $featuredUrl .= '&tag=' . $tag;
-//        }
+        if ($tag && $tag != 'false' && $tag != false) {
+            $featuredUrl .= '&tag=' . $tag;
+        }
 //
 //        if ($category && $category != 'false') {
 //            $featuredUrl .= '&category-name=' . $category;
 //        }
 //
-//        curl_setopt($ch, CURLOPT_URL, $featuredUrl);
-//        $json = curl_exec($ch);
-//        curl_close($ch);
-//
-//        // $return['featured'] = json_decode($json);
-//
-//        $ideaCollection = json_decode($json);
-//
-//        $newIdeaCollection = new Collection();
-//        $comment = new App\Models\Comment();
-//
-//        if ($ideaCollection) {
-//
-//            foreach ($ideaCollection as $singleIdea) {
-//
-//                $tempIdea = collect($singleIdea);
-//
-//                $countValue = $comment->ideasCommentCounter($singleIdea->id);
-//
-//                $tempIdea->put('CommentCount', $countValue);
-//
-//                $newIdeaCollection->push($tempIdea);
-//
-//            }
-//        }
-//
-//        $return['featured'] = $newIdeaCollection;
+        curl_setopt($ch, CURLOPT_URL, $featuredUrl);
+        $json = curl_exec($ch);
+        curl_close($ch);
+
+        $return['featured'] = json_decode($json);
+        $ideaCollection = json_decode($json);
+
+        $newIdeaCollection = new Collection();
+        $comment = new App\Models\Comment();
+
+        if ($ideaCollection) {
+            foreach ($ideaCollection as $singleIdea) {
+                $tempIdea = collect($singleIdea);
+                $countValue = $comment->ideasCommentCounter($singleIdea->id);
+                $tempIdea->put('CommentCount', $countValue);
+                $newIdeaCollection->push($tempIdea);
+            }
+        }
+
+        $featuredStories = $newIdeaCollection;
 
 //        return $return;
 
@@ -368,13 +347,13 @@ class PageController extends ApiController
 //            $leftOver++;
 //        }
 //
-//        $return['content']['regular'] = array_merge($regularStories, $prods);
-//        $return['content']['featured'] = $featuredStories;
-//
-//        usort($return['content']['regular'], function ($a, $b) {
-//            return strtotime(@$b->raw_creation_date) - strtotime(@$a->raw_creation_date);
-//        });
-//
+        $return['content']['regular'] = array_merge($regularStories, $products['result']);
+        $return['content']['featured'] = $featuredStories;
+
+        usort($return['content']['regular'], function ($a, $b) {
+            return strtotime(@$b->raw_creation_date) - strtotime(@$a->raw_creation_date);
+        });
+
 //        if ($leftOver > 0) {
 //            $return['hasMore'] = true;
 //        } else {
@@ -388,19 +367,16 @@ class PageController extends ApiController
         return $return;
     }
 
-    public function getGridContent($page = 1, $limit = 5, $tag = false, $type = false, $ideaCategory = false)
+    public function getGridContent($page = 1, $limit = 5, $tag = false, $type = false, $ideaCategory = false, $daysback = false)
     {
-        return self::getTimelineContent($daysback = 3, $tag = false, $type = false, $ideaCategory = false);
-
-
         $cacheKey = "grid-content-$page-$limit-$tag-$type-$ideaCategory";
 
-          if($cachedContent = PageHelper::getFromRedis($cacheKey)){
-            $return = $cachedContent;
-            $return->fromCache = true;
-            $return->cacheKey = $cacheKey;
-            return json_encode($return);
-       	  }
+//          if($cachedContent = PageHelper::getFromRedis($cacheKey)){
+//            $return = $cachedContent;
+//            $return->fromCache = true;
+//            $return->cacheKey = $cacheKey;
+//            return json_encode($return);
+//       	  }
 
         if ($tag && $tag !== 'undefined' && $tag != 'false' && $tag != '') {
             $tagID = Tag::where('tag_name', $tag)->lists('id')->toArray();
@@ -428,13 +404,13 @@ class PageController extends ApiController
         $featuredOffset = $featuredLimit * ($page - 1);
         $leftOver = 0;
 
-        if ($type == 'product' || !$stories = self::getGridStories($storyLimit + 1, $storyOffset, $featuredLimit + 1, $featuredOffset, $tag, $ideaCategory)) {
+        if ($type == 'product' || !$stories = self::getGridStories($storyLimit + 1, $storyOffset, $featuredLimit + 1, $featuredOffset, $tag, $ideaCategory, $daysback)) {
             $stories = [
                 'regular' => [],
                 'featured' => [],
             ];
         }
-        if ($type == 'idea' || !$products = self::getProducts($productLimit + 1, $page, $productOffset, $tagID)) {
+        if ($type == 'idea' || !$products = self::getProducts($productLimit + 1, $page, $productOffset, $tagID, $daysback)) {
             $products['result'] = [];
         }
 
@@ -449,8 +425,7 @@ class PageController extends ApiController
             $leftOver++;
         }
 
-
-        if ($stories['featured']) {
+        if($stories['featured']) {
             $featuredStories = array_slice($stories['featured']->toArray(), 0, $featuredLimit);
             if (!empty(array_slice($stories['featured']->toArray(), $featuredLimit, 1))) {
                 $leftOver++;
@@ -538,7 +513,7 @@ class PageController extends ApiController
     }
 
 
-    public function getGridStories($limit, $offset, $featuredLimit, $featuredOffset, $tag = false, $category = false)
+    public function getGridStories($limit, $offset, $featuredLimit, $featuredOffset, $tag = false, $category = false, $daysback = false)
     {
 
         $url = URL::to('/') . '/ideas/feeds/index.php?count=' . $limit . '&no-featured&offset=' . $offset;
@@ -553,6 +528,13 @@ class PageController extends ApiController
 
         if ($limit == 10 && $category != 'deals') { // CMS homepage, needs to have no deals
             $url .= '&no-deals';
+        }
+
+        if($daysback){
+            $timeStamp = date('Y-m-d', strtotime('-'.$daysback.' days'));
+            $date = date_create($timeStamp);
+            $dateQuery = '&year='.date_format($date, 'Y').'&monthnum='.date_format($date, 'm').'&day='.date_format($date, 'd') ;
+            $url .= $dateQuery;
         }
 
         //print_r($url); die();
@@ -593,6 +575,9 @@ class PageController extends ApiController
 
         $featuredUrl = URL::to('/') . '/ideas/feeds/index.php?count=' . $featuredLimit . '&only-featured&offset=' . $featuredOffset . '&no-deals';
 
+        if($daysback){
+            $featuredUrl .= $dateQuery;
+        }
 
         if ($tag && $tag != 'false' && $tag != false) {
             $featuredUrl .= '&tag=' . $tag;
@@ -679,14 +664,13 @@ class PageController extends ApiController
         return view('user.signup')->with('tab', 'login');
     }
 
-    public function getProducts($limit, $page, $offset, $tagID, $productCategoryID = false, $sortBy = false)
+    public function getProducts($limit, $page, $offset, $tagID, $productCategoryID = false, $sortBy = false, $daysback = false)
     {
         $productSettings = [
             'ActiveItem' => true,
             'limit' => $limit,
             'page' => $page,
             'CustomSkip' => $offset,
-
             'CategoryId' => $productCategoryID,
             'sortBy' => $sortBy,
             'FilterType' => false,
@@ -695,6 +679,12 @@ class PageController extends ApiController
             'WithTags' => false,
             'WithAverageScore' => true,
         ];
+
+        if($daysback){
+            $timeStamp = date('Y-m-d', strtotime('-'.$daysback.' days'));
+            $date = date_create($timeStamp);
+            $productSettings['Date'] = date_format($date, 'Y-m-d');
+        }
 
         if (@$productCategoryID) {
             $productSettings['GetChildCategories'] = true;
@@ -705,7 +695,6 @@ class PageController extends ApiController
         }
 
         $prod = new Product();
-
         $products = $prod->getProductList($productSettings);
 
         return $products;
