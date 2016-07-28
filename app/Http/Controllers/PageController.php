@@ -72,7 +72,7 @@ class PageController extends ApiController
         $sliderContent = self::getHeroSliderContent();
 //        $sliderContent = (array)$sliderContent;
 
-        $getMostPopular = self::getMostPopular();
+        $mostPopular = self::getMostPopular();
 
         MetaTag::set('title', 'Ideaing | Ideas for Smarter Living');
         MetaTag::set('description', 'Ideaing inspires you to live a smarter and beautiful home. Get ideas on using home automation devices including WiFi cameras, WiFi doorbells, door locks, security, energy, water and many more.');
@@ -80,6 +80,7 @@ class PageController extends ApiController
         return view('home')
             ->with('userData', $userData)
             ->with('sliderContent', $sliderContent)
+            ->with('mostPopular', $mostPopular)
             ->with('homehero', $result);
     }
 
@@ -96,7 +97,7 @@ class PageController extends ApiController
         curl_setopt($ch, CURLOPT_ENCODING, "");
         $json = curl_exec($ch);
 
-        $return['ideas'] = json_decode($json, true);
+        $return['ideas'] = json_decode($json);
 
         // 2. get products
 
