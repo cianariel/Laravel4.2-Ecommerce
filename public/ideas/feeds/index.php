@@ -133,27 +133,24 @@ if($byTags = $_REQUEST['tag']){
     $args['author_name'] = $_REQUEST['author_name'];
 }
 
+$args['date_query'] = [];
 
 if(isset($_REQUEST['year'])){
-    $args['date_query'] = [
-        'year'  => $_REQUEST['year'],
-    ];
+    $dateQuery['year'] = $_REQUEST['year'];
 }
 
-if(isset($_REQUEST['month'])){
-    $args['date_query'] = [
-        'year'  => $_REQUEST['month'],
-    ];
+if(isset($_REQUEST['monthnum'])){
+    $dateQuery['monthnum'] = $_REQUEST['monthnum'];
+
 }
 
-if(isset($_REQUEST['date'])){
-    $args['date_query'] = [
-        'year'  => $_REQUEST['date'],
-    ];
+if(isset($_REQUEST['day'])){
+    $dateQuery['day'] = $_REQUEST['day'];
 }
 
-
-//echo $args['tag_slug__in']; die();
+if(isset($dateQuery)){
+    $args['date_query'] = [$dateQuery];
+}
 
 if($excludeID = $_REQUEST['excludeid']){
     $args['post__not_in'] = array($excludeID);

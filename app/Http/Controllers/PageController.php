@@ -246,13 +246,13 @@ class PageController extends ApiController
 
 
 
-        $url = URL::to('/') . '/ideas/feeds/index.php?count=0&no-featured';
+        $url = URL::to('/') . '/ideas/feeds/index.php?count=3&no-featured';
 
         if ($tag && $tag != 'false') {
             $url .= '&tag=' . $tag;
         }
 
-        $dateQuery = 'year='.date_format($date, 'Y').'&monthnum='.date_format($date, 'm').'&day='.date_format($date, 'd') ;
+        $dateQuery = '&year='.date_format($date, 'Y').'&monthnum='.date_format($date, 'm').'&day='.date_format($date, 'd') ;
 
         $url .= $dateQuery;
 
@@ -264,7 +264,7 @@ class PageController extends ApiController
 //            $url .= '&no-deals';
 //        }
 
-        //print_r($url); die();
+        print_r($url); die();
 
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $url);
@@ -298,46 +298,47 @@ class PageController extends ApiController
         // type casting to object
 
         $return['regular'] = json_decode($newIdeaCollection->toJson(), FALSE);
-
-
-        $featuredUrl = URL::to('/') . '/ideas/feeds/index.php?count=' . $featuredLimit . '&only-featured&offset=' . $featuredOffset . '&no-deals';
-
-
-        if ($tag && $tag != 'false' && $tag != false) {
-            $featuredUrl .= '&tag=' . $tag;
-        }
-
-        if ($category && $category != 'false') {
-            $featuredUrl .= '&category-name=' . $category;
-        }
-
-        curl_setopt($ch, CURLOPT_URL, $featuredUrl);
-        $json = curl_exec($ch);
-        curl_close($ch);
-
-        // $return['featured'] = json_decode($json);
-
-        $ideaCollection = json_decode($json);
-
-        $newIdeaCollection = new Collection();
-        $comment = new App\Models\Comment();
-
-        if ($ideaCollection) {
-
-            foreach ($ideaCollection as $singleIdea) {
-
-                $tempIdea = collect($singleIdea);
-
-                $countValue = $comment->ideasCommentCounter($singleIdea->id);
-
-                $tempIdea->put('CommentCount', $countValue);
-
-                $newIdeaCollection->push($tempIdea);
-
-            }
-        }
-
-        $return['featured'] = $newIdeaCollection;
+        return $return['regular'];
+            $bob = 1;
+//        $featuredUrl = URL::to('/') . '/ideas/feeds/index.php?count=' . $featuredLimit . '&only-featured&offset=' . $featuredOffset . '&no-deals';
+//        $featuredUrl = URL::to('/') . '/ideas/feeds/index.php?count=' . $featuredLimit . '&only-featured&offset=' . $featuredOffset . '&no-deals';
+//
+//
+//        if ($tag && $tag != 'false' && $tag != false) {
+//            $featuredUrl .= '&tag=' . $tag;
+//        }
+//
+//        if ($category && $category != 'false') {
+//            $featuredUrl .= '&category-name=' . $category;
+//        }
+//
+//        curl_setopt($ch, CURLOPT_URL, $featuredUrl);
+//        $json = curl_exec($ch);
+//        curl_close($ch);
+//
+//        // $return['featured'] = json_decode($json);
+//
+//        $ideaCollection = json_decode($json);
+//
+//        $newIdeaCollection = new Collection();
+//        $comment = new App\Models\Comment();
+//
+//        if ($ideaCollection) {
+//
+//            foreach ($ideaCollection as $singleIdea) {
+//
+//                $tempIdea = collect($singleIdea);
+//
+//                $countValue = $comment->ideasCommentCounter($singleIdea->id);
+//
+//                $tempIdea->put('CommentCount', $countValue);
+//
+//                $newIdeaCollection->push($tempIdea);
+//
+//            }
+//        }
+//
+//        $return['featured'] = $newIdeaCollection;
 
 //        return $return;
 
