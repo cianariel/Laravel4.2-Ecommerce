@@ -252,7 +252,9 @@ class PageController extends ApiController
             $url .= '&tag=' . $tag;
         }
 
-        $dateQuery=
+        $dateQuery = 'year='.date_format($date, 'Y').'&monthnum='.date_format($date, 'm').'&day='.date_format($date, 'd') ;
+
+        $url .= $dateQuery;
 
 //        if ($category && $category != 'false') {
 //            $url .= '&category-name=' . $category;
