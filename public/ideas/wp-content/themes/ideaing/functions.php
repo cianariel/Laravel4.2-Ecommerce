@@ -791,4 +791,21 @@ function product_thumbs_func( $atts ) {
 }
 add_shortcode( 'product_thumbs', 'product_thumbs_func' );
 
+
+// ADD STORIES (NEWS)
+
+add_action( 'init', 'create_post_type' );
+function create_post_type() {
+    register_post_type( 'story',
+        array(
+            'labels' => array(
+                'name' => __( 'Stories' ),
+                'singular_name' => __( 'Story' )
+            ),
+            'public' => true,
+            'has_archive' => true,
+        )
+    );
+}
+
 ?>
