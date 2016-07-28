@@ -97,6 +97,10 @@ class Product extends Model
     {
         return $this->hasMany('App\Models\ProductQuery');
     }
+    public function viewCounts()
+    {
+        return $this->hasMany('App\Models\ProductQuery');
+    }
 
 
     // accessor for JSON decode
@@ -352,6 +356,12 @@ class Product extends Model
 
         if (@$settings['Date']) {
             $productModel = $productModel->whereDate("created_at", '=', $settings['Date']);
+        }
+
+        if (@$settings['MostPopular']) {
+
+
+
         }
 
 //        $bob = $productModel->get();

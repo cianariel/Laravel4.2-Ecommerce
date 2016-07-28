@@ -156,30 +156,43 @@ if($excludeID = $_REQUEST['excludeid']){
     $args['post__not_in'] = array($excludeID);
 }
 
-$args['meta_query'] = [
-    'relation'  => 'AND'
-];
+//$args['meta_query'] = [
+//    'relation'  => 'AND'
+//];
+
 
 if($is_featured != "")
 {
-$push= array(
+    $args['meta_query'][] = [
             'key'  => 'is_featured',
             'value' => $is_featured,
             'compare' => '='
-);
-    array_push($args['meta_query'], $push);
+];
+//    array_push($args['meta_query'], $push);
+}
+
+if(isset($_REQUEST['most-popular'])){
+    $args['meta_query'][] = [
+        'key'  => 'post_views_count',
+        'value' => 100,
+        'type'    => 'numeric',
+        'compare' => '>'
+    ];
+//    array_push($args['meta_query'], $push);
 }
 
 if(isset($_REQUEST['only-slider'])){
-    $push = [
-            'key'  => 'slider_content',
+    $args['meta_query'][] = [
+        'key'  => 'slider_content',
             'value' => 'yes',
             'compare' => '='
     ];
-    array_push($args['meta_query'], $push);
+//    array_push($args['meta_query'], $push);
 }
 
-$posts = query_posts($args);
+//print_r($args);die();
+
+//$posts = query_posts($args);
 $posts = new WP_Query( $args );
 
 if ( $posts->have_posts() ) {

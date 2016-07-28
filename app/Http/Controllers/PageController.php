@@ -24,6 +24,7 @@ use PageHelper;
 use Route;
 use DB;
 use Redis;
+use Counter;
 
 
 class PageController extends ApiController
@@ -71,6 +72,8 @@ class PageController extends ApiController
         $sliderContent = self::getHeroSliderContent();
 //        $sliderContent = (array)$sliderContent;
 
+        $getMostPopular = self::getMostPopular();
+
         MetaTag::set('title', 'Ideaing | Ideas for Smarter Living');
         MetaTag::set('description', 'Ideaing inspires you to live a smarter and beautiful home. Get ideas on using home automation devices including WiFi cameras, WiFi doorbells, door locks, security, energy, water and many more.');
         //return $result;
@@ -80,15 +83,75 @@ class PageController extends ApiController
             ->with('homehero', $result);
     }
 
+    public static function getMostPopular(){
+        // 1. get most popular ideas
+        $url = URL::to('/') . '/ideas/feeds/index.php?count=2&most-popular';
+
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_HEADER, 0);
+        curl_setopt($ch, CURLOPT_VERBOSE, true);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+        curl_setopt($ch, CURLOPT_ENCODING, "");
+        $json = curl_exec($ch);
+
+        $return['ideas'] = json_decode($json, true);
+
+        // 2. get products
+
+
+        $productSettings = [
+            'ActiveItem' => true,
+            'limit' => 50,
+            'page' => 1,
+//            'CustomSkip' => $offset,
+//            'CategoryId' => $productCategoryID,
+//            'sortBy' => $sortBy,
+            'FilterType' => false,
+            'FilterText' => false,
+            'ShowFor' => false,
+            'WithTags' => false,
+            'WithAverageScore' => true,
+
+            'MostPopular' => true,
+        ];
+
+        $prod = new Product();
+        $allProducts =  $prod->getProductList($productSettings);
+
+        foreach($allProducts['result'] as $prod){
+//            $counterPage = Counter::page('product-details-'.$prod->id);
+//            $prod->count = Counter::countHits($page);
+            $prodID = $prod->id;
+            $count =  Counter::show('product-details-'.$prodID);
+            $prod->count = $count;
+        }
+
+        $sortedProds = array_values(array_sort($allProducts['result'], function($value){
+            return $value->count;
+        }));
+
+        $sortedProds = array_reverse($sortedProds);
+
+        $return['products'] = array_slice($sortedProds, 0, 2);
+
+
+
+        // array sort produ result, get three top ones.
+
+        return $return;
+    }
+
 
     public static function getHeroSliderContent()
     {
         $cacheKey = "slider-ideas";
 
-        if ($cachedContent = PageHelper::getFromRedis($cacheKey, true)) {
-            $return = $cachedContent;
-        } else {
-            $url = URL::to('/') . '/ideas/feeds/index.php?count=4&only-slider';
+//        if ($cachedContent = PageHelper::getFromRedis($cacheKey, true)) {
+//            $return = $cachedContent;
+//        } else {
+            $url = URL::to('/') . '/ideas/feeds/index.php?count=3&only-slider';
 
             $ch = curl_init();
             curl_setopt($ch, CURLOPT_URL, $url);
@@ -102,7 +165,7 @@ class PageController extends ApiController
             $return = json_decode($json, true);
 
             $cached = PageHelper::putIntoRedis($cacheKey, $return, '24 hours');
-        }
+//        }
 
         return $return;
 

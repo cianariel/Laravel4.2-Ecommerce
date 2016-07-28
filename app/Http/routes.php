@@ -373,6 +373,7 @@ Route::get('/api/paging/get-top-mobile-menu', 'PageController@getTopMenuItems');
 
 Route::get('/api/paging/get-content/{page?}/{limit?}/{type?}/{tag?}/{productCategory?}/{sortBy?}', 'PageController@getContent');
 Route::get('/api/paging/get-grid-content/{page?}/{limit?}/{tag?}/{type?}/{ideaCategory?}/{daysBack?}', 'PageController@getGridContent');
+Route::get('/api/paging/get-most-popular', 'PageController@getMostPopular');
 //Route::get('/api/paging/get-timeline-content/{page?}/{limit?}/{tag?}/{type?}/{ideaCategory?}', 'PageController@getTimelineContent');
 Route::get('/api/layout/get-shop-menu', 'PageController@getShopMenu');
 Route::get('/api/social/get-social-counts', 'PageController@getSocialCounts');

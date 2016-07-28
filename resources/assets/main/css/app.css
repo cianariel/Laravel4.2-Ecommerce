@@ -7777,8 +7777,7 @@ header.sub-head {
 .loader-static {
   position: relative;
   margin: 0 auto;
-  position: relative;
-  background: #fff; }
+  position: relative; }
 
 .homepage #hero-nav .category-nav {
   width: 390px;
