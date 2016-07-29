@@ -76,8 +76,8 @@ if (function_exists('is_single')) {
 
             <?php
             //dd($userData['email'],);
-          //  if(!empty($userData['email']))
-            //{ ?>
+            if(!empty($userData['email']))
+            { ?>
             <section class="add-comment">
                 <div class="single-comment">
                     <div class="col-md-1 col-sm-2 col-xs-3 comment-author">
@@ -117,11 +117,11 @@ if (function_exists('is_single')) {
                 </div>
             </section>
 
-            <?php // } else{ ?>
-            <section>
-                <a class="signup-to-comment" href="#" data-toggle="modal" data-target="#myModal" href="/signup">Sign Up to Comment</a>
-            </section>
-            <?php // } ?>
+            <?php  }else{ ?>
+                <section>
+                    <a class="signup-to-comment" href="#" data-toggle="modal" data-target="#myModal" href="/signup">Sign Up to Comment</a>
+                </section>
+            <?php  } ?>
         </div>
     </section>
 </div>
