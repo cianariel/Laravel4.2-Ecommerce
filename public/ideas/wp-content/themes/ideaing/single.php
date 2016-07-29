@@ -1,6 +1,6 @@
 
 @include('header')
-<div ng-app="publicApp" ng-controller="publicController" ng-cloak>
+<div ng-app="publicApp" ng-controller="publicController" ng-cloak class="category-smart-home"> {{'REMOVE'}}
 <?php if (have_posts()): while (have_posts()) : the_post(); ?>
     <div>
     <header class="story-header hidden-620 hidden-soft">
@@ -24,7 +24,7 @@
                                ng-init="heartCounterAction()"
                                ng-click="heartAction()"
                             >
-                                <i ng-class="unHeart != false ? 'm-icon m-icon--heart-solid' : 'm-icon m-icon--ScrollingHeaderHeart'">
+                                <i class="category-color" ng-class="unHeart != false ? 'm-icon m-icon--heart-solid' : 'm-icon m-icon--ScrollingHeaderHeart'">
                                         <span class="m-hover">
                                             <span class="path1"></span><span class="path2"></span>
                                         </span>
@@ -61,46 +61,37 @@
     }
     ?>
 
-
-        <nav class="mid-nav">
-        <div class="container">
-            <ul class="wrap col-lg-9 ">
-                @if(empty($mainCategory))
-                <li class="box-link-ul   ">
-                    <a href="{{get_site_url()}}" class="box-link active">
-                        Usage
-                        <span class="box-link-active-line"></span>
-                    </a>
-                </li>
-                @else
-                <li class=" box-link-ul  ">
-                    <a href="{{get_site_url()}}/{{$mainCategory->slug}}"
-                       class="box-link @if(!@$childCategory && !@$firstTag) active @endif">
-                        {{$mainCategory->name}}
-                        <span class="box-link-active-line"></span>
-                    </a>
-                </li>
-                    @if(@$childCategory)
-                        <li class="horizontal-line-holder hidden-xs ">
-                            <span class="horizontal-line"></span>
-                        </li>
-                        <li class="box-link-ul"><a href="{{get_site_url()}}/{{$mainCategory->slug}}/{{$childCategory->slug}}"
-                                                   class="box-link @if(!@$firstTag) active @endif ">{{$childCategory->name}}</a>
-                        </li>
-                    @endif
-                @endif
-            </ul>
-        </div>
-    </nav>
-
     <section id="hero" class="details-hero">
         <div class="head-wrap">
 
-            <h1 class="col-sm-8 col-xs-12"><span>{{the_title()}}</span></h1>
+            <h1 class="col-sm-8 col-xs-12 category-bg"><span>{{the_title()}}</span></h1>
             <ul class="social-stats center-block hidden-soft shown-620">
 
             </ul>
         </div>
+
+        <header class="story-details col-lg-7  col-sm-8 col-xs-10 full-480"
+                ng-init="getAuthorInfoByEmail('{{get_the_author_meta('user_email')}}')">
+
+            <?php include('/var/www/ideaing/public/ideas/wp-content/themes/ideaing/author-info.php') ?>
+
+            <div class="author-overview col-lg-5 col-sm-5 col-xs-6 full-480">
+                <h4 class="author-name">
+                    <div id="sticky-anchor"></div>
+                    by <b ng-bind="authorName"></b>
+                </h4>
+                <time datetime="{{the_date('Y-m-d')}}">{{the_time( get_option( 'date_format' ) )}}</time>
+
+            </div>
+            <div class="view-counter social-stats__item">
+                        @if(getPostViews(get_the_ID()) >= 100)
+                            <i class="m-icon m-icon--flame"></i>
+                        @else
+                            <i class="m-icon m-icon--eye"></i>
+                        @endif
+                        <span class="grey value">{{getPostViews(get_the_ID())}} views</span>
+            </div>
+        </header>
 
         <div class="hero-background" style="background-image:url( {{str_replace('ideaing-ideas.s3.amazonaws.com', 'd3f8t323tq9ys5.cloudfront.net', getThumbnailLink($post->ID))}} ) "></div>
         <!-- TODO - use as the hero-bg					--><?php //the_post_thumbnail(); // Fullsize image for the single post ?>
@@ -108,24 +99,12 @@
     </section>
     <nav id="hero-nav" class="col-sm-12">
             <div class="container ">
-
-            <ul class="share-buttons hidden-xs col-lg-7 col-md-8 pull-right">
-                <?php loadLaravelView('share-buttons'); ?>
-                <li><a class="comment" data-scrollto=".comments" href="#"><i class="m-icon m-icon--comments-id" ng-init="getCommentsForIdeas('<?php the_ID(); ?>')"></i>
-                        <b ng-bind="commentsCount">
-                        </b>
-                    </a>
-                </li>
-            </ul>
-<!--                <ul class="col-xs-1 pull-right">-->
-<!--                    -->
-<!--                </ul>-->
-                <ul class="like-nav " ng-init="heartUsers('ideas')">
+                <ul class="like-nav center-block" ng-init="heartUsers('ideas')">
                 <li class="heart-item">
                     <div class="social-stats">
                         <div class="social-stats__item">
                                 <a href="#" class="likes" ng-click="heartAction()" >
-                                <i ng-class="unHeart != false ? 'm-icon m-icon--heart-solid' : 'm-icon m-icon--ScrollingHeaderHeart'">
+                                <i class="category-color" ng-class="unHeart != false ? 'm-icon m-icon--heart-solid' : 'm-icon m-icon--ScrollingHeaderHeart'">
                                         <span class="m-hover">
                                             <span class="path1"></span><span class="path2"></span>
                                         </span>
@@ -135,20 +114,7 @@
                         </div>
                     </div>
                 </li>
-
                     <?php include('/var/www/ideaing/public/ideas/wp-content/themes/ideaing/heart-user-img.php') ?>
-                    <li class="view-counter">
-                        <div class="social-stats">
-                            <div class="social-stats__item">
-                                @if(getPostViews(get_the_ID()) >= 100)
-                                    <i class="m-icon m-icon--flame"></i>
-                                @else
-                                    <i class="m-icon m-icon--eye"></i>
-                                @endif
-                                <span class="grey value">{{getPostViews(get_the_ID())}}<br> views</span>
-                            </div>
-                        </div>
-                    </li>
                 </ul>
 
             </div>
@@ -162,25 +128,6 @@
 
         <article id="post-<?php the_ID(); ?>" {{post_class(
         'col-xs-11 col-md-offset-1 pull-right')}}>
-
-        <div>
-            <header class="story-details col-lg-7  col-sm-8 col-xs-10 full-480"
-                    ng-init="getAuthorInfoByEmail('{{get_the_author_meta('user_email')}}')">
-
-                <?php include('/var/www/ideaing/public/ideas/wp-content/themes/ideaing/author-info.php') ?>
-
-                <div class="author-overview col-lg-5 col-sm-5 col-xs-6 full-480">
-                    <h4 class="author-name">
-                        <div id="sticky-anchor"></div>
-                        by <b ng-bind="authorName"></b>
-                    </h4>
-                    <time datetime="{{the_date('Y-m-d')}}">{{the_time( get_option( 'date_format' ) )}}</time>
-
-                </div>
-
-
-            </header>
-        </div>
 
             <div class="shown-620 hidden-soft">
                 <?php loadLaravelView('share-bar'); ?>
@@ -258,10 +205,137 @@
 
 ?>
 
-<?php else: ?>
-
-
+<?php// else: ?>
 <?php endif; ?>
+
+<section class="yesterday top-40">
+    <?php
+        $yesterdaysPosts = getPostsFromYesterday();
+
+//        print_r($yesterdaysPosts);
+    ?>
+
+    <div class="main-content full-620 fixed-sm">
+        <div class="grid-box-3 related-ideas">
+            <h3 class="current-timespan bottom-40">YESTERDAY</h3>
+            <?php
+            if ($yesterdaysPosts->have_posts()) {
+                $i = 0;
+                while ($yesterdaysPosts->have_posts()) : $yesterdaysPosts->the_post();
+                    $i++;
+                    if($i == 3){
+                        continue;
+                    }
+
+                    $image = get_field('feed_image');
+                    ?>
+
+                    <div class="box-item">
+                        <div class="img-holder">
+                            <img src="{{$image['url']}}">
+                        </div>
+
+                        <!--                <span class="box-item__time">{{$item->updated_at}}</span>-->
+                        <div class="box-item__overlay"></div>
+
+                        <ul class="social-stats">
+                            <li class="social-stats__item">
+                                <?php
+                                $userId = !empty($userData['id'] ) ? $userData['id']  : 0;
+
+                                $urlTmp = parse_url(get_the_permalink())['path'];
+                                $urlTmp = str_replace('/ideas/','',$urlTmp);
+
+                                ?>
+
+                                <heart-counter-public uid="<?php echo $userId ?>" iid="{{ get_the_ID() }}" plink="{{ $urlTmp }}" sec='ideas'>
+
+                                </heart-counter-public>
+                            </li>
+
+                        </ul>
+
+                        <div class="round-tag round-tag--idea">
+                            <i class="m-icon m-icon--item"></i>
+                            <span class="round-tag__label">idea</span>
+                        </div>
+
+                        <div class="box-item__label-idea">
+                            <a href="{{the_permalink()}}" class="box-item__label">{{the_title()}}</a>
+                            <div class="clearfix"></div>
+                            <a href="{{the_permalink()}}" class="box-item__read-more">Read More</a>
+                        </div>
+
+                        <show-author-info email="{{ htmlentities(get_the_author_meta( 'user_login' )) }}" url="{{ get_author_posts_url( get_the_author_meta( 'ID' ) )}}">
+
+                        </show-author-info>
+                    </div>
+
+                    <?php
+                endwhile;
+            }
+            ?>
+
+        </div>
+
+
+        <div class="grid-box-1 related-ideas">
+         <?php
+            $i = 0;
+            while ($yesterdaysPosts->have_posts()) : $yesterdaysPosts->the_post();
+                $i++;
+                if($i != 4){
+                    continue;
+                }
+                $image = get_field('feed_image');
+         ?>
+
+                <div class="box-item">
+                    <div class="img-holder">
+                        <img src="{{$image['url']}}">
+                    </div>
+
+                    <!--                <span class="box-item__time">{{$item->updated_at}}</span>-->
+                    <div class="box-item__overlay"></div>
+
+                    <ul class="social-stats">
+                        <li class="social-stats__item">
+                            <?php
+                            $userId = !empty($userData['id'] ) ? $userData['id']  : 0;
+
+                            $urlTmp = parse_url(get_the_permalink())['path'];
+                            $urlTmp = str_replace('/ideas/','',$urlTmp);
+
+                            ?>
+
+                            <heart-counter-public uid="<?php echo $userId ?>" iid="{{ get_the_ID() }}" plink="{{ $urlTmp }}" sec='ideas'>
+
+                            </heart-counter-public>
+                        </li>
+
+                    </ul>
+
+                    <div class="round-tag round-tag--idea">
+                        <i class="m-icon m-icon--item"></i>
+                        <span class="round-tag__label">idea</span>
+                    </div>
+
+                    <div class="box-item__label-idea">
+                        <a href="{{the_permalink()}}" class="box-item__label">{{the_title()}}</a>
+                        <div class="clearfix"></div>
+                        <a href="{{the_permalink()}}" class="box-item__read-more">Read More</a>
+                    </div>
+
+                    <show-author-info email="{{ htmlentities(get_the_author_meta( 'user_login' )) }}" url="{{ get_author_posts_url( get_the_author_meta( 'ID' ) )}}">
+
+                    </show-author-info>
+                </div>
+
+                <?php
+            endwhile;
+         ?>
+        </div>
+</section>
 
 <section class="related-items pale-grey-bg">
     <div class="main-content full-620 fixed-sm">

@@ -30,7 +30,7 @@ if (function_exists('is_single')) {
 </script>
 <div ng-app="publicApp" ng-controller="publicController">
     <section class="comments" id="comments">
-        <div class="container">
+        <div class="container comment-box radius-5">
             <a name="comment"></a>
             <input type="hidden" ng-init="userId='<?php echo $userData['id']?>'">
             <input type="hidden" ng-init="isAdmin='<?php echo $isAdmin?>'">
@@ -76,8 +76,8 @@ if (function_exists('is_single')) {
 
             <?php
             //dd($userData['email'],);
-            if(!empty($userData['email']))
-            { ?>
+          //  if(!empty($userData['email']))
+            //{ ?>
             <section class="add-comment">
                 <div class="single-comment">
                     <div class="col-md-1 col-sm-2 col-xs-3 comment-author">
@@ -116,11 +116,11 @@ if (function_exists('is_single')) {
                 </div>
             </section>
 
-            <?php } else{ ?>
+            <?php // } else{ ?>
             <section>
                 <a class="signup-to-comment" href="#" data-toggle="modal" data-target="#myModal" href="/signup">Sign Up to Comment</a>
             </section>
-            <?php } ?>
+            <?php // } ?>
         </div>
     </section>
 </div>

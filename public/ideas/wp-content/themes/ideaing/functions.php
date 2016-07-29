@@ -808,4 +808,25 @@ function create_post_type() {
     );
 }
 
+function getPostsFromYesterday(){
+    $timeStamp = date('Y-m-d', strtotime('yesterday'));
+    $date = date_create($timeStamp);
+
+//    $args['date_query'][0] = [
+//        'year' => date_format($date, 'Y'),
+//        'monthnum' => date_format($date, 'm'),
+//        'day' => date_format($date, 'Y')
+//    ];
+    $dateQuery = 'year='.date_format($date, 'Y').'&monthnum='.date_format($date, 'm').'&day='.date_format($date, 'd') ;
+
+    $posts = new WP_Query($dateQuery . '&post_count=4');
+
+//    $return['regular'] = array_slice($posts, 0, 3);
+//    $return['featured'] = array_slice($posts, 4, 1);
+
+//    print_r($posts); die();
+    return $posts;
+
+}
+
 ?>

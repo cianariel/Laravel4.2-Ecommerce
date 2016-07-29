@@ -71,6 +71,78 @@ a:hover, a:focus{
   border:1px solid darken($pale-grey, 10%);
 }
 
+// CATEGORY COLORS
+
+.category-smart-home{
+  .category-color{
+    color: $iridium !important;
+  }
+  .category-bg{
+    background-color: $iridium !important;;
+  }
+  .category-hover-color:hover{
+    color: $iridium !important;;
+  }
+}
+.category-smart-travel{
+  .category-color{
+    color: $dark-orange !important;;
+  }
+  .category-bg{
+    background-color: $dark-orange !important;;
+  }
+}
+.category-smart-body{
+  .category-color{
+    color: $facebook-blue !important;;
+  }
+  .category-bg{
+    background-color: $facebook-blue !important;;
+  }
+}
+.category-smart-entertainment{
+  .category-color{
+    color: $pine-green !important;;
+  }
+  .category-bg{
+    background-color: $pine-green !important;;
+  }
+}
+
+.category-link{
+    &__smart-home{
+      &:hover{
+        color: $iridium;
+      }
+    }
+    &__smart-travel{
+      &:hover{
+        color: $dark-orange;
+      }
+    }
+    &__smart-body{
+      &:hover{
+      color: $sky-blue;
+      }
+    }
+    &__smart-entertainment{
+      &:hover{
+        color: $pine-green;
+      }
+    }
+    &__shop{
+      background-color: $iridium;
+      color: #fff;
+      padding: 5px!important;
+      margin-top: 4px;
+      border-radius: 5px;
+      min-width: 83px;
+      text-align: right;
+      height: auto !important;
+    }
+  }
+
+
 .blue-glow{
   -webkit-stroke-width: 5.3px;
   -webkit-stroke-color: #1ABCF5;
@@ -89,6 +161,17 @@ a:hover, a:focus{
 
 .no-padding{
   padding: 0;
+}
+
+.top-40{
+    margin-top: 40px;
+}
+.bottom-40{
+    margin-bottom: 40px;
+}
+
+.radius-5{
+  border-radius: 5px;
 }
 
 .full-wide{
@@ -758,11 +841,14 @@ ul.share-buttons{
 }
 
 .share-bar{
-  width: 80px;
+  width: 100px;
   position: absolute;
-  left: 1%;
+  right: 1%;
+  left: auto;
   top: 700px;
   text-align: center;
+  border: 1px solid #eee;
+  padding: 4px;
 
 
 
@@ -816,7 +902,8 @@ li.all-shares{
 
 @media (max-width: 1670px){
   .share-bar{
-    left: 1%;
+    right: 1%;
+    left: auto;
   }
 }
 
@@ -990,8 +1077,10 @@ nav {
     background-size: cover;
     background-repeat: no-repeat;
     position: absolute;
-    width: 100%;
+    width: 70%;
+    right: 0;
     height: 100%;
+    background: #a7a7f3;
   }
 
   .color-overlay{
@@ -1016,7 +1105,7 @@ nav {
       text-shadow: none;
 
       @media (min-width:620px){
-        max-width: 75%;
+        max-width: 60%;
       }
 
 
@@ -1323,15 +1412,14 @@ body.contactus-page
 }
 
 #ideaing-logo{
-  margin-top: 9px;
-  margin-left: 0;
-  padding: 9px;
+  //padding: 9px;
   max-width: 100%;
-  margin-top: 0px;
+  margin: 0 0 0 4px;
   transition: all 5s;
     .m-icon{
       position: absolute;
-      left: 0;
+      left: 10px;
+      top: 0;
       font-size: 42px;
       &.default-logo{
         filter:grayscale(100%);
@@ -2691,10 +2779,9 @@ header.colophon{
     .user-controls{
       max-width: 120px;
 
-      .new-message{
-        padding-top: 15px;
-
-      }
+      //.new-message{
+      //  padding-top: 15px;
+      //}
     }
   }
 
@@ -2717,10 +2804,10 @@ header.colophon{
   
   .desktop-search-bar{
         position: relative;
-        top: 13px;
+        //top: 13px;
         input{
           height: 35px;
-          width: 70%;
+          //width: 70%;
           -webkit-transition: width .2s; /* Safari */
           transition: width .2s;
         }
@@ -2805,6 +2892,7 @@ header.colophon{
 
 .socialcounter{
   max-height: 60px;
+  margin-top: 5px;
 }
 
 #top-nav{
@@ -2831,7 +2919,7 @@ header.colophon{
     .category-menu{
         a{
             padding-bottom: 0px;
-            height: 60px;
+            height: 50px;
         }
         
         padding-left: 0px;
@@ -2857,14 +2945,14 @@ header.colophon{
     }
     .top-nav-holder{
         //border-bottom: 1px solid $light-grey;
-        height: 60px;
+        height: 52px;
 
       .home-hamburger{
         background: #000;
         color: #fff;
         padding: 10px 8px !important;
         height: 33px;
-        margin-top: 12px;
+        margin-top: 3px;
 
         i{
           font-size: 1.8rem;
@@ -3063,7 +3151,7 @@ box-shadow: -1px -1px 20px -7px rgba(0,0,0,0.75);
   a{
     padding-right: 10px;
     font-size: 1.2rem;
-    color: #999;
+    //color: #999;
     font-weight: bold;
 
     &.pros{
@@ -3077,6 +3165,7 @@ box-shadow: -1px -1px 20px -7px rgba(0,0,0,0.75);
 
     &.new-message{
       position: relative;
+      padding-top: 5px;
       i{
         font-size: 2.5rem;
       }
@@ -3091,17 +3180,17 @@ box-shadow: -1px -1px 20px -7px rgba(0,0,0,0.75);
         position: absolute;
         border-radius: 10px;
         left: 10px;
-        top: 10px;
+        top: 5px;
         height: 15px;
         text-align: center;
         line-height: 15px;
       }
     }
 
-    &:hover:not(.mobile-top-menu-switcher),
-    .active:not(.mobile-top-menu-switcher){
-      color: $pink;
-    }
+    //&:hover:not(.mobile-top-menu-switcher),
+    //.active:not(.mobile-top-menu-switcher){
+    //  color: $pink;
+    //}
 
   }
 
@@ -4474,17 +4563,6 @@ header.sub-head{
   }
 }
 
-.single #hero-nav{
-  padding-top: 7px;
-
-  .share-buttons{
-    padding-top: 9px;
-  }
-  li.all-shares{
-    top: -18px;
-  }
-}
-
 .hero-wrap{
   position: relative;
   overflow: hidden;
@@ -4735,17 +4813,29 @@ body.single{
     color: $pink;
     
   }
-  .like-nav{
-    float: right;
-    width: 280px;
 
-    .heart-item{
-      width: 20px;
+ #hero-nav{
+    padding: 40px 0 30px;
 
-      @media (max-width:620px){
-        width: 50px;
-      }
+    .share-buttons{
+      padding-top: 9px;
     }
+    li.all-shares{
+      top: -18px;
+    }
+  }
+
+  .like-nav{
+  //  float: right;
+    width: 50px;
+  //
+  //  .heart-item{
+  //    width: 20px;
+  //
+  //    @media (max-width:620px){
+  //      width: 50px;
+  //    }
+  //  }
   }
   .article-content{
     iframe{
@@ -5109,6 +5199,10 @@ body.single{
     padding: 10px 0;
     padding-left: 10%;
     text-align: center;
+    width: 30%;
+    position: absolute;
+    left: 0;
+    bottom: 0;
 
     h4{
       width: 100%;
@@ -5208,8 +5302,13 @@ body.single{
     }
   }
 
+  .comment-box{
+    background: #eee;
+  }
+
   .add-comment{
     margin-top: 35px;
+
 
     textarea{
       min-height: 100px;
