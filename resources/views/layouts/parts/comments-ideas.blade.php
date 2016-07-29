@@ -30,7 +30,7 @@ if (function_exists('is_single')) {
 </script>
 <div ng-app="publicApp" ng-controller="publicController">
     <section class="comments" id="comments">
-        <div class="container comment-box radius-5">
+        <div class="container comment-box radius-5 col-sm-7 center-block">
             <a name="comment"></a>
             <input type="hidden" ng-init="userId='<?php echo $userData['id']?>'">
             <input type="hidden" ng-init="isAdmin='<?php echo $isAdmin?>'">
@@ -86,7 +86,7 @@ if (function_exists('is_single')) {
                              src="<?php echo isset($userData['medias'][0]['media_link']) ? $userData['medias'][0]['media_link'] : "" ?>">
 
                     </div>
-                    <div class="col-md-8 col-sm-10 col-xs-9">
+                    <div class="col-md-11 col-sm-10 col-xs-9">
 
                         <div ng-class="['col-md-12', 'comment-edit-container', {'has-content': html}]"
                              ng-show="show_editor">
@@ -97,17 +97,18 @@ if (function_exists('is_single')) {
                             </div>
                         </div>
                         <div class="col-md-12" ng-hide="show_editor">
-                            <textarea placeholder="Write a comment" class="form-control"
+                            <h6>Leave a comment</h6>
+                            <textarea class="form-control radius-15 no-border"
                                       ng-click="show_editor=1; focus_editor=true; focusEditor()" cols="" rows=""
                                       class=" ta-text ta-editor"></textarea>
                         </div>
 
                         <div class="col-md-12 comment-controls text-right">
-                            <button class="btn btn-info btn-outline" ng-hide="isEdit"
+                            <button class="btn btn-info radius-15 category-bg no-border" ng-hide="isEdit"
                                     ng-click="addCommentForIdeas(<?php echo $userData['id'] . "," . $itemId . "," . "'$permalink'" . "," . "html"?>)">
                                 Post
                             </button>
-                            <button class="btn btn-info" ng-show="isEdit"
+                            <button class="btn btn-info radius-15 category-bg no-border" ng-show="isEdit"
                                     ng-click="updateComment()">
                                 Update
                             </button>

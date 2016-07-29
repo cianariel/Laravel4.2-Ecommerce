@@ -173,6 +173,13 @@ a:hover, a:focus{
 .radius-5{
   border-radius: 5px;
 }
+.radius-15{
+  border-radius: 15px;
+}
+
+.no-border{
+  border:0 !important;
+}
 
 .full-wide{
   width: 100%;
@@ -5303,7 +5310,13 @@ body.single{
   }
 
   .comment-box{
-    background: #eee;
+    background: #f6f6f6;
+
+    h6{
+      color: #555;
+      text-transform: uppercase;
+      font-weight: 600;
+    }
   }
 
   .add-comment{
