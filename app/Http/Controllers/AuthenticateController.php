@@ -135,7 +135,7 @@ class AuthenticateController extends ApiController
 
         if ($faled = filter_var($credentials['Email'], FILTER_VALIDATE_EMAIL) === false) {
             return $this->setStatusCode(IlluminateResponse::HTTP_UNAUTHORIZED)
-                ->makeResponseWithError('Please enter a valid email');
+                        ->makeResponseWithError('Please enter a valid email');
         }
 
         try {
@@ -223,6 +223,8 @@ class AuthenticateController extends ApiController
         if (!empty($isGiveaway) && $request['vlu'] == 'giveaway') {
             $link = 'giveaway/' . $request['pl'];
             session(['page.source.giveaway' => $link]);
+
+            $source = 'giveaway';
         }
 
 
@@ -238,7 +240,8 @@ class AuthenticateController extends ApiController
         If a user is authenticated then check whether the user is
         registered in our system or not.
         */
-        $userInfo = $this->user->FindOrCreateUser($fbUser);
+
+        $userInfo = $this->user->FindOrCreateUser($fbUser,$source);
 
         // send welcome mail to new user
         if (!empty($userInfo['NewUser']) && ($userInfo['NewUser'] == true)) {
@@ -265,18 +268,6 @@ class AuthenticateController extends ApiController
         } else
             return redirect()->action('UserController@userProfile');
 
-        // return redirect('user/profile');
-
-        /* $userInfo['token'] = $token;
-
-         $userInfo['message'] = 'Successfully registered with Facebook';*/
-
-
-        /*
-        return $this->setStatusCode(\Config::get("const.api-status.success-with-fb"))
-            ->setAuthToken($token)
-            ->makeResponse("Successfully registered with Facebook");
-*/
     }
 
 
@@ -320,12 +311,14 @@ class AuthenticateController extends ApiController
                      * After successfully register the user data send JSON response if email is available.
                      * */
 
-                    // $userData['UserFrom'] = empty($source) ? '' : $source;
+                    $userData['UserFrom'] = empty($inputData['Source']) ? null : $inputData['Source'];
+
                     if ($this->user->SaveUserInformation($userData)) {
                         // Assign role for the user
                         $this->user->assignRole($userData['Email'], array('user'));
 
                         // Email subscription.
+
                         $this->subscriber->subscribeUser($userData);
 
                         // for a subscribed user need not to confirm email for the second time.
@@ -642,9 +635,9 @@ class AuthenticateController extends ApiController
 
         if (is_null($email)) {
             return ['error' => 'Please enter email'];
-        }elseif(is_null($password)){
+        } elseif (is_null($password)) {
             return ['error' => 'Please enter password'];
-        }else{
+        } else {
             return $this->user->IsAuthorizedUser($userData);
         }
     }

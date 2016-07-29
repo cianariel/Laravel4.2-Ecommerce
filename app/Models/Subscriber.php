@@ -59,6 +59,9 @@ class Subscriber extends Model
     {
         $existingEmail = Subscriber::where('email', $data['Email']);
 
+        if(!empty($data['UserFrom']))
+            $data['Source'] = $data['UserFrom'];
+
         if ($existingEmail->count() == 0) {
             $subscriber = new Subscriber();
             $subscriber->email = $data['Email'];

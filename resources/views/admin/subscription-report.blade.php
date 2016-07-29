@@ -149,6 +149,24 @@
                                             <h4 class="widget-thumb-heading">Subscribed User Info</h4>
                                             <div class="widget-thumb-wrap">
                                                 <i class="widget-thumb-icon bg-green icon-bulb"
+                                                   title="People subscribed through Giveaway"
+                                                ></i>
+                                                <div class="widget-thumb-body">
+                                                    <span class="widget-thumb-subtitle">Giveaway</span>
+                                                    <span class="widget-thumb-body-stat" data-counter="counterup"
+                                                          ng-bind='reportData["subscribe-giveaway"]'>0</span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- END WIDGET THUMB -->
+                                    </div>
+                                    <div class="col-md-3">
+                                        <!-- BEGIN WIDGET THUMB -->
+                                        <div class="widget-thumb widget-bg-color-white text-uppercase margin-bottom-20 bordered">
+                                            <h4 class="widget-thumb-heading">Subscribed User Info</h4>
+                                            <div class="widget-thumb-wrap">
+                                                <i class="widget-thumb-icon bg-green icon-bulb"
                                                    title="Total subscribed user"
                                                 ></i>
                                                 <div class="widget-thumb-body">
@@ -199,6 +217,26 @@
 
                                         <!-- END WIDGET THUMB -->
                                     </div>
+
+                                    <div class="col-md-3">
+                                        <!-- BEGIN WIDGET THUMB -->
+                                        <div class="widget-thumb widget-bg-color-white text-uppercase margin-bottom-20 bordered">
+                                            <h4 class="widget-thumb-heading">Registered User Info</h4>
+                                            <div class="widget-thumb-wrap">
+                                                <i class="widget-thumb-icon bg-blue-steel icon-badge"
+                                                   title="Users registered through Giveaway section"
+                                                ></i>
+                                                <div class="widget-thumb-body">
+                                                    <span class="widget-thumb-subtitle">Giveaway</span>
+                                                    <span class="widget-thumb-body-stat" data-counter="counterup"
+                                                          ng-bind='reportData["register-giveaway"]'>0</span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- END WIDGET THUMB -->
+                                    </div>
+
                                     <div class="col-md-3">
                                         <!-- BEGIN WIDGET THUMB -->
                                         <div class="widget-thumb widget-bg-color-white text-uppercase margin-bottom-20 bordered">

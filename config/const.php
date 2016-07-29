@@ -74,7 +74,10 @@ return [
 
     // Membership fee
     'VIP' => '5',
-    'VIP-Membership' => 'TEST'
+    'VIP-Membership' => 'TEST',
+
+    // Cache Clean key
+    'cache-clean-key' => 'com'
 
 
 ];
