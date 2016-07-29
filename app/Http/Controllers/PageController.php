@@ -603,11 +603,11 @@ class PageController extends ApiController
         }
 
         // override the Amazon review if it's zero
-        $amazonReview = empty($result['productInformation']['Review'][1]->value)?$result['productInformation']['Review'][0]->value:$result['productInformation']['Review'][1]->value;
+        $amazonReview = empty($result['productInformation']['Review'][1]->value) ? $result['productInformation']['Review'][0]->value : $result['productInformation']['Review'][1]->value;
 
-        $reviewScore = intval(((($result['productInformation']['Review'][0]->value > 0 ? $result['productInformation']['Review'][0]->value : $amazonReview) + $amazonReview)/2)*20);
+        $reviewScore = intval(((($result['productInformation']['Review'][0]->value > 0 ? $result['productInformation']['Review'][0]->value : $amazonReview) + $amazonReview) / 2) * 20);
 
-      //  dd($result['selfImages']);
+        //  dd($result['selfImages']);
         return view('product.product-details')
             ->with('isAdminForEdit', $isAdmin)
             ->with('productId', $result['productInformation']['Id'])
@@ -671,10 +671,10 @@ class PageController extends ApiController
     {
         $input = Input::all();
 
-        if(!@$input['url']){
+        if (!@$input['url']) {
             return 'error';
         }
-        $clear = PageHelper::deleteFromRedis('twitter-shares-' .  $input['url']);
+        $clear = PageHelper::deleteFromRedis('twitter-shares-' . $input['url']);
 
         return 'cleared';
     }
@@ -956,6 +956,14 @@ class PageController extends ApiController
             ->with('ended', $ended)
             ->with('alreadyIn', $alreadyIn)
             ->with('heading', $heading);
+    }
+
+
+    public function cleanRadisCache($key)
+    {
+        if ($key == \Config::get("const.cache-clean-key"))
+            PageHelper::FlashRedis();
+
     }
 
     public function testEmail($type)

@@ -101,6 +101,7 @@ class User extends Model implements AuthenticatableContract,
     {
         return $this->hasMany('App\Models\Payment');
     }
+
     /**
      * Defile custom model method
      */
@@ -312,7 +313,7 @@ class User extends Model implements AuthenticatableContract,
         return $user->roles;
     }
 
-    public function FindOrCreateUser($userData)
+    public function FindOrCreateUser($userData, $source = null)
     {
         try {
             $user = $this->IsEmailAvailable($userData->email);
@@ -328,7 +329,7 @@ class User extends Model implements AuthenticatableContract,
 
                 $user['Picture'] = $userData->avatar_original;
 
-                $user['UserFrom'] = 'facebook';
+                $user['UserFrom'] = empty($source) ? 'facebook' : $source;
 
                 $this->SaveUserInformation($user);
 
@@ -525,14 +526,13 @@ class User extends Model implements AuthenticatableContract,
     // Single Notification mark as read for a single user
     public function markNotificationAsRead($data)
     {
-        $notifications = Notification::where('to_id',$data['UserId'])
-            ->where('read',0)
-            ->where('url','LIKE','%'.$data['Permalink'].'%')
-            ->get();
+        $notifications = Notification::where('to_id', $data['UserId'])
+                                     ->where('read', 0)
+                                     ->where('url', 'LIKE', '%' . $data['Permalink'] . '%')
+                                     ->get();
 
 
-        foreach($notifications as $notification)
-        {
+        foreach ($notifications as $notification) {
             $notification->read = 1;
             $notification->save();
         }
@@ -540,7 +540,6 @@ class User extends Model implements AuthenticatableContract,
         return $notifications;
 
     }
-
 
 
     // Wrapper for all type of notification (future implementation)
@@ -603,15 +602,13 @@ class User extends Model implements AuthenticatableContract,
     }
 
 
-
-
     public function registerBySourceCount($data)
     {
         if (empty($data['Source'])) {
             $query = new UserProfile();
         } elseif ($data['Source'] == 'others') {
             $query = new UserProfile();
-            $query = $query->whereNotIn('user_from', ['registration', 'facebook']);
+            $query = $query->whereNotIn('user_from', ['registration', 'facebook','giveaway']);
         } else {
             $query = new UserProfile();
             $query = $query->where('user_from', $data['Source']);
@@ -731,7 +728,7 @@ class User extends Model implements AuthenticatableContract,
 
                 // Email count is "0" then no notification will be send.
                 if ($data != 0) {
-                  //  dd($name, $user['email'], $data);
+                    //  dd($name, $user['email'], $data);
                     \Event::fire(new SendNotificationMail($name, $user['email'], $data));
                 }
 

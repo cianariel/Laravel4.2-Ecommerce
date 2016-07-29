@@ -511,10 +511,12 @@ class UserController extends ApiController
         $result['subscribe-ideas'] = $this->getSubscribersCountBySource(['Source' => 'ideas']);
         $result['subscribe-footer'] = $this->getSubscribersCountBySource(['Source' => 'footer']);
         $result['subscribe-home'] = $this->getSubscribersCountBySource(['Source' => 'home']);
+        $result['subscribe-giveaway'] = $this->getSubscribersCountBySource(['Source' => 'giveaway']);
         $result['subscribe-total'] = $this->getSubscribersCountBySource(['Source' => '']);
 
         $result['register-direct'] = $this->getRegisteredUserCountBySource(['Source' => 'registration']);
         $result['register-facebook'] = $this->getRegisteredUserCountBySource(['Source' => 'facebook']);
+        $result['register-giveaway'] = $this->getRegisteredUserCountBySource(['Source' => 'giveaway']);
         $result['register-others'] = $this->getRegisteredUserCountBySource(['Source' => 'others']);
         $result['register-total'] = $this->getRegisteredUserCountBySource(['Source' => '']);
 

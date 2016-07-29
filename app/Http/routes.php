@@ -40,10 +40,16 @@ Route::post('api/product/get-price/', 'ProductController@getPrice');
 Route::post('api/product/get-for-thumb/', 'ProductController@getForThumb');
 
 
-//    Route::get('/product-details', function () // temp, used for tweaking frontend
-//    {
-//        return view('static.product-details');
-//    });
+/*
+ * clean server cache
+ * */
+
+Route::get('/flash/{key?}', 'PageController@cleanRadisCache');
+
+/*
+ * General routes
+ *
+ * */
 
 Route::get('/contactus', 'PageController@contactUs');
 Route::get('/aboutus', 'PageController@aboutUs');
