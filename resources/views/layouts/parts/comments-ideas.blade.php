@@ -106,11 +106,11 @@ if (function_exists('is_single')) {
                         <div class="col-md-12 comment-controls text-right">
                             <button class="btn btn-info radius-15 category-bg no-border" ng-hide="isEdit"
                                     ng-click="addCommentForIdeas(<?php echo $userData['id'] . "," . $itemId . "," . "'$permalink'" . "," . "html"?>)">
-                                Post
+                                SEND
                             </button>
                             <button class="btn btn-info radius-15 category-bg no-border" ng-show="isEdit"
                                     ng-click="updateComment()">
-                                Update
+                                UPDATE
                             </button>
                         </div>
                     </div>
