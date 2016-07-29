@@ -1,6 +1,6 @@
 
 @include('header')
-<div ng-app="publicApp" ng-controller="publicController" ng-cloak class="category-smart-home"> {{'REMOVE'}}
+<div ng-app="publicApp" ng-controller="publicController" ng-cloak>
 <?php if (have_posts()): while (have_posts()) : the_post(); ?>
     <div>
     <header class="story-header hidden-620 hidden-soft">
@@ -70,7 +70,7 @@
             </ul>
         </div>
 
-        <header class="story-details col-lg-7  col-sm-8 col-xs-10 full-480"
+        <header class="story-details col-lg-7 col-sm-8 col-xs-10 full-480"
                 ng-init="getAuthorInfoByEmail('{{get_the_author_meta('user_email')}}')">
 
             <?php include('/var/www/ideaing/public/ideas/wp-content/themes/ideaing/author-info.php') ?>
@@ -78,9 +78,9 @@
             <div class="author-overview col-lg-5 col-sm-5 col-xs-6 full-480">
                 <h4 class="author-name">
                     <div id="sticky-anchor"></div>
-                    by <b ng-bind="authorName"></b>
+                    <span ng-bind="authorName" class="author-name text-uppercase""></span>
                 </h4>
-                <time datetime="{{the_date('Y-m-d')}}">{{the_time( get_option( 'date_format' ) )}}</time>
+                <time class="text-uppercase" datetime="{{the_date('Y-m-d')}}">{{the_time( get_option( 'date_format' ) )}}</time>
 
             </div>
             <div class="view-counter social-stats__item">
