@@ -148,9 +148,9 @@ a:hover, a:focus{
       text-align: right;
       height: auto !important;
 
-      @media(min-width: 1200px){
-        min-width: 83px
-      }
+      //@media(min-width: 1200px){
+      //  min-width: 83px
+      //}
       @media(max-width: 620px){
         float: right;
       }

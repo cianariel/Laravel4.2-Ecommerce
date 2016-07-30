@@ -4602,9 +4602,6 @@ a:hover, a:focus {
   border-radius: 5px;
   text-align: right;
   height: auto !important; }
-  @media (min-width: 1200px) {
-    .category-link__shop {
-      min-width: 83px; } }
   @media (max-width: 620px) {
     .category-link__shop {
       float: right; } }
