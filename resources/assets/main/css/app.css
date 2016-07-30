@@ -6648,8 +6648,7 @@ header.colophon {
     z-index: 41;
     background: #fff;
     background: rgba(255, 255, 255, 0.9);
-    border-bottom: 1px solid white;
-    height: 60px; }
+    border-bottom: 1px solid white; }
     header.colophon.scroll-header #top-nav .top-nav-holder {
       border-bottom: 0 !important; }
     @media (min-width: 620px) {
@@ -6698,13 +6697,13 @@ header.colophon {
       height: auto; }
   @media (min-width: 1025px) {
     header.colophon .user-controls {
-      max-width: 120px; } }
+      max-width: 150px; } }
 
 @media (max-width: 620px) {
-  a.search-toggle {
+  .mobile-right-block {
     position: absolute;
-    top: -22px;
-    right: 4px; } }
+    top: 0px;
+    right: -7px; } }
 
 #top-nav .search-bar a.search-toggle {
   padding-top: 6px;
@@ -8027,6 +8026,10 @@ body.single #hero-nav {
     padding-top: 9px; }
   body.single #hero-nav li.all-shares {
     top: -18px; }
+  @media (max-width: 620px) {
+    body.single #hero-nav {
+      width: 100%;
+      padding: 0; } }
 body.single .like-nav {
   width: 50px; }
 body.single .article-content iframe {

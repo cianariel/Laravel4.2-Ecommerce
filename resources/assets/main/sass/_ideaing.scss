@@ -2726,8 +2726,6 @@ header.colophon{
       min-width: 0 !important;
     }
 
-
-    
     #top-nav {
       position: fixed;
       top: 0;
@@ -2736,7 +2734,7 @@ header.colophon{
       background: #fff;
       background: rgba(255,255,255,.90);
       border-bottom: 1px solid lighten($light-grey, 10%);
-      height: 60px;
+      //height: 60px;
 
 
       .top-nav-holder{
@@ -2817,7 +2815,7 @@ header.colophon{
   }
   @media (min-width: 1025px){
     .user-controls{
-      max-width: 120px;
+      max-width: 150px;
 
       //.new-message{
       //  padding-top: 15px;
@@ -2827,11 +2825,11 @@ header.colophon{
 
 
 }
-a.search-toggle{
+.mobile-right-block{
   @media(max-width: 620px){
     position: absolute;
-    top: -22px;
-    right: 4px;
+    top: 0px;
+    right: -7px;
   }
 }
 #top-nav{
@@ -4880,6 +4878,11 @@ body.single{
     li.all-shares{
       top: -18px;
     }
+
+   @media(max-width: 620px) {
+     width: 100%;
+     padding: 0;
+   }
   }
 
   .like-nav{

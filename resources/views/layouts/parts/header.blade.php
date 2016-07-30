@@ -99,9 +99,23 @@ if (!isset($theGiveAway)) {
                     </a>
                 </div>
 
-                <div class="hidden-lg hidden-md hidden-sm col-xs-1 pull-right">
-                    <a href="#" class="search-toggle visible-xs pull-right"
-                       data-toggle=".mobile-search-bar"><i class="m-icon m-icon--search-id"></i></a>
+                <div class="hidden-lg hidden-md hidden-sm col-xs-3 pull-right mobile-right-block">
+                    <?php
+                        if(isset($userData['login']) && $userData['login']){
+                    ?>
+                        <a href="#" data-toogle=".notification-popup" class="notification-holder">
+                            <i class="m-icon m-icon--Notifications"></i>
+                                        <span ng-hide="notificationCounter == 0" class="notification-count"
+                                              ng-bind="notificationCounter"></span>
+                        </a>
+                    <?php }else{ ?>
+                        <a class="new-message" href="#" ng-click="getEmailPopup(true)">
+                            <i class="m-icon m-icon--Notifications"></i>
+                            <span class="notification-count ng-binding">1</span>
+                        </a>
+                    <?php } ?>
+                        <a href="#" class="search-toggle visible-xs pull-right"
+                           data-toggle=".mobile-search-bar"><i class="m-icon m-icon--search-id"></i></a>
                 </div>
 
                 <form class="search-bar" ng-app="publicApp" ng-controller="SearchController"
@@ -135,31 +149,31 @@ if (!isset($theGiveAway)) {
 
                                 <li>
                                     <a class="category-link__smart-home" href="#">
-                                        <i class="hidden-xs hidden-sm hidden-md m-icon m-icon--smart-home category-hover-color"></i>
-                                        <span class="m-icon-text category-hover-color">Smart Home</span>
+                                        <i class="hidden-xs hidden-sm hidden-md m-icon m-icon--smart-home"></i>
+                                        <span class="m-icon-text">Smart Home</span>
                                     </a>
                                 </li>
                                 <li>
                                     <a class="category-link__smart-body m-icon-text-holder" href="/shop">
-                                        <i class="hidden-xs hidden-sm hidden-md m-icon m-icon--wearables category-hover-color"></i>
-                                        <span class="m-icon-text category-hover-color"><span class="hidden-xs">Smart</span> Body</span>
+                                        <i class="hidden-xs hidden-sm hidden-md m-icon m-icon--wearables"></i>
+                                        <span class="m-icon-text"><span class="hidden-xs">Smart</span> Body</span>
                                     </a>
                                 </li>
                                 <li>
                                     <a class="category-link__smart-travel m-icon-text-holder" href="/shop">
-                                        <i class="hidden-xs hidden-sm hidden-md m-icon m-icon--travel category-hover-color"></i>
-                                        <span class="m-icon-text category-hover-color"><span class="hidden-xs">Smart</span> Travel</span>
+                                        <i class="hidden-xs hidden-sm hidden-md m-icon m-icon--travel"></i>
+                                        <span class="m-icon-text"><span class="hidden-xs">Smart</span> Travel</span>
                                     </a>
                                 </li>
                                 <li>
                                     <a class="category-link__smart-entertainment m-icon-text-holder" href="/shop">
-                                        <i class="hidden-xs hidden-sm hidden-md m-icon m-icon--video category-hover-color"></i>
-                                        <span class="m-icon-text category-hover-color"><span class="hidden-xs">Smart</span> Entertainment</span>
+                                        <i class="hidden-xs hidden-sm hidden-md m-icon m-icon--video"></i>
+                                        <span class="m-icon-text"><span class="hidden-xs">Smart</span> Entertainment</span>
                                     </a>
                                 </li>
                                 <li>
                                     <a class="category-link__shop m-icon-text-holder" href="/shop">
-                                        <i class="hidden-xs hidden-sm hidden-md m-icon m-icon--shopping-bag-light-green"></i>
+                                        <i class="hidden-xs hidden-sm hidden-md m-icon m-icon--shopping-bag-light-green white"></i>
                                         <span class="m-icon-text white">Shop</span>
                                     </a>
                                 </li>
@@ -223,46 +237,6 @@ if (!isset($theGiveAway)) {
                                         <span ng-hide="notificationCounter == 0" class="notification-count"
                                               ng-bind="notificationCounter"></span>
                                     </a>
-                                    <div class="notification-popup">
-                                        <div class="notification-header">
-                                            <span class="pull-left">Notifications</span>
-                                            <span ng-click="readAllNotification()" class="pull-right"
-                                                  id="mark-all-as-read">Mark all as read</span>
-                                            <div class="clearfix"></div>
-                                        </div>
-
-                                        <div class="notification-body">
-                                            <div class="notification-item" ng-repeat="notice in notifications">
-                                                <img width="40px" ng-src="<?php echo '{{ notice.UserPicture }}' ?>"
-                                                     class="profile-photo pull-left">
-
-                                                <div class="notification-row-content read-<?php echo '{{ notice.NoticeRead }}' ?>">
-                                                    <div><strong><?php echo '{{ notice.UserName }}' ?></strong>
-                                                        <div ng-switch="notice.Section">
-                                                            <div ng-switch-when="ideas-heart">Liked</div>
-                                                            <div ng-switch-when="product-heart">Liked</div>
-                                                            <div ng-switch-when="giveaway-heart">Liked</div>
-                                                            <div ng-switch-default>Commented on</div>
-                                                        </div>
-                                                        <a ng-href="<?php echo '/{{ notice.ItemLink }}' ?>"><?php echo '{{ notice.ItemTitle }}' ?></a>
-                                                    </div>
-                                                    <small class="clearfix time "><?php echo '{{ notice.Time }}' ?></small>
-                                                </div>
-                                                <div class="clearfix"></div>
-                                            </div>
-                                            <div style="text-align: center">
-                                                <a class="btn btn-primary btn-block" style="color: white"
-                                                        {{--ng-click="loadMoreNotifications('<?php echo $userData['id']?>',5)"--}}
-                                                                href="/user/notification"
-                                                        type="button">View All ...
-                                                </a>
-                                            </div>
-                                            <div class="clearfix"></div>
-                                        </div>
-                                        <div class="notification-footer">
-
-                                        </div>
-                                    </div>
                                 </div>
 
                                 <?php }  else { ?>
@@ -277,6 +251,46 @@ if (!isset($theGiveAway)) {
                                    data-toggle=".mobile-search-bar"><i class="m-icon m-icon--search-id"></i></a>
                         </div>
 
+                        <div class="notification-popup hidden-soft">
+                            <div class="notification-header">
+                                <span class="pull-left">Notifications</span>
+                                            <span ng-click="readAllNotification()" class="pull-right"
+                                                  id="mark-all-as-read">Mark all as read</span>
+                                <div class="clearfix"></div>
+                            </div>
+
+                            <div class="notification-body">
+                                <div class="notification-item" ng-repeat="notice in notifications">
+                                    <img width="40px" ng-src="<?php echo '{{ notice.UserPicture }}' ?>"
+                                         class="profile-photo pull-left">
+
+                                    <div class="notification-row-content read-<?php echo '{{ notice.NoticeRead }}' ?>">
+                                        <div><strong><?php echo '{{ notice.UserName }}' ?></strong>
+                                            <div ng-switch="notice.Section">
+                                                <div ng-switch-when="ideas-heart">Liked</div>
+                                                <div ng-switch-when="product-heart">Liked</div>
+                                                <div ng-switch-when="giveaway-heart">Liked</div>
+                                                <div ng-switch-default>Commented on</div>
+                                            </div>
+                                            <a ng-href="<?php echo '/{{ notice.ItemLink }}' ?>"><?php echo '{{ notice.ItemTitle }}' ?></a>
+                                        </div>
+                                        <small class="clearfix time "><?php echo '{{ notice.Time }}' ?></small>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                </div>
+                                <div style="text-align: center">
+                                    <a class="btn btn-primary btn-block" style="color: white"
+                                            {{--ng-click="loadMoreNotifications('<?php echo $userData['id']?>',5)"--}}
+                                       href="/user/notification"
+                                       type="button">View All ...
+                                    </a>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="notification-footer">
+
+                            </div>
+                        </div>
 
                     </div>
                 </div>
