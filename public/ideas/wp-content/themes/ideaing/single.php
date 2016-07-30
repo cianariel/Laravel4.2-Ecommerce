@@ -64,7 +64,7 @@
     <section id="hero" class="details-hero">
         <div class="head-wrap">
 
-            <h1 class="col-sm-8 col-xs-12 category-bg"><span>{{the_title()}}</span></h1>
+            <h1 class="col-sm-8 col-xs-12 category-bg-trans"><span>{{the_title()}}</span></h1>
             <ul class="social-stats center-block hidden-soft shown-620">
 
             </ul>

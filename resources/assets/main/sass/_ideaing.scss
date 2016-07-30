@@ -80,6 +80,9 @@ a:hover, a:focus{
   .category-bg{
     background-color: $color !important;
   }
+  .category-bg-trans{
+    background-color: rgba($color, .7) !important;
+  }
   .category-hover-color:hover{
     color: $color !important;;
   }
@@ -2698,7 +2701,10 @@ article.product{
 
 
 header.colophon{
-    min-height: 60px;
+    min-height: 57px;
+    max-width: 1400px;
+    margin: 0 auto;
+    overflow: hidden;
     a{
       color: #999;
     }

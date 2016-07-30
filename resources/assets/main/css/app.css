@@ -4522,6 +4522,8 @@ a:hover, a:focus {
   color: #FF0042 !important; }
 .category-smarthome .category-bg {
   background-color: #FF0042 !important; }
+.category-smarthome .category-bg-trans {
+  background-color: rgba(255, 0, 66, 0.7) !important; }
 .category-smarthome .category-hover-color:hover {
   color: #FF0042 !important; }
 .category-smarthome .category-hover-border:hover {
@@ -4537,6 +4539,8 @@ a:hover, a:focus {
   color: #FF7F00 !important; }
 .category-smart-travel .category-bg {
   background-color: #FF7F00 !important; }
+.category-smart-travel .category-bg-trans {
+  background-color: rgba(255, 127, 0, 0.7) !important; }
 .category-smart-travel .category-hover-color:hover {
   color: #FF7F00 !important; }
 .category-smart-travel .category-hover-border:hover {
@@ -4552,6 +4556,8 @@ a:hover, a:focus {
   color: #079DD1 !important; }
 .category-smart-body .category-bg {
   background-color: #079DD1 !important; }
+.category-smart-body .category-bg-trans {
+  background-color: rgba(7, 157, 209, 0.7) !important; }
 .category-smart-body .category-hover-color:hover {
   color: #079DD1 !important; }
 .category-smart-body .category-hover-border:hover {
@@ -4567,6 +4573,8 @@ a:hover, a:focus {
   color: #89C981 !important; }
 .category-smart-entertainment .category-bg {
   background-color: #89C981 !important; }
+.category-smart-entertainment .category-bg-trans {
+  background-color: rgba(137, 201, 129, 0.7) !important; }
 .category-smart-entertainment .category-hover-color:hover {
   color: #89C981 !important; }
 .category-smart-entertainment .category-hover-border:hover {
@@ -6654,7 +6662,10 @@ article.product {
   display: none; }
 
 header.colophon {
-  min-height: 60px; }
+  min-height: 57px;
+  max-width: 1400px;
+  margin: 0 auto;
+  overflow: hidden; }
   header.colophon a {
     color: #999; }
   header.colophon #top-nav {

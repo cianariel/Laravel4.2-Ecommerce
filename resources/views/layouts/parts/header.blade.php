@@ -30,9 +30,6 @@ if (!isset($theGiveAway)) {
 
 ?>
 
-
-
-
 <div id="publicApp" ng-app="publicApp" ng-controller="publicController" class="header-cloak" ng-cloak>
    <?php if($_SERVER['REQUEST_URI'] == '/'){ // TODO -- move to a viewfile ?>
     <div class="hero-wrap">
@@ -45,11 +42,9 @@ if (!isset($theGiveAway)) {
     <?php  };
     ?>
 
-    <header class="colophon">
+    <header class="colophon full-sm fixed-sm">
         <div ng-init="socialCounter()" class="socialcounter col-xs-12">
             <nav id="top-nav" class="row">
-
-
                 <div class="hidden-lg hidden-md hidden-sm col-xs-1">
                     <a class="home-hamburger mobile-top-menu-switcher" data-toggle="#mobile-top-menu" href="#">
                         <i class=" m-icon--Close up"></i>
@@ -142,9 +137,8 @@ if (!isset($theGiveAway)) {
                     </div>
                 </form>
 
-                <div class="container full-sm fixed-sm">
                     <div class="top-nav-holder">
-                        <div class="col-xs-7 col-sm-7 col-lg-7 category-menu full-620">
+                        <div class="col-xs-7 col-sm-7 col-lg-6 category-menu full-620">
                             <ul>
 
                                 <li>
@@ -294,7 +288,6 @@ if (!isset($theGiveAway)) {
                             </div>
                         <?php } ?>
                     </div>
-                </div>
                 <?php
                 if (function_exists('is_single')) {
                     $args = array(
