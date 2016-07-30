@@ -2848,6 +2848,10 @@ header.colophon{
   position: relative;
   //margin-left: 3%;
 
+  @media(max-width: 1300px){
+    max-width: 125px;
+  }
+
   a.search-toggle{
     display: none;
   }
@@ -5287,6 +5291,11 @@ body.single{
         font-size: 1.3rem;
         //color: $light-grey;
       }
+    }
+
+    .social-stats__item{
+      position: static;
+      float: left;
     }
 
     .content-tags{

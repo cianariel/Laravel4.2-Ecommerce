@@ -6715,6 +6715,9 @@ header.colophon {
 
 .search-bar {
   position: relative; }
+  @media (max-width: 1300px) {
+    .search-bar {
+      max-width: 125px; } }
   .search-bar a.search-toggle {
     display: none; }
   .search-bar .desktop-search-bar {
@@ -8295,6 +8298,9 @@ body.single .article-content iframe {
       text-align: left; }
     .idea-stories .story-details .author-overview time {
       font-size: 1.3rem; }
+  .idea-stories .story-details .social-stats__item {
+    position: static;
+    float: left; }
   .idea-stories .story-details .content-tags {
     width: 275px;
     margin: 15px auto 40px;
@@ -11741,7 +11747,6 @@ p {
     position: relative;
     font-size: 14px;
     line-height: 26px;
-    padding-left: 30px;
     margin: 3px 0;
     width: 140px;
     height: 25px;
