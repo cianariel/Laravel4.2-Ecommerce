@@ -819,7 +819,7 @@ function getPostsFromYesterday(){
 //    ];
     $dateQuery = 'year='.date_format($date, 'Y').'&monthnum='.date_format($date, 'm').'&day='.date_format($date, 'd') ;
 
-    $posts = new WP_Query($dateQuery . '&post_count=4');
+    $posts = new WP_Query($dateQuery . '&posts_per_page=4');
 
 //    $return['regular'] = array_slice($posts, 0, 3);
 //    $return['featured'] = array_slice($posts, 4, 1);

@@ -5567,7 +5567,7 @@ nav a {
   #hero .head-wrap {
     position: absolute;
     width: 100%;
-    padding-top: 17%;
+    padding-top: 15%;
     z-index: 1; }
     @media (max-width: 620px) {
       #hero .head-wrap {
@@ -8366,7 +8366,7 @@ body.single .article-content iframe {
   margin: 40px 0;
   border: 1px solid #d5dfdf; }
   .idea-stories .author-description h4 {
-    color: #d4d4d4; }
+    color: #9e9e9e; }
   .idea-stories .author-description p {
     color: #9e9e9e; }
 
