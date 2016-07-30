@@ -8347,7 +8347,7 @@ body.single .article-content iframe {
   .idea-stories .story-details .about-author {
     color: #d4d4d4; }
   .idea-stories .story-details .author-overview {
-    padding: 5% 0 0;
+    padding: 2% 0 0;
     text-align: left; }
     .idea-stories .story-details .author-overview h4 {
       text-align: left; }
@@ -8371,7 +8371,7 @@ body.single .article-content iframe {
       .idea-stories .story-details .content-tags a.products-link {
         padding-left: 18px; }
   .idea-stories .story-details .author-image-big img {
-    width: 100%;
+    width: 80%;
     height: auto;
     border-radius: 100px; }
 .idea-stories .author-description {
