@@ -279,7 +279,7 @@
         </div>
 
 
-        <div class="grid-box-1 related-ideas">
+        <div class="grid-box-1 related-ideas"  style="padding:6px 10px;">
          <?php
             $i = 0;
             while ($yesterdaysPosts->have_posts()) : $yesterdaysPosts->the_post();

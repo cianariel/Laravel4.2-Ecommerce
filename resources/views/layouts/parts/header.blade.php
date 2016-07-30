@@ -154,19 +154,19 @@ if (!isset($theGiveAway)) {
                                     </a>
                                 </li>
                                 <li>
-                                    <a class="category-link__smart-body m-icon-text-holder" href="/shop">
+                                    <a class="category-link__smart-body m-icon-text-holder" href="/ideas/smart-body">
                                         <i class="hidden-xs hidden-sm hidden-md m-icon m-icon--wearables"></i>
                                         <span class="m-icon-text"><span class="hidden-xs hidden-sm">Smart</span> Body</span>
                                     </a>
                                 </li>
                                 <li>
-                                    <a class="category-link__smart-travel m-icon-text-holder" href="/shop">
+                                    <a class="category-link__smart-travel m-icon-text-holder" href="/ideas/smart-travel">
                                         <i class="hidden-xs hidden-sm hidden-md m-icon m-icon--travel"></i>
                                         <span class="m-icon-text"><span class="hidden-xs hidden-sm">Smart</span> Travel</span>
                                     </a>
                                 </li>
                                 <li>
-                                    <a class="category-link__smart-entertainment m-icon-text-holder" href="/shop">
+                                    <a class="category-link__smart-entertainment m-icon-text-holder" href="/ideas/smart-entertainment">
                                         <i class="hidden-xs hidden-sm hidden-md m-icon m-icon--video"></i>
                                         <span class="m-icon-text"><span class="hidden-xs hidden-sm">Smart</span> Entertainment</span>
                                     </a>
