@@ -250,48 +250,49 @@ if (!isset($theGiveAway)) {
                                 <a href="#" class="search-toggle visible-xs pull-right"
                                    data-toggle=".mobile-search-bar"><i class="m-icon m-icon--search-id"></i></a>
                         </div>
+                      <?php  if(isset($userData['login']) && $userData['login']){ ?>
 
-                        <div class="notification-popup hidden-soft">
-                            <div class="notification-header">
-                                <span class="pull-left">Notifications</span>
-                                            <span ng-click="readAllNotification()" class="pull-right"
-                                                  id="mark-all-as-read">Mark all as read</span>
-                                <div class="clearfix"></div>
-                            </div>
+                            <div class="notification-popup hidden-soft">
+                                <div class="notification-header">
+                                    <span class="pull-left">Notifications</span>
+                                                <span ng-click="readAllNotification()" class="pull-right"
+                                                      id="mark-all-as-read">Mark all as read</span>
+                                    <div class="clearfix"></div>
+                                </div>
 
-                            <div class="notification-body">
-                                <div class="notification-item" ng-repeat="notice in notifications">
-                                    <img width="40px" ng-src="<?php echo '{{ notice.UserPicture }}' ?>"
-                                         class="profile-photo pull-left">
+                                <div class="notification-body">
+                                    <div class="notification-item" ng-repeat="notice in notifications">
+                                        <img width="40px" ng-src="<?php echo '{{ notice.UserPicture }}' ?>"
+                                             class="profile-photo pull-left">
 
-                                    <div class="notification-row-content read-<?php echo '{{ notice.NoticeRead }}' ?>">
-                                        <div><strong><?php echo '{{ notice.UserName }}' ?></strong>
-                                            <div ng-switch="notice.Section">
-                                                <div ng-switch-when="ideas-heart">Liked</div>
-                                                <div ng-switch-when="product-heart">Liked</div>
-                                                <div ng-switch-when="giveaway-heart">Liked</div>
-                                                <div ng-switch-default>Commented on</div>
+                                        <div class="notification-row-content read-<?php echo '{{ notice.NoticeRead }}' ?>">
+                                            <div><strong><?php echo '{{ notice.UserName }}' ?></strong>
+                                                <div ng-switch="notice.Section">
+                                                    <div ng-switch-when="ideas-heart">Liked</div>
+                                                    <div ng-switch-when="product-heart">Liked</div>
+                                                    <div ng-switch-when="giveaway-heart">Liked</div>
+                                                    <div ng-switch-default>Commented on</div>
+                                                </div>
+                                                <a ng-href="<?php echo '/{{ notice.ItemLink }}' ?>"><?php echo '{{ notice.ItemTitle }}' ?></a>
                                             </div>
-                                            <a ng-href="<?php echo '/{{ notice.ItemLink }}' ?>"><?php echo '{{ notice.ItemTitle }}' ?></a>
+                                            <small class="clearfix time "><?php echo '{{ notice.Time }}' ?></small>
                                         </div>
-                                        <small class="clearfix time "><?php echo '{{ notice.Time }}' ?></small>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                    <div style="text-align: center">
+                                        <a class="btn btn-primary btn-block" style="color: white"
+                                                {{--ng-click="loadMoreNotifications('<?php echo $userData['id']?>',5)"--}}
+                                           href="/user/notification"
+                                           type="button">View All ...
+                                        </a>
                                     </div>
                                     <div class="clearfix"></div>
                                 </div>
-                                <div style="text-align: center">
-                                    <a class="btn btn-primary btn-block" style="color: white"
-                                            {{--ng-click="loadMoreNotifications('<?php echo $userData['id']?>',5)"--}}
-                                       href="/user/notification"
-                                       type="button">View All ...
-                                    </a>
+                                <div class="notification-footer">
+
                                 </div>
-                                <div class="clearfix"></div>
                             </div>
-                            <div class="notification-footer">
-
-                            </div>
-                        </div>
-
+                        <?php } ?>
                     </div>
                 </div>
                 <?php
@@ -398,7 +399,7 @@ if (!isset($theGiveAway)) {
         <div class="profile-background">
             <div class="text-center">
                 <!-- <img id="currentPhoto" class="profile-photo" width="150px" src="<?php echo isset($userData['medias'][0]['media_link']) ? $userData['medias'][0]['media_link'] : "" ?>" onerror="this.src='http://s3-us-west-1.amazonaws.com/ideaing-01/thumb-product-568d28a6701c7-no-item.jpg'" width="170"> -->
-                <img id="currentPhoto" class="profile-photo" width="150px" ng-src='<?php echo "{{ mediaLink }}"  ?>'
+                <img id="currentPhoto" class="profile-photo category-hover-border" width="150px" ng-src='<?php echo "{{ mediaLink }}"  ?>'
                      onerror="this.src='http://s3-us-west-1.amazonaws.com/ideaing-01/thumb-product-568d28a6701c7-no-item.jpg'"
                      width="170">
             </div>

@@ -73,40 +73,46 @@ a:hover, a:focus{
 
 // CATEGORY COLORS
 
-.category-smarthome{
+@mixin category-color($color) {
   .category-color{
-    color: $iridium !important;
+    color: $color !important;
   }
   .category-bg{
-    background-color: $iridium !important;;
+    background-color: $color !important;
   }
   .category-hover-color:hover{
-    color: $iridium !important;;
+    color: $color !important;;
   }
+  .category-hover-border:hover{
+    border-color:$color;
+  }
+
+  .dropcapped{
+    p:first-child{
+      &:first-letter {
+        color: $color;
+      }
+    }
+  }
+  .float-thumbs .thumb-box strong{
+    background-color: rgba($color, .7);
+  }
+  .m-icon--ScrollingHeaderHeart .path1:before{
+    color: $color;
+  }
+}
+
+.category-smarthome{
+  @include category-color($iridium)
 }
 .category-smart-travel{
-  .category-color{
-    color: $dark-orange !important;;
-  }
-  .category-bg{
-    background-color: $dark-orange !important;;
-  }
+  @include category-color($dark-orange)
 }
 .category-smart-body{
-  .category-color{
-    color: $facebook-blue !important;;
-  }
-  .category-bg{
-    background-color: $facebook-blue !important;;
-  }
+  @include category-color($facebook-blue)
 }
 .category-smart-entertainment{
-  .category-color{
-    color: $pine-green !important;;
-  }
-  .category-bg{
-    background-color: $pine-green !important;;
-  }
+  @include category-color($pine-green)
 }
 
 .category-link{
@@ -802,7 +808,7 @@ li.nested-parent{
 .dropcapped{
   p:first-child{
     &:first-letter{
-      color: $sky-blue;
+      //color: $sky-blue;
       font-size: 5rem;
       line-height: .7;
       float: left;
@@ -4891,7 +4897,7 @@ body.single{
 
   .like-nav{
   //  float: right;
-    width: 50px;
+    width: 300px;
   //
   //  .heart-item{
   //    width: 20px;
@@ -5053,12 +5059,9 @@ body.single{
     	display:inline-block;
       @media (min-width: 620px){
         .thumb-box{
-          //max-width: 284px;
           margin-right: 2px;
           display: inline-block;
           vertical-align: top;
-
-
         }
       }
     }
@@ -5080,9 +5083,6 @@ body.single{
    .thumb-box{
       position:relative;
       display:inline-block;
-
-      
-
      a{
        color:#fff;
      }
@@ -5098,7 +5098,7 @@ body.single{
       font-weight: normal;
       line-height:1.5rem;
       text-align:center;
-      background:rgba($iridium, .7);
+      //background:rgba($iridium, .7);
       color:#fff;
     }
   }
@@ -8020,9 +8020,9 @@ body.shop-category{
 .profile-photo{
     border-radius: 100px;
     border: 3px solid #bebbbc;
-    &:hover{
-        border-color: $iridium;
-    }                     
+    //&:hover{
+    //    border-color: $iridium;
+    //}
 }
 .like-nav{
     .profile-photo{
