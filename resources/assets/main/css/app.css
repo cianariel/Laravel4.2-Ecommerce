@@ -4609,6 +4609,9 @@ a:hover, a:focus {
     .category-link__shop {
       float: right; } }
 
+.category-menu {
+  padding-top: 5px; }
+
 .blue-glow {
   -webkit-stroke-width: 5.3px;
   -webkit-stroke-color: #1ABCF5;
@@ -5623,6 +5626,7 @@ nav a {
       #hero.details-hero h1 {
         max-width: 60%; } }
     #hero.details-hero h1 span {
+      font-weight: 400;
       background-position-x: 3px; }
   #hero.details-hero .color-overlay {
     display: none; }
@@ -6878,7 +6882,7 @@ header.colophon {
   #top-nav .category-menu ul > li:first-child a {
     padding-left: 0px; }
   #top-nav .category-menu ul > li > a i.m-icon {
-    margin-right: 2px;
+    margin-right: 8px;
     margin-top: -2px; }
   #top-nav .category-menu ul > li a {
     padding-right: 0px;

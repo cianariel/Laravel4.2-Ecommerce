@@ -157,13 +157,9 @@ a:hover, a:focus{
     }
 
   }
-  //.category-menu{
-  //  @media(max-width: 1080px){
-  //    .m-icon{
-  //      display: none;
-  //    }
-  //  }
-  //}
+  .category-menu{
+    padding-top: 5px;
+  }
 
 .blue-glow{
   -webkit-stroke-width: 5.3px;
@@ -1155,7 +1151,7 @@ nav {
 
 
       span{
-        //padding: 5px 15px;
+        font-weight: 400;
         background-position-x: 3px;
       }
     }
@@ -3023,7 +3019,7 @@ header.colophon{
             }
             
              > a i.m-icon{
-                margin-right: 2px;
+                margin-right: 8px;
                 margin-top: -2px;
             }
             
