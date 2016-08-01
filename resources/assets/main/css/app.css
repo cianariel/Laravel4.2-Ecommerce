@@ -6791,7 +6791,8 @@ header.colophon {
       right: 0; }
       .search-toggle .toggle-button {
         bottom: 25px;
-        top: auto; } }
+        top: auto;
+        right: 6px; } }
 
 .search-bar {
   opacity: 0; }
