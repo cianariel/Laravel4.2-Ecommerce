@@ -159,6 +159,7 @@ a:hover, a:focus{
   }
   .category-menu{
     padding-top: 2px;
+    margin-left: 3%;
   }
 
 .blue-glow{
@@ -238,7 +239,7 @@ ul.pointed{
 
 
 body.homepage{
-  #ideaing-logo .m-icon{
+  .ideaing-logo .m-icon{
     filter:none !important;
     -webkit-filter:none !important;
   }
@@ -1452,16 +1453,25 @@ body.contactus-page
   background-size: contain;
 }
 
-#ideaing-logo{
+.logo-holder{
+  width: 151px;
+  float: left;
+}
+
+.ideaing-logo{
   //padding: 9px;
   max-width: 100%;
   margin: 0 0 0 4px;
   transition: all 5s;
     .m-icon{
       position: absolute;
-      left: 10px;
-      top: 0;
-      font-size: 42px;
+      font-size: 35px;
+
+      &:not(.m-icon--bulb2){
+        left: 10px;
+        top: 3px;
+      }
+
       &.default-logo{
         filter:grayscale(100%);
         -webkit-filter:grayscale(100%);
@@ -1469,6 +1479,8 @@ body.contactus-page
       &.red-logo,
       &.red-scroll-logo{
         opacity:0;
+
+
 
         &:hover{
           opacity:1 !important;
@@ -2697,7 +2709,12 @@ article.product{
 
 
 header.colophon{
-    min-height: 57px;
+    min-height: 53px;
+
+    @media(max-width: 620px){
+      min-height: 81px;
+    }
+
     max-width: 1400px;
     margin: 0 auto;
     overflow: hidden;
@@ -2706,6 +2723,10 @@ header.colophon{
     }
     #top-nav{
       border-bottom:1px solid rgba(193, 193, 193, 0.22);
+
+      .notification-holder{
+        padding-top: 4px;
+      }
 
       a.signin{
 
@@ -2784,7 +2805,7 @@ header.colophon{
         }
 
 
-        a#ideaing-logo {
+        a.ideaing-logo {
           display: block;
           min-height: 60px;
           padding: 0;
@@ -2853,32 +2874,61 @@ header.colophon{
     right: -7px;
   }
 }
-#top-nav{
-  .search-bar a.search-toggle{
-    padding-top: 6px;
-    float: right;
-  }
 
-}
-
-.toggle-search{
-  float:right;
+.search-toggle{
   width: 30px;
+  position: relative;
+  overflow: visible;
+  height: 40px;
+
+  .toggle-button,
+  .search-bar{
+    position: absolute;
+    right: 0;
+    top: 4px;
+
+    input{
+      width: 100%;
+    }
+  }
+  .toggle-button{
+    right:12px;
+  }
+  @media (max-width: 620px){
+    position: absolute;
+    right:0;
+
+    .toggle-button{
+      bottom: 25px;
+      top: auto;
+    }
+  }
 }
 .search-bar{
-  position: relative;
+  opacity: 0;
+
+
+  //position: relative;
   //margin-left: 3%;
+  //position: absolute;
+  //right: 0;
 
-  @media(max-width: 1300px){
-    max-width: 125px;
-  }
+  //@media(max-width: 1300px){
+  //  max-width: 125px;
+  //}
 
-  a.search-toggle{
-    display: none;
+  //a.search-toggle{
+  //  display: none;
+  //}
+
+  //transition:  all .8s;
+
+  .search-input-holder{
+    width: 100%;
   }
 
   .desktop-search-bar{
-        position: relative;
+        //position: relative;
         //min-width: 153px;
         input{
           height: 35px;
@@ -4539,42 +4589,10 @@ header.sub-head{
     }
 
   }
-
-  .category-nav{
-      //li.active a:not(.home-link)::after, li a:not(.home-link):hover::after{
-      //  content: ' ';
-      //  width: 17px;
-      //  height: 12px;
-      //  font-size: 1.7rem;
-      //  position: absolute;
-      //  bottom: -6px;
-      //  color: #fff;
-      //  background: url(/assets/images/pointer-arrow-grey.png) no-repeat #fff;
-      //  left: 50%;
-      //  margin-left: -8px;
-      //}
-  }
   li{
   	&.active{
       background: #fff;
-	    //a.home-link{
-	    //  color: $iridium;
-	    //  background-image: url('/assets/images/house-pink.png');
-	    //  background-position: -18px 10px;
-	    //  background-size: 48px;
-	    //}
-	    //a.all-link{
-	    //  color: $iridium;
-	    //}
-	    //a.ideas-link{
-	    //  color: $sky-blue;
-	    //}
-	    //a.products-link{
-	    //  color: $pine-green;
-	    //}
-	    //a.photos-link{
-	    //  color: $sky-blue;
-	    //}
+
   	}
   }
 
@@ -6569,6 +6587,7 @@ footer.about-footer{
     }
     .category-menu {
         padding-left: 4%;
+        padding-top: 6px;
     }
   }
 
@@ -7096,7 +7115,7 @@ footer.about-footer{
     a {
       margin-left: 0;
       
-      &#ideaing-logo{
+      &.ideaing-logo{
           width: auto;
           text-indent: 0px;
           .m-icon{
@@ -7152,7 +7171,7 @@ footer.about-footer{
 
 
 
-  #ideaing-logo {
+  .ideaing-logo {
     &.top-logo{
       margin-top: 10px;
     }

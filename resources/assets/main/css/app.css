@@ -4607,7 +4607,8 @@ a:hover, a:focus {
       float: right; } }
 
 .category-menu {
-  padding-top: 2px; }
+  padding-top: 2px;
+  margin-left: 3%; }
 
 .blue-glow {
   -webkit-stroke-width: 5.3px;
@@ -4673,7 +4674,7 @@ ul.pointed li:before {
   color: #FF0042;
   /* or whatever color you prefer */ }
 
-body.homepage #ideaing-logo .m-icon {
+body.homepage .ideaing-logo .m-icon {
   filter: none !important;
   -webkit-filter: none !important; }
 
@@ -5855,32 +5856,37 @@ body.contactus-page .mid-nav .rooms.extra-nav,
   min-width: 110px;
   background-size: contain; }
 
-#ideaing-logo {
+.logo-holder {
+  width: 151px;
+  float: left; }
+
+.ideaing-logo {
   max-width: 100%;
   margin: 0 0 0 4px;
   transition: all 5s; }
-  #ideaing-logo .m-icon {
+  .ideaing-logo .m-icon {
     position: absolute;
-    left: 10px;
-    top: 0;
-    font-size: 42px; }
-    #ideaing-logo .m-icon.default-logo {
+    font-size: 35px; }
+    .ideaing-logo .m-icon:not(.m-icon--bulb2) {
+      left: 10px;
+      top: 3px; }
+    .ideaing-logo .m-icon.default-logo {
       filter: grayscale(100%);
       -webkit-filter: grayscale(100%); }
-    #ideaing-logo .m-icon.red-logo, #ideaing-logo .m-icon.red-scroll-logo {
+    .ideaing-logo .m-icon.red-logo, .ideaing-logo .m-icon.red-scroll-logo {
       opacity: 0; }
-      #ideaing-logo .m-icon.red-logo:hover, #ideaing-logo .m-icon.red-scroll-logo:hover {
+      .ideaing-logo .m-icon.red-logo:hover, .ideaing-logo .m-icon.red-scroll-logo:hover {
         opacity: 1 !important; }
-  #ideaing-logo .scroll-logo.m-icon {
+  .ideaing-logo .scroll-logo.m-icon {
     display: none; }
-  #ideaing-logo .m-icon:first-child {
+  .ideaing-logo .m-icon:first-child {
     display: block; }
-  #ideaing-logo:hover > .m-icon {
+  .ideaing-logo:hover > .m-icon {
     -webkit-filter: none;
     filter: none; }
-    #ideaing-logo:hover > .m-icon:first-child {
+    .ideaing-logo:hover > .m-icon:first-child {
       display: none; }
-    #ideaing-logo:hover > .m-icon:last-child {
+    .ideaing-logo:hover > .m-icon:last-child {
       display: block;
       opacity: 1; }
 
@@ -6663,14 +6669,19 @@ article.product {
   display: none; }
 
 header.colophon {
-  min-height: 57px;
+  min-height: 53px;
   max-width: 1400px;
   margin: 0 auto;
   overflow: hidden; }
+  @media (max-width: 620px) {
+    header.colophon {
+      min-height: 81px; } }
   header.colophon a {
     color: #999; }
   header.colophon #top-nav {
     border-bottom: 1px solid rgba(193, 193, 193, 0.22); }
+    header.colophon #top-nav .notification-holder {
+      padding-top: 4px; }
     header.colophon #top-nav a.signin {
       float: right;
       white-space: nowrap;
@@ -6719,7 +6730,7 @@ header.colophon {
           display: none; }
         header.colophon.scroll-header #top-nav li a:after {
           top: 2px; }
-      header.colophon.scroll-header #top-nav a#ideaing-logo {
+      header.colophon.scroll-header #top-nav a.ideaing-logo {
         display: block;
         min-height: 60px;
         padding: 0;
@@ -6728,9 +6739,9 @@ header.colophon {
         background-size: initial;
         margin-right: 0;
         padding-top: 11px; }
-        header.colophon.scroll-header #top-nav a#ideaing-logo .m-icon {
+        header.colophon.scroll-header #top-nav a.ideaing-logo .m-icon {
           display: none; }
-        header.colophon.scroll-header #top-nav a#ideaing-logo .scroll-logo.m-icon {
+        header.colophon.scroll-header #top-nav a.ideaing-logo .scroll-logo.m-icon {
           display: block;
           width: 30px;
           height: 40px; } }
@@ -6759,36 +6770,46 @@ header.colophon {
     top: 0px;
     right: -7px; } }
 
-#top-nav .search-bar a.search-toggle {
-  padding-top: 6px;
-  float: right; }
-
-.toggle-search {
-  float: right;
-  width: 30px; }
+.search-toggle {
+  width: 30px;
+  position: relative;
+  overflow: visible;
+  height: 40px; }
+  .search-toggle .toggle-button,
+  .search-toggle .search-bar {
+    position: absolute;
+    right: 0;
+    top: 4px; }
+    .search-toggle .toggle-button input,
+    .search-toggle .search-bar input {
+      width: 100%; }
+  .search-toggle .toggle-button {
+    right: 12px; }
+  @media (max-width: 620px) {
+    .search-toggle {
+      position: absolute;
+      right: 0; }
+      .search-toggle .toggle-button {
+        bottom: 25px;
+        top: auto; } }
 
 .search-bar {
-  position: relative; }
-  @media (max-width: 1300px) {
-    .search-bar {
-      max-width: 125px; } }
-  .search-bar a.search-toggle {
-    display: none; }
-  .search-bar .desktop-search-bar {
-    position: relative; }
-    .search-bar .desktop-search-bar input {
-      height: 35px;
-      -webkit-transition: width .2s;
-      /* Safari */
-      transition: width .2s; }
-    .search-bar .desktop-search-bar > input:focus {
-      border-color: #ff0041;
-      width: 100%; }
-    .search-bar .desktop-search-bar .m-icon {
-      position: absolute;
-      left: 10px;
-      top: 7px;
-      z-index: 10; }
+  opacity: 0; }
+  .search-bar .search-input-holder {
+    width: 100%; }
+  .search-bar .desktop-search-bar input {
+    height: 35px;
+    -webkit-transition: width .2s;
+    /* Safari */
+    transition: width .2s; }
+  .search-bar .desktop-search-bar > input:focus {
+    border-color: #ff0041;
+    width: 100%; }
+  .search-bar .desktop-search-bar .m-icon {
+    position: absolute;
+    left: 10px;
+    top: 7px;
+    z-index: 10; }
   .search-bar input {
     min-width: 128px;
     color: #999;
@@ -9259,7 +9280,8 @@ footer.about-footer {
       #top-nav a.signin i {
         display: none; }
     #top-nav .category-menu {
-      padding-left: 4%; }
+      padding-left: 4%;
+      padding-top: 6px; }
 
   .main-content.landing {
     padding: 0 0 20px; }
@@ -9577,13 +9599,13 @@ footer.about-footer {
     float: right; }
   #top-nav a {
     margin-left: 0; }
-    #top-nav a#ideaing-logo {
+    #top-nav a.ideaing-logo {
       width: auto;
       text-indent: 0px; }
-      #top-nav a#ideaing-logo .m-icon {
+      #top-nav a.ideaing-logo .m-icon {
         display: none;
         font-size: 38px; }
-      #top-nav a#ideaing-logo .m-icon.scroll-logo {
+      #top-nav a.ideaing-logo .m-icon.scroll-logo {
         display: block; }
 
   .mid-nav a .right-menu-arrow {
@@ -9604,7 +9626,7 @@ footer.about-footer {
     .colphon .search-bar #hero-nav.all-link {
       background-position: 4px top; }
 
-  #ideaing-logo.top-logo {
+  .ideaing-logo.top-logo {
     margin-top: 10px; }
 
   header.colophon .search-bar input {

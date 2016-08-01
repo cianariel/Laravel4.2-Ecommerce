@@ -42,7 +42,7 @@ if (!isset($theGiveAway)) {
     <?php  };
     ?>
 
-    <header class="colophon full-sm fixed-sm">
+    <header class="colophon container full-sm fixed-sm">
         <div ng-init="socialCounter()" class="socialcounter col-xs-12">
             <nav id="top-nav" class="row">
                 <div class="hidden-lg hidden-md hidden-sm col-xs-1">
@@ -53,9 +53,9 @@ if (!isset($theGiveAway)) {
                 </div>
 
 
-                <div class="col-xs-1 col-md-2 text-center logo-holder">
-                    <a id="ideaing-logo" class="center-block hidden-sm hidden-xs" href="/">
-                               <span class="m-icon m-icon--logo-with-text-black-blue default-logo" style="font-size: 42px">
+                <div class="text-center logo-holder">
+                    <a class="ideaing-logo center-block hidden-sm hidden-xs" href="/">
+                               <span class="m-icon m-icon--logo-with-text-black-blue default-logo">
                 <span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span><span class="path6"></span><span class="path7"></span><span class="path8"></span><span class="path9"></span><span class="path10"></span><span class="path11"></span><span class="path12"></span><span class="path13"></span><span class="path14"></span><span class="path15"></span><span class="path16"></span><span class="path17"></span><span class="path18"></span><span class="path19"></span><span class="path20"></span><span class="path21"></span><span class="path22"></span><span class="path23"></span><span class="path24"></span><span class="path25"></span><span class="path26"></span><span class="path27"></span><span class="path28"></span><span class="path29"></span><span class="path30"></span><span class="path31"></span><span class="path32"></span><span class="path33"></span><span class="path34"></span><span class="path35"></span><span class="path36"></span><span class="path37"></span><span class="path38"></span><span class="path39"></span><span class="path40"></span>
                 </span>
                         <i class="m-icon m-icon--bulb2 scroll-logo default-logo">
@@ -76,7 +76,7 @@ if (!isset($theGiveAway)) {
                                     <span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span><span class="path6"></span><span class="path7"></span><span class="path8"></span><span class="path9"></span><span class="path10"></span><span class="path11"></span><span class="path12"></span><span class="path13"></span><span class="path14"></span><span class="path15"></span><span class="path16"></span><span class="path17"></span><span class="path18"></span><span class="path19"></span><span class="path20"></span><span class="path21"></span><span class="path22"></span><span class="path23"></span><span class="path24"></span><span class="path25"></span><span class="path26"></span><span class="path27"></span><span class="path28"></span><span class="path29"></span><span class="path30"></span><span class="path31"></span><span class="path32"></span><span class="path33"></span><span class="path34"></span><span class="path35"></span><span class="path36"></span><span class="path37"></span><span class="path38"></span><span class="path39"></span><span class="path40"></span>
                                 </span>
                     </a>
-                    <a id="ideaing-logo" class="center-block visible-sm visible-xs" href="/">
+                    <a class="ideaing-logo center-block visible-sm visible-xs" href="/">
                         <i class="m-icon m-icon--bulb2 scroll-logo default-logo">
                             <span class="path1"></span><span class="path2"></span><span
                                     class="path3"></span><span class="path4"></span><span
@@ -109,36 +109,13 @@ if (!isset($theGiveAway)) {
                             <span class="notification-count ng-binding">1</span>
                         </a>
                     <?php } ?>
-                        <a href="#" class="search-toggle visible-xs pull-right"
-                           data-toggle=".mobile-search-bar"><i class="m-icon m-icon--search-id"></i></a>
+
                 </div>
 
-                <form class="search-bar" ng-app="publicApp" ng-controller="SearchController"
-                      action="/search-form-query">
-                    <div class="mobile-search-bar col-xs-12" ng-cloak>
-                        <button type="submit">
-                        <span class="m-icon--search-id">
-                        </span>
-                        </button>
-                        <input ng-click="toggleSearch()" ng-change="openSearchDropdown(query)" ng-model="query"
-                               ng-model-options='{ debounce: 800 }' class="form-control col-xs-10 top-search"
-                               type="text"
-                               value="Search..." placeholder="Search for products and ideas..." name="search"
-                               autocomplete="off"/>
-                        <div id="suggest-category" ng-class="{shown: open, hidden: !open}"
-                             ng-show="categorySuggestions.length">
-                            <?php // have to use only pure php includes, or the CMS wont read it
-                            include('/var/www/ideaing/resources/views/layouts/parts/search-dropdown.blade.php')
-                            ?>
-                        </div>
-                        <span class="close-button close-login" data-toggle=".mobile-search-bar">
-                            <i class="turn-left m-icon--Header-Dropdown"></i>
-                        </span>
-                    </div>
-                </form>
+
 
                     <div class="top-nav-holder">
-                        <div class="col-xs-7 col-sm-7 col-lg-6 category-menu full-620">
+                        <div class="col-xs-7 col-sm-7 col-lg-8 category-menu full-620">
                             <ul>
 
                                 <li>
@@ -175,26 +152,23 @@ if (!isset($theGiveAway)) {
                             </ul>
                         </div>
 
-                        <form class="search-bar col-sm-2 col-lg-2 hidden-xs" ng-app="publicApp"
-                              ng-controller="SearchController" action="/search-form-query" autocomplete="off">
-                                    <span class="search-input-holder desktop-search-bar visible-sm visible-md visible-lg pull-right">
-                                            <i class="m-icon m-icon--search-id"></i>
-                                            <input ng-click="toggleSearch()" id="search-input"
-                                                   ng-change="openSearchDropdown(query)" ng-model="query"
-                                                   ng-model-options='{ debounce: 800 }' class="form-control top-search"
-                                                   type="text" name="search" placeholder="Search..."/>
-                                        <div id="suggest-category" ng-class="{shown: open, hidden: !open}"
-                                             ng-show="categorySuggestions.length">
-                                            <?php // have to use only pure php includes, or the CMS wont read it
-                                            include('/var/www/ideaing/resources/views/layouts/parts/search-dropdown.blade.php')
-                                            ?>
-
-                                        </div>
+                        <div class="search-toggle col-xs-1 pull-left">
+                            <form class="search-bar col-sm-2 col-lg-2" ng-app="publicApp" ng-controller="SearchController" action="/search-form-query" autocomplete="off">
+                                        <span class="search-input-holder desktop-search-bar pull-right">
+                                                <input ng-click="toggleSearch()" id="search-input"
+                                                       ng-change="openSearchDropdown(query)" ng-model="query"
+                                                       ng-model-options='{ debounce: 800 }' class="form-control top-search"
+                                                       type="text" name="search" placeholder="Search..."/>
+                                            <div id="suggest-category" ng-class="{shown: open, hidden: !open}"
+                                                 ng-show="categorySuggestions.length">
+                                                <?php // have to use only pure php includes, or the CMS wont read it
+                                                include('/var/www/ideaing/resources/views/layouts/parts/search-dropdown.blade.php')
+                                                ?>
+                                            </div>
                                         </span>
-                                    <span class="search-input-holder visible-xs">
-                                        <i class="m-icon m-icon--search-id"></i>
-                                    </span>
-                        </form>
+                            </form>
+                            <a href="#" class="toggle-button"><i class="m-icon m-icon--search-id"></i></a>
+                        </div>
 
                         <div class="col-xs-5 col-sm-2 hidden-xs pull-right user-controls">
                                 <?php
@@ -241,8 +215,8 @@ if (!isset($theGiveAway)) {
                                 <a class="pull-right signin" data-toggle="modal" data-target="#myModal" href="/login"><i
                                             class="m-icon m-icon--user"></i> Sign up</a>
                                 <?php } ?>
-                                <a href="#" class="search-toggle visible-xs pull-right"
-                                   data-toggle=".mobile-search-bar"><i class="m-icon m-icon--search-id"></i></a>
+
+
                         </div>
                       <?php  if(isset($userData['login']) && $userData['login']){ ?>
 
@@ -287,6 +261,8 @@ if (!isset($theGiveAway)) {
                                 </div>
                             </div>
                         <?php } ?>
+                                <!--<a href="#" class="search-toggle pull-right" data-toggle=".mobile-search-bar"><i class="m-icon m-icon--search-id"></i></a>-->
+
                     </div>
                 <?php
                 if (function_exists('is_single')) {
