@@ -6714,7 +6714,7 @@ header.colophon {
   min-height: 53px;
   max-width: 1400px;
   margin: 0 auto;
-  overflow: hidden; }
+  overflow: visible; }
   @media (max-width: 620px) {
     header.colophon {
       min-height: 81px; } }
@@ -7000,16 +7000,21 @@ header.colophon {
     right: 0px;
     top: 70px;
     z-index: 100;
-    border-radius: 20px;
-    display: none; }
+    border-radius: 20px; }
     #top-nav .top-nav-holder .notification-popup .notification-header {
       border-top-left-radius: 20px;
       border-top-right-radius: 20px;
       background: #4389c8;
-      padding: 30px 15px;
+      padding: 10px 15px;
       color: #fff; }
       #top-nav .top-nav-holder .notification-popup .notification-header #mark-all-as-read {
         cursor: pointer; }
+      #top-nav .top-nav-holder .notification-popup .notification-header ul {
+        width: 200px;
+        margin: 0 auto;
+        display: block; }
+      #top-nav .top-nav-holder .notification-popup .notification-header a {
+        color: #fff; }
     #top-nav .top-nav-holder .notification-popup .notification-body {
       background: #fff;
       border-left: 1px solid #ededed;
@@ -7047,6 +7052,14 @@ header.colophon {
       content: ' ';
       color: #4389c8;
       top: -11px; }
+    #top-nav .top-nav-holder .notification-popup .profile-menu {
+      overflow: hidden; }
+      #top-nav .top-nav-holder .notification-popup .profile-menu a {
+        padding-left: 15px;
+        display: block;
+        width: 100%;
+        text-align: center;
+        padding-bottom: 25px; }
   #top-nav .top-nav-holder .profilelinks-popup {
     position: absolute;
     max-height: 600px;
@@ -8137,6 +8150,8 @@ header.sub-head {
     .like-nav li a.likes {
       color: #ededed !important;
       font-size: 1.6rem; }
+      .like-nav li a.likes span {
+        display: block; }
   .like-nav li.view-counter {
     float: right;
     width: 34px; }
@@ -8451,6 +8466,8 @@ body.single .article-content iframe {
     @media (max-width: 1200px) {
       .idea-stories .story-details .social-stats__item {
         padding-left: 14%; } }
+    .idea-stories .story-details .social-stats__item .value {
+      white-space: nowrap; }
   .idea-stories .story-details .content-tags {
     width: 275px;
     margin: 15px auto 40px;

@@ -2810,14 +2810,15 @@ article.product{
 
 header.colophon{
     min-height: 53px;
+    max-width: 1400px;
+    margin: 0 auto;
+    overflow: visible;
 
     @media(max-width: 620px){
       min-height: 81px;
     }
 
-    max-width: 1400px;
-    margin: 0 auto;
-    overflow: hidden;
+
     a{
       color: #999;
     }
@@ -3253,17 +3254,25 @@ header.colophon{
             top: 70px;
             z-index: 100;
             border-radius: 20px;
-            display: none;
+            //display: none;
 
             .notification-header{
                 border-top-left-radius: 20px;
                 border-top-right-radius: 20px;
                 background: #4389c8;
-                padding: 30px 15px;
+                padding: 10px 15px;
                 color: #fff;
                 #mark-all-as-read{
                     cursor: pointer;
                 }
+              ul{
+                width: 200px;
+                margin: 0 auto;
+                display: block;
+              }
+              a{
+                color: #fff;
+              }
             }
             
             .notification-body{
@@ -3313,6 +3322,21 @@ header.colophon{
                 color: #4389c8;        
                 top: -11px;        
             }
+
+
+             .profile-menu{
+                overflow: hidden;
+
+               a{
+                 padding-left: 15px;
+                 display: block;
+                 width: 100%;
+                 text-align: center;
+                 padding-bottom: 25px;
+               }
+             }
+
+
         }
         .profilelinks-popup{
             position: absolute;
@@ -4996,6 +5020,10 @@ header.sub-head{
       &.likes{
         color: $light-grey !important;
         font-size: 1.6rem;
+
+        span{
+          display: block;
+        }
       }
 
 
@@ -5476,6 +5504,10 @@ body.single{
 
       @media (max-width:1200px){
         padding-left: 14%;
+      }
+
+      .value{
+        white-space: nowrap;
       }
     }
 

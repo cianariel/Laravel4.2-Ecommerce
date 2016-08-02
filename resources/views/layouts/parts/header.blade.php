@@ -207,7 +207,7 @@ if (!isset($theGiveAway)) {
                                 </div>
 
                                 <?php }  else { ?>
-                                <a class="new-message" href="#" ng-click="getEmailPopup(true)">
+                                        <a class="new-message" href="#" ng-click="getEmailPopup(true)">
                                     <i class="m-icon m-icon--Notifications"></i>
                                     <span class="notification-count ng-binding">1</span>
                                 </a>
@@ -225,35 +225,58 @@ if (!isset($theGiveAway)) {
                                                 <span ng-click="readAllNotification()" class="pull-right"
                                                       id="mark-all-as-read">Mark all as read</span>
                                     <div class="clearfix"></div>
+                                    <ul>
+                                        <li><a href="#" class="active" data-toggle=".notifs" data-hide=".prof-menu">Notifications |</a></li>
+                                        <li><a href="#" data-toggle=".prof-menu"  data-hide=".notifs">My profile</a></li>
+                                    </ul>
                                 </div>
 
                                 <div class="notification-body">
-                                    <div class="notification-item" ng-repeat="notice in notifications">
-                                        <img width="40px" ng-src="<?php echo '{{ notice.UserPicture }}' ?>"
-                                             class="profile-photo pull-left">
+                                    <div class="tab notifs">
+                                        <div class="notification-item" ng-repeat="notice in notifications">
+                                            <img width="40px" ng-src="<?php echo '{{ notice.UserPicture }}' ?>" class="profile-photo pull-left">
 
-                                        <div class="notification-row-content read-<?php echo '{{ notice.NoticeRead }}' ?>">
-                                            <div><strong><?php echo '{{ notice.UserName }}' ?></strong>
-                                                <div ng-switch="notice.Section">
-                                                    <div ng-switch-when="ideas-heart">Liked</div>
-                                                    <div ng-switch-when="product-heart">Liked</div>
-                                                    <div ng-switch-when="giveaway-heart">Liked</div>
-                                                    <div ng-switch-default>Commented on</div>
+                                            <div class="notification-row-content read-<?php echo '{{ notice.NoticeRead }}' ?>">
+                                                <div><strong><?php echo '{{ notice.UserName }}' ?></strong>
+                                                    <div ng-switch="notice.Section">
+                                                        <div ng-switch-when="ideas-heart">Liked</div>
+                                                        <div ng-switch-when="product-heart">Liked</div>
+                                                        <div ng-switch-when="giveaway-heart">Liked</div>
+                                                        <div ng-switch-default>Commented on</div>
+                                                    </div>
+                                                    <a ng-href="<?php echo '/{{ notice.ItemLink }}' ?>"><?php echo '{{ notice.ItemTitle }}' ?></a>
                                                 </div>
-                                                <a ng-href="<?php echo '/{{ notice.ItemLink }}' ?>"><?php echo '{{ notice.ItemTitle }}' ?></a>
+                                                <small class="clearfix time "><?php echo '{{ notice.Time }}' ?></small>
                                             </div>
-                                            <small class="clearfix time "><?php echo '{{ notice.Time }}' ?></small>
+                                            <div class="clearfix"></div>
+                                        </div>
+                                        <div style="text-align: center">
+                                            <a class="btn btn-primary btn-block" style="color: white"
+                                               href="/user/notification"
+                                               type="button">View All ...
+                                            </a>
                                         </div>
                                         <div class="clearfix"></div>
                                     </div>
-                                    <div style="text-align: center">
-                                        <a class="btn btn-primary btn-block" style="color: white"
-                                                {{--ng-click="loadMoreNotifications('<?php echo $userData['id']?>',5)"--}}
-                                           href="/user/notification"
-                                           type="button">View All ...
-                                        </a>
+                                    <div class="tab prof-menu">
+                                        <div class="notification-item profile-menu">
+                                            <div class="menu-group">
+                                                <div><a href="/user/profile">My Profile</a></div>
+                                                <div><a href="/user/notification">Show Notifications</a></div>
+                                                <div><a href="#" class="edit-profile-link" ng-click="openProfileSetting()">Edit
+                                                        Profile</a></div>
+                                                <?php if(isset($isAdmin) && ($isAdmin == true)){ ?>
+                                                <div><a href="/admin/dashboard" target="_blank" class="edit-profile-link">Admin
+                                                        Panel</a></div>
+                                                <?php } ?>
+
+                                            </div>
+                                            <div class="menu-group">
+                                                <div><a href="#">Invite Friends</a></div>
+                                            </div>
+                                            <div class="log-out"><a ng-click="logoutUser()" href="#"><i class="m-icon--Logout-Active"></i> Log Out</a></div>
+                                        </div>
                                     </div>
-                                    <div class="clearfix"></div>
                                 </div>
                                 <div class="notification-footer">
 
