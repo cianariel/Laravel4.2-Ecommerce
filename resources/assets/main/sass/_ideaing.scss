@@ -172,6 +172,8 @@ a:hover, a:focus{
       //}
       @media(max-width: 620px){
         float: right;
+
+        margin-right: 2px !important;
       }
     }
 
@@ -219,7 +221,7 @@ a:hover, a:focus{
 
 .category-menu{
   padding-top: 2px;
-  margin-left: 3%;
+  //margin-left: 3%;
 }
 
 .blue-glow{
@@ -2807,6 +2809,14 @@ article.product{
   display: none;
 }
 
+.logged-in{
+  .user-controls{
+    @media(max-width: 620px){
+      right: 3px !important;
+    }
+  }
+}
+
 
 header.colophon{
     min-height: 53px;
@@ -2831,10 +2841,11 @@ header.colophon{
 
       a.signin{
 
-            float: right;
+            //float: right;
             white-space: nowrap;
             padding-right: 0px;
             padding-top: 16px;
+            padding-left: 3px;
             font-size: 1rem;
 
             //.m-icon{
@@ -2865,12 +2876,14 @@ header.colophon{
 
   .user-controls{
     max-width: 143px;
+    padding-right: 0;
 
 
     @media(max-width: 620px){
       position: absolute;
       top: 0;
       right: -9px;
+      max-width: 127px;
     }
   }
 
@@ -3013,7 +3026,7 @@ header.colophon{
     .toggle-button{
       bottom: 25px;
       top: auto;
-      right: 6px;
+      right: -11px;
     }
   }
 }
@@ -3145,6 +3158,7 @@ header.colophon{
     padding: 8px !important;
     height: 33px;
     margin-top: 3px;
+    margin-left: -11px;
 
     i{
       font-size: 1.8rem;
@@ -3178,7 +3192,7 @@ header.colophon{
         padding-left: 0px;
         ul > li{
             &:first-child a{
-                padding-left: 0px;
+                padding-left: 4px;
             }
             
              > a i.m-icon{
@@ -6794,6 +6808,8 @@ footer.about-footer{
     a.signin{
         padding-right: 5px !important;
         padding-left: 5px !important;
+        text-transform: capitalize;
+      
         i{
             display: none;
         }
@@ -7331,7 +7347,7 @@ footer.about-footer{
       &.ideaing-logo{
           width: auto;
           text-indent: 0px;
-          margin-top: -10px;
+          margin-top: -7px;
           .m-icon{
               display: none;
               font-size: 38px;

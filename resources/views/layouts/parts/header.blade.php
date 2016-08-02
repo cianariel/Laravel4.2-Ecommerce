@@ -94,23 +94,6 @@ if (!isset($theGiveAway)) {
                     </a>
                 </div>
 
-                <div class="hidden-lg hidden-md hidden-sm col-xs-3 pull-right mobile-right-block">
-                    <?php
-                        if(isset($userData['login']) && $userData['login']){
-                    ?>
-                        <a href="#" data-toogle=".notification-popup" class="notification-holder">
-                            <i class="m-icon m-icon--Notifications"></i>
-                                        <span ng-hide="notificationCounter == 0" class="notification-count"
-                                              ng-bind="notificationCounter"></span>
-                        </a>
-                    <?php }else{ ?>
-
-                    <?php } ?>
-
-                </div>
-
-
-
                     <div class="top-nav-holder">
                         <div class="col-xs-7 col-sm-7 col-lg-8 category-menu full-620">
                             <ul>
