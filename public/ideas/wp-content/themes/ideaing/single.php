@@ -479,6 +479,12 @@
         </div>
     </div>
 </section>
+ <div class="mobile-sharing hidden-soft">
+     <h5>Sharing is caring</h5>
+     <ul class="share-buttons">
+         <?php loadLaravelView('share-buttons'); ?>
+     </ul>
+ </div>
 
     <script>
         $(document).ready(function(){ // add Get It Button overlay on images that link to vendors

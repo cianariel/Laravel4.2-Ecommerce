@@ -5450,6 +5450,30 @@ ul.share-buttons {
       ul.share-buttons a.comment:hover b {
         color: #fff !important; }
 
+.mobile-sharing {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  background: rgba(237, 237, 237, 0.9);
+  padding: 8px 5px 0;
+  z-index: 30; }
+  .mobile-sharing h5 {
+    float: left;
+    font-family: montserratlight;
+    text-align: center;
+    font-style: italic;
+    font-size: 1.2rem;
+    font-weight: 200; }
+  .mobile-sharing ul.share-buttons .all-shares {
+    display: none; }
+  .mobile-sharing ul.share-buttons a {
+    float: left;
+    width: 35px;
+    margin-left: 7%;
+    border: 0; }
+    .mobile-sharing ul.share-buttons a .share-count {
+      display: none; }
+
 .m-icon {
   font-size: 20px;
   float: left;
