@@ -8425,6 +8425,7 @@ body.single .article-content iframe {
   padding-right: 0; }
   @media (max-width: 620px) {
     .idea-stories .story-details {
+      top: auto;
       width: 100%;
       padding-top: 5px !important; } }
   .idea-stories .story-details h4 {

@@ -5434,6 +5434,7 @@ body.single{
     padding-right: 0;
 
     @media(max-width: 620px){
+      top: auto;
       width: 100%;
       padding-top: 5px !important;
     }
