@@ -70,31 +70,30 @@
             </ul>
         </div>
 
-        <header class="story-details col-lg-7 col-sm-8 col-xs-10 full-480"
-                ng-init="getAuthorInfoByEmail('{{get_the_author_meta('user_email')}}')">
+        <div class="container absolute details-wrap">
+            <header class="story-details col-lg-7 col-sm-8 col-xs-10 full-480" ng-init="getAuthorInfoByEmail('{{get_the_author_meta('user_email')}}')">
 
-            <?php include('/var/www/ideaing/public/ideas/wp-content/themes/ideaing/author-info.php') ?>
+                <?php include('/var/www/ideaing/public/ideas/wp-content/themes/ideaing/author-info.php') ?>
 
-            <div class="author-overview col-lg-5 col-sm-5 col-xs-6 full-480">
-                <h4 class="author-name">
-                    <div id="sticky-anchor"></div>
-                    <span ng-bind="authorName" class="author-name text-uppercase""></span>
-                </h4>
-                <time class="text-uppercase" datetime="{{the_date('Y-m-d')}}">{{the_time( get_option( 'date_format' ) )}}</time>
-
-            </div>
-            <div class="view-counter social-stats__item">
-                        @if(getPostViews(get_the_ID()) >= 100)
-                            <i class="m-icon m-icon--flame"></i>
-                        @else
-                            <i class="m-icon m-icon--eye"></i>
-                        @endif
-                        <span class="grey value">{{getPostViews(get_the_ID())}} views</span>
-            </div>
-        </header>
-
+                <div class="author-overview col-lg-5 col-sm-5 col-xs-6 full-480">
+                    <h4 class="author-name">
+                        <div id="sticky-anchor"></div>
+                        <span ng-bind="authorName" class="author-name text-uppercase""></span>
+                    </h4>
+                    <time class="text-uppercase" datetime="{{the_date('Y-m-d')}}">{{the_time( get_option( 'date_format' ) )}}</time>
+                </div>
+                <div class="view-counter social-stats__item">
+                            @if(getPostViews(get_the_ID()) >= 100)
+                                <i class="m-icon m-icon--flame"></i>
+                            @else
+                                <i class="m-icon m-icon--eye"></i>
+                            @endif
+                            <span class="grey value">{{getPostViews(get_the_ID())}} views</span>
+                </div>
+            </header>
+        </div>
         <div class="hero-background" style="background-image:url( {{str_replace('ideaing-ideas.s3.amazonaws.com', 'd3f8t323tq9ys5.cloudfront.net', getThumbnailLink($post->ID))}} ) "></div>
-        <!-- TODO - use as the hero-bg					--><?php //the_post_thumbnail(); // Fullsize image for the single post ?>
+
         <div class="color-overlay"></div>
     </section>
     <nav id="hero-nav" class="col-sm-12">
@@ -120,21 +119,13 @@
             </div>
     </nav>
 </div>
-    <!-- article -->
-
-
-
-        <div class="container main-container">
-
-        <article id="post-<?php the_ID(); ?>" {{post_class(
-        'col-xs-11 col-md-offset-1 pull-right')}}>
-
+    <div class="container main-container">
+        <article id="post-<?php the_ID(); ?>" {{post_class('col-xs-11 col-md-offset-1 pull-right')}}>
             <div class="shown-620 hidden-soft">
                 <?php loadLaravelView('share-bar'); ?>
             </div>
-        <div id="mobile-sticky-anchor"></div>
-
-        <div class="row">
+            <div id="mobile-sticky-anchor"></div>
+            <div class="row">
                 <div class="col-lg-12">
                     <section class="article-content dropcapped">
                         <?php
@@ -144,8 +135,6 @@
                     </section>
                 </div>
             </div>
-
-
         </article>
     </div>
     <div class="ideas-sharing">

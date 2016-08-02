@@ -4700,6 +4700,12 @@ body.homepage .ideaing-logo .m-icon {
 .nofloat {
   float: none !important; }
 
+.static {
+  position: static !important; }
+
+.absolute {
+  position: absolute !important; }
+
 .hard-show {
   display: block !important; }
 
@@ -5577,7 +5583,7 @@ nav a {
     position: absolute;
     width: 100%;
     padding-top: 15%;
-    z-index: 1; }
+    z-index: 20; }
     @media (max-width: 620px) {
       #hero .head-wrap {
         padding-top: 37%; } }
@@ -8134,7 +8140,8 @@ body.single .article-content iframe {
   .get-it-inner > a {
     position: relative;
     display: inline-block;
-    margin: 0 auto; }
+    margin: 0 auto;
+    overflow: hidden; }
     .get-it-inner > a img::after {
       content: '';
       width: 100%;
@@ -8351,15 +8358,21 @@ body.single .article-content iframe {
     border: 1px solid #eee; }
 .idea-stories .author-name {
   font-size: 1.3rem; }
-.idea-stories .story-details {
-  float: none;
-  overflow: hidden;
+.idea-stories .details-wrap {
+  left: 0;
+  right: 0;
+  bottom: 0;
   margin: 0 auto;
-  text-align: center;
+  overflow: hidden;
+  min-height: 500px; }
+.idea-stories .story-details {
   width: 30%;
   position: absolute;
-  left: 0;
-  bottom: 0; }
+  bottom: 0;
+  background: #fff;
+  z-index: 10;
+  padding-top: 34%;
+  padding-right: 0; }
   .idea-stories .story-details h4 {
     width: 100%;
     text-align: center; }

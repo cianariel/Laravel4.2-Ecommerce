@@ -299,6 +299,13 @@ body.homepage{
   float: none !important;
 }
 
+.static{
+  position: static !important;
+}
+.absolute{
+  position: absolute !important;
+}
+
 .hard-show{
   display: block !important;
 }
@@ -1084,7 +1091,7 @@ nav {
     position: absolute;
     width: 100%;
     padding-top: 15%;
-    z-index: 1;
+    z-index: 20;
 
     @media (max-width:620px){
       padding-top: 37%;
@@ -4982,6 +4989,7 @@ body.single{
     position: relative;
     display: inline-block;
     margin: 0 auto;
+    overflow: hidden;
 
     img::after{
       content: '';
@@ -5293,17 +5301,23 @@ body.single{
     font-size: 1.3rem;
   }
 
-  .story-details{
-    float: none;
-    overflow: hidden;
+  .details-wrap{
+    left: 0;
+    right: 0;
+    bottom: 0;
     margin: 0 auto;
-    //padding: 10px 0;
-    //padding-left: 10%;
-    text-align: center;
+    overflow: hidden;
+    min-height: 500px
+  }
+
+  .story-details{
     width: 30%;
     position: absolute;
-    left: 0;
     bottom: 0;
+    background: #fff;
+    z-index: 10;
+    padding-top: 34%;
+    padding-right: 0;
 
     h4{
       width: 100%;
