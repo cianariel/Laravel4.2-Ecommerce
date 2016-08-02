@@ -91,8 +91,8 @@
                             @endif
                             <span class="grey value">{{getPostViews(get_the_ID())}} views</span>
                 </div>
-
-  </header>
+            </header>
+        </div>
 
         <div class="hero-background" style="background-image:url( <?php echo str_replace('ideaing-ideas.s3.amazonaws.com', 'd3f8t323tq9ys5.cloudfront.net', getThumbnailLink($post->ID)) ?> ) "></div>
         <div class="color-overlay"></div>
