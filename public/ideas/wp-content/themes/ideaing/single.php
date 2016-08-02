@@ -81,6 +81,7 @@
                         <span ng-bind="authorName" class="author-name text-uppercase""></span>
                     </h4>
                     <time class="text-uppercase" datetime="{{the_date('Y-m-d')}}">{{the_time( get_option( 'date_format' ) )}}</time>
+
                 </div>
                 <div class="view-counter social-stats__item">
                             @if(getPostViews(get_the_ID()) >= 100)
@@ -90,10 +91,10 @@
                             @endif
                             <span class="grey value">{{getPostViews(get_the_ID())}} views</span>
                 </div>
-            </header>
-        </div>
-        <div class="hero-background" style="background-image:url( {{str_replace('ideaing-ideas.s3.amazonaws.com', 'd3f8t323tq9ys5.cloudfront.net', getThumbnailLink($post->ID))}} ) "></div>
 
+  </header>
+
+        <div class="hero-background" style="background-image:url( <?php echo str_replace('ideaing-ideas.s3.amazonaws.com', 'd3f8t323tq9ys5.cloudfront.net', getThumbnailLink($post->ID)) ?> ) "></div>
         <div class="color-overlay"></div>
     </section>
     <nav id="hero-nav" class="col-sm-12">
@@ -118,14 +119,20 @@
 
             </div>
     </nav>
-</div>
-    <div class="container main-container">
-        <article id="post-<?php the_ID(); ?>" {{post_class('col-xs-11 col-md-offset-1 pull-right')}}>
+
+
+
+
+        <div class="containr main-container">
+
+        <article id="post-<?php the_ID(post_class('col-xs-11 col-md-offse-1 pull-right'))?>
+
             <div class="shown-620 hidden-soft">
                 <?php loadLaravelView('share-bar'); ?>
-            </div>
-            <div id="mobile-sticky-anchor"></div>
-            <div class="row">
+                </div>
+        <div id="mobile-stcky-anch    or"></div>
+
+        <div class="row">
                 <div class="col-lg-12">
                     <section class="article-content dropcapped">
                         <?php
@@ -133,8 +140,9 @@
                         ?>
                         <?php the_content(); ?>
                     </section>
-                </div>
-            </div>
+                </div>           </div>
+
+
         </article>
     </div>
     <div class="ideas-sharing">
