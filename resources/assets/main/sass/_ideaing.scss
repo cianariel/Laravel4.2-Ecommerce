@@ -5359,10 +5359,18 @@ body.single{
       line-height: 1.6;
       font-size: 1.6rem;
       text-align: left;
+
+      @media (max-width:620px){
+        //p{
+        padding-left: 14px;
+        //}
+      }
     }
 
     h4{
       text-align: left;
+      padding-left: 14px;
+
     }
  
     h2{
@@ -5409,9 +5417,7 @@ body.single{
 
     }
 
-    @media (max-width:620px){
-      padding-left: 14px;
-    }
+
   }
 
   .author-name{
