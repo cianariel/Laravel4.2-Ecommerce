@@ -5618,7 +5618,7 @@ nav a {
   #hero .head-wrap {
     position: absolute;
     width: 100%;
-    padding-top: 15%;
+    padding-top: 12%;
     z-index: 20; }
     @media (max-width: 620px) {
       #hero .head-wrap {
@@ -6727,13 +6727,9 @@ header.colophon {
     header.colophon #top-nav a.signin {
       float: right;
       white-space: nowrap;
-      padding-right: 0px; }
-      header.colophon #top-nav a.signin .m-icon {
-        margin-right: 5px;
-        border: 1px solid;
-        border-radius: 16px;
-        font-size: 23px;
-        margin-top: -5px; }
+      padding-right: 0px;
+      padding-top: 16px;
+      font-size: 1rem; }
   header.colophon .logo-wrap {
     position: absolute;
     left: 42%; }
@@ -6968,6 +6964,19 @@ header.colophon {
     padding: 0px; }
     #top-nav .top-nav-holder .profile-photo-holder a, #top-nav .top-nav-holder .notification-holder a {
       padding: 0px; }
+    #top-nav .top-nav-holder .profile-photo-holder .notification-count, #top-nav .top-nav-holder .notification-holder .notification-count {
+      color: #fff;
+      display: inline-block;
+      background: #ed1d47;
+      width: 15px;
+      font-size: 10px;
+      position: absolute;
+      border-radius: 10px;
+      right: 1px;
+      bottom: -1px;
+      height: 15px;
+      text-align: center;
+      line-height: 15px; }
   #top-nav .top-nav-holder .profile-photo-holder .box-link-active-line {
     height: 11px;
     position: absolute;
@@ -6980,19 +6989,6 @@ header.colophon {
     top: 3px; }
   #top-nav .top-nav-holder .notification-holder {
     position: relative; }
-    #top-nav .top-nav-holder .notification-holder .notification-count {
-      color: #fff;
-      display: inline-block;
-      background: #ed1d47;
-      width: 15px;
-      font-size: 10px;
-      position: absolute;
-      border-radius: 10px;
-      left: 10px;
-      top: -5px;
-      height: 15px;
-      text-align: center;
-      line-height: 15px; }
   #top-nav .top-nav-holder .notification-popup {
     position: absolute;
     width: 375px;
@@ -7001,6 +6997,9 @@ header.colophon {
     top: 70px;
     z-index: 100;
     border-radius: 20px; }
+    @media (min-width: 1000px) {
+      #top-nav .top-nav-holder .notification-popup {
+        right: -40px; } }
     #top-nav .top-nav-holder .notification-popup .notification-header {
       border-top-left-radius: 20px;
       border-top-right-radius: 20px;
@@ -7013,6 +7012,9 @@ header.colophon {
         width: 200px;
         margin: 0 auto;
         display: block; }
+        #top-nav .top-nav-holder .notification-popup .notification-header ul li:first-child a::after {
+          content: '|';
+          margin-left: 7px; }
       #top-nav .top-nav-holder .notification-popup .notification-header a {
         color: #fff; }
     #top-nav .top-nav-holder .notification-popup .notification-body {
@@ -7119,7 +7121,8 @@ header.colophon {
     color: #ed2049; }
   #top-nav a.new-message {
     position: relative;
-    padding-top: 5px; }
+    padding-top: 5px;
+    padding-right: 0; }
     #top-nav a.new-message i {
       font-size: 2.5rem; }
     #top-nav a.new-message span {
@@ -7132,8 +7135,8 @@ header.colophon {
       font-size: 10px;
       position: absolute;
       border-radius: 10px;
-      left: 10px;
-      top: 5px;
+      right: -4px;
+      bottom: 7px;
       height: 15px;
       text-align: center;
       line-height: 15px; }
@@ -7191,7 +7194,7 @@ body.shop-landing #top-nav a.m-icon-text-holder .box-link-active-line {
 
 body.single-post .social-stats__item {
   position: static;
-  width: 85px; }
+  width: 100px; }
 body.single-post #top-nav.kitchen {
   position: relative; }
   body.single-post #top-nav.kitchen .box-link-active-line {
@@ -7924,6 +7927,10 @@ header.sub-head {
       display: none; }
   #hero-nav .like-counter {
     margin-top: 7px; }
+  #hero-nav .heart-number {
+    top: 23px;
+    position: absolute;
+    right: 12px; }
   #hero-nav li {
     display: inline-block;
     position: relative;
@@ -9366,8 +9373,8 @@ footer.about-footer {
         margin-right: 30px;
         padding: 0; }
     #top-nav a.signin {
-      padding-right: 15px !important;
-      padding-left: 15px !important; }
+      padding-right: 5px !important;
+      padding-left: 5px !important; }
       #top-nav a.signin i {
         display: none; }
     #top-nav .category-menu {

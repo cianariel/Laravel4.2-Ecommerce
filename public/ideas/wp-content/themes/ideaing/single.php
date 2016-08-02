@@ -109,7 +109,7 @@
                                             <span class="path1"></span><span class="path2"></span>
                                         </span>
                                 </i>
-                                <span class="social-stats__text" ng-bind="heartCounter">&nbsp;  </span>
+                                <span class="social-stats__text category-color heart-number" ng-bind="heartCounter">&nbsp;  </span>
                             </a>
                         </div>
                     </div>

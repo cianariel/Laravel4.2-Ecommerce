@@ -104,10 +104,7 @@ if (!isset($theGiveAway)) {
                                               ng-bind="notificationCounter"></span>
                         </a>
                     <?php }else{ ?>
-                        <a class="new-message" href="#" ng-click="getEmailPopup(true)">
-                            <i class="m-icon m-icon--Notifications"></i>
-                            <span class="notification-count ng-binding">1</span>
-                        </a>
+
                     <?php } ?>
 
                 </div>
@@ -170,13 +167,15 @@ if (!isset($theGiveAway)) {
                         </div>
 
                         <div class="col-xs-5 col-sm-2 hidden-xs pull-right user-controls">
+
                                 <?php
                                 if(isset($userData['login']) && $userData['login']) { ?>
-                                <div class="pull-right profile-photo-holder">
-                                    <a href="#"><img width="40px"
-                                                     src="<?php echo isset($userData['medias'][0]['media_link']) ? $userData['medias'][0]['media_link'] : "" ?>"
-                                                     alt="" class="profile-photo "></a>
-                                    <!--<span class="box-link-active-line"></span> -->
+                                <div class="pull-right profile-photo-holder" data-toggle=".notification-popup">
+                                    <a href="#"  ng-init="loadNotification('<?php echo $userData['id']?>')"><img width="40px" src="<?php echo isset($userData['medias'][0]['media_link']) ? $userData['medias'][0]['media_link'] : "" ?>" alt="" class="profile-photo ">
+                                    <span ng-hide="notificationCounter == 0" class="notification-count"
+                                          ng-bind="notificationCounter"></span>
+                                    </a>
+                                    <!--<span class="box-link-active-line"></span>
                                     <div class="profilelinks-popup">
                                         <div class="menu-group">
                                             <div><a href="/user/profile">My Profile</a></div>
@@ -197,22 +196,21 @@ if (!isset($theGiveAway)) {
 
                                     </div>
                                 </div>
-                                <div class="notification pull-right" ng-cloak
+                              <!--  <div class="notification pull-right" ng-cloak
                                      ng-init="loadNotification('<?php echo $userData['id']?>')">
                                     <a href="#" data-toogle=".notification-popup" class="notification-holder">
                                         <i class="m-icon m-icon--Notifications"></i>
                                         <span ng-hide="notificationCounter == 0" class="notification-count"
                                               ng-bind="notificationCounter"></span>
                                     </a>
-                                </div>
+                                </div> -->
 
                                 <?php }  else { ?>
-                                        <a class="new-message" href="#" ng-click="getEmailPopup(true)">
-                                    <i class="m-icon m-icon--Notifications"></i>
-                                    <span class="notification-count ng-binding">1</span>
-                                </a>
-                                <a class="pull-right signin" data-toggle="modal" data-target="#myModal" href="/login"><i
-                                            class="m-icon m-icon--user"></i> Sign up</a>
+                                    <a class="new-message" href="#" ng-click="getEmailPopup(true)">
+                                                <img width="40px" src="https://s3-us-west-1.amazonaws.com/ideaing-01/120-product-56ce7066c0ef3-user-default 2.png" alt="" class="profile-photo ">
+                                        <span class="notification-count ng-binding">1</span>
+                                    </a>
+                                    <a class="signin" data-toggle="modal" data-target="#myModal" href="/login"></i> Hello, sign in</a>
                                 <?php } ?>
 
 
@@ -221,18 +219,16 @@ if (!isset($theGiveAway)) {
 
                             <div class="notification-popup hidden-soft">
                                 <div class="notification-header">
-                                    <span class="pull-left">Notifications</span>
-                                                <span ng-click="readAllNotification()" class="pull-right"
-                                                      id="mark-all-as-read">Mark all as read</span>
-                                    <div class="clearfix"></div>
                                     <ul>
-                                        <li><a href="#" class="active" data-toggle=".notifs" data-hide=".prof-menu">Notifications |</a></li>
+                                        <li><a href="#" class="active" data-toggle=".notifs" data-hide=".prof-menu">Notifications </a></li>
                                         <li><a href="#" data-toggle=".prof-menu"  data-hide=".notifs">My profile</a></li>
                                     </ul>
                                 </div>
 
                                 <div class="notification-body">
                                     <div class="tab notifs">
+                                        <span ng-click="readAllNotification()" class="pull-right blue" id="mark-all-as-read">Mark all as read</span>
+
                                         <div class="notification-item" ng-repeat="notice in notifications">
                                             <img width="40px" ng-src="<?php echo '{{ notice.UserPicture }}' ?>" class="profile-photo pull-left">
 

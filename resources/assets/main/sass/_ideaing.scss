@@ -1183,7 +1183,7 @@ nav {
   .head-wrap{
     position: absolute;
     width: 100%;
-    padding-top: 15%;
+    padding-top: 12%;
     z-index: 20;
 
     @media (max-width:620px){
@@ -2834,13 +2834,16 @@ header.colophon{
             float: right;
             white-space: nowrap;
             padding-right: 0px;
-            .m-icon{
-                margin-right: 5px;
-                border: 1px solid;
-                border-radius: 16px;
-                font-size: 23px;
-                margin-top: -5px;
-            }
+            padding-top: 16px;
+            font-size: 1rem;
+
+            //.m-icon{
+            //    margin-right: 5px;
+            //    border: 1px solid;
+            //    border-radius: 16px;
+            //    font-size: 23px;
+            //    margin-top: -5px;
+            //}
         }
     }
 
@@ -3211,7 +3214,21 @@ header.colophon{
             a{
                 padding: 0px;
             }
-            
+
+          .notification-count{
+            color: #fff;
+            display: inline-block;
+            background: #ed1d47;
+            width: 15px;
+            font-size: 10px;
+            position: absolute;
+            border-radius: 10px;
+            right: 1px;
+            bottom: -1px;
+            height: 15px;
+            text-align: center;
+            line-height: 15px;
+          }
             
         }
         .profile-photo-holder{
@@ -3230,20 +3247,7 @@ header.colophon{
         } 
         .notification-holder{
             position: relative;
-            .notification-count{
-                color: #fff;
-                display: inline-block;
-                background: #ed1d47;
-                width: 15px;
-                font-size: 10px;
-                position: absolute;
-                border-radius: 10px;
-                left: 10px;
-                top: -5px;
-                height: 15px;
-                text-align: center;
-                line-height: 15px;
-            }
+
             
         } 
         .notification-popup{
@@ -3255,6 +3259,10 @@ header.colophon{
             z-index: 100;
             border-radius: 20px;
             //display: none;
+
+          @media(min-width:1000px){
+            right: -40px;
+          }
 
             .notification-header{
                 border-top-left-radius: 20px;
@@ -3269,6 +3277,13 @@ header.colophon{
                 width: 200px;
                 margin: 0 auto;
                 display: block;
+
+                li:first-child{
+                  a::after{
+                    content: '|';
+                    margin-left: 7px;
+                  }
+                }
               }
               a{
                 color: #fff;
@@ -3420,6 +3435,7 @@ box-shadow: -1px -1px 20px -7px rgba(0,0,0,0.75);
     &.new-message{
       position: relative;
       padding-top: 5px;
+      padding-right: 0;
       i{
         font-size: 2.5rem;
       }
@@ -3433,8 +3449,8 @@ box-shadow: -1px -1px 20px -7px rgba(0,0,0,0.75);
         font-size: 10px;
         position: absolute;
         border-radius: 10px;
-        left: 10px;
-        top: 5px;
+        right: -4px;
+        bottom: 7px;
         height: 15px;
         text-align: center;
         line-height: 15px;
@@ -3531,7 +3547,7 @@ body.shop-landing #top-nav a.m-icon-text-holder .box-link-active-line{
 body.single-post{
     .social-stats__item{
       position: static;
-      width: 85px;
+      width: 100px;
     }
     #top-nav{
       &.kitchen{
@@ -4620,6 +4636,11 @@ header.sub-head{
 
   .like-counter{
     margin-top: 7px;
+  }
+  .heart-number{
+    top: 23px;
+    position: absolute;
+    right: 12px;
   }
 
   li{
@@ -6756,8 +6777,8 @@ footer.about-footer{
     }
 
     a.signin{
-        padding-right: 15px !important;
-        padding-left: 15px !important;
+        padding-right: 5px !important;
+        padding-left: 5px !important;
         i{
             display: none;
         }
