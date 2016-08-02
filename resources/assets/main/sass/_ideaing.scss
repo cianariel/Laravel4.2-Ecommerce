@@ -106,19 +106,34 @@ a:hover, a:focus{
 }
 
 .category-smarthome{
-  @include category-color($iridium)
+  @include category-color($iridium);
+  .category-link__smart-home{
+    color: $iridium;
+  }
 }
+
 .category-smart-travel{
-  @include category-color($dark-orange)
+  @include category-color($dark-orange);
+  .category-link__smart-travel{
+    color: $dark-orange;
+  }
 }
 .category-smart-body{
-  @include category-color($facebook-blue)
+  @include category-color($facebook-blue);
+  .category-link__smart-body{
+    color: $facebook-blue;
+  }
 }
 .category-smart-entertainment{
-  @include category-color($pine-green)
+  @include category-color($pine-green);
+  .category-link__smart-entertainment{
+    color: $pine-green;
+  }
 }
 
 .category-link{
+    cursor: hover;
+  
     &__smart-home{
       &:hover{
         color: $iridium;
@@ -148,6 +163,10 @@ a:hover, a:focus{
       text-align: right;
       height: auto !important;
 
+      &:hover{
+        background: #000;
+      }
+
       //@media(min-width: 1200px){
       //  min-width: 83px
       //}
@@ -156,11 +175,52 @@ a:hover, a:focus{
       }
     }
 
-  }
-  .category-menu{
-    padding-top: 2px;
-    margin-left: 3%;
-  }
+}
+//
+//.category-link{
+//  &__smart-home{
+//    &:hover{
+//      color: $iridium;
+//    }
+//  }
+//  &__smart-travel{
+//    &:hover{
+//      color: $dark-orange;
+//    }
+//  }
+//  &__smart-body{
+//    &:hover{
+//      color: $sky-blue;
+//    }
+//  }
+//  &__smart-entertainment{
+//    &:hover{
+//      color: $pine-green;
+//    }
+//  }
+//  &__shop{
+//    background-color: $iridium;
+//    color: #fff;
+//    padding: 5px!important;
+//    margin-top: 5px;
+//    border-radius: 5px;
+//    text-align: right;
+//    height: auto !important;
+//
+//    //@media(min-width: 1200px){
+//    //  min-width: 83px
+//    //}
+//    @media(max-width: 620px){
+//      float: right;
+//    }
+//  }
+//
+//}
+
+.category-menu{
+  padding-top: 2px;
+  margin-left: 3%;
+}
 
 .blue-glow{
   -webkit-stroke-width: 5.3px;
@@ -5333,6 +5393,7 @@ body.single{
   .story-details{
     width: 30%;
     position: absolute;
+    top: 0;
     bottom: 0;
     background: #fff;
     z-index: 10;

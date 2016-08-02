@@ -4534,6 +4534,8 @@ a:hover, a:focus {
   background-color: rgba(255, 0, 66, 0.7); }
 .category-smarthome .m-icon--ScrollingHeaderHeart .path1:before {
   color: #FF0042; }
+.category-smarthome .category-link__smart-home {
+  color: #FF0042; }
 
 .category-smart-travel .category-color {
   color: #FF7F00 !important; }
@@ -4550,6 +4552,8 @@ a:hover, a:focus {
 .category-smart-travel .float-thumbs .thumb-box strong {
   background-color: rgba(255, 127, 0, 0.7); }
 .category-smart-travel .m-icon--ScrollingHeaderHeart .path1:before {
+  color: #FF7F00; }
+.category-smart-travel .category-link__smart-travel {
   color: #FF7F00; }
 
 .category-smart-body .category-color {
@@ -4568,6 +4572,8 @@ a:hover, a:focus {
   background-color: rgba(7, 157, 209, 0.7); }
 .category-smart-body .m-icon--ScrollingHeaderHeart .path1:before {
   color: #079DD1; }
+.category-smart-body .category-link__smart-body {
+  color: #079DD1; }
 
 .category-smart-entertainment .category-color {
   color: #89C981 !important; }
@@ -4585,26 +4591,32 @@ a:hover, a:focus {
   background-color: rgba(137, 201, 129, 0.7); }
 .category-smart-entertainment .m-icon--ScrollingHeaderHeart .path1:before {
   color: #89C981; }
-
-.category-link__smart-home:hover {
-  color: #FF0042; }
-.category-link__smart-travel:hover {
-  color: #FF7F00; }
-.category-link__smart-body:hover {
-  color: #00B1FF; }
-.category-link__smart-entertainment:hover {
+.category-smart-entertainment .category-link__smart-entertainment {
   color: #89C981; }
-.category-link__shop {
-  background-color: #FF0042;
-  color: #fff;
-  padding: 5px !important;
-  margin-top: 5px;
-  border-radius: 5px;
-  text-align: right;
-  height: auto !important; }
-  @media (max-width: 620px) {
-    .category-link__shop {
-      float: right; } }
+
+.category-link {
+  cursor: hover; }
+  .category-link__smart-home:hover {
+    color: #FF0042; }
+  .category-link__smart-travel:hover {
+    color: #FF7F00; }
+  .category-link__smart-body:hover {
+    color: #00B1FF; }
+  .category-link__smart-entertainment:hover {
+    color: #89C981; }
+  .category-link__shop {
+    background-color: #FF0042;
+    color: #fff;
+    padding: 5px !important;
+    margin-top: 5px;
+    border-radius: 5px;
+    text-align: right;
+    height: auto !important; }
+    .category-link__shop:hover {
+      background: #000; }
+    @media (max-width: 620px) {
+      .category-link__shop {
+        float: right; } }
 
 .category-menu {
   padding-top: 2px;
@@ -8381,6 +8393,7 @@ body.single .article-content iframe {
 .idea-stories .story-details {
   width: 30%;
   position: absolute;
+  top: 0;
   bottom: 0;
   background: #fff;
   z-index: 10;

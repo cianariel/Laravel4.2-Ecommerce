@@ -119,20 +119,20 @@ if (!isset($theGiveAway)) {
                             <ul>
                                 <li>
                                     <a class="category-link__smart-home" href="#">
-                                        <i class="hidden-xs hidden-sm hidden-md m-icon m-icon--smart-home  category-color"></i>
-                                        <span class="m-icon-text category-color">Smart Home</span>
+                                        <i class="hidden-xs hidden-sm hidden-md m-icon m-icon--smart-home"></i>
+                                        <span class="m-icon-text">Smart Home</span>
                                     </a>
                                 </li>
                                 <li>
                                     <a class="category-link__smart-entertainment m-icon-text-holder" href="/ideas/smart-entertainment">
-                                        <i class="hidden-xs hidden-sm hidden-md m-icon m-icon--video category-color"></i>
-                                        <span class="m-icon-text category-color"><span class="hidden-xs hidden-sm">Smart</span> Entertainment</span>
+                                        <i class="hidden-xs hidden-sm hidden-md m-icon m-icon--video"></i>
+                                        <span class="m-icon-text"><span class="hidden-xs hidden-sm">Smart</span> Entertainment</span>
                                     </a>
                                 </li>
                                 <li>
                                     <a class="category-link__smart-body m-icon-text-holder" href="/ideas/smart-body">
-                                        <i class="hidden-xs hidden-sm hidden-md m-icon m-icon--wearables category-color"></i>
-                                        <span class="m-icon-text category-color"><span class="hidden-xs hidden-sm">Smart</span> Body</span>
+                                        <i class="hidden-xs hidden-sm hidden-md m-icon m-icon--wearables"></i>
+                                        <span class="m-icon-text"><span class="hidden-xs hidden-sm">Smart</span> Body</span>
                                     </a>
                                 </li>
                                 <li>
@@ -143,8 +143,8 @@ if (!isset($theGiveAway)) {
                                 </li>
                                 <li>
                                     <a class="category-link__shop m-icon-text-holder" href="/shop">
-                                        <i class="hidden-xs hidden-sm hidden-md m-icon m-icon--shopping-bag-light-green white category-color"></i>
-                                        <span class="m-icon-text white category-color">Shop</span>
+                                        <i class="hidden-xs hidden-sm hidden-md m-icon m-icon--shopping-bag-light-green white"></i>
+                                        <span class="m-icon-text white">Shop</span>
                                     </a>
                                 </li>
 
