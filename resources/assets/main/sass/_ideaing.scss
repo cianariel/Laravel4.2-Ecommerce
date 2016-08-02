@@ -2865,6 +2865,13 @@ header.colophon{
 
   .user-controls{
     max-width: 143px;
+
+
+    @media(max-width: 620px){
+      position: absolute;
+      top: 0;
+      right: -9px;
+    }
   }
 
   &.scroll-header{
@@ -3000,7 +3007,8 @@ header.colophon{
   }
   @media (max-width: 620px){
     position: absolute;
-    right:0;
+    right: 52px;
+    top: 67px;
 
     .toggle-button{
       bottom: 25px;
@@ -3189,6 +3197,7 @@ header.colophon{
 
     }
 
+
     .top-nav-holder{
         //border-bottom: 1px solid $light-grey;
         height: 52px;
@@ -3287,6 +3296,11 @@ header.colophon{
               }
               a{
                 color: #fff;
+                font-weight: 200;
+
+                &.active{
+                  font-weight: 700;
+                }
               }
             }
             
@@ -5004,8 +5018,9 @@ header.sub-head{
         color: $light-grey !important;
     }
     .social-stats {
-        margin-top: 5px;
-        float: left;
+        //margin-top: 5px;
+          float: left;
+      padding-top: 0;
         a{
             float: none;
             padding: 0px;
@@ -6784,8 +6799,8 @@ footer.about-footer{
         }
     }
     .category-menu {
-        padding-left: 4%;
-        padding-top: 6px;
+        //padding-left: 4%;
+        padding-top: 9px;
     }
   }
 
@@ -7316,6 +7331,7 @@ footer.about-footer{
       &.ideaing-logo{
           width: auto;
           text-indent: 0px;
+          margin-top: -10px;
           .m-icon{
               display: none;
               font-size: 38px;
@@ -8255,10 +8271,15 @@ body.shop-category{
 .profile-photo{
     border-radius: 100px;
     border: 3px solid #bebbbc;
-    //&:hover{
-    //    border-color: $iridium;
-    //}
+    &:hover{
+        border-color: $iridium;
+    }
 }
+
+.signin:hover{
+  color: $iridium;
+}
+
 .like-nav{
     .profile-photo{
         height: 40px;

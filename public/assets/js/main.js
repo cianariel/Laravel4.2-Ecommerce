@@ -3607,7 +3607,7 @@ angular.module('colorpicker.module', [])
                 $($hide).hide();
                 $that.siblings().removeClass('active');
                 $($show).fadeIn();
-                $that.addClass('active');
+                $that.toggleClass('active');
             }else{
                 $($show).fadeToggle();
                 $that.toggleClass('active');
@@ -3624,6 +3624,7 @@ angular.module('colorpicker.module', [])
             $($hide).fadeOut(
                 function(){
                     $($show).fadeIn();
+                    $('[data-switch="'+$hide+'"').removeClass('active');
                 }
             );
 

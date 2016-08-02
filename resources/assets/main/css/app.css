@@ -6742,6 +6742,11 @@ header.colophon {
         float: none; } }
   header.colophon .user-controls {
     max-width: 143px; }
+    @media (max-width: 620px) {
+      header.colophon .user-controls {
+        position: absolute;
+        top: 0;
+        right: -9px; } }
   header.colophon.scroll-header .fixed-sm {
     min-width: 0 !important; }
   header.colophon.scroll-header #top-nav {
@@ -6826,7 +6831,8 @@ header.colophon {
   @media (max-width: 620px) {
     .search-toggle {
       position: absolute;
-      right: 0; }
+      right: 52px;
+      top: 67px; }
       .search-toggle .toggle-button {
         bottom: 25px;
         top: auto;
@@ -7016,7 +7022,10 @@ header.colophon {
           content: '|';
           margin-left: 7px; }
       #top-nav .top-nav-holder .notification-popup .notification-header a {
-        color: #fff; }
+        color: #fff;
+        font-weight: 200; }
+        #top-nav .top-nav-holder .notification-popup .notification-header a.active {
+          font-weight: 700; }
     #top-nav .top-nav-holder .notification-popup .notification-body {
       background: #fff;
       border-left: 1px solid #ededed;
@@ -8130,8 +8139,8 @@ header.sub-head {
     margin-top: 12px;
     color: #ededed !important; }
   .like-nav li .social-stats {
-    margin-top: 5px;
-    float: left; }
+    float: left;
+    padding-top: 0; }
     .like-nav li .social-stats a {
       float: none;
       padding: 0px; }
@@ -9378,8 +9387,7 @@ footer.about-footer {
       #top-nav a.signin i {
         display: none; }
     #top-nav .category-menu {
-      padding-left: 4%;
-      padding-top: 6px; }
+      padding-top: 9px; }
 
   .main-content.landing {
     padding: 0 0 20px; }
@@ -9699,7 +9707,8 @@ footer.about-footer {
     margin-left: 0; }
     #top-nav a.ideaing-logo {
       width: auto;
-      text-indent: 0px; }
+      text-indent: 0px;
+      margin-top: -10px; }
       #top-nav a.ideaing-logo .m-icon {
         display: none;
         font-size: 38px; }
@@ -10328,6 +10337,11 @@ body.shop-category .show-filter .grid-box-3 {
 .profile-photo {
   border-radius: 100px;
   border: 3px solid #bebbbc; }
+  .profile-photo:hover {
+    border-color: #FF0042; }
+
+.signin:hover {
+  color: #FF0042; }
 
 .like-nav .profile-photo {
   height: 40px;

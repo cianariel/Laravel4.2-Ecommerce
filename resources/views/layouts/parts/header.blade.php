@@ -166,7 +166,7 @@ if (!isset($theGiveAway)) {
                             <a href="#" class="toggle-button"><i class="m-icon m-icon--search-id"></i></a>
                         </div>
 
-                        <div class="col-xs-5 col-sm-2 hidden-xs pull-right user-controls">
+                        <div class="col-xs-5 col-sm-2 pull-right user-controls">
 
                                 <?php
                                 if(isset($userData['login']) && $userData['login']) { ?>
@@ -210,7 +210,7 @@ if (!isset($theGiveAway)) {
                                                 <img width="40px" src="https://s3-us-west-1.amazonaws.com/ideaing-01/120-product-56ce7066c0ef3-user-default 2.png" alt="" class="profile-photo ">
                                         <span class="notification-count ng-binding">1</span>
                                     </a>
-                                    <a class="signin" data-toggle="modal" data-target="#myModal" href="/login"></i> Hello, sign in</a>
+                                    <a class="signin" data-toggle="modal" data-target="#myModal" href="/login"></i> Hi, sign in</a>
                                 <?php } ?>
 
 
@@ -220,8 +220,8 @@ if (!isset($theGiveAway)) {
                             <div class="notification-popup hidden-soft">
                                 <div class="notification-header">
                                     <ul>
-                                        <li><a href="#" class="active" data-toggle=".notifs" data-hide=".prof-menu">Notifications </a></li>
-                                        <li><a href="#" data-toggle=".prof-menu"  data-hide=".notifs">My profile</a></li>
+                                        <li><a href="#" class="active" data-switch=".notifs" data-hide=".prof-menu">Notifications </a></li>
+                                        <li><a href="#" data-switch=".prof-menu"  data-hide=".notifs">My profile</a></li>
                                     </ul>
                                 </div>
 
