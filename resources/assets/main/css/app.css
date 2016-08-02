@@ -8405,6 +8405,9 @@ body.single .article-content iframe {
     margin: 0 auto;
     display: block;
     border: 1px solid #eee; }
+  @media (max-width: 620px) {
+    .idea-stories .article-content {
+      padding-left: 14px; } }
 .idea-stories .author-name {
   font-size: 1.3rem; }
 .idea-stories .details-wrap {

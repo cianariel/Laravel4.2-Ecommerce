@@ -5408,6 +5408,10 @@ body.single{
       border: 1px solid #eee;
 
     }
+
+    @media (max-width:620px){
+      padding-left: 14px;
+    }
   }
 
   .author-name{
