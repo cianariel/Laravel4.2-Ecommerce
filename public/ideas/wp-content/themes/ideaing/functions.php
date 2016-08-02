@@ -545,7 +545,7 @@ function ideaingGlobalVars() {
         $user = wp_get_current_user();
         $token = base64_encode($user->user_email);
     }else{
-        $token = $_COOKIE['_wptk'];
+        $token = @$_COOKIE['_wptk'];
     }
 
 
