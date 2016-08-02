@@ -5,6 +5,14 @@ if (! preg_match("/\/ideas\//", $actual_link))
 {
 ?>
 <title>{{ MetaTag::get('title') }}</title>
+{!! MetaTag::openGraph() !!}
+
+
+@if(!empty($selfImages['picture']))
+    @foreach($selfImages['picture'] as $item)
+        <meta property="og:image" content="{{$item['link']}}">
+    @endforeach
+@endif
 
 @if(@$MetaDescription)
     <meta name="description" content="{{$MetaDescription}}">

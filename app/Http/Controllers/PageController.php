@@ -591,10 +591,6 @@ class PageController extends ApiController
         }
 
 
-        MetaTag::set('title', $result['productInformation']['PageTitle']);
-        MetaTag::set('description', $result['productInformation']['MetaDescription']);
-
-
         if ($userData['method-status'] == 'fail-with-http') {
             $isAdmin = false;
             $userData['id'] = 0;
@@ -607,7 +603,12 @@ class PageController extends ApiController
 
         $reviewScore = intval(((($result['productInformation']['Review'][0]->value > 0 ? $result['productInformation']['Review'][0]->value : $amazonReview) + $amazonReview) / 2) * 20);
 
-        //  dd($result['selfImages']);
+
+        MetaTag::set('title', $result['productInformation']['PageTitle']);
+        MetaTag::set('description', $result['productInformation']['MetaDescription']);
+
+
+      //  dd($result['selfImages']['picture']);
         return view('product.product-details')
             ->with('isAdminForEdit', $isAdmin)
             ->with('productId', $result['productInformation']['Id'])
