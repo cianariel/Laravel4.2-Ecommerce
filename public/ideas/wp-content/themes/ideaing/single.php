@@ -83,6 +83,7 @@
                     <time datetime="{{the_date('Y-m-d')}}">{{the_time( get_option( 'date_format' ) )}}</time>
 
                 </div>
+
                 <div class="view-counter social-stats__item">
                             @if(getPostViews(get_the_ID()) >= 100)
                                 <i class="m-icon m-icon--flame"></i>
@@ -90,6 +91,11 @@
                                 <i class="m-icon m-icon--eye"></i>
                             @endif
                             <span class="grey value">{{getPostViews(get_the_ID())}} views</span>
+                </div>
+                <div class="hero-sharing horizontal-sharing hidden-soft shown-620 col-xs-12 overhid">
+                    <ul class="share-buttons">
+                        <?php loadLaravelView('share-buttons'); ?>
+                    </ul>
                 </div>
             </header>
         </div>
@@ -479,9 +485,9 @@
         </div>
     </div>
 </section>
- <div class="mobile-sharing hidden-soft">
-     <h5>Sharing is caring</h5>
+ <div class="mobile-sharing horizontal-sharing hidden-soft">
      <ul class="share-buttons">
+         <h5>Sharing is caring</h5>
          <?php loadLaravelView('share-buttons'); ?>
      </ul>
  </div>

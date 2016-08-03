@@ -5450,13 +5450,39 @@ ul.share-buttons {
       ul.share-buttons a.comment:hover b {
         color: #fff !important; }
 
-.mobile-sharing {
+.horizontal-sharing {
   width: 100%;
+  padding: 8px 5px 0; }
+  .horizontal-sharing ul.share-buttons .all-shares {
+    float: left; }
+  .horizontal-sharing ul.share-buttons .pint {
+    display: none; }
+  .horizontal-sharing ul.share-buttons .email {
+    display: inline-block !important; }
+    .horizontal-sharing ul.share-buttons .email i.m-icon {
+      background: #fff;
+      color: #333; }
+  .horizontal-sharing ul.share-buttons a {
+    float: left;
+    width: 35px;
+    margin-left: 7%;
+    border: 0; }
+    .horizontal-sharing ul.share-buttons a .share-count {
+      display: none; }
+
+.hero-sharing ul {
+  width: 320px;
+  margin: 0 auto; }
+  .hero-sharing ul li a {
+    margin-left: 3% !important; }
+
+.mobile-sharing {
   position: fixed;
   top: 0;
   background: rgba(237, 237, 237, 0.9);
-  padding: 8px 5px 0;
   z-index: 30; }
+  .mobile-sharing .all-shares {
+    display: none; }
   .mobile-sharing h5 {
     float: left;
     font-family: montserratlight;
@@ -5464,15 +5490,6 @@ ul.share-buttons {
     font-style: italic;
     font-size: 1.2rem;
     font-weight: 200; }
-  .mobile-sharing ul.share-buttons .all-shares {
-    display: none; }
-  .mobile-sharing ul.share-buttons a {
-    float: left;
-    width: 35px;
-    margin-left: 7%;
-    border: 0; }
-    .mobile-sharing ul.share-buttons a .share-count {
-      display: none; }
 
 .m-icon {
   font-size: 20px;
@@ -9617,8 +9634,8 @@ footer.about-footer {
     float: left; }
   .story-details .author-overview {
     padding-top: 0 !important;
-    float: right;
-    width: 65%; }
+    float: left;
+    width: 30%; }
   .story-details .content-tags {
     padding-right: 30px; }
     .story-details .content-tags a {
@@ -9626,6 +9643,8 @@ footer.about-footer {
       width: 105px;
       margin: 5px auto;
       float: none !important; }
+  .story-details .social-stats__item {
+    padding-left: 2% !important; }
 
   .product-hero .average-score .score {
     width: 53%; }
@@ -11429,9 +11448,11 @@ body.error-page .error-banner-holder {
 .m-icon.m-icon--ScrollingHeaderHeart:hover:before {
   content: "\e906"; }
 
-#comments .profile-photo {
-  width: 44px;
-  height: 44px; }
+#comments {
+  margin: 5px; }
+  #comments .profile-photo {
+    width: 44px;
+    height: 44px; }
 
 #suggest-category {
   background: white none repeat scroll 0% 0%;

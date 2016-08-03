@@ -929,25 +929,24 @@ ul.share-buttons{
   }
 }
 
-.mobile-sharing{
+.horizontal-sharing{
   width: 100%;
-  position: fixed;
-  top: 0;
-  background:rgba(#ededed, .9);
   padding: 8px 5px 0;
-  z-index: 30;
 
-  h5{
-    float: left;
-    font-family: montserratlight;
-    text-align: center;
-    font-style: italic;
-    font-size: 1.2rem;
-    font-weight: 200;
-  }
   ul.share-buttons{
     .all-shares{
+      float: left;
+    }
+    .pint{
       display: none;
+    }
+    .email{
+      display: inline-block !important;
+
+      i.m-icon{
+        background: #fff;
+        color:#333;
+      }
     }
     a{
       float: left;
@@ -959,6 +958,38 @@ ul.share-buttons{
         display: none;
       }
     }
+  }
+
+}
+
+.hero-sharing{
+  ul{
+    width: 320px;
+    margin: 0 auto;
+
+    li a{
+      margin-left: 3% !important;
+    }
+  }
+}
+
+.mobile-sharing{
+  position: fixed;
+  top: 0;
+  background:rgba(#ededed, .9);
+  z-index: 30;
+
+  .all-shares{
+    display: none;
+  }
+
+  h5{
+    float: left;
+    font-family: montserratlight;
+    text-align: center;
+    font-style: italic;
+    font-size: 1.2rem;
+    font-weight: 200;
   }
 }
 
@@ -7172,8 +7203,8 @@ footer.about-footer{
     }
     .author-overview{
       padding-top: 0 !important;
-      float: right;
-      width: 65%;
+      float: left;
+      width: 30%;
     }
 
     .content-tags{
@@ -7184,6 +7215,9 @@ footer.about-footer{
         margin: 5px auto;
         float: none !important;
       }
+    }
+    .social-stats__item {
+      padding-left: 2% !important;
     }
 
   }
@@ -9777,6 +9811,7 @@ body.error-page{
 }
 
 #comments{
+  margin: 5px;
     .profile-photo{
         width: 44px;
         height: 44px;
