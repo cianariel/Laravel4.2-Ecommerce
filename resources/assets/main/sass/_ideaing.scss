@@ -103,6 +103,9 @@ a:hover, a:focus{
   .m-icon--ScrollingHeaderHeart .path1:before{
     color: $color;
   }
+
+
+
 }
 
 .category-smarthome{
@@ -110,6 +113,7 @@ a:hover, a:focus{
   .category-link__smart-home{
     color: $iridium;
   }
+
 }
 
 .category-smart-travel{
@@ -131,27 +135,30 @@ a:hover, a:focus{
   }
 }
 
+
+
 .category-link{
     cursor: hover;
 
 
     &__smart-home{
-      &:hover{
+      &:hover, .m-icon{
         color: $iridium;
       }
     }
     &__smart-travel{
-      &:hover{
+      &:hover, .m-icon{
         color: $dark-orange;
       }
+      
     }
     &__smart-body{
-      &:hover{
+      &:hover, .m-icon{
       color: $sky-blue;
       }
     }
     &__smart-entertainment{
-      &:hover{
+      &:hover, .m-icon{
         color: $pine-green;
       }
     }
