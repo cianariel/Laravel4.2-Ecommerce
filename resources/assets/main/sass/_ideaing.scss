@@ -150,7 +150,7 @@ a:hover, a:focus{
       &:hover, .m-icon{
         color: $dark-orange;
       }
-      
+
     }
     &__smart-body{
       &:hover, .m-icon{
@@ -237,7 +237,7 @@ a:hover, a:focus{
     color: #1d1d1d;
     font-size: 1.15rem !important;
 
-    @media (max-width: 620px) {
+    @media (min-width: 620px) {
       color:#3d4b4e;
     }
   }
