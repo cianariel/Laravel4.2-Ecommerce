@@ -45,14 +45,6 @@ if (!isset($theGiveAway)) {
     <header class="colophon container full-sm fixed-sm">
         <div ng-init="socialCounter()" class="socialcounter col-xs-12">
             <nav id="top-nav" class="row">
-                <div class="hidden-lg hidden-md hidden-sm col-xs-1">
-                    <a class="home-hamburger mobile-top-menu-switcher" data-toggle="#mobile-top-menu" href="#">
-                        <i class=" m-icon--Close up"></i>
-                        <i class="m-icon--MenuButton down"></i>
-                    </a>
-                </div>
-
-
                 <div class="text-center logo-holder">
                     <a class="ideaing-logo center-block hidden-sm hidden-xs" href="/">
                                <span class="m-icon m-icon--logo-with-text-black-blue default-logo">
@@ -95,7 +87,7 @@ if (!isset($theGiveAway)) {
                 </div>
 
                     <div class="top-nav-holder">
-                        <div class="col-xs-7 col-sm-7 col-lg-8 category-menu full-620">
+                        <div class="col-xs-10 col-sm-7 col-lg-8 category-menu">
                             <ul>
                                 <li>
                                     <a class="category-link__smart-home" href="#">
@@ -134,9 +126,15 @@ if (!isset($theGiveAway)) {
                             </ul>
                         </div>
 
+                            <a class="home-hamburger mobile-top-menu-switcher hidden-lg hidden-md hidden-sm" data-toggle="#mobile-top-menu" href="#">
+                                <i class=" m-icon--Close up"></i>
+                                <i class="m-icon--MenuButton down"></i>
+                            </a>
+
                             <form class="search-bar col-sm-2 col-lg-2" ng-app="publicApp" ng-controller="SearchController" action="/search-form-query" autocomplete="off">
                                         <span class="search-input-holder desktop-search-bar pull-right">
-                                                <input ng-click="toggleSearch()" id="search-input"
+                                            <i class="m-icon m-icon--search-id"></i>
+                                            <input ng-click="toggleSearch()" id="search-input"
                                                        ng-change="openSearchDropdown(query)" ng-model="query"
                                                        ng-model-options='{ debounce: 800 }' class="form-control top-search"
                                                        type="text" name="search" placeholder="Search..."/>

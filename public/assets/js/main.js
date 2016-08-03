@@ -3640,20 +3640,27 @@ angular.module('colorpicker.module', [])
         $('body').on('click', '.search-toggle-button', function(e){
             e.preventDefault();
             var $show = $('.search-bar');
+            var $header = $('.top-nav-holder');
 
             if(!$show.hasClass('shown')){
                 $show.show();
                 $show.animate({
                     opacity: '1',
-                    top: '80px',
-                }, 1000)
+                    top: '50px',
+                }, 600)
+                $header.animate({
+                    height: '90px',
+                }, 600);
                 $show.addClass('shown');
             }else{
                 $show.fadeOut();
                 $show.animate({
                     top: '35px',
                     opacity: 0,
-                }, 500)
+                }, 500);
+                $header.animate({
+                    height: '52px',
+                }, 1000);
                 $show.removeClass('shown');
             }
         });
