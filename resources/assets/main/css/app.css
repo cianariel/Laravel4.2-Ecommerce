@@ -4627,6 +4627,9 @@ a:hover, a:focus {
     text-transform: capitalize;
     color: #1d1d1d;
     font-size: 1.15rem !important; }
+    @media (max-width: 620px) {
+      .category-menu a {
+        color: #3d4b4e; } }
 
 .blue-glow {
   -webkit-stroke-width: 5.3px;
