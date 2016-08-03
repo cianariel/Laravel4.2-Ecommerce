@@ -127,11 +127,13 @@ if (!isset($theGiveAway)) {
                                         <span class="m-icon-text white">Shop</span>
                                     </a>
                                 </li>
+                                <li>
+                                    <a href="#" class="search-toggle-button"><i class="m-icon m-icon--search-id"></i></a>
+                                </li>
 
                             </ul>
                         </div>
 
-                        <div class="search-toggle col-xs-1 pull-left">
                             <form class="search-bar col-sm-2 col-lg-2" ng-app="publicApp" ng-controller="SearchController" action="/search-form-query" autocomplete="off">
                                         <span class="search-input-holder desktop-search-bar pull-right">
                                                 <input ng-click="toggleSearch()" id="search-input"
@@ -146,14 +148,12 @@ if (!isset($theGiveAway)) {
                                             </div>
                                         </span>
                             </form>
-                            <a href="#" class="toggle-button"><i class="m-icon m-icon--search-id"></i></a>
-                        </div>
 
                         <div class="col-xs-5 col-sm-2 pull-right user-controls">
 
                                 <?php
                                 if(isset($userData['login']) && $userData['login']) { ?>
-                                <div class="pull-right profile-photo-holder" data-toggle=".notification-popup">
+                                <div class="pull-right profile-photo-holder" data-hideonout="true" data-toggle=".notification-popup">
                                     <a href="#"  ng-init="loadNotification('<?php echo $userData['id']?>')"><img width="40px" src="<?php echo isset($userData['medias'][0]['media_link']) ? $userData['medias'][0]['media_link'] : "" ?>" alt="" class="profile-photo ">
                                     <span ng-hide="notificationCounter == 0" class="notification-count"
                                           ng-bind="notificationCounter"></span>
@@ -200,7 +200,7 @@ if (!isset($theGiveAway)) {
                         </div>
                       <?php  if(isset($userData['login']) && $userData['login']){ ?>
 
-                            <div class="notification-popup hidden-soft">
+                            <div class="notification-popup hide-on-out hidden-soft">
                                 <div class="notification-header">
                                     <ul>
                                         <li><a href="#" class="active" data-switch=".notifs" data-hide=".prof-menu">Notifications </a></li>
@@ -210,7 +210,7 @@ if (!isset($theGiveAway)) {
 
                                 <div class="notification-body">
                                     <div class="tab notifs">
-                                        <span ng-click="readAllNotification()" class="pull-right blue" id="mark-all-as-read">Mark all as read</span>
+                                        <span ng-click="readAllNotification()" class="pull-right red" id="mark-all-as-read">Mark all as read</span>
 
                                         <div class="notification-item" ng-repeat="notice in notifications">
                                             <img width="40px" ng-src="<?php echo '{{ notice.UserPicture }}' ?>" class="profile-photo pull-left">

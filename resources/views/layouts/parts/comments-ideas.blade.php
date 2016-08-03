@@ -97,7 +97,6 @@ if (function_exists('is_single')) {
                             </div>
                         </div>
                         <div class="col-md-12" ng-hide="show_editor">
-                            <h6>Leave a comment</h6>
                             <textarea class="form-control radius-15 no-border"
                                       ng-click="show_editor=1; focus_editor=true; focusEditor()" cols="" rows=""
                                       class=" ta-text ta-editor"></textarea>

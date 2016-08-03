@@ -25,7 +25,7 @@
                 $($show).fadeToggle();
                 $that.toggleClass('active');
             }
-
+            return false;
         });
 
         $('body').on('click', '[data-switch]', function(e){
@@ -47,44 +47,38 @@
             }else{
                 $that.removeClass('active');
             }
+            return false;
         });
 
-        $('body').on('click', '.search-toggle .toggle-button', function(e){
+        $('body').on('click', '.search-toggle-button', function(e){
             e.preventDefault();
-            //var $that = $(this);
             var $show = $('.search-bar');
-            var $width = $('.category-menu').outerWidth();
-            //var $hide = $that.data('hide');
-            //var $overlay = $that.data('overlay');
 
             if(!$show.hasClass('shown')){
-                $show.fadeIn();
-                $('.category-menu').animate({
-                    opacity: '0'
-                }, 500);
+                $show.show();
                 $show.animate({
-                    width: $width,
-                    opacity: '1'
+                    opacity: '1',
+                    top: '80px',
                 }, 1000)
                 $show.addClass('shown');
             }else{
-                //$show.css('opacity','0')
-                //$show.css('width','80px')
+                $show.fadeOut();
                 $show.animate({
-                    width: '80px',
-                    opacity: '0'
+                    top: '35px',
+                    opacity: 0,
                 }, 500)
-                $('.category-menu').animate({
-                    opacity: '1'
-                }, 1000);
                 $show.removeClass('shown');
             }
-
-
-                //$show.find('.search-form').css('width','700px;')
-
-
         });
+
+        $(document).click(function(event) {
+            if(!$(event.target).closest('.hide-on-out').length) {
+                if($('.hide-on-out').is(":visible")) {
+                    $('.hide-on-out').fadeOut();
+                    $('[data-hideonout]').removeClass('active');
+                }
+            }
+        })
 
         $('.page-overlay, .login-signup-modal').click(function(event){
             if(event.target !== this){ // only fire if the block itself is clicked, not it's children (sometimes we need to hide the modal when anything outside it's main block is clickced
@@ -266,7 +260,7 @@
                 var div_top = $('#sticky-anchor').offset().top;
                 var window_top = $(window).scrollTop();
                 if (window_top > div_top) {
-                    $('.        homsticks-on-scroll').addClass('stick');
+                    $('.sticks-on-scroll').addClass('stick');
                 } else {
                     $('.sticks-on-scroll').removeClass('stick');
                 } 

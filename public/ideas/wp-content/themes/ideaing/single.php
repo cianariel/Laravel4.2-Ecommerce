@@ -78,9 +78,9 @@
                 <div class="author-overview col-lg-5 col-sm-5 col-xs-6 full-480">
                     <h4 class="author-name">
                         <div id="sticky-anchor"></div>
-                        <span ng-bind="authorName" class="author-name text-uppercase""></span>
+                        <b ng-bind="authorName" class="author-name text-uppercase"></b>
                     </h4>
-                    <time class="text-uppercase" datetime="{{the_date('Y-m-d')}}">{{the_time( get_option( 'date_format' ) )}}</time>
+                    <time datetime="{{the_date('Y-m-d')}}">{{the_time( get_option( 'date_format' ) )}}</time>
 
                 </div>
                 <div class="view-counter social-stats__item">
