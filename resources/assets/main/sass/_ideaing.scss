@@ -3246,6 +3246,10 @@ header.colophon{
         a{
             padding-bottom: 0px;
             height: 50px;
+
+          @media (max-width:620px){
+            padding-top: 0;
+          }
         }
         
         padding-left: 10px;

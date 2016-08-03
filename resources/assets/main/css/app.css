@@ -6988,6 +6988,9 @@ header.colophon {
   #top-nav .category-menu a {
     padding-bottom: 0px;
     height: 50px; }
+    @media (max-width: 620px) {
+      #top-nav .category-menu a {
+        padding-top: 0; } }
   #top-nav .category-menu ul > li:first-child a {
     padding-left: 4px; }
   #top-nav .category-menu ul > li > a i.m-icon {
