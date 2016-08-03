@@ -241,7 +241,7 @@ class AuthenticateController extends ApiController
         registered in our system or not.
         */
 
-        $userInfo = $this->user->FindOrCreateUser($fbUser,$source);
+        $userInfo = $this->user->FindOrCreateUser($fbUser,$source = null);
 
         // send welcome mail to new user
         if (!empty($userInfo['NewUser']) && ($userInfo['NewUser'] == true)) {
