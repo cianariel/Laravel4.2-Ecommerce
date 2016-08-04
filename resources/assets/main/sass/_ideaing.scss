@@ -175,59 +175,16 @@ a:hover, a:focus{
         background: $iridium;
       }
 
-      //@media(min-width: 1200px){
-      //  min-width: 83px
-      //}
       @media(max-width: 620px){
         float: left;
-        position: relative;
-        left: -57px;
-        bottom: 13px;
-        //margin-right: 2px !important;
+        position: absolute;
+        left: 2px;
+        bottom: -18px;
+        z-index: 30;
       }
     }
 
 }
-//
-//.category-link{
-//  &__smart-home{
-//    &:hover{
-//      color: $iridium;
-//    }
-//  }
-//  &__smart-travel{
-//    &:hover{
-//      color: $dark-orange;
-//    }
-//  }
-//  &__smart-body{
-//    &:hover{
-//      color: $sky-blue;
-//    }
-//  }
-//  &__smart-entertainment{
-//    &:hover{
-//      color: $pine-green;
-//    }
-//  }
-//  &__shop{
-//    background-color: $iridium;
-//    color: #fff;
-//    padding: 5px!important;
-//    margin-top: 5px;
-//    border-radius: 5px;
-//    text-align: right;
-//    height: auto !important;
-//
-//    //@media(min-width: 1200px){
-//    //  min-width: 83px
-//    //}
-//    @media(max-width: 620px){
-//      float: right;
-//    }
-//  }
-//
-//}
 
 .category-menu{
   padding-top: 2px;
@@ -956,7 +913,7 @@ ul.share-buttons{
     .all-shares{
       float: left;
     }
-    .pint{
+    .gp{
       display: none;
     }
     .email{
@@ -2885,36 +2842,26 @@ header.colophon{
       min-height: 81px;
     }
 
-
-    //a{
-    //  color: #999;
-    //}
     #top-nav{
       position: relative;
       z-index: 30;
       border-bottom:1px solid rgba(193, 193, 193, 0.22);
       background: #fff;
 
+      @media(max-width: 620px){
+        max-height: 60px;
+      }
+
       .notification-holder{
         padding-top: 4px;
       }
 
       a.signin{
-
-            //float: right;
-            white-space: nowrap;
-            padding-right: 0px;
-            padding-top: 16px;
-            padding-left: 3px;
-            font-size: 1rem;
-
-            //.m-icon{
-            //    margin-right: 5px;
-            //    border: 1px solid;
-            //    border-radius: 16px;
-            //    font-size: 23px;
-            //    margin-top: -5px;
-            //}
+          white-space: nowrap;
+          padding-right: 0px;
+          padding-top: 16px;
+          padding-left: 3px;
+          font-size: 1rem;
         }
     }
 
@@ -2925,12 +2872,9 @@ header.colophon{
 
     .logo-holder{
       padding-left: 0;
-      //min-width: 180px;
 
       @media(max-width: 620px){
-        //margin: 0 auto;
         width: 50px;
-        //float: none;
       }
     }
 
@@ -2941,9 +2885,10 @@ header.colophon{
 
     @media(max-width: 620px){
       position: absolute;
-      bottom: 4px;
-      right: -4px;
+      bottom: -26px;
+      right: -13px;
       max-width: 127px;
+      z-index: 20;
     }
   }
 
@@ -3052,14 +2997,9 @@ header.colophon{
   @media (min-width: 620px){
     .user-controls{
       max-width: 265px;
-
       position: absolute;
       top: 0;
       right: 0;
-
-      //.new-message{
-      //  padding-top: 15px;
-      //}
     }
   }
 
@@ -3240,7 +3180,7 @@ header.colophon{
     color: #000;
     padding: 7px 5px 5px!important;
     height: 27px;
-    margin-top: 8px;
+    //margin-top: 8px;
     margin-left: -11px;
     position: absolute;
     top: 4px;
@@ -3396,6 +3336,7 @@ header.colophon{
                 border-top-right-radius: 20px;
                 background: $iridium;
                 padding: 10px 15px;
+                overflow: hidden;
                 color: #fff;
                 #mark-all-as-read{
                     cursor: pointer;
@@ -3404,6 +3345,7 @@ header.colophon{
                 width: 200px;
                 margin: 0 auto;
                 display: block;
+                float: none;
 
                 li:first-child{
                   a::after{
@@ -3430,6 +3372,7 @@ header.colophon{
                 border-bottom-left-radius: 20px;
                 border-bottom-right-radius: 20px;
                 height: 315px;
+                width: 100%;
                 overflow: auto; 
                 .notification-item{
                     border-bottom: 1px solid #f3f6f6;
@@ -3467,7 +3410,11 @@ header.colophon{
                 position: absolute;
                 content: ' ';
                 color: $iridium;
-                top: -11px;        
+                top: -11px;
+
+                @media(max-width: 620px){
+                  right: 17px; 
+                }
             }
 
 
@@ -3586,7 +3533,7 @@ box-shadow: -1px -1px 20px -7px rgba(0,0,0,0.75);
       }
 
       @media (max-width:620px){
-          top: 9px;
+          top: 6px;
       }
     }
 

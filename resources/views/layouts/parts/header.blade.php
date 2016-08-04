@@ -121,6 +121,11 @@ if (!isset($theGiveAway)) {
                                 <i class="m-icon--MenuButton down"></i>
                             </a>
 
+                        <a class="category-link__shop m-icon-text-holder hidden-soft shown-620" href="/shop">
+                            <i class="hidden-xs hidden-sm hidden-md m-icon m-icon--shopping-bag-light-green white"></i>
+                            <span class="m-icon-text white">Shop</span>
+                        </a>
+
                             <form class="search-bar col-sm-2 col-lg-2 pseudo-full-wide" ng-app="publicApp" ng-controller="SearchController" action="/search-form-query" autocomplete="off">
                                         <span class="search-input-holder desktop-search-bar">
                                             <i class="m-icon m-icon--search-id"></i>
@@ -134,20 +139,20 @@ if (!isset($theGiveAway)) {
                                                 include('/var/www/ideaing/resources/views/layouts/parts/search-dropdown.blade.php')
                                                 ?>
                                             </div>
-                                            <i class="hide-search m-icon--Close"></i>
+                                            <i class="hide-search m-icon--Close hidden-xs"></i>
                                         </span>
                             </form>
 
                         <div class="col-xs-5 col-sm-3 pull-right user-controls">
                                 <ul>
                                     <li>
-                                        <a class="category-link__shop m-icon-text-holder" href="/shop">
+                                        <a class="category-link__shop m-icon-text-holder hidden-xs" href="/shop">
                                             <i class="hidden-xs hidden-sm hidden-md m-icon m-icon--shopping-bag-light-green white"></i>
                                             <span class="m-icon-text white">Shop</span>
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="#" class="search-toggle-button"><i class="m-icon m-icon--search-id"></i></a>
+                                        <a href="#" class="search-toggle-button hidden-xs"><i class="m-icon m-icon--search-id"></i></a>
                                     </li>
                                 </ul>
                                 <?php
