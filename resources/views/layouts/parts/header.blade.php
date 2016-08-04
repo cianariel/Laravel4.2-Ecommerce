@@ -113,16 +113,6 @@ if (!isset($theGiveAway)) {
                                         <span class="m-icon-text"><span class="hidden-xs hidden-sm">Smart</span> Travel</span>
                                     </a>
                                 </li>
-                                <li>
-                                    <a class="category-link__shop m-icon-text-holder" href="/shop">
-                                        <i class="hidden-xs hidden-sm hidden-md m-icon m-icon--shopping-bag-light-green white"></i>
-                                        <span class="m-icon-text white">Shop</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#" class="search-toggle-button"><i class="m-icon m-icon--search-id"></i></a>
-                                </li>
-
                             </ul>
                         </div>
 
@@ -131,8 +121,8 @@ if (!isset($theGiveAway)) {
                                 <i class="m-icon--MenuButton down"></i>
                             </a>
 
-                            <form class="search-bar col-sm-2 col-lg-2" ng-app="publicApp" ng-controller="SearchController" action="/search-form-query" autocomplete="off">
-                                        <span class="search-input-holder desktop-search-bar pull-right">
+                            <form class="search-bar col-sm-2 col-lg-2 pseudo-full-wide" ng-app="publicApp" ng-controller="SearchController" action="/search-form-query" autocomplete="off">
+                                        <span class="search-input-holder desktop-search-bar">
                                             <i class="m-icon m-icon--search-id"></i>
                                             <input ng-click="toggleSearch()" id="search-input"
                                                        ng-change="openSearchDropdown(query)" ng-model="query"
@@ -147,8 +137,18 @@ if (!isset($theGiveAway)) {
                                         </span>
                             </form>
 
-                        <div class="col-xs-5 col-sm-2 pull-right user-controls">
-
+                        <div class="col-xs-5 col-sm-3 pull-right user-controls">
+                                <ul>
+                                    <li>
+                                        <a class="category-link__shop m-icon-text-holder" href="/shop">
+                                            <i class="hidden-xs hidden-sm hidden-md m-icon m-icon--shopping-bag-light-green white"></i>
+                                            <span class="m-icon-text white">Shop</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="search-toggle-button"><i class="m-icon m-icon--search-id"></i></a>
+                                    </li>
+                                </ul>
                                 <?php
                                 if(isset($userData['login']) && $userData['login']) { ?>
                                 <div class="pull-right profile-photo-holder" data-hideonout="true" data-toggle=".notification-popup">

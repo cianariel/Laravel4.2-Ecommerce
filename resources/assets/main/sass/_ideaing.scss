@@ -2935,7 +2935,7 @@ header.colophon{
     }
 
   .user-controls{
-    max-width: 143px;
+    max-width: 225px;
     padding-right: 0;
 
 
@@ -3039,9 +3039,23 @@ header.colophon{
       }
     }
   }
-  @media (min-width: 1025px){
+  .user-controls{
+    ul{
+      width: 110px;
+      float: left;
+
+      .category-link__shop{
+        margin-right: 14px;
+      }
+    }
+  }
+  @media (min-width: 620px){
     .user-controls{
-      max-width: 150px;
+      max-width: 265px;
+
+      position: absolute;
+      top: 0;
+      right: 0;
 
       //.new-message{
       //  padding-top: 15px;
@@ -3064,14 +3078,18 @@ header.colophon{
   top:25px;
   max-width: 100%;
   width: 740px;
-  position: absolute;
+  position: absolute !important;
   left:0;
   right: 0;
-  margin:0 auto;
+  margin:0 auto !important;
   overflow: visible;
   height: 40px;
   z-index: 20 !important;
   opacity: 1;
+
+  background: #fff !important;
+
+  @include pseudo-full-wide(#fff);
 
   .toggle-button,
   .search-bar{
@@ -3100,25 +3118,15 @@ header.colophon{
 }
 .search-bar{
   opacity: 0;
+  border-bottom: 1px solid rgba(193,193,193,.22);
+  width: 100%;
 
-
-  //position: relative;
-  //margin-left: 3%;
-  //position: absolute;
-  //right: 0;
-
-  //@media(max-width: 1300px){
-  //  max-width: 125px;
-  //}
-
-  //a.search-toggle{
-  //  display: none;
-  //}
-
-  //transition:  all .8s;
 
   .search-input-holder{
     width: 100%;
+    max-width: 720px;
+    margin: 0 auto;
+    display: block;
   }
 
   .desktop-search-bar{
@@ -3134,14 +3142,10 @@ header.colophon{
         }
         .m-icon{
             position: absolute;
-            left: 22px;
-            top: 7px;
+            left: 38px;
+            top: 10px;
             z-index: 10;
-
-          //@media (max-width:620px){
-          //  left: 35px;
-          //}
-        }      
+        }
   }
 
   input{
@@ -3150,7 +3154,10 @@ header.colophon{
     text-align: left;
     padding-left: 36px;
     margin-bottom: 0px;
+    //max-width: 720px;
+    //margin: 0 auto;
     box-shadow: none;
+
   }
 }
 
@@ -3254,6 +3261,9 @@ header.colophon{
     }
     
     .category-menu{
+      max-width:705px;
+      margin: 0 auto;
+      float: none;
         a{
             padding-bottom: 0px;
             height: 50px;

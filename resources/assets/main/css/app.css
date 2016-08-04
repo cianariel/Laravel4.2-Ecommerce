@@ -6774,7 +6774,7 @@ header.colophon {
       header.colophon .logo-holder {
         width: 50px; } }
   header.colophon .user-controls {
-    max-width: 143px;
+    max-width: 225px;
     padding-right: 0; }
     @media (max-width: 620px) {
       header.colophon .user-controls {
@@ -6838,9 +6838,17 @@ header.colophon {
     header.colophon.scroll-header + header.sub-head .shop-menu .item-image {
       width: 70%;
       height: auto; }
-  @media (min-width: 1025px) {
+  header.colophon .user-controls ul {
+    width: 110px;
+    float: left; }
+    header.colophon .user-controls ul .category-link__shop {
+      margin-right: 14px; }
+  @media (min-width: 620px) {
     header.colophon .user-controls {
-      max-width: 150px; } }
+      max-width: 265px;
+      position: absolute;
+      top: 0;
+      right: 0; } }
 
 @media (max-width: 620px) {
   .mobile-right-block {
@@ -6853,14 +6861,35 @@ header.colophon {
   top: 25px;
   max-width: 100%;
   width: 740px;
-  position: absolute;
+  position: absolute !important;
   left: 0;
   right: 0;
-  margin: 0 auto;
+  margin: 0 auto !important;
   overflow: visible;
   height: 40px;
   z-index: 20 !important;
-  opacity: 1; }
+  opacity: 1;
+  background: #fff !important;
+  position: relative;
+  /* for the child pseudo-elements */
+  /* negative offset = section padding */
+  margin: 0 -30px;
+  /* add back section padding value */
+  padding: 0.25rem 30px;
+  background: #000; }
+  .search-bar:before, .search-bar:after {
+    content: "";
+    position: absolute;
+    /* fill vertically */
+    top: 0;
+    bottom: 0;
+    width: 9600px;
+    right: 100%;
+    background: #fff; }
+  .search-bar:after {
+    width: 920px;
+    left: 100%;
+    background: #fff; }
   .search-bar .toggle-button,
   .search-bar .search-bar {
     position: absolute;
@@ -6882,9 +6911,14 @@ header.colophon {
         right: -11px; } }
 
 .search-bar {
-  opacity: 0; }
+  opacity: 0;
+  border-bottom: 1px solid rgba(193, 193, 193, 0.22);
+  width: 100%; }
   .search-bar .search-input-holder {
-    width: 100%; }
+    width: 100%;
+    max-width: 720px;
+    margin: 0 auto;
+    display: block; }
   .search-bar .desktop-search-bar input {
     height: 35px;
     border-radius: 2px;
@@ -6896,8 +6930,8 @@ header.colophon {
     width: 100%; }
   .search-bar .desktop-search-bar .m-icon {
     position: absolute;
-    left: 22px;
-    top: 7px;
+    left: 38px;
+    top: 10px;
     z-index: 10; }
   .search-bar input {
     min-width: 128px;
@@ -6987,6 +7021,9 @@ header.colophon {
 #top-nav .mobile-top-menu-switcher.active .down {
   display: none; }
 #top-nav .category-menu {
+  max-width: 705px;
+  margin: 0 auto;
+  float: none;
   padding-left: 10px; }
   #top-nav .category-menu a {
     padding-bottom: 0px;

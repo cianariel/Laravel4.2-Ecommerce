@@ -3649,17 +3649,16 @@ angular.module('colorpicker.module', [])
                     top: '50px',
                 }, 600)
                 $header.animate({
-                    height: '90px',
                 }, 600);
                 $show.addClass('shown');
+                $show.find('input').focus();
             }else{
-                $show.fadeOut();
                 $show.animate({
                     top: '35px',
                     opacity: 0,
                 }, 500);
+                $show.fadeOut();
                 $header.animate({
-                    height: '52px',
                 }, 1000);
                 $show.removeClass('shown');
             }
