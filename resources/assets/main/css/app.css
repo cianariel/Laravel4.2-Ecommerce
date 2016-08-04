@@ -5278,7 +5278,7 @@ ul.share-buttons {
     font-size: 1.7rem;
     border-radius: 30px;
     padding: 0 10px 0 0 !important;
-    color: #ededed;
+    color: #c1c1c1;
     border: 1px solid #F2F5F5;
     background: transparent;
     text-align: center;
@@ -5299,7 +5299,7 @@ ul.share-buttons {
     background-position: 5px 8px; }
     ul.share-buttons a.email i.m-icon {
       color: white;
-      background: #ededed;
+      background: #c1c1c1;
       padding: 5px;
       border-radius: 20px;
       padding-top: 7px;
@@ -5311,9 +5311,9 @@ ul.share-buttons {
       display: inline-block;
       position: relative;
       top: 5px;
-      color: #ededed; }
+      color: #c1c1c1; }
     ul.share-buttons a.email:hover {
-      background: #ededed;
+      background: #c1c1c1;
       /*		border: 0px;*/
       color: white; }
       ul.share-buttons a.email:hover b {
@@ -6918,7 +6918,8 @@ header.colophon {
     width: 100%;
     max-width: 720px;
     margin: 0 auto;
-    display: block; }
+    display: block;
+    position: relative; }
   .search-bar .desktop-search-bar input {
     height: 35px;
     border-radius: 2px;
@@ -6930,9 +6931,15 @@ header.colophon {
     width: 100%; }
   .search-bar .desktop-search-bar .m-icon {
     position: absolute;
-    left: 38px;
-    top: 10px;
+    left: 8px;
+    top: 6px;
     z-index: 10; }
+  .search-bar .desktop-search-bar .hide-search {
+    color: #000;
+    position: absolute;
+    top: 6px;
+    right: 3px;
+    font-size: 2rem; }
   .search-bar input {
     min-width: 128px;
     color: #999;
@@ -7299,6 +7306,8 @@ body.archive.category-deals #top-nav .nested a.m-icon-text-holder {
 body.shop-landing #top-nav a.m-icon-text-holder .box-link-active-line {
   margin-left: 10px; }
 
+body.single-post header.colophon.scroll-header #top-nav {
+  position: static !important; }
 body.single-post .social-stats__item {
   position: static;
   width: 125px; }

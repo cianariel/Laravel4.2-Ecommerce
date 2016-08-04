@@ -921,7 +921,7 @@ ul.share-buttons{
 
     }
     &.email {
-      @include round-box($light-grey, "/assets/images/email-white-small.png");
+      @include round-box(#c1c1c1, "/assets/images/email-white-small.png");
       border-width: 0;
       background-position: 5px 8px;
     }
@@ -3127,6 +3127,7 @@ header.colophon{
     max-width: 720px;
     margin: 0 auto;
     display: block;
+    position: relative;
   }
 
   .desktop-search-bar{
@@ -3142,9 +3143,18 @@ header.colophon{
         }
         .m-icon{
             position: absolute;
-            left: 38px;
-            top: 10px;
+            left: 8px;
+            top: 6px;
             z-index: 10;
+        }
+        .hide-search{
+          color: #000;
+
+          position: absolute;
+          top: 6px;
+          right: 3px;
+          font-size: 2rem;
+
         }
   }
 
@@ -3668,6 +3678,9 @@ body.shop-landing #top-nav a.m-icon-text-holder .box-link-active-line{
 
 
 body.single-post{
+  header.colophon.scroll-header #top-nav{
+      position: static !important;
+  }
     .social-stats__item{
       position: static;
       width: 125px;

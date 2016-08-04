@@ -3640,7 +3640,7 @@ angular.module('colorpicker.module', [])
         $('body').on('click', '.search-toggle-button', function(e){
             e.preventDefault();
             var $show = $('.search-bar');
-            var $header = $('.top-nav-holder');
+            //var $header = $('.top-nav-holder');
 
             if(!$show.hasClass('shown')){
                 $show.show();
@@ -3648,21 +3648,37 @@ angular.module('colorpicker.module', [])
                     opacity: '1',
                     top: '50px',
                 }, 600)
-                $header.animate({
-                }, 600);
+                //$header.animate({
+                //}, 600);
                 $show.addClass('shown');
                 $show.find('input').focus();
             }else{
                 $show.animate({
                     top: '35px',
                     opacity: 0,
-                }, 500);
+                }, 200);
                 $show.fadeOut();
-                $header.animate({
-                }, 1000);
+                //$header.animate({
+                //}, 500);
                 $show.removeClass('shown');
             }
         });
+
+        $('body').on('click', '.hide-search', function(e){
+            var $show = $('.search-bar');
+            //var $header = $('.top-nav-holder');
+
+            $show.animate({
+                top: '35px',
+                opacity: 0,
+            }, 200);
+            $show.fadeOut();
+            //$header.animate({
+            //}, 500);
+            $show.removeClass('shown');
+        });
+
+
 
         $(document).click(function(event) {
             if(!$(event.target).closest('.hide-on-out').length) {

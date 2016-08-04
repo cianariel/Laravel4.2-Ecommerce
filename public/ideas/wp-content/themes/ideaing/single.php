@@ -3,7 +3,7 @@
 <div ng-app="publicApp" ng-controller="publicController" ng-cloak>
 <?php if (have_posts()): while (have_posts()) : the_post(); ?>
     <div>
-    <header class="story-header hidden-620 hidden-soft">
+   <!-- <header class="story-header hidden-620 hidden-soft">
         <div class="col-xs-1 col-sm-1">
             <a href="#" class="side-logo lamp-logo">
                 <i class="m-icon m-icon--bulb2 scroll-logo">
@@ -42,7 +42,7 @@
             </ul>
         </div>
 
-    </header>
+    </header> -->
 
     <?php
     $tags = wp_get_post_tags($post->ID);

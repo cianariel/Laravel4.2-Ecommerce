@@ -134,6 +134,7 @@ if (!isset($theGiveAway)) {
                                                 include('/var/www/ideaing/resources/views/layouts/parts/search-dropdown.blade.php')
                                                 ?>
                                             </div>
+                                            <i class="hide-search m-icon--Close"></i>
                                         </span>
                             </form>
 
