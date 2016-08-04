@@ -6747,7 +6747,8 @@ article.product {
 
 @media (max-width: 620px) {
   .logged-in .user-controls {
-    right: 5px !important; } }
+    right: 15px !important;
+    width: 100%; } }
 
 header.colophon {
   min-height: 53px;

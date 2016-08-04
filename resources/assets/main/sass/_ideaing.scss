@@ -2832,7 +2832,8 @@ article.product{
 .logged-in{
   .user-controls{
     @media(max-width: 620px){
-      right: 5px !important;
+      right: 15px !important;
+      width: 100%;
     }
   }
 }
