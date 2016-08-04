@@ -3122,6 +3122,7 @@ header.colophon{
 #mobile-top-menu.mobile-top-menu,
 .mobile-top-menu,{
     position: absolute;
+    top: 93px;
     width: 100%;
     background: rgba(0,0,0, 0.8);
     display: none;
@@ -3176,7 +3177,8 @@ header.colophon{
 #top-nav{
 
   .home-hamburger{
-    background: #cac9c9;
+    width: 24px;
+    //background: #cac9c9;
     color: #000;
     padding: 7px 5px 5px!important;
     height: 27px;
@@ -3186,9 +3188,106 @@ header.colophon{
     top: 4px;
     right: 9px;
     border-radius: 2px;
+    overflow: hidden;
 
     i{
-      font-size: 1.9rem !important;
+      font-size: 2.3rem !important;
+    }
+    svg{
+      transition: all 2s;
+      left:0;
+      overflow: hidden;
+    }
+
+    &.active{
+        .down{
+          display: block !important;
+          svg{
+            left:25px;
+          }
+        }
+    }
+
+    .nav-trigger {
+      display: block;
+      position: absolute;
+      width: 2em;
+      height: 2em;
+      top: 50%;
+      left: 0;
+      margin: -.6625em 0 0;
+      cursor: pointer;
+      overflow: hidden;
+    }
+
+    .nav-trigger svg {
+      display: block;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+    }
+
+    .nav-trigger svg rect {
+      fill: #b7b7b7;
+      -webkit-transition: -webkit-transform .4s cubic-bezier(0.68, -0.55, 0.27, 1.55), fill .4s, opacity .4s;
+      transition: transform .4s cubic-bezier(0.68, -0.55, 0.27, 1.55), fill .4s, opacity .4s;
+    }
+
+    .nav-trigger svg rect:nth-child(2), .nav-trigger svg rect:nth-child(4) {
+      -webkit-transform: matrix(1,0,0,1,6,0);
+      transform: matrix(1,0,0,1,6,0);
+    }
+    .nav-trigger svg rect:nth-child(6), .nav-trigger svg rect:nth-child(7) {
+      -webkit-transform: matrix(1,0,0,1,20,0);
+      transform: matrix(1,0,0,1,20,0);
+    }
+
+    .nav-trigger:hover svg rect,
+    &.active .nav-trigger svg rect {
+      fill: #5d666f;
+    }
+
+    .nav-trigger:hover svg rect:nth-child(1),
+    .nav-trigger:hover svg rect:nth-child(3),
+    .nav-trigger:hover svg rect:nth-child(5) {
+      -webkit-transform: matrix(1,0,0,1,6,0);
+      transform: matrix(1,0,0,1,6,0);
+    }
+    .nav-trigger:hover svg rect:nth-child(2),
+    .nav-trigger:hover svg rect:nth-child(4) {
+      -webkit-transform: matrix(1,0,0,1,0,0);
+      transform: matrix(1,0,0,1,0,0);
+    }
+    .nav-trigger svg rect:nth-child(6),
+    .nav-trigger svg rect:nth-child(7) {
+      -webkit-transform: matrix(1,0,0,1,20,0);
+      transform: matrix(1,0,0,1,20,0);
+    }
+
+
+
+    .nav-trigger:hover svg rect, &.active .nav-trigger svg rect {
+      fill: #5d666f;
+    }
+
+    &.active .nav-trigger svg rect:nth-child(1),
+    &.active .nav-trigger svg rect:nth-child(2),
+    &.active .nav-trigger svg rect:nth-child(3),
+    &.active .nav-trigger svg rect:nth-child(4), &.active .nav-trigger svg rect:nth-child(5) {
+      -webkit-transform: matrix(1,0,0,1,-20,0);
+      transform: matrix(1,0,0,1,-20,0);
+    }
+    &.active .nav-trigger svg rect:nth-child(6),
+    &.active .nav-trigger svg rect:nth-child(6) {
+      -webkit-transform: matrix(0.7071, 0.7071, -0.7071, 0.7071, 9.2929, -4.435);
+      transform: matrix(0.7071, 0.7071, -0.7071, 0.7071, 9.2929, -4.435);
+    }
+    &.active .nav-trigger svg rect:nth-child(7),
+    &.active .nav-trigger svg rect:nth-child(7) {
+      -webkit-transform: matrix(0.7071, -0.7071, 0.7071, 0.7071, -3.435, 9.7071);
+      transform: matrix(0.7071, -0.7071, 0.7071, 0.7071, -3.435, 9.7071);
     }
   }
     .mobile-top-menu-switcher{
@@ -3413,7 +3512,7 @@ header.colophon{
                 top: -11px;
 
                 @media(max-width: 620px){
-                  right: 17px; 
+                  right: 17px;
                 }
             }
 

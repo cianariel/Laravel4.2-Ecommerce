@@ -117,8 +117,17 @@ if (!isset($theGiveAway)) {
                         </div>
 
                             <a class="home-hamburger mobile-top-menu-switcher hidden-lg hidden-md hidden-sm" data-toggle="#mobile-top-menu" href="#">
-                                <i class=" m-icon--Close up"></i>
-                                <i class="m-icon--MenuButton down"></i>
+                                <label class="nav-trigger">
+                                    <svg version="1.1" id="trigger" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 20 18" enable-background="new 0 0 20 18" xml:space="preserve">
+									<rect y="0" width="20" height="2"></rect>
+                                        <rect y="4" width="20" height="2"></rect>
+                                        <rect y="8" width="20" height="2"></rect>
+                                        <rect y="12" width="20" height="2"></rect>
+                                        <rect y="16" width="20" height="2"></rect>
+                                        <rect y="8" width="20" height="2"></rect>
+                                        <rect y="8" width="20" height="2"></rect>
+								</svg>
+                                </label>
                             </a>
 
                         <a class="category-link__shop m-icon-text-holder hidden-soft shown-620" href="/shop">

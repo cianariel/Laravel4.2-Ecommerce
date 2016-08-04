@@ -6962,6 +6962,7 @@ header.colophon {
 #mobile-top-menu.mobile-top-menu,
 .mobile-top-menu {
   position: absolute;
+  top: 93px;
   width: 100%;
   background: rgba(0, 0, 0, 0.8);
   display: none;
@@ -7010,7 +7011,7 @@ header.colophon {
   margin-top: 5px; }
 
 #top-nav .home-hamburger {
-  background: #cac9c9;
+  width: 24px;
   color: #000;
   padding: 7px 5px 5px !important;
   height: 27px;
@@ -7018,9 +7019,71 @@ header.colophon {
   position: absolute;
   top: 4px;
   right: 9px;
-  border-radius: 2px; }
+  border-radius: 2px;
+  overflow: hidden; }
   #top-nav .home-hamburger i {
-    font-size: 1.9rem !important; }
+    font-size: 2.3rem !important; }
+  #top-nav .home-hamburger svg {
+    transition: all 2s;
+    left: 0;
+    overflow: hidden; }
+  #top-nav .home-hamburger.active .down {
+    display: block !important; }
+    #top-nav .home-hamburger.active .down svg {
+      left: 25px; }
+  #top-nav .home-hamburger .nav-trigger {
+    display: block;
+    position: absolute;
+    width: 2em;
+    height: 2em;
+    top: 50%;
+    left: 0;
+    margin: -.6625em 0 0;
+    cursor: pointer;
+    overflow: hidden; }
+  #top-nav .home-hamburger .nav-trigger svg {
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0; }
+  #top-nav .home-hamburger .nav-trigger svg rect {
+    fill: #b7b7b7;
+    -webkit-transition: -webkit-transform 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55), fill 0.4s, opacity 0.4s;
+    transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55), fill 0.4s, opacity 0.4s; }
+  #top-nav .home-hamburger .nav-trigger svg rect:nth-child(2), #top-nav .home-hamburger .nav-trigger svg rect:nth-child(4) {
+    -webkit-transform: matrix(1, 0, 0, 1, 6, 0);
+    transform: matrix(1, 0, 0, 1, 6, 0); }
+  #top-nav .home-hamburger .nav-trigger svg rect:nth-child(6), #top-nav .home-hamburger .nav-trigger svg rect:nth-child(7) {
+    -webkit-transform: matrix(1, 0, 0, 1, 20, 0);
+    transform: matrix(1, 0, 0, 1, 20, 0); }
+  #top-nav .home-hamburger .nav-trigger:hover svg rect, #top-nav .home-hamburger.active .nav-trigger svg rect {
+    fill: #5d666f; }
+  #top-nav .home-hamburger .nav-trigger:hover svg rect:nth-child(1),
+  #top-nav .home-hamburger .nav-trigger:hover svg rect:nth-child(3),
+  #top-nav .home-hamburger .nav-trigger:hover svg rect:nth-child(5) {
+    -webkit-transform: matrix(1, 0, 0, 1, 6, 0);
+    transform: matrix(1, 0, 0, 1, 6, 0); }
+  #top-nav .home-hamburger .nav-trigger:hover svg rect:nth-child(2),
+  #top-nav .home-hamburger .nav-trigger:hover svg rect:nth-child(4) {
+    -webkit-transform: matrix(1, 0, 0, 1, 0, 0);
+    transform: matrix(1, 0, 0, 1, 0, 0); }
+  #top-nav .home-hamburger .nav-trigger svg rect:nth-child(6),
+  #top-nav .home-hamburger .nav-trigger svg rect:nth-child(7) {
+    -webkit-transform: matrix(1, 0, 0, 1, 20, 0);
+    transform: matrix(1, 0, 0, 1, 20, 0); }
+  #top-nav .home-hamburger .nav-trigger:hover svg rect, #top-nav .home-hamburger.active .nav-trigger svg rect {
+    fill: #5d666f; }
+  #top-nav .home-hamburger.active .nav-trigger svg rect:nth-child(1), #top-nav .home-hamburger.active .nav-trigger svg rect:nth-child(2), #top-nav .home-hamburger.active .nav-trigger svg rect:nth-child(3), #top-nav .home-hamburger.active .nav-trigger svg rect:nth-child(4), #top-nav .home-hamburger.active .nav-trigger svg rect:nth-child(5) {
+    -webkit-transform: matrix(1, 0, 0, 1, -20, 0);
+    transform: matrix(1, 0, 0, 1, -20, 0); }
+  #top-nav .home-hamburger.active .nav-trigger svg rect:nth-child(6), #top-nav .home-hamburger.active .nav-trigger svg rect:nth-child(6) {
+    -webkit-transform: matrix(0.7071, 0.7071, -0.7071, 0.7071, 9.2929, -4.435);
+    transform: matrix(0.7071, 0.7071, -0.7071, 0.7071, 9.2929, -4.435); }
+  #top-nav .home-hamburger.active .nav-trigger svg rect:nth-child(7), #top-nav .home-hamburger.active .nav-trigger svg rect:nth-child(7) {
+    -webkit-transform: matrix(0.7071, -0.7071, 0.7071, 0.7071, -3.435, 9.7071);
+    transform: matrix(0.7071, -0.7071, 0.7071, 0.7071, -3.435, 9.7071); }
 #top-nav .mobile-top-menu-switcher i {
   font-size: 26px;
   position: relative;
