@@ -141,7 +141,7 @@ if (!isset($theGiveAway)) {
                                             <input ng-click="toggleSearch()" id="search-input"
                                                        ng-change="openSearchDropdown(query)" ng-model="query"
                                                        ng-model-options='{ debounce: 800 }' class="form-control top-search"
-                                                       type="text" name="search" placeholder="Search..."/>
+                                                       type="text" name="search" placeholder="Find Smart Products..."/>
                                             <div id="suggest-category" ng-class="{shown: open, hidden: !open}"
                                                  ng-show="categorySuggestions.length">
                                                 <?php // have to use only pure php includes, or the CMS wont read it

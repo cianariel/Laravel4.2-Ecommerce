@@ -182,6 +182,12 @@ a:hover, a:focus{
         bottom: -18px;
         z-index: 30;
       }
+      @media(min-width: 620px){
+        span{
+          position: relative;
+          top: 3px;
+        }
+      }
     }
 
 }
@@ -2986,11 +2992,12 @@ header.colophon{
   }
   .user-controls{
     ul{
-      width: 110px;
+      width: 160px;
       float: left;
 
       .category-link__shop{
-        margin-right: 14px;
+        margin-right: 60px;
+
       }
     }
   }
@@ -3371,6 +3378,8 @@ header.colophon{
       .profile-photo-holder{
         @media (max-width:620px) {
           margin-right: 8px;
+          width: 40px;
+          height: 40px;
         }
       }
         .profile-photo-holder, .notification-holder{
@@ -3420,7 +3429,7 @@ header.colophon{
             position: absolute;
             width: 375px;
             min-height: 50px;
-            right: 0px;
+            right: 3%;
             top: 70px;
             z-index: 100;
             border-radius: 20px;
@@ -6001,6 +6010,8 @@ body.single{
     margin: 0;
 
 
+
+
     input{
       padding-top: 20px;
       padding-right: 40px;
@@ -6966,6 +6977,11 @@ footer.about-footer{
       width:72%;
       left: 44px;
       top: 45px;
+
+      @media(max-width:620px){
+        background: transparent;
+        border: 0;
+      }
 
       a{
         display: block !important;
