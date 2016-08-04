@@ -3091,6 +3091,8 @@ header.colophon{
           border-radius: 2px;
           -webkit-transition: width .2s; /* Safari */
           transition: width .2s;
+          -webkit-appearance: none !important;
+
         }
         >input:focus{
             border-color: #ff0041;
