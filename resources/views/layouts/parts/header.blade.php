@@ -216,7 +216,7 @@ if (!isset($theGiveAway)) {
                             <div class="notification-popup hide-on-out hidden-soft">
                                 <div class="notification-header">
                                     <ul>
-                                        <li><a href="#" class="active" data-switch=".notifs" data-hide=".prof-menu">Notifications </a></li>
+                                        <li><a href="#" data-switch=".notifs" data-hide=".prof-menu">Notifications </a></li>
                                         <li><a href="#" data-switch=".prof-menu"  data-hide=".notifs">My profile</a></li>
                                     </ul>
                                 </div>

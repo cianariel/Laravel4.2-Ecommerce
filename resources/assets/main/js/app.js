@@ -37,16 +37,16 @@
             $($hide).fadeOut(
                 function(){
                     $($show).fadeIn();
-                    $('[data-switch="'+$hide+'"').removeClass('active');
+                    //$('[data-switch="'+$hide+'"').removeClass('active');
                 }
             );
 
-            if(!$that.hasClass('active')){
-                $that.addClass('active');
-                $that.siblings().removeClass('active');
-            }else{
-                $that.removeClass('active');
-            }
+            //if(!$that.hasClass('active')){
+            //    $that.addClass('active');
+            //    $that.siblings().removeClass('active');
+            //}else{
+            //    $that.removeClass('active');
+            //}
             return false;
         });
 
@@ -79,15 +79,12 @@
 
         $('body').on('click', '.hide-search', function(e){
             var $show = $('.search-bar');
-            //var $header = $('.top-nav-holder');
 
             $show.animate({
                 top: '35px',
                 opacity: 0,
             }, 200);
             $show.fadeOut();
-            //$header.animate({
-            //}, 500);
             $show.removeClass('shown');
         });
 
