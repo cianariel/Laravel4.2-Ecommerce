@@ -4616,10 +4616,12 @@ a:hover, a:focus {
       background: #FF0042; }
     @media (max-width: 620px) {
       .category-link__shop {
+        height: 34px !important;
+        padding-top: 9px !important;
         float: left;
         position: absolute;
-        left: 2px;
-        bottom: -18px;
+        left: 6px;
+        bottom: -23px;
         z-index: 30; } }
     @media (min-width: 620px) {
       .category-link__shop span {
@@ -6748,7 +6750,9 @@ article.product {
 @media (max-width: 620px) {
   .logged-in .user-controls {
     right: 15px !important;
-    width: 100%; } }
+    width: 100%; }
+    .logged-in .user-controls a {
+      max-width: 100%; } }
 
 header.colophon {
   min-height: 53px;
@@ -6787,6 +6791,7 @@ header.colophon {
     padding-right: 0; }
     @media (max-width: 620px) {
       header.colophon .user-controls {
+        padding-right: 13px;
         position: absolute;
         bottom: -26px;
         right: -13px;
@@ -6852,7 +6857,8 @@ header.colophon {
     width: 160px;
     float: left; }
     header.colophon .user-controls ul .category-link__shop {
-      margin-right: 60px; }
+      margin-right: 60px;
+      height: 40px; }
   @media (min-width: 620px) {
     header.colophon .user-controls {
       max-width: 265px;
@@ -6907,7 +6913,8 @@ header.colophon {
     top: 4px; }
     .search-bar .toggle-button input,
     .search-bar .search-bar input {
-      width: 100%; }
+      width: 100%;
+      -webkit-appearance: none; }
   .search-bar .toggle-button {
     right: 12px; }
   @media (max-width: 620px) {
@@ -7175,7 +7182,7 @@ header.colophon {
     position: absolute;
     width: 375px;
     min-height: 50px;
-    right: 3%;
+    right: 14%;
     top: 70px;
     z-index: 100;
     border-radius: 20px; }
@@ -8838,11 +8845,11 @@ body.single .article-content iframe {
   position: relative; }
   .comparison .search-bar {
     margin-top: 0;
-    padding-top: 0;
     background: #fff;
     border-bottom: 1px solid rgba(193, 193, 193, 0.22);
     padding: 20px 0;
-    margin: 0; }
+    margin: 0;
+    height: 46px; }
     .comparison .search-bar input {
       padding-top: 20px;
       padding-right: 40px;

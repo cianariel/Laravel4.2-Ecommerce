@@ -176,10 +176,12 @@ a:hover, a:focus{
       }
 
       @media(max-width: 620px){
+        height: 34px!important;
+        padding-top: 9px !important;
         float: left;
         position: absolute;
-        left: 2px;
-        bottom: -18px;
+        left: 6px;
+        bottom: -23px;
         z-index: 30;
       }
       @media(min-width: 620px){
@@ -2834,6 +2836,9 @@ article.product{
     @media(max-width: 620px){
       right: 15px !important;
       width: 100%;
+      a{
+        max-width: 100%;
+      }
     }
   }
 }
@@ -2891,6 +2896,7 @@ header.colophon{
 
 
     @media(max-width: 620px){
+      padding-right: 13px;
       position: absolute;
       bottom: -26px;
       right: -13px;
@@ -2998,7 +3004,7 @@ header.colophon{
 
       .category-link__shop{
         margin-right: 60px;
-
+        height:40px;
       }
     }
   }
@@ -3047,6 +3053,7 @@ header.colophon{
 
     input{
       width: 100%;
+      -webkit-appearance: none;
     }
   }
   .toggle-button{
@@ -3430,7 +3437,7 @@ header.colophon{
             position: absolute;
             width: 375px;
             min-height: 50px;
-            right: 3%;
+            right: 14%;
             top: 70px;
             z-index: 100;
             border-radius: 20px;
@@ -6004,12 +6011,11 @@ body.single{
 
   .search-bar{
     margin-top: 0;
-    padding-top: 0;
     background:#fff;
     border-bottom:1px solid rgba(193, 193, 193, 0.22);
     padding: 20px 0;
     margin: 0;
-
+    height: 46px;
 
 
 
@@ -7556,6 +7562,8 @@ footer.about-footer{
           width: auto;
           text-indent: 0px;
           margin-top: -7px;
+        position: relative;
+        left: 5px;
           .m-icon{
               display: none;
               font-size: 38px;
