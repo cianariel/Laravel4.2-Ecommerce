@@ -85,7 +85,7 @@ if($postCount==0)
     $postCount = -1;
 }
 
-$onlyfeatured = $_REQUEST['only-featured'];
+$onlyfeatured = @$_REQUEST['only-featured'];
 $no_featured = $_REQUEST['no-featured'];
 $is_featured = "";
 

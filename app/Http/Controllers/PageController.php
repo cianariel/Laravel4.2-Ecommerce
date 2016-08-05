@@ -66,11 +66,14 @@ class PageController extends ApiController
         if ($this->authCheck['method-status'] == 'success-with-http') {
             $userData = $this->authCheck['user-data'];
         }
-        $homehero = new HomeHero();
-        $result = $homehero->heroDetailsViewGenerate();
+//        $homehero = new HomeHero();
+//        $result = $homehero->heroDetailsViewGenerate();
+//
+//        $sliderContent = self::getHeroSliderContent();
 
-        $sliderContent = self::getHeroSliderContent();
-//        $sliderContent = (array)$sliderContent;
+        $result = [];
+//
+        $sliderContent = [];
 
         $mostPopular = self::getMostPopular();
 
@@ -85,63 +88,80 @@ class PageController extends ApiController
     }
 
     public static function getMostPopular(){
-        // 1. get most popular ideas
-        $url = URL::to('/') . '/ideas/feeds/index.php?count=2&most-popular';
 
-        $ch = curl_init();
-        curl_setopt($ch, CURLOPT_URL, $url);
-        curl_setopt($ch, CURLOPT_HEADER, 0);
-        curl_setopt($ch, CURLOPT_VERBOSE, true);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-        curl_setopt($ch, CURLOPT_ENCODING, "");
-        $json = curl_exec($ch);
+        $cacheKey = "home-popular";
 
-        $return['ideas'] = json_decode($json);
+//        if ($cachedContent = PageHelper::getFromRedis($cacheKey, true)) {
+//            $return = $cachedContent;
+//        } else {
 
-        // 2. get products
+            // 1. get most popular ideas
+            $url = URL::to('/') . '/ideas/feeds/index.php?count=2&most-popular';
 
 
-        $productSettings = [
-            'ActiveItem' => true,
-            'limit' => 50,
-            'page' => 1,
-//            'CustomSkip' => $offset,
-//            'CategoryId' => $productCategoryID,
-//            'sortBy' => $sortBy,
-            'FilterType' => false,
-            'FilterText' => false,
-            'ShowFor' => false,
-            'WithTags' => false,
-            'WithAverageScore' => true,
+            $ch = curl_init();
+            curl_setopt($ch, CURLOPT_URL, $url);
+            curl_setopt($ch, CURLOPT_HEADER, 0);
+            curl_setopt($ch, CURLOPT_VERBOSE, true);
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+            curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+            curl_setopt($ch, CURLOPT_ENCODING, "");
+            $json = curl_exec($ch);
 
-            'MostPopular' => true,
-        ];
+            $ideas['smart-home'] = json_decode($json);
+            $ideas['smart-body'] = json_decode($json);
+            $ideas['smart-entertainment'] = json_decode($json);
 
-        $prod = new Product();
-        $allProducts =  $prod->getProductList($productSettings);
-
-        foreach($allProducts['result'] as $prod){
-//            $counterPage = Counter::page('product-details-'.$prod->id);
-//            $prod->count = Counter::countHits($page);
-            $prodID = $prod->id;
-            $count =  Counter::show('product-details-'.$prodID);
-            $prod->count = $count;
-        }
-
-        $sortedProds = array_values(array_sort($allProducts['result'], function($value){
-            return $value->count;
-        }));
-
-        $sortedProds = array_reverse($sortedProds);
-
-        $return['products'] = array_slice($sortedProds, 0, 2);
+            // 2. get products
 
 
+            $productSettings = [
+                'ActiveItem' => true,
+                'limit' => 1,
+                'page' => 1,
+                //            'CustomSkip' => $offset,
+                //            'CategoryId' => $productCategoryID,
+                //            'sortBy' => $sortBy,
+                'FilterType' => false,
+                'FilterText' => false,
+                'ShowFor' => false,
+                'WithTags' => false,
+                'WithAverageScore' => true,
 
-        // array sort produ result, get three top ones.
+                'MostPopular' => true,
+            ];
 
-        return $return;
+            $prod = new Product();
+            //        $allProducts =  $prod->getProductList($productSettings);
+
+            $products['smart-home'] = $prod->getProductList($productSettings);;
+            $products['smart-body'] = $prod->getProductList($productSettings);;
+            $products['smart-entertainment'] = $prod->getProductList($productSettings);;
+
+            //        foreach($allProducts['result'] as $prod){
+            //            $prodID = $prod->id;
+            //            $count =  Counter::show('product-details-'.$prodID);
+            //            $prod->count = $count;
+            //        }
+            //
+            //        $sortedProds = array_values(array_sort($allProducts['result'], function($value){
+            //            return $value->count;
+            //        }));
+
+            //        $sortedProds = array_reverse($sortedProds);
+
+            //        $return['products'] = array_slice($sortedProds, 0, 4);
+
+            $return['smart_home'] = array_merge($ideas['smart-home'], $products['smart-home']['result']);
+            $return['smart_body'] = array_merge($ideas['smart-body'], $products['smart-body']['result']);
+            $return['smart_entertainment'] = array_merge($ideas['smart-entertainment'], $products['smart-entertainment']['result']);
+
+            // array sort produ result, get three top ones.
+            $cached = PageHelper::putIntoRedis($cacheKey, $return, '1 day');
+
+//        }
+
+        return (object)$return;
     }
 
 
@@ -149,9 +169,9 @@ class PageController extends ApiController
     {
         $cacheKey = "slider-ideas";
 
-//        if ($cachedContent = PageHelper::getFromRedis($cacheKey, true)) {
-//            $return = $cachedContent;
-//        } else {
+        if ($cachedContent = PageHelper::getFromRedis($cacheKey, true)) {
+            $return = $cachedContent;
+        } else {
             $url = URL::to('/') . '/ideas/feeds/index.php?count=3&only-slider';
 
             $ch = curl_init();
@@ -166,7 +186,7 @@ class PageController extends ApiController
             $return = json_decode($json, true);
 
             $cached = PageHelper::putIntoRedis($cacheKey, $return, '24 hours');
-//        }
+        }
 
         return $return;
 

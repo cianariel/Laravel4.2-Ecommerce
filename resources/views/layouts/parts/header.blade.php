@@ -31,17 +31,6 @@ if (!isset($theGiveAway)) {
 ?>
 
 <div id="publicApp" ng-app="publicApp" ng-controller="publicController" class="header-cloak" ng-cloak>
-   <?php if($_SERVER['REQUEST_URI'] == '/'){ // TODO -- move to a viewfile ?>
-    <div class="hero-wrap">
-        <section class="hero-login">
-            @include('layouts.parts.hero-login')
-        </section>
-        <div class="color-overlay"></div>
-        <div class="color-overlay blur-overlay"></div>
-    </div>
-    <?php  };
-    ?>
-
     <header class="colophon container full-sm fixed-sm">
         <div ng-init="socialCounter()" class="socialcounter col-xs-12">
             <nav id="top-nav" class="row">

@@ -6521,6 +6521,41 @@ article.product {
   .critic-quote span:last-child {
     font-size: 1.1rem; }
 
+.most-popular-new {
+  overflow: visible; }
+  .most-popular-new .box-item {
+    float: left;
+    position: relative;
+    width: 55%;
+    height: auto;
+    border-radius: 4px;
+    border: 1px solid #ededed;
+    margin: 3px;
+    border-radius: 5px;
+    overflow: visible; }
+    .most-popular-new .box-item::before {
+      content: '1';
+      position: absolute;
+      padding: 2px 10px;
+      top: -11px;
+      left: -9px;
+      border-radius: 14px;
+      background: #fff;
+      border: 1px solid #555;
+      padding: 2px 10px; }
+  .most-popular-new .popular-wrap {
+    height: 256px;
+    width: 126px;
+    float: left; }
+    .most-popular-new .popular-wrap .box-item {
+      width: 100%;
+      height: auto; }
+      .most-popular-new .popular-wrap .box-item::before {
+        padding: 2px 10px;
+        background: #FF0042;
+        color: #fff;
+        border-color: #FF0042; }
+
 .homepage-grid {
   transition: opacity 1s; }
 
