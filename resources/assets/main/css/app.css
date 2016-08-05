@@ -4614,6 +4614,9 @@ a:hover, a:focus {
     height: auto !important; }
     .category-link__shop:hover {
       background: #FF0042; }
+    .category-link__shop span {
+      text-transform: capitalize;
+      padding-left: 8px; }
     @media (max-width: 620px) {
       .category-link__shop {
         height: 34px !important;
@@ -4622,7 +4625,9 @@ a:hover, a:focus {
         position: absolute;
         left: 6px;
         bottom: -23px;
-        z-index: 30; } }
+        z-index: 30; }
+        .category-link__shop span {
+          padding-right: 4px; } }
     @media (min-width: 620px) {
       .category-link__shop span {
         position: relative;
@@ -5923,6 +5928,15 @@ body.contactus-page .mid-nav .rooms.extra-nav,
       .slider-side-block .table .price:hover {
         color: #079DD1; }
 
+.search-toggle-button {
+  background: #ededed;
+  padding: 5px;
+  border-radius: 3px;
+  max-width: 30px;
+  margin-top: 7px; }
+  .search-toggle-button.active {
+    background: rgba(255, 0, 66, 0.7); }
+
 .logo-wrap a {
   padding: 0; }
 
@@ -6854,14 +6868,14 @@ header.colophon {
       width: 70%;
       height: auto; }
   header.colophon .user-controls ul {
-    width: 160px;
+    width: 205px;
     float: left; }
     header.colophon .user-controls ul .category-link__shop {
       margin-right: 60px;
       height: 40px; }
   @media (min-width: 620px) {
     header.colophon .user-controls {
-      max-width: 265px;
+      max-width: 325px;
       position: absolute;
       top: 0;
       right: 0; } }
@@ -7184,7 +7198,7 @@ header.colophon {
     width: 375px;
     min-height: 50px;
     right: 14%;
-    top: 70px;
+    top: 50px;
     z-index: 100;
     border-radius: 20px; }
     @media (min-width: 1000px) {
@@ -8927,7 +8941,7 @@ body.single .article-content iframe {
         margin-bottom: -7px; }
 
 .comparison-select {
-  margin-top: 265px; }
+  margin-top: 300px; }
 
 .comparison-tab {
   padding: 5px; }
@@ -9585,7 +9599,8 @@ footer.about-footer {
     @media only screen and (max-width: 620px) and (max-width: 620px) {
       #top-nav .search-bar {
         background: transparent;
-        border: 0; } }
+        border: 0;
+        padding-left: 20px; } }
 @media only screen and (max-width: 620px) {
       #top-nav .search-bar a {
         display: block !important;
@@ -9604,7 +9619,8 @@ footer.about-footer {
     #top-nav .category-menu {
       padding-top: 9px; }
       #top-nav .category-menu ul {
-        overflow: visible; }
+        overflow: visible;
+        margin-left: 7%; }
       #top-nav .category-menu .search-toggle-button {
         display: none; }
 

@@ -3643,6 +3643,7 @@ angular.module('colorpicker.module', [])
             //var $header = $('.top-nav-holder');
 
             if(!$show.hasClass('shown')){
+                $(this).addClass('active');
                 $show.show();
                 $show.animate({
                     opacity: '1',
@@ -3653,6 +3654,8 @@ angular.module('colorpicker.module', [])
                 $show.addClass('shown');
                 $show.find('input').focus();
             }else{
+                $(this).removeClass('active');
+
                 $show.animate({
                     top: '35px',
                     opacity: 0,

@@ -56,6 +56,7 @@
             //var $header = $('.top-nav-holder');
 
             if(!$show.hasClass('shown')){
+                $(this).addClass('active');
                 $show.show();
                 $show.animate({
                     opacity: '1',
@@ -66,6 +67,8 @@
                 $show.addClass('shown');
                 $show.find('input').focus();
             }else{
+                $(this).removeClass('active');
+
                 $show.animate({
                     top: '35px',
                     opacity: 0,

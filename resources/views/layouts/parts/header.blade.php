@@ -152,7 +152,7 @@ if (!isset($theGiveAway)) {
                                         </span>
                             </form>
 
-                        <div class="col-xs-5 col-sm-3 pull-right user-controls">
+                        <div class="col-xs-5 col-sm-4 pull-right user-controls">
                                 <ul>
                                     <li>
                                         <a class="category-link__shop m-icon-text-holder hidden-xs" href="/shop">
