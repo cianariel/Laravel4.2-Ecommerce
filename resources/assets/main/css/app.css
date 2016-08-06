@@ -4633,6 +4633,15 @@ a:hover, a:focus {
         position: relative;
         top: 3px; } }
 
+h5.category-link__smart-home span {
+  color: #FF0042; }
+h5.category-link__smart-body span {
+  color: #00B1FF; }
+h5.category-link__smart-entertainment span {
+  color: #89C981; }
+h5.category-link__smart-travel span {
+  color: #FF7F00; }
+
 .category-menu {
   padding-top: 2px; }
   .category-menu a {
@@ -6523,10 +6532,16 @@ article.product {
 
 .most-popular-new {
   overflow: visible; }
+  .most-popular-new h5 {
+    margin-bottom: 15px; }
+    .most-popular-new h5 i {
+      margin-top: -4px; }
+    .most-popular-new h5 span {
+      padding-left: 15px; }
   .most-popular-new .box-item {
     float: left;
     position: relative;
-    width: 55%;
+    width: 65%;
     height: auto;
     border-radius: 4px;
     border: 1px solid #ededed;
@@ -6537,15 +6552,15 @@ article.product {
       content: '1';
       position: absolute;
       padding: 2px 10px;
-      top: -11px;
+      top: -7px;
       left: -9px;
       border-radius: 14px;
       background: #fff;
-      border: 1px solid #555;
+      border: 1px solid #7a7a7a;
       padding: 2px 10px; }
   .most-popular-new .popular-wrap {
+    width: 32%;
     height: 256px;
-    width: 126px;
     float: left; }
     .most-popular-new .popular-wrap .box-item {
       width: 100%;

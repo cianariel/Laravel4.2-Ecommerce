@@ -15,8 +15,13 @@
             @include('layouts.parts.home-hero-slider')
         </section>
 
-        <section class="most-popular-new col-lg-12 center-block overhide">
+        <section class="most-popular-new container center-block overhide">
             <div class="col-lg-4 col-xs-12">
+                <h5 class="category-link__smart-home">
+                    <i class="hidden-xs hidden-sm hidden-md m-icon m-icon--smart-home"></i>
+                    <span class="m-icon-text text-uppercase">Smart Home</span>
+                </h5>
+
                 @if(@$mostPopular->smart_home)
                        <?php $i = 0; ?>
                     @foreach($mostPopular->smart_home as $item)
@@ -52,6 +57,10 @@
                 @endif
             </div>
             <div class="col-lg-4 col-xs-12">
+                <h5 class="category-link__smart-body m-icon-text-holder">
+                    <i class="hidden-xs hidden-sm hidden-md m-icon m-icon--wearables"></i>
+                    <span class="m-icon-text text-uppercase">Smart Body</span>
+                </h5>
                 @if(@$mostPopular->smart_body)
                        <?php $i = 0; ?>
                     @foreach($mostPopular->smart_body as $item)
@@ -87,6 +96,10 @@
                 @endif
             </div>
             <div class="col-lg-4 col-xs-12">
+                <h5 class="category-link__smart-entertainment m-icon-text-holder">
+                    <i class="hidden-xs hidden-sm hidden-md m-icon m-icon--video"></i>
+                    <span class="m-icon-text text-uppercase">Smart Entertainment</span>
+                </h5>
                 @if(@$mostPopular->smart_entertainment)
                        <?php $i = 0; ?>
                     @foreach($mostPopular->smart_entertainment as $item)
