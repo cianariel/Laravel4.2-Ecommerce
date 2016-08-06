@@ -4518,22 +4518,31 @@ a:hover, a:focus {
 .pale-grey-border {
   border: 1px solid #d5dfdf; }
 
+.category-smart-home .category-color,
 .category-smarthome .category-color {
   color: #FF0042 !important; }
+.category-smart-home .category-bg,
 .category-smarthome .category-bg {
   background-color: #FF0042 !important; }
+.category-smart-home .category-bg-trans,
 .category-smarthome .category-bg-trans {
   background-color: rgba(255, 0, 66, 0.7) !important; }
+.category-smart-home .category-hover-color:hover,
 .category-smarthome .category-hover-color:hover {
   color: #FF0042 !important; }
+.category-smart-home .category-hover-border:hover,
 .category-smarthome .category-hover-border:hover {
   border-color: #FF0042; }
+.category-smart-home .dropcapped p:first-child:first-letter,
 .category-smarthome .dropcapped p:first-child:first-letter {
   color: #FF0042; }
+.category-smart-home .float-thumbs .thumb-box strong,
 .category-smarthome .float-thumbs .thumb-box strong {
   background-color: rgba(255, 0, 66, 0.7); }
+.category-smart-home .m-icon--ScrollingHeaderHeart .path1:before,
 .category-smarthome .m-icon--ScrollingHeaderHeart .path1:before {
   color: #FF0042; }
+.category-smart-home .category-link__smart-home,
 .category-smarthome .category-link__smart-home {
   color: #FF0042; }
 
@@ -12333,9 +12342,6 @@ p {
     max-width: 60% !important;
     margin: 0 auto; } }
 
-.grid-box-full .idea-meta {
-  background: #68005c !important; }
-
 .box-item {
   position: relative;
   overflow: hidden;
@@ -12353,11 +12359,8 @@ p {
     min-height: 150px;
     width: 100%;
     bottom: 0;
-    background: #FF7F00;
     z-index: 1;
     padding: 25px 25px 10px; }
-    .box-item .idea-meta.product {
-      background: #00B1FF; }
     .box-item .idea-meta a {
       color: #fff;
       opacity: 1; }
@@ -12487,8 +12490,6 @@ p {
     float: left;
     text-align: left;
     margin-bottom: 10px; }
-    .deal .box-item__label {
-      background-color: #FF7F00; }
     .box-item__label:hover, .box-item__label:active, .box-item__label:focus {
       color: #fff; }
   .box-item__read-more {

@@ -138,7 +138,7 @@
         </section>
 
         <div class="col-xs-12 center-block overhide">
-            <h4 class="current-timespan col-sm-3">Today</h4>
+
             {{--<nav id="hero-nav" class="col-sm-9">--}}
                 {{--<div class="container full-620 fixed-sm">--}}
                     {{--<ul class="category-nav main-content-filter">--}}

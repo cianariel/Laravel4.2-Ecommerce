@@ -7,11 +7,11 @@
   }
 }
 
-.grid-box-full{
-  .idea-meta{
-      background:#68005c !important;
-  }
-}
+//.grid-box-full{
+//  .idea-meta{
+//      background:#68005c !important;
+//  }
+//}
 
 .box-item {
 	position: relative;
@@ -25,7 +25,7 @@
   .box-item__author{
     bottom: 158px;
     right: 14px;
-    z-index: 60; 
+    z-index: 60;
   }
   .user-widget__img{
     float: right;
@@ -36,13 +36,13 @@
       min-height: 150px;
       width: 100%;
       bottom: 0;
-      background: $dark-orange;
+      //background: $dark-orange;
       z-index: 1;
       padding: 25px 25px 10px;
 
-      &.product{
-        background:$sky-blue;
-      }
+      //&.product{
+      //  background:$sky-blue;
+      //}
 
       a{
         color: #fff;
@@ -200,9 +200,9 @@
 		text-align: left;
 		margin-bottom: 10px;
 
-      .deal &{
-        background-color: #FF7F00;
-      }
+      //.deal &{
+      //  background-color: #FF7F00;
+      //}
 
 		&:hover, &:active, &:focus {
 			color: #fff;

@@ -11,7 +11,8 @@
         </a>
     </div>
 
-    <div class="idea-meta">
+<div class=" category-{{item.category_main}}">
+    <div class="idea-meta category-bg">
         <div class="box-item__label-idea"  ng-if="!item.is_deal">
             <a href="{{item.url}}" class="box-item__label" itemprop="name">{{renderHTML(item.title)}}</a>
         </div>
@@ -21,7 +22,7 @@
         </div>
 
         <a ng-if="!item.is_deal" href="/ideas">
-            <span class="round-tag__label text-uppercase in" itemprop="articleSection">In Smart Home, Ideas <i class="m-icon m-icon--bulb"></i></span>
+            <span class="round-tag__label text-uppercase in" itemprop="articleSection">In {{item.category}}, Ideas <i class="m-icon m-icon--bulb"></i></span>
         </a>
 
       <!--  <a  ng-if="item.is_deal" href="/ideas" class="round-tag round-tag--idea deal">
@@ -43,6 +44,7 @@
         </ul>
         <span class="box-item__time"  itemprop="dateCreated">{{item.updated_at}}</span>
     </div>
+</div>
     <a href="{{item.url}}">
         <div class="box-item__overlay"></div>
     </a>

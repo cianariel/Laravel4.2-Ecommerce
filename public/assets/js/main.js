@@ -5894,6 +5894,7 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
         $scope.content = [];
         $scope.newStuff = [];
         $scope.currentPage = 1;
+        $scope.currentDay = 'Today';
         $scope.contentBlock = angular.element( document.querySelector('.main-content') );
         $scope.filterLoad = [];
         $scope.ideaCategory = false;
@@ -5923,7 +5924,10 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
 
         $scope.firstLoad = pagingApi.getGridContent(1, $limit, $scope.currentTag, $scope.filterBy,  $scope.ideaCategory).success(function (response) {
             $scope.allContent[0] = response;
-            $scope.content[0] = $scope.sliceToRows(response['content']['regular'], response['content']['featured']);
+            var newContent = $scope.sliceToRows(response['content']['regular'], response['content']['featured']);
+            newContent['currentDay'] = 'Today';
+
+            $scope.content[0] = newContent;
             $scope.hasMore = response['hasMore'];
         });
 
@@ -5942,19 +5946,28 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
             $scope.currentPage++;
             $scope.allContent[$scope.currentPage] = [];
 
-            if(!$scope.filterBy || typeof $scope.filterBy === 'undefined'){
-                var $limit = 0;
-                $scope.filterBy = null;
-            }else{
-                var $limit = 9;
-            }
+            //if(!$scope.filterBy || typeof $scope.filterBy === 'undefined'){
+            var $limit = 0;
+            $scope.filterBy = null;
+            //}else{
+            //    var $limit = 9;
+            //}
 
-            $scope.nextLoad =  pagingApi.getGridContent($scope.currentPage, $limit, $scope.currentTag, $scope.filterBy, $scope.ideaCategory).success(function (response) {
-                $scope.newStuff[0] = $scope.sliceToRows(response['content']['regular'], response['content']['featured']);
+            var $daysBack = $scope.currentPage - 1;
+
+            $scope.nextLoad =  pagingApi.getGridContent($scope.currentPage, $limit, $scope.currentTag, $scope.filterBy, $scope.ideaCategory, $daysBack).success(function (response) {
+                //newContent['currentDay'] = 'Today';
+                var newContent = $scope.sliceToRows(response['content']['regular'], response['content']['featured']);;
+                if($scope.currentPage == 2){
+                    newContent['currentDay'] = 'Yesterday';
+                }else{
+                    newContent['currentDay'] = $daysBack + ' Days Ago';
+                }
+                $scope.newStuff[0] = newContent;
+
                 $scope.content = $scope.content.concat($scope.newStuff);
 
                 $scope.hasMore = response['hasMore'];
-                console.log('BUbba!')
 
                 $('.bottom-load-more').removeClass('disabled').attr('disabled', false);
             });
@@ -6005,9 +6018,9 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
             $return['row-1'] = $regular.slice(0, 3);
             $return['row-2'] = $featured[0] ? [$featured[0]] : false;
             $return['row-3'] = $regular.slice(3, 6);
-            $return['row-4'] = $featured[1] ? [$featured[1]] : false;
-            $return['row-5'] = $regular.slice(6, 9);
-            $return['row-6'] = $featured[2] ? [$featured[2]] : false;
+            //$return['row-4'] = $featured[1] ? [$featured[1]] : false;
+            //$return['row-5'] = $regular.slice(6, 9);
+            //$return['row-6'] = $featured[2] ? [$featured[2]] : false;
 
             return $return;
         };
@@ -6933,10 +6946,10 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
             });
         }
 
-        pagingApi.getGridContent = function(page, limit, tag, type, ideaCategory) {
+        pagingApi.getGridContent = function(page, limit, tag, type, ideaCategory, daysBack) {
             return $http({
                 method: 'GET',
-                url: '/api/paging/get-grid-content/' + page + '/' + limit + '/' + tag + '/' + type + '/' + ideaCategory,
+                url: '/api/paging/get-grid-content/' + page + '/' + limit + '/' + tag + '/' + type + '/' + ideaCategory + '/' + daysBack,
             });
         }
 

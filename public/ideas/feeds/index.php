@@ -232,6 +232,15 @@ if ( $posts->have_posts() ) {
 
             $cat_names = array_unique($cat_names);
             $data['category_all'] = $cat_names;
+            if(in_array('Smart Body', $cat_names)){
+                $data['category_main'] = 'smart-body';
+            }elseif(in_array('Smart Travel', $cat_names)){
+                $data['category_main'] = 'smart-travel';
+            }elseif(in_array('Smart Entertainment', $cat_names)){
+                $data['category_main'] = 'smart-entertainment';
+            }else{
+                $data['category_main'] = 'smarthome';
+            }
             $allTags = get_tags();
             $data['is_deal'] = has_tag('deal');
             $data['url'] = get_the_permalink();

@@ -98,45 +98,83 @@ class PageController extends ApiController
             // 1. get most popular ideas
             $url = URL::to('/') . '/ideas/feeds/index.php?count=2&most-popular';
 
-
             $ch = curl_init();
-            curl_setopt($ch, CURLOPT_URL, $url);
+            curl_setopt($ch, CURLOPT_URL, $url . '&category-name=smart-home');
             curl_setopt($ch, CURLOPT_HEADER, 0);
             curl_setopt($ch, CURLOPT_VERBOSE, true);
             curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
             curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
             curl_setopt($ch, CURLOPT_ENCODING, "");
             $json = curl_exec($ch);
-
             $ideas['smart-home'] = json_decode($json);
+
+            $ch = curl_init();
+            curl_setopt($ch, CURLOPT_URL, $url . '&category-name=smart-body');
+            curl_setopt($ch, CURLOPT_HEADER, 0);
+            curl_setopt($ch, CURLOPT_VERBOSE, true);
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+            curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+            curl_setopt($ch, CURLOPT_ENCODING, "");
+            $json = curl_exec($ch);
             $ideas['smart-body'] = json_decode($json);
+
+            $ch = curl_init();
+            curl_setopt($ch, CURLOPT_URL, $url . '&category-name=smart-entertainment');
+            curl_setopt($ch, CURLOPT_HEADER, 0);
+            curl_setopt($ch, CURLOPT_VERBOSE, true);
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+            curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+            curl_setopt($ch, CURLOPT_ENCODING, "");
+            $json = curl_exec($ch);
             $ideas['smart-entertainment'] = json_decode($json);
 
-            // 2. get products
+
+
+                 // 2. get products
+             $prod = new Product();
+
+            $productSettings = [
+                'ActiveItem' => true,
+                'limit' => 1,
+                'page' => 1,
+                'CategoryId' => 44,
+                'FilterType' => false,
+                'FilterText' => false,
+                'ShowFor' => false,
+                'WithTags' => false,
+                'WithAverageScore' => false,
+                'MostPopular' => true,
+            ];
+            $products['smart-home'] = $prod->getProductList($productSettings);
 
 
             $productSettings = [
                 'ActiveItem' => true,
                 'limit' => 1,
                 'page' => 1,
-                //            'CustomSkip' => $offset,
-                //            'CategoryId' => $productCategoryID,
-                //            'sortBy' => $sortBy,
+                'CategoryId' => 62,
                 'FilterType' => false,
                 'FilterText' => false,
                 'ShowFor' => false,
                 'WithTags' => false,
-                'WithAverageScore' => true,
-
+                'WithAverageScore' => false,
                 'MostPopular' => true,
             ];
+            $products['smart-body'] = $prod->getProductList($productSettings);
 
-            $prod = new Product();
-            //        $allProducts =  $prod->getProductList($productSettings);
-
-            $products['smart-home'] = $prod->getProductList($productSettings);;
-            $products['smart-body'] = $prod->getProductList($productSettings);;
-            $products['smart-entertainment'] = $prod->getProductList($productSettings);;
+            $productSettings = [
+                'ActiveItem' => true,
+                'limit' => 1,
+                'page' => 1,
+                'CategoryId' => 159,
+                'FilterType' => false,
+                'FilterText' => false,
+                'ShowFor' => false,
+                'WithTags' => false,
+                'WithAverageScore' => false,
+                'MostPopular' => true,
+            ];
+             $products['smart-entertainment'] = $prod->getProductList($productSettings);
 
             //        foreach($allProducts['result'] as $prod){
             //            $prodID = $prod->id;
@@ -152,9 +190,9 @@ class PageController extends ApiController
 
             //        $return['products'] = array_slice($sortedProds, 0, 4);
 
-            $return['smart_home'] = array_merge($ideas['smart-home'], $products['smart-home']['result']);
-            $return['smart_body'] = array_merge($ideas['smart-body'], $products['smart-body']['result']);
-            $return['smart_entertainment'] = array_merge($ideas['smart-entertainment'], $products['smart-entertainment']['result']);
+            $return['smart_home'] = array_merge($ideas['smart-home'] ?: [], $products['smart-home']['result']);
+            $return['smart_body'] = array_merge($ideas['smart-body']  ?: [], $products['smart-body']['result']);
+            $return['smart_entertainment'] = array_merge($ideas['smart-entertainment'] ?: [], $products['smart-entertainment']['result']);
 
             // array sort produ result, get three top ones.
             $cached = PageHelper::putIntoRedis($cacheKey, $return, '1 day');
@@ -470,23 +508,31 @@ class PageController extends ApiController
         }
 
         if ($limit == 'undefined' || $limit == 0) {
-            $productLimit = 6;
-            $productOffset = 6 * ($page - 1);
+            $productLimit = 3;
+            $productOffset = 0;
 
-            $storyLimit = 4;
-            $storyOffset = 5 * ($page - 1);
+            $storyLimit = 3;
+            $storyOffset = 0;
 
         } else {
             $productLimit = $limit;
             $storyLimit = $limit;
 
-            $productOffset = $limit * ($page - 1);
-            $storyOffset = $limit * ($page - 1);
+            $productOffset = 0;
+            $storyOffset = 0;
         }
 
-        $featuredLimit = 3;
+        $featuredLimit = 1;
         $featuredOffset = $featuredLimit * ($page - 1);
         $leftOver = 0;
+
+        if($daysback && $daysback != 'undefined'){
+            $daysback = strtotime('-'.$daysback.' days');
+        }else{
+            $daysback = strtotime('today');
+        }
+
+        $daysback = date('Y-m-d', $daysback);
 
         if ($type == 'product' || !$stories = self::getGridStories($storyLimit + 1, $storyOffset, $featuredLimit + 1, $featuredOffset, $tag, $ideaCategory, $daysback)) {
             $stories = [
@@ -494,7 +540,7 @@ class PageController extends ApiController
                 'featured' => [],
             ];
         }
-        if ($type == 'idea' || !$products = self::getProducts($productLimit + 1, $page, $productOffset, $tagID, $daysback)) {
+        if ($type == 'idea' || !$products = self::getProducts($productLimit + 1, $page, $productOffset, $tagID, false, false, $daysback)) {
             $products['result'] = [];
         }
 
@@ -614,14 +660,9 @@ class PageController extends ApiController
             $url .= '&no-deals';
         }
 
-        if($daysback){
-            $timeStamp = date('Y-m-d', strtotime('-'.$daysback.' days'));
-            $date = date_create($timeStamp);
-            $dateQuery = '&year='.date_format($date, 'Y').'&monthnum='.date_format($date, 'm').'&day='.date_format($date, 'd') ;
-            $url .= $dateQuery;
-        }
-
-        //print_r($url); die();
+        $date = date_create($daysback);
+        $dateQuery = '&year='.date_format($date, 'Y').'&monthnum='.date_format($date, 'm').'&day='.date_format($date, 'd') ;
+        $url .= $dateQuery;
 
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $url);
@@ -659,9 +700,9 @@ class PageController extends ApiController
 
         $featuredUrl = URL::to('/') . '/ideas/feeds/index.php?count=' . $featuredLimit . '&only-featured&offset=' . $featuredOffset . '&no-deals';
 
-        if($daysback){
+//        if($daysback){
             $featuredUrl .= $dateQuery;
-        }
+//        }
 
         if ($tag && $tag != 'false' && $tag != false) {
             $featuredUrl .= '&tag=' . $tag;
@@ -765,10 +806,9 @@ class PageController extends ApiController
         ];
 
         if($daysback){
-            $timeStamp = date('Y-m-d', strtotime('-'.$daysback.' days'));
-            $date = date_create($timeStamp);
+            $date = date_create($daysback);
             $productSettings['Date'] = date_format($date, 'Y-m-d');
-        }
+         }
 
         if (@$productCategoryID) {
             $productSettings['GetChildCategories'] = true;
