@@ -4552,9 +4552,10 @@ a:hover, a:focus {
 .category-smart-home .category-link__smart-home,
 .category-smarthome .category-link__smart-home {
   color: #FF0042; }
-.category-smart-home .box-item:hover .idea-meta,
-.category-smarthome .box-item:hover .idea-meta {
-  background-color: #FF0042 !important; }
+
+.box-item:hover .category-smart-home .idea-meta,
+.box-item:hover .category-smarthome .idea-meta {
+  background: #FF0042; }
 
 .category-smart-travel .category-color {
   color: #FF7F00 !important; }
@@ -4576,8 +4577,9 @@ a:hover, a:focus {
   color: #FF7F00; }
 .category-smart-travel .category-link__smart-travel {
   color: #FF7F00; }
-.category-smart-travel .box-item:hover .idea-meta {
-  background-color: #FF7F00 !important; }
+
+.box-item:hover .category-smart-travel .idea-meta {
+  background: #FF7F00; }
 
 .category-smart-body .category-color {
   color: #079DD1 !important; }
@@ -4599,8 +4601,9 @@ a:hover, a:focus {
   color: #079DD1; }
 .category-smart-body .category-link__smart-body {
   color: #079DD1; }
-.category-smart-body .box-item:hover .idea-meta {
-  background-color: #079DD1 !important; }
+
+.box-item:hover .category-link__smart-body .idea-meta {
+  background: #079DD1; }
 
 .category-smart-entertainment .category-color {
   color: #89C981 !important; }
@@ -4622,8 +4625,9 @@ a:hover, a:focus {
   color: #89C981; }
 .category-smart-entertainment .category-link__smart-entertainment {
   color: #89C981; }
-.category-smart-entertainment .box-item:hover .idea-meta {
-  background-color: #89C981 !important; }
+
+.box-item:hover .category-link__smart-entertainment .idea-meta {
+  background: #89C981; }
 
 .category-link {
   cursor: hover; }

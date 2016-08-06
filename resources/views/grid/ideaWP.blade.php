@@ -12,7 +12,7 @@
     </div>
 
 <div class=" category-{{item.category_main}}">
-    <div class="idea-meta category-bg">
+    <div class="idea-meta">
         <div class="box-item__label-idea"  ng-if="!item.is_deal">
             <a href="{{item.url}}" class="box-item__label" itemprop="name">{{renderHTML(item.title)}}</a>
         </div>
