@@ -4,7 +4,6 @@
         <img ng-if="item.feed_image !== undefined && item.is_featured != true" alt="{{item.feed_image.alt}}" title="{{item.feed_image.alt}}" src="{{item.feed_image.url}}" itemprop="image">
     </div>
 
-
     <div class="box-item__author">
         <a href="/user/profile/{{item.authorlink}}"  class="user-widget">
             <img class="user-widget__img" src="{{item.avator}}">
