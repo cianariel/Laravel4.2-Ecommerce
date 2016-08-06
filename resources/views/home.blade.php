@@ -16,7 +16,7 @@
         </section>
 
         <section class="most-popular-new container center-block overhide">
-            <div class="col-lg-4 col-xs-12">
+            <div class="col-sm-4 col-xs-12">
                 <h5 class="category-link__smart-home">
                     <i class="hidden-xs hidden-sm hidden-md m-icon m-icon--smart-home"></i>
                     <span class="m-icon-text text-uppercase">Smart Home</span>
@@ -56,7 +56,7 @@
                     @endforeach
                 @endif
             </div>
-            <div class="col-lg-4 col-xs-12">
+            <div class="col-sm-4 col-xs-12">
                 <h5 class="category-link__smart-body m-icon-text-holder">
                     <i class="hidden-xs hidden-sm hidden-md m-icon m-icon--wearables"></i>
                     <span class="m-icon-text text-uppercase">Smart Body</span>
@@ -95,7 +95,7 @@
                     @endforeach
                 @endif
             </div>
-            <div class="col-lg-4 col-xs-12">
+            <div class="col-sm-4 col-xs-12">
                 <h5 class="category-link__smart-entertainment m-icon-text-holder">
                     <i class="hidden-xs hidden-sm hidden-md m-icon m-icon--video"></i>
                     <span class="m-icon-text text-uppercase">Smart Entertainment</span>
@@ -137,7 +137,7 @@
 
         </section>
 
-        <div class="col-lg-8 center-block overhide">
+        <div class="col-xs-12 center-block overhide">
             <h4 class="current-timespan col-sm-3">Today</h4>
             {{--<nav id="hero-nav" class="col-sm-9">--}}
                 {{--<div class="container full-620 fixed-sm">--}}

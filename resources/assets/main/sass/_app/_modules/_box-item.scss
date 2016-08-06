@@ -9,17 +9,58 @@
 
 .box-item {
 	position: relative;
-	//border: 1px solid #eee;
 	overflow: hidden;
-    //padding: 4px;
-	// default
-/*	width: 300px;*/
 
-  //@media  (max-width: 420px){
     height: 380px;
 
+  .round-tag__label{
+    float: none;
+  }
 
-  //}
+    .idea-meta{
+      position: absolute;
+      min-height: 150px;
+      width: 100%;
+      bottom: 0;
+      background: $dark-orange;
+      z-index: 1;
+      padding: 25px;
+
+      a{
+        color: #fff;
+      }
+
+      .social-stats__item{
+        line-height: 14px;
+
+        .m-icon {
+          font-size: 14px;
+        }
+      }
+
+      .m-icon.m-icon--bulb{
+        float: none;
+        font-size: 1.3rem;
+        font-weight: bold;
+      }
+
+      .social-stats{
+        padding: 0 !important;
+        width: 75%;
+        margin-top: 6px;
+        li{
+          padding: 0;
+          float: left;
+          width: 80px;
+        }
+      }
+      .box-item__time {
+        bottom: 27px;
+        text-transform: uppercase;
+        opacity: .8;
+      }
+
+    }
 
   > img{
     width: 100%;
@@ -117,7 +158,7 @@
 	&__time {
 		font-family: $moseratlight;
 		font-size: 10px;
-		color: #c1c1c1;
+		color: #fff;
 		position: absolute;
 		bottom: 10px;
 		right: 10px;
@@ -125,16 +166,16 @@
 	}
 	&__author {
 		position: absolute;
-		bottom: 10px;
-		left: 10px;
+		bottom: 50px;
+		right: 10px;
 	}
 	&__label {
 		display: inline-block;
 		font-family: $heading-base-font;
-		font-size: 16px;
-		background: $sky-blue;
+		font-size: 14px;
+		//background: $sky-blue;
 		color: #fff;
-		padding: 6px 10px;
+		//padding: 6px 10px;
 		float: left;
 		text-align: left;
 		margin-bottom: 10px;
@@ -199,10 +240,10 @@
 		}
 	}
 	&__label-idea {
-		position: absolute;
-		top: 39%;
-		left: 0;
-		right: 0;
+		//position: absolute;
+		//top: 39%;
+		//left: 0;
+		//right: 0;
 		text-align: center;
 
 		@media (min-width: 992px) {
@@ -210,10 +251,10 @@
 		}
 	}
 	&__label-prod {
-		position: absolute;
-		top: 39%;
-		left: 0;
-		right: 0;
+		//position: absolute;
+		//top: 39%;
+		//left: 0;
+		//right: 0;
 		text-align: center;
 
 		.merchant-widget {
@@ -229,14 +270,14 @@
 
 	}
 	.social-stats {
-		position: absolute;
-		right: 0;
-		top: 0;
+		//position: absolute;
+		//left: 0;
+		//bottom: 20px;
 	}
 	.round-tag {
-		position: absolute;
-		top: 10px;
-		left: 10px;
+		//position: absolute;
+		//top: 10px;
+		//left: 10px;
 	}
 }
 
@@ -256,9 +297,10 @@
 	.box-item {
 		width: auto;
 		min-height: 315px;
+        bottom: 6px;
+        border-radius: 4px;
 
 		@media (max-width: 767px) {
-/*			border: 0 none;*/
             border: 1px solid #eee;
 			border-top: 0px;
 		}
@@ -269,6 +311,7 @@
             width: 32.3%;
             margin-left: 8px;
             margin-top: 4px;
+
 		}
 
 		@media (min-width: 992px) {
@@ -284,7 +327,12 @@
 		width: auto;
 		height: auto;
 		border-top: 0 none;
-	}
+        margin: 2px 11px 11px;
+
+        .img-holder{
+          border-radius: 4px;
+        }
+    }
 }
 
 .main-content{
