@@ -46,7 +46,7 @@
   .user-widget__img{
     float: right;
   }
-
+ 
   &.product-box{
     .idea-meta{
       bottom: -128px;
@@ -60,16 +60,14 @@
   &:hover{
     a,
     .box-item__time {
-      color:#fff;
+      color:#fff !important;
     }
   }
   &:not(:hover){
     .idea-meta {
       background: #fff;
       color: #999;
-      a{
-        color: #fff;
-      }
+
     }
 
   }

@@ -12391,12 +12391,10 @@ p {
       color: #fff; }
   .box-item:hover a,
   .box-item:hover .box-item__time {
-    color: #fff; }
+    color: #fff !important; }
   .box-item:not(:hover) .idea-meta {
     background: #fff;
     color: #999; }
-    .box-item:not(:hover) .idea-meta a {
-      color: #fff; }
   .box-item .idea-meta {
     position: absolute;
     min-height: 115px;
