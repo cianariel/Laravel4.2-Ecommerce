@@ -47,8 +47,25 @@
     float: right;
   }
 
+  &.product-box{
+    .idea-meta{
+      bottom: -128px;
 
+      a{
+        color: fff;
+      }
 
+    }
+  }
+  &:not(:hover){
+    .idea-meta {
+      background: #fff;
+      color: #999;
+      a{
+        color: fff;
+      }
+    }
+  }
 
     .idea-meta{
       position: absolute;
@@ -67,10 +84,9 @@
       //}
 
       a{
-        color: #fff;
+        color: #999;
         opacity: 1;
       }
-
 
 
       .social-stats__item{
@@ -112,6 +128,13 @@
       }
 
     }
+  .box-item__time{
+    color: #999;
+  }
+
+  .box-item__overlay{
+    border-radius: 5px;
+  }
 
   > img{
     width: 100%;

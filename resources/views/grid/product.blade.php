@@ -30,9 +30,9 @@
 
         </div>
 
-        <span class="box-item__time"><?php echo '{{item.created_at}}' ?></span>
     </div>
 </div>
+<span class="box-item__time text-uppercase"><?php echo '{{item.created_at}}' ?></span>
 <div class="box-item__overlay" ng-click="openProductPopup(item.id)"></div>
 
 

@@ -91,6 +91,9 @@ a:hover, a:focus{
   .category-hover-color:hover{
     color: $color !important;;
   }
+  .category-hover-bg:hover{
+    background-color: $color !important;;
+  }
   .category-hover-border:hover{
     border-color:$color;
   }
@@ -2777,6 +2780,10 @@ article.product{
     }
   }
 
+}
+
+.scroll-header{
+  display: none !important;
 }
 
 .sidebar-box{
