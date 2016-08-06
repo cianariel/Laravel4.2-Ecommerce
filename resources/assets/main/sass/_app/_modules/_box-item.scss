@@ -52,9 +52,15 @@
       bottom: -128px;
 
       a{
-        color: fff;
+        color: #fff;
       }
 
+    }
+  }
+  &:hover{
+    a,
+    .box-item__time {
+      color:#fff;
     }
   }
   &:not(:hover){
@@ -62,9 +68,10 @@
       background: #fff;
       color: #999;
       a{
-        color: fff;
+        color: #fff;
       }
     }
+
   }
 
     .idea-meta{
@@ -133,6 +140,7 @@
   }
 
   .box-item__overlay{
+    background: transparent !important;
     border-radius: 5px;
   }
 

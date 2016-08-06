@@ -12388,12 +12388,15 @@ p {
   .box-item.product-box .idea-meta {
     bottom: -128px; }
     .box-item.product-box .idea-meta a {
-      color: fff; }
+      color: #fff; }
+  .box-item:hover a,
+  .box-item:hover .box-item__time {
+    color: #fff; }
   .box-item:not(:hover) .idea-meta {
     background: #fff;
     color: #999; }
     .box-item:not(:hover) .idea-meta a {
-      color: fff; }
+      color: #fff; }
   .box-item .idea-meta {
     position: absolute;
     min-height: 115px;
@@ -12435,6 +12438,7 @@ p {
   .box-item .box-item__time {
     color: #999; }
   .box-item .box-item__overlay {
+    background: transparent !important;
     border-radius: 5px; }
   .box-item > img {
     width: 100%;
