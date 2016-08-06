@@ -4552,6 +4552,9 @@ a:hover, a:focus {
 .category-smart-home .category-link__smart-home,
 .category-smarthome .category-link__smart-home {
   color: #FF0042; }
+.category-smart-home .box-item:hover .idea-meta,
+.category-smarthome .box-item:hover .idea-meta {
+  background-color: #FF0042 !important; }
 
 .category-smart-travel .category-color {
   color: #FF7F00 !important; }
@@ -4573,6 +4576,8 @@ a:hover, a:focus {
   color: #FF7F00; }
 .category-smart-travel .category-link__smart-travel {
   color: #FF7F00; }
+.category-smart-travel .box-item:hover .idea-meta {
+  background-color: #FF7F00 !important; }
 
 .category-smart-body .category-color {
   color: #079DD1 !important; }
@@ -4594,6 +4599,8 @@ a:hover, a:focus {
   color: #079DD1; }
 .category-smart-body .category-link__smart-body {
   color: #079DD1; }
+.category-smart-body .box-item:hover .idea-meta {
+  background-color: #079DD1 !important; }
 
 .category-smart-entertainment .category-color {
   color: #89C981 !important; }
@@ -4615,6 +4622,8 @@ a:hover, a:focus {
   color: #89C981; }
 .category-smart-entertainment .category-link__smart-entertainment {
   color: #89C981; }
+.category-smart-entertainment .box-item:hover .idea-meta {
+  background-color: #89C981 !important; }
 
 .category-link {
   cursor: hover; }
@@ -12406,7 +12415,7 @@ p {
     bottom: -61px;
     transition: all .6s; }
     .box-item .idea-meta a {
-      color: #999;
+      color: #3d4b4e;
       opacity: 1; }
     .box-item .idea-meta .social-stats__item {
       line-height: 14px; }
@@ -12434,7 +12443,7 @@ p {
       position: static;
       float: right; }
   .box-item .box-item__time {
-    color: #999; }
+    color: #3d4b4e; }
   .box-item .box-item__overlay {
     background: transparent !important;
     border-radius: 5px; }
@@ -12486,7 +12495,8 @@ p {
       min-width: 100%; }
   .box-item--featured {
     min-height: auto;
-    height: 380px !important; }
+    height: 380px !important;
+    border-radius: 5px; }
   .box-item .user-widget__name,
   .box-item .merchant-widget, .box-item__get-it, .box-item__label--clear, .box-item__read-more, .box-item__overlay {
     opacity: 0;

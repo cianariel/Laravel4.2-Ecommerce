@@ -46,7 +46,7 @@
   .user-widget__img{
     float: right;
   }
- 
+
   &.product-box{
     .idea-meta{
       bottom: -128px;
@@ -89,7 +89,7 @@
       //}
 
       a{
-        color: #999;
+        color: #3d4b4e;
         opacity: 1;
       }
 
@@ -134,7 +134,7 @@
 
     }
   .box-item__time{
-    color: #999;
+    color: #3d4b4e;
   }
 
   .box-item__overlay{
@@ -189,7 +189,7 @@
 		//overflow: visible;
         min-height: auto;
         height: 380px !important;
-        
+      border-radius: 5px;
         
 
 		//&:before {

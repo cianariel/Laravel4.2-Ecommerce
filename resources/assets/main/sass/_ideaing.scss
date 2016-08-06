@@ -121,6 +121,12 @@ a:hover, a:focus{
     color: $iridium;
   }
 
+  .box-item:hover{
+    .idea-meta{
+      background-color: $iridium !important;
+    }
+  }
+
 }
 
 .category-smart-travel{
@@ -128,17 +134,35 @@ a:hover, a:focus{
   .category-link__smart-travel{
     color: $dark-orange;
   }
+
+  .box-item:hover{
+    .idea-meta{
+      background-color: $dark-orange !important;
+    }
+  }
 }
 .category-smart-body{
   @include category-color($facebook-blue);
   .category-link__smart-body{
     color: $facebook-blue;
   }
+
+  .box-item:hover{
+    .idea-meta{
+      background-color: $facebook-blue !important;
+    }
+  }
 }
 .category-smart-entertainment{
   @include category-color($pine-green);
   .category-link__smart-entertainment{
     color: $pine-green;
+  }
+
+  .box-item:hover{
+    .idea-meta{
+      background-color: $pine-green !important;
+    }
   }
 }
 
