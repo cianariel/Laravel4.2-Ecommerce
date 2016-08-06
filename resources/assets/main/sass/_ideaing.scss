@@ -58,6 +58,11 @@ a:hover, a:focus{
 .white{
   color: #fff;
 }
+
+.white-bg{
+  background: #fff;
+  padding: 10px;
+}
        
 .purple-bg{
   background-color: $magenta;
@@ -1222,7 +1227,7 @@ nav {
 #hero{
   position: relative;
   width: 100%;
-  min-height: 450px;
+  min-height: 425px;
   float: left;
 
   .head-wrap{
@@ -2511,13 +2516,14 @@ article.product{
 }
 
 .most-popular-new{
-  overflow: visible;
+  overflow: hidden;
 
-  //@media(max-width:1200px){
-  //  .popular-wrap{
-  //    display: none;
-  //  }
-  //}
+  @media(max-width:620px){
+    .popular-section{
+      float: none;
+      margin: 0 auto;
+    }
+  }
 
   h5{
     i{
@@ -2552,6 +2558,10 @@ article.product{
       border: 1px solid #7a7a7a;
       padding: 2px 10px;
       //color: #fff;
+    }
+
+    img{
+      border-radius: 5px;
     }
   }
   .popular-wrap{
@@ -5206,12 +5216,13 @@ header.sub-head{
     left: 0;
     right: 0;
     padding: 0 !important;
+    overflow: hidden;
     .rsOverflow{
       margin-top: 0 !important;
       overflow: hidden !important;
     }
     .img-holder > img{
-       width: 100% !important;
+       //width: 100% !important;
       height: auto !important;
     }
     .box-item__label-idea{
@@ -5231,7 +5242,7 @@ header.sub-head{
     .rsThumbsContainer{
       width: 65% !important;
       position: absolute;
-      bottom: 140px;
+      bottom: 70px;
       left: 0;
       right: 0;
       margin-left: auto;
@@ -6384,7 +6395,7 @@ body.homepage{
     }
    &.logged-in {
      #hero {
-       min-height: 480px;
+       min-height: 425px;
        //padding-top: 2px;
      }
    }

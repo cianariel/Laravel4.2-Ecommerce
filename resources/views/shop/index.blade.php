@@ -63,7 +63,7 @@
                     <div class="row">
                         <div id="newest-arrivals" class="slider col-xs-12 has-bullets">
                             <div class="grid-box-3 rsContent" ng-repeat="items in newestArrivals">
-                                <div class="box-item product-box text-center" ng-repeat="item in items">
+                                <div class="box-item product-box  slider-box text-center" ng-repeat="item in items">
                                     @include('grid.product')
                                 </div>
                             </div>

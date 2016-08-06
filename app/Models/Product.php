@@ -415,9 +415,23 @@ class Product extends Model
 
             $tmp->sale_price = round($tmp->sale_price);
 
-
             // Add store information
             $tmp->storeInfo = $this->getStoreInfoByProductId($id);
+//            $tmp->master_category = $this->getStoreInfoByProductId($id);
+
+            $category = Product::find($id)->productCategory;
+
+            $parentCategory = ProductCategory::find($category->parent_id);
+
+            if($parentCategory){
+                if($parentCategory->parent_id){
+                    $parentCategory = ProductCategory::find($parentCategory->parent_id);
+                }
+                $tmp->master_category = $parentCategory->extra_info;
+
+            }else{
+                $tmp->master_category = $category->extra_info;
+            }
 
             $review = json_decode($tmp->review);
 

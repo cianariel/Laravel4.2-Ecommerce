@@ -6,7 +6,7 @@
 
         if($sliderContent){
         foreach($sliderContent as $item){ ?>
-            <div class="box-item product-box text-center">
+            <div class="box-item product-box slider-box text-center">
                 <div class="color-overlay"></div>
                 <div class="img-holder">
                         <img itemprop="image" src="{{$item['image']}}">

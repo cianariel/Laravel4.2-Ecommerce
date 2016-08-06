@@ -1,7 +1,7 @@
 <div class="img-holder">
     <img  itemprop="image"  src="<?php echo '{{item.media_link_full_path}}' ?>" alt="<?php echo '{{item.product_name}}' ?>"/>
 </div>
-<div class="category-smarthome <?php // echo '{{item.category_main}}' ?>">
+<div class="category-<?php  echo '{{item.master_category}}' ?>">
     <div class="idea-meta product  category-bg">
         <div class="box-item__label-product">
             <a href="/product/<?php echo '{{item.product_permalink}}' ?>" class="box-item__label box-item__label--clear" itemprop="name"><?php echo '{{item.product_name}}' ?></a>
@@ -9,7 +9,7 @@
 
 
         <a ng-if="!item.is_deal" href="/ideas">
-            <span class="round-tag__label text-uppercase in" itemprop="articleSection">In <?php echo '{{item.category_name}}' ?>, Products <i class="m-icon  m-icon-shopping-bag-light-green"></i></span>
+            <span class="round-tag__label text-uppercase in" itemprop="articleSection">In <?php echo '{{item.category_name}}' ?>, Products <i class="m-icon m-icon--shopping-bag-light-green white"></i></span>
         </a>
 
         <!--  <a  ng-if="item.is_deal" href="/ideas" class="round-tag round-tag--idea deal">

@@ -69,11 +69,11 @@ class PageController extends ApiController
 //        $homehero = new HomeHero();
 //        $result = $homehero->heroDetailsViewGenerate();
 //
-//        $sliderContent = self::getHeroSliderContent();
+        $sliderContent = self::getHeroSliderContent();
 
         $result = [];
 //
-        $sliderContent = [];
+//        $sliderContent = [];
 
         $mostPopular = self::getMostPopular();
 
@@ -534,7 +534,7 @@ class PageController extends ApiController
 
         $daysback = date('Y-m-d', $daysback);
 
-        if ($type == 'product' || !$stories = self::getGridStories($storyLimit + 1, $storyOffset, $featuredLimit + 1, $featuredOffset, $tag, $ideaCategory, $daysback)) {
+        if ($type == 'product' || !$stories = self::getGridStories($storyLimit + 1, $storyOffset, $featuredLimit, $featuredOffset, $tag, $ideaCategory, $daysback)) {
             $stories = [
                 'regular' => [],
                 'featured' => [],

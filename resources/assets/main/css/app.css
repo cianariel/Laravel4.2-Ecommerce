@@ -4509,6 +4509,10 @@ a:hover, a:focus {
 .white {
   color: #fff; }
 
+.white-bg {
+  background: #fff;
+  padding: 10px; }
+
 .purple-bg {
   background-color: #9E009E; }
 
@@ -5669,7 +5673,7 @@ nav a {
 #hero {
   position: relative;
   width: 100%;
-  min-height: 450px;
+  min-height: 425px;
   float: left; }
   #hero .head-wrap {
     position: absolute;
@@ -6540,7 +6544,11 @@ article.product {
     font-size: 1.1rem; }
 
 .most-popular-new {
-  overflow: visible; }
+  overflow: hidden; }
+  @media (max-width: 620px) {
+    .most-popular-new .popular-section {
+      float: none;
+      margin: 0 auto; } }
   .most-popular-new h5 {
     margin-bottom: 15px; }
     .most-popular-new h5 i {
@@ -6567,6 +6575,8 @@ article.product {
       background: #fff;
       border: 1px solid #7a7a7a;
       padding: 2px 10px; }
+    .most-popular-new .box-item img {
+      border-radius: 5px; }
   .most-popular-new .popular-wrap {
     width: 32%;
     height: 256px;
@@ -8349,12 +8359,12 @@ header.sub-head {
   margin-right: auto;
   left: 0;
   right: 0;
-  padding: 0 !important; }
+  padding: 0 !important;
+  overflow: hidden; }
   .homepage .home-hero-slider .rsOverflow {
     margin-top: 0 !important;
     overflow: hidden !important; }
   .homepage .home-hero-slider .img-holder > img {
-    width: 100% !important;
     height: auto !important; }
   .homepage .home-hero-slider .box-item__label-idea {
     top: 35%; }
@@ -8368,7 +8378,7 @@ header.sub-head {
   .homepage .home-hero-slider .rsThumbsContainer {
     width: 65% !important;
     position: absolute;
-    bottom: 140px;
+    bottom: 70px;
     left: 0;
     right: 0;
     margin-left: auto;
@@ -9117,7 +9127,7 @@ body.homepage #hero {
 html.idea-stories.logged-in #hero,
 body.room-landing.logged-in #hero,
 body.homepage.logged-in #hero {
-  min-height: 480px; }
+  min-height: 425px; }
 html.idea-stories #hero-nav,
 body.room-landing #hero-nav,
 body.homepage #hero-nav {
@@ -12342,6 +12352,15 @@ p {
     max-width: 60% !important;
     margin: 0 auto; } }
 
+.box-item:not(.slider-box) .img-holder img {
+  position: absolute;
+  top: 0;
+  transition: all .6s; }
+.box-item:not(.slider-box):hover .idea-meta {
+  bottom: 0; }
+.box-item:not(.slider-box):hover .img-holder img {
+  top: -100px; }
+
 .box-item {
   position: relative;
   overflow: hidden;
@@ -12356,11 +12375,14 @@ p {
     float: right; }
   .box-item .idea-meta {
     position: absolute;
-    min-height: 150px;
+    min-height: 115px;
     width: 100%;
     bottom: 0;
+    background: #FF7F00;
     z-index: 1;
-    padding: 25px 25px 10px; }
+    padding: 8px 25px 10px;
+    bottom: -61px;
+    transition: all .6s; }
     .box-item .idea-meta a {
       color: #fff;
       opacity: 1; }
@@ -12368,7 +12390,8 @@ p {
       line-height: 14px; }
       .box-item .idea-meta .social-stats__item .m-icon {
         font-size: 14px; }
-    .box-item .idea-meta .m-icon.m-icon--bulb {
+    .box-item .idea-meta .m-icon.m-icon--bulb,
+    .box-item .idea-meta .m-icon.m-icon--shopping-bag-light-green {
       float: none;
       font-size: 1.3rem;
       font-weight: bold; }
@@ -12380,6 +12403,9 @@ p {
         padding: 0;
         float: left;
         width: 80px; }
+    .box-item .idea-meta .box-item__label-idea,
+    .box-item .idea-meta .box-item__label-product {
+      min-height: 50px; }
     .box-item .idea-meta .box-item__time {
       text-transform: uppercase;
       opacity: .8;
@@ -12432,20 +12458,8 @@ p {
       max-width: none;
       min-width: 100%; }
   .box-item--featured {
-    overflow: visible;
     min-height: auto;
     height: 380px !important; }
-    @media (min-width: 768px) {
-      .box-item--featured:before {
-        position: absolute;
-        content: '';
-        background: url("/assets/images/elements/featured-badge-vertical-left.png");
-        width: 63px;
-        height: 162px;
-        left: -36px;
-        top: 131px;
-        margin-top: -81px;
-        z-index: 9; } }
   .box-item .user-widget__name,
   .box-item .merchant-widget, .box-item__get-it, .box-item__label--clear, .box-item__read-more, .box-item__overlay {
     opacity: 0;

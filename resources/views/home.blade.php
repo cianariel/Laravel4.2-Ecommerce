@@ -15,127 +15,129 @@
             @include('layouts.parts.home-hero-slider')
         </section>
 
-        <section class="most-popular-new container center-block overhide">
-            <div class="col-sm-4 col-xs-12">
-                <h5 class="category-link__smart-home">
-                    <i class="hidden-xs hidden-sm hidden-md m-icon m-icon--smart-home"></i>
-                    <span class="m-icon-text text-uppercase">Smart Home</span>
-                </h5>
+        <div class="white-bg col-xs-12">
+            <section class="most-popular-new container center-block overhide">
+                <div class="col-sm-4 col-xs-8 popular-section">
+                    <h5 class="category-link__smart-home">
+                        <i class="hidden-xs hidden-sm hidden-md m-icon m-icon--smart-home"></i>
+                        <span class="m-icon-text text-uppercase">Smart Home</span>
+                    </h5>
 
-                @if(@$mostPopular->smart_home)
-                       <?php $i = 0; ?>
-                    @foreach($mostPopular->smart_home as $item)
-                        @if($i == 1)
-                            <div class="popular-wrap">
-                        @endif
-
-                            @if(@$item->product_name) <!-- this is a product -->
-                                <div class="box-item product-box">
-                                    <a href="/product/{{$item->product_permalink}}" >
-                                        <img class="img-responsive" src="{{ $item->media_link_full_path }}">
-                                    </a>
-                                </div>
-                            @else
-                                <div class="box-item">
-                                    <a href="{{$item->url}}">
-                                        @if(is_array(@$item->feed_image))
-                                            <img alt="{{@$item->feed_image['alt']}}" title="{{@$item->feed_image['title']}}"
-                                                 src="{{ @$item->feed_image['url']}}">
-                                        @else
-                                            <img alt="{{@$item->feed_image->alt}}" title="{{@$item->feed_image->title}}"
-                                                 src="{{@$item->feed_image->url}}">
-                                        @endif
-                                    </a>
-                                </div>
+                    @if(@$mostPopular->smart_home)
+                           <?php $i = 0; ?>
+                        @foreach($mostPopular->smart_home as $item)
+                            @if($i == 1)
+                                <div class="popular-wrap">
                             @endif
 
-                       @if($i == 2)
-                            </div>
-                       @endif
-                        <?php ++$i?>
-                    @endforeach
-                @endif
-            </div>
-            <div class="col-sm-4 col-xs-12">
+                                @if(@$item->product_name) <!-- this is a product -->
+                                    <div class="box-item product-box">
+                                        <a href="/product/{{$item->product_permalink}}" >
+                                            <img class="img-responsive" src="{{ $item->media_link_full_path }}">
+                                        </a>
+                                    </div>
+                                @else
+                                    <div class="box-item">
+                                        <a href="{{$item->url}}">
+                                            @if(is_array(@$item->feed_image))
+                                                <img alt="{{@$item->feed_image['alt']}}" title="{{@$item->feed_image['title']}}"
+                                                     src="{{ @$item->feed_image['url']}}">
+                                            @else
+                                                <img alt="{{@$item->feed_image->alt}}" title="{{@$item->feed_image->title}}"
+                                                     src="{{@$item->feed_image->url}}">
+                                            @endif
+                                        </a>
+                                    </div>
+                                @endif
+
+                           @if($i == 2)
+                                </div>
+                           @endif
+                            <?php ++$i?>
+                        @endforeach
+                    @endif
+                </div>
+                <div class="col-sm-4 col-xs-8 popular-section">
                 <h5 class="category-link__smart-body m-icon-text-holder">
-                    <i class="hidden-xs hidden-sm hidden-md m-icon m-icon--wearables"></i>
-                    <span class="m-icon-text text-uppercase">Smart Body</span>
-                </h5>
-                @if(@$mostPopular->smart_body)
-                       <?php $i = 0; ?>
-                    @foreach($mostPopular->smart_body as $item)
-                        @if($i == 1)
-                            <div class="popular-wrap">
-                        @endif
-
-                            @if(@$item->product_name) <!-- this is a product -->
-                                <div class="box-item product-box">
-                                    <a href="/product/{{$item->product_permalink}}" >
-                                        <img class="img-responsive" src="{{ $item->media_link_full_path }}">
-                                    </a>
-                                </div>
-                            @else
-                                <div class="box-item">
-                                    <a href="{{$item->url}}">
-                                        @if(is_array(@$item->feed_image))
-                                            <img alt="{{@$item->feed_image['alt']}}" title="{{@$item->feed_image['title']}}"
-                                                 src="{{ @$item->feed_image['url']}}">
-                                        @else
-                                            <img alt="{{@$item->feed_image->alt}}" title="{{@$item->feed_image->title}}"
-                                                 src="{{@$item->feed_image->url}}">
-                                        @endif
-                                    </a>
-                                </div>
+                        <i class="hidden-xs hidden-sm hidden-md m-icon m-icon--wearables"></i>
+                        <span class="m-icon-text text-uppercase">Smart Body</span>
+                    </h5>
+                    @if(@$mostPopular->smart_body)
+                           <?php $i = 0; ?>
+                        @foreach($mostPopular->smart_body as $item)
+                            @if($i == 1)
+                                <div class="popular-wrap">
                             @endif
 
-                       @if($i == 2)
-                            </div>
-                       @endif
-                        <?php ++$i?>
-                    @endforeach
-                @endif
-            </div>
-            <div class="col-sm-4 col-xs-12">
-                <h5 class="category-link__smart-entertainment m-icon-text-holder">
-                    <i class="hidden-xs hidden-sm hidden-md m-icon m-icon--video"></i>
-                    <span class="m-icon-text text-uppercase">Smart Entertainment</span>
-                </h5>
-                @if(@$mostPopular->smart_entertainment)
-                       <?php $i = 0; ?>
-                    @foreach($mostPopular->smart_entertainment as $item)
-                        @if($i == 1)
-                            <div class="popular-wrap">
-                        @endif
+                                @if(@$item->product_name) <!-- this is a product -->
+                                    <div class="box-item product-box">
+                                        <a href="/product/{{$item->product_permalink}}" >
+                                            <img class="img-responsive" src="{{ $item->media_link_full_path }}">
+                                        </a>
+                                    </div>
+                                @else
+                                    <div class="box-item">
+                                        <a href="{{$item->url}}">
+                                            @if(is_array(@$item->feed_image))
+                                                <img alt="{{@$item->feed_image['alt']}}" title="{{@$item->feed_image['title']}}"
+                                                     src="{{ @$item->feed_image['url']}}">
+                                            @else
+                                                <img alt="{{@$item->feed_image->alt}}" title="{{@$item->feed_image->title}}"
+                                                     src="{{@$item->feed_image->url}}">
+                                            @endif
+                                        </a>
+                                    </div>
+                                @endif
 
-                            @if(@$item->product_name) <!-- this is a product -->
-                                <div class="box-item product-box">
-                                    <a href="/product/{{$item->product_permalink}}" >
-                                        <img class="img-responsive" src="{{ $item->media_link_full_path }}">
-                                    </a>
+                           @if($i == 2)
                                 </div>
-                            @else
-                                <div class="box-item">
-                                    <a href="{{$item->url}}">
-                                        @if(is_array(@$item->feed_image))
-                                            <img alt="{{@$item->feed_image['alt']}}" title="{{@$item->feed_image['title']}}"
-                                                 src="{{ @$item->feed_image['url']}}">
-                                        @else
-                                            <img alt="{{@$item->feed_image->alt}}" title="{{@$item->feed_image->title}}"
-                                                 src="{{@$item->feed_image->url}}">
-                                        @endif
-                                    </a>
-                                </div>
+                           @endif
+                            <?php ++$i?>
+                        @endforeach
+                    @endif
+                </div>
+
+                <div class="col-sm-4 col-xs-8 popular-section">
+                    <h5 class="category-link__smart-entertainment m-icon-text-holder">
+                        <i class="hidden-xs hidden-sm hidden-md m-icon m-icon--video"></i>
+                        <span class="m-icon-text text-uppercase">Smart Entertainment</span>
+                    </h5>
+                    @if(@$mostPopular->smart_entertainment)
+                           <?php $i = 0; ?>
+                        @foreach($mostPopular->smart_entertainment as $item)
+                            @if($i == 1)
+                                <div class="popular-wrap">
                             @endif
 
-                       @if($i == 2)
-                            </div>
-                       @endif
-                        <?php ++$i?>
-                    @endforeach
-                @endif
-            </div>
+                                @if(@$item->product_name) <!-- this is a product -->
+                                    <div class="box-item product-box">
+                                        <a href="/product/{{$item->product_permalink}}" >
+                                            <img class="img-responsive" src="{{ $item->media_link_full_path }}">
+                                        </a>
+                                    </div>
+                                @else
+                                    <div class="box-item">
+                                        <a href="{{$item->url}}">
+                                            @if(is_array(@$item->feed_image))
+                                                <img alt="{{@$item->feed_image['alt']}}" title="{{@$item->feed_image['title']}}"
+                                                     src="{{ @$item->feed_image['url']}}">
+                                            @else
+                                                <img alt="{{@$item->feed_image->alt}}" title="{{@$item->feed_image->title}}"
+                                                     src="{{@$item->feed_image->url}}">
+                                            @endif
+                                        </a>
+                                    </div>
+                                @endif
 
-        </section>
+                           @if($i == 2)
+                                </div>
+                           @endif
+                            <?php ++$i?>
+                        @endforeach
+                    @endif
+                </div>
+            </section>
+        </div>
 
         <div class="col-xs-12 center-block overhide">
 
