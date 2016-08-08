@@ -3624,16 +3624,13 @@ angular.module('colorpicker.module', [])
             $($hide).fadeOut(
                 function(){
                     $($show).fadeIn();
-                    //$('[data-switch="'+$hide+'"').removeClass('active');
                 }
             );
 
-            //if(!$that.hasClass('active')){
-            //    $that.addClass('active');
-            //    $that.siblings().removeClass('active');
-            //}else{
-            //    $that.removeClass('active');
-            //}
+            if(!$that.hasClass('active')){
+                $that.addClass('active');
+                $that.siblings().not($that).removeClass('active');
+            }
             return false;
         });
 
@@ -3674,6 +3671,7 @@ angular.module('colorpicker.module', [])
                 top: '35px',
                 opacity: 0,
             }, 200);
+            $show.blur();
             $show.fadeOut();
             $show.removeClass('shown');
         });

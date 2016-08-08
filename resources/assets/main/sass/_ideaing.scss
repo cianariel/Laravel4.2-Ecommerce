@@ -179,26 +179,40 @@ a:hover, a:focus{
 .category-link{
     cursor: hover;
 
-
     &__smart-home{
-      &:hover, .m-icon{
+      &:hover,
+      .m-icon{
         color: $iridium;
+      }
+      &::before{
+        background-color: $iridium;
       }
     }
     &__smart-travel{
-      &:hover, .m-icon{
+      &:hover,
+      .m-icon{
         color: $dark-orange;
       }
-
+      &::before{
+        background-color: $dark-orange;
+      }
     }
     &__smart-body{
-      &:hover, .m-icon{
+      &:hover,
+      .m-icon{
       color: $sky-blue;
+      }
+      &::before{
+        background-color: $sky-blue;
       }
     }
     &__smart-entertainment{
-      &:hover, .m-icon{
+      &:hover,
+      .m-icon{
         color: $pine-green;
+      }
+      &::before{
+        background-color: $pine-green;
       }
     }
     &__shop{
@@ -273,12 +287,36 @@ h5{
     text-transform: capitalize;
     color: #1d1d1d;
     font-size: 1.15rem !important;
+    position: relative;
 
     @media (min-width: 620px) {
       color:#3d4b4e;
     }
+
+      &::before {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 2px;
+        bottom: 10px;
+        left: 2px;
+        visibility: hidden;
+        -webkit-transform: scaleX(0);
+        transform: scaleX(0);
+        -webkit-transition: all 0.3s ease-in-out 0s;
+        transition: all 0.3s ease-in-out 0s;
+      }
+      &:hover,
+      &.active{
+        &::before{
+          visibility: visible;
+          -webkit-transform: scaleX(1);
+          transform: scaleX(1);
+        }
+      }
+    }
   }
-}
+
 
 .blue-glow{
   -webkit-stroke-width: 5.3px;
@@ -1632,9 +1670,12 @@ body.contactus-page
   border-radius: 3px;
   max-width: 30px;
   margin-top: 7px;
+  transition: all .7s;
 
-  &.active{
+  &.active,
+  &:hover{
     background: rgba($iridium, .7);
+    color: #fff;
   }
 
 }
@@ -3236,6 +3277,12 @@ header.colophon{
     margin: 0 auto;
     display: block;
     position: relative;
+
+    @media(min-width: 620px)  {
+      position: absolute;
+      right: 13.5%;
+      max-width: 760px;
+    }
   }
 
   .desktop-search-bar{
@@ -3348,6 +3395,10 @@ header.colophon{
   margin-top: 5px;
 }
 
+#mark-all-as-read{
+  cursor: pointer;
+  padding-right: 3px;
+}
 
 #top-nav{
 
@@ -3618,28 +3669,58 @@ header.colophon{
                 padding: 10px 15px;
                 overflow: hidden;
                 color: #fff;
-                #mark-all-as-read{
-                    cursor: pointer;
-                }
+
               ul{
                 width: 200px;
                 margin: 0 auto;
                 display: block;
                 float: none;
+              }
+              a{
+                position: relative;
+                color: #fff;
+                font-weight: 200;
+                text-transform: capitalize;
+                font-size: 1.4rem;
+                text-decoration: none;
+                text-align: center;
 
-                li:first-child{
-                  a::after{
+                span{
+                  &:before {
+                    content: "";
+                    position: absolute;
+                    width: 95%;
+                    height: 2px;
+                    bottom: 0;
+                    left: 2px;
+                    background-color: #fff;
+                    visibility: hidden;
+                    -webkit-transform: scaleX(0);
+                    transform: scaleX(0);
+                    -webkit-transition: all 0.3s ease-in-out 0s;
+                    transition: all 0.3s ease-in-out 0s;
+                  }
+                }
+                &:first-child{
+                  span::after{
                     content: '|';
                     margin-left: 7px;
                   }
+                  span::before{
+                    width: 79%;
+                  }
                 }
-              }
-              a{
-                color: #fff;
-                font-weight: 200;
-
+                &:hover,
                 &.active{
-                  font-weight: 700;
+                  span{
+                    //width: 79%;
+
+                    &:before {
+                      visibility: visible;
+                      -webkit-transform: scaleX(1);
+                      transform: scaleX(1);
+                    }
+                  }
                 }
               }
             }
