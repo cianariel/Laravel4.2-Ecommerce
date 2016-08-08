@@ -1,11 +1,12 @@
 <?php // !!!! for use on WP PLEASE USER PURE PHP HERE
         $ideaView = 'ideaWP';
 ?>
+<h4 class="current-timespan col-xs-12">
+    <?php // echo '{{batch.currentDay}}' ?>
+    Latest
+</h4>
 <div ng-repeat="batch in content" class="container main-content col-xs-12">
-    <h4 class="current-timespan col-xs-12">
-        <?php // echo '{{batch.currentDay}}' ?>
-        Latest
-    </h4>
+
 
     <div class="grid-box-full">
         <div class="box-item idea-box box-item--featured" ng-if="item.type == 'idea'"
