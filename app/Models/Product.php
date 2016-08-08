@@ -428,6 +428,7 @@ class Product extends Model
                     $parentCategory = ProductCategory::find($parentCategory->parent_id);
                 }
                 $tmp->master_category = $parentCategory->extra_info;
+                $tmp->master_category_name = $parentCategory->category_name;
 
             }else{
                 $tmp->master_category = $category->extra_info;

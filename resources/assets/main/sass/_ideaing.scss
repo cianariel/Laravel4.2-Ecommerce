@@ -296,10 +296,10 @@ h5{
       &::before {
         content: "";
         position: absolute;
-        width: 100%;
+        width: 81%;
         height: 2px;
         bottom: 10px;
-        left: 2px;
+        left: 27px;
         visibility: hidden;
         -webkit-transform: scaleX(0);
         transform: scaleX(0);
@@ -2631,10 +2631,10 @@ article.product{
       top: -7px;
       left: -9px;
       border-radius: 14px;
-      background: #fff;
-      border: 1px solid #7a7a7a;
+      background: $iridium;
+      //border: 1px solid #7a7a7a;
       padding: 2px 10px;
-      //color: #fff;
+      color: #fff;
     }
 
     img{
@@ -2651,11 +2651,15 @@ article.product{
       height: auto;
 
       &::before{
+        content:'2';
         padding: 2px 10px;
-
         background: $iridium;
         color: #fff;
-        border-color: $iridium;
+      }
+      &:last-child{
+        &::before{
+          content:'3';
+        }
       }
     }
   }
@@ -5328,7 +5332,7 @@ header.sub-head{
 
 .homepage{
   #hero{
-    min-height: 515px;
+    min-height: 400px;
   }
   .color-overlay{
     position: absolute;
@@ -5347,6 +5351,7 @@ header.sub-head{
     right: 0;
     padding: 0 !important;
     overflow: hidden;
+    z-index: 1;
     .rsOverflow{
       margin-top: 0 !important;
       overflow: hidden !important;
@@ -5355,11 +5360,24 @@ header.sub-head{
        //width: 100% !important;
       height: auto !important;
     }
+    .box-item__author{
+      display: none;
+    }
     .box-item__label-idea{
+      position: absolute;
       top: 35%;
+      left: 0;
+      right: 0;
+      margin-left: 0 auto;
+      font-weight: bold;
     }
     .box-item{
       background: rgba(0,0,0,.4);
+      border-radius: 5px;
+
+      //.img-holder{
+      //  overflow: hidden;
+      //}
     }
     .slider-heading{
       color: #fff;

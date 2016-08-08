@@ -9,7 +9,7 @@
 
 
         <a ng-if="!item.is_deal" href="/ideas">
-            <span class="round-tag__label in" itemprop="articleSection">In <?php echo '{{item.category_name}}' ?>, Products <i class="m-icon m-icon--shopping-bag-light-green white"></i></span>
+            <span class="round-tag__label in" itemprop="articleSection">In <span ng-if="item.master_category_name"><?php echo '{{item.master_category_name}}' ?>, </span> <?php echo '{{item.category_name}}' ?> <i class="m-icon m-icon--shopping-bag-light-green white"></i></span>
         </a>
 
         <!--  <a  ng-if="item.is_deal" href="/ideas" class="round-tag round-tag--idea deal">

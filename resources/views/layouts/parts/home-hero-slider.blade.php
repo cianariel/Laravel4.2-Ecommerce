@@ -14,8 +14,6 @@
                 </div>
                 <div class="box-item__label-idea">
                     <a href="<?php echo $item['url']?>" class="slider-heading"><?php echo $item['title']?></a>
-                    <div class="clearfix"></div>
-                    <a href="<?php echo $item['url']?>" class="box-item__read-more">Read More</a>
                 </div>
                 <div class="box-item__author">
                     <a href="/user/profile/<?php echo $item['authorlink']?>" class="user-widget">

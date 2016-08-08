@@ -4,12 +4,7 @@
         <img ng-if="item.feed_image !== undefined && item.is_featured != true" alt="{{item.feed_image.alt}}" title="{{item.feed_image.alt}}" src="{{item.feed_image.url}}" itemprop="image">
     </div>
 
-    <div class="box-item__author">
-        <a href="/user/profile/{{item.authorlink}}"  class="user-widget">
-            <img class="user-widget__img" src="{{item.avator}}">
-            <span class="user-widget__name" itemprop="author">{{item.author}}</span>
-        </a>
-    </div>
+
 
 <div class=" category-{{item.category_main}}">
     <div class="idea-meta">
@@ -35,13 +30,20 @@
                 <i class="m-icon m-icon--flame white" ng-show="item.views >= 100"></i>
                 <span class="social-stats__text white">{{item.views}} views</span>
             </li> -->
-            <li class="social-stats__item">
+            <li class="social-stats__item comment">
                 <a href="#">
                     <i class="m-icon m-icon--buble"></i>
                     <span class="social-stats__text"  itemprop="commentCount">{{item.CommentCount}}</span>
                 </a>
             </li>
         </ul>
+
+        <div class="box-item__author">
+            <a href="/user/profile/{{item.authorlink}}"  class="user-widget">
+                <img class="user-widget__img" src="{{item.avator}}">
+                <span class="user-widget__name" itemprop="author">{{item.author}}</span>
+            </a>
+        </div>
     </div>
 </div>
     <span class="box-item__time text-uppercase"  itemprop="dateCreated">{{item.updated_at}}</span>
