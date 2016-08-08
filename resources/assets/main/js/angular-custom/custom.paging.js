@@ -132,7 +132,7 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
 
         $scope.firstLoad = pagingApi.getGridContent(1, $limit, $scope.currentTag, $scope.filterBy,  $scope.ideaCategory).success(function (response) {
             $scope.allContent[0] = response;
-            var newContent = $scope.sliceToRows(response['content']['regular'], response['content']['featured']);
+            var newContent = $scope.sliceToRows(response['content']['ideas'], response['content']['featured'], response['content']['products']);
             newContent['currentDay'] = 'Today';
 
             $scope.content[0] = newContent;
@@ -163,9 +163,9 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
 
             var $daysBack = $scope.currentPage - 1;
 
-            $scope.nextLoad =  pagingApi.getGridContent($scope.currentPage, $limit, $scope.currentTag, $scope.filterBy, $scope.ideaCategory, $daysBack).success(function (response) {
+            $scope.nextLoad =  pagingApi.getGridContent($scope.currentPage, $limit, $scope.currentTag, $scope.filterBy, $scope.ideaCategory).success(function (response) {
                 //newContent['currentDay'] = 'Today';
-                var newContent = $scope.sliceToRows(response['content']['regular'], response['content']['featured']);;
+                var newContent = $scope.sliceToRows(response['content']['regular'], response['content']['featured'], response['content']['products']);;
                 if($scope.currentPage == 2){
                     newContent['currentDay'] = 'Yesterday';
                 }else{
@@ -221,15 +221,15 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
             });
         };
 
-        $scope.sliceToRows = function($regular, $featured){
+        $scope.sliceToRows = function($ideas, $featured, $products){
             var $return = [];
-            $return['row-1'] = $regular.slice(0, 3);
-            $return['row-2'] = $featured[0] ? [$featured[0]] : false;
-            $return['row-3'] = $regular.slice(3, 6);
+            $return['row-1'] = $featured[0] ? [$featured[0]] : false;
+            $return['row-2'] = $ideas.slice(0, 2);
+            $return['row-3'] = $products.slice(0, 3);
             //$return['row-4'] = $featured[1] ? [$featured[1]] : false;
             //$return['row-5'] = $regular.slice(6, 9);
-            //$return['row-6'] = $featured[2] ? [$featured[2]] : false;
-
+            ////$return['row-6'] = $featured[2] ? [$featured[2]] : false;
+            console.log($return)
             return $return;
         };
 

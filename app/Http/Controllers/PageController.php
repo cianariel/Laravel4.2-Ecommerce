@@ -508,31 +508,31 @@ class PageController extends ApiController
         }
 
         if ($limit == 'undefined' || $limit == 0) {
-            $productLimit = 3;
-            $productOffset = 0;
+            $productLimit = 6;
+            $productOffset = 6 * ($page - 1);
 
-            $storyLimit = 3;
-            $storyOffset = 0;
+            $storyLimit = 4;
+            $storyOffset = 5 * ($page - 1);
 
         } else {
             $productLimit = $limit;
             $storyLimit = $limit;
 
-            $productOffset = 0;
-            $storyOffset = 0;
+            $productOffset = $limit * ($page - 1);
+            $storyOffset = $limit * ($page - 1);
         }
 
-        $featuredLimit = 1;
+        $featuredLimit = 3;
         $featuredOffset = $featuredLimit * ($page - 1);
         $leftOver = 0;
 
         if($daysback && $daysback != 'undefined'){
             $daysback = strtotime('-'.$daysback.' days');
+            $daysback = date('Y-m-d', $daysback);
         }else{
-            $daysback = strtotime('today');
+            $daysback = false;
+//            $daysback = strtotime('today'); TODO - temp until we have enough time content
         }
-
-        $daysback = date('Y-m-d', $daysback);
 
         if ($type == 'product' || !$stories = self::getGridStories($storyLimit + 1, $storyOffset, $featuredLimit, $featuredOffset, $tag, $ideaCategory, $daysback)) {
             $stories = [
@@ -570,12 +570,13 @@ class PageController extends ApiController
             $leftOver++;
         }
 
-        $return['content']['regular'] = array_merge($regularStories, $prods);
+        $return['content']['ideas'] = $regularStories;
+        $return['content']['products'] = $prods;
         $return['content']['featured'] = $featuredStories;
 
-        usort($return['content']['regular'], function ($a, $b) {
-            return strtotime(@$b->raw_creation_date) - strtotime(@$a->raw_creation_date);
-        });
+//        usort($return['content']['regular'], function ($a, $b) {
+//            return strtotime(@$b->raw_creation_date) - strtotime(@$a->raw_creation_date);
+//        });
 
         if ($leftOver > 0) {
             $return['hasMore'] = true;
@@ -660,9 +661,13 @@ class PageController extends ApiController
             $url .= '&no-deals';
         }
 
-        $date = date_create($daysback);
-        $dateQuery = '&year='.date_format($date, 'Y').'&monthnum='.date_format($date, 'm').'&day='.date_format($date, 'd') ;
-        $url .= $dateQuery;
+        if($daysback){
+            $date = date_create($daysback);
+            $dateQuery = '&year='.date_format($date, 'Y').'&monthnum='.date_format($date, 'm').'&day='.date_format($date, 'd') ;
+            $url .= $dateQuery;
+        }
+
+
 
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $url);
@@ -700,9 +705,9 @@ class PageController extends ApiController
 
         $featuredUrl = URL::to('/') . '/ideas/feeds/index.php?count=' . $featuredLimit . '&only-featured&offset=' . $featuredOffset . '&no-deals';
 
-//        if($daysback){
+        if(@$dateQuery){
             $featuredUrl .= $dateQuery;
-//        }
+        }
 
         if ($tag && $tag != 'false' && $tag != false) {
             $featuredUrl .= '&tag=' . $tag;

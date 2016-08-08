@@ -12694,12 +12694,23 @@ p {
       /*			height: auto;*/ } }
 
 .grid-box-full .box-item {
-  width: auto;
+  width: 98.7%;
   height: auto;
   border-top: 0 none;
-  margin: 2px 11px 11px; }
+  margin: 8px 4px 0; }
   .grid-box-full .box-item .img-holder {
     border-radius: 4px; }
+
+.grid-box-2 .box-item {
+  width: 49%;
+  border-top: 0 none;
+  margin: 8px 4px;
+  float: left;
+  border-radius: 5px; }
+  .grid-box-2 .box-item .img-holder {
+    border-radius: 4px; }
+    .grid-box-2 .box-item .img-holder img {
+      height: 150%; }
 
 .main-content[data-only="ideas"] .box-item:not(.idea-box) {
   display: none; }
