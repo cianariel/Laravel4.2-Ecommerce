@@ -5922,6 +5922,8 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
 
         $scope.firstLoad = pagingApi.getGridContent(1, $limit, $scope.currentTag, $scope.filterBy,  $scope.ideaCategory).success(function (response) {
             $scope.allContent[0] = response;
+            console.log(1);
+            console.log(response);
             var newContent = $scope.sliceToRows(response['content']['ideas'], response['content']['featured'], response['content']['products']);
             newContent['currentDay'] = 'Today';
 
@@ -5954,8 +5956,10 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
             var $daysBack = $scope.currentPage - 1;
 
             $scope.nextLoad =  pagingApi.getGridContent($scope.currentPage, $limit, $scope.currentTag, $scope.filterBy, $scope.ideaCategory).success(function (response) {
-                //newContent['currentDay'] = 'Today';
-                var newContent = $scope.sliceToRows(response['content']['regular'], response['content']['featured'], response['content']['products']);;
+
+                console.log(2);
+                console.log(response);
+                var newContent = $scope.sliceToRows(response['content']['ideas'], response['content']['featured'], response['content']['products']);;
                 if($scope.currentPage == 2){
                     newContent['currentDay'] = 'Yesterday';
                 }else{
@@ -5986,7 +5990,9 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
                 }else if(typeof $criterion === 'undefined' || $criterion === null || $criterion === 'all'){
                     $scope.nextLoad = pagingApi.getGridContent(1, 0, $scope.currentTag).success(function (response) {
                         $scope.allContent[0] = response;
-                        $replacer[0] = $scope.sliceToRows(response['content']['regular'], response['content']['featured']);
+                        console.log(3);
+                        console.log(response);
+                        $replacer[0] = $scope.sliceToRows(response['content']['ideas'], response['content']['featured'], response['content']['products']);
                         $scope.hasMore = response['hasMore'];
                     });
                     $scope.currentPage = 1;
@@ -6000,7 +6006,8 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
                 }
 
                 $scope.filterBy = $criterion;
-
+                console.log(4);
+                console.log(response);
                 $scope.nextLoad = pagingApi.getFilteredContent($scope.currentPage, $scope.currentTag, $criterion, $scope.sliceToRows).then(function(response){
                     var $newStuff  = response['content'];
                     $scope.hasMore = response['hasMore'];
@@ -6976,7 +6983,8 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
 
                     var endContent = [];
 
-                    endContent['regular'] = batch.data['content']['regular'];
+                    endContent['ideas'] = batch.data['content']['ideas'];
+                    endContent['products'] = batch.data['content']['products'];
 
                     if($type != null && $type != 'idea'){
                         endContent['featured'] = [];
@@ -6986,7 +6994,7 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
 
                     $hasMore = batch.data['hasMore'];
 
-                    $filtered[$i] = $sliceFunction(endContent['regular'], endContent['featured'] );
+                    $filtered[$i] = $sliceFunction(endContent['regular'], endContent['featured'], endContent['products'] );
                     $i++;
                 });
 
