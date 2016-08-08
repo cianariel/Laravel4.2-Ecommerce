@@ -220,7 +220,7 @@
 
     <div class="main-content full-620 fixed-sm">
         <div class="grid-box-3 related-ideas">
-            <h3 class="current-timespan bottom-40">YESTERDAY</h3>
+            <h3 class="current-timespan bottom-40">MUST READS</h3>
             <?php
             if ($yesterdaysPosts->have_posts()) {
                 $i = 0;

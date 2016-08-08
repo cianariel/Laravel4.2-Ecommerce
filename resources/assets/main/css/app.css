@@ -4517,7 +4517,7 @@ a:hover, a:focus {
   background-color: #9E009E; }
 
 .pale-grey-bg {
-  background: #F2F5F5; }
+  background: #f7f7f7; }
 
 .pale-grey-border {
   border: 1px solid #d5dfdf; }
@@ -8834,7 +8834,7 @@ body.single .article-content iframe {
   .comments .single-comment .comment-row-content {
     margin-left: -8px; }
 .comments .comment-box {
-  background: #f6f6f6; }
+  background: #f7f7f7; }
   .comments .comment-box h6 {
     color: #bebbbc;
     text-transform: uppercase;
