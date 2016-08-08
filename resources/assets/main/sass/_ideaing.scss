@@ -230,6 +230,7 @@ a:hover, a:focus{
 
         span{
           padding-right: 4px;
+          padding-left: 4px;
         }
       }
       @media(min-width: 620px){
@@ -3238,6 +3239,7 @@ header.colophon{
   }
 
   .desktop-search-bar{
+
         input{
           height: 35px;
           border-radius: 2px;
@@ -3248,7 +3250,10 @@ header.colophon{
         }
         >input:focus{
             border-color: #ff0041;
+
+          @media(min-width: 620px){
             width: 100%;
+          }
         }
         .m-icon{
             position: absolute;
@@ -3342,6 +3347,7 @@ header.colophon{
   max-height: 60px;
   margin-top: 5px;
 }
+
 
 #top-nav{
 
@@ -3542,6 +3548,10 @@ header.colophon{
           margin-right: 8px;
           width: 40px;
           height: 40px;
+
+          &.logged-user{
+            bottom: 3px;
+          }
         }
       }
         .profile-photo-holder, .notification-holder{
@@ -7714,8 +7724,8 @@ footer.about-footer{
           width: auto;
           text-indent: 0px;
           margin-top: -7px;
-        position: relative;
-        left: 5px;
+          position: relative;
+          left: 9px;
           .m-icon{
               display: none;
               font-size: 38px;

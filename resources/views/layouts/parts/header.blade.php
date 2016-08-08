@@ -155,7 +155,7 @@ if (!isset($theGiveAway)) {
                                 </ul>
                                 <?php
                                 if(isset($userData['login']) && $userData['login']) { ?>
-                                <div class="pull-right profile-photo-holder" data-hideonout="true" data-toggle=".notification-popup">
+                                <div class="pull-right profile-photo-holder logged-user" data-hideonout="true" data-toggle=".notification-popup">
                                     <a href="#"  ng-init="loadNotification('<?php echo $userData['id']?>')"><img width="40px" src="<?php echo isset($userData['medias'][0]['media_link']) ? $userData['medias'][0]['media_link'] : "" ?>" alt="" class="profile-photo ">
                                     <span ng-hide="notificationCounter == 0" class="notification-count"
                                           ng-bind="notificationCounter"></span>

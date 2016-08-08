@@ -4662,7 +4662,8 @@ a:hover, a:focus {
         bottom: -23px;
         z-index: 30; }
         .category-link__shop span {
-          padding-right: 4px; } }
+          padding-right: 4px;
+          padding-left: 4px; } }
     @media (min-width: 620px) {
       .category-link__shop span {
         position: relative;
@@ -7053,8 +7054,10 @@ header.colophon {
     transition: width .2s;
     -webkit-appearance: none !important; }
   .search-bar .desktop-search-bar > input:focus {
-    border-color: #ff0041;
-    width: 100%; }
+    border-color: #ff0041; }
+    @media (min-width: 620px) {
+      .search-bar .desktop-search-bar > input:focus {
+        width: 100%; } }
   .search-bar .desktop-search-bar .m-icon {
     position: absolute;
     left: 8px;
@@ -7256,7 +7259,9 @@ header.colophon {
     #top-nav .top-nav-holder .profile-photo-holder {
       margin-right: 8px;
       width: 40px;
-      height: 40px; } }
+      height: 40px; }
+      #top-nav .top-nav-holder .profile-photo-holder.logged-user {
+        bottom: 3px; } }
   #top-nav .top-nav-holder .profile-photo-holder, #top-nav .top-nav-holder .notification-holder {
     position: relative;
     padding: 0px; }
@@ -10041,7 +10046,7 @@ footer.about-footer {
       text-indent: 0px;
       margin-top: -7px;
       position: relative;
-      left: 5px; }
+      left: 9px; }
       #top-nav a.ideaing-logo .m-icon {
         display: none;
         font-size: 38px; }
