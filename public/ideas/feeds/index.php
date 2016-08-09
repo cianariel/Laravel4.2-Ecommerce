@@ -158,7 +158,7 @@ if ( $posts->have_posts() ) {
             }
 
             $cats = get_the_category();
-            $data['category'] = $cat_name = $cats[0]->name;
+            $data['category'] = $data['is_deal'] ? 'Deal' : $cats[0]->name;
             $the_list = '';
             $cat_names = array();
 
@@ -172,14 +172,17 @@ if ( $posts->have_posts() ) {
 
             $cat_names = array_unique($cat_names);
             $data['category_all'] = $cat_names;
-            if(in_array('Smart Body', $cat_names)){
+
+
+
+            if($data['is_deal']){
+                $data['category_main'] = 'deals';
+            }elseif(in_array('Smart Body', $cat_names)){
                 $data['category_main'] = 'smart-body';
             }elseif(in_array('Smart Travel', $cat_names)){
                 $data['category_main'] = 'smart-travel';
             }elseif(in_array('Smart Entertainment', $cat_names)){
                 $data['category_main'] = 'smart-entertainment';
-            }elseif($data['is_deal']){
-                $data['category_main'] = 'deals';
             }else{
                 $data['category_main'] = 'smarthome';
             }
