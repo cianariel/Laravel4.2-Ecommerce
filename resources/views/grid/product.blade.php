@@ -19,9 +19,10 @@
 
 
     </div>
+    <div class="box-item__overlay category-bg" ng-click="openProductPopup(item.id)"></div>
 </div>
 <span class="box-item__time text-uppercase"><?php echo '{{item.created_at}}' ?></span>
-<div class="box-item__overlay" ng-click="openProductPopup(item.id)"></div>
+
 
 
 

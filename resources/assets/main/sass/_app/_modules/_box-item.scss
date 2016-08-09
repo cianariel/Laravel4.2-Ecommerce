@@ -132,7 +132,7 @@
   }
 
   .box-item__overlay{
-    background: transparent !important;
+    //background: transparent !important;
     border-radius: 5px;
   }
 
@@ -144,24 +144,26 @@
   }
 
 	&:hover, &.hover, &.hovered {
-		.box-item__overlay,
-		.merchant-widget,
-		.box-item__label--clear,
-		.user-widget__name,
-		.box-item__get-it,
-		.box-item__label--clear,
-		.box-item__read-more {
-			@include opacity(1);
+		.box-item__overlay
+		//.merchant-widget,
+		//.box-item__label--clear,
+		//.user-widget__name,
+		//.box-item__get-it,
+		//.box-item__label--clear,
+		//.box-item__read-more
+        {
+			@include opacity(.4);
 		}
 	}
     &.un-hover{
-        .box-item__overlay,
-        .merchant-widget,
-        .box-item__label--clear,
-        .user-widget__name,
-        .box-item__get-it,
-        .box-item__label--clear,
-        .box-item__read-more {
+        .box-item__overlay
+        //.merchant-widget,
+        //.box-item__label--clear,
+        //.user-widget__name,
+        //.box-item__get-it,
+        //.box-item__label--clear,
+        //.box-item__read-more
+        {
             @include opacity(0);
         }
     }
@@ -201,7 +203,7 @@
 		right: 0;
 		top: 0;
 		bottom: 0;
-		background: rgba(0, 0, 0, 0.6);
+		//background: rgba(0, 0, 0, 0.6);
 	}
 	&__img {
 		background-size: cover;

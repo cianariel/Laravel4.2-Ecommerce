@@ -46,6 +46,6 @@
 </div>
     <span class="box-item__time text-uppercase"  itemprop="dateCreated">{{item.updated_at}}</span>
 
-    <a href="{{item.url}}">
-        <div class="box-item__overlay"></div>
+    <a href="{{item.url}}" class="category-{{item.category_main}}">
+        <div class="box-item__overlay category-bg"></div>
     </a>
