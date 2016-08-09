@@ -12931,7 +12931,9 @@ body.home.logged-in #hero {
   #hero-slider .box-item .img-holder img {
     max-width: none; }
   #hero-slider .product-box {
-    max-width: 100%; }
+    max-width: 100%;
+    display: block;
+    overflow: hidden; }
   #hero-slider .rsNav.rsBullets {
     padding-top: 0;
     top: -20px;

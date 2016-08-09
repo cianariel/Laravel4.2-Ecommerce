@@ -158,7 +158,7 @@ if ( $posts->have_posts() ) {
             }
 
             $cats = get_the_category();
-            $data['category'] = $data['is_deal'] ? 'Deal' : $cats[0]->name;
+            $data['category'] = $data['is_deal'] ? 'Deals' : $cats[0]->name;
             $the_list = '';
             $cat_names = array();
 
