@@ -8463,7 +8463,7 @@ header.sub-head {
   position: static; }
 
 .home-subheader {
-  text-transform: uppercase;
+  text-transform: capitalise;
   font-size: 3.3rem;
   margin-top: 0; }
   .home-subheader .m-icon {
