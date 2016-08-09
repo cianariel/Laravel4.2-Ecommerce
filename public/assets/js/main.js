@@ -4058,7 +4058,7 @@ angular.module('colorpicker.module', [])
 
     if(window.innerWidth < 1070){ // mobile only
         $(window).scroll(function(){
-            $('.homepage-grid .product-box, .related-items  .product-box').each(function(){
+            $('.homepage-grid .box-item, .related-items  .product-box').each(function(){
                 var that = $(this);
                 var imgTop = that.offset().top + 450;
                 var imgBottom = imgTop + that.height() + 350;

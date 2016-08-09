@@ -6785,7 +6785,10 @@ article.product {
   @media (max-width: 620px) {
     .most-popular-new .popular-section {
       float: none;
-      margin: 0 auto; } }
+      margin: 0 auto;
+      overflow: hidden; }
+      .most-popular-new .popular-section .box-item {
+        width: 65%; } }
   .most-popular-new h5 {
     margin-bottom: 15px; }
     .most-popular-new h5 i {
@@ -8618,6 +8621,9 @@ header.sub-head {
     right: 0;
     margin-left: 0 auto;
     font-weight: bold; }
+    @media (max-width: 620px) {
+      .homepage .home-hero-slider .box-item__label-idea {
+        background: rgba(255, 0, 66, 0.7); } }
   .homepage .home-hero-slider .box-item {
     background: rgba(0, 0, 0, 0.4);
     border-radius: 5px; }
@@ -8635,6 +8641,10 @@ header.sub-head {
     margin-left: auto;
     margin-right: auto;
     z-index: 100; }
+    @media (max-width: 620px) {
+      .homepage .home-hero-slider .rsThumbsContainer {
+        width: 100% !important;
+        padding-left: 5%; } }
     .homepage .home-hero-slider .rsThumbsContainer .rsThumb {
       width: 30%; }
       .homepage .home-hero-slider .rsThumbsContainer .rsThumb.rsNavSelected::before {
@@ -12604,13 +12614,19 @@ p {
     max-width: 60% !important;
     margin: 0 auto; } }
 
+@media (max-width: 620px) {
+  .box-item:not(.slider-box) {
+    width: 97%;
+    margin: 0 auto; }
+    .box-item:not(.slider-box):not(:last-child) {
+      margin-bottom: 10px; } }
 .box-item:not(.slider-box) .img-holder img {
   position: absolute;
   top: 0;
   transition: all .6s; }
-.box-item:not(.slider-box):hover .idea-meta {
+.box-item:not(.slider-box):hover .idea-meta, .box-item:not(.slider-box).hovered .idea-meta {
   bottom: 0; }
-.box-item:not(.slider-box):hover .img-holder img {
+.box-item:not(.slider-box):hover .img-holder img, .box-item:not(.slider-box).hovered .img-holder img {
   top: -100px; }
 
 .box-item {
@@ -12629,10 +12645,11 @@ p {
     bottom: -128px; }
     .box-item.product-box .idea-meta a {
       color: #fff; }
-  .box-item:hover a,
+  .box-item.hovered a,
+  .box-item.hovered .box-item__time, .box-item:hover a,
   .box-item:hover .box-item__time {
     color: #fff !important; }
-  .box-item:not(:hover) .idea-meta {
+  .box-item:not(:hover, .hovered) .idea-meta {
     background: #fff;
     color: #999; }
   .box-item .idea-meta {
@@ -12828,7 +12845,7 @@ p {
   @media (max-width: 767px) {
     .main-content .grid-box-3 .box-item {
       float: left;
-      width: 100%;
+      width: 98%;
       border: 1px solid #eee;
       border-top: 0px; } }
   @media (min-width: 768px) {
@@ -12854,7 +12871,7 @@ p {
   border-radius: 5px; }
   @media (max-width: 620px) {
     .grid-box-2 .box-item {
-      width: 100%; } }
+      width: 98%; } }
   .grid-box-2 .box-item .img-holder {
     border-radius: 4px; }
     .grid-box-2 .box-item .img-holder img {

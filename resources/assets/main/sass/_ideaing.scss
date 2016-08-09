@@ -2842,8 +2842,12 @@ article.product{
 
   @media(max-width:620px){
     .popular-section{
+      .box-item{
+        width: 65%;
+      }
       float: none;
       margin: 0 auto;
+      overflow: hidden;
     }
   }
 
@@ -5642,6 +5646,10 @@ header.sub-head{
       right: 0;
       margin-left: 0 auto;
       font-weight: bold;
+
+      @media(max-width:620px){
+        background: rgba($iridium, .7);
+      }
     }
     .box-item{
       background: rgba(0,0,0,.4);
@@ -5668,6 +5676,11 @@ header.sub-head{
       margin-left: auto;
       margin-right: auto;
       z-index: 100;
+
+      @media(max-width:620px){
+        width: 100% !important;
+        padding-left: 5%;
+      }
 
       .rsThumb{
         width: 30%;
