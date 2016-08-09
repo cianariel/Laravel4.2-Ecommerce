@@ -11,6 +11,7 @@
   @media(max-width:620px){
     width: 97%;
     margin: 0 auto;
+    margin-left: 2px !important;
     &:not(:last-child){
       margin-bottom:10px;
     }
@@ -70,7 +71,7 @@
       color:#fff !important;
     }
   }
-  &:not(:hover, .hovered){
+  &:not(:hover):not(.hovered){
     .idea-meta {
       background: #fff;
       color: #999;

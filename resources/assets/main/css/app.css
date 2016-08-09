@@ -8632,6 +8632,8 @@ header.sub-head {
     font-size: 2.7rem; }
   .homepage .home-hero-slider .rsThumbs {
     position: static; }
+    .homepage .home-hero-slider .rsThumbs .rsThumb {
+      position: relative; }
   .homepage .home-hero-slider .rsThumbsContainer {
     width: 65% !important;
     position: absolute;
@@ -8941,7 +8943,8 @@ body.single .article-content iframe {
     @media (max-width: 620px) {
       .idea-stories .article-content p,
       .idea-stories .article-content ul {
-        padding-left: 14px; } }
+        padding-left: 5px;
+        padding-right: 5px; } }
   .idea-stories .article-content h4 {
     text-align: left;
     padding-left: 14px; }
@@ -12617,7 +12620,8 @@ p {
 @media (max-width: 620px) {
   .box-item:not(.slider-box) {
     width: 97%;
-    margin: 0 auto; }
+    margin: 0 auto;
+    margin-left: 2px !important; }
     .box-item:not(.slider-box):not(:last-child) {
       margin-bottom: 10px; } }
 .box-item:not(.slider-box) .img-holder img {
@@ -12649,7 +12653,7 @@ p {
   .box-item.hovered .box-item__time, .box-item:hover a,
   .box-item:hover .box-item__time {
     color: #fff !important; }
-  .box-item:not(:hover, .hovered) .idea-meta {
+  .box-item:not(:hover):not(.hovered) .idea-meta {
     background: #fff;
     color: #999; }
   .box-item .idea-meta {

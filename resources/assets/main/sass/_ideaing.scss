@@ -5666,6 +5666,14 @@ header.sub-head{
     }
     .rsThumbs{
       position: static;
+
+      //@media(max-width:620px){
+      //  position: relative;
+      //}
+
+      .rsThumb{
+          position: relative;
+      }
     }
     .rsThumbsContainer{
       width: 65% !important;
@@ -6154,9 +6162,8 @@ body.single{
       text-align: left;
 
       @media (max-width:620px){
-        //p{
-        padding-left: 14px;
-        //}
+        padding-left: 5px;
+        padding-right: 5px;
       }
     }
 
