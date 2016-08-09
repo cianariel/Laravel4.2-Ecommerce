@@ -148,6 +148,7 @@ if ( $posts->have_posts() ) {
             $data['id'] = $ID;
             $data['title'] = get_the_title();
             $data['views'] = getPostViews($ID);
+            $data['is_deal'] = has_tag('deal');
 
 
             if (isset($_REQUEST['full_content'])) {
@@ -177,11 +178,13 @@ if ( $posts->have_posts() ) {
                 $data['category_main'] = 'smart-travel';
             }elseif(in_array('Smart Entertainment', $cat_names)){
                 $data['category_main'] = 'smart-entertainment';
+            }elseif($data['is_deal']){
+                $data['category_main'] = 'deals';
             }else{
                 $data['category_main'] = 'smarthome';
             }
             $allTags = get_tags();
-            $data['is_deal'] = has_tag('deal');
+
             $data['url'] = get_the_permalink();
             $datepublishstring = get_the_time('Y-m-d H:i:s');
             $datepublish = timeAgo($datepublishstring);

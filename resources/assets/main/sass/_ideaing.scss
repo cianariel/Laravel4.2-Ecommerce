@@ -173,6 +173,19 @@ a:hover, a:focus{
     }
   }
 }
+.category-deals{
+  @include category-color(#68005c);
+  .category-link__deals{
+    color: #68005c;
+  }
+}
+.box-item:hover{
+  .category-deals{
+    .idea-meta{
+      background: #68005c;
+    }
+  }
+}
 
 
 .category-smarthome,

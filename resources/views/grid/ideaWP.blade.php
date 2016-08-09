@@ -4,7 +4,7 @@
     <img ng-if="item.feed_image !== undefined && item.is_featured != true" alt="{{item.feed_image.alt}}" title="{{item.feed_image.alt}}" src="{{item.feed_image.url}}" itemprop="image">
 </div>
 
-<div class=" category-{{item.category_main}}">
+<div class="category-{{item.category_main}}">
     <div class="idea-meta">
         <div class="box-item__label-idea"  ng-if="!item.is_deal">
             <a href="{{item.url}}" class="box-item__label" itemprop="name">{{renderHTML(item.title)}}</a>

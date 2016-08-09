@@ -4629,6 +4629,30 @@ a:hover, a:focus {
 .box-item:hover .category-link__smart-entertainment .idea-meta {
   background: #89C981; }
 
+.category-deals .category-color {
+  color: #68005c !important; }
+.category-deals .category-bg {
+  background-color: #68005c !important; }
+.category-deals .category-bg-trans {
+  background-color: rgba(104, 0, 92, 0.7) !important; }
+.category-deals .category-hover-color:hover {
+  color: #68005c !important; }
+.category-deals .category-hover-bg:hover {
+  background-color: #68005c !important; }
+.category-deals .category-hover-border:hover {
+  border-color: #68005c; }
+.category-deals .dropcapped p:first-child:first-letter {
+  color: #68005c; }
+.category-deals .float-thumbs .thumb-box strong {
+  background-color: rgba(104, 0, 92, 0.7); }
+.category-deals .m-icon--ScrollingHeaderHeart .path1:before {
+  color: #68005c; }
+.category-deals .category-link__deals {
+  color: #68005c; }
+
+.box-item:hover .category-deals .idea-meta {
+  background: #68005c; }
+
 .category-smarthome .category-link__smart-home span,
 .category-smart-home .category-link__smart-home span,
 .tag-smart-home .category-link__smart-home span {
