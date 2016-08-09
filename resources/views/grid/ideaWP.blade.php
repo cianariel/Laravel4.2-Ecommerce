@@ -14,7 +14,7 @@
             <a href="{{item.url}}" class="box-item__label" itemprop="name">{{renderHTML(item.title)}}</a>
         </div>
 
-        <a ng-if="!item.is_deal" href="/ideas">
+        <a href="/ideas">
             <span class="round-tag__label in" itemprop="articleSection">In {{item.category}}, Ideas <i class="m-icon m-icon--bulb"></i></span>
         </a>
 
