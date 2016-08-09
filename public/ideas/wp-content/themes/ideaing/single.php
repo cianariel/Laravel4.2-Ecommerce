@@ -343,7 +343,7 @@
                         </div>
 
                         <a  href="/products">
-                            <span class="round-tag__label in" itemprop="articleSection">In {{$product->master_category_name ? $product->master_category_name . ', ' : '' }}{{$product->master_category_name}} <i class="m-icon m-icon--shopping-bag-light-green white"></i></span>
+                            <span class="round-tag__label in" itemprop="articleSection">In {{($product->master_category_name && $product->master_category_name != $product->category_name) ? $product->master_category_name . ', ' : '' }}{{$product->master_category_name}} <i class="m-icon m-icon--shopping-bag-light-green white"></i></span>
                         </a>
 
                     </div>
