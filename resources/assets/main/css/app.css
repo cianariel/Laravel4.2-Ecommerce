@@ -6773,6 +6773,13 @@ article.product {
   .critic-quote span:last-child {
     font-size: 1.1rem; }
 
+.most-popular-new .category-smart-home .box-item::before {
+  background: #FF0042 !important; }
+.most-popular-new .category-smart-body .box-item::before {
+  background: #079DD1 !important; }
+.most-popular-new .category-smart-entertainment .box-item::before {
+  background: #89C981 !important; }
+
 .most-popular-new {
   overflow: hidden; }
   @media (max-width: 620px) {

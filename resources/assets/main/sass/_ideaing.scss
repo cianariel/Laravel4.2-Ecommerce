@@ -121,7 +121,9 @@ a:hover, a:focus{
     color: $iridium;
   }
 
+  &.popular-section .box-item::before{
 
+  }
 }
 .box-item:hover{
   .category-smart-home,
@@ -137,6 +139,7 @@ a:hover, a:focus{
   .category-link__smart-travel{
     color: $dark-orange;
   }
+
 }
 .box-item:hover{
   .category-smart-travel{
@@ -151,6 +154,7 @@ a:hover, a:focus{
   .category-link__smart-body{
     color: $facebook-blue;
   }
+
 }
 .box-item:hover{
   .category-smart-body{
@@ -2806,6 +2810,30 @@ article.product{
   }
   span:last-child{
     font-size: 1.1rem;
+  }
+}
+
+.most-popular-new{
+  .category-smart-home{
+      .box-item{
+        &::before{
+          background: $iridium !important;
+        }
+    }
+  }
+  .category-smart-body{
+      .box-item{
+        &::before{
+          background: $facebook-blue !important;
+        }
+    }
+  }
+  .category-smart-entertainment{
+      .box-item{
+        &::before{
+          background: $pine-green !important;
+        }
+    }
   }
 }
 

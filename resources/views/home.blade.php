@@ -18,8 +18,8 @@
         <div class="white-bg col-xs-12">
             <section class="most-popular-new container center-block overhide">
                 <h4 class="col-xs-12 home-subheader">Popular <i class="m-icon m-icon--flame pink"></i></h4>
-                <div class="col-sm-4 col-xs-8 popular-section">
-                    <h5 class="category-link__smart-home">
+                <div class="col-sm-4 col-xs-8 popular-section category-smart-home">
+                    <h5 class="category-link__smart-home  category-color">
                         <i class="hidden-xs hidden-sm hidden-md m-icon m-icon--smart-home"></i>
                         <span class="m-icon-text text-uppercase">Smart Home</span>
                     </h5>
@@ -58,7 +58,7 @@
                         @endforeach
                     @endif
                 </div>
-                <div class="col-sm-4 col-xs-8 popular-section">
+                <div class="col-sm-4 col-xs-8 popular-section category-smart-body">
                 <h5 class="category-link__smart-body m-icon-text-holder">
                         <i class="hidden-xs hidden-sm hidden-md m-icon m-icon--wearables"></i>
                         <span class="m-icon-text text-uppercase">Smart Body</span>
@@ -98,7 +98,7 @@
                     @endif
                 </div>
 
-                <div class="col-sm-4 col-xs-8 popular-section">
+                <div class="col-sm-4 col-xs-8 popular-section category-smart-entertainment">
                     <h5 class="category-link__smart-entertainment m-icon-text-holder">
                         <i class="hidden-xs hidden-sm hidden-md m-icon m-icon--video"></i>
                         <span class="m-icon-text text-uppercase">Smart Entertainment</span>
