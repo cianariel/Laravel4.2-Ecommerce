@@ -8646,7 +8646,9 @@ header.sub-head {
         .homepage .home-hero-slider .rsThumbs .rsThumb {
           width: 117px;
           height: 39px;
-          display: block; } }
+          display: block;
+          top: 0;
+          left: 0; } }
   .homepage .home-hero-slider .rsThumbsContainer {
     width: 65% !important;
     position: absolute;
