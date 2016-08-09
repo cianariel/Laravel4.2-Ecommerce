@@ -553,6 +553,57 @@ ul.pointed{
 }
 
 
+// Spinning clock
+
+.icon-clock {
+  height: 36px;
+  width: 36px;
+  display: inline-block;
+  top: 7px;
+  position: relative;
+
+  .theme-colour-change{
+    //-webkit-animation: anim-moema-2 0.3s 0.3s forwards infinite;
+    animation-name: spin-clock;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+    animation-direction: forward;
+    animation-timing-function: linear;
+  }
+}
+
+.icon-clock path {
+  fill: #929396;
+}
+.icon-clock.orange .theme-colour-change {
+  fill: #ecb31b;
+}
+.icon-clock.blue .theme-colour-change {
+  fill: #1b8cec;
+}
+.icon-clock.green .theme-colour-change {
+  fill: #19db42;
+}
+
+.icon-clock .theme-colour-change {
+  transition: transform 300ms ease-in-out;
+  transform-origin: bottom center;
+  transform-style: preserve-3D;
+}
+.icon-clock:hover .theme-colour-change {
+  transform: rotate(360deg);
+  transform-origin: bottom center;
+}
+
+
+@keyframes spin-clock {
+  to {
+    transform: rotate(360deg);
+    transform-origin: bottom center;
+  }
+}
+
+
 
 
 
