@@ -4876,17 +4876,20 @@ ul.pointed li:before {
   -webkit-transition: background-color 0.1s 0.3s, color 0.1s 0.3s;
   transition: background-color 0.1s 0.3s, color 0.1s 0.3s;
   color: #ECEFF1;
-  background-color: #3f51b5;
-  -webkit-animation: anim-moema-1 0.3s forwards;
-  animation: anim-moema-1 0.3s forwards; }
+  background-color: #3f51b5; }
+  @media (min-width: 620px) {
+    .button--moema:hover {
+      -webkit-animation: anim-moema-1 0.3s forwards;
+      animation: anim-moema-1 0.3s forwards; } }
 
 .button--moema.button--inverted:hover {
   color: #ECEFF1;
   background-color: #7986cb; }
 
-.button--moema:hover::before {
-  -webkit-animation: anim-moema-2 0.3s 0.3s forwards;
-  animation: anim-moema-2 0.3s 0.3s forwards; }
+@media (min-width: 620px) {
+  .button--moema:hover::before {
+    -webkit-animation: anim-moema-2 0.3s 0.3s forwards;
+    animation: anim-moema-2 0.3s 0.3s forwards; } }
 
 @-webkit-keyframes anim-moema-1 {
   60% {
@@ -7844,7 +7847,8 @@ body.product-details .story-header h2 .title, .single-post .story-header h1 .tit
 body.product-details .related-items, .single-post .related-items {
   margin-bottom: 33px;
   padding-top: 15px;
-  padding-bottom: 15px; }
+  padding-bottom: 15px;
+  overflow: hidden; }
   body.product-details .related-items legend, .single-post .related-items legend {
     min-height: 40px;
     margin-bottom: 35px; }
@@ -8634,6 +8638,11 @@ header.sub-head {
     position: static; }
     .homepage .home-hero-slider .rsThumbs .rsThumb {
       position: relative; }
+      @media (max-width: 620px) {
+        .homepage .home-hero-slider .rsThumbs .rsThumb {
+          width: 117px;
+          height: 39px;
+          display: block; } }
   .homepage .home-hero-slider .rsThumbsContainer {
     width: 65% !important;
     position: absolute;

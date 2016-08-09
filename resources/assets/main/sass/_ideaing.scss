@@ -502,16 +502,24 @@ ul.pointed{
   transition: background-color 0.1s 0.3s, color 0.1s 0.3s;
   color: #ECEFF1;
   background-color: #3f51b5;
-  -webkit-animation: anim-moema-1 0.3s forwards;
-  animation: anim-moema-1 0.3s forwards;
+
+  @media(min-width: 620px){
+    -webkit-animation: anim-moema-1 0.3s forwards;
+    animation: anim-moema-1 0.3s forwards;
+  }
+
 }
 .button--moema.button--inverted:hover {
   color: #ECEFF1;
   background-color: #7986cb;
 }
 .button--moema:hover::before {
-  -webkit-animation: anim-moema-2 0.3s 0.3s forwards;
-  animation: anim-moema-2 0.3s 0.3s forwards;
+
+  @media(min-width: 620px){
+    -webkit-animation: anim-moema-2 0.3s 0.3s forwards;
+    animation: anim-moema-2 0.3s 0.3s forwards;
+  }
+
 }
 @-webkit-keyframes anim-moema-1 {
   60% {
@@ -4433,6 +4441,7 @@ body.product-details, .single-post{
     margin-bottom: 33px;
     padding-top: 15px;
     padding-bottom: 15px;
+    overflow: hidden;
 
     legend{
       min-height: 40px;
@@ -5673,6 +5682,12 @@ header.sub-head{
 
       .rsThumb{
           position: relative;
+
+        @media(max-width:620px){
+          width: 117px;
+          height:39px;
+          display: block;
+        }
       }
     }
     .rsThumbsContainer{
