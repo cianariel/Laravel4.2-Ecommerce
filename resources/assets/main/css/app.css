@@ -8404,6 +8404,8 @@ header.sub-head {
   text-transform: uppercase;
   font-size: 3.3rem;
   margin-top: 0; }
+  .home-subheader .m-icon {
+    font-size: 3rem; }
 
 #hero-nav {
   overflow: visible;
@@ -8588,7 +8590,7 @@ header.sub-head {
   .homepage .home-hero-slider .rsThumbsContainer {
     width: 65% !important;
     position: absolute;
-    bottom: 70px;
+    bottom: 55px;
     left: 0;
     right: 0;
     margin-left: auto;
