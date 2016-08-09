@@ -175,6 +175,61 @@ a:hover, a:focus{
 }
 
 
+.category-smarthome,
+.category-smart-home,
+.tag-smart-home{
+  .category-link__smart-home{
+    span{
+      color: $iridium;
+    }
+    &>span::before{
+      visibility: visible;
+      -webkit-transform: scaleX(1);
+      transform: scaleX(1);
+    }
+  }
+}
+.category-smart-entertainment,
+.tag-smart-entertainment{
+  .category-link__smart-entertainment{
+    span{
+      color: $pine-green;
+    }
+    &>span::before{
+      visibility: visible;
+      -webkit-transform: scaleX(1);
+      transform: scaleX(1);
+    }
+  }
+}
+.category-smart-travel,
+.tag-smart-travel{
+  .category-link__smart-travel{
+    span{
+      color: $dark-orange;
+    }
+    &>span::before{
+      visibility: visible;
+      -webkit-transform: scaleX(1);
+      transform: scaleX(1);
+    }
+  }
+}
+.category-smart-body,
+.tag-smart-body{
+  .category-link__smart-body{
+    span{
+      color: $facebook-blue;
+    }
+    &>span::before{
+      visibility: visible;
+      -webkit-transform: scaleX(1);
+      transform: scaleX(1);
+    }
+  }
+}
+
+
 
 .category-link{
     cursor: hover;
@@ -184,7 +239,7 @@ a:hover, a:focus{
       .m-icon{
         color: $iridium;
       }
-      &::before{
+      span::before{
         background-color: $iridium;
       }
     }
@@ -193,7 +248,7 @@ a:hover, a:focus{
       .m-icon{
         color: $dark-orange;
       }
-      &::before{
+      span::before{
         background-color: $dark-orange;
       }
     }
@@ -202,7 +257,7 @@ a:hover, a:focus{
       .m-icon{
       color: $sky-blue;
       }
-      &::before{
+      span::before{
         background-color: $sky-blue;
       }
     }
@@ -211,7 +266,7 @@ a:hover, a:focus{
       .m-icon{
         color: $pine-green;
       }
-      &::before{
+      span::before{
         background-color: $pine-green;
       }
     }
@@ -292,14 +347,16 @@ h5{
     @media (min-width: 620px) {
       color:#3d4b4e;
     }
-
-      &::before {
+      &>span{
+        position: relative;
+      }
+      &>span::before {
         content: "";
         position: absolute;
-        width: 81%;
+        width: 100%;
         height: 1px;
-        bottom: 10px;
-        left: 27px;
+        top: 19px;
+        left: 0;
         visibility: hidden;
         -webkit-transform: scaleX(0);
         transform: scaleX(0);
@@ -308,7 +365,7 @@ h5{
       }
       &:hover,
       &.active{
-        &::before{
+        &>span::before{
           visibility: visible;
           -webkit-transform: scaleX(1);
           transform: scaleX(1);
@@ -392,6 +449,98 @@ ul.pointed{
     color: $iridium; /* or whatever color you prefer */
   }
 }
+
+
+// Animated effects
+
+/* Moema */
+.button--moema {
+  padding: 1.5em 3em;
+  border-radius: 50px;
+  background: #7986cb;
+  color: #fff;
+  -webkit-transition: background-color 0.3s, color 0.3s;
+  transition: background-color 0.3s, color 0.3s;
+}
+.button--moema.button--inverted {
+  background: #ECEFF1;
+  color: #37474f;
+}
+.button--moema::before {
+  content: '';
+  position: absolute;
+  top: -20px;
+  left: -20px;
+  bottom: -20px;
+  right: -20px;
+  background: inherit;
+  border-radius: 50px;
+  z-index: -1;
+  opacity: 0.4;
+  -webkit-transform: scale3d(0.8, 0.5, 1);
+  transform: scale3d(0.8, 0.5, 1);
+}
+.button--moema:hover {
+  -webkit-transition: background-color 0.1s 0.3s, color 0.1s 0.3s;
+  transition: background-color 0.1s 0.3s, color 0.1s 0.3s;
+  color: #ECEFF1;
+  background-color: #3f51b5;
+  -webkit-animation: anim-moema-1 0.3s forwards;
+  animation: anim-moema-1 0.3s forwards;
+}
+.button--moema.button--inverted:hover {
+  color: #ECEFF1;
+  background-color: #7986cb;
+}
+.button--moema:hover::before {
+  -webkit-animation: anim-moema-2 0.3s 0.3s forwards;
+  animation: anim-moema-2 0.3s 0.3s forwards;
+}
+@-webkit-keyframes anim-moema-1 {
+  60% {
+    -webkit-transform: scale3d(0.8, 0.8, 1);
+    transform: scale3d(1, 1, 1);
+  }
+  85% {
+    -webkit-transform: scale3d(1.1, 1.1, 1);
+    transform: scale3d(1.1, 1.1, 1);
+  }
+  100% {
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
+  }
+}
+@keyframes anim-moema-1 {
+  60% {
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
+  }
+  85% {
+    -webkit-transform: scale3d(1.1, 1.1, 1);
+    transform: scale3d(1.1, 1.1, 1);
+  }
+  100% {
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
+  }
+}
+@-webkit-keyframes anim-moema-2 {
+  to {
+    opacity: 0;
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
+  }
+}
+@keyframes anim-moema-2 {
+  to {
+    opacity: 0;
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
+  }
+}
+
+
+
 
 
 body.homepage{
@@ -520,11 +669,6 @@ button{
   }
 }
 .login-signup-modal{
-/*  display: block !important; // keep for debuggins*/
-/*  top: 40%;*/
-/*  left: 50%;*/
-/*  transform: translate(-50%, -50%);*/
-/*  -webkit-transform: translate(-50%, -50%) ;*/
     overflow: visible;
     z-index: 50;
     width: 100%;
@@ -3690,13 +3834,14 @@ header.colophon{
                 text-align: center;
 
                 span{
+                  position: relative;
                   &:before {
                     content: "";
                     position: absolute;
-                    width: 95%;
+                    width: 100%;
                     height: 2px;
-                    bottom: 0;
-                    left: 2px;
+                    top: 20px;
+                    left: 0;
                     background-color: #fff;
                     visibility: hidden;
                     -webkit-transform: scaleX(0);
@@ -3711,7 +3856,7 @@ header.colophon{
                     margin-left: 7px;
                   }
                   span::before{
-                    width: 79%;
+                    width: 90%;
                   }
                 }
                 &:hover,
@@ -4171,7 +4316,7 @@ body.product-details, .single-post{
       font-weight: 700;
       position: relative;
       top: 29px;
-      max-width: 190px;
+      max-width: 250px;
       margin: 0 auto;
     }
 
@@ -6111,11 +6256,14 @@ body.single{
       .m-icon{
           color: $tarmac;
       }
-
     }
 
     .btn-info{
-      width: 100px;
+      width: 68px;
+      height: 67px;
+      border-radius: 46px;
+      text-align: center;
+      padding: 0;
     }
   }
 

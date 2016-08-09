@@ -79,7 +79,7 @@ if (!isset($theGiveAway)) {
                         <div class="col-xs-10 col-sm-7 col-lg-8 category-menu">
                             <ul>
                                 <li>
-                                    <a class="category-link__smart-home" href="#">
+                                    <a href="/ideas/smart-home" class="category-link__smart-home" href="#">
                                         <i class="hidden-xs hidden-sm hidden-md m-icon m-icon--smart-home"></i>
                                         <span class="m-icon-text">Smart Home</span>
                                     </a>

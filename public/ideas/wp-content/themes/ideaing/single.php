@@ -211,196 +211,12 @@
 <?php// else: ?>
 <?php endif; ?>
 
-<section class="yesterday top-40">
-    <?php
-        $yesterdaysPosts = getPostsFromYesterday();
-
-//        print_r($yesterdaysPosts);
-    ?>
-
-    <div class="main-content full-620 fixed-sm">
-        <div class="grid-box-3 related-ideas">
-            <h3 class="current-timespan bottom-40">MUST READS</h3>
-            <?php
-            if ($yesterdaysPosts->have_posts()) {
-                $i = 0;
-                while ($yesterdaysPosts->have_posts()) : $yesterdaysPosts->the_post();
-                    $i++;
-                    if($i == 3){
-                        continue;
-                    }
-
-                    $image = get_field('feed_image');
-                    ?>
-
-                    <div class="box-item">
-                        <div class="img-holder">
-                            <img src="{{$image['url']}}">
-                        </div>
-
-                        <!--                <span class="box-item__time">{{$item->updated_at}}</span>-->
-                        <div class="box-item__overlay"></div>
-
-                        <ul class="social-stats">
-                            <li class="social-stats__item">
-                                <?php
-                                $userId = !empty($userData['id'] ) ? $userData['id']  : 0;
-
-                                $urlTmp = parse_url(get_the_permalink())['path'];
-                                $urlTmp = str_replace('/ideas/','',$urlTmp);
-
-                                ?>
-
-                                <heart-counter-public uid="<?php echo $userId ?>" iid="{{ get_the_ID() }}" plink="{{ $urlTmp }}" sec='ideas'>
-
-                                </heart-counter-public>
-                            </li>
-
-                        </ul>
-
-                        <div class="round-tag round-tag--idea">
-                            <i class="m-icon m-icon--item"></i>
-                            <span class="round-tag__label">idea</span>
-                        </div>
-
-                        <div class="box-item__label-idea">
-                            <a href="{{the_permalink()}}" class="box-item__label">{{the_title()}}</a>
-                            <div class="clearfix"></div>
-                            <a href="{{the_permalink()}}" class="box-item__read-more">Read More</a>
-                        </div>
-
-                        <show-author-info email="{{ htmlentities(get_the_author_meta( 'user_login' )) }}" url="{{ get_author_posts_url( get_the_author_meta( 'ID' ) )}}">
-
-                        </show-author-info>
-                    </div>
-
-                    <?php
-                endwhile;
-            }
-            ?>
-
-        </div>
-
-
-        <div class="grid-box-1 related-ideas"  style="padding:6px 10px;">
-         <?php
-            $i = 0;
-            while ($yesterdaysPosts->have_posts()) : $yesterdaysPosts->the_post();
-                $i++;
-                if($i != 4){
-                    continue;
-                }
-                $image = get_field('feed_image');
-         ?>
-
-                <div class="box-item">
-                    <div class="img-holder">
-                        <img src="{{$image['url']}}">
-                    </div>
-
-                    <!--                <span class="box-item__time">{{$item->updated_at}}</span>-->
-                    <div class="box-item__overlay"></div>
-
-                    <ul class="social-stats">
-                        <li class="social-stats__item">
-                            <?php
-                            $userId = !empty($userData['id'] ) ? $userData['id']  : 0;
-
-                            $urlTmp = parse_url(get_the_permalink())['path'];
-                            $urlTmp = str_replace('/ideas/','',$urlTmp);
-
-                            ?>
-
-                            <heart-counter-public uid="<?php echo $userId ?>" iid="{{ get_the_ID() }}" plink="{{ $urlTmp }}" sec='ideas'>
-
-                            </heart-counter-public>
-                        </li>
-
-                    </ul>
-
-                    <div class="round-tag round-tag--idea">
-                        <i class="m-icon m-icon--item"></i>
-                        <span class="round-tag__label">idea</span>
-                    </div>
-
-                    <div class="box-item__label-idea">
-                        <a href="{{the_permalink()}}" class="box-item__label">{{the_title()}}</a>
-                        <div class="clearfix"></div>
-                        <a href="{{the_permalink()}}" class="box-item__read-more">Read More</a>
-                    </div>
-
-                    <show-author-info email="{{ htmlentities(get_the_author_meta( 'user_login' )) }}" url="{{ get_author_posts_url( get_the_author_meta( 'ID' ) )}}">
-
-                    </show-author-info>
-                </div>
-
-                <?php
-            endwhile;
-         ?>
-        </div>
-</section>
-
 <section class="related-items pale-grey-bg">
     <div class="main-content full-620 fixed-sm">
-        <?php
-        $limit = 10;
-        $offset = 0;
-        $prelatedTag =  get_field('related-products-tag') ?: $firstTag->name;
-        $url = str_replace('/ideas', "", get_site_url()) . '/api/paging/get-content/1/3/' . strtoupper( str_replace(' ', '%20', $prelatedTag)) . '/product';
-
-        $ch = curl_init();
-        curl_setopt($ch, CURLOPT_URL, $url);
-        curl_setopt($ch, CURLOPT_HEADER, 0);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($ch, CURLOPT_ENCODING, "");
-        $json = curl_exec($ch);
-        $json = json_decode($json);
-        $relatedProducts = $json->content;
-        ?>
-
-        @if(isset($relatedProducts) && ($relatedProducts != null) && count($relatedProducts)>0 )
         <fieldset class="shoplanding-title">
-            <legend align="center"><h3 class="green pale-grey-bg">Related Products</h3></legend>
+            <legend align="center"><h3 class="pale-grey-bg">You Have to Read These</h3></legend>
         </fieldset>
-        <div class="related-products grid-box-3">
-            @foreach( $relatedProducts as $product )
-            <div class="box-item product-box ">
-                <img class="img-responsive" src="{{ $product->media_link_full_path }}">
-                <span class="box-item__time">{{ $product->updated_at }}</span>
-                            <div class="box-item__overlay" ng-click="openProductPopup({{$product->id}})"></div>
-                @if($product->AverageScore != 0)
-                    <div class="social-stats">
-                        <div class="social-stats__item rating" data-toggle="tooltip" title="Ideaing Score">
-                            <span class="icon m-icon--bulb-detailed-on-rating"></span>
-                            <span class="value ng-binding">{{ $product->AverageScore }}%</span>
-                        </div>
-                    </div>
-                @endif
-                <div class="round-tag round-tag--product">
-                    <i class="m-icon m-icon--item"></i>
-                    <span class="round-tag__label">Product</span>
-                </div>
-                <div class="box-item__label-prod">
-                    <a href="/product/{{$product->product_permalink}}"
-                       class="box-item__label box-item__label--clear ">{{ $product->product_name }}</a>
-                    <div class="clearfix"></div>
-
-                    <div class="clearfix"></div>
-                    <a target="_blank" href="/open/{{ $product->id }}/ideas" class="box-item__get-it">
-                        Get it
-                    </a>
-                </div>
-            </div>
-            @endforeach
-        </div>
-        @endif
-        <fieldset class="shoplanding-title">
-            <legend align="center"><h3 class="blue pale-grey-bg">Related Ideas</h3></legend>
-        </fieldset>
-<!--        <h3 class="blue">Related Ideas</h3><br/>-->
-        <div class="related-ideas  grid-box-3">
-
-            <!--                <section class="col-sm-12 related-stories">-->
+        <div class="related-ideas grid-box-2 grid-wrap">
 
             <?php
             //                    Get 3 posts with similar tags. If there are no tags, get any 3 posts
@@ -409,7 +225,7 @@
             $args = [
                 'post__not_in' => array($post->ID),
                 'tag__not_in' => [29],
-                'posts_per_page' => 3,
+                'posts_per_page' => 2,
                 'caller_get_posts' => 1
             ];
 
@@ -429,52 +245,61 @@
                 $my_query = new WP_Query($args);
             }
 
-
-
             if ($my_query->have_posts()) {
                 while ($my_query->have_posts()) : $my_query->the_post();
                     $image = get_field('feed_image');
+
+                    $datepublishstring = get_the_time('Y-m-d H:i:s');
+                    $relatedItem['updated_at'] = timeAgo($datepublishstring);
+
+                    $relatedItem['author'] = get_the_author();
+                    $relatedItem['author_id'] = get_the_author_meta('ID');
+
+                    $laravelUser = file_get_contents('https://ideaing.com/api/info-raw/' . get_the_author_email());
+                    $laravelUser = json_decode($laravelUser, true);
+
+                    $relatedItem['authorlink'] = $laravelUser['permalink'];
+
+                    if (isset($laravelUser['medias'][0])) {
+                        $relatedItem['avator'] = $laravelUser['medias'][0]['media_link'];
+                    } else {
+                        $relatedItem['avator'] = get_avatar_url(get_the_author_email(), '80');
+                    }
+
+                    $cats = get_the_category();
+                    $relatedItem['category'] = $cats[0]->name;
+                    $relatedItem['categorySlug'] = strtolower(str_replace(' ', '-', $relatedItem['category']));
+
+
                     ?>
 
-                    <div class="box-item">
+                    <div class="box-item idea-box">
                         <div class="img-holder">
                             <img src="{{$image['url']}}">
                         </div>
+                        <div class="category-{{$relatedItem['categorySlug']}}">
+                            <div class="idea-meta">
+                                <div class="box-item__label-idea">
+                                    <a href="{{the_permalink()}}" class="box-item__label" itemprop="name">{{the_title()}}</a>
+                                </div>
 
-                        <!--                <span class="box-item__time">{{$item->updated_at}}</span>-->
-                        <div class="box-item__overlay"></div>
-
-                        <ul class="social-stats">
-                            <li class="social-stats__item">
-                                <?php
-                                $userId = !empty($userData['id'] ) ? $userData['id']  : 0;
-
-                                $urlTmp = parse_url(get_the_permalink())['path'];
-                                $urlTmp = str_replace('/ideas/','',$urlTmp);
-
-                                ?>
-
-                                <heart-counter-public uid="<?php echo $userId ?>" iid="{{ get_the_ID() }}" plink="{{ $urlTmp }}" sec='ideas'>
-
-                                </heart-counter-public>
-                            </li>
-
-                        </ul>
-
-                        <div class="round-tag round-tag--idea">
-                            <i class="m-icon m-icon--item"></i>
-                            <span class="round-tag__label">idea</span>
+                                <a href="/ideas">
+                                    <span class="round-tag__label in" itemprop="articleSection">In {{$relatedItem['category']}}, Ideas <i class="m-icon m-icon--bulb"></i></span>
+                                </a>
+                                <div class="box-item__author">
+                                    <a href="/user/profile/{{$relatedItem['authorlink']}}"  class="user-widget">
+                                        <img class="user-widget__img" src="{{$relatedItem['avator']}}">
+                                        <span class="user-widget__name" itemprop="author">{{$relatedItem['author']}}</span>
+                                    </a>
+                                </div>
+                            </div>
                         </div>
 
-                        <div class="box-item__label-idea">
-                            <a href="{{the_permalink()}}" class="box-item__label">{{the_title()}}</a>
-                            <div class="clearfix"></div>
-                            <a href="{{the_permalink()}}" class="box-item__read-more">Read More</a>
-                        </div>
+                        <span class="box-item__time text-uppercase"  itemprop="dateCreated">{{$relatedItem['updated_at']}}</span>
 
-                        <show-author-info email="{{ htmlentities(get_the_author_meta( 'user_login' )) }}" url="{{ get_author_posts_url( get_the_author_meta( 'ID' ) )}}">
-
-                        </show-author-info>
+                        <a href="{{the_permalink()}}">
+                            <div class="box-item__overlay"></div>
+                        </a>
                     </div>
 
                     <?php
@@ -483,6 +308,52 @@
             ?>
             <div ng-init="readSingleNotification(<?php echo $userId ?>,'{{ $urlTmp }}')"></div>
         </div>
+        <?php
+        $limit = 10;
+        $offset = 0;
+        $prelatedTag =  get_field('related-products-tag') ?: $firstTag->name;
+        $url = str_replace('/ideas', "", get_site_url()) . '/api/paging/get-content/1/3/' . strtoupper( str_replace(' ', '%20', $prelatedTag)) . '/product';
+
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_HEADER, 0);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_ENCODING, "");
+        $json = curl_exec($ch);
+        $json = json_decode($json);
+        $relatedProducts = $json->content;
+        ?>
+
+        @if(isset($relatedProducts) && ($relatedProducts != null) && count($relatedProducts)>0 )
+        <fieldset class="shoplanding-title">
+            <legend align="center"><h3 class="pale-grey-bg">Awesome Products</h3></legend>
+        </fieldset>
+        <div class="related-products grid-box-3">
+            @foreach( $relatedProducts as $product )
+            <div class="box-item product-box ">
+                <div class="img-holder">
+                    <img class="img-responsive" src="{{ $product->media_link_full_path }}">
+                </div>
+
+                <div class="category-{{$product->master_category_name}}">
+                    <div class="idea-meta product  category-bg">
+
+                        <div class="box-item__label-product">
+                            <a href="/product/{{$product->product_permalink}}" class="box-item__label box-item__label--clear" itemprop="name">{{ $product->product_name }}</a>
+                        </div>
+
+                        <a  href="/products">
+                            <span class="round-tag__label in" itemprop="articleSection">In {{$product->master_category_name ? $product->master_category_name . ', ' : '' }}{{$product->master_category_name}} <i class="m-icon m-icon--shopping-bag-light-green white"></i></span>
+                        </a>
+
+                    </div>
+                </div>
+                <span class="box-item__time text-uppercase">{{ $product->updated_at }}</span>
+                <div class="box-item__overlay" ng-click="openProductPopup({{$product->id}})"></div>
+            </div>
+            @endforeach
+        </div>
+        @endif
     </div>
 </section>
  <div class="mobile-sharing horizontal-sharing hidden-soft">

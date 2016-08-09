@@ -103,11 +103,12 @@ if (function_exists('is_single')) {
                         </div>
 
                         <div class="col-md-12 comment-controls text-right">
-                            <button class="btn btn-info radius-15 category-bg no-border" ng-hide="isEdit"
+
+                            <button class="button--moema btn btn-info radius-15 category-bg no-border" ng-hide="isEdit"
                                     ng-click="addCommentForIdeas(<?php echo $userData['id'] . "," . $itemId . "," . "'$permalink'" . "," . "html"?>)">
                                 SEND
                             </button>
-                            <button class="btn btn-info radius-15 category-bg no-border" ng-show="isEdit"
+                            <button class="button--moema btn btn-info radius-15 category-bg no-border" ng-show="isEdit"
                                     ng-click="updateComment()">
                                 UPDATE
                             </button>
