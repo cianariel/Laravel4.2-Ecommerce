@@ -8467,7 +8467,8 @@ header.sub-head {
   margin-top: 0;
   margin-bottom: 13px;
   border-bottom: 1px solid #eee;
-  padding-left: 0; }
+  padding-left: 0;
+  height: 41px; }
   .home-subheader span {
     padding-bottom: 10px;
     border-bottom: 1px solid #000;
@@ -12748,8 +12749,8 @@ p {
       float: right; }
     .box-item .idea-meta .views {
       position: absolute;
-      top: 5px;
-      right: 0;
+      right: 49px;
+      bottom: 29px;
       color: #757c7d;
       width: 82px; }
       @media (max-width: 620px) {
@@ -12763,7 +12764,10 @@ p {
     width: 100%;
     max-width: none;
     min-height: 394px; }
-  .box-item:hover .box-item__overlay, .box-item.hover .box-item__overlay, .box-item.hovered .box-item__overlay {
+  .box-item:hover .box-item__overlay
+  .user-widget__name, .box-item.hover .box-item__overlay
+  .user-widget__name, .box-item.hovered .box-item__overlay
+  .user-widget__name {
     opacity: 0.4;
     -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=40)";
     filter: alpha(opacity=40); }
@@ -12996,7 +13000,7 @@ body.home.logged-in #hero {
   width: 100%;
   max-width: 1170px;
   overflow: hidden;
-  margin-top: 55px; }
+  margin-top: 25px; }
   .homepage-grid.center-block {
     min-height: 1000px; }
   .homepage-grid .wrap {

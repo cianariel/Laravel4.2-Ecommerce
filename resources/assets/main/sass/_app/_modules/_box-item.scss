@@ -151,8 +151,8 @@
       }
       .views{
         position: absolute;
-        top: 5px;
-        right: 0;
+        right: 49px;
+        bottom: 29px;
         //z-index: 9999999;
         color: #757c7d;
         width: 82px;
@@ -182,7 +182,7 @@
 		.box-item__overlay
 		//.merchant-widget,
 		//.box-item__label--clear,
-		//.user-widget__name,
+		.user-widget__name,
 		//.box-item__get-it,
 		//.box-item__label--clear,
 		//.box-item__read-more
