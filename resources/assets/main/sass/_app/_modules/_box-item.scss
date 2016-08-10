@@ -46,6 +46,10 @@
     bottom: 158px;
     right: 14px;
     z-index: 60;
+
+    .user-widget__name{
+      opacity: 1;
+    }
   }
   .user-widget__img{
     margin-left: 0;

@@ -8468,12 +8468,13 @@ header.sub-head {
   margin-bottom: 13px;
   border-bottom: 1px solid #eee;
   padding-left: 0;
-  height: 41px; }
+  height: 54px; }
   .home-subheader span {
     padding-bottom: 10px;
     border-bottom: 1px solid #000;
     margin-bottom: -1px;
-    display: inline-block; }
+    display: inline-block;
+    height: 54px; }
   .home-subheader .m-icon {
     font-size: 2.7rem; }
     .home-subheader .m-icon.m-icon--flame {
@@ -12689,6 +12690,8 @@ p {
     bottom: 158px;
     right: 14px;
     z-index: 60; }
+    .box-item .box-item__author .user-widget__name {
+      opacity: 1; }
   .box-item .user-widget__img {
     margin-left: 0; }
   .box-item.product-box .idea-meta {
