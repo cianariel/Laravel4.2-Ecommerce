@@ -234,8 +234,8 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
             $return['row-2'] = $ideas.slice(0, 2);
             $return['row-3'] = $products.slice(0, 3);
             $return['row-4'] = $featured[1] ? [$featured[1]] : false;
-            $return['row-5'] = $ideas.slice(2, 4);
-            $return['row-6'] = $products.slice(3, 6);
+            $return['row-5'] = $ideas.slice(2, 2);
+            $return['row-6'] = $products.slice(3, 3);
             console.log($return)
             return $return;
         };

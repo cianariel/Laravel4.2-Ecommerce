@@ -17,7 +17,7 @@
 
         <div class="white-bg col-xs-12">
             <section class="most-popular-new container center-block overhide no-padding">
-                <h4 class="col-xs-12 home-subheader">Popular <i class="m-icon m-icon--flame pink"></i></h4>
+                <h4 class="col-xs-12 home-subheader"><span>Popular <i class="m-icon m-icon--flame pink"></i></span></h4>
                 <div class="col-sm-4 col-xs-12 popular-section category-smart-home">
                     <h5 class="category-link__smart-home  category-color">
                         <i class="hidden-xs hidden-sm hidden-md m-icon m-icon--smart-home"></i>

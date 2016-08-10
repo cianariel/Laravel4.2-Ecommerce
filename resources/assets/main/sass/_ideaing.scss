@@ -5362,17 +5362,26 @@ header.sub-head{
 
 
 .home-subheader{
-  font-size: 3.3rem;
+  font-size: 2.8rem;
   margin-top: 0;
   margin-bottom: 13px;
-  padding-bottom: 10px;
+//margin-left:;
   border-bottom: 1px solid #eee;
+  padding-left: 0;
+
+  span{
+    padding-bottom: 10px;
+    border-bottom: 1px solid #000;
+    margin-bottom: -1px;
+    display: inline-block;
+
+  }
 
   .m-icon{
-    font-size: 3rem;
+    font-size: 2.7rem;
     &.m-icon--flame{
       position: relative;
-      right: 5px;
+      right: 1px;
     }
   }
 }

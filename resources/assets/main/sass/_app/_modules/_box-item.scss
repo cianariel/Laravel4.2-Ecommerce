@@ -83,7 +83,7 @@
 
     .idea-meta{
       position: absolute;
-      bottom: -95px;
+      bottom: -79px;
       min-height: 115px;
       width: 100%;
       background: $dark-orange;
@@ -95,6 +95,11 @@
       a{
         color: #3d4b4e;
         opacity: 1;
+      }
+
+      .in{
+        position: relative;
+        bottom: 16px;
       }
 
       .social-stats__item{
