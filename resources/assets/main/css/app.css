@@ -8466,14 +8466,14 @@ header.sub-head {
   font-size: 2.8rem;
   margin-top: 0;
   margin-bottom: 13px;
-  border-bottom: 1px solid #eee;
+  border-bottom: 2px solid #eee;
   padding-left: 0;
   height: 54px; }
   .home-subheader.current-timespan {
     margin-bottom: 30px; }
   .home-subheader span {
     padding-bottom: 10px;
-    border-bottom: 1px solid #000;
+    border-bottom: 2px solid #000;
     margin-bottom: -1px;
     display: inline-block;
     height: 54px; }
@@ -12934,20 +12934,20 @@ p {
   overflow: hidden;
   padding-bottom: 8px; }
 
-.main-content .grid-wrap {
+.main-content .grid-wrap:not(.shown) {
   visibility: hidden;
   overflow: hidden;
   padding-bottom: 8px; }
-  .main-content .grid-wrap .box-item:first-child,
-  .main-content .grid-wrap .box-item:last-child {
+  .main-content .grid-wrap:not(.shown) .box-item:first-child,
+  .main-content .grid-wrap:not(.shown) .box-item:last-child {
     top: 100px;
     transition: all, 1s; }
-  .main-content .grid-wrap.fadeIn {
+  .main-content .grid-wrap:not(.shown).fadeIn {
     -webkit-animation: animat_show 0.8s;
     animation: animat_show 0.8s;
     visibility: visible !important; }
-    .main-content .grid-wrap.fadeIn .box-item:first-child,
-    .main-content .grid-wrap.fadeIn .box-item:last-child {
+    .main-content .grid-wrap:not(.shown).fadeIn .box-item:first-child,
+    .main-content .grid-wrap:not(.shown).fadeIn .box-item:last-child {
       top: 0; }
 @-webkit-keyframes animat_show {
   0% {

@@ -438,7 +438,7 @@
 
   }
 
-.main-content .grid-wrap{
+.main-content .grid-wrap:not(.shown){
   visibility: hidden;
 
   overflow: hidden;

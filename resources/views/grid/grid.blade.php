@@ -17,14 +17,14 @@
         Latest Stories</span>
 </h4>
 <div ng-repeat="batch in content" class="container main-content col-xs-12">
-    <div class="grid-box-full grid-wrap shown">
+    <div class="grid-box-full grid-wrap" ng-class="currentPage == 1 ? 'shown' : 'nope'">
         <div class="box-item idea-box box-item--featured" ng-if="item.type == 'idea'"
              ng-repeat="item in batch['row-1']" itemscope itemtype="http://schema.org/BlogPosting">
             <?php include('/var/www/ideaing/resources/views/grid/'.$ideaView.'.blade.php') ?>
         </div>
     </div>
 
-    <div class="grid-box-2 grid-wrap shown">
+    <div class="grid-box-2 grid-wrap"  ng-class="currentPage == 1 ? 'shown' : ''">
         <div class="box-item idea-box" ng-if="item.type == 'idea'" ng-repeat="item in batch['row-2']" itemscope itemtype="http://schema.org/BlogPosting">
             <?php include('/var/www/ideaing/resources/views/grid/'.$ideaView.'.blade.php') ?>
         </div>
@@ -34,7 +34,7 @@
         </div>
     </div>
 
-    <div class="grid-box-3 grid-wrap shown">
+    <div class="grid-box-3 grid-wrap" ng-class="currentPage == 1 ? 'shown' : ''">
         <div class="box-item idea-box" ng-if="item.type == 'idea'" ng-repeat="item in batch['row-3']" itemscope itemtype="http://schema.org/BlogPosting">
             <?php include('/var/www/ideaing/resources/views/grid/'.$ideaView.'.blade.php') ?>
         </div>
