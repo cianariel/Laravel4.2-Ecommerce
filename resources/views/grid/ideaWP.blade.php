@@ -18,16 +18,13 @@
             <span class="round-tag__label in" itemprop="articleSection">In {{item.category}}, Ideas <i class="m-icon m-icon--bulb"></i></span>
         </a>
 
-      <!--  <a  ng-if="item.is_deal" href="/ideas" class="round-tag round-tag--idea deal">
-            <i class="m-icon m-icon--item"></i>
-            <span class="round-tag__label" itemprop="articleSection">Deal</span>
-        </a> -->
+        <div class="social-stats__item views">
+            <i class="m-icon m-icon--flame"></i>
+            <span class="social-stats__text ng-binding">31 views</span>
+        </div>
 
         <ul class="social-stats">
-           <li class="social-stats__item">
-                <i class="m-icon m-icon--flame white" ng-show="item.views >= 100"></i>
-                <span class="social-stats__text white">{{item.views}} views</span>
-            </li>
+
             <li class="social-stats__item comment">
                 <a href="#">
                     <i class="m-icon m-icon--buble"></i>

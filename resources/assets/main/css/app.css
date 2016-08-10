@@ -4525,6 +4525,9 @@ a:hover, a:focus {
 .no-padding {
   padding: 0 !important; }
 
+.relative {
+  position: relative; }
+
 .category-smart-home .category-color,
 .category-smarthome .category-color {
   color: #FF0042 !important; }
@@ -12720,6 +12723,15 @@ p {
         width: 39px;
         font-weight: 300;
         bottom: 31px; }
+        .box-item .idea-meta .social-stats li.views {
+          bottom: 51px;
+          width: 82px; }
+      .box-item .idea-meta .social-stats .views {
+        position: absolute;
+        top: 0;
+        right: 0;
+        z-index: 9999999;
+        color: #000; }
     .box-item .idea-meta .box-item__label-idea,
     .box-item .idea-meta .box-item__label-product {
       min-height: 50px; }

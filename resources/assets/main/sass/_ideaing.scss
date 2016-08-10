@@ -80,6 +80,10 @@ a:hover, a:focus{
   padding: 0 !important;
 }
 
+.relative{
+  position: relative;
+}
+
 // CATEGORY COLORS
 
 @mixin category-color($color) {

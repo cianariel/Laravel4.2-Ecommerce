@@ -11,7 +11,8 @@ use App\Models\ProductCategory;
 use App\Models\Tag;
 use App\Models\Store;
 use PageHelper;
-
+use Counter;
+ 
 
 class Product extends Model
 {
@@ -412,6 +413,9 @@ class Product extends Model
             $tmp->created_at = Carbon::createFromTimestamp(strtotime($tmp->created_at))->diffForHumans();
             $tmp->raw_creation_date = $tmp->created_at;
             $tmp->type = 'product';
+
+            $tmp->views = Counter::show('product-details-'. $tmp->id);
+
 
             $tmp->sale_price = round($tmp->sale_price);
 
