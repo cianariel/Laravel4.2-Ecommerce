@@ -8469,6 +8469,8 @@ header.sub-head {
   border-bottom: 1px solid #eee;
   padding-left: 0;
   height: 54px; }
+  .home-subheader.current-timespan {
+    margin-bottom: 30px; }
   .home-subheader span {
     padding-bottom: 10px;
     border-bottom: 1px solid #000;
@@ -8480,6 +8482,11 @@ header.sub-head {
     .home-subheader .m-icon.m-icon--flame {
       position: relative;
       right: 1px; }
+
+.most-popular-new .home-subheader {
+  height: 41px; }
+  .most-popular-new .home-subheader span {
+    height: 41px; }
 
 #hero-nav {
   overflow: visible;

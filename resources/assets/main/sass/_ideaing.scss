@@ -5370,12 +5370,18 @@ header.sub-head{
   padding-left: 0;
   height: 54px;
 
+  &.current-timespan{
+    margin-bottom: 30px;
+  }
+
   span{
     padding-bottom: 10px;
     border-bottom: 1px solid #000;
     margin-bottom: -1px;
     display: inline-block;
     height: 54px;
+
+
 
   }
 
@@ -5387,6 +5393,18 @@ header.sub-head{
     }
   }
 }
+
+.most-popular-new{
+  .home-subheader{
+    height: 41px;
+
+    span{
+      height: 41px;
+    }
+  }
+}
+
+
 
 #hero-nav{
   overflow: visible;
