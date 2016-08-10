@@ -8651,9 +8651,6 @@ header.sub-head {
     right: 0;
     margin-left: 0 auto;
     font-weight: bold; }
-    @media (max-width: 620px) {
-      .homepage .home-hero-slider .box-item__label-idea {
-        background: rgba(255, 0, 66, 0.7); } }
   .homepage .home-hero-slider .box-item {
     background: rgba(0, 0, 0, 0.4);
     border-radius: 5px; }

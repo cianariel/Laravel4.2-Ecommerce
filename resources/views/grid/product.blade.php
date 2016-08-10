@@ -7,6 +7,10 @@
             <a href="/product/<?php echo '{{item.product_permalink}}' ?>" class="box-item__label box-item__label--clear" itemprop="name"><?php echo '{{item.product_name}}' ?></a>
         </div>
 
+        <div class="social-stats__item views" ng-show="item.views >= 100">
+            <i class="m-icon m-icon--flame"></i>
+            <span class="social-stats__text ng-binding">31 views</span>
+        </div>
 
         <a ng-if="!item.is_deal" href="/ideas">
             <span class="round-tag__label in" itemprop="articleSection">In <span ng-if="item.master_category_name"><?php echo '{{item.master_category_name}}' ?>, </span> <?php echo '{{item.category_name}}' ?> <i class="m-icon m-icon--shopping-bag-light-green white"></i></span>

@@ -151,6 +151,10 @@
         //z-index: 9999999;
         color: #757c7d;
         width: 82px;
+
+        @media(max-width: 620px){
+          bottom: 29px;
+        }
       }
     }
   .box-item__time{

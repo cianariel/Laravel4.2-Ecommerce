@@ -5690,9 +5690,9 @@ header.sub-head{
       margin-left: 0 auto;
       font-weight: bold;
 
-      @media(max-width:620px){
-        background: rgba($iridium, .7);
-      }
+      //@media(max-width:620px){
+      //  background: rgba($iridium, .7);
+      //}
     }
     .box-item{
       background: rgba(0,0,0,.4);
