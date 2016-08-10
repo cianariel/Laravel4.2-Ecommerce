@@ -16,7 +16,7 @@
         </section>
 
         <div class="white-bg col-xs-12">
-            <section class="most-popular-new container center-block overhide">
+            <section class="most-popular-new container center-block overhide no-padding">
                 <h4 class="col-xs-12 home-subheader">Popular <i class="m-icon m-icon--flame pink"></i></h4>
                 <div class="col-sm-4 col-xs-12 popular-section category-smart-home">
                     <h5 class="category-link__smart-home  category-color">
@@ -37,6 +37,9 @@
                                             <img class="img-responsive" src="{{ $item->media_link_full_path }}">
                                         </a>
                                     </div>
+                                    <a href="{{$item->product_permalink}}" class="category-{{$item->master_category}}">
+                                        <div class="box-item__overlay category-bg"></div>
+                                    </a>
                                 @else
                                     <div class="box-item">
                                         <a href="{{$item->url}}">
@@ -48,7 +51,11 @@
                                                      src="{{@$item->feed_image->url}}">
                                             @endif
                                         </a>
+                                        <a href="{{$item->url}}" class="category-{{$item->category_main}}">
+                                            <div class="box-item__overlay category-bg"></div>
+                                        </a>
                                     </div>
+
                                 @endif
 
                            @if($i == 2)

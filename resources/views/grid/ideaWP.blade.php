@@ -24,10 +24,10 @@
         </a> -->
 
         <ul class="social-stats">
-          <!--  <li class="social-stats__item">
+           <li class="social-stats__item">
                 <i class="m-icon m-icon--flame white" ng-show="item.views >= 100"></i>
                 <span class="social-stats__text white">{{item.views}} views</span>
-            </li> -->
+            </li>
             <li class="social-stats__item comment">
                 <a href="#">
                     <i class="m-icon m-icon--buble"></i>

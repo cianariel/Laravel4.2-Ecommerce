@@ -12,12 +12,6 @@
             <span class="round-tag__label in" itemprop="articleSection">In <span ng-if="item.master_category_name"><?php echo '{{item.master_category_name}}' ?>, </span> <?php echo '{{item.category_name}}' ?> <i class="m-icon m-icon--shopping-bag-light-green white"></i></span>
         </a>
 
-        <!--  <a  ng-if="item.is_deal" href="/ideas" class="round-tag round-tag--idea deal">
-              <i class="m-icon m-icon--item"></i>
-              <span class="round-tag__label" itemprop="articleSection">Deal</span>
-          </a> -->
-
-
     </div>
     <div class="box-item__overlay category-bg" ng-click="openProductPopup(item.id)"></div>
 </div>

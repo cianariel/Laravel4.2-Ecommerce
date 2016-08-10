@@ -76,6 +76,10 @@ a:hover, a:focus{
   border:1px solid darken($pale-grey, 10%);
 }
 
+.no-padding{
+  padding: 0 !important;
+}
+
 // CATEGORY COLORS
 
 @mixin category-color($color) {
@@ -2865,8 +2869,11 @@ article.product{
   }
 
   h5{
+    text-align: center;
     i{
-      margin-top: -4px;
+      top: 2px;
+      position: relative;
+      float: none;
     }
     span{
       padding-left: 15px;
@@ -5345,13 +5352,20 @@ header.sub-head{
   }
 }
 
+
 .home-subheader{
-  text-transform: capitalise;
   font-size: 3.3rem;
   margin-top: 0;
+  margin-bottom: 13px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #eee;
 
   .m-icon{
     font-size: 3rem;
+    &.m-icon--flame{
+      position: relative;
+      right: 5px;
+    }
   }
 }
 
