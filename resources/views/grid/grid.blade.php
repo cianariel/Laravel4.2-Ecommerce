@@ -13,25 +13,17 @@
                 <path fill="none" opacity="0.79" class="theme-colour-change" d="M307.7 397.7c0 1.1-0.9 2-2 2h-0.3c-1.1 0-2-0.9-2-2v-8.6c0-1.1 0.9-2 2-2h0.3c1.1 0 2 0.9 2 2V397.7z"></path>
 </svg>
         </div>
-
-
         Latest Stories
-
-
-
-
-
-
 </h4>
 <div ng-repeat="batch in content" class="container main-content col-xs-12">
-    <div class="grid-box-full grid-wrap">
+    <div class="grid-box-full grid-wrap shown">
         <div class="box-item idea-box box-item--featured" ng-if="item.type == 'idea'"
              ng-repeat="item in batch['row-1']" itemscope itemtype="http://schema.org/BlogPosting">
             <?php include('/var/www/ideaing/resources/views/grid/'.$ideaView.'.blade.php') ?>
         </div>
     </div>
 
-    <div class="grid-box-2 grid-wrap">
+    <div class="grid-box-2 grid-wrap shown">
         <div class="box-item idea-box" ng-if="item.type == 'idea'" ng-repeat="item in batch['row-2']" itemscope itemtype="http://schema.org/BlogPosting">
             <?php include('/var/www/ideaing/resources/views/grid/'.$ideaView.'.blade.php') ?>
         </div>
@@ -41,12 +33,36 @@
         </div>
     </div>
 
-    <div class="grid-box-3 grid-wrap">
+    <div class="grid-box-3 grid-wrap shown">
         <div class="box-item idea-box" ng-if="item.type == 'idea'" ng-repeat="item in batch['row-3']" itemscope itemtype="http://schema.org/BlogPosting">
             <?php include('/var/www/ideaing/resources/views/grid/'.$ideaView.'.blade.php') ?>
         </div>
 
         <div ng-if="item.type == 'product'" ng-repeat="item in batch['row-3']"
+             class="box-item product-box" itemscope itemtype="http://schema.org/Product">
+            <?php include('/var/www/ideaing/resources/views/grid/product.blade.php') ?>
+        </div>
+    </div>
+
+    <div class="grid-box-full grid-wrap hidden-soft">
+        <div class="box-item idea-box box-item--featured" ng-if="item.type == 'idea'"
+             ng-repeat="item in batch['row-4']" itemscope itemtype="http://schema.org/BlogPosting">
+            <?php include('/var/www/ideaing/resources/views/grid/'.$ideaView.'.blade.php') ?>
+        </div>
+    </div>
+
+    <div class="grid-box-2 grid-wrap hidden-soft">
+        <div class="box-item idea-box" ng-if="item.type == 'idea'" ng-repeat="item in batch['row-5']" itemscope itemtype="http://schema.org/BlogPosting">
+            <?php include('/var/www/ideaing/resources/views/grid/'.$ideaView.'.blade.php') ?>
+        </div>
+
+        <div ng-if="item.type == 'product'" ng-repeat="item in batch['row-5']" class="box-item product-box" itemscope itemtype="http://schema.org/Product">
+            <?php include('/var/www/ideaing/resources/views/grid/product.blade.php') ?>
+        </div>
+    </div>
+
+    <div class="grid-box-3 grid-wrap hidden-soft">
+        <div ng-if="item.type == 'product'" ng-repeat="item in batch['row-6']"
              class="box-item product-box" itemscope itemtype="http://schema.org/Product">
             <?php include('/var/www/ideaing/resources/views/grid/product.blade.php') ?>
         </div>

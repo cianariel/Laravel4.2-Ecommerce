@@ -648,6 +648,7 @@ class PageController extends ApiController
     {
 
         $url = URL::to('/') . '/ideas/feeds/index.php?count=' . $limit . '&no-featured&offset=' . $offset;
+//        $url = URL::to('/') . '/ideas/feeds/index.php?count=' . $limit . '&no-featured&offset=' . $offset;
 
         if ($tag && $tag != 'false') {
             $url .= '&tag=' . $tag;

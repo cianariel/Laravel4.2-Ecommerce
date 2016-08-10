@@ -6024,9 +6024,9 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
             $return['row-1'] = $featured[0] ? [$featured[0]] : false;
             $return['row-2'] = $ideas.slice(0, 2);
             $return['row-3'] = $products.slice(0, 3);
-            //$return['row-4'] = $featured[1] ? [$featured[1]] : false;
-            //$return['row-5'] = $regular.slice(6, 9);
-            ////$return['row-6'] = $featured[2] ? [$featured[2]] : false;
+            $return['row-4'] = $featured[1] ? [$featured[1]] : false;
+            $return['row-5'] = $ideas.slice(2, 4);
+            $return['row-6'] = $products.slice(3, 6);
             console.log($return)
             return $return;
         };

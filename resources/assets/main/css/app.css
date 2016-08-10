@@ -12744,6 +12744,9 @@ p {
       right: 0;
       color: #757c7d;
       width: 82px; }
+      @media (max-width: 620px) {
+        .box-item .idea-meta .views {
+          bottom: 29px; } }
   .box-item .box-item__time {
     color: #757c7d; }
   .box-item .box-item__overlay {
@@ -12875,10 +12878,6 @@ p {
 .main-content > div .box-item {
   border-top: 0px; }
 
-.grid-wrap {
-  overflow: hidden;
-  padding-bottom: 8px; }
-
 .main-content .box-item {
   float: left;
   margin-left: 6px; }
@@ -12909,6 +12908,26 @@ p {
     .main-content .grid-box-3 .box-item {
       /*			height: auto;*/ } }
 
+.main-content .grid-wrap:not(.shown) {
+  visibility: hidden;
+  overflow: hidden;
+  padding-bottom: 8px; }
+  .main-content .grid-wrap:not(.shown) .box-item:first-child,
+  .main-content .grid-wrap:not(.shown) .box-item:last-child {
+    top: 100px;
+    transition: all, 1s; }
+  .main-content .grid-wrap:not(.shown).fadeIn {
+    -webkit-animation: animat_show 0.8s;
+    animation: animat_show 0.8s;
+    visibility: visible !important; }
+    .main-content .grid-wrap:not(.shown).fadeIn .box-item:first-child,
+    .main-content .grid-wrap:not(.shown).fadeIn .box-item:last-child {
+      top: 0; }
+@-webkit-keyframes animat_show {
+  0% {
+    opacity: 0; }
+  100% {
+    opacity: 1; } }
 .grid-box-full .box-item {
   width: 98.7%;
   height: auto;
@@ -12936,6 +12955,43 @@ p {
 .main-content[data-only="photos"] .box-item:not(.photo-box) {
   display: none; }
 
+.grid .box-item.animate {
+  opacity: 0; }
+
+.main-content .box-item.shown,
+.no-js .main-content .box-item li,
+.no-cssanimations .main-content .box-item {
+  opacity: 1; }
+
+.main-content .box-item,
+.main-content .box-item img {
+  outline: none;
+  border: none;
+  display: block;
+  max-width: 100%; }
+
+/* Effect 2: Move Up */
+.grid.effect-2 .box-item.animate {
+  -webkit-transform: translateY(200px);
+  transform: translateY(200px);
+  -webkit-animation: moveUp 0.65s ease forwards;
+  animation: moveUp 0.65s ease forwards; }
+
+@-webkit-keyframes moveUp {
+  100% {
+    -webkit-transform: translateY(0);
+    opacity: 1; } }
+@keyframes moveUp {
+  100% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+    opacity: 1; } }
+@media screen and (max-width: 900px) {
+  .grid li {
+    width: 50%; } }
+@media screen and (max-width: 400px) {
+  .grid li {
+    width: 100%; } }
 /* header layout */
 /* footer layout */
 /* main layout */
