@@ -1711,6 +1711,10 @@ body.contactus-page
     .rsThumbsContainer{
       max-height: 500px;
 
+      @media(max-width:620px){
+        display: none;
+      }
+
       img{
         width: 145px;
       }
@@ -5660,13 +5664,20 @@ header.sub-head{
     padding: 0 !important;
     overflow: hidden;
     z-index: 1;
+    .color-overlay{
+      display: none;
+    }
     .rsOverflow{
       margin-top: 0 !important;
       overflow: hidden !important;
     }
-    .img-holder > img{
-       //width: 100% !important;
-      height: auto !important;
+
+    .img-holder{
+      background: #000;
+      &> img{
+        opacity: .7;
+        height: auto !important;
+      }
     }
     .box-item__author{
       display: none;

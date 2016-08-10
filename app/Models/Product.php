@@ -12,7 +12,7 @@ use App\Models\Tag;
 use App\Models\Store;
 use PageHelper;
 use Counter;
- 
+
 
 class Product extends Model
 {
