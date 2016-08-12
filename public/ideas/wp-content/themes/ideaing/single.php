@@ -129,27 +129,24 @@
 
 
 
-        <div class="containr main-container">
-
-        <article id="post-<?php the_ID(post_class('col-xs-11 col-md-offse-1 pull-right'))?>
-
-            <div class="shown-620 hidden-soft">
-                <?php loadLaravelView('share-bar'); ?>
-                </div>
-        <div id="mobile-stcky-anch    or"></div>
-
-        <div class="row">
-                <div class="col-lg-12">
-                    <section class="article-content dropcapped">
-                        <?php
-                          //echo do_shortcode('[product_thumbs id="1266"]');
-                        ?>
-                        <?php the_content(); ?>
-                    </section>
-                </div>           </div>
-
-
-        </article>
+        <div class="container main-container">
+            <article id="post-<?php the_ID(post_class('col-xs-11 col-md-offse-1 pull-right'))?>">
+                <div class="shown-620 hidden-soft">
+                    <?php loadLaravelView('share-bar'); ?>
+                    </div>
+            <div id="mobile-stcky-anchor"></div>
+            <div class="row">
+                    <div class="col-lg-12">
+                        <section class="article-content dropcapped">
+                            <?php
+                              //echo do_shortcode('[product_thumbs id="1266"]');
+                            ?>
+                            <?php the_content(); ?>
+                        </section>
+                    </div>
+            </div>
+            </article>
+        </div>
     </div>
     <div class="ideas-sharing">
         <?php loadLaravelView('share-bar'); ?>
