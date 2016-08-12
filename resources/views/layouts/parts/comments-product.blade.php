@@ -68,6 +68,7 @@
                          ng-show="show_editor">
                         <div text-angular data-ng-model="html" ta-disabled='disabled'
                              name="description-editor"
+                             ta-toolbar="[[]]"
                              ta-text-editor-class="border-around ta-editor"
                              ta-html-editor-class="border-around ta-editor">
                         </div>

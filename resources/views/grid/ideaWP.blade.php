@@ -20,7 +20,7 @@
 
         <div class="social-stats__item views" ng-show="item.views >= 100">
             <i class="m-icon m-icon--flame"></i>
-            <span class="social-stats__text ng-binding">31 views</span>
+            <span class="social-stats__text ng-binding">{{item.views}} views</span>
         </div>
 
         <ul class="social-stats">
