@@ -470,6 +470,7 @@
 .main-content:first-child .grid-wrap.visible{
   opacity: 1 !important;
   visibility: visible !important;
+  animation: none !important;
 
   .box-item:first-child,
   .box-item:last-child{

@@ -12991,7 +12991,8 @@ p {
     opacity: 1; } }
 .main-content:first-child .grid-wrap.visible {
   opacity: 1 !important;
-  visibility: visible !important; }
+  visibility: visible !important;
+  animation: none !important; }
   .main-content:first-child .grid-wrap.visible .box-item:first-child,
   .main-content:first-child .grid-wrap.visible .box-item:last-child {
     top: 0; }
