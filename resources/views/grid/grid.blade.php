@@ -6,7 +6,7 @@
 </div>
 
 
-<h4 class="current-timespan home-subheader col-xs-12">
+<h4 class="current-timespan home-subheader">
     <?php // echo '{{batch.currentDay}}' ?>
 
         <span>

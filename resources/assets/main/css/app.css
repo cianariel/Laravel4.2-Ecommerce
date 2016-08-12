@@ -4525,8 +4525,38 @@ a:hover, a:focus {
 .no-padding {
   padding: 0 !important; }
 
+.padding-10 {
+  padding: 10px; }
+
 .relative {
   position: relative; }
+
+.boxy {
+  position: relative;
+  background: #fff;
+  border: 1px solid #ededed; }
+
+.boxy:after, .boxy:before {
+  bottom: 99.7%;
+  left: 94%;
+  border: solid transparent;
+  content: " ";
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none; }
+
+.boxy:after {
+  border-color: rgba(255, 255, 255, 0);
+  border-bottom-color: #fff;
+  border-width: 8px;
+  margin-left: -8px; }
+
+.boxy:before {
+  border-color: rgba(237, 237, 237, 0);
+  border-bottom-color: #ededed;
+  border-width: 11px;
+  margin-left: -11px; }
 
 .category-smart-home .category-color,
 .category-smarthome .category-color {
@@ -4936,7 +4966,7 @@ ul.pointed li:before {
   height: 29px;
   width: 29px;
   display: inline-block;
-  top: 7px;
+  top: 3px;
   left: 3px;
   position: relative; }
   .icon-clock .theme-colour-change {
@@ -7212,7 +7242,10 @@ header.colophon {
   padding: 0.25rem 30px;
   background: #000;
   padding-top: 10px;
-  padding-bottom: 10px; }
+  padding-bottom: 10px;
+  opacity: 0;
+  border-bottom: 1px solid rgba(193, 193, 193, 0.22);
+  width: 100%; }
   .search-bar:before, .search-bar:after {
     content: "";
     position: absolute;
@@ -7228,6 +7261,11 @@ header.colophon {
     background: rgba(255, 255, 255, 0.7); }
   .search-bar::before, .search-bar::after {
     height: 53px; }
+  @media (max-width: 620px) {
+    .search-bar {
+      background: #fff !important; }
+      .search-bar::before, .search-bar::after {
+        background: #fff; } }
   .search-bar .toggle-button,
   .search-bar .search-bar {
     position: absolute;
@@ -7248,11 +7286,6 @@ header.colophon {
         bottom: 25px;
         top: auto;
         right: -11px; } }
-
-.search-bar {
-  opacity: 0;
-  border-bottom: 1px solid rgba(193, 193, 193, 0.22);
-  width: 100%; }
   .search-bar .search-input-holder {
     width: 100%;
     max-width: 720px;
@@ -7521,17 +7554,20 @@ header.colophon {
     right: 14%;
     top: 50px;
     z-index: 100;
-    border-radius: 20px; }
+    border-radius: 20px;
+    border: 1px solid #ededed; }
     @media (min-width: 1000px) {
       #top-nav .top-nav-holder .notification-popup {
-        right: -40px; } }
+        right: -5px; } }
     #top-nav .top-nav-holder .notification-popup .notification-header {
       border-top-left-radius: 20px;
       border-top-right-radius: 20px;
       background: #fff;
       padding: 14px 15px;
       overflow: visible;
-      height: 52px; }
+      height: 52px;
+      border: 1px solid #ededed;
+      border-bottom: 0; }
       #top-nav .top-nav-holder .notification-popup .notification-header ul {
         width: 200px;
         margin: 0 auto;
@@ -8462,9 +8498,11 @@ header.sub-head {
   margin-bottom: 13px;
   border-bottom: 2px solid #eee;
   padding-left: 0;
-  height: 54px; }
+  height: 54px;
+  padding-bottom: 0; }
   .home-subheader.current-timespan {
-    margin-bottom: 24px; }
+    margin-bottom: 24px;
+    padding-left: 10px; }
   .home-subheader span {
     padding-bottom: 10px;
     border-bottom: 2px solid #000;

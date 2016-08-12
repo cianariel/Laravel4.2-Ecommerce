@@ -79,9 +79,85 @@ a:hover, a:focus{
 .no-padding{
   padding: 0 !important;
 }
+.padding-10{
+  padding: 10px;
+}
 
 .relative{
   position: relative;
+}
+//
+//.boxy:after,
+//.boxy:before {
+//  content: '';
+//  display: block;
+//  position: absolute;
+//  left: 84%;
+//  width: 0;
+//  height: 0;
+//  border-style: solid;
+//}
+//
+//.boxy:after {
+//  top: -20px;
+//  border-color: transparent transparent #fff transparent ;
+//  border-width: 10px;
+//}
+//
+//.boxy:before {
+//  top: -20px;
+//  border-color: transparent transparent #ededed  transparent ;
+//  border-width: 11px;
+//}
+//
+//
+//.boxy:after,
+//.boxy:before {
+//  content: '';
+//  display: block;
+//  position: absolute;
+//  left: 84%;
+//  width: 0;
+//  height: 0;
+//  border-style: solid;
+//}
+//
+//.boxy:after {
+//  top: 20px;
+//  border-color: transparent transparent transparent #fff;
+//  border-width: 10px;
+//  -ms-transform: rotate(-90deg); /* IE 9 */
+//  -webkit-transform: rotate(-90deg); /* Chrome, Safari, Opera */
+//  transform: rotate(-90deg);
+//}
+
+.boxy {
+  position: relative;
+  background: #fff;
+  border: 1px solid #ededed;
+}
+.boxy:after, .boxy:before {
+  bottom: 99.7%;
+  left: 94%;
+  border: solid transparent;
+  content: " ";
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none;
+}
+
+.boxy:after {
+  border-color: rgba(255, 255, 255, 0);
+  border-bottom-color: #fff;
+  border-width: 8px;
+  margin-left: -8px;
+}
+.boxy:before {
+  border-color: rgba(237, 237, 237, 0);
+  border-bottom-color: #ededed;
+  border-width: 11px;
+  margin-left: -11px;
 }
 
 // CATEGORY COLORS
@@ -583,7 +659,7 @@ ul.pointed{
   height: 29px;
   width: 29px;
   display: inline-block;
-  top: 7px;
+  top: 3px;
   left: 3px;
   position: relative;
 
@@ -3550,14 +3626,27 @@ header.colophon{
 
   background: rgba(#fff, .7) !important;
 
+
+
   @include pseudo-full-wide(rgba(#fff, .7));
 
   padding-top: 10px;
   padding-bottom: 10px;
+  opacity: 0;
+  border-bottom: 1px solid rgba(193,193,193,.22);
+  width: 100%;
 
   &::before,
   &::after{
     height: 53px;
+  }
+
+  @media(max-width: 620px) {
+    background: #fff !important;
+    &::before,
+    &::after {
+      background: #fff;
+    }
   }
 
   .toggle-button,
@@ -3585,11 +3674,8 @@ header.colophon{
       right: -11px;
     }
   }
-}
-.search-bar{
-  opacity: 0;
-  border-bottom: 1px solid rgba(193,193,193,.22);
-  width: 100%;
+
+
 
 
   .search-input-holder{
@@ -3977,10 +4063,11 @@ header.colophon{
             top: 50px;
             z-index: 100;
             border-radius: 20px;
+            border: 1px solid #ededed;
             //display: none;
 
           @media(min-width:1000px){
-            right: -40px;
+            right: -5px;
           }
 
             .notification-header{
@@ -3988,8 +4075,10 @@ header.colophon{
                 border-top-right-radius: 20px;
                 background: #fff;
                 padding: 14px 15px;
-              overflow: visible;
-              height: 52px;
+                overflow: visible;
+                height: 52px;
+                border: 1px solid #ededed;
+                border-bottom: 0;
 
               ul{
                 width: 200px;
@@ -4084,16 +4173,17 @@ header.colophon{
                 }
             }
             //&::before{
-            //    border-left: 10px solid transparent;
-            //    border-right: 10px solid transparent;
-            //    border-bottom: 12px solid;
+            //    //border-left: 10px solid transparent;
+            //    //border-right: 10px solid transparent;
+            //    //border-bottom: 12px solid;
             //    width: 20px;
             //    height: 10px;
             //    right: 48px;
             //    position: absolute;
-            //    content: ' ';
-            //    color: $iridium;
+            //    content: '△';
+            //    color: red;
             //    top: -11px;
+            //
             //
             //    @media(max-width: 620px){
             //      right: 17px;
@@ -5385,9 +5475,12 @@ header.sub-head{
   border-bottom: 2px solid #eee;
   padding-left: 0;
   height: 54px;
+  padding-bottom: 0;
 
   &.current-timespan{
     margin-bottom: 24px;
+    padding-left: 10px;
+
   }
 
   span{

@@ -202,7 +202,7 @@ if (!isset($theGiveAway)) {
                         </div>
                       <?php  if(isset($userData['login']) && $userData['login']){ ?>
 
-                            <div class="notification-popup hide-on-out hidden-soft">
+                            <div class="notification-popup hide-on-out hidden-soft boxy">
                                 <div class="notification-header">
                                     <div class="col-xs-12 center-block">
                                         <a href="#" data-switch=".notifs" data-hide=".prof-menu" class="active"><span>Notifications</span></a>

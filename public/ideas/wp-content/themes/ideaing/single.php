@@ -78,7 +78,7 @@
                 <div class="author-overview col-lg-5 col-sm-5 col-xs-6 full-480">
                     <h4 class="author-name">
                         <div id="sticky-anchor"></div>
-                        <b ng-bind="authorName" class="author-name text-uppercase"></b>
+                        <b ng-bind="authorName" class="author-name"></b>
                     </h4>
                     <time datetime="{{the_date('Y-m-d')}}">{{the_time( get_option( 'date_format' ) )}}</time>
 

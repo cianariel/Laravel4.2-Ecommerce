@@ -91,7 +91,7 @@ if (function_exists('is_single')) {
                         <div ng-class="['col-md-12', 'comment-edit-container', {'has-content': html}]"
                              ng-show="show_editor">
                             <div text-angular data-ng-model="html" ta-disabled='disabled'
-                                 name="description-editor" ta-toolbar="[['bold', 'insertImage']]"
+                                 name="description-editor"
                                  ta-text-editor-class="border-around ta-editor"
                                  ta-html-editor-class="border-around ta-editor">
                             </div>
