@@ -342,9 +342,17 @@
 
         $(window).scroll(function() {
 
-            if($(window).scrollTop() + $(window).height() == $(document).height()) {
+            var $currentPos = $(window).scrollTop() + $(window).height();
+
+            var $triggerPoint = $(document).height() - 300;
+
+            console.log($currentPos + ' - ' + $triggerPoint)
+
+            if($currentPos == $triggerPoint) {
                 $('.bottom-load-more').click();
                 $('.bottom-load-more').addClass('disabled').attr('disabled', true);
+                console.log('bugaga')
+
             }
 
             if(window.innerWidth > 620){

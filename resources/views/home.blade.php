@@ -197,7 +197,7 @@
         <div class="homepage-grid center-block">
                 @include('grid.grid')
 
-                @include('layouts.parts.load-more')
+                {{--@include('layouts.parts.load-more')--}}
 
 
         <!-- custom angular template - START -->

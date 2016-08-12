@@ -50,9 +50,6 @@
         </div>
     </div>
 
-    <a ng-show="hasMore" ng-click="loadMore()" class="btn btn-success bottom-load-more col-xs-12 hidden">Load More</a>
-
-
     <div class="grid-box-full grid-wrap hidden-soft">
         <div class="box-item idea-box box-item--featured" ng-if="item.type == 'idea'"
              ng-repeat="item in batch['row-4']" itemscope itemtype="http://schema.org/BlogPosting">
@@ -79,3 +76,5 @@
 
 
 </div>
+
+<a ng-show="hasMore" ng-click="loadMore()" class="btn btn-success bottom-load-more col-xs-12 hidden">Load More</a>
