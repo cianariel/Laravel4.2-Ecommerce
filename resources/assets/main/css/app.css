@@ -12969,26 +12969,33 @@ p {
   overflow: hidden;
   padding-bottom: 8px; }
 
-.main-content .grid-wrap:not(.shown) {
+.main-content .grid-wrap {
   visibility: hidden;
   overflow: hidden;
   padding-bottom: 8px; }
-  .main-content .grid-wrap:not(.shown) .box-item:first-child,
-  .main-content .grid-wrap:not(.shown) .box-item:last-child {
+  .main-content .grid-wrap .box-item:first-child,
+  .main-content .grid-wrap .box-item:last-child {
     top: 100px;
     transition: all, 1s; }
-  .main-content .grid-wrap:not(.shown).fadeIn {
+  .main-content .grid-wrap.fadeIn {
     -webkit-animation: animat_show 0.8s;
     animation: animat_show 0.8s;
     visibility: visible !important; }
-    .main-content .grid-wrap:not(.shown).fadeIn .box-item:first-child,
-    .main-content .grid-wrap:not(.shown).fadeIn .box-item:last-child {
+    .main-content .grid-wrap.fadeIn .box-item:first-child,
+    .main-content .grid-wrap.fadeIn .box-item:last-child {
       top: 0; }
 @-webkit-keyframes animat_show {
   0% {
     opacity: 0; }
   100% {
     opacity: 1; } }
+.main-content:first-child .grid-wrap.visible {
+  opacity: 1 !important;
+  visibility: visible !important; }
+  .main-content:first-child .grid-wrap.visible .box-item:first-child,
+  .main-content:first-child .grid-wrap.visible .box-item:last-child {
+    top: 0; }
+
 .grid-box-full .box-item {
   width: 98.7%;
   height: auto;
