@@ -10019,7 +10019,8 @@ footer.about-footer {
       margin-top: 3px;
       width: 72%;
       left: 44px;
-      top: 45px; } }
+      top: 45px;
+      padding-top: 4px; } }
     @media only screen and (max-width: 620px) and (max-width: 620px) {
       #top-nav .search-bar {
         background: transparent;
