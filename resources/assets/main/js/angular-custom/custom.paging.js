@@ -149,12 +149,9 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
         //});
 
         $scope.loadMore = function() {
-            console.log('what')
             if($('.bottom-load-more').hasClass('disabled')){
                 return false;
             }
-            console.log('is this')
-
 
             $scope.currentPage++;
             $scope.allContent[$scope.currentPage] = [];

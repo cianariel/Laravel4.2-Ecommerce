@@ -344,15 +344,11 @@
 
             var $currentPos = $(window).scrollTop() + $(window).height();
 
-            var $triggerPoint = $(document).height() - 300;
+            var $triggerPoint = $(document).height() - 300; // roughly, the point where the first chunk of loaded content ends
 
-            console.log($currentPos + ' - ' + $triggerPoint)
-
-            if($currentPos == $triggerPoint) {
+            if($currentPos < $triggerPoint - 500 && $currentPos < $triggerPoint + 500) { // if we are around that point, fire the Load More in the backgriund
                 $('.bottom-load-more').click();
                 $('.bottom-load-more').addClass('disabled').attr('disabled', true);
-                console.log('bugaga')
-
             }
 
             if(window.innerWidth > 620){
