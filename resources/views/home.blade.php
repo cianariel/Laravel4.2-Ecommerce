@@ -195,9 +195,6 @@
         </div>
 
         <div class="homepage-grid center-block">
-                <div class="loader loader-abs" cg-busy="firstLoad"></div>
-                <div class="loader loader-abs" cg-busy="filterLoad"></div>
-
                 @include('grid.grid')
 
                 @include('layouts.parts.load-more')

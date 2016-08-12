@@ -6,8 +6,8 @@
 
         if($sliderContent){
         foreach($sliderContent as $item){ ?>
-            <a  href="<?php echo $item['url']?>" class="box-item product-box slider-box text-center">
-                <div class="color-overlay"></div>
+            <a  href="<?php echo $item['url']?>" class="box-item product-box slider-box text-center category-<?php echo $item['category_main']?>">
+                <div class="color-overlay category-bg"></div>
                 <div class="img-holder">
                         <img itemprop="image" src="{{$item['image']}}">
                         <img itemprop="image" class="rsTmb" src="{{$item['image']}}">

@@ -133,7 +133,8 @@ a:hover, a:focus{
 
   }
 }
-.box-item:hover{
+.box-item:hover,
+.box-item.hovered{
   .category-smart-home,
   .category-smarthome{
     .idea-meta{
@@ -149,7 +150,8 @@ a:hover, a:focus{
   }
 
 }
-.box-item:hover{
+.box-item:hover,
+.box-item.hovered{
   .category-smart-travel{
     .idea-meta{
       background: $dark-orange;
@@ -164,7 +166,8 @@ a:hover, a:focus{
   }
 
 }
-.box-item:hover{
+.box-item:hover,
+.box-item.hovered{
   .category-smart-body{
     .idea-meta{
       background: $facebook-blue;
@@ -191,7 +194,8 @@ a:hover, a:focus{
     color: #68005c;
   }
 }
-.box-item:hover{
+.box-item:hover,
+.box-item.hovered{
   .category-deals{
     .idea-meta{
       background: #68005c;
@@ -576,10 +580,11 @@ ul.pointed{
 // Spinning clock
 
 .icon-clock {
-  height: 36px;
-  width: 36px;
+  height: 29px;
+  width: 29px;
   display: inline-block;
   top: 7px;
+  left: 3px;
   position: relative;
 
   .theme-colour-change{
@@ -2944,6 +2949,10 @@ article.product{
 
 .homepage-grid{
   transition: opacity 1s;
+
+  .main-content{
+    padding-bottom: 7px;
+  }
 }
 .homepage-grid.hidden{
   opacity:0;
@@ -3533,14 +3542,23 @@ header.colophon{
   left:0;
   right: 0;
   margin:0 auto !important;
+
   overflow: visible;
-  height: 40px;
+  height: 53px;
   z-index: 20 !important;
   opacity: 1;
 
-  background: #fff !important;
+  background: rgba(#fff, .7) !important;
 
-  @include pseudo-full-wide(#fff);
+  @include pseudo-full-wide(rgba(#fff, .7));
+
+  padding-top: 10px;
+  padding-bottom: 10px;
+
+  &::before,
+  &::after{
+    height: 53px;
+  }
 
   .toggle-button,
   .search-bar{
@@ -3968,10 +3986,10 @@ header.colophon{
             .notification-header{
                 border-top-left-radius: 20px;
                 border-top-right-radius: 20px;
-                background: $iridium;
-                padding: 10px 15px;
-                overflow: hidden;
-                color: #fff;
+                background: #fff;
+                padding: 14px 15px;
+              overflow: visible;
+              height: 52px;
 
               ul{
                 width: 200px;
@@ -3981,12 +3999,13 @@ header.colophon{
               }
               a{
                 position: relative;
-                color: #fff;
+                width: 46%;
                 font-weight: 200;
                 text-transform: capitalize;
                 font-size: 1.4rem;
                 text-decoration: none;
                 text-align: center;
+                padding-bottom: 4px;
 
                 span{
                   position: relative;
@@ -3995,9 +4014,9 @@ header.colophon{
                     position: absolute;
                     width: 100%;
                     height: 2px;
-                    top: 20px;
+                    top: 26px;
                     left: 0;
-                    background-color: #fff;
+                    background-color: #333;
                     visibility: hidden;
                     -webkit-transform: scaleX(0);
                     transform: scaleX(0);
@@ -4005,15 +4024,15 @@ header.colophon{
                     transition: all 0.3s ease-in-out 0s;
                   }
                 }
-                &:first-child{
-                  span::after{
-                    content: '|';
-                    margin-left: 7px;
-                  }
-                  span::before{
-                    width: 90%;
-                  }
-                }
+                //&:first-child{
+                //  span::after{
+                //    content: '|';
+                //    margin-left: 7px;
+                //  }
+                //  span::before{
+                //    width: 90%;
+                //  }
+                //}
                 &:hover,
                 &.active{
                   span{
@@ -4064,25 +4083,22 @@ header.colophon{
                     clear: both;
                 }
             }
-
-            &::before{
-                border-left: 10px solid transparent;
-                border-right: 10px solid transparent;
-                border-bottom: 12px solid;
-                width: 20px;
-                height: 10px;
-                right: 48px;
-                position: absolute;
-                content: ' ';
-                color: $iridium;
-                top: -11px;
-
-                @media(max-width: 620px){
-                  right: 17px;
-                }
-            }
-
-
+            //&::before{
+            //    border-left: 10px solid transparent;
+            //    border-right: 10px solid transparent;
+            //    border-bottom: 12px solid;
+            //    width: 20px;
+            //    height: 10px;
+            //    right: 48px;
+            //    position: absolute;
+            //    content: ' ';
+            //    color: $iridium;
+            //    top: -11px;
+            //
+            //    @media(max-width: 620px){
+            //      right: 17px;
+            //    }
+            //}
              .profile-menu{
                 overflow: hidden;
 
@@ -5371,16 +5387,16 @@ header.sub-head{
   height: 54px;
 
   &.current-timespan{
-    margin-bottom: 30px;
+    margin-bottom: 24px;
   }
 
-  span{ 
+  span{
     padding-bottom: 10px;
     border-bottom: 2px solid #000;
     margin-bottom: -1px;
     display: inline-block;
     height: 54px;
-
+    padding-right: 28px;
 
 
   }
@@ -5598,9 +5614,8 @@ header.sub-head{
 .loader-static{
   position: relative;
   margin: 0 auto;
-  position: relative;
-  //background: #fff;
-} 
+  bottom: 63px;
+}
 
 .homepage #hero-nav{
   .category-nav{
@@ -5693,9 +5708,15 @@ header.sub-head{
     padding: 0 !important;
     overflow: hidden;
     z-index: 1;
-    .color-overlay{
-      display: none;
+    &:hover{
+      .color-overlay{
+        opacity: 1;
+      }
     }
+    .color-overlay{
+      opacity: 0;
+    }
+
     .rsOverflow{
       margin-top: 0 !important;
       overflow: hidden !important;

@@ -183,7 +183,7 @@
   }
 
 	&:hover, &.hover, &.hovered {
-		.box-item__overlay
+		.box-item__overlay,
 		//.merchant-widget,
 		//.box-item__label--clear,
 		.user-widget__name,
@@ -195,7 +195,7 @@
 		}
 	}
     &.un-hover{
-        .box-item__overlay
+        .box-item__overlay,
         //.merchant-widget,
         //.box-item__label--clear,
         //.user-widget__name,
@@ -402,7 +402,7 @@
 	.box-item{
 		width: auto;
 		min-height: 315px;
-        bottom: 6px;
+        bottom: 0px;
         border-radius: 4px;
         //margin: 8px 4px 0;
         //margin-left: 4px;
