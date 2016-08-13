@@ -150,6 +150,7 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
         //});
 
         $scope.loadMore = function() {
+
             if($('.bottom-load-more').hasClass('disabled')){
                 return false;
             }
@@ -240,7 +241,9 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
         };
 
 
-        pagingApi.switchCategory = function($categoryName, $sliceFunction) {
+        $scope.switchCategory = function($categoryName) {
+
+            console.log('what for!')
             if($('.bottom-load-more').hasClass('disabled')){
                 return false;
             }
@@ -253,16 +256,26 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
 
             $scope.ideaCategory = $categoryName;
 
-            $scope.firstLoad =  pagingApi.getGridContent(1, false, false, $scope.filterBy, $scope.ideaCategory).success(function (response) {
 
+
+           $scope.firstLoad = pagingApi.getGridContent(10, false, false, $scope.filterBy, $scope.ideaCategory).success(function (response) {
+                 
+
+               
                 var newContent = $scope.sliceToRows(response['content']['ideas'], response['content']['featured'], response['content']['products']);;
                 //if($scope.currentPage == 2){
                 //    newContent['currentDay'] = 'Yesterday';
                 //}else{
                 //    newContent['currentDay'] = $daysBack + ' Days Ago';
                 //}
-                $scope.content[0] = newContent;
 
+                var replaceMe = [];
+                replaceMe[0] = newContent;
+
+                 $scope.content = replaceMe;
+
+                return true;
+              
                 //  $scope.content = $scope.content.concat($scope.newStuff);
 
                 $scope.hasMore = response['hasMore'];
