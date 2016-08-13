@@ -750,7 +750,7 @@ if(@env('PROD_FEED')){
             $featuredUrl = URL::to('/') . '/ideas/feeds/index.php?count=' . $featuredLimit . '&only-featured&offset=' . $featuredOffset . '&no-deals';
         }
 
-        if(@$dateQuery){
+        if(@$dateQuery){ 
             $featuredUrl .= $dateQuery;
         }
 

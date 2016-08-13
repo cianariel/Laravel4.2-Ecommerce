@@ -29,24 +29,25 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a id="show-smart-entertainment" class="category-link__smart-entertainment m-icon-text-holder" href="/ideas/smart-entertainment">
+                                    <a id="show-smart-entertainment" ng-click="switchCategory('smart-entertainment')"  class="category-link__smart-entertainment m-icon-text-holder" href="/ideas/smart-entertainment">
                                         <i class="hidden-xs hidden-sm hidden-md m-icon m-icon--video"></i>
                                         <span class="m-icon-text"><span class="hidden-xs hidden-sm">Smart</span> Entertainment</span>
                                     </a>
                                 </li>
                                 <li>
-                                    <a id="show-smart-body" class="category-link__smart-body m-icon-text-holder" href="/ideas/smart-body">
+                                    <a id="show-smart-body" class="category-link__smart-body m-icon-text-holder" href="/ideas/smart-body" ng-click="switchCategory('smart-body')" >
                                         <i class="hidden-xs hidden-sm hidden-md m-icon m-icon--wearables"></i>
                                         <span class="m-icon-text"><span class="hidden-xs hidden-sm">Smart</span> Body</span>
                                     </a> 
                                 </li>
                                 <li>
-                                    <a id="show-smart-travel" class="category-link__smart-travel m-icon-text-holder" href="/ideas/smart-travel">
+                                    <a id="show-smart-travel" class="category-link__smart-travel m-icon-text-holder" href="/ideas/smart-travel" ng-click="switchCategory('smart-travel')" >
                                         <i class="hidden-xs hidden-sm hidden-md m-icon m-icon--travel"></i>
                                         <span class="m-icon-text"><span class="hidden-xs hidden-sm">Smart</span> Travel</span>
                                     </a>
                                 </li>
                             </ul>
+                            
 <div>
 <div ng-repeat="batch in content" class="container main-content col-xs-12">
     <div class="grid-box-full grid-wrap visible"> 

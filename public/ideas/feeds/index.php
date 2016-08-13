@@ -40,24 +40,19 @@ $offset = $_REQUEST['offset'];
 $postCat = $_REQUEST['category-id'];
 $args = array(
 'cat' => $postCat,
-'showposts' => $postCount,
+'showposts' => $postCount, 
 'offset' => $offset,);
 
-if($catName = $_REQUEST['category-name']){
-
+if(isset($_REQUEST['category-name']) && $catName = $_REQUEST['category-name']){
+    if($catName == 'smart-home'){
+        $catName = 'smarthome';
+    }
     $args['tax_query'] = array(
-        'relation' => 'OR',
-        array(
-            'taxonomy' => 'post_tag',
-            'field' => 'slug',
-            'terms' => $catName,
-        ),
         array(
             'taxonomy' => 'category',
             'field' => 'slug',
             'terms' => $catName,
         ));
-
 }
 
 if($byTags = $_REQUEST['tag']){

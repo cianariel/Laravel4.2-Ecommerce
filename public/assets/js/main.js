@@ -6063,10 +6063,11 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
             $scope.ideaCategory = $categoryName;
 
 
+           // $location.path("/smart-entertainment").replace('/smart-home');
 
-           $scope.firstLoad = pagingApi.getGridContent(10, false, false, $scope.filterBy, $scope.ideaCategory).success(function (response) {
+           $scope.firstLoad = pagingApi.getGridContent(1, 0, false, false, $scope.ideaCategory).success(function (response) {
                  
-
+                $scope.currentPage = 1;
                
                 var newContent = $scope.sliceToRows(response['content']['ideas'], response['content']['featured'], response['content']['products']);;
                 //if($scope.currentPage == 2){
@@ -6080,14 +6081,20 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
 
                  $scope.content = replaceMe;
 
-                return true;
-              
-                //  $scope.content = $scope.content.concat($scope.newStuff);
 
                 $scope.hasMore = response['hasMore'];
 
                 $('.bottom-load-more').removeClass('disabled').attr('disabled', false);
+                
+              //   $location.url('/new/path').replace();
+               // $rootScope.$apply();
+             //   history.replaceState({category: 'smarthome'}, 'Smart Home', 'smart-home');
+            window.history.replaceState({category: 'smarthome'}, 'Smart Home', 'smart-home');
+             
+ 
+
             });
+            window.history.replaceState({category: 'smarthome'}, 'Smart Home', 'smart-home');
 
         }
 
