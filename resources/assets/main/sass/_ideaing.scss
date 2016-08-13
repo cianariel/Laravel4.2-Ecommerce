@@ -1624,7 +1624,11 @@ nav {
     z-index: 20;
 
     @media (max-width:620px){
-      padding-top: 37%;
+      padding-top: 10%;
+      width: 95%;
+      left: 0;
+      right: 0;
+      margin: 0 auto;
     }
   }
 
@@ -1699,8 +1703,12 @@ nav {
 
 
       span{
-        font-weight: 400;
         background-position-x: 3px;
+
+        @media(max-width:620px){
+          font-family: montserratlight;
+          font-size: 2.2rem;
+        }
       }
     }
     .color-overlay{
@@ -7012,6 +7020,10 @@ body.single{
 html.idea-stories{
   #hero{
     min-height: 480px;
+
+    @media(max-width:620px){
+      min-height: 350px;
+    }
   }
 }
 
@@ -7803,7 +7815,8 @@ footer.about-footer{
   #hero{
     .hero-background{
       -webkit-filter: none;
-
+      background-size: 100%;
+      top: 90px;
     }
 
     & > .container{
