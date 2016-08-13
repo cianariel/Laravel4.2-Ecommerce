@@ -127,13 +127,14 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
             }else{
                 $scope.ideaCategory = $filter('getURISegment')(3);
             }
-            var $limit = 9;
+            //var $limit = 9;
+        }else{
+            $scope.ideaCategory = $filter('getURISegment')(2);
+            console.log($scope.ideaCategory)
         }
 
         $scope.firstLoad = pagingApi.getGridContent(1, $limit, $scope.currentTag, $scope.filterBy,  $scope.ideaCategory).success(function (response) {
             $scope.allContent[0] = response;
-            console.log(1);
-            console.log(response);
             var newContent = $scope.sliceToRows(response['content']['ideas'], response['content']['featured'], response['content']['products']);
             newContent['currentDay'] = 'Today';
 
@@ -167,8 +168,6 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
 
             $scope.nextLoad =  pagingApi.getGridContent($scope.currentPage, $limit, $scope.currentTag, $scope.filterBy, $scope.ideaCategory).success(function (response) {
 
-                console.log(2);
-                console.log(response);
                 var newContent = $scope.sliceToRows(response['content']['ideas'], response['content']['featured'], response['content']['products']);;
                 if($scope.currentPage == 2){
                     newContent['currentDay'] = 'Yesterday';
@@ -239,6 +238,39 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
             console.log($return)
             return $return;
         };
+
+
+        pagingApi.switchCategory = function($categoryName, $sliceFunction) {
+            if($('.bottom-load-more').hasClass('disabled')){
+                return false;
+            }
+
+            //   var $limit = 0;
+            $scope.filterBy = null;
+
+            //    var $daysBack = $scope.currentPage - 1;
+
+
+            $scope.ideaCategory = $categoryName;
+
+            $scope.firstLoad =  pagingApi.getGridContent(1, false, false, $scope.filterBy, $scope.ideaCategory).success(function (response) {
+
+                var newContent = $scope.sliceToRows(response['content']['ideas'], response['content']['featured'], response['content']['products']);;
+                //if($scope.currentPage == 2){
+                //    newContent['currentDay'] = 'Yesterday';
+                //}else{
+                //    newContent['currentDay'] = $daysBack + ' Days Ago';
+                //}
+                $scope.content[0] = newContent;
+
+                //  $scope.content = $scope.content.concat($scope.newStuff);
+
+                $scope.hasMore = response['hasMore'];
+
+                $('.bottom-load-more').removeClass('disabled').attr('disabled', false);
+            });
+
+        }
 
         $scope.fadeAnimation = function($node, $action, $callback){
             $($node).fadeOut(
@@ -1043,8 +1075,6 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
                 document.getElementsByTagName('html')[0].className = className;
 
             });
-                console.log('buker')
-                console.log(data.data.product_permalink)
                 pagingApi.countSocialShares('product/' + data.data.product_permalink);
             });
 
@@ -1217,6 +1247,8 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
             });
             return $return;
         }
+
+
 
 
 

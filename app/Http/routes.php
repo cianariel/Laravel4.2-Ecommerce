@@ -39,6 +39,12 @@ Route::get('open/{productId}/{reference}', 'ProductQueryController@link');
 Route::post('api/product/get-price/', 'ProductController@getPrice');
 Route::post('api/product/get-for-thumb/', 'ProductController@getForThumb');
 
+Route::get('/smart-home', 'PageController@categoryPage');
+Route::get('/smart-body', 'PageController@categoryPage');
+Route::get('/smart-travel', 'PageController@categoryPage');
+Route::get('/smart-entertainment', 'PageController@categoryPage');
+
+
 
 //    Route::get('/product-details', function () // temp, used for tweaking frontend
 //    {

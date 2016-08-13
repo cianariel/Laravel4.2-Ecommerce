@@ -25,6 +25,7 @@ use Route;
 use DB;
 use Redis;
 use Counter;
+use Request as Req;
 
 
 class PageController extends ApiController
@@ -85,6 +86,22 @@ class PageController extends ApiController
             ->with('sliderContent', $sliderContent)
             ->with('mostPopular', $mostPopular)
             ->with('homehero', $result);
+    }
+
+    public function categoryPage()
+    {
+
+        $thisCategory = Req::segment(1);
+
+     //   $mostPopular = self::getMostPopularByCategory();
+
+        MetaTag::set('title', 'Ideaing | Ideas for Smarter Living');
+        MetaTag::set('description', 'Ideaing inspires you to live a smarter and beautiful home. Get ideas on using home automation devices including WiFi cameras, WiFi doorbells, door locks, security, energy, water and many more.');
+        //return $result;
+        return view('category.category')
+            ->with('thisCategory', $thisCategory)
+          //  ->with('mostPopular', $mostPopular)
+            ;
     }
 
     public static function getMostPopular(){
@@ -307,10 +324,10 @@ class PageController extends ApiController
         return $return;
     }
 
-    public function getTimelineContent($daysback = 1, $tag = false, $type = false, $ideaCategory = false)
+    public function getTimelineContent($daysback = 1, $tag = false, $type = false, $categoryName = false)
     {
 
-        $cacheKey = "timeline-content-$daysback-$tag-$type-$ideaCategory";
+        $cacheKey = "timeline-content-$daysback-$tag-$type-$categoryName";
 
 //        if($cachedContent = PageHelper::getFromRedis($cacheKey)){
 //            $return = $cachedContent;
@@ -489,9 +506,9 @@ class PageController extends ApiController
         return $return;
     }
 
-    public function getGridContent($page = 1, $limit = 5, $tag = false, $type = false, $ideaCategory = false, $daysback = false)
+    public function getGridContent($page = 1, $limit = 5, $tag = false, $type = false, $categoryName = false, $daysback = false)
     {
-        $cacheKey = "grid-content-$page-$limit-$tag-$type-$ideaCategory";
+        $cacheKey = "grid-content-$page-$limit-$tag-$type-$categoryName";
 
 //          if($cachedContent = PageHelper::getFromRedis($cacheKey)){
 //            $return = $cachedContent;
@@ -534,13 +551,32 @@ class PageController extends ApiController
 //            $daysback = strtotime('today'); TODO - temp until we have enough time content
         }
 
-        if ($type == 'product' || !$stories = self::getGridStories($storyLimit + 1, $storyOffset, $featuredLimit, $featuredOffset, $tag, $ideaCategory, $daysback)) {
+        if ($type == 'product' || !$stories = self::getGridStories($storyLimit + 1, $storyOffset, $featuredLimit, $featuredOffset, $tag, $categoryName, $daysback)) {
             $stories = [
                 'regular' => [],
                 'featured' => [],
             ];
         }
-        if ($type == 'idea' || !$products = self::getProducts($productLimit + 1, $page, $productOffset, $tagID, false, false, $daysback)) {
+
+            switch ($categoryName) {
+                case 'smart-home':
+                    $productCategoryID = 44;
+        break;
+                case 'smart-body':
+                    $productCategoryID = 62;
+        break;
+                case 'smart-travel':
+                    $productCategoryID = 55;
+        break;
+                case 'smart-entertainment':
+                    $productCategoryID = 159;
+        break;
+                default:
+                    $productCategoryID = false;
+            }
+
+
+        if ($type == 'idea' || !$products = self::getProducts($productLimit + 1, $page, $productOffset, $tagID, $productCategoryID, false, $daysback)) {
             $products['result'] = [];
         }
 
@@ -647,9 +683,14 @@ class PageController extends ApiController
     public function getGridStories($limit, $offset, $featuredLimit, $featuredOffset, $tag = false, $category = false, $daysback = false)
     {
 
-        $url = URL::to('/') . '/ideas/feeds/index.php?count=' . $limit . '&no-featured&offset=' . $offset;
+        $url = 'https://ideaing.com/ideas/feeds/index.php?count=' . $limit . '&no-featured&offset=' . $offset;
 //        $url = URL::to('/') . '/ideas/feeds/index.php?count=' . $limit . '&no-featured&offset=' . $offset;
 
+        if(@env('PROD_FEED')){
+            $url = 'https://ideaing.com/ideas/feeds/index.php?count=' . $limit . '&no-featured&offset=' . $offset;
+        }else{
+            $url = URL::to('/') . '/ideas/feeds/index.php?count=' . $limit . '&no-featured&offset=' . $offset;
+        }
         if ($tag && $tag != 'false') {
             $url .= '&tag=' . $tag;
         }
@@ -703,8 +744,11 @@ class PageController extends ApiController
 
         $return['regular'] = json_decode($newIdeaCollection->toJson(), FALSE);
 
-
-        $featuredUrl = URL::to('/') . '/ideas/feeds/index.php?count=' . $featuredLimit . '&only-featured&offset=' . $featuredOffset . '&no-deals';
+if(@env('PROD_FEED')){
+        $featuredUrl = 'https://ideaing.com/ideas/feeds/index.php?count=' . $featuredLimit . '&only-featured&offset=' . $featuredOffset . '&no-deals';
+        }else{
+            $featuredUrl = URL::to('/') . '/ideas/feeds/index.php?count=' . $featuredLimit . '&only-featured&offset=' . $featuredOffset . '&no-deals';
+        }
 
         if(@$dateQuery){
             $featuredUrl .= $dateQuery;
