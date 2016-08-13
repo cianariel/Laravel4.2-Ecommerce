@@ -75,7 +75,7 @@
                     </div>
                     <div class="col-md-12" ng-hide="show_editor">
                         <textarea placeholder="Write a comment" class="form-control"
-                                  ng-click="show_editor=1; focus_editor=true; focusEditor()" cols="" rows=""
+                                  ng-click="show_editor=1" cols="" rows=""
                                   class=" ta-text ta-editor"></textarea>
                     </div>
 
