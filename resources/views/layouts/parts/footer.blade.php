@@ -70,6 +70,56 @@
 </footer>
 </div>
 
+<nav id="c-menu--push-left" class="slide-menu c-menu c-menu--push-left col-xs-1">
+    <span class="close-button pull-right slide-back">
+        <i class="m-icon--Close"></i>
+    </span>
+    <ul class="top-menu col-xs-9">
+        <li>
+            <a class="shop m-icon-text-holder dark-orange" href="/shop">
+                <i class="m-icon m-icon--shopping-bag-light-green orange"></i>
+                <span class="m-icon-text orange text-bold">Shop</span>
+            </a>
+        </li>
+    </ul>
+    <ul class="mid-menu col-xs-12">
+        <li class="col-xs-12 nested">
+            <a href="/ideas/smart-home" class="category-link__smart-home" href="#">
+                <i class="m-icon m-icon--smart-home"></i>
+                <span class="m-icon-text">Smart Home</span>
+            </a>
+            <ul class="child wrap col-xs-12">
+                <li><a href="https://ideaing.com/idea/kitchen">Kitchen</a></li>
+                <li><a href="https://ideaing.com/idea/bath">Bath</a></li>
+                <li><a href="https://ideaing.com/idea/bedroom">Bedroom</a></li>
+                <li><a href="https://ideaing.com/idea/office">Office</a></li>
+                <li><a href="https://ideaing.com/idea/living">Living</a></li>
+                <li><a href="https://ideaing.com/idea/outdoor">Outdoor</a></li>
+                <li><a href="https://ideaing.com/idea/lighting">Lighting</a></li>
+                <li><a href="https://ideaing.com/idea/security">Security</a></li>
+            </ul>
+        </li>
+        <li class="col-xs-12">
+            <a class="category-link__smart-entertainment m-icon-text-holder" href="/ideas/smart-entertainment">
+                <i class="m-icon m-icon--video"></i>
+                <span class="m-icon-text"><span class="hidden-xs hidden-sm">Smart</span> Entertainment</span>
+            </a>
+        </li>
+        <li class="col-xs-12">
+            <a class="category-link__smart-body m-icon-text-holder" href="/ideas/smart-body">
+                <i class="m-icon m-icon--wearables"></i>
+                <span class="m-icon-text"><span class="hidden-xs hidden-sm">Smart</span> Body</span>
+            </a>
+        </li>
+        <li class="col-xs-12">
+            <a class="category-link__smart-travel m-icon-text-holder" href="/ideas/smart-travel">
+                <i class="m-icon m-icon--travel"></i>
+                <span class="m-icon-text"><span class="hidden-xs hidden-sm">Smart</span> Travel</span>
+            </a>
+        </li>
+    </ul>
+</nav>
+
 
 
 
@@ -109,53 +159,4 @@
 <!-- Homepage -->
 
 
-<nav id="c-menu--push-left" class="slide-menu c-menu c-menu--push-left col-xs-1">
-    <span class="close-button pull-right slide-back">
-        <i class="m-icon--Close"></i>
-    </span>
-        <ul class="top-menu col-xs-9">
-            <li>
-                <a class="shop m-icon-text-holder dark-orange" href="/shop">
-                    <i class="m-icon m-icon--shopping-bag-light-green orange"></i>
-                    <span class="m-icon-text orange text-bold">Shop</span>
-                </a>
-            </li>
-        </ul>
-        <ul class="mid-menu col-xs-12">
-            <li class="col-xs-12 nested">
-                <a href="/ideas/smart-home" class="category-link__smart-home" href="#">
-                    <i class="m-icon m-icon--smart-home"></i>
-                    <span class="m-icon-text">Smart Home</span>
-                </a>
-                <ul class="child wrap col-xs-12">
-                    <li><a href="https://ideaing.com/idea/kitchen">Kitchen</a></li>
-                    <li><a href="https://ideaing.com/idea/bath">Bath</a></li>
-                    <li><a href="https://ideaing.com/idea/bedroom">Bedroom</a></li>
-                    <li><a href="https://ideaing.com/idea/office">Office</a></li>
-                    <li><a href="https://ideaing.com/idea/living">Living</a></li>
-                    <li><a href="https://ideaing.com/idea/outdoor">Outdoor</a></li>
-                    <li><a href="https://ideaing.com/idea/lighting">Lighting</a></li>
-                    <li><a href="https://ideaing.com/idea/security">Security</a></li>
-                </ul>
-            </li>
-            <li class="col-xs-12">
-                <a class="category-link__smart-entertainment m-icon-text-holder" href="/ideas/smart-entertainment">
-                    <i class="m-icon m-icon--video"></i>
-                    <span class="m-icon-text"><span class="hidden-xs hidden-sm">Smart</span> Entertainment</span>
-                </a>
-            </li>
-            <li class="col-xs-12">
-                <a class="category-link__smart-body m-icon-text-holder" href="/ideas/smart-body">
-                    <i class="m-icon m-icon--wearables"></i>
-                    <span class="m-icon-text"><span class="hidden-xs hidden-sm">Smart</span> Body</span>
-                </a>
-            </li>
-            <li class="col-xs-12">
-                <a class="category-link__smart-travel m-icon-text-holder" href="/ideas/smart-travel">
-                    <i class="m-icon m-icon--travel"></i>
-                    <span class="m-icon-text"><span class="hidden-xs hidden-sm">Smart</span> Travel</span>
-                </a>
-            </li>
-        </ul>
-</nav>
 

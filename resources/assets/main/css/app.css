@@ -12587,7 +12587,10 @@ body {
     border: 0; }
 
 body.has-active-menu {
-  overflow: hidden; }
+  overflow: hidden !important;
+  margin: 0;
+  padding: 0;
+  height: 100%; }
   body.has-active-menu .over-wrap {
     -webkit-transform: translateX(300px);
     -ms-transform: translateX(300px);

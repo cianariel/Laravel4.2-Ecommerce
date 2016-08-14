@@ -11556,7 +11556,10 @@ body{
 
 
 body.has-active-menu{
-  overflow: hidden;
+  overflow: hidden !important;
+  margin: 0;
+  padding: 0;
+  height: 100%;
   //width:100%;
   .over-wrap{
     -webkit-transform: translateX(300px);
