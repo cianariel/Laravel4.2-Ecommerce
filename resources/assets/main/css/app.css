@@ -12565,6 +12565,8 @@ body {
   width: 300px;
   padding-top: 50px;
   background: #f9f9f9;
+  height: 100%;
+  overflow-y: scroll;
   -webkit-transform: translateX(-300px);
   -ms-transform: translateX(-300px);
   transform: translateX(-300px) !important; }
@@ -12585,8 +12587,7 @@ body {
     border: 0; }
 
 body.has-active-menu {
-  overflow-x: hidden;
-  width: 100%; }
+  overflow: hidden; }
   body.has-active-menu .over-wrap {
     -webkit-transform: translateX(300px);
     -ms-transform: translateX(300px);

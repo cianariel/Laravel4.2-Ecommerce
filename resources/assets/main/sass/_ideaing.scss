@@ -11516,9 +11516,9 @@ body{
   width: 300px;
   padding-top: 50px;
   background: #f9f9f9;
-    width: 100%;
+    //width: 100%;
     height: 100%;
-    overflow-y: scroll
+    overflow-y: scroll;
 
   -webkit-transform: translateX(-300px);
   -ms-transform: translateX(-300px);
@@ -11556,8 +11556,8 @@ body{
 
 
 body.has-active-menu{
-  overflow-x:hidden;
-  width:100%;
+  overflow: hidden;
+  //width:100%;
   .over-wrap{
     -webkit-transform: translateX(300px);
     -ms-transform: translateX(300px);
