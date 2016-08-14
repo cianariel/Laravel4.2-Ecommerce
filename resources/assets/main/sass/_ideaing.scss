@@ -11506,6 +11506,7 @@ body.giveaway-page{
 
 
 .slide-menu{
+  display: block;
   position: fixed;
   left: 0;
   top: 0;
@@ -11549,6 +11550,7 @@ body.giveaway-page{
 
 
 body.has-active-menu{
+  overflow-x:hidden;
   .over-wrap{
     -webkit-transform: translateX(300px);
     -ms-transform: translateX(300px);

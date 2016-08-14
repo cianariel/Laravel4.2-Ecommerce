@@ -12551,6 +12551,7 @@ body.giveaway-page .black-slider {
   float: none; }
 
 .slide-menu {
+  display: block;
   position: fixed;
   left: 0;
   top: 0;
@@ -12576,14 +12577,16 @@ body.giveaway-page .black-slider {
   .slide-menu .mid-menu ul.child li {
     border: 0; }
 
-body.has-active-menu .over-wrap {
-  -webkit-transform: translateX(300px);
-  -ms-transform: translateX(300px);
-  transform: translateX(300px); }
-body.has-active-menu .slide-menu {
-  -webkit-transform: translateX(0);
-  -ms-transform: translateX(0);
-  transform: translateX(0) !important; }
+body.has-active-menu {
+  overflow-x: hidden; }
+  body.has-active-menu .over-wrap {
+    -webkit-transform: translateX(300px);
+    -ms-transform: translateX(300px);
+    transform: translateX(300px); }
+  body.has-active-menu .slide-menu {
+    -webkit-transform: translateX(0);
+    -ms-transform: translateX(0);
+    transform: translateX(0) !important; }
 
 @font-face {
   font-family: 'montserratlight';
