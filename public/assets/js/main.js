@@ -3634,6 +3634,17 @@ angular.module('colorpicker.module', [])
             return false;
         });
 
+
+        $('body').on('click', '[data-click]', function(e){
+            e.preventDefault();
+            var $that = $(this);
+            var $clickMe = $that.data('click');
+
+            $($clickMe).click();
+            
+            return false;
+        });
+
         $('body').on('click', '.search-toggle-button', function(e){
             e.preventDefault();
             var $show = $('.search-bar');
@@ -3940,7 +3951,7 @@ angular.module('colorpicker.module', [])
 
             var $triggerPoint = $(document).height() - 300; // roughly, the point where the first chunk of loaded content ends
 
-            if($currentPos < $triggerPoint - 500 && $currentPos < $triggerPoint + 500) { // if we are around that point, fire the Load More in the backgriund
+            if($currentPos < $triggerPoint - 200 && $currentPos < $triggerPoint + 200) { // if we are around that point, fire the Load More in the backgriund
                 $('.bottom-load-more').click();
                 $('.bottom-load-more').addClass('disabled').attr('disabled', true);
             }
@@ -5982,6 +5993,7 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
         //});
 
         $scope.loadMore = function() {
+
             if($('.bottom-load-more').hasClass('disabled')){
                 return false;
             }
@@ -6072,7 +6084,9 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
         };
 
 
-        pagingApi.switchCategory = function($categoryName, $sliceFunction) {
+        $scope.switchCategory = function($categoryName) {
+
+            console.log('what for!')
             if($('.bottom-load-more').hasClass('disabled')){
                 return false;
             }
@@ -6085,22 +6099,39 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
 
             $scope.ideaCategory = $categoryName;
 
-            $scope.firstLoad =  pagingApi.getGridContent(1, false, false, $scope.filterBy, $scope.ideaCategory).success(function (response) {
 
+           // $location.path("/smart-entertainment").replace('/smart-home');
+
+           $scope.firstLoad = pagingApi.getGridContent(1, 0, false, false, $scope.ideaCategory).success(function (response) {
+                 
+                $scope.currentPage = 1;
+               
                 var newContent = $scope.sliceToRows(response['content']['ideas'], response['content']['featured'], response['content']['products']);;
                 //if($scope.currentPage == 2){
                 //    newContent['currentDay'] = 'Yesterday';
                 //}else{
                 //    newContent['currentDay'] = $daysBack + ' Days Ago';
                 //}
-                $scope.content[0] = newContent;
 
-                //  $scope.content = $scope.content.concat($scope.newStuff);
+                var replaceMe = [];
+                replaceMe[0] = newContent;
+
+                 $scope.content = replaceMe;
+
 
                 $scope.hasMore = response['hasMore'];
 
                 $('.bottom-load-more').removeClass('disabled').attr('disabled', false);
+                
+              //   $location.url('/new/path').replace();
+               // $rootScope.$apply();
+             //   history.replaceState({category: 'smarthome'}, 'Smart Home', 'smart-home');
+            window.history.replaceState({category: 'smarthome'}, 'Smart Home', 'smart-home');
+             
+ 
+
             });
+            window.history.replaceState({category: 'smarthome'}, 'Smart Home', 'smart-home');
 
         }
 

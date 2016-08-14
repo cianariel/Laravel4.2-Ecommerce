@@ -47,6 +47,17 @@
             return false;
         });
 
+
+        $('body').on('click', '[data-click]', function(e){
+            e.preventDefault();
+            var $that = $(this);
+            var $clickMe = $that.data('click');
+
+            $($clickMe).click();
+            
+            return false;
+        });
+
         $('body').on('click', '.search-toggle-button', function(e){
             e.preventDefault();
             var $show = $('.search-bar');
@@ -353,7 +364,7 @@
 
             var $triggerPoint = $(document).height() - 300; // roughly, the point where the first chunk of loaded content ends
 
-            if($currentPos < $triggerPoint - 500 && $currentPos < $triggerPoint + 500) { // if we are around that point, fire the Load More in the backgriund
+            if($currentPos < $triggerPoint - 200 && $currentPos < $triggerPoint + 200) { // if we are around that point, fire the Load More in the backgriund
                 $('.bottom-load-more').click();
                 $('.bottom-load-more').addClass('disabled').attr('disabled', true);
             }

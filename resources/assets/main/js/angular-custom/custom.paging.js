@@ -150,6 +150,7 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
         //});
 
         $scope.loadMore = function() {
+
             if($('.bottom-load-more').hasClass('disabled')){
                 return false;
             }
@@ -240,7 +241,9 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
         };
 
 
-        pagingApi.switchCategory = function($categoryName, $sliceFunction) {
+        $scope.switchCategory = function($categoryName) {
+
+            console.log('what for!')
             if($('.bottom-load-more').hasClass('disabled')){
                 return false;
             }
@@ -253,22 +256,39 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
 
             $scope.ideaCategory = $categoryName;
 
-            $scope.firstLoad =  pagingApi.getGridContent(1, false, false, $scope.filterBy, $scope.ideaCategory).success(function (response) {
 
+           // $location.path("/smart-entertainment").replace('/smart-home');
+
+           $scope.firstLoad = pagingApi.getGridContent(1, 0, false, false, $scope.ideaCategory).success(function (response) {
+                 
+                $scope.currentPage = 1;
+               
                 var newContent = $scope.sliceToRows(response['content']['ideas'], response['content']['featured'], response['content']['products']);;
                 //if($scope.currentPage == 2){
                 //    newContent['currentDay'] = 'Yesterday';
                 //}else{
                 //    newContent['currentDay'] = $daysBack + ' Days Ago';
                 //}
-                $scope.content[0] = newContent;
 
-                //  $scope.content = $scope.content.concat($scope.newStuff);
+                var replaceMe = [];
+                replaceMe[0] = newContent;
+
+                 $scope.content = replaceMe;
+
 
                 $scope.hasMore = response['hasMore'];
 
                 $('.bottom-load-more').removeClass('disabled').attr('disabled', false);
+                
+              //   $location.url('/new/path').replace();
+               // $rootScope.$apply();
+             //   history.replaceState({category: 'smarthome'}, 'Smart Home', 'smart-home');
+            window.history.replaceState({category: 'smarthome'}, 'Smart Home', 'smart-home');
+             
+ 
+
             });
+            window.history.replaceState({category: 'smarthome'}, 'Smart Home', 'smart-home');
 
         }
 
