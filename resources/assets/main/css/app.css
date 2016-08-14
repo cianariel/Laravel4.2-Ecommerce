@@ -12552,6 +12552,7 @@ body.giveaway-page .black-slider {
 
 .over-wrap,
 .c-menu--push-left {
+  box-sizing: inherit;
   transition: transform 300ms linear; }
 
 body {
@@ -12563,7 +12564,7 @@ body {
   left: 0;
   top: 0;
   width: 300px;
-  padding-top: 50px;
+  box-sizing: inherit;
   background: #f9f9f9;
   height: 100%;
   overflow-y: scroll;
