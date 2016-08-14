@@ -12569,7 +12569,7 @@ body {
   overflow-y: scroll;
   -webkit-transform: translateX(-300px);
   -ms-transform: translateX(-300px);
-  transform: translateX(-300px) !important; }
+  transform: translateX(-300px); }
   .slide-menu .close-button {
     margin-top: 14px;
     margin-right: 19px; }
@@ -12598,7 +12598,7 @@ body.has-active-menu {
   body.has-active-menu .slide-menu {
     -webkit-transform: translateX(0);
     -ms-transform: translateX(0);
-    transform: translateX(0) !important; }
+    transform: translateX(0); }
 
 @font-face {
   font-family: 'montserratlight';

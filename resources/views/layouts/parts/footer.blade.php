@@ -70,7 +70,7 @@
 </footer>
 </div>
 
-<nav id="c-menu--push-left" class="slide-menu c-menu c-menu--push-left col-xs-1">
+<nav id="c-menu--push-left" class="slide-menu c-menu c-menu--push-left">
     <span class="close-button pull-right slide-back">
         <i class="m-icon--Close"></i>
     </span>
