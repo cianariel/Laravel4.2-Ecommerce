@@ -68,6 +68,11 @@
     </div>
     <button class="btn-none close-down" data-toggle=".about-footer"></button>
 </footer>
+</div>
+
+
+
+
 
 <div class="page-overlay"></div>
 <div class="page-overlay picture-overlay"></div>
@@ -102,3 +107,19 @@
     </script>
 <?php } ?>
 <!-- Homepage -->
+
+<script src="http://callmenick.com/_development/slide-push-menus/js/dist/menu.js"></script>
+
+
+
+<nav id="c-menu--push-left" class="c-menu c-menu--push-left">
+    <button class="c-menu__close">← Close Menu</button>
+    <ul class="c-menu__items">
+        <li class="c-menu__item"><a href="#" class="c-menu__link">Home</a></li>
+        <li class="c-menu__item"><a href="#" class="c-menu__link">About</a></li>
+        <li class="c-menu__item"><a href="#" class="c-menu__link">Services</a></li>
+        <li class="c-menu__item"><a href="#" class="c-menu__link">Work</a></li>
+        <li class="c-menu__item"><a href="#" class="c-menu__link">Contact</a></li>
+    </ul>
+</nav>
+

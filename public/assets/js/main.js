@@ -3976,6 +3976,13 @@ angular.module('colorpicker.module', [])
             }
         });
 
+        $('.yes').click(function(){
+            console.log(123123)
+            $('.over-wrap').addClass('has-slide-left');
+            $('body').toggleClass('has-active-menu');
+            $('#c-menu--slide-left').addClass('is-active');
+        });
+
         //$(function(){
             var body = $('body');
             if(body.hasClass('home') || body.hasClass('room-landing')){

@@ -5,7 +5,7 @@
 </head>
 
 <body ng-app="rootApp" class="@yield('body-class', ''){{@$userData['login'] ? ' logged-in' : ''}}">
-<div>
+<div class="over-wrap">
     @include('layouts.parts.header')
 
     @yield('content')

@@ -29,7 +29,7 @@ if (!isset($theGiveAway)) {
 }
 
 ?>
-
+<div class="over-wrap" id="o-wrapper">
 <div id="publicApp" ng-app="publicApp" ng-controller="publicController" class="header-cloak scroll-header" ng-cloak>
     <header class="colophon container full-sm fixed-sm">
         <div ng-init="socialCounter()" class="socialcounter col-xs-12">
@@ -681,4 +681,4 @@ if (!isset($theGiveAway)) {
 
 </script>
 
-    
+
