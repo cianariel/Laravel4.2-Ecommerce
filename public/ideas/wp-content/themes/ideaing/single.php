@@ -99,8 +99,11 @@
                 </div>
             </header>
         </div>
+        <div id="#mobile-sticky-anchor" class="hidden"></div>
 
-        <div class="hero-background" style="background-image:url( <?php echo str_replace('ideaing-ideas.s3.amazonaws.com', 'd3f8t323tq9ys5.cloudfront.net', getThumbnailLink($post->ID)) ?> ) "></div>
+        <div class="hero-background hidden-620" style="background-image:url( <?php echo str_replace('ideaing-ideas.s3.amazonaws.com', 'd3f8t323tq9ys5.cloudfront.net', getThumbnailLink($post->ID)) ?> ) "></div>
+        <?php $feedImg = get_field('feed_image') ?>
+        <div class="hero-background hidden-soft shown-620" style="background-image:url( <?php echo str_replace('ideaing-ideas.s3.amazonaws.com', 'd3f8t323tq9ys5.cloudfront.net', $feedImg['url']) ?> ) "></div>
         <div class="color-overlay"></div>
     </section>
     <nav id="hero-nav" class="col-sm-12">

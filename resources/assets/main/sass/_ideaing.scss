@@ -1383,17 +1383,50 @@ ul.share-buttons{
   background:rgba(#ededed, .9);
   z-index: 30;
 
+  padding: 22px 5px;
+
+  overflow: hidden;
+  -webkit-transition: padding 0.3s;
+  -moz-transition: padding 0.3s;
+  transition: padding 0.3s;
+  //text-align:center;
+  line-height:160px;
+
   .all-shares{
     display: none;
   }
 
   h5{
     float: left;
-    font-family: montserratlight;
     text-align: center;
     font-style: italic;
-    font-size: 1.2rem;
+    font-size: 1.7rem;
     font-weight: 200;
+
+    font-weight:normal;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    transition: all 0.3s;
+  }
+
+
+    &.shrink {
+    padding: 5px;
+    line-height:80px;
+  }
+  //.header h1
+  //{
+  //  font-size:30px;
+  //
+  //}
+
+  &.shrink h5
+  {
+    font-family: montserratlight;
+    font-size:1.3rem;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    transition: all 0.3s;
   }
 }
 
@@ -1624,7 +1657,7 @@ nav {
     z-index: 20;
 
     @media (max-width:620px){
-      padding-top: 10%;
+      padding-top: 5%;
       width: 95%;
       left: 0;
       right: 0;
@@ -1705,10 +1738,7 @@ nav {
       span{
         background-position-x: 3px;
 
-        @media(max-width:620px){
-          font-family: montserratlight;
-          font-size: 2.2rem;
-        }
+        @media(max-width:620px){}
       }
     }
     .color-overlay{
@@ -6152,6 +6182,21 @@ body.single{
       -ms-transition: opacity .5s ease;
       -o-transition: opacity .5s ease;
       transition: opacity .5s ease;
+
+      &:hover{
+        /* Effect 1 */
+        //.hi-icon-effect-1 .hi-icon {
+        //  background: rgba(255,255,255,0.1);
+        //  -webkit-transition: background 0.2s, color 0.2s;
+        //  -moz-transition: background 0.2s, color 0.2s;
+        //  transition: background 0.2s, color 0.2s;
+        //}
+
+        border:1px solid #fff;
+
+
+      }
+
     }
     &::before{
         content: '';
@@ -6236,6 +6281,7 @@ body.single{
       position:relative;
       line-height:1.5rem;
       font-size: 1.3rem;
+      border-radius: 5px;
 
       &.smallish{
         .merchant-widget__logo {
@@ -6264,6 +6310,9 @@ body.single{
       text-align:center;
       //background:rgba($iridium, .7);
       color:#fff;
+
+      border-bottom-right-radius: 5px;
+      border-bottom-left-radius: 5px;
     }
   }
   .merchant-widget__logo{
@@ -7019,11 +7068,11 @@ body.single{
 
 html.idea-stories{
   #hero{
-    min-height: 480px;
+    min-height: 580px;
 
-    @media(max-width:620px){
-      min-height: 350px;
-    }
+    //@media(max-width:620px){
+    //  min-height: 350px;
+    //}
   }
 }
 
@@ -7816,7 +7865,7 @@ footer.about-footer{
     .hero-background{
       -webkit-filter: none;
       background-size: 100%;
-      top: 90px;
+      top: 58px;
     }
 
     & > .container{
