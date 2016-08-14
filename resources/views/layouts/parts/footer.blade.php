@@ -108,9 +108,6 @@
 <?php } ?>
 <!-- Homepage -->
 
-<script src="http://callmenick.com/_development/slide-push-menus/js/dist/menu.js"></script>
-
-
 
 <nav id="c-menu--push-left" class="slide-menu c-menu c-menu--push-left col-xs-1">
     <span class="close-button pull-right slide-back">

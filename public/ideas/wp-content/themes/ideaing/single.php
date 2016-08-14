@@ -60,8 +60,6 @@
 
     }
     ?>
-
-        <a  class="yes">Slide Left</a>
     <section id="hero" class="details-hero">
         <div class="head-wrap">
 
