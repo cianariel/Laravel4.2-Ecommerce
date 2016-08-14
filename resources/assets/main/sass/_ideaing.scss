@@ -11499,10 +11499,10 @@ body.giveaway-page{
 //    transform: translateX(300px)
 //  }
 //}
-//.over-wrap,
-//.c-menu--push-left{
-//  transition: transform 300ms linear;
-//}
+.over-wrap,
+.c-menu--push-left{
+  transition: transform 300ms linear;
+}
 
 body{
   position: relative;
@@ -11516,6 +11516,9 @@ body{
   width: 300px;
   padding-top: 50px;
   background: #f9f9f9;
+    width: 100%;
+    height: 100%;
+    overflow-y: scroll
 
   -webkit-transform: translateX(-300px);
   -ms-transform: translateX(-300px);
@@ -11556,9 +11559,9 @@ body.has-active-menu{
   overflow-x:hidden;
   width:100%;
   .over-wrap{
-    -webkit-transform: translateX(100%);
-    -ms-transform: translateX(100%);
-    transform: translateX(100%)
+    -webkit-transform: translateX(300px);
+    -ms-transform: translateX(300px);
+    transform: translateX(300px)
   }
   .slide-menu{
     -webkit-transform: translateX(0);

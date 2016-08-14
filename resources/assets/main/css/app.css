@@ -12550,6 +12550,10 @@ body.giveaway-page .black-slider {
   margin: 0 auto  !important;
   float: none; }
 
+.over-wrap,
+.c-menu--push-left {
+  transition: transform 300ms linear; }
+
 body {
   position: relative; }
 
@@ -12584,9 +12588,9 @@ body.has-active-menu {
   overflow-x: hidden;
   width: 100%; }
   body.has-active-menu .over-wrap {
-    -webkit-transform: translateX(100%);
-    -ms-transform: translateX(100%);
-    transform: translateX(100%); }
+    -webkit-transform: translateX(300px);
+    -ms-transform: translateX(300px);
+    transform: translateX(300px); }
   body.has-active-menu .slide-menu {
     -webkit-transform: translateX(0);
     -ms-transform: translateX(0);
