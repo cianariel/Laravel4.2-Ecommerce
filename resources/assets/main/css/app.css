@@ -12578,11 +12578,12 @@ body.giveaway-page .black-slider {
     border: 0; }
 
 body.has-active-menu {
-  overflow-x: hidden; }
+  overflow-x: hidden;
+  width: 100%; }
   body.has-active-menu .over-wrap {
-    -webkit-transform: translateX(300px);
-    -ms-transform: translateX(300px);
-    transform: translateX(300px); }
+    -webkit-transform: translateX(100%);
+    -ms-transform: translateX(100%);
+    transform: translateX(100%); }
   body.has-active-menu .slide-menu {
     -webkit-transform: translateX(0);
     -ms-transform: translateX(0);

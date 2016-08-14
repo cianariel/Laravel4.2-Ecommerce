@@ -11553,9 +11553,9 @@ body.has-active-menu{
   overflow-x:hidden;
   width:100%;
   .over-wrap{
-    -webkit-transform: translateX(300px);
-    -ms-transform: translateX(300px);
-    transform: translateX(300px)
+    -webkit-transform: translateX(100%);
+    -ms-transform: translateX(100%);
+    transform: translateX(100%)
   }
   .slide-menu{
     -webkit-transform: translateX(0);
