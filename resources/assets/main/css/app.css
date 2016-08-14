@@ -5967,7 +5967,7 @@ nav a {
     position: absolute;
     width: 100%;
     padding-top: 12%;
-    z-index: 20; }
+    z-index: 100; }
     @media (max-width: 620px) {
       #hero .head-wrap {
         padding-top: 5%;
@@ -5994,7 +5994,8 @@ nav a {
     position: absolute;
     width: 70%;
     right: 0;
-    height: 100%; }
+    height: 100%;
+    z-index: 99; }
     @media (max-width: 620px) {
       #hero .hero-background {
         width: 100%; } }
@@ -12572,6 +12573,7 @@ body {
   background: #f9f9f9;
   height: 100%;
   overflow-y: scroll;
+  z-index: 999999999;
   -webkit-transform: translateX(-300px);
   -ms-transform: translateX(-300px);
   transform: translateX(-300px); }
@@ -12597,10 +12599,6 @@ body.has-active-menu {
   padding: 0;
   height: 100%;
   max-width: 414px; }
-  body.has-active-menu .over-wrap {
-    -webkit-transform: translateX(300px);
-    -ms-transform: translateX(300px);
-    transform: translateX(300px); }
   body.has-active-menu .slide-menu {
     -webkit-transform: translateX(0);
     -ms-transform: translateX(0);
