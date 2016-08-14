@@ -11505,20 +11505,6 @@ body.giveaway-page{
 //}
 
 
-body.has-active-menu{
-  .over-wrap{
-    -webkit-transform: translateX(300px);
-    -ms-transform: translateX(300px);
-    transform: translateX(300px)
-  }
-  .c-menu--push-left{
-    -webkit-transform: translateX(0);
-    -ms-transform: translateX(0);
-    transform: translateX(0) !important;
-  }
-}
-
-
 .slide-menu{
   position: fixed;
   left: 0;
@@ -11526,6 +11512,10 @@ body.has-active-menu{
   width: 300px;
   padding-top: 50px;
   background: #f9f9f9;
+
+  -webkit-transform: translateX(-300px);
+  -ms-transform: translateX(-300px);
+  transform: translateX(-300px) !important;
   .close-button{
     margin-top: 14px;
     margin-right: 19px;
@@ -11537,9 +11527,9 @@ body.has-active-menu{
     .m-icon{
       margin-top: 2px;
     }
-      li a{
-        font-size: 2rem;
-      }
+    li a{
+      font-size: 2rem;
+    }
   }
   .mid-menu{
     li{
@@ -11554,5 +11544,19 @@ body.has-active-menu{
         border: 0;
       }
     }
+  }
+}
+
+
+body.has-active-menu{
+  .over-wrap{
+    -webkit-transform: translateX(300px);
+    -ms-transform: translateX(300px);
+    transform: translateX(300px)
+  }
+  .slide-menu{
+    -webkit-transform: translateX(0);
+    -ms-transform: translateX(0);
+    transform: translateX(0) !important;
   }
 }

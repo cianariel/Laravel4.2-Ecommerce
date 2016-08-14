@@ -12550,22 +12550,16 @@ body.giveaway-page .black-slider {
   margin: 0 auto  !important;
   float: none; }
 
-body.has-active-menu .over-wrap {
-  -webkit-transform: translateX(300px);
-  -ms-transform: translateX(300px);
-  transform: translateX(300px); }
-body.has-active-menu .c-menu--push-left {
-  -webkit-transform: translateX(0);
-  -ms-transform: translateX(0);
-  transform: translateX(0) !important; }
-
 .slide-menu {
   position: fixed;
   left: 0;
   top: 0;
   width: 300px;
   padding-top: 50px;
-  background: #f9f9f9; }
+  background: #f9f9f9;
+  -webkit-transform: translateX(-300px);
+  -ms-transform: translateX(-300px);
+  transform: translateX(-300px) !important; }
   .slide-menu .close-button {
     margin-top: 14px;
     margin-right: 19px; }
@@ -12581,6 +12575,15 @@ body.has-active-menu .c-menu--push-left {
     border-bottom: 1px solid #eee; }
   .slide-menu .mid-menu ul.child li {
     border: 0; }
+
+body.has-active-menu .over-wrap {
+  -webkit-transform: translateX(300px);
+  -ms-transform: translateX(300px);
+  transform: translateX(300px); }
+body.has-active-menu .slide-menu {
+  -webkit-transform: translateX(0);
+  -ms-transform: translateX(0);
+  transform: translateX(0) !important; }
 
 @font-face {
   font-family: 'montserratlight';
