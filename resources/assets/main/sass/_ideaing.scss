@@ -11509,6 +11509,11 @@ body{
   position: relative;
 }
 
+.over-wrap{
+  width:100%;
+  position: static;
+}
+
 .slide-menu{
   display: block;
   position: fixed !important;
