@@ -3976,11 +3976,11 @@ angular.module('colorpicker.module', [])
             }
         });
 
-        $('.yes').click(function(){
-            console.log(123123)
-            $('.over-wrap').addClass('has-slide-left');
+        $('.home-hamburger').click(function(){
             $('body').toggleClass('has-active-menu');
-            $('#c-menu--slide-left').addClass('is-active');
+        });
+        $('.slide-back').click(function(){
+            $('body').removeClass('has-active-menu');
         });
 
         //$(function(){

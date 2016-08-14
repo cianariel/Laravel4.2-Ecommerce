@@ -105,7 +105,7 @@ if (!isset($theGiveAway)) {
                             </ul>
                         </div>
 
-                            <a class="home-hamburger mobile-top-menu-switcher hidden-lg hidden-md hidden-sm" data-toggle="#mobile-top-menu" href="#">
+                            <a class="home-hamburger mobile-top-menu-switcher hidden-lg hidden-md hidden-sm"  href="#">
                                 <label class="nav-trigger">
                                     <svg version="1.1" id="trigger" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 20 18" enable-background="new 0 0 20 18" xml:space="preserve">
 									<rect y="0" width="20" height="2"></rect>
