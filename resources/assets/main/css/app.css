@@ -12550,9 +12550,12 @@ body.giveaway-page .black-slider {
   margin: 0 auto  !important;
   float: none; }
 
+body {
+  position: relative; }
+
 .slide-menu {
   display: block;
-  position: fixed;
+  position: fixed !important;
   left: 0;
   top: 0;
   width: 300px;
