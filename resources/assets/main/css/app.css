@@ -12560,17 +12560,14 @@ body {
 
 .slide-menu {
   display: block;
-  position: absolute !important;
+  position: fixed !important;
   left: 0;
   top: 0;
   width: 300px;
   box-sizing: inherit;
   background: #f9f9f9;
   height: 100%;
-  overflow-y: scroll;
-  -webkit-transform: translateX(-300px);
-  -ms-transform: translateX(-300px);
-  transform: translateX(-300px); }
+  overflow-y: scroll; }
   .slide-menu .close-button {
     margin-top: 14px;
     margin-right: 19px; }
