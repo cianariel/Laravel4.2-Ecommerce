@@ -11527,9 +11527,9 @@ body{
     height: 100%;
     overflow-y: scroll;
 
-  //-webkit-transform: translateX(-300px);
-  //-ms-transform: translateX(-300px);
-  //transform: translateX(-300px);
+  -webkit-transform: translateX(-300px);
+  -ms-transform: translateX(-300px);
+  transform: translateX(-300px);
   .close-button{
     margin-top: 14px;
     margin-right: 19px;
