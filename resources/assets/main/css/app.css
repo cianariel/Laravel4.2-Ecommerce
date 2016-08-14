@@ -8974,8 +8974,7 @@ body.single .article-content iframe {
     overflow: hidden;
     position: relative;
     line-height: 1.5rem;
-    font-size: 1.3rem;
-    border-radius: 5px; }
+    font-size: 1.3rem; }
     .float-thumbs .get-it-inner.smallish .merchant-widget__logo {
       bottom: 26%; }
   .float-thumbs .thumb-box {
@@ -9107,7 +9106,8 @@ body.single .article-content iframe {
     height: auto;
     margin: 0 auto;
     display: block;
-    border: 1px solid #eee; }
+    border: 1px solid #eee;
+    border-radius: 5px; }
 .idea-stories .author-name {
   font-size: 1.3rem; }
 .idea-stories .details-wrap {
