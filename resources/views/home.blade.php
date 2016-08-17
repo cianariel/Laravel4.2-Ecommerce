@@ -16,8 +16,8 @@
         </section>
 
         <div class="white-bg col-xs-12">
-            <section class="most-popular-new container center-block overhide no-padding">
-                <h4 class="col-xs-12 home-subheader"><span>Popular <i class="m-icon m-icon--flame pink"></i></span></h4>
+            <h4 class="col-xs-12 home-subheader"><span>Popular <i class="m-icon m-icon--flame pink"></i></span></h4>
+            <section class="most-popular-new container no-padding">
                 <div class="col-sm-4 col-xs-12 popular-section category-smart-home">
                     <h5 class="category-link__smart-home  category-color">
                         <i class="hidden-xs hidden-sm hidden-md m-icon m-icon--smart-home"></i>
@@ -160,53 +160,22 @@
         </div>
 
         <div class="col-xs-12 center-block overhide">
-
-            {{--<nav id="hero-nav" class="col-sm-9">--}}
-                {{--<div class="container full-620 fixed-sm">--}}
-                    {{--<ul class="category-nav main-content-filter">--}}
-                        {{--<li ng-class="{active: (activeMenu == '1' || !activeMenu)}" ng-click="activeMenu='1'">--}}
-                            {{--<a ng-click="filterContent(null)"  href="" data-filterby="all" class="all-link">--}}
-                                {{--<i class="m-icon m-icon--menu"></i>--}}
-                                {{--All--}}
-
-                            {{--</a>--}}
-                        {{--</li>--}}
-                        {{--<li ng-class="{active: activeMenu == '2'}" ng-click="activeMenu='2'">--}}
-                            {{--<a ng-click="filterContent('idea')" data-filterby="ideas" href="" class="ideas-link">--}}
-                                {{--<i class="m-icon m-icon--bulb"></i>--}}
-                                {{--Ideas--}}
-                            {{--</a>--}}
-                        {{--</li>--}}
-                        {{--<li ng-class="{active: activeMenu == '3'}" ng-click="activeMenu='3'">--}}
-                            {{--<a  ng-click="filterContent('product')" data-filterby="products" href="" class="products-link">--}}
-                                {{--<i class="m-icon m-icon--item"></i>--}}
-                                {{--Products--}}
-                            {{--</a>--}}
-                        {{--</li>--}}
-                        {{--<li ng-class="{active: activeMenu == '4'}" ng-click="activeMenu='4'">--}}
-                            {{--<a data-filterby="stories" href="" class="stories-link">--}}
-                                {{--<i class="m-icon m-icon--image"></i>--}}
-                                {{--Stories--}}
-                            {{--</a>--}}
-                        {{--</li>--}}
-                    {{--</ul>--}}
-                {{--</div>--}}
-            {{--</nav>--}}
-        </div>
-
-        <div class="homepage-grid center-block">
+            <div class="homepage-grid center-block">
                 @include('grid.grid')
 
                 {{--@include('layouts.parts.load-more')--}}
 
 
-        <!-- custom angular template - START -->
-        
-        @include('layouts.parts.product-popup')
+                        <!-- custom angular template - START -->
 
-        <!-- custom angular template - END -->
+                @include('layouts.parts.product-popup')
 
+                        <!-- custom angular template - END -->
+
+            </div>
         </div>
+
+
     @include('layouts.parts.giveaway-popup')
 
     <script>

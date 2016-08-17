@@ -22,11 +22,9 @@ if (!isset($theGiveAway)) {
             $noPopup = 0;
          }
 
-        if(is_connected()){
-            $json = file_get_contents('https://ideaing.com/api/giveaway/get-current/' . $noPopup);
+        $json = file_get_contents('https://ideaing.com/api/giveaway/get-current/' . $noPopup);
 
-            $theGiveAway = json_decode($json);
-        }
+        $theGiveAway = json_decode($json);
     }
 }
 
@@ -122,7 +120,7 @@ if (!isset($theGiveAway)) {
                             </a>
 
                         <a class="category-link__shop m-icon-text-holder hidden-soft shown-620" href="/shop">
-                            <i class="hidden-xs hidden-sm hidden-md m-icon m-icon--shopping-bag-light-green white"></i>
+                            <i class="hidden-xs hidden-md m-icon m-icon--shopping-bag-light-green white"></i>
                             <span class="m-icon-text white">Shop</span>
                         </a>
 
@@ -147,7 +145,7 @@ if (!isset($theGiveAway)) {
                                 <ul>
                                     <li>
                                         <a class="category-link__shop m-icon-text-holder hidden-xs" href="/shop">
-                                            <i class="hidden-xs hidden-sm hidden-md m-icon m-icon--shopping-bag-light-green white"></i>
+                                            <i class="hidden-xs hidden-md m-icon m-icon--shopping-bag-light-green white"></i>
                                             <span class="m-icon-text white">Shop</span>
                                         </a>
                                     </li>

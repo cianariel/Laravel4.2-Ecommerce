@@ -61,7 +61,7 @@ a:hover, a:focus{
 
 .white-bg{
   background: #fff;
-  padding: 10px;
+  padding: 0 10px;
 }
        
 .purple-bg{
@@ -205,9 +205,9 @@ a:hover, a:focus{
     color: $iridium;
   }
 
-  &.popular-section .box-item::before{
-
-  }
+  //&.popular-section .box-item::before{
+  //
+  //}
 }
 .box-item:hover,
 .box-item.hovered{
@@ -1658,8 +1658,11 @@ nav {
     padding-top: 12%;
     z-index: 100;
 
-    @media (max-width:620px){
+    @media(max-width:800px){
       padding-top: 5%;
+    }
+
+    @media (max-width:620px){
       width: 95%;
       left: 0;
       right: 0;
@@ -1730,7 +1733,7 @@ nav {
       line-height: 1.3;
       font-weight: 200;
       z-index: 1;
-      padding: 7px 7px 7px 10%;
+      padding: 7px 7px 7px 20px;
       background-color: rgba($sky-blue, .7);
       text-shadow: none;
 
@@ -2994,7 +2997,7 @@ article.product{
         width: 65%;
       }
       float: none;
-      margin: 0 auto;
+      margin: 45px auto 0;
       overflow: hidden;
     }
   }
@@ -4044,8 +4047,10 @@ header.colophon{
           }
         }
       .profile-photo-holder{
-        @media (max-width:620px) {
+        @media (min-width:760px) {
           margin-right: 8px;
+        }
+        @media (max-width:620px) {
           width: 40px;
           height: 40px;
 
@@ -4446,7 +4451,7 @@ body.single-post{
   }
     .social-stats__item{
       position: static;
-      width: 125px;
+      width: 140px;
     }
     #top-nav{
       &.kitchen{
@@ -5518,18 +5523,19 @@ header.sub-head{
 
 
 .home-subheader{
-  font-size: 2.8rem;
-  margin-top: 0;
-  margin-bottom: 13px;
-//margin-left:;
-  border-bottom: 2px solid #eee;
-  padding-left: 0;
+  width: 97%;
   height: 54px;
+  margin-top: 0;
+  margin-left: 10px;
+  margin-bottom: 13px;
+  padding-left: 0;
   padding-bottom: 0;
+  font-size: 2.8rem;
+  border-bottom: 2px solid #eee;
+
 
   &.current-timespan{
     margin-bottom: 24px;
-    padding-left: 10px;
 
   }
 
@@ -5554,8 +5560,13 @@ header.sub-head{
 }
 
 .most-popular-new{
+  float: left;
   .home-subheader{
     height: 41px;
+
+    @media(max-width: 768px){
+      width: 100%;
+    }
 
     span{
       height: 41px;
