@@ -5559,13 +5559,20 @@ header.sub-head{
   }
 }
 
+.mostpop-wrap{
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
 .most-popular-new{
-  float: left;
+
   .home-subheader{
     height: 41px;
 
     @media(max-width: 768px){
       width: 100%;
+      float: left;
+
     }
 
     span{

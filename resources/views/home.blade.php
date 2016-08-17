@@ -15,7 +15,7 @@
             @include('layouts.parts.home-hero-slider')
         </section>
 
-        <div class="white-bg col-xs-12">
+        <div class="white-bg mostpop-wrap col-xs-12">
             <h4 class="col-xs-12 home-subheader"><span>Popular <i class="m-icon m-icon--flame pink"></i></span></h4>
             <section class="most-popular-new container no-padding">
                 <div class="col-sm-4 col-xs-12 popular-section category-smart-home">

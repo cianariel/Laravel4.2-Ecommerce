@@ -8552,15 +8552,17 @@ header.sub-head {
       position: relative;
       right: 1px; }
 
-.most-popular-new {
-  float: left; }
-  .most-popular-new .home-subheader {
+.mostpop-wrap {
+  padding-top: 10px;
+  padding-bottom: 10px; }
+
+.most-popular-new .home-subheader {
+  height: 41px; }
+  @media (max-width: 768px) {
+    .most-popular-new .home-subheader {
+      width: 100%; } }
+  .most-popular-new .home-subheader span {
     height: 41px; }
-    @media (max-width: 768px) {
-      .most-popular-new .home-subheader {
-        width: 100%; } }
-    .most-popular-new .home-subheader span {
-      height: 41px; }
 
 #hero-nav {
   overflow: visible;
