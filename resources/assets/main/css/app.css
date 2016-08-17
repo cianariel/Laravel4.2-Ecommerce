@@ -4459,7 +4459,7 @@ a.label:focus {
   color: #843534; }
 
 ol li {
-  list-style: gr; }
+  list-style: decimal !important; }
 
 ins.adsbygoogle {
   display: block; }
