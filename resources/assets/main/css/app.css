@@ -4458,9 +4458,6 @@ a.label:focus {
 .alert-danger .alert-link {
   color: #843534; }
 
-ol li {
-  list-style: decimal !important; }
-
 ins.adsbygoogle {
   display: block; }
 
@@ -4533,6 +4530,9 @@ a:hover, a:focus {
 
 .relative {
   position: relative; }
+
+ol li {
+  list-style: decimal !important; }
 
 .boxy {
   position: relative;

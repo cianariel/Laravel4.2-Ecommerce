@@ -1,9 +1,6 @@
 @charset "UTF-8";
 
 
-ol li{
-  list-style: decimal !important;
-}
 
 ins.adsbygoogle{
   display: block;
@@ -90,6 +87,11 @@ a:hover, a:focus{
 
 .relative{
   position: relative;
+}
+
+
+ol li{
+  list-style: decimal !important;
 }
 //
 //.boxy:after,
