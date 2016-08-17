@@ -4458,6 +4458,9 @@ a.label:focus {
 .alert-danger .alert-link {
   color: #843534; }
 
+ol li {
+  list-style: gr; }
+
 ins.adsbygoogle {
   display: block; }
 
