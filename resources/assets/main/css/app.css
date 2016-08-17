@@ -8560,7 +8560,8 @@ header.sub-head {
   height: 41px; }
   @media (max-width: 768px) {
     .most-popular-new .home-subheader {
-      width: 100%; } }
+      width: 100%;
+      float: left; } }
   .most-popular-new .home-subheader span {
     height: 41px; }
 
