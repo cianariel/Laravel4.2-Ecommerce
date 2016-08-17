@@ -1649,6 +1649,8 @@ nav {
   width: 100%;
   min-height: 425px;
   float: left;
+  z-index: 9;
+
 
   .head-wrap{
     position: absolute;
@@ -6224,6 +6226,7 @@ body.single{
         -ms-transition: opacity .5s ease;
         -o-transition: opacity .5s ease;
         transition: opacity .5s ease;
+        border-radius: 5px;
       }
 
   }
@@ -7079,7 +7082,7 @@ body.single{
 
 html.idea-stories{
   #hero{
-    min-height: 580px;
+    min-height: 400px;
 
     //@media(max-width:620px){
     //  min-height: 350px;

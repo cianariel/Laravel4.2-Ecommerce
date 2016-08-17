@@ -22,9 +22,11 @@ if (!isset($theGiveAway)) {
             $noPopup = 0;
          }
 
-        $json = file_get_contents('https://ideaing.com/api/giveaway/get-current/' . $noPopup);
+        if(is_connected()){
+            $json = file_get_contents('https://ideaing.com/api/giveaway/get-current/' . $noPopup);
 
-        $theGiveAway = json_decode($json);
+            $theGiveAway = json_decode($json);
+        }
     }
 }
 

@@ -5962,7 +5962,8 @@ nav a {
   position: relative;
   width: 100%;
   min-height: 425px;
-  float: left; }
+  float: left;
+  z-index: 9; }
   #hero .head-wrap {
     position: absolute;
     width: 100%;
@@ -8933,7 +8934,8 @@ body.single .article-content iframe {
       -moz-transition: opacity .5s ease;
       -ms-transition: opacity .5s ease;
       -o-transition: opacity .5s ease;
-      transition: opacity .5s ease; }
+      transition: opacity .5s ease;
+      border-radius: 5px; }
   .get-it-inner .merchant-widget__price {
     position: absolute;
     width: 80px;
@@ -9494,7 +9496,7 @@ body.single .article-content iframe {
     display: inline-block; }
 
 html.idea-stories #hero {
-  min-height: 580px; }
+  min-height: 400px; }
 
 html.idea-stories #hero,
 body.room-landing #hero,

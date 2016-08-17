@@ -549,7 +549,7 @@ function ideaingGlobalVars() {
     }
 
 
-    if($token){
+    if($token && is_connected()){
 
         $ch = curl_init();
 
@@ -757,6 +757,10 @@ add_shortcode( 'product_bar', 'product_bar_func' );
 function product_thumbs_func( $atts ) {
     $ids = str_replace(' ', '', $atts['id']);
 
+    if(!is_connected()){
+        return false;
+    }
+
     $json = file_get_contents('http://ideaing.dev/api/products/get-for-bar/' . $ids);
     $products = json_decode($json, true);
 
@@ -840,6 +844,20 @@ function add_category_to_single($classes) {
     }
     // return the $classes array
     return $classes;
+}
+
+function is_connected()
+{
+    $connected = @fsockopen("www.ideaing.com", 80);
+    //website, port  (try 80 or 443)
+    if ($connected){
+        $is_conn = true; //action when connected
+        fclose($connected);
+    }else{
+        $is_conn = false; //action in connection failure
+    }
+    return $is_conn;
+
 }
 
 ?>
