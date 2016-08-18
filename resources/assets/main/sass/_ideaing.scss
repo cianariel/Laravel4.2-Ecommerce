@@ -3533,7 +3533,7 @@ header.colophon{
 
 
     @media(max-width: 620px){
-      padding-right: 13px;
+      padding-right: 22px;
       position: absolute;
       bottom: -26px;
       right: -13px;
@@ -3880,9 +3880,9 @@ body:not(.single){
     position: absolute;
     top: -19px;
     left: auto;
-    right: -37px;
+    right: -35px;
     border-radius: 2px;
-    overflow: hidden;
+    //overflow: hidden;
     z-index: 80;
 
     i{

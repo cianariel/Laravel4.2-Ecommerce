@@ -262,8 +262,8 @@ a:focus {
   transform-origin: 0 0; }
 
 .menu-icon-wrapper svg path {
-  stroke: #333;
-  stroke-width: 40px;
+  stroke: #444;
+  stroke-width: 30px;
   stroke-linecap: round;
   stroke-linejoin: round;
   fill: transparent; }
@@ -7596,7 +7596,7 @@ header.colophon {
     padding-right: 0; }
     @media (max-width: 620px) {
       header.colophon .user-controls {
-        padding-right: 13px;
+        padding-right: 22px;
         position: absolute;
         bottom: -26px;
         right: -13px;
@@ -7808,9 +7808,8 @@ header.colophon {
   position: absolute;
   top: -19px;
   left: auto;
-  right: -37px;
+  right: -35px;
   border-radius: 2px;
-  overflow: hidden;
   z-index: 80; }
   #top-nav .home-hamburger i {
     font-size: 2.3rem !important; }
