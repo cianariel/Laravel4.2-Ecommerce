@@ -3000,12 +3000,14 @@ article.product{
 
   @media(max-width:620px){
     .popular-section{
-      .box-item{
-        width: 65%;
-      }
       float: none;
       margin: 45px auto 0;
       overflow: hidden;
+      padding: 0 2px;
+      .box-item{
+        width: 65%;
+      }
+
     }
   }
 
@@ -3075,11 +3077,14 @@ article.product{
   }
 }
 
+.center-wrap{
+  padding: 0 12px;
+}
 .homepage-grid{
   transition: opacity 1s;
 
   .main-content{
-    padding-bottom: 7px;
+    padding:0 0 7px 0;
   }
 }
 .homepage-grid.hidden{
@@ -3787,6 +3792,12 @@ header.colophon{
     //max-width: 720px;
     //margin: 0 auto;
     box-shadow: none;
+
+  }
+}
+
+body:not(.single){
+  .profile-photo-holder{
 
   }
 }
@@ -5857,6 +5868,8 @@ header.sub-head{
 .homepage{
   #hero{
     min-height: 400px;
+
+
   }
   .color-overlay{
     position: absolute;
@@ -7109,9 +7122,9 @@ html.idea-stories{
   #hero{
     min-height: 400px;
 
-    //@media(max-width:620px){
-    //  min-height: 350px;
-    //}
+    @media(max-width: 620px){
+      min-height: 575px;
+    }
   }
 }
 
@@ -9289,6 +9302,10 @@ body.shop-category{
             border: 0px;
             border-right: 1px solid #eee;
             border-bottom: 1px solid #eee;
+
+          @media(max-width: 620px){
+            margin: 0 !important;
+          }
         }
     }
 
