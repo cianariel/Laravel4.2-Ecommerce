@@ -7,4 +7,6 @@
         <?php loadLaravelView('head'); ?>
 	</head>
 	<body  ng-app="rootApp" <?php body_class(); ?>>
+    <div class="over-wrap" id="o-wrapper">
+
     <?php loadLaravelView('header'); ?>
