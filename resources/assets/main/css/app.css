@@ -9150,7 +9150,8 @@ body.single .article-content iframe {
     .idea-stories .story-details {
       top: auto;
       width: 100%;
-      padding-top: 5px !important; } }
+      padding-top: 5px !important;
+      z-index: 200; } }
   .idea-stories .story-details h4 {
     width: 100%;
     text-align: center; }
