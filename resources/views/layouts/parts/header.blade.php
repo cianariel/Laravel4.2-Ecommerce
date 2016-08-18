@@ -29,7 +29,7 @@ if (!isset($theGiveAway)) {
 }
 
 ?>
-<div class="over-wrap" id="o-wrapper">
+
 <div id="publicApp" ng-app="publicApp" ng-controller="publicController" class="header-cloak scroll-header" ng-cloak>
     <header class="colophon container full-sm fixed-sm">
         <div ng-init="socialCounter()" class="socialcounter col-xs-12">
@@ -129,14 +129,7 @@ if (!isset($theGiveAway)) {
                                         </span>
                             </form>
 
-                        <a id="menu-icon-wrapper" class="menu-icon-wrapper home-hamburger mobile-top-menu-switcher hidden-lg hidden-md hidden-sm"  href="#">
-                            <svg width="1000px" height="1000px">
-                                <path id="pathA" d="M 300 400 L 700 400 C 900 400 900 750 600 850 A 400 400 0 0 1 200 200 L 800 800" style="stroke-dashoffset: 5803.15; stroke-dasharray: 2901.57, 5258.15, 240;"></path>
-                                <path id="pathB" d="M 300 500 L 700 500" style="stroke-dashoffset: 800; stroke-dasharray: 400, 600, 0;"></path>
-                                <path id="pathC" d="M 700 600 L 300 600 C 100 600 100 200 400 150 A 400 380 0 1 1 200 800 L 800 200" style="stroke-dashoffset: 6993.11; stroke-dasharray: 3496.56, 6448.11, 240;"></path>
-                            </svg>
-                            <button id="menu-icon-trigger" class="menu-icon-trigger"></button>
-                        </a>
+
 
                         <div class="col-xs-5 col-sm-4 pull-right user-controls">
                                 <ul>
@@ -264,6 +257,16 @@ if (!isset($theGiveAway)) {
                                 <!--<a href="#" class="search-toggle pull-right" data-toggle=".mobile-search-bar"><i class="m-icon m-icon--search-id"></i></a>-->
 
                     </div>
+
+                        <a id="menu-icon-wrapper" class="menu-icon-wrapper home-hamburger mobile-top-menu-switcher hidden-lg hidden-md hidden-sm"  href="#">
+                            <svg width="1000px" height="1000px">
+                                <path id="pathA" d="M 300 400 L 700 400 C 900 400 900 750 600 850 A 400 400 0 0 1 200 200 L 800 800" style="stroke-dashoffset: 5803.15; stroke-dasharray: 2901.57, 5258.15, 240;"></path>
+                                <path id="pathB" d="M 300 500 L 700 500" style="stroke-dashoffset: 800; stroke-dasharray: 400, 600, 0;"></path>
+                                <path id="pathC" d="M 700 600 L 300 600 C 100 600 100 200 400 150 A 400 380 0 1 1 200 800 L 800 200" style="stroke-dashoffset: 6993.11; stroke-dasharray: 3496.56, 6448.11, 240;"></path>
+                            </svg>
+                            <button id="menu-icon-trigger" class="menu-icon-trigger"></button>
+                        </a>
+
                 <?php
                 if (function_exists('is_single')) {
                     $args = array(
@@ -352,7 +355,6 @@ if (!isset($theGiveAway)) {
         include('/var/www/ideaing/resources/views/layouts/parts/shop-submenu.blade.php')
         ?>
     </header>
-
     <?php
     if(!function_exists('is_single')){ ?>
     @include('room.header-menu')
