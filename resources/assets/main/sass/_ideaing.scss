@@ -3469,7 +3469,7 @@ article.product{
   left: 0;
   margin: 0 auto;
   width: 100%;
-  z-index: 41;
+  z-index: 200;
   background: #fff;
 }
 
@@ -3485,6 +3485,7 @@ header.colophon{
     max-width: 1400px;
     margin: 0 auto;
     overflow: visible;
+    z-index: 200;
 
     @media(max-width: 620px){
       min-height: 81px;

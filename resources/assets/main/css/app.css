@@ -7552,7 +7552,7 @@ article.product {
   left: 0;
   margin: 0 auto;
   width: 100%;
-  z-index: 41;
+  z-index: 200;
   background: #fff; }
 
 body.single .scroll-header {
@@ -7562,7 +7562,8 @@ header.colophon {
   min-height: 53px;
   max-width: 1400px;
   margin: 0 auto;
-  overflow: visible; }
+  overflow: visible;
+  z-index: 200; }
   @media (max-width: 620px) {
     header.colophon {
       min-height: 81px; } }
