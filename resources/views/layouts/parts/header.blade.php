@@ -105,19 +105,7 @@ if (!isset($theGiveAway)) {
                             </ul>
                         </div>
 
-                            <a class="home-hamburger mobile-top-menu-switcher hidden-lg hidden-md hidden-sm"  href="#">
-                                <label class="nav-trigger">
-                                    <svg version="1.1" id="trigger" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 20 18" enable-background="new 0 0 20 18" xml:space="preserve">
-									<rect y="0" width="20" height="2"></rect>
-                                        <rect y="4" width="20" height="2"></rect>
-                                        <rect y="8" width="20" height="2"></rect>
-                                        <rect y="12" width="20" height="2"></rect>
-                                        <rect y="16" width="20" height="2"></rect>
-                                        <rect y="8" width="20" height="2"></rect>
-                                        <rect y="8" width="20" height="2"></rect>
-								</svg>
-                                </label>
-                            </a>
+
 
                         <a class="category-link__shop m-icon-text-holder hidden-soft shown-620" href="/shop">
                             <i class="hidden-xs hidden-md m-icon m-icon--shopping-bag-light-green white"></i>
@@ -140,6 +128,15 @@ if (!isset($theGiveAway)) {
                                             <i class="hide-search m-icon--Close hidden-xs"></i>
                                         </span>
                             </form>
+
+                        <a id="menu-icon-wrapper" class="menu-icon-wrapper home-hamburger mobile-top-menu-switcher hidden-lg hidden-md hidden-sm"  href="#">
+                            <svg width="1000px" height="1000px">
+                                <path id="pathA" d="M 300 400 L 700 400 C 900 400 900 750 600 850 A 400 400 0 0 1 200 200 L 800 800" style="stroke-dashoffset: 5803.15; stroke-dasharray: 2901.57, 5258.15, 240;"></path>
+                                <path id="pathB" d="M 300 500 L 700 500" style="stroke-dashoffset: 800; stroke-dasharray: 400, 600, 0;"></path>
+                                <path id="pathC" d="M 700 600 L 300 600 C 100 600 100 200 400 150 A 400 380 0 1 1 200 800 L 800 200" style="stroke-dashoffset: 6993.11; stroke-dasharray: 3496.56, 6448.11, 240;"></path>
+                            </svg>
+                            <button id="menu-icon-trigger" class="menu-icon-trigger"></button>
+                        </a>
 
                         <div class="col-xs-5 col-sm-4 pull-right user-controls">
                                 <ul>
@@ -680,5 +677,4 @@ if (!isset($theGiveAway)) {
     </div>
 
 </script>
-
 
