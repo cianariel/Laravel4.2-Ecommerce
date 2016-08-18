@@ -1134,6 +1134,7 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
                     ProductAuthorName: $scope.ProductAuthorName,
                     CategoryId: $scope.selectedItem,
                     Name: $scope.Name,
+                    PublishAt: $scope.datePicker,
                     Permalink: $scope.Permalink,
                     Description: $scope.htmlContent,
                     Price: $scope.Price,
@@ -1477,6 +1478,7 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
                     $scope.reviews = data.data.review;
                     $scope.externalReviewLink = data.data.review_ext_link;
                     $scope.ideaingReviewScore = data.data.ideaing_review_score;
+                    $scope.datePicker = new Date(data.data.publish_at);
 
                     // hide category in edit mood
                     $scope.hideCategoryPanel = true;
@@ -1729,6 +1731,79 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
             });
 
         };
+
+        // date picker start
+
+        $scope.today = function() {
+            $scope.datePicker = new Date();
+        };
+        $scope.today();
+
+        $scope.clear = function () {
+            $scope.datePicker = null;
+        };
+
+        // Disable weekend selection
+        $scope.disabled = function(date, mode) {
+            return ( mode === 'day' && ( date.getDay() === 0 || date.getDay() === 6 ) );
+
+        };
+
+        $scope.toggleMin = function() {
+            $scope.minDate = $scope.minDate ? null : new Date();
+        };
+        $scope.toggleMin();
+        $scope.maxDate = new Date(2020, 5, 22);
+
+        $scope.open = function($event) {
+            $scope.status.opened = true;
+        };
+
+        $scope.dateOptions = {
+            formatYear: 'yy',
+            startingDay: 1
+        };
+
+        $scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
+        $scope.format = $scope.formats[0];
+
+        $scope.status = {
+            opened: false
+        };
+
+        var tomorrow = new Date();
+        tomorrow.setDate(tomorrow.getDate() + 1);
+        var afterTomorrow = new Date();
+        afterTomorrow.setDate(tomorrow.getDate() + 2);
+        $scope.events =
+            [
+                {
+                    date: tomorrow,
+                    status: 'full'
+                },
+                {
+                    date: afterTomorrow,
+                    status: 'partially'
+                }
+            ];
+
+        $scope.getDayClass = function(date, mode) {
+            if (mode === 'day') {
+                var dayToCheck = new Date(date).setHours(0,0,0,0);
+
+                for (var i=0;i<$scope.events.length;i++){
+                    var currentDay = new Date($scope.events[i].date).setHours(0,0,0,0);
+
+                    if (dayToCheck === currentDay) {
+                        return $scope.events[i].status;
+                    }
+                }
+            }
+
+            return '';
+        };
+        // date picker end
+
 
 
         // Initialize variables and functions Globally.
