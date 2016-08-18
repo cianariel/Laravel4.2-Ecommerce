@@ -198,6 +198,7 @@
                                                                             <td>@{{ product.sale_price }}</td>
                                                                             <td>
                                                                                 <a href="/admin/product-edit/@{{ product.id }}"
+                                                                                   target="_blank"
                                                                                    class="btn btn-info btn-circle"
                                                                                    uib-tooltip="Edit"
                                                                                    tooltip-placement="bottom"> <i

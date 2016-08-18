@@ -164,6 +164,8 @@ class Product extends Model
     public function updateProductInfo($product)
     {
         try {
+
+            //dd();
             //ProductAuthorName: $scope.ProductAuthorName,
             $data = array(
                 "product_category_id" => ($product['CategoryId'] != null) ? $product['CategoryId'] : env('DEFAULT_CATEGORY_ID', '44'),
@@ -171,6 +173,7 @@ class Product extends Model
                 "product_vendor_id" => $product['ProductVendorId'],
                 "show_for" => ($product['ShowFor'] != null) ? $product['ShowFor'] : '',
                 "product_name" => $product['Name'],
+                "publish_at" => Carbon::createFromTimestamp(strtotime($product['PublishAt']))->toDateTimeString(),
                 "product_permalink" => (isset($product['Permalink'])) ? $product['Permalink'] : null,
                 "product_description" => ($product['Description'] != null) ? $product['Description'] : "",
                 "specifications" => json_encode($product['Specifications']),
@@ -223,6 +226,7 @@ class Product extends Model
     {
         $result = \DB::table('products')
                      ->where('products.id', $productId)
+                     ->where('products.publish_at', '<=', date('Y-m-d'))
                      ->leftJoin('product_categories', 'product_categories.id', '=', 'products.product_category_id')
                      ->leftJoin('medias', function ($join) {
                          $join->on('medias.mediable_id', '=', 'products.id')
@@ -481,7 +485,7 @@ class Product extends Model
         // sort image by media sequence in ascending order
         $sortedMedia = $productData['product']->medias->sortBy('sequence');
 
-    //    dd($sortedMedia);
+        //    dd($sortedMedia);
         foreach ($sortedMedia as $key => $value) {
             if ($value->media_type == 'video-link' || $value->media_type == 'video-youtube-link' || $value->media_type == 'video-vimeo-link') {
                 $selfImage['picture'][$key]['picture-name'] = $value->media_name;
