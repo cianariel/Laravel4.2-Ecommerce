@@ -9519,6 +9519,8 @@ html.idea-stories #hero {
   @media (max-width: 620px) {
     html.idea-stories #hero {
       min-height: 575px; } }
+html.idea-stories .colophon .user-controls {
+  right: 2px; }
 
 html.idea-stories #hero,
 body.room-landing #hero,

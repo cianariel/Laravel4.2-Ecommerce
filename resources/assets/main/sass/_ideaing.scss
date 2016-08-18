@@ -6557,7 +6557,7 @@ body.single{
       top: auto;
       width: 100%;
       padding-top: 5px !important;
-      z-index: 200; 
+      z-index: 200;
     }
 
     h4{
@@ -7126,6 +7126,9 @@ html.idea-stories{
     @media(max-width: 620px){
       min-height: 575px;
     }
+  }
+  .colophon .user-controls {
+    right: 2px;
   }
 }
 
