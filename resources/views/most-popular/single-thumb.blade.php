@@ -17,7 +17,7 @@
     </div>
     <div class="social-stats__item views">
         <i class="m-icon m-icon--flame pink"></i>
-        <span class="social-stats__text ng-binding">{{$item->views}} views</span>
+        <span class="social-stats__text ng-binding"> {{$item->count}} views</span>
     </div>
     @else
         <div class="box-item overhide">
@@ -46,7 +46,7 @@
         </div>
         <div class="social-stats__item views">
             <i class="m-icon m-icon--flame pink"></i>
-            <span class="social-stats__text ng-binding">{{$item->views}}</span>
+            <span class="social-stats__text ng-binding">{{$item->views}} views</span>
         </div>
     @endif
 </div>

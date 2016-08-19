@@ -183,7 +183,7 @@ class PageController extends ApiController
             $productSettings = [
                 'ActiveItem' => true,
                 'limit' => $itemsPerCategory == 1 ? 1 : ($itemsPerCategory / 2),
-                'page' => 1,
+                'page' => false,
                 'FilterType' => false,
                 'FilterText' => false,
                 'ShowFor' => false,
@@ -199,10 +199,29 @@ class PageController extends ApiController
 
             if($categorObj){
                 $productSettings['CategoryId'] = $categorObj->id;
-            }
-            $products[$category] = $prod->getProductList($productSettings);
+                $productSettings['limit'] = 25;
 
-            $return[$category] = array_merge($ideas[$category] ?: [], $products[$category]['result']);
+            }
+            $allProducts = $prod->getProductList($productSettings);
+
+
+                    foreach($allProducts['result'] as $prod){
+                        $prodID = $prod->id;
+                        $count =  Counter::show('product-details-'.$prodID);
+                        $prod->count = $count;
+                    }
+
+                    $sortedProds = array_values(array_sort($allProducts['result'], function($value){
+                        return $value->count;
+                    }));
+
+                    $sortedProds = array_reverse($sortedProds);
+
+                    $products[$category] = array_slice($sortedProds, 0, 2);
+
+//            $products[$category] = $prod->getProductList($productSettings);
+
+            $return[$category] = array_merge($ideas[$category] ?: [], $products[$category]);
 
         }else{
             $productSettings['CategoryId'] = 44;
