@@ -3060,8 +3060,13 @@ article.product{
     &.single-thumb{
       width: 100%;
 
+
       .box-item{
+        height: 262px !important;
         overflow:hidden;
+        .idea-meta{
+          bottom: -120px;
+        }
 
         &::before{
           display: none;
