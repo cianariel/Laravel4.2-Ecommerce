@@ -3056,17 +3056,17 @@ article.product{
   .popular-wrap{
     width: 32%;
     float: left;
- 
+
     &.single-thumb{
       width: 100%;
-
+      .idea-meta{
+        bottom: -120px;
+      }
 
       .box-item{
         height: 262px !important;
         overflow:hidden;
-        .idea-meta{
-          bottom: -120px;
-        }
+
 
         &::before{
           display: none;

@@ -7288,11 +7288,11 @@ article.product {
   float: left; }
   .most-popular-new .popular-wrap.single-thumb {
     width: 100%; }
+    .most-popular-new .popular-wrap.single-thumb .idea-meta {
+      bottom: -120px; }
     .most-popular-new .popular-wrap.single-thumb .box-item {
       height: 262px !important;
       overflow: hidden; }
-      .most-popular-new .popular-wrap.single-thumb .box-item .idea-meta {
-        bottom: -120px; }
       .most-popular-new .popular-wrap.single-thumb .box-item::before {
         display: none; }
   .most-popular-new .popular-wrap .box-item {
