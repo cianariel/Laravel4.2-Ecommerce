@@ -16,7 +16,7 @@
         </div>
     </div>
     <div class="social-stats__item views">
-        <i class="m-icon m-icon--flame"></i>
+        <i class="m-icon m-icon--flame pink"></i>
         <span class="social-stats__text ng-binding">{{$item->views}} views</span>
     </div>
     @else
@@ -45,7 +45,7 @@
             </a>
         </div>
         <div class="social-stats__item views">
-            <i class="m-icon m-icon--flame"></i>
+            <i class="m-icon m-icon--flame pink"></i>
             <span class="social-stats__text ng-binding">{{$item->views}}</span>
         </div>
     @endif

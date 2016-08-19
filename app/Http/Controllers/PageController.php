@@ -85,17 +85,22 @@ class PageController extends ApiController
 
     public function categoryPage()
     {
+        $bob =1;
+
         $thisCategory = Req::segment(1);
+
+//        echo $thisCategory; die();
+
 
         $rand = rand(1,2);
 
         if($rand == 1){
-            $daysBack = 7;
+            $daysBack = 20;
         }else{
             $daysBack = false;
         }
 
-        $mostPopular = self::getMostPopular($daysBack, true, 1);
+        $mostPopular = self::getMostPopular($daysBack, $thisCategory, 4);
 
         MetaTag::set('title', 'Ideaing | Ideas for Smarter Living');
         MetaTag::set('description', 'Ideaing inspires you to live a smarter and beautiful home. Get ideas on using home automation devices including WiFi cameras, WiFi doorbells, door locks, security, energy, water and many more.');
@@ -106,7 +111,7 @@ class PageController extends ApiController
             ;
     }
 
-    public static function getMostPopular($daysBack = false, $allCategories = true, $itemsPerCategory = 2){
+    public static function getMostPopular($daysBack = false, $category = false, $itemsPerCategory = 2){
 
         $cacheKey = "home-popular";
 
@@ -115,46 +120,69 @@ class PageController extends ApiController
 //        } else {
 
             // 1. get most popular ideas
-            $url = URL::to('/') . '/ideas/feeds/index.php?count='.$itemsPerCategory.'&most-popular';
+            $url = URL::to('/') . '/ideas/feeds/index.php?count='. ($itemsPerCategory / 2).'&most-popular';
 
             if($daysBack){
                 $url .= '&daysback=' . $daysBack;
             }
 
-            $ch = curl_init();
-            curl_setopt($ch, CURLOPT_URL, $url . '&category-name=smart-home');
-            curl_setopt($ch, CURLOPT_HEADER, 0);
-            curl_setopt($ch, CURLOPT_VERBOSE, true);
-            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-            curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-            curl_setopt($ch, CURLOPT_ENCODING, "");
-            $json = curl_exec($ch);
-            $ideas['smart-home'] = json_decode($json);
 
-            $ch = curl_init();
-            curl_setopt($ch, CURLOPT_URL, $url . '&category-name=smart-body');
-            curl_setopt($ch, CURLOPT_HEADER, 0);
-            curl_setopt($ch, CURLOPT_VERBOSE, true);
-            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-            curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-            curl_setopt($ch, CURLOPT_ENCODING, "");
-            $json = curl_exec($ch);
-            $ideas['smart-body'] = json_decode($json);
+            if($category){
+//                if($category == 'smart-home'){
+//                    $category = 'smarthome';
+//                }
+                $url .= '&category-name='.$category;
 
-            $ch = curl_init();
-            curl_setopt($ch, CURLOPT_URL, $url . '&category-name=smart-entertainment');
-            curl_setopt($ch, CURLOPT_HEADER, 0);
-            curl_setopt($ch, CURLOPT_VERBOSE, true);
-            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-            curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-            curl_setopt($ch, CURLOPT_ENCODING, "");
-            $json = curl_exec($ch);
-            $ideas['smart-entertainment'] = json_decode($json);
+//                print_r($url); die();
+
+
+                $ch = curl_init();
+                curl_setopt($ch, CURLOPT_URL, $url);
+                curl_setopt($ch, CURLOPT_HEADER, 0);
+                curl_setopt($ch, CURLOPT_VERBOSE, true);
+                curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+                curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+                curl_setopt($ch, CURLOPT_ENCODING, "");
+                $json = curl_exec($ch);
+                $ideas[$category] = json_decode($json);
+
+//                print_r($json); die();
+            }else{
+                $ch = curl_init();
+                curl_setopt($ch, CURLOPT_URL, $url . '&category-name=smart-home');
+                curl_setopt($ch, CURLOPT_HEADER, 0);
+                curl_setopt($ch, CURLOPT_VERBOSE, true);
+                curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+                curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+                curl_setopt($ch, CURLOPT_ENCODING, "");
+                $json = curl_exec($ch);
+                $ideas['smart-home'] = json_decode($json);
+
+                $ch = curl_init();
+                curl_setopt($ch, CURLOPT_URL, $url . '&category-name=smart-body');
+                curl_setopt($ch, CURLOPT_HEADER, 0);
+                curl_setopt($ch, CURLOPT_VERBOSE, true);
+                curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+                curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+                curl_setopt($ch, CURLOPT_ENCODING, "");
+                $json = curl_exec($ch);
+                $ideas['smart-body'] = json_decode($json);
+
+                $ch = curl_init();
+                curl_setopt($ch, CURLOPT_URL, $url . '&category-name=smart-entertainment');
+                curl_setopt($ch, CURLOPT_HEADER, 0);
+                curl_setopt($ch, CURLOPT_VERBOSE, true);
+                curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+                curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+                curl_setopt($ch, CURLOPT_ENCODING, "");
+                $json = curl_exec($ch);
+                $ideas['smart-entertainment'] = json_decode($json);
+            }
 
              // 2. get products
             $productSettings = [
                 'ActiveItem' => true,
-                'limit' => $itemsPerCategory == 1 ? 1 : $itemsPerCategory - 1,
+                'limit' => $itemsPerCategory == 1 ? 1 : ($itemsPerCategory / 2),
                 'page' => 1,
                 'FilterType' => false,
                 'FilterText' => false,
@@ -166,6 +194,17 @@ class PageController extends ApiController
 
              $prod = new Product();
 
+        if($category){
+            $categorObj = ProductCategory::where('extra_info', $category)->first();
+
+            if($categorObj){
+                $productSettings['CategoryId'] = $categorObj->id;
+            }
+            $products[$category] = $prod->getProductList($productSettings);
+
+            $return[$category] = array_merge($ideas[$category] ?: [], $products[$category]['result']);
+
+        }else{
             $productSettings['CategoryId'] = 44;
             $products['smart-home'] = $prod->getProductList($productSettings);
 
@@ -175,44 +214,48 @@ class PageController extends ApiController
             $productSettings['CategoryId'] = 159;
             $products['smart-entertainment'] = $prod->getProductList($productSettings);
 
-            // TODO --> get Products by most popular
-
-            //        foreach($allProducts['result'] as $prod){
-            //            $prodID = $prod->id;
-            //            $count =  Counter::show('product-details-'.$prodID);
-            //            $prod->count = $count;
-            //        }
-            //
-            //        $sortedProds = array_values(array_sort($allProducts['result'], function($value){
-            //            return $value->count;
-            //        }));
-
-            //        $sortedProds = array_reverse($sortedProds);
-
-            //        $return['products'] = array_slice($sortedProds, 0, 4);
-
             $return['smart_home'] = array_merge($ideas['smart-home'] ?: [], $products['smart-home']['result']);
             $return['smart_body'] = array_merge($ideas['smart-body']  ?: [], $products['smart-body']['result']);
             $return['smart_entertainment'] = array_merge($ideas['smart-entertainment'] ?: [], $products['smart-entertainment']['result']);
-
-
-        if($allCategories){
-
-            $ch = curl_init();
-            curl_setopt($ch, CURLOPT_URL, $url . '&category-name=smart-travel');
-            curl_setopt($ch, CURLOPT_HEADER, 0);
-            curl_setopt($ch, CURLOPT_VERBOSE, true);
-            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-            curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-            curl_setopt($ch, CURLOPT_ENCODING, "");
-            $json = curl_exec($ch);
-            $ideas['smart-travel'] = json_decode($json);
-
-            $productSettings['CategoryId'] = 55;
-            $products['smart-travel'] = $prod->getProductList($productSettings);
-
-            $return['smart_travel'] = array_merge($ideas['smart-travel'] ?: [], $products['smart-travel']['result']);
         }
+
+
+
+            // TODO --> get Products by most popular
+
+//                    foreach($allProducts['result'] as $prod){
+//                        $prodID = $prod->id;
+//                        $count =  Counter::show('product-details-'.$prodID);
+//                        $prod->count = $count;
+//                    }
+//
+//                    $sortedProds = array_values(array_sort($allProducts['result'], function($value){
+//                        return $value->count;
+//                    }));
+//
+//                    $sortedProds = array_reverse($sortedProds);
+//
+//                    $return['products'] = array_slice($sortedProds, 0, 2);
+
+
+
+//        if($allCategories){
+//
+//            $ch = curl_init();
+//            curl_setopt($ch, CURLOPT_URL, $url . '&category-name=smart-travel');
+//            curl_setopt($ch, CURLOPT_HEADER, 0);
+//            curl_setopt($ch, CURLOPT_VERBOSE, true);
+//            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+//            curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+//            curl_setopt($ch, CURLOPT_ENCODING, "");
+//            $json = curl_exec($ch);
+//            $ideas['smart-travel'] = json_decode($json);
+//
+//            $productSettings['CategoryId'] = 55;
+//            $products['smart-travel'] = $prod->getProductList($productSettings);
+//
+//            $return['smart_travel'] = array_merge($ideas['smart-travel'] ?: [], $products['smart-travel']['result']);
+//        }
 
             // array sort produ result, get three top ones.
             $cached = PageHelper::putIntoRedis($cacheKey, $return, '1 day');

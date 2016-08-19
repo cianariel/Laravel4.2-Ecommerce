@@ -205,8 +205,14 @@ if ( $posts->have_posts() ) {
             $data['author'] = get_the_author();
             $data['author_id'] = get_the_author_meta('ID');
 
-            $laravelUser = file_get_contents('https://ideaing.com/api/info-raw/' . get_the_author_email());
-            $laravelUser = json_decode($laravelUser, true);
+            if(is_connected()){
+                $laravelUser = file_get_contents('https://ideaing.com/api/info-raw/' . get_the_author_email());
+                $laravelUser = json_decode($laravelUser, true);
+            }else{
+                $laravelUser = false;
+            }
+
+
 
             $data['authorlink'] = $laravelUser['permalink'];
 
