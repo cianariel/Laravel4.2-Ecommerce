@@ -7289,6 +7289,7 @@ article.product {
   .most-popular-new .popular-wrap.single-thumb {
     width: 100%; }
     .most-popular-new .popular-wrap.single-thumb .box-item {
+      height: 262px !important;
       overflow: hidden; }
       .most-popular-new .popular-wrap.single-thumb .box-item .idea-meta {
         bottom: -120px; }
