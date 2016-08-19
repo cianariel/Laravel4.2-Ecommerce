@@ -7286,6 +7286,12 @@ article.product {
 .most-popular-new .popular-wrap {
   width: 32%;
   float: left; }
+  .most-popular-new .popular-wrap.single-thumb {
+    width: 100%; }
+    .most-popular-new .popular-wrap.single-thumb .box-item {
+      overflow: hidden; }
+      .most-popular-new .popular-wrap.single-thumb .box-item::before {
+        display: none; }
   .most-popular-new .popular-wrap .box-item {
     width: 100%;
     height: auto; }

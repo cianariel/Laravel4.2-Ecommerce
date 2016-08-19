@@ -11,7 +11,61 @@
     ?>
 
     <div class="app-wrap" id="pagingApp" ng-app="pagingApp" ng-controller="pagingController" ng-cloak>
-       
+
+        <div class="white-bg mostpop-wrap col-xs-12">
+            <div class="homepage-grid center-block">
+                <h4 class="col-xs-12 home-subheader"><span>Popular <i class="m-icon m-icon--flame pink"></i></span></h4>
+                <section class="most-popular-new container no-padding">
+                    <div class="col-sm-3 col-xs-12 popular-section category-smart-home">
+                        <h5 class="category-link__smart-home  category-color">
+                            <i class="hidden-xs hidden-sm hidden-md m-icon m-icon--smart-home"></i>
+                            <span class="m-icon-text text-uppercase">Smart Home</span>
+                        </h5>
+
+                        @if(@$mostPopular->smart_home)
+                            @foreach($mostPopular->smart_home as $item)
+                                    @include('most-popular.single-thumb')
+                            @endforeach
+                        @endif
+                    </div>
+                    <div class="col-sm-3 col-xs-12 popular-section category-smart-body">
+                        <h5 class="category-link__smart-body m-icon-text-holder">
+                            <i class="hidden-xs hidden-sm hidden-md m-icon m-icon--wearables"></i>
+                            <span class="m-icon-text text-uppercase">Smart Body</span>
+                        </h5>
+                        @if(@$mostPopular->smart_body)
+                            @foreach($mostPopular->smart_body as $item)
+                                @include('most-popular.single-thumb')
+                            @endforeach
+                        @endif
+                    </div>
+
+                    <div class="col-sm-3 col-xs-12 popular-section category-smart-entertainment">
+                        <h5 class="category-link__smart-entertainment m-icon-text-holder">
+                            <i class="hidden-xs hidden-sm hidden-md m-icon m-icon--video"></i>
+                            <span class="m-icon-text text-uppercase">Smart Entertainment</span>
+                        </h5>
+                        @if(@$mostPopular->smart_entertainment)
+                            @foreach($mostPopular->smart_entertainment as $item)
+                                @include('most-popular.single-thumb')
+                            @endforeach
+                        @endif
+                    </div>
+
+                    <div class="col-sm-3 col-xs-12 popular-section category-smart-body">
+                        <h5 class="category-link__smart-body m-icon-text-holder">
+                            <i class="hidden-xs hidden-sm hidden-md m-icon m-icon--video"></i>
+                            <span class="m-icon-text text-uppercase">Smart Entertainment</span>
+                        </h5>
+                        @if(@$mostPopular->smart_body)
+                            @foreach($mostPopular->smart_body as $item)
+                                @include('most-popular.single-thumb')
+                            @endforeach
+                        @endif
+                    </div>
+                </section>
+            </div>
+        </div>
 
 
         <div class="homepage-grid center-block">

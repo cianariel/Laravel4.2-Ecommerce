@@ -69,17 +69,18 @@ if($byTags = $_REQUEST['tag']){
 
 $args['date_query'] = [];
 
-if(isset($_REQUEST['year'])){
-    $dateQuery['year'] = $_REQUEST['year'];
-}
-
-if(isset($_REQUEST['monthnum'])){
-    $dateQuery['monthnum'] = $_REQUEST['monthnum'];
-
-}
-
-if(isset($_REQUEST['day'])){
-    $dateQuery['day'] = $_REQUEST['day'];
+if(isset($_REQUEST['daysback'])){
+    $dateQuery['after'] = $_REQUEST['daysback'] . ' days ago';
+}else{
+    if(isset($_REQUEST['year'])){
+        $dateQuery['year'] = $_REQUEST['year'];
+    }
+    if(isset($_REQUEST['monthnum'])){
+        $dateQuery['monthnum'] = $_REQUEST['monthnum'];
+    }
+    if(isset($_REQUEST['day'])){
+        $dateQuery['day'] = $_REQUEST['day'];
+    }
 }
 
 if(isset($dateQuery)){

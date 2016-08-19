@@ -3055,8 +3055,19 @@ article.product{
   }
   .popular-wrap{
     width: 32%;
-    //height: 256px;
     float: left;
+
+    &.single-thumb{
+      width: 100%;
+
+      .box-item{
+        overflow:hidden;
+
+        &::before{
+          display: none;
+        }
+      }
+    }
 
     .box-item{
       width: 100%;

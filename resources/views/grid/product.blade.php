@@ -9,7 +9,7 @@
 
         <div class="social-stats__item views" ng-show="item.views >= 100">
             <i class="m-icon m-icon--flame"></i>
-            <span class="social-stats__text ng-binding">31 views</span>
+            <span class="social-stats__text ng-binding"><?php echo '{{item.views}}' ?></span>
         </div>
 
         <a ng-if="!item.is_deal" href="/ideas">

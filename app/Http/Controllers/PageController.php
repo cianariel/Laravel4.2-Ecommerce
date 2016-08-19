@@ -67,16 +67,11 @@ class PageController extends ApiController
         if ($this->authCheck['method-status'] == 'success-with-http') {
             $userData = $this->authCheck['user-data'];
         }
-//        $homehero = new HomeHero();
-//        $result = $homehero->heroDetailsViewGenerate();
-//
         $sliderContent = self::getHeroSliderContent();
 
         $result = [];
-//
-//        $sliderContent = [];
 
-        $mostPopular = self::getMostPopular();
+        $mostPopular = self::getMostPopular(false, false);
 
         MetaTag::set('title', 'Ideaing | Ideas for Smarter Living');
         MetaTag::set('description', 'Ideaing inspires you to live a smarter and beautiful home. Get ideas on using home automation devices including WiFi cameras, WiFi doorbells, door locks, security, energy, water and many more.');
@@ -90,21 +85,28 @@ class PageController extends ApiController
 
     public function categoryPage()
     {
-
         $thisCategory = Req::segment(1);
 
-     //   $mostPopular = self::getMostPopularByCategory();
+        $rand = rand(1,2);
+
+        if($rand == 1){
+            $daysBack = 7;
+        }else{
+            $daysBack = false;
+        }
+
+        $mostPopular = self::getMostPopular($daysBack, true, 1);
 
         MetaTag::set('title', 'Ideaing | Ideas for Smarter Living');
         MetaTag::set('description', 'Ideaing inspires you to live a smarter and beautiful home. Get ideas on using home automation devices including WiFi cameras, WiFi doorbells, door locks, security, energy, water and many more.');
         //return $result;
         return view('category.category')
             ->with('thisCategory', $thisCategory)
-          //  ->with('mostPopular', $mostPopular)
+            ->with('mostPopular', $mostPopular)
             ;
     }
 
-    public static function getMostPopular(){
+    public static function getMostPopular($daysBack = false, $allCategories = true, $itemsPerCategory = 2){
 
         $cacheKey = "home-popular";
 
@@ -113,7 +115,11 @@ class PageController extends ApiController
 //        } else {
 
             // 1. get most popular ideas
-            $url = URL::to('/') . '/ideas/feeds/index.php?count=2&most-popular';
+            $url = URL::to('/') . '/ideas/feeds/index.php?count='.$itemsPerCategory.'&most-popular';
+
+            if($daysBack){
+                $url .= '&daysback=' . $daysBack;
+            }
 
             $ch = curl_init();
             curl_setopt($ch, CURLOPT_URL, $url . '&category-name=smart-home');
@@ -145,53 +151,31 @@ class PageController extends ApiController
             $json = curl_exec($ch);
             $ideas['smart-entertainment'] = json_decode($json);
 
+             // 2. get products
+            $productSettings = [
+                'ActiveItem' => true,
+                'limit' => $itemsPerCategory == 1 ? 1 : $itemsPerCategory - 1,
+                'page' => 1,
+                'FilterType' => false,
+                'FilterText' => false,
+                'ShowFor' => false,
+                'WithTags' => false,
+                'WithAverageScore' => false,
+                'MostPopular' => true,
+            ];
 
-
-                 // 2. get products
              $prod = new Product();
 
-            $productSettings = [
-                'ActiveItem' => true,
-                'limit' => 1,
-                'page' => 1,
-                'CategoryId' => 44,
-                'FilterType' => false,
-                'FilterText' => false,
-                'ShowFor' => false,
-                'WithTags' => false,
-                'WithAverageScore' => false,
-                'MostPopular' => true,
-            ];
+            $productSettings['CategoryId'] = 44;
             $products['smart-home'] = $prod->getProductList($productSettings);
 
-
-            $productSettings = [
-                'ActiveItem' => true,
-                'limit' => 1,
-                'page' => 1,
-                'CategoryId' => 62,
-                'FilterType' => false,
-                'FilterText' => false,
-                'ShowFor' => false,
-                'WithTags' => false,
-                'WithAverageScore' => false,
-                'MostPopular' => true,
-            ];
+            $productSettings['CategoryId'] = 62;
             $products['smart-body'] = $prod->getProductList($productSettings);
 
-            $productSettings = [
-                'ActiveItem' => true,
-                'limit' => 1,
-                'page' => 1,
-                'CategoryId' => 159,
-                'FilterType' => false,
-                'FilterText' => false,
-                'ShowFor' => false,
-                'WithTags' => false,
-                'WithAverageScore' => false,
-                'MostPopular' => true,
-            ];
-             $products['smart-entertainment'] = $prod->getProductList($productSettings);
+            $productSettings['CategoryId'] = 159;
+            $products['smart-entertainment'] = $prod->getProductList($productSettings);
+
+            // TODO --> get Products by most popular
 
             //        foreach($allProducts['result'] as $prod){
             //            $prodID = $prod->id;
@@ -210,6 +194,25 @@ class PageController extends ApiController
             $return['smart_home'] = array_merge($ideas['smart-home'] ?: [], $products['smart-home']['result']);
             $return['smart_body'] = array_merge($ideas['smart-body']  ?: [], $products['smart-body']['result']);
             $return['smart_entertainment'] = array_merge($ideas['smart-entertainment'] ?: [], $products['smart-entertainment']['result']);
+
+
+        if($allCategories){
+
+            $ch = curl_init();
+            curl_setopt($ch, CURLOPT_URL, $url . '&category-name=smart-travel');
+            curl_setopt($ch, CURLOPT_HEADER, 0);
+            curl_setopt($ch, CURLOPT_VERBOSE, true);
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+            curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+            curl_setopt($ch, CURLOPT_ENCODING, "");
+            $json = curl_exec($ch);
+            $ideas['smart-travel'] = json_decode($json);
+
+            $productSettings['CategoryId'] = 55;
+            $products['smart-travel'] = $prod->getProductList($productSettings);
+
+            $return['smart_travel'] = array_merge($ideas['smart-travel'] ?: [], $products['smart-travel']['result']);
+        }
 
             // array sort produ result, get three top ones.
             $cached = PageHelper::putIntoRedis($cacheKey, $return, '1 day');
@@ -683,7 +686,7 @@ class PageController extends ApiController
     public function getGridStories($limit, $offset, $featuredLimit, $featuredOffset, $tag = false, $category = false, $daysback = false)
     {
 
-        $url = 'https://ideaing.com/ideas/feeds/index.php?count=' . $limit . '&no-featured&offset=' . $offset;
+//        $url = 'https://ideaing.com/ideas/feeds/index.php?count=' . $limit . '&no-featured&offset=' . $offset;
 //        $url = URL::to('/') . '/ideas/feeds/index.php?count=' . $limit . '&no-featured&offset=' . $offset;
 
         if(@env('PROD_FEED')){
