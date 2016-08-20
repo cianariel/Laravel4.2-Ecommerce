@@ -6691,7 +6691,7 @@ body.contactus-page .mid-nav .rooms.extra-nav,
       @media (max-width: 620px) {
         .ideaing-logo .m-icon:not(.m-icon--bulb2) {
           left: 0;
-          top: 0;
+          top: 2px;
           right: 0;
           margin: 0 auto; } }
     .ideaing-logo .m-icon.default-logo {
@@ -7426,12 +7426,14 @@ body.category .rsThumbs {
     .search-bar .m-icon {
       left: 18px; } }
 form.mobile-search-bar {
-  padding: 13px;
-  top: 37px !important;
-  left: 60px;
+  display: block;
+  padding: 0;
+  overflow: hidden;
+  top: 50px !important;
+  left: 43px;
   margin: 0 !important;
   border: 0;
-  width: 5%;
+  width: 0;
   opacity: 1;
   transition: width 1s; }
   form.mobile-search-bar input {
@@ -7439,7 +7441,6 @@ form.mobile-search-bar {
   form.mobile-search-bar::before, form.mobile-search-bar::after {
     display: none; }
   form.mobile-search-bar.on {
-    display: block;
     width: 100%;
     z-index: 40;
     background: transparent !important; }
@@ -7611,7 +7612,8 @@ form.mobile-search-bar {
 
 @media (max-width: 620px) {
   .logged-in .user-controls {
-    right: 0 !important;
+    right: -9px !important;
+    top: 8px !important;
     width: 100%; }
     .logged-in .user-controls a {
       max-width: 100%; } }
@@ -7781,7 +7783,7 @@ header.colophon {
         right: 13.5%;
         max-width: 760px; } }
   .search-bar input {
-    height: 35px;
+    height: 33px;
     border-radius: 2px;
     -webkit-transition: width .2s;
     /* Safari */
@@ -9163,7 +9165,7 @@ header.sub-head {
     margin: 0 auto; }
 
 .homepage #hero {
-  min-height: 400px; }
+  min-height: 383px; }
 .homepage .color-overlay {
   position: absolute;
   min-height: 1200px;

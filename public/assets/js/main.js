@@ -3672,7 +3672,7 @@ angular.module('colorpicker.module', [])
 
         $('body').on('click', '.search-toggle-button.mobile', function(e){
             e.preventDefault();
-            $('.mobile-search-bar').fadeToggle('slow').toggleClass('on');
+            $('.mobile-search-bar').toggleClass('on');
             $('.category-menu').fadeToggle();
             //$('.category-menu' ).animate({
             //    opacity: 0,
