@@ -6169,6 +6169,9 @@ ul.share-buttons {
     width: 35px;
     margin-left: 7%;
     border: 0; }
+    @media (max-width: 410px) {
+      .horizontal-sharing ul.share-buttons a {
+        margin-left: 5%; } }
     .horizontal-sharing ul.share-buttons a .share-count {
       display: none; }
 
@@ -7302,7 +7305,9 @@ body.category .homepage-grid {
       font-size: 1.5rem;
       text-align: center;
       width: 100%;
-      z-index: 1; }
+      z-index: 1;
+      padding-left: 4px;
+      padding-right: 4px; }
     .most-popular-new .popular-wrap.single-thumb::before {
       counter-increment: popular-box;
       content: counter(popular-box);
@@ -13197,7 +13202,7 @@ p {
   .box-item:not(.slider-box) {
     width: 97%;
     margin: 0 auto;
-    margin-left: 2px !important; }
+    margin-left: 3px !important; }
     .box-item:not(.slider-box):not(:last-child) {
       margin-bottom: 4px; } }
 .box-item:not(.slider-box) .img-holder img {
