@@ -71,7 +71,7 @@ class PageController extends ApiController
 
         $result = [];
 
-        $mostPopular = self::getMostPopular(false, false);
+        $mostPopular = self::getMostPopular(false, false, 3);
 
         MetaTag::set('title', 'Ideaing | Ideas for Smarter Living');
         MetaTag::set('description', 'Ideaing inspires you to live a smarter and beautiful home. Get ideas on using home automation devices including WiFi cameras, WiFi doorbells, door locks, security, energy, water and many more.');
@@ -85,12 +85,7 @@ class PageController extends ApiController
 
     public function categoryPage()
     {
-        $bob =1;
-
         $thisCategory = Req::segment(1);
-
-//        echo $thisCategory; die();
-
 
         $rand = rand(1,2);
 
@@ -152,7 +147,7 @@ class PageController extends ApiController
                 curl_setopt($ch, CURLOPT_URL, $url . '&category-name=smart-home');
                 curl_setopt($ch, CURLOPT_HEADER, 0);
                 curl_setopt($ch, CURLOPT_VERBOSE, true);
-                curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+                curl_setopt($ch, CURLOPT_RETURNTRANSFER, true); 
                 curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
                 curl_setopt($ch, CURLOPT_ENCODING, "");
                 $json = curl_exec($ch);
@@ -182,7 +177,7 @@ class PageController extends ApiController
              // 2. get products
             $productSettings = [
                 'ActiveItem' => true,
-                'limit' => $itemsPerCategory == 1 ? 1 : ($itemsPerCategory / 2),
+                'limit' => $itemsPerCategory == 1 ? 1 : ($itemsPerCategory - 1),
                 'page' => false,
                 'FilterType' => false,
                 'FilterText' => false,
@@ -217,11 +212,13 @@ class PageController extends ApiController
 
                     $sortedProds = array_reverse($sortedProds);
 
-                    $products[$category] = array_slice($sortedProds, 0, 2);
+                    $products[$category] = array_slice($sortedProds, 0, ($itemsPerCategory - 1));
 
 //            $products[$category] = $prod->getProductList($productSettings);
 
-            $return[$category] = array_merge($ideas[$category] ?: [], $products[$category]);
+            $array = array_merge($ideas[$category] ?: [], $products[$category]);
+
+            $return[$category] = array_slice($array, 0, $itemsPerCategory);
 
         }else{
             $productSettings['CategoryId'] = 44;
