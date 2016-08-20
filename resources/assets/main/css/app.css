@@ -4914,6 +4914,9 @@ a:hover, a:focus {
 .relative {
   position: relative; }
 
+.opaque {
+  opacity: .4 !important; }
+
 ol li {
   list-style: decimal !important; }
 
@@ -7244,6 +7247,11 @@ article.product {
 .most-popular-new .category-smart-entertainment .box-item::before {
   background: #89C981 !important; }
 
+body.category .rsThumbs {
+  display: none; }
+body.category .homepage-grid {
+  padding-top: 20px; }
+
 @media (max-width: 620px) {
   .most-popular-new .popular-section {
     float: none;
@@ -7288,13 +7296,33 @@ article.product {
   float: left; }
   .most-popular-new .popular-wrap.single-thumb {
     width: 100%; }
-    .most-popular-new .popular-wrap.single-thumb .idea-meta {
-      bottom: -120px; }
+    .most-popular-new .popular-wrap.single-thumb .box-item__label {
+      position: absolute;
+      bottom: 0;
+      font-size: 1.5rem;
+      text-align: center;
+      width: 100%; }
+    .most-popular-new .popular-wrap.single-thumb::before {
+      counter-increment: popular-box;
+      content: counter(popular-box);
+      font-weight: 700;
+      position: absolute;
+      left: 8px;
+      background: #FF0042;
+      border-radius: 50%;
+      color: #fff;
+      font-weight: bold;
+      padding: 2px 8px;
+      z-index: 90; }
     .most-popular-new .popular-wrap.single-thumb .box-item {
       height: 215px !important;
       overflow: hidden; }
       .most-popular-new .popular-wrap.single-thumb .box-item::before {
         display: none; }
+    .most-popular-new .popular-wrap.single-thumb .social-stats__item {
+      margin: 3px auto;
+      width: 96px;
+      display: block; }
   .most-popular-new .popular-wrap .box-item {
     width: 100%;
     height: auto; }
@@ -8949,14 +8977,16 @@ header.sub-head {
   padding-top: 10px;
   padding-bottom: 10px; }
 
-.most-popular-new .home-subheader {
-  height: 41px; }
-  @media (max-width: 768px) {
-    .most-popular-new .home-subheader {
-      width: 100%;
-      float: left; } }
-  .most-popular-new .home-subheader span {
+.most-popular-new {
+  counter-reset: popular-box; }
+  .most-popular-new .home-subheader {
     height: 41px; }
+    @media (max-width: 768px) {
+      .most-popular-new .home-subheader {
+        width: 100%;
+        float: left; } }
+    .most-popular-new .home-subheader span {
+      height: 41px; }
 
 #hero-nav {
   overflow: visible;

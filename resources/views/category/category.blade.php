@@ -11,6 +11,9 @@
     ?>
 
     <div class="app-wrap" id="pagingApp" ng-app="pagingApp" ng-controller="pagingController" ng-cloak>
+        <section id="hero" class="landing-hero col-lg-12">
+            @include('layouts.parts.home-hero-slider')
+        </section>
 
         <div class="white-bg mostpop-wrap col-xs-12">
             <div class="homepage-grid center-block">
@@ -19,7 +22,6 @@
                 @if(@$mostPopular->$thisCategory)
                     <section class="most-popular-new container no-padding">
                         @foreach($mostPopular->$thisCategory as $i => $item)
-                            <span>{{$i}}</span>
                             <div class="col-sm-3 col-xs-12 popular-section category-{{$thisCategory}}">
                                 @include('most-popular.single-thumb')
                             </div>

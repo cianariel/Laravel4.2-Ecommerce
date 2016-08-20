@@ -89,6 +89,10 @@ a:hover, a:focus{
   position: relative;
 }
 
+.opaque{
+  opacity: .4 !important;
+}
+
 
 ol li{
   list-style: decimal !important;
@@ -2995,6 +2999,15 @@ article.product{
   }
 }
 
+body.category{
+  .rsThumbs{
+    display: none;
+  }
+  .homepage-grid{
+    padding-top: 20px;
+  }
+}
+
 .most-popular-new{
   //overflow: hidden;
 
@@ -3059,8 +3072,31 @@ article.product{
 
     &.single-thumb{
       width: 100%;
-      .idea-meta{
-        bottom: -121%;
+
+      //.idea-meta{
+      //  bottom: -121%;
+      //}
+
+      .box-item__label{
+        position: absolute;
+        bottom: 0;
+        font-size: 1.5rem;
+        text-align: center;
+        width: 100%;
+      }
+
+      &::before{
+        counter-increment: popular-box;
+        content: counter(popular-box);
+        font-weight: 700;
+        position: absolute;
+        left: 8px;
+        background: #FF0042;
+        border-radius: 50%;
+        color: #fff;
+        font-weight: bold;
+        padding: 2px 8px;
+        z-index: 90;
       }
 
       .box-item{
@@ -3069,8 +3105,13 @@ article.product{
 
 
         &::before{
-          display: none;
+            display: none;
         }
+      }
+      .social-stats__item {
+        margin: 3px auto;
+        width: 96px;
+        display: block;
       }
     }
 
@@ -5598,6 +5639,7 @@ header.sub-head{
 }
 
 .most-popular-new{
+  counter-reset: popular-box;
 
   .home-subheader{
     height: 41px;
@@ -5605,7 +5647,6 @@ header.sub-head{
     @media(max-width: 768px){
       width: 100%;
       float: left;
-
     }
 
     span{

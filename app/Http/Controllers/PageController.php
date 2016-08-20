@@ -87,6 +87,8 @@ class PageController extends ApiController
     {
         $thisCategory = Req::segment(1);
 
+        $sliderContent = self::getHeroSliderContent(1, $thisCategory);
+
         $rand = rand(1,2);
 
         if($rand == 1){
@@ -103,6 +105,7 @@ class PageController extends ApiController
         return view('category.category')
             ->with('thisCategory', $thisCategory)
             ->with('mostPopular', $mostPopular)
+            ->with('sliderContent', $sliderContent)
             ;
     }
 
@@ -121,15 +124,8 @@ class PageController extends ApiController
                 $url .= '&daysback=' . $daysBack;
             }
 
-
             if($category){
-//                if($category == 'smart-home'){
-//                    $category = 'smarthome';
-//                }
                 $url .= '&category-name='.$category;
-
-//                print_r($url); die();
-
 
                 $ch = curl_init();
                 curl_setopt($ch, CURLOPT_URL, $url);
@@ -140,8 +136,6 @@ class PageController extends ApiController
                 curl_setopt($ch, CURLOPT_ENCODING, "");
                 $json = curl_exec($ch);
                 $ideas[$category] = json_decode($json);
-
-//                print_r($json); die();
             }else{
                 $ch = curl_init();
                 curl_setopt($ch, CURLOPT_URL, $url . '&category-name=smart-home');
@@ -282,14 +276,18 @@ class PageController extends ApiController
     }
 
 
-    public static function getHeroSliderContent()
+    public static function getHeroSliderContent($count = 3, $category = false)
     {
-        $cacheKey = "slider-ideas";
+        $cacheKey = "slider-ideas-$count-$category";
 
-        if ($cachedContent = PageHelper::getFromRedis($cacheKey, true)) {
-            $return = $cachedContent;
-        } else {
-            $url = URL::to('/') . '/ideas/feeds/index.php?count=3&only-slider';
+//        if ($cachedContent = PageHelper::getFromRedis($cacheKey, true)) {
+//            $return = $cachedContent;
+//        } else {
+            $url = URL::to('/') . '/ideas/feeds/index.php?count='.$count.'&only-slider';
+
+            if($category){
+                $url .= '&category-name=' . $category;
+            }
 
             $ch = curl_init();
             curl_setopt($ch, CURLOPT_URL, $url);
@@ -303,7 +301,7 @@ class PageController extends ApiController
             $return = json_decode($json, true);
 
             $cached = PageHelper::putIntoRedis($cacheKey, $return, '24 hours');
-        }
+//        }
 
         return $return;
 
