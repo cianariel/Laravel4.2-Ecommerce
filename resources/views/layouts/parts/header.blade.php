@@ -34,19 +34,27 @@ if (!isset($theGiveAway)) {
     <header class="colophon container full-sm fixed-sm">
         <div ng-init="socialCounter()" class="socialcounter col-xs-12">
             <nav id="top-nav" class="row">
+                <a id="menu-icon-wrapper" class="menu-icon-wrapper home-hamburger mobile-top-menu-switcher hidden-lg hidden-md hidden-sm"  href="#">
+                    <svg width="1000px" height="1000px">
+                        <path id="pathA" d="M 300 400 L 700 400 C 900 400 900 750 600 850 A 400 400 0 0 1 200 200 L 800 800" style="stroke-dashoffset: 5803.15; stroke-dasharray: 2901.57, 5258.15, 240;"></path>
+                        <path id="pathB" d="M 300 500 L 700 500" style="stroke-dashoffset: 800; stroke-dasharray: 400, 600, 0;"></path>
+                        <path id="pathC" d="M 700 600 L 300 600 C 100 600 100 200 400 150 A 400 380 0 1 1 200 800 L 800 200" style="stroke-dashoffset: 6993.11; stroke-dasharray: 3496.56, 6448.11, 240;"></path>
+                    </svg>
+                    <button id="menu-icon-trigger" class="menu-icon-trigger"></button>
+                </a>
                 <div class="text-center logo-holder">
-                    <a class="ideaing-logo center-block hidden-sm hidden-xs" href="/">
+                    <a class="ideaing-logo center-block" href="/">
                                <span class="m-icon m-icon--logo-with-text-black-blue default-logo">
                 <span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span><span class="path6"></span><span class="path7"></span><span class="path8"></span><span class="path9"></span><span class="path10"></span><span class="path11"></span><span class="path12"></span><span class="path13"></span><span class="path14"></span><span class="path15"></span><span class="path16"></span><span class="path17"></span><span class="path18"></span><span class="path19"></span><span class="path20"></span><span class="path21"></span><span class="path22"></span><span class="path23"></span><span class="path24"></span><span class="path25"></span><span class="path26"></span><span class="path27"></span><span class="path28"></span><span class="path29"></span><span class="path30"></span><span class="path31"></span><span class="path32"></span><span class="path33"></span><span class="path34"></span><span class="path35"></span><span class="path36"></span><span class="path37"></span><span class="path38"></span><span class="path39"></span><span class="path40"></span>
                 </span>
-                        <i class="m-icon m-icon--bulb2 scroll-logo default-logo">
-                            <span class="path1"></span><span class="path2"></span><span
-                                    class="path3"></span><span class="path4"></span><span
-                                    class="path5"></span><span class="path6"></span><span
-                                    class="path7"></span><span class="path8"></span><span
-                                    class="path9"></span><span class="path10"></span>
-                        </i>
-                        <i class="m-icon m-icon--bulb2 red-logo scroll-logo">
+                        {{--<i class="m-icon m-icon--bulb2 scroll-logo default-logo">--}}
+                            {{--<span class="path1"></span><span class="path2"></span><span--}}
+                                    {{--class="path3"></span><span class="path4"></span><span--}}
+                                    {{--class="path5"></span><span class="path6"></span><span--}}
+                                    {{--class="path7"></span><span class="path8"></span><span--}}
+                                    {{--class="path9"></span><span class="path10"></span>--}}
+                        {{--</i>--}}
+                        <i class="m-icon m-icon--bulb2 red-logo scroll-logo hidden-soft">
                             <span class="path1"></span><span class="path2"></span><span
                                     class="path3"></span><span class="path4"></span><span
                                     class="path5"></span><span class="path6"></span><span
@@ -57,23 +65,25 @@ if (!isset($theGiveAway)) {
                                     <span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span><span class="path6"></span><span class="path7"></span><span class="path8"></span><span class="path9"></span><span class="path10"></span><span class="path11"></span><span class="path12"></span><span class="path13"></span><span class="path14"></span><span class="path15"></span><span class="path16"></span><span class="path17"></span><span class="path18"></span><span class="path19"></span><span class="path20"></span><span class="path21"></span><span class="path22"></span><span class="path23"></span><span class="path24"></span><span class="path25"></span><span class="path26"></span><span class="path27"></span><span class="path28"></span><span class="path29"></span><span class="path30"></span><span class="path31"></span><span class="path32"></span><span class="path33"></span><span class="path34"></span><span class="path35"></span><span class="path36"></span><span class="path37"></span><span class="path38"></span><span class="path39"></span><span class="path40"></span>
                                 </span>
                     </a>
-                    <a class="ideaing-logo center-block visible-sm visible-xs" href="/">
-                        <i class="m-icon m-icon--bulb2 scroll-logo default-logo">
-                            <span class="path1"></span><span class="path2"></span><span
-                                    class="path3"></span><span class="path4"></span><span
-                                    class="path5"></span><span class="path6"></span><span
-                                    class="path7"></span><span class="path8"></span><span
-                                    class="path9"></span><span class="path10"></span>
-                        </i>
-                        <i class="m-icon m-icon--bulb2 scroll-logo red-logo">
-                            <span class="path1"></span><span class="path2"></span><span
-                                    class="path3"></span><span class="path4"></span><span
-                                    class="path5"></span><span class="path6"></span><span
-                                    class="path7"></span><span class="path8"></span><span
-                                    class="path9"></span><span class="path10"></span>
-                        </i>
-                    </a>
+                    {{--<a class="ideaing-logo center-block visible-sm visible-xs" href="/">--}}
+                        {{--<i class="m-icon m-icon--bulb2 scroll-logo default-logo">--}}
+                            {{--<span class="path1"></span><span class="path2"></span><span--}}
+                                    {{--class="path3"></span><span class="path4"></span><span--}}
+                                    {{--class="path5"></span><span class="path6"></span><span--}}
+                                    {{--class="path7"></span><span class="path8"></span><span--}}
+                                    {{--class="path9"></span><span class="path10"></span>--}}
+                        {{--</i>--}}
+                        {{--<i class="m-icon m-icon--bulb2 scroll-logo red-logo">--}}
+                            {{--<span class="path1"></span><span class="path2"></span><span--}}
+                                    {{--class="path3"></span><span class="path4"></span><span--}}
+                                    {{--class="path5"></span><span class="path6"></span><span--}}
+                                    {{--class="path7"></span><span class="path8"></span><span--}}
+                                    {{--class="path9"></span><span class="path10"></span>--}}
+                        {{--</i>--}}
+                    {{--</a>--}}
                 </div>
+
+                <a href="#" class="search-toggle-button mobile hidden-soft shown-620"><i class="m-icon m-icon--search-id"></i></a>
 
                     <div class="top-nav-holder">
                         <div class="col-xs-10 col-sm-7 col-lg-8 category-menu">
@@ -107,13 +117,13 @@ if (!isset($theGiveAway)) {
 
 
 
-                        <a class="category-link__shop m-icon-text-holder hidden-soft shown-620" href="/shop">
-                            <i class="hidden-xs hidden-md m-icon m-icon--shopping-bag-light-green white"></i>
-                            <span class="m-icon-text white">Shop</span>
-                        </a>
+                        {{--<a class="category-link__shop m-icon-text-holder hidden-soft shown-620" href="/shop">--}}
+                            {{--<i class="hidden-xs hidden-md m-icon m-icon--shopping-bag-light-green white"></i>--}}
+                            {{--<span class="m-icon-text white">Shop</span>--}}
+                        {{--</a>--}}
 
-                            <form class="search-bar col-sm-2 col-lg-2 pseudo-full-wide" ng-app="publicApp" ng-controller="SearchController" action="/search-form-query" autocomplete="off">
-                                        <span class="search-input-holder desktop-search-bar">
+                            <form class="search-bar desktop-search-bar col-sm-2 col-lg-2 pseudo-full-wide" ng-app="publicApp" ng-controller="SearchController" action="/search-form-query" autocomplete="off">
+                                        <span class="search-input-holder">
                                             <i class="m-icon m-icon--search-id"></i>
                                             <input ng-click="toggleSearch()" id="search-input"
                                                        ng-change="openSearchDropdown(query)" ng-model="query"
@@ -129,6 +139,23 @@ if (!isset($theGiveAway)) {
                                         </span>
                             </form>
 
+                        <form class="search-bar mobile-search-bar col-sm-2 col-lg-2 hidden-soft" ng-app="publicApp" ng-controller="SearchController" action="/search-form-query" autocomplete="off">
+                                        <span class="search-input-holder desktop-search-bar">
+                                            <i class="m-icon m-icon--search-id"></i>
+                                            <input ng-click="toggleSearch()" id="search-input"
+                                                   ng-change="openSearchDropdown(query)" ng-model="query"
+                                                   ng-model-options='{ debounce: 800 }' class="form-control top-search"
+                                                   type="text" name="search" placeholder="Find Smart Products..."/>
+                                            <div id="suggest-category" ng-class="{shown: open, hidden: !open}"
+                                                 ng-show="categorySuggestions.length">
+                                                <?php // have to use only pure php includes, or the CMS wont read it
+                                                include('/var/www/ideaing/resources/views/layouts/parts/search-dropdown.blade.php')
+                                                ?>
+                                            </div>
+                                            <i class="hide-search m-icon--Close hidden-xs"></i>
+                                        </span>
+                        </form>
+
 
 
                         <div class="col-xs-5 col-sm-4 pull-right user-controls">
@@ -140,7 +167,7 @@ if (!isset($theGiveAway)) {
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="#" class="search-toggle-button hidden-xs"><i class="m-icon m-icon--search-id"></i></a>
+                                        <a href="#" class="search-toggle-button desktop hidden-xs"><i class="m-icon m-icon--search-id"></i></a>
                                     </li>
                                 </ul>
                                 <?php
@@ -254,18 +281,10 @@ if (!isset($theGiveAway)) {
                                 </div>
                             </div>
                         <?php } ?>
-                                <!--<a href="#" class="search-toggle pull-right" data-toggle=".mobile-search-bar"><i class="m-icon m-icon--search-id"></i></a>-->
 
                     </div>
 
-                        <a id="menu-icon-wrapper" class="menu-icon-wrapper home-hamburger mobile-top-menu-switcher hidden-lg hidden-md hidden-sm"  href="#">
-                            <svg width="1000px" height="1000px">
-                                <path id="pathA" d="M 300 400 L 700 400 C 900 400 900 750 600 850 A 400 400 0 0 1 200 200 L 800 800" style="stroke-dashoffset: 5803.15; stroke-dasharray: 2901.57, 5258.15, 240;"></path>
-                                <path id="pathB" d="M 300 500 L 700 500" style="stroke-dashoffset: 800; stroke-dasharray: 400, 600, 0;"></path>
-                                <path id="pathC" d="M 700 600 L 300 600 C 100 600 100 200 400 150 A 400 380 0 1 1 200 800 L 800 200" style="stroke-dashoffset: 6993.11; stroke-dasharray: 3496.56, 6448.11, 240;"></path>
-                            </svg>
-                            <button id="menu-icon-trigger" class="menu-icon-trigger"></button>
-                        </a>
+
 
                 <?php
                 if (function_exists('is_single')) {

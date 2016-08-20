@@ -5259,7 +5259,7 @@ h5.category-link__smart-travel span {
 @media (max-width: 480px) {
   .left-padded-xs {
     padding-left: 30px; } }
-.turn-left, .mobile-search-bar .close-button i:before {
+.turn-left, form.mobile-search-bar .close-button i:before {
   display: inline-block;
   -ms-transform: rotate(45deg);
   /* IE 9 */
@@ -6658,6 +6658,11 @@ body.contactus-page .mid-nav .rooms.extra-nav,
   .search-toggle-button.active, .search-toggle-button:hover {
     background: rgba(255, 0, 66, 0.7);
     color: #fff; }
+  .search-toggle-button.mobile {
+    clear: both;
+    position: relative;
+    left: 13px;
+    top: 25px; }
 
 .logo-wrap a {
   padding: 0; }
@@ -6683,6 +6688,12 @@ body.contactus-page .mid-nav .rooms.extra-nav,
     .ideaing-logo .m-icon:not(.m-icon--bulb2) {
       left: 10px;
       top: 3px; }
+      @media (max-width: 620px) {
+        .ideaing-logo .m-icon:not(.m-icon--bulb2) {
+          left: 0;
+          top: 0;
+          right: 0;
+          margin: 0 auto; } }
     .ideaing-logo .m-icon.default-logo {
       filter: grayscale(100%);
       -webkit-filter: grayscale(100%); }
@@ -7414,14 +7425,25 @@ body.category .homepage-grid.latest {
       width: 85%; }
     .search-bar .m-icon {
       left: 18px; } }
-.mobile-search-bar {
+form.mobile-search-bar {
   padding: 13px;
-  display: none;
-  background: #fff;
-  z-index: 40;
-  position: absolute;
-  top: -3px; }
-  .mobile-search-bar button {
+  top: 37px !important;
+  left: 60px;
+  margin: 0 !important;
+  border: 0;
+  width: 5%;
+  opacity: 1;
+  transition: width 1s; }
+  form.mobile-search-bar input {
+    min-width: 0 !important; }
+  form.mobile-search-bar::before, form.mobile-search-bar::after {
+    display: none; }
+  form.mobile-search-bar.on {
+    display: block;
+    width: 100%;
+    z-index: 40;
+    background: transparent !important; }
+  form.mobile-search-bar button {
     padding-right: 12px;
     float: right;
     background: #fff;
@@ -7435,7 +7457,7 @@ body.category .homepage-grid.latest {
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none; }
-    .mobile-search-bar button span {
+    form.mobile-search-bar button span {
       font-weight: bold;
       border-radius: 50%;
       background: #FF0042;
@@ -7443,10 +7465,10 @@ body.category .homepage-grid.latest {
       width: 25px;
       height: 25px;
       display: block; }
-  .mobile-search-bar .top-search {
+  form.mobile-search-bar .top-search {
     width: 80%;
     margin-right: 4px; }
-  .mobile-search-bar .close-button {
+  form.mobile-search-bar .close-button {
     margin-top: 4px;
     position: absolute;
     left: 4px; }
@@ -7622,7 +7644,7 @@ header.colophon {
     background: #fff; }
     @media (max-width: 620px) {
       header.colophon #top-nav {
-        max-height: 60px; } }
+        min-height: 101px; } }
     header.colophon #top-nav .notification-holder {
       padding-top: 4px; }
     header.colophon #top-nav a.signin {
@@ -7646,7 +7668,7 @@ header.colophon {
       header.colophon .user-controls {
         padding-right: 22px;
         position: absolute;
-        bottom: -26px;
+        top: -11px;
         right: -13px;
         max-width: 145px;
         z-index: 20; } }
@@ -7681,7 +7703,6 @@ header.colophon {
     right: -7px; } }
 
 .search-bar {
-  display: none;
   top: 25px;
   max-width: 100%;
   width: 740px;
@@ -7719,6 +7740,8 @@ header.colophon {
     width: 920px;
     left: 100%;
     background: rgba(255, 255, 255, 0.7); }
+  .search-bar.desktop-search-bar {
+    display: none; }
   .search-bar::before, .search-bar::after {
     height: 53px; }
   @media (max-width: 620px) {
@@ -7757,24 +7780,24 @@ header.colophon {
         position: absolute;
         right: 13.5%;
         max-width: 760px; } }
-  .search-bar .desktop-search-bar input {
+  .search-bar input {
     height: 35px;
     border-radius: 2px;
     -webkit-transition: width .2s;
     /* Safari */
     transition: width .2s;
     -webkit-appearance: none !important; }
-  .search-bar .desktop-search-bar > input:focus {
+  .search-bar > input:focus {
     border-color: #ff0041; }
     @media (min-width: 620px) {
-      .search-bar .desktop-search-bar > input:focus {
+      .search-bar > input:focus {
         width: 100%; } }
-  .search-bar .desktop-search-bar .m-icon {
+  .search-bar .m-icon {
     position: absolute;
     left: 8px;
     top: 6px;
     z-index: 10; }
-  .search-bar .desktop-search-bar .hide-search {
+  .search-bar .hide-search {
     color: #000;
     position: absolute;
     top: 6px;
@@ -7855,8 +7878,7 @@ header.colophon {
   height: 64px;
   position: absolute;
   top: -19px;
-  left: auto;
-  right: -35px;
+  left: 10px;
   border-radius: 2px;
   z-index: 80; }
   #top-nav .home-hamburger i {
@@ -7939,6 +7961,10 @@ header.colophon {
     @media (max-width: 620px) {
       #top-nav .category-menu a {
         padding-top: 0; } }
+  @media (max-width: 620px) {
+    #top-nav .category-menu {
+      overflow: hidden;
+      margin-top: 48px; } }
   #top-nav .category-menu ul > li:first-child a {
     padding-left: 4px; }
   #top-nav .category-menu ul > li > a i.m-icon {
@@ -10500,28 +10526,13 @@ footer.about-footer {
     #top-nav .logo-wrap {
       width: 195px;
       margin-left: 0; }
-    #top-nav .search-bar {
-      display: block;
-      opacity: 1;
+    #top-nav .search-bar a {
+      display: block !important;
+      height: 40px;
+      width: 40px;
       margin: 0;
-      margin-top: 3px;
-      width: 72%;
-      left: 44px;
-      top: 45px;
-      padding-top: 4px; } }
-    @media only screen and (max-width: 620px) and (max-width: 620px) {
-      #top-nav .search-bar {
-        background: transparent;
-        border: 0;
-        padding-left: 20px; } }
-@media only screen and (max-width: 620px) {
-      #top-nav .search-bar a {
-        display: block !important;
-        height: 40px;
-        width: 40px;
-        margin: 0;
-        margin-right: 30px;
-        padding: 0; }
+      margin-right: 30px;
+      padding: 0; }
     #top-nav a.signin {
       padding-right: 5px !important;
       padding-left: 5px !important;
@@ -10858,13 +10869,13 @@ footer.about-footer {
   #top-nav a {
     margin-left: 0; }
     #top-nav a.ideaing-logo {
-      width: auto;
-      text-indent: 0px;
+      width: 100px;
+      text-indent: 0;
       margin-top: -7px;
-      position: relative;
-      left: 9px; }
+      margin: 0 auto;
+      display: block;
+      float: none; }
       #top-nav a.ideaing-logo .m-icon {
-        display: none;
         font-size: 38px; }
       #top-nav a.ideaing-logo .m-icon.scroll-logo {
         display: block; }

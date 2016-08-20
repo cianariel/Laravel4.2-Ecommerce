@@ -3645,10 +3645,9 @@ angular.module('colorpicker.module', [])
             return false;
         });
 
-        $('body').on('click', '.search-toggle-button', function(e){
+        $('body').on('click', '.search-toggle-button.desktop', function(e){
             e.preventDefault();
-            var $show = $('.search-bar');
-            //var $header = $('.top-nav-holder');
+            var $show = $('.desktop-search-bar');
 
             if(!$show.hasClass('shown')){
                 $(this).addClass('active');
@@ -3657,8 +3656,6 @@ angular.module('colorpicker.module', [])
                     opacity: '1',
                     top: '50px',
                 }, 600)
-                //$header.animate({
-                //}, 600);
                 $show.addClass('shown');
                 $show.find('input').focus();
             }else{
@@ -3669,10 +3666,17 @@ angular.module('colorpicker.module', [])
                     opacity: 0,
                 }, 200);
                 $show.fadeOut();
-                //$header.animate({
-                //}, 500);
                 $show.removeClass('shown');
             }
+        });
+
+        $('body').on('click', '.search-toggle-button.mobile', function(e){
+            e.preventDefault();
+            $('.mobile-search-bar').fadeToggle('slow').toggleClass('on');
+            $('.category-menu').fadeToggle();
+            //$('.category-menu' ).animate({
+            //    opacity: 0,
+            //}, 1000);
         });
 
         $('body').on('click', '.hide-search', function(e){
