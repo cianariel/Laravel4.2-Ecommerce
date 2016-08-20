@@ -117,10 +117,11 @@ if (!isset($theGiveAway)) {
 
 
 
-                        {{--<a class="category-link__shop m-icon-text-holder hidden-soft shown-620" href="/shop">--}}
-                            {{--<i class="hidden-xs hidden-md m-icon m-icon--shopping-bag-light-green white"></i>--}}
-                            {{--<span class="m-icon-text white">Shop</span>--}}
-                        {{--</a>--}}
+                        <!--<a class="category-link__shop m-icon-text-holder hidden-soft shown-620" href="/shop">--}}
+                            <i class="hidden-xs hidden-md m-icon m-icon--shopping-bag-light-green white"></i>
+                            <span class="m-icon-text white">Shop</span>
+                        </a> 
+                        -->
 
                             <form class="search-bar desktop-search-bar col-sm-2 col-lg-2 pseudo-full-wide" ng-app="publicApp" ng-controller="SearchController" action="/search-form-query" autocomplete="off">
                                         <span class="search-input-holder">
