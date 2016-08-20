@@ -85,18 +85,10 @@
         </div>
 
         <div class="col-xs-12 center-block overhide center-wrap">
-            <div class="homepage-grid center-block main-grid">
+            <div class="homepage-grid center-block main-grid latest">
                 @include('grid.grid')
 
-                {{--@include('layouts.parts.load-more')--}}
-
-
-                        <!-- custom angular template - START -->
-
                 @include('layouts.parts.product-popup')
-
-                        <!-- custom angular template - END -->
-
             </div>
         </div>
 

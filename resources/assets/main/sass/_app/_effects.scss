@@ -427,8 +427,8 @@ body.single{
 .slide-menu{
   display: block;
   position: fixed !important;
-  left: auto;
-  right: 0;
+  left: 0;
+  right: auto;
   top: 0;
   width: 300px;
   box-sizing: inherit;
@@ -439,9 +439,9 @@ body.single{
   overflow-y: scroll;
   z-index: 100;
 
-  -webkit-transform: translateX(300px);
-  -ms-transform: translateX(300px);
-  transform: translateX(300px);
+  -webkit-transform: translateX(-300px);
+  -ms-transform: translateX(-300px);
+  transform: translateX(-300px);
   .close-button{
     margin-top: 14px;
     margin-right: 19px;

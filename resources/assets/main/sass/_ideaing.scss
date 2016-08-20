@@ -3027,9 +3027,6 @@ body.category{
   .rsThumbs{
     display: none;
   }
-  .homepage-grid.latest{
-    padding-top: 20px;
-  }
 }
 
 .most-popular-new{
@@ -3166,6 +3163,10 @@ body.category{
 }
 .homepage-grid{
   transition: opacity 1s;
+
+  &.latest{
+    padding-top: 20px;
+  }
 
   .main-content{
     padding:0 0 7px 0;

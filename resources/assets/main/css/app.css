@@ -367,8 +367,8 @@ body.single .slide-menu {
 .slide-menu {
   display: block;
   position: fixed !important;
-  left: auto;
-  right: 0;
+  left: 0;
+  right: auto;
   top: 0;
   width: 300px;
   box-sizing: inherit;
@@ -376,9 +376,9 @@ body.single .slide-menu {
   height: 100%;
   overflow-y: scroll;
   z-index: 100;
-  -webkit-transform: translateX(300px);
-  -ms-transform: translateX(300px);
-  transform: translateX(300px); }
+  -webkit-transform: translateX(-300px);
+  -ms-transform: translateX(-300px);
+  transform: translateX(-300px); }
   .slide-menu .close-button {
     margin-top: 14px;
     margin-right: 19px; }
@@ -7265,8 +7265,6 @@ body.category #hero {
   min-height: 382px; }
 body.category .rsThumbs {
   display: none; }
-body.category .homepage-grid.latest {
-  padding-top: 20px; }
 
 @media (max-width: 620px) {
   .most-popular-new .popular-section {
@@ -7358,6 +7356,8 @@ body.category .homepage-grid.latest {
 
 .homepage-grid {
   transition: opacity 1s; }
+  .homepage-grid.latest {
+    padding-top: 20px; }
   .homepage-grid .main-content {
     padding: 0 0 7px 0; }
 
