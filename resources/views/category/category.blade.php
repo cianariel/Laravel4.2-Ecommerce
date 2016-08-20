@@ -33,7 +33,7 @@
         </div>
 
 
-        <div class="homepage-grid center-block">
+        <div class="homepage-grid center-block latest">
                 @include('grid.grid')
 
 

@@ -7250,9 +7250,11 @@ article.product {
 .most-popular-new .category-smart-entertainment .box-item::before {
   background: #89C981 !important; }
 
+body.category #hero {
+  min-height: 382px; }
 body.category .rsThumbs {
   display: none; }
-body.category .homepage-grid {
+body.category .homepage-grid.latest {
   padding-top: 20px; }
 
 @media (max-width: 620px) {

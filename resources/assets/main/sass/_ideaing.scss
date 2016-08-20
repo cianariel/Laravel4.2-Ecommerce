@@ -3005,10 +3005,13 @@ article.product{
 }
 
 body.category{
+  #hero {
+    min-height: 382px;
+  }
   .rsThumbs{
     display: none;
   }
-  .homepage-grid{
+  .homepage-grid.latest{
     padding-top: 20px;
   }
 }
