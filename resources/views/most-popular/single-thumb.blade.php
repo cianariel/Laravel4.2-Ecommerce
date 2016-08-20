@@ -15,7 +15,7 @@
             </div>
         </div>
     </div>
-    <div class="social-stats__item views">
+    <div class="social-stats__item views center-block">
         <i class="m-icon m-icon--flame pink"></i>
         <span class="social-stats__text ng-binding"> {{$item->count}} views</span>
     </div>
@@ -44,7 +44,7 @@
                 <div class="box-item__overlay category-bg"></div>
             </a>
         </div>
-        <div class="social-stats__item views">
+        <div class="social-stats__item views center-block">
             <i class="m-icon m-icon--flame pink"></i>
             <span class="social-stats__text ng-binding">{{$item->views}} views</span>
         </div>

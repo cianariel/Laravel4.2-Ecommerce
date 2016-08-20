@@ -18,7 +18,8 @@
 
                 @if(@$mostPopular->$thisCategory)
                     <section class="most-popular-new container no-padding">
-                        @foreach($mostPopular->$thisCategory as $item)
+                        @foreach($mostPopular->$thisCategory as $i => $item)
+                            <span>{{$i}}</span>
                             <div class="col-sm-3 col-xs-12 popular-section category-{{$thisCategory}}">
                                 @include('most-popular.single-thumb')
                             </div>
