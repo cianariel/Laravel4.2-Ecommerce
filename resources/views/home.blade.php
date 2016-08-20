@@ -21,86 +21,64 @@
                 <section class="most-popular-new container no-padding">
                     <div class="col-sm-4 col-xs-12 popular-section category-smart-home">
                         <h5 class="category-link__smart-home  category-color">
-                            <i class="hidden-xs hidden-sm hidden-md m-icon m-icon--smart-home"></i>
+                            <i class="hidden-xs hidden-sm m-icon m-icon--smart-home"></i>
                             <span class="m-icon-text text-uppercase">Smart Home</span>
                         </h5>
+                        @if(isset($mostPopular->smart_home))
+                            <?php
+                            $item = $mostPopular->smart_home[0];
+                            $lesserItems = array_slice($mostPopular->smart_home, 1);
+                            ?>
 
+                            @include('most-popular.thumb')
+
+                            <div class="popular-wrap">
+                                @foreach($lesserItems as $item)
+                                    @include('most-popular.thumb')
+                                @endforeach
+                            </div>
+                        @endif
                     </div>
                     <div class="col-sm-4 col-xs-12 popular-section category-smart-body">
                         <h5 class="category-link__smart-body m-icon-text-holder">
-                            <i class="hidden-xs hidden-sm hidden-md m-icon m-icon--wearables"></i>
+                            <i class="hidden-xs hidden-sm m-icon m-icon--wearables"></i>
                             <span class="m-icon-text text-uppercase">Smart Body</span>
                         </h5>
+                                @if(isset($mostPopular->smart_body))
                                 <?php
-                                    if(isset($mostPopular->smart_body)){
-                                            $firstItem = $mostPopular->smart_body[0];
-                                            $lesserItems = array_slice($mostPopular->smart_body, 1);
-                                    }
+                                    $item = $mostPopular->smart_body[0];
+                                    $lesserItems = array_slice($mostPopular->smart_body, 1);
                                  ?>
 
-                                    @if(@$firstItem->product_name) <!-- this is a product -->
-                                        <div class="box-item product-box">
-                                            <a href="/product/{{$firstItem->product_permalink}}" >
-                                                <img class="img-responsive" src="{{ $firstItem->media_link_full_path }}">
-                                            </a>
-                                            <a href="{{$firstItem->product_permalink}}" class="category-{{$firstItem->master_category}}">
-                                                <div class="box-item__overlay category-bg"></div>
-                                            </a>
-                                        </div>
-                                    @else
-                                        <div class="box-item">
-                                            <a href="{{$firstItem->url}}">
-                                                @if(is_array(@$item->feed_image))
-                                                    <img alt="{{@$firstItem->feed_image['alt']}}" title="{{@$firstItem->feed_image['title']}}"
-                                                         src="{{ @$firstItem->feed_image['url']}}">
-                                                @else
-                                                    <img alt="{{@$firstItem->feed_image->alt}}" title="{{@$firstItem->feed_image->title}}"
-                                                         src="{{@$firstItem->feed_image->url}}">
-                                                @endif
-                                            </a>
-                                            <a href="{{$firstItem->url}}" class="category-{{$firstItem->category_main}}">
-                                                <div class="box-item__overlay category-bg"></div>
-                                            </a>
-                                        </div>
-                                    @endif
+                                    @include('most-popular.thumb')
 
                                     <div class="popular-wrap">
                                         @foreach($lesserItems as $item)
-                                            @if(@$item->product_name) <!-- this is a product -->
-                                                <div class="box-item product-box">
-                                                    <a href="/product/{{$item->product_permalink}}" >
-                                                        <img class="img-responsive" src="{{ $item->media_link_full_path }}">
-                                                    </a>
-                                                    <a href="{{$item->product_permalink}}" class="category-{{$item->master_category}}">
-                                                        <div class="box-item__overlay category-bg"></div>
-                                                    </a>
-                                                </div>
-                                            @else
-                                                <div class="box-item">
-                                                    <a href="{{$item->url}}">
-                                                        @if(is_array(@$item->feed_image))
-                                                            <img alt="{{@$item->feed_image['alt']}}" title="{{@$item->feed_image['title']}}"
-                                                                 src="{{ @$item->feed_image['url']}}">
-                                                        @else
-                                                            <img alt="{{@$item->feed_image->alt}}" title="{{@$item->feed_image->title}}"
-                                                                 src="{{@$item->feed_image->url}}">
-                                                        @endif
-                                                    </a>
-                                                    <a href="{{$item->url}}" class="category-{{$item->category_main}}">
-                                                        <div class="box-item__overlay category-bg"></div>
-                                                    </a>
-                                                </div>
-                                            @endif
+                                            @include('most-popular.thumb')
                                         @endforeach
-                                    </div>    
+                                    </div>
+                                @endif
                     </div>
 
                     <div class="col-sm-4 col-xs-12 popular-section category-smart-entertainment">
                         <h5 class="category-link__smart-entertainment m-icon-text-holder">
-                            <i class="hidden-xs hidden-sm hidden-md m-icon m-icon--video"></i>
+                            <i class="hidden-xs hidden-sm m-icon m-icon--video"></i>
                             <span class="m-icon-text text-uppercase">Smart Entertainment</span>
                         </h5>
-                       
+                        @if(isset($mostPopular->smart_entertainment))
+                            <?php
+                            $item = $mostPopular->smart_entertainment[0];
+                            $lesserItems = array_slice($mostPopular->smart_entertainment, 1);
+                            ?>
+
+                            @include('most-popular.thumb')
+
+                            <div class="popular-wrap">
+                                @foreach($lesserItems as $item)
+                                    @include('most-popular.thumb')
+                                @endforeach
+                            </div>
+                        @endif
                     </div>
                 </section>
             </div>
