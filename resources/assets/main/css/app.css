@@ -7617,8 +7617,7 @@ form.mobile-search-bar {
 
 @media (max-width: 620px) {
   .logged-in .user-controls {
-    right: -9px !important;
-    top: 8px !important;
+    top: -12px !important;
     width: 100%; }
     .logged-in .user-controls a {
       max-width: 100%; } }
@@ -7677,7 +7676,7 @@ header.colophon {
         position: absolute;
         top: -11px;
         right: -25px;
-        max-width: 145px;
+        width: 145px;
         z-index: 20; } }
   header.colophon.scroll-header {
     position: fixed;
@@ -8006,7 +8005,8 @@ header.colophon {
       width: 40px;
       height: 40px; }
       #top-nav .top-nav-holder .profile-photo-holder.logged-user {
-        bottom: 3px; } }
+        top: 16px;
+        right: 8px; } }
   #top-nav .top-nav-holder .profile-photo-holder, #top-nav .top-nav-holder .notification-holder {
     position: relative;
     padding: 0px; }
@@ -9979,7 +9979,7 @@ html.idea-stories #hero {
     html.idea-stories #hero {
       min-height: 575px; } }
 html.idea-stories .colophon .user-controls {
-  right: 2px; }
+  right: -23px; }
 
 html.idea-stories #hero,
 body.room-landing #hero,

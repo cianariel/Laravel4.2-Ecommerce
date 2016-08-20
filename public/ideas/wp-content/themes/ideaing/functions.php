@@ -860,4 +860,10 @@ function is_connected()
 
 }
 
+function login_classes( $classes ) {
+    $classes[] = 'logged-in';
+    return $classes;
+}
+add_filter( 'login_body_class', 'login_classes' );
+
 ?>

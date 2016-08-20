@@ -3562,8 +3562,8 @@ form.mobile-search-bar{
 .logged-in{
   .user-controls{
     @media(max-width: 620px){
-      right: -9px!important;
-      top: 8px!important;
+      //right: -9px!important;
+      top: -12px !important;
       width: 100%;
       a{
         max-width: 100%;
@@ -3649,7 +3649,7 @@ header.colophon{
       position: absolute;
       top: -11px;
       right: -25px;
-      max-width: 145px;
+      width: 145px;
       z-index: 20;
     }
   }
@@ -4179,7 +4179,8 @@ body:not(.single){
           height: 40px;
 
           &.logged-user{
-            bottom: 3px;
+            top: 16px;
+            right: 8px;
           }
         }
       }
@@ -7234,7 +7235,7 @@ html.idea-stories{
     }
   }
   .colophon .user-controls {
-    right: 2px;
+    right: -23px;
   }
 }
 
