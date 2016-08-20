@@ -6654,8 +6654,9 @@ body.contactus-page .mid-nav .rooms.extra-nav,
   border-radius: 3px;
   max-width: 30px;
   margin-top: 7px;
-  transition: all .7s; }
-  .search-toggle-button.active, .search-toggle-button:hover {
+  transition: all .7s;
+  border-radius: 0; }
+  .search-toggle-button.active, .search-toggle-button:not(.mobile):hover {
     background: rgba(255, 0, 66, 0.7);
     color: #fff; }
   .search-toggle-button.mobile {
@@ -7426,6 +7427,7 @@ body.category .rsThumbs {
     .search-bar .m-icon {
       left: 18px; } }
 form.mobile-search-bar {
+  height: 38px;
   display: block;
   padding: 0;
   overflow: hidden;
@@ -7435,8 +7437,11 @@ form.mobile-search-bar {
   border: 0;
   width: 0;
   opacity: 1;
-  transition: width 1s; }
+  transition: width .3s; }
   form.mobile-search-bar input {
+    height: 30px;
+    margin-top: 2px;
+    border-radius: 0;
     min-width: 0 !important; }
   form.mobile-search-bar::before, form.mobile-search-bar::after {
     display: none; }

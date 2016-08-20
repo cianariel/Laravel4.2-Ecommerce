@@ -85,7 +85,9 @@
 
         $('body').on('click', '.search-toggle-button.mobile', function(e){
             e.preventDefault();
+            $(this).toggleClass('active');
             $('.mobile-search-bar').toggleClass('on');
+            $('.mobile-search-bar').find('input').focus();
             $('.category-menu').fadeToggle();
             //$('.category-menu' ).animate({
             //    opacity: 0,

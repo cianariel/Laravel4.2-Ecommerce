@@ -142,7 +142,6 @@ if (!isset($theGiveAway)) {
 
                         <form class="search-bar mobile-search-bar col-sm-2 col-lg-2 hidden-soft" ng-app="publicApp" ng-controller="SearchController" action="/search-form-query" autocomplete="off">
                                         <span class="search-input-holder desktop-search-bar">
-                                            <i class="m-icon m-icon--search-id"></i>
                                             <input ng-click="toggleSearch()" id="search-input"
                                                    ng-change="openSearchDropdown(query)" ng-model="query"
                                                    ng-model-options='{ debounce: 800 }' class="form-control top-search"

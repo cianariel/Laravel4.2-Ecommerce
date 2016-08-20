@@ -2059,9 +2059,10 @@ body.contactus-page
   max-width: 30px;
   margin-top: 7px;
   transition: all .7s;
+  border-radius: 0;
 
   &.active,
-  &:hover{
+  &:not(.mobile):hover{
     background: rgba($iridium, .7);
     color: #fff;
   }
@@ -3279,6 +3280,7 @@ body.category{
 }
 
 form.mobile-search-bar{
+  height: 38px;
   display: block;
   padding: 0;
   overflow: hidden;
@@ -3289,9 +3291,12 @@ form.mobile-search-bar{
   width: 0;
   opacity: 1;
 
-  transition: width 1s;
+  transition: width .3s;
 
   input{
+    height: 30px;
+    margin-top: 2px;
+    border-radius: 0;
     min-width: 0 !important;
   }
 
