@@ -7301,7 +7301,8 @@ body.category .homepage-grid {
       bottom: 0;
       font-size: 1.5rem;
       text-align: center;
-      width: 100%; }
+      width: 100%;
+      z-index: 1; }
     .most-popular-new .popular-wrap.single-thumb::before {
       counter-increment: popular-box;
       content: counter(popular-box);

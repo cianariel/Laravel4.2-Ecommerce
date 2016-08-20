@@ -3083,6 +3083,9 @@ body.category{
         font-size: 1.5rem;
         text-align: center;
         width: 100%;
+        z-index: 1;
+        padding-left: 4px;
+        padding-right: 4px;
       }
 
       &::before{
