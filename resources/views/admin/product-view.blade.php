@@ -79,7 +79,7 @@
                                                     <div style="margin-top: 5px">&nbsp;</div>
                                                     <div class="col-lg-12">
                                                         {{-- <div>--}}
-                                                        <div class="col-lg-4 pull-left">
+                                                        {{--<div class="col-lg-4 pull-left">
                                                             <label>Search Type</label>
                                                             <select data-ng-model="selectedFilter"
                                                                     class="form-control">
@@ -91,12 +91,25 @@
                                                                     @{{ filter.value }}
                                                                 </option>
                                                             </select>
+                                                        </div>--}}
+                                                        <div class="col-lg-4 pull-left" ng-init="getPublisherList()">
+                                                            <label>Select Publishes</label>
+                                                            <select data-ng-model="publisherName"
+                                                                    class="form-control">
+                                                                <option value="">
+                                                                    -- All Publishers --
+                                                                </option>
+                                                                <option ng-repeat="publisher in PublisherList"
+                                                                        value="@{{ publisher.user_name }}">
+                                                                    @{{ publisher.user_name }}
+                                                                </option>
+                                                            </select>
                                                         </div>
                                                         <div class="col-lg-4">
-                                                            <label> Search </label>
-                                                            <input data-ng-model="filterName"
+                                                            <label> Search Product</label>
+                                                            <input data-ng-model="filterProduct"
                                                                    class="form-control"
-                                                                   placeholder="Enter Item To Filter">
+                                                                   placeholder="Product To Filter">
                                                         </div>
 
                                                         <div class="col-lg-4">
@@ -109,7 +122,6 @@
                                                                     @{{ item }}
                                                                 </option>
                                                             </select>
-
                                                         </div>
                                                         {{--  </div>--}}
                                                     </div>

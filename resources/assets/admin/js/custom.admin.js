@@ -1360,8 +1360,12 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
                 data: {
                     CategoryId: $scope.selectedItem,
                     ActiveItem: $scope.ActiveItem,
-                    FilterType: $scope.selectedFilter,
-                    FilterText: $scope.filterName,
+                    //FilterType: $scope.selectedFilter,
+                    //FilterText: $scope.filterName,
+
+                    FilterPublisher: $scope.publisherName,
+                    FilterProduct: $scope.filterProduct,
+
                     ShowFor: $scope.ShowFor,
                     WithTags: $scope.WithTags,
 
@@ -1562,6 +1566,20 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
                 // console.log( $scope.isMediaUploadable);
             }
 
+        };
+
+        // Show publishers name list
+        $scope.getPublisherList = function () {
+           // $scope.closeAlert();
+            $http({
+                url: '/api/product/get-publishers',
+                method: "GET",
+            }).success(function (data) {
+                $scope.PublisherList = data.data;
+              //  $scope.outputStatus(data, "Product promoted successfully.");
+              //  $scope.loadProductData($scope.ProductId);
+
+            });
         };
 
         // add medial content for a product

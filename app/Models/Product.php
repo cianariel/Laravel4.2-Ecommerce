@@ -284,7 +284,7 @@ class Product extends Model
     {
         $productModel = $this;
 
-        $filterText = $settings['FilterText'];
+       // $filterText = $settings['FilterText'];
 
         if (@$settings['CategoryId'] != null) {
             if (@$settings['GetChildCategories']) {
@@ -332,11 +332,22 @@ class Product extends Model
             $productModel = $productModel->where("post_status", 'Active');
         }
 
+        /*
         if (@$settings['FilterType'] == 'user-filter') {
             $productModel = $productModel->where("user_name", "like", "%$filterText%");
         }
         if (@$settings['FilterType'] == 'product-filter') {
             $productModel = $productModel->where("product_name", "like", "%$filterText%");
+        }
+*/
+        if(!empty($settings['FilterProduct']))
+        {
+            $productModel = $productModel->where("product_name", "like", "%".$settings['FilterProduct']."%");
+        }
+
+        if(!empty($settings['FilterPublisher']))
+        {
+            $productModel = $productModel->where("user_name", "like", "%".$settings['FilterPublisher']."%");
         }
 
         if (@$settings['WithTags'] == true && $settings['CategoryId'] != null) {
@@ -706,6 +717,14 @@ class Product extends Model
             return false;
 
         }
+    }
+
+    public static function getAllPublishersNameList()
+    {
+        $publisherNames = Product::orderBy('user_name')->groupBy('user_name')->get(['user_name']);
+
+        return $publisherNames;
+
     }
 
     public static function getForShopMenu()
