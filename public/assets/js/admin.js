@@ -364,7 +364,7 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
             $scope.Tags = [];
 
             // product filter with Tag
-            $scope.WithTags = false;
+            $scope.WithTags = true;
 
             // Store Module
             $scope.StoreId = '';

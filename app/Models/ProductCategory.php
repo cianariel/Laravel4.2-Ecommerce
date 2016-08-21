@@ -181,18 +181,29 @@
          */
         public function productWithinCategory($categoryId)
         {
+            $categoryList = $this->getSubCategoryIdOfRootCategory($categoryId);
+
+            return Product::whereIn('product_category_id', $categoryList)->get();
+
+        }
+
+
+        /**
+         * Return all categories which are in side category/subcategory
+         * @param $categoryId
+         * @return Collection
+         */
+        public function getSubCategoryIdOfRootCategory($categoryId)
+        {
             $categories = $this->getCategory($categoryId)->getDescendantsAndSelf(array('id'));
 
             //$products = ProductCategory::find($categoryId)->products;
 
             $categoryList = collect([]);
-            foreach ($categories as $key => $value)
-            {
+            foreach ($categories as $key => $value) {
                 $categoryList->push($value->id);
             }
-
-            return Product::whereIn('product_category_id', $categoryList)->get();
-
+            return $categoryList;
         }
 
         public function getCategoryItems($categoryId = null)
