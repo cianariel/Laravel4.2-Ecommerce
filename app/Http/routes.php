@@ -65,7 +65,6 @@ Route::get('giveaway/{permalink?}', 'PageController@giveaway');
 Route::get('/smartbody/{parent?}', 'ShopController@forcedShopIndexForSmartBody');
 
 
-
 Route::group(['prefix' => 'api'], function () {
     /*
      * Comments
@@ -173,6 +172,9 @@ Route::group(['prefix' => 'api'], function () {
     Route::post('product/publish-product', 'ProductController@publishProduct');
     Route::get('product/get-by-name/{name?}', 'ProductController@productDetailsViewByName');
     Route::post('product/promote-product', 'ProductController@promoteProduct');
+
+    // Product publishers list
+    Route::get('product/get-publishers', 'ProductController@getPublisherNames');
 
 
     // Test method for logo
