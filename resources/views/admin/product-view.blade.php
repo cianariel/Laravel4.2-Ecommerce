@@ -65,7 +65,7 @@
                                                                 class="text-danger"><strong> @{{ selectedItem }} </strong> </span>
                                                     </div>
 
-                                                    <div class="col-md-7">
+                                                    {{--<div class="col-md-7">
                                                         <label class="col-md-4 control-label">Show Item List With
                                                             Tag(s):
                                                         </label>
@@ -73,7 +73,7 @@
                                                             <input type="checkbox" data-ng-model="WithTags"
                                                                    class="">
                                                         </div>
-                                                    </div>
+                                                    </div>--}}
                                                 </div>
                                                 <div class="row">
                                                     <div style="margin-top: 5px">&nbsp;</div>

@@ -187,6 +187,8 @@ class ProductController extends ApiController
             $settings['limit'] = \Input::get('limit');
             $settings['page'] = \Input::get('page');
 
+            $settings['PageSource'] = 'admin-product-list';
+
             $productList = $this->product->getProductList($settings);
 
             $settings['total'] = $productList['total'];

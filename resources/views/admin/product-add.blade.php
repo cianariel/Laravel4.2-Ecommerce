@@ -148,7 +148,7 @@
 
                                                     </div>
 
-                                                    {{--<div class="form-group">
+                                                    <div class="form-group">
                                                         <label class="col-md-2 control-label">Associate Tag (Auto
                                                             Complete)</label>
                                                         <div class="col-md-10">
@@ -160,7 +160,7 @@
                                                                 </auto-complete>
                                                             </tags-input>
                                                         </div>
-                                                    </div>--}}
+                                                    </div>
 
                                                     <div class="form-group">
                                                         <label class="col-md-2 control-label">Store Name</label>
@@ -226,7 +226,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
-                                                        <label class="col-md-2 control-label">Publish At:
+                                                        <label class="col-md-2 control-label">Publish After:
                                                         </label>
                                                         <div class="col-md-4">
 

@@ -226,7 +226,7 @@ class Product extends Model
     {
         $result = \DB::table('products')
                      ->where('products.id', $productId)
-                     ->where('products.publish_at', '<=', date('Y-m-d'))
+                     ->where('products.publish_at', '<=',date('Y-m-d') )
                      ->leftJoin('product_categories', 'product_categories.id', '=', 'products.product_category_id')
                      ->leftJoin('medias', function ($join) {
                          $join->on('medias.mediable_id', '=', 'products.id')
@@ -298,7 +298,10 @@ class Product extends Model
                     ->orWhereIn("product_category_id", $grandChildCats);
 
             } else {
-                $productModel = $productModel->where("product_category_id", $settings['CategoryId']);
+                //$productModel = $productModel->where("product_category_id", $settings['CategoryId']);
+                $productCategory = new ProductCategory();
+                $productModel = $productModel->whereIn("product_category_id", $productCategory->getSubCategoryIdOfRootCategory($settings['CategoryId']));
+
             }
 
             if (isset($settings['TagId']) && is_array($settings['TagId'])) {
@@ -373,6 +376,10 @@ class Product extends Model
         for ($i = 0; $i < $count; $i++) {
             $id = $product['allIDs'][$i]['id'];
             $tmp = $this->getSingleProductInfoForView($id);
+
+            // If the publish date is not valid
+            if(empty($tmp))
+                continue;
 
             // making the thumbnail url by injecting "thumb-" in the url which has been uploaded during media submission.
             $strReplace = \Config::get("const.file.s3-path");
