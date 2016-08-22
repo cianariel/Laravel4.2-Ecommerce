@@ -1367,16 +1367,17 @@ angular.module('pagingApp').value('cgBusyDefaults',{
 });
 
 angular.module('pagingApp.filters', [])
-    .filter('getURISegment', function($location) {
-        return function(segment) {
-            var baseUrl = $location.protocol() + '://' + $location.host() + '/';
+    .filter('getURISegment', function() {
+        // we cannot use Angular $location, bacause it conflicts with vanila history.state
+        return function(index) {
+            var segments = $(location).attr('href').split("/");
+            segments.splice(0, 3); // cut off base
 
-            var query = $location.absUrl().replace(baseUrl, '');
-            var data = query.split("/");
-            if(data[segment-2]) {
-                return data[segment-2];
+            if(segments[index]){
+                return segments[segment];
+            }else{
+                return false;
             }
-            return false;
         }
     });
 
