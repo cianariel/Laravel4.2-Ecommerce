@@ -32,7 +32,7 @@ if (!isset($theGiveAway)) {
 
 <div id="publicApp" ng-app="publicApp" ng-controller="publicController" class="header-cloak scroll-header" ng-cloak>
     <header class="colophon container full-sm fixed-sm">
-        <div ng-init="socialCounter()" class="socialcounter col-xs-12">
+        <div class="socialcounter col-xs-12">
             <nav id="top-nav" class="row">
                 <a id="menu-icon-wrapper" class="menu-icon-wrapper home-hamburger mobile-top-menu-switcher hidden-lg hidden-md hidden-sm"  href="#">
                     <svg width="1000px" height="1000px">
@@ -693,4 +693,11 @@ if (!isset($theGiveAway)) {
     </div>
 
 </script>
+   <a href="#" class="bob">BOB</a>
 
+<script> 
+    $('.bob').click(function(){
+        console.log(1213123213123)
+        window.history.replaceState({category: 'smarthome'}, 'Smart Home', '111111');
+    });
+</script>
