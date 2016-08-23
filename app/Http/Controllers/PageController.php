@@ -212,7 +212,7 @@ class PageController extends ApiController
 
 //            $products[$category] = $prod->getProductList($productSettings);
 
-            $array = array_merge($ideas[$category] ?: [], $products[$category]);
+            $array = array_merge(isset($ideas[$category]->posts) ? $ideas[$category]->posts : [], $products[$category]);
 
             $return[$category] = array_slice($array, 0, $itemsPerCategory);
 
@@ -315,7 +315,7 @@ class PageController extends ApiController
             $cached = PageHelper::putIntoRedis($cacheKey, $return, '24 hours');
 //        }
 
-        return $return['posts'];
+        return @$return['posts'];
 
     }
 
@@ -800,7 +800,7 @@ class PageController extends ApiController
         $newIdeaCollection = new Collection();
         $comment = new App\Models\Comment();
 
-        if ($ideaCollection) {
+        if ($ideaCollection && isset($ideaCollection->posts)) {
 
             foreach ($ideaCollection->posts as $singleIdea) {
 
@@ -813,10 +813,11 @@ class PageController extends ApiController
                 $newIdeaCollection->push($tempIdea);
 
             }
+            $return['totalCount'] = $ideaCollection->totalCount;
+        }else{
+            $return['totalCount'] = 0;
         }
 
-        // type casting to object
-        $return['totalCount'] = $ideaCollection->totalCount;
 
         $return['regular'] = json_decode($newIdeaCollection->toJson(), FALSE);
 
