@@ -83,28 +83,35 @@ class PageController extends ApiController
             ->with('homehero', $result);
     }
 
-    public function categoryPage()
+    public function categoryPage($thisCategory = false)
     {
         $thisCategory = Req::segment(1);
 
-        $sliderContent = self::getHeroSliderContent(1, $thisCategory);
+        if(!$thisCategory ){
+            $thisCategory = 'default';
+        }
+      
+        $result = [];
 
-        $rand = rand(1,2);
-
-        if($rand == 1){
-            $daysBack = 20;
+        if($thisCategory == 'default'){
+            $sliderContent = self::getHeroSliderContent();
+            $mostPopular = self::getMostPopular();
         }else{
-            $daysBack = false;
+            $rand = rand(1,2);
+            if($rand == 1){
+                $daysBack = 20;
+            }else{
+                $daysBack = false;
+            }
+            $sliderContent = self::getHeroSliderContent(1, $thisCategory);
+            $mostPopular = self::getMostPopular($daysBack, $thisCategory, 4);
         }
 
-        $mostPopular = self::getMostPopular($daysBack, $thisCategory, 4);
-
-        MetaTag::set('title', 'Ideaing | Ideas for Smarter Living');
+        MetaTag::set('title', 'Ideaing | Ideas for Smarter Living'); // TODO -- add from CRUD
         MetaTag::set('description', 'Ideaing inspires you to live a smarter and beautiful home. Get ideas on using home automation devices including WiFi cameras, WiFi doorbells, door locks, security, energy, water and many more.');
-        //return $result;
         return view('category.category')
             ->with('thisCategory', $thisCategory)
-            ->with('mostPopular', $mostPopular)
+            ->with('mostPopular', $mostPopular) 
             ->with('sliderContent', $sliderContent)
             ;
     }

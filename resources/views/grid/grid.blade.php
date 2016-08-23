@@ -23,6 +23,13 @@
 </h4> 
 <ul class="hidden"> <?php // we are keeping the switch controls here so that we can click them from anywehre (from other controllers) ?>
                                 <li>
+                                    <a id="show-default" ng-click="switchCategory('default')" href="/" class="category-link__smart-home" href="#">
+                                        <i class="hidden-xs hidden-sm hidden-md m-icon m-icon--smart-home"></i>
+                                        <span class="m-icon-text">Smart Home</span>
+                                    </a>
+                                </li>
+
+                                <li>
                                     <a id="show-smart-home" ng-click="switchCategory('smart-home')" href="/ideas/smart-home" class="category-link__smart-home" href="#">
                                         <i class="hidden-xs hidden-sm hidden-md m-icon m-icon--smart-home"></i>
                                         <span class="m-icon-text">Smart Home</span>

@@ -5964,41 +5964,24 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
             return decoded;
         };
 
-        var $route =  $filter('getURISegment')(2);
-        var $limit = 0;
+        $scope.loadReadContent = function($category){
 
-        if($route == 'idea'){
-            $scope.currentTag = $filter('getURISegment')(3);
-        }else if($route == 'ideas'){
-            $scope.filterBy = 'idea';
-            if($filter('getURISegment')(3) == 'category' ||  $filter('getURISegment')(3) == 'tag'){
-                $scope.ideaCategory = $filter('getURISegment')(4);
-            }else{
-                $scope.ideaCategory = $filter('getURISegment')(3);
-            }
-            //var $limit = 9; 
-        }else{
-            $scope.ideaCategory = $filter('getURISegment')(2);
-            console.log($scope.ideaCategory) 
-        }
+            console.log('uho')
 
-        $scope.firstLoad = pagingApi.getGridContent(1, $limit, $scope.currentTag, $scope.filterBy,  $scope.ideaCategory).success(function (response) {
-            $scope.allContent[0] = response;
-            var newContent = $scope.sliceToRows(response['content']['ideas'], response['content']['featured'], response['content']['products']);
-            newContent['currentDay'] = 'Today';
+            $scope.ideaCategory = $category;
 
-            $scope.content[0] = newContent;
-            $scope.hasMore = response['hasMore'];
-            $scope.unreadCount = response['unreadCount'];  
+            $scope.firstLoad = pagingApi.getGridContent(1, 0, false, false,  $scope.ideaCategory).success(function (response) {
+                $scope.allContent[0] = response;
 
-        });
+                var newContent = [];
+                newContent[0] = $scope.sliceToRows(response['content']['ideas'], response['content']['featured'], response['content']['products']); 
 
-        //pagingApi.getGridContent(2, $limit, $scope.currentTag, $scope.filterBy,  $scope.ideaCategory).success(function (response) {
-        //    if(response['regular'].length > 0 || response['featured'].length > 0){
-        //        $scope.hasMore = true;
-        //        console.log('U!')
-        //    }
-        //});
+                $scope.content = newContent;
+                $scope.hasMore = response['hasMore'];
+                $scope.unreadCount = response['unreadCount'];  
+            });
+        };
+
 
         $scope.loadMore = function() {
 
@@ -6009,23 +5992,19 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
             $scope.currentPage++;
             $scope.allContent[$scope.currentPage] = [];
 
-            //if(!$scope.filterBy || typeof $scope.filterBy === 'undefined'){
             var $limit = 0;
             $scope.filterBy = null;
-            //}else{
-            //    var $limit = 9;
-            //}
 
             var $daysBack = $scope.currentPage - 1;  
 
             $scope.nextLoad =  pagingApi.getGridContent($scope.currentPage, $limit, $scope.currentTag, $scope.filterBy, $scope.ideaCategory).success(function (response) {
 
                 var newContent = $scope.sliceToRows(response['content']['ideas'], response['content']['featured'], response['content']['products']);;
-                if($scope.currentPage == 2){
-                    newContent['currentDay'] = 'Yesterday';
-                }else{
-                    newContent['currentDay'] = $daysBack + ' Days Ago';
-                }
+                // if($scope.currentPage == 2){
+                //     newContent['currentDay'] = 'Yesterday';
+                // }else{
+                //     newContent['currentDay'] = $daysBack + ' Days Ago';
+                // }
                 $scope.newStuff[0] = newContent;
 
                 $scope.content = $scope.content.concat($scope.newStuff);
@@ -6037,48 +6016,6 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
             });
         };
 
-        //jQuery(function($) {
-
-        //});
-
-
-        $scope.filterContent = function($criterion){
-            $('.main-content').fadeOut(500, function(){
-                var $replacer = [];
-
-                if($scope.filterBy === $criterion){
-                    return true;
-
-                }else if(typeof $criterion === 'undefined' || $criterion === null || $criterion === 'all'){
-                    $scope.nextLoad = pagingApi.getGridContent(1, 0, $scope.currentTag).success(function (response) {
-                        $scope.allContent[0] = response;
-                        console.log(3);
-                        console.log(response);
-                        $replacer[0] = $scope.sliceToRows(response['content']['ideas'], response['content']['featured'], response['content']['products']);
-                        $scope.hasMore = response['hasMore'];
-                    });
-                    $scope.currentPage = 1;
-                    $scope.filterBy = null; 
-
-                    $scope.content = $replacer;
-                    $('.main-content').fadeIn();
-
-                    return true;
-
-                }
-
-                $scope.filterBy = $criterion;
-                console.log(4);
-                console.log(response);
-                $scope.nextLoad = pagingApi.getFilteredContent($scope.currentPage, $scope.currentTag, $criterion, $scope.sliceToRows).then(function(response){
-                    var $newStuff  = response['content'];
-                    $scope.hasMore = response['hasMore'];
-                    $scope.content = $newStuff;
-                    $scope.allContent = $scope.allContent.concat($newStuff);
-                    $('.main-content').fadeIn(500);
-                });
-            });
-        };
 
         $scope.sliceToRows = function($ideas, $featured, $products){
             var $return = [];
@@ -6105,36 +6042,38 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
 
             currentRoute = $filter('getURISegment')(2);
 
-            // if(!currentRoute || !currentRoute.contains('smart-')){
-            //     window.location.href = 'https://ideaing.com/' + categoryName;    
-            // }
 
             $scope.filterBy = null;
 
             $scope.ideaCategory = categoryName;
 
+            $scope.loadReadContent(categoryName);
 
-           $scope.firstLoad = pagingApi.getGridContent(1, 0, false, false, $scope.ideaCategory).success(function (response) {
+
+           // $scope.firstLoad = pagingApi.getGridContent(1, 0, false, false, $scope.ideaCategory).success(function (response) {
                  
-                $scope.currentPage = 1;
+           //      $scope.currentPage = 1;
                
-                var newContent = $scope.sliceToRows(response['content']['ideas'], response['content']['featured'], response['content']['products']);;
+           //      var newContent = $scope.sliceToRows(response['content']['ideas'], response['content']['featured'], response['content']['products']);;
 
-                var replaceMe = [];
-                replaceMe[0] = newContent;
+           //      var replaceMe = [];
+           //      replaceMe[0] = newContent;
 
-                 $scope.content = replaceMe;
-
-
-                $scope.hasMore = response['hasMore'];
-                $scope.unreadCount = response['unreadCount'];  
+           //       $scope.content = replaceMe;
 
 
-                $('.bottom-load-more').removeClass('disabled').attr('disabled', false);
-            });
+           //      $scope.hasMore = response['hasMore'];
+           //      $scope.unreadCount = response['unreadCount'];  
 
-            window.history.replaceState({category: 'smarthome'}, 'Smart Home', categoryName);
 
+           //      $('.bottom-load-more').removeClass('disabled').attr('disabled', false);
+           //  });
+
+           if(categoryName == 'default'){
+                window.history.replaceState({category: 'smarthome'}, 'Smart Home', '/');
+           }else{
+                window.history.replaceState({category: 'smarthome'}, 'Smart Home', categoryName);
+           }
         }
 
         $scope.fadeAnimation = function($node, $action, $callback){
@@ -7056,10 +6995,10 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
             });
         }
 
-        pagingApi.getGridContent = function(page, limit, tag, type, ideaCategory, daysBack) {
+        pagingApi.getGridContent = function(page, limit, tag, type, category, daysBack) {
             return $http({
                 method: 'GET',
-                url: '/api/paging/get-grid-content/' + page + '/' + limit + '/' + tag + '/' + type + '/' + ideaCategory + '/' + daysBack,
+                url: '/api/paging/get-grid-content/' + page + '/' + limit + '/' + tag + '/' + type + '/' + category + '/' + daysBack,
             });
         }
 

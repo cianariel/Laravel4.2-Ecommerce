@@ -11,7 +11,7 @@
     ?>
 
     <div class="app-wrap category-{{$thisCategory}}" id="pagingApp" ng-app="pagingApp" ng-controller="pagingController" ng-cloak>
-        <section id="hero" class="landing-hero col-lg-12">
+        <section id="hero" class="landing-hero col-lg-12" ng-init="loadReadContent('{{$thisCategory}}')">
             @include('layouts.parts.home-hero-slider')
         </section>
 
@@ -19,16 +19,82 @@
             <div class="homepage-grid center-block">
                 <h4 class="col-xs-12 home-subheader"><span>Popular <i class="m-icon m-icon--flame pink"></i></span></h4>
 
-                @if(@$mostPopular->$thisCategory)
+                @if($thisCategory == 'default')
                     <section class="most-popular-new container no-padding">
-                        @foreach($mostPopular->$thisCategory as $i => $item)
-                            <div class="col-sm-3 col-xs-12 popular-section category-{{$thisCategory}}">
-                                @include('most-popular.single-thumb')
-                            </div>
-                        @endforeach
-                    </section>
-                @endif
+                    <div class="col-sm-4 col-xs-12 popular-section category-smart-home">
+                        <h5 class="category-link__smart-home  category-color">
+                            <i class="hidden-xs hidden-sm m-icon m-icon--smart-home"></i>
+                            <span class="m-icon-text text-uppercase">Smart Home</span>
+                        </h5>
+                        @if(isset($mostPopular->smart_home))
+                            <?php
+                            $item = $mostPopular->smart_home[0];
+                            $lesserItems = array_slice($mostPopular->smart_home, 1);
+                            ?>
 
+                            @include('most-popular.thumb')
+
+                            <div class="popular-wrap">
+                                @foreach($lesserItems as $item)
+                                    @include('most-popular.thumb')
+                                @endforeach
+                            </div>
+                        @endif
+                    </div>
+                    <div class="col-sm-4 col-xs-12 popular-section category-smart-body">
+                        <h5 class="category-link__smart-body m-icon-text-holder">
+                            <i class="hidden-xs hidden-sm m-icon m-icon--wearables"></i>
+                            <span class="m-icon-text text-uppercase">Smart Body</span>
+                        </h5>
+                                @if(isset($mostPopular->smart_body))
+                                <?php
+                                    $item = $mostPopular->smart_body[0];
+                                    $lesserItems = array_slice($mostPopular->smart_body, 1);
+                                 ?>
+
+                                    @include('most-popular.thumb')
+
+                                    <div class="popular-wrap">
+                                        @foreach($lesserItems as $item)
+                                            @include('most-popular.thumb')
+                                        @endforeach
+                                    </div>
+                                @endif
+                    </div>
+
+                    <div class="col-sm-4 col-xs-12 popular-section category-smart-entertainment">
+                        <h5 class="category-link__smart-entertainment m-icon-text-holder">
+                            <i class="hidden-xs hidden-sm m-icon m-icon--video"></i>
+                            <span class="m-icon-text text-uppercase">Smart Entertainment</span>
+                        </h5>
+                        @if(isset($mostPopular->smart_entertainment))
+                            <?php
+                            $item = $mostPopular->smart_entertainment[0];
+                            $lesserItems = array_slice($mostPopular->smart_entertainment, 1);
+                            ?>
+
+                            @include('most-popular.thumb')
+
+                            <div class="popular-wrap">
+                                @foreach($lesserItems as $item)
+                                    @include('most-popular.thumb')
+                                @endforeach
+                            </div>
+                        @endif
+                    </div>
+                </section>
+                @else
+                    @if(@$mostPopular->$thisCategory)
+                        <section class="most-popular-new container no-padding">
+                            @foreach($mostPopular->$thisCategory as $i => $item)
+                                <div class="col-sm-3 col-xs-12 popular-section category-{{$thisCategory}}">
+                                    @include('most-popular.single-thumb')
+                                </div>
+                            @endforeach
+                        </section>
+                    @endif
+                @endif
+               
             </div>
         </div>
 

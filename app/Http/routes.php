@@ -28,17 +28,18 @@ Route::get('x', 'UserController@sendActivityMailToUsers');
 Route::any('secure-page-header', 'UserController@securePageHeader');
 
 
-Route::get('/', 'PageController@home');
 
 Route::get('update-price', 'ProductController@priceUpdate');
 
-Route::get('unsubscribe', 'PageController@home');
+Route::get('unsubscribe', 'PageController@categoryPage');
 
 Route::get('open/{productId}/{reference}', 'ProductQueryController@link');
 
 Route::post('api/product/get-price/', 'ProductController@getPrice');
 Route::post('api/product/get-for-thumb/', 'ProductController@getForThumb');
 
+
+Route::get('/', 'PageController@categoryPage');
 Route::get('/smart-home', 'PageController@categoryPage');
 Route::get('/smart-body', 'PageController@categoryPage');
 Route::get('/smart-travel', 'PageController@categoryPage');
