@@ -850,7 +850,7 @@ if(@env('PROD_FEED')){
         $newIdeaCollection = new Collection();
         $comment = new App\Models\Comment();
 
-        if ($ideaCollection) {
+        if ($ideaCollection && isset($ideaCollection->posts)) {
 
             foreach ($ideaCollection->posts as $singleIdea) {
 

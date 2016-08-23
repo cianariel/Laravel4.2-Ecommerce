@@ -6016,7 +6016,7 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
             //    var $limit = 9;
             //}
 
-            var $daysBack = $scope.currentPage - 1;
+            var $daysBack = $scope.currentPage - 1;  
 
             $scope.nextLoad =  pagingApi.getGridContent($scope.currentPage, $limit, $scope.currentTag, $scope.filterBy, $scope.ideaCategory).success(function (response) {
 
@@ -6031,6 +6031,7 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
                 $scope.content = $scope.content.concat($scope.newStuff);
 
                 $scope.hasMore = response['hasMore'];
+                $scope.unreadCount = response['unreadCount'];  
 
                 $('.bottom-load-more').removeClass('disabled').attr('disabled', false);
             });
@@ -6126,6 +6127,8 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
 
 
                 $scope.hasMore = response['hasMore'];
+                $scope.unreadCount = response['unreadCount'];  
+
 
                 $('.bottom-load-more').removeClass('disabled').attr('disabled', false);
             });
