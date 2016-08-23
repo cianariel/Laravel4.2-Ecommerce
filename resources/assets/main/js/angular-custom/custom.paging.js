@@ -241,34 +241,32 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
         };
 
 
-        $scope.switchCategory = function($categoryName) {
+        $scope.switchCategory = function(categoryName) {
 
-            console.log('what for!')
             if($('.bottom-load-more').hasClass('disabled')){
                 return false;
             }
 
-            //   var $limit = 0;
+            if($scope.ideaCategory == categoryName){
+                return false;
+            }
+
+            currentRoute = $filter('getURISegment')(2);
+
+            // if(!currentRoute || !currentRoute.contains('smart-')){
+            //     window.location.href = 'https://ideaing.com/' + categoryName;    
+            // }
+
             $scope.filterBy = null;
 
-            //    var $daysBack = $scope.currentPage - 1;
+            $scope.ideaCategory = categoryName;
 
-
-            $scope.ideaCategory = $categoryName;
-
-
-           // $location.path("/smart-entertainment").replace('/smart-home');
 
            $scope.firstLoad = pagingApi.getGridContent(1, 0, false, false, $scope.ideaCategory).success(function (response) {
                  
                 $scope.currentPage = 1;
                
                 var newContent = $scope.sliceToRows(response['content']['ideas'], response['content']['featured'], response['content']['products']);;
-                //if($scope.currentPage == 2){
-                //    newContent['currentDay'] = 'Yesterday';
-                //}else{
-                //    newContent['currentDay'] = $daysBack + ' Days Ago';
-                //}
 
                 var replaceMe = [];
                 replaceMe[0] = newContent;
@@ -279,16 +277,9 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
                 $scope.hasMore = response['hasMore'];
 
                 $('.bottom-load-more').removeClass('disabled').attr('disabled', false);
-                
-              //   $location.url('/new/path').replace();
-               // $rootScope.$apply();
-             //   history.replaceState({category: 'smarthome'}, 'Smart Home', 'smart-home');
-            window.history.replaceState({category: 'smarthome'}, 'Smart Home', 'smart-home');
-             
- 
-
             });
-            window.history.replaceState({category: 'smarthome'}, 'Smart Home', 'smart-home');
+
+            window.history.replaceState({category: 'smarthome'}, 'Smart Home', categoryName);
 
         }
 
