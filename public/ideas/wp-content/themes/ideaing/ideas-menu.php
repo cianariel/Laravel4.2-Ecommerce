@@ -7,7 +7,7 @@ $currentCat = $cat->slug;
 <!--                                <a href="/ideas/usage-list" class="box-link --><?php //echo $currentCat == 'usage-list' ? 'active' : '' ?><!--">Usage</a>-->
 <!--                            </li>-->
                             <li class="box-link-ul">
-                                <a href="/ideas/best-reviews" class="box-link <?php echo $currentCat == 'best-reviews' ? 'active' : '' ?>">Best</a>
+                                <a href="/ideas/best" class="box-link <?php echo $currentCat == 'best-reviews' ? 'active' : '' ?>">Best</a>
                             </li>
                              <li class="box-link-ul">
                                 <a href="/ideas/style" class="box-link <?php echo $currentCat == 'style' ? 'active' : '' ?>">Style</a>
