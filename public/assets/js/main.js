@@ -4702,8 +4702,8 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                 $('.story-hero-slider').royalSlider(args);
             });
 
-            jQuery(document).ready(function ($) {
-                var args = {
+          
+             var args = {
                     arrowsNav: false,
                     loop: true,
                     loopRewind: true,
@@ -4744,22 +4744,7 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                     },
 
                 };
-
-                ////if (window.innerWidth < 1176) {
-                //    args.visibleNearby = {
-                //        enabled: false,
-                //        center: true,
-                //    }
-                //} else {
-                //    args.visibleNearby = {
-                //        enabled: true,
-                //        center: true,
-                //        navigateByCenterClick: true
-                //    }
-                //}
-
-                $('.home-hero-slider').royalSlider(args);
-            });
+                $('.default-hero-slider').royalSlider(args);
 
 
         };
@@ -5954,6 +5939,7 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
         $scope.currentDay = 'Today';
         $scope.contentBlock = angular.element( document.querySelector('.main-content') );
         $scope.filterLoad = [];
+        $scope.readContent = [];
         $scope.ideaCategory = false;
         $scope.hasMore = false;
         //$scope.globalOffset = 0;
@@ -5969,6 +5955,13 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
             console.log('uho')
 
             $scope.ideaCategory = $category;
+
+            $scope.nextLoad = pagingApi.getReadContent($category).success(function (response) {
+                $scope.readContent = response;
+                console.log($scope.readContent)
+            });
+
+
 
             $scope.firstLoad = pagingApi.getGridContent(1, 0, false, false,  $scope.ideaCategory).success(function (response) {
                 $scope.allContent[0] = response;
@@ -6025,7 +6018,6 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
             $return['row-4'] = $featured[1] ? [$featured[1]] : false;
             $return['row-5'] = $ideas.slice(2, 2);
             $return['row-6'] = $products.slice(3, 3);
-            console.log($return)
             return $return;
         };
 
@@ -6992,6 +6984,14 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
             return $http({
                 method: 'GET',
                 url: '/api/paging/get-content/' + page + '/' + limit + '/' + tag + '/' + type + '/' + productCategoryID + '/' + sortBy,
+            });
+        }
+
+
+        pagingApi.getReadContent = function(category) {
+            return $http({
+                method: 'GET',
+                url: '/api/paging/get-read-content/' + category
             });
         }
 

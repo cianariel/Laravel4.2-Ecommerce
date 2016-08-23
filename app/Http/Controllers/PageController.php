@@ -93,36 +93,23 @@ class PageController extends ApiController
       
         $result = [];
 
-        if($thisCategory == 'default'){
-            $sliderContent = self::getHeroSliderContent();
-            $mostPopular = self::getMostPopular();
-        }else{
-            $rand = rand(1,2);
-            if($rand == 1){
-                $daysBack = 20;
-            }else{
-                $daysBack = false;
-            }
-            $sliderContent = self::getHeroSliderContent(1, $thisCategory);
-            $mostPopular = self::getMostPopular($daysBack, $thisCategory, 4);
-        }
+        $sliderContent = self::getHeroSliderContent();
 
         MetaTag::set('title', 'Ideaing | Ideas for Smarter Living'); // TODO -- add from CRUD
         MetaTag::set('description', 'Ideaing inspires you to live a smarter and beautiful home. Get ideas on using home automation devices including WiFi cameras, WiFi doorbells, door locks, security, energy, water and many more.');
         return view('category.category')
             ->with('thisCategory', $thisCategory)
-            ->with('mostPopular', $mostPopular) 
             ->with('sliderContent', $sliderContent)
             ;
     }
 
-    public static function getMostPopular($daysBack = false, $category = false, $itemsPerCategory = 2){
+    public static function getMostPopular($daysBack = false, $category = false, $itemsPerCategory = 4){
 
-        $cacheKey = "home-popular";
+        $cacheKey = "most-popular-$daysBack-$category-$itemsPerCategory";
 
-//        if ($cachedContent = PageHelper::getFromRedis($cacheKey, true)) {
-//            $return = $cachedContent;
-//        } else {
+       // if ($cachedContent = PageHelper::getFromRedis($cacheKey, true)) {
+       //     $return = $cachedContent;
+       // } else {
 
             // 1. get most popular ideas
             $url = URL::to('/') . '/ideas/feeds/index.php?count='. ($itemsPerCategory / 2).'&most-popular';
@@ -131,7 +118,7 @@ class PageController extends ApiController
                 $url .= '&daysback=' . $daysBack;
             }
 
-            if($category){
+            if($category && $category != 'default'){
                 $url .= '&category-name='.$category;
 
                 $ch = curl_init();
@@ -142,7 +129,10 @@ class PageController extends ApiController
                 curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
                 curl_setopt($ch, CURLOPT_ENCODING, "");
                 $json = curl_exec($ch);
-                $ideas[$category] = json_decode($json);
+                $rawIdeas = json_decode($json, true);
+
+
+
             }else{
                 $ch = curl_init();
                 curl_setopt($ch, CURLOPT_URL, $url . '&category-name=smart-home');
@@ -152,7 +142,7 @@ class PageController extends ApiController
                 curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
                 curl_setopt($ch, CURLOPT_ENCODING, "");
                 $json = curl_exec($ch);
-                $ideas['smart-home'] = json_decode($json);
+                $rawIdeas['smart-home'] = json_decode($json);
 
                 $ch = curl_init();
                 curl_setopt($ch, CURLOPT_URL, $url . '&category-name=smart-body');
@@ -162,7 +152,7 @@ class PageController extends ApiController
                 curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
                 curl_setopt($ch, CURLOPT_ENCODING, "");
                 $json = curl_exec($ch);
-                $ideas['smart-body'] = json_decode($json);
+                $rawIdeas['smart-body'] = json_decode($json);
 
                 $ch = curl_init();
                 curl_setopt($ch, CURLOPT_URL, $url . '&category-name=smart-entertainment');
@@ -172,8 +162,17 @@ class PageController extends ApiController
                 curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
                 curl_setopt($ch, CURLOPT_ENCODING, "");
                 $json = curl_exec($ch);
-                $ideas['smart-entertainment'] = json_decode($json);
+                $rawIdeas['smart-entertainment'] = json_decode($json);
+
+
+                foreach($rawIdeas as $categoryName => $ideaSet){
+                    $ideas[$categoryName]['item'] = [$ideaSet->posts[0]];
+                    $ideas[$categoryName]['lesserItems'] = array_slice($ideaSet->posts, 1);
+                    // print_r($ideaSet->posts); die();
+                }
             }
+
+            // print_r($ideas); die();
 
              // 2. get products
             $productSettings = [
@@ -233,14 +232,14 @@ class PageController extends ApiController
             $productSettings['CategoryId'] = 159;
             $products['smart-entertainment'] = $prod->getProductList($productSettings);
 
-            if(isset($ideas['smart-home']->posts)){
-                $return['smart_home'] = array_merge($ideas['smart-home']->posts ?: [], $products['smart-home']['result']);
+            if(isset($ideas['smart-home'])){
+                $return['smart_home'] = array_merge($ideas['smart-home'] ?: [], $products['smart-home']['result']);
             }
-            if(isset($ideas['smart-body']->posts)){
-                $return['smart_body'] = array_merge($ideas['smart-body']->posts ?: [], $products['smart-body']['result']);
+            if(isset($ideas['smart-body'])){
+                $return['smart_body'] = array_merge($ideas['smart-body'] ?: [], $products['smart-body']['result']);
             }
-            if(isset($ideas['smart-entertainment']->posts)){
-                $return['smart_entertainment'] = array_merge($ideas['smart-entertainment']->posts ?: [], $products['smart-entertainment']['result']);
+            if(isset($ideas['smart-entertainment'])){
+                $return['smart_entertainment'] = array_merge($ideas['smart-entertainment'] ?: [], $products['smart-entertainment']['result']);
             }
         }
 
@@ -289,7 +288,7 @@ class PageController extends ApiController
             // array sort produ result, get three top ones.
             $cached = PageHelper::putIntoRedis($cacheKey, $return, '1 day');
 
-//        }
+       // }
 
         return (object)$return;
     }
@@ -706,6 +705,34 @@ class PageController extends ApiController
         $return['unreadCount'] = ($products['total'] + $stories['totalCount']) - ($productLimit + $storyLimit) * $page;
         $return['wasCached'] = $cached;
         $return['fromCache'] = false;
+        return $return;
+    }
+
+
+    public function getReadContent($thisCategory = false)
+    {
+        if(!$thisCategory){
+            $thisCategory = 'default';
+        }
+
+        $cacheKey = "read-content-$thisCategory";
+
+          if($thisCategory == 'default'){
+            $return['staticSliderContent']  = false;
+            $return['mostPopular']    = self::getMostPopular();
+        }else{
+            $rand = rand(1,2);
+            if($rand == 1){
+                $daysBack = 20;
+            }else{
+                $daysBack = false;
+            }
+            $return['staticSliderContent'] = self::getHeroSliderContent(1, $thisCategory);
+            $return['mostPopular']   = self::getMostPopular($daysBack, $thisCategory, 4);
+        }
+
+        $cached = PageHelper::putIntoRedis($cacheKey, $return, '4 hours');
+
         return $return;
     }
 

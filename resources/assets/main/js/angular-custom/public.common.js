@@ -568,8 +568,8 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                 $('.story-hero-slider').royalSlider(args);
             });
 
-            jQuery(document).ready(function ($) {
-                var args = {
+          
+             var args = {
                     arrowsNav: false,
                     loop: true,
                     loopRewind: true,
@@ -610,22 +610,7 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                     },
 
                 };
-
-                ////if (window.innerWidth < 1176) {
-                //    args.visibleNearby = {
-                //        enabled: false,
-                //        center: true,
-                //    }
-                //} else {
-                //    args.visibleNearby = {
-                //        enabled: true,
-                //        center: true,
-                //        navigateByCenterClick: true
-                //    }
-                //}
-
-                $('.home-hero-slider').royalSlider(args);
-            });
+                $('.default-hero-slider').royalSlider(args);
 
 
         };
