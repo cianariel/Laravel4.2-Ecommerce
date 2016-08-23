@@ -5976,10 +5976,10 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
             }else{
                 $scope.ideaCategory = $filter('getURISegment')(3);
             }
-            //var $limit = 9;
+            //var $limit = 9; 
         }else{
             $scope.ideaCategory = $filter('getURISegment')(2);
-            console.log($scope.ideaCategory)
+            console.log($scope.ideaCategory) 
         }
 
         $scope.firstLoad = pagingApi.getGridContent(1, $limit, $scope.currentTag, $scope.filterBy,  $scope.ideaCategory).success(function (response) {
@@ -5989,6 +5989,8 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
 
             $scope.content[0] = newContent;
             $scope.hasMore = response['hasMore'];
+            $scope.unreadCount = response['unreadCount'];  
+
         });
 
         //pagingApi.getGridContent(2, $limit, $scope.currentTag, $scope.filterBy,  $scope.ideaCategory).success(function (response) {
