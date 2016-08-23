@@ -183,6 +183,8 @@ class PageController extends ApiController
 
              $prod = new Product();
 
+        $return = [];
+
         if($category){
             $categorObj = ProductCategory::where('extra_info', $category)->first();
 
@@ -224,9 +226,15 @@ class PageController extends ApiController
             $productSettings['CategoryId'] = 159;
             $products['smart-entertainment'] = $prod->getProductList($productSettings);
 
-            $return['smart_home'] = array_merge($ideas['smart-home']->posts ?: [], $products['smart-home']['result']);
-            $return['smart_body'] = array_merge($ideas['smart-body']->posts  ?: [], $products['smart-body']['result']);
-            $return['smart_entertainment'] = array_merge($ideas['smart-entertainment']->posts ?: [], $products['smart-entertainment']['result']);
+            if(isset($ideas['smart-home']->posts)){
+                $return['smart_home'] = array_merge($ideas['smart-home']->posts ?: [], $products['smart-home']['result']);
+            }
+            if(isset($ideas['smart-body']->posts)){
+                $return['smart_body'] = array_merge($ideas['smart-body']->posts ?: [], $products['smart-body']['result']);
+            }
+            if(isset($ideas['smart-entertainment']->posts)){
+                $return['smart_entertainment'] = array_merge($ideas['smart-entertainment']->posts ?: [], $products['smart-entertainment']['result']);
+            }
         }
 
 //        foreach($products as $category){

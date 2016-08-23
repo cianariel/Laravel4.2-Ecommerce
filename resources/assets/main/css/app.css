@@ -7362,6 +7362,15 @@ body.category .rsThumbs {
   .homepage-grid .main-content {
     padding: 0 0 7px 0; }
 
+.unread-count {
+  display: block;
+  width: 100%;
+  padding: 18px 0;
+  margin-top: 20px;
+  overflow: hidden;
+  text-align: center;
+  font-size: 2rem; }
+
 .homepage-grid.hidden {
   opacity: 0; }
 

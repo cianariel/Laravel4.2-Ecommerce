@@ -4135,7 +4135,7 @@ angular.module('colorpicker.module', [])
 /**
  * Created by sanzeeb on 1/7/2016.
  */
- 
+
 var publicApp = angular.module('publicApp', ['ui.bootstrap', 'ngSanitize', 'angularFileUpload']);
 
 publicApp.config(['$httpProvider', function ($httpProvider) {
