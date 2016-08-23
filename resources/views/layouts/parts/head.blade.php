@@ -66,6 +66,12 @@ if (screen.width < 992 && screen.width > 620) {
 
 </script>
 
+<style>
+.giveaway_desc ol li{
+  list-style: decimal !important;
+}
+</style>
+
 <!-- Facebook Pixel Code -->
 <script>
     !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?

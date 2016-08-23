@@ -20,6 +20,10 @@ a:hover, a:focus{
   display: none;
 }
 
+.giveaway_desc ol li{
+  list-style: decimal !important;
+}
+
 .pink{
   color: $iridium !important;
 }
