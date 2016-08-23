@@ -224,10 +224,14 @@ class PageController extends ApiController
             $productSettings['CategoryId'] = 159;
             $products['smart-entertainment'] = $prod->getProductList($productSettings);
 
-            $return['smart_home'] = array_merge($ideas['smart-home'] ?: [], $products['smart-home']['result']);
-            $return['smart_body'] = array_merge($ideas['smart-body']  ?: [], $products['smart-body']['result']);
-            $return['smart_entertainment'] = array_merge($ideas['smart-entertainment'] ?: [], $products['smart-entertainment']['result']);
+            $return['smart_home'] = array_merge($ideas['smart-home']->posts ?: [], $products['smart-home']['result']);
+            $return['smart_body'] = array_merge($ideas['smart-body']->posts  ?: [], $products['smart-body']['result']);
+            $return['smart_entertainment'] = array_merge($ideas['smart-entertainment']->posts ?: [], $products['smart-entertainment']['result']);
         }
+
+//        foreach($products as $category){
+//            $return['totalCount'] += $category['total'];
+//        }
 
 
 
@@ -303,7 +307,7 @@ class PageController extends ApiController
             $cached = PageHelper::putIntoRedis($cacheKey, $return, '24 hours');
 //        }
 
-        return $return;
+        return $return['posts'];
 
     }
 
@@ -615,6 +619,8 @@ class PageController extends ApiController
             $stories = [
                 'regular' => [],
                 'featured' => [],
+                'totalCount' => 0,
+
             ];
         }
 
@@ -682,6 +688,7 @@ class PageController extends ApiController
 
         $cached = PageHelper::putIntoRedis($cacheKey, $return, '1 hour');
 
+        $return['unreadCount'] = ($products['total'] + $stories['totalCount']) - ($productLimit + $storyLimit) * $page;
         $return['wasCached'] = $cached;
         $return['fromCache'] = false;
         return $return;
@@ -787,7 +794,7 @@ class PageController extends ApiController
 
         if ($ideaCollection) {
 
-            foreach ($ideaCollection as $singleIdea) {
+            foreach ($ideaCollection->posts as $singleIdea) {
 
                 $tempIdea = collect($singleIdea);
 
@@ -801,6 +808,7 @@ class PageController extends ApiController
         }
 
         // type casting to object
+        $return['totalCount'] = $ideaCollection->totalCount;
 
         $return['regular'] = json_decode($newIdeaCollection->toJson(), FALSE);
 
@@ -835,7 +843,7 @@ if(@env('PROD_FEED')){
 
         if ($ideaCollection) {
 
-            foreach ($ideaCollection as $singleIdea) {
+            foreach ($ideaCollection->posts as $singleIdea) {
 
                 $tempIdea = collect($singleIdea);
 
@@ -849,6 +857,8 @@ if(@env('PROD_FEED')){
         }
 
         $return['featured'] = $newIdeaCollection;
+
+        $return['totalCount'] += $ideaCollection->totalCount;
 
         return $return;
     }

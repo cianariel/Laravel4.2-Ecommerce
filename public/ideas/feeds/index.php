@@ -125,7 +125,6 @@ if(isset($_REQUEST['only-slider'])){
 //    array_push($args['meta_query'], $push);
 }
 
-//print_r($args);die();
 
 //$posts = query_posts($args);
 $posts = new WP_Query( $args );
@@ -237,10 +236,16 @@ if ( $posts->have_posts() ) {
                 $data['tags_all'] = wp_get_post_tags($post->ID, array('fields' => 'names'));;
             }
 
-            $datam[] = $data;
+            $datam['posts'][] = $data;
         }
 
 }
+
+//if(isset($_REQUEST['get-total-count'])){
+    $args['showposts'] = -1;
+    $countPosts = new WP_Query($args);
+    $datam['totalCount'] = count($countPosts->posts);
+//}
 
 echo json_encode($datam);
 //print_r(json_decode(json_encode($data)));
