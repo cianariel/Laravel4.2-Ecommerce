@@ -303,7 +303,7 @@ class Product extends Model
     {
         $productModel = $this;
 
-        // $filterText = $settings['FilterText'];
+       // $filterText = $settings['FilterText'];
 
         if (@$settings['CategoryId'] != null) {
             if (@$settings['GetChildCategories']) {
@@ -359,12 +359,14 @@ class Product extends Model
             $productModel = $productModel->where("product_name", "like", "%$filterText%");
         }
 */
-        if (!empty($settings['FilterProduct'])) {
-            $productModel = $productModel->where("product_name", "like", "%" . $settings['FilterProduct'] . "%");
+        if(!empty($settings['FilterProduct']))
+        {
+            $productModel = $productModel->where("product_name", "like", "%".$settings['FilterProduct']."%");
         }
 
-        if (!empty($settings['FilterPublisher'])) {
-            $productModel = $productModel->where("user_name", "like", "%" . $settings['FilterPublisher'] . "%");
+        if(!empty($settings['FilterPublisher']))
+        {
+            $productModel = $productModel->where("user_name", "like", "%".$settings['FilterPublisher']."%");
         }
 
         if (@$settings['WithTags'] == true && $settings['CategoryId'] != null) {
@@ -403,10 +405,10 @@ class Product extends Model
 
         for ($i = 0; $i < $count; $i++) {
             $id = $product['allIDs'][$i]['id'];
-            $tmp = $this->getSingleProductInfoForView($id, $isAdmin);
+            $tmp = $this->getSingleProductInfoForView($id,$isAdmin);
 
             // If the publish date is not valid
-            if (empty($tmp))
+            if(empty($tmp))
                 continue;
 
             // making the thumbnail url by injecting "thumb-" in the url which has been uploaded during media submission.
