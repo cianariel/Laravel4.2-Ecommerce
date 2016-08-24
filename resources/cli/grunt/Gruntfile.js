@@ -147,6 +147,7 @@ module.exports = function(grunt) {
     grunt.registerTask('js', ['concat:main', 'concat:admin', 'uglify:all']);
     grunt.registerTask('css', ['sass', 'concat:maincss','concat:admincss','cssmin']);
     grunt.registerTask('admincss', ['concat:admincss','cssmin']);
+    grunt.option('force', true);
 
 
 

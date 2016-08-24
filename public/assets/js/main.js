@@ -3955,9 +3955,13 @@ angular.module('colorpicker.module', [])
 
             var $currentPos = $(window).scrollTop() + $(window).height();
 
-            var $triggerPoint = $(document).height() - 300; // roughly, the point where the first chunk of loaded content ends
+            var $triggerPoint = $(document).height() - 450; // roughly, the point where the first chunk of loaded content ends
 
-            if($currentPos < $triggerPoint - 200 && $currentPos < $triggerPoint + 200) { // if we are around that point, fire the Load More in the backgriund
+            // console.log($currentPos);
+            // console.log($triggerPoint);
+
+
+            if($currentPos > $triggerPoint) { // if we are around that point, fire the Load More in the backgriund
                 $('.bottom-load-more').click();
                 $('.bottom-load-more').addClass('disabled').attr('disabled', true);
             }
@@ -5952,7 +5956,11 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
 
         $scope.loadReadContent = function($category){
 
-            console.log('uho')
+            $('.category-menu a').removeClass('active');
+
+            $('.category-menu a.category-link__' + $category).addClass('active');
+
+            $scope.currentPage = 1;
 
             $scope.ideaCategory = $category;
 
@@ -5960,8 +5968,6 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
                 $scope.readContent = response;
                 console.log($scope.readContent)
             });
-
-
 
             $scope.firstLoad = pagingApi.getGridContent(1, 0, false, false,  $scope.ideaCategory).success(function (response) {
                 $scope.allContent[0] = response;
@@ -5977,6 +5983,8 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
 
 
         $scope.loadMore = function() {
+ 
+            console.log('herehere')
 
             if($('.bottom-load-more').hasClass('disabled')){
                 return false;
@@ -5988,7 +5996,8 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
             var $limit = 0;
             $scope.filterBy = null;
 
-            var $daysBack = $scope.currentPage - 1;  
+            var $daysBack = false;  
+            console.log('54')
 
             $scope.nextLoad =  pagingApi.getGridContent($scope.currentPage, $limit, $scope.currentTag, $scope.filterBy, $scope.ideaCategory).success(function (response) {
 
@@ -5999,6 +6008,8 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
                 //     newContent['currentDay'] = $daysBack + ' Days Ago';
                 // }
                 $scope.newStuff[0] = newContent;
+
+                console.log(newContent)
 
                 $scope.content = $scope.content.concat($scope.newStuff);
 
@@ -6033,7 +6044,6 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
             }
 
             currentRoute = $filter('getURISegment')(2);
-
 
             $scope.filterBy = null;
 
