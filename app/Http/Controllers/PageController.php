@@ -412,12 +412,12 @@ class PageController extends ApiController
 
         $cacheKey = "timeline-content-$daysback-$tag-$type-$categoryName";
 
-//        if($cachedContent = PageHelper::getFromRedis($cacheKey)){
-//            $return = $cachedContent;
-//            $return->fromCache = true;
-//            $return->cacheKey = $cacheKey;
-//            return json_encode($return);
-//        }
+       if($cachedContent = PageHelper::getFromRedis($cacheKey)){
+           $return = $cachedContent;
+           $return->fromCache = true;
+           $return->cacheKey = $cacheKey;
+           return json_encode($return);
+       }
 
         if ($tag && $tag !== 'undefined' && $tag != 'false' && $tag != '') {
             $tagID = Tag::where('tag_name', $tag)->lists('id')->toArray();
@@ -589,9 +589,16 @@ class PageController extends ApiController
         return $return;
     }
 
-    public function getGridContent($page = 1, $limit = 5, $tag = false, $type = false, $categoryName = false, $daysback = false)
+    public function getGridContent($page = 1, $limit = 7, $tag = false, $type = false, $categoryName = false, $daysback = false)
     {
         $cacheKey = "grid-content-$page-$limit-$tag-$type-$categoryName";
+
+          if($cachedContent = PageHelper::getFromRedis($cacheKey)){
+               $return = $cachedContent;
+               $return->fromCache = true;
+               $return->cacheKey = $cacheKey;
+               return json_encode($return);
+          }
 
         if($categoryName == 'default'){
             $categoryName = false;
@@ -729,6 +736,13 @@ class PageController extends ApiController
         }
 
         $cacheKey = "read-content-$thisCategory";
+
+         if($cachedContent = PageHelper::getFromRedis($cacheKey)){
+               $return = $cachedContent;
+               $return->fromCache = true;
+               $return->cacheKey = $cacheKey;
+               return json_encode($return);
+          }
 
           if($thisCategory == 'default'){
             $return['staticSliderContent']  = false;
@@ -914,9 +928,7 @@ if(@env('PROD_FEED')){
 
         $return['featured'] = $newIdeaCollection;
 
-        if(isset($ideaCollection)){
-            $return['totalCount'] += $ideaCollection->totalCount;
-        }
+        $return['totalCount'] += $ideaCollection->totalCount;
 
         return $return;
     }

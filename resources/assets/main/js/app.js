@@ -368,7 +368,7 @@
 
             var $currentPos = $(window).scrollTop() + $(window).height();
 
-            var $triggerPoint = $(document).height() - 450; // roughly, the point where the first chunk of loaded content ends
+            var $triggerPoint = $(document).height() - 600; // roughly, the point where the first chunk of loaded content ends
 
             // console.log($currentPos);
             // console.log($triggerPoint);

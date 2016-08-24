@@ -3955,7 +3955,7 @@ angular.module('colorpicker.module', [])
 
             var $currentPos = $(window).scrollTop() + $(window).height();
 
-            var $triggerPoint = $(document).height() - 450; // roughly, the point where the first chunk of loaded content ends
+            var $triggerPoint = $(document).height() - 600; // roughly, the point where the first chunk of loaded content ends
 
             // console.log($currentPos);
             // console.log($triggerPoint);
@@ -5971,6 +5971,7 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
 
             $scope.firstLoad = pagingApi.getGridContent(1, 0, false, false,  $scope.ideaCategory).success(function (response) {
                 $scope.allContent[0] = response;
+                console.log(response);
 
                 var newContent = [];
                 newContent[0] = $scope.sliceToRows(response['content']['ideas'], response['content']['featured'], response['content']['products']); 
@@ -6027,8 +6028,12 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
             $return['row-2'] = $ideas.slice(0, 2);
             $return['row-3'] = $products.slice(0, 3);
             $return['row-4'] = $featured[1] ? [$featured[1]] : false;
-            $return['row-5'] = $ideas.slice(2, 2);
-            $return['row-6'] = $products.slice(3, 3);
+            $return['row-5'] = $ideas.slice(2, 4);
+            $return['row-6'] = $products.slice(3, 6);
+            console.log('kuku')
+            console.log($products)
+            console.log('bubu')
+            console.log($return['row-6'])
             return $return;
         };
 
