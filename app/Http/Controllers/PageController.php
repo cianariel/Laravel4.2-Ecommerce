@@ -914,7 +914,9 @@ if(@env('PROD_FEED')){
 
         $return['featured'] = $newIdeaCollection;
 
-        $return['totalCount'] += $ideaCollection->totalCount;
+        if(isset($ideaCollection)){
+            $return['totalCount'] += $ideaCollection->totalCount;
+        }
 
         return $return;
     }
