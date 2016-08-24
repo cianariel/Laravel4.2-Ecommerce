@@ -368,9 +368,13 @@
 
             var $currentPos = $(window).scrollTop() + $(window).height();
 
-            var $triggerPoint = $(document).height() - 300; // roughly, the point where the first chunk of loaded content ends
+            var $triggerPoint = $(document).height() - 450; // roughly, the point where the first chunk of loaded content ends
 
-            if($currentPos < $triggerPoint - 200 && $currentPos < $triggerPoint + 200) { // if we are around that point, fire the Load More in the backgriund
+            // console.log($currentPos);
+            // console.log($triggerPoint);
+
+
+            if($currentPos > $triggerPoint) { // if we are around that point, fire the Load More in the backgriund
                 $('.bottom-load-more').click();
                 $('.bottom-load-more').addClass('disabled').attr('disabled', true);
             }

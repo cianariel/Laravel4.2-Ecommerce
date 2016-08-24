@@ -588,6 +588,10 @@ class PageController extends ApiController
     {
         $cacheKey = "grid-content-$page-$limit-$tag-$type-$categoryName";
 
+        if($categoryName == 'default'){
+            $categoryName = false;
+        }
+
 //          if($cachedContent = PageHelper::getFromRedis($cacheKey)){
 //            $return = $cachedContent;
 //            $return->fromCache = true;
@@ -620,6 +624,8 @@ class PageController extends ApiController
         $featuredLimit = 3;
         $featuredOffset = $featuredLimit * ($page - 1);
         $leftOver = 0;
+
+        $daysback = false;
 
         if($daysback && $daysback != 'undefined'){
             $daysback = strtotime('-'.$daysback.' days');
@@ -672,6 +678,8 @@ class PageController extends ApiController
         }
 
         if($stories['featured']) {
+            // print_r( $stories); die();
+
             $featuredStories = array_slice($stories['featured']->toArray(), 0, $featuredLimit);
             if (!empty(array_slice($stories['featured']->toArray(), $featuredLimit, 1))) {
                 $leftOver++;
