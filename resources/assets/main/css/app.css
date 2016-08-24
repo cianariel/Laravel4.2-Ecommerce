@@ -4476,6 +4476,9 @@ a:hover, a:focus {
 .ta-hidden-input {
   display: none; }
 
+.giveaway_desc ol li {
+  list-style: decimal !important; }
+
 .pink {
   color: #FF0042 !important; }
 

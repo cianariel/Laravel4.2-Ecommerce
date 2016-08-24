@@ -112,6 +112,11 @@
                             <span class="title">Edit Category</span>
                         </a>
                     </li>
+                    <li class="nav-item  ">
+                        <a href="/admin/category-read" class="nav-link ">
+                            <span class="title">Read Categories</span>
+                        </a>
+                    </li>
                 </ul>
             </li>
             <li class="nav-item  ">

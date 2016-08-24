@@ -36,6 +36,11 @@
             return $this->hasMany('App\Models\Product');
         }
 
+        public function ProductCategoryRead()
+        {
+            return $this->hasOne('App\Models\ProductCategoryRead');
+        }
+
 
         /**  Add new item in the category and return it category object.
          * @param $product

@@ -29,6 +29,7 @@ Route::any('secure-page-header', 'UserController@securePageHeader');
 
 
 Route::get('/', 'PageController@home');
+Route::get('/{permalink?}', 'PageController@home');
 
 Route::get('update-price', 'ProductController@priceUpdate');
 
@@ -157,6 +158,14 @@ Route::group(['prefix' => 'api'], function () {
 
     Route::get('category/get-category-hierarchy/{catId?}', 'ProductController@generateCategoryHierarchy');
 
+    Route::post('category/add-read-category', 'ProductCategoryController@addReadCategory');
+    Route::post('category/update-read-category', 'ProductCategoryController@updateReadCategory');
+    Route::post('category/delete-read-category', 'ProductCategoryController@deleteReadCategory');
+    Route::get('category/all-read-category', 'ProductCategoryController@getAllReadCategoryItem');
+
+
+
+
     /*
      * Product route collection
      *
@@ -280,6 +289,8 @@ Route::group(['prefix' => 'admin'], function () {
     Route::get('category-view', 'AdminController@categoryView');
     Route::get('category-add', 'AdminController@addCategory');
     Route::get('category-edit', 'AdminController@editCategory');
+    Route::get('category-read', 'AdminController@readCategory');
+
 
     // Product view
     Route::get('product-view', 'AdminController@productView');
