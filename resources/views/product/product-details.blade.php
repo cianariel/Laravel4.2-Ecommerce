@@ -741,20 +741,23 @@
                         <fieldset class="shoplanding-title">
                             <legend align="center"><h3 class="blue pale-grey-bg">Related Ideas</h3></legend>
                         </fieldset>
+                            <?php  // print_r($relatedIdeas);  die();?>
 
-                        @if(isset($relatedIdeas) && ($relatedIdeas != null) )
-                            @foreach( $relatedIdeas as $item )
-                            <?php // print_r($item->feed_image); ?>
+                        @if(isset($relatedIdeas->posts) && $relatedIdeas != null)
+                            @foreach( $relatedIdeas->posts as $item )
                                 <div class="box-item">
                                     <div class="img-holder">
+                            <?php   print_r($item);  die();?>
+
+                                    @if($item->feed_image)
                                         @if(is_array($item->feed_image))
-                                            <img alt="{{@$item->feed_image['alt']}}" title="{{@$item->feed_image['title']}}"
+                                            <img alt="{{@$item->feed_image['alt']}}" title="{{@$item->feed_image->title}}"
                                                  src="{{ @$item->feed_image['url']}}">
-                                        @else
+                                        @elseif(is_object($item->feed_image))
                                             <img alt="{{@$item->feed_image->alt}}" title="{{@$item->feed_image->title}}"
                                                  src="{{@$item->feed_image->url}}">
                                         @endif
-
+                                    @endif             
                                     </div>
 
                                     <span class="box-item__time">{{$item->updated_at}}</span>
