@@ -85,6 +85,10 @@ class PageController extends ApiController
 
     public function categoryPage($thisCategory = false)
     {
+        $userData = $this->authCheck;
+        if ($this->authCheck['method-status'] == 'success-with-http') {
+            $userData = $this->authCheck['user-data'];
+        }
         $thisCategory = Req::segment(1);
 
         if(!$thisCategory ){
@@ -98,6 +102,7 @@ class PageController extends ApiController
         MetaTag::set('title', 'Ideaing | Ideas for Smarter Living'); // TODO -- add from CRUD
         MetaTag::set('description', 'Ideaing inspires you to live a smarter and beautiful home. Get ideas on using home automation devices including WiFi cameras, WiFi doorbells, door locks, security, energy, water and many more.');
         return view('category.category')
+            ->with('userData', $userData)
             ->with('thisCategory', $thisCategory)
             ->with('sliderContent', $sliderContent)
             ;
@@ -180,14 +185,14 @@ class PageController extends ApiController
                 'limit' => $itemsPerCategory == 1 ? 1 : ($itemsPerCategory - 1),
                 'page' => false,
                 'FilterType' => false,
-                'FilterText' => false,
+                'FilterText' => false, 
                 'ShowFor' => false,
                 'WithTags' => false,
                 'WithAverageScore' => false,
                 'MostPopular' => true,
             ];
 
-             $prod = new Product();
+             $prod = new Product(); 
 
         $return = [];
 
@@ -736,7 +741,7 @@ class PageController extends ApiController
                 $daysBack = false;
             }
             $return['staticSliderContent'] = self::getHeroSliderContent(1, $thisCategory);
-            $return['mostPopular']   = self::getMostPopular($daysBack, $thisCategory, 4);
+            $return['mostPopular']   = self::getMostPopular($daysBack, $thisCategory, 5);
         }
 
         $cached = PageHelper::putIntoRedis($cacheKey, $return, '4 hours');

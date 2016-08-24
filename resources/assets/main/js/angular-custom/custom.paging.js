@@ -118,9 +118,9 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
 
         $scope.loadReadContent = function($category){
 
-            $('.category-menu a').removeClass('active');
+            $('.category-menu a, .mid-menu a').removeClass('active');
 
-            $('.category-menu a.category-link__' + $category).addClass('active');
+            $('.category-menu, .mid-menu').find('a.category-link__' + $category).addClass('active');
 
             $scope.currentPage = 1;
 

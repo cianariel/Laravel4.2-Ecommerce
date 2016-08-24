@@ -27,7 +27,7 @@
     </ul>
     <ul class="mid-menu col-xs-12">
         <li class="col-xs-12 nested">
-            <a href="/ideas/smart-home" class="category-link__smart-home" href="#">
+            <a data-click="#show-smart-home" href="/smart-home" class="category-link__smart-home" href="#">
                 <i class="m-icon m-icon--smart-home"></i>
                 <span class="m-icon-text">Smart Home</span>
             </a>
@@ -43,19 +43,19 @@
             </ul>
         </li>
         <li class="col-xs-12">
-            <a class="category-link__smart-entertainment m-icon-text-holder" href="/ideas/smart-entertainment">
+            <a data-click="#show-smart-entertainment" class="category-link__smart-entertainment m-icon-text-holder" href="/smart-entertainment">
                 <i class="m-icon m-icon--video"></i>
                 <span class="m-icon-text"><span class="hidden-xs hidden-sm">Smart</span> Entertainment</span>
             </a>
         </li>
         <li class="col-xs-12">
-            <a class="category-link__smart-body m-icon-text-holder" href="/ideas/smart-body">
+            <a data-click="#show-smart-body"  class="category-link__smart-body m-icon-text-holder" href="/ideas/smart-body">
                 <i class="m-icon m-icon--wearables"></i>
                 <span class="m-icon-text"><span class="hidden-xs hidden-sm">Smart</span> Body</span>
             </a>
         </li>
         <li class="col-xs-12">
-            <a class="category-link__smart-travel m-icon-text-holder" href="/ideas/smart-travel">
+            <a data-click="#show-smart-travel" class="category-link__smart-travel m-icon-text-holder" href="/ideas/smart-travel">
                 <i class="m-icon m-icon--travel"></i>
                 <span class="m-icon-text"><span class="hidden-xs hidden-sm">Smart</span> Travel</span>
             </a>
