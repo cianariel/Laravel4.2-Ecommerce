@@ -193,7 +193,7 @@ class ProductController extends ApiController
 
             $settings['PageSource'] = 'admin-product-list';
 
-            $productList = $this->product->getProductList($settings);
+            $productList = $this->product->getProductList($settings,true);
 
             $settings['total'] = $productList['total'];
             array_forget($productList, 'total');
