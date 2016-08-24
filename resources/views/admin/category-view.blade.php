@@ -81,27 +81,27 @@
                                                 </button>
                                             </div>
                                             <div style="margin-top: 30px"> &nbsp;</div>
-                                            <div>
+                                            {{--<div>
                                                 <label>Selected Category Name :</label><span class="text-danger"><strong> @{{ currentCategoryName }} </strong> </span>
-                                            </div>
+                                            </div>--}}
                                         </div>
                                     </div>
 
                                 </div>
                             </div>
-                            <div>
+                            {{--<div>
                                 <ui-tree ng-model="assets"
                                          load-fn="loadChildren"
                                          expand-to="hierarchy"
                                          selected-id="111"
                                          attr-node-id="id"></ui-tree>
                                 <div>selected: @{{ selected.category }} id: @{{ selected.id }}</div>
-                            </div>
+                            </div>--}}
                             <div class="row">
-                                <div class="col-lg-10">
+                                <div class="col-lg-12">
                                     <div class="form-group" style="margin-top:50px;">
                                         <div class="row">
-                                            <div class="col-lg-10">
+                                            <div class="col-lg-12">
                                                 <div class="panel panel-default">
                                                     <div class="panel-heading">
                                                         Category Items
@@ -131,7 +131,7 @@
                                                                 <td>@{{ category.info }}</td>
                                                                 <td ng-if="tempCategoryList.length">@{{ category.icon }}</td>
                                                                 <td>
-                                                                    <lable> {{Request::root()}}/@{{ buildURL(category.info )}} </lable>
+                                                                    <a target="_blank" href="{{Request::root()}}/@{{ buildURL(category.info )}}">{{Request::root()}}/@{{ buildURL(category.info )}} </a>
                                                                 </td>
                                                             </script>
                                                             <script type="text/ng-template" id="edit">

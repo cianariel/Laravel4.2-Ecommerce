@@ -124,6 +124,18 @@ class AdminController extends ApiController
 
     }
 
+    public function readCategory()
+    {
+
+        if ($this->authCheck['method-status'] == 'success-with-http') {
+            return view('admin.category-read')->with('userData', $this->authCheck);
+
+        } elseif ($this->authCheck['method-status'] == 'fail-with-http') {
+            return \Redirect::to('login');
+        }
+
+    }
+
     // Product view
     public function productView()
     {
