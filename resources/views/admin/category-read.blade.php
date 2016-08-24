@@ -132,32 +132,31 @@
                                 -->
 
                                 <div class="row">
-                                    <div class="col-lg-6">
+                                    <div class="col-lg-12">
                                         <div class="panel panel-default">
                                             <div class="panel-heading">
-                                                Tags
+                                                Read Category Items
                                             </div>
                                             <!-- /.panel-heading -->
                                             <div class="panel-body">
-                                                <div class="table-responsive" ng-init="showTags()">
+                                                <div class="table-responsive" ng-init="getReadCategoryList()">
                                                     <table class="table table-hover">
                                                         <thead>
                                                         <tr>
 
-                                                            <th class="col-md-3">Id</th>
-                                                            <th class="col-md-3">Tag Name</th>
-                                                            <th class="col-md-3">Tag Desc.</th>
-
-                                                            <th class="col-md-3">Action</th>
+                                                            <th class="col-md-1">Id</th>
+                                                            <th class="col-md-3">Category Name</th>
+                                                            <th class="col-md-6">URL</th>
+                                                            <th class="col-md-2">Action</th>
                                                         </tr>
                                                         </thead>
                                                         <tbody>
                                                         <tr ng-repeat="item in tempCategoryList">
 
                                                             <td>@{{ item.id }}</td>
-                                                            <td>@{{ item.tag_name }}</td>
+                                                            <td>@{{ item.product_category.category_name }}</td>
                                                             <td>
-                                                                @{{ tag.tag_description }}
+                                                                {{Request::root()}}/@{{ item.product_category.extra_info }}
                                                             </td>
 
                                                             <td>
