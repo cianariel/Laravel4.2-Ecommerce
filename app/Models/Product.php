@@ -222,23 +222,42 @@ class Product extends Model
         $data->delete();
     }
 
-    public function getSingleProductInfoForView($productId)
+    public function getSingleProductInfoForView($productId, $adminView = false)
     {
-        $result = \DB::table('products')
-                     ->where('products.id', $productId)
-                     ->where('products.publish_at', '<=',date('Y-m-d') )
-                     ->leftJoin('product_categories', 'product_categories.id', '=', 'products.product_category_id')
-                     ->leftJoin('medias', function ($join) {
-                         $join->on('medias.mediable_id', '=', 'products.id')
-                              ->where('mediable_type', '=', 'App\Models\Product')
-                              ->Where('media_type', '=', 'img-upload')
-                              ->Where('is_main_item', '=', '1');
-                     })
-                     ->first(array(
-                         'products.id', 'products.show_for', 'products.updated_at', 'products.product_vendor_id', 'products.store_id',//'products.product_vendor_type',
-                         'products.user_name', 'products.product_name', 'product_categories.category_name', 'products.affiliate_link',
-                         'products.price', 'products.sale_price', 'medias.media_link', 'products.product_permalink', 'products.post_status', 'ideaing_review_score', 'review'
-                     ));
+        if ($adminView == true) {
+            $result = \DB::table('products')
+                         ->where('products.id', $productId)
+                         ->leftJoin('product_categories', 'product_categories.id', '=', 'products.product_category_id')
+                         ->leftJoin('medias', function ($join) {
+                             $join->on('medias.mediable_id', '=', 'products.id')
+                                  ->where('mediable_type', '=', 'App\Models\Product')
+                                  ->Where('media_type', '=', 'img-upload')
+                                  ->Where('is_main_item', '=', '1');
+                         })
+                         ->first(array(
+                             'products.id', 'products.show_for', 'products.updated_at', 'products.product_vendor_id', 'products.store_id',//'products.product_vendor_type',
+                             'products.user_name', 'products.product_name', 'product_categories.category_name', 'products.affiliate_link',
+                             'products.price', 'products.sale_price', 'medias.media_link', 'products.product_permalink', 'products.post_status', 'ideaing_review_score', 'review'
+                         ));
+
+        } else {
+            $result = \DB::table('products')
+                         ->where('products.id', $productId)
+                         ->where('products.publish_at', '<=', date('Y-m-d'))
+                         ->leftJoin('product_categories', 'product_categories.id', '=', 'products.product_category_id')
+                         ->leftJoin('medias', function ($join) {
+                             $join->on('medias.mediable_id', '=', 'products.id')
+                                  ->where('mediable_type', '=', 'App\Models\Product')
+                                  ->Where('media_type', '=', 'img-upload')
+                                  ->Where('is_main_item', '=', '1');
+                         })
+                         ->first(array(
+                             'products.id', 'products.show_for', 'products.updated_at', 'products.product_vendor_id', 'products.store_id',//'products.product_vendor_type',
+                             'products.user_name', 'products.product_name', 'product_categories.category_name', 'products.affiliate_link',
+                             'products.price', 'products.sale_price', 'medias.media_link', 'products.product_permalink', 'products.post_status', 'ideaing_review_score', 'review'
+                         ));
+        }
+
 
         //  dd($result);
         return $result;
@@ -280,11 +299,11 @@ class Product extends Model
     }
 
     // return all the product list as per $settings provided from the controller
-    public function getProductList($settings)
+    public function getProductList($settings, $isAdmin = false)
     {
         $productModel = $this;
 
-       // $filterText = $settings['FilterText'];
+        // $filterText = $settings['FilterText'];
 
         if (@$settings['CategoryId'] != null) {
             if (@$settings['GetChildCategories']) {
@@ -340,14 +359,12 @@ class Product extends Model
             $productModel = $productModel->where("product_name", "like", "%$filterText%");
         }
 */
-        if(!empty($settings['FilterProduct']))
-        {
-            $productModel = $productModel->where("product_name", "like", "%".$settings['FilterProduct']."%");
+        if (!empty($settings['FilterProduct'])) {
+            $productModel = $productModel->where("product_name", "like", "%" . $settings['FilterProduct'] . "%");
         }
 
-        if(!empty($settings['FilterPublisher']))
-        {
-            $productModel = $productModel->where("user_name", "like", "%".$settings['FilterPublisher']."%");
+        if (!empty($settings['FilterPublisher'])) {
+            $productModel = $productModel->where("user_name", "like", "%" . $settings['FilterPublisher'] . "%");
         }
 
         if (@$settings['WithTags'] == true && $settings['CategoryId'] != null) {
@@ -386,10 +403,10 @@ class Product extends Model
 
         for ($i = 0; $i < $count; $i++) {
             $id = $product['allIDs'][$i]['id'];
-            $tmp = $this->getSingleProductInfoForView($id);
+            $tmp = $this->getSingleProductInfoForView($id, $isAdmin);
 
             // If the publish date is not valid
-            if(empty($tmp))
+            if (empty($tmp))
                 continue;
 
             // making the thumbnail url by injecting "thumb-" in the url which has been uploaded during media submission.

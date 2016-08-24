@@ -1115,7 +1115,7 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
                 method: "GET",
 
             }).success(function (data) {
-             //   $scope.tempCategoryList = data.data;
+                $scope.tempCategoryList = data.data;
               //  $scope.outputStatus(data, "Read Category added successfully");
             });
 

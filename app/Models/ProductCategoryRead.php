@@ -14,7 +14,7 @@ class ProductCategoryRead extends Model
      */
     protected $table = 'product_category_read';
 
-    protected $fillable = ['category_id','page_title','meta_description'];
+    protected $fillable = ['product_category_id','page_title','meta_description'];
 
     protected $hidden = ['created_at','updated_at'];
 
@@ -40,7 +40,7 @@ class ProductCategoryRead extends Model
     {
        // dd($data);
         try{
-            $readItem = ProductCategoryRead::firstOrNew(['category_id' => $data['CategoryId']]);
+            $readItem = ProductCategoryRead::firstOrNew(['product_category_id' => $data['CategoryId']]);
 
         }catch(\Exception $ex)
         {
@@ -59,7 +59,7 @@ class ProductCategoryRead extends Model
 
         $data = [
             'id' => $inputData['id'],
-            'category_id' => $inputData['CategoryId'],
+            'product_category_id' => $inputData['CategoryId'],
             'page_title' => $inputData['PageTitle'],
             'meta_description' => $inputData['MetaDescription']
         ];
