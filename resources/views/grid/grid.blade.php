@@ -20,6 +20,7 @@
 </svg>
         </div>
         Latest Stories</span>
+        <i  ng-show="hasMore" style="font-size: 1.7rem; font-style: normal;"><?php echo '{{unreadCount}}'?> unread</i>
 </h4> 
 <ul class="hidden"> <?php // we are keeping the switch controls here so that we can click them from anywehre (from other controllers) ?>
                                 <li>
@@ -112,8 +113,6 @@
 </div>
 
 </div>
-
-<h5 class="unread-count" ng-show="hasMore"><?php echo '{{unreadCount}}'?> more stories</h5>
 
 
 <a ng-show="hasMore" ng-click="loadMore()" class="btn btn-success bottom-load-more col-xs-12 hidden">Load More</a>
