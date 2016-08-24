@@ -5522,19 +5522,19 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                     method: "GET"
 
                 }).success(function (response) {
-                    var from = $location.search().from;
-                    if (from === 'cms') {
-                        window.location = '/ideas/wp-admin';
+                    // var from = $location.search().from;
+                    // if (from === 'cms') {
+                    //     window.location = '/ideas/wp-admin';
 
-                    }
+                    // }
                 }).error(function (response) {
-                    console.log(response)
-                    if (response.success) {
-                        var from = $location.search().from;
-                        if (from === 'cms') {
-                            window.location = '/ideas/wp-admin';
-                        }
-                    }
+                    // console.log(response)
+                    // if (response.success) {
+                    //     var from = $location.search().from;
+                    //     if (from === 'cms') {
+                    //         window.location = '/ideas/wp-admin';
+                    //     }
+                    // }
                      $scope.outputStatus(data, data.data, goTo);
 
                 });
@@ -5956,9 +5956,9 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
 
         $scope.loadReadContent = function($category){
 
-            $('.category-menu a').removeClass('active');
+            $('.category-menu a, .mid-menu a').removeClass('active');
 
-            $('.category-menu a.category-link__' + $category).addClass('active');
+            $('.category-menu, .mid-menu').find('a.category-link__' + $category).addClass('active');
 
             $scope.currentPage = 1;
 

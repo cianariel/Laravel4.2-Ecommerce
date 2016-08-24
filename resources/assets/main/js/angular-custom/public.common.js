@@ -1384,19 +1384,19 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                     method: "GET"
 
                 }).success(function (response) {
-                    var from = $location.search().from;
-                    if (from === 'cms') {
-                        window.location = '/ideas/wp-admin';
+                    // var from = $location.search().from;
+                    // if (from === 'cms') {
+                    //     window.location = '/ideas/wp-admin';
 
-                    }
+                    // }
                 }).error(function (response) {
-                    console.log(response)
-                    if (response.success) {
-                        var from = $location.search().from;
-                        if (from === 'cms') {
-                            window.location = '/ideas/wp-admin';
-                        }
-                    }
+                    // console.log(response)
+                    // if (response.success) {
+                    //     var from = $location.search().from;
+                    //     if (from === 'cms') {
+                    //         window.location = '/ideas/wp-admin';
+                    //     }
+                    // }
                      $scope.outputStatus(data, data.data, goTo);
 
                 });
