@@ -266,7 +266,10 @@ class ProductCategoryController extends ApiController
     {
         $inputData = \Input::all();
         try {
+            if(empty($inputData['SelectedReadCategoryId']))
             $result = $this->productCategoryRead->saveCategoryReadData($inputData);
+            else
+                $result = $this->productCategoryRead->updateCategoryReadData($inputData);
 
             return $this->setStatusCode(\Config::get("const.api-status.success"))
                         ->makeResponse($result);

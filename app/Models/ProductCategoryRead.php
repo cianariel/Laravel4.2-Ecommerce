@@ -58,7 +58,7 @@ class ProductCategoryRead extends Model
         // dd($data);
 
         $data = [
-            'id' => $inputData['id'],
+            'id' => $inputData['SelectedReadCategoryId'],
             'product_category_id' => $inputData['CategoryId'],
             'page_title' => $inputData['PageTitle'],
             'meta_description' => $inputData['MetaDescription']
@@ -70,7 +70,7 @@ class ProductCategoryRead extends Model
 
     public function deleteCategoryReadData($data)
     {
-        return ProductCategoryRead::where('id',$data['id'])->delete();
+        return ProductCategoryRead::where('id',$data['SelectedReadCategoryId'])->delete();
     }
 
 
