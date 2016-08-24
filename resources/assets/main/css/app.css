@@ -9025,7 +9025,9 @@ header.sub-head {
 
 .mostpop-wrap {
   padding-top: 10px;
-  padding-bottom: 10px; }
+  padding-bottom: 10px;
+  padding-left: 3px;
+  padding-right: 4px; }
 
 .most-popular-new {
   counter-reset: popular-box; }
