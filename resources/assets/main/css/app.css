@@ -5123,22 +5123,22 @@ ol li {
 
 .category-link {
   cursor: hover; }
-  .category-link__smart-home:hover,
+  .category-link__smart-home.active, .category-link__smart-home:hover,
   .category-link__smart-home .m-icon {
     color: #FF0042; }
   .category-link__smart-home span::before {
     background-color: #FF0042; }
-  .category-link__smart-travel:hover,
+  .category-link__smart-travel.active, .category-link__smart-travel:hover,
   .category-link__smart-travel .m-icon {
     color: #FF7F00; }
   .category-link__smart-travel span::before {
     background-color: #FF7F00; }
-  .category-link__smart-body:hover,
+  .category-link__smart-body.active, .category-link__smart-body:hover,
   .category-link__smart-body .m-icon {
     color: #00B1FF; }
   .category-link__smart-body span::before {
     background-color: #00B1FF; }
-  .category-link__smart-entertainment:hover,
+  .category-link__smart-entertainment.active, .category-link__smart-entertainment:hover,
   .category-link__smart-entertainment .m-icon {
     color: #89C981; }
   .category-link__smart-entertainment span::before {

@@ -287,7 +287,9 @@ if (!isset($theGiveAway)) {
                     $topMenuContent = wp_get_recent_posts($args, ARRAY_A);
                 } else {
                     $topMenuContent = PageHelper::getTopMenuItems();
-                    $topMenuContent = $topMenuContent->posts;
+                    if(isset($topMenuContent->posts)){
+                        $topMenuContent = $topMenuContent->posts;
+                    }
                 }
                 ?>
 
