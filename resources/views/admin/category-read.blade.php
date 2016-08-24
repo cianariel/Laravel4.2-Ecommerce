@@ -114,11 +114,11 @@
                                         <div class="row">
                                             <div class="form-group">
                                                 <p>
-                                                    <button class="btn btn-primary" ng-hide="selectedTagId != ''"
+                                                    <button class="btn btn-primary" ng-hide="selectedReadCategoryId != ''"
                                                             ng-click="addReadCategory()" type="submit">Save
                                                     </button>
-                                                    <button class="btn btn-warning" ng-hide="selectedTagId == ''"
-                                                            ng-click="updateTagInfo()" type="submit">Update
+                                                    <button class="btn btn-warning" ng-hide="selectedReadCategoryId == ''"
+                                                            ng-click="addReadCategory()" type="submit">Update
                                                     </button>
                                                 </p>
                                             </div>
@@ -156,19 +156,19 @@
                                                             <td>@{{ item.id }}</td>
                                                             <td>@{{ item.product_category.category_name }}</td>
                                                             <td>
-                                                                {{Request::root()}}/@{{ item.product_category.extra_info }}
+                                                               <a target="_blank" href="{{Request::root()}}/@{{ item.product_category.extra_info }}">{{Request::root()}}/@{{ item.product_category.extra_info }}</a>
                                                             </td>
 
                                                             <td>
 
-                                                                <button data-ng-click="editTagInfo($index)"
+                                                                <button data-ng-click="editReadCategory($index)"
                                                                         uib-tooltip="Edit"
                                                                         class="btn btn-info btn-circle" type="button">
                                                                     <i class="fa fa-edit"></i>
                                                                 </button>
 
-                                                                <button data-ng-click="deleteTagInfo(tag.id)"
-                                                                        confirm="Are you sure to delete this product ?"
+                                                                <button data-ng-click="deleteReadCategory($index)"
+                                                                        confirm="Are you sure to delete this item ?"
                                                                         confirm-settings="{size: 'sm'}"
                                                                         uib-tooltip="Delete"
                                                                         class="btn btn-danger btn-circle" type="button">
