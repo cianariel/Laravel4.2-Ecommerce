@@ -6048,33 +6048,19 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
                 return false;
             }
 
-            currentRoute = $filter('getURISegment')(2);
+            currentRoute = $filter('getURISegment')(1);
 
-            $scope.filterBy = null;
+            if(currentRoute && currentRoute != 'smart-home' && currentRoute != 'smart-body' && currentRoute != 'smart-entertainment' && currentRoute != 'smart-travel'){ // not a category page
+                window.location.href  = '/' + categoryName;
+                return false;
+            }
+
+            console.log('ushko'); 
+            console.log(currentRoute);
 
             $scope.ideaCategory = categoryName;
-
             $scope.loadReadContent(categoryName);
 
-
-           // $scope.firstLoad = pagingApi.getGridContent(1, 0, false, false, $scope.ideaCategory).success(function (response) {
-                 
-           //      $scope.currentPage = 1;
-               
-           //      var newContent = $scope.sliceToRows(response['content']['ideas'], response['content']['featured'], response['content']['products']);;
-
-           //      var replaceMe = [];
-           //      replaceMe[0] = newContent;
-
-           //       $scope.content = replaceMe;
-
-
-           //      $scope.hasMore = response['hasMore'];
-           //      $scope.unreadCount = response['unreadCount'];  
-
-
-           //      $('.bottom-load-more').removeClass('disabled').attr('disabled', false);
-           //  });
 
            if(categoryName == 'default'){
                 window.history.replaceState({category: 'smarthome'}, 'Smart Home', '/');
@@ -7170,10 +7156,10 @@ angular.module('pagingApp.filters', [])
         // we cannot use Angular $location, bacause it conflicts with vanila history.state
         return function(index) {
             var segments = $(location).attr('href').split("/");
-            segments.splice(0, 3); // cut off base
+            cutoff = segments.splice(0, 3); // cut off base
 
-            if(segments[index]){
-                return segments[segment];
+            if(segments[index - 1]){
+                return segments[index - 1];
             }else{
                 return false;
             }
