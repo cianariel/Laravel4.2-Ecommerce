@@ -8915,7 +8915,7 @@ header.sub-head {
 .home-subheader {
   width: 97%;
   height: 54px;
-  margin-top: 0;
+  margin-top: 11px;
   margin-left: 10px;
   margin-bottom: 13px;
   padding-left: 0;
@@ -9585,78 +9585,77 @@ body.single .article-content iframe {
   padding-top: 55px;
   padding-bottom: 55px; }
 
-.comments {
-  .order: 1px solid #eee;
-  border-radius: 15px; }
-  .comments h4 {
-    position: relative;
-    bottom: 35px; }
-  .comments .single-comment {
-    min-height: 100%;
-    overflow: hidden;
-    padding-top: 15px;
-    padding-bottom: 15px; }
-    .comments .single-comment .comment-author {
-      text-align: center;
-      padding-right: 0; }
-    .comments .single-comment b {
-      color: #3D4B4E; }
-    .comments .single-comment .btn-white {
-      background: url("/assets/images/heart-grey-outline.png") 2px center no-repeat;
-      padding-left: 25px; }
-    .comments .single-comment .comment-row-content {
-      margin-left: -8px; }
-  .comments .comment-box.has-comments {
-    background: #fff; }
-  .comments .comment-box h6 {
-    color: #bebbbc;
-    text-transform: uppercase;
-    font-weight: 600; }
-  .comments .comment-box .single-comment {
-    width: 100%; }
-    .comments .comment-box .single-comment .comment-row-content {
-      padding-left: 25px; }
-  .comments .add-comment {
-    margin-top: 35px; }
-    .comments .add-comment textarea,
-    .comments .add-comment .ta-editor,
-    .comments .add-comment .white-box {
-      min-height: 100px;
-      border: 0;
-      border-radius: 15px; }
-    .comments .add-comment textarea {
-      border: 1px solid #eee; }
-  .comments .comment-controls {
-    margin-top: 10px; }
-    .comments .comment-controls .add-photo {
-      color: #d4d4d4;
-      margin-right: 17px;
-      float: left;
-      margin-top: 10px; }
-      .comments .comment-controls .add-photo .m-icon {
-        color: #3D4B4E; }
-    .comments .comment-controls .btn-info {
-      width: 68px;
-      height: 67px;
-      border-radius: 46px;
-      text-align: center;
-      padding: 0; }
-  .comments time {
-    font-size: .9rem; }
-  .comments .signup-to-comment {
-    display: block;
-    color: #FF0042;
-    display: block;
-    padding: 9px;
-    font-weight: bold;
-    border: 1px solid #FF0042;
+.comments h4 {
+  position: relative; }
+.comments .single-comment {
+  min-height: 100%;
+  overflow: hidden;
+  padding-top: 15px;
+  padding-bottom: 15px; }
+  .comments .single-comment .comment-author {
     text-align: center;
-    border-radius: 3px;
-    margin-bottom: 20px;
-    overflow: hidden; }
-    .comments .signup-to-comment:hover {
-      color: #fff;
-      background-color: #FF0042; }
+    padding-right: 0; }
+  .comments .single-comment b {
+    color: #3D4B4E; }
+  .comments .single-comment .btn-white {
+    background: url("/assets/images/heart-grey-outline.png") 2px center no-repeat;
+    padding-left: 25px; }
+  .comments .single-comment .comment-row-content {
+    margin-left: -8px; }
+.comments .comment-box.has-comments {
+  background: #fff; }
+.comments .comment-box h6 {
+  color: #bebbbc;
+  text-transform: uppercase;
+  font-weight: 600; }
+.comments .comment-box .single-comment {
+  width: 100%; }
+  .comments .comment-box .single-comment .comment-row-content {
+    padding-left: 25px; }
+.comments .add-comment {
+  margin-top: 35px; }
+  .comments .add-comment textarea,
+  .comments .add-comment .ta-editor,
+  .comments .add-comment .white-box {
+    min-height: 100px;
+    border: 0;
+    border-radius: 15px; }
+  .comments .add-comment textarea {
+    border: 1px solid #eee; }
+.comments .comment-edit-container {
+  border: 1px solid #eee;
+  border-radius: 15px; }
+.comments .comment-controls {
+  margin-top: 10px; }
+  .comments .comment-controls .add-photo {
+    color: #d4d4d4;
+    margin-right: 17px;
+    float: left;
+    margin-top: 10px; }
+    .comments .comment-controls .add-photo .m-icon {
+      color: #3D4B4E; }
+  .comments .comment-controls .btn-info {
+    width: 68px;
+    height: 67px;
+    border-radius: 46px;
+    text-align: center;
+    padding: 0; }
+.comments time {
+  font-size: .9rem; }
+.comments .signup-to-comment {
+  display: block;
+  color: #FF0042;
+  display: block;
+  padding: 9px;
+  font-weight: bold;
+  border: 1px solid #FF0042;
+  text-align: center;
+  border-radius: 3px;
+  margin-bottom: 20px;
+  overflow: hidden; }
+  .comments .signup-to-comment:hover {
+    color: #fff;
+    background-color: #FF0042; }
 
 .related-items h3 {
   margin-top: 35px;
@@ -12384,7 +12383,7 @@ body.contactus-page .pocket {
   overflow: auto;
   font-family: inherit;
   font-size: 100%;
-  border: 1px solid #e6e6e6;
+  border: 1px solid #e6e6e6 !important;
   color: black; }
 
 body.error-page .pocket, body.error-page #back-to-top, body.error-page #about-button, body.error-page footer.about-footer .close-down {

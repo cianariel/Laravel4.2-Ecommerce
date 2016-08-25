@@ -5674,7 +5674,7 @@ header.sub-head{
 .home-subheader{
   width: 97%;
   height: 54px;
-  margin-top: 0;
+  margin-top: 11px;
   margin-left: 10px;
   margin-bottom: 13px;
   padding-left: 0;
@@ -6780,7 +6780,7 @@ body.single{
 
   h4{
     position: relative;
-    bottom: 35px;
+    //bottom: 35px;
   }
 
   .single-comment{
@@ -10825,7 +10825,7 @@ body.contactus-page{
         overflow: auto;
         font-family: inherit;
         font-size: 100%;
-        border: 1px solid #e6e6e6;
+        border: 1px solid #e6e6e6 !important;
         color: black;
     }
 
