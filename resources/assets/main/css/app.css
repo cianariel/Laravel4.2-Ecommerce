@@ -5801,10 +5801,6 @@ a.like-counter {
     padding-right: 7px;
     padding-bottom: 6px;
     float: left; }
-  a.like-counter b {
-    display: inline-block;
-    position: relative;
-    top: 5px; }
   a.like-counter:hover i {
     -moz-transform: scale(1, 1);
     -webkit-transform: scale(1, 1);
@@ -5972,10 +5968,6 @@ ul.share-buttons {
       padding-right: 7px;
       padding-bottom: 6px;
       float: left; }
-    ul.share-buttons a b {
-      display: inline-block;
-      position: relative;
-      top: 5px; }
     ul.share-buttons a:hover i {
       -moz-transform: scale(1, 1);
       -webkit-transform: scale(1, 1);
@@ -8214,8 +8206,12 @@ body.single-post #top-nav.kitchen {
 body.single-post .article-content ul li {
   list-style: disc; }
 body.single-post .related-ideas, body.single-post .related-products {
+  width: 100%;
   max-width: 1170px;
   margin: auto; }
+  body.single-post .related-ideas .box-item, body.single-post .related-products .box-item {
+    border-radius: 5px !important;
+    overflow: hidden !important; }
 body.single-post .product-bar {
   padding: 8px;
   overflow: hidden;
@@ -13409,20 +13405,20 @@ p {
   overflow: hidden;
   padding-bottom: 8px; }
 
-.main-content .grid-wrap {
+.homepage-grid .main-content .grid-wrap {
   visibility: hidden;
   overflow: hidden;
   padding-bottom: 8px; }
-  .main-content .grid-wrap .box-item:first-child,
-  .main-content .grid-wrap .box-item:last-child {
+  .homepage-grid .main-content .grid-wrap .box-item:first-child,
+  .homepage-grid .main-content .grid-wrap .box-item:last-child {
     top: 100px;
     transition: all, 1s; }
-  .main-content .grid-wrap.fadeIn {
+  .homepage-grid .main-content .grid-wrap.fadeIn {
     -webkit-animation: animat_show 0.8s;
     animation: animat_show 0.8s;
     visibility: visible !important; }
-    .main-content .grid-wrap.fadeIn .box-item:first-child,
-    .main-content .grid-wrap.fadeIn .box-item:last-child {
+    .homepage-grid .main-content .grid-wrap.fadeIn .box-item:first-child,
+    .homepage-grid .main-content .grid-wrap.fadeIn .box-item:last-child {
       top: 0; }
 @-webkit-keyframes animat_show {
   0% {

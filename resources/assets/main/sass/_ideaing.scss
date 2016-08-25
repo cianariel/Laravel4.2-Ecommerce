@@ -4614,8 +4614,14 @@ body.single-post{
         list-style: disc;
     }
     .related-ideas, .related-products{
+        width: 100%;
         max-width: 1170px;
         margin: auto;
+
+      .box-item{
+        border-radius: 5px !important;
+        overflow: hidden !important;
+      }
     }
   .product-bar{
     padding: 8px;

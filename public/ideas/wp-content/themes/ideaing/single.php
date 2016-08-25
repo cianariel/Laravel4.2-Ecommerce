@@ -167,7 +167,7 @@
 
 <?php// else: ?>
 <?php endif; ?>
- 
+
 <section class="related-items pale-grey-bg">
     <div class="main-content full-620 fixed-sm container">
         <h4 class="col-xs-12 home-subheader"><span>You Have to Read These</span></h4>
@@ -262,7 +262,6 @@
                 endwhile;
             }
             ?>
-            <div ng-init="readSingleNotification(<?php echo $userId ?>,'{{ $urlTmp }}')"></div>
         </div>
         <?php
         $limit = 10;
