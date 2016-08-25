@@ -212,6 +212,10 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
 
             if(currentRoute && currentRoute != 'smart-home' && currentRoute != 'smart-body' && currentRoute != 'smart-entertainment' && currentRoute != 'smart-travel'){ // not a category page
 
+                if(categoryName == 'default'){
+                    categoryName = '';
+                }
+
                 window.location.href  = '/' + categoryName;
                 return false;
             }
