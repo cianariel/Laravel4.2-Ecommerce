@@ -2,47 +2,6 @@
 <div ng-app="publicApp" ng-controller="publicController" ng-cloak>
 <?php if (have_posts()): while (have_posts()) : the_post(); ?>
     <div>
-   <!-- <header class="story-header hidden-620 hidden-soft">
-        <div class="col-xs-1 col-sm-1">
-            <a href="#" class="side-logo lamp-logo">
-                <i class="m-icon m-icon--bulb2 scroll-logo">
-                    <span class="path1"></span><span class="path2"></span><span class="path3"></span><span
-                        class="path4"></span><span class="path5"></span><span class="path6"></span><span
-                        class="path7"></span><span class="path8"></span><span class="path9"></span><span
-                        class="path10"></span>
-                </i>
-            </a>
-        </div>
-        <div class="col-xs-8 col-sm-3">
-            <h2>
-                    <span class="title-holder"> 
-                        <span class="title">{{the_title()}}</span>
-                    <ul class="social-stats center-block ">
-                        <li class="social-stats__item">
-                            <a href="#" class="likes"
-                               ng-init="heartCounterAction()"
-                               ng-click="heartAction()"
-                            >
-                                <i class="category-color" ng-class="unHeart != false ? 'm-icon m-icon--heart-solid' : 'm-icon m-icon--ScrollingHeaderHeart'">
-                                        <span class="m-hover">
-                                            <span class="path1"></span><span class="path2"></span>
-                                        </span>
-                                </i>
-                                <span class="social-stats__text category-color" ng-bind="heartCounter">&nbsp; </span>
-                            </a>
-                        </li>
-                    </ul>
-                    </span>
-            </h2>
-        </div>
-        <div class="col-sm-8 hidden-xs">
-            <ul class="share-buttons pull-right">
-                <?php loadLaravelView('share-buttons'); ?>
-            </ul>
-        </div>
-
-    </header> -->
-
     <?php
     $tags = wp_get_post_tags($post->ID);
     $categories = get_the_category($post->ID);
@@ -156,8 +115,8 @@
         @if(!@@$userData['login'])
         <section class="email-banner">
                 <div class="col-lg-5 col-md-7 col-sm-8 center-block">
-                                <h4 class="blue">Subscribe to the world’s finest Smart Home & interior design Ideas, Tips and Freebies</h4>
-                            <p>Join and get exclusive coupons and giveaways on Smart Home devices</p>
+                                <h4 class="blue">Subscribe to the most unique community centered on Smarter Living. Get tips, stories, and freebies</h4>
+                            <p>Join and also get exclusive coupons and giveaways on Smart gadgets. Opt-out anytime</p>
                             <div>
     <!--                            <h5>Enter your email</h5>-->
                                 <strong class="red" ng-bind="responseMessage"></strong>
@@ -191,10 +150,10 @@
         </div>
     </section>
 
+
     <?php
     //loadLaravelView('comments-product');
     loadLaravelView('comments-ideas');
-
     ?>
 
 
@@ -211,9 +170,8 @@
 
 <section class="related-items pale-grey-bg">
     <div class="main-content full-620 fixed-sm">
-        <fieldset class="shoplanding-title">
-            <legend align="center"><h3 class="pale-grey-bg">You Have to Read These</h3></legend>
-        </fieldset>
+        <h4 class="col-xs-12 home-subheader"><span>You Have to Read These</span></h4>
+
         <div class="related-ideas grid-box-2 grid-wrap">
 
             <?php
@@ -323,9 +281,8 @@
         ?>
 
         @if(isset($relatedProducts) && ($relatedProducts != null) && count($relatedProducts)>0 )
-        <fieldset class="shoplanding-title">
-            <legend align="center"><h3 class="pale-grey-bg">Awesome Products</h3></legend>
-        </fieldset>
+        <h4 class="col-xs-12 home-subheader"><span>Awesome Products</span></h4>
+
         <div class="related-products grid-box-3">
             @foreach( $relatedProducts as $product )
             <div class="box-item product-box ">

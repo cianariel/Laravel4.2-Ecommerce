@@ -1075,7 +1075,8 @@ a{ // Custom Link Styles
 
 
   &.like-counter{
-            @include round-box($iridium, "");
+      @include round-box(); 
+      @include color-round-box($iridium, "");
 
 /*        display:  inline-block;
         width: 85px;
@@ -1308,29 +1309,31 @@ li.nested-parent{
 ul.share-buttons{
   height: 45px;
   a{
+  @include round-box;
+
     &.fb {
-      @include round-box($facebook-blue-2, "/assets/images/fb-white-small.png");
+      @include color-round-box($facebook-blue-2, "/assets/images/fb-white-small.png");
     }
     &.twi {
-      @include round-box($facebook-blue, "/assets/images/twi-white-small.png");
+      @include color-round-box($facebook-blue, "/assets/images/twi-white-small.png");
 
     }
     &.gp {
-      @include round-box($iridium, "/assets/images/gp-white-small.png");
+      @include color-round-box($iridium, "/assets/images/gp-white-small.png");
 
     }
     &.email {
-      @include round-box(#c1c1c1, "/assets/images/email-white-small.png");
+      @include color-round-box(#c1c1c1, "/assets/images/email-white-small.png");
       border-width: 0;
       background-position: 5px 8px;
     }
     &.pint {
-      @include round-box($pinterest-red, "/assets/images/pint-white-small.png");
+      @include color-round-box($pinterest-red, "/assets/images/pint-white-small.png");
 
     }
     
     &.heart {
-      @include round-box($iridium, "");
+      @include color-round-box($iridium, "");
 
       background-size: 19px;
     }
@@ -1341,7 +1344,7 @@ ul.share-buttons{
     }
     
     &.comment {
-      @include round-box($ideaing-blue, "/assets/images/icons/chat-white-outline.png");
+      @include color-round-box($ideaing-blue, "/assets/images/icons/chat-white-outline.png");
       background-size: 19px;
     }
   }
@@ -6395,6 +6398,8 @@ body.single{
         left: -80px;
         top: 0;
         padding: 12px;
+        border-top-left-radius: 5px;
+        border-bottom-right-radius: 5px;
 
         -webkit-transition: all .5s ease;
         -moz-transition: all .5s ease;
@@ -6666,11 +6671,9 @@ body.single{
   .story-details{
     width: 30%;
     position: absolute;
-    top: 0;
-    bottom: 0;
+    bottom: 3px;
     background: #fff;
     z-index: 10;
-    padding-top: 34%;
     padding-right: 0;
 
     @media(max-width: 620px){
@@ -6743,7 +6746,7 @@ body.single{
     background: $pale-grey;
     padding-top: 20px;
     padding-bottom: 20px;
-    margin: 40px 0;
+    margin: 40px 0 0;
     border: 1px solid darken($pale-grey, 10%);
 
     h4{
@@ -6759,13 +6762,18 @@ body.single{
 
 }
 
+.comments-wrap{
+  background: #f7f7f7;
+  padding-top: 55px;
+  padding-bottom: 55px;
+
+}
+
 .comments{
 
   h4{
-    //margin-bottom: 20px;
-    text-align: center;
-    font-size: 2.5rem;
-    font-weight: bold;
+    position: relative;
+    bottom: 35px;
   }
 
   .single-comment{
@@ -6792,7 +6800,10 @@ body.single{
   }
 
   .comment-box{
-    background: #f7f7f7;
+
+    &.has-comments{
+      background: #fff;
+    }
 
     h6{
       color: #bebbbc;
@@ -6813,13 +6824,15 @@ body.single{
   .add-comment{
     margin-top: 35px;
 
-
     textarea,
     .ta-editor,
     .white-box{
       min-height: 100px;
       border: 0;
       border-radius: 15px;
+    }
+    textarea{
+      border: 1px solid #eee;
     }
   }
 
@@ -6859,6 +6872,8 @@ body.single{
       text-align: center;
       border-radius: 3px;
       margin-bottom:20px;
+      overflow: hidden;
+
       &:hover{
           color: #fff;
           background-color: $iridium;
@@ -6868,7 +6883,7 @@ body.single{
 }
 
 .related-items{
-  margin-top: 100px;
+  //margin-top: 100px;
 
   h3{
     margin-top: 35px;
@@ -10973,7 +10988,7 @@ body.error-page{
 }
 
 #comments{
-  margin: 5px;
+  //margin: 5px;
     .profile-photo{
         width: 44px;
         height: 44px;

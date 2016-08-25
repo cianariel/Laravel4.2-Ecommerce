@@ -28,21 +28,23 @@ if (function_exists('is_single')) {
     var uid = <?php echo isset($userData['id'])?$userData['id']:0;?> ;
     var img = "<?php echo str_replace('ideaing-ideas.s3.amazonaws.com', 'd3f8t323tq9ys5.cloudfront.net', getThumbnailLink($post->ID)); ?>" ;
 </script>
-<div ng-app="publicApp" ng-controller="publicController">
-    <section class="comments" id="comments">
-        <div class="container comment-box radius-5 col-sm-7 center-block">
+<div ng-app="publicApp" ng-controller="publicController" class="comments-wrap">
+
+    <section class="comments container col-sm-7 center-block" id="comments">
+        <h4 ng-if="commentsCountView" class="col-xs-12 home-subheader"><span><?php echo "{{ commentsCountView }}" ?> Comments</span></h4>
+        <h4 ng-if="!commentsCountView" class="col-xs-12 home-subheader"><span> Leave a Comment</span></h4>
+
+        <div class="comment-box radius-5 <?php echo !empty($userData['email']) ? 'has-comments' : ''; ?>">
             <a name="comment"></a>
             <input type="hidden" ng-init="userId='<?php echo $userData['id']?>'">
             <input type="hidden" ng-init="isAdmin='<?php echo $isAdmin?>'">
             <div ng-init="getCommentsForIdeas(<?php echo $itemId?>)">
-                <h4><?php echo "{{ commentsCountView }}" ?></h4>
                 <div ng-repeat="comment in comments">
                     <div class="single-comment">
                         <div class="col-md-1 col-sm-2 col-xs-3 comment-author">
                             <a href="/user/profile/<?php echo "{{ comment.Permalink }}"?>">
                                 <img class="profile-photo " ng-src="<?php echo "{{ comment.Picture }}"?>" width="50px">
                             </a>
-
 
                             <div><b class="comment-name"><?php echo "{{ comment.UserName }}" ?></b></div>
                         </div>
@@ -81,7 +83,6 @@ if (function_exists('is_single')) {
             <section class="add-comment">
                 <div class="single-comment">
                     <div class="col-md-1 col-sm-2 col-xs-3 comment-author">
-                        <!--  <a class="author" href="#"></a> -->
                         <img class="profile-photo" width="50px"
                              src="<?php echo isset($userData['medias'][0]['media_link']) ? $userData['medias'][0]['media_link'] : "" ?>">
 
@@ -97,7 +98,7 @@ if (function_exists('is_single')) {
                             </div>
                         </div>
                         <div class="col-md-12" ng-hide="show_editor">
-                            <textarea class="form-control radius-15 no-border"
+                            <textarea class="form-control radius-15"
                                       ng-click="show_editor=1" cols="" rows=""
                                       class=" ta-text ta-editor"></textarea>
                         </div>

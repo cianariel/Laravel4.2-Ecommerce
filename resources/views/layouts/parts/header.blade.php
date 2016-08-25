@@ -656,7 +656,7 @@ if (!isset($theGiveAway)) {
             <div class="content-container">
                 <div class="content-holder">
                     <div>
-                        <h4>Subscribe to the world’s finest Smart Home & Interior Design Ideas</h4></div>
+                        <h4>Subscribe to the most unique community centered on Smarter Living. Get tips, stories, and freebies</h4></div>
                     <ul>
                         <li>Enter to win Free Smart Home devices</li>
                         <li>Get exclusive coupons & deals</li>
