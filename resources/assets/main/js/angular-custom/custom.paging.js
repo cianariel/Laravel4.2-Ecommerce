@@ -144,7 +144,7 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
                 newContent[0] = $scope.sliceToRows(response['content']['ideas'], response['content']['featured'], response['content']['products']); 
 
                 $scope.content = newContent;
-                console.log($scope.content)
+                console.log(response)
 
                 $scope.hasMore = response['hasMore'];
                 $scope.unreadCount = response['unreadCount'];  

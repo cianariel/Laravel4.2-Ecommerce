@@ -720,11 +720,12 @@ class PageController extends ApiController
             $return['hasMore'] = false;
         }
 
-        $cached = PageHelper::putIntoRedis($cacheKey, $return, '1 hour');
-
         $return['unreadCount'] = ($products['total'] + $stories['totalCount']) - ($productLimit + $storyLimit) * $page;
+        
+        $cached = PageHelper::putIntoRedis($cacheKey, $return, '1 hour');
         $return['wasCached'] = $cached;
         $return['fromCache'] = false;
+
         return $return;
     }
 
