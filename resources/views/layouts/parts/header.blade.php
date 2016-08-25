@@ -645,31 +645,6 @@ if (!isset($theGiveAway)) {
 
 <!-- fake controller -->
  
-                    <ul ng-app="pagingApp" ng-controller="pagingController" class="hidden"> <?php // we are keeping the switch controls here so that we can click them from anywehre (from other controllers) ?>
-                                <li>
-                                    <a id="show-default" ng-click="switchCategory('default')" href="#">
-                                    </a>
-                                </li>
-
-                                <li>
-                                    <a id="show-smart-home" ng-click="switchCategory('smart-home')" href="#">
-                                    </a>
-                                </li>
-                                <li>
-                                    <a id="show-smart-entertainment" ng-click="switchCategory('smart-entertainment')"  href="/ideas/smart-entertainment">
-                                    </a>
-                                </li>
-                                <li>
-                                    <a id="show-smart-body" ng-click="switchCategory('smart-body')" >
-                                    </a> 
-                                </li>
-                                <li>
-                                    <a id="show-smart-travel" ng-click="switchCategory('smart-travel')" >
-                                    </a>
-                                </li>
-                            </ul>
-
-
 <script type="text/ng-template" id="subscribe_email_popup.html">
     <div id="subscribe_email_popup">
         <div id="publicApp">

@@ -84,6 +84,29 @@
     </a>
 </div>
 
+ <ul ng-app="pagingApp" ng-controller="pagingController" class="hidden"> <?php // we are keeping the switch controls here so that we can click them from anywehre (from other controllers) ?>
+                                <li>
+                                    <a id="show-default" ng-click="switchCategory('default')" href="#">
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a id="show-smart-home" ng-click="switchCategory('smart-home')" href="#">
+                                    </a>
+                                </li>
+                                <li>
+                                    <a id="show-smart-entertainment" ng-click="switchCategory('smart-entertainment')"  href="/ideas/smart-entertainment">
+                                    </a>
+                                </li>
+                                <li>
+                                    <a id="show-smart-body" ng-click="switchCategory('smart-body')" >
+                                    </a> 
+                                </li>
+                                <li>
+                                    <a id="show-smart-travel" ng-click="switchCategory('smart-travel')" >
+                                    </a>
+                                </li>
+                            </ul>
 
 <script>
     var rootApp = angular.module('rootApp', ['pagingApp', 'publicApp','productApp']);

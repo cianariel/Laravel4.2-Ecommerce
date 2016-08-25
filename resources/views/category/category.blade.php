@@ -11,7 +11,7 @@
     ?>
 
     <div class="app-wrap category-@{{ideaCategory}}" id="pagingApp" ng-app="pagingApp" ng-controller="pagingController" ng-cloak>
-        <section id="hero" class="landing-hero col-lg-12" ng-init="loadReadContent('{{$thisCategory}}')">
+        <section id="hero" class="landing-hero col-lg-12" ng-init="initGrid('{{$thisCategory}}')">
             @include('layouts.parts.home-hero-slider')
         </section>
 

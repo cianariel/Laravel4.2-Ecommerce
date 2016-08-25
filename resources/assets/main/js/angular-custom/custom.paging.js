@@ -98,17 +98,23 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
     }])
 
     .controller('pagingController', function($scope, $timeout, $uibModal, $http, pagingApi, $filter) {
-        $scope.allContent = [];
-        $scope.content = [];
-        $scope.newStuff = [];
-        $scope.currentPage = 1;
-        $scope.currentDay = 'Today';
-        $scope.contentBlock = angular.element( document.querySelector('.main-content') );
-        $scope.filterLoad = [];
-        $scope.readContent = [];
-        $scope.ideaCategory = false;
-        $scope.hasMore = false;
-        //$scope.globalOffset = 0;
+
+        $scope.initGrid = function($category){
+            $scope.allContent = [];
+            $scope.content = [];
+            $scope.newStuff = [];
+            $scope.currentPage = 1;
+            $scope.currentDay = 'Today';
+            $scope.contentBlock = angular.element( document.querySelector('.main-content') );
+            $scope.filterLoad = [];
+            $scope.readContent = [];
+            $scope.ideaCategory = false;
+            $scope.hasMore = false;
+            //$scope.globalOffset = 0;
+
+            $scope.loadReadContent($category);
+        }
+      
 
         $scope.renderHTML = function(html_code)
         {
@@ -128,17 +134,18 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
 
             $scope.nextLoad = pagingApi.getReadContent($category).success(function (response) {
                 $scope.readContent = response;
-                console.log($scope.readContent)
             });
 
             $scope.firstLoad = pagingApi.getGridContent(1, 0, false, false,  $scope.ideaCategory).success(function (response) {
+                console.log(333333)
                 $scope.allContent[0] = response;
-                console.log(response);
 
                 var newContent = [];
                 newContent[0] = $scope.sliceToRows(response['content']['ideas'], response['content']['featured'], response['content']['products']); 
 
                 $scope.content = newContent;
+                console.log($scope.content)
+
                 $scope.hasMore = response['hasMore'];
                 $scope.unreadCount = response['unreadCount'];  
             });
@@ -147,8 +154,6 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
 
         $scope.loadMore = function() {
  
-            console.log('herehere')
-
             if($('.bottom-load-more').hasClass('disabled')){
                 return false;
             }
@@ -158,9 +163,7 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
 
             var $limit = 0;
             $scope.filterBy = null;
-
             var $daysBack = false;  
-            console.log('54')
 
             $scope.nextLoad =  pagingApi.getGridContent($scope.currentPage, $limit, $scope.currentTag, $scope.filterBy, $scope.ideaCategory).success(function (response) {
 
@@ -171,8 +174,6 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
                 //     newContent['currentDay'] = $daysBack + ' Days Ago';
                 // }
                 $scope.newStuff[0] = newContent;
-
-                console.log(newContent)
 
                 $scope.content = $scope.content.concat($scope.newStuff);
 
@@ -192,10 +193,7 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
             $return['row-4'] = $featured[1] ? [$featured[1]] : false;
             $return['row-5'] = $ideas.slice(2, 4);
             $return['row-6'] = $products.slice(3, 6);
-            console.log('kuku')
-            console.log($products)
-            console.log('bubu')
-            console.log($return['row-6'])
+           
             return $return;
         };
 
@@ -213,15 +211,20 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
             currentRoute = $filter('getURISegment')(1);
 
             if(currentRoute && currentRoute != 'smart-home' && currentRoute != 'smart-body' && currentRoute != 'smart-entertainment' && currentRoute != 'smart-travel'){ // not a category page
+
                 window.location.href  = '/' + categoryName;
                 return false;
             }
 
-            console.log('ushko'); 
-            console.log(currentRoute);
+
 
             $scope.ideaCategory = categoryName;
             $scope.loadReadContent(categoryName);
+            $scope.filterBy = false;
+
+
+            console.log('ushko'); 
+            console.log($scope.ideaCategory); 
 
 
            if(categoryName == 'default'){
