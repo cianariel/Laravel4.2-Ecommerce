@@ -70,9 +70,9 @@
                     <div class="social-stats">
                         <div class="social-stats__item">
                                 <a href="#" class="likes" ng-click="heartAction()" >
-                                <i class="category-color" ng-class="unHeart != false ? 'm-icon m-icon--heart-solid' : 'm-icon m-icon--ScrollingHeaderHeart'">
+                                <i class="category-color heartbeat m-icon m-icon--ScrollingHeaderHeart" ng-class="unHeart != false ? 'hearted' : ''">
                                         <span class="m-hover">
-                                            <span class="path1"></span><span class="path2"></span>
+                                            <span class="path1 heart"></span>
                                         </span>
                                 </i>
                                 <span class="social-stats__text category-color heart-number" ng-bind="heartCounter">&nbsp;  </span>

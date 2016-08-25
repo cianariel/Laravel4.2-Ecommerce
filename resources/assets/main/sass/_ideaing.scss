@@ -203,7 +203,8 @@ ol li{
   .float-thumbs .thumb-box strong{
     background-color: rgba($color, .7);
   }
-  .m-icon--ScrollingHeaderHeart .path1:before{
+  .m-icon--ScrollingHeaderHeart .path1:before,
+  .m-icon--ScrollingHeaderHeart .path2:before{
     color: $color;
   }
 
@@ -1075,7 +1076,7 @@ a{ // Custom Link Styles
 
 
   &.like-counter{
-      @include round-box(); 
+      @include round-box();
       @include color-round-box($iridium, "");
 
 /*        display:  inline-block;
@@ -10978,14 +10979,15 @@ body.error-page{
     }
 }
 
-.m-icon.m-icon--ScrollingHeaderHeart:hover {
-    .m-hover {
-        display: none;
-    }
-    &:before{
-        content: "\e906";
-    }
-}
+//.m-icon.m-icon--ScrollingHeaderHeart:hover {
+//    .m-hover {
+//        display: none;
+//    }
+//    &:before{
+//        content: "\e906";
+//        //@include animation(heartbeat 1300ms ease 0s infinite normal);
+//    }
+//}
 
 #comments{
   //margin: 5px;
