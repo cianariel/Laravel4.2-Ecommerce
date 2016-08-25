@@ -167,9 +167,9 @@
 
 <?php// else: ?>
 <?php endif; ?>
-
+ 
 <section class="related-items pale-grey-bg">
-    <div class="main-content full-620 fixed-sm">
+    <div class="main-content full-620 fixed-sm container">
         <h4 class="col-xs-12 home-subheader"><span>You Have to Read These</span></h4>
 
         <div class="related-ideas grid-box-2 grid-wrap">
