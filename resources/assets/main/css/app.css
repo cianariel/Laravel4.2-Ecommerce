@@ -6157,10 +6157,6 @@ ul.share-buttons {
 .product-details .share-bar:not(.stick) {
   top: 80px; }
 
-.share-bar a.email, .story-header a.email {
-  width: 34px !important;
-  float: left; }
-
 li.all-shares {
   width: 90px;
   height: 50px !important;
