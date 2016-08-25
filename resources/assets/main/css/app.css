@@ -9582,11 +9582,12 @@ body.single .article-content iframe {
 
 .comments-wrap {
   background: #f7f7f7;
-  padding-top: 55px;
+  padding-top: 96px;
   padding-bottom: 55px; }
 
 .comments h4 {
-  position: relative; }
+  position: relative;
+  bottom: 35px; }
 .comments .single-comment {
   min-height: 100%;
   overflow: hidden;
