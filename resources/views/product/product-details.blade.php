@@ -747,7 +747,7 @@
                             @foreach( $relatedIdeas->posts as $item )
                                 <div class="box-item">
                                     <div class="img-holder">
-                            <?php   print_r($item);  die();?>
+                            <?php //  print_r($item);  die();?>
 
                                     @if($item->feed_image)
                                         @if(is_array($item->feed_image))
