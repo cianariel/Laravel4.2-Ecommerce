@@ -8914,7 +8914,7 @@ header.sub-head {
 
 .home-subheader {
   width: 97%;
-  height: 54px;
+  height: 46px;
   margin-top: 11px;
   margin-left: 10px;
   margin-bottom: 13px;
@@ -8930,7 +8930,7 @@ header.sub-head {
     margin-bottom: -1px;
     display: inline-block;
     height: 54px;
-    padding-right: 28px; }
+    padding-right: 46px; }
   .home-subheader .m-icon {
     font-size: 2.7rem; }
     .home-subheader .m-icon.m-icon--flame {
