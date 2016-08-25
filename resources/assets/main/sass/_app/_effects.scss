@@ -508,7 +508,7 @@ body.has-active-menu{
 
   &.hearted,
   &:hover{
-    .heart{
+    .heart:before{
       content: "\e9ee";
     }
   }
