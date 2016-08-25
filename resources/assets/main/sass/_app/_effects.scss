@@ -506,15 +506,14 @@ body.has-active-menu{
     bottom: 35px;
   }
 
-  .heart{
-
-    &:hover,
-    &.hearted{
-      &::before{
-        content: "\e9ee";
-     } 
+  &.hearted,
+  &:hover{
+    .heart{
+      content: "\e9ee";
     }
+  }
 
+  .heart{
     @include animation(heartbeat 1300ms ease 0s infinite normal);
 
     @mixin keyframes($name) {

@@ -408,12 +408,12 @@ body.has-active-menu {
 
 .heartbeat .path2 {
   bottom: 35px; }
+.heartbeat.hearted .heart, .heartbeat:hover .heart {
+  content: "\e9ee"; }
 .heartbeat .heart {
   -webkit-animation: heartbeat 1300ms ease 0s infinite normal;
   -moz-animation: heartbeat 1300ms ease 0s infinite normal;
   animation: heartbeat 1300ms ease 0s infinite normal; }
-  .heartbeat .heart:hover::before, .heartbeat .heart.hearted::before {
-    content: "\e9ee"; }
 @-webkit-keyframes heartbeat {
   0% {
     -webkit-transform: scale(1);
