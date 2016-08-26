@@ -10065,10 +10065,6 @@ body.homepage #hero {
   body.homepage #hero .rsOverflow > .hero-tags .tag {
     margin-top: -40px;
     margin-left: -40px; }
-html.idea-stories.logged-in #hero,
-body.room-landing.logged-in #hero,
-body.homepage.logged-in #hero {
-  min-height: 425px; }
 html.idea-stories #hero-nav,
 body.room-landing #hero-nav,
 body.homepage #hero-nav {
