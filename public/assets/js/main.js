@@ -5083,9 +5083,12 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                 $scope.itemId = pid;
                 $scope.comments = data.data;
                 $scope.commentsCount = $scope.comments.length;
-                $scope.commentsCountView = $scope.commentsCount < 2 ? $scope.commentsCount + " " + "Comment" : $scope.commentsCount + " " + "Comments";
 
-                //  console.log($scope.commentsCount);
+                if($scope.commentsCount == 0){
+                    $scope.commentsCountView = 'Drop a Comment'
+                }else{
+                    $scope.commentsCountView = $scope.commentsCount < 2 ? $scope.commentsCount + " " + "Comment" : $scope.commentsCount + " " + "Comments";
+                }
 
             });
         };
