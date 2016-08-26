@@ -31,8 +31,8 @@ if (function_exists('is_single')) {
 <div ng-app="publicApp" ng-controller="publicController" class="comments-wrap">
 
     <section class="comments container col-sm-7 center-block" id="comments">
-        <h4 ng-if="commentsCountView" class="col-xs-12 home-subheader"><span><?php echo "{{ commentsCountView }}" ?> </span></h4>
-        <h4 ng-if="!commentsCountView" class="col-xs-12 home-subheader"><span> Leave a Comment</span></h4>
+        <h4 ng-if="commentsCountView && commentsCountView != 0" class="col-xs-12 home-subheader"><span><?php echo "{{ commentsCountView }}" ?> </span></h4>
+        <h4 ng-if="commentsCountView == 0 || !commentsCountView" class="col-xs-12 home-subheader"><span> Drop a Comment</span></h4>
 
         <div class="comment-box radius-5 <?php echo !empty($userData['email']) ? 'has-comments' : ''; ?>">
             <a name="comment"></a>
@@ -119,7 +119,7 @@ if (function_exists('is_single')) {
             </section>
 
             <?php  }else{ ?>
-                <section>
+                <section class="col-xs-12">
                     <a class="signup-to-comment" href="#" data-toggle="modal" data-target="#myModal" href="/signup">Sign Up to Comment</a>
                 </section>
             <?php  } ?>

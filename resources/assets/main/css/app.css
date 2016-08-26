@@ -6139,7 +6139,6 @@ ul.share-buttons {
   left: auto;
   top: 700px;
   text-align: center;
-  border: 1px solid #eee;
   padding: 4px; }
   @media (max-width: 620px) {
     .share-bar {
@@ -7918,11 +7917,12 @@ header.colophon {
       background-position: 0; }
   @media (min-width: 760px) {
     #top-nav .top-nav-holder .profile-photo-holder {
-      margin-right: 8px; } }
+      margin-right: 28px; } }
   @media (max-width: 620px) {
     #top-nav .top-nav-holder .profile-photo-holder {
       width: 40px;
-      height: 40px; }
+      height: 40px;
+      margin-right: 8px; }
       #top-nav .top-nav-holder .profile-photo-holder.logged-user {
         top: 16px;
         right: 8px; } }
@@ -8206,7 +8206,9 @@ body.single-post .related-ideas, body.single-post .related-products {
   max-width: 1170px;
   margin: auto; }
   body.single-post .related-ideas .box-item, body.single-post .related-products .box-item {
-    border-radius: 5px !important;
+    width: 47%;
+    margin: 8px;
+    border-radius: 5em !important;
     overflow: hidden !important; }
 body.single-post .product-bar {
   padding: 8px;
@@ -9622,10 +9624,13 @@ body.single .article-content iframe {
     border: 0;
     border-radius: 15px; }
   .comments .add-comment textarea {
+    -webkit-appearance: none;
+    border-radius: 0;
     border: 1px solid #eee; }
 .comments .comment-edit-container {
+  padding: 0;
   border: 1px solid #eee;
-  border-radius: 15px; }
+  -webkit-appearance: none; }
 .comments .comment-controls {
   margin-top: 10px; }
   .comments .comment-controls .add-photo {

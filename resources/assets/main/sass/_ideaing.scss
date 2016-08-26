@@ -1466,7 +1466,7 @@ ul.share-buttons{
   left: auto;
   top: 700px;
   text-align: center;
-  border: 1px solid #eee;
+  //border: 1px solid #eee;
   padding: 4px;
 
   @media(max-width: 620px){
@@ -4190,11 +4190,13 @@ body:not(.single){
         }
       .profile-photo-holder{
         @media (min-width:760px) {
-          margin-right: 8px;
+          margin-right: 28px;
         }
         @media (max-width:620px) {
           width: 40px;
           height: 40px;
+          margin-right: 8px; 
+
 
           &.logged-user{
             top: 16px;
@@ -4619,7 +4621,9 @@ body.single-post{
         margin: auto;
 
       .box-item{
-        border-radius: 5px !important;
+        width: 47%;
+        margin: 8px;
+        border-radius: 5em !important;
         overflow: hidden !important;
       }
     }
@@ -5677,7 +5681,7 @@ header.sub-head{
   margin-top: 11px;
   margin-left: 10px;
   margin-bottom: 13px;
-  padding-left: 0; 
+  padding-left: 0;
   padding-bottom: 0;
   font-size: 2.8rem;
   border-bottom: 2px solid #eee;
@@ -6839,12 +6843,16 @@ body.single{
       border-radius: 15px;
     }
     textarea{
+      -webkit-appearance: none;
+      border-radius: 0;
       border: 1px solid #eee;
     }
   }
   .comment-edit-container{
+    padding: 0;
     border: 1px solid #eee;
-    border-radius: 15px;
+    -webkit-appearance: none;
+    //border-radius: 15px;
   }
 
 
@@ -6914,6 +6922,7 @@ body.single{
     overflow: visible;
     margin-bottom: 35px;
     cursor: pointer;
+
 
     .wrap{
       width: 100%;

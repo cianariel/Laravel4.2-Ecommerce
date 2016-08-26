@@ -63,7 +63,7 @@
         <div class="hero-background hidden-soft shown-620" style="background-image:url( <?php echo str_replace('ideaing-ideas.s3.amazonaws.com', 'd3f8t323tq9ys5.cloudfront.net', $feedImg['url']) ?> ) "></div>
         <div class="color-overlay"></div>
     </section>
-    <nav id="hero-nav" class="col-sm-12">
+    <nav id="hero-nav" class="col-xs-12">
             <div class="container ">
                 <ul class="like-nav center-block" ng-init="heartUsers('ideas')">
                 <li class="heart-item">
@@ -170,7 +170,9 @@
 
 <section class="related-items pale-grey-bg">
     <div class="main-content full-620 fixed-sm container">
-        <h4 class="col-xs-12 home-subheader"><span>You Have to Read These</span></h4>
+        <div class="container col-sm-9 center-block">
+            <h4 class="home-subheader"><span>You Have to Read These</span></h4>
+        </div>
         <div class="related-ideas grid-box-2">
 
             <?php
@@ -279,7 +281,9 @@
         ?>
 
         @if(isset($relatedProducts) && ($relatedProducts != null) && count($relatedProducts)>0 )
-        <h4 class="col-xs-12 home-subheader"><span>Awesome Products</span></h4>
+        <div class="container col-sm-9 center-block">
+            <h4 class="home-subheader"><span>Awesome Products</span></h4>
+        </div>
 
         <div class="related-products grid-box-3">
             @foreach( $relatedProducts as $product )
