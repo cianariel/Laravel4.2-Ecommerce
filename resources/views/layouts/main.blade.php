@@ -63,9 +63,6 @@
     </ul>
 </nav>
 
-<script src="http://tympanus.net/Tutorials/AnimatedMenuIcon/js/segment.min.js"></script>
-<script src="http://tympanus.net/Tutorials/AnimatedMenuIcon/js/ease.min.js"></script>
-
 <script>
     (function() {
         /* In animations (to close icon) */

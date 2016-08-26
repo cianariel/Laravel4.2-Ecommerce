@@ -19,6 +19,10 @@ module.exports = function(grunt) {
                     '../../assets/main/js/vendor/jquery-1.11.3.min.js',
                     '../../assets/main/js/vendor/jquery.easing-1.3.js',
 
+                    '../../assets/main/js/vendor/segment.min.js',
+                    '../../assets/main/js/vendor/ease.min.js',
+
+
                     '../../assets/main/js/vendor/angular.min.js',
                     '../../assets/main/js/vendor/readmore.min.js',
                     '../../assets/main/js/vendor/angular-busy.min.js',
