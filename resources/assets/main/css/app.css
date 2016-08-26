@@ -9032,6 +9032,10 @@ header.sub-head {
 body.single .home-subheader {
   display: inline-block;
   margin-left: 0; }
+  @media (max-width: 620px) {
+    body.single .home-subheader {
+      padding-left: 5px;
+      padding-right: 5px; } }
 
 .home-subheader {
   width: 97%;
@@ -9732,8 +9736,7 @@ body.single .article-content iframe {
   font-weight: 600; }
 .comments .comment-box .single-comment {
   width: 100%;
-  overflow: visible;
-  min-height: 265px; }
+  overflow: visible; }
   .comments .comment-box .single-comment .comment-row-content {
     padding-left: 25px; }
 .comments .add-comment {

@@ -5707,6 +5707,11 @@ body.single{
   .home-subheader{
     display: inline-block;
     margin-left: 0;
+
+    @media(max-width: 620px){
+      padding-left: 5px;
+      padding-right: 5px;
+    }
   }
 }
 
@@ -6861,7 +6866,7 @@ body.single{
     .single-comment{
       width: 100%;
       overflow: visible;
-      min-height: 265px;
+      //min-height: 265px;
 
       .comment-row-content{
         padding-left: 25px;
