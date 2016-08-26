@@ -7319,7 +7319,8 @@ body.category .rsThumbs {
     border-radius: 14px;
     background: #FF0042;
     padding: 2px 10px;
-    color: #fff; }
+    color: #fff;
+    z-index: 9; }
   .most-popular-new .box-item img {
     border-radius: 5px; }
 .most-popular-new .popular-wrap {
