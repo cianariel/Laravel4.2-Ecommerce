@@ -497,6 +497,89 @@ body.has-active-menu {
     -webkit-transform: scale(1);
     -moz-transform: scale(1);
     transform: scale(1); } }
+/* Minoru */
+.flashing .input__minoru {
+  max-width: 350px; }
+.flashing .input__field--minoru {
+  width: 100%;
+  background: #fff;
+  box-shadow: 0px 0px 0px 2px transparent;
+  color: #eca29b;
+  -webkit-transition: box-shadow 0.3s;
+  transition: box-shadow 0.3s;
+  max-width: 100%; }
+.flashing .input__label--minoru {
+  padding: 0;
+  width: 100%;
+  text-align: left; }
+.flashing .input__label--minoru::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  width: 100%;
+  height: 100px;
+  box-shadow: 0 0;
+  color: rgba(255, 0, 66, 0.6); }
+.flashing .input__field--minoru:focus {
+  box-shadow: 0px 0px 0px 2px #FF0042; }
+.flashing .input__field--minoru:focus + .input__label--minoru {
+  pointer-events: none; }
+.flashing .input__field--minoru:focus + .input__label--minoru::after {
+  -webkit-animation: anim-shadow 0.3s forwards;
+  animation: anim-shadow 0.3s forwards; }
+@-webkit-keyframes anim-shadow {
+  to {
+    box-shadow: 0px 0px 100px 50px;
+    opacity: 0; } }
+@keyframes anim-shadow {
+  to {
+    box-shadow: 0px 0px 100px 50px;
+    opacity: 0; } }
+.flashing .input__label-content--minoru {
+  padding: 0.75em 0.15em; }
+.flashing .input {
+  position: relative;
+  z-index: 1;
+  display: inline-block;
+  margin: 1em;
+  width: calc(100% - 2em);
+  vertical-align: top; }
+.flashing .input__field {
+  position: relative;
+  display: block;
+  float: right;
+  padding: 0.8em;
+  width: 100%;
+  border: none;
+  border-radius: 0;
+  font-weight: bold;
+  -webkit-appearance: none;
+  /* for box shadows to show on iOS */ }
+.flashing .input__field:focus {
+  outline: none; }
+.flashing .input__label {
+  display: inline-block;
+  float: left;
+  padding: 0 1em;
+  width: 40%;
+  font-weight: bold;
+  font-size: 70.25%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none; }
+.flashing .input__label-content {
+  position: relative;
+  display: block;
+  padding: 1.6em 0;
+  width: 100%; }
+
 /*!
  * Bootstrap v3.3.5 (http://getbootstrap.com)
  * Copyright 2011-2015 Twitter, Inc.
@@ -9619,7 +9702,9 @@ body.single .article-content iframe {
   text-transform: uppercase;
   font-weight: 600; }
 .comments .comment-box .single-comment {
-  width: 100%; }
+  width: 100%;
+  overflow: visible;
+  min-height: 265px; }
   .comments .comment-box .single-comment .comment-row-content {
     padding-left: 25px; }
 .comments .add-comment {
@@ -9636,7 +9721,6 @@ body.single .article-content iframe {
     border: 1px solid #eee; }
 .comments .comment-edit-container {
   padding: 0;
-  border: 1px solid #eee;
   -webkit-appearance: none; }
 .comments .comment-controls {
   margin-top: 10px; }

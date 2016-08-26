@@ -6837,8 +6837,10 @@ body.single{
       font-weight: 600;
     }
 
-    .single-comment{
+    .single-comment{ 
       width: 100%;
+      overflow: visible;
+      min-height: 265px;
 
       .comment-row-content{
         padding-left: 25px;
@@ -6865,7 +6867,7 @@ body.single{
   }
   .comment-edit-container{
     padding: 0;
-    border: 1px solid #eee;
+    //border: 1px solid #eee;
     -webkit-appearance: none;
     //border-radius: 15px;
   }

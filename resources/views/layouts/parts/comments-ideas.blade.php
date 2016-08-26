@@ -87,20 +87,34 @@ if (function_exists('is_single')) {
                              src="<?php echo isset($userData['medias'][0]['media_link']) ? $userData['medias'][0]['media_link'] : "" ?>">
 
                     </div>
-                    <div class="col-md-11 col-sm-10 col-xs-9">
+                    <div class="col-md-11 col-sm-10 col-xs-9 flashing">
+                      <!--  <span class="input input--minoru"  ng-hide="show_editor">
+                            <textarea ng-click="show_editor=1" class="form-control input__field input__field--minoru"></textarea>
+                            <label class="input__label input__label--minoru" for="input-14"></label>
+                        </span> -->
 
-                        <div ng-class="['col-md-12', 'comment-edit-container', {'has-content': html}]"
-                             ng-show="show_editor">
-                            <div text-angular data-ng-model="html" ta-disabled='disabled'
+                        <span class="input input--minoru" ng-class="['col-md-12', 'comment-edit-container', {'has-content': html}]">
+                            <textarea class="input__field input__field--minoru" text-angular data-ng-model="html" ta-disabled='disabled'
                                  name="description-editor" ta-toolbar="[]"
                                  ta-text-editor-class="border-around ta-editor"
                                  ta-html-editor-class="border-around ta-editor">
-                            </div>
-                        </div>
-                        <div class="col-md-12" ng-hide="show_editor">
-                            <textarea class="form-control radius-15"
-                                      ng-click="show_editor=1" cols="" rows=""
-                                      class=" ta-text ta-editor"></textarea>
+                            </textarea>
+                                <label class="input__label input__label--minoru" for="input-14"></label>
+
+                        </span>
+                       <!-- <div class="col-md-12" ng-hide="show_editor">
+
+
+                            <span class="input input--minoru">
+                              <textarea class="form-control input__field input__field--minoru"
+                                        ng-click="show_editor=1" cols="" rows=""
+                                        class=" ta-text ta-editor"></textarea>
+                            <label class="input__label input__label--minoru" for="input-14"></label>
+                                </span> -->
+
+                    </label>
+				</span>
+
                         </div>
 
                         <div class="col-md-12 comment-controls text-right">
