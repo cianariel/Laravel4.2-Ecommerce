@@ -243,18 +243,20 @@
                                         <!-- Title -->
                                         <tr class="main-text">
                                             <td style="font-family: Helvetica, arial, sans-serif; font-size: 14pt; color: #333333; text-align:left; line-height: 1.5;">
-                                                <p align="left">Hi! <br>Thank you for subscribing to our awesome newsletter. You just made the best decision.
+                                                <p align="left">Hi! <br>Thank you for subscribing to our awesome newsletter. You just made the best decision!
                                                     I’m going to send you weekly tips, hand-picked smart gadgets and exclusive deals to help you live smarter.</p>
                                                 <br/>
                                                 {{--
                                                 <p align="left">You’re just one step away from being part of the Ideaing Family.
-                                                Please follow the link to <a href="{{ url('/').'/signup/'.$email}}" style="color:rgb(250,0,51)">sign-up</a>
+                                                Please follow the link to <a href="{{ {{ env('FULL_DOMAIN')}}.'/signup/'.$email}}" style="color:rgb(250,0,51)">sign-up</a>
                                                 to become a registered user of Ideaing to unlock all features including exclusive giveaways, freebies, and so much more.</p>
                                                 --}}
 
-                                                <p align="left">We’re really passionate about smarter living: smart home, smart body, smart entertainment and smart travel.
-                                                    You’re just one step-away from being part of our Ideaing Family. Please follow the link to sign-up to become a registered
-                                                    user of Ideaing to unlock all the website features including exclusive giveaways on free smart gadgets, rare coupons and so much more.</p>
+                                                <p align="left">We’re really passionate about smarter living: smart home, smart entertainment, smart body, and smart travel.
+                                                    You’re also just one step-away from being part of our Ideaing Family. Please follow the link below to
+                                                    <a href="{{ env('FULL_DOMAIN').'/signup/'.$email}}" style="color:rgb(250,0,51)">sign-up</a> and become
+                                                    a registered user of Ideaing to unlock exclusive features like giveaways of free smart gadgets, rare coupons, and so much
+                                                    more.</p>
 
                                                 <br/>
                                                 <p>Looking forward to hearing from you!</p>
@@ -372,7 +374,7 @@
                                                     <tr>
                                                         <td class="devicewidth" height="93" align="center" width="">
                                                             <div class="imgpop" style="background-color:rgb(250,0,51);min-height:50px;min-width:225px;text-align: center; line-height:50px;">
-                                                                <a style=" color:white;font-weight: bold; font-family: Helvetica, arial, sans-serif;" href="{{ url('/').'/signup/'.$email}}">Signup Now!</a>
+                                                                <a style=" color:white;font-weight: bold; font-family: Helvetica, arial, sans-serif;" href="{{ env('FULL_DOMAIN').'/signup/'.$email}}">Signup Now!</a>
                                                             </div>
                                                         </td>
                                                     </tr>
