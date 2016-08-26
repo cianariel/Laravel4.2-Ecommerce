@@ -8300,6 +8300,9 @@ body.single-post .related-ideas, body.single-post .related-products {
     margin: 8px;
     border-radius: 5px !important;
     overflow: hidden !important; }
+    @media (max-width: 620px) {
+      body.single-post .related-ideas .box-item, body.single-post .related-products .box-item {
+        width: 95%; } }
 body.single-post .product-bar {
   padding: 8px;
   overflow: hidden;
@@ -10641,7 +10644,15 @@ footer.about-footer {
         margin-top: -3px; }
 
   .idea-stories header.story-details {
-    padding-bottom: 0; }
+    padding-top: 20px !important;
+    padding-bottom: 7px; }
+    .idea-stories header.story-details .hero-sharing {
+      padding-top: 20px; }
+      .idea-stories header.story-details .hero-sharing a {
+        width: 45px; }
+
+  .heart-item .social-stats__item {
+    width: 50px !important; }
 
   .post.type-post .share-bar .all-shares {
     float: none;

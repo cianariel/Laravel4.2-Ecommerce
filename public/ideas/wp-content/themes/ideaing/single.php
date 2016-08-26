@@ -51,6 +51,7 @@
                 </div>
                 <div class="hero-sharing horizontal-sharing hidden-soft shown-620 col-xs-12 overhid">
                     <ul class="share-buttons">
+                     <!--   <h5>Sharing is caring</h5> -->
                         <?php loadLaravelView('share-buttons'); ?>
                     </ul>
                 </div>

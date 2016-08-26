@@ -6991,6 +6991,12 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
                 params: {'url': thisUrl}
             }).success(function (response) {
                 $('.share-count.all').html(response.all);
+
+                if(response.all > 0){
+                    $('.share-count.all.passive').hide();
+                    $('.share-count.all.active').show();
+                }
+
                 $('.share-count.twi').html(response.twitter);
                 $('.share-count.fb').html(response.facebook);
                 $('.share-count.gp').html(response.gplus);

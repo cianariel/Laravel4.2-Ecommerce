@@ -4640,6 +4640,10 @@ body.single-post{
         margin: 8px;
         border-radius: 5px !important;
         overflow: hidden !important;
+
+        @media(max-width: 620px){
+          width: 95%;
+        }
       }
     }
   .product-bar{
@@ -8183,7 +8187,23 @@ footer.about-footer{
   }
 
   .idea-stories  header.story-details{
-    padding-bottom: 0;
+    padding-top: 20px !important;
+    padding-bottom: 7px;
+
+    .hero-sharing{
+      padding-top: 20px;
+
+      a{
+        width: 45px;
+      }
+
+    }
+
+  }
+  .heart-item{
+    .social-stats__item{
+      width: 50px !important;
+    }
   }
 
   .post.type-post {

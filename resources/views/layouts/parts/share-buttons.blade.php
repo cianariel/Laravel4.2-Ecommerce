@@ -1,4 +1,8 @@
-        <li class="all-shares"><b class="share-count all"></b><br/><span class="hidden-620">all</span> shares</li>
+        <li class="all-shares">
+            <span class="passive">Sharing is caring</span>
+            <span class="active hidden-soft"><b class="share-count all"></b><br/><span class="hidden-620">all</span> shares</span>
+        </li>
+
         <li><a data-service="facebook" class="fb" href="#" ng-click="openSharingModal('facebook')"><i class="m-icon m-icon--facebook-id"></i> </a></li>
         <li><a data-service="twitter"  class="twi" href="#" ng-click="openSharingModal('twitter')"><i class="m-icon  m-icon--twitter-id"></i> </a></li>
         <li><a data-service="googleplus"  class="gp" href="#"  ng-click="openSharingModal('googleplus')"><i class="m-icon m-icon--google-plus-id"></i> </a></li>

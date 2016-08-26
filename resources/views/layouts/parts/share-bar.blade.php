@@ -1,6 +1,5 @@
 
 <aside class="share-bar sticks-on-scroll" ng-app="publicApp" ng-controller="publicController" >
-    <h5>Sharing is caring</h5>
     <ul class="share-buttons">
         <?php
         if(!function_exists('is_single')){ ?>
