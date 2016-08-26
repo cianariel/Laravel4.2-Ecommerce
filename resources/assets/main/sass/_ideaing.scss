@@ -3015,7 +3015,16 @@ article.product{
       .box-item{
         &::before{
           background: $iridium !important;
+
         }
+        //.box-item__overlay.category-bg{
+        //  opacity: .4 !important;
+        //}
+        //&:hover{
+        //  .box-item__overlay.category-bg {
+        //    opacity: 0 !important;
+        //  }
+        //}
     }
   }
   .category-smart-body{
@@ -3083,6 +3092,15 @@ body.category{
     margin: 3px;
     border-radius: 5px;
     overflow: visible;
+
+    .box-item__overlay.category-bg{
+      opacity: .4 !important;
+    }
+    &:hover {
+      .box-item__overlay.category-bg {
+        opacity: 0 !important;
+      }
+    }
 
     &::before{
       content:'1';
@@ -5754,6 +5772,10 @@ body.single{
 
 .mostpop-wrap{
   padding: 10px 6px 10px 0px;
+
+  .homepage-grid{
+    margin-top:0;
+  }
 }
 
 .most-popular-new{

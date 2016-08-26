@@ -7306,6 +7306,10 @@ body.category .rsThumbs {
   margin: 3px;
   border-radius: 5px;
   overflow: visible; }
+  .most-popular-new .box-item .box-item__overlay.category-bg {
+    opacity: .4 !important; }
+  .most-popular-new .box-item:hover .box-item__overlay.category-bg {
+    opacity: 0 !important; }
   .most-popular-new .box-item::before {
     content: '1';
     position: absolute;
@@ -9063,6 +9067,8 @@ body.single .home-subheader {
 
 .mostpop-wrap {
   padding: 10px 6px 10px 0px; }
+  .mostpop-wrap .homepage-grid {
+    margin-top: 0; }
 
 .most-popular-new {
   counter-reset: popular-box; }
