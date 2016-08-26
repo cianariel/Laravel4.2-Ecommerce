@@ -203,12 +203,14 @@ ol li{
   .float-thumbs .thumb-box strong{
     background-color: rgba($color, .7);
   }
+  .home-subheader span,
   .m-icon--ScrollingHeaderHeart .path1:before,
   .m-icon--ScrollingHeaderHeart .path2:before{
     color: $color;
   }
 
   .home-subheader span{
+    color: $color;
     border-color:$color !important;
   }
 
@@ -6885,6 +6887,7 @@ body.single{
     }
   }
   .comment-edit-container{
+    margin-top: 0;
     padding: 0;
     //border: 1px solid #eee;
     -webkit-appearance: none;

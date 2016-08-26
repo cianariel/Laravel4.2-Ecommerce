@@ -5145,13 +5145,16 @@ ol li {
 .category-smart-home .float-thumbs .thumb-box strong,
 .category-smarthome .float-thumbs .thumb-box strong {
   background-color: rgba(255, 0, 66, 0.7); }
+.category-smart-home .home-subheader span,
 .category-smart-home .m-icon--ScrollingHeaderHeart .path1:before,
 .category-smart-home .m-icon--ScrollingHeaderHeart .path2:before,
+.category-smarthome .home-subheader span,
 .category-smarthome .m-icon--ScrollingHeaderHeart .path1:before,
 .category-smarthome .m-icon--ScrollingHeaderHeart .path2:before {
   color: #FF0042; }
 .category-smart-home .home-subheader span,
 .category-smarthome .home-subheader span {
+  color: #FF0042;
   border-color: #FF0042 !important; }
 .category-smart-home .category-link__smart-home,
 .category-smarthome .category-link__smart-home {
@@ -5179,10 +5182,12 @@ ol li {
   color: #FF7F00; }
 .category-smart-travel .float-thumbs .thumb-box strong {
   background-color: rgba(255, 127, 0, 0.7); }
+.category-smart-travel .home-subheader span,
 .category-smart-travel .m-icon--ScrollingHeaderHeart .path1:before,
 .category-smart-travel .m-icon--ScrollingHeaderHeart .path2:before {
   color: #FF7F00; }
 .category-smart-travel .home-subheader span {
+  color: #FF7F00;
   border-color: #FF7F00 !important; }
 .category-smart-travel .category-link__smart-travel {
   color: #FF7F00; }
@@ -5207,10 +5212,12 @@ ol li {
   color: #079DD1; }
 .category-smart-body .float-thumbs .thumb-box strong {
   background-color: rgba(7, 157, 209, 0.7); }
+.category-smart-body .home-subheader span,
 .category-smart-body .m-icon--ScrollingHeaderHeart .path1:before,
 .category-smart-body .m-icon--ScrollingHeaderHeart .path2:before {
   color: #079DD1; }
 .category-smart-body .home-subheader span {
+  color: #079DD1;
   border-color: #079DD1 !important; }
 .category-smart-body .category-link__smart-body {
   color: #079DD1; }
@@ -5235,10 +5242,12 @@ ol li {
   color: #89C981; }
 .category-smart-entertainment .float-thumbs .thumb-box strong {
   background-color: rgba(137, 201, 129, 0.7); }
+.category-smart-entertainment .home-subheader span,
 .category-smart-entertainment .m-icon--ScrollingHeaderHeart .path1:before,
 .category-smart-entertainment .m-icon--ScrollingHeaderHeart .path2:before {
   color: #89C981; }
 .category-smart-entertainment .home-subheader span {
+  color: #89C981;
   border-color: #89C981 !important; }
 .category-smart-entertainment .category-link__smart-entertainment {
   color: #89C981; }
@@ -5262,10 +5271,12 @@ ol li {
   color: #68005c; }
 .category-deals .float-thumbs .thumb-box strong {
   background-color: rgba(104, 0, 92, 0.7); }
+.category-deals .home-subheader span,
 .category-deals .m-icon--ScrollingHeaderHeart .path1:before,
 .category-deals .m-icon--ScrollingHeaderHeart .path2:before {
   color: #68005c; }
 .category-deals .home-subheader span {
+  color: #68005c;
   border-color: #68005c !important; }
 .category-deals .category-link__deals {
   color: #68005c; }
@@ -9738,6 +9749,7 @@ body.single .article-content iframe {
     border-radius: 0;
     border: 1px solid #eee; }
 .comments .comment-edit-container {
+  margin-top: 0;
   padding: 0;
   -webkit-appearance: none; }
 .comments .comment-controls {
