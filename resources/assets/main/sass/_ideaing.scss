@@ -4637,8 +4637,8 @@ body.single-post{
 
       .box-item{
         width: 47%;
-        margin: 8px;
-        border-radius: 5em !important;
+        margin: 8px; 
+        border-radius: 5px !important;
         overflow: hidden !important;
       }
     }
@@ -6837,7 +6837,7 @@ body.single{
       font-weight: 600;
     }
 
-    .single-comment{ 
+    .single-comment{
       width: 100%;
       overflow: visible;
       min-height: 265px;

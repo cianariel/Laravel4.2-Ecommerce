@@ -8298,7 +8298,7 @@ body.single-post .related-ideas, body.single-post .related-products {
   body.single-post .related-ideas .box-item, body.single-post .related-products .box-item {
     width: 47%;
     margin: 8px;
-    border-radius: 5em !important;
+    border-radius: 5px !important;
     overflow: hidden !important; }
 body.single-post .product-bar {
   padding: 8px;
