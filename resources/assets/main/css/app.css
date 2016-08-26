@@ -399,8 +399,7 @@ body.has-active-menu {
   overflow: hidden !important;
   margin: 0;
   padding: 0;
-  height: 100%;
-  max-width: 414px; }
+  height: 100%; }
   body.has-active-menu .slide-menu {
     -webkit-transform: translateX(0);
     -ms-transform: translateX(0);
@@ -7796,6 +7795,14 @@ header.colophon {
   cursor: pointer;
   padding-right: 3px; }
 
+@media (max-width: 740px) and (min-width: 620px) {
+  #top-nav {
+    padding-left: 70px; }
+    #top-nav .logo-holder {
+      position: relative; } }
+@media (max-width: 620px) {
+  #top-nav .logo-holder {
+    left: 80px; } }
 #top-nav .home-hamburger {
   width: 70px;
   padding: 7px 5px 5px !important;
@@ -7915,7 +7922,7 @@ header.colophon {
       background-image: url("/assets/images/cross-black.png");
       margin-top: 13px;
       background-position: 0; }
-  @media (min-width: 760px) {
+  @media (max-width: 992px) {
     #top-nav .top-nav-holder .profile-photo-holder {
       margin-right: 28px; } }
   @media (max-width: 620px) {

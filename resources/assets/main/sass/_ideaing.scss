@@ -3995,6 +3995,21 @@ body:not(.single){
 
 #top-nav{
 
+  @media(max-width:740px) and (min-width:620px){
+    padding-left: 70px;
+
+    .logo-holder{
+      position: relative;
+    }
+
+  }
+
+  @media(max-width:620px){
+    .logo-holder{
+      left:80px;
+    }
+  }
+
   .home-hamburger{
     width: 70px;
     padding: 7px 5px 5px!important;
@@ -4189,13 +4204,13 @@ body:not(.single){
           }
         }
       .profile-photo-holder{
-        @media (min-width:760px) {
+        @media (max-width:992px) {
           margin-right: 28px;
         }
         @media (max-width:620px) {
           width: 40px;
           height: 40px;
-          margin-right: 8px; 
+          margin-right: 8px;
 
 
           &.logged-user{
