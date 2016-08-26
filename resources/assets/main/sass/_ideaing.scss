@@ -5693,6 +5693,13 @@ header.sub-head{
   }
 }
 
+body.single{
+  .home-subheader{
+    max-width: 672px;
+    margin-left: 0;
+  }
+}
+
 
 .home-subheader{
   width: 97%;
@@ -5704,7 +5711,6 @@ header.sub-head{
   padding-bottom: 0;
   font-size: 2.8rem;
   border-bottom: 2px solid #eee;
-
 
   &.current-timespan{
     margin-bottom: 24px;

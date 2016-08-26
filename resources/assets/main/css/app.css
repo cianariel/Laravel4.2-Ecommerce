@@ -9007,6 +9007,10 @@ header.sub-head {
 .left-nav a {
   position: static; }
 
+body.single .home-subheader {
+  max-width: 672px;
+  margin-left: 0; }
+
 .home-subheader {
   width: 97%;
   height: 46px;

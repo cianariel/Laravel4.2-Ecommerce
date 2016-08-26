@@ -172,7 +172,7 @@
 <section class="related-items pale-grey-bg">
     <div class="main-content full-620 fixed-sm container">
         <div class="container col-sm-9 center-block">
-            <h4 class="home-subheader"><span>You Have to Read These</span></h4>
+            <h4 class="home-subheader"><span>Must Reads</span></h4>
         </div>
         <div class="related-ideas grid-box-2">
 
