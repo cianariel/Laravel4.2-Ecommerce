@@ -171,7 +171,7 @@
 
 <section class="related-items pale-grey-bg">
     <div class="main-content full-620 fixed-sm container">
-        <div class="container col-sm-9 center-block">
+        <div class="container col-xs-12 center-block">
             <h4 class="home-subheader"><span>Must Reads</span></h4>
         </div>
         <div class="related-ideas grid-box-2">
@@ -282,7 +282,7 @@
         ?>
 
         @if(isset($relatedProducts) && ($relatedProducts != null) && count($relatedProducts)>0 )
-        <div class="container col-sm-9 center-block">
+        <div class="container col-xs-12 center-block">
             <h4 class="home-subheader"><span>Awesome Products</span></h4>
         </div>
 

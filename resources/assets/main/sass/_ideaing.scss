@@ -5704,7 +5704,6 @@ header.sub-head{
 body.single{
   .home-subheader{
     display: inline-block;
-    max-width: 672px;
     margin-left: 0;
   }
 }
@@ -5732,7 +5731,7 @@ body.single{
     margin-bottom: -1px;
     display: inline-block;
     height: 46px;
-    padding-right: 28px;
+    //padding-right: 28px;
 
 
   }
@@ -6822,6 +6821,7 @@ body.single{
   }
 
   .single-comment{
+    float: left;
     min-height: 100%;
     overflow: hidden;
     padding-top: 15px;
