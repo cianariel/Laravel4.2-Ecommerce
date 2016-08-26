@@ -208,6 +208,10 @@ ol li{
     color: $color;
   }
 
+  .home-subheader span{
+    border-color:$color !important;
+  }
+
 }
 
 .category-smart-home,
@@ -4635,16 +4639,20 @@ body.single-post{
         max-width: 1170px;
         margin: auto;
 
-      .box-item{
-        width: 47%;
-        margin: 8px;
-        border-radius: 5px !important;
-        overflow: hidden !important;
+      &.grid-box-2{
+        .box-item{
+          width: 47%;
+          margin: 8px;
+          border-radius: 5px !important;
+          overflow: hidden !important;
 
-        @media(max-width: 620px){
-          width: 95%;
+          @media(max-width: 620px){
+            width: 95%;
+          }
         }
       }
+
+
     }
   .product-bar{
     padding: 8px;
@@ -5695,6 +5703,7 @@ header.sub-head{
 
 body.single{
   .home-subheader{
+    display: inline-block;
     max-width: 672px;
     margin-left: 0;
   }
