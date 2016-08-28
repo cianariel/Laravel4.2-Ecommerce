@@ -243,7 +243,7 @@ class Product extends Model
         } else {
             $result = \DB::table('products')
                          ->where('products.id', $productId)
-                         ->where('products.publish_at', '<=', date('Y-m-d'))
+                         ->where('products.publish_at', '<=', date('Y-m-d H:i:s'))
                          ->leftJoin('product_categories', 'product_categories.id', '=', 'products.product_category_id')
                          ->leftJoin('medias', function ($join) {
                              $join->on('medias.mediable_id', '=', 'products.id')
