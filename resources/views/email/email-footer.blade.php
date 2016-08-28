@@ -61,7 +61,7 @@
             </tr>
             <tr>
                 <td width="" height="" align="center" class="devicewidth"
-                    style="font-family: Helvetica, arial, sans-serif; font-size: 16px; color: #666666; text-align:center; line-height: 30px;"
+                    style="font-family: Helvetica, arial, sans-serif; font-size: 14px; color: #666666; text-align:center; line-height: 30px;"
                     st-content="fulltext-content">
                     <br/>
                     <i>Copyright © 2016 Idea Centric LLC,</i> All rights reserved.<br/>
@@ -71,10 +71,9 @@
                     Idea Centric LLC<br/>
                     Gramercy<br/>
                     Irvine, Ca 92614<br/>
-                    <br/>
 
                     <a target="_blank" style="text-decoration:underline ; color: #0a8cce" href="http://ideaing.us12.list-manage.com/vcard?u=96801fe1d5d2163ffc6ff717e&id=eeb6e8c94f">Add us to your address book</a>
-                    <br/>
+
                     <br/>
 
                     Don't want to hear from Ideaing?<br/>
