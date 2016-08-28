@@ -1536,13 +1536,15 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
 
         // Product Promote
 
+
         $scope.promoteProduct = function (id) {
             $scope.closeAlert();
             $http({
                 url: '/api/product/promote-product',
                 method: "POST",
                 data: {
-                    id: id
+                    id: id,
+                    PublishAt: $scope.datePicker,
                 }
             }).success(function (data) {
                 $scope.outputStatus(data, "Product promoted successfully.");
