@@ -6,6 +6,7 @@ use \Illuminate\Routing\Route;
 use  Illuminate\Routing\Router;;
 use App\Models\Giveaway;
 use App\Models\ProductCategory;
+use Kryptonit3\Counter\Counter;
 use URL;
 use Redis;
 use Cookie;

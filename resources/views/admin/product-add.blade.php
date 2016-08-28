@@ -220,7 +220,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
-                                                        <label class="col-md-2 control-label">Publish After:
+                                                        <label class="col-md-2 control-label">Publishing Date:
                                                         </label>
                                                         <div class="col-md-4">
 
