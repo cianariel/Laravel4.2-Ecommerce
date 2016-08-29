@@ -733,17 +733,18 @@ body:not(.single){
 }
 
 
-body.homepage{
+//body.homepage{
   .ideaing-logo{
     .m-icon{
       filter:none !important;
       -webkit-filter:none !important;
     }
-    img{
+    img {
       width: 147px;
-    } 
+      margin-bottom: 6px;
+    }
   }
-}
+//}
 
 @mixin pseudo-full-wide($bgColor) {
   position: relative; /* for the child pseudo-elements */

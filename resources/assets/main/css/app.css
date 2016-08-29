@@ -5595,11 +5595,12 @@ ul.pointed li:before {
 body:not(.single) {
   padding-top: 58px; }
 
-body.homepage .ideaing-logo .m-icon {
+.ideaing-logo .m-icon {
   filter: none !important;
   -webkit-filter: none !important; }
-body.homepage .ideaing-logo img {
-  width: 147px; }
+.ideaing-logo img {
+  width: 147px;
+  margin-bottom: 6px; }
 
 .faux-lines {
   position: relative;
