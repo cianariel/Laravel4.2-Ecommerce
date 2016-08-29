@@ -317,6 +317,7 @@ class ProductController extends ApiController
             //  dd($product->get());
             $product->created_at = Carbon::createFromFormat('Y-m-d H:i:s', Carbon::now())->toDateTimeString();
             $product->post_status = 'Active';
+            $product->publish_at = Carbon::createFromTimestamp(strtotime($inputData['PublishAt']))->toDateTimeString();
             $result = $product->save();
 
             return $this->setStatusCode(\Config::get("const.api-status.success"))

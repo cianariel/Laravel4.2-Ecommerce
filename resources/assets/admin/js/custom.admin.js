@@ -1082,9 +1082,42 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
             if (keyWord.indexOf("ideas") > -1) {
                 return keyWord;
             } else {
-                return "category/" + keyWord;
+                return "shop/" + keyWord;
             }
 
+
+        };
+
+
+        // Read Category
+
+        $scope.addReadCategory = function(){
+
+            $http({
+                url: '/api/category/add-read-category',
+                method: "POST",
+                data: {
+                    CategoryId: $scope.selectedItem,
+                    PageTitle: $scope.PageTitle,
+                    MetaDescription: $scope.MetaDescription
+                },
+            }).success(function (data) {
+                $scope.outputStatus(data, "Read Category added successfully");
+                $scope.getReadCategoryList();
+            });
+
+        };
+
+        $scope.getReadCategoryList = function(){
+
+            $http({
+                url: '/api/category/all-read-category',
+                method: "GET",
+
+            }).success(function (data) {
+                $scope.tempCategoryList = data.data;
+              //  $scope.outputStatus(data, "Read Category added successfully");
+            });
 
         };
 
@@ -1503,13 +1536,15 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
 
         // Product Promote
 
+
         $scope.promoteProduct = function (id) {
             $scope.closeAlert();
             $http({
                 url: '/api/product/promote-product',
                 method: "POST",
                 data: {
-                    id: id
+                    id: id,
+                    PublishAt: $scope.datePicker,
                 }
             }).success(function (data) {
                 $scope.outputStatus(data, "Product promoted successfully.");

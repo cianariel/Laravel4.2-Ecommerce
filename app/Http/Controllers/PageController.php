@@ -8,6 +8,7 @@ use App\Http\Requests;
 use Illuminate\Support\Collection;
 use App\Http\Controllers\Controller;
 //use FeedParser;
+use Kryptonit3\Counter\Counter;
 use MetaTag;
 use App\Models\Product;
 use App\Models\User;
@@ -539,6 +540,9 @@ class PageController extends ApiController
         }
 
         $cacheKey = "product-details-$permalink";
+
+        $product = new Product();
+
         if ($cachedContent = PageHelper::getFromRedis($cacheKey, true)) {
 //            $cachedContent->fromCache = true;
             $result = $cachedContent;
@@ -565,7 +569,6 @@ class PageController extends ApiController
 
         } else {
 
-            $product = new Product();
             $productData['product'] = $product->getViewForPublic($permalink);
 
             // Get category tree
@@ -607,6 +610,14 @@ class PageController extends ApiController
         MetaTag::set('title', $result['productInformation']['PageTitle']);
         MetaTag::set('description', $result['productInformation']['MetaDescription']);
 
+        // Product hit counter
+        $counter = \Counter::showAndCount('product-details-'.$result['productInformation']['Id']);
+
+        // Update the product table with hit counter
+        $product->itemHitCounter([
+            'Permalink'=>$permalink,
+            'Count' => $counter
+        ]);
 
       //  dd($result['selfImages']['picture']);
         return view('product.product-details')
@@ -621,7 +632,8 @@ class PageController extends ApiController
             ->with('selfImages', $result['selfImages'])
             ->with('storeInformation', $result['storeInformation'])
             ->with('canonicURL', $result['canonicURL'])
-            ->with('MetaDescription', $result['productInformation']['MetaDescription']);
+            ->with('MetaDescription', $result['productInformation']['MetaDescription'])
+            ->with('CustomCounter',$counter);
     }
 
     public function getRoomPage($permalink)
