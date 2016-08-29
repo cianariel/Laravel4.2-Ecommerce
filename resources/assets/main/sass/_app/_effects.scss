@@ -432,9 +432,7 @@ body.single{
   top: 0;
   width: 300px;
   box-sizing: inherit;
-  //padding-top: 50px;
   background: #f9f9f9;
-  //width: 100%;
   height: 100%;
   overflow-y: scroll;
   z-index: 100;
@@ -479,14 +477,7 @@ body.has-active-menu{
   margin: 0;
   padding: 0;
   height: 100%;
-  //max-width: 414px;
 
-  //width:100%;
-  //.over-wrap{
-  //  -webkit-transform: translateX(-300px);
-  //  -ms-transform: translateX(-300px);
-  //  transform: translateX(-300px)
-  //}
   .slide-menu{
     -webkit-transform: translateX(0);
     -ms-transform: translateX(0);
@@ -496,10 +487,6 @@ body.has-active-menu{
 
 
 // HEARTBEAT
-
-//$heartbeat-color: #e87;
-//$heartbeat-size: 36px; // must be divisible by 2 and 3
-//$heartbeat-rotation: rotate(0deg);
 
 .heartbeat{
 
@@ -619,16 +606,11 @@ body.has-active-menu{
   }
 
 
-
-
-
-
   .input {
     position: relative;
     z-index: 1;
     display: inline-block;
     margin: 1em;
-    //max-width: 350px;
     width: calc(100% - 2em);
     vertical-align: top;
   }
@@ -641,10 +623,7 @@ body.has-active-menu{
     width: 100%;
     border: none;
     border-radius: 0;
-    //background: #f0f0f0;
-    //color: #aaa;
     font-weight: bold;
-    //font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     -webkit-appearance: none; /* for box shadows to show on iOS */
   }
 
@@ -657,7 +636,6 @@ body.has-active-menu{
     float: left;
     padding: 0 1em;
     width: 40%;
-    //color: #6a7989;
     font-weight: bold;
     font-size: 70.25%;
     -webkit-font-smoothing: antialiased;
