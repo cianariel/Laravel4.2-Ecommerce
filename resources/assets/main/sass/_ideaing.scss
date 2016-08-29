@@ -677,8 +677,8 @@ ul.pointed{
 // Spinning clock
 
 .icon-clock {
-  height: 29px;
-  width: 29px;
+  height: 20px;
+  width: 20px;
   display: inline-block;
   top: 3px;
   left: 3px;
@@ -5737,13 +5737,13 @@ body.single{
 
 .home-subheader{
   width: 97%;
-  height: 46px;
+  height: 40px;
   margin-top: 11px;
   margin-left: 10px;
   margin-bottom: 13px;
   padding-left: 0;
   padding-bottom: 0;
-  font-size: 2.8rem;
+  font-size: 2.3rem;
   border-bottom: 2px solid #eee;
 
   &.current-timespan{
@@ -5756,18 +5756,27 @@ body.single{
     border-bottom: 2px solid #000;
     margin-bottom: -1px;
     display: inline-block;
-    height: 46px;
+    height: 40px;
     //padding-right: 28px;
 
 
   }
 
   .m-icon{
-    font-size: 2.7rem;
+    font-size: 1.8rem;
+    padding-top: 2px;
+
     &.m-icon--flame{
       position: relative;
       right: 1px;
     }
+  }
+
+  .unread-heading{
+    float: right;
+    padding-top: 12px;
+    font-size: 1.7rem;
+    font-style: normal;
   }
 }
 

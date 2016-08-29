@@ -6,12 +6,12 @@
 </div>
 
 
-<h4 class="current-timespan home-subheader col-xs-12 no-heading">
+<h4 class="current-timespan home-subheader col-xs-12">
     <?php // echo '{{currentPage}}' ?>
 
         <span>
             <div class="icon-clock blue">
-            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Layer_1" x="0px" y="0px" width="28px" height="28px" viewBox="288.6 378 36 36" enable-background="new 288.6 378 36 36" xml:space="preserve">
+            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Layer_1" x="0px" y="0px" width="20px" height="20px" viewBox="288.6 378 36 36" enable-background="new 288.6 378 36 36" xml:space="preserve">
 <g>
     <path fill="none" d="M306.6 414c-9.9 0-18-8.1-18-18c0-9.9 8.1-18 18-18s18 8.1 18 18C324.6 405.9 316.5 414 306.6 414z M306.6 381.9c-7.8 0-14.1 6.3-14.1 14.1s6.3 14.1 14.1 14.1s14.1-6.3 14.1-14.1S314.4 381.9 306.6 381.9z"></path>
 </g>
@@ -20,7 +20,7 @@
 </svg>
         </div>
         Latest Stories</span>
-        <i  ng-show="hasMore" style="font-size: 1.7rem; font-style: normal;"><?php echo '{{unreadCount}}'?> unread</i>
+        <i class="unread-heading"  ng-show="hasMore"><?php echo '{{unreadCount}}'?> unread</i>
 </h4> 
                       
                             
