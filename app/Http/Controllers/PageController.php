@@ -604,13 +604,6 @@ class PageController extends ApiController
             $categoryName = false;
         }
 
-//          if($cachedContent = PageHelper::getFromRedis($cacheKey)){
-//            $return = $cachedContent;
-//            $return->fromCache = true;
-//            $return->cacheKey = $cacheKey;
-//            return json_encode($return);
-//       	  }
-
         if ($tag && $tag !== 'undefined' && $tag != 'false' && $tag != '') {
             $tagID = Tag::where('tag_name', $tag)->lists('id')->toArray();
         } else {
@@ -622,7 +615,7 @@ class PageController extends ApiController
             $productLimit = 6;
             $productOffset = 6 * ($page - 1);
 
-            $storyLimit = 4;
+            $storyLimit = 6;
             $storyOffset = 5 * ($page - 1);
 
         } else {
@@ -883,53 +876,53 @@ class PageController extends ApiController
 
         $return['regular'] = json_decode($newIdeaCollection->toJson(), FALSE);
 
-if(@env('PROD_FEED')){
-        $featuredUrl = 'https://ideaing.com/ideas/feeds/index.php?count=' . $featuredLimit . '&only-featured&offset=' . $featuredOffset . '&no-deals';
-        }else{
-            $featuredUrl = URL::to('/') . '/ideas/feeds/index.php?count=' . $featuredLimit . '&only-featured&offset=' . $featuredOffset . '&no-deals';
-        }
-
-        if(@$dateQuery){ 
-            $featuredUrl .= $dateQuery;
-        }
-
-        if ($tag && $tag != 'false' && $tag != false) {
-            $featuredUrl .= '&tag=' . $tag;
-        }
-
-        if ($category && $category != 'false') {
-            $featuredUrl .= '&category-name=' . $category;
-        }
-
-        curl_setopt($ch, CURLOPT_URL, $featuredUrl);
-        $json = curl_exec($ch);
-        curl_close($ch);
-
-        // $return['featured'] = json_decode($json);
-
-        $ideaCollection = json_decode($json);
-
-        $newIdeaCollection = new Collection();
-        $comment = new App\Models\Comment();
-
-        if ($ideaCollection && isset($ideaCollection->posts)) {
-
-            foreach ($ideaCollection->posts as $singleIdea) {
-
-                $tempIdea = collect($singleIdea);
-
-                $countValue = $comment->ideasCommentCounter($singleIdea->id);
-
-                $tempIdea->put('CommentCount', $countValue);
-
-                $newIdeaCollection->push($tempIdea);
-
-            }
-        }
-
-        $return['featured'] = $newIdeaCollection;
-
-        $return['totalCount'] += $ideaCollection->totalCount;
+//if(@env('PROD_FEED')){
+//        $featuredUrl = 'https://ideaing.com/ideas/feeds/index.php?count=' . $featuredLimit . '&only-featured&offset=' . $featuredOffset . '&no-deals';
+//        }else{
+//            $featuredUrl = URL::to('/') . '/ideas/feeds/index.php?count=' . $featuredLimit . '&only-featured&offset=' . $featuredOffset . '&no-deals';
+//        }
+//
+//        if(@$dateQuery){
+//            $featuredUrl .= $dateQuery;
+//        }
+//
+//        if ($tag && $tag != 'false' && $tag != false) {
+//            $featuredUrl .= '&tag=' . $tag;
+//        }
+//
+//        if ($category && $category != 'false') {
+//            $featuredUrl .= '&category-name=' . $category;
+//        }
+//
+//        curl_setopt($ch, CURLOPT_URL, $featuredUrl);
+//        $json = curl_exec($ch);
+//        curl_close($ch);
+//
+//        // $return['featured'] = json_decode($json);
+//
+//        $ideaCollection = json_decode($json);
+//
+//        $newIdeaCollection = new Collection();
+//        $comment = new App\Models\Comment();
+//
+//        if ($ideaCollection && isset($ideaCollection->posts)) {
+//
+//            foreach ($ideaCollection->posts as $singleIdea) {
+//
+//                $tempIdea = collect($singleIdea);
+//
+//                $countValue = $comment->ideasCommentCounter($singleIdea->id);
+//
+//                $tempIdea->put('CommentCount', $countValue);
+//
+//                $newIdeaCollection->push($tempIdea);
+//
+//            }
+//        }
+//
+//        $return['featured'] = $newIdeaCollection;
+//
+//        $return['totalCount'] += $ideaCollection->totalCount;
 
         return $return;
     }

@@ -6036,11 +6036,11 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
 
         $scope.sliceToRows = function($ideas, $featured, $products){
             var $return = [];
-            $return['row-1'] = $featured[0] ? [$featured[0]] : false;
-            $return['row-2'] = $ideas.slice(0, 2);
+            $return['row-1'] = $ideas.slice(0, 1);
+            $return['row-2'] = $ideas.slice(2, 4);
             $return['row-3'] = $products.slice(0, 3);
-            $return['row-4'] = $featured[1] ? [$featured[1]] : false;
-            $return['row-5'] = $ideas.slice(2, 4);
+            $return['row-4'] = $ideas.slice(4, 5);
+            $return['row-5'] = $ideas.slice(5, 7);
             $return['row-6'] = $products.slice(3, 6);
            
             return $return;
