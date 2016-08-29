@@ -120,7 +120,7 @@
 
                                                             <button ng-click="hideCategoryPanel = !hideCategoryPanel"
                                                                     tooltip-placement="right"
-                                                                    uib-tooltip="Reset Category"
+                                                                    uib-tooltip="Show Category List"
                                                                     class="btn btn-warning btn-circle">
                                                                 <i class="fa fa-refresh"></i>
                                                             </button>
@@ -138,12 +138,6 @@
                                                             <label>Selected Category Info
                                                                 :</label><strong> @{{ categoryHierarchy }}
                                                                 (@{{ selectedItem }}) </strong>
-                                                        </div>
-                                                        <div class="col-md-1">
-
-                                                        </div>
-                                                        <div class="col-md-4">
-
                                                         </div>
 
                                                     </div>
@@ -226,7 +220,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
-                                                        <label class="col-md-2 control-label">Publish After:
+                                                        <label class="col-md-2 control-label">Publishing Date:
                                                         </label>
                                                         <div class="col-md-4">
 

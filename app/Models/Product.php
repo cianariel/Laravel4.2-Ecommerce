@@ -222,6 +222,18 @@ class Product extends Model
         $data->delete();
     }
 
+    public function itemHitCounter($data)
+    {
+        $dataCount = Product::where('product_permalink', $data['Permalink'])->first(['hit_counter']);
+
+        $dataCount = empty($dataCount->hit_counter) ? 0 : $dataCount->hit_counter;
+
+        if ($data['Count'] > $dataCount) {
+            Product::where('product_permalink', $data['Permalink'])->update(['hit_counter' => $data['Count']]);
+        }
+
+    }
+
     public function getSingleProductInfoForView($productId, $adminView = false)
     {
         if ($adminView == true) {
@@ -243,7 +255,7 @@ class Product extends Model
         } else {
             $result = \DB::table('products')
                          ->where('products.id', $productId)
-                         ->where('products.publish_at', '<=', date('Y-m-d'))
+                         ->where('products.publish_at', '<=', date('Y-m-d H:i:s'))
                          ->leftJoin('product_categories', 'product_categories.id', '=', 'products.product_category_id')
                          ->leftJoin('medias', function ($join) {
                              $join->on('medias.mediable_id', '=', 'products.id')
@@ -303,7 +315,7 @@ class Product extends Model
     {
         $productModel = $this;
 
-       // $filterText = $settings['FilterText'];
+        // $filterText = $settings['FilterText'];
 
         if (@$settings['CategoryId'] != null) {
             if (@$settings['GetChildCategories']) {
@@ -359,14 +371,12 @@ class Product extends Model
             $productModel = $productModel->where("product_name", "like", "%$filterText%");
         }
 */
-        if(!empty($settings['FilterProduct']))
-        {
-            $productModel = $productModel->where("product_name", "like", "%".$settings['FilterProduct']."%");
+        if (!empty($settings['FilterProduct'])) {
+            $productModel = $productModel->where("product_name", "like", "%" . $settings['FilterProduct'] . "%");
         }
 
-        if(!empty($settings['FilterPublisher']))
-        {
-            $productModel = $productModel->where("user_name", "like", "%".$settings['FilterPublisher']."%");
+        if (!empty($settings['FilterPublisher'])) {
+            $productModel = $productModel->where("user_name", "like", "%" . $settings['FilterPublisher'] . "%");
         }
 
         if (@$settings['WithTags'] == true && $settings['CategoryId'] != null) {
@@ -396,6 +406,7 @@ class Product extends Model
         $product['allIDs'] = $productModel
             ->take($settings['limit'])
             ->offset($skip)
+            ->orderBy('hit_counter', 'desc')
             ->orderBy('created_at', 'desc')
             ->get(array("id"));
 
@@ -405,10 +416,10 @@ class Product extends Model
 
         for ($i = 0; $i < $count; $i++) {
             $id = $product['allIDs'][$i]['id'];
-            $tmp = $this->getSingleProductInfoForView($id,$isAdmin);
+            $tmp = $this->getSingleProductInfoForView($id, $isAdmin);
 
             // If the publish date is not valid
-            if(empty($tmp))
+            if (empty($tmp))
                 continue;
 
             // making the thumbnail url by injecting "thumb-" in the url which has been uploaded during media submission.
