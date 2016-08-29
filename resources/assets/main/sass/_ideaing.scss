@@ -734,9 +734,14 @@ body:not(.single){
 
 
 body.homepage{
-  .ideaing-logo .m-icon{
-    filter:none !important;
-    -webkit-filter:none !important;
+  .ideaing-logo{
+    .m-icon{
+      filter:none !important;
+      -webkit-filter:none !important;
+    }
+    img{
+      width: 147px;
+    } 
   }
 }
 
@@ -8692,6 +8697,7 @@ footer.about-footer{
               //display: none;
               font-size: 38px;
           }
+
           .m-icon.scroll-logo{
               display: block;
           }

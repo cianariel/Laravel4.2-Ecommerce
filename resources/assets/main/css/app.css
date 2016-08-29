@@ -5598,6 +5598,8 @@ body:not(.single) {
 body.homepage .ideaing-logo .m-icon {
   filter: none !important;
   -webkit-filter: none !important; }
+body.homepage .ideaing-logo img {
+  width: 147px; }
 
 .faux-lines {
   position: relative;
