@@ -7284,7 +7284,7 @@ body.category .rsThumbs {
     float: none;
     margin: 45px auto 0;
     overflow: hidden;
-    padding: 0 2px; }
+    padding: 0px 2px 0 12px; }
     .most-popular-new .popular-section .box-item {
       width: 65%; } }
 .most-popular-new h5 {
@@ -9719,12 +9719,9 @@ body.single .article-content iframe {
 
 .comments-wrap {
   background: #f7f7f7;
-  padding-top: 96px;
+  padding-top: 35px;
   padding-bottom: 55px; }
 
-.comments h4 {
-  position: relative;
-  bottom: 80px; }
 .comments .single-comment {
   float: left;
   min-height: 100%;

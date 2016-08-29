@@ -3060,7 +3060,7 @@ body.category{
       float: none;
       margin: 45px auto 0;
       overflow: hidden;
-      padding: 0 2px;
+      padding: 0px 2px 0 12px;
       .box-item{
         width: 65%;
       }
@@ -6847,17 +6847,17 @@ body.single{
 
 .comments-wrap{
   background: #f7f7f7;
-  padding-top: 96px;
+  padding-top: 35px;
   padding-bottom: 55px;
 
 }
 
 .comments{
 
-  h4{
-    position: relative;
-    bottom: 80px;
-  }
+  //h4{
+  //  position: relative;
+  //  bottom: 80px;
+  //}
 
   .single-comment{
     float: left;
