@@ -5156,6 +5156,10 @@ ol li {
 .category-smarthome .home-subheader span {
   color: #FF0042;
   border-color: #FF0042 !important; }
+.category-smart-home .input__field--minoru,
+.category-smarthome .input__field--minoru {
+  color: #FF0042;
+  box-shadow: 0px 0px 0px 0px #FF0042; }
 .category-smart-home .input__field--minoru:focus,
 .category-smarthome .input__field--minoru:focus {
   box-shadow: 0px 0px 0px 2px #FF0042; }
@@ -5192,6 +5196,9 @@ ol li {
 .category-smart-travel .home-subheader span {
   color: #FF7F00;
   border-color: #FF7F00 !important; }
+.category-smart-travel .input__field--minoru {
+  color: #FF7F00;
+  box-shadow: 0px 0px 0px 0px #FF7F00; }
 .category-smart-travel .input__field--minoru:focus {
   box-shadow: 0px 0px 0px 2px #FF7F00; }
 .category-smart-travel .category-link__smart-travel {
@@ -5224,6 +5231,9 @@ ol li {
 .category-smart-body .home-subheader span {
   color: #079DD1;
   border-color: #079DD1 !important; }
+.category-smart-body .input__field--minoru {
+  color: #079DD1;
+  box-shadow: 0px 0px 0px 0px #079DD1; }
 .category-smart-body .input__field--minoru:focus {
   box-shadow: 0px 0px 0px 2px #079DD1; }
 .category-smart-body .category-link__smart-body {
@@ -5256,6 +5266,9 @@ ol li {
 .category-smart-entertainment .home-subheader span {
   color: #89C981;
   border-color: #89C981 !important; }
+.category-smart-entertainment .input__field--minoru {
+  color: #89C981;
+  box-shadow: 0px 0px 0px 0px #89C981; }
 .category-smart-entertainment .input__field--minoru:focus {
   box-shadow: 0px 0px 0px 2px #89C981; }
 .category-smart-entertainment .category-link__smart-entertainment {
@@ -5287,6 +5300,9 @@ ol li {
 .category-deals .home-subheader span {
   color: #68005c;
   border-color: #68005c !important; }
+.category-deals .input__field--minoru {
+  color: #68005c;
+  box-shadow: 0px 0px 0px 0px #68005c; }
 .category-deals .input__field--minoru:focus {
   box-shadow: 0px 0px 0px 2px #68005c; }
 .category-deals .category-link__deals {

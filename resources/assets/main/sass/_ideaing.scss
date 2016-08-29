@@ -207,11 +207,16 @@ ol li{
   .m-icon--ScrollingHeaderHeart .path1:before,
   .m-icon--ScrollingHeaderHeart .path2:before{
     color: $color;
-  } 
+  }
 
   .home-subheader span{
     color: $color;
     border-color:$color !important;
+  }
+
+  .input__field--minoru{
+    color: $color;
+    box-shadow: 0px 0px 0px 0px $color;
   }
 
   .input__field--minoru:focus {
