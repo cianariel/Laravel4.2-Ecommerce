@@ -57,7 +57,7 @@ if (!isset($theGiveAway)) {
                 <a href="#" class="search-toggle-button mobile hidden-soft shown-620"><i class="m-icon m-icon--search-id"></i></a>
 
                     <div class="top-nav-holder">
-                        <div class="col-xs-10 col-sm-7 col-lg-8 category-menu">
+                        <div class="col-xs-12 col-sm-7 col-lg-8 category-menu">
                             <ul>
                                 <li> 
                                     <a data-click="#show-smart-home" class="category-link__smart-home" href="/smart-home"  ng-click="switchCategory('smart-home')">
@@ -68,19 +68,19 @@ if (!isset($theGiveAway)) {
                                 <li>
                                     <a data-click="#show-smart-entertainment" class="category-link__smart-entertainment m-icon-text-holder" href="/smart-entertainment" ng-click="switchCategory('smart-entertainment')">
                                         <i class="hidden-xs hidden-sm hidden-md m-icon m-icon--video"></i>
-                                        <span class="m-icon-text"><span class="hidden-xs hidden-sm">Smart</span> Entertainment</span>
+                                        <span class="m-icon-text"><span class="hidden-sm">Smart</span> Entertainment</span>
                                     </a>
                                 </li>
                                 <li>
                                     <a data-click="#show-smart-body" class="category-link__smart-body m-icon-text-holder" href="/smart-body"  ng-click="switchCategory('smart-body')">
                                         <i class="hidden-xs hidden-sm hidden-md m-icon m-icon--wearables"></i>
-                                        <span class="m-icon-text"><span class="hidden-xs hidden-sm">Smart</span> Body</span>
+                                        <span class="m-icon-text"><span class="hidden-sm">Smart</span> Body</span>
                                     </a>
                                 </li>
                                 <li>
                                     <a data-click="#show-smart-travel" class="category-link__smart-travel m-icon-text-holder" ng-click="switchCategory('smart-travel')" href="/smart-travel">
                                         <i class="hidden-xs hidden-sm hidden-md m-icon m-icon--travel"></i>
-                                        <span class="m-icon-text"><span class="hidden-xs hidden-sm">Smart</span> Travel</span>
+                                        <span class="m-icon-text"><span class="hidden-sm">Smart</span> Travel</span>
                                     </a>
                                 </li>
                             </ul>

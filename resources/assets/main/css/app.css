@@ -10643,10 +10643,14 @@ footer.about-footer {
       #top-nav a.signin i {
         display: none; }
     #top-nav .category-menu {
+      padding-left: 25px;
+      padding-right: 0;
       padding-top: 9px; }
       #top-nav .category-menu ul {
         overflow: visible;
         margin-left: 7%; }
+        #top-nav .category-menu ul a {
+          font-size: 1rem !important; }
       #top-nav .category-menu .search-toggle-button {
         display: none; }
 
