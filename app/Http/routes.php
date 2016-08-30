@@ -29,7 +29,7 @@ Route::any('secure-page-header', 'UserController@securePageHeader');
 
 
 Route::get('/', 'PageController@home');
-Route::get('/{permalink?}', 'PageController@home');
+//Route::get('/{permalink?}', 'PageController@home');
 
 Route::get('update-price', 'ProductController@priceUpdate');
 
@@ -133,6 +133,7 @@ Route::group(['prefix' => 'api'], function () {
     Route::post('user/user-list', 'UserController@userList');
     Route::post('user/subscriber-list', 'UserController@subscriberList');
     Route::get('user/download/subscriber-list', 'UserController@downloadSubscribersList');
+    Route::get('user/download/registered-user-list', 'UserController@downloadRegisteredUserList');
 
     Route::get('user/get-user/{id?}', 'UserController@getUserById');
     // Route::any('user/user-add/{id?}','UserController@userList');
@@ -374,6 +375,9 @@ Route::get('room/{permalink?}', 'PageController@getRoomPage'); // temp keeping t
 // default signup
 Route::get('signup/{email?}/{source?}', 'PageController@signupPage');
 Route::get('login', 'PageController@loginView');
+
+Route::get('signup', 'PageController@signupPage');
+
 
 // User Notification
 Route::get('/user/notification', 'UserController@viewPublicProfileNotice');
