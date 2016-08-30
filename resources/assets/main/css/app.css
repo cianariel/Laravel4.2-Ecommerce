@@ -6697,7 +6697,8 @@ body.contactus-page .mid-nav .rooms.extra-nav,
   max-width: 30px;
   margin-top: 7px;
   transition: all .7s;
-  border-radius: 0; }
+  border-radius: 0;
+  z-index: 99; }
   .search-toggle-button.active, .search-toggle-button:not(.mobile):hover {
     background: rgba(255, 0, 66, 0.7);
     color: #fff; }
@@ -8051,6 +8052,9 @@ header.colophon {
     @media (min-width: 1200px) {
       #top-nav .category-menu ul > li a {
         margin-right: 25px; } }
+    @media (min-width: 380px) {
+      #top-nav .category-menu ul > li a {
+        margin-right: 22px; } }
   #top-nav .category-menu ul > li a:hover, #top-nav .category-menu ul > li a:focus {
     text-decoration: none; }
 #top-nav .top-nav-holder {
@@ -10647,8 +10651,9 @@ footer.about-footer {
       #top-nav a.signin i {
         display: none; }
     #top-nav .category-menu {
-      padding-left: 25px;
+      margin-left: 25px;
       padding-right: 0;
+      padding-left: 0;
       padding-top: 9px; }
       #top-nav .category-menu ul {
         overflow: visible;
@@ -11037,16 +11042,11 @@ footer.about-footer {
     overflow: hidden;
     padding-top: 3%; } }
 @media screen and (max-width: 380px) {
-  #top-nav .mobile-category-menu {
-    margin-left: 8px; }
   #top-nav .mobile-wrap {
     width: 225px;
     float: right; }
   #top-nav .search-bar a {
     margin-right: 0; }
-
-  header.colophon #top-nav .category-menu {
-    margin-left: 0; }
 
   #hero-nav .container {
     padding-left: 0; } }

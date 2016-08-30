@@ -2088,6 +2088,7 @@ body.contactus-page
   margin-top: 7px;
   transition: all .7s;
   border-radius: 0;
+  z-index: 99;
 
   &.active,
   &:not(.mobile):hover{
@@ -4208,6 +4209,8 @@ body:not(.single){
         ul > li{
             &:first-child a{
                 padding-left: 4px;
+
+
             }
 
              > a i.m-icon{
@@ -4221,6 +4224,9 @@ body:not(.single){
 
               @media (min-width:1200px){
                 margin-right: 25px;
+              }
+              @media(min-width:380px){
+                margin-right: 22px;
               }
             }
             a:hover, a:focus{
@@ -8142,8 +8148,9 @@ footer.about-footer{
         }
     }
     .category-menu {
-        padding-left: 25px;
+        margin-left: 25px;
         padding-right: 0;
+        padding-left: 0;
         padding-top: 9px;
 
       ul{
@@ -8802,9 +8809,9 @@ footer.about-footer{
 
 @media screen and (max-width: 380px) {
   #top-nav{
-    .mobile-category-menu {
-      margin-left: 8px;
-    }
+    //.mobile-category-menu {
+    //  margin-left: 8px;
+    //}
 
     .mobile-wrap {
       width: 225px;
@@ -8818,9 +8825,9 @@ footer.about-footer{
     }
   }
 
-  header.colophon #top-nav .category-menu {
-    margin-left: 0;
-  }
+  //header.colophon #top-nav .category-menu {
+  //  margin-left: 0;
+  //}
 
 
   #hero-nav{
