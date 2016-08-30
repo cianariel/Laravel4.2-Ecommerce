@@ -463,27 +463,23 @@ class UserController extends ApiController
     // download the list of subscribed user
     public function downloadSubscribersList()
     {
-        $filename = 'subscribers.csv';
-        $headers = [
-            'Cache-Control' => 'must-revalidate, post-check=0, pre-check=0',
-            'Content-type' => 'text/csv',
-            'Content-Disposition' => 'attachment; filename=' . $filename,
-            'Expires' => '0',
-            'Pragma' => 'public',
-        ];
-
         $list = $this->subscriber->allSubscribers()->toArray();//User::all()->toArray();
 
-        # add headers for each column in the CSV download
-        array_unshift($list, array_keys($list[0]));
 
-        $callback = function () use ($list) {
-            $FH = fopen('php://output', 'w');
-            foreach ($list as $row) {
-                fputcsv($FH, $row);
-            }
-            fclose($FH);
-        };
+        $filename = 'subscribers.csv';
+        list($headers, $callback) = $this->writeToFile($filename, $list);
+
+        return response()->stream($callback, 200, $headers);
+
+    }
+
+    public function downloadRegisteredUserList()
+    {
+        $list = $this->user->all(['name','email'])->toArray();//User::all()->toArray();
+
+
+        $filename = 'registered-user.csv';
+        list($headers, $callback) = $this->writeToFile($filename, $list);
 
         return response()->stream($callback, 200, $headers);
 
@@ -552,6 +548,35 @@ class UserController extends ApiController
 
       //  return view('email.notification') 
         //    ->with('content',$data);
+    }
+
+    /**
+     * @param $filename
+     * @param $list
+     * @return array
+     */
+    public function writeToFile($filename, $list)
+    {
+        $headers = [
+            'Cache-Control' => 'must-revalidate, post-check=0, pre-check=0',
+            'Content-type' => 'text/csv',
+            'Content-Disposition' => 'attachment; filename=' . $filename,
+            'Expires' => '0',
+            'Pragma' => 'public',
+        ];
+
+
+        # add headers for each column in the CSV download
+        array_unshift($list, array_keys($list[0]));
+
+        $callback = function () use ($list) {
+            $FH = fopen('php://output', 'w');
+            foreach ($list as $row) {
+                fputcsv($FH, $row);
+            }
+            fclose($FH);
+        };
+        return array($headers, $callback);
     }
 
 }

@@ -49,7 +49,7 @@
                                                 <div class="row">
                                                     <div class="text-center">
                                                         <a href="/api/user/download/subscriber-list" class="btn btn-success">
-                                                            <i class="fa fa-check"></i> Download Subscribers List
+                                                            <i class="fa fa-download"></i> Download Subscribers List
                                                         </a>
                                                     </div>
                                                     <div class="text-center">

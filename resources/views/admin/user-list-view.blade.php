@@ -87,6 +87,10 @@
                                                         <a class="btn btn-success" href="/admin/user-add"
                                                            type="button"><i class="fa fa-plus"></i> Add User
                                                         </a>
+                                                        &nbsp;&nbsp;
+                                                        <a class="btn btn-info" href="/api/user/download/registered-user-list"
+                                                           type="button"><i class="fa fa-download"></i> Download List
+                                                        </a>
                                                     </div>
                                                 </div>
                                                 <div style="margin-top: 5px">&nbsp;</div>
