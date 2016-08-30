@@ -3085,6 +3085,14 @@ body.category{
 
   h5{
     text-align: center;
+    margin-bottom: 15px;
+
+    @media(min-width: 768px){ 
+      margin-bottom: 25px;
+      margin-top: -50px;
+    }
+
+
     i{
       top: 2px;
       position: relative;
@@ -3092,9 +3100,8 @@ body.category{
     }
     span{
       padding-left: 15px;
-      //padding-top: 15px;
     }
-    margin-bottom: 15px;
+
   }
 
   .box-item{

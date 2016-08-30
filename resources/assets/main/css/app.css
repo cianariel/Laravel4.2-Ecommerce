@@ -7320,6 +7320,10 @@ body.category .rsThumbs {
 .most-popular-new h5 {
   text-align: center;
   margin-bottom: 15px; }
+  @media (min-width: 768px) {
+    .most-popular-new h5 {
+      margin-bottom: 25px;
+      margin-top: -50px; } }
   .most-popular-new h5 i {
     top: 2px;
     position: relative;
