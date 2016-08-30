@@ -403,13 +403,17 @@ class Product extends Model
 
         $product['total'] = $productModel->count();
 
-        $product['allIDs'] = $productModel
+        $productList = $productModel
             ->take($settings['limit'])
-            ->offset($skip)
-            ->orderBy('hit_counter', 'desc')
-            ->orderBy('created_at', 'desc')
-            ->get(array("id"));
+            ->offset($skip);
 
+        if(empty($isAdmin))
+            $productList->orderBy('hit_counter', 'desc');
+
+        $productList = $productList->orderBy('created_at', 'desc')
+                                   ->get(array("id"));
+
+        $product['allIDs'] = $productList;
         $data = array();
 
         $count = $product['allIDs']->count();
