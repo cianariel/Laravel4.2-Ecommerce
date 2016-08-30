@@ -4427,7 +4427,7 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
             $scope.modalInstance = $uibModal.open({
                     templateUrl: templateUrl,
                     scope: $scope,
-                    size: 'md',
+                    size: 'lg',
                     windowClass: 'subscribe_email_popup',
                     controller: 'ModalInstanceCtrltest'
                 })

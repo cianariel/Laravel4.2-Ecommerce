@@ -614,53 +614,7 @@ if (!isset($theGiveAway)) {
 
 </div>
 
-<!-- fake controller -->
- 
-<script type="text/ng-template" id="subscribe_email_popup.html">
-    <div id="subscribe_email_popup">
-        <div id="publicApp">
-            <?php if (isset($theGiveAway) && @$theGiveAway->giveaway_image){
-                    echo '<img class="hidden-soft shown-sm" src="'.@$theGiveAway->giveaway_image.'">';
-            }
-            ?>
-            <i class="giveaway-icon m-icon m-icon--giveaway"></i>
-            <div class="content-container">
-                <div class="content-holder">
-                    <div>
-                        <h4>Subscribe to the most unique community centered on Smarter Living. Get tips, stories, and freebies</h4></div>
-                    <ul>
-                        <li>Enter to win Free Smart Home devices</li>
-                        <li>Get exclusive coupons & deals</li>
-                        <li>Get tips to transform your home to a Smart Home</li>
-                    </ul>
-                    <br>
-                    <div>
-                        <h5>Enter your email</h5>
-                        <strong class="red"><?php echo '{{ responseMessage }}' ?></strong>
-                    </div>
-                    <div>
-                         <span class="email-input-holder ">
-                                <i class="m-icon m-icon--email-form-id black"></i>
-                               <input class="form-control" ng-model="data.SubscriberEmail" placeholder="me@email.com"
-                                      type="text">
-                        </span>
-                    </div>
-                    <br>
-                    <div>
-                        <a class="btn btn-success form-control" ng-click="subscribe(data,'popup')">Subscribe</a>
-                    </div>
-                    <br>
-                    <p class="text-center">
-                        <a href="#" ng-click="hideAndForget()">Not right now, I don’t want free Smart Home gadgets</a>
-                    </p>
-                </div>
-            </div>
-            <div class="img-holder head-image-holder hidden-sm hidden-xs">
-                <img src="/assets/images/emailpopupimg.png">
-            </div>
-            <div class="clearfix"></div>
-        </div>
-    </div>
-
-</script>
+<?php // have to use only pure php includes, or the CMS wont read it
+    include('/var/www/ideaing/resources/views/layouts/parts/modals/newsletter.blade.php')
+?>
 
