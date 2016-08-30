@@ -5986,11 +5986,10 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
             });
 
             $scope.firstLoad = pagingApi.getGridContent(1, 0, false, false,  $scope.ideaCategory).success(function (response) {
-                console.log(333333)
                 $scope.allContent[0] = response;
 
                 var newContent = [];
-                newContent[0] = $scope.sliceToRows(response['content']['ideas'], response['content']['featured'], response['content']['products']); 
+                newContent[0] = $scope.sliceToRows(response['content']['ideas'], response['content']['products']); 
 
                 $scope.content = newContent;
                 console.log(response)
@@ -6016,7 +6015,7 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
 
             $scope.nextLoad =  pagingApi.getGridContent($scope.currentPage, $limit, $scope.currentTag, $scope.filterBy, $scope.ideaCategory).success(function (response) {
 
-                var newContent = $scope.sliceToRows(response['content']['ideas'], response['content']['featured'], response['content']['products']);;
+                var newContent = $scope.sliceToRows(response['content']['ideas'], response['content']['products']);;
                 // if($scope.currentPage == 2){
                 //     newContent['currentDay'] = 'Yesterday';
                 // }else{
@@ -6034,8 +6033,11 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
         };
 
 
-        $scope.sliceToRows = function($ideas, $featured, $products){
+        $scope.sliceToRows = function($ideas, $products){ 
             var $return = [];
+            console.log('$ideas');
+
+            console.log($ideas);
             $return['row-1'] = $ideas.slice(0, 1);
             $return['row-2'] = $ideas.slice(2, 4);
             $return['row-3'] = $products.slice(0, 3);

@@ -593,12 +593,12 @@ class PageController extends ApiController
     {
         $cacheKey = "grid-content-$page-$limit-$tag-$type-$categoryName";
 
-          if($cachedContent = PageHelper::getFromRedis($cacheKey)){
-               $return = $cachedContent;
-               $return->fromCache = true;
-               $return->cacheKey = $cacheKey;
-               return json_encode($return);
-          }
+        if($cachedContent = PageHelper::getFromRedis($cacheKey)){
+           $return = $cachedContent;
+           $return->fromCache = true;
+           $return->cacheKey = $cacheKey;
+           return json_encode($return);
+        }
 
         if($categoryName == 'default'){
             $categoryName = false;
@@ -615,7 +615,7 @@ class PageController extends ApiController
             $productLimit = 6;
             $productOffset = 6 * ($page - 1);
 
-            $storyLimit = 6;
+            $storyLimit = 7;
             $storyOffset = 5 * ($page - 1);
 
         } else {
@@ -682,16 +682,16 @@ class PageController extends ApiController
             $leftOver++;
         }
 
-        if($stories['featured']) {
-            // print_r( $stories); die();
+        // if($stories['featured']) {
+        //     // print_r( $stories); die();
 
-            $featuredStories = array_slice($stories['featured']->toArray(), 0, $featuredLimit);
-            if (!empty(array_slice($stories['featured']->toArray(), $featuredLimit, 1))) {
-                $leftOver++;
-            }
-        } else {
-            $featuredStories = [];
-        }
+        //     $featuredStories = array_slice($stories['featured']->toArray(), 0, $featuredLimit);
+        //     if (!empty(array_slice($stories['featured']->toArray(), $featuredLimit, 1))) {
+        //         $leftOver++;
+        //     }
+        // } else {
+        //     $featuredStories = [];
+        // }
 
         $prods = array_slice($products['result'], 0, $productLimit);
 
@@ -701,7 +701,7 @@ class PageController extends ApiController
 
         $return['content']['ideas'] = $regularStories;
         $return['content']['products'] = $prods;
-        $return['content']['featured'] = $featuredStories;
+        // $return['content']['featured'] = $featuredStories;
 
 //        usort($return['content']['regular'], function ($a, $b) {
 //            return strtotime(@$b->raw_creation_date) - strtotime(@$a->raw_creation_date);
