@@ -17,7 +17,7 @@
                     <div class="swing-lined col-xs-6 no-padding pull-right grey"  data-toggle=".content-subscribe" data-hide=".content-register"><span><b>Email Only</b></span></div>
                 </div>
                 <ul class="why-join">
-                    <li><i class="m-icon m-icon--deals pink"></i> Enter to win Free Smart Home devices</li>
+                    <li><i class="m-icon m-icon--deals pink"></i> Exclusive coupons and deals on the smartest gadgets</li>
                     <li><i class="m-icon m-icon--video green"></i> Be eligible for to win free smart gadgets</li>
                     <li><i class="m-icon m-icon--bulb-detailed-on-rating blue"></i> Stories and tips on transforming how you live + play</li>
                 </ul>
@@ -34,10 +34,10 @@
                     <strong class="red"><?php echo '{{ responseMessage }}' ?></strong>
                          <span class="email-input-holder ">
                                 <i class="m-icon m-icon--email-form-id black"></i>
-                               <input class="form-control not-rounded" ng-model="data.SubscriberEmail" placeholder="me@email.com"
+                               <input class="form-control not-rounded" placeholder="me@email.com"
                                       type="text">
                         </span>
-                    <a class="btn btn-success form-control not-rounded" ng-click="subscribe(data,'popup')">Join</a>
+                    <a class="btn btn-success form-control not-rounded" ng-click="registerSubscribedUser()">Join</a>
                 </div>
             </div>
             <footer class="black-footer relative black-bg full-wide text-right white overhide"><b>Maybe Later <i class="m-icon--Close white" ng-click="hideAndForget()"></i></b></footer>
