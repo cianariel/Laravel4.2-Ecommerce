@@ -10671,12 +10671,10 @@ html.hide-overflow{
 .subscribe_email_popup{
   width: 1880px;
   max-width: 80%;
-  /* position: absolute; */
   left: auto;
-  bottom: 0;
+  bottom: -10px;
   top: auto;
-  right: 0;
-  /* margin: auto; */
+  right: -11px;
   z-index: 1052!important;
 
   .modal-content{
@@ -10746,6 +10744,18 @@ html.hide-overflow{
         background-color: rgba(#000, 0.7);
       }
 
+    }
+
+    .password-input-holder{
+      margin-bottom: 3px;
+      input{
+        //&:first-child{
+        //  margin-right: 3px;
+        //}
+        width: 49%;
+        margin-bottom: 3px;
+        float: left;
+      }
     }
 
     .seen-on {

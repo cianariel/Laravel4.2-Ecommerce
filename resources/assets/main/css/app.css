@@ -580,6 +580,53 @@ body.has-active-menu {
   padding: 1.6em 0;
   width: 100%; }
 
+.bordering {
+  /* Madoka */ }
+  .bordering .graphic {
+    position: absolute;
+    top: 0;
+    left: 0;
+    fill: none; }
+  .bordering .input--madoka {
+    margin: 1.1em; }
+  .bordering .input__field--madoka {
+    width: 100%;
+    background: transparent;
+    color: #7A7593; }
+  .bordering .input__label--madoka {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    color: #7A7593;
+    text-align: left;
+    cursor: text; }
+  .bordering .input__label-content--madoka {
+    -webkit-transform-origin: 0% 50%;
+    transform-origin: 0% 50%;
+    -webkit-transition: -webkit-transform 0.3s;
+    transition: transform 0.3s; }
+  .bordering .graphic--madoka {
+    -webkit-transform: scale3d(1, -1, 1);
+    transform: scale3d(1, -1, 1);
+    -webkit-transition: stroke-dashoffset 0.3s;
+    transition: stroke-dashoffset 0.3s;
+    pointer-events: none;
+    stroke: #7A7593;
+    stroke-width: 4px;
+    stroke-dasharray: 962;
+    stroke-dashoffset: 558; }
+  .bordering .input__field--madoka:focus + .input__label--madoka,
+  .bordering .input--filled .input__label--madoka {
+    cursor: default;
+    pointer-events: none; }
+  .bordering .input__field--madoka:focus + .input__label--madoka .graphic--madoka,
+  .bordering .input--filled .graphic--madoka {
+    stroke-dashoffset: 0; }
+  .bordering .input__field--madoka:focus + .input__label--madoka .input__label-content--madoka,
+  .bordering .input--filled .input__label-content--madoka {
+    -webkit-transform: scale3d(0.81, 0.81, 1) translate3d(0, 4em, 0);
+    transform: scale3d(0.81, 0.81, 1) translate3d(0, 4em, 0); }
+
 /* Fly up modal */
 .ns-effect-genie {
   transition: opacity .4s; }
@@ -12387,12 +12434,10 @@ html.hide-overflow {
 .subscribe_email_popup {
   width: 1880px;
   max-width: 80%;
-  /* position: absolute; */
   left: auto;
-  bottom: 0;
+  bottom: -10px;
   top: auto;
-  right: 0;
-  /* margin: auto; */
+  right: -11px;
   z-index: 1052 !important; }
   .subscribe_email_popup .modal-content {
     background: transparent !important;
@@ -12443,6 +12488,12 @@ html.hide-overflow {
         padding-left: 0;
         box-shadow: 0.2em 0 0 rgba(0, 0, 0, 0.7), -0.8em 0 0 rgba(0, 0, 0, 0.7);
         background-color: rgba(0, 0, 0, 0.7); }
+    .subscribe_email_popup #subscribe_email_popup .password-input-holder {
+      margin-bottom: 3px; }
+      .subscribe_email_popup #subscribe_email_popup .password-input-holder input {
+        width: 49%;
+        margin-bottom: 3px;
+        float: left; }
     .subscribe_email_popup #subscribe_email_popup .seen-on {
       bottom: -10px;
       height: 90px;
