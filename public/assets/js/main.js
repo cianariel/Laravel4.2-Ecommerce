@@ -4444,15 +4444,15 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                     });
                 });
 
-                instance.opened.then(function () {
-                    console.log('yo maaaan1')
+                instance.rendered.then(function () {
+                    //console.log('yo maaaan1')
 
                     setTimeout(function(){
-                    console.log('yo maaaan2')
+                    //console.log('yo maaaan2')
                      $('#subscribe_email_popup').addClass('ns-show');
                      $('#subscribe_email_popup').removeClass('ns-hide');
 
-                    }, 1000);
+                    }, 500);
 
                 })
         };

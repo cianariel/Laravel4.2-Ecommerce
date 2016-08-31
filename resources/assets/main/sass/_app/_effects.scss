@@ -683,7 +683,7 @@ body.has-active-menu{
 //  background: #fff;
 //}
 
-.ns-show .ns-effect-genie{
+.ns-effect-genie.ns-show {
   -webkit-animation-name: animGenie;
   animation-name: animGenie;
   -webkit-animation-duration: 0.4s;

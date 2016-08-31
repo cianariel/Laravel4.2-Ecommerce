@@ -587,7 +587,7 @@ body.has-active-menu {
 .ns-hide {
   opacity: 0; }
 
-.ns-show .ns-effect-genie {
+.ns-effect-genie.ns-show {
   -webkit-animation-name: animGenie;
   animation-name: animGenie;
   -webkit-animation-duration: 0.4s;
@@ -12387,11 +12387,17 @@ html.hide-overflow {
 .subscribe_email_popup {
   width: 1880px;
   max-width: 80%;
-  position: absolute;
-  left: 0;
+  /* position: absolute; */
+  left: auto;
   bottom: 0;
+  top: auto;
   right: 0;
-  margin: auto; }
+  /* margin: auto; */
+  z-index: 1052 !important; }
+  .subscribe_email_popup .modal-content {
+    background: transparent !important;
+    box-shadow: none;
+    border: 0; }
   @media (max-width: 1000px) {
     .subscribe_email_popup {
       max-width: 95%; } }
@@ -12400,6 +12406,8 @@ html.hide-overflow {
     width: 1880px;
     max-width: 100%;
     background-color: #fff; }
+    .subscribe_email_popup #subscribe_email_popup .modal-content {
+      background: transparent !important; }
     .subscribe_email_popup #subscribe_email_popup .img-holder {
       position: static;
       min-height: 340px; }
@@ -12501,6 +12509,8 @@ html.hide-overflow {
     .subscribe_email_popup #subscribe_email_popup .black-footer {
       padding: 5px 15px;
       z-index: 12; }
+      .subscribe_email_popup #subscribe_email_popup .black-footer b {
+        cursor: pointer; }
       .subscribe_email_popup #subscribe_email_popup .black-footer i {
         padding-left: 20px; }
     .subscribe_email_popup #subscribe_email_popup .btn-success {

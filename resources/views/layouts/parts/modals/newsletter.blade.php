@@ -40,7 +40,7 @@
                     <a class="btn btn-success form-control not-rounded" ng-click="registerSubscribedUser()">Join</a>
                 </div>
             </div>
-            <footer class="black-footer relative black-bg full-wide text-right white overhide"><b>Maybe Later <i class="m-icon--Close white" ng-click="hideAndForget()"></i></b></footer>
+            <footer class="black-footer relative black-bg full-wide text-right white overhide"><b   ng-click="hideAndForget()">Maybe Later <i class="m-icon--Close white"></i></b></footer>
         </div>
     </div>
 
