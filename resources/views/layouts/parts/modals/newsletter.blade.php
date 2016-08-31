@@ -1,5 +1,5 @@
 <script type="text/ng-template" id="subscribe_email_popup.html">
-    <div id="subscribe_email_popup">
+    <div id="subscribe_email_popup" class="ns-effect-genie ns-hide relative">
         <div id="publicApp">
             <div class="col-sm-6 col-xs-12 img-holder no-padding">
                 <h4 class="white relative"><span>Subscribe to the most unique community centered on Living Smarter</span></h4>

@@ -175,7 +175,7 @@ if (!isset($theGiveAway)) {
 
                                 <?php }  else { ?>
                                     <a class="signin" data-toggle="modal" data-target="#myModal" href="/login"></i> Hi, sign in</a>
-                                    <a class="new-message" href="#" ng-click="getEmailPopup(true)">
+                                    <a id="notification-trigger" class="new-message" href="#" ng-click="getEmailPopup(true)">
                                                 <img width="40px" src="https://s3-us-west-1.amazonaws.com/ideaing-01/120-product-56ce7066c0ef3-user-default 2.png" alt="" class="profile-photo ">
                                         <span class="notification-count ng-binding">1</span>
                                     </a>
@@ -617,4 +617,9 @@ if (!isset($theGiveAway)) {
 <?php // have to use only pure php includes, or the CMS wont read it
     include('/var/www/ideaing/resources/views/layouts/parts/modals/newsletter.blade.php')
 ?>
-
+<script>
+//   $('#notification-trigger').click(function(){
+//       $('.subscribe_email_popup').toggleClass('ns-show');
+//       $('.subscribe_email_popup').toggleClass('ns-hide');
+//   })
+</script>

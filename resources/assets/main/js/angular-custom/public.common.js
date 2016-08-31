@@ -277,13 +277,19 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
 
             $scope.isSubscriberClicked = clickStatus;
 
-            //console.log('clicked : ' + $scope.isSubscriberClicked);
             $scope.modalInstance = $uibModal.open({
+                    animation: true,
                     templateUrl: templateUrl,
                     scope: $scope,
                     size: 'lg',
                     windowClass: 'subscribe_email_popup',
                     controller: 'ModalInstanceCtrltest'
+                })
+                .opened(function () {
+                    console.log('yo maaaan')
+
+                    $('#subscribe_email_popup').toggleClass('ns-show');
+                    $('#subscribe_email_popup').toggleClass('ns-hide');
                 })
                 .result.finally(function () {
                     $scope.uploader.formData = [];
