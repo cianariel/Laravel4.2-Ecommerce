@@ -4423,21 +4423,16 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
 
             $scope.isSubscriberClicked = clickStatus;
 
-            $scope.modalInstance = $uibModal.open({
+            instance = $uibModal.open({
                     animation: true,
                     templateUrl: templateUrl,
                     scope: $scope,
                     size: 'lg',
                     windowClass: 'subscribe_email_popup',
                     controller: 'ModalInstanceCtrltest'
-                })
-                .opened(function () {
-                    console.log('yo maaaan')
+                });
 
-                    $('#subscribe_email_popup').toggleClass('ns-show');
-                    $('#subscribe_email_popup').toggleClass('ns-hide');
-                })
-                .result.finally(function () {
+            $scope.modalInstance = instance.result.finally(function () {
                     $scope.uploader.formData = [];
 
                     $http({
@@ -4448,21 +4443,19 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                         //  console.log(data)
                     });
                 });
-        };
 
-        //$scope.hideSiggnupModal = function () {
-        //    // Header profile option open and close on click action.
-        //
-        //    $http({
-        //        url: '/hide-signup',
-        //        method: "GET",
-        //
-        //    }).success(function (data) {
-        //        //$('.subscribe_email_popup').fadeOut();
-        //        $uibModalStack.dismissAll();
-        //
-        //    });
-        //};
+                instance.opened.then(function () {
+                    console.log('yo maaaan1')
+
+                    setTimeout(function(){
+                    console.log('yo maaaan2')
+                     $('#subscribe_email_popup').addClass('ns-show');
+                     $('#subscribe_email_popup').removeClass('ns-hide');
+
+                    }, 1000);
+
+                })
+        };
 
         $scope.openProfileSetting = function (onlyImage) {
 

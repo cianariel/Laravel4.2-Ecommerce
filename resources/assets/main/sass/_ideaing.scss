@@ -10677,6 +10677,7 @@ html.hide-overflow{
   bottom: 0;
   right: 0;
   margin: auto;
+  z-index: 1052 !important;
 
   @media(max-width: 1000px) {
     max-width: 95%;
@@ -10687,6 +10688,10 @@ html.hide-overflow{
     width: 1880px;
     max-width: 100%;
     background-color: #fff;
+
+    .modal-content{
+      background: transparent !important;
+    }
 
     .img-holder{
       position: static;
