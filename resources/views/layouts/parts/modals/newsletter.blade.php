@@ -17,7 +17,7 @@
                     <div class="swing-lined col-xs-6 no-padding pull-right grey"  data-toggle=".content-subscribe" data-hide=".content-register"><span><b>Email Only</b></span></div>
                 </div>
                 <ul class="why-join">
-                    <li><i class="m-icon m-icon--bulb-detailed-on-rating blue"></i> Enter to win Free Smart Home devices</li>
+                    <li><i class="m-icon m-icon--deals pink"></i> Enter to win Free Smart Home devices</li>
                     <li><i class="m-icon m-icon--video green"></i> Be eligible for to win free smart gadgets</li>
                     <li><i class="m-icon m-icon--bulb-detailed-on-rating blue"></i> Stories and tips on transforming how you live + play</li>
                 </ul>
