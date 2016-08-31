@@ -12339,76 +12339,121 @@ html.hide-overflow {
   top: 8px;
   font-size: 5rem; }
 
-#subscribe_email_popup {
+.subscribe_email_popup .modal-dialog {
+  width: 1880px;
+  max-width: 80%; }
+  @media (max-width: 1000px) {
+    .subscribe_email_popup .modal-dialog {
+      max-width: 95%; } }
+.subscribe_email_popup #subscribe_email_popup {
   overflow: hidden;
   width: 1880px;
   max-width: 100%;
   background-color: #fff; }
-  #subscribe_email_popup img {
-    width: 100%; }
-  #subscribe_email_popup .seen-on {
-    bottom: 0;
-    height: 90px; }
-    #subscribe_email_popup .seen-on span {
-      height: 80px;
-      width: 90px;
-      float: left; }
-      #subscribe_email_popup .seen-on span.caption {
-        font-size: 1.2rem;
-        height: 20px;
-        margin-top: 33px; }
-      #subscribe_email_popup .seen-on span.media-logo {
-        display: inline-block;
-        text-indent: -9999px; }
-        #subscribe_email_popup .seen-on span.media-logo.haffington-logo {
-          width: 149px;
-          background: url("/assets/images/newsletter-popup/huffington-post-white.png") no-repeat center; }
-        #subscribe_email_popup .seen-on span.media-logo.entrepreneur-logo {
-          background: url("/assets/images/newsletter-popup/entrepreneur-white.png") no-repeat center; }
-        #subscribe_email_popup .seen-on span.media-logo.lifehack-logo {
-          background: url("/assets/images/newsletter-popup/lifehack-white.png") no-repeat center; }
-  #subscribe_email_popup h4 {
+  .subscribe_email_popup #subscribe_email_popup .img-holder {
+    position: static;
+    min-height: 340px; }
+    @media (max-width: 768px) {
+      .subscribe_email_popup #subscribe_email_popup .img-holder {
+        position: relative; } }
+  .subscribe_email_popup #subscribe_email_popup img {
+    position: absolute;
+    height: 100%;
+    width: 50%;
+    z-index: 10; }
+    @media (max-width: 768px) {
+      .subscribe_email_popup #subscribe_email_popup img {
+        width: 100%; } }
+  .subscribe_email_popup #subscribe_email_popup h4 {
     display: inline;
     position: absolute;
     top: 26%;
     left: 0;
-    max-width: 76%;
+    max-width: 43%;
     line-height: 1.9;
     font-size: 2.3rem;
-    padding-left: 15px; }
-    #subscribe_email_popup h4 span {
+    padding-left: 15px;
+    z-index: 12; }
+    @media (max-width: 768px) {
+      .subscribe_email_popup #subscribe_email_popup h4 {
+        max-width: 80%; } }
+    @media (max-width: 1000px) {
+      .subscribe_email_popup #subscribe_email_popup h4 {
+        top: 13%; } }
+    .subscribe_email_popup #subscribe_email_popup h4 span {
       padding: 0.2em;
       padding-left: 0;
       box-shadow: 0.2em 0 0 rgba(0, 0, 0, 0.7), -0.8em 0 0 rgba(0, 0, 0, 0.7);
       background-color: rgba(0, 0, 0, 0.7); }
-  #subscribe_email_popup .content-holder {
+  .subscribe_email_popup #subscribe_email_popup .seen-on {
+    bottom: -10px;
+    height: 90px;
+    z-index: 12; }
+    @media (max-width: 1000px) {
+      .subscribe_email_popup #subscribe_email_popup .seen-on {
+        height: 114px;
+        bottom: 15px; } }
+    .subscribe_email_popup #subscribe_email_popup .seen-on span {
+      height: 80px;
+      width: 90px;
+      float: left; }
+      .subscribe_email_popup #subscribe_email_popup .seen-on span.caption {
+        font-size: 1.2rem;
+        height: 20px;
+        margin-top: 13px; }
+        @media (max-width: 1000px) {
+          .subscribe_email_popup #subscribe_email_popup .seen-on span.caption {
+            width: 100%;
+            margin-top: 33px; } }
+      .subscribe_email_popup #subscribe_email_popup .seen-on span.media-logo {
+        height: 40px;
+        display: inline-block;
+        text-indent: -9999px; }
+        .subscribe_email_popup #subscribe_email_popup .seen-on span.media-logo.haffington-logo {
+          width: 149px;
+          background: url("/assets/images/newsletter-popup/huffington-post-white.png") no-repeat center; }
+          @media (max-width: 620px) {
+            .subscribe_email_popup #subscribe_email_popup .seen-on span.media-logo.haffington-logo {
+              width: 170px; } }
+        .subscribe_email_popup #subscribe_email_popup .seen-on span.media-logo.entrepreneur-logo {
+          background: url("/assets/images/newsletter-popup/entrepreneur-white.png") no-repeat center; }
+        .subscribe_email_popup #subscribe_email_popup .seen-on span.media-logo.lifehack-logo {
+          background: url("/assets/images/newsletter-popup/lifehack-white.png") no-repeat center; }
+          @media (max-width: 620px) {
+            .subscribe_email_popup #subscribe_email_popup .seen-on span.media-logo.lifehack-logo {
+              margin-left: 36%;
+              margin-top: -11px; } }
+  .subscribe_email_popup #subscribe_email_popup .content-holder {
     padding: 6% 5% 4%; }
-  #subscribe_email_popup .toggles {
+  .subscribe_email_popup #subscribe_email_popup .toggles {
     height: 39px;
     padding: 0;
     border-bottom: 3px solid #d4d4d4; }
-    #subscribe_email_popup .toggles .swing-lined {
+    .subscribe_email_popup #subscribe_email_popup .toggles .swing-lined {
       height: 40px; }
-    #subscribe_email_popup .toggles span {
+      .subscribe_email_popup #subscribe_email_popup .toggles .swing-lined.active {
+        color: #FF0042; }
+    .subscribe_email_popup #subscribe_email_popup .toggles span {
       display: block;
       height: 42px;
       max-height: 41px;
       font-size: 2rem;
       padding-bottom: 18px;
       padding-right: 24px; }
-      #subscribe_email_popup .toggles span.active {
-        color: #FF0042; }
-  #subscribe_email_popup .why-join {
+  .subscribe_email_popup #subscribe_email_popup .why-join {
     margin-top: 25px;
     margin-bottom: 15px;
     font-weight: bold; }
-    #subscribe_email_popup .why-join li {
+    .subscribe_email_popup #subscribe_email_popup .why-join li {
       padding-bottom: 15px; }
-      #subscribe_email_popup .why-join li .m-icon {
+      .subscribe_email_popup #subscribe_email_popup .why-join li .m-icon {
         padding-right: 4px; }
-  #subscribe_email_popup .black-footer {
-    padding: 5px 15px; }
-  #subscribe_email_popup .btn-success {
+  .subscribe_email_popup #subscribe_email_popup .black-footer {
+    padding: 5px 15px;
+    z-index: 12; }
+    .subscribe_email_popup #subscribe_email_popup .black-footer i {
+      padding-left: 20px; }
+  .subscribe_email_popup #subscribe_email_popup .btn-success {
     margin-top: 3px;
     padding-top: 11px; }
 

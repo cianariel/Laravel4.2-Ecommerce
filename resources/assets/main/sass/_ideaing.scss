@@ -10668,152 +10668,226 @@ html.hide-overflow{
   font-size: 5rem;
 }
 
-#subscribe_email_popup{
-  overflow: hidden;
-  width: 1880px;
-  max-width: 100%;
-  background-color:#fff;
+.subscribe_email_popup{
+  .modal-dialog {
+    width: 1880px;
+    max-width: 80%;
 
-  img{
-    width: 100%;
+    @media(max-width: 1000px) {
+      max-width: 95%;
+    }
   }
 
-  .seen-on{
-    bottom: 0;
-    height: 90px;
+  #subscribe_email_popup {
+    overflow: hidden;
+    width: 1880px;
+    max-width: 100%;
+    background-color: #fff;
 
-    span{
-      height: 80px;
-      width: 90px;
-      float: left;
+    .img-holder{
+      position: static;
+      min-height: 340px;
 
-      &.caption{
-        font-size: 1.2rem;
-        height: 20px;
-        margin-top: 33px;
-      }
-
-      &.media-logo{
-        display: inline-block;
-        text-indent: -9999px;
-
-        &.haffington-logo{
-          width: 149px;
-          background:url('/assets/images/newsletter-popup/huffington-post-white.png') no-repeat center;
-        }
-
-        &.entrepreneur-logo{
-          background:url('/assets/images/newsletter-popup/entrepreneur-white.png') no-repeat center;
-        }
-
-        &.lifehack-logo{
-          background:url('/assets/images/newsletter-popup/lifehack-white.png') no-repeat center;
-        }
+      @media(max-width: 768px) {
+        position: relative;
       }
     }
-  }
 
-  h4{
-    display: inline;
-    position: absolute;
-    top: 26%;
-    left: 0;
-    max-width: 76%;
-    line-height: 1.9;
-    font-size: 2.3rem;
-    padding-left: 15px;
+    img{
+      position: absolute;
+      height: 100%;
+      width: 50%;
+      z-index: 10;
 
-    span{
-      padding: 0.2em;
-      padding-left: 0;
-      box-shadow: 0.2em 0 0 rgba(#000,0.7), -0.8em 0 0 rgba(#000,0.7);
-      background-color: rgba(#000,0.7);
+      @media(max-width: 768px) {
+        width: 100%;
+      }
+
     }
 
-  }
+    h4 {
+      display: inline;
+      position: absolute;
+      top: 26%;
+      left: 0;
+      max-width: 43%;
+      line-height: 1.9;
+      font-size: 2.3rem;
+      padding-left: 15px;
+      z-index: 12;
 
-  .content-holder{
-    padding: 6% 5% 4%;
-  }
+      @media(max-width: 768px) {
+        max-width: 80%;
+      }
 
-  .toggles{
-    height: 39px;
-    padding: 0;
-    border-bottom: 3px solid #d4d4d4;
-    //overflow: hidden;
+      @media(max-width: 1000px) {
+        top: 13%;
+      }
 
-    .swing-lined{
-      height: 40px;
+      span {
+        padding: 0.2em;
+        padding-left: 0;
+        box-shadow: 0.2em 0 0 rgba(#000, 0.7), -0.8em 0 0 rgba(#000, 0.7);
+        background-color: rgba(#000, 0.7);
+      }
+
     }
 
-    span{
-      display: block;
-      height: 42px;
-      max-height: 41px;
-      font-size: 2rem;
-      padding-bottom: 18px;
-      padding-right: 24px;
+    .seen-on {
+      bottom: -10px;
+      height: 90px;
+      z-index: 12;
 
-        &.active{
+      @media(max-width: 1000px) {
+        height: 114px;
+        bottom: 15px;
+
+      }
+
+      span {
+        height: 80px;
+        width: 90px;
+        float: left;
+
+        &.caption {
+          font-size: 1.2rem;
+          height: 20px;
+          margin-top: 13px;
+
+          @media(max-width: 1000px) {
+            width: 100%;
+            margin-top: 33px;
+          }
+        }
+
+        &.media-logo {
+          height: 40px;
+          display: inline-block;
+          text-indent: -9999px;
+
+          &.haffington-logo {
+            width: 149px;
+            background: url('/assets/images/newsletter-popup/huffington-post-white.png') no-repeat center;
+
+
+            @media(max-width: 620px) {
+              width: 170px;
+            }
+
+          }
+
+          &.entrepreneur-logo {
+            background: url('/assets/images/newsletter-popup/entrepreneur-white.png') no-repeat center;
+          }
+
+          &.lifehack-logo {
+            background: url('/assets/images/newsletter-popup/lifehack-white.png') no-repeat center;
+
+            @media(max-width: 620px) {
+              margin-left: 36%;
+              margin-top: -11px;
+            }
+          }
+        }
+      }
+    }
+
+    .content-holder {
+      padding: 6% 5% 4%;
+    }
+
+    .toggles {
+      height: 39px;
+      padding: 0;
+      border-bottom: 3px solid #d4d4d4;
+      //overflow: hidden;
+
+      .swing-lined {
+        height: 40px;
+
+        &.active {
           color: $iridium;
         }
+      }
+
+      span {
+        display: block;
+        height: 42px;
+        max-height: 41px;
+        font-size: 2rem;
+        padding-bottom: 18px;
+        padding-right: 24px;
+      }
+
     }
+    .why-join {
+      margin-top: 25px;
+      margin-bottom: 15px;
+      font-weight: bold;
 
-  }
-  .why-join{
-    margin-top: 25px;
-    margin-bottom: 15px;
-    font-weight: bold;
+      li {
+        padding-bottom: 15px;
 
-    li{
-      padding-bottom: 15px;
-
-      .m-icon{
-        padding-right: 4px;
+        .m-icon {
+          padding-right: 4px;
+        }
       }
     }
-  }
-  .black-footer{
-    padding: 5px 15px;
-  }
+    .black-footer {
+      padding: 5px 15px;
+      z-index: 12;
 
-  .btn-success{
-    margin-top: 3px;
-    padding-top: 11px;
+      i {
+        padding-left: 20px;
+      }
+    }
+
+    .btn-success {
+      margin-top: 3px;
+      padding-top: 11px;
+    }
+
+    //
+    //h4{
+    //  text-align: center;
+    //}
+    //
+    //&, .email-banner{
+    //  ul {
+    //    list-style: none;
+    //    padding:0;
+    //    margin:0;
+    //  }
+    //
+    //  li {
+    //    padding-left: 1em;
+    //    text-indent: -.7em;
+    //  }
+    //
+    //  li:before {
+    //    content: "• ";
+    //    position: relative;
+    //    top:3px;
+    //    font-size: 2rem;
+    //    color: $iridium; /* or whatever color you prefer */
+    //  }
+    //  .btn-success{
+    //    padding-top: 13px;
+    //  }
+    //}
+
   }
-
-  //
-  //h4{
-  //  text-align: center;
-  //}
-  //
-  //&, .email-banner{
-  //  ul {
-  //    list-style: none;
-  //    padding:0;
-  //    margin:0;
-  //  }
-  //
-  //  li {
-  //    padding-left: 1em;
-  //    text-indent: -.7em;
-  //  }
-  //
-  //  li:before {
-  //    content: "• ";
-  //    position: relative;
-  //    top:3px;
-  //    font-size: 2rem;
-  //    color: $iridium; /* or whatever color you prefer */
-  //  }
-  //  .btn-success{
-  //    padding-top: 13px;
-  //  }
-  //}
-
 }
 
 .subscribe_email_popup{
+  //.modal-dialog{
+  //  width: 1880px;
+  //  max-width: 80%;
+  //
+  //  @media(max-width: 1000px){
+  //    max-width: 95%;
+  //  }
+  //}
   //
   //  .img-holder{
   //    @media (min-width: 620px){

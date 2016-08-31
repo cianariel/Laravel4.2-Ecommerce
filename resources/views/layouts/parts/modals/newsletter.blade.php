@@ -2,19 +2,19 @@
     <div id="subscribe_email_popup">
         <div id="publicApp">
             <div class="col-sm-6 col-xs-12 img-holder no-padding">
-                <h4 class="white"><span>Subscribe to the most unique community centered on Living Smarter</span></h4>
+                <h4 class="white relative"><span>Subscribe to the most unique community centered on Living Smarter</span></h4>
                 <div class="seen-on col-xs-12 absolute">
                     <span class="caption"><b class="white">As seen on:</b></span>
                     <span class="media-logo haffington-logo">Huffington post</span>
                     <span class="media-logo entrepreneur-logo">Entrepreneur</span>
                     <span class="media-logo lifehack-logo">Lifehack</span>
                 </div>
-                <img class="img-responsive full-wide" src="/assets/images/newsletter-popup/newsletter-popup.jpg">
+                <img class="img-responsive full-wide col-sm-6 col-xs-12 no-padding" src="/assets/images/newsletter-popup/newsletter-popup.jpg">
             </div>
             <div class="col-sm-6 col-xs-12 content-holder pale-grey-bg">
                 <div class="col-xs-12 toggles center-block">
-                    <div class="swing-lined col-xs-6 no-padding"><span class="active grey" data-toggle=".content-register" data-hide=".content-subscribe"><b>Register</b></span></div>
-                    <div class="swing-lined col-xs-6 no-padding"><span class="pull-right grey" data-toggle=".content-subscribe" data-hide=".content-register"><b>Email Only</b></span></div>
+                    <div class="swing-lined col-xs-6 no-padding active grey" data-toggle=".content-register" data-hide=".content-subscribe"><span><b>Register</b></span></div>
+                    <div class="swing-lined col-xs-6 no-padding pull-right grey"  data-toggle=".content-subscribe" data-hide=".content-register"><span><b>Email Only</b></span></div>
                 </div>
                 <ul class="why-join">
                     <li><i class="m-icon m-icon--bulb-detailed-on-rating blue"></i> Enter to win Free Smart Home devices</li>
@@ -40,7 +40,7 @@
                     <a class="btn btn-success form-control not-rounded" ng-click="subscribe(data,'popup')">Join</a>
                 </div>
             </div>
-            <footer class="black-footer black-bg full-wide text-right white overhide"><b>Maybe Later <i class="m-icon--Close white" ng-click="hideAndForget()"></i></b></footer>
+            <footer class="black-footer relative black-bg full-wide text-right white overhide"><b>Maybe Later <i class="m-icon--Close white" ng-click="hideAndForget()"></i></b></footer>
         </div>
     </div>
 
