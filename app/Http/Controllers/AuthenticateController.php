@@ -363,7 +363,7 @@ class AuthenticateController extends ApiController
                 }
             }
         } catch (\Exception $ex) {
-            //  dd($ex);
+//              dd($ex);
             \Log::error($ex);
 
             return $this->setStatusCode(\Config::get("const.api-status.system-fail"))

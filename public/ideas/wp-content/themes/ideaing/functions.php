@@ -524,7 +524,7 @@ function custom_login(){
             }
 
         }else{
-            wp_redirect('https://ideaing.com/login#?from=cms');
+            wp_redirect($_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['SERVER_NAME'] . '/login#?from=cms');
             exit();
         }
     }
@@ -553,7 +553,7 @@ function ideaingGlobalVars() {
 
         $ch = curl_init();
 
-       $url = 'https://ideaing.com/api/info';
+       $url = $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['SERVER_NAME'] . '/api/info';
 
         $data = array('_wptk' => $token);
 
@@ -625,7 +625,7 @@ if ( $the_query->have_posts() ) {
         $data['title'] = get_the_title();
 
 //        $data = (array)$post;
-        $laravelUser = file_get_contents('https://ideaing.com/api/info-raw/' . get_the_author_email());
+        $laravelUser = file_get_contents($_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['SERVER_NAME'] . '/api/info-raw/' . get_the_author_email());
         $laravelUser = json_decode($laravelUser, true);
 
         if (has_post_thumbnail($ID)) {
@@ -729,7 +729,7 @@ function setPostViews($postID) {
 
 // [product_bar id="id_value"]
 function product_bar_func( $atts ) {
-    $json = file_get_contents('https://ideaing.com/api/products/get-for-bar/' . $atts['id']);
+    $json = file_get_contents($_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['SERVER_NAME'] .'/api/products/get-for-bar/' . $atts['id']);
     $productData = json_decode($json, true);
 
     if(!$productData){
