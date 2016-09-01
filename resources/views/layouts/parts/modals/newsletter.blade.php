@@ -16,41 +16,15 @@
                     <div class="swing-lined col-xs-6 no-padding active grey" data-toggle=".content-register" data-hide=".content-subscribe"><span><b>Register</b></span></div>
                     <div class="swing-lined col-xs-6 no-padding pull-right grey"  data-toggle=".content-subscribe" data-hide=".content-register"><span><b>Email Only</b></span></div>
                 </div>
-                <ul class="why-join">
-                    <li><i class="m-icon m-icon--deals pink"></i> Exclusive coupons and deals on the smartest gadgets</li>
-                    <li><i class="m-icon m-icon--video green"></i> Be eligible for to win free smart gadgets</li>
-                    <li><i class="m-icon m-icon--bulb-detailed-on-rating blue"></i> Stories and tips on transforming how you live + play</li>
-                </ul>
-                <strong class="red"><?php echo '{{ responseMessage }}' ?></strong>
+
                 <div class="content-register bordering">
-
-                 <!--   <span class="password-input-holder bordering">
-                        <label class="input__label input__label--madoka">
-                            <svg class="graphic graphic--madoka" width="100%" height="100%" viewBox="0 0 404 77" preserveAspectRatio="none">
-                                <path d="m0,0l404,0l0,77l-404,0l0,-77z"></path>
-                            </svg>
-                            <input class="form-control not-rounded input__field--madoka" placeholder="Password" type="text">
-                        </label>
-
-                        <label class="input__label input__label--madoka">
-                            <svg class="graphic graphic--madoka" width="100%" height="100%" viewBox="0 0 404 77" preserveAspectRatio="none">
-                                <path d="m0,0l404,0l0,77l-404,0l0,-77z"></path>
-                            </svg>
-                             <input class="form-control not-rounded pull-right input__field--madoka" placeholder="Confirm" type="text">
-                        </label>
-                    </span> -->
-
-                <!--    <span class="email-input-holder bordering">
-                                <i class="m-icon m-icon--email-form-id black"></i>
-                                <label class="input__label input__label--madoka">
-                                    <svg class="graphic graphic--madoka" width="100%" height="100%" viewBox="0 0 404 77" preserveAspectRatio="none">
-                                    <path d="m0,0l404,0l0,77l-404,0l0,-77z"></path>
-                                    </svg>
-                                   <input class="form-control not-rounded input input__field  input__field--madoka" ng-model="data.SubscriberEmail" placeholder="me@email.com" type="text">
-                               </label>
-                        </span> -->
-
-                <section class="content">
+                    <ul class="why-join">
+                        <li><i class="m-icon m-icon--deals pink"></i> Exclusive coupons and deals on the smartest gadgets</li>
+                        <li><i class="m-icon m-icon--video green"></i> Be eligible for to win free smart gadgets</li>
+                        <li><i class="m-icon m-icon--bulb-detailed-on-rating blue"></i> Stories and tips on transforming how you live + play</li>
+                    </ul>
+                    <strong class="red"><?php echo '{{ responseMessage }}' ?></strong>
+                    <section class="content">
                         <span class="input input--madoka">
                             <input class="input__field input__field--madoka" type="text" id="input-31">
                             <label class="input__label input__label--madoka" for="input-31">
@@ -82,7 +56,13 @@
 
                     <a class="btn btn-success form-control not-rounded" ng-click="registerSubscribedUser()">Join and Create a Free account</a>
                 </div>
+
                 <div class="content-subscribe bordering hidden-soft">
+                    <ul class="why-join">
+                        <li  class="greyscale"><i class="m-icon m-icon--deals pink"></i> Exclusive coupons and deals on the smartest gadgets</li>
+                        <li  class="greyscale"><i class="m-icon m-icon--video green"></i> Be eligible for to win free smart gadgets</li>
+                        <li><i class="m-icon m-icon--bulb-detailed-on-rating blue"></i> Stories and tips on transforming how you live + play</li>
+                    </ul>
                     <strong class="red"><?php echo '{{ responseMessage }}' ?></strong>
                     <section class="content">
                         <span class="input input--madoka">

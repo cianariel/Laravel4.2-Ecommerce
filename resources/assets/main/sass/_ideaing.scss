@@ -130,50 +130,10 @@ ol li{
     }
   }
 }
-//
-//.boxy:after,
-//.boxy:before {
-//  content: '';
-//  display: block;
-//  position: absolute;
-//  left: 84%;
-//  width: 0;
-//  height: 0;
-//  border-style: solid;
-//}
-//
-//.boxy:after {
-//  top: -20px;
-//  border-color: transparent transparent #fff transparent ;
-//  border-width: 10px;
-//}
-//
-//.boxy:before {
-//  top: -20px;
-//  border-color: transparent transparent #ededed  transparent ;
-//  border-width: 11px;
-//}
-//
-//
-//.boxy:after,
-//.boxy:before {
-//  content: '';
-//  display: block;
-//  position: absolute;
-//  left: 84%;
-//  width: 0;
-//  height: 0;
-//  border-style: solid;
-//}
-//
-//.boxy:after {
-//  top: 20px;
-//  border-color: transparent transparent transparent #fff;
-//  border-width: 10px;
-//  -ms-transform: rotate(-90deg); /* IE 9 */
-//  -webkit-transform: rotate(-90deg); /* Chrome, Safari, Opera */
-//  transform: rotate(-90deg);
-//}
+
+.modal-backdrop.in{
+  opacity: .7;
+}
 
 .boxy {
   position: relative;
@@ -10780,6 +10740,7 @@ html.hide-overflow{
       bottom: -10px;
       height: 90px;
       z-index: 12;
+      background: rgba(#000, .5);
 
       @media(max-width: 1000px) {
         height: 114px;
@@ -10834,6 +10795,7 @@ html.hide-overflow{
 
     .content-holder {
       padding: 6% 5% 4%;
+      z-index: 12;
     }
 
     .toggles {
@@ -10867,6 +10829,10 @@ html.hide-overflow{
 
       li {
         padding-bottom: 15px;
+
+        &.greyscale{
+          color: #888;
+        }
 
         .m-icon {
           padding-right: 4px;

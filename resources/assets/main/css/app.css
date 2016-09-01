@@ -5261,6 +5261,9 @@ ol li {
     -webkit-transform: scaleX(1);
     transform: scaleX(1); }
 
+.modal-backdrop.in {
+  opacity: .7; }
+
 .boxy {
   position: relative;
   background: #fff;
@@ -12548,7 +12551,8 @@ html.hide-overflow {
     .subscribe_email_popup #subscribe_email_popup .seen-on {
       bottom: -10px;
       height: 90px;
-      z-index: 12; }
+      z-index: 12;
+      background: rgba(0, 0, 0, 0.5); }
       @media (max-width: 1000px) {
         .subscribe_email_popup #subscribe_email_popup .seen-on {
           height: 114px;
@@ -12584,7 +12588,8 @@ html.hide-overflow {
                 margin-left: 36%;
                 margin-top: -11px; } }
     .subscribe_email_popup #subscribe_email_popup .content-holder {
-      padding: 6% 5% 4%; }
+      padding: 6% 5% 4%;
+      z-index: 12; }
     .subscribe_email_popup #subscribe_email_popup .toggles {
       height: 39px;
       padding: 0;
@@ -12606,6 +12611,8 @@ html.hide-overflow {
       font-weight: bold; }
       .subscribe_email_popup #subscribe_email_popup .why-join li {
         padding-bottom: 15px; }
+        .subscribe_email_popup #subscribe_email_popup .why-join li.greyscale {
+          color: #888; }
         .subscribe_email_popup #subscribe_email_popup .why-join li .m-icon {
           padding-right: 4px; }
     .subscribe_email_popup #subscribe_email_popup .black-footer {
