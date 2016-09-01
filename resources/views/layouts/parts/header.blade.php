@@ -1,6 +1,7 @@
 <?php
 // !! IMPORTANT !! -- please use only pure PHP here, no Laravel, otherwise the header will break   in Wordpress !!
 
+
 if (function_exists('is_single')) {
     if (isset($GLOBALS['userData']) && isset($GLOBALS['isAdmin'])) {
         $userData = $GLOBALS['userData'];
@@ -22,7 +23,7 @@ if (!isset($theGiveAway)) {
             $noPopup = 0;
          }
 
-        $json = file_get_contents('https://ideaing.com/api/giveaway/get-current/' . $noPopup);
+        $json = file_get_contents($_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['SERVER_NAME'] . '/api/giveaway/get-current/' . $noPopup);
 
         $theGiveAway = json_decode($json);
     }
