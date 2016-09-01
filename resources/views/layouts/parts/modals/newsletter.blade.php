@@ -23,7 +23,6 @@
                         <li><i class="m-icon m-icon--video green"></i> Be eligible for to win free smart gadgets</li>
                         <li><i class="m-icon m-icon--bulb-detailed-on-rating blue"></i> Stories and tips on transforming how you live + play</li>
                     </ul>
-                    <strong class="red"><?php echo '{{ responseMessage }}' ?></strong>
                     <section class="content">
                         <span class="input input--madoka">
                             <input class="input__field input__field--madoka" type="text" id="input-31">
@@ -63,7 +62,6 @@
                         <li  class="greyscale"><i class="m-icon m-icon--video green"></i> Be eligible for to win free smart gadgets</li>
                         <li><i class="m-icon m-icon--bulb-detailed-on-rating blue"></i> Stories and tips on transforming how you live + play</li>
                     </ul>
-                    <strong class="red"><?php echo '{{ responseMessage }}' ?></strong>
                     <section class="content">
                         <span class="input input--madoka">
                             <input class="input__field input__field--madoka" required ng-model="data.SubscriberEmail" type="text" id="input-34">
@@ -78,6 +76,7 @@
                     </section>
                     <a class="btn btn-success form-control not-rounded"  ng-click="subscribe(data,'popup')">Join</a>
                 </div>
+                <strong class="red"><?php echo '{{ responseMessage }}' ?></strong>
             </div>
             <footer class="black-footer relative black-bg full-wide text-right white overhide"><b   ng-click="hideAndForget()">Maybe Later <i class="m-icon--Close white"></i></b></footer>
         </div>

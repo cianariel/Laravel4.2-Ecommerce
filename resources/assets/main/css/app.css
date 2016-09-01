@@ -12606,6 +12606,10 @@ html.hide-overflow {
         font-size: 2rem;
         padding-bottom: 18px;
         padding-right: 24px; }
+    .subscribe_email_popup #subscribe_email_popup .alert-dismissable, .subscribe_email_popup #subscribe_email_popup .alert-dismissible {
+      padding: 0; }
+      .subscribe_email_popup #subscribe_email_popup .alert-dismissable .close, .subscribe_email_popup #subscribe_email_popup .alert-dismissible .close {
+        display: none; }
     .subscribe_email_popup #subscribe_email_popup .why-join {
       margin-top: 25px;
       margin-bottom: 15px;

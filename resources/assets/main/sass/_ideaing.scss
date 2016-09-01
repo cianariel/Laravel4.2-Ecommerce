@@ -10822,6 +10822,13 @@ html.hide-overflow{
       }
 
     }
+    .alert-dismissable, .alert-dismissible{
+      padding: 0;
+
+      .close{
+        display: none;
+      }
+    }
     .why-join {
       margin-top: 25px;
       margin-bottom: 15px;
