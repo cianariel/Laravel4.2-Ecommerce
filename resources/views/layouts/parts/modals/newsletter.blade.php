@@ -22,9 +22,9 @@
                     <li><i class="m-icon m-icon--bulb-detailed-on-rating blue"></i> Stories and tips on transforming how you live + play</li>
                 </ul>
                 <strong class="red"><?php echo '{{ responseMessage }}' ?></strong>
-                <div class="content-register">
+                <div class="content-register bordering">
 
-                    <span class="password-input-holder bordering">
+                 <!--   <span class="password-input-holder bordering">
                         <label class="input__label input__label--madoka">
                             <svg class="graphic graphic--madoka" width="100%" height="100%" viewBox="0 0 404 77" preserveAspectRatio="none">
                                 <path d="m0,0l404,0l0,77l-404,0l0,-77z"></path>
@@ -38,26 +38,64 @@
                             </svg>
                              <input class="form-control not-rounded pull-right input__field--madoka" placeholder="Confirm" type="text">
                         </label>
-                    </span>
+                    </span> -->
 
-                    <span class="email-input-holder bordering">
+                <!--    <span class="email-input-holder bordering">
                                 <i class="m-icon m-icon--email-form-id black"></i>
                                 <label class="input__label input__label--madoka">
                                     <svg class="graphic graphic--madoka" width="100%" height="100%" viewBox="0 0 404 77" preserveAspectRatio="none">
                                     <path d="m0,0l404,0l0,77l-404,0l0,-77z"></path>
                                     </svg>
-                                   <input class="form-control not-rounded input__field--madoka" ng-model="data.SubscriberEmail" placeholder="me@email.com" type="text">
+                                   <input class="form-control not-rounded input input__field  input__field--madoka" ng-model="data.SubscriberEmail" placeholder="me@email.com" type="text">
                                </label>
+                        </span> -->
+
+                <section class="content">
+                        <span class="input input--madoka">
+                            <input class="input__field input__field--madoka" type="text" id="input-31">
+                            <label class="input__label input__label--madoka" for="input-31">
+                                <svg class="graphic graphic--madoka" width="100%" height="100%" viewBox="0 0 404 77" preserveAspectRatio="none">
+                                    <path d="m0,0l404,0l0,77l-404,0l0,-77z"></path>
+                                </svg>
+                                <span class="input__label-content input__label-content--madoka">Email</span>
+                            </label>
                         </span>
+                        <span class="input input--madoka password-wrap">
+                            <input class="input__field input__field--madoka" type="text" id="input-32">
+                            <label class="input__label input__label--madoka" for="input-32">
+                                <svg class="graphic graphic--madoka" width="100%" height="100%" viewBox="0 0 404 77" preserveAspectRatio="none">
+                                    <path d="m0,0l404,0l0,77l-404,0l0,-77z"></path>
+                                </svg>
+                                <span class="input__label-content input__label-content--madoka">Password</span>
+                            </label>
+                        </span>
+                        <span class="input input--madoka confirm-wrap">
+                            <input class="input__field input__field--madoka" type="text" id="input-33">
+                            <label class="input__label input__label--madoka" for="input-33">
+                                <svg class="graphic graphic--madoka" width="100%" height="100%" viewBox="0 0 404 77" preserveAspectRatio="none">
+                                    <path d="m0,0l404,0l0,77l-404,0l0,-77z"></path>
+                                </svg>
+                                <span class="input__label-content input__label-content--madoka">Confirm</span>
+                            </label>
+                        </span>
+                    </section>
+
                     <a class="btn btn-success form-control not-rounded" ng-click="registerSubscribedUser()">Join and Create a Free account</a>
                 </div>
-                <div class="content-subscribe hidden-soft">
+                <div class="content-subscribe bordering hidden-soft">
                     <strong class="red"><?php echo '{{ responseMessage }}' ?></strong>
-                         <span class="email-input-holder ">
-                                <i class="m-icon m-icon--email-form-id black"></i>
-                               <input class="form-control not-rounded" placeholder="me@email.com"
-                                      type="text">
+                    <section class="content">
+                        <span class="input input--madoka">
+                            <input class="input__field input__field--madoka" type="text" id="input-34">
+                            <label class="input__label input__label--madoka" for="input-34">
+                                <svg class="graphic graphic--madoka" width="100%" height="100%" viewBox="0 0 404 77" preserveAspectRatio="none">
+                                    <path d="m0,0l404,0l0,77l-404,0l0,-77z"></path>
+                                </svg>
+                                <span class="input__label-content input__label-content--madoka">Email</span>
+                            </label>
                         </span>
+
+                    </section>
                     <a class="btn btn-success form-control not-rounded"  ng-click="subscribe(data,'popup')">Join</a>
                 </div>
             </div>

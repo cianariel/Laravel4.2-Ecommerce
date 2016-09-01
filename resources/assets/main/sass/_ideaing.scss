@@ -10746,15 +10746,33 @@ html.hide-overflow{
 
     }
 
+    //.bordering{
+    //  position: relative;
+    //  width: 100%;
+    //  height: 50px;
+    //  float: left;
+    //}
+
+    .password-wrap,
+    .confirm-wrap{
+      width: 48%;
+      float: left;
+      margin-right: 6px;
+    }
+
+    //.confirm-wrap{
+    //  float: right;
+    //}
+
     .password-input-holder{
       margin-bottom: 3px;
       input{
         //&:first-child{
         //  margin-right: 3px;
         //}
-        width: 49%;
-        margin-bottom: 3px;
-        float: left;
+        //width: 49%;
+        //margin-bottom: 3px;
+        //float: left;
       }
     }
 
@@ -10766,7 +10784,6 @@ html.hide-overflow{
       @media(max-width: 1000px) {
         height: 114px;
         bottom: 15px;
-
       }
 
       span {
@@ -10794,11 +10811,9 @@ html.hide-overflow{
             width: 149px;
             background: url('/assets/images/newsletter-popup/huffington-post-white.png') no-repeat center;
 
-
             @media(max-width: 620px) {
               width: 170px;
             }
-
           }
 
           &.entrepreneur-logo {
@@ -10872,7 +10887,7 @@ html.hide-overflow{
     }
 
     .btn-success {
-      margin-top: 3px;
+      margin-top: 17px;
       padding-top: 11px;
     }
 
