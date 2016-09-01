@@ -261,14 +261,14 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
             }
         }, 15000);//10000
 
-        $scope.openEmailPopuponTime = function () {
-            if (!$('body').hasClass('login-signup')) {
-                setTimeout(function () {
-                    $scope.getEmailPopup(false);
-                }, 25000)
-            }
+        // $scope.openEmailPopuponTime = function () {
+        //     if (!$('body').hasClass('login-signup')) {
+        //         setTimeout(function () {
+        //             $scope.getEmailPopup(false);
+        //         }, 25000)
+        //     }
 
-        }
+        // }
 
         $scope.getEmailPopup = function (clickStatus) {
             // Header profile option open and close on click action.
