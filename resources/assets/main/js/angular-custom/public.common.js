@@ -202,8 +202,14 @@ publicApp.controller('ModalInstanceCtrltest', function ($scope, $uibModalInstanc
             url: '/hide-signup',
             method: "GET",
 
-        }).success(function (data) {
-            $uibModalInstance.close();
+        }).success(function () {
+            console.log('yaaa')
+            $('#subscribe_email_popup').removeClass('ns-show');
+            $('#subscribe_email_popup').addClass('ns-goback');
+
+            setTimeout(function(){
+                $uibModalInstance.close();
+            }, 200);
         });
     };
 
@@ -1157,8 +1163,6 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
         };
 
         $scope.registerSubscribedUser = function () {
-
-            console.log(22)
 
             // defining the regsitration source
             sourceSegment = '';

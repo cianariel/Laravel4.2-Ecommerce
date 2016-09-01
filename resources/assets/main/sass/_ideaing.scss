@@ -10637,14 +10637,21 @@ html.hide-overflow{
   right: -11px;
   z-index: 1052!important;
 
+  @media(max-width: 1000px) {
+    max-width: 95%;
+  }
+  @media(max-width: 620px) {
+    left: 0;
+    bottom: 0;
+    top: 10px;
+    right: 0;
+    margin: auto;
+  }
+
   .modal-content{
     background: transparent !important;
     box-shadow: none;
     border: 0;
-  }
-
-  @media(max-width: 1000px) {
-    max-width: 95%;
   }
 
   #subscribe_email_popup {
@@ -10836,6 +10843,7 @@ html.hide-overflow{
 
       li {
         padding-bottom: 15px;
+        font-size: 1.2rem;
 
         &.greyscale{
           color: #888;

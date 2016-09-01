@@ -691,6 +691,12 @@ body.has-active-menu {
   -webkit-animation-duration: 0.4s;
   animation-duration: 0.4s; }
 
+.ns-effect-genie.ns-goback {
+  -webkit-animation-name: hideGenie;
+  animation-name: hideGenie;
+  -webkit-animation-duration: 0.4s;
+  animation-duration: 0.4s; }
+
 @keyframes animGenie {
   0% {
     opacity: 0;
@@ -712,6 +718,27 @@ body.has-active-menu {
     opacity: 1;
     -webkit-transform: translate3d(0, 0, 0) scale3d(1, 1, 1);
     transform: translate3d(0, 0, 0) scale3d(1, 1, 1); } }
+@keyframes hideGenie {
+  0% {
+    opacity: 1;
+    -webkit-transform: translate3d(0, 0, 0) scale3d(1, 1, 1);
+    transform: translate3d(0, 0, 0) scale3d(1, 1, 1); }
+  40% {
+    opacity: 0.6;
+    -webkit-transform: translate3d(0, -40px, 0) scale3d(0.8, 1.1, 1);
+    transform: translate3d(0, -40px, 0) scale3d(0.8, 1.1, 1); }
+  70% {
+    opacity: 0.5;
+    -webkit-transform: translate3d(0, 0, 0) scale3d(0.02, 1.1, 1);
+    -webkit-animation-timing-function: ease-out;
+    transform: translate3d(0, 0, 0) scale3d(0.02, 1.1, 1);
+    animation-timing-function: ease-out; }
+  100% {
+    opacity: 0;
+    -webkit-transform: translate3d(0, calc(200% + 30px), 0) scale3d(0, 1, 1);
+    -webkit-animation-timing-function: ease-in;
+    transform: translate3d(0, calc(200% + 30px), 0) scale3d(0, 1, 1);
+    animation-timing-function: ease-in; } }
 @media screen and (max-width: 25em) {
   .ns-growl {
     top: 10px;
@@ -12493,13 +12520,20 @@ html.hide-overflow {
   top: auto;
   right: -11px;
   z-index: 1052 !important; }
+  @media (max-width: 1000px) {
+    .subscribe_email_popup {
+      max-width: 95%; } }
+  @media (max-width: 620px) {
+    .subscribe_email_popup {
+      left: 0;
+      bottom: 0;
+      top: 10px;
+      right: 0;
+      margin: auto; } }
   .subscribe_email_popup .modal-content {
     background: transparent !important;
     box-shadow: none;
     border: 0; }
-  @media (max-width: 1000px) {
-    .subscribe_email_popup {
-      max-width: 95%; } }
   .subscribe_email_popup #subscribe_email_popup {
     overflow: hidden;
     width: 1880px;
@@ -12615,7 +12649,8 @@ html.hide-overflow {
       margin-bottom: 15px;
       font-weight: bold; }
       .subscribe_email_popup #subscribe_email_popup .why-join li {
-        padding-bottom: 15px; }
+        padding-bottom: 15px;
+        font-size: 1.2rem; }
         .subscribe_email_popup #subscribe_email_popup .why-join li.greyscale {
           color: #888; }
         .subscribe_email_popup #subscribe_email_popup .why-join li .m-icon {
