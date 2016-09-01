@@ -605,12 +605,7 @@ if (!isset($theGiveAway)) {
             </div>
         </div>
     </script>
-    <?php }
-    if ((!isset($userData['email']) || empty($userData['email'])) && @$userData['user-data']['hide-signup'] != 'true')
-    {
-    echo '<input ng-init="openEmailPopuponTime()" type="hidden">';
-
-    } ?>
+    <?php } ?>
 
 </div>
 

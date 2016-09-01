@@ -261,14 +261,14 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
             }
         }, 15000);//10000
 
-        $scope.openEmailPopuponTime = function () {
-            if (!$('body').hasClass('login-signup')) {
-                setTimeout(function () {
-                    $scope.getEmailPopup(false);
-                }, 25000)
-            }
+        // $scope.openEmailPopuponTime = function () {
+        //     if (!$('body').hasClass('login-signup')) {
+        //         setTimeout(function () {
+        //             $scope.getEmailPopup(false);
+        //         }, 25000)
+        //     }
 
-        }
+        // }
 
         $scope.getEmailPopup = function (clickStatus) {
             // Header profile option open and close on click action.
@@ -1153,10 +1153,12 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                     $scope.responseMessage = data;
                 }
             });
-
+ 
         };
 
         $scope.registerSubscribedUser = function () {
+
+            console.log(22)
 
             // defining the regsitration source
             sourceSegment = '';
@@ -1174,6 +1176,8 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
             $scope.closeAlert();
 
             if ($scope.FullName == '') {
+                console.log(33)
+
                 $scope.addAlert('danger', 'Please enter your name');
                 return;
             }
@@ -1208,8 +1212,6 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                 }
 
             }).success(function (data) {
-                console.log(115)
-
                 $scope.outputStatus(data, data.data, 'profile');
             });
 

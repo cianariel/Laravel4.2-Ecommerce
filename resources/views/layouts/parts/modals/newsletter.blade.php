@@ -1,6 +1,6 @@
 <script type="text/ng-template" id="subscribe_email_popup.html">
     <div id="subscribe_email_popup" class="ns-effect-genie ns-hide relative">
-        <div id="publicApp">
+        <div ng-app="publicApp" ng-controller="publicController" class="ng-scope">
             <div class="col-sm-6 col-xs-12 hidden-xs img-holder no-padding">
                 <h4 class="white relative"><span>Subscribe to the most unique community centered on Living Smarter</span></h4>
                 <div class="seen-on col-xs-12 absolute">
@@ -25,7 +25,16 @@
                     </ul>
                     <section class="content">
                         <span class="input input--madoka">
-                            <input class="input__field input__field--madoka" type="text" id="input-31">
+                            <input class="input__field input__field--madoka" required type="text" id="input-30" ng-model="FullName">
+                            <label class="input__label input__label--madoka" for="input-30">
+                                <svg class="graphic graphic--madoka" width="100%" height="100%" viewBox="0 0 404 77" preserveAspectRatio="none">
+                                    <path d="m0,0l404,0l0,77l-404,0l0,-77z"></path>
+                                </svg>
+                                <span class="input__label-content input__label-content--madoka">Name</span>
+                            </label>
+                        </span>
+                        <span class="input input--madoka">
+                            <input class="input__field input__field--madoka" required type="text" id="input-31" ng-model="Email">
                             <label class="input__label input__label--madoka" for="input-31">
                                 <svg class="graphic graphic--madoka" width="100%" height="100%" viewBox="0 0 404 77" preserveAspectRatio="none">
                                     <path d="m0,0l404,0l0,77l-404,0l0,-77z"></path>
@@ -34,7 +43,7 @@
                             </label>
                         </span>
                         <span class="input input--madoka password-wrap">
-                            <input class="input__field input__field--madoka" type="text" id="input-32">
+                            <input class="input__field input__field--madoka" required type="password" id="input-32" ng-model="Password">
                             <label class="input__label input__label--madoka" for="input-32">
                                 <svg class="graphic graphic--madoka" width="100%" height="100%" viewBox="0 0 404 77" preserveAspectRatio="none">
                                     <path d="m0,0l404,0l0,77l-404,0l0,-77z"></path>
@@ -43,7 +52,7 @@
                             </label>
                         </span>
                         <span class="input input--madoka confirm-wrap">
-                            <input class="input__field input__field--madoka" type="text" id="input-33">
+                            <input class="input__field input__field--madoka" required type="password" id="input-33" ng-model="PasswordConf">
                             <label class="input__label input__label--madoka" for="input-33">
                                 <svg class="graphic graphic--madoka" width="100%" height="100%" viewBox="0 0 404 77" preserveAspectRatio="none">
                                     <path d="m0,0l404,0l0,77l-404,0l0,-77z"></path>
@@ -54,6 +63,10 @@
                     </section>
 
                     <a class="btn btn-success form-control not-rounded" ng-click="registerSubscribedUser()">Join and Create a Free account</a>
+
+                    <uib-alert ng-repeat="alert in alerts" type="@{{alert.type}}" close="closeAlert($index)">
+                        <strong class="red" ng-bind-html="alertHTML"></strong>
+                    </uib-alert>
                 </div>
 
                 <div class="content-subscribe bordering hidden-soft">
@@ -62,9 +75,9 @@
                         <li  class="greyscale"><i class="m-icon m-icon--video green"></i> Be eligible for to win free smart gadgets</li>
                         <li><i class="m-icon m-icon--bulb-detailed-on-rating blue"></i> Stories and tips on transforming how you live + play</li>
                     </ul>
-                    <section class="content">
+                    <section class="content"> 
                         <span class="input input--madoka">
-                            <input class="input__field input__field--madoka" required ng-model="data.SubscriberEmail" type="text" id="input-34">
+                            <input class="required input__field input__field--madoka" ng-model="data.SubscriberEmail" required type="text" id="input-34">
                             <label class="input__label input__label--madoka" for="input-34">
                                 <svg class="graphic graphic--madoka" width="100%" height="100%" viewBox="0 0 404 77" preserveAspectRatio="none">
                                     <path d="m0,0l404,0l0,77l-404,0l0,-77z"></path>
@@ -75,8 +88,8 @@
 
                     </section>
                     <a class="btn btn-success form-control not-rounded"  ng-click="subscribe(data,'popup')">Join</a>
+                    <strong class="red"><?php echo '{{ responseMessage }}' ?></strong>
                 </div>
-                <strong class="red"><?php echo '{{ responseMessage }}' ?></strong>
             </div>
             <footer class="black-footer relative black-bg full-wide text-right white overhide"><b   ng-click="hideAndForget()">Maybe Later <i class="m-icon--Close white"></i></b></footer>
         </div>
