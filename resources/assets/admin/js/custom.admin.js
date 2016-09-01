@@ -1084,29 +1084,10 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
             } else {
                 return "shop/" + keyWord;
             }
-
-
         };
 
 
         // Read Category
-
-        $scope.addReadCategory = function(){
-
-            $http({
-                url: '/api/category/add-read-category',
-                method: "POST",
-                data: {
-                    CategoryId: $scope.selectedItem,
-                    PageTitle: $scope.PageTitle,
-                    MetaDescription: $scope.MetaDescription
-                },
-            }).success(function (data) {
-                $scope.outputStatus(data, "Read Category added successfully");
-                $scope.getReadCategoryList();
-            });
-
-        };
 
         $scope.getReadCategoryList = function(){
 
@@ -1116,10 +1097,77 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
 
             }).success(function (data) {
                 $scope.tempCategoryList = data.data;
-              //  $scope.outputStatus(data, "Read Category added successfully");
+                $scope.selectedReadCategoryId = "";
+                //  $scope.outputStatus(data, "Read Category added successfully");
             });
 
         };
+
+        $scope.addReadCategory = function(){
+
+            $http({
+                url: '/api/category/add-read-category',
+                method: "POST",
+                data: {
+
+                    SelectedReadCategoryId: $scope.selectedReadCategoryId,
+                    CategoryId: $scope.selectedItem,
+                    PageTitle: $scope.PageTitle,
+                    MetaDescription: $scope.MetaDescription
+                },
+            }).success(function (data) {
+                $scope.outputStatus(data, "Read Category added successfully");
+                $scope.getReadCategoryList();
+
+                $scope.selectedReadCategoryId = "";
+
+                $scope.selectedItem = null;
+                $scope.PageTitle = null;
+                $scope.MetaDescription = null;
+            });
+
+        };
+
+        $scope.editReadCategory = function(index){
+
+            $scope.closeAlert();
+
+            $scope.selectedReadCategoryId = $scope.tempCategoryList[index].id;
+
+            $scope.selectedItem = $scope.tempCategoryList[index].product_category_id;
+            $scope.PageTitle = $scope.tempCategoryList[index].page_title;
+            $scope.MetaDescription = $scope.tempCategoryList[index].meta_description;
+
+            $scope.categoryHierarchyView($scope.selectedItem);
+
+            $window.scrollTo(0, 0);
+
+        };
+
+        $scope.deleteReadCategory = function(index){
+
+            $scope.closeAlert();
+
+            $http({
+                url: '/api/category/delete-read-category',
+                method: "POST",
+                data: {
+                    SelectedReadCategoryId: $scope.tempCategoryList[index].id
+                },
+            }).success(function (data) {
+                $scope.outputStatus(data, "Read Category deleted successfully");
+                $scope.getReadCategoryList();
+
+                $scope.selectedReadCategoryId = "";
+
+                $scope.selectedItem = null;
+                $scope.PageTitle = null;
+                $scope.MetaDescription = null;
+            });
+
+        };
+
+
 
         // Product Module //
 
