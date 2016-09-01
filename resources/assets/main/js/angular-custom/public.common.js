@@ -209,7 +209,7 @@ publicApp.controller('ModalInstanceCtrltest', function ($scope, $uibModalInstanc
 
             setTimeout(function(){
                 $uibModalInstance.close();
-            }, 200);
+            }, 150);
         });
     };
 
