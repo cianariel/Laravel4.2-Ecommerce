@@ -1,5 +1,5 @@
 <script type="text/ng-template" id="subscribe_email_popup.html">
-    <div id="subscribe_email_popup" class="ns-effect-genie ns-hide relative">
+    <div id="subscribe_email_popup" class="ns-effect-genie ns-hide relative" style="background:#f7f7f7">
         <div ng-app="publicApp" ng-controller="publicController" class="ng-scope">
             <div class="col-sm-6 col-xs-12 hidden-xs img-holder no-padding">
                 <h4 class="white relative"><span>Subscribe to the most unique community centered on Living Smarter</span></h4>
@@ -60,14 +60,13 @@
                                 <span class="input__label-content input__label-content--madoka">Confirm</span>
                             </label>
                         </span>
-                    </section>
-
                     <a class="btn btn-success form-control not-rounded" ng-click="registerSubscribedUser()">Join and Create a Free account</a>
-
-                    <uib-alert ng-repeat="alert in alerts" type="@{{alert.type}}" close="closeAlert($index)">
-                        <strong class="red alertme" ng-bind-html="alertHTML"></strong>
-                    </uib-alert>
+                    </section>
                 </div>
+                 <uib-alert ng-repeat="alert in alerts" type="@{{alert.type}}" close="closeAlert($index)">
+                        <strong  style="width: 100%; display: block; text-align: center;" ng-if="$index == 0" class="red alerts" ng-bind-html="alertHTML"></strong>
+                    </uib-alert>
+
 
                 <div class="content-subscribe bordering hidden-soft">
                     <ul class="why-join">
@@ -85,11 +84,11 @@
                                 <span class="input__label-content input__label-content--madoka">Email</span>
                             </label>
                         </span>
-
-                    </section>
                     <a class="btn btn-success form-control not-rounded"  ng-click="subscribe(data,'popup')">Join</a>
-                    <strong class="red alertme"><?php echo '{{ responseMessage }}' ?></strong>
+                    </section>
                 </div>
+                <strong class="red alerts" style="width: 100%; display: block; text-align: center;"><?php echo '{{ responseMessage }}' ?></strong>
+
             </div>
             <footer class="black-footer relative black-bg full-wide text-right white overhide"><b   ng-click="hideAndForget()">Maybe Later <i class="m-icon--Close white"></i></b></footer>
         </div>
