@@ -662,6 +662,10 @@ body.has-active-menu{
     width: 100%;
     display: block;
     overflow: hidden;
+
+    @media(max-width: 620px)  {
+      overflow: visible;
+    }
   }
   .input {
     position: relative;
