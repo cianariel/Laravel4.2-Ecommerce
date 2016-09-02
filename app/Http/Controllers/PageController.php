@@ -108,6 +108,31 @@ class PageController extends ApiController
             ;
     }
 
+    public function welcome()
+    {
+        $userData = $this->authCheck;
+        if ($this->authCheck['method-status'] == 'success-with-http') {
+            $userData = $this->authCheck['user-data'];
+        }
+        $thisCategory = Req::segment(1);
+
+        if(!$thisCategory ){
+            $thisCategory = 'default';
+        }
+
+        $result = [];
+
+        $sliderContent = self::getHeroSliderContent();
+
+        MetaTag::set('title', 'Ideaing | Ideas for Smarter Living'); // TODO -- add from CRUD
+        MetaTag::set('description', 'Ideaing inspires you to live a smarter and beautiful home. Get ideas on using home automation devices including WiFi cameras, WiFi doorbells, door locks, security, energy, water and many more.');
+        return view('category.category')
+            ->with('userData', $userData)
+            ->with('thisCategory', $thisCategory)
+            ->with('sliderContent', $sliderContent)
+            ;
+    }
+
     public static function getMostPopular($daysBack = false, $category = false, $itemsPerCategory = 4){
 
         $cacheKey = "most-popular-$daysBack-$category-$itemsPerCategory";

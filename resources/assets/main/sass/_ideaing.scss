@@ -10676,11 +10676,11 @@ html.hide-overflow{
 
     .img-holder{
       position: static;
-      min-height: 500px;
+      min-height: 440px;
       background: #000;
 
       @media(max-width: 992px) {
-        min-height: 523px;
+        min-height: 470px;
       }
       @media(max-width: 830px) {
         min-height: 570px;
@@ -10819,7 +10819,7 @@ html.hide-overflow{
     }
 
     .content-holder {
-      padding: 6% 5% 4%;
+      padding: 3% 5% 2%;
       z-index: 12;
     }
 
@@ -10856,7 +10856,7 @@ html.hide-overflow{
     }
     .why-join {
       margin-top: 25px;
-      margin-bottom: 15px;
+      //margin-bottom: 15px;
       font-weight: bold;
 
       li {
