@@ -12537,6 +12537,10 @@ html.hide-overflow {
   top: auto;
   right: -11px;
   z-index: 1052 !important; }
+  .subscribe_email_popup .alertme {
+    position: absolute;
+    top: 30%;
+    left: 24%; }
   @media (max-width: 992px) {
     .subscribe_email_popup {
       max-width: 95%; }

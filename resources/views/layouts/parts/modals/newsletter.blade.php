@@ -65,7 +65,7 @@
                     <a class="btn btn-success form-control not-rounded" ng-click="registerSubscribedUser()">Join and Create a Free account</a>
 
                     <uib-alert ng-repeat="alert in alerts" type="@{{alert.type}}" close="closeAlert($index)">
-                        <strong class="red" ng-bind-html="alertHTML"></strong>
+                        <strong class="red alertme" ng-bind-html="alertHTML"></strong>
                     </uib-alert>
                 </div>
 
@@ -88,7 +88,7 @@
 
                     </section>
                     <a class="btn btn-success form-control not-rounded"  ng-click="subscribe(data,'popup')">Join</a>
-                    <strong class="red"><?php echo '{{ responseMessage }}' ?></strong>
+                    <strong class="red alertme"><?php echo '{{ responseMessage }}' ?></strong>
                 </div>
             </div>
             <footer class="black-footer relative black-bg full-wide text-right white overhide"><b   ng-click="hideAndForget()">Maybe Later <i class="m-icon--Close white"></i></b></footer>
