@@ -728,11 +728,16 @@ body.has-active-menu{
     margin: 3px 0;
     float: left;
     width: 100%;
+    height: 50px;
 
-    //&.big-wrap{
-    //  overflow: hidden;
-      height: 50px;
-    //}
+    &.big-wrap{
+      overflow-x: hidden;
+
+      .graphic--madoka {
+        width: 100.6%; // cut off excess thickness
+        margin-left: -1px;
+      }
+    }
   }
 
   .input__field--madoka {
@@ -769,10 +774,9 @@ body.has-active-menu{
     stroke-width: 6px;
     stroke-dasharray: 962;
     stroke-dashoffset: 558;
-
-    width: 100.5%; // cut off excess thickness
-    margin-left: -1px;
   }
+
+
 
   .input__field--madoka:focus + .input__label--madoka,
   .input__field--madoka:valid + .input__label--madoka,
