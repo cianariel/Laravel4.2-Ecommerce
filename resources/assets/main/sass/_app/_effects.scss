@@ -809,8 +809,7 @@ body.has-active-menu{
   .input__field--madoka:focus + .input__label--madoka .input__label-content--madoka,
   .input__field--madoka:valid + .input__label--madoka .input__label-content--madoka,
   .input--filled .input__label-content--madoka {
-    -webkit-transform: scale3d(0.81, 0.81, 1) translate3d(0, 4em, 0);
-    transform: scale3d(0.81, 0.81, 1) translate3d(0, 4em, 0);
+    display: none;
   }
 }
 
