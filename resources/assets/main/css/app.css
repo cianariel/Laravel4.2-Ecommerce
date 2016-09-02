@@ -12550,13 +12550,12 @@ html.hide-overflow {
   .subscribe_email_popup .modal-content {
     background: transparent !important;
     box-shadow: none;
-    border: 0;
-    backgrou: #f7f7f7; }
+    border: 0; }
   .subscribe_email_popup #subscribe_email_popup {
     overflow: hidden;
     width: 1880px;
     max-width: 100%;
-    background-color: #fff; }
+    background-color: #f7f7f7; }
     .subscribe_email_popup #subscribe_email_popup .modal-content {
       background: transparent !important; }
     .subscribe_email_popup #subscribe_email_popup .img-holder {
