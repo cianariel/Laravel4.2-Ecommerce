@@ -1373,7 +1373,7 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
 
             window.location = '/api/fb-login?vlu=giveaway&pl=' + $window.giveawayLink;
         };
- 
+
 
         $scope.loginUser = function (goTo) {
             $scope.closeAlert();
