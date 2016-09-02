@@ -12543,7 +12543,7 @@ html.hide-overflow {
   @media (max-width: 620px) {
     .subscribe_email_popup {
       left: 0;
-      bottom: 0;
+      bottom: auto;
       top: 10px;
       right: 0;
       margin: auto; } }

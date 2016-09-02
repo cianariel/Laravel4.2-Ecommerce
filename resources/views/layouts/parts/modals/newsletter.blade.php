@@ -76,7 +76,7 @@
                         <li><i class="m-icon m-icon--bulb-detailed-on-rating blue"></i> Stories and tips on transforming how you live + play</li>
                     </ul>
                     <section class="content"> 
-                        <span class="input input--madoka">
+                        <span class="input input--madoka big-wrap">
                             <input class="required input__field input__field--madoka" ng-model="data.SubscriberEmail" required type="text" id="input-34">
                             <label class="input__label input__label--madoka" for="input-34">
                                 <svg class="graphic graphic--madoka" width="100%" height="100%" viewBox="0 0 404 77" preserveAspectRatio="none">

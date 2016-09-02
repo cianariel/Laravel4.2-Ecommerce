@@ -10649,7 +10649,7 @@ html.hide-overflow{
 
   @media(max-width: 620px) {
     left: 0;
-    bottom: 0;
+    bottom: auto;
     top: 10px;
     right: 0;
     margin: auto;
@@ -10890,82 +10890,11 @@ html.hide-overflow{
       padding-top: 11px;
     }
 
-    //
-    //h4{
-    //  text-align: center;
-    //}
-    //
-    //&, .email-banner{
-    //  ul {
-    //    list-style: none;
-    //    padding:0;
-    //    margin:0;
-    //  }
-    //
-    //  li {
-    //    padding-left: 1em;
-    //    text-indent: -.7em;
-    //  }
-    //
-    //  li:before {
-    //    content: "• ";
-    //    position: relative;
-    //    top:3px;
-    //    font-size: 2rem;
-    //    color: $iridium; /* or whatever color you prefer */
-    //  }
-    //  .btn-success{
-    //    padding-top: 13px;
-    //  }
-    //}
+
 
   }
 }
 
-.subscribe_email_popup{
-  //.modal-dialog{
-  //  width: 1880px;
-  //  max-width: 80%;
-  //
-  //  @media(max-width: 1000px){
-  //    max-width: 95%;
-  //  }
-  //}
-  //
-  //  .img-holder{
-  //    @media (min-width: 620px){
-  //      position: absolute;
-  //      top: -50px;
-  //      left: -100px;
-  //      >img{
-  //        border: 2px solid #fff;
-  //        border-radius: 500px;
-  //      }
-  //    }
-  //
-  //  }
-  //
-  //.content-container{
-  //    padding: 25px;
-  //}
-  //
-  //  @media (max-width: 990px){
-  //      .content-container{
-  //          width: 100%;
-  //      }
-  //  }
-  //  @media (min-width: 991px){
-  //      .modal-dialog{
-  //          top: 40px;;
-  //      }
-  //      .content-container{
-  //          margin-top: 50px;
-  //          width: calc(100% - 250px);
-  //          float: right;
-  //      }
-  //  }
-
-}
 .alert .close{
     float: right;
 }
