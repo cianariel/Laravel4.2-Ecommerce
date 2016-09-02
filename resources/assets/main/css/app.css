@@ -645,7 +645,7 @@ body.has-active-menu {
     width: 100%;
     height: 50px; }
     .bordering .input--madoka.big-wrap .graphic--madoka {
-      width: 100.6%;
+      width: 100%;
       margin-left: -1px; }
       @media (max-width: 620px) {
         .bordering .input--madoka.big-wrap .graphic--madoka {
