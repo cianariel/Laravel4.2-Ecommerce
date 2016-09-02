@@ -582,6 +582,10 @@ body.has-active-menu {
 
 .bordering {
   /* Madoka */ }
+  .bordering .content {
+    width: 100%;
+    display: block;
+    overflow: hidden; }
   .bordering .input {
     position: relative;
     z-index: 1;
@@ -669,7 +673,7 @@ body.has-active-menu {
     transition: stroke-dashoffset 0.3s;
     pointer-events: none;
     stroke: #7A7593;
-    stroke-width: 6px;
+    stroke-width: 4px;
     stroke-dasharray: 962;
     stroke-dashoffset: 558; }
   .bordering .input__field--madoka:focus + .input__label--madoka,
@@ -12556,7 +12560,7 @@ html.hide-overflow {
       background: transparent !important; }
     .subscribe_email_popup #subscribe_email_popup .img-holder {
       position: static;
-      min-height: 440px;
+      min-height: 436px;
       background: #000; }
       @media (max-width: 992px) {
         .subscribe_email_popup #subscribe_email_popup .img-holder {
