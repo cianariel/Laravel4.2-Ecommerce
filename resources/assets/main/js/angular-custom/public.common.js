@@ -1091,10 +1091,10 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                     $scope.responseMessage = "Please enter a valid email";
                 }
                 else if (data.status_code == 200) {
-                    $scope.responseMessage = "Thanks! You've subscribed successfully";
+                    $scope.responseMessage = "Success! You'll start receiving the best tips in the world";
 
                     //Redirect a user to registration page. 
-                    window.location = '/signup/' + formData.SubscriberEmail + '/' + source;
+                    //window.location = '/signup/' + formData.SubscriberEmail + '/' + source;
 
                 } else if (data.data.isUser == 1) {
                     $scope.responseMessage = "This email already exists, redirecting to Log In";
