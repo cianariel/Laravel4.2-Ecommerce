@@ -12557,6 +12557,9 @@ html.hide-overflow {
       background: #000; }
       @media (max-width: 992px) {
         .subscribe_email_popup #subscribe_email_popup .img-holder {
+          min-height: 523px; } }
+      @media (max-width: 830px) {
+        .subscribe_email_popup #subscribe_email_popup .img-holder {
           min-height: 570px; } }
       @media (max-width: 768px) {
         .subscribe_email_popup #subscribe_email_popup .img-holder {
