@@ -737,11 +737,15 @@ body.has-active-menu{
     height: 50px;
 
     &.big-wrap{
-      //overflow-x: hidden; 
+      //overflow-x: hidden;
 
       .graphic--madoka {
         width: 100.6%; // cut off excess thickness
         margin-left: -1px;
+
+        @media(max-width:620px){
+          width: 100.5%;
+        }
       }
     }
   }

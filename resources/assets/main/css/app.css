@@ -647,6 +647,9 @@ body.has-active-menu {
     .bordering .input--madoka.big-wrap .graphic--madoka {
       width: 100.6%;
       margin-left: -1px; }
+      @media (max-width: 620px) {
+        .bordering .input--madoka.big-wrap .graphic--madoka {
+          width: 100.5%; } }
   .bordering .input__field--madoka {
     width: 100%;
     background: transparent;
