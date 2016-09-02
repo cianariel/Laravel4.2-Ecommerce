@@ -277,7 +277,6 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
         // }
 
         $scope.getEmailPopup = function (clickStatus) {
-            // Header profile option open and close on click action.
 
             var templateUrl = "subscribe_email_popup.html";
 
@@ -285,6 +284,7 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
 
             instance = $uibModal.open({
                     animation: true,
+                    backdrop:false,
                     templateUrl: templateUrl,
                     scope: $scope,
                     size: 'lg',
@@ -824,7 +824,7 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                         window.location = '/login';
                     }
                     else if (data.data == 'Registration completed successfully') {
-                        $scope.loginUser('profile');
+                        $scope.loginUser('welcome');
                     } else if (data.data == 'Registration completed successfully, please verify your email') {
                         $scope.loginUser();
                     }
@@ -844,6 +844,8 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                     		window.location = '/';		 
                     	}else if(goTo == 'profile'){
                             window.location = '/user/profile';      
+                    	}else if(goTo == 'welocome'){
+                            window.location = '/welcome';
                     	}else{
 
                             if($('html').hasClass('idea-stories')){
@@ -1371,7 +1373,7 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
 
             window.location = '/api/fb-login?vlu=giveaway&pl=' + $window.giveawayLink;
         };
-
+ 
 
         $scope.loginUser = function (goTo) {
             $scope.closeAlert();

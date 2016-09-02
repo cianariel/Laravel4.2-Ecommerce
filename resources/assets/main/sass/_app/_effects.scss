@@ -728,6 +728,11 @@ body.has-active-menu{
     margin: 3px 0;
     float: left;
     width: 100%;
+
+    &.big-wrap{
+      overflow: hidden;
+      height: 50px;
+    }
   }
 
   .input__field--madoka {
@@ -753,6 +758,7 @@ body.has-active-menu{
   }
 
   .graphic--madoka {
+    width: 103%;
     -webkit-transform: scale3d(1, -1, 1);
     transform: scale3d(1, -1, 1);
     -webkit-transition: stroke-dashoffset 0.3s;
@@ -760,20 +766,26 @@ body.has-active-menu{
     pointer-events: none;
 
     stroke: #7A7593;
-    stroke-width: 4px;
+    stroke-width: 6px;
     stroke-dasharray: 962;
     stroke-dashoffset: 558;
+
+    width: 100.5%; // cut off excess thickness
+    margin-left: -1px;
   }
 
   .input__field--madoka:focus + .input__label--madoka,
+  .input__field--madoka:valid + .input__label--madoka,
   .input--filled .input__label--madoka {
     cursor: default;
     pointer-events: none;
   }
 
   .input__field--madoka:focus + .input__label--madoka .graphic--madoka,
+  .input__field--madoka:valid + .input__label--madoka .graphic--madoka,
   .input--filled .graphic--madoka {
     stroke-dashoffset: 0;
+    stroke: $iridium;
   }
 
   .input__field--madoka:focus + .input__label--madoka .input__label-content--madoka,

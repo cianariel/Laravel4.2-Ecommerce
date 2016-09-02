@@ -24,7 +24,7 @@
                         <li><i class="m-icon m-icon--bulb-detailed-on-rating blue"></i> Stories and tips on transforming how you live + play</li>
                     </ul>
                     <section class="content">
-                        <span class="input input--madoka">
+                        <span class="input input--madoka big-wrap">
                             <input class="input__field input__field--madoka" required type="text" id="input-30" ng-model="FullName">
                             <label class="input__label input__label--madoka" for="input-30">
                                 <svg class="graphic graphic--madoka" width="100%" height="100%" viewBox="0 0 404 77" preserveAspectRatio="none">
@@ -33,7 +33,7 @@
                                 <span class="input__label-content input__label-content--madoka">Name</span>
                             </label>
                         </span>
-                        <span class="input input--madoka">
+                        <span class="input input--madoka big-wrap">
                             <input class="input__field input__field--madoka" required type="text" id="input-31" ng-model="Email">
                             <label class="input__label input__label--madoka" for="input-31">
                                 <svg class="graphic graphic--madoka" width="100%" height="100%" viewBox="0 0 404 77" preserveAspectRatio="none">

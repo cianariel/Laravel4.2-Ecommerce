@@ -10666,7 +10666,8 @@ html.hide-overflow{
 
     .img-holder{
       position: static;
-      min-height: 340px;
+      min-height: 490px;
+      background: #000;
 
       @media(max-width: 768px) {
         position: relative;
@@ -10678,6 +10679,7 @@ html.hide-overflow{
       height: 100%;
       width: 50%;
       z-index: 10;
+      opacity: .8;
 
       @media(max-width: 768px) {
         width: 100%;
@@ -10747,7 +10749,7 @@ html.hide-overflow{
       bottom: -10px;
       height: 90px;
       z-index: 12;
-      background: rgba(#000, .5);
+      //background: rgba(#000, .5);
 
       @media(max-width: 1000px) {
         height: 114px;

@@ -639,6 +639,9 @@ body.has-active-menu {
     margin: 3px 0;
     float: left;
     width: 100%; }
+    .bordering .input--madoka.big-wrap {
+      overflow: hidden;
+      height: 50px; }
   .bordering .input__field--madoka {
     width: 100%;
     background: transparent;
@@ -656,22 +659,28 @@ body.has-active-menu {
     -webkit-transition: -webkit-transform 0.3s;
     transition: transform 0.3s; }
   .bordering .graphic--madoka {
+    width: 103%;
     -webkit-transform: scale3d(1, -1, 1);
     transform: scale3d(1, -1, 1);
     -webkit-transition: stroke-dashoffset 0.3s;
     transition: stroke-dashoffset 0.3s;
     pointer-events: none;
     stroke: #7A7593;
-    stroke-width: 4px;
+    stroke-width: 6px;
     stroke-dasharray: 962;
-    stroke-dashoffset: 558; }
+    stroke-dashoffset: 558;
+    width: 100.5%;
+    margin-left: -1px; }
   .bordering .input__field--madoka:focus + .input__label--madoka,
+  .bordering .input__field--madoka:valid + .input__label--madoka,
   .bordering .input--filled .input__label--madoka {
     cursor: default;
     pointer-events: none; }
   .bordering .input__field--madoka:focus + .input__label--madoka .graphic--madoka,
+  .bordering .input__field--madoka:valid + .input__label--madoka .graphic--madoka,
   .bordering .input--filled .graphic--madoka {
-    stroke-dashoffset: 0; }
+    stroke-dashoffset: 0;
+    stroke: #FF0042; }
   .bordering .input__field--madoka:focus + .input__label--madoka .input__label-content--madoka,
   .bordering .input__field--madoka:valid + .input__label--madoka .input__label-content--madoka,
   .bordering .input--filled .input__label-content--madoka {
@@ -12543,7 +12552,8 @@ html.hide-overflow {
       background: transparent !important; }
     .subscribe_email_popup #subscribe_email_popup .img-holder {
       position: static;
-      min-height: 340px; }
+      min-height: 490px;
+      background: #000; }
       @media (max-width: 768px) {
         .subscribe_email_popup #subscribe_email_popup .img-holder {
           position: relative; } }
@@ -12551,7 +12561,8 @@ html.hide-overflow {
       position: absolute;
       height: 100%;
       width: 50%;
-      z-index: 10; }
+      z-index: 10;
+      opacity: .8; }
       @media (max-width: 768px) {
         .subscribe_email_popup #subscribe_email_popup img {
           width: 100%; } }
@@ -12586,8 +12597,7 @@ html.hide-overflow {
     .subscribe_email_popup #subscribe_email_popup .seen-on {
       bottom: -10px;
       height: 90px;
-      z-index: 12;
-      background: rgba(0, 0, 0, 0.5); }
+      z-index: 12; }
       @media (max-width: 1000px) {
         .subscribe_email_popup #subscribe_email_popup .seen-on {
           height: 114px;
