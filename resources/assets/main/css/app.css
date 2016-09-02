@@ -12552,7 +12552,6 @@ html.hide-overflow {
     box-shadow: none;
     border: 0; }
   .subscribe_email_popup #subscribe_email_popup {
-    overflow: hidden;
     width: 1880px;
     max-width: 100%;
     background-color: #f7f7f7; }
