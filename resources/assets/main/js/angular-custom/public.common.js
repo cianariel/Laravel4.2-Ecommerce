@@ -802,6 +802,8 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
         $scope.outputStatus = function (data, message, goTo) {
 
             var statusCode = data.status_code;
+
+            console.log(statusCode);
             
             switch (statusCode) {
                 case 400:
@@ -824,9 +826,24 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                         window.location = '/login';
                     }
                     else if (data.data == 'Registration completed successfully') {
-                        $scope.loginUser('welcome');
+                        $scope.addAlert('success', 'SUCCESS! You just made the best decision');
+                        $('.toggles, .bordering .content').animate({opacity: "0"}, function(){
+                             setTimeout(function(){ 
+                                $scope.hideAndForget();
+                                window.location = '/welocme';
+
+                            }, 2000);
+                        })
+
                     } else if (data.data == 'Registration completed successfully, please verify your email') {
-                        $scope.loginUser();
+                        $scope.addAlert('success', 'SUCCESS! You just made the best decision');
+                         
+                         $('.toggles, .bordering .content').animate({opacity: "0"}, function(){
+                             setTimeout(function(){ 
+                                $scope.hideAndForget();
+                                window.location = '/welocme';
+                            }, 2000);
+                        })
                     }
 
 
@@ -1084,15 +1101,22 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                     'Source': source,
                     'SetCookie': 'true'
                 }
-            }).success(function (data) {
+            }).success(function (data) { 
 
                 if (data.status_code == 406) {
 
                     $scope.responseMessage = "Please enter a valid email";
                 }
                 else if (data.status_code == 200) {
-                    $scope.responseMessage = "Success! You'll start receiving the best tips in the world";
 
+                    $scope.responseMessage = "Success! You'll start receiving the best tips in the world";
+                    // $('.alerts').addClass('alertme');  
+                    $('.toggles, .bordering .content').animate({opacity: "0"}, function(){
+                         setTimeout(function(){ 
+                            $scope.hideAndForget();
+                        }, 2000);
+                    })
+ 
                     //Redirect a user to registration page. 
                     //window.location = '/signup/' + formData.SubscriberEmail + '/' + source;
 
@@ -1182,8 +1206,6 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
             $scope.closeAlert();
 
             if ($scope.FullName == '') {
-                console.log(33)
-
                 $scope.addAlert('danger', 'Please enter your name');
                 return;
             }
@@ -1217,8 +1239,8 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                     Valid: true
                 }
 
-            }).success(function (data) {
-                $scope.outputStatus(data, data.data, 'profile');
+            }).success(function (data) { 
+                $scope.outputStatus(data, data.data, 'welcome');
             });
 
         };

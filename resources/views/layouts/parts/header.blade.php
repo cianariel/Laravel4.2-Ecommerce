@@ -1,6 +1,9 @@
 <?php
 // !! IMPORTANT !! -- please use only pure PHP here, no Laravel, otherwise the header will break   in Wordpress !!
 
+//echo phpversion(); die();
+ 
+
 
 if (function_exists('is_single')) {
     if (isset($GLOBALS['userData']) && isset($GLOBALS['isAdmin'])) {
