@@ -10698,7 +10698,7 @@ html.hide-overflow{
         min-height: 520px;
       }
       @media(max-width: 620px) {
-        min-height: 482px;
+        min-height: 0;
       }
     }
 
@@ -10844,6 +10844,15 @@ html.hide-overflow{
       }
 
     }
+    @media(max-width:620px){
+      .content-register{
+        display: none;
+      }
+      .content-subscribe{
+        display: block;
+      }
+    }
+
     .alert-dismissable, .alert-dismissible{
       padding: 0;
 

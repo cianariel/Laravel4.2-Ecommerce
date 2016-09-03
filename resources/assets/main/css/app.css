@@ -12583,7 +12583,7 @@ html.hide-overflow {
       @media (max-width: 620px) {
         .subscribe_email_popup #subscribe_email_popup .img-holder,
         .subscribe_email_popup #subscribe_email_popup .content-holder {
-          min-height: 482px; } }
+          min-height: 0; } }
     .subscribe_email_popup #subscribe_email_popup img {
       position: absolute;
       height: 100%;
@@ -12683,6 +12683,11 @@ html.hide-overflow {
         font-size: 2rem;
         padding-bottom: 18px;
         padding-right: 24px; }
+    @media (max-width: 620px) {
+      .subscribe_email_popup #subscribe_email_popup .content-register {
+        display: none; }
+      .subscribe_email_popup #subscribe_email_popup .content-subscribe {
+        display: block; } }
     .subscribe_email_popup #subscribe_email_popup .alert-dismissable, .subscribe_email_popup #subscribe_email_popup .alert-dismissible {
       padding: 0; }
       .subscribe_email_popup #subscribe_email_popup .alert-dismissable .close, .subscribe_email_popup #subscribe_email_popup .alert-dismissible .close {
