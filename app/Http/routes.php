@@ -45,7 +45,9 @@ Route::get('/smart-body', 'PageController@categoryPage');
 Route::get('/smart-travel', 'PageController@categoryPage');
 Route::get('/smart-entertainment', 'PageController@categoryPage');
 
-
+Route::get('welcome', function () {
+    return view('user.welcome');
+});
 
 //    Route::get('/product-details', function () // temp, used for tweaking frontend
 //    {
@@ -244,11 +246,6 @@ Route::group(['prefix' => 'api'], function () {
     Route::post('contact-us', 'UserController@postContactUsInfo');
     Route::post('user/posts', 'UserController@getStoriesByAuthor');
 
-    Route::post('welcome', 'PageController@welocome');
-
-
-
-
 
     /*
      * Notification
@@ -256,6 +253,9 @@ Route::group(['prefix' => 'api'], function () {
     Route::get('notification/{uid?}/{limit?}', 'UserController@notification');
     Route::get('read-all-notification/{uid?}', 'UserController@notificationReadAll'); 
     Route::post('read-single-notification', 'UserController@singleNotificationRead');
+
+//    Route::get('welcome', function() { return view('user.welcome');});
+
 
 
     /*

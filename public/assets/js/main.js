@@ -4976,7 +4976,7 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                         $('.toggles, .bordering .content').animate({opacity: "0"}, function(){
                              setTimeout(function(){ 
                                 $scope.hideAndForget();
-                                window.location = '/welocme';
+                                window.location = '/welcome';
 
                             }, 2000);
                         })
@@ -4987,7 +4987,7 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                          $('.toggles, .bordering .content').animate({opacity: "0"}, function(){
                              setTimeout(function(){ 
                                 $scope.hideAndForget();
-                                window.location = '/welocme';
+                                window.location = '/welcome';
                             }, 2000);
                         })
                     }
@@ -5234,10 +5234,6 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                 source = 'home';
             else
                 source = '';
-
-
-          //  console.log('formData')
-          //  console.log(formData)
 
             $http({
                 url: '/api/subscribe',

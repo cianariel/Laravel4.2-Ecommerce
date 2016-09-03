@@ -64,7 +64,7 @@
                                 <span class="input__label-content input__label-content--madoka">Confirm</span>
                             </label>
                         </span>
-                    <a class="btn btn-success form-control not-rounded" ng-click="registerSubscribedUser()">Join and Create a Free account</a>
+                    <a class="btn btn-success form-control" ng-click="registerSubscribedUser()">Join and Create a Free account</a>
                     </section>
                 </div>
                  <uib-alert ng-repeat="alert in alerts" type="@{{alert.type}}" close="closeAlert($index)">
@@ -88,11 +88,11 @@
                                 <span class="input__label-content input__label-content--madoka">Email</span>
                             </label>
                         </span>
-                    <a class="btn btn-success form-control not-rounded"  ng-click="subscribe(data,'popup')">Join</a>
+                    <a class="btn btn-success form-control"  ng-click="subscribe(data,'popup')">Join</a>
                     </section>
                 </div>
                 <strong class="red alerts" style="width: 100%; display: block; text-align: center;"><?php echo '{{ responseMessage }}' ?></strong>
-                <footer class="black-footer relative full-wide text-right white overhide"><b   ng-click="hideAndForget()">Maybe Later <i class="m-icon--Close white"></i></b></footer>
+                <footer class="black-footer relative full-wide text-right white overhide"><b   ng-click="hideAndForget()"><i class="m-icon--Close white"></i></b></footer>
             </div>
         </div>
     </div>
