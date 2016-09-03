@@ -60,14 +60,13 @@
                                 <span class="input__label-content input__label-content--madoka">Confirm</span>
                             </label>
                         </span>
+                    <a class="btn btn-success form-control not-rounded" ng-click="registerSubscribedUser()">Join and Create a Free account</a>
                     </section>
-
-                    <a class="btn btn-success form-control" ng-click="registerSubscribedUser()">Join and Create a Free account</a>
-
-                    <uib-alert ng-repeat="alert in alerts" type="@{{alert.type}}" close="closeAlert($index)">
-                        <strong class="red alertme" ng-bind-html="alertHTML"></strong>
-                    </uib-alert>
                 </div>
+                 <uib-alert ng-repeat="alert in alerts" type="@{{alert.type}}" close="closeAlert($index)">
+                        <strong  style="width: 100%; display: block; text-align: center;" ng-if="$index == 0" class="red alerts" ng-bind-html="alertHTML"></strong>
+                    </uib-alert>
+
 
                 <div class="content-subscribe bordering hidden-soft">
                     <ul class="why-join">
@@ -85,15 +84,13 @@
                                 <span class="input__label-content input__label-content--madoka">Email</span>
                             </label>
                         </span>
-
+                    <a class="btn btn-success form-control not-rounded"  ng-click="subscribe(data,'popup')">Join</a>
                     </section>
-                    <a class="btn btn-success form-control"  ng-click="subscribe(data,'popup')">Join</a>
-                    <strong class="red alertme"><?php echo '{{ responseMessage }}' ?></strong>
                 </div>
-                <footer class="black-footer relative full-wide text-right white overhide"><b   ng-click="hideAndForget()">Maybe Later <i class="m-icon--Close grey"></i></b></footer>
-            </div>
-           <!-- <footer class="black-footer relative full-wide text-right white overhide"><b   ng-click="hideAndForget()">Maybe Later <i class="m-icon--Close grey"></i></b></footer> -->
+                <strong class="red alerts" style="width: 100%; display: block; text-align: center;"><?php echo '{{ responseMessage }}' ?></strong>
 
+            </div>
+            <footer class="black-footer relative full-wide text-right white overhide"><b   ng-click="hideAndForget()">Maybe Later <i class="m-icon--Close white"></i></b></footer>
         </div>
     </div>
 
