@@ -10689,7 +10689,7 @@ html.hide-overflow{
       background: #000;
 
       @media(max-width: 620px) {
-        min-height: 275px !important;
+        min-height: 215px !important;
       }
     }
 
@@ -10716,8 +10716,9 @@ html.hide-overflow{
       z-index: 10;
       opacity: .8;
 
-      @media(max-width: 768px) {
-        width: 100%;
+      @media(max-width: 620px) {
+        width: auto;
+        height: auto;
       }
 
     }
@@ -10893,6 +10894,11 @@ html.hide-overflow{
       position: relative;
       bottom: -15px;
       right: -24px;
+
+      @media(max-width:620px){
+        bottom: -4px;
+        right: -7px;
+      }
 
       b{
         cursor: pointer;
@@ -11950,14 +11956,16 @@ body.giveaway-page{
   padding-top: 30px;
 
   h1{
-    width:100px;
-    min-height: 300px;
     font-size: 2rem;
     text-align: center;
   }
 
   section{
+    min-height: 300px;
 
+    .center-block{
+      width:100px;
+    }
   }
 
 }

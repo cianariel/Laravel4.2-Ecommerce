@@ -12575,7 +12575,7 @@ html.hide-overflow {
       background: #000; }
       @media (max-width: 620px) {
         .subscribe_email_popup #subscribe_email_popup .img-holder {
-          min-height: 275px !important; } }
+          min-height: 215px !important; } }
     .subscribe_email_popup #subscribe_email_popup .img-holder,
     .subscribe_email_popup #subscribe_email_popup .content-holder {
       min-height: 480px; }
@@ -12597,9 +12597,10 @@ html.hide-overflow {
       width: 100%;
       z-index: 10;
       opacity: .8; }
-      @media (max-width: 768px) {
+      @media (max-width: 620px) {
         .subscribe_email_popup #subscribe_email_popup img {
-          width: 100%; } }
+          width: auto;
+          height: auto; } }
     .subscribe_email_popup #subscribe_email_popup h4 {
       display: inline;
       position: absolute;
@@ -12716,6 +12717,10 @@ html.hide-overflow {
       position: relative;
       bottom: -15px;
       right: -24px; }
+      @media (max-width: 620px) {
+        .subscribe_email_popup #subscribe_email_popup .black-footer {
+          bottom: -4px;
+          right: -7px; } }
       .subscribe_email_popup #subscribe_email_popup .black-footer b {
         cursor: pointer; }
       .subscribe_email_popup #subscribe_email_popup .black-footer i {
@@ -13493,10 +13498,12 @@ body.giveaway-page .black-slider {
 #weclome-page {
   padding-top: 30px; }
   #weclome-page h1 {
-    width: 100px;
-    min-height: 300px;
     font-size: 2rem;
     text-align: center; }
+  #weclome-page section {
+    min-height: 300px; }
+    #weclome-page section .center-block {
+      width: 100px; }
 
 .adsbygoogle > ins {
   display: block !important;
