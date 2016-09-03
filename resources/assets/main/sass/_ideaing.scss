@@ -10689,7 +10689,7 @@ html.hide-overflow{
       background: #000;
 
       @media(max-width: 620px) {
-        min-height: 215px !important;
+        min-height: 170px !important;
       }
     }
 
@@ -11953,18 +11953,22 @@ body.giveaway-page{
 //WELCOME page
 
 #weclome-page{
-  padding-top: 30px;
+  padding-top: 90px;
 
   h1{
-    font-size: 2rem;
+    font-size: 2.5rem;
     text-align: center;
   }
 
   section{
-    min-height: 300px;
+    min-height: 200px;
+
+    .m-icon--bulb{
+      font-size: 3rem;
+    }
 
     .center-block{
-      width:100px;
+      width:50px;
     }
   }
 
