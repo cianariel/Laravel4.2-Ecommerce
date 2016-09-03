@@ -12583,7 +12583,7 @@ html.hide-overflow {
       @media (max-width: 620px) {
         .subscribe_email_popup #subscribe_email_popup .img-holder,
         .subscribe_email_popup #subscribe_email_popup .content-holder {
-          min-height: 482px !important; } }
+          min-height: 482px; } }
     .subscribe_email_popup #subscribe_email_popup img {
       position: absolute;
       height: 100%;
