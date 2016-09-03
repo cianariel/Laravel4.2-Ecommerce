@@ -12579,7 +12579,7 @@ html.hide-overflow {
       @media (max-width: 992px) {
         .subscribe_email_popup #subscribe_email_popup .img-holder,
         .subscribe_email_popup #subscribe_email_popup .content-holder {
-          min-height: 510px; } }
+          min-height: 520px; } }
       @media (max-width: 620px) {
         .subscribe_email_popup #subscribe_email_popup .img-holder,
         .subscribe_email_popup #subscribe_email_popup .content-holder {
