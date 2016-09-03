@@ -5,10 +5,14 @@
 @section('content')
 
 <section>
-    <h1 itemprop="name" class="hidden">Welcome to the<br/> family</h1>
     <article id="weclome-page">
         <section class="row">
-            <div>Icon here</div>
+            <div class="center-block">
+                <span class="m-icon--bulb2">
+                    <span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span><span class="path6"></span><span class="path7"></span><span class="path8"></span><span class="path9"></span><span class="path10"></span>
+                </span>
+            </div>
+            <h1>Welcome to the<br/> family</h1>
         </section>
 
         <section class="row pink-bg">
@@ -21,7 +25,7 @@
         </section>
 
         <section class="row">
-            <div>Giveawats</div>
+            <div>Giveaways</div>
         </section>
 
         <section class="row pink-bg">

@@ -5223,6 +5223,9 @@ a:hover, a:focus {
 .pink {
   color: #FF0042 !important; }
 
+.pink-bg {
+  background-color: #FF0042 !important; }
+
 .orange {
   color: #FF7F00 !important; }
 
@@ -12709,7 +12712,10 @@ html.hide-overflow {
     .subscribe_email_popup #subscribe_email_popup .black-footer {
       padding-top: 5px;
       z-index: 12;
-      color: #333; }
+      color: #333;
+      position: relative;
+      bottom: -15px;
+      right: -24px; }
       .subscribe_email_popup #subscribe_email_popup .black-footer b {
         cursor: pointer; }
       .subscribe_email_popup #subscribe_email_popup .black-footer i {
@@ -13483,6 +13489,14 @@ body.giveaway-page .black-slider {
     top: 48%;
     left: 16%;
     font-size: 5rem; }
+
+#weclome-page {
+  padding-top: 30px; }
+  #weclome-page h1 {
+    width: 100px;
+    min-height: 300px;
+    font-size: 2rem;
+    text-align: center; }
 
 .adsbygoogle > ins {
   display: block !important;

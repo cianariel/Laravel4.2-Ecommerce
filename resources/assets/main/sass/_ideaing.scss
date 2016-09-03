@@ -25,6 +25,9 @@ a:hover, a:focus{
 .pink{
   color: $iridium !important;
 }
+.pink-bg{
+  background-color: $iridium !important;
+}
 .orange{
   color: $dark-orange !important;
 }
@@ -10887,6 +10890,10 @@ html.hide-overflow{
       z-index: 12;
       color: #333;
 
+      position: relative;
+      bottom: -15px;
+      right: -24px;
+
       b{
         cursor: pointer;
       }
@@ -11935,9 +11942,23 @@ body.giveaway-page{
     left: 16%;
     font-size: 5rem;
   }
+}
 
+//WELCOME page
 
+#weclome-page{
+  padding-top: 30px;
 
+  h1{
+    width:100px;
+    min-height: 300px;
+    font-size: 2rem;
+    text-align: center;
+  }
+
+  section{
+
+  }
 
 }
 
