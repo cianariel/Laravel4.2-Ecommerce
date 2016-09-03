@@ -10669,27 +10669,28 @@ html.hide-overflow{
   }
 
   #subscribe_email_popup {
-    //overflow: hidden;
     width: 1880px;
     max-width: 100%;
     background-color: #f7f7f7;
 
-
+    -webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
 
     .modal-content{
       background: transparent !important;
     }
 
     .img-holder{
-      position: static;
-      min-height: 436px;
+      position: relative;
+      min-height: 480px;
       background: #000;
 
       @media(max-width: 992px) {
-        min-height: 470px;
+        min-height: 510px;
       }
       @media(max-width: 830px) {
-        min-height: 570px;
+        min-height: 610px;
       }
       @media(max-width: 768px) {
         position: relative;
@@ -10699,7 +10700,7 @@ html.hide-overflow{
     img{
       position: absolute;
       height: 100%;
-      width: 50%;
+      width: 100%;
       z-index: 10;
       opacity: .8;
 
@@ -10714,7 +10715,7 @@ html.hide-overflow{
       position: absolute;
       top: 26%;
       left: 0;
-      max-width: 40%;
+      max-width: 95%;
       line-height: 1.9;
       font-size: 2.3rem;
       padding-left: 15px;
@@ -10731,18 +10732,11 @@ html.hide-overflow{
       span {
         padding: 0.2em;
         padding-left: 0;
-        box-shadow: 0.2em 0 0 rgba(#000, 0.7), -0.8em 0 0 rgba(#000, 0.7);
-        background-color: rgba(#000, 0.7);
+        box-shadow: 0.2em 0 0 rgba($sky-blue, 0.7), -0.8em 0 0 rgba($sky-blue, 0.7);
+        background-color: rgba($sky-blue, 0.7);
       }
 
     }
-
-    //.bordering{
-    //  position: relative;
-    //  width: 100%;
-    //  height: 50px;
-    //  float: left;
-    //}
 
     .password-wrap,
     .confirm-wrap{
@@ -10751,31 +10745,18 @@ html.hide-overflow{
       margin-right: 6px;
     }
 
-    //.confirm-wrap{
-    //  float: right;
-    //}
-
     .password-input-holder{
       margin-bottom: 3px;
-      input{
-        //&:first-child{
-        //  margin-right: 3px;
-        //}
-        //width: 49%;
-        //margin-bottom: 3px;
-        //float: left;
-      }
     }
 
     .seen-on {
       bottom: -10px;
-      height: 90px;
+      height: 57px;
       z-index: 12;
-      //background: rgba(#000, .5);
 
       @media(max-width: 1000px) {
         height: 114px;
-        bottom: 15px;
+        bottom: -16px;
       }
 
       span {
@@ -10833,7 +10814,6 @@ html.hide-overflow{
       height: 39px;
       padding: 0;
       border-bottom: 3px solid #d4d4d4;
-      //overflow: hidden;
 
       .swing-lined {
         height: 40px;
@@ -10879,15 +10859,20 @@ html.hide-overflow{
       }
     }
     .black-footer {
-      padding: 5px 15px;
+      padding: 27px 15px 5px;
       z-index: 12;
+      color: #333;
 
       b{
         cursor: pointer;
       }
 
       i {
-        padding-left: 20px;
+        border: 1px solid #333;
+        color: #000;
+        border-radius: 20px;
+        width: 15px;
+        padding: 6px;
       }
     }
 

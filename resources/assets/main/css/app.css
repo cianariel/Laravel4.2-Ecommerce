@@ -12561,26 +12561,29 @@ html.hide-overflow {
   .subscribe_email_popup #subscribe_email_popup {
     width: 1880px;
     max-width: 100%;
-    background-color: #f7f7f7; }
+    background-color: #f7f7f7;
+    -webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
+    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75); }
     .subscribe_email_popup #subscribe_email_popup .modal-content {
       background: transparent !important; }
     .subscribe_email_popup #subscribe_email_popup .img-holder {
-      position: static;
-      min-height: 436px;
+      position: relative;
+      min-height: 480px;
       background: #000; }
       @media (max-width: 992px) {
         .subscribe_email_popup #subscribe_email_popup .img-holder {
-          min-height: 470px; } }
+          min-height: 510px; } }
       @media (max-width: 830px) {
         .subscribe_email_popup #subscribe_email_popup .img-holder {
-          min-height: 570px; } }
+          min-height: 610px; } }
       @media (max-width: 768px) {
         .subscribe_email_popup #subscribe_email_popup .img-holder {
           position: relative; } }
     .subscribe_email_popup #subscribe_email_popup img {
       position: absolute;
       height: 100%;
-      width: 50%;
+      width: 100%;
       z-index: 10;
       opacity: .8; }
       @media (max-width: 768px) {
@@ -12591,7 +12594,7 @@ html.hide-overflow {
       position: absolute;
       top: 26%;
       left: 0;
-      max-width: 40%;
+      max-width: 95%;
       line-height: 1.9;
       font-size: 2.3rem;
       padding-left: 15px;
@@ -12605,8 +12608,8 @@ html.hide-overflow {
       .subscribe_email_popup #subscribe_email_popup h4 span {
         padding: 0.2em;
         padding-left: 0;
-        box-shadow: 0.2em 0 0 rgba(0, 0, 0, 0.7), -0.8em 0 0 rgba(0, 0, 0, 0.7);
-        background-color: rgba(0, 0, 0, 0.7); }
+        box-shadow: 0.2em 0 0 rgba(0, 177, 255, 0.7), -0.8em 0 0 rgba(0, 177, 255, 0.7);
+        background-color: rgba(0, 177, 255, 0.7); }
     .subscribe_email_popup #subscribe_email_popup .password-wrap,
     .subscribe_email_popup #subscribe_email_popup .confirm-wrap {
       width: 48%;
@@ -12616,12 +12619,12 @@ html.hide-overflow {
       margin-bottom: 3px; }
     .subscribe_email_popup #subscribe_email_popup .seen-on {
       bottom: -10px;
-      height: 90px;
+      height: 57px;
       z-index: 12; }
       @media (max-width: 1000px) {
         .subscribe_email_popup #subscribe_email_popup .seen-on {
           height: 114px;
-          bottom: 15px; } }
+          bottom: -16px; } }
       .subscribe_email_popup #subscribe_email_popup .seen-on span {
         height: 80px;
         width: 90px;
@@ -12685,12 +12688,17 @@ html.hide-overflow {
         .subscribe_email_popup #subscribe_email_popup .why-join li .m-icon {
           padding-right: 4px; }
     .subscribe_email_popup #subscribe_email_popup .black-footer {
-      padding: 5px 15px;
-      z-index: 12; }
+      padding: 27px 15px 5px;
+      z-index: 12;
+      color: #333; }
       .subscribe_email_popup #subscribe_email_popup .black-footer b {
         cursor: pointer; }
       .subscribe_email_popup #subscribe_email_popup .black-footer i {
-        padding-left: 20px; }
+        border: 1px solid #333;
+        color: #000;
+        border-radius: 20px;
+        width: 15px;
+        padding: 6px; }
     .subscribe_email_popup #subscribe_email_popup .btn-success {
       margin-top: 17px;
       padding-top: 11px; }
