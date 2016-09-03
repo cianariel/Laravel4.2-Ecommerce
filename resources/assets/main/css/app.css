@@ -12569,17 +12569,21 @@ html.hide-overflow {
       background: transparent !important; }
     .subscribe_email_popup #subscribe_email_popup .img-holder {
       position: relative;
-      min-height: 480px;
       background: #000; }
+      @media (max-width: 620px) {
+        .subscribe_email_popup #subscribe_email_popup .img-holder {
+          min-height: 150px !important; } }
+    .subscribe_email_popup #subscribe_email_popup .img-holder,
+    .subscribe_email_popup #subscribe_email_popup .content-holder {
+      min-height: 480px; }
       @media (max-width: 992px) {
-        .subscribe_email_popup #subscribe_email_popup .img-holder {
+        .subscribe_email_popup #subscribe_email_popup .img-holder,
+        .subscribe_email_popup #subscribe_email_popup .content-holder {
           min-height: 510px; } }
-      @media (max-width: 830px) {
-        .subscribe_email_popup #subscribe_email_popup .img-holder {
-          min-height: 610px; } }
-      @media (max-width: 768px) {
-        .subscribe_email_popup #subscribe_email_popup .img-holder {
-          position: relative; } }
+      @media (max-width: 620px) {
+        .subscribe_email_popup #subscribe_email_popup .img-holder,
+        .subscribe_email_popup #subscribe_email_popup .content-holder {
+          min-height: 482px; } }
     .subscribe_email_popup #subscribe_email_popup img {
       position: absolute;
       height: 100%;
@@ -12599,6 +12603,9 @@ html.hide-overflow {
       font-size: 2.3rem;
       padding-left: 15px;
       z-index: 12; }
+      @media (max-width: 620px) {
+        .subscribe_email_popup #subscribe_email_popup h4 {
+          font-size: 1.8rem; } }
       @media (max-width: 768px) {
         .subscribe_email_popup #subscribe_email_popup h4 {
           max-width: 80%; } }
@@ -12625,6 +12632,9 @@ html.hide-overflow {
         .subscribe_email_popup #subscribe_email_popup .seen-on {
           height: 114px;
           bottom: -16px; } }
+      @media (max-width: 620px) {
+        .subscribe_email_popup #subscribe_email_popup .seen-on {
+          display: none; } }
       .subscribe_email_popup #subscribe_email_popup .seen-on span {
         height: 80px;
         width: 90px;
@@ -12694,11 +12704,8 @@ html.hide-overflow {
       .subscribe_email_popup #subscribe_email_popup .black-footer b {
         cursor: pointer; }
       .subscribe_email_popup #subscribe_email_popup .black-footer i {
-        border: 1px solid #333;
-        color: #000;
-        border-radius: 20px;
-        width: 15px;
-        padding: 6px; }
+        padding-left: 20px;
+        color: #333; }
     .subscribe_email_popup #subscribe_email_popup .btn-success {
       margin-top: 17px;
       padding-top: 11px; }

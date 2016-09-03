@@ -1,7 +1,7 @@
 <script type="text/ng-template" id="subscribe_email_popup.html">
-    <div id="subscribe_email_popup" class="ns-effect-genie ns-hide relative">
+    <div id="subscribe_email_popup" class="ns-effect-genie ns-hide relative overhide">
         <div ng-app="publicApp" ng-controller="publicController" class="ng-scope">
-            <div class="col-sm-6 col-xs-12 hidden-xs img-holder no-padding">
+            <div class="col-sm-6 col-xs-12 img-holder no-padding">
                 <h4 class="white relative overhide"><span>Subscribe to the most unique community centered on Living Smarter</span></h4>
                 <div class="seen-on col-xs-12 absolute">
                     <span class="caption"><b class="white">As seen on:</b></span>
@@ -92,7 +92,7 @@
                 </div>
                 <footer class="black-footer relative full-wide text-right white overhide"><b   ng-click="hideAndForget()">Maybe Later <i class="m-icon--Close grey"></i></b></footer>
             </div>
-            <footer class="black-footer relative full-wide text-right white overhide"><b   ng-click="hideAndForget()">Maybe Later <i class="m-icon--Close grey"></i></b></footer>
+           <!-- <footer class="black-footer relative full-wide text-right white overhide"><b   ng-click="hideAndForget()">Maybe Later <i class="m-icon--Close grey"></i></b></footer> -->
 
         </div>
     </div>

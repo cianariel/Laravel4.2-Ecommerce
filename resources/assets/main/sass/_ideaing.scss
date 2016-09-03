@@ -10683,17 +10683,22 @@ html.hide-overflow{
 
     .img-holder{
       position: relative;
-      min-height: 480px;
       background: #000;
 
+      @media(max-width: 620px) {
+        min-height: 150px !important;
+      }
+    }
+
+    .img-holder,
+    .content-holder{
+      min-height: 480px;
+
       @media(max-width: 992px) {
-        min-height: 510px;
+        min-height: 520px;
       }
-      @media(max-width: 830px) {
-        min-height: 610px;
-      }
-      @media(max-width: 768px) {
-        position: relative;
+      @media(max-width: 620px) {
+        min-height: 482px;
       }
     }
 
@@ -10721,6 +10726,10 @@ html.hide-overflow{
       padding-left: 15px;
       z-index: 12;
 
+      @media(max-width: 620px) {
+        font-size: 1.8rem;
+      }
+
       @media(max-width: 768px) {
         max-width: 80%;
       }
@@ -10735,7 +10744,6 @@ html.hide-overflow{
         box-shadow: 0.2em 0 0 rgba($sky-blue, 0.7), -0.8em 0 0 rgba($sky-blue, 0.7);
         background-color: rgba($sky-blue, 0.7);
       }
-
     }
 
     .password-wrap,
@@ -10757,6 +10765,9 @@ html.hide-overflow{
       @media(max-width: 1000px) {
         height: 114px;
         bottom: -16px;
+      }
+      @media(max-width: 620px) {
+        display: none;
       }
 
       span {
@@ -10868,11 +10879,8 @@ html.hide-overflow{
       }
 
       i {
-        border: 1px solid #333;
-        color: #000;
-        border-radius: 20px;
-        width: 15px;
-        padding: 6px;
+        padding-left: 20px;
+        color: #333;
       }
     }
 
