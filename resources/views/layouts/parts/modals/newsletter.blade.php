@@ -88,9 +88,8 @@
                     </section>
                 </div>
                 <strong class="red alerts" style="width: 100%; display: block; text-align: center;"><?php echo '{{ responseMessage }}' ?></strong>
-
+                <footer class="black-footer relative full-wide text-right white overhide"><b   ng-click="hideAndForget()">Maybe Later <i class="m-icon--Close white"></i></b></footer>
             </div>
-            <footer class="black-footer relative full-wide text-right white overhide"><b   ng-click="hideAndForget()">Maybe Later <i class="m-icon--Close white"></i></b></footer>
         </div>
     </div>
 
