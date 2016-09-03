@@ -6224,14 +6224,6 @@ a.all-link {
   background-size: 30px;
   background-position: left 4px;
   min-width: 200px; }
-a.box-link {
-  padding: 3px 4px;
-  margin: 12px 6px;
-  color: #999999;
-  font-size: 13px;
-  /*    border: 2px solid $dark-orange;*/
-  border-radius: 4px;
-  text-align: center; }
 a.filter-link {
   font-size: 2rem;
   color: #000;
@@ -6281,6 +6273,15 @@ a.get-round {
   a.get-round:hover {
     background: #cc0035;
     color: #fff; }
+
+a.box-link {
+  padding: 3px 4px;
+  margin: 12px 6px;
+  color: #fff;
+  font-size: 13px;
+  /*    border: 2px solid $dark-orange;*/
+  border-radius: 4px;
+  text-align: center; }
 
 li.nested-parent {
   overflow: hidden; }
@@ -13495,17 +13496,65 @@ body.giveaway-page .black-slider {
     left: 16%;
     font-size: 5rem; }
 
-#weclome-page {
-  padding-top: 90px; }
-  #weclome-page h1 {
-    font-size: 2.5rem;
-    text-align: center; }
-  #weclome-page section {
-    min-height: 200px; }
-    #weclome-page section .m-icon--bulb {
-      font-size: 3rem; }
-    #weclome-page section .center-block {
-      width: 50px; }
+#weclome-page h1 {
+  font-size: 2.5rem;
+  text-align: center; }
+#weclome-page section {
+  min-height: 200px;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  text-align: center; }
+  #weclome-page section.pink-bg {
+    font-weight: bold;
+    color: #fff; }
+  #weclome-page section .container {
+    padding: 65px; }
+    #weclome-page section .container .giveaways {
+      padding: 0 40px;
+      text-align: left; }
+  #weclome-page section p {
+    font-size: 1.7rem; }
+  #weclome-page section .m-icon {
+    float: none; }
+  #weclome-page section .m-icon--bulb2 {
+    font-size: 6rem; }
+  #weclome-page section .center-block {
+    width: 50px; }
+#weclome-page .shop-now {
+  border-bottom: 3px solid #fff; }
+#weclome-page .four-sections {
+  padding: 0;
+  color: #fff; }
+  #weclome-page .four-sections .category-block {
+    min-height: 400px;
+    padding-top: 10%;
+    font-weight: bold;
+    background: url("/assets/images/welcome/welcome-smart-home.jpg") no-repeat center;
+    background-size: cover; }
+    #weclome-page .four-sections .category-block .z-wrap {
+      z-index: 2; }
+    #weclome-page .four-sections .category-block .category-bg {
+      opacity: .4;
+      z-index: 1; }
+    #weclome-page .four-sections .category-block .m-icon {
+      font-size: 4rem; }
+    #weclome-page .four-sections .category-block.category-smart-travel {
+      background-image: url("/assets/images/welcome/welcome-smart-travel.jpg"); }
+    #weclome-page .four-sections .category-block.category-smart-body {
+      background-image: url("/assets/images/welcome/welcome-smart-body.jpg"); }
+    #weclome-page .four-sections .category-block.category-smart-entertainment {
+      background-image: url("/assets/images/welcome/welcome-smart-entertainment.jpg"); }
+    #weclome-page .four-sections .category-block .learn-more,
+    #weclome-page .four-sections .category-block .shop-now {
+      opacity: 1;
+      display: inline-block;
+      padding: 9px;
+      clear: both; }
+#weclome-page .get-started {
+  padding: 9px;
+  font-weight: bold;
+  color: #FF0042;
+  border-bottom: 3px solid #FF0042; }
 
 .adsbygoogle > ins {
   display: block !important;

@@ -1189,15 +1189,7 @@ a{ // Custom Link Styles
     min-width: 200px;
   }
 
-  &.box-link{
-    padding: 3px 4px;
-    margin: 12px 6px;
-    color: $grey ;
-    font-size: 13px;
-/*    border: 2px solid $dark-orange;*/
-    border-radius: 4px;
-    text-align: center;
-  }
+
 
   &.filter-link{
     font-size: 2rem;
@@ -1273,6 +1265,17 @@ a{ // Custom Link Styles
     }
   }
 
+
+}
+
+a.box-link{
+  padding: 3px 4px;
+  margin: 12px 6px;
+  color: #fff;
+  font-size: 13px;
+  /*    border: 2px solid $dark-orange;*/
+  border-radius: 4px;
+  text-align: center;
 
 }
 
@@ -11953,7 +11956,7 @@ body.giveaway-page{
 //WELCOME page
 
 #weclome-page{
-  padding-top: 90px;
+  //padding-top: 90px;
 
   h1{
     font-size: 2.5rem;
@@ -11962,14 +11965,100 @@ body.giveaway-page{
 
   section{
     min-height: 200px;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    text-align: center;
 
-    .m-icon--bulb{
-      font-size: 3rem;
+    &.pink-bg{
+      font-weight: bold;
+      color: #fff;
+    }
+
+    .container{
+      padding: 65px;
+
+      //&.giveaway-wrap{
+      //  padding: 0;
+      //}
+
+      .giveaways{
+        padding: 0 40px;
+        text-align: left;
+      }
+    }
+
+    p{
+      font-size: 1.7rem;
+    }
+
+    .m-icon{
+      float: none;
+    }
+
+    .m-icon--bulb2{
+      font-size: 6rem;
     }
 
     .center-block{
       width:50px;
     }
+  }
+
+  .shop-now{
+    border-bottom: 3px solid #fff;
+  }
+
+  .four-sections{
+    padding: 0;
+    color: #fff;
+    .category-block{
+      min-height: 400px;
+      padding-top: 10%;
+      font-weight: bold;
+
+      .z-wrap{
+        z-index: 2;
+      }
+
+      .category-bg{
+        opacity: .4;
+        z-index: 1;
+      }
+
+      .m-icon{
+        font-size: 4rem;
+      }
+
+      background: url('/assets/images/welcome/welcome-smart-home.jpg') no-repeat center;
+      background-size: cover;
+
+      &.category-smart-travel{
+        background-image: url('/assets/images/welcome/welcome-smart-travel.jpg');
+      }
+      &.category-smart-body{
+        background-image: url('/assets/images/welcome/welcome-smart-body.jpg');
+      }
+      &.category-smart-entertainment{
+        background-image: url('/assets/images/welcome/welcome-smart-entertainment.jpg');
+      }
+
+      .learn-more,
+      .shop-now{
+        opacity: 1;
+        display: inline-block;
+        padding: 9px;
+        clear: both;
+      }
+
+
+
+    }
+  }
+  .get-started{
+    padding: 9px;
+    font-weight: bold;
+    color: $iridium;
+    border-bottom: 3px solid $iridium;
   }
 
 }
