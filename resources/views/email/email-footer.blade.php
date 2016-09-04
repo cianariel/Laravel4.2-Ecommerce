@@ -66,17 +66,17 @@
                     <br/>
                     <i>Copyright © 2016 Idea Centric LLC,</i> All rights reserved.<br/>
                     You are on this list because you are a subscriber of Ideaing.<br/>
-                    <br/>
+
                     <strong>Our mailing address is:</strong><br/>
-                    Idea Centric LLC<br/>
-                    Gramercy<br/>
+                    Idea Centric LLC ,
+                    Gramercy ,
                     Irvine, Ca 92614<br/>
 
                     <a target="_blank" style="text-decoration:underline ; color: #0a8cce" href="http://ideaing.us12.list-manage.com/vcard?u=96801fe1d5d2163ffc6ff717e&id=eeb6e8c94f">Add us to your address book</a>
 
                     <br/>
 
-                    Don't want to hear from Ideaing?<br/>
+                    Don't want to hear from Ideaing?
                     You can <a style="text-decoration: none; color: #0a8cce"
                                href="https://ideaing.com/user/profile">unsubscribe</a> from this list<br/>
 

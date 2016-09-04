@@ -373,7 +373,9 @@
                                                     <!-- image -->
                                                     <tr>
                                                         <td class="devicewidth" height="93" align="center" width="">
-                                                            <div class="imgpop" style="background-color:rgb(250,0,51);min-height:50px;min-width:225px;text-align: center; line-height:50px;">
+                                                            <div  class="imgpop" style="background-color:#4388c7;min-height:50px;min-width:225px;text-align: center; line-height:50px;"
+                                                                  onmouseover="this.style.background='#286999';" onmouseout="this.style.background='#4388c7';"
+                                                            >
                                                                 <a style=" color:white;font-weight: bold; font-family: Helvetica, arial, sans-serif;" href="{{ env('FULL_DOMAIN').'/signup/'.$email}}">Signup Now!</a>
                                                             </div>
                                                         </td>
