@@ -25,7 +25,7 @@
 
         <section class="four-sections">
             <div class="container no-padding">
-                <div class="col-sm-6 col-xs-12 category-block category-smart-home">
+                <div class="col-sm-6 col-xs-12 category-block category-smart-home hover-zoom overhide">
                     <div class="z-wrap relative">
                         <span class="m-icon m-icon--smart-home"></span>
                         <h3>Shart Home</h3>
@@ -35,8 +35,9 @@
                         <a href="/shop/smart-home" class="shop-now swing-lined white"><span>Shop now</span></a>
                     </div>
                     <div class="box-item__overlay category-bg"></div>
+                    <img class="img-responsive" src="/assets/images/welcome/welcome-smart-home.jpg">
                 </div>
-                <div class="col-sm-6 col-xs-12 category-block category-smart-body">
+                <div class="col-sm-6 col-xs-12 category-block category-smart-body hover-zoom overhide">
                     <div class="z-wrap relative">
                         <span class="m-icon m-icon--wearables"></span>
                         <h3>Shart Body</h3>
@@ -47,8 +48,9 @@
                     </div>
 
                     <div class="box-item__overlay category-bg"></div>
+                    <img class="img-responsive" src="/assets/images/welcome/welcome-smart-body.jpg">
                 </div>
-                <div class="col-sm-6 col-xs-12 category-block category-smart-travel">
+                <div class="col-sm-6 col-xs-12 category-block category-smart-travel hover-zoom overhide">
                     <div class="z-wrap relative">
                         <span class="m-icon m-icon--travel"></span>
                         <h3>Shart Travel</h3>
@@ -59,8 +61,10 @@
                     </div>
 
                     <div class="box-item__overlay category-bg"></div>
-                </div>
-                <div class="col-sm-6 col-xs-12 category-block category-smart-entertainment">
+                    <img class="img-responsive" src="/assets/images/welcome/welcome-smart-travel.jpg">
+
+                </div> 
+                <div class="col-sm-6 col-xs-12 category-block category-smart-entertainment hover-zoom overhide">
                     <div class="z-wrap relative">
                         <span class="m-icon m-icon--video"></span>
                         <h3>Shart Entertainment</h3>
@@ -71,6 +75,7 @@
                     </div>
 
                     <div class="box-item__overlay category-bg"></div>
+                    <img class="img-responsive" src="/assets/images/welcome/welcome-smart-entertainment.jpg">
                 </div>
             </div>
         </section>
@@ -79,7 +84,7 @@
             <div class="container no-padding">
                 <div class="col-sm-6 col-xs-12 giveaways">
                     <h3>Giveaways</h3>
-                    <p>Freebies are great, aren't they? We almost always have a giveaway going on, so make sure to come back frequently to enter to win.</p>
+                    <p>Enter to win the most cutting edge smart gadgets including smart home, wearables, entertainment and travel.</p>
                     <a class="get-started swing-lined" href="/giveaway"><span>Get started</span></a>
                 </div>
                 <div class="col-sm-6 col-xs-12">
@@ -88,10 +93,11 @@
             </div>
         </section>
 
-        <section class="row pink-bg">
+        <section class="row">
             <div class="container">
             <h3>Join us</h3>
-            <p>Our community gets better with people like you joining and interacting with others. Invite your friends to join you in getting the latest reviews, news, and deals!</p>
+            <p>Invite your friends to join you in getting the latest reviews, news, and deals!</p>
+                <a class="get-started swing-lined" href="/giveaway"><span>Invite a friend</span></a>
             </div>
         </section>
 
