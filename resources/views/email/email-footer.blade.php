@@ -10,6 +10,25 @@
 
                 <tr>
                     <td>
+
+                        <!-- lets be friend -->
+                        <table width="100%" cellspacing="0" cellpadding="0" border="0" style="min-width:100%;border-collapse:collapse">
+                            <tbody>
+                            <tr>
+                                <td valign="top" style="padding-top:9px">
+                                    <table width="100%" cellspacing="0" cellpadding="0" border="0" align="left" style="max-width:100%;min-width:100%;border-collapse:collapse">
+                                        <tbody><tr>
+                                            <td valign="top" style="padding-top:0;padding-right:18px;padding-bottom:9px;padding-left:18px;word-break:break-word;color:#656565;font-family:Helvetica;font-size:14px;line-height:150%;text-align:center">
+                                                <strong>Let's be friends!</strong>
+                                            </td>
+                                        </tr>
+                                        </tbody></table>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <br />
+
                         <!-- start of text content table -->
                         <table width="290" align="left" border="0" cellpadding="0"
                                cellspacing="0" class="devicewidth">
