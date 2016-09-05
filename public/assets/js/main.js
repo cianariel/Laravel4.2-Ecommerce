@@ -5360,15 +5360,15 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                 return;
             }
 
-            if ($scope.Password == '' || $scope.PasswordConf == '') {
-                $scope.addAlert('danger', 'Please enter both password and confirmation');
+            if ($scope.Password == '') {
+                $scope.addAlert('danger', 'Please enter the password');
                 return;
             }
 
-            if ($scope.Password != $scope.PasswordConf) {
-                $scope.addAlert('danger', 'Passwords do not match!');
-                return;
-            }
+            //if ($scope.Password != $scope.PasswordConf) {
+            //    $scope.addAlert('danger', 'Passwords do not match!');
+            //    return;
+            //} 
 
             $http({
                 url: '/api/register-user',
