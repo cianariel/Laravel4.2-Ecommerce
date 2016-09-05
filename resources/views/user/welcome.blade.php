@@ -63,7 +63,7 @@
                     <div class="box-item__overlay category-bg"></div>
                     <img class="img-responsive" src="/assets/images/welcome/welcome-smart-travel.jpg">
 
-                </div> 
+                </div>
                 <div class="col-sm-6 col-xs-12 category-block category-smart-entertainment hover-zoom overhide">
                     <div class="z-wrap relative">
                         <span class="m-icon m-icon--video"></span>

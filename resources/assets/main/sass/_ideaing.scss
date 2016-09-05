@@ -10691,7 +10691,7 @@ html.hide-overflow{
 
     .img-holder{
       position: relative;
-      background: #000;
+      background: #fff;
 
       @media(max-width: 620px) {
         min-height: 170px !important;
@@ -10714,16 +10714,23 @@ html.hide-overflow{
       }
     }
 
-    img{
-      position: absolute;
-      height: 102%;
-      width: 100%;
-      z-index: 10;
-      opacity: .8;
+    .content-holder {
+      background: #f7f7f7;
+    }
+
+      img{
+        position: absolute;
+        bottom: 0;
+        width: 117%;
+        max-width: none;
+        margin-left: -9%;
+        z-index: 10;
 
       @media(max-width: 620px) {
         width: auto;
-        height: auto;
+        height: 100%;
+        right: -45px;
+        display: block;
       }
 
     }
@@ -10731,32 +10738,43 @@ html.hide-overflow{
     h4 {
       display: inline;
       position: absolute;
-      top: 26%;
+      top: 16%;
       left: 0;
       max-width: 95%;
-      line-height: 1.9;
-      font-size: 2.3rem;
-      padding-left: 15px;
+      line-height: 1.3;
+      font-size: 1.6rem;
+      font-weight: bold;
+      padding-left: 25px;
       z-index: 12;
+      color: #aeaeae;
 
-      @media(max-width: 620px) {
-        font-size: 1.8rem;
-      }
-
-      @media(max-width: 768px) {
-        max-width: 80%;
-      }
+      //@media(max-width: 620px) {
+      //  font-size: 1.9rem;
+      //}
+      //
+      //@media(max-width: 768px) {
+      //  max-width: 80%;
+      //}
 
       @media(max-width: 1000px) {
         top: 13%;
       }
 
-      span {
-        padding: 0.2em;
-        padding-left: 0;
-        box-shadow: 0.2em 0 0 rgba($sky-blue, 0.7), -0.8em 0 0 rgba($sky-blue, 0.7);
-        background-color: rgba($sky-blue, 0.7);
+      b{
+        color: $iridium;
+        font-size: 4rem;
+
+        @media(max-width: 620px) {
+          font-size: 2.5rem;
+        }
       }
+
+      //span {
+      //  padding: 0.2em;
+      //  padding-left: 0;
+      //  box-shadow: 0.2em 0 0 rgba($sky-blue, 0.7), -0.8em 0 0 rgba($sky-blue, 0.7);
+      //  background-color: rgba($sky-blue, 0.7);
+      //}
     }
 
     .password-wrap,
@@ -10776,7 +10794,7 @@ html.hide-overflow{
       z-index: 12;
 
       @media(max-width: 1000px) {
-        height: 114px;
+        height: 64px;
         bottom: -16px;
       }
       @media(max-width: 620px) {
@@ -10793,10 +10811,10 @@ html.hide-overflow{
           height: 20px;
           margin-top: 13px;
 
-          @media(max-width: 1000px) {
-            width: 100%;
-            margin-top: 33px;
-          }
+          //@media(max-width: 1000px) {
+          //  width: 100%;
+          //  margin-top: 33px;
+          //}
         }
 
         &.media-logo {
@@ -10806,19 +10824,19 @@ html.hide-overflow{
 
           &.haffington-logo {
             width: 149px;
-            background: url('/assets/images/newsletter-popup/huffington-post-white.png') no-repeat center;
+            background: url('/assets/images/newsletter-popup/huffington-logo-black.svg') no-repeat center;
 
             @media(max-width: 620px) {
               width: 170px;
             }
           }
 
-          &.entrepreneur-logo {
-            background: url('/assets/images/newsletter-popup/entrepreneur-white.png') no-repeat center;
-          }
+          //&.entrepreneur-logo {
+          //  background: url('/assets/images/newsletter-popup/entrepreneur-black.svg') no-repeat center;
+          //}
 
           &.lifehack-logo {
-            background: url('/assets/images/newsletter-popup/lifehack-white.png') no-repeat center;
+            background: url('/assets/images/newsletter-popup/lifehack-logo-black.svg') no-repeat center;
 
             @media(max-width: 620px) {
               margin-left: 36%;
@@ -10851,7 +10869,7 @@ html.hide-overflow{
         display: block;
         height: 42px;
         max-height: 41px;
-        font-size: 2rem;
+        font-size: 1.8rem;
         padding-bottom: 18px;
         padding-right: 24px;
       }
