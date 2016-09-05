@@ -64,9 +64,9 @@
 
                 <div class="content-subscribe bordering hidden-soft">
                     <ul class="why-join">
-                        <li  class="greyscale"><i class="m-icon m-icon--deals pink"></i> Exclusive coupons and deals on the smartest gadgets</li>
-                        <li  class="greyscale"><i class="m-icon m-icon--video green"></i> Be eligible for to win free smart gadgets</li>
-                        <li><i class="m-icon m-icon--bulb-detailed-on-rating blue"></i> Stories and tips on transforming how you live + play</li>
+                        <li class="greyscale"><i class="m-icon m-icon--deals pink"></i>Get exclusive coupons & deals</li>
+                        <li class="greyscale"><i class="m-icon m-icon--video green"></i> Be eligible for to win free smart gadgets</li>
+                        <li><i class="m-icon m-icon--bulb-detailed-on-rating blue"></i>Unique tips to transform how you live + play</li>
                     </ul>
                     <section class="content"> 
                         <span class="input input--madoka big-wrap">
