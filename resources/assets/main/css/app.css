@@ -13513,15 +13513,13 @@ body.giveaway-page .black-slider {
       padding: 0 40px;
       text-align: left; }
   #weclome-page section p {
-    font-size: 1.7rem; }
+    font-size: 2.2rem; }
   #weclome-page section .m-icon {
     float: none; }
   #weclome-page section .m-icon--bulb2 {
     font-size: 6rem; }
   #weclome-page section .center-block {
     width: 50px; }
-#weclome-page .shop-now {
-  border-bottom: 3px solid #fff; }
 #weclome-page .four-sections {
   padding: 0;
   color: #fff; }
@@ -13544,17 +13542,31 @@ body.giveaway-page .black-slider {
       background-image: url("/assets/images/welcome/welcome-smart-body.jpg"); }
     #weclome-page .four-sections .category-block.category-smart-entertainment {
       background-image: url("/assets/images/welcome/welcome-smart-entertainment.jpg"); }
+    #weclome-page .four-sections .category-block .learn-more {
+      position: relative; }
+      #weclome-page .four-sections .category-block .learn-more::before {
+        left: -12px;
+        right: -12px;
+        border-radius: 12px; }
     #weclome-page .four-sections .category-block .learn-more,
     #weclome-page .four-sections .category-block .shop-now {
       opacity: 1;
       display: inline-block;
       padding: 9px;
       clear: both; }
+      #weclome-page .four-sections .category-block .learn-more span,
+      #weclome-page .four-sections .category-block .shop-now span {
+        padding-bottom: 10px; }
+        #weclome-page .four-sections .category-block .learn-more span:before,
+        #weclome-page .four-sections .category-block .shop-now span:before {
+          border-color: #fff; }
 #weclome-page .get-started {
   padding: 9px;
   font-weight: bold;
   color: #eb2148;
-  border-bottom: 3px solid #eb2148; }
+  padding-left: 0; }
+  #weclome-page .get-started span {
+    padding-bottom: 10px; }
 
 .adsbygoogle > ins {
   display: block !important;

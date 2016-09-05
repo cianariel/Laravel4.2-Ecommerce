@@ -13,7 +13,7 @@
                         <span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span><span class="path6"></span><span class="path7"></span><span class="path8"></span><span class="path9"></span><span class="path10"></span>
                     </span>
                 </div>
-                <h1>Welcome to the<br/> family</h1>
+                <h1>Welcome to the family</h1>
             </div>
         </section>
 
@@ -30,9 +30,9 @@
                         <span class="m-icon m-icon--smart-home"></span>
                         <h3>Shart Home</h3>
                         <p>Improve your home security, lighting, and automation for smarter living.</p>
-                        <a class="learn-more white box-link category-bg">Learn more</a>
+                        <a href="/smart-home" class="learn-more white box-link category-bg button--moema">Learn more</a>
                         <br/>
-                        <a href="/smart-home" class="shop-now white">Shop now</a>
+                        <a href="/shop/smart-home" class="shop-now swing-lined white"><span>Shop now</span></a>
                     </div>
                     <div class="box-item__overlay category-bg"></div>
                 </div>
@@ -41,9 +41,9 @@
                         <span class="m-icon m-icon--wearables"></span>
                         <h3>Shart Body</h3>
                         <p>Increase your performance, or simply stay fashionable while connected.</p>
-                        <a href="/smart-body" class="learn-more white box-link category-bg">Learn more</a>
+                        <a href="/smart-body" class="learn-more white box-link category-bg button--moema">Learn more</a>
                         <br/>
-                        <a class="shop-now white">Shop now</a>
+                        <a  href="/smart/smart-body" class="shop-now swing-lined white"><span>Shop now</span></a>
                     </div>
 
                     <div class="box-item__overlay category-bg"></div>
@@ -53,9 +53,9 @@
                         <span class="m-icon m-icon--travel"></span>
                         <h3>Shart Travel</h3>
                         <p>Stay connected and fully charged with smart luggage, bags, and gadgets.</p>
-                        <a href="/smart-travel" class="learn-more white box-link category-bg">Learn more</a>
+                        <a href="/smart-travel" class="learn-more white box-link category-bg button--moema">Learn more</a>
                         <br/>
-                        <a class="shop-now white">Shop now</a>
+                        <a href="/shop/smart-travel"  class="shop-now swing-lined white"><span>Shop now</span></a>
                     </div>
 
                     <div class="box-item__overlay category-bg"></div>
@@ -65,9 +65,9 @@
                         <span class="m-icon m-icon--video"></span>
                         <h3>Shart Entertainment</h3>
                         <p>Create the best audio / video entertainment systems for your home.</p>
-                        <a href="/smart-entertainment" class="learn-more white box-link category-bg">Learn more</a>
+                        <a href="/smart-entertainment" class="learn-more white box-link category-bg button--moema">Learn more</a>
                         <br/>
-                        <a class="shop-now white">Shop now</a>
+                        <a href="/shop/smart-entertainment" class="shop-now swing-lined white"><span>Shop now</span></a>
                     </div>
 
                     <div class="box-item__overlay category-bg"></div>
@@ -80,7 +80,7 @@
                 <div class="col-sm-6 col-xs-12 giveaways">
                     <h3>Giveaways</h3>
                     <p>Freebies are great, aren't they? We almost always have a giveaway going on, so make sure to come back frequently to enter to win.</p>
-                    <a class="get-started" href="/giveaway">Get started</a>
+                    <a class="get-started swing-lined" href="/giveaway"><span>Get started</span></a>
                 </div>
                 <div class="col-sm-6 col-xs-12">
                     <img src="/assets/images/welcome/welcome-giveaway.jpg">

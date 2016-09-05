@@ -11988,7 +11988,7 @@ body.giveaway-page{
     }
 
     p{
-      font-size: 1.7rem;
+      font-size: 2.2rem;
     }
 
     .m-icon{
@@ -12004,9 +12004,9 @@ body.giveaway-page{
     }
   }
 
-  .shop-now{
-    border-bottom: 3px solid #fff;
-  }
+  //.shop-now{
+  //  border-bottom: 3px solid #fff;
+  //}
 
   .four-sections{
     padding: 0;
@@ -12042,12 +12042,29 @@ body.giveaway-page{
         background-image: url('/assets/images/welcome/welcome-smart-entertainment.jpg');
       }
 
+      .learn-more {
+        position: relative;
+        &::before {
+          left: -12px;
+          right: -12px;
+          border-radius: 12px;
+        }
+      }
+
       .learn-more,
       .shop-now{
         opacity: 1;
         display: inline-block;
         padding: 9px;
         clear: both;
+
+        span{
+          padding-bottom: 10px;
+
+          &:before{
+            border-color: #fff;
+          }
+        }
       }
 
 
@@ -12058,7 +12075,12 @@ body.giveaway-page{
     padding: 9px;
     font-weight: bold;
     color: $iridium;
-    border-bottom: 3px solid $iridium;
+    padding-left: 0;
+    //border-bottom: 3px solid $iridium;
+
+    span{
+      padding-bottom: 10px;
+    }
   }
 
 }
