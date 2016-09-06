@@ -10,6 +10,7 @@ WordPress SEO plugin: Check Plagiarism / Duplicate Content, Broken Links, Keywor
 
 PrePost SEO plugin check your Post SEO before it's **Published** and helps to improve your Website SEO (**Search Engine Optimization**).
 
+Plagiarism checking process is now 10x faster at prepostseo.com
 You can check full feature of this plugin here: **[View Full Features and Details](https://www.prepostseo.com/wordpress-post-seo-analyzing-plugin)**
 
 We are planing to provide up to 1000 free search queries for our users.
@@ -51,7 +52,7 @@ Duplicate content can harm your website SEO very quickly. So make sure that, the
 
 
 = Seo Score Checker = 
-[seo score checker](http://www.prepostseo.com/website-seo-score-checker) is now have more options. Now domain authority and page authority is also checked by seo score checker.
+[seo score checker](https://www.prepostseo.com/website-seo-score-checker) is now have more options. Now domain authority and page authority is also checked by seo score checker.
 You can check seo review of your website. This plugin will analyze your website from every side and find every single possibility to improve your website seo. 
 How this SEO score checker works you can check its demo here: [seo checker](http://www.prepostseo.com/website-seo-score-checker)
 

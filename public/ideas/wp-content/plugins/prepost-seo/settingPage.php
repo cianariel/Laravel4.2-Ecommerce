@@ -27,13 +27,13 @@ die('Direct Access not permitted...');
 	if(!empty($_POST['submit']) and !empty($_POST['account_api']))
 	{
 		$accKey = $_POST['account_api'];
-		@update_option('prepostseo_acckey', $_POST['account_api']);
+		@update_option('prepostseo_acckey', trim($_POST['account_api']));
 	}
 	
 	if(!empty($_POST['submit']) and !empty($_POST['account_api']) and !empty($_POST['update_api']))
 	{
 		$accKey = $_POST['account_api'];
-		@update_option('prepostseo_acckey', $_POST['account_api']);
+		@update_option('prepostseo_acckey', trim($_POST['account_api']));
 	}
 	
 	

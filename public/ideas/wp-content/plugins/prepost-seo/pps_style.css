@@ -11,6 +11,10 @@
   position:relative;
 }
 
+.newBox_pps {
+	display:none;
+}
+
 .content_staus_box p {
   margin: 0;
 }

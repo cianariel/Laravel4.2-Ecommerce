@@ -1,8 +1,7 @@
 <?php
 	// Exit if accessed directly
 	if (! defined('DUPLICATOR_INIT')) {
-		$_baseURL =  strlen($_SERVER['SERVER_NAME']) ? $_SERVER['SERVER_NAME'] : $_SERVER['HTTP_HOST'];
-		$_baseURL =  "http://" . $_baseURL;
+		$_baseURL = "http://" . strlen($_SERVER['SERVER_NAME']) ? $_SERVER['SERVER_NAME'] : $_SERVER['HTTP_HOST'];
 		header("HTTP/1.1 301 Moved Permanently");
 		header("Location: $_baseURL");
 		exit; 
@@ -205,21 +204,21 @@ VIEW: STEP 3- INPUT -->
 		$num = rand(1,2);  
 		switch ($num) {
 			case 1: 
-				$key = 'free-inst-s3btn1';
+				$key = 'free_inst_s3btn1';
 				$txt = 'Want More Power?';
 				break;
 			case 2: 
-				$key = 'free-inst-s3btn2';
+				$key = 'free_inst_s3btn2';
 				$txt = 'Go Pro Today!';
 				break;	
 			default :
-				$key = 'free-inst-s3btn2';
+				$key = 'free_inst_s3btn2';
 				$txt = 'Go Pro Today!';
 		}
 	?>
 	
 	<div class="s3-gopro-btn">
-		<a style="width:100%" class="s3-final-btns" href="https://snapcreek.com/duplicator/comparison?<?php echo $key;?>" target="_blank">&#10097;&#10097; <?php echo $txt;?></a> 
+		<a style="width:100%" class="s3-final-btns" href="https://snapcreek.com/duplicator/?utm_source=duplicator_free&utm_medium=wordpress_plugin&utm_campaign=duplicator_pro&utm_content="<?php echo $key;?>" target="_blank">&#10097;&#10097; <?php echo $txt;?></a> 
 	</div>
 	<br/><br/>
 		

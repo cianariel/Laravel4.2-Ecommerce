@@ -23,7 +23,9 @@ function pps_checkPlag()
 	curl_setopt($ch, CURLOPT_POST, TRUE);
 	curl_setopt($ch, CURLOPT_FOLLOWLOCATION, TRUE); // Follow redirects
 	curl_setopt($ch, CURLOPT_POSTFIELDS, $fields);
+	curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, FALSE);
 	curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
+	
 	curl_setopt($ch, CURLOPT_MAXREDIRS, 10);
 	$page = curl_exec($ch);
 
