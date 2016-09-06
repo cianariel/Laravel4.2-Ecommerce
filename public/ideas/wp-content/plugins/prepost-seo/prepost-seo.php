@@ -3,7 +3,7 @@
   Plugin Name: PrePost SEO 
   Plugin URI: http://www.prepostseo.com/
   Description: Best plugin to check post seo before its published. it checks Plagiarized Content, Keyword Density, Links Count, Broken Links, Images Tages, etc.. <a href="http://www.prepostseo.com" target="_blank">View full features list Click Here</a>.
-  Version: 1.4
+  Version: 1.4.0.1
   Author: Ahmad Sattar
   Author URI: http://www.prepostseo.com/
   License: GPLv3+
