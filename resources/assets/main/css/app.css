@@ -13545,6 +13545,9 @@ body.giveaway-page .black-slider {
     min-height: 400px;
     padding-top: 10%;
     font-weight: bold; }
+    @media (max-width: 620px) {
+      #weclome-page .four-sections .category-block {
+        min-height: 290px; } }
     #weclome-page .four-sections .category-block .z-wrap {
       z-index: 3; }
     #weclome-page .four-sections .category-block .category-bg {
@@ -13554,7 +13557,7 @@ body.giveaway-page .black-slider {
       position: absolute;
       width: 100%;
       height: 100%;
-      top: 0;
+      bottom: 0;
       left: 0;
       z-index: 1; }
     #weclome-page .four-sections .category-block .m-icon {
@@ -14017,12 +14020,6 @@ p {
   float: left;
   margin-left: 6px; }
 
-@media (min-width: 768px) {
-  .main-content .grid-box-3 {
-    display: table;
-    width: 100%;
-    table-layout: fixed;
-    border-collapse: collapse; } }
 .main-content .grid-box-3 .box-item {
   width: auto;
   min-height: 315px;
@@ -14045,7 +14042,8 @@ p {
 
 .grid-wrap {
   overflow: hidden;
-  padding-bottom: 8px; }
+  padding-top: 4px;
+  padding-bottom: 4px; }
 
 .homepage-grid .main-content .grid-wrap {
   visibility: hidden;

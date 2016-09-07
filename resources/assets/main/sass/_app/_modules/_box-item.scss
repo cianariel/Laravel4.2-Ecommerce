@@ -392,12 +392,12 @@
 
 .main-content .grid-box-3 {
 
-	@media (min-width: 768px) {
-		display: table;
-		width: 100%;
-		table-layout: fixed;
-		border-collapse: collapse;
-	}
+	//@media (min-width: 768px) {
+	//	display: table;
+	//	width: 100%;
+	//	table-layout: fixed;
+	//	border-collapse: collapse;
+	//}
 
 	.box-item{
 		width: auto;
@@ -434,7 +434,8 @@
 
 .grid-wrap{
   overflow: hidden;
-  padding-bottom: 8px;
+  padding-top: 4px;
+  padding-bottom: 4px;
 
   }
 

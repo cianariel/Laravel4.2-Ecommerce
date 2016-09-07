@@ -12041,6 +12041,10 @@ body.giveaway-page{
       padding-top: 10%;
       font-weight: bold;
 
+      @media(max-width:620px) {
+        min-height: 290px;
+      }
+
       .z-wrap{
         z-index: 3;
       }
@@ -12054,9 +12058,13 @@ body.giveaway-page{
         position: absolute;
         width: 100%;
         height: 100%;
-        top: 0;
+        bottom: 0;
         left: 0;
         z-index: 1;
+
+        //@media(max-width: 620px){
+        //  height:auto
+        //}
       }
 
       .m-icon{
