@@ -20,12 +20,12 @@
                 $($hide).hide();
                 $that.siblings().removeClass('active');
                 $($show).fadeIn();
-                $that.addClass('active');
+                $that.toggleClass('active');
             }else{
                 $($show).fadeToggle();
                 $that.toggleClass('active');
             }
-
+            return false;
         });
 
         $('body').on('click', '[data-switch]', function(e){
@@ -33,13 +33,7 @@
             var $that = $(this);
             var $show = $that.data('switch');
             var $hide = $that.data('hide');
-            //var $overlay = $that.data('overlay');
 
-            //if($overlay){
-            //    $('.page-overlay').fadeToggle();
-            //}
-
-            //if($hide){
             $($hide).fadeOut(
                 function(){
                     $($show).fadeIn();
@@ -48,17 +42,80 @@
 
             if(!$that.hasClass('active')){
                 $that.addClass('active');
-                $that.siblings().removeClass('active');
-            }else{
-                $that.removeClass('active');
+                $that.siblings().not($that).removeClass('active');
             }
-
-            //}else{
-            //    $($show).fadeToggle();
-            //    $that.toggleClass('active');
-            //}
-
+            return false;
         });
+
+
+        $('body').on('click', '[data-click]', function(e){
+            e.preventDefault();
+            var $that = $(this);
+            var $clickMe = $that.data('click');
+
+            $($clickMe).click();
+
+            return false;
+        });
+
+        $('body').on('click', '.search-toggle-button.desktop', function(e){
+            e.preventDefault();
+            var $show = $('.desktop-search-bar');
+
+            if(!$show.hasClass('shown')){
+                $(this).addClass('active');
+                $show.show();
+                $show.animate({
+                    opacity: '1',
+                    top: '50px',
+                }, 600)
+                $show.addClass('shown');
+                $show.find('input').focus();
+            }else{
+                $(this).removeClass('active');
+
+                $show.animate({
+                    top: '35px',
+                    opacity: 0,
+                }, 200);
+                $show.fadeOut();
+                $show.removeClass('shown');
+            }
+        });
+
+        $('body').on('click', '.search-toggle-button.mobile', function(e){
+            e.preventDefault();
+            $(this).toggleClass('active');
+            $('.mobile-search-bar').toggleClass('on');
+            $('.mobile-search-bar').find('input').focus();
+            $('.category-menu').fadeToggle();
+            //$('.category-menu' ).animate({
+            //    opacity: 0,
+            //}, 1000);
+        });
+
+        $('body').on('click', '.hide-search', function(e){
+            var $show = $('.search-bar');
+
+            $show.animate({
+                top: '35px',
+                opacity: 0,
+            }, 200);
+            $show.blur();
+            $show.fadeOut();
+            $show.removeClass('shown');
+        });
+
+
+
+        $(document).click(function(event) {
+            if(!$(event.target).closest('.hide-on-out').length) {
+                if($('.hide-on-out').is(":visible")) {
+                    $('.hide-on-out').fadeOut();
+                    $('[data-hideonout]').removeClass('active');
+                }
+            }
+        })
 
         $('.page-overlay, .login-signup-modal').click(function(event){
             if(event.target !== this){ // only fire if the block itself is clicked, not it's children (sometimes we need to hide the modal when anything outside it's main block is clickced
@@ -114,9 +171,6 @@
         $('[data-toggle="modal"]').click(function() {
             var $modal = $(this).data('target');
             $($modal).fadeToggle();
-            //if($(this).data('overlay') != 'none'){
-            //
-            //}
             $('.page-overlay:not(.picture-overlay)').fadeToggle();
             if($($modal).hasClass('login-signup-modal')){
                 $('.picture-overlay').show();
@@ -232,6 +286,9 @@
         function sticky_relocate() {
 
             if(window.innerWidth < 620){
+                if(!$('#mobile-sticky-anchor').length){
+                    return false;
+                }
                 var div_top = $('#mobile-sticky-anchor').offset().top;
                 var window_top = $(window).scrollTop();
                 if (window_top > div_top) {
@@ -240,6 +297,10 @@
                     $('.ideas-sharing').fadeOut();
                 }
             }else{
+                if(!$('#sticky-anchor').length){
+                    return false;
+                }
+
                 var div_top = $('#sticky-anchor').offset().top;
                 var window_top = $(window).scrollTop();
                 if (window_top > div_top) {
@@ -259,20 +320,19 @@
         });
 
         // Sticking headers
-        $(function () {
-            $(window).scroll(function(){
-                if($('.scroll-header').length){
-                    if($(window).scrollTop() < 60){
-                        $('header.colophon').removeClass('scroll-header');
-                        //$('.red-scroll-logo').hide();
-                    }
-                }else if(($(window).scrollTop() > 60)){
-                    $('header.colophon').addClass('scroll-header');
-                    //$('.red-logo').hide();
-                }
-
-            });
-        });
+        //$(function () {
+        //    $(window).scroll(function(){
+        //        if($('.scroll-header').length){
+        //            if($(window).scrollTop() < 0){
+        //                $('.header-cloak').removeClass('scroll-header');
+        //            }
+        //        }
+        //        //else if(($(window).scrollTop() > 700)){
+        //        //    $('.header-cloak').addClass('scroll-header');
+        //        //}
+        //
+        //    });
+        //});
 
         $(function () {
             if(window.innerWidth < 620){
@@ -306,7 +366,15 @@
 
         $(window).scroll(function() {
 
-            if($(window).scrollTop() + $(window).height() == $(document).height()) {
+            var $currentPos = $(window).scrollTop() + $(window).height();
+
+            var $triggerPoint = $(document).height() - 600; // roughly, the point where the first chunk of loaded content ends
+
+            // console.log($currentPos);
+            // console.log($triggerPoint);
+
+
+            if($currentPos > $triggerPoint) { // if we are around that point, fire the Load More in the backgriund
                 $('.bottom-load-more').click();
                 $('.bottom-load-more').addClass('disabled').attr('disabled', true);
             }
@@ -331,7 +399,46 @@
                     $('.bottom-block').fadeIn();
                 }
             }
+            if($('.mobile-sharing').is(':visible')){
+                if($(window).scrollTop() + $(window).height() < $(document).height() * 0.1) {
+                    $('.mobile-sharing').fadeOut();
+                }
+            }else{
+                if($(window).scrollTop() + $(window).height() > $(document).height() * 0.1) {
+                    $('.mobile-sharing').fadeIn();
+                }
+            }
         });
+
+        $('.home-hamburger').click(function(){
+            $('body').toggleClass('has-active-menu');
+        });
+        $('.slide-back').click(function(){
+            $('body').removeClass('has-active-menu');
+        });
+
+        //$(function(){
+            var body = $('body');
+            if(body.hasClass('home') || body.hasClass('room-landing')){
+                var $percent = 0.5;
+            }else{
+                var $percent = 0.6;
+            }
+
+            var shrinkHeader = $(document).height() * $percent;
+            $(window).scroll(function() {
+                var scroll = getCurrentScroll();
+                if ( scroll >= shrinkHeader ) {
+                    $('.mobile-sharing').addClass('shrink');
+                }
+                else {
+                    $('.mobile-sharing').removeClass('shrink');
+                }
+            });
+            function getCurrentScroll() {
+                return window.pageYOffset || document.documentElement.scrollTop;
+            }
+        //});
 
         $(document).ready(function(){
             setTimeout(function(){
@@ -347,19 +454,15 @@
 
 
             setInterval(function(){
-                console.log(1)
-                //if($('header.colophon').hasClass('scroll-header')){
                     $('.red-logo')
                         .animate({
                             opacity: 1,
                         }, 1000, function() {
-                            // Animation complete.
                         })
                         .delay(2000)
                         .animate({
                             opacity: 0,
                         }, 1000, function() {
-                            // Animation complete.
                         })
             }, 20000);
         });
@@ -430,7 +533,7 @@
 
     if(window.innerWidth < 1070){ // mobile only
         $(window).scroll(function(){
-            $('.homepage-grid .product-box, .related-items  .product-box').each(function(){
+            $('.homepage-grid .box-item, .related-items  .product-box').each(function(){
                 var that = $(this);
                 var imgTop = that.offset().top + 450;
                 var imgBottom = imgTop + that.height() + 350;

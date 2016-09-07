@@ -907,7 +907,7 @@ function timeAgo($time_ago)
         if($days==1){
             return "yesterday";
         }else{
-            return "$days days ago"; 
+            return "$days days ago";
         }
     }
     //Weeks

@@ -13547,7 +13547,7 @@ body.giveaway-page .black-slider {
     font-weight: bold; }
     @media (max-width: 620px) {
       #weclome-page .four-sections .category-block {
-        min-height: 290px; } }
+        max-height: 290px; } }
     #weclome-page .four-sections .category-block .z-wrap {
       z-index: 3; }
     #weclome-page .four-sections .category-block .category-bg {
