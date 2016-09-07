@@ -76,6 +76,7 @@ return array(
     'App\\Models\\Permission' => $baseDir . '/app/Models/Permission.php',
     'App\\Models\\Product' => $baseDir . '/app/Models/Product.php',
     'App\\Models\\ProductCategory' => $baseDir . '/app/Models/ProductCategory.php',
+    'App\\Models\\ProductCategoryRead' => $baseDir . '/app/Models/ProductCategoryRead.php',
     'App\\Models\\ProductQuery' => $baseDir . '/app/Models/ProductQuery.php',
     'App\\Models\\Role' => $baseDir . '/app/Models/Role.php',
     'App\\Models\\Room' => $baseDir . '/app/Models/Room.php',

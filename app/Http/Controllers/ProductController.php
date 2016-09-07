@@ -37,10 +37,10 @@ class ProductController extends ApiController
         $product = $this->product->checkPermalink($permalink);//($inputData['Permalink']);
         if ($product == false)
             return $this->setStatusCode(\Config::get("const.api-status.success"))
-                ->makeResponse(\Config::get("const.product.permalink-exist"));
+                        ->makeResponse(\Config::get("const.product.permalink-exist"));
         else
             return $this->setStatusCode(\Config::get("const.api-status.success-with-variation"))
-                ->makeResponse($product);
+                        ->makeResponse($product);
     }
 
 
@@ -53,11 +53,11 @@ class ProductController extends ApiController
             $newProduct = $this->product->create(['post_status' => 'Inactive']);
 
             return $this->setStatusCode(\Config::get("const.api-status.success"))
-                ->makeResponse($newProduct);
+                        ->makeResponse($newProduct);
 
         } catch (Exception $ex) {
             return $this->setStatusCode(\Config::get("const.api-status.system-fail"))
-                ->makeResponseWithError("System Failure !", $ex);
+                        ->makeResponseWithError("System Failure !", $ex);
         }
 
     }
@@ -70,10 +70,10 @@ class ProductController extends ApiController
     public function getProductById($id = null)
     {
         try {
-                $productModel = new Product();
-                $productData['product'] = $productModel->getViewForPublic('', $id);
-                $catTree = $productModel->getCategoryHierarchy($productData['product']->product_category_id);
-                $result = $productModel->productDetailsViewGenerate($productData, $catTree);
+            $productModel = new Product();
+            $productData['product'] = $productModel->getViewForPublic('', $id);
+            $catTree = $productModel->getCategoryHierarchy($productData['product']->product_category_id);
+            $result = $productModel->productDetailsViewGenerate($productData, $catTree);
 
 
             $product = $this->product->where('id', $id)->first();
@@ -82,21 +82,21 @@ class ProductController extends ApiController
             if ($this->product->updateProductPrice($product['product_vendor_id'], $product['store_id'])) {
                 $product = $this->product->where('id', $id)->first();
             }
-                $product['selfImages'] = $result['selfImages'];
-                $product['productInformation'] = $result['productInformation'];
-                $product['storeInformation'] = $result['storeInformation'];
+            $product['selfImages'] = $result['selfImages'];
+            $product['productInformation'] = $result['productInformation'];
+            $product['storeInformation'] = $result['storeInformation'];
 
             if ($product == null) {
                 return $this->setStatusCode(\Config::get("const.api-status.app-failure"))
-                    ->makeResponseWithError(\Config::get("const.product.product-not-found"));
+                            ->makeResponseWithError(\Config::get("const.product.product-not-found"));
             } else {
                 return $this->setStatusCode(\Config::get("const.api-status.success"))
-                    ->makeResponse($product);
+                            ->makeResponse($product);
             }
 
         } catch (Exception $ex) {
             return $this->setStatusCode(\Config::get("const.api-status.system-fail"))
-                ->makeResponseWithError("System Failure !", $ex);
+                        ->makeResponseWithError("System Failure !", $ex);
         }
 
     }
@@ -110,7 +110,7 @@ class ProductController extends ApiController
 
         if (\Input::ajax()) {
             return $this->setStatusCode(\Config::get("const.api-status.success"))
-                ->makeResponse($categories);
+                        ->makeResponse($categories);
         } else {
             return $categories;
         }
@@ -131,11 +131,11 @@ class ProductController extends ApiController
 
 
             return $this->setStatusCode(\Config::get("const.api-status.success"))
-                ->makeResponse($result);
+                        ->makeResponse($result);
 
         } catch (Exception $ex) {
             return $this->setStatusCode(\Config::get("const.api-status.system-fail"))
-                ->makeResponseWithError("System Failure !", $ex);
+                        ->makeResponseWithError("System Failure !", $ex);
         }
     }
 
@@ -148,11 +148,11 @@ class ProductController extends ApiController
 
 
             return $this->setStatusCode(\Config::get("const.api-status.success"))
-                ->makeResponse($result);
+                        ->makeResponse($result);
 
         } catch (Exception $ex) {
             return $this->setStatusCode(\Config::get("const.api-status.system-fail"))
-                ->makeResponseWithError("System Failure !", $ex);
+                        ->makeResponseWithError("System Failure !", $ex);
         }
     }
 
@@ -178,8 +178,12 @@ class ProductController extends ApiController
         try {
             $settings['ActiveItem'] = (\Input::get('ActiveItem') == 'Active') ? true : false;
             $settings['CategoryId'] = (\Input::get('CategoryId') == null) ? null : \Input::get('CategoryId');
-            $settings['FilterType'] = (\Input::get('FilterType') == null) ? null : \Input::get('FilterType');
-            $settings['FilterText'] = (\Input::get('FilterText') == null) ? null : \Input::get('FilterText');
+           // $settings['FilterType'] = (\Input::get('FilterType') == null) ? null : \Input::get('FilterType');
+           // $settings['FilterText'] = (\Input::get('FilterText') == null) ? null : \Input::get('FilterText');
+
+            $settings['FilterPublisher'] = (\Input::get('FilterPublisher') == null) ? null : \Input::get('FilterPublisher');
+            $settings['FilterProduct'] = (\Input::get('FilterProduct') == null) ? null : \Input::get('FilterProduct');
+
 
             $settings['ShowFor'] = (\Input::get('ShowFor') == null) ? null : \Input::get('ShowFor');
             $settings['WithTags'] = (\Input::get('WithTags') != true) ? false : true;
@@ -187,16 +191,18 @@ class ProductController extends ApiController
             $settings['limit'] = \Input::get('limit');
             $settings['page'] = \Input::get('page');
 
-            $productList = $this->product->getProductList($settings);
+            $settings['PageSource'] = 'admin-product-list';
+
+            $productList = $this->product->getProductList($settings,true);
 
             $settings['total'] = $productList['total'];
             array_forget($productList, 'total');
 
             return $this->setStatusCode(\Config::get("const.api-status.success"))
-                ->makeResponse(array_merge($productList, $settings));
+                        ->makeResponse(array_merge($productList, $settings));
         } catch (Excpetion $ex) {
             return $this->setStatusCode(\Config::get("const.api-status.system-fail"))
-                ->makeResponseWithError("System Failure !", $ex);
+                        ->makeResponseWithError("System Failure !", $ex);
         }
     }
 
@@ -212,10 +218,10 @@ class ProductController extends ApiController
             $newProduct = $this->product->updateProductInfo($inputData);
 
             return $this->setStatusCode(\Config::get("const.api-status.success"))
-                ->makeResponse($newProduct);
+                        ->makeResponse($newProduct);
         } catch (Exception $ex) {
             return $this->setStatusCode(\Config::get("const.api-status.system-fail"))
-                ->makeResponseWithError("System Failure !", $ex);
+                        ->makeResponseWithError("System Failure !", $ex);
         }
     }
 
@@ -231,7 +237,7 @@ class ProductController extends ApiController
         $records = $this->product->find($id);
         if ($records == null)
             return $this->setStatusCode(\Config::get("const.api-status.system-fail"))
-                ->makeResponseWithError("No data available !");
+                        ->makeResponseWithError("No data available !");
 
         foreach ($records->medias as $record) {
             $this->deleteMediaById($record->id);
@@ -240,7 +246,7 @@ class ProductController extends ApiController
         $this->product->find($id)->delete();
 
         return $this->setStatusCode(\Config::get("const.api-status.success"))
-            ->makeResponse("Data deleted Successfully");
+                    ->makeResponse("Data deleted Successfully");
 
     }
 
@@ -285,18 +291,18 @@ class ProductController extends ApiController
                 //   $updatedProduct->save();
 
                 return $this->setStatusCode(\Config::get("const.api-status.success"))
-                    ->makeResponse("Update Successful.");
+                            ->makeResponse("Update Successful.");
             } elseif ($validator->fails()) {
                 $validatorMessage = $validator->messages()->toArray();
 
                 return $this->setStatusCode(\Config::get("const.api-status.validation-fail"))
-                    ->makeResponseWithError(array('Validation failed', $validatorMessage));
+                            ->makeResponseWithError(array('Validation failed', $validatorMessage));
             }
 
 
         } catch (Exception $ex) {
             return $this->setStatusCode(\Config::get("const.api-status.system-fail"))
-                ->makeResponseWithError("System Failure !", $ex);
+                        ->makeResponseWithError("System Failure !", $ex);
         }
 
     }
@@ -306,11 +312,12 @@ class ProductController extends ApiController
         try {
             $inputData = \Input::all();
 
-            $product = $this->product->where('id',$inputData['id'])->first();
+            $product = $this->product->where('id', $inputData['id'])->first();
 
-          //  dd($product->get());
-            $product->created_at = Carbon::createFromFormat('Y-m-d H:i:s',Carbon::now())->toDateTimeString();
-            $product->post_status ='Active';
+            //  dd($product->get());
+            $product->created_at = Carbon::createFromFormat('Y-m-d H:i:s', Carbon::now())->toDateTimeString();
+            $product->post_status = 'Active';
+            $product->publish_at = Carbon::createFromTimestamp(strtotime($inputData['PublishAt']))->toDateTimeString();
             $result = $product->save();
 
             return $this->setStatusCode(\Config::get("const.api-status.success"))
@@ -327,6 +334,27 @@ class ProductController extends ApiController
     public function searchProductByName($name)
     {
         return Product::where('product_name', 'LIKE', "%$name%")->get(['id', 'product_name AS name']);
+    }
+
+
+    public function getPublisherNames()
+    {
+        try {
+            $result = $this->product->getAllPublishersNameList();
+
+            //$collection = collect();
+
+           // $collection->push(["user_name" => "All Publishers"]);
+           // $collection->push($result);
+
+            return $this->setStatusCode(\Config::get("const.api-status.success"))
+                        ->makeResponse($result);
+
+        } catch (Exception $ex) {
+            return $this->setStatusCode(\Config::get("const.api-status.system-fail"))
+                        ->makeResponseWithError("System Failure !", $ex);
+        }
+
     }
 
 
@@ -358,11 +386,11 @@ class ProductController extends ApiController
             $result = $product->medias()->save($media);
 
             return $this->setStatusCode(\Config::get("const.api-status.success"))
-                ->makeResponse($result);
+                        ->makeResponse($result);
 
         } catch (Exception $ex) {
             return $this->setStatusCode(\Config::get("const.api-status.system-fail"))
-                ->makeResponseWithError("System Failure !", $ex);
+                        ->makeResponseWithError("System Failure !", $ex);
         }
     }
 
@@ -372,10 +400,10 @@ class ProductController extends ApiController
 
         $result['count'] = $result['result']->count();
 
-      //  dd($result);
+        //  dd($result);
 
         return $this->setStatusCode(\Config::get("const.api-status.success"))
-            ->makeResponse($result);
+                    ->makeResponse($result);
 
     }
 
@@ -386,10 +414,10 @@ class ProductController extends ApiController
             $this->deleteMediaById($id);
 
             return $this->setStatusCode(\Config::get("const.api-status.success"))
-                ->makeResponse("File deleted successfully");
+                        ->makeResponse("File deleted successfully");
         } catch (Exception $ex) {
             return $this->setStatusCode(\Config::get("const.api-status.system-fail"))
-                ->makeResponseWithError("System Failure !", $ex);
+                        ->makeResponseWithError("System Failure !", $ex);
         }
     }
 
@@ -413,10 +441,10 @@ class ProductController extends ApiController
             $value = $this->product->getApiProductInformation($itemId); // test id "B0147EVKCQ"
             // return $value;
             return $this->setStatusCode(\Config::get("const.api-status.success"))
-                ->makeResponse($value);
+                        ->makeResponse($value);
         } catch (Exception $ex) {
             return $this->setStatusCode(\Config::get("const.api-status.system-fail"))
-                ->makeResponseWithError("System Failure !", $ex);
+                        ->makeResponseWithError("System Failure !", $ex);
         }
     }
 
@@ -433,7 +461,7 @@ class ProductController extends ApiController
      */
     private function deleteMediaById($id)
     {
-        try{
+        try {
             $mediaItem = $this->media->where('id', $id)->first();
 
             //delete entry from database
@@ -451,56 +479,58 @@ class ProductController extends ApiController
                     $s3->delete($file);
                 }
             }
-        }catch(\Exception $ex)
-        {
+        } catch (\Exception $ex) {
             return;
         }
     }
-    public function getPrice(){
+
+    public function getPrice()
+    {
         $input = Input::all();
-        
-        if(@$input['id']){
+
+        if (@$input['id']) {
             $product = Product::find($input['id']);
-        }elseif(@$input['url']){
+        } elseif (@$input['url']) {
             $product = Product::find($input['url']);
-        }else{
+        } else {
             $product = false;
         }
 
-        if($product){
+        if ($product) {
             return $product->sale_price;
-        }else{
+        } else {
             return ['error' => ' No Product Found'];
         }
     }
 
-     public function getForThumb(){
+    public function getForThumb()
+    {
         $input = Input::all();
-        
-        if(@$input['id']){
+
+        if (@$input['id']) {
             $product = Product::find($input['id']);
-        }elseif(@$input['url']){
+        } elseif (@$input['url']) {
             $product = Product::find($input['url']);
-        }else{
+        } else {
             $product = false;
         }
 
-        if($product){
-            if($storeLogo = Media::where('mediable_type', 'App\Models\Store')->where('mediable_id', $product->store_id)->first()){
+        if ($product) {
+            if ($storeLogo = Media::where('mediable_type', 'App\Models\Store')->where('mediable_id', $product->store_id)->first()) {
                 $product->storeLogo = $storeLogo->media_link;
-            }else{
+            } else {
                 $product->storeLogo = '';
             }
 
             return $product;
-        }else{
+        } else {
             return ['error' => ' No Product Found'];
         }
     }
 
     public static function getForBar($id)
     {
-        if(!$id || $id == ''){
+        if (!$id || $id == '') {
             return false;
         }
 
@@ -508,24 +538,24 @@ class ProductController extends ApiController
 
         $ids = array_unique($ids);
 
-        if(!$ids){
+        if (!$ids) {
             $ids = [$id];
         }
 
         $products = Product::whereIn('id', $ids)->get();
 
-        foreach($products as $prod){
-            if($image = Media::where('mediable_type', 'App\Models\Product')->where('mediable_id', $prod->id)->where('is_main_item', 1)->first()){
+        foreach ($products as $prod) {
+            if ($image = Media::where('mediable_type', 'App\Models\Product')->where('mediable_id', $prod->id)->where('is_main_item', 1)->first()) {
                 $prod->image = $image->media_link;
             }
 
 //            if(isset($prod->store_id) &&  ($prod->store_id == 1 || $prod->store_id == '1')){
 //                $prod->storeLogo = 'https://s3-us-west-1.amazonaws.com/ideaing-01/amazon-logo-small.svg';
 //            }else
-                if($storeLogo = Media::where('mediable_type', 'App\Models\Store')->where('mediable_id', $prod->store_id)->first()){
+            if ($storeLogo = Media::where('mediable_type', 'App\Models\Store')->where('mediable_id', $prod->store_id)->first()) {
                 $prod->storeLogo = $storeLogo->media_link;
-            }else{
-                    $prod->storeLogo = '';
+            } else {
+                $prod->storeLogo = '';
             }
         }
 

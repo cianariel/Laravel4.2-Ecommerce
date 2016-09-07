@@ -37,24 +37,31 @@
                         </a>
                     </li>
                     <li class="box-link-ul ">
-                        <a class="box-link @if($currentCategory->extra_info == 'active') active @endif"
-                           href="/shop/active">
+                        <a class="box-link @if($currentCategory->extra_info == 'smart-entertainment') active @endif"
+                           href="/shop/smart-entertainment">
                             <span class="box-link-active-line"></span>
-                            ACTIVE
+                            SMART ENTERTAINMENT
                         </a>
                     </li>
                     <li class="box-link-ul ">
-                        <a class="box-link @if($currentCategory->extra_info == 'wearables') active @endif"
-                           href="/shop/wearables">
+                        <a class="box-link @if($currentCategory->extra_info == 'smart-travel') active @endif"
+                           href="/shop/smart-travel">
                             <span class="box-link-active-line"></span>
-                            WEARABLES
+                            SMART TRAVEL
                         </a>
                     </li>
                     <li class="box-link-ul ">
-                        <a class="box-link @if($currentCategory->extra_info == 'home-decor') active @endif"
-                           href="/shop/home-decor">
+                        <a class="box-link @if($currentCategory->extra_info == 'smart-body') active @endif"
+                           href="/shop/smart-body">
                             <span class="box-link-active-line"></span>
-                            HOME & DECOR
+                            SMART BODY
+                        </a>
+                    </li>
+                    <li class="box-link-ul ">
+                        <a class="box-link @if($currentCategory->extra_info == 'decor') active @endif"
+                           href="/shop/decor">
+                            <span class="box-link-active-line"></span>
+                            DECOR
                         </a>
                     </li>
                       <li class="box-link-ul hidden-xs">

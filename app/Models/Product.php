@@ -11,7 +11,6 @@ use App\Models\ProductCategory;
 use App\Models\Tag;
 use App\Models\Store;
 use PageHelper;
-use Counter;
 
 
 class Product extends Model
@@ -98,10 +97,6 @@ class Product extends Model
     {
         return $this->hasMany('App\Models\ProductQuery');
     }
-    public function viewCounts()
-    {
-        return $this->hasMany('App\Models\ProductQuery');
-    }
 
 
     // accessor for JSON decode
@@ -169,6 +164,8 @@ class Product extends Model
     public function updateProductInfo($product)
     {
         try {
+
+            //dd();
             //ProductAuthorName: $scope.ProductAuthorName,
             $data = array(
                 "product_category_id" => ($product['CategoryId'] != null) ? $product['CategoryId'] : env('DEFAULT_CATEGORY_ID', '44'),
@@ -176,6 +173,7 @@ class Product extends Model
                 "product_vendor_id" => $product['ProductVendorId'],
                 "show_for" => ($product['ShowFor'] != null) ? $product['ShowFor'] : '',
                 "product_name" => $product['Name'],
+                "publish_at" => Carbon::createFromTimestamp(strtotime($product['PublishAt']))->toDateTimeString(),
                 "product_permalink" => (isset($product['Permalink'])) ? $product['Permalink'] : null,
                 "product_description" => ($product['Description'] != null) ? $product['Description'] : "",
                 "specifications" => json_encode($product['Specifications']),
@@ -224,22 +222,54 @@ class Product extends Model
         $data->delete();
     }
 
-    public function getSingleProductInfoForView($productId)
+    public function itemHitCounter($data)
     {
-        $result = \DB::table('products')
-                     ->where('products.id', $productId)
-                     ->leftJoin('product_categories', 'product_categories.id', '=', 'products.product_category_id')
-                     ->leftJoin('medias', function ($join) {
-                         $join->on('medias.mediable_id', '=', 'products.id')
-                              ->where('mediable_type', '=', 'App\Models\Product')
-                              ->Where('media_type', '=', 'img-upload')
-                              ->Where('is_main_item', '=', '1');
-                     })
-                     ->first(array(
-                         'products.id', 'products.show_for', 'products.updated_at', 'products.created_at', 'products.product_vendor_id', 'products.store_id',//'products.product_vendor_type',
-                         'products.user_name', 'products.product_name', 'product_categories.category_name', 'products.affiliate_link',
-                         'products.price', 'products.sale_price', 'medias.media_link', 'products.product_permalink', 'products.post_status', 'ideaing_review_score', 'review'
-                     ));
+        $dataCount = Product::where('product_permalink', $data['Permalink'])->first(['hit_counter']);
+
+        $dataCount = empty($dataCount->hit_counter) ? 0 : $dataCount->hit_counter;
+
+        if ($data['Count'] > $dataCount) {
+            Product::where('product_permalink', $data['Permalink'])->update(['hit_counter' => $data['Count']]);
+        }
+
+    }
+
+    public function getSingleProductInfoForView($productId, $adminView = false)
+    {
+        if ($adminView == true) {
+            $result = \DB::table('products')
+                         ->where('products.id', $productId)
+                         ->leftJoin('product_categories', 'product_categories.id', '=', 'products.product_category_id')
+                         ->leftJoin('medias', function ($join) {
+                             $join->on('medias.mediable_id', '=', 'products.id')
+                                  ->where('mediable_type', '=', 'App\Models\Product')
+                                  ->Where('media_type', '=', 'img-upload')
+                                  ->Where('is_main_item', '=', '1');
+                         })
+                         ->first(array(
+                             'products.id', 'products.show_for', 'products.updated_at', 'products.product_vendor_id', 'products.store_id',//'products.product_vendor_type',
+                             'products.user_name', 'products.product_name', 'product_categories.category_name', 'products.affiliate_link',
+                             'products.price', 'products.sale_price', 'medias.media_link', 'products.product_permalink', 'products.post_status', 'ideaing_review_score', 'review'
+                         ));
+
+        } else {
+            $result = \DB::table('products')
+                         ->where('products.id', $productId)
+                         ->where('products.publish_at', '<=', date('Y-m-d H:i:s'))
+                         ->leftJoin('product_categories', 'product_categories.id', '=', 'products.product_category_id')
+                         ->leftJoin('medias', function ($join) {
+                             $join->on('medias.mediable_id', '=', 'products.id')
+                                  ->where('mediable_type', '=', 'App\Models\Product')
+                                  ->Where('media_type', '=', 'img-upload')
+                                  ->Where('is_main_item', '=', '1');
+                         })
+                         ->first(array(
+                             'products.id', 'products.show_for', 'products.updated_at', 'products.product_vendor_id', 'products.store_id',//'products.product_vendor_type',
+                             'products.user_name', 'products.product_name', 'product_categories.category_name', 'products.affiliate_link',
+                             'products.price', 'products.sale_price', 'medias.media_link', 'products.product_permalink', 'products.post_status', 'ideaing_review_score', 'review'
+                         ));
+        }
+
 
         //  dd($result);
         return $result;
@@ -281,11 +311,11 @@ class Product extends Model
     }
 
     // return all the product list as per $settings provided from the controller
-    public function getProductList($settings)
+    public function getProductList($settings, $isAdmin = false)
     {
         $productModel = $this;
 
-        $filterText = $settings['FilterText'];
+        // $filterText = $settings['FilterText'];
 
         if (@$settings['CategoryId'] != null) {
             if (@$settings['GetChildCategories']) {
@@ -299,7 +329,10 @@ class Product extends Model
                     ->orWhereIn("product_category_id", $grandChildCats);
 
             } else {
-                $productModel = $productModel->where("product_category_id", $settings['CategoryId']);
+                //$productModel = $productModel->where("product_category_id", $settings['CategoryId']);
+                $productCategory = new ProductCategory();
+                $productModel = $productModel->whereIn("product_category_id", $productCategory->getSubCategoryIdOfRootCategory($settings['CategoryId']));
+
             }
 
             if (isset($settings['TagId']) && is_array($settings['TagId'])) {
@@ -330,11 +363,20 @@ class Product extends Model
             $productModel = $productModel->where("post_status", 'Active');
         }
 
+        /*
         if (@$settings['FilterType'] == 'user-filter') {
             $productModel = $productModel->where("user_name", "like", "%$filterText%");
         }
         if (@$settings['FilterType'] == 'product-filter') {
             $productModel = $productModel->where("product_name", "like", "%$filterText%");
+        }
+*/
+        if (!empty($settings['FilterProduct'])) {
+            $productModel = $productModel->where("product_name", "like", "%" . $settings['FilterProduct'] . "%");
+        }
+
+        if (!empty($settings['FilterPublisher'])) {
+            $productModel = $productModel->where("user_name", "like", "%" . $settings['FilterPublisher'] . "%");
         }
 
         if (@$settings['WithTags'] == true && $settings['CategoryId'] != null) {
@@ -355,47 +397,34 @@ class Product extends Model
             $productModel = $productModel->orWhereIn("id", $productIds);
         }
 
-        if (@$settings['Date']) {
-            $productModel = $productModel->whereDate("created_at", '=', $settings['Date']);
-        }
-
-        if (@$settings['MostPopular']) {
-
-
-
-        }
-
-//        $bob = $productModel->get();
-//
-//        $reptiloids = 1;
-
 
         $skip = isset($settings['CustomSkip']) ? intval($settings['CustomSkip']) : $settings['limit'] * ($settings['page'] - 1);
 
 
         $product['total'] = $productModel->count();
 
-        if($settings['limit']){
-            $product['allIDs'] = $productModel
-                ->take($settings['limit'])
-                ->offset($skip)
-                ->orderBy('created_at', 'desc')
-                ->get(array("id"));
-        }else{
-            $product['allIDs'] = $productModel
-                ->orderBy('created_at', 'desc')
-                ->get(array("id"));
-        }
+        $productList = $productModel
+            ->take($settings['limit'])
+            ->offset($skip);
 
+        if(empty($isAdmin))
+            $productList->orderBy('hit_counter', 'desc');
 
+        $productList = $productList->orderBy('created_at', 'desc')
+                                   ->get(array("id"));
 
+        $product['allIDs'] = $productList;
         $data = array();
 
         $count = $product['allIDs']->count();
 
         for ($i = 0; $i < $count; $i++) {
             $id = $product['allIDs'][$i]['id'];
-            $tmp = $this->getSingleProductInfoForView($id);
+            $tmp = $this->getSingleProductInfoForView($id, $isAdmin);
+
+            // If the publish date is not valid
+            if (empty($tmp))
+                continue;
 
             // making the thumbnail url by injecting "thumb-" in the url which has been uploaded during media submission.
             $strReplace = \Config::get("const.file.s3-path");
@@ -410,33 +439,14 @@ class Product extends Model
 
             $tmp->media_link = $path;
             $tmp->updated_at = Carbon::createFromTimestamp(strtotime($tmp->updated_at))->diffForHumans();
-            $tmp->created_at = Carbon::createFromTimestamp(strtotime($tmp->created_at))->diffForHumans();
-            $tmp->raw_creation_date = $tmp->created_at;
+            $tmp->raw_creation_date = $tmp->updated_at;
             $tmp->type = 'product';
-
-            $tmp->views = Counter::show('product-details-'. $tmp->id);
-
 
             $tmp->sale_price = round($tmp->sale_price);
 
+
             // Add store information
             $tmp->storeInfo = $this->getStoreInfoByProductId($id);
-//            $tmp->master_category = $this->getStoreInfoByProductId($id);
-
-            $category = Product::find($id)->productCategory;
-
-            $parentCategory = ProductCategory::find($category->parent_id);
-
-            if($parentCategory){
-                if($parentCategory->parent_id){
-                    $parentCategory = ProductCategory::find($parentCategory->parent_id);
-                }
-                $tmp->master_category = $parentCategory->extra_info;
-                $tmp->master_category_name = $parentCategory->category_name;
-
-            }else{
-                $tmp->master_category = $category->extra_info;
-            }
 
             $review = json_decode($tmp->review);
 
@@ -527,7 +537,7 @@ class Product extends Model
         // sort image by media sequence in ascending order
         $sortedMedia = $productData['product']->medias->sortBy('sequence');
 
-    //    dd($sortedMedia);
+        //    dd($sortedMedia);
         foreach ($sortedMedia as $key => $value) {
             if ($value->media_type == 'video-link' || $value->media_type == 'video-youtube-link' || $value->media_type == 'video-vimeo-link') {
                 $selfImage['picture'][$key]['picture-name'] = $value->media_name;
@@ -741,6 +751,14 @@ class Product extends Model
             return false;
 
         }
+    }
+
+    public static function getAllPublishersNameList()
+    {
+        $publisherNames = Product::orderBy('user_name')->groupBy('user_name')->get(['user_name']);
+
+        return $publisherNames;
+
     }
 
     public static function getForShopMenu()

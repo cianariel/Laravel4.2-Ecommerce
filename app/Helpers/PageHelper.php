@@ -7,6 +7,7 @@ use \Illuminate\Routing\Route;
 use  Illuminate\Routing\Router;;
 use App\Models\Giveaway;
 use App\Models\ProductCategory;
+use Kryptonit3\Counter\Counter;
 use URL;
 use Redis;
 use Cookie;
@@ -132,6 +133,18 @@ class PageHelper {
         }
 
         $success = $redis->delete($key);
+
+        return $success;
+    }
+
+    public static function FlashRedis($redis = false){
+
+        if(!$redis){
+            $redis = new Redis;
+            $redis->connect('127.0.0.1', 6379);
+        }
+
+        $success = $redis->flushAll();
 
         return $success;
     }

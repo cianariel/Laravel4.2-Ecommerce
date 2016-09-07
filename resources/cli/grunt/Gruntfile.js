@@ -55,7 +55,7 @@ module.exports = function(grunt) {
                     '../../assets/admin/js/vendor/jquery.min.js',
                     '../../assets/admin/js/vendor/metisMenu.min.js',
                     '../../assets/admin/js/vendor/ng-rateit.min.js',
-                    '../../assets/admin/js/vendor/ng-rateit.min.js',
+                   // '../../assets/admin/js/vendor/ui-bootstrap-tpls-2.0.2.min.js',
 
                 ],
                 dest: '../../../public/assets/js/admin.js'

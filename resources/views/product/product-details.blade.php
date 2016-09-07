@@ -58,15 +58,15 @@
                 </h2>
                 <ul class="social-stats center-block hidden-620 hidden-xs hidden-sm hidden-md">
                     <li class="view-counter social-stats">
-                            <div class="social-stats__item">
-                            <?php $views = Counter::showAndCount('product-details-'.$productId); ?>
-                                @if($views >= 100)
-                                    <i class="m-icon m-icon--flame"></i>
-                                @else
-                                    <i class="m-icon m-icon--eye"></i>
-                                @endif
-                                <span class="grey value">{{$views}} views</span>
-                        </div> 
+                        <div class="social-stats__item">
+                            <?php $views = empty($CustomCounter) ? 0 : $CustomCounter; ?>
+                            @if($views >= 100)
+                                <i class="m-icon m-icon--flame"></i>
+                            @else
+                                <i class="m-icon m-icon--eye"></i>
+                            @endif
+                            <span class="grey value">{{$views}} views</span>
+                        </div>
                     </li>
                     <li class="hearts hidden-620  hidden-xs hidden-sm">
                         <a href="#" class="likes" ng-class="['likes', {active: unHeart != false}]"
@@ -86,7 +86,10 @@
             <div class="col-xs-2 col-sm-7 pull-right">
                 <ul ng-app="publicApp" ng-controller="publicController"
                     class="share-buttons short hidden-xs hidden-sm hidden-md col-lg-6 col-sm-8 pull-right">
-                    <li class="all-shares"><b class="share-count all" ng-init="readSingleNotification(<?php echo $userData['id'] ?>,'<?php echo $permalink ?>')"></b> <br/>all shares</li>
+                    <li class="all-shares"><b class="share-count all"
+                                              ng-init="readSingleNotification(<?php echo $userData['id'] ?>,'<?php echo $permalink ?>')"></b>
+                        <br/>all shares
+                    </li>
                     <li><a data-service="facebook" class="fb" href="#" ng-click="openSharingModal('facebook')"><i
                                     class="m-icon m-icon--facebook-id"></i> <b class="fb share-count"></b></a></li>
                     <li><a data-service="twitter" class="twi" href="#" ng-click="openSharingModal('twitter')"><i
@@ -94,10 +97,12 @@
                 </ul>
 
                 <div class="icon-wrap pull-right">
-                    <a class="category-tag get-round" ng-href="/open/<?php echo $productInformation['Id'] ?>/product" target="_blank">
+                    <a class="category-tag get-round" ng-href="/open/<?php echo $productInformation['Id'] ?>/product"
+                       target="_blank">
                         Get it
                     </a>
-                    <b class="price hidden-620 hidden-xs hidden-sm hidden-md" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+                    <b class="price hidden-620 hidden-xs hidden-sm hidden-md" itemprop="offers" itemscope
+                       itemtype="http://schema.org/Offer">
                         &nbsp;
                         @if(isset($productInformation['SellPrice']))
                             <span itemprop="priceCurrency" content="USD">$</span>
@@ -214,8 +219,7 @@
                                     controlsInside: false,
                                     imageScaleMode: 'fit',
                                     arrowsNavAutoHide: false,
-                                    controlsInside: true,
-                                    autoScaleSlider: false,
+//                        autoScaleSlider: true,
                                     controlNavigation: 'thumbnails',
                                     thumbsFitInViewport: false,
                                     navigateByClick: true,
@@ -283,7 +287,7 @@
                             <b class="price col-xs-6">
                                 @if(isset($productInformation['SellPrice']))
                                     <?php
-                                       $savings = @$productInformation['Price'] - $productInformation['SellPrice'];
+                                    $savings = @$productInformation['Price'] - $productInformation['SellPrice'];
                                     ?>
 
                                     @if($savings > 1)
@@ -298,7 +302,8 @@
                             <img class="vendor-logo col-xs-6" width="107"
                                  src="@if(isset($storeInformation['ImagePath'])){{$storeInformation['ImagePath']}}@endif"
                                  alt="@if(isset($storeInformation['StoreName'])){{$storeInformation['StoreName']}}@endif">
-                            <a class="get-round" href="/open/<?php echo $productInformation['Id'] ?>/product" target="_blank">
+                            <a class="get-round" href="/open/<?php echo $productInformation['Id'] ?>/product"
+                               target="_blank">
                                 Get it
                             </a>
 
@@ -431,7 +436,8 @@
                                                 ) Customer Reviews</span>
                                         </div>
                                         <div class="purple-bg price-badge">
-                                            <a href="/open/@{{ item.data.productInformation.Id }}/product" target="_blank">
+                                            <a href="/open/@{{ item.data.productInformation.Id }}/product"
+                                               target="_blank">
                                                 <span>@{{ item.data.storeInformation.StoreName }}</span>
                                                 <b>$@{{ item.data.productInformation.SellPrice }}</b>
                                             </a>
@@ -544,7 +550,7 @@
                                 <div class="col-xs-6 col-sm-4 text-center reviews-service-holder critic">
                                     <div class="vertical-line visible-xs"></div>
                                     <h3><span class="title">Critic</span>
-                                    <span class="reviews">Reviews</span></h3>
+                                        <span class="reviews">Reviews</span></h3>
 
                                     <div class="star-rating text-center">
                                         <?php
@@ -627,9 +633,9 @@
                                 <div class="col-xs-6 col-sm-4 col-sm-offset-4 text-center reviews-service-holder amazon">
                                     <div class="vertical-line visible-xs"></div>
                                     <h3><span class="title"><a
-                                                href="@if(isset($productInformation['Review'][1]->link)){{$productInformation['Review'][1]->link}}@endif"
-                                                target="_blank">Amazon</a></span>
-                                    <span class="reviews">Reviews</span></h3>
+                                                    href="@if(isset($productInformation['Review'][1]->link)){{$productInformation['Review'][1]->link}}@endif"
+                                                    target="_blank">Amazon</a></span>
+                                        <span class="reviews">Reviews</span></h3>
                                     <div class="star-rating text-center">
                                         <?php
                                         $stars = $productInformation['Review'][1]->value;
@@ -688,7 +694,11 @@
                 </section>
             </article>
 
+
             @include('layouts.parts.comments-product')
+
+                    <!-- /article -->
+
 
             <section class="related-items pale-grey-bg">
                 <div class="main-content full-620 fixed-sm">
@@ -728,7 +738,8 @@
                                         <div class="clearfix"></div>
 
                                         <div class="clearfix"></div>
-                                        <a target="_blank" href="/open/{{ $product['ItemId'] }}/product" class="box-item__get-it">
+                                        <a target="_blank" href="/open/{{ $product['ItemId'] }}/product"
+                                           class="box-item__get-it">
                                             Get it
                                         </a>
                                     </div>
@@ -741,23 +752,20 @@
                         <fieldset class="shoplanding-title">
                             <legend align="center"><h3 class="blue pale-grey-bg">Related Ideas</h3></legend>
                         </fieldset>
-                            <?php  // print_r($relatedIdeas);  die();?>
 
-                        @if(isset($relatedIdeas->posts) && $relatedIdeas != null)
-                            @foreach( $relatedIdeas->posts as $item )
+                        @if(isset($relatedIdeas) && ($relatedIdeas != null) )
+                            @foreach( $relatedIdeas as $item )
+                                <?php // print_r($item->feed_image); ?>
                                 <div class="box-item">
                                     <div class="img-holder">
-                            <?php //  print_r($item);  die();?>
-
-                                    @if($item->feed_image)
                                         @if(is_array($item->feed_image))
-                                            <img alt="{{@$item->feed_image['alt']}}" title="{{@$item->feed_image->title}}"
-                                                 src="{{ @$item->feed_image['url']}}">
-                                        @elseif(is_object($item->feed_image))
-                                            <img alt="{{@$item->feed_image->alt}}" title="{{@$item->feed_image->title}}"
-                                                 src="{{@$item->feed_image->url}}">
+                                        <img alt="{{@$item->feed_image['alt']}}" title="{{@$item->feed_image['title']}}"
+                                             src="{{ @$item->feed_image['url']}}">
+                                        @else
+                                        <img alt="{{@$item->feed_image->alt}}" title="{{@$item->feed_image->title}}"
+                                             src="{{@$item->feed_image->url}}">
                                         @endif
-                                    @endif             
+
                                     </div>
 
                                     <span class="box-item__time">{{$item->updated_at}}</span>

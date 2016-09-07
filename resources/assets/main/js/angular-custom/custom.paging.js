@@ -139,19 +139,19 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
                 $scope.allContent[0] = response;
 
                 var newContent = [];
-                newContent[0] = $scope.sliceToRows(response['content']['ideas'], response['content']['products']); 
+                newContent[0] = $scope.sliceToRows(response['content']['ideas'], response['content']['products']);
 
                 $scope.content = newContent;
                 console.log(response)
 
                 $scope.hasMore = response['hasMore'];
-                $scope.unreadCount = response['unreadCount'];  
+                $scope.unreadCount = response['unreadCount'];
             });
         };
 
 
         $scope.loadMore = function() {
- 
+
             if($('.bottom-load-more').hasClass('disabled')){
                 return false;
             }
@@ -161,7 +161,7 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
 
             var $limit = 0;
             $scope.filterBy = null;
-            var $daysBack = false;  
+            var $daysBack = false;
 
             $scope.nextLoad =  pagingApi.getGridContent($scope.currentPage, $limit, $scope.currentTag, $scope.filterBy, $scope.ideaCategory).success(function (response) {
 
@@ -176,14 +176,14 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
                 $scope.content = $scope.content.concat($scope.newStuff);
 
                 $scope.hasMore = response['hasMore'];
-                $scope.unreadCount = response['unreadCount'];  
+                $scope.unreadCount = response['unreadCount'];
 
                 $('.bottom-load-more').removeClass('disabled').attr('disabled', false);
             });
         };
 
 
-        $scope.sliceToRows = function($ideas, $products){ 
+        $scope.sliceToRows = function($ideas, $products){
             var $return = [];
             console.log('$ideas');
 
@@ -199,109 +199,107 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
         };
 
 
-        $scope.switchCategory = function(categoryName) {
+            $scope.switchCategory = function(categoryName) {
 
-            if($('.bottom-load-more').hasClass('disabled')){
-                return false;
-            }
+                if($('.bottom-load-more').hasClass('disabled')){
+                    return false;
+                }
 
-            if($scope.ideaCategory == categoryName){
-                return false;
-            }
+                if($scope.ideaCategory == categoryName){
+                    return false;
+                }
 
-            currentRoute = $filter('getURISegment')(1);
+                currentRoute = $filter('getURISegment')(1);
 
-            if(currentRoute && currentRoute != 'smart-home' && currentRoute != 'smart-body' && currentRoute != 'smart-entertainment' && currentRoute != 'smart-travel'){ // not a category page
+                if(currentRoute && currentRoute != 'smart-home' && currentRoute != 'smart-body' && currentRoute != 'smart-entertainment' && currentRoute != 'smart-travel'){ // not a category page
+
+                    if(categoryName == 'default'){
+                        categoryName = '';
+                    }
+
+                    window.location.href  = '/' + categoryName;
+                    return false;
+                }
+
+
+
+                $scope.ideaCategory = categoryName;
+                $scope.loadReadContent(categoryName);
+                $scope.filterBy = false;
+
+
+                console.log('ushko');
+                console.log($scope.ideaCategory);
+
 
                 if(categoryName == 'default'){
-                    categoryName = '';
+                    window.history.replaceState({category: 'smarthome'}, 'Smart Home', '/');
+                }else{
+                    window.history.replaceState({category: 'smarthome'}, 'Smart Home', categoryName);
                 }
-
-                window.location.href  = '/' + categoryName;
-                return false;
             }
 
+            $scope.fadeAnimation = function ($node, $action, $callback) {
+                $($node).fadeOut(
+                    $callback()
+                );
 
+            };
 
-            $scope.ideaCategory = categoryName;
-            $scope.loadReadContent(categoryName);
-            $scope.filterBy = false;
+            // email subscription //
 
+            $scope.subscribe = function () {
 
-            console.log('ushko'); 
-            console.log($scope.ideaCategory); 
+                $scope.responseMessage = '';
 
+                $http({
+                    url: '/api/subscribe',
+                    method: "POST",
+                    data: {
+                        'Email': $scope.SubscriberEmail
+                    }
+                }).success(function (data) {
 
-           if(categoryName == 'default'){
-                window.history.replaceState({category: 'smarthome'}, 'Smart Home', '/');
-           }else{
-                window.history.replaceState({category: 'smarthome'}, 'Smart Home', categoryName);
-           }
-        }
+                    if (data.status_code == 406) {
 
-        $scope.fadeAnimation = function($node, $action, $callback){
-            $($node).fadeOut(
-                $callback()
-            );
+                        $scope.responseMessage = "Please enter a valid email address";
+                    }
 
-        };
+                    else if (data.status_code == 200) {
+                        $scope.responseMessage = "Successfully Subscribed";
+                        $scope.SubscriberEmail = '';
 
-        // email subscription //
+                    } else {
+                        $scope.responseMessage = "Email already subscribed";
+                    }
+                });
 
-        $scope.subscribe = function () {
+            };
 
-            $scope.responseMessage = '';
+            $scope.open = function (key) {
+                var templateUrl = "room-related-product-" + key + ".html";
+                var modalInstance = $uibModal.open({
+                    templateUrl: templateUrl,
+                    size: 'lg',
+                    controller: 'ModalInstanceCtrltest'
+                });
+            };
 
-            $http({
-                url: '/api/subscribe',
-                method: "POST",
-                data: {
-                    'Email': $scope.SubscriberEmail
-                }
-            }).success(function (data) {
+            $scope.openProfileSetting = function () {
+                var templateUrl = "profile-setting.html";
+                var modalInstance = $uibModal.open({
+                    templateUrl: templateUrl,
+                    size: 'lg',
+                    windowClass: 'profile-setting-modal',
+                    controller: 'ModalInstanceCtrltest'
+                });
+            };
 
-                if (data.status_code == 406) {
-
-                    $scope.responseMessage = "Please enter a valid email address";
-                }
-
-                else if (data.status_code == 200) {
-                    $scope.responseMessage = "Successfully Subscribed";
-                    $scope.SubscriberEmail = '';
-
-                } else {
-                    $scope.responseMessage = "Email already subscribed";
-                }
-            });
-
-        };
-
-        $scope.open = function (key) {
-            var templateUrl = "room-related-product-" + key + ".html";
-            var modalInstance = $uibModal.open({
-              templateUrl: templateUrl,
-              size: 'lg',
-              controller: 'ModalInstanceCtrltest'
-            });
-        };
-
-        $scope.openProfileSetting = function () { 
-            var templateUrl = "profile-setting.html";
-            var modalInstance = $uibModal.open({
-              templateUrl: templateUrl,
-              size: 'lg',
-              windowClass : 'profile-setting-modal',
-              controller: 'ModalInstanceCtrltest'
-            });
-        };
-
-        $scope.openProductPopup = function(id){
-            pagingApi.openProductPopup($scope, $uibModal, $timeout, id);
-        }
-            
-
-    })
-    .controller('SearchController', function ($scope, $http, $uibModal, pagingApi, $timeout, $filter, $window) {
+            $scope.openProductPopup = function (id) {
+                pagingApi.openProductPopup($scope, $uibModal, $timeout, id);
+            }
+        })
+            .controller('SearchController', function ($scope, $http, $uibModal, pagingApi, $timeout, $filter, $window) {
 
         $scope.searchPage = function(){
             var $route = $filter('getURISegment')(2);
@@ -330,30 +328,29 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
         //$scope.getContentFromSearch = function() {
 
 
-            $scope.loadMore = function() {
+        $scope.loadMore = function () {
 
-                if($('.bottom-load-more').hasClass('disabled')){
-                    return false;
+            if ($('.bottom-load-more').hasClass('disabled')) {
+                return false;
+            }
+
+            $scope.offset = 15 * $scope.currentPage++;
+            $scope.nextLoad = pagingApi.getSearchContent($scope.$searchQuery, 15, $scope.offset, $scope.type, $scope.sortBy).success(function (response) {
+                var $newStuff = $scope.content.concat(response['content'])
+
+                if ($scope.sortBy) {
+                    $newStuff.sort(function (a, b) {
+                        return parseFloat(a[$scope.sortBy]) - parseFloat(b[$scope.sortBy]);
+                    });
                 }
 
-                $scope.offset = 15 * $scope.currentPage++;
-                $scope.nextLoad =  pagingApi.getSearchContent($scope.$searchQuery, 15,  $scope.offset,  $scope.type,  $scope.sortBy).success(function (response) {
-                    var $newStuff = $scope.content.concat(response['content'])
+                $scope.content = $newStuff;
+                $scope.hasMore = response['hasMore'];
+                $scope.currentPage++;
+                $('.bottom-load-more').removeClass('disabled').attr('disabled', false);
 
-                    if($scope.sortBy){
-                        $newStuff.sort(function (a, b) {
-                            return parseFloat(a[$scope.sortBy]) - parseFloat(b[$scope.sortBy]);
-                        });
-                    }
-
-                    $scope.content = $newStuff;
-                    $scope.hasMore = response['hasMore'];
-                    $scope.currentPage++;
-                    $('.bottom-load-more').removeClass('disabled').attr('disabled', false);
-
-                });
+            });
         }
-
 
 
         $scope.filterSearchContent = function($filterBy, $sortBy) {
@@ -605,6 +602,19 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
                 $scope.currentCategory = $filter('getURISegment')(3);
             }
         }
+
+        // For Forced route confuguration
+        if ($filter('getURISegment')(2) == 'smartbody') {
+
+            $scope.currentCategory = 'smartbody';
+
+            if ($filter('getURISegment')(3) != false) {
+                $scope.currentCategory = $filter('getURISegment')(3);
+            }
+        }
+
+    //    console.log('route :', $route, $filter('getURISegment')(3),$scope.currentCategory);
+
 
         $scope.nextLoad = pagingApi.getPlainContent(1, 15,  $scope.currentCategory, 'product', $scope.currentCategory).success(function (response) {
 

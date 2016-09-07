@@ -49,10 +49,10 @@ Route::get('welcome', function () {
     return view('user.welcome');
 });
 
-//    Route::get('/product-details', function () // temp, used for tweaking frontend
-//    {
-//        return view('static.product-details');
-//    });
+/*
+ * General routes
+ *
+ * */
 
 Route::get('/contactus', 'PageController@contactUs');
 Route::get('/aboutus', 'PageController@aboutUs');
@@ -118,9 +118,6 @@ Route::group(['prefix' => 'api'], function () {
     Route::post('/user/profile-settings/set-daily-email', 'UserController@setDailyEmail');
 
 
-
-
-
     Route::get('wp', 'UserController@getWpUsers');
 
 
@@ -131,6 +128,7 @@ Route::group(['prefix' => 'api'], function () {
     Route::post('user/user-list', 'UserController@userList');
     Route::post('user/subscriber-list', 'UserController@subscriberList');
     Route::get('user/download/subscriber-list', 'UserController@downloadSubscribersList');
+    Route::get('user/download/registered-user-list', 'UserController@downloadRegisteredUserList');
 
     Route::get('user/get-user/{id?}', 'UserController@getUserById');
     // Route::any('user/user-add/{id?}','UserController@userList');
@@ -156,6 +154,14 @@ Route::group(['prefix' => 'api'], function () {
 
     Route::get('category/get-category-hierarchy/{catId?}', 'ProductController@generateCategoryHierarchy');
 
+    Route::post('category/add-read-category', 'ProductCategoryController@addReadCategory');
+    Route::post('category/update-read-category', 'ProductCategoryController@updateReadCategory');
+    Route::post('category/delete-read-category', 'ProductCategoryController@deleteReadCategory');
+    Route::get('category/all-read-category', 'ProductCategoryController@getAllReadCategoryItem');
+
+
+
+
     /*
      * Product route collection
      *
@@ -171,6 +177,9 @@ Route::group(['prefix' => 'api'], function () {
     Route::post('product/publish-product', 'ProductController@publishProduct');
     Route::get('product/get-by-name/{name?}', 'ProductController@productDetailsViewByName');
     Route::post('product/promote-product', 'ProductController@promoteProduct');
+
+    // Product publishers list
+    Route::get('product/get-publishers', 'ProductController@getPublisherNames');
 
 
     // Test method for logo
@@ -251,11 +260,8 @@ Route::group(['prefix' => 'api'], function () {
      * Notification
      * */
     Route::get('notification/{uid?}/{limit?}', 'UserController@notification');
-    Route::get('read-all-notification/{uid?}', 'UserController@notificationReadAll'); 
+    Route::get('read-all-notification/{uid?}', 'UserController@notificationReadAll');
     Route::post('read-single-notification', 'UserController@singleNotificationRead');
-
-//    Route::get('welcome', function() { return view('user.welcome');});
-
 
 
     /*
@@ -279,6 +285,8 @@ Route::group(['prefix' => 'admin'], function () {
     Route::get('category-view', 'AdminController@categoryView');
     Route::get('category-add', 'AdminController@addCategory');
     Route::get('category-edit', 'AdminController@editCategory');
+    Route::get('category-read', 'AdminController@readCategory');
+
 
     // Product view
     Route::get('product-view', 'AdminController@productView');
@@ -329,7 +337,6 @@ Route::group(['prefix' => 'payment'], function () {
     Route::get('paid-membership-report/{userId?}', 'PaymentController@subscribedMembershipPaymentInfo');
 
 
-
 });
 
 //Shop view
@@ -364,8 +371,11 @@ Route::get('room/{permalink?}', 'PageController@getRoomPage'); // temp keeping t
 Route::get('signup/{email?}/{source?}', 'PageController@signupPage');
 Route::get('login', 'PageController@loginView');
 
+Route::get('signup', 'PageController@signupPage');
+
+
 // User Notification
-Route::get('/user/notification','UserController@viewPublicProfileNotice');
+Route::get('/user/notification', 'UserController@viewPublicProfileNotice');
 
 // Hide signup popup
 Route::get('hide-signup', 'UserController@hideSignup');

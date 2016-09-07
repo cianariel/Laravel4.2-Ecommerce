@@ -22,6 +22,10 @@ a:hover, a:focus{
   display: none;
 }
 
+.giveaway_desc ol li{
+  list-style: decimal !important;
+}
+
 .pink{
   color: $iridium !important;
 }
@@ -6045,9 +6049,8 @@ body.single{
 .hero-login{
   width: 100%;
   overflow: hidden;
-  padding: 8% 0;
-  //padding-top: 30px;
-  //padding-bottom: 30px;
+  padding-top: 30px;
+  padding-bottom: 30px;
   position: relative;
   z-index: 10;
 

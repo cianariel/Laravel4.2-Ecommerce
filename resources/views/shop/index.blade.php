@@ -14,18 +14,25 @@
                         </a>
                     </li>
                     <li class="box-link-ul ">
-                        <a class="box-link " href="/shop/active">
-                            ACTIVE
+                        <a class="box-link"
+                           href="/shop/smart-entertainment">
+                            <span class="box-link-active-line"></span>
+                            SMART ENTERTAINMENT
                         </a>
                     </li>
                     <li class="box-link-ul ">
-                        <a class="box-link " href="/shop/wearables">
-                            WEARABLES
+                        <a class="box-link " href="/shop/smart-travel">
+                            SMART TRAVEL
                         </a>
                     </li>
                     <li class="box-link-ul ">
-                        <a class="box-link " href="/shop/home-decor">
-                            HOME & DECOR
+                        <a class="box-link " href="/shop/smart-body">
+                            SMART BODY
+                        </a>
+                    </li>
+                    <li class="box-link-ul ">
+                        <a class="box-link " href="/shop/decor">
+                            DECOR
                         </a>
                     </li>
                     <li class="box-link-ul hidden-xs">
@@ -87,7 +94,7 @@
                         </div>
                         <div class="col-xs-3 shop-by-category-item active" data-submenu="active">
                             <img src="assets/images/category-travel.png" alt=""><br><br>
-                            <span><a href="/shop/active/">Active</a></span>
+                            <span><a href="/shop/smart-travel/">Smart Travel</a></span>
                             <!--<a href="#" class="show-menus">
                                 <i class="m-icon--Add-Active"></i>
                             </a>
@@ -97,7 +104,7 @@
                         </div>
                         <div class="col-xs-3 shop-by-category-item wearables" data-submenu="wearables">
                             <img src="assets/images/category-wearable.png" alt=""><br><br>
-                            <span><a href="/shop/wearables/">Wearables</a></span>
+                            <span><a href="/shop/smart-body/">Smart Body</a></span>
                             <!--<a href="#" class="show-menus">
                                 <i class="m-icon--Add-Active"></i>
                             </a>
@@ -107,7 +114,7 @@
                         </div>
                         <div class="col-xs-3 shop-by-category-item home-decor" data-submenu="home-decor">
                             <img src="assets/images/category-decor.png" alt=""><br><br>
-                            <span><a href="/shop/home-decor/">Home & Decor</a></span>
+                            <span><a href="/shop/decor/">Decor</a></span>
                             <!--<a href="#" class="show-menus">
                                 <i class="m-icon--Add-Active"></i>
                             </a>
@@ -196,7 +203,7 @@
                                 </a>
 
                                 <div class="shop-by-category-submneu smart-home ">
-                                    @foreach($categoryTree['active'] as $parentCategory)
+                                    @foreach($categoryTree['smart-travel'] as $parentCategory)
                                         <div class="col-md-12">
                                             <a href="/shop/{{$topCategory}}/{{trim($parentCategory['childCategory']->extra_info)}}">
                                                 <i class="{{$parentCategory['childCategory']->icon}} desktop-parent-icon"></i>
@@ -235,7 +242,7 @@
                                 </a>
 
                                 <div class="shop-by-category-submneu smart-home ">
-                                    @foreach($categoryTree['wearables'] as $parentCategory)
+                                    @foreach($categoryTree['smart-body'] as $parentCategory)
                                         <div class="col-md-12">
                                             <a href="/shop/{{$topCategory}}/{{trim($parentCategory['childCategory']->extra_info)}}">
                                                 <i class="{{$parentCategory['childCategory']->icon}} desktop-parent-icon"></i>
@@ -272,7 +279,7 @@
                                     <i class="m-icon--footer-up-arrow up"></i>
                                 </a>
                                 <div class="shop-by-category-submneu smart-home ">
-                                    @foreach($categoryTree['home-decor'] as $parentCategory)
+                                    @foreach($categoryTree['decor'] as $parentCategory)
                                         <div class="col-md-12">
                                             <a href="/shop/{{$topCategory}}/{{trim($parentCategory['childCategory']->extra_info)}}">
                                                 <i class="{{$parentCategory['childCategory']->icon}} desktop-parent-icon"></i>

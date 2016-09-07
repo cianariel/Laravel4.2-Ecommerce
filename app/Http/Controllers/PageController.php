@@ -8,6 +8,7 @@ use App\Http\Requests;
 use Illuminate\Support\Collection;
 use App\Http\Controllers\Controller;
 //use FeedParser;
+use Kryptonit3\Counter\Counter;
 use MetaTag;
 use App\Models\Product;
 use App\Models\User;
@@ -1067,6 +1068,9 @@ class PageController extends ApiController
         }
 
         $cacheKey = "product-details-$permalink";
+
+        $product = new Product();
+
         if ($cachedContent = PageHelper::getFromRedis($cacheKey, true)) {
 //            $cachedContent->fromCache = true;
             $result = $cachedContent;
@@ -1093,7 +1097,6 @@ class PageController extends ApiController
 
         } else {
 
-            $product = new Product();
             $productData['product'] = $product->getViewForPublic($permalink);
 
             // Get category tree
@@ -1119,10 +1122,6 @@ class PageController extends ApiController
         }
 
 
-        MetaTag::set('title', $result['productInformation']['PageTitle']);
-        MetaTag::set('description', $result['productInformation']['MetaDescription']);
-
-
         if ($userData['method-status'] == 'fail-with-http') {
             $isAdmin = false;
             $userData['id'] = 0;
@@ -1131,11 +1130,24 @@ class PageController extends ApiController
         }
 
         // override the Amazon review if it's zero
-        $amazonReview = empty($result['productInformation']['Review'][1]->value)?$result['productInformation']['Review'][0]->value:$result['productInformation']['Review'][1]->value;
+        $amazonReview = empty($result['productInformation']['Review'][1]->value) ? $result['productInformation']['Review'][0]->value : $result['productInformation']['Review'][1]->value;
 
-        $reviewScore = intval(((($result['productInformation']['Review'][0]->value > 0 ? $result['productInformation']['Review'][0]->value : $amazonReview) + $amazonReview)/2)*20);
+        $reviewScore = intval(((($result['productInformation']['Review'][0]->value > 0 ? $result['productInformation']['Review'][0]->value : $amazonReview) + $amazonReview) / 2) * 20);
 
-      //  dd($result['selfImages']);
+
+        MetaTag::set('title', $result['productInformation']['PageTitle']);
+        MetaTag::set('description', $result['productInformation']['MetaDescription']);
+
+        // Product hit counter
+        $counter = \Counter::showAndCount('product-details-'.$result['productInformation']['Id']);
+
+        // Update the product table with hit counter
+        $product->itemHitCounter([
+            'Permalink'=>$permalink,
+            'Count' => $counter
+        ]);
+
+      //  dd($result['selfImages']['picture']);
         return view('product.product-details')
             ->with('isAdminForEdit', $isAdmin)
             ->with('productId', $result['productInformation']['Id'])
@@ -1148,7 +1160,8 @@ class PageController extends ApiController
             ->with('selfImages', $result['selfImages'])
             ->with('storeInformation', $result['storeInformation'])
             ->with('canonicURL', $result['canonicURL'])
-            ->with('MetaDescription', $result['productInformation']['MetaDescription']);
+            ->with('MetaDescription', $result['productInformation']['MetaDescription'])
+            ->with('CustomCounter',$counter);
     }
 
     public function getRoomPage($permalink)
@@ -1199,10 +1212,10 @@ class PageController extends ApiController
     {
         $input = Input::all();
 
-        if(!@$input['url']){
+        if (!@$input['url']) {
             return 'error';
         }
-        $clear = PageHelper::deleteFromRedis('twitter-shares-' .  $input['url']);
+        $clear = PageHelper::deleteFromRedis('twitter-shares-' . $input['url']);
 
         return 'cleared';
     }
@@ -1484,6 +1497,14 @@ class PageController extends ApiController
             ->with('ended', $ended)
             ->with('alreadyIn', $alreadyIn)
             ->with('heading', $heading);
+    }
+
+
+    public function cleanRadisCache($key)
+    {
+        if ($key == \Config::get("const.cache-clean-key"))
+            PageHelper::FlashRedis();
+
     }
 
     public function testEmail($type)

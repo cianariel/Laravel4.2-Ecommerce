@@ -5235,6 +5235,9 @@ a:hover, a:focus {
 .ta-hidden-input {
   display: none; }
 
+.giveaway_desc ol li {
+  list-style: decimal !important; }
+
 .pink {
   color: #FC1159 !important; }
 
@@ -9459,7 +9462,8 @@ body.single .home-subheader {
 .hero-login {
   width: 100%;
   overflow: hidden;
-  padding: 8% 0;
+  padding-top: 30px;
+  padding-bottom: 30px;
   position: relative;
   z-index: 10; }
   .hero-login .close-login {

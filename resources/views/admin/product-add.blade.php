@@ -120,7 +120,7 @@
 
                                                             <button ng-click="hideCategoryPanel = !hideCategoryPanel"
                                                                     tooltip-placement="right"
-                                                                    uib-tooltip="Reset Category"
+                                                                    uib-tooltip="Show Category List"
                                                                     class="btn btn-warning btn-circle">
                                                                 <i class="fa fa-refresh"></i>
                                                             </button>
@@ -138,12 +138,6 @@
                                                             <label>Selected Category Info
                                                                 :</label><strong> @{{ categoryHierarchy }}
                                                                 (@{{ selectedItem }}) </strong>
-                                                        </div>
-                                                        <div class="col-md-1">
-
-                                                        </div>
-                                                        <div class="col-md-4">
-
                                                         </div>
 
                                                     </div>
@@ -226,6 +220,34 @@
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
+                                                        <label class="col-md-2 control-label">Publishing Date:
+                                                        </label>
+                                                        <div class="col-md-4">
+
+
+                                                            <p class="input-group">
+                                                                <input type="date" class="form-control"
+                                                                       uib-datepicker-popup ng-model="datePicker"
+                                                                       is-open="status.opened"
+                                                                       min-date="minDate"
+                                                                       max-date="maxDate"
+                                                                       datepicker-options="dateOptions"
+                                                                       ng-required="true"
+                                                                       close-text="Close"
+                                                                       onkeydown="return false"
+                                                                />
+
+                                                              <span class="input-group-btn">
+                                                                <button type="button" class="btn btn-default"
+                                                                        ng-click="open($event)">
+                                                                    <i class="glyphicon glyphicon-calendar"></i></button>
+                                                              </span>
+                                                            </p>
+
+
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
                                                         <label class="col-md-2 control-label">Description:
                                                         </label>
                                                         <div class="col-md-10">
@@ -269,7 +291,8 @@
                                                     <div ng-hide="ProductId == ''" class="form-group">
                                                         <label class="col-md-2 control-label">Ideas Short Link</label>
                                                         <div class="col-md-10">
-                                                            <input class="form-control" ng-readonly="true" value="{{URL::to('/')}}/open/@{{ ProductId }}/ideas">
+                                                            <input class="form-control" ng-readonly="true"
+                                                                   value="{{URL::to('/')}}/open/@{{ ProductId }}/ideas">
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
@@ -563,7 +586,7 @@
                                                         <div class="col-md-4">
                                                             <select data-ng-model="selectedMediaSequence"
                                                                     class="form-control"
-                                                                ng-options="item for item in mediaSequenceArray track by item">
+                                                                    ng-options="item for item in mediaSequenceArray track by item">
                                                             </select>
                                                         </div>
                                                     </div>

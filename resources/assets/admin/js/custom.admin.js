@@ -364,7 +364,7 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
             $scope.Tags = [];
 
             // product filter with Tag
-            $scope.WithTags = false;
+            $scope.WithTags = true;
 
             // Store Module
             $scope.StoreId = '';
@@ -440,7 +440,7 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
                 method: "GET",
 
             }).success(function (data) {
-                console.log(data);
+                //   console.log(data);
                 $scope.userId = data.data.id;
                 $scope.FullName = data.data.name;
                 $scope.Password = null;
@@ -495,7 +495,7 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
                     Valid: true
                 }
             }).success(function (data) {
-                console.log(data);
+                //  console.log(data);
                 $scope.outputStatus(data, 'User added successfully');
                 // $window.location = '/admin/user-list';
                 $scope.FullName = '';
@@ -811,7 +811,7 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
                 url: '/api/category/get-category-hierarchy/' + catId,
                 method: 'GET',
             }).success(function (data) {
-                console.log(data);
+                //   console.log(data);
 
                 buildCategoryViewString(data);
 
@@ -1082,11 +1082,92 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
             if (keyWord.indexOf("ideas") > -1) {
                 return keyWord;
             } else {
-                return "category/" + keyWord;
+                return "shop/" + keyWord;
             }
+        };
 
+
+        // Read Category
+
+        $scope.getReadCategoryList = function(){
+
+            $http({
+                url: '/api/category/all-read-category',
+                method: "GET",
+
+            }).success(function (data) {
+                $scope.tempCategoryList = data.data;
+                $scope.selectedReadCategoryId = "";
+                //  $scope.outputStatus(data, "Read Category added successfully");
+            });
 
         };
+
+        $scope.addReadCategory = function(){
+
+            $http({
+                url: '/api/category/add-read-category',
+                method: "POST",
+                data: {
+
+                    SelectedReadCategoryId: $scope.selectedReadCategoryId,
+                    CategoryId: $scope.selectedItem,
+                    PageTitle: $scope.PageTitle,
+                    MetaDescription: $scope.MetaDescription
+                },
+            }).success(function (data) {
+                $scope.outputStatus(data, "Read Category added successfully");
+                $scope.getReadCategoryList();
+
+                $scope.selectedReadCategoryId = "";
+
+                $scope.selectedItem = null;
+                $scope.PageTitle = null;
+                $scope.MetaDescription = null;
+            });
+
+        };
+
+        $scope.editReadCategory = function(index){
+
+            $scope.closeAlert();
+
+            $scope.selectedReadCategoryId = $scope.tempCategoryList[index].id;
+
+            $scope.selectedItem = $scope.tempCategoryList[index].product_category_id;
+            $scope.PageTitle = $scope.tempCategoryList[index].page_title;
+            $scope.MetaDescription = $scope.tempCategoryList[index].meta_description;
+
+            $scope.categoryHierarchyView($scope.selectedItem);
+
+            $window.scrollTo(0, 0);
+
+        };
+
+        $scope.deleteReadCategory = function(index){
+
+            $scope.closeAlert();
+
+            $http({
+                url: '/api/category/delete-read-category',
+                method: "POST",
+                data: {
+                    SelectedReadCategoryId: $scope.tempCategoryList[index].id
+                },
+            }).success(function (data) {
+                $scope.outputStatus(data, "Read Category deleted successfully");
+                $scope.getReadCategoryList();
+
+                $scope.selectedReadCategoryId = "";
+
+                $scope.selectedItem = null;
+                $scope.PageTitle = null;
+                $scope.MetaDescription = null;
+            });
+
+        };
+
+
 
         // Product Module //
 
@@ -1134,6 +1215,7 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
                     ProductAuthorName: $scope.ProductAuthorName,
                     CategoryId: $scope.selectedItem,
                     Name: $scope.Name,
+                    PublishAt: $scope.datePicker,
                     Permalink: $scope.Permalink,
                     Description: $scope.htmlContent,
                     Price: $scope.Price,
@@ -1285,12 +1367,12 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
             $scope.reviewKey = '';
             $scope.reviewValue = '';
             $scope.reviewLink = '';
-            console.log($scope.reviewCounter);
+            //  console.log($scope.reviewCounter);
 
             $scope.reviewCounter = '';
             /*$scope.externalReviewLink = '';
              $scope.ideaingReviewScore = 0;*/
-            console.log($scope.reviewCounter);
+            //  console.log($scope.reviewCounter);
 
             $scope.calculateAvg();
 
@@ -1359,8 +1441,12 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
                 data: {
                     CategoryId: $scope.selectedItem,
                     ActiveItem: $scope.ActiveItem,
-                    FilterType: $scope.selectedFilter,
-                    FilterText: $scope.filterName,
+                    //FilterType: $scope.selectedFilter,
+                    //FilterText: $scope.filterName,
+
+                    FilterPublisher: $scope.publisherName,
+                    FilterProduct: $scope.filterProduct,
+
                     ShowFor: $scope.ShowFor,
                     WithTags: $scope.WithTags,
 
@@ -1477,6 +1563,7 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
                     $scope.reviews = data.data.review;
                     $scope.externalReviewLink = data.data.review_ext_link;
                     $scope.ideaingReviewScore = data.data.ideaing_review_score;
+                    $scope.datePicker = new Date(data.data.publish_at);
 
                     // hide category in edit mood
                     $scope.hideCategoryPanel = true;
@@ -1497,13 +1584,15 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
 
         // Product Promote
 
+
         $scope.promoteProduct = function (id) {
             $scope.closeAlert();
             $http({
                 url: '/api/product/promote-product',
                 method: "POST",
                 data: {
-                    id: id
+                    id: id,
+                    PublishAt: $scope.datePicker,
                 }
             }).success(function (data) {
                 $scope.outputStatus(data, "Product promoted successfully.");
@@ -1562,6 +1651,20 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
 
         };
 
+        // Show publishers name list
+        $scope.getPublisherList = function () {
+           // $scope.closeAlert();
+            $http({
+                url: '/api/product/get-publishers',
+                method: "GET",
+            }).success(function (data) {
+                $scope.PublisherList = data.data;
+              //  $scope.outputStatus(data, "Product promoted successfully.");
+              //  $scope.loadProductData($scope.ProductId);
+
+            });
+        };
+
         // add medial content for a product
 
         $scope.addMediaInfo = function () {
@@ -1600,12 +1703,11 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
                     $scope.mediaList = data.data.result;
                     $scope.mediaCount = 0;
 
-                    if (data.data.count > 0)
-                    {
+                    if (data.data.count > 0) {
                         $scope.mediaCount = data.data.count;
                     }
 
-                  //  console.log('media count :', $scope.mediaCount);
+                    //  console.log('media count :', $scope.mediaCount);
 
                     $scope.getMediaSequenceList();
                 }
@@ -1644,13 +1746,13 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
             var mainItem = $scope.mediaList[index].is_main_item == 1 ? true : false;
             $scope.isMainItem = mainItem;
             $scope.isMediaEdit = true;
-       //     console.log($scope.selectedMediaSequence);
+            //     console.log($scope.selectedMediaSequence);
 
         };
 
         $scope.getMediaSequenceList = function () {
 
-         //   console.log('media count:',$scope.mediaCount);
+            //   console.log('media count:',$scope.mediaCount);
             var list = [];
 
             for (var i = 1; i <= $scope.mediaCount + 1; i++) {
@@ -1660,8 +1762,8 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
 
             $scope.mediaSequenceArray = list;
 
-          //  console.log('list size :', list, Math.max.apply(Math,list,'media count:',$scope.mediaCount));
-            $scope.selectedMediaSequence = Math.max.apply(Math,list);
+            //  console.log('list size :', list, Math.max.apply(Math,list,'media count:',$scope.mediaCount));
+            $scope.selectedMediaSequence = Math.max.apply(Math, list);
 
         };
 
@@ -1730,6 +1832,79 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
             });
 
         };
+
+        // date picker start
+
+        $scope.today = function() {
+            $scope.datePicker = new Date();
+        };
+        $scope.today();
+
+        $scope.clear = function () {
+            $scope.datePicker = null;
+        };
+
+        // Disable weekend selection
+        $scope.disabled = function(date, mode) {
+            return ( mode === 'day' && ( date.getDay() === 0 || date.getDay() === 6 ) );
+
+        };
+
+        $scope.toggleMin = function() {
+            $scope.minDate = $scope.minDate ? null : new Date();
+        };
+        $scope.toggleMin();
+        $scope.maxDate = new Date(2020, 5, 22);
+
+        $scope.open = function($event) {
+            $scope.status.opened = true;
+        };
+
+        $scope.dateOptions = {
+            formatYear: 'yy',
+            startingDay: 1
+        };
+
+        $scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
+        $scope.format = $scope.formats[0];
+
+        $scope.status = {
+            opened: false
+        };
+
+        var tomorrow = new Date();
+        tomorrow.setDate(tomorrow.getDate() + 1);
+        var afterTomorrow = new Date();
+        afterTomorrow.setDate(tomorrow.getDate() + 2);
+        $scope.events =
+            [
+                {
+                    date: tomorrow,
+                    status: 'full'
+                },
+                {
+                    date: afterTomorrow,
+                    status: 'partially'
+                }
+            ];
+
+        $scope.getDayClass = function(date, mode) {
+            if (mode === 'day') {
+                var dayToCheck = new Date(date).setHours(0,0,0,0);
+
+                for (var i=0;i<$scope.events.length;i++){
+                    var currentDay = new Date($scope.events[i].date).setHours(0,0,0,0);
+
+                    if (dayToCheck === currentDay) {
+                        return $scope.events[i].status;
+                    }
+                }
+            }
+
+            return '';
+        };
+        // date picker end
+
 
 
         // Initialize variables and functions Globally.

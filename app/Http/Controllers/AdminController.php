@@ -26,6 +26,7 @@ class AdminController extends ApiController
     {
         // check authentication with role 'admin' (default parameter)
         $this->authCheck = $this->RequestAuthentication(array('admin', 'editor'));
+
         //  $this->authCheck['method-status'] = 'success-with-http';
         //  dd($this->authCheck);
 
@@ -33,7 +34,12 @@ class AdminController extends ApiController
 
     public function index()
     {
-        return view('admin.index')->with('userData', $this->authCheck);
+        if ($this->authCheck['method-status'] == 'success-with-http') {
+            return view('admin.index')->with('userData', $this->authCheck);
+
+        } elseif ($this->authCheck['method-status'] == 'fail-with-http') {
+            return \Redirect::to('login');
+        }
     }
 
     // User view
@@ -111,6 +117,18 @@ class AdminController extends ApiController
 
         if ($this->authCheck['method-status'] == 'success-with-http') {
             return view('admin.category-edit')->with('userData', $this->authCheck);
+
+        } elseif ($this->authCheck['method-status'] == 'fail-with-http') {
+            return \Redirect::to('login');
+        }
+
+    }
+
+    public function readCategory()
+    {
+
+        if ($this->authCheck['method-status'] == 'success-with-http') {
+            return view('admin.category-read')->with('userData', $this->authCheck);
 
         } elseif ($this->authCheck['method-status'] == 'fail-with-http') {
             return \Redirect::to('login');
