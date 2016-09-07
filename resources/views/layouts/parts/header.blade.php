@@ -344,12 +344,6 @@ if (!isset($theGiveAway)) {
         include('/var/www/ideaing/resources/views/layouts/parts/shop-submenu.blade.php')
         ?>
     </header>
-    <?php
-    if(!function_exists('is_single')){ ?>
-    @include('room.header-menu')
-    <?php     }
-
-    ?>
 
     <?php if(isset($userData['login']) && $userData['login']) { ?>
 

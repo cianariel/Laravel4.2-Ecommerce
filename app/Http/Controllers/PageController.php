@@ -25,7 +25,7 @@ use PageHelper;
 use Route;
 use DB;
 use Redis;
-use Counter;
+//use Counter;
 use Request as Req;
 
 
