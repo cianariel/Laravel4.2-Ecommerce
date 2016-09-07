@@ -94,7 +94,7 @@
         </a>
     </li>
     <li>
-        <a id="show-smart-entertainment" ng-click="switchCategory('smart-entertainment')"  href="/ideas/smart-entertainment">
+        <a id="show-smart-entertainment" ng-click="switchCategory('smart-entertainment')"  href="/smart-entertainment">
         </a>
     </li>
     <li>
