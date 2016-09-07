@@ -235,7 +235,7 @@ class PageController extends ApiController
 
                     foreach($allProducts['result'] as $prod){
                         $prodID = $prod->id;
-                        $count =  Counter::show('product-details-'.$prodID);
+                        $count =  0;
                         $prod->count = $count;
                     }
 
