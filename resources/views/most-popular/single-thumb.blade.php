@@ -6,7 +6,7 @@
             <a href="/product/@{{item.product_permalink}}" class="category-@{{item.master_category}}">
                 <div class="box-item__overlay category-bg opaque"></div>
             </a>
-            <a href="/product/@{{item.product_permalink}}" class="box-item__label" itemprop="name">@{{item.product_name}}</a>
+            <a href="/product/@{{item.product_permalink}}" class="box-item__label" itemprop="name"><span>@{{item.product_name}}</span></a>
         </div>
         <div ng-if="item.type == 'product'" class="social-stats__item views center-block">
             <i class="m-icon m-icon--flame pink"></i>
@@ -19,8 +19,7 @@
                     <img alt="@{{item.feed_image.alt}}" title="@{{item.feed_image.title}}"
                          src="@{{item.feed_image.url}}">
             </a>
-            <a href="@{{item.url}}" class="box-item__label" itemprop="name">@{{item.title}}</a>
-            <a href="/product/@{{item.url}}" class="box-item__label" itemprop="name">@{{item.title}}</a>
+            <a href="/product/@{{item.url}}" class="box-item__label" itemprop="name"><span>@{{item.title}}</span></a>
             <a href="@{{item.url}}" class="category-@{{item.category_main}}">
                 <div class="box-item__overlay category-bg opaque"></div>
             </a>

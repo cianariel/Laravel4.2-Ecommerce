@@ -3023,7 +3023,7 @@ article.product{
   }
   .quote-author{
     display: block;
-  }
+  } 
   span:last-child{
     font-size: 1.1rem;
   }
@@ -3031,30 +3031,24 @@ article.product{
 
 .most-popular-new{
   .category-smart-home{
-      .box-item{
+      .box-item,
+      .popular-wrap.single-thumb{
         &::before{
           background: $iridium !important;
-
         }
-        //.box-item__overlay.category-bg{
-        //  opacity: .4 !important;
-        //}
-        //&:hover{
-        //  .box-item__overlay.category-bg {
-        //    opacity: 0 !important;
-        //  }
-        //}
     }
   }
   .category-smart-body{
-      .box-item{
+      .box-item,
+      .popular-wrap.single-thumb{
         &::before{
           background: $facebook-blue !important;
         }
     }
   }
   .category-smart-entertainment{
-      .box-item{
+      .box-item,
+      .popular-wrap.single-thumb{
         &::before{
           background: $pine-green !important;
         }
@@ -3072,7 +3066,6 @@ body.category{
 }
 
 .most-popular-new{
-  //overflow: hidden;
 
   @media(max-width:620px){
     .popular-section{
@@ -3120,7 +3113,7 @@ body.category{
     overflow: visible;
 
     .box-item__overlay.category-bg{
-      opacity: .4 !important;
+      opacity: .2 !important;
     }
     &:hover {
       .box-item__overlay.category-bg {
@@ -3165,8 +3158,13 @@ body.category{
         width: 100%;
         z-index: 1;
         padding:4px 4px 7px;
-        background: rgba(0,0,0, .2);
+        background: rgba(0,0,0, .15);
         margin-bottom: 0;
+
+        span{
+          position: absolute;
+          bottom: 0;
+        }
       }
 
       &::before{
