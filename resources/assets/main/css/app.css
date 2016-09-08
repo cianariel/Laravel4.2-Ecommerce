@@ -13545,9 +13545,13 @@ body.giveaway-page .black-slider {
     min-height: 400px;
     padding-top: 10%;
     font-weight: bold; }
-    @media (max-width: 620px) {
+    @media (max-width: 1150px) {
       #weclome-page .four-sections .category-block {
-        max-height: 290px; } }
+        max-height: 290px;
+        min-height: 0; } }
+    @media (max-width: 768px) and (min-width: 620px) {
+      #weclome-page .four-sections .category-block {
+        min-height: 400px; } }
     #weclome-page .four-sections .category-block .z-wrap {
       z-index: 3; }
     #weclome-page .four-sections .category-block .category-bg {

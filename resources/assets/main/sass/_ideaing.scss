@@ -12041,8 +12041,13 @@ body.giveaway-page{
       padding-top: 10%;
       font-weight: bold;
 
-      @media(max-width:620px) {
+      @media(max-width:1150px) {
         max-height: 290px;
+        min-height: 0;
+      }
+
+      @media(max-width:768px) and (min-width:620px) {
+        min-height: 400px;
       }
 
       .z-wrap{
