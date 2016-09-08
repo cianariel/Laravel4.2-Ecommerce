@@ -7544,6 +7544,9 @@ article.product {
 .most-popular-new .category-smart-entertainment .box-item::before,
 .most-popular-new .category-smart-entertainment .popular-wrap.single-thumb::before {
   background: #89C981 !important; }
+.most-popular-new .category-smart-travel .box-item::before,
+.most-popular-new .category-smart-travel .popular-wrap.single-thumb::before {
+  background: #FF7F00 !important; }
 
 body.category #hero {
   min-height: 382px; }
