@@ -7580,7 +7580,7 @@ body.category .rsThumbs {
   border-radius: 5px;
   overflow: visible; }
   .most-popular-new .box-item .box-item__overlay.category-bg {
-    opacity: .2 !important; }
+    opacity: .3 !important; }
   .most-popular-new .box-item:hover .box-item__overlay.category-bg {
     opacity: 0 !important; }
   .most-popular-new .box-item::before {
@@ -7607,13 +7607,16 @@ body.category .rsThumbs {
       font-size: 1.5rem;
       text-align: center;
       width: 100%;
+      height: 100%;
       z-index: 1;
       padding: 4px 4px 7px;
       background: rgba(0, 0, 0, 0.15);
       margin-bottom: 0; }
       .most-popular-new .popular-wrap.single-thumb .box-item__label span {
         position: absolute;
-        bottom: 0; }
+        bottom: 2px;
+        left: 0;
+        width: 100%; }
     .most-popular-new .popular-wrap.single-thumb::before {
       counter-increment: popular-box;
       content: counter(popular-box);
