@@ -13532,6 +13532,12 @@ body.giveaway-page .black-slider {
       text-align: left; }
   #weclome-page section p {
     font-size: 2.2rem; }
+    @media (max-width: 620px) {
+      #weclome-page section p {
+        font-size: 1.5rem; } }
+  @media (max-width: 620px) {
+    #weclome-page section h3 {
+      font-size: 2rem; } }
   #weclome-page section .m-icon {
     float: none; }
   #weclome-page section .m-icon--bulb2 {
@@ -13545,6 +13551,9 @@ body.giveaway-page .black-slider {
     min-height: 400px;
     padding-top: 10%;
     font-weight: bold; }
+    @media (max-width: 620px) {
+      #weclome-page .four-sections .category-block {
+        padding-top: 15px; } }
     @media (max-width: 1150px) {
       #weclome-page .four-sections .category-block {
         max-height: 290px;

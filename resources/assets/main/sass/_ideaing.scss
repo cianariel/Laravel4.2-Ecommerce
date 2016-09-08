@@ -12002,10 +12002,6 @@ body.giveaway-page{
     .container{
       padding: 65px;
 
-      //&.giveaway-wrap{
-      //  padding: 0;
-      //}
-
       .giveaways{
         padding: 0 40px;
         text-align: left;
@@ -12014,6 +12010,16 @@ body.giveaway-page{
 
     p{
       font-size: 2.2rem;
+
+      @media(max-width:620px) {
+        font-size: 1.5rem;
+      }
+    }
+
+    @media(max-width:620px) {
+      h3{
+        font-size: 2rem;
+      }
     }
 
     .m-icon{
@@ -12041,6 +12047,10 @@ body.giveaway-page{
       padding-top: 10%;
       font-weight: bold;
 
+      @media(max-width:620px) {
+        padding-top: 15px;
+      }
+
       @media(max-width:1150px) {
         max-height: 290px;
         min-height: 0;
@@ -12052,6 +12062,7 @@ body.giveaway-page{
 
       .z-wrap{
         z-index: 3;
+
       }
 
       .category-bg{
@@ -12066,28 +12077,12 @@ body.giveaway-page{
         bottom: 0;
         left: 0;
         z-index: 1;
-
-        //@media(max-width: 620px){
-        //  height:auto
-        //}
       }
 
       .m-icon{
         font-size: 4rem;
       }
 
-      //background: url('/assets/images/welcome/welcome-smart-home.jpg') no-repeat center;
-      //background-size: cover;
-
-      //&.category-smart-travel{
-      //  background-image: url('/assets/images/welcome/welcome-smart-travel.jpg');
-      //}
-      //&.category-smart-body{
-      //  background-image: url('/assets/images/welcome/welcome-smart-body.jpg');
-      //}
-      //&.category-smart-entertainment{
-      //  background-image: url('/assets/images/welcome/welcome-smart-entertainment.jpg');
-      //}
 
       .learn-more {
         position: relative;
