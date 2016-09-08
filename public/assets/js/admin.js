@@ -1906,6 +1906,30 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
         // date picker end
 
 
+        $scope.getAdminNotificationEmailList = function(){
+            $http({
+                url: '/api/user/admin-email',
+                method: 'GET'
+
+            }).success(function (data) {
+
+                $scope.Email = data.data;
+            });
+        }
+        $scope.setAdminNotificationEmailList = function(){
+            $http({
+                url: '/api/user/admin-set-email',
+                method: 'POST',
+                data:{
+                    Email: $scope.Email
+                }
+
+            }).success(function (data) {
+
+                $scope.getAdminNotificationEmailList();
+            });
+        }
+
 
         // Initialize variables and functions Globally.
         $scope.initPage();

@@ -332,4 +332,15 @@ class AdminController extends ApiController
         }
 
     }
+
+    public function viewAdminMailNotification()
+    {
+        if ($this->authCheck['method-status'] == 'success-with-http') {
+            return view('admin.admin-mail-notification')->with('userData', $this->authCheck);
+
+        } elseif ($this->authCheck['method-status'] == 'fail-with-http') {
+            return \Redirect::to('login');
+        }
+
+    }
 }
