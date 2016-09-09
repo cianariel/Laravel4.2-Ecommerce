@@ -93,7 +93,7 @@
             </div>
         </section>
 
-        <section class="row">
+        <section class="row pale-grey-bg">
             <div class="container">
             <h3>Join us</h3>
             <p>Invite your friends to join you in getting the latest reviews, news, and deals!</p>
