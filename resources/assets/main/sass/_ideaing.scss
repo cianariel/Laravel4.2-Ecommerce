@@ -3150,6 +3150,10 @@ body.category{
     &.single-thumb{
       width: 100%;
 
+      //.box-item{
+      //
+      //}
+
       .box-item__label{
         position: absolute;
         bottom: 0;
@@ -3159,8 +3163,13 @@ body.category{
         height: 100%;
         z-index: 1;
         padding:4px 4px 7px;
-        background: rgba(0,0,0, .15);
         margin-bottom: 0;
+
+        /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#727272+35,8e8e8e+100,727272+100&0+36,0.81+100 */
+        background: -moz-linear-gradient(top,  rgba(114,114,114,0) 35%, rgba(114,114,114,0) 36%, rgba(114,114,114,0.81) 100%); /* FF3.6-15 */
+        background: -webkit-linear-gradient(top,  rgba(114,114,114,0) 35%,rgba(114,114,114,0) 36%,rgba(114,114,114,0.81) 100%); /* Chrome10-25,Safari5.1-6 */
+        background: linear-gradient(to bottom,  rgba(114,114,114,0) 35%,rgba(114,114,114,0) 36%,rgba(114,114,114,0.81) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00727272', endColorstr='#cf727272',GradientType=0 ); /* IE6-9 */
 
         span{
           position: absolute;
