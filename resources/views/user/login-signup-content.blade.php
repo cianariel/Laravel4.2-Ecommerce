@@ -30,8 +30,7 @@
 
     <section class="row">
         <div class="container text-center padding-40 form-box relative" ng-app="publicApp" ng-controller="publicController">
-            <uib-alert ng-repeat="alert in alerts" type="@{{alert.type}}"
-                       close="closeAlert($index)">
+            <uib-alert ng-repeat="alert in alerts" type="@{{alert.type}}" close="closeAlert($index)">
                 <p  ng-if="$index == 0" ng-bind-html="alertHTML"></p>
             </uib-alert>
 

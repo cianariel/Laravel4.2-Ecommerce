@@ -888,6 +888,10 @@ button{
     margin: auto;
     overflow: auto;
 
+  .alert:not(:fisrt-child){
+    display: none;
+  }
+
   .modal-content{
     overflow: visible;
     padding: 0;

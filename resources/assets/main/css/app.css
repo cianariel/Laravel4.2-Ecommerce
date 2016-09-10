@@ -5949,6 +5949,8 @@ button {
   height: 100%;
   margin: auto;
   overflow: auto; }
+  .login-signup-modal .alert:not(:fisrt-child) {
+    display: none; }
   .login-signup-modal .modal-content {
     overflow: visible;
     padding: 0;

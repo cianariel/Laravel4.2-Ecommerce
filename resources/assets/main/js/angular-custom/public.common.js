@@ -827,23 +827,34 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                     }
                     else if (data.data == 'Registration completed successfully') {
                         $scope.addAlert('success', 'SUCCESS! You just made the best decision');
-                        $('.toggles, .bordering .content').animate({opacity: "0"}, function(){
-                             setTimeout(function(){ 
-                                $scope.hideAndForget();
-                                window.location = '/welcome';
 
-                            }, 2000);
-                        })
+                        if(('.toggles').length){
+                            $('.toggles, .bordering .content').animate({opacity: "0"}, function(){
+                                setTimeout(function(){
+                                    $scope.hideAndForget();
+                                    window.location = '/welcome';
+                                }, 2000);
+                            })
+                        }else{
+                            $scope.hideAndForget();
+                            window.location = '/welcome';
+                        }
+
 
                     } else if (data.data == 'Registration completed successfully, please verify your email') {
                         $scope.addAlert('success', 'SUCCESS! You just made the best decision');
-                         
-                         $('.toggles, .bordering .content').animate({opacity: "0"}, function(){
-                             setTimeout(function(){ 
-                                $scope.hideAndForget();
-                                window.location = '/welcome';
-                            }, 2000);
-                        })
+
+                        if(('.toggles').length){
+                            $('.toggles, .bordering .content').animate({opacity: "0"}, function(){
+                                setTimeout(function(){
+                                    $scope.hideAndForget();
+                                    window.location = '/welcome';
+                                }, 2000);
+                            })
+                        }else{
+                            $scope.hideAndForget();
+                            window.location = '/welcome';
+                        }
                     }
 
 
