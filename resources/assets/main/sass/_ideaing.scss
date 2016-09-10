@@ -889,7 +889,7 @@ button{
     overflow: auto;
 
   .modal-content{
-    overflow: hidden;
+    overflow: visible;
     padding: 0;
     border-radius: 3px;
   }
@@ -11216,7 +11216,7 @@ body.aboutus-page{
   .category-block{
     padding: 0;
   }
- 
+
     .alert-danger,
     .alert[type="@danger"]{
         max-width:300px;

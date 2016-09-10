@@ -5950,7 +5950,7 @@ button {
   margin: auto;
   overflow: auto; }
   .login-signup-modal .modal-content {
-    overflow: hidden;
+    overflow: visible;
     padding: 0;
     border-radius: 3px; }
   .login-signup-modal .close-button {
