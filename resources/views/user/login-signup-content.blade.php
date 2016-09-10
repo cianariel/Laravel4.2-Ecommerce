@@ -136,12 +136,12 @@
     </section>
 
 
-    <section class="row to-home">
+   <!-- <section class="row to-home">
         <div class="container text-center padding-40">
             <a href="/">
                 <span class="m-icon--bulb2 center-block"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span><span class="path6"></span><span class="path7"></span><span class="path8"></span><span class="path9"></span><span class="path10"></span></span>
             </a>
             <h4 class="grey"><a href="/">HOME</a></h4>
         </div>
-    </section>
+    </section> -->
 </div>
