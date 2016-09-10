@@ -3,48 +3,37 @@
 
 @section('content')
     <div class="login-signup-modal">
+
+        <section class="four-sections">
+            <div class="container no-padding">
+                <div class="col-sm-3 col-xs-6 category-block category-smart-travel hover-zoom overhide">
+                    <div class="box-item__overlay category-bg"></div>
+                    <img class="img-responsive" src="/assets/images/welcome/welcome-smart-travel.jpg">
+                </div>
+                <div class="col-sm-3 col-xs-6 category-block category-smart-body hover-zoom overhide">
+                    <div class="box-item__overlay category-bg"></div>
+                    <img class="img-responsive" src="/assets/images/login-signup/signup-1.jpg">
+                </div>
+                <div class="col-sm-3 col-xs-6 category-block category-smart-home hover-zoom overhide">
+                    <div class="box-item__overlay category-bg"></div>
+                    <img class="img-responsive" src="/assets/images/login-signup/signup-2.jpg">
+                </div>
+                <div class="col-sm-3 col-xs-6 category-block category-smart-entertainment hover-zoom overhide">
+                    <div class="box-item__overlay category-bg"></div>
+                    <img class="img-responsive" src="/assets/images/welcome/welcome-smart-entertainment.jpg">
+                </div>
+            </div>
+        </section>
+
         <div class="modal-intro contentable">
-                <a class="logo" href="/">
-                    <i class="m-icon m-icon--logo-with-text-blues">
-                    <span class="path1"></span><span class="path2"></span><span class="path3"></span><span
-                            class="path4"></span><span class="path5"></span><span class="path6"></span><span
-                            class="path7"></span><span class="path8"></span><span class="path9"></span><span
-                            class="path10"></span><span class="path11"></span><span class="path12"></span><span
-                            class="path13"></span><span class="path14"></span><span class="path15"></span><span
-                            class="path16"></span><span class="path17"></span><span class="path18"></span><span
-                            class="path19"></span><span class="path20"></span><span class="path21"></span><span
-                            class="path22"></span><span class="path23"></span><span class="path24"></span><span
-                            class="path25"></span><span class="path26"></span><span class="path27"></span><span
-                            class="path28"></span><span class="path29"></span><span class="path30"></span><span
-                            class="path31"></span><span class="path32"></span><span class="path33"></span><span
-                            class="path34"></span><span class="path35"></span><span class="path36"></span><span
-                            class="path37"></span><span class="path38"></span><span class="path39"></span><span
-                            class="path40"></span>
-                    </i>
-
-                    <i class="m-icon m-icon--WhiteRed">
-                    <span class="path1"></span><span class="path2"></span><span class="path3"></span><span
-                            class="path4"></span><span class="path5"></span><span class="path6"></span><span
-                            class="path7"></span><span class="path8"></span><span class="path9"></span><span
-                            class="path10"></span><span class="path11"></span><span class="path12"></span><span
-                            class="path13"></span><span class="path14"></span><span class="path15"></span><span
-                            class="path16"></span><span class="path17"></span><span class="path18"></span><span
-                            class="path19"></span><span class="path20"></span><span class="path21"></span><span
-                            class="path22"></span><span class="path23"></span><span class="path24"></span><span
-                            class="path25"></span><span class="path26"></span><span class="path27"></span><span
-                            class="path28"></span><span class="path29"></span><span class="path30"></span><span
-                            class="path31"></span><span class="path32"></span><span class="path33"></span><span
-                            class="path34"></span><span class="path35"></span><span class="path36"></span><span
-                            class="path37"></span><span class="path38"></span><span class="path39"></span><span
-                            class="path40"></span>
-                    </i>
-
-                </a>
-
-            <p>
-                Join <b>Ideaing</b> to get unique tips on transforming your home to a Smart Home. Plus, earn rewards, freebies and exclusive coupons for being part of the best platform on Smart Living and Home Automation.
-            </p>
+            <section class="row">
+                <div class="container">
+                    <h1>Create a Free Account</h1>
+                    <h3>Join Indeaing to live smarter</h3>
+                </div>
+            </section>
         </div>
+
 
         <div class="content-holder" ng-app="publicApp" ng-controller="publicController">
             <div>
@@ -100,11 +89,8 @@
         </div>
         <div class="clearfix"></div>
     </div>
-    <div class="background"></div>
-    <div class="background-image"></div>
+    {{--<div class="background"></div>--}}
 
-    {{--<script src="/assets/js/angular-custom/public.common.js"></script>--}}
     <script src="/assets/js/main.js"></script>
-    {{--<script src="/assets/admin/js/angular-file-upload.min.js"></script>--}}
 @stop
 

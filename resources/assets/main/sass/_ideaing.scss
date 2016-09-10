@@ -883,7 +883,7 @@ button{
 
   .modal-content{
     overflow: hidden;
-    padding: 25px 5.5%;
+    padding: 0;
     border-radius: 3px;
   }
   .close-button{
@@ -2193,22 +2193,22 @@ body.contactus-page
   opacity: 0;
   text-align: center;
 }
-
-.login-signup-modal a.logo{
-    .m-icon:first-child{
-        display: block;
-    }
-    .m-icon:last-child{
-        display: none;
-    }
-    
-    &:hover > .m-icon:first-child{
-        display: none;
-    }
-    &:hover > .m-icon:last-child{
-        display: block;
-    }
-}
+//
+//.login-signup-modal a.logo{
+//    .m-icon:first-child{
+//        display: block;
+//    }
+//    .m-icon:last-child{
+//        display: none;
+//    }
+//
+//    &:hover > .m-icon:first-child{
+//        display: none;
+//    }
+//    &:hover > .m-icon:last-child{
+//        display: block;
+//    }
+//}
 
 form{
   input,
@@ -10964,41 +10964,48 @@ html.hide-overflow{
 body.login-signup{
     height: 100%;
     width: 100%;
+
     #about-button, #back-to-top, .pocket{
         display: none;
     }
-  > div{
-    position: absolute;
-    height: 100%;
-    width: 100%;
-    overflow: hidden;
+
+  .category-block{
+    padding: 0;
   }
-    .background{
-        position: absolute;
-        background-color: #000;
-        width: 100%;
-        height: 100%;
-        top: 0px;
-    }
-    .background-image{
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        display: none;
-        background: url("/assets/images/picture-overlay.jpg");
-        opacity: 0.6;
-        z-index: 39;
-        display: block;
-        left: 0px;
-        top: 0px;
-    }
+
+
+  //> div{
+  //  position: absolute;
+  //  height: 100%;
+  //  width: 100%;
+  //  overflow: hidden;
+  //}
+    //.background{
+    //    position: absolute;
+    //    background-color: #000;
+    //    width: 100%;
+    //    height: 100%;
+    //    top: 0px;
+    //}
+    //.background-image{
+    //    position: absolute;
+    //    width: 100%;
+    //    height: 100%;
+    //    display: none;
+    //    background: url("/assets/images/picture-overlay.jpg");
+    //    opacity: 0.6;
+    //    z-index: 39;
+    //    display: block;
+    //    left: 0px;
+    //    top: 0px;
+    //}
     .login-signup-modal{
         position: absolute;
         width: 100%;
         max-height: 100%;
         overflow: auto;
         z-index: 999;
-        padding-top: 50px;
+        //padding-top: 50px;
 
     }
     .content-holder{

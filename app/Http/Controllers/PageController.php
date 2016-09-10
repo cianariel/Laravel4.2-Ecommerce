@@ -602,16 +602,6 @@ class PageController extends ApiController
             return strtotime(@$b->raw_creation_date) - strtotime(@$a->raw_creation_date);
         });
 
-//        if ($leftOver > 0) {
-//            $return['hasMore'] = true;
-//        } else {
-//            $return['hasMore'] = false;
-//        }
-//
-//        $cached = PageHelper::putIntoRedis($cacheKey, $return, '1 hour');
-//
-//        $return['wasCached'] = $cached;
-//        $return['fromCache'] = false;
         return $return;
     }
 
@@ -708,17 +698,6 @@ class PageController extends ApiController
             $leftOver++;
         }
 
-        // if($stories['featured']) {
-        //     // print_r( $stories); die();
-
-        //     $featuredStories = array_slice($stories['featured']->toArray(), 0, $featuredLimit);
-        //     if (!empty(array_slice($stories['featured']->toArray(), $featuredLimit, 1))) {
-        //         $leftOver++;
-        //     }
-        // } else {
-        //     $featuredStories = [];
-        // }
-
         $prods = array_slice($products['result'], 0, $productLimit);
 
         if (!empty(array_slice($products['result'], $productLimit, 1))) {
@@ -727,11 +706,6 @@ class PageController extends ApiController
 
         $return['content']['ideas'] = $regularStories;
         $return['content']['products'] = $prods;
-        // $return['content']['featured'] = $featuredStories;
-
-//        usort($return['content']['regular'], function ($a, $b) {
-//            return strtotime(@$b->raw_creation_date) - strtotime(@$a->raw_creation_date);
-//        });
 
         if ($leftOver > 0) {
             $return['hasMore'] = true;
