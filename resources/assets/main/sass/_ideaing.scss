@@ -895,10 +895,14 @@ button{
   }
   .close-button{
     position: absolute;
-    top: 36px;
+    top: 2px;
     right: 15px;
     color: #fff;
     font-size: 3rem;
+    &.close-modal{
+      top:60px;
+      color: #444;
+    }
   }
   .login-signup-content{
       float: none;
@@ -5651,6 +5655,31 @@ header.sub-head{
   }
 }
 
+.login-signup{
+  @media(max-width:620px){
+    padding-top: 105px !important;
+  }
+
+}
+#login-modal{
+  position: absolute;
+  padding-left: 50px;
+  z-index: 9;
+  background: #fff;
+  transform: translate(-200%,0);
+  transition: transform .3s;
+
+  @media(max-width:768px){
+    min-height: 326px;
+    width: 85%;
+    padding-left: 0;
+  }
+
+  &.slid-in{
+    transform: translate(0, 0);
+  }
+}
+
 .to-home{
   border-top: 1px solid darken($pale-grey, 15%);
 
@@ -5680,18 +5709,22 @@ header.sub-head{
 }
 
 .login-controls{
-  max-width: 400px;
+  max-width: 310px;
   margin: 0 auto;
   float: none;
   overflow: hidden;
   color: #fff;
-  padding-left: 65px;
-  padding-right: 45px;
-  padding-top: 59px;
+  //padding-left: 65px;
+  //padding-right: 45px;
+
+  @media(min-width: 768px){
+    padding-top: 150px;
+  }
 
   .btn{
     padding-top: 11px;
     margin-bottom: 5px;
+
 
     box-shadow: none !important;
 
@@ -11087,8 +11120,8 @@ body.login-signup{
         max-height: 100%;
         overflow: auto;
         z-index: 999;
-        //padding-top: 50px;
-
+        background: #fff;
+        //padding-top: 80px;
     }
     .content-holder{
         padding-bottom: 50px;
@@ -11097,8 +11130,8 @@ body.login-signup{
         margin: auto;
     }
     .hero-box{
-        padding: 35px;
-        overflow: hidden;
+        //padding: 35px;
+        overflow: visible;
     }
     .login-logo{
       margin-left:40%
@@ -11172,7 +11205,18 @@ body.aboutus-page{
 .mid-bottom-container{
     margin-top: 55px;
 }
+
+#myModal.login-signup-modal{
+    padding-top: 57px;
+}
+
 .login-signup-modal{
+  background: #fff;
+
+  .category-block{
+    padding: 0;
+  }
+ 
     .alert-danger,
     .alert[type="@danger"]{
         max-width:300px;

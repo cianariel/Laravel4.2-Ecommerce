@@ -5955,10 +5955,13 @@ button {
     border-radius: 3px; }
   .login-signup-modal .close-button {
     position: absolute;
-    top: 36px;
+    top: 2px;
     right: 15px;
     color: #fff;
     font-size: 3rem; }
+    .login-signup-modal .close-button.close-modal {
+      top: 60px;
+      color: #444; }
   .login-signup-modal .login-signup-content {
     float: none;
     margin: auto;
@@ -9203,6 +9206,25 @@ header.sub-head {
     font-size: 1.7rem;
     color: #53676b; }
 
+@media (max-width: 620px) {
+  .login-signup {
+    padding-top: 105px !important; } }
+
+#login-modal {
+  position: absolute;
+  padding-left: 50px;
+  z-index: 9;
+  background: #fff;
+  transform: translate(-200%, 0);
+  transition: transform .3s; }
+  @media (max-width: 768px) {
+    #login-modal {
+      min-height: 326px;
+      width: 85%;
+      padding-left: 0; } }
+  #login-modal.slid-in {
+    transform: translate(0, 0); }
+
 .to-home {
   border-top: 1px solid #c7d4d4; }
   .to-home span {
@@ -9225,14 +9247,14 @@ header.sub-head {
     font-size: 1.9rem; }
 
 .login-controls {
-  max-width: 400px;
+  max-width: 310px;
   margin: 0 auto;
   float: none;
   overflow: hidden;
-  color: #fff;
-  padding-left: 65px;
-  padding-right: 45px;
-  padding-top: 59px; }
+  color: #fff; }
+  @media (min-width: 768px) {
+    .login-controls {
+      padding-top: 150px; } }
   .login-controls .btn {
     padding-top: 11px;
     margin-bottom: 5px;
@@ -12797,15 +12819,15 @@ body.login-signup {
     width: 100%;
     max-height: 100%;
     overflow: auto;
-    z-index: 999; }
+    z-index: 999;
+    background: #fff; }
   body.login-signup .content-holder {
     padding-bottom: 50px;
     max-width: 650px;
     position: relative;
     margin: auto; }
   body.login-signup .hero-box {
-    padding: 35px;
-    overflow: hidden; }
+    overflow: visible; }
   body.login-signup .login-logo {
     margin-left: 40%; }
   body.login-signup .logo-app-wrap {
@@ -12870,23 +12892,30 @@ body.aboutus-page .para3_content {
 .mid-bottom-container {
   margin-top: 55px; }
 
-.login-signup-modal .alert-danger,
-.login-signup-modal .alert[type="@danger"] {
-  max-width: 300px;
-  margin: 0 auto 30px;
-  padding-top: 27px;
-  background: rgba(252, 17, 89, 0.7);
-  border: 0px;
-  color: #fff;
-  font-size: 1.5rem;
-  text-align: center; }
-  .login-signup-modal .alert-danger .close,
-  .login-signup-modal .alert[type="@danger"] .close {
-    margin-top: -5px;
-    background: none;
+#myModal.login-signup-modal {
+  padding-top: 57px; }
+
+.login-signup-modal {
+  background: #fff; }
+  .login-signup-modal .category-block {
+    padding: 0; }
+  .login-signup-modal .alert-danger,
+  .login-signup-modal .alert[type="@danger"] {
+    max-width: 300px;
+    margin: 0 auto 30px;
+    padding-top: 27px;
+    background: rgba(252, 17, 89, 0.7);
     border: 0px;
-    font-size: 23px;
-    color: #fff; }
+    color: #fff;
+    font-size: 1.5rem;
+    text-align: center; }
+    .login-signup-modal .alert-danger .close,
+    .login-signup-modal .alert[type="@danger"] .close {
+      margin-top: -5px;
+      background: none;
+      border: 0px;
+      font-size: 23px;
+      color: #fff; }
 
 body.contactus-page #hero .hero-background {
   background-image: url("/assets/images/contactus-background.jpg"); }

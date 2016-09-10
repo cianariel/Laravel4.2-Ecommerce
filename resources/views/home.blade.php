@@ -20,8 +20,6 @@
                 </section>
             @endif
             @endif
-        <div class="color-overlay"></div>
-        <div class="color-overlay blur-overlay"></div>
     </div>
 
     <div class="app-wrap" id="pagingApp" ng-app="pagingApp" ng-controller="pagingController" ng-cloak>

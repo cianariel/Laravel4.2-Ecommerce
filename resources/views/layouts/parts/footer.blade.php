@@ -74,8 +74,6 @@
 
 
 
-<div class="page-overlay"></div>
-<div class="page-overlay picture-overlay"></div>
 
 <div class="bottom-block">
     <button class="btn btn-success" id="about-button" data-toggle=".about-footer">About</button>

@@ -39,15 +39,15 @@
                     <p ng-bind-html="alertHTML"></p>
                 </uib-alert>
 
-                <section id="signup-modal"  style="{{(isset($tab) && $tab != 'signup') ? 'display: none;' : ''}}">
-                    <div class="col-lg-6">
+                <section id="signup-modal">
+                    <div class="col-sm-6 col-xs-12">
                         <nav class="col-xs-12 login-controls contentable">
-                            <a class="btn btn-info col-xs-12" ng-click="registerWithFB()" href="#"><i class="m-icon m-icon--facebook-id"></i>Sign up with Facebook</a>
-                            <span data-toggle="#login-modal" data-hide="#signup-modal" class="btn btn-info col-xs-12 green-bg text-uppercase {{(!isset($tab) || $tab == 'login' || $tab =='') ? 'active' : ''}} "><span class="m-icon m-icon--email-form-id white"></span> Log in with Email</span>
+                            <a class="btn btn-info col-xs-12" ng-click="registerWithFB()" href="#"><i class="m-icon m-icon--facebook-id"></i>Log in with Facebook</a>
+                            <span data-slidein="#login-modal" data-hide=".login-controls" class="btn btn-info col-xs-12 green-bg text-uppercase"><span class="m-icon m-icon--email-form-id white"></span> Log in with Email</span>
                         </nav>
                     </div>
 
-                    <div class="col-lg-6">
+                    <div class="col-sm-6 col-xs-12">
                         <div class="modal-content hero-box qiuck-signup modal-login">
                             <h3 class="text-left">Register</h3>
                             <form class="bordering">
@@ -80,10 +80,7 @@
                                 </label>
                             </span>
 
-                            {{--<input class="form-control" ng-model="Email" ng-readonly="{{empty($email)?'false':'true'}}" ng-init="Email='{{empty($email)?'':$email}}'" type="text" placeholder="Email" >--}}
-                                {{--<input class="form-control" ng-model="Password" type="password" placeholder="Password" >--}}
-                                {{--<input class="last form-control" ng-model="PasswordConf" type="password" placeholder="Retype Password" >--}}
-                                <div class="modal-minor-text">
+                            <div class="modal-minor-text">
                                     <input ng-model="rememberMe" type="checkbox" id="remember" name="remember" ><label for="remember"><span></span> <b class="grey">By Signing up, you agree to <a href="/terms-of-use">TERMS AND CONDITIONS</a> of Ideaing</b>
                                     </label>
                                 </div>
@@ -99,15 +96,10 @@
                 </section>
 
                 <section id="login-modal">
-                    <div class="col-lg-6">
-                        <nav class="col-xs-12 login-controls contentable">
-                            <a class="btn btn-info col-xs-12"  ng-click="registerWithFB()" href="#"><i class="m-icon m-icon--facebook-id"></i>Log in with Facebook</a>
-                            <span  data-toggle="#signup-modal" data-hide="#login-modal" class="btn btn-info col-xs-12 green-bg text-uppercase {{(isset($tab) && $tab == 'signup') ? 'active' : ''}} "><span class="m-icon m-icon--email-form-id white"></span> Sign up with Email</span>
-                        </nav>
-                    </div>
-
-                    <div class="col-lg-6">
                         <div class="modal-content contentable hero-box qiuck-signup modal-login" style="{{(isset($tab) && $tab != 'login') ? 'display: none;' : ''}}">
+                            <span class="close-button" data-slidein="#login-modal" data-hide=".login-controls">
+                                <i class="m-icon--Close grey"></i>
+                            </span>
                             <form class="bordering">
                                 <h3 class="text-left">Login</h3>
 
@@ -143,7 +135,6 @@
 
                             </form>
                         </div>
-                    </div>
                 </section>
             </div>
         </section>
@@ -157,9 +148,6 @@
                 <h4 class="grey"><a href="/">HOME</a></h4>
             </div>
         </section>
-
-    {{--<div class="background"></div>--}}
-
-    <script src="/assets/js/main.js"></script>
+    </div>
 @stop
 
