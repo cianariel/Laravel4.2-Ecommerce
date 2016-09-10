@@ -12831,7 +12831,6 @@ body.login-signup {
     position: absolute;
     width: 100%;
     max-height: 100%;
-    overflow: auto;
     z-index: 999;
     background: #fff; }
   body.login-signup .content-holder {
