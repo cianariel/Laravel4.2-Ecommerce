@@ -5951,7 +5951,7 @@ button {
   width: 100%;
   height: 100%;
   margin: auto;
-  overflow: auto; }
+  overflow: hidden; }
   .login-signup-modal .alert:not(:first-child) {
     display: none; }
   .login-signup-modal .modal-content {
