@@ -5892,6 +5892,9 @@ body:not(.single) {
 .overhide {
   overflow: hidden; }
 
+.max-100 {
+  max-width: 100%; }
+
 .nofloat {
   float: none !important; }
 
@@ -9248,12 +9251,20 @@ header.sub-head {
     text-align: center;
     font-size: 1.9rem; }
 
+.or {
+  position: absolute;
+  right: 0;
+  top: 75%; }
+
 .login-controls {
   max-width: 310px;
   margin: 0 auto;
   float: none;
   overflow: hidden;
   color: #fff; }
+  @media (min-width: 620px) {
+    .login-controls {
+      display: block !important; } }
   @media (min-width: 768px) {
     .login-controls {
       padding-top: 150px; } }
@@ -9339,7 +9350,7 @@ header.sub-head {
   .modal-login label {
     width: 100%;
     text-align: left;
-    font-family: Montserrat; }
+    font-family: Montserrat, sans-serif; }
   .modal-login .btn-success {
     margin-top: 13px;
     margin-bottom: 13px; }
@@ -12896,6 +12907,9 @@ body.aboutus-page .para3_content {
 
 #myModal.login-signup-modal {
   padding-top: 57px; }
+  @media (max-width: 620px) {
+    #myModal.login-signup-modal {
+      padding-top: 105px; } }
 
 .login-signup-modal {
   background: #fff; }

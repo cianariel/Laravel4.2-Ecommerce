@@ -812,6 +812,10 @@ body:not(.single){
   overflow: hidden;
 }
 
+.max-100{
+  max-width: 100%;
+}
+
 .nofloat{
   float: none !important;
 }
@@ -5712,14 +5716,26 @@ header.sub-head{
   }
 }
 
+.or{
+  position: absolute;
+  right: 0;
+  top: 75%;
+}
+
 .login-controls{
   max-width: 310px;
   margin: 0 auto;
   float: none;
   overflow: hidden;
   color: #fff;
+
+  @media (min-width: 620px){
+    display: block !important;
+  }
   //padding-left: 65px;
   //padding-right: 45px;
+
+
 
   @media(min-width: 768px){
     padding-top: 150px;
@@ -5840,7 +5856,7 @@ header.sub-head{
   label{
     width: 100%;
     text-align: left;
-    font-family: Montserrat;
+    font-family: Montserrat, sans-serif;
   }
   .btn-success {
     margin-top: 13px;
@@ -11212,6 +11228,10 @@ body.aboutus-page{
 
 #myModal.login-signup-modal{
     padding-top: 57px;
+
+  @media(max-width:620px){
+    padding-top: 105px;
+  }
 }
 
 .login-signup-modal{
