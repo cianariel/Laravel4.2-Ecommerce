@@ -815,8 +815,8 @@ body.has-active-menu{
   .input__field--madoka:valid + .input__label--madoka .input__label-content--madoka,
   .input--filled .input__label-content--madoka {
     //display: none;
-    -webkit-transform: scale3d(.81,.81,1) translate(43rem,0);
-    transform: scale3d(.81,.81,1) translate(43rem,0);
+    -webkit-transform: scale3d(.81,.81,1) translate(132%,0);
+    transform: scale3d(.81,.81,1) translate(132%,0);
     color: $iridium;
   }
 }

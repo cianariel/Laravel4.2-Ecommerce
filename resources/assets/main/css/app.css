@@ -697,8 +697,8 @@ body.has-active-menu {
   .bordering .input__field--madoka:focus + .input__label--madoka .input__label-content--madoka,
   .bordering .input__field--madoka:valid + .input__label--madoka .input__label-content--madoka,
   .bordering .input--filled .input__label-content--madoka {
-    -webkit-transform: scale3d(0.81, 0.81, 1) translate(43rem, 0);
-    transform: scale3d(0.81, 0.81, 1) translate(43rem, 0);
+    -webkit-transform: scale3d(0.81, 0.81, 1) translate(132%, 0);
+    transform: scale3d(0.81, 0.81, 1) translate(132%, 0);
     color: #FC1159; }
 
 /* Fly up modal */
@@ -9257,7 +9257,7 @@ header.sub-head {
   @media (max-width: 620px) {
     .or {
       top: auto;
-      bottom: -15px;
+      bottom: 0;
       left: 0;
       right: 0; } }
 
@@ -9266,7 +9266,8 @@ header.sub-head {
   margin: 0 auto;
   float: none;
   overflow: hidden;
-  color: #fff; }
+  color: #fff;
+  padding-bottom: 20px; }
   @media (min-width: 620px) {
     .login-controls {
       display: block !important; } }
@@ -9349,7 +9350,7 @@ header.sub-head {
   .modal-login .btn,
   .modal-login .modal-minor-text {
     max-width: 90%;
-    float: right; }
+    float: left; }
   .modal-login input[type="checkbox"] + label span {
     margin: -1px 10px 0 0; }
   .modal-login label {
@@ -11158,7 +11159,7 @@ footer.about-footer {
       margin-bottom: 0 !important; }
 
   #myModal.login-signup-modal .close-button {
-    top: 17%;
+    top: 19%;
     right: 3%; } }
 @media screen and (max-width: 480px) {
   .full-480 {

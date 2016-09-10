@@ -5723,7 +5723,7 @@ header.sub-head{
 
   @media (max-width:620px){
     top:auto;
-    bottom: -15px;
+    bottom: 0;
     left: 0;
     right: 0;
   }
@@ -5734,7 +5734,8 @@ header.sub-head{
   margin: 0 auto;
   float: none;
   overflow: hidden;
-  color: #fff;
+  color: #fff; 
+  padding-bottom: 20px;
 
   @media (min-width: 620px){
     display: block !important;
@@ -5853,7 +5854,7 @@ header.sub-head{
   .btn,
   .modal-minor-text{
     max-width: 90%;
-    float: right;
+    float: left;
   }
 
   input[type="checkbox"] + label span {
@@ -8621,7 +8622,7 @@ footer.about-footer{
 
   #myModal.login-signup-modal{
     .close-button{
-      top: 17%;
+      top: 19%;
       right: 3%;
     }
   }
