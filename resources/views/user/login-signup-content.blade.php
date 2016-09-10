@@ -24,7 +24,7 @@
     <section class="row  pale-grey-bg">
         <div class="container text-center padding-40">
             <h1>Create a Free Account</h1>
-            <h4 class="grey">Join Indeaing to live smarter</h4>
+            <h4 class="grey">Join Ideaing to live smarter</h4>
         </div>
     </section>
 
@@ -36,7 +36,7 @@
 
             <section id="signup-modal">
                 <div class="col-sm-6 col-xs-12">
-                    <div class="or hidden-xs">or</div>
+                    <div class="or">or</div>
                     <nav class="col-xs-12 login-controls contentable relative">
                         <a class="btn btn-info col-xs-12" ng-click="registerWithFB()" href="#"><i class="m-icon m-icon--facebook-id"></i>Log in with Facebook</a>
                         <span data-slidein="#login-modal" data-hide=".login-controls" class="btn btn-info col-xs-12 green-bg text-uppercase"><span class="m-icon m-icon--email-form-id white"></span> Log in with Email</span>

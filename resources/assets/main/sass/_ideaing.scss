@@ -5720,6 +5720,13 @@ header.sub-head{
   position: absolute;
   right: 0;
   top: 75%;
+
+  @media (max-width:620px){
+    top:auto;
+    bottom: -15px;
+    left: 0;
+    right: 0;
+  }
 }
 
 .login-controls{
@@ -8614,7 +8621,7 @@ footer.about-footer{
 
   #myModal.login-signup-modal{
     .close-button{
-      top: 2%;
+      top: 17%;
       right: 3%;
     }
   }

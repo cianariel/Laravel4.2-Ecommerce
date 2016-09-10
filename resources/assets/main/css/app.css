@@ -697,8 +697,8 @@ body.has-active-menu {
   .bordering .input__field--madoka:focus + .input__label--madoka .input__label-content--madoka,
   .bordering .input__field--madoka:valid + .input__label--madoka .input__label-content--madoka,
   .bordering .input--filled .input__label-content--madoka {
-    -webkit-transform: scale3d(0.81, 0.81, 1) translate3d(0, 4em, 0);
-    transform: scale3d(0.81, 0.81, 1) translate3d(-8.5rem, 0, 0);
+    -webkit-transform: scale3d(0.81, 0.81, 1) translate(43rem, 0);
+    transform: scale3d(0.81, 0.81, 1) translate(43rem, 0);
     color: #FC1159; }
 
 /* Fly up modal */
@@ -9254,6 +9254,12 @@ header.sub-head {
   position: absolute;
   right: 0;
   top: 75%; }
+  @media (max-width: 620px) {
+    .or {
+      top: auto;
+      bottom: -15px;
+      left: 0;
+      right: 0; } }
 
 .login-controls {
   max-width: 310px;
@@ -11152,7 +11158,7 @@ footer.about-footer {
       margin-bottom: 0 !important; }
 
   #myModal.login-signup-modal .close-button {
-    top: 2%;
+    top: 17%;
     right: 3%; } }
 @media screen and (max-width: 480px) {
   .full-480 {
