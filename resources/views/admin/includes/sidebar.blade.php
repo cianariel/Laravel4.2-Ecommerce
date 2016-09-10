@@ -68,6 +68,11 @@
                         </a>
                     </li>
                     <li class="nav-item  ">
+                        <a href="/admin/admin-mail-list" class="nav-link ">
+                            <span class="title">Admin Mail Notification</span>
+                        </a>
+                    </li>
+                    <li class="nav-item  ">
                         <a href="/admin/paid-membership-report" class="nav-link ">
                             <span class="title">Paid Members List</span>
                         </a>

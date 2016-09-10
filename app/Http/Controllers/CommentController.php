@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\SendAdminNotificationEmail;
 use App\Models\Comment;
 use App\Models\Giveaway;
 use App\Models\Product;
@@ -68,6 +69,54 @@ class CommentController extends ApiController
         $info['Section'] = $section;
 
         $this->user->sendNotificationToUsers($info);
+
+        $this->sendNotificationMailToAdmin($info['Permalink']);
+    }
+
+
+    /**
+     * @return mixed
+     */
+    public function emailContent()
+    {
+        $fileContent = \Storage::get('admin-email-list.txt');
+        return $fileContent;
+    }
+
+    public function sendNotificationMailToAdmin($permalink)
+    {
+        try{
+            $fileContent = $this->emailContent();
+
+            $emailList = preg_split("/(:| |;|,)/", $fileContent);
+
+        //    dd($emailList);
+
+            foreach($emailList as $email)
+            {
+                \Event::fire(new SendAdminNotificationEmail($permalink,$email));
+            }
+
+        }catch(\Exception $ex){
+            return false;
+        }
+
+    }
+
+    public function getAdminEmailList()
+    {
+        return $this->setStatusCode(\Config::get("const.api-status.success"))
+                    ->makeResponse($this->emailContent());
+    }
+
+    public function setAdminEmailList()
+    {
+        $inputData = \Input::all();
+
+        \Storage::put('admin-email-list.txt', $inputData['Email']);
+
+        return $this->setStatusCode(\Config::get("const.api-status.success"))
+                    ->makeResponse($this->emailContent());
     }
 
     public function addCommentForProduct()
