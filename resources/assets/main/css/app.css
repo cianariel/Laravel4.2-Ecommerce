@@ -5949,7 +5949,7 @@ button {
   height: 100%;
   margin: auto;
   overflow: auto; }
-  .login-signup-modal .alert:not(:fisrt-child) {
+  .login-signup-modal .alert:not(:first-child) {
     display: none; }
   .login-signup-modal .modal-content {
     overflow: visible;
