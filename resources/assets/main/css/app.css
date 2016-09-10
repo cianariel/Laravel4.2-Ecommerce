@@ -5946,12 +5946,11 @@ button {
     border: 0; }
 
 .login-signup-modal {
-  overflow: visible;
+  overflow-y: visible;
   z-index: 50;
   width: 100%;
   height: 100%;
-  margin: auto;
-  overflow: hidden; }
+  margin: auto; }
   .login-signup-modal .alert:not(:first-child) {
     display: none; }
   .login-signup-modal .modal-content {
@@ -12905,7 +12904,8 @@ body.aboutus-page .para3_content {
   margin-top: 55px; }
 
 #myModal.login-signup-modal {
-  padding-top: 57px; }
+  padding-top: 57px;
+  overflow: scroll; }
   @media (max-width: 620px) {
     #myModal.login-signup-modal {
       padding-top: 105px; } }
