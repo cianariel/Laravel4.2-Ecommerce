@@ -50,11 +50,39 @@
                     <div class="col-lg-6">
                         <div class="modal-content hero-box qiuck-signup modal-login">
                             <h3 class="text-left">Register</h3>
-                            <form>
-                                <input class="first form-control" ng-model="FullName" type="text" placeholder="Name" >
-                            <input class="form-control" ng-model="Email" ng-readonly="{{empty($email)?'false':'true'}}" ng-init="Email='{{empty($email)?'':$email}}'" type="text" placeholder="Email" >
-                                <input class="form-control" ng-model="Password" type="password" placeholder="Password" >
-                                <input class="last form-control" ng-model="PasswordConf" type="password" placeholder="Retype Password" >
+                            <form class="bordering">
+                            <span class="input input--madoka big-wrap">
+                                <input class="input__field input__field--madoka" required ng-model="FullName" type="text" id="signup-input-0">
+                                <label class="input__label input__label--madoka" for="signup-input-0">
+                                    <svg class="graphic graphic--madoka" width="100%" height="100%" viewBox="0 0 404 77" preserveAspectRatio="none">
+                                        <path d="m0,0l404,0l0,77l-404,0l0,-77z"></path>
+                                    </svg>
+                                    <span class="input__label-content input__label-content--madoka">Name</span>
+                                </label>
+                            </span>
+
+                            <span class="input input--madoka big-wrap">
+                                <input class="input__field input__field--madoka" required  id="signup-input-1"  ng-model="Email" ng-readonly="{{empty($email)?'false':'true'}}" ng-init="Email='{{empty($email)?'':$email}}'" type="text">
+                                <label class="input__label input__label--madoka" for="signup-input-1">
+                                    <svg class="graphic graphic--madoka" width="100%" height="100%" viewBox="0 0 404 77" preserveAspectRatio="none">
+                                        <path d="m0,0l404,0l0,77l-404,0l0,-77z"></path>
+                                    </svg>
+                                    <span class="input__label-content input__label-content--madoka">Email</span>
+                                </label>
+                            </span>
+                            <span class="input input--madoka big-wrap">
+                                <input class="input__field input__field--madoka" required  id="signup-input-3"  ng-model="Email" ng-readonly="{{empty($email)?'false':'true'}}" ng-init="Email='{{empty($email)?'':$email}}'" type="text">
+                                <label class="input__label input__label--madoka" for="signup-input-3">
+                                    <svg class="graphic graphic--madoka" width="100%" height="100%" viewBox="0 0 404 77" preserveAspectRatio="none">
+                                        <path d="m0,0l404,0l0,77l-404,0l0,-77z"></path>
+                                    </svg>
+                                    <span class="input__label-content input__label-content--madoka">Password</span>
+                                </label>
+                            </span>
+
+                            {{--<input class="form-control" ng-model="Email" ng-readonly="{{empty($email)?'false':'true'}}" ng-init="Email='{{empty($email)?'':$email}}'" type="text" placeholder="Email" >--}}
+                                {{--<input class="form-control" ng-model="Password" type="password" placeholder="Password" >--}}
+                                {{--<input class="last form-control" ng-model="PasswordConf" type="password" placeholder="Retype Password" >--}}
                                 <div class="modal-minor-text">
                                     <input ng-model="rememberMe" type="checkbox" id="remember" name="remember" ><label for="remember"><span></span> <b class="grey">By Signing up, you agree to <a href="/terms-of-use">TERMS AND CONDITIONS</a> of Ideaing</b>
                                     </label>
@@ -80,14 +108,28 @@
 
                     <div class="col-lg-6">
                         <div class="modal-content contentable hero-box qiuck-signup modal-login" style="{{(isset($tab) && $tab != 'login') ? 'display: none;' : ''}}">
-                            <form>
+                            <form class="bordering">
                                 <h3 class="text-left">Login</h3>
-                               <input class="first form-control" ng-model="Email" type="text" placeholder="Email" name="email">
-                                <input class="last form-control" ng-model="Password" type="password" placeholder="Password" name="password">
-                                <div class="modal-minor-text">
-                                    <input ng-model="rememberMe" type="checkbox" id="remember" name="remember" ><label for="remember"><span></span> <b class="grey">Remember me</b>
+
+                                <span class="input input--madoka big-wrap">
+                                    <input class="input__field input__field--madoka" required type="text" id="login-input-1"  ng-model="Email" name="email">
+                                    <label class="input__label input__label--madoka" for="login-input-1">
+                                        <svg class="graphic graphic--madoka" width="100%" height="100%" viewBox="0 0 404 77" preserveAspectRatio="none">
+                                            <path d="m0,0l404,0l0,77l-404,0l0,-77z"></path>
+                                        </svg>
+                                        <span class="input__label-content input__label-content--madoka">Email</span>
                                     </label>
-                                </div>
+                                </span>
+
+                                <span class="input input--madoka big-wrap">
+                                    <input class="input__field input__field--madoka" required  id="login-input-2"  ng-model="Password" type="password" name="password">
+                                    <label class="input__label input__label--madoka" for="login-input-2">
+                                        <svg class="graphic graphic--madoka" width="100%" height="100%" viewBox="0 0 404 77" preserveAspectRatio="none">
+                                            <path d="m0,0l404,0l0,77l-404,0l0,-77z"></path>
+                                        </svg>
+                                        <span class="input__label-content input__label-content--madoka">Password</span>
+                                    </label>
+                                </span>
 
                                 <a class="btn btn-success col-xs-12" ng-click="loginUser('home')" href="#">
                                     <span class="lamp-wrap">
@@ -109,8 +151,10 @@
 
         <section class="row to-home">
             <div class="container text-center padding-40">
-                <span class="m-icon--bulb2 center-block"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span><span class="path6"></span><span class="path7"></span><span class="path8"></span><span class="path9"></span><span class="path10"></span></span>
-                <h4 class="grey">HOME</h4>
+                <a href="/">
+                    <span class="m-icon--bulb2 center-block"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span><span class="path6"></span><span class="path7"></span><span class="path8"></span><span class="path9"></span><span class="path10"></span></span>
+                </a>
+                <h4 class="grey"><a href="/">HOME</a></h4>
             </div>
         </section>
 

@@ -697,7 +697,9 @@ body.has-active-menu {
   .bordering .input__field--madoka:focus + .input__label--madoka .input__label-content--madoka,
   .bordering .input__field--madoka:valid + .input__label--madoka .input__label-content--madoka,
   .bordering .input--filled .input__label-content--madoka {
-    display: none; }
+    -webkit-transform: scale3d(0.81, 0.81, 1) translate3d(0, 4em, 0);
+    transform: scale3d(0.81, 0.81, 1) translate3d(-8.5rem, 0, 0);
+    color: #FC1159; }
 
 /* Fly up modal */
 .ns-effect-genie {
@@ -7942,7 +7944,7 @@ form.mobile-search-bar {
   left: 0;
   margin: 0 auto;
   width: 100%;
-  z-index: 200;
+  z-index: 1000;
   background: #fff; }
 
 body.single .scroll-header {
@@ -9189,46 +9191,6 @@ header.sub-head {
     left: 10px;
     top: 12px; }
 
-.hero-box {
-  padding: 3.5% 5.5%;
-  background-color: rgba(255, 255, 255, 0.85); }
-  .hero-box h4 {
-    font-size: 1.4rem; }
-    .hero-box h4 b {
-      font-size: 1.9rem; }
-  .hero-box input[type="text"] {
-    background: #F5FBFC;
-    border: 1px solid #eee;
-    color: #000;
-    box-shadow: none; }
-    .hero-box input[type="text"][name="name"], .hero-box input[type="text"][name="password"], .hero-box input[type="text"][name="email"] {
-      padding-left: 45px;
-      background-size: 20px;
-      background-position: 10px;
-      background-repeat: no-repeat;
-      border-color: #999999; }
-  .hero-box ::-webkit-input-placeholder {
-    color: #000; }
-  .hero-box :-moz-placeholder {
-    /* Firefox 18- */
-    color: #000; }
-  .hero-box ::-moz-placeholder {
-    /* Firefox 19+ */
-    color: #000; }
-  .hero-box :-ms-input-placeholder {
-    color: #000; }
-  .hero-box .btn-success {
-    margin-bottom: 0; }
-  .hero-box .line-wrap {
-    overflow: hidden;
-    text-align: center;
-    padding: 10px; }
-  .hero-box .btn-info {
-    background-color: #079DD1; }
-    .hero-box .btn-info:hover {
-      background-color: #0578a0;
-      border-color: #0578a0; }
-
 .latest-heading {
   padding-top: 30px;
   padding-bottom: 10px; }
@@ -9341,6 +9303,13 @@ header.sub-head {
       border-bottom: 1px solid #d5dfdf;
       border-bottom-right-radius: 5px;
       border-bottom-left-radius: 5px; }
+  .modal-login h3 {
+    padding-left: 10%; }
+  .modal-login span.input--madoka,
+  .modal-login .btn,
+  .modal-login .modal-minor-text {
+    max-width: 90%;
+    float: right; }
   .modal-login input[type="checkbox"] + label span {
     margin: -1px 10px 0 0; }
   .modal-login label {

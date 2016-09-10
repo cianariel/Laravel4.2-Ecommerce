@@ -3476,10 +3476,6 @@ form.mobile-search-bar{
 
 }
 
-.scroll-header{
-  //display: none !important;
-}
-
 .sidebar-box{
   overflow: visible;
   position: relative;
@@ -3659,15 +3655,12 @@ form.mobile-search-bar{
 }
 
 .scroll-header {
-  //.fixed-sm{
-  //  min-width: 0 !important;
-  //}
   position: fixed;
   top: 0;
   left: 0;
   margin: 0 auto;
   width: 100%;
-  z-index: 200;
+  z-index: 1000;
   background: #fff;
 }
 
@@ -5575,74 +5568,74 @@ header.sub-head{
   //  padding-left: 40px !important;
   //}
 }
-
-.hero-box{
-  padding: 3.5% 5.5%;
-  background-color: rgba(255,255,255,.85);
-
-  h4{
-    font-size: 1.4rem;
-
-    b{
-      font-size: 1.9rem;
-    }
-  }
-
-
-
-  
-  input[type="text"]{
-    background: $pale-blue;
-    border: 1px solid #eee;
-    color: #000;
-    box-shadow: none;
-
-    &[name="name"],
-    &[name="password"],
-    &[name="email"]{
-      padding-left: 45px;
-      background-size:20px;
-      background-position: 10px;
-      background-repeat: no-repeat;
-      border-color: $grey;
-    }
-
-  }
-
-
-  ::-webkit-input-placeholder {
-    color: #000;
-  }
-
-  :-moz-placeholder { /* Firefox 18- */
-    color: #000;
-  }
-
-  ::-moz-placeholder {  /* Firefox 19+ */
-    color: #000;
-  }
-
-  :-ms-input-placeholder {
-    color: #000;
-  }
-
-  .btn-success{
-    margin-bottom: 0;
-  }
-  .line-wrap{
-    overflow: hidden;
-    text-align: center;
-    padding: 10px;
-  }
-  .btn-info{
-    background-color: $facebook-blue;
-
-    &:hover{
-      background-color: darken($facebook-blue, 10%);
-      border-color: darken($facebook-blue, 10%);
-    }
-  }
-}
+//
+//.hero-box{
+//  padding: 3.5% 5.5%;
+//  background-color: rgba(255,255,255,.85);
+//
+//  h4{
+//    font-size: 1.4rem;
+//
+//    b{
+//      font-size: 1.9rem;
+//    }
+//  }
+//
+//
+//
+//
+//  input[type="text"]{
+//    background: $pale-blue;
+//    border: 1px solid #eee;
+//    color: #000;
+//    box-shadow: none;
+//
+//    &[name="name"],
+//    &[name="password"],
+//    &[name="email"]{
+//      padding-left: 45px;
+//      background-size:20px;
+//      background-position: 10px;
+//      background-repeat: no-repeat;
+//      border-color: $grey;
+//    }
+//
+//  }
+//
+//
+//  ::-webkit-input-placeholder {
+//    color: #000;
+//  }
+//
+//  :-moz-placeholder { /* Firefox 18- */
+//    color: #000;
+//  }
+//
+//  ::-moz-placeholder {  /* Firefox 19+ */
+//    color: #000;
+//  }
+//
+//  :-ms-input-placeholder {
+//    color: #000;
+//  }
+//
+//  .btn-success{
+//    margin-bottom: 0;
+//  }
+//  .line-wrap{
+//    overflow: hidden;
+//    text-align: center;
+//    padding: 10px;
+//  }
+//  .btn-info{
+//    background-color: $facebook-blue;
+//
+//    &:hover{
+//      background-color: darken($facebook-blue, 10%);
+//      border-color: darken($facebook-blue, 10%);
+//    }
+//  }
+//}
 
 .latest-heading{
   padding-top: 30px;
@@ -5791,6 +5784,18 @@ header.sub-head{
     }
 
   }
+
+  h3{
+    padding-left: 10%;
+  }
+
+  span.input--madoka,
+  .btn,
+  .modal-minor-text{
+    max-width: 90%;
+    float: right;
+  }
+
   input[type="checkbox"] + label span {
     margin: -1px 10px 0 0;
   }
