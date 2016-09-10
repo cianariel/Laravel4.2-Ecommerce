@@ -5250,6 +5250,9 @@ a:hover, a:focus {
 .green {
   color: #89C981 !important; }
 
+.green-bg {
+  background-color: #89C981 !important; }
+
 .blue {
   color: #00B1FF !important; }
 
@@ -5260,7 +5263,7 @@ a:hover, a:focus {
   color: #E61D25; }
 
 .grey {
-  color: #d4d4d4; }
+  color: #a1a1a1; }
 
 .black {
   color: #000 !important; }
@@ -5295,6 +5298,9 @@ a:hover, a:focus {
 
 .padding-10 {
   padding: 10px; }
+
+.padding-40 {
+  padding: 40px; }
 
 .relative {
   position: relative; }
@@ -9182,8 +9188,6 @@ header.sub-head {
     z-index: 9;
     left: 10px;
     top: 12px; }
-  .email-input-holder input:not([type="submit"]) {
-    padding-left: 40px !important; }
 
 .hero-box {
   padding: 3.5% 5.5%;
@@ -9237,6 +9241,11 @@ header.sub-head {
     font-size: 1.7rem;
     color: #53676b; }
 
+.to-home {
+  border-top: 1px solid #c7d4d4; }
+  .to-home span {
+    font-size: 3rem; }
+
 .modal-intro {
   width: 100%;
   max-width: 650px;
@@ -9259,18 +9268,16 @@ header.sub-head {
   float: none;
   overflow: hidden;
   color: #fff;
-  padding-left: 45px;
-  padding-right: 45px; }
-  .login-controls span {
-    text-align: center;
-    padding-top: 2px;
-    padding-bottom: 4px;
-    height: 30px; }
-    .login-controls span.active {
-      border: 2px solid #FC1159;
-      border-radius: 5px;
-      margin-bottom: 4px;
-      color: #FC1159; }
+  padding-left: 65px;
+  padding-right: 45px;
+  padding-top: 59px; }
+  .login-controls .btn {
+    padding-top: 11px;
+    margin-bottom: 5px;
+    box-shadow: none !important; }
+    .login-controls .btn .m-icon {
+      position: relative;
+      left: 20px; }
 
 .modal-login {
   max-width: 400px;
@@ -9281,34 +9288,76 @@ header.sub-head {
   box-shadow: none; }
   .modal-login .btn {
     font-size: 1.2rem;
-    padding-top: 15px;
-    padding-bottom: 15px; }
-  .modal-login .btn-info {
-    margin-bottom: 0; }
+    padding-top: 11px;
+    padding-bottom: 15px;
+    border: 0; }
+    .modal-login .btn .lamp-wrap {
+      background: #ededed;
+      height: 100%;
+      position: absolute;
+      width: 40px;
+      display: block;
+      top: 0;
+      left: 0;
+      font-size: 2.3rem;
+      padding-top: 8px;
+      border-top-left-radius: 3px;
+      border-bottom-left-radius: 3px; }
+    .modal-login .btn b {
+      font-size: 1.5rem; }
   .modal-login input[type="password"].form-control,
   .modal-login input[type="text"].form-control {
-    margin-bottom: 8px;
+    margin-bottom: 0;
     border: 1px solid #d5dfdf;
+    border-bottom: 0;
+    border-collapse: collapse;
+    border-radius: 0;
+    color: #9cb2b2;
     background: #fff;
     background-image: none;
     padding-left: 15px;
-    font-size: 1.2rem; }
+    font-size: 1.5rem;
+    font-family: Montserrat,sans-serif; }
+    .modal-login input[type="password"].form-control::-webkit-input-placeholder,
+    .modal-login input[type="text"].form-control::-webkit-input-placeholder {
+      color: #aabebe; }
+    .modal-login input[type="password"].form-control:-moz-placeholder,
+    .modal-login input[type="text"].form-control:-moz-placeholder {
+      /* Firefox 18- */
+      color: #aabebe; }
+    .modal-login input[type="password"].form-control::-moz-placeholder,
+    .modal-login input[type="text"].form-control::-moz-placeholder {
+      /* Firefox 19+ */
+      color: #aabebe; }
+    .modal-login input[type="password"].form-control:-ms-input-placeholder,
+    .modal-login input[type="text"].form-control:-ms-input-placeholder {
+      color: #aabebe; }
+    .modal-login input[type="password"].form-control.first,
+    .modal-login input[type="text"].form-control.first {
+      border-top-left-radius: 5px;
+      border-top-right-radius: 5px; }
+    .modal-login input[type="password"].form-control.last,
+    .modal-login input[type="text"].form-control.last {
+      border-bottom: 1px solid #d5dfdf;
+      border-bottom-right-radius: 5px;
+      border-bottom-left-radius: 5px; }
   .modal-login input[type="checkbox"] + label span {
     margin: -1px 10px 0 0; }
   .modal-login label {
-    width: 100%; }
+    width: 100%;
+    text-align: left;
+    font-family: Montserrat; }
   .modal-login .btn-success {
     margin-top: 13px;
     margin-bottom: 13px; }
   .modal-login .modal-minor-text {
     padding-top: 10px;
     font-size: 1.2rem;
-    color: #fff;
+    color: #444;
     font-weight: bold;
     text-align: center; }
     .modal-login .modal-minor-text a {
-      text-align: right;
-      color: #fff; }
+      color: #079DD1; }
       .modal-login .modal-minor-text a.forgot {
         color: #fff;
         text-align: center; }
@@ -12769,7 +12818,11 @@ body.login-signup {
   body.login-signup #about-button, body.login-signup #back-to-top, body.login-signup .pocket {
     display: none; }
   body.login-signup .category-block {
-    padding: 0; }
+    padding: 0;
+    max-height: 150px; }
+    body.login-signup .category-block .category-bg {
+      z-index: 1;
+      opacity: .25; }
   body.login-signup .login-signup-modal {
     position: absolute;
     width: 100%;

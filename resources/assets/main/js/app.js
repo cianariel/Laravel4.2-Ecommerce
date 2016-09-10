@@ -20,7 +20,7 @@
                 $($hide).hide();
                 $that.siblings().removeClass('active');
                 $($show).fadeIn();
-                $that.toggleClass('active');
+                $that.addClass('active');
             }else{
                 $($show).fadeToggle();
                 $that.toggleClass('active');
