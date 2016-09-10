@@ -5677,10 +5677,14 @@ header.sub-head{
   transform: translate(-200%,0);
   transition: transform .3s;
 
+
   @media(max-width:768px){
-    min-height: 326px;
+    min-height: 386px;
     width: 85%;
     padding-left: 0;
+  }
+  @media(max-width:620px){
+    top: 6px;
   }
 
   &.slid-in{
@@ -5734,7 +5738,7 @@ header.sub-head{
   margin: 0 auto;
   float: none;
   overflow: hidden;
-  color: #fff; 
+  color: #fff;
   padding-bottom: 20px;
 
   @media (min-width: 620px){
@@ -5752,7 +5756,7 @@ header.sub-head{
   .btn{
     padding-top: 11px;
     margin-bottom: 5px;
-
+    border: 0 !important;
 
     box-shadow: none !important;
 
@@ -5781,7 +5785,7 @@ header.sub-head{
     font-size: 1.2rem;
     padding-top: 11px;
     padding-bottom: 15px;
-    border: 0;
+    border: 0 !important;
 
     .lamp-wrap{
       background: #ededed;
@@ -5846,9 +5850,9 @@ header.sub-head{
 
   }
 
-  h3{
-    padding-left: 10%;
-  }
+  //h3{
+  //  padding-left: 10%;
+  //}
 
   span.input--madoka,
   .btn,

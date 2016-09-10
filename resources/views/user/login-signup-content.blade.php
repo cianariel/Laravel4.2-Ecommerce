@@ -45,7 +45,7 @@
 
                 <div class="col-sm-6 col-xs-12">
                     <div class="modal-content hero-box qiuck-signup modal-login">
-                        <h3 class="text-left">Register</h3>
+                        <h3 class="text-left">Register new account</h3>
                         <form class="bordering">
                             <span class="input input--madoka big-wrap">
                                 <input class="input__field input__field--madoka" required ng-model="FullName" type="text" id="signup-input-0">
