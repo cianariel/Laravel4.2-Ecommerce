@@ -9223,9 +9223,12 @@ header.sub-head {
   transition: transform .3s; }
   @media (max-width: 768px) {
     #login-modal {
-      min-height: 326px;
+      min-height: 386px;
       width: 85%;
       padding-left: 0; } }
+  @media (max-width: 620px) {
+    #login-modal {
+      top: 6px; } }
   #login-modal.slid-in {
     transform: translate(0, 0); }
 
@@ -9277,6 +9280,7 @@ header.sub-head {
   .login-controls .btn {
     padding-top: 11px;
     margin-bottom: 5px;
+    border: 0 !important;
     box-shadow: none !important; }
     .login-controls .btn .m-icon {
       position: relative;
@@ -9293,7 +9297,7 @@ header.sub-head {
     font-size: 1.2rem;
     padding-top: 11px;
     padding-bottom: 15px;
-    border: 0; }
+    border: 0 !important; }
     .modal-login .btn .lamp-wrap {
       background: #ededed;
       height: 100%;
@@ -9344,8 +9348,6 @@ header.sub-head {
       border-bottom: 1px solid #d5dfdf;
       border-bottom-right-radius: 5px;
       border-bottom-left-radius: 5px; }
-  .modal-login h3 {
-    padding-left: 10%; }
   .modal-login span.input--madoka,
   .modal-login .btn,
   .modal-login .modal-minor-text {
