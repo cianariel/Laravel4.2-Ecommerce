@@ -1,4 +1,4 @@
-<div class="login-signup-modal">
+<div class="login-signup-modal overhide max-100">
 
     <section class="four-sections">
         <div class="container no-padding">
@@ -36,7 +36,8 @@
 
             <section id="signup-modal">
                 <div class="col-sm-6 col-xs-12">
-                    <nav class="col-xs-12 login-controls contentable">
+                    <div class="or hidden-xs">or</div>
+                    <nav class="col-xs-12 login-controls contentable relative">
                         <a class="btn btn-info col-xs-12" ng-click="registerWithFB()" href="#"><i class="m-icon m-icon--facebook-id"></i>Log in with Facebook</a>
                         <span data-slidein="#login-modal" data-hide=".login-controls" class="btn btn-info col-xs-12 green-bg text-uppercase"><span class="m-icon m-icon--email-form-id white"></span> Log in with Email</span>
                     </nav>
@@ -91,7 +92,7 @@
             </section>
 
             <section id="login-modal">
-                <div class="modal-content contentable hero-box qiuck-signup modal-login" style="{{(isset($tab) && $tab != 'login') ? 'display: none;' : ''}}">
+                <div class="modal-content contentable hero-box qiuck-signup modal-login">
                             <span class="close-button" data-slidein="#login-modal" data-hide=".login-controls">
                                 <i class="m-icon--Close grey"></i>
                             </span>
