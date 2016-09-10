@@ -890,7 +890,7 @@ button{
     width: 100%;
     height: 100%;
     margin: auto;
-    overflow: auto;
+    overflow: hidden;
 
   .alert:not(:first-child){
     display: none;
