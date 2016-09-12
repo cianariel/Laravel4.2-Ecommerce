@@ -51,11 +51,14 @@
                                 <svg class="graphic graphic--madoka" width="100%" height="100%" viewBox="0 0 404 77" preserveAspectRatio="none">
                                     <path d="m0,0l404,0l0,77l-404,0l0,-77z"></path>
                                 </svg>
-                                <span class="input__label-content input__label-content--madoka">Password</span>
+                                <span class="input__label-content input__label-content--madoka">
+                                     <span class="pass-text">Password</span>
+                                     <span class="toggle-pass" data-showpass="#input-32">show</span>
+                                </span>
                             </label>
                         </span>
                         <div class="modal-minor-text">
-                            <input ng-model="AcceptTermsModal" type="checkbox" class="accepttermsmodal" name="accepttermsmodal" ><label for="accepttermsmodal" checked><span></span> <b class="grey">By Signing up, you agree to <a href="/terms-of-use">TERMS AND CONDITIONS</a> of Ideaing</b>
+                            <input ng-model="AcceptTermsModal" type="checkbox" class="accepttermsmodal" name="accepttermsmodal" ><label for="accepttermsmodal" checked><span></span> <b class="grey">By Signing up, you agree to <a href="/terms-of-use">Terms and Conditions</a> of Ideaing</b>
                             </label>
                         </div>
                     <a class="btn btn-success form-control" ng-click="registerSubscribedUser()">Join and Create a Free Account</a>

@@ -594,7 +594,6 @@ body.has-active-menu {
     z-index: 1;
     display: inline-block;
     margin: 1em;
-    max-width: 350px;
     width: calc(100% - 2em);
     vertical-align: top; }
   .bordering .input__field {
@@ -699,6 +698,11 @@ body.has-active-menu {
     transform: scale3d(0.81, 0.81, 1) translate(104%, 0);
     color: #FC1159;
     padding-top: 14px; }
+    @media (max-width: 620px) {
+      .bordering .input__field--madoka:focus + .input__label--madoka .input__label-content--madoka,
+      .bordering .input__field--madoka:valid + .input__label--madoka .input__label-content--madoka,
+      .bordering .input--filled .input__label-content--madoka {
+        display: none; } }
     .bordering .input__field--madoka:focus + .input__label--madoka .input__label-content--madoka .toggle-pass,
     .bordering .input__field--madoka:valid + .input__label--madoka .input__label-content--madoka .toggle-pass,
     .bordering .input--filled .input__label-content--madoka .toggle-pass {
@@ -6004,14 +6008,15 @@ button {
     margin: auto;
     padding-top: 50px;
     padding-bottom: 50px; }
-  .login-signup-modal .toggle-pass {
-    margin-top: 16px;
-    position: relative;
-    z-index: 9999999;
-    font-size: 1.2rem;
-    color: #777;
-    font-weight: bold;
-    cursor: pointer; }
+
+.toggle-pass {
+  margin-top: 16px;
+  position: relative;
+  z-index: 9999999;
+  font-size: 1.2rem;
+  color: #777;
+  font-weight: bold;
+  cursor: pointer; }
 
 .hidden-soft {
   display: none; }
@@ -9406,7 +9411,6 @@ header.sub-head {
   .modal-login span.input--madoka,
   .modal-login .btn,
   .modal-login .modal-minor-text {
-    max-width: 90%;
     float: left; }
   .modal-login input[type="checkbox"] + label span {
     margin: -1px 10px 0 0; }

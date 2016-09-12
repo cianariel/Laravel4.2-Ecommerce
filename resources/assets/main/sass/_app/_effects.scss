@@ -672,7 +672,7 @@ body.has-active-menu{
     z-index: 1;
     display: inline-block;
     margin: 1em;
-    max-width: 350px;
+    //max-width: 350px;
     width: calc(100% - 2em);
     vertical-align: top;
   }
@@ -822,8 +822,11 @@ body.has-active-menu{
     -webkit-transform: scale3d(.81,.81,1) translate(104%,0);
     transform: scale3d(.81,.81,1) translate(104%,0);
     color: $iridium;
-  
     padding-top: 14px;
+
+    @media(max-width:620px){
+      display: none;
+    }
 
     .toggle-pass{
       display: inline;
