@@ -84,7 +84,7 @@
                                 <input ng-model="AcceptTerms" type="checkbox" id="acceptterms" name="acceptterms" ><label for="acceptterms" checked><span></span> <b class="grey">By Signing up, you agree to <a href="/terms-of-use">TERMS AND CONDITIONS</a> of Ideaing</b>
                                 </label>
                             </div>
-                            <a class="btn btn-success col-xs-12" ng-click="registerSubscribedUser()" href="#">
+                            <a class="btn btn-success col-xs-12 main-button" ng-click="registerSubscribedUser()" href="#">
                                     <span class="lamp-wrap">
                                         <span class="m-icon--bulb2"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span><span class="path6"></span><span class="path7"></span><span class="path8"></span><span class="path9"></span><span class="path10"></span></span>
                                     </span>
@@ -119,19 +119,18 @@
                                         <svg class="graphic graphic--madoka" width="100%" height="100%" viewBox="0 0 404 77" preserveAspectRatio="none">
                                             <path d="m0,0l404,0l0,77l-404,0l0,-77z"></path>
                                         </svg>
-                                        <span class="input__label-content input__label-content--madoka">Password</span>
+                                        <span class="input__label-content input__label-content--madoka">
+                                             <span class="pass-text">Password</span>
+                                             <span class="toggle-pass" data-showpass="#login-input-2">show</span>
+                                        </span>
                                     </label>
                                 </span>
-                                <span class="toggle-pass" data-showpass="#login-input-2">show</span>
-
-
-
                         <div class="modal-minor-text">
                             <input ng-model="RememberMe" type="checkbox" id="remember" name="remember" ><label for="remember"><span></span> <b class="grey">Remember me</b>
                             </label>
                         </div>
 
-                        <a class="btn btn-success col-xs-12" ng-click="loginUser('home')" href="#">
+                        <a class="btn btn-info main-button green-bg col-xs-12" ng-click="loginUser('home')" href="#">
                                     <span class="lamp-wrap">
                                         <span class="m-icon--bulb2"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span><span class="path6"></span><span class="path7"></span><span class="path8"></span><span class="path9"></span><span class="path10"></span></span>
                                     </span>

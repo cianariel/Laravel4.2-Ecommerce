@@ -54,6 +54,10 @@
                                 <span class="input__label-content input__label-content--madoka">Password</span>
                             </label>
                         </span>
+                        <div class="modal-minor-text">
+                            <input ng-model="AcceptTerms" type="checkbox" id="acceptterms" name="acceptterms" ><label for="acceptterms" checked><span></span> <b class="grey">By Signing up, you agree to <a href="/terms-of-use">TERMS AND CONDITIONS</a> of Ideaing</b>
+                            </label>
+                        </div>
                     <a class="btn btn-success form-control" ng-click="registerSubscribedUser()">Join and Create a Free Account</a>
                     </section>
                 </div>

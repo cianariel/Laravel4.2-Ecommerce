@@ -9411,19 +9411,21 @@ header.sub-head {
     width: 100%;
     text-align: left;
     font-family: Montserrat, sans-serif; }
-    .modal-login label[for="acceptterms"] {
-      font-size: 1rem; }
-  .modal-login .btn-success {
+  .modal-login .main-button {
     margin-top: 13px;
     margin-bottom: 13px; }
-  .modal-login .modal-minor-text {
-    padding-top: 10px;
-    font-size: 1.2rem;
-    color: #444;
-    font-weight: bold;
-    text-align: center; }
-    .modal-login .modal-minor-text a {
-      color: #079DD1; }
+
+label[for="acceptterms"] {
+  font-size: 1rem; }
+
+.modal-minor-text {
+  padding-top: 10px;
+  font-size: 1.2rem;
+  color: #444;
+  font-weight: bold;
+  text-align: center; }
+  .modal-minor-text a {
+    color: #079DD1; }
 
 .left-nav li {
   padding-right: 15px; }
@@ -12851,7 +12853,6 @@ html.hide-overflow {
         .subscribe_email_popup #subscribe_email_popup .why-join li .m-icon {
           padding-right: 4px; }
     .subscribe_email_popup #subscribe_email_popup .black-footer {
-      padding-top: 5px;
       z-index: 12;
       color: #333;
       position: relative;

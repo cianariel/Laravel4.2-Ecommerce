@@ -5752,7 +5752,7 @@ header.sub-head{
   position: absolute;
   right: 35px;
   top: 75%;
-  min-width: 65px; 
+  min-width: 65px;
   min-height: 10px;
 
   @media (max-width:1200px){
@@ -5904,30 +5904,27 @@ header.sub-head{
     text-align: left;
     font-family: Montserrat, sans-serif;
 
-    &[for="acceptterms"]{
-      font-size: 1rem;
-    }
   }
-  .btn-success {
+  .main-button {
     margin-top: 13px;
     margin-bottom: 13px;
   }
-  .modal-minor-text{
-    padding-top: 10px;
-    font-size: 1.2rem;
-    color: #444;
-    font-weight: bold;
-    text-align: center;
 
-    a{
-      //text-align: right;
-      color: $facebook-blue;
+}
 
-      //&.forgot{
-      //  color: #fff;
-      //  text-align: center;
-      //}
-    }
+label[for="acceptterms"]{
+  font-size: 1rem;
+}
+
+.modal-minor-text{
+  padding-top: 10px;
+  font-size: 1.2rem;
+  color: #444;
+  font-weight: bold;
+  text-align: center;
+
+  a{
+    color: $facebook-blue;
   }
 }
 
@@ -11101,7 +11098,7 @@ html.hide-overflow{
       }
     }
     .black-footer {
-      padding-top: 5px;
+      //padding-top: 5px;
       z-index: 12;
       color: #333;
 

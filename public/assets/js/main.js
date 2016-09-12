@@ -4642,6 +4642,8 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
             $scope.PersonalInfo = '';
             $scope.Address = '';
             $scope.Permalink = '';
+            $scope.AcceptTerms = false;
+
 
             $scope.LoginEmail = '';
             $scope.LoginPassword = '';
@@ -5407,6 +5409,13 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
             //  console.log(valSeg);
             //  return;
             $scope.closeAlert();
+
+            console.log($scope.AcceptTerms);
+
+            if ($scope.AcceptTerms == false) {
+                $scope.addAlert('danger', 'Please accept the Terms and Conditions');
+                return;
+            }
 
             if ($scope.FullName == '') {
                 $scope.addAlert('danger', 'Please enter your name');
