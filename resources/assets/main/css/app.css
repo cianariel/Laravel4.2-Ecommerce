@@ -5268,9 +5268,6 @@ a:hover, a:focus {
 .ta-hidden-input {
   display: none; }
 
-.alert {
-  margin-bottom: 0 !important; }
-
 .giveaway_desc ol li {
   list-style: decimal !important; }
 
@@ -9336,7 +9333,8 @@ header.sub-head {
     padding-top: 11px;
     margin-bottom: 5px;
     border: 0 !important;
-    box-shadow: none !important; }
+    box-shadow: none !important;
+    text-transform: none; }
     .login-controls .btn .m-icon {
       position: relative;
       left: 20px; }
@@ -12689,6 +12687,8 @@ html.hide-overflow {
   top: auto;
   right: -11px;
   z-index: 1052 !important; }
+  .subscribe_email_popup .alert {
+    margin-bottom: 0 !important; }
   .subscribe_email_popup .alertme {
     position: absolute;
     top: 30%;

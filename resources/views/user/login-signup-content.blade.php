@@ -88,7 +88,7 @@
                                     <span class="lamp-wrap">
                                         <span class="m-icon--bulb2"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span><span class="path6"></span><span class="path7"></span><span class="path8"></span><span class="path9"></span><span class="path10"></span></span>
                                     </span>
-                                <b>Join and Create a New Account</b>
+                                <b><span class="hidden-xs">Join and</span> Create a New Account</b>
                             </a>
                         </form>
                     </div>

@@ -22,9 +22,6 @@ a:hover, a:focus{
   display: none;
 }
 
-.alert{
-  margin-bottom: 0 !important;
-}
 
 .giveaway_desc ol li{
   list-style: decimal !important;
@@ -5782,10 +5779,6 @@ header.sub-head{
   @media (min-width: 620px){
     display: block !important;
   }
-  //padding-left: 65px;
-  //padding-right: 45px;
-
-
 
   @media(min-width: 768px){
     padding-top: 150px;
@@ -5795,8 +5788,8 @@ header.sub-head{
     padding-top: 11px;
     margin-bottom: 5px;
     border: 0 !important;
-
     box-shadow: none !important;
+    text-transform: none;
 
     .m-icon{
       position: relative;
@@ -10835,6 +10828,10 @@ html.hide-overflow{
   top: auto;
   right: -11px;
   z-index: 1052!important;
+
+  .alert{
+    margin-bottom: 0 !important;
+  }
 
   .alertme{
     position: absolute;
