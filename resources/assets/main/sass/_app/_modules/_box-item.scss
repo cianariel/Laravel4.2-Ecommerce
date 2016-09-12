@@ -184,24 +184,13 @@
 
 	&:hover, &.hover, &.hovered {
 		.box-item__overlay,
-		//.merchant-widget,
-		//.box-item__label--clear,
 		.user-widget__name,
-		//.box-item__get-it,
-		//.box-item__label--clear,
-		//.box-item__read-more
         {
 			@include opacity(.4);
 		}
 	}
     &.un-hover{
         .box-item__overlay,
-        //.merchant-widget,
-        //.box-item__label--clear,
-        //.user-widget__name,
-        //.box-item__get-it,
-        //.box-item__label--clear,
-        //.box-item__read-more
         {
             @include opacity(0);
         }
@@ -386,7 +375,8 @@
 
 .main-content .box-item{
   float: left;
-  margin-left: 6px;
+  margin-left: 1%;
+  margin-right: 1.7%;
   //margin-bottom: 5px;
 }
 
@@ -410,7 +400,7 @@
 
 		@media (max-width: 767px) {
           float: left;
-          width: 98%;
+          width: 97%;
             border: 1px solid #eee;
 			border-top: 0px;
 		}
@@ -418,7 +408,7 @@
 		@media (min-width: 768px) {
             display: block;
 			float: left;
-            width: 32.5%;
+            width: 30%;
             //margin-left: 8px;
             //margin-top: 4px;
 
@@ -434,16 +424,15 @@
 
 .grid-wrap{
   overflow: hidden;
-  padding-top: 4px;
-  padding-bottom: 4px;
+  padding-top: 25px;
+  //padding-bottom: 4px;
 
   }
 
 .homepage-grid .main-content .grid-wrap{
   visibility: hidden;
-
   overflow: hidden;
-  padding-bottom: 8px;
+  //padding-bottom: 8px;
 
   .box-item:first-child,
   .box-item:last-child{
@@ -493,7 +482,7 @@
 }
 .grid-box-2 {
 	.box-item {
-		width: 49%;
+		width: 46.5%;
 		border-top: 0 none;
         //margin: 8px 4px;
         float: left;
