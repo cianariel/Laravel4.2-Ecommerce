@@ -14215,14 +14215,14 @@ p {
     top: 0; }
 
 .grid-box-full .box-item {
-  width: 97%;
+  width: 96%;
   height: auto;
   border-top: 0 none; }
   .grid-box-full .box-item .img-holder {
     border-radius: 4px; }
 
 .grid-box-2 .box-item {
-  width: 46.5%;
+  width: 47%;
   border-top: 0 none;
   float: left;
   border-radius: 5px; }
