@@ -81,7 +81,7 @@
 
 
                             <div class="modal-minor-text">
-                                <input ng-model="AcceptTerms" type="checkbox" id="acceptterms"  class="acceptterms" name="acceptterms" ><label for="acceptterms" checked><span></span> <b class="grey">By Signing up, you agree to <a href="/terms-of-use">TERMS AND CONDITIONS</a> of Ideaing</b>
+                                <input ng-model="AcceptTerms" type="checkbox" id="acceptterms"  class="acceptterms" name="acceptterms" ><label for="acceptterms" checked><span></span> <b class="grey">By Signing up, you agree to <a href="/terms-of-use">Terms and Conditions</a> of Ideaing</b>
                                 </label>
                             </div>
                             <a class="btn btn-success col-xs-12 main-button" ng-click="registerSubscribedUser()" href="#">
