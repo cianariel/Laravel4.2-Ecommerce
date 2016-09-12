@@ -5268,6 +5268,9 @@ a:hover, a:focus {
 .ta-hidden-input {
   display: none; }
 
+.alert {
+  margin-bottom: 0 !important; }
+
 .giveaway_desc ol li {
   list-style: decimal !important; }
 
@@ -9415,7 +9418,8 @@ header.sub-head {
     margin-top: 13px;
     margin-bottom: 13px; }
 
-label[for="acceptterms"] {
+label[for="acceptterms"],
+label[for="accepttermsmodal"] {
   font-size: 1rem; }
 
 .modal-minor-text {
@@ -12724,7 +12728,7 @@ html.hide-overflow {
           min-height: 170px !important; } }
     .subscribe_email_popup #subscribe_email_popup .img-holder,
     .subscribe_email_popup #subscribe_email_popup .content-holder {
-      min-height: 480px; }
+      min-height: 502px; }
       @media (max-width: 992px) {
         .subscribe_email_popup #subscribe_email_popup .img-holder,
         .subscribe_email_popup #subscribe_email_popup .content-holder {

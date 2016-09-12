@@ -22,6 +22,10 @@ a:hover, a:focus{
   display: none;
 }
 
+.alert{
+  margin-bottom: 0 !important;
+}
+
 .giveaway_desc ol li{
   list-style: decimal !important;
 }
@@ -5912,7 +5916,8 @@ header.sub-head{
 
 }
 
-label[for="acceptterms"]{
+label[for="acceptterms"],
+label[for="accepttermsmodal"]{
   font-size: 1rem;
 }
 
@@ -10888,7 +10893,7 @@ html.hide-overflow{
 
     .img-holder,
     .content-holder{
-      min-height: 480px;
+      min-height: 502px;
 
       @media(max-width: 992px) {
         min-height: 520px;
