@@ -54,11 +54,7 @@
                                 <span class="input__label-content input__label-content--madoka">Password</span>
                             </label>
                         </span>
-<<<<<<< HEAD
-                    <a class="btn btn-success form-control" ng-click="registerSubscribedUser('subscribe-modal')">Join and Create a Free Aaccount</a>
-=======
                     <a class="btn btn-success form-control" ng-click="registerSubscribedUser()">Join and Create a Free Account</a>
->>>>>>> origin/redesign
                     </section>
                 </div>
                  <uib-alert ng-repeat="alert in alerts" type="@{{alert.type}}" close="closeAlert($index)">

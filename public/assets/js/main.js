@@ -5659,12 +5659,12 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
 
         $scope.passwordResetRequest = function () {
             $scope.closeAlert();
-            if (!$scope.Email) {
+            if (!$scope.LoginEmail) {
                 $scope.addAlert('danger', 'The Email field is required!');
                 return;
             }
             $http({
-                url: '/password-reset-request/' + $scope.Email,
+                url: '/password-reset-request/' + $scope.LoginEmail,
                 method: "GET",
             }).success(function (data) {
                 $scope.outputStatus(data, data.data);
