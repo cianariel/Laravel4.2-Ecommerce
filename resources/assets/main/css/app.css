@@ -706,11 +706,15 @@ body.has-active-menu {
     .bordering .input__field--madoka:focus + .input__label--madoka .input__label-content--madoka .toggle-pass,
     .bordering .input__field--madoka:valid + .input__label--madoka .input__label-content--madoka .toggle-pass,
     .bordering .input--filled .input__label-content--madoka .toggle-pass {
-      display: inline; }
+      display: inline !important; }
     .bordering .input__field--madoka:focus + .input__label--madoka .input__label-content--madoka .pass-text,
     .bordering .input__field--madoka:valid + .input__label--madoka .input__label-content--madoka .pass-text,
     .bordering .input--filled .input__label-content--madoka .pass-text {
       display: none; }
+
+.input__field--madoka.password + .input__label--madoka .input__label-content--madoka,
+.input__field--madoka.password + .input__label--madoka .input__label-content--madoka {
+  display: block !important; }
 
 /* Fly up modal */
 .ns-effect-genie {
