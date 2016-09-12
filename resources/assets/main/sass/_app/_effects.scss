@@ -774,6 +774,10 @@ body.has-active-menu{
     transform-origin: 0% 50%;
     -webkit-transition: -webkit-transform 0.3s;
     transition: transform 0.3s;
+
+    .toggle-pass{
+      display: none;
+    }
   }
 
   .graphic--madoka {
@@ -792,12 +796,12 @@ body.has-active-menu{
 
 
 
-  .input__field--madoka:focus + .input__label--madoka,
-  .input__field--madoka:valid + .input__label--madoka,
-  .input--filled .input__label--madoka {
-    cursor: default;
-    pointer-events: none;
-  }
+  //.input__field--madoka:focus + .input__label--madoka,
+  //.input__field--madoka:valid + .input__label--madoka,
+  //.input--filled .input__label--madoka {
+  //  cursor: default;
+  //  pointer-events: none;
+  //}
 
   .input__field--madoka:focus + .input__label--madoka .graphic--madoka,
   .input__field--madoka:valid + .input__label--madoka .graphic--madoka,
@@ -818,6 +822,13 @@ body.has-active-menu{
     -webkit-transform: scale3d(.81,.81,1) translate(104%,0);
     transform: scale3d(.81,.81,1) translate(104%,0);
     color: $iridium;
+
+    .toggle-pass{
+      display: inline;
+    }
+    .pass-text{
+      display: none;
+    }
   }
 }
 

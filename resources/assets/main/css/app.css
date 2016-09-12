@@ -670,6 +670,8 @@ body.has-active-menu {
     transform-origin: 0% 50%;
     -webkit-transition: -webkit-transform 0.3s;
     transition: transform 0.3s; }
+    .bordering .input__label-content--madoka .toggle-pass {
+      display: none; }
   .bordering .graphic--madoka {
     width: 103%;
     -webkit-transform: scale3d(1, -1, 1);
@@ -681,11 +683,6 @@ body.has-active-menu {
     stroke-width: 4px;
     stroke-dasharray: 962;
     stroke-dashoffset: 558; }
-  .bordering .input__field--madoka:focus + .input__label--madoka,
-  .bordering .input__field--madoka:valid + .input__label--madoka,
-  .bordering .input--filled .input__label--madoka {
-    cursor: default;
-    pointer-events: none; }
   .bordering .input__field--madoka:focus + .input__label--madoka .graphic--madoka,
   .bordering .input__field--madoka:valid + .input__label--madoka .graphic--madoka,
   .bordering .input--filled .graphic--madoka {
@@ -700,6 +697,14 @@ body.has-active-menu {
     -webkit-transform: scale3d(0.81, 0.81, 1) translate(104%, 0);
     transform: scale3d(0.81, 0.81, 1) translate(104%, 0);
     color: #FC1159; }
+    .bordering .input__field--madoka:focus + .input__label--madoka .input__label-content--madoka .toggle-pass,
+    .bordering .input__field--madoka:valid + .input__label--madoka .input__label-content--madoka .toggle-pass,
+    .bordering .input--filled .input__label-content--madoka .toggle-pass {
+      display: inline; }
+    .bordering .input__field--madoka:focus + .input__label--madoka .input__label-content--madoka .pass-text,
+    .bordering .input__field--madoka:valid + .input__label--madoka .input__label-content--madoka .pass-text,
+    .bordering .input--filled .input__label-content--madoka .pass-text {
+      display: none; }
 
 /* Fly up modal */
 .ns-effect-genie {
@@ -5998,8 +6003,9 @@ button {
     padding-top: 50px;
     padding-bottom: 50px; }
   .login-signup-modal .toggle-pass {
-    float: right;
     margin-top: 16px;
+    position: relative;
+    z-index: 9999999;
     font-size: 1.2rem;
     color: #777;
     font-weight: bold;
@@ -6041,6 +6047,11 @@ button {
   .btn-info:hover {
     background-color: #008ecc;
     border-color: #008ecc; }
+  .btn-info.facebook-bg {
+    background-color: #5C7CBD; }
+    .btn-info.facebook-bg:hover {
+      background-color: #4262a4;
+      border-color: #4262a4; }
   .btn-info.green-bg:hover {
     background-color: #68ba5d !important;
     border-color: #68ba5d !important; }
@@ -7681,7 +7692,7 @@ body.category .rsThumbs {
       color: #fff;
       font-weight: bold;
       padding: 2px 8px;
-      z-index: 90; }
+      z-index: 50; }
     .most-popular-new .popular-wrap.single-thumb .box-item {
       height: 215px !important;
       overflow: hidden; }
@@ -9291,14 +9302,17 @@ header.sub-head {
 
 .or {
   position: absolute;
-  right: 0;
+  right: 35px;
   top: 75%;
   min-width: 65px;
   min-height: 10px; }
+  @media (max-width: 1200px) {
+    .or {
+      right: 6px; } }
   @media (max-width: 620px) {
     .or {
       top: auto;
-      bottom: 0;
+      bottom: 13px;
       left: 0;
       right: 0; } }
 
@@ -9308,7 +9322,7 @@ header.sub-head {
   float: none;
   overflow: hidden;
   color: #fff;
-  padding-bottom: 20px; }
+  padding-bottom: 35px; }
   @media (min-width: 620px) {
     .login-controls {
       display: block !important; } }
@@ -9397,17 +9411,21 @@ header.sub-head {
     width: 100%;
     text-align: left;
     font-family: Montserrat, sans-serif; }
-  .modal-login .btn-success {
+  .modal-login .main-button {
     margin-top: 13px;
     margin-bottom: 13px; }
-  .modal-login .modal-minor-text {
-    padding-top: 10px;
-    font-size: 1.2rem;
-    color: #444;
-    font-weight: bold;
-    text-align: center; }
-    .modal-login .modal-minor-text a {
-      color: #079DD1; }
+
+label[for="acceptterms"] {
+  font-size: 1rem; }
+
+.modal-minor-text {
+  padding-top: 10px;
+  font-size: 1.2rem;
+  color: #444;
+  font-weight: bold;
+  text-align: center; }
+  .modal-minor-text a {
+    color: #079DD1; }
 
 .left-nav li {
   padding-right: 15px; }
@@ -12835,7 +12853,6 @@ html.hide-overflow {
         .subscribe_email_popup #subscribe_email_popup .why-join li .m-icon {
           padding-right: 4px; }
     .subscribe_email_popup #subscribe_email_popup .black-footer {
-      padding-top: 5px;
       z-index: 12;
       color: #333;
       position: relative;
@@ -12864,12 +12881,6 @@ body.login-signup {
   width: 100%; }
   body.login-signup #about-button, body.login-signup #back-to-top, body.login-signup .pocket {
     display: none; }
-  body.login-signup .category-block {
-    padding: 0;
-    max-height: 150px; }
-    body.login-signup .category-block .category-bg {
-      z-index: 1;
-      opacity: .25; }
   body.login-signup .login-signup-modal {
     position: absolute;
     width: 100%;
@@ -12957,7 +12968,11 @@ body.aboutus-page .para3_content {
 .login-signup-modal {
   background: #fff; }
   .login-signup-modal .category-block {
-    padding: 0; }
+    padding: 0;
+    max-height: 150px; }
+    .login-signup-modal .category-block .category-bg {
+      z-index: 1;
+      opacity: .25; }
   .login-signup-modal .alert-danger,
   .login-signup-modal .alert[type="@danger"] {
     max-width: 300px;

@@ -92,6 +92,8 @@
             var $selector = $(this).data('showpass');
             var $node = $($selector);
 
+            console.log('123123123')
+
             //$node.hide();
             if($node.attr('type') == 'password'){
                 $($node).attr('type', 'text');
