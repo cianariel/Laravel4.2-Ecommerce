@@ -452,6 +452,11 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
             $scope.Address = '';
             $scope.Permalink = '';
 
+            $scope.LoginEmail = '';
+            $scope.LoginPassword = '';
+            $scope.RememberMe = false;
+
+
             //settings for user profile edit section
             $scope.isProfilePage = false;
             $scope.uploader.formData = [];
@@ -1412,9 +1417,9 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                 url: '/api/authenticate',
                 method: "POST",
                 data: {
-                    Email: $scope.Email,
-                    Password: $scope.Password,
-                    RememberMe: $scope.rememberMe == true ? true : false
+                    Email: $scope.LoginEmail,
+                    Password: $scope.LoginPassword,
+                    RememberMe: $scope.RememberMe == true ? true : false
                 }
             }).success(function (data) {
                 var WpLoginURL = '/ideas/api?call=login&username=' + $scope.Email + '&password=' + $scope.Password + '&remember=' + $scope.rememberMe;

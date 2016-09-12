@@ -24,7 +24,7 @@
     <section class="row  pale-grey-bg">
         <div class="container text-center padding-40">
             <h1>Create a Free Account</h1>
-            <h4 class="grey">Join Ideaing to live smarter</h4>
+            <h4 class="grey">Join Ideaing to Live Smarter</h4>
         </div>
     </section>
 
@@ -36,14 +36,14 @@
 
             <section id="signup-modal">
                 <div class="col-sm-6 col-xs-12">
-                    <div class="or">or</div>
+                    <div class="or side-lines"><span>or</span></div>
                     <nav class="col-xs-12 login-controls contentable relative">
-                        <a class="btn btn-info col-xs-12" ng-click="registerWithFB()" href="#"><i class="m-icon m-icon--facebook-id"></i>Log in with Facebook</a>
-                        <span data-slidein="#login-modal" data-hide=".login-controls" class="btn btn-info col-xs-12 green-bg text-uppercase"><span class="m-icon m-icon--email-form-id white"></span> Log in with Email</span>
+                        <a class="btn btn-info col-xs-12 allcaps greyscale" ng-click="registerWithFB()" href="#"><i class="m-icon m-icon--facebook-id"></i>Log in with Facebook</a>
+                        <span data-slidein="#login-modal" data-hide=".login-controls" class="btn btn-info col-xs-12 green-bg text-uppercase allcaps"><span class="m-icon m-icon--email-form-id white"></span> Log in with Email</span>
                     </nav>
                 </div>
 
-                <div class="col-sm-6 col-xs-12">
+                <div class="col-sm-6 col-xs-12 pale-grey-bg padding-40">
                     <div class="modal-content hero-box qiuck-signup modal-login">
                         <h3 class="text-left">Register new account</h3>
                         <form class="bordering">
@@ -67,7 +67,7 @@
                                 </label>
                             </span>
                             <span class="input input--madoka big-wrap">
-                                <input class="input__field input__field--madoka" required  id="signup-input-3"  ng-model="Password" type="password" name="password">
+                                <input class="input__field input__field--madoka" required id="signup-input-3"  ng-model="Password" type="password" name="password">
                                 <label class="input__label input__label--madoka" for="signup-input-3">
                                     <svg class="graphic graphic--madoka" width="100%" height="100%" viewBox="0 0 404 77" preserveAspectRatio="none">
                                         <path d="m0,0l404,0l0,77l-404,0l0,-77z"></path>
@@ -75,9 +75,11 @@
                                     <span class="input__label-content input__label-content--madoka">Password</span>
                                 </label>
                             </span>
+                            <span class="toggle-pass" data-showpass="#signup-input-3">show</span>
+
 
                             <div class="modal-minor-text">
-                                <input ng-model="rememberMe" type="checkbox" id="remember" name="remember" ><label for="remember"><span></span> <b class="grey">By Signing up, you agree to <a href="/terms-of-use">TERMS AND CONDITIONS</a> of Ideaing</b>
+                                <input ng-model="AcceptTerms" type="checkbox" id="acceptterms" name="acceptterms" ><label for="acceptterms"><span></span> <b class="grey">By Signing up, you agree to <a href="/terms-of-use">TERMS AND CONDITIONS</a> of Ideaing</b>
                                 </label>
                             </div>
                             <a class="btn btn-success col-xs-12" ng-click="registerSubscribedUser()" href="#">
@@ -100,7 +102,7 @@
                         <h3 class="text-left">Login</h3>
 
                                 <span class="input input--madoka big-wrap">
-                                    <input class="input__field input__field--madoka" required type="text" id="login-input-1"  ng-model="Email" name="email">
+                                    <input class="input__field input__field--madoka" required type="text" id="login-input-1"  ng-model="LoginEmail" name="email">
                                     <label class="input__label input__label--madoka" for="login-input-1">
                                         <svg class="graphic graphic--madoka" width="100%" height="100%" viewBox="0 0 404 77" preserveAspectRatio="none">
                                             <path d="m0,0l404,0l0,77l-404,0l0,-77z"></path>
@@ -110,7 +112,7 @@
                                 </span>
 
                                 <span class="input input--madoka big-wrap">
-                                    <input class="input__field input__field--madoka" required  id="login-input-2"  ng-model="Password" type="password" name="password">
+                                    <input class="input__field input__field--madoka" required  id="login-input-2"  ng-model="LoginPassword" type="password" name="password">
                                     <label class="input__label input__label--madoka" for="login-input-2">
                                         <svg class="graphic graphic--madoka" width="100%" height="100%" viewBox="0 0 404 77" preserveAspectRatio="none">
                                             <path d="m0,0l404,0l0,77l-404,0l0,-77z"></path>
@@ -118,6 +120,14 @@
                                         <span class="input__label-content input__label-content--madoka">Password</span>
                                     </label>
                                 </span>
+                                <span class="toggle-pass" data-showpass="#login-input-2">show</span>
+
+
+
+                        <div class="modal-minor-text">
+                            <input ng-model="RememberMe" type="checkbox" id="remember" name="remember" ><label for="remember"><span></span> <b class="grey">Remember me</b>
+                            </label>
+                        </div>
 
                         <a class="btn btn-success col-xs-12" ng-click="loginUser('home')" href="#">
                                     <span class="lamp-wrap">
@@ -126,7 +136,7 @@
                             <b>Log in</b>
                         </a>
                         <div class="modal-minor-text">
-                            <a class="forgot" ng-click="passwordResetRequest()" href="#">Forgot password?</a>
+                            <a class="forgot" ng-click="passwordResetRequest()" href="#">Forgot your password?</a>
                         </div>
 
                     </form>

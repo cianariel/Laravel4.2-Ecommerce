@@ -815,8 +815,8 @@ body.has-active-menu{
   .input__field--madoka:valid + .input__label--madoka .input__label-content--madoka,
   .input--filled .input__label-content--madoka {
     //display: none;
-    -webkit-transform: scale3d(.81,.81,1) translate(132%,0);
-    transform: scale3d(.81,.81,1) translate(132%,0);
+    -webkit-transform: scale3d(.81,.81,1) translate(104%,0);
+    transform: scale3d(.81,.81,1) translate(104%,0);
     color: $iridium;
   }
 }
@@ -890,4 +890,32 @@ body.has-active-menu{
 }
 
 
+// SIDE-LINES
+
+.side-lines {
+  line-height: 0.5;
+  text-align: center;
+  overflow: hidden;
+}
+.side-lines span {
+  display: inline-block;
+  position: relative;
+}
+.side-lines span:before,
+.side-lines span:after {
+  content: "";
+  position: absolute;
+  height: 5px;
+  border-bottom: 1px solid #eee;
+  top: 0;
+  width: 100%;
+}
+.side-lines span:before {
+  right: 100%;
+  margin-right: 6px;
+}
+.side-lines span:after {
+  left: 100%;
+  margin-left: 6px;
+}
 
