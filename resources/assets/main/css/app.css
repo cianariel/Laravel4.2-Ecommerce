@@ -13939,7 +13939,7 @@ p {
 .box-item:not(.slider-box) .img-holder {
   position: relative;
   overflow: hidden;
-  border-radius: 0; }
+  border-radius: 5px; }
   .box-item:not(.slider-box) .img-holder img {
     position: absolute;
     top: 0;
@@ -14182,7 +14182,7 @@ p {
     .main-content .grid-box-3 .box-item {
       display: block;
       float: left;
-      width: 30%; } }
+      width: 30.4%; } }
   @media (min-width: 992px) {
     .main-content .grid-box-3 .box-item {
       /*			height: auto;*/ } }
