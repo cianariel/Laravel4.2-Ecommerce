@@ -68,7 +68,8 @@
                         <li class="greyscale"><i class="m-icon m-icon--video green"></i> Be eligible for to win free smart gadgets</li>
                         <li><i class="m-icon m-icon--bulb-detailed-on-rating blue"></i>Unique tips to transform how you live + play</li>
                     </ul>
-                    <section class="content"> 
+                    <section class="content">
+                        
                         <span class="input input--madoka big-wrap">
                             <input class="required input__field input__field--madoka" ng-model="data.SubscriberEmail" required type="text" id="input-34">
                             <label class="input__label input__label--madoka" for="input-34">
