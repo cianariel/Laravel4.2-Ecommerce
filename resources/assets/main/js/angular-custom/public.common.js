@@ -451,8 +451,8 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
             $scope.PersonalInfo = '';
             $scope.Address = '';
             $scope.Permalink = '';
-            $scope.AcceptTerms = false;
-
+            $scope.AcceptTerms = true;
+            $scope.AcceptTermsModal = true;
 
             $scope.LoginEmail = '';
             $scope.LoginPassword = '';
@@ -1215,13 +1215,11 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
             else if (valSeg[3] == 'home')
                 sourceSegment = 'home';
 
-            //  console.log(valSeg);
-            //  return;
             $scope.closeAlert();
 
             console.log($scope.AcceptTerms);
 
-            if ($scope.AcceptTerms == false) {
+            if ((sourceSegment == 'home' && $scope.AcceptTerms == false) || (sourceSegment == 'popup' && $scope.AcceptTermsModal == false)) {
                 $scope.addAlert('danger', 'Please accept the Terms and Conditions');
                 return;
             }
