@@ -5412,9 +5412,9 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
 
             $scope.closeAlert();
 
-            console.log($scope.AcceptTerms);
+            console.log(sourceSegment);
 
-            if ((sourceSegment == 'home' && $scope.AcceptTerms == false) || (sourceSegment == 'popup' && $scope.AcceptTermsModal == false)) {
+            if ($scope.AcceptTerms == false && $scope.AcceptTermsModal == false) {
                 $scope.addAlert('danger', 'Please accept the Terms and Conditions');
                 return;
             }
