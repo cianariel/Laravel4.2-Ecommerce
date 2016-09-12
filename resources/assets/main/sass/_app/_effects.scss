@@ -829,13 +829,19 @@ body.has-active-menu{
     }
 
     .toggle-pass{
-      display: inline;
+      display: inline !important;
     }
     .pass-text{
       display: none;
     }
   }
 }
+
+.input__field--madoka.password+ .input__label--madoka .input__label-content--madoka,
+.input__field--madoka.password + .input__label--madoka .input__label-content--madoka{
+  display: block !important;
+}
+
 
 
 /* Fly up modal */

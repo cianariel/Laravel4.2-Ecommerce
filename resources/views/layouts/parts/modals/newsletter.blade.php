@@ -46,7 +46,7 @@
                             </label>
                         </span>
                         <span class="input input--madoka big-wrap">
-                            <input class="input__field input__field--madoka" required type="password" id="input-32" ng-model="Password">
+                            <input class="input__field input__field--madoka password" required type="password" id="input-32" ng-model="Password"> 
                             <label class="input__label input__label--madoka" for="input-32">
                                 <svg class="graphic graphic--madoka" width="100%" height="100%" viewBox="0 0 404 77" preserveAspectRatio="none">
                                     <path d="m0,0l404,0l0,77l-404,0l0,-77z"></path>
