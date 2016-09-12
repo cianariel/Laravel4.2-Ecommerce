@@ -38,8 +38,8 @@
                 <div class="col-sm-6 col-xs-12">
                     <div class="or side-lines"><span>or</span></div>
                     <nav class="col-xs-12 login-controls contentable relative">
-                        <a class="btn btn-info col-xs-12 allcaps greyscale" ng-click="registerWithFB()" href="#"><i class="m-icon m-icon--facebook-id"></i>Log in with Facebook</a>
-                        <span data-slidein="#login-modal" data-hide=".login-controls" class="btn btn-info col-xs-12 green-bg text-uppercase allcaps"><span class="m-icon m-icon--email-form-id white"></span> Log in with Email</span>
+                        <a class="btn btn-info col-xs-12 facebook-bg text-capitalize" ng-click="registerWithFB()" href="#"><i class="m-icon m-icon--facebook"></i>Log in with Facebook</a>
+                        <span data-slidein="#login-modal" data-hide=".login-controls" class="btn btn-info col-xs-12 green-bg"><span class="m-icon m-icon--email white"></span> Log in with Email</span>
                     </nav>
                 </div>
 
@@ -72,21 +72,23 @@
                                     <svg class="graphic graphic--madoka" width="100%" height="100%" viewBox="0 0 404 77" preserveAspectRatio="none">
                                         <path d="m0,0l404,0l0,77l-404,0l0,-77z"></path>
                                     </svg>
-                                    <span class="input__label-content input__label-content--madoka">Password</span>
+                                    <span class="input__label-content input__label-content--madoka">
+                                        <span class="pass-text">Password</span>
+                                        <span class="toggle-pass" data-showpass="#signup-input-3">show</span>
+                                    </span>
                                 </label>
                             </span>
-                            <span class="toggle-pass" data-showpass="#signup-input-3">show</span>
 
 
                             <div class="modal-minor-text">
-                                <input ng-model="AcceptTerms" type="checkbox" id="acceptterms" name="acceptterms" ><label for="acceptterms"><span></span> <b class="grey">By Signing up, you agree to <a href="/terms-of-use">TERMS AND CONDITIONS</a> of Ideaing</b>
+                                <input ng-model="AcceptTerms" type="checkbox" id="acceptterms" name="acceptterms" ><label for="acceptterms" checked><span></span> <b class="grey">By Signing up, you agree to <a href="/terms-of-use">TERMS AND CONDITIONS</a> of Ideaing</b>
                                 </label>
                             </div>
                             <a class="btn btn-success col-xs-12" ng-click="registerSubscribedUser()" href="#">
                                     <span class="lamp-wrap">
                                         <span class="m-icon--bulb2"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span><span class="path6"></span><span class="path7"></span><span class="path8"></span><span class="path9"></span><span class="path10"></span></span>
                                     </span>
-                                <b>Create new account</b>
+                                <b>Join and Create a New Account</b>
                             </a>
                         </form>
                     </div>

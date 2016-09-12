@@ -920,8 +920,10 @@ button{
   }
 
   .toggle-pass{
-    float: right;
+    //float: right;
     margin-top: 16px;
+    position: relative;
+    z-index: 9999999;
     font-size: 1.2rem;
     color: #777;
     font-weight: bold;
@@ -975,6 +977,15 @@ button{
   &:hover{
     background-color: darken($sky-blue, 10%);
     border-color: darken($sky-blue, 10%);
+  }
+
+  &.facebook-bg{
+    background-color: $facebook-blue-2;
+
+    &:hover{
+      background-color: darken($facebook-blue-2, 10%);
+      border-color: darken($facebook-blue-2, 10%);
+    }
   }
 
   &.green-bg{
@@ -3226,7 +3237,7 @@ body.category{
         color: #fff;
         font-weight: bold;
         padding: 2px 8px;
-        z-index: 90;
+        z-index: 50;
       }
 
       .box-item{
@@ -5739,14 +5750,18 @@ header.sub-head{
 
 .or{
   position: absolute;
-  right: 0;
+  right: 35px;
   top: 75%;
-  min-width: 65px;
+  min-width: 65px; 
   min-height: 10px;
+
+  @media (max-width:1200px){
+    right: 6px;
+  }
 
   @media (max-width:620px){
     top:auto;
-    bottom: 0;
+    bottom: 13px;
     left: 0;
     right: 0;
   }
@@ -5758,7 +5773,7 @@ header.sub-head{
   float: none;
   overflow: hidden;
   color: #fff;
-  padding-bottom: 20px;
+  padding-bottom: 35px;
 
   @media (min-width: 620px){
     display: block !important;
@@ -5888,6 +5903,10 @@ header.sub-head{
     width: 100%;
     text-align: left;
     font-family: Montserrat, sans-serif;
+
+    &[for="acceptterms"]{
+      font-size: 1rem;
+    }
   }
   .btn-success {
     margin-top: 13px;
@@ -11128,17 +11147,6 @@ body.login-signup{
         display: none;
     }
 
-  .category-block{
-    padding: 0;
-    max-height:150px;
-
-    .category-bg{
-      z-index: 1;
-      opacity: .25;
-    }
-
-  }
-
 
   //> div{
   //  position: absolute;
@@ -11271,6 +11279,13 @@ body.aboutus-page{
 
   .category-block{
     padding: 0;
+    max-height:150px;
+
+    .category-bg{
+      z-index: 1;
+      opacity: .25;
+    }
+
   }
 
     .alert-danger,
