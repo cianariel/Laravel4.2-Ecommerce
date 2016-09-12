@@ -4997,7 +4997,7 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
 
 
         // Build popup notification box based on status.
-        $scope.outputStatus = function (data, message, goTo) {
+        $scope.outputStatus = function (data, message, goTo, from) {
 
             var statusCode = data.status_code;
 
@@ -5026,7 +5026,7 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                     else if (data.data == 'Registration completed successfully') {
                         $scope.addAlert('success', 'SUCCESS! You just made the best decision');
 
-                        if(('.toggles').length){
+                        if(from == 'subscribe-modal'){
                             $('.toggles, .bordering .content').animate({opacity: "0"}, function(){
                                 setTimeout(function(){
                                     $scope.hideAndForget();
@@ -5034,15 +5034,17 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                                 }, 2000);
                             })
                         }else{
-                            $scope.hideAndForget();
-                            window.location = '/welcome';
+                            setTimeout(function(){
+                               // $scope.hideAndForget();
+                                window.location = '/welcome';
+                            }, 2000);
                         }
 
 
                     } else if (data.data == 'Registration completed successfully, please verify your email') {
                         $scope.addAlert('success', 'SUCCESS! You just made the best decision');
 
-                        if(('.toggles').length){
+                        if(from == 'subscribe-modal'){
                             $('.toggles, .bordering .content').animate({opacity: "0"}, function(){
                                 setTimeout(function(){
                                     $scope.hideAndForget();
@@ -5050,8 +5052,10 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                                 }, 2000);
                             })
                         }else{
-                            $scope.hideAndForget();
-                            window.location = '/welcome';
+                            setTimeout(function(){
+                               // $scope.hideAndForget();
+                                window.location = '/welcome';
+                            }, 2000);
                         }
                     }
 
@@ -5393,7 +5397,7 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
  
         };
 
-        $scope.registerSubscribedUser = function () {
+        $scope.registerSubscribedUser = function (from) {
 
             // defining the regsitration source
             sourceSegment = '';
@@ -5450,7 +5454,7 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                 }
 
             }).success(function (data) { 
-                $scope.outputStatus(data, data.data, 'welcome');
+                $scope.outputStatus(data, data.data, 'welcome', from);
             });
 
         };
@@ -5664,12 +5668,12 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
 
         $scope.passwordResetRequest = function () {
             $scope.closeAlert();
-            if (!$scope.Email) {
+            if (!$scope.LoginEmail) {
                 $scope.addAlert('danger', 'The Email field is required!');
                 return;
             }
             $http({
-                url: '/password-reset-request/' + $scope.Email,
+                url: '/password-reset-request/' + $scope.LoginEmail,
                 method: "GET",
             }).success(function (data) {
                 $scope.outputStatus(data, data.data);
