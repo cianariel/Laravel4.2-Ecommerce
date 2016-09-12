@@ -697,8 +697,8 @@ body.has-active-menu {
   .bordering .input__field--madoka:focus + .input__label--madoka .input__label-content--madoka,
   .bordering .input__field--madoka:valid + .input__label--madoka .input__label-content--madoka,
   .bordering .input--filled .input__label-content--madoka {
-    -webkit-transform: scale3d(0.81, 0.81, 1) translate(132%, 0);
-    transform: scale3d(0.81, 0.81, 1) translate(132%, 0);
+    -webkit-transform: scale3d(0.81, 0.81, 1) translate(104%, 0);
+    transform: scale3d(0.81, 0.81, 1) translate(104%, 0);
     color: #FC1159; }
 
 /* Fly up modal */
@@ -783,6 +783,32 @@ body.has-active-menu {
 .hover-zoom:hover img {
   -webkit-transform: scale(1.3);
   transform: scale(1.3); }
+
+.side-lines {
+  line-height: 0.5;
+  text-align: center;
+  overflow: hidden; }
+
+.side-lines span {
+  display: inline-block;
+  position: relative; }
+
+.side-lines span:before,
+.side-lines span:after {
+  content: "";
+  position: absolute;
+  height: 5px;
+  border-bottom: 1px solid #eee;
+  top: 0;
+  width: 100%; }
+
+.side-lines span:before {
+  right: 100%;
+  margin-right: 6px; }
+
+.side-lines span:after {
+  left: 100%;
+  margin-left: 6px; }
 
 /*!
  * Bootstrap v3.3.5 (http://getbootstrap.com)
@@ -5971,6 +5997,13 @@ button {
     margin: auto;
     padding-top: 50px;
     padding-bottom: 50px; }
+  .login-signup-modal .toggle-pass {
+    float: right;
+    margin-top: 16px;
+    font-size: 1.2rem;
+    color: #777;
+    font-weight: bold;
+    cursor: pointer; }
 
 .hidden-soft {
   display: none; }
@@ -6008,6 +6041,9 @@ button {
   .btn-info:hover {
     background-color: #008ecc;
     border-color: #008ecc; }
+  .btn-info.green-bg:hover {
+    background-color: #68ba5d !important;
+    border-color: #68ba5d !important; }
 
 .btn-white {
   background: #fff;
@@ -9256,7 +9292,9 @@ header.sub-head {
 .or {
   position: absolute;
   right: 0;
-  top: 75%; }
+  top: 75%;
+  min-width: 65px;
+  min-height: 10px; }
   @media (max-width: 620px) {
     .or {
       top: auto;
@@ -9370,9 +9408,6 @@ header.sub-head {
     text-align: center; }
     .modal-login .modal-minor-text a {
       color: #079DD1; }
-      .modal-login .modal-minor-text a.forgot {
-        color: #fff;
-        text-align: center; }
 
 .left-nav li {
   padding-right: 15px; }

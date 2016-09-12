@@ -918,6 +918,16 @@ button{
       padding-top: 50px;
       padding-bottom: 50px;
   }
+
+  .toggle-pass{
+    float: right;
+    margin-top: 16px;
+    font-size: 1.2rem;
+    color: #777;
+    font-weight: bold;
+    cursor: pointer;
+  }
+
 }
 
 .hidden-soft{ // unlike the BS hidden - no !important
@@ -965,6 +975,13 @@ button{
   &:hover{
     background-color: darken($sky-blue, 10%);
     border-color: darken($sky-blue, 10%);
+  }
+
+  &.green-bg{
+    &:hover{
+      background-color: darken($pine-green, 10%) !important;
+      border-color: darken($pine-green, 10%) !important;
+    }
   }
 }
 
@@ -5724,6 +5741,8 @@ header.sub-head{
   position: absolute;
   right: 0;
   top: 75%;
+  min-width: 65px;
+  min-height: 10px;
 
   @media (max-width:620px){
     top:auto;
@@ -5885,10 +5904,10 @@ header.sub-head{
       //text-align: right;
       color: $facebook-blue;
 
-      &.forgot{
-        color: #fff;
-        text-align: center;
-      }
+      //&.forgot{
+      //  color: #fff;
+      //  text-align: center;
+      //}
     }
   }
 }

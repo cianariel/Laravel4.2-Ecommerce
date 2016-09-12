@@ -87,6 +87,30 @@
             return false;
         });
 
+        $('body').on('click', '[data-showpass]', function(e){
+            console.log(111177)
+            e.preventDefault();
+            var $selector = $(this).data('showpass');
+            var $node = $($selector);
+
+            console.log($node);
+
+            //$node.hide();
+            if($node.attr('type') == 'password'){
+                console.log(8)
+
+                $($node).attr('type', 'text');
+            }else if($node.attr('type') == 'text'){
+                console.log(9)
+
+                $($node).attr('type', 'password');
+            }
+            console.log($node.attr('type'))
+
+
+            return false;
+        });
+
         $('body').on('click', '.search-toggle-button.desktop', function(e){
             e.preventDefault();
             var $show = $('.desktop-search-bar');
