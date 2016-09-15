@@ -1089,7 +1089,7 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
 
         // Read Category
 
-        $scope.getReadCategoryList = function(){
+        $scope.getReadCategoryList = function () {
 
             $http({
                 url: '/api/category/all-read-category',
@@ -1103,7 +1103,7 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
 
         };
 
-        $scope.addReadCategory = function(){
+        $scope.addReadCategory = function () {
 
             $http({
                 url: '/api/category/add-read-category',
@@ -1128,7 +1128,7 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
 
         };
 
-        $scope.editReadCategory = function(index){
+        $scope.editReadCategory = function (index) {
 
             $scope.closeAlert();
 
@@ -1144,7 +1144,7 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
 
         };
 
-        $scope.deleteReadCategory = function(index){
+        $scope.deleteReadCategory = function (index) {
 
             $scope.closeAlert();
 
@@ -1166,7 +1166,6 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
             });
 
         };
-
 
 
         // Product Module //
@@ -1204,6 +1203,7 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
         // update product
         $scope.productUpdateInfo = function () {
 
+          //  console.log($scope.StoreId);
             $http({
                 url: '/api/product/update-product',
                 method: 'POST',
@@ -1220,7 +1220,8 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
                     Description: $scope.htmlContent,
                     Price: $scope.Price,
                     SalePrice: $scope.SalePrice,
-                    StoreId: $scope.StoreId,
+                   // StoreId: $scope.StoreId.Id,
+                    StoreId: $scope.StoreId == '' ? $scope.storeList[0].Id : $scope.StoreId.Id,
                     AffiliateLink: $scope.AffiliateLink,
                     PriceGrabberId: $scope.PriceGrabberId,
                     FreeShipping: $scope.FreeShipping,
@@ -1536,7 +1537,6 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
                 method: 'GET'
             }).success(function (data) {
                 if (data.status_code == 200) {
-                    //  console.log(data['product_name']);
 
                     // set data in input fields
                     $scope.ProductId = data.data.id;
@@ -1549,7 +1549,7 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
                     $scope.htmlContent = data.data.product_description;
                     $scope.Price = data.data.price;
                     $scope.SalePrice = data.data.sale_price;
-                    $scope.StoreId = data.data.store_id;
+                    $scope.StoreId = {Id: data.data.store_id};
                     $scope.AffiliateLink = data.data.affiliate_link;
                     $scope.PriceGrabberId = data.data.price_grabber_master_id;
                     $scope.FreeShipping = data.data.free_shipping == 1 ? true : false;
@@ -1576,6 +1576,8 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
 
                     // initialization category hierarchy view
                     $scope.categoryHierarchyView($scope.selectedItem);
+
+                 //   console.log('store id : ', $scope.StoreId);
 
                 }
             });
@@ -1653,14 +1655,14 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
 
         // Show publishers name list
         $scope.getPublisherList = function () {
-           // $scope.closeAlert();
+            // $scope.closeAlert();
             $http({
                 url: '/api/product/get-publishers',
                 method: "GET",
             }).success(function (data) {
                 $scope.PublisherList = data.data;
-              //  $scope.outputStatus(data, "Product promoted successfully.");
-              //  $scope.loadProductData($scope.ProductId);
+                //  $scope.outputStatus(data, "Product promoted successfully.");
+                //  $scope.loadProductData($scope.ProductId);
 
             });
         };
@@ -1835,7 +1837,7 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
 
         // date picker start
 
-        $scope.today = function() {
+        $scope.today = function () {
             $scope.datePicker = new Date();
         };
         $scope.today();
@@ -1845,18 +1847,18 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
         };
 
         // Disable weekend selection
-        $scope.disabled = function(date, mode) {
+        $scope.disabled = function (date, mode) {
             return ( mode === 'day' && ( date.getDay() === 0 || date.getDay() === 6 ) );
 
         };
 
-        $scope.toggleMin = function() {
+        $scope.toggleMin = function () {
             $scope.minDate = $scope.minDate ? null : new Date();
         };
         $scope.toggleMin();
         $scope.maxDate = new Date(2020, 5, 22);
 
-        $scope.open = function($event) {
+        $scope.open = function ($event) {
             $scope.status.opened = true;
         };
 
@@ -1888,12 +1890,12 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
                 }
             ];
 
-        $scope.getDayClass = function(date, mode) {
+        $scope.getDayClass = function (date, mode) {
             if (mode === 'day') {
-                var dayToCheck = new Date(date).setHours(0,0,0,0);
+                var dayToCheck = new Date(date).setHours(0, 0, 0, 0);
 
-                for (var i=0;i<$scope.events.length;i++){
-                    var currentDay = new Date($scope.events[i].date).setHours(0,0,0,0);
+                for (var i = 0; i < $scope.events.length; i++) {
+                    var currentDay = new Date($scope.events[i].date).setHours(0, 0, 0, 0);
 
                     if (dayToCheck === currentDay) {
                         return $scope.events[i].status;
@@ -1906,7 +1908,7 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
         // date picker end
 
 
-        $scope.getAdminNotificationEmailList = function(){
+        $scope.getAdminNotificationEmailList = function () {
             $http({
                 url: '/api/user/admin-email',
                 method: 'GET'
@@ -1916,11 +1918,11 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
                 $scope.Email = data.data;
             });
         }
-        $scope.setAdminNotificationEmailList = function(){
+        $scope.setAdminNotificationEmailList = function () {
             $http({
                 url: '/api/user/admin-set-email',
                 method: 'POST',
-                data:{
+                data: {
                     Email: $scope.Email
                 }
 

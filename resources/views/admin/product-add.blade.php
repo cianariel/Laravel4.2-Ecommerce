@@ -159,13 +159,8 @@
                                                     <div class="form-group">
                                                         <label class="col-md-2 control-label">Store Name</label>
                                                         <div class="col-md-5" ng-init="loadAllStores()">
-                                                            <select data-ng-model="StoreId"
-                                                                    class="form-control">
-                                                                <option ng-repeat="store in storeList"
-                                                                        value="@{{ store.Id }}">
-                                                                    @{{ store.Name }}
-                                                                </option>
-                                                            </select>
+                                                            <select  class="form-control" ng-model="StoreId"
+                                                                 ng-options="store.Name for store in storeList track by store.Id"></select>
                                                         </div>
                                                     </div>
 
