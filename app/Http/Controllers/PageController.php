@@ -590,7 +590,7 @@ class PageController extends ApiController
 
             $result['relatedIdeas'] = $relatedIdeas;
             $result['canonicURL'] = PageHelper::getCanonicalLink(Route::getCurrentRoute(), $permalink);
-            PageHelper::putIntoRedis($cacheKey, $result, '+3 months');
+            PageHelper::putIntoRedis($cacheKey, $result, '3 hours');
         }
 
 
