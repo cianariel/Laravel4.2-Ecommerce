@@ -228,8 +228,12 @@ class Product extends Model
 
         $dataCount = empty($dataCount->hit_counter) ? 0 : $dataCount->hit_counter;
 
+      //  dd($dataCount,$data['Count']);
         if ($data['Count'] > $dataCount) {
-            Product::where('product_permalink', $data['Permalink'])->update(['hit_counter' => $data['Count']]);
+        $product = Product::where('product_permalink', $data['Permalink'])->first();
+        $product->timestamps = false ;
+        $product->hit_counter = $data['Count'];
+        $product->save();
         }
 
     }
@@ -729,7 +733,7 @@ class Product extends Model
             if (isset($product)) {
                 $apiData = $this->getApiProductInformation($productVendorId, $store);
                 if (isset($apiData) && (($product['price'] != $apiData['ApiPrice']) || ($product['sale_price'] != $apiData['ApiSalePrice']))) {
-
+                    $product->timestamps = false ;
                     $product->price = empty($apiData['ApiPrice']) ? $product['price'] : $apiData['ApiPrice'];
                     $product->sale_price = empty($apiData['ApiSalePrice']) ? $product['sale_price'] : $apiData['ApiSalePrice'];
                     $product->save();
