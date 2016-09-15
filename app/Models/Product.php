@@ -411,11 +411,11 @@ class Product extends Model
             ->take($settings['limit'])
             ->offset($skip);
 
-        if(empty($isAdmin))
-            $productList->orderBy('hit_counter', 'desc');
+        $productList->orderBy('created_at', 'desc');
+      //  if(empty($isAdmin))
+       //     $productList->orderBy('hit_counter', 'desc');
 
-        $productList = $productList->orderBy('created_at', 'desc')
-                                   ->get(array("id"));
+        $productList = $productList->get(array("id"));
 
         $product['allIDs'] = $productList;
         $data = array();
