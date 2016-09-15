@@ -10,7 +10,7 @@ if (! preg_match("/\/ideas\//", $actual_link))
 
 @if(!empty($selfImages['picture']))
     @foreach($selfImages['picture'] as $item)
-        <meta property="og:image" content="{{$item['link']}}">
+        <meta property="og:image:secure_url" content="{{$item['link']}}">
     @endforeach
 @endif
 
