@@ -223,13 +223,16 @@ class PageController extends ApiController
         $featuredOffset = $featuredLimit * ($page - 1);
         $leftOver = 0;
 
-        if ($type == 'product' || !$stories = self::getGridStories($storyLimit + 1, $storyOffset, $featuredLimit + 1, $featuredOffset, $tag, $ideaCategory)) {
+        $stories = self::getGridStories($storyLimit + 1, $storyOffset, $featuredLimit + 1, $featuredOffset, $tag, $ideaCategory);
+        if ($type == 'product' || !$stories) {
             $stories = [
                 'regular' => [],
                 'featured' => [],
             ];
         }
-        if ($type == 'idea' || !$products = self::getProducts($productLimit + 1, $page, $productOffset, $tagID)) {
+
+        $products = self::getProducts($productLimit + 1, $page, $productOffset, $tagID);
+        if ($type == 'idea' || !$products) {
             $products['result'] = [];
         }
 
@@ -590,7 +593,7 @@ class PageController extends ApiController
 
             $result['relatedIdeas'] = $relatedIdeas;
             $result['canonicURL'] = PageHelper::getCanonicalLink(Route::getCurrentRoute(), $permalink);
-            PageHelper::putIntoRedis($cacheKey, $result, '3 hours');
+            PageHelper::putIntoRedis($cacheKey, $result, '1 month');
         }
 
 
