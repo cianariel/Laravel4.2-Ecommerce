@@ -22,13 +22,13 @@
                 <p>Ideaing was designed to help change the way you live. To live smarter.           Our team & community are here to provide the most interesting stories, best how-to tips, and surface the most amazing smart gadgets. </p>
             </div>
         </section>
-
+ 
         <section class="four-sections">
             <div class="container no-padding">
                 <div class="col-sm-6 col-xs-12 category-block category-smart-home hover-zoom overhide">
                     <div class="z-wrap relative">
                         <span class="m-icon m-icon--smart-home"></span>
-                        <h3>Shart Home</h3>
+                        <h3>Smart Home</h3>
                         <p>Improve your home security, lighting, and automation for smarter living.</p>
                         <a href="/smart-home" class="learn-more white box-link category-bg button--moema">Learn more</a>
                         <br/>
@@ -41,7 +41,7 @@
                 <div class="col-sm-6 col-xs-12 category-block category-smart-body hover-zoom overhide">
                     <div class="z-wrap relative">
                         <span class="m-icon m-icon--wearables"></span>
-                        <h3>Shart Body</h3>
+                        <h3>Smart Body</h3>
                         <p>Increase your performance, or simply stay fashionable while connected.</p>
                         <a href="/smart-body" class="learn-more white box-link category-bg button--moema">Learn more</a>
                         <br/>
@@ -55,7 +55,7 @@
                 <div class="col-sm-6 col-xs-12 category-block category-smart-travel hover-zoom overhide">
                     <div class="z-wrap relative">
                         <span class="m-icon m-icon--travel"></span>
-                        <h3>Shart Travel</h3>
+                        <h3>Smart Travel</h3>
                         <p>Stay connected and fully charged with smart luggage, bags, and gadgets.</p>
                         <a href="/smart-travel" class="learn-more white box-link category-bg button--moema">Learn more</a>
                         <br/>
@@ -70,7 +70,7 @@
                 <div class="col-sm-6 col-xs-12 category-block category-smart-entertainment hover-zoom overhide">
                     <div class="z-wrap relative">
                         <span class="m-icon m-icon--video"></span>
-                        <h3>Shart Entertainment</h3>
+                        <h3>Smart Entertainment</h3>
                         <p>Create the best audio / video entertainment systems for your home.</p>
                         <a href="/smart-entertainment" class="learn-more white box-link category-bg button--moema">Learn more</a>
                         <br/>
