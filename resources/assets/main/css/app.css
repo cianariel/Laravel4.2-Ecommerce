@@ -825,6 +825,27 @@ body.has-active-menu {
   left: 100%;
   margin-left: 6px; }
 
+.half-shadow {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  font-size: 1.5rem;
+  text-align: center;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  padding: 4px 4px 7px;
+  margin-bottom: 0;
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#727272+35,8e8e8e+100,727272+100&0+36,0.81+100 */
+  background: -moz-linear-gradient(top, rgba(14, 14, 14, 0) 35%, rgba(14, 14, 14, 0) 36%, rgba(14, 14, 10, 0.65));
+  /* FF3.6-15 */
+  background: -webkit-linear-gradient(top, rgba(14, 14, 14, 0) 35%, rgba(14, 14, 14, 0) 36%, rgba(14, 14, 10, 0.65));
+  /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to bottom, rgba(14, 14, 14, 0) 35%, rgba(14, 14, 14, 0) 36%, rgba(14, 14, 10, 0.65) 100%);
+  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00727272', endColorstr='#cf727272',GradientType=0 );
+  /* IE6-9 */ }
+
 /*!
  * Bootstrap v3.3.5 (http://getbootstrap.com)
  * Copyright 2011-2015 Twitter, Inc.
