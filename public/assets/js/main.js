@@ -5602,12 +5602,13 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
 
 
         $scope.registerWithFB = function () {
-            $window.open('/api/fb-login', 'Register with Facebook', 'width=500,height=400');
+
+            window.location = '/api/fb-login';
         };
 
         $scope.giveawayLoginFB = function () {
 
-            $window.open('/api/fb-login?vlu=giveaway&pl=' + $window.giveawayLink, 'Register with Facebook', 'width=500,height=400');
+            window.location = '/api/fb-login?vlu=giveaway&pl=' + $window.giveawayLink;
         };
 
 
