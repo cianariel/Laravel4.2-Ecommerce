@@ -9302,7 +9302,7 @@ header.sub-head {
   transition: transform .3s; }
   @media (max-width: 768px) {
     #login-modal {
-      min-height: 386px;
+      min-height: 430px;
       width: 85%;
       padding-left: 0; } }
   @media (max-width: 620px) {
@@ -9383,6 +9383,9 @@ header.sub-head {
     padding-top: 11px;
     padding-bottom: 15px;
     border: 0 !important; }
+    @media (max-width: 620px) {
+      .modal-login .btn.has-lamp-wrap {
+        padding-left: 25px; } }
     .modal-login .btn .lamp-wrap {
       background: #ededed;
       height: 100%;
@@ -12756,7 +12759,7 @@ html.hide-overflow {
       background: #fff; }
       @media (max-width: 620px) {
         .subscribe_email_popup #subscribe_email_popup .img-holder {
-          min-height: 170px !important; } }
+          min-height: 110px !important; } }
     .subscribe_email_popup #subscribe_email_popup .img-holder,
     .subscribe_email_popup #subscribe_email_popup .content-holder {
       min-height: 502px; }
