@@ -13957,10 +13957,10 @@ p {
       margin-left: 0 !important; } }
 .homepage-grid .grid-box-3 .box-item:not(:first-child) {
   margin-left: 0; }
-@media (min-width: 420px) and (max-width: 768px) {
+@media (min-width: 420px) and (max-width: 767px) {
   .homepage-grid .grid-box-3 .box-item {
     width: 93%;
-    margin: 25px 3% 0 !important; } }
+    margin-top: 25px; } }
 
 @media (max-width: 620px) {
   .box-item:not(.slider-box) {
@@ -14201,7 +14201,10 @@ p {
   margin-right: 1.7%; }
   @media (max-width: 1024px) {
     .main-content .box-item {
-      margin-left: 2%; } }
+      margin-left: 3%; } }
+  @media (max-width: 620px) {
+    .main-content .box-item {
+      width: 97% !important; } }
 
 .main-content .grid-box-3 .box-item {
   width: auto;
@@ -14223,7 +14226,7 @@ p {
       width: 30.4%; } }
   @media (max-width: 1024px) {
     .main-content .grid-box-3 .box-item {
-      width: 30.8%; } }
+      width: 30%; } }
 
 .grid-wrap {
   overflow: hidden;
@@ -14269,6 +14272,9 @@ p {
   border-top: 0 none; }
   .grid-box-full .box-item .img-holder {
     border-radius: 4px; }
+  @media (max-width: 768px) {
+    .grid-box-full .box-item {
+      width: 92.8%; } }
   @media (max-width: 620px) {
     .grid-box-full .box-item {
       width: 97%; } }
