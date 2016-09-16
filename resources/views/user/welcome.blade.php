@@ -22,7 +22,7 @@
                 <p>Ideaing was designed to help change the way you live. To live smarter.           Our team & community are here to provide the most interesting stories, best how-to tips, and surface the most amazing smart gadgets. </p>
             </div>
         </section>
- 
+
         <section class="four-sections">
             <div class="container no-padding">
                 <div class="col-sm-6 col-xs-12 category-block category-smart-home hover-zoom overhide">
