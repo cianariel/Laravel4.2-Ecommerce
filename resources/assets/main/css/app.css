@@ -8033,9 +8033,6 @@ form.mobile-search-bar {
   z-index: 1000;
   background: #fff; }
 
-body.single .scroll-header {
-  position: static; }
-
 header.colophon {
   min-height: 53px;
   max-width: 1400px;
