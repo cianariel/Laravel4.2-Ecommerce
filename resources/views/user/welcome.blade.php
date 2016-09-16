@@ -35,6 +35,7 @@
                         <a href="/shop/smart-home" class="shop-now swing-lined white"><span>Shop now</span></a>
                     </div>
                     <div class="box-item__overlay category-bg"></div>
+                    <div class="half-shadow"></div>
                     <img class="img-responsive" src="/assets/images/welcome/welcome-smart-home.jpg">
                 </div>
                 <div class="col-sm-6 col-xs-12 category-block category-smart-body hover-zoom overhide">
@@ -48,6 +49,7 @@
                     </div>
 
                     <div class="box-item__overlay category-bg"></div>
+                    <div class="half-shadow"></div>
                     <img class="img-responsive" src="/assets/images/welcome/welcome-smart-body.jpg">
                 </div>
                 <div class="col-sm-6 col-xs-12 category-block category-smart-travel hover-zoom overhide">
@@ -61,6 +63,7 @@
                     </div>
 
                     <div class="box-item__overlay category-bg"></div>
+                    <div class="half-shadow"></div>
                     <img class="img-responsive" src="/assets/images/welcome/welcome-smart-travel.jpg">
 
                 </div>
@@ -75,6 +78,7 @@
                     </div>
 
                     <div class="box-item__overlay category-bg"></div>
+                    <div class="half-shadow"></div>
                     <img class="img-responsive" src="/assets/images/welcome/welcome-smart-entertainment.jpg">
                 </div>
             </div>

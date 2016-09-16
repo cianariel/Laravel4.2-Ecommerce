@@ -1411,13 +1411,12 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
 
 
         $scope.registerWithFB = function () {
-
-            window.location = '/api/fb-login';
+            $window.open('/api/fb-login', 'Register with Facebook', 'width=500,height=400');
         };
 
         $scope.giveawayLoginFB = function () {
 
-            window.location = '/api/fb-login?vlu=giveaway&pl=' + $window.giveawayLink;
+            $window.open('/api/fb-login?vlu=giveaway&pl=' + $window.giveawayLink, 'Register with Facebook', 'width=500,height=400');
         };
 
 

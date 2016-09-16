@@ -908,6 +908,7 @@ button{
     right: 15px;
     color: #fff;
     font-size: 3rem;
+    z-index: 9;
     &.close-modal{
       top:60px;
       color: #444;
@@ -3704,11 +3705,11 @@ form.mobile-search-bar{
   background: #fff;
 }
 
-body.single{
-  .scroll-header{
-    position: static;
-  }
-}
+//body.single{
+//  .scroll-header{
+//    position: relative;
+//  }
+//}
 
 
 header.colophon{
@@ -5707,7 +5708,7 @@ header.sub-head{
 
 
   @media(max-width:768px){
-    min-height: 386px;
+    min-height: 430px;
     width: 85%;
     padding-left: 0;
   }
@@ -5816,6 +5817,12 @@ header.sub-head{
     padding-top: 11px;
     padding-bottom: 15px;
     border: 0 !important;
+
+    @media(max-width:620px){
+      &.has-lamp-wrap{
+        padding-left: 25px;
+      }
+    }
 
     .lamp-wrap{
       background: #ededed;
@@ -10883,7 +10890,7 @@ html.hide-overflow{
       background: #fff;
 
       @media(max-width: 620px) {
-        min-height: 170px !important;
+        min-height: 110px !important;
       }
     }
 
