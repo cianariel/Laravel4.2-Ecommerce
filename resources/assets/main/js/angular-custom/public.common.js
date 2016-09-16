@@ -1414,13 +1414,13 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
 
             //window.location = '/api/fb-login';
 
-            $window.open('/api/fb-login', 'Register with Facebook', 'width=550,height=400');
+            $window.open('/api/fb-login', 'Register with Facebook', 'width=750,height=500');
 
         };
 
         $scope.giveawayLoginFB = function () {
 
-            var $modal = $window.open('/api/fb-login?vlu=giveaway&pl=' + $window.giveawayLink, 'Register with Facebook', 'width=550,height=400');
+            var $modal = $window.open('/api/fb-login?vlu=giveaway&pl=' + $window.giveawayLink, 'Register with Facebook', 'width=750,height=500');
 
             //window.location = '/api/fb-login?vlu=giveaway&pl=' + $window.giveawayLink;
         };
