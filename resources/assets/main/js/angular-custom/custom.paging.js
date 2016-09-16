@@ -1073,8 +1073,6 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
 
             if($('.base-url-holder').length && $('.base-url-holder').data('base-url')){
                 var baseUrl = 'https://' + window.location.host + $('.base-url-holder').data('base-url');
-                console.log('baseUrl')
-                console.log(baseUrl)
             }else{
                 var baseUrl = 'https://' + window.location.host + window.location.pathname;
             }

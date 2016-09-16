@@ -5602,13 +5602,12 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
 
 
         $scope.registerWithFB = function () {
-
-            window.location = '/api/fb-login';
+            $window.open('/api/fb-login', 'Register with Facebook', 'width=500,height=400');
         };
 
         $scope.giveawayLoginFB = function () {
 
-            window.location = '/api/fb-login?vlu=giveaway&pl=' + $window.giveawayLink;
+            $window.open('/api/fb-login?vlu=giveaway&pl=' + $window.giveawayLink, 'Register with Facebook', 'width=500,height=400');
         };
 
 
@@ -7020,8 +7019,6 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
 
             if($('.base-url-holder').length && $('.base-url-holder').data('base-url')){
                 var baseUrl = 'https://' + window.location.host + $('.base-url-holder').data('base-url');
-                console.log('baseUrl')
-                console.log(baseUrl)
             }else{
                 var baseUrl = 'https://' + window.location.host + window.location.pathname;
             }

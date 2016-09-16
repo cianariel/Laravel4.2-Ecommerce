@@ -6024,7 +6024,8 @@ button {
     top: 2px;
     right: 15px;
     color: #fff;
-    font-size: 3rem; }
+    font-size: 3rem;
+    z-index: 9; }
     .login-signup-modal .close-button.close-modal {
       top: 60px;
       color: #444; }
