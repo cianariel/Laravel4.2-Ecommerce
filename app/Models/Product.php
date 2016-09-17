@@ -165,15 +165,22 @@ class Product extends Model
     {
         try {
 
-            //dd();
+
             //ProductAuthorName: $scope.ProductAuthorName,
+
+            // date time zone setting
+            $date =  Carbon::parse($product['PublishAt']);
+            $time =  Carbon::parse($product['PublishTime']);
+            $date->setTimezone(env('TIMEZONE','UTC'));
+            $time->setTimezone(env('TIMEZONE','UTC'));
+
             $data = array(
                 "product_category_id" => ($product['CategoryId'] != null) ? $product['CategoryId'] : env('DEFAULT_CATEGORY_ID', '44'),
                 "user_name" => ($product['ProductAuthorName'] != null) ? $product['ProductAuthorName'] : 'Anonymous User',
                 "product_vendor_id" => $product['ProductVendorId'],
                 "show_for" => ($product['ShowFor'] != null) ? $product['ShowFor'] : '',
                 "product_name" => $product['Name'],
-                "publish_at" => Carbon::createFromTimestamp(strtotime($product['PublishAt']))->toDateTimeString(),
+                "publish_at" =>Carbon::create($date->year,$date->month,$date->day,$time->hour,$time->minute)->toDateTimeString(),
                 "product_permalink" => (isset($product['Permalink'])) ? $product['Permalink'] : null,
                 "product_description" => ($product['Description'] != null) ? $product['Description'] : "",
                 "specifications" => json_encode($product['Specifications']),
