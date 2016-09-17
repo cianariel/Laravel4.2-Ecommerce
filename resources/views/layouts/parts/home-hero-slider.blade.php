@@ -1,78 +1,65 @@
-<div id="hero-slider" class="slider home-hero-slider default-hero-slider heroSlider has-bullets 2" ng-show="ideaCategory == 'default'">
-        <?php
-         if(function_exists('is_single')){
-             $sliderContent = getHeroSliderContent();
-         }
+<article id="slider">
+    <input checked="" type="radio" name="slider" id="slide1">
+    <input type="radio" name="slider" id="slide2">
+    <input type="radio" name="slider" id="slide3">
+    <input type="radio" name="slider" id="slide4">
+    <input type="radio" name="slider" id="slide5">
 
-        if($sliderContent){
-        foreach($sliderContent as $item){ ?>
-            <a  href="<?php echo $item['url']?>" class="box-item product-box slider-box text-center category-<?php echo $item['category_main']?>">
-                <div class="color-overlay category-bg"></div>
-                <div class="img-holder">
-                        <img itemprop="image" src="{{$item['image']}}">
-                        <img itemprop="image" class="rsTmb" src="{{$item['image']}}">
-                </div>
-                <div class="box-item__label-idea">
-                    <span href="<?php echo $item['url']?>" class="slider-heading"><?php echo $item['title']?></span>
-                </div>
-                <div class="box-item__author">
-                    <span href="/user/profile/<?php echo $item['authorlink']?>" class="user-widget">
-                        <img class="user-widget__img" src="<?php echo $item['avator']?>">
-                        <span class="user-widget__name"><?php echo $item['author']?></span>
-                    </span>
-                </div>
-                <ul class="social-stats">
-                    <?php if($item['views'] >= 100){ ?>
-                        <li class="social-stats__item views">
-                            <b><i class="m-icon m-icon--flame pink"></i></b>
-                            <b><span class="social-stats__text pink"><?php echo $item['views']?> views</span></b>
-                        </li> 
-                    <?php } ?>
+    <div id="slides">
 
-                    <?php
-                        switch($item['category_main']){
-                            case 'smart-body':
-                                $smartIcon =  'wearables';
-                                break;
-                            case 'smart-entertainment':
-                                $smartIcon =  'video';
-                                break;
-                            case 'smart-travel':
-                                $smartIcon =  'travel';
-                                break;
-                            case 'deals':
-                                $smartIcon =  'deals';
-                                break;
-                            default:
-                                $smartIcon =  'smart-home';
-                        }
-                    ?>
-                    
-                    <li class="social-stats__item category-tag pink">
-                        <b><i class="m-icon m-icon--<?php echo $smartIcon ?> pink"></i></b>
-                    </li>
-                </ul>
-            </a>
-        <?php }
-            }   ?>
-</div>
+        <div id="overflow">
 
-<div ng-if="readContent.staticSliderContent" id="hero-slider" class="slider home-hero-slider heroSlider has-bullets">
-            <a ng-repeat="item in readContent.staticSliderContent"  href="@{{item.url}}" class="box-item product-box slider-box text-center category-@{{item.category_main}}">
-                <div class="color-overlay category-bg"></div>
-                <div class="img-holder">
-                        <img itemprop="image" src="@{{item.image}}">
-                        <img itemprop="image" class="rsTmb" src="@{{item.image}}">
-                </div>
-                <div class="box-item__label-idea">
-                    <span href="@{{item.url}}" class="slider-heading">@{{item.title}}</span>
-                </div>
-                <div class="box-item__author">
-                    <span href="/user/profile/@{{item.authorlink}}" class="user-widget">
-                        <img class="user-widget__img" src="@{{item.avator}}">
-                        <span class="user-widget__name">@{{item.author}}</span> 
-                    </span>
-                </div>
-            </a> 
-</div>
+            <div class="inner">
+                <article>
+                    <div class="info"><h3>Cloud Dragon</h3> by <a href="http://voyager3.tumblr.com/">Brendan Zabarauskas</a></div>
+                    <img src="http://csscience.com/responsiveslidercss3/CouldDragonByBjzaba.png">
+                </article>
+
+                <article>
+                    <div class="info"><h3>Mountain Fort</h3> by <a href="http://voyager3.tumblr.com/">Brendan Zabarauskas</a></div>
+                    <img src="http://csscience.com/responsiveslidercss3/MountainFortByBjzaba.png">
+                </article>
+
+                <article>
+                    <div class="info"><h3>Mountain Outpost</h3> by <a href="http://voyager3.tumblr.com/">Brendan Zabarauskas</a></div>
+                    <img src="http://csscience.com/responsiveslidercss3/CouldDragonByBjzaba.png">
+                </article>
+
+                <article>
+                    <div class="info"><h3>Cliffs</h3> by <a href="http://voyager3.tumblr.com/">Brendan Zabarauskas</a></div>
+                    <img src="http://csscience.com/responsiveslidercss3/MountainFortByBjzaba.png">
+                </article>
+
+                <article>
+                    <div class="info"><h3>Hill Fort</h3> by <a href="http://voyager3.tumblr.com/">Brendan Zabarauskas</a></div>
+                    <img src="http://csscience.com/responsiveslidercss3/CouldDragonByBjzaba.png">
+                </article>
+
+            </div> <!-- .inner -->
+
+        </div> <!-- #overflow -->
+
+    </div> <!-- #slides -->
+
+    <div id="controls">
+
+        <label for="slide1"></label>
+        <label for="slide2"></label>
+        <label for="slide3"></label>
+        <label for="slide4"></label>
+        <label for="slide5"></label>
+
+    </div> <!-- #controls -->
+
+    <div id="active">
+
+        <label for="slide1"></label>
+        <label for="slide2"></label>
+        <label for="slide3"></label>
+        <label for="slide4"></label>
+        <label for="slide5"></label>
+
+    </div> <!-- #active -->
+
+</article> <!-- #slider -->
 

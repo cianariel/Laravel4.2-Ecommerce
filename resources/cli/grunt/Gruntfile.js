@@ -41,6 +41,8 @@ module.exports = function(grunt) {
                     '../../assets/main/js/vendor/bootstrap-colorpicker-module.js',
 
                     '../../assets/main/js/app.js',
+                    '../../assets/main/js/shams.js',
+
                     '../../assets/main/js/angular-custom/public.common.js',
                     '../../assets/main/js/angular-custom/custom.paging.js',
                     '../../assets/main/js/angular-custom/custom.product.js',
