@@ -9687,6 +9687,7 @@ body.single .home-subheader {
     margin-top: 0 !important;
     overflow: hidden !important; }
   .homepage .home-hero-slider .img-holder {
+    height: 100%;
     background: #000; }
     .homepage .home-hero-slider .img-holder > img {
       opacity: .7;
