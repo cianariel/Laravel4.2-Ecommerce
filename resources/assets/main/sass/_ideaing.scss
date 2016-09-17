@@ -6423,6 +6423,13 @@ body.single{
         }
       }
     }
+    .social-stats{
+      position: absolute;
+      bottom: 10px;
+      right: 80px;
+      position: absolute;
+      font-weight: bold;
+    }
   }
   #hero-slider .rsNav.rsBullets{
     @media (max-width: 1200px){

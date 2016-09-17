@@ -23,13 +23,11 @@
                 </div>
                 <ul class="social-stats">
                     <li class="social-stats__item">
-                        <i class="m-icon m-icon--flame ng-hide"></i>
-                        <span class="social-stats__text pink ng-binding">87 views</span>
+                        <i class="m-icon m-icon--flame"></i>
+                        <span class="social-stats__text pink">87 views</span>
                     </li>
                     <li class="social-stats__item">
-                        <a href="#">
-                            <i class="m-icon m-icon--buble"></i>
-                        </a>
+                        <i class="m-icon m-icon--smart-home"></i>
                     </li>
                 </ul>
             </a>

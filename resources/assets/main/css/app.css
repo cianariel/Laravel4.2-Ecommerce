@@ -9746,6 +9746,12 @@ body.single .home-subheader {
             left: 0; } }
       .homepage .home-hero-slider .rsThumbsContainer .rsThumb img {
         width: 100%; }
+  .homepage .home-hero-slider .social-stats {
+    position: absolute;
+    bottom: 10px;
+    right: 80px;
+    position: absolute;
+    font-weight: bold; }
 @media (max-width: 1200px) {
   .homepage #hero-slider .rsNav.rsBullets {
     top: -28px; } }
