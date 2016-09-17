@@ -28,9 +28,28 @@
                             <b><span class="social-stats__text pink"><?php echo $item['views']?> views</span></b>
                         </li> 
                     <?php } ?>
+
+                    <?php
+                        switch($item['category_main']){
+                            case 'smart-body':
+                                $smartIcon =  'wearables';
+                                break;
+                            case 'smart-entertainment':
+                                $smartIcon =  'video';
+                                break;
+                            case 'smart-travel':
+                                $smartIcon =  'travel';
+                                break;
+                            case 'deals':
+                                $smartIcon =  'deals';
+                                break;
+                            default:
+                                $smartIcon =  'smart-home';
+                        }
+                    ?>
                     
                     <li class="social-stats__item category-tag pink">
-                        <b><i class="m-icon m-icon--smart-home pink"></i></b>
+                        <b><i class="m-icon m-icon--<?php echo $smartIcon ?> pink"></i></b>
                     </li>
                 </ul>
             </a>
