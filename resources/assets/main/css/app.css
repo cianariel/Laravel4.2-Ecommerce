@@ -13957,7 +13957,7 @@ p {
       margin-left: 0 !important; } }
 .homepage-grid .grid-box-3 .box-item:not(:first-child) {
   margin-left: 0; }
-@media (min-width: 420px) and (max-width: 767px) {
+@media (min-width: 420px) and (max-width: 665px) {
   .homepage-grid .grid-box-3 .box-item {
     width: 93%;
     margin-top: 25px; } }
@@ -13997,7 +13997,7 @@ p {
   .box-item .user-widget__img {
     margin-left: 0; }
   .box-item.product-box .idea-meta {
-    bottom: -128px; }
+    bottom: -133px; }
     .box-item.product-box .idea-meta a {
       color: #fff; }
   .box-item.hovered a,

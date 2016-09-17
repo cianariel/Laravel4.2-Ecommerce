@@ -24,7 +24,7 @@
       &:not(:first-child){
         margin-left: 0;
       }
-      @media (min-width:420px) and (max-width:767px){
+      @media (min-width:420px) and (max-width:665px){
         width: 93%;
         margin-top: 25px;
       }
@@ -92,7 +92,7 @@
 
   &.product-box{
     .idea-meta{
-      bottom: -128px;
+      bottom: -133px;
 
       a{
         color: #fff;
@@ -436,7 +436,6 @@
 
 		@media (max-width: 767px) {
           float: left;
-          //width: 97%;
             border: 1px solid #eee;
 			border-top: 0px;
 		}
