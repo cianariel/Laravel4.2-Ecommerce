@@ -22,10 +22,13 @@
                     </span>
                 </div>
                 <ul class="social-stats">
-                    <li class="social-stats__item views">
-                        <b><i class="m-icon m-icon--flame pink"></i></b>
-                        <b><span class="social-stats__text pink"><?php echo $item['authorlink']?> views</span></b>
-                    </li>
+                    <?php if($item['views'] >= 100){ ?>
+                        <li class="social-stats__item views">
+                            <b><i class="m-icon m-icon--flame pink"></i></b>
+                            <b><span class="social-stats__text pink"><?php echo $item['views']?> views</span></b>
+                        </li> 
+                    <?php } ?>
+                    
                     <li class="social-stats__item category-tag pink">
                         <b><i class="m-icon m-icon--smart-home pink"></i></b>
                     </li>
