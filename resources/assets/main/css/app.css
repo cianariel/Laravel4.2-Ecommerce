@@ -13957,9 +13957,13 @@ p {
       margin-left: 0 !important; } }
 .homepage-grid .grid-box-3 .box-item:not(:first-child) {
   margin-left: 0; }
-@media (min-width: 769px) {
+@media (min-width: 620px) {
   .homepage-grid .grid-box-3 .box-item img {
     right: -7%; } }
+@media (min-width: 665px) and (max-width: 737px) {
+  .homepage-grid .grid-box-3 .box-item {
+    max-height: 245px;
+    min-height: 0 !important; } }
 @media (min-width: 420px) and (max-width: 665px) {
   .homepage-grid .grid-box-3 .box-item {
     width: 93%;
@@ -14000,7 +14004,7 @@ p {
   .box-item .user-widget__img {
     margin-left: 0; }
   .box-item.product-box .idea-meta {
-    bottom: -133px; }
+    bottom: -147px; }
     .box-item.product-box .idea-meta a {
       color: #fff; }
   .box-item.hovered a,
