@@ -182,7 +182,8 @@
                                                                 Amazon API Load
                                                                 {{--<i class="fa fa-refresh"></i>--}}
                                                             </button>
-                                                           &nbsp; <b>Last Update : @{{ UpdateTime | date:'dd-MMM-yy HH:mm' }}</b>
+                                                            &nbsp; <b>Last Update
+                                                                : @{{ UpdateTime | date:'dd-MMM-yy HH:mm' }}</b>
 
                                                         </div>
 
@@ -690,7 +691,7 @@
                                                                         <td><img width="110px"
                                                                                  ng-src="@{{ media.media_link }}"></td>
                                                                         <td>@{{ media.media_name}}</td>
-                                                                        <td>@{{ media.sequence}}</td>
+                                                                        <td>@{{ media.sequence == 0?'':media.sequence}}</td>
                                                                         <td>@{{ media.media_type}} </td>
                                                                         <td>@{{ media.is_hero_item == 1? 'true':''}} </td>
                                                                         <td>@{{ media.is_main_item == 1? 'true':''}} </td>
