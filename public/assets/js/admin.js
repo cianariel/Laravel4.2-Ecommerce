@@ -239,7 +239,11 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
         // Initializing application
 
         $scope.initPage = function () {
-            //   console.log($location.host());
+
+//            $scope.publishTime = new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});;
+            $scope.publishTime = new Date('2016-08-24 22:18:46');
+
+            //   console.log('time',$scope.publishTime.getHours());
             $scope.catId = '';
             $scope.CategoryId = '';
             $scope.currentCategoryName = '';
@@ -1216,6 +1220,7 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
                     CategoryId: $scope.selectedItem,
                     Name: $scope.Name,
                     PublishAt: $scope.datePicker,
+                    PublishTime: $scope.publishTime,
                     Permalink: $scope.Permalink,
                     Description: $scope.htmlContent,
                     Price: $scope.Price,
@@ -1261,6 +1266,8 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
                 $scope.addProduct();
             } else {
                 $scope.productUpdateInfo();
+                $scope.loadProductData($scope.ProductId);
+
             }
 
             $scope.closeAlert();
@@ -1286,6 +1293,7 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
                     Name: $scope.Name,
                     Permalink: $scope.Permalink,
                     PublishAt: $scope.datePicker,
+                    PublishTime: $scope.publishTime,
                     Description: $scope.htmlContent,
                     Price: $scope.Price,
                     SalePrice: $scope.SalePrice,
@@ -1565,6 +1573,9 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
                     $scope.externalReviewLink = data.data.review_ext_link;
                     $scope.ideaingReviewScore = data.data.ideaing_review_score;
                     $scope.datePicker = new Date(data.data.publish_at);
+                    $scope.publishTime = new Date(data.data.publish_at);
+                    $scope.UpdateTime = new Date(data.data.updated_at);
+
 
                     // hide category in edit mood
                     $scope.hideCategoryPanel = true;
@@ -1596,6 +1607,7 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
                 data: {
                     id: id,
                     PublishAt: $scope.datePicker,
+                    PublishTime : $scope.publishTime
                 }
             }).success(function (data) {
                 $scope.outputStatus(data, "Product promoted successfully.");
