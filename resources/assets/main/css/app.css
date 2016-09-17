@@ -14231,11 +14231,18 @@ p {
 .grid-wrap {
   overflow: hidden;
   padding-top: 25px; }
+  @media (min-width: 1100px) {
+    .grid-wrap {
+      padding-left: 3.5%; } }
+  @media (max-width: 1100px) {
+    .grid-wrap {
+      padding-left: 4px; } }
   @media (max-width: 620px) {
     .grid-wrap {
       padding-top: 0; }
       .grid-wrap .box-item {
         margin-top: 25px;
+        margin-left: 6px !important;
         margin-left: 5px !important;
         max-width: 97%; } }
 
@@ -14267,7 +14274,7 @@ p {
     top: 0; }
 
 .grid-box-full .box-item {
-  width: 96.3%;
+  width: 93.6%;
   height: auto;
   border-top: 0 none; }
   .grid-box-full .box-item .img-holder {
@@ -14280,7 +14287,7 @@ p {
       width: 97%; } }
 
 .grid-box-2 .box-item {
-  width: 47%;
+  width: 46%;
   border-top: 0 none;
   float: left;
   border-radius: 5px; }
