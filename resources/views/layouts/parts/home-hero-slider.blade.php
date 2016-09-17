@@ -22,12 +22,12 @@
                     </span>
                 </div>
                 <ul class="social-stats">
-                    <li class="social-stats__item">
-                        <i class="m-icon m-icon--flame"></i>
-                        <span class="social-stats__text pink">87 views</span>
+                    <li class="social-stats__item views">
+                        <b><i class="m-icon m-icon--flame pink"></i></b>
+                        <b><span class="social-stats__text pink"><?php echo $item['authorlink']?> views</span></b>
                     </li>
-                    <li class="social-stats__item">
-                        <i class="m-icon m-icon--smart-home"></i>
+                    <li class="social-stats__item category-tag pink">
+                        <b><i class="m-icon m-icon--smart-home pink"></i></b>
                     </li>
                 </ul>
             </a>
