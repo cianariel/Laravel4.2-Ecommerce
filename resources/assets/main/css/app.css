@@ -13960,7 +13960,7 @@ p {
 @media (min-width: 620px) {
   .homepage-grid .grid-box-3 .box-item img {
     right: -7%; } }
-@media (min-width: 665px) and (max-width: 737px) {
+@media (min-width: 665px) and (max-width: 769px) {
   .homepage-grid .grid-box-3 .box-item {
     max-height: 245px;
     min-height: 0 !important; } }
