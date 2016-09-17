@@ -14223,7 +14223,7 @@ p {
     .main-content .grid-box-3 .box-item {
       display: block;
       float: left;
-      width: 30.4%; } }
+      width: 30%; } }
   @media (max-width: 1024px) {
     .main-content .grid-box-3 .box-item {
       width: 30%; } }
