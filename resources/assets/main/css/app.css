@@ -13957,6 +13957,9 @@ p {
       margin-left: 0 !important; } }
 .homepage-grid .grid-box-3 .box-item:not(:first-child) {
   margin-left: 0; }
+@media (min-width: 769px) {
+  .homepage-grid .grid-box-3 .box-item img {
+    right: -7%; } }
 @media (min-width: 420px) and (max-width: 665px) {
   .homepage-grid .grid-box-3 .box-item {
     width: 93%;

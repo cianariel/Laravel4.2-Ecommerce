@@ -20,9 +20,14 @@
   }
   .grid-box-3{
     .box-item{
-
       &:not(:first-child){
         margin-left: 0;
+      }
+
+      @media(min-width: 769px){
+        img{
+          right: -7%; 
+        }
       }
       @media (min-width:420px) and (max-width:665px){
         width: 93%;
