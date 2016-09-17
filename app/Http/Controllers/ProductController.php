@@ -375,12 +375,16 @@ class ProductController extends ApiController
         $media = new Media();
 
         $media->media_name = $inputData['MediaTitle'];
-        $media->sequence = $inputData['MediaSequence'];
         $media->media_type = $inputData['MediaType'];
         $media->media_link = $inputData['MediaLink'];
         $media->is_hero_item = $inputData['IsHeroItem'];
         $media->is_main_item = $inputData['IsMainItem'];
 
+    //    dd('media : ', empty($inputData['IsHeroItem']) && empty($inputData['IsMainItem']));
+        if(empty($inputData['IsHeroItem']) && empty($inputData['IsMainItem']))
+            $media->sequence = $inputData['MediaSequence'];
+        else
+            $media->sequence = 0;
 
         try {
             $result = $product->medias()->save($media);
@@ -398,9 +402,22 @@ class ProductController extends ApiController
     {
         $result['result'] = Product::find($id)->medias;
 
-        $result['count'] = $result['result']->count();
 
-        //  dd($result);
+        $tmp = $result['result']->map(function($item,$key){
+            $count = 0;
+
+            if(empty($item->is_hero_item) && empty($item->is_main_item) )
+                $count =1;
+
+            return $count;
+        });
+
+        // $result['count'] = $result['result']->count();
+
+        $result['count'] = $tmp->sum();
+
+
+
 
         return $this->setStatusCode(\Config::get("const.api-status.success"))
                     ->makeResponse($result);
