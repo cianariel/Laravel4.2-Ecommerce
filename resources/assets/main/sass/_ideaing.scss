@@ -6425,6 +6425,12 @@ body.single{
       position: absolute;
       font-weight: bold;
 
+      @media(max-width: 620px){
+        bottom: 33px;
+        right: -27px;
+        position: absolute;
+      }
+
       .views{
         width: 130px;
         padding-right: 25px;

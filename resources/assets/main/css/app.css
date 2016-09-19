@@ -9756,6 +9756,11 @@ body.single .home-subheader {
     right: 20px;
     position: absolute;
     font-weight: bold; }
+    @media (max-width: 620px) {
+      .homepage .home-hero-slider .social-stats {
+        bottom: 33px;
+        right: -27px;
+        position: absolute; } }
     .homepage .home-hero-slider .social-stats .views {
       width: 130px;
       padding-right: 25px; }
@@ -14593,8 +14598,15 @@ article img {
     height: 50px; }
 
   .ideaing-home-slider #active {
-    margin: 23% 0 0; }
+    margin: 23% 0 0; } }
+  @media only screen and (max-width: 450px) and (max-width: 620px) {
+    .ideaing-home-slider #active {
+      bottom: 18px;
+      left: 0;
+      right: 0;
+      position: absolute; } }
 
+@media only screen and (max-width: 450px) {
   .ideaing-home-slider #slides {
     padding: 1% 0;
     -webkit-border-radius: 0px;

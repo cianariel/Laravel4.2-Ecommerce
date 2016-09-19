@@ -328,6 +328,13 @@ article img {
 
   .ideaing-home-slider #active {
     margin: 23% 0 0;
+
+    @media(max-width:620px){
+      bottom: 18px;
+      left: 0;
+      right: 0;
+      position: absolute;
+    }
   }
 
   .ideaing-home-slider #slides {
