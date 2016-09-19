@@ -5013,7 +5013,6 @@ ul.social-stats{
   }
   .social-stats{
         position: absolute;
-        right: 0px;
         right: -79px;
         top: -10px;
         z-index: 58;
@@ -6428,7 +6427,7 @@ body.single{
       position: absolute;
       width: auto;
       bottom: 10px;
-      right: 40px;
+      right: 20px;
       position: absolute;
       font-weight: bold;
 
@@ -6457,9 +6456,9 @@ body.single{
     }
   }
 
-  .app-wrap{
-    background: #F7F7F7;
-  }
+  //.app-wrap{
+  //  background: #F7F7F7;
+  //}
 
 }
 

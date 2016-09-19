@@ -75,9 +75,9 @@ if(function_exists('is_single')){
 
     <div id="controls">
 
-        <label for="slide1"></label>
-        <label for="slide2"></label>
-        <label for="slide3"></label>
+        <label for="slide1" data-slidenum="1"></label>
+        <label for="slide2" data-slidenum="2"></label>
+        <label for="slide3" data-slidenum="3"></label>
 
     </div> <!-- #controls -->
 

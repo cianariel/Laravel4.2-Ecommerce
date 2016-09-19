@@ -126,31 +126,53 @@
 
 
 <script>
-//    var timer = null;
-//    if (timer) {
-//        clearTimeout(timer); //cancel the previous timer.
-//        timer = null;
-//    }
-    var i = 1;
 
-    setInterval(function(){
-        if(i == 1){
-            $('#active label').removeClass('red');
-        }else{
-            $('#active label[for="slide' + (i - 1) + '"]').addClass('red');
-        }
-        setTimeout(function(){
-            $('#slide' + i).prop('checked', true);
+window.currentSlide = 1;
 
-            i++;
+function slideMe(){
 
-            if(i == 4){
-                i = 1;
+//        if(window.currentSlide == 1){
+//            console.log('numba 1')
+//            $('#active label[for="slide2"]').removeClass('red');
+//            $('#active label[for="slide3"]').removeClass('red');
+//
+//        }else if(window.currentSlide == 2){
+//            console.log('numba 2')
+//            $('#active label[for="slide1"]').addClass('red');
+//            $('#active label[for="slide3"]').removeClass('red');
+//
+//        }else if(window.currentSlide == 3){
+//            console.log('numba 3')
+//            $('#active label[for="slide1"]').addClass('red');
+//            $('#active label[for="slide2"]').addClass('red');
+//        }
+//        setTimeout(function(){
+            $('#slide' + window.currentSlide).prop('checked', true);
+
+            window.currentSlide++;
+
+            if(window.currentSlide == 4){
+                window.currentSlide = 1;
+                $('#active label').removeClass('red');
             }
-        }, 500);
+//        }, 500);
+    }
 
-
+     window.sliderTimer = setInterval(function(){
+        slideMe();
     }, 5000);
+
+    $('#controls label').click(function(){
+        clearInterval(window.sliderTimer);
+
+        window.currentSlide = $(this).data('slidenum');
+        console.log(window.currentSlide)
+
+
+        window.sliderTimer = setInterval(function(){
+            slideMe();
+        }, 5000);
+    });
 </script>
 
 

@@ -1,6 +1,7 @@
 
-.ideaing-home-slider {
+#hero-slider.ideaing-home-slider {
   text-align: center;
+  margin-top: 5px;
 }
 
 h2 {
@@ -88,19 +89,19 @@ article img {
 #active label {
   display: inline-block;
   width: 50px;
-  height: 5px;
+  height: 2px;
   background: #fff;
   transition: none;
 
-  &.red{
-    background: $iridium;
-  }
+  //&.red{
+  //  background: $iridium;
+  //}
 }
 
-#active label:hover {
-  background: #ccc;
-  border-color: #777 !important;
-}
+//#active label:hover {
+//  background: #ccc;
+//  border-color: #777 !important;
+//}
 
 #controls label:hover {
   opacity: 0.8;
@@ -112,13 +113,14 @@ article img {
 #slide3:checked ~ #controls label:nth-child(4),
 #slide4:checked ~ #controls label:nth-child(5),
 #slide5:checked ~ #controls label:nth-child(1) {
-  //background: blue;
+  background: blue;
   float: right;
   margin: 0;
   display: block;
   background-size: contain;
   background-repeat: no-repeat;
   background-image: url("/assets/images/arrow-right-pink.png");
+  cursor: pointer;
 }
 
 
@@ -127,13 +129,14 @@ article img {
 #slide3:checked ~ #controls label:nth-child(2),
 #slide4:checked ~ #controls label:nth-child(3),
 #slide5:checked ~ #controls label:nth-child(4) {
-  //background:blue;
+  background:blue;
   float: left;
   margin: 0;
   display: block;
   background-size: contain;
   background-repeat: no-repeat;
   background-image: url("/assets/images/arrow-left-pink.png");
+  cursor: pointer;
 }
 
 #slide1:checked ~ #active label:nth-child(1),
@@ -149,10 +152,26 @@ article img {
     position: relative;
     //top: -5px;
     width: 50px;
-    height: 5px;
+    height: 2px;
     background: $iridium;
     animation: fullexpand 30s ease-out infinite;
   }
+}
+
+#slide2:checked ~ #active label:nth-child(1)
+ {
+  background: $iridium;
+  border-color: $iridium;
+
+}
+
+
+#slide3:checked ~ #active label:nth-child(1),
+#slide3:checked ~ #active label:nth-child(2)
+{
+  background: $iridium;
+  border-color: $iridium;
+
 }
 
 /* Info Box */
