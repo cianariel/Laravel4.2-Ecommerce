@@ -9671,7 +9671,7 @@ body.single .home-subheader {
   z-index: 0; }
 .homepage .home-hero-slider {
   margin-top: 5px;
-  height: auto;
+  height: auto !important;
   max-width: 1200px;
   margin-left: auto;
   margin-right: auto;
