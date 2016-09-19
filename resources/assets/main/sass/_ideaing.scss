@@ -6427,8 +6427,15 @@ body.single{
 
       @media(max-width: 620px){
         bottom: 33px;
-        right: -27px;
+        right: 0;
+        left: 0;
         position: absolute;
+
+        //i, b, span{
+        //  &.pink{
+        //    color: #fff !important;
+        //  }
+        //}
       }
 
       .views{

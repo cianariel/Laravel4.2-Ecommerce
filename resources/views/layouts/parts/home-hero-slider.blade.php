@@ -37,8 +37,8 @@ if(function_exists('is_single')){
                                     <ul class="social-stats">
                                         <?php if($item['views'] >= 100){ ?>
                                         <li class="social-stats__item views">
-                                            <b><i class="m-icon m-icon--flame pink"></i></b>
-                                            <b><span class="social-stats__text pink"><?php echo $item['views']?> views</span></b>
+                                            <b><i class="m-icon m-icon--flame white"></i></b>
+                                            <b><span class="social-stats__text white"><?php echo $item['views']?> views</span></b>
                                         </li>
                                         <?php } ?>
 
@@ -61,8 +61,8 @@ if(function_exists('is_single')){
                                         }
                                         ?>
 
-                                        <li class="social-stats__item category-tag pink">
-                                            <b><i class="m-icon m-icon--<?php echo $smartIcon ?> pink"></i></b>
+                                        <li class="social-stats__item category-tag white">
+                                            <b><i class="m-icon m-icon--<?php echo $smartIcon ?> white"></i></b>
                                         </li>
                                     </ul>
                                 </a>

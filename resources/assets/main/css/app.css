@@ -9759,7 +9759,8 @@ body.single .home-subheader {
     @media (max-width: 620px) {
       .homepage .home-hero-slider .social-stats {
         bottom: 33px;
-        right: -27px;
+        right: 0;
+        left: 0;
         position: absolute; } }
     .homepage .home-hero-slider .social-stats .views {
       width: 130px;
