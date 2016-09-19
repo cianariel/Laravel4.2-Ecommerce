@@ -14424,7 +14424,6 @@ article img {
 #slide3:checked ~ #controls label:nth-child(4),
 #slide4:checked ~ #controls label:nth-child(5),
 #slide5:checked ~ #controls label:nth-child(1) {
-  background: blue;
   float: right;
   margin: 0;
   display: block;
@@ -14438,7 +14437,6 @@ article img {
 #slide3:checked ~ #controls label:nth-child(2),
 #slide4:checked ~ #controls label:nth-child(3),
 #slide5:checked ~ #controls label:nth-child(4) {
-  background: blue;
   float: left;
   margin: 0;
   display: block;
