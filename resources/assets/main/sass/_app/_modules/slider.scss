@@ -81,16 +81,20 @@ article img {
 }
 
 #active {
-  margin: -19% 0 0;
+  margin: -7% 0 0;
   text-align: center;
 }
 
 #active label {
   display: inline-block;
-
   width: 50px;
   height: 5px;
   background: #fff;
+  transition: none;
+
+  &.red{
+    background: $iridium;
+  }
 }
 
 #active label:hover {
@@ -140,13 +144,14 @@ article img {
   background: #d1d1d1;
   border-color: #d1d1d1 !important;
 
+
   .progress-bar {
     position: relative;
     //top: -5px;
     width: 50px;
     height: 5px;
-    background: red;
-    animation: fullexpand 25s ease-out infinite;
+    background: $iridium;
+    animation: fullexpand 30s ease-out infinite;
   }
 }
 

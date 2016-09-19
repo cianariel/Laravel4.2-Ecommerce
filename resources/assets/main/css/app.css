@@ -14408,14 +14408,17 @@ article img {
   opacity: 1; }
 
 #active {
-  margin: -19% 0 0;
+  margin: -7% 0 0;
   text-align: center; }
 
 #active label {
   display: inline-block;
   width: 50px;
   height: 5px;
-  background: #fff; }
+  background: #fff;
+  transition: none; }
+  #active label.red {
+    background: #FC1159; }
 
 #active label:hover {
   background: #ccc;
@@ -14463,8 +14466,8 @@ article img {
     position: relative;
     width: 50px;
     height: 5px;
-    background: red;
-    animation: fullexpand 25s ease-out infinite; }
+    background: #FC1159;
+    animation: fullexpand 30s ease-out infinite; }
 
 /* Info Box */
 .info {

@@ -134,12 +134,22 @@
     var i = 1;
 
     setInterval(function(){
-        $('#slide' + i).prop('checked', true);
-        i++;
-
-        if(i == 4){
-            i = 1;
+        if(i == 1){
+            $('#active label').removeClass('red');
+        }else{
+            $('#active label[for="slide' + (i - 1) + '"]').addClass('red');
         }
+        setTimeout(function(){
+            $('#slide' + i).prop('checked', true);
+
+            i++;
+
+            if(i == 4){
+                i = 1;
+            }
+        }, 500);
+
+
     }, 5000);
 </script>
 
