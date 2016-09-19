@@ -70,11 +70,6 @@
 </footer>
 </div>
 
-
-
-
-
-
 <div class="bottom-block">
     <button class="btn btn-success" id="about-button" data-toggle=".about-footer">About</button>
     <a href="#" id="back-to-top">
@@ -83,28 +78,28 @@
 </div>
 
  <ul ng-app="pagingApp" ng-controller="pagingController" class="hidden"> <?php // we are keeping the switch controls here so that we can click them from anywehre (from other controllers) ?>
-                                <li>
-                                    <a id="show-default" ng-click="switchCategory('default')" href="#">
-                                    </a>
-                                </li>
+    <li>
+        <a id="show-default" ng-click="switchCategory('default')" href="#">
+        </a>
+    </li>
 
-                                <li>
-                                    <a id="show-smart-home" ng-click="switchCategory('smart-home')" href="#">
-                                    </a>
-                                </li>
-                                <li>
-                                    <a id="show-smart-entertainment" ng-click="switchCategory('smart-entertainment')"  href="/ideas/smart-entertainment">
-                                    </a>
-                                </li>
-                                <li>
-                                    <a id="show-smart-body" ng-click="switchCategory('smart-body')" >
-                                    </a> 
-                                </li>
-                                <li>
-                                    <a id="show-smart-travel" ng-click="switchCategory('smart-travel')" >
-                                    </a>
-                                </li>
-                            </ul>
+    <li>
+        <a id="show-smart-home" ng-click="switchCategory('smart-home')" href="#">
+        </a>
+    </li>
+    <li>
+        <a id="show-smart-entertainment" ng-click="switchCategory('smart-entertainment')"  href="/ideas/smart-entertainment">
+        </a>
+    </li>
+    <li>
+        <a id="show-smart-body" ng-click="switchCategory('smart-body')" >
+        </a>
+    </li>
+    <li>
+        <a id="show-smart-travel" ng-click="switchCategory('smart-travel')" >
+        </a>
+    </li>
+</ul>
 
 <script>
     var rootApp = angular.module('rootApp', ['pagingApp', 'publicApp','productApp']);
@@ -128,5 +123,24 @@
     </script>
 <?php } ?>
 <!-- Homepage -->
+
+
+<script>
+//    var timer = null;
+//    if (timer) {
+//        clearTimeout(timer); //cancel the previous timer.
+//        timer = null;
+//    }
+    var i = 1;
+
+    setInterval(function(){
+        $('#slide' + i).prop('checked', true);
+        i++;
+
+        if(i == 4){
+            i = 1;
+        }
+    }, 5000);
+</script>
 
 

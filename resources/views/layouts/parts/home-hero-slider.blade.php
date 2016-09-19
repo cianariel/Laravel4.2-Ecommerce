@@ -78,8 +78,6 @@ if(function_exists('is_single')){
         <label for="slide1"></label>
         <label for="slide2"></label>
         <label for="slide3"></label>
-        <label for="slide4"></label>
-        <label for="slide5"></label>
 
     </div> <!-- #controls -->
 
@@ -88,8 +86,7 @@ if(function_exists('is_single')){
         <label for="slide1"></label>
         <label for="slide2"></label>
         <label for="slide3"></label>
-        <label for="slide4"></label>
-        <label for="slide5"></label>
+
 
     </div> <!-- #active -->
 

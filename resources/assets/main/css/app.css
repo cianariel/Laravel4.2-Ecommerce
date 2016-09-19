@@ -14402,10 +14402,13 @@ article img {
   display: none;
   width: 50px;
   height: 50px;
-  opacity: 0.3; }
+  opacity: 0; }
+
+#hero:hover #controls label {
+  opacity: 1; }
 
 #active {
-  margin: 23% 0 0;
+  margin: -6% 0 0;
   text-align: center; }
 
 #active label {
@@ -14429,20 +14432,24 @@ article img {
 #slide3:checked ~ #controls label:nth-child(4),
 #slide4:checked ~ #controls label:nth-child(5),
 #slide5:checked ~ #controls label:nth-child(1) {
-  background: red;
   float: right;
-  margin: 0 -70px 0 0;
-  display: block; }
+  margin: 0;
+  display: block;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-image: url("/assets/images/arrow-right-pink.png"); }
 
 #slide1:checked ~ #controls label:nth-child(5),
 #slide2:checked ~ #controls label:nth-child(1),
 #slide3:checked ~ #controls label:nth-child(2),
 #slide4:checked ~ #controls label:nth-child(3),
 #slide5:checked ~ #controls label:nth-child(4) {
-  background: red;
   float: left;
-  margin: 0 0 0 -70px;
-  display: block; }
+  margin: 0;
+  display: block;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-image: url("/assets/images/arrow-left-pink.png"); }
 
 #slide1:checked ~ #active label:nth-child(1),
 #slide2:checked ~ #active label:nth-child(2),
@@ -14464,10 +14471,6 @@ article img {
   margin: 0 0 5px; }
 
 /* Slider Styling */
-#slides {
-  margin: 45px 0 0;
-  -webkit-border-radius: 5px; }
-
 /* Animation */
 #slides .inner {
   -webkit-transform: translateZ(0);
@@ -14584,6 +14587,127 @@ article img {
 @media only screen and (min-width: 850px) {
   body {
     padding: 0 80px; } }
+/* ANIMATION */
+@keyframes cycle {
+  0% {
+    top: 0px; }
+  /* When you start the slide, the first image is already visible */
+  100% {
+    top: 0px;
+    opacity: 1; } }
+@keyframes cycletwo {
+  0% {
+    top: -325px;
+    opacity: 0; }
+  /* Original Position */
+  16% {
+    top: -325px;
+    opacity: 0; }
+  /* Starts moving after 16% to this position */
+  20% {
+    top: 0px;
+    opacity: 1; }
+  24% {
+    top: 0px;
+    opacity: 1; }
+  /* From 20% to 24% = for 1 second enter image*/
+  36% {
+    top: 0px;
+    opacity: 1;
+    z-index: 0; }
+  /* From 24% to 36 % = for 3 seconds the image is visible */
+  40% {
+    top: 325px;
+    opacity: 0;
+    z-index: 0; }
+  /* From 36% to 40% = for 1 second exit image */
+  41% {
+    top: -325px;
+    opacity: 0;
+    z-index: -1; }
+  /* Return to Original Position */
+  100% {
+    top: -325px;
+    opacity: 0;
+    z-index: -1; } }
+@keyframes cyclethree {
+  0% {
+    top: -325px;
+    opacity: 0; }
+  36% {
+    top: -325px;
+    opacity: 0; }
+  40% {
+    top: 0px;
+    opacity: 1; }
+  44% {
+    top: 0px;
+    opacity: 1; }
+  56% {
+    top: 0px;
+    opacity: 1; }
+  60% {
+    top: 325px;
+    opacity: 0;
+    z-index: 0; }
+  61% {
+    top: -325px;
+    opacity: 0;
+    z-index: -1; }
+  100% {
+    top: -325px;
+    opacity: 0;
+    z-index: -1; } }
+@keyframes cyclefour {
+  0% {
+    top: -325px;
+    opacity: 0; }
+  56% {
+    top: -325px;
+    opacity: 0; }
+  60% {
+    top: 0px;
+    opacity: 1; }
+  64% {
+    top: 0px;
+    opacity: 1; }
+  76% {
+    top: 0px;
+    opacity: 1;
+    z-index: 0; }
+  80% {
+    top: 325px;
+    opacity: 0;
+    z-index: 0; }
+  81% {
+    top: -325px;
+    opacity: 0;
+    z-index: -1; }
+  100% {
+    top: -325px;
+    opacity: 0;
+    z-index: -1; } }
+@keyframes cyclefive {
+  0% {
+    top: -325px;
+    opacity: 0; }
+  76% {
+    top: -325px;
+    opacity: 0; }
+  80% {
+    top: 0px;
+    opacity: 1; }
+  84% {
+    top: 0px;
+    opacity: 1; }
+  96% {
+    top: 0px;
+    opacity: 1;
+    z-index: 0; }
+  100% {
+    top: 325px;
+    opacity: 0;
+    z-index: 0; } }
 /* header layout */
 /* footer layout */
 /* main layout */
