@@ -83,9 +83,15 @@ if(function_exists('is_single')){
 
     <div id="active">
 
-        <label for="slide1"></label>
-        <label for="slide2"></label>
-        <label for="slide3"></label>
+        <label for="slide1">
+            <div class="progress-bar"></div>
+        </label>
+        <label for="slide2">
+            <div class="progress-bar"></div>
+        </label>
+        <label for="slide3">
+            <div class="progress-bar"></div>
+        </label>
 
 
     </div> <!-- #active -->
