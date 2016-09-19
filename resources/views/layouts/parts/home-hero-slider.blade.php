@@ -1,44 +1,75 @@
-<article id="slider">
-    <input checked="" type="radio" name="slider" id="slide1">
-    <input type="radio" name="slider" id="slide2">
-    <input type="radio" name="slider" id="slide3">
-    <input type="radio" name="slider" id="slide4">
-    <input type="radio" name="slider" id="slide5">
+{{--<div id="hero-slider" class="slider home-hero-slider default-hero-slider heroSlider has-bullets 2" ng-show="ideaCategory == 'default'">--}}
 
-    <div id="slides">
+<?php
+if(function_exists('is_single')){
+    $sliderContent = getHeroSliderContent();
+} ?>
 
-        <div id="overflow">
+<article class="ideaing-home-slider">
+<input checked="" type="radio" name="slider" id="slide1">
+<input type="radio" name="slider" id="slide2">
+<input type="radio" name="slider" id="slide3">
+<input type="radio" name="slider" id="slide4">
+<input type="radio" name="slider" id="slide5">
 
-            <div class="inner">
-                <article>
-                    <div class="info"><h3>Cloud Dragon</h3> by <a href="http://voyager3.tumblr.com/">Brendan Zabarauskas</a></div>
-                    <img src="http://csscience.com/responsiveslidercss3/CouldDragonByBjzaba.png">
-                </article>
+<div id="slides">
+    <div id="overflow">
+        <div class="inner">
+            <?php if($sliderContent){
+                foreach($sliderContent as $item){ ?>
+                            <article>
+                                <a  href="<?php echo $item['url']?>" class="box-item product-box slider-box text-center category-<?php echo $item['category_main']?>">
+                                    <div class="color-overlay category-bg"></div>
+                                    <div class="img-holder">
+                                        <img itemprop="image" src="{{$item['image']}}">
+                                        <img itemprop="image" class="rsTmb" src="{{$item['image']}}">
+                                    </div>
+                                    <div class="box-item__label-idea">
+                                        <span href="<?php echo $item['url']?>" class="slider-heading"><?php echo $item['title']?></span>
+                                    </div>
+                                    <div class="box-item__author">
+                    <span href="/user/profile/<?php echo $item['authorlink']?>" class="user-widget">
+                        <img class="user-widget__img" src="<?php echo $item['avator']?>">
+                        <span class="user-widget__name"><?php echo $item['author']?></span>
+                    </span>
+                                    </div>
+                                    <ul class="social-stats">
+                                        <?php if($item['views'] >= 100){ ?>
+                                        <li class="social-stats__item views">
+                                            <b><i class="m-icon m-icon--flame pink"></i></b>
+                                            <b><span class="social-stats__text pink"><?php echo $item['views']?> views</span></b>
+                                        </li>
+                                        <?php } ?>
 
-                <article>
-                    <div class="info"><h3>Mountain Fort</h3> by <a href="http://voyager3.tumblr.com/">Brendan Zabarauskas</a></div>
-                    <img src="http://csscience.com/responsiveslidercss3/MountainFortByBjzaba.png">
-                </article>
+                                        <?php
+                                        switch($item['category_main']){
+                                            case 'smart-body':
+                                                $smartIcon =  'wearables';
+                                                break;
+                                            case 'smart-entertainment':
+                                                $smartIcon =  'video';
+                                                break;
+                                            case 'smart-travel':
+                                                $smartIcon =  'travel';
+                                                break;
+                                            case 'deals':
+                                                $smartIcon =  'deals';
+                                                break;
+                                            default:
+                                                $smartIcon =  'smart-home';
+                                        }
+                                        ?>
 
-                <article>
-                    <div class="info"><h3>Mountain Outpost</h3> by <a href="http://voyager3.tumblr.com/">Brendan Zabarauskas</a></div>
-                    <img src="http://csscience.com/responsiveslidercss3/CouldDragonByBjzaba.png">
-                </article>
-
-                <article>
-                    <div class="info"><h3>Cliffs</h3> by <a href="http://voyager3.tumblr.com/">Brendan Zabarauskas</a></div>
-                    <img src="http://csscience.com/responsiveslidercss3/MountainFortByBjzaba.png">
-                </article>
-
-                <article>
-                    <div class="info"><h3>Hill Fort</h3> by <a href="http://voyager3.tumblr.com/">Brendan Zabarauskas</a></div>
-                    <img src="http://csscience.com/responsiveslidercss3/CouldDragonByBjzaba.png">
-                </article>
-
+                                        <li class="social-stats__item category-tag pink">
+                                            <b><i class="m-icon m-icon--<?php echo $smartIcon ?> pink"></i></b>
+                                        </li>
+                                    </ul>
+                                </a>
+                            </article>
+                <?php }
+                }   ?>
             </div> <!-- .inner -->
-
         </div> <!-- #overflow -->
-
     </div> <!-- #slides -->
 
     <div id="controls">

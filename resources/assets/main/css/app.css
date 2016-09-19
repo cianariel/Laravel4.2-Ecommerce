@@ -14327,7 +14327,7 @@ p {
 .main-content[data-only="photos"] .box-item:not(.photo-box) {
   display: none; }
 
-#slider {
+.ideaing-home-slider {
   text-align: center; }
 
 h2 {
@@ -14354,7 +14354,7 @@ label, #active, img {
   height: 0;
   overflow: hidden; }
 
-#slider {
+.ideaing-home-slider {
   margin: 0 auto; }
 
 /* NEW EXPERIMENT */
@@ -14484,7 +14484,7 @@ article img {
   transition-timing-function: cubic-bezier(0.77, 0, 0.175, 1);
   /* easeInOutQuart */ }
 
-#slider {
+.ideaing-home-slider {
   -webkit-transform: translateZ(0);
   -webkit-transition: all 0.5s ease-out;
   -moz-transition: all 0.5s ease-out;
@@ -14518,39 +14518,39 @@ article img {
 
 /* Respond Options */
 @media only screen and (max-width: 850px) and (min-width: 450px) {
-  #slider #controls {
+  .ideaing-home-slider #controls {
     margin: -25% 0 0 15%;
     width: 70%;
     height: 50px; }
 
-  #slider #controls label {
+  .ideaing-home-slider #controls label {
     -moz-transform: scale(0.8);
     -webkit-transform: scale(0.8);
     -o-transform: scale(0.8);
     -ms-transform: scale(0.8);
     transform: scale(0.8); }
 
-  #slider #slides {
+  .ideaing-home-slider #slides {
     padding: 1% 0;
     -webkit-border-radius: 0px;
     -moz-border-radius: 0px;
     border-radius: 0px; }
 
-  #slider #active {
+  .ideaing-home-slider #active {
     margin: 22% 0 0; } }
 /* Mobile */
-#mobile:checked ~ #slider #controls {
+#mobile:checked ~ .ideaing-home-slider #controls {
   margin: -28% 0 0 24%;
   width: 50%;
   height: 50px; }
 
-#mobile:checked ~ #slider #active {
+#mobile:checked ~ .ideaing-home-slider #active {
   margin: 23% 0 0; }
 
-#mobile:checked ~ #slider #slides .info {
+#mobile:checked ~ .ideaing-home-slider #slides .info {
   opacity: 0 !important; }
 
-#mobile:checked ~ #slider #controls label {
+#mobile:checked ~ .ideaing-home-slider #controls label {
   -moz-transform: scale(0.6);
   -webkit-transform: scale(0.6);
   -o-transform: scale(0.6);
@@ -14558,24 +14558,24 @@ article img {
   transform: scale(0.6); }
 
 @media only screen and (max-width: 450px) {
-  #slider #controls {
+  .ideaing-home-slider #controls {
     margin: -28% 0 0 24%;
     width: 50%;
     height: 50px; }
 
-  #slider #active {
+  .ideaing-home-slider #active {
     margin: 23% 0 0; }
 
-  #slider #slides {
+  .ideaing-home-slider #slides {
     padding: 1% 0;
     -webkit-border-radius: 0px;
     -moz-border-radius: 0px;
     border-radius: 0px; }
 
-  #slider #slides .info {
+  .ideaing-home-slider #slides .info {
     opacity: 0 !important; }
 
-  #slider #controls label {
+  .ideaing-home-slider #controls label {
     -moz-transform: scale(0.6);
     -webkit-transform: scale(0.6);
     -o-transform: scale(0.6);

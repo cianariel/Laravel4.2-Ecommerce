@@ -198,9 +198,10 @@ class PageController extends ApiController
 
 
                 foreach($rawIdeas as $categoryName => $ideaSet){
-                    $ideas[$categoryName]['item'] = [$ideaSet->posts[0]];
-                    $ideas[$categoryName]['lesserItems'] = array_slice($ideaSet->posts, 1);
-                    // print_r($ideaSet->posts); die();
+                    if(isset($ideaSet->posts)){
+                        $ideas[$categoryName]['item'] = [$ideaSet->posts[0]];
+                        $ideas[$categoryName]['lesserItems'] = array_slice($ideaSet->posts, 1);
+                    }
                 }
             }
 
