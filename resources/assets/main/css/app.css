@@ -14605,9 +14605,6 @@ article img {
     -o-transform: scale(0.6);
     -ms-transform: scale(0.6);
     transform: scale(0.6); } }
-@media only screen and (min-width: 850px) {
-  body {
-    padding: 0 80px; } }
 @keyframes fullexpand {
   /* In these keyframes, the progress-bar is stationary */
   0%, 20%, 40%, 60%, 80%, 100% {
