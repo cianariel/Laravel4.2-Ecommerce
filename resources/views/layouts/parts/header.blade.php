@@ -152,35 +152,11 @@ if (!isset($theGiveAway)) {
                                     <span ng-hide="notificationCounter == 0" class="notification-count"
                                           ng-bind="notificationCounter"></span>
                                     </a>
-                                    <!--<span class="box-link-active-line"></span>
-                                    <div class="profilelinks-popup">
-                                        <div class="menu-group">
-                                            <div><a href="/user/profile">My Profile</a></div>
-                                            <div><a href="/user/notification">Show Notifications</a></div>
-                                            <div><a href="#" class="edit-profile-link" ng-click="openProfileSetting()">Edit
-                                                    Profile</a></div>
-                                        </div>
-                                        <div class="menu-group">
-                                            <div><a href="#">Invite Friends</a></div>
-                                        </div>
-                                        <div class="log-out"><a ng-click="logoutUser()" href="#"><i
-                                                        class="m-icon--Logout-Active"></i> Log Out</a></div>
-
-                                    </div>
-                                </div>
-                              <!--  <div class="notification pull-right" ng-cloak
-                                     ng-init="loadNotification('<?php echo $userData['id']?>')">
-                                    <a href="#" data-toogle=".notification-popup" class="notification-holder">
-                                        <i class="m-icon m-icon--Notifications"></i>
-                                        <span ng-hide="notificationCounter == 0" class="notification-count"
-                                              ng-bind="notificationCounter"></span>
-                                    </a>
-                                </div> -->
 
                                 <?php }  else { ?>
                                     <a class="signin" data-toggle="modal" data-target="#myModal" href="/login"></i> Hi, sign in</a>
                                     <a id="notification-trigger" class="new-message" href="#" ng-click="getEmailPopup(true)">
-                                                <img width="40px" src="https://s3-us-west-1.amazonaws.com/ideaing-01/120-product-56ce7066c0ef3-user-default 2.png" alt="" class="profile-photo ">
+                                                <img width="40px" src="/assets/images/icons/ninja-01.svg" alt="" class="profile-photo ">
                                         <span class="notification-count ng-binding">1</span>
                                     </a>
                                 <?php } ?>
