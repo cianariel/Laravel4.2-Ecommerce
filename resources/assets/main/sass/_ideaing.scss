@@ -6304,6 +6304,7 @@ body.single{
     z-index: 0;
   }
   .home-hero-slider{
+    margin-top: 5px;
     max-width: 1200px;
     //margin: 0 auto;
     margin-left: auto;
@@ -6456,9 +6457,9 @@ body.single{
     }
   }
 
-  //.app-wrap{
-  //  background: #F7F7F7;
-  //}
+  .app-wrap{
+    background: #F7F7F7;
+  }
 
 }
 
@@ -11832,6 +11833,7 @@ body.giveaway-page{
 
 
   #hero{
+
     overflow: hidden;
 
     .giveaway-timer{

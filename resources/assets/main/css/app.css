@@ -9670,6 +9670,7 @@ body.single .home-subheader {
   top: 0;
   z-index: 0; }
 .homepage .home-hero-slider {
+  margin-top: 5px;
   max-width: 1200px;
   margin-left: auto;
   margin-right: auto;
@@ -9766,6 +9767,8 @@ body.single .home-subheader {
 @media (max-width: 620px) {
   .homepage #hero-slider .rsNav.rsBullets {
     top: -30px; } }
+.homepage .app-wrap {
+  background: #F7F7F7; }
 
 .like-nav li {
   width: 35px;
@@ -14326,7 +14329,8 @@ p {
 
 #hero-slider.ideaing-home-slider {
   text-align: center;
-  margin-top: 5px; }
+  margin-top: 5px;
+  border-radius: 5px; }
 
 h2 {
   margin: 40px 0 25px;

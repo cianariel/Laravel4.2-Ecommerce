@@ -5,7 +5,7 @@ if(function_exists('is_single')){
     $sliderContent = getHeroSliderContent();
 } ?>
  
-<article id="hero-slider"  class="ideaing-home-slider slider home-hero-slider heroSlider has-bullets">
+<article id="hero-slider"  class="ideaing-home-slider slider home-hero-slider heroSlider has-bullets" ng-if="ideaCategory == 'default'">
 <input checked="" type="radio" name="slider" id="slide1">
 <input type="radio" name="slider" id="slide2">
 <input type="radio" name="slider" id="slide3">
