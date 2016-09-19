@@ -215,8 +215,8 @@ class UserController extends ApiController
                 'fullname' => $userData->name,
                 'address' => $userData->userProfile->address,
                 'personalInfo' => $userData->userProfile->personal_info,
-               // 'permalink' => $permalink,
-                'permalink' => empty($permalink)?$userData['permalink']:$permalink,
+                // 'permalink' => $permalink,
+                'permalink' => empty($permalink) ? $userData['permalink'] : $permalink,
                 'isAdmin' => $userData->hasRole('admin') || $userData->hasRole('editor'),
                 'showEditOption' => true
 
@@ -254,10 +254,10 @@ class UserController extends ApiController
             'address' => $userProfileData->userProfile->address,
             'personalInfo' => $userProfileData->userProfile->personal_info,
             //'permalink' => $permalink,
-            'permalink' => empty($permalink)?$userData['permalink']:$permalink,
+            'permalink' => empty($permalink) ? $userData['permalink'] : $permalink,
             'isAdmin' => empty($userData) ? null : ($userData->hasRole('admin') || $userData->hasRole('editor')),
             'showEditOption' => false,
-            'notificationPanel'=>false
+            'notificationPanel' => false
 
         );
 
@@ -272,29 +272,29 @@ class UserController extends ApiController
 
         if ($this->authCheck['method-status'] == 'success-with-http') {
             $userData = $this->authCheck['user-data'];
-        }else{
+        } else {
             return \Redirect::to('login');
         }
 
         //$userProfileData = $this->user->checkUserByPermalink($permalink);
 
-        $userProfileData =  $userData;
+        $userProfileData = $userData;
 
         $this->user->notificationMarkReadAll($userData['id']);
 
         $data = array(
             'userData' => empty($userData) ? null : $userData,
             'userProfileData' => $userProfileData,
-           // 'activity' => $this->comment->getCommentsAndHeatByUserId($userProfileData['id'], 10),
+            // 'activity' => $this->comment->getCommentsAndHeatByUserId($userProfileData['id'], 10),
             'profile' => ($userProfileData->medias[0]->media_link == '') ? \Config::get("const.user-image") : $userProfileData->medias[0]->media_link,
             'fullname' => $userProfileData->name,
             'address' => $userProfileData->userProfile->address,
             'personalInfo' => $userProfileData->userProfile->personal_info,
             //'permalink' => $permalink,
-            'permalink' => empty($permalink)?$userData['permalink']:$permalink,
+            'permalink' => empty($permalink) ? $userData['permalink'] : $permalink,
             'isAdmin' => empty($userData) ? null : ($userData->hasRole('admin') || $userData->hasRole('editor')),
             'showEditOption' => false,
-            'notification'=>true,
+            'notification' => true,
             //'contents'=> $this->user->getNotificationForUser($userData->id)['NoticeNotRead']
 
         );
@@ -329,7 +329,7 @@ class UserController extends ApiController
             'isAdmin' => empty($userData) ? null : ($userData->hasRole('admin') || $userData->hasRole('editor')),
             'showEditOption' => false,
             'showProfilePosts' => true,
-            'notificationPanel'=>false
+            'notificationPanel' => false
 
         );
 
@@ -364,10 +364,10 @@ class UserController extends ApiController
     }
 
     // Fetch notification for current user
-    public function notification($uid,$limit=null)
+    public function notification($uid, $limit = null)
     {
 //            $this->user->userNotification();
-        $data = $this->user->getNotificationForUser($uid,$limit);
+        $data = $this->user->getNotificationForUser($uid, $limit);
 
         return $this->setStatusCode(\Config::get("const.api-status.success"))
                     ->makeResponse($data);
@@ -442,7 +442,7 @@ class UserController extends ApiController
 
         $activityCount = $inputData['ActivityCount'];
 
-        $userId = User::where('permalink',$inputData['UserId'])
+        $userId = User::where('permalink', $inputData['UserId'])
                       ->first()->id;
 
         // gather comment activities
@@ -450,7 +450,7 @@ class UserController extends ApiController
 
         $activityWithHumanTime = $this->comment->getCommentsAndHeatByUserId($userId, $activityCount);
 
-      //  dd($userId,$activityCount,$activityWithHumanTime);
+        //  dd($userId,$activityCount,$activityWithHumanTime);
 
 
         //return $activityWithHumanTime;
@@ -463,24 +463,35 @@ class UserController extends ApiController
     // download the list of subscribed user
     public function downloadSubscribersList()
     {
-        $list = $this->subscriber->allSubscribers()->toArray();//User::all()->toArray();
 
+        $userList = $this->subscriber->allSubscribersDownload();
+
+        $csv = \League\Csv\Writer::createFromFileObject(new \SplTempFileObject());
+
+        $csv->insertOne(['name', 'email']);
 
         $filename = 'subscribers.csv';
-        list($headers, $callback) = $this->writeToFile($filename, $list);
 
-        return response()->stream($callback, 200, $headers);
+        foreach ($userList as $item) {
+            $item = [0=> $item->name, 1=> $item->email];
+            //dd($item'name']);
+            $csv->insertOne($item);
+        }
+
+        $csv->output($filename);
+
 
     }
 
     public function downloadRegisteredUserList()
     {
-        $list = $this->user->all(['name','email'])->toArray();//User::all()->toArray();
+        $list = $this->user->all(['name', 'email'])->toArray();//User::all()->toArray();
 
 
         $filename = 'registered-user.csv';
         list($headers, $callback) = $this->writeToFile($filename, $list);
 
+        //    dd($callback);
         return response()->stream($callback, 200, $headers);
 
     }
@@ -533,7 +544,7 @@ class UserController extends ApiController
     public function setDailyEmail()
     {
         $inputData = \Input::all();
-        $result = $this->user->setDailyEmail($inputData['UserId'],$inputData['Status']);
+        $result = $this->user->setDailyEmail($inputData['UserId'], $inputData['Status']);
 
         return $this->setStatusCode(\Config::get("const.api-status.success"))
                     ->makeResponse($result);
@@ -544,9 +555,9 @@ class UserController extends ApiController
     {
         $data = $this->user->sendActivityMail();
 
-       // dd($data); 
+        // dd($data);
 
-      //  return view('email.notification') 
+        //  return view('email.notification')
         //    ->with('content',$data);
     }
 

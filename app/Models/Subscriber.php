@@ -59,7 +59,7 @@ class Subscriber extends Model
     {
         $existingEmail = Subscriber::where('email', $data['Email']);
 
-        if(!empty($data['UserFrom']))
+        if (!empty($data['UserFrom']))
             $data['Source'] = $data['UserFrom'];
 
         if ($existingEmail->count() == 0) {
@@ -95,7 +95,7 @@ class Subscriber extends Model
                                               ->get();
 
         $subscriberList['count'] = Subscriber::whereNotIn('email', $inactiveUsers)->get()->count();
-      //  dd($subscriberList['count']);
+        //  dd($subscriberList['count']);
         return $subscriberList;
     }
 
@@ -130,6 +130,21 @@ class Subscriber extends Model
                          ->get(['email']);
 
         //return $subscriberModel->all(['email']);
+    }
+
+    public function allSubscribersDownload()
+    {
+
+        // $inactiveUsers = $this->inactiveUserEmail();
+
+        $data = \DB::table('subscribers')
+                   ->leftJoin('users', 'subscribers.email', '=', 'users.email')
+                   ->groupBy('subscribers.email')
+                   ->select('users.name', 'subscribers.email')->get();
+
+
+        return $data;
+        // dd($data);
     }
 
     /**
