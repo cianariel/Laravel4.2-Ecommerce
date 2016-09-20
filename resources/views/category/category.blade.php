@@ -114,10 +114,11 @@
             $('.grid-wrap').show();
         });
 
-        // if the image in the window of browser when scrolling the page, show that image
-        $(window).scroll(function() {
-            showBoxes('.grid-wrap');
-        });
+        if(window.innerWidth > 620) { // mobile only
+            $(window).scroll(function () {
+                showBoxes('.grid-wrap');
+            });
+        }
     </script>
 
 @stop
