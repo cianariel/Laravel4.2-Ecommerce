@@ -504,10 +504,16 @@
     animation: none !important;
   }
 
+
+
   .box-item:first-child,
   .box-item:last-child{
-    top: 100px;
-    transition: all, 1s;
+    top: 0;
+
+    @media(min-width: 620px){
+      top: 100px;
+      transition: all, 1s;
+    }
   }
 
   &.fadeIn {

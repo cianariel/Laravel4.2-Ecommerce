@@ -14286,11 +14286,16 @@ p {
     .homepage-grid .main-content .grid-wrap {
       visibility: visible !important;
       display: block;
+      -webkit-animation: none !important;
       animation: none !important; } }
   .homepage-grid .main-content .grid-wrap .box-item:first-child,
   .homepage-grid .main-content .grid-wrap .box-item:last-child {
-    top: 100px;
-    transition: all, 1s; }
+    top: 0; }
+    @media (min-width: 620px) {
+      .homepage-grid .main-content .grid-wrap .box-item:first-child,
+      .homepage-grid .main-content .grid-wrap .box-item:last-child {
+        top: 100px;
+        transition: all, 1s; } }
   .homepage-grid .main-content .grid-wrap.fadeIn {
     -webkit-animation: animat_show 0.8s;
     animation: animat_show 0.8s;

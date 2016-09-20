@@ -116,6 +116,7 @@
 
         if(window.innerWidth > 620) { // mobile only
             $(window).scroll(function () {
+                console.log(118181)
                 showBoxes('.grid-wrap');
             });
         }
