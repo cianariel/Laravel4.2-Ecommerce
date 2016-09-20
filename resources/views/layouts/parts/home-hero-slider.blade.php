@@ -100,7 +100,7 @@ if(function_exists('is_single')){
 
 
 
-<div ng-if="readContent.staticSliderContent" id="hero-slider" class="slider home-hero-slider heroSlider has-bullets">
+<div ng-if="readContent.staticSliderContent" id="hero-slider" class="ideaing-home-slider slider home-hero-slider heroSlider has-bullets">
     <a ng-repeat="item in readContent.staticSliderContent"  href="@{{item.url}}" class="box-item product-box slider-box text-center category-@{{item.category_main}}">
         <div class="color-overlay category-bg"></div>
         <div class="img-holder">
@@ -116,5 +116,23 @@ if(function_exists('is_single')){
                         <span class="user-widget__name">@{{item.author}}</span>
                     </span>
         </div>
+        <ul class="social-stats">
+            <li ng-if="item.views >= 100" class="social-stats__item views">
+                <b><i class="m-icon m-icon--flame white"></i></b>
+                <b><span class="social-stats__text white">@{{item.views}} views</span></b>
+            </li>
+
+            <li class="social-stats__item category-tag white">
+                <b>
+                    <i ng-if="item.category_main == 'smart-body'" class="m-icon m-icon--wearables white"></i>
+                    <i ng-if="item.category_main == 'smart-entertainment'" class="m-icon m-icon--video white"></i>
+                    <i ng-if="item.category_main == 'smart-travel'" class="m-icon m-icon--travel white"></i>
+                    <i ng-if="item.category_main == 'deals'" class="m-icon m-icon--deals white"></i>
+
+                    <i ng-if="item.category_main != 'deals' && item.category_main != 'smart-travel' && item.category_main != 'smart-entertainment' && item.category_main != 'smart-body'" class="m-icon m-icon--smart-home white"></i>
+
+                </b>
+            </li>
+        </ul>
     </a>
 </div>
