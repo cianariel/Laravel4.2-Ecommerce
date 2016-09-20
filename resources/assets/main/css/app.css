@@ -14284,7 +14284,9 @@ p {
   overflow: hidden; }
   @media (max-width: 620px) {
     .homepage-grid .main-content .grid-wrap {
-      visibility: visible !important; } }
+      visibility: visible !important;
+      display: block;
+      animation: none !important; } }
   .homepage-grid .main-content .grid-wrap .box-item:first-child,
   .homepage-grid .main-content .grid-wrap .box-item:last-child {
     top: 100px;
