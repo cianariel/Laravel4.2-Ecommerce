@@ -4189,6 +4189,37 @@ angular.module('colorpicker.module', [])
 
 })(jQuery, this);
 ;
+// for the pure CSS slider to work on iOS
+
+var iPadLabels = function () {
+    function fix() {
+        var labels = document.getElementsByTagName('label'),
+            target_id,
+            el;
+        for (var i = 0; labels[i]; i++) {
+            if (labels[i].getAttribute('for')) {
+                labels[i].onclick = labelClick;
+            }
+        }
+    };
+    function labelClick() {
+        el = document.getElementById(this.getAttribute('for'));
+        if (['radio', 'checkbox'].indexOf(el.getAttribute('type')) != -1) {
+            el.setAttribute('selected', !el.getAttribute('selected'));
+        } else {
+            el.focus();
+        }
+    };
+    return {
+        fix: fix
+    }
+}();
+
+window.onload = function () {
+
+    iPadLabels.fix();
+
+};
 /**
  * Created by sanzeeb on 1/7/2016.
  */
@@ -4818,7 +4849,6 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
 
         };
 
-
         $scope.isEmpty = function (data) {
             if (!data || data.length === 0)
                 return true;
@@ -5412,15 +5442,20 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
 
             $scope.closeAlert();
 
+            console.log('opa');
             console.log(sourceSegment);
 
             if ($scope.AcceptTerms == false && $scope.AcceptTermsModal == false) {
                 $scope.addAlert('danger', 'Please accept the Terms and Conditions');
+                console.log('op2a');
+
                 return;
             }
 
             if ($scope.FullName == '') {
                 $scope.addAlert('danger', 'Please enter your name');
+                console.log('opa1');
+
                 return;
             }
 
@@ -5429,10 +5464,14 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
 
             if (emailTest == false) {
                 $scope.addAlert('danger', 'Please enter a valid email');
+                console.log('opa12');
+
                 return;
             }
 
             if ($scope.Password == '') {
+                console.log('opa15');
+
                 $scope.addAlert('danger', 'Please enter the password');
                 return;
             }

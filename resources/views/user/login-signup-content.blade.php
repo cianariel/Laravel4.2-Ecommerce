@@ -40,13 +40,15 @@
                     </nav>
                 </div>
 
-                <uib-alert ng-repeat="alert in alerts" type="@{{alert.type}}" close="closeAlert($index)">
-                    <p  ng-if="$index == 0" ng-bind-html="alertHTML"></p>
-                </uib-alert>
-
                 <div class="col-sm-6 col-xs-12 pale-grey-bg padding-40">
                     <div class="modal-content hero-box qiuck-signup modal-login">
-                        <h3 class="text-left">Register new account</h3>
+                        <div class="overhide">
+                            <uib-alert ng-repeat="alert in alerts" type="@{{alert.type}}" close="closeAlert($index)">
+                                <p ng-bind-html="alertHTML"></p>
+                            </uib-alert>
+                        </div>
+
+                        <h3 class="text-left" ng-if="!alerts.length">Register new account</h3>
                         <form class="bordering">
                             <span class="input input--madoka big-wrap">
                                 <input class="input__field input__field--madoka" required ng-model="FullName" type="text" id="signup-input-0">
@@ -102,7 +104,12 @@
                                 <i class="m-icon--Close grey"></i>
                             </span>
                     <form class="bordering">
-                        <h3 class="text-left">Login</h3>
+                        <div class="overhide">
+                            <uib-alert ng-repeat="alert in alerts" type="@{{alert.type}}" close="closeAlert($index)">
+                                <p ng-bind-html="alertHTML"></p>
+                            </uib-alert>
+                        </div>
+                        <h3 ng-if="!alerts.length" class="text-left">Login</h3>
 
                                 <span class="input input--madoka big-wrap">
                                     <input class="input__field input__field--madoka" required type="text" id="login-input-1"  ng-model="LoginEmail" name="email">
