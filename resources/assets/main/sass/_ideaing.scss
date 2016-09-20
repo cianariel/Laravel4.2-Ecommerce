@@ -4021,11 +4021,11 @@ header.colophon{
   }
 }
 
-body:not(.single){
-  .profile-photo-holder{
-
-  }
-}
+//body:not(.single){
+//  .profile-photo-holder{
+//
+//  }
+//}
 
 .box-link-active-line{
     position: absolute;
@@ -9882,7 +9882,7 @@ body.shop-category{
 
 .profile-photo{
     border-radius: 100px;
-    border: 3px solid #bebbbc;
+    border: 1px solid #bebbbc;
     &:hover{
         border-color: $iridium;
     }

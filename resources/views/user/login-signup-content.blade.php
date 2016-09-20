@@ -58,7 +58,7 @@
                             </span>
 
                             <span class="input input--madoka big-wrap">
-                                <input class="input__field input__field--madoka" required  id="signup-input-1"  ng-model="Email" ng-readonly="{{empty($email)?'false':'true'}}" ng-init="Email='{{empty($email)?'':$email}}'" type="text">
+                                <input class="input__field input__field--madoka" required  id="signup-input-1"  ng-model="Email" ng-init="Email='{{empty($email)?'':$email}}'" type="text">
                                 <label class="input__label input__label--madoka" for="signup-input-1">
                                     <svg class="graphic graphic--madoka" width="100%" height="100%" viewBox="0 0 404 77" preserveAspectRatio="none">
                                         <path d="m0,0l404,0l0,77l-404,0l0,-77z"></path>
