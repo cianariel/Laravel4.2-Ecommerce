@@ -19,7 +19,7 @@
 
         <ul class="social-stats">
 
-            <li class="social-stats__item comment">
+            <li class="social-stats__item comment" ng-if="item.CommentCount > 0">
                 <a href="#">
                     <i class="m-icon m-icon--buble"></i>
                     <span class="social-stats__text"  itemprop="commentCount">{{item.CommentCount}}</span>

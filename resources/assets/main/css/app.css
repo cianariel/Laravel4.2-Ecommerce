@@ -9697,11 +9697,14 @@ body.single .home-subheader {
     display: none; }
   .homepage .home-hero-slider .box-item__label-idea {
     position: absolute;
-    top: 35%;
+    top: 10%;
     left: 0;
     right: 0;
     margin-left: 0 auto;
     font-weight: bold; }
+    @media (max-width: 620px) {
+      .homepage .home-hero-slider .box-item__label-idea {
+        top: 16%; } }
   .homepage .home-hero-slider .box-item {
     background: rgba(0, 0, 0, 0.4);
     border-radius: 5px; }
@@ -9758,7 +9761,7 @@ body.single .home-subheader {
     font-weight: bold; }
     @media (max-width: 620px) {
       .homepage .home-hero-slider .social-stats {
-        bottom: 33px;
+        bottom: 60px;
         right: 0;
         left: 0;
         position: absolute; } }
@@ -14111,7 +14114,7 @@ p {
     -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
     filter: alpha(opacity=0); }
   .box-item .img-holder {
-    height: 99%;
+    height: 100%;
     overflow: hidden;
     width: 100%; }
     .box-item .img-holder img {

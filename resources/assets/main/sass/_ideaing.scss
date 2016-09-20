@@ -6341,15 +6341,15 @@ body.single{
     }
     .box-item__label-idea{
       position: absolute;
-      top: 35%;
+      top: 10%;
       left: 0;
       right: 0;
       margin-left: 0 auto;
       font-weight: bold;
 
-      //@media(max-width:620px){
-      //  background: rgba($iridium, .7);
-      //}
+      @media(max-width:620px){
+        top: 16%;
+      }
     }
     .box-item{
       background: rgba(0,0,0,.4);
@@ -6426,7 +6426,7 @@ body.single{
       font-weight: bold;
 
       @media(max-width: 620px){
-        bottom: 33px;
+        bottom: 60px;
         right: 0;
         left: 0;
         position: absolute;
