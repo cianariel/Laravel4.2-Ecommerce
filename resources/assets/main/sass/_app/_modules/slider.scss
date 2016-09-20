@@ -75,8 +75,8 @@ article img {
   height: 50px;
   opacity: 0;
 
-  @media all and (max-width: 620px) {
-    display: none;
+  @media(max-width: 620px) {
+    display: none !important;
   }
 }
 
@@ -84,7 +84,7 @@ article img {
   #controls label{
     opacity: 1;
   }
-}
+} 
 
 #active {
   margin: -30px 0 0;
@@ -98,15 +98,8 @@ article img {
   background: #fff;
   transition: none;
 
-  //&.red{
-  //  background: $iridium;
-  //}
 }
 
-//#active label:hover {
-//  background: #ccc;
-//  border-color: #777 !important;
-//}
 
 #controls label:hover {
   opacity: 0.8;
