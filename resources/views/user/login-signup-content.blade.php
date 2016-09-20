@@ -30,9 +30,6 @@
 
     <section class="row">
         <div class="container text-center padding-40 form-box relative" ng-app="publicApp" ng-controller="publicController">
-            <uib-alert ng-repeat="alert in alerts" type="@{{alert.type}}" close="closeAlert($index)">
-                <p  ng-if="$index == 0" ng-bind-html="alertHTML"></p>
-            </uib-alert>
 
             <section id="signup-modal">
                 <div class="col-sm-6 col-xs-12">
@@ -42,6 +39,10 @@
                         <span data-slidein="#login-modal" data-hide=".login-controls" class="btn btn-info col-xs-12 green-bg"><span class="m-icon m-icon--email white"></span> Log in with Email</span>
                     </nav>
                 </div>
+
+                <uib-alert ng-repeat="alert in alerts" type="@{{alert.type}}" close="closeAlert($index)">
+                    <p  ng-if="$index == 0" ng-bind-html="alertHTML"></p>
+                </uib-alert>
 
                 <div class="col-sm-6 col-xs-12 pale-grey-bg padding-40">
                     <div class="modal-content hero-box qiuck-signup modal-login">
