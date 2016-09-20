@@ -14338,7 +14338,8 @@ p {
 #hero-slider.ideaing-home-slider {
   text-align: center;
   margin-top: 5px;
-  border-radius: 5px; }
+  border-radius: 5px;
+  max-height: 97%; }
 
 h2 {
   margin: 40px 0 25px;
