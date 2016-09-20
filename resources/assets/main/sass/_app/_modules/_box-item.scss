@@ -497,6 +497,10 @@
   visibility: hidden;
   overflow: hidden;
 
+  @media(max-width: 620px){
+    visibility: visible !important;
+  }
+
   .box-item:first-child,
   .box-item:last-child{
     top: 100px;

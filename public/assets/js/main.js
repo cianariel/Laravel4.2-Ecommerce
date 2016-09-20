@@ -4010,10 +4010,6 @@ angular.module('colorpicker.module', [])
 
             var $triggerPoint = $(document).height() - 600; // roughly, the point where the first chunk of loaded content ends
 
-            // console.log($currentPos);
-            // console.log($triggerPoint);
-
-
             if($currentPos > $triggerPoint) { // if we are around that point, fire the Load More in the backgriund
                 $('.bottom-load-more').click();
                 $('.bottom-load-more').addClass('disabled').attr('disabled', true);
