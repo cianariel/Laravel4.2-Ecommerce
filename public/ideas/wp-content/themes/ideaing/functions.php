@@ -572,7 +572,7 @@ function ideaingGlobalVars() {
 
         $result = unserialize(base64_decode($result));
 
-        
+
         $userData = $result['data']['user-data'];
         $isAdmin = $result['IsAdmin'];
 
@@ -591,10 +591,10 @@ add_action('admin_bar_menu', 'create_dwb_menu', 2000);
 add_filter( 'the_content', 'wpse44503_filter_content' );
 
 function wpse44503_filter_content( $content ) {
-    
+
      $newURL = str_replace('ideaing-ideas.s3.amazonaws.com', 'd3f8t323tq9ys5.cloudfront.net', $content);
 
-    return $newURL; 
+    return $newURL;
 }
 
 
@@ -791,4 +791,40 @@ function product_thumbs_func( $atts ) {
 }
 add_shortcode( 'product_thumbs', 'product_thumbs_func' );
 
-?>
+
+if (! function_exists('ideaing_is_plugin_active')){
+
+	/**
+	 * Helper to detect if plugin is already installed.
+	 *
+   * @since WooCommerce Integration 1.0
+	 */
+	function ideaing_is_plugin_active($plugin) {
+
+    return in_array($plugin, (array) get_option('active_plugins', array()));
+	}
+}
+
+if (! function_exists('ideaing_woocommerce_support')){
+
+  /**
+   * Declare WooCommerce support.
+   *
+   * @since WooCommerce Integration 1.0
+   */
+  function ideaing_woocommerce_support() {
+
+    add_theme_support( 'woocommerce' );
+  }
+  add_action( 'after_setup_theme', 'ideaing_woocommerce_support' );
+}
+
+if (ideaing_is_plugin_active('woocommerce/woocommerce.php')){
+
+  /**
+   * WooCommerce template tags for this theme.
+   *
+   * @since WooCommerce Integration 1.0
+   */
+	require get_template_directory() . '/woocommerce/hooks.php';
+}
