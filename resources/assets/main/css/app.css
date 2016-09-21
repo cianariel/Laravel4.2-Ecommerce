@@ -9800,7 +9800,7 @@ body.single .home-subheader {
       float: right; }
 
 body.single {
-  padding-top: 50px; }
+  padding-top: 45px; }
   body.single #top-nav a.ideas {
     color: #ed2049; }
   body.single #hero-nav {
@@ -9828,7 +9828,7 @@ body.single {
   @media only screen and (max-width: 420px) {
     body.single #hero.details-hero h1 {
       font-size: 2.7rem;
-      top: 140px; }
+      top: 36px; }
     body.single time {
       font-size: 1.5rem !important; }
     body.single .article-content p,
