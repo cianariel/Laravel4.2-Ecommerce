@@ -1,0 +1,200 @@
+
+body.category{
+  #hero {
+    min-height: 382px;
+  }
+  .rsThumbs{
+    display: none;
+  }
+}
+
+
+.most-popular-new{
+  .category-smart-home{
+    .box-item,
+    .popular-wrap.single-thumb{
+      &::before{
+        background: $iridium !important;
+      }
+    }
+  }
+  .category-smart-body{
+    .box-item,
+    .popular-wrap.single-thumb{
+      &::before{
+        background: $facebook-blue !important;
+      }
+    }
+  }
+  .category-smart-entertainment{
+    .box-item,
+    .popular-wrap.single-thumb{
+      &::before{
+        background: $pine-green !important;
+      }
+    }
+  }
+  .category-smart-travel{
+    .box-item,
+    .popular-wrap.single-thumb{
+      &::before{
+        background: $dark-orange !important;
+      }
+    }
+  }
+}
+
+.most-popular-new{
+
+  @media(max-width:620px){
+    .popular-section{
+      float: none;
+      margin: 45px auto 0;
+      overflow: hidden;
+      padding: 0px 2px 0 12px;
+      .box-item{
+        width: 65%;
+      }
+
+    }
+  }
+
+  h5{
+    text-align: center;
+    margin-bottom: 15px;
+
+    @media(min-width: 768px){
+      margin-bottom: 25px;
+      margin-top: -52px;
+    }
+
+
+    i{
+      top: 2px;
+      position: relative;
+      float: none;
+    }
+
+  }
+
+  .box-item{
+    float: left;
+    position: relative;
+    width: 65%;
+    height: auto;
+    border-radius: 4px;
+    border: 1px solid $light-grey;
+    margin: 3px;
+    border-radius: 5px;
+    overflow: visible;
+
+    .box-item__overlay.category-bg{
+      opacity: .3 !important;
+    }
+    &:hover {
+      .box-item__overlay.category-bg {
+        opacity: 0 !important;
+      }
+    }
+
+    &::before{
+      content:'1';
+      position: absolute;
+      padding: 2px 10px;
+      top: -7px;
+      left: -4px;
+      border-radius: 14px;
+      background: $iridium;
+      padding: 2px 10px;
+      color: #fff;
+      z-index: 9;
+    }
+
+    img{
+      border-radius: 5px;
+    }
+  }
+  .popular-wrap{
+    width: 32%;
+    float: left;
+
+    &.single-thumb{
+      width: 100%;
+
+      //.box-item{
+      //
+      //}
+
+      .box-item__label{
+        position: absolute;
+        bottom: 0;
+        font-size: 1.5rem;
+        text-align: center;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+        padding:4px 4px 7px;
+        margin-bottom: 0;
+
+        /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#727272+35,8e8e8e+100,727272+100&0+36,0.81+100 */
+        background: -moz-linear-gradient(top,  rgba(114,114,114,0) 35%, rgba(114,114,114,0) 36%, rgba(114,114,114,0.81) 100%); /* FF3.6-15 */
+        background: -webkit-linear-gradient(top,  rgba(114,114,114,0) 35%,rgba(114,114,114,0) 36%,rgba(114,114,114,0.81) 100%); /* Chrome10-25,Safari5.1-6 */
+        background: linear-gradient(to bottom,  rgba(114,114,114,0) 35%,rgba(114,114,114,0) 36%,rgba(114,114,114,0.81) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00727272', endColorstr='#cf727272',GradientType=0 ); /* IE6-9 */
+
+        span{
+          position: absolute;
+          bottom: 2px;
+          left:0;
+          width: 100%;
+        }
+      }
+
+      &::before{
+        counter-increment: popular-box;
+        content: counter(popular-box);
+        font-weight: 700;
+        position: absolute;
+        left: 8px;
+        background: #FF0042;
+        border-radius: 50%;
+        color: #fff;
+        font-weight: bold;
+        padding: 2px 8px;
+        z-index: 50;
+      }
+
+      .box-item{
+        height: 215px !important;
+        overflow:hidden;
+
+
+        &::before{
+          display: none;
+        }
+      }
+      .social-stats__item {
+        margin: 3px auto;
+        width: 96px;
+        display: block;
+      }
+    }
+
+    .box-item{
+      width: 100%;
+      height: auto;
+
+      &::before{
+        content:'2';
+        padding: 2px 10px;
+        background: $iridium;
+        color: #fff;
+      }
+      &:last-child{
+        &::before{
+          content:'3';
+        }
+      }
+    }
+  }
+}

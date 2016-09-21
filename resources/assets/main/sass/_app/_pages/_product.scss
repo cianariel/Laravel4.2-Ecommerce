@@ -1,0 +1,102 @@
+
+article.product{
+  position: relative;
+  overflow: hidden;
+  padding-top: 10px;
+  width: 100%;
+
+  .article-content{
+    padding-right: 0;
+    padding-left: 40px;
+
+    p:first-child{
+      &:first-letter{
+        color: $dark-orange;
+        font-size: 4.5rem;
+        line-height: 1;
+        float: left;
+      }
+    }
+  }
+
+
+
+  .reviews{
+    margin-bottom: 0;
+    display: block;
+    font-weight: normal;
+    font-size: 1.5rem;
+  }
+  .main-container{
+    padding-right: 0;
+  }
+
+}
+
+.reviews{
+  h6{
+    font-size: 1.2rem;
+    margin-bottom: 0;
+  }
+  .score{
+    display: inline-block;
+
+    &.critic-score{
+      font-size: 7rem;
+      line-height: 1.1;
+    }
+  }
+
+  .rating-lines{
+    width: 100%;
+  }
+  tr{
+    margin-top: 40px;
+
+    td{
+      padding-top: 40px;
+    }
+  }
+
+  td.name{
+    color: lighten($tarmac, 20%);
+    text-transform: uppercase;
+    font-size: 2rem;
+  }
+  td.line{
+    width: 70%;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  .outer-line{
+    width: 100%;
+    height: 7px;
+    background: $light-grey;
+  }
+  .inner-line{
+    height: 7px;
+    background: $iridium;
+    width: 50%;
+  }
+  td.score{
+    color: #000;
+    font-weight: bold;
+    font-size: 2rem;
+  }
+}
+
+.critic-quote{
+  padding-left: 80px;
+  margin-top: 50px;
+  background: url('/assets/images/icons/quotes-black.png') left top no-repeat;
+  b{
+    font-size: 3rem;
+    font-weight: normal;
+  }
+  .quote-author{
+    display: block;
+  }
+  span:last-child{
+    font-size: 1.1rem;
+  }
+}

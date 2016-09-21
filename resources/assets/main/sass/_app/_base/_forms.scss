@@ -21,3 +21,23 @@ input[type="checkbox"]:checked + label span {
 	background:url('/assets/images/checkmark-black.png') center no-repeat !important;
 	border-color: darken($light-grey, 25%);
 }
+
+.form-control{
+  box-shadow: none;
+  -webkit-box-shadow: none;
+}
+.form-control,
+.btn{
+  height: 45px;
+}
+
+.ta-hidden-input{
+  display: none;
+}
+
+form{
+  input,
+  .btn{
+    margin-bottom: 20px;
+  }
+}
