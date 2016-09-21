@@ -453,6 +453,11 @@ body.has-active-menu{
 
 .heartbeat{
 
+  @media(min-width: 862px){
+    right: 8px;
+    position: relative;
+  }
+
   .path2{
     bottom: 35px;
   }

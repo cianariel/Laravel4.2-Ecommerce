@@ -9470,7 +9470,8 @@ header.colophon {
     margin-top: -2px; }
   #top-nav .category-menu ul > li a {
     padding-right: 0px;
-    margin-right: 10px; }
+    margin-right: 7px;
+    margin-top: 11px; }
     @media (min-width: 1200px) {
       #top-nav .category-menu ul > li a {
         margin-right: 25px; } }
