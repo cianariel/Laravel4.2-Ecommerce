@@ -31,7 +31,7 @@ if (!isset($theGiveAway)) {
 
 <div id="publicApp" ng-app="publicApp" ng-controller="publicController" class="header-cloak scroll-header" ng-cloak>
     <header class="colophon container full-sm fixed-sm relative">
-        <div class="socialcounter col-xs-12">
+        <div>
             <nav id="top-nav" class="row">
                 <a id="menu-icon-wrapper" class="menu-icon-wrapper home-hamburger mobile-top-menu-switcher hidden-lg hidden-md hidden-sm"  href="#">
                     <svg width="1000px" height="1000px">
