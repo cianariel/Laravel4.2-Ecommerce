@@ -35,11 +35,6 @@
                             DECOR
                         </a>
                     </li>
-                    <li class="box-link-ul hidden-xs">
-                        <a class="box-link " href="/ideas/deals">
-                            DEALS
-                        </a>
-                    </li>
                 </ul>
             </div>
         </div>
@@ -51,19 +46,6 @@
                 <div class="loader loader-fixed" cg-busy="nextLoad"></div>
 
                 <div class="main-content ">
-                    <fieldset class="shoplanding-title">
-                        <legend align="center">Daily Deals</legend>
-                    </fieldset>
-                    <div class="loader loader-abs" cg-busy="firstLoad"></div>
-                    <div class="row">
-                        <div id="daily-deals" class="slider has-bullets">
-                            <!--                        <div class="grid-box rsContent">-->
-                            <div class="box-item idea-box box-item--featured rsContent" ng-repeat="item in dailyDeals">
-                                @include('grid.idea')
-                            </div>
-                            <!--                        </div>-->
-                        </div>
-                    </div>
                     <fieldset class="shoplanding-title">
                         <legend align="center">Newest Arrivals</legend>
                     </fieldset>
