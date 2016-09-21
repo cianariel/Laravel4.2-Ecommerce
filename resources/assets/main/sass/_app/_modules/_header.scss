@@ -1,6 +1,72 @@
 /* header layout */
 
 
+.category-menu{
+  padding-top: 2px;
+
+  a{
+    text-transform: capitalize;
+    color: #1d1d1d;
+    font-size: 1.15rem !important;
+    position: relative;
+
+    @media (min-width: 620px) {
+      color:#3d4b4e;
+    }
+    &>span{
+      position: relative;
+    }
+    &>span::before {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 1px;
+      top: 19px;
+      left: 0;
+      visibility: hidden;
+      -webkit-transform: scaleX(0);
+      transform: scaleX(0);
+      -webkit-transition: all 0.3s ease-in-out 0s;
+      transition: all 0.3s ease-in-out 0s;
+    }
+    &:hover,
+    &.active{
+      &>span::before{
+        visibility: visible;
+        -webkit-transform: scaleX(1);
+        transform: scaleX(1);
+      }
+    }
+  }
+}
+
+.ideaing-logo{
+  .m-icon{
+    filter:none !important;
+    -webkit-filter:none !important;
+  }
+  img {
+    width: 147px;
+    margin-bottom: 6px;
+  }
+}
+
+.lamp-logo{
+  display: block;
+  width: 45px;
+  min-height: 60px;
+  padding: 0;
+  /*  background-image: url("/assets/images/lamp.png");*/
+  background-repeat: no-repeat;
+  background-position: right;
+
+  .m-icon{
+    font-size: 39px;
+    margin-top: 6px;
+    margin-left: 11px;
+  }
+}
+
 #site-name{
   display: none;
 }
@@ -957,3 +1023,203 @@ header.colophon{
 
 
 }
+
+
+
+.search-toggle-button{
+  background: $light-grey;
+  padding: 5px;
+  border-radius: 3px;
+  max-width: 30px;
+  margin-top: 7px;
+  transition: all .7s;
+  border-radius: 0;
+  z-index: 99;
+
+  &.active,
+  &:not(.mobile):hover{
+    background: rgba($iridium, .7);
+    color: #fff;
+  }
+
+  &.mobile{
+    clear: both;
+    position: relative;
+    left:13px;
+    top:25px;
+  }
+
+}
+
+.logo-wrap{
+  a{
+    padding: 0;
+  }
+}
+
+.logo{
+  display: block;
+  width: 155px;
+  height: 43px;
+  min-width: 110px;
+  background-size: contain;
+}
+
+.logo-holder{
+  width: 151px;
+  float: left;
+}
+
+.ideaing-logo{
+  //padding: 9px;
+  max-width: 100%;
+  margin: 0 0 0 4px;
+  transition: all 5s;
+  .m-icon{
+    position: absolute;
+    font-size: 35px;
+
+    &:not(.m-icon--bulb2){
+      left: 10px;
+      top: 3px;
+
+      @media(max-width: 620px){
+        left: 0;
+        top: 2px;
+        right: 0;
+        margin: 0 auto;
+      }
+    }
+
+
+
+    &.default-logo{
+      filter:grayscale(100%);
+      -webkit-filter:grayscale(100%);
+    }
+    &.red-logo,
+    &.red-scroll-logo{
+      opacity:0;
+
+
+
+      &:hover{
+        opacity:1 !important;
+      }
+    }
+  }
+  .scroll-logo.m-icon{
+    display: none;
+  }
+  .m-icon:first-child{
+    display: block;
+  }
+
+  &:hover > .m-icon{
+    -webkit-filter: none;
+    filter: none;
+
+    &:first-child{
+      display: none;
+    }
+    &:last-child{
+      display: block;
+      opacity: 1;
+    }
+  }
+
+}
+
+
+@media (max-width:700px){
+  .search-bar{
+    margin-left: 0 !important;
+
+    input{
+      float: left;
+      width: 85%;
+    }
+
+    .m-icon {
+      left: 18px;
+    }
+  }
+}
+
+form.mobile-search-bar{
+  height: 38px;
+  display: block;
+  padding: 0;
+  overflow: hidden;
+  top: 50px!important;
+  left: 43px;
+  margin: 0 !important;
+  border: 0;
+  width: 0;
+  opacity: 1;
+
+  transition: width .3s;
+
+  input{
+    height: 30px;
+    margin-top: 2px;
+    border-radius: 0;
+    min-width: 0 !important;
+  }
+
+
+  &::before,
+  &::after{
+    display: none;
+  }
+
+  &.on{
+    width: 100%;
+    z-index: 40;
+
+    background: transparent !important;
+  }
+
+  button{
+    padding-right: 12px;
+    float: right;
+    background: #fff;
+    color: #fff;
+    font-weight: bold;
+    box-shadow: 0;
+    border: 0;
+    border-radius: 50%;
+    margin-top: 5px;
+    overflow:visible;
+
+    -webkit-appearance: none;
+    -moz-appearance:    none;
+    appearance:         none;
+
+    span{
+      font-weight: bold;
+      border-radius: 50%;
+      background: $iridium;
+      padding: 5px;
+      width: 25px;
+      height: 25px;
+      display: block;
+    }
+  }
+
+  .top-search{
+    width: 80%;
+    margin-right: 4px;
+  }
+
+  .close-button{
+    margin-top: 4px;
+    position: absolute;
+    left: 4px;
+    i:before{
+      @extend .turn-left;
+    }
+  }
+}
+
+

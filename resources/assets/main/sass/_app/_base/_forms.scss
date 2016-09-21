@@ -41,3 +41,18 @@ form{
     margin-bottom: 20px;
   }
 }
+
+.email-input-holder {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  .m-icon{
+    position: absolute;
+    z-index: 9;
+    left: 10px;
+    top: 12px;
+  }
+  //input:not([type="submit"]){
+  //  padding-left: 40px !important;
+  //}
+}

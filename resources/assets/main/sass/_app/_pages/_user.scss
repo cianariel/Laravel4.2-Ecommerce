@@ -1,0 +1,451 @@
+
+.profile-photo{
+  border-radius: 100px;
+  border: 1px solid #bebbbc;
+  &:hover{
+    border-color: $iridium;
+  }
+}
+
+.active{
+  .profile-photo{
+    border-color: $iridium;
+  }
+}
+
+.signin {
+  text-transform: capitalize;
+  &:hover {
+    color: $iridium;
+  }
+}
+
+.like-nav{
+  .profile-photo{
+    height: 40px;
+    width: 40px;
+    max-width: none;
+  }
+}
+body.profilepage{
+  background: #f8f8f6;
+  header.colophon{
+    background: #fff;
+  }
+  #hero{
+    position: relative;
+    color: #fff;
+    #upload-photo{
+      position: absolute;
+      bottom: 0px;
+      left: 50%;
+      width: 150px;
+      margin-left: -75px;
+      text-align: center;
+      color: #000;
+      background: #fff;
+      padding-top: 8px;
+      padding-bottom: 5px;
+      font-weight: bold;
+      i{
+        color: #f7931e;
+      }
+    }
+    .fullname{
+      font-size: 40px;
+    }
+    .location{
+      color: #cac6c3;
+      font-size: 15px;
+      i{
+        font-size: 25px;
+      }
+    }
+    .description{
+      color: #e5e4e4;
+    }
+    .follow{
+      color: #fff;
+      border: 1px solid #fff;
+      border-radius: 4px;
+      width: 114px;
+      padding-top: 5px;
+      padding-bottom: 5px;
+      text-align: center;
+      display: inline-block;
+      margin-right: 10px;
+    }
+    .edit-background{
+      color: #fff;
+      position: absolute;
+      right: 20px;
+      top: 65px;
+      text-align: center;
+      i{
+        color: white;
+        font-size: 80px;
+      }
+      a{
+        color: #fff;
+      }
+    }
+    .edit-profile{
+      color: #ceced0;
+      position: absolute;
+      right: 20px;
+      bottom: 0px;
+      text-align: right;
+      a{
+        color: #fff;
+      }
+      i{
+        color: white;
+        font-size: 25px;
+      }
+      div:first-child{
+        line-height: 40px;
+        i{
+          position: relative;
+          top: 5px;
+        }
+      }
+    }
+
+    @media (max-width: 767px){
+      .container{
+        padding-top: 90px;
+        > div{
+          text-align: center;
+          #btn-follow{
+            float: none;
+          }
+        }
+      }
+    }
+  }
+
+  #hero-nav{
+    background: none;
+
+    .main-content-filter{
+      > li > a{
+        cursor: pointer;
+        > i{
+          font-size: 18px;
+          margin-top: 1px;
+        }
+      }
+
+      li.active,
+      li:hover{
+        .all-activity{
+          color: #ff0042;
+        }
+        .my-likes{
+          color: red;
+        }
+        .my-comments{
+          color: #3cb44a;
+        }
+        .my-post{
+          color: $facebook-blue;
+        }
+        .my-product{
+          color: $facebook-blue;
+        }
+      }
+
+    }
+
+
+
+    @media (max-width: 620px){
+      .main-content-filter{
+        > li > a{
+          font-size: 10px;
+          min-width: initial;
+          padding-left: 0px;
+          padding-right: 5px;
+          > i{
+            font-size: 20px;
+          }
+        }
+      }
+    }
+
+    .breadcrumb{
+      margin-top: 10px;
+      font-weight: bold;
+      li{
+        a{
+          float: none;
+          padding: 0px;
+        }
+      }
+    }
+
+  }
+  .side-bar{
+    padding-right: 45px;
+    .sidenav{
+      > li{
+        padding: 20px 10px;
+        background: #fff;
+        border-top: 1px solid #f7f7f7;
+        a{
+          color: $iridium;
+        }
+        &.active{
+          background: $iridium;
+          a{
+            color: white;
+          }
+          &::after{
+            border-bottom: 10px solid  transparent;
+            border-top: 10px solid transparent;
+            border-left: 12px solid;
+            width: 20px;
+            height: 10px;
+            right: 10px;
+            position: absolute;
+            content: ' ';
+            color: $iridium;
+          }
+        }
+      }
+    }
+  }
+
+  .feed-content{
+    background: #fff;
+    margin-bottom: 20px;
+    color: #909090;
+    a{
+      color: #909090;
+    }
+    strong{
+      color: #000;
+    }
+    .feed-header{
+      padding: 15px 25px 15px 10px;
+      .name-time{
+        margin-left: 10px;
+        margin-top: 5px;
+        i{
+          color: $iridium;
+        }
+      }
+    }
+    .feed-body{
+      min-height: 143px;
+      padding: 10px 10px;
+      border-top: 1px solid #eee;
+      border-bottom: 1px solid #eee;
+    }
+    .feed-footer{
+      padding: 25px 20px;
+      i{
+        font-size: 20px;
+        position: relative;
+        top: 3px;
+      }
+      .favorite{
+        margin-right: 20px;
+        i{
+          color: $iridium;
+        }
+      }
+      .comment i{
+        color: #4389c8;
+      }
+      .photos i{
+        color: #f7931e;
+      }
+    }
+  }
+  #btn-follow, #btn-add-friend{
+    width: 127px;
+  }
+  #btn-add-friend{
+    display: none;
+  }
+  #btn-follow{
+    float: left;
+    color: #fff;
+    margin-right: 10px;
+    margin-top: 12px;
+    position: relative;
+    background: $iridium;
+    &:hover{
+      background: #000;
+    }
+    i{
+      font-size: 10px;
+      right: 24px;
+      top: 18px;
+      position: absolute;
+      /*            color: #000;*/
+    }
+  }
+  .post{
+    .side-bar{
+      .sidenav{
+        margin-left: 15px;
+        > li{
+          a{
+            color: #f7931e;
+          }
+          &.active{
+            background: #f7931e;
+            a{
+              color: #fff;
+            }
+            &::after{
+              color: #f7931e;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.profile-setting-modal{
+  .close{
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    font-size: 30px;
+    color: white;
+  }
+  .modal-content{
+    padding: 0px;
+    .profile-background{
+      padding-top: 30px;
+      background: #fa1550;
+      height: 300px;
+      width: 100%;
+    }
+    .upload-photo{
+      background: #e11348;
+      display: inline-block;
+      padding: 10px 20px;
+      color: #fff;
+      margin-top: 20px;
+      position: relative;
+      cursor: pointer;
+      input[type="file"]{
+        position: absolute;
+        font-size: 200px;
+        top: 0px;
+        right: 0px;
+        opacity: 0;
+        cursor: pointer;
+      }
+    }
+    .uploading-photo{
+      margin-top: 20px;
+      display: block;
+    }
+    .custom-container{
+      max-width: 690px;
+      margin: auto;
+      padding-left: 15px;
+      padding-right: 15px;
+      .ideaing-domain{
+        position: absolute;
+        top: 5px;
+        left: 28px;
+      }
+      .personal-link{
+        padding-left: 97px;
+      }
+      label{
+        text-align: left;
+        margin-bottom: 10px;
+      }
+      input{
+        margin-bottom: 0px;
+      }
+    }
+    .first-form{
+      padding-top: 100px;
+      background: #f6f6f6;
+    }
+    .second-form{
+      /*            padding-top: 80px;*/
+      background: #fff;
+      .title{
+        margin-top: 50px;
+        margin-bottom: 15px;
+      }
+      .content{
+        /*                padding-bottom: 10px;*/
+        > div:first-child{
+          border-top: 1px solid #f2f2f2;
+        }
+        > div:last-child{
+          border-bottom: 1px solid #f2f2f2;
+        }
+      }
+    }
+    .third-form{
+      padding-top: 20px;
+      background: #f9f9f9;
+      .its-over{
+        margin-top: 10px;
+      }
+    }
+    .btn{
+      background: none;
+      border: 1px solid;
+      padding-left: 30px;
+      padding-right: 30px;
+      &.btn-nevermind{
+        border-color: #ff0042;
+        color: #ff0042;
+        margin-right: 10px;
+      }
+      &.btn-save{
+        border-color: #4389c8;
+        color: #4389c8;
+      }
+      &.btn-delete{
+        padding-left:20px;
+        padding-right:20px;
+        border-color: $iridium;
+        color: $iridium;
+        i{
+          font-size: 20px;
+          position: relative;
+          top: 4px;
+          right: -7px;
+        }
+      }
+    }
+
+    .checkbox-form-group {
+      margin-bottom: 0px;
+      >div:first-child{
+        margin-top: 10px;
+      }
+    }
+
+    .setting-custom-checkbox{
+      cursor: pointer;
+      font-size: 40px;
+      span > .off{
+        display: block;
+      }
+      span > .on{
+        display: none;
+      }
+      input[type="checkbox"]:checked + span > .on{
+        display: block;
+      }
+      input[type="checkbox"]:checked + span > .off{
+        display: none;
+      }
+    }
+  }
+}

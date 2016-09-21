@@ -8,6 +8,15 @@ p {
 	line-height: $base-line-height;
 }
 
-.black{
-  color:#000;
+.dropcapped{
+  p:first-child{
+    &:first-letter{
+      //color: $sky-blue;
+      font-size: 5rem;
+      line-height: .7;
+      float: left;
+      display: inline-block;
+      //margin-top: -36px;
+    }
+  }
 }

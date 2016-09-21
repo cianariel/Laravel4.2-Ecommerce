@@ -198,3 +198,28 @@ body.category{
     }
   }
 }
+
+.mostpop-wrap{
+  padding: 10px 6px 10px 0px;
+
+  .homepage-grid{
+    margin-top:0;
+  }
+}
+
+.most-popular-new{
+  counter-reset: popular-box;
+
+  .home-subheader{
+    height: 41px;
+
+    @media(max-width: 768px){
+      width: 100%;
+      float: left;
+    }
+
+    span{
+      height: 41px;
+    }
+  }
+}
