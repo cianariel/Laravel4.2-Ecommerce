@@ -72,8 +72,8 @@ class PageController extends ApiController
         $sliderContent = self::getHeroSliderContent();
 //        $sliderContent = (array)$sliderContent;
 
-        MetaTag::set('title', 'Ideaing | Ideas for Smarter Living');
-        MetaTag::set('description', 'Ideaing inspires you to live a smarter and beautiful home. Get ideas on using home automation devices including WiFi cameras, WiFi doorbells, door locks, security, energy, water and many more.');
+        MetaTag::set('title', 'Smart Home, Smart Body, Entertainment, Live Smarter');
+        MetaTag::set('description', 'Ideaing inspires you to live smarter. Get news, reviews, deals, and tips on smart home, smart body and entertainment devices.');
         //return $result;
         return view('home')
             ->with('userData', $userData)
