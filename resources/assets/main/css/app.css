@@ -6887,7 +6887,7 @@ ol li {
   list-style: decimal !important; }
 
 ul.pointed li:before {
-  content: "• ";
+  content: "ΓÇó ";
   position: relative;
   top: 3px;
   font-size: 2rem;
@@ -6914,7 +6914,7 @@ li.nested {
   cursor: pointer;
   position: relative; }
   li.nested::after {
-    content: '▾';
+    content: 'Γû╛';
     position: absolute;
     top: 28px;
     right: 10px; }
@@ -8609,7 +8609,7 @@ article img {
   background-color: #000;
   background-color: rgba(0, 0, 0, 0.75); }
   .rsDefault .rsPlayBtnIcon::before {
-    content: '►';
+    content: 'Γû║';
     display: block;
     color: #fff;
     position: relative;
@@ -10280,7 +10280,7 @@ article img {
   background-color: #000;
   background-color: rgba(0, 0, 0, 0.75); }
   .rsDefault .rsPlayBtnIcon::before {
-    content: '►';
+    content: 'Γû║';
     display: block;
     color: #fff;
     position: relative;
@@ -12402,7 +12402,7 @@ body.single {
     color: #d1d1d1;
     font-weight: 400; }
   .email-banner li:before {
-    content: "• ";
+    content: "ΓÇó ";
     position: relative;
     top: 3px;
     font-size: 2rem;
