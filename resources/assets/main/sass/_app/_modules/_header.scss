@@ -511,6 +511,7 @@ header.colophon{
     border-radius: 2px;
     //overflow: hidden;
     z-index: 80;
+    margin-left: 1px;
 
     i{
       font-size: 2.3rem !important;
@@ -664,13 +665,17 @@ header.colophon{
       a{
         padding-right: 0px;
         margin-right: 7px;
-        margin-top: 11px;
 
         @media (min-width:1200px){
           margin-right: 25px;
         }
-        @media(min-width:380px){
-          margin-right: 22px;
+        @media(min-width:420px){
+          margin-right: 10px;
+          margin-top: 4px !important;
+        }
+        @media(min-width:370px){
+          margin-top: 11px;
+          margin-right: 7px;
         }
       }
       a:hover, a:focus{
@@ -701,6 +706,8 @@ header.colophon{
       }
     }
     .profile-photo-holder{
+      margin-top: 4px;
+
       @media (max-width:992px) {
         margin-right: 28px;
       }
