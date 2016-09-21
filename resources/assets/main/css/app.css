@@ -9827,7 +9827,8 @@ body.single {
         float: none; } }
   @media only screen and (max-width: 420px) {
     body.single #hero.details-hero h1 {
-      font-size: 2.7rem; }
+      font-size: 2.7rem;
+      top: 140px; }
     body.single time {
       font-size: 1.5rem !important; }
     body.single .article-content p,
