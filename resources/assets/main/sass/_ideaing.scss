@@ -1892,24 +1892,24 @@ body.tag-deal{
   }
 }
 
-body.single,
-body.product-details,
-body.profilepage,
-body.shoppage,
-body.error-page,
-body.aboutus-page,
-body.giveaway-page ,
-body.privacy-policy-page,
-body.terms-of-use-page,
-body.login-signup,
-body.terms-of-use-page,
-body.terms-of-use-page,
-body.contactus-page
-{
-  .mid-nav.rooms{
-    display: none;
-  }
-}
+//body.single,
+//body.product-details,
+//body.profilepage,
+//body.shoppage,
+//body.error-page,
+//body.aboutus-page,
+//body.giveaway-page ,
+//body.privacy-policy-page,
+//body.terms-of-use-page,
+//body.login-signup,
+//body.terms-of-use-page,
+//body.terms-of-use-page,
+//body.contactus-page
+//{
+//  .mid-nav.rooms{
+//    display: none;
+//  }
+//}
 
 .slider{
   &.product-slider,
@@ -5950,7 +5950,7 @@ body.single{
       padding-left: 5px;
       padding-right: 5px;
     }
-  }
+  } 
 }
 
 
@@ -6568,9 +6568,10 @@ body.single{
 // IDEAS (CMS / STORIES)
 
 body.single{
+  padding-top: 50px;
+
   #top-nav a.ideas{
     color: $pink;
-    
   }
 
  #hero-nav{
@@ -7238,17 +7239,14 @@ body.single{
     position: relative;
   }
 
-
   .grid-box{
     overflow: visible;
     margin-bottom: 35px;
     cursor: pointer;
 
-
     .wrap{
       width: 100%;
       border-radius: 3px;
-      //background: #eee;
     }
 
     img{

@@ -6819,45 +6819,6 @@ nav a {
 body.tag-deal #hero.details-hero h1 {
   background-color: rgba(255, 127, 0, 0.7); }
 
-body.single .mid-nav.rooms, body.single .mid-nav .rooms.extra-nav, .mid-nav body.single .rooms.extra-nav,
-body.product-details .mid-nav.rooms,
-body.product-details .mid-nav .rooms.extra-nav,
-.mid-nav body.product-details .rooms.extra-nav,
-body.profilepage .mid-nav.rooms,
-body.profilepage .mid-nav .rooms.extra-nav,
-.mid-nav body.profilepage .rooms.extra-nav,
-body.shoppage .mid-nav.rooms,
-body.shoppage .mid-nav .rooms.extra-nav,
-.mid-nav body.shoppage .rooms.extra-nav,
-body.error-page .mid-nav.rooms,
-body.error-page .mid-nav .rooms.extra-nav,
-.mid-nav body.error-page .rooms.extra-nav,
-body.aboutus-page .mid-nav.rooms,
-body.aboutus-page .mid-nav .rooms.extra-nav,
-.mid-nav body.aboutus-page .rooms.extra-nav,
-body.giveaway-page .mid-nav.rooms,
-body.giveaway-page .mid-nav .rooms.extra-nav,
-.mid-nav body.giveaway-page .rooms.extra-nav,
-body.privacy-policy-page .mid-nav.rooms,
-body.privacy-policy-page .mid-nav .rooms.extra-nav,
-.mid-nav body.privacy-policy-page .rooms.extra-nav,
-body.terms-of-use-page .mid-nav.rooms,
-body.terms-of-use-page .mid-nav .rooms.extra-nav,
-.mid-nav body.terms-of-use-page .rooms.extra-nav,
-body.login-signup .mid-nav.rooms,
-body.login-signup .mid-nav .rooms.extra-nav,
-.mid-nav body.login-signup .rooms.extra-nav,
-body.terms-of-use-page .mid-nav.rooms,
-body.terms-of-use-page .mid-nav .rooms.extra-nav,
-.mid-nav body.terms-of-use-page .rooms.extra-nav,
-body.terms-of-use-page .mid-nav.rooms,
-body.terms-of-use-page .mid-nav .rooms.extra-nav,
-.mid-nav body.terms-of-use-page .rooms.extra-nav,
-body.contactus-page .mid-nav.rooms,
-body.contactus-page .mid-nav .rooms.extra-nav,
-.mid-nav body.contactus-page .rooms.extra-nav {
-  display: none; }
-
 .slider.product-slider #gallery, .slider.heroSlider #gallery, .slider#daily-deals #gallery, .slider.giveaway-slider #gallery, .slider#newest-arrivals #gallery {
   width: 100%;
   height: 500px;
@@ -9838,38 +9799,40 @@ body.single .home-subheader {
       text-align: center;
       float: right; }
 
-body.single #top-nav a.ideas {
-  color: #ed2049; }
-body.single #hero-nav {
-  padding: 40px 0 30px; }
-  body.single #hero-nav .share-buttons {
-    padding-top: 9px; }
-  body.single #hero-nav li.all-shares {
-    top: -18px; }
-  @media (max-width: 620px) {
-    body.single #hero-nav {
-      width: 100%;
-      padding: 0; } }
-body.single .like-nav {
-  width: 300px; }
-body.single .article-content iframe {
-  margin: 0 auto;
-  float: none;
-  display: block; }
-@media only screen and (max-width: 960px) {
+body.single {
+  padding-top: 50px; }
+  body.single #top-nav a.ideas {
+    color: #ed2049; }
+  body.single #hero-nav {
+    padding: 40px 0 30px; }
+    body.single #hero-nav .share-buttons {
+      padding-top: 9px; }
+    body.single #hero-nav li.all-shares {
+      top: -18px; }
+    @media (max-width: 620px) {
+      body.single #hero-nav {
+        width: 100%;
+        padding: 0; } }
   body.single .like-nav {
-    width: 100%;
-    text-align: center; }
-    body.single .like-nav > li {
-      float: none; } }
-@media only screen and (max-width: 420px) {
-  body.single #hero.details-hero h1 {
-    font-size: 2.7rem; }
-  body.single time {
-    font-size: 1.5rem !important; }
-  body.single .article-content p,
-  body.single .article-content h4 {
-    font-size: 1.8rem; } }
+    width: 300px; }
+  body.single .article-content iframe {
+    margin: 0 auto;
+    float: none;
+    display: block; }
+  @media only screen and (max-width: 960px) {
+    body.single .like-nav {
+      width: 100%;
+      text-align: center; }
+      body.single .like-nav > li {
+        float: none; } }
+  @media only screen and (max-width: 420px) {
+    body.single #hero.details-hero h1 {
+      font-size: 2.7rem; }
+    body.single time {
+      font-size: 1.5rem !important; }
+    body.single .article-content p,
+    body.single .article-content h4 {
+      font-size: 1.8rem; } }
 
 .get-it-inner {
   text-align: center; }
