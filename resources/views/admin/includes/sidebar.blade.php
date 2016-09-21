@@ -192,7 +192,7 @@
                     </li>
                 </ul>
             </li>
-            <li class="nav-item  ">
+            {{--<li class="nav-item  ">
                 <a href="javascript:;#home" class="nav-link nav-toggle">
                     <i class="icon-wallet"></i>
                     <span class="title">HomePage Hero</span>
@@ -210,7 +210,7 @@
                         </a>
                     </li>
                 </ul>
-            </li>
+            </li>--}}
             <li class="nav-item  ">
                 <a href="javascript:;#giveaway" class="nav-link nav-toggle">
                     <i class="icon-wallet"></i>
