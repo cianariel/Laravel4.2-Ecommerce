@@ -33,14 +33,9 @@
                             </h5>
 
                                 <div ng-repeat="item in readContent.mostPopular.smart_home.item">
-                                    @include('most-popular.thumb')
+                                    @include('most-popular.single-thumb')
                                 </div>
-                                   
-                                <div class="popular-wrap">
-                                    <div ng-repeat="item in readContent.mostPopular.smart_home.lesserItems">
-                                        @include('most-popular.thumb')
-                                    </div>
-                                </div>
+
                         </div>
                         <div class="col-sm-4 col-xs-12 popular-section category-smart-body">
                             <h5 class="category-link__smart-body m-icon-text-holder">
@@ -48,14 +43,9 @@
                                 <span class="m-icon-text"><span class="hidden-sm hidden-md">Smart</span> Body</span>
                             </h5>
                                 <div ng-repeat="item in readContent.mostPopular.smart_body.item">
-                                    @include('most-popular.thumb')
+                                    @include('most-popular.single-thumb')
                                 </div>
-                                
-                                <div class="popular-wrap">
-                                    <div ng-repeat="item in readContent.mostPopular.smart_body.lesserItems">
-                                        @include('most-popular.thumb')
-                                    </div>
-                                </div>    
+
                         </div>
 
                         <div class="col-sm-4 col-xs-12 popular-section category-smart-entertainment">
@@ -64,17 +54,19 @@
                                 <span class="m-icon-text"><span class="hidden-sm hidden-md">Smart</span> Entertainment</span>
                             </h5>
                                  <div ng-repeat="item in readContent.mostPopular.smart_entertainment.item">
-                                    @include('most-popular.thumb')
+                                    @include('most-popular.single-thumb')
                                 </div>
+                        </div>
 
-                                <div class="popular-wrap">
-                                    <div ng-repeat="item in readContent.mostPopular.smart_entertainment.lesserItems">
-                                    @include('most-popular.thumb')
-                                    </div>
+                        <div class="col-sm-4 col-xs-12 popular-section category-smart-travel">
+                            <h5 class="category-link__smart-travel m-icon-text-holder">
+                                <i class="hidden-xs hidden-sm m-icon m-icon--wearables"></i>
+                                <span class="m-icon-text"><span class="hidden-sm hidden-md">Smart</span> Entertainment</span>
+                            </h5>
+                                 <div ng-repeat="item in readContent.mostPopular.smart_travel.item">
+                                    @include('most-popular.single-thumb')
                                 </div>
-                                    
-                                
-                        </div>        
+                        </div>
                 </section>
 
                 <section ng-if="ideaCategory != 'default'" class="most-popular-new container no-padding">

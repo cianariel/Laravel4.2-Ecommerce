@@ -144,14 +144,14 @@ class PageController extends ApiController
        // } else {
 
             // 1. get most popular ideas
-            $url = URL::to('/') . '/ideas/feeds/index.php?count='. ($itemsPerCategory / 2).'&most-popular';
+            $url = URL::to('/') . '/ideas/feeds/index.php&most-popular';
 
             if($daysBack){
                 $url .= '&daysback=' . $daysBack;
             }
 
             if($category && $category != 'default'){
-                $url .= '&category-name='.$category;
+                $url .= '&category-name='.$category. '?count=4';
 
                 $ch = curl_init();
                 curl_setopt($ch, CURLOPT_URL, $url);
@@ -172,6 +172,8 @@ class PageController extends ApiController
 //                }
 
             }else{
+                $url .= '?count=1';
+
                 $ch = curl_init();
                 curl_setopt($ch, CURLOPT_URL, $url . '&category-name=smart-home');
                 curl_setopt($ch, CURLOPT_HEADER, 0);
@@ -202,11 +204,21 @@ class PageController extends ApiController
                 $json = curl_exec($ch);
                 $rawIdeas['smart-entertainment'] = json_decode($json);
 
+                $ch = curl_init();
+                curl_setopt($ch, CURLOPT_URL, $url . '&category-name=smart-travel');
+                curl_setopt($ch, CURLOPT_HEADER, 0);
+                curl_setopt($ch, CURLOPT_VERBOSE, true);
+                curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+                curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+                curl_setopt($ch, CURLOPT_ENCODING, "");
+                $json = curl_exec($ch);
+                $rawIdeas['smart-travel'] = json_decode($json);
+
 
                 foreach($rawIdeas as $categoryName => $ideaSet){
                     if(isset($ideaSet->posts)){
                         $ideas[$categoryName]['item'] = [$ideaSet->posts[0]];
-                        $ideas[$categoryName]['lesserItems'] = array_slice($ideaSet->posts, 1);
+//                        $ideas[$categoryName]['lesserItems'] = array_slice($ideaSet->posts, 1);
                     }
                 }
             }
