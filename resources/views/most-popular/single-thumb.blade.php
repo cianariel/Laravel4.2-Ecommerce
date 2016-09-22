@@ -9,7 +9,7 @@
 
         </div>
         <div ng-if="item.type == 'product'" class="popular-title col-xs-12">
-            <a href="/product/@{{item.product_permalink}}" class="black" itemprop="name"><span><b>@{{item.product_name}}</b></span></a>
+            <a href="/product/@{{item.product_permalink}}" class="black" itemprop="name"><span>@{{item.product_name}}</span></a>
 
             <div class="views absolute">
                 <i class="m-icon m-icon--flame black"></i>

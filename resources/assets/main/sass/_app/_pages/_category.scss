@@ -185,11 +185,19 @@ body.category{
         background: #fff;
         min-height: 51px;
         position: relative;
+        padding-top: 10px;
       }
       .views{
         right: 0;
         bottom: 0;
         width: 30px;
+
+        .m-icon{
+          font-size: 1.4rem;
+          top: 3px;
+          position: relative;
+
+        }
       }
     }
 

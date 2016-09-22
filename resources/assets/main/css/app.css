@@ -829,9 +829,9 @@ body.has-active-menu {
 
 .swing-lined {
   position: relative; }
-  .swing-lined > span, .swing-lined > b {
+  .swing-lined > span, .swing-lined > div {
     position: relative; }
-    .swing-lined > span::before, .swing-lined > b::before {
+    .swing-lined > span::before, .swing-lined > div::before {
       content: "";
       position: absolute;
       width: 100%;
@@ -844,7 +844,7 @@ body.has-active-menu {
       transform: scaleX(0);
       -webkit-transition: all 0.3s ease-in-out 0s;
       transition: all 0.3s ease-in-out 0s; }
-  .swing-lined:hover > span::before, .swing-lined:hover > b::before, .swing-lined.active > span::before, .swing-lined.active > b::before {
+  .swing-lined:hover > span::before, .swing-lined:hover > div::before, .swing-lined.active > span::before, .swing-lined.active > div::before {
     visibility: visible;
     -webkit-transform: scaleX(1);
     transform: scaleX(1); }
@@ -11157,7 +11157,12 @@ body.home.logged-in #hero {
   .home-subheader.trending {
     max-width: 170px;
     padding-right: 30px;
-    height: 20px; }
+    height: 20px;
+    position: relative;
+    top: 39px; }
+    .home-subheader.trending .m-icon {
+      padding: 0;
+      bottom: 3px; }
   .home-subheader.switcher {
     max-width: 250px;
     height: 32px; }
@@ -11168,7 +11173,7 @@ body.home.logged-in #hero {
       height: 33px;
       font-size: 1.5rem;
       text-align: center; }
-      .home-subheader.switcher div b {
+      .home-subheader.switcher div div {
         height: 33px;
         width: 100%; }
   .home-subheader span {
@@ -11467,11 +11472,16 @@ body.category .rsThumbs {
       font-size: 1.3rem;
       background: #fff;
       min-height: 51px;
-      position: relative; }
+      position: relative;
+      padding-top: 10px; }
     .most-popular-new .popular-wrap.single-thumb .views {
       right: 0;
       bottom: 0;
       width: 30px; }
+      .most-popular-new .popular-wrap.single-thumb .views .m-icon {
+        font-size: 1.4rem;
+        top: 3px;
+        position: relative; }
   .most-popular-new .popular-wrap .box-item {
     width: 100%;
     height: auto;

@@ -932,7 +932,7 @@ body.has-active-menu{
 .swing-lined{
   position: relative;
 
-  &>span ,&>b{
+  &>span ,&>div{
     position: relative;
 
     &::before {
@@ -954,7 +954,7 @@ body.has-active-menu{
   &:hover,
   &.active{
     &>span,
-    &>b{
+    &>div{
       &::before{
         visibility: visible;
         -webkit-transform: scaleX(1);
