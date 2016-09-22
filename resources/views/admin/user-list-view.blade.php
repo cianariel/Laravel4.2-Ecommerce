@@ -80,7 +80,7 @@
                                                                 type="button"><i class="fa fa-search"></i> Search
                                                         </button>
                                                         &nbsp;&nbsp;
-                                                        <button class="btn btn-warning" ng-click="resetFilter()"
+                                                        <button class="btn btn-warning" ng-click="resetUserList()"
                                                                 type="button"><i class="fa fa-refresh"></i> Refresh
                                                         </button>
                                                         &nbsp;&nbsp;
