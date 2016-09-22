@@ -214,17 +214,16 @@ class PageController extends ApiController
                 $json = curl_exec($ch);
                 $rawIdeas['smart-travel'] = json_decode($json);
 
+                $ideas = [];
 
                 foreach($rawIdeas as $categoryName => $ideaSet){
                     if(isset($ideaSet->posts)){
-                        $ideas[$categoryName]['item'] = [$ideaSet->posts[0]];
+                        $ideas[$categoryName] = [$ideaSet->posts[0]];
 //                        $ideas[$categoryName]['lesserItems'] = array_slice($ideaSet->posts, 1);
                     }
                 }
+
             }
-
-            // print_r($ideas); die();
-
              // 2. get products
             $productSettings = [
                 'ActiveItem' => true,
@@ -247,7 +246,7 @@ class PageController extends ApiController
 
             if($categorObj){
                 $productSettings['CategoryId'] = $categorObj->id;
-                $productSettings['limit'] = 25;
+                $productSettings['limit'] = 5;
 
             }
             $allProducts = $prod->getProductList($productSettings);
@@ -274,25 +273,29 @@ class PageController extends ApiController
             $return[$category] = array_slice($array, 0, $itemsPerCategory);
 
         }else{
+            $productSettings['limit'] = 1;
+
             $productSettings['CategoryId'] = 44;
             $products['smart-home'] = $prod->getProductList($productSettings);
+            $products['smart-home'] = $products['smart-home']['result'];
 
+ 
             $productSettings['CategoryId'] = 62;
             $products['smart-body'] = $prod->getProductList($productSettings);
+            $products['smart-body'] = $products['smart-body']['result'];
+
 
             $productSettings['CategoryId'] = 159;
             $products['smart-entertainment'] = $prod->getProductList($productSettings);
+            $products['smart-entertainment'] = $products['smart-entertainment']['result'];
 
-            if(isset($ideas['smart-home'])){
-                $return['smart_home'] = array_merge($ideas['smart-home'] ?: [], $products['smart-home']['result']);
-            }
-            if(isset($ideas['smart-body'])){
-                $return['smart_body'] = array_merge($ideas['smart-body'] ?: [], $products['smart-body']['result']);
-            }
-            if(isset($ideas['smart-entertainment'])){
-                $return['smart_entertainment'] = array_merge($ideas['smart-entertainment'] ?: [], $products['smart-entertainment']['result']);
-            }
+            $productSettings['CategoryId'] = 159;
+            $products['smart-travel'] = $prod->getProductList($productSettings);
+            $products['smart-travel'] = $products['smart-travel']['result'];
+
         }
+
+        $return = ['ideas' => $ideas, 'products' => $products];
 
 //        foreach($products as $category){
 //            $return['totalCount'] += $category['total'];
@@ -751,12 +754,12 @@ class PageController extends ApiController
 
         $cacheKey = "read-content-$thisCategory";
 
-         if(!env('IS_DEV') && $cachedContent = PageHelper::getFromRedis($cacheKey)){
-               $return = $cachedContent;
-               $return->fromCache = true;
-               $return->cacheKey = $cacheKey;
-               return json_encode($return);
-          }
+             // if(!env('IS_DEV') && $cachedContent = PageHelper::getFromRedis($cacheKey)){
+             //       $return = $cachedContent;
+             //       $return->fromCache = true;
+             //       $return->cacheKey = $cacheKey;
+             //       return json_encode($return);
+             //  }
 
           if($thisCategory == 'default'){
             $return['staticSliderContent']  = false;
