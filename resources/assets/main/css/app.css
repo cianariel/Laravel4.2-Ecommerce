@@ -829,22 +829,22 @@ body.has-active-menu {
 
 .swing-lined {
   position: relative; }
-  .swing-lined > span {
+  .swing-lined > span, .swing-lined > b {
     position: relative; }
-  .swing-lined > span::before {
-    content: "";
-    position: absolute;
-    width: 100%;
-    height: 3px;
-    bottom: 2px;
-    left: 0;
-    visibility: hidden;
-    background-color: #FC1159;
-    -webkit-transform: scaleX(0);
-    transform: scaleX(0);
-    -webkit-transition: all 0.3s ease-in-out 0s;
-    transition: all 0.3s ease-in-out 0s; }
-  .swing-lined:hover > span::before, .swing-lined.active > span::before {
+    .swing-lined > span::before, .swing-lined > b::before {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 3px;
+      bottom: 2px;
+      left: 0;
+      visibility: hidden;
+      background-color: #FC1159;
+      -webkit-transform: scaleX(0);
+      transform: scaleX(0);
+      -webkit-transition: all 0.3s ease-in-out 0s;
+      transition: all 0.3s ease-in-out 0s; }
+  .swing-lined:hover > span::before, .swing-lined:hover > b::before, .swing-lined.active > span::before, .swing-lined.active > b::before {
     visibility: visible;
     -webkit-transform: scaleX(1);
     transform: scaleX(1); }
@@ -6206,6 +6206,9 @@ ins.adsbygoogle {
   margin: 0 auto  !important;
   float: none; }
 
+.block {
+  display: block; }
+
 .no-padding {
   padding: 0 !important; }
 
@@ -6250,6 +6253,9 @@ ins.adsbygoogle {
 
 .no-padding {
   padding: 0; }
+
+.no-border {
+  border: 0px !important; }
 
 .top-40 {
   margin-top: 40px; }
@@ -6302,7 +6308,9 @@ body:not(.single) {
   display: block !important; }
 
 .center-block {
-  float: none; }
+  float: none;
+  margin-left: auto !important;
+  margin-right: auto !important; }
 
 [data-toggle],
 [data-switch] {
@@ -11146,6 +11154,23 @@ body.home.logged-in #hero {
   border-bottom: 2px solid #eee; }
   .home-subheader.current-timespan {
     margin-bottom: 24px; }
+  .home-subheader.trending {
+    max-width: 170px;
+    padding-right: 30px;
+    height: 20px; }
+  .home-subheader.switcher {
+    max-width: 250px;
+    height: 32px; }
+    .home-subheader.switcher div {
+      width: 50%;
+      float: left;
+      display: inline-block;
+      height: 33px;
+      font-size: 1.5rem;
+      text-align: center; }
+      .home-subheader.switcher div b {
+        height: 33px;
+        width: 100%; }
   .home-subheader span {
     padding-bottom: 10px;
     border-bottom: 2px solid #000;
@@ -11426,16 +11451,7 @@ body.category .rsThumbs {
       height: 100%;
       z-index: 1;
       padding: 4px 4px 7px;
-      margin-bottom: 0;
-      /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#727272+35,8e8e8e+100,727272+100&0+36,0.81+100 */
-      background: -moz-linear-gradient(top, rgba(114, 114, 114, 0) 35%, rgba(114, 114, 114, 0) 36%, rgba(114, 114, 114, 0.81) 100%);
-      /* FF3.6-15 */
-      background: -webkit-linear-gradient(top, rgba(114, 114, 114, 0) 35%, rgba(114, 114, 114, 0) 36%, rgba(114, 114, 114, 0.81) 100%);
-      /* Chrome10-25,Safari5.1-6 */
-      background: linear-gradient(to bottom, rgba(114, 114, 114, 0) 35%, rgba(114, 114, 114, 0) 36%, rgba(114, 114, 114, 0.81) 100%);
-      /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-      filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00727272', endColorstr='#cf727272',GradientType=0 );
-      /* IE6-9 */ }
+      margin-bottom: 0; }
       .most-popular-new .popular-wrap.single-thumb .box-item__label span {
         position: absolute;
         bottom: 2px;

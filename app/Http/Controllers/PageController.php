@@ -733,7 +733,7 @@ class PageController extends ApiController
 
         $cacheKey = "read-content-$thisCategory";
 
-         if($cachedContent = PageHelper::getFromRedis($cacheKey)){
+         if(!env('IS_DEV') && $cachedContent = PageHelper::getFromRedis($cacheKey)){
                $return = $cachedContent;
                $return->fromCache = true;
                $return->cacheKey = $cacheKey;

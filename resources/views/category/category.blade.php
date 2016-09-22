@@ -17,8 +17,14 @@
 
         <div class="white-bg mostpop-wrap col-xs-12">
             <div class="homepage-grid center-block">
-                <h4 class="col-xs-12 home-subheader"><span>Popular <i class="m-icon m-icon--flame pink"></i></span></h4>
-               
+                <h4 class="home-subheader trending text-center center-block no-border">Trending <i class="m-icon m-icon--flame black"></i></h4>
+                <div class="col-xs-12">
+                    <h6 class="home-subheader switcher text-center center-block no-padding">
+                        <div class="col-xs-6 no-padding swing-lined" data-toggle=".popular-guides"><b class="block">GUIDES</b></div>
+                        <div class="col-xs-6 no-padding swing-lined" data-toggle=".popular-products"><b class="block">PRODUCTS</b></div>
+                    </h6>
+                </div>
+
                     <section ng-if="ideaCategory == 'default'" class="most-popular-new container no-padding">
                         <div class="col-sm-4 col-xs-12 popular-section category-smart-home">
                             <h5 class="category-link__smart-home category-color">
