@@ -1,45 +1,31 @@
-<?php get_header(); ?>
+<?php
+/**
+ * The template for displaying pages
+ *
+ * This is the template that displays all pages by default.
+ * Please note that this is the WordPress construct of pages and that
+ * other "pages" on your WordPress site will use a different template.
+ *
+ * @package WordPress
+ * @subpackage Ideaing
+ * @since WooCommerce Integration 1.0
+ */
 
-	<main role="main">
-		<!-- section -->
-		<section>
+get_header(); ?>
 
-			<h1><?php the_title(); ?></h1>
+<main id="main" class="site-main container" role="main">
 
-		<?php if (have_posts()): while (have_posts()) : the_post(); ?>
+	<?php
+	// Start the loop.
+	while ( have_posts() ) : the_post();
 
-			<!-- article -->
-			<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+		// Include the page content template.
+		get_template_part( 'template-parts/content', 'page' );
 
-				<?php the_content(); ?>
+		// End of the loop.
+	endwhile;
+	?>
 
-				<?php comments_template( '', true ); // Remove if you don't want comments ?>
-
-				<br class="clear">
-
-				<?php edit_post_link(); ?>
-
-			</article>
-			<!-- /article -->
-
-		<?php endwhile; ?>
-
-		<?php else: ?>
-
-			<!-- article -->
-			<article>
-
-				<h2><?php _e( 'Sorry, nothing to display.', 'html5blank' ); ?></h2>
-
-			</article>
-			<!-- /article -->
-
-		<?php endif; ?>
-
-		</section>
-		<!-- /section -->
-	</main>
-
-<?php get_sidebar(); ?>
+</main><!-- .site-main -->
 
 <?php get_footer(); ?>
