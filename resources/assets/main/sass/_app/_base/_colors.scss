@@ -72,6 +72,14 @@
   opacity: .4 !important;
 }
 
+.opaque-hover{
+  opacity: 0 !important;
+
+  &:hover{
+    opacity: .4 !important;
+  }
+}
+
 
 // CATEGORY COLORS
 

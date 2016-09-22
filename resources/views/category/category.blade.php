@@ -20,8 +20,8 @@
                 <h4 class="home-subheader trending text-center no-border">Trending <i class="m-icon m-icon--flame black"></i></h4>
                 <div class="col-xs-12">
                     <h6 class="home-subheader switcher text-center center-block no-padding">
-                        <div class="col-xs-6 no-padding swing-lined" data-toggle=".popular-guides"><div class="block">GUIDES</div></div>
-                        <div class="col-xs-6 no-padding swing-lined active" data-toggle=".popular-products"><div class="block">PRODUCTS</span></div>
+                        <div class="col-xs-6 no-padding swing-lined" data-toggle=".popular-guides"><div class="block">Guides</div></div>
+                        <div class="col-xs-6 no-padding swing-lined active" data-toggle=".popular-products"><div class="block">Products</span></div>
                     </h6>
                 </div>
 

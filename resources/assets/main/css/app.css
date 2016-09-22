@@ -840,6 +840,7 @@ body.has-active-menu {
       left: 0;
       visibility: hidden;
       background-color: #FC1159;
+      color: #000;
       -webkit-transform: scaleX(0);
       transform: scaleX(0);
       -webkit-transition: all 0.3s ease-in-out 0s;
@@ -7058,6 +7059,11 @@ p {
 .opaque {
   opacity: .4 !important; }
 
+.opaque-hover {
+  opacity: 0 !important; }
+  .opaque-hover:hover {
+    opacity: .4 !important; }
+
 .category-smart-home .category-color,
 .category-smarthome .category-color {
   color: #FC1159 !important; }
@@ -11159,7 +11165,7 @@ body.home.logged-in #hero {
     padding-right: 30px;
     height: 20px;
     position: relative;
-    top: 39px; }
+    top: 40px; }
     .home-subheader.trending .m-icon {
       padding: 0;
       bottom: 3px; }
@@ -11193,6 +11199,9 @@ body.home.logged-in #hero {
     padding-top: 12px;
     font-size: 1.7rem;
     font-style: normal; }
+
+.popular-section {
+  margin-top: 30px; }
 
 .homepage #hero {
   min-height: 383px; }
@@ -11385,16 +11394,20 @@ body.category .rsThumbs {
 
 .most-popular-new .category-smart-home .box-item::before,
 .most-popular-new .category-smart-home .popular-wrap.single-thumb::before {
-  background: #FC1159 !important; }
+  border: 1px solid #FC1159 !important;
+  color: #FC1159; }
 .most-popular-new .category-smart-body .box-item::before,
 .most-popular-new .category-smart-body .popular-wrap.single-thumb::before {
-  background: #079DD1 !important; }
+  border: 1px solid #079DD1 !important;
+  color: #079DD1; }
 .most-popular-new .category-smart-entertainment .box-item::before,
 .most-popular-new .category-smart-entertainment .popular-wrap.single-thumb::before {
-  background: #89C981 !important; }
+  border: 1px solid #89C981 !important;
+  color: #89C981; }
 .most-popular-new .category-smart-travel .box-item::before,
 .most-popular-new .category-smart-travel .popular-wrap.single-thumb::before {
-  background: #FF7F00 !important; }
+  border: 1px solid #FF7F00 !important;
+  color: #FF7F00; }
 
 @media (max-width: 620px) {
   .most-popular-new .popular-section {
@@ -11420,10 +11433,6 @@ body.category .rsThumbs {
   width: 65%;
   height: auto;
   overflow: visible; }
-  .most-popular-new .box-item .box-item__overlay.category-bg {
-    opacity: .3 !important; }
-  .most-popular-new .box-item:hover .box-item__overlay.category-bg {
-    opacity: 0 !important; }
   .most-popular-new .box-item::before {
     content: '1';
     position: absolute;
@@ -11431,9 +11440,9 @@ body.category .rsThumbs {
     top: -7px;
     left: -4px;
     border-radius: 14px;
-    background: #FC1159;
+    border: 1px solid #FC1159;
     padding: 2px 10px;
-    color: #fff;
+    color: #000;
     z-index: 9; }
   .most-popular-new .box-item img {
     border-radius: 5px; }
@@ -11457,7 +11466,6 @@ body.category .rsThumbs {
       position: absolute;
       left: -8px;
       top: -7px;
-      background: #FF0042;
       border-radius: 50%;
       color: #fff;
       font-weight: bold;
@@ -11466,6 +11474,12 @@ body.category .rsThumbs {
     .most-popular-new .popular-wrap.single-thumb .box-item {
       height: 215px !important;
       overflow: hidden; }
+      .most-popular-new .popular-wrap.single-thumb .box-item .swing-lined > div::before,
+      .most-popular-new .popular-wrap.single-thumb .box-item .swing-lined > span::before {
+        height: 1px; }
+      .most-popular-new .popular-wrap.single-thumb .box-item .box-item__overlay {
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0; }
       .most-popular-new .popular-wrap.single-thumb .box-item::before {
         display: none; }
     .most-popular-new .popular-wrap.single-thumb .popular-title {

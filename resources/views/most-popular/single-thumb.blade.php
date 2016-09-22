@@ -4,7 +4,7 @@
                 <img class="img-responsive" src="@{{ item.media_link_full_path }}">
             </a>
             <a href="/product/@{{item.product_permalink}}" class="category-@{{item.master_category}}">
-               <!-- <div class="box-item__overlay category-bg opaque"></div> -->
+               <div class="box-item__overlay category-bg opaque-hover"></div>
             </a>
 
         </div>

@@ -164,6 +164,12 @@ class PageController extends ApiController
                 $rawIdeas = json_decode($json, true);
 
 
+//                foreach($rawIdeas as $categoryName => $ideaSet){
+//                    if(isset($rawIdeas->posts)){
+                        $ideas[$category] = $rawIdeas;
+//                        $ideas[$categoryName]['lesserItems'] = array_slice($ideaSet->posts, 1);
+//                    }
+//                }
 
             }else{
                 $ch = curl_init();
