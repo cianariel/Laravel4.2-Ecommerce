@@ -11488,6 +11488,8 @@ body.category .rsThumbs {
       .most-popular-new .popular-wrap.single-thumb .box-item .box-item__overlay {
         border-bottom-left-radius: 0;
         border-bottom-right-radius: 0; }
+      .most-popular-new .popular-wrap.single-thumb .box-item.product-box .popular-title {
+        min-height: 90px; }
       .most-popular-new .popular-wrap.single-thumb .box-item::before {
         display: none; }
     .most-popular-new .popular-wrap.single-thumb .popular-title {
