@@ -953,6 +953,18 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
             $scope.showAllProduct();
         };
 
+        $scope.resetUserList = function () {
+            $scope.initPage();
+            $scope.getUserList();
+            //$scope.getCategory();
+
+            //$scope.showAllProduct();
+
+        };
+
+        // Reset User list
+
+
         // Build HTML listed response for popup notification.
         $scope.buildErrorMessage = function (errorObj) {
 
