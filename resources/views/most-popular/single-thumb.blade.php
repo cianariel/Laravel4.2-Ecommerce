@@ -9,9 +9,11 @@
 
         </div>
         <div ng-if="item.type == 'product'" class="popular-title col-xs-12">
-            <a href="/product/@{{item.product_permalink}}" class="black" itemprop="name"><span>@{{item.product_name}}</span></a>
+         	<div class="category-color">@{{item.master_category_name}}</div>
+            <a href="/product/@{{item.product_permalink}}" class="black" itemprop="name">	<span>@{{item.product_name}}</span>
+            </a>
 
-            <div class="views absolute">
+            <div class="views absolute"  style="min-width: 42px">
                 <i class="m-icon m-icon--flame black"></i>
                 <span class="ng-binding"> <b>@{{item.count}}</b></span>
             </div>
@@ -22,13 +24,18 @@
                     <img alt="@{{item.feed_image.alt}}" title="@{{item.feed_image.title}}"
                          src="@{{item.feed_image.url}}">
             </a>
-            <a href="/product/@{{item.url}}" class="box-item__label" itemprop="name"><span>@{{item.title}}</span></a>
             <a href="@{{item.url}}" class="category-@{{item.category_main}}">
-                <div class="box-item__overlay category-bg opaque"></div>
+               <div class="box-item__overlay category-bg opaque-hover"></div>
             </a>
+           
         </div>
-        <div ng-if="item.type == 'idea'" class="social-stats__item views center-block">
-            <i class="m-icon m-icon--flame pink"></i>
-            <span class="social-stats__text ng-binding">@{{item.views}} views</span>
+         <div ng-if="item.type == 'idea'" class="popular-title col-xs-12">
+         	<div class="category-color">@{{item.category}}</div>
+            <a href="@{{item.url}}" class="black" itemprop="name"><span>@{{item.title}}</span></a> 
+
+            <div class="views absolute" style="min-width: 42px">
+                <i class="m-icon m-icon--flame black"></i>
+                <span class="ng-binding"> <b>@{{item.views}}</b></span>
+            </div>
         </div>
 </div>
