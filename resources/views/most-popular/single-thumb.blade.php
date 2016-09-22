@@ -8,7 +8,7 @@
             </a>
 
         </div>
-        <div ng-if="item.type == 'product'" class="popular-title col-xs-12">
+        <div ng-if="item.type == 'product'" class="popular-title col-xs-12"  style="min-height: 90px">
          	<div class="category-color">@{{item.master_category_name}}</div>
             <a href="/product/@{{item.product_permalink}}" class="black" itemprop="name">	<span>@{{item.product_name}}</span>
             </a>

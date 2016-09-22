@@ -279,19 +279,44 @@ class PageController extends ApiController
             $products['smart-home'] = $prod->getProductList($productSettings);
             $products['smart-home'] = $products['smart-home']['result'];
 
+          foreach($products['smart-home'] as $pr){
+                    $prodID = $pr->id;
+                    $count =  0;
+                    $pr->count = $count;
+           }
+
  
             $productSettings['CategoryId'] = 62;
             $products['smart-body'] = $prod->getProductList($productSettings);
             $products['smart-body'] = $products['smart-body']['result'];
+
+              foreach($products['smart-body'] as $pr){
+                    $prodID = $pr->id;
+                    $count =  0;
+                    $pr->count = $count;
+           }
 
 
             $productSettings['CategoryId'] = 159;
             $products['smart-entertainment'] = $prod->getProductList($productSettings);
             $products['smart-entertainment'] = $products['smart-entertainment']['result'];
 
-            $productSettings['CategoryId'] = 159;
+                foreach($products['smart-entertainment'] as $pr){
+                    $prodID = $pr->id;
+                    $count =  0;
+                    $pr->count = $count;
+           }
+
+            $productSettings['CategoryId'] = 55;
             $products['smart-travel'] = $prod->getProductList($productSettings);
             $products['smart-travel'] = $products['smart-travel']['result'];
+
+
+                foreach($products['smart-travel'] as $pr){
+                    $prodID = $pr->id;
+                    $count =  0;
+                    $pr->count = $count;
+           }
 
         }
 
