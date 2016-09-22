@@ -11409,6 +11409,12 @@ body.category .rsThumbs {
   border: 1px solid #FF7F00 !important;
   color: #FF7F00; }
 
+.category-default .most-popular-new .popular-title {
+  padding-bottom: 10px; }
+
+.app-wrap:not(.category-default) .most-popular-new .popular-title .category-color {
+  display: none; }
+
 @media (max-width: 620px) {
   .most-popular-new .popular-section {
     float: none;
@@ -11441,6 +11447,7 @@ body.category .rsThumbs {
     left: -4px;
     border-radius: 14px;
     border: 1px solid #FC1159;
+    background: #f7f7f7;
     padding: 2px 10px;
     color: #000;
     z-index: 9; }
@@ -11466,6 +11473,7 @@ body.category .rsThumbs {
       position: absolute;
       left: -8px;
       top: -7px;
+      background: #f7f7f7;
       border-radius: 50%;
       color: #fff;
       font-weight: bold;

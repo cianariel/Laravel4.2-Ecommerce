@@ -48,7 +48,27 @@ body.category{
   }
 }
 
+.category-default{
+  .most-popular-new{
+    .popular-title{
+      padding-bottom: 10px;
+    }
+  }
+}
+
+.app-wrap:not(.category-default){
 .most-popular-new{
+  .popular-title{
+    .category-color{
+      display: none;
+    }
+  }
+}
+}
+
+.most-popular-new{
+
+
 
   @media(max-width:620px){
     .popular-section{
@@ -109,6 +129,7 @@ body.category{
       left: -4px;
       border-radius: 14px;
       border:1px solid $iridium;
+      background: #f7f7f7;
       padding: 2px 10px;
       color: #000;
       z-index: 9;
@@ -162,6 +183,7 @@ body.category{
         position: absolute;
         left: -8px;
         top: -7px;
+        background: #f7f7f7;
         //background: #FF0042;
         border-radius: 50%;
         color: #fff;
