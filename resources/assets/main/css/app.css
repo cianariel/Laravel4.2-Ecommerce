@@ -11412,13 +11412,8 @@ body.category .rsThumbs {
     float: none; }
 .most-popular-new .box-item {
   float: left;
-  position: relative;
   width: 65%;
   height: auto;
-  border-radius: 4px;
-  border: 1px solid #ededed;
-  margin: 3px;
-  border-radius: 5px;
   overflow: visible; }
   .most-popular-new .box-item .box-item__overlay.category-bg {
     opacity: .3 !important; }
@@ -11441,17 +11436,10 @@ body.category .rsThumbs {
   width: 32%;
   float: left; }
   .most-popular-new .popular-wrap.single-thumb {
-    width: 100%; }
+    width: 100%;
+    min-height: 275px; }
     .most-popular-new .popular-wrap.single-thumb .box-item__label {
-      position: absolute;
-      bottom: 0;
-      font-size: 1.5rem;
-      text-align: center;
-      width: 100%;
-      height: 100%;
-      z-index: 1;
-      padding: 4px 4px 7px;
-      margin-bottom: 0; }
+      font-size: 1.5rem; }
       .most-popular-new .popular-wrap.single-thumb .box-item__label span {
         position: absolute;
         bottom: 2px;
@@ -11462,7 +11450,8 @@ body.category .rsThumbs {
       content: counter(popular-box);
       font-weight: 700;
       position: absolute;
-      left: 8px;
+      left: -8px;
+      top: -7px;
       background: #FF0042;
       border-radius: 50%;
       color: #fff;
@@ -11474,13 +11463,22 @@ body.category .rsThumbs {
       overflow: hidden; }
       .most-popular-new .popular-wrap.single-thumb .box-item::before {
         display: none; }
-    .most-popular-new .popular-wrap.single-thumb .social-stats__item {
-      margin: 3px auto;
-      width: 96px;
-      display: block; }
+    .most-popular-new .popular-wrap.single-thumb .popular-title {
+      font-size: 1.3rem;
+      background: #fff;
+      min-height: 51px;
+      position: relative; }
+    .most-popular-new .popular-wrap.single-thumb .views {
+      right: 0;
+      bottom: 0;
+      width: 30px; }
   .most-popular-new .popular-wrap .box-item {
     width: 100%;
-    height: auto; }
+    height: auto;
+    border-bottom: 1px solid #eee;
+    border-radius: 0; }
+    .most-popular-new .popular-wrap .box-item img {
+      max-width: 98%; }
     .most-popular-new .popular-wrap .box-item::before {
       content: '2';
       padding: 2px 10px;
