@@ -72,6 +72,14 @@
   opacity: .4 !important;
 }
 
+.opaque-hover{
+  opacity: 0 !important;
+
+  &:hover{
+    opacity: .4 !important;
+  }
+}
+
 
 // CATEGORY COLORS
 
@@ -208,7 +216,6 @@
   }
 }
 
-
 .category-smarthome,
 .category-smart-home,
 .tag-smart-home{
@@ -220,6 +227,11 @@
       visibility: visible;
       -webkit-transform: scaleX(1);
       transform: scaleX(1);
+    }
+  }
+  .home-subheader.switcher {
+    .swing-lined > div::before {
+      background: $iridium;
     }
   }
 }
@@ -235,6 +247,11 @@
       transform: scaleX(1);
     }
   }
+  .home-subheader.switcher {
+    .swing-lined > div::before {
+      background: $pine-green;
+    }
+  }
 }
 .category-smart-travel,
 .tag-smart-travel{
@@ -248,6 +265,11 @@
       transform: scaleX(1);
     }
   }
+  .home-subheader.switcher {
+    .swing-lined > div::before {
+      background: $dark-orange;
+    }
+  }
 }
 .category-smart-body,
 .tag-smart-body{
@@ -259,6 +281,11 @@
       visibility: visible;
       -webkit-transform: scaleX(1);
       transform: scaleX(1);
+    }
+  }
+  .home-subheader.switcher {
+    .swing-lined > div::before {
+      background: $facebook-blue;
     }
   }
 }

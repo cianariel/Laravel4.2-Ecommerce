@@ -144,69 +144,52 @@ class PageController extends ApiController
        // } else {
 
             // 1. get most popular ideas
-            $url = URL::to('/') . '/ideas/feeds/index.php?count='. ($itemsPerCategory / 2).'&most-popular';
+            $url = URL::to('/') . '/ideas/feeds/index.php?most-popular';
 
             if($daysBack){
                 $url .= '&daysback=' . $daysBack;
             }
 
             if($category && $category != 'default'){
-                $url .= '&category-name='.$category;
+                $url .= '&count=4&category-name='.$category;
 
-                $ch = curl_init();
-                curl_setopt($ch, CURLOPT_URL, $url);
-                curl_setopt($ch, CURLOPT_HEADER, 0);
-                curl_setopt($ch, CURLOPT_VERBOSE, true);
-                curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-                curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-                curl_setopt($ch, CURLOPT_ENCODING, "");
-                $json = curl_exec($ch);
-                $rawIdeas = json_decode($json, true);
+                $json = PageHelper::getFromCurl($url);
+
+                $rawIdeas = json_decode($json, false);
+
+                // print_r($rawIdeas); die();
 
 
+                // print_r($rawIdeas->posts); die();
+
+                 $ideas[$category] = isset($rawIdeas->posts) ? $rawIdeas->posts : [];
 
             }else{
-                $ch = curl_init();
-                curl_setopt($ch, CURLOPT_URL, $url . '&category-name=smart-home');
-                curl_setopt($ch, CURLOPT_HEADER, 0);
-                curl_setopt($ch, CURLOPT_VERBOSE, true);
-                curl_setopt($ch, CURLOPT_RETURNTRANSFER, true); 
-                curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-                curl_setopt($ch, CURLOPT_ENCODING, "");
-                $json = curl_exec($ch);
+                $url .= '&count=1';
+
+                $json = PageHelper::getFromCurl($url . '&category-name=smart-home');
                 $rawIdeas['smart-home'] = json_decode($json);
 
-                $ch = curl_init();
-                curl_setopt($ch, CURLOPT_URL, $url . '&category-name=smart-body');
-                curl_setopt($ch, CURLOPT_HEADER, 0);
-                curl_setopt($ch, CURLOPT_VERBOSE, true);
-                curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-                curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-                curl_setopt($ch, CURLOPT_ENCODING, "");
-                $json = curl_exec($ch);
+                $json = PageHelper::getFromCurl($url . '&category-name=smart-body');
                 $rawIdeas['smart-body'] = json_decode($json);
 
-                $ch = curl_init();
-                curl_setopt($ch, CURLOPT_URL, $url . '&category-name=smart-entertainment');
-                curl_setopt($ch, CURLOPT_HEADER, 0);
-                curl_setopt($ch, CURLOPT_VERBOSE, true);
-                curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-                curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-                curl_setopt($ch, CURLOPT_ENCODING, "");
-                $json = curl_exec($ch);
+                $json = PageHelper::getFromCurl($url . '&category-name=smart-entertainment');
                 $rawIdeas['smart-entertainment'] = json_decode($json);
 
+                $json = PageHelper::getFromCurl($url . '&category-name=smart-travel');
+                $rawIdeas['smart-travel'] = json_decode($json);
+
+                $ideas = [];
+
+                // print_r($rawIdeas); die();
 
                 foreach($rawIdeas as $categoryName => $ideaSet){
                     if(isset($ideaSet->posts)){
-                        $ideas[$categoryName]['item'] = [$ideaSet->posts[0]];
-                        $ideas[$categoryName]['lesserItems'] = array_slice($ideaSet->posts, 1);
+                        $ideas[$categoryName] = [$ideaSet->posts[0]];
                     }
                 }
+
             }
-
-            // print_r($ideas); die();
-
              // 2. get products
             $productSettings = [
                 'ActiveItem' => true,
@@ -229,52 +212,79 @@ class PageController extends ApiController
 
             if($categorObj){
                 $productSettings['CategoryId'] = $categorObj->id;
-                $productSettings['limit'] = 25;
+                $productSettings['limit'] = 5;
 
             }
             $allProducts = $prod->getProductList($productSettings);
 
 
-                    foreach($allProducts['result'] as $prod){
-                        $prodID = $prod->id;
-                        $count =  0;
-                        $prod->count = $count;
-                    }
+            foreach($allProducts['result'] as $prod){
+                $prodID = $prod->id;
+                $count =  0;
+                $prod->count = $count;
+            }
 
-                    $sortedProds = array_values(array_sort($allProducts['result'], function($value){
-                        return $value->count;
-                    }));
+            $sortedProds = array_values(array_sort($allProducts['result'], function($value){
+                return $value->count;
+            }));
 
-                    $sortedProds = array_reverse($sortedProds);
+            $sortedProds = array_reverse($sortedProds);
 
-                    $products[$category] = array_slice($sortedProds, 0, ($itemsPerCategory - 1));
-
-//            $products[$category] = $prod->getProductList($productSettings);
+            $products[$category] = array_slice($sortedProds, 0, ($itemsPerCategory - 1));
 
             $array = array_merge(isset($ideas[$category]->posts) ? $ideas[$category]->posts : [], $products[$category]);
 
             $return[$category] = array_slice($array, 0, $itemsPerCategory);
 
         }else{
+            $productSettings['limit'] = 1;
+
             $productSettings['CategoryId'] = 44;
             $products['smart-home'] = $prod->getProductList($productSettings);
+            $products['smart-home'] = $products['smart-home']['result'];
 
+          foreach($products['smart-home'] as $pr){
+                    $prodID = $pr->id;
+                    $count =  0;
+                    $pr->count = $count;
+           }
+
+ 
             $productSettings['CategoryId'] = 62;
             $products['smart-body'] = $prod->getProductList($productSettings);
+            $products['smart-body'] = $products['smart-body']['result'];
+
+              foreach($products['smart-body'] as $pr){
+                    $prodID = $pr->id;
+                    $count =  0;
+                    $pr->count = $count;
+           }
+
 
             $productSettings['CategoryId'] = 159;
             $products['smart-entertainment'] = $prod->getProductList($productSettings);
+            $products['smart-entertainment'] = $products['smart-entertainment']['result'];
 
-            if(isset($ideas['smart-home'])){
-                $return['smart_home'] = array_merge($ideas['smart-home'] ?: [], $products['smart-home']['result']);
-            }
-            if(isset($ideas['smart-body'])){
-                $return['smart_body'] = array_merge($ideas['smart-body'] ?: [], $products['smart-body']['result']);
-            }
-            if(isset($ideas['smart-entertainment'])){
-                $return['smart_entertainment'] = array_merge($ideas['smart-entertainment'] ?: [], $products['smart-entertainment']['result']);
-            }
+                foreach($products['smart-entertainment'] as $pr){
+                    $prodID = $pr->id;
+                    $count =  0;
+                    $pr->count = $count;
+           }
+
+            $productSettings['CategoryId'] = 55;
+            $products['smart-travel'] = $prod->getProductList($productSettings);
+            $products['smart-travel'] = $products['smart-travel']['result'];
+
+
+                foreach($products['smart-travel'] as $pr){
+                    $prodID = $pr->id;
+                    $count =  0;
+                    $pr->count = $count;
+           }
+
         }
+
+        $return = ['ideas' => $ideas, 'products' => $products];
 
 //        foreach($products as $category){
 //            $return['totalCount'] += $category['total'];
@@ -340,14 +350,8 @@ class PageController extends ApiController
                 $url .= '&category-name=' . $category;
             }
 
-            $ch = curl_init();
-            curl_setopt($ch, CURLOPT_URL, $url);
-            curl_setopt($ch, CURLOPT_HEADER, 0);
-            curl_setopt($ch, CURLOPT_VERBOSE, true);
-            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-            curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-            curl_setopt($ch, CURLOPT_ENCODING, "");
-            $json = curl_exec($ch);
+            $json = PageHelper::getFromCurl($url);
+        ;
 
             $return = json_decode($json, true);
 
@@ -501,24 +505,7 @@ class PageController extends ApiController
 
         $url .= $dateQuery;
 
-//        if ($category && $category != 'false') {
-//            $url .= '&category-name=' . $category;
-//        }
-//
-//        if ($limit == 10 && $category != 'deals') { // CMS homepage, needs to have no deals
-//            $url .= '&no-deals';
-//        }
-
-//        print_r($url); die();
-
-        $ch = curl_init();
-        curl_setopt($ch, CURLOPT_URL, $url);
-        curl_setopt($ch, CURLOPT_HEADER, 0);
-        curl_setopt($ch, CURLOPT_VERBOSE, true);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-        curl_setopt($ch, CURLOPT_ENCODING, "");
-        $json = curl_exec($ch);
+        $json = PageHelper::getFromCurl($url);
 
         $ideaCollection = json_decode($json);
 
@@ -611,7 +598,7 @@ class PageController extends ApiController
     {
         $cacheKey = "grid-content-$page-$limit-$tag-$type-$categoryName";
 
-        if($cachedContent = PageHelper::getFromRedis($cacheKey)){
+        if(!env('IS_DEV') && $cachedContent = PageHelper::getFromRedis($cacheKey)){
            $return = $cachedContent;
            $return->fromCache = true;
            $return->cacheKey = $cacheKey;
@@ -619,6 +606,7 @@ class PageController extends ApiController
         }
 
         if($categoryName == 'default'){
+
             $categoryName = false;
         }
 
@@ -733,12 +721,12 @@ class PageController extends ApiController
 
         $cacheKey = "read-content-$thisCategory";
 
-         if($cachedContent = PageHelper::getFromRedis($cacheKey)){
-               $return = $cachedContent;
-               $return->fromCache = true;
-               $return->cacheKey = $cacheKey;
-               return json_encode($return);
-          }
+             // if(!env('IS_DEV') && $cachedContent = PageHelper::getFromRedis($cacheKey)){
+             //       $return = $cachedContent;
+             //       $return->fromCache = true;
+             //       $return->cacheKey = $cacheKey;
+             //       return json_encode($return);
+             //  }
 
           if($thisCategory == 'default'){
             $return['staticSliderContent']  = false;
@@ -769,19 +757,7 @@ class PageController extends ApiController
             $url .= '&tag=' . $tag;
         }
 
-        $ch = curl_init();
-        curl_setopt($ch, CURLOPT_URL, $url);
-        curl_setopt($ch, CURLOPT_HEADER, 0);
-        curl_setopt($ch, CURLOPT_VERBOSE, true);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-        curl_setopt($ch, CURLOPT_ENCODING, "");
-        $json = curl_exec($ch);
-
-        //  echo $json;
-        //  die();
-
-        //  $return = json_decode($json);
+        $json = PageHelper::getFromCurl($url);
 
         $ideaCollection = json_decode($json);
 
@@ -814,10 +790,6 @@ class PageController extends ApiController
 
     public function getGridStories($limit, $offset, $featuredLimit, $featuredOffset, $tag = false, $category = false, $daysback = false)
     {
-
-//        $url = 'https://ideaing.com/ideas/feeds/index.php?count=' . $limit . '&no-featured&offset=' . $offset;
-//        $url = URL::to('/') . '/ideas/feeds/index.php?count=' . $limit . '&no-featured&offset=' . $offset;
-
         if(@env('PROD_FEED')){
             $url = 'https://ideaing.com/ideas/feeds/index.php?count=' . $limit . '&no-featured&offset=' . $offset;
         }else{
@@ -841,19 +813,9 @@ class PageController extends ApiController
             $url .= $dateQuery;
         }
 
-
-
-        $ch = curl_init();
-        curl_setopt($ch, CURLOPT_URL, $url);
-        curl_setopt($ch, CURLOPT_HEADER, 0);
-        curl_setopt($ch, CURLOPT_VERBOSE, true);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-        curl_setopt($ch, CURLOPT_ENCODING, "");
-        $json = curl_exec($ch);
+        $json = PageHelper::getFromCurl($url);
 
         $ideaCollection = json_decode($json);
-
         $newIdeaCollection = new Collection();
         $comment = new App\Models\Comment();
 
@@ -946,14 +908,7 @@ class PageController extends ApiController
                 $url .= '&excludeid=' . $currentStoryID;
             }
 
-            $ch = curl_init();
-            curl_setopt($ch, CURLOPT_URL, $url);
-            curl_setopt($ch, CURLOPT_HEADER, 0);
-            curl_setopt($ch, CURLOPT_VERBOSE, true);
-            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-            curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-            curl_setopt($ch, CURLOPT_ENCODING, "");
-            $json = curl_exec($ch);
+            $json = PageHelper::getFromCurl($url);
 
             $return = json_decode($json);
             PageHelper::putIntoRedis($cacheKey, $return);
@@ -1256,25 +1211,14 @@ class PageController extends ApiController
             }
 
             //CMS POSTS -- TODO -- if we wont use images in the sitemap, change into direct call to WP DB for better perf?
-
             $url = URL::to('/') . '/ideas/feeds/index.php?count=0';
 
-            $ch = curl_init();
-            curl_setopt($ch, CURLOPT_URL, $url);
-            curl_setopt($ch, CURLOPT_HEADER, 0);
-            curl_setopt($ch, CURLOPT_VERBOSE, true);
-            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-            curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-            curl_setopt($ch, CURLOPT_ENCODING, "");
-            $json = curl_exec($ch);
-
+            $json = PageHelper::getFromCurl($url);
             $posts = json_decode($json);
 
-            //$posts = WpPost::where('post_status', 'publish')->get();
             foreach ($posts as $post) {
                 $sitemap->add($post->url, date('c', strtotime($post->updated_at)), '0.5', 'yearly');
             }
-
         }
 
         // show your sitemap (options: 'xml' (default), 'html', 'txt', 'ror-rss', 'ror-rdf')

@@ -42,6 +42,7 @@ body.home.logged-in{
     position: relative;
     width: 100%;
     max-width: 1170px;
+    min-height: 335px;
     overflow: hidden;
     margin-top: 25px;
 
@@ -460,10 +461,60 @@ body.home.logged-in{
   padding-bottom: 0;
   font-size: 2.3rem;
   border-bottom: 2px solid #eee;
+  font-family: Montserratlight;
 
   &.current-timespan{
     margin-bottom: 24px;
+  }
+  &.trending{
+    max-width: 170px;
+    padding-right: 30px;
+    height:20px;
 
+    position: relative;
+
+    //@media(min-width: 620px){
+      top: 40px;
+    //}
+
+
+    @media(min-width: 620px){
+      font-size: 1.6em;
+    }
+
+    .m-icon{
+      padding: 0; 
+      bottom: 3px;
+      right: -8px;
+    }
+  }
+  &.switcher{
+    max-width: 250px;
+    height: 32px;
+
+    .swing-lined>div::before{
+      height: 2px;
+      background: #000;
+    }
+
+    .category-color{
+      &:not(.active){
+        color: #000 !important;
+      }
+    }
+
+    div{
+      width: 50%;
+      float: left;
+      display: inline-block;
+      height: 33px;
+      font-size: 1.5rem;
+      text-align: center;
+      div{
+        height: 33px;
+        width: 100%;
+      }
+    }
   }
 
   span{
@@ -472,9 +523,6 @@ body.home.logged-in{
     margin-bottom: -1px;
     display: inline-block;
     height: 40px;
-    //padding-right: 28px;
-
-
   }
 
   .m-icon{
@@ -483,7 +531,7 @@ body.home.logged-in{
 
     &.m-icon--flame{
       position: relative;
-      right: 1px;
+      // right: 1px;
     }
   }
 
@@ -495,11 +543,13 @@ body.home.logged-in{
   }
 }
 
+.popular-section{
+  margin-top: 30px;
+}
+
 .homepage{
   #hero{
     min-height: 383px;
-
-
   }
   .color-overlay{
     position: absolute;
@@ -670,6 +720,7 @@ body.home.logged-in{
   }
 
   .app-wrap{
+    min-height: 1000px;
     background: #F7F7F7;
   }
 

@@ -551,11 +551,8 @@ function ideaingGlobalVars() {
 
     if($token && is_connected()){
 
-        $ch = curl_init();
-
        $url = $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['SERVER_NAME'] . '/api/info';
-
-        $data = array('_wptk' => $token);
+       $data = array('_wptk' => $token);
 
         // use key 'http' even if you send the request to https://...
         $options = array(
@@ -563,6 +560,10 @@ function ideaingGlobalVars() {
                 'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
                 'method'  => 'POST',
                 'content' => http_build_query($data)
+            ),
+            "ssl" => array(
+                "verify_peer"=>false,
+                "verify_peer_name"=>false,
             )
         );
         $context  = stream_context_create($options);
@@ -572,10 +573,8 @@ function ideaingGlobalVars() {
 
         $result = unserialize(base64_decode($result));
 
-        
         $userData = $result['data']['user-data'];
         $isAdmin = $result['IsAdmin'];
-
     }
 
 }

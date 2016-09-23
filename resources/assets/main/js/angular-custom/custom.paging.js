@@ -121,19 +121,20 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
             return decoded;
         };
 
-        $scope.loadReadContent = function($category){
+        $scope.loadReadContent = function($category, $callback){
 
             $('.category-menu a, .mid-menu a').removeClass('active');
 
             $('.category-menu, .mid-menu').find('a.category-link__' + $category).addClass('active');
 
-            $scope.currentPage = 1;
+                $scope.currentPage = 1;
+                $scope.ideaCategory = $category;
+                $scope.firstLoad = pagingApi.getReadContent($category).success(function (response) {
+                     $scope.readContent = response;
+                     $('.popular-box').fadeIn();
+                });
 
-            $scope.ideaCategory = $category;
-
-            $scope.nextLoad = pagingApi.getReadContent($category).success(function (response) {
-                $scope.readContent = response;
-            });
+        
 
             $scope.firstLoad = pagingApi.getGridContent(1, 0, false, false,  $scope.ideaCategory).success(function (response) {
                 $scope.allContent[0] = response;
@@ -142,10 +143,10 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
                 newContent[0] = $scope.sliceToRows(response['content']['ideas'], response['content']['products']);
 
                 $scope.content = newContent;
-                console.log(response)
 
                 $scope.hasMore = response['hasMore'];
                 $scope.unreadCount = response['unreadCount'];
+
             });
         };
 
@@ -221,22 +222,19 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
                     return false;
                 }
 
+                $('.popular-box').fadeOut(function(){
+                    $scope.ideaCategory = categoryName;
+                    $scope.loadReadContent(categoryName);
+                    $scope.filterBy = false;
+
+                    if(categoryName == 'default'){
+                        window.history.replaceState({category: 'smarthome'}, 'Smart Home', '/');
+                    }else{
+                        window.history.replaceState({category: 'smarthome'}, 'Smart Home', categoryName);
+                    }
+                });
 
 
-                $scope.ideaCategory = categoryName;
-                $scope.loadReadContent(categoryName);
-                $scope.filterBy = false;
-
-
-                console.log('ushko');
-                console.log($scope.ideaCategory);
-
-
-                if(categoryName == 'default'){
-                    window.history.replaceState({category: 'smarthome'}, 'Smart Home', '/');
-                }else{
-                    window.history.replaceState({category: 'smarthome'}, 'Smart Home', categoryName);
-                }
             }
 
             $scope.fadeAnimation = function ($node, $action, $callback) {
