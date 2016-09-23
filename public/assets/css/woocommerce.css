@@ -3,7 +3,8 @@
 .secure-checkout .top-nav-holder {
   position: relative;
   height: 60px;
-  padding: 10px 0;
+  margin: 0 0 60px;
+  padding: 10px 15px;
   border-bottom: solid 1px #dbdbdb;
   font-family: Montserrat;
 }
@@ -19,6 +20,83 @@
   height: 100%;
 }
 
+.site-logo svg > path {
+  display: none;
+}
+
 .site-logo:hover svg > path:nth-child(1) {
   fill: #eb2148;
+}
+
+.sc-slogan {
+  font-size: 13px;
+  line-height: 40px;
+  text-align: right;
+  letter-spacing: .09em;
+  text-transform: uppercase;
+  cursor: default;
+}
+
+.sc-slogan span {
+  display: none;
+}
+
+.sc-slogan i {
+  font-size: 18px;
+}
+
+.secure-checkout-nav {
+  display: none;
+}
+
+.secure-checkout-nav a {
+  display: inline-block;
+  padding: 0 8px;
+  margin: 8px 2px;
+  font-size: 9px;
+  letter-spacing: .04em;
+  line-height: 24px;
+  border-radius: 2px;
+  text-transform: uppercase;
+  color: #fff !important;
+  background-color: #d2d2d2;
+}
+
+.secure-checkout-nav a.active {
+  background-color: #4fd37e;
+}
+
+
+@media ( min-width: 554px ){
+
+  .secure-checkout-nav {
+    display: block;
+  }
+}
+
+@media ( min-width: 768px ){
+
+  .secure-checkout-nav a {
+    padding: 0 8px;
+    margin: 8px;
+  }
+
+ .sc-slogan span {
+    display: initial;
+  }
+
+ .sc-slogan i {
+    display: none;
+  }
+}
+
+@media ( min-width: 992px ){
+
+  .site-logo svg > path {
+    display: initial;
+  }
+
+  .secure-checkout .top-nav-holder {
+    padding: 10px 0;
+  }
 }
