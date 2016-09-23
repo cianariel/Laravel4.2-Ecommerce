@@ -465,6 +465,10 @@ body.home.logged-in{
 
   &.current-timespan{
     margin-bottom: 24px;
+
+    @media(max-width:620px){
+      margin-right: 6px !important;
+    }
   }
   &.trending{
     max-width: 170px;

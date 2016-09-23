@@ -262,7 +262,9 @@ body.category{
     margin-top: 7px;
   }
   .home-subheader{
-      // font-size: 1.5rem !important;
+      &.current-timespan{
+         width: 96.1%;
+      }
 
       &.trending{
       max-width: 180px;
@@ -283,7 +285,7 @@ body.category{
   .switcher{
     float:right;
     max-width: 207px !important;
-        margin-right: 6px !important;
+    margin-right: 6px !important;
   }
   
   .most-popular-new{
