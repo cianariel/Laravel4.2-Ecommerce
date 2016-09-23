@@ -146,23 +146,25 @@ class PageController extends ApiController
             // 1. get most popular ideas
             $url = URL::to('/') . '/ideas/feeds/index.php?most-popular';
 
-            if($daysBack){
-                $url .= '&daysback=' . $daysBack;
-            }
+            // if($daysBack){
+            //     $url .= '&daysback=' . $daysBack;
+            // }
 
             if($category && $category != 'default'){
                 $url .= '&count=4&category-name='.$category;
 
-                $json = PageHelper::getFromCurl($url);
+                $json[$category] = PageHelper::getFromCurl($url);
 
-                $rawIdeas = json_decode($json, false);
+                $rawIdeas[$category] = json_decode($json[$category]);
 
                 // print_r($rawIdeas); die();
 
+                // if($rawIdeas->totalCount > 0){
+                    $ideas[$category] = $rawIdeas[$category]->posts;
+                // }else{
+                //     $ideas[$category] = [];
+                // }
 
-                // print_r($rawIdeas->posts); die();
-
-                 $ideas[$category] = isset($rawIdeas->posts) ? $rawIdeas->posts : [];
 
             }else{
                 $url .= '&count=1';

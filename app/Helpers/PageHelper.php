@@ -150,6 +150,7 @@ class PageHelper {
 //            print curl_error($ch);
 //        }
         $json = curl_exec($ch);
+        curl_close($ch);
 
         return $json;
 

@@ -224,7 +224,10 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
 
                 $('.popular-box').fadeOut(function(){
                     $scope.ideaCategory = categoryName;
+
+                    $('.guide-switch').click();
                     $scope.loadReadContent(categoryName);
+
                     $scope.filterBy = false;
 
                     if(categoryName == 'default'){

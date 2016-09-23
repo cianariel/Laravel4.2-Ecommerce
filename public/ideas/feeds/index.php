@@ -6,7 +6,7 @@ function carbon_the_content_limit($max_char, $more_link_text = '(more...)', $str
 	$content = apply_filters('the_content', $content);
 	$content = str_replace(']]>', ']]&gt;', $content);
 	$content = strip_tags($content);
-	if (strlen($_GET['p']) > 0) {
+	if (strlen(@$_GET['p']) > 0) {
 		return $content;
 	}
 	else if ((strlen($content)>$max_char) && ($espacio = strpos($content, " ", $max_char ))) {
@@ -27,7 +27,7 @@ if($postCount==0)
 }
 
 $onlyfeatured = @$_REQUEST['only-featured'];
-$no_featured = $_REQUEST['no-featured'];
+$no_featured = @$_REQUEST['no-featured'];
 $is_featured = "";
 
 if(isset($no_featured))
@@ -38,14 +38,14 @@ if(isset($onlyfeatured))
 {
     $is_featured = "Yes";
 }
-$offset = $_REQUEST['offset'];
-$postCat = $_REQUEST['category-id'];
+$offset = @$_REQUEST['offset'];
+$postCat = @$_REQUEST['category-id'];
 $args = array(
 'cat' => $postCat,
 'showposts' => $postCount, 
 'offset' => $offset,);
 
-if(isset($_REQUEST['category-name']) && $catName = $_REQUEST['category-name']){
+if(isset($_REQUEST['category-name']) && $catName = @$_REQUEST['category-name']){
     if($catName == 'smart-home'){
         $catName = 'smarthome';
     }
@@ -57,7 +57,7 @@ if(isset($_REQUEST['category-name']) && $catName = $_REQUEST['category-name']){
         ));
 }
 
-if($byTags = $_REQUEST['tag']){
+if($byTags = @$_REQUEST['tag']){
     $args['tag'] = $byTags;
 }
 
@@ -89,7 +89,7 @@ if(isset($dateQuery)){
     $args['date_query'] = [$dateQuery];
 }
 
-if($excludeID = $_REQUEST['excludeid']){
+if($excludeID = @$_REQUEST['excludeid']){
     $args['post__not_in'] = array($excludeID);
 }
 
@@ -127,7 +127,6 @@ if(isset($_REQUEST['only-slider'])){
 //    array_push($args['meta_query'], $push);
 }
 
-
 //$posts = query_posts($args);
 $posts = new WP_Query( $args );
 
@@ -160,7 +159,7 @@ if ( $posts->have_posts() ) {
             $cat_names = array();
 
             $filter = 'rss';
-            if ('atom' == $type)
+            if ('atom' == @$type)
                 $filter = 'raw';
 
             if (!empty($cats)) foreach ((array)$cats as $category) {
@@ -207,7 +206,7 @@ if ( $posts->have_posts() ) {
             $data['author_id'] = get_the_author_meta('ID');
 
             if(is_connected()){
-                $laravelUser = file_get_contents('https://ideaing.com/api/info-raw/' . get_the_author_email());
+                $laravelUser = file_get_contents('https://ideaing.com/api/info-raw/' . get_the_author_meta('email'));
                 $laravelUser = json_decode($laravelUser, true);
             }else{
                 $laravelUser = false;
@@ -220,7 +219,7 @@ if ( $posts->have_posts() ) {
             if (isset($laravelUser['medias'][0])) {
                 $data['avator'] = $laravelUser['medias'][0]['media_link'];
             } else {
-                $data['avator'] = get_avatar_url(get_the_author_email(), '80');
+                $data['avator'] = get_avatar_url(get_the_author_meta('email'), '80');
             }
 
             $data['type'] = 'idea';
