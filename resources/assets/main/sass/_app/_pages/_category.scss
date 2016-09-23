@@ -70,21 +70,6 @@ body.category{
 
 .most-popular-new{
 
-
-
-  @media(max-width:620px){
-    .popular-section{
-      float: none;
-      margin: 45px auto 0;
-      overflow: hidden;
-      padding: 0px 2px 0 12px;
-      .box-item{
-        width: 65%;
-      }
-
-    }
-  }
-
   h5{
     text-align: center;
     margin-bottom: 15px;
@@ -148,10 +133,7 @@ body.category{
     &.single-thumb{
       width: 100%;
       min-height: 275px;
-
-      //.box-item{
-      //
-      //}
+      border-radius: 5px;
 
       .box-item__label{
         //position: absolute;
@@ -255,6 +237,34 @@ body.category{
         &::before{
           content:'3';
         }
+      }
+    }
+
+  }
+
+  @media(max-width:620px){
+    .popular-section{
+    //  float: none;
+    //  margin: 45px auto 0;
+    //  overflow: hidden;
+    //  padding: 0px 2px 0 12px;
+    //  .box-item{
+    //    width: 65%;
+    //  }
+    //
+      height: 90px;
+
+      .box-item{
+        width: 30%;
+        height: 100%;
+
+        img {
+          max-width: 85%;
+        }
+      }
+      .popular-title{
+        width: 65%;
+        padding-top: 30px !important;
       }
     }
   }
