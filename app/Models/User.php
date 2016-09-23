@@ -628,28 +628,15 @@ class User extends Model implements AuthenticatableContract,
 
 
         $url = \URL::to('/') . '/ideas/feeds/index.php?count=' . $limit . '&offset=' . $offset . '&author_name=' . $permalink;
-        // dd($url);
 
-        $ch = curl_init();
-        curl_setopt($ch, CURLOPT_URL, $url);
-        curl_setopt($ch, CURLOPT_HEADER, 0);
-        curl_setopt($ch, CURLOPT_VERBOSE, true);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-        curl_setopt($ch, CURLOPT_ENCODING, "");
-        $json = curl_exec($ch);
-
-        //  dd($json);
+        $json = PageHelper::getFromCurl($url);
 
         $ideaCollection = json_decode($json);
-
-        //   dd($ideaCollection);
 
         $ideaCollection = empty($ideaCollection) ? [] : $ideaCollection;
 
 
         $ideas = new Collection();
-
         $comment = new appComment();
         $heart = new Heart();
 

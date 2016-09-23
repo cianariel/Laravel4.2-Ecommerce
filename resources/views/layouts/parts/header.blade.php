@@ -1,4 +1,5 @@
 <?php
+
 // !! IMPORTANT !! -- please use only pure PHP here, no Laravel, otherwise the header will break   in Wordpress !!
 
 if (function_exists('is_single')) {
@@ -30,6 +31,7 @@ if (!isset($theGiveAway)) {
 ?>
 
 <div id="publicApp" ng-app="publicApp" ng-controller="publicController" class="header-cloak scroll-header" ng-cloak>
+
     <header class="colophon container full-sm fixed-sm relative">
         <div>
             <nav id="top-nav" class="row">
