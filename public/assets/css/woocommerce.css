@@ -1,0 +1,24 @@
+/* this could merge with main css later on */
+
+.secure-checkout .top-nav-holder {
+  position: relative;
+  height: 60px;
+  padding: 10px 0;
+  border-bottom: solid 1px #dbdbdb;
+  font-family: Montserrat;
+}
+
+.site-logo {
+  display: block;
+  width: 147px;
+  height: 40px;
+}
+
+.site-logo svg {
+  width: 100%;
+  height: 100%;
+}
+
+.site-logo:hover svg > path:nth-child(1) {
+  fill: #eb2148;
+}
