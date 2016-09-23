@@ -20,40 +20,47 @@
                 <h4 class="home-subheader trending text-center no-border">Trending <i class="m-icon m-icon--flame black"></i></h4>
                 <div class="col-xs-12">
                     <h6 class="home-subheader switcher text-center center-block no-padding">
-                        <div class="col-xs-6 no-padding swing-lined" data-toggle=".popular-guides"><div class="block">Guides</div></div>
+                        <div class="col-xs-6 no-padding swing-lined " data-toggle=".popular-ideas" data-hide=".popular-products"><div class="block">Guides</div></div>
                         <div class="col-xs-6 no-padding swing-lined active" data-toggle=".popular-products"><div class="block">Products</span></div>
                     </h6>
                 </div>
 
-                    <section ng-if="ideaCategory == 'default'" class="most-popular-new container no-padding">
+
+                <section ng-if="ideaCategory == 'default'" class="most-popular-new popular-products container no-padding">
                         <div class="col-sm-3 col-xs-12 popular-section category-smart-home">
-                                <div ng-repeat="item in readContent.mostPopular.smart_home.item">
+                                <div ng-repeat="item in readContent.mostPopular.products['smart-home']">
                                     @include('most-popular.single-thumb')
                                 </div>
 
                         </div>
                         <div class="col-sm-3 col-xs-12 popular-section category-smart-body">
-                                <div ng-repeat="item in readContent.mostPopular.smart_body.item">
+                                <div ng-repeat="item in readContent.mostPopular.products['smart-body']">
                                     @include('most-popular.single-thumb')
                                 </div>
 
-                        </div>
+                        </div> 
 
                         <div class="col-sm-3 col-xs-12 popular-section category-smart-entertainment">
-                                 <div ng-repeat="item in readContent.mostPopular.smart_entertainment.item">
+                                 <div ng-repeat="item in readContent.mostPopular.products['smart-entertainment']">
                                     @include('most-popular.single-thumb')
                                 </div>
                         </div>
 
                         <div class="col-sm-3 col-xs-12 popular-section category-smart-travel">
-                                 <div ng-repeat="item in readContent.mostPopular.smart_travel.item">
+                                 <div ng-repeat="item in readContent.mostPopular.products['smart-travel']">
                                     @include('most-popular.single-thumb')
                                 </div>
                         </div>
                 </section>
 
-                <section ng-if="ideaCategory != 'default'" class="most-popular-new container no-padding">
-                        <div class="col-sm-3 col-xs-12 popular-section category-@{{ideaCategory}}" ng-repeat="item in readContent['mostPopular'][ideaCategory]" >
+                <section ng-if="ideaCategory != 'default'" class="most-popular-new container no-padding  popular-ideas hidden-soft">
+                        <div class="col-sm-3 col-xs-12 popular-section category-@{{ideaCategory}}" ng-repeat="item in readContent['mostPopular']['ideas'][ideaCategory]" >
+                            @include('most-popular.single-thumb')
+                        </div>
+                </section>
+
+                <section ng-if="ideaCategory != 'default'" class="most-popular-new container popular-products no-padding">
+                        <div class="col-sm-3 col-xs-12 popular-section category-@{{ideaCategory}}" ng-repeat="item in readContent['mostPopular']['products'][ideaCategory]" >
                             @include('most-popular.single-thumb')
                         </div>
                 </section>

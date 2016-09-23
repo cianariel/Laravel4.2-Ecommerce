@@ -6120,6 +6120,9 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
 
             $scope.nextLoad = pagingApi.getReadContent($category).success(function (response) {
                 $scope.readContent = response;
+                console.log('u');
+                console.log(response);
+                
             });
 
             $scope.firstLoad = pagingApi.getGridContent(1, 0, false, false,  $scope.ideaCategory).success(function (response) {
