@@ -144,28 +144,28 @@ class PageController extends ApiController
        // } else {
 
             // 1. get most popular ideas
-            $url = URL::to('/') . '/ideas/feeds/index.php&most-popular';
+            $url = URL::to('/') . '/ideas/feeds/index.php?most-popular';
 
             if($daysBack){
                 $url .= '&daysback=' . $daysBack;
             }
 
             if($category && $category != 'default'){
-                $url .= '&category-name='.$category. '?count=4';
+                $url .= '&count=4&category-name='.$category;
 
                 $json = PageHelper::getFromCurl($url);
 
-                $rawIdeas = json_decode($json, true);
+                $rawIdeas = json_decode($json, false);
 
-//                foreach($rawIdeas as $categoryName => $ideaSet){
-//                    if(isset($rawIdeas->posts)){
-                        $ideas[$category] = $rawIdeas;
-//                        $ideas[$categoryName]['lesserItems'] = array_slice($ideaSet->posts, 1);
-//                    }
-//                }
+                // print_r($rawIdeas); die();
+
+
+                // print_r($rawIdeas->posts); die();
+
+                 $ideas[$category] = isset($rawIdeas->posts) ? $rawIdeas->posts : [];
 
             }else{
-                $url .= '?count=1';
+                $url .= '&count=1';
 
                 $json = PageHelper::getFromCurl($url . '&category-name=smart-home');
                 $rawIdeas['smart-home'] = json_decode($json);
@@ -181,10 +181,11 @@ class PageController extends ApiController
 
                 $ideas = [];
 
+                // print_r($rawIdeas); die();
+
                 foreach($rawIdeas as $categoryName => $ideaSet){
                     if(isset($ideaSet->posts)){
                         $ideas[$categoryName] = [$ideaSet->posts[0]];
-//                        $ideas[$categoryName]['lesserItems'] = array_slice($ideaSet->posts, 1);
                     }
                 }
 
@@ -217,21 +218,19 @@ class PageController extends ApiController
             $allProducts = $prod->getProductList($productSettings);
 
 
-                    foreach($allProducts['result'] as $prod){
-                        $prodID = $prod->id;
-                        $count =  0;
-                        $prod->count = $count;
-                    }
+            foreach($allProducts['result'] as $prod){
+                $prodID = $prod->id;
+                $count =  0;
+                $prod->count = $count;
+            }
 
-                    $sortedProds = array_values(array_sort($allProducts['result'], function($value){
-                        return $value->count;
-                    }));
+            $sortedProds = array_values(array_sort($allProducts['result'], function($value){
+                return $value->count;
+            }));
 
-                    $sortedProds = array_reverse($sortedProds);
+            $sortedProds = array_reverse($sortedProds);
 
-                    $products[$category] = array_slice($sortedProds, 0, ($itemsPerCategory - 1));
-
-//            $products[$category] = $prod->getProductList($productSettings);
+            $products[$category] = array_slice($sortedProds, 0, ($itemsPerCategory - 1));
 
             $array = array_merge(isset($ideas[$category]->posts) ? $ideas[$category]->posts : [], $products[$category]);
 
