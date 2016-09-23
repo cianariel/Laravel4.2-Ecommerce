@@ -15,8 +15,9 @@
             @include('layouts.parts.home-hero-slider')
         </section>
 
+        
         <div class="mostpop-wrap col-xs-12">
-            <div class="homepage-grid center-block">
+            <div class="container">
                 <h4 class="home-subheader trending text-center no-border">Trending <i class="m-icon m-icon--flame black"></i></h4>
                 <div class="col-xs-12">
                     <h6 class="home-subheader switcher text-center center-block no-padding">
@@ -24,8 +25,10 @@
                         <div class="col-xs-6 no-padding swing-lined category-color active" data-toggle=".popular-products"><div >Products</div></div>
                     </h6>
                 </div>
+            </div>
 
-
+            <div class="homepage-grid center-block">
+                <div class="popular-box">
                 <section ng-if="ideaCategory == 'default'" class="most-popular-new popular-products container no-padding">
                         <div class="col-sm-3 col-xs-12 popular-section category-smart-home">
                                 <div ng-repeat="item in readContent.mostPopular.products['smart-home']">
@@ -56,12 +59,13 @@
                         </div>
                 </section>
 
-                <section ng-if="ideaCategory != 'default'" class="most-popular-new container popular-products no-padding">
+                <section ng-if="ideaCategory != 'default'" class="most-popular-new  popular-products container no-padding">
                         <div class="col-sm-3 col-xs-12 popular-section category-@{{ideaCategory}}" ng-repeat="item in readContent['mostPopular']['products'][ideaCategory]" >
                             @include('most-popular.single-thumb')
                         </div>
                 </section>
-               
+
+                </div>
             </div>
         </div>
 

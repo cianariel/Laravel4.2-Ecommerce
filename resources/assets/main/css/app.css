@@ -10909,6 +10909,7 @@ body.home.logged-in #hero {
   position: relative;
   width: 100%;
   max-width: 1170px;
+  min-height: 335px;
   overflow: hidden;
   margin-top: 25px; }
   .homepage-grid.main-grid {
@@ -11170,7 +11171,8 @@ body.home.logged-in #hero {
   padding-left: 0;
   padding-bottom: 0;
   font-size: 2.3rem;
-  border-bottom: 2px solid #eee; }
+  border-bottom: 2px solid #eee;
+  font-family: Montserratlight; }
   .home-subheader.current-timespan {
     margin-bottom: 24px; }
   .home-subheader.trending {
@@ -11185,12 +11187,12 @@ body.home.logged-in #hero {
     .home-subheader.trending .m-icon {
       padding: 0;
       bottom: 3px;
-      right: -7px; }
+      right: -8px; }
   .home-subheader.switcher {
     max-width: 250px;
     height: 32px; }
     .home-subheader.switcher .swing-lined > div::before {
-      height: 1px;
+      height: 2px;
       background: #000; }
     .home-subheader.switcher .category-color:not(.active) {
       color: #000 !important; }
@@ -11214,8 +11216,7 @@ body.home.logged-in #hero {
     font-size: 2.8rem;
     padding-top: 2px; }
     .home-subheader .m-icon.m-icon--flame {
-      position: relative;
-      right: 1px; }
+      position: relative; }
   .home-subheader .unread-heading {
     float: right;
     padding-top: 12px;
@@ -11344,6 +11345,7 @@ body.home.logged-in #hero {
   .homepage #hero-slider .rsNav.rsBullets {
     top: -30px; } }
 .homepage .app-wrap {
+  min-height: 1000px;
   background: #F7F7F7; }
 
 .hero-wrap {
@@ -11500,8 +11502,6 @@ body.category .rsThumbs {
       .most-popular-new .popular-wrap.single-thumb .box-item .box-item__overlay {
         border-bottom-left-radius: 0;
         border-bottom-right-radius: 0; }
-      .most-popular-new .popular-wrap.single-thumb .box-item.product-box .popular-title {
-        min-height: 90px; }
       .most-popular-new .popular-wrap.single-thumb .box-item::before {
         display: none; }
     .most-popular-new .popular-wrap.single-thumb .popular-title {
@@ -11509,7 +11509,10 @@ body.category .rsThumbs {
       background: #fff;
       min-height: 51px;
       position: relative;
-      padding-top: 10px; }
+      padding-top: 10px;
+      min-height: 90px;
+      border-bottom-right-radius: 5px;
+      border-bottom-left-radius: 5px; }
     .most-popular-new .popular-wrap.single-thumb .views {
       right: 0;
       bottom: 0;

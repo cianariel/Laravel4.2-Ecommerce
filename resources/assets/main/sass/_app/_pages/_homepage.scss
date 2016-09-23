@@ -42,6 +42,7 @@ body.home.logged-in{
     position: relative;
     width: 100%;
     max-width: 1170px;
+    min-height: 335px;
     overflow: hidden;
     margin-top: 25px;
 
@@ -460,6 +461,7 @@ body.home.logged-in{
   padding-bottom: 0;
   font-size: 2.3rem;
   border-bottom: 2px solid #eee;
+  font-family: Montserratlight;
 
   &.current-timespan{
     margin-bottom: 24px;
@@ -481,9 +483,9 @@ body.home.logged-in{
     }
 
     .m-icon{
-      padding: 0;
+      padding: 0; 
       bottom: 3px;
-      right: -7px;
+      right: -8px;
     }
   }
   &.switcher{
@@ -491,7 +493,7 @@ body.home.logged-in{
     height: 32px;
 
     .swing-lined>div::before{
-      height: 1px;
+      height: 2px;
       background: #000;
     }
 
@@ -529,7 +531,7 @@ body.home.logged-in{
 
     &.m-icon--flame{
       position: relative;
-      right: 1px;
+      // right: 1px;
     }
   }
 
@@ -718,6 +720,7 @@ body.home.logged-in{
   }
 
   .app-wrap{
+    min-height: 1000px;
     background: #F7F7F7;
   }
 
