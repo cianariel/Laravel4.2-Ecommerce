@@ -16,8 +16,26 @@ add_filter( 'woocommerce_enqueue_styles', '__return_empty_array' );
 
 
 /**
+ * Body class filter
+ *
+ * @return return array
+ * @since WooCommerce Integration 1.0
+ */
+function ideaing_body_class_filter($classes){
+
+  $is_woocommmerce_checkout = apply_filters('is_ideaing_woocommerce_checkout_page', false, 'secure-checkout');
+  if ( $is_woocommmerce_checkout ){
+    $classes[] = $is_woocommmerce_checkout;
+  }
+  
+  return $classes;
+}
+add_filter('body_class', 'ideaing_body_class_filter', 99, 1 );
+
+/**
  * If this is a wc page
  *
+ * @return return boolian | custom
  * @since WooCommerce Integration 1.0
  */
 function is_ideaing_woocommerce_checkout_page( $default = false, $strict = true ){
