@@ -196,11 +196,6 @@ body.category{
         height: 215px !important;
         overflow:hidden;
 
-        .swing-lined>div::before,
-        .swing-lined>span::before{
-          height: 1px;
-        }
-
         .box-item__overlay{
           border-bottom-left-radius: 0;
           border-bottom-right-radius: 0;
@@ -212,16 +207,11 @@ body.category{
           }
         }
 
-
         &::before{
           display: none;
         }
       }
-      //.social-stats__item {
-      //  margin: 3px auto;
-      //  width: 96px;
-      //  display: block;
-      //}
+
       .popular-title{
         font-size: 1.3rem;
         background: #fff;

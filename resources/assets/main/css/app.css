@@ -7265,6 +7265,10 @@ p {
   visibility: visible;
   -webkit-transform: scaleX(1);
   transform: scaleX(1); }
+.category-smarthome .home-subheader.switcher .swing-lined > div::before,
+.category-smart-home .home-subheader.switcher .swing-lined > div::before,
+.tag-smart-home .home-subheader.switcher .swing-lined > div::before {
+  background: #FC1159; }
 
 .category-smart-entertainment .category-link__smart-entertainment span,
 .tag-smart-entertainment .category-link__smart-entertainment span {
@@ -7274,6 +7278,9 @@ p {
   visibility: visible;
   -webkit-transform: scaleX(1);
   transform: scaleX(1); }
+.category-smart-entertainment .home-subheader.switcher .swing-lined > div::before,
+.tag-smart-entertainment .home-subheader.switcher .swing-lined > div::before {
+  background: #89C981; }
 
 .category-smart-travel .category-link__smart-travel span,
 .tag-smart-travel .category-link__smart-travel span {
@@ -7283,6 +7290,9 @@ p {
   visibility: visible;
   -webkit-transform: scaleX(1);
   transform: scaleX(1); }
+.category-smart-travel .home-subheader.switcher .swing-lined > div::before,
+.tag-smart-travel .home-subheader.switcher .swing-lined > div::before {
+  background: #FF7F00; }
 
 .category-smart-body .category-link__smart-body span,
 .tag-smart-body .category-link__smart-body span {
@@ -7292,6 +7302,9 @@ p {
   visibility: visible;
   -webkit-transform: scaleX(1);
   transform: scaleX(1); }
+.category-smart-body .home-subheader.switcher .swing-lined > div::before,
+.tag-smart-body .home-subheader.switcher .swing-lined > div::before {
+  background: #079DD1; }
 
 .category-link {
   cursor: hover; }
@@ -11168,10 +11181,14 @@ body.home.logged-in #hero {
     top: 40px; }
     .home-subheader.trending .m-icon {
       padding: 0;
-      bottom: 3px; }
+      bottom: 3px;
+      right: -7px; }
   .home-subheader.switcher {
     max-width: 250px;
     height: 32px; }
+    .home-subheader.switcher .swing-lined > div::before {
+      height: 1px;
+      background: #000; }
     .home-subheader.switcher div {
       width: 50%;
       float: left;
@@ -11182,6 +11199,8 @@ body.home.logged-in #hero {
       .home-subheader.switcher div div {
         height: 33px;
         width: 100%; }
+        .home-subheader.switcher div div:not(.active) {
+          color: #000; }
   .home-subheader span {
     padding-bottom: 10px;
     border-bottom: 2px solid #000;
@@ -11482,9 +11501,6 @@ body.category .rsThumbs {
     .most-popular-new .popular-wrap.single-thumb .box-item {
       height: 215px !important;
       overflow: hidden; }
-      .most-popular-new .popular-wrap.single-thumb .box-item .swing-lined > div::before,
-      .most-popular-new .popular-wrap.single-thumb .box-item .swing-lined > span::before {
-        height: 1px; }
       .most-popular-new .popular-wrap.single-thumb .box-item .box-item__overlay {
         border-bottom-left-radius: 0;
         border-bottom-right-radius: 0; }

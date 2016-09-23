@@ -475,11 +475,17 @@ body.home.logged-in{
     .m-icon{
       padding: 0;
       bottom: 3px;
+      right: -7px;
     }
   }
   &.switcher{
     max-width: 250px;
     height: 32px;
+
+    .swing-lined>div::before{
+      height: 1px;
+      background: #000;
+    }
 
     div{
       width: 50%;
@@ -491,8 +497,13 @@ body.home.logged-in{
       div{
         height: 33px;
         width: 100%;
+
+        &:not(.active){
+          color: #000;
+        }
       }
     }
+
   }
 
   span{
@@ -531,8 +542,6 @@ body.home.logged-in{
 .homepage{
   #hero{
     min-height: 383px;
-
-
   }
   .color-overlay{
     position: absolute;
