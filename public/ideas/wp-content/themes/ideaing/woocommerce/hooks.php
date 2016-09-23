@@ -20,14 +20,11 @@ add_filter( 'woocommerce_enqueue_styles', '__return_empty_array' );
  *
  * @since WooCommerce Integration 1.0
  */
-function is_ideaing_woocommerce_page( $default = false, $strict = true ){
+function is_ideaing_woocommerce_checkout_page( $default = false, $strict = true ){
 
-  return is_woocommerce()
-    || is_shop()
-    || is_cart()
+  return is_cart()
     || is_checkout()
     || is_account_page()
-    || is_wc_endpoint_url()
   ? $strict : $default;
 }
-add_filter('is_ideaing_woocommerce_page', 'is_ideaing_woocommerce_page', 10, 2);
+add_filter('is_ideaing_woocommerce_checkout_page', 'is_ideaing_woocommerce_checkout_page', 10, 2);

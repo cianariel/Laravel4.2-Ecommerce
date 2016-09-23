@@ -11,9 +11,9 @@
  * @since WooCommerce Integration 1.0
  */
 
-$is_woocommmerce = apply_filters('is_ideaing_woocommerce_page', null, 'shop');
+$is_woocommmerce_checkout = apply_filters('is_ideaing_woocommerce_checkout_page', null, 'checkout');
 
-get_header( $is_woocommmerce ); ?>
+get_header( $is_woocommmerce_checkout ); ?>
 
 <main id="main" class="site-main container" role="main">
 	<div class="row">
@@ -30,7 +30,7 @@ get_header( $is_woocommmerce ); ?>
 			?>
 		</div><!--- .col-* -->
 		<div class="col-sm-4 col-sm-offset-1">
-			<?php get_sidebar( $is_woocommmerce ); ?>
+			<?php get_sidebar( $is_woocommmerce_checkout ); ?>
 		</div><!--- .col-* -->
 	</div><!--- .row -->
 </main><!-- .site-main -->
