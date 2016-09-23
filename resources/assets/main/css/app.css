@@ -11179,6 +11179,9 @@ body.home.logged-in #hero {
     height: 20px;
     position: relative;
     top: 40px; }
+    @media (min-width: 620px) {
+      .home-subheader.trending {
+        font-size: 1.6em; } }
     .home-subheader.trending .m-icon {
       padding: 0;
       bottom: 3px;
@@ -11529,7 +11532,17 @@ body.category .rsThumbs {
       color: #fff; }
     .most-popular-new .popular-wrap .box-item:last-child::before {
       content: '3'; }
+
 @media (max-width: 620px) {
+  .switcher {
+    float: right;
+    max-width: 207px !important; }
+
+  .home-subheader.trending {
+    font-size: 1.8rem;
+    max-width: 145px;
+    top: 42px; }
+
   .most-popular-new .popular-section {
     height: 90px; }
     .most-popular-new .popular-section .box-item {
@@ -11539,8 +11552,7 @@ body.category .rsThumbs {
         max-width: 85%; }
     .most-popular-new .popular-section .popular-title {
       width: 65%;
-      padding-top: 30px !important; } }
-
+      padding-top: 9px !important; } }
 .mostpop-wrap {
   padding: 10px 6px 10px 0px; }
   .mostpop-wrap .homepage-grid {

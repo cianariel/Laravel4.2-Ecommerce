@@ -470,7 +470,15 @@ body.home.logged-in{
     height:20px;
 
     position: relative;
-    top: 40px;
+
+    //@media(min-width: 620px){
+      top: 40px;
+    //}
+
+
+    @media(min-width: 620px){
+      font-size: 1.6em;
+    }
 
     .m-icon{
       padding: 0;
@@ -503,11 +511,8 @@ body.home.logged-in{
       div{
         height: 33px;
         width: 100%;
-
-
       }
     }
-
   }
 
   span{
@@ -516,9 +521,6 @@ body.home.logged-in{
     margin-bottom: -1px;
     display: inline-block;
     height: 40px;
-    //padding-right: 28px;
-
-
   }
 
   .m-icon{

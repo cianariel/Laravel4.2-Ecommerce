@@ -242,16 +242,21 @@ body.category{
 
   }
 
-  @media(max-width:620px){
+
+}
+
+@media(max-width:620px){
+  .switcher{
+    float:right;
+    max-width: 207px !important;
+  }
+  .home-subheader.trending{
+    font-size: 1.8rem;
+    max-width: 145px;
+    top: 42px;
+  }
+  .most-popular-new{
     .popular-section{
-    //  float: none;
-    //  margin: 45px auto 0;
-    //  overflow: hidden;
-    //  padding: 0px 2px 0 12px;
-    //  .box-item{
-    //    width: 65%;
-    //  }
-    //
       height: 90px;
 
       .box-item{
@@ -264,7 +269,7 @@ body.category{
       }
       .popular-title{
         width: 65%;
-        padding-top: 30px !important;
+        padding-top: 9px !important;
       }
     }
   }
