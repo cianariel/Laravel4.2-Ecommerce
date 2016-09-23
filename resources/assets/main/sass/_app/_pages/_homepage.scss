@@ -487,6 +487,12 @@ body.home.logged-in{
       background: #000;
     }
 
+    .category-color{
+      &:not(.active){
+        color: #000 !important;
+      }
+    }
+
     div{
       width: 50%;
       float: left;
@@ -498,9 +504,7 @@ body.home.logged-in{
         height: 33px;
         width: 100%;
 
-        &:not(.active){
-          color: #000;
-        }
+
       }
     }
 

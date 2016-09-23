@@ -11189,6 +11189,8 @@ body.home.logged-in #hero {
     .home-subheader.switcher .swing-lined > div::before {
       height: 1px;
       background: #000; }
+    .home-subheader.switcher .category-color:not(.active) {
+      color: #000 !important; }
     .home-subheader.switcher div {
       width: 50%;
       float: left;
@@ -11199,8 +11201,6 @@ body.home.logged-in #hero {
       .home-subheader.switcher div div {
         height: 33px;
         width: 100%; }
-        .home-subheader.switcher div div:not(.active) {
-          color: #000; }
   .home-subheader span {
     padding-bottom: 10px;
     border-bottom: 2px solid #000;
