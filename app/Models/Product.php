@@ -422,7 +422,7 @@ class Product extends Model
 
         // Sort item by Hit Count
         if (!empty($settings['SortByHitCounter']) &&  $settings['SortByHitCounter'] == true) {
-            $productList = $productList->orderBy('hit_counter', 'desc');
+            $productList->orderBy('hit_counter', 'desc');
         }
       //  if(empty($isAdmin))
        //     $productList->orderBy('hit_counter', 'desc');
