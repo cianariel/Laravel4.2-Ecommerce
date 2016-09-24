@@ -846,4 +846,11 @@ if (ideaing_is_plugin_active('woocommerce/woocommerce.php')){
    * @since WooCommerce Integration 1.0
    */
 	require get_template_directory() . '/woocommerce/hooks.php';
+
+  /**
+   * WooCommerce widgets for this theme.
+   *
+   * @since WooCommerce Integration 1.0
+   */
+	require get_template_directory() . '/widgets/init.php';
 }
