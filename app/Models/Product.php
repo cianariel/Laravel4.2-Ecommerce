@@ -419,6 +419,11 @@ class Product extends Model
             ->offset($skip);
 
         $productList->orderBy('created_at', 'desc');
+
+        // Sort item by Hit Count
+        if (!empty($settings['SortByHitCounter']) &&  $settings['SortByHitCounter'] == true) {
+            $productList = $productList->orderBy('hit_counter', 'desc');
+        }
       //  if(empty($isAdmin))
        //     $productList->orderBy('hit_counter', 'desc');
 
