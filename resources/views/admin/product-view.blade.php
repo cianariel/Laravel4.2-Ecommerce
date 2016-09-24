@@ -141,6 +141,10 @@
                                                         <a class="btn btn-success" href="/admin/product-add"
                                                            type="button"><i class="fa fa-plus"></i> Add Item
                                                         </a>
+                                                        &nbsp;&nbsp;
+                                                        <a class="btn btn-info" href="/api/product/download-list"
+                                                           type="button"><i class="fa fa-download"></i> Export List
+                                                        </a>
                                                     </div>
                                                 </div>
                                                 <div style="margin-top: 5px">&nbsp;</div>
