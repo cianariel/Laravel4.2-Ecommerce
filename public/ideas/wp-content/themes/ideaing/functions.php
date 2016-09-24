@@ -156,7 +156,7 @@ function ideaing_widgets_init() {
 	register_sidebar( array(
 		'name'          => __( 'After add to card sidebar', 'ideaing' ),
 		'id'            => 'sidebar-2',
-		'description'   => __( 'Appears instead of "Sidebar" when cart is not emapty on checkout pages.', 'ideaing' ),
+		'description'   => __( 'Appears instead of "Sidebar" when cart is not empty on checkout pages.', 'ideaing' ),
 		'before_widget' => '<section id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</section>',
 		'before_title'  => '<h2 class="widget-title">',
