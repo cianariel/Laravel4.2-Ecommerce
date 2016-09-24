@@ -2,7 +2,6 @@
         $ideaView = 'ideaWP';
 ?>
 <div class="loader loader-abs" cg-busy="firstLoad">
-
 </div>
 
 

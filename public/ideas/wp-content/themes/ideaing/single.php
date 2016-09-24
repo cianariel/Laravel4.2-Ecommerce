@@ -20,11 +20,7 @@
     ?>
     <section id="hero" class="details-hero">
         <div class="head-wrap">
-
-            <h1 class="col-sm-8 col-xs-12 category-bg-trans"><span>{{the_title()}}</span></h1>
-            <ul class="social-stats center-block hidden-soft shown-620">
-
-            </ul>
+            <h1 class="col-sm-8 col-xs-12 category-bg-trans lightfont"><span>{{the_title()}}</span></h1>
         </div>
 
         <div class="container absolute details-wrap">

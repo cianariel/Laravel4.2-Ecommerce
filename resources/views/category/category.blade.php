@@ -28,6 +28,7 @@
             </div>
 
             <div class="homepage-grid center-block">
+                <div class="loader loader-abs" cg-busy="firstLoad"></div>
                 <div class="popular-box">
                     <section ng-if="ideaCategory == 'default'" class="most-popular-new popular-ideas container no-padding">
                         <div class="col-sm-3 col-xs-12 popular-section category-smart-home">

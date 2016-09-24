@@ -112,7 +112,11 @@ ins.adsbygoogle{
 // LAYOUT
 
 body:not(.single){
-  padding-top: 58px;
+  padding-top: 54px;
+
+  // @media(max-width:620px){
+  //   padding-top: 87px;
+  // }
 }
 
 
@@ -797,7 +801,7 @@ body:not(.single){
 // Social Stats
 .social-stats {
   /*	background: #fff;*/
-  padding: 5px 5px 5px 10px;
+  padding: 5px 5px 5px 12px;
   width: 72px;
 
   &__item {

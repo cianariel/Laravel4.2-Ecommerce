@@ -296,11 +296,8 @@ body.single{
 
   @media only screen and (max-width: 960px){
     .like-nav{
-      width: 100%;
       text-align: center;
-      > li{
-        float: none;
-      }
+      padding-bottom:10px;
     }
   }
   @media only screen and (max-width: 420px){
@@ -618,7 +615,7 @@ body.single{
     h4{
       text-align: left;
       padding-left: 14px;
-
+      font-family: $moseratlight;
     }
 
     h2{
@@ -631,6 +628,7 @@ body.single{
       text-align: center;
       margin: 0 auto;
       float: none;
+      font-family: $moseratlight;
 
       &:before, &:after {
         content: "";
@@ -685,7 +683,7 @@ body.single{
   .story-details{
     width: 30%;
     position: absolute;
-    bottom: 3px;
+    bottom: 0px;
     background: #fff;
     z-index: 10;
     padding-right: 0;
