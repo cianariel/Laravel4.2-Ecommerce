@@ -321,6 +321,27 @@ class Product extends Model
 
     }
 
+    public function getProductListForExport($settings)
+    {
+        $productModel = Product::with('medias')->with('store');
+
+        if (!empty($settings['ActiveItem']) && $settings['ActiveItem'] == true) {
+            $productModel = $productModel->where("post_status", 'Active');
+        }
+
+        // Sort item by Hit Count
+        if (!empty($settings['SortByHitCounter']) &&  $settings['SortByHitCounter'] == true) {
+            $productModel->orderBy('hit_counter', 'desc');
+        }
+
+        $productModel->orderBy('created_at', 'desc');
+
+        $result = $productModel->get();
+
+        return $result;
+
+    }
+
     // return all the product list as per $settings provided from the controller
     public function getProductList($settings, $isAdmin = false)
     {

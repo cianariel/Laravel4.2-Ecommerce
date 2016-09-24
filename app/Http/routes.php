@@ -203,6 +203,9 @@ Route::group(['prefix' => 'api'], function () {
     // Get product Info from API
     Route::get('api-data/{itemId?}', 'ProductController@getProductInfoFromApi');
 
+    // Export product list
+    Route::get('product/download-list', 'ProductController@exportProductList');
+
     /*
      *  TAG module for product
      *
