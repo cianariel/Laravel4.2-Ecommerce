@@ -15,7 +15,7 @@
 
             <div class="views absolute"  style="min-width: 42px">
                 <i class="m-icon m-icon--flame black"></i>
-                <span class="ng-binding"> <b>@{{item.count}}</b></span>
+                <span class="ng-binding"> @{{item.count}}</span>
             </div>
         </div>
 
@@ -35,7 +35,7 @@
 
             <div class="views absolute" style="min-width: 42px">
                 <i class="m-icon m-icon--flame black"></i>
-                <span class="ng-binding"> <b>@{{item.views}}</b></span>
+                <span class="ng-binding">@{{item.views}}</span>
             </div>
         </div>
 </div>

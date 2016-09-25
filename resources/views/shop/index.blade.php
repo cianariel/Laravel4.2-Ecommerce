@@ -4,47 +4,7 @@
 
 @section('content')
     <h1 class="hidden">Shop</h1>
-    <nav class="mid-nav ">
-        <div class="container full-sm fixed-sm">
-            <div class="">
-                <ul class="wrap shop-landing-submenu">
-                    <li class="box-link-ul ">
-                        <a class="box-link " href="/shop/smart-home">
-                            SMART HOME
-                        </a>
-                    </li>
-                    <li class="box-link-ul ">
-                        <a class="box-link"
-                           href="/shop/smart-entertainment">
-                            <span class="box-link-active-line"></span>
-                            SMART ENTERTAINMENT
-                        </a>
-                    </li>
-                    <li class="box-link-ul ">
-                        <a class="box-link " href="/shop/smart-travel">
-                            SMART TRAVEL
-                        </a>
-                    </li>
-                    <li class="box-link-ul ">
-                        <a class="box-link " href="/shop/smart-body">
-                            SMART BODY
-                        </a>
-                    </li>
-                    <li class="box-link-ul ">
-                        <a class="box-link " href="/shop/decor">
-                            DECOR
-                        </a>
-                    </li>
-                    <li class="box-link-ul hidden-xs">
-                        <a class="box-link " href="/ideas/deals">
-                            DEALS
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-    <div class="clearfix"></div>
+
     <div class="app-wrap" ng-app="pagingApp" ng-controller="shoplandingController">
         <div ng-cloak>
             <div class="homepage-grid center-block">
@@ -52,21 +12,24 @@
 
                 <div class="main-content ">
                     <fieldset class="shoplanding-title">
-                        <legend align="center">Daily Deals</legend>
+                        <legend align="left">Best Sellers <i class="m-icon--flame fill-with-red"></i> </legend>
                     </fieldset>
                     <div class="loader loader-abs" cg-busy="firstLoad"></div>
+
                     <div class="row">
-                        <div id="daily-deals" class="slider has-bullets">
-                            <!--                        <div class="grid-box rsContent">-->
-                            <div class="box-item idea-box box-item--featured rsContent" ng-repeat="item in dailyDeals">
-                                @include('grid.idea')
-                            </div>
-                            <!--                        </div>-->
+                        <div class="col-xs-12 container">
+                            <uib-tabset active="activeJustified" justified="true">
+                                <uib-tab index="0" heading="Justified">Justified content</uib-tab>
+                                <uib-tab index="1" heading="SJ">Short Labeled Justified content</uib-tab>
+                                <uib-tab index="2" heading="Long Justified">Long Labeled Justified content</uib-tab>
+                            </uib-tabset>
                         </div>
                     </div>
+
                     <fieldset class="shoplanding-title">
                         <legend align="center">Newest Arrivals</legend>
                     </fieldset>
+
                     <div class="row">
                         <div id="newest-arrivals" class="slider col-xs-12 has-bullets">
                             <div class="grid-box-3 rsContent" ng-repeat="items in newestArrivals">

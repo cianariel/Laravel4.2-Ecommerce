@@ -5,6 +5,14 @@
   margin-top: 5px;
   border-radius: 5px;
   max-height: 97%;
+
+  @media(max-width:620px){
+    margin-top: 37px;
+
+    &.subcat-slider{
+      margin-top: 42px; 
+    }
+  }
 }
 
 h2 {
@@ -329,7 +337,7 @@ article img {
     margin: 23% 0 0;
 
     @media(max-width:620px){
-      bottom: 18px;
+      bottom: 28px;
       left: 0;
       right: 0;
       position: absolute;

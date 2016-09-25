@@ -8,6 +8,10 @@ p {
 	line-height: $base-line-height;
 }
 
+.lightfont{
+  font-family: $moseratlight;
+}
+
 .dropcapped{
   p:first-child{
     &:first-letter{

@@ -12,12 +12,12 @@
             </div>
             <div class="col-sm-6 col-xs-12 content-holder pale-grey-bg">
                 <div class="col-xs-12 toggles center-block hidden-620">
-                    <div class="swing-lined col-xs-6 no-padding active grey" data-toggle=".content-register" data-hide=".content-subscribe"><span><b>Free Account</b></span></div>
-                    <div class="swing-lined col-xs-6 no-padding pull-right grey"  data-toggle=".content-subscribe" data-hide=".content-register"><span><b>Email Only</b></span></div>
+                    <div class="swing-lined col-xs-6 no-padding active grey" data-toggle=".content-register" data-hide=".content-subscribe"><span>Free Account</span></div>
+                    <div class="swing-lined col-xs-6 no-padding pull-right grey"  data-toggle=".content-subscribe" data-hide=".content-register"><span>Email Only</span></div>
                 </div>
                 <div class="col-xs-12 toggles center-block hidden-soft shown-620">
-                        <div class="swing-lined col-xs-6 no-padding grey" data-toggle=".content-register" data-hide=".content-subscribe"><span><b>Free Account</b></span></div>
-                        <div class="swing-lined col-xs-6 no-padding pull-right grey active"  data-toggle=".content-subscribe" data-hide=".content-register"><span><b>Email Only</b></span></div>
+                        <div class="swing-lined col-xs-6 no-padding grey" data-toggle=".content-register" data-hide=".content-subscribe"><span>Free Account</span></div>
+                        <div class="swing-lined col-xs-6 no-padding pull-right grey active"  data-toggle=".content-subscribe" data-hide=".content-register"><span>Email Only</span></div>
                 </div>
 
                 <div class="content-register bordering">

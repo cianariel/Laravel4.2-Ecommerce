@@ -62,26 +62,38 @@ if (!isset($theGiveAway)) {
                             <ul>
                                 <li> 
                                     <a data-click="#show-smart-home" class="category-link__smart-home" href="/smart-home"  ng-click="switchCategory('smart-home')">
-                                        <i class="hidden-xs hidden-sm hidden-md m-icon m-icon--smart-home"></i>
-                                        <span class="m-icon-text">Smart Home</span>
+                                        <span class="m-icon-text">
+                                            <i class="m-icon m-icon--smart-home"></i>
+                                            <span class="hidden-xs hidden-sm hidden-md">Smart</span>
+                                            Home
+                                        </span>
                                     </a>
                                 </li>
                                 <li>
                                     <a data-click="#show-smart-entertainment" class="category-link__smart-entertainment m-icon-text-holder" href="/smart-entertainment" ng-click="switchCategory('smart-entertainment')">
-                                        <i class="hidden-xs hidden-sm hidden-md m-icon m-icon--video"></i>
-                                        <span class="m-icon-text"><span class="hidden-sm">Smart</span> Entertainment</span>
+                                        <span class="m-icon-text">
+                                            <i class="m-icon m-icon--video"></i>
+                                            <span class="hidden-xs hidden-sm hidden-md">Smart</span> 
+                                            Entertainment
+                                        </span>
                                     </a>
                                 </li>
                                 <li>
                                     <a data-click="#show-smart-body" class="category-link__smart-body m-icon-text-holder" href="/smart-body"  ng-click="switchCategory('smart-body')">
-                                        <i class="hidden-xs hidden-sm hidden-md m-icon m-icon--wearables"></i>
-                                        <span class="m-icon-text"><span class="hidden-sm">Smart</span> Body</span>
+                                       <span class="m-icon-text">
+                                            <i class="m-icon m-icon--wearables"></i>
+                                            <span class="hidden-xs hidden-sm hidden-md">Smart</span> 
+                                            Body
+                                        </span>
                                     </a>
                                 </li>
                                 <li>
                                     <a data-click="#show-smart-travel" class="category-link__smart-travel m-icon-text-holder" ng-click="switchCategory('smart-travel')" href="/smart-travel">
-                                        <i class="hidden-xs hidden-sm hidden-md m-icon m-icon--travel"></i>
-                                        <span class="m-icon-text"><span class="hidden-sm">Smart</span> Travel</span>
+                                        <span class="m-icon-text">
+                                            <i class="m-icon m-icon--travel"></i>
+                                            <span class="hidden-xs hidden-sm hidden-md ">Smart</span> 
+                                            Travel
+                                        </span>
                                     </a>
                                 </li>
                             </ul>
@@ -134,8 +146,8 @@ if (!isset($theGiveAway)) {
                                 <ul>
                                     <li>
                                         <a class="category-link__shop m-icon-text-holder hidden-xs" href="/shop">
-                                            <i class="hidden-xs m-icon m-icon--shopping-bag-light-green white"></i>
-                                            <span class="m-icon-text white">Shop</span>
+                                            <i class="hidden-xs m-icon m-icon--shopping-bag-light-green black"></i>
+                                            <span class="m-icon-text black">Shop</span>
                                         </a>
                                     </li>
                                     <li>

@@ -17,17 +17,18 @@
 
         
         <div class="mostpop-wrap col-xs-12">
-            <div class="container">
+            <div class="container no-padding">
                 <h4 class="home-subheader trending text-center no-border">Trending <i class="m-icon m-icon--flame black"></i></h4>
-                <div class="col-xs-12">
+                <div class="col-xs-12 no-padding">
                     <h6 class="home-subheader switcher text-center center-block no-padding">
-                        <div class="col-xs-6 no-padding swing-lined category-color active" data-toggle=".popular-ideas" data-hide=".popular-products" data-hide=".popular-products"><div>Guides</div></div>
-                        <div class="col-xs-6 no-padding swing-lined category-color" data-toggle=".popular-products" data-hide=".popular-ideas"><div >Products</div></div>
+                        <div class="guide-switch col-xs-6 no-padding swing-lined category-color active" data-toggle=".popular-ideas" data-hide=".popular-products" data-hide=".popular-products"><div>Guides</div></div>
+                        <div class="product-switch col-xs-6 no-padding swing-lined category-color" data-toggle=".popular-products" data-hide=".popular-ideas"><div >Products</div></div>
                     </h6>
                 </div>
             </div>
 
             <div class="homepage-grid center-block">
+                <div class="loader loader-abs" cg-busy="firstLoad"></div>
                 <div class="popular-box">
                     <section ng-if="ideaCategory == 'default'" class="most-popular-new popular-ideas container no-padding">
                         <div class="col-sm-3 col-xs-12 popular-section category-smart-home">
