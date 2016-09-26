@@ -15,6 +15,19 @@
   font-family: Montserrat;
 }
 
+.secure-checkout .entry-header {
+  margin: 25px 0 15px;
+  border-bottom: solid 1px #dbdbdb;
+}
+
+.secure-checkout .entry-title {
+  margin: 0 0 15px;
+  font-size: 21px;
+  font-weight: bold;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+}
+
 .secure-checkout .top-nav-holder {
   position: relative;
   height: 60px;
