@@ -17,7 +17,7 @@ get_header( $is_woocommmerce_checkout ); ?>
 
 <main id="main" class="site-main container" role="main">
 	<div class="row">
-		<div class="col-sm-7">
+		<div class="col-md-8 col-lg-7">
 			<?php
 			// Start the loop.
 			while ( have_posts() ) : the_post();
@@ -29,7 +29,7 @@ get_header( $is_woocommmerce_checkout ); ?>
 			endwhile;
 			?>
 		</div><!--- .col-* -->
-		<div class="col-sm-4 col-sm-offset-1">
+		<div class="col-md-4 col-lg-offset-1">
 			<?php get_sidebar( $is_woocommmerce_checkout ); ?>
 		</div><!--- .col-* -->
 	</div><!--- .row -->
