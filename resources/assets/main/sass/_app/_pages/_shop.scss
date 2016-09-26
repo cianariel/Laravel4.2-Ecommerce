@@ -159,7 +159,17 @@ body.category-deals{
   }
 
 }
+
+
+
 body.shop-landing{
+  font-family: montserratregular, sans-serif;
+
+  .sub-item-container{
+    position: relative;
+    display: block;
+    margin-bottom: 70px;
+  }
   .app-wrap{
     position: relative;
     top: 30px;
@@ -170,8 +180,9 @@ body.shop-landing{
 
     }
   }
+
   .shoplanding-title{
-    border:0px;
+    border: 0;
     border-top: 1px solid $pale-grey;
     margin-top: 40px;
     margin-bottom: 20px;
@@ -180,11 +191,41 @@ body.shop-landing{
       padding-left: 30px;
       padding-right: 30px;
       border: none;
-      margin:0 auto;
       width: auto;
-      font-size: 23px;
+      font-size: 25px;
+      color: #3d3d3d;
+      .fill-with-red{
+        color: #EC1B47;
+        font-size: 26px;
+        margin-left: 7px;
+      }
+      .fill-with-purple{
+        color: #94489A;
+        font-size: 26px;
+        margin-left: 7px;
+      }
     }
   }
+
+  .nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover{
+    border: none;
+    border-bottom: 1px solid #4F504F;
+    color: #151515;
+  }
+
+  .nav > li > a:hover, .nav > li > a:focus{
+    border-bottom: 1px solid #4F504F;
+    background: transparent;
+  }
+
+  .nav-tabs>li>a{
+    border: 1px solid transparent;
+    font-size: 20px;
+    color: #B9B9BA;
+    padding: 30px;
+    border-radius: 0;
+  }
+
   #daily-deals{
     margin-left: -15px;
     margin-right: 15px;
@@ -275,6 +316,55 @@ body.shop-landing{
         background: $home-decor-light;
       }
     }
+  }
+
+  .big-image-view{
+    max-height: 300px;
+    max-width: 400px;
+    margin: 0 auto;
+    margin-top: 20px;
+    text-align: center;
+    border: 1px solid #ECECEC;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+
+  .multirow-image-view{
+
+    .image-row-view{
+      border: 1px solid #ECECEC;
+      border-radius: 7px;
+      overflow: hidden;
+      margin: 0 auto;
+      margin-top: 20px;
+
+      .item-image-container{
+        border-right: 1px solid #ECECEC;
+        height: 85px;
+        padding: 0;
+        margin: 0 auto;
+        text-align: center;
+        vertical-align: middle;
+        position: relative;
+        img{
+          max-width: 85px;
+          max-height: 65px;
+          position: absolute;
+          left: 50%;
+          top: 50%;
+          transform: translate(-50%, -50%);
+        }
+      }
+
+      p{
+        margin: 20px 5px;
+        text-align: left;
+        color: #737374;
+      }
+    }
+  }
+  .tab-pane{
+    margin: 10px 0;
   }
 
   .shop-by-category-submneu{
@@ -456,6 +546,11 @@ body.shop-landing{
   }
 
 }
+
+
+
+
+
 
 body.shop-category{
 

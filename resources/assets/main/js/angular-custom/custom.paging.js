@@ -481,6 +481,7 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
 //        };
 //    })
     .controller('shoplandingController', ['$scope', '$http', 'pagingApi', '$timeout', '$uibModal', function ($scope, $http, pagingApi, $timeout, $uibModal) {
+        
         $scope.renderHTML = function(html_code)
         {
             var decoded = angular.element('<div />').html(html_code).text();

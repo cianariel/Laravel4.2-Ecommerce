@@ -171,7 +171,7 @@ if (!isset($theGiveAway)) {
                                 <?php } ?>
 
 
-                        </div>
+                                </div>
                       <?php  if(isset($userData['login']) && $userData['login']){ ?>
 
                             <div class="notification-popup hide-on-out hidden-soft boxy">
@@ -236,6 +236,7 @@ if (!isset($theGiveAway)) {
                                 </div>
                             </div>
                         <?php } ?>
+                        </div>
                     </div>
 
                 <?php
