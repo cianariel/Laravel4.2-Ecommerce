@@ -4015,9 +4015,9 @@ angular.module('colorpicker.module', [])
                 $('.bottom-load-more').addClass('disabled').attr('disabled', true);
             }
 
-            if(window.innerWidth < 620){
-                return false;
-            }
+            //if(window.innerWidth < 620){
+            //    return false;
+            //}
 
             var body = $('body');
             if(body.hasClass('home') || body.hasClass('room-landing')){
