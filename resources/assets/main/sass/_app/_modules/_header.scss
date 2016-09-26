@@ -4,8 +4,11 @@
 
 
 .category-menu{
-  padding-left: 135px;
+  padding-left: 25px;
 
+  @media(max-width: 1200px){
+    padding-left: 135px;
+  }
   @media(max-width: 988px){
     padding-left: 180px;
   }
@@ -30,7 +33,7 @@
       position: absolute;
       width: 100%;
       height: 2px;
-      top: 37px;
+      top: 24px;
       left: 0;
       visibility: hidden;
       -webkit-transform: scaleX(0);
@@ -130,6 +133,7 @@ header.colophon{
     z-index: 30;
     border-bottom:1px solid rgba(193, 193, 193, 0.22);
     background: #fff;
+    max-height: 63px;
 
     @media(max-width: 620px){
       min-height: 92px;
@@ -220,43 +224,60 @@ header.colophon{
 }
 
 .search-bar{
-  top:25px;
-  max-width: 100%;
-  width: 740px;
-  position: absolute !important;
-  left:0;
-  right: 0;
   margin:0 auto !important;
   overflow: visible;
   height: 53px;
   z-index: 20 !important;
   opacity: 1;
-  background: rgba(#fff, .7) !important;
-
-  @include pseudo-full-wide(rgba(#fff, .7));
-
   padding-top: 10px;
   padding-bottom: 10px;
-  opacity: 0;
   border-bottom: 1px solid rgba(193,193,193,.22);
   width: 100%;
 
   &.desktop-search-bar{
-    display: none;
-  }
+    max-width: 100%;
+    width: 740px;
+    position: absolute;
+    top:25px;
+    left:0;
+    right: 0;
+    opacity: 0;
+    background: rgba(#fff, .7) !important;
 
-  &::before,
-  &::after{
-    height: 53px;
-  }
+    @include pseudo-full-wide(rgba(#fff, .7));
 
-  @media(max-width: 620px) {
-    background: #fff !important;
+    @media (max-width: 620px){
+      position: absolute;
+      right: 52px;
+      top: 67px;
+
+      .toggle-button{
+        bottom: 25px;
+        top: auto;
+        right: -11px;
+      }
+    }
+
     &::before,
-    &::after {
-      background: #fff;
+    &::after{
+      height: 53px;
+    }
+
+    @media(max-width: 620px) {
+      background: #fff !important;
+      &::before,
+      &::after {
+        background: #fff;
+      }
     }
   }
+
+
+  //
+  //&.desktop-search-bar{
+  //  display: none;
+  //}
+
 
   .toggle-button,
   .search-bar{
@@ -272,17 +293,7 @@ header.colophon{
   .toggle-button{
     right:12px;
   }
-  @media (max-width: 620px){
-    position: absolute;
-    right: 52px;
-    top: 67px;
 
-    .toggle-button{
-      bottom: 25px;
-      top: auto;
-      right: -11px;
-    }
-  }
 
   .search-input-holder{
     width: 100%;
@@ -341,11 +352,54 @@ header.colophon{
   }
 }
 
-//body:not(.single){
-//  .profile-photo-holder{
-//
-//  }
-//}
+
+#suggest-category {
+  background: rgb(255, 255, 255) none repeat scroll 0% 0%;
+  width: 100%;
+  z-index: 50;
+  border: 1px solid lightgray;
+  position: absolute;
+  top: 34px;
+
+  @media (max-width: 768px){
+    top: 32px;
+  }
+  > ul.cat-suggestions{
+    > li{
+      width: 100%; display: block; float: left; padding: 5px 10px;
+      &:not(:first-child){
+        border-top: 1px solid $border-grey;
+      }
+      a{
+        width: 100% !important;
+        height: auto !important;
+        float:none !important;
+        padding: 20px 10px 20px 0px !important;
+        margin: inherit !important;
+      }
+      .m-icon--shopping-bag-light-green{
+        float: left;
+        position: static;
+        padding-right: 5px;
+        padding-botom: 5px;
+      }
+      .m-icon--bulb{
+        float: left;
+        position: static;
+        padding-right: 5px;
+        padding-botom: 5px;
+      }
+    }
+  }
+}
+
+@media (max-width: 768px){
+  .desktop-search-bar{
+    #suggest-category{
+      top: 58px;
+    }
+  }
+}
 
 .box-link-active-line{
   position: absolute;
@@ -618,13 +672,15 @@ header.colophon{
           margin-right: 25px;
         }
         @media(min-width:420px){
-          margin-right: 10px;
           margin-top: 4px !important;
+          margin-right: 1.9% !important;
+          padding-left: 5px;
         } 
 
         @media(min-width:370px){
           margin-top: 27px;
           margin-right: 2%;
+          padding-left: 20px;
         }
         @media(min-width:380px){
           margin-right: 3.9%;
@@ -978,14 +1034,6 @@ header.colophon{
   }
 
 
-
-  //@media (max-width: 775px){
-  //  &{
-  //    max-height: 60px;
-  //  }
-  //}
-
-
 }
 
 
@@ -1100,7 +1148,7 @@ header.colophon{
 
 
 @media (max-width:700px){
-  .search-bar{
+  .search-bar.desktop-search-bar{
     margin-left: 0 !important;
 
     input{

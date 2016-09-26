@@ -97,7 +97,7 @@ if (!isset($theGiveAway)) {
                                     </a>
                                 </li>
                                 <li>
-                                    <a class="category-link__advice hidden-xs m-icon-text-holder" href="/advice">
+                                    <a class="category-link__advice hidden-sm hidden-xs m-icon-text-holder" href="/advice">
                                         <span class="m-icon-text">
                                             <i class="m-icon m-icon--comments-products"></i>
                                             Advice
@@ -116,7 +116,7 @@ if (!isset($theGiveAway)) {
                         </div>
 
 
-                            <form class="search-bar desktop-search-bar col-sm-2 col-lg-2 pseudo-full-wide" ng-app="publicApp" ng-controller="SearchController" action="/search-form-query" autocomplete="off">
+                            <form class="search-bar desktop-search-bar col-sm-2 col-lg-2 pseudo-full-wide hidden-soft" ng-app="publicApp" ng-controller="SearchController" action="/search-form-query" autocomplete="off">
                                         <span class="search-input-holder">
                                             <i class="m-icon m-icon--search-id"></i>
                                             <input ng-click="toggleSearch()" id="search-input"
