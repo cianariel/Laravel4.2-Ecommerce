@@ -28,6 +28,126 @@
   text-transform: uppercase;
 }
 
+.shop_table.cart {
+  display: block;
+  width: 100%;
+  border: none;
+  line-height: 2rem;
+  margin-bottom: 1.75em;
+}
+
+.shop_table.cart tbody {
+  display: block;
+  width: 100%;
+  border: none;
+}
+
+.shop_table.cart .cart_item {
+  position: relative;
+  display: block;
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+.shop_table.cart tbody .cart_item td {
+  position: relative;
+  padding: 5px 10px;
+  display: block;
+  margin-right: 0;
+  border: none;
+}
+
+.shop_table.cart tbody tr:not(.cart_item) {
+  display: block;
+  width: 100%;
+  text-align: right;
+  padding: 10px 0;
+}
+
+.shop_table.cart tbody .actions {
+  display: block;
+}
+
+.shop_table.cart tbody .actions .button,
+.shop_table.cart tbody .actions [type="submit"] {
+  display: block;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.shop_table.cart tbody .cart_item td.product-quantity {
+  text-align: right;
+  padding-bottom: 40px;
+}
+
+.shop_table.cart tbody .cart_item td.product-quantity input {
+  margin: 0;
+  padding: 0 5px;
+  width: 45px;
+  line-height: 30px;
+  border-radius: 2px;
+  border: solid 1px #dbdbdb;
+  outline: none;
+}
+
+.shop_table.cart tbody .cart_item td.product-price {
+  position: absolute;
+  font-size: 12px;
+  bottom: 5px;
+  right: 0;
+}
+
+.shop_table.cart tbody tr:not(:last-child):not(:nth-last-child(2)) {
+  border-bottom: solid 1px #dbdbdb;
+}
+
+.shop_table.cart thead {
+  display: none;
+}
+
+.shop_table.cart tbody .cart_item td.product-name {
+  position: relative;
+  min-height: 90px;
+  padding-left: 95px;
+  font-size: 15px;
+  color: #ed2049;
+  overflow: hidden;
+}
+
+.shop_table.cart td.product-name p,
+.shop_table.cart td.product-name .sc-p-n {
+  display: inline-block;
+  max-width: 100%;
+  line-height: 80px;
+  margin: 0;
+  white-space: nowrap;
+  color: inherit;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.shop_table.cart td.product-name figure {
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 5px;
+  width: 80px;
+  height: 80px;
+  background-color: #f7f8f9;
+  background-size: cover;
+  background-position: center;
+  border-radius: 2px;
+}
+
+.shop_table.cart .remove {
+  font-size: 21px;
+  color: #ed2049;
+}
+
+.shop_table.cart .remove:not(:hover) {
+  opacity: .5;
+}
+
 .secure-checkout .top-nav-holder {
   position: relative;
   height: 60px;
@@ -332,6 +452,31 @@
   letter-spacing: .07em;
 }
 
+.secure-checkout [type="submit"],
+.secure-checkout .button {
+  display: inline-block;
+  padding: 0 45px;
+  margin: 2px;
+  line-height: 40px;
+  font-size: 12px;
+  font-weight: normal;
+  border: none;
+  text-transform: uppercase;
+  text-align: center;
+  letter-spacing: .09em;
+  border-radius: 2px;
+  background-color: #d2d2d2;
+  color: #fff;
+  outline: none;
+  cursor: default;
+}
+
+.secure-checkout [type="submit"]:focus,
+.secure-checkout [type="submit"]:hover,
+.secure-checkout .button:focus,
+.secure-checkout .button:hover {
+  background-color: #ed2049;
+}
 
 @media ( min-width: 554px ){
 
@@ -365,4 +510,68 @@
   .secure-checkout .top-nav-holder {
     padding: 10px 0;
   }
+
+  .shop_table.cart thead {
+    display: block;
+  }
+
+  .shop_table.cart th {
+    padding: 0;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: .07em;
+    font-weight: normal;
+  }
+
+  .shop_table.cart .cart_item {
+    -webkit-display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+    padding: 30px 0 0;
+    margin: 0;
+    line-height: 80px;
+  }
+
+  .shop_table.cart thead tr {
+    -webkit-display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+  }
+
+  .shop_table.cart .product-remove {
+      -webkit-flex: 1;
+      flex: 1;
+  }
+
+  .shop_table.cart .product-name {
+      -webkit-flex: 7;
+      flex: 7;
+  }
+
+  .shop_table.cart .product-price {
+      -webkit-flex: 1;
+      flex: 1;
+  }
+
+  .shop_table.cart .product-quantity {
+      -webkit-flex: 1;
+      flex: 1;
+  }
+
+  .shop_table.cart tbody .cart_item td.product-quantity {
+    padding-bottom: 5px;
+  }
+
+  .shop_table.cart tbody .cart_item td.product-price {
+    position: static;
+  }
+
+  .shop_table.cart tbody .actions .button,
+  .shop_table.cart tbody .actions [type="submit"] {
+    display: inline-block;
+    width: auto;
+  }
+
 }
