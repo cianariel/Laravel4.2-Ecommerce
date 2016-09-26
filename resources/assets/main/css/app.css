@@ -8613,10 +8613,10 @@ article img {
     .category-menu a > span::before {
       content: "";
       position: absolute;
-      width: 100%;
+      width: 112%;
       height: 2px;
       top: 24px;
-      left: 0;
+      left: -6px;
       visibility: hidden;
       -webkit-transform: scaleX(0);
       transform: scaleX(0);
