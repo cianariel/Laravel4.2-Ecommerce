@@ -42,7 +42,7 @@
       transition: all 0.3s ease-in-out 0s;
 
       @media(max-width:620px){
-        top: 30px;
+        top: 24px;
       }
     }
     &:hover,
@@ -145,7 +145,7 @@ header.colophon{
 
     a.signin{
       white-space: nowrap;
-      padding-right: 0px;
+      padding-right: 3px;
       padding-top: 16px;
       padding-right: 3px;
       font-size: 1rem;
@@ -177,7 +177,7 @@ header.colophon{
       padding-right: 22px;
       position: absolute;
       top: -9px;
-      right: -25px;
+      right: -19px;
       width: 145px;
       z-index: 20;
     }
@@ -830,7 +830,7 @@ header.colophon{
               position: absolute;
               width: 100%;
               height: 2px;
-              top: 26px;
+              top: 37px;
               left: 0;
               background-color: #333;
               visibility: hidden;
@@ -1028,6 +1028,7 @@ header.colophon{
         height: 15px;
         text-align: center;
         line-height: 15px;
+        font-weight: bold;
       }
 
       @media (max-width:620px){
