@@ -70,7 +70,7 @@
 </footer>
 </div>
 
-<div class="bottom-block">
+<div class="bottom-block hidden-soft">
     <button class="btn btn-success" id="about-button" data-toggle=".about-footer">About</button>
     <a href="#" id="back-to-top">
         <i class="m-icon--footer-up-arrow"></i>
