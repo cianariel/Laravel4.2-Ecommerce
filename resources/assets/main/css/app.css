@@ -8615,7 +8615,7 @@ article img {
       position: absolute;
       width: 112%;
       height: 2px;
-      top: 24px;
+      top: 37px;
       left: -6px;
       visibility: hidden;
       -webkit-transform: scaleX(0);
@@ -8691,9 +8691,8 @@ header.colophon {
       padding-top: 4px; }
     header.colophon #top-nav a.signin {
       white-space: nowrap;
-      padding-right: 3px;
       padding-top: 16px;
-      padding-right: 3px;
+      padding-right: 8px;
       font-size: 1rem; }
   header.colophon .logo-wrap {
     position: absolute;
@@ -8706,7 +8705,7 @@ header.colophon {
   header.colophon .user-controls {
     padding-right: 0; }
     header.colophon .user-controls .searchbutton-wrap {
-      width: 40px; }
+      width: 51px; }
     @media (max-width: 620px) {
       header.colophon .user-controls {
         padding-right: 22px;
@@ -8728,7 +8727,7 @@ header.colophon {
       border-bottom: 1px solid white; }
   @media (min-width: 620px) {
     header.colophon .user-controls {
-      max-width: 145px;
+      max-width: 167px;
       position: absolute;
       top: 3px;
       right: 0; } }
@@ -9133,7 +9132,8 @@ header.colophon {
       bottom: -1px;
       height: 15px;
       text-align: center;
-      line-height: 15px; }
+      line-height: 15px;
+      font-weight: bold; }
   #top-nav .top-nav-holder .profile-photo-holder .box-link-active-line {
     height: 11px;
     position: absolute;
@@ -9188,7 +9188,7 @@ header.colophon {
             position: absolute;
             width: 100%;
             height: 2px;
-            top: 37px;
+            top: 24px;
             left: 0;
             background-color: #333;
             visibility: hidden;
