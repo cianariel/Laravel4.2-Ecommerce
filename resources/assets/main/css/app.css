@@ -15952,7 +15952,161 @@ body.category-deals .app-wrap {
   padding-bottom: 40px; }
 
 body.shop-landing {
-  font-family: montserratregular, sans-serif; }
+  font-family: montserratregular, sans-serif;
+  /*#daily-deals{
+    margin-left: -15px;
+    margin-right: 15px;
+    .box-item{
+      margin-left: 30px;
+    }
+    .box-item__time{
+      margin-right: 30px;
+    }
+    .social-stats{
+      margin-right: 30px;
+    }
+    @media (max-width: 1230px){
+      .box-item--featured::before{
+        display: none;
+      }
+    }
+  }
+  .slider{
+    margin-bottom: 20px;
+    .box-item{
+      border-top: 1px solid #eee;
+    }
+  }
+  .shop-by-category-item{
+    text-align: center;
+    position: relative;
+    border: 1px solid #e6e6e6;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    img,span{
+      display: inline-block;
+    }
+    .show-menus, .hide-menus{
+      position: absolute;
+      right: 20px;
+      bottom: 20px;
+      > i{
+        color: #003e54;
+        font-size: 25px;
+      }
+    }
+    .show-menus{
+      display: block;
+    }
+    .hide-menus{
+      display: none;
+    }
+
+    &.smart-home{
+      color: #c47289;
+    }
+
+    &.travel{
+      color: #406e7f;
+    }
+
+    &.wearables{
+      color: $pine-green;
+    }
+
+    &.home-decor{
+      color: $pine-green;
+    }
+
+    &.selected{
+
+      .show-menus{
+        display: none;
+      }
+      .hide-menus{
+        display: block;
+      }
+
+      &.smart-home{
+        background: $smart-home-light;
+      }
+
+      &.travel{
+        background: $travel-light;
+      }
+
+      &.wearables{
+        background: $wearables-light;
+      }
+
+      &.home-decor{
+        background: $home-decor-light;
+      }
+    }
+  }*/
+  /*.shop-by-category-submneu{
+    display: none;
+    &.selected{
+      display: block;
+    }
+
+    > div{
+      text-align: center;
+      height: 284px;
+      overflow: hidden;
+      padding-top: 35px;
+      border: 1px solid #fff;
+      color: white;
+      a{
+        color: white;
+      }
+      i.desktop-parent-icon{
+        font-size: 25px;
+        margin-bottom: 25px;
+        display: inline-block;
+      }
+    }
+    &.smart-home{
+      > div{
+        background: $smart-home;
+      }
+    }
+    &.active{
+      > div{
+        background: $travel;
+      }
+    }
+    &.wearables{
+      > div{
+        background: $pine-green;
+      }
+    }
+    &.home-decor{
+      > div{
+        background: $home-decor;
+      }
+    }
+    @media (max-width: 991px){
+      > div{
+        margin-left: 15px;
+        margin-right: 15px;
+        padding-top: 15px;
+        padding-bottom: 10px;
+        min-height: unset;
+        i{
+          float: left;
+
+        }
+        .title{
+          text-align: left;
+          padding-left: 38px;
+
+        }
+      }
+    }
+
+
+  }*/ }
   body.shop-landing .sub-item-container {
     position: relative;
     display: block;
@@ -15964,9 +16118,9 @@ body.shop-landing {
     height: 55px; }
   body.shop-landing .shoplanding-title {
     border: 0;
-    border-top: 1px solid #F2F5F5;
     margin-top: 40px;
-    margin-bottom: 20px; }
+    margin-bottom: 20px;
+    border: none; }
     body.shop-landing .shoplanding-title legend {
       display: block;
       padding-left: 30px;
@@ -16004,12 +16158,12 @@ body.shop-landing {
       line-height: 42px; }
     body.shop-landing .hot-deals h1 {
       font-family: montserratlight, sans-serif;
-      font-size: 38px;
+      font-size: 42px;
       color: #000000; }
     body.shop-landing .hot-deals .right-view-container {
       position: relative;
-      width: 110%;
-      margin-top: -170px;
+      width: 130%;
+      margin-top: -150px;
       margin-left: -100px;
       z-index: -999; }
       body.shop-landing .hot-deals .right-view-container img {
@@ -16021,14 +16175,14 @@ body.shop-landing {
       body.shop-landing .hot-deals .price-container .normal-price span {
         padding-left: 5px;
         color: #404041;
-        font-size: 20px; }
+        font-size: 19px; }
       body.shop-landing .hot-deals .price-container .normal-price .line-through-price {
         text-decoration: line-through;
         color: #B9B9BA;
         padding-left: 15px; }
       body.shop-landing .hot-deals .price-container .big-price-container span {
         color: #94489A;
-        font-size: 80px;
+        font-size: 75px;
         font-family: montserratbold;
         padding: 15px 0; }
       body.shop-landing .hot-deals .price-container .get-it-inner {
@@ -16039,61 +16193,8 @@ body.shop-landing {
           height: 45px;
           background: #000000;
           color: #FFFFFF; }
-  body.shop-landing #daily-deals {
-    margin-left: -15px;
-    margin-right: 15px; }
-    body.shop-landing #daily-deals .box-item {
-      margin-left: 30px; }
-    body.shop-landing #daily-deals .box-item__time {
-      margin-right: 30px; }
-    body.shop-landing #daily-deals .social-stats {
-      margin-right: 30px; }
-    @media (max-width: 1230px) {
-      body.shop-landing #daily-deals .box-item--featured::before {
-        display: none; } }
-  body.shop-landing .slider {
-    margin-bottom: 20px; }
-    body.shop-landing .slider .box-item {
-      border-top: 1px solid #eee; }
-  body.shop-landing .shop-by-category-item {
-    text-align: center;
-    position: relative;
-    border: 1px solid #e6e6e6;
-    padding-top: 50px;
-    padding-bottom: 50px; }
-    body.shop-landing .shop-by-category-item img, body.shop-landing .shop-by-category-item span {
-      display: inline-block; }
-    body.shop-landing .shop-by-category-item .show-menus, body.shop-landing .shop-by-category-item .hide-menus {
-      position: absolute;
-      right: 20px;
-      bottom: 20px; }
-      body.shop-landing .shop-by-category-item .show-menus > i, body.shop-landing .shop-by-category-item .hide-menus > i {
-        color: #003e54;
-        font-size: 25px; }
-    body.shop-landing .shop-by-category-item .show-menus {
-      display: block; }
-    body.shop-landing .shop-by-category-item .hide-menus {
-      display: none; }
-    body.shop-landing .shop-by-category-item.smart-home {
-      color: #c47289; }
-    body.shop-landing .shop-by-category-item.travel {
-      color: #406e7f; }
-    body.shop-landing .shop-by-category-item.wearables {
-      color: #89C981; }
-    body.shop-landing .shop-by-category-item.home-decor {
-      color: #89C981; }
-    body.shop-landing .shop-by-category-item.selected .show-menus {
-      display: none; }
-    body.shop-landing .shop-by-category-item.selected .hide-menus {
-      display: block; }
-    body.shop-landing .shop-by-category-item.selected.smart-home {
-      background: #ffe5ec; }
-    body.shop-landing .shop-by-category-item.selected.travel {
-      background: #eef8fb; }
-    body.shop-landing .shop-by-category-item.selected.wearables {
-      background: #f9f9ec; }
-    body.shop-landing .shop-by-category-item.selected.home-decor {
-      background: #f9cc66; }
+  body.shop-landing .popular-box {
+    counter-reset: popular-box-number; }
   body.shop-landing .big-image-view {
     max-height: 300px;
     max-width: 400px;
@@ -16106,9 +16207,25 @@ body.shop-landing {
   body.shop-landing .multirow-image-view .image-row-view {
     border: 1px solid #ECECEC;
     border-radius: 7px;
-    overflow: hidden;
+    overflow: visible;
     margin: 0 auto;
-    margin-top: 20px; }
+    margin-top: 20px;
+    position: relative; }
+    body.shop-landing .multirow-image-view .image-row-view::before {
+      counter-increment: popular-box-number;
+      content: counter(popular-box-number);
+      position: absolute;
+      left: -7px;
+      top: -7px;
+      background: #60A5CE;
+      border-radius: 50%;
+      font-weight: 700;
+      padding: 2px 8px;
+      z-index: 50;
+      border: none;
+      color: #FFFFFF;
+      opacity: 0.9;
+      font-size: 12px; }
     body.shop-landing .multirow-image-view .image-row-view .item-image-container {
       border-right: 1px solid #ECECEC;
       height: 85px;
@@ -16131,43 +16248,8 @@ body.shop-landing {
       color: #737374; }
   body.shop-landing .tab-pane {
     margin: 10px 0; }
-  body.shop-landing .shop-by-category-submneu {
-    display: none; }
-    body.shop-landing .shop-by-category-submneu.selected {
-      display: block; }
-    body.shop-landing .shop-by-category-submneu > div {
-      text-align: center;
-      height: 284px;
-      overflow: hidden;
-      padding-top: 35px;
-      border: 1px solid #fff;
-      color: white; }
-      body.shop-landing .shop-by-category-submneu > div a {
-        color: white; }
-      body.shop-landing .shop-by-category-submneu > div i.desktop-parent-icon {
-        font-size: 25px;
-        margin-bottom: 25px;
-        display: inline-block; }
-    body.shop-landing .shop-by-category-submneu.smart-home > div {
-      background: #ff0042; }
-    body.shop-landing .shop-by-category-submneu.active > div {
-      background: #59bdd7; }
-    body.shop-landing .shop-by-category-submneu.wearables > div {
-      background: #89C981; }
-    body.shop-landing .shop-by-category-submneu.home-decor > div {
-      background: #ffaa00; }
-    @media (max-width: 991px) {
-      body.shop-landing .shop-by-category-submneu > div {
-        margin-left: 15px;
-        margin-right: 15px;
-        padding-top: 15px;
-        padding-bottom: 10px;
-        min-height: unset; }
-        body.shop-landing .shop-by-category-submneu > div i {
-          float: left; }
-        body.shop-landing .shop-by-category-submneu > div .title {
-          text-align: left;
-          padding-left: 38px; } }
+  body.shop-landing .newest-arrivals .image-row-view::before {
+    background-color: #F15A25; }
   body.shop-landing .mobile-shop-by-category-holder .shop-by-category-item {
     text-align: left;
     border: 0px;
