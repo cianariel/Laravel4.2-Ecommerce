@@ -4021,12 +4021,11 @@ angular.module('colorpicker.module', [])
 
             var body = $('body');
             if(body.hasClass('home') || body.hasClass('room-landing')){
-                var $percent = 0.5;
+                var $percent = 0.4;
             }else{
-                var $percent = 0.6;
+                var $percent = 0.5;
             }
 
-            console.log(1)
             if($('.bottom-block').is(':visible')){
                 if($(window).scrollTop() + $(window).height() < $(document).height() * $percent) {
                     $('.bottom-block').fadeOut();
