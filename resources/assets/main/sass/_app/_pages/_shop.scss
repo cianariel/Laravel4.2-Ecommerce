@@ -183,9 +183,9 @@ body.shop-landing{
 
   .shoplanding-title{
     border: 0;
-    border-top: 1px solid $pale-grey;
     margin-top: 40px;
     margin-bottom: 20px;
+    border: none;
     legend{
       display: block;
       padding-left: 30px;
@@ -235,13 +235,13 @@ body.shop-landing{
     }
     h1{
       font-family: montserratlight, sans-serif;
-      font-size: 38px;
+      font-size: 42px;
       color: #000000;
     }
     .right-view-container{
       position: relative;
-      width: 110%;
-      margin-top: -170px;
+      width: 130%;
+      margin-top: -150px;
       margin-left: -100px;
       z-index: -999;
       img{
@@ -256,7 +256,7 @@ body.shop-landing{
         span{
           padding-left: 5px;
           color: #404041;
-          font-size: 20px;
+          font-size: 19px;
         }
         .line-through-price{
           text-decoration: line-through;
@@ -267,7 +267,7 @@ body.shop-landing{
       .big-price-container{
         span{
           color: #94489A;
-          font-size: 80px;
+          font-size: 75px;
           font-family: montserratbold;
           padding: 15px 0;
         }
@@ -289,21 +289,7 @@ body.shop-landing{
   }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  #daily-deals{
+  /*#daily-deals{
     margin-left: -15px;
     margin-right: 15px;
     .box-item{
@@ -393,6 +379,10 @@ body.shop-landing{
         background: $home-decor-light;
       }
     }
+  }*/
+
+  .popular-box{
+    counter-reset: popular-box-number;
   }
 
   .big-image-view{
@@ -411,9 +401,27 @@ body.shop-landing{
     .image-row-view{
       border: 1px solid #ECECEC;
       border-radius: 7px;
-      overflow: hidden;
+      overflow: visible;
       margin: 0 auto;
       margin-top: 20px;
+      position: relative;
+
+      &::before{
+        counter-increment: popular-box-number;
+        content: counter(popular-box-number);
+        position: absolute;
+        left: -7px;
+        top: -7px;
+        background: #60A5CE;
+        border-radius: 50%;
+        font-weight: 700;
+        padding: 2px 8px;
+        z-index: 50;
+        border: none;
+        color: #FFFFFF;
+        opacity: 0.9;
+        font-size: 12px;
+      }
 
       .item-image-container{
         border-right: 1px solid #ECECEC;
@@ -441,11 +449,20 @@ body.shop-landing{
       }
     }
   }
+
   .tab-pane{
     margin: 10px 0;
   }
 
-  .shop-by-category-submneu{
+  .newest-arrivals{
+    .image-row-view{
+      &::before{
+        background-color: #F15A25;
+      }
+    }
+  }
+
+  /*.shop-by-category-submneu{
     display: none;
     &.selected{
       display: block;
@@ -505,7 +522,13 @@ body.shop-landing{
         }
       }
     }
-  }
+
+
+  }*/
+
+
+
+
 
   .mobile-shop-by-category-holder{
     .shop-by-category-item{
