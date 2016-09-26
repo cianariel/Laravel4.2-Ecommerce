@@ -10,7 +10,7 @@ footer.about-footer{
   overflow: hidden;
   width: 100%;
   max-height: 670px;
-  overflow: scroll;
+  //overflow: scroll;
   z-index: 60;
 
   @media (max-width:480px){
@@ -170,8 +170,45 @@ footer.about-footer{
 }
 
 #about-button{
-  bottom:39px;
+  position: absolute;
+  width: 80px;
+  right: 85px;
+  bottom: 0;
+  padding: 13px;
+  font-size: 1rem;
+  background: #fff;
+  color: $iridium;
+  border-color: $iridium !important;
+  box-shadow: none !important;
+  z-index: 20;
+
+  &:hover{
+    background:$iridium;
+    color: #fff;
+  }
+
 }
+
+
 #back-to-top{
-  bottom: 35px;
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  right: 16px;
+  bottom: 0;
+  font-size: 12px;
+  text-align: center;
+  border: 1px solid $iridium;
+  border-radius: 50px;
+  color: $iridium;
+  line-height: 50px;
+  background: #fff;
+  z-index: 10;
+  -webkit-appearance: none;
+
+
+  &:hover{
+    color: #fff;
+    background: $iridium;
+  }
 }

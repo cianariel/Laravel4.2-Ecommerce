@@ -393,25 +393,6 @@ body.home.logged-in{
   }
 }
 
-#about-button{
-  position: absolute;
-  width: 80px;
-  right: 85px;
-  bottom: 138px;
-  padding: 13px;
-  font-size: 1rem;
-  background: #fff;
-  color: $iridium;
-  border-color: $iridium !important;
-  box-shadow: none !important;
-  z-index: 20;
-
-  &:hover{
-    background:$iridium;
-    color: #fff;
-  }
-
-}
 .btn-outline{
   width: 80px;
   padding: 13px;
@@ -424,30 +405,6 @@ body.home.logged-in{
   &:hover, &:active, &:focus{
     background:$iridium;
     color: #fff;
-  }
-}
-#back-to-top{
-  -webkit-appearance: none;
-  border: 0;
-  position: absolute;
-  right: 16px;
-  bottom: 133px;
-  width: 50px;
-  height: 50px;
-
-  font-size: 12px;
-  text-align: center;
-  border: 1px solid $iridium;
-  border-radius: 50px;
-  color: $iridium;
-  line-height: 50px;
-  background: #fff;
-
-  z-index: 10;
-
-  &:hover{
-    color: #fff;
-    background: $iridium;
   }
 }
 

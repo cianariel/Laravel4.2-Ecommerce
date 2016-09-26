@@ -4015,17 +4015,18 @@ angular.module('colorpicker.module', [])
                 $('.bottom-load-more').addClass('disabled').attr('disabled', true);
             }
 
-            if(window.innerWidth > 620){
+            if(window.innerWidth < 620){
                 return false;
             }
 
             var body = $('body');
             if(body.hasClass('home') || body.hasClass('room-landing')){
-                var $percent = 0.4;
-            }else{
                 var $percent = 0.5;
+            }else{
+                var $percent = 0.6;
             }
 
+            console.log(1)
             if($('.bottom-block').is(':visible')){
                 if($(window).scrollTop() + $(window).height() < $(document).height() * $percent) {
                     $('.bottom-block').fadeOut();

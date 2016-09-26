@@ -9476,7 +9476,6 @@ footer.about-footer {
   overflow: hidden;
   width: 100%;
   max-height: 670px;
-  overflow: scroll;
   z-index: 60; }
   @media (max-width: 480px) {
     footer.about-footer {
@@ -9568,10 +9567,39 @@ footer.about-footer {
       display: none; } }
 
 #about-button {
-  bottom: 39px; }
+  position: absolute;
+  width: 80px;
+  right: 85px;
+  bottom: 0;
+  padding: 13px;
+  font-size: 1rem;
+  background: #fff;
+  color: #FC1159;
+  border-color: #FC1159 !important;
+  box-shadow: none !important;
+  z-index: 20; }
+  #about-button:hover {
+    background: #FC1159;
+    color: #fff; }
 
 #back-to-top {
-  bottom: 35px; }
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  right: 16px;
+  bottom: 0;
+  font-size: 12px;
+  text-align: center;
+  border: 1px solid #FC1159;
+  border-radius: 50px;
+  color: #FC1159;
+  line-height: 50px;
+  background: #fff;
+  z-index: 10;
+  -webkit-appearance: none; }
+  #back-to-top:hover {
+    color: #fff;
+    background: #FC1159; }
 
 .comment-edit-container div[contenteditable=true] {
   padding: 4px;
@@ -11152,22 +11180,6 @@ body.home.logged-in #hero {
     border-radius: 15px 0 0 0;
     text-indent: 0 !important; }
 
-#about-button {
-  position: absolute;
-  width: 80px;
-  right: 85px;
-  bottom: 138px;
-  padding: 13px;
-  font-size: 1rem;
-  background: #fff;
-  color: #FC1159;
-  border-color: #FC1159 !important;
-  box-shadow: none !important;
-  z-index: 20; }
-  #about-button:hover {
-    background: #FC1159;
-    color: #fff; }
-
 .btn-outline {
   width: 80px;
   padding: 13px;
@@ -11179,26 +11191,6 @@ body.home.logged-in #hero {
   .btn-outline:hover, .btn-outline:active, .btn-outline:focus {
     background: #FC1159;
     color: #fff; }
-
-#back-to-top {
-  -webkit-appearance: none;
-  border: 0;
-  position: absolute;
-  right: 16px;
-  bottom: 133px;
-  width: 50px;
-  height: 50px;
-  font-size: 12px;
-  text-align: center;
-  border: 1px solid #FC1159;
-  border-radius: 50px;
-  color: #FC1159;
-  line-height: 50px;
-  background: #fff;
-  z-index: 10; }
-  #back-to-top:hover {
-    color: #fff;
-    background: #FC1159; }
 
 .home-subheader {
   width: 97%;
