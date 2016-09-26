@@ -84,6 +84,14 @@ function get_ideaing_cart_contents_count(){
 add_filter('get_ideaing_cart_contents_count', 'get_ideaing_cart_contents_count');
 
 /**
+ * Get cart total contents
+ *
+ * @return return string
+ * @since WooCommerce Integration 1.0
+ */
+add_action('get_ideaing_woocommerce_cart_totals', 'woocommerce_cart_totals');
+
+/**
  * Get cart url
  *
  * @return return string
