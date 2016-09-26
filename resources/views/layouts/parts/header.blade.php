@@ -35,7 +35,7 @@ if (!isset($theGiveAway)) {
     <header class="colophon container full-sm fixed-sm relative">
         <div>
             <nav id="top-nav" class="row">
-                <a id="menu-icon-wrapper" class="menu-icon-wrapper home-hamburger mobile-top-menu-switcher hidden-lg hidden-md hidden-sm"  href="#">
+                <a id="menu-icon-wrapper" class="menu-icon-wrapper home-hamburger mobile-top-menu-switcher hidden-lg hidden-md"  href="#">
                     <svg width="1000px" height="1000px">
                         <path id="pathA" d="M 300 400 L 700 400 C 900 400 900 750 600 850 A 400 400 0 0 1 200 200 L 800 800" style="stroke-dashoffset: 5803.15; stroke-dasharray: 2901.57, 5258.15, 240;"></path>
                         <path id="pathB" d="M 300 500 L 700 500" style="stroke-dashoffset: 800; stroke-dasharray: 400, 600, 0;"></path>
@@ -55,10 +55,10 @@ if (!isset($theGiveAway)) {
                     </a>
                 </div>
 
-                <a href="#" class="search-toggle-button mobile hidden-soft shown-620"><i class="m-icon m-icon--search-id"></i></a>
+               <!-- <a href="#" class="search-toggle-button mobile hidden-soft shown-620"><i class="m-icon m-icon--search-id"></i></a> -->
 
                     <div class="top-nav-holder">
-                        <div class="col-xs-12 col-sm-7 col-lg-8 category-menu">
+                        <div class="category-menu">
                             <ul>
                                 <li> 
                                     <a data-click="#show-smart-home" class="category-link__smart-home" href="/smart-home"  ng-click="switchCategory('smart-home')">
@@ -96,16 +96,25 @@ if (!isset($theGiveAway)) {
                                         </span>
                                     </a>
                                 </li>
+                                <li>
+                                    <a class="category-link__advice hidden-xs m-icon-text-holder" href="/advice">
+                                        <span class="m-icon-text">
+                                            <i class="m-icon m-icon--comments-products"></i>
+                                            Advice
+                                        </span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="category-link__shop m-icon-text-holder hidden-sm hidden-xs" href="/shop">
+                                        <span class="m-icon-text">
+                                                <i class="m-icon m-icon--shopping-bag-light-green"></i>
+                                            Shop
+                                        </span>
+                                    </a>
+                                </li>
                             </ul>
                         </div>
 
-
-
-                        <!--<a class="category-link__shop m-icon-text-holder hidden-soft shown-620" href="/shop">--}}
-                            <i class="hidden-xs hidden-md m-icon m-icon--shopping-bag-light-green white"></i>
-                            <span class="m-icon-text white">Shop</span>
-                        </a>
-                        -->
 
                             <form class="search-bar desktop-search-bar col-sm-2 col-lg-2 pseudo-full-wide" ng-app="publicApp" ng-controller="SearchController" action="/search-form-query" autocomplete="off">
                                         <span class="search-input-holder">
@@ -142,14 +151,14 @@ if (!isset($theGiveAway)) {
 
 
 
-                        <div class="col-xs-3 col-sm-5 pull-right user-controls">
-                                <ul>
-                                    <li>
+                        <div class="col-xs-3 col-md-5 pull-right user-controls">
+                                <ul class="searchbutton-wrap col-xs-2 no-padding  hidden-sm hidden-xs">
+                                 <!--   <li>
                                         <a class="category-link__shop m-icon-text-holder hidden-xs" href="/shop">
                                             <i class="hidden-xs m-icon m-icon--shopping-bag-light-green black"></i>
                                             <span class="m-icon-text black">Shop</span>
                                         </a>
-                                    </li>
+                                    </li> -->
                                     <li>
                                         <a href="#" class="search-toggle-button desktop hidden-xs"><i class="m-icon m-icon--search-id"></i></a>
                                     </li>
