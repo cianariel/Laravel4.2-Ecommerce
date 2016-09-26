@@ -1,12 +1,16 @@
 /* this could merge with main css later on */
 
+.secure-checkout .site-header,
+.secure-checkout .site-main {
+  font-family: Montserrat;
+}
+
 .secure-checkout .top-nav-holder {
   position: relative;
   height: 60px;
   margin: 0 0 60px;
   padding: 10px 15px;
   border-bottom: solid 1px #dbdbdb;
-  font-family: Montserrat;
 }
 
 .site-logo {
@@ -35,6 +39,10 @@
   letter-spacing: .09em;
   text-transform: uppercase;
   cursor: default;
+
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  user-select: none;
 }
 
 .sc-slogan span {
@@ -43,6 +51,7 @@
 
 .sc-slogan i {
   font-size: 18px;
+  color: #4fd37e;
 }
 
 .secure-checkout-nav {
@@ -66,6 +75,155 @@
   background-color: #4fd37e;
 }
 
+.widget {
+  line-height: 1.5;
+  margin-bottom: 25px;
+}
+
+.widget-title {
+  font-size: 12px;
+  padding: 0 0 25px;
+  margin: 0 0 25px;
+  line-height: 1.1;
+  letter-spacing: .07em;
+  text-transform: uppercase;
+  border-bottom: solid 1px #dbdbdb;
+
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.widget-title-alt {
+  position: relative;
+  font-size: 13px;
+  margin: 0 0 25px;
+  line-height: 1.1;
+  letter-spacing: .09em;
+  text-transform: uppercase;
+
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.collapse-widget .widget-title-alt {
+  padding-right: 2em;
+  cursor: pointer;
+}
+
+.collapse-widget .widget-title-alt:after {
+  content: '\e15b';
+  content: '\e145';
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-family: 'ideaing' !important;
+  speak: none;
+  font-size: 1.6153846154em;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: .680952381;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.oncollapse .widget-title-alt:after {
+  content: '\e145';
+}
+
+.gray-widget {
+  padding: 25px 15px;
+  border-radius: 4px;
+  background-color: #f7f8f9;
+}
+
+.gray-widget p {
+  font-size: 13px;
+  line-height: 18px;
+  margin: 0 0 25px;
+  letter-spacing: .07em;
+  text-transform: uppercase;
+}
+
+.gray-widget p > [class^="m-icon--"] {
+  display: inline-block;
+  margin-right: 25px;
+  font-size: 18px;
+  line-height: 1;
+  vertical-align: bottom;
+}
+
+.gray-widget ul {
+  padding: 0 15px 25px;
+  margin: 0 0 25px;
+  background-color: #fff;
+  border: solid 1px #dbdbdb;
+}
+
+.gray-widget li > span {
+  display: block;
+  position: relative;
+  padding: 0 0 0 50px;
+  margin: 25px 0 0;
+  font-size: 13px;
+  line-height: 18px;
+}
+
+.gray-widget li .t {
+  letter-spacing: .09em;
+  text-transform: uppercase;
+}
+
+.gray-widget li .c span {
+  opacity: .35;
+}
+
+.gray-widget li .c > [class^="m-icon--"] {
+  position: absolute;
+  left: 10px;
+  font-size: 18px;
+}
+
+.white-widget {
+  padding: 25px 15px 0;
+  border: solid 1px #dbdbdb;
+}
+
+.cart-items a {
+  position: relative;
+  display: block;
+  padding: 0 0 0 95px;
+  margin-bottom: 25px;
+  height: 80px;
+}
+
+.cart-items a img {
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  top: 0;
+  left: 0;
+  border-radius: 2px;
+}
+
+.cart-items a .name,
+.cart-items a .spec {
+  display: block;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.cart-items a .name {
+  padding: 20px 0;
+  font-size: 12px;
+  font-weight: bold;
+  letter-spacing: .09em;
+  text-transform: uppercase;
+}
 
 @media ( min-width: 554px ){
 
