@@ -55,15 +55,13 @@
         </div>
         <div class="col-xs-6">
           <div class="secure-checkout-nav">
-            <a href="#" class="active"><span><?php _e('Cart', 'ideaing'); ?></span></a>
-            <a href="#"><span><?php _e('Your information', 'ideaing'); ?></span></a>
-            <a href="#"><span><?php _e('Success', 'ideaing'); ?></span></a>
+            <?php do_action('ideaing_secure_checkout_nav'); ?>
           </div>
         </div>
         <div class="col-xs-3">
           <div class="sc-slogan">
             <span><?php _e('Secure checkout', 'ideaing'); ?></span>
-            <i class="m-icon--backpacks"></i>
+            <i class="m-icon--verified_user"></i>
           </div>
         </div>
       </div>

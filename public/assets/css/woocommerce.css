@@ -68,7 +68,7 @@
   display: none;
 }
 
-.secure-checkout-nav a {
+.secure-checkout-nav > * {
   display: inline-block;
   padding: 0 8px;
   margin: 8px 2px;
@@ -79,10 +79,18 @@
   text-transform: uppercase;
   color: #fff !important;
   background-color: #d2d2d2;
+  cursor: default;
 }
 
-.secure-checkout-nav a.active {
+.secure-checkout-nav >*.active {
   background-color: #4fd37e;
+}
+
+.secure-checkout-nav a:hover {
+  opacity: .5;
+  cursor: pointer;
+  -webkit-transition: opacity .4s ease-out;
+  transition: opacity .4s ease-out;
 }
 
 .widget {
@@ -171,6 +179,48 @@
   font-size: 18px;
   line-height: 1;
   vertical-align: bottom;
+}
+
+.gray-widget table {
+  width: 100%;
+  margin: 0 0 25px;
+}
+
+.gray-widget td,
+.gray-widget th {
+  padding: 10px;
+  font-weight: normal;
+}
+
+.gray-widget tr:nth-last-child(2) td,
+.gray-widget tr:nth-last-child(2) th {
+  padding: 10px 10px 25px;
+}
+
+.gray-widget tr:first-child td,
+.gray-widget tr:first-child th {
+  padding: 25px 10px 10px;
+}
+
+.gray-widget tr td:last-child {
+  text-align: right;
+}
+
+.gray-widget tr.order-total {
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: .09em;
+}
+
+.gray-widget tr:not(.order-total) {
+  font-size: 11px;
+  color: #505050;
+  letter-spacing: .07em;
+  background-color: #fff;
+}
+
+.gray-widget strong {
+  font-weight: inherit;
 }
 
 .gray-widget ul {
@@ -279,7 +329,7 @@
 
 @media ( min-width: 768px ){
 
-  .secure-checkout-nav a {
+  .secure-checkout-nav > * {
     padding: 0 8px;
     margin: 8px;
   }

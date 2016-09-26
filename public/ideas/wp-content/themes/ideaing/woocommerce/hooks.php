@@ -84,6 +84,68 @@ function get_ideaing_cart_contents_count(){
 add_filter('get_ideaing_cart_contents_count', 'get_ideaing_cart_contents_count');
 
 /**
+ * Get cart url
+ *
+ * @return return string
+ * @since WooCommerce Integration 1.0
+ */
+function ideaing_secure_checkout_nav(){
+
+  if (is_cart()){
+
+    printf(
+      implode(
+        array(
+          '<span class="active"><span>%s</span></span>',
+          '<a href="%s"><span>%s</span></a>',
+          '<span><span>%s</span></span>'
+        )
+      )
+      , __('Cart', 'ideaing')
+      , esc_url(WC()->cart->get_checkout_url())
+      , __('Your information', 'ideaing')
+      , __('Success', 'ideaing')
+    );
+
+  } elseif (is_checkout()) {
+
+    printf(
+      implode(
+        array(
+          '<a href="%s" class="active"><span>%s</span></a>',
+          '<span class="active"><span>%s</span></span>',
+          '<span><span>%s</span></span>'
+        )
+      )
+      , esc_url(WC()->cart->get_cart_url())
+      , __('Cart', 'ideaing')
+      , __('Your information', 'ideaing')
+      , __('Success', 'ideaing')
+    );
+
+  } else {
+
+    printf(
+      implode(
+        array(
+          '<a href="%s" class="active"><span>%s</span></a>',
+          '<a href="%s" class="active"><span>%s</span></a>',
+          '<span class="active"><span>%s</span></span>'
+        )
+      )
+      , esc_url(WC()->cart->get_cart_url())
+      , __('Cart', 'ideaing')
+      , esc_url(WC()->cart->get_checkout_url())
+      , __('Your information', 'ideaing')
+      , __('Success', 'ideaing')
+    );
+  }
+
+  return is_cart() ? $url : WC()->cart->get_cart_url();
+}
+add_action('ideaing_secure_checkout_nav', 'ideaing_secure_checkout_nav');
+
+/**
  * Generate cart widget content
  *
  * @return string
