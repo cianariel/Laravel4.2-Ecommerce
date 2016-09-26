@@ -104,40 +104,9 @@ function ideaing_cart_content(){
 
 				$product_permalink = apply_filters( 'woocommerce_cart_item_permalink', $_product->is_visible() ? $_product->get_permalink( $cart_item ) : '', $cart_item, $cart_item_key );
 
+				$product_price = apply_filters( 'woocommerce_cart_item_price', WC()->cart->get_product_price( $_product ), $cart_item, $cart_item_key );
 
-				$data = array();
-				$attributes = $_product->get_attributes();
-
-				if ( $attributes ):
-
-					foreach ( $attributes as $attribute ) :
-
-						if ( empty( $attribute['is_visible'] ) || ( $attribute['is_taxonomy'] && ! taxonomy_exists( $attribute['name'] ) ) ) {
-							continue;
-						}
-
-						if ( $attribute['is_taxonomy'] ) {
-
-							$values = wc_get_product_terms(  $product_id , $attribute['name'], array( 'fields' => 'names' ) );
-
-							if ( 'pa_capacity' == $attribute['name'] ) {
-
-								foreach ($values as $key => $value) {
-									$values[$key] .= " GB";
-								}
-							}
-
-							$data[] = wp_strip_all_tags( apply_filters( 'woocommerce_attribute', implode( ', ', $values ), $attribute, $values ) );
-
-						} else {
-
-							// Convert pipes to commas and display values
-							$values = array_map( 'trim', explode( WC_DELIMITER, $attribute['value'] ) );
-							$data[] = wp_strip_all_tags( apply_filters( 'woocommerce_attribute', implode( ', ', $values ) , $attribute, $values ) );
-
-						}
-					endforeach;
-				endif;
+        $price = apply_filters( 'woocommerce_widget_cart_item_quantity', '<span class="quantity">' . sprintf( '%s &times; %s', $cart_item['quantity'], $product_price ) . '</span>', $cart_item, $cart_item_key );
 
         $remove = apply_filters( 'woocommerce_cart_item_remove_link', sprintf(
           '<a href="%s" class="remove" data-product_id="%s" data-product_sku="%s"><i class="m-icon--close"></i></a>',
@@ -146,11 +115,11 @@ function ideaing_cart_content(){
           esc_attr( $_product->get_sku() )
         ), $cart_item_key );
 
-				$products[] = sprintf('<div class="cs--i"><a href="%s" class="item">%s<span class="name">%s</span><span class="spec">%s</span></a>%s</div>',
+				$products[] = sprintf('<div class="cs--i"><a href="%s" class="item">%s<span class="name">%s</span><span class="price">%s</span></a>%s</div>',
 					esc_attr( $product_permalink ),
 					$thumbnail,
 					$product_name,
-					implode(' &bull; ', $data),
+					$price,
           $remove
 				);
 			}

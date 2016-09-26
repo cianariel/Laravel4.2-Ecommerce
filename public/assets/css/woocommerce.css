@@ -1,5 +1,15 @@
 /* this could merge with main css later on */
 
+.screen-reader-text {
+	clip: rect(1px, 1px, 1px, 1px);
+	height: 1px;
+	overflow: hidden;
+	position: absolute !important;
+	width: 1px;
+	/* many screen reader and browser combinations announce broken words as they would appear visually */
+	word-wrap: normal !important;
+}
+
 .secure-checkout .site-header,
 .secure-checkout .site-main {
   font-family: Montserrat;
@@ -96,12 +106,12 @@
 
 .widget-title-alt {
   position: relative;
+  display: block;
   font-size: 13px;
   margin: 0 0 25px;
   line-height: 1.1;
   letter-spacing: .09em;
   text-transform: uppercase;
-
   -webkit-touch-callout: none;
   -webkit-user-select: none;
   user-select: none;
@@ -114,7 +124,6 @@
 
 .collapse-widget .widget-title-alt:after {
   content: '\e15b';
-  content: '\e145';
   position: absolute;
   top: 0;
   right: 0;
@@ -128,6 +137,14 @@
   line-height: .680952381;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.collapse-widget input[type=checkbox]:checked ~ .widget-title-alt:after {
+  content: '\e145';
+}
+
+.collapse-widget input[type=checkbox]:checked ~ .cart-items {
+  display: none;
 }
 
 .oncollapse .widget-title-alt:after {
@@ -192,7 +209,26 @@
   border: solid 1px #dbdbdb;
 }
 
-.cart-items a {
+.cart-items .cs--i {
+  position: relative;
+  padding-right: 45px;
+}
+
+.cart-items .remove {
+  display: block;
+  position: absolute;
+  right: 0;
+  top: 0;
+  font-size: 21px;
+  line-height: 80px;
+  color: #ed2049;
+}
+
+.cart-items .remove:not(:hover) {
+  opacity: .5;
+}
+
+.cart-items .item {
   position: relative;
   display: block;
   padding: 0 0 0 95px;
@@ -200,17 +236,20 @@
   height: 80px;
 }
 
-.cart-items a img {
+.cart-items a figure {
   position: absolute;
   width: 80px;
   height: 80px;
   top: 0;
   left: 0;
+  background-color: #f7f8f9;
+  background-size: cover;
+  background-position: center;
   border-radius: 2px;
 }
 
 .cart-items a .name,
-.cart-items a .spec {
+.cart-items a .price {
   display: block;
   white-space: nowrap;
   text-overflow: ellipsis;
@@ -218,12 +257,18 @@
 }
 
 .cart-items a .name {
-  padding: 20px 0;
+  padding: 14px 0;
   font-size: 12px;
   font-weight: bold;
   letter-spacing: .09em;
   text-transform: uppercase;
 }
+
+.cart-items a .price {
+  font-size: 11px;
+  letter-spacing: .07em;
+}
+
 
 @media ( min-width: 554px ){
 
