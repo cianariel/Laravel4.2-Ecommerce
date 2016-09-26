@@ -33,7 +33,7 @@ function ideaing_body_class_filter($classes){
 add_filter('body_class', 'ideaing_body_class_filter', 99, 1 );
 
 /**
- * If this is a wc page
+ * If this is a checkout page process
  *
  * @return return boolian | custom
  * @since WooCommerce Integration 1.0
@@ -46,6 +46,18 @@ function is_ideaing_woocommerce_checkout_page( $default = false, $strict = true 
   ? $strict : $default;
 }
 add_filter('is_ideaing_woocommerce_checkout_page', 'is_ideaing_woocommerce_checkout_page', 10, 2);
+
+/**
+ * If this is a checkout page process
+ *
+ * @return return boolian | custom
+ * @since WooCommerce Integration 1.0
+ */
+function is_ideaing_cart( $default ){
+
+  return is_cart();
+}
+add_filter('is_ideaing_cart', 'is_ideaing_cart', 10, 1);
 
 /**
  * If cart is not empty
