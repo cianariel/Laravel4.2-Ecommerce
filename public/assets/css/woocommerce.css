@@ -478,6 +478,14 @@
   background-color: #ed2049;
 }
 
+.woocommerce-message {
+  font-size: 13px;
+  padding: 25px 35px 25px 15px;
+  border-radius: 2px;
+  margin-bottom: 25px;
+  background-color: #f7f8f9;
+}
+
 @media ( min-width: 554px ){
 
   .secure-checkout-nav {
@@ -573,5 +581,4 @@
     display: inline-block;
     width: auto;
   }
-
 }
