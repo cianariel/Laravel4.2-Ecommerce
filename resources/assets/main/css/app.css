@@ -15970,7 +15970,7 @@ body.shop-landing {
   body.shop-landing .sub-item-container {
     position: relative;
     display: block;
-    margin-bottom: 70px; }
+    margin-bottom: 120px; }
   body.shop-landing .app-wrap {
     position: relative;
     top: 30px; }
@@ -16006,10 +16006,53 @@ body.shop-landing {
     background: transparent; }
   body.shop-landing .nav-tabs > li > a {
     border: 1px solid transparent;
-    font-size: 20px;
+    font-size: 18px;
     color: #B9B9BA;
-    padding: 30px;
+    padding: 20px 30px;
     border-radius: 0; }
+  body.shop-landing .hot-deals {
+    padding-left: 30px; }
+    body.shop-landing .hot-deals legend {
+      color: #94489A;
+      padding-left: 0;
+      line-height: 42px; }
+    body.shop-landing .hot-deals h1 {
+      font-family: montserratlight, sans-serif;
+      font-size: 38px;
+      color: #000000; }
+    body.shop-landing .hot-deals .right-view-container {
+      position: relative;
+      width: 110%;
+      margin-top: -150px;
+      margin-left: -100px;
+      z-index: -999; }
+      body.shop-landing .hot-deals .right-view-container img {
+        max-width: 100%;
+        height: auto;
+        width: 100%; }
+    body.shop-landing .hot-deals .price-container {
+      margin-top: 150px; }
+      body.shop-landing .hot-deals .price-container .normal-price span {
+        padding-left: 5px;
+        color: #404041;
+        font-size: 20px; }
+      body.shop-landing .hot-deals .price-container .normal-price .line-through-price {
+        text-decoration: line-through;
+        color: #B9B9BA;
+        padding-left: 15px; }
+      body.shop-landing .hot-deals .price-container .big-price-container span {
+        color: #94489A;
+        font-size: 80px;
+        font-family: montserratbold;
+        padding: 15px 0; }
+      body.shop-landing .hot-deals .price-container .get-it-inner {
+        text-align: left;
+        margin-top: 30px; }
+        body.shop-landing .hot-deals .price-container .get-it-inner button {
+          width: 110px;
+          height: 45px;
+          background: #000000;
+          color: #FFFFFF; }
   body.shop-landing #daily-deals {
     margin-left: -15px;
     margin-right: 15px; }
@@ -16096,6 +16139,7 @@ body.shop-landing {
         top: 50%;
         transform: translate(-50%, -50%); }
     body.shop-landing .multirow-image-view .image-row-view p {
+      font-size: 13px;
       margin: 20px 5px;
       text-align: left;
       color: #737374; }

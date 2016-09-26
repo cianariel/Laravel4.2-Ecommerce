@@ -168,7 +168,7 @@ body.shop-landing{
   .sub-item-container{
     position: relative;
     display: block;
-    margin-bottom: 70px;
+    margin-bottom: 120px;
   }
   .app-wrap{
     position: relative;
@@ -220,11 +220,88 @@ body.shop-landing{
 
   .nav-tabs>li>a{
     border: 1px solid transparent;
-    font-size: 20px;
+    font-size: 18px;
     color: #B9B9BA;
-    padding: 30px;
+    padding: 20px 30px;
     border-radius: 0;
   }
+
+  .hot-deals{
+    padding-left: 30px;
+    legend{
+      color: #94489A;
+      padding-left: 0;
+      line-height: 42px;
+    }
+    h1{
+      font-family: montserratlight, sans-serif;
+      font-size: 38px;
+      color: #000000;
+    }
+    .right-view-container{
+      position: relative;
+      width: 110%;
+      margin-top: -170px;
+      margin-left: -100px;
+      z-index: -999;
+      img{
+        max-width: 100%;
+        height: auto;
+        width: 100%;
+      }
+    }
+    .price-container{
+      margin-top: 150px;
+      .normal-price{
+        span{
+          padding-left: 5px;
+          color: #404041;
+          font-size: 20px;
+        }
+        .line-through-price{
+          text-decoration: line-through;
+          color: #B9B9BA;
+          padding-left: 15px;
+        }
+      }
+      .big-price-container{
+        span{
+          color: #94489A;
+          font-size: 80px;
+          font-family: montserratbold;
+          padding: 15px 0;
+        }
+
+      }
+
+      .get-it-inner{
+        text-align: left;
+        margin-top: 30px;
+        button{
+          width: 110px;
+          height: 45px;
+          background: #000000;
+          color: #FFFFFF;
+        }
+      }
+
+    }
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   #daily-deals{
     margin-left: -15px;
@@ -357,6 +434,7 @@ body.shop-landing{
       }
 
       p{
+        font-size: 13px;
         margin: 20px 5px;
         text-align: left;
         color: #737374;
