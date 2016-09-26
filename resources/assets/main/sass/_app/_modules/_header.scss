@@ -700,7 +700,11 @@ header.colophon{
 
   .top-nav-holder{
     //border-bottom: 1px solid $light-grey;
-    height: 49px;
+    height: 54px;
+
+    @media(max-width: 620px){
+      height: 49px;
+    }
 
 
     .mobile-menu-switch{

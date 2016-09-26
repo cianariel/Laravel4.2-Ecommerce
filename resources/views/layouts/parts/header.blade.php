@@ -133,7 +133,7 @@ if (!isset($theGiveAway)) {
                                         </span>
                             </form>
 
-                        <form class="search-bar mobile-search-bar col-sm-2 col-lg-2 hidden-soft" ng-app="publicApp" ng-controller="SearchController" action="/search-form-query" autocomplete="off">
+                     <!--   <form class="search-bar mobile-search-bar col-sm-2 col-lg-2 hidden-soft" ng-app="publicApp" ng-controller="SearchController" action="/search-form-query" autocomplete="off">
                                         <span class="search-input-holder desktop-search-bar">
                                             <input ng-click="toggleSearch()" id="search-input"
                                                    ng-change="openSearchDropdown(query)" ng-model="query"
@@ -147,7 +147,7 @@ if (!isset($theGiveAway)) {
                                             </div>
                                             <i class="hide-search m-icon--Close hidden-xs"></i>
                                         </span>
-                        </form>
+                        </form> -->
 
 
 
