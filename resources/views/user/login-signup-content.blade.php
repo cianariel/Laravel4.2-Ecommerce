@@ -43,7 +43,7 @@
                 <div class="col-sm-6 col-xs-12 pale-grey-bg padding-40">
                     <div class="modal-content hero-box qiuck-signup modal-login">
                         <div class="overhide">
-                            <uib-alert ng-repeat="alert in alerts" type="@{{alert.type}}" close="closeAlert($index)">
+                            <uib-alert ng-repeat="alert in alerts.register" type="@{{alert.type}}" close="closeAlert($index)">
                                 <p ng-bind-html="alertHTML"></p>
                             </uib-alert>
                         </div>
@@ -154,13 +154,4 @@
         </div>
     </section>
 
-
-   <!-- <section class="row to-home">
-        <div class="container text-center padding-40">
-            <a href="/">
-                <span class="m-icon--bulb2 center-block"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span><span class="path6"></span><span class="path7"></span><span class="path8"></span><span class="path9"></span><span class="path10"></span></span>
-            </a>
-            <h4 class="grey"><a href="/">HOME</a></h4>
-        </div>
-    </section> -->
 </div>

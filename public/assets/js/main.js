@@ -4995,15 +4995,23 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
         };
 
         // Add an Alert in a web application
-        $scope.addAlert = function (alertType, message) {
-            //$scope.alertType = alertType;
+        $scope.addAlert = function (alertType, message, category) {
             $scope.alertHTML = message;
-            $scope.alerts.push({type: alertType});
 
+            console.log(category);
+
+            if(category !== undefined){
+                console.log('ear ear');
+
+                $scope.alerts[category] = [];
+                $scope.alerts[category].push({type: alertType});
+            }else{
+                $scope.alerts.push({type: alertType});
+            }
         };
 
         $scope.closeAlert = function (index) {
-            $scope.alerts.splice(index, 1);
+            $scope.alerts = [];
 
         };
 
@@ -5438,20 +5446,13 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
 
             $scope.closeAlert();
 
-            console.log('opa');
-            console.log(sourceSegment);
-
             if ($scope.AcceptTerms == false && $scope.AcceptTermsModal == false) {
-                $scope.addAlert('danger', 'Please accept the Terms and Conditions');
-                console.log('op2a');
-
+                $scope.addAlert('danger', 'Please accept the Terms and Conditions', 'register');
                 return;
             }
 
             if ($scope.FullName == '') {
-                $scope.addAlert('danger', 'Please enter your name');
-                console.log('opa1');
-
+                $scope.addAlert('danger', 'Please enter your name', 'register');
                 return;
             }
 
@@ -5459,23 +5460,19 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
             var emailTest = re.test($scope.Email);
 
             if (emailTest == false) {
-                $scope.addAlert('danger', 'Please enter a valid email');
-                console.log('opa12');
-
+                $scope.addAlert('danger', 'Please enter a valid email', 'register');
                 return;
             }
 
             if ($scope.Password == '') {
-                console.log('opa15');
-
-                $scope.addAlert('danger', 'Please enter the password');
+                $scope.addAlert('danger', 'Please enter the password', 'register');
                 return;
             }
 
             //if ($scope.Password != $scope.PasswordConf) {
             //    $scope.addAlert('danger', 'Passwords do not match!');
             //    return;
-            //} 
+            //}
 
             $http({
                 url: '/api/register-user',

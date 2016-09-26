@@ -12158,12 +12158,6 @@ body.login-signup {
   width: 100%; }
   body.login-signup #about-button, body.login-signup #back-to-top, body.login-signup .pocket {
     display: none; }
-  body.login-signup .login-signup-modal {
-    position: absolute;
-    width: 100%;
-    max-height: 100%;
-    z-index: 999;
-    background: #fff; }
   body.login-signup .content-holder {
     padding-bottom: 50px;
     max-width: 650px;
