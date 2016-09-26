@@ -169,7 +169,7 @@ function ideaing_cart_content(){
 
 	return sprintf( implode('', array(
 		'<div class="cart-summary-inner %1$s">',
-      '<input type="checkbox" id="%2$s" class="says">',
+      '<input type="checkbox" id="%2$s" class="screen-reader-text">',
     	'<label for="%2$s" class="widget-title-alt">%3$s ( %4$s )</label>',
 			'<div class="cart-items">%5$s</div>',
 		'</div>' ) ),
