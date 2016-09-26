@@ -26,6 +26,8 @@ class IdeaingCartSummary extends WP_Widget {
 	 */
 	public function widget( $args, $instance ) {
 
+    if (apply_filters('is_ideaing_cart', false)) return;
+
 		echo $args['before_widget'];
 
     do_action('ideaing_cart_widget_render');
