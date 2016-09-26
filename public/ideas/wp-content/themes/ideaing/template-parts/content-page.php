@@ -9,6 +9,9 @@
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+	
+	<?php do_action('ideaing_page_title'); ?>
+
 	<div class="entry-content">
 		<?php
 		the_content();

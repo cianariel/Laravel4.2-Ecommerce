@@ -96,6 +96,17 @@ function get_ideaing_woocommerce_cart_totals(){
 add_action('get_ideaing_woocommerce_cart_totals', 'get_ideaing_woocommerce_cart_totals');
 
 /**
+ * Page title.
+ *
+ * @since WooCommerce Integration 1.0
+ */
+function get_ideaing_page_title_rener() {
+
+  wc_get_template( 'page/title.php' );
+}
+add_action( 'ideaing_page_title', 'get_ideaing_page_title_rener' );
+
+/**
  * Get cart url
  *
  * @return return string
