@@ -758,45 +758,6 @@ body:not(.single){
     float: right;
 }
 
-#suggest-category {
-    background: rgb(255, 255, 255) none repeat scroll 0% 0%;
-    width: 100%;
-    z-index: 50;
-    border: 1px solid lightgray;
-    position: absolute;
-    top: 34px;
-
-    @media (max-width: 768px){
-      top: 58px;
-    }
-    > ul.cat-suggestions{
-        > li{
-            width: 100%; display: block; float: left; padding: 5px 10px;
-            &:not(:first-child){
-                border-top: 1px solid $border-grey;
-            }
-            a{
-                width: 100% !important;
-                height: auto !important;
-                float:none !important;
-                padding: 20px 10px 20px 0px !important;
-                margin: inherit !important;
-            }
-            .m-icon--shopping-bag-light-green{
-              float: left;
-              position: static;
-              padding-right: 5px;
-              padding-botom: 5px;
-            }
-            .m-icon--bulb{
-              float: left;
-              position: static;
-              padding-right: 5px;
-              padding-botom: 5px;
-            }
-        }
-    }
-}
 
 // Social Stats
 .social-stats {

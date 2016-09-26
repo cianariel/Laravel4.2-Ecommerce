@@ -1279,7 +1279,7 @@ body.has-active-menu {
       margin-right: 30px;
       padding: 0; }
     #top-nav a.signin {
-      padding-right: 5px !important;
+      padding-right: 10px !important;
       padding-left: 5px !important;
       top: 9px;
       position: relative; }
@@ -1290,11 +1290,8 @@ body.has-active-menu {
       padding-right: 0;
       padding-left: 0;
       padding-top: 9px; }
-      #top-nav .category-menu ul {
-        overflow: visible;
-        margin-left: 7%; }
-        #top-nav .category-menu ul a {
-          font-size: 1rem !important; }
+      #top-nav .category-menu ul a {
+        font-size: 1rem !important; }
       #top-nav .category-menu .search-toggle-button {
         display: none; }
 
@@ -7787,40 +7784,6 @@ body:not(.single) {
 .alert .close {
   float: right; }
 
-#suggest-category {
-  background: white none repeat scroll 0% 0%;
-  width: 100%;
-  z-index: 50;
-  border: 1px solid lightgray;
-  position: absolute;
-  top: 34px; }
-  @media (max-width: 768px) {
-    #suggest-category {
-      top: 58px; } }
-  #suggest-category > ul.cat-suggestions > li {
-    width: 100%;
-    display: block;
-    float: left;
-    padding: 5px 10px; }
-    #suggest-category > ul.cat-suggestions > li:not(:first-child) {
-      border-top: 1px solid #EFEFEF; }
-    #suggest-category > ul.cat-suggestions > li a {
-      width: 100% !important;
-      height: auto !important;
-      float: none !important;
-      padding: 20px 10px 20px 0px !important;
-      margin: inherit !important; }
-    #suggest-category > ul.cat-suggestions > li .m-icon--shopping-bag-light-green {
-      float: left;
-      position: static;
-      padding-right: 5px;
-      padding-botom: 5px; }
-    #suggest-category > ul.cat-suggestions > li .m-icon--bulb {
-      float: left;
-      position: static;
-      padding-right: 5px;
-      padding-botom: 5px; }
-
 .social-stats {
   /*	background: #fff;*/
   padding: 5px 5px 5px 12px;
@@ -8718,34 +8681,8 @@ p {
     color: #89C981; }
   .category-link__smart-entertainment span::before {
     background-color: #89C981; }
-  .category-link__shop {
-    color: #fff;
-    padding: 5px !important;
-    margin-top: 5px;
-    border-radius: 2px;
-    text-align: right;
-    height: auto !important; }
-    .category-link__shop:hover {
-      background: #FC1159; }
-    .category-link__shop span {
-      text-transform: capitalize;
-      padding-left: 8px; }
-    @media (max-width: 620px) {
-      .category-link__shop {
-        height: 34px !important;
-        padding-top: 9px !important;
-        float: left;
-        position: absolute;
-        left: 6px;
-        bottom: -23px;
-        z-index: 30; }
-        .category-link__shop span {
-          padding-right: 4px;
-          padding-left: 4px; } }
-    @media (min-width: 620px) {
-      .category-link__shop span {
-        position: relative;
-        top: 3px; } }
+  .category-link__shop span::before, .category-link__advice span::before {
+    background-color: #242424; }
 
 h5.category-link__smart-home span {
   color: #FC1159; }
@@ -10032,44 +9969,52 @@ article img {
     font-size: 5rem; }
 
 /* header layout */
-.category-menu a {
-  text-transform: capitalize;
-  color: #1d1d1d;
-  font-size: 1.35rem !important;
-  font-family: "montserratlight", sans-serif;
-  position: relative; }
-  @media (min-width: 620px) {
-    .category-menu a {
-      color: #3d4b4e; } }
-  .category-menu a > span {
-    position: relative;
-    width: 100%;
-    display: block; }
-  .category-menu a > span::before {
-    content: "";
-    position: absolute;
-    width: 100%;
-    height: 2px;
-    top: 37px;
-    left: 0;
-    visibility: hidden;
-    -webkit-transform: scaleX(0);
-    transform: scaleX(0);
-    -webkit-transition: all 0.3s ease-in-out 0s;
-    transition: all 0.3s ease-in-out 0s; }
-    @media (max-width: 620px) {
-      .category-menu a > span::before {
-        top: 30px; } }
-  .category-menu a:hover > span::before, .category-menu a.active > span::before {
-    visibility: visible;
-    -webkit-transform: scaleX(1);
-    transform: scaleX(1); }
+.category-menu {
+  padding-left: 25px; }
+  @media (max-width: 1200px) {
+    .category-menu {
+      padding-left: 135px; } }
+  @media (max-width: 988px) {
+    .category-menu {
+      padding-left: 180px; } }
+  .category-menu a {
+    text-transform: capitalize;
+    color: #1d1d1d;
+    font-size: 1.25rem !important;
+    font-family: "montserratlight", sans-serif;
+    position: relative; }
+    @media (min-width: 620px) {
+      .category-menu a {
+        color: #3d4b4e; } }
+    .category-menu a > span {
+      position: relative;
+      width: 100%;
+      display: block; }
+    .category-menu a > span::before {
+      content: "";
+      position: absolute;
+      width: 112%;
+      height: 2px;
+      top: 37px;
+      left: -6px;
+      visibility: hidden;
+      -webkit-transform: scaleX(0);
+      transform: scaleX(0);
+      -webkit-transition: all 0.3s ease-in-out 0s;
+      transition: all 0.3s ease-in-out 0s; }
+      @media (max-width: 620px) {
+        .category-menu a > span::before {
+          top: 24px; } }
+    .category-menu a:hover > span::before, .category-menu a.active > span::before {
+      visibility: visible;
+      -webkit-transform: scaleX(1);
+      transform: scaleX(1); }
 
 .ideaing-logo .m-icon {
   filter: none !important;
   -webkit-filter: none !important; }
 .ideaing-logo img {
-  width: 147px;
+  width: 120px;
   margin-bottom: 6px; }
 
 .lamp-logo {
@@ -10117,7 +10062,8 @@ header.colophon {
     position: relative;
     z-index: 30;
     border-bottom: 1px solid rgba(193, 193, 193, 0.22);
-    background: #fff; }
+    background: #fff;
+    max-height: 63px; }
     @media (max-width: 620px) {
       header.colophon #top-nav {
         min-height: 92px; } }
@@ -10125,9 +10071,8 @@ header.colophon {
       padding-top: 4px; }
     header.colophon #top-nav a.signin {
       white-space: nowrap;
-      padding-right: 0px;
       padding-top: 16px;
-      padding-right: 3px;
+      padding-right: 8px;
       font-size: 1rem; }
   header.colophon .logo-wrap {
     position: absolute;
@@ -10138,14 +10083,15 @@ header.colophon {
       header.colophon .logo-holder {
         width: 50px; } }
   header.colophon .user-controls {
-    max-width: 225px;
     padding-right: 0; }
+    header.colophon .user-controls .searchbutton-wrap {
+      width: 51px; }
     @media (max-width: 620px) {
       header.colophon .user-controls {
         padding-right: 22px;
         position: absolute;
         top: -9px;
-        right: -25px;
+        right: -19px;
         width: 145px;
         z-index: 20; } }
   header.colophon.scroll-header {
@@ -10159,25 +10105,15 @@ header.colophon {
       background: #fff;
       background: rgba(255, 255, 255, 0.9);
       border-bottom: 1px solid white; }
-  header.colophon .user-controls ul {
-    width: 165px;
-    float: left; }
-    @media (max-width: 985px) {
-      header.colophon .user-controls ul {
-        width: 110px; } }
-    header.colophon .user-controls ul .category-link__shop {
-      margin-right: 40px;
-      height: 40px; }
-      @media (max-width: 985px) {
-        header.colophon .user-controls ul .category-link__shop {
-          width: 69px;
-          margin-right: 5px; } }
   @media (min-width: 620px) {
     header.colophon .user-controls {
-      max-width: 280px;
+      max-width: 167px;
       position: absolute;
       top: 3px;
       right: 0; } }
+  @media (min-width: 620px) and (max-width: 985px) {
+    header.colophon .user-controls {
+      max-width: 115px; } }
 
 @media (max-width: 620px) {
   .mobile-right-block {
@@ -10186,52 +10122,60 @@ header.colophon {
     right: -7px; } }
 
 .search-bar {
-  top: 25px;
-  max-width: 100%;
-  width: 740px;
-  position: absolute !important;
-  left: 0;
-  right: 0;
   margin: 0 auto !important;
   overflow: visible;
   height: 53px;
   z-index: 20 !important;
   opacity: 1;
-  background: rgba(255, 255, 255, 0.7) !important;
-  position: relative;
-  /* for the child pseudo-elements */
-  /* negative offset = section padding */
-  margin: 0 -30px;
-  /* add back section padding value */
-  padding: 0.25rem 30px;
-  background: #000;
   padding-top: 10px;
   padding-bottom: 10px;
-  opacity: 0;
   border-bottom: 1px solid rgba(193, 193, 193, 0.22);
   width: 100%; }
-  .search-bar:before, .search-bar:after {
-    content: "";
-    position: absolute;
-    /* fill vertically */
-    top: 0;
-    bottom: 0;
-    width: 9600px;
-    right: 100%;
-    background: rgba(255, 255, 255, 0.7); }
-  .search-bar:after {
-    width: 920px;
-    left: 100%;
-    background: rgba(255, 255, 255, 0.7); }
   .search-bar.desktop-search-bar {
-    display: none; }
-  .search-bar::before, .search-bar::after {
-    height: 53px; }
-  @media (max-width: 620px) {
-    .search-bar {
-      background: #fff !important; }
-      .search-bar::before, .search-bar::after {
-        background: #fff; } }
+    max-width: 100%;
+    width: 740px;
+    position: absolute;
+    top: 25px;
+    left: 0;
+    right: 0;
+    opacity: 0;
+    background: rgba(255, 255, 255, 0.7) !important;
+    position: relative;
+    /* for the child pseudo-elements */
+    /* negative offset = section padding */
+    margin: 0 -30px;
+    /* add back section padding value */
+    padding: 0.25rem 30px;
+    background: #000; }
+    .search-bar.desktop-search-bar:before, .search-bar.desktop-search-bar:after {
+      content: "";
+      position: absolute;
+      /* fill vertically */
+      top: 0;
+      bottom: 0;
+      width: 9600px;
+      right: 100%;
+      background: rgba(255, 255, 255, 0.7); }
+    .search-bar.desktop-search-bar:after {
+      width: 920px;
+      left: 100%;
+      background: rgba(255, 255, 255, 0.7); }
+    @media (max-width: 620px) {
+      .search-bar.desktop-search-bar {
+        position: absolute;
+        right: 52px;
+        top: 67px; }
+        .search-bar.desktop-search-bar .toggle-button {
+          bottom: 25px;
+          top: auto;
+          right: -11px; } }
+    .search-bar.desktop-search-bar::before, .search-bar.desktop-search-bar::after {
+      height: 53px; }
+    @media (max-width: 620px) {
+      .search-bar.desktop-search-bar {
+        background: #fff !important; }
+        .search-bar.desktop-search-bar::before, .search-bar.desktop-search-bar::after {
+          background: #fff; } }
   .search-bar .toggle-button,
   .search-bar .search-bar {
     position: absolute;
@@ -10243,15 +10187,6 @@ header.colophon {
       -webkit-appearance: none; }
   .search-bar .toggle-button {
     right: 12px; }
-  @media (max-width: 620px) {
-    .search-bar {
-      position: absolute;
-      right: 52px;
-      top: 67px; }
-      .search-bar .toggle-button {
-        bottom: 25px;
-        top: auto;
-        right: -11px; } }
   .search-bar .search-input-holder {
     width: 100%;
     max-width: 720px;
@@ -10294,6 +10229,43 @@ header.colophon {
     margin-bottom: 0px;
     box-shadow: none; }
 
+#suggest-category {
+  background: white none repeat scroll 0% 0%;
+  width: 100%;
+  z-index: 50;
+  border: 1px solid lightgray;
+  position: absolute;
+  top: 34px; }
+  @media (max-width: 768px) {
+    #suggest-category {
+      top: 32px; } }
+  #suggest-category > ul.cat-suggestions > li {
+    width: 100%;
+    display: block;
+    float: left;
+    padding: 5px 10px; }
+    #suggest-category > ul.cat-suggestions > li:not(:first-child) {
+      border-top: 1px solid #EFEFEF; }
+    #suggest-category > ul.cat-suggestions > li a {
+      width: 100% !important;
+      height: auto !important;
+      float: none !important;
+      padding: 20px 10px 20px 0px !important;
+      margin: inherit !important; }
+    #suggest-category > ul.cat-suggestions > li .m-icon--shopping-bag-light-green {
+      float: left;
+      position: static;
+      padding-right: 5px;
+      padding-botom: 5px; }
+    #suggest-category > ul.cat-suggestions > li .m-icon--bulb {
+      float: left;
+      position: static;
+      padding-right: 5px;
+      padding-botom: 5px; }
+
+@media (max-width: 768px) {
+  .desktop-search-bar #suggest-category {
+    top: 58px; } }
 .box-link-active-line {
   position: absolute; }
 
@@ -10368,7 +10340,7 @@ header.colophon {
   padding: 7px 5px 5px !important;
   height: 64px;
   position: absolute;
-  top: -19px;
+  top: -13px;
   left: 10px;
   border-radius: 2px;
   z-index: 80;
@@ -10443,18 +10415,14 @@ header.colophon {
 #top-nav .mobile-top-menu-switcher.active .down {
   display: none; }
 #top-nav .category-menu {
-  max-width: 705px;
+  max-width: 905px;
   float: none;
   bottom: 18px;
   margin: 0 auto;
-  position: relative;
-  padding-left: 0; }
+  position: relative; }
   @media (min-width: 986px) {
     #top-nav .category-menu {
       padding-top: 20px; } }
-  @media (max-width: 986px) {
-    #top-nav .category-menu {
-      max-width: 355px; } }
   @media (min-width: 620px) {
     #top-nav .category-menu {
       padding-top: 20px; } }
@@ -10470,6 +10438,9 @@ header.colophon {
       margin-top: 48px; } }
   #top-nav .category-menu ul > li:first-child a {
     padding-left: 4px; }
+    @media (max-width: 620px) {
+      #top-nav .category-menu ul > li:first-child a {
+        padding-left: 13px; } }
   #top-nav .category-menu ul > li > a i.m-icon {
     margin-right: 8px;
     margin-top: -2px; }
@@ -10481,19 +10452,25 @@ header.colophon {
         margin-right: 25px; } }
     @media (min-width: 420px) {
       #top-nav .category-menu ul > li a {
-        margin-right: 10px;
-        margin-top: 4px !important; } }
+        margin-top: 4px !important;
+        margin-right: 1.9% !important;
+        padding-left: 5px; } }
     @media (min-width: 370px) {
       #top-nav .category-menu ul > li a {
-        margin-top: 20px;
-        margin-right: 4%; } }
-    @media (max-width: 985px) {
+        margin-top: 27px;
+        margin-right: 2%;
+        padding-left: 20px; } }
+    @media (min-width: 380px) {
       #top-nav .category-menu ul > li a {
-        margin-right: 1% !important; } }
+        margin-right: 3.9%;
+        padding-left: 23px; } }
   #top-nav .category-menu ul > li a:hover, #top-nav .category-menu ul > li a:focus {
     text-decoration: none; }
 #top-nav .top-nav-holder {
-  height: 53px; }
+  height: 54px; }
+  @media (max-width: 620px) {
+    #top-nav .top-nav-holder {
+      height: 49px; } }
   #top-nav .top-nav-holder .mobile-menu-switch {
     width: 20px;
     height: 20px;
@@ -10535,7 +10512,8 @@ header.colophon {
       bottom: -1px;
       height: 15px;
       text-align: center;
-      line-height: 15px; }
+      line-height: 15px;
+      font-weight: bold; }
   #top-nav .top-nav-holder .profile-photo-holder .box-link-active-line {
     height: 11px;
     position: absolute;
@@ -10590,7 +10568,7 @@ header.colophon {
             position: absolute;
             width: 100%;
             height: 2px;
-            top: 26px;
+            top: 24px;
             left: 0;
             background-color: #333;
             visibility: hidden;
@@ -10689,7 +10667,7 @@ header.colophon {
 #top-nav a {
   padding-right: 10px;
   font-size: 1.1rem;
-  font-weight: bold; }
+  font-weight: 200; }
   #top-nav a.pros {
     background: url("/assets/images/pro-grey.png") left center no-repeat; }
   #top-nav a.ideas:hover {
@@ -10714,7 +10692,8 @@ header.colophon {
       bottom: 7px;
       height: 15px;
       text-align: center;
-      line-height: 15px; }
+      line-height: 15px;
+      font-weight: bold; }
     @media (max-width: 620px) {
       #top-nav a.new-message {
         top: 6px; } }
@@ -10761,6 +10740,9 @@ header.colophon {
     .ideaing-logo .m-icon:not(.m-icon--bulb2) {
       left: 10px;
       top: 3px; }
+      @media (max-width: 992px) {
+        .ideaing-logo .m-icon:not(.m-icon--bulb2) {
+          left: 50px; } }
       @media (max-width: 620px) {
         .ideaing-logo .m-icon:not(.m-icon--bulb2) {
           left: 0;
@@ -10788,12 +10770,12 @@ header.colophon {
       opacity: 1; }
 
 @media (max-width: 700px) {
-  .search-bar {
+  .search-bar.desktop-search-bar {
     margin-left: 0 !important; }
-    .search-bar input {
+    .search-bar.desktop-search-bar input {
       float: left;
       width: 85%; }
-    .search-bar .m-icon {
+    .search-bar.desktop-search-bar .m-icon {
       left: 18px; } }
 form.mobile-search-bar {
   height: 38px;

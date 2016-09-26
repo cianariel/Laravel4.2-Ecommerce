@@ -334,43 +334,10 @@
       background-color: $pine-green;
     }
   }
-  &__shop{
-   // background-color: #242424;
-    color: #fff;
-    padding: 5px!important;
-    margin-top: 5px;
-    border-radius: 2px;
-    text-align: right;
-    height: auto !important;
-
-    &:hover{
-      background: $iridium;
-    }
-
-    span{
-      text-transform: capitalize;
-      padding-left: 8px;
-    }
-
-    @media(max-width: 620px){
-      height: 34px!important;
-      padding-top: 9px !important;
-      float: left;
-      position: absolute;
-      left: 6px;
-      bottom: -23px;
-      z-index: 30;
-
-      span{
-        padding-right: 4px;
-        padding-left: 4px;
-      }
-    }
-    @media(min-width: 620px){
-      span{
-        position: relative;
-        top: 3px;
-      }
+  &__shop,
+  &__advice{
+    span::before{
+      background-color: #242424;
     }
   }
 
