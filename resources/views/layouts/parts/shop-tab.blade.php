@@ -1,15 +1,15 @@
-<div class="row">
+<div class="row popular-box">
     <div class="col-md-4">
-        <div class="big-image-view">
+        <div class="big-image-view popular-box-number">
             <img src="/assets/images/camera.jpg" />
         </div>
     </div>
 
-    <div class="col-md-8 row popular-box">
+    <div class="col-md-8 row">
         <div class="col-md-6">
             <div class="multirow-image-view">
 
-                <div class="image-row-view row">
+                <div class="image-row-view row popular-box-number">
                     <div class="col-md-3 item-image-container">
                         <img src="/assets/images/coffee-machine.jpg" />
                     </div>
@@ -18,7 +18,7 @@
                     </div>
                 </div>
 
-                <div class="image-row-view row">
+                <div class="image-row-view row popular-box-number">
                     <div class="col-md-3 item-image-container">
                         <img src="/assets/images/ecobee.jpg" />
                     </div>
@@ -27,7 +27,7 @@
                     </div>
                 </div>
 
-                <div class="image-row-view row">
+                <div class="image-row-view row popular-box-number">
                     <div class="col-md-3 item-image-container">
                         <img src="/assets/images/gamebox.jpg" />
                     </div>
@@ -41,7 +41,7 @@
         <div class="col-md-6">
             <div class="multirow-image-view">
 
-                <div class="image-row-view row">
+                <div class="image-row-view row popular-box-number">
                     <div class="col-md-3 item-image-container">
                         <img src="/assets/images/coffee-machine.jpg" />
                     </div>
@@ -50,7 +50,7 @@
                     </div>
                 </div>
 
-                <div class="image-row-view row">
+                <div class="image-row-view row popular-box-number">
                     <div class="col-md-3 item-image-container">
                         <img src="/assets/images/ecobee.jpg" />
                     </div>
@@ -59,7 +59,7 @@
                     </div>
                 </div>
 
-                <div class="image-row-view row">
+                <div class="image-row-view row popular-box-number">
                     <div class="col-md-3 item-image-container">
                         <img src="/assets/images/gamebox.jpg" />
                     </div>

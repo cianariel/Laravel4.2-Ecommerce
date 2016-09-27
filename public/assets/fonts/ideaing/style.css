@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'ideaing';
-  src:  url('fonts/ideaing.eot?lqg4n5');
-  src:  url('fonts/ideaing.eot?lqg4n5#iefix') format('embedded-opentype'),
-    url('fonts/ideaing.ttf?lqg4n5') format('truetype'),
-    url('fonts/ideaing.woff?lqg4n5') format('woff'),
-    url('fonts/ideaing.svg?lqg4n5#ideaing') format('svg');
+  src:  url('fonts/ideaing.eot?h7jclb');
+  src:  url('fonts/ideaing.eot?h7jclb#iefix') format('embedded-opentype'),
+    url('fonts/ideaing.ttf?h7jclb') format('truetype'),
+    url('fonts/ideaing.woff?h7jclb') format('woff'),
+    url('fonts/ideaing.svg?h7jclb#ideaing') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -1125,7 +1125,7 @@
 .m-icon--uniEA6E:before {
   content: "\ea6e";
 }
-.m-icon--flame2:before {
+.m-icon--flame:before {
   content: "\ea6f";
 }
 .m-icon--eye:before {
