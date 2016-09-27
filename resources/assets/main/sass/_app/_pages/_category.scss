@@ -102,23 +102,9 @@ body.category{
 
   .box-item{
     float: left;
-    //position: relative;
     width: 65%;
     height: auto;
-    //border-radius: 4px;
-    //border-bottom: 1px sßolid $light-grey;
-    //margin: 3px;
-    //border-radius: 5px;
     overflow: visible;
-
-    //.box-item__overlay.category-bg{
-    //  opacity: .3 !important;
-    //}
-    //&:hover {
-    //  .box-item__overlay.category-bg {
-    //    opacity: 0 !important;
-    //  }
-    //}
 
     &::before{
       content:'1';
@@ -141,6 +127,13 @@ body.category{
   .popular-wrap{
     width: 32%;
     float: left;
+
+    @media (max-width: 767px) and (min-width: 620px) {
+      width: 60% !important;
+      margin-left: auto;
+      margin-right: auto;
+      float: none;
+    }
 
     &.single-thumb{
       width: 100%;

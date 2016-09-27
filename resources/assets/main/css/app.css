@@ -12895,6 +12895,12 @@ body.category .rsThumbs {
 .most-popular-new .popular-wrap {
   width: 32%;
   float: left; }
+  @media (max-width: 767px) and (min-width: 620px) {
+    .most-popular-new .popular-wrap {
+      width: 60% !important;
+      margin-left: auto;
+      margin-right: auto;
+      float: none; } }
   .most-popular-new .popular-wrap.single-thumb {
     width: 100%;
     min-height: 275px;
