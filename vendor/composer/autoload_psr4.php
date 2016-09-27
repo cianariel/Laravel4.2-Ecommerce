@@ -42,6 +42,7 @@ return array(
     'League\\OAuth1\\' => array($vendorDir . '/league/oauth1-client/src'),
     'League\\Flysystem\\AwsS3v3\\' => array($vendorDir . '/league/flysystem-aws-s3-v3/src'),
     'League\\Flysystem\\' => array($vendorDir . '/league/flysystem/src'),
+    'League\\Csv\\' => array($vendorDir . '/league/csv/src'),
     'Laravel\\Socialite\\' => array($vendorDir . '/laravel/socialite/src'),
     'Kryptonit3\\Counter\\' => array($vendorDir . '/kryptonit3/counter/src'),
     'Kingpabel\\Shoppingcart\\' => array($vendorDir . '/kingpabel/shoppingcart/src'),

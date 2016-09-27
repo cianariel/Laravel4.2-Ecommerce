@@ -207,6 +207,64 @@ class ProductController extends ApiController
     }
 
 
+    public function exportProductList()
+    {
+        $settings = [
+            'ActiveItem' => true,
+            'SortByHitCounter' => true
+        ];
+
+        $products = $this->product->getProductListForExport($settings);
+
+        $productList = collect();
+
+        $csv = \League\Csv\Writer::createFromFileObject(new \SplTempFileObject());
+
+        $csv->insertOne(['id', 'title','price','brand','description','availability','condition','image_link']);
+
+
+        // formating products for export
+        foreach($products as $product)
+        {
+            // Set the image url
+            foreach($product->medias as $image)
+            {
+                if($image->is_hero_item == 1)
+                {
+                    $imageLink = $image->media_link;
+
+                    break;
+                }
+            }
+
+            $imageLink = empty($imageLink)? $product->medias[0]->media_link:$imageLink;
+
+            $item = [
+                'id' => $product->id,
+                'title' => $product->product_name,
+                'price' => $product->sale_price.' '.'USD',
+                'brand' => $product->store->store_name,
+
+                'description' => strip_tags($product->product_description),
+
+                'availability' => empty($product->product_availability) ? "No information available":$product->product_availability,
+                'condition' => 'New',
+            //  'image_link' => preg_replace('/\//', '/',$imageLink),
+                'image_link' => $imageLink
+
+            ];
+            $productList->push($item);
+
+            $csv->insertOne($item);
+
+        }
+
+        $filename = 'products.csv';
+
+        $csv->output($filename);
+    }
+
+
     /**
      * @return mixed
      */
@@ -375,12 +433,16 @@ class ProductController extends ApiController
         $media = new Media();
 
         $media->media_name = $inputData['MediaTitle'];
-        $media->sequence = $inputData['MediaSequence'];
         $media->media_type = $inputData['MediaType'];
         $media->media_link = $inputData['MediaLink'];
         $media->is_hero_item = $inputData['IsHeroItem'];
         $media->is_main_item = $inputData['IsMainItem'];
 
+    //    dd('media : ', empty($inputData['IsHeroItem']) && empty($inputData['IsMainItem']));
+        if(empty($inputData['IsHeroItem']) && empty($inputData['IsMainItem']))
+            $media->sequence = $inputData['MediaSequence'];
+        else
+            $media->sequence = 0;
 
         try {
             $result = $product->medias()->save($media);
@@ -398,9 +460,22 @@ class ProductController extends ApiController
     {
         $result['result'] = Product::find($id)->medias;
 
-        $result['count'] = $result['result']->count();
 
-        //  dd($result);
+        $tmp = $result['result']->map(function($item,$key){
+            $count = 0;
+
+            if(empty($item->is_hero_item) && empty($item->is_main_item) )
+                $count =1;
+
+            return $count;
+        });
+
+        // $result['count'] = $result['result']->count();
+
+        $result['count'] = $tmp->sum();
+
+
+
 
         return $this->setStatusCode(\Config::get("const.api-status.success"))
                     ->makeResponse($result);

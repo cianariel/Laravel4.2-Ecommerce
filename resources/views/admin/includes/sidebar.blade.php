@@ -68,6 +68,11 @@
                         </a>
                     </li>
                     <li class="nav-item  ">
+                        <a href="/admin/admin-mail-list" class="nav-link ">
+                            <span class="title">Admin Mail Notification</span>
+                        </a>
+                    </li>
+                    <li class="nav-item  ">
                         <a href="/admin/paid-membership-report" class="nav-link ">
                             <span class="title">Paid Members List</span>
                         </a>
@@ -187,7 +192,7 @@
                     </li>
                 </ul>
             </li>
-            <li class="nav-item  ">
+            {{--<li class="nav-item  ">
                 <a href="javascript:;#home" class="nav-link nav-toggle">
                     <i class="icon-wallet"></i>
                     <span class="title">HomePage Hero</span>
@@ -205,7 +210,7 @@
                         </a>
                     </li>
                 </ul>
-            </li>
+            </li>--}}
             <li class="nav-item  ">
                 <a href="javascript:;#giveaway" class="nav-link nav-toggle">
                     <i class="icon-wallet"></i>

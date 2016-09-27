@@ -159,13 +159,8 @@
                                                     <div class="form-group">
                                                         <label class="col-md-2 control-label">Store Name</label>
                                                         <div class="col-md-5" ng-init="loadAllStores()">
-                                                            <select data-ng-model="StoreId"
-                                                                    class="form-control">
-                                                                <option ng-repeat="store in storeList"
-                                                                        value="@{{ store.Id }}">
-                                                                    @{{ store.Name }}
-                                                                </option>
-                                                            </select>
+                                                            <select class="form-control" ng-model="StoreId"
+                                                                    ng-options="store.Name for store in storeList track by store.Id"></select>
                                                         </div>
                                                     </div>
 
@@ -179,14 +174,19 @@
                                                                    placeholder="Amazon - ASIN">
                                                         </div>
                                                         <div class="col-lg-5">
-                                                            <button class="btn btn-info btn-circle"
+                                                            <button class="btn blue"
                                                                     type="button"
                                                                     ng-click="loadProductInfoFromApi(ProductVendorId)"
                                                                     uib-tooltip="Load Information"
                                                                     tooltip-placement="right">
-                                                                <i class="fa fa-refresh"></i>
+                                                                Amazon API Load
+                                                                {{--<i class="fa fa-refresh"></i>--}}
                                                             </button>
+                                                            &nbsp; <b>Last Update
+                                                                : @{{ UpdateTime | date:'dd-MMM-yy HH:mm' }}</b>
+
                                                         </div>
+
                                                     </div>
 
                                                     <div class="form-group">
@@ -223,8 +223,6 @@
                                                         <label class="col-md-2 control-label">Publishing Date:
                                                         </label>
                                                         <div class="col-md-4">
-
-
                                                             <p class="input-group">
                                                                 <input type="date" class="form-control"
                                                                        uib-datepicker-popup ng-model="datePicker"
@@ -236,17 +234,27 @@
                                                                        close-text="Close"
                                                                        onkeydown="return false"
                                                                 />
-
                                                               <span class="input-group-btn">
                                                                 <button type="button" class="btn btn-default"
                                                                         ng-click="open($event)">
-                                                                    <i class="glyphicon glyphicon-calendar"></i></button>
+                                                                    <i class="glyphicon glyphicon-calendar"></i>
+                                                                </button>
                                                               </span>
+
                                                             </p>
+                                                        </div>
 
-
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-md-2 control-label">Publish Time:
+                                                        </label>
+                                                        <div class="col-md-4">
+                                                            <div uib-timepicker ng-model="publishTime"
+                                                                 ng-change="changed()" hour-step="1"
+                                                                 minute-step="5" show-meridian="true"></div>
                                                         </div>
                                                     </div>
+
                                                     <div class="form-group">
                                                         <label class="col-md-2 control-label">Description:
                                                         </label>
@@ -281,7 +289,10 @@
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
-                                                        <label class="col-md-2 control-label">Affiliate Link</label>
+                                                        <label class="col-md-2 control-label">
+                                                            <a ng-href="@{{ AffiliateLink }}" target="_blank">Affiliate
+                                                                Link</a>
+                                                        </label>
                                                         <div class="col-md-10">
                                                             <input data-ng-model="AffiliateLink"
                                                                    class="form-control"
@@ -665,7 +676,7 @@
                                                                 <table class="table table-striped table-bordered table-hover">
                                                                     <thead>
                                                                     <tr>
-                                                                        <th class="col-md-1">#</th>
+                                                                        <th class="col-md-1">Image</th>
                                                                         <th class="col-md-2">Title</th>
                                                                         <th class="col-md-1">Sequnce</th>
                                                                         <th class="col-md-1">Type</th>
@@ -677,9 +688,10 @@
                                                                     </thead>
                                                                     <tbody>
                                                                     <tr ng-repeat="media in mediaList">
-                                                                        <td>@{{media.id}}</td>
+                                                                        <td><img width="110px"
+                                                                                 ng-src="@{{ media.media_link }}"></td>
                                                                         <td>@{{ media.media_name}}</td>
-                                                                        <td>@{{ media.sequence}}</td>
+                                                                        <td>@{{ media.sequence == 0?'':media.sequence}}</td>
                                                                         <td>@{{ media.media_type}} </td>
                                                                         <td>@{{ media.is_hero_item == 1? 'true':''}} </td>
                                                                         <td>@{{ media.is_main_item == 1? 'true':''}} </td>

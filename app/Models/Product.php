@@ -165,15 +165,22 @@ class Product extends Model
     {
         try {
 
-            //dd();
+
             //ProductAuthorName: $scope.ProductAuthorName,
+
+            // date time zone setting
+            $date =  Carbon::parse($product['PublishAt']);
+            $time =  Carbon::parse($product['PublishTime']);
+            $date->setTimezone(env('TIMEZONE','UTC'));
+            $time->setTimezone(env('TIMEZONE','UTC'));
+
             $data = array(
                 "product_category_id" => ($product['CategoryId'] != null) ? $product['CategoryId'] : env('DEFAULT_CATEGORY_ID', '44'),
                 "user_name" => ($product['ProductAuthorName'] != null) ? $product['ProductAuthorName'] : 'Anonymous User',
                 "product_vendor_id" => $product['ProductVendorId'],
                 "show_for" => ($product['ShowFor'] != null) ? $product['ShowFor'] : '',
                 "product_name" => $product['Name'],
-                "publish_at" => Carbon::createFromTimestamp(strtotime($product['PublishAt']))->toDateTimeString(),
+                "publish_at" =>Carbon::create($date->year,$date->month,$date->day,$time->hour,$time->minute)->toDateTimeString(),
                 "product_permalink" => (isset($product['Permalink'])) ? $product['Permalink'] : null,
                 "product_description" => ($product['Description'] != null) ? $product['Description'] : "",
                 "specifications" => json_encode($product['Specifications']),
@@ -228,8 +235,12 @@ class Product extends Model
 
         $dataCount = empty($dataCount->hit_counter) ? 0 : $dataCount->hit_counter;
 
+      //  dd($dataCount,$data['Count']);
         if ($data['Count'] > $dataCount) {
-            Product::where('product_permalink', $data['Permalink'])->update(['hit_counter' => $data['Count']]);
+        $product = Product::where('product_permalink', $data['Permalink'])->first();
+        $product->timestamps = false ;
+        $product->hit_counter = $data['Count'];
+        $product->save();
         }
 
     }
@@ -307,6 +318,27 @@ class Product extends Model
                               ->first();
 
         return $productInfo;
+
+    }
+
+    public function getProductListForExport($settings)
+    {
+        $productModel = Product::with('medias')->with('store');
+
+        if (!empty($settings['ActiveItem']) && $settings['ActiveItem'] == true) {
+            $productModel = $productModel->where("post_status", 'Active');
+        }
+
+        // Sort item by Hit Count
+        if (!empty($settings['SortByHitCounter']) &&  $settings['SortByHitCounter'] == true) {
+            $productModel->orderBy('hit_counter', 'desc');
+        }
+
+        $productModel->orderBy('created_at', 'desc');
+
+        $result = $productModel->get();
+
+        return $result;
 
     }
 
@@ -410,11 +442,19 @@ class Product extends Model
             ->take($settings['limit'])
             ->offset($skip);
 
-        if(empty($isAdmin))
-            $productList->orderBy('hit_counter', 'desc');
 
-        $productList = $productList->orderBy('created_at', 'desc')
-                                   ->get(array("id"));
+
+        // Sort item by Hit Count
+        if (!empty($settings['SortByHitCounter']) &&  $settings['SortByHitCounter'] == true) {
+            $productList->orderBy('hit_counter', 'desc');
+        }
+
+        $productList->orderBy('created_at', 'desc');
+        
+      //  if(empty($isAdmin))
+       //     $productList->orderBy('hit_counter', 'desc');
+
+        $productList = $productList->get(array("id"));
 
         $product['allIDs'] = $productList;
         $data = array();
@@ -748,7 +788,7 @@ class Product extends Model
             if (isset($product)) {
                 $apiData = $this->getApiProductInformation($productVendorId, $store);
                 if (isset($apiData) && (($product['price'] != $apiData['ApiPrice']) || ($product['sale_price'] != $apiData['ApiSalePrice']))) {
-
+                    $product->timestamps = false ;
                     $product->price = empty($apiData['ApiPrice']) ? $product['price'] : $apiData['ApiPrice'];
                     $product->sale_price = empty($apiData['ApiSalePrice']) ? $product['sale_price'] : $apiData['ApiSalePrice'];
                     $product->save();

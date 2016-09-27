@@ -135,6 +135,10 @@ Route::group(['prefix' => 'api'], function () {
 
     Route::any('user/subscribed-registered-report', 'UserController@getSubscribedUserAndRegistrationReport');
 
+    Route::get('user/admin-email', 'CommentController@getAdminEmailList');
+    Route::post('user/admin-set-email', 'CommentController@setAdminEmailList');
+
+
     /*
     * User Activity
     * */
@@ -193,6 +197,9 @@ Route::group(['prefix' => 'api'], function () {
 
     // Get product Info from API
     Route::get('api-data/{itemId?}', 'ProductController@getProductInfoFromApi');
+
+    // Export product list
+    Route::get('product/download-list', 'ProductController@exportProductList');
 
     /*
      *  TAG module for product
@@ -318,10 +325,9 @@ Route::group(['prefix' => 'admin'], function () {
     Route::get('user-list', 'AdminController@userList');
     Route::get('user-add/{id?}', 'AdminController@userEdit');
     Route::get('subscribers-list', 'AdminController@subscriberList');
-
     Route::get('subscription-report', 'AdminController@subscriptionReport');
-
     Route::get('paid-membership-report', 'AdminController@viewPaidMembers');
+    Route::get('admin-mail-list', 'AdminController@viewAdminMailNotification');
 
 
 });
