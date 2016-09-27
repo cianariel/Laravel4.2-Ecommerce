@@ -64,7 +64,7 @@ if (!isset($theGiveAway)) {
                                     <a data-click="#show-smart-home" class="category-link__smart-home" href="/smart-home"  ng-click="switchCategory('smart-home')">
                                         <span class="m-icon-text">
                                             <i class="m-icon m-icon--smart-home"></i>
-                                            <span class="hidden-xs hidden-sm hidden-md">Smart</span>
+                                            <span class="hidden-xs hidden-md">Smart</span>
                                             Home
                                         </span>
                                     </a>
@@ -73,7 +73,7 @@ if (!isset($theGiveAway)) {
                                     <a data-click="#show-smart-entertainment" class="category-link__smart-entertainment m-icon-text-holder" href="/smart-entertainment" ng-click="switchCategory('smart-entertainment')">
                                         <span class="m-icon-text">
                                             <i class="m-icon m-icon--video"></i>
-                                            <span class="hidden-xs hidden-sm hidden-md">Smart</span> 
+                                            <span class="hidden-xs hidden-md">Smart</span>
                                             Entertainment
                                         </span>
                                     </a>
@@ -82,7 +82,7 @@ if (!isset($theGiveAway)) {
                                     <a data-click="#show-smart-body" class="category-link__smart-body m-icon-text-holder" href="/smart-body"  ng-click="switchCategory('smart-body')">
                                        <span class="m-icon-text">
                                             <i class="m-icon m-icon--wearables"></i>
-                                            <span class="hidden-xs hidden-sm hidden-md">Smart</span> 
+                                            <span class="hidden-xs hidden-md">Smart</span>
                                             Body
                                         </span>
                                     </a>
@@ -91,7 +91,7 @@ if (!isset($theGiveAway)) {
                                     <a data-click="#show-smart-travel" class="category-link__smart-travel m-icon-text-holder" ng-click="switchCategory('smart-travel')" href="/smart-travel">
                                         <span class="m-icon-text">
                                             <i class="m-icon m-icon--travel"></i>
-                                            <span class="hidden-xs hidden-sm hidden-md ">Smart</span> 
+                                            <span class="hidden-xs hidden-md">Smart</span>
                                             Travel
                                         </span>
                                     </a>

@@ -10055,6 +10055,10 @@ header.colophon {
   margin: 0 auto;
   overflow: visible;
   z-index: 200; }
+  @media (max-width: 990px) and (min-width: 620px) {
+    header.colophon {
+      width: 93.6%;
+      max-width: 948px; } }
   @media (max-width: 620px) {
     header.colophon {
       min-height: 81px; } }

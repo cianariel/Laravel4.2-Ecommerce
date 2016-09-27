@@ -124,6 +124,11 @@ header.colophon{
   overflow: visible;
   z-index: 200;
 
+  @media(max-width:990px) and (min-width:620px){
+    width:93.6%;
+    max-width: 948px;
+  }
+
   @media(max-width: 620px){
     min-height: 81px;
   }
@@ -146,7 +151,7 @@ header.colophon{
     a.signin{
       white-space: nowrap;
       padding-top: 16px;
-      padding-right: 8px;  
+      padding-right: 8px;
       font-size: 1rem;
     }
   }
