@@ -10,9 +10,11 @@
 	word-wrap: normal !important;
 }
 
+.secure-checkout .select2-drop,
 .secure-checkout .site-header,
 .secure-checkout .site-main {
   font-family: Montserrat;
+  font-size: 13px;
 }
 
 .secure-checkout .entry-header {
@@ -21,11 +23,35 @@
 }
 
 .secure-checkout .entry-title {
+  position: relative;
   margin: 0 0 15px;
+  padding: 0 90px 0 0;
   font-size: 21px;
   font-weight: bold;
+  line-height: 1.1;
   letter-spacing: .04em;
   text-transform: uppercase;
+}
+
+.secure-checkout .entry-title mark {
+  position: absolute;
+  right: 0;
+  top: 0;
+  padding: 0 8px;
+  font-size: 10px;
+  font-weight: normal;
+  line-height: 23.1px;
+  letter-spacing: .04em;
+  color: #fff;
+  background-color: #d2d2d2;
+  cursor: default;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.cart-empty {
+  margin-bottom: 25px;
 }
 
 .shop_table.cart {
@@ -84,6 +110,7 @@
   margin: 0;
   padding: 0 5px;
   width: 45px;
+  font-size: 14px;
   line-height: 30px;
   border-radius: 2px;
   border: solid 1px #dbdbdb;
@@ -203,6 +230,7 @@
 
 .secure-checkout-nav > * {
   display: inline-block;
+  position: relative;
   padding: 0 8px;
   margin: 8px 2px;
   font-size: 9px;
@@ -220,10 +248,10 @@
 }
 
 .secure-checkout-nav a:hover {
-  opacity: .5;
+  background-color: #000;
+  -webkit-transition: background-color .4s ease-out;
+  transition: background-color .4s ease-out;
   cursor: pointer;
-  -webkit-transition: opacity .4s ease-out;
-  transition: opacity .4s ease-out;
 }
 
 .widget {
@@ -340,9 +368,13 @@
 }
 
 .gray-widget tr.order-total {
-  font-weight: bold;
   text-transform: uppercase;
   letter-spacing: .09em;
+}
+
+.gray-widget tr.order-total th,
+.gray-widget tr.order-total td {
+  font-weight: bold;
 }
 
 .gray-widget tr:not(.order-total) {
@@ -471,20 +503,239 @@
   cursor: default;
 }
 
+.secure-checkout .wc-backward,
+.secure-checkout .checkout-button {
+  background-color: #ed2049;
+}
+
 .secure-checkout [type="submit"]:focus,
 .secure-checkout [type="submit"]:hover,
 .secure-checkout .button:focus,
 .secure-checkout .button:hover {
+  background-color: #000;
+  -webkit-transition: background-color .4s ease-out;
+  transition: background-color .4s ease-out;
+}
+
+.woocommerce-error,
+.woocommerce-info,
+.woocommerce-message {
+  font-size: 13px;
+  line-height: 2;
+  padding: 17px 35px 17px 17px;
+  border-radius: 2px;
+  margin-bottom: 25px;
+  background-color: #f7f8f9;
+  letter-spacing: .02em;
+}
+
+.woocommerce-error a,
+.woocommerce-info a,
+.woocommerce-message a {
+  color: inherit;
+  text-decoration: underline;
+}
+
+.woocommerce-error label,
+.woocommerce-info label,
+.woocommerce-message label {
+  display: inline-block;
+  margin: 0;
+  font-weight: normal;
+  border-bottom: dashed 1px;
+}
+
+.woocommerce-error strong,
+.woocommerce-info strong,
+.woocommerce-message strong {
+  display: inline-block;
+  font-weight: normal;
+  border-bottom: dashed 1px;
+}
+
+.woocommerce-error {
+  color: #fff;
   background-color: #ed2049;
 }
 
 .woocommerce-message {
-  font-size: 13px;
-  padding: 25px 35px 25px 15px;
-  border-radius: 2px;
-  margin-bottom: 25px;
-  background-color: #f7f8f9;
+  color: #fff;
+  background-color: #4fd37e;
 }
+
+.checkout form.login {
+  display: none;
+}
+
+label[for="show--login"] {
+  color: #ed2049;
+  font-weight: normal;
+  margin: 0;
+  -webkit-user-select: none;
+  user-select: none;
+  cursor: pointer;
+}
+
+#show--login:checked ~ form.login {
+  display: block;
+  -webkit-animation: ideaingfadeIn .4s ease-out;
+  animation: ideaingfadeIn .4s ease-out;
+}
+
+.secure-checkout .required {
+    display: none;
+}
+
+.secure-checkout .form-row {
+    position: relative;
+    margin-bottom: 25px;
+}
+
+.secure-checkout .form-row label {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  font-weight: normal;
+  line-height: 0;
+  z-index: 1;
+}
+
+.secure-checkout .form-row label[for="rememberme"] {
+  position: relative;
+  padding-left: 30px;
+  font-size: 10px !important;
+  line-height: inherit;
+  letter-spacing: .07em !important;
+  top: 0 !important;
+  left: 0;
+}
+
+.secure-checkout .form-row [name="rememberme"] {
+  position: absolute;
+  display: block;
+  margin: 0;
+  top: 2px;
+  left: 11px;
+}
+
+.secure-checkout .form-row.focus label,
+.secure-checkout .form-row.active label {
+  top: 14px;
+  font-size: 10px;
+  letter-spacing: .07em;
+/*   text-transform: uppercase; */
+  z-index: 3;
+}
+
+.secure-checkout .form-row .state_select {
+  z-index: 5;
+}
+
+label[for="billing_country"],
+label[for="billing_address_1"] {
+  display: none
+}
+
+.secure-checkout .form-row select,
+.secure-checkout .form-row input[type="text"],
+.secure-checkout .form-row input[type="password"],
+.secure-checkout .form-row input[type="email"],
+.secure-checkout .form-row input[type="tel"],
+.secure-checkout .form-row textarea {
+    position: relative;
+    display: block;
+    width: 100%;
+    margin: 0;
+    padding: 18px 14px 10px 14px;
+    font-size: 13px;
+    font-weight: normal;
+    line-height: 1.5384615385;
+    border: solid 1px #dbdbdb;
+    background-color: transparent;
+    border-radius: 2px;
+    z-index: 2;
+}
+
+.secure-checkout .form-row select:focus,
+.secure-checkout .form-row input[type="text"]:focus,
+.secure-checkout .form-row input[type="password"]:focus,
+.secure-checkout .form-row input[type="email"]:focus,
+.secure-checkout .form-row input[type="tel"]:focus,
+.secure-checkout .form-row textarea:focus {
+  outline: none;
+  border-color: #4489c9;
+  -webkit-transition: border-color .4s ease-out;
+  transition: border-color .4s ease-out;
+}
+
+.secure-checkout .woocommerce-invalid textarea,
+.secure-checkout .woocommerce-invalid input {
+  border-color: #ed2049;
+  -webkit-transition: border-color .4s ease-out;
+  transition: border-color .4s ease-out;
+}
+
+.secure-checkout .form-row select {
+  padding: 16px 14px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.secure-checkout .form-row #billing_address_1,
+.secure-checkout .form-row #billing_address_2 {
+  padding: 14px;
+}
+
+.secure-checkout .select2-container .select2-choice {
+  height: 50px;
+  display: block;
+  width: 100%;
+  margin: 0;
+  padding: 14px;
+  font-size: 13px;
+  font-weight: normal;
+  line-height: 1.5384615385;
+  border: solid 1px #dbdbdb;
+}
+
+.secure-checkout .select2-drop-active {
+  border: 1px solid #dbdbdb;
+  border-top: none;
+}
+
+.secure-checkout .select2-results .select2-highlighted {
+  background: #f7f8f9;
+}
+
+.secure-checkout .select2-results {
+  background-color: #fff;
+}
+
+.secure-checkout .has-extra-desc {
+	display: none;
+}
+
+.secure-checkout .clear:before,
+.secure-checkout .clear:after {
+	content: '';
+	display: table;
+}
+
+.secure-checkout .clear:after {
+	clear: both;
+}
+
+@-webkit-keyframes ideaingfadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+@keyframes ideaingfadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
 
 @media ( min-width: 554px ){
 
@@ -496,8 +747,23 @@
 @media ( min-width: 768px ){
 
   .secure-checkout-nav > * {
-    padding: 0 8px;
+    padding: 0 20px;
     margin: 8px;
+  }
+
+  .secure-checkout-nav > *.active:before {
+    content: '\e5ca';
+    position: absolute;
+    left: 5px;
+    font-family: 'ideaing' !important;
+    speak: none;
+    font-size: 1.2em;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
  .sc-slogan span {
@@ -580,5 +846,37 @@
   .shop_table.cart tbody .actions [type="submit"] {
     display: inline-block;
     width: auto;
+  }
+
+  .checkout form.login .form-row:nth-child(2),
+  .checkout form.login .form-row:nth-child(3) {
+    width: calc( 50% - 15px );
+    float: left;
+  }
+
+  .checkout form.login .form-row:nth-child(3) {
+    margin-left: 30px;
+  }
+
+  #billing_first_name_field,
+  #billing_first_name_field + .form-row {
+    width: calc( 50% - 15px );
+    float: left;
+  }
+
+  #billing_first_name_field + .form-row {
+    margin-left: 30px;
+  }
+
+  #billing_city_field,
+  #billing_city_field + .form-row,
+  #billing_city_field + .form-row + .form-row {
+    width: calc( 33.3333% - 20px );
+    float: left;
+  }
+
+  #billing_city_field + .form-row,
+  #billing_city_field + .form-row + .form-row {
+    margin-left: 30px;
   }
 }

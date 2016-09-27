@@ -106,6 +106,68 @@ function get_ideaing_page_title_rener() {
 }
 add_action( 'ideaing_page_title', 'get_ideaing_page_title_rener' );
 
+
+/**
+ * Filter woocommerce_form_field function
+ *
+ * @since WooCommerce Integration 1.0
+ **/
+function ideaing_form_field_email_modify( $field, $key, $args, $value ){
+
+	switch ( $key ) {
+		case 'order_email':
+			$field = sprintf('<p class="opacity-3">%s</p>%s<p class="opacity-3">%s</p>',
+				__('Shipment notification emails are sent to the Billing Contact. Another recipient email address may be added below.', 'ideaing'),
+				$field,
+				__('For shipment updates via text messages, enter a mobile number below.', 'ideaing')
+			);
+			break;
+
+		case 'shipping_postcode':
+		case 'billing_postcode':
+			$field = sprintf('<div class="has-extra-desc">%s<p class="desc opacity-3">%s</p></div><div class="clear"></div>',
+				$field,
+				__('Enter ZIP for City and State', 'ideaing')
+			);
+			break;
+	}
+
+	return $field;
+}
+add_filter( 'woocommerce_form_field_email' , 'ideaing_form_field_email_modify', 99, 4 );
+add_filter( 'woocommerce_form_field_text' , 'ideaing_form_field_email_modify', 99, 4 );
+
+/**
+ * Checkout.
+ *
+ * @see woocommerce_checkout_login_form()
+ * @see woocommerce_checkout_coupon_form()
+ * @see woocommerce_order_review()
+ * @see woocommerce_checkout_payment()
+ */
+// remove_action( 'woocommerce_before_checkout_form', 'woocommerce_checkout_login_form', 10 );
+remove_action( 'woocommerce_before_checkout_form', 'woocommerce_checkout_coupon_form', 10 );
+// remove_action( 'woocommerce_checkout_order_review', 'woocommerce_order_review', 10 );
+// remove_action( 'woocommerce_checkout_order_review', 'woocommerce_checkout_payment', 20 );
+
+add_filter( 'woocommerce_cart_needs_shipping_address', '__return_true', 99 );
+
+function ideaing_override_checkout_fields( $fields ) {
+    // unset($fields['billing']['billing_first_name']);
+    // unset($fields['billing']['billing_last_name']);
+    unset($fields['billing']['billing_company']);
+    // unset($fields['billing']['billing_address_1']);
+    unset($fields['billing']['billing_address_2']);
+    // unset($fields['billing']['billing_city']);
+    // unset($fields['billing']['billing_postcode']);
+    // unset($fields['billing']['billing_country']);
+    // unset($fields['billing']['billing_state']);
+    // unset($fields['billing']['billing_phone']);
+    unset($fields['order']['order_comments']);
+    return $fields;
+}
+add_filter( 'woocommerce_checkout_fields' , 'ideaing_override_checkout_fields' );
+
 /**
  * Secure checkout nav walking
  *
