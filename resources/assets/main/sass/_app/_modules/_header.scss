@@ -12,6 +12,10 @@
   @media(max-width: 988px){
     padding-left: 180px;
   }
+  @media(max-width: 670px){
+    padding-left: 90px;
+  }
+
 
   a{
     text-transform: capitalize;
@@ -480,6 +484,8 @@ header.colophon{
 
     .logo-holder{
       position: relative;
+      right: 77px;
+      top: 2px;
     }
 
   }
@@ -675,11 +681,15 @@ header.colophon{
         @media (min-width:1200px){
           margin-right: 25px;
         }
+        @media(min-width:670px){
+          padding-left: 23px;
+        }
         @media(min-width:420px){
           margin-top: 4px !important;
           margin-right: 1.9% !important;
           padding-left: 5px;
-        } 
+          padding-left: 4px;
+        }
 
         @media(min-width:370px){
           margin-top: 27px;
@@ -688,7 +698,7 @@ header.colophon{
         }
         @media(min-width:380px){
           margin-right: 3.9%;
-          padding-left: 23px;
+          padding-left: 0px;
         }
          //@media(max-width:985px){
          //   margin-right: 1% !important;
