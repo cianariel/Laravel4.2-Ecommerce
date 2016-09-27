@@ -20,16 +20,16 @@
                         <div class="row">
                             <div class="container">
                                 <uib-tabset active="active">
-                                    <uib-tab index="0" heading="Smart Homes">
+                                    <uib-tab index="0" heading="Smart Homes" class="category-smart-home">
                                         @include('layouts.parts.shop-tab')
                                     </uib-tab>
-                                    <uib-tab index="1" heading="Smart Travel">
+                                    <uib-tab index="1" heading="Smart Entertainment">
                                         @include('layouts.parts.shop-tab')
                                     </uib-tab>
                                     <uib-tab index="2" heading="Smart Body">
                                         @include('layouts.parts.shop-tab')
                                     </uib-tab>
-                                    <uib-tab index="3" heading="Smart Entertainment">
+                                    <uib-tab index="3" heading="Smart Travel">
                                         @include('layouts.parts.shop-tab')
                                     </uib-tab>
                                 </uib-tabset>
