@@ -72,4 +72,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 		<?php do_action( 'woocommerce_after_checkout_registration_form', $checkout ); ?>
 
 	<?php endif; ?>
+
+	<p style="opacity: .5">TODO: This has no design, should I go with something similar to rest of design</p>
+	<br>
+
 </div>

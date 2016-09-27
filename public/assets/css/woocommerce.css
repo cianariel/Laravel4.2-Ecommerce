@@ -22,6 +22,16 @@
   border-bottom: solid 1px #dbdbdb;
 }
 
+.secure-checkout .entry-title-alt {
+  position: relative;
+  margin: 0 0 15px;
+  font-size: 13px;
+  font-weight: bold;
+  line-height: 1.1;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+}
+
 .secure-checkout .entry-title {
   position: relative;
   margin: 0 0 15px;
@@ -503,6 +513,7 @@
   cursor: default;
 }
 
+.secure-checkout [name="login"],
 .secure-checkout .wc-backward,
 .secure-checkout .checkout-button {
   background-color: #ed2049;
@@ -627,12 +638,12 @@ label[for="show--login"] {
   z-index: 3;
 }
 
-.secure-checkout .form-row .state_select {
+.secure-checkout .form-row .select2-container {
   z-index: 5;
 }
 
-label[for="billing_country"],
-label[for="billing_address_1"] {
+label[for="billing_address_1"],
+label[for="shipping_address_1"] {
   display: none
 }
 
@@ -669,7 +680,10 @@ label[for="billing_address_1"] {
 }
 
 .secure-checkout .woocommerce-invalid textarea,
-.secure-checkout .woocommerce-invalid input {
+.secure-checkout .woocommerce-invalid input[type="text"],
+.secure-checkout .woocommerce-invalid input[type="password"],
+.secure-checkout .woocommerce-invalid input[type="email"],
+.secure-checkout .woocommerce-invalid input[type="tel"] {
   border-color: #ed2049;
   -webkit-transition: border-color .4s ease-out;
   transition: border-color .4s ease-out;
@@ -683,7 +697,7 @@ label[for="billing_address_1"] {
 }
 
 .secure-checkout .form-row #billing_address_1,
-.secure-checkout .form-row #billing_address_2 {
+.secure-checkout .form-row #shipping_address_1 {
   padding: 14px;
 }
 
@@ -724,6 +738,71 @@ label[for="billing_address_1"] {
 
 .secure-checkout .clear:after {
 	clear: both;
+}
+
+label[for="ship-to-different-address-checkbox"] {
+  position: relative;
+  display: block;
+  padding: 15px 15px 15px 45px;
+  font-weight: normal;
+  border: solid 1px #dbdbdb;
+  margin: 0 !important;
+  border-radius: 2px 2px 0 0;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+label[for="ship-to-different-address-checkbox"] + label {
+  margin: -1px 0 50px !important;
+  border-radius: 0 0 2px 2px;
+}
+
+label[for="ship-to-different-address-checkbox"]:before {
+  content: '';
+  display: block;
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  left: 14px;
+  border: solid 1px #dbdbdb;
+  border-radius: 4px;
+}
+
+label[for="ship-to-different-address-checkbox"]:after {
+  content: '\e5ca';
+  position: absolute;
+  left: 16px;
+  font-family: 'ideaing' !important;
+  speak: none;
+  font-size: 1em;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-transition: opacity .4s ease-out;
+  transition: opacity .4s ease-out;
+  color: #4fd37e;
+}
+
+label[for="ship-to-different-address-checkbox"] + label:after,
+#ship-to-different-address-checkbox:checked ~ label[for="ship-to-different-address-checkbox"]:after {
+  opacity: 0;
+}
+
+#ship-to-different-address-checkbox:checked ~ label[for="ship-to-different-address-checkbox"] + label:after {
+  opacity: 1;
+}
+
+.secure-checkout .shipping_address {
+  display: none;
+}
+
+.secure-checkout #ship-to-different-address-checkbox:checked ~ .shipping_address {
+  display: block;
+  -webkit-animation: ideaingfadeIn .4s ease-out;
+  animation: ideaingfadeIn .4s ease-out;
 }
 
 @-webkit-keyframes ideaingfadeIn {
@@ -859,24 +938,36 @@ label[for="billing_address_1"] {
   }
 
   #billing_first_name_field,
-  #billing_first_name_field + .form-row {
+  #billing_first_name_field + .form-row,
+  #billing_country_field,
+  #billing_country_field + .form-row,
+  #shipping_first_name_field,
+  #shipping_first_name_field + .form-row {
     width: calc( 50% - 15px );
     float: left;
   }
 
-  #billing_first_name_field + .form-row {
+
+  #billing_first_name_field + .form-row,
+  #billing_country_field + .form-row,
+  #shipping_first_name_field + .form-row {
     margin-left: 30px;
   }
 
   #billing_city_field,
   #billing_city_field + .form-row,
-  #billing_city_field + .form-row + .form-row {
+  #billing_city_field + .form-row + .form-row,
+  #shipping_city_field,
+  #shipping_city_field + .form-row,
+  #shipping_city_field + .form-row + .form-row {
     width: calc( 33.3333% - 20px );
     float: left;
   }
 
   #billing_city_field + .form-row,
-  #billing_city_field + .form-row + .form-row {
+  #billing_city_field + .form-row + .form-row,
+  #shipping_city_field + .form-row,
+  #shipping_city_field + .form-row + .form-row {
     margin-left: 30px;
   }
 }

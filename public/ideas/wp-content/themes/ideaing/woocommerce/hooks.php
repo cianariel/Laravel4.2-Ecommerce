@@ -153,16 +153,10 @@ remove_action( 'woocommerce_before_checkout_form', 'woocommerce_checkout_coupon_
 add_filter( 'woocommerce_cart_needs_shipping_address', '__return_true', 99 );
 
 function ideaing_override_checkout_fields( $fields ) {
-    // unset($fields['billing']['billing_first_name']);
-    // unset($fields['billing']['billing_last_name']);
     unset($fields['billing']['billing_company']);
-    // unset($fields['billing']['billing_address_1']);
     unset($fields['billing']['billing_address_2']);
-    // unset($fields['billing']['billing_city']);
-    // unset($fields['billing']['billing_postcode']);
-    // unset($fields['billing']['billing_country']);
-    // unset($fields['billing']['billing_state']);
-    // unset($fields['billing']['billing_phone']);
+    unset($fields['shipping']['shipping_company']);
+    unset($fields['shipping']['shipping_address_2']);
     unset($fields['order']['order_comments']);
     return $fields;
 }
