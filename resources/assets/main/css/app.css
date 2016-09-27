@@ -10462,12 +10462,6 @@ header.colophon {
     @media (min-width: 620px) {
       #top-nav .category-menu ul > li a {
         padding-left: 23px; } }
-    @media (min-width: 420px) {
-      #top-nav .category-menu ul > li a {
-        margin-top: 4px !important;
-        margin-right: 1.9% !important;
-        padding-left: 5px;
-        padding-left: 4px; } }
     @media (min-width: 370px) {
       #top-nav .category-menu ul > li a {
         margin-top: 27px;
@@ -10477,6 +10471,11 @@ header.colophon {
       #top-nav .category-menu ul > li a {
         margin-right: 3.9%;
         padding-left: 15px; } }
+    @media (min-width: 420px) {
+      #top-nav .category-menu ul > li a {
+        margin-top: 4px !important;
+        margin-right: 1.9% !important;
+        padding-left: 4px; } }
     @media (min-width: 740px) {
       #top-nav .category-menu ul > li a {
         padding-left: 23px; } }
