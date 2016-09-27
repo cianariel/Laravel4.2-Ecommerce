@@ -13,7 +13,7 @@
                 <div class="main-content ">
                     <div class="sub-item-container best-sellers">
                         <fieldset class="shoplanding-title">
-                            <legend align="left">Best Sellers <i class="m-icon--flame-fill-red fill-with-red"></i> </legend>
+                            <legend align="left">Best Sellers <i class="m-icon--flame-fill fill-with-red"></i> </legend>
                         </fieldset>
                         <div class="loader loader-abs" cg-busy="firstLoad"></div>
 
@@ -64,7 +64,7 @@
 
                     <div class="sub-item-container hot-deals">
                         <fieldset class="shoplanding-title">
-                            <legend align="left">Hot Deals <br/> <i class="m-icon--flame-fill-red fill-with-purple"></i> 29</legend>
+                            <legend align="left">Hot Deals <br/> <i class="m-icon--flame-fill fill-with-purple"></i> 29</legend>
                         </fieldset>
 
                         <div class="row">

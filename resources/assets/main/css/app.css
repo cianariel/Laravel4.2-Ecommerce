@@ -16026,7 +16026,7 @@ body.shop-landing {
       }
     }
   }*/
-  /*.shop-by-category-submneu{
+  /*.shop-by-category-submenu{
     display: none;
     &.selected{
       display: block;
@@ -16140,13 +16140,13 @@ body.shop-landing {
       line-height: 42px; }
     body.shop-landing .hot-deals h1 {
       font-family: montserratlight, sans-serif;
-      font-size: 42px;
+      font-size: 40px;
       color: #000000; }
     body.shop-landing .hot-deals .right-view-container {
       position: relative;
       width: 130%;
       margin-top: -150px;
-      margin-left: -100px;
+      margin-left: -150px;
       z-index: -999; }
       body.shop-landing .hot-deals .right-view-container img {
         max-width: 100%;
