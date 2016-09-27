@@ -9993,7 +9993,7 @@ article img {
     .category-menu a > span::before {
       content: "";
       position: absolute;
-      width: 112%;
+      width: 118%;
       height: 2px;
       top: 37px;
       left: -6px;
@@ -10542,6 +10542,11 @@ header.colophon {
     @media (min-width: 1000px) {
       #top-nav .top-nav-holder .notification-popup {
         right: -5px; } }
+    @media (max-width: 620px) {
+      #top-nav .top-nav-holder .notification-popup {
+        width: 355px;
+        right: 22%;
+        top: 68px; } }
     #top-nav .top-nav-holder .notification-popup .notification-header {
       border-top-left-radius: 20px;
       border-top-right-radius: 20px;
@@ -13946,6 +13951,9 @@ body.single {
     margin: 0 auto;
     float: none;
     font-family: "montserratlight", sans-serif; }
+    @media (max-width: 620px) {
+      .idea-stories .article-content h2 {
+        text-decoration: underline; } }
     .idea-stories .article-content h2:before, .idea-stories .article-content h2:after {
       content: "";
       display: block;
@@ -14642,7 +14650,7 @@ body.error-page .error-banner-holder {
     .subscribe_email_popup #subscribe_email_popup .toggles {
       height: 39px;
       padding: 0;
-      border-bottom: 3px solid #d4d4d4; }
+      border-bottom: 2px solid #d4d4d4; }
       .subscribe_email_popup #subscribe_email_popup .toggles .swing-lined {
         height: 40px; }
         .subscribe_email_popup #subscribe_email_popup .toggles .swing-lined.active {

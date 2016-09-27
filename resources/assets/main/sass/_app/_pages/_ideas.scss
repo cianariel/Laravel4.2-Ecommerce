@@ -630,6 +630,10 @@ body.single{
       float: none;
       font-family: $moseratlight;
 
+      @media(max-width: 620px){
+        text-decoration: underline;
+      }
+
       &:before, &:after {
         content: "";
         display: block;

@@ -31,7 +31,7 @@
     &>span::before {
       content: "";
       position: absolute;
-      width: 112%;
+      width: 118%;
       height: 2px;
       top: 37px;
       left: -6px;
@@ -800,6 +800,12 @@ header.colophon{
 
       @media(min-width:1000px){
         right: -5px;
+      }
+
+      @media(max-width:620px){
+        width: 355px;
+        right: 22%;
+        top: 68px;
       }
 
       .notification-header{
