@@ -107,9 +107,9 @@ function get_ideaing_page_title_rener() {
 add_action( 'ideaing_page_title', 'get_ideaing_page_title_rener' );
 
 /**
- * Get cart url
+ * Secure checkout nav walking
  *
- * @return return string
+ * @return print string
  * @since WooCommerce Integration 1.0
  */
 function ideaing_secure_checkout_nav(){
@@ -163,8 +163,6 @@ function ideaing_secure_checkout_nav(){
       , __('Success', 'ideaing')
     );
   }
-
-  return is_cart() ? $url : WC()->cart->get_cart_url();
 }
 add_action('ideaing_secure_checkout_nav', 'ideaing_secure_checkout_nav');
 
