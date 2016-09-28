@@ -84,7 +84,13 @@ class IdeaingContact extends WP_Widget {
 	 * @param array $instance Previously saved values from database.
 	 */
 	public function form( $instance ) {
-		$title = ! empty( $instance['title'] ) ? $instance['title'] : __( 'Contact us', 'ideaing' );
+		$title = isset( $instance['title'] ) && ! empty( $instance['title'] ) ? $instance['title'] : __( 'Contact us', 'ideaing' );
+    $title = isset( $instance['tel'] ) && ! empty( $instance['tel'] ) ? $instance['tel'] : '';
+    $title = isset( $instance['email'] ) && ! empty( $instance['email'] ) ? $instance['email'] : '';
+    $title = isset( $instance['t__0'] ) && ! empty( $instance['t__0'] ) ? $instance['t__0'] : '';
+    $title = isset( $instance['c__0'] ) && ! empty( $instance['c__0'] ) ? $instance['c__0'] : '';
+    $title = isset( $instance['t__1'] ) && ! empty( $instance['t__1'] ) ? $instance['t__1'] : '';
+    $title = isset( $instance['c__1'] ) && ! empty( $instance['c__1'] ) ? $instance['c__1'] : '';
 		?>
 		<p>
 		<label for="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>"><?php _e( esc_attr( 'Title:' ) ); ?></label>
@@ -92,28 +98,28 @@ class IdeaingContact extends WP_Widget {
 		</p>
     <p>
 		<label for="<?php echo esc_attr( $this->get_field_id( 'tel' ) ); ?>"><?php _e( esc_attr( 'Tel:' ) ); ?></label>
-		<input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'tel' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'tel' ) ); ?>" type="text" value="<?php echo esc_attr( $instance['tel'] ); ?>" placeholder="<?php esc_attr_e( '(888) 555 - 5555', 'ideaing' ); ?>">
+		<input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'tel' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'tel' ) ); ?>" type="text" value="<?php echo esc_attr( $tel ); ?>" placeholder="<?php esc_attr_e( '(888) 555 - 5555', 'ideaing' ); ?>">
 		</p>
     <p>
 		<label for="<?php echo esc_attr( $this->get_field_id( 'email' ) ); ?>"><?php _e( esc_attr( 'Email:' ) ); ?></label>
-		<input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'email' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'email' ) ); ?>" type="text" value="<?php echo esc_attr( $instance['email'] ); ?>" placeholder="HELP@IDEAING.COM">
+		<input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'email' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'email' ) ); ?>" type="text" value="<?php echo esc_attr( $email ); ?>" placeholder="HELP@IDEAING.COM">
 		</p>
     <div style="padding: 1px 1em;margin:0 0 1em;background-color:#f6f6f6;">
       <p>
   		<label for="<?php echo esc_attr( $this->get_field_id( 't__0' ) ); ?>"><?php _e( esc_attr( 'Schedule days:' ) ); ?></label>
-  		<input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 't__0' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 't__0' ) ); ?>" type="text" value="<?php echo esc_attr( $instance['t__0'] ); ?>" placeholder="<?php esc_attr_e( 'Monday - Friday', 'ideaing' ); ?>">
+  		<input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 't__0' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 't__0' ) ); ?>" type="text" value="<?php echo esc_attr( $t__0 ); ?>" placeholder="<?php esc_attr_e( 'Monday - Friday', 'ideaing' ); ?>">
   		</p>
       <p>
   		<label for="<?php echo esc_attr( $this->get_field_id( 'c__0' ) ); ?>"><?php _e( esc_attr( 'Schedule hours:' ) ); ?></label>
-  		<input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'c__0' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'c__0' ) ); ?>" type="text" value="<?php echo esc_attr( $instance['c__0'] ); ?>" placeholder="<?php esc_attr_e( '8:00am - 5:00pm  |  PST', 'ideaing' ); ?>">
+  		<input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'c__0' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'c__0' ) ); ?>" type="text" value="<?php echo esc_attr( $c__0 ); ?>" placeholder="<?php esc_attr_e( '8:00am - 5:00pm  |  PST', 'ideaing' ); ?>">
   		</p>
       <p>
       <label for="<?php echo esc_attr( $this->get_field_id( 't__1' ) ); ?>"><?php _e( esc_attr( 'Schedule days:' ) ); ?></label>
-      <input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 't__1' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 't__1' ) ); ?>" type="text" value="<?php echo esc_attr( $instance['t__1'] ); ?>" placeholder="<?php esc_attr_e( 'Weekends', 'ideaing' ); ?>">
+      <input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 't__1' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 't__1' ) ); ?>" type="text" value="<?php echo esc_attr( $t__1 ); ?>" placeholder="<?php esc_attr_e( 'Weekends', 'ideaing' ); ?>">
       </p>
       <p>
       <label for="<?php echo esc_attr( $this->get_field_id( 'c__1' ) ); ?>"><?php _e( esc_attr( 'Schedule hours:' ) ); ?></label>
-      <input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'c__1' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'c__1' ) ); ?>" type="text" value="<?php echo esc_attr( $instance['c__1'] ); ?>" placeholder="<?php esc_attr_e( '8:00am - Noon  |  PST', 'ideaing' ); ?>">
+      <input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'c__1' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'c__1' ) ); ?>" type="text" value="<?php echo esc_attr( $c__1 ); ?>" placeholder="<?php esc_attr_e( '8:00am - Noon  |  PST', 'ideaing' ); ?>">
       </p>
     </div>
 		<?php

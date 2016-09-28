@@ -545,11 +545,11 @@ function ideaingGlobalVars() {
     global $userData;
     global $isAdmin;
 
-     if(is_user_logged_in()){
-        $user = wp_get_current_user();
-        $token = base64_encode($user->user_email);
+    if(is_user_logged_in()){
+      $user = wp_get_current_user();
+      $token = base64_encode($user->user_email);
     }else{
-        $token = $_COOKIE['_wptk'];
+      $token = isset($_COOKIE['_wptk']) ? $_COOKIE['_wptk'] : '';
     }
 
 
