@@ -271,6 +271,14 @@ header.colophon{
       height: 53px;
     }
 
+      @media(min-width: 620px)  {
+        .search-input-holder{
+          position: absolute;
+          right: 13.5%;
+          max-width: 760px;
+      }
+    }
+
     @media(max-width: 620px) {
       background: #fff !important;
       &::before,
@@ -280,6 +288,13 @@ header.colophon{
     }
   }
 
+  .search-input-holder {
+    width: 100%;
+    max-width: 720px;
+    margin: 0 auto;
+    display: block;
+    position: relative;
+  }
 
   //
   //&.desktop-search-bar{
@@ -302,20 +317,6 @@ header.colophon{
     right:12px;
   }
 
-
-  .search-input-holder{
-    width: 100%;
-    max-width: 720px;
-    margin: 0 auto;
-    display: block;
-    position: relative;
-
-    @media(min-width: 620px)  {
-      position: absolute;
-      right: 13.5%;
-      max-width: 760px;
-    }
-  }
   input{
     height: 33px;
     border-radius: 2px;

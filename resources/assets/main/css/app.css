@@ -10178,11 +10178,22 @@ header.colophon {
           right: -11px; } }
     .search-bar.desktop-search-bar::before, .search-bar.desktop-search-bar::after {
       height: 53px; }
+    @media (min-width: 620px) {
+      .search-bar.desktop-search-bar .search-input-holder {
+        position: absolute;
+        right: 13.5%;
+        max-width: 760px; } }
     @media (max-width: 620px) {
       .search-bar.desktop-search-bar {
         background: #fff !important; }
         .search-bar.desktop-search-bar::before, .search-bar.desktop-search-bar::after {
           background: #fff; } }
+  .search-bar .search-input-holder {
+    width: 100%;
+    max-width: 720px;
+    margin: 0 auto;
+    display: block;
+    position: relative; }
   .search-bar .toggle-button,
   .search-bar .search-bar {
     position: absolute;
@@ -10194,17 +10205,6 @@ header.colophon {
       -webkit-appearance: none; }
   .search-bar .toggle-button {
     right: 12px; }
-  .search-bar .search-input-holder {
-    width: 100%;
-    max-width: 720px;
-    margin: 0 auto;
-    display: block;
-    position: relative; }
-    @media (min-width: 620px) {
-      .search-bar .search-input-holder {
-        position: absolute;
-        right: 13.5%;
-        max-width: 760px; } }
   .search-bar input {
     height: 33px;
     border-radius: 2px;
