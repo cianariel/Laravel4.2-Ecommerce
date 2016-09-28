@@ -323,10 +323,15 @@
 
     <script>
         $(document).ready(function(){ // add Get It Button overlay on images that link to vendors
+            console.log('test me')
+
             $('.article-content').find('img').each(function(){
+                console.log('what what what what')
+
                 if(!$(this).parents('.get-it-inner').length){
                     var theLinkNode = $(this).parent('a');
                     theLinkNode.attr('target', '_blank').wrap('<div class="get-it-inner"></div>');
+                    console.log('buggaga')
                     var strong = theLinkNode.parents('.thumb-box').find('strong a');
                     var text = strong.text();
 
