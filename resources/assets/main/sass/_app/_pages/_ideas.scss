@@ -252,7 +252,7 @@ body.single-post{
 }
 
 body.single{
-  padding-top: 45px;
+  //padding-top: 45px;
 
   #top-nav a.ideas{
     color: $pink;
@@ -594,17 +594,17 @@ body.single{
     }
   }
 
-  .horizontal-sharing{
-    display: none !important;
-  }
+  //.horizontal-sharing{
+  //  display: none !important;
+  //}
 
   @media(max-width: 620px){
     .scroll-header{
-      display: none;
+      position: relative !important;
     }
-    .horizontal-sharing{
-      display: block !important;;
-    }
+    //.horizontal-sharing{
+    //  display: block !important;;
+    //}
   }
 
 

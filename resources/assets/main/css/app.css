@@ -13722,39 +13722,37 @@ body.single-post .fadeIn {
       text-align: center;
       float: right; }
 
-body.single {
-  padding-top: 45px; }
-  body.single #top-nav a.ideas {
-    color: #ed2049; }
-  body.single #hero-nav {
-    padding: 40px 0 30px; }
-    body.single #hero-nav .share-buttons {
-      padding-top: 9px; }
-    body.single #hero-nav li.all-shares {
-      top: -18px; }
-    @media (max-width: 620px) {
-      body.single #hero-nav {
-        width: 100%;
-        padding: 0; } }
+body.single #top-nav a.ideas {
+  color: #ed2049; }
+body.single #hero-nav {
+  padding: 40px 0 30px; }
+  body.single #hero-nav .share-buttons {
+    padding-top: 9px; }
+  body.single #hero-nav li.all-shares {
+    top: -18px; }
+  @media (max-width: 620px) {
+    body.single #hero-nav {
+      width: 100%;
+      padding: 0; } }
+body.single .like-nav {
+  width: 300px; }
+body.single .article-content iframe {
+  margin: 0 auto;
+  float: none;
+  display: block; }
+@media only screen and (max-width: 960px) {
   body.single .like-nav {
-    width: 300px; }
-  body.single .article-content iframe {
-    margin: 0 auto;
-    float: none;
-    display: block; }
-  @media only screen and (max-width: 960px) {
-    body.single .like-nav {
-      text-align: center;
-      padding-bottom: 10px; } }
-  @media only screen and (max-width: 420px) {
-    body.single #hero.details-hero h1 {
-      font-size: 2.7rem;
-      top: 36px; }
-    body.single time {
-      font-size: 1.5rem !important; }
-    body.single .article-content p,
-    body.single .article-content h4 {
-      font-size: 1.8rem; } }
+    text-align: center;
+    padding-bottom: 10px; } }
+@media only screen and (max-width: 420px) {
+  body.single #hero.details-hero h1 {
+    font-size: 2.7rem;
+    top: 36px; }
+  body.single time {
+    font-size: 1.5rem !important; }
+  body.single .article-content p,
+  body.single .article-content h4 {
+    font-size: 1.8rem; } }
 
 .get-it-inner {
   text-align: center; }
@@ -13937,13 +13935,9 @@ body.single {
 
 .idea-stories .mid-nav .mobile-menu .wrap, .mid-nav .idea-stories .extra-nav .mobile-menu .wrap {
   margin-left: 10px; }
-.idea-stories .horizontal-sharing {
-  display: none !important; }
 @media (max-width: 620px) {
   .idea-stories .scroll-header {
-    display: none; }
-  .idea-stories .horizontal-sharing {
-    display: block !important; } }
+    position: relative !important; } }
 .idea-stories .article-content {
   max-width: 900px;
   margin: 0 auto;

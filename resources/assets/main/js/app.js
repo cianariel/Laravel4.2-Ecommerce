@@ -364,20 +364,20 @@
             }
         });
 
-        // Sticking headers
-        //$(function () {
-        //    $(window).scroll(function(){
-        //        if($('.scroll-header').length){
-        //            if($(window).scrollTop() < 0){
-        //                $('.header-cloak').removeClass('scroll-header');
-        //            }
-        //        }
-        //        //else if(($(window).scrollTop() > 700)){
-        //        //    $('.header-cloak').addClass('scroll-header');
-        //        //}
-        //
-        //    });
-        //});
+    //     Sticking headers
+    //    $(function () {
+    //        $(window).scroll(function(){
+    //            if($('.scroll-header').length){
+    //                if($(window).scrollTop() <= 700){
+    //                    $('header.colophon').removeClass('scroll-header');
+    //                }
+    //            }
+    //            else if(($(window).scrollTop() > 700)){
+    //                $('header.colophon').addClass('scroll-header');
+    //            }
+    //
+    //        });
+    //    });
 
         $(function () {
             if(window.innerWidth < 620){
@@ -447,6 +447,7 @@
             }else{
                 if($(window).scrollTop() + $(window).height() > $(document).height() * 0.1) {
                     $('.mobile-sharing').fadeIn();
+                    console.log('buka')
                 }
             }
         });
