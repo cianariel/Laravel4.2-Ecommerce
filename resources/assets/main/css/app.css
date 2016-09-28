@@ -13998,6 +13998,7 @@ body.single .article-content iframe {
     margin: 0 auto;
     display: block;
     border: 1px solid #eee;
+    border-bottom: 0;
     border-radius: 5px; }
 .idea-stories .author-name {
   font-size: 1.3rem; }

@@ -671,13 +671,14 @@ body.single{
         float: right;
       }
     }
-
+ 
     img{
       max-width: 100%;
       height: auto;
       margin: 0 auto;
       display: block;
       border: 1px solid #eee;
+      border-bottom: 0;
       border-radius: 5px;
 
     }
