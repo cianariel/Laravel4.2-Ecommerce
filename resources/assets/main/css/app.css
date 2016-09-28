@@ -1307,7 +1307,7 @@ body.has-active-menu {
   #hero .hero-background {
     -webkit-filter: none;
     background-size: 100%;
-    top: 117px; }
+    top: 51px; }
   #hero > .container {
     padding-top: 0; }
   #hero.details-hero {
@@ -11786,7 +11786,7 @@ nav a {
     z-index: 100; }
     @media (max-width: 800px) {
       #hero .head-wrap {
-        padding-top: 5%; } }
+        padding-top: 0; } }
     @media (max-width: 620px) {
       #hero .head-wrap {
         width: 95%;
@@ -13747,7 +13747,7 @@ body.single .article-content iframe {
 @media only screen and (max-width: 420px) {
   body.single #hero.details-hero h1 {
     font-size: 2.7rem;
-    top: 36px; }
+    top: 8px; }
   body.single time {
     font-size: 1.5rem !important; }
   body.single .article-content p,
