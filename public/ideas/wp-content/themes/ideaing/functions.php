@@ -8,7 +8,7 @@
 /*------------------------------------*\
 	External Modules/Files
 \*------------------------------------*/
-
+ 
 // Load any external files you have here
 
 /*------------------------------------*\
@@ -528,7 +528,7 @@ function custom_login(){
             }
 
         }else{
-            wp_redirect('https://ideaing.com/login#?from=cms');
+            wp_redirect($_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['SERVER_NAME'] . '/login#?from=cms');
             exit();
         }
     }
@@ -553,11 +553,11 @@ function ideaingGlobalVars() {
     }
 
 
-    if($token){
+    if($token && is_connected()){
 
         $ch = curl_init();
 
-       $url = 'https://ideaing.com/api/info';
+       $url = $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['SERVER_NAME'] . '/api/info';
 
         $data = array('_wptk' => $token);
 
@@ -567,6 +567,10 @@ function ideaingGlobalVars() {
                 'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
                 'method'  => 'POST',
                 'content' => http_build_query($data)
+            ),
+            "ssl" => array(
+                "verify_peer"=>false,
+                "verify_peer_name"=>false,
             )
         );
         $context  = stream_context_create($options);
@@ -761,6 +765,10 @@ add_shortcode( 'product_bar', 'product_bar_func' );
 function product_thumbs_func( $atts ) {
     $ids = str_replace(' ', '', $atts['id']);
 
+    if(!is_connected()){
+        return false;
+    }
+
     $json = file_get_contents('http://ideaing.dev/api/products/get-for-bar/' . $ids);
     $products = json_decode($json, true);
 
@@ -795,7 +803,56 @@ function product_thumbs_func( $atts ) {
 }
 add_shortcode( 'product_thumbs', 'product_thumbs_func' );
 
-if (! function_exists('is_connected')) {
+
+// ADD STORIES (NEWS)
+
+add_action( 'init', 'create_post_type' );
+function create_post_type() {
+    register_post_type( 'story',
+        array(
+            'labels' => array(
+                'name' => __( 'Stories' ),
+                'singular_name' => __( 'Story' )
+            ),
+            'public' => true,
+            'has_archive' => true,
+        )
+    );
+}
+
+function getPostsFromYesterday(){
+    $timeStamp = date('Y-m-d', strtotime('yesterday'));
+    $date = date_create($timeStamp);
+
+//    $args['date_query'][0] = [
+//        'year' => date_format($date, 'Y'),
+//        'monthnum' => date_format($date, 'm'),
+//        'day' => date_format($date, 'Y')
+//    ];
+    $dateQuery = 'year='.date_format($date, 'Y').'&monthnum='.date_format($date, 'm').'&day='.date_format($date, 'd') ;
+
+    $posts = new WP_Query($dateQuery . '&posts_per_page=4');
+
+//    $return['regular'] = array_slice($posts, 0, 3);
+//    $return['featured'] = array_slice($posts, 4, 1);
+
+//    print_r($posts); die();
+    return $posts;
+
+}
+
+add_filter('body_class','add_category_to_single');
+function add_category_to_single($classes) {
+    if (is_single() ) {
+        global $post;
+        foreach((get_the_category($post->ID)) as $category) {
+            // add category slug to the $classes array
+            $classes[] = 'category-' . $category->category_nicename;
+        }
+    }
+    // return the $classes array
+    return $classes;
+}
   function is_connected(){
     $connected = @fsockopen("www.ideaing.com", 80);
     //website, port  (try 80 or 443)
@@ -807,7 +864,12 @@ if (! function_exists('is_connected')) {
     }
     return $is_conn;
   }
+
+function login_classes( $classes ) {
+    $classes[] = 'logged-in';
+    return $classes;
 }
+add_filter( 'login_body_class', 'login_classes' );
 
 if (! function_exists('timeAgo')) {
   function timeAgo($time_ago) {
