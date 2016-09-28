@@ -4035,16 +4035,19 @@ angular.module('colorpicker.module', [])
                     $('.bottom-block').fadeIn();
                 }
             }
-            if($('.mobile-sharing').is(':visible')){
-                if($(window).scrollTop() + $(window).height() < $(document).height() * 0.1) {
-                    $('.mobile-sharing').fadeOut();
-                }
-            }else{
-                if($(window).scrollTop() + $(window).height() > $(document).height() * 0.1) {
-                    $('.mobile-sharing').fadeIn();
-                    console.log('buka')
+
+            if(window.innerWidth < 620){
+                if($('.mobile-sharing').is(':visible')){
+                    if($(window).scrollTop() + $(window).height() < $(document).height() * 0.1) {
+                        $('.mobile-sharing').fadeOut();
+                    }
+                }else{
+                    if($(window).scrollTop() + $(window).height() > $(document).height() * 0.1) {
+                        $('.mobile-sharing').fadeIn();
+                    }
                 }
             }
+
         });
 
         $('.home-hamburger').click(function(){
