@@ -780,11 +780,7 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
         $scope.addAlert = function (alertType, message, category) {
             $scope.alertHTML = message;
 
-            console.log(category);
-
             if(category !== undefined){
-                console.log('ear ear');
-
                 $scope.alerts[category] = [];
                 $scope.alerts[category].push({type: alertType});
             }else{
@@ -1117,6 +1113,10 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                 source = 'home';
             else
                 source = '';
+
+            if(formData === undefined){
+                $scope.responseMessage = "Please enter an email";
+            }
 
             $http({
                 url: '/api/subscribe',

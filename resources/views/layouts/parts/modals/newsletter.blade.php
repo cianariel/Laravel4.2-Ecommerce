@@ -63,10 +63,12 @@
                         </div>
                     <a class="btn btn-success form-control" ng-click="registerSubscribedUser()">Join and Create a Free Account</a>
                     </section>
-                </div>
-                 <uib-alert ng-repeat="alert in alerts" type="@{{alert.type}}" close="closeAlert($index)">
+
+                    <uib-alert ng-repeat="alert in alerts.register" type="@{{alert.type}}" close="closeAlert($index)">
                         <strong  style="width: 100%; display: block; text-align: center;" ng-if="$index == 0" class="red alerts" ng-bind-html="alertHTML"></strong>
                     </uib-alert>
+                </div>
+
 
 
                 <div class="content-subscribe bordering hidden-soft">
@@ -87,8 +89,9 @@
                         </span>
                     <a class="btn btn-success form-control"  ng-click="subscribe(data,'popup')">Join</a>
                     </section>
+                    <strong class="red alerts" style="width: 100%; display: block; text-align: center;"><?php echo '{{ responseMessage }}' ?></strong>
+
                 </div>
-                <strong class="red alerts" style="width: 100%; display: block; text-align: center;"><?php echo '{{ responseMessage }}' ?></strong>
                 <footer class="black-footer relative full-wide text-right white overhide"><b   ng-click="hideAndForget()"><u>No thanks, I don’t want free gadgets </u> <i class="m-icon--Close white"></i></b></footer>
             </div>
         </div>
