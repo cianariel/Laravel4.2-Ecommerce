@@ -742,4 +742,100 @@
         });
     }
 
+
+    jQuery(document).ready(function(){ // add Get It Button overlay on images that link to vendors
+        console.log('test me')
+
+        $('.article-content').find('img').each(function(){
+            if(!$(this).parents('.get-it-inner').length){
+                var theLinkNode = $(this).parent('a');
+                theLinkNode.attr('target', '_blank').wrap('<div class="get-it-inner"></div>');
+                var strong = theLinkNode.parents('.thumb-box').find('strong a');
+                var text = strong.text();
+
+                if(text.indexOf('$') == -1){ // price is not hardcoded into the name
+                    var href =  theLinkNode.attr('href');
+                    postData = false;
+
+                    if(href && href.indexOf('/open/') > -1 && href.indexOf('/idea/') == -1){
+                        productID = href.replace(/\D/g,'');
+                        postData = {'id': productID};
+
+                    }else if(href && href.indexOf('/product/') > -1){
+                        productURL = href.substr(href.lastIndexOf('/') + 1);
+                        postData = {'url': productURL};
+                    }
+
+                    if(postData){
+                        $.post( "/api/product/get-for-thumb", postData)
+                            .success(function( postResp ) {
+                                var getItNode = theLinkNode.parents('.get-it-inner');
+                                getItNode.append('<span class="merchant-widget__price">$'+ Math.round(postResp.sale_price) +'</span>');
+                                getItNode.append('<div class="merchant-widget__logo trans-all"><span class="white">from <img class="vendor-logo img-responsive merchant-widget__store" src="' + postResp.storeLogo + '"></span></div>');
+                                var width = getItNode.width();
+                                if(width < 320){
+                                    getItNode.addClass('smallish');
+                                }
+                            });
+                    }
+                }
+            }
+            if($(this).parents('p').next('p').find('a.vendor-link').length){
+                $(this).parents('p').each(function(){
+                    $(this).next('p').andSelf().wrapAll('<div class="thumb-box"></div>');
+                });
+            }else if($(this).parents('p').find('a.vendor-link').length){
+                $(this).parents('.get-it-inner').each(function(){
+                    $(this).parents('p').find('a.vendor-link').andSelf().wrapAll('<div class="thumb-box"></div>');
+                });
+            }
+        });
+
+        $('.thumb-box').each(function(){
+            if(!$(this).parents('.float-thumbs').length){
+                $(this).next('.thumb-box').andSelf().wrapAll('<div class="float-thumbs"></div>');
+            }
+        });
+
+    });
+
+    if(window.innerWidth < 1070){ // mobile only
+        jQuery(window).scroll(function(){
+            jQuery('.article-content .get-it-inner').each(function(){
+                var that = $(this);
+                var imgTop = that.offset().top + 450;
+                var imgBottom = imgTop + that.height() + 350;
+                var window_top = $(window).scrollTop() + $(window).height();
+                if (window_top > imgTop && window_top < imgBottom) { // we have scrolled over the element
+                    that.addClass('hovered');
+                }else if(that.hasClass('hovered')){
+                    that.removeClass('hovered');
+                }
+            });
+        });
+    }
+
+    function showImages(el) {
+        var windowHeight = jQuery( window ).height();
+        jQuery(el).each(function(){
+            var thisPos = $(this).offset().top;
+
+            var topOfWindow = $(window).scrollTop();
+            if (topOfWindow + windowHeight - 200 > thisPos ) {
+                $(this).addClass("fadeIn");
+            }
+        });
+    }
+
+    // if the image in the window of browser when the page is loaded, show that image
+    jQuery(document).ready(function(){
+        showImages('.article-content img');
+    });
+
+    // if the image in the window of browser when scrolling the page, show that image
+    jQuery(window).scroll(function() {
+        showImages('.article-content img');
+    });
+
+
 })(jQuery, this);
