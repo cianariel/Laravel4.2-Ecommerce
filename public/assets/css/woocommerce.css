@@ -17,6 +17,18 @@
   font-size: 13px;
 }
 
+.secure-checkout .site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 99;
+}
+
+.secure-checkout .site-main {
+  margin-top: 54px;
+}
+
 .secure-checkout .entry-header {
   margin: 25px 0 15px;
   border-bottom: solid 1px #dbdbdb;
@@ -117,6 +129,7 @@
 }
 
 .shop_table.cart tbody .cart_item td.product-quantity input {
+  display: inline-block;
   margin: 0;
   padding: 0 5px;
   width: 45px;
@@ -187,16 +200,16 @@
 
 .secure-checkout .top-nav-holder {
   position: relative;
-  height: 60px;
-  margin: 0 0 60px;
-  padding: 10px 15px;
+  height: 54px;
+  padding: 10px 0;
+  background-color: #fff;
   border-bottom: solid 1px #dbdbdb;
 }
 
 .site-logo {
   display: block;
-  width: 147px;
-  height: 40px;
+  width: 120px;
+  height: 33px;
 }
 
 .site-logo svg {
@@ -213,13 +226,11 @@
 }
 
 .sc-slogan {
-  font-size: 13px;
-  line-height: 40px;
+  line-height: 34px;
   text-align: right;
   letter-spacing: .09em;
   text-transform: uppercase;
   cursor: default;
-
   -webkit-touch-callout: none;
   -webkit-user-select: none;
   user-select: none;
@@ -242,7 +253,7 @@
   display: inline-block;
   position: relative;
   padding: 0 8px;
-  margin: 8px 2px;
+  margin: 5px 2px;
   font-size: 9px;
   letter-spacing: .04em;
   line-height: 24px;
@@ -827,7 +838,7 @@ label[for="ship-to-different-address-checkbox"] + label:after,
 
   .secure-checkout-nav > * {
     padding: 0 20px;
-    margin: 8px;
+    margin: 5px;
   }
 
   .secure-checkout-nav > *.active:before {
