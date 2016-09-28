@@ -4337,7 +4337,9 @@ angular.module('colorpicker.module', [])
         });
     }
 
-
+		console.log($('.article-content').find('img').length);
+		console.log($);
+		console.log(jQuery);
     jQuery(document).ready(function($){ // add Get It Button overlay on images that link to vendors
         console.log('test me')
 
