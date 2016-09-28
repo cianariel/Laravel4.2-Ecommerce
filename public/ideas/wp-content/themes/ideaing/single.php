@@ -322,10 +322,8 @@
  </div>
 
     <script>
-        console.log('test me2')
-
-//        $(document).ready(function(){ // add Get It Button overlay on images that link to vendors
-//            console.log('test me')
+        $(document).ready(function(){ // add Get It Button overlay on images that link to vendors
+            console.log('test me')
 
             $('.article-content').find('img').each(function(){
                 if(!$(this).parents('.get-it-inner').length){
@@ -394,7 +392,7 @@
                         }
                     });
                 });
-//            }
+            }
 
 
         function showImages(el) {
