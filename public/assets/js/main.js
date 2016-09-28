@@ -4338,7 +4338,7 @@ angular.module('colorpicker.module', [])
     }
 
 
-    jQuery(document).ready(function(){ // add Get It Button overlay on images that link to vendors
+    $(document).ready(function(){ // add Get It Button overlay on images that link to vendors
         console.log('test me')
 
         $('.article-content').find('img').each(function(){
