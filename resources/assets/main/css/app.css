@@ -13883,7 +13883,7 @@ body.single {
   .float-thumbs .merchant-widget__logo {
     opacity: 0;
     position: absolute;
-    bottom: 35%;
+    bottom: 31%;
     width: 100%;
     text-align: center; }
     @media (max-width: 620px) {
@@ -13937,6 +13937,13 @@ body.single {
 
 .idea-stories .mid-nav .mobile-menu .wrap, .mid-nav .idea-stories .extra-nav .mobile-menu .wrap {
   margin-left: 10px; }
+.idea-stories .horizontal-sharing {
+  display: none !important; }
+@media (max-width: 620px) {
+  .idea-stories .scroll-header {
+    display: none; }
+  .idea-stories .horizontal-sharing {
+    display: block !important; } }
 .idea-stories .article-content {
   max-width: 900px;
   margin: 0 auto;

@@ -505,7 +505,7 @@ body.single{
   .merchant-widget__logo{
     opacity: 0;
     position: absolute;
-    bottom: 35%;
+    bottom: 31%;
     width: 100%;
     text-align: center;
 
@@ -593,6 +593,20 @@ body.single{
       }
     }
   }
+
+  .horizontal-sharing{
+    display: none !important;
+  }
+
+  @media(max-width: 620px){
+    .scroll-header{
+      display: none;
+    }
+    .horizontal-sharing{
+      display: block !important;;
+    }
+  }
+
 
   .article-content{
     max-width: 900px;
