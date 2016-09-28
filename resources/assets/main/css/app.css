@@ -10208,6 +10208,7 @@ header.colophon {
   .search-bar input {
     height: 33px;
     border-radius: 2px;
+    font-size: inherit;
     -webkit-transition: width .2s;
     /* Safari */
     transition: width .2s;
