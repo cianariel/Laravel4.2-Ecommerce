@@ -1,65 +1,4 @@
 <?php
-function timeAgo($time_ago)
-{
-	$d1 = new DateTime($time_ago);
-	$d1 = $d1->format('M, d Y');
-    $time_ago = strtotime($time_ago);
-    $cur_time   = time();
-    $time_elapsed   = $cur_time - $time_ago;
-    $seconds    = $time_elapsed ;
-    $minutes    = round($time_elapsed / 60 );
-    $hours      = round($time_elapsed / 3600);
-    $days       = round($time_elapsed / 86400 );
-    $weeks      = round($time_elapsed / 604800);
-    $months     = round($time_elapsed / 2600640 );
-    $years      = round($time_elapsed / 31207680 );
-    // Seconds
-    if($seconds <= 60){
-        return "now";
-    }
-    //Minutes
-    else if($minutes <=60){
-        if($minutes==1){
-            return "1 minute ago";
-        }
-        else{
-            return "$minutes minutes ago";
-        }
-    }
-    //Hours
-    else if($hours <=24){
-        if($hours==1){
-            return "1 hour ago";
-        }else{
-            return "$hours hours ago";
-        }
-    }
-    //Days
-    else if($days <= 7){
-        if($days==1){
-            return "yesterday";
-        }else{
-            return "$days days ago";
-        }
-    }
-    //Weeks
-    else if($weeks <= 4.3){
-        if($weeks==1){
-            return "1 week ago";
-        }else{
-            return "$weeks weeks ago";
-        }
-    }
-    //Months
-    else if($months <=12){
-    	return $d1;
-    }
-    //Years
-    else{
-    	return $d1;
-    }
-}
-
 function carbon_the_content_limit($max_char, $more_link_text = '(more...)', $stripteaser = 0, $more_file = '') {
 	$content = get_the_content($more_link_text, $stripteaser, $more_file);
 	$content = apply_filters('the_content', $content);
@@ -191,11 +130,13 @@ $posts = new WP_Query( $args );
 
 if ( $posts->have_posts() ) {
 
+		$is_connected = is_connected(); // only one time calling this would does the job
+
     if(isset($args['tag_slug__in']) && !have_posts()){ // if there are not posts with similar tags, get just any posts
         unset($args['tag_slug__in']);
         $posts = new WP_Query( $args );
     }
-    $datam = array();
+    $datam = array('posts'=>array());
     $data = array();
         while ($posts->have_posts()) {
             $posts->the_post();
@@ -264,22 +205,26 @@ if ( $posts->have_posts() ) {
             $data['author'] = get_the_author();
             $data['author_id'] = get_the_author_meta('ID');
 
-            if(is_connected()){
-                $laravelUser = file_get_contents('https://ideaing.com/api/info-raw/' . get_the_author_meta('email'));
-                $laravelUser = json_decode($laravelUser, true);
-            }else{
-                $laravelUser = false;
+						$laravelUser = false;
+            if($is_connected){
+                $laravelUserContents = file_get_contents('https://ideaing.com/api/info-raw/' . get_the_author_meta('email'));
+                $laravelUser = $laravelUserContents ? json_decode($laravelUserContents, true) : false;
             }
 
+						$avatar = $authorlink = null;
+						if($laravelUser){
 
+							if (isset($laravelUser['medias'])&&isset($laravelUser['medias'][0])) {
+	                $avator = $laravelUser['medias'][0]['media_link'];
+	            }
+							if (isset($laravelUser['authorlink'])) {
+									$authorlink = $laravelUser['permalink'];
+							}
+						}
 
-            $data['authorlink'] = $laravelUser['permalink'];
+						$data['authorlink'] = $authorlink ? $authorlink : '';
+            $data['avator'] = $avator ? $avator : get_avatar_url(get_the_author_meta('email'), '80');
 
-            if (isset($laravelUser['medias'][0])) {
-                $data['avator'] = $laravelUser['medias'][0]['media_link'];
-            } else {
-                $data['avator'] = get_avatar_url(get_the_author_meta('email'), '80');
-            }
 
             $data['type'] = 'idea';
             $get_is_featured = get_post_custom_values('is_featured', $ID);
@@ -300,6 +245,7 @@ if ( $posts->have_posts() ) {
         }
 
 }
+
 
 //if(isset($_REQUEST['get-total-count'])){
     $args['showposts'] = -1;

@@ -795,8 +795,21 @@ function product_thumbs_func( $atts ) {
 }
 add_shortcode( 'product_thumbs', 'product_thumbs_func' );
 
+if (! function_exists('is_connected')) {
+  function is_connected(){
+    $connected = @fsockopen("www.ideaing.com", 80);
+    //website, port  (try 80 or 443)
+    if ($connected){
+      $is_conn = true; //action when connected
+      fclose($connected);
+    }else{
+      $is_conn = false; //action in connection failure
+    }
+    return $is_conn;
+  }
+}
 
-if (! function_exists('timeAgo')){
+if (! function_exists('timeAgo')) {
   function timeAgo($time_ago) {
 
     $d1 = new DateTime($time_ago);
