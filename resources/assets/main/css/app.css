@@ -11776,6 +11776,9 @@ article img {
     font-size: 5rem; }
 
 /* main layout */
+.over-wrap {
+  position: relative; }
+
 nav ul {
   overflow: hidden;
   margin-top: 0;
@@ -13309,6 +13312,8 @@ body.giveaway-page .black-slider {
 
 .login-signup-modal {
   position: absolute !important;
+  top: 50px;
+  left: 0;
   overflow-y: visible;
   z-index: 50;
   width: 100%;
