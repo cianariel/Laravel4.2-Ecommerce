@@ -177,74 +177,8 @@ if (!isset($theGiveAway)) {
                                                 <img width="40px" src="/assets/images/icons/ninja-01.svg" alt="" class="profile-photo ">
                                         <span class="notification-count ng-binding">1</span>
                                     </a>
-                                <?php } ?>
-
-
                                 </div>
-                      <?php  if(isset($userData['login']) && $userData['login']){ ?>
-
-                            <div class="notification-popup hide-on-out hidden-soft boxy">
-                                <div class="notification-header">
-                                    <div class="col-xs-12 center-block">
-                                        <a href="#" data-switch=".notifs" data-hide=".prof-menu" class="active"><span>Notifications</span></a>
-                                        <a href="#" data-switch=".prof-menu"  data-hide=".notifs"><span>My profile</span></a>
-                                    </div>
-                                </div>
-
-                                <div class="notification-body">
-                                    <div class="tab notifs">
-                                        <span ng-click="readAllNotification()" class="pull-right red" id="mark-all-as-read">Mark all as read</span>
-
-                                        <div class="notification-item" ng-repeat="notice in notifications">
-                                            <img width="40px" ng-src="<?php echo '{{ notice.UserPicture }}' ?>" class="profile-photo pull-left">
-
-                                            <div class="notification-row-content read-<?php echo '{{ notice.NoticeRead }}' ?>">
-                                                <div><strong><?php echo '{{ notice.UserName }}' ?></strong>
-                                                    <div ng-switch="notice.Section">
-                                                        <div ng-switch-when="ideas-heart">Liked</div>
-                                                        <div ng-switch-when="product-heart">Liked</div>
-                                                        <div ng-switch-when="giveaway-heart">Liked</div>
-                                                        <div ng-switch-default>Commented on</div>
-                                                    </div>
-                                                    <a ng-href="<?php echo '/{{ notice.ItemLink }}' ?>"><?php echo '{{ notice.ItemTitle }}' ?></a>
-                                                </div>
-                                                <small class="clearfix time "><?php echo '{{ notice.Time }}' ?></small>
-                                            </div>
-                                            <div class="clearfix"></div>
-                                        </div>
-                                        <div style="text-align: center">
-                                            <a class="btn btn-primary btn-block" style="color: white"
-                                               href="/user/notification"
-                                               type="button">View All ...
-                                            </a>
-                                        </div>
-                                        <div class="clearfix"></div>
-                                    </div>
-                                    <div class="tab prof-menu">
-                                        <div class="notification-item profile-menu">
-                                            <div class="menu-group">
-                                                <div><a href="/user/profile">My Profile</a></div>
-                                                <div><a href="/user/notification">Show Notifications</a></div>
-                                                <div><a href="#" class="edit-profile-link" ng-click="openProfileSetting()">Edit
-                                                        Profile</a></div>
-                                                <?php if(isset($isAdmin) && ($isAdmin == true)){ ?>
-                                                <div><a href="/admin/dashboard" target="_blank" class="edit-profile-link">Admin
-                                                        Panel</a></div>
-                                                <?php } ?>
-
-                                            </div>
-                                            <div class="menu-group">
-                                                <div><a href="#">Invite Friends</a></div>
-                                            </div>
-                                            <div class="log-out"><a ng-click="logoutUser()" href="#"><i class="m-icon--Logout-Active"></i> Log Out</a></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="notification-footer">
-
-                                </div>
-                            </div>
-                        <?php } ?>
+                            <?php } ?>
                         </div>
                     </div>
 
@@ -338,7 +272,75 @@ if (!isset($theGiveAway)) {
         <?php // have to use only pure php includes, or the CMS wont read it
         include('/var/www/ideaing/resources/views/layouts/parts/shop-submenu.blade.php')
         ?>
+
+
+        <?php  if(isset($userData['login']) && $userData['login']){ ?>
+
+        <div class="notification-popup hide-on-out hidden-soft boxy">
+            <div class="notification-header">
+                <div class="col-xs-12 center-block">
+                    <a href="#" data-switch=".notifs" data-hide=".prof-menu" class="active"><span>Notifications</span></a>
+                    <a href="#" data-switch=".prof-menu"  data-hide=".notifs"><span>My profile</span></a>
+                </div>
+            </div>
+
+            <div class="notification-body">
+                <div class="tab notifs">
+                    <span ng-click="readAllNotification()" class="pull-right red" id="mark-all-as-read">Mark all as read</span>
+
+                    <div class="notification-item" ng-repeat="notice in notifications">
+                        <img width="40px" ng-src="<?php echo '{{ notice.UserPicture }}' ?>" class="profile-photo pull-left">
+
+                        <div class="notification-row-content read-<?php echo '{{ notice.NoticeRead }}' ?>">
+                            <div><strong><?php echo '{{ notice.UserName }}' ?></strong>
+                                <div ng-switch="notice.Section">
+                                    <div ng-switch-when="ideas-heart">Liked</div>
+                                    <div ng-switch-when="product-heart">Liked</div>
+                                    <div ng-switch-when="giveaway-heart">Liked</div>
+                                    <div ng-switch-default>Commented on</div>
+                                </div>
+                                <a ng-href="<?php echo '/{{ notice.ItemLink }}' ?>"><?php echo '{{ notice.ItemTitle }}' ?></a>
+                            </div>
+                            <small class="clearfix time "><?php echo '{{ notice.Time }}' ?></small>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div style="text-align: center">
+                        <a class="btn btn-primary btn-block" style="color: white"
+                           href="/user/notification"
+                           type="button">View All ...
+                        </a>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="tab prof-menu">
+                    <div class="notification-item profile-menu">
+                        <div class="menu-group">
+                            <div><a href="/user/profile">My Profile</a></div>
+                            <div><a href="/user/notification">Show Notifications</a></div>
+                            <div><a href="#" class="edit-profile-link" ng-click="openProfileSetting()">Edit
+                                    Profile</a></div>
+                            <?php if(isset($isAdmin) && ($isAdmin == true)){ ?>
+                            <div><a href="/admin/dashboard" target="_blank" class="edit-profile-link">Admin
+                                    Panel</a></div>
+                            <?php } ?>
+
+                        </div>
+                        <div class="menu-group">
+                            <div><a href="#">Invite Friends</a></div>
+                        </div>
+                        <div class="log-out"><a ng-click="logoutUser()" href="#"><i class="m-icon--Logout-Active"></i> Log Out</a></div>
+                    </div>
+                </div>
+            </div>
+            <div class="notification-footer">
+
+            </div>
+        </div>
+        <?php } ?>
     </header>
+
+
 
     <?php if(isset($userData['login']) && $userData['login']) { ?>
 

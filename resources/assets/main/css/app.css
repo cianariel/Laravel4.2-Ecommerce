@@ -10069,23 +10069,22 @@ header.colophon {
   @media (max-width: 620px) {
     header.colophon {
       min-height: 0;
-      height: 92px;
-      overflow: hidden;
-      border-bottom: 1px solid #eee;
-      -webkit-transition: height .5s;
-      -moz-transition: height .5s;
-      transition: height .5s; }
-      header.colophon.shrink {
-        height: 53px; } }
+      border-bottom: 1px solid #eee; } }
   header.colophon #top-nav {
     position: relative;
     z-index: 30;
     border-bottom: 1px solid rgba(193, 193, 193, 0.22);
     background: #fff;
-    max-height: 63px; }
+    max-height: 100%;
+    overflow: hidden;
+    height: 92px; }
     @media (max-width: 620px) {
       header.colophon #top-nav {
-        min-height: 92px; } }
+        -webkit-transition: height .5s;
+        -moz-transition: height .5s;
+        transition: height .5s; }
+        header.colophon #top-nav.shrink {
+          height: 53px; } }
     header.colophon #top-nav .notification-holder {
       padding-top: 4px; }
     header.colophon #top-nav a.signin {
@@ -10133,6 +10132,101 @@ header.colophon {
   @media (min-width: 620px) and (max-width: 985px) {
     header.colophon .user-controls {
       max-width: 115px; } }
+
+  header.colophon .notification-popup {
+    position: absolute;
+    width: 375px;
+    min-height: 50px;
+    right: 0;
+    top: 66px;
+    z-index: 100;
+    border-radius: 20px;
+    border: 1px solid #ededed; }
+    @media (min-width: 1000px) {
+      header.colophon .notification-popup {
+        right: -5px; } }
+    @media (max-width: 620px) {
+      header.colophon .notification-popup {
+        width: 355px;
+        right: 3%;
+        top: 60px; } }
+    header.colophon .notification-popup .notification-header {
+      border-top-left-radius: 20px;
+      border-top-right-radius: 20px;
+      background: #fff;
+      padding: 14px 15px;
+      overflow: visible;
+      height: 52px;
+      border: 1px solid #ededed;
+      border-bottom: 0; }
+      header.colophon .notification-popup .notification-header ul {
+        width: 200px;
+        margin: 0 auto;
+        display: block;
+        float: none; }
+      header.colophon .notification-popup .notification-header a {
+        position: relative;
+        width: 46%;
+        font-weight: 200;
+        text-transform: capitalize;
+        font-size: 1.4rem;
+        text-decoration: none;
+        text-align: center;
+        padding-bottom: 4px; }
+        header.colophon .notification-popup .notification-header a span {
+          position: relative; }
+          header.colophon .notification-popup .notification-header a span:before {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            top: 24px;
+            left: 0;
+            background-color: #333;
+            visibility: hidden;
+            -webkit-transform: scaleX(0);
+            transform: scaleX(0);
+            -webkit-transition: all 0.3s ease-in-out 0s;
+            transition: all 0.3s ease-in-out 0s; }
+        header.colophon .notification-popup .notification-header a:hover span:before, header.colophon .notification-popup .notification-header a.active span:before {
+          visibility: visible;
+          -webkit-transform: scaleX(1);
+          transform: scaleX(1); }
+    header.colophon .notification-popup .notification-body {
+      background: #fff;
+      border-left: 1px solid #ededed;
+      border-right: 1px solid #ededed;
+      border: 1px solid #ededed;
+      border-bottom-left-radius: 20px;
+      border-bottom-right-radius: 20px;
+      height: 315px;
+      width: 100%;
+      overflow: auto; }
+      header.colophon .notification-popup .notification-body .notification-item {
+        border-bottom: 1px solid #f3f6f6;
+        padding: 15px; }
+        header.colophon .notification-popup .notification-body .notification-item .read-0 {
+          color: #FC1159 !important; }
+          header.colophon .notification-popup .notification-body .notification-item .read-0 a {
+            color: #FC1159 !important; }
+        header.colophon .notification-popup .notification-body .notification-item:last-child {
+          border-bottom: 0px; }
+      header.colophon .notification-popup .notification-body .profile-photo {
+        margin-top: 0px;
+        margin-right: 10px; }
+      header.colophon .notification-popup .notification-body .notification-row-content {
+        padding-left: 52px; }
+      header.colophon .notification-popup .notification-body .time {
+        display: block;
+        clear: both; }
+    header.colophon .notification-popup .profile-menu {
+      overflow: hidden; }
+      header.colophon .notification-popup .profile-menu a {
+        padding-left: 15px;
+        display: block;
+        width: 100%;
+        text-align: center;
+        padding-bottom: 25px; }
 
 @media (max-width: 620px) {
   .mobile-right-block {
@@ -10554,100 +10648,6 @@ header.colophon {
     top: 3px; }
   #top-nav .top-nav-holder .notification-holder {
     position: relative; }
-  #top-nav .top-nav-holder .notification-popup {
-    position: absolute;
-    width: 375px;
-    min-height: 50px;
-    right: 14%;
-    top: 66px;
-    z-index: 100;
-    border-radius: 20px;
-    border: 1px solid #ededed; }
-    @media (min-width: 1000px) {
-      #top-nav .top-nav-holder .notification-popup {
-        right: -5px; } }
-    @media (max-width: 620px) {
-      #top-nav .top-nav-holder .notification-popup {
-        width: 355px;
-        right: 22%;
-        top: 68px; } }
-    #top-nav .top-nav-holder .notification-popup .notification-header {
-      border-top-left-radius: 20px;
-      border-top-right-radius: 20px;
-      background: #fff;
-      padding: 14px 15px;
-      overflow: visible;
-      height: 52px;
-      border: 1px solid #ededed;
-      border-bottom: 0; }
-      #top-nav .top-nav-holder .notification-popup .notification-header ul {
-        width: 200px;
-        margin: 0 auto;
-        display: block;
-        float: none; }
-      #top-nav .top-nav-holder .notification-popup .notification-header a {
-        position: relative;
-        width: 46%;
-        font-weight: 200;
-        text-transform: capitalize;
-        font-size: 1.4rem;
-        text-decoration: none;
-        text-align: center;
-        padding-bottom: 4px; }
-        #top-nav .top-nav-holder .notification-popup .notification-header a span {
-          position: relative; }
-          #top-nav .top-nav-holder .notification-popup .notification-header a span:before {
-            content: "";
-            position: absolute;
-            width: 100%;
-            height: 2px;
-            top: 24px;
-            left: 0;
-            background-color: #333;
-            visibility: hidden;
-            -webkit-transform: scaleX(0);
-            transform: scaleX(0);
-            -webkit-transition: all 0.3s ease-in-out 0s;
-            transition: all 0.3s ease-in-out 0s; }
-        #top-nav .top-nav-holder .notification-popup .notification-header a:hover span:before, #top-nav .top-nav-holder .notification-popup .notification-header a.active span:before {
-          visibility: visible;
-          -webkit-transform: scaleX(1);
-          transform: scaleX(1); }
-    #top-nav .top-nav-holder .notification-popup .notification-body {
-      background: #fff;
-      border-left: 1px solid #ededed;
-      border-right: 1px solid #ededed;
-      border: 1px solid #ededed;
-      border-bottom-left-radius: 20px;
-      border-bottom-right-radius: 20px;
-      height: 315px;
-      width: 100%;
-      overflow: auto; }
-      #top-nav .top-nav-holder .notification-popup .notification-body .notification-item {
-        border-bottom: 1px solid #f3f6f6;
-        padding: 15px; }
-        #top-nav .top-nav-holder .notification-popup .notification-body .notification-item .read-0 {
-          color: #FC1159 !important; }
-          #top-nav .top-nav-holder .notification-popup .notification-body .notification-item .read-0 a {
-            color: #FC1159 !important; }
-        #top-nav .top-nav-holder .notification-popup .notification-body .notification-item:last-child {
-          border-bottom: 0px; }
-      #top-nav .top-nav-holder .notification-popup .notification-body .profile-photo {
-        margin-top: 0px;
-        margin-right: 10px; }
-      #top-nav .top-nav-holder .notification-popup .notification-body .notification-row-content {
-        padding-left: 52px; }
-      #top-nav .top-nav-holder .notification-popup .notification-body .time {
-        display: block;
-        clear: both; }
-    #top-nav .top-nav-holder .notification-popup .profile-menu {
-      overflow: hidden; }
-      #top-nav .top-nav-holder .notification-popup .profile-menu a {
-        padding-left: 15px;
-        display: block;
-        width: 100%;
-        text-align: center;
-        padding-bottom: 25px; }
   #top-nav .top-nav-holder .profilelinks-popup {
     position: absolute;
     max-height: 600px;
@@ -13308,6 +13308,7 @@ body.giveaway-page .black-slider {
   list-style: decimal !important; }
 
 .login-signup-modal {
+  position: absolute !important;
   overflow-y: visible;
   z-index: 50;
   width: 100%;
