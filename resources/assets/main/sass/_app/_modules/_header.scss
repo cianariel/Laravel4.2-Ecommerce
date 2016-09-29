@@ -272,12 +272,17 @@ header.colophon{
       a{
         position: relative;
         width: 46%;
+        float: left;
         font-weight: 200;
         text-transform: capitalize;
         font-size: 1.4rem;
         text-decoration: none;
         text-align: center;
         padding-bottom: 4px;
+
+        &.active{
+          color: $iridium;
+        }
 
         span{
           position: relative;
@@ -288,7 +293,7 @@ header.colophon{
             height: 2px;
             top: 24px;
             left: 0;
-            background-color: #333;
+            background-color: $iridium; 
             visibility: hidden;
             -webkit-transform: scaleX(0);
             transform: scaleX(0);

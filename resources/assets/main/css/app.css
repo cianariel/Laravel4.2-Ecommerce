@@ -10162,12 +10162,15 @@ header.colophon {
       header.colophon .notification-popup .notification-header a {
         position: relative;
         width: 46%;
+        float: left;
         font-weight: 200;
         text-transform: capitalize;
         font-size: 1.4rem;
         text-decoration: none;
         text-align: center;
         padding-bottom: 4px; }
+        header.colophon .notification-popup .notification-header a.active {
+          color: #FC1159; }
         header.colophon .notification-popup .notification-header a span {
           position: relative; }
           header.colophon .notification-popup .notification-header a span:before {
@@ -10177,7 +10180,7 @@ header.colophon {
             height: 2px;
             top: 24px;
             left: 0;
-            background-color: #333;
+            background-color: #FC1159;
             visibility: hidden;
             -webkit-transform: scaleX(0);
             transform: scaleX(0);
@@ -13572,6 +13575,8 @@ body.login-signup {
   top: 94px;
   right: 3%;
   z-index: 600; }
+#myModal.login-signup-modal .modal-login {
+  top: 4px; }
 
 body.single-post header.colophon.scroll-header #top-nav {
   position: static !important; }
