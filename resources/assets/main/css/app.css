@@ -13312,8 +13312,9 @@ body.giveaway-page .black-slider {
 
 .login-signup-modal {
   position: absolute !important;
-  top: 50px;
+  top: 65px;
   left: 0;
+  z-index: 500;
   overflow-y: visible;
   z-index: 50;
   width: 100%;
@@ -13328,12 +13329,12 @@ body.giveaway-page .black-slider {
   .login-signup-modal .close-button {
     position: absolute;
     top: 2px;
-    right: 15px;
+    right: 7%;
     color: #fff;
     font-size: 3rem;
-    z-index: 9; }
+    z-index: 50; }
     .login-signup-modal .close-button.close-modal {
-      top: 60px;
+      top: 32px;
       color: #444; }
   .login-signup-modal .login-signup-content {
     float: none;

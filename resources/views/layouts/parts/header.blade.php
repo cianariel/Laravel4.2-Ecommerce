@@ -605,6 +605,7 @@ if (!isset($theGiveAway)) {
 </div>
 
 <?php // have to use only pure php includes, or the CMS wont read it
-    include('/var/www/ideaing/resources/views/layouts/parts/modals/newsletter.blade.php')
+    include('/var/www/ideaing/resources/views/layouts/parts/modals/newsletter.blade.php');
+    include('/var/www/ideaing/resources/views/layouts/parts/login-signup.blade.php');
 ?>
 
