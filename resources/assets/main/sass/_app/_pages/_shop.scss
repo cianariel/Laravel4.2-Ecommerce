@@ -1,7 +1,15 @@
 // SHOP PAGE AND SHOP MENU
 
 body.shop-landing{
-  font-family: montserratregular, sans-serif;
+  font-family: Montserratlight, sans-serif;
+
+  .app-wrap{
+    position: relative;
+    background: #F7F7F7;
+    overflow: hidden;
+    padding-bottom:40px;
+  }
+
 
   .sub-item-container{
     position: relative;
@@ -23,37 +31,94 @@ body.shop-landing{
       color: #3d3d3d;
       .fill-with-red{
         color: #EC1B47;
-        font-size: 26px;
-        margin-left: 7px;
+        font-size: 25px;
+        margin-right: 7px;
       }
       .fill-with-purple{
         color: #94489A;
-        font-size: 26px;
-        margin-left: 7px;
+        font-size: 25px;
+        margin-right: 7px;
       }
     }
   }
 
-  .nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover{
+  ul.nav-tabs.nav{
     border: none;
-    border-bottom: 1px solid #4F504F;
-    color: #151515;
+    border-bottom: 1px solid #DDDDDC;
+    width: 560px;
+    margin: 0 auto;
+    li{
+      border: none;
+      padding: 0;
+      margin: 0;
+      a{
+        border: none;
+        font-size: 1.5rem;
+        color: #737374;
+        width: 100%;
+        text-align: center;
+        margin: 0;
+        font-weight: lighter;
+      }
+
+      &.active>a, &.active>a:focus, &.active>a:hover{
+        border: none;
+        color: #151515;
+        font-weight: bold;
+      }
+    }
+
+    .category-smart-home{
+      &.active>a, &.active>a:focus, &.active>a:hover{
+        color: $iridium;
+      }
+      a::before{
+        background-color: $iridium;
+      }
+      a:hover{
+        color: $iridium;
+      }
+    }
+    .category-smart-body{
+      &.active>a, &.active>a:focus, &.active>a:hover{
+        color: $facebook-blue;
+      }
+      a::before{
+        background-color: $facebook-blue;
+      }
+      a:hover{
+        color: $facebook-blue;
+      }
+    }
+    .category-smart-entertainment{
+      &.active>a, &.active>a:focus, &.active>a:hover{
+        color: $pine-green;
+      }
+      a::before{
+        background-color: $pine-green;
+      }
+      a:hover{
+        color: $pine-green;
+      }
+    }
+    .category-smart-travel{
+      &.active>a, &.active>a:focus, &.active>a:hover{
+        color: $dark-orange;
+      }
+      a::before{
+        background-color: $dark-orange;
+      }
+      a:hover{
+        color: $dark-orange;
+      }
+    }
   }
 
-  .nav > li > a:hover, .nav > li > a:focus{
-    border-bottom: 1px solid #4F504F;
-    background: transparent;
-  }
-
-  .nav-tabs>li>a{
-    border: none;
-    font-size: 18px;
-    color: #B9B9BA;
-    padding: 20px 30px;
-  }
 
   .hot-deals{
-    padding-left: 30px;
+    padding: 20px 10px 30px 20px;
+    margin-bottom: 100px;
+    background: #FFFFFF;
     legend{
       color: #94489A;
       padding-left: 0;
@@ -61,66 +126,63 @@ body.shop-landing{
     }
     h1{
       font-family: montserratlight, sans-serif;
-      font-size: 40px;
+      font-size: 37px;
+      padding: 0 0 0 35px;
       color: #000000;
     }
+
+    .left-price-description{
+      z-index: 1;
+      .price-container{
+        margin-top: 150px;
+        .normal-price{
+          span{
+            padding-left: 5px;
+            color: #404041;
+            font-size: 19px;
+          }
+          .line-through-price{
+            text-decoration: line-through;
+            color: #B9B9BA;
+            padding-left: 15px;
+          }
+        }
+        .big-price-container{
+          span{
+            color: #94489A;
+            font-size: 75px;
+            font-family: montserratbold;
+            padding: 15px 0;
+          }
+        }
+        .get-it-inner{
+          text-align: left;
+          margin-top: 30px;
+          button{
+            width: 110px;
+            height: 45px;
+            background: #000000;
+            color: #FFFFFF;
+          }
+        }
+      }
+    }
+
     .right-view-container{
       position: relative;
       width: 130%;
       margin-top: -150px;
-      margin-left: -150px;
-      z-index: -999;
+      margin-left: -180px;
       img{
         max-width: 100%;
         height: auto;
         width: 100%;
       }
     }
-    .price-container{
-      margin-top: 150px;
-      .normal-price{
-        span{
-          padding-left: 5px;
-          color: #404041;
-          font-size: 19px;
-        }
-        .line-through-price{
-          text-decoration: line-through;
-          color: #B9B9BA;
-          padding-left: 15px;
-        }
-      }
-      .big-price-container{
-        span{
-          color: #94489A;
-          font-size: 75px;
-          font-family: montserratbold;
-          padding: 15px 0;
-        }
-      }
-      .get-it-inner{
-        text-align: left;
-        margin-top: 30px;
-        button{
-          width: 110px;
-          height: 45px;
-          background: #000000;
-          color: #FFFFFF;
-        }
-      }
-    }
+
+
   }
 
-  .big-image-view{
-    max-height: 300px;
-    max-width: 400px;
-    margin: 0 auto;
-    margin-top: 20px;
-    text-align: center;
-    border: 1px solid #ECECEC;
-    border-radius: 10px;
-    overflow: hidden;
-  }
 
   .multirow-image-view{
 
@@ -131,8 +193,6 @@ body.shop-landing{
       margin: 0 auto;
       margin-top: 20px;
       position: relative;
-
-
 
       .item-image-container{
         border-right: 1px solid #ECECEC;
@@ -161,10 +221,6 @@ body.shop-landing{
     }
   }
 
-  .tab-pane{
-    margin: 10px 0;
-  }
-
 
   .popular-box{
     counter-reset: popular-box-count;
@@ -176,24 +232,118 @@ body.shop-landing{
       content: counter(popular-box-count);
       position: absolute;
       left: -7px;
-      top: -7px;
-      background: #f7f7f7;
+      top: -8px;
+      text-align: center;
+      background: transparent;
+      border: 1px solid;
+      width: 25px !important;
+      height: 25px !important;
       border-radius: 50%;
       font-weight: 700;
       padding: 2px 8px;
       color: #FFFFFF;
       z-index: 50;
-      font-size: 12px;
-      opacity: 0.9;
+      font-size: 13px;
     }
   }
 
-  .newest-arrivals{
-    .popular-box-number{
-      &::before{
-        background-color: #F15A25;
+
+  .big-image-view{
+    max-height: 300px;
+    max-width: 400px;
+    margin: 20px 0 auto;
+    border: 1px solid #ECECEC;
+    border-radius: 10px;
+    position: relative;
+    text-align: center;
+    &::before{
+      position: absolute;
+      left: -5px !important;
+      top: -7px !important;
+    }
+    img{
+      max-width: 100%;
+      height: 298px;
+    }
+  }
+
+  .tab-content{
+    margin-top: 30px;
+  }
+
+  .tab-pane{
+    margin: 10px 0;
+    .category-smart-home{
+      .popular-box-number{
+        &::before{
+          border-color: $iridium;
+          color: $iridium;
+        }
       }
     }
+    .category-smart-body{
+      .popular-box-number{
+        &::before{
+          border-color: $facebook-blue;
+          color: $facebook-blue;
+        }
+      }
+    }
+    .category-smart-entertainment{
+      .popular-box-number{
+        &::before{
+          border-color: $pine-green;
+          color: $pine-green;
+        }
+      }
+    }
+    .category-smart-travel{
+      .popular-box-number{
+        &::before{
+          border-color: $dark-orange;
+          color: $dark-orange;
+        }
+      }
+    }
+
+
+    .box-item{
+      position: relative;
+      overflow: visible;
+      height: 100%;
+      float: none;
+      margin: 0;
+      .box-item__overlay{
+        border-radius: 10px;
+      }
+    }
+
+
+    .multirow-image-view{
+      .image-row-view{
+        .box-item{
+          position: relative;
+          overflow: visible;
+          height: 87px;
+          float: none;
+          margin: 0;
+          .box-item__overlay{
+            border-radius: 7px;
+          }
+        }
+      }
+
+    }
+
+
+  }
+
+
+
+  .bottom-newest-arrival{
+    ul.nav-tabs.nav{
+      width: 315px;
+    }
   }
 
 
@@ -208,19 +358,6 @@ body.shop-landing{
 
 
 
-
-
-
-
-
-  /**  **/
-
-
-
-  .app-wrap{
-    position: relative;
-    top: 30px;
-  }
   .mid-nav{
     .wrap{
       height: 55px;
@@ -654,10 +791,6 @@ body.category-deals{
         }
       }
     }
-  }
-  .app-wrap{
-    overflow: hidden;
-    padding-bottom:40px;
   }
 
 }

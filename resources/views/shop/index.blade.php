@@ -13,24 +13,24 @@
                 <div class="main-content ">
                     <div class="sub-item-container best-sellers">
                         <fieldset class="shoplanding-title">
-                            <legend align="left">Best Sellers <i class="m-icon--flame-fill fill-with-red"></i> </legend>
+                            <legend align="left"> <i class="m-icon--flame-fill fill-with-red"></i> Best Sellers</legend>
                         </fieldset>
                         <div class="loader loader-abs" cg-busy="firstLoad"></div>
 
                         <div class="row">
                             <div class="container">
-                                <uib-tabset active="active">
+                                <uib-tabset class="tab-swing-lined" active="active">
                                     <uib-tab index="0" heading="Smart Homes" class="category-smart-home">
-                                        @include('layouts.parts.shop-tab')
+                                        @include('layouts.parts.shop-tab', ['category_name' => 'category-smart-home'])
                                     </uib-tab>
-                                    <uib-tab index="1" heading="Smart Entertainment">
-                                        @include('layouts.parts.shop-tab')
+                                    <uib-tab index="1" heading="Smart Entertainment" class="category-smart-entertainment">
+                                        @include('layouts.parts.shop-tab', ['category_name' => 'category-smart-entertainment'])
                                     </uib-tab>
-                                    <uib-tab index="2" heading="Smart Body">
-                                        @include('layouts.parts.shop-tab')
+                                    <uib-tab index="2" heading="Smart Body" class="category-smart-body">
+                                        @include('layouts.parts.shop-tab', ['category_name' => 'category-smart-body'])
                                     </uib-tab>
-                                    <uib-tab index="3" heading="Smart Travel">
-                                        @include('layouts.parts.shop-tab')
+                                    <uib-tab index="3" heading="Smart Travel" class="category-smart-travel">
+                                        @include('layouts.parts.shop-tab', ['category_name' => 'category-smart-travel'])
                                     </uib-tab>
                                 </uib-tabset>
                             </div>
@@ -39,23 +39,23 @@
 
                     <div class="sub-item-container newest-arrivals">
                         <fieldset class="shoplanding-title">
-                            <legend align="left">Newest Arrivals <i class="m-icon--arrow fill-with-red"></i></legend>
+                            <legend align="left"> <i class="m-icon--arrow fill-with-red"></i> Newest Arrivals </legend>
                         </fieldset>
 
                         <div class="row">
                             <div class="container">
-                                <uib-tabset active="active">
-                                    <uib-tab index="0" heading="Smart Homes">
-                                        @include('layouts.parts.shop-tab')
+                                <uib-tabset class="tab-swing-lined" active="active">
+                                    <uib-tab index="0" heading="Smart Homes" class="category-smart-home">
+                                        @include('layouts.parts.shop-tab', ['category_name' => 'category-smart-home'])
                                     </uib-tab>
-                                    <uib-tab index="1" heading="Smart Travel">
-                                        @include('layouts.parts.shop-tab')
+                                    <uib-tab index="1" heading="Smart Entertainment" class="category-smart-entertainment">
+                                        @include('layouts.parts.shop-tab', ['category_name' => 'category-smart-entertainment'])
                                     </uib-tab>
-                                    <uib-tab index="2" heading="Smart Body">
-                                        @include('layouts.parts.shop-tab')
+                                    <uib-tab index="2" heading="Smart Body" class="category-smart-body">
+                                        @include('layouts.parts.shop-tab', ['category_name' => 'category-smart-body'])
                                     </uib-tab>
-                                    <uib-tab index="3" heading="Smart Entertainment">
-                                        @include('layouts.parts.shop-tab')
+                                    <uib-tab index="3" heading="Smart Travel" class="category-smart-travel">
+                                        @include('layouts.parts.shop-tab', ['category_name' => 'category-smart-travel'])
                                     </uib-tab>
                                 </uib-tabset>
                             </div>
@@ -68,7 +68,7 @@
                         </fieldset>
 
                         <div class="row">
-                            <div class="col-md-7">
+                            <div class="col-md-7 left-price-description">
                                 <div>
                                     <h1>Best quadcopter in the world gets an upgrade</h1>
                                 </div>
@@ -90,14 +90,14 @@
 
 
 
-                    <div class="sub-item-container">
+                    <div class="sub-item-container bottom-newest-arrival">
                         <fieldset class="shoplanding-title">
-                            <legend align="left">Newest Arrivals <i class="m-icon--arrow fill-with-red"></i></legend>
+                            <legend align="left"> <i class="m-icon--arrow fill-with-red"></i> Newest Arrivals </legend>
                         </fieldset>
 
                         <div class="row">
                             <div class="container">
-                                <uib-tabset active="active">
+                                <uib-tabset class="tab-swing-lined" active="active">
                                     <uib-tab index="0" heading="Shop by category">
                                         <h1>Shop by category</h1>
                                     </uib-tab>

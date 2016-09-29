@@ -849,13 +849,13 @@
 
 	&:hover, &.hover, &.hovered {
 		.box-item__overlay,
-		.user-widget__name,
+		.user-widget__name
         {
 			@include opacity(.4);
 		}
 	}
     &.un-hover{
-        .box-item__overlay,
+        .box-item__overlay
         {
             @include opacity(0);
         }
