@@ -127,6 +127,7 @@ header.colophon{
   margin: 0 auto;
   overflow: visible;
   z-index: 200;
+  transition: height .5s;
 
   @media(max-width:990px) and (min-width:620px){
     width:93.6%;
@@ -134,7 +135,16 @@ header.colophon{
   }
 
   @media(max-width: 620px){
-    min-height: 81px;
+    //min-height: 81px;
+    height: 92px;
+
+    &.shrink{
+      height: 53px;
+      min-height: 0;
+      overflow: hidden;
+      border-bottom: 1px solid #eee;
+      transition: height .5s;
+    }
   }
 
   #top-nav{
@@ -295,12 +305,6 @@ header.colophon{
     display: block;
     position: relative;
   }
-
-  //
-  //&.desktop-search-bar{
-  //  display: none;
-  //}
-
 
   .toggle-button,
   .search-bar{

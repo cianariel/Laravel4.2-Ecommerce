@@ -567,28 +567,38 @@
 
         })();
 
-        //$(function(){
-            var body = $('body');
-            if(body.hasClass('home') || body.hasClass('room-landing')){
-                var $percent = 0.5;
-            }else{
-                var $percent = 0.6;
+        var body = $('body');
+        if(body.hasClass('home') || body.hasClass('room-landing')){
+            var $percent = 0.5;
+        }else{
+            var $percent = 0.6;
+        }
+
+        var shrinkHeader = $(document).height() * $percent;
+        $(window).scroll(function() {
+            var scroll = getCurrentScroll();
+            if ( scroll >= shrinkHeader ) {
+                $('.mobile-sharing, header.colophon').addClass('shrink');
+            }
+            else {
+                $('.mobile-sharing').removeClass('shrink');
             }
 
-            var shrinkHeader = $(document).height() * $percent;
-            $(window).scroll(function() {
-                var scroll = getCurrentScroll();
-                if ( scroll >= shrinkHeader ) {
-                    $('.mobile-sharing').addClass('shrink');
-                }
-                else {
-                    $('.mobile-sharing').removeClass('shrink');
-                }
-            });
-            function getCurrentScroll() {
-                return window.pageYOffset || document.documentElement.scrollTop;
+            if(window.innerWidth < 620){ // remove the shrink class from header when scrolling is stopped
+                clearTimeout($.data(this, 'scrollTimer'));
+                $.data(this, 'scrollTimer', setTimeout(function() {
+                    $('header.colophon').removeClass('shrink');
+                }, 250));
             }
-        //});
+
+        });
+        function getCurrentScroll() {
+            return window.pageYOffset || document.documentElement.scrollTop;
+        }
+
+
+
+
 
         $(document).ready(function(){
             setTimeout(function(){
@@ -736,7 +746,7 @@
             if($(this).parents('p').next('p').find('a.vendor-link').length){
                 $(this).parents('p').each(function(){
                     $(this).next('p').andSelf().wrapAll('<div class="thumb-box"></div>');
-                }); 
+                });
             }else if($(this).parents('p').find('a.vendor-link').length){
                 $(this).parents('.get-it-inner').each(function(){
                     $(this).parents('p').find('a.vendor-link').andSelf().wrapAll('<div class="thumb-box"></div>');

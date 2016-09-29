@@ -10058,14 +10058,21 @@ header.colophon {
   max-width: 1400px;
   margin: 0 auto;
   overflow: visible;
-  z-index: 200; }
+  z-index: 200;
+  transition: height .5s; }
   @media (max-width: 990px) and (min-width: 620px) {
     header.colophon {
       width: 93.6%;
       max-width: 948px; } }
   @media (max-width: 620px) {
     header.colophon {
-      min-height: 81px; } }
+      height: 92px; }
+      header.colophon.shrink {
+        height: 53px;
+        min-height: 0;
+        overflow: hidden;
+        border-bottom: 1px solid #eee;
+        transition: height .5s; } }
   header.colophon #top-nav {
     position: relative;
     z-index: 30;
@@ -13893,6 +13900,7 @@ body.single .article-content iframe {
         bottom: auto;
         left: 90px; } }
     .float-thumbs .merchant-widget__logo img.vendor-logo {
+      width: auto;
       height: 20px;
       border: 0;
       display: inline; }
