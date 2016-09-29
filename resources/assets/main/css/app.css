@@ -1485,11 +1485,7 @@ body.has-active-menu {
   .modal-intro {
     margin-bottom: 20px !important; }
     .modal-intro a.logo, .modal-intro p {
-      margin-bottom: 0 !important; }
-
-  #myModal.login-signup-modal .close-button {
-    top: 19%;
-    right: 3%; } }
+      margin-bottom: 0 !important; } }
 @media screen and (max-width: 480px) {
   .full-480 {
     width: 100%;
@@ -10068,8 +10064,7 @@ header.colophon {
       max-width: 948px; } }
   @media (max-width: 620px) {
     header.colophon {
-      min-height: 0;
-      border-bottom: 1px solid #eee; } }
+      min-height: 0; } }
   header.colophon #top-nav {
     position: relative;
     z-index: 30;
@@ -13317,7 +13312,6 @@ body.giveaway-page .black-slider {
   overflow-y: visible;
   z-index: 500;
   width: 100%;
-  height: 100%;
   margin: auto; }
   .login-signup-modal .alert:not(:first-child) {
     display: none; }
@@ -13573,6 +13567,10 @@ body.login-signup {
     margin-right: auto; }
   body.login-signup .login-main-block {
     margin-top: 45px; }
+
+#myModal.login-signup-modal .close-button {
+  top: 94px;
+  right: 3%; }
 
 body.single-post header.colophon.scroll-header #top-nav {
   position: static !important; }

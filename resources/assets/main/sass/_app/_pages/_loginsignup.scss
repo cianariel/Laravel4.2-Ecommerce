@@ -8,7 +8,7 @@
   overflow-y: visible;
   z-index: 500;
   width: 100%;
-  height: 100%;
+  //height: 100%;
   margin: auto;
   //overflow: hidden;
 
@@ -391,5 +391,12 @@ body.login-signup{
   }
   .login-main-block{
     margin-top: 45px
+  }
+}
+
+#myModal.login-signup-modal{
+  .close-button{
+    top: 94px;
+    right: 3%;
   }
 }
