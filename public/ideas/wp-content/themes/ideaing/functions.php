@@ -973,7 +973,7 @@ if (! function_exists('ideaing_woocommerce_scripts')){
 
     // these could merge with main .css|js
     wp_enqueue_style( 'ideaing-woocommerce-style', './../assets/css/woocommerce.css', null, null );
-    wp_enqueue_script( 'ideaing-woocommerce-script', './../assets/js/woocommerce.js', array('jquery'), null );
+    wp_enqueue_script( 'ideaing-woocommerce-script', './../assets/js/woocommerce.js', null, null, true );
   }
   add_action( 'wp_enqueue_scripts', 'ideaing_woocommerce_scripts' );
 }

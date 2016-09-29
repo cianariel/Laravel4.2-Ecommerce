@@ -751,7 +751,7 @@ label[for="shipping_address_1"] {
 	clear: both;
 }
 
-label[for="ship-to-different-address-checkbox"] {
+label.ship-to-diff-address {
   position: relative;
   display: block;
   padding: 15px 15px 15px 45px;
@@ -763,12 +763,12 @@ label[for="ship-to-different-address-checkbox"] {
   user-select: none;
 }
 
-label[for="ship-to-different-address-checkbox"] + label {
+label.ship-to-diff-address + label {
   margin: -1px 0 50px !important;
   border-radius: 0 0 2px 2px;
 }
 
-label[for="ship-to-different-address-checkbox"]:before {
+label.ship-to-diff-address:before {
   content: '';
   display: block;
   position: absolute;
@@ -779,7 +779,7 @@ label[for="ship-to-different-address-checkbox"]:before {
   border-radius: 4px;
 }
 
-label[for="ship-to-different-address-checkbox"]:after {
+label.ship-to-diff-address:after {
   content: '\e5ca';
   position: absolute;
   left: 16px;
@@ -797,21 +797,23 @@ label[for="ship-to-different-address-checkbox"]:after {
   color: #4fd37e;
 }
 
-label[for="ship-to-different-address-checkbox"] + label:after,
-#ship-to-different-address-checkbox:checked ~ label[for="ship-to-different-address-checkbox"]:after {
+label.ship-to-diff-address + label:after,
+.on-add-billing ~ label.ship-to-diff-address:after {
   opacity: 0;
 }
 
-#ship-to-different-address-checkbox:checked ~ label[for="ship-to-different-address-checkbox"] + label:after {
+.on-add-billing ~ label.ship-to-diff-address + label:after {
   opacity: 1;
 }
 
 .secure-checkout .shipping_address {
-  display: none;
+  display: none !important;
+  height: auto !important;
+  overflow: visible !important;
 }
 
-.secure-checkout #ship-to-different-address-checkbox:checked ~ .shipping_address {
-  display: block;
+.on-add-billing ~ .shipping_address {
+  display: block !important;
   -webkit-animation: ideaingfadeIn .4s ease-out;
   animation: ideaingfadeIn .4s ease-out;
 }

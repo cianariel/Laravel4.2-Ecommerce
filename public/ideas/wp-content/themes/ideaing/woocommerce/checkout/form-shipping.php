@@ -28,10 +28,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 			<h3 class="entry-title-alt"><?php _e('Billing shipping address'); ?></h3>
 		</header><!-- .entry-header -->
 
-		<input id="ship-to-different-address-checkbox" class="input-checkbox" <?php checked( apply_filters( 'woocommerce_ship_to_different_address_checked', 'shipping' === get_option( 'woocommerce_ship_to_destination' ) ? 1 : 0 ), 1 ); ?> type="checkbox" name="ship_to_different_address" value="1" />
+		<?php $shipping = apply_filters( 'woocommerce_ship_to_different_address_checked', 'shipping' === get_option( 'woocommerce_ship_to_destination' ) ? 1 : 0 );
+		?>
+		<div id="ship-to-different-address" <?php echo $shipping ? 'class="on-add-billing"' : '' ?>>
+			<input id="ship-to-different-address-checkbox" class="input-checkbox" <?php checked( $shipping, 1 ); ?> type="checkbox" name="ship_to_different_address" value="1" />
+		</div>
 
-		<label for="ship-to-different-address-checkbox" class="checkbox"><?php _e( 'Same as shipping address', 'woocommerce' ); ?></label>
-		<label for="ship-to-different-address-checkbox" class="checkbox"><?php _e( 'Add a billing address', 'woocommerce' ); ?></label>
+		<label class="ship-to-diff-address same-address"><?php _e( 'Same as shipping address', 'woocommerce' ); ?></label>
+		<label class="ship-to-diff-address"><?php _e( 'Add a billing address', 'woocommerce' ); ?></label>
 
 		<div class="shipping_address">
 
