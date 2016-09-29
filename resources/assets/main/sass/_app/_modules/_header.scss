@@ -127,7 +127,6 @@ header.colophon{
   margin: 0 auto;
   overflow: visible;
   z-index: 200;
-  transition: height .5s;
 
   @media(max-width:990px) and (min-width:620px){
     width:93.6%;
@@ -135,15 +134,17 @@ header.colophon{
   }
 
   @media(max-width: 620px){
-    //min-height: 81px;
+    min-height: 0;
     height: 92px;
+    overflow: hidden;
+    border-bottom: 1px solid #eee;
+
+    -webkit-transition: height .5s;
+    -moz-transition:height .5s;
+    transition: height .5s;
 
     &.shrink{
       height: 53px;
-      min-height: 0;
-      overflow: hidden;
-      border-bottom: 1px solid #eee;
-      transition: height .5s;
     }
   }
 

@@ -32,7 +32,7 @@ if (!isset($theGiveAway)) {
 
 <div id="publicApp" ng-app="publicApp" ng-controller="publicController" class="header-cloak scroll-header" ng-cloak>
 
-    <header class="colophon container full-sm fixed-sm relative">
+    <header class="colophon unshrunk container full-sm fixed-sm relative">
         <div>
             <nav id="top-nav" class="row">
                 <a id="menu-icon-wrapper" class="menu-icon-wrapper home-hamburger mobile-top-menu-switcher hidden-lg hidden-md"  href="#">

@@ -10058,21 +10058,22 @@ header.colophon {
   max-width: 1400px;
   margin: 0 auto;
   overflow: visible;
-  z-index: 200;
-  transition: height .5s; }
+  z-index: 200; }
   @media (max-width: 990px) and (min-width: 620px) {
     header.colophon {
       width: 93.6%;
       max-width: 948px; } }
   @media (max-width: 620px) {
     header.colophon {
-      height: 92px; }
+      min-height: 0;
+      height: 92px;
+      overflow: hidden;
+      border-bottom: 1px solid #eee;
+      -webkit-transition: height .5s;
+      -moz-transition: height .5s;
+      transition: height .5s; }
       header.colophon.shrink {
-        height: 53px;
-        min-height: 0;
-        overflow: hidden;
-        border-bottom: 1px solid #eee;
-        transition: height .5s; } }
+        height: 53px; } }
   header.colophon #top-nav {
     position: relative;
     z-index: 30;
@@ -13566,6 +13567,9 @@ body.login-signup {
 
 body.single-post header.colophon.scroll-header #top-nav {
   position: static !important; }
+@media (max-width: 620px) {
+  body.single-post header.colophon {
+    height: 92px !important; } }
 body.single-post .social-stats__item {
   position: static;
   width: 140px; }

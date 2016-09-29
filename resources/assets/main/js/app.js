@@ -599,9 +599,6 @@
         }
 
 
-
-
-
         $(document).ready(function(){
             setTimeout(function(){
                 $('.hero-login').slideDown();
@@ -613,7 +610,6 @@
                     $('#giveaway-popup').fadeIn('slow');
                 }, 30000)
             }
-
 
             setInterval(function(){
                     $('.red-logo')

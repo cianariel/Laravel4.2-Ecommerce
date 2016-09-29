@@ -4194,9 +4194,6 @@ angular.module('colorpicker.module', [])
         }
 
 
-
-
-
         $(document).ready(function(){
             setTimeout(function(){
                 $('.hero-login').slideDown();
@@ -4208,7 +4205,6 @@ angular.module('colorpicker.module', [])
                     $('#giveaway-popup').fadeIn('slow');
                 }, 30000)
             }
-
 
             setInterval(function(){
                     $('.red-logo')
