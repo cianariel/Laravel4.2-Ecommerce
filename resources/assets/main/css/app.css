@@ -10075,14 +10075,14 @@ header.colophon {
     z-index: 30;
     border-bottom: 1px solid rgba(193, 193, 193, 0.22);
     background: #fff;
-    max-height: 100%;
-    overflow: hidden;
-    height: 92px; }
+    max-height: 100%; }
     @media (max-width: 620px) {
       header.colophon #top-nav {
         -webkit-transition: height .5s;
         -moz-transition: height .5s;
-        transition: height .5s; }
+        transition: height .5s;
+        height: 92px;
+        overflow: hidden; }
         header.colophon #top-nav.shrink {
           height: 53px; } }
     header.colophon #top-nav .notification-holder {

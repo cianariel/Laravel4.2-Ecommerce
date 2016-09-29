@@ -146,16 +146,13 @@ header.colophon{
     //max-height: 63px;
     max-height: 100%;
 
-    overflow: hidden;
-
-    height: 92px;
-
-
-
     @media(max-width: 620px){
       -webkit-transition: height .5s;
       -moz-transition:height .5s;
       transition: height .5s;
+
+      height: 92px;
+      overflow: hidden;
 
       &.shrink{
         height: 53px;
@@ -239,7 +236,7 @@ header.colophon{
     position: absolute;
     width: 375px;
     min-height: 50px;
-    right: 0; 
+    right: 0;
     top: 66px;
     z-index: 100;
     border-radius: 20px;
