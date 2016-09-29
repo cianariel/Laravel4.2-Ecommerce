@@ -13314,9 +13314,8 @@ body.giveaway-page .black-slider {
   position: absolute !important;
   top: 65px;
   left: 0;
-  z-index: 500;
   overflow-y: visible;
-  z-index: 50;
+  z-index: 500;
   width: 100%;
   height: 100%;
   margin: auto; }
