@@ -289,8 +289,8 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
             $scope.FreeShipping = '';
             $scope.CouponCode = '';
             $scope.PostStatus = 'Inactive';
-            $scope.PageTitle = '';
-            $scope.MetaDescription = '';
+            $scope.PageTitle = 'Best [Product Name] Reviews and Deals';
+            $scope.MetaDescription = '[Product Name] and describe 1 sentence what the product is and does. Ideaing provides aggregated reviews and lowest price on the [product name].';
             $scope.productTags = '';
             //$scope.ProductAvailability = '';
 
