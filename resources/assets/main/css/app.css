@@ -8570,7 +8570,8 @@ p {
 .category-smart-entertainment .category-link__smart-entertainment {
   color: #89C981; }
 
-.box-item:hover .category-smart-entertainment .idea-meta {
+.box-item:hover .category-smart-entertainment .idea-meta,
+.box-item.hovered .category-smart-entertainment .idea-meta {
   background: #89C981; }
 
 .category-deals .category-color {
@@ -13868,7 +13869,7 @@ body.single .article-content iframe {
     .float-thumbs .thumb-box strong {
       width: 100%;
       position: absolute;
-      bottom: 0px;
+      bottom: 2px;
       left: 0;
       padding: 5px;
       font-size: 1.3rem;
@@ -13876,6 +13877,7 @@ body.single .article-content iframe {
       font-weight: normal;
       line-height: 1.5rem;
       text-align: center;
+      background: rgba(252, 17, 89, 0.7);
       color: #fff;
       border-bottom-right-radius: 5px;
       border-bottom-left-radius: 5px; }
@@ -13905,8 +13907,6 @@ body.single .article-content iframe {
   color: #fff;
   margin-top: 20px;
   text-align: center; }
-  .email-banner .email-input-holder i {
-    margin-top: 5px; }
   .email-banner > div {
     padding: 30px 25px 50px;
     overflow: hidden;
@@ -13914,7 +13914,8 @@ body.single .article-content iframe {
     background: #131313;
     max-width: 85%; }
     .email-banner > div input {
-      margin-bottom: 7px; }
+      margin-bottom: 7px;
+      padding-left: 35px; }
   .email-banner input,
   .email-banner .btn {
     height: 45px; }

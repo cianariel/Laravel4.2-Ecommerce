@@ -194,7 +194,8 @@
     color: $pine-green;
   }
 }
-.box-item:hover{
+.box-item:hover,
+.box-item.hovered{
   .category-smart-entertainment{
     .idea-meta{
       background: $pine-green;
