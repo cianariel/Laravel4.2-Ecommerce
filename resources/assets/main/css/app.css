@@ -13570,7 +13570,8 @@ body.login-signup {
 
 #myModal.login-signup-modal .close-button {
   top: 94px;
-  right: 3%; }
+  right: 3%;
+  z-index: 600; }
 
 body.single-post header.colophon.scroll-header #top-nav {
   position: static !important; }
