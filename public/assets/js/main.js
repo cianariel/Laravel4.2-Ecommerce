@@ -4173,13 +4173,15 @@ angular.module('colorpicker.module', [])
         $(window).scroll(function() {
             var scroll = getCurrentScroll();
             if ( scroll >= shrinkHeader ) {
-                $('.mobile-sharing, header.colophon').addClass('shrink');
+                $('.mobile-sharing').addClass('shrink');
             }
             else {
                 $('.mobile-sharing').removeClass('shrink');
             }
 
-            if(window.innerWidth < 620){ // remove the shrink class from header when scrolling is stopped
+            if(window.innerWidth < 620){ // add the shrink class to header when scrolling, remove it when scrolling is stopped
+                $('header.colophon').addClass('shrink');
+
                 clearTimeout($.data(this, 'scrollTimer'));
                 $.data(this, 'scrollTimer', setTimeout(function() {
                     $('header.colophon').removeClass('shrink');
