@@ -564,15 +564,6 @@
                 toCloseIcon = !toCloseIcon;
             };
 
-            /* Scale functions */
-
-            function addScale(m) {
-                m.className = 'menu-icon-wrapper scaled';
-            }
-
-            function removeScale(m) {
-                m.className = 'menu-icon-wrapper';
-            }
 
         })();
 
@@ -707,7 +698,7 @@
     }
 
 
-    //$(document).ready(function(){ // add Get It Button overlay on images that link to vendors
+    $(document).ready(function(){ // add Get It Button overlay on images that link to vendors
         $('.article-content').find('img').each(function(){
             if(!$(this).parents('.get-it-inner').length){
                 var theLinkNode = $(this).parent('a');
@@ -745,7 +736,7 @@
             if($(this).parents('p').next('p').find('a.vendor-link').length){
                 $(this).parents('p').each(function(){
                     $(this).next('p').andSelf().wrapAll('<div class="thumb-box"></div>');
-                });
+                }); 
             }else if($(this).parents('p').find('a.vendor-link').length){
                 $(this).parents('.get-it-inner').each(function(){
                     $(this).parents('p').find('a.vendor-link').andSelf().wrapAll('<div class="thumb-box"></div>');
@@ -759,7 +750,7 @@
             }
         });
 
-    //});
+    });
 
     if(window.innerWidth < 1070){ // mobile only
         jQuery(window).scroll(function(){
