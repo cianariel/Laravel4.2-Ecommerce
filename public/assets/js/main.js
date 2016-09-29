@@ -4061,6 +4061,8 @@ angular.module('colorpicker.module', [])
         (function() {
             /* In animations (to close icon) */
 
+						console.log('I wont let you go unless you make sure you\'re passing valid arguments'); return
+
             var beginAC = 80,
                 endAC = 320,
                 beginB = 80,
@@ -4337,7 +4339,7 @@ angular.module('colorpicker.module', [])
         });
     }
 
-    $(window).load(function(){ // add Get It Button overlay on images that link to vendors
+    $(document).ready(function(){ // add Get It Button overlay on images that link to vendors
 
 			console.log($('.article-content').find('img').length);
         console.log('test me')
