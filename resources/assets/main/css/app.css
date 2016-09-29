@@ -9146,7 +9146,7 @@ h5.category-link__smart-travel span {
     right: 14px;
     z-index: 60; }
     .box-item .box-item__author .user-widget__name {
-      opacity: 1; }
+      opacity: 1 !important; }
   .box-item .user-widget__img {
     margin-left: 0; }
   .box-item.product-box .idea-meta {
