@@ -4046,11 +4046,11 @@ angular.module('colorpicker.module', [])
                         $('.mobile-sharing').fadeIn();
                     }
                 }
-
-                if($('.subscribe_email_popup').length){
-                    var offset = $(window).scrollTop() + 40;
-                    $('.subscribe_email_popup').css('top', offset);
-                }
+                //
+                //if($('.subscribe_email_popup').length){
+                //    var offset = $(window).scrollTop() + 40;
+                //    $('.subscribe_email_popup').css('top', offset);
+                //}
             }
 
         });
@@ -4738,7 +4738,9 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                     }).success(function (data) {
                         //  console.log(data)
                     });
-                });
+
+                    $('body').removeClass('overhide');
+            });
 
                 instance.rendered.then(function () {
                     //console.log('yo maaaan1')
@@ -4753,6 +4755,8 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                             top: ($(window).scrollTop() + 40) + 'px',
                             //height: heightModal + 'px'
                         });
+
+                        $('body').addClass('overhide');
                     }
 
                     setTimeout(function(){
