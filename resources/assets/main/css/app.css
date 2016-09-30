@@ -14563,7 +14563,8 @@ body.error-page .error-banner-holder {
   bottom: auto;
   top: 130px;
   right: -11px;
-  z-index: 1052 !important; }
+  z-index: 1052 !important;
+  border-bottom: 1px solid #eee; }
   .subscribe_email_popup .alert {
     margin-bottom: 0 !important; }
   .subscribe_email_popup .alertme {
