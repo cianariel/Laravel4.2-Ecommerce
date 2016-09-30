@@ -13579,6 +13579,12 @@ body.login-signup {
   body.login-signup .login-main-block {
     margin-top: 45px; }
 
+html.idea-stories #hero {
+  min-height: 400px; }
+  @media (max-width: 620px) {
+    html.idea-stories #hero {
+      min-height: 575px; } }
+
 body.single-post header.colophon.scroll-header #top-nav {
   position: static !important; }
 @media (max-width: 620px) {
@@ -15027,14 +15033,6 @@ article.product {
       color: #FC1159 !important; }
   .popular-new li {
     display: inline-block; }
-
-html.idea-stories #hero {
-  min-height: 400px; }
-  @media (max-width: 620px) {
-    html.idea-stories #hero {
-      min-height: 575px; } }
-html.idea-stories .colophon .user-controls {
-  right: -23px; }
 
 .average-ideaing-score {
   width: 195px;

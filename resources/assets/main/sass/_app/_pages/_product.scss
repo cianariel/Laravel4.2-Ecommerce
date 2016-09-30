@@ -406,20 +406,6 @@ article.product{
   }
 }
 
-html.idea-stories{
-  #hero{
-    min-height: 400px;
-
-    @media(max-width: 620px){
-      min-height: 575px;
-    }
-  }
-  .colophon .user-controls {
-    right: -23px;
-  }
-}
-
-
 .average-ideaing-score{
   width: 195px;
   height: 87px;

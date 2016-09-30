@@ -1,5 +1,16 @@
 @charset "UTF-8";
 
+
+html.idea-stories{
+  #hero{
+    min-height: 400px;
+
+    @media(max-width: 620px){
+      min-height: 575px;
+    }
+  }
+}
+
 body.single-post{
   header.colophon{
     &.scroll-header #top-nav{
