@@ -77,7 +77,8 @@
     });
 
     setTimeout(function(){ self.update(); },  50 );
-    setTimeout(function(){ self.update(); }, 250 );
+    setTimeout(function(){ self.update(); }, 100 );
+    setTimeout(function(){ self.update(); }, 500 );
   };
 
   ideaingCheckout.prototype.update = function () {
