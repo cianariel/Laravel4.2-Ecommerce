@@ -1048,11 +1048,11 @@ label[for="payment_method_paypal"] {
   color: #dbdbdb;
 }
 
-.wcthankyoupage {
+.thankyou-page {
   line-height: 2;
 }
 
-.wcthankyoupage h2 {
+.thankyou-page h2 {
   position: relative;
   margin: 50px 0 15px;
   font-size: 13px;
@@ -1063,11 +1063,11 @@ label[for="payment_method_paypal"] {
   text-transform: uppercase;
 }
 
-.wcthankyoupage address {
+.thankyou-page address {
   line-height: 2;
 }
 
-.wcthankyoupage h3 {
+.thankyou-page h3 {
   font-size: inherit;
   letter-spacing: .09em;
   text-transform: uppercase;

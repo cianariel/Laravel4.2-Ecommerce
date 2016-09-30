@@ -19,9 +19,9 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
-
-<div class="wcthankyoupage">
-
+?>
+<div class="thankyou-page">
+<?php
 if ( $order ) : ?>
 
 	<?php if ( $order->has_status( 'failed' ) ) : ?>
