@@ -316,10 +316,7 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                         $this.css({
                             position: 'absolute',
                             top: ($(window).scrollTop() + 40) + 'px',
-                            //height: heightModal + 'px'
                         });
-
-                        $('html').addClass('overhide');
                     }
 
                     setTimeout(function(){

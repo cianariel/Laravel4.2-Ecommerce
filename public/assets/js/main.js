@@ -4055,6 +4055,13 @@ angular.module('colorpicker.module', [])
 
         });
 
+        $('html, body').on('touchmove', function(e){
+            // To prevent jerking on iphone when focusing modal fields, we make modal absolute (in public.common) and then prevent native touch activity like scrolling when newsletter modal is up
+            if($('.subscribe_email_popup').length){
+                e.preventDefault();
+            }
+        });
+
         $('.home-hamburger').click(function(){
             $('body').toggleClass('has-active-menu');
         });
@@ -4753,10 +4760,7 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                         $this.css({
                             position: 'absolute',
                             top: ($(window).scrollTop() + 40) + 'px',
-                            //height: heightModal + 'px'
                         });
-
-                        $('html').addClass('overhide');
                     }
 
                     setTimeout(function(){
