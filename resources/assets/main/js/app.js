@@ -460,16 +460,36 @@
 
         });
 
-        $('html, body').on('touchmove', function(e){
+            if(window.innerWidth < 620) {
+                $('a.signin').click(function () {
+                    setTimeout(function(){
+                        if( $('#myModal.login-signup-modal').is(':visible')){
+                            var modalHeight = $('#myModal.login-signup-modal > div').height();
+
+                            $('body').css('max-height', modalHeight + 'px');
+                            $('body').css('overflow', 'hidden');
+                        }else{
+                            $('body').css('max-height', 'none');
+                            $('body').css('overflow', 'auto');
+                        }
+                    }, 500)
+
+                });
+
+                $('.login-signup-modal .close-modal').click(function(){
+                    $('body').css('max-height', 'none');
+                    $('body').css('overflow', 'auto');
+                });
+            }
+
+
+
+            $('html, body').on('touchmove', function(e){
             // To prevent jerking on iphone when focusing modal fields, we make modal absolute (in public.common) and then prevent native touch activity like scrolling when newsletter modal is up
             if($('.subscribe_email_popup').length){
                 e.preventDefault();
             }
-            if( $('#myModal.login-signup-modal').is(':visible')){
-                if(!$(e.target).closest('#myModal.login-signup-modal').length) {
-                    e.preventDefault();
-                }
-            }
+
         });
 
         $('.home-hamburger').click(function(){
