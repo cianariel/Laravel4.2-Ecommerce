@@ -12104,7 +12104,6 @@ body.login-signup .login-signup-modal {
   position: static; }
 
 .login-signup-modal {
-  position: absolute;
   top: 28px;
   left: 0;
   overflow-y: visible;
@@ -12112,6 +12111,9 @@ body.login-signup .login-signup-modal {
   width: 100%;
   margin: auto;
   border-bottom: 1px solid #eee; }
+  @media (max-width: 620px) {
+    .login-signup-modal {
+      position: absolute; } }
   .login-signup-modal .alert:not(:first-child) {
     display: none; }
   .login-signup-modal .modal-content {
