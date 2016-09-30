@@ -14630,7 +14630,8 @@ body.shop-landing {
       border: none;
       width: auto;
       font-size: 25px;
-      color: #3d3d3d; }
+      color: #3d3d3d;
+      margin: 0 auto; }
       body.shop-landing .shoplanding-title legend .fill-with-red {
         color: #EC1B47;
         font-size: 25px;
@@ -14642,7 +14643,7 @@ body.shop-landing {
   body.shop-landing ul.nav-tabs.nav {
     border: none;
     border-bottom: 1px solid #DDDDDC;
-    width: 560px;
+    width: 556px;
     margin: 0 auto; }
     body.shop-landing ul.nav-tabs.nav li {
       border: none;
@@ -14696,7 +14697,8 @@ body.shop-landing {
     body.shop-landing .hot-deals legend {
       color: #94489A;
       padding-left: 0;
-      line-height: 42px; }
+      line-height: 42px;
+      margin: 0; }
     body.shop-landing .hot-deals h1 {
       font-family: montserratlight, sans-serif;
       font-size: 37px;
@@ -14832,7 +14834,7 @@ body.shop-landing {
       body.shop-landing .tab-pane .multirow-image-view .image-row-view .box-item .box-item__overlay {
         border-radius: 7px; }
   body.shop-landing .bottom-newest-arrival ul.nav-tabs.nav {
-    width: 315px; }
+    width: 311px; }
   body.shop-landing .mid-nav .wrap, .mid-nav body.shop-landing .extra-nav .wrap {
     height: 55px; }
   body.shop-landing #daily-deals {
@@ -15037,14 +15039,14 @@ body.shop-landing {
             margin-left: 50%;
             transform: translate(-50%, 0);
             padding: 0;
-            padding-top: 9px; }
+            padding-top: 5px; }
             .shop-page-header header #top-nav .search-box-container .shop-button-container .category-link__shop::before {
               content: "";
               position: absolute;
               width: 115%;
               height: 2px;
               background: #000000;
-              top: 35px;
+              top: 32px;
               left: -3px;
               visibility: hidden;
               -webkit-transform: scaleX(0);
