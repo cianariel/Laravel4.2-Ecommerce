@@ -13,8 +13,18 @@
 .secure-checkout .select2-drop,
 .secure-checkout .site-header,
 .secure-checkout .site-main {
-  font-family: Montserrat;
+  font-family: Montserratlight;
   font-size: 13px;
+}
+
+.secure-checkout .site-main h1,
+.secure-checkout .site-main h2,
+.secure-checkout .site-main h3,
+.secure-checkout .site-main h4,
+.secure-checkout .site-main h5,
+.secure-checkout .site-main h6 {
+  font-family: Montserratlight;
+  font-weight: 700;
 }
 
 .secure-checkout .site-header {
