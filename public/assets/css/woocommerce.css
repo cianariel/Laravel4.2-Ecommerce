@@ -306,10 +306,14 @@
 }
 
 .secure-checkout-nav a:hover {
-  background-color: #649b5c;
+  background-color: #b2b2b2;
   -webkit-transition: background-color .4s ease-out;
   transition: background-color .4s ease-out;
   cursor: pointer;
+}
+
+.secure-checkout-nav a.active:hover {
+  background-color: #649b5c;
 }
 
 .widget {
@@ -572,9 +576,20 @@
 .secure-checkout [type="submit"]:hover,
 .secure-checkout .button:focus,
 .secure-checkout .button:hover {
-  background-color: #c10633;
+  background-color: #b2b2b2;
   -webkit-transition: background-color .4s ease-out;
   transition: background-color .4s ease-out;
+}
+
+.secure-checkout .button-primary:focus,
+.secure-checkout .button-primary:hover,
+.secure-checkout [name="login"]:focus,
+.secure-checkout [name="login"]:hover,
+.secure-checkout .wc-backward:focus,
+.secure-checkout .wc-backward:hover,
+.secure-checkout .checkout-button:focus,
+.secure-checkout .checkout-button:hover {
+  background-color: #c10633;
 }
 
 .woocommerce-error,
