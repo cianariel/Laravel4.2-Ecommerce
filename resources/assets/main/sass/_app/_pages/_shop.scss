@@ -32,6 +32,7 @@ body.shop-landing{
       width: auto;
       font-size: 25px;
       color: #3d3d3d;
+      margin: 0 auto;
       .fill-with-red{
         color: #EC1B47;
         font-size: 25px;
@@ -48,7 +49,7 @@ body.shop-landing{
   ul.nav-tabs.nav{
     border: none;
     border-bottom: 1px solid #DDDDDC;
-    width: 560px;
+    width: 556px;
     margin: 0 auto;
     li{
       border: none;
@@ -132,6 +133,7 @@ body.shop-landing{
       color: #94489A;
       padding-left: 0;
       line-height: 42px;
+      margin: 0;
     }
     h1{
       font-family: montserratlight, sans-serif;
@@ -353,7 +355,7 @@ body.shop-landing{
 
   .bottom-newest-arrival{
     ul.nav-tabs.nav{
-      width: 315px;
+      width: 311px;
     }
   }
 
@@ -654,10 +656,12 @@ body.shop-landing{
       max-height: 110px !important;
       background: transparent;
       padding-bottom: 15px;
+      border: none;
 
       div.top-nav-holder {
         background: #FFFFFF !important;
         margin: 0 auto;
+        border: none;
       }
 
       .category-menu{
@@ -667,6 +671,9 @@ body.shop-landing{
         bottom: 0;
         ul{
           margin-left: 70px;
+          .category-link__deals{
+            display: block;
+          }
         }
       }
 
@@ -678,32 +685,63 @@ body.shop-landing{
         padding: 0;
         padding-top: 10px;
         padding-bottom: 15px;
+        border: none;
         .shop-button-container{
           display: block;
+          z-index: 50;
+          border: none;
+
           .category-link__shop{
             display: block;
-            background: #EB2148;
             height: auto;
             margin-left: 50%;
             transform: translate(-50%, 0);
+            padding: 0;
+            padding-top: 5px;
+
+            &::before{
+              content: "";
+              position: absolute;
+              width: 115%;
+              height: 2px;
+              background: #000000;
+              top: 32px;
+              left: -3px;
+              visibility: hidden;
+              -webkit-transform: scaleX(0);
+              transform: scaleX(0);
+              -webkit-transition: all .3s ease-in-out 0s;
+              transition: all .3s ease-in-out 0s
+            }
+
+            &:hover{
+              &::before{
+                visibility: visible;
+                -webkit-transform: scaleX(1);
+                transform: scaleX(1);
+              }
+            }
+
             .m-icon{
               font-size: 16px;
               color: #FFFFFF !important;
             }
             span{
-              font-size: 1.2em;
-              color: #FFFFFF !important;
+              font-size: 1.5rem !important;
+              color: #3d4b4e;
+              text-transform: capitalize;
             }
           }
         }
         .search-bar__overlay{
-          position: absolute;
+          position: fixed;
           left: 0;
           right: 0;
-          top: 0;
-          bottom: 0;
-          background-color: #FFFFFF;
+          top: 54px;
+          height: 55px;
+          background-color: #FFF;
           opacity: .4;
+          border-bottom: 1px solid #ECECEC;
         }
       }
 
