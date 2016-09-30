@@ -76,12 +76,8 @@
       self.review();
     });
 
-    setTimeout(function(){ self.update(); $('.woocommerce-billing-fields').prepend('50<br>') },  50 );
-    setTimeout(function(){ self.update(); $('.woocommerce-billing-fields').prepend('100<br>')}, 100 );
-    setTimeout(function(){ self.update(); $('.woocommerce-billing-fields').prepend('200<br>')}, 200 );
-    setTimeout(function(){ self.update(); $('.woocommerce-billing-fields').prepend('300<br>')}, 300 );
-    setTimeout(function(){ self.update(); $('.woocommerce-billing-fields').prepend('400<br>')}, 400 );
-    setTimeout(function(){ self.update(); $('.woocommerce-billing-fields').prepend('50<br>')}, 500 );
+    self.update();
+    setTimeout(function(){ self.update(); }, 50 );
   };
 
   ideaingCheckout.prototype.update = function () {
