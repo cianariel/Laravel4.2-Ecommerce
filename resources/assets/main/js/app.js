@@ -466,6 +466,10 @@
         (function() {
             /* In animations (to close icon) */
 
+            if (!$('#menu-icon-wrapper').length){
+                return;
+            }
+
             var beginAC = 80,
                 endAC = 320,
                 beginB = 80,
@@ -545,24 +549,24 @@
                 dummy = document.getElementById('dummy'),
                 wrapper = document.getElementById('menu-icon-wrapper');
 
-            wrapper.style.visibility = 'visible';
+                wrapper.style.visibility = 'visible';
 
-            trigger.onclick = function() {
-                if (toCloseIcon) {
-                    inAC(segmentA);
-                    inB(segmentB);
-                    inAC(segmentC);
+                trigger.onclick = function() {
+                    if (toCloseIcon) {
+                        inAC(segmentA);
+                        inB(segmentB);
+                        inAC(segmentC);
 
-                    dummy.className = 'dummy slide-menu dummy--active';
-                } else {
-                    outAC(segmentA);
-                    outB(segmentB);
-                    outAC(segmentC);
+                        dummy.className = 'dummy slide-menu dummy--active';
+                    } else {
+                        outAC(segmentA);
+                        outB(segmentB);
+                        outAC(segmentC);
 
-                    dummy.className = 'dummy  slide-menu';
-                }
-                toCloseIcon = !toCloseIcon;
-            };
+                        dummy.className = 'dummy  slide-menu';
+                    }
+                    toCloseIcon = !toCloseIcon;
+                };
 
 
         })();
