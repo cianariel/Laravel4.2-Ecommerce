@@ -44,7 +44,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 		<?php if ( $checkout->enable_guest_checkout ) : ?>
 
 			<p class="form-row form-row-wide create-account">
-				<input class="input-checkbox" id="createaccount" <?php checked( ( true === $checkout->get_value( 'createaccount' ) || ( true === apply_filters( 'woocommerce_create_account_default_checked', false ) ) ), true) ?> type="checkbox" name="createaccount" value="1" /> <label for="createaccount" class="checkbox"><?php _e( 'Create an account?', 'woocommerce' ); ?></label>
+					<input class="input-checkbox" id="createaccount" <?php checked( ( true === $checkout->get_value( 'createaccount' ) || ( true === apply_filters( 'woocommerce_create_account_default_checked', false ) ) ), true) ?> type="checkbox" name="createaccount" value="1" />
+					<label for="createaccount" class="sc-checkbox sc-checkbox-alt normal"><?php _e( 'Create an account?', 'woocommerce' ); ?></label>
 			</p>
 
 		<?php endif; ?>
@@ -55,7 +56,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 			<div class="create-account">
 
-				<p><?php _e( 'Create an account by entering the information below. If you are a returning customer please login at the top of the page.', 'woocommerce' ); ?></p>
+				<div class="woocommerce-info">
+					<?php _e( 'Create an account by entering the information below. <br>If you are a returning customer please login at the top of the page.', 'woocommerce' ); ?>
+				</div>
 
 				<?php foreach ( $checkout->checkout_fields['account'] as $key => $field ) : ?>
 
@@ -73,7 +76,22 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 	<?php endif; ?>
 
-	<p style="opacity: .5">TODO: This has no design, should I go with something similar to rest of design</p>
-	<br>
+	<?php if ( WC()->cart->needs_shipping() && WC()->cart->show_shipping() ) : ?>
+
+		<?php do_action( 'woocommerce_review_order_before_shipping' ); ?>
+
+		<?php wc_cart_totals_shipping_html(); ?>
+
+		<?php do_action( 'woocommerce_review_order_after_shipping' ); ?>
+
+	<?php endif; ?>
+
+	<div class="form-row text-right">
+		<label class="normal button button-primary on2"><?php _e('Continue to Payment '); ?></label>
+	</div>
+
+	<header class="entry-header-alt">
+		<?php printf( '<h1 class="entry-title">%s<mark>%s</mark></h1>', __('2. Payment', 'woocommerce'), __('Step 2 of 2') ); ?>
+	</header><!-- .entry-header -->
 
 </div>
