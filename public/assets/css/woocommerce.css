@@ -1048,15 +1048,18 @@ label[for="payment_method_paypal"] {
   color: #dbdbdb;
 }
 
-.order_details {
- line-height: 2;
+.thankyou-page {
+  line-height: 2;
 }
 
+table.customer_details,
 table.order_details  {
   width: 100%;
   border: solid 1px #dbdbdb;
 }
 
+table.customer_details th,
+table.customer_details td,
 table.order_details th,
 table.order_details td {
   padding: 8px;
@@ -1075,6 +1078,11 @@ table.order_details td {
   display: block;
   -webkit-animation: ideaingfadeIn .4s ease-out;
   animation: ideaingfadeIn .4s ease-out;
+}
+
+.bk--to--home {
+  margin: 50px 0;
+  text-align: right;
 }
 
 @-webkit-keyframes ideaingfadeIn {
