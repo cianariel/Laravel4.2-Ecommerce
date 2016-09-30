@@ -38,9 +38,18 @@ add_filter('body_class', 'ideaing_body_class_filter', 99, 1 );
  * @return return string
  * @since WooCommerce Integration 1.0
  */
-function ideaing_gateway_icon($icon, $id){
+function ideaing_gateway_icon($icon, $gateway){
 
-  return 'stripe' == $id ? '<img class="visa-mastercart" src="/../assets/images/visa-mc.png">' : $icon;
+  switch ($gateway) {
+    case 'paypal':
+      $icon = '<img alt="Paypal" src="/../assets/images/paypal.svg">';
+      break;
+
+    case 'stripe':
+      $icon = '<img alt="Visa Mastercart" src="/../assets/images/visa-mc.png">';
+      break;
+  }
+  return $icon;
 }
 add_filter('woocommerce_gateway_icon', 'ideaing_gateway_icon', 99, 2);
 

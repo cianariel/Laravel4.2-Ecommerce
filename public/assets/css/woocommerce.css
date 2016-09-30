@@ -899,7 +899,7 @@ label[for="shipping_address_1"] {
 
 .payment_method_stripe img {
   position: absolute;
-  top: 0;
+  top: 13px;
   right: 15px;
   height: 20px;
   width: auto;
