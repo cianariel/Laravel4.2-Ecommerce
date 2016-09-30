@@ -304,6 +304,21 @@ function ideaing_secure_checkout_nav(){
       , __('Success', 'ideaing')
     );
 
+  } elseif (is_wc_endpoint_url( 'order-received' )) {
+
+    printf(
+      implode(
+        array(
+          '<span class="active"><span>%s</span></span>',
+          '<span class="active"><span>%s</span></span>',
+          '<span class="active"><span>%s</span></span>'
+        )
+      )
+      , __('Cart', 'ideaing')
+      , __('Your information', 'ideaing')
+      , __('Success', 'ideaing')
+    );
+
   } elseif (is_checkout()) {
 
     printf(
