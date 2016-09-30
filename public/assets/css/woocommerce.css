@@ -897,12 +897,23 @@ label[for="shipping_address_1"] {
   margin-bottom: -1px;
 }
 
-.payment_method_stripe img {
+.wc_payment_method > label img {
   position: absolute;
-  top: 13px;
+  top: 50%;
   right: 15px;
   height: 20px;
   width: auto;
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+label[for="payment_method_paypal"] {
+  color: transparent;
+}
+
+.payment_method_paypal img {
+  right: auto;
+  left: 46px;
 }
 
 .payment_box {
@@ -936,6 +947,7 @@ label[for="shipping_address_1"] {
   border-radius: 0 0 2px 2px;
 }
 
+.wc_payment_method > label:before,
 .sc-checkbox:before {
   content: '';
   display: block;
@@ -947,6 +959,7 @@ label[for="shipping_address_1"] {
   border-radius: 4px;
 }
 
+.wc_payment_method > label:after,
 .sc-checkbox:after {
   content: '\e5ca';
   position: absolute;
@@ -974,6 +987,7 @@ label[for="shipping_address_1"] {
   left: 2px;
 }
 
+.wc_payment_method > label:after,
 #shipping_method .sc-checkbox:after,
 [for="createaccount"]:after,
 .sc-checkbox + .sc-checkbox:after,
@@ -981,6 +995,7 @@ label[for="shipping_address_1"] {
   opacity: 0;
 }
 
+.wc_payment_method > input:checked + label:after,
 #shipping_method input:checked + .sc-checkbox:after,
 #createaccount:checked + [for="createaccount"]:after,
 .on-add-billing ~ .sc-checkbox + .sc-checkbox:after {
