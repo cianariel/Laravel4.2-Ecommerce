@@ -17,6 +17,6 @@
 </div>
 
 @include('layouts.parts.side-menu')
-
+<?php include('/var/www/ideaing/resources/views/layouts/parts/modals/newsletter.blade.php'); ?>
 </body>
 </html>

@@ -4047,10 +4047,10 @@ angular.module('colorpicker.module', [])
                     }
                 }
 
-                if($('.subscribe_email_popup').length){
-                    var offset = $(window).scrollTop() + 40;
-                    $('.subscribe_email_popup').css('top', offset);
-                }
+                //if($('.subscribe_email_popup').length){
+                //    var offset = $(window).scrollTop() + 40;
+                //    $('.subscribe_email_popup').css('top', offset);
+                //}
             }
 
         });

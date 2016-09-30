@@ -13379,8 +13379,7 @@ body.error-page .error-banner-holder {
       bottom: auto;
       top: 10px;
       right: 0;
-      margin: auto;
-      position: absolute !important; } }
+      margin: auto; } }
   .subscribe_email_popup .modal-content {
     background: transparent !important;
     box-shadow: none;
