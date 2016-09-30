@@ -22,16 +22,21 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 ?>
 <div class="woocommerce-shipping-fields">
+
 	<?php if ( true === WC()->cart->needs_shipping_address() ) : ?>
 
 		<header class="entry-header">
-			<h3 class="entry-title-alt"><?php _e('Billing shipping address'); ?></h3>
+			<h3 class="entry-title-alt"><?php _e('Shipping address'); ?></h3>
 		</header><!-- .entry-header -->
 
-		<input id="ship-to-different-address-checkbox" class="input-checkbox" <?php checked( apply_filters( 'woocommerce_ship_to_different_address_checked', 'shipping' === get_option( 'woocommerce_ship_to_destination' ) ? 1 : 0 ), 1 ); ?> type="checkbox" name="ship_to_different_address" value="1" />
+		<?php $shipping = apply_filters( 'woocommerce_ship_to_different_address_checked', 'shipping' === get_option( 'woocommerce_ship_to_destination' ) ? 1 : 0 );
+		?>
+		<div id="ship-to-different-address" <?php echo $shipping ? 'class="on-add-billing"' : '' ?>>
+			<input id="ship-to-different-address-checkbox" class="input-checkbox" <?php checked( $shipping, 1 ); ?> type="checkbox" name="ship_to_different_address" value="1" />
+		</div>
 
-		<label for="ship-to-different-address-checkbox" class="checkbox"><?php _e( 'Same as shipping address', 'woocommerce' ); ?></label>
-		<label for="ship-to-different-address-checkbox" class="checkbox"><?php _e( 'Add a billing address', 'woocommerce' ); ?></label>
+		<label class="ship-to-diff-address sc-checkbox normal same-address"><?php _e( 'Same as billing address', 'woocommerce' ); ?></label>
+		<label class="ship-to-diff-address sc-checkbox normal"><?php _e( 'Add a shipping address', 'woocommerce' ); ?></label>
 
 		<div class="shipping_address">
 
@@ -73,3 +78,26 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 	<?php do_action( 'woocommerce_after_order_notes', $checkout ); ?>
 </div>
+
+<div class="form-row place-order text-right">
+	<noscript>
+		<?php _e( 'Since your browser does not support JavaScript, or it is disabled, please ensure you click the <em>Update Totals</em> button before placing your order. You may be charged more than the amount stated above if you fail to do so.', 'woocommerce' ); ?>
+		<br/><input type="submit" class="button alt" name="woocommerce_checkout_update_totals" value="<?php esc_attr_e( 'Update totals', 'woocommerce' ); ?>" />
+	</noscript>
+
+	<?php wc_get_template( 'checkout/terms.php' ); ?>
+
+	<?php do_action( 'woocommerce_review_order_before_submit' ); ?>
+
+	<?php $order_button_text = __('Make purchase', 'woocommerce'); ?>
+
+	<?php echo apply_filters( 'woocommerce_order_button_html', '<input type="submit" class="button button-primary" name="woocommerce_checkout_place_order" id="place_order" value="' . esc_attr( $order_button_text ) . '" data-value="' . esc_attr( $order_button_text ) . '" />' ); ?>
+
+	<?php do_action( 'woocommerce_review_order_after_submit' ); ?>
+
+	<?php wp_nonce_field( 'woocommerce-process_checkout' ); ?>
+</div>
+<?php
+if ( ! is_ajax() ) {
+	do_action( 'woocommerce_review_order_after_payment' );
+}

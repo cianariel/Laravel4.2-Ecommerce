@@ -91,7 +91,7 @@ add_filter('get_ideaing_cart_contents_count', 'get_ideaing_cart_contents_count')
  */
 function get_ideaing_woocommerce_cart_totals(){
 
- wc_get_template( 'cart/cart-totals.php' );
+  wc_get_template( 'cart/cart-totals.php' );
 }
 add_action('get_ideaing_woocommerce_cart_totals', 'get_ideaing_woocommerce_cart_totals');
 
@@ -138,6 +138,85 @@ add_filter( 'woocommerce_form_field_email' , 'ideaing_form_field_email_modify', 
 add_filter( 'woocommerce_form_field_text' , 'ideaing_form_field_email_modify', 99, 4 );
 
 /**
+ * Get a shipping methods full label including price.
+ * @param  WC_Shipping_Rate $method
+ * @return string
+ */
+function ideaing_cart_totals_shipping_method_label( $method ) {
+	$label = sprintf('<th>%s</th><td>', $method->get_label() );
+
+	if ( $method->cost > 0 ) {
+		if ( WC()->cart->tax_display_cart == 'excl' ) {
+			$label .= wc_price( $method->cost );
+			if ( $method->get_shipping_tax() > 0 && WC()->cart->prices_include_tax ) {
+				$label .= ' <small class="tax_label">' . WC()->countries->ex_tax_or_vat() . '</small>';
+			}
+		} else {
+			$label .= wc_price( $method->cost + $method->get_shipping_tax() );
+			if ( $method->get_shipping_tax() > 0 && ! WC()->cart->prices_include_tax ) {
+				$label .= ' <small class="tax_label">' . WC()->countries->inc_tax_or_vat() . '</small>';
+			}
+		}
+	} else {
+    $label .= __('FREE');
+  }
+
+  $label .= '</td>';
+
+	return apply_filters( 'ideaing_cart_shipping_method_full_label', $label, $method );
+}
+
+/**
+ * Filter cart_shipping_method_full_label function
+ *
+ * @since WooCommerce Integration 1.0
+ */
+function ideaing_cart_shipping_method_full_label( $label, $method ) {
+
+  if ( $method->cost > 0 ) {
+    $label = str_replace(':', '', $label);
+  } else {
+    $label .= ' <span class="amount amount-free">'.__('FREE').'</span>';
+  }
+
+  return $label;
+}
+add_filter( 'woocommerce_cart_shipping_method_full_label', 'ideaing_cart_shipping_method_full_label', 99, 2 );
+
+
+/**
+ * undocumented function summary
+ *
+ * Undocumented function long description
+ *
+ * @param type var Description
+ * @return return type
+ */
+function ideaing_selected_shipping(){
+  $packages = WC()->shipping->get_packages();
+
+	foreach ( $packages as $i => $package ) {
+		$chosen_method = isset( WC()->session->chosen_shipping_methods[ $i ] ) ? WC()->session->chosen_shipping_methods[ $i ] : '';
+		$product_names = array();
+
+		if ( sizeof( $packages ) > 1 ) {
+			foreach ( $package['contents'] as $item_id => $values ) {
+				$product_names[] = $values['data']->get_title() . ' &times;' . $values['quantity'];
+			}
+		}
+
+		wc_get_template( 'cart/cart-selected-shipping.php', array(
+			'package'              => $package,
+			'available_methods'    => $package['rates'],
+			'show_package_details' => sizeof( $packages ) > 1,
+			'package_details'      => implode( ', ', $product_names ),
+			'package_name'         => apply_filters( 'woocommerce_shipping_package_name', sprintf( _n( 'Shipping', 'Shipping %d', ( $i + 1 ), 'woocommerce' ), ( $i + 1 ) ), $i, $package ),
+			'index'                => $i,
+			'chosen_method'        => $chosen_method
+		) );
+	}
+}
+/**
  * Checkout.
  *
  * @see woocommerce_checkout_login_form()
@@ -152,12 +231,30 @@ remove_action( 'woocommerce_before_checkout_form', 'woocommerce_checkout_coupon_
 
 add_filter( 'woocommerce_cart_needs_shipping_address', '__return_true', 99 );
 
+/**
+ * undocumented function summary
+ *
+ * Undocumented function long description
+ *
+ * @param type var Description
+ * @return return type
+ */
+function ideaing_terms_is_checked_default( $term ){
+
+  return true;
+}
+add_filter('woocommerce_terms_is_checked_default', 'ideaing_terms_is_checked_default', 99, 1);
+
+
 function ideaing_override_checkout_fields( $fields ) {
     unset($fields['billing']['billing_company']);
     unset($fields['billing']['billing_address_2']);
     unset($fields['shipping']['shipping_company']);
     unset($fields['shipping']['shipping_address_2']);
     unset($fields['order']['order_comments']);
+
+    $fields['account']['account_password']['placeholder'] = '';
+
     return $fields;
 }
 add_filter( 'woocommerce_checkout_fields' , 'ideaing_override_checkout_fields' );
@@ -314,7 +411,7 @@ function ideaing_cart_widget_render(){
 add_action('ideaing_cart_widget_render', 'ideaing_cart_widget_render');
 
 /**
- * Ensure cart contents update when products are added to the cart via AJAX
+ * Ensure cart contents updates when products are added to the cart via AJAX
  *
  * @return array
  **/
@@ -325,3 +422,38 @@ function ideaing_cart_content_fragment( $fragments ) {
 	return $fragments;
 }
 add_filter( 'woocommerce_add_to_cart_fragments', 'ideaing_cart_content_fragment', 99, 1 );
+
+/**
+ * Ensure order summary updates when checkout page is updates via AJAX
+ *
+ * @return array
+ **/
+function ideaing_update_order_review_fragments( $fragments ) {
+
+  unset($fragments['.woocommerce-checkout-review-order-table']);
+
+  ob_start();
+    do_action('get_ideaing_woocommerce_cart_totals');
+    $order_summary = ob_get_contents();
+  ob_end_clean();
+
+	$fragments['.cart_totals'] = $order_summary;
+
+  ob_start();
+    if ( WC()->cart->needs_shipping() && WC()->cart->show_shipping() ) :
+
+  		do_action( 'woocommerce_review_order_before_shipping' );
+
+  		  wc_cart_totals_shipping_html();
+
+  		do_action( 'woocommerce_review_order_after_shipping' );
+
+  	endif;
+    $select_shipping_method = ob_get_contents();
+  ob_end_clean();
+
+  $fragments['.select-shipping-method'] = $select_shipping_method;
+
+	return $fragments;
+}
+add_filter( 'woocommerce_update_order_review_fragments', 'ideaing_update_order_review_fragments', 99, 1 );

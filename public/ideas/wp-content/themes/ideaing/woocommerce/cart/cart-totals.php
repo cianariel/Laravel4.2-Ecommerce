@@ -41,12 +41,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 		<?php if ( WC()->cart->needs_shipping() && WC()->cart->show_shipping() ) : ?>
 
-
-			<?php // do_action( 'woocommerce_cart_totals_before_shipping' ); ?>
-
-			<?php // wc_cart_totals_shipping_html(); ?>
-
-			<?php // do_action( 'woocommerce_cart_totals_after_shipping' ); ?>
+			<?php ideaing_selected_shipping(); ?>
 
 		<?php elseif ( WC()->cart->needs_shipping() && 'yes' === get_option( 'woocommerce_enable_shipping_calc' ) ) : ?>
 
@@ -95,10 +90,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 		<?php do_action( 'woocommerce_cart_totals_after_order_total' ); ?>
 
 	</table>
-
-	<div class="wc-proceed-to-checkout">
-		<?php // do_action( 'woocommerce_proceed_to_checkout' ); ?>
-	</div>
 
 	<?php if ( true == false && wc_coupons_enabled() ) { /// TODO: here ?>
 		<div class="coupon">

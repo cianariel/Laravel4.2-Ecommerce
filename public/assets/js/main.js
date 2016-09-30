@@ -11,33 +11,33 @@ return new Za.prototype.init(a,b,c,d,e)}m.Tween=Za,Za.prototype={constructor:Za,
  * to offer multiple easing options
  *
  * TERMS OF USE - jQuery Easing
- * 
- * Open source under the BSD License. 
- * 
+ *
+ * Open source under the BSD License.
+ *
  * Copyright В© 2008 George McGinley Smith
  * All rights reserved.
- * 
- * Redistribution and use in source and binary forms, with or without modification, 
+ *
+ * Redistribution and use in source and binary forms, with or without modification,
  * are permitted provided that the following conditions are met:
- * 
- * Redistributions of source code must retain the above copyright notice, this list of 
+ *
+ * Redistributions of source code must retain the above copyright notice, this list of
  * conditions and the following disclaimer.
- * Redistributions in binary form must reproduce the above copyright notice, this list 
- * of conditions and the following disclaimer in the documentation and/or other materials 
+ * Redistributions in binary form must reproduce the above copyright notice, this list
+ * of conditions and the following disclaimer in the documentation and/or other materials
  * provided with the distribution.
- * 
- * Neither the name of the author nor the names of contributors may be used to endorse 
+ *
+ * Neither the name of the author nor the names of contributors may be used to endorse
  * or promote products derived from this software without specific prior written permission.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY 
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY
  * EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
  * MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE
  *  COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
  *  EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE
- *  GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED 
+ *  GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED
  * AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
- *  NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED 
- * OF THE POSSIBILITY OF SUCH DAMAGE. 
+ *  NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED
+ * OF THE POSSIBILITY OF SUCH DAMAGE.
  *
 */
 
@@ -153,7 +153,7 @@ jQuery.extend( jQuery.easing,
 		return c*((t=t/d-1)*t*((s+1)*t + s) + 1) + b;
 	},
 	easeInOutBack: function (x, t, b, c, d, s) {
-		if (s == undefined) s = 1.70158; 
+		if (s == undefined) s = 1.70158;
 		if ((t/=d/2) < 1) return c/2*(t*t*(((s*=(1.525))+1)*t - s)) + b;
 		return c/2*((t-=2)*t*(((s*=(1.525))+1)*t + s) + 2) + b;
 	},
@@ -180,33 +180,33 @@ jQuery.extend( jQuery.easing,
 /*
  *
  * TERMS OF USE - EASING EQUATIONS
- * 
- * Open source under the BSD License. 
- * 
+ *
+ * Open source under the BSD License.
+ *
  * Copyright В© 2001 Robert Penner
  * All rights reserved.
- * 
- * Redistribution and use in source and binary forms, with or without modification, 
+ *
+ * Redistribution and use in source and binary forms, with or without modification,
  * are permitted provided that the following conditions are met:
- * 
- * Redistributions of source code must retain the above copyright notice, this list of 
+ *
+ * Redistributions of source code must retain the above copyright notice, this list of
  * conditions and the following disclaimer.
- * Redistributions in binary form must reproduce the above copyright notice, this list 
- * of conditions and the following disclaimer in the documentation and/or other materials 
+ * Redistributions in binary form must reproduce the above copyright notice, this list
+ * of conditions and the following disclaimer in the documentation and/or other materials
  * provided with the distribution.
- * 
- * Neither the name of the author nor the names of contributors may be used to endorse 
+ *
+ * Neither the name of the author nor the names of contributors may be used to endorse
  * or promote products derived from this software without specific prior written permission.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY 
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY
  * EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
  * MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE
  *  COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
  *  EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE
- *  GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED 
+ *  GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED
  * AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
- *  NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED 
- * OF THE POSSIBILITY OF SUCH DAMAGE. 
+ *  NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED
+ * OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  */;
 /**
@@ -2962,7 +2962,7 @@ function(a,b,c){"use strict";function d(){this.$get=["$$sanitizeUri",function(a)
 });
 ;
 //# sourceMappingURL=angular-file-upload.js.map;
-// jQuery RoyalSlider plugin. Copyright Dmitry Semenov http://dimsemenov.com 
+// jQuery RoyalSlider plugin. Copyright Dmitry Semenov http://dimsemenov.com
 // jquery.royalslider v9.5.7
 (function(n){function v(b,f){var c,a=this,e=window.navigator,g=e.userAgent.toLowerCase();a.uid=n.rsModules.uid++;a.ns=".rs"+a.uid;var d=document.createElement("div").style,h=["webkit","Moz","ms","O"],k="",l=0,q;for(c=0;c<h.length;c++)q=h[c],!k&&q+"Transform"in d&&(k=q),q=q.toLowerCase(),window.requestAnimationFrame||(window.requestAnimationFrame=window[q+"RequestAnimationFrame"],window.cancelAnimationFrame=window[q+"CancelAnimationFrame"]||window[q+"CancelRequestAnimationFrame"]);window.requestAnimationFrame||
 (window.requestAnimationFrame=function(a,b){var c=(new Date).getTime(),d=Math.max(0,16-(c-l)),e=window.setTimeout(function(){a(c+d)},d);l=c+d;return e});window.cancelAnimationFrame||(window.cancelAnimationFrame=function(a){clearTimeout(a)});a.isIPAD=g.match(/(ipad)/);a.isIOS=a.isIPAD||g.match(/(iphone|ipod)/);c=function(a){a=/(chrome)[ \/]([\w.]+)/.exec(a)||/(webkit)[ \/]([\w.]+)/.exec(a)||/(opera)(?:.*version|)[ \/]([\w.]+)/.exec(a)||/(msie) ([\w.]+)/.exec(a)||0>a.indexOf("compatible")&&/(mozilla)(?:.*? rv:([\w.]+)|)/.exec(a)||
@@ -3828,7 +3828,7 @@ angular.module('colorpicker.module', [])
             e.preventDefault();
             $('.shop-by-category-item').removeClass('selected');
             $('.shop-by-category-submneu').removeClass('selected');
-            
+
             if($(this).hasClass('show-menus')){
                 $(this).parent().addClass('selected');
                 var submenu = $(this).parent().data('submenu');
@@ -3838,14 +3838,14 @@ angular.module('colorpicker.module', [])
         $('.desktop-view .shop-by-category-item').mouseover(function(e){
             $('.shop-by-category-item').removeClass('selected');
             $('.shop-by-category-submneu').removeClass('selected');
-            
+
 //            if($(this).find('a').hasClass('show-menus')){
                 $(this).addClass('selected');
                 var submenu = $(this).data('submenu');
                 $('.shop-by-category-submneu.' + submenu).addClass('selected');
 //            }
         });
-        
+
         $('.show-and-hide-grandchild').click(function(){
             if($(this).parent().hasClass('selected')){
                 $(".shop-by-category-submneu > div").removeClass('selected');
@@ -3854,8 +3854,8 @@ angular.module('colorpicker.module', [])
                 $(this).parent().addClass('selected');
             }
         })
-        
-        
+
+
         $('#mobile-shop-by-category-items').change(function(){
             $('.shop-by-category-submneu').removeClass('active');
             var submenu = $(this).val();
@@ -3889,7 +3889,7 @@ angular.module('colorpicker.module', [])
                 $(".hideen-hero-category-menu").show();
             }
         })
-        
+
         $(".hideen-hero-category-menu a").click(function(){
             $(".hideen-hero-category-menu").hide();
         })
@@ -3899,14 +3899,14 @@ angular.module('colorpicker.module', [])
                 $(this).parent().addClass('hover');
                 if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
                 $(this).parent().removeClass('un-hover');
-                }                
-                
+                }
+
                 $(this).find('.p-show').hide();
                 $(this).find('.p-close').show();
             }else{
                 if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
                 $(this).parent().addClass('un-hover');
-                }                
+                }
                 $(this).parent().removeClass('hover');
                 $(this).find('.p-show').show();
                 $(this).find('.p-close').hide();
@@ -3947,7 +3947,7 @@ angular.module('colorpicker.module', [])
                     $('.sticks-on-scroll').addClass('stick');
                 } else {
                     $('.sticks-on-scroll').removeClass('stick');
-                } 
+                }
             }
 
         }
@@ -4059,6 +4059,8 @@ angular.module('colorpicker.module', [])
 
         // Hamburger menu animation
         (function() {
+
+					return 'still not valid'
             /* In animations (to close icon) */
 
             var beginAC = 80,
@@ -5008,7 +5010,7 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                 $('.story-hero-slider').royalSlider(args);
             });
 
-          
+
              var args = {
                     arrowsNav: false,
                     loop: true,
@@ -5242,13 +5244,13 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
             var statusCode = data.status_code;
 
             console.log(statusCode);
-            
+
             switch (statusCode) {
                 case 400:
                 {
                     if (data.data.error.message[0] == "Validation failed") {
                         $scope.addAlert('danger', $scope.buildErrorMessage(data.data.error.message[1]));
-                    } 
+                    }
                 }
                     break;
                 case 401:
@@ -5311,9 +5313,9 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                 {
                     if (data.data.message == 'Successfully authenticated') {
                     	if(goTo === 'home'){
-                    		window.location = '/';		 
+                    		window.location = '/';
                     	}else if(goTo == 'profile'){
-                            window.location = '/user/profile';      
+                            window.location = '/user/profile';
                     	}else if(goTo == 'welocome'){
                             window.location = '/welcome';
                     	}else{
@@ -5321,7 +5323,7 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                             if($('html').hasClass('idea-stories')){
                                 $timeout = 4000;
                             }else{
-                                $timeout = 1; 
+                                $timeout = 1;
                             }
 
                          // $scope.addAlert('success', data.data.message);
@@ -5554,7 +5556,7 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                     'Source': source,
                     'SetCookie': 'true'
                 }
-            }).success(function (data) { 
+            }).success(function (data) {
 
                 if (data.status_code == 406) {
 
@@ -5563,14 +5565,14 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                 else if (data.status_code == 200) {
 
                     $scope.responseMessage = "Success! You'll start receiving the best tips in the world";
-                    // $('.alerts').addClass('alertme');  
+                    // $('.alerts').addClass('alertme');
                     $('.toggles, .bordering .content').animate({opacity: "0"}, function(){
-                         setTimeout(function(){ 
+                         setTimeout(function(){
                             $scope.hideAndForget();
                         }, 2000);
                     })
- 
-                    //Redirect a user to registration page. 
+
+                    //Redirect a user to registration page.
                     //window.location = '/signup/' + formData.SubscriberEmail + '/' + source;
 
                 } else if (data.data.isUser == 1) {
@@ -5638,7 +5640,7 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                     $scope.responseMessage = data;
                 }
             });
- 
+
         };
 
         $scope.registerSubscribedUser = function (from) {
@@ -5695,7 +5697,7 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                     Valid: true
                 }
 
-            }).success(function (data) { 
+            }).success(function (data) {
                 $scope.outputStatus(data, data.data, 'welcome', from);
             });
 
@@ -6176,7 +6178,7 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
 
             $http({
                 url: '/api/social/get-fan-counts',
-                method: "GET", 
+                method: "GET",
                 params: {'url': thisUrl}
             }).success(function (response) {
                 $('.fan-count.twi').html(response.twitter);
@@ -6307,7 +6309,7 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
 
             $scope.loadReadContent($category);
         }
-      
+
 
         $scope.renderHTML = function(html_code)
         {
@@ -6328,7 +6330,7 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
                      $('.popular-box').fadeIn();
                 });
 
-        
+
 
             $scope.firstLoad = pagingApi.getGridContent(1, 0, false, false,  $scope.ideaCategory).success(function (response) {
                 $scope.allContent[0] = response;
@@ -6389,7 +6391,7 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
             $return['row-4'] = $ideas.slice(4, 5);
             $return['row-5'] = $ideas.slice(5, 7);
             $return['row-6'] = $products.slice(3, 6);
-           
+
             return $return;
         };
 
@@ -6665,7 +6667,7 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
 
     })
 //    .controller('ModalInstanceCtrltest', function ($scope, $uibModalInstance) {
-//        
+//
 //        $scope.ok = function () {
 //            $uibModalInstance.close();
 //        };
@@ -6675,7 +6677,7 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
 //        };
 //    })
     .controller('shoplandingController', ['$scope', '$http', 'pagingApi', '$timeout', '$uibModal', function ($scope, $http, pagingApi, $timeout, $uibModal) {
-        
+
         $scope.renderHTML = function(html_code)
         {
             var decoded = angular.element('<div />').html(html_code).text();
@@ -6718,11 +6720,11 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
                     //    autoScaleSliderHeight: 500,
                     //    autoScaleSlider: true
                 });
-                }, 
+                },
             100);
-            
-            
-              
+
+
+
 
         });
 
@@ -6740,7 +6742,7 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
                 }
                 $scope.hasMore = response['hasMore'];
             }
-            
+
             $timeout(function(){
                 jQuery('#newest-arrivals').royalSlider({
                     arrowsNav: true,
@@ -6949,13 +6951,13 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
             if(body[0].offsetWidth < 880){
                 return;
             }
-            
+
             document.getElementsByTagName('html')[0].className += " hide-overflow ";
             var templateUrl = "product-popup.html";
             $http({
                 url: '/api/product/get-product/' + productId,
                 method: "get",
-            }).success(function (data) {  
+            }).success(function (data) {
                 $scope.productData = data;
             var modalInstance = $uibModal.open({
               templateUrl: templateUrl,
@@ -6995,10 +6997,10 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
                                 <img class="vendor-logo" width="107" src="'+ data.storeInformation['ImagePath'] +'" alt="'+ data.storeInformation['StoreName'] +'">\
                             ';
                             $('.product-popup-modal .p-get-it-amazon .p-body').html(html);
-                            
+
 
 //                            $('.product-popup-modal .get-round').attr('href', data.productInformation['AffiliateLink']);
-                            
+
                             if(data.productInformation['Review']){
                                 var pScore = parseInt(((( Number(data.productInformation['Review'][0].value) > 0 ? Number(data.productInformation['Review'][0].value) : Number(data.productInformation['Review'][1].value)) + Number(data.productInformation['Review'][1].value))/2)*20) + "%";
                                 $('.product-popup-modal .p-score').html(pScore);
@@ -7016,7 +7018,7 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
                                 price = 0;
                             }
                             $('.product-popup-modal .aws-price').html(price);
-                            
+
                             var features;
                             if(data.productInformation['Description']){
                                 features = data.productInformation['Description'];
@@ -7024,7 +7026,7 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
                                 features = "";
                             }
                             $('#features').html(features);
-                            
+
                             var starRatingHtml = "";
                                 $stars = data.productInformation['Review'][0].value;
                                 $fStar = Math.floor($stars);
@@ -7086,7 +7088,7 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
                                                         target="_blank">'+ review.key + '\
                                                     </a></div>\
                                                 <div class="star-rating" style="text-align: center">';
-                                                
+
                                                     $stars = review.value ? review.value : 0;
                                                     $fStar = Math.floor($stars);
                                                     $cStar = Math.ceil($stars);
@@ -7155,10 +7157,10 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
                                         ';
                                     }
                                 }
-                                
+
                                 $(".product-popup-modal .amazon .star-rating").html(starRatingHtml);
                                 var counter = data.productInformation['Review'][1].counter == '' ? 0 : data.productInformation['Review'][1].counter;
-                                var starRatingLabelHtml = '<a href="' + (data.productInformation['Review'][1].link ? data.productInformation['Review'][1].link : "#") + '" target="_blank">'; 
+                                var starRatingLabelHtml = '<a href="' + (data.productInformation['Review'][1].link ? data.productInformation['Review'][1].link : "#") + '" target="_blank">';
                                 if(counter>1){
                                     starRatingLabelHtml +=  counter + '\
                                         <span class="light-black">\
@@ -7174,7 +7176,7 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
                                 }
                                 starRatingLabelHtml += "</a>";
                                 $(".product-popup-modal .amazon .star-rating-label").html(starRatingLabelHtml);
-                            
+
                             var criticQuoteHtml = '\
                                 <div>' + (data.productInformation['ReviewExtLink'] ? data.productInformation['ReviewExtLink'] : "") + '</div>';
                             $('.product-popup-modal .critic-quote').html(criticQuoteHtml);
@@ -7203,14 +7205,14 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
                                         </div>\
                                     ';
                                 }
-                                
-                                
+
+
                                 $('.p-comment-content-holder').html(commentsHtml);
                                 $('.p-comment-responses').html(commentsCountView);
                               //  console.log($scope.comments.length);
                             });
 
-                            
+
                     jQuery('#product-slider').royalSlider({
                         loop: false,
                         keyboardNavEnabled: true,
@@ -7228,19 +7230,19 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
                                 imgHeight: "100%",
 //                                imgWidth: "100%",
 //                                imgWidth: "100%",
-//                                autoHeight: true,  
+//                                autoHeight: true,
                         deeplinking: {
                           enabled: true,
                           change: false
                         },
-                        
+
                         autoHeight: true,
                     });
                     document.getElementById( 'product-slider' ).style.visibility = 'visible';
                         }
                     }, 100)
                 })
-                    
+
 
             modalInstance.result.finally(function(){
                 var className = document.getElementsByTagName('html')[0].className;
@@ -7257,7 +7259,7 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
         pagingApi.fakeUpdateCounts = function ($service) {
             var currentCounters =  $('.share-buttons a[data-service="' + $service + '"]').children('.share-count');
             var totalCounters = $('b.share-count.all');
-			
+
 			var currentCount = Number(currentCounters.html());
 			currentCounters.html(currentCount + 1);
 
@@ -7286,8 +7288,8 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
 					pagingApi.fakeUpdateCounts('pinterest');
                 }, 10000);
             }
- 
-            switch($service){ 
+
+            switch($service){
                 case 'facebook':
                     shareUrl = 'https://www.facebook.com/sharer/sharer.php?u=' + baseUrl;
                     break;
@@ -8016,4 +8018,3 @@ productApp.controller('productController', ['$scope', '$http', '$window', '$inte
 
 /* bootstrap for modularization
 //angular.bootstrap(document.getElementById('productApp'),['productApp']);*/
-
