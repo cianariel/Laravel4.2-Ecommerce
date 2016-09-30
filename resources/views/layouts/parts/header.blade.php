@@ -28,9 +28,14 @@ if (!isset($theGiveAway)) {
         $theGiveAway = json_decode($json);
     }
 }
+$shopPageClass = '';
+if(isset($isShopPage) && $isShopPage == '1'){
+    $shopPageClass = 'shop-page-header';
+}
+
 ?>
 
-<div id="publicApp" ng-app="publicApp" ng-controller="publicController" class="header-cloak scroll-header" ng-cloak>
+<div id="publicApp" ng-app="publicApp" ng-controller="publicController" class="header-cloak scroll-header <?php echo $shopPageClass; ?>" ng-cloak>
 
     <header class="colophon unshrunk container full-sm fixed-sm relative">
         <div>
@@ -60,7 +65,7 @@ if (!isset($theGiveAway)) {
                     <div class="top-nav-holder">
                         <div class="category-menu">
                             <ul>
-                                <li> 
+                                <li>
                                     <a data-click="#show-smart-home" class="category-link__smart-home" href="/smart-home"  ng-click="switchCategory('smart-home')">
                                         <span class="m-icon-text">
                                             <i class="m-icon m-icon--smart-home"></i>
@@ -96,14 +101,23 @@ if (!isset($theGiveAway)) {
                                         </span>
                                     </a>
                                 </li>
+
                                 <li>
+                                    <a class="category-link__deals m-icon-text-holder hidden-sm hidden-xs" href="/deals">
+                                        <span class="m-icon-text">
+                                            <i class="m-icon m-icon--deals heavy-purple"></i>
+                                            Deals
+                                        </span>
+                                    </a>
+                                </li>
+                                {{--<li>
                                     <a class="category-link__advice hidden-sm hidden-xs m-icon-text-holder" href="/advice">
                                         <span class="m-icon-text">
                                             <i class="m-icon m-icon--comments-products"></i>
                                             Advice
                                         </span>
                                     </a>
-                                </li>
+                                </li>--}}
                                 <li>
                                     <a class="category-link__shop m-icon-text-holder hidden-sm hidden-xs" href="/shop">
                                         <span class="m-icon-text">
@@ -115,26 +129,17 @@ if (!isset($theGiveAway)) {
                             </ul>
                         </div>
 
-
-                            <form class="search-bar desktop-search-bar col-sm-2 col-lg-2 pseudo-full-wide hidden-soft" ng-app="publicApp" ng-controller="SearchController" action="/search-form-query" autocomplete="off">
-                                        <span class="search-input-holder">
+                        <div class="search-box-container row">
+                            <div class="shop-button-container col-md-2">
+                                <a class="category-link__shop m-icon-text-holder hidden-xs btn btn-md" href="/shop">
+                                    <i class="hidden-xs m-icon m-icon--shopping-bag-light-green black"></i>
+                                    <span class="m-icon-text black">Shop</span>
+                                </a>
+                            </div>
+                            <div class="col-md-8">
+                                <form class="search-bar desktop-search-bar col-sm-2 col-lg-2 pseudo-full-wide hidden-soft" ng-app="publicApp" ng-controller="SearchController" action="/search-form-query" autocomplete="off">
+                                <span class="search-input-holder">
                                             <i class="m-icon m-icon--search-id"></i>
-                                            <input ng-click="toggleSearch()" id="search-input"
-                                                       ng-change="openSearchDropdown(query)" ng-model="query"
-                                                       ng-model-options='{ debounce: 800 }' class="form-control top-search"
-                                                       type="text" name="search" placeholder="Find Smart Products..."/>
-                                            <div id="suggest-category" ng-class="{shown: open, hidden: !open}"
-                                                 ng-show="categorySuggestions.length">
-                                                <?php // have to use only pure php includes, or the CMS wont read it
-                                                include('/var/www/ideaing/resources/views/layouts/parts/search-dropdown.blade.php')
-                                                ?>
-                                            </div>
-                                            <i class="hide-search m-icon--Close hidden-xs"></i>
-                                        </span>
-                            </form>
-
-                     <!--   <form class="search-bar mobile-search-bar col-sm-2 col-lg-2 hidden-soft" ng-app="publicApp" ng-controller="SearchController" action="/search-form-query" autocomplete="off">
-                                        <span class="search-input-holder desktop-search-bar">
                                             <input ng-click="toggleSearch()" id="search-input"
                                                    ng-change="openSearchDropdown(query)" ng-model="query"
                                                    ng-model-options='{ debounce: 800 }' class="form-control top-search"
@@ -146,8 +151,26 @@ if (!isset($theGiveAway)) {
                                                 ?>
                                             </div>
                                             <i class="hide-search m-icon--Close hidden-xs"></i>
-                                        </span>
-                        </form> -->
+                                </span>
+                                </form>
+                            </div>
+                            <div class="search-bar__overlay"></div>
+                        </div>
+                        <!--   <form class="search-bar mobile-search-bar col-sm-2 col-lg-2 hidden-soft" ng-app="publicApp" ng-controller="SearchController" action="/search-form-query" autocomplete="off">
+                                        <span class="search-input-holder desktop-search-bar">
+                                            <input ng-click="toggleSearch()" id="search-input"
+                                                   ng-change="openSearchDropdown(query)" ng-model="query"
+                                                   ng-model-options='{ debounce: 800 }' class="form-control top-search"
+                                                   type="text" name="search" placeholder="Find Smart Products..."/>
+                                            <div id="suggest-category" ng-class="{shown: open, hidden: !open}"
+                                                 ng-show="categorySuggestions.length">
+                                                <?php // have to use only pure php includes, or the CMS wont read it
+                        include('/var/www/ideaing/resources/views/layouts/parts/search-dropdown.blade.php')
+                        ?>
+                                </div>
+                                <i class="hide-search m-icon--Close hidden-xs"></i>
+                            </span>
+            </form> -->
 
 
 
@@ -207,7 +230,7 @@ if (!isset($theGiveAway)) {
                             </a>
                             <ul class="idea-list">
                                 <?php
-                                foreach($topMenuContent as $story){
+                                    foreach($topMenuContent as $story){
 
                                 if($story->url){  ?>
                                 <li><a href="<?php echo $story->url ?>"><?php echo $story->title ?> </a></li>

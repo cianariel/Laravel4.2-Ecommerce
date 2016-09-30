@@ -8,6 +8,9 @@ body.shop-landing{
     background: #F7F7F7;
     overflow: hidden;
     padding-bottom:40px;
+    .main-content{
+      margin-top: 70px;
+    }
   }
 
 
@@ -59,12 +62,16 @@ body.shop-landing{
         text-align: center;
         margin: 0;
         font-weight: lighter;
+        background: transparent;
+        &:hover{
+          background: transparent;
+        }
       }
 
       &.active>a, &.active>a:focus, &.active>a:hover{
         border: none;
         color: #151515;
-        font-weight: bold;
+        background: transparent;
       }
     }
 
@@ -119,6 +126,8 @@ body.shop-landing{
     padding: 20px 10px 30px 20px;
     margin-bottom: 100px;
     background: #FFFFFF;
+    border: 1px solid #ECECEC;
+    border-radius: 10px;
     legend{
       color: #94489A;
       padding-left: 0;
@@ -193,6 +202,7 @@ body.shop-landing{
       margin: 0 auto;
       margin-top: 20px;
       position: relative;
+      background: #FFFFFF;
 
       .item-image-container{
         border-right: 1px solid #ECECEC;
@@ -234,7 +244,7 @@ body.shop-landing{
       left: -7px;
       top: -8px;
       text-align: center;
-      background: transparent;
+      background: #FFFFFF;
       border: 1px solid;
       width: 25px !important;
       height: 25px !important;
@@ -256,6 +266,7 @@ body.shop-landing{
     border-radius: 10px;
     position: relative;
     text-align: center;
+    background: #FFFFFF;
     &::before{
       position: absolute;
       left: -5px !important;
@@ -635,6 +646,112 @@ body.shop-landing{
 }
 
 
+.shop-page-header{
+  background: transparent;
+  header{
+    background: transparent;
+    #top-nav{
+      max-height: 110px !important;
+      background: transparent;
+      padding-bottom: 15px;
+
+      div.top-nav-holder {
+        background: #FFFFFF !important;
+        margin: 0 auto;
+      }
+
+      .category-menu{
+        background: #FFFFFF;
+        margin: 0 auto;
+        padding: 0;
+        bottom: 0;
+        ul{
+          margin-left: 70px;
+        }
+      }
+
+      .search-box-container{
+        display: block;
+        position: relative;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        padding-top: 10px;
+        padding-bottom: 15px;
+        .shop-button-container{
+          display: block;
+          .category-link__shop{
+            display: block;
+            background: #EB2148;
+            height: auto;
+            margin-left: 50%;
+            transform: translate(-50%, 0);
+            .m-icon{
+              font-size: 16px;
+              color: #FFFFFF !important;
+            }
+            span{
+              font-size: 1.2em;
+              color: #FFFFFF !important;
+            }
+          }
+        }
+        .search-bar__overlay{
+          position: absolute;
+          left: 0;
+          right: 0;
+          top: 0;
+          bottom: 0;
+          background-color: #FFFFFF;
+          opacity: .4;
+        }
+      }
+
+      .search-bar.desktop-search-bar{
+        left: 0;
+        top: 0;
+        padding: 0;
+        margin: 0 auto;
+        width: 760px;
+        height: 33px;
+        border: none;
+        &::before{
+          display: none;
+        }
+
+        &::after{
+          display: none;
+        }
+
+        .search-input-holder{
+          position: relative !important;
+          top: 0;
+          right: 0;
+          bottom: 0;
+          left: 0;
+          padding: 0;
+          margin: 0;
+          .hide-search{
+            display: none;
+          }
+        }
+      }
+
+      .searchbutton-wrap{
+        display: none;
+      }
+      .category-link__shop{
+        display: none;
+      }
+      .desktop-search-bar{
+        opacity: 1;
+        display: block;
+      }
+    }
+
+
+  }
+}
 
 
 
