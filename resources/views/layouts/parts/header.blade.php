@@ -110,14 +110,6 @@ if(isset($isShopPage) && $isShopPage == '1'){
                                         </span>
                                     </a>
                                 </li>
-                                {{--<li>
-                                    <a class="category-link__advice hidden-sm hidden-xs m-icon-text-holder" href="/advice">
-                                        <span class="m-icon-text">
-                                            <i class="m-icon m-icon--comments-products"></i>
-                                            Advice
-                                        </span>
-                                    </a>
-                                </li>--}}
                                 <li>
                                     <a class="category-link__shop m-icon-text-holder hidden-sm hidden-xs" href="/shop">
                                         <span class="m-icon-text">
