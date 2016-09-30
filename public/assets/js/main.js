@@ -5270,6 +5270,8 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                     else if (data.data == 'Registration completed successfully') {
                         $scope.addAlert('success', 'SUCCESS! You just made the best decision', 'register');
 
+                        console.log(from)
+
                         if(from == 'subscribe-modal'){
                             $('.toggles, .bordering .content').animate({opacity: "0"}, function(){
                                 setTimeout(function(){
@@ -5287,6 +5289,8 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
 
                     } else if (data.data == 'Registration completed successfully, please verify your email') {
                         $scope.addAlert('success', 'SUCCESS! You just made the best decision', 'register');
+
+                        console.log(from)
 
                         if(from == 'subscribe-modal'){
                             $('.toggles, .bordering .content').animate({opacity: "0"}, function(){

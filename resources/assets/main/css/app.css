@@ -13359,7 +13359,10 @@ body.error-page .error-banner-holder {
   right: -11px;
   z-index: 1052 !important; }
   .subscribe_email_popup .alert {
-    margin-bottom: 0 !important; }
+    position: absolute;
+    bottom: 40%;
+    font-size: 2.3rem;
+    padding-right: 5% !important; }
   .subscribe_email_popup .alertme {
     position: absolute;
     top: 30%;

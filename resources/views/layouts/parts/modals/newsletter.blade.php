@@ -61,7 +61,7 @@
                             <input ng-model="AcceptTermsModal" type="checkbox" class="accepttermsmodal" name="accepttermsmodal" ><label for="accepttermsmodal" checked><span></span> <b class="grey">By Signing up, you agree to <a href="/terms-of-use">Terms and Conditions</a> of Ideaing</b>
                             </label>
                         </div>
-                    <a class="btn btn-success form-control" ng-click="registerSubscribedUser()">Join and Create a Free Account</a>
+                    <a class="btn btn-success form-control" ng-click="registerSubscribedUser('subscribe-modal')">Join and Create a Free Account</a>
                     </section>
 
                     <uib-alert ng-repeat="alert in alerts.register" type="@{{alert.type}}" close="closeAlert($index)">
