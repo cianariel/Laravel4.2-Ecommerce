@@ -43,6 +43,10 @@
   color: $magenta;
 }
 
+.heavy-purple{
+  color: $purple;
+}
+
 .white{
   color: #fff;
 }
@@ -55,6 +59,11 @@
 .purple-bg{
   background-color: $magenta;
 }
+
+.heavy-purple-bg{
+  background-color: $purple;
+}
+
 
 .black-bg{
   background: #000;
@@ -201,12 +210,7 @@
     }
   }
 }
-.category-deals{
-  @include category-color(#68005c);
-  .category-link__deals{
-    color: #68005c;
-  }
-}
+
 .box-item:hover,
 .box-item.hovered{
   .category-deals{
@@ -332,6 +336,16 @@
     }
     span::before{
       background-color: $pine-green;
+    }
+  }
+  &__deals{
+    &.active,
+    &:hover,
+    .m-icon{
+      color: $purple;
+    }
+    span::before{
+      background-color: $purple;
     }
   }
   &__shop,

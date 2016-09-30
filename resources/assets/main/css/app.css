@@ -7194,6 +7194,9 @@ p {
 .purple {
   color: #9E009E; }
 
+.heavy-purple {
+  color: #94489A; }
+
 .white {
   color: #fff; }
 
@@ -7203,6 +7206,9 @@ p {
 
 .purple-bg {
   background-color: #9E009E; }
+
+.heavy-purple-bg {
+  background-color: #94489A; }
 
 .black-bg {
   background: #000; }
@@ -7377,37 +7383,6 @@ p {
 .box-item:hover .category-smart-entertainment .idea-meta {
   background: #89C981; }
 
-.category-deals .category-color {
-  color: #68005c !important; }
-.category-deals .category-bg {
-  background-color: #68005c !important; }
-.category-deals .category-bg-trans {
-  background-color: rgba(104, 0, 92, 0.7) !important; }
-.category-deals .category-hover-color:hover {
-  color: #68005c !important; }
-.category-deals .category-hover-bg:hover {
-  background-color: #68005c !important; }
-.category-deals .category-hover-border:hover {
-  border-color: #68005c; }
-.category-deals .dropcapped p:first-child:first-letter {
-  color: #68005c; }
-.category-deals .float-thumbs .thumb-box strong {
-  background-color: rgba(104, 0, 92, 0.7); }
-.category-deals .home-subheader span,
-.category-deals .m-icon--ScrollingHeaderHeart .path1:before,
-.category-deals .m-icon--ScrollingHeaderHeart .path2:before {
-  color: #68005c; }
-.category-deals .home-subheader span {
-  color: #68005c;
-  border-color: #68005c !important; }
-.category-deals .input__field--minoru {
-  color: #68005c;
-  box-shadow: 0px 0px 0px 0px #68005c; }
-.category-deals .input__field--minoru:focus {
-  box-shadow: 0px 0px 0px 2px #68005c; }
-.category-deals .category-link__deals {
-  color: #68005c; }
-
 .box-item:hover .category-deals .idea-meta,
 .box-item.hovered .category-deals .idea-meta {
   background: #68005c; }
@@ -7485,6 +7460,11 @@ p {
     color: #89C981; }
   .category-link__smart-entertainment span::before {
     background-color: #89C981; }
+  .category-link__deals.active, .category-link__deals:hover,
+  .category-link__deals .m-icon {
+    color: #94489A; }
+  .category-link__deals span::before {
+    background-color: #94489A; }
   .category-link__shop span::before, .category-link__advice span::before {
     background-color: #242424; }
 
@@ -9277,6 +9257,8 @@ header.colophon {
         padding-left: 23px; } }
   #top-nav .category-menu ul > li a:hover, #top-nav .category-menu ul > li a:focus {
     text-decoration: none; }
+#top-nav .search-box-container .shop-button-container {
+  display: none; }
 #top-nav .top-nav-holder {
   height: 54px; }
   @media (max-width: 620px) {
@@ -14629,6 +14611,8 @@ body.shop-landing {
     background: #F7F7F7;
     overflow: hidden;
     padding-bottom: 40px; }
+    body.shop-landing .app-wrap .main-content {
+      margin-top: 70px; }
   body.shop-landing .sub-item-container {
     position: relative;
     display: block;
@@ -14669,11 +14653,14 @@ body.shop-landing {
         width: 100%;
         text-align: center;
         margin: 0;
-        font-weight: lighter; }
+        font-weight: lighter;
+        background: transparent; }
+        body.shop-landing ul.nav-tabs.nav li a:hover {
+          background: transparent; }
       body.shop-landing ul.nav-tabs.nav li.active > a, body.shop-landing ul.nav-tabs.nav li.active > a:focus, body.shop-landing ul.nav-tabs.nav li.active > a:hover {
         border: none;
         color: #151515;
-        font-weight: bold; }
+        background: transparent; }
     body.shop-landing ul.nav-tabs.nav .category-smart-home.active > a, body.shop-landing ul.nav-tabs.nav .category-smart-home.active > a:focus, body.shop-landing ul.nav-tabs.nav .category-smart-home.active > a:hover {
       color: #FC1159; }
     body.shop-landing ul.nav-tabs.nav .category-smart-home a::before {
@@ -14701,7 +14688,9 @@ body.shop-landing {
   body.shop-landing .hot-deals {
     padding: 20px 10px 30px 20px;
     margin-bottom: 100px;
-    background: #FFFFFF; }
+    background: #FFFFFF;
+    border: 1px solid #ECECEC;
+    border-radius: 10px; }
     body.shop-landing .hot-deals legend {
       color: #94489A;
       padding-left: 0;
@@ -14751,7 +14740,8 @@ body.shop-landing {
     overflow: visible;
     margin: 0 auto;
     margin-top: 20px;
-    position: relative; }
+    position: relative;
+    background: #FFFFFF; }
     body.shop-landing .multirow-image-view .image-row-view .item-image-container {
       border-right: 1px solid #ECECEC;
       height: 85px;
@@ -14781,7 +14771,7 @@ body.shop-landing {
     left: -7px;
     top: -8px;
     text-align: center;
-    background: transparent;
+    background: #FFFFFF;
     border: 1px solid;
     width: 25px !important;
     height: 25px !important;
@@ -14798,7 +14788,8 @@ body.shop-landing {
     border: 1px solid #ECECEC;
     border-radius: 10px;
     position: relative;
-    text-align: center; }
+    text-align: center;
+    background: #FFFFFF; }
     body.shop-landing .big-image-view::before {
       position: absolute;
       left: -5px !important;
@@ -15002,6 +14993,84 @@ body.shop-landing {
     cursor: pointer; }
   body.shop-landing .mobile-shop-by-category-holder .shop-by-category-submneu .grandchild-holder {
     display: none; }
+
+.shop-page-header {
+  background: transparent; }
+  .shop-page-header header {
+    background: transparent; }
+    .shop-page-header header #top-nav {
+      max-height: 110px !important;
+      background: transparent;
+      padding-bottom: 15px; }
+      .shop-page-header header #top-nav div.top-nav-holder {
+        background: #FFFFFF !important;
+        margin: 0 auto; }
+      .shop-page-header header #top-nav .category-menu {
+        background: #FFFFFF;
+        margin: 0 auto;
+        padding: 0;
+        bottom: 0; }
+        .shop-page-header header #top-nav .category-menu ul {
+          margin-left: 70px; }
+      .shop-page-header header #top-nav .search-box-container {
+        display: block;
+        position: relative;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        padding-top: 10px;
+        padding-bottom: 15px; }
+        .shop-page-header header #top-nav .search-box-container .shop-button-container {
+          display: block; }
+          .shop-page-header header #top-nav .search-box-container .shop-button-container .category-link__shop {
+            display: block;
+            background: #EB2148;
+            height: auto;
+            margin-left: 50%;
+            transform: translate(-50%, 0); }
+            .shop-page-header header #top-nav .search-box-container .shop-button-container .category-link__shop .m-icon {
+              font-size: 16px;
+              color: #FFFFFF !important; }
+            .shop-page-header header #top-nav .search-box-container .shop-button-container .category-link__shop span {
+              font-size: 1.2em;
+              color: #FFFFFF !important; }
+        .shop-page-header header #top-nav .search-box-container .search-bar__overlay {
+          position: absolute;
+          left: 0;
+          right: 0;
+          top: 0;
+          bottom: 0;
+          background-color: #FFFFFF;
+          opacity: .4; }
+      .shop-page-header header #top-nav .search-bar.desktop-search-bar {
+        left: 0;
+        top: 0;
+        padding: 0;
+        margin: 0 auto;
+        width: 760px;
+        height: 33px;
+        border: none; }
+        .shop-page-header header #top-nav .search-bar.desktop-search-bar::before {
+          display: none; }
+        .shop-page-header header #top-nav .search-bar.desktop-search-bar::after {
+          display: none; }
+        .shop-page-header header #top-nav .search-bar.desktop-search-bar .search-input-holder {
+          position: relative !important;
+          top: 0;
+          right: 0;
+          bottom: 0;
+          left: 0;
+          padding: 0;
+          margin: 0; }
+          .shop-page-header header #top-nav .search-bar.desktop-search-bar .search-input-holder .hide-search {
+            display: none; }
+      .shop-page-header header #top-nav .searchbutton-wrap {
+        display: none; }
+      .shop-page-header header #top-nav .category-link__shop {
+        display: none; }
+      .shop-page-header header #top-nav .desktop-search-bar {
+        opacity: 1;
+        display: block; }
 
 .shop-menu {
   width: 100%;

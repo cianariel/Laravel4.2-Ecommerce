@@ -695,7 +695,11 @@ header.colophon{
     }
 
   }
-
+  .search-box-container{
+    .shop-button-container{
+      display: none;
+    }
+  }
 
   .top-nav-holder{
     //border-bottom: 1px solid $light-grey;
