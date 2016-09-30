@@ -4047,10 +4047,10 @@ angular.module('colorpicker.module', [])
                     }
                 }
 
-                //if($('.subscribe_email_popup').length){
-                //    var offset = $(window).scrollTop() + 40;
-                //    $('.subscribe_email_popup').css('top', offset);
-                //}
+                if($('.subscribe_email_popup').length){
+                    var offset = $(window).scrollTop() + 40;
+                    $('.subscribe_email_popup').css('top', offset);
+                }
             }
 
         });
@@ -4401,36 +4401,6 @@ angular.module('colorpicker.module', [])
         showImages('.article-content img');
     });
 
-    // bootstrap modal enhancement with input fieldpu
-    //$('body').on('show.bs.modal', '.modal', function (e) {
-    //    console.log(12313)
-    //    // fix the problem of ios modal form with input field
-    //    var $this = $(this);
-    //    if (navigator.userAgent.match(/iPhone|iPad|iPod/i)) {
-    //        // Position modal absolute and bump it down to the scrollPosition
-    //        var heightModal = Math.max($('body').height(), $(window).height(), $(document).height()) + 1;
-    //        $this.css({
-    //            position: 'absolute',
-    //            paddingTop: $(window).scrollTop() + 'px',
-    //            height: heightModal + 'px'
-    //        });
-    //        // Position backdrop absolute and make it span the entire page
-    //        //
-    //        // Also dirty, but we need to tap into the backdrop after Boostrap
-    //        // positions it but before transitions finish.
-    //        //
-    //        setTimeout(function () {
-    //            $('.modal-backdrop').css({
-    //                position: 'absolute',
-    //                top: '10px',
-    //                left: 0,
-    //                width: '100%',
-    //                height: heightModal + 'px'
-    //            });
-    //        }, 500);
-    //    }
-    //});
-
 
 })(jQuery, this);
 ;
@@ -4758,32 +4728,6 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                     controller: 'ModalInstanceCtrltest'
                 });
 
-            var $this = $('#subscribe_email_popup');
-
-            if(window.innerWidth < 620){
-                // Position modal absolute and bump it down to the scrollPosition
-                var heightModal = Math.max($('body').height(), $(window).height(), $(document).height()) + 1;
-                $this.css({
-                    position: 'absolute', 
-                    paddingTop: $(window).scrollTop() + 'px',
-                    height: heightModal + 'px'
-                });
-                // Position backdrop absolute and make it span the entire page
-                //
-                // Also dirty, but we need to tap into the backdrop after Boostrap
-                // positions it but before transitions finish.
-                //
-                setTimeout(function () {
-                    $('.modal-backdrop').css({
-                        position: 'absolute',
-                        top: '10px',
-                        left: 0,
-                        width: '100%',
-                        height: heightModal + 'px'
-                    });
-                }, 500);
-            }
-
             $scope.modalInstance = instance.result.finally(function () {
                     $scope.uploader.formData = [];
 
@@ -4798,6 +4742,18 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
 
                 instance.rendered.then(function () {
                     //console.log('yo maaaan1')
+
+                    var $this = $('.modal.subscribe_email_popup');
+
+                    if(window.innerWidth < 620){
+                        // Position modal absolute and bump it down to the scrollPosition
+                        var heightModal = Math.max($('body').height(), $(window).height(), $(document).height()) + 1;
+                        $this.css({
+                            position: 'absolute',
+                            top: ($(window).scrollTop() + 40) + 'px',
+                            //height: heightModal + 'px'
+                        });
+                    }
 
                     setTimeout(function(){
                     //console.log('yo maaaan2')
