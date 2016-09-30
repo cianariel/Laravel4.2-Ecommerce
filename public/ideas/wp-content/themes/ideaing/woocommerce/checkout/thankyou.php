@@ -45,9 +45,9 @@ if ( $order ) : ?>
 order has beenshipping you will recieve another email with a link to track it‘s progress.', 'woocommerce' ), $order ); ?></p>
 
 		<div class="row">
-			<div class="col-ms-6">
+			<div class="col-md-6">
 				<div class="woocommerce-info order">
-					<small><?php _e( 'Your order Number:', 'woocommerce' ); ?></small>
+					<small><?php _e( 'Your order number', 'woocommerce' ); ?></small>
 					<h4><?php echo $order->get_order_number(); ?></h4>
 				</div>
 			</div>
