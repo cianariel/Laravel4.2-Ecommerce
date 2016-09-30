@@ -35,10 +35,11 @@
     top: 10px;
     right: 0;
     margin: auto;
+    position: absolute !important;
   }
 
 
-  .modal-content{
+  .modal-content{ 
     background: transparent !important;
     box-shadow: none;
     border: 0;
