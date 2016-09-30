@@ -100,16 +100,16 @@
         },
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.19.10",
+            "version": "3.19.12",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "eb9488f671175e708cf68c74cc04bd9115c96761"
+                "reference": "5d5697c7bc9ab22ce718afb51e5496d0c5cb8778"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/eb9488f671175e708cf68c74cc04bd9115c96761",
-                "reference": "eb9488f671175e708cf68c74cc04bd9115c96761",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/5d5697c7bc9ab22ce718afb51e5496d0c5cb8778",
+                "reference": "5d5697c7bc9ab22ce718afb51e5496d0c5cb8778",
                 "shasum": ""
             },
             "require": {
@@ -176,7 +176,7 @@
                 "s3",
                 "sdk"
             ],
-            "time": "2016-09-22 19:32:03"
+            "time": "2016-09-29 21:07:49"
         },
         {
             "name": "aws/aws-sdk-php-laravel",
@@ -1547,16 +1547,16 @@
         },
         {
             "name": "jaybizzle/crawler-detect",
-            "version": "v1.2.18",
+            "version": "v1.2.19",
             "source": {
                 "type": "git",
                 "url": "https://github.com/JayBizzle/Crawler-Detect.git",
-                "reference": "1b41bb4c371a9504374e2f232e50967909c05f0f"
+                "reference": "1f6ed13bbf89915aa5df15490b3d52721917e26e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/JayBizzle/Crawler-Detect/zipball/1b41bb4c371a9504374e2f232e50967909c05f0f",
-                "reference": "1b41bb4c371a9504374e2f232e50967909c05f0f",
+                "url": "https://api.github.com/repos/JayBizzle/Crawler-Detect/zipball/1f6ed13bbf89915aa5df15490b3d52721917e26e",
+                "reference": "1f6ed13bbf89915aa5df15490b3d52721917e26e",
                 "shasum": ""
             },
             "require": {
@@ -1591,7 +1591,7 @@
                 "crawlerdetect",
                 "php crawler detect"
             ],
-            "time": "2016-09-16 17:41:40"
+            "time": "2016-09-26 19:30:19"
         },
         {
             "name": "jeremeamia/SuperClosure",
@@ -1701,16 +1701,16 @@
         },
         {
             "name": "kryptonit3/counter",
-            "version": "5.2.4",
+            "version": "5.2.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Kryptonit3/Counter.git",
-                "reference": "11a44c9cf7c3f6d48cc81e625f7fcdb1d1dd85e4"
+                "reference": "4ddafc961f7a680c389b940205d5cf5cb70368b6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Kryptonit3/Counter/zipball/11a44c9cf7c3f6d48cc81e625f7fcdb1d1dd85e4",
-                "reference": "11a44c9cf7c3f6d48cc81e625f7fcdb1d1dd85e4",
+                "url": "https://api.github.com/repos/Kryptonit3/Counter/zipball/4ddafc961f7a680c389b940205d5cf5cb70368b6",
+                "reference": "4ddafc961f7a680c389b940205d5cf5cb70368b6",
                 "shasum": ""
             },
             "require": {
@@ -1736,20 +1736,20 @@
                 }
             ],
             "description": "Hit counter for your pages.",
-            "time": "2016-09-18 18:04:02"
+            "time": "2016-09-26 17:31:00"
         },
         {
             "name": "laravel/framework",
-            "version": "v5.1.44",
+            "version": "v5.1.45",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "37b3488e49e5b4a86a21186b171826dd93961ccd"
+                "reference": "cea4ea25ee758ed891b3449b851f9c8f7f37f3db"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/37b3488e49e5b4a86a21186b171826dd93961ccd",
-                "reference": "37b3488e49e5b4a86a21186b171826dd93961ccd",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/cea4ea25ee758ed891b3449b851f9c8f7f37f3db",
+                "reference": "cea4ea25ee758ed891b3449b851f9c8f7f37f3db",
                 "shasum": ""
             },
             "require": {
@@ -1865,7 +1865,7 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2016-09-20 13:47:37"
+            "time": "2016-09-29 13:45:07"
         },
         {
             "name": "laravel/socialite",
@@ -2650,16 +2650,16 @@
         },
         {
             "name": "phpdocumentor/reflection-docblock",
-            "version": "3.1.0",
+            "version": "3.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpDocumentor/ReflectionDocBlock.git",
-                "reference": "9270140b940ff02e58ec577c237274e92cd40cdd"
+                "reference": "8331b5efe816ae05461b7ca1e721c01b46bafb3e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpDocumentor/ReflectionDocBlock/zipball/9270140b940ff02e58ec577c237274e92cd40cdd",
-                "reference": "9270140b940ff02e58ec577c237274e92cd40cdd",
+                "url": "https://api.github.com/repos/phpDocumentor/ReflectionDocBlock/zipball/8331b5efe816ae05461b7ca1e721c01b46bafb3e",
+                "reference": "8331b5efe816ae05461b7ca1e721c01b46bafb3e",
                 "shasum": ""
             },
             "require": {
@@ -2691,7 +2691,7 @@
                 }
             ],
             "description": "With this component, a library can provide support for annotations via DocBlocks or otherwise retrieve information that is embedded in a DocBlock.",
-            "time": "2016-06-10 09:48:41"
+            "time": "2016-09-30 07:12:33"
         },
         {
             "name": "phpdocumentor/type-resolver",
@@ -5707,16 +5707,16 @@
         },
         {
             "name": "phpspec/phpspec",
-            "version": "2.5.2",
+            "version": "2.5.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpspec/phpspec.git",
-                "reference": "7e7e104de01b5052195cefefcd0b29f1add4c116"
+                "reference": "153ebd99d9b842e0c99a024c41f970d79db46475"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpspec/phpspec/zipball/7e7e104de01b5052195cefefcd0b29f1add4c116",
-                "reference": "7e7e104de01b5052195cefefcd0b29f1add4c116",
+                "url": "https://api.github.com/repos/phpspec/phpspec/zipball/153ebd99d9b842e0c99a024c41f970d79db46475",
+                "reference": "153ebd99d9b842e0c99a024c41f970d79db46475",
                 "shasum": ""
             },
             "require": {
@@ -5781,7 +5781,7 @@
                 "testing",
                 "tests"
             ],
-            "time": "2016-09-04 11:59:15"
+            "time": "2016-09-26 20:28:11"
         },
         {
             "name": "webpatser/laravel-uuid",
