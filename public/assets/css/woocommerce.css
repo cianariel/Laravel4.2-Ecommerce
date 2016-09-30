@@ -306,7 +306,7 @@
 }
 
 .secure-checkout-nav a:hover {
-  background-color: #000;
+  background-color: #649b5c;
   -webkit-transition: background-color .4s ease-out;
   transition: background-color .4s ease-out;
   cursor: pointer;
@@ -572,7 +572,7 @@
 .secure-checkout [type="submit"]:hover,
 .secure-checkout .button:focus,
 .secure-checkout .button:hover {
-  background-color: #000;
+  background-color: #c10633;
   -webkit-transition: background-color .4s ease-out;
   transition: background-color .4s ease-out;
 }
