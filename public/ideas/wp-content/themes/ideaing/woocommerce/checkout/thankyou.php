@@ -20,6 +20,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+<div class="thankyou-page">
+
 if ( $order ) : ?>
 
 	<?php if ( $order->has_status( 'failed' ) ) : ?>
@@ -42,11 +44,16 @@ if ( $order ) : ?>
 		<p class="woocommerce-thankyou-order-received"><?php echo apply_filters( 'woocommerce_thankyou_order_received_text', __( 'We are processing your order and you will soon receive an email with details of your order. Once your
 order has beenshipping you will recieve another email with a link to track it‘s progress.', 'woocommerce' ), $order ); ?></p>
 
+		<div class="row">
+			<div class="col-ms-6">
+				<div class="woocommerce-info order">
+					<small><?php _e( 'Your order Number:', 'woocommerce' ); ?></small>
+					<h4><?php echo $order->get_order_number(); ?></h4>
+				</div>
+			</div>
+		</div>
+
 		<ul class="woocommerce-thankyou-order-details order_details">
-			<li class="order">
-				<?php _e( 'Order Number:', 'woocommerce' ); ?>
-				<strong><?php echo $order->get_order_number(); ?></strong>
-			</li>
 			<li class="date">
 				<?php _e( 'Date:', 'woocommerce' ); ?>
 				<strong><?php echo date_i18n( get_option( 'date_format' ), strtotime( $order->order_date ) ); ?></strong>
@@ -78,3 +85,4 @@ order has beenshipping you will recieve another email with a link to track it‘
 	<p class="woocommerce-thankyou-order-received"><?php echo apply_filters( 'woocommerce_thankyou_order_received_text', __( 'Thank you. Your order has been received.', 'woocommerce' ), null ); ?></p>
 
 <?php endif; ?>
+</div>

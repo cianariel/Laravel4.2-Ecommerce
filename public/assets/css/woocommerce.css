@@ -1052,9 +1052,52 @@ label[for="payment_method_paypal"] {
   line-height: 2;
 }
 
+.thankyou-page h2 {
+  position: relative;
+  margin: 50px 0 15px;
+  font-size: 13px;
+  font-weight: bold;
+  line-height: 1.1;
+  letter-spacing: .04em;
+  border-bottom: solid 1px #dbdbdb;
+  text-transform: uppercase;
+}
+
+.thankyou-page address {
+  line-height: 2;
+}
+
+.thankyou-page h3 {
+  font-size: inherit;
+  letter-spacing: .09em;
+  text-transform: uppercase;
+}
+
+.addresses {
+  margin: 0 -15px 50px;
+}
+
+.addresses:before,
+.addresses:after {
+  content: '';
+  display: block;
+}
+
+.addresses:after {
+  clear: both;
+}
+
+.addresses .col-1,
+.addresses .col-2 {
+  width: 50%;
+  padding: 0 15px;
+  float: left;
+}
+
 table.customer_details,
 table.order_details  {
   width: 100%;
+  margin: 0 0 50px;
   border: solid 1px #dbdbdb;
 }
 
