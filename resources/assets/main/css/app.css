@@ -13308,8 +13308,11 @@ body.giveaway-page .black-slider {
 .giveaway_desc ol li {
   list-style: decimal !important; }
 
+body.login-signup .login-signup-modal {
+  position: static; }
+
 .login-signup-modal {
-  position: absolute !important;
+  position: absolute;
   top: 28px;
   left: 0;
   overflow-y: visible;

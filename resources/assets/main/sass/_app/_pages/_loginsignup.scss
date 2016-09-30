@@ -1,8 +1,13 @@
 // LOGIN-SIGNUP PAGES AND MODALS
 
+body.login-signup{
+  .login-signup-modal{
+    position: static;
+  }
+}
 
 .login-signup-modal{
-  position: absolute !important;
+  position: absolute;
   top: 28px;
   left: 0;
   overflow-y: visible;

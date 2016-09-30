@@ -5245,7 +5245,7 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
 
             var statusCode = data.status_code;
 
-            console.log(statusCode);
+            //console.log(statusCode);
             
             switch (statusCode) {
                 case 400:
@@ -5268,7 +5268,7 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                         window.location = '/login';
                     }
                     else if (data.data == 'Registration completed successfully') {
-                        $scope.addAlert('success', 'SUCCESS! You just made the best decision');
+                        $scope.addAlert('success', 'SUCCESS! You just made the best decision', 'register');
 
                         if(from == 'subscribe-modal'){
                             $('.toggles, .bordering .content').animate({opacity: "0"}, function(){
@@ -5286,7 +5286,7 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
 
 
                     } else if (data.data == 'Registration completed successfully, please verify your email') {
-                        $scope.addAlert('success', 'SUCCESS! You just made the best decision');
+                        $scope.addAlert('success', 'SUCCESS! You just made the best decision', 'register');
 
                         if(from == 'subscribe-modal'){
                             $('.toggles, .bordering .content').animate({opacity: "0"}, function(){
