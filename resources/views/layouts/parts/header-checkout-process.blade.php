@@ -61,7 +61,7 @@
         <div class="col-xs-3">
           <div class="sc-slogan">
             <span><?php _e('Secure checkout', 'ideaing'); ?></span>
-            <i class="m-icon--verified_user"></i>
+            <i class="m-icon--lock_outline"></i>
           </div>
         </div>
       </div>
