@@ -77,7 +77,7 @@
   font-size: 12px;
   margin: -2px 0 0;
   vertical-align: middle;
-  color: #ed2049;
+  color: #fc1159;
   cursor: pointer;
 }
 
@@ -105,7 +105,7 @@
 }
 
 .secure-checkout .entry-header mark.active {
-  background-color: #4fd37e;
+  background-color: #87c880;
 }
 
 .cart-empty {
@@ -196,7 +196,7 @@
   min-height: 90px;
   padding-left: 95px;
   font-size: 15px;
-  color: #ed2049;
+  color: #fc1159;
   overflow: hidden;
 }
 
@@ -227,7 +227,7 @@
 
 .shop_table.cart .remove {
   font-size: 21px;
-  color: #ed2049;
+  color: #fc1159;
 }
 
 .shop_table.cart .remove:not(:hover) {
@@ -278,7 +278,7 @@
 
 .sc-slogan i {
   font-size: 18px;
-  color: #4fd37e;
+  color: #87c880;
 }
 
 .secure-checkout-nav {
@@ -300,8 +300,8 @@
   cursor: default;
 }
 
-.secure-checkout-nav >*.active {
-  background-color: #4fd37e;
+.secure-checkout-nav > *.active {
+  background-color: #87c880;
 }
 
 .secure-checkout-nav a:hover {
@@ -493,7 +493,7 @@
   top: 0;
   font-size: 21px;
   line-height: 80px;
-  color: #ed2049;
+  color: #fc1159;
 }
 
 .cart-items .remove:not(:hover) {
@@ -564,7 +564,7 @@
 .secure-checkout [name="login"],
 .secure-checkout .wc-backward,
 .secure-checkout .checkout-button {
-  background-color: #ed2049;
+  background-color: #fc1159;
 }
 
 .secure-checkout [type="submit"]:focus,
@@ -614,12 +614,12 @@
 
 .woocommerce-error {
   color: #fff;
-  background-color: #ed2049;
+  background-color: #fc1159;
 }
 
 .woocommerce-message {
   color: #fff;
-  background-color: #4fd37e;
+  background-color: #87c880;
 }
 
 .woocommerce-password-strength {
@@ -663,7 +663,7 @@
 }
 
 label[for="show--login"] {
-  color: #ed2049;
+  color: #fc1159;
   font-weight: normal;
   margin: 0;
   -webkit-user-select: none;
@@ -772,7 +772,7 @@ label[for="shipping_address_1"] {
 .secure-checkout .woocommerce-invalid input[type="password"],
 .secure-checkout .woocommerce-invalid input[type="email"],
 .secure-checkout .woocommerce-invalid input[type="tel"] {
-  border-color: #ed2049;
+  border-color: #fc1159;
   -webkit-transition: border-color .4s ease-out;
   transition: border-color .4s ease-out;
 }
@@ -986,7 +986,7 @@ label[for="payment_method_paypal"] {
   -moz-osx-font-smoothing: grayscale;
   -webkit-transition: opacity .4s ease-out;
   transition: opacity .4s ease-out;
-  color: #4fd37e;
+  color: #87c880;
 }
 
 .sc-checkbox-alt:before {
