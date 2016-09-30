@@ -20,7 +20,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-<div class="thankyou-page">
+<div class="wcthankyoupage">
 
 if ( $order ) : ?>
 
