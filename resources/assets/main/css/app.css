@@ -13315,7 +13315,8 @@ body.giveaway-page .black-slider {
   overflow-y: visible;
   z-index: 500;
   width: 100%;
-  margin: auto; }
+  margin: auto;
+  border-bottom: 1px solid #eee; }
   .login-signup-modal .alert:not(:first-child) {
     display: none; }
   .login-signup-modal .modal-content {
@@ -14563,8 +14564,7 @@ body.error-page .error-banner-holder {
   bottom: auto;
   top: 130px;
   right: -11px;
-  z-index: 1052 !important;
-  border-bottom: 1px solid #eee; }
+  z-index: 1052 !important; }
   .subscribe_email_popup .alert {
     margin-bottom: 0 !important; }
   .subscribe_email_popup .alertme {
