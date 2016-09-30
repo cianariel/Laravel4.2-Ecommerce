@@ -703,6 +703,10 @@ label[for="show--login"] {
   left: 11px;
 }
 
+.payment_box .form-row label:not(.normal) {
+  z-index: 3;
+}
+
 .secure-checkout .form-row.focus label:not(.normal),
 .secure-checkout .form-row.active label:not(.normal) {
   top: 14px;
@@ -770,9 +774,27 @@ label[for="shipping_address_1"] {
   appearance: none;
 }
 
+.payment_box .form-row input[type="text"],
 .secure-checkout .form-row #billing_address_1,
 .secure-checkout .form-row #shipping_address_1 {
   padding: 14px;
+}
+
+.payment_box .form-row input[type="text"] {
+  background-color: #fff;
+}
+
+.payment_box .form-row input::-webkit-input-placeholder {
+    color: #fff;
+}
+.payment_box .form-row input:-moz-placeholder {
+   color: #fff;
+}
+.payment_box .form-row input::-moz-placeholder {
+   color: #fff;
+}
+.payment_box .form-row input:-ms-input-placeholder {
+   color: #fff;
 }
 
 .secure-checkout .select2-container .select2-choice {
@@ -867,6 +889,30 @@ label[for="shipping_address_1"] {
   border-radius: 0 0 2px 2px;
 }
 
+.wc_payment_methods {
+  margin-bottom: 50px;
+}
+
+.wc_payment_method {
+  margin-bottom: -1px;
+}
+
+.payment_method_stripe img {
+  position: absolute;
+  top: 0;
+  right: 15px;
+  height: 20px;
+  width: auto;
+}
+
+.payment_box {
+ padding: 21px 25px 5px;
+ background-color: #f7f8f9;
+ border: solid 1px #dbdbdb;
+ border-top: none;
+}
+
+.wc_payment_method > label,
 .sc-checkbox {
   position: relative;
   display: block;
@@ -956,7 +1002,7 @@ label[for="shipping_address_1"] {
 }
 
 .blockOverlay {
-  background-color: transparent !important;
+  background-color: rgba(255,255,255,.2) !important;
 }
 
 .wc-checkout-review-order {

@@ -70,13 +70,14 @@
 
       self.trigger(document.body, 'update_checkout', []);
     });
-    
+
     $( document.body ).on('update_checkout', function(){
 
       self.review();
     });
 
-    self.update();
+    setTimeout(function(){ self.update(); },  50 );
+    setTimeout(function(){ self.update(); }, 250 );
   };
 
   ideaingCheckout.prototype.update = function () {
