@@ -302,7 +302,7 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                         //  console.log(data)
                     });
 
-                    $('body').removeClass('overhide');
+                    $('html').removeClass('overhide');
             });
 
                 instance.rendered.then(function () {
@@ -319,7 +319,7 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                             //height: heightModal + 'px'
                         });
 
-                        $('body').addClass('overhide');
+                        $('html').addClass('overhide');
                     }
 
                     setTimeout(function(){
