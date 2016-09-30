@@ -83,7 +83,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 	<?php do_action( 'woocommerce_review_order_before_submit' ); ?>
 
-	<?php $order_button_text = __('Make purchase', 'woocommerce'); ?>
+	<?php $order_button_text = __('Place your order', 'woocommerce'); ?>
 
 	<?php echo apply_filters( 'woocommerce_order_button_html', '<input type="submit" class="button button-primary" name="woocommerce_checkout_place_order" id="place_order" value="' . esc_attr( $order_button_text ) . '" data-value="' . esc_attr( $order_button_text ) . '" />' ); ?>
 
