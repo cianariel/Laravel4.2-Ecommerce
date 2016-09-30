@@ -40,7 +40,7 @@ add_filter('body_class', 'ideaing_body_class_filter', 99, 1 );
  */
 function ideaing_gateway_icon($icon, $id){
 
-  return '<img class="visa-mastercart" src="/../assets/images/visa-mc.png">';
+  return 'stripe' == $id ? '<img class="visa-mastercart" src="/../assets/images/visa-mc.png">' : $icon;
 }
 add_filter('woocommerce_gateway_icon', 'ideaing_gateway_icon', 99, 2);
 
