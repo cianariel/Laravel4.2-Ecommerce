@@ -292,11 +292,12 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                 });
 
             var $this = $('#subscribe_email_popup');
-            if (navigator.userAgent.match(/iPhone|iPad|iPod/i)) { 
+
+            if(window.innerWidth < 620){
                 // Position modal absolute and bump it down to the scrollPosition
                 var heightModal = Math.max($('body').height(), $(window).height(), $(document).height()) + 1;
                 $this.css({
-                    position: 'absolute',
+                    position: 'absolute', 
                     paddingTop: $(window).scrollTop() + 'px',
                     height: heightModal + 'px'
                 });

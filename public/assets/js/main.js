@@ -4402,34 +4402,34 @@ angular.module('colorpicker.module', [])
     });
 
     // bootstrap modal enhancement with input fieldpu
-    $('body').on('show.bs.modal', '.modal', function (e) {
-        console.log(12313)
-        // fix the problem of ios modal form with input field
-        var $this = $(this);
-        if (navigator.userAgent.match(/iPhone|iPad|iPod/i)) {
-            // Position modal absolute and bump it down to the scrollPosition
-            var heightModal = Math.max($('body').height(), $(window).height(), $(document).height()) + 1;
-            $this.css({
-                position: 'absolute',
-                paddingTop: $(window).scrollTop() + 'px',
-                height: heightModal + 'px'
-            });
-            // Position backdrop absolute and make it span the entire page
-            //
-            // Also dirty, but we need to tap into the backdrop after Boostrap
-            // positions it but before transitions finish.
-            //
-            setTimeout(function () {
-                $('.modal-backdrop').css({
-                    position: 'absolute',
-                    top: '10px',
-                    left: 0,
-                    width: '100%',
-                    height: heightModal + 'px'
-                });
-            }, 500);
-        }
-    });
+    //$('body').on('show.bs.modal', '.modal', function (e) {
+    //    console.log(12313)
+    //    // fix the problem of ios modal form with input field
+    //    var $this = $(this);
+    //    if (navigator.userAgent.match(/iPhone|iPad|iPod/i)) {
+    //        // Position modal absolute and bump it down to the scrollPosition
+    //        var heightModal = Math.max($('body').height(), $(window).height(), $(document).height()) + 1;
+    //        $this.css({
+    //            position: 'absolute',
+    //            paddingTop: $(window).scrollTop() + 'px',
+    //            height: heightModal + 'px'
+    //        });
+    //        // Position backdrop absolute and make it span the entire page
+    //        //
+    //        // Also dirty, but we need to tap into the backdrop after Boostrap
+    //        // positions it but before transitions finish.
+    //        //
+    //        setTimeout(function () {
+    //            $('.modal-backdrop').css({
+    //                position: 'absolute',
+    //                top: '10px',
+    //                left: 0,
+    //                width: '100%',
+    //                height: heightModal + 'px'
+    //            });
+    //        }, 500);
+    //    }
+    //});
 
 
 })(jQuery, this);
@@ -4759,11 +4759,12 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                 });
 
             var $this = $('#subscribe_email_popup');
-            if (navigator.userAgent.match(/iPhone|iPad|iPod/i)) { 
+
+            if(window.innerWidth < 620){
                 // Position modal absolute and bump it down to the scrollPosition
                 var heightModal = Math.max($('body').height(), $(window).height(), $(document).height()) + 1;
                 $this.css({
-                    position: 'absolute',
+                    position: 'absolute', 
                     paddingTop: $(window).scrollTop() + 'px',
                     height: heightModal + 'px'
                 });
