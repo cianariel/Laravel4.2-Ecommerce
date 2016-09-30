@@ -110,14 +110,14 @@ if(isset($isShopPage) && $isShopPage == '1'){
                                         </span>
                                     </a>
                                 </li>
-                                {{--<li>
+                                <!--<li>
                                     <a class="category-link__advice hidden-sm hidden-xs m-icon-text-holder" href="/advice">
                                         <span class="m-icon-text">
                                             <i class="m-icon m-icon--comments-products"></i>
                                             Advice
                                         </span>
                                     </a>
-                                </li>--}}
+                                </li>-->
                                 <li>
                                     <a class="category-link__shop m-icon-text-holder hidden-sm hidden-xs" href="/shop">
                                         <span class="m-icon-text">
@@ -131,9 +131,8 @@ if(isset($isShopPage) && $isShopPage == '1'){
 
                         <div class="search-box-container row">
                             <div class="shop-button-container col-md-2">
-                                <a class="category-link__shop m-icon-text-holder hidden-xs btn btn-md" href="/shop">
-                                    <i class="hidden-xs m-icon m-icon--shopping-bag-light-green black"></i>
-                                    <span class="m-icon-text black">Shop</span>
+                                <a class="category-link__shop m-icon-text-holder hidden-xs" href="/shop">
+                                    <span class="m-icon-text">Shop</span>
                                 </a>
                             </div>
                             <div class="col-md-8">
