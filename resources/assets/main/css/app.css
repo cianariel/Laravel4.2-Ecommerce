@@ -14560,8 +14560,8 @@ body.error-page .error-banner-holder {
   width: 1880px;
   max-width: 80%;
   left: auto;
-  bottom: -10px;
-  top: auto;
+  bottom: auto;
+  top: 130px;
   right: -11px;
   z-index: 1052 !important; }
   .subscribe_email_popup .alert {
