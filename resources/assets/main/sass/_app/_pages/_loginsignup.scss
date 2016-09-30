@@ -3,7 +3,7 @@
 
 .login-signup-modal{
   position: absolute !important;
-  top: 65px;
+  top: 28px;
   left: 0;
   overflow-y: visible;
   z-index: 500;
@@ -286,15 +286,29 @@ label[for="accepttermsmodal"]{
 }
 
 #myModal.login-signup-modal{
-  padding-top: 57px;
+  padding-top: 0;
   overflow: scroll;
+  background: 0 0;
 
   @media(max-width:620px){
     padding-top: 105px;
   }
+
+  .close-button{
+    top: 94px;
+    right: 3%;
+    z-index: 600;
+  }
+
+  #login-modal{
+    .close-button {
+      top: 4px;
+    }
+  }
 }
 
 .login-signup-modal{
+  padding-top: 57px;
   background: #fff;
 
   .category-block{
@@ -394,14 +408,3 @@ body.login-signup{
   }
 }
 
-#myModal.login-signup-modal{
-  .close-button{
-    top: 94px;
-    right: 3%;
-    z-index: 600;
-  }
-
-  .modal-login{
-    top: 4px;
-  }
-}
