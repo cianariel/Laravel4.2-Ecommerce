@@ -462,8 +462,13 @@
 
         $('html, body').on('touchmove', function(e){
             // To prevent jerking on iphone when focusing modal fields, we make modal absolute (in public.common) and then prevent native touch activity like scrolling when newsletter modal is up
-            if($('.subscribe_email_popup').length || $('#myModal.login-signup-modal').is(':visible')){
+            if($('.subscribe_email_popup').length){
                 e.preventDefault();
+            }
+            if( $('#myModal.login-signup-modal').is(':visible')){
+                if(!$(e.target).closest('#myModal.login-signup-modal').length) {
+                    e.preventDefault();
+                }
             }
         });
 
