@@ -101,7 +101,7 @@ class PageHelper {
 
         if(!$expire){
             $expire = '+2 days';
-        } 
+        }
 
         $formattedExpire = strtotime($expire, 0);
 
@@ -153,6 +153,17 @@ class PageHelper {
         curl_close($ch);
 
         return $json;
+
+    }
+
+    public static function getUrlSegment($segmentIndex){
+        $segments = explode("/", parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH));
+
+        if(isset($segments[$segmentIndex - 1])){
+            return $segments[$segmentIndex - 1];
+        }else{
+            return false;
+        }
 
     }
 }

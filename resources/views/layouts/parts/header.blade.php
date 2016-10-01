@@ -624,8 +624,13 @@ if(isset($isShopPage) && $isShopPage == '1'){
 
 </div>
 
+WHATTT
 <?php // have to use only pure php includes, or the CMS wont read it
     include('/var/www/ideaing/resources/views/layouts/parts/modals/newsletter.blade.php');
+
+$segments = explode("/", parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH));
+    if(!function_exists('is_home') && $segments[1] != 'signup' && $segments[1] != 'login'){
     include('/var/www/ideaing/resources/views/layouts/parts/login-signup.blade.php');
+}
 ?>
 
