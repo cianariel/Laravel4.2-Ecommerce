@@ -129,7 +129,7 @@ if(isset($isShopPage) && $isShopPage == '1'){
                             </ul>
                         </div>
 
-                   <!--     <form class="search-bar desktop-search-bar non-search-box-toggle col-sm-2 col-lg-2 pseudo-full-wide hidden-soft" ng-app="publicApp" ng-controller="SearchController" action="/search-form-query" autocomplete="off">
+                        <form class="search-bar desktop-search-bar non-search-box-toggle col-sm-2 col-lg-2 pseudo-full-wide hidden-soft" ng-app="publicApp" ng-controller="SearchController" action="/search-form-query" autocomplete="off">
                                 <span class="search-input-holder">
                                             <i class="m-icon m-icon--search-id"></i>
                                             <input ng-click="toggleSearch()" id="search-input"
@@ -144,25 +144,24 @@ if(isset($isShopPage) && $isShopPage == '1'){
                                             </div>
                                             <i class="hide-search m-icon--Close hidden-xs"></i>
                                 </span>
-                        </form> -->
+                        </form>
 
+                        <div class="search-box-container search-box-toggle row">
+                            <div class="shop-button-container col-md-2">
+                                <a class="category-link__shop m-icon-text-holder hidden-xs" href="/shop">
+                                    <span class="m-icon-text">Shop</span>
+                                </a>
+                            </div>
+                            <div class="col-md-8">
                                 <form class="search-bar desktop-search-bar shop-menu-search col-sm-2 col-lg-2 pseudo-full-wide hidden-soft" ng-app="publicApp" ng-controller="SearchController" action="/search-form-query" autocomplete="off">
-                                   <span class="search-input-holder">
-                                            <i class="m-icon m-icon--search-id"></i>
-                                            <input ng-click="toggleSearch()" id="search-input"
-                                                   ng-change="openSearchDropdown(query)" ng-model="query"
-                                                   ng-model-options='{ debounce: 800 }' class="form-control top-search"
-                                                   type="text" name="search" placeholder="Find Smart Products..."/>
-                                            <div id="suggest-category" ng-class="{shown: open, hidden: !open}"
-                                                 ng-show="categorySuggestions.length">
-                                                <?php // have to use only pure php includes, or the CMS wont read it
-                                                include('/var/www/ideaing/resources/views/layouts/parts/search-dropdown.blade.php')
-                                                ?>
-                                            </div>
-                                            <i class="hide-search m-icon--Close hidden-xs"></i>
-                                </span>
+                                    <span class="search-input-holder">
+                                        <i class="m-icon m-icon--search-id"></i>
+                                        <input id="search-input"  class="form-control top-search" type="text" name="search" placeholder="Find Smart Products..."/>
+                                    </span>
                                 </form>
+                            </div>
                             <div class="search-bar__overlay"></div>
+                        </div>
                         <!--   <form class="search-bar mobile-search-bar col-sm-2 col-lg-2 hidden-soft" ng-app="publicApp" ng-controller="SearchController" action="/search-form-query" autocomplete="off">
                                         <span class="search-input-holder desktop-search-bar">
                                             <input ng-click="toggleSearch()" id="search-input"

@@ -9028,11 +9028,13 @@ header.colophon {
   opacity: 1;
   padding-top: 10px;
   padding-bottom: 10px;
+  border-bottom: 1px solid rgba(193, 193, 193, 0.22);
   width: 100%; }
   .search-bar.desktop-search-bar {
     max-width: 100%;
-    position: absolute !important;
-    top: -20px;
+    width: 740px;
+    position: absolute;
+    top: 25px;
     left: 0;
     right: 0;
     opacity: 0;
@@ -9071,8 +9073,7 @@ header.colophon {
     @media (min-width: 620px) {
       .search-bar.desktop-search-bar .search-input-holder {
         position: absolute;
-        right: 0;
-        left: 0;
+        right: 13.5%;
         max-width: 760px; } }
     @media (max-width: 620px) {
       .search-bar.desktop-search-bar {
