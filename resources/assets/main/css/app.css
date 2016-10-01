@@ -15082,6 +15082,8 @@ body.shop-landing {
           margin-left: 70px; }
           .shop-page-header header #top-nav .category-menu ul .category-link__deals {
             display: block; }
+          .shop-page-header header #top-nav .category-menu ul .category-link__advice {
+            display: none; }
       .shop-page-header header #top-nav .search-box-container {
         display: block;
         position: relative;

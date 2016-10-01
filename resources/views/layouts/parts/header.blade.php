@@ -37,7 +37,7 @@ if(isset($isShopPage) && $isShopPage == '1'){
 
 <div id="publicApp" ng-app="publicApp" ng-controller="publicController" class="header-cloak scroll-header <?php echo $shopPageClass; ?>" ng-cloak>
 
-    <header class="colophon unshrunk container full-sm fixed-sm relative">
+    <header class="colophon container full-sm fixed-sm relative">
         <div>
             <nav id="top-nav" class="row">
                 <a id="menu-icon-wrapper" class="menu-icon-wrapper home-hamburger mobile-top-menu-switcher hidden-lg hidden-md"  href="#">
@@ -69,7 +69,7 @@ if(isset($isShopPage) && $isShopPage == '1'){
                                     <a data-click="#show-smart-home" class="category-link__smart-home" href="/smart-home"  ng-click="switchCategory('smart-home')">
                                         <span class="m-icon-text">
                                             <i class="m-icon m-icon--smart-home"></i>
-                                            <span class="hidden-xs hidden-md">Smart</span>
+                                            <span class="hidden-xs hidden-sm hidden-md">Smart</span>
                                             Home
                                         </span>
                                     </a>
@@ -78,7 +78,7 @@ if(isset($isShopPage) && $isShopPage == '1'){
                                     <a data-click="#show-smart-entertainment" class="category-link__smart-entertainment m-icon-text-holder" href="/smart-entertainment" ng-click="switchCategory('smart-entertainment')">
                                         <span class="m-icon-text">
                                             <i class="m-icon m-icon--video"></i>
-                                            <span class="hidden-xs hidden-md">Smart</span>
+                                            <span class="hidden-xs hidden-sm hidden-md">Smart</span> 
                                             Entertainment
                                         </span>
                                     </a>
@@ -87,7 +87,7 @@ if(isset($isShopPage) && $isShopPage == '1'){
                                     <a data-click="#show-smart-body" class="category-link__smart-body m-icon-text-holder" href="/smart-body"  ng-click="switchCategory('smart-body')">
                                        <span class="m-icon-text">
                                             <i class="m-icon m-icon--wearables"></i>
-                                            <span class="hidden-xs hidden-md">Smart</span>
+                                            <span class="hidden-xs hidden-sm hidden-md">Smart</span> 
                                             Body
                                         </span>
                                     </a>
@@ -96,7 +96,7 @@ if(isset($isShopPage) && $isShopPage == '1'){
                                     <a data-click="#show-smart-travel" class="category-link__smart-travel m-icon-text-holder" ng-click="switchCategory('smart-travel')" href="/smart-travel">
                                         <span class="m-icon-text">
                                             <i class="m-icon m-icon--travel"></i>
-                                            <span class="hidden-xs hidden-md">Smart</span>
+                                            <span class="hidden-xs hidden-sm hidden-md ">Smart</span> 
                                             Travel
                                         </span>
                                     </a>
@@ -107,6 +107,14 @@ if(isset($isShopPage) && $isShopPage == '1'){
                                         <span class="m-icon-text">
                                             <i class="m-icon m-icon--deals heavy-purple"></i>
                                             Deals
+                                        </span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="category-link__advice hidden-sm hidden-xs m-icon-text-holder" href="/advice">
+                                        <span class="m-icon-text">
+                                            <i class="m-icon m-icon--comments-products"></i>
+                                            Advice
                                         </span>
                                     </a>
                                 </li>
@@ -123,9 +131,8 @@ if(isset($isShopPage) && $isShopPage == '1'){
 
                         <div class="search-box-container row">
                             <div class="shop-button-container col-md-2">
-                                <a class="category-link__shop m-icon-text-holder hidden-xs btn btn-md" href="/shop">
-                                    <i class="hidden-xs m-icon m-icon--shopping-bag-light-green black"></i>
-                                    <span class="m-icon-text black">Shop</span>
+                                <a class="category-link__shop m-icon-text-holder hidden-xs" href="/shop">
+                                    <span class="m-icon-text">Shop</span>
                                 </a>
                             </div>
                             <div class="col-md-8">
@@ -192,8 +199,74 @@ if(isset($isShopPage) && $isShopPage == '1'){
                                                 <img width="40px" src="/assets/images/icons/ninja-01.svg" alt="" class="profile-photo ">
                                         <span class="notification-count ng-binding">1</span>
                                     </a>
+                                <?php } ?>
+
+
                                 </div>
-                            <?php } ?>
+                      <?php  if(isset($userData['login']) && $userData['login']){ ?>
+
+                            <div class="notification-popup hide-on-out hidden-soft boxy">
+                                <div class="notification-header">
+                                    <div class="col-xs-12 center-block">
+                                        <a href="#" data-switch=".notifs" data-hide=".prof-menu" class="active"><span>Notifications</span></a>
+                                        <a href="#" data-switch=".prof-menu"  data-hide=".notifs"><span>My profile</span></a>
+                                    </div>
+                                </div>
+
+                                <div class="notification-body">
+                                    <div class="tab notifs">
+                                        <span ng-click="readAllNotification()" class="pull-right red" id="mark-all-as-read">Mark all as read</span>
+
+                                        <div class="notification-item" ng-repeat="notice in notifications">
+                                            <img width="40px" ng-src="<?php echo '{{ notice.UserPicture }}' ?>" class="profile-photo pull-left">
+
+                                            <div class="notification-row-content read-<?php echo '{{ notice.NoticeRead }}' ?>">
+                                                <div><strong><?php echo '{{ notice.UserName }}' ?></strong>
+                                                    <div ng-switch="notice.Section">
+                                                        <div ng-switch-when="ideas-heart">Liked</div>
+                                                        <div ng-switch-when="product-heart">Liked</div>
+                                                        <div ng-switch-when="giveaway-heart">Liked</div>
+                                                        <div ng-switch-default>Commented on</div>
+                                                    </div>
+                                                    <a ng-href="<?php echo '/{{ notice.ItemLink }}' ?>"><?php echo '{{ notice.ItemTitle }}' ?></a>
+                                                </div>
+                                                <small class="clearfix time "><?php echo '{{ notice.Time }}' ?></small>
+                                            </div>
+                                            <div class="clearfix"></div>
+                                        </div>
+                                        <div style="text-align: center">
+                                            <a class="btn btn-primary btn-block" style="color: white"
+                                               href="/user/notification"
+                                               type="button">View All ...
+                                            </a>
+                                        </div>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                    <div class="tab prof-menu">
+                                        <div class="notification-item profile-menu">
+                                            <div class="menu-group">
+                                                <div><a href="/user/profile">My Profile</a></div>
+                                                <div><a href="/user/notification">Show Notifications</a></div>
+                                                <div><a href="#" class="edit-profile-link" ng-click="openProfileSetting()">Edit
+                                                        Profile</a></div>
+                                                <?php if(isset($isAdmin) && ($isAdmin == true)){ ?>
+                                                <div><a href="/admin/dashboard" target="_blank" class="edit-profile-link">Admin
+                                                        Panel</a></div>
+                                                <?php } ?>
+
+                                            </div>
+                                            <div class="menu-group">
+                                                <div><a href="#">Invite Friends</a></div>
+                                            </div>
+                                            <div class="log-out"><a ng-click="logoutUser()" href="#"><i class="m-icon--Logout-Active"></i> Log Out</a></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="notification-footer">
+
+                                </div>
+                            </div>
+                        <?php } ?>
                         </div>
                     </div>
 
@@ -287,75 +360,7 @@ if(isset($isShopPage) && $isShopPage == '1'){
         <?php // have to use only pure php includes, or the CMS wont read it
         include('/var/www/ideaing/resources/views/layouts/parts/shop-submenu.blade.php')
         ?>
-
-
-        <?php  if(isset($userData['login']) && $userData['login']){ ?>
-
-        <div class="notification-popup hide-on-out hidden-soft boxy">
-            <div class="notification-header">
-                <div class="col-xs-8 center-block">
-                    <a href="#" data-switch=".notifs" data-hide=".prof-menu" class="active"><span>Notifications</span></a>
-                    <a href="#" data-switch=".prof-menu"  data-hide=".notifs"><span>My profile</span></a>
-                </div>
-            </div>
-
-            <div class="notification-body">
-                <div class="tab notifs">
-                    <span ng-click="readAllNotification()" class="pull-right red" id="mark-all-as-read">Mark all as read</span>
-
-                    <div class="notification-item" ng-repeat="notice in notifications">
-                        <img width="40px" ng-src="<?php echo '{{ notice.UserPicture }}' ?>" class="profile-photo pull-left">
-
-                        <div class="notification-row-content read-<?php echo '{{ notice.NoticeRead }}' ?>">
-                            <div><strong><?php echo '{{ notice.UserName }}' ?></strong>
-                                <div ng-switch="notice.Section">
-                                    <div ng-switch-when="ideas-heart">Liked</div>
-                                    <div ng-switch-when="product-heart">Liked</div>
-                                    <div ng-switch-when="giveaway-heart">Liked</div>
-                                    <div ng-switch-default>Commented on</div>
-                                </div>
-                                <a ng-href="<?php echo '/{{ notice.ItemLink }}' ?>"><?php echo '{{ notice.ItemTitle }}' ?></a>
-                            </div>
-                            <small class="clearfix time "><?php echo '{{ notice.Time }}' ?></small>
-                        </div>
-                        <div class="clearfix"></div>
-                    </div>
-                    <div style="text-align: center">
-                        <a class="btn btn-primary btn-block" style="color: white"
-                           href="/user/notification"
-                           type="button">View All ...
-                        </a>
-                    </div>
-                    <div class="clearfix"></div>
-                </div>
-                <div class="tab prof-menu">
-                    <div class="notification-item profile-menu">
-                        <div class="menu-group">
-                            <div><a href="/user/profile">My Profile</a></div>
-                            <div><a href="/user/notification">Show Notifications</a></div>
-                            <div><a href="#" class="edit-profile-link" ng-click="openProfileSetting()">Edit
-                                    Profile</a></div>
-                            <?php if(isset($isAdmin) && ($isAdmin == true)){ ?>
-                            <div><a href="/admin/dashboard" target="_blank" class="edit-profile-link">Admin
-                                    Panel</a></div>
-                            <?php } ?>
-
-                        </div>
-                        <div class="menu-group">
-                            <div><a href="#">Invite Friends</a></div>
-                        </div>
-                        <div class="log-out"><a ng-click="logoutUser()" href="#"><i class="m-icon--Logout-Active"></i> Log Out</a></div>
-                    </div>
-                </div>
-            </div>
-            <div class="notification-footer">
-
-            </div>
-        </div>
-        <?php } ?>
     </header>
-
-
 
     <?php if(isset($userData['login']) && $userData['login']) { ?>
 
@@ -620,6 +625,6 @@ if(isset($isShopPage) && $isShopPage == '1'){
 </div>
 
 <?php // have to use only pure php includes, or the CMS wont read it
-    include('/var/www/ideaing/resources/views/layouts/parts/login-signup.blade.php');
+    include('/var/www/ideaing/resources/views/layouts/parts/modals/newsletter.blade.php')
 ?>
 
