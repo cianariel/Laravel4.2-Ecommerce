@@ -853,8 +853,8 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                         if(from == 'subscribe-modal'){
                             $('.toggles, .bordering .content').animate({opacity: "0"}, function(){
                                 setTimeout(function(){
-                                    //$scope.hideAndForget();
-                                    //window.location = '/welcome';
+                                    $scope.hideAndForget();
+                                    window.location = '/welcome';
                                 }, 2000);
                             })
                         }else{
