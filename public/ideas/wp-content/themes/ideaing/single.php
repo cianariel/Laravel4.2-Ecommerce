@@ -332,7 +332,6 @@
     <?php loadLaravelView('product-popup'); ?>
 
 </div>
-<?php include('/var/www/ideaing/resources/views/layouts/parts/modals/newsletter.blade.php'); ?>
 <?php get_footer(); ?>
 </div>
 
