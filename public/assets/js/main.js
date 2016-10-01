@@ -4061,7 +4061,7 @@ angular.module('colorpicker.module', [])
                         if( $('#myModal.login-signup-modal').is(':visible')){
                             var modalHeight = $('#myModal.login-signup-modal > div').height();
 
-                            $('body').css('max-height', modalHeight + 'px');
+                            $('body').css('max-height', (modalHeight + 100) + 'px');
                             $('body').css('overflow', 'hidden');
                         }else{
                             $('body').css('max-height', 'none');
@@ -4781,7 +4781,6 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
 
                     if(window.innerWidth < 620){
                         // Position modal absolute and bump it down to the scrollPosition
-                        var heightModal = Math.max($('body').height(), $(window).height(), $(document).height()) + 1;
                         $this.css({
                             position: 'absolute',
                             top: ($(window).scrollTop() + 40) + 'px',

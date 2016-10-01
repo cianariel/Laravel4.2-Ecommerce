@@ -466,7 +466,7 @@
                         if( $('#myModal.login-signup-modal').is(':visible')){
                             var modalHeight = $('#myModal.login-signup-modal > div').height();
 
-                            $('body').css('max-height', modalHeight + 'px');
+                            $('body').css('max-height', (modalHeight + 100) + 'px');
                             $('body').css('overflow', 'hidden');
                         }else{
                             $('body').css('max-height', 'none');

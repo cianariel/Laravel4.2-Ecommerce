@@ -312,7 +312,6 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
 
                     if(window.innerWidth < 620){
                         // Position modal absolute and bump it down to the scrollPosition
-                        var heightModal = Math.max($('body').height(), $(window).height(), $(document).height()) + 1;
                         $this.css({
                             position: 'absolute',
                             top: ($(window).scrollTop() + 40) + 'px',
