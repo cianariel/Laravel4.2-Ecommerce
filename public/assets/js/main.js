@@ -5274,7 +5274,6 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
         };
 
         $scope.closeAlert = function (index) {
-            console.log('1111')
             $scope.alerts = [];
             $scope.responseMessage = '';
 
