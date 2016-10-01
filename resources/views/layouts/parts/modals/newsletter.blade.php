@@ -63,7 +63,7 @@
                         </div>
                     <a class="btn btn-success form-control" ng-click="registerSubscribedUser('subscribe-modal')">Join and Create a Free Account</a>
                     </section>
-                    <strong ng-if="" ng-repeat="alert in alerts.register" class="red alerts" style="width: 100%; display: block; text-align: center;"> <span ng-if="$index == 0" class="alerts" ng-bind-html="alertHTML"></span></strong>
+                    <strong ng-repeat="alert in alerts.register" class="red alerts" style="width: 100%; display: block; text-align: center;"> <span ng-if="$index == 0" class="alerts" ng-bind-html="alertHTML"></span></strong>
 
                 </div>
 
