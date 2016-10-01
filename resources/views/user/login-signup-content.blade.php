@@ -51,7 +51,7 @@
                         <h3 class="text-left" ng-if="!alerts.length">Register new account</h3>
                         <form class="bordering">
                             <span class="input input--madoka big-wrap">
-                                <input class="input__field input__field--madoka" required ng-model="FullName" type="text" id="signup-input-0">
+                                <input ng-focus="closeAlert()" class="input__field input__field--madoka" required ng-model="FullName" type="text" id="signup-input-0">
                                 <label class="input__label input__label--madoka" for="signup-input-0">
                                     <svg class="graphic graphic--madoka" width="100%" height="100%" viewBox="0 0 404 77" preserveAspectRatio="none">
                                         <path d="m0,0l404,0l0,77l-404,0l0,-77z"></path>
@@ -61,7 +61,7 @@
                             </span>
 
                             <span class="input input--madoka big-wrap">
-                                <input class="input__field input__field--madoka" required  id="signup-input-1"  ng-model="Email"  type="text">
+                                <input ng-focus="closeAlert()" class="input__field input__field--madoka" required  id="signup-input-1"  ng-model="Email"  type="text">
                                 <label class="input__label input__label--madoka" for="signup-input-1">
                                     <svg class="graphic graphic--madoka" width="100%" height="100%" viewBox="0 0 404 77" preserveAspectRatio="none">
                                         <path d="m0,0l404,0l0,77l-404,0l0,-77z"></path>
@@ -70,7 +70,7 @@
                                 </label>
                             </span>
                             <span class="input input--madoka big-wrap">
-                                <input class="input__field input__field--madoka password" required id="signup-input-3"  ng-model="Password" type="password" name="password">
+                                <input ng-focus="closeAlert()" class="input__field input__field--madoka password" required id="signup-input-3"  ng-model="Password" type="password" name="password">
                                 <label class="input__label input__label--madoka" for="signup-input-3">
                                     <svg class="graphic graphic--madoka" width="100%" height="100%" viewBox="0 0 404 77" preserveAspectRatio="none">
                                         <path d="m0,0l404,0l0,77l-404,0l0,-77z"></path>
@@ -112,7 +112,7 @@
                         <h3 ng-if="!alerts.length" class="text-left">Login</h3>
 
                                 <span class="input input--madoka big-wrap">
-                                    <input class="input__field input__field--madoka" required type="text" id="login-input-1"  ng-model="LoginEmail" name="email">
+                                    <input ng-focus="closeAlert()" class="input__field input__field--madoka" required type="text" id="login-input-1"  ng-model="LoginEmail" name="email">
                                     <label class="input__label input__label--madoka" for="login-input-1">
                                         <svg class="graphic graphic--madoka" width="100%" height="100%" viewBox="0 0 404 77" preserveAspectRatio="none">
                                             <path d="m0,0l404,0l0,77l-404,0l0,-77z"></path>
@@ -122,7 +122,7 @@
                                 </span>
 
                                 <span class="input input--madoka big-wrap">
-                                    <input class="input__field input__field--madoka password" required  id="login-input-2"  ng-model="LoginPassword" type="password" name="password">
+                                    <input ng-focus="closeAlert()" class="input__field input__field--madoka password" required  id="login-input-2"  ng-model="LoginPassword" type="password" name="password">
                                     <label class="input__label input__label--madoka" for="login-input-2">
                                         <svg class="graphic graphic--madoka" width="100%" height="100%" viewBox="0 0 404 77" preserveAspectRatio="none">
                                             <path d="m0,0l404,0l0,77l-404,0l0,-77z"></path>

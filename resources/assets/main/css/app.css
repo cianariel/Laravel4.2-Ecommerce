@@ -11138,6 +11138,27 @@ header.sub-head {
 .left-nav a {
   position: static; }
 
+.alert {
+  max-width: 300px;
+  margin: 0 auto 30px;
+  padding-top: 27px;
+  border: 0px;
+  color: #fff;
+  text-align: center;
+  background: rgba(252, 17, 89, 0.7);
+  font-size: 1.5rem; }
+  .alert .close {
+    margin-top: -5px;
+    background: none;
+    border: 0px;
+    font-size: 23px;
+    color: #fff; }
+
+.subscribe_email_popup .alert-danger,
+.subscribe_email_popup .alert[type="@danger"] {
+  background: 0 0;
+  font-size: 1.3rem; }
+
 body.home #hero-slider .rsNav.rsBullets {
   top: -30px; }
 
@@ -12337,23 +12358,6 @@ label[for="accepttermsmodal"] {
     .login-signup-modal .category-block .category-bg {
       z-index: 1;
       opacity: .25; }
-  .login-signup-modal .alert-danger,
-  .login-signup-modal .alert[type="@danger"] {
-    max-width: 300px;
-    margin: 0 auto 30px;
-    padding-top: 27px;
-    background: rgba(252, 17, 89, 0.7);
-    border: 0px;
-    color: #fff;
-    font-size: 1.5rem;
-    text-align: center; }
-    .login-signup-modal .alert-danger .close,
-    .login-signup-modal .alert[type="@danger"] .close {
-      margin-top: -5px;
-      background: none;
-      border: 0px;
-      font-size: 23px;
-      color: #fff; }
 
 body.login-signup {
   height: 100%;
@@ -13362,11 +13366,9 @@ body.error-page .error-banner-holder {
   top: 130px;
   right: -11px;
   z-index: 1052 !important; }
-  .subscribe_email_popup .alert {
+  .subscribe_email_popup .alert.alert[type="@success"] {
     position: absolute;
-    bottom: 40%;
-    font-size: 2.3rem;
-    padding-right: 5% !important; }
+    bottom: 40%; }
   .subscribe_email_popup .alertme {
     position: absolute;
     top: 30%;

@@ -879,3 +879,42 @@ header.sub-head{
     position: static;
   }
 }
+
+//form{
+
+.alert{
+  //&.alert-danger,
+  //&.alert[type="@danger"]{
+    max-width:300px;
+    margin: 0 auto 30px;
+    padding-top: 27px;
+    border: 0px;
+    color: #fff;
+    text-align: center;
+    background: rgba($iridium, .7);
+    font-size: 1.5rem;
+  //}
+  .close{
+    margin-top: -5px;
+    background: none;
+    border: 0px;
+    font-size: 23px;
+    color: #fff;
+
+  }
+}
+
+.subscribe_email_popup{
+    .alert-danger,
+    .alert[type="@danger"]{
+     background: 0 0;
+     font-size: 1.3rem;
+    }
+}
+
+//.login-signup-modal{
+
+//}
+
+//}
+

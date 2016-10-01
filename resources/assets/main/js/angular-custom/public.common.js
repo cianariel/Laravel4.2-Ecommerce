@@ -800,7 +800,9 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
         };
 
         $scope.closeAlert = function (index) {
+            console.log('1111')
             $scope.alerts = [];
+            $scope.responseMessage = '';
 
         };
 
@@ -849,13 +851,11 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                     else if (data.data == 'Registration completed successfully') {
                         $scope.addAlert('success', 'SUCCESS! You just made the best decision', 'register');
 
-                        console.log(from)
-
                         if(from == 'subscribe-modal'){
                             $('.toggles, .bordering .content').animate({opacity: "0"}, function(){
                                 setTimeout(function(){
-                                    $scope.hideAndForget();
-                                    window.location = '/welcome';
+                                    //$scope.hideAndForget();
+                                    //window.location = '/welcome';
                                 }, 2000);
                             })
                         }else{
@@ -869,13 +869,11 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                     } else if (data.data == 'Registration completed successfully, please verify your email') {
                         $scope.addAlert('success', 'SUCCESS! You just made the best decision', 'register');
 
-                        console.log(from)
-
                         if(from == 'subscribe-modal'){
                             $('.toggles, .bordering .content').animate({opacity: "0"}, function(){
                                 setTimeout(function(){
-                                    $scope.hideAndForget();
-                                    window.location = '/welcome';
+                                    //$scope.hideAndForget();
+                                    //window.location = '/welcome';
                                 }, 2000);
                             })
                         }else{

@@ -28,7 +28,7 @@
                     </ul>
                     <section class="content">
                         <span class="input input--madoka big-wrap">
-                            <input class="input__field input__field--madoka" required type="text" id="input-30" ng-model="FullName">
+                            <input ng-focus="closeAlert()" class="input__field input__field--madoka" required type="text" id="input-30" ng-model="FullName">
                             <label class="input__label input__label--madoka" for="input-30">
                                 <svg class="graphic graphic--madoka" width="100%" height="100%" viewBox="0 0 404 77" preserveAspectRatio="none">
                                     <path d="m0,0l404,0l0,77l-404,0l0,-77z"></path>
@@ -37,7 +37,7 @@
                             </label>
                         </span>
                         <span class="input input--madoka big-wrap">
-                            <input class="input__field input__field--madoka" required type="text" id="input-31" ng-model="Email">
+                            <input ng-focus="closeAlert()" class="input__field input__field--madoka" required type="text" id="input-31" ng-model="Email">
                             <label class="input__label input__label--madoka" for="input-31">
                                 <svg class="graphic graphic--madoka" width="100%" height="100%" viewBox="0 0 404 77" preserveAspectRatio="none">
                                     <path d="m0,0l404,0l0,77l-404,0l0,-77z"></path>
@@ -46,7 +46,7 @@
                             </label>
                         </span>
                         <span class="input input--madoka big-wrap">
-                            <input class="input__field input__field--madoka password" required type="password" id="input-32" ng-model="Password">
+                            <input ng-focus="closeAlert()" class="input__field input__field--madoka password" required type="password" id="input-32" ng-model="Password">
                             <label class="input__label input__label--madoka" for="input-32">
                                 <svg class="graphic graphic--madoka" width="100%" height="100%" viewBox="0 0 404 77" preserveAspectRatio="none">
                                     <path d="m0,0l404,0l0,77l-404,0l0,-77z"></path>
@@ -62,11 +62,11 @@
                             </label>
                         </div>
                     <a class="btn btn-success form-control" ng-click="registerSubscribedUser('subscribe-modal')">Join and Create a Free Account</a>
+
+                        <strong ng-repeat="alert in alerts.register" class="red alerts" style="width: 100%; display: block; text-align: center;"> <span ng-if="$index == 0" class="alerts" ng-bind-html="alertHTML"></span></strong>
                     </section>
 
-                    <uib-alert ng-repeat="alert in alerts.register" type="@{{alert.type}}" close="closeAlert($index)">
-                        <strong  style="width: 100%; display: block; text-align: center;" ng-if="$index == 0" class="red alerts" ng-bind-html="alertHTML"></strong>
-                    </uib-alert>
+
                 </div>
 
 
@@ -79,7 +79,7 @@
                     </ul>
                     <section class="content">
                         <span class="input input--madoka big-wrap">
-                            <input class="required input__field input__field--madoka" ng-model="data.SubscriberEmail" required type="text" id="input-34">
+                            <input ng-focus="closeAlert()" class="required input__field input__field--madoka" ng-model="data.SubscriberEmail" required type="text" id="input-34">
                             <label class="input__label input__label--madoka" for="input-34">
                                 <svg class="graphic graphic--madoka" width="100%" height="100%" viewBox="0 0 404 77" preserveAspectRatio="none">
                                     <path d="m0,0l404,0l0,77l-404,0l0,-77z"></path>

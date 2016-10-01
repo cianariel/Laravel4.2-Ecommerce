@@ -152,6 +152,13 @@ function slideMe(){
             slideMe();
         }, 5000);
     });
+
+//$('.bordering').focusin(function(){
+//    console.log('ututututut')
+//    //
+//    $('.alert, .alerts').fadeOut();
+//    //console.log('ututututut')
+//})
 </script>
 
 
