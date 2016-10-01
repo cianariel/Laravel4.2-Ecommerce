@@ -11157,7 +11157,10 @@ header.sub-head {
 .subscribe_email_popup .alert-danger,
 .subscribe_email_popup .alert[type="@danger"] {
   background: 0 0;
-  font-size: 1.3rem; }
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: #E61D25;
+  padding: 0 !important; }
 
 body.home #hero-slider .rsNav.rsBullets {
   top: -30px; }
@@ -13523,10 +13526,6 @@ body.error-page .error-banner-holder {
         display: none; }
       .subscribe_email_popup #subscribe_email_popup .content-subscribe {
         display: block; } }
-    .subscribe_email_popup #subscribe_email_popup .alert-dismissable, .subscribe_email_popup #subscribe_email_popup .alert-dismissible {
-      padding: 0; }
-      .subscribe_email_popup #subscribe_email_popup .alert-dismissable .close, .subscribe_email_popup #subscribe_email_popup .alert-dismissible .close {
-        display: none; }
     .subscribe_email_popup #subscribe_email_popup .why-join {
       margin-top: 25px;
       font-weight: bold; }

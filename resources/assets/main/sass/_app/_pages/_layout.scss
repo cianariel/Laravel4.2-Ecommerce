@@ -905,10 +905,19 @@ header.sub-head{
 }
 
 .subscribe_email_popup{
+
+    //.alerts{
+    //  padding-bottom: 25px;
+    //  border-radius: 5px;
+    //}
+
     .alert-danger,
     .alert[type="@danger"]{
      background: 0 0;
-     font-size: 1.3rem;
+     font-size: 1.4rem;
+      font-weight: bold;
+      color: #E61D25;
+      padding: 0 !important;
     }
 }
 
