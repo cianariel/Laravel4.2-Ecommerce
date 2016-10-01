@@ -695,8 +695,13 @@ header.colophon{
     }
 
   }
-  .search-box-container{
-    .shop-button-container{
+
+  .search-box-toggle{
+    display: none;
+    .shop-menu-search{
+      display: none;
+    }
+    .search-bar__overlay{
       display: none;
     }
   }
