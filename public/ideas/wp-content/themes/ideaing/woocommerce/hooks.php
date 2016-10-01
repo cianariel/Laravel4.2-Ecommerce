@@ -33,6 +33,27 @@ function ideaing_body_class_filter($classes){
 add_filter('body_class', 'ideaing_body_class_filter', 99, 1 );
 
 /**
+ * Body class filter
+ *
+ * @return return string
+ * @since WooCommerce Integration 1.0
+ */
+function ideaing_gateway_icon($icon, $gateway){
+
+  switch ($gateway) {
+    case 'paypal':
+      $icon = '<img alt="Paypal" src="/../assets/images/paypal.svg">';
+      break;
+
+    case 'stripe':
+      $icon = '<img alt="Visa Mastercart" src="/../assets/images/visa-mc.png">';
+      break;
+  }
+  return $icon;
+}
+add_filter('woocommerce_gateway_icon', 'ideaing_gateway_icon', 99, 2);
+
+/**
  * If this is a checkout page process
  *
  * @return return boolian | custom
@@ -279,6 +300,21 @@ function ideaing_secure_checkout_nav(){
       )
       , __('Cart', 'ideaing')
       , esc_url(WC()->cart->get_checkout_url())
+      , __('Your information', 'ideaing')
+      , __('Success', 'ideaing')
+    );
+
+  } elseif (is_wc_endpoint_url( 'order-received' )) {
+
+    printf(
+      implode(
+        array(
+          '<span class="active"><span>%s</span></span>',
+          '<span class="active"><span>%s</span></span>',
+          '<span class="active"><span>%s</span></span>'
+        )
+      )
+      , __('Cart', 'ideaing')
       , __('Your information', 'ideaing')
       , __('Success', 'ideaing')
     );

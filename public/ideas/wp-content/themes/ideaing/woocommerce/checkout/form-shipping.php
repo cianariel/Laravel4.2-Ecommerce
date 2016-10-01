@@ -62,12 +62,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 	<?php if ( apply_filters( 'woocommerce_enable_order_notes_field', get_option( 'woocommerce_enable_order_comments', 'yes' ) === 'yes' ) ) : ?>
 
-		<?php if ( ! WC()->cart->needs_shipping() || wc_ship_to_billing_address_only() ) : ?>
-
-			<h3><?php _e( 'Additional Information', 'woocommerce' ); ?></h3>
-
-		<?php endif; ?>
-
 		<?php foreach ( $checkout->checkout_fields['order'] as $key => $field ) : ?>
 
 			<?php woocommerce_form_field( $key, $field, $checkout->get_value( $key ) ); ?>
@@ -89,7 +83,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 	<?php do_action( 'woocommerce_review_order_before_submit' ); ?>
 
-	<?php $order_button_text = __('Make purchase', 'woocommerce'); ?>
+	<?php $order_button_text = __('Place your order', 'woocommerce'); ?>
 
 	<?php echo apply_filters( 'woocommerce_order_button_html', '<input type="submit" class="button button-primary" name="woocommerce_checkout_place_order" id="place_order" value="' . esc_attr( $order_button_text ) . '" data-value="' . esc_attr( $order_button_text ) . '" />' ); ?>
 
