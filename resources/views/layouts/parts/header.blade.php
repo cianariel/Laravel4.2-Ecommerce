@@ -624,7 +624,6 @@ if(isset($isShopPage) && $isShopPage == '1'){
 
 </div>
 
-WHATTT
 <?php // have to use only pure php includes, or the CMS wont read it
     include('/var/www/ideaing/resources/views/layouts/parts/modals/newsletter.blade.php');
 
