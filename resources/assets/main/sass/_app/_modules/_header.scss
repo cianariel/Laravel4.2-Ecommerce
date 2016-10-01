@@ -409,14 +409,14 @@ header.colophon{
   opacity: 1;
   padding-top: 10px;
   padding-bottom: 10px;
-  border-bottom: 1px solid rgba(193,193,193,.22);
+  //border-bottom: 1px solid rgba(193,193,193,.22);
   width: 100%;
 
   &.desktop-search-bar{
     max-width: 100%;
-    width: 740px;
-    position: absolute;
-    top:25px;
+    //width: 740px;
+    position: absolute !important;
+    top:-20px;
     left:0;
     right: 0;
     opacity: 0;
@@ -444,7 +444,8 @@ header.colophon{
       @media(min-width: 620px)  {
         .search-input-holder{
           position: absolute;
-          right: 13.5%;
+          right: 0;
+          left: 0;
           max-width: 760px;
       }
     }
