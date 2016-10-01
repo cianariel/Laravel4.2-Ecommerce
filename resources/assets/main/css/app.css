@@ -13371,7 +13371,7 @@ body.error-page .error-banner-holder {
   z-index: 1052 !important; }
   .subscribe_email_popup .alert.alert[type="@success"] {
     position: absolute;
-    bottom: 40%; }
+    bottom: 30%; }
   .subscribe_email_popup .alertme {
     position: absolute;
     top: 30%;
