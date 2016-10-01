@@ -154,6 +154,269 @@ productApp.config(['$provide', function ($provide) {
 }]);
 
 
+productApp.controller('forumController', ['$scope', '$http', '$window', '$interval', '$timeout'
+    , function ($scope, $http, $window, $interval, $timeout){
+        $scope.focusEditor = function () {
+            $timeout(function () {
+                angular.element('div[contenteditable=true]').trigger('focus');
+            })
+        }
+        $scope.activeCategoryId = 1;
+        $scope.activeSubCategoryId;
+        $scope.thread = {};
+        $scope.categoryThreads = [];
+
+        $scope.init = function(){
+            $http({
+                url: '/advice/api/categories/' + $scope.activeCategoryId,
+                method: "get",
+                data: {
+                }
+            }).success(function (result) {
+                $scope.subCategories = result.data;
+//                $scope.activeSubCategoryId = result.data.length ? result.data[0].id : "";
+                $scope.getThreads();
+            });
+        }
+        $scope.init();
+        
+        $scope.addThread = function(){
+            $http({
+                url: '/advice/api/add-thread',
+                method: "POST",
+                data: {
+                    category_id: $scope.thread.category_id,
+                    content: $scope.thread.content,
+                    title: $scope.thread.title,
+                }
+            }).success(function (data) {
+                $scope.init();
+                alert("Successfully saved.");
+            });
+        }
+        
+        $scope.getThreads = function(){
+            $http({
+                url: '/advice/api/threads/' + $scope.activeSubCategoryId, 
+                method: "get", 
+                data: {
+                }
+            }).success(function (result) {
+                $scope.categoryThreads = result.data;
+                
+            });
+        }
+        
+        $scope.selectCategory = function(categoryID){
+            $scope.activeCategoryId = categoryID;
+            $scope.init();
+        }
+        $scope.selectSubCategory = function(subCategoryID){
+            $scope.activeSubCategoryId = subCategoryID;
+            $scope.getThreads();
+        }
+    }
+]);
+publicApp.controller('CommentModalCtrl',['$scope', '$timeout', '$uibModalInstance', '$http', 'commentData', function ($scope, $timeout, $uibModalInstance, $http, commentData) {
+    $scope.focusEditor = function () {
+        $timeout(function () {
+            angular.element('div[contenteditable=true]').trigger('focus');
+        })
+    }
+    $scope.commentData = {
+        thread_id: commentData.thread_id,
+        post_id: commentData.post_id,
+        content: "",
+    };
+    
+    $scope.hideAndForget = function () {
+        $http({
+            url: '/hide-signup',
+            method: "GET",
+
+        }).success(function (data) {
+            $uibModalInstance.close();
+        });
+    };
+
+    $scope.cancel = function () {
+        $uibModalInstance.dismiss('cancel');
+    };
+
+    $scope.saveComment = function(){
+        if(!$scope.commentData.content){
+            return;
+        }
+        $http({
+            url: '/advice/api/comment',
+            method: "post",
+            data: {
+                thread_id: $scope.commentData.thread_id,
+                post_id: $scope.commentData.post_id,
+                content: $scope.commentData.content,
+            }
+        }).success(function (result) {
+            $uibModalInstance.dismiss('cancel');
+//            items.scope.init();
+        });
+    }
+}
+]);
+
+productApp.directive( 'compileData', function ( $compile ) {
+  return {
+    scope: true,
+    link: function ( scope, element, attrs ) {
+
+      var elmnt;
+
+      attrs.$observe( 'template', function ( myTemplate ) {
+        if ( angular.isDefined( myTemplate ) ) {
+          // compile the provided template against the current scope
+          elmnt = $compile( myTemplate )( scope );
+
+            element.html(""); // dummy "clear"
+
+          element.append( elmnt );
+        }
+      });
+    }
+  };
+});
+
+productApp.controller('forumThreadController', ['$scope', '$uibModal', '$http', '$window', '$interval', '$timeout'
+    , function ($scope, $uibModal, $http, $window, $interval, $timeout){
+        $scope.thread = {};
+        $scope.commentHTML = "";
+        $scope.init = function(){
+            $http({
+                url: '/advice/api/posts/' + $scope.thread_id,
+                method: "get",
+                data: {
+                }
+            }).success(function (result) {
+                $scope.thread = result.data;
+                $scope.commentHTML = "";
+                var posts = angular.copy($scope.thread.posts);
+                $scope.makeCommentHTML(posts)
+                
+                $timeout(function () {
+                    $scope.init();
+                }, 3000)
+                
+            });
+        }
+        
+        angular.element(document).ready(function () {
+            $scope.init();
+        });
+
+        $scope.commentPopup = function(thread_id, post_id){
+            var templateUrl = "forum-comment.html";
+            var modalInstance = $uibModal.open({
+                templateUrl: templateUrl,
+                size: 'lg',
+                windowClass: 'forum-comment-modal',
+                controller: 'CommentModalCtrl',
+                resolve: {
+                    commentData: function(){
+                        return {
+                            thread_id: thread_id,
+                            post_id: post_id,
+                            scope: $scope
+                        };
+                    }
+                }
+            });
+
+        };
+
+        $scope.makeCommentHTML = function(posts){
+            for(var key in posts){
+                var post = posts[key];
+                if(!post.post_id){
+                    $scope.commentHTML += '\
+                <div class="comment-row " >\
+                    <div class="comment-profile-holder text-center">\
+                        <img class="profile-photo" src="'+post.authorPicture+'"><br>\
+                        <span class="name">COMMUNITY MEMBER</span><br>\
+                        <span>78% REPUTATION</span>\
+                    </div>\
+                    <div class="comment-content-container">\
+                        <div class="comment-content-holder">\
+                            <div class="comment-content-inner-holder">\
+                                <div class="comment-conent">\
+                                    <div class="fullname">\
+                                        '+post.authorName+'\
+                                    </div>\
+                                    <div class="username">\
+                                        '+post.authorName+'\
+                                    </div>\
+                                    <div class="content" >'+post.content+'</div>\
+                                </div>\
+                                <div class="comment-bottom">\
+                                    <div class="pull-left">\
+                                        <i class="m-icon m-icon--star-blue-full"></i> &nbsp; <span>207</span> found this helpful\
+                                    </div>\
+                                    <div class="pull-right reply" data-ng-click="commentPopup('+post.thread_id+','+post.id+')"><i class="m-icon m-icon--email-form-id"></i> &nbsp; Reply</div>\
+                                    <div class="pull-right link-to-this-post"><i class="m-icon m-icon--attachment"></i> &nbsp; Link to this post</div>\
+                                    <div class="clearfix"></div>\
+                                </div>\
+                            </div>\
+                    ';
+                }else{
+                    if(key == 0){
+                        $scope.commentHTML += '\
+                            <div class="sub" >\
+                            ';
+                    }
+                    $scope.commentHTML += '\
+                            <div  class="comment-content-holder">\
+                                <div class="comment-content-inner-holder">\
+                                    <div class="comment-conent">\
+                                        <div class="pull-left">\
+                                            <img class="profile-photo" src="'+post.authorPicture+'">\
+                                        </div>\
+                                        <div class="pull-left">\
+                                            <div class="fullname">\
+                                                '+post.authorName+'\
+                                            </div>\
+                                            <div class="username">\
+                                                '+post.authorName+'\
+                                            </div>\
+                                        </div>\
+                                        <div class="clearfix"></div>\
+                                        <div class="content" >'+post.content+'</div>\
+                                    </div>\
+                                    <div class="comment-bottom">\
+                                        <div class="pull-left">\
+                                            <i class="m-icon m-icon--star-blue-full-lines"></i> &nbsp; <span>208</span> found this helpful\
+                                        </div>\
+                                        <div class="pull-right reply" data-ng-click="commentPopup('+post.thread_id+','+post.id+')"><i class="m-icon m-icon--email-form-id"></i> &nbsp; Reply</div>\
+                                        <div class="pull-right link-to-this-post"><i class="m-icon m-icon--attachment"></i> &nbsp; Link to this post</div>\
+                                        <div class="clearfix"></div>\
+                                    </div>\
+                                </div>\
+                    ';
+
+                }
+
+                $scope.makeCommentHTML(post.child_posts);
+                if(!post.post_id){
+                    $scope.commentHTML += '</div></div>\
+                            <div class="clearfix"></div>\
+                        </div>\
+                    ';
+                }else{
+                    $scope.commentHTML += "</div>";
+                    if(key == (posts.length-1)){
+                        $scope.commentHTML += "</div>";
+                    }
+                }
+            }
+        }
+    }
+]);
 productApp.controller('productController', ['$scope', '$http', '$window', '$interval', '$timeout'
     , function ($scope, $http, $window, $interval, $timeout) {
 
