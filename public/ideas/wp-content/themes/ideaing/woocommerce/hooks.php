@@ -506,3 +506,16 @@ function ideaing_update_order_review_fragments( $fragments ) {
 	return $fragments;
 }
 add_filter( 'woocommerce_update_order_review_fragments', 'ideaing_update_order_review_fragments', 99, 1 );
+
+/**
+ * Ajax handle global cart
+ *
+ * @return return string
+ */
+function ideaing_global_cart_summary(){
+
+  echo 'yoho....';
+  die;
+}
+add_action( 'wp_ajax_global_cart_summary', 'ideaing_global_cart_summary' );
+add_action( 'wp_ajax_nopriv_global_cart_summary', 'ideaing_global_cart_summary' );
