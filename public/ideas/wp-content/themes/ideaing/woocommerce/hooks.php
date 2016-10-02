@@ -32,8 +32,21 @@ function ideaing_body_class_filter($classes){
 }
 add_filter('body_class', 'ideaing_body_class_filter', 99, 1 );
 
+
 /**
- * Body class filter
+ * Filter return to shop URL
+ *
+ * @return return string
+ * @since WooCommerce Integration 1.0
+ */
+function ideaing_return_to_shop_redirect($url){
+
+  return '/shop';
+}
+add_filter('woocommerce_return_to_shop_redirect', 'ideaing_return_to_shop_redirect', 99, 1);
+
+/**
+ * Gateways icon filter
  *
  * @return return string
  * @since WooCommerce Integration 1.0
