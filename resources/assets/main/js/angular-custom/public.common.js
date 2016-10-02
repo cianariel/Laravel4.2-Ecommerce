@@ -2,7 +2,7 @@
  * Created by sanzeeb on 1/7/2016.
  */
 
-var publicApp = angular.module('publicApp', ['ui.bootstrap', 'ngSanitize', 'angularFileUpload']);
+var publicApp = angular.module('publicApp', ['ui.bootstrap', 'ngSanitize', 'angularFileUpload', '720kb.socialshare']);
 
 publicApp.config(['$httpProvider', function ($httpProvider) {
     $httpProvider.defaults.headers.common["X-Requested-With"] = 'XMLHttpRequest';

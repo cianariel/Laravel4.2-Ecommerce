@@ -60,6 +60,35 @@
                             <a href="#" class="follow">0 Follower</a>
                             <a href="#" class="follow">0 Following</a>
                         </div>
+
+
+                        <br>
+                        <div>
+                            <a href="#" class="follow"
+                               socialshare
+                               socialshare-via="{{env('FB_APP')}}"
+                               socialshare-type="feed"
+                               socialshare-provider="facebook"
+                               socialshare-text="Welcome to Ideaing"
+                               socialshare-hashtags="Ideaing"
+                               socialshare-url="https://ideaing.com"
+                            >
+                                Invite Facebook Friends
+                            </a>
+
+                            <a href="#" class="follow"
+                               socialshare
+                               socialshare-via="{{env('FB_APP')}}"
+                               socialshare-type="feed"
+                               socialshare-provider="twitter"
+                               socialshare-text="Welcome to Ideaing"
+                               socialshare-hashtags="Ideaing"
+                               socialshare-url="https://ideaing.com"
+                            >
+                                Invite Twitter Friends
+                            </a>
+                        </div>
+
                     </div>
                 </div>
                 @if($showEditOption)
