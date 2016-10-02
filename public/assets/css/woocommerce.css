@@ -574,6 +574,7 @@
   letter-spacing: .07em;
 }
 
+.global-cart-summary .button,
 .secure-checkout [type="submit"],
 .secure-checkout .button {
   display: inline-block;
@@ -593,6 +594,7 @@
   cursor: default;
 }
 
+.global-cart-summary .button,
 .secure-checkout .button-primary,
 .secure-checkout [name="login"],
 .secure-checkout .wc-backward,
@@ -609,6 +611,8 @@
   transition: background-color .4s ease-out;
 }
 
+.global-cart-summary .button:focus,
+.global-cart-summary .button:hover,
 .secure-checkout .button-primary:focus,
 .secure-checkout .button-primary:hover,
 .secure-checkout [name="login"]:focus,
@@ -1214,7 +1218,8 @@ table.order_details td {
   height: 100vh;
   top: 0;
   right: 0;
-  width: 400px;
+	max-width: 100%;
+  width: 391px;
   border-left: solid 1px #dbdbdb;
   background-color: #fff;
   opacity: 0;
@@ -1304,12 +1309,45 @@ table.order_details td {
   overflow: auto;
 }
 
+.global-cart-summary section .widget-title-alt {
+  display: none;
+}
+
 .global-cart-summary footer {
   position: absolute;
-  padding: 15px;
+  padding: 15px 15px 30px;
   width: 100%;
   left: 0;
   bottom: 0;
+  background-color: #fff;
+}
+
+.global-cart-summary footer table {
+  width: 100%;
+  margin: 0 0 25px;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+}
+
+.global-cart-summary footer th {
+  font-size: 12px;
+  padding: 5px 5px 5px 0;
+}
+
+.global-cart-summary footer td {
+  font-size: 11px;
+  text-align: right;
+  padding: 5px 0 5px 5px;
+}
+
+.global-cart-summary footer td strong {
+  font-weight: inherit;
+}
+
+.global-cart-summary footer .wc-forward {
+  display: block;
+  margin: 0;
 }
 
 @-webkit-keyframes ideaingfadeIn {

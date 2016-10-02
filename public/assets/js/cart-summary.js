@@ -35,12 +35,18 @@
 
     var self = this;
 
+    console.log(  self.isCheckout() , self.isCart() );
+
+    if ( self.isCheckout() || self.isCart() ) return;
+
     $( document ).on('click', '.ics--toggle', function(){
       self.toggle();
     });
 
     $( document ).on('click', '.ics--open', function(){
       self.open();
+
+      self.update(); // for now
     });
 
     $( document ).on('click', '.ics--close', function(){
@@ -48,8 +54,7 @@
     });
 
     $( document ).on('keyup', function(e){
-      console.log(e);
-      //self.close();
+      if ( 27 === e.keyCode ) self.close();
     });
 
     setTimeout(function(){ self.build(); }, 0 );
@@ -75,14 +80,11 @@
               '<strong>Cart</strong>',
             '</div>', // .col-*
             '<div class="col-xs-4 u--i">',
-              //'<span class="u--n">Hey Bunny</span>',
               '<span class="u--c">',
                 '<span class="m-icon--shopping-bag-light-green"></span>',
-                // '<mark>2</mark>',
             '</div>', // .col-*
           '</div>', // .row
         '</header>',
-
         '<div class="loader">',
           '<div>',
             '<div class="loader">',
@@ -95,17 +97,12 @@
             '</div>',
           '</div>',
         '</div>',
-        // '<section>',
-        //   'content',
-        // '</section>',
-        // '<footer>',
-        //   'button',
-        // '</footer>',
       '</aside>',
     ].join('');
 
     document.body.appendChild(self.element);
 
+    self.update();
 
     /////////////////// dummy activation button should be removed in production
     self.dummy = document.createElement('div');
@@ -118,8 +115,6 @@
   ideaingCartSummay.prototype.open = function () {
 
     var self = this;
-
-    console.log('close', self.switching);
 
     if ( self.switching ) return;
 
@@ -139,8 +134,6 @@
   ideaingCartSummay.prototype.close = function () {
 
     var self = this;
-
-    console.log('close', self.switching);
 
     if ( self.switching ) return;
 
@@ -165,15 +158,34 @@
   ideaingCartSummay.prototype.update = function ( data ) {
 
     var self = this;
+
+    $.ajax({
+      type: "POST",
+      dataType: "HTML",
+      url: '/ideas/wp-admin/admin-ajax.php',
+      data: {
+        action: 'global_cart_summary',
+      },
+      success: function( response ){
+        console.log($( self.element ).find('aside'));
+        $( self.element ).find('aside').html(response);
+      },
+      error: function (xhr, ajaxOptions, thrownError) {
+        console.warn(thrownError);
+      },
+    });
   };
 
-  try {
+  $(document).ready(function(){
 
-    new ideaingCartSummay();
+    try {
 
-  } catch (e) {
+      new ideaingCartSummay();
 
-    console.error(e);
-  }
+    } catch (e) {
+
+      console.error(e);
+    }
+  });
 
 } )( jQuery );
