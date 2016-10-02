@@ -712,6 +712,13 @@ body.shop-landing{
           }
         }
 
+        .bottom-border-none{
+          &::before{
+            display: none;
+            border: none;
+          }
+        }
+
         .search-box-container{
           display: block;
           position: relative;
@@ -765,6 +772,9 @@ body.shop-landing{
                 font-size: 1.7rem !important;
                 color: #3d4b4e;
                 text-transform: capitalize;
+                .m-icon--shopping-bag-light-green{
+                  font-size: 25px;
+                }
               }
             }
           }

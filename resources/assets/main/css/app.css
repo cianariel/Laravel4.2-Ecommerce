@@ -15114,6 +15114,9 @@ body.shop-landing {
               display: block; }
             body.shop-landing .shop-page-header header #top-nav .category-menu ul .category-link__advice {
               display: none; }
+        body.shop-landing .shop-page-header header #top-nav .bottom-border-none::before {
+          display: none;
+          border: none; }
         body.shop-landing .shop-page-header header #top-nav .search-box-container {
           display: block;
           position: relative;
@@ -15158,6 +15161,8 @@ body.shop-landing {
                 font-size: 1.7rem !important;
                 color: #3d4b4e;
                 text-transform: capitalize; }
+                body.shop-landing .shop-page-header header #top-nav .search-box-container .shop-button-container .category-link__shop span .m-icon--shopping-bag-light-green {
+                  font-size: 25px; }
           body.shop-landing .shop-page-header header #top-nav .search-box-container .search-bar__overlay {
             display: block !important;
             position: fixed;

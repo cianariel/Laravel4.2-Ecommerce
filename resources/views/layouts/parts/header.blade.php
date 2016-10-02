@@ -48,7 +48,7 @@ if(isset($isShopPage) && $isShopPage == '1'){
                     </svg>
                     <button id="menu-icon-trigger" class="menu-icon-trigger"></button>
                 </a>
-                <div class="text-center logo-holder">
+                <div class="text-center logo-holder non-search-box-toggle">
                     <a class="ideaing-logo center-block" href="/" data-click="#show-default" >
                        <span class="m-icon m-icon--logo-with-text-black-blue default-logo">
                             <img src="/assets/svg/ideaing-logo-with-text-blue.svg" >
@@ -56,6 +56,18 @@ if(isset($isShopPage) && $isShopPage == '1'){
 
                         <span class="m-icon m-icon--logo-with-text-red red-logo">
                            <img src="/assets/svg/ideaing-logo-with-text-red.svg" >
+                        </span>
+                    </a>
+                </div>
+
+                <div class="text-center logo-holder search-box-toggle">
+                    <a class="ideaing-logo center-block" href="/" data-click="#show-default" >
+                       <span class="m-icon m-icon--logo-with-text-black-blue default-logo">
+                            <img src="/assets/svg/logo-shop-with-text-blue.svg" >
+                       </span>
+
+                        <span class="m-icon m-icon--logo-with-text-red red-logo">
+                           <img src="/assets/svg/logo-shop-with-text-red.svg" >
                         </span>
                     </a>
                 </div>
@@ -159,6 +171,13 @@ if(isset($isShopPage) && $isShopPage == '1'){
                                         <input id="search-input"  class="form-control top-search" type="text" name="search" placeholder="Find Smart Products..."/>
                                     </span>
                                 </form>
+                            </div>
+                            <div class="shop-button-container col-md-2">
+                                <a class="category-link__shop bottom-border-none m-icon-text-holder hidden-sm hidden-xs" href="/shop">
+                                    <span class="m-icon-text">
+                                        <i class="m-icon--shopping-bag-light-green"></i>
+                                    </span>
+                                </a>
                             </div>
                             <div class="search-bar__overlay"></div>
                         </div>
