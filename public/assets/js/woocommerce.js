@@ -73,11 +73,10 @@
 
     $( document.body ).on('update_checkout', function(){
 
-      self.review();
+      setTimeout(function(){ self.review(); }, 50 );
     });
 
-    self.update();
-    setTimeout(function(){ self.update(); }, 50 );
+    setTimeout(function(){ self.update(); }, 0 );
   };
 
   ideaingCheckout.prototype.update = function () {
