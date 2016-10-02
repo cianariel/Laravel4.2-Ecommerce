@@ -112,6 +112,10 @@
   margin-bottom: 25px;
 }
 
+.cart #paypal-braintree-button-container {
+  display: none;
+}
+
 .shop_table.cart {
   display: block;
   width: 100%;
@@ -933,10 +937,12 @@ label[for="shipping_address_1"] {
   transform: translateY(-50%);
 }
 
+label[for="payment_method_stripe"],
 label[for="payment_method_paypal"] {
   color: transparent;
 }
 
+.payment_method_stripe img,
 .payment_method_paypal img {
   right: auto;
   left: 46px;
