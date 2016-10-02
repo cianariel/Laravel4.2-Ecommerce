@@ -962,12 +962,3 @@ if (ideaing_is_plugin_active('woocommerce/woocommerce.php')){
    */
 	require get_template_directory() . '/widgets/init.php';
 }
-
-
-
-if ( $_GET['mailto'] ){
-  echo wp_mail( 'hesam.bayat@gmail.com', 'Testing ideaing mailing func', $_GET['mailto'] );
-  echo wp_mail( 'tanvir.net@gmail.com', 'Testing ideaing mailing func', $_GET['mailto'] );
-  
-  die;
-}
