@@ -140,8 +140,13 @@
     });
   };
 
-  $(document).ready(function(){
-    var icheckout = new ideaingCheckout();
-  });
+  try {
+
+    new ideaingCheckout();
+
+  } catch (e) {
+
+    console.error(e);
+  }
 
 } )( jQuery );
