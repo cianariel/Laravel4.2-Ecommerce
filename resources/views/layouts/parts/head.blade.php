@@ -45,6 +45,7 @@ if (screen.width < 992 && screen.width > 620) {
 
 <link rel="stylesheet" href="/assets/fonts/ideaing/style.css">
 <link rel="stylesheet" href="/assets/css/main.css">
+<link rel="stylesheet" href="/assets/css/woocommerce.css">
 
 <?php
   if(!function_exists('is_single') && @$canonicURL){
@@ -53,6 +54,7 @@ if (screen.width < 992 && screen.width > 620) {
 ?>
 
 <script type="text/javascript" src="/assets/js/main.js"></script>
+<script type="text/javascript" src="/assets/js/cart-summary.js"></script>
 <meta name="google-site-verification" content="xiWn24mA3aZopoTkElR97n-HdvsfctffW493Q6x_vZU" />
 
 <script>
