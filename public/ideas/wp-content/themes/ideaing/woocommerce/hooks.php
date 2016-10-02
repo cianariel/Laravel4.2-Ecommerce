@@ -136,7 +136,7 @@ add_action('get_ideaing_woocommerce_cart_totals', 'get_ideaing_woocommerce_cart_
  */
 function get_ideaing_page_title_rener() {
 
-  wc_get_template( 'page/title.php' );
+  wc_get_template( 'ideaing/title.php' );
 }
 add_action( 'ideaing_page_title', 'get_ideaing_page_title_rener' );
 
@@ -514,7 +514,7 @@ add_filter( 'woocommerce_update_order_review_fragments', 'ideaing_update_order_r
  */
 function ideaing_global_cart_summary(){
 
-  echo 'yoho....';
+  wc_get_template( 'ideaing/cart-summary.php' );
   die;
 }
 add_action( 'wp_ajax_global_cart_summary', 'ideaing_global_cart_summary' );
