@@ -85,12 +85,12 @@ class IdeaingContact extends WP_Widget {
 	 */
 	public function form( $instance ) {
 		$title = isset( $instance['title'] ) && ! empty( $instance['title'] ) ? $instance['title'] : __( 'Contact us', 'ideaing' );
-    $title = isset( $instance['tel'] ) && ! empty( $instance['tel'] ) ? $instance['tel'] : '';
-    $title = isset( $instance['email'] ) && ! empty( $instance['email'] ) ? $instance['email'] : '';
-    $title = isset( $instance['t__0'] ) && ! empty( $instance['t__0'] ) ? $instance['t__0'] : '';
-    $title = isset( $instance['c__0'] ) && ! empty( $instance['c__0'] ) ? $instance['c__0'] : '';
-    $title = isset( $instance['t__1'] ) && ! empty( $instance['t__1'] ) ? $instance['t__1'] : '';
-    $title = isset( $instance['c__1'] ) && ! empty( $instance['c__1'] ) ? $instance['c__1'] : '';
+    $tel = isset( $instance['tel'] ) && ! empty( $instance['tel'] ) ? $instance['tel'] : '';
+    $email = isset( $instance['email'] ) && ! empty( $instance['email'] ) ? $instance['email'] : '';
+    $t__0 = isset( $instance['t__0'] ) && ! empty( $instance['t__0'] ) ? $instance['t__0'] : '';
+    $c__0 = isset( $instance['c__0'] ) && ! empty( $instance['c__0'] ) ? $instance['c__0'] : '';
+    $t__1 = isset( $instance['t__1'] ) && ! empty( $instance['t__1'] ) ? $instance['t__1'] : '';
+    $c__1 = isset( $instance['c__1'] ) && ! empty( $instance['c__1'] ) ? $instance['c__1'] : '';
 		?>
 		<p>
 		<label for="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>"><?php _e( esc_attr( 'Title:' ) ); ?></label>
