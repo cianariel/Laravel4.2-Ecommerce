@@ -64,7 +64,7 @@
 
                     <div class="sub-item-container hot-deals">
                         <fieldset class="shoplanding-title">
-                            <legend align="left">Hot Deals <br/> <i class="m-icon--flame-fill fill-with-purple"></i> 29</legend>
+                            <legend align="left"><i class="m-icon--flame-fill fill-with-purple"></i> Hot Deals </legend>
                         </fieldset>
 
                         <div class="row">
@@ -75,7 +75,7 @@
                                 <div class="price-container">
                                     <div class="normal-price"><span>NORMAL PRICE:</span> <span class="line-through-price">$95.00</span></div>
                                     <div class="big-price-container"><span>$95.00</span></div>
-                                    <div class="get-it-inner"><button class="btn btn-lg">GET IT</button></div>
+                                    <div class="get-it-inner"><button class="btn btn-lg btn-get-it">GET IT</button></div>
                                 </div>
                             </div>
 
@@ -91,18 +91,12 @@
 
 
                     <div class="sub-item-container bottom-newest-arrival">
-                        <fieldset class="shoplanding-title">
-                            <legend align="left"> <i class="m-icon--arrow fill-with-red"></i> Newest Arrivals </legend>
-                        </fieldset>
-
                         <div class="row">
                             <div class="container">
                                 <uib-tabset class="tab-swing-lined" active="active">
-                                    <uib-tab index="0" heading="Shop by category">
-                                        <h1>Shop by category</h1>
+                                    <uib-tab index="0" class="category-tab" heading="Shop by Category">
                                     </uib-tab>
-                                    <uib-tab index="1" heading="Shop by product">
-                                        <h1>Shop by product</h1>
+                                    <uib-tab index="1" class="product-tab" heading="Shop by Product">
                                     </uib-tab>
                                 </uib-tabset>
                             </div>
