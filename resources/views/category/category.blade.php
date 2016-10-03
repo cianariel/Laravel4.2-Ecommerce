@@ -78,7 +78,7 @@
                         </div>
                     </section>
 
-                    <section ng-if="ideaCategory != 'default'" class="most-popular-new container no-padding popular-ideas">
+                    <section ng-if="ideaCategory != 'default'" class="most-popular-new container popular-ideas">
                         <div class="col-sm-3 col-xs-12 popular-section category-@{{ideaCategory}}" ng-repeat="item in readContent['mostPopular']['ideas'][ideaCategory]" >
                             @include('most-popular.single-thumb')
                         </div>
