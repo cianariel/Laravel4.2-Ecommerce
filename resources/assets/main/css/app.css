@@ -11450,7 +11450,8 @@ body.home.logged-in #hero {
   border-bottom: 2px solid #eee;
   font-family: Montserratlight; }
   .home-subheader.current-timespan {
-    margin-bottom: 24px; }
+    margin-bottom: 24px;
+    width: 100%; }
     @media (max-width: 620px) {
       .home-subheader.current-timespan {
         margin-right: 6px !important; } }
@@ -11852,10 +11853,12 @@ body.category .rsThumbs {
     margin-top: 7px; }
 
   .home-subheader.current-timespan {
-    width: 96.1%; }
+    width: 97.1%;
+    margin-left: 7px; }
   .home-subheader.trending {
     max-width: 180px;
-    top: 36px; }
+    top: 40px;
+    left: 4px; }
     .home-subheader.trending .m-icon {
       bottom: 2px; }
   .home-subheader .unread-heading {

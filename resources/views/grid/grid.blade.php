@@ -4,7 +4,7 @@
 <div class="loader loader-abs" cg-busy="firstLoad">
 </div>
 
-<div class="container">
+<div class="container no-padding">
     <h4 class="current-timespan home-subheader col-xs-12">
         <?php // echo '{{currentPage}}' ?>
 
