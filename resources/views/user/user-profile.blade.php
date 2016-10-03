@@ -69,7 +69,7 @@
                                socialshare-via="{{env('FB_APP')}}"
                                socialshare-type="feed"
                                socialshare-provider="facebook"
-                               socialshare-text="Welcome to Ideaing"
+                               socialshare-text="Join Ideaing"
                                socialshare-hashtags="Ideaing"
                                socialshare-url="https://ideaing.com"
                             >
@@ -81,7 +81,7 @@
                                socialshare-via="{{env('FB_APP')}}"
                                socialshare-type="feed"
                                socialshare-provider="twitter"
-                               socialshare-text="Welcome to Ideaing"
+                               socialshare-text="Join Ideaing"
                                socialshare-hashtags="Ideaing"
                                socialshare-url="https://ideaing.com"
                             >
