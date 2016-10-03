@@ -11463,6 +11463,9 @@ body.home.logged-in #hero {
     margin-left: 0; }
     @media (min-width: 620px) {
       .home-subheader.trending {
+        padding-right: 25px; } }
+    @media (min-width: 620px) {
+      .home-subheader.trending {
         font-size: 1.6em; } }
     .home-subheader.trending .m-icon {
       padding: 0;
