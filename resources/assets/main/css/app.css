@@ -14679,11 +14679,15 @@ body.shop-landing {
   background: transparent; }
   body.shop-landing .app-wrap {
     background: #F7F7F7;
-    padding-bottom: 40px; }
+    padding-bottom: 40px;
+    padding-top: 140px; }
     body.shop-landing .app-wrap .homepage-grid {
-      margin-top: 0; }
+      margin-top: 0;
+      overflow: visible; }
       body.shop-landing .app-wrap .homepage-grid .main-content {
-        margin-top: 170px; }
+        margin-top: 0; }
+  body.shop-landing .adsbygoogle {
+    background: #F7F7F7; }
   body.shop-landing .sub-item-container {
     position: relative;
     display: block;
@@ -14835,7 +14839,7 @@ body.shop-landing {
         transform: translate(-50%, -50%); }
     body.shop-landing .multirow-image-view .image-row-view p {
       font-size: 13px;
-      margin: 20px 5px;
+      margin: 23px 5px;
       text-align: left;
       color: #737374; }
   body.shop-landing .popular-box {
@@ -15126,8 +15130,9 @@ body.shop-landing {
           margin: 0;
           padding: 0;
           padding-top: 10px;
-          padding-bottom: 15px;
+          padding-bottom: 12px;
           border: none;
+          border-bottom: 1px solid #ECECEC;
           background: transparent; }
           body.shop-landing .shop-page-header header #top-nav .search-box-container .shop-button-container {
             display: block;

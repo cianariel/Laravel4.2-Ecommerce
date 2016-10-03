@@ -7,12 +7,18 @@ body.shop-landing{
   .app-wrap{
     background: #F7F7F7;
     padding-bottom: 40px;
+    padding-top: 140px;;
     .homepage-grid{
       margin-top: 0;
+      overflow: visible;
       .main-content{
-        margin-top: 170px;
+        margin-top: 0;
       }
     }
+  }
+
+  .adsbygoogle{
+    background: #F7F7F7;
   }
 
   .sub-item-container{
@@ -231,7 +237,7 @@ body.shop-landing{
 
       p{
         font-size: 13px;
-        margin: 20px 5px;
+        margin: 23px 5px;
         text-align: left;
         color: #737374;
       }
@@ -727,8 +733,9 @@ body.shop-landing{
           margin: 0;
           padding: 0;
           padding-top: 10px;
-          padding-bottom: 15px;
+          padding-bottom: 12px;
           border: none;
+          border-bottom: 1px solid #ECECEC;
           background: transparent;
           .shop-button-container{
             display: block;
