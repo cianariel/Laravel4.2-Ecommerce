@@ -10,7 +10,7 @@
             <div class="homepage-grid center-block">
                 <div class="loader loader-fixed" cg-busy="nextLoad"></div>
 
-                <div class="main-content ">
+                <div class="main-content container">
                     <div class="sub-item-container best-sellers">
                         <fieldset class="shoplanding-title">
                             <legend align="left"> <i class="m-icon--flame-fill fill-with-red"></i> Best Sellers</legend>

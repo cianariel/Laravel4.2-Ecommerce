@@ -850,7 +850,7 @@ body.shop-landing{
           margin: 0;
           padding: 0;
           padding-top: 10px;
-          padding-bottom: 12px;
+          padding-bottom: 6px;
           border: none;
           border-bottom: 1px solid #ECECEC;
           background: transparent;
@@ -865,9 +865,7 @@ body.shop-landing{
               margin-left: 50%;
               transform: translate(-50%, 0);
               -webkit-transform: translate(-50%, 0);
-              padding: 3px 0 0;
-              font-weight: 600;
-
+              padding: 0;
               &::before{
                 content: "";
                 position: absolute;
@@ -896,7 +894,8 @@ body.shop-landing{
                 color: #FFFFFF !important;
               }
               span{
-                font-size: 1.7rem !important;
+                font-size: 25px !important;
+                font-weight: 100;
                 color: #3d4b4e;
                 text-transform: capitalize;
                 .m-icon--shopping-bag-light-green{
