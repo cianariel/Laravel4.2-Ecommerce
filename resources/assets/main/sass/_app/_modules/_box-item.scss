@@ -650,7 +650,7 @@
 
       @media(min-width: 620px){
         img{
-          right: -7%;
+          right: -3%;
         }
       }
       @media (min-width:665px) and (max-width:769px){
@@ -1055,6 +1055,9 @@
   @media(max-width: 1025px){
     margin-left: 2%;
   }
+  @media(max-width: 990px){
+    margin-right: 0.2%;
+  }
   @media(max-width: 769px){
     margin-left: 3%;
   }
@@ -1191,6 +1194,9 @@
           border-radius: 4px;
         }
 
+      @media(max-width: 990px){
+        width: 95.2%;
+      }
       @media(max-width: 768px){
         width: 92.8%;
       }
@@ -1214,6 +1220,14 @@
 
       @media(max-width: 1024px){
         width: 47.6%;
+      }
+      @media(max-width: 990px){
+        width: 45.6%;
+        margin-right: 3.9%;
+
+        &:last-child{
+          margin-right:0;
+        }
       }
 
       .img-holder{
