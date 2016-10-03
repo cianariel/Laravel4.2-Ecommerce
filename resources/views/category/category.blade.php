@@ -54,7 +54,7 @@
                         </div>
                     </section>
 
-                    <section ng-if="ideaCategory == 'default'" class="most-popular-new popular-products hidden-soft container no-padding">
+                    <section ng-if="ideaCategory == 'default'" class="most-popular-new popular-products hidden-soft container">
                         <div class="col-sm-3 col-xs-12 popular-section category-smart-home">
                                 <div ng-repeat="item in readContent.mostPopular.products['smart-home']">
                                     @include('most-popular.single-thumb')
