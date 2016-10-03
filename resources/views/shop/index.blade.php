@@ -71,7 +71,9 @@
                                 <div class="price-container">
                                     <div class="normal-price"><span>NORMAL PRICE:</span> <span class="line-through-price">$95.00</span></div>
                                     <div class="big-price-container"><span>$95.00</span></div>
-                                    <div class="get-it-inner"><button class="btn btn-lg btn-get-it">GET IT</button></div>
+                                    <div class="get-it-button-container">
+                                        <a class="btn-get-it" href="#">Get it</a>
+                                    </div>
                                 </div>
                             </div>
 
@@ -86,12 +88,47 @@
 
 
 
-                    <div class="sub-item-container bottom-newest-arrival">
-                        <div class="row">
+                    <div class="sub-item-container bottom-categories-container">
+                        <div>
                             <uib-tabset class="tab-swing-lined" active="active">
                                 <uib-tab index="0" class="category-tab" heading="Shop by Category">
+                                    <div class="shop-by-category-container">
+                                        <div class="row">
+                                            <div class="col-md-1 category-list">
+                                                <div class="vertical-text">Smart Home</div>
+                                            </div>
+                                            <div class="col-md-11 product-list">
+
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-1 category-list">
+                                                <div class="vertical-text vertical-long-text">Smart Entertainment</div>
+                                            </div>
+                                            <div class="col-md-11 product-list">
+
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-1 category-list">
+                                                <div class="vertical-text">Smart Body</div>
+                                            </div>
+                                            <div class="col-md-11 product-list">
+
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-1 category-list">
+                                                <div class="vertical-text">Smart Travel</div>
+                                            </div>
+                                            <div class="col-md-11 product-list">
+
+                                            </div>
+                                        </div>
+                                    </div>
                                 </uib-tab>
                                 <uib-tab index="1" class="product-tab" heading="Shop by Product">
+                                    <div class="shop-by-product-container"></div>
                                 </uib-tab>
                             </uib-tabset>
                         </div>
