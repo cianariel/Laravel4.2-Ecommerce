@@ -14740,7 +14740,8 @@ body.shop-landing {
       body.shop-landing .app-wrap .homepage-grid .main-content {
         margin-top: 0; }
   body.shop-landing .adsbygoogle {
-    background: #F7F7F7; }
+    background: #F7F7F7;
+    display: none; }
   body.shop-landing .sub-item-container {
     position: relative;
     display: block;
@@ -14982,18 +14983,26 @@ body.shop-landing {
     margin-top: 30px; }
   body.shop-landing .tab-pane {
     margin: 10px 0; }
-    body.shop-landing .tab-pane .category-smart-home .popular-box-number::before {
-      border-color: #FC1159;
+    body.shop-landing .tab-pane .category-smart-home {
       color: #FC1159; }
-    body.shop-landing .tab-pane .category-smart-body .popular-box-number::before {
-      border-color: #079DD1;
+      body.shop-landing .tab-pane .category-smart-home .popular-box-number::before {
+        border-color: #FC1159;
+        color: #FC1159; }
+    body.shop-landing .tab-pane .category-smart-body {
       color: #079DD1; }
-    body.shop-landing .tab-pane .category-smart-entertainment .popular-box-number::before {
-      border-color: #89C981;
+      body.shop-landing .tab-pane .category-smart-body .popular-box-number::before {
+        border-color: #079DD1;
+        color: #079DD1; }
+    body.shop-landing .tab-pane .category-smart-entertainment {
       color: #89C981; }
-    body.shop-landing .tab-pane .category-smart-travel .popular-box-number::before {
-      border-color: #FF7F00;
+      body.shop-landing .tab-pane .category-smart-entertainment .popular-box-number::before {
+        border-color: #89C981;
+        color: #89C981; }
+    body.shop-landing .tab-pane .category-smart-travel {
       color: #FF7F00; }
+      body.shop-landing .tab-pane .category-smart-travel .popular-box-number::before {
+        border-color: #FF7F00;
+        color: #FF7F00; }
     body.shop-landing .tab-pane .box-item {
       position: relative;
       overflow: visible;
@@ -15037,19 +15046,19 @@ body.shop-landing {
         margin: 0; }
         body.shop-landing .bottom-categories-container .tab-swing-lined .tab-content .tab-pane {
           margin: 0; }
-          body.shop-landing .bottom-categories-container .tab-swing-lined .tab-content .tab-pane .shop-by-category-container {
+          body.shop-landing .bottom-categories-container .tab-swing-lined .tab-content .tab-pane .shop-by-category-container, body.shop-landing .bottom-categories-container .tab-swing-lined .tab-content .tab-pane .shop-by-product-container {
             min-height: 1000px;
             border: 1px solid #DCDCDB;
             border-radius: 7px;
-            position: relative;
-            height: 1400px; }
-            body.shop-landing .bottom-categories-container .tab-swing-lined .tab-content .tab-pane .shop-by-category-container .row {
-              margin: 0 auto; }
-            body.shop-landing .bottom-categories-container .tab-swing-lined .tab-content .tab-pane .shop-by-category-container .category-list {
-              min-height: 350px;
-              border-right: 1px solid #DCDCDB;
+            position: relative; }
+            body.shop-landing .bottom-categories-container .tab-swing-lined .tab-content .tab-pane .shop-by-category-container .row, body.shop-landing .bottom-categories-container .tab-swing-lined .tab-content .tab-pane .shop-by-product-container .row {
+              margin: 0 auto;
               position: relative; }
-              body.shop-landing .bottom-categories-container .tab-swing-lined .tab-content .tab-pane .shop-by-category-container .category-list div.vertical-text {
+            body.shop-landing .bottom-categories-container .tab-swing-lined .tab-content .tab-pane .shop-by-category-container .category-list, body.shop-landing .bottom-categories-container .tab-swing-lined .tab-content .tab-pane .shop-by-product-container .category-list {
+              height: 100%;
+              border-right: 1px solid #DCDCDB;
+              position: absolute; }
+              body.shop-landing .bottom-categories-container .tab-swing-lined .tab-content .tab-pane .shop-by-category-container .category-list div.vertical-text, body.shop-landing .bottom-categories-container .tab-swing-lined .tab-content .tab-pane .shop-by-product-container .category-list div.vertical-text {
                 text-transform: uppercase;
                 transform: rotate(-90deg);
                 transform-origin: right bottom 0;
@@ -15064,12 +15073,35 @@ body.shop-landing {
                 width: 200px;
                 right: calc(50% - 10px);
                 font-size: 1.2em; }
-                body.shop-landing .bottom-categories-container .tab-swing-lined .tab-content .tab-pane .shop-by-category-container .category-list div.vertical-text.vertical-long-text {
+                body.shop-landing .bottom-categories-container .tab-swing-lined .tab-content .tab-pane .shop-by-category-container .category-list div.vertical-text.vertical-long-text, body.shop-landing .bottom-categories-container .tab-swing-lined .tab-content .tab-pane .shop-by-product-container .category-list div.vertical-text.vertical-long-text {
                   width: 280px; }
-            body.shop-landing .bottom-categories-container .tab-swing-lined .tab-content .tab-pane .shop-by-category-container .product-list {
-              min-height: 350px;
+            body.shop-landing .bottom-categories-container .tab-swing-lined .tab-content .tab-pane .shop-by-category-container .product-list, body.shop-landing .bottom-categories-container .tab-swing-lined .tab-content .tab-pane .shop-by-product-container .product-list {
               border-bottom: 1px solid #DCDCDB;
-              position: relative; }
+              position: relative;
+              padding: 50px 0;
+              float: right; }
+              body.shop-landing .bottom-categories-container .tab-swing-lined .tab-content .tab-pane .shop-by-category-container .product-list .one-product-category, body.shop-landing .bottom-categories-container .tab-swing-lined .tab-content .tab-pane .shop-by-product-container .product-list .one-product-category {
+                width: 100px;
+                height: auto;
+                position: relative;
+                margin: 20px 20px 20px 80px;
+                float: left; }
+                body.shop-landing .bottom-categories-container .tab-swing-lined .tab-content .tab-pane .shop-by-category-container .product-list .one-product-category .icon-container, body.shop-landing .bottom-categories-container .tab-swing-lined .tab-content .tab-pane .shop-by-product-container .product-list .one-product-category .icon-container {
+                  width: 100px;
+                  height: 100px;
+                  border-radius: 50%;
+                  background: #FFFFFF;
+                  font-size: 2.7em;
+                  text-align: center;
+                  padding: 25px 20px; }
+                body.shop-landing .bottom-categories-container .tab-swing-lined .tab-content .tab-pane .shop-by-category-container .product-list .one-product-category .underneath-text, body.shop-landing .bottom-categories-container .tab-swing-lined .tab-content .tab-pane .shop-by-product-container .product-list .one-product-category .underneath-text {
+                  width: 100%;
+                  text-align: center;
+                  color: #B9B9BA;
+                  font-size: 1.2em;
+                  padding-top: 20px; }
+                  body.shop-landing .bottom-categories-container .tab-swing-lined .tab-content .tab-pane .shop-by-category-container .product-list .one-product-category .underneath-text a, body.shop-landing .bottom-categories-container .tab-swing-lined .tab-content .tab-pane .shop-by-product-container .product-list .one-product-category .underneath-text a {
+                    color: #B9B9BA; }
   body.shop-landing .mid-nav .wrap, .mid-nav body.shop-landing .extra-nav .wrap {
     height: 55px; }
   body.shop-landing #daily-deals {
@@ -15250,28 +15282,20 @@ body.shop-landing {
           background: #FFFFFF !important;
           margin: 0 auto;
           border: none; }
-        body.shop-landing .shop-page-header header #top-nav .category-menu {
-          background: #FFFFFF;
-          margin: 0 auto;
-          padding: 0;
-          bottom: 0; }
-          body.shop-landing .shop-page-header header #top-nav .category-menu ul {
-            margin-left: 70px; }
-            body.shop-landing .shop-page-header header #top-nav .category-menu ul .category-link__deals {
-              display: block; }
-            body.shop-landing .shop-page-header header #top-nav .category-menu ul .category-link__advice {
-              display: none; }
+        body.shop-landing .shop-page-header header #top-nav .category-menu ul .category-link__deals {
+          display: block; }
+        body.shop-landing .shop-page-header header #top-nav .category-menu ul .category-link__advice {
+          display: none; }
         body.shop-landing .shop-page-header header #top-nav .bottom-border-none::before {
           display: none;
           border: none; }
         body.shop-landing .shop-page-header header #top-nav .search-box-container {
+          top: 60px;
           display: block;
           position: absolute;
           width: 100%;
           margin: 0;
-          padding: 0;
-          padding-top: 10px;
-          padding-bottom: 6px;
+          padding: 10px 0;
           border: none;
           border-bottom: 1px solid #ECECEC;
           background: transparent; }
@@ -15279,6 +15303,10 @@ body.shop-landing {
             display: block;
             z-index: 50;
             border: none; }
+            body.shop-landing .shop-page-header header #top-nav .search-box-container .shop-button-container.left-align-button {
+              padding-left: 0; }
+            body.shop-landing .shop-page-header header #top-nav .search-box-container .shop-button-container.right-align-button {
+              padding-right: 0; }
             body.shop-landing .shop-page-header header #top-nav .search-box-container .shop-button-container .category-link__shop {
               display: block;
               height: auto;
@@ -15318,7 +15346,7 @@ body.shop-landing {
             position: fixed;
             left: 0;
             right: 0;
-            top: 54px;
+            top: 60px;
             height: 55px;
             width: 100%;
             background: rgba(255, 255, 255, 0.9);

@@ -98,15 +98,38 @@
                                                 <div class="vertical-text">Smart Home</div>
                                             </div>
                                             <div class="col-md-11 product-list">
-
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-1 category-list">
-                                                <div class="vertical-text vertical-long-text">Smart Entertainment</div>
-                                            </div>
-                                            <div class="col-md-11 product-list">
-
+                                                <div class="one-product-category">
+                                                    <div class="icon-container"><a href="#"><i class="m-icon--bath category-smart-home"></i></a></div>
+                                                    <div class="underneath-text"><a href="#">Bath</a></div>
+                                                </div>
+                                                <div class="one-product-category">
+                                                    <div class="icon-container"><a href="#"><i class="m-icon--bath category-smart-home"></i></a></div>
+                                                    <div class="underneath-text"><a href="#">Bedding</a></div>
+                                                </div>
+                                                <div class="one-product-category">
+                                                    <div class="icon-container"><a href="#"><i class="m-icon--bath category-smart-home"></i></a></div>
+                                                    <div class="underneath-text"><a href="#">Back packs</a></div>
+                                                </div>
+                                                <div class="one-product-category">
+                                                    <div class="icon-container"><a href="#"><i class="m-icon--bath category-smart-home"></i></a></div>
+                                                    <div class="underneath-text"><a href="#">Bath</a></div>
+                                                </div>
+                                                <div class="one-product-category">
+                                                    <div class="icon-container"><a href="#"><i class="m-icon--bath category-smart-home"></i></a></div>
+                                                    <div class="underneath-text"><a href="#">Bath</a></div>
+                                                </div>
+                                                <div class="one-product-category">
+                                                    <div class="icon-container"><a href="#"><i class="m-icon--bath category-smart-home"></i></a></div>
+                                                    <div class="underneath-text"><a href="#">Bath</a></div>
+                                                </div>
+                                                <div class="one-product-category">
+                                                    <div class="icon-container"><a href="#"><i class="m-icon--bath category-smart-home"></i></a></div>
+                                                    <div class="underneath-text"><a href="#">Bedding</a></div>
+                                                </div>
+                                                <div class="one-product-category">
+                                                    <div class="icon-container"><a href="#"><i class="m-icon--bath category-smart-home"></i></a></div>
+                                                    <div class="underneath-text"><a href="#">Back packs</a></div>
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="row">
@@ -114,7 +137,57 @@
                                                 <div class="vertical-text">Smart Body</div>
                                             </div>
                                             <div class="col-md-11 product-list">
-
+                                                <div class="one-product-category">
+                                                    <div class="icon-container"><a href="#"><i class="m-icon--bath category-smart-entertainment"></i></a></div>
+                                                    <div class="underneath-text"><a href="#">Bath</a></div>
+                                                </div>
+                                                <div class="one-product-category">
+                                                    <div class="icon-container"><a href="#"><i class="m-icon--bath category-smart-entertainment"></i></a></div>
+                                                    <div class="underneath-text"><a href="#">Bedding</a></div>
+                                                </div>
+                                                <div class="one-product-category">
+                                                    <div class="icon-container"><a href="#"><i class="m-icon--bath category-smart-entertainment"></i></a></div>
+                                                    <div class="underneath-text"><a href="#">Back packs</a></div>
+                                                </div>
+                                                <div class="one-product-category">
+                                                    <div class="icon-container"><a href="#"><i class="m-icon--bath category-smart-entertainment"></i></a></div>
+                                                    <div class="underneath-text"><a href="#">Bath</a></div>
+                                                </div>
+                                                <div class="one-product-category">
+                                                    <div class="icon-container"><a href="#"><i class="m-icon--bath category-smart-entertainment"></i></a></div>
+                                                    <div class="underneath-text"><a href="#">Bath</a></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-1 category-list">
+                                                <div class="vertical-text vertical-long-text">Smart Entertainment</div>
+                                            </div>
+                                            <div class="col-md-11 product-list">
+                                                <div class="one-product-category">
+                                                    <div class="icon-container"><a href="#"><i class="m-icon--bath category-smart-body"></i></a></div>
+                                                    <div class="underneath-text"><a href="#">Bath</a></div>
+                                                </div>
+                                                <div class="one-product-category">
+                                                    <div class="icon-container"><a href="#"><i class="m-icon--bath category-smart-body"></i></a></div>
+                                                    <div class="underneath-text"><a href="#">Bedding</a></div>
+                                                </div>
+                                                <div class="one-product-category">
+                                                    <div class="icon-container"><a href="#"><i class="m-icon--bath category-smart-body"></i></a></div>
+                                                    <div class="underneath-text"><a href="#">Back packs</a></div>
+                                                </div>
+                                                <div class="one-product-category">
+                                                    <div class="icon-container"><a href="#"><i class="m-icon--bath category-smart-body"></i></a></div>
+                                                    <div class="underneath-text"><a href="#">Bath</a></div>
+                                                </div>
+                                                <div class="one-product-category">
+                                                    <div class="icon-container"><a href="#"><i class="m-icon--bath category-smart-body"></i></a></div>
+                                                    <div class="underneath-text"><a href="#">Bath</a></div>
+                                                </div>
+                                                <div class="one-product-category">
+                                                    <div class="icon-container"><a href="#"><i class="m-icon--bath category-smart-body"></i></a></div>
+                                                    <div class="underneath-text"><a href="#">Bath</a></div>
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="row">
@@ -122,13 +195,149 @@
                                                 <div class="vertical-text">Smart Travel</div>
                                             </div>
                                             <div class="col-md-11 product-list">
-
+                                                <div class="one-product-category">
+                                                    <div class="icon-container"><a href="#"><i class="m-icon--bath category-smart-travel"></i></a></div>
+                                                    <div class="underneath-text"><a href="#">Bath</a></div>
+                                                </div>
+                                                <div class="one-product-category">
+                                                    <div class="icon-container"><a href="#"><i class="m-icon--bath category-smart-travel"></i></a></div>
+                                                    <div class="underneath-text"><a href="#">Bedding</a></div>
+                                                </div>
+                                                <div class="one-product-category">
+                                                    <div class="icon-container"><a href="#"><i class="m-icon--bath category-smart-travel"></i></a></div>
+                                                    <div class="underneath-text"><a href="#">Back packs</a></div>
+                                                </div>
+                                                <div class="one-product-category">
+                                                    <div class="icon-container"><a href="#"><i class="m-icon--bath category-smart-travel"></i></a></div>
+                                                    <div class="underneath-text"><a href="#">Bath</a></div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </uib-tab>
                                 <uib-tab index="1" class="product-tab" heading="Shop by Product">
-                                    <div class="shop-by-product-container"></div>
+                                    <div class="shop-by-product-container">
+                                        <div class="row">
+                                            <div class="col-md-1 category-list">
+                                                <div class="vertical-text">Smart Home</div>
+                                            </div>
+                                            <div class="col-md-11 product-list">
+                                                <div class="one-product-category">
+                                                    <div class="icon-container"><a href="#"><i class="m-icon--bath category-smart-home"></i></a></div>
+                                                    <div class="underneath-text"><a href="#">Bath</a></div>
+                                                </div>
+                                                <div class="one-product-category">
+                                                    <div class="icon-container"><a href="#"><i class="m-icon--bath category-smart-home"></i></a></div>
+                                                    <div class="underneath-text"><a href="#">Bedding</a></div>
+                                                </div>
+                                                <div class="one-product-category">
+                                                    <div class="icon-container"><a href="#"><i class="m-icon--bath category-smart-home"></i></a></div>
+                                                    <div class="underneath-text"><a href="#">Back packs</a></div>
+                                                </div>
+                                                <div class="one-product-category">
+                                                    <div class="icon-container"><a href="#"><i class="m-icon--bath category-smart-home"></i></a></div>
+                                                    <div class="underneath-text"><a href="#">Bath</a></div>
+                                                </div>
+                                                <div class="one-product-category">
+                                                    <div class="icon-container"><a href="#"><i class="m-icon--bath category-smart-home"></i></a></div>
+                                                    <div class="underneath-text"><a href="#">Bath</a></div>
+                                                </div>
+                                                <div class="one-product-category">
+                                                    <div class="icon-container"><a href="#"><i class="m-icon--bath category-smart-home"></i></a></div>
+                                                    <div class="underneath-text"><a href="#">Bath</a></div>
+                                                </div>
+                                                <div class="one-product-category">
+                                                    <div class="icon-container"><a href="#"><i class="m-icon--bath category-smart-home"></i></a></div>
+                                                    <div class="underneath-text"><a href="#">Bedding</a></div>
+                                                </div>
+                                                <div class="one-product-category">
+                                                    <div class="icon-container"><a href="#"><i class="m-icon--bath category-smart-home"></i></a></div>
+                                                    <div class="underneath-text"><a href="#">Back packs</a></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-1 category-list">
+                                                <div class="vertical-text">Smart Body</div>
+                                            </div>
+                                            <div class="col-md-11 product-list">
+                                                <div class="one-product-category">
+                                                    <div class="icon-container"><a href="#"><i class="m-icon--bath category-smart-entertainment"></i></a></div>
+                                                    <div class="underneath-text"><a href="#">Bath</a></div>
+                                                </div>
+                                                <div class="one-product-category">
+                                                    <div class="icon-container"><a href="#"><i class="m-icon--bath category-smart-entertainment"></i></a></div>
+                                                    <div class="underneath-text"><a href="#">Bedding</a></div>
+                                                </div>
+                                                <div class="one-product-category">
+                                                    <div class="icon-container"><a href="#"><i class="m-icon--bath category-smart-entertainment"></i></a></div>
+                                                    <div class="underneath-text"><a href="#">Back packs</a></div>
+                                                </div>
+                                                <div class="one-product-category">
+                                                    <div class="icon-container"><a href="#"><i class="m-icon--bath category-smart-entertainment"></i></a></div>
+                                                    <div class="underneath-text"><a href="#">Bath</a></div>
+                                                </div>
+                                                <div class="one-product-category">
+                                                    <div class="icon-container"><a href="#"><i class="m-icon--bath category-smart-entertainment"></i></a></div>
+                                                    <div class="underneath-text"><a href="#">Bath</a></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-1 category-list">
+                                                <div class="vertical-text vertical-long-text">Smart Entertainment</div>
+                                            </div>
+                                            <div class="col-md-11 product-list">
+                                                <div class="one-product-category">
+                                                    <div class="icon-container"><a href="#"><i class="m-icon--bath category-smart-body"></i></a></div>
+                                                    <div class="underneath-text"><a href="#">Bath</a></div>
+                                                </div>
+                                                <div class="one-product-category">
+                                                    <div class="icon-container"><a href="#"><i class="m-icon--bath category-smart-body"></i></a></div>
+                                                    <div class="underneath-text"><a href="#">Bedding</a></div>
+                                                </div>
+                                                <div class="one-product-category">
+                                                    <div class="icon-container"><a href="#"><i class="m-icon--bath category-smart-body"></i></a></div>
+                                                    <div class="underneath-text"><a href="#">Back packs</a></div>
+                                                </div>
+                                                <div class="one-product-category">
+                                                    <div class="icon-container"><a href="#"><i class="m-icon--bath category-smart-body"></i></a></div>
+                                                    <div class="underneath-text"><a href="#">Bath</a></div>
+                                                </div>
+                                                <div class="one-product-category">
+                                                    <div class="icon-container"><a href="#"><i class="m-icon--bath category-smart-body"></i></a></div>
+                                                    <div class="underneath-text"><a href="#">Bath</a></div>
+                                                </div>
+                                                <div class="one-product-category">
+                                                    <div class="icon-container"><a href="#"><i class="m-icon--bath category-smart-body"></i></a></div>
+                                                    <div class="underneath-text"><a href="#">Bath</a></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-1 category-list">
+                                                <div class="vertical-text">Smart Travel</div>
+                                            </div>
+                                            <div class="col-md-11 product-list">
+                                                <div class="one-product-category">
+                                                    <div class="icon-container"><a href="#"><i class="m-icon--bath category-smart-travel"></i></a></div>
+                                                    <div class="underneath-text"><a href="#">Bath</a></div>
+                                                </div>
+                                                <div class="one-product-category">
+                                                    <div class="icon-container"><a href="#"><i class="m-icon--bath category-smart-travel"></i></a></div>
+                                                    <div class="underneath-text"><a href="#">Bedding</a></div>
+                                                </div>
+                                                <div class="one-product-category">
+                                                    <div class="icon-container"><a href="#"><i class="m-icon--bath category-smart-travel"></i></a></div>
+                                                    <div class="underneath-text"><a href="#">Back packs</a></div>
+                                                </div>
+                                                <div class="one-product-category">
+                                                    <div class="icon-container"><a href="#"><i class="m-icon--bath category-smart-travel"></i></a></div>
+                                                    <div class="underneath-text"><a href="#">Bath</a></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </uib-tab>
                             </uib-tabset>
                         </div>

@@ -19,6 +19,7 @@ body.shop-landing{
 
   .adsbygoogle{
     background: #F7F7F7;
+    display: none;
   }
 
   .sub-item-container{
@@ -357,6 +358,7 @@ body.shop-landing{
   .tab-pane{
     margin: 10px 0;
     .category-smart-home{
+      color: $iridium;
       .popular-box-number{
         &::before{
           border-color: $iridium;
@@ -365,6 +367,7 @@ body.shop-landing{
       }
     }
     .category-smart-body{
+      color: $facebook-blue;
       .popular-box-number{
         &::before{
           border-color: $facebook-blue;
@@ -373,6 +376,7 @@ body.shop-landing{
       }
     }
     .category-smart-entertainment{
+      color: $pine-green;
       .popular-box-number{
         &::before{
           border-color: $pine-green;
@@ -381,6 +385,7 @@ body.shop-landing{
       }
     }
     .category-smart-travel{
+      color: $dark-orange;
       .popular-box-number{
         &::before{
           border-color: $dark-orange;
@@ -460,19 +465,19 @@ body.shop-landing{
         .tab-pane{
           margin: 0;
 
-          .shop-by-category-container{
+          .shop-by-category-container, .shop-by-product-container{
             .row{
               margin: 0 auto;
+              position: relative;
             }
             min-height: 1000px;
             border: 1px solid #DCDCDB;
             border-radius: 7px;
             position: relative;
-            height: 1400px;
             .category-list{
-              min-height: 350px;
+              height: 100%;
               border-right: 1px solid #DCDCDB;
-              position: relative;
+              position: absolute;
               div.vertical-text{
                 text-transform: uppercase;
                 transform: rotate(-90deg);
@@ -495,14 +500,39 @@ body.shop-landing{
             }
 
             .product-list{
-              min-height: 350px;
               border-bottom: 1px solid #DCDCDB;
               position: relative;
+              padding: 50px 0;
+              float: right;
+              .one-product-category{
+                width: 100px;
+                height: auto;
+                position: relative;
+                margin: 20px 20px 20px 80px;
+                float: left;
+                .icon-container{
+                  width: 100px;
+                  height: 100px;
+                  border-radius: 50%;
+                  background: #FFFFFF;
+                  font-size: 2.7em;
+                  text-align: center;
+                  padding: 25px 20px;
+                }
+                .underneath-text{
+                  width: 100%;
+                  text-align: center;
+                  color: #B9B9BA;
+                  font-size: 1.2em;
+                  padding-top: 20px;
+                  a{
+                    color: #B9B9BA;
+                  }
+                }
+              }
             }
           }
-          .shop-by-category{
 
-          }
 
         }
       }
@@ -821,12 +851,8 @@ body.shop-landing{
         }
 
         .category-menu{
-          background: #FFFFFF;
-          margin: 0 auto;
-          padding: 0;
-          bottom: 0;
+
           ul{
-            margin-left: 70px;
             .category-link__deals{
               display: block;
             }
@@ -844,13 +870,12 @@ body.shop-landing{
         }
 
         .search-box-container{
+          top: 60px;
           display: block;
           position: absolute;
           width: 100%;
           margin: 0;
-          padding: 0;
-          padding-top: 10px;
-          padding-bottom: 6px;
+          padding: 10px 0;
           border: none;
           border-bottom: 1px solid #ECECEC;
           background: transparent;
@@ -858,6 +883,13 @@ body.shop-landing{
             display: block;
             z-index: 50;
             border: none;
+            &.left-align-button{
+              padding-left: 0;
+            }
+
+            &.right-align-button{
+              padding-right: 0;
+            }
 
             .category-link__shop{
               display: block;
@@ -909,7 +941,7 @@ body.shop-landing{
             position: fixed;
             left: 0;
             right: 0;
-            top: 54px;
+            top: 60px;
             height: 55px;
             width: 100%;
             background: rgba(255,255,255,0.9);
