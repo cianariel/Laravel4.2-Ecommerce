@@ -67,9 +67,10 @@
   }
   img {
     width: 120px;
+    margin-bottom: 6px;
 
     @media(min-width:620px){
-      margin-bottom: 6px;
+      margin-top: 9px;
     }
   }
 }
