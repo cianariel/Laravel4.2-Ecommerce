@@ -68,6 +68,10 @@
   img {
     width: 120px;
     margin-bottom: 6px;
+
+    @media(min-width:620px){
+      margin-top: 9px;
+    }
   }
 }
 
@@ -145,8 +149,11 @@ header.colophon{
     background: #fff;
     //max-height: 63px;
     max-height: 100%;
+    padding-top: 6px;
 
     @media(max-width: 620px){
+      padding-top: 0;
+
       -webkit-transition: height .5s;
       -moz-transition:height .5s;
       transition: height .5s;
@@ -168,6 +175,10 @@ header.colophon{
       padding-top: 16px;
       padding-right: 8px;
       font-size: 1rem;
+
+      @media(min-width: 920px){
+        padding-top: 23px;
+      }
     }
   }
 
@@ -683,6 +694,10 @@ header.colophon{
     //  overflow: hidden;
     //}
 
+    @media(min-width:620px){
+      top: -10px;
+    }
+
     &.active{
       .down{
         display: block !important;
@@ -1097,7 +1112,7 @@ header.colophon{
   padding: 5px;
   border-radius: 3px;
   max-width: 30px;
-  margin-top: 7px;
+  margin-top: 13px;
   transition: all .7s;
   border-radius: 0;
   z-index: 99;

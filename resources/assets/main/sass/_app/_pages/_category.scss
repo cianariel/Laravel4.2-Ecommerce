@@ -4,6 +4,7 @@
 body.category{
   #hero {
     min-height: 382px;
+    margin-top: 5px;
   }
   .rsThumbs{
     display: none;
@@ -15,9 +16,9 @@ body.category{
   // background:blue;
   @media(max-width: 980px){
     .container{
-      width: 100%;
-      max-width: none;
-      margin-left: 3px;
+      //width: 100%;
+      //max-width: none;
+      margin-left: 1%;
     }
   }
 }
@@ -231,11 +232,11 @@ body.category{
       border-bottom: 1px solid #eee;
       border-radius: 0;
 
-      &.product-box{
-        img{
-          max-width: 100%;
-        }
-      }
+      //&.product-box{
+      //  img{
+      //    max-width: 100%;
+      //  }
+      //}
 
       &::before{
         content:'2';
@@ -268,16 +269,18 @@ body.category{
   }
   .home-subheader{
       &.current-timespan{
-         width: 96.1%;
+        width: 97.1%;
+        margin-left: 7px;
       }
 
       &.trending{
-      max-width: 180px;
-      top: 36px;
+      //max-width: 180px;
+      top: 40px;
+      left:4px;
 
       .m-icon {
         bottom: 2px;
-        right: -14px;
+        //right: -14px;
       }
     }
 
@@ -296,6 +299,7 @@ body.category{
   .most-popular-new{
     .popular-section{
       height: 90px;
+      padding: 0 2%;
 
       .box-item{
         width: 30%;
@@ -304,8 +308,9 @@ body.category{
 
 
         img {
-          max-width: 85%;
+          max-width: 88px;
           max-height: 88px;
+          height: 100%;
         }
       }
       .popular-title{
@@ -320,6 +325,7 @@ body.category{
 
 .mostpop-wrap{
   padding: 10px 6px 10px 0px;
+
 
   .homepage-grid{
     margin-top:0;
