@@ -694,6 +694,10 @@ header.colophon{
     //  overflow: hidden;
     //}
 
+    @media(min-width:620px){
+      top: -10px;
+    }
+
     &.active{
       .down{
         display: block !important;

@@ -9274,6 +9274,9 @@ header.colophon {
   margin-left: 1px; }
   #top-nav .home-hamburger i {
     font-size: 2.3rem !important; }
+  @media (min-width: 620px) {
+    #top-nav .home-hamburger {
+      top: -10px; } }
   #top-nav .home-hamburger.active .down {
     display: block !important; }
     #top-nav .home-hamburger.active .down svg {
@@ -11438,9 +11441,10 @@ body.home.logged-in #hero {
     background: #FC1159;
     color: #fff; }
 
-@media (min-width: 620px) {
+@media (min-width: 620px) and (max-width: 1024px) {
   .heading-wrap {
-    width: 100%; } }
+    width: 97%;
+    max-width: 1200px; } }
 .home-subheader {
   width: 97%;
   height: 40px;
@@ -11469,6 +11473,9 @@ body.home.logged-in #hero {
     padding-bottom: 33px;
     display: block;
     margin-left: 0; }
+    @media (max-width: 769px) {
+      .home-subheader.trending {
+        width: 101%; } }
     @media (max-width: 620px) {
       .home-subheader.trending {
         padding-right: 25px;

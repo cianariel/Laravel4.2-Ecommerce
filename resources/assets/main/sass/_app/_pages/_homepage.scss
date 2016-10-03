@@ -414,10 +414,11 @@ body.home.logged-in{
   }
 }
 
-  @media(min-width: 620px){
+  @media(min-width: 620px) and (max-width: 1024px){
     .heading-wrap{
-      width: 100%;
-    } 
+      width: 97%;
+      max-width:1200px;
+    }
 }
 
 .home-subheader{
@@ -451,6 +452,12 @@ body.home.logged-in{
     padding-bottom: 33px;
     display: block;
     //border-bottom: 2px solid #eee;
+
+
+    @media(max-width: 769px){
+      width: 101%;
+
+    }
 
 
     @media(max-width: 620px){
