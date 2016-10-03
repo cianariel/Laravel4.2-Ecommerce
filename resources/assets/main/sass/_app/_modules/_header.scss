@@ -67,6 +67,7 @@
   }
   img {
     width: 120px;
+    margin-top: 9px;
     margin-bottom: 6px;
   }
 }
@@ -146,6 +147,8 @@ header.colophon{
     //max-height: 63px;
     max-height: 100%;
 
+    padding-top: 6px;
+
     @media(max-width: 620px){
       -webkit-transition: height .5s;
       -moz-transition:height .5s;
@@ -168,8 +171,12 @@ header.colophon{
       padding-top: 16px;
       padding-right: 8px;
       font-size: 1rem;
+
+      @media(min-width: 920px){
+        padding-top: 23px;
+      }
     }
-  }
+  } 
 
   .logo-wrap{
     position: absolute;
@@ -1097,7 +1104,7 @@ header.colophon{
   padding: 5px;
   border-radius: 3px;
   max-width: 30px;
-  margin-top: 7px;
+  margin-top: 13px;
   transition: all .7s;
   border-radius: 0;
   z-index: 99;

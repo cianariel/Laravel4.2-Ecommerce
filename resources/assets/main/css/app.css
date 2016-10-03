@@ -8806,6 +8806,7 @@ article img {
   -webkit-filter: none !important; }
 .ideaing-logo img {
   width: 120px;
+  margin-top: 9px;
   margin-bottom: 6px; }
 
 .lamp-logo {
@@ -8858,7 +8859,8 @@ header.colophon {
     z-index: 30;
     border-bottom: 1px solid rgba(193, 193, 193, 0.22);
     background: #fff;
-    max-height: 100%; }
+    max-height: 100%;
+    padding-top: 6px; }
     @media (max-width: 620px) {
       header.colophon #top-nav {
         -webkit-transition: height .5s;
@@ -8875,6 +8877,9 @@ header.colophon {
       padding-top: 16px;
       padding-right: 8px;
       font-size: 1rem; }
+      @media (min-width: 920px) {
+        header.colophon #top-nav a.signin {
+          padding-top: 23px; } }
   header.colophon .logo-wrap {
     position: absolute;
     left: 42%; }
@@ -9530,7 +9535,7 @@ header.colophon {
   padding: 5px;
   border-radius: 3px;
   max-width: 30px;
-  margin-top: 7px;
+  margin-top: 13px;
   transition: all .7s;
   border-radius: 0;
   z-index: 99; }
