@@ -417,15 +417,12 @@ if(isset($isShopPage) && $isShopPage == '1'){
                             <button class="btn" ng-click="updateProfilePicture(data,mediaLink)">Save Picture</button>
                             <button class="btn" ng-click="cancelPictureUpdate()">Cancel</button>
                         </span>
-
             </div>
 
             <div class="form-group ">
                 <div class="col-lg-12">
 
-                    <div class="col-lg-6"
-                         ng-init="initProfilePicture('<?php echo isset($userData['medias'][0]['media_link']) ? $userData['medias'][0]['media_link'] : "" ?>')"
-                    >&nbsp;
+                    <div class="col-lg-6" ng-init="initProfilePicture('<?php echo isset($userData['medias'][0]['media_link']) ? $userData['medias'][0]['media_link'] : "" ?>')">&nbsp;
                     </div>
                 </div>
             </div>

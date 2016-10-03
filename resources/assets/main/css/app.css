@@ -14674,14 +14674,16 @@ body.search #search-header {
   padding-top: 12px; }
 
 body.shop-landing {
-  font-family: Montserratlight, sans-serif; }
+  font-family: Montserratlight, sans-serif;
+  padding-top: 0 !important;
+  background: transparent; }
   body.shop-landing .app-wrap {
-    position: relative;
     background: #F7F7F7;
-    overflow: hidden;
     padding-bottom: 40px; }
-    body.shop-landing .app-wrap .main-content {
-      margin-top: 70px; }
+    body.shop-landing .app-wrap .homepage-grid {
+      margin-top: 0; }
+      body.shop-landing .app-wrap .homepage-grid .main-content {
+        margin-top: 170px; }
   body.shop-landing .sub-item-container {
     position: relative;
     display: block;
@@ -14760,7 +14762,8 @@ body.shop-landing {
     margin-bottom: 100px;
     background: #FFFFFF;
     border: 1px solid #ECECEC;
-    border-radius: 10px; }
+    border-radius: 10px;
+    overflow: hidden; }
     body.shop-landing .hot-deals legend {
       color: #94489A;
       padding-left: 0;
@@ -14897,7 +14900,7 @@ body.shop-landing {
     body.shop-landing .tab-pane .multirow-image-view .image-row-view .box-item {
       position: relative;
       overflow: visible;
-      height: 87px;
+      height: 85px;
       float: none;
       margin: 0; }
       body.shop-landing .tab-pane .multirow-image-view .image-row-view .box-item .box-item__overlay {
@@ -15091,13 +15094,12 @@ body.shop-landing {
     body.shop-landing .search-box-toggle .search-bar.desktop-search-bar {
       display: block !important; }
   body.shop-landing .shop-page-header {
-    background: transparent; }
+    background: #FFFFFF; }
     body.shop-landing .shop-page-header header {
       background: transparent; }
       body.shop-landing .shop-page-header header #top-nav {
         max-height: 110px !important;
         background: transparent;
-        padding-bottom: 15px;
         border: none; }
         body.shop-landing .shop-page-header header #top-nav div.top-nav-holder {
           background: #FFFFFF !important;
@@ -15119,13 +15121,14 @@ body.shop-landing {
           border: none; }
         body.shop-landing .shop-page-header header #top-nav .search-box-container {
           display: block;
-          position: relative;
+          position: absolute;
           width: 100%;
           margin: 0;
           padding: 0;
           padding-top: 10px;
           padding-bottom: 15px;
-          border: none; }
+          border: none;
+          background: transparent; }
           body.shop-landing .shop-page-header header #top-nav .search-box-container .shop-button-container {
             display: block;
             z-index: 50;
@@ -15170,8 +15173,19 @@ body.shop-landing {
             right: 0;
             top: 54px;
             height: 55px;
+            width: 100%;
             background: rgba(255, 255, 255, 0.9);
-            border-bottom: 1px solid #ECECEC; }
+            z-index: 1;
+            -webkit-transition: background-color 0.5s cubic-bezier(0.28, 0.11, 0.32, 1);
+            transition: background-color 0.5s cubic-bezier(0.28, 0.11, 0.32, 1); }
+            body.shop-landing .shop-page-header header #top-nav .search-box-container .search-bar__overlay::after {
+              content: "";
+              display: block;
+              position: absolute;
+              top: 100%;
+              height: 1px;
+              z-index: 1;
+              background-color: rgba(214, 214, 214, 0.4); }
         body.shop-landing .shop-page-header header #top-nav .search-bar.desktop-search-bar.shop-menu-search {
           display: block !important;
           left: 0;
@@ -15186,7 +15200,7 @@ body.shop-landing {
           body.shop-landing .shop-page-header header #top-nav .search-bar.desktop-search-bar.shop-menu-search::after {
             display: none; }
           body.shop-landing .shop-page-header header #top-nav .search-bar.desktop-search-bar.shop-menu-search .search-input-holder {
-            position: relative !important;
+            position: static !important;
             top: 0;
             right: 0;
             bottom: 0;
