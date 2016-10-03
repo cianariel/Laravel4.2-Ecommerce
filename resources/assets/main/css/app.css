@@ -11455,11 +11455,15 @@ body.home.logged-in #hero {
       .home-subheader.current-timespan {
         margin-right: 6px !important; } }
   .home-subheader.trending {
-    max-width: 170px;
+    width: 100%;
+    text-align: left;
     padding-right: 30px;
     height: 20px;
     position: relative;
     top: 40px;
+    margin-left: 0;
+    padding-bottom: 33px;
+    display: block;
     margin-left: 0; }
     @media (max-width: 620px) {
       .home-subheader.trending {
@@ -11470,10 +11474,11 @@ body.home.logged-in #hero {
     .home-subheader.trending .m-icon {
       padding: 0;
       bottom: 3px;
-      right: -8px; }
+      right: 0; }
   .home-subheader.switcher {
     max-width: 250px;
-    height: 32px; }
+    height: 32px;
+    margin-top: -5px; }
     .home-subheader.switcher .swing-lined > div::before {
       height: 2px;
       background: #000; }
@@ -11852,8 +11857,7 @@ body.category .rsThumbs {
     max-width: 180px;
     top: 36px; }
     .home-subheader.trending .m-icon {
-      bottom: 2px;
-      right: -14px; }
+      bottom: 2px; }
   .home-subheader .unread-heading {
     font-size: 1.5rem;
     padding-top: 7px; }
@@ -11865,7 +11869,7 @@ body.category .rsThumbs {
 
   .most-popular-new .popular-section {
     height: 90px;
-    padding: 0; }
+    padding: 0 2%; }
     .most-popular-new .popular-section .box-item {
       width: 30%;
       height: 100%;

@@ -434,15 +434,18 @@ body.home.logged-in{
     }
   }
   &.trending{
-    max-width: 170px;
+    width: 100%;
+    text-align: left;
     padding-right: 30px;
-    height:20px;
-
+    height: 20px;
     position: relative;
+    top: 40px;
+    margin-left: 0;
+    padding-bottom: 33px;
+    display: block;
+    //border-bottom: 2px solid #eee;
 
-    //@media(min-width: 620px){
-      top: 40px;
-    //}
+
     @media(max-width: 620px){
       padding-right: 25px;
     }
@@ -456,14 +459,15 @@ body.home.logged-in{
     }
 
     .m-icon{
-      padding: 0; 
+      padding: 0;
       bottom: 3px;
-      right: -8px;
+      right: 0;
     }
   }
   &.switcher{
     max-width: 250px;
     height: 32px;
+    margin-top: -5px;
 
     .swing-lined>div::before{
       height: 2px;
