@@ -232,11 +232,11 @@ body.category{
       border-bottom: 1px solid #eee;
       border-radius: 0;
 
-      &.product-box{
-        img{
-          max-width: 100%;
-        }
-      }
+      //&.product-box{
+      //  img{
+      //    max-width: 100%;
+      //  }
+      //}
 
       &::before{
         content:'2';
@@ -310,6 +310,7 @@ body.category{
         img {
           max-width: 85%;
           max-height: 88px;
+          height: 100%;
         }
       }
       .popular-title{

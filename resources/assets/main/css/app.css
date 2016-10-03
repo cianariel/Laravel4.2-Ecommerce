@@ -11831,8 +11831,6 @@ body.category .rsThumbs {
     height: auto;
     border-bottom: 1px solid #eee;
     border-radius: 0; }
-    .most-popular-new .popular-wrap .box-item.product-box img {
-      max-width: 100%; }
     .most-popular-new .popular-wrap .box-item::before {
       content: '2';
       padding: 2px 10px;
@@ -11878,7 +11876,8 @@ body.category .rsThumbs {
       margin-left: 0 !important; }
       .most-popular-new .popular-section .box-item img {
         max-width: 85%;
-        max-height: 88px; }
+        max-height: 88px;
+        height: 100%; }
     .most-popular-new .popular-section .popular-title {
       width: 65%;
       padding-left: 0;
