@@ -11468,7 +11468,8 @@ body.home.logged-in #hero {
     margin-left: 0; }
     @media (max-width: 620px) {
       .home-subheader.trending {
-        padding-right: 25px; } }
+        padding-right: 25px;
+        width: 97%; } }
     @media (min-width: 620px) {
       .home-subheader.trending {
         font-size: 1.6em; } }
