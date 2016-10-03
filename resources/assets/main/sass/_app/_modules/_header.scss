@@ -67,8 +67,10 @@
   }
   img {
     width: 120px;
-    margin-top: 9px;
-    margin-bottom: 6px;
+
+    @media(min-width:620px){
+      margin-bottom: 6px;
+    }
   }
 }
 
@@ -146,10 +148,11 @@ header.colophon{
     background: #fff;
     //max-height: 63px;
     max-height: 100%;
-
     padding-top: 6px;
 
     @media(max-width: 620px){
+      padding-top: 0;
+
       -webkit-transition: height .5s;
       -moz-transition:height .5s;
       transition: height .5s;
@@ -176,7 +179,7 @@ header.colophon{
         padding-top: 23px;
       }
     }
-  } 
+  }
 
   .logo-wrap{
     position: absolute;

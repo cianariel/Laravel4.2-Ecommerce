@@ -7881,8 +7881,6 @@ h5.category-link__smart-travel span {
     margin: 0 3% !important; }
     .homepage-grid .grid-box-2 .box-item:last-child {
       margin-left: 0 !important; } }
-.homepage-grid .grid-box-3 .box-item:not(:first-child) {
-  margin-left: 0; }
 @media (min-width: 620px) {
   .homepage-grid .grid-box-3 .box-item img {
     right: -7%; } }
@@ -8130,8 +8128,12 @@ h5.category-link__smart-travel span {
 
 .main-content .box-item {
   float: left;
-  margin-left: 1%;
-  margin-right: 1.7%; }
+  margin-left: 2.2%;
+  margin-right: 2.2%; }
+  .main-content .box-item:first-child {
+    margin-left: 0; }
+  .main-content .box-item:last-child {
+    margin-right: 0 !important; }
   @media (max-width: 1024px) {
     .main-content .box-item {
       margin-left: 3%; } }
@@ -8164,9 +8166,6 @@ h5.category-link__smart-travel span {
 .grid-wrap {
   overflow: hidden;
   padding-top: 25px; }
-  @media (min-width: 1100px) {
-    .grid-wrap {
-      padding-left: 3.5%; } }
   @media (max-width: 1100px) {
     .grid-wrap {
       padding-left: 4px; } }
@@ -8805,9 +8804,10 @@ article img {
   filter: none !important;
   -webkit-filter: none !important; }
 .ideaing-logo img {
-  width: 120px;
-  margin-top: 9px;
-  margin-bottom: 6px; }
+  width: 120px; }
+  @media (min-width: 620px) {
+    .ideaing-logo img {
+      margin-bottom: 6px; } }
 
 .lamp-logo {
   display: block;
@@ -8863,6 +8863,7 @@ header.colophon {
     padding-top: 6px; }
     @media (max-width: 620px) {
       header.colophon #top-nav {
+        padding-top: 0;
         -webkit-transition: height .5s;
         -moz-transition: height .5s;
         transition: height .5s;
@@ -11195,7 +11196,7 @@ body.home.logged-in #hero {
 .homepage-grid {
   position: relative;
   width: 100%;
-  max-width: 1170px;
+  max-width: 1200px;
   min-height: 335px;
   overflow: hidden;
   margin-top: 25px; }
@@ -11219,6 +11220,7 @@ body.home.logged-in #hero {
   background-size: contain; }
 
 #hero-slider {
+  max-width: 1170px;
   position: absolute;
   width: 100%;
   height: 100%;
@@ -11479,7 +11481,8 @@ body.home.logged-in #hero {
     font-style: normal; }
 
 .popular-section {
-  margin-top: 30px; }
+  margin-top: 30px;
+  padding-left: 0; }
 
 .homepage #hero {
   min-height: 383px; }
@@ -11668,7 +11671,8 @@ body.home.logged-in #hero {
   #hero-nav li.hidden-category-menu {
     display: none; } }
 body.category #hero {
-  min-height: 382px; }
+  min-height: 382px;
+  margin-top: 5px; }
 body.category .rsThumbs {
   display: none; }
 

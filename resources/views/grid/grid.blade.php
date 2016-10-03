@@ -23,7 +23,7 @@
 </h4> 
                       
 <div>
-<div ng-repeat="batch in content" class="container main-content col-xs-12">
+<div ng-repeat="batch in content" class="container main-content overhide">
     <div class="grid-box-full grid-wrap visible"> 
         <div class="box-item idea-box box-item--featured" ng-if="item.type == 'idea'"
              ng-repeat="item in batch['row-1']" itemscope itemtype="http://schema.org/BlogPosting">
