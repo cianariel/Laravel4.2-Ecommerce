@@ -17,7 +17,7 @@
 
         
         <div class="mostpop-wrap col-xs-12">
-            <div class="container no-padding">
+            <div class="container no-padding heading-wrap">
                 <h4 class="home-subheader trending text-center">Trending <i class="m-icon m-icon--flame black"></i></h4>
                 <div class="col-xs-12 no-padding">
                     <h6 class="home-subheader switcher text-center center-block no-padding">

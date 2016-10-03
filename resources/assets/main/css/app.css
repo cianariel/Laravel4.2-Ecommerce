@@ -11438,6 +11438,9 @@ body.home.logged-in #hero {
     background: #FC1159;
     color: #fff; }
 
+@media (min-width: 620px) {
+  .heading-wrap {
+    width: 100%; } }
 .home-subheader {
   width: 97%;
   height: 40px;
@@ -11469,7 +11472,7 @@ body.home.logged-in #hero {
     @media (max-width: 620px) {
       .home-subheader.trending {
         padding-right: 25px;
-        width: 97%; } }
+        width: 97.5%; } }
     @media (min-width: 620px) {
       .home-subheader.trending {
         font-size: 1.6em; } }

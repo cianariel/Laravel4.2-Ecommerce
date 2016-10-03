@@ -414,6 +414,12 @@ body.home.logged-in{
   }
 }
 
+  @media(min-width: 620px){
+    .heading-wrap{
+      width: 100%;
+    } 
+}
+
 .home-subheader{
   width: 97%;
   height: 40px;
