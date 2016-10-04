@@ -293,11 +293,21 @@
       background: $facebook-blue;
     }
   }
+} 
+
+.forum{
+  .category-link__advice{
+    &>span::before{
+      visibility: visible;
+      -webkit-transform: scaleX(1);
+      transform: scaleX(1);
+    }
+  }
 }
 
 
 .category-link{
-  cursor: hover;
+  cursor: pointer;
 
   &__smart-home{
     &.active,

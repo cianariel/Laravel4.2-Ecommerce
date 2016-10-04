@@ -7435,8 +7435,13 @@ p {
 .tag-smart-body .home-subheader.switcher .swing-lined > div::before {
   background: #079DD1; }
 
+.forum .category-link__advice > span::before {
+  visibility: visible;
+  -webkit-transform: scaleX(1);
+  transform: scaleX(1); }
+
 .category-link {
-  cursor: hover; }
+  cursor: pointer; }
   .category-link__smart-home.active, .category-link__smart-home:hover,
   .category-link__smart-home .m-icon {
     color: #FC1159; }
