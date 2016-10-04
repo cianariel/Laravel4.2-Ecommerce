@@ -349,7 +349,23 @@
         </div>
         @include('layouts.parts.product-popup')
     </div>
-    </div>
+<script>
+    window.onscroll = function() {scrolling()};
+
+    function scrolling() {
+        var topMenuClasses = document.getElementById("publicApp").classList;
+
+        if (document.body.scrollTop > 60 || document.documentElement.scrollTop > 60) {
+            if (!topMenuClasses.contains("shop-top-menu-container")) {
+                topMenuClasses.add("shop-top-menu-container");
+            }
+        } else {
+            if (topMenuClasses.contains("shop-top-menu-container")) {
+                topMenuClasses.remove("shop-top-menu-container");
+            }
+        }
+    }
+</script>
     {{--<script src="/assets/js/vendor/angular-busy.min.js"></script>--}}
     {{--<script src="/assets/js/main.js"></script>--}}
     {{--<script src="/assets/js/angular-custom/public.common.js"></script>--}}

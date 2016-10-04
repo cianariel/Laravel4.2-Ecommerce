@@ -38,7 +38,7 @@ if(isset($isShopPage) && $isShopPage == '1'){
 <div id="publicApp" ng-app="publicApp" ng-controller="publicController" class="header-cloak scroll-header <?php echo $shopPageClass; ?>" ng-cloak>
 
     <header class="colophon container full-sm fixed-sm relative">
-        <div>
+        <div id="top-menu-container">
             <nav id="top-nav" class="row">
                 <a id="menu-icon-wrapper" class="menu-icon-wrapper home-hamburger mobile-top-menu-switcher hidden-lg hidden-md"  href="#">
                     <svg width="1000px" height="1000px">

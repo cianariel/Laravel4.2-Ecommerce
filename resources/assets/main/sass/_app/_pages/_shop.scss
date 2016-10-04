@@ -6,26 +6,63 @@ body.shop-landing{
   background: transparent;
   .app-wrap{
     background: #F7F7F7;
-    padding-bottom: 40px;
     padding-top: 140px;;
     .homepage-grid{
       margin-top: 0;
       overflow: visible;
       .main-content{
         margin-top: 0;
+        padding-bottom: 70px;
       }
     }
   }
 
   .adsbygoogle{
     background: #F7F7F7;
-    display: none;
+    z-index: -99;
+    height: 90px;
+    position: fixed;
+    bottom: -90px;
   }
 
   .sub-item-container{
     position: relative;
     display: block;
     margin-bottom: 120px;
+    &.bottom-categories-container{
+      margin-bottom: 0 !important;
+    }
+  }
+
+  .shop-top-menu-container{
+    background: transparent !important;
+    .category-menu{
+      display: none !important;
+    }
+    .logo-holder.search-box-toggle{
+      display: none !important;
+    }
+    .search-box-container{
+      top: 0 !important;
+      -webkit-transition: 0.1s;
+      -moz-transition: 0.1s;
+      transition: 0.1s;
+      border: none !important;
+
+      .search-bar__overlay{
+        top: 0 !important;
+        border-bottom: 1px solid #ECECEC;
+      }
+      .shop-button-container.right-align-button{
+        display: none !important;
+      }
+    }
+    .user-controls{
+      top: 0 !important;
+      a.signin{
+        padding-top: 18px !important;
+      }
+    }
   }
 
   .shoplanding-title{
@@ -438,15 +475,19 @@ body.shop-landing{
         width: auto;
         border: none;
         li{
-          margin-left: 30px;
           transform: translate(-100%,0);
           -webkit-transform: translate(-100%,0);
           color: #737374;
 
           &:first-child{
             margin-left: 50%;
+            //transform: translate(-95%,0);
+            //-webkit-transform: translate(-95%,0);
           }
+
           a{
+            padding-right: 30px;
+            padding-left: 30px;
             border: none;
             font-size: 22px;
             color: #737374;
@@ -845,7 +886,6 @@ body.shop-landing{
         border: none;
 
         div.top-nav-holder {
-          background: #FFFFFF !important;
           margin: 0 auto;
           border: none;
         }
@@ -945,10 +985,9 @@ body.shop-landing{
             height: 55px;
             width: 100%;
             background: rgba(255,255,255,0.9);
-            z-index: 1;
             -webkit-transition: background-color 0.5s cubic-bezier(0.28, 0.11, 0.32, 1);
             transition: background-color 0.5s cubic-bezier(0.28, 0.11, 0.32, 1);
-            //border-bottom: 1px solid #ECECEC;
+            z-index: -1;
             &::after{
               content: "";
               display: block;
@@ -1004,6 +1043,11 @@ body.shop-landing{
         }
       }
     }
+  }
+
+  .about-footer.hide-soft{
+    display: block;
+    position: static;
   }
 
 }
