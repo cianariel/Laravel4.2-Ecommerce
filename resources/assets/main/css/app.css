@@ -9286,6 +9286,9 @@ header.colophon {
   @media (min-width: 620px) {
     #top-nav .home-hamburger {
       top: -10px; } }
+  @media (max-width: 710px) {
+    #top-nav .home-hamburger {
+      top: -5px; } }
   #top-nav .home-hamburger.active .down {
     display: block !important; }
     #top-nav .home-hamburger.active .down svg {
