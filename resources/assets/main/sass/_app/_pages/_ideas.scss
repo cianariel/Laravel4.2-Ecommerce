@@ -11,7 +11,12 @@ html.idea-stories{
   }
 }
 
-body.single-post{
+body.single-post{ 
+
+  @media(min-width: 620px){
+    padding-top: 57px;
+  }
+
   header.colophon{
     &.scroll-header #top-nav{
       position: static !important;
