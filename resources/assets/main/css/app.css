@@ -7467,6 +7467,11 @@ p {
     color: #94489A; }
   .category-link__deals span::before {
     background-color: #94489A; }
+  .category-link__shop .m-icon, .category-link__advice .m-icon {
+    color: #777;
+    transition: .3s color; }
+  .category-link__shop:hover .m-icon, .category-link__advice:hover .m-icon {
+    color: #222; }
   .category-link__shop span::before, .category-link__advice span::before {
     background-color: #242424; }
 

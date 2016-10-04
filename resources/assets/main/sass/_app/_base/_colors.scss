@@ -293,7 +293,7 @@
       background: $facebook-blue;
     }
   }
-} 
+}
 
 .forum{
   .category-link__advice{
@@ -361,6 +361,17 @@
   }
   &__shop,
   &__advice{
+    .m-icon{
+      color: #777;
+      transition: .3s color;
+    }
+
+    &:hover{
+      .m-icon {
+        color: #222;
+      }
+    }
+
     span::before{
       background-color: #242424;
     }
