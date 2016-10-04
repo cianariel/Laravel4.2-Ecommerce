@@ -34,6 +34,7 @@ module.exports = function(grunt) {
                     '../../assets/main/js/vendor/textAngular-rangy.min.js',
                     '../../assets/main/js/vendor/textAngular-sanitize.min.js',
                     '../../assets/admin/js/vendor/angular-file-upload.min.js',
+                    '../../assets/main/js/vendor/angular-socialshare.min.js',
 
                     '../../assets/main/js/vendor/royalslider/jquery.royalslider.min.js',
 
@@ -127,7 +128,7 @@ module.exports = function(grunt) {
                 tasks: ['js']
             },
             css: {
-                files: ['../../assets/admin/css/*', '../../assets/main/sass/**/*'],
+                files: ['../../assets/main/css/*', '../../assets/admin/css/*', '../../assets/main/sass/**/*'],
                 tasks: ['css']
             },
         },
