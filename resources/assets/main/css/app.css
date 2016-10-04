@@ -15641,8 +15641,11 @@ body.shop-category .show-filter .grid-box-3 {
 #all-shop-menu-mobile {
   top: 115px; }
 
-.profile-photo:hover {
-  border-color: #FC1159; }
+.profile-photo {
+  border-radius: 100px;
+  border: 1px solid #bebbbc; }
+  .profile-photo:hover {
+    border-color: #FC1159; }
 
 .active .profile-photo {
   border-color: #FC1159; }
