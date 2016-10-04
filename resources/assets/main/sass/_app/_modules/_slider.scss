@@ -37,11 +37,12 @@ label, #active, img { -moz-user-select:none;-webkit-user-select:none; }
 
 
 
-/* NEW EXPERIMENT */
 /* Slider Setup */
 
-input {
-  display: none;
+#hero-slider{
+  input {
+    display: none;
+  }
 }
 
 #slide1:checked ~ #slides .inner { margin-left:0; }

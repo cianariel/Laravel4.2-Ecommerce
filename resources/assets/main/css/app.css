@@ -8325,9 +8325,8 @@ label, #active, img {
 .ideaing-home-slider {
   margin: 0 auto; }
 
-/* NEW EXPERIMENT */
 /* Slider Setup */
-input {
+#hero-slider input {
   display: none; }
 
 #slide1:checked ~ #slides .inner {
@@ -10149,9 +10148,8 @@ label, #active, img {
 .ideaing-home-slider {
   margin: 0 auto; }
 
-/* NEW EXPERIMENT */
 /* Slider Setup */
-input {
+#hero-slider input {
   display: none; }
 
 #slide1:checked ~ #slides .inner {
