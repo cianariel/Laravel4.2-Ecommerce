@@ -2870,7 +2870,6 @@ html {
   -webkit-tap-highlight-color: transparent; }
 
 body {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 14px;
   line-height: 1.42857143;
   color: #333333;
@@ -5681,7 +5680,6 @@ a.label:focus {
   position: absolute;
   z-index: 1070;
   display: block;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-style: normal;
   font-weight: normal;
   letter-spacing: normal;
@@ -5799,7 +5797,6 @@ a.label:focus {
   display: none;
   max-width: 276px;
   padding: 1px;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-style: normal;
   font-weight: normal;
   letter-spacing: normal;
@@ -6637,7 +6634,7 @@ body:not(.single) {
     display: inline-block;
     padding: 5px 5px 4px;
     color: #fff;
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: "Montserrat", Helvetica, Arial, sans-serif;
     margin-top: 22px;
     margin-left: 10px;
     line-height: 1;
@@ -15641,11 +15638,8 @@ body.shop-category .show-filter .grid-box-3 {
 #all-shop-menu-mobile {
   top: 115px; }
 
-.profile-photo {
-  border-radius: 100px;
-  border: 1px solid #bebbbc; }
-  .profile-photo:hover {
-    border-color: #FC1159; }
+.profile-photo:hover {
+  border-color: #FC1159; }
 
 .active .profile-photo {
   border-color: #FC1159; }
@@ -15665,8 +15659,7 @@ body.profilepage {
   body.profilepage header.colophon {
     background: #fff; }
   body.profilepage #hero {
-    position: relative;
-    color: #fff; }
+    position: relative; }
     body.profilepage #hero #upload-photo {
       position: absolute;
       bottom: 0px;
@@ -15682,17 +15675,11 @@ body.profilepage {
       body.profilepage #hero #upload-photo i {
         color: #f7931e; }
     body.profilepage #hero .fullname {
-      font-size: 40px; }
-    body.profilepage #hero .location {
-      color: #cac6c3;
-      font-size: 15px; }
-      body.profilepage #hero .location i {
-        font-size: 25px; }
+      font-size: 4.5em; }
     body.profilepage #hero .description {
-      color: #e5e4e4; }
+      color: #999; }
     body.profilepage #hero .follow {
-      color: #fff;
-      border: 1px solid #fff;
+      color: #FC1159;
       border-radius: 4px;
       width: 114px;
       padding-top: 5px;
@@ -15701,7 +15688,7 @@ body.profilepage {
       display: inline-block;
       margin-right: 10px; }
     body.profilepage #hero .edit-background {
-      color: #fff;
+      color: #999;
       position: absolute;
       right: 20px;
       top: 65px;

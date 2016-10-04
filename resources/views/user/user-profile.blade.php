@@ -4,91 +4,108 @@
 
 @section('content')
     <div id="pupblicApp" ng-app="publicApp" ng-controller="publicController">
-        <nav class="mid-nav">
-            <div class="container full-sm fixed-sm">
-                <ul class="wrap col-lg-9">
-                    <li class="box-link-ul  active-ul ">
-                        <a class="box-link active" href="/user/profile">
-                            <span class="box-link-active-line"></span>
-                            <!-- <img class="profile-photo" src="/assets/images/profile.jpg" alt="" width="40px"> -->
-                            My Profile
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
-
-
         <section id="hero" class="landing-hero">
             <div>
-                <div class="hero-background" style="background-image: url('/assets/images/landing-hero-3.jpg');"></div>
-                <div class="color-overlay"></div>
                 <div class="container">
-                    <div class="col-sm-6 text-right">
-                        <img class="profile-photo" width="120px" src="{{$profile}}">
-                        @if($showEditOption)
-                            <br>
-                            <br>
+                    <div class="col-sm-3">
+                        <div class="user-score white-bg pink">
+                            <h5>User Score <span>Level 1</span></h5>
+                            <div class="percent">95%</div>
                             <div>
-                                <button id="btn-add-friend" type="button" ng-click="openProfileSetting(true)"
-                                        class="btn btn-danger">
-                                    <i class=""></i>&nbsp; Change Image
-                                </button>
+                                <span>Comments</span>
+                                <div class="progress-bar"></div>
+                                25/300
                             </div>
-                        @endif
-                    </div>
+                            <div>
+                                <span>Likes</span>
+                                <div class="progress-bar"></div>
+                                25/300
+                            </div>
+                            <div>
+                                <span>Shares</span>
+                                <div class="progress-bar"></div>
+                                25/300
+                            </div>
+                        </div>
 
-                    <div class="col-sm-6">
-                        <p>
-                            <span class="fullname">{{$fullname}}</span>&nbsp;
-                            <span class="location"><i class=" m-icon--Location"></i> {{$address}}</span>
-                        </p>
-                        <p class="description">{{$personalInfo}}</p>
+                        <div class="white-bg">
+                            Share your profile
+                            <button class="fb">Facebook</button>
+                            <button class="twi">Twitter</button>
+                        </div>
 
                         @if(!$showEditOption)
-                            <div>
-                                <button id="btn-follow" type="button" class="btn " uib-dropdown-toggle>
-                                    Follow <i class=" m-icon--Actions-Down-Arrow-Active"></i>
-                                </button>
+                                {{--<button id="btn-follow" type="button" class="btn " uib-dropdown-toggle>--}}
+                                {{--Follow <i class=" m-icon--Actions-Down-Arrow-Active"></i>--}}
+                                {{--</button>--}}
                                 <button id="btn-add-friend" type="button" class="btn btn-primary">
                                     <i class="m-icon m-icon--Add-Friends"></i>&nbsp; Add Friends
                                 </button>
-                            </div>
                         @endif
-                        <br>
-                        <div>
-                            <a href="#" class="follow">0 Follower</a>
-                            <a href="#" class="follow">0 Following</a>
+
+                    </div>
+
+                    <div class="col-sm-9">
+                        <div class="col-sm-4 text-right">
+                            <img class="profile-photo img-circle full-wide" src="{{$profile}}">
+                            @if($showEditOption)
+                                <br>
+                                <br>
+                                <div>
+                                    <button id="btn-add-friend" type="button" ng-click="openProfileSetting(true)"
+                                            class="btn btn-danger">
+                                        <i class=""></i>&nbsp; Change Image
+                                    </button>
+                                </div>
+                            @endif
                         </div>
 
+                        <div class="col-sm-8">
+                            <p>
+                                <span class="fullname lightfont">{{$fullname}}</span>&nbsp;
+                                {{--<span class="location"><i class=" m-icon--Location"></i> {{$address}}</span>--}}
+                            </p>
+                            <p class="description">{{$personalInfo}}</p>
 
-                        <br>
-                        <div>
-                            <a href="#" class="follow"
-                               socialshare
-                               socialshare-via="{{env('FB_APP')}}"
-                               socialshare-type="feed"
-                               socialshare-provider="facebook"
-                               socialshare-text="Welcome to Ideaing"
-                               socialshare-hashtags="Ideaing"
-                               socialshare-url="https://ideaing.com"
-                            >
-                                Invite Facebook Friends
-                            </a>
 
-                            <a href="#" class="follow"
-                               socialshare
-                               socialshare-via="{{env('FB_APP')}}"
-                               socialshare-type="feed"
-                               socialshare-provider="twitter"
-                               socialshare-text="Welcome to Ideaing"
-                               socialshare-hashtags="Ideaing"
-                               socialshare-url="https://ideaing.com"
-                            >
-                                Invite Twitter Friends
-                            </a>
+
+                            <ul class="share-buttons">
+                                <li><a data-service="facebook" class="fb" href="#" ng-click="openSharingModal('facebook')"><i class="m-icon m-icon--facebook-id"></i> </a></li>
+                                <li><a data-service="twitter" class="twi" href="#" ng-click="openSharingModal('twitter')"><i class="m-icon  m-icon--twitter-id"></i> </a></li>
+                            </ul>
+
+                            {{--<div>--}}
+                                {{--<a href="#" class="follow">0 Follower</a>--}}
+                                {{--<a href="#" class="follow">0 Following</a>--}}
+                            {{--</div>--}}
+
+                            <div>
+                                <a href="#" class="follow"
+                                   socialshare
+                                   socialshare-via="{{env('FB_APP')}}"
+                                   socialshare-type="feed"
+                                   socialshare-provider="facebook"
+                                   socialshare-text="Welcome to Ideaing"
+                                   socialshare-hashtags="Ideaing"
+                                   socialshare-url="https://ideaing.com"
+                                        >
+                                    Invite Facebook Friends
+                                </a>
+
+                                <a href="#" class="follow"
+                                   socialshare
+                                   socialshare-via="{{env('FB_APP')}}"
+                                   socialshare-type="feed"
+                                   socialshare-provider="twitter"
+                                   socialshare-text="Welcome to Ideaing"
+                                   socialshare-hashtags="Ideaing"
+                                   socialshare-url="https://ideaing.com"
+                                        >
+                                    Invite Twitter Friends
+                                </a>
+                            </div>
+
                         </div>
-
                     </div>
                 </div>
                 @if($showEditOption)
