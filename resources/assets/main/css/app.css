@@ -2870,6 +2870,7 @@ html {
   -webkit-tap-highlight-color: transparent; }
 
 body {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 14px;
   line-height: 1.42857143;
   color: #333333;
@@ -5680,6 +5681,7 @@ a.label:focus {
   position: absolute;
   z-index: 1070;
   display: block;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-style: normal;
   font-weight: normal;
   letter-spacing: normal;
@@ -5797,6 +5799,7 @@ a.label:focus {
   display: none;
   max-width: 276px;
   padding: 1px;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-style: normal;
   font-weight: normal;
   letter-spacing: normal;
@@ -6634,7 +6637,7 @@ body:not(.single) {
     display: inline-block;
     padding: 5px 5px 4px;
     color: #fff;
-    font-family: "Montserrat", Helvetica, Arial, sans-serif;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     margin-top: 22px;
     margin-left: 10px;
     line-height: 1;
