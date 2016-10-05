@@ -12454,7 +12454,9 @@ body.login-signup {
     margin-top: 45px; }
 
 html.idea-stories #hero {
-  min-height: 400px; }
+  min-height: 400px;
+  border-bottom: 1px solid #eee;
+  border-left: 3px solid #eee; }
   @media (max-width: 620px) {
     html.idea-stories #hero {
       min-height: 575px; } }

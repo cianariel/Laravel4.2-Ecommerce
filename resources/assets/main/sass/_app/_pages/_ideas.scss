@@ -4,6 +4,12 @@
 html.idea-stories{
   #hero{
     min-height: 400px;
+    border-bottom: 1px solid #eee;
+    border-left: 3px solid #eee;
+
+    .hero-background{
+      border-left: 3px solid #eee;
+    }
 
     @media(max-width: 620px){
       min-height: 575px;
