@@ -15733,8 +15733,12 @@ body.profilepage {
           color: #eeeeff;
           opacity: .9;
           font-size: 4rem; }
+          @media (max-width: 1000px) {
+            body.profilepage #hero .avatar-wrap .change-foto-button i {
+              font-size: 3rem; } }
     body.profilepage #hero .description {
-      color: #999; }
+      color: #999;
+      font-size: 1.1rem; }
     body.profilepage #hero .follow {
       color: #FC1159;
       border-radius: 4px;
@@ -15783,6 +15787,7 @@ body.profilepage {
     width: 100%;
     border-bottom: 1px solid #eee;
     padding-bottom: 8px;
+    font-size: 1.2rem;
     position: absolute;
     bottom: 0; }
     @media (max-width: 768px) {
@@ -15824,6 +15829,43 @@ body.profilepage {
       body.profilepage #hero-nav .breadcrumb li a {
         float: none;
         padding: 0px; }
+  body.profilepage .activity-stats {
+    margin-top: 22px; }
+    body.profilepage .activity-stats span {
+      padding: 2px 17px;
+      margin-right: 5px;
+      cursor: pointer; }
+      @media (max-width: 1000px) {
+        body.profilepage .activity-stats span {
+          padding: 2px 12px; } }
+  body.profilepage .time {
+    font-size: 1.2rem;
+    padding-right: 40px;
+    white-space: nowrap; }
+    @media (max-width: 1000px) {
+      body.profilepage .time {
+        padding: 0;
+        float: left;
+        font-size: 1.1rem;
+        margin-left: -8px; } }
+  body.profilepage .activity-tags div {
+    display: inline-block;
+    padding: 4px 8px;
+    float: left;
+    border-radius: 50%;
+    cursor: pointer;
+    margin-left: -15px;
+    border: 3px solid #f4f4f4; }
+    body.profilepage .activity-tags div:first-child::before {
+      content: '';
+      width: 2px;
+      height: 260px;
+      top: 34px;
+      right: 13px;
+      position: absolute;
+      background: #fff; }
+  body.profilepage .activity-item p {
+    font-size: 1.2rem; }
   body.profilepage .side-bar {
     padding-right: 45px; }
     body.profilepage .side-bar .sidenav > li {
@@ -15850,8 +15892,6 @@ body.profilepage {
     background: #fff;
     margin-bottom: 20px;
     color: #909090; }
-    body.profilepage .feed-content a {
-      color: #909090; }
     body.profilepage .feed-content strong {
       color: #000; }
     body.profilepage .feed-content .feed-header {
@@ -15946,22 +15986,23 @@ h5 {
     padding-left: 0; }
 
 .progress-bar {
-  width: 47%;
+  width: 44%;
   display: inline-block;
   height: 2px;
   background: #eee;
   position: relative;
-  bottom: 4px; }
-  @media (max-width: 1000px) {
+  bottom: 4px;
+  left: 0; }
+  @media (max-width: 1200px) {
     .progress-bar {
-      width: 67%; } }
+      width: 72%; } }
   .progress-bar:before {
     content: '';
     display: inline-block;
     position: absolute;
+    left: 0;
     height: 100%;
-    background: #FC1159;
-    width: 0; }
+    background: #FC1159; }
   .progress-bar.full-50:before {
     width: 50%; }
 

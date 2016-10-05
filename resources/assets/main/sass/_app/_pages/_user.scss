@@ -78,6 +78,10 @@ body.profilepage{
             color: #eeeeff;
             opacity: .9;
             font-size: 4rem;
+
+            @media(max-width: 1000px){
+              font-size: 3rem;
+            }
           }
         }
     }
@@ -90,6 +94,7 @@ body.profilepage{
     //}
     .description{
       color: #999;
+      font-size: 1.1rem;
     }
     .follow{
       color: $iridium;
@@ -116,6 +121,9 @@ body.profilepage{
         color: #fff;
       }
     }
+
+
+
     .edit-profile{
       color: #ceced0;
       position: absolute;
@@ -152,11 +160,14 @@ body.profilepage{
     }
   }
 
+
+
   #hero-nav{
     background: none;
     width: 100%;
     border-bottom: 1px solid #eee;
     padding-bottom: 8px;
+    font-size: 1.2rem;
 
     position: absolute;
     bottom: 0;
@@ -237,6 +248,62 @@ body.profilepage{
     }
 
   }
+
+  .activity-stats{
+    margin-top: 22px;
+
+    span{
+      padding: 2px 17px;
+      margin-right: 5px;
+      cursor: pointer;
+
+      @media(max-width:1000px){
+        padding: 2px 12px;
+      }
+    }
+  }
+  .time{
+    font-size: 1.2rem;
+    padding-right: 40px;
+    white-space: nowrap;
+
+    @media(max-width:1000px){
+      padding: 0;
+      float: left;
+      font-size: 1.1rem;
+      margin-left: -8px;
+    }
+  }
+  .activity-tags{
+    div{
+      display: inline-block;
+      padding: 4px 8px;
+      float: left;
+      border-radius: 50%;
+      cursor: pointer;
+      margin-left: -15px;
+      border: 3px solid #f4f4f4;
+
+      &:first-child{
+        &::before{
+          content: '';
+          width: 2px;
+          height: 260px;
+          top: 34px;
+          right: 13px;
+          position: absolute;
+          background: #fff;
+        }
+      }
+    }
+  }
+
+  .activity-item{
+    p{
+      font-size: 1.2rem;
+    }
+  }
+
   .side-bar{
     padding-right: 45px;
     .sidenav{
@@ -272,9 +339,9 @@ body.profilepage{
     background: #fff;
     margin-bottom: 20px;
     color: #909090;
-    a{
-      color: #909090;
-    }
+    //a{
+    //  color: #909090;
+    //}
     strong{
       color: #000;
     }
@@ -414,24 +481,25 @@ h5{
 }
 
 .progress-bar{
-  width: 47%;
+  width: 44%;
   display: inline-block;
   height: 2px;
   background: #eee;
   position: relative;
   bottom: 4px;
+  left: 0;
 
-  @media(max-width: 1000px){
-    width: 67%;
+  @media(max-width: 1200px){
+    width: 72%;
   }
 
   &:before{
     content: '';
     display: inline-block;
     position: absolute;
+    left: 0;
     height: 100%;
     background: $iridium;
-    width: 0;
   }
 
   &.full-50{
