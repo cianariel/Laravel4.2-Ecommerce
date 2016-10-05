@@ -15717,14 +15717,22 @@ body.profilepage {
         color: #f7931e; }
     body.profilepage #hero .fullname {
       font-size: 4em; }
-    body.profilepage #hero .avatar-wrap .change-foto-button {
-      position: absolute;
-      top: 40%;
-      left: 12%; }
-      body.profilepage #hero .avatar-wrap .change-foto-button i {
-        color: #eeeeff;
-        opacity: .9;
-        font-size: 4rem; }
+      @media (max-width: 1000px) {
+        body.profilepage #hero .fullname {
+          font-size: 2em; } }
+    body.profilepage #hero .avatar-wrap {
+      padding-top: 5px; }
+      body.profilepage #hero .avatar-wrap img {
+        max-width: 200px;
+        margin-top: 10px; }
+      body.profilepage #hero .avatar-wrap .change-foto-button {
+        position: absolute;
+        top: 40%;
+        left: 12%; }
+        body.profilepage #hero .avatar-wrap .change-foto-button i {
+          color: #eeeeff;
+          opacity: .9;
+          font-size: 4rem; }
     body.profilepage #hero .description {
       color: #999; }
     body.profilepage #hero .follow {
@@ -15777,15 +15785,20 @@ body.profilepage {
     padding-bottom: 8px;
     position: absolute;
     bottom: 0; }
-    body.profilepage #hero-nav .main-content-filter > li > a {
-      cursor: pointer;
-      text-transform: none;
-      padding: 10px;
-      font-family: "montserratlight", sans-serif; }
-      body.profilepage #hero-nav .main-content-filter > li > a i {
-        font-size: 18px;
-        margin-top: 1px;
-        margin-right: 3px; }
+    @media (max-width: 768px) {
+      body.profilepage #hero-nav {
+        position: relative; } }
+    body.profilepage #hero-nav .main-content-filter > li {
+      float: left; }
+      body.profilepage #hero-nav .main-content-filter > li > a {
+        cursor: pointer;
+        text-transform: none;
+        padding: 10px;
+        font-family: "montserratlight", sans-serif; }
+        body.profilepage #hero-nav .main-content-filter > li > a i {
+          font-size: 18px;
+          margin-top: 1px;
+          margin-right: 3px; }
     body.profilepage #hero-nav .main-content-filter li.active .all-activity,
     body.profilepage #hero-nav .main-content-filter li:hover .all-activity {
       color: #00B1FF; }
@@ -15922,6 +15935,9 @@ h5 {
   .user-score .stat-name {
     width: 30%;
     display: inline-block; }
+    @media (max-width: 1000px) {
+      .user-score .stat-name {
+        width: 100%; } }
 
 .share-profile {
   margin-bottom: 16px;
@@ -15936,6 +15952,9 @@ h5 {
   background: #eee;
   position: relative;
   bottom: 4px; }
+  @media (max-width: 1000px) {
+    .progress-bar {
+      width: 67%; } }
   .progress-bar:before {
     content: '';
     display: inline-block;
@@ -15950,6 +15969,9 @@ h5 {
   padding-top: 12px;
   margin-top: 27px;
   float: right; }
+  @media (max-width: 1000px) {
+    .edit-profile-link {
+      margin-top: 0; } }
 
 .profile-setting-modal .close {
   position: absolute;

@@ -7,7 +7,7 @@
         <section id="hero" class="landing-hero">
             <div>
                 <div class="container">
-                    <div class="col-sm-3">
+                    <div class="col-sm-4 col-md-3">
                         <div class="user-score white-bg rounded-5 grey-border">
                             <h5 class="black">User Score <span class="pull-right">Level 1</span></h5>
                             <div class="percent pink">0%</div>
@@ -49,8 +49,8 @@
 
                     </div>
 
-                    <div class="col-sm-9 static">
-                        <div class="col-sm-3 text-right avatar-wrap">
+                    <div class="col-sm-8 col-md-9 static">
+                        <div class="col-sm-3 avatar-wrap text-cetner">
                             <img class="img-circle full-wide" src="{{$profile}}">
                             {{--@if($showEditOption)--}}
                                     <span class="change-foto-button" ng-click="openProfileSetting(true)">
@@ -71,7 +71,7 @@
                                 {{--</a>--}}
                                 {{--</div>--}}
 
-                                <a href="#" class="btn edit-profile-link white-bg pink" ng-click="openProfileSetting()"><i class="m-icon--Edit-Profile"></i> Edit Profile&nbsp;&nbsp;</a>
+                                <a href="#" class="btn edit-profile-link white-bg pink" ng-click="openProfileSetting()"><i class="m-icon--Edit-Profile"></i> <span class="hidden-md hidden-sm hidden-xs">Edit Profile&nbsp;&nbsp;</span></a>
                                 {{--<p class="hidden-xs hidden-sm"><a href="/user/profile/{{@$userPermalink}}">View your profile as--}}
                                 {{--other people see it</a></p>--}}
                                 {{--<p class="visible-xs visible-sm">&nbsp;</p>--}}

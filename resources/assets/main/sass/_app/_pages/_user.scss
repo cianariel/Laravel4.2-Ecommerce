@@ -57,9 +57,18 @@ body.profilepage{
     }
     .fullname{
       font-size: 4em;
+
+      @media(max-width: 1000px){
+        font-size: 2em;
+      }
     }
 
     .avatar-wrap{
+      padding-top: 5px;
+      img{
+        max-width: 200px;
+        margin-top: 10px;
+      }
         .change-foto-button{
           position: absolute;
           top: 40%;
@@ -151,18 +160,24 @@ body.profilepage{
 
     position: absolute;
     bottom: 0;
+    @media(max-width: 768px){
+      position: relative;
+    }
 
     .main-content-filter{
-      > li > a{
-        cursor: pointer;
-        text-transform: none;
-        padding: 10px;
-        font-family: $moseratlight;
+      > li{
+        float: left;
+        & > a{
+          cursor: pointer;
+          text-transform: none;
+          padding: 10px;
+          font-family: $moseratlight;
 
-        i{
-          font-size: 18px;
-          margin-top: 1px;
-          margin-right: 3px;
+          i{
+            font-size: 18px;
+            margin-top: 1px;
+            margin-right: 3px;
+          }
         }
       }
 
@@ -383,6 +398,9 @@ h5{
   .stat-name{
     width: 30%;
     display: inline-block;
+    @media(max-width: 1000px){
+      width: 100%;
+    }
   }
 }
 
@@ -402,6 +420,10 @@ h5{
   background: #eee;
   position: relative;
   bottom: 4px;
+
+  @media(max-width: 1000px){
+    width: 67%;
+  }
 
   &:before{
     content: '';
@@ -424,6 +446,10 @@ h5{
   padding-top: 12px;
   margin-top: 27px;
   float: right;
+
+  @media(max-width: 1000px){
+    margin-top: 0;
+  }
 }
 
 
