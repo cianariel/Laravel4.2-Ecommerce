@@ -920,6 +920,10 @@ label[for="shipping_address_1"] {
   margin: 15px 0 50px;
 }
 
+#shipping_method input[type="radio"] {
+  display: none;
+}
+
 #shipping_method li {
   margin-bottom: -1px;
 }
