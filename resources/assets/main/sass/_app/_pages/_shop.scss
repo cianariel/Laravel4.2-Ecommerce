@@ -45,9 +45,9 @@ body.shop-landing{
     }
     .search-box-container{
       top: 0 !important;
-      -webkit-transition: 0.05s color 0.05s;
-      -moz-transition: 0.05s color 0.05s;
-      transition: 0.05s color 0.05s;
+      -webkit-transition: 0.2s;
+      -moz-transition: 0.2s;
+      transition: 0.2s;
       border: none !important;
 
       .search-bar__overlay{
@@ -63,6 +63,7 @@ body.shop-landing{
       top: 0 !important;
       a.signin{
         padding-top: 18px !important;
+        font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
       }
     }
   }
@@ -973,14 +974,13 @@ body.shop-landing{
           .shop-icon-container{
             position: absolute;
             top: 0;
-            right: 50px;
-
+            right: -3px;
             span{
               font-weight: 100;
               color: #3d4b4e;
               text-transform: capitalize;
               .m-icon--shopping-bag-light-green{
-                font-size: 35px;
+                font-size: 38px;
               }
             }
             .category-link__shop{
