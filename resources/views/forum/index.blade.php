@@ -9,7 +9,7 @@
 	<div ng-app="productApp" data-ng-controller="forumController" class="ideaing-product" >
 		<div class="top-bar">
 			<div class="container">
-				<span class="title">Discussions</span>
+				<span class="title">Advice</span>
 			</div>
 		</div>
 
@@ -36,7 +36,11 @@
 						<p>Get help your projects share your finds and show off your Before and After.</p>
 						<div class="thread-question-holder">
 							<div class="thread-question-icon-holder">
-								<img src="{{asset('assets/images/forum/bear.png')}}">
+                                @if(!empty($userData['email']))
+                                    <img src="https://s3-us-west-1.amazonaws.com/ideaing-01/120-product-56ce7066c0ef3-user-default 2.png" class="profile-photo">
+                                @else
+                                    <img src="{{isset($userData['medias'][0]['media_link']) ? $userData['medias'][0]['media_link'] : ""}}" alt="" class="profile-photo">
+                                @endif
 							</div>
 							<div class="thread-question-text-holder">
 								<input class="forum-text" ng-model="thread.title" placeholder="Example: What is the best way to renovate a house?">
@@ -64,11 +68,12 @@
                             <div class="pull-left">
                                 <select class="categories" ng-model="thread.category_id">
                                     @foreach($categories as $category)
-                                        <optgroup label="{{$category->title}}">
+                                        <option value="{{$category->id}}" >
+                                            {{$category['title']}}
+                                        </option>
                                         @foreach($category['sub_categories'] as $sub_category)
-                                            <option value="{{$sub_category->id}}">{{$sub_category->title}}</option>
+                                            <option value="{{$sub_category->id}}">--{{$sub_category->title}}</option>
                                         @endforeach
-                                        </optgroup>
                                     @endforeach
                                 </select>
                             </div>
@@ -89,20 +94,41 @@
 		<div class="main-content-container">
 			<div class="container">
 				<div class="row">
-					<div class="col-lg-9 col-md-9 category-tab-container">
+					<div class="col-lg-12 col-md-12 category-tab-container">
 						<div class="row">
                             <?php $i=0; ?>
                             @foreach($categories as $category)
                                 <div class="col-xs-3 ">
-                                    <div style="cursor: pointer;" ng-click="selectCategory({{$category->id}})">
+                                    <?php 
+                                        switch($i){
+                                            case "0":
+                                                $class="smart-home";
+                                                $iconClass="m-icon--smart-home";
+                                                $categoryTitle="HOME";
+                                            break;
+                                            case "1":
+                                                $class="smart-travel";
+                                                $iconClass="m-icon--travel";
+                                                $categoryTitle="TRAVEL";
+                                            break;
+                                            case "2":
+                                                $class="smart-wearables";
+                                                $iconClass="m-icon--wearables";
+                                                $categoryTitle="BODY";
+                                            break;
+                                            case "3":
+                                                $class="smart-video";
+                                                $iconClass="m-icon--video";
+                                                $categoryTitle="ENTERTAINMENT";
+                                            break;
+                                        }
+                                    ?>
+                                    <div style="cursor: pointer;" class="{{$class}}" ng-click="selectCategory({{$category->id}})">
                                         <div class="category-tab-icon-holder">
-                                            <?php if($i==0): ?> <i style="color:#ec3a5d" class="m-icon m-icon--smart-home"></i> <?php endif; ?> 
-                                            <?php if($i==1): ?> <i style="color:#87c880" class="m-icon m-icon--travel"></i> <?php endif; ?> 
-                                            <?php if($i==2): ?> <i style="color:#4388c7" class="m-icon m-icon--wearables"></i> <?php endif; ?> 
-                                            <?php if($i==3): ?> <i style="color:#f05a24" class="m-icon m-icon--video"></i> <?php endif; ?>
+                                            <i class="m-icon {{$iconClass}}"></i> 
                                         </div>
                                         <div class="category-tab-title-holder">
-                                            <span class="forum-small-title">{{$category->title}}</span> <br>
+                                            <span class="forum-small-title"><span class='hidden-xs hidden-sm hidden-md'>SMART</span> {{$categoryTitle}}</span> <br>
                                             <span id="thread-topics-{{$category->id}}">2077 Topics</span>
                                         </div>
                                         <div class="clearfix"></div>
@@ -122,7 +148,7 @@
 							</div>
 						</div>
 					</div>
-					<div class="col-lg-3 col-md-3">
+					<!--<div class="col-lg-3 col-md-3">
                         <div class="extra-container">
                             <div class="row">
                                 <div class="col-xs-6">
@@ -145,7 +171,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div>-->
 				</div>
 				<div class="row thread-list-container" >
                     <div class="col-lg-9 col-md-9 ">
@@ -173,7 +199,8 @@
                                     </div>
                                     <div class="col-xs-5 forum-col">
                                         <span >
-                                            @{{categoryThread.parentCategoryTitle}} <span ng-if="categoryThread.parentCategoryTitle"> -> @{{categoryThread.categoryTitle}}</span>
+                                            <span ng-if="categoryThread.parentCategoryTitle"> @{{categoryThread.parentCategoryTitle}} -> @{{categoryThread.categoryTitle}}</span>
+                                            <span ng-if="!categoryThread.parentCategoryTitle"> @{{categoryThread.categoryTitle}}</span>
                                         </span>
                                     </div>
                                     <div class="col-xs-2 forum-col">
@@ -185,6 +212,7 @@
                             </div>
                         </div>
                     </div>
+                    <br><br>
                     <div class="col-lg-3 col-md-3">
                         <div>
                             <span class="forum-small-title">MOST ACTIVE MEMBERS</span>
