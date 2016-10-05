@@ -19,7 +19,7 @@
 
                         <div>
                             <uib-tabset class="tab-swing-lined" active="active">
-                                <uib-tab index="0" heading="Smart Homes" class="category-smart-home">
+                                <uib-tab index="0" heading="Smart Home" class="category-smart-home">
                                     @include('layouts.parts.shop-tab', ['category_name' => 'category-smart-home'])
                                 </uib-tab>
                                 <uib-tab index="1" heading="Smart Entertainment" class="category-smart-entertainment">
@@ -42,7 +42,7 @@
 
                         <div>
                             <uib-tabset class="tab-swing-lined" active="active">
-                                <uib-tab index="0" heading="Smart Homes" class="category-smart-home">
+                                <uib-tab index="0" heading="Smart Home" class="category-smart-home">
                                     @include('layouts.parts.shop-tab', ['category_name' => 'category-smart-home'])
                                 </uib-tab>
                                 <uib-tab index="1" heading="Smart Entertainment" class="category-smart-entertainment">
@@ -60,7 +60,7 @@
 
                     <div class="sub-item-container hot-deals">
                         <fieldset class="shoplanding-title">
-                            <legend align="left"><i class="m-icon--flame-fill fill-with-purple"></i> Hot Deals </legend>
+                            <legend align="left"><i class="m-icon--deals fill-with-purple"></i> Hot Deals </legend>
                         </fieldset>
 
                         <div class="row">
