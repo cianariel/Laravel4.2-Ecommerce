@@ -74,7 +74,7 @@
 
     $( document ).on('change', '#ship-to-different-address-checkbox', function(){
 
-      self.trigger(document.body, 'country_to_state_changed', []);
+      if($(this).prop('checked')) self.trigger(document.body, 'country_to_state_changed', []);
     });
 
     $( document.body ).on('update_checkout', function(){
