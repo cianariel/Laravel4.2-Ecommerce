@@ -214,6 +214,58 @@
                         No activity yet
                     </div>
                 </div>
+
+                <div class="col-xs-3">
+                    <span class="time">3 months ago</span>
+
+                    <div class="pull-right">
+                        <span class="favorite"><i class="m-icon--heart-solid"></i> 5</span>
+                        <span class="comment"><i class="m-icon--buble"></i> 0</span>
+                    </div>
+                </div>
+
+
+                <div class="feed-content col-xs-9">
+                    <div class="feed-header">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="pull-left name-time">
+                                    <!-- ngIf: item['Type']=='comment' -->
+                                    <!-- ngIf: item['Type']!='comment' --><span ng-if="item['Type']!='comment'" class="ng-scope"> Liked</span><!-- end ngIf: item['Type']!='comment' -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="feed-body">
+                        <div class="row">
+                            <div class="col-xs-3">
+                                <img ng-src="https://d3f8t323tq9ys5.cloudfront.net/uploads/2016/03/2016-03-30-SpeakerSystems_380.jpg">
+                            </div>
+
+                            <div ng-class="item['Type'] =='heart' ? 'col-xs-12':'col-xs-12'" class="col-xs-9">
+                                <a href="https://staging.ideaing.com/ideas/?p=6683" target="_blank" class="ng-binding">How the August Smart Doorbell Cam Makes My Life Simpler &amp; Safer</a>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="feed-footer ">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="pull-left">
+                                    <span class="favorite ng-binding"><i class="m-icon--heart-solid"></i> 5</span>
+                                    <span class="comment ng-binding"><i class="m-icon--buble"></i> 0</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+
+
                 <div class="clearfix"> </div>
             </div>
         </div>
