@@ -519,3 +519,22 @@ function ideaing_global_cart_summary(){
 }
 add_action( 'wp_ajax_global_cart_summary', 'ideaing_global_cart_summary' );
 add_action( 'wp_ajax_nopriv_global_cart_summary', 'ideaing_global_cart_summary' );
+
+/**
+ * Order complete email subject filter:
+ *
+ * @return return string
+ */
+function ideaing_email_subject_customer_completed_order( $subject, $order ) {
+
+  $find = '{product_name}';
+  $replace = array();
+  $items = $order->get_items();
+
+  foreach ($items as $item) {
+    $replace[] = $item['name'];
+  }
+
+	return str_replace ( $find , implode(' | ', $replace), $subject);
+}
+add_filter('woocommerce_email_subject_customer_completed_order', 'ideaing_email_subject_customer_completed_order', 99, 2);
