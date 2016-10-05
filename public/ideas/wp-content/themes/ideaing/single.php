@@ -229,7 +229,7 @@
 
                     <div class="box-item idea-box">
                         <div class="img-holder">
-                            <img class="static" src="{{$image['url']}}">
+                            <img src="{{$image['url']}}">
                         </div>
                         <div class="category-{{$relatedItem['categorySlug']}}">
                             <div class="idea-meta">
@@ -288,9 +288,9 @@
 
         <div class="related-products grid-box-3">
             @foreach( $relatedProducts as $product )
-            <div class="box-item product-box "> 
+            <div class="box-item product-box ">
                 <div class="img-holder">
-                    <img class="img-responsive static" src="{{ $product->media_link_full_path }}">
+                    <img class="img-responsive" src="{{ $product->media_link_full_path }}">
                 </div>
 
                 <div class="category-{{$product->master_category_name}}">

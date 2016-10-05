@@ -12489,8 +12489,8 @@ body.single-post .related-ideas, body.single-post .related-products {
   width: 100%;
   max-width: 1170px;
   margin: auto; }
-  body.single-post .related-ideas img, body.single-post .related-products img {
-    position: static; }
+  body.single-post .related-ideas .box-item, body.single-post .related-products .box-item {
+    z-index: 1; }
   body.single-post .related-ideas.grid-box-2 .box-item, body.single-post .related-products.grid-box-2 .box-item {
     width: 47%;
     margin: 8px;
