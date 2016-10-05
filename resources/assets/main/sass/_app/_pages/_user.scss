@@ -1,4 +1,5 @@
 
+
 .profile-photo{
   border-radius: 100px;
   border: 1px solid #bebbbc;
@@ -27,8 +28,13 @@
     max-width: none;
   }
 }
+
+//.share-profile{
+//  ma
+//}
+
 body.profilepage{
-  background: #f8f8f6;
+  background: #F4F4F4;
   header.colophon{
     background: #fff;
   }
@@ -52,7 +58,7 @@ body.profilepage{
       }
     }
     .fullname{
-      font-size: 4.5em;
+      font-size: 4em;
     }
     //.location{
     //  color: #cac6c3;
@@ -111,6 +117,7 @@ body.profilepage{
       }
     }
 
+
     @media (max-width: 767px){
       .container{
         padding-top: 90px;
@@ -126,33 +133,51 @@ body.profilepage{
 
   #hero-nav{
     background: none;
+    width: 100%;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 8px;
+
+    position: absolute;
+    bottom: 0;
 
     .main-content-filter{
       > li > a{
         cursor: pointer;
-        > i{
+        text-transform: none;
+        padding: 10px;
+        font-family: $moseratlight;
+
+        i{
           font-size: 18px;
           margin-top: 1px;
+          margin-right: 3px;
         }
       }
 
       li.active,
       li:hover{
         .all-activity{
-          color: #ff0042;
+          color: $sky-blue;
         }
         .my-likes{
           color: red;
         }
-        .my-comments{
-          color: #3cb44a;
+        .my-purchases{
+          color: $pine-green;
         }
-        .my-post{
-          color: $facebook-blue;
-        }
-        .my-product{
-          color: $facebook-blue;
-        }
+        //.my-comments{
+        //  color: #3cb44a;
+        //}
+        //.my-post{
+        //  color: $facebook-blue;
+        //}
+        //.my-product{
+        //  color: $facebook-blue;
+        //}
+      }
+
+      .swing-lined>div::before{
+        bottom: -20px;
       }
 
     }
@@ -264,11 +289,9 @@ body.profilepage{
     }
   }
   #btn-follow, #btn-add-friend{
-    width: 127px;
+    margin-top: 10px;
   }
-  #btn-add-friend{
-    display: none;
-  }
+
   #btn-follow{
     float: left;
     color: #fff;
@@ -309,6 +332,78 @@ body.profilepage{
     }
   }
 }
+
+h5{
+  padding: 15px 20px;
+  font-size: 1.2rem;
+  border-bottom: 1px solid #eee;
+}
+
+.user-score{
+    font-size: 1.2rem;
+    margin-bottom: 8px;
+    padding-top: 0;
+
+  .stat-item{
+    margin-bottom: 10px;
+  }
+
+  h5{
+    span{
+      color: $iridium;
+      text-transform: uppercase;
+      display: inline-block;
+    }
+  }
+
+  .percent{
+    width: 90px;
+    min-height: 90px;
+    margin: 20px auto;
+    padding-top: 24px;
+    text-align: center;
+    font-size: 3rem;
+    border: 1px solid $iridium;
+    border-radius: 50%;
+  }
+
+  .stat-name{
+    width: 30%;
+    display: inline-block;
+  }
+}
+
+.progress-bar{
+  width: 47%;
+  display: inline-block;
+  height: 2px;
+  background: #eee;
+  position: relative;
+  bottom: 4px;
+
+  &:before{
+    content: '';
+    display: inline-block;
+    position: absolute;
+    height: 100%;
+    background: $iridium;
+    width: 0;
+  }
+
+  &.full-50{
+    &:before {
+      width: 50%;
+    }
+  }
+
+
+
+
+
+}
+
+
+
 
 .profile-setting-modal{
   .close{

@@ -696,12 +696,10 @@ header.colophon{
 
     @media(min-width:620px){
       top: -10px;
-
-      @media(max-width:710px){
-        top: -5px;
-      }
     }
-
+    @media(max-width:650px){
+      top: -5px;
+    }
 
 
 
