@@ -211,8 +211,8 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
                     <br><br>
+                    </div>
                     <div class="col-lg-3 col-md-3">
                         <div>
                             <span class="forum-small-title">MOST ACTIVE MEMBERS</span>
