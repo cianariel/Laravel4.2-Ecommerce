@@ -70,6 +70,18 @@ ul.share-buttons{
       background-size: 19px;
     }
   }
+
+  &.squares{
+    a{
+      width: 94%;
+      border-radius: 5px;
+
+      i{
+        width: 100%;
+        border-radius: 5px;
+      }
+    }
+  }
 }
 
 .horizontal-sharing{

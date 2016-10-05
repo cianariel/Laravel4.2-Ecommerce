@@ -215,7 +215,7 @@ class UserController extends ApiController
                 'fullname' => $userData->name,
                 'address' => $userData->userProfile->address,
                 'personalInfo' => $userData->userProfile->personal_info,
-                // 'permalink' => $permalink,
+                 'permalink' => $permalink,
                 'permalink' => empty($permalink) ? $userData['permalink'] : $permalink,
                 'isAdmin' => $userData->hasRole('admin') || $userData->hasRole('editor'),
                 'showEditOption' => true
