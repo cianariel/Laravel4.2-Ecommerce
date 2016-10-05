@@ -58,8 +58,12 @@ body.single-post{
     max-width: 1170px;
     margin: auto;
 
-    img{
-      position: static;
+    //img{
+    //  position: static;
+    //}
+
+    .box-item{
+      z-index: 1;
     }
 
     &.grid-box-2{
