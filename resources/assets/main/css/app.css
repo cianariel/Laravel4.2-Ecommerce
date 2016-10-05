@@ -12500,6 +12500,8 @@ body.single-post .related-ideas, body.single-post .related-products {
     @media (max-width: 620px) {
       body.single-post .related-ideas.grid-box-2 .box-item, body.single-post .related-products.grid-box-2 .box-item {
         width: 98%; } }
+body.single-post .related-ideas .img-holder {
+  height: 99%; }
 body.single-post .product-bar {
   padding: 8px;
   overflow: hidden;
