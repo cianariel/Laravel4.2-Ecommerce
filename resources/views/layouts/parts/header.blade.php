@@ -38,7 +38,7 @@ if(isset($isShopPage) && $isShopPage == '1'){
 <div id="publicApp" ng-app="publicApp" ng-controller="publicController" class="header-cloak scroll-header <?php echo $shopPageClass; ?>" ng-cloak>
 
     <header class="colophon container full-sm fixed-sm relative">
-        <div>
+        <div id="top-menu-container">
             <nav id="top-nav" class="row">
                 <a id="menu-icon-wrapper" class="menu-icon-wrapper home-hamburger mobile-top-menu-switcher hidden-lg hidden-md"  href="#">
                     <svg width="1000px" height="1000px">
@@ -159,7 +159,7 @@ if(isset($isShopPage) && $isShopPage == '1'){
                         </form>
 
                         <div class="search-box-container search-box-toggle row">
-                            <div class="shop-button-container col-md-2">
+                            <div class="shop-button-container left-align-button col-md-2">
                                 <a class="category-link__shop m-icon-text-holder hidden-xs" href="/shop">
                                     <span class="m-icon-text">Shop</span>
                                 </a>
@@ -172,7 +172,7 @@ if(isset($isShopPage) && $isShopPage == '1'){
                                     </span>
                                 </form>
                             </div>
-                            <div class="shop-button-container col-md-2">
+                            <div class="shop-button-container right-align-button col-md-2">
                                 <a class="category-link__shop bottom-border-none m-icon-text-holder hidden-sm hidden-xs" href="/shop">
                                     <span class="m-icon-text">
                                         <i class="m-icon--shopping-bag-light-green"></i>
@@ -420,15 +420,12 @@ if(isset($isShopPage) && $isShopPage == '1'){
                             <button class="btn" ng-click="updateProfilePicture(data,mediaLink)">Save Picture</button>
                             <button class="btn" ng-click="cancelPictureUpdate()">Cancel</button>
                         </span>
-
             </div>
 
             <div class="form-group ">
                 <div class="col-lg-12">
 
-                    <div class="col-lg-6"
-                         ng-init="initProfilePicture('<?php echo isset($userData['medias'][0]['media_link']) ? $userData['medias'][0]['media_link'] : "" ?>')"
-                    >&nbsp;
+                    <div class="col-lg-6" ng-init="initProfilePicture('<?php echo isset($userData['medias'][0]['media_link']) ? $userData['medias'][0]['media_link'] : "" ?>')">&nbsp;
                     </div>
                 </div>
             </div>

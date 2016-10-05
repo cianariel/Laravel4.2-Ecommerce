@@ -295,9 +295,19 @@
   }
 }
 
+.forum{
+  .category-link__advice{
+    &>span::before{
+      visibility: visible;
+      -webkit-transform: scaleX(1);
+      transform: scaleX(1);
+    }
+  }
+}
+
 
 .category-link{
-  cursor: hover;
+  cursor: pointer;
 
   &__smart-home{
     &.active,
@@ -351,6 +361,17 @@
   }
   &__shop,
   &__advice{
+    .m-icon{
+      color: #777;
+      transition: .3s color;
+    }
+
+    &:hover{
+      .m-icon {
+        color: #222;
+      }
+    }
+
     span::before{
       background-color: #242424;
     }

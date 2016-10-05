@@ -178,8 +178,8 @@ class ProductController extends ApiController
         try {
             $settings['ActiveItem'] = (\Input::get('ActiveItem') == 'Active') ? true : false;
             $settings['CategoryId'] = (\Input::get('CategoryId') == null) ? null : \Input::get('CategoryId');
-           // $settings['FilterType'] = (\Input::get('FilterType') == null) ? null : \Input::get('FilterType');
-           // $settings['FilterText'] = (\Input::get('FilterText') == null) ? null : \Input::get('FilterText');
+            // $settings['FilterType'] = (\Input::get('FilterType') == null) ? null : \Input::get('FilterType');
+            // $settings['FilterText'] = (\Input::get('FilterText') == null) ? null : \Input::get('FilterText');
 
             $settings['FilterPublisher'] = (\Input::get('FilterPublisher') == null) ? null : \Input::get('FilterPublisher');
             $settings['FilterProduct'] = (\Input::get('FilterProduct') == null) ? null : \Input::get('FilterProduct');
@@ -193,7 +193,7 @@ class ProductController extends ApiController
 
             $settings['PageSource'] = 'admin-product-list';
 
-            $productList = $this->product->getProductList($settings,true);
+            $productList = $this->product->getProductList($settings, true);
 
             $settings['total'] = $productList['total'];
             array_forget($productList, 'total');
@@ -220,36 +220,53 @@ class ProductController extends ApiController
 
         $csv = \League\Csv\Writer::createFromFileObject(new \SplTempFileObject());
 
-        $csv->insertOne(['id', 'title','price','brand','description','availability','condition','image_link']);
+        $csv->insertOne(['id', 'title', 'price', 'link', 'brand', 'description', 'availability', 'condition', 'image_link']);
 
 
         // formating products for export
-        foreach($products as $product)
-        {
+        foreach ($products as $product) {
             // Set the image url
-            foreach($product->medias as $image)
-            {
-                if($image->is_hero_item == 1)
-                {
+            foreach ($product->medias as $image) {
+                if ($image->is_hero_item == 1) {
                     $imageLink = $image->media_link;
 
                     break;
                 }
             }
 
-            $imageLink = empty($imageLink)? $product->medias[0]->media_link:$imageLink;
+            $imageLink = empty($imageLink) ? $product->medias[0]->media_link : $imageLink;
+
+            // set the product availability status as per Facebook Ads request
+            if (
+                (strpos($product->product_availability, 'Usually ship') !== false) ||
+                (strpos($product->product_availability, 'No information available') !== false) ||
+                (strpos($product->product_availability, 'Ships within') !== false) ||
+                (strpos($product->product_availability, 'Available for order now') !== false) ||
+                (strpos($product->product_availability, 'Estimated Delivery') !== false) ||
+                (empty($product->product_availability))
+            ){
+                $availabilityStatus = 'in stock';
+            }
+            elseif (strpos($product->product_availability, 'Order now and') !== false) {
+                $availabilityStatus = 'preorder';
+            }elseif (strpos($product->product_availability, 'Contact Showroom') !== false) {
+                $availabilityStatus = 'available for order';
+            }else{
+                $availabilityStatus = 'out of stock';
+            }
 
             $item = [
                 'id' => $product->id,
                 'title' => $product->product_name,
-                'price' => $product->sale_price.' '.'USD',
+                'price' => $product->sale_price . ' ' . 'USD',
+                'link' => $product->affiliate_link,
                 'brand' => $product->store->store_name,
 
                 'description' => strip_tags($product->product_description),
 
-                'availability' => empty($product->product_availability) ? "No information available":$product->product_availability,
+                'availability' => $availabilityStatus,
                 'condition' => 'New',
-            //  'image_link' => preg_replace('/\//', '/',$imageLink),
+                //  'image_link' => preg_replace('/\//', '/',$imageLink),
                 'image_link' => $imageLink
 
             ];
@@ -402,8 +419,8 @@ class ProductController extends ApiController
 
             //$collection = collect();
 
-           // $collection->push(["user_name" => "All Publishers"]);
-           // $collection->push($result);
+            // $collection->push(["user_name" => "All Publishers"]);
+            // $collection->push($result);
 
             return $this->setStatusCode(\Config::get("const.api-status.success"))
                         ->makeResponse($result);
@@ -438,8 +455,8 @@ class ProductController extends ApiController
         $media->is_hero_item = $inputData['IsHeroItem'];
         $media->is_main_item = $inputData['IsMainItem'];
 
-    //    dd('media : ', empty($inputData['IsHeroItem']) && empty($inputData['IsMainItem']));
-        if(empty($inputData['IsHeroItem']) && empty($inputData['IsMainItem']))
+        //    dd('media : ', empty($inputData['IsHeroItem']) && empty($inputData['IsMainItem']));
+        if (empty($inputData['IsHeroItem']) && empty($inputData['IsMainItem']))
             $media->sequence = $inputData['MediaSequence'];
         else
             $media->sequence = 0;
@@ -461,11 +478,11 @@ class ProductController extends ApiController
         $result['result'] = Product::find($id)->medias;
 
 
-        $tmp = $result['result']->map(function($item,$key){
+        $tmp = $result['result']->map(function ($item, $key) {
             $count = 0;
 
-            if(empty($item->is_hero_item) && empty($item->is_main_item) )
-                $count =1;
+            if (empty($item->is_hero_item) && empty($item->is_main_item))
+                $count = 1;
 
             return $count;
         });
@@ -473,8 +490,6 @@ class ProductController extends ApiController
         // $result['count'] = $result['result']->count();
 
         $result['count'] = $tmp->sum();
-
-
 
 
         return $this->setStatusCode(\Config::get("const.api-status.success"))

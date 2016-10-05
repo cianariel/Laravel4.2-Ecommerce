@@ -67,9 +67,10 @@
   }
   img {
     width: 120px;
+    margin-bottom: 6px;
 
     @media(min-width:620px){
-      margin-bottom: 6px;
+      margin-top: 9px;
     }
   }
 }
@@ -692,6 +693,17 @@ header.colophon{
     //  left:0;
     //  overflow: hidden;
     //}
+
+    @media(min-width:620px){
+      top: -10px;
+
+      @media(max-width:710px){
+        top: -5px;
+      }
+    }
+
+
+
 
     &.active{
       .down{
