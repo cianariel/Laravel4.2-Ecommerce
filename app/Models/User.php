@@ -629,14 +629,17 @@ class User extends Model implements AuthenticatableContract,
 
 
         $url = \URL::to('/') . '/ideas/feeds/index.php?count=' . $limit . '&offset=' . $offset . '&author_name=' . $permalink;
+       //  $url = 'https://ideaing.com' . '/ideas/feeds/index.php?count=' . $limit . '&offset=' . $offset . '&author_name=' . $permalink;
 
-        $json = PageHelper::getFromCurl($url);
+       // dd($url);
+        $json = \PageHelper::getFromCurl($url);
 
         $ideaCollection = json_decode($json);
 
         $ideaCollection = empty($ideaCollection) ? [] : $ideaCollection;
 
 
+        $ideaCollection = collect($ideaCollection);
         $ideas = new Collection();
         $comment = new appComment();
         $heart = new Heart();
@@ -645,6 +648,9 @@ class User extends Model implements AuthenticatableContract,
         // dd($ideaCollection);
 
         foreach ($ideaCollection as $item) {
+
+            if(empty($item->id))
+                continue;
 
             $tmpCollection = collect([
                 'id' => $item->id,
