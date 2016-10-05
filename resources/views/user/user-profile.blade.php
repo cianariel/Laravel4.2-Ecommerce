@@ -8,7 +8,7 @@
             <div>
                 <div class="container">
                     <div class="col-sm-3">
-                        <div class="user-score white-bg rounded-5 padding-5 grey-border">
+                        <div class="user-score white-bg rounded-5 grey-border">
                             <h5 class="black">User Score <span class="pull-right">Level 1</span></h5>
                             <div class="percent pink">0%</div>
                             <div class="stat-item">
@@ -28,7 +28,7 @@
                             </div>
                         </div>
 
-                        <div class="share-profile white-bg rounded-5 padding-5 grey-border">
+                        <div class="share-profile white-bg rounded-5 grey-border">
                             <h5 class="text-uppercase">Share your profile</h5>
 
                             <ul class="share-buttons squares">
@@ -50,28 +50,41 @@
                     </div>
 
                     <div class="col-sm-9 static">
-                        <div class="col-sm-3 text-right">
+                        <div class="col-sm-3 text-right avatar-wrap">
                             <img class="img-circle full-wide" src="{{$profile}}">
-                            @if($showEditOption)
-                                <div>
-                                    <button id="btn-add-friend" type="button" ng-click="openProfileSetting(true)"
-                                            class="btn btn-danger">
-                                        <i class=""></i>&nbsp; Change Image
-                                    </button>
-                                </div>
-                            @endif
+                            {{--@if($showEditOption)--}}
+                                    <span class="change-foto-button" ng-click="openProfileSetting(true)">
+                                        <i class="m-icon m-icon--camera-active"></i>
+                                    </span>
+                            {{--@endif--}}
                         </div>
 
                         <div class="col-sm-8">
                             <p>
                                 <span class="fullname lightfont">{{$fullname}}</span>&nbsp;
+                                {{--                @if($showEditOption)--}}
+
+                                {{--<div class="edit-background hidden-xs hidden-sm">--}}
+                                {{--<a href="#">--}}
+                                {{--<i class="m-icon--Edit-Background"></i><br>--}}
+                                {{--Edit background--}}
+                                {{--</a>--}}
+                                {{--</div>--}}
+
+                                <a href="#" class="btn edit-profile-link white-bg pink" ng-click="openProfileSetting()"><i class="m-icon--Edit-Profile"></i> Edit Profile&nbsp;&nbsp;</a>
+                                {{--<p class="hidden-xs hidden-sm"><a href="/user/profile/{{@$userPermalink}}">View your profile as--}}
+                                {{--other people see it</a></p>--}}
+                                {{--<p class="visible-xs visible-sm">&nbsp;</p>--}}
+                                {{--@endif--}}
                             </p>
                             <p class="description">{{$personalInfo}}</p>
 
                             <ul class="share-buttons">
-                                <li class="col-xs-2 no-padding"><a data-service="facebook" class="fb" href="#" ng-click="openSharingModal('facebook')"><i class="m-icon m-icon--facebook-id"></i> </a></li>
-                                <li class="col-xs-1 no-padding"><a data-service="twitter" class="twi" href="#" ng-click="openSharingModal('twitter')"><i class="m-icon  m-icon--twitter-id"></i> </a></li>
+                                <li class="col-xs-1 no-padding"><a data-service="facebook" class="fb" href="#" ng-click="openSharingModal('facebook')"><i class="m-icon m-icon--facebook-id"></i> </a></li>
+                                <li class="col-xs-1"><a data-service="twitter" class="twi" href="#" ng-click="openSharingModal('twitter')"><i class="m-icon  m-icon--twitter-id"></i> </a></li>
                             </ul>
+
+
 
                             {{--<div>--}}
                                 {{--<a href="#" class="follow">0 Follower</a>--}}
@@ -153,23 +166,7 @@
                             </nav>
                     </div>
                 </div>
-                @if($showEditOption)
 
-                    {{--<div class="edit-background hidden-xs hidden-sm">--}}
-                        {{--<a href="#">--}}
-                            {{--<i class="m-icon--Edit-Background"></i><br>--}}
-                            {{--Edit background--}}
-                        {{--</a>--}}
-                    {{--</div>--}}
-
-                    <div class=" edit-profile">
-                        <div><a href="#" class="edit-profile-link" ng-click="openProfileSetting()">Edit Profile&nbsp;&nbsp;<i
-                                        class="m-icon--Edit-Profile"></i></a></div>
-                        <p class="hidden-xs hidden-sm"><a href="/user/profile/{{$userPermalink}}">View your profile as
-                                other people see it</a></p>
-                        <p class="visible-xs visible-sm">&nbsp;</p>
-                    </div>
-                @endif
             </div>
         </section>
 

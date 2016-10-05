@@ -29,9 +29,7 @@
   }
 }
 
-//.share-profile{
-//  ma
-//}
+
 
 body.profilepage{
   background: #F4F4F4;
@@ -59,6 +57,20 @@ body.profilepage{
     }
     .fullname{
       font-size: 4em;
+    }
+
+    .avatar-wrap{
+        .change-foto-button{
+          position: absolute;
+          top: 40%;
+          left: 12%;
+
+          i{
+            color: #eeeeff;
+            opacity: .9;
+            font-size: 4rem;
+          }
+        }
     }
     //.location{
     //  color: #cac6c3;
@@ -288,9 +300,9 @@ body.profilepage{
       }
     }
   }
-  #btn-follow, #btn-add-friend{
-    margin-top: 10px;
-  }
+  //#btn-follow, #btn-add-friend{
+  //  margin-top: 10px;
+  //}
 
   #btn-follow{
     float: left;
@@ -342,13 +354,14 @@ h5{
 .user-score{
     font-size: 1.2rem;
     margin-bottom: 8px;
-    padding-top: 0;
+    padding: 0 15px 15px;
 
   .stat-item{
     margin-bottom: 10px;
   }
 
   h5{
+    padding-left: 0;
     span{
       color: $iridium;
       text-transform: uppercase;
@@ -370,6 +383,15 @@ h5{
   .stat-name{
     width: 30%;
     display: inline-block;
+  }
+}
+
+.share-profile{
+  margin-bottom: 16px;
+  padding: 0 15px 15px;
+
+  h5{
+    padding-left: 0;
   }
 }
 
@@ -396,13 +418,13 @@ h5{
     }
   }
 
-
-
-
-
 }
 
-
+.edit-profile-link{
+  padding-top: 12px;
+  margin-top: 27px;
+  float: right;
+}
 
 
 .profile-setting-modal{
