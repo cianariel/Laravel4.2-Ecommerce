@@ -955,6 +955,10 @@ label[for="shipping_address_1"] {
   margin-bottom: -1px;
 }
 
+.wc_payment_method input[name="payment_method"] {
+  display: none;
+}
+
 .wc_payment_method > label img {
   position: absolute;
   top: 50%;
