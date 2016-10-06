@@ -1,32 +1,29 @@
     <div class="col-sm-3 avatar-wrap text-cetner">
         <img class="img-circle full-wide" src="{{$profile}}">
-        @if($showEditOption)
+        {{--@if($showEditOption)--}}
         <span class="change-foto-button" ng-click="openProfileSetting(true)">
                                         <i class="m-icon m-icon--camera-active"></i>
                                     </span>
-        @endif
+        {{--@endif--}}
     </div>
 
     <div class="col-sm-8">
         <p>
             <span class="fullname lightfont">{{$fullname}}</span>&nbsp;
+            {{--                @if($showEditOption)--}}
 
-            
-            @if($showEditOption)
-                {{--<div class="edit-background hidden-xs hidden-sm">--}}
-                {{--<a href="#">--}}
-                {{--<i class="m-icon--Edit-Background"></i><br>--}}
-                {{--Edit background--}}
-                {{--</a>--}}
-                {{--</div>--}}
+            {{--<div class="edit-background hidden-xs hidden-sm">--}}
+            {{--<a href="#">--}}
+            {{--<i class="m-icon--Edit-Background"></i><br>--}}
+            {{--Edit background--}}
+            {{--</a>--}}
+            {{--</div>--}}
 
-                <a href="#" class="btn edit-profile-link white-bg pink" ng-click="openProfileSetting()"><i class="m-icon--Edit-Profile"></i> <span class="hidden-md hidden-sm hidden-xs">Edit Profile&nbsp;&nbsp;</span></a>
-
-
-                {{--<p class="hidden-xs hidden-sm"><a href="/user/profile/{{@$userPermalink}}">View your profile as--}}
-                {{--other people see it</a></p>--}}
-                {{--<p class="visible-xs visible-sm">&nbsp;</p>--}}
-            @endif
+            <a href="#" class="btn edit-profile-link white-bg pink" ng-click="openProfileSetting()"><i class="m-icon--Edit-Profile"></i> <span class="hidden-md hidden-sm hidden-xs">Edit Profile&nbsp;&nbsp;</span></a>
+            {{--<p class="hidden-xs hidden-sm"><a href="/user/profile/{{@$userPermalink}}">View your profile as--}}
+            {{--other people see it</a></p>--}}
+            {{--<p class="visible-xs visible-sm">&nbsp;</p>--}}
+            {{--@endif--}}
         </p>
         <p class="description">{{$personalInfo}}</p>
 
