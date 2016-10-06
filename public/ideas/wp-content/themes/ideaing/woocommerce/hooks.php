@@ -508,6 +508,18 @@ add_filter( 'woocommerce_update_order_review_fragments', 'ideaing_update_order_r
  *
  * @return return string
  */
+function ideaing_cart_total_count(){
+
+  wp_send_json_success( apply_filters('get_ideaing_cart_contents_count', 0) );
+}
+add_action( 'wp_ajax_cart_total_count', 'ideaing_cart_total_count' );
+add_action( 'wp_ajax_nopriv_cart_total_count', 'ideaing_cart_total_count' );
+
+/**
+ * Ajax handle global cart
+ *
+ * @return return string
+ */
 function ideaing_global_cart_summary(){
 
   wc_get_template( 'ideaing/cart-summary.php' );
