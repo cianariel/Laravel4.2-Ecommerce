@@ -104,14 +104,6 @@
 
     self.update();
 
-    /////////////////// dummy activation button should be removed in production
-    self.dummy = document.createElement('div');
-    self.dummy.id = 'dummy-g-cart-summary';
-    self.dummy.className = 'ics--open';
-    document.body.appendChild(self.dummy);
-    ///////////////////
-  };
-
   ideaingCartSummay.prototype.open = function () {
 
     var self = this;
