@@ -258,10 +258,7 @@ function ideaing_selected_shipping(){
  * @see woocommerce_order_review()
  * @see woocommerce_checkout_payment()
  */
-// remove_action( 'woocommerce_before_checkout_form', 'woocommerce_checkout_login_form', 10 );
 remove_action( 'woocommerce_before_checkout_form', 'woocommerce_checkout_coupon_form', 10 );
-// remove_action( 'woocommerce_checkout_order_review', 'woocommerce_order_review', 10 );
-// remove_action( 'woocommerce_checkout_order_review', 'woocommerce_checkout_payment', 20 );
 
 add_filter( 'woocommerce_cart_needs_shipping_address', '__return_true', 99 );
 
@@ -537,3 +534,31 @@ function ideaing_email_subject_customer_completed_order( $subject, $order ) {
 	return str_replace ( $find , implode(' | ', $replace), $subject);
 }
 add_filter('woocommerce_email_subject_customer_completed_order', 'ideaing_email_subject_customer_completed_order', 99, 2);
+
+
+/**
+ * Print relevent buttons on cart and checkout page for mobile viwes
+ *
+ * @return string
+ */
+function after_order_summary_widget_cart_totals(){
+
+  echo '<div class="hidden-md hidden-lg">';
+
+  if ( is_checkout() ){
+
+    printf('<button class="normal button button-primary on2">%s</button>', __( 'Continue to Payment', 'woocommerce' ));
+    printf('<button class="button button-primary" data-alien="woocommerce_checkout_place_order">%s</button>', __( 'Place your order', 'woocommerce' ));
+
+  } elseif ( is_cart() ) {
+
+    printf('<button class="button" data-alien="update_cart">%s</button>', __( 'Update Cart', 'woocommerce' ));
+    do_action( 'woocommerce_proceed_to_checkout' );
+
+  } else {
+    do_action( 'woocommerce_proceed_to_checkout' );
+  }
+
+  echo '</div>';
+}
+add_action('after_order_summary_widget_cart_totals', 'after_order_summary_widget_cart_totals');

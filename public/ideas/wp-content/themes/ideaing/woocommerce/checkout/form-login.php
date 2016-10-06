@@ -25,19 +25,21 @@ if ( is_user_logged_in() || 'no' === get_option( 'woocommerce_enable_checkout_lo
 }
 
 ?>
-<header class="entry-header">
-  <?php the_title( '<h1 class="entry-title">', '<mark>'.__('Step 1 of 2').'</mark></h1>' ); ?>
-</header><!-- .entry-header -->
-<input type="checkbox" id="show--login" class="screen-reader-text">
-<?php
+<div id="sc-login-form">
+	<header class="entry-header">
+	  <?php the_title( '<h1 class="entry-title">', '<mark>'.__('Step 1 of 2').'</mark></h1>' ); ?>
+	</header><!-- .entry-header -->
+	<input type="checkbox" id="show--login" class="screen-reader-text">
+	<?php
 
-printf('<p>%s</p>', __('Checking out is easier when you are <label for="show--login">signed in</label>. Or continue as a guest'));
+	printf('<p>%s</p>', __('Checking out is easier when you are <label for="show--login">signed in</label>. Or continue as a guest'));
 
-	woocommerce_login_form(
-		array(
-			'message'  => sprintf('<div class="woocommerce-info">%s</div>', __( 'If you have shopped with us before, please enter your details in the boxes below. <br>If you are a new customer, please proceed to the Billing &amp; Shipping section.', 'woocommerce' )),
-			'redirect' => wc_get_page_permalink( 'checkout' ),
-			'hidden'   => false
-		)
-	);
-?>
+		woocommerce_login_form(
+			array(
+				'message'  => sprintf('<div class="woocommerce-info">%s</div>', __( 'If you have shopped with us before, please enter your details in the boxes below. <br>If you are a new customer, please proceed to the Billing &amp; Shipping section.', 'woocommerce' )),
+				'redirect' => wc_get_page_permalink( 'checkout' ),
+				'hidden'   => false
+			)
+		);
+	?>
+</div>

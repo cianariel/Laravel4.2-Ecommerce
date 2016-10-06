@@ -33,7 +33,7 @@
   top: 0;
   left: 0;
   width: 100%;
-  z-index: 99;
+  z-index: 59;
 }
 
 .secure-checkout .site-main {
@@ -177,7 +177,7 @@
 }
 
 .shop_table.cart tbody .actions {
-  display: block;
+  display: none;
 }
 
 .shop_table.cart tbody .actions .button,
@@ -517,6 +517,13 @@
 .white-widget {
   padding: 25px 15px 0;
   border: solid 1px #dbdbdb;
+}
+
+.secure-checkout .ideaing-order-summary-widget .button {
+  display: block;
+  width: 100%;
+  margin: 10px 0 0;
+  padding: 0 15px;
 }
 
 .cart-items .cs--i {
@@ -917,7 +924,8 @@ label[for="shipping_address_1"] {
 	clear: both;
 }
 
-.wc-terms-and-conditions {
+.wc-terms-and-conditions,
+#place_order {
 	display: none;
 }
 
@@ -1090,7 +1098,7 @@ label[for="payment_method_paypal"] {
 }
 
 .blockOverlay {
-  background-color: rgba(255,255,255,.2) !important;
+  /* background-color: rgba(255,255,255,.2) !important; */
 }
 
 .wc-checkout-review-order {
@@ -1173,14 +1181,20 @@ table.order_details td {
 }
 
 #customer_details .col-2,
+.on-2 #sc-login-form,
 .on-2 #customer_details .col-1,
-#customer_details #order_review {
+#customer_details #order_review,
+.on-2.secure-checkout .ideaing-order-summary-widget .on2,
+.secure-checkout .ideaing-order-summary-widget [data-alien="woocommerce_checkout_place_order"] {
   display: none;
 }
 
+#sc-login-form,
 #customer_details .col-1,
 .on-2 #customer_details .col-2,
-.on-2 #customer_details #order_review {
+.on-2 #customer_details #order_review,
+.secure-checkout .ideaing-order-summary-widget .on2,
+.on-2.secure-checkout .ideaing-order-summary-widget [data-alien="woocommerce_checkout_place_order"] {
   display: block;
   -webkit-animation: ideaingfadeIn .4s ease-out;
   animation: ideaingfadeIn .4s ease-out;
@@ -1517,6 +1531,11 @@ table.order_details td {
   #shipping_city_field + .form-row,
   #shipping_city_field + .form-row + .form-row {
     margin-left: 30px;
+  }
+
+  #place_order,
+  .shop_table.cart tbody .actions {
+    display: block;
   }
 }
 
