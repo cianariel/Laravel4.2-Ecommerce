@@ -258,10 +258,7 @@ function ideaing_selected_shipping(){
  * @see woocommerce_order_review()
  * @see woocommerce_checkout_payment()
  */
-// remove_action( 'woocommerce_before_checkout_form', 'woocommerce_checkout_login_form', 10 );
 remove_action( 'woocommerce_before_checkout_form', 'woocommerce_checkout_coupon_form', 10 );
-// remove_action( 'woocommerce_checkout_order_review', 'woocommerce_order_review', 10 );
-// remove_action( 'woocommerce_checkout_order_review', 'woocommerce_checkout_payment', 20 );
 
 add_filter( 'woocommerce_cart_needs_shipping_address', '__return_true', 99 );
 
@@ -353,14 +350,13 @@ function ideaing_secure_checkout_nav(){
     printf(
       implode(
         array(
-          '<a href="%s" class="active"><span>%s</span></a>',
-          '<a href="%s" class="active"><span>%s</span></a>',
-          '<span class="active"><span>%s</span></span>'
+          '<a href="%s"><span>%s</span></a>',
+          '<span><span>%s</span></span>',
+          '<span><span>%s</span></span>'
         )
       )
       , esc_url(WC()->cart->get_cart_url())
       , __('Cart', 'ideaing')
-      , esc_url(WC()->cart->get_checkout_url())
       , __('Your information', 'ideaing')
       , __('Success', 'ideaing')
     );
@@ -512,6 +508,18 @@ add_filter( 'woocommerce_update_order_review_fragments', 'ideaing_update_order_r
  *
  * @return return string
  */
+function ideaing_cart_total_count(){
+
+  wp_send_json_success( apply_filters('get_ideaing_cart_contents_count', 0) );
+}
+add_action( 'wp_ajax_cart_total_count', 'ideaing_cart_total_count' );
+add_action( 'wp_ajax_nopriv_cart_total_count', 'ideaing_cart_total_count' );
+
+/**
+ * Ajax handle global cart
+ *
+ * @return return string
+ */
 function ideaing_global_cart_summary(){
 
   wc_get_template( 'ideaing/cart-summary.php' );
@@ -538,3 +546,31 @@ function ideaing_email_subject_customer_completed_order( $subject, $order ) {
 	return str_replace ( $find , implode(' | ', $replace), $subject);
 }
 add_filter('woocommerce_email_subject_customer_completed_order', 'ideaing_email_subject_customer_completed_order', 99, 2);
+
+
+/**
+ * Print relevent buttons on cart and checkout page for mobile viwes
+ *
+ * @return string
+ */
+function after_order_summary_widget_cart_totals(){
+
+  echo '<div class="hidden-md hidden-lg">';
+
+  if ( is_checkout() ){
+
+    printf('<button class="normal button button-primary on2">%s</button>', __( 'Continue to Payment', 'woocommerce' ));
+    printf('<button class="button button-primary" data-alien="woocommerce_checkout_place_order">%s</button>', __( 'Place your order', 'woocommerce' ));
+
+  } elseif ( is_cart() ) {
+
+    printf('<button class="button" data-alien="update_cart">%s</button>', __( 'Update Cart', 'woocommerce' ));
+    do_action( 'woocommerce_proceed_to_checkout' );
+
+  } else {
+    do_action( 'woocommerce_proceed_to_checkout' );
+  }
+
+  echo '</div>';
+}
+add_action('after_order_summary_widget_cart_totals', 'after_order_summary_widget_cart_totals');
