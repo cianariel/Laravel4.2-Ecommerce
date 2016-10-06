@@ -19,7 +19,7 @@
 
                         <div>
                             <uib-tabset class="tab-swing-lined" active="active">
-                                <uib-tab index="0" heading="Smart Homes" class="category-smart-home">
+                                <uib-tab index="0" heading="Smart Home" class="category-smart-home">
                                     @include('layouts.parts.shop-tab', ['category_name' => 'category-smart-home'])
                                 </uib-tab>
                                 <uib-tab index="1" heading="Smart Entertainment" class="category-smart-entertainment">
@@ -42,7 +42,7 @@
 
                         <div>
                             <uib-tabset class="tab-swing-lined" active="active">
-                                <uib-tab index="0" heading="Smart Homes" class="category-smart-home">
+                                <uib-tab index="0" heading="Smart Home" class="category-smart-home">
                                     @include('layouts.parts.shop-tab', ['category_name' => 'category-smart-home'])
                                 </uib-tab>
                                 <uib-tab index="1" heading="Smart Entertainment" class="category-smart-entertainment">
@@ -60,11 +60,11 @@
 
                     <div class="sub-item-container hot-deals">
                         <fieldset class="shoplanding-title">
-                            <legend align="left"><i class="m-icon--flame-fill fill-with-purple"></i> Hot Deals </legend>
+                            <legend align="left"><i class="m-icon--deals fill-with-purple"></i> Hot Deals </legend>
                         </fieldset>
 
                         <div class="row">
-                            <div class="col-md-7 left-price-description">
+                            <div class="col-md-7 col-sm-7 left-price-description">
                                 <div>
                                     <h1>Best quadcopter in the world gets an upgrade</h1>
                                 </div>
@@ -77,7 +77,7 @@
                                 </div>
                             </div>
 
-                            <div class="col-md-5">
+                            <div class="col-md-5 col-sm-5">
                                 <div class="right-view-container">
                                     <img src="/assets/images/chair.jpg" />
                                 </div>
@@ -94,10 +94,10 @@
                                 <uib-tab index="0" class="category-tab" heading="Shop by Category">
                                     <div class="shop-by-category-container">
                                         <div class="row">
-                                            <div class="col-md-1 category-list">
+                                            <div class="col-xs-1 category-list">
                                                 <div class="vertical-text">Smart Home</div>
                                             </div>
-                                            <div class="col-md-11 product-list">
+                                            <div class="col-xs-11 product-list">
                                                 <div class="one-product-category">
                                                     <div class="icon-container"><a href="#"><i class="m-icon--bath category-smart-home"></i></a></div>
                                                     <div class="underneath-text"><a href="#">Bath</a></div>
@@ -133,10 +133,10 @@
                                             </div>
                                         </div>
                                         <div class="row">
-                                            <div class="col-md-1 category-list">
+                                            <div class="col-xs-1 category-list">
                                                 <div class="vertical-text">Smart Body</div>
                                             </div>
-                                            <div class="col-md-11 product-list">
+                                            <div class="col-xs-11 product-list">
                                                 <div class="one-product-category">
                                                     <div class="icon-container"><a href="#"><i class="m-icon--bath category-smart-entertainment"></i></a></div>
                                                     <div class="underneath-text"><a href="#">Bath</a></div>
@@ -160,10 +160,10 @@
                                             </div>
                                         </div>
                                         <div class="row">
-                                            <div class="col-md-1 category-list">
+                                            <div class="col-xs-1 category-list">
                                                 <div class="vertical-text vertical-long-text">Smart Entertainment</div>
                                             </div>
-                                            <div class="col-md-11 product-list">
+                                            <div class="col-xs-11 product-list">
                                                 <div class="one-product-category">
                                                     <div class="icon-container"><a href="#"><i class="m-icon--bath category-smart-body"></i></a></div>
                                                     <div class="underneath-text"><a href="#">Bath</a></div>
@@ -191,10 +191,10 @@
                                             </div>
                                         </div>
                                         <div class="row">
-                                            <div class="col-md-1 category-list">
+                                            <div class="col-xs-1 category-list">
                                                 <div class="vertical-text">Smart Travel</div>
                                             </div>
-                                            <div class="col-md-11 product-list">
+                                            <div class="col-xs-11 product-list">
                                                 <div class="one-product-category">
                                                     <div class="icon-container"><a href="#"><i class="m-icon--bath category-smart-travel"></i></a></div>
                                                     <div class="underneath-text"><a href="#">Bath</a></div>
@@ -218,10 +218,10 @@
                                 <uib-tab index="1" class="product-tab" heading="Shop by Product">
                                     <div class="shop-by-product-container">
                                         <div class="row">
-                                            <div class="col-md-1 category-list">
+                                            <div class="col-xs-1 category-list">
                                                 <div class="vertical-text">Smart Home</div>
                                             </div>
-                                            <div class="col-md-11 product-list">
+                                            <div class="col-xs-11 product-list">
                                                 <div class="one-product-category">
                                                     <div class="icon-container"><a href="#"><i class="m-icon--bath category-smart-home"></i></a></div>
                                                     <div class="underneath-text"><a href="#">Bath</a></div>
@@ -257,10 +257,10 @@
                                             </div>
                                         </div>
                                         <div class="row">
-                                            <div class="col-md-1 category-list">
+                                            <div class="col-xs-1 category-list">
                                                 <div class="vertical-text">Smart Body</div>
                                             </div>
-                                            <div class="col-md-11 product-list">
+                                            <div class="col-xs-11 product-list">
                                                 <div class="one-product-category">
                                                     <div class="icon-container"><a href="#"><i class="m-icon--bath category-smart-entertainment"></i></a></div>
                                                     <div class="underneath-text"><a href="#">Bath</a></div>
@@ -284,10 +284,10 @@
                                             </div>
                                         </div>
                                         <div class="row">
-                                            <div class="col-md-1 category-list">
+                                            <div class="col-xs-1 category-list">
                                                 <div class="vertical-text vertical-long-text">Smart Entertainment</div>
                                             </div>
-                                            <div class="col-md-11 product-list">
+                                            <div class="col-xs-11 product-list">
                                                 <div class="one-product-category">
                                                     <div class="icon-container"><a href="#"><i class="m-icon--bath category-smart-body"></i></a></div>
                                                     <div class="underneath-text"><a href="#">Bath</a></div>
@@ -315,10 +315,10 @@
                                             </div>
                                         </div>
                                         <div class="row">
-                                            <div class="col-md-1 category-list">
+                                            <div class="col-xs-1 category-list">
                                                 <div class="vertical-text">Smart Travel</div>
                                             </div>
-                                            <div class="col-md-11 product-list">
+                                            <div class="col-xs-11 product-list">
                                                 <div class="one-product-category">
                                                     <div class="icon-container"><a href="#"><i class="m-icon--bath category-smart-travel"></i></a></div>
                                                     <div class="underneath-text"><a href="#">Bath</a></div>
@@ -354,17 +354,35 @@
 
     function scrolling() {
         var topMenuClasses = document.getElementById("publicApp").classList;
+        console.log(document.documentElement.clientWidth);
+        if(document.documentElement.clientWidth > 620) {
 
-        if (document.body.scrollTop > 60 || document.documentElement.scrollTop > 60) {
-            if (!topMenuClasses.contains("shop-top-menu-container")) {
-                topMenuClasses.add("shop-top-menu-container");
+
+            if (document.body.scrollTop > 60 || document.documentElement.scrollTop > 60) {
+                if (!topMenuClasses.contains("shop-top-menu-container")) {
+                    topMenuClasses.add("shop-top-menu-container");
+                }
+            } else {
+                if (topMenuClasses.contains("shop-top-menu-container")) {
+                    topMenuClasses.remove("shop-top-menu-container");
+                }
             }
-        } else {
+        }else {
             if (topMenuClasses.contains("shop-top-menu-container")) {
                 topMenuClasses.remove("shop-top-menu-container");
             }
         }
     }
+
+    var everythingLoaded = setInterval(function() {
+        if (/loaded|complete/.test(document.readyState)) {
+            clearInterval(everythingLoaded);
+            var footer = document.getElementsByClassName('about-footer')[0];
+            footer.style.display = 'block';
+            footer.style.position = 'static';
+        }
+    }, 10);
+
 </script>
     {{--<script src="/assets/js/vendor/angular-busy.min.js"></script>--}}
     {{--<script src="/assets/js/main.js"></script>--}}

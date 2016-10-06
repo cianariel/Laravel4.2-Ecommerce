@@ -159,12 +159,14 @@ if(isset($isShopPage) && $isShopPage == '1'){
                         </form>
 
                         <div class="search-box-container search-box-toggle row">
-                            <div class="shop-button-container left-align-button col-md-2">
+
+                            <div class="shop-button-container">
                                 <a class="category-link__shop m-icon-text-holder hidden-xs" href="/shop">
                                     <span class="m-icon-text">Shop</span>
                                 </a>
                             </div>
-                            <div class="col-md-8">
+
+                            <div class="shop-search-bar">
                                 <form class="search-bar desktop-search-bar shop-menu-search col-sm-2 col-lg-2 pseudo-full-wide hidden-soft" ng-app="publicApp" ng-controller="SearchController" action="/search-form-query" autocomplete="off">
                                     <span class="search-input-holder">
                                         <i class="m-icon m-icon--search-id"></i>
@@ -172,8 +174,8 @@ if(isset($isShopPage) && $isShopPage == '1'){
                                     </span>
                                 </form>
                             </div>
-                            <div class="shop-button-container right-align-button col-md-2">
-                                <a class="category-link__shop bottom-border-none m-icon-text-holder hidden-sm hidden-xs" href="/shop">
+                            <div class="shop-icon-container">
+                                <a class="category-link__shop bottom-border-none m-icon-text-holder hidden-xs" href="/shop">
                                     <span class="m-icon-text">
                                         <i class="m-icon--shopping-bag-light-green"></i>
                                     </span>
