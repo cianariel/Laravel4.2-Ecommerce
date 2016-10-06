@@ -23,7 +23,7 @@ class ForumController extends ApiController
         $this->authCheck = $this->RequestAuthentication(array('admin', 'editor', 'user'));   
         $this->userData = $this->authCheck;
 
-        if ($this->authCheck['method-status'] == 'success-with-http') {
+        if ($this->authCheck['method-status'] == 'success-with-http' || $this->authCheck['method-status'] == 'success-with-ajax') {
             $this->userData = $this->authCheck['user-data'];
         }
 //        $this->userData['id'] = "42";
