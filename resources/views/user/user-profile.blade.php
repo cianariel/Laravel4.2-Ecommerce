@@ -10,11 +10,21 @@
                     <div class="col-sm-8 col-md-9 static hidden-lg hidden-md hidden-sm">
                         @include('user.parts.main-info')
                     </div>
-                    
+
                     <div class="col-sm-4 col-md-3">
                         <div class="user-score white-bg rounded-5 grey-border">
                             <h5 class="black">User Score <span class="pull-right">Level 1</span></h5>
-                            <div class="percent pink">0%</div>
+                            {{--<div class="percent pink">0%</div>--}}
+
+                            <figure class="chart" data-percent="75">
+                                <figcaption>75%</figcaption>
+                                <svg width="200" height="200">
+                                    <circle class="outer" cx="95" cy="95" r="85" transform="rotate(-90, 95, 95)"></circle>
+                                </svg>
+                            </figure>
+
+
+
                             <div class="stat-item">
                                 <span class="pink stat-name"><b>Comments</b></span>
                                 <div class="progress-bar overhide full-50"></div>
