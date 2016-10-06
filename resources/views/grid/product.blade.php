@@ -1,5 +1,6 @@
 <div class="img-holder">
-    <img  itemprop="image"  src="<?php echo '{{item.media_link_full_path}}' ?>" alt="<?php echo '{{item.product_name}}' ?>"/>
+    <img itemprop="image" src="<?php echo '{{item.media_link_full_path}}' ?>"
+         alt="<?php echo '{{item.product_name}}' ?>"/>
 </div>
 <span class="mobile-show hidden-620">
         <i class="p-show m-icon--Add-Active"></i>
@@ -26,13 +27,13 @@
     <!--    <a href="#" class="box-item__label box-item__label--clear" ng-click="openProductPopup()"><?php echo '{{item.product_name}}' ?></a>-->
     <div class="clearfix"></div>
     <div class="merchant-widget" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
-        <span class="merchant-widget__price" >
+        <span  ng-hide="item.product_name == 0" class="merchant-widget__price" >
             <span itemprop="priceCurrency" content="USD">$</span>
              <span itemprop="price" content=" <?php echo '{{item.sale_price}}' ?>">
                  <?php echo '{{item.sale_price}}' ?>
              </span>
         </span>
-        <span>from</span>
+        <span>From</span>
         <img class="merchant-widget__store" alt="<?php echo '{{ item.storeInfo.Description }}' ?>"
              ng-src='<?php echo '{{ item.storeInfo.ImagePath }}' ?>'/>
 

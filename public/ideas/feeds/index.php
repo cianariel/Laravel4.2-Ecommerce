@@ -65,7 +65,7 @@ function carbon_the_content_limit($max_char, $more_link_text = '(more...)', $str
 	$content = apply_filters('the_content', $content);
 	$content = str_replace(']]>', ']]&gt;', $content);
 	$content = strip_tags($content);
-	if (strlen($_GET['p']) > 0) {
+	if (!empty($_GET['p']) && strlen($_GET['p']) > 0) {
 		return $content;
 	}
 	else if ((strlen($content)>$max_char) && ($espacio = strpos($content, " ", $max_char ))) {
@@ -85,8 +85,8 @@ if($postCount==0)
     $postCount = -1;
 }
 
-$onlyfeatured = $_REQUEST['only-featured'];
-$no_featured = $_REQUEST['no-featured'];
+$onlyfeatured = !empty($_REQUEST['only-featured'])? $_REQUEST['only-featured'] : null;
+$no_featured = !empty($_REQUEST['no-featured'])? $_REQUEST['no-featured'] : null;
 $is_featured = "";
 
 if(isset($no_featured))
@@ -98,13 +98,13 @@ if(isset($onlyfeatured))
     $is_featured = "Yes";
 }
 $offset = $_REQUEST['offset'];
-$postCat = $_REQUEST['category-id'];
+$postCat = !empty($_REQUEST['category-id'])? $_REQUEST['category-id'] : null;
 $args = array(
 'cat' => $postCat,
 'showposts' => $postCount,
 'offset' => $offset,);
 
-if($catName = $_REQUEST['category-name']){
+if($catName = !empty($_REQUEST['category-name'])? $_REQUEST['category-name'] : null){
 
     $args['tax_query'] = array(
         'relation' => 'OR',
@@ -121,7 +121,7 @@ if($catName = $_REQUEST['category-name']){
 
 }
 
-if($byTags = $_REQUEST['tag']){
+if($byTags = !empty($_REQUEST['tag'])? $_REQUEST['tag'] : null){
     $args['tag'] = $byTags;
 }
 
@@ -136,7 +136,7 @@ if($byTags = $_REQUEST['tag']){
 
 //echo $args['tag_slug__in']; die();
 
-if($excludeID = $_REQUEST['excludeid']){
+if($excludeID = !empty($_REQUEST['excludeid'])? $_REQUEST['excludeid'] : null){
     $args['post__not_in'] = array($excludeID);
 }
 
@@ -194,6 +194,9 @@ if ( $posts->have_posts() ) {
             $cat_names = array();
 
             $filter = 'rss';
+
+            $type = empty($type)? 'raw':$type;
+
             if ('atom' == $type)
                 $filter = 'raw';
 
@@ -226,7 +229,8 @@ if ( $posts->have_posts() ) {
             $data['author'] = get_the_author();
             $data['author_id'] = get_the_author_meta('ID');
 
-            $laravelUser = file_get_contents('https://ideaing.com/api/info-raw/' . get_the_author_email());
+            $url = CUSTOM_URL.'/api/info-raw/'. get_the_author_meta('email');
+            $laravelUser = file_get_contents($url);
             $laravelUser = json_decode($laravelUser, true);
 
             $data['authorlink'] = $laravelUser['permalink'];
