@@ -353,14 +353,13 @@ function ideaing_secure_checkout_nav(){
     printf(
       implode(
         array(
-          '<a href="%s" class="active"><span>%s</span></a>',
-          '<a href="%s" class="active"><span>%s</span></a>',
-          '<span class="active"><span>%s</span></span>'
+          '<a href="%s"><span>%s</span></a>',
+          '<span><span>%s</span></span>',
+          '<span><span>%s</span></span>'
         )
       )
       , esc_url(WC()->cart->get_cart_url())
       , __('Cart', 'ideaing')
-      , esc_url(WC()->cart->get_checkout_url())
       , __('Your information', 'ideaing')
       , __('Success', 'ideaing')
     );
