@@ -439,7 +439,7 @@
                                             <a href="/open/@{{ item.data.productInformation.Id }}/product"
                                                target="_blank">
                                                 <span>@{{ item.data.storeInformation.StoreName }}</span>
-                                                <b>$@{{ item.data.productInformation.SellPrice }}</b>
+                                                <b ng-hide="item.data.productInformation.SellPrice == 0">$@{{ item.data.productInformation.SellPrice }}</b>
                                             </a>
                                         </div>
                                         <a class="btn-none" href="/open/@{{ item.data.productInformation.Id }}/product"
