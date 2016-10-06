@@ -58,7 +58,7 @@ class ForumController extends ApiController
         $this->threadReadModel->add(
             array(
                 'thread_id' => $id,
-                'user_id' => $this->userData['id'],
+                'user_id' => $this->userData->id,
             )
         );
         return view('forum.thread')->with('id', $id);

@@ -57,7 +57,7 @@ class ForumApiController extends ApiController
             "title" => $request->input('title'),
             "content" => $request->input('content'),
             "category_id" => $request->input('category_id'),
-            "author_id" => $this->userData['id']
+            "author_id" => $this->userData->id
         );
         $thread = $this->threadModel->create($thread);
 
@@ -87,7 +87,7 @@ class ForumApiController extends ApiController
             'content'   => ['required']
         ]);
         $post = $request->only(['thread_id', 'post_id', 'content']);
-        $post['author_id'] = $this->userData['id'];
+        $post['author_id'] = $this->userData->id;
         
         $post = $this->postModel->create($post);
         return $this->setStatusCode(\Config::get("const.api-status.success"))
