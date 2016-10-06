@@ -35,8 +35,6 @@
 
     var self = this;
 
-    console.log(  self.isCheckout() , self.isCart() );
-
     if ( self.isCheckout() || self.isCart() ) return;
 
     $( document ).on('click', '.ics--toggle', function(){
@@ -97,12 +95,14 @@
             '</div>',
           '</div>',
         '</div>',
-      '</aside>',
+      '</aside>'
     ].join('');
 
     document.body.appendChild(self.element);
 
     self.update();
+
+  };
 
   ideaingCartSummay.prototype.open = function () {
 
@@ -164,7 +164,7 @@
       },
       error: function (xhr, ajaxOptions, thrownError) {
         console.warn(thrownError);
-      },
+      }
     });
   };
 
