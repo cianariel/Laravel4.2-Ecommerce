@@ -160,22 +160,33 @@ body.profilepage{
     }
   }
 
-
-
   #hero-nav{
-    background: none;
-    width: 100%;
-    border-bottom: 1px solid #eee;
-    padding-bottom: 8px;
-    font-size: 1.2rem;
-
+    width: 69%;
+    padding: 0 0 8px;
     position: absolute;
     bottom: 0;
+
+    //width: 100%;
+    border-bottom: 1px solid #eee;
+    font-size: 1.2rem;
+    background: none;
+
     @media(max-width: 768px){
       position: relative;
     }
+    @media(max-width: 620px){
+      width: 100%;
+      //overflow: hidden;
+      height: 43px;
+    }
 
     .main-content-filter{
+      @media(max-width: 620px){
+        li{
+          height: 33px;
+        }
+      }
+
       > li{
         float: left;
         & > a{
@@ -216,7 +227,11 @@ body.profilepage{
 
       .swing-lined>div::before{
         bottom: -20px;
-      }
+
+        @media (max-width: 620px){
+          bottom: -20px;
+          }
+        }
 
     }
 
@@ -229,6 +244,11 @@ body.profilepage{
           min-width: initial;
           padding-left: 0px;
           padding-right: 5px;
+
+          @media(max-width: 620px){
+            padding-right: 32px;
+          }
+
           > i{
             font-size: 20px;
           }

@@ -15932,16 +15932,23 @@ body.profilepage {
           body.profilepage #hero .container > div #btn-follow {
             float: none; } }
   body.profilepage #hero-nav {
-    background: none;
-    width: 100%;
-    border-bottom: 1px solid #eee;
-    padding-bottom: 8px;
-    font-size: 1.2rem;
+    width: 69%;
+    padding: 0 0 8px;
     position: absolute;
-    bottom: 0; }
+    bottom: 0;
+    border-bottom: 1px solid #eee;
+    font-size: 1.2rem;
+    background: none; }
     @media (max-width: 768px) {
       body.profilepage #hero-nav {
         position: relative; } }
+    @media (max-width: 620px) {
+      body.profilepage #hero-nav {
+        width: 100%;
+        height: 43px; } }
+    @media (max-width: 620px) {
+      body.profilepage #hero-nav .main-content-filter li {
+        height: 33px; } }
     body.profilepage #hero-nav .main-content-filter > li {
       float: left; }
       body.profilepage #hero-nav .main-content-filter > li > a {
@@ -15964,12 +15971,19 @@ body.profilepage {
       color: #89C981; }
     body.profilepage #hero-nav .main-content-filter .swing-lined > div::before {
       bottom: -20px; }
+      @media (max-width: 620px) {
+        body.profilepage #hero-nav .main-content-filter .swing-lined > div::before {
+          bottom: -20px; } }
     @media (max-width: 620px) {
       body.profilepage #hero-nav .main-content-filter > li > a {
         font-size: 10px;
         min-width: initial;
         padding-left: 0px;
-        padding-right: 5px; }
+        padding-right: 5px; } }
+  @media (max-width: 620px) and (max-width: 620px) {
+    body.profilepage #hero-nav .main-content-filter > li > a {
+      padding-right: 32px; } }
+    @media (max-width: 620px) {
         body.profilepage #hero-nav .main-content-filter > li > a > i {
           font-size: 20px; } }
     body.profilepage #hero-nav .breadcrumb {
