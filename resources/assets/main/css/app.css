@@ -9308,9 +9308,6 @@ header.colophon {
   @media (min-width: 620px) {
     #top-nav .home-hamburger {
       top: -10px; } }
-  @media (max-width: 650px) {
-    #top-nav .home-hamburger {
-      top: -5px; } }
   #top-nav .home-hamburger.active .down {
     display: block !important; }
     #top-nav .home-hamburger.active .down svg {
@@ -12483,7 +12480,8 @@ body.login-signup {
 html.idea-stories #hero {
   min-height: 400px;
   border-bottom: 1px solid #eee;
-  border-left: 3px solid #eee; }
+  border-left: 3px solid #eee;
+  background-color: #f7f7f7; }
   html.idea-stories #hero .hero-background {
     border-left: 3px solid #eee; }
   @media (max-width: 620px) {
@@ -12679,7 +12677,7 @@ body.single #hero-nav {
   @media (max-width: 620px) {
     body.single #hero-nav {
       width: 100%;
-      padding: 0; } }
+      padding: 7px 0 0; } }
 body.single .like-nav {
   width: 300px; }
 body.single .article-content iframe {
@@ -12958,7 +12956,6 @@ body.single .article-content iframe {
   width: 30%;
   position: absolute;
   bottom: 0px;
-  background: #fff;
   z-index: 10;
   padding-right: 0; }
   @media (max-width: 620px) {
