@@ -7155,7 +7155,7 @@ img, video, object {
 
 /* table base */
 body {
-  font-family: "montserratregular"; }
+  font-family: "montserratlight", sans-serif; }
 
 h1, h2, h3, h4, h5, h6 {
   font-family: "montserratregular", sans-serif;
@@ -15978,33 +15978,32 @@ h5 {
     @media (max-width: 1000px) {
       .user-score .stat-name {
         width: 100%; } }
+  .user-score .progress-bar {
+    width: 44%;
+    display: inline-block;
+    height: 2px;
+    background: #eee;
+    position: relative;
+    bottom: 4px;
+    left: 0; }
+    @media (max-width: 1200px) {
+      .user-score .progress-bar {
+        width: 72%; } }
+    .user-score .progress-bar:before {
+      content: '';
+      display: inline-block;
+      position: absolute;
+      left: 0;
+      height: 100%;
+      background: #FC1159; }
+    .user-score .progress-bar.full-50:before {
+      width: 50%; }
 
 .share-profile {
   margin-bottom: 16px;
   padding: 0 15px 15px; }
   .share-profile h5 {
     padding-left: 0; }
-
-.progress-bar {
-  width: 44%;
-  display: inline-block;
-  height: 2px;
-  background: #eee;
-  position: relative;
-  bottom: 4px;
-  left: 0; }
-  @media (max-width: 1200px) {
-    .progress-bar {
-      width: 72%; } }
-  .progress-bar:before {
-    content: '';
-    display: inline-block;
-    position: absolute;
-    left: 0;
-    height: 100%;
-    background: #FC1159; }
-  .progress-bar.full-50:before {
-    width: 50%; }
 
 .edit-profile-link {
   padding-top: 12px;

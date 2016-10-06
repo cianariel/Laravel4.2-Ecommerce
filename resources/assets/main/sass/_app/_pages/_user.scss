@@ -469,6 +469,37 @@ h5{
       width: 100%;
     }
   }
+
+  .progress-bar{
+    width: 44%;
+    display: inline-block;
+    height: 2px;
+    background: #eee;
+    position: relative;
+    bottom: 4px;
+    left: 0;
+
+    @media(max-width: 1200px){
+      width: 72%;
+    }
+
+    &:before{
+      content: '';
+      display: inline-block;
+      position: absolute;
+      left: 0;
+      height: 100%;
+      background: $iridium;
+    }
+
+    &.full-50{
+      &:before {
+        width: 50%;
+      }
+    }
+
+  }
+
 }
 
 .share-profile{
@@ -480,35 +511,6 @@ h5{
   }
 }
 
-.progress-bar{
-  width: 44%;
-  display: inline-block;
-  height: 2px;
-  background: #eee;
-  position: relative;
-  bottom: 4px;
-  left: 0;
-
-  @media(max-width: 1200px){
-    width: 72%;
-  }
-
-  &:before{
-    content: '';
-    display: inline-block;
-    position: absolute;
-    left: 0;
-    height: 100%;
-    background: $iridium;
-  }
-
-  &.full-50{
-    &:before {
-      width: 50%;
-    }
-  }
-
-}
 
 .edit-profile-link{
   padding-top: 12px;
