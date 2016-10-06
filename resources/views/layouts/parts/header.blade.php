@@ -175,7 +175,7 @@ if(isset($isShopPage) && $isShopPage == '1'){
                                 </form>
                             </div>
                             <div class="shop-icon-container">
-                                <a class="category-link__shop bottom-border-none m-icon-text-holder hidden-sm hidden-xs" href="/shop">
+                                <a class="category-link__shop bottom-border-none m-icon-text-holder hidden-xs" href="/shop">
                                     <span class="m-icon-text">
                                         <i class="m-icon--shopping-bag-light-green"></i>
                                     </span>

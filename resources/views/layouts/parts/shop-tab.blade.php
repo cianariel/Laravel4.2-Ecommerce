@@ -1,5 +1,5 @@
 <div class="row popular-box {{$category_name}}">
-    <div class="col-md-4">
+    <div class="col-md-4 col-sm-4">
         <div class="big-image-view popular-box-number">
             <div class="box-item product-box overhide">
                 <a href="#">
@@ -12,19 +12,19 @@
         </div>
     </div>
 
-    <div class="col-md-8">
+    <div class="col-md-8 col-sm-8">
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-6 col-sm-6">
                 <div class="multirow-image-view">
 
                     <div class="image-row-view popular-box-number">
                         <div class="box-item product-box overhide">
                             <a href="#">
                                 <div class="row">
-                                    <div class="col-md-3 item-image-container">
+                                    <div class="col-md-3 col-sm-3 col-xs-3 item-image-container">
                                         <img src="/assets/images/coffee-machine.jpg" />
                                     </div>
-                                    <div class="col-md-9">
+                                    <div class="col-md-9 col-sm-9 col-xs-9">
                                         <p>Samsung pebble smart watch is here and its lovable</p>
                                     </div>
                                 </div>
@@ -40,10 +40,10 @@
                         <div class="box-item product-box overhide">
                             <a href="#">
                                 <div class="row">
-                                    <div class="col-md-3 item-image-container">
+                                    <div class="col-md-3 col-sm-3 col-xs-3 item-image-container">
                                         <img src="/assets/images/coffee-machine.jpg" />
                                     </div>
-                                    <div class="col-md-9">
+                                    <div class="col-md-9 col-sm-9 col-xs-9">
                                         <p>Samsung pebble smart watch is here and its lovable</p>
                                     </div>
                                 </div>
@@ -59,10 +59,10 @@
                         <div class="box-item product-box overhide">
                             <a href="#">
                                 <div class="row">
-                                    <div class="col-md-3 item-image-container">
+                                    <div class="col-md-3 col-sm-3 col-xs-3 item-image-container">
                                         <img src="/assets/images/coffee-machine.jpg" />
                                     </div>
-                                    <div class="col-md-9">
+                                    <div class="col-md-9 col-sm-9 col-xs-9">
                                         <p>Samsung pebble smart watch is here and its lovable</p>
                                     </div>
                                 </div>
@@ -75,17 +75,17 @@
 
                 </div>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-6 col-sm-6">
                 <div class="multirow-image-view">
 
                     <div class="image-row-view popular-box-number">
                         <div class="box-item product-box overhide">
                             <a href="#">
                                 <div class="row">
-                                    <div class="col-md-3 item-image-container">
+                                    <div class="col-md-3 col-sm-3 col-xs-3 item-image-container">
                                         <img src="/assets/images/coffee-machine.jpg" />
                                     </div>
-                                    <div class="col-md-9">
+                                    <div class="col-md-9 col-sm-9 col-xs-9">
                                         <p>Samsung pebble smart watch is here and its lovable</p>
                                     </div>
                                 </div>
@@ -100,10 +100,10 @@
                         <div class="box-item product-box overhide">
                             <a href="#">
                                 <div class="row">
-                                    <div class="col-md-3 item-image-container">
+                                    <div class="col-md-3 col-sm-3 col-xs-3 item-image-container">
                                         <img src="/assets/images/coffee-machine.jpg" />
                                     </div>
-                                    <div class="col-md-9">
+                                    <div class="col-md-9 col-sm-9 col-xs-9">
                                         <p>Samsung pebble smart watch is here and its lovable</p>
                                     </div>
                                 </div>
@@ -118,10 +118,10 @@
                         <div class="box-item product-box overhide">
                             <a href="#">
                                 <div class="row">
-                                    <div class="col-md-3 item-image-container">
+                                    <div class="col-md-3 col-sm-3 col-xs-3 item-image-container">
                                         <img src="/assets/images/coffee-machine.jpg" />
                                     </div>
-                                    <div class="col-md-9">
+                                    <div class="col-md-9 col-sm-9 col-xs-9">
                                         <p>Samsung pebble smart watch is here and its lovable</p>
                                     </div>
                                 </div>

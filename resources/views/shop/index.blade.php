@@ -354,17 +354,35 @@
 
     function scrolling() {
         var topMenuClasses = document.getElementById("publicApp").classList;
+        console.log(document.documentElement.clientWidth);
+        if(document.documentElement.clientWidth > 620) {
 
-        if (document.body.scrollTop > 60 || document.documentElement.scrollTop > 60) {
-            if (!topMenuClasses.contains("shop-top-menu-container")) {
-                topMenuClasses.add("shop-top-menu-container");
+
+            if (document.body.scrollTop > 60 || document.documentElement.scrollTop > 60) {
+                if (!topMenuClasses.contains("shop-top-menu-container")) {
+                    topMenuClasses.add("shop-top-menu-container");
+                }
+            } else {
+                if (topMenuClasses.contains("shop-top-menu-container")) {
+                    topMenuClasses.remove("shop-top-menu-container");
+                }
             }
-        } else {
+        }else {
             if (topMenuClasses.contains("shop-top-menu-container")) {
                 topMenuClasses.remove("shop-top-menu-container");
             }
         }
     }
+
+    var everythingLoaded = setInterval(function() {
+        if (/loaded|complete/.test(document.readyState)) {
+            clearInterval(everythingLoaded);
+            var footer = document.getElementsByClassName('about-footer')[0];
+            footer.style.display = 'block';
+            footer.style.position = 'static';
+        }
+    }, 10);
+
 </script>
     {{--<script src="/assets/js/vendor/angular-busy.min.js"></script>--}}
     {{--<script src="/assets/js/main.js"></script>--}}
