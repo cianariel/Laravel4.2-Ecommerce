@@ -57,6 +57,8 @@
 
       $( document.body ).toggleClass('on-2');
 
+      $('html, body').animate({ scrollTop: 0 }, 'slow');
+
       self.trigger(document.body, 'update_checkout', []);
     });
 
@@ -154,5 +156,12 @@
 
     console.error(e);
   }
+
+  $( document ).on('click', '[data-alien]', function( e ){
+
+    var alein = $( '[name="' + $(this).attr('data-alien') + '"]' );
+
+    if ( alein.length ) alein.trigger("click");
+  });
 
 } )( jQuery );

@@ -38,6 +38,8 @@ class IdeaingOrderSummary extends WP_Widget {
 
       do_action('get_ideaing_woocommerce_cart_totals');
 
+      do_action('after_order_summary_widget_cart_totals');
+
     echo '</div><!-- .cart-collaterals -->';
 
 		echo $args['after_widget'];

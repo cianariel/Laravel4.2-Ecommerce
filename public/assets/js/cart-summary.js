@@ -35,8 +35,6 @@
 
     var self = this;
 
-    console.log(  self.isCheckout() , self.isCart() );
-
     if ( self.isCheckout() || self.isCart() ) return;
 
     $( document ).on('click', '.ics--toggle', function(){
@@ -97,19 +95,13 @@
             '</div>',
           '</div>',
         '</div>',
-      '</aside>',
+      '</aside>'
     ].join('');
 
     document.body.appendChild(self.element);
 
     self.update();
 
-    /////////////////// dummy activation button should be removed in production
-    self.dummy = document.createElement('div');
-    self.dummy.id = 'dummy-g-cart-summary';
-    self.dummy.className = 'ics--open';
-    document.body.appendChild(self.dummy);
-    ///////////////////
   };
 
   ideaingCartSummay.prototype.open = function () {
@@ -172,7 +164,7 @@
       },
       error: function (xhr, ajaxOptions, thrownError) {
         console.warn(thrownError);
-      },
+      }
     });
   };
 
