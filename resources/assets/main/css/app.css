@@ -15976,6 +15976,10 @@ body.profilepage {
           font-size: 2em; } }
     body.profilepage #hero .avatar-wrap {
       padding-top: 5px; }
+      @media (max-width: 620px) {
+        body.profilepage #hero .avatar-wrap {
+          max-width: 260px;
+          margin: 0 auto; } }
       body.profilepage #hero .avatar-wrap img {
         max-width: 200px;
         margin-top: 10px; }
