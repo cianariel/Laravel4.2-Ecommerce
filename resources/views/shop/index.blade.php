@@ -64,7 +64,7 @@
                         </fieldset>
 
                         <div class="row">
-                            <div class="col-md-7 left-price-description">
+                            <div class="col-md-7 col-sm-7 left-price-description">
                                 <div>
                                     <h1>Best quadcopter in the world gets an upgrade</h1>
                                 </div>
@@ -77,7 +77,7 @@
                                 </div>
                             </div>
 
-                            <div class="col-md-5">
+                            <div class="col-md-5 col-sm-5">
                                 <div class="right-view-container">
                                     <img src="/assets/images/chair.jpg" />
                                 </div>
@@ -94,10 +94,10 @@
                                 <uib-tab index="0" class="category-tab" heading="Shop by Category">
                                     <div class="shop-by-category-container">
                                         <div class="row">
-                                            <div class="col-md-1 category-list">
+                                            <div class="col-xs-1 category-list">
                                                 <div class="vertical-text">Smart Home</div>
                                             </div>
-                                            <div class="col-md-11 product-list">
+                                            <div class="col-xs-11 product-list">
                                                 <div class="one-product-category">
                                                     <div class="icon-container"><a href="#"><i class="m-icon--bath category-smart-home"></i></a></div>
                                                     <div class="underneath-text"><a href="#">Bath</a></div>
@@ -133,10 +133,10 @@
                                             </div>
                                         </div>
                                         <div class="row">
-                                            <div class="col-md-1 category-list">
+                                            <div class="col-xs-1 category-list">
                                                 <div class="vertical-text">Smart Body</div>
                                             </div>
-                                            <div class="col-md-11 product-list">
+                                            <div class="col-xs-11 product-list">
                                                 <div class="one-product-category">
                                                     <div class="icon-container"><a href="#"><i class="m-icon--bath category-smart-entertainment"></i></a></div>
                                                     <div class="underneath-text"><a href="#">Bath</a></div>
@@ -160,10 +160,10 @@
                                             </div>
                                         </div>
                                         <div class="row">
-                                            <div class="col-md-1 category-list">
+                                            <div class="col-xs-1 category-list">
                                                 <div class="vertical-text vertical-long-text">Smart Entertainment</div>
                                             </div>
-                                            <div class="col-md-11 product-list">
+                                            <div class="col-xs-11 product-list">
                                                 <div class="one-product-category">
                                                     <div class="icon-container"><a href="#"><i class="m-icon--bath category-smart-body"></i></a></div>
                                                     <div class="underneath-text"><a href="#">Bath</a></div>
@@ -191,10 +191,10 @@
                                             </div>
                                         </div>
                                         <div class="row">
-                                            <div class="col-md-1 category-list">
+                                            <div class="col-xs-1 category-list">
                                                 <div class="vertical-text">Smart Travel</div>
                                             </div>
-                                            <div class="col-md-11 product-list">
+                                            <div class="col-xs-11 product-list">
                                                 <div class="one-product-category">
                                                     <div class="icon-container"><a href="#"><i class="m-icon--bath category-smart-travel"></i></a></div>
                                                     <div class="underneath-text"><a href="#">Bath</a></div>
@@ -218,10 +218,10 @@
                                 <uib-tab index="1" class="product-tab" heading="Shop by Product">
                                     <div class="shop-by-product-container">
                                         <div class="row">
-                                            <div class="col-md-1 category-list">
+                                            <div class="col-xs-1 category-list">
                                                 <div class="vertical-text">Smart Home</div>
                                             </div>
-                                            <div class="col-md-11 product-list">
+                                            <div class="col-xs-11 product-list">
                                                 <div class="one-product-category">
                                                     <div class="icon-container"><a href="#"><i class="m-icon--bath category-smart-home"></i></a></div>
                                                     <div class="underneath-text"><a href="#">Bath</a></div>
@@ -257,10 +257,10 @@
                                             </div>
                                         </div>
                                         <div class="row">
-                                            <div class="col-md-1 category-list">
+                                            <div class="col-xs-1 category-list">
                                                 <div class="vertical-text">Smart Body</div>
                                             </div>
-                                            <div class="col-md-11 product-list">
+                                            <div class="col-xs-11 product-list">
                                                 <div class="one-product-category">
                                                     <div class="icon-container"><a href="#"><i class="m-icon--bath category-smart-entertainment"></i></a></div>
                                                     <div class="underneath-text"><a href="#">Bath</a></div>
@@ -284,10 +284,10 @@
                                             </div>
                                         </div>
                                         <div class="row">
-                                            <div class="col-md-1 category-list">
+                                            <div class="col-xs-1 category-list">
                                                 <div class="vertical-text vertical-long-text">Smart Entertainment</div>
                                             </div>
-                                            <div class="col-md-11 product-list">
+                                            <div class="col-xs-11 product-list">
                                                 <div class="one-product-category">
                                                     <div class="icon-container"><a href="#"><i class="m-icon--bath category-smart-body"></i></a></div>
                                                     <div class="underneath-text"><a href="#">Bath</a></div>
@@ -315,10 +315,10 @@
                                             </div>
                                         </div>
                                         <div class="row">
-                                            <div class="col-md-1 category-list">
+                                            <div class="col-xs-1 category-list">
                                                 <div class="vertical-text">Smart Travel</div>
                                             </div>
-                                            <div class="col-md-11 product-list">
+                                            <div class="col-xs-11 product-list">
                                                 <div class="one-product-category">
                                                     <div class="icon-container"><a href="#"><i class="m-icon--bath category-smart-travel"></i></a></div>
                                                     <div class="underneath-text"><a href="#">Bath</a></div>

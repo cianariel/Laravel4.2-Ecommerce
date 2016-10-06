@@ -132,7 +132,7 @@ body.shop-landing{
     }
 
     @media only screen and (max-width: 520px){
-      width: 445px;
+      width: 401px;
       li a {
         font-size: 0.7em;
       }
@@ -331,16 +331,46 @@ body.shop-landing{
       }
       .right-view-container{
         width: 100%;
-        margin-top: -70px;
+        margin-top: -100px;
         margin-left: 0;
       }
 
     }
-    @media only screen and (max-width: 1200px) and (max-width: 1200px) {
+
+    @media only screen and (min-width: 620px) and (max-width: 768px) {
       .right-view-container{
-        margin-top: -50px;
+        width: 90%;
+        float: right;
+        margin-top: -200px;
+      }
+      .price-container{
+        margin-top: 80px !important;
       }
     }
+
+    @media only screen and (min-width: 768px) and (max-width: 992px) {
+      .right-view-container{
+        margin-top: -20px;
+        margin-left: -70px;
+      }
+    }
+
+    @media only screen and (min-width: 992px) and (max-width: 1200px) {
+      .right-view-container{
+        margin-top: -70px;
+      }
+      .price-container{
+        margin-top: 100px !important;
+      }
+    }
+
+    @media only screen and (max-width: 1200px) {
+      .big-price-container span{
+        font-size: 60px;
+
+      }
+    }
+
   }
 
 
@@ -554,13 +584,32 @@ body.shop-landing{
             padding-right: 30px;
             padding-left: 30px;
             border: none;
-            font-size: 22px;
             color: #737374;
             margin: 0 auto;
           }
           &.active{
             a{
               color: #3d3d3d;
+            }
+          }
+        }
+        @media only screen and (max-width: 620px){
+          width: 287px;
+          li{
+            transform: none;
+            -webkit-transform: none;
+            &:first-child{
+              margin-left: 0;
+            }
+          }
+        }
+        @media only screen and (min-width: 620px) and (max-width: 768px){
+          width: 374px;
+          li{
+            transform: none;
+            -webkit-transform: none;
+            &:first-child{
+              margin-left: 0;
             }
           }
         }
