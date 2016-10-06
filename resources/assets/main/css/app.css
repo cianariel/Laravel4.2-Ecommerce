@@ -12486,7 +12486,8 @@ html.idea-stories #hero {
     border-left: 3px solid #eee; }
   @media (max-width: 620px) {
     html.idea-stories #hero {
-      min-height: 575px; } }
+      min-height: 575px;
+      background-color: #fff; } }
 
 @media (min-width: 620px) {
   body.single-post {
@@ -12956,6 +12957,7 @@ body.single .article-content iframe {
   width: 30%;
   position: absolute;
   bottom: 0px;
+  background: #f7f7f7;
   z-index: 10;
   padding-right: 0; }
   @media (max-width: 620px) {
@@ -12963,7 +12965,8 @@ body.single .article-content iframe {
       top: auto;
       width: 100%;
       padding-top: 5px !important;
-      z-index: 200; } }
+      z-index: 200;
+      background: #fff; } }
   .idea-stories .story-details h4 {
     width: 100%;
     text-align: center; }
