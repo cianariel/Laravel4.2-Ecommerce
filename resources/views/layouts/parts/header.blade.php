@@ -182,12 +182,13 @@ if(isset($isShopPage) && $isShopPage == '1'){
                                 </a>
                             </div>
                             <div class="shop-icon-container">
-                                <a class="category-link__shop bottom-border-none m-icon-text-holder hidden-xs" href="/shop">
+                                <div class="category-link__shop bottom-border-none m-icon-text-holder hidden-xs">
                                     <span class="m-icon-text ics--open">
                                         <i class="m-icon--shopping-bag-light-green"></i>
                                     </span>
-                                </a>
+                                </div>
                             </div>
+                            
                             <div class="search-bar__overlay"></div>
                         </div>
                         <!--   <form class="search-bar mobile-search-bar col-sm-2 col-lg-2 hidden-soft" ng-app="publicApp" ng-controller="SearchController" action="/search-form-query" autocomplete="off">

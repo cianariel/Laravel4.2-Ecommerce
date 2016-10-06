@@ -15555,7 +15555,8 @@ body.shop-landing {
           body.shop-landing .shop-page-header header #top-nav .search-box-container .shop-icon-container {
             position: absolute;
             top: 0;
-            right: -3px; }
+            right: -3px;
+            cursor: pointer; }
             body.shop-landing .shop-page-header header #top-nav .search-box-container .shop-icon-container span {
               font-weight: 100;
               color: #3d4b4e;
