@@ -354,10 +354,7 @@
 
     function scrolling() {
         var topMenuClasses = document.getElementById("publicApp").classList;
-        console.log(document.documentElement.clientWidth);
         if(document.documentElement.clientWidth > 620) {
-
-
             if (document.body.scrollTop > 60 || document.documentElement.scrollTop > 60) {
                 if (!topMenuClasses.contains("shop-top-menu-container")) {
                     topMenuClasses.add("shop-top-menu-container");
