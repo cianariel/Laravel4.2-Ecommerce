@@ -17,6 +17,7 @@
                         </fieldset>
                         <div class="loader loader-abs" cg-busy="firstLoad"></div>
 
+
                         <div>
                             <uib-tabset class="tab-swing-lined" active="active">
                                 <uib-tab index="0" heading="Smart Home" class="category-smart-home">

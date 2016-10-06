@@ -183,7 +183,7 @@ if(isset($isShopPage) && $isShopPage == '1'){
                             </div>
                             <div class="shop-icon-container">
                                 <a class="category-link__shop bottom-border-none m-icon-text-holder hidden-xs" href="/shop">
-                                    <span class="m-icon-text">
+                                    <span class="m-icon-text ics--open">
                                         <i class="m-icon--shopping-bag-light-green"></i>
                                     </span>
                                 </a>
