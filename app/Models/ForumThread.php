@@ -70,12 +70,14 @@ class ForumThread extends Model
     }
     
     public function getThreads($category_id){
+        
         $threads = \DB::table('forum_threads as t1')
                      ->leftJoin('forum_categories as t2', 't1.category_id', '=', 't2.id')
                      ->leftJoin('forum_categories as t3', 't2.category_id', '=', 't3.id')
                      ->leftJoin('forum_threads_read as t4', 't1.id', '=', 't4.thread_id')
                      ->leftJoin('users as t5', 't1.author_id', '=', 't5.id')
-                     ->where('t1.category_id', $category_id)
+                     ->join('forum_categories as t6', 't1.category_id', '=', 't6.id')
+                     ->whereRaw("t6.category_id = '{$category_id}' or t1.category_id='{$category_id}' " )
                      ->groupBy('t1.id')
                      ->orderBy('t1.created_at', 'desc')
                      ->select('t1.*', 't2.title as categoryTitle', 't3.title as parentCategoryTitle', \DB::raw('count(t4.id) as viewCount'), 't5.name as authorName')

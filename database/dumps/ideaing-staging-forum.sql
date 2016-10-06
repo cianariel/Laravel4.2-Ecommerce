@@ -45,7 +45,7 @@ CREATE TABLE IF NOT EXISTS `forum_categories` (
 --
 
 INSERT INTO `forum_categories` (`id`, `category_id`, `title`, `description`, `weight`, `enable_threads`, `thread_count`, `post_count`, `private`, `created_at`, `updated_at`) VALUES
-(1, 0, 'SMART HOMES', '', 0, 1, 0, 0, 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(1, 0, 'SMART HOME', '', 0, 1, 0, 0, 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (2, 0, 'SMART TRAVEL', '', 0, 1, 0, 0, 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (3, 0, 'SMART BODY', '', 0, 1, 0, 0, 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (4, 0, 'SMART ENTERTAINMENT', '', 0, 1, 0, 0, 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),

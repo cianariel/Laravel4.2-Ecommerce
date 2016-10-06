@@ -16271,6 +16271,7 @@ h5 {
       display: none; }
 
 body.forum {
+  font-family: Montserratlight,sans-serif;
   color: #bebebe; }
   body.forum .mid-nav, body.forum .mid-nav .extra-nav, .mid-nav body.forum .extra-nav {
     display: none; }
@@ -16280,7 +16281,8 @@ body.forum {
     padding-top: 15px; }
     body.forum .top-bar .title {
       color: #4d4d4d;
-      font-size: 24px; }
+      font-size: 24px;
+      margin-left: 90px; }
   body.forum .black-color {
     color: #000; }
   body.forum .forum-text {
@@ -16291,7 +16293,7 @@ body.forum {
     border-radius: 10px; }
   body.forum #ideaing-community-container {
     background: #fafafa;
-    padding-top: 50px;
+    padding-top: 30px;
     padding-bottom: 50px; }
   body.forum #question-content-container {
     background: #f5f5f5;
@@ -16301,10 +16303,10 @@ body.forum {
       font-size: 20px;
       color: #494949; }
     body.forum #question-content-container .thread-question-holder .thread-question-icon-holder {
-      width: 50px;
+      height: 40px;
       float: left; }
       body.forum #question-content-container .thread-question-holder .thread-question-icon-holder img {
-        width: 100%; }
+        height: 100%; }
     body.forum #question-content-container .thread-question-holder .thread-question-text-holder {
       position: relative;
       float: right;
@@ -16329,11 +16331,21 @@ body.forum {
         body.forum #question-content-container .comment-edit-container .ta-scroll-window div[contenteditable=true]:before {
           content: "Start typing the details ..."; }
   body.forum .btn-submit {
-    background: #f05a24;
-    padding: 5px 25px;
-    height: auto;
+    background: #fc1159;
     font-size: 18px;
-    color: #fff; }
+    color: #fff;
+    width: 60px;
+    height: 60px;
+    border-radius: 60px;
+    line-height: 60px;
+    padding: 0px;
+    text-align: center;
+    display: inline-block;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    -webkit-transition: box-shadow .4s ease-out;
+    transition: box-shadow .4s ease-out; }
+    body.forum .btn-submit:hover {
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.5); }
   body.forum .btn-more {
     background: #4389c8;
     padding: 5px 25px;
@@ -16348,12 +16360,12 @@ body.forum {
     display: block;
     margin-left: 15px;
     margin-right: 15px;
-    border-bottom: 1px solid #dfdfdf; }
+    border-bottom: 2px solid #dfdfdf; }
   body.forum .border-line-holder .active:before {
     content: " ";
-    border-bottom: 1px solid #ec1b47;
+    border-bottom: 2px solid #ec1b47;
     display: block;
-    margin-top: -1px; }
+    margin-top: -2px; }
   body.forum .category-tab-container {
     margin-top: 70px;
     margin-bottom: 30px; }
@@ -16365,9 +16377,33 @@ body.forum {
       margin-top: 5px; }
       body.forum .category-tab-container .category-tab-icon-holder i {
         font-size: 25px; }
+        @media screen and (max-width: 998px) {
+          body.forum .category-tab-container .category-tab-icon-holder i {
+            font-size: 15px; } }
+      @media screen and (max-width: 320px) {
+        body.forum .category-tab-container .category-tab-icon-holder {
+          display: none; } }
     body.forum .category-tab-container .category-tab-title-holder {
       float: left;
       margin-left: 15px; }
+      @media screen and (max-width: 998px) {
+        body.forum .category-tab-container .category-tab-title-holder {
+          font-size: 11px;
+          margin-left: 5px; }
+          body.forum .category-tab-container .category-tab-title-holder .forum-small-title {
+            font-size: 1rem; } }
+    @media screen and (max-width: 998px) {
+      body.forum .category-tab-container .col-xs-3 {
+        padding-left: 0px;
+        padding-right: 0px; } }
+    body.forum .category-tab-container .smart-home i, body.forum .category-tab-container .smart-home .forum-small-title:hover {
+      color: #FC1159; }
+    body.forum .category-tab-container .smart-travel i, body.forum .category-tab-container .smart-travel .forum-small-title:hover {
+      color: #89C981; }
+    body.forum .category-tab-container .smart-wearables i, body.forum .category-tab-container .smart-wearables .forum-small-title:hover {
+      color: #00B1FF; }
+    body.forum .category-tab-container .smart-video i, body.forum .category-tab-container .smart-video .forum-small-title:hover {
+      color: #FF7F00; }
   body.forum .title {
     color: #000; }
   body.forum .white-btn {
@@ -16507,9 +16543,8 @@ body.forum {
         body.forum #posts-content-container .comment-row.owner .comment-content-holder .comment-bottom i {
           color: #fff; }
   body.forum .forum-small-title {
-    color: #000 !important;
-    font-size: 12px !important;
-    font-weight: 600; }
+    color: #3d4b4e;
+    font-size: 1.25rem; }
   body.forum .height-10 {
     height: 10px !important; }
   body.forum .related-articles-container {
@@ -16524,7 +16559,7 @@ body.forum {
   body.forum .pointer {
     cursor: pointer; }
   body.forum .profile-photo {
-    border: 0px; }
+    border-width: 1px; }
   body.forum .sub .profile-photo {
     width: 40px;
     margin-right: 15px; }

@@ -7790,7 +7790,7 @@ productApp.controller('forumController', ['$scope', '$http', '$window', '$interv
         }
         $scope.activeCategoryId = 1;
         $scope.activeSubCategoryId;
-        $scope.thread = {};
+        $scope.thread = {category_id: "1"};
         $scope.categoryThreads = [];
 
         $scope.init = function(){
@@ -7802,7 +7802,7 @@ productApp.controller('forumController', ['$scope', '$http', '$window', '$interv
             }).success(function (result) {
                 $scope.subCategories = result.data;
 //                $scope.activeSubCategoryId = result.data.length ? result.data[0].id : "";
-                $scope.getThreads();
+                $scope.getThreads($scope.activeCategoryId);
             });
         }
         $scope.init();
@@ -7822,9 +7822,9 @@ productApp.controller('forumController', ['$scope', '$http', '$window', '$interv
             });
         }
         
-        $scope.getThreads = function(){
+        $scope.getThreads = function(categoryId){
             $http({
-                url: '/advice/api/threads/' + $scope.activeSubCategoryId, 
+                url: '/advice/api/threads/' + categoryId, 
                 method: "get", 
                 data: {
                 }
@@ -7840,7 +7840,7 @@ productApp.controller('forumController', ['$scope', '$http', '$window', '$interv
         }
         $scope.selectSubCategory = function(subCategoryID){
             $scope.activeSubCategoryId = subCategoryID;
-            $scope.getThreads();
+            $scope.getThreads(subCategoryID);
         }
     }
 ]);
