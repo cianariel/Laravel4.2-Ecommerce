@@ -104,7 +104,7 @@
                     <b class="price hidden-620 hidden-xs hidden-sm hidden-md" itemprop="offers" itemscope
                        itemtype="http://schema.org/Offer">
                         &nbsp;
-                        @if(isset($productInformation['SellPrice']))
+                        @if(isset($productInformation['SellPrice']) && $productInformation['SellPrice'] > 0)
                             <span itemprop="priceCurrency" content="USD">$</span>
                             <span itemprop="price"
                                   content="{{$productInformation['SellPrice']}}">{{$productInformation['SellPrice']}}</span>
@@ -285,7 +285,7 @@
                         <div class="top">
 
                             <b class="price col-xs-6">
-                                @if(isset($productInformation['SellPrice']))
+                                @if(isset($productInformation['SellPrice']) && $productInformation['SellPrice'] >0)
                                     <?php
                                     $savings = @$productInformation['Price'] - $productInformation['SellPrice'];
                                     ?>
@@ -439,7 +439,7 @@
                                             <a href="/open/@{{ item.data.productInformation.Id }}/product"
                                                target="_blank">
                                                 <span>@{{ item.data.storeInformation.StoreName }}</span>
-                                                <b>$@{{ item.data.productInformation.SellPrice }}</b>
+                                                <b ng-hide="item.data.productInformation.SellPrice == 0">$@{{ item.data.productInformation.SellPrice }}</b>
                                             </a>
                                         </div>
                                         <a class="btn-none" href="/open/@{{ item.data.productInformation.Id }}/product"
