@@ -17,6 +17,7 @@
                         </fieldset>
                         <div class="loader loader-abs" cg-busy="firstLoad"></div>
 
+
                         <div>
                             <uib-tabset class="tab-swing-lined" active="active">
                                 <uib-tab index="0" heading="Smart Home" class="category-smart-home">
@@ -354,10 +355,7 @@
 
     function scrolling() {
         var topMenuClasses = document.getElementById("publicApp").classList;
-        console.log(document.documentElement.clientWidth);
         if(document.documentElement.clientWidth > 620) {
-
-
             if (document.body.scrollTop > 60 || document.documentElement.scrollTop > 60) {
                 if (!topMenuClasses.contains("shop-top-menu-container")) {
                     topMenuClasses.add("shop-top-menu-container");
