@@ -186,6 +186,7 @@ if(isset($isShopPage) && $isShopPage == '1'){
                                     <span class="m-icon-text ics--open">
                                         <i class="m-icon--shopping-bag-light-green"></i>
                                     </span>
+                                    <span class="ics--open cart-count">0</span>
                                 </div>
                             </div>
                             
