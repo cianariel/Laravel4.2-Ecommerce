@@ -29,6 +29,13 @@ body.shop-landing{
     }
   }
 
+  @media (min-width: 620px){
+    .ideaing-logo img {
+      margin-top: 6px !important;
+    }
+  }
+
+
   .sub-item-container{
     position: relative;
     display: block;
@@ -491,6 +498,7 @@ body.shop-landing{
     }
 
     .img-holder{
+      cursor: pointer;
       img{
         max-width: 100% !important;
         max-height: 298px !important;
@@ -1212,23 +1220,54 @@ body.shop-landing{
                   font-size: 38px;
                 }
               }
+
+              span.cart-count{
+                position: absolute;
+                color: #fff;
+                display: inline-block;
+                background: #ed1d47;
+                width: 20px;
+                font-size: 14px;
+                border-radius: 20px;
+                right: 16px;
+                bottom: 14px;
+                height: 20px;
+                text-align: center;
+                line-height: 20px;
+                font-weight: 700;
+              }
+
+              .cart-popover{
+                top: 38px;
+                left: -220px;
+                display: block;
+                opacity: 0;
+                -webkit-transition: all .7s ease .1s;
+                -moz-transition: all .7s ease .1s;
+                -ms-transition: all .7s ease .1s;
+                -o-transition: all .7s ease .1s;
+                transition: all .7s ease .1s;
+                width: 280px;
+                visibility: hidden;
+                .arrow{
+                  left: 238px !important;
+                }
+                .popover-content{
+                  text-align: center;
+                  padding: 18px 25px;
+                  font-size: 16px;
+                }
+              }
+
+              &:hover{
+                .cart-popover{
+                  opacity: 1;
+                  visibility: visible;
+                }
+              }
             }
 
-            span.cart-count{
-              position: absolute;
-              color: #fff;
-              display: inline-block;
-              background: #ed1d47;
-              width: 15px;
-              font-size: 10px;
-              border-radius: 10px;
-              right: 18px;
-              bottom: 17px;
-              height: 15px;
-              text-align: center;
-              line-height: 15px;
-              font-weight: 700;
-            }
+
           }
 
           .search-bar__overlay{

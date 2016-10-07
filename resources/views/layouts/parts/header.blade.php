@@ -182,14 +182,22 @@ if(isset($isShopPage) && $isShopPage == '1'){
                                 </a>
                             </div>
                             <div class="shop-icon-container">
-                                <div class="category-link__shop bottom-border-none m-icon-text-holder hidden-xs">
-                                    <span class="m-icon-text ics--open">
+                                <div class="category-link__shop ics--open bottom-border-none m-icon-text-holder hidden-xs">
+                                    <span class="m-icon-text">
                                         <i class="m-icon--shopping-bag-light-green"></i>
                                     </span>
-                                    <span class="ics--open cart-count">0</span>
+                                    <span class="cart-count">0</span>
+
+                                    <div class="popover fade bottom in cart-popover" role="tooltip" style="">
+                                        <div class="arrow" style="left: 90%;"></div>
+                                        <div class="popover-content">Your shopping cart is empty.</div>
+                                    </div>
                                 </div>
+
+
+
                             </div>
-                            
+
                             <div class="search-bar__overlay"></div>
                         </div>
                         <!--   <form class="search-bar mobile-search-bar col-sm-2 col-lg-2 hidden-soft" ng-app="publicApp" ng-controller="SearchController" action="/search-form-query" autocomplete="off">
