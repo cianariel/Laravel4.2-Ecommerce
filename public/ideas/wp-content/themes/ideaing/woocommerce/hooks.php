@@ -503,8 +503,96 @@ function ideaing_update_order_review_fragments( $fragments ) {
 }
 add_filter( 'woocommerce_update_order_review_fragments', 'ideaing_update_order_review_fragments', 99, 1 );
 
+
 /**
- * Ajax handle global cart
+ * Ajax handle account orders
+ *
+ * @return return string
+ */
+function ideaing_account_orders(){
+
+  $current_page = isset( $_POST['current_page'] ) && !empty( $_POST['current_page'] ) ? absint( $_POST['current_page'] ) : 1;
+  $customer_orders = wc_get_orders( apply_filters( 'woocommerce_my_account_my_orders_query', array( 'customer' => get_current_user_id(), 'page' => $current_page, 'paginate' => true ) ) );
+  $has_orders = 0 < $customer_orders->total;
+  $data = __( 'No order has been made yet.', 'woocommerce' );
+
+  if ( $has_orders ) {
+
+    $data = array();
+
+    foreach ( $customer_orders->orders as $customer_order ) {
+
+      $order = wc_get_order( $customer_order );
+      $item_count = $order->get_item_count();
+      $order_detail = array();
+
+      foreach ( wc_get_account_orders_columns() as $column_id => $column_name ) {
+
+        switch ($column_id) {
+          case 'order-number':
+
+            $order_detail['Order'] = $order->get_order_number();
+            break;
+
+          case 'order-date':
+
+            $order_detail['Date'] = date_i18n( get_option( 'date_format' ), strtotime( $order->order_date ) );
+            break;
+
+          case 'order-status':
+
+            $order_detail['Status'] = wc_get_order_status_name( $order->get_status() );
+            break;
+
+          case 'order-total':
+
+            $order_detail['Total'] = sprintf( _n( '%s for %s item', '%s for %s items', $item_count, 'woocommerce' ), $order->get_formatted_order_total(), $item_count );
+            break;
+
+          case 'order-actions':
+
+            $actions = array(
+              'pay'    => array(
+                'url'  => $order->get_checkout_payment_url(),
+                'name' => __( 'Pay', 'woocommerce' )
+              ),
+              'view'   => array(
+                'url'  => $order->get_view_order_url(),
+                'name' => __( 'View', 'woocommerce' )
+              ),
+              'cancel' => array(
+                'url'  => $order->get_cancel_order_url( wc_get_page_permalink( 'myaccount' ) ),
+                'name' => __( 'Cancel', 'woocommerce' )
+              )
+            );
+
+            if ( ! $order->needs_payment() ) {
+              unset( $actions['pay'] );
+            }
+
+            if ( ! in_array( $order->get_status(), apply_filters( 'woocommerce_valid_order_statuses_for_cancel', array( 'pending', 'failed' ), $order ) ) ) {
+              unset( $actions['cancel'] );
+            }
+
+            $order_detail['Action'] = $actions;
+            break;
+        }
+
+      }
+      $data[] = $order_detail;
+    }
+  }
+
+  wp_send_json( array(
+    'has_orders' => $has_orders,
+    'data' => $data
+  ) );
+}
+add_action( 'wp_ajax_account_orders', 'ideaing_account_orders' );
+add_action( 'wp_ajax_nopriv_account_orders', 'ideaing_account_orders' );
+
+/**
+ * Ajax handle cart total
  *
  * @return return string
  */
