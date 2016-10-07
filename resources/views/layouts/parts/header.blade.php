@@ -223,6 +223,7 @@ if(isset($isShopPage) && $isShopPage == '1'){
                                 </ul>
                                 <?php
                                 if(isset($userData['login']) && $userData['login']) { ?>
+                                <a href="#" class="signin">Hi, <?php echo isset($userData['original']['name']) ? $userData['original']['name'] : "" ?></a>
                                 <div class="pull-right profile-photo-holder logged-user" data-hideonout="true" data-toggle=".notification-popup">
                                     <a href="#"  ng-init="loadNotification('<?php echo $userData['id']?>')"><img width="40px" src="<?php echo isset($userData['medias'][0]['media_link']) ? $userData['medias'][0]['media_link'] : "" ?>" alt="" class="profile-photo ">
                                     <span ng-hide="notificationCounter == 0" class="notification-count"
@@ -230,7 +231,7 @@ if(isset($isShopPage) && $isShopPage == '1'){
                                     </a>
 
                                 <?php }  else { ?>
-                                    <a class="signin" data-toggle="modal" data-target="#myModal" href="/login"></i> Hi, sign in</a>
+                                    <a class="signin" data-toggle="modal" data-target="#myModal" href="/login"> Hi, sign in</a>
                                     <a id="notification-trigger" class="new-message" href="#" ng-click="getEmailPopup(true)">
                                                 <img width="40px" src="/assets/images/icons/ninja-01.svg" alt="" class="profile-photo ">
                                         <span class="notification-count ng-binding">1</span>

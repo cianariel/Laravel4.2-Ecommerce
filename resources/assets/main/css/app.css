@@ -14932,6 +14932,9 @@ body.shop-landing {
       body.shop-landing .shop-top-menu-container .user-controls a.signin {
         padding-top: 18px !important;
         font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; }
+      body.shop-landing .shop-top-menu-container .user-controls a.profile {
+        padding-top: 18px !important;
+        font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; }
   body.shop-landing .shoplanding-title {
     margin-top: 40px;
     margin-bottom: 20px;
@@ -15207,11 +15210,12 @@ body.shop-landing {
       top: -7px !important; }
     body.shop-landing .big-image-view .box-item--featured {
       height: auto !important;
-      overflow: hidden !important; }
+      overflow: hidden !important;
+      margin: 0 !important; }
       body.shop-landing .big-image-view .box-item--featured .box-item__label {
         font-size: 1em; }
       body.shop-landing .big-image-view .box-item--featured .idea-meta {
-        bottom: -90px; }
+        bottom: -100%; }
     body.shop-landing .big-image-view .box-item:not(.slider-box):hover .idea-meta {
       bottom: 0 !important; }
     body.shop-landing .big-image-view .img-holder img {
@@ -15234,6 +15238,8 @@ body.shop-landing {
       body.shop-landing .big-image-view {
         max-width: none;
         max-height: none; }
+        body.shop-landing .big-image-view .box-item--featured {
+          width: 100% !important; }
         body.shop-landing .big-image-view .img-holder img {
           height: 198px !important; } }
   body.shop-landing .tab-content {
@@ -15283,6 +15289,12 @@ body.shop-landing {
       margin: 0; }
       body.shop-landing .tab-pane .multirow-image-view .image-row-view .box-item .box-item__overlay {
         border-radius: 7px; }
+    @media (max-width: 620px) {
+      body.shop-landing .tab-pane .multirow-image-view .image-row-view {
+        margin: 23px 10px !important; }
+        body.shop-landing .tab-pane .multirow-image-view .image-row-view .box-item {
+          width: 100% !important;
+          margin-left: 0 !important; } }
   body.shop-landing .bottom-categories-container {
     text-align: center; }
     body.shop-landing .bottom-categories-container .tab-swing-lined {

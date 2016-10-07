@@ -75,6 +75,10 @@ body.shop-landing{
         padding-top: 18px !important;
         font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
       }
+      a.profile{
+        padding-top: 18px !important;
+        font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+      }
     }
   }
 
@@ -472,11 +476,13 @@ body.shop-landing{
     .box-item--featured{
       height: auto !important;
       overflow: hidden !important;
+      margin: 0 !important;
+
       .box-item__label{
         font-size: 1em;
       }
       .idea-meta{
-        bottom: -90px;
+        bottom: -100%;
       }
     }
 
@@ -508,6 +514,9 @@ body.shop-landing{
     }
 
     @media only screen and (max-width: 768px){
+      .box-item--featured{
+        width: 100% !important;
+      }
       .img-holder{
         img{
           height: 198px !important;
@@ -594,8 +603,14 @@ body.shop-landing{
           }
         }
 
+        @media (max-width: 620px){
+          margin: 23px 10px !important;
+          .box-item{
+            width: 100% !important;
+            margin-left: 0 !important;
+          }
+        }
       }
-
     }
 
 
