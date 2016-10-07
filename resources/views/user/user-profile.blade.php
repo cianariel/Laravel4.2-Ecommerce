@@ -14,7 +14,6 @@
                     <div class="col-sm-4 col-md-3">
                         <div class="user-score white-bg rounded-5 grey-border">
                             <h5 class="black">User Score <span class="pull-right">Level 1</span></h5>
-                            {{--<div class="percent pink">0%</div>--}}
 
                             <figure class="chart" data-percent="75">
                                 <figcaption>75%</figcaption>
@@ -52,14 +51,14 @@
 
                         </div>
 
-                        {{--@if(!$showEditOption)--}}
+                        @if(!$showEditOption)
                                 {{--<button id="btn-follow" type="button" class="btn " uib-dropdown-toggle>--}}
                                 {{--Follow <i class=" m-icon--Actions-Down-Arrow-Active"></i>--}}
                                 {{--</button>--}}
                                 <button id="btn-add-friend" type="button" class="btn btn-success col-xs-12">
                                    &nbsp; Add Friends
                                 </button>
-                        {{--@endif--}}
+                        @endif
 
                     </div>
                     <div class="col-sm-8 col-md-9 static hidden-xs">
