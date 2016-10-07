@@ -902,6 +902,8 @@ if (! function_exists('timeAgo')) {
   }
 }
 
+
+
 if (! function_exists('ideaing_is_plugin_active')){
 
 	/**
@@ -962,3 +964,10 @@ if (ideaing_is_plugin_active('woocommerce/woocommerce.php')){
    */
 	require get_template_directory() . '/widgets/init.php';
 }
+
+/**
+ * Ajax handles for this theme.
+ *
+ * @since WooCommerce Integration 1.0
+ */
+require get_template_directory() . '/app/ajax-handles.php';
