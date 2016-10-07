@@ -135,9 +135,7 @@ do_action( 'woocommerce_before_cart' ); ?>
 		<tr>
 			<td colspan="4" class="actions">
 
-				<input type="submit" class="button screen-reader-text" name="update_cart" value="<?php esc_attr_e( 'Update Cart', 'woocommerce' ); ?>" />
-
-				<?php printf('<button class="button" data-alien="update_cart">%s</button>', __( 'Update Cart', 'woocommerce' )); ?>
+				<input type="submit" class="button" name="update_cart" value="<?php esc_attr_e( 'Update Cart', 'woocommerce' ); ?>" />
 
 				<?php do_action( 'woocommerce_proceed_to_checkout' ); ?>
 
