@@ -76,7 +76,6 @@ function is_ideaing_woocommerce_checkout_page( $default = false, $strict = true 
 
   return is_cart()
     || is_checkout()
-    || is_account_page()
   ? $strict : $default;
 }
 add_filter('is_ideaing_woocommerce_checkout_page', 'is_ideaing_woocommerce_checkout_page', 10, 2);
@@ -612,8 +611,16 @@ add_action( 'wp_ajax_nopriv_cart_total_count', 'ideaing_cart_total_count' );
  */
 function ideaing_global_cart_summary(){
 
-  wc_get_template( 'ideaing/cart-summary.php' );
-  die;
+  $data = array(
+    'total' => apply_filters('get_ideaing_cart_contents_count', '')
+  );
+
+  ob_start();
+    wc_get_template( 'ideaing/cart-summary.php' );
+    $data['html'] = ob_get_contents();
+  ob_end_clean();
+
+  wp_send_json( $data );
 }
 add_action( 'wp_ajax_global_cart_summary', 'ideaing_global_cart_summary' );
 add_action( 'wp_ajax_nopriv_global_cart_summary', 'ideaing_global_cart_summary' );

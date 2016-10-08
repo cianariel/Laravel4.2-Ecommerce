@@ -72,6 +72,10 @@
 
 <div class="bottom-block hidden-soft">
     <button class="btn btn-success" id="about-button" data-toggle=".about-footer">About</button>
+<<<<<<< 38aec82004e8ddc9ec7bdbe3e2bb78efe4f8880e
+=======
+    <button class="btn btn-success ics--open" id="float-bag"><i class="m-icon--shopping-bag-light-green"></i><span class="cart-count">69</span></button>
+>>>>>>> more checkout
     <a href="#" id="back-to-top">
         <i class="m-icon--footer-up-arrow"></i>
     </a>
