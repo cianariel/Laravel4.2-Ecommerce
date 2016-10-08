@@ -41,6 +41,10 @@ function ideaing_wp_posts(){
     $args['author'] = absint($_REQUEST['author']);
   }
 
+  if ( isset($_REQUEST['author_name']) ) {
+    $args['author_name'] = trim($_REQUEST['author_name']);
+  }
+
   if ( isset($_REQUEST['post__in']) ) {
     $args['post__in'] = explode(',', $_REQUEST['post__in']);
   }
