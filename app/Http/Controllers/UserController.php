@@ -348,6 +348,7 @@ class UserController extends ApiController
     {
         $inputData = \Input::all();
 
+
         $data = $this->user->ideasAuthorPost($inputData);
 
         //dd($data);

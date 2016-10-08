@@ -633,8 +633,9 @@ class User extends Model implements AuthenticatableContract,
 
        // dd($url);
         $json = \PageHelper::getFromCurl($url);
+        $decode = json_decode($json);
 
-        $ideaCollection = json_decode($json);
+        $ideaCollection = $decode->posts;
 
         $ideaCollection = empty($ideaCollection) ? [] : $ideaCollection;
 
@@ -670,7 +671,7 @@ class User extends Model implements AuthenticatableContract,
                 'avator' => $data['AuthorPicture'],
                 'type' => $item->type,
                 'is_featured' => $item->is_featured,
-                'feed_image' => $item->feed_image,
+                'feed_image' => $item->feed_image->sizes->thumbnail,
                 'comment_count' => $comment->ideasCommentCounter($item->id),
                 'heart_count' => $heart->findHeartCountForItem(['Section' => 'ideas', 'ItemId' => $item->id])->count()
             ]);
