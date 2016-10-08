@@ -533,22 +533,22 @@ function ideaing_account_orders(){
         switch ($column_id) {
           case 'order-number':
 
-            $order_detail['Order'] = $order->get_order_number();
+            $order_detail['order'] = $order->get_order_number();
             break;
 
           case 'order-date':
 
-            $order_detail['Date'] = date_i18n( get_option( 'date_format' ), strtotime( $order->order_date ) );
+            $order_detail['date'] = date_i18n( get_option( 'date_format' ), strtotime( $order->order_date ) );
             break;
 
           case 'order-status':
 
-            $order_detail['Status'] = wc_get_order_status_name( $order->get_status() );
+            $order_detail['status'] = wc_get_order_status_name( $order->get_status() );
             break;
 
           case 'order-total':
 
-            $order_detail['Total'] = sprintf( _n( '%s for %s item', '%s for %s items', $item_count, 'woocommerce' ), $order->get_formatted_order_total(), $item_count );
+            $order_detail['total'] = sprintf( _n( '%s for %s item', '%s for %s items', $item_count, 'woocommerce' ), $order->get_formatted_order_total(), $item_count );
             break;
 
           case 'order-actions':
@@ -576,7 +576,7 @@ function ideaing_account_orders(){
               unset( $actions['cancel'] );
             }
 
-            $order_detail['Action'] = $actions;
+            $order_detail['actions'] = $actions;
             break;
         }
 
