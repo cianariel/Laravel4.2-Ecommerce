@@ -148,16 +148,19 @@
     });
   };
 
-  try {
+  $(document).ready(function(){
 
-    new ideaingCheckout();
+    try {
 
-  } catch (e) {
+      new ideaingCheckout();
 
-    console.error(e);
-  }
+    } catch (e) {
 
-  $( document ).on('click', '[data-alien]', function( e ){
+      console.error(e);
+    }
+  });
+
+  $( document ).on('click', '.secure-checkout [data-alien]', function( e ){
 
     var alein = $( '[name="' + $(this).attr('data-alien') + '"]' );
 

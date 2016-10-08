@@ -931,23 +931,6 @@ if (! function_exists('ideaing_woocommerce_support')){
   add_action( 'after_setup_theme', 'ideaing_woocommerce_support' );
 }
 
-// TODO: MERGE ALL SCRIPTS WITH PRODUCTION AND REMOVE THIS FUNCTION
-if (! function_exists('ideaing_woocommerce_scripts')){
-
-  /**
-   * Enqueues scripts and styles.
-   *
-   * @since WooCommerce Integration 1.0
-   */
-  function ideaing_woocommerce_scripts() {
-
-    // these could merge with main .css|js
-    // wp_enqueue_style( 'ideaing-woocommerce-style', '/../assets/css/woocommerce.css', null, null );
-    wp_enqueue_script( 'ideaing-woocommerce-script', '/../assets/js/woocommerce.js', null, null, true );
-  }
-  add_action( 'wp_enqueue_scripts', 'ideaing_woocommerce_scripts' );
-}
-
 if (ideaing_is_plugin_active('woocommerce/woocommerce.php')){
 
   /**
