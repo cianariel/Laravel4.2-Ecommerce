@@ -16045,6 +16045,9 @@ body.shop-category .show-filter .grid-box-3 {
 #all-shop-menu-mobile {
   top: 115px; }
 
+.modal-content {
+  overflow: hidden; }
+
 .profile-photo {
   border-radius: 100px;
   border: 1px solid #bebbbc; }
@@ -16409,11 +16412,6 @@ h5 {
   color: white; }
 .profile-setting-modal .modal-content {
   padding: 0px; }
-  .profile-setting-modal .modal-content .profile-background {
-    padding-top: 30px;
-    background: #fa1550;
-    height: 300px;
-    width: 100%; }
   .profile-setting-modal .modal-content .upload-photo {
     background: #e11348;
     display: inline-block;
