@@ -50,7 +50,7 @@
 
 
 
- <div>
+ <div ng-show="postActive">
     <div ng-init="userPostList('{{$permalink}}', 6)">
         <div class="col-xs-12 activity-item" ng-repeat="item in userPostData">
             <div class="col-xs-3 text-right">
