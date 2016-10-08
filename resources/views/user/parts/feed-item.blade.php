@@ -4,8 +4,8 @@
             <div class="col-xs-3 text-right">
                 <span class="time grey lightfont">@{{item['UpdateTime']}}</span>
                 <div class="pull-right activity-tags">
-                    <div class="favorite white-bg relative"><i class="m-icon--heart-solid pink"></i></div>
-                    <div class="comment white-bg"><i class="m-icon--buble blue"></i></div>
+                    <div ng-if="item['Type']!='comment'" class="favorite white-bg"><i class="m-icon--heart-solid pink"></i></div>
+                    <div ng-if="item['Type']=='comment'" class="comment white-bg"><i class="m-icon--buble blue"></i></div>
                 </div>
             </div>
             <div class="feed-content col-xs-9 radius-5">
@@ -50,14 +50,15 @@
 
 
 
- <div ng-show="postActive">
-            <div ng-init="userPostList('{{$permalink}}', 6)">
+ <div>
+    <div ng-init="userPostList('{{$permalink}}', 6)">
         <div class="col-xs-12 activity-item" ng-repeat="item in userPostData">
             <div class="col-xs-3 text-right">
-                <span class="time grey lightfont">@{{item.creation_date}}</span>
+                <span class="time grey lightfont">@{{item['UpdateTime']}}</span>
                 <div class="pull-right activity-tags">
-                    <div class="favorite white-bg relative"><i class="m-icon--heart-solid pink"></i></div>
-                    <div class="comment white-bg"><i class="m-icon--buble blue"></i></div>
+                    <div class="post white-bg">
+                        <img width="25" height="25" src="/assets/svg/bulb.svg" />    
+                    </div>
                 </div>
             </div>
             <div class="feed-content col-xs-9 radius-5">
@@ -65,11 +66,7 @@
                     <div class="row">
                         <div class="col-xs-12">
                             <div class="pull-left name-time">
-                                <span ng-if="item['Type']=='comment'"> Commented</span>
-                                <span ng-if="item['Type']!='comment'"> Liked</span> 
-
-                                  <!--   <span ng-if="item['Section']=='product'"> product</span>
-                                    <span ng-if="item['Section']!='product'"> idea</span> -->
+                                <b>Posted</b>
                             </div>
                         </div>
                     </div>
@@ -77,19 +74,17 @@
                 <div class="feed-body">
                     <div class="row">
                         <div class="col-xs-3 no-padding">
-                            <img class="radius-5" ng-src="@{{ item.image }}">
+                            <img class="radius-5" ng-src="@{{ item['feed_image'] }}">
                         </div>
-
-
-                        <div ng-class="item['Type'] =='heart' ? 'col-xs-12':'col-xs-12'" class="col-xs-9">
-                            <a href="@{{ item['Link'] }}" target="_blank">@{{ item['Title'] }}</a>
+                        <div class="col-xs-9">
+                            <a href="@{{ item['Link'] }}" target="_blank">@{{ renderHTML(item['title']) }}</a>
                             <p>
                                 <!-- Epic sale happening right now of all Apple devices in the 2015 Festive season across the boards! -->
                             </p>
                             <div class="col-xs-12 no-padding">
                                 <div class="pull-left activity-stats">
-                                    <span class="favorite white pink-bg radius-5"><i class="m-icon--heart-solid white"></i> @{{ item.heart_count }}</span>
-                                    <span class="comment black pale-grey-bg radius-5"><i class="m-icon--buble blue"></i> @{{ item.comment_count }}</span>
+                                    <span class="favorite white pink-bg radius-5"><i class="m-icon--heart-solid white"></i> @{{ item['heart_count'] }}</span>
+                                    <span class="comment black pale-grey-bg radius-5"><i class="m-icon--buble blue"></i> @{{ item['comment_count'] }}</span>
                                 </div>
                             </div>
                         </div>

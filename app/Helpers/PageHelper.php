@@ -135,6 +135,13 @@ class PageHelper {
         return $success;
     }
 
+    public static function getArrayFromCurl($url){
+        $json = self::getFromCurl($url);
+
+        return json_decode($json, true);
+
+    }
+
     public static function getFromCurl($url){
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $url);
