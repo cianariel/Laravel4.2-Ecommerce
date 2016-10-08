@@ -31,8 +31,6 @@ class ForumApiController extends ApiController
         if ($this->authCheck['method-status'] == 'success-with-http' || $this->authCheck['method-status'] == 'success-with-ajax') {
             $this->userData = $this->authCheck['user-data'];
         }
-//        $this->userData['email'] = "ranta@ho.com";
-//        $this->userData['id'] = "42";
         /************/
     }
     
@@ -43,6 +41,99 @@ class ForumApiController extends ApiController
         }
         return $this->setStatusCode(\Config::get("const.api-status.success"))
                     ->makeResponse($categories);
+    }
+
+    public function deleteCategory(){
+        $inputData = \Input::all();
+        $validationRules = [
+            'rules' => [
+                'id' => 'required | max: 50',
+            ],
+            'values' => [
+                'id' => isset($inputData['id']) ? $inputData['id'] : null,
+            ]
+        ];
+
+        list($inputData, $validator) = $this->inputValidation($inputData, $validationRules);
+
+        if ($validator->fails()) {
+            $validatorMessage = $validator->messages()->toArray();
+
+            return $this->setStatusCode(\Config::get("const.api-status.validation-fail"))
+                        ->makeResponseWithError(array('Validation failed', $validatorMessage));
+        } elseif ($validator->passes()) {
+            $this->categoryModel->where('id', $inputData['id'])->delete();
+
+            return $this->setStatusCode(\Config::get("const.api-status.success"))
+                        ->makeResponse($inputData);
+            
+        }
+    }
+    public function addCategory(){
+        $inputData = \Input::all();
+        $validationRules = [
+            'rules' => [
+                'title' => 'required | max: 50',
+                'parentCategoryId' => 'required | max: 50',
+            ],
+            'values' => [
+                'title' => isset($inputData['title']) ? $inputData['title'] : null,
+                'parentCategoryId' => isset($inputData['parentCategoryId']) ? $inputData['parentCategoryId'] : null,
+            ]
+        ];
+
+        list($inputData, $validator) = $this->inputValidation($inputData, $validationRules);
+
+        if ($validator->fails()) {
+            $validatorMessage = $validator->messages()->toArray();
+
+            return $this->setStatusCode(\Config::get("const.api-status.validation-fail"))
+                        ->makeResponseWithError(array('Validation failed', $validatorMessage));
+        } elseif ($validator->passes()) {
+            if($this->categoryModel->where('title', $inputData['title'])->first()){
+                return $this->setStatusCode(\Config::get("const.api-status.app-failure"))
+                            ->makeResponseWithError('Duplicate Title');
+            }else{
+                $result = $this->categoryModel->insert(array(
+                    'title' => $inputData['title'],
+                    'category_id' => $inputData['parentCategoryId']
+                ));
+
+                return $this->setStatusCode(\Config::get("const.api-status.success"))
+                            ->makeResponse($inputData);
+            }
+            
+        }
+    }
+    
+    public function updateCategory(){
+        $inputData = \Input::all();
+        $validationRules = [
+            'rules' => [
+                'title' => 'required | max: 50',
+                'id' => 'required | max: 50',
+            ],
+            'values' => [
+                'title' => isset($inputData['title']) ? $inputData['title'] : null,
+                'id' => isset($inputData['id']) ? $inputData['id'] : null,
+            ]
+        ];
+
+        list($inputData, $validator) = $this->inputValidation($inputData, $validationRules);
+
+        if ($validator->fails()) {
+            $validatorMessage = $validator->messages()->toArray();
+
+            return $this->setStatusCode(\Config::get("const.api-status.validation-fail"))
+                        ->makeResponseWithError(array('Validation failed', $validatorMessage));
+        } elseif ($validator->passes()) {
+            $result = $this->categoryModel->where('id', $inputData['id'])->update(array(
+                'title' => $inputData['title']
+            ));
+
+            return $this->setStatusCode(\Config::get("const.api-status.success"))
+                        ->makeResponse($inputData);
+        }
     }
 
     public function postAddThread(Request $request)

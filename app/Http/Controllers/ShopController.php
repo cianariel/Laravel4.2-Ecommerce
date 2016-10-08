@@ -49,7 +49,8 @@ class ShopController extends ApiController
 
             return view('shop.index')
                 ->with('userData', $userData)
-                ->with('categoryTree', $categoryTree);
+                ->with('categoryTree', $categoryTree)
+                ->with('isShopPage', '1');
         } else {
 
             if ($child) {
@@ -118,7 +119,8 @@ class ShopController extends ApiController
                 ->with('grandParent', $grandParent)
                 ->with('masterCategory', $masterCategory)
                 ->with('filterCategories', $filterCategories)
-                ->with('canonicURL', $canonicURL);
+                ->with('canonicURL', $canonicURL)
+                ->with('isShopPage', '1');
 
         }
 

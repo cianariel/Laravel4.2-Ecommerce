@@ -9,7 +9,7 @@
 	<div ng-app="productApp" data-ng-controller="forumController" class="ideaing-product" >
 		<div class="top-bar">
 			<div class="container">
-				<span class="title">Advice</span>
+				<span class="title">Communities</span>
 			</div>
 		</div>
 
@@ -19,7 +19,7 @@
 				<p class="text-center">Find out new stuff and also share your thoughts with the entire Ideaing universe.</p>
 				<div class="row">
 					<div class="col-lg-8 col-lg-offset-2 col-md-12" id="forum-search-holder">
-						<input class=" forum-text text-center" placeholder="Type any discussion">
+						<input class=" forum-text text-center" placeholder="Search for discussions">
                         <i class="m-icon m-icon--search-id"></i>
 					</div>
 				</div>
@@ -36,8 +36,8 @@
 						<p>Get help your projects share your finds and show off your Before and After.</p>
 						<div class="thread-question-holder">
 							<div class="thread-question-icon-holder">
-                                @if(!empty($userData['email']))
-                                    <img src="https://s3-us-west-1.amazonaws.com/ideaing-01/120-product-56ce7066c0ef3-user-default 2.png" class="profile-photo">
+                                @if(empty($userData['email']))
+                                    <img src="/assets/images/icons/ninja-01.svg" class="profile-photo">
                                 @else
                                     <img src="{{isset($userData['medias'][0]['media_link']) ? $userData['medias'][0]['media_link'] : ""}}" alt="" class="profile-photo">
                                 @endif

@@ -135,31 +135,35 @@ function add_slug_to_body_class($classes)
     return $classes;
 }
 
-// If Dynamic Sidebar Exists
-if (function_exists('register_sidebar'))
-{
-    // Define Sidebar Widget Area 1
-    register_sidebar(array(
-        'name' => __('Widget Area 1', 'html5blank'),
-        'description' => __('Description for this widget-area...', 'html5blank'),
-        'id' => 'widget-area-1',
-        'before_widget' => '<div id="%1$s" class="%2$s">',
-        'after_widget' => '</div>',
-        'before_title' => '<h3>',
-        'after_title' => '</h3>'
-    ));
+/**
+ * Registers a widget area.
+ *
+ * @link https://developer.wordpress.org/reference/functions/register_sidebar/
+ *
+ * @since WooCommerce Integration 1.0
+ */
+function ideaing_widgets_init() {
+	register_sidebar( array(
+		'name'          => __( 'Sidebar', 'ideaing' ),
+		'id'            => 'sidebar-1',
+		'description'   => __( 'Add widgets here to appear in your sidebar.', 'ideaing' ),
+		'before_widget' => '<section id="%1$s" class="widget %2$s">',
+		'after_widget'  => '</section>',
+		'before_title'  => '<h2 class="widget-title">',
+		'after_title'   => '</h2>',
+	) );
 
-    // Define Sidebar Widget Area 2
-    register_sidebar(array(
-        'name' => __('Widget Area 2', 'html5blank'),
-        'description' => __('Description for this widget-area...', 'html5blank'),
-        'id' => 'widget-area-2',
-        'before_widget' => '<div id="%1$s" class="%2$s">',
-        'after_widget' => '</div>',
-        'before_title' => '<h3>',
-        'after_title' => '</h3>'
-    ));
+	register_sidebar( array(
+		'name'          => __( 'After add to card sidebar', 'ideaing' ),
+		'id'            => 'sidebar-2',
+		'description'   => __( 'Appears instead of "Sidebar" when cart is not empty on checkout pages.', 'ideaing' ),
+		'before_widget' => '<section id="%1$s" class="widget %2$s">',
+		'after_widget'  => '</section>',
+		'before_title'  => '<h2 class="widget-title">',
+		'after_title'   => '</h2>',
+	) );
 }
+add_action( 'widgets_init', 'ideaing_widgets_init' );
 
 // Remove wp_head() injected Recent Comment styles
 function my_remove_recent_comments_style()
@@ -473,45 +477,13 @@ function my_save_extra_profile_fields( $user_id ) {
 add_action('init','custom_login');
 function custom_login(){
 
-//    $url = 'https://ideaing.com//api/auth-check';
-//    $json = file_get_contents($url);
-//    $response = json_decode($url, true);
-//
-//    print_r($json); die();
-//
-//    if($response['data']['status-code'] == 200){
-//        $creds = array();
-//        $creds['user_login'] = $response['data']['user-data']['email'];
-//
-//        if($_REQUEST['remember'] == 1){
-//            $creds['remember'] = true;
-//        }
-//
-//        $user = wp_signon($creds, false);
-//        if (is_wp_error($user)) {
-//            echo  $response['error'] = $user->get_error_message();
-//        } else {
-//            $user_id = $user->data->ID;
-//            wp_set_current_user($user_id, $creds['user_login']);
-//            wp_set_auth_cookie($user_id);
-//
-//            wp_redirect(get_admin_url()); exit;
-//        }
-//    }
-//
-
-//
     global $pagenow;
     if( 'wp-login.php' == $pagenow ) {
 
         if($token = $_COOKIE['_wptk']){
 
-
-            // TODO -- 1. encode user ID in the token 2. add salt to the encode  3. add Lar side check
             $username = base64_decode($token);
-
             $explode = explode(' ', $username);
-
             $username = $explode[0];
 
             if(!$userID = username_exists( $username )){
@@ -524,7 +496,7 @@ function custom_login(){
             }
 
         }else{
-            wp_redirect('https://ideaing.com/login#?from=cms');
+            wp_redirect($_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['SERVER_NAME'] . '/login#?from=cms');
             exit();
         }
     }
@@ -541,19 +513,19 @@ function ideaingGlobalVars() {
     global $userData;
     global $isAdmin;
 
-     if(is_user_logged_in()){
-        $user = wp_get_current_user();
-        $token = base64_encode($user->user_email);
+    if(is_user_logged_in()){
+      $user = wp_get_current_user();
+      $token = base64_encode($user->user_email);
     }else{
-        $token = $_COOKIE['_wptk'];
+      $token = isset($_COOKIE['_wptk']) ? $_COOKIE['_wptk'] : '';
     }
 
 
-    if($token){
+    if($token && is_connected()){
 
         $ch = curl_init();
 
-       $url = 'https://ideaing.com/api/info';
+       $url = $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['SERVER_NAME'] . '/api/info';
 
         $data = array('_wptk' => $token);
 
@@ -563,6 +535,10 @@ function ideaingGlobalVars() {
                 'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
                 'method'  => 'POST',
                 'content' => http_build_query($data)
+            ),
+            "ssl" => array(
+                "verify_peer"=>false,
+                "verify_peer_name"=>false,
             )
         );
         $context  = stream_context_create($options);
@@ -572,7 +548,7 @@ function ideaingGlobalVars() {
 
         $result = unserialize(base64_decode($result));
 
-        
+
         $userData = $result['data']['user-data'];
         $isAdmin = $result['IsAdmin'];
 
@@ -591,10 +567,10 @@ add_action('admin_bar_menu', 'create_dwb_menu', 2000);
 add_filter( 'the_content', 'wpse44503_filter_content' );
 
 function wpse44503_filter_content( $content ) {
-    
+
      $newURL = str_replace('ideaing-ideas.s3.amazonaws.com', 'd3f8t323tq9ys5.cloudfront.net', $content);
 
-    return $newURL; 
+    return $newURL;
 }
 
 
@@ -757,6 +733,10 @@ add_shortcode( 'product_bar', 'product_bar_func' );
 function product_thumbs_func( $atts ) {
     $ids = str_replace(' ', '', $atts['id']);
 
+    if(!is_connected()){
+        return false;
+    }
+
     $json = file_get_contents('http://ideaing.dev/api/products/get-for-bar/' . $ids);
     $products = json_decode($json, true);
 
@@ -791,4 +771,194 @@ function product_thumbs_func( $atts ) {
 }
 add_shortcode( 'product_thumbs', 'product_thumbs_func' );
 
-?>
+
+// ADD STORIES (NEWS)
+
+add_action( 'init', 'create_post_type' );
+function create_post_type() {
+    register_post_type( 'story',
+        array(
+            'labels' => array(
+                'name' => __( 'Stories' ),
+                'singular_name' => __( 'Story' )
+            ),
+            'public' => true,
+            'has_archive' => true,
+        )
+    );
+}
+
+function getPostsFromYesterday(){
+    $timeStamp = date('Y-m-d', strtotime('yesterday'));
+    $date = date_create($timeStamp);
+
+//    $args['date_query'][0] = [
+//        'year' => date_format($date, 'Y'),
+//        'monthnum' => date_format($date, 'm'),
+//        'day' => date_format($date, 'Y')
+//    ];
+    $dateQuery = 'year='.date_format($date, 'Y').'&monthnum='.date_format($date, 'm').'&day='.date_format($date, 'd') ;
+
+    $posts = new WP_Query($dateQuery . '&posts_per_page=4');
+
+//    $return['regular'] = array_slice($posts, 0, 3);
+//    $return['featured'] = array_slice($posts, 4, 1);
+
+//    print_r($posts); die();
+    return $posts;
+
+}
+
+add_filter('body_class','add_category_to_single');
+function add_category_to_single($classes) {
+    if (is_single() ) {
+        global $post;
+        foreach((get_the_category($post->ID)) as $category) {
+            // add category slug to the $classes array
+            $classes[] = 'category-' . $category->category_nicename;
+        }
+    }
+    // return the $classes array
+    return $classes;
+}
+  function is_connected(){
+    $connected = @fsockopen("www.ideaing.com", 80);
+    //website, port  (try 80 or 443)
+    if ($connected){
+      $is_conn = true; //action when connected
+      fclose($connected);
+    }else{
+      $is_conn = false; //action in connection failure
+    }
+    return $is_conn;
+  }
+
+function login_classes( $classes ) {
+    $classes[] = 'logged-in';
+    return $classes;
+}
+add_filter( 'login_body_class', 'login_classes' );
+
+if (! function_exists('timeAgo')) {
+  function timeAgo($time_ago) {
+
+    $d1 = new DateTime($time_ago);
+    $d1 = $d1->format('M, d Y');
+    $time_ago = strtotime($time_ago);
+    $cur_time   = time();
+    $time_elapsed   = $cur_time - $time_ago;
+    $seconds    = $time_elapsed ;
+    $minutes    = round($time_elapsed / 60 );
+    $hours      = round($time_elapsed / 3600);
+    $days       = round($time_elapsed / 86400 );
+    $weeks      = round($time_elapsed / 604800);
+    $months     = round($time_elapsed / 2600640 );
+    $years      = round($time_elapsed / 31207680 );
+    // Seconds
+    if($seconds <= 60){
+      return "now";
+    }
+    //Minutes
+    else if($minutes <=60){
+      if($minutes==1){
+        return "1 minute ago";
+      }
+      else{
+        return "$minutes minutes ago";
+      }
+    }
+    //Hours
+    else if($hours <=24){
+      if($hours==1){
+        return "1 hour ago";
+      }else{
+        return "$hours hours ago";
+      }
+    }
+    //Days
+    else if($days <= 7){
+      if($days==1){
+        return "yesterday";
+      }else{
+        return "$days days ago";
+      }
+    }
+    //Weeks
+    else if($weeks <= 4.3){
+      if($weeks==1){
+        return "1 week ago";
+      }else{
+        return "$weeks weeks ago";
+      }
+    }
+    //Months
+    else if($months <=12){
+      return $d1;
+    }
+    //Years
+    else{
+      return $d1;
+    }
+  }
+}
+
+if (! function_exists('ideaing_is_plugin_active')){
+
+	/**
+	 * Helper to detect if plugin is already installed.
+	 *
+   * @since WooCommerce Integration 1.0
+	 */
+	function ideaing_is_plugin_active($plugin) {
+
+    return in_array($plugin, (array) get_option('active_plugins', array()));
+	}
+}
+
+if (! function_exists('ideaing_woocommerce_support')){
+
+  /**
+   * Declare WooCommerce support.
+   *
+   * @since WooCommerce Integration 1.0
+   */
+  function ideaing_woocommerce_support() {
+
+    add_theme_support( 'woocommerce' );
+  }
+  add_action( 'after_setup_theme', 'ideaing_woocommerce_support' );
+}
+
+// TODO: MERGE ALL SCRIPTS WITH PRODUCTION AND REMOVE THIS FUNCTION
+if (! function_exists('ideaing_woocommerce_scripts')){
+
+  /**
+   * Enqueues scripts and styles.
+   *
+   * @since WooCommerce Integration 1.0
+   */
+  function ideaing_woocommerce_scripts() {
+
+    // these could merge with main .css|js
+    wp_enqueue_style( 'ideaing-woocommerce-style', '/../assets/css/woocommerce.css', null, null );
+    wp_enqueue_script( 'ideaing-woocommerce-script', '/../assets/js/woocommerce.js', null, null, true );
+  }
+  add_action( 'wp_enqueue_scripts', 'ideaing_woocommerce_scripts' );
+}
+
+if (ideaing_is_plugin_active('woocommerce/woocommerce.php')){
+
+  /**
+   * WooCommerce template tags for this theme.
+   *
+   * @since WooCommerce Integration 1.0
+   */
+	require get_template_directory() . '/woocommerce/hooks.php';
+
+  /**
+   * WooCommerce widgets for this theme.
+   *
+   * @since WooCommerce Integration 1.0
+   */
+	require get_template_directory() . '/widgets/init.php';
+}

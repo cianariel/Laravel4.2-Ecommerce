@@ -28,7 +28,7 @@
                         <i class="icon-close"></i>
                     </a>
                     <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Search...">
+                        <input type="text" class="form-control" placeholder="Find Smart Products...">
                         <span class="input-group-btn">
                             <a href="javascript:;" class="btn submit">
                                 <i class="icon-magnifier"></i>
@@ -120,6 +120,20 @@
                     <li class="nav-item  ">
                         <a href="/admin/category-read" class="nav-link ">
                             <span class="title">Read Categories</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="nav-item  ">
+                <a href="javascript:;" class="nav-link nav-toggle">
+                    <i class="icon-tag"></i>
+                    <span class="title">Forum Categories</span>
+                    <span class="arrow"></span>
+                </a>
+                <ul class="sub-menu">
+                    <li class="nav-item  ">
+                        <a href="/admin/forum-category-view" class="nav-link ">
+                            <span class="title">Forum Category List</span>
                         </a>
                     </li>
                 </ul>

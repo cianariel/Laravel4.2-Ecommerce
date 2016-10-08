@@ -202,8 +202,13 @@ publicApp.controller('ModalInstanceCtrltest', function ($scope, $uibModalInstanc
             url: '/hide-signup',
             method: "GET",
 
-        }).success(function (data) {
-            $uibModalInstance.close();
+        }).success(function () {
+            $('#subscribe_email_popup').removeClass('ns-show');
+            $('#subscribe_email_popup').addClass('ns-goback');
+
+            setTimeout(function(){
+                $uibModalInstance.close();
+            }, 150);
         });
     };
 
@@ -217,8 +222,8 @@ publicApp.controller('ModalInstanceCtrltest', function ($scope, $uibModalInstanc
 
 });
 
-publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$window', '$timeout', '$location', '$anchorScroll', '$uibModal', 'layoutApi', '$compile', '$interval', 'FileUploader', 'pagingApi', '$uibModalStack'
-    , function ($rootScope, $scope, $http, $window, $timeout, $location, $anchorScroll, $uibModal, layoutApi, $compile, $interval, FileUploader, pagingApi, $uibModalInstance, $uibModalStack) {
+publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$window', '$timeout', '$uibModal', 'layoutApi', '$compile', '$interval', 'FileUploader', 'pagingApi', '$uibModalStack'
+    , function ($rootScope, $scope, $http, $window, $timeout,  $uibModal, layoutApi, $compile, $interval, FileUploader, pagingApi, $uibModalInstance, $uibModalStack) {
 
         // text area internal function for comment
         $scope.focusEditor = function () {
@@ -261,31 +266,32 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
             }
         }, 15000);//10000
 
-        $scope.openEmailPopuponTime = function () {
-            if (!$('body').hasClass('login-signup')) {
-                setTimeout(function () {
-                    $scope.getEmailPopup(false);
-                }, 25000)
-            }
+        // $scope.openEmailPopuponTime = function () {
+        //     if (!$('body').hasClass('login-signup')) {
+        //         setTimeout(function () {
+        //             $scope.getEmailPopup(false);
+        //         }, 25000)
+        //     }
 
-        }
+        // }
 
         $scope.getEmailPopup = function (clickStatus) {
-            // Header profile option open and close on click action.
 
             var templateUrl = "subscribe_email_popup.html";
 
             $scope.isSubscriberClicked = clickStatus;
 
-            //console.log('clicked : ' + $scope.isSubscriberClicked);
-            $scope.modalInstance = $uibModal.open({
+            instance = $uibModal.open({
+                    animation: true,
+                    backdrop:false,
                     templateUrl: templateUrl,
                     scope: $scope,
-                    size: 'md',
+                    size: 'lg',
                     windowClass: 'subscribe_email_popup',
                     controller: 'ModalInstanceCtrltest'
-                })
-                .result.finally(function () {
+                });
+
+            $scope.modalInstance = instance.result.finally(function () {
                     $scope.uploader.formData = [];
 
                     $http({
@@ -295,22 +301,32 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                     }).success(function (data) {
                         //  console.log(data)
                     });
-                });
-        };
 
-        //$scope.hideSiggnupModal = function () {
-        //    // Header profile option open and close on click action.
-        //
-        //    $http({
-        //        url: '/hide-signup',
-        //        method: "GET",
-        //
-        //    }).success(function (data) {
-        //        //$('.subscribe_email_popup').fadeOut();
-        //        $uibModalStack.dismissAll();
-        //
-        //    });
-        //};
+                    $('html').removeClass('overhide');
+            });
+
+                instance.rendered.then(function () {
+                    //console.log('yo maaaan1')
+
+                    var $this = $('.modal.subscribe_email_popup');
+
+                    if(window.innerWidth < 620){
+                        // Position modal absolute and bump it down to the scrollPosition
+                        $this.css({
+                            position: 'absolute',
+                            top: ($(window).scrollTop() + 40) + 'px',
+                        });
+                    }
+
+                    setTimeout(function(){
+                    //console.log('yo maaaan2')
+                     $('#subscribe_email_popup').addClass('ns-show');
+                     $('#subscribe_email_popup').removeClass('ns-hide');
+
+                    }, 500);
+
+                })
+        };
 
         $scope.openProfileSetting = function (onlyImage) {
 
@@ -446,6 +462,13 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
             $scope.PersonalInfo = '';
             $scope.Address = '';
             $scope.Permalink = '';
+            $scope.AcceptTerms = true;
+            $scope.AcceptTermsModal = true;
+
+            $scope.LoginEmail = '';
+            $scope.LoginPassword = '';
+            $scope.RememberMe = false;
+
 
             //settings for user profile edit section
             $scope.isProfilePage = false;
@@ -565,10 +588,55 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                     }
                 }
 
-                $('#hero-slider').royalSlider(args);
+                $('.story-hero-slider').royalSlider(args);
             });
-        };
 
+          
+             var args = {
+                    arrowsNav: false,
+                    loop: true,
+                    loopRewind: true,
+                    keyboardNavEnabled: true,
+                    controlsInside: true,
+                    controlNavigation: 'thumbnails',
+                    arrowsNavAutoHide: false,
+                    slidesSpacing: 0,
+                    imageScaleMode: false,
+                    imgWidth: 1175,
+                    imageAlignCenter: true,
+                    //autoScaleSliderWidth: 1180,
+                    //autoScaleSliderHeight: 394,
+                    thumbsFitInViewport: false,
+                    navigateByClick: true,
+                    startSlideId: 0,
+                    autoPlay: {
+                        enabled: true,
+                        pauseOnHover: true,
+                        delay: 15000
+                    },
+                    transitionType: 'move',
+                    globalCaption: false,
+                    addActiveClass: true,
+                    deeplinking: {
+                        enabled: true,
+                        change: false
+                    },
+                    visibleNearby: {
+                        enabled: false,
+                        center: true,
+                    },
+                    thumbs: {
+                        arrows: false,
+                        appendSpan: true,
+                        firstMargin: false,
+                        orientation: 'horizontal'
+                    },
+
+                };
+                $('.default-hero-slider').royalSlider(args);
+
+
+        };
 
         $scope.isEmpty = function (data) {
             if (!data || data.length === 0)
@@ -720,15 +788,20 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
         };
 
         // Add an Alert in a web application
-        $scope.addAlert = function (alertType, message) {
-            //$scope.alertType = alertType;
+        $scope.addAlert = function (alertType, message, category) {
             $scope.alertHTML = message;
-            $scope.alerts.push({type: alertType});
 
+            if(category !== undefined){
+                $scope.alerts[category] = [];
+                $scope.alerts[category].push({type: alertType});
+            }else{
+                $scope.alerts.push({type: alertType});
+            }
         };
 
         $scope.closeAlert = function (index) {
-            $scope.alerts.splice(index, 1);
+            $scope.alerts = [];
+            $scope.responseMessage = '';
 
         };
 
@@ -748,9 +821,11 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
 
 
         // Build popup notification box based on status.
-        $scope.outputStatus = function (data, message, goTo) {
+        $scope.outputStatus = function (data, message, goTo, from) {
 
             var statusCode = data.status_code;
+
+            //console.log(statusCode);
             
             switch (statusCode) {
                 case 400:
@@ -773,9 +848,39 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                         window.location = '/login';
                     }
                     else if (data.data == 'Registration completed successfully') {
-                        $scope.loginUser('profile');
+                        $scope.addAlert('success', 'SUCCESS! You just made the best decision', 'register');
+
+                        if(from == 'subscribe-modal'){
+                            $('.toggles, .bordering .content').animate({opacity: "0"}, function(){
+                                setTimeout(function(){
+                                    $scope.hideAndForget();
+                                    window.location = '/welcome';
+                                }, 2000);
+                            })
+                        }else{
+                            setTimeout(function(){
+                               // $scope.hideAndForget();
+                                window.location = '/welcome';
+                            }, 2000);
+                        }
+
+
                     } else if (data.data == 'Registration completed successfully, please verify your email') {
-                        $scope.loginUser();
+                        $scope.addAlert('success', 'SUCCESS! You just made the best decision', 'register');
+
+                        if(from == 'subscribe-modal'){
+                            $('.toggles, .bordering .content').animate({opacity: "0"}, function(){
+                                setTimeout(function(){
+                                    //$scope.hideAndForget();
+                                    //window.location = '/welcome';
+                                }, 2000);
+                            })
+                        }else{
+                            setTimeout(function(){
+                               // $scope.hideAndForget();
+                                window.location = '/welcome';
+                            }, 2000);
+                        }
                     }
 
 
@@ -793,6 +898,8 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                     		window.location = '/';		 
                     	}else if(goTo == 'profile'){
                             window.location = '/user/profile';      
+                    	}else if(goTo == 'welocome'){
+                            window.location = '/welcome';
                     	}else{
 
                             if($('html').hasClass('idea-stories')){
@@ -891,9 +998,12 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                 $scope.itemId = pid;
                 $scope.comments = data.data;
                 $scope.commentsCount = $scope.comments.length;
-                $scope.commentsCountView = $scope.commentsCount < 2 ? $scope.commentsCount + " " + "Comment" : $scope.commentsCount + " " + "Comments";
 
-                //  console.log($scope.commentsCount);
+                if($scope.commentsCount == 0){
+                    $scope.commentsCountView = 'Drop a Comment'
+                }else{
+                    $scope.commentsCountView = $scope.commentsCount < 2 ? $scope.commentsCount + " " + "Comment" : $scope.commentsCount + " " + "Comments";
+                }
 
             });
         };
@@ -1016,9 +1126,9 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
             else
                 source = '';
 
-
-          //  console.log('formData')
-          //  console.log(formData)
+            if(formData === undefined){
+                $scope.responseMessage = "Please enter an email";
+            }
 
             $http({
                 url: '/api/subscribe',
@@ -1028,17 +1138,24 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                     'Source': source,
                     'SetCookie': 'true'
                 }
-            }).success(function (data) {
+            }).success(function (data) { 
 
                 if (data.status_code == 406) {
 
                     $scope.responseMessage = "Please enter a valid email";
                 }
                 else if (data.status_code == 200) {
-                    $scope.responseMessage = "Thanks! You've subscribed successfully";
 
+                    $scope.responseMessage = "Success! You'll start receiving the best tips in the world";
+                    // $('.alerts').addClass('alertme');  
+                    $('.toggles, .bordering .content').animate({opacity: "0"}, function(){
+                         setTimeout(function(){ 
+                            $scope.hideAndForget();
+                        }, 2000);
+                    })
+ 
                     //Redirect a user to registration page. 
-                    window.location = '/signup/' + formData.SubscriberEmail + '/' + source;
+                    //window.location = '/signup/' + formData.SubscriberEmail + '/' + source;
 
                 } else if (data.data.isUser == 1) {
                     $scope.responseMessage = "This email already exists, redirecting to Log In";
@@ -1105,10 +1222,10 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                     $scope.responseMessage = data;
                 }
             });
-
+ 
         };
 
-        $scope.registerSubscribedUser = function () {
+        $scope.registerSubscribedUser = function (from) {
 
             // defining the regsitration source
             sourceSegment = '';
@@ -1121,12 +1238,15 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
             else if (valSeg[3] == 'home')
                 sourceSegment = 'home';
 
-            //  console.log(valSeg);
-            //  return;
             $scope.closeAlert();
 
+            if ($scope.AcceptTerms == false && $scope.AcceptTermsModal == false) {
+                $scope.addAlert('danger', 'Please accept the Terms and Conditions', 'register');
+                return;
+            }
+
             if ($scope.FullName == '') {
-                $scope.addAlert('danger', 'Please enter your name');
+                $scope.addAlert('danger', 'Please enter your name', 'register');
                 return;
             }
 
@@ -1134,19 +1254,19 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
             var emailTest = re.test($scope.Email);
 
             if (emailTest == false) {
-                $scope.addAlert('danger', 'Please enter a valid email');
+                $scope.addAlert('danger', 'Please enter a valid email', 'register');
                 return;
             }
 
-            if ($scope.Password == '' || $scope.PasswordConf == '') {
-                $scope.addAlert('danger', 'Please enter both password and confirmation');
+            if ($scope.Password == '') {
+                $scope.addAlert('danger', 'Please enter the password', 'register');
                 return;
             }
 
-            if ($scope.Password != $scope.PasswordConf) {
-                $scope.addAlert('danger', 'Passwords do not match!');
-                return;
-            }
+            //if ($scope.Password != $scope.PasswordConf) {
+            //    $scope.addAlert('danger', 'Passwords do not match!');
+            //    return;
+            //}
 
             $http({
                 url: '/api/register-user',
@@ -1159,10 +1279,8 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                     Valid: true
                 }
 
-            }).success(function (data) {
-                console.log(115)
-
-                $scope.outputStatus(data, data.data, 'profile');
+            }).success(function (data) { 
+                $scope.outputStatus(data, data.data, 'welcome', from);
             });
 
         };
@@ -1311,12 +1429,17 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
 
         $scope.registerWithFB = function () {
 
-            window.location = '/api/fb-login';
+            //window.location = '/api/fb-login';
+
+            $window.open('/api/fb-login', 'Register with Facebook', 'width=750,height=500');
+
         };
 
         $scope.giveawayLoginFB = function () {
 
-            window.location = '/api/fb-login?vlu=giveaway&pl=' + $window.giveawayLink;
+            var $modal = $window.open('/api/fb-login?vlu=giveaway&pl=' + $window.giveawayLink, 'Register with Facebook', 'width=750,height=500');
+
+            //window.location = '/api/fb-login?vlu=giveaway&pl=' + $window.giveawayLink;
         };
 
 
@@ -1327,9 +1450,9 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                 url: '/api/authenticate',
                 method: "POST",
                 data: {
-                    Email: $scope.Email,
-                    Password: $scope.Password,
-                    RememberMe: $scope.rememberMe == true ? true : false
+                    Email: $scope.LoginEmail,
+                    Password: $scope.LoginPassword,
+                    RememberMe: $scope.RememberMe == true ? true : false
                 }
             }).success(function (data) {
                 var WpLoginURL = '/ideas/api?call=login&username=' + $scope.Email + '&password=' + $scope.Password + '&remember=' + $scope.rememberMe;
@@ -1339,19 +1462,19 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                     method: "GET"
 
                 }).success(function (response) {
-                    var from = $location.search().from;
-                    if (from === 'cms') {
-                        window.location = '/ideas/wp-admin';
+                    // var from = $location.search().from;
+                    // if (from === 'cms') {
+                    //     window.location = '/ideas/wp-admin';
 
-                    }
+                    // }
                 }).error(function (response) {
-                    console.log(response)
-                    if (response.success) {
-                        var from = $location.search().from;
-                        if (from === 'cms') {
-                            window.location = '/ideas/wp-admin';
-                        }
-                    }
+                    // console.log(response)
+                    // if (response.success) {
+                    //     var from = $location.search().from;
+                    //     if (from === 'cms') {
+                    //         window.location = '/ideas/wp-admin';
+                    //     }
+                    // }
                      $scope.outputStatus(data, data.data, goTo);
 
                 });
@@ -1376,12 +1499,12 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
 
         $scope.passwordResetRequest = function () {
             $scope.closeAlert();
-            if (!$scope.Email) {
+            if (!$scope.LoginEmail) {
                 $scope.addAlert('danger', 'The Email field is required!');
                 return;
             }
             $http({
-                url: '/password-reset-request/' + $scope.Email,
+                url: '/password-reset-request/' + $scope.LoginEmail,
                 method: "GET",
             }).success(function (data) {
                 $scope.outputStatus(data, data.data);

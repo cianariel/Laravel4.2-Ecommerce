@@ -1,71 +1,14 @@
 <?php
-function timeAgo($time_ago)
-{
-	$d1 = new DateTime($time_ago);
-	$d1 = $d1->format('M, d Y');
-    $time_ago = strtotime($time_ago);
-    $cur_time   = time();
-    $time_elapsed   = $cur_time - $time_ago;
-    $seconds    = $time_elapsed ;
-    $minutes    = round($time_elapsed / 60 );
-    $hours      = round($time_elapsed / 3600);
-    $days       = round($time_elapsed / 86400 );
-    $weeks      = round($time_elapsed / 604800);
-    $months     = round($time_elapsed / 2600640 );
-    $years      = round($time_elapsed / 31207680 );
-    // Seconds
-    if($seconds <= 60){
-        return "now";
-    }
-    //Minutes
-    else if($minutes <=60){
-        if($minutes==1){
-            return "1 minute ago";
-        }
-        else{
-            return "$minutes minutes ago";
-        }
-    }
-    //Hours
-    else if($hours <=24){
-        if($hours==1){
-            return "1 hour ago";
-        }else{
-            return "$hours hours ago";
-        }
-    }
-    //Days
-    else if($days <= 7){
-        if($days==1){
-            return "yesterday";
-        }else{
-            return "$days days ago";
-        }
-    }
-    //Weeks
-    else if($weeks <= 4.3){
-        if($weeks==1){
-            return "1 week ago";
-        }else{
-            return "$weeks weeks ago";
-        }
-    }
-    //Months
-    else if($months <=12){
-    	return $d1;
-    }
-    //Years
-    else{
-    	return $d1;
-    }
-}
-
 function carbon_the_content_limit($max_char, $more_link_text = '(more...)', $stripteaser = 0, $more_file = '') {
 	$content = get_the_content($more_link_text, $stripteaser, $more_file);
 	$content = apply_filters('the_content', $content);
 	$content = str_replace(']]>', ']]&gt;', $content);
 	$content = strip_tags($content);
+<<<<<<< HEAD
 	if (!empty($_GET['p']) && strlen($_GET['p']) > 0) {
+=======
+	if (strlen(@$_GET['p']) > 0) {
+>>>>>>> 4a6d672f455644d3539e055233770b04f9718b3d
 		return $content;
 	}
 	else if ((strlen($content)>$max_char) && ($espacio = strpos($content, " ", $max_char ))) {
@@ -85,8 +28,13 @@ if($postCount==0)
     $postCount = -1;
 }
 
+<<<<<<< HEAD
 $onlyfeatured = !empty($_REQUEST['only-featured'])? $_REQUEST['only-featured'] : null;
 $no_featured = !empty($_REQUEST['no-featured'])? $_REQUEST['no-featured'] : null;
+=======
+$onlyfeatured = @$_REQUEST['only-featured'];
+$no_featured = @$_REQUEST['no-featured'];
+>>>>>>> 4a6d672f455644d3539e055233770b04f9718b3d
 $is_featured = "";
 
 if(isset($no_featured))
@@ -97,31 +45,40 @@ if(isset($onlyfeatured))
 {
     $is_featured = "Yes";
 }
+<<<<<<< HEAD
 $offset = $_REQUEST['offset'];
 $postCat = !empty($_REQUEST['category-id'])? $_REQUEST['category-id'] : null;
+=======
+$offset = @$_REQUEST['offset'];
+$postCat = @$_REQUEST['category-id'];
+>>>>>>> 4a6d672f455644d3539e055233770b04f9718b3d
 $args = array(
 'cat' => $postCat,
 'showposts' => $postCount,
 'offset' => $offset,);
 
+<<<<<<< HEAD
 if($catName = !empty($_REQUEST['category-name'])? $_REQUEST['category-name'] : null){
 
+=======
+if(isset($_REQUEST['category-name']) && $catName = @$_REQUEST['category-name']){
+    if($catName == 'smart-home'){
+        $catName = 'smarthome';
+    }
+>>>>>>> 4a6d672f455644d3539e055233770b04f9718b3d
     $args['tax_query'] = array(
-        'relation' => 'OR',
-        array(
-            'taxonomy' => 'post_tag',
-            'field' => 'slug',
-            'terms' => $catName,
-        ),
         array(
             'taxonomy' => 'category',
             'field' => 'slug',
             'terms' => $catName,
         ));
-
 }
 
+<<<<<<< HEAD
 if($byTags = !empty($_REQUEST['tag'])? $_REQUEST['tag'] : null){
+=======
+if($byTags = @$_REQUEST['tag']){
+>>>>>>> 4a6d672f455644d3539e055233770b04f9718b3d
     $args['tag'] = $byTags;
 }
 
@@ -133,46 +90,80 @@ if($byTags = !empty($_REQUEST['tag'])? $_REQUEST['tag'] : null){
     $args['author_name'] = $_REQUEST['author_name'];
 }
 
+$args['date_query'] = [];
 
-//echo $args['tag_slug__in']; die();
+if(isset($_REQUEST['daysback'])){
+    $dateQuery['after'] = $_REQUEST['daysback'] . ' days ago';
+}else{
+    if(isset($_REQUEST['year'])){
+        $dateQuery['year'] = $_REQUEST['year'];
+    }
+    if(isset($_REQUEST['monthnum'])){
+        $dateQuery['monthnum'] = $_REQUEST['monthnum'];
+    }
+    if(isset($_REQUEST['day'])){
+        $dateQuery['day'] = $_REQUEST['day'];
+    }
+}
 
+if(isset($dateQuery)){
+    $args['date_query'] = [$dateQuery];
+}
+
+<<<<<<< HEAD
 if($excludeID = !empty($_REQUEST['excludeid'])? $_REQUEST['excludeid'] : null){
+=======
+if($excludeID = @$_REQUEST['excludeid']){
+>>>>>>> 4a6d672f455644d3539e055233770b04f9718b3d
     $args['post__not_in'] = array($excludeID);
 }
 
-$args['meta_query'] = [
-    'relation'  => 'AND'
-];
+//$args['meta_query'] = [
+//    'relation'  => 'AND'
+//];
+
 
 if($is_featured != "")
 {
-$push= array(
+    $args['meta_query'][] = [
             'key'  => 'is_featured',
             'value' => $is_featured,
             'compare' => '='
-);
-    array_push($args['meta_query'], $push);
+];
+//    array_push($args['meta_query'], $push);
+}
+
+if(isset($_REQUEST['most-popular'])){
+    $args['meta_query'][] = [
+        'key'  => 'post_views_count',
+        'value' => 100,
+        'type'    => 'numeric',
+        'compare' => '>'
+    ];
+//    array_push($args['meta_query'], $push);
 }
 
 if(isset($_REQUEST['only-slider'])){
-    $push = [
-            'key'  => 'slider_content',
+    $args['meta_query'][] = [
+        'key'  => 'slider_content',
             'value' => 'yes',
             'compare' => '='
     ];
-    array_push($args['meta_query'], $push);
+//    array_push($args['meta_query'], $push);
 }
 
-$posts = query_posts($args);
+//$posts = query_posts($args);
 $posts = new WP_Query( $args );
 
 if ( $posts->have_posts() ) {
+
+		$is_connected = is_connected(); // only one time calling this would does the job
 
     if(isset($args['tag_slug__in']) && !have_posts()){ // if there are not posts with similar tags, get just any posts
         unset($args['tag_slug__in']);
         $posts = new WP_Query( $args );
     }
-    $datam = array();
+    $datam = array('posts'=>array());
     $data = array();
         while ($posts->have_posts()) {
             $posts->the_post();
@@ -180,6 +171,7 @@ if ( $posts->have_posts() ) {
             $data['id'] = $ID;
             $data['title'] = get_the_title();
             $data['views'] = getPostViews($ID);
+            $data['is_deal'] = has_tag('deal');
 
 
             if (isset($_REQUEST['full_content'])) {
@@ -189,15 +181,19 @@ if ( $posts->have_posts() ) {
             }
 
             $cats = get_the_category();
-            $data['category'] = $cat_name = $cats[0]->name;
+            $data['category'] = $data['is_deal'] ? 'Deals' : $cats[0]->name;
             $the_list = '';
             $cat_names = array();
 
             $filter = 'rss';
+<<<<<<< HEAD
 
             $type = empty($type)? 'raw':$type;
 
             if ('atom' == $type)
+=======
+            if ('atom' == @$type)
+>>>>>>> 4a6d672f455644d3539e055233770b04f9718b3d
                 $filter = 'raw';
 
             if (!empty($cats)) foreach ((array)$cats as $category) {
@@ -206,8 +202,22 @@ if ( $posts->have_posts() ) {
 
             $cat_names = array_unique($cat_names);
             $data['category_all'] = $cat_names;
+
+
+
+            if($data['is_deal']){
+                $data['category_main'] = 'deals';
+            }elseif(in_array('Smart Body', $cat_names)){
+                $data['category_main'] = 'smart-body';
+            }elseif(in_array('Smart Travel', $cat_names)){
+                $data['category_main'] = 'smart-travel';
+            }elseif(in_array('Smart Entertainment', $cat_names)){
+                $data['category_main'] = 'smart-entertainment';
+            }else{
+                $data['category_main'] = 'smarthome';
+            }
             $allTags = get_tags();
-            $data['is_deal'] = has_tag('deal');
+
             $data['url'] = get_the_permalink();
             $datepublishstring = get_the_time('Y-m-d H:i:s');
             $datepublish = timeAgo($datepublishstring);
@@ -229,17 +239,32 @@ if ( $posts->have_posts() ) {
             $data['author'] = get_the_author();
             $data['author_id'] = get_the_author_meta('ID');
 
+<<<<<<< HEAD
             $url = CUSTOM_URL.'/api/info-raw/'. get_the_author_meta('email');
             $laravelUser = file_get_contents($url);
             $laravelUser = json_decode($laravelUser, true);
-
-            $data['authorlink'] = $laravelUser['permalink'];
-
-            if (isset($laravelUser['medias'][0])) {
-                $data['avator'] = $laravelUser['medias'][0]['media_link'];
-            } else {
-                $data['avator'] = get_avatar_url(get_the_author_email(), '80');
+=======
+						$laravelUser = false;
+            if($is_connected){
+                $laravelUserContents = file_get_contents('https://ideaing.com/api/info-raw/' . get_the_author_meta('email'));
+                $laravelUser = $laravelUserContents ? json_decode($laravelUserContents, true) : false;
             }
+
+						$avatar = $authorlink = null;
+						if($laravelUser){
+>>>>>>> 4a6d672f455644d3539e055233770b04f9718b3d
+
+							if (isset($laravelUser['medias'])&&isset($laravelUser['medias'][0])) {
+	                $avator = $laravelUser['medias'][0]['media_link'];
+	            }
+							if (isset($laravelUser['authorlink'])) {
+									$authorlink = $laravelUser['permalink'];
+							}
+						}
+
+						$data['authorlink'] = $authorlink ? $authorlink : '';
+            $data['avator'] = $avator ? $avator : get_avatar_url(get_the_author_meta('email'), '80');
+
 
             $data['type'] = 'idea';
             $get_is_featured = get_post_custom_values('is_featured', $ID);
@@ -256,10 +281,17 @@ if ( $posts->have_posts() ) {
                 $data['tags_all'] = wp_get_post_tags($post->ID, array('fields' => 'names'));;
             }
 
-            $datam[] = $data;
+            $datam['posts'][] = $data;
         }
 
 }
+
+
+//if(isset($_REQUEST['get-total-count'])){
+    $args['showposts'] = -1;
+    $countPosts = new WP_Query($args);
+    $datam['totalCount'] = count($countPosts->posts);
+//}
 
 echo json_encode($datam);
 //print_r(json_decode(json_encode($data)));

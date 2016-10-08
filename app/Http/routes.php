@@ -28,12 +28,10 @@ Route::get('x', 'UserController@sendActivityMailToUsers');
 Route::any('secure-page-header', 'UserController@securePageHeader');
 
 
-Route::get('/', 'PageController@home');
-//Route::get('/{permalink?}', 'PageController@home');
 
 Route::get('update-price', 'ProductController@priceUpdate');
 
-Route::get('unsubscribe', 'PageController@home');
+Route::get('unsubscribe', 'PageController@categoryPage');
 
 Route::get('open/{productId}/{reference}', 'ProductQueryController@link');
 
@@ -41,11 +39,15 @@ Route::post('api/product/get-price/', 'ProductController@getPrice');
 Route::post('api/product/get-for-thumb/', 'ProductController@getForThumb');
 
 
-/*
- * clean server cache
- * */
+Route::get('/', 'PageController@categoryPage');
+Route::get('/smart-home', 'PageController@categoryPage');
+Route::get('/smart-body', 'PageController@categoryPage');
+Route::get('/smart-travel', 'PageController@categoryPage');
+Route::get('/smart-entertainment', 'PageController@categoryPage');
 
-Route::get('/flash/{key?}', 'PageController@cleanRadisCache');
+Route::get('welcome', function () {
+    return view('user.welcome');
+});
 
 /*
  * General routes
@@ -58,13 +60,6 @@ Route::get('/privacy-policy', 'PageController@privacyPolicy');
 Route::get('/terms-of-use', 'PageController@termsOfUse');
 Route::get('giveaway/{permalink?}', 'PageController@giveaway');
 //Route::get('giveaway-details/{permalink?}', 'PageController@giveaway');
-
-/*
- * Forced redirect
- * */
-
-Route::get('/smartbody/{parent?}', 'ShopController@forcedShopIndexForSmartBody');
-
 
 Route::group(['prefix' => 'api'], function () {
     /*
@@ -169,6 +164,16 @@ Route::group(['prefix' => 'api'], function () {
     Route::get('category/all-read-category', 'ProductCategoryController@getAllReadCategoryItem');
 
 
+    /*
+     * Forum Category route collection
+     *
+     * */
+    Route::get('forum-category/show-category-items/{id?}', 'ForumApiController@getCategories');
+    Route::post('forum-category/update-category', 'ForumApiController@updateCategory');
+    Route::post('forum-category/add-category', 'ForumApiController@addCategory');
+    Route::post('forum-category/delete-category', 'ForumApiController@deleteCategory');
+
+    
 
 
     /*
@@ -299,6 +304,9 @@ Route::group(['prefix' => 'admin'], function () {
     Route::get('category-edit', 'AdminController@editCategory');
     Route::get('category-read', 'AdminController@readCategory');
 
+    // Forum Category view
+    Route::get('forum-category-view', 'AdminController@forumCategoryView');
+
 
     // Product view
     Route::get('product-view', 'AdminController@productView');
@@ -402,7 +410,15 @@ Route::get('/api/paging/get-top-mobile-menu', 'PageController@getTopMenuItems');
 
 
 Route::get('/api/paging/get-content/{page?}/{limit?}/{type?}/{tag?}/{productCategory?}/{sortBy?}', 'PageController@getContent');
-Route::get('/api/paging/get-grid-content/{page?}/{limit?}/{tag?}/{type?}/{ideaCategory?}', 'PageController@getGridContent');
+Route::get('/api/paging/get-grid-content/{page?}/{limit?}/{tag?}/{type?}/{ideaCategory?}/{daysBack?}', 'PageController@getGridContent');
+//get-read-content
+Route::get('/api/paging/get-read-content/{category?}', 'PageController@getReadContent');
+
+
+
+
+Route::get('/api/paging/get-most-popular', 'PageController@getMostPopular');
+//Route::get('/api/paging/get-timeline-content/{page?}/{limit?}/{tag?}/{type?}/{ideaCategory?}', 'PageController@getTimelineContent');
 Route::get('/api/layout/get-shop-menu', 'PageController@getShopMenu');
 Route::get('/api/social/get-social-counts', 'PageController@getSocialCounts');
 Route::get('/api/social/get-fan-counts', 'PageController@getFollowerCounts');

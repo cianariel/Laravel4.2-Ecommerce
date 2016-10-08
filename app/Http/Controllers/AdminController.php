@@ -136,6 +136,51 @@ class AdminController extends ApiController
 
     }
 
+    // Forum Category view
+
+    public function forumCategoryView()
+    {
+
+        if ($this->authCheck['method-status'] == 'success-with-http') {
+            return view('admin.forum-category-view')->with('userData', $this->authCheck);
+
+        } elseif ($this->authCheck['method-status'] == 'fail-with-http') {
+            return \Redirect::to('login');
+        }
+
+
+    }
+
+    public function addForumCategory()
+    {
+        if ($this->authCheck['method-status'] == 'success-with-http') {
+            return view('admin.forum-category-add')->with('userData', $this->authCheck);
+
+
+        } elseif ($this->authCheck['method-status'] == 'fail-with-http') {
+            return \Redirect::to('login');
+
+        }
+
+    }
+
+    public function editForumCategory()
+    {
+
+    }
+
+    public function readForumCategory()
+    {
+
+        if ($this->authCheck['method-status'] == 'success-with-http') {
+            return view('admin.forum-category-read')->with('userData', $this->authCheck);
+
+        } elseif ($this->authCheck['method-status'] == 'fail-with-http') {
+            return \Redirect::to('login');
+        }
+
+    }
+
     // Product view
     public function productView()
     {

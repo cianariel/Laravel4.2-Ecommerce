@@ -429,6 +429,9 @@ class Product extends Model
             $productModel = $productModel->orWhereIn("id", $productIds);
         }
 
+        if (@$settings['Date']) {
+            $productModel = $productModel->whereDate("created_at", '=', $settings['Date']);
+        }
 
         $skip = isset($settings['CustomSkip']) ? intval($settings['CustomSkip']) : $settings['limit'] * ($settings['page'] - 1);
 
@@ -487,6 +490,22 @@ class Product extends Model
 
             // Add store information
             $tmp->storeInfo = $this->getStoreInfoByProductId($id);
+//            $tmp->master_category = $this->getStoreInfoByProductId($id);
+
+            $category = Product::find($id)->productCategory;
+
+            $parentCategory = ProductCategory::find($category->parent_id);
+
+            if($parentCategory){
+                if($parentCategory->parent_id){
+                    $parentCategory = ProductCategory::find($parentCategory->parent_id);
+                }
+                $tmp->master_category = $parentCategory->extra_info;
+                $tmp->master_category_name = $parentCategory->category_name;
+
+            }else{
+                $tmp->master_category = $category->extra_info;
+            }
 
             $review = json_decode($tmp->review);
 

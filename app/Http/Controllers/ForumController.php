@@ -26,8 +26,6 @@ class ForumController extends ApiController
         if ($this->authCheck['method-status'] == 'success-with-http' || $this->authCheck['method-status'] == 'success-with-ajax') {
             $this->userData = $this->authCheck['user-data'];
         }
-//        $this->userData['id'] = "42";
-//        $this->userData['email'] = "ranta@ho.com";
 
         //check user authentication and get user basic information
         $this->categoryModel = new ForumCategory;

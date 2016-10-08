@@ -8,6 +8,8 @@
 html {
 	-webkit-font-smoothing: antialiased;
 	height: auto;
+    height: 100%;
+    overflow-x: hidden;
 }
 
 body {
@@ -18,6 +20,12 @@ body {
 	line-height: $base-line-height;
 	-webkit-text-size-adjust: 100%;
 	color: $base-font-color;
+    overflow-x: hidden;
+
+}
+
+html.hide-overflow{
+  overflow: hidden;
 }
 
 

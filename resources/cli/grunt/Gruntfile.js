@@ -19,6 +19,10 @@ module.exports = function(grunt) {
                     '../../assets/main/js/vendor/jquery-1.11.3.min.js',
                     '../../assets/main/js/vendor/jquery.easing-1.3.js',
 
+                    '../../assets/main/js/vendor/segment.min.js',
+                    '../../assets/main/js/vendor/ease.min.js',
+
+
                     '../../assets/main/js/vendor/angular.min.js',
                     '../../assets/main/js/vendor/readmore.min.js',
                     '../../assets/main/js/vendor/angular-busy.min.js',
@@ -38,6 +42,8 @@ module.exports = function(grunt) {
                     '../../assets/main/js/vendor/bootstrap-colorpicker-module.js',
 
                     '../../assets/main/js/app.js',
+                    '../../assets/main/js/shams.js',
+
                     '../../assets/main/js/angular-custom/public.common.js',
                     '../../assets/main/js/angular-custom/custom.paging.js',
                     '../../assets/main/js/angular-custom/custom.product.js',
@@ -148,6 +154,7 @@ module.exports = function(grunt) {
     grunt.registerTask('js', ['concat:main', 'concat:admin', 'uglify:all']);
     grunt.registerTask('css', ['sass', 'concat:maincss','concat:admincss','cssmin']);
     grunt.registerTask('admincss', ['concat:admincss','cssmin']);
+    grunt.option('force', true);
 
 
 

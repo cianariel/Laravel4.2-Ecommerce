@@ -27,6 +27,7 @@ use PhpParser\Comment as pharComment;
 use Zizaco\Entrust\Traits\EntrustUserTrait;
 use Fenos\Notifynder\Notifable;
 use Carbon\Carbon;
+use PageHelper;
 
 //use CustomAppException;
 
@@ -628,28 +629,18 @@ class User extends Model implements AuthenticatableContract,
 
 
         $url = \URL::to('/') . '/ideas/feeds/index.php?count=' . $limit . '&offset=' . $offset . '&author_name=' . $permalink;
-        // dd($url);
+       //  $url = 'https://ideaing.com' . '/ideas/feeds/index.php?count=' . $limit . '&offset=' . $offset . '&author_name=' . $permalink;
 
-        $ch = curl_init();
-        curl_setopt($ch, CURLOPT_URL, $url);
-        curl_setopt($ch, CURLOPT_HEADER, 0);
-        curl_setopt($ch, CURLOPT_VERBOSE, true);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-        curl_setopt($ch, CURLOPT_ENCODING, "");
-        $json = curl_exec($ch);
-
-        //  dd($json);
+       // dd($url);
+        $json = \PageHelper::getFromCurl($url);
 
         $ideaCollection = json_decode($json);
-
-        //   dd($ideaCollection);
 
         $ideaCollection = empty($ideaCollection) ? [] : $ideaCollection;
 
 
+        $ideaCollection = collect($ideaCollection);
         $ideas = new Collection();
-
         $comment = new appComment();
         $heart = new Heart();
 
@@ -657,6 +648,9 @@ class User extends Model implements AuthenticatableContract,
         // dd($ideaCollection);
 
         foreach ($ideaCollection as $item) {
+
+            if(empty($item->id))
+                continue;
 
             $tmpCollection = collect([
                 'id' => $item->id,

@@ -209,6 +209,14 @@ jQuery.extend( jQuery.easing,
  * OF THE POSSIBILITY OF SUCH DAMAGE. 
  *
  */;
+/**
+ * segment - A little JavaScript class (without dependencies) to draw and animate SVG path strokes
+ * @version v0.0.2
+ * @link https://github.com/lmgonzalves/segment
+ * @license MIT
+ */
+function Segment(t,e,n){this.path=t,this.length=t.getTotalLength(),this.path.style.strokeDashoffset=2*this.length,this.begin=e?this.valueOf(e):0,this.end=n?this.valueOf(n):this.length,this.timer=null,this.draw(this.begin,this.end)}Segment.prototype={draw:function(t,e,n,i){if(n){var s=i.hasOwnProperty("delay")?1e3*parseFloat(i.delay):0,a=i.hasOwnProperty("easing")?i.easing:null,h=i.hasOwnProperty("callback")?i.callback:null,r=this;if(this.stop(),s)return delete i.delay,this.timer=setTimeout(function(){r.draw(t,e,n,i)},s),this.timer;var l=new Date,o=1e3/60,g=this.begin,f=this.end,u=this.valueOf(t),d=this.valueOf(e);!function p(){var t=new Date,e=(t-l)/1e3,i=e/parseFloat(n),s=i;return"function"==typeof a&&(s=a(s)),i>1?(r.stop(),s=1):r.timer=setTimeout(p,o),r.begin=g+(u-g)*s,r.end=f+(d-f)*s,r.begin<0&&(r.begin=0),r.end>r.length&&(r.end=r.length),r.begin<r.end?r.draw(r.begin,r.end):r.draw(r.begin+(r.end-r.begin),r.end-(r.end-r.begin)),i>1&&"function"==typeof h?h.call(r.context):void 0}()}else this.path.style.strokeDasharray=this.strokeDasharray(t,e)},strokeDasharray:function(t,e){return this.begin=this.valueOf(t),this.end=this.valueOf(e),[this.length,this.length+this.begin,this.end-this.begin].join(" ")},valueOf:function(t){var e=parseFloat(t);if(("string"==typeof t||t instanceof String)&&~t.indexOf("%")){var n;~t.indexOf("+")?(n=t.split("+"),e=this.percent(n[0])+parseFloat(n[1])):~t.indexOf("-")?(n=t.split("-"),e=this.percent(n[0])-parseFloat(n[1])):e=this.percent(t)}return e},stop:function(){clearTimeout(this.timer),this.timer=null},percent:function(t){return parseFloat(t)/100*this.length}};;
+!function(n,t){"object"==typeof exports&&"undefined"!=typeof module?t(exports):"function"==typeof define&&define.amd?define(["exports"],t):t(n.ease={})}(this,function(n){"use strict";function t(n,t){return null==n||isNaN(n)?t:+n}function u(n,u){n=Math.max(1,t(n,1)),u=t(u,.3)*A;var i=u*Math.asin(1/n);return function(t){return n*Math.pow(2,10*--t)*Math.sin((i-t)/u)}}function i(n,u){n=Math.max(1,t(n,1)),u=t(u,.3)*A;var i=u*Math.asin(1/n);return function(t){return n*Math.pow(2,-10*t)*Math.sin((t-i)/u)+1}}function r(n,u){n=Math.max(1,t(n,1)),u=1.5*t(u,.3)*A;var i=u*Math.asin(1/n);return function(t){return n*((t=2*t-1)<0?Math.pow(2,10*t)*Math.sin((i-t)/u):Math.pow(2,-10*t)*Math.sin((t-i)/u)+2)/2}}function o(n){return n=t(n,1.70158),function(t){return t*t*((n+1)*t-n)}}function e(n){return n=t(n,1.70158),function(t){return--t*t*((n+1)*t+n)+1}}function c(n){return n=1.525*t(n,1.70158),function(t){return((t*=2)<1?t*t*((n+1)*t-n):(t-=2)*t*((n+1)*t+n)+2)/2}}function a(n){return 1-f(1-n)}function f(n){return B>n?L*n*n:D>n?L*(n-=C)*n+E:G>n?L*(n-=F)*n+H:L*(n-=J)*n+K}function h(n){return((n*=2)<=1?1-f(1-n):f(n-1)+1)/2}function s(n){return 1-Math.sqrt(1-n*n)}function M(n){return Math.sqrt(1- --n*n)}function p(n){return((n*=2)<=1?1-Math.sqrt(1-n*n):Math.sqrt(1-(n-=2)*n)+1)/2}function l(n){return Math.pow(2,10*n-10)}function w(n){return 1-Math.pow(2,-10*n)}function b(n){return((n*=2)<=1?Math.pow(2,10*n-10):2-Math.pow(2,10-10*n))/2}function d(n){return 1-Math.cos(n*R)}function y(n){return Math.sin(n*R)}function x(n){return(1-Math.cos(Q*n))/2}function q(n){return n*n*n}function k(n){return--n*n*n+1}function m(n){return((n*=2)<=1?n*n*n:(n-=2)*n*n+2)/2}function v(n){return n*n}function P(n){return n*(2-n)}function O(n){return((n*=2)<=1?n*n:--n*(2-n)+1)/2}function g(n){return+n}function I(n){return n=t(n,3),function(t){return Math.pow(t,n)}}function N(n){return n=t(n,3),function(t){return 1-Math.pow(1-t,n)}}function j(n){return n=t(n,3),function(t){return((t*=2)<=1?Math.pow(t,n):2-Math.pow(2-t,n))/2}}function z(n,t,u){var i=(n+="").indexOf("-");return 0>i&&(n+="-in"),arguments.length>1&&T.hasOwnProperty(n)?T[n](t,u):S.hasOwnProperty(n)?S[n]:g}var A=1/(2*Math.PI),B=4/11,C=6/11,D=8/11,E=.75,F=9/11,G=10/11,H=.9375,J=21/22,K=63/64,L=1/B/B,Q=Math.PI,R=Q/2,S={"linear-in":g,"linear-out":g,"linear-in-out":g,"quad-in":v,"quad-out":P,"quad-in-out":O,"cubic-in":q,"cubic-out":k,"cubic-in-out":m,"poly-in":q,"poly-out":k,"poly-in-out":m,"sin-in":d,"sin-out":y,"sin-in-out":x,"exp-in":l,"exp-out":w,"exp-in-out":b,"circle-in":s,"circle-out":M,"circle-in-out":p,"bounce-in":a,"bounce-out":f,"bounce-in-out":h,"back-in":o(),"back-out":e(),"back-in-out":c(),"elastic-in":u(),"elastic-out":i(),"elastic-in-out":r()},T={"poly-in":I,"poly-out":N,"poly-in-out":j,"back-in":o,"back-out":e,"back-in-out":c,"elastic-in":u,"elastic-out":i,"elastic-in-out":r};n.ease=z});;
 /*
  AngularJS v1.5.0-rc.0
  (c) 2010-2015 Google, Inc. http://angularjs.org
@@ -3600,6 +3608,8 @@ angular.module('colorpicker.module', [])
     }]);;
 (function ($, root, undefined) {
 
+
+
 	$(function () {
 
 
@@ -3625,7 +3635,7 @@ angular.module('colorpicker.module', [])
                 $($show).fadeToggle();
                 $that.toggleClass('active');
             }
-
+            return false;
         });
 
         $('body').on('click', '[data-switch]', function(e){
@@ -3633,13 +3643,7 @@ angular.module('colorpicker.module', [])
             var $that = $(this);
             var $show = $that.data('switch');
             var $hide = $that.data('hide');
-            //var $overlay = $that.data('overlay');
 
-            //if($overlay){
-            //    $('.page-overlay').fadeToggle();
-            //}
-
-            //if($hide){
             $($hide).fadeOut(
                 function(){
                     $($show).fadeIn();
@@ -3648,17 +3652,125 @@ angular.module('colorpicker.module', [])
 
             if(!$that.hasClass('active')){
                 $that.addClass('active');
-                $that.siblings().removeClass('active');
-            }else{
-                $that.removeClass('active');
+                $that.siblings().not($that).removeClass('active');
             }
+            return false;
+        });
+
+        $('[data-slidein]').on('click', function(e){
+            e.preventDefault();
+            var $that = $(this);
+            var $show = $that.data('slidein');
+            var $hide = $that.data('hide');
+
+            //if(!$that.hasClass('active')){
+            //    console.log(33)
+
+                $that.toggleClass('active');
+                $($show).toggleClass('slid-in');
+                if($hide){
+                    $($hide).fadeToggle();
+                }
+                return true;
 
             //}else{
-            //    $($show).fadeToggle();
-            //    $that.toggleClass('active');
+            //    console.log(22)
+            //    $that.removeClass('active');
+            //    $($show).removeClass('slid-in');
+            //    if($hide){
+            //        $($hide).fadeIn();
+            //    }
+            //    return true;
+            //
             //}
 
         });
+
+
+        $('body').on('click', '[data-click]', function(e){
+            e.preventDefault();
+            var $that = $(this);
+            var $clickMe = $that.data('click');
+
+            $($clickMe).click();
+
+            return false;
+        });
+
+        $('body').on('click', '[data-showpass]', function(e){
+            e.preventDefault();
+            var $that = $(this);
+            var $selector = $that.data('showpass');
+            var $node = $($selector);
+
+            if($node.attr('type') == 'password'){
+                $($node).attr('type', 'text');
+                $that.text('hide');
+            }else if($node.attr('type') == 'text'){
+                $($node).attr('type', 'password');
+                $that.text('show');
+            }
+            return false;
+        });
+
+        $('body').on('click', '.search-toggle-button.desktop', function(e){
+            e.preventDefault();
+            var $show = $('.desktop-search-bar');
+
+            if(!$show.hasClass('shown')){
+                $(this).addClass('active');
+                $show.show();
+                $show.animate({
+                    opacity: '1',
+                    top: '50px',
+                }, 600)
+                $show.addClass('shown');
+                $show.find('input').focus();
+            }else{
+                $(this).removeClass('active');
+
+                $show.animate({
+                    top: '35px',
+                    opacity: 0,
+                }, 200);
+                $show.fadeOut();
+                $show.removeClass('shown');
+            }
+        });
+
+        $('body').on('click', '.search-toggle-button.mobile', function(e){
+            e.preventDefault();
+            $(this).toggleClass('active');
+            $('.mobile-search-bar').toggleClass('on');
+            $('.mobile-search-bar').find('input').focus();
+            $('.category-menu').fadeToggle();
+            //$('.category-menu' ).animate({
+            //    opacity: 0,
+            //}, 1000);
+        });
+
+        $('body').on('click', '.hide-search', function(e){
+            var $show = $('.search-bar');
+
+            $show.animate({
+                top: '35px',
+                opacity: 0,
+            }, 200);
+            $show.blur();
+            $show.fadeOut();
+            $show.removeClass('shown');
+        });
+
+
+
+        $(document).click(function(event) {
+            if(!$(event.target).closest('.hide-on-out').length) {
+                if($('.hide-on-out').is(":visible")) {
+                    $('.hide-on-out').fadeOut();
+                    $('[data-hideonout]').removeClass('active');
+                }
+            }
+        })
 
         $('.page-overlay, .login-signup-modal').click(function(event){
             if(event.target !== this){ // only fire if the block itself is clicked, not it's children (sometimes we need to hide the modal when anything outside it's main block is clickced
@@ -3714,9 +3826,6 @@ angular.module('colorpicker.module', [])
         $('[data-toggle="modal"]').click(function() {
             var $modal = $(this).data('target');
             $($modal).fadeToggle();
-            //if($(this).data('overlay') != 'none'){
-            //
-            //}
             $('.page-overlay:not(.picture-overlay)').fadeToggle();
             if($($modal).hasClass('login-signup-modal')){
                 $('.picture-overlay').show();
@@ -3832,6 +3941,9 @@ angular.module('colorpicker.module', [])
         function sticky_relocate() {
 
             if(window.innerWidth < 620){
+                if(!$('#mobile-sticky-anchor').length){
+                    return false;
+                }
                 var div_top = $('#mobile-sticky-anchor').offset().top;
                 var window_top = $(window).scrollTop();
                 if (window_top > div_top) {
@@ -3840,6 +3952,10 @@ angular.module('colorpicker.module', [])
                     $('.ideas-sharing').fadeOut();
                 }
             }else{
+                if(!$('#sticky-anchor').length){
+                    return false;
+                }
+
                 var div_top = $('#sticky-anchor').offset().top;
                 var window_top = $(window).scrollTop();
                 if (window_top > div_top) {
@@ -3858,21 +3974,20 @@ angular.module('colorpicker.module', [])
             }
         });
 
-        // Sticking headers
-        $(function () {
-            $(window).scroll(function(){
-                if($('.scroll-header').length){
-                    if($(window).scrollTop() < 60){
-                        $('header.colophon').removeClass('scroll-header');
-                        //$('.red-scroll-logo').hide();
-                    }
-                }else if(($(window).scrollTop() > 60)){
-                    $('header.colophon').addClass('scroll-header');
-                    //$('.red-logo').hide();
-                }
-
-            });
-        });
+    //     Sticking headers
+    //    $(function () {
+    //        $(window).scroll(function(){
+    //            if($('.scroll-header').length){
+    //                if($(window).scrollTop() <= 700){
+    //                    $('header.colophon').removeClass('scroll-header');
+    //                }
+    //            }
+    //            else if(($(window).scrollTop() > 700)){
+    //                $('header.colophon').addClass('scroll-header');
+    //            }
+    //
+    //        });
+    //    });
 
         $(function () {
             if(window.innerWidth < 620){
@@ -3906,14 +4021,18 @@ angular.module('colorpicker.module', [])
 
         $(window).scroll(function() {
 
-            if($(window).scrollTop() + $(window).height() == $(document).height()) {
+            var $currentPos = $(window).scrollTop() + $(window).height();
+
+            var $triggerPoint = $(document).height() - 600; // roughly, the point where the first chunk of loaded content ends
+
+            if($currentPos > $triggerPoint) { // if we are around that point, fire the Load More in the backgriund
                 $('.bottom-load-more').click();
                 $('.bottom-load-more').addClass('disabled').attr('disabled', true);
             }
 
-            if(window.innerWidth > 620){
-                return false;
-            }
+            //if(window.innerWidth < 620){
+            //    return false;
+            //}
 
             var body = $('body');
             if(body.hasClass('home') || body.hasClass('room-landing')){
@@ -3931,7 +4050,204 @@ angular.module('colorpicker.module', [])
                     $('.bottom-block').fadeIn();
                 }
             }
+
+            if(window.innerWidth < 620){
+                if($('.mobile-sharing').is(':visible')){
+                    if($(window).scrollTop() + $(window).height() < $(document).height() * 0.1) {
+                        $('.mobile-sharing').fadeOut();
+                    }
+                }else{
+                    if($(window).scrollTop() + $(window).height() > $(document).height() * 0.1) {
+                        $('.mobile-sharing').fadeIn();
+                    }
+                }
+                //
+                //if($('.subscribe_email_popup').length){
+                //    var offset = $(window).scrollTop() + 40;
+                //    $('.subscribe_email_popup').css('top', offset);
+                //}
+            }
+
         });
+
+            if(window.innerWidth < 620) {
+                $('a.signin').click(function () {
+                    setTimeout(function(){
+                        if( $('#myModal.login-signup-modal').is(':visible')){
+                            var modalHeight = $('#myModal.login-signup-modal > div').height();
+
+                            $('body').css('max-height', (modalHeight + 100) + 'px');
+                            $('body').css('overflow', 'hidden');
+                        }else{
+                            $('body').css('max-height', 'none');
+                            $('body').css('overflow', 'auto');
+                        }
+                    }, 500)
+
+                });
+
+                $('.login-signup-modal .close-modal').click(function(){
+                    $('body').css('max-height', 'none');
+                    $('body').css('overflow', 'auto');
+                });
+            }
+
+
+
+            $('html, body').on('touchmove', function(e){
+            // To prevent jerking on iphone when focusing modal fields, we make modal absolute (in public.common) and then prevent native touch activity like scrolling when newsletter modal is up
+            if($('.subscribe_email_popup').length){
+                e.preventDefault();
+            }
+
+        });
+
+        $('.home-hamburger').click(function(){
+            $('body').toggleClass('has-active-menu');
+        });
+        $('.slide-back').click(function(){
+            $('body').removeClass('has-active-menu');
+        });
+
+        // Hamburger menu animation
+        (function() {
+            /* In animations (to close icon) */
+
+            if (!$('#menu-icon-wrapper').length){
+                return;
+            }
+
+            var beginAC = 80,
+                endAC = 320,
+                beginB = 80,
+                endB = 320;
+
+            function inAC(s) {
+                s.draw('80% - 240', '80%', 0.3, {
+                    delay: 0.1,
+                    callback: function() {
+                        inAC2(s)
+                    }
+                });
+            }
+
+            function inAC2(s) {
+                s.draw('100% - 545', '100% - 305', 0.6, {
+                    easing: ease.ease('elastic-out', 1, 0.3)
+                });
+            }
+
+            function inB(s) {
+                s.draw(beginB - 60, endB + 60, 0.1, {
+                    callback: function() {
+                        inB2(s)
+                    }
+                });
+            }
+
+            function inB2(s) {
+                s.draw(beginB + 120, endB - 120, 0.3, {
+                    easing: ease.ease('bounce-out', 1, 0.3)
+                });
+            }
+
+            /* Out animations (to burger icon) */
+
+            function outAC(s) {
+                s.draw('90% - 240', '90%', 0.1, {
+                    easing: ease.ease('elastic-in', 1, 0.3),
+                    callback: function() {
+                        outAC2(s)
+                    }
+                });
+            }
+
+            function outAC2(s) {
+                s.draw('20% - 240', '20%', 0.3, {
+                    callback: function() {
+                        outAC3(s)
+                    }
+                });
+            }
+
+            function outAC3(s) {
+                s.draw(beginAC, endAC, 0.7, {
+                    easing: ease.ease('elastic-out', 1, 0.3)
+                });
+            }
+
+            function outB(s) {
+                s.draw(beginB, endB, 0.7, {
+                    delay: 0.1,
+                    easing: ease.ease('elastic-out', 2, 0.4)
+                });
+            }
+
+            /* Awesome burger default */
+
+            var pathA = document.getElementById('pathA'),
+                pathB = document.getElementById('pathB'),
+                pathC = document.getElementById('pathC'),
+                segmentA = new Segment(pathA, beginAC, endAC),
+                segmentB = new Segment(pathB, beginB, endB),
+                segmentC = new Segment(pathC, beginAC, endAC),
+                trigger = document.getElementById('menu-icon-trigger'),
+                toCloseIcon = true,
+                dummy = document.getElementById('dummy'),
+                wrapper = document.getElementById('menu-icon-wrapper');
+
+                wrapper.style.visibility = 'visible';
+
+                trigger.onclick = function() {
+                    if (toCloseIcon) {
+                        inAC(segmentA);
+                        inB(segmentB);
+                        inAC(segmentC);
+
+                        dummy.className = 'dummy slide-menu dummy--active';
+                    } else {
+                        outAC(segmentA);
+                        outB(segmentB);
+                        outAC(segmentC);
+
+                        dummy.className = 'dummy  slide-menu';
+                    }
+                    toCloseIcon = !toCloseIcon;
+                };
+
+
+        })();
+
+        var body = $('body');
+        if(body.hasClass('home') || body.hasClass('room-landing')){
+            var $percent = 0.5;
+        }else{
+            var $percent = 0.6;
+        }
+
+        $(window).scroll(function() {
+            //var scroll = getCurrentScroll();
+            //if ( scroll >= shrinkHeader ) {
+            //    $('.mobile-sharing').addClass('shrink');
+            //}
+            //else {
+            //    $('.mobile-sharing').removeClass('shrink');
+            //}
+
+            if(window.innerWidth < 620){ // add the shrink class to header when scrolling, remove it when scrolling is stopped
+                $('#top-nav, .mobile-sharing').addClass('shrink');
+
+                clearTimeout($.data(this, 'scrollTimer'));
+                $.data(this, 'scrollTimer', setTimeout(function() {
+                    $('#top-nav, .mobile-sharing').removeClass('shrink');
+                }, 250));
+            }
+
+        });
+        function getCurrentScroll() {
+            return window.pageYOffset || document.documentElement.scrollTop;
+        }
+
 
         $(document).ready(function(){
             setTimeout(function(){
@@ -3945,21 +4261,16 @@ angular.module('colorpicker.module', [])
                 }, 30000)
             }
 
-
             setInterval(function(){
-                console.log(1)
-                //if($('header.colophon').hasClass('scroll-header')){
                     $('.red-logo')
                         .animate({
                             opacity: 1,
                         }, 1000, function() {
-                            // Animation complete.
                         })
                         .delay(2000)
                         .animate({
                             opacity: 0,
                         }, 1000, function() {
-                            // Animation complete.
                         })
             }, 20000);
         });
@@ -4030,7 +4341,7 @@ angular.module('colorpicker.module', [])
 
     if(window.innerWidth < 1070){ // mobile only
         $(window).scroll(function(){
-            $('.homepage-grid .product-box, .related-items  .product-box').each(function(){
+            $('.homepage-grid .box-item, .related-items  .product-box').each(function(){
                 var that = $(this);
                 var imgTop = that.offset().top + 450;
                 var imgBottom = imgTop + that.height() + 350;
@@ -4044,8 +4355,136 @@ angular.module('colorpicker.module', [])
         });
     }
 
+
+    $(document).ready(function(){ // add Get It Button overlay on images that link to vendors
+        $('.article-content').find('img').each(function(){
+            if(!$(this).parents('.get-it-inner').length){
+                var theLinkNode = $(this).parent('a');
+                theLinkNode.attr('target', '_blank').wrap('<div class="get-it-inner"></div>');
+                var strong = theLinkNode.parents('.thumb-box').find('strong a');
+                var text = strong.text();
+
+                if(text.indexOf('$') == -1){ // price is not hardcoded into the name
+                    var href =  theLinkNode.attr('href');
+                    postData = false;
+
+                    if(href && href.indexOf('/open/') > -1 && href.indexOf('/idea/') == -1){
+                        productID = href.replace(/\D/g,'');
+                        postData = {'id': productID};
+
+                    }else if(href && href.indexOf('/product/') > -1){
+                        productURL = href.substr(href.lastIndexOf('/') + 1);
+                        postData = {'url': productURL};
+                    }
+
+                    if(postData){
+                        $.post( "/api/product/get-for-thumb", postData)
+                            .success(function( postResp ) {
+                                var getItNode = theLinkNode.parents('.get-it-inner');
+                                getItNode.append('<span class="merchant-widget__price">$'+ Math.round(postResp.sale_price) +'</span>');
+                                getItNode.append('<div class="merchant-widget__logo trans-all"><span class="white">from <img class="vendor-logo img-responsive merchant-widget__store" src="' + postResp.storeLogo + '"></span></div>');
+                                var width = getItNode.width();
+                                if(width < 320){
+                                    getItNode.addClass('smallish');
+                                }
+                            });
+                    }
+                }
+            }
+            if($(this).parents('p').next('p').find('a.vendor-link').length){
+                $(this).parents('p').each(function(){
+                    $(this).next('p').andSelf().wrapAll('<div class="thumb-box"></div>');
+                });
+            }else if($(this).parents('p').find('a.vendor-link').length){
+                $(this).parents('.get-it-inner').each(function(){
+                    $(this).parents('p').find('a.vendor-link').andSelf().wrapAll('<div class="thumb-box"></div>');
+                });
+            }
+        });
+
+        $('.thumb-box').each(function(){
+            if(!$(this).parents('.float-thumbs').length){
+                $(this).next('.thumb-box').andSelf().wrapAll('<div class="float-thumbs"></div>');
+            }
+        });
+
+    });
+
+    if(window.innerWidth < 1070){ // mobile only
+        jQuery(window).scroll(function(){
+            jQuery('.article-content .get-it-inner').each(function(){
+                var that = $(this);
+                var imgTop = that.offset().top + 450;
+                var imgBottom = imgTop + that.height() + 350;
+                var window_top = $(window).scrollTop() + $(window).height();
+                if (window_top > imgTop && window_top < imgBottom) { // we have scrolled over the element
+                    that.addClass('hovered');
+                }else if(that.hasClass('hovered')){
+                    that.removeClass('hovered');
+                }
+            });
+        });
+    }
+
+    function showImages(el) {
+        var windowHeight = jQuery( window ).height();
+        jQuery(el).each(function(){
+            var thisPos = $(this).offset().top;
+
+            var topOfWindow = $(window).scrollTop();
+            if (topOfWindow + windowHeight - 200 > thisPos ) {
+                $(this).addClass("fadeIn");
+            }
+        });
+    }
+
+    // if the image in the window of browser when the page is loaded, show that image
+    jQuery(document).ready(function(){
+        showImages('.article-content img');
+    });
+
+    // if the image in the window of browser when scrolling the page, show that image
+    jQuery(window).scroll(function() {
+        showImages('.article-content img');
+    });
+
+
+
+
 })(jQuery, this);
+
 ;
+// for the pure CSS slider to work on iOS
+
+var iPadLabels = function () {
+    function fix() {
+        var labels = document.getElementsByTagName('label'),
+            target_id,
+            el;
+        for (var i = 0; labels[i]; i++) {
+            if (labels[i].getAttribute('for')) {
+                labels[i].onclick = labelClick;
+            }
+        }
+    };
+    function labelClick() {
+        el = document.getElementById(this.getAttribute('for'));
+        if (['radio', 'checkbox'].indexOf(el.getAttribute('type')) != -1) {
+            el.setAttribute('selected', !el.getAttribute('selected'));
+        } else {
+            el.focus();
+        }
+    };
+    return {
+        fix: fix
+    }
+}();
+
+window.onload = function () {
+
+    iPadLabels.fix();
+
+};
 /**
  * Created by sanzeeb on 1/7/2016.
  */
@@ -4250,8 +4689,13 @@ publicApp.controller('ModalInstanceCtrltest', function ($scope, $uibModalInstanc
             url: '/hide-signup',
             method: "GET",
 
-        }).success(function (data) {
-            $uibModalInstance.close();
+        }).success(function () {
+            $('#subscribe_email_popup').removeClass('ns-show');
+            $('#subscribe_email_popup').addClass('ns-goback');
+
+            setTimeout(function(){
+                $uibModalInstance.close();
+            }, 150);
         });
     };
 
@@ -4265,8 +4709,8 @@ publicApp.controller('ModalInstanceCtrltest', function ($scope, $uibModalInstanc
 
 });
 
-publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$window', '$timeout', '$location', '$anchorScroll', '$uibModal', 'layoutApi', '$compile', '$interval', 'FileUploader', 'pagingApi', '$uibModalStack'
-    , function ($rootScope, $scope, $http, $window, $timeout, $location, $anchorScroll, $uibModal, layoutApi, $compile, $interval, FileUploader, pagingApi, $uibModalInstance, $uibModalStack) {
+publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$window', '$timeout', '$uibModal', 'layoutApi', '$compile', '$interval', 'FileUploader', 'pagingApi', '$uibModalStack'
+    , function ($rootScope, $scope, $http, $window, $timeout,  $uibModal, layoutApi, $compile, $interval, FileUploader, pagingApi, $uibModalInstance, $uibModalStack) {
 
         // text area internal function for comment
         $scope.focusEditor = function () {
@@ -4309,31 +4753,32 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
             }
         }, 15000);//10000
 
-        $scope.openEmailPopuponTime = function () {
-            if (!$('body').hasClass('login-signup')) {
-                setTimeout(function () {
-                    $scope.getEmailPopup(false);
-                }, 25000)
-            }
+        // $scope.openEmailPopuponTime = function () {
+        //     if (!$('body').hasClass('login-signup')) {
+        //         setTimeout(function () {
+        //             $scope.getEmailPopup(false);
+        //         }, 25000)
+        //     }
 
-        }
+        // }
 
         $scope.getEmailPopup = function (clickStatus) {
-            // Header profile option open and close on click action.
 
             var templateUrl = "subscribe_email_popup.html";
 
             $scope.isSubscriberClicked = clickStatus;
 
-            //console.log('clicked : ' + $scope.isSubscriberClicked);
-            $scope.modalInstance = $uibModal.open({
+            instance = $uibModal.open({
+                    animation: true,
+                    backdrop:false,
                     templateUrl: templateUrl,
                     scope: $scope,
-                    size: 'md',
+                    size: 'lg',
                     windowClass: 'subscribe_email_popup',
                     controller: 'ModalInstanceCtrltest'
-                })
-                .result.finally(function () {
+                });
+
+            $scope.modalInstance = instance.result.finally(function () {
                     $scope.uploader.formData = [];
 
                     $http({
@@ -4343,22 +4788,32 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                     }).success(function (data) {
                         //  console.log(data)
                     });
-                });
-        };
 
-        //$scope.hideSiggnupModal = function () {
-        //    // Header profile option open and close on click action.
-        //
-        //    $http({
-        //        url: '/hide-signup',
-        //        method: "GET",
-        //
-        //    }).success(function (data) {
-        //        //$('.subscribe_email_popup').fadeOut();
-        //        $uibModalStack.dismissAll();
-        //
-        //    });
-        //};
+                    $('html').removeClass('overhide');
+            });
+
+                instance.rendered.then(function () {
+                    //console.log('yo maaaan1')
+
+                    var $this = $('.modal.subscribe_email_popup');
+
+                    if(window.innerWidth < 620){
+                        // Position modal absolute and bump it down to the scrollPosition
+                        $this.css({
+                            position: 'absolute',
+                            top: ($(window).scrollTop() + 40) + 'px',
+                        });
+                    }
+
+                    setTimeout(function(){
+                    //console.log('yo maaaan2')
+                     $('#subscribe_email_popup').addClass('ns-show');
+                     $('#subscribe_email_popup').removeClass('ns-hide');
+
+                    }, 500);
+
+                })
+        };
 
         $scope.openProfileSetting = function (onlyImage) {
 
@@ -4494,6 +4949,13 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
             $scope.PersonalInfo = '';
             $scope.Address = '';
             $scope.Permalink = '';
+            $scope.AcceptTerms = true;
+            $scope.AcceptTermsModal = true;
+
+            $scope.LoginEmail = '';
+            $scope.LoginPassword = '';
+            $scope.RememberMe = false;
+
 
             //settings for user profile edit section
             $scope.isProfilePage = false;
@@ -4613,10 +5075,55 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                     }
                 }
 
-                $('#hero-slider').royalSlider(args);
+                $('.story-hero-slider').royalSlider(args);
             });
-        };
 
+          
+             var args = {
+                    arrowsNav: false,
+                    loop: true,
+                    loopRewind: true,
+                    keyboardNavEnabled: true,
+                    controlsInside: true,
+                    controlNavigation: 'thumbnails',
+                    arrowsNavAutoHide: false,
+                    slidesSpacing: 0,
+                    imageScaleMode: false,
+                    imgWidth: 1175,
+                    imageAlignCenter: true,
+                    //autoScaleSliderWidth: 1180,
+                    //autoScaleSliderHeight: 394,
+                    thumbsFitInViewport: false,
+                    navigateByClick: true,
+                    startSlideId: 0,
+                    autoPlay: {
+                        enabled: true,
+                        pauseOnHover: true,
+                        delay: 15000
+                    },
+                    transitionType: 'move',
+                    globalCaption: false,
+                    addActiveClass: true,
+                    deeplinking: {
+                        enabled: true,
+                        change: false
+                    },
+                    visibleNearby: {
+                        enabled: false,
+                        center: true,
+                    },
+                    thumbs: {
+                        arrows: false,
+                        appendSpan: true,
+                        firstMargin: false,
+                        orientation: 'horizontal'
+                    },
+
+                };
+                $('.default-hero-slider').royalSlider(args);
+
+
+        };
 
         $scope.isEmpty = function (data) {
             if (!data || data.length === 0)
@@ -4768,15 +5275,20 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
         };
 
         // Add an Alert in a web application
-        $scope.addAlert = function (alertType, message) {
-            //$scope.alertType = alertType;
+        $scope.addAlert = function (alertType, message, category) {
             $scope.alertHTML = message;
-            $scope.alerts.push({type: alertType});
 
+            if(category !== undefined){
+                $scope.alerts[category] = [];
+                $scope.alerts[category].push({type: alertType});
+            }else{
+                $scope.alerts.push({type: alertType});
+            }
         };
 
         $scope.closeAlert = function (index) {
-            $scope.alerts.splice(index, 1);
+            $scope.alerts = [];
+            $scope.responseMessage = '';
 
         };
 
@@ -4796,9 +5308,11 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
 
 
         // Build popup notification box based on status.
-        $scope.outputStatus = function (data, message, goTo) {
+        $scope.outputStatus = function (data, message, goTo, from) {
 
             var statusCode = data.status_code;
+
+            //console.log(statusCode);
             
             switch (statusCode) {
                 case 400:
@@ -4821,9 +5335,39 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                         window.location = '/login';
                     }
                     else if (data.data == 'Registration completed successfully') {
-                        $scope.loginUser('profile');
+                        $scope.addAlert('success', 'SUCCESS! You just made the best decision', 'register');
+
+                        if(from == 'subscribe-modal'){
+                            $('.toggles, .bordering .content').animate({opacity: "0"}, function(){
+                                setTimeout(function(){
+                                    $scope.hideAndForget();
+                                    window.location = '/welcome';
+                                }, 2000);
+                            })
+                        }else{
+                            setTimeout(function(){
+                               // $scope.hideAndForget();
+                                window.location = '/welcome';
+                            }, 2000);
+                        }
+
+
                     } else if (data.data == 'Registration completed successfully, please verify your email') {
-                        $scope.loginUser();
+                        $scope.addAlert('success', 'SUCCESS! You just made the best decision', 'register');
+
+                        if(from == 'subscribe-modal'){
+                            $('.toggles, .bordering .content').animate({opacity: "0"}, function(){
+                                setTimeout(function(){
+                                    //$scope.hideAndForget();
+                                    //window.location = '/welcome';
+                                }, 2000);
+                            })
+                        }else{
+                            setTimeout(function(){
+                               // $scope.hideAndForget();
+                                window.location = '/welcome';
+                            }, 2000);
+                        }
                     }
 
 
@@ -4841,6 +5385,8 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                     		window.location = '/';		 
                     	}else if(goTo == 'profile'){
                             window.location = '/user/profile';      
+                    	}else if(goTo == 'welocome'){
+                            window.location = '/welcome';
                     	}else{
 
                             if($('html').hasClass('idea-stories')){
@@ -4939,9 +5485,12 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                 $scope.itemId = pid;
                 $scope.comments = data.data;
                 $scope.commentsCount = $scope.comments.length;
-                $scope.commentsCountView = $scope.commentsCount < 2 ? $scope.commentsCount + " " + "Comment" : $scope.commentsCount + " " + "Comments";
 
-                //  console.log($scope.commentsCount);
+                if($scope.commentsCount == 0){
+                    $scope.commentsCountView = 'Drop a Comment'
+                }else{
+                    $scope.commentsCountView = $scope.commentsCount < 2 ? $scope.commentsCount + " " + "Comment" : $scope.commentsCount + " " + "Comments";
+                }
 
             });
         };
@@ -5064,9 +5613,9 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
             else
                 source = '';
 
-
-          //  console.log('formData')
-          //  console.log(formData)
+            if(formData === undefined){
+                $scope.responseMessage = "Please enter an email";
+            }
 
             $http({
                 url: '/api/subscribe',
@@ -5076,17 +5625,24 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                     'Source': source,
                     'SetCookie': 'true'
                 }
-            }).success(function (data) {
+            }).success(function (data) { 
 
                 if (data.status_code == 406) {
 
                     $scope.responseMessage = "Please enter a valid email";
                 }
                 else if (data.status_code == 200) {
-                    $scope.responseMessage = "Thanks! You've subscribed successfully";
 
+                    $scope.responseMessage = "Success! You'll start receiving the best tips in the world";
+                    // $('.alerts').addClass('alertme');  
+                    $('.toggles, .bordering .content').animate({opacity: "0"}, function(){
+                         setTimeout(function(){ 
+                            $scope.hideAndForget();
+                        }, 2000);
+                    })
+ 
                     //Redirect a user to registration page. 
-                    window.location = '/signup/' + formData.SubscriberEmail + '/' + source;
+                    //window.location = '/signup/' + formData.SubscriberEmail + '/' + source;
 
                 } else if (data.data.isUser == 1) {
                     $scope.responseMessage = "This email already exists, redirecting to Log In";
@@ -5153,10 +5709,10 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                     $scope.responseMessage = data;
                 }
             });
-
+ 
         };
 
-        $scope.registerSubscribedUser = function () {
+        $scope.registerSubscribedUser = function (from) {
 
             // defining the regsitration source
             sourceSegment = '';
@@ -5169,12 +5725,15 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
             else if (valSeg[3] == 'home')
                 sourceSegment = 'home';
 
-            //  console.log(valSeg);
-            //  return;
             $scope.closeAlert();
 
+            if ($scope.AcceptTerms == false && $scope.AcceptTermsModal == false) {
+                $scope.addAlert('danger', 'Please accept the Terms and Conditions', 'register');
+                return;
+            }
+
             if ($scope.FullName == '') {
-                $scope.addAlert('danger', 'Please enter your name');
+                $scope.addAlert('danger', 'Please enter your name', 'register');
                 return;
             }
 
@@ -5182,19 +5741,19 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
             var emailTest = re.test($scope.Email);
 
             if (emailTest == false) {
-                $scope.addAlert('danger', 'Please enter a valid email');
+                $scope.addAlert('danger', 'Please enter a valid email', 'register');
                 return;
             }
 
-            if ($scope.Password == '' || $scope.PasswordConf == '') {
-                $scope.addAlert('danger', 'Please enter both password and confirmation');
+            if ($scope.Password == '') {
+                $scope.addAlert('danger', 'Please enter the password', 'register');
                 return;
             }
 
-            if ($scope.Password != $scope.PasswordConf) {
-                $scope.addAlert('danger', 'Passwords do not match!');
-                return;
-            }
+            //if ($scope.Password != $scope.PasswordConf) {
+            //    $scope.addAlert('danger', 'Passwords do not match!');
+            //    return;
+            //}
 
             $http({
                 url: '/api/register-user',
@@ -5207,10 +5766,8 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                     Valid: true
                 }
 
-            }).success(function (data) {
-                console.log(115)
-
-                $scope.outputStatus(data, data.data, 'profile');
+            }).success(function (data) { 
+                $scope.outputStatus(data, data.data, 'welcome', from);
             });
 
         };
@@ -5359,12 +5916,17 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
 
         $scope.registerWithFB = function () {
 
-            window.location = '/api/fb-login';
+            //window.location = '/api/fb-login';
+
+            $window.open('/api/fb-login', 'Register with Facebook', 'width=750,height=500');
+
         };
 
         $scope.giveawayLoginFB = function () {
 
-            window.location = '/api/fb-login?vlu=giveaway&pl=' + $window.giveawayLink;
+            var $modal = $window.open('/api/fb-login?vlu=giveaway&pl=' + $window.giveawayLink, 'Register with Facebook', 'width=750,height=500');
+
+            //window.location = '/api/fb-login?vlu=giveaway&pl=' + $window.giveawayLink;
         };
 
 
@@ -5375,9 +5937,9 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                 url: '/api/authenticate',
                 method: "POST",
                 data: {
-                    Email: $scope.Email,
-                    Password: $scope.Password,
-                    RememberMe: $scope.rememberMe == true ? true : false
+                    Email: $scope.LoginEmail,
+                    Password: $scope.LoginPassword,
+                    RememberMe: $scope.RememberMe == true ? true : false
                 }
             }).success(function (data) {
                 var WpLoginURL = '/ideas/api?call=login&username=' + $scope.Email + '&password=' + $scope.Password + '&remember=' + $scope.rememberMe;
@@ -5387,19 +5949,19 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                     method: "GET"
 
                 }).success(function (response) {
-                    var from = $location.search().from;
-                    if (from === 'cms') {
-                        window.location = '/ideas/wp-admin';
+                    // var from = $location.search().from;
+                    // if (from === 'cms') {
+                    //     window.location = '/ideas/wp-admin';
 
-                    }
+                    // }
                 }).error(function (response) {
-                    console.log(response)
-                    if (response.success) {
-                        var from = $location.search().from;
-                        if (from === 'cms') {
-                            window.location = '/ideas/wp-admin';
-                        }
-                    }
+                    // console.log(response)
+                    // if (response.success) {
+                    //     var from = $location.search().from;
+                    //     if (from === 'cms') {
+                    //         window.location = '/ideas/wp-admin';
+                    //     }
+                    // }
                      $scope.outputStatus(data, data.data, goTo);
 
                 });
@@ -5424,12 +5986,12 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
 
         $scope.passwordResetRequest = function () {
             $scope.closeAlert();
-            if (!$scope.Email) {
+            if (!$scope.LoginEmail) {
                 $scope.addAlert('danger', 'The Email field is required!');
                 return;
             }
             $http({
-                url: '/password-reset-request/' + $scope.Email,
+                url: '/password-reset-request/' + $scope.LoginEmail,
                 method: "GET",
             }).success(function (data) {
                 $scope.outputStatus(data, data.data);
@@ -5701,6 +6263,7 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
     }]);
 
 ;
+
 angular.module('pagingApp', [
     'pagingApp.controllers',
     //'pagingApp.services',
@@ -5708,35 +6271,35 @@ angular.module('pagingApp', [
     'cgBusy'
 ]);
 
-angular.module('pagingApp.controllers', ['ui.bootstrap'])
+angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
 
     // directive for heart action for grid items
-    .directive('heartCounterDir', ['$http', function ($http) {
+    .directive('heartCounterDir', ['$http', function($http) {
         return {
             restrict: 'E',
             transclude: true,
             replace: true,
-            scope: {
-                uid: '=',
-                iid: '=',
-                plink: '=',
-                sec: '=',
+            scope:{
+                uid:'=',
+                iid:'=',
+                plink:'=',
+                sec:'=',
             },
-            controller: function ($scope, $element, $attrs) {
+            controller:function($scope, $element, $attrs){
 
                 // Heart Section
 
                 $scope.unHeart = false;
                 $scope.heartCounter = 0;
 
-                $scope.heartCounterAction = function () {
+                $scope.heartCounterAction = function(){
 
-                    // console.log('hi : ',$scope.iid,$scope.plink);
+                   // console.log('hi : ',$scope.iid,$scope.plink);
 
                     $http({
                         url: '/api/heart/count-heart',
                         method: "POST",
-                        data: {
+                        data:{
                             section: $attrs.sec,
                             uid: $scope.uid,
                             iid: $scope.iid,
@@ -5752,21 +6315,20 @@ angular.module('pagingApp.controllers', ['ui.bootstrap'])
                 };
 
                 // clean url for ideaing URL (take only permalink)
-                $scope.cleanUrl = function (url) {
-                    var domainBuilder = "https://" + window.location.host + "/ideas/";
-                    return url.replace(domainBuilder, '');
+                $scope.cleanUrl = function(url){
+                    var domainBuilder = "https://"+window.location.host+"/ideas/";
+                    return url.replace(domainBuilder,'');
                 };
 
-                $scope.heartAction = function () {
-//console.log('hi : ',$scope.iid,$scope.plink);
+                $scope.heartAction = function(){
                     // an anonymous will be returned without performing any action.
-                    if ($attrs.uid == 0)
+                    if($attrs.uid==0)
                         return;
 
                     $http({
                         url: '/api/heart/add-heart',
                         method: "POST",
-                        data: {
+                        data:{
                             section: $attrs.sec,
                             uid: $scope.uid,
                             iid: $scope.iid,
@@ -5775,7 +6337,7 @@ angular.module('pagingApp.controllers', ['ui.bootstrap'])
                         }
                     }).success(function (data) {
                         $scope.heartCounterAction();
-                        $scope.unHeart = !$scope.unHeart;
+                        $scope.unHeart = ! $scope.unHeart;
                     });
                 };
 
@@ -5783,209 +6345,229 @@ angular.module('pagingApp.controllers', ['ui.bootstrap'])
 
             },
 
-            template: '      <div class="">' +
-            '                    <a href="#" class="likes"' +
-            '                       ng-click="heartAction()"' +
-            '                    >' +
-            '                        <i ng-class="unHeart != false ? \'m-icon m-icon--heart-solid\' : \'m-icon m-icon--ScrollingHeaderHeart\'">' +
-            '                                <span class="m-hover">' +
-            '                                    <span class="path1"></span><span class="path2"></span>' +
-            '                                </span>' +
-            '                        </i>' +
-            '                        <span class="social-stats__text" ng-bind="heartCounter">&nbsp; </span>' +
-            '                    </a>' +
+            template: '      <div class="">'+
+            '                    <a href="#" class="likes"'+
+            '                       ng-click="heartAction()"'+
+            '                    >'+
+            '                        <i ng-class="unHeart != false ? \'m-icon m-icon--heart-solid\' : \'m-icon m-icon--ScrollingHeaderHeart\'">'+
+            '                                <span class="m-hover">'+
+            '                                    <span class="path1"></span><span class="path2"></span>'+
+            '                                </span>'+
+            '                        </i>'+
+            '                        <span class="social-stats__text" ng-bind="heartCounter">&nbsp; </span>'+
+            '                    </a>'+
             '                </div>'
 
         }
     }])
 
-    .controller('pagingController', function ($scope, $timeout, $uibModal, $http, pagingApi, $filter) {
-        $scope.allContent = [];
-        $scope.content = [];
-        $scope.newStuff = [];
-        $scope.currentPage = 1;
-        $scope.contentBlock = angular.element(document.querySelector('.main-content'));
-        $scope.filterLoad = [];
-        $scope.ideaCategory = false;
-        $scope.hasMore = false;
-        //$scope.globalOffset = 0;
+    .controller('pagingController', function($scope, $timeout, $uibModal, $http, pagingApi, $filter) {
 
-        $scope.renderHTML = function (html_code) {
+        $scope.initGrid = function($category){
+            $scope.allContent = [];
+            $scope.content = [];
+            $scope.newStuff = [];
+            $scope.currentPage = 1;
+            $scope.currentDay = 'Today';
+            $scope.contentBlock = angular.element( document.querySelector('.main-content') );
+            $scope.filterLoad = [];
+            $scope.readContent = [];
+            $scope.ideaCategory = false;
+            $scope.hasMore = false;
+            //$scope.globalOffset = 0;
+
+            $scope.loadReadContent($category);
+        }
+      
+
+        $scope.renderHTML = function(html_code)
+        {
             var decoded = angular.element('<div />').html(html_code).text();
             return decoded;
         };
 
-        var $route = $filter('getURISegment')(2);
-        var $limit = 0;
+        $scope.loadReadContent = function($category, $callback){
 
-        if ($route == 'idea') {
-            $scope.currentTag = $filter('getURISegment')(3);
-        } else if ($route == 'ideas') {
-            $scope.filterBy = 'idea';
-            if ($filter('getURISegment')(3) == 'category' || $filter('getURISegment')(3) == 'tag') {
-                $scope.ideaCategory = $filter('getURISegment')(4);
-            } else {
-                $scope.ideaCategory = $filter('getURISegment')(3);
-            }
-            var $limit = 9;
-        }
+            $('.category-menu a, .mid-menu a').removeClass('active');
 
-        $scope.firstLoad = pagingApi.getGridContent(1, $limit, $scope.currentTag, $scope.filterBy, $scope.ideaCategory).success(function (response) {
-            $scope.allContent[0] = response;
-            $scope.content[0] = $scope.sliceToRows(response['content']['regular'], response['content']['featured']);
-            $scope.hasMore = response['hasMore'];
-        });
+            $('.category-menu, .mid-menu').find('a.category-link__' + $category).addClass('active');
 
-        //pagingApi.getGridContent(2, $limit, $scope.currentTag, $scope.filterBy,  $scope.ideaCategory).success(function (response) {
-        //    if(response['regular'].length > 0 || response['featured'].length > 0){
-        //        $scope.hasMore = true;
-        //        console.log('U!')
-        //    }
-        //});
+                $scope.currentPage = 1;
+                $scope.ideaCategory = $category;
+                $scope.firstLoad = pagingApi.getReadContent($category).success(function (response) {
+                     $scope.readContent = response;
+                     $('.popular-box').fadeIn();
+                });
 
-        $scope.loadMore = function () {
-            if ($('.bottom-load-more').hasClass('disabled')) {
+        
+
+            $scope.firstLoad = pagingApi.getGridContent(1, 0, false, false,  $scope.ideaCategory).success(function (response) {
+                $scope.allContent[0] = response;
+
+                var newContent = [];
+                newContent[0] = $scope.sliceToRows(response['content']['ideas'], response['content']['products']);
+
+                $scope.content = newContent;
+
+                $scope.hasMore = response['hasMore'];
+                $scope.unreadCount = response['unreadCount'];
+
+            });
+        };
+
+
+        $scope.loadMore = function() {
+
+            if($('.bottom-load-more').hasClass('disabled')){
                 return false;
             }
 
             $scope.currentPage++;
             $scope.allContent[$scope.currentPage] = [];
 
-            if (!$scope.filterBy || typeof $scope.filterBy === 'undefined') {
-                var $limit = 0;
-                $scope.filterBy = null;
-            } else {
-                var $limit = 9;
-            }
+            var $limit = 0;
+            $scope.filterBy = null;
+            var $daysBack = false;
 
-            $scope.nextLoad = pagingApi.getGridContent($scope.currentPage, $limit, $scope.currentTag, $scope.filterBy, $scope.ideaCategory).success(function (response) {
-                $scope.newStuff[0] = $scope.sliceToRows(response['content']['regular'], response['content']['featured']);
+            $scope.nextLoad =  pagingApi.getGridContent($scope.currentPage, $limit, $scope.currentTag, $scope.filterBy, $scope.ideaCategory).success(function (response) {
+
+                var newContent = $scope.sliceToRows(response['content']['ideas'], response['content']['products']);;
+                // if($scope.currentPage == 2){
+                //     newContent['currentDay'] = 'Yesterday';
+                // }else{
+                //     newContent['currentDay'] = $daysBack + ' Days Ago';
+                // }
+                $scope.newStuff[0] = newContent;
+
                 $scope.content = $scope.content.concat($scope.newStuff);
 
                 $scope.hasMore = response['hasMore'];
-                console.log('BUbba!')
+                $scope.unreadCount = response['unreadCount'];
 
                 $('.bottom-load-more').removeClass('disabled').attr('disabled', false);
             });
         };
 
-        //jQuery(function($) {
 
-        //});
-
-
-        $scope.filterContent = function ($criterion) {
-            $('.main-content').fadeOut(500, function () {
-                var $replacer = [];
-
-                if ($scope.filterBy === $criterion) {
-                    return true;
-
-                } else if (typeof $criterion === 'undefined' || $criterion === null || $criterion === 'all') {
-                    $scope.nextLoad = pagingApi.getGridContent(1, 0, $scope.currentTag).success(function (response) {
-                        $scope.allContent[0] = response;
-                        $replacer[0] = $scope.sliceToRows(response['content']['regular'], response['content']['featured']);
-                        $scope.hasMore = response['hasMore'];
-                    });
-                    $scope.currentPage = 1;
-                    $scope.filterBy = null;
-
-                    $scope.content = $replacer;
-                    $('.main-content').fadeIn();
-
-                    return true;
-
-                }
-
-                $scope.filterBy = $criterion;
-
-                $scope.nextLoad = pagingApi.getFilteredContent($scope.currentPage, $scope.currentTag, $criterion, $scope.sliceToRows).then(function (response) {
-                    var $newStuff = response['content'];
-                    $scope.hasMore = response['hasMore'];
-                    $scope.content = $newStuff;
-                    $scope.allContent = $scope.allContent.concat($newStuff);
-                    $('.main-content').fadeIn(500);
-                });
-            });
-        };
-
-        $scope.sliceToRows = function ($regular, $featured) {
+        $scope.sliceToRows = function($ideas, $products){
             var $return = [];
-            $return['row-1'] = $regular.slice(0, 3);
-            $return['row-2'] = $featured[0] ? [$featured[0]] : false;
-            $return['row-3'] = $regular.slice(3, 6);
-            $return['row-4'] = $featured[1] ? [$featured[1]] : false;
-            $return['row-5'] = $regular.slice(6, 9);
-            $return['row-6'] = $featured[2] ? [$featured[2]] : false;
+            console.log('$ideas');
 
+            console.log($ideas);
+            $return['row-1'] = $ideas.slice(0, 1);
+            $return['row-2'] = $ideas.slice(2, 4);
+            $return['row-3'] = $products.slice(0, 3);
+            $return['row-4'] = $ideas.slice(4, 5);
+            $return['row-5'] = $ideas.slice(5, 7);
+            $return['row-6'] = $products.slice(3, 6);
+           
             return $return;
         };
 
-        $scope.fadeAnimation = function ($node, $action, $callback) {
-            $($node).fadeOut(
-                $callback()
-            );
 
-        };
+            $scope.switchCategory = function(categoryName) {
 
-        // email subscription //
-
-        $scope.subscribe = function () {
-
-            $scope.responseMessage = '';
-
-            $http({
-                url: '/api/subscribe',
-                method: "POST",
-                data: {
-                    'Email': $scope.SubscriberEmail
-                }
-            }).success(function (data) {
-
-                if (data.status_code == 406) {
-
-                    $scope.responseMessage = "Please enter a valid email address";
+                if($('.bottom-load-more').hasClass('disabled')){
+                    return false;
                 }
 
-                else if (data.status_code == 200) {
-                    $scope.responseMessage = "Successfully Subscribed";
-                    $scope.SubscriberEmail = '';
-
-                } else {
-                    $scope.responseMessage = "Email already subscribed";
+                if($scope.ideaCategory == categoryName){
+                    return false;
                 }
-            });
 
-        };
+                currentRoute = $filter('getURISegment')(1);
 
-        $scope.open = function (key) {
-            var templateUrl = "room-related-product-" + key + ".html";
-            var modalInstance = $uibModal.open({
-                templateUrl: templateUrl,
-                size: 'lg',
-                controller: 'ModalInstanceCtrltest'
-            });
-        };
+                if(currentRoute && currentRoute != 'smart-home' && currentRoute != 'smart-body' && currentRoute != 'smart-entertainment' && currentRoute != 'smart-travel'){ // not a category page
 
-        $scope.openProfileSetting = function () {
-            var templateUrl = "profile-setting.html";
-            var modalInstance = $uibModal.open({
-                templateUrl: templateUrl,
-                size: 'lg',
-                windowClass: 'profile-setting-modal',
-                controller: 'ModalInstanceCtrltest'
-            });
-        };
+                    if(categoryName == 'default'){
+                        categoryName = '';
+                    }
 
-        $scope.openProductPopup = function (id) {
-            pagingApi.openProductPopup($scope, $uibModal, $timeout, id);
-        }
+                    window.location.href  = '/' + categoryName;
+                    return false;
+                }
+
+                $('.popular-box').fadeOut(function(){
+                    $scope.ideaCategory = categoryName;
+
+                    $('.guide-switch').click();
+                    $scope.loadReadContent(categoryName);
+
+                    $scope.filterBy = false;
+
+                    if(categoryName == 'default'){
+                        window.history.replaceState({category: 'smarthome'}, 'Smart Home', '/');
+                    }else{
+                        window.history.replaceState({category: 'smarthome'}, 'Smart Home', categoryName);
+                    }
+                });
 
 
-    })
-    .controller('SearchController', function ($scope, $http, $uibModal, pagingApi, $timeout, $filter, $window) {
+            }
 
-        $scope.searchPage = function () {
+            $scope.fadeAnimation = function ($node, $action, $callback) {
+                $($node).fadeOut(
+                    $callback()
+                );
+
+            };
+
+            // email subscription //
+
+            $scope.subscribe = function () {
+
+                $scope.responseMessage = '';
+
+                $http({
+                    url: '/api/subscribe',
+                    method: "POST",
+                    data: {
+                        'Email': $scope.SubscriberEmail
+                    }
+                }).success(function (data) {
+
+                    if (data.status_code == 406) {
+
+                        $scope.responseMessage = "Please enter a valid email address";
+                    }
+
+                    else if (data.status_code == 200) {
+                        $scope.responseMessage = "Successfully Subscribed";
+                        $scope.SubscriberEmail = '';
+
+                    } else {
+                        $scope.responseMessage = "Email already subscribed";
+                    }
+                });
+
+            };
+
+            $scope.open = function (key) {
+                var templateUrl = "room-related-product-" + key + ".html";
+                var modalInstance = $uibModal.open({
+                    templateUrl: templateUrl,
+                    size: 'lg',
+                    controller: 'ModalInstanceCtrltest'
+                });
+            };
+
+            $scope.openProfileSetting = function () {
+                var templateUrl = "profile-setting.html";
+                var modalInstance = $uibModal.open({
+                    templateUrl: templateUrl,
+                    size: 'lg',
+                    windowClass: 'profile-setting-modal',
+                    controller: 'ModalInstanceCtrltest'
+                });
+            };
+
+            $scope.openProductPopup = function (id) {
+                pagingApi.openProductPopup($scope, $uibModal, $timeout, id);
+            }
+        })
+            .controller('SearchController', function ($scope, $http, $uibModal, pagingApi, $timeout, $filter, $window) {
+
+        $scope.searchPage = function(){
             var $route = $filter('getURISegment')(2);
             var $searchQuery = false;
             if ($route == 'search') {
@@ -6037,14 +6619,14 @@ angular.module('pagingApp.controllers', ['ui.bootstrap'])
         }
 
 
-        $scope.filterSearchContent = function ($filterBy, $sortBy) {
+        $scope.filterSearchContent = function($filterBy, $sortBy) {
 
-            if (!$filterBy) {
+            if(!$filterBy){
                 $filterBy = $scope.type;
             }
 
-            if ($filterBy) {
-                if (!$sortBy && $('a[data-filterby="' + $filterBy + '"]').hasClass('active')) {
+            if($filterBy){
+                if(!$sortBy && $('a[data-filterby="'+$filterBy+'"]').hasClass('active')){
                     return true;
                 }
 
@@ -6053,11 +6635,11 @@ angular.module('pagingApp.controllers', ['ui.bootstrap'])
                 $scope.offset = 0;
 
                 $('a[data-filterby]').removeClass('active');
-                $('a[data-filterby="' + $filterBy + '"]').addClass('active');
+                $('a[data-filterby="'+$filterBy+'"]').addClass('active');
 
             }
 
-            if ($filterBy == 'all') {
+            if($filterBy == 'all'){
                 $('a[data-filterby]').removeClass('active');
                 $('a[data-filterby="false"]').addClass('active');
 
@@ -6065,13 +6647,13 @@ angular.module('pagingApp.controllers', ['ui.bootstrap'])
             }
 
 
-            if (!$sortBy) {
+            if(!$sortBy){
                 $sortBy = $scope.sortBy;
             }
 
-            if ($sortBy && $sortBy != 'undefined') {
+            if($sortBy && $sortBy != 'undefined'){
 
-                if (!$filterBy && $('a[data-sotyby="' + $sortBy + '"]').hasClass('active')) {
+                if(!$filterBy && $('a[data-sotyby="'+$sortBy+'"]').hasClass('active')){
                     return true;
                 }
 
@@ -6080,13 +6662,13 @@ angular.module('pagingApp.controllers', ['ui.bootstrap'])
                 $scope.offset = 0;
 
                 $('a[data-sortby]').removeClass('active');
-                $('a[data-sortby="' + $sortBy + '"]').addClass('active');
+                $('a[data-sortby="'+$sortBy+'"]').addClass('active');
             }
 
-            var contentBlock = $('.grid-box-3');
+            var contentBlock =  $('.grid-box-3');
 
-            contentBlock.fadeOut(500, function () {
-                $scope.nextLoad = pagingApi.getSearchContent($scope.$searchQuery, 15, $scope.offset, $filterBy, $sortBy).success(function (response) {
+            contentBlock.fadeOut(500, function(){
+                $scope.nextLoad =  pagingApi.getSearchContent($scope.$searchQuery, 15, $scope.offset, $filterBy, $sortBy).success(function (response) {
                     $scope.content = response['content'];
                     $scope.hasMore = response['hasMore'];
                     $('#hit-count').text(response['count']);
@@ -6096,18 +6678,19 @@ angular.module('pagingApp.controllers', ['ui.bootstrap'])
             });
         }
 
-        $scope.openSearchDropdown = function (query) {
-            $http({
-                method: "get",
-                url: '/api/search/find-categories/' + query,
-            }).success(function (response) {
-                $scope.categorySuggestions = response;
-            }).error(function (response) {
-                $scope.categorySuggestions = [];
-            });
+        $scope.openSearchDropdown = function (query){
+                $http({
+                    method: "get",
+                    url: '/api/search/find-categories/' + query,
+                }).success(function (response) {
+                    $scope.categorySuggestions = response;
+                }).error(function (response) {
+                    $scope.categorySuggestions = [];
+                });
         }
 
-        $scope.renderHTML = function (html_code) {
+        $scope.renderHTML = function(html_code)
+        {
             var decoded = angular.element('<div />').html(html_code).text();
             return decoded;
         };
@@ -6146,29 +6729,31 @@ angular.module('pagingApp.controllers', ['ui.bootstrap'])
 
         }
 
-        $scope.openProductPopup = function (id) {
+        $scope.openProductPopup = function(id){
             pagingApi.openProductPopup($scope, $uibModal, $timeout, id);
         }
 
 
     })
-    //    .controller('ModalInstanceCtrltest', function ($scope, $uibModalInstance) {
-    //
-    //        $scope.ok = function () {
-    //            $uibModalInstance.close();
-    //        };
+//    .controller('ModalInstanceCtrltest', function ($scope, $uibModalInstance) {
+//        
+//        $scope.ok = function () {
+//            $uibModalInstance.close();
+//        };
 
-    //        $scope.cancel = function () {
-    //            $uibModalInstance.dismiss('cancel');
-    //        };
-    //    })
+//        $scope.cancel = function () {
+//            $uibModalInstance.dismiss('cancel');
+//        };
+//    })
     .controller('shoplandingController', ['$scope', '$http', 'pagingApi', '$timeout', '$uibModal', function ($scope, $http, pagingApi, $timeout, $uibModal) {
-        $scope.renderHTML = function (html_code) {
+        
+        $scope.renderHTML = function(html_code)
+        {
             var decoded = angular.element('<div />').html(html_code).text();
             return decoded;
         };
 
-        $scope.openProductPopup = function (id) {
+        $scope.openProductPopup = function(id){
             pagingApi.openProductPopup($scope, $uibModal, $timeout, id);
         }
 
@@ -6176,56 +6761,58 @@ angular.module('pagingApp.controllers', ['ui.bootstrap'])
 
         $scope.nextLoad = pagingApi.getPlainContent(1, 3, 'deal', 'idea').success(function (response) {
             $scope.dailyDeals = response['content'];
-            $timeout(function () {
-                    jQuery('#daily-deals').royalSlider({
-                        arrowsNav: true,
-                        loop: false,
-                        keyboardNavEnabled: true,
-                        controlsInside: false,
-                        imageScaleMode: 'fit',
-                        arrowsNavAutoHide: false,
-                        controlNavigation: 'bullets',
-                        controlsInside: true,
-                        thumbsFitInViewport: false,
-                        navigateByClick: false,
-                        startSlideId: 0,
-                        autoPlay: false,
-                        transitionType: 'move',
-                        globalCaption: false,
-                        deeplinking: {
-                            enabled: true,
-                            change: false
-                        },
-                        /* size of all images http://help.dimsemenov.com/kb/royalslider-jquery-plugin-faq/adding-width-and-height-properties-to-images */
-                        imgWidth: "100%",
-                        autoHeight: true,
-                        imageScaleMode: "fill",
-                        //    autoScaleSliderWidth: 1500,
-                        //    autoScaleSliderHeight: 500,
-                        //    autoScaleSlider: true
-                    });
-                },
-                100);
-
+            $timeout(function() {
+                jQuery('#daily-deals').royalSlider({
+                    arrowsNav: true,
+                    loop: false,
+                    keyboardNavEnabled: true,
+                    controlsInside: false,
+                    imageScaleMode: 'fit',
+                    arrowsNavAutoHide: false,
+                    controlNavigation: 'bullets',
+                    controlsInside: true,
+                    thumbsFitInViewport: false,
+                    navigateByClick: false,
+                    startSlideId: 0,
+                    autoPlay: false,
+                    transitionType:'move',
+                    globalCaption: false,
+                    deeplinking: {
+                      enabled: true,
+                      change: false
+                    },
+                    /* size of all images http://help.dimsemenov.com/kb/royalslider-jquery-plugin-faq/adding-width-and-height-properties-to-images */
+                    imgWidth: "100%",
+                    autoHeight: true,
+                    imageScaleMode: "fill",
+                    //    autoScaleSliderWidth: 1500,
+                    //    autoScaleSliderHeight: 500,
+                    //    autoScaleSlider: true
+                });
+                }, 
+            100);
+            
+            
+              
 
         });
 
 
         pagingApi.getPlainContent(1, 9, false, 'product').success(function (response) {
             $scope.newestArrivals = [];
-            for (var i = 0; i <= response['content'].length; i++) {
-                if (i % 3 == 0) {
+            for(var i=0; i<= response['content'].length; i++){
+                if(i%3 == 0){
                     var newestArrival = [response['content'][i]];
-                } else {
+                }else{
                     newestArrival.push(response['content'][i]);
-                    if (i % 3 == 2 || i == response['content'].length - 1) {
+                    if(i%3 == 2 || i == response['content'].length-1){
                         $scope.newestArrivals.push(newestArrival);
                     }
                 }
                 $scope.hasMore = response['hasMore'];
             }
-
-            $timeout(function () {
+            
+            $timeout(function(){
                 jQuery('#newest-arrivals').royalSlider({
                     arrowsNav: true,
                     loop: false,
@@ -6238,11 +6825,11 @@ angular.module('pagingApp.controllers', ['ui.bootstrap'])
                     navigateByClick: false,
                     startSlideId: 0,
                     autoPlay: false,
-                    transitionType: 'move',
+                    transitionType:'move',
                     globalCaption: false,
                     deeplinking: {
-                        enabled: true,
-                        change: false
+                      enabled: true,
+                      change: false
                     },
                     /* size of all images http://help.dimsemenov.com/kb/royalslider-jquery-plugin-faq/adding-width-and-height-properties-to-images */
                     imgWidth: "100%",
@@ -6253,12 +6840,13 @@ angular.module('pagingApp.controllers', ['ui.bootstrap'])
         });
     }])
 
-    .controller('shopcategoryController', function ($scope, $filter, pagingApi, $uibModal, $timeout, $location) {
-        $scope.renderHTML = function (html_code) {
+    .controller('shopcategoryController', function ($scope, $filter, pagingApi, $uibModal, $timeout) {
+        $scope.renderHTML = function(html_code)
+        {
             var decoded = angular.element('<div />').html(html_code).text();
             return decoded;
         };
-        $scope.openProductPopup = function (id) {
+        $scope.openProductPopup = function(id){
             pagingApi.openProductPopup($scope, $uibModal, $timeout, id);
         }
         $scope.currentPage = 1;
@@ -6268,18 +6856,16 @@ angular.module('pagingApp.controllers', ['ui.bootstrap'])
         $scope.hasMore = false;
 
 
-        var $route = $filter('getURISegment')(2);
+        var $route =  $filter('getURISegment')(2);
         var $category = false;
 
-        var fullUrl = $filter('getURISegment');
 
-
-        if ($route == 'shop') {
-            if ($category = $filter('getURISegment')(5)) {
+        if($route == 'shop'){
+            if($category = $filter('getURISegment')(5)){
                 $scope.currentCategory = $category;
-            } else if ($category = $filter('getURISegment')(4)) {
+            }else if($category = $filter('getURISegment')(4)){
                 $scope.currentCategory = $category;
-            } else {
+            }else{
                 $scope.currentCategory = $filter('getURISegment')(3);
             }
         }
@@ -6297,10 +6883,10 @@ angular.module('pagingApp.controllers', ['ui.bootstrap'])
     //    console.log('route :', $route, $filter('getURISegment')(3),$scope.currentCategory);
 
 
-        $scope.nextLoad = pagingApi.getPlainContent(1, 15, $scope.currentCategory, 'product', $scope.currentCategory).success(function (response) {
+        $scope.nextLoad = pagingApi.getPlainContent(1, 15,  $scope.currentCategory, 'product', $scope.currentCategory).success(function (response) {
 
-            if ($scope.sortBy) {
-                response.sort(function (a, b) {
+            if($scope.sortBy){
+                response.sort(function(a, b) {
                     return parseFloat(a[$scope.sortBy]) - parseFloat(b[$scope.sortBy]);
                 });
             }
@@ -6309,9 +6895,9 @@ angular.module('pagingApp.controllers', ['ui.bootstrap'])
             $scope.hasMore = response['hasMore'];
         });
 
-        $scope.loadMore = function () {
+        $scope.loadMore = function() {
 
-            if ($('.bottom-load-more').hasClass('disabled')) {
+            if($('.bottom-load-more').hasClass('disabled')){
                 return false;
             }
 
@@ -6319,10 +6905,10 @@ angular.module('pagingApp.controllers', ['ui.bootstrap'])
 
             var $limit = 15;
 
-            $scope.nextLoad = pagingApi.getPlainContent($scope.currentPage, $limit, $scope.currentCategory, 'product', $scope.currentCategory).success(function (response) {
+            $scope.nextLoad =  pagingApi.getPlainContent($scope.currentPage, $limit,  $scope.currentCategory, 'product', $scope.currentCategory).success(function (response) {
                 var $newStuff = $scope.content.concat(response['content'])
 
-                if ($scope.sortBy) {
+                if($scope.sortBy){
                     $newStuff.sort(function (a, b) {
                         return parseFloat(a[$scope.sortBy]) - parseFloat(b[$scope.sortBy]);
                     });
@@ -6365,43 +6951,43 @@ angular.module('pagingApp.controllers', ['ui.bootstrap'])
         //    });
         //}
 
-        $scope.filterPlainContent = function ($filterBy, $sortBy) {
+        $scope.filterPlainContent = function($filterBy, $sortBy) {
 
             //if($filterBy === $scope.currentCategory){
             //    return true;
             //}
 
-            if ($filterBy) {
-                if ($('a[data-filterby="' + $filterBy + '"]').hasClass('active')) {
+            if($filterBy){
+                if($('a[data-filterby="'+$filterBy+'"]').hasClass('active')){
                     return true;
                 }
 
                 $scope.currentCategory = $filterBy;
                 $('a[data-filterby]').removeClass('active');
-                $('a[data-filterby="' + $filterBy + '"]').addClass('active');
+                $('a[data-filterby="'+$filterBy+'"]').addClass('active');
 
             }
 
-            if ($sortBy && $sortBy != 'undefined' && $sortBy != $scope.sortBy) {
+            if($sortBy && $sortBy != 'undefined' && $sortBy != $scope.sortBy){
 
-                if ($('a[data-sotyby="' + $sortBy + '"]').hasClass('active')) {
+                if($('a[data-sotyby="'+$sortBy+'"]').hasClass('active')){
                     return true;
                 }
 
                 $('a[data-sortby]').removeClass('active');
-                $('a[data-sortby="' + $sortBy + '"]').addClass('active');
+                $('a[data-sortby="'+$sortBy+'"]').addClass('active');
             }
 
-            var contentBlock = $('.grid-box-3');
+            var contentBlock =  $('.grid-box-3');
 
-            contentBlock.fadeOut(500, function () {
+            contentBlock.fadeOut(500, function(){
 
-                $scope.nextLoad = pagingApi.getPlainContent(1, 15, $scope.currentCategory, 'product', $scope.currentCategory).success(function (response) {
-                    if ($sortBy != false) {
+                $scope.nextLoad =  pagingApi.getPlainContent(1, 15,   $scope.currentCategory, 'product',  $scope.currentCategory).success(function (response) {
+                    if($sortBy != false){
                         $scope.sortBy = $sortBy;
                     }
 
-                    if ($scope.sortBy && $scope.sortBy != 'default') {
+                    if($scope.sortBy && $scope.sortBy != 'default' ){
                         response['content'].sort(function (a, b) {
                             return parseFloat(a[$scope.sortBy]) - parseFloat(b[$scope.sortBy]);
                         });
@@ -6415,57 +7001,57 @@ angular.module('pagingApp.controllers', ['ui.bootstrap'])
             });
         }
     })
-    .directive('a', function () {
-        return {
-            restrict: 'E',
-            link: function (scope, elem, attrs) {
-                if (attrs.ngClick || attrs.href === '' || attrs.href === '#') {
-                    elem.on('click', function (e) {
-                        e.preventDefault();
-                    });
-                }
+    .directive('a', function() {
+    return {
+        restrict: 'E',
+        link: function(scope, elem, attrs) {
+            if(attrs.ngClick || attrs.href === '' || attrs.href === '#'){
+                elem.on('click', function(e){
+                    e.preventDefault();
+                });
             }
-        };
-    })
-    .factory('pagingApi', function ($http, $window, $q) {
+        }
+    };
+  })
+    .factory('pagingApi', function($http, $window, $q) {
         var pagingApi = {};
         pagingApi.openProductPopup = function ($scope, $uibModal, $timeout, productId) {
             var body = angular.element(document).find('body');
-            if (body[0].offsetWidth < 880) {
+            if(body[0].offsetWidth < 880){
                 return;
             }
-
+            
             document.getElementsByTagName('html')[0].className += " hide-overflow ";
             var templateUrl = "product-popup.html";
             $http({
                 url: '/api/product/get-product/' + productId,
                 method: "get",
-            }).success(function (data) {
+            }).success(function (data) {  
                 $scope.productData = data;
-                var modalInstance = $uibModal.open({
-                    templateUrl: templateUrl,
-                    size: 'lg',
-                    windowClass: 'product-popup-modal',
+            var modalInstance = $uibModal.open({
+              templateUrl: templateUrl,
+              size: 'lg',
+              windowClass : 'product-popup-modal',
                     controller: 'ProductModalInstanceCtrl',
                     resolve: {
-                        productData: function () {
+                        productData: function(){
                             return $scope.productData;
                         }
                     }
-                });
-                modalInstance.opened.then(function () {
-                    $timeout(function () {
+            });
+            modalInstance.opened.then(function(){
+                $timeout(function() {
                         var data = $scope.productData;
                         if (data.status_code == 200) {
                             console.log(data.data);
                             var data = data.data;
                             var imageHTML = "";
-                            for (var key in data.selfImages.picture) {
+                            for(var key in data.selfImages.picture){
                                 var picture = data.selfImages.picture[key];
                                 imageHTML += '\
                                     <div>\
                                         <img class="rsImg " \
-                                             src="' + picture['link'] + '"\
+                                             src="'+ picture['link'] +'"\
                                              class="attachment-large wp-post-image"\
                                              alt=""/>\
                                     </div>\
@@ -6473,268 +7059,266 @@ angular.module('pagingApp.controllers', ['ui.bootstrap'])
                             }
                             $('.product-popup-modal #product-slider').html(imageHTML);
                             $('.product-popup-modal .base-url-holder').attr('data-base-url', '/product/' + data.product_permalink);
-                            $('.product-popup-modal .p-title').html("<a target='_blank' href='/product/" + data.productInformation['Permalink'] + "'>" + data.productInformation['ProductName'] + "</a>");
+                            $('.product-popup-modal .p-title').html("<a target='_blank' href='/product/"+ data.productInformation['Permalink'] +"'>"+ data.productInformation['ProductName'] +"</a>");
 
                             var html = '\
                                 <a class="get-round" href="/open/' + productId + '/product" target="_blank">Get it</a>\
-                                <img class="vendor-logo" width="107" src="' + data.storeInformation['ImagePath'] + '" alt="' + data.storeInformation['StoreName'] + '">\
+                                <img class="vendor-logo" width="107" src="'+ data.storeInformation['ImagePath'] +'" alt="'+ data.storeInformation['StoreName'] +'">\
                             ';
                             $('.product-popup-modal .p-get-it-amazon .p-body').html(html);
-
+                            
 
 //                            $('.product-popup-modal .get-round').attr('href', data.productInformation['AffiliateLink']);
-
-                            if (data.productInformation['Review']) {
-                                var pScore = parseInt(((( Number(data.productInformation['Review'][0].value) > 0 ? Number(data.productInformation['Review'][0].value) : Number(data.productInformation['Review'][1].value)) + Number(data.productInformation['Review'][1].value)) / 2) * 20) + "%";
+                            
+                            if(data.productInformation['Review']){
+                                var pScore = parseInt(((( Number(data.productInformation['Review'][0].value) > 0 ? Number(data.productInformation['Review'][0].value) : Number(data.productInformation['Review'][1].value)) + Number(data.productInformation['Review'][1].value))/2)*20) + "%";
                                 $('.product-popup-modal .p-score').html(pScore);
 
-                            } else {
+                            }else{
                                 //$('.p-average-ideaing-score').css('visibility', 'hidden');
                                 $('.p-average-ideaing-score, .reviews-medium-container').hide();
 
                             }
 
                             var price;
-                            if (data.productInformation['SellPrice']) {
+                            if(data.productInformation['SellPrice']){
                                 price = data.productInformation['SellPrice'];
-                            } else {
+                            }else{
                                 price = 0;
                             }
                             $('.product-popup-modal .aws-price').html(price);
-
+                            
                             var features;
-                            if (data.productInformation['Description']) {
+                            if(data.productInformation['Description']){
                                 features = data.productInformation['Description'];
-                            } else {
+                            }else{
                                 features = "";
                             }
                             $('#features').html(features);
-
+                            
                             var starRatingHtml = "";
-                            $stars = data.productInformation['Review'][0].value;
-                            $fStar = Math.floor($stars);
-                            $cStar = Math.ceil($stars);
-                            $halfStar = -1;
-                            if ($fStar == $cStar)
-                                $halfStar = $cStar;
+                                $stars = data.productInformation['Review'][0].value;
+                                $fStar = Math.floor($stars);
+                                $cStar = Math.ceil($stars);
+                                $halfStar = -1;
+                                if ($fStar == $cStar)
+                                    $halfStar = $cStar;
 
-                            for ($i = 1; $i <= 5; $i++) {
-                                if ($i <= $fStar) {
-                                    starRatingHtml += '\
+                                for($i=1; $i<=5; $i++){
+                                    if($i <= $fStar){
+                                        starRatingHtml += '\
                                         <span class="star active">\
                                             <i class="m-icon--star-blue-full"></i>\
                                         </span>\
                                         ';
-                                } else if ($cStar == $i) {
-                                    starRatingHtml += '\
+                                    }else if($cStar == $i){
+                                        starRatingHtml += '\
                                         <span class="star half">\
                                             <i class=" m-icon--star-blue-half2"></i>\
                                         </span>\
                                         ';
-                                } else {
-                                    starRatingHtml += '\
+                                    }else{
+                                        starRatingHtml += '\
                                         <span class="star">\
                                             <i class=" m-icon--star-blue-full-lines"></i>\
                                         </span>\
                                         ';
+                                    }
                                 }
-                            }
-                            $(".product-popup-modal .critic .star-rating").html(starRatingHtml);
-                            var counter = data.productInformation['Review'][0].counter == '' ? 0 : data.productInformation['Review'][0].counter;
-                            if (counter > 1) {
-                                var starRatingLabelHtml = counter + '\
+                                $(".product-popup-modal .critic .star-rating").html(starRatingHtml);
+                                var counter = data.productInformation['Review'][0].counter == '' ? 0 : data.productInformation['Review'][0].counter;
+                                if(counter>1){
+                                    var starRatingLabelHtml =  counter + '\
                                         <span class="light-black">\
                                             Reviews\
                                         </span>\
                                     ';
-                            } else {
-                                var starRatingLabelHtml = counter + '\
+                                }else{
+                                    var starRatingLabelHtml =  counter + '\
                                         <span class="light-black">\
                                             Review\
                                         </span>\
                                     ';
-                            }
-                            $(".product-popup-modal .critic .star-rating-label").html(starRatingLabelHtml);
+                                }
+                                $(".product-popup-modal .critic .star-rating-label").html(starRatingLabelHtml);
 
                             var criticOuterRatingHtml = "";
-                            if (data.productInformation['Review']) {
-                                var outrReviews = data.productInformation['Review'].slice(2);
-                                for (reviewKey in outrReviews) {
-                                    var review = outrReviews[reviewKey];
-                                    //console.log("reviewKey", reviewKey)
-                                    //console.log("review", review)
-                                    criticOuterRatingHtml += '\
+                                if(data.productInformation['Review']){
+                                    var outrReviews = data.productInformation['Review'].slice(2);
+                                    for( reviewKey in outrReviews ){
+                                        var review = outrReviews[reviewKey];
+                                        //console.log("reviewKey", reviewKey)
+                                        //console.log("review", review)
+                                        criticOuterRatingHtml += '\
                                             <div class="critic-outer-rating">\
                                                 <div class="line-label ">\
                                                     <a\
                                                         href="' + review.link + '"\
-                                                        target="_blank">' + review.key + '\
+                                                        target="_blank">'+ review.key + '\
                                                     </a></div>\
                                                 <div class="star-rating" style="text-align: center">';
+                                                
+                                                    $stars = review.value ? review.value : 0;
+                                                    $fStar = Math.floor($stars);
+                                                    $cStar = Math.ceil($stars);
+                                                    $halfStar = -1;
+                                                    if ($fStar == $cStar)
+                                                        $halfStar = $cStar;
+                                                    // TODO - move to model or Angular
 
-                                    $stars = review.value ? review.value : 0;
-                                    $fStar = Math.floor($stars);
-                                    $cStar = Math.ceil($stars);
-                                    $halfStar = -1;
-                                    if ($fStar == $cStar)
-                                        $halfStar = $cStar;
-                                    // TODO - move to model or Angular
-
-                                    for ($i = 1; $i <= 5; $i++) {
-                                        if ($i <= $fStar) {
-                                            criticOuterRatingHtml += '\
+                                                    for($i=1; $i<=5; $i++){
+                                                        if($i <= $fStar){
+                                                            criticOuterRatingHtml += '\
                                                                 <span class="star active">\
                                                                     <i class="m-icon--star-blue-full"></i>\
                                                                 </span>\
                                                             ';
-                                        }
-                                        else if ($cStar == $i) {
-                                            criticOuterRatingHtml += '\
+                                                        }
+                                                        else if($cStar == $i){
+                                                            criticOuterRatingHtml += '\
                                                                 <span class="star half">\
                                                                     <i class=" m-icon--star-blue-half2"></i>\
                                                                 </span>\
                                                             ';
-                                        }
-                                        else {
-                                            criticOuterRatingHtml += '\
+                                                        }
+                                                        else{
+                                                            criticOuterRatingHtml += '\
                                                                 <span class="star">\
                                                                     <i class=" m-icon--star-blue-full-lines"></i>\
                                                                 </span>\
                                                             ';
-                                        }
-                                    }
-                                    criticOuterRatingHtml += '\
+                                                        }
+                                                    }
+                                        criticOuterRatingHtml += '\
                                                 </div>\
                                             </div>\
                                         ';
+                                    }
                                 }
-                            }
                             jQuery(".product-popup-modal .critic #critic-outer-rating-holder").html(criticOuterRatingHtml);
 
                             var starRatingHtml = "";
-                            $stars = data.productInformation['Review'][1].value;
-                            $fStar = Math.floor($stars);
-                            $cStar = Math.ceil($stars);
-                            $halfStar = -1;
-                            if ($fStar == $cStar)
-                                $halfStar = $cStar;
+                                $stars = data.productInformation['Review'][1].value;
+                                $fStar = Math.floor($stars);
+                                $cStar = Math.ceil($stars);
+                                $halfStar = -1;
+                                if ($fStar == $cStar)
+                                    $halfStar = $cStar;
 
-                            for ($i = 1; $i <= 5; $i++) {
-                                if ($i <= $fStar) {
-                                    starRatingHtml += '\
+                                for($i=1; $i<=5; $i++){
+                                    if($i <= $fStar){
+                                        starRatingHtml += '\
                                         <span class="star active">\
                                             <i class="m-icon--star-blue-full"></i>\
                                         </span>\
                                         ';
-                                } else if ($cStar == $i) {
-                                    starRatingHtml += '\
+                                    }else if($cStar == $i){
+                                        starRatingHtml += '\
                                         <span class="star half">\
                                             <i class=" m-icon--star-blue-half2"></i>\
                                         </span>\
                                         ';
-                                } else {
-                                    starRatingHtml += '\
+                                    }else{
+                                        starRatingHtml += '\
                                         <span class="star">\
                                             <i class=" m-icon--star-blue-full-lines"></i>\
                                         </span>\
                                         ';
+                                    }
                                 }
-                            }
-
-                            $(".product-popup-modal .amazon .star-rating").html(starRatingHtml);
-                            var counter = data.productInformation['Review'][1].counter == '' ? 0 : data.productInformation['Review'][1].counter;
-                            var starRatingLabelHtml = '<a href="' + (data.productInformation['Review'][1].link ? data.productInformation['Review'][1].link : "#") + '" target="_blank">';
-                            if (counter > 1) {
-                                starRatingLabelHtml += counter + '\
+                                
+                                $(".product-popup-modal .amazon .star-rating").html(starRatingHtml);
+                                var counter = data.productInformation['Review'][1].counter == '' ? 0 : data.productInformation['Review'][1].counter;
+                                var starRatingLabelHtml = '<a href="' + (data.productInformation['Review'][1].link ? data.productInformation['Review'][1].link : "#") + '" target="_blank">'; 
+                                if(counter>1){
+                                    starRatingLabelHtml +=  counter + '\
                                         <span class="light-black">\
                                             Reviews\
                                         </span>\
                                     ';
-                            } else {
-                                starRatingLabelHtml += counter + '\
+                                }else{
+                                    starRatingLabelHtml +=  counter + '\
                                         <span class="light-black">\
                                             Review\
                                         </span>\
                                     ';
-                            }
-                            starRatingLabelHtml += "</a>";
-                            $(".product-popup-modal .amazon .star-rating-label").html(starRatingLabelHtml);
-
+                                }
+                                starRatingLabelHtml += "</a>";
+                                $(".product-popup-modal .amazon .star-rating-label").html(starRatingLabelHtml);
+                            
                             var criticQuoteHtml = '\
                                 <div>' + (data.productInformation['ReviewExtLink'] ? data.productInformation['ReviewExtLink'] : "") + '</div>';
                             $('.product-popup-modal .critic-quote').html(criticQuoteHtml);
 
                             $http({
-                                url: '/api/comment/get-product-comment/' + productId,
+                                url: '/api/comment/get-product-comment/'+productId,
                                 method: "GET"
                             }).success(function (result) {
                                 var comments = result.data;
                                 var commentsCount = comments.length;
-                                var commentsCountView = commentsCount < 2 ? commentsCount + " " + "Comment" : commentsCount + " " + "Comments";
+                                var commentsCountView = commentsCount < 2 ? commentsCount +" "+"Comment" : commentsCount +" "+"Comments";
                                 var commentsHtml = "";
-                                for (var i = 0; i < comments.length; i++) {
+                                for(var i=0; i<comments.length; i++){
                                     var comment = comments[i];
                                     commentsHtml += '\
                                         <div class="p-comment-row">\
                                             <div class="pull-left text-center p-comment-user">\
-                                                <img src="' + comment.Picture + '" width="50px" class="p-photo"><br>' + comment.UserName + '</div>\
+                                                <img src="'+ comment.Picture + '" width="50px" class="p-photo"><br>' + comment.UserName + '</div>\
                                             <div class="p-comment">'
-                                        + comment.Comment +
-                                        '<div class="p-footer">\
-                                            <time class="p-time pull-left">' + comment.PostTime + '</time>\
+                                                + comment.Comment +
+                                                '<div class="p-footer">\
+                                                    <time class="p-time pull-left">'+comment.PostTime+'</time>\
                                                     <div class="clearfix"></div>\
                                                 </div>\
                                             </div>\
                                         </div>\
                                     ';
                                 }
-
-
+                                
+                                
                                 $('.p-comment-content-holder').html(commentsHtml);
                                 $('.p-comment-responses').html(commentsCountView);
-                                //  console.log($scope.comments.length);
+                              //  console.log($scope.comments.length);
                             });
 
-
-                            jQuery('#product-slider').royalSlider({
-                                loop: false,
-                                keyboardNavEnabled: true,
-                                controlsInside: false,
+                            
+                    jQuery('#product-slider').royalSlider({
+                        loop: false,
+                        keyboardNavEnabled: true,
+                        controlsInside: false,
                                 imageScaleMode: 'fit',
-                                arrowsNavAutoHide: false,
-                                controlNavigation: 'thumbnails',
-                                thumbsFitInViewport: false,
-                                navigateByClick: true,
-                                startSlideId: 0,
-                                autoPlay: false,
-                                transitionType: 'move',
-                                globalCaption: false,
-                                autoScaleSlider: false,
+                        arrowsNavAutoHide: false,
+                        controlNavigation: 'thumbnails',
+                        thumbsFitInViewport: false,
+                        navigateByClick: true,
+                        startSlideId: 0,
+                        autoPlay: false,
+                        transitionType: 'move',
+                        globalCaption: false,
+                        autoScaleSlider: false,
                                 imgHeight: "100%",
 //                                imgWidth: "100%",
 //                                imgWidth: "100%",
 //                                autoHeight: true,  
-                                deeplinking: {
-                                    enabled: true,
-                                    change: false
-                                },
-
-                                autoHeight: true,
-                            });
-                            document.getElementById('product-slider').style.visibility = 'visible';
+                        deeplinking: {
+                          enabled: true,
+                          change: false
+                        },
+                        
+                        autoHeight: true,
+                    });
+                    document.getElementById( 'product-slider' ).style.visibility = 'visible';
                         }
                     }, 100)
                 })
+                    
 
+            modalInstance.result.finally(function(){
+                var className = document.getElementsByTagName('html')[0].className;
+                className = className.replace('hide-overflow', '');
+                document.getElementsByTagName('html')[0].className = className;
 
-                modalInstance.result.finally(function () {
-                    var className = document.getElementsByTagName('html')[0].className;
-                    className = className.replace('hide-overflow', '');
-                    document.getElementsByTagName('html')[0].className = className;
-
-                });
-                console.log('buker')
-                console.log(data.data.product_permalink)
+            });
                 pagingApi.countSocialShares('product/' + data.data.product_permalink);
             });
 
@@ -6742,41 +7326,39 @@ angular.module('pagingApp.controllers', ['ui.bootstrap'])
         };
 
         pagingApi.fakeUpdateCounts = function ($service) {
-            var currentCounters = $('.share-buttons a[data-service="' + $service + '"]').children('.share-count');
+            var currentCounters =  $('.share-buttons a[data-service="' + $service + '"]').children('.share-count');
             var totalCounters = $('b.share-count.all');
+			
+			var currentCount = Number(currentCounters.html());
+			currentCounters.html(currentCount + 1);
 
-            var currentCount = Number(currentCounters.html());
-            currentCounters.html(currentCount + 1);
+			var totalCount = Number(totalCounters.html());
+			totalCounters.html(totalCount + 1);
+		}
 
-            var totalCount = Number(totalCounters.html());
-            totalCounters.html(totalCount + 1);
-        }
+		pagingApi.openSharingModal = function ($service, $scope) {
 
-        pagingApi.openSharingModal = function ($service, $scope) {
-
-            if ($('.base-url-holder').length && $('.base-url-holder').data('base-url')) {
+            if($('.base-url-holder').length && $('.base-url-holder').data('base-url')){
                 var baseUrl = 'https://' + window.location.host + $('.base-url-holder').data('base-url');
-                console.log('baseUrl')
-                console.log(baseUrl)
-            } else {
+            }else{
                 var baseUrl = 'https://' + window.location.host + window.location.pathname;
             }
 
             var shareUrl = false;
 
-            var $pitnerestShare = function () {
-                var e = document.createElement('script');
-                e.setAttribute('type', 'text/javascript');
-                e.setAttribute('charset', 'UTF-8');
-                e.setAttribute('src', 'https://assets.pinterest.com/js/pinmarklet.js?r=' + Math.random() * 99999999);
-                document.body.appendChild(e);
+            var $pitnerestShare = function(){
+                    var e=document.createElement('script');
+                    e.setAttribute('type','text/javascript');
+                    e.setAttribute('charset','UTF-8');
+                    e.setAttribute('src','https://assets.pinterest.com/js/pinmarklet.js?r='+Math.random()*99999999);
+                    document.body.appendChild(e);
 
-                setTimeout(function () {
-                    pagingApi.fakeUpdateCounts('pinterest');
+                setTimeout(function(){
+					pagingApi.fakeUpdateCounts('pinterest');
                 }, 10000);
             }
-
-            switch ($service) {
+ 
+            switch($service){ 
                 case 'facebook':
                     shareUrl = 'https://www.facebook.com/sharer/sharer.php?u=' + baseUrl;
                     break;
@@ -6792,7 +7374,7 @@ angular.module('pagingApp.controllers', ['ui.bootstrap'])
                     return true
             }
 
-            if (!shareUrl) {
+            if(!shareUrl){
                 return false;
             }
 
@@ -6802,11 +7384,11 @@ angular.module('pagingApp.controllers', ['ui.bootstrap'])
 
             // TODO -- fire counter updates for shares, only on pages where they are used (CMS)
 
-            var timer = setInterval(function () {
-                if ($modal.closed) {
+            var timer = setInterval(function() {
+                if($modal.closed) {
                     clearInterval(timer);
 
-                    if ($service == 'twitter') {
+                    if($service == 'twitter'){
                         $http({
                             url: '/api/social/update-twi-count',
                             method: "POST",
@@ -6814,8 +7396,8 @@ angular.module('pagingApp.controllers', ['ui.bootstrap'])
                         });
                     }
 
-                    setTimeout(function () {
-                        pagingApi.fakeUpdateCounts($service);
+                    setTimeout(function(){
+			pagingApi.fakeUpdateCounts($service);
                     }, 2000);
                     console.log('share counters updated')
                 }
@@ -6824,9 +7406,9 @@ angular.module('pagingApp.controllers', ['ui.bootstrap'])
         };
 
         pagingApi.countSocialShares = function ($url) {
-            if (typeof $url !== "undefined") {
-                var thisUrl = window.location.host + $url;
-            } else {
+            if(typeof $url !== "undefined"){
+                var thisUrl =  window.location.host + $url;
+            }else{
                 var thisUrl = window.location.host + window.location.pathname;
             }
 
@@ -6836,6 +7418,12 @@ angular.module('pagingApp.controllers', ['ui.bootstrap'])
                 params: {'url': thisUrl}
             }).success(function (response) {
                 $('.share-count.all').html(response.all);
+
+                if(response.all > 0){
+                    $('.share-count.all.passive').hide();
+                    $('.share-count.all.active').show();
+                }
+
                 $('.share-count.twi').html(response.twitter);
                 $('.share-count.fb').html(response.facebook);
                 $('.share-count.gp').html(response.gplus);
@@ -6844,34 +7432,42 @@ angular.module('pagingApp.controllers', ['ui.bootstrap'])
             });
         }
 
-        pagingApi.getPlainContent = function (page, limit, tag, type, productCategoryID, sortBy) {
+        pagingApi.getPlainContent = function(page, limit, tag, type, productCategoryID, sortBy) {
             return $http({
                 method: 'GET',
                 url: '/api/paging/get-content/' + page + '/' + limit + '/' + tag + '/' + type + '/' + productCategoryID + '/' + sortBy,
             });
         }
 
-        pagingApi.getGridContent = function (page, limit, tag, type, ideaCategory) {
+
+        pagingApi.getReadContent = function(category) {
             return $http({
                 method: 'GET',
-                url: '/api/paging/get-grid-content/' + page + '/' + limit + '/' + tag + '/' + type + '/' + ideaCategory,
+                url: '/api/paging/get-read-content/' + category
             });
         }
 
-        pagingApi.getSearchContent = function (query, limit, offset, type, sortBy) {
+        pagingApi.getGridContent = function(page, limit, tag, type, category, daysBack) {
+            return $http({
+                method: 'GET',
+                url: '/api/paging/get-grid-content/' + page + '/' + limit + '/' + tag + '/' + type + '/' + category + '/' + daysBack,
+            });
+        }
+
+        pagingApi.getSearchContent = function(query, limit, offset, type, sortBy) {
             return $http({
                 method: "get",
                 url: '/api/find/' + query + '/' + limit + '/' + offset + '/' + type + '/' + sortBy,
             });
         }
 
-        pagingApi.getFilteredContent = function (currentPage, $tag, $type, $sliceFunction) {
+        pagingApi.getFilteredContent = function(currentPage, $tag, $type, $sliceFunction) {
             var promiseArray = [];
 
-            for (var $page = 1; $page < currentPage + 1; $page++) {
+            for(var $page = 1; $page < currentPage + 1; $page++) {
 
                 promiseArray.push(
-                    $http.get('/api/paging/get-grid-content/' + $page + '/' + 9 + '/' + $tag + '/' + $type)
+                    $http.get('/api/paging/get-grid-content/' + $page + '/' + 9 + '/' + $tag+ '/' + $type)
                 );
             }
 
@@ -6879,21 +7475,22 @@ angular.module('pagingApp.controllers', ['ui.bootstrap'])
                 var $i = 0;
                 var $filtered = [];
 
-                response.forEach(function (batch) {
+                response.forEach(function(batch) {
 
                     var endContent = [];
 
-                    endContent['regular'] = batch.data['content']['regular'];
+                    endContent['ideas'] = batch.data['content']['ideas'];
+                    endContent['products'] = batch.data['content']['products'];
 
-                    if ($type != null && $type != 'idea') {
+                    if($type != null && $type != 'idea'){
                         endContent['featured'] = [];
-                    } else {
-                        endContent['featured'] = batch.data['content']['featured']; // we don't filter
+                    }else{
+                        endContent['featured'] =  batch.data['content']['featured']; // we don't filter
                     }
 
                     $hasMore = batch.data['hasMore'];
 
-                    $filtered[$i] = $sliceFunction(endContent['regular'], endContent['featured']);
+                    $filtered[$i] = $sliceFunction(endContent['regular'], endContent['featured'], endContent['products'] );
                     $i++;
                 });
 
@@ -6906,6 +7503,9 @@ angular.module('pagingApp.controllers', ['ui.bootstrap'])
             });
             return $return;
         }
+
+
+
 
 
         return pagingApi;
@@ -6965,36 +7565,36 @@ angular.module('pagingApp.controllers', ['ui.bootstrap'])
 //        return pagingApi;
 //    });
 
-    /*.factory('layoutApi', function($http) {
+/*.factory('layoutApi', function($http) {
 
-     var layoutApi = {};
+        var layoutApi = {};
 
-     layoutApi.getProductsForShopMenu = function() {
-     return $http({
-     method: 'GET',
-     url: '/api/layout/get-shop-menu/',
-     });
-     }
+        layoutApi.getProductsForShopMenu = function() {
+            return $http({
+                method: 'GET',
+                url: '/api/layout/get-shop-menu/',
+            });
+        }
 
 
-     return layoutApi;
-     })
-     .directive('a', function() {
-     return {
-     restrict: 'E',
-     link: function(scope, elem, attrs) {
-     if(attrs.ngClick || attrs.href === '' || attrs.href === '#'){
-     elem.on('click', function(e){
-     e.preventDefault();
-     });
-     }
-     }
-     };
-     });*/
+        return layoutApi;
+    })
+    .directive('a', function() {
+        return {
+            restrict: 'E',
+            link: function(scope, elem, attrs) {
+                if(attrs.ngClick || attrs.href === '' || attrs.href === '#'){
+                    elem.on('click', function(e){
+                        e.preventDefault();
+                    });
+                }
+            }
+        };
+    });*/
 ;
 
-angular.module('pagingApp').value('cgBusyDefaults', {
-    message: '',
+angular.module('pagingApp').value('cgBusyDefaults',{
+    message:'',
     backdrop: false,
     templateUrl: '/assets/svg/spinner.html',
     delay: 300,
@@ -7003,18 +7603,20 @@ angular.module('pagingApp').value('cgBusyDefaults', {
 });
 
 angular.module('pagingApp.filters', [])
-    .filter('getURISegment', function ($location) {
-        return function (segment) {
-            var baseUrl = $location.protocol() + '://' + $location.host() + '/';
+    .filter('getURISegment', function() {
+        // we cannot use Angular $location, bacause it conflicts with vanila history.state
+        return function(index) {
+            var segments = $(location).attr('href').split("/");
+            cutoff = segments.splice(0, 3); // cut off base
 
-            var query = $location.absUrl().replace(baseUrl, '');
-            var data = query.split("/");
-            if (data[segment - 2]) {
-                return data[segment - 2];
+            if(segments[index - 1]){
+                return segments[index - 1];
+            }else{
+                return false;
             }
-            return false;
         }
     });
+
 
 
 // bootstrap for modularization ( add id="pagingApp" with initializing ng-app='pagingApp')
@@ -7179,6 +7781,269 @@ productApp.config(['$provide', function ($provide) {
 }]);
 
 
+productApp.controller('forumController', ['$scope', '$http', '$window', '$interval', '$timeout'
+    , function ($scope, $http, $window, $interval, $timeout){
+        $scope.focusEditor = function () {
+            $timeout(function () {
+                angular.element('div[contenteditable=true]').trigger('focus');
+            })
+        }
+        $scope.activeCategoryId = 1;
+        $scope.activeSubCategoryId;
+        $scope.thread = {category_id: "1"};
+        $scope.categoryThreads = [];
+
+        $scope.init = function(){
+            $http({
+                url: '/advice/api/categories/' + $scope.activeCategoryId,
+                method: "get",
+                data: {
+                }
+            }).success(function (result) {
+                $scope.subCategories = result.data;
+//                $scope.activeSubCategoryId = result.data.length ? result.data[0].id : "";
+                $scope.getThreads($scope.activeCategoryId);
+            });
+        }
+        $scope.init();
+        
+        $scope.addThread = function(){
+            $http({
+                url: '/advice/api/add-thread',
+                method: "POST",
+                data: {
+                    category_id: $scope.thread.category_id,
+                    content: $scope.thread.content,
+                    title: $scope.thread.title,
+                }
+            }).success(function (data) {
+                $scope.init();
+                alert("Successfully saved.");
+            });
+        }
+        
+        $scope.getThreads = function(categoryId){
+            $http({
+                url: '/advice/api/threads/' + categoryId, 
+                method: "get", 
+                data: {
+                }
+            }).success(function (result) {
+                $scope.categoryThreads = result.data;
+                
+            });
+        }
+        
+        $scope.selectCategory = function(categoryID){
+            $scope.activeCategoryId = categoryID;
+            $scope.init();
+        }
+        $scope.selectSubCategory = function(subCategoryID){
+            $scope.activeSubCategoryId = subCategoryID;
+            $scope.getThreads(subCategoryID);
+        }
+    }
+]);
+publicApp.controller('CommentModalCtrl',['$scope', '$timeout', '$uibModalInstance', '$http', 'commentData', function ($scope, $timeout, $uibModalInstance, $http, commentData) {
+    $scope.focusEditor = function () {
+        $timeout(function () {
+            angular.element('div[contenteditable=true]').trigger('focus');
+        })
+    }
+    $scope.commentData = {
+        thread_id: commentData.thread_id,
+        post_id: commentData.post_id,
+        content: "",
+    };
+    
+    $scope.hideAndForget = function () {
+        $http({
+            url: '/hide-signup',
+            method: "GET",
+
+        }).success(function (data) {
+            $uibModalInstance.close();
+        });
+    };
+
+    $scope.cancel = function () {
+        $uibModalInstance.dismiss('cancel');
+    };
+
+    $scope.saveComment = function(){
+        if(!$scope.commentData.content){
+            return;
+        }
+        $http({
+            url: '/advice/api/comment',
+            method: "post",
+            data: {
+                thread_id: $scope.commentData.thread_id,
+                post_id: $scope.commentData.post_id,
+                content: $scope.commentData.content,
+            }
+        }).success(function (result) {
+            $uibModalInstance.dismiss('cancel');
+//            items.scope.init();
+        });
+    }
+}
+]);
+
+productApp.directive( 'compileData', function ( $compile ) {
+  return {
+    scope: true,
+    link: function ( scope, element, attrs ) {
+
+      var elmnt;
+
+      attrs.$observe( 'template', function ( myTemplate ) {
+        if ( angular.isDefined( myTemplate ) ) {
+          // compile the provided template against the current scope
+          elmnt = $compile( myTemplate )( scope );
+
+            element.html(""); // dummy "clear"
+
+          element.append( elmnt );
+        }
+      });
+    }
+  };
+});
+
+productApp.controller('forumThreadController', ['$scope', '$uibModal', '$http', '$window', '$interval', '$timeout'
+    , function ($scope, $uibModal, $http, $window, $interval, $timeout){
+        $scope.thread = {};
+        $scope.commentHTML = "";
+        $scope.init = function(){
+            $http({
+                url: '/advice/api/posts/' + $scope.thread_id,
+                method: "get",
+                data: {
+                }
+            }).success(function (result) {
+                $scope.thread = result.data;
+                $scope.commentHTML = "";
+                var posts = angular.copy($scope.thread.posts);
+                $scope.makeCommentHTML(posts)
+                
+                $timeout(function () {
+                    $scope.init();
+                }, 3000)
+                
+            });
+        }
+        
+        angular.element(document).ready(function () {
+            $scope.init();
+        });
+
+        $scope.commentPopup = function(thread_id, post_id){
+            var templateUrl = "forum-comment.html";
+            var modalInstance = $uibModal.open({
+                templateUrl: templateUrl,
+                size: 'lg',
+                windowClass: 'forum-comment-modal',
+                controller: 'CommentModalCtrl',
+                resolve: {
+                    commentData: function(){
+                        return {
+                            thread_id: thread_id,
+                            post_id: post_id,
+                            scope: $scope
+                        };
+                    }
+                }
+            });
+
+        };
+
+        $scope.makeCommentHTML = function(posts){
+            for(var key in posts){
+                var post = posts[key];
+                if(!post.post_id){
+                    $scope.commentHTML += '\
+                <div class="comment-row " >\
+                    <div class="comment-profile-holder text-center">\
+                        <img class="profile-photo" src="'+post.authorPicture+'"><br>\
+                        <span class="name">COMMUNITY MEMBER</span><br>\
+                        <span>78% REPUTATION</span>\
+                    </div>\
+                    <div class="comment-content-container">\
+                        <div class="comment-content-holder">\
+                            <div class="comment-content-inner-holder">\
+                                <div class="comment-conent">\
+                                    <div class="fullname">\
+                                        '+post.authorName+'\
+                                    </div>\
+                                    <div class="username">\
+                                        '+post.authorName+'\
+                                    </div>\
+                                    <div class="content" >'+post.content+'</div>\
+                                </div>\
+                                <div class="comment-bottom">\
+                                    <div class="pull-left">\
+                                        <i class="m-icon m-icon--star-blue-full"></i> &nbsp; <span>207</span> found this helpful\
+                                    </div>\
+                                    <div class="pull-right reply" data-ng-click="commentPopup('+post.thread_id+','+post.id+')"><i class="m-icon m-icon--email-form-id"></i> &nbsp; Reply</div>\
+                                    <div class="pull-right link-to-this-post"><i class="m-icon m-icon--attachment"></i> &nbsp; Link to this post</div>\
+                                    <div class="clearfix"></div>\
+                                </div>\
+                            </div>\
+                    ';
+                }else{
+                    if(key == 0){
+                        $scope.commentHTML += '\
+                            <div class="sub" >\
+                            ';
+                    }
+                    $scope.commentHTML += '\
+                            <div  class="comment-content-holder">\
+                                <div class="comment-content-inner-holder">\
+                                    <div class="comment-conent">\
+                                        <div class="pull-left">\
+                                            <img class="profile-photo" src="'+post.authorPicture+'">\
+                                        </div>\
+                                        <div class="pull-left">\
+                                            <div class="fullname">\
+                                                '+post.authorName+'\
+                                            </div>\
+                                            <div class="username">\
+                                                '+post.authorName+'\
+                                            </div>\
+                                        </div>\
+                                        <div class="clearfix"></div>\
+                                        <div class="content" >'+post.content+'</div>\
+                                    </div>\
+                                    <div class="comment-bottom">\
+                                        <div class="pull-left">\
+                                            <i class="m-icon m-icon--star-blue-full-lines"></i> &nbsp; <span>208</span> found this helpful\
+                                        </div>\
+                                        <div class="pull-right reply" data-ng-click="commentPopup('+post.thread_id+','+post.id+')"><i class="m-icon m-icon--email-form-id"></i> &nbsp; Reply</div>\
+                                        <div class="pull-right link-to-this-post"><i class="m-icon m-icon--attachment"></i> &nbsp; Link to this post</div>\
+                                        <div class="clearfix"></div>\
+                                    </div>\
+                                </div>\
+                    ';
+
+                }
+
+                $scope.makeCommentHTML(post.child_posts);
+                if(!post.post_id){
+                    $scope.commentHTML += '</div></div>\
+                            <div class="clearfix"></div>\
+                        </div>\
+                    ';
+                }else{
+                    $scope.commentHTML += "</div>";
+                    if(key == (posts.length-1)){
+                        $scope.commentHTML += "</div>";
+                    }
+                }
+            }
+        }
+    }
+]);
 productApp.controller('productController', ['$scope', '$http', '$window', '$interval', '$timeout'
     , function ($scope, $http, $window, $interval, $timeout) {
 

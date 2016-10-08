@@ -1,4 +1,4 @@
-<div id="hero-slider" class="slider heroSlider has-bullets">
+<div id="hero-slider" class="story-hero-slider slider heroSlider has-bullets">
         <?php
          if(function_exists('is_single')){
              $sliderContent = getHeroSliderContent();
@@ -6,7 +6,7 @@
 
         if($sliderContent){
         foreach($sliderContent as $item){ ?>
-            <div class="box-item product-box text-center">
+            <div class="box-item product-box slider-box text-center">
                 <div class="img-holder">
                     <img src="<?php echo $item['image']?>">
                 </div>

@@ -2,25 +2,28 @@
     <img itemprop="image" src="<?php echo '{{item.media_link_full_path}}' ?>"
          alt="<?php echo '{{item.product_name}}' ?>"/>
 </div>
-<span class="mobile-show hidden-620">
-        <i class="p-show m-icon--Add-Active"></i>
-        <i class="p-close m-icon--Close"></i>
-    </span>
-<span class="box-item__time"><?php echo '{{item.updated_at}}' ?></span>
-<div class="box-item__overlay" ng-click="openProductPopup(item.id)"></div>
+<div class="category-<?php  echo '{{item.master_category}}' ?>">
+    <div class="idea-meta product category-bg">
+        <div class="box-item__label-product">
+            <a href="/product/<?php echo '{{item.product_permalink}}' ?>" class="box-item__label box-item__label--clear" itemprop="name"><?php echo '{{item.product_name}}' ?></a>
+        </div>
 
-<div ng-if="item.AverageScore" class="social-stats">
-    <div class="social-stats__item rating" data-toggle="tooltip" title="Ideaing Score">
-        <span class="icon m-icon--bulb-detailed-on-rating"></span>
-        <span class="value"><?php echo '{{item.AverageScore}}' ?>%</span>
+        <div class="social-stats__item views" ng-show="item.views >= 100">
+            <i class="m-icon m-icon--flame"></i>
+            <span class="social-stats__text ng-binding"><?php echo '{{item.views}}' ?></span>
+        </div>
+
+        <a ng-if="!item.is_deal" href="/ideas">
+            <span class="round-tag__label in" itemprop="articleSection">In <span ng-if="item.master_category_name"><?php echo '{{item.master_category_name}}' ?>, </span> <?php echo '{{item.category_name}}' ?> <i class="m-icon m-icon--shopping-bag-light-green white"></i></span>
+        </a>
+
     </div>
+    <!--   <div class="box-item__overlay category-bg" ng-click="openProductPopup(item.id)"></div> -->
 </div>
+<span class="box-item__time text-uppercase"><?php echo '{{item.updated_at}}' ?></span>
 
-<a href="/shop" class="round-tag round-tag--product">
-    <i class="m-icon m-icon--item"></i>
-    <span class="round-tag__label">Product</span>
-</a>
 
+<<<<<<< HEAD
 <div class="box-item__label-prod">
     <a href="/product/<?php echo '{{item.product_permalink}}' ?>"
        class="box-item__label box-item__label--clear" itemprop="name"><?php echo '{{item.product_name}}' ?></a>
@@ -36,10 +39,7 @@
         <span>From</span>
         <img class="merchant-widget__store" alt="<?php echo '{{ item.storeInfo.Description }}' ?>"
              ng-src='<?php echo '{{ item.storeInfo.ImagePath }}' ?>'/>
+=======
+>>>>>>> 4a6d672f455644d3539e055233770b04f9718b3d
 
-    </div>
-    <div class="clearfix"></div>
-    <!-- <a target="_blank" href="<?php // echo '{{item.affiliate_link}}' ?>" class="box-item__get-it">Get it</a> -->
-    <a target="_blank" href="/open/<?php echo '{{item.id}}' ?>/home" class="box-item__get-it">Get it</a>
-</div>
 

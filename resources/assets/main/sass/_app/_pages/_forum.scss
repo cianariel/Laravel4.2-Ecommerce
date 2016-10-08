@@ -5,13 +5,19 @@ body.forum{
 		display: none;
 	}
 	.top-bar{
-		border-bottom: 1px solid #e6e6e6;
+        padding-top: 20px;
+        background: #F7F7F7;
+        .container{
+            border-bottom: 1px solid #ECECEC;
 		height: 70px;
-		padding-top: 15px;
+        }
 		.title{
 			color: #4d4d4d;
 			font-size: 24px;
-            margin-left: 90px;
+            margin-left: 25px;
+		}
+        @media screen and (max-width: 620px){
+            display: none;
 		}
 	}
 	.black-color{

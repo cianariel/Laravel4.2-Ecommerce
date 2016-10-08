@@ -28,21 +28,23 @@ if (function_exists('is_single')) {
     var uid = <?php echo isset($userData['id'])?$userData['id']:0;?> ;
     var img = "<?php echo str_replace('ideaing-ideas.s3.amazonaws.com', 'd3f8t323tq9ys5.cloudfront.net', getThumbnailLink($post->ID)); ?>" ;
 </script>
-<div ng-app="publicApp" ng-controller="publicController">
-    <section class="comments" id="comments">
-        <div class="container">
+<div ng-app="publicApp" ng-controller="publicController" class="comments-wrap">
+
+    <section class="comments container col-sm-7 center-block" id="comments">
+        <h4 ng-if="commentsCountView && commentsCountView != 0" class="col-xs-12 home-subheader no-padding"><span><?php echo "{{ commentsCountView }}" ?> </span></h4>
+        <h4 ng-if="commentsCountView == 0 || !commentsCountView" class="col-xs-12 home-subheader  no-padding"><span> Drop a Comment</span></h4>
+
+        <div class="comment-box radius-5 <?php echo !empty($userData['email']) ? 'has-comments' : ''; ?>">
             <a name="comment"></a>
             <input type="hidden" ng-init="userId='<?php echo $userData['id']?>'">
             <input type="hidden" ng-init="isAdmin='<?php echo $isAdmin?>'">
             <div ng-init="getCommentsForIdeas(<?php echo $itemId?>)">
-                <h4><?php echo "{{ commentsCountView }}" ?></h4>
                 <div ng-repeat="comment in comments">
                     <div class="single-comment">
                         <div class="col-md-1 col-sm-2 col-xs-3 comment-author">
                             <a href="/user/profile/<?php echo "{{ comment.Permalink }}"?>">
                                 <img class="profile-photo " ng-src="<?php echo "{{ comment.Picture }}"?>" width="50px">
                             </a>
-
 
                             <div><b class="comment-name"><?php echo "{{ comment.UserName }}" ?></b></div>
                         </div>
@@ -81,46 +83,60 @@ if (function_exists('is_single')) {
             <section class="add-comment">
                 <div class="single-comment">
                     <div class="col-md-1 col-sm-2 col-xs-3 comment-author">
-                        <!--  <a class="author" href="#"></a> -->
                         <img class="profile-photo" width="50px"
                              src="<?php echo isset($userData['medias'][0]['media_link']) ? $userData['medias'][0]['media_link'] : "" ?>">
 
                     </div>
-                    <div class="col-md-8 col-sm-10 col-xs-9">
+                    <div class="col-md-11 col-sm-10 col-xs-9 flashing">
+                      <!--  <span class="input input--minoru"  ng-hide="show_editor">
+                            <textarea ng-click="show_editor=1" class="form-control input__field input__field--minoru"></textarea>
+                            <label class="input__label input__label--minoru" for="input-14"></label>
+                        </span> -->
 
-                        <div ng-class="['col-md-12', 'comment-edit-container', {'has-content': html}]"
-                             ng-show="show_editor">
-                            <div text-angular data-ng-model="html" ta-disabled='disabled'
-                                 name="description-editor" ta-toolbar="[['bold', 'insertImage']]"
+                        <span class="input input--minoru" ng-class="['col-md-12', 'comment-edit-container', {'has-content': html}]">
+                            <textarea class="input__field input__field--minoru" text-angular data-ng-model="html" ta-disabled='disabled'
+                                 name="description-editor" ta-toolbar="[]"
                                  ta-text-editor-class="border-around ta-editor"
                                  ta-html-editor-class="border-around ta-editor">
-                            </div>
-                        </div>
-                        <div class="col-md-12" ng-hide="show_editor">
-                            <textarea placeholder="Write a comment" class="form-control"
-                                      ng-click="show_editor=1; focus_editor=true; focusEditor()" cols="" rows=""
-                                      class=" ta-text ta-editor"></textarea>
+                            </textarea>
+                                <label class="input__label input__label--minoru" for="input-14"></label>
+
+                        </span>
+                       <!-- <div class="col-md-12" ng-hide="show_editor">
+
+
+                            <span class="input input--minoru">
+                              <textarea class="form-control input__field input__field--minoru"
+                                        ng-click="show_editor=1" cols="" rows=""
+                                        class=" ta-text ta-editor"></textarea>
+                            <label class="input__label input__label--minoru" for="input-14"></label>
+                                </span> -->
+
+                    </label>
+				</span>
+
                         </div>
 
                         <div class="col-md-12 comment-controls text-right">
-                            <button class="btn btn-info btn-outline" ng-hide="isEdit"
+
+                            <button class="button--moema btn btn-info radius-15 category-bg no-border" ng-hide="isEdit"
                                     ng-click="addCommentForIdeas(<?php echo $userData['id'] . "," . $itemId . "," . "'$permalink'" . "," . "html"?>)">
-                                Post
+                                SEND
                             </button>
-                            <button class="btn btn-info" ng-show="isEdit"
+                            <button class="button--moema btn btn-info radius-15 category-bg no-border" ng-show="isEdit"
                                     ng-click="updateComment()">
-                                Update
+                                UPDATE
                             </button>
                         </div>
                     </div>
                 </div>
             </section>
 
-            <?php } else{ ?>
-            <section>
-                <a class="signup-to-comment" href="#" data-toggle="modal" data-target="#myModal" href="/signup">Sign Up to Comment</a>
-            </section>
-            <?php } ?>
+            <?php  }else{ ?>
+                <section class="col-xs-12">
+                    <a class="signup-to-comment" href="#" data-toggle="modal" data-target="#myModal" href="/signup">Sign Up to Comment</a>
+                </section>
+            <?php  } ?>
         </div>
     </section>
 </div>
