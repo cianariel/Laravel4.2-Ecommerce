@@ -1,4 +1,6 @@
-
+.modal-content{
+  overflow: hidden;
+}
 
 .profile-photo{
   border-radius: 100px;
@@ -8,7 +10,7 @@
   }
 }
 
-.active{
+.active{ 
   .profile-photo{
     border-color: $iridium;
   }
@@ -559,12 +561,12 @@ h5{
   }
   .modal-content{
     padding: 0px;
-    .profile-background{
-      padding-top: 30px;
-      background: #fa1550;
-      height: 300px;
-      width: 100%;
-    }
+    // .profile-background{
+    //   padding-top: 30px;
+    //   background: #fa1550;
+    //   height: 300px;
+    //   width: 100%;
+    // }
     .upload-photo{
       background: #e11348;
       display: inline-block;
