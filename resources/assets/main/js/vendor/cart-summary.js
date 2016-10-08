@@ -43,8 +43,6 @@
 
     $( document ).on('click', '.ics--open', function(){
       self.open();
-
-      self.update(); // for now
     });
 
     $( document ).on('click', '.ics--close', function(){
@@ -53,6 +51,10 @@
 
     $( document ).on('keyup', function(e){
       if ( 27 === e.keyCode ) self.close();
+    });
+
+    $( document.body ).on('added_to_cart', function(){
+      self.update('open');
     });
 
     setTimeout(function(){ self.build(); }, 0 );
@@ -101,7 +103,6 @@
     document.body.appendChild(self.element);
 
     self.update();
-
   };
 
   ideaingCartSummay.prototype.open = function () {
@@ -147,20 +148,30 @@
     this.isVisible() ? this.close() : this.open();
   };
 
-  ideaingCartSummay.prototype.update = function ( data ) {
+  ideaingCartSummay.prototype.update = function (callback) {
 
     var self = this;
 
     $.ajax({
       type: "POST",
-      dataType: "HTML",
+      dataType: "json",
       url: '/ideas/wp-admin/admin-ajax.php',
       data: {
         action: 'global_cart_summary',
       },
-      success: function( response ){
-        console.log($( self.element ).find('aside'));
-        $( self.element ).find('aside').html(response);
+      success: function( cart ){
+
+        cart.total = 0 < cart.total ? cart.total : '';
+
+        $('.cart-count').text(cart.total);
+        $( self.element ).find('aside').html(cart.html);
+
+        if ( cart.total ){
+          $('body').addClass('has-in-cart');
+          callback ? self[callback]() : '';
+        } else {
+          $('body').removeClass('has-in-cart');
+        }
       },
       error: function (xhr, ajaxOptions, thrownError) {
         console.warn(thrownError);

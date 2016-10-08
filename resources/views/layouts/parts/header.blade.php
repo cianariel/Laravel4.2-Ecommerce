@@ -90,7 +90,7 @@ if(isset($isShopPage) && $isShopPage == '1'){
                                     <a data-click="#show-smart-entertainment" class="category-link__smart-entertainment m-icon-text-holder" href="/smart-entertainment" ng-click="switchCategory('smart-entertainment')">
                                         <span class="m-icon-text">
                                             <i class="m-icon m-icon--video"></i>
-                                            <span class="hidden-xs hidden-sm hidden-md">Smart</span> 
+                                            <span class="hidden-xs hidden-sm hidden-md">Smart</span>
                                             Entertainment
                                         </span>
                                     </a>
@@ -99,7 +99,7 @@ if(isset($isShopPage) && $isShopPage == '1'){
                                     <a data-click="#show-smart-body" class="category-link__smart-body m-icon-text-holder" href="/smart-body"  ng-click="switchCategory('smart-body')">
                                        <span class="m-icon-text">
                                             <i class="m-icon m-icon--wearables"></i>
-                                            <span class="hidden-xs hidden-sm hidden-md">Smart</span> 
+                                            <span class="hidden-xs hidden-sm hidden-md">Smart</span>
                                             Body
                                         </span>
                                     </a>
@@ -108,7 +108,7 @@ if(isset($isShopPage) && $isShopPage == '1'){
                                     <a data-click="#show-smart-travel" class="category-link__smart-travel m-icon-text-holder" ng-click="switchCategory('smart-travel')" href="/smart-travel">
                                         <span class="m-icon-text">
                                             <i class="m-icon m-icon--travel"></i>
-                                            <span class="hidden-xs hidden-sm hidden-md ">Smart</span> 
+                                            <span class="hidden-xs hidden-sm hidden-md ">Smart</span>
                                             Travel
                                         </span>
                                     </a>
@@ -186,16 +186,8 @@ if(isset($isShopPage) && $isShopPage == '1'){
                                     <span class="m-icon-text">
                                         <i class="m-icon--shopping-bag-light-green"></i>
                                     </span>
-                                    <span class="cart-count">0</span>
-
-                                    <div class="popover fade bottom in cart-popover" role="tooltip" style="">
-                                        <div class="arrow" style="left: 90%;"></div>
-                                        <div class="popover-content">Your shopping cart is empty.</div>
-                                    </div>
+                                    <span class="cart-count"></span>
                                 </div>
-
-
-
                             </div>
 
                             <div class="search-bar__overlay"></div>
@@ -679,4 +671,3 @@ if(function_exists('is_home') || $segments[1] != 'signup' && $segments[1] != 'lo
     include('/var/www/ideaing/resources/views/layouts/parts/login-signup.blade.php');
 }
 ?>
-
