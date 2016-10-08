@@ -1116,6 +1116,11 @@ class PageController extends ApiController
 
     public static function getShopMenu()
     {
+
+        if(env('IS_DEV')){
+            return [];
+        }
+
         if ($return = PageHelper::getFromRedis('header-shop-menu')) {
             $return->fromCache = true;
             $return = json_encode($return);
