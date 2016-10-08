@@ -267,6 +267,10 @@ class UserController extends ApiController
         return view('user.user-profile', $data);
     }
 
+    public function modalTest(){
+        return view('user.parts.edit-modal');
+    }
+
     public function viewPublicProfileNotice()
     {
 
