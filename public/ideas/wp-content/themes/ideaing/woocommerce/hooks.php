@@ -524,7 +524,9 @@ function ideaing_account_orders(){
 
       $order = wc_get_order( $customer_order );
       $item_count = $order->get_item_count();
-      $order_detail = array();
+      $order_detail = array(
+        'items' => $order->get_items()
+      );
 
       foreach ( wc_get_account_orders_columns() as $column_id => $column_name ) {
 
