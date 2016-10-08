@@ -1,12 +1,9 @@
-/* this could merge with main css later on */
-
 .screen-reader-text {
 	clip: rect(1px, 1px, 1px, 1px);
 	height: 1px;
 	overflow: hidden;
 	position: absolute !important;
 	width: 1px;
-	/* many screen reader and browser combinations announce broken words as they would appear visually */
 	word-wrap: normal !important;
 }
 
@@ -1375,6 +1372,52 @@ table.order_details td {
 .global-cart-summary footer .wc-forward {
   display: block;
   margin: 0;
+}
+
+#float-bag {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  right: 85px;
+  bottom: 0;
+  padding: 0;
+  font-size: 12px;
+  text-align: center;
+  border: 1px solid #FC1159;
+  border-radius: 50px;
+  color: #FC1159;
+  line-height: 50px;
+  background: #fff;
+  z-index: 10;
+  -webkit-appearance: none;
+}
+
+.secure-checkout #float-bag {
+  display: none;
+}
+
+#float-bag:hover {
+  color: #fff;
+  background: #FC1159;
+}
+
+#float-bag i {
+  font-size: 20px;
+  line-height: 48px;
+}
+
+#about-button {
+ padding: 0 13px;
+ line-height: 48px;
+ height: auto;
+}
+
+body:not(.secure-checkout) #about-button {
+  right: 155px;
+}
+
+.bottom-block .btn {
+  outline: 0 !important;
 }
 
 @-webkit-keyframes ideaingfadeIn {
