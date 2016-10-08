@@ -20,6 +20,8 @@
      });
 */
 
+    Route::get('usermodaltest', 'UserController@modalTest');
+
 // test route
 
 Route::get('x', 'UserController@sendActivityMailToUsers');
@@ -261,7 +263,6 @@ Route::group(['prefix' => 'api'], function () {
 
     Route::post('contact-us', 'UserController@postContactUsInfo');
     Route::post('user/posts', 'UserController@getStoriesByAuthor');
-    Route::post('user/modaltest', 'UserController@modalTest');
 
 
     /*

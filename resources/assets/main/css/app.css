@@ -16067,6 +16067,27 @@ body.shop-category .show-filter .grid-box-3 {
   width: 40px;
   max-width: none; }
 
+.avatar-wrap {
+  padding-top: 5px; }
+  @media (max-width: 620px) {
+    .avatar-wrap {
+      max-width: 260px;
+      margin: 0 auto; } }
+  .avatar-wrap img {
+    max-width: 200px;
+    margin-top: 10px; }
+  .avatar-wrap .change-foto-button {
+    position: absolute;
+    top: 40%;
+    left: 12%; }
+    .avatar-wrap .change-foto-button i {
+      color: #eeeeff;
+      opacity: .9;
+      font-size: 4rem; }
+      @media (max-width: 1000px) {
+        .avatar-wrap .change-foto-button i {
+          font-size: 3rem; } }
+
 body.profilepage {
   background: #F4F4F4; }
   body.profilepage header.colophon {
@@ -16092,26 +16113,6 @@ body.profilepage {
       @media (max-width: 1000px) {
         body.profilepage #hero .fullname {
           font-size: 2em; } }
-    body.profilepage #hero .avatar-wrap {
-      padding-top: 5px; }
-      @media (max-width: 620px) {
-        body.profilepage #hero .avatar-wrap {
-          max-width: 260px;
-          margin: 0 auto; } }
-      body.profilepage #hero .avatar-wrap img {
-        max-width: 200px;
-        margin-top: 10px; }
-      body.profilepage #hero .avatar-wrap .change-foto-button {
-        position: absolute;
-        top: 40%;
-        left: 12%; }
-        body.profilepage #hero .avatar-wrap .change-foto-button i {
-          color: #eeeeff;
-          opacity: .9;
-          font-size: 4rem; }
-          @media (max-width: 1000px) {
-            body.profilepage #hero .avatar-wrap .change-foto-button i {
-              font-size: 3rem; } }
     body.profilepage #hero .description {
       color: #999;
       font-size: 1.1rem; }
@@ -16410,15 +16411,21 @@ h5 {
   top: 5px;
   font-size: 30px;
   color: white; }
+.profile-setting-modal section {
+  padding-top: 25px; }
+.profile-setting-modal textarea {
+  min-height: 90px;
+  width: 95%; }
+.profile-setting-modal .form-horizontal .control-label {
+  text-align: left !important; }
+.profile-setting-modal .form-group {
+  padding-right: 0; }
 .profile-setting-modal .modal-content {
   padding: 0px; }
   .profile-setting-modal .modal-content .upload-photo {
-    background: #e11348;
     display: inline-block;
-    padding: 10px 20px;
     color: #fff;
-    margin-top: 20px;
-    position: relative;
+    position: absolute;
     cursor: pointer; }
     .profile-setting-modal .modal-content .upload-photo input[type="file"] {
       position: absolute;
@@ -16428,10 +16435,17 @@ h5 {
       opacity: 0;
       cursor: pointer; }
   .profile-setting-modal .modal-content .uploading-photo {
-    margin-top: 20px;
     display: block; }
+  .profile-setting-modal .modal-content .street {
+    max-width: 763px; }
+  .profile-setting-modal .modal-content .move-me {
+    margin-left: 0; }
+  .profile-setting-modal .modal-content .notification-settings {
+    font-size: 1.15rem; }
+    .profile-setting-modal .modal-content .notification-settings .custom-container {
+      max-width: 790px; }
   .profile-setting-modal .modal-content .custom-container {
-    max-width: 690px;
+    max-width: 890px;
     margin: auto;
     padding-left: 15px;
     padding-right: 15px; }
@@ -16446,38 +16460,20 @@ h5 {
       margin-bottom: 10px; }
     .profile-setting-modal .modal-content .custom-container input {
       margin-bottom: 0px; }
-  .profile-setting-modal .modal-content .first-form {
-    padding-top: 100px;
-    background: #f6f6f6; }
-  .profile-setting-modal .modal-content .second-form {
-    /*            padding-top: 80px;*/
-    background: #fff; }
-    .profile-setting-modal .modal-content .second-form .title {
-      margin-top: 50px;
-      margin-bottom: 15px; }
-    .profile-setting-modal .modal-content .second-form .content {
-      /*                padding-bottom: 10px;*/ }
-      .profile-setting-modal .modal-content .second-form .content > div:first-child {
-        border-top: 1px solid #f2f2f2; }
-      .profile-setting-modal .modal-content .second-form .content > div:last-child {
-        border-bottom: 1px solid #f2f2f2; }
-  .profile-setting-modal .modal-content .third-form {
-    padding-top: 20px;
-    background: #f9f9f9; }
-    .profile-setting-modal .modal-content .third-form .its-over {
-      margin-top: 10px; }
   .profile-setting-modal .modal-content .btn {
     background: none;
     border: 1px solid;
     padding-left: 30px;
-    padding-right: 30px; }
+    padding-right: 30px;
+    margin-top: 10px; }
     .profile-setting-modal .modal-content .btn.btn-nevermind {
       border-color: #ff0042;
       color: #ff0042;
       margin-right: 10px; }
     .profile-setting-modal .modal-content .btn.btn-save {
-      border-color: #4389c8;
-      color: #4389c8; }
+      border: 0;
+      background: #FC1159;
+      color: #fff; }
     .profile-setting-modal .modal-content .btn.btn-delete {
       padding-left: 20px;
       padding-right: 20px;
