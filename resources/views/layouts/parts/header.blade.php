@@ -230,15 +230,18 @@ if(isset($isShopPage) && $isShopPage == '1'){
                                     <span ng-hide="notificationCounter == 0" class="notification-count"
                                           ng-bind="notificationCounter"></span>
                                     </a>
+                                 </div>
 
                                 <?php }  else { ?>
                                     <a class="signin" data-toggle="modal" data-target="#myModal" href="/login"> Hi, sign in</a>
-                                    <a id="notification-trigger" class="new-message" href="#" ng-click="getEmailPopup(true)">
-                                                <img width="40px" src="/assets/images/icons/ninja-01.svg" alt="" class="profile-photo ">
-                                        <span class="notification-count ng-binding">1</span>
-                                    </a>
+                                    <div class="pull-right profile-photo-holder">
+                                        <a id="notification-trigger" class="new-message" href="#" ng-click="getEmailPopup(true)">
+                                                    <img width="40px" src="/assets/images/icons/ninja-01.svg" alt="" class="profile-photo ">
+                                            <span class="notification-count ng-binding">1</span>
+                                        </a>
+                                    </div>
                                 <?php } ?>
-                                </div>
+
 
 
                         </div>
