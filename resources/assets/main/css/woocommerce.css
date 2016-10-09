@@ -650,6 +650,13 @@
 .woocommerce-message a {
   color: inherit;
   text-decoration: underline;
+	background-color: transparent !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  font-size: inherit !important;
+  text-transform: none !important;
+  letter-spacing: normal !important;
+	line-height: inherit !important;
 }
 
 .woocommerce-error label,
