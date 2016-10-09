@@ -20,16 +20,16 @@
 
                         <div>
                             <uib-tabset class="tab-sliding-underlined-4" active="active">
-                                <uib-tab index="0" heading="Smart Home" class="category-smart-home one">
+                                <uib-tab index="0" heading="Smart Home" class=" one">
                                     @include('layouts.parts.shop-tab', ['category_name' => 'category-smart-home'])
                                 </uib-tab>
-                                <uib-tab index="1" heading="Smart Entertainment" class="category-smart-entertainment two">
+                                <uib-tab index="1" heading="Smart Entertainment" class=" two">
                                     @include('layouts.parts.shop-tab', ['category_name' => 'category-smart-entertainment'])
                                 </uib-tab>
-                                <uib-tab index="2" heading="Smart Body" class="category-smart-body three">
+                                <uib-tab index="2" heading="Smart Body" class=" three">
                                     @include('layouts.parts.shop-tab', ['category_name' => 'category-smart-body'])
                                 </uib-tab>
-                                <uib-tab index="3" heading="Smart Travel" class="category-smart-travel four">
+                                <uib-tab index="3" heading="Smart Travel" class=" four">
                                     @include('layouts.parts.shop-tab', ['category_name' => 'category-smart-travel'])
                                 </uib-tab>
                                 <hr />
@@ -41,23 +41,38 @@
                         <fieldset class="shoplanding-title">
                             <legend align="left"> <i class="m-icon--arrow fill-with-red"></i> Newest Arrivals </legend>
                         </fieldset>
-
                         <div>
                             <uib-tabset class="tab-sliding-underlined-4" active="active">
-                                <uib-tab index="0" heading="Smart Home" class="category-smart-home one">
+                                <uib-tab index="0" heading="Smart Home" class=" one">
                                     @include('layouts.parts.shop-tab', ['category_name' => 'category-smart-home'])
                                 </uib-tab>
-                                <uib-tab index="1" heading="Smart Entertainment" class="category-smart-entertainment two">
+                                <uib-tab index="1" heading="Smart Entertainment" class=" two">
                                     @include('layouts.parts.shop-tab', ['category_name' => 'category-smart-entertainment'])
                                 </uib-tab>
-                                <uib-tab index="2" heading="Smart Body" class="category-smart-body three">
+                                <uib-tab index="2" heading="Smart Body" class=" three">
                                     @include('layouts.parts.shop-tab', ['category_name' => 'category-smart-body'])
                                 </uib-tab>
-                                <uib-tab index="3" heading="Smart Travel" class="category-smart-travel four">
+                                <uib-tab index="3" heading="Smart Travel" class=" four">
                                     @include('layouts.parts.shop-tab', ['category_name' => 'category-smart-travel'])
                                 </uib-tab>
                                 <hr />
                             </uib-tabset>
+
+                            <!-- <uib-tabset class="tab-sliding-underlined-4" active="active">
+                                <uib-tab index="0" heading="Smart Home" class="category-smart-home one">
+                                    {{--@include('layouts.parts.shop-tab', ['category_name' => 'category-smart-home'])--}}
+                                </uib-tab>
+                                <uib-tab index="1" heading="Smart Entertainment" class="category-smart-entertainment two">
+{{--                                    @include('layouts.parts.shop-tab', ['category_name' => 'category-smart-entertainment'])--}}
+                                </uib-tab>
+                                <uib-tab index="2" heading="Smart Body" class="category-smart-body three">
+{{--                                    @include('layouts.parts.shop-tab', ['category_name' => 'category-smart-body'])--}}
+                                </uib-tab>
+                                <uib-tab index="3" heading="Smart Travel" class="category-smart-travel four">
+{{--                                    @include('layouts.parts.shop-tab', ['category_name' => 'category-smart-travel'])--}}
+                                </uib-tab>
+                                <hr />
+                            </uib-tabset> -->
                         </div>
                     </div>
 
