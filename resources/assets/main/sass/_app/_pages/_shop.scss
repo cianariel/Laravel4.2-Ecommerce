@@ -20,6 +20,10 @@ body.shop-landing{
     }
   }
 
+  .btn-none.close-down{
+    display: none !important;
+  }
+
   .adsbygoogle{
     background: #F7F7F7;
   }
@@ -1196,13 +1200,13 @@ body.shop-landing{
           .question-icon-container{
             position: absolute;
             top: 0;
-            right: 135px;
+            right: 145px;
             span{
               font-weight: 100;
               color: #3d4b4e;
               text-transform: capitalize;
               .m-icon--question{
-                font-size: 26px;
+                font-size: 22px;
               }
             }
             .category-link__shop{
@@ -1214,7 +1218,7 @@ body.shop-landing{
           .shop-icon-container{
             position: absolute;
             top: 0;
-            right: -3px;
+            right: -5px;
             cursor: pointer;
 
             .category-link__shop{
@@ -1225,7 +1229,7 @@ body.shop-landing{
                 color: #3d4b4e;
                 text-transform: capitalize;
                 .m-icon--shopping-bag-light-green{
-                  font-size: 38px;
+                  font-size: 36px;
                 }
               }
 
@@ -1237,7 +1241,7 @@ body.shop-landing{
                 width: 20px;
                 font-size: 16px;
                 border-radius: 20px;
-                right: 16px;
+                right: 14.5px;
                 bottom: 14px;
                 height: 20px;
                 text-align: center;
@@ -1251,11 +1255,11 @@ body.shop-landing{
                 left: -220px;
                 display: block;
                 opacity: 0;
-                -webkit-transition: all .7s ease .1s;
-                -moz-transition: all .7s ease .1s;
-                -ms-transition: all .7s ease .1s;
-                -o-transition: all .7s ease .1s;
-                transition: all .7s ease .1s;
+                -webkit-transition: opacity 0.7s linear;
+                -moz-transition: opacity 0.7s linear;
+                -ms-transition: opacity 0.7s linear;
+                -o-transition: opacity 0.7s linear;
+                transition: opacity 0.7s linear;
                 width: 280px;
                 visibility: hidden;
                 .arrow{
