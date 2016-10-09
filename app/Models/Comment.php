@@ -12,6 +12,9 @@ use Illuminate\Support\Collection;
 use Carbon\Carbon;
 use Kingpabel\Shoppingcart\Facades\Cart;
 
+use URL;
+use PageHelper;
+
 
 class Comment extends Model
 {
@@ -263,9 +266,9 @@ class Comment extends Model
     public function getCommentsAndHeatByUserId($userId, $count = null)
     {
 
-        if(env('IS_DEV')){
-            return false;
-        }
+        // if(env('IS_DEV')){
+        //     return false;
+        // }
 
         $activityCollection = new Collection();
 
@@ -286,6 +289,13 @@ class Comment extends Model
 
 
         $productInfoOfHeart = Product::whereIn('id', $productHeatItemsId)->get(['id', 'product_name AS title', 'product_permalink AS link', 'updated_at']);
+
+        
+        // $productInfoOfHeart = Product::whereIn('id', $productHeatItemsId)
+        //     ->with(['medias' => function ($query) {
+        //         $query->where('is_main_item', 1);
+        //     }])
+        //     ->get(['id', 'product_name AS title', 'product_permalink AS link', 'updated_at']);
 
 //dd($heartProductCollection);
 
@@ -323,18 +333,29 @@ class Comment extends Model
             return $item->heartable_id;
         });
 
-        $ideasInfoOfHeart = WpPost::whereIn('ID', $ideasIdCollection)->get();
+     //   $ideasInfoOfHeart =  WpPost::whereIn('ID', $ideasIdCollection)->get();
+
+        // print_r($ideasIdCollection->toArray()); die();
+
+        $curlUrlIdeas = URL::to('/') . '/ideas/wp-admin/admin-ajax.php?action=wp_posts';
+        $curlUrlIdeasHeart = $curlUrlIdeas . '&post__in=' . implode(',', $ideasIdCollection->toArray());
+       
+        $ideasInfoOfHeart =  PageHelper::getArrayFromCurl($curlUrlIdeasHeart);
+
+        $ideasInfoOfHeart = $ideasInfoOfHeart['data']['posts'];
+
+        // print_r($ideasInfoOfHeart); die();
 
         //dd($ideasInfoOfHeart);
         foreach ($ideasInfoOfHeart as $item) {
             $tmpCollection = new Collection();
 
-            $tmpCollection['Id'] = $item['ID'];
-            $tmpCollection['Title'] = $item['post_title'];
-            $tmpCollection['Link'] = $item['guid'];
-            $tmpCollection['Image'] = '';//$item['image_link'];
-            $tmpCollection['UpdateTime'] = $heartIdeasCollection->where('heartable_id', $item['ID'])->first()->updated_at;
-            $tmpCollection['Section'] = 'ideas';
+            $tmpCollection['Id'] = $item['id'];
+            $tmpCollection['Title'] = $item['title'];
+            $tmpCollection['Link'] = $item['link'];
+            $tmpCollection['Image'] = $item['feed_image'];
+            $tmpCollection['UpdateTime'] = $heartIdeasCollection->where('heartable_id', $item['id'])->first()->updated_at;
+            $tmpCollection['Section'] = 'ideas'; 
             $tmpCollection['Type'] = 'heart';
 
             $activityCollection->push($tmpCollection);

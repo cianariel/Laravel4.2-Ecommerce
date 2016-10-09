@@ -90,7 +90,7 @@ if(isset($isShopPage) && $isShopPage == '1'){
                                     <a data-click="#show-smart-entertainment" class="category-link__smart-entertainment m-icon-text-holder" href="/smart-entertainment" ng-click="switchCategory('smart-entertainment')">
                                         <span class="m-icon-text">
                                             <i class="m-icon m-icon--video"></i>
-                                            <span class="hidden-xs hidden-sm hidden-md">Smart</span> 
+                                            <span class="hidden-xs hidden-sm hidden-md">Smart</span>
                                             Entertainment
                                         </span>
                                     </a>
@@ -99,7 +99,7 @@ if(isset($isShopPage) && $isShopPage == '1'){
                                     <a data-click="#show-smart-body" class="category-link__smart-body m-icon-text-holder" href="/smart-body"  ng-click="switchCategory('smart-body')">
                                        <span class="m-icon-text">
                                             <i class="m-icon m-icon--wearables"></i>
-                                            <span class="hidden-xs hidden-sm hidden-md">Smart</span> 
+                                            <span class="hidden-xs hidden-sm hidden-md">Smart</span>
                                             Body
                                         </span>
                                     </a>
@@ -108,7 +108,7 @@ if(isset($isShopPage) && $isShopPage == '1'){
                                     <a data-click="#show-smart-travel" class="category-link__smart-travel m-icon-text-holder" ng-click="switchCategory('smart-travel')" href="/smart-travel">
                                         <span class="m-icon-text">
                                             <i class="m-icon m-icon--travel"></i>
-                                            <span class="hidden-xs hidden-sm hidden-md ">Smart</span> 
+                                            <span class="hidden-xs hidden-sm hidden-md ">Smart</span>
                                             Travel
                                         </span>
                                     </a>
@@ -186,16 +186,8 @@ if(isset($isShopPage) && $isShopPage == '1'){
                                     <span class="m-icon-text">
                                         <i class="m-icon--shopping-bag-light-green"></i>
                                     </span>
-                                    <span class="cart-count">0</span>
-
-                                    <div class="popover fade bottom in cart-popover" role="tooltip" style="">
-                                        <div class="arrow" style="left: 90%;"></div>
-                                        <div class="popover-content">Your shopping cart is empty.</div>
-                                    </div>
+                                    <span class="cart-count"></span>
                                 </div>
-
-
-
                             </div>
 
                             <div class="search-bar__overlay"></div>
@@ -414,262 +406,9 @@ if(isset($isShopPage) && $isShopPage == '1'){
         ?>
     </header>
 
-    <?php if(isset($userData['login']) && $userData['login']) { ?>
-
-    <script type="text/ng-template" id="profile-setting.html">
-        <a class="close" href="#" ng-click="cancel()"><i class="m-icon--Close"></i> </a>
-
-        <div class="profile-background">
-            <div class="text-center">
-                <!-- <img id="currentPhoto" class="profile-photo" width="150px" src="<?php echo isset($userData['medias'][0]['media_link']) ? $userData['medias'][0]['media_link'] : "" ?>" onerror="this.src='http://s3-us-west-1.amazonaws.com/ideaing-01/thumb-product-568d28a6701c7-no-item.jpg'" width="170"> -->
-                <img id="currentPhoto" class="profile-photo category-hover-border" width="150px" ng-src='<?php echo "{{ mediaLink }}"  ?>'
-                     onerror="this.src='http://s3-us-west-1.amazonaws.com/ideaing-01/thumb-product-568d28a6701c7-no-item.jpg'"
-                     width="170">
-            </div>
-            <div class="text-center">
-                        <span ng-show="showBrowseButton" class="upload-photo">
-                            <i class="m-icon--Upload-Inactive"></i><br>
-                            <span>Upload new profile picture</span>
-
-                            <input ng-init="initProfilePage()"
-                                   id="fileLabel"
-                                   class="upload-profile"
-                                   type="file"
-                                   name="file"
-                                   nv-file-select=""
-                                   uploader="uploader"/>
-                        </span>
-                        <span ng-hide="showBrowseButton" class="uploading-photo">
-                            <button class="btn" ng-click="updateProfilePicture(data,mediaLink)">Save Picture</button>
-                            <button class="btn" ng-click="cancelPictureUpdate()">Cancel</button>
-                        </span>
-            </div>
-
-            <div class="form-group ">
-                <div class="col-lg-12">
-
-                    <div class="col-lg-6" ng-init="initProfilePicture('<?php echo isset($userData['medias'][0]['media_link']) ? $userData['medias'][0]['media_link'] : "" ?>')">&nbsp;
-                    </div>
-                </div>
-            </div>
-
-        </div>
-        <div ng-hide="onlyImage">
-            <div class="first-form">
-                <div class="custom-container ">
-                    <form class="form-horizontal">
-                        <div class="form-group ">
-                            <label class="col-lg-12 control-label">Full name</label>
-                            <div class="col-lg-12">
-                                <input class="form-control" ng-model="data.FullName"
-                                       ng-init="data.FullName = '<?php echo $userData['name'] ?>'"
-                                       placeholder="Full name">
-
-                            </div>
-                        </div>
-                        <div class="form-group ">
-                            <label class="col-lg-12 control-label">Email</label>
-                            <div class="col-lg-12">
-                                <input class="form-control" ng-model="data.Email" ng-readonly="true"
-                                       ng-init="data.Email = '<?php echo $userData['email'] ?>'" placeholder="Email"/>
-
-                            </div>
-                        </div>
-                        <div class="form-group ">
-                            <label class="col-lg-12 control-label">New password</label>
-                            <div class="col-lg-12">
-                                <input class="form-control" type="password" ng-model="data.Password"
-                                       placeholder="New password">
-
-                            </div>
-                        </div>
-                        <div class="form-group ">
-                            <label class="col-lg-12 control-label">Bio</label>
-                            <div class="col-lg-12">
-                                <textarea class="form-control" ng-model="data.PersonalInfo"
-                                          ng-init="data.PersonalInfo = '<?php echo $userData['userProfile']['personal_info'] ?>'"
-                                          placeholder="Bio"></textarea>
-                            </div>
-                        </div>
-                        <div class="form-group ">
-                            <label class="col-lg-12 control-label">Address</label>
-                            <div class="col-lg-12">
-
-                                <textarea class="form-control" ng-model="data.Address"
-                                          ng-init="data.Address = '<?php echo $userData['userProfile']['address']  ?>'"
-                                          placeholder="Address"></textarea>
-
-                            </div>
-                        </div>
-                        <div class="form-group ">
-                            <label class="col-lg-12 control-label">Personal link</label>
-                            <div class="col-lg-12">
-                                <div class="col-lg-6">https://ideaing.com/user/profile/</div>
-                                <div class="col-lg-6">
-                                    <input class="form-control personal-link" ng-model="data.Permalink"
-                                           ng-init="data.Permalink = '<?php echo $userData['permalink']  ?>'"
-                                           placeholder="">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group text-center">
-                            <!--  <button class="btn btn-nevermind">Nevermind</button> -->
-                            <button class="btn btn-save" ng-click="updateUser(data,mediaLink)">Save</button>
-                        </div>
-                    </form>
-                    <div class="clearfix"></div>
-                </div>
-            </div>
-            <div class="second-form">
-                <div class="custom-container ">
-                    <form class="form-horizontal">
-                        <div class="col-sm-offset-2 col-sm-8"
-                             ng-init="getProfileSettings('<?php echo $userData['id']  ?>')">
-                            <div class="form-group title">
-                                <label>Notify me about</label>
-                            </div>
-                            <div class="content">
-                                <div class="form-group checkbox-form-group">
-                                    <div class="pull-left">
-                                        Daily notification email
-                                    </div>
-                                    <div class="pull-right">
-                                        <label class="setting-custom-checkbox">
-                                            <input type="checkbox" ng-model="setDailyEmailNotification"
-                                                   ng-click="setDailyEmail('<?php echo $userData['id']  ?>')">
-                                                <span class="">
-                                                    <i class="m-icon--Settings-Toggles-Active on">
-                                                        <span class="path1"></span><span class="path2"></span>
-                                                    </i>
-                                                    <i class="m-icon--Settings-Toggles off">
-                                                        <span class="path1"></span><span class="path2"></span>
-                                                    </i>
-                                                </span>
-                                        </label>
-                                    </div>
-                                    <div class="clearfix"></div>
-                                </div>
-
-                                <div class="form-group checkbox-form-group">
-                                    <div class="pull-left">
-                                        Receive Weekly Newsletters from Ideaing on newest offers
-                                    </div>
-                                    <div class="pull-right">
-                                        <label class="setting-custom-checkbox">
-                                            <input type="checkbox" value="1" checked>
-                                                <span class="">
-                                                    <i class="m-icon--Settings-Toggles-Active on">
-                                                        <span class="path1"></span><span class="path2"></span>
-                                                    </i>
-                                                    <i class="m-icon--Settings-Toggles off">
-                                                        <span class="path1"></span><span class="path2"></span>
-                                                    </i>
-                                                </span>
-                                        </label>
-                                    </div>
-                                    <div class="clearfix"></div>
-                                </div>
-
-                                <div class="form-group checkbox-form-group">
-                                    <div class="pull-left">
-                                        New followers
-                                    </div>
-                                    <div class="pull-right">
-                                        <label class="setting-custom-checkbox">
-                                            <input type="checkbox" value="1" checked>
-                                                <span class="">
-                                                    <i class="m-icon--Settings-Toggles-Active on">
-                                                        <span class="path1"></span><span class="path2"></span>
-                                                    </i>
-                                                    <i class="m-icon--Settings-Toggles off">
-                                                        <span class="path1"></span><span class="path2"></span>
-                                                    </i>
-                                                </span>
-                                        </label>
-                                    </div>
-                                    <div class="clearfix"></div>
-                                </div>
-                                <div class="form-group checkbox-form-group">
-                                    <div class="pull-left">
-                                        Price-drops on products I like
-                                    </div>
-                                    <div class="pull-right">
-                                        <label class="setting-custom-checkbox">
-                                            <input type="checkbox" value="1" checked>
-                                                <span class="">
-                                                    <i class="m-icon--Settings-Toggles-Active on">
-                                                        <span class="path1"></span><span class="path2"></span>
-                                                    </i>
-                                                    <i class="m-icon--Settings-Toggles off">
-                                                        <span class="path1"></span><span class="path2"></span>
-                                                    </i>
-                                                </span>
-                                        </label>
-                                    </div>
-                                    <div class="clearfix"></div>
-                                </div>
-                                <div class="form-group checkbox-form-group">
-                                    <div class="pull-left">
-                                        Comments from others that I've engaged in
-                                    </div>
-                                    <div class="pull-right">
-                                        <label class="setting-custom-checkbox">
-                                            <input type="checkbox" value="1" checked>
-                                                <span class="">
-                                                    <i class="m-icon--Settings-Toggles-Active on">
-                                                        <span class="path1"></span><span class="path2"></span>
-                                                    </i>
-                                                    <i class="m-icon--Settings-Toggles off">
-                                                        <span class="path1"></span><span class="path2"></span>
-                                                    </i>
-                                                </span>
-                                        </label>
-                                    </div>
-                                    <div class="clearfix"></div>
-                                </div>
-                            </div>
-                            <div class="form-group title">
-                                <label>Subscription</label>
-                            </div>
-                            <div class="content">
-                                <div class="form-group checkbox-form-group" ng-init="checkSubscription()">
-                                    <div class="pull-left">
-                                        VIP Membership Subscription
-                                    </div>
-                                    <div class="pull-right">
-                                        <label class="setting-custom-checkbox">
-                                            <input type="checkbox" ng-model="setMembershipSubscription"
-                                                   ng-click="changeSubscription()">
-                                                <span class="">
-                                                    <i class="m-icon--Settings-Toggles-Active on">
-                                                        <span class="path1"></span><span class="path2"></span>
-                                                    </i>
-                                                    <i class="m-icon--Settings-Toggles off">
-                                                        <span class="path1"></span><span class="path2"></span>
-                                                    </i>
-                                                </span>
-                                        </label>
-                                    </div>
-                                    <div class="clearfix"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
-                    <div class="clearfix"></div>
-                </div>
-            </div>
-            <div class="third-form">
-                <div class="custom-container ">
-                    <form class="form-horizontal">
-                        <div class="col-sm-offset-2 col-sm-8">
-                        </div>
-                    </form>
-                    <div class="clearfix"></div>
-                </div>
-            </div>
-        </div>
-    </script>
-    <?php } ?>
+    <?php if(isset($userData['login']) && $userData['login']) { 
+        include('/var/www/ideaing/resources/views/user/parts/edit-modal.blade.php');
+    } ?>
 
 </div>
 
@@ -682,4 +421,3 @@ if(function_exists('is_home') || $segments[1] != 'signup' && $segments[1] != 'lo
     include('/var/www/ideaing/resources/views/layouts/parts/login-signup.blade.php');
 }
 ?>
-
