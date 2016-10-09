@@ -988,7 +988,7 @@ body.has-active-menu{
     height: 2px;
     width: 25%;
     margin: 0;
-    background: tomato;
+    background: #FC1159;
     border: none;
     transition: .3s ease-in-out;
   }
@@ -1033,6 +1033,12 @@ body.has-active-menu{
     &.four:hover ~ hr {
       margin-left: 75%;
     }
+
+    &.active{
+      a{
+        color: #FC1159;
+      }
+    }
   }
 }
 
@@ -1043,7 +1049,7 @@ body.has-active-menu{
     height: 2px;
     width: 50%;
     margin: 0;
-    background: tomato;
+    background: #FC1159;
     border: none;
     transition: .3s ease-in-out;
   }
@@ -1072,6 +1078,13 @@ body.has-active-menu{
     &.two:hover ~ hr {
       margin-left: 50%;
     }
+
+    &.active{
+      a{
+        color: #FC1159;
+      }
+    }
+
   }
 }
 

@@ -858,7 +858,7 @@ body.has-active-menu {
   height: 2px;
   width: 25%;
   margin: 0;
-  background: tomato;
+  background: #FC1159;
   border: none;
   transition: .3s ease-in-out; }
 .tab-sliding-underlined-4 ul.nav-tabs li {
@@ -888,13 +888,15 @@ body.has-active-menu {
     margin-left: 50%; }
   .tab-sliding-underlined-4 ul.nav-tabs li.four:hover ~ hr {
     margin-left: 75%; }
+  .tab-sliding-underlined-4 ul.nav-tabs li.active a {
+    color: #FC1159; }
 
 /* need to include hr tag and 2 li>a tags with one,two class names */
 .tab-sliding-underlined-2 ul.nav-tabs hr {
   height: 2px;
   width: 50%;
   margin: 0;
-  background: tomato;
+  background: #FC1159;
   border: none;
   transition: .3s ease-in-out; }
 .tab-sliding-underlined-2 ul.nav-tabs li {
@@ -916,6 +918,8 @@ body.has-active-menu {
     margin-left: 0; }
   .tab-sliding-underlined-2 ul.nav-tabs li.two:hover ~ hr {
     margin-left: 50%; }
+  .tab-sliding-underlined-2 ul.nav-tabs li.active a {
+    color: #FC1159; }
 
 .tab-swing-lined li {
   position: relative;
@@ -15038,7 +15042,6 @@ body.shop-landing {
       body.shop-landing ul.nav-tabs.nav li a {
         border: none;
         font-size: 1.5rem;
-        color: #737374;
         text-align: center;
         font-weight: lighter;
         background: transparent; }
@@ -15046,7 +15049,6 @@ body.shop-landing {
           background: transparent; }
       body.shop-landing ul.nav-tabs.nav li.active > a, body.shop-landing ul.nav-tabs.nav li.active > a:focus, body.shop-landing ul.nav-tabs.nav li.active > a:hover {
         border: none;
-        color: #151515;
         background: transparent; }
     @media only screen and (max-width: 520px) {
       body.shop-landing ul.nav-tabs.nav {
@@ -15363,41 +15365,24 @@ body.shop-landing {
           margin-left: 0 !important; } }
   body.shop-landing .bottom-categories-container {
     text-align: center; }
-    body.shop-landing .bottom-categories-container .tab-sliding-underlined-4 {
+    body.shop-landing .bottom-categories-container .tab-sliding-underlined-2 {
       text-align: center;
       margin: 0 auto;
       position: relative; }
-      body.shop-landing .bottom-categories-container .tab-sliding-underlined-4 ul.nav-tabs.nav {
-        width: auto;
+      body.shop-landing .bottom-categories-container .tab-sliding-underlined-2 ul.nav-tabs.nav {
         border: none; }
-        body.shop-landing .bottom-categories-container .tab-sliding-underlined-4 ul.nav-tabs.nav li {
-          color: #737374;
-          /*&:first-child{
-            margin-left: 50%;
-            //transform: translate(-95%,0);
-            //-webkit-transform: translate(-95%,0);
-          }
-
-          a{
-            padding-right: 30px;
-            padding-left: 30px;
-            border: none;
-            color: #737374;
-            margin: 0 auto;
-          }
-          &.active{
-            a{
-              color: #3d3d3d;
-            }
-          }*/ }
+        body.shop-landing .bottom-categories-container .tab-sliding-underlined-2 ul.nav-tabs.nav li {
+          color: #737374; }
+          body.shop-landing .bottom-categories-container .tab-sliding-underlined-2 ul.nav-tabs.nav li a {
+            font-size: 23px; }
         @media only screen and (max-width: 520px) {
-          body.shop-landing .bottom-categories-container .tab-sliding-underlined-4 ul.nav-tabs.nav {
+          body.shop-landing .bottom-categories-container .tab-sliding-underlined-2 ul.nav-tabs.nav {
             width: 290px; } }
         @media only screen and (min-width: 520px) and (max-width: 620px) {
-          body.shop-landing .bottom-categories-container .tab-sliding-underlined-4 ul.nav-tabs.nav {
+          body.shop-landing .bottom-categories-container .tab-sliding-underlined-2 ul.nav-tabs.nav {
             width: 359px; } }
         @media only screen and (min-width: 620px) and (max-width: 768px) {
-          body.shop-landing .bottom-categories-container .tab-sliding-underlined-4 ul.nav-tabs.nav {
+          body.shop-landing .bottom-categories-container .tab-sliding-underlined-2 ul.nav-tabs.nav {
             width: 375px; } }
     body.shop-landing .bottom-categories-container .tab-content {
       margin: 0; }
