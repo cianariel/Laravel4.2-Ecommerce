@@ -650,6 +650,13 @@
 .woocommerce-message a {
   color: inherit;
   text-decoration: underline;
+	background-color: transparent !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  font-size: inherit !important;
+  text-transform: none !important;
+  letter-spacing: normal !important;
+	line-height: inherit !important;
 }
 
 .woocommerce-error label,
@@ -1379,18 +1386,19 @@ table.order_details td {
   height: auto;
 }
 
+.bottom-block > *,
 .bottom-block #about-button,
 .bottom-block #float-bag,
 .bottom-block #back-to-top {
   position: relative;
   display: inline-block;
-	top: auto;
-	left: auto;
-	right: auto;
-	bottom: auto;
-  width: 50px;
+  top: auto;
+  left: auto;
+  right: auto;
+  bottom: auto;
+  width: auto;
   height: 50px;
-  padding: 0;
+  padding: 0 20px;
   margin: 0 15px 0 0;
   line-height: 50px;
   font-size: 12px;
@@ -1406,6 +1414,13 @@ table.order_details td {
   outline: 0 !important;
 }
 
+.bottom-block #float-bag,
+.bottom-block #back-to-top {
+  padding: 0;
+  width: 50px;
+}
+
+.bottom-block > *:hover,
 .bottom-block #about-button:hover,
 .bottom-block #float-bag:hover,
 .bottom-block #back-to-top:hover {
