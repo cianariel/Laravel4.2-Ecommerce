@@ -1405,7 +1405,7 @@ table.order_details td {
   text-align: center;
   border: none;
   border-radius: 50px;
-  color: #fc1159;
+  color: #fc1159 !important;
   background-color: rgba(255,255,255,.2);
   z-index: 10;
   box-shadow: 0 10px 40px rgba(0,0,0,.3) !important;
@@ -1433,7 +1433,7 @@ table.order_details td {
 }
 
 .has-in-cart .bottom-block #float-bag {
-  color: #fff;
+  color: #fff !important;
   background-color: #fc1159;
 }
 
@@ -1466,6 +1466,53 @@ table.order_details td {
 
 .cart-count:empty {
 	display: none !important;
+}
+
+a.add-to-bag {
+    position: relative;
+}
+
+a.add-to-bag:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 50px;
+    background-color: #fff;
+    opacity: 0;
+    -webkit-transition: opacity .2s ease-out;
+    transition: opacity .2s ease-out;
+}
+
+a.add-to-bag:after {
+    content: "\eb3d";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    font-size: 20px;
+    font-family: 'ideaing' !important;
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-transform: translate3d(-50%,-50%,0);
+    transform: translate3d(-50%,-50%,0);
+    opacity: 0;
+}
+
+a.add-to-bag.loading:before {
+    opacity: 1;
+}
+
+a.add-to-bag.loading:after {
+    -webkit-animation: ideaingfadeIn .8s infinite ease-out;
+    animation: ideaingfadeIn .8s infinite ease-out;
 }
 
 @-webkit-keyframes ideaingfadeIn {
