@@ -3860,7 +3860,7 @@ angular.module('colorpicker.module', [])
 
     var self = this;
 
-    if ( ! $thisbutton.attr( 'data-product_id' ) ) {
+    if ( ! $thisbutton.attr( 'data-product_id' ) || $thisbutton.hasClass('loading') ) {
       return true;
     }
 
