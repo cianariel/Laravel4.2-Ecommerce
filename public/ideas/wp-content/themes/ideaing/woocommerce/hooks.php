@@ -462,6 +462,12 @@ add_action('ideaing_cart_widget_render', 'ideaing_cart_widget_render');
 function ideaing_cart_content_fragment( $fragments ) {
 
 	$fragments['div.cart-summary-inner'] = ideaing_cart_content();
+  $fragments['.cart-count'] = apply_filters('get_ideaing_cart_contents_count', '');
+
+  ob_start();
+    wc_get_template( 'ideaing/cart-summary.php' );
+    $fragments['.global-cart-summary'] = ob_get_contents();
+  ob_end_clean();
 
 	return $fragments;
 }
@@ -501,7 +507,6 @@ function ideaing_update_order_review_fragments( $fragments ) {
 	return $fragments;
 }
 add_filter( 'woocommerce_update_order_review_fragments', 'ideaing_update_order_review_fragments', 99, 1 );
-
 
 /**
  * Ajax handle account orders
@@ -604,26 +609,19 @@ function ideaing_cart_total_count(){
 add_action( 'wp_ajax_cart_total_count', 'ideaing_cart_total_count' );
 add_action( 'wp_ajax_nopriv_cart_total_count', 'ideaing_cart_total_count' );
 
+
 /**
- * Ajax handle global cart
+ * Ajax handle cart total
  *
  * @return return string
  */
-function ideaing_global_cart_summary(){
+function ideaing_global_cart_summary_fragments(){
 
-  $data = array(
-    'total' => apply_filters('get_ideaing_cart_contents_count', '')
-  );
-
-  ob_start();
-    wc_get_template( 'ideaing/cart-summary.php' );
-    $data['html'] = ob_get_contents();
-  ob_end_clean();
-
-  wp_send_json( $data );
+  wp_send_json( array('fragments' => ideaing_cart_content_fragment(array()) ) );
 }
-add_action( 'wp_ajax_global_cart_summary', 'ideaing_global_cart_summary' );
-add_action( 'wp_ajax_nopriv_global_cart_summary', 'ideaing_global_cart_summary' );
+add_action( 'wp_ajax_global_cart_summary_fragments', 'ideaing_global_cart_summary_fragments' );
+add_action( 'wp_ajax_nopriv_global_cart_summary_fragments', 'ideaing_global_cart_summary_fragments' );
+
 
 /**
  * Order complete email subject filter:
