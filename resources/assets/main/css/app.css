@@ -15114,7 +15114,7 @@ body.shop-landing {
     body.shop-landing .hot-deals .right-view-container {
       position: relative;
       width: 130%;
-      margin-top: -150px;
+      margin-top: -140px;
       margin-left: -180px; }
       body.shop-landing .hot-deals .right-view-container img {
         max-width: 100%;
@@ -15604,8 +15604,12 @@ body.shop-landing {
         body.shop-landing .shop-page-header header #top-nav div.top-nav-holder {
           margin: 0 auto;
           border: none; }
-          body.shop-landing .shop-page-header header #top-nav div.top-nav-holder .user-controls .signin {
-            padding-right: 0 !important; }
+          body.shop-landing .shop-page-header header #top-nav div.top-nav-holder .user-controls a.signin {
+            padding-right: 0 !important;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: nowrap;
+            width: 60px; }
           @media (min-width: 991px) {
             body.shop-landing .shop-page-header header #top-nav div.top-nav-holder .user-controls {
               padding-left: 67px; } }
@@ -15679,7 +15683,7 @@ body.shop-landing {
           body.shop-landing .shop-page-header header #top-nav .search-box-container .shop-icon-container {
             position: absolute;
             top: 0;
-            right: -5px;
+            right: -4px;
             cursor: pointer; }
             body.shop-landing .shop-page-header header #top-nav .search-box-container .shop-icon-container .category-link__shop {
               padding: 6px 6px 6px 0;
