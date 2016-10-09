@@ -14989,19 +14989,19 @@ body.shop-landing {
         background: transparent; }
     @media only screen and (max-width: 520px) {
       body.shop-landing ul.nav-tabs.nav {
-        width: 365px; }
+        width: 368px; }
         body.shop-landing ul.nav-tabs.nav li a {
           font-size: 0.7em;
           padding: 8px 10px; } }
     @media only screen and (min-width: 520px) and (max-width: 620px) {
       body.shop-landing ul.nav-tabs.nav {
-        width: 521px; }
+        width: 522px; }
         body.shop-landing ul.nav-tabs.nav li a {
           font-size: 1em;
           padding: 15px 15px; } }
     @media only screen and (min-width: 620px) and (max-width: 768px) {
       body.shop-landing ul.nav-tabs.nav {
-        width: 562px; }
+        width: 563px; }
         body.shop-landing ul.nav-tabs.nav li a {
           font-size: 1em;
           padding: 15px 20px; } }
@@ -15328,7 +15328,7 @@ body.shop-landing {
             color: #3d3d3d; }
         @media only screen and (max-width: 520px) {
           body.shop-landing .bottom-categories-container .tab-swing-lined ul.nav-tabs.nav {
-            width: 286px; }
+            width: 290px; }
             body.shop-landing .bottom-categories-container .tab-swing-lined ul.nav-tabs.nav li {
               transform: none;
               -webkit-transform: none; }
@@ -15336,7 +15336,7 @@ body.shop-landing {
                 margin-left: 0; } }
         @media only screen and (min-width: 520px) and (max-width: 620px) {
           body.shop-landing .bottom-categories-container .tab-swing-lined ul.nav-tabs.nav {
-            width: 358px; }
+            width: 359px; }
             body.shop-landing .bottom-categories-container .tab-swing-lined ul.nav-tabs.nav li {
               transform: none;
               -webkit-transform: none; }
@@ -15344,7 +15344,7 @@ body.shop-landing {
                 margin-left: 0; } }
         @media only screen and (min-width: 620px) and (max-width: 768px) {
           body.shop-landing .bottom-categories-container .tab-swing-lined ul.nav-tabs.nav {
-            width: 374px; }
+            width: 375px; }
             body.shop-landing .bottom-categories-container .tab-swing-lined ul.nav-tabs.nav li {
               transform: none;
               -webkit-transform: none; }
