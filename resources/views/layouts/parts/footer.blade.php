@@ -71,7 +71,7 @@
 </div>
 
 <div class="bottom-block hidden-soft">
-    <a href="/ideas/cart?add-to-cart=10683" class="add-to-bag" data-quantity="1" data-product_id="10683" data-product_sku="" rel="nofollow">Get it from Ideaing</a><?php //dummy btn ?>
+    <a href="/ideas/cart?add-to-cart=10138" class="add-to-bag" data-quantity="1" data-product_id="10138" data-product_sku="" rel="nofollow">Get it from Ideaing</a><?php //dummy btn ?>
     <button class="btn btn-success" id="about-button" data-toggle=".about-footer">About</button>
     <button class="btn btn-success ics--open" id="float-bag"><i class="m-icon--shopping-bag-light-green"></i><span class="cart-count"></span></button>
     <a href="#" id="back-to-top">

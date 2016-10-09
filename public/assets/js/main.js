@@ -3882,7 +3882,7 @@ angular.module('colorpicker.module', [])
 
       } else {
 
-        console.error(response);
+        console.warn(response);
       }
     });
   };
