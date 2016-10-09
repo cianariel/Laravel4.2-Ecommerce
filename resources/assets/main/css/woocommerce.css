@@ -1,12 +1,9 @@
-/* this could merge with main css later on */
-
 .screen-reader-text {
 	clip: rect(1px, 1px, 1px, 1px);
 	height: 1px;
 	overflow: hidden;
 	position: absolute !important;
 	width: 1px;
-	/* many screen reader and browser combinations announce broken words as they would appear visually */
 	word-wrap: normal !important;
 }
 
@@ -1378,8 +1375,6 @@ table.order_details td {
   margin: 0;
 }
 
-<<<<<<< 38aec82004e8ddc9ec7bdbe3e2bb78efe4f8880e
-=======
 .bottom-block {
   height: auto;
 }
@@ -1458,7 +1453,6 @@ table.order_details td {
 	display: none !important;
 }
 
->>>>>>> more checkout
 @-webkit-keyframes ideaingfadeIn {
   0% { opacity: 0; }
   100% { opacity: 1; }
