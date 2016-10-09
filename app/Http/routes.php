@@ -20,6 +20,8 @@
      });
 */
 
+    Route::get('usermodaltest', 'UserController@modalTest');
+
 // test route
 
 Route::get('x', 'UserController@sendActivityMailToUsers');

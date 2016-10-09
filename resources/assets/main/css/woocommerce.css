@@ -1,12 +1,9 @@
-/* this could merge with main css later on */
-
 .screen-reader-text {
 	clip: rect(1px, 1px, 1px, 1px);
 	height: 1px;
 	overflow: hidden;
 	position: absolute !important;
 	width: 1px;
-	/* many screen reader and browser combinations announce broken words as they would appear visually */
 	word-wrap: normal !important;
 }
 
@@ -1250,6 +1247,7 @@ table.order_details td {
   border-left: solid 1px #dbdbdb;
   background-color: #fff;
   opacity: 0;
+	box-shadow: 0 0 20px rgba(0,0,0,.2);
   -webkit-transition: opacity .4s ease-out, transform .4s cubic-bezier(0.4, 0, 0.2, 1);
   transition: opacity .4s ease-out, transform .4s cubic-bezier(0.4, 0, 0.2, 1);
   -webkit-transform: translateX(2rem);
@@ -1377,6 +1375,84 @@ table.order_details td {
   margin: 0;
 }
 
+.bottom-block {
+  height: auto;
+}
+
+.bottom-block #about-button,
+.bottom-block #float-bag,
+.bottom-block #back-to-top {
+  position: relative;
+  display: inline-block;
+	top: auto;
+	left: auto;
+	right: auto;
+	bottom: auto;
+  width: 50px;
+  height: 50px;
+  padding: 0;
+  margin: 0 15px 0 0;
+  line-height: 50px;
+  font-size: 12px;
+  text-align: center;
+  border: none;
+  border-radius: 50px;
+  color: #fc1159;
+  background-color: rgba(255,255,255,.2);
+  z-index: 10;
+  box-shadow: 0 10px 40px rgba(0,0,0,.3) !important;
+  -webkit-transition: box-shadow .4s ease-out;
+  transition: box-shadow .4s ease-out;
+  outline: 0 !important;
+}
+
+.bottom-block #about-button:hover,
+.bottom-block #float-bag:hover,
+.bottom-block #back-to-top:hover {
+  box-shadow: 0 0 5px rgba(0,0,0,.5) !important;
+}
+
+.bottom-block #about-button {
+  padding: 0 20px;
+  width: auto;
+}
+
+.has-in-cart .bottom-block #float-bag {
+  color: #fff;
+  background-color: #fc1159;
+}
+
+.secure-checkout .bottom-block #float-bag {
+  display: none;
+}
+
+#float-bag i {
+  font-size: 20px;
+  line-height: 48px;
+}
+
+#float-bag .cart-count {
+  position: absolute;
+  display: none;
+  top: -4px;
+  right: 0;
+  min-width: 18px;
+  padding: 3px;
+  line-height: 1;
+  border-radius: 10px;
+  box-shadow: 2px -2px 5px rgba(0,0,0,.1);
+  background-color: #fff;
+  color: #fc1159;
+}
+
+.has-in-cart #float-bag .cart-count {
+  display: block;
+}
+
+.cart-count:empty {
+	display: none !important;
+}
+
 @-webkit-keyframes ideaingfadeIn {
   0% { opacity: 0; }
   100% { opacity: 1; }
@@ -1455,25 +1531,25 @@ table.order_details td {
   .shop_table.cart tbody tr:first-child {padding-top: 15px;}
 
   .shop_table.cart .product-remove {
-      -webkit-flex: 1;
-      flex: 1;
+    -webkit-flex: 1;
+    flex: 1;
   }
 
   .shop_table.cart .product-name {
-      -webkit-flex: 7;
-      flex: 7;
+    -webkit-flex: 7;
+    flex: 7;
   }
 
   .shop_table.cart .product-price {
-      -webkit-flex: 1;
-      flex: 1;
-      text-align: right;
+    -webkit-flex: 1;
+    flex: 1;
+    text-align: right;
   }
 
   .shop_table.cart .product-quantity {
-      -webkit-flex: 1;
-      flex: 1;
-      text-align: right;
+    -webkit-flex: 1;
+    flex: 1;
+    text-align: right;
   }
 
   .shop_table.cart tbody .cart_item td.product-quantity {
