@@ -461,7 +461,7 @@ class Comment extends Model
 
         $data =  PageHelper::getArrayFromCurl($purchasesUrl);
 
-        print_r($data); die();
+//        print_r($data); die();
 
         foreach ($data as $item) {
             $tmpCollection = new Collection();
