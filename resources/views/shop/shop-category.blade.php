@@ -90,41 +90,41 @@
             </a>
         </div>
     </nav>--}}  -->
-
-    <section id="category-banner" class="landing-hero {{$currentCategory->extra_info}}-hero">
-        <!--        <img src="/assets/images/shop-category-banner.png" class="img-responsive" alt="">-->
-        <img src="{{$currentCategory->background_image}}" class="img-responsive full-wide" alt="{{ucfirst($currentCategory->category_name)}}">
-        <div class="head-wrap container">
-            <!--  class name: smart-home, travel, wearables, home-decor -->
-            <h1 class="text-center"><span class="smart-home">{{ucfirst($currentCategory->category_name)}}</span></h1>
-        </div>
-    </section>
-
     <div class="app-wrap" ng-app="pagingApp" ng-controller="shopcategoryController">
+
         <div ng-cloak>
-            <nav id="hero-nav" class="col-sm-12">
-                <div class="container full-620  fixed-sm banner-nav">
-                    <a class="pull-left visible-md visible-lg" id="shop-filter-menu-button" href="#"
-                       ng-click="showFilter ? showFilter=0: showFilter=1">
-                        <i class="m-icon--MenuButton"></i>
-                        Filter
-                    </a>
-                    <ul class="popular-new pull-right">
-                        <li class="">
-                            <a ng-click="filterPlainContent(false, 'default')" data-sortby="default" href="#"
-                               class="box-link active">NEWEST</a>
-                        </li>
-                        <li class="">
-                            <a ng-click="filterPlainContent(false, 'sale_price')" data-sortby="sale_price" href="#"
-                               class="box-link">PRICE</a>
-                        </li>
-                    </ul>
-                </div>
-            </nav>
-
-            <div class="clearfix"></div>
-
             <div class="homepage-grid center-block">
+                <section id="category-banner" class="landing-hero {{$currentCategory->extra_info}}-hero">
+                    <!--        <img src="/assets/images/shop-category-banner.png" class="img-responsive" alt="">-->
+                    <img src="{{$currentCategory->background_image}}" class="img-responsive full-wide" alt="{{ucfirst($currentCategory->category_name)}}">
+                    <div class="head-wrap container">
+                        <!--  class name: smart-home, travel, wearables, home-decor -->
+                        <h1 class="text-center"><span class="smart-home">{{ucfirst($currentCategory->category_name)}}</span></h1>
+                    </div>
+                </section>
+
+                <nav id="hero-nav" class="col-sm-12">
+                    <div class="container full-620  fixed-sm banner-nav">
+                        <a class="pull-left visible-md visible-lg" id="shop-filter-menu-button" href="#"
+                           ng-click="showFilter ? showFilter=0: showFilter=1">
+                            <i class="m-icon--MenuButton"></i>
+                            Filter
+                        </a>
+                        <ul class="popular-new pull-right">
+                            <li class="">
+                                <a ng-click="filterPlainContent(false, 'default')" data-sortby="default" href="#"
+                                   class="box-link active">NEWEST</a>
+                            </li>
+                            <li class="">
+                                <a ng-click="filterPlainContent(false, 'sale_price')" data-sortby="sale_price" href="#"
+                                   class="box-link">PRICE</a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+
+                <div class="clearfix"></div>
+
                 <div class="loader loader-abs" cg-busy="firstLoad"></div>
                 {{--<div class="loader loader-abs" cg-busy="filterLoad"></div>--}}
                 {{--<div class="loader loader-fixed" cg-busy="nextLoad"></div>--}}

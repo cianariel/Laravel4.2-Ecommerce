@@ -1576,12 +1576,16 @@ body.category-deals{
 
 
 body.shop-category{
-
+  .app-wrap{
+    padding-top: 115px !important;
+    .homepage-grid{
+      width: 1170px;
+    }
+  }
   #category-banner{
     position: relative;
     width: 100%;
-    padding-top: 110px;
-    
+    padding-top: 0;
     .head-wrap{
       position: absolute;
       top: 40%;
@@ -1604,9 +1608,22 @@ body.shop-category{
       }
     }
   }
-  .popular-new{
-    text-align: right;
+
+  #hero-nav{
+    border-top: 1px solid #dbdbdb;
+    border-bottom: 1px solid #dbdbdb;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    ul.popular-new{
+      text-align: right;
+      li{
+        a.box-link{
+          margin: 8px 0;
+        }
+      }
+    }
   }
+
   .main-content{
     .grid-box-3{
       border-left: 1px solid #eee;
