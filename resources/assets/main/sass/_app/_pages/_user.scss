@@ -35,7 +35,7 @@
   padding-top: 5px;
 
   @media(max-width: 620px){
-    max-width: 260px;
+    max-width: 200px;
     margin: 0 auto;
   }
 
@@ -567,7 +567,7 @@ h5{
   .info-conteiner{
     max-width: 700px;
   }
- 
+
   textarea{
     min-height: 90px;
     //width: 95%;
@@ -685,10 +685,21 @@ h5{
       }
     }
 
+    .nevermind-wrap{
+      width: 178px;
+      margin: 0 auto;
+    }
+
     .checkbox-form-group {
       margin-bottom: 0px;
       >div:first-child{
         margin-top: 10px;
+      }
+
+      @media(max-width: 1024px){
+        width: 60%;
+        margin: 0 auto;
+        float: none !important;
       }
     }
 

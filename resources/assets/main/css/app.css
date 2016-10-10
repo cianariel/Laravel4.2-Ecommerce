@@ -16144,7 +16144,7 @@ body.shop-category .show-filter .grid-box-3 {
   padding-top: 5px; }
   @media (max-width: 620px) {
     .avatar-wrap {
-      max-width: 260px;
+      max-width: 200px;
       margin: 0 auto; } }
   .avatar-wrap img {
     max-width: 200px;
@@ -16560,10 +16560,18 @@ h5 {
         position: relative;
         top: 4px;
         right: -7px; }
+  .profile-setting-modal .modal-content .nevermind-wrap {
+    width: 178px;
+    margin: 0 auto; }
   .profile-setting-modal .modal-content .checkbox-form-group {
     margin-bottom: 0px; }
     .profile-setting-modal .modal-content .checkbox-form-group > div:first-child {
       margin-top: 10px; }
+    @media (max-width: 1024px) {
+      .profile-setting-modal .modal-content .checkbox-form-group {
+        width: 60%;
+        margin: 0 auto;
+        float: none !important; } }
   .profile-setting-modal .modal-content .setting-custom-checkbox {
     cursor: pointer;
     font-size: 40px; }
