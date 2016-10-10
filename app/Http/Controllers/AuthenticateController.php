@@ -375,7 +375,7 @@ class AuthenticateController extends ApiController
             unset($input['UserRoles']);
             $userData = $input;//\Input::all();
 
-            print_r($input); die();
+//            print_r($input); die();
 
 
             // $user = $this->isEmailValidate(JWTAuth::parseToken()->authenticate()->email);
@@ -412,6 +412,8 @@ class AuthenticateController extends ApiController
                 // Add a user as blog user from admin panel
                 //
 
+
+
                 if (isset($userData['IsBlogUser'])) {
                     $user->is_blog_user = $userData['IsBlogUser'] == 'true' ? 'true' : '';
                 }
@@ -422,6 +424,9 @@ class AuthenticateController extends ApiController
                 if (isset($userData['LastName']) && ($userData['LastName'] != "")) {
                     $user->last_name = $userData['LastName'];
                 }
+                if (isset($userData['RecoveryEmail']) && ($userData['RecoveryEmail'] != "")) {
+                    $user->recovery_email = $userData['RecoveryEmail'];
+                }
 
 
                 if (isset($userData['Password']) && ($userData['Password'] != "")) {
@@ -431,6 +436,13 @@ class AuthenticateController extends ApiController
 
                 if (isset($userData['UserStatus']) && ($userData['UserStatus'] != "")) {
                     $user->status = $input['UserStatus'];
+                }
+
+                if (isset($userData['FacebookLink']) && ($userData['FacebookLink'] != "")) {
+                    $user->userProfile()->update(['facebook_link' => $input['FacebookLink']]);
+                }
+                if (isset($userData['TwitterLink']) && ($userData['TwitterLink'] != "")) {
+                    $user->userProfile()->update(['twitter_link' => $input['TwitterLink']]);
                 }
 
                 if (isset($userData['PersonalInfo']) && ($userData['PersonalInfo'] != "")) {
@@ -478,6 +490,7 @@ class AuthenticateController extends ApiController
                         'media_link' => $input['MediaLink'],
                     ]);
                 }
+
 
                 $user->save();
 

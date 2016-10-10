@@ -105,8 +105,8 @@
                 <div class="form-group  col-xs-6">
                     <label class="col-xs-12 control-label">Recovery email</label>
                     <div class="col-xs-12">
-                        <input class="form-control" type="email" ng-model="data.RecoveryEmail">
-
+                        <input class="form-control" type="email" ng-model="data.RecoveryEmail"  ng-init="data.RecoveryEmail = '<?php echo $userData['recovery_email'] ?>'">
+                        <?php // echo $userData['userProfile']['address']  ?>
                     </div>
                 </div>
 
@@ -115,7 +115,7 @@
                         <div class="col-xs-12 no-padding">
                             <label class="col-xs-6 control-label">https://ideaing.com/user/profile/</label>
                             <div class="col-xs-6 pull-right no-padding">
-                                <input class="form-control personal-link ng-pristine ng-valid ng-not-empty ng-touched ng-untouched" ng-model="data.Permalink" ng-init="data.Permalink = 'tanvir-25-66'" placeholder="">
+                                <input class="form-control personal-link ng-pristine ng-valid ng-not-empty ng-touched ng-untouched" ng-model="data.Permalink" ng-init="data.Permalink = <?php echo $userData['permalink'] ?>" placeholder="">
                             </div>
                         </div>
                     </div>
@@ -138,7 +138,7 @@
                             <label class="col-xs-12 control-label">Street</label>
                             <div class="col-xs-12">
                                 <input class="form-control street" ng-model="data.Street"
-                               placeholder="">
+                               placeholder="" ng-init="data.Street = <?php echo $userData['userProfile']['street'] ?>">
                             </div>
                         </div>
 
@@ -146,7 +146,7 @@
                             <label class="col-xs-12 control-label">Apartment</label>
                             <div class="col-xs-12">
                                 <input class="form-control apartment" ng-model="data.Apartment"
-                                placeholder="">
+                                placeholder="" ng-init="data.Apartment = <?php echo $userData['userProfile']['apartment'] ?>">
                             </div>
                         </div>
 
@@ -154,7 +154,7 @@
                             <label class="col-xs-12 control-label">City</label>
                             <div class="col-xs-12">
                                 <input class="form-control city no-padding" ng-model="data.City"
-                                placeholder="">
+                                placeholder="" ng-init="data.City = <?php echo $userData['userProfile']['city'] ?>">
                             </div>
                         </div>
 
@@ -162,7 +162,7 @@
                             <label class="col-xs-12 control-label">Country</label>
                             <div class="col-xs-12">
                                 <input class="form-control country" ng-model="data.Country"
-                               placeholder="">
+                               placeholder="" ng-init="data.Country = <?php echo $userData['userProfile']['country'] ?>">
                             </div>
                         </div>
 
@@ -170,7 +170,7 @@
                             <label class="col-xs-12 control-label">State</label>
                             <div class="col-xs-12">
                                 <input class="form-control street" ng-model="data.State"
-                               placeholder="">
+                               placeholder="" ng-init="data.State = <?php echo $userData['userProfile']['state'] ?>">
                             </div>
                         </div>
 
@@ -178,7 +178,7 @@
                             <label class="col-xs-12 control-label">Zip</label>
                             <div class="col-xs-12">
                                 <input class="form-control zip" ng-model="data.Zip"
-                               placeholder="">
+                               placeholder="" ng-init="data.Zip = <?php echo $userData['userProfile']['zip'] ?>">
                             </div>
                         </div>
 
