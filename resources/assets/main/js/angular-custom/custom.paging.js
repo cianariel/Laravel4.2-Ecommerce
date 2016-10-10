@@ -480,7 +480,7 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
 //            $uibModalInstance.dismiss('cancel');
 //        };
 //    })
-    .controller('shoplandingController', ['$scope', '$http', 'pagingApi', '$timeout', '$uibModal', function ($scope, $http, pagingApi, $timeout, $uibModal) {
+    .controller('shoplandingController', ['$scope', '$http', 'pagingApi', '$timeout', '$window', '$uibModal', function ($scope, $http, pagingApi, $timeout, $window, $uibModal) {
         
         $scope.renderHTML = function(html_code)
         {
@@ -493,6 +493,35 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
         }
 
         $scope.hasMore = false;
+
+        var everythingLoaded = setInterval(function() {
+            if (/loaded|complete/.test(document.readyState)) {
+                clearInterval(everythingLoaded);
+                var footer = document.getElementsByClassName('about-footer')[0];
+                footer.style.display = 'block';
+                footer.style.position = 'static';
+            }
+        }, 10);
+
+        angular.element($window).bind("scroll", function() {
+
+            var topMenuClasses = document.getElementById("publicApp").classList;
+            if(document.documentElement.clientWidth > 620) {
+                if (document.body.scrollTop > 60 || document.documentElement.scrollTop > 60) {
+                    if (!topMenuClasses.contains("shop-top-menu-container")) {
+                        topMenuClasses.add("shop-top-menu-container");
+                    }
+                } else {
+                    if (topMenuClasses.contains("shop-top-menu-container")) {
+                        topMenuClasses.remove("shop-top-menu-container");
+                    }
+                }
+            }else {
+                if (topMenuClasses.contains("shop-top-menu-container")) {
+                    topMenuClasses.remove("shop-top-menu-container");
+                }
+            }
+        });
 
         $scope.nextLoad = pagingApi.getPlainContent(1, 3, 'deal', 'idea').success(function (response) {
             $scope.dailyDeals = response['content'];
@@ -575,7 +604,7 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
         });
     }])
 
-    .controller('shopcategoryController', function ($scope, $filter, pagingApi, $uibModal, $timeout) {
+    .controller('shopcategoryController', function ($scope, $filter, pagingApi, $window, $uibModal, $timeout) {
         $scope.renderHTML = function(html_code)
         {
             var decoded = angular.element('<div />').html(html_code).text();
@@ -594,6 +623,35 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
         var $route =  $filter('getURISegment')(2);
         var $category = false;
 
+
+        var everythingLoaded = setInterval(function() {
+            if (/loaded|complete/.test(document.readyState)) {
+                clearInterval(everythingLoaded);
+                var footer = document.getElementsByClassName('about-footer')[0];
+                footer.style.display = 'block';
+                footer.style.position = 'static';
+            }
+        }, 10);
+
+        angular.element($window).bind("scroll", function() {
+
+            var topMenuClasses = document.getElementById("publicApp").classList;
+            if(document.documentElement.clientWidth > 620) {
+                if (document.body.scrollTop > 60 || document.documentElement.scrollTop > 60) {
+                    if (!topMenuClasses.contains("shop-top-menu-container")) {
+                        topMenuClasses.add("shop-top-menu-container");
+                    }
+                } else {
+                    if (topMenuClasses.contains("shop-top-menu-container")) {
+                        topMenuClasses.remove("shop-top-menu-container");
+                    }
+                }
+            }else {
+                if (topMenuClasses.contains("shop-top-menu-container")) {
+                    topMenuClasses.remove("shop-top-menu-container");
+                }
+            }
+        });
 
         if($route == 'shop'){
             if($category = $filter('getURISegment')(5)){
