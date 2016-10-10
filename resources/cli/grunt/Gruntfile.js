@@ -42,6 +42,7 @@ module.exports = function(grunt) {
                     '../../assets/main/js/vendor/bootstrap-colorpicker-module.js',
 
                     '../../assets/main/js/vendor/cart-summary.js',
+                    '../../assets/main/js/vendor/add-to-bag.js',
                     '../../assets/main/js/vendor/woocommerce.js',
 
                     '../../assets/main/js/app.js',

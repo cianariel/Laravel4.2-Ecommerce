@@ -35,7 +35,7 @@
   padding-top: 5px;
 
   @media(max-width: 620px){
-    max-width: 260px;
+    max-width: 200px;
     margin: 0 auto;
   }
 
@@ -557,14 +557,20 @@ h5{
     right: 5px;
     top: 5px;
     font-size: 30px;
-    color: white;
+    color: white; 
   }
   section{
-    padding-top:25px;
+    padding: 25px 0 15px;
+    border-bottom: 1px solid #eee;
+
   }
+  .info-conteiner{
+    max-width: 700px;
+  }
+
   textarea{
     min-height: 90px;
-    width: 95%; 
+    //width: 95%;
   }
   .form-horizontal .control-label{
     text-align: left !important;
@@ -572,6 +578,22 @@ h5{
   .form-group{
     padding-right: 0;
   }
+
+  .personal-details{
+    .boxy-label {
+      width: 46%;
+      margin-left: 2.8%;
+    }
+  }
+  .login-details{
+    .boxy-label {
+      margin-left: 15px;
+    }
+  }
+
+
+
+
   .modal-content{
     padding: 0px;
     // .profile-background{
@@ -598,9 +620,9 @@ h5{
     .uploading-photo{
       display: block;
     }
-    .street{
-      max-width: 763px;
-    }
+    //.street{
+    //  max-width: 763px;
+    //}
     .move-me{
       margin-left: 0;
     }
@@ -621,9 +643,9 @@ h5{
         top: 5px;
         left: 28px;
       }
-      .personal-link{
-        padding-left: 97px;
-      }
+      //.personal-link{
+      //  padding-left: 97px;
+      //}
       label{
         text-align: left;
         margin-bottom: 10px;
@@ -663,10 +685,21 @@ h5{
       }
     }
 
+    .nevermind-wrap{
+      width: 178px;
+      margin: 0 auto;
+    }
+
     .checkbox-form-group {
       margin-bottom: 0px;
       >div:first-child{
         margin-top: 10px;
+      }
+
+      @media(max-width: 1024px){
+        width: 60%;
+        margin: 0 auto;
+        float: none !important;
       }
     }
 

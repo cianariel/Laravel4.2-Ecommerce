@@ -3661,9 +3661,10 @@ angular.module('colorpicker.module', [])
       if ( 27 === e.keyCode ) self.close();
     });
 
-    $( document.body ).on('added_to_cart', function(){
-      self.update('open');
-    });
+    document.body.addEventListener('added_to_cart', function(e){
+
+      self.update(e.detail, 'open');
+    }, false)
 
     setTimeout(function(){ self.build(); }, 0 );
   };
@@ -3672,11 +3673,7 @@ angular.module('colorpicker.module', [])
 
     var self = this;
 
-    self.element = document.createElement('div');
-    self.element.id = 'ideaing-g-cart-summary';
-    self.element.className = 'global-cart-summary';
-
-    self.element.innerHTML = [
+    self.template = [
       '<div class="ics--close overlay"></div>',
       '<aside>',
         '<header>',
@@ -3708,9 +3705,14 @@ angular.module('colorpicker.module', [])
       '</aside>'
     ].join('');
 
+    self.element = document.createElement('div');
+    self.element.id = 'ideaing-g-cart-summary';
+    self.element.className = 'global-cart-summary';
+    self.element.innerHTML = self.template;
+
     document.body.appendChild(self.element);
 
-    self.update();
+    self.firstContent();
   };
 
   ideaingCartSummay.prototype.open = function () {
@@ -3728,6 +3730,8 @@ angular.module('colorpicker.module', [])
       $( document.body ).addClass('ics--on');
 
       self.switching = false;
+
+      self.trigger(document.body, 'cart_summary_opened', self.element);
 
     }, 20 );
   };
@@ -3748,6 +3752,8 @@ angular.module('colorpicker.module', [])
 
       self.switching = false;
 
+      self.trigger(document.body, 'cart_summary_closed', self.element);
+
     }, 400 );
   };
 
@@ -3756,7 +3762,7 @@ angular.module('colorpicker.module', [])
     this.isVisible() ? this.close() : this.open();
   };
 
-  ideaingCartSummay.prototype.update = function (callback) {
+  ideaingCartSummay.prototype.firstContent = function () {
 
     var self = this;
 
@@ -3765,24 +3771,118 @@ angular.module('colorpicker.module', [])
       dataType: "json",
       url: '/ideas/wp-admin/admin-ajax.php',
       data: {
-        action: 'global_cart_summary',
+        action: 'global_cart_summary_fragments',
       },
-      success: function( cart ){
+      success: function( response ){
 
-        cart.total = 0 < cart.total ? cart.total : '';
+        console.log(self.cart, response);
 
-        $('.cart-count').text(cart.total);
-        $( self.element ).find('aside').html(cart.html);
+        if ( undefined == self.cart ) self.update(response);
 
-        if ( cart.total ){
-          $('body').addClass('has-in-cart');
-          callback ? self[callback]() : '';
-        } else {
-          $('body').removeClass('has-in-cart');
-        }
       },
       error: function (xhr, ajaxOptions, thrownError) {
         console.warn(thrownError);
+      }
+    });
+  };
+
+  ideaingCartSummay.prototype.update = function (response, callback) {
+
+    var self = this,
+        fragments = response.fragments || false;
+
+    if ( !fragments ) return;
+
+    self.cart = {
+      total: fragments['.cart-count'] || '',
+      html: fragments['.global-cart-summary'] || self.template
+    };
+
+    $('.cart-count').text(self.cart.total);
+    $( self.element ).find('aside').html(self.cart.html);
+
+    if ( self.cart.total ){
+      $('body').addClass('has-in-cart');
+      callback ? self[callback]() : '';
+    } else {
+      $('body').removeClass('has-in-cart');
+    }
+  };
+
+  $(document).ready(function(){
+
+    try {
+
+      new ideaingCartSummay();
+
+    } catch (e) {
+
+      console.error(e);
+    }
+  });
+
+} )( jQuery );
+;
+( function( $ ) {
+
+  'use strict';
+
+  function ideaingAddToBag(){
+
+    this.init();
+  }
+
+  ideaingAddToBag.prototype.trigger = function( el, event, options ){
+
+    if (window.CustomEvent) {
+      var e = new CustomEvent(event, {detail: options});
+    } else {
+      var e = document.createEvent('CustomEvent');
+      e.initCustomEvent(event, true, true, options);
+    }
+
+    el.dispatchEvent(e);
+  };
+
+  ideaingAddToBag.prototype.init = function () {
+
+    var self = this;
+
+    $( document ).on('click', '.add-to-bag', function(e){
+
+      e.preventDefault();
+
+      self.add($(this));
+    });
+  };
+
+  ideaingAddToBag.prototype.add = function ($thisbutton) {
+
+    var self = this;
+
+    if ( ! $thisbutton.attr( 'data-product_id' ) || $thisbutton.hasClass('loading') ) {
+      return true;
+    }
+
+    $thisbutton.addClass( 'loading' );
+
+    var data = {};
+
+    $.each( $thisbutton.data(), function( key, value ) {
+      data[key] = value;
+    });
+
+    $.post( '/ideas/shop?wc-ajax=add_to_cart', data, function( response ) {
+
+      $thisbutton.removeClass( 'loading' );
+
+      if ( response && ! response.error ) {
+
+        self.trigger(document.body, 'added_to_cart', response);
+
+      } else {
+
+        console.warn(response);
       }
     });
   };
@@ -3791,7 +3891,7 @@ angular.module('colorpicker.module', [])
 
     try {
 
-      new ideaingCartSummay();
+      new ideaingAddToBag();
 
     } catch (e) {
 

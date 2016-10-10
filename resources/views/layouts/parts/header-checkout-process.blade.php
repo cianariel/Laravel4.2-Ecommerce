@@ -59,7 +59,7 @@
               <?php do_action('ideaing_secure_checkout_nav'); ?>
             </div>
             <div class="sc-slogan">
-              <i class="m-icon--verified_user"></i>
+              <i class="m-icon--lock_outline"></i>
             </div>
           </div>
         </div>

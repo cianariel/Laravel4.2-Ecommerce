@@ -6568,6 +6568,9 @@ ins.adsbygoogle {
 .padding-40 {
   padding: 40px; }
 
+.left-5 {
+  margin-left: 5px; }
+
 .relative {
   position: relative; }
 
@@ -6953,6 +6956,33 @@ form .btn {
     z-index: 9;
     left: 10px;
     top: 12px; }
+
+.boxy-label {
+  position: relative;
+  border: 1px solid #ccc;
+  border-radius: 5px; }
+  .boxy-label label {
+    margin-top: 0;
+    padding-top: 12px !important;
+    padding-left: 10px;
+    background: #eee;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0; }
+    .boxy-label label i {
+      /* margin-left: -2px; */
+      position: relative;
+      right: 5px;
+      bottom: 2px;
+      padding: 2px;
+      background: #5C7CBD;
+      color: #fff;
+      border-radius: 2px; }
+      .boxy-label label i.m-icon--twitter-id {
+        background: #00B1FF; }
+  .boxy-label input {
+    border: 0; }
 
 /* links base */
 a {
@@ -16119,7 +16149,7 @@ body.shop-category .show-filter .grid-box-3 {
   padding-top: 5px; }
   @media (max-width: 620px) {
     .avatar-wrap {
-      max-width: 260px;
+      max-width: 200px;
       margin: 0 auto; } }
   .avatar-wrap img {
     max-width: 200px;
@@ -16460,14 +16490,21 @@ h5 {
   font-size: 30px;
   color: white; }
 .profile-setting-modal section {
-  padding-top: 25px; }
+  padding: 25px 0 15px;
+  border-bottom: 1px solid #eee; }
+.profile-setting-modal .info-conteiner {
+  max-width: 700px; }
 .profile-setting-modal textarea {
-  min-height: 90px;
-  width: 95%; }
+  min-height: 90px; }
 .profile-setting-modal .form-horizontal .control-label {
   text-align: left !important; }
 .profile-setting-modal .form-group {
   padding-right: 0; }
+.profile-setting-modal .personal-details .boxy-label {
+  width: 46%;
+  margin-left: 2.8%; }
+.profile-setting-modal .login-details .boxy-label {
+  margin-left: 15px; }
 .profile-setting-modal .modal-content {
   padding: 0px; }
   .profile-setting-modal .modal-content .upload-photo {
@@ -16484,8 +16521,6 @@ h5 {
       cursor: pointer; }
   .profile-setting-modal .modal-content .uploading-photo {
     display: block; }
-  .profile-setting-modal .modal-content .street {
-    max-width: 763px; }
   .profile-setting-modal .modal-content .move-me {
     margin-left: 0; }
   .profile-setting-modal .modal-content .notification-settings {
@@ -16501,8 +16536,6 @@ h5 {
       position: absolute;
       top: 5px;
       left: 28px; }
-    .profile-setting-modal .modal-content .custom-container .personal-link {
-      padding-left: 97px; }
     .profile-setting-modal .modal-content .custom-container label {
       text-align: left;
       margin-bottom: 10px; }
@@ -16532,10 +16565,18 @@ h5 {
         position: relative;
         top: 4px;
         right: -7px; }
+  .profile-setting-modal .modal-content .nevermind-wrap {
+    width: 178px;
+    margin: 0 auto; }
   .profile-setting-modal .modal-content .checkbox-form-group {
     margin-bottom: 0px; }
     .profile-setting-modal .modal-content .checkbox-form-group > div:first-child {
       margin-top: 10px; }
+    @media (max-width: 1024px) {
+      .profile-setting-modal .modal-content .checkbox-form-group {
+        width: 60%;
+        margin: 0 auto;
+        float: none !important; } }
   .profile-setting-modal .modal-content .setting-custom-checkbox {
     cursor: pointer;
     font-size: 40px; }
