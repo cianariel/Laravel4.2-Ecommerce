@@ -1,6 +1,6 @@
 // SHOP PAGE AND SHOP MENU
 
-body.shop-landing{
+body.shop-landing, body.shop-category{
   font-family: Montserratlight, sans-serif;
   padding-top: 0 !important;
   background: transparent;
@@ -1096,7 +1096,7 @@ body.shop-landing{
         }
 
         .search-box-container{
-          top: 60px;
+          top: 59px;
           position: absolute;
           width: 100%;
           margin: 0;
@@ -1116,7 +1116,7 @@ body.shop-landing{
               padding: 0;
               position: relative;
               top: -2px;
-              &::before{
+              /*&::before{
                 content: "";
                 position: absolute;
                 width: 115%;
@@ -1136,7 +1136,7 @@ body.shop-landing{
                   -webkit-transform: scaleX(1);
                   transform: scaleX(1);
                 }
-              }
+              }*/
               span{
                 font-size: 25px !important;
                 font-weight: 100;
@@ -1580,6 +1580,8 @@ body.shop-category{
   #category-banner{
     position: relative;
     width: 100%;
+    padding-top: 110px;
+    
     .head-wrap{
       position: absolute;
       top: 40%;

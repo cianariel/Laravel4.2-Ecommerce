@@ -5,7 +5,7 @@
 @section('content')
     <h1 class="hidden">Shop</h1>
 
-    <div class="app-wrap" ng-app="pagingApp" ng-controller="shoplandingController">
+    <div class="app-wrap" ng-app="pagingApp" scrollSecNav ng-controller="shoplandingController">
         <div ng-cloak>
             <div class="homepage-grid center-block">
                 <div class="loader loader-fixed" cg-busy="nextLoad"></div>
@@ -369,35 +369,15 @@
         @include('layouts.parts.product-popup')
     </div>
 <script>
-    window.onscroll = function() {scrolling()};
 
-    function scrolling() {
-        var topMenuClasses = document.getElementById("publicApp").classList;
-        if(document.documentElement.clientWidth > 620) {
-            if (document.body.scrollTop > 60 || document.documentElement.scrollTop > 60) {
-                if (!topMenuClasses.contains("shop-top-menu-container")) {
-                    topMenuClasses.add("shop-top-menu-container");
-                }
-            } else {
-                if (topMenuClasses.contains("shop-top-menu-container")) {
-                    topMenuClasses.remove("shop-top-menu-container");
-                }
-            }
-        }else {
-            if (topMenuClasses.contains("shop-top-menu-container")) {
-                topMenuClasses.remove("shop-top-menu-container");
-            }
-        }
-    }
-
-    var everythingLoaded = setInterval(function() {
+    /*var everythingLoaded = setInterval(function() {
         if (/loaded|complete/.test(document.readyState)) {
             clearInterval(everythingLoaded);
             var footer = document.getElementsByClassName('about-footer')[0];
             footer.style.display = 'block';
             footer.style.position = 'static';
         }
-    }, 10);
+    }, 10);*/
 
 </script>
     {{--<script src="/assets/js/vendor/angular-busy.min.js"></script>--}}

@@ -3,8 +3,10 @@
 @section('body-class'){{ 'shoppage shop-category' }}@stop
 
 @section('content')
+
     @include('shop.browseall-menu')
-    <nav class="mid-nav ">
+
+    <!-- {{--<nav class="mid-nav ">
         <div class="container full-sm fixed-sm">
             @if($parentCategory)
                 <ul class="wrap col-lg-9">
@@ -87,7 +89,7 @@
                     </span>
             </a>
         </div>
-    </nav>
+    </nav>--}}  -->
 
     <section id="category-banner" class="landing-hero {{$currentCategory->extra_info}}-hero">
         <!--        <img src="/assets/images/shop-category-banner.png" class="img-responsive" alt="">-->
