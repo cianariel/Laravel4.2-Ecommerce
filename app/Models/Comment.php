@@ -266,9 +266,9 @@ class Comment extends Model
     public function getCommentsAndHeatByUserId($userId, $count = null)
     {
 
-        // if(env('IS_DEV')){
-        //     return false;
-        // }
+         if(env('IS_DEV')){
+             return false;
+         }
 
         $activityCollection = new Collection();
 

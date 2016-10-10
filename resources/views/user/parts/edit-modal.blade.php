@@ -45,9 +45,9 @@
                     </div>
                     <label class="col-xs-12 control-label">Last name</label>
                     <div class="col-xs-12">
-                        <input class="form-control" ng-model="data.FullName"
-                               ng-init="data.FullName = '<?php echo $userData['name'] ?>'"
-                               placeholder="Full name">
+                        <input class="form-control" ng-model="data.LastName"
+                               ng-init="data.LastName = '<?php echo $userData['last_name'] ?>'"
+                               placeholder="Last Name">
                     </div>
 
                     <label class="col-xs-12 control-label">Bio</label>
@@ -61,13 +61,13 @@
                     <div class="col-xs-6 boxy-label">
                         <label class="col-xs-2 col-sm-2 col-md-6 control-label"><i class="m-icon m-icon--facebook-id"></i> <span class="hidden-xs hidden-sm">Facebook Link</span></label>
                         <div class="col-md-6 col-xs-10 pull-right no-padding">
-                            <input class="form-control ng-pristine ng-untouched ng-valid ng-not-empty" ng-model="data.FullName" ng-init="data.FullName = 'tanvir'" placeholder="Full name">
+                            <input class="form-control ng-pristine ng-untouched ng-valid ng-not-empty" ng-model="data.FacebookLink" ng-init="data.FacebookLink = 'tanvir'">
                         </div>
                     </div>
                     <div class="col-xs-6 boxy-label">
                         <label class="col-xs-2 col-sm-2 col-md-6"><i class="m-icon m-icon--twitter-id"></i><span class="hidden-xs hidden-sm">Twitter Link</span></label>
                         <div class="col-md-6 col-xs-10  pull-right no-padding">
-                            <input class="form-control ng-pristine ng-untouched ng-valid ng-not-empty" ng-model="data.FullName" ng-init="data.FullName = 'tanvir'" placeholder="Full name">
+                            <input class="form-control ng-pristine ng-untouched ng-valid ng-not-empty" ng-model="data.TwitterLink" ng-init="data.TwitterLink = 'tanvir'">
                         </div>
                     </div>
                 </div>
@@ -97,7 +97,7 @@
                 <div class="form-group  col-xs-6">
                     <label class="col-xs-12 control-label">New password</label>
                     <div class="col-xs-12">
-                        <input class="form-control" type="password" ng-model="data.Password"
+                        <input class="form-control" type="password" ng-model="data.NewPassword"
                                placeholder="New password">
 
                     </div> 
@@ -105,8 +105,7 @@
                 <div class="form-group  col-xs-6">
                     <label class="col-xs-12 control-label">Recovery email</label>
                     <div class="col-xs-12">
-                        <input class="form-control" type="password" ng-model="data.RecoveryEmail"
-                               placeholder="New password">
+                        <input class="form-control" type="email" ng-model="data.RecoveryEmail">
 
                     </div>
                 </div>
@@ -146,7 +145,7 @@
                         <div class="form-group col-xs-6">
                             <label class="col-xs-12 control-label">Apartment</label>
                             <div class="col-xs-12">
-                                <input class="form-control apartment ng-model="data.Apartment"
+                                <input class="form-control apartment" ng-model="data.Apartment"
                                 placeholder="">
                             </div>
                         </div>
