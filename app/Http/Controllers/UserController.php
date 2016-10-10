@@ -219,6 +219,7 @@ class UserController extends ApiController
                 'permalink' => empty($permalink) ? $userData['permalink'] : $permalink,
                 'isAdmin' => $userData->hasRole('admin') || $userData->hasRole('editor'),
                 'showEditOption' => true
+
             );
 
             MetaTag::set('title', 'Ideaing | My profile');
@@ -354,6 +355,16 @@ class UserController extends ApiController
         $data = $this->user->ideasAuthorPost($inputData);
 
         //dd($data);
+
+        return $this->setStatusCode(\Config::get("const.api-status.success"))
+                    ->makeResponse($data);
+    }
+
+    public function getOrdersByAuthor()
+    {
+        $inputData = \Input::all();
+
+        $data = $this->user->getMyOrders($inputData);
 
         return $this->setStatusCode(\Config::get("const.api-status.success"))
                     ->makeResponse($data);

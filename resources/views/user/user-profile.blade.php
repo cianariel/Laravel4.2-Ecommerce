@@ -81,6 +81,7 @@
                     @include('user.parts.feed')
                 @endif
             @else
+
                 @include('user.parts.notification')
             @endif
         </div>
