@@ -6494,18 +6494,35 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
             $scope.closeAlert();
             //console.log("address :"+ tmp.FullName);
 
+            console.log('trololo');
+            console.log(formData);
+
             $http({
                 url: '/api/change-profile',
                 method: "POST",
                 data: {
                     FullName: formData.FullName,
+                    LastName: formData.LastName,
                     Email: formData.Email,
+                    RecoveryEmail: formData.RecoveryEmail,
                     Password: formData.Password,
                     PersonalInfo: formData.PersonalInfo,
-                    Address: formData.Address,
+
+                    FacebookLink: formData.FacebookLink,
+                    TwitterLink: formData.TwitterLink,
+
+                    Password: formData.Password,
+                    NewPassword: formData.NewPassword,
+
+                    Street: formData.Street,
+                    Apartment: formData.Apartment,
+                    City: formData.City,
+                    Country: formData.Country,
+                    State: formData.State,
+                    Zip: formData.Zip,
+
                     Permalink: formData.Permalink,
                     MediaLink: meidaLink
-
                 }
             }).success(function (data) {
                 // console.log(data);

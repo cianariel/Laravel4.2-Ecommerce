@@ -372,10 +372,10 @@ class AuthenticateController extends ApiController
             $input = \Input::all();//array('FullName');
             $userRoles = \Input::get('UserRoles');
 
-            print_r($input); die();
-
             unset($input['UserRoles']);
             $userData = $input;//\Input::all();
+
+            print_r($input); die();
 
 
             // $user = $this->isEmailValidate(JWTAuth::parseToken()->authenticate()->email);
@@ -418,6 +418,9 @@ class AuthenticateController extends ApiController
 
                 if (isset($userData['FullName']) && ($userData['FullName'] != "")) {
                     $user->name = $userData['FullName'];
+                }
+                if (isset($userData['LastName']) && ($userData['LastName'] != "")) {
+                    $user->last_name = $userData['LastName'];
                 }
 
 
@@ -491,6 +494,8 @@ class AuthenticateController extends ApiController
             }
         } catch (\Exception $ex) {
             \Log::error($ex);
+
+            print_r($ex);die();
 
             return $this->setStatusCode(\Config::get("const.api-status.system-fail"))
                         ->makeResponseWithError('Internal Server Error!', $ex);

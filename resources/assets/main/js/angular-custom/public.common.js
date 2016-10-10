@@ -1549,6 +1549,7 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                 method: "POST",
                 data: {
                     FullName: formData.FullName,
+                    LastName: formData.LastName,
                     Email: formData.Email,
                     RecoveryEmail: formData.RecoveryEmail,
                     Password: formData.Password,
