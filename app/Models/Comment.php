@@ -455,6 +455,33 @@ class Comment extends Model
 
         }
 
+        $orderCollection = new Collection();
+
+        $purchasesUrl = URL::to('/') . '/ideas/wp-admin/admin-ajax.php?action=account_orders';
+
+        $data =  PageHelper::getArrayFromCurl($purchasesUrl);
+
+        print_r($data); die();
+
+        foreach ($data as $item) {
+            $tmpCollection = new Collection();
+
+            $tmpCollection['Id'] = $item['Id'];
+            $tmpCollection['Title'] = $item['Title'];
+            $tmpCollection['Link'] = $item['Link'];
+            $tmpCollection['Image'] = $item['Image'];
+            $tmpCollection['UpdateTime'] = Carbon::createFromTimestamp(strtotime($item['UpdateTime']))->diffForHumans();
+            $tmpCollection['CommentCount'] = empty($commentCount) ? 0 : $commentCount;
+            $tmpCollection['HeartCount'] = empty($heartCount) ? 0 : $heartCount;
+
+            $tmpCollection['Section'] = $item['Section'];
+            $tmpCollection['Type'] = $item['Type'];
+
+
+            $activityCollection->push($tmpCollection);
+
+        }
+
         return $activityCollection->take($count);
     }
 

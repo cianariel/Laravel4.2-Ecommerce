@@ -1541,9 +1541,6 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
             $scope.closeAlert();
             //console.log("address :"+ tmp.FullName);
 
-            console.log('trololo');
-            console.log(formData);
-
             $http({
                 url: '/api/change-profile',
                 method: "POST",

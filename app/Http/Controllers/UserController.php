@@ -219,7 +219,6 @@ class UserController extends ApiController
                 'permalink' => empty($permalink) ? $userData['permalink'] : $permalink,
                 'isAdmin' => $userData->hasRole('admin') || $userData->hasRole('editor'),
                 'showEditOption' => true
-
             );
 
             MetaTag::set('title', 'Ideaing | My profile');

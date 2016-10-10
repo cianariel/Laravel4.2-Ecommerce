@@ -61,13 +61,13 @@
                     <div class="col-xs-6 boxy-label">
                         <label class="col-xs-2 col-sm-2 col-md-6 control-label"><i class="m-icon m-icon--facebook-id"></i> <span class="hidden-xs hidden-sm">Facebook Link</span></label>
                         <div class="col-md-6 col-xs-10 pull-right no-padding">
-                            <input class="form-control ng-pristine ng-untouched ng-valid ng-not-empty" ng-model="data.FacebookLink" ng-init="data.FacebookLink = 'tanvir'">
+                            <input class="form-control ng-pristine ng-untouched ng-valid ng-not-empty" ng-model="data.FacebookLink" ng-init="data.FacebookLink = '<?php echo $userData['userProfile']['facebook_link'] ?>'">
                         </div>
                     </div>
                     <div class="col-xs-6 boxy-label">
                         <label class="col-xs-2 col-sm-2 col-md-6"><i class="m-icon m-icon--twitter-id"></i><span class="hidden-xs hidden-sm">Twitter Link</span></label>
                         <div class="col-md-6 col-xs-10  pull-right no-padding">
-                            <input class="form-control ng-pristine ng-untouched ng-valid ng-not-empty" ng-model="data.TwitterLink" ng-init="data.TwitterLink = 'tanvir'">
+                            <input class="form-control ng-pristine ng-untouched ng-valid ng-not-empty" ng-model="data.TwitterLink" ng-init="data.TwitterLink = '<?php echo $userData['userProfile']['twitter_link'] ?>'">
                         </div>
                     </div>
                 </div>
