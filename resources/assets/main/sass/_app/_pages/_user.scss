@@ -557,14 +557,15 @@ h5{
     right: 5px;
     top: 5px;
     font-size: 30px;
-    color: white;
+    color: white; 
   }
   section{
     padding-top:25px;
   }
+
   textarea{
     min-height: 90px;
-    width: 95%; 
+    //width: 95%;
   }
   .form-horizontal .control-label{
     text-align: left !important;
@@ -572,6 +573,16 @@ h5{
   .form-group{
     padding-right: 0;
   }
+
+  .personal-details{
+    .boxy-label {
+      width: 46%;
+      margin-left: 2.8%;
+    }
+  }
+
+
+
   .modal-content{
     padding: 0px;
     // .profile-background{
@@ -621,9 +632,9 @@ h5{
         top: 5px;
         left: 28px;
       }
-      .personal-link{
-        padding-left: 97px;
-      }
+      //.personal-link{
+      //  padding-left: 97px;
+      //}
       label{
         text-align: left;
         margin-bottom: 10px;

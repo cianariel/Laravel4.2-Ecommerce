@@ -6568,6 +6568,9 @@ ins.adsbygoogle {
 .padding-40 {
   padding: 40px; }
 
+.left-5 {
+  margin-left: 5px; }
+
 .relative {
   position: relative; }
 
@@ -6953,6 +6956,33 @@ form .btn {
     z-index: 9;
     left: 10px;
     top: 12px; }
+
+.boxy-label {
+  position: relative;
+  border: 1px solid #ccc;
+  border-radius: 5px; }
+  .boxy-label label {
+    margin-top: 0;
+    padding-top: 12px !important;
+    padding-left: 10px;
+    background: #eee;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0; }
+    .boxy-label label i {
+      /* margin-left: -2px; */
+      position: relative;
+      right: 5px;
+      bottom: 2px;
+      padding: 2px;
+      background: #5C7CBD;
+      color: #fff;
+      border-radius: 2px; }
+      .boxy-label label i.m-icon--twitter-id {
+        background: #00B1FF; }
+  .boxy-label input {
+    border: 0; }
 
 /* links base */
 a {
@@ -16457,12 +16487,14 @@ h5 {
 .profile-setting-modal section {
   padding-top: 25px; }
 .profile-setting-modal textarea {
-  min-height: 90px;
-  width: 95%; }
+  min-height: 90px; }
 .profile-setting-modal .form-horizontal .control-label {
   text-align: left !important; }
 .profile-setting-modal .form-group {
   padding-right: 0; }
+.profile-setting-modal .personal-details .boxy-label {
+  width: 46%;
+  margin-left: 2.8%; }
 .profile-setting-modal .modal-content {
   padding: 0px; }
   .profile-setting-modal .modal-content .upload-photo {
@@ -16496,8 +16528,6 @@ h5 {
       position: absolute;
       top: 5px;
       left: 28px; }
-    .profile-setting-modal .modal-content .custom-container .personal-link {
-      padding-left: 97px; }
     .profile-setting-modal .modal-content .custom-container label {
       text-align: left;
       margin-bottom: 10px; }

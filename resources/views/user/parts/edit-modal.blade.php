@@ -33,23 +33,20 @@
 
         <div class="custom-container col-sm-9">
             <form class="form-horizontal">
-                <div class="form-group col-xs-6">
+                <div class="form-group">
                     <label class="col-xs-12 control-label">First name</label>
                     <div class="col-xs-12">
                         <input class="form-control" ng-model="data.FullName"
                                ng-init="data.FullName = '<?php echo $userData['name'] ?>'"
                                placeholder="Full name">
                     </div>
-                </div>
-                <div class="form-group col-xs-6">
                     <label class="col-xs-12 control-label">Last name</label>
                     <div class="col-xs-12">
                         <input class="form-control" ng-model="data.FullName"
                                ng-init="data.FullName = '<?php echo $userData['name'] ?>'"
                                placeholder="Full name">
                     </div>
-                </div>
-                <div class="form-group col-sm-12">
+
                     <label class="col-xs-12 control-label">Bio</label>
                     <div class="col-xs-12">
                                 <textarea class="form-control" ng-model="data.PersonalInfo"
@@ -57,23 +54,20 @@
                                           placeholder="Bio"></textarea>
                     </div>
                 </div>
-                <div class="form-group col-xs-6">
-                    <label class="col-xs-12 control-label">Facebook Profile</label>
-                    <div class="col-xs-12">
-                        <input class="form-control" ng-model="data.FullName"
-                               ng-init="data.FullName = '<?php echo $userData['name'] ?>'"
-                               placeholder="Full name">
+                <div class="form-group">
+                    <div class="col-xs-6 boxy-label">
+                        <label class="col-xs-6 control-label"><i class="m-icon m-icon--facebook-id"></i> Facebook Link</label>
+                        <div class="col-xs-6 pull-right no-padding">
+                            <input class="form-control ng-pristine ng-untouched ng-valid ng-not-empty" ng-model="data.FullName" ng-init="data.FullName = 'tanvir'" placeholder="Full name">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 boxy-label">
+                        <label class="col-xs-6 control-label"><i class="m-icon m-icon--twitter-id"></i>Twitter Link</label>
+                        <div class="col-xs-6 pull-right no-padding">
+                            <input class="form-control ng-pristine ng-untouched ng-valid ng-not-empty" ng-model="data.FullName" ng-init="data.FullName = 'tanvir'" placeholder="Full name">
+                        </div>
                     </div>
                 </div>
-                <div class="form-group col-xs-6">
-                    <label class="col-xs-12 control-label">Twitter Profile</label>
-                    <div class="col-xs-12">
-                        <input class="form-control" ng-model="data.FullName"
-                               ng-init="data.FullName = '<?php echo $userData['name'] ?>'"
-                               placeholder="Full name">
-                    </div>
-                </div>
-
             </form>
         </div>
     </section>
@@ -115,17 +109,24 @@
 
                     </div>
                 </div>
-                <div class="form-group  col-xs-12">
-                    <label class="col-xs-12 control-label">Personal link</label>
-                        <div class="col-xs-6">https://ideaing.com/user/profile/</div>
-                        <div class="col-xs-6 no-padding">
-                            <div class="col-xs-12">
-                                <input class="form-control personal-link" ng-model="data.Permalink"
-                                   ng-init="data.Permalink = '<?php echo $userData['permalink']  ?>'"
-                                   placeholder="">
+
+                <div class="custom-container">
+                    <div class="col-xs-8 boxy-label no-padding">
+                        <div class="col-xs-12 no-padding">
+                            <label class="col-xs-6 control-label">https://ideaing.com/user/profile/</label>
+                            <div class="col-xs-6 pull-right no-padding">
+                                <input class="form-control personal-link ng-pristine ng-valid ng-not-empty ng-touched ng-untouched" ng-model="data.Permalink" ng-init="data.Permalink = 'tanvir-25-66'" placeholder="">
                             </div>
                         </div>
+                    </div>
                 </div>
+
+                <!--<div class="form-group col-xs-12">--}}
+                    {{--<label class="col-xs-12 control-label">Street</label>--}}
+                    {{--<div class="col-xs-12">--}}
+                        {{--<input class="form-control street ng-pristine ng-untouched ng-valid ng-empty" ng-model="data.Street" placeholder="">--}}
+                    {{--</div>--}}
+                -->
             </div>
 
         </form>
