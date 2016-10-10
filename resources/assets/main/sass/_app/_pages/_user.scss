@@ -560,9 +560,14 @@ h5{
     color: white; 
   }
   section{
-    padding-top:25px;
-  }
+    padding: 25px 0 15px;
+    border-bottom: 1px solid #eee;
 
+  }
+  .info-conteiner{
+    max-width: 700px;
+  }
+ 
   textarea{
     min-height: 90px;
     //width: 95%;
@@ -580,6 +585,12 @@ h5{
       margin-left: 2.8%;
     }
   }
+  .login-details{
+    .boxy-label {
+      margin-left: 15px;
+    }
+  }
+
 
 
 
@@ -609,9 +620,9 @@ h5{
     .uploading-photo{
       display: block;
     }
-    .street{
-      max-width: 763px;
-    }
+    //.street{
+    //  max-width: 763px;
+    //}
     .move-me{
       margin-left: 0;
     }

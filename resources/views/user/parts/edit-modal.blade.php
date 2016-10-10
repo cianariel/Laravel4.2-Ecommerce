@@ -2,7 +2,10 @@
     <a class="close" href="#" ng-click="cancel()"><i class="m-icon--Close"></i> </a>
 
     <section class="personal-details col-xs-12">
-        <h4>Personal Details</h4>
+        <div class="custom-container">
+            <h4>Personal Details</h4>
+        </div>
+
         <div class="col-sm-3 photo-wrap avatar-wrap">
                 <img id="currentPhoto" class="profile-photo category-hover-border" width="150px" ng-src='<?php echo "{{ mediaLink }}"  ?>'
                  onerror="this.src='http://s3-us-west-1.amazonaws.com/ideaing-01/thumb-product-568d28a6701c7-no-item.jpg'"
@@ -31,7 +34,7 @@
             </div>
         </div>
 
-        <div class="custom-container col-sm-9">
+        <div class="custom-container col-sm-9 info-conteiner">
             <form class="form-horizontal">
                 <div class="form-group">
                     <label class="col-xs-12 control-label">First name</label>
@@ -73,10 +76,8 @@
     </section>
 
     <section class="login-details col-xs-12">
-        <h4>Login Details</h4>
-        <form class="form-horizontal">
-            <div class="custom-container">
-
+        <h4 class="col-xs-12">Login Details</h4>
+        <form class="custom-container">
                 <div class="form-group col-xs-6">
                     <label class="col-xs-12 control-label">Email</label>
                     <div class="col-xs-12">
@@ -110,8 +111,8 @@
                     </div>
                 </div>
 
-                <div class="custom-container">
-                    <div class="col-xs-8 boxy-label no-padding">
+                <div class="col-xs-8">
+                    <div class="boxy-label overhide no-padding">
                         <div class="col-xs-12 no-padding">
                             <label class="col-xs-6 control-label">https://ideaing.com/user/profile/</label>
                             <div class="col-xs-6 pull-right no-padding">
@@ -127,17 +128,14 @@
                         {{--<input class="form-control street ng-pristine ng-untouched ng-valid ng-empty" ng-model="data.Street" placeholder="">--}}
                     {{--</div>--}}
                 -->
-            </div>
-
         </form>
     </section>
 
     <section ng-hide="onlyImage" class="location-details col-xs-12">
-            <h4>Location</h4>
-                <form class="form-horizontal">
-                    <div class="custom-container">
+                <form class="custom-container">
+                    <h4>Location</h4>
 
-                        <div class="form-group col-xs-12">
+                    <div class="form-group col-xs-12">
                             <label class="col-xs-12 control-label">Street</label>
                             <div class="col-xs-12">
                                 <input class="form-control street" ng-model="data.Street"
@@ -190,12 +188,11 @@
                             <button class="btn btn-nevermind" ng-click="updateUser(data,mediaLink)">Nevermind</button>
                             <button class="btn btn-save" ng-click="updateUser(data,mediaLink)">Save</button>
                         </div>
-                    </div>
                 </form>
                 <div class="clearfix"></div>
         </div>
     </section>
-    <section class="second-form notification-settings col-xs-12 center-block">
+    <section class="notification-settings col-xs-12">
         <form class="form-horizontal">
             <div class="custom-container">
                 <h4 class="overhide">Notify me about</h4>

@@ -16485,7 +16485,10 @@ h5 {
   font-size: 30px;
   color: white; }
 .profile-setting-modal section {
-  padding-top: 25px; }
+  padding: 25px 0 15px;
+  border-bottom: 1px solid #eee; }
+.profile-setting-modal .info-conteiner {
+  max-width: 700px; }
 .profile-setting-modal textarea {
   min-height: 90px; }
 .profile-setting-modal .form-horizontal .control-label {
@@ -16495,6 +16498,8 @@ h5 {
 .profile-setting-modal .personal-details .boxy-label {
   width: 46%;
   margin-left: 2.8%; }
+.profile-setting-modal .login-details .boxy-label {
+  margin-left: 15px; }
 .profile-setting-modal .modal-content {
   padding: 0px; }
   .profile-setting-modal .modal-content .upload-photo {
@@ -16511,8 +16516,6 @@ h5 {
       cursor: pointer; }
   .profile-setting-modal .modal-content .uploading-photo {
     display: block; }
-  .profile-setting-modal .modal-content .street {
-    max-width: 763px; }
   .profile-setting-modal .modal-content .move-me {
     margin-left: 0; }
   .profile-setting-modal .modal-content .notification-settings {
