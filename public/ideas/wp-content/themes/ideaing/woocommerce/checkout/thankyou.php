@@ -77,7 +77,9 @@ order has beenshipping you will recieve another email with a link to track it‘
 	<?php do_action( 'woocommerce_thankyou', $order->id ); ?>
 
 	<div class="bk--to--home">
-		<a class="button button-primary" href="/"><?php _e('continue shopping') ?></a>
+		<a class="button wc-backward" href="<?php echo esc_url( apply_filters( 'woocommerce_return_to_shop_redirect', wc_get_page_permalink( 'shop' ) ) ); ?>">
+			<?php _e( 'Continue Shopping', 'woocommerce' ) ?>
+		</a>
 	</div>
 
 <?php else : ?>

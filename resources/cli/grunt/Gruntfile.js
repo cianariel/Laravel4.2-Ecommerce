@@ -41,6 +41,10 @@ module.exports = function(grunt) {
                     '../../assets/main/js/vendor/ui-bootstrap.min.js',
                     '../../assets/main/js/vendor/bootstrap-colorpicker-module.js',
 
+                    '../../assets/main/js/vendor/cart-summary.js',
+                    '../../assets/main/js/vendor/add-to-bag.js',
+                    '../../assets/main/js/vendor/woocommerce.js',
+
                     '../../assets/main/js/app.js',
                     '../../assets/main/js/shams.js',
 
@@ -74,6 +78,8 @@ module.exports = function(grunt) {
                     '../../assets/main/css/wysiwyg.style.css',
                     '../../assets/main/js/vendor/royalslider/royalslider.css',
                     '../../assets/main/css/app.css',
+
+                    '../../assets/main/css/woocommerce.css',
 
                 ],
                 dest: '../../../public/assets/css/main.css'

@@ -5,7 +5,7 @@
 @section('content')
     <h1 class="hidden">Shop</h1>
 
-    <div class="app-wrap" ng-app="pagingApp" ng-controller="shoplandingController">
+    <div class="app-wrap" ng-app="pagingApp" scrollSecNav ng-controller="shoplandingController">
         <div ng-cloak>
             <div class="homepage-grid center-block">
                 <div class="loader loader-fixed" cg-busy="nextLoad"></div>
@@ -17,20 +17,22 @@
                         </fieldset>
                         <div class="loader loader-abs" cg-busy="firstLoad"></div>
 
+
                         <div>
-                            <uib-tabset class="tab-swing-lined" active="active">
-                                <uib-tab index="0" heading="Smart Home" class="category-smart-home">
+                            <uib-tabset class="tab-sliding-underlined-4" active="active">
+                                <uib-tab index="0" heading="Smart Home" class=" one">
                                     @include('layouts.parts.shop-tab', ['category_name' => 'category-smart-home'])
                                 </uib-tab>
-                                <uib-tab index="1" heading="Smart Entertainment" class="category-smart-entertainment">
+                                <uib-tab index="1" heading="Smart Entertainment" class=" two">
                                     @include('layouts.parts.shop-tab', ['category_name' => 'category-smart-entertainment'])
                                 </uib-tab>
-                                <uib-tab index="2" heading="Smart Body" class="category-smart-body">
+                                <uib-tab index="2" heading="Smart Body" class=" three">
                                     @include('layouts.parts.shop-tab', ['category_name' => 'category-smart-body'])
                                 </uib-tab>
-                                <uib-tab index="3" heading="Smart Travel" class="category-smart-travel">
+                                <uib-tab index="3" heading="Smart Travel" class=" four">
                                     @include('layouts.parts.shop-tab', ['category_name' => 'category-smart-travel'])
                                 </uib-tab>
+                                <hr />
                             </uib-tabset>
                         </div>
                     </div>
@@ -39,22 +41,38 @@
                         <fieldset class="shoplanding-title">
                             <legend align="left"> <i class="m-icon--arrow fill-with-red"></i> Newest Arrivals </legend>
                         </fieldset>
-
                         <div>
-                            <uib-tabset class="tab-swing-lined" active="active">
-                                <uib-tab index="0" heading="Smart Home" class="category-smart-home">
+                            <uib-tabset class="tab-sliding-underlined-4" active="active">
+                                <uib-tab index="0" heading="Smart Home" class=" one">
                                     @include('layouts.parts.shop-tab', ['category_name' => 'category-smart-home'])
                                 </uib-tab>
-                                <uib-tab index="1" heading="Smart Entertainment" class="category-smart-entertainment">
+                                <uib-tab index="1" heading="Smart Entertainment" class=" two">
                                     @include('layouts.parts.shop-tab', ['category_name' => 'category-smart-entertainment'])
                                 </uib-tab>
-                                <uib-tab index="2" heading="Smart Body" class="category-smart-body">
+                                <uib-tab index="2" heading="Smart Body" class=" three">
                                     @include('layouts.parts.shop-tab', ['category_name' => 'category-smart-body'])
                                 </uib-tab>
-                                <uib-tab index="3" heading="Smart Travel" class="category-smart-travel">
+                                <uib-tab index="3" heading="Smart Travel" class=" four">
                                     @include('layouts.parts.shop-tab', ['category_name' => 'category-smart-travel'])
                                 </uib-tab>
+                                <hr />
                             </uib-tabset>
+
+                            <!-- <uib-tabset class="tab-sliding-underlined-4" active="active">
+                                <uib-tab index="0" heading="Smart Home" class="category-smart-home one">
+                                    {{--@include('layouts.parts.shop-tab', ['category_name' => 'category-smart-home'])--}}
+                                </uib-tab>
+                                <uib-tab index="1" heading="Smart Entertainment" class="category-smart-entertainment two">
+{{--                                    @include('layouts.parts.shop-tab', ['category_name' => 'category-smart-entertainment'])--}}
+                                </uib-tab>
+                                <uib-tab index="2" heading="Smart Body" class="category-smart-body three">
+{{--                                    @include('layouts.parts.shop-tab', ['category_name' => 'category-smart-body'])--}}
+                                </uib-tab>
+                                <uib-tab index="3" heading="Smart Travel" class="category-smart-travel four">
+{{--                                    @include('layouts.parts.shop-tab', ['category_name' => 'category-smart-travel'])--}}
+                                </uib-tab>
+                                <hr />
+                            </uib-tabset> -->
                         </div>
                     </div>
 
@@ -90,8 +108,8 @@
 
                     <div class="sub-item-container bottom-categories-container">
                         <div>
-                            <uib-tabset class="tab-swing-lined" active="active">
-                                <uib-tab index="0" class="category-tab" heading="Shop by Category">
+                            <uib-tabset class="tab-sliding-underlined-2" active="active">
+                                <uib-tab index="0" class="category-tab one" heading="Shop by Category">
                                     <div class="shop-by-category-container">
                                         <div class="row">
                                             <div class="col-xs-1 category-list">
@@ -215,7 +233,7 @@
                                         </div>
                                     </div>
                                 </uib-tab>
-                                <uib-tab index="1" class="product-tab" heading="Shop by Product">
+                                <uib-tab index="1" class="product-tab two" heading="Shop by Product">
                                     <div class="shop-by-product-container">
                                         <div class="row">
                                             <div class="col-xs-1 category-list">
@@ -339,6 +357,7 @@
                                         </div>
                                     </div>
                                 </uib-tab>
+                                <hr />
                             </uib-tabset>
                         </div>
                     </div>
@@ -350,38 +369,15 @@
         @include('layouts.parts.product-popup')
     </div>
 <script>
-    window.onscroll = function() {scrolling()};
 
-    function scrolling() {
-        var topMenuClasses = document.getElementById("publicApp").classList;
-        console.log(document.documentElement.clientWidth);
-        if(document.documentElement.clientWidth > 620) {
-
-
-            if (document.body.scrollTop > 60 || document.documentElement.scrollTop > 60) {
-                if (!topMenuClasses.contains("shop-top-menu-container")) {
-                    topMenuClasses.add("shop-top-menu-container");
-                }
-            } else {
-                if (topMenuClasses.contains("shop-top-menu-container")) {
-                    topMenuClasses.remove("shop-top-menu-container");
-                }
-            }
-        }else {
-            if (topMenuClasses.contains("shop-top-menu-container")) {
-                topMenuClasses.remove("shop-top-menu-container");
-            }
-        }
-    }
-
-    var everythingLoaded = setInterval(function() {
+    /*var everythingLoaded = setInterval(function() {
         if (/loaded|complete/.test(document.readyState)) {
             clearInterval(everythingLoaded);
             var footer = document.getElementsByClassName('about-footer')[0];
             footer.style.display = 'block';
             footer.style.position = 'static';
         }
-    }, 10);
+    }, 10);*/
 
 </script>
     {{--<script src="/assets/js/vendor/angular-busy.min.js"></script>--}}

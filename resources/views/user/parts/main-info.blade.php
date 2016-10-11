@@ -1,29 +1,32 @@
     <div class="col-sm-3 avatar-wrap text-cetner">
         <img class="img-circle full-wide" src="{{$profile}}">
-        {{--@if($showEditOption)--}}
+        @if($showEditOption)
         <span class="change-foto-button" ng-click="openProfileSetting(true)">
                                         <i class="m-icon m-icon--camera-active"></i>
                                     </span>
-        {{--@endif--}}
+        @endif
     </div>
 
     <div class="col-sm-8">
         <p>
             <span class="fullname lightfont">{{$fullname}}</span>&nbsp;
-            {{--                @if($showEditOption)--}}
 
-            {{--<div class="edit-background hidden-xs hidden-sm">--}}
-            {{--<a href="#">--}}
-            {{--<i class="m-icon--Edit-Background"></i><br>--}}
-            {{--Edit background--}}
-            {{--</a>--}}
-            {{--</div>--}}
+            
+            @if($showEditOption)
+                {{--<div class="edit-background hidden-xs hidden-sm">--}}
+                {{--<a href="#">--}}
+                {{--<i class="m-icon--Edit-Background"></i><br>--}}
+                {{--Edit background--}}
+                {{--</a>--}}
+                {{--</div>--}}
 
-            <a href="#" class="btn edit-profile-link white-bg pink" ng-click="openProfileSetting()"><i class="m-icon--Edit-Profile"></i> <span class="hidden-md hidden-sm hidden-xs">Edit Profile&nbsp;&nbsp;</span></a>
-            {{--<p class="hidden-xs hidden-sm"><a href="/user/profile/{{@$userPermalink}}">View your profile as--}}
-            {{--other people see it</a></p>--}}
-            {{--<p class="visible-xs visible-sm">&nbsp;</p>--}}
-            {{--@endif--}}
+                <a href="#" class="btn edit-profile-link white-bg pink" ng-click="openProfileSetting()"><i class="m-icon--Edit-Profile"></i> <span class="hidden-md hidden-sm hidden-xs">Edit Profile&nbsp;&nbsp;</span></a>
+
+
+                {{--<p class="hidden-xs hidden-sm"><a href="/user/profile/{{@$userPermalink}}">View your profile as--}}
+                {{--other people see it</a></p>--}}
+                {{--<p class="visible-xs visible-sm">&nbsp;</p>--}}
+            @endif
         </p>
         <p class="description">{{$personalInfo}}</p>
 
@@ -78,12 +81,12 @@
                 </li>
 
                 <li ng-class="{active: activeMenu == '2'}" ng-click="activeMenu='2'">
-                    <a ng-click="clickOnActivityLike('{{$permalink}}', 5)" class="my-purchases swing-lined green-line">
+                    <a ng-click="clickOnOrders('{{$permalink}}', 5)" class="my-purchases swing-lined green-line">
                         <div><i class="m-icon m-icon--deals green"></i>
-                            0 Purchases</div>
+                            @{{totalOrders}} Purchases</div>
                     </a>
                 </li>
-                <li ng-class="{active: activeMenu == '2'}" ng-click="activeMenu='2'">
+                <li ng-class="{active: activeMenu == '3'}" ng-click="activeMenu='3'">
                     <a ng-click="clickOnActivityLike('{{$permalink}}', 5)" class="my-likes swing-lined">
                         <div><i class="m-icon m-icon--heart-id pink"></i>
                             15 Likes</div>

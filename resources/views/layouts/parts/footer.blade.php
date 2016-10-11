@@ -26,10 +26,10 @@
                     }
 
                     $json = file_get_contents('https://ideaing.com/api/giveaway/get-current/' . $noPopup);
-        
+
                         $theGiveAway = json_decode($json);
                     }
-                } 
+                }
 
             if($theGiveAway && @$theGiveAway->giveaway_permalink){ ?>
                 <a href="/giveaway/<?php echo $theGiveAway->giveaway_permalink ?>">
@@ -71,7 +71,9 @@
 </div>
 
 <div class="bottom-block hidden-soft">
+    <a href="/ideas/cart?add-to-cart=10138" class="add-to-bag" data-quantity="1" data-product_id="10138" data-product_sku="" rel="nofollow">Get it from Ideaing</a><?php //dummy btn ?>
     <button class="btn btn-success" id="about-button" data-toggle=".about-footer">About</button>
+    <button class="btn btn-success ics--open" id="float-bag"><i class="m-icon--shopping-bag-light-green"></i><span class="cart-count"></span></button>
     <a href="#" id="back-to-top">
         <i class="m-icon--footer-up-arrow"></i>
     </a>
@@ -110,7 +112,7 @@
     // Track when a registration form is completed (ex. complete subscription, sign up for a service)
     fbq('track', 'CompleteRegistration');
 </script>
- 
+
 
 <?php if(function_exists('is_single') || (Request::segment(1) != 'login' && Request::segment(1) != 'signup' && Request::segment(1) != 'product')){ ?>
      <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
@@ -160,5 +162,3 @@ function slideMe(){
 //    //console.log('ututututut')
 //})
 </script>
-
-

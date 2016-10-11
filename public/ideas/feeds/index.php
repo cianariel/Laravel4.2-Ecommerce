@@ -1,42 +1,30 @@
 <?php
 function carbon_the_content_limit($max_char, $more_link_text = '(more...)', $stripteaser = 0, $more_file = '') {
-	$content = get_the_content($more_link_text, $stripteaser, $more_file);
-	$content = apply_filters('the_content', $content);
-	$content = str_replace(']]>', ']]&gt;', $content);
-	$content = strip_tags($content);
-<<<<<<< HEAD
-	if (!empty($_GET['p']) && strlen($_GET['p']) > 0) {
-=======
-	if (strlen(@$_GET['p']) > 0) {
->>>>>>> 4a6d672f455644d3539e055233770b04f9718b3d
-		return $content;
-	}
-	else if ((strlen($content)>$max_char) && ($espacio = strpos($content, " ", $max_char ))) {
-		$content = substr($content, 0, $espacio);
-		$content = $content;
-		return $content."&nbsp;&nbsp;&nbsp;&nbsp;[...]";
-	}
-	else {
-		return $content;
-	}
+    $content = get_the_content($more_link_text, $stripteaser, $more_file);
+    $content = apply_filters('the_content', $content);
+    $content = str_replace(']]>', ']]&gt;', $content);
+    $content = strip_tags($content);
+    if (strlen(@$_GET['p']) > 0) {
+        return $content;
+    }
+    else if ((strlen($content)>$max_char) && ($espacio = strpos($content, " ", $max_char ))) {
+        $content = substr($content, 0, $espacio);
+        $content = $content;
+        return $content."&nbsp;&nbsp;&nbsp;&nbsp;[...]";
+    }
+    else {
+        return $content;
+    }
 }
-
 require_once('../wp-load.php');
 $postCount = $_REQUEST['count']; // The number of posts to show in the feed
 if($postCount==0)
 {
     $postCount = -1;
 }
-
-<<<<<<< HEAD
-$onlyfeatured = !empty($_REQUEST['only-featured'])? $_REQUEST['only-featured'] : null;
-$no_featured = !empty($_REQUEST['no-featured'])? $_REQUEST['no-featured'] : null;
-=======
 $onlyfeatured = @$_REQUEST['only-featured'];
 $no_featured = @$_REQUEST['no-featured'];
->>>>>>> 4a6d672f455644d3539e055233770b04f9718b3d
 $is_featured = "";
-
 if(isset($no_featured))
 {
     $is_featured = "No";
@@ -45,27 +33,16 @@ if(isset($onlyfeatured))
 {
     $is_featured = "Yes";
 }
-<<<<<<< HEAD
-$offset = $_REQUEST['offset'];
-$postCat = !empty($_REQUEST['category-id'])? $_REQUEST['category-id'] : null;
-=======
 $offset = @$_REQUEST['offset'];
 $postCat = @$_REQUEST['category-id'];
->>>>>>> 4a6d672f455644d3539e055233770b04f9718b3d
 $args = array(
 'cat' => $postCat,
 'showposts' => $postCount,
 'offset' => $offset,);
-
-<<<<<<< HEAD
-if($catName = !empty($_REQUEST['category-name'])? $_REQUEST['category-name'] : null){
-
-=======
 if(isset($_REQUEST['category-name']) && $catName = @$_REQUEST['category-name']){
     if($catName == 'smart-home'){
         $catName = 'smarthome';
     }
->>>>>>> 4a6d672f455644d3539e055233770b04f9718b3d
     $args['tax_query'] = array(
         array(
             'taxonomy' => 'category',
@@ -73,25 +50,16 @@ if(isset($_REQUEST['category-name']) && $catName = @$_REQUEST['category-name']){
             'terms' => $catName,
         ));
 }
-
-<<<<<<< HEAD
-if($byTags = !empty($_REQUEST['tag'])? $_REQUEST['tag'] : null){
-=======
 if($byTags = @$_REQUEST['tag']){
->>>>>>> 4a6d672f455644d3539e055233770b04f9718b3d
     $args['tag'] = $byTags;
 }
-
  if(isset($_REQUEST['no-deals'])){
     $args['tag__not_in'] = [29];
 }
-
  if(isset($_REQUEST['author_name'])){
     $args['author_name'] = $_REQUEST['author_name'];
 }
-
 $args['date_query'] = [];
-
 if(isset($_REQUEST['daysback'])){
     $dateQuery['after'] = $_REQUEST['daysback'] . ' days ago';
 }else{
@@ -105,24 +73,15 @@ if(isset($_REQUEST['daysback'])){
         $dateQuery['day'] = $_REQUEST['day'];
     }
 }
-
 if(isset($dateQuery)){
     $args['date_query'] = [$dateQuery];
 }
-
-<<<<<<< HEAD
-if($excludeID = !empty($_REQUEST['excludeid'])? $_REQUEST['excludeid'] : null){
-=======
 if($excludeID = @$_REQUEST['excludeid']){
->>>>>>> 4a6d672f455644d3539e055233770b04f9718b3d
     $args['post__not_in'] = array($excludeID);
 }
-
 //$args['meta_query'] = [
 //    'relation'  => 'AND'
 //];
-
-
 if($is_featured != "")
 {
     $args['meta_query'][] = [
@@ -132,7 +91,6 @@ if($is_featured != "")
 ];
 //    array_push($args['meta_query'], $push);
 }
-
 if(isset($_REQUEST['most-popular'])){
     $args['meta_query'][] = [
         'key'  => 'post_views_count',
@@ -142,7 +100,6 @@ if(isset($_REQUEST['most-popular'])){
     ];
 //    array_push($args['meta_query'], $push);
 }
-
 if(isset($_REQUEST['only-slider'])){
     $args['meta_query'][] = [
         'key'  => 'slider_content',
@@ -151,14 +108,10 @@ if(isset($_REQUEST['only-slider'])){
     ];
 //    array_push($args['meta_query'], $push);
 }
-
 //$posts = query_posts($args);
 $posts = new WP_Query( $args );
-
 if ( $posts->have_posts() ) {
-
-		$is_connected = is_connected(); // only one time calling this would does the job
-
+        $is_connected = is_connected(); // only one time calling this would does the job
     if(isset($args['tag_slug__in']) && !have_posts()){ // if there are not posts with similar tags, get just any posts
         unset($args['tag_slug__in']);
         $posts = new WP_Query( $args );
@@ -172,39 +125,23 @@ if ( $posts->have_posts() ) {
             $data['title'] = get_the_title();
             $data['views'] = getPostViews($ID);
             $data['is_deal'] = has_tag('deal');
-
-
             if (isset($_REQUEST['full_content'])) {
                 $data['content'] = get_the_content();
             } else {
                 $data['content'] = carbon_the_content_limit(200);
             }
-
             $cats = get_the_category();
             $data['category'] = $data['is_deal'] ? 'Deals' : $cats[0]->name;
             $the_list = '';
             $cat_names = array();
-
             $filter = 'rss';
-<<<<<<< HEAD
-
-            $type = empty($type)? 'raw':$type;
-
-            if ('atom' == $type)
-=======
             if ('atom' == @$type)
->>>>>>> 4a6d672f455644d3539e055233770b04f9718b3d
                 $filter = 'raw';
-
             if (!empty($cats)) foreach ((array)$cats as $category) {
                 $cat_names[] = sanitize_term_field('name', $category->name, $category->term_id, 'category', $filter);
             }
-
             $cat_names = array_unique($cat_names);
             $data['category_all'] = $cat_names;
-
-
-
             if($data['is_deal']){
                 $data['category_main'] = 'deals';
             }elseif(in_array('Smart Body', $cat_names)){
@@ -217,7 +154,6 @@ if ( $posts->have_posts() ) {
                 $data['category_main'] = 'smarthome';
             }
             $allTags = get_tags();
-
             $data['url'] = get_the_permalink();
             $datepublishstring = get_the_time('Y-m-d H:i:s');
             $datepublish = timeAgo($datepublishstring);
@@ -238,34 +174,22 @@ if ( $posts->have_posts() ) {
             $data['image'] = str_replace('ideaing-ideas.s3.amazonaws.com', 'd3f8t323tq9ys5.cloudfront.net', $image);
             $data['author'] = get_the_author();
             $data['author_id'] = get_the_author_meta('ID');
-
-<<<<<<< HEAD
-            $url = CUSTOM_URL.'/api/info-raw/'. get_the_author_meta('email');
-            $laravelUser = file_get_contents($url);
-            $laravelUser = json_decode($laravelUser, true);
-=======
-						$laravelUser = false;
+                        $laravelUser = false;
             if($is_connected){
                 $laravelUserContents = file_get_contents('https://ideaing.com/api/info-raw/' . get_the_author_meta('email'));
                 $laravelUser = $laravelUserContents ? json_decode($laravelUserContents, true) : false;
             }
-
-						$avatar = $authorlink = null;
-						if($laravelUser){
->>>>>>> 4a6d672f455644d3539e055233770b04f9718b3d
-
-							if (isset($laravelUser['medias'])&&isset($laravelUser['medias'][0])) {
-	                $avator = $laravelUser['medias'][0]['media_link'];
-	            }
-							if (isset($laravelUser['authorlink'])) {
-									$authorlink = $laravelUser['permalink'];
-							}
-						}
-
-						$data['authorlink'] = $authorlink ? $authorlink : '';
+                        $avatar = $authorlink = null;
+                        if($laravelUser){
+                            if (isset($laravelUser['medias'])&&isset($laravelUser['medias'][0])) {
+                    $avator = $laravelUser['medias'][0]['media_link'];
+                }
+                            if (isset($laravelUser['authorlink'])) {
+                                    $authorlink = $laravelUser['permalink'];
+                            }
+                        }
+                        $data['authorlink'] = $authorlink ? $authorlink : '';
             $data['avator'] = $avator ? $avator : get_avatar_url(get_the_author_meta('email'), '80');
-
-
             $data['type'] = 'idea';
             $get_is_featured = get_post_custom_values('is_featured', $ID);
             $is_featured = false;
@@ -274,25 +198,18 @@ if ( $posts->have_posts() ) {
             }
             $data['is_featured'] = $is_featured;
             $data['feed_image'] = get_field('feed_image');
-
             $data['feed_image']['url'] = str_replace('ideaing-ideas.s3.amazonaws.com', 'd3f8t323tq9ys5.cloudfront.net', $data['feed_image']['url']);
-
             if (isset($_REQUEST['with_tags'])) {
                 $data['tags_all'] = wp_get_post_tags($post->ID, array('fields' => 'names'));;
             }
-
             $datam['posts'][] = $data;
         }
-
 }
-
-
 //if(isset($_REQUEST['get-total-count'])){
     $args['showposts'] = -1;
     $countPosts = new WP_Query($args);
     $datam['totalCount'] = count($countPosts->posts);
 //}
-
 echo json_encode($datam);
 //print_r(json_decode(json_encode($data)));
 ?>

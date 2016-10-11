@@ -368,11 +368,14 @@ class AuthenticateController extends ApiController
     public function changeProfile()
     {
         try {
+
             $input = \Input::all();//array('FullName');
             $userRoles = \Input::get('UserRoles');
 
             unset($input['UserRoles']);
             $userData = $input;//\Input::all();
+
+//            print_r($input); die();
 
 
             // $user = $this->isEmailValidate(JWTAuth::parseToken()->authenticate()->email);
@@ -384,11 +387,12 @@ class AuthenticateController extends ApiController
                     'FullName' => (isset($userData['FullName']) && ($userData['FullName'] != "")) ? 'required | max: 25' : '',
 
                     'Password' => (isset($userData['Password']) && ($userData['Password'] != "")) ? 'required | min: 6 ' : '',
+                    'RecoveryEmail' => (isset($userData['RecoveryEmail']) && ($userData['RecoveryEmail'] != "")) ? 'email' : '',
                 ],
                 'values' => [
                     'FullName' => (isset($userData['FullName']) && ($userData['FullName'] != "")) ? $userData['FullName'] : null,
-
-                    'Password' => (isset($userData['Password']) && ($userData['Password'] != "")) ? $userData['Password'] : null
+                    'Password' => (isset($userData['Password']) && ($userData['Password'] != "")) ? $userData['Password'] : null,
+                    'RecoveryEmail' => (isset($userData['RecoveryEmail']) && ($userData['RecoveryEmail'] != "")) ? $userData['RecoveryEmail'] : null
                 ]
             ];
 
@@ -408,12 +412,20 @@ class AuthenticateController extends ApiController
                 // Add a user as blog user from admin panel
                 //
 
+
+
                 if (isset($userData['IsBlogUser'])) {
                     $user->is_blog_user = $userData['IsBlogUser'] == 'true' ? 'true' : '';
                 }
 
                 if (isset($userData['FullName']) && ($userData['FullName'] != "")) {
                     $user->name = $userData['FullName'];
+                }
+                if (isset($userData['LastName']) && ($userData['LastName'] != "")) {
+                    $user->last_name = $userData['LastName'];
+                }
+                if (isset($userData['RecoveryEmail']) && ($userData['RecoveryEmail'] != "")) {
+                    $user->recovery_email = $userData['RecoveryEmail'];
                 }
 
 
@@ -426,13 +438,36 @@ class AuthenticateController extends ApiController
                     $user->status = $input['UserStatus'];
                 }
 
+                if (isset($userData['FacebookLink']) && ($userData['FacebookLink'] != "")) {
+                    $user->userProfile()->update(['facebook_link' => $input['FacebookLink']]);
+                }
+                if (isset($userData['TwitterLink']) && ($userData['TwitterLink'] != "")) {
+                    $user->userProfile()->update(['twitter_link' => $input['TwitterLink']]);
+                }
+
                 if (isset($userData['PersonalInfo']) && ($userData['PersonalInfo'] != "")) {
                     $user->userProfile()->update(['personal_info' => $input['PersonalInfo']]);
                 }
-
                 if (isset($userData['Address']) && ($userData['Address'] != "")) {
                     $user->userProfile()->update(['address' => $input['Address']]);
-
+                }
+                if (isset($userData['City']) && ($userData['City'] != "")) {
+                    $user->userProfile()->update(['city' => $input['City']]);
+                }
+                if (isset($userData['Apartment']) && ($userData['Apartment'] != "")) {
+                    $user->userProfile()->update(['apartment' => $input['Apartment']]);
+                }
+                if (isset($userData['Street']) && ($userData['Street'] != "")) {
+                    $user->userProfile()->update(['street' => $input['Street']]);
+                }
+                if (isset($userData['Country']) && ($userData['Country'] != "")) {
+                    $user->userProfile()->update(['country' => $input['Country']]);
+                }
+                if (isset($userData['State']) && ($userData['State'] != "")) {
+                    $user->userProfile()->update(['state' => $input['State']]);
+                }
+                if (isset($userData['Zip']) && ($userData['Zip'] != "")) {
+                    $user->userProfile()->update(['zip' => $input['Zip']]);
                 }
 
                 if (isset($userData['Permalink']) && ($userData['Permalink'] != "")) {
@@ -455,6 +490,7 @@ class AuthenticateController extends ApiController
                         'media_link' => $input['MediaLink'],
                     ]);
                 }
+
 
                 $user->save();
 

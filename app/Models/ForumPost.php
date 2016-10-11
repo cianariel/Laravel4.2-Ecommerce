@@ -104,7 +104,8 @@ class ForumPost extends Model
                 ->get();
         foreach($posts as $post){
             $author = $userModel->getUserById($post->author_id);
-            $post->authorName = $author->name;
+//            $post->authorName = $author->name;
+            $post->authorName = is_array(explode(" ", $author->name)) ? explode(" ", $author->name)[0] : $author->name;
             $post->authorPicture = $author->medias[0]->media_link;
             $post->postTime = Carbon::createFromTimestamp(strtotime($post->created_at))->diffForHumans();
         }

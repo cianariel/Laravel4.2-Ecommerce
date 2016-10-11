@@ -29,6 +29,13 @@
 
     if ( ! self.isCheckout() ) return;
 
+    if ( $('#ship-to-different-address-checkbox').prop('checked') ){
+      $('#ship-to-different-address').add('on-add-billing');
+      self.trigger(document.body, 'country_to_state_changed', []);
+    } else {
+      $('#ship-to-different-address').remove('on-add-billing');
+    }
+
     $( document ).on('focus', '.form-row input', function(){
       $(this).parent('.form-row').addClass('focus');
     });
@@ -41,24 +48,6 @@
       self.update();
     });
 
-    $( document ).on('click', '.ship-to-diff-address', function(){
-      var checkbox = $('#ship-to-different-address-checkbox'),
-          checked = checkbox.prop('checked'),
-          label = $(this),
-          labeled = $(this).hasClass('same-address');
-
-      if ( checked != labeled ) return;
-
-      checkbox.prop('checked', !labeled).change();
-    });
-
-    $( document ).on('change', '#ship-to-different-address-checkbox', function(){
-
-      $('#ship-to-different-address').toggleClass('on-add-billing');
-
-      self.trigger(document.body, 'country_to_state_changed', []);
-    });
-
     $( document ).on('change', '#createaccount', function(){
 
       $(this).parents('.create-account').toggleClass('on-create-account');
@@ -68,16 +57,34 @@
 
       $( document.body ).toggleClass('on-2');
 
+      $('html, body').animate({ scrollTop: 0 }, 'slow');
+
       self.trigger(document.body, 'update_checkout', []);
+    });
+
+    $( document ).on('click', '.ship-to-diff-address', function(){
+      var checkbox = $('#ship-to-different-address-checkbox'),
+          checked = checkbox.prop('checked'),
+          label = $(this),
+          labeled = $(this).hasClass('same-address');
+
+      if ( checked != labeled ) return;
+
+      checkbox.prop('checked', !labeled).change();
+      $('#ship-to-different-address').toggleClass('on-add-billing');
+    });
+
+    $( document ).on('change', '#ship-to-different-address-checkbox', function(){
+
+      if($(this).prop('checked')) self.trigger(document.body, 'country_to_state_changed', []);
     });
 
     $( document.body ).on('update_checkout', function(){
 
-      self.review();
+      setTimeout(function(){ self.review(); }, 50 );
     });
 
-    self.update();
-    setTimeout(function(){ self.update(); }, 50 );
+    setTimeout(function(){ self.update(); }, 0 );
   };
 
   ideaingCheckout.prototype.update = function () {
@@ -142,7 +149,22 @@
   };
 
   $(document).ready(function(){
-    var icheckout = new ideaingCheckout();
+
+    try {
+
+      new ideaingCheckout();
+
+    } catch (e) {
+
+      console.error(e);
+    }
+  });
+
+  $( document ).on('click', '.secure-checkout [data-alien]', function( e ){
+
+    var alein = $( '[name="' + $(this).attr('data-alien') + '"]' );
+
+    if ( alein.length ) alein.trigger("click");
   });
 
 } )( jQuery );

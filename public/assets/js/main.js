@@ -3606,6 +3606,472 @@ angular.module('colorpicker.module', [])
         }
       };
     }]);;
+( function( $ ) {
+
+  'use strict';
+
+  function ideaingCartSummay(){
+
+    this.isCart = function(){
+      return typeof wc_cart_params === 'undefined' ? false : true;
+    }
+
+    this.isCheckout = function(){
+      return typeof wc_checkout_params === 'undefined' ? false : true;
+    }
+
+    this.isVisible = function(){
+      return $( document.body ).hasClass('ics--active');
+    }
+
+    this.init();
+  }
+
+  ideaingCartSummay.prototype.trigger = function( el, event, options ){
+
+    if (window.CustomEvent) {
+      var e = new CustomEvent(event, {detail: options});
+    } else {
+      var e = document.createEvent('CustomEvent');
+      e.initCustomEvent(event, true, true, options);
+    }
+
+    el.dispatchEvent(e);
+  };
+
+  ideaingCartSummay.prototype.init = function () {
+
+    var self = this;
+
+    if ( self.isCheckout() || self.isCart() ) return;
+
+    $( document ).on('click', '.ics--toggle', function(){
+      self.toggle();
+    });
+
+    $( document ).on('click', '.ics--open', function(){
+      self.open();
+    });
+
+    $( document ).on('click', '.ics--close', function(){
+      self.close();
+    });
+
+    $( document ).on('keyup', function(e){
+      if ( 27 === e.keyCode ) self.close();
+    });
+
+    document.body.addEventListener('added_to_cart', function(e){
+
+      self.update(e.detail, 'open');
+    }, false)
+
+    setTimeout(function(){ self.build(); }, 0 );
+  };
+
+  ideaingCartSummay.prototype.build = function () {
+
+    var self = this;
+
+    self.template = [
+      '<div class="ics--close overlay"></div>',
+      '<aside>',
+        '<header>',
+          '<div class="row">',
+            '<div class="col-xs-4">',
+              '<label class="ics--close m-icon--arrow_forward"></label>',
+            '</div>', // .col-*
+            '<div class="col-xs-4">',
+              '<strong>Cart</strong>',
+            '</div>', // .col-*
+            '<div class="col-xs-4 u--i">',
+              '<span class="u--c">',
+                '<span class="m-icon--shopping-bag-light-green"></span>',
+            '</div>', // .col-*
+          '</div>', // .row
+        '</header>',
+        '<div class="loader">',
+          '<div>',
+            '<div class="loader">',
+              '<ul class="bokeh">',
+                '<li></li>',
+                '<li></li>',
+                '<li></li>',
+                '<li></li>',
+              '</ul>',
+            '</div>',
+          '</div>',
+        '</div>',
+      '</aside>'
+    ].join('');
+
+    self.element = document.createElement('div');
+    self.element.id = 'ideaing-g-cart-summary';
+    self.element.className = 'global-cart-summary';
+    self.element.innerHTML = self.template;
+
+    document.body.appendChild(self.element);
+
+    self.firstContent();
+  };
+
+  ideaingCartSummay.prototype.open = function () {
+
+    var self = this;
+
+    if ( self.switching ) return;
+
+    self.switching = true;
+
+    $( document.body ).addClass('ics--active');
+
+    setTimeout(function(){
+
+      $( document.body ).addClass('ics--on');
+
+      self.switching = false;
+
+      self.trigger(document.body, 'cart_summary_opened', self.element);
+
+    }, 20 );
+  };
+
+  ideaingCartSummay.prototype.close = function () {
+
+    var self = this;
+
+    if ( self.switching ) return;
+
+    self.switching = true;
+
+    $( document.body ).addClass('ics--off');
+
+    setTimeout(function(){
+
+      $( document.body ).removeClass('ics--on ics--off ics--active');
+
+      self.switching = false;
+
+      self.trigger(document.body, 'cart_summary_closed', self.element);
+
+    }, 400 );
+  };
+
+  ideaingCartSummay.prototype.toggle = function () {
+
+    this.isVisible() ? this.close() : this.open();
+  };
+
+  ideaingCartSummay.prototype.firstContent = function () {
+
+    var self = this;
+
+    $.ajax({
+      type: "POST",
+      dataType: "json",
+      url: '/ideas/wp-admin/admin-ajax.php',
+      data: {
+        action: 'global_cart_summary_fragments',
+      },
+      success: function( response ){
+
+        console.log(self.cart, response);
+
+        if ( undefined == self.cart ) self.update(response);
+
+      },
+      error: function (xhr, ajaxOptions, thrownError) {
+        console.warn(thrownError);
+      }
+    });
+  };
+
+  ideaingCartSummay.prototype.update = function (response, callback) {
+
+    var self = this,
+        fragments = response.fragments || false;
+
+    if ( !fragments ) return;
+
+    self.cart = {
+      total: fragments['.cart-count'] || '',
+      html: fragments['.global-cart-summary'] || self.template
+    };
+
+    $('.cart-count').text(self.cart.total);
+    $( self.element ).find('aside').html(self.cart.html);
+
+    if ( self.cart.total ){
+      $('body').addClass('has-in-cart');
+      callback ? self[callback]() : '';
+    } else {
+      $('body').removeClass('has-in-cart');
+    }
+  };
+
+  $(document).ready(function(){
+
+    try {
+
+      new ideaingCartSummay();
+
+    } catch (e) {
+
+      console.error(e);
+    }
+  });
+
+} )( jQuery );
+;
+( function( $ ) {
+
+  'use strict';
+
+  function ideaingAddToBag(){
+
+    this.init();
+  }
+
+  ideaingAddToBag.prototype.trigger = function( el, event, options ){
+
+    if (window.CustomEvent) {
+      var e = new CustomEvent(event, {detail: options});
+    } else {
+      var e = document.createEvent('CustomEvent');
+      e.initCustomEvent(event, true, true, options);
+    }
+
+    el.dispatchEvent(e);
+  };
+
+  ideaingAddToBag.prototype.init = function () {
+
+    var self = this;
+
+    $( document ).on('click', '.add-to-bag', function(e){
+
+      e.preventDefault();
+
+      self.add($(this));
+    });
+  };
+
+  ideaingAddToBag.prototype.add = function ($thisbutton) {
+
+    var self = this;
+
+    if ( ! $thisbutton.attr( 'data-product_id' ) || $thisbutton.hasClass('loading') ) {
+      return true;
+    }
+
+    $thisbutton.addClass( 'loading' );
+
+    var data = {};
+
+    $.each( $thisbutton.data(), function( key, value ) {
+      data[key] = value;
+    });
+
+    $.post( '/ideas/shop?wc-ajax=add_to_cart', data, function( response ) {
+
+      $thisbutton.removeClass( 'loading' );
+
+      if ( response && ! response.error ) {
+
+        self.trigger(document.body, 'added_to_cart', response);
+
+      } else {
+
+        console.warn(response);
+      }
+    });
+  };
+
+  $(document).ready(function(){
+
+    try {
+
+      new ideaingAddToBag();
+
+    } catch (e) {
+
+      console.error(e);
+    }
+  });
+
+} )( jQuery );
+;
+( function( $ ) {
+
+  'use strict';
+
+  function ideaingCheckout(){
+
+    this.isCheckout = function(){
+      return typeof wc_checkout_params === 'undefined' ? false : true;
+    }
+
+    this.init();
+  }
+
+  ideaingCheckout.prototype.trigger = function( el, event, options ){
+
+    if (window.CustomEvent) {
+      var e = new CustomEvent(event, {detail: options});
+    } else {
+      var e = document.createEvent('CustomEvent');
+      e.initCustomEvent(event, true, true, options);
+    }
+
+    el.dispatchEvent(e);
+  };
+
+  ideaingCheckout.prototype.init = function () {
+
+    var self = this;
+
+    if ( ! self.isCheckout() ) return;
+
+    if ( $('#ship-to-different-address-checkbox').prop('checked') ){
+      $('#ship-to-different-address').add('on-add-billing');
+      self.trigger(document.body, 'country_to_state_changed', []);
+    } else {
+      $('#ship-to-different-address').remove('on-add-billing');
+    }
+
+    $( document ).on('focus', '.form-row input', function(){
+      $(this).parent('.form-row').addClass('focus');
+    });
+
+    $( document ).on('blur', '.form-row input', function(){
+      $(this).parent('.form-row').removeClass('focus');
+    });
+
+    $( document ).on('keyup change', '.form-row input', function(){
+      self.update();
+    });
+
+    $( document ).on('change', '#createaccount', function(){
+
+      $(this).parents('.create-account').toggleClass('on-create-account');
+    });
+
+    $( document ).on('click', '.on2', function( e ){
+
+      $( document.body ).toggleClass('on-2');
+
+      $('html, body').animate({ scrollTop: 0 }, 'slow');
+
+      self.trigger(document.body, 'update_checkout', []);
+    });
+
+    $( document ).on('click', '.ship-to-diff-address', function(){
+      var checkbox = $('#ship-to-different-address-checkbox'),
+          checked = checkbox.prop('checked'),
+          label = $(this),
+          labeled = $(this).hasClass('same-address');
+
+      if ( checked != labeled ) return;
+
+      checkbox.prop('checked', !labeled).change();
+      $('#ship-to-different-address').toggleClass('on-add-billing');
+    });
+
+    $( document ).on('change', '#ship-to-different-address-checkbox', function(){
+
+      if($(this).prop('checked')) self.trigger(document.body, 'country_to_state_changed', []);
+    });
+
+    $( document.body ).on('update_checkout', function(){
+
+      setTimeout(function(){ self.review(); }, 50 );
+    });
+
+    setTimeout(function(){ self.update(); }, 0 );
+  };
+
+  ideaingCheckout.prototype.update = function () {
+
+    var self = this;
+
+    $('.form-row').each( function(){
+
+      self.fielded( $(this).find('input') );
+    });
+  };
+
+  ideaingCheckout.prototype.fielded = function ( el ) {
+
+    if ( el.val() ){
+
+      el.parent('.form-row').addClass('active');
+
+    } else {
+
+      el.parent('.form-row').removeClass('active');
+    }
+  };
+
+  ideaingCheckout.prototype.review = function ( el ) {
+
+    $('[data-live]').each( function(){
+
+      var live = $(this),
+          look = live.attr('data-live'),
+          target = $(look);
+
+      live.html('');
+
+      if (target.length) {
+
+        target.each(function(){
+
+          var s = $(this),
+              v = s.val();
+
+          switch ( live.attr('data-live-type') ){
+
+            case 'radio':
+
+              v = $('[for="'+$('[name="'+ s.attr('name') +'"]:checked').attr('id')+'"]').html();
+
+            break;
+
+            case 'select':
+
+              v = s.find('option:selected').text();
+
+            break;
+
+          }
+
+          live.html(v);
+        });
+      }
+    });
+  };
+
+  $(document).ready(function(){
+
+    try {
+
+      new ideaingCheckout();
+
+    } catch (e) {
+
+      console.error(e);
+    }
+  });
+
+  $( document ).on('click', '.secure-checkout [data-alien]', function( e ){
+
+    var alein = $( '[name="' + $(this).attr('data-alien') + '"]' );
+
+    if ( alein.length ) alein.trigger("click");
+  });
+
+} )( jQuery );
+;
 (function ($, root, undefined) {
 
 
@@ -5008,6 +5474,7 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
             // profile feed and post toggle
 
             $scope.postActive = true;
+            $scope.orderActive = true;
             $scope.ActivityActive = true;
 
             // Membership Subscription and Payment
@@ -5854,27 +6321,40 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
 
         // Manage different click events in profile menu bar
         $scope.clickOnPost = function (parmalink, count) {
-
             $scope.postActive = true;
+            $scope.orderActive = false;
             $scope.ActivityActive = false;
             $scope.userActivityCount = null;
             $scope.userPostList(parmalink, count);
+
+        };
+        // Manage different click events in profile menu bar
+        $scope.clickOnOrders = function (parmalink, count) {
+            $scope.orderActive = true;
+            console.log($scope.orderActive)
+
+            $scope.ActivityActive = false;
+            $scope.postActive = false;
+            $scope.userActivityCount = null;
+            $scope.userOrderList(parmalink, count);
 
         };
 
         $scope.clickOnActivity = function (parmalink, count) {
 
             $scope.postActive = true;
+            $scope.orderActive = true;
             $scope.ActivityActive = true;
+            $scope.orderActive = false;
             $scope.userActivityCount = null;
             $scope.showActivity('all');
             $scope.userActivityList(parmalink, count);
             $scope.userPostList(parmalink, count);
-
         };
 
         $scope.clickOnActivityLike = function (parmalink, count) {
 
+            $scope.orderActive = false;
             $scope.postActive = false;
             $scope.ActivityActive = true;
             $scope.userActivityList(parmalink, count);
@@ -5883,6 +6363,7 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
 
         $scope.clickOnActivityComment = function (parmalink, count) {
 
+            $scope.orderActive = false;
             $scope.postActive = false;
             $scope.ActivityActive = true;
             $scope.userActivityList(parmalink, count);
@@ -5909,6 +6390,32 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
 
             }).success(function (data) {
                 $scope.userPostData = data.data;
+            });
+
+        };
+
+
+        // Load user activity like/comment in user profile
+        $scope.userOrderList = function (parmalink, count) {
+
+            if ($scope.userActivityCount == null)
+                $scope.userActivityCount = count;
+            else
+                $scope.userActivityCount = $scope.userActivityCount + count;
+
+            $http({
+                url: '/api/user/orders',
+                method: "POST",
+                data: {
+                    Permalink: parmalink,
+                    PostCount: $scope.userActivityCount,
+                    AuthorPicture: $window.profilePicture,
+                    AuthorName: $window.profileFullName,
+                }
+
+            }).success(function (data) {
+                $scope.userOrderData = data.data;
+                $scope.totalOrders = data.data.length;
             });
 
         };
@@ -6033,13 +6540,27 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                 method: "POST",
                 data: {
                     FullName: formData.FullName,
+                    LastName: formData.LastName,
                     Email: formData.Email,
+                    RecoveryEmail: formData.RecoveryEmail,
                     Password: formData.Password,
                     PersonalInfo: formData.PersonalInfo,
-                    Address: formData.Address,
+
+                    FacebookLink: formData.FacebookLink,
+                    TwitterLink: formData.TwitterLink,
+
+                    Password: formData.Password,
+                    NewPassword: formData.NewPassword,
+
+                    Street: formData.Street,
+                    Apartment: formData.Apartment,
+                    City: formData.City,
+                    Country: formData.Country,
+                    State: formData.State,
+                    Zip: formData.Zip,
+
                     Permalink: formData.Permalink,
                     MediaLink: meidaLink
-
                 }
             }).success(function (data) {
                 // console.log(data);
@@ -6745,7 +7266,7 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
 //            $uibModalInstance.dismiss('cancel');
 //        };
 //    })
-    .controller('shoplandingController', ['$scope', '$http', 'pagingApi', '$timeout', '$uibModal', function ($scope, $http, pagingApi, $timeout, $uibModal) {
+    .controller('shoplandingController', ['$scope', '$http', 'pagingApi', '$timeout', '$window', '$uibModal', function ($scope, $http, pagingApi, $timeout, $window, $uibModal) {
         
         $scope.renderHTML = function(html_code)
         {
@@ -6758,6 +7279,35 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
         }
 
         $scope.hasMore = false;
+
+        var everythingLoaded = setInterval(function() {
+            if (/loaded|complete/.test(document.readyState)) {
+                clearInterval(everythingLoaded);
+                var footer = document.getElementsByClassName('about-footer')[0];
+                footer.style.display = 'block';
+                footer.style.position = 'static';
+            }
+        }, 10);
+
+        angular.element($window).bind("scroll", function() {
+
+            var topMenuClasses = document.getElementById("publicApp").classList;
+            if(document.documentElement.clientWidth > 620) {
+                if (document.body.scrollTop > 60 || document.documentElement.scrollTop > 60) {
+                    if (!topMenuClasses.contains("shop-top-menu-container")) {
+                        topMenuClasses.add("shop-top-menu-container");
+                    }
+                } else {
+                    if (topMenuClasses.contains("shop-top-menu-container")) {
+                        topMenuClasses.remove("shop-top-menu-container");
+                    }
+                }
+            }else {
+                if (topMenuClasses.contains("shop-top-menu-container")) {
+                    topMenuClasses.remove("shop-top-menu-container");
+                }
+            }
+        });
 
         $scope.nextLoad = pagingApi.getPlainContent(1, 3, 'deal', 'idea').success(function (response) {
             $scope.dailyDeals = response['content'];
@@ -6840,7 +7390,7 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
         });
     }])
 
-    .controller('shopcategoryController', function ($scope, $filter, pagingApi, $uibModal, $timeout) {
+    .controller('shopcategoryController', function ($scope, $filter, pagingApi, $window, $uibModal, $timeout) {
         $scope.renderHTML = function(html_code)
         {
             var decoded = angular.element('<div />').html(html_code).text();
@@ -6859,6 +7409,35 @@ angular.module('pagingApp.controllers', [ 'ui.bootstrap'])
         var $route =  $filter('getURISegment')(2);
         var $category = false;
 
+
+        var everythingLoaded = setInterval(function() {
+            if (/loaded|complete/.test(document.readyState)) {
+                clearInterval(everythingLoaded);
+                var footer = document.getElementsByClassName('about-footer')[0];
+                footer.style.display = 'block';
+                footer.style.position = 'static';
+            }
+        }, 10);
+
+        angular.element($window).bind("scroll", function() {
+
+            var topMenuClasses = document.getElementById("publicApp").classList;
+            if(document.documentElement.clientWidth > 620) {
+                if (document.body.scrollTop > 60 || document.documentElement.scrollTop > 60) {
+                    if (!topMenuClasses.contains("shop-top-menu-container")) {
+                        topMenuClasses.add("shop-top-menu-container");
+                    }
+                } else {
+                    if (topMenuClasses.contains("shop-top-menu-container")) {
+                        topMenuClasses.remove("shop-top-menu-container");
+                    }
+                }
+            }else {
+                if (topMenuClasses.contains("shop-top-menu-container")) {
+                    topMenuClasses.remove("shop-top-menu-container");
+                }
+            }
+        });
 
         if($route == 'shop'){
             if($category = $filter('getURISegment')(5)){

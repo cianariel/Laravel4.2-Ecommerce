@@ -32,8 +32,21 @@ function ideaing_body_class_filter($classes){
 }
 add_filter('body_class', 'ideaing_body_class_filter', 99, 1 );
 
+
 /**
- * Body class filter
+ * Filter return to shop URL
+ *
+ * @return return string
+ * @since WooCommerce Integration 1.0
+ */
+function ideaing_return_to_shop_redirect($url){
+
+  return '/shop';
+}
+add_filter('woocommerce_return_to_shop_redirect', 'ideaing_return_to_shop_redirect', 99, 1);
+
+/**
+ * Gateways icon filter
  *
  * @return return string
  * @since WooCommerce Integration 1.0
@@ -63,7 +76,6 @@ function is_ideaing_woocommerce_checkout_page( $default = false, $strict = true 
 
   return is_cart()
     || is_checkout()
-    || is_account_page()
   ? $strict : $default;
 }
 add_filter('is_ideaing_woocommerce_checkout_page', 'is_ideaing_woocommerce_checkout_page', 10, 2);
@@ -123,7 +135,7 @@ add_action('get_ideaing_woocommerce_cart_totals', 'get_ideaing_woocommerce_cart_
  */
 function get_ideaing_page_title_rener() {
 
-  wc_get_template( 'page/title.php' );
+  wc_get_template( 'ideaing/title.php' );
 }
 add_action( 'ideaing_page_title', 'get_ideaing_page_title_rener' );
 
@@ -245,10 +257,7 @@ function ideaing_selected_shipping(){
  * @see woocommerce_order_review()
  * @see woocommerce_checkout_payment()
  */
-// remove_action( 'woocommerce_before_checkout_form', 'woocommerce_checkout_login_form', 10 );
 remove_action( 'woocommerce_before_checkout_form', 'woocommerce_checkout_coupon_form', 10 );
-// remove_action( 'woocommerce_checkout_order_review', 'woocommerce_order_review', 10 );
-// remove_action( 'woocommerce_checkout_order_review', 'woocommerce_checkout_payment', 20 );
 
 add_filter( 'woocommerce_cart_needs_shipping_address', '__return_true', 99 );
 
@@ -340,14 +349,13 @@ function ideaing_secure_checkout_nav(){
     printf(
       implode(
         array(
-          '<a href="%s" class="active"><span>%s</span></a>',
-          '<a href="%s" class="active"><span>%s</span></a>',
-          '<span class="active"><span>%s</span></span>'
+          '<a href="%s"><span>%s</span></a>',
+          '<span><span>%s</span></span>',
+          '<span><span>%s</span></span>'
         )
       )
       , esc_url(WC()->cart->get_cart_url())
       , __('Cart', 'ideaing')
-      , esc_url(WC()->cart->get_checkout_url())
       , __('Your information', 'ideaing')
       , __('Success', 'ideaing')
     );
@@ -454,6 +462,12 @@ add_action('ideaing_cart_widget_render', 'ideaing_cart_widget_render');
 function ideaing_cart_content_fragment( $fragments ) {
 
 	$fragments['div.cart-summary-inner'] = ideaing_cart_content();
+  $fragments['.cart-count'] = apply_filters('get_ideaing_cart_contents_count', '');
+
+  ob_start();
+    wc_get_template( 'ideaing/cart-summary.php' );
+    $fragments['.global-cart-summary'] = ob_get_contents();
+  ob_end_clean();
 
 	return $fragments;
 }
@@ -493,3 +507,165 @@ function ideaing_update_order_review_fragments( $fragments ) {
 	return $fragments;
 }
 add_filter( 'woocommerce_update_order_review_fragments', 'ideaing_update_order_review_fragments', 99, 1 );
+
+/**
+ * Ajax handle account orders
+ *
+ * @return return string
+ */
+function ideaing_account_orders(){
+
+  $current_page = isset( $_POST['current_page'] ) && !empty( $_POST['current_page'] ) ? absint( $_POST['current_page'] ) : 1;
+  $customer_orders = wc_get_orders( apply_filters( 'woocommerce_my_account_my_orders_query', array( 'customer' => get_current_user_id(), 'page' => $current_page, 'paginate' => true ) ) );
+  $has_orders = 0 < $customer_orders->total;
+  $data = __( 'No order has been made yet.', 'woocommerce' );
+
+  if ( $has_orders ) {
+
+    $data = array();
+
+    foreach ( $customer_orders->orders as $customer_order ) {
+
+      $order = wc_get_order( $customer_order );
+      $item_count = $order->get_item_count();
+      $order_detail = array(
+        'items' => $order->get_items()
+      );
+
+      foreach ( wc_get_account_orders_columns() as $column_id => $column_name ) {
+
+        switch ($column_id) {
+          case 'order-number':
+
+            $order_detail['order'] = $order->get_order_number();
+            break;
+
+          case 'order-date':
+
+            $order_detail['date'] = date_i18n( get_option( 'date_format' ), strtotime( $order->order_date ) );
+            break;
+
+          case 'order-status':
+
+            $order_detail['status'] = wc_get_order_status_name( $order->get_status() );
+            break;
+
+          case 'order-total':
+
+            $order_detail['total'] = sprintf( _n( '%s for %s item', '%s for %s items', $item_count, 'woocommerce' ), $order->get_formatted_order_total(), $item_count );
+            break;
+
+          case 'order-actions':
+
+            $actions = array(
+              'pay'    => array(
+                'url'  => $order->get_checkout_payment_url(),
+                'name' => __( 'Pay', 'woocommerce' )
+              ),
+              'view'   => array(
+                'url'  => $order->get_view_order_url(),
+                'name' => __( 'View', 'woocommerce' )
+              ),
+              'cancel' => array(
+                'url'  => $order->get_cancel_order_url( wc_get_page_permalink( 'myaccount' ) ),
+                'name' => __( 'Cancel', 'woocommerce' )
+              )
+            );
+
+            if ( ! $order->needs_payment() ) {
+              unset( $actions['pay'] );
+            }
+
+            if ( ! in_array( $order->get_status(), apply_filters( 'woocommerce_valid_order_statuses_for_cancel', array( 'pending', 'failed' ), $order ) ) ) {
+              unset( $actions['cancel'] );
+            }
+
+            $order_detail['actions'] = $actions;
+            break;
+        }
+
+      }
+      $data[] = $order_detail;
+    }
+  }
+
+  wp_send_json( array(
+    'has_orders' => $has_orders,
+    'data' => $data
+  ) );
+}
+add_action( 'wp_ajax_account_orders', 'ideaing_account_orders' );
+add_action( 'wp_ajax_nopriv_account_orders', 'ideaing_account_orders' );
+
+/**
+ * Ajax handle cart total
+ *
+ * @return return string
+ */
+function ideaing_cart_total_count(){
+
+  wp_send_json_success( apply_filters('get_ideaing_cart_contents_count', 0) );
+}
+add_action( 'wp_ajax_cart_total_count', 'ideaing_cart_total_count' );
+add_action( 'wp_ajax_nopriv_cart_total_count', 'ideaing_cart_total_count' );
+
+
+/**
+ * Ajax handle cart total
+ *
+ * @return return string
+ */
+function ideaing_global_cart_summary_fragments(){
+
+  wp_send_json( array('fragments' => ideaing_cart_content_fragment(array()) ) );
+}
+add_action( 'wp_ajax_global_cart_summary_fragments', 'ideaing_global_cart_summary_fragments' );
+add_action( 'wp_ajax_nopriv_global_cart_summary_fragments', 'ideaing_global_cart_summary_fragments' );
+
+
+/**
+ * Order complete email subject filter:
+ *
+ * @return return string
+ */
+function ideaing_email_subject_customer_completed_order( $subject, $order ) {
+
+  $find = '{product_name}';
+  $replace = array();
+  $items = $order->get_items();
+
+  foreach ($items as $item) {
+    $replace[] = $item['name'];
+  }
+
+	return str_replace ( $find , implode(' | ', $replace), $subject);
+}
+add_filter('woocommerce_email_subject_customer_completed_order', 'ideaing_email_subject_customer_completed_order', 99, 2);
+
+
+/**
+ * Print relevent buttons on cart and checkout page for mobile viwes
+ *
+ * @return string
+ */
+function after_order_summary_widget_cart_totals(){
+
+  echo '<div class="hidden-md hidden-lg">';
+
+  if ( is_checkout() ){
+
+    printf('<button class="normal button button-primary on2">%s</button>', __( 'Continue to Payment', 'woocommerce' ));
+    printf('<button class="button button-primary" data-alien="woocommerce_checkout_place_order">%s</button>', __( 'Place your order', 'woocommerce' ));
+
+  } elseif ( is_cart() ) {
+
+    printf('<button class="button" data-alien="update_cart">%s</button>', __( 'Update Cart', 'woocommerce' ));
+    do_action( 'woocommerce_proceed_to_checkout' );
+
+  } else {
+    do_action( 'woocommerce_proceed_to_checkout' );
+  }
+
+  echo '</div>';
+}
+add_action('after_order_summary_widget_cart_totals', 'after_order_summary_widget_cart_totals');

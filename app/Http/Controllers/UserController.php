@@ -267,6 +267,10 @@ class UserController extends ApiController
         return view('user.user-profile', $data);
     }
 
+    public function modalTest(){
+        return view('user.parts.edit-modal');
+    }
+
     public function viewPublicProfileNotice()
     {
 
@@ -285,7 +289,7 @@ class UserController extends ApiController
         $data = array(
             'userData' => empty($userData) ? null : $userData,
             'userProfileData' => $userProfileData,
-            // 'activity' => $this->comment->getCommentsAndHeatByUserId($userProfileData['id'], 10),
+             'activity' => $this->comment->getCommentsAndHeatByUserId($userProfileData['id'], 10),
             'profile' => ($userProfileData->medias[0]->media_link == '') ? \Config::get("const.user-image") : $userProfileData->medias[0]->media_link,
             'fullname' => $userProfileData->name,
             'address' => $userProfileData->userProfile->address,
@@ -295,8 +299,7 @@ class UserController extends ApiController
             'isAdmin' => empty($userData) ? null : ($userData->hasRole('admin') || $userData->hasRole('editor')),
             'showEditOption' => false,
             'notification' => true,
-            //'contents'=> $this->user->getNotificationForUser($userData->id)['NoticeNotRead']
-
+            'contents'=> $this->user->getNotificationForUser($userData->id)['NoticeNotRead']
         );
 
         MetaTag::set('title', $userProfileData->name . ' | Ideaing');
@@ -348,9 +351,20 @@ class UserController extends ApiController
     {
         $inputData = \Input::all();
 
+
         $data = $this->user->ideasAuthorPost($inputData);
 
         //dd($data);
+
+        return $this->setStatusCode(\Config::get("const.api-status.success"))
+                    ->makeResponse($data);
+    }
+
+    public function getOrdersByAuthor()
+    {
+        $inputData = \Input::all();
+
+        $data = $this->user->getMyOrders($inputData);
 
         return $this->setStatusCode(\Config::get("const.api-status.success"))
                     ->makeResponse($data);

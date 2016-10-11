@@ -28,6 +28,7 @@ use Zizaco\Entrust\Traits\EntrustUserTrait;
 use Fenos\Notifynder\Notifable;
 use Carbon\Carbon;
 use PageHelper;
+use URL;
 
 //use CustomAppException;
 
@@ -55,7 +56,7 @@ class User extends Model implements AuthenticatableContract,
      *
      * @var array
      */
-    protected $fillable = ['name', 'email', 'password', 'status'];
+    protected $fillable = ['name', 'last_name', 'email', 'recovery_email','facebook_link','twitter_link', 'password', 'status', 'street', 'apartment', 'city', 'country', 'state', 'zip',];
 
     /**
      * The attributes excluded from the model's JSON form.
@@ -633,8 +634,9 @@ class User extends Model implements AuthenticatableContract,
 
        // dd($url);
         $json = \PageHelper::getFromCurl($url);
+        $decode = json_decode($json);
 
-        $ideaCollection = json_decode($json);
+        $ideaCollection = $decode->posts;
 
         $ideaCollection = empty($ideaCollection) ? [] : $ideaCollection;
 
@@ -670,7 +672,7 @@ class User extends Model implements AuthenticatableContract,
                 'avator' => $data['AuthorPicture'],
                 'type' => $item->type,
                 'is_featured' => $item->is_featured,
-                'feed_image' => $item->feed_image,
+                'feed_image' => $item->feed_image->sizes->thumbnail,
                 'comment_count' => $comment->ideasCommentCounter($item->id),
                 'heart_count' => $heart->findHeartCountForItem(['Section' => 'ideas', 'ItemId' => $item->id])->count()
             ]);
@@ -679,6 +681,35 @@ class User extends Model implements AuthenticatableContract,
 
         }
         return $ideas;
+    }
+
+    public function getMyOrders()
+    {
+        $orderCollection = new Collection();
+
+        $purchasesUrl = URL::to('/') . '/ideas/wp-admin/admin-ajax.php?action=account_orders';
+
+        $data =  PageHelper::getArrayFromCurl($purchasesUrl);
+
+        foreach ($data['data'] as $item) {
+            $tmpCollection = new Collection();
+
+//             print_r($item); die();
+
+            $tmpCollection['Id'] = $item['order'];
+            $tmpCollection['Link'] = $item['actions']['view']['url'];
+            $tmpCollection['UpdateTime'] = $item['date'];
+//            $tmpCollection['ProductCount'] = $item['qty'];
+            $tmpCollection['Status'] = $item['status'];
+            $tmpCollection['Total'] = strip_tags($item['total']);
+
+//            print_r($tmpCollection); die();
+
+            $orderCollection->push($tmpCollection);
+
+        }
+
+        return $orderCollection;
     }
 
     public function getUserProfileSettings($userId)

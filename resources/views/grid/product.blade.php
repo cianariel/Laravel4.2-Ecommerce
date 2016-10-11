@@ -1,6 +1,5 @@
 <div class="img-holder">
-    <img itemprop="image" src="<?php echo '{{item.media_link_full_path}}' ?>"
-         alt="<?php echo '{{item.product_name}}' ?>"/>
+    <img  itemprop="image"  src="<?php echo '{{item.media_link_full_path}}' ?>" alt="<?php echo '{{item.product_name}}' ?>"/>
 </div>
 <div class="category-<?php  echo '{{item.master_category}}' ?>">
     <div class="idea-meta product category-bg">
@@ -23,7 +22,6 @@
 <span class="box-item__time text-uppercase"><?php echo '{{item.updated_at}}' ?></span>
 
 
-<<<<<<< HEAD
 <div class="box-item__label-prod">
     <a href="/product/<?php echo '{{item.product_permalink}}' ?>"
        class="box-item__label box-item__label--clear" itemprop="name"><?php echo '{{item.product_name}}' ?></a>
@@ -39,7 +37,5 @@
         <span>From</span>
         <img class="merchant-widget__store" alt="<?php echo '{{ item.storeInfo.Description }}' ?>"
              ng-src='<?php echo '{{ item.storeInfo.ImagePath }}' ?>'/>
-=======
->>>>>>> 4a6d672f455644d3539e055233770b04f9718b3d
 
 

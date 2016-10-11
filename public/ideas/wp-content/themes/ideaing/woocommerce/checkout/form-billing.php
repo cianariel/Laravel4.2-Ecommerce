@@ -26,7 +26,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 <div class="woocommerce-billing-fields">
 
 	<header class="entry-header">
-	  <?php printf( '<h1 class="entry-title">%s</h1>', __('1. Billing address', 'woocommerce') ); ?>
+	  <?php
+		if ( is_user_logged_in() || 'no' === get_option( 'woocommerce_enable_checkout_login_reminder' ) ) {
+			printf( '<h1 class="entry-title">%s<mark>%s</mark></h1>', __('1. Billing address', 'woocommerce'), __('Step 1 of 2') );
+		} else {
+			printf( '<h1 class="entry-title">%s</h1>', __('1. Billing address', 'woocommerce') );
+		}
+		?>
 	</header><!-- .entry-header -->
 
 	<?php do_action( 'woocommerce_before_checkout_billing_form', $checkout ); ?>
@@ -86,7 +92,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 	<?php endif; ?>
 
-	<div class="form-row text-right">
+	<div class="form-row text-right hidden-xs hidden-sm">
 		<label class="normal button button-primary on2"><?php _e('Continue to Payment '); ?></label>
 	</div>
 

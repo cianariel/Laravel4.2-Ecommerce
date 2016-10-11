@@ -160,6 +160,19 @@ body.forum{
                 }
             }
         }
+        @media screen and (max-width: 425px){
+            .category-tab-title-holder{
+                display: none;
+            }
+            .category-tab-icon-holder{
+                float: none;
+                text-align: center;
+                i{
+                    float: none;
+                    font-size: 25px;
+                }
+            }
+        }
         @media screen and (max-width: 998px){
             .col-xs-3{
                 padding-left: 0px;
@@ -260,7 +273,7 @@ body.forum{
     		background: #4389c8;
     		border-right: 1px solid #61a9e8;
     		color: #fff;
-    		width: 38%;
+/*    		width: 38%;*/
     		float: left;
     		font-size: 10px;
     		padding: 5px 15px;
@@ -274,7 +287,7 @@ body.forum{
     		&:first-child{
     			border-top-left-radius: 5px;
     			border-bottom-left-radius: 5px;
-    			width: 24%;
+/*    			width: 24%;*/
     		}
     		&:last-child{
     			border-top-right-radius: 5px;
@@ -330,12 +343,14 @@ body.forum{
                         font-size: 17px;
                         font-weight: 600;
                         color: #000;
+                        margin-top: 10px;
                     }
                     .username{
                         font-size: 13px;
                     }
                     .content{
                         margin-top: 20px;
+                        text-align: left;
                     }
                 }
                 .comment-bottom{
@@ -356,7 +371,7 @@ body.forum{
                 .comment-content-holder{
                     color: #fabbc7;
                     .comment-content-inner-holder{
-                        background: #ed1d47;
+                        background: #FC1159;
                     }
                     .fullname{
                         color: #fabbc7;
@@ -426,18 +441,17 @@ body.forum{
         }
         .button-container{
             margin-top: 10px;
-            .btn{
-                padding-left: 30px;
-                padding-right: 30px;
-            }
             #submit-commnet{
-                margin-left: 15px;
-                background: #3cb44a;
+/*                margin-left: 15px;*/
                 color: #fff;
             }
             #cancel-commnet{
                 background: none;
                 color: #7f7f7f;
+                padding-left: 30px;
+                padding-right: 30px;
+                margin-top: 7px;
+                margin-right: 20px;
             }
         }
     
@@ -453,6 +467,12 @@ body.forum{
             position: absolute;
             left: 33px;
         }
+    }
+    .alert-info{
+        padding: 10px 15px;
+        border-radius: 5px;
+        margin-top: 15px;
+        margin-bottom: 15px;
     }
 }
 

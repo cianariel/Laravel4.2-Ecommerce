@@ -53,15 +53,14 @@
             </svg>
           </a>
         </div>
-        <div class="col-xs-6">
+        <div class="col-xs-9">
           <div class="secure-checkout-nav">
-            <?php do_action('ideaing_secure_checkout_nav'); ?>
-          </div>
-        </div>
-        <div class="col-xs-3">
-          <div class="sc-slogan">
-            <span><?php _e('Secure checkout', 'ideaing'); ?></span>
-            <i class="m-icon--lock_outline"></i>
+            <div class="sc-nav">
+              <?php do_action('ideaing_secure_checkout_nav'); ?>
+            </div>
+            <div class="sc-slogan">
+              <i class="m-icon--lock_outline"></i>
+            </div>
           </div>
         </div>
       </div>
