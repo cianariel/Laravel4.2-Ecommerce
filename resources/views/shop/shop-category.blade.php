@@ -135,7 +135,7 @@
                             @include('shop.filter-menu')
                         </div>
                         <div class="grid-box-3">
-                            <div class="box-item product-box " ng-repeat="item in content">
+                            <div class="box-item product-box-item product-box " ng-repeat="item in content">
                                 @include('grid.product')
                             </div>
                         </div>
