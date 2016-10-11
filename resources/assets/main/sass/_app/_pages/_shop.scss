@@ -1586,6 +1586,7 @@ body.shop-category{
     position: relative;
     width: 100%;
     padding-top: 0;
+    min-height: 200px;
     .head-wrap{
       position: absolute;
       top: 40%;
@@ -1630,7 +1631,7 @@ body.shop-category{
     }
     .grid-box-3{
       border: none;
-      width: 102% !important;
+      width: 102%;
       margin-left: -1%;
       margin-right: -1%;
 
@@ -1722,7 +1723,15 @@ body.shop-category{
       left:-220px
     }
     .grid-box-3{
-      width: calc(100% - 190px);
+      width: calc(102% - 191px);
+      float: right;
+      .box-item{
+        height: 315px;
+        img{
+          width: 100%;
+          height: auto;
+        }
+      }
     }
   }
 }

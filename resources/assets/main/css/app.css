@@ -9669,7 +9669,7 @@ header.colophon {
       #top-nav .top-nav-holder .profile-photo-holder {
         width: 40px;
         height: 40px;
-        margin-right: 8px; }
+        margin-right: 2px; }
         #top-nav .top-nav-holder .profile-photo-holder.logged-user {
           top: 16px;
           right: 8px; } }
@@ -16042,7 +16042,8 @@ body.shop-category .app-wrap {
 body.shop-category #category-banner {
   position: relative;
   width: 100%;
-  padding-top: 0; }
+  padding-top: 0;
+  min-height: 200px; }
   body.shop-category #category-banner .head-wrap {
     position: absolute;
     top: 40%;
@@ -16071,7 +16072,7 @@ body.shop-category .main-content #shop-filter-grid-box-3 {
   padding: 0 !important; }
 body.shop-category .main-content .grid-box-3 {
   border: none;
-  width: 102% !important;
+  width: 102%;
   margin-left: -1%;
   margin-right: -1%; }
   body.shop-category .main-content .grid-box-3 .box-item img {
@@ -16134,7 +16135,13 @@ body.shop-category .show-filter .room-filter {
   top: 0;
   left: -220px; }
 body.shop-category .show-filter .grid-box-3 {
-  width: calc(100% - 190px); }
+  width: calc(102% - 191px);
+  float: right; }
+  body.shop-category .show-filter .grid-box-3 .box-item {
+    height: 315px; }
+    body.shop-category .show-filter .grid-box-3 .box-item img {
+      width: 100%;
+      height: auto; }
 
 #all-shop-menu {
   font-family: "Montserrat", sans-serif;

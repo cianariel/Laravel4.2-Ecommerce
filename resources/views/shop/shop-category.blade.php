@@ -6,7 +6,7 @@
 
     @include('shop.browseall-menu')
 
-    <!-- {{--<nav class="mid-nav ">
+    <nav class="mid-nav ">
         <div class="container full-sm fixed-sm">
             @if($parentCategory)
                 <ul class="wrap col-lg-9">
@@ -89,7 +89,9 @@
                     </span>
             </a>
         </div>
-    </nav>--}}  -->
+    </nav>
+
+
     <div class="app-wrap" ng-app="pagingApp" ng-controller="shopcategoryController">
 
         <div ng-cloak>
@@ -104,12 +106,32 @@
                 </section>
 
                 <nav id="hero-nav" class="col-sm-12">
-                    <div class="container full-620  fixed-sm banner-nav">
+                    <div class="banner-nav">
+
                         <a class="pull-left visible-md visible-lg" id="shop-filter-menu-button" href="#"
                            ng-click="showFilter ? showFilter=0: showFilter=1">
                             <i class="m-icon--MenuButton"></i>
                             Filter
                         </a>
+
+
+                            <a class="browse-all hidden-xs hidden-sm" data-toggle="#all-shop-menu" href="#" style="margin-left: 30px">
+                                <span class="box-link-active-line"></span>
+                                <i class="m-icon--menu"></i>
+                            <span>
+                                BROWSE ALL
+                                <i class="m-icon--Header-Dropdown down"></i>
+                                <i class="m-icon--footer-up-arrow up"></i>
+                            </span>
+                            </a>
+                            <a class="browse-all visible-xs visible-sm" data-toggle="#all-shop-menu-mobile" href="#">
+                            <span>
+                                <i class="m-icon--Header-Dropdown down"></i>
+                                <i class="m-icon--footer-up-arrow up"></i>
+                            </span>
+                            </a>
+                        </div>
+
                         <ul class="popular-new pull-right">
                             <li class="">
                                 <a ng-click="filterPlainContent(false, 'default')" data-sortby="default" href="#"
@@ -120,7 +142,7 @@
                                    class="box-link">PRICE</a>
                             </li>
                         </ul>
-                    </div>
+
                 </nav>
 
                 <div class="clearfix"></div>
