@@ -26,7 +26,7 @@
         <div class="container absolute details-wrap">
             <header class="story-details col-lg-7 col-sm-8 col-xs-10 full-480" ng-init="getAuthorInfoByEmail('{{get_the_author_meta('user_email')}}')">
 
-                <?php include('/var/www/ideaing/public/ideas/wp-content/themes/ideaing/author-info.php') ?>
+                <?php include('/Users/ulrich/Documents/work/ideaing/www/public/ideas/wp-content/themes/ideaing/author-info.php') ?>
 
                 <div class="author-overview col-lg-5 col-sm-5 col-xs-6 full-480">
                     <h4 class="author-name">
@@ -77,7 +77,7 @@
                         </div>
                     </div>
                 </li>
-                    <?php include('/var/www/ideaing/public/ideas/wp-content/themes/ideaing/heart-user-img.php') ?>
+                    <?php include('/Users/ulrich/Documents/work/ideaing/www/public/ideas/wp-content/themes/ideaing/heart-user-img.php') ?>
                 </ul>
 
             </div>
@@ -137,7 +137,7 @@
         <div class="container">
             <div>
 
-                <?php include('/var/www/ideaing/public/ideas/wp-content/themes/ideaing/author-desc.php') ?>
+                <?php include('/Users/ulrich/Documents/work/ideaing/www/public/ideas/wp-content/themes/ideaing/author-desc.php') ?>
             </div>
             <div class="col-sm-10 col-xs-9">
                 <p ng-bind="authorBio">

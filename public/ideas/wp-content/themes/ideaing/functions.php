@@ -423,10 +423,10 @@ function html5_shortcode_demo_2($atts, $content = null) // Demo Heading H2 short
 // CUSTOM FUNCTIONS for CONNECTION TO LARAVEL
 
 global $laravelViewsDir; // So that we can easily fetch the view files
-$laravelViewsDir = '/var/www/ideaing/resources/views/';
+$laravelViewsDir = '/Users/ulrich/Documents/work/ideaing/www/resources/views/';
 
 function loadLaravelView($templateName){ // and even faster
-    return include('/var/www/ideaing/resources/views/layouts/parts/' . $templateName . '.blade.php');
+    return include('/Users/ulrich/Documents/work/ideaing/www/resources/views/layouts/parts/' . $templateName . '.blade.php');
 }
 
 function getThumbnailLink($postID){
