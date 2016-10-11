@@ -857,6 +857,44 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
             $scope.alerts.splice(index, 1);
 
         };
+        /**
+        * forum category
+        */
+        $scope.getSubForumCategory = function () {
+            $scope.closeAlert();
+
+            $http({
+                url: '/api/forum-category/show-category-items/' + $scope.selectedForumItem,
+                method: "GET",
+            }).success(function (data, status) {
+                $scope.forumSubCategoryItems = data['data'];
+            });
+        }
+        $scope.selectedForumItem = "0";
+        $scope.getForumCategory = function () {
+
+            $scope.closeAlert();
+
+            $http({
+                url: '/api/forum-category/show-category-items/0',
+                method: "GET",
+            }).success(function (data, status) {
+                
+                if (data['data'].length > 0) {
+                    $scope.forumCategoryItems = data['data'];
+                    $scope.forumSubCategoryItems = data['data'];
+
+                } else {
+                    $scope.tempCategoryList.pop();
+                    $scope.outputStatus(data, 'No more subcategory available for the selected item');
+                }
+
+            });
+
+            return false;
+        };
+        
+        /****************/
 
         // Reset the category when reset button clicked.
         $scope.resetCategory = function () {
@@ -1036,6 +1074,44 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
             $scope.tableTemporaryValue = angular.copy(category);
         };
 
+        $scope.addSubForumCategory = function (idx) {
+            $http({
+                url: '/api/forum-category/add-category',
+                method: "POST",
+                data: {
+                    title: $scope.forumCategoryTitle,// $scope.categoryItems[idx].category,
+                    parentCategoryId: $scope.selectedForumItem,// $scope.categoryItems[idx].category,
+                },
+            }).success(function (data) {
+                $scope.outputStatus(data, 'Category item updated successfully');
+                if (data.status_code == 200) {
+                    $scope.getSubForumCategory();
+                }
+            });
+        }
+        $scope.updateForumCategory = function (idx) {
+            // console.log("Saving contact");
+            // console.log($scope.categoryItems[idx]);
+            $scope.closeAlert();
+
+            $http({
+                url: '/api/forum-category/update-category',
+                method: "POST",
+                data: {
+                    id: $scope.forumSubCategoryItems[idx].id,
+                    title: $scope.tableTemporaryValue.title,// $scope.categoryItems[idx].category,
+                },
+            }).success(function (data) {
+                $scope.outputStatus(data, 'Category item updated successfully');
+                if($scope.selectedForumItem == 0){
+                    $scope.forumCategoryItems = $scope.forumSubCategoryItems;
+                }
+                if (data.status_code == 200) {
+                    $scope.forumSubCategoryItems[idx] = angular.copy($scope.tableTemporaryValue);
+                    $scope.cancelCategory();
+                }
+            });
+        }
         $scope.updateCategory = function (idx) {
             // console.log("Saving contact");
             // console.log($scope.categoryItems[idx]);
@@ -1063,6 +1139,24 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
 
         };
 
+        $scope.deleteForumCategory = function (idx) {
+            $scope.closeAlert();
+
+            $http({
+                url: '/api/forum-category/delete-category',
+                method: "POST",
+                data: {
+                    id: $scope.forumSubCategoryItems[idx].id,
+                },
+            }).success(function (data) {
+                $scope.outputStatus(data, "Category deleted successfully");
+
+                if (data.status_code == 200) {
+                    $scope.getSubForumCategory();
+                }
+
+            });
+        }
         $scope.deleteCategory = function (idx) {
             //  console.log("Saving contact");
             console.log($scope.categoryItems[idx]);
@@ -1961,6 +2055,7 @@ adminApp.controller('AdminController', ['$scope', '$http', '$window', '$timeout'
         // Initialize variables and functions Globally.
         $scope.initPage();
         $scope.getCategory();
+        $scope.getForumCategory();
 
 
     }]);

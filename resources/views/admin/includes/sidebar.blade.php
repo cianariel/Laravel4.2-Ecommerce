@@ -125,6 +125,20 @@
                 </ul>
             </li>
             <li class="nav-item  ">
+                <a href="javascript:;" class="nav-link nav-toggle">
+                    <i class="icon-tag"></i>
+                    <span class="title">Forum Categories</span>
+                    <span class="arrow"></span>
+                </a>
+                <ul class="sub-menu">
+                    <li class="nav-item  ">
+                        <a href="/admin/forum-category-view" class="nav-link ">
+                            <span class="title">Forum Category List</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="nav-item  ">
                 <a href="javascript:;#product" class="nav-link nav-toggle">
                     <i class="icon-graph"></i>
                     <span class="title">Products</span>

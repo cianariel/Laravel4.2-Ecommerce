@@ -190,9 +190,15 @@ productApp.controller('forumController', ['$scope', '$http', '$window', '$interv
                     title: $scope.thread.title,
                 }
             }).success(function (data) {
+                $scope.erros = false;
                 $scope.init();
-                alert("Successfully saved.");
-            });
+                $scope.success_message = "Your post has been successfully posted!";
+            }).error(function(data){
+                $scope.erros = data;
+                $scope.success_message = false;
+            })
+            
+            ;
         }
         
         $scope.getThreads = function(categoryId){
@@ -339,26 +345,19 @@ productApp.controller('forumThreadController', ['$scope', '$uibModal', '$http', 
                 <div class="comment-row " >\
                     <div class="comment-profile-holder text-center">\
                         <img class="profile-photo" src="'+post.authorPicture+'"><br>\
-                        <span class="name">COMMUNITY MEMBER</span><br>\
-                        <span>78% REPUTATION</span>\
+                        <span class="name">'+ post.authorName +'</span><br>\
                     </div>\
                     <div class="comment-content-container">\
                         <div class="comment-content-holder">\
                             <div class="comment-content-inner-holder">\
                                 <div class="comment-conent">\
-                                    <div class="fullname">\
-                                        '+post.authorName+'\
-                                    </div>\
-                                    <div class="username">\
-                                        '+post.authorName+'\
-                                    </div>\
                                     <div class="content" >'+post.content+'</div>\
                                 </div>\
                                 <div class="comment-bottom">\
                                     <div class="pull-left">\
                                         <i class="m-icon m-icon--star-blue-full"></i> &nbsp; <span>207</span> found this helpful\
                                     </div>\
-                                    <div class="pull-right reply" data-ng-click="commentPopup('+post.thread_id+','+post.id+')"><i class="m-icon m-icon--email-form-id"></i> &nbsp; Reply</div>\
+                                    <div class="pull-right reply" data-ng-click="commentPopup('+post.thread_id+','+post.id+')"><i class="m-icon m-icon--comments-products"></i> &nbsp; Reply</div>\
                                     <div class="pull-right link-to-this-post"><i class="m-icon m-icon--attachment"></i> &nbsp; Link to this post</div>\
                                     <div class="clearfix"></div>\
                                 </div>\
@@ -381,9 +380,6 @@ productApp.controller('forumThreadController', ['$scope', '$uibModal', '$http', 
                                             <div class="fullname">\
                                                 '+post.authorName+'\
                                             </div>\
-                                            <div class="username">\
-                                                '+post.authorName+'\
-                                            </div>\
                                         </div>\
                                         <div class="clearfix"></div>\
                                         <div class="content" >'+post.content+'</div>\
@@ -392,7 +388,7 @@ productApp.controller('forumThreadController', ['$scope', '$uibModal', '$http', 
                                         <div class="pull-left">\
                                             <i class="m-icon m-icon--star-blue-full-lines"></i> &nbsp; <span>208</span> found this helpful\
                                         </div>\
-                                        <div class="pull-right reply" data-ng-click="commentPopup('+post.thread_id+','+post.id+')"><i class="m-icon m-icon--email-form-id"></i> &nbsp; Reply</div>\
+                                        <div class="pull-right reply" data-ng-click="commentPopup('+post.thread_id+','+post.id+')"><i class="m-icon m-icon--comments-products"></i> &nbsp; Reply</div>\
                                         <div class="pull-right link-to-this-post"><i class="m-icon m-icon--attachment"></i> &nbsp; Link to this post</div>\
                                         <div class="clearfix"></div>\
                                     </div>\

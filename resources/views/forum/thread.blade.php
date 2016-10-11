@@ -17,8 +17,8 @@
 			<div class="container">
 				<h2 id="thread-title">@{{thread.title}}</h2>
 				<div class="row">
-					<div class="col-md-offset-7 col-md-5 ">
-						<div class="thread-history-container">
+					<div class="col-md-12">
+						<div class="thread-history-container pull-right">
 							<div class="thread-history-item">
 								<span class="title">@{{thread.viewCount}}</span><br>
 								<span>VIEWS</span>
@@ -32,24 +32,18 @@
 								<span>POSTED BY</span>
 							</div>
 						</div>
+                        <div class="clearfix"></div>
 					</div>
 				</div>
                 <div class="comment-row owner">
                     <div class="comment-profile-holder text-center">
                         <img class="profile-photo" src="@{{thread.authorPicture}}"><br>
-                        <span class="name">Commnuity member</span><br>
-                        <span>78% REPUTATION</span>
+                        <span class="name">@{{thread.authorName}}</span><br>
                     </div>
                     <div class="comment-content-container">
                         <div class="comment-content-holder active">
                             <div class="comment-content-inner-holder">
                                 <div class="comment-conent">
-                                    <div class="fullname">
-                                        @{{thread.authorName}}
-                                    </div>
-                                    <div class="username">
-                                        @{{thread.authorName}}
-                                    </div>
                                     <div class="content" ng-bind-html="thread.content"></div>
                                 </div>
                                 <div class="comment-bottom">
@@ -59,7 +53,7 @@
                                     <div class="pull-left">
                                         <i class="m-icon m-icon--star-blue-full"></i> &nbsp; <span>115</span> have this question
                                     </div>
-                                    <div class="pull-right reply" ng-click="commentPopup(thread.id, 0)"><i class="m-icon m-icon--email-form-id"></i> &nbsp; Reply</div>
+                                    <div class="pull-right reply" ng-click="commentPopup(thread.id, 0)"><i class="m-icon m-icon--comments-products"></i> &nbsp; Reply</div>
                                     <div class="pull-right link-to-this-post"><i class="m-icon m-icon--attachment"></i> &nbsp; Link to this post</div>
                                     <div class="clearfix"></div>
                                 </div>
@@ -71,7 +65,7 @@
                 <script type="text/ng-template" id="forum-comment.html">
                     <div class="inner-content">
                         <div ng-class="['comment-edit-container', {'has-content': commentData.content}]" ng-show="show_editor">
-                            <div text-angular ta-target-toolbars="toolbar" ng-model="commentData.content" ta-html-editor-class="border-around ta-editor">
+                            <div text-angular ta-target-toolbars="toolbar" ng-model="commentData.content" ta-html-editor-class="border-around ta-editor" ta-disabled='disabled' ta-text-editor-class="border-around ta-editor" >
                             </div>
                             <div text-angular-toolbar name="toolbar"></div>
                         </div>
@@ -81,7 +75,7 @@
                             class=" ta-text ta-editor"></textarea>
                         </div>
                         <div class="button-container">
-                            <button class="btn pull-right" id="submit-commnet" ng-click="saveComment()">Submit</button>
+                            <button class="btn pull-right btn-submit" id="submit-commnet" ng-click="saveComment()">Post</button>
                             <button class="btn pull-right" id="cancel-commnet" ng-click="cancel()">Cancel</button>
                             <div class="clearfix"></div>
                         </div>
@@ -91,97 +85,7 @@
                 <div ng-show="1" compile-data template="@{{commentHTML}}">
 
                 </div>
-                <div ng-show="0" class="comment-row " ng-repeat="post in thread.posts track by $index">
-                    <div class="comment-profile-holder text-center">
-                        <img class="profile-photo" src="@{{post.authorPicture}}"><br>
-                        <span class="name">COMMUNITY MEMBER</span><br>
-                        <span>78% REPUTATION</span>
-                    </div>
                     
-                    <div class="comment-content-container">
-                        <div class="comment-content-holder">
-                            <div class="comment-content-inner-holder">
-                                <div class="comment-conent">
-                                    <div class="fullname">
-                                        @{{post.authorName}}
-                                    </div>
-                                    <div class="username">
-                                        @{{post.authorName}}
-                                    </div>
-                                    <div class="content" ng-bind-html="post.content"></div>
-                                </div>
-                                <div class="comment-bottom">
-                                    <div class="pull-left">
-                                        <span>208</span> found this helpful
-                                    </div>
-                                    <div class="pull-right reply">Reply</div>
-                                    <div class="pull-right link-to-this-post">Link to this post</div>
-                                    <div class="clearfix"></div>
-                                </div>
-                            </div>
-                            <div class="sub" ng-if="post.child_posts">
-                                <div ng-repeat="child_post in post.child_posts" class="comment-content-holder">
-                                    <div class="comment-content-inner-holder">
-                                        <div class="comment-conent">
-                                            <div class="pull-left">
-                                                <img class="profile-photo" src="@{{child_post.authorPicture}}">
-                                            </div>
-                                            <div class="pull-left">
-                                                <div class="fullname">
-                                                    @{{child_post.authorName}}
-                                                </div>
-                                                <div class="username">
-                                                    @{{child_post.authorName}}
-                                                </div>
-                                            </div>
-                                            <div class="clearfix"></div>
-                                            <div class="content" ng-bind-html="child_post.content"></div>
-                                        </div>
-                                        <div class="comment-bottom">
-                                            <div class="pull-left">
-                                                <span>208</span> found this helpful
-                                            </div>
-                                            <div class="pull-right reply">Reply</div>
-                                            <div class="pull-right link-to-this-post">Link to this post</div>
-                                            <div class="clearfix"></div>
-                                        </div>
-                                    </div>
-                                    <div class="sub">
-                                        <div ng-repeat="child_post in post.child_posts" class="comment-content-holder">
-                                            <div class="comment-content-inner-holder">
-                                                <div class="comment-conent">
-                                                    <div class="pull-left">
-                                                        <img class="profile-photo" src="@{{child_post.authorPicture}}">
-                                                    </div>
-                                                    <div class="pull-left">
-                                                        <div class="fullname">
-                                                            @{{child_post.authorName}}
-                                                        </div>
-                                                        <div class="username">
-                                                            @{{child_post.authorName}}
-                                                        </div>
-                                                    </div>
-                                                    <div class="clearfix"></div>
-                                                    <div class="content" ng-bind-html="child_post.content"></div>
-                                                </div>
-                                                <div class="comment-bottom">
-                                                    <div class="pull-left">
-                                                        <span>208</span> found this helpful
-                                                    </div>
-                                                    <div class="pull-right reply">Reply</div>
-                                                    <div class="pull-right link-to-this-post">Link to this post</div>
-                                                    <div class="clearfix"></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-                    <div class="clearfix"></div>
-                </div>
                 <div class="text-center hide" style="padding-top: 40px; padding-bottom: 20px;">
                     <button class="btn btn-more">More</button>
                 </div>

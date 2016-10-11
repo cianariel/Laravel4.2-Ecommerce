@@ -86,6 +86,7 @@ class ForumThread extends Model
         foreach($threads as $thread){
             $thread->permalink = $this->slug($thread->title);
             $thread->postTime = Carbon::createFromTimestamp(strtotime($thread->created_at))->diffForHumans();
+            $thread->authorName = is_array(explode(" ", $thread->authorName)) ? explode(" ", $thread->authorName)[0] : $thread->authorName;
         }
         
         return $threads;
@@ -104,6 +105,7 @@ class ForumThread extends Model
                      ->first()
         ;
         $thread->postTime = Carbon::createFromTimestamp(strtotime($thread->created_at))->diffForHumans();
+        $thread->authorName = is_array(explode(" ", $thread->authorName)) ? explode(" ", $thread->authorName)[0] : $thread->authorName;
 
         return $thread;
     }

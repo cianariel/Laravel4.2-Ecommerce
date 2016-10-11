@@ -166,6 +166,16 @@ Route::group(['prefix' => 'api'], function () {
     Route::get('category/all-read-category', 'ProductCategoryController@getAllReadCategoryItem');
 
 
+    /*
+     * Forum Category route collection
+     *
+     * */
+    Route::get('forum-category/show-category-items/{id?}', 'ForumApiController@getCategories');
+    Route::post('forum-category/update-category', 'ForumApiController@updateCategory');
+    Route::post('forum-category/add-category', 'ForumApiController@addCategory');
+    Route::post('forum-category/delete-category', 'ForumApiController@deleteCategory');
+
+    
 
 
     /*
@@ -297,6 +307,9 @@ Route::group(['prefix' => 'admin'], function () {
     Route::get('category-edit', 'AdminController@editCategory');
     Route::get('category-read', 'AdminController@readCategory');
 
+    // Forum Category view
+    Route::get('forum-category-view', 'AdminController@forumCategoryView');
+
 
     // Product view
     Route::get('product-view', 'AdminController@productView');
@@ -427,7 +440,7 @@ Route::get('api/products/get-for-bar/{idea?}', 'ProductController@getForBar');
 
 Route::group(['prefix' => 'advice'], function () {
     Route::get('/', 'ForumController@index');
-    Route::get('/thread/{id}/{threadLink}', 'ForumController@thread');
+    Route::get('/{id}/{threadLink}', 'ForumController@thread');
     Route::controller('api', 'ForumApiController');
 });
 

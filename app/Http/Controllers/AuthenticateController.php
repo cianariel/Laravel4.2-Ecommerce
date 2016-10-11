@@ -508,8 +508,6 @@ class AuthenticateController extends ApiController
         } catch (\Exception $ex) {
             \Log::error($ex);
 
-            print_r($ex);die();
-
             return $this->setStatusCode(\Config::get("const.api-status.system-fail"))
                         ->makeResponseWithError('Internal Server Error!', $ex);
         }

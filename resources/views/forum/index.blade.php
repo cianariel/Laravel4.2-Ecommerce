@@ -9,7 +9,7 @@
 	<div ng-app="productApp" data-ng-controller="forumController" class="ideaing-product" >
 		<div class="top-bar">
 			<div class="container">
-				<span class="title">Advice</span>
+				<span class="title">Communities</span>
 			</div>
 		</div>
 
@@ -19,7 +19,7 @@
 				<p class="text-center">Find out new stuff and also share your thoughts with the entire Ideaing universe.</p>
 				<div class="row">
 					<div class="col-lg-8 col-lg-offset-2 col-md-12" id="forum-search-holder">
-						<input class=" forum-text text-center" placeholder="Type any discussion">
+						<input class=" forum-text text-center" placeholder="Search for discussions">
                         <i class="m-icon m-icon--search-id"></i>
 					</div>
 				</div>
@@ -34,16 +34,28 @@
 					<div class="col-lg-6 col-md-6">
 						<p class="title">Post a question</p>
 						<p>Get help your projects share your finds and show off your Before and After.</p>
+                        <div class="alert-info alert-success" ng-if="success_message">
+                            <div >@{{success_message}}</div>
+                        </div>
+                        <div class="alert-info alert-danger" ng-if="erros">
+                            <div ng-repeat="error in erros" >
+                                <div ng-repeat="error_message in error">@{{error_message}}</div>
+                            </div>
+                        </div>
 						<div class="thread-question-holder">
 							<div class="thread-question-icon-holder">
-                                @if(!empty($userData['email']))
-                                    <img src="https://s3-us-west-1.amazonaws.com/ideaing-01/120-product-56ce7066c0ef3-user-default 2.png" class="profile-photo">
+                                @if(empty($userData['email']))
+                                    <img src="/assets/images/icons/ninja-01.svg" class="profile-photo">
                                 @else
                                     <img src="{{isset($userData['medias'][0]['media_link']) ? $userData['medias'][0]['media_link'] : ""}}" alt="" class="profile-photo">
                                 @endif
 							</div>
 							<div class="thread-question-text-holder">
+                                @if(empty($userData['email']))
 								<input class="forum-text" ng-model="thread.title" placeholder="Example: What is the best way to renovate a house?">
+                                @else
+                                    <input class="forum-text" ng-model="thread.title" placeholder="Type in the title of your post here">
+                                @endif
 							</div>
 							<div class="clearfix"></div>
 						</div>
@@ -96,50 +108,49 @@
 				<div class="row">
 					<div class="col-lg-12 col-md-12 category-tab-container">
 						<div class="row">
-                            <?php $i=0; ?>
-                            @foreach($categories as $category)
+                            @if($categorie_ids=[1,4,3,2])@endif
+                            @foreach($categorie_ids as $id)
                                 <div class="col-xs-3 ">
                                     <?php 
-                                        switch($i){
-                                            case "0":
+                                        switch($id){
+                                            case "1":
                                                 $class="smart-home";
                                                 $iconClass="m-icon--smart-home";
                                                 $categoryTitle="HOME";
                                             break;
-                                            case "1":
+                                            case "2":
                                                 $class="smart-travel";
                                                 $iconClass="m-icon--travel";
                                                 $categoryTitle="TRAVEL";
                                             break;
-                                            case "2":
-                                                $class="smart-wearables";
+                                            case "3":
+                                                $class="smart-body";
                                                 $iconClass="m-icon--wearables";
                                                 $categoryTitle="BODY";
                                             break;
-                                            case "3":
-                                                $class="smart-video";
+                                            case "4":
+                                                $class="smart-entertainment";
                                                 $iconClass="m-icon--video";
                                                 $categoryTitle="ENTERTAINMENT";
                                             break;
                                         }
                                     ?>
-                                    <div style="cursor: pointer;" class="{{$class}}" ng-click="selectCategory({{$category->id}})">
+                                    <div style="cursor: pointer;" ng-class="['category-tab-item', '{{$class}}', {'active': '{{$id}}' == activeCategoryId }]" ng-click="selectCategory({{$id}})">
                                         <div class="category-tab-icon-holder">
                                             <i class="m-icon {{$iconClass}}"></i> 
                                         </div>
                                         <div class="category-tab-title-holder">
                                             <span class="forum-small-title"><span class='hidden-xs hidden-sm hidden-md'>SMART</span> {{$categoryTitle}}</span> <br>
-                                            <span id="thread-topics-{{$category->id}}">2077 Topics</span>
+                                            <span id="thread-topics-{{$id}}">2077 Topics</span>
                                         </div>
                                         <div class="clearfix"></div>
                                     </div>
                                 </div>
-                                <?php $i++; ?>
                             @endforeach
 						</div>
 						<div class="row border-line-holder">
-                            @foreach($categories as $category)
-                                <div ng-class="['col-xs-3', {'active': '{{$category->id}}' == activeCategoryId }]" ></div>
+                            @foreach($categorie_ids as $id)
+                                <!--<div ng-class="['col-xs-3', '{{$class}}', {'active': '{{$id}}' == activeCategoryId }]" ></div>-->
                             @endforeach
 						</div>
 						<div class="row sub-category-container">
@@ -192,7 +203,7 @@
                                 <div class="row">
                                     <div class="col-xs-5 forum-col">
                                         <span>
-                                            <a class="pointer" href="/advice/thread/@{{categoryThread.id}}/@{{categoryThread.permalink}}">
+                                            <a class="pointer" href="/advice/@{{categoryThread.id}}/@{{categoryThread.permalink}}">
                                                 @{{categoryThread.title}}
                                             </a>
                                         </span>
