@@ -16186,7 +16186,8 @@ body.shop-category .show-filter .grid-box-3 {
   max-width: none; }
 
 .avatar-wrap {
-  padding-top: 5px; }
+  padding-top: 5px;
+  max-width: 210px; }
   @media (max-width: 620px) {
     .avatar-wrap {
       max-width: 200px;

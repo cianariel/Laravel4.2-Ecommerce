@@ -81,12 +81,12 @@
                 </li>
 
                 <li ng-class="{active: activeMenu == '2'}" ng-click="activeMenu='2'">
-                    <a ng-click="clickOnActivityLike('{{$permalink}}', 5)" class="my-purchases swing-lined green-line">
+                    <a ng-click="clickOnOrders('{{$permalink}}', 5)" class="my-purchases swing-lined green-line">
                         <div><i class="m-icon m-icon--deals green"></i>
-                            0 Purchases</div>
+                            @{{totalOrders}} Purchases</div>
                     </a>
                 </li>
-                <li ng-class="{active: activeMenu == '2'}" ng-click="activeMenu='2'">
+                <li ng-class="{active: activeMenu == '3'}" ng-click="activeMenu='3'">
                     <a ng-click="clickOnActivityLike('{{$permalink}}', 5)" class="my-likes swing-lined">
                         <div><i class="m-icon m-icon--heart-id pink"></i>
                             15 Likes</div>

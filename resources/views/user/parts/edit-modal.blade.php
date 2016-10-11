@@ -45,9 +45,9 @@
                     </div>
                     <label class="col-xs-12 control-label">Last name</label>
                     <div class="col-xs-12">
-                        <input class="form-control" ng-model="data.FullName"
-                               ng-init="data.FullName = '<?php echo $userData['name'] ?>'"
-                               placeholder="Full name">
+                        <input class="form-control" ng-model="data.LastName"
+                               ng-init="data.LastName = '<?php echo $userData['last_name'] ?>'"
+                               placeholder="Last Name">
                     </div>
 
                     <label class="col-xs-12 control-label">Bio</label>
@@ -61,13 +61,13 @@
                     <div class="col-xs-6 boxy-label">
                         <label class="col-xs-2 col-sm-2 col-md-6 control-label"><i class="m-icon m-icon--facebook-id"></i> <span class="hidden-xs hidden-sm">Facebook Link</span></label>
                         <div class="col-md-6 col-xs-10 pull-right no-padding">
-                            <input class="form-control ng-pristine ng-untouched ng-valid ng-not-empty" ng-model="data.FullName" ng-init="data.FullName = 'tanvir'" placeholder="Full name">
+                            <input class="form-control ng-pristine ng-untouched ng-valid ng-not-empty" ng-model="data.FacebookLink" ng-init="data.FacebookLink = '<?php echo $userData['userProfile']['facebook_link'] ?>'">
                         </div>
                     </div>
                     <div class="col-xs-6 boxy-label">
                         <label class="col-xs-2 col-sm-2 col-md-6"><i class="m-icon m-icon--twitter-id"></i><span class="hidden-xs hidden-sm">Twitter Link</span></label>
                         <div class="col-md-6 col-xs-10  pull-right no-padding">
-                            <input class="form-control ng-pristine ng-untouched ng-valid ng-not-empty" ng-model="data.FullName" ng-init="data.FullName = 'tanvir'" placeholder="Full name">
+                            <input class="form-control ng-pristine ng-untouched ng-valid ng-not-empty" ng-model="data.TwitterLink" ng-init="data.TwitterLink = '<?php echo $userData['userProfile']['twitter_link'] ?>'">
                         </div>
                     </div>
                 </div>
@@ -97,7 +97,7 @@
                 <div class="form-group  col-xs-6">
                     <label class="col-xs-12 control-label">New password</label>
                     <div class="col-xs-12">
-                        <input class="form-control" type="password" ng-model="data.Password"
+                        <input class="form-control" type="password" ng-model="data.NewPassword"
                                placeholder="New password">
 
                     </div> 
@@ -105,9 +105,8 @@
                 <div class="form-group  col-xs-6">
                     <label class="col-xs-12 control-label">Recovery email</label>
                     <div class="col-xs-12">
-                        <input class="form-control" type="password" ng-model="data.RecoveryEmail"
-                               placeholder="New password">
-
+                        <input class="form-control" type="email" ng-model="data.RecoveryEmail"  ng-init="data.RecoveryEmail = '<?php echo $userData['recovery_email'] ?>'">
+                        <?php // echo $userData['userProfile']['address']  ?>
                     </div>
                 </div>
 
@@ -116,7 +115,7 @@
                         <div class="col-xs-12 no-padding">
                             <label class="col-xs-6 control-label">https://ideaing.com/user/profile/</label>
                             <div class="col-xs-6 pull-right no-padding">
-                                <input class="form-control personal-link ng-pristine ng-valid ng-not-empty ng-touched ng-untouched" ng-model="data.Permalink" ng-init="data.Permalink = 'tanvir-25-66'" placeholder="">
+                                <input class="form-control personal-link ng-pristine ng-valid ng-not-empty ng-touched ng-untouched" ng-model="data.Permalink" ng-init="data.Permalink = <?php echo $userData['permalink'] ?>" placeholder="">
                             </div>
                         </div>
                     </div>
@@ -139,15 +138,15 @@
                             <label class="col-xs-12 control-label">Street</label>
                             <div class="col-xs-12">
                                 <input class="form-control street" ng-model="data.Street"
-                               placeholder="">
+                               placeholder="" ng-init="data.Street = <?php echo $userData['userProfile']['street'] ?>">
                             </div>
                         </div>
 
                         <div class="form-group col-xs-6">
                             <label class="col-xs-12 control-label">Apartment</label>
                             <div class="col-xs-12">
-                                <input class="form-control apartment ng-model="data.Apartment"
-                                placeholder="">
+                                <input class="form-control apartment" ng-model="data.Apartment"
+                                placeholder="" ng-init="data.Apartment = <?php echo $userData['userProfile']['apartment'] ?>">
                             </div>
                         </div>
 
@@ -155,7 +154,7 @@
                             <label class="col-xs-12 control-label">City</label>
                             <div class="col-xs-12">
                                 <input class="form-control city no-padding" ng-model="data.City"
-                                placeholder="">
+                                placeholder="" ng-init="data.City = <?php echo $userData['userProfile']['city'] ?>">
                             </div>
                         </div>
 
@@ -163,7 +162,7 @@
                             <label class="col-xs-12 control-label">Country</label>
                             <div class="col-xs-12">
                                 <input class="form-control country" ng-model="data.Country"
-                               placeholder="">
+                               placeholder="" ng-init="data.Country = <?php echo $userData['userProfile']['country'] ?>">
                             </div>
                         </div>
 
@@ -171,7 +170,7 @@
                             <label class="col-xs-12 control-label">State</label>
                             <div class="col-xs-12">
                                 <input class="form-control street" ng-model="data.State"
-                               placeholder="">
+                               placeholder="" ng-init="data.State = <?php echo $userData['userProfile']['state'] ?>">
                             </div>
                         </div>
 
@@ -179,7 +178,7 @@
                             <label class="col-xs-12 control-label">Zip</label>
                             <div class="col-xs-12">
                                 <input class="form-control zip" ng-model="data.Zip"
-                               placeholder="">
+                               placeholder="" ng-init="data.Zip = <?php echo $userData['userProfile']['zip'] ?>">
                             </div>
                         </div>
 

@@ -33,6 +33,7 @@
 
 .avatar-wrap{
   padding-top: 5px;
+  max-width: 210px;
 
   @media(max-width: 620px){
     max-width: 200px;

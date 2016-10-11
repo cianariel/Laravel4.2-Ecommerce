@@ -521,6 +521,7 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
             // profile feed and post toggle
 
             $scope.postActive = true;
+            $scope.orderActive = true;
             $scope.ActivityActive = true;
 
             // Membership Subscription and Payment
@@ -1367,27 +1368,40 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
 
         // Manage different click events in profile menu bar
         $scope.clickOnPost = function (parmalink, count) {
-
             $scope.postActive = true;
+            $scope.orderActive = false;
             $scope.ActivityActive = false;
             $scope.userActivityCount = null;
             $scope.userPostList(parmalink, count);
+
+        };
+        // Manage different click events in profile menu bar
+        $scope.clickOnOrders = function (parmalink, count) {
+            $scope.orderActive = true;
+            console.log($scope.orderActive)
+
+            $scope.ActivityActive = false;
+            $scope.postActive = false;
+            $scope.userActivityCount = null;
+            $scope.userOrderList(parmalink, count);
 
         };
 
         $scope.clickOnActivity = function (parmalink, count) {
 
             $scope.postActive = true;
+            $scope.orderActive = true;
             $scope.ActivityActive = true;
+            $scope.orderActive = false;
             $scope.userActivityCount = null;
             $scope.showActivity('all');
             $scope.userActivityList(parmalink, count);
             $scope.userPostList(parmalink, count);
-
         };
 
         $scope.clickOnActivityLike = function (parmalink, count) {
 
+            $scope.orderActive = false;
             $scope.postActive = false;
             $scope.ActivityActive = true;
             $scope.userActivityList(parmalink, count);
@@ -1396,6 +1410,7 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
 
         $scope.clickOnActivityComment = function (parmalink, count) {
 
+            $scope.orderActive = false;
             $scope.postActive = false;
             $scope.ActivityActive = true;
             $scope.userActivityList(parmalink, count);
@@ -1422,6 +1437,32 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
 
             }).success(function (data) {
                 $scope.userPostData = data.data;
+            });
+
+        };
+
+
+        // Load user activity like/comment in user profile
+        $scope.userOrderList = function (parmalink, count) {
+
+            if ($scope.userActivityCount == null)
+                $scope.userActivityCount = count;
+            else
+                $scope.userActivityCount = $scope.userActivityCount + count;
+
+            $http({
+                url: '/api/user/orders',
+                method: "POST",
+                data: {
+                    Permalink: parmalink,
+                    PostCount: $scope.userActivityCount,
+                    AuthorPicture: $window.profilePicture,
+                    AuthorName: $window.profileFullName,
+                }
+
+            }).success(function (data) {
+                $scope.userOrderData = data.data;
+                $scope.totalOrders = data.data.length;
             });
 
         };
@@ -1546,13 +1587,27 @@ publicApp.controller('publicController', ['$rootScope', '$scope', '$http', '$win
                 method: "POST",
                 data: {
                     FullName: formData.FullName,
+                    LastName: formData.LastName,
                     Email: formData.Email,
+                    RecoveryEmail: formData.RecoveryEmail,
                     Password: formData.Password,
                     PersonalInfo: formData.PersonalInfo,
-                    Address: formData.Address,
+
+                    FacebookLink: formData.FacebookLink,
+                    TwitterLink: formData.TwitterLink,
+
+                    Password: formData.Password,
+                    NewPassword: formData.NewPassword,
+
+                    Street: formData.Street,
+                    Apartment: formData.Apartment,
+                    City: formData.City,
+                    Country: formData.Country,
+                    State: formData.State,
+                    Zip: formData.Zip,
+
                     Permalink: formData.Permalink,
                     MediaLink: meidaLink
-
                 }
             }).success(function (data) {
                 // console.log(data);

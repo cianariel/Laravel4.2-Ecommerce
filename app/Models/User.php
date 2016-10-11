@@ -28,6 +28,7 @@ use Zizaco\Entrust\Traits\EntrustUserTrait;
 use Fenos\Notifynder\Notifable;
 use Carbon\Carbon;
 use PageHelper;
+use URL;
 
 //use CustomAppException;
 
@@ -55,7 +56,7 @@ class User extends Model implements AuthenticatableContract,
      *
      * @var array
      */
-    protected $fillable = ['name', 'email', 'password', 'status'];
+    protected $fillable = ['name', 'last_name', 'email', 'recovery_email','facebook_link','twitter_link', 'password', 'status', 'street', 'apartment', 'city', 'country', 'state', 'zip',];
 
     /**
      * The attributes excluded from the model's JSON form.
@@ -680,6 +681,35 @@ class User extends Model implements AuthenticatableContract,
 
         }
         return $ideas;
+    }
+
+    public function getMyOrders()
+    {
+        $orderCollection = new Collection();
+
+        $purchasesUrl = URL::to('/') . '/ideas/wp-admin/admin-ajax.php?action=account_orders';
+
+        $data =  PageHelper::getArrayFromCurl($purchasesUrl);
+
+        foreach ($data['data'] as $item) {
+            $tmpCollection = new Collection();
+
+//             print_r($item); die();
+
+            $tmpCollection['Id'] = $item['order'];
+            $tmpCollection['Link'] = $item['actions']['view']['url'];
+            $tmpCollection['UpdateTime'] = $item['date'];
+//            $tmpCollection['ProductCount'] = $item['qty'];
+            $tmpCollection['Status'] = $item['status'];
+            $tmpCollection['Total'] = strip_tags($item['total']);
+
+//            print_r($tmpCollection); die();
+
+            $orderCollection->push($tmpCollection);
+
+        }
+
+        return $orderCollection;
     }
 
     public function getUserProfileSettings($userId)

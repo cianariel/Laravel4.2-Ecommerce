@@ -266,9 +266,9 @@ class Comment extends Model
     public function getCommentsAndHeatByUserId($userId, $count = null)
     {
 
-        // if(env('IS_DEV')){
-        //     return false;
-        // }
+         if(env('IS_DEV')){
+             return false;
+         }
 
         $activityCollection = new Collection();
 
@@ -454,6 +454,32 @@ class Comment extends Model
             $activityCollection->push($tmpCollection);
 
         }
+//
+//        $orderCollection = new Collection();
+//
+//        $purchasesUrl = URL::to('/') . '/ideas/wp-admin/admin-ajax.php?action=account_orders';
+//
+//        $data =  PageHelper::getArrayFromCurl($purchasesUrl);
+//
+//
+//        foreach ($data['data'] as $item) {
+//            $tmpCollection = new Collection();
+//
+//         //    print_r($item); die();
+//
+//            $tmpCollection['Id'] = $item['order'];
+//            $tmpCollection['Link'] = $item['actions']['view']['url'];
+//            $tmpCollection['UpdateTime'] = $item['date'];
+//            $tmpCollection['Type'] = 'purchase';
+////            $tmpCollection['ProductCount'] = $item['qty'];
+//            $tmpCollection['Status'] = $item['status'];
+//            $tmpCollection['Total'] = $item['total'];
+//
+//            print_r($tmpCollection); die();
+//
+//            $activityCollection->push($tmpCollection);
+//
+//        }
 
         return $activityCollection->take($count);
     }

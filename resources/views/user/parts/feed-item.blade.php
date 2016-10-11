@@ -14,7 +14,7 @@
                         <div class="col-xs-12">
                             <div class="pull-left name-time">
                                 <span ng-if="item['Type']=='comment'"> Commented</span>
-                                <span ng-if="item['Type']!='comment'"> Liked</span> 
+                                <span ng-if="item['Type']!='comment'"> Liked</span>
 
                                   <!--   <span ng-if="item['Section']=='product'"> product</span>
                                     <span ng-if="item['Section']!='product'"> idea</span> -->
@@ -27,7 +27,7 @@
                         <div class="col-xs-3 no-padding">
                             <img class="radius-5" ng-src="@{{ item['Image'] }}">
                         </div>
-
+ 
 
                         <div ng-class="item['Type'] =='heart' ? 'col-xs-12':'col-xs-12'" class="col-xs-9">
                             <a href="@{{ item['Link'] }}" target="_blank">@{{ item['Title'] }}</a>
@@ -46,7 +46,7 @@
             </div>
          </div>
     </div>
-  </div>           
+  </div>
 
 
 
@@ -57,7 +57,7 @@
                 <span class="time grey lightfont">@{{item['UpdateTime']}}</span>
                 <div class="pull-right activity-tags">
                     <div class="post white-bg">
-                        <img width="25" height="25" src="/assets/svg/bulb.svg" />    
+                        <img width="25" height="25" src="/assets/svg/bulb.svg" />
                     </div>
                 </div>
             </div>
@@ -94,3 +94,41 @@
          </div>
     </div>
   </div>
+
+
+ @if($showEditOption)
+ <div ng-show="orderActive" class="ng-hide">
+     <div ng-init="userOrderList('{{$permalink}}', 6)">
+         <div class="col-xs-12 activity-item" ng-repeat="item in userOrderData">
+             <div class="col-xs-3 text-right">
+                 <span class="time grey lightfont">@{{item['UpdateTime']}}</span>
+                 <div class="pull-right activity-tags">
+                     <div class="post white-bg">
+                         <i class="m-icon--deals green"></i>
+                     </div>
+                 </div>
+             </div>
+             <div class="feed-content col-xs-9 radius-5">
+                 <div class="feed-header">
+                     <div class="row">
+                         <div class="col-xs-12">
+                             <div class="pull-left name-time">
+                                 <b>Order</b>
+                             </div>
+                         </div>
+                     </div>
+                 </div>
+                 <div class="feed-body">
+                     <div class="row">
+                         <div class="col-xs-9">
+                             <a href="@{{ item['Link'] }}" target="_blank">@{{ renderHTML(item['Total']) }}</a>
+                             <b class="pull-right">Status: <span class="text-uppercase">@{{ item['Status'] }}</span></b>
+
+                         </div>
+                     </div>
+                 </div>
+             </div>
+         </div>
+     </div>
+ </div>
+ @endif

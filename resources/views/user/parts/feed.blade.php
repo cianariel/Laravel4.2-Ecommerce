@@ -29,9 +29,11 @@
                 </ul>
             </div>
         </div> 
-            @include('user.parts.feed-item')
-        </div>
     </div>
+
+    @include('user.parts.feed-item')
+
+</div>
     <!--feed end-->
 
 
