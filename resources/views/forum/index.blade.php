@@ -124,18 +124,18 @@
                                                 $categoryTitle="TRAVEL";
                                             break;
                                             case "3":
-                                                $class="smart-wearables";
+                                                $class="smart-body";
                                                 $iconClass="m-icon--wearables";
                                                 $categoryTitle="BODY";
                                             break;
                                             case "4":
-                                                $class="smart-video";
+                                                $class="smart-entertainment";
                                                 $iconClass="m-icon--video";
                                                 $categoryTitle="ENTERTAINMENT";
                                             break;
                                         }
                                     ?>
-                                    <div style="cursor: pointer;" class="{{$class}}" ng-click="selectCategory({{$id}})">
+                                    <div style="cursor: pointer;" ng-class="['category-tab-item', '{{$class}}', {'active': '{{$id}}' == activeCategoryId }]" ng-click="selectCategory({{$id}})">
                                         <div class="category-tab-icon-holder">
                                             <i class="m-icon {{$iconClass}}"></i> 
                                         </div>
@@ -150,7 +150,7 @@
 						</div>
 						<div class="row border-line-holder">
                             @foreach($categorie_ids as $id)
-                                <div ng-class="['col-xs-3', {'active': '{{$id}}' == activeCategoryId }]" ></div>
+                                <!--<div ng-class="['col-xs-3', '{{$class}}', {'active': '{{$id}}' == activeCategoryId }]" ></div>-->
                             @endforeach
 						</div>
 						<div class="row sub-category-container">

@@ -1,3 +1,8 @@
+$smarthomeColor: #FC1159;
+$smartentertainmentColor: #89C981;
+$smartbodyColor: #00B1FF;
+$smarttravelColor: #FF7F00;
+
 body.forum{
     font-family: Montserratlight,sans-serif;
 	color: #bebebe;
@@ -132,6 +137,39 @@ body.forum{
 	.category-tab-container{
         margin-top: 70px;
         margin-bottom: 30px;
+        .category-tab-item{
+            position: relative;
+            &:after{
+                content: " ";
+                position: absolute;
+                width: 100%;
+                height: 2px;
+                top: 40px;
+                visibility: hidden;
+                -webkit-transform: scaleX(0);
+                transform: scaleX(0);
+                -webkit-transition: all .3s ease-in-out 0s;
+                transition: all .3s ease-in-out 0s;
+            }
+            &:hover:after, &.active:after{
+                visibility: visible;
+                -webkit-transform: scaleX(1);
+                transform: scaleX(1);
+            }
+            &.smart-home:after{
+                background-color: $smarthomeColor;
+            }
+            &.smart-entertainment:after {
+                background-color: $smartentertainmentColor;
+            }
+            &.smart-body:after {
+                background-color: $smartbodyColor;
+            }
+            &.smart-travel:after {
+                background-color: $smarttravelColor;
+            }
+            
+        }
 		.sub-category-container{
 			margin-top: 20px;
 		}
@@ -180,23 +218,23 @@ body.forum{
             }
         }
         .smart-home{
-            i, .forum-small-title:hover{
-                color:#FC1159;
+            i, &:hover .forum-small-title{
+                color: $smarthomeColor;
             }
         }
         .smart-travel{
-            i, .forum-small-title:hover{
-                color:#89C981;
+            i, &:hover .forum-small-title{
+                color: $smarttravelColor;
             }
         }
-        .smart-wearables{
-            i, .forum-small-title:hover{
-                color:#00B1FF;
+        .smart-body{
+            i, &:hover .forum-small-title{
+                color: $smartbodyColor;
             }
         }
-        .smart-video{
-            i, .forum-small-title:hover{
-                color:#FF7F00;
+        .smart-entertainment{
+            i, &:hover .forum-small-title{
+                color: $smartentertainmentColor;
             }
         }
 	}
