@@ -437,7 +437,7 @@ Route::get('api/products/get-for-bar/{idea?}', 'ProductController@getForBar');
 
 Route::group(['prefix' => 'advice'], function () {
     Route::get('/', 'ForumController@index');
-    Route::get('/thread/{id}/{threadLink}', 'ForumController@thread');
+    Route::get('/{id}/{threadLink}', 'ForumController@thread');
     Route::controller('api', 'ForumApiController');
 });
 
