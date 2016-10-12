@@ -7240,7 +7240,7 @@ a.box-link {
   padding: 3px 4px;
   margin: 12px 6px;
   color: #fff;
-  font-size: 12px;
+  font-size: 13px;
   /*    border: 2px solid $dark-orange;*/
   border-radius: 4px;
   text-align: center; }
@@ -14132,14 +14132,14 @@ article.product {
   padding-right: 0;
   padding-left: 0; }
   .popular-new .box-link {
-    border: none;
-    background: #E7E7E7;
-    width: 80px;
-    color: #545454;
-    margin-right: 0; }
+    border-width: 1px;
+    padding: 8px 20px;
+    border: 1px solid #ededed;
+    color: #3D4B4E;
+    margin-right: 0px; }
     .popular-new .box-link.active, .popular-new .box-link:hover {
-      background: #F15C29;
-      color: #FFFFFF; }
+      border-color: #FC1159;
+      color: #FC1159 !important; }
   .popular-new li {
     display: inline-block; }
 
@@ -16035,15 +16035,10 @@ body.category-deals .mid-nav .shop-landing-submenu.wrap,
       margin-right: 0px;
       font-size: 11px; } }
 
-body.shop-category .app-wrap {
-  padding-top: 115px !important; }
-  body.shop-category .app-wrap .homepage-grid {
-    width: 1170px; }
 body.shop-category #category-banner {
   position: relative;
   width: 100%;
-  padding-top: 0;
-  min-height: 200px; }
+  padding-top: 110px; }
   body.shop-category #category-banner .head-wrap {
     position: absolute;
     top: 40%;
@@ -16059,15 +16054,8 @@ body.shop-category #category-banner {
         background-color: rgba(198, 198, 70, 0.7); }
       body.shop-category #category-banner .head-wrap span.home-decor {
         background-color: rgba(255, 170, 0, 0.7); }
-body.shop-category #hero-nav {
-  border-top: 1px solid #dbdbdb;
-  border-bottom: 1px solid #dbdbdb;
-  margin-top: 20px;
-  margin-bottom: 20px; }
-  body.shop-category #hero-nav ul.popular-new {
-    text-align: right; }
-    body.shop-category #hero-nav ul.popular-new li a.box-link {
-      margin: 8px 0; }
+body.shop-category .popular-new {
+  text-align: right; }
 body.shop-category .main-content #shop-filter-grid-box-3 {
   padding: 0 !important; }
 body.shop-category .main-content .grid-box-3 {
@@ -16636,13 +16624,18 @@ body.forum {
   body.forum .mid-nav, body.forum .mid-nav .extra-nav, .mid-nav body.forum .extra-nav {
     display: none; }
   body.forum .top-bar {
-    border-bottom: 1px solid #e6e6e6;
-    height: 70px;
-    padding-top: 15px; }
+    padding-top: 20px;
+    background: #F7F7F7; }
+    body.forum .top-bar .container {
+      border-bottom: 1px solid #ECECEC;
+      height: 70px; }
     body.forum .top-bar .title {
       color: #4d4d4d;
       font-size: 24px;
-      margin-left: 90px; }
+      margin-left: 25px; }
+    @media screen and (max-width: 620px) {
+      body.forum .top-bar {
+        display: none; } }
   body.forum .black-color {
     color: #000; }
   body.forum .forum-text {
@@ -16729,6 +16722,31 @@ body.forum {
   body.forum .category-tab-container {
     margin-top: 70px;
     margin-bottom: 30px; }
+    body.forum .category-tab-container .category-tab-item {
+      position: relative; }
+      body.forum .category-tab-container .category-tab-item:after {
+        content: " ";
+        position: absolute;
+        width: 100%;
+        height: 2px;
+        top: 40px;
+        visibility: hidden;
+        -webkit-transform: scaleX(0);
+        transform: scaleX(0);
+        -webkit-transition: all .3s ease-in-out 0s;
+        transition: all .3s ease-in-out 0s; }
+      body.forum .category-tab-container .category-tab-item:hover:after, body.forum .category-tab-container .category-tab-item.active:after {
+        visibility: visible;
+        -webkit-transform: scaleX(1);
+        transform: scaleX(1); }
+      body.forum .category-tab-container .category-tab-item.smart-home:after {
+        background-color: #FC1159; }
+      body.forum .category-tab-container .category-tab-item.smart-entertainment:after {
+        background-color: #89C981; }
+      body.forum .category-tab-container .category-tab-item.smart-body:after {
+        background-color: #00B1FF; }
+      body.forum .category-tab-container .category-tab-item.smart-travel:after {
+        background-color: #FF7F00; }
     body.forum .category-tab-container .sub-category-container {
       margin-top: 20px; }
     body.forum .category-tab-container .category-tab-icon-holder {
@@ -16752,18 +16770,27 @@ body.forum {
           margin-left: 5px; }
           body.forum .category-tab-container .category-tab-title-holder .forum-small-title {
             font-size: 1rem; } }
+    @media screen and (max-width: 425px) {
+      body.forum .category-tab-container .category-tab-title-holder {
+        display: none; }
+      body.forum .category-tab-container .category-tab-icon-holder {
+        float: none;
+        text-align: center; }
+        body.forum .category-tab-container .category-tab-icon-holder i {
+          float: none;
+          font-size: 25px; } }
     @media screen and (max-width: 998px) {
       body.forum .category-tab-container .col-xs-3 {
         padding-left: 0px;
         padding-right: 0px; } }
-    body.forum .category-tab-container .smart-home i, body.forum .category-tab-container .smart-home .forum-small-title:hover {
+    body.forum .category-tab-container .smart-home i, body.forum .category-tab-container .smart-home:hover .forum-small-title {
       color: #FC1159; }
-    body.forum .category-tab-container .smart-travel i, body.forum .category-tab-container .smart-travel .forum-small-title:hover {
-      color: #89C981; }
-    body.forum .category-tab-container .smart-wearables i, body.forum .category-tab-container .smart-wearables .forum-small-title:hover {
-      color: #00B1FF; }
-    body.forum .category-tab-container .smart-video i, body.forum .category-tab-container .smart-video .forum-small-title:hover {
+    body.forum .category-tab-container .smart-travel i, body.forum .category-tab-container .smart-travel:hover .forum-small-title {
       color: #FF7F00; }
+    body.forum .category-tab-container .smart-body i, body.forum .category-tab-container .smart-body:hover .forum-small-title {
+      color: #00B1FF; }
+    body.forum .category-tab-container .smart-entertainment i, body.forum .category-tab-container .smart-entertainment:hover .forum-small-title {
+      color: #89C981; }
   body.forum .title {
     color: #000; }
   body.forum .white-btn {
@@ -16819,7 +16846,7 @@ body.forum {
       background: #4389c8;
       border-right: 1px solid #61a9e8;
       color: #fff;
-      width: 38%;
+      /*    		width: 38%;*/
       float: left;
       font-size: 10px;
       padding: 5px 15px;
@@ -16832,7 +16859,7 @@ body.forum {
       body.forum #posts-content-container .thread-history-item:first-child {
         border-top-left-radius: 5px;
         border-bottom-left-radius: 5px;
-        width: 24%; }
+        /*    			width: 24%;*/ }
       body.forum #posts-content-container .thread-history-item:last-child {
         border-top-right-radius: 5px;
         border-bottom-right-radius: 5px;
@@ -16875,11 +16902,13 @@ body.forum {
           body.forum #posts-content-container .comment-row .comment-content-holder .comment-conent .fullname {
             font-size: 17px;
             font-weight: 600;
-            color: #000; }
+            color: #000;
+            margin-top: 10px; }
           body.forum #posts-content-container .comment-row .comment-content-holder .comment-conent .username {
             font-size: 13px; }
           body.forum #posts-content-container .comment-row .comment-content-holder .comment-conent .content {
-            margin-top: 20px; }
+            margin-top: 20px;
+            text-align: left; }
         body.forum #posts-content-container .comment-row .comment-content-holder .comment-bottom {
           padding-top: 15px;
           padding-bottom: 15px; }
@@ -16893,7 +16922,7 @@ body.forum {
       body.forum #posts-content-container .comment-row.owner .comment-content-holder {
         color: #fabbc7; }
         body.forum #posts-content-container .comment-row.owner .comment-content-holder .comment-content-inner-holder {
-          background: #ed1d47; }
+          background: #FC1159; }
         body.forum #posts-content-container .comment-row.owner .comment-content-holder .fullname {
           color: #fabbc7; }
         body.forum #posts-content-container .comment-row.owner .comment-content-holder .comment-conent {
@@ -16936,16 +16965,16 @@ body.forum {
     border: 1px solid #e5e5e5; }
   body.forum .forum-comment-modal .button-container {
     margin-top: 10px; }
-    body.forum .forum-comment-modal .button-container .btn {
-      padding-left: 30px;
-      padding-right: 30px; }
     body.forum .forum-comment-modal .button-container #submit-commnet {
-      margin-left: 15px;
-      background: #3cb44a;
+      /*                margin-left: 15px;*/
       color: #fff; }
     body.forum .forum-comment-modal .button-container #cancel-commnet {
       background: none;
-      color: #7f7f7f; }
+      color: #7f7f7f;
+      padding-left: 30px;
+      padding-right: 30px;
+      margin-top: 7px;
+      margin-right: 20px; }
   body.forum .m-icon--smart-body span::before {
     color: #4388c7; }
   body.forum #forum-search-holder {
@@ -16955,5 +16984,10 @@ body.forum {
       top: 11px;
       position: absolute;
       left: 33px; }
+  body.forum .alert-info {
+    padding: 10px 15px;
+    border-radius: 5px;
+    margin-top: 15px;
+    margin-bottom: 15px; }
 
 /*# sourceMappingURL=app.css.map */

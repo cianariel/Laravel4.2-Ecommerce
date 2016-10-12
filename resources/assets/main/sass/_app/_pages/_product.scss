@@ -389,17 +389,16 @@ article.product{
   padding-right: 0;
   padding-left: 0;
   .box-link{
-    border: none;
-    background: #E7E7E7;
-    width: 80px;
-    //border: 1px solid $light-grey;
-    color: #545454;
-    margin-right: 0;
+    border-width: 1px;
+    padding: 8px 20px;
+    border: 1px solid $light-grey;
+    color: $tarmac;
+    margin-right: 0px;
 
     &.active,
     &:hover{
-      background: $light-orange;
-      color: #FFFFFF;
+      border-color: $iridium;
+      color: $iridium !important;
     }
   }
   li{
